@@ -1,0 +1,1041 @@
+{
+	"id": "y88U-qEYDBGW",
+	"title": "Emoji React",
+	"shortDescription": "Emoji React lets your visitors react to your content.",
+	"longDescription": "Add emoji buttons to your site. Clicking one of the emoji votes for that reaction. The reaction counts are shown to every visitor.",
+	"instructions": "Add the emoji buttons of your choice to your site. When visitors click the buttons they will be placing a vote for their reaction to the page.",
+	"alias": "emoji-react",
+	"orgId": "2684c89451b6b86b453405beb4662f46",
+	"icon": "//images.cloudflareapps.com/ExDswfSMQGOoTYtbc4E8_icon.png",
+	"screenshots": [
+		"//images.cloudflareapps.com/Co3bV9N6R6yIslQYMK8f_screenshot.png"
+	],
+	"tileImage": "//images.cloudflareapps.com/ZFKV30yQxaaZQLw76YMA_tileImage.png",
+	"featuredAppImage": "",
+	"author": "Dean Perry",
+	"tagline": "",
+	"website": "https://emojireact.com",
+	"sourceURL": "",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "#F9cf51",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.1.3",
+	"infoVersion": "1.1.3",
+	"points": 1,
+	"supportEmail": "support@cloudflare.com",
+	"products": [],
+	"categoryIds": [
+		"add-on",
+		"social-and-communication"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "1e57d294e97e29816d5d04c78ed67257",
+			"created": "2017-05-31T23:36:24.667993306Z",
+			"version": "04-24-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "JtLgPyNQvIPW"
+	},
+	"created": "2017-05-23T01:51:51.53774Z",
+	"org": {
+		"id": "2684c89451b6b86b453405beb4662f46",
+		"title": "",
+		"username": "2684c89451b6b86b453405beb4662f46",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "add-on",
+			"title": "Add-ons",
+			"description": "Drop-in components to add to your website.",
+			"icon": "//eager-app-images.imgix.net/HZ0uHPrDRp6uAeUTuEH2_add-ons.png",
+			"points": 100,
+			"visible": false,
+			"metadata": {
+				"icon": {
+					"filename": "add-ons.png",
+					"isWriteable": false,
+					"key": "HZ0uHPrDRp6uAeUTuEH2_add-ons.png",
+					"mimetype": "image/png",
+					"size": 1997,
+					"url": "https://www.filepicker.io/api/file/1GlH0WSQTZu0scJr7qY0"
+				}
+			},
+			"created": "2016-01-20T20:14:55.498829Z"
+		},
+		{
+			"id": "social-and-communication",
+			"title": "Social & Communication",
+			"description": "Apps that make it easier to communicate with your customers.",
+			"icon": "",
+			"points": 80,
+			"visible": true,
+			"created": "2018-01-22T19:17:10.030031Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "v1.0.0",
+			"appId": "y88U-qEYDBGW",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"emojis": {
+							"default": [
+								{
+									"value": "thumbsup"
+								},
+								{
+									"value": "thumbsdown"
+								},
+								{
+									"value": "heart"
+								},
+								{
+									"value": "cry"
+								},
+								{
+									"value": "laughing"
+								}
+							],
+							"items": {
+								"properties": {
+									"value": {
+										"default": "smile",
+										"enum": [
+											"smile",
+											"laughing",
+											"cry",
+											"blush",
+											"neutral_face",
+											"fire",
+											"tada",
+											"thumbsup",
+											"thumbsdown",
+											"clap",
+											"poop",
+											"heart",
+											"rocket",
+											"whale"
+										],
+										"enumNames": {
+											"blush": "😊 Blush",
+											"clap": "👏 Clap",
+											"cry": "😢 Cry",
+											"fire": "🔥 Fire",
+											"heart": "❤️ Heart",
+											"laughing": "😆 Laughing",
+											"neutral_face": "😐 Neutral Face",
+											"poop": "💩 Poop",
+											"rocket": "🚀 Rocket",
+											"smile": "😀 Smile",
+											"tada": "🎉 Tada",
+											"thumbsdown": "👎 Thumbsdown",
+											"thumbsup": "👍 Thumbsup",
+											"whale": "🐳 Whale"
+										},
+										"title": "Emoji",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"order": 2,
+							"title": "Emojis",
+							"type": "array"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"format": "element",
+							"order": 0,
+							"title": "Emoji location",
+							"type": "object"
+						},
+						"position": {
+							"default": "center",
+							"enum": [
+								"left",
+								"center",
+								"right"
+							],
+							"enumNames": {
+								"center": "Center",
+								"left": "Left",
+								"right": "Right"
+							},
+							"order": 1,
+							"title": "Horizontal alignment",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"location",
+								"emojis"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"position"
+							],
+							"execute": "INSTALL_SCOPE.setPosition(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/K2z8f5OR-Yuq",
+			"metadata": {
+				"code": {
+					"sourceTag": "K2z8f5OR-Yuq",
+					"uploadedOn": "2017-05-23T01:55:02.656497094Z"
+				}
+			},
+			"created": "2017-05-23T01:51:52.682881Z",
+			"proposedApp": {
+				"id": "y88U-qEYDBGW",
+				"title": "Emoji React",
+				"shortDescription": "React with your favorite Emojis!",
+				"longDescription": "Inspired by Slack & Facebook, Emoji React lets your visitors react to your content!",
+				"instructions": "",
+				"alias": "emoji-react",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "",
+				"screenshots": [
+					"//images.cloudflareapps.com/Co3bV9N6R6yIslQYMK8f_screenshot.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Dean Perry",
+				"tagline": "",
+				"website": "https://emojireact.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"marketing",
+					"by-cloudflare"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "JtLgPyNQvIPW"
+				},
+				"created": "2017-05-23T01:51:51.53774Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-05-23T02:00:42.903715288Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-05-23T02:06:50.677029534Z"
+			}
+		},
+		{
+			"tag": "v1.1.0",
+			"appId": "y88U-qEYDBGW",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"emojis": {
+							"default": [
+								{
+									"value": "thumbsup"
+								},
+								{
+									"value": "thumbsdown"
+								},
+								{
+									"value": "heart"
+								},
+								{
+									"value": "cry"
+								},
+								{
+									"value": "laughing"
+								}
+							],
+							"items": {
+								"properties": {
+									"value": {
+										"default": "smile",
+										"enum": [
+											"smile",
+											"laughing",
+											"cry",
+											"blush",
+											"neutral_face",
+											"fire",
+											"tada",
+											"thumbsup",
+											"thumbsdown",
+											"clap",
+											"poop",
+											"heart",
+											"rocket",
+											"whale"
+										],
+										"enumNames": {
+											"blush": "😊 Blush",
+											"clap": "👏 Clap",
+											"cry": "😢 Cry",
+											"fire": "🔥 Fire",
+											"heart": "❤️ Heart",
+											"laughing": "😆 Laughing",
+											"neutral_face": "😐 Neutral Face",
+											"poop": "💩 Poop",
+											"rocket": "🚀 Rocket",
+											"smile": "😀 Smile",
+											"tada": "🎉 Tada",
+											"thumbsdown": "👎 Thumbsdown",
+											"thumbsup": "👍 Thumbsup",
+											"whale": "🐳 Whale"
+										},
+										"title": "Emoji",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"order": 2,
+							"title": "Emojis",
+							"type": "array"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"format": "element",
+							"order": 0,
+							"title": "Emoji location",
+							"type": "object"
+						},
+						"position": {
+							"default": "center",
+							"enum": [
+								"left",
+								"center",
+								"right"
+							],
+							"enumNames": {
+								"center": "Center",
+								"left": "Left",
+								"right": "Right"
+							},
+							"order": 1,
+							"title": "Horizontal alignment",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"location",
+								"emojis"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"position"
+							],
+							"execute": "INSTALL_SCOPE.setPosition(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/K2z8f5OR-Yuq",
+			"created": "2017-05-31T23:36:18.108001Z",
+			"proposedApp": {
+				"id": "y88U-qEYDBGW",
+				"title": "Emoji React",
+				"shortDescription": "React with your favorite Emojis!",
+				"longDescription": "Inspired by Slack & Facebook, Emoji React lets your visitors react to your content!",
+				"instructions": "",
+				"alias": "emoji-react",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/ExDswfSMQGOoTYtbc4E8_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/Co3bV9N6R6yIslQYMK8f_screenshot.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/ZFKV30yQxaaZQLw76YMA_tileImage.png",
+				"featuredAppImage": "",
+				"author": "Dean Perry",
+				"tagline": "",
+				"website": "https://emojireact.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"marketing",
+					"by-cloudflare"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "JtLgPyNQvIPW"
+				},
+				"created": "2017-05-23T01:51:51.53774Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "1e57d294e97e29816d5d04c78ed67257",
+				"requestedAt": "2017-05-31T23:36:24.666005994Z",
+				"canceledAt": null,
+				"reviewedByUserId": "1e57d294e97e29816d5d04c78ed67257",
+				"reviewedAt": "2017-05-31T23:36:32.381441854Z"
+			}
+		},
+		{
+			"tag": "v1.1.1",
+			"appId": "y88U-qEYDBGW",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"emojis": {
+							"default": [
+								{
+									"value": "thumbsup"
+								},
+								{
+									"value": "thumbsdown"
+								},
+								{
+									"value": "heart"
+								},
+								{
+									"value": "cry"
+								},
+								{
+									"value": "laughing"
+								}
+							],
+							"items": {
+								"properties": {
+									"value": {
+										"default": "smile",
+										"enum": [
+											"smile",
+											"laughing",
+											"cry",
+											"blush",
+											"neutral_face",
+											"fire",
+											"tada",
+											"thumbsup",
+											"thumbsdown",
+											"clap",
+											"poop",
+											"heart",
+											"rocket",
+											"whale"
+										],
+										"enumNames": {
+											"blush": "😊 Blush",
+											"clap": "👏 Clap",
+											"cry": "😢 Cry",
+											"fire": "🔥 Fire",
+											"heart": "❤️ Heart",
+											"laughing": "😆 Laughing",
+											"neutral_face": "😐 Neutral Face",
+											"poop": "💩 Poop",
+											"rocket": "🚀 Rocket",
+											"smile": "😀 Smile",
+											"tada": "🎉 Tada",
+											"thumbsdown": "👎 Thumbsdown",
+											"thumbsup": "👍 Thumbsup",
+											"whale": "🐳 Whale"
+										},
+										"title": "Emoji",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"order": 2,
+							"title": "Emojis",
+							"type": "array"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"format": "element",
+							"order": 0,
+							"title": "Emoji location",
+							"type": "object"
+						},
+						"position": {
+							"default": "center",
+							"enum": [
+								"left",
+								"center",
+								"right"
+							],
+							"enumNames": {
+								"center": "Center",
+								"left": "Left",
+								"right": "Right"
+							},
+							"order": 1,
+							"title": "Horizontal alignment",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"location",
+								"emojis"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"position"
+							],
+							"execute": "INSTALL_SCOPE.setPosition(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/K2z8f5OR-Yuq",
+			"created": "2017-06-05T20:56:39.218096Z",
+			"proposedApp": {
+				"id": "y88U-qEYDBGW",
+				"title": "Emoji React",
+				"shortDescription": "Emoji React lets your visitors react to your content.",
+				"longDescription": "Add emoji buttons to your site. Clicking one of the emoji votes for that reaction. The reaction counts are shown to every visitor.",
+				"instructions": "Add the emoji buttons of your choice to your site. When visitors click the buttons they will be placing a vote for their reaction to the page.",
+				"alias": "emoji-react",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/ExDswfSMQGOoTYtbc4E8_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/Co3bV9N6R6yIslQYMK8f_screenshot.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/ZFKV30yQxaaZQLw76YMA_tileImage.png",
+				"featuredAppImage": "",
+				"author": "Dean Perry",
+				"tagline": "",
+				"website": "https://emojireact.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "JtLgPyNQvIPW"
+				},
+				"created": "2017-05-23T01:51:51.53774Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "dda328da295860bf84630d277c4d53d9",
+				"requestedAt": "2017-06-05T20:56:58.871877155Z",
+				"canceledAt": null,
+				"reviewedByUserId": "dda328da295860bf84630d277c4d53d9",
+				"reviewedAt": "2017-06-05T20:57:21.496801972Z"
+			}
+		},
+		{
+			"tag": "1.1.2",
+			"appId": "y88U-qEYDBGW",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"emojis": {
+							"default": [
+								{
+									"value": "thumbsup"
+								},
+								{
+									"value": "thumbsdown"
+								},
+								{
+									"value": "heart"
+								},
+								{
+									"value": "cry"
+								},
+								{
+									"value": "laughing"
+								}
+							],
+							"items": {
+								"properties": {
+									"value": {
+										"default": "smile",
+										"enum": [
+											"smile",
+											"laughing",
+											"cry",
+											"blush",
+											"neutral_face",
+											"fire",
+											"tada",
+											"thumbsup",
+											"thumbsdown",
+											"clap",
+											"poop",
+											"heart",
+											"rocket",
+											"whale"
+										],
+										"enumNames": {
+											"blush": "😊 Blush",
+											"clap": "👏 Clap",
+											"cry": "😢 Cry",
+											"fire": "🔥 Fire",
+											"heart": "❤️ Heart",
+											"laughing": "😆 Laughing",
+											"neutral_face": "😐 Neutral Face",
+											"poop": "💩 Poop",
+											"rocket": "🚀 Rocket",
+											"smile": "😀 Smile",
+											"tada": "🎉 Tada",
+											"thumbsdown": "👎 Thumbsdown",
+											"thumbsup": "👍 Thumbsup",
+											"whale": "🐳 Whale"
+										},
+										"title": "Emoji",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"order": 2,
+							"title": "Emojis",
+							"type": "array"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"format": "element",
+							"order": 0,
+							"title": "Emoji location",
+							"type": "object"
+						},
+						"position": {
+							"default": "center",
+							"enum": [
+								"left",
+								"center",
+								"right"
+							],
+							"enumNames": {
+								"center": "Center",
+								"left": "Left",
+								"right": "Right"
+							},
+							"order": 1,
+							"title": "Horizontal alignment",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"location",
+								"emojis"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"position"
+							],
+							"execute": "INSTALL_SCOPE.setPosition(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.75,
+				"upvotes": 3,
+				"downvotes": 1
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/K2z8f5OR-Yuq",
+			"created": "2017-07-11T05:19:53.322442Z",
+			"proposedApp": {
+				"id": "y88U-qEYDBGW",
+				"title": "Emoji React",
+				"shortDescription": "Emoji React lets your visitors react to your content.",
+				"longDescription": "Add emoji buttons to your site. Clicking one of the emoji votes for that reaction. The reaction counts are shown to every visitor.",
+				"instructions": "Add the emoji buttons of your choice to your site. When visitors click the buttons they will be placing a vote for their reaction to the page.",
+				"alias": "emoji-react",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/ExDswfSMQGOoTYtbc4E8_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/Co3bV9N6R6yIslQYMK8f_screenshot.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/ZFKV30yQxaaZQLw76YMA_tileImage.png",
+				"featuredAppImage": "",
+				"author": "Dean Perry",
+				"tagline": "",
+				"website": "https://emojireact.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "JtLgPyNQvIPW"
+				},
+				"created": "2017-05-23T01:51:51.53774Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-07-11T05:19:53.523933781Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-07-11T05:20:02.619021304Z"
+			}
+		},
+		{
+			"tag": "1.1.3",
+			"appId": "y88U-qEYDBGW",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"emojis": {
+							"default": [
+								{
+									"value": "thumbsup"
+								},
+								{
+									"value": "thumbsdown"
+								},
+								{
+									"value": "heart"
+								},
+								{
+									"value": "cry"
+								},
+								{
+									"value": "laughing"
+								}
+							],
+							"items": {
+								"properties": {
+									"value": {
+										"default": "smile",
+										"enum": [
+											"smile",
+											"laughing",
+											"cry",
+											"blush",
+											"neutral_face",
+											"fire",
+											"tada",
+											"thumbsup",
+											"thumbsdown",
+											"clap",
+											"poop",
+											"heart",
+											"rocket",
+											"whale"
+										],
+										"enumNames": {
+											"blush": "😊 Blush",
+											"clap": "👏 Clap",
+											"cry": "😢 Cry",
+											"fire": "🔥 Fire",
+											"heart": "❤️ Heart",
+											"laughing": "😆 Laughing",
+											"neutral_face": "😐 Neutral Face",
+											"poop": "💩 Poop",
+											"rocket": "🚀 Rocket",
+											"smile": "😀 Smile",
+											"tada": "🎉 Tada",
+											"thumbsdown": "👎 Thumbsdown",
+											"thumbsup": "👍 Thumbsup",
+											"whale": "🐳 Whale"
+										},
+										"title": "Emoji",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"order": 2,
+							"title": "Emojis",
+							"type": "array"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"format": "element",
+							"order": 0,
+							"title": "Emoji location",
+							"type": "object"
+						},
+						"position": {
+							"default": "center",
+							"enum": [
+								"left",
+								"center",
+								"right"
+							],
+							"enumNames": {
+								"center": "Center",
+								"left": "Left",
+								"right": "Right"
+							},
+							"order": 1,
+							"title": "Horizontal alignment",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"location",
+								"emojis"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"position"
+							],
+							"execute": "INSTALL_SCOPE.setPosition(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.48,
+				"upvotes": 22,
+				"downvotes": 24
+			},
+			"releaseNotes": "Added to “Social & Communication” category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/K2z8f5OR-Yuq",
+			"created": "2018-01-22T20:43:07.162061Z",
+			"proposedApp": {
+				"id": "y88U-qEYDBGW",
+				"title": "Emoji React",
+				"shortDescription": "Emoji React lets your visitors react to your content.",
+				"longDescription": "Add emoji buttons to your site. Clicking one of the emoji votes for that reaction. The reaction counts are shown to every visitor.",
+				"instructions": "Add the emoji buttons of your choice to your site. When visitors click the buttons they will be placing a vote for their reaction to the page.",
+				"alias": "emoji-react",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/ExDswfSMQGOoTYtbc4E8_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/Co3bV9N6R6yIslQYMK8f_screenshot.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/ZFKV30yQxaaZQLw76YMA_tileImage.png",
+				"featuredAppImage": "",
+				"author": "Dean Perry",
+				"tagline": "",
+				"website": "https://emojireact.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "JtLgPyNQvIPW"
+				},
+				"created": "2017-05-23T01:51:51.53774Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-01-22T20:43:07.439380852Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-01-22T20:43:15.416852133Z"
+			}
+		}
+	]
+}

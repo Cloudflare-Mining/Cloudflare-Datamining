@@ -1,0 +1,1233 @@
+{
+	"id": "wxDPcnL5369K",
+	"title": "Teampage",
+	"shortDescription": "Amazing team pages for awesome companies.",
+	"longDescription": "### Create the perfect company team page.\n\nHaving a team page is a great way for your company to show that it is proud of its team. With [Teampage](https://teampa.ge/) you can create and maintain yours easily. \n\nTeampage features:\n* Intuitive dashboard with an easy interface for **complete team management**.\n* Custom design to **match your existing website** or choose from our beautiful designed templates.\n* Decide what and how you want to **showcase your employees**.\n* Powerful embed which is optimized for fast loading and easy integration.\n* Helpful smart notifications (tracking LinkedIn changes), missing information flags and more...\n\n### Have Teampage empower your company's team page",
+	"instructions": "Getting started with  [Teampage](https://teampa.ge/) is easy! Just follow the steps below.",
+	"alias": "teampage",
+	"orgId": "408836a428b52bbb1dee71137fb3c19e",
+	"icon": "https://images.cloudflareapps.com/T8F02oGISC-0/square-logo.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/MTIXRsYZJgah/Schermafbeelding%202018-07-02%20om%2021.26.21.png",
+		"https://images.cloudflareapps.com/Ado82-Hy_Hn4/teampage-dashboard.png",
+		"https://images.cloudflareapps.com/vvgA4UD-amg9/image-team.png"
+	],
+	"tileImage": "",
+	"featuredAppImage": "",
+	"author": "Ymedia Webprojecten B.V.",
+	"tagline": "",
+	"website": "https://teampa.ge/",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://teampa.ge/terms",
+	"privacyPolicyURL": "https://teampa.ge/privacy",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.1.4",
+	"infoVersion": "1.1.4",
+	"points": 0,
+	"supportEmail": "hello@teampa.ge",
+	"products": [],
+	"categoryIds": [
+		"social-and-communication"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "408836a428b52bbb1dee71137fb3c19e",
+			"created": "2018-05-18T08:29:20.912707937Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "EJuj3Gi7muue"
+	},
+	"created": "2018-04-30T12:42:56.03348Z",
+	"org": {
+		"id": "408836a428b52bbb1dee71137fb3c19e",
+		"title": "",
+		"username": "408836a428b52bbb1dee71137fb3c19e",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "social-and-communication",
+			"title": "Social & Communication",
+			"description": "Apps that make it easier to communicate with your customers.",
+			"icon": "",
+			"points": 80,
+			"visible": true,
+			"created": "2018-01-22T19:17:10.030031Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.6",
+			"appId": "wxDPcnL5369K",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Login or Register with Teampage below:",
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"teampage"
+							],
+							"title": "Account",
+							"type": "object"
+						},
+						"id": {
+							"order": 1,
+							"showIf": {
+								"account": {
+									"op": "==",
+									"value": "never_show_id"
+								}
+							},
+							"title": "Teampage ID",
+							"type": "string"
+						},
+						"noAccountHelp": {
+							"helpvalue": "<div class=\"message info\"><p>Go to your Teampage dashboard to add/edit your team members.</p><a href=\"https://teampa.ge/dashboard\" class=\"button primary more\" target=\"_blank\">Teampage Dashboard</a></div>",
+							"order": 4,
+							"showIf": {
+								"id": {
+									"op": "!=",
+									"value": null
+								}
+							},
+							"type": "help"
+						},
+						"position": {
+							"default": {
+								"method": "prepend"
+							},
+							"description": "Where to position your Teampage?",
+							"format": "element",
+							"order": 2,
+							"title": "Position",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://teampa.ge/webhook",
+						"events": [
+							"option-change:account",
+							"account-logout"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Teampage."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://teampa.ge/webhook",
+						"events": [
+							"preview",
+							"before-update-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Teampage."
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"manual": true,
+			"releaseNotes": "Support re-ordering of team members.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/uML1dJQKQfmL",
+			"metadata": {
+				"code": {
+					"sourceTag": "uML1dJQKQfmL",
+					"uploadedOn": "2018-05-16T19:44:28.778327662Z"
+				}
+			},
+			"created": "2018-04-30T12:42:56.486171Z",
+			"proposedApp": {
+				"id": "wxDPcnL5369K",
+				"title": "Teampage",
+				"shortDescription": "Effortless team pages for companies.",
+				"longDescription": "### Create the perfect company team page.\n\nHaving a team page is a great way for your company to show that it is proud of its team. With [Teampage](https://teampa.ge/) you can create and maintain one easily. \n\nTeampage features:\n* Intuitive dashboard with an easy interface for **complete team management**.\n* Custom design to **match your existing website** or choose from our beautiful designed templates.\n* Showcase control decide what and how you want to **showcase your employees**.\n* Powerful embed which is optimized for fast loading and easy integration.\n* Helpful smart notifications (tracking LinkedIn changes), missing information flags and more...\n\n\n### Have Teampage empower your company's team page",
+				"instructions": "Getting started with  [Teampage](https://teampa.ge/) is easy! Just follow the steps below.",
+				"alias": "teampage",
+				"orgId": "408836a428b52bbb1dee71137fb3c19e",
+				"icon": "https://images.cloudflareapps.com/T8F02oGISC-0/square-logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/rpp2FqHDq0kv/image-team.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Ymedia Webprojecten B.V.",
+				"tagline": "",
+				"website": "https://teampa.ge/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://teampa.ge/terms",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "hello@teampa.ge",
+				"products": [
+					{
+						"id": "teampage-cloudflare",
+						"title": "Teampage (Special)",
+						"shortDescription": "",
+						"longDescription": "",
+						"visible": false,
+						"price": 1000,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "",
+						"title": "",
+						"shortDescription": "",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"social-and-communication",
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "EJuj3Gi7muue"
+				},
+				"created": "2018-04-30T12:42:56.03348Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "408836a428b52bbb1dee71137fb3c19e",
+				"requestedAt": "2018-05-18T08:29:20.891421973Z",
+				"canceledAt": null,
+				"reviewedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"reviewedAt": "2018-05-23T19:22:34.7016031Z"
+			}
+		},
+		{
+			"tag": "1.1.0",
+			"appId": "wxDPcnL5369K",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"description": "What is your Teampage account?",
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"teampage"
+							],
+							"title": "Account",
+							"type": "object"
+						},
+						"accountHelp": {
+							"helpvalue": "<div class=\"message info\"><p>1. Login or register with a Teampage account.</p></div>",
+							"order": 0,
+							"showIf": {
+								"id": {
+									"op": "==",
+									"value": ""
+								}
+							},
+							"type": "help"
+						},
+						"id": {
+							"order": 2,
+							"showIf": {
+								"account": {
+									"op": "==",
+									"value": "never_show_id"
+								}
+							},
+							"title": "Teampage ID",
+							"type": "string"
+						},
+						"position": {
+							"default": {
+								"method": "prepend"
+							},
+							"description": "Where to position your Teampage?",
+							"format": "element",
+							"order": 4,
+							"title": "Position",
+							"type": "object"
+						},
+						"positionHelp": {
+							"helpvalue": "<div class=\"message info\"><p>2. Choose a position to place your team.</p></div>",
+							"order": 3,
+							"showIf": {
+								"position.selector": {
+									"op": "==",
+									"value": "body"
+								}
+							},
+							"type": "help"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://teampa.ge/webhook",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Teampage (account)."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://teampa.ge/webhook",
+						"events": [
+							"preview",
+							"before-update-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Teampage (preview)."
+						},
+						"authenticate": []
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"manual": true,
+			"releaseNotes": "Support re-ordering of team members. \nIE 11 bugfix support. \nOnboarding flow improved.\nAdd access to teampage dashboard within Cloudflare.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/8Q2Jp5vlrbz1",
+			"metadata": {
+				"code": {
+					"sourceTag": "8Q2Jp5vlrbz1",
+					"uploadedOn": "2018-05-25T09:50:44.935400521Z"
+				}
+			},
+			"created": "2018-05-21T13:37:35.220752Z",
+			"proposedApp": {
+				"id": "wxDPcnL5369K",
+				"title": "Teampage",
+				"shortDescription": "Effortless team pages for companies.",
+				"longDescription": "### Create the perfect company team page.\n\nHaving a team page is a great way for your company to show that it is proud of its team. With [Teampage](https://teampa.ge/) you can create and maintain one easily. \n\nTeampage features:\n* Intuitive dashboard with an easy interface for **complete team management**.\n* Custom design to **match your existing website** or choose from our beautiful designed templates.\n* Decide what and how you want to **showcase your employees**.\n* Powerful embed which is optimized for fast loading and easy integration.\n* Helpful smart notifications (tracking LinkedIn changes), missing information flags and more...\n\n### Have Teampage empower your company's team page",
+				"instructions": "Getting started with  [Teampage](https://teampa.ge/) is easy! Just follow the steps below.",
+				"alias": "teampage",
+				"orgId": "408836a428b52bbb1dee71137fb3c19e",
+				"icon": "https://images.cloudflareapps.com/T8F02oGISC-0/square-logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/rpp2FqHDq0kv/image-team.png",
+					"https://images.cloudflareapps.com/Ado82-Hy_Hn4/teampage-dashboard.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Ymedia Webprojecten B.V.",
+				"tagline": "",
+				"website": "https://teampa.ge/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://teampa.ge/terms",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "hello@teampa.ge",
+				"products": [
+					{
+						"id": "teampage-cloudflare",
+						"title": "Teampage (Special)",
+						"shortDescription": "",
+						"longDescription": "",
+						"visible": false,
+						"price": 1000,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "",
+						"title": "",
+						"shortDescription": "",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"social-and-communication",
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "EJuj3Gi7muue"
+				},
+				"created": "2018-04-30T12:42:56.03348Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "408836a428b52bbb1dee71137fb3c19e",
+				"requestedAt": "2018-05-25T09:54:21.31057799Z",
+				"canceledAt": null,
+				"reviewedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"reviewedAt": "2018-06-12T17:34:45.442552052Z"
+			}
+		},
+		{
+			"tag": "1.1.1",
+			"appId": "wxDPcnL5369K",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"description": "What is your Teampage account?",
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"teampage"
+							],
+							"title": "Account",
+							"type": "object"
+						},
+						"accountHelp": {
+							"helpvalue": "<div class=\"message info\"><p>1. Login or register with a Teampage account.</p></div>",
+							"order": 0,
+							"showIf": {
+								"id": {
+									"op": "==",
+									"value": ""
+								}
+							},
+							"type": "help"
+						},
+						"id": {
+							"order": 2,
+							"showIf": {
+								"account": {
+									"op": "==",
+									"value": "never_show_id"
+								}
+							},
+							"title": "Teampage ID",
+							"type": "string"
+						},
+						"position": {
+							"default": {
+								"method": "prepend"
+							},
+							"description": "Where to position your Teampage?",
+							"format": "element",
+							"order": 4,
+							"title": "Position",
+							"type": "object"
+						},
+						"positionHelp": {
+							"helpvalue": "<div class=\"message info\"><p>2. Choose a position to place your team.</p></div>",
+							"order": 3,
+							"showIf": {
+								"position.selector": {
+									"op": "==",
+									"value": "body"
+								}
+							},
+							"type": "help"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://teampa.ge/webhook",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Teampage (account)."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://teampa.ge/webhook",
+						"events": [
+							"preview",
+							"before-update-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Teampage (preview)."
+						},
+						"authenticate": []
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "Resolved a legacy sorting issue.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/8Q2Jp5vlrbz1",
+			"created": "2018-05-29T10:34:24.514822Z",
+			"proposedApp": {
+				"id": "wxDPcnL5369K",
+				"title": "Teampage",
+				"shortDescription": "Amazing team pages for awesome companies.",
+				"longDescription": "### Create the perfect company team page.\n\nHaving a team page is a great way for your company to show that it is proud of its team. With [Teampage](https://teampa.ge/) you can create and maintain yours easily. \n\nTeampage features:\n* Intuitive dashboard with an easy interface for **complete team management**.\n* Custom design to **match your existing website** or choose from our beautiful designed templates.\n* Decide what and how you want to **showcase your employees**.\n* Powerful embed which is optimized for fast loading and easy integration.\n* Helpful smart notifications (tracking LinkedIn changes), missing information flags and more...\n\n### Have Teampage empower your company's team page",
+				"instructions": "Getting started with  [Teampage](https://teampa.ge/) is easy! Just follow the steps below.",
+				"alias": "teampage",
+				"orgId": "408836a428b52bbb1dee71137fb3c19e",
+				"icon": "https://images.cloudflareapps.com/T8F02oGISC-0/square-logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/vvgA4UD-amg9/image-team.png",
+					"https://images.cloudflareapps.com/Ado82-Hy_Hn4/teampage-dashboard.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Ymedia Webprojecten B.V.",
+				"tagline": "",
+				"website": "https://teampa.ge/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://teampa.ge/terms",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "hello@teampa.ge",
+				"products": [
+					{
+						"id": "teampage-cloudflare",
+						"title": "Teampage (Special)",
+						"shortDescription": "",
+						"longDescription": "",
+						"visible": false,
+						"price": 1000,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "",
+						"title": "",
+						"shortDescription": "",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"social-and-communication",
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "EJuj3Gi7muue"
+				},
+				"created": "2018-04-30T12:42:56.03348Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "408836a428b52bbb1dee71137fb3c19e",
+				"requestedAt": "2018-06-12T18:24:06.014064566Z",
+				"canceledByUserId": "408836a428b52bbb1dee71137fb3c19e",
+				"canceledAt": "2018-06-13T10:23:46.431412451Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.1.2",
+			"appId": "wxDPcnL5369K",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"description": "What is your Teampage account?",
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"teampage"
+							],
+							"title": "Account",
+							"type": "object"
+						},
+						"accountHelp": {
+							"helpvalue": "<div class=\"message info\"><p>👉 Login or register with a Teampage account.</p></div>",
+							"order": 0,
+							"showIf": {
+								"id": {
+									"op": "==",
+									"value": ""
+								}
+							},
+							"type": "help"
+						},
+						"id": {
+							"order": 2,
+							"showIf": {
+								"account": {
+									"op": "==",
+									"value": "never_show_id"
+								}
+							},
+							"title": "Teampage ID",
+							"type": "string"
+						},
+						"position": {
+							"default": {
+								"method": "prepend"
+							},
+							"description": "Where to position your Teampage?",
+							"format": "element",
+							"order": 4,
+							"title": "Position",
+							"type": "object"
+						},
+						"positionHelp": {
+							"helpvalue": "<div class=\"message info\"><p>👉 Choose a position to place your team.</p></div>",
+							"order": 3,
+							"showIf": {
+								"position.selector": {
+									"op": "==",
+									"value": "body"
+								}
+							},
+							"type": "help"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://teampa.ge/webhook",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Teampage (account)."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://teampa.ge/webhook",
+						"events": [
+							"preview",
+							"before-update-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Teampage (preview)."
+						},
+						"authenticate": []
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 2,
+				"downvotes": 0
+			},
+			"releaseNotes": "Resolved a legacy sorting issue.\nRemoved legacy products.\nSite message bar updated.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/fAqr08tsN7lo",
+			"metadata": {
+				"code": {
+					"sourceTag": "fAqr08tsN7lo",
+					"uploadedOn": "2018-06-13T10:23:45.354169573Z"
+				}
+			},
+			"created": "2018-06-13T10:23:44.854377Z",
+			"proposedApp": {
+				"id": "wxDPcnL5369K",
+				"title": "Teampage",
+				"shortDescription": "Amazing team pages for awesome companies.",
+				"longDescription": "### Create the perfect company team page.\n\nHaving a team page is a great way for your company to show that it is proud of its team. With [Teampage](https://teampa.ge/) you can create and maintain yours easily. \n\nTeampage features:\n* Intuitive dashboard with an easy interface for **complete team management**.\n* Custom design to **match your existing website** or choose from our beautiful designed templates.\n* Decide what and how you want to **showcase your employees**.\n* Powerful embed which is optimized for fast loading and easy integration.\n* Helpful smart notifications (tracking LinkedIn changes), missing information flags and more...\n\n### Have Teampage empower your company's team page",
+				"instructions": "Getting started with  [Teampage](https://teampa.ge/) is easy! Just follow the steps below.",
+				"alias": "teampage",
+				"orgId": "408836a428b52bbb1dee71137fb3c19e",
+				"icon": "https://images.cloudflareapps.com/T8F02oGISC-0/square-logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/vvgA4UD-amg9/image-team.png",
+					"https://images.cloudflareapps.com/Ado82-Hy_Hn4/teampage-dashboard.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Ymedia Webprojecten B.V.",
+				"tagline": "",
+				"website": "https://teampa.ge/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://teampa.ge/terms",
+				"privacyPolicyURL": "https://teampa.ge/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "hello@teampa.ge",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication",
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "EJuj3Gi7muue"
+				},
+				"created": "2018-04-30T12:42:56.03348Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "408836a428b52bbb1dee71137fb3c19e",
+				"requestedAt": "2018-06-13T10:23:46.454888862Z",
+				"canceledAt": null,
+				"reviewedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"reviewedAt": "2018-06-15T15:58:25.316745606Z"
+			}
+		},
+		{
+			"tag": "1.1.3",
+			"appId": "wxDPcnL5369K",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"description": "What is your Teampage account?",
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"teampage"
+							],
+							"title": "Account",
+							"type": "object"
+						},
+						"accountHelp": {
+							"helpvalue": "<div class=\"message info\"><p>👉 Login or register with a Teampage account.</p></div>",
+							"order": 0,
+							"showIf": {
+								"id": {
+									"op": "==",
+									"value": ""
+								}
+							},
+							"type": "help"
+						},
+						"id": {
+							"order": 2,
+							"showIf": {
+								"account": {
+									"op": "==",
+									"value": "never_show_id"
+								}
+							},
+							"title": "Teampage ID",
+							"type": "string"
+						},
+						"position": {
+							"default": {
+								"method": "prepend"
+							},
+							"description": "Where to position your Teampage?",
+							"format": "element",
+							"order": 4,
+							"title": "Position",
+							"type": "object"
+						},
+						"positionHelp": {
+							"helpvalue": "<div class=\"message info\"><p>👉 Choose a position to place your team.</p></div>",
+							"order": 3,
+							"showIf": {
+								"position.selector": {
+									"op": "==",
+									"value": "body"
+								}
+							},
+							"type": "help"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://teampa.ge/webhook",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Teampage (account)."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://teampa.ge/webhook",
+						"events": [
+							"preview",
+							"before-update-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Teampage (preview)."
+						},
+						"authenticate": []
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "Support payment via Cloudflare.\nResolved a legacy sorting issue.\nGrouping added.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/HNSdXLeyOfjA",
+			"metadata": {
+				"code": {
+					"sourceTag": "HNSdXLeyOfjA",
+					"uploadedOn": "2018-07-09T09:48:54.803075988Z"
+				}
+			},
+			"created": "2018-06-18T09:39:59.543524Z",
+			"proposedApp": {
+				"id": "wxDPcnL5369K",
+				"title": "Teampage",
+				"shortDescription": "Amazing team pages for awesome companies.",
+				"longDescription": "### Create the perfect company team page.\n\nHaving a team page is a great way for your company to show that it is proud of its team. With [Teampage](https://teampa.ge/) you can create and maintain yours easily. \n\nTeampage features:\n* Intuitive dashboard with an easy interface for **complete team management**.\n* Custom design to **match your existing website** or choose from our beautiful designed templates.\n* Decide what and how you want to **showcase your employees**.\n* Powerful embed which is optimized for fast loading and easy integration.\n* Helpful smart notifications (tracking LinkedIn changes), missing information flags and more...\n\n### Have Teampage empower your company's team page",
+				"instructions": "Getting started with  [Teampage](https://teampa.ge/) is easy! Just follow the steps below.",
+				"alias": "teampage",
+				"orgId": "408836a428b52bbb1dee71137fb3c19e",
+				"icon": "https://images.cloudflareapps.com/T8F02oGISC-0/square-logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/MTIXRsYZJgah/Schermafbeelding%202018-07-02%20om%2021.26.21.png",
+					"https://images.cloudflareapps.com/Ado82-Hy_Hn4/teampage-dashboard.png",
+					"https://images.cloudflareapps.com/vvgA4UD-amg9/image-team.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Ymedia Webprojecten B.V.",
+				"tagline": "",
+				"website": "https://teampa.ge/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://teampa.ge/terms",
+				"privacyPolicyURL": "https://teampa.ge/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "hello@teampa.ge",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication",
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "EJuj3Gi7muue"
+				},
+				"created": "2018-04-30T12:42:56.03348Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "408836a428b52bbb1dee71137fb3c19e",
+				"requestedAt": "2018-07-09T09:48:56.797745351Z",
+				"canceledAt": null,
+				"reviewedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"reviewedAt": "2018-07-09T21:09:50.712075594Z"
+			}
+		},
+		{
+			"tag": "1.1.4",
+			"appId": "wxDPcnL5369K",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"description": "What is your Teampage account?",
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"teampage"
+							],
+							"title": "Account",
+							"type": "object"
+						},
+						"accountHelp": {
+							"helpvalue": "<div class=\"message info\"><p>👉 Login or register with a Teampage account.</p></div>",
+							"order": 0,
+							"showIf": {
+								"id": {
+									"op": "==",
+									"value": ""
+								}
+							},
+							"type": "help"
+						},
+						"id": {
+							"order": 2,
+							"showIf": {
+								"account": {
+									"op": "==",
+									"value": "never_show_id"
+								}
+							},
+							"title": "Teampage ID",
+							"type": "string"
+						},
+						"position": {
+							"default": {
+								"method": "prepend"
+							},
+							"description": "Where to position your Teampage?",
+							"format": "element",
+							"order": 4,
+							"title": "Position",
+							"type": "object"
+						},
+						"positionHelp": {
+							"helpvalue": "<div class=\"message info\"><p>👉 Choose a position to place your team.</p></div>",
+							"order": 3,
+							"showIf": {
+								"position.selector": {
+									"op": "==",
+									"value": "body"
+								}
+							},
+							"type": "help"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://teampa.ge/webhook",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Teampage (account)."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://teampa.ge/webhook",
+						"events": [
+							"preview",
+							"before-update-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Teampage (preview)."
+						},
+						"authenticate": []
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.88,
+				"upvotes": 7,
+				"downvotes": 1
+			},
+			"releaseNotes": "Updated app's categories",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/HNSdXLeyOfjA",
+			"created": "2018-11-13T18:52:19.844885Z",
+			"proposedApp": {
+				"id": "wxDPcnL5369K",
+				"title": "Teampage",
+				"shortDescription": "Amazing team pages for awesome companies.",
+				"longDescription": "### Create the perfect company team page.\n\nHaving a team page is a great way for your company to show that it is proud of its team. With [Teampage](https://teampa.ge/) you can create and maintain yours easily. \n\nTeampage features:\n* Intuitive dashboard with an easy interface for **complete team management**.\n* Custom design to **match your existing website** or choose from our beautiful designed templates.\n* Decide what and how you want to **showcase your employees**.\n* Powerful embed which is optimized for fast loading and easy integration.\n* Helpful smart notifications (tracking LinkedIn changes), missing information flags and more...\n\n### Have Teampage empower your company's team page",
+				"instructions": "Getting started with  [Teampage](https://teampa.ge/) is easy! Just follow the steps below.",
+				"alias": "teampage",
+				"orgId": "408836a428b52bbb1dee71137fb3c19e",
+				"icon": "https://images.cloudflareapps.com/T8F02oGISC-0/square-logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/MTIXRsYZJgah/Schermafbeelding%202018-07-02%20om%2021.26.21.png",
+					"https://images.cloudflareapps.com/Ado82-Hy_Hn4/teampage-dashboard.png",
+					"https://images.cloudflareapps.com/vvgA4UD-amg9/image-team.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Ymedia Webprojecten B.V.",
+				"tagline": "",
+				"website": "https://teampa.ge/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://teampa.ge/terms",
+				"privacyPolicyURL": "https://teampa.ge/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "hello@teampa.ge",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "EJuj3Gi7muue"
+				},
+				"created": "2018-04-30T12:42:56.03348Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-11-13T18:52:25.33439805Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-11-14T17:48:05.216820592Z"
+			}
+		}
+	]
+}

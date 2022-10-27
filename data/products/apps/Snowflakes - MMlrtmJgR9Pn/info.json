@@ -1,0 +1,159 @@
+{
+	"id": "MMlrtmJgR9Pn",
+	"title": "Snowflakes",
+	"shortDescription": "Snowflakes for your Website",
+	"longDescription": "Snowflakes for your Website",
+	"instructions": "1. Select style\n2. Install",
+	"alias": "snowflakes-github",
+	"orgId": "2cd5ec1bfe586ebb38e1fe4cfd97cbda",
+	"icon": "",
+	"screenshots": [],
+	"tileImage": "",
+	"featuredAppImage": "",
+	"author": "David H.",
+	"tagline": "",
+	"website": "https://davids-appstudio.tk",
+	"sourceURL": "https://github.com/DavidHDJ/snowflakes",
+	"termsOfServiceURL": "https://davids-appstudio.tk/Nutzungsbestimmungen.php",
+	"privacyPolicyURL": "https://davids-appstudio.tk/Datenschutz.php",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.0",
+	"infoVersion": "1.0.0",
+	"points": 0,
+	"supportEmail": "david@scoplanner.tk",
+	"products": [],
+	"categoryIds": [],
+	"agreements": {
+		"tos": {
+			"userId": "2cd5ec1bfe586ebb38e1fe4cfd97cbda",
+			"created": "2019-12-09T20:13:24.101898441Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "bHymhMisfxmk"
+	},
+	"created": "2019-12-09T20:13:21.264873Z",
+	"org": {
+		"id": "2cd5ec1bfe586ebb38e1fe4cfd97cbda",
+		"title": "",
+		"username": "2cd5ec1bfe586ebb38e1fe4cfd97cbda",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "MMlrtmJgR9Pn",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "src/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"falke": {
+							"default": "white",
+							"description": "Selcet \"Blue\" or \"White\" to select the flake style.",
+							"enum": [
+								"white",
+								"blue"
+							],
+							"enumNames": {
+								"blue": "Blue",
+								"white": "White"
+							},
+							"order": 1,
+							"title": "Flakes",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.5,
+				"upvotes": 5,
+				"downvotes": 5
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/bHymhMisfxmk",
+			"metadata": {
+				"code": {
+					"sourceTag": "bHymhMisfxmk",
+					"uploadedOn": "2019-12-09T20:13:22.396980127Z"
+				}
+			},
+			"created": "2019-12-09T20:13:21.833602Z",
+			"proposedApp": {
+				"id": "MMlrtmJgR9Pn",
+				"title": "Snowflakes",
+				"shortDescription": "Snowflakes for your Website",
+				"longDescription": "Snowflakes for your Website",
+				"instructions": "1. Select style\n2. Install",
+				"alias": "snowflakes-github",
+				"orgId": "2cd5ec1bfe586ebb38e1fe4cfd97cbda",
+				"icon": "",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "David H.",
+				"tagline": "",
+				"website": "https://davids-appstudio.tk",
+				"sourceURL": "https://github.com/DavidHDJ/snowflakes",
+				"termsOfServiceURL": "https://davids-appstudio.tk/Nutzungsbestimmungen.php",
+				"privacyPolicyURL": "https://davids-appstudio.tk/Datenschutz.php",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "david@scoplanner.tk",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "bHymhMisfxmk"
+				},
+				"created": "2019-12-09T20:13:21.264873Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "2cd5ec1bfe586ebb38e1fe4cfd97cbda",
+				"requestedAt": "2019-12-09T20:13:24.087004509Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-12-13T16:39:40.793241564Z"
+			}
+		}
+	]
+}

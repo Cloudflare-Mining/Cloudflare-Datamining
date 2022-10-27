@@ -1,0 +1,1175 @@
+{
+	"id": "_A5PHlLnBjyS",
+	"title": "Geo Redirect Pro",
+	"shortDescription": "Redirect visitors by country, state & city",
+	"longDescription": "[Geo Targetly's][2] [Geo Redirect][3] app allows your website to automatically redirect visitors by their country, state & city. You can also choose to display a popup or announcment bar to prompt visitors to get redirected.\n\nFeatures:\n- Country, state & city redirection\n- Automatic redirection\n- Popup/announcment bar redirection\n- Countdown timer with auto redirect\n- Remember visitor's choice\n- IP/referrer whitelisting\n- Custom URL mapping\n- Passing page paths & query strings\n- See more features at: [Geo Targetly][1] \n- See docs at : [Geo Targetly][4] \n\n[1]: https://geotargetly.com/geo-redirect\n[2]: https://geotargetly.com\n[3]: https://geotargetly.com/geo-redirect\n[4]: https://geotargetly.com/docs/geo-redirect",
+	"instructions": "",
+	"alias": "geo-redirect",
+	"orgId": "267067711d599eba08fed55067544f6a",
+	"icon": "https://images.cloudflareapps.com/5pr2t-EArF8O/geotargetly_logo.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/t4v0UaNFNvNY/cloudflare-geo-redirect-2.png",
+		"https://images.cloudflareapps.com/t4v0UaNFNvNY/cloudflare-geo-redirect-3.png",
+		"https://images.cloudflareapps.com/t4v0UaNFNvNY/cloudflare-geo-redirect-4.png",
+		"https://images.cloudflareapps.com/t4v0UaNFNvNY/cloudflare-geo-redirect-1.png",
+		"https://images.cloudflareapps.com/t4v0UaNFNvNY/cloudflare-geo-redirect-5.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/K8TK2JoDFHyX/geotargetly.png",
+	"featuredAppImage": "",
+	"author": "Geo Targetly",
+	"tagline": "",
+	"website": "https://geotargetly.com/geo-redirect",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://geotargetly.com/saas-agreement",
+	"privacyPolicyURL": "https://geotargetly.com/privacy-policy",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.4.0",
+	"infoVersion": "1.4.0",
+	"points": 0,
+	"supportEmail": "contact@geotargetly.com",
+	"products": [],
+	"categoryIds": [],
+	"agreements": {
+		"tos": {
+			"userId": "267067711d599eba08fed55067544f6a",
+			"created": "2021-02-02T02:29:48.015489305Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "2aEoEahEtLym"
+	},
+	"created": "2021-02-02T02:27:00.288005Z",
+	"org": {
+		"id": "267067711d599eba08fed55067544f6a",
+		"title": "",
+		"username": "267067711d599eba08fed55067544f6a",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "_A5PHlLnBjyS",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./src/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"georedirecthelp1": {
+							"helpvalue": "This app helps to easily install Geo Targetly's <a href='https://geotargetly.com/geo-redirect' target='_blank'>Geo Redirect</a> product into your website.",
+							"order": 0,
+							"type": "help"
+						},
+						"georedirecthelp2": {
+							"helpvalue": "You will need to signup for an account at <a href='https://dashboard.geotargetly.com/register' target='_blank'>geotargetly.com</a> and setup a Geo Redirect first.",
+							"order": 1,
+							"type": "help"
+						},
+						"georedirecthelp3": {
+							"helpvalue": "<hr>",
+							"order": 2,
+							"type": "help"
+						},
+						"georedirecthelp4": {
+							"helpvalue": "<em>Setup Instructions:<em>",
+							"order": 3,
+							"type": "help"
+						},
+						"georedirecthelp5": {
+							"helpvalue": "1. Signup for an account at <a href='https://dashboard.geotargetly.com/register' target='_blank'>geotargetly.com</a>",
+							"order": 4,
+							"type": "help"
+						},
+						"georedirecthelp6": {
+							"helpvalue": "2. Create a Geo Redirect service using this <a href='https://geotargetly.com/docs/geo-redirect#quick-start-guide' target='_blank'>quick start guide</a>",
+							"order": 5,
+							"type": "help"
+						},
+						"georedirecthelp7": {
+							"helpvalue": "3. Paste the Geo Redirect ID provided in the setup below",
+							"order": 6,
+							"type": "help"
+						},
+						"georedirecthelp8": {
+							"helpvalue": "<hr>",
+							"order": 7,
+							"type": "help"
+						},
+						"georedirectid": {
+							"default": "",
+							"description": "Unique ID provided in the Geo Redirect setup",
+							"order": 10,
+							"required": true,
+							"title": "Geo Redirect ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"manual": true,
+			"releaseNotes": "First release as a replacement for (geo-redirect)",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/2aEoEahEtLym",
+			"metadata": {
+				"code": {
+					"sourceTag": "2aEoEahEtLym",
+					"uploadedOn": "2021-02-02T02:27:01.560860485Z"
+				}
+			},
+			"created": "2021-02-02T02:27:00.920651Z",
+			"proposedApp": {
+				"id": "_A5PHlLnBjyS",
+				"title": "Geo Redirect Pro",
+				"shortDescription": "Redirect visitors by country, state & city",
+				"longDescription": "[Geo Targetly's][2] [Geo Redirect][3] app allows your website to automatically redirect visitors by their country, state & city. You can also choose to display a popup or announcment bar to prompt visitors to get redirected.\n\nFeatures:\n- Country, state & city redirection\n- Automatic redirection\n- Popup/announcment bar redirection\n- Countdown timer with auto redirect\n- Remember visitor's choice\n- IP/referrer whitelisting\n- Custom URL mapping\n- Passing page paths & query strings\n- See more features at: [Geo Targetly][1] \n\n[1]: https://geotargetly.com/geo-redirect\n[2]: https://geotargetly.com\n[3]: https://geotargetly.com/geo-redirect",
+				"instructions": "",
+				"alias": "geo-redirect-pro",
+				"orgId": "267067711d599eba08fed55067544f6a",
+				"icon": "https://images.cloudflareapps.com/5pr2t-EArF8O/geotargetly_logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/t4v0UaNFNvNY/cloudflare-geo-redirect-2.png",
+					"https://images.cloudflareapps.com/t4v0UaNFNvNY/cloudflare-geo-redirect-3.png",
+					"https://images.cloudflareapps.com/t4v0UaNFNvNY/cloudflare-geo-redirect-4.png",
+					"https://images.cloudflareapps.com/t4v0UaNFNvNY/cloudflare-geo-redirect-1.png",
+					"https://images.cloudflareapps.com/t4v0UaNFNvNY/cloudflare-geo-redirect-5.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/K8TK2JoDFHyX/geotargetly.png",
+				"featuredAppImage": "",
+				"author": "Geo Targetly",
+				"tagline": "",
+				"website": "https://geotargetly.com/geo-redirect",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://geotargetly.com/saas-agreement",
+				"privacyPolicyURL": "https://geotargetly.com/privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "contact@geotargetly.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "2aEoEahEtLym"
+				},
+				"created": "2021-02-02T02:27:00.288005Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "267067711d599eba08fed55067544f6a",
+				"requestedAt": "2021-02-02T02:29:48.002902511Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2021-02-04T16:46:18.249844255Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "_A5PHlLnBjyS",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./src/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"georedirecthelp1": {
+							"helpvalue": "This app helps to easily install Geo Targetly's <a href='https://geotargetly.com/geo-redirect' target='_blank'>Geo Redirect</a> product into your website.",
+							"order": 0,
+							"type": "help"
+						},
+						"georedirecthelp2": {
+							"helpvalue": "You will need to signup for an account at <a href='https://dashboard.geotargetly.com/register' target='_blank'>geotargetly.com</a> and setup a Geo Redirect first.",
+							"order": 1,
+							"type": "help"
+						},
+						"georedirecthelp3": {
+							"helpvalue": "<hr>",
+							"order": 2,
+							"type": "help"
+						},
+						"georedirecthelp4": {
+							"helpvalue": "<em>Setup Instructions:<em>",
+							"order": 3,
+							"type": "help"
+						},
+						"georedirecthelp5": {
+							"helpvalue": "1. Signup for an account at <a href='https://dashboard.geotargetly.com/register' target='_blank'>geotargetly.com</a>",
+							"order": 4,
+							"type": "help"
+						},
+						"georedirecthelp6": {
+							"helpvalue": "2. Create a Geo Redirect service using this <a href='https://geotargetly.com/docs/geo-redirect#quick-start-guide' target='_blank'>quick start guide</a>",
+							"order": 5,
+							"type": "help"
+						},
+						"georedirecthelp7": {
+							"helpvalue": "3. Paste the Geo Redirect ID provided in the setup below",
+							"order": 6,
+							"type": "help"
+						},
+						"georedirecthelp8": {
+							"helpvalue": "<hr>",
+							"order": 7,
+							"type": "help"
+						},
+						"georedirectid": {
+							"default": "",
+							"description": "Unique ID provided in the Geo Redirect setup",
+							"order": 10,
+							"required": true,
+							"title": "Geo Redirect ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"manual": true,
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/2aEoEahEtLym",
+			"created": "2021-02-19T22:32:50.964788Z",
+			"proposedApp": {
+				"id": "_A5PHlLnBjyS",
+				"title": "Geo Redirect Pro",
+				"shortDescription": "Redirect visitors by country, state & city",
+				"longDescription": "[Geo Targetly's][2] [Geo Redirect][3] app allows your website to automatically redirect visitors by their country, state & city. You can also choose to display a popup or announcment bar to prompt visitors to get redirected.\n\nFeatures:\n- Country, state & city redirection\n- Automatic redirection\n- Popup/announcment bar redirection\n- Countdown timer with auto redirect\n- Remember visitor's choice\n- IP/referrer whitelisting\n- Custom URL mapping\n- Passing page paths & query strings\n- See more features at: [Geo Targetly][1] \n\n[1]: https://geotargetly.com/geo-redirect\n[2]: https://geotargetly.com\n[3]: https://geotargetly.com/geo-redirect",
+				"instructions": "",
+				"alias": "geo-redirect",
+				"orgId": "267067711d599eba08fed55067544f6a",
+				"icon": "https://images.cloudflareapps.com/5pr2t-EArF8O/geotargetly_logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/t4v0UaNFNvNY/cloudflare-geo-redirect-2.png",
+					"https://images.cloudflareapps.com/t4v0UaNFNvNY/cloudflare-geo-redirect-3.png",
+					"https://images.cloudflareapps.com/t4v0UaNFNvNY/cloudflare-geo-redirect-4.png",
+					"https://images.cloudflareapps.com/t4v0UaNFNvNY/cloudflare-geo-redirect-1.png",
+					"https://images.cloudflareapps.com/t4v0UaNFNvNY/cloudflare-geo-redirect-5.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/K8TK2JoDFHyX/geotargetly.png",
+				"featuredAppImage": "",
+				"author": "Geo Targetly",
+				"tagline": "",
+				"website": "https://geotargetly.com/geo-redirect",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://geotargetly.com/saas-agreement",
+				"privacyPolicyURL": "https://geotargetly.com/privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "contact@geotargetly.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "2aEoEahEtLym"
+				},
+				"created": "2021-02-02T02:27:00.288005Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2021-02-19T22:32:51.281930973Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2021-02-19T22:33:05.853196755Z"
+			}
+		},
+		{
+			"tag": "1.1.0",
+			"appId": "_A5PHlLnBjyS",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./src/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"georedirecthelp1": {
+							"helpvalue": "This app helps to easily install Geo Targetly's <a href='https://geotargetly.com/geo-redirect' target='_blank'>Geo Redirect</a> product into your website.",
+							"order": 0,
+							"type": "help"
+						},
+						"georedirecthelp2": {
+							"helpvalue": "You will need to signup for an account at <a href='https://dashboard.geotargetly.com/register' target='_blank'>geotargetly.com</a> and setup a Geo Redirect first.",
+							"order": 1,
+							"type": "help"
+						},
+						"georedirecthelp3": {
+							"helpvalue": "<hr>",
+							"order": 2,
+							"type": "help"
+						},
+						"georedirecthelp4": {
+							"helpvalue": "<em>Setup Instructions:<em>",
+							"order": 3,
+							"type": "help"
+						},
+						"georedirecthelp5": {
+							"helpvalue": "1. Signup for an account at <a href='https://dashboard.geotargetly.com/register' target='_blank'>geotargetly.com</a>",
+							"order": 4,
+							"type": "help"
+						},
+						"georedirecthelp6": {
+							"helpvalue": "2. Create a Geo Redirect service using this <a href='https://geotargetly.com/docs/geo-redirect#quick-start-guide' target='_blank'>quick start guide</a>",
+							"order": 5,
+							"type": "help"
+						},
+						"georedirecthelp7": {
+							"helpvalue": "3. Paste the Geo Redirect ID provided in the setup below",
+							"order": 6,
+							"type": "help"
+						},
+						"georedirecthelp8": {
+							"helpvalue": "<hr>",
+							"order": 7,
+							"type": "help"
+						},
+						"georedirectid": {
+							"default": "",
+							"description": "Unique ID provided in the Geo Redirect setup",
+							"order": 10,
+							"required": true,
+							"title": "Geo Redirect ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"manual": true,
+			"releaseNotes": "Updated domain",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/Z9JUNG9pG3Ua",
+			"metadata": {
+				"code": {
+					"sourceTag": "Z9JUNG9pG3Ua",
+					"uploadedOn": "2021-10-07T02:49:38.170247521Z"
+				}
+			},
+			"created": "2021-10-07T02:49:36.047176Z",
+			"proposedApp": {
+				"id": "_A5PHlLnBjyS",
+				"title": "Geo Redirect Pro",
+				"shortDescription": "Redirect visitors by country, state & city",
+				"longDescription": "[Geo Targetly's][2] [Geo Redirect][3] app allows your website to automatically redirect visitors by their country, state & city. You can also choose to display a popup or announcment bar to prompt visitors to get redirected.\n\nFeatures:\n- Country, state & city redirection\n- Automatic redirection\n- Popup/announcment bar redirection\n- Countdown timer with auto redirect\n- Remember visitor's choice\n- IP/referrer whitelisting\n- Custom URL mapping\n- Passing page paths & query strings\n- See more features at: [Geo Targetly][1] \n- See docs at : [Geo Targetly][4] \n\n[1]: https://geotargetly.com/geo-redirect\n[2]: https://geotargetly.com\n[3]: https://geotargetly.com/geo-redirect\n[4]: https://geotargetly.com/docs/geo-redirect",
+				"instructions": "",
+				"alias": "geo-redirect",
+				"orgId": "267067711d599eba08fed55067544f6a",
+				"icon": "https://images.cloudflareapps.com/5pr2t-EArF8O/geotargetly_logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/t4v0UaNFNvNY/cloudflare-geo-redirect-2.png",
+					"https://images.cloudflareapps.com/t4v0UaNFNvNY/cloudflare-geo-redirect-3.png",
+					"https://images.cloudflareapps.com/t4v0UaNFNvNY/cloudflare-geo-redirect-4.png",
+					"https://images.cloudflareapps.com/t4v0UaNFNvNY/cloudflare-geo-redirect-1.png",
+					"https://images.cloudflareapps.com/t4v0UaNFNvNY/cloudflare-geo-redirect-5.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/K8TK2JoDFHyX/geotargetly.png",
+				"featuredAppImage": "",
+				"author": "Geo Targetly",
+				"tagline": "",
+				"website": "https://geotargetly.com/geo-redirect",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://geotargetly.com/saas-agreement",
+				"privacyPolicyURL": "https://geotargetly.com/privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "contact@geotargetly.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "2aEoEahEtLym"
+				},
+				"created": "2021-02-02T02:27:00.288005Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "267067711d599eba08fed55067544f6a",
+				"requestedAt": "2021-10-07T02:49:39.932167398Z",
+				"canceledByUserId": "267067711d599eba08fed55067544f6a",
+				"canceledAt": "2021-10-08T03:27:17.673661152Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.2.0",
+			"appId": "_A5PHlLnBjyS",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./src/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"georedirecthelp1": {
+							"helpvalue": "This app helps to easily install Geo Targetly's <a href='https://geotargetly.com/geo-redirect' target='_blank'>Geo Redirect</a> product into your website.",
+							"order": 0,
+							"type": "help"
+						},
+						"georedirecthelp2": {
+							"helpvalue": "You will need to signup for an account at <a href='https://dashboard.geotargetly.com/register' target='_blank'>geotargetly.com</a> and setup a Geo Redirect first.",
+							"order": 1,
+							"type": "help"
+						},
+						"georedirecthelp3": {
+							"helpvalue": "<hr>",
+							"order": 2,
+							"type": "help"
+						},
+						"georedirecthelp4": {
+							"helpvalue": "<em>Setup Instructions:<em>",
+							"order": 3,
+							"type": "help"
+						},
+						"georedirecthelp5": {
+							"helpvalue": "1. Signup for an account at <a href='https://dashboard.geotargetly.com/register' target='_blank'>geotargetly.com</a>",
+							"order": 4,
+							"type": "help"
+						},
+						"georedirecthelp6": {
+							"helpvalue": "2. Create a Geo Redirect service using this <a href='https://geotargetly.com/docs/geo-redirect#quick-start-guide' target='_blank'>quick start guide</a>",
+							"order": 5,
+							"type": "help"
+						},
+						"georedirecthelp7": {
+							"helpvalue": "3. Paste the Geo Redirect ID provided in the setup below",
+							"order": 6,
+							"type": "help"
+						},
+						"georedirecthelp8": {
+							"helpvalue": "<hr>",
+							"order": 7,
+							"type": "help"
+						},
+						"georedirectid": {
+							"default": "",
+							"description": "Unique ID provided in the Geo Redirect setup",
+							"order": 10,
+							"required": true,
+							"title": "Geo Redirect ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Updated domain",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/o3PFyAqLPR2G",
+			"metadata": {
+				"code": {
+					"sourceTag": "o3PFyAqLPR2G",
+					"uploadedOn": "2021-10-08T03:27:16.684972361Z"
+				}
+			},
+			"created": "2021-10-08T03:27:16.110071Z",
+			"proposedApp": {
+				"id": "_A5PHlLnBjyS",
+				"title": "Geo Redirect Pro",
+				"shortDescription": "Redirect visitors by country, state & city",
+				"longDescription": "[Geo Targetly's][2] [Geo Redirect][3] app allows your website to automatically redirect visitors by their country, state & city. You can also choose to display a popup or announcment bar to prompt visitors to get redirected.\n\nFeatures:\n- Country, state & city redirection\n- Automatic redirection\n- Popup/announcment bar redirection\n- Countdown timer with auto redirect\n- Remember visitor's choice\n- IP/referrer whitelisting\n- Custom URL mapping\n- Passing page paths & query strings\n- See more features at: [Geo Targetly][1] \n- See docs at : [Geo Targetly][4] \n\n[1]: https://geotargetly.com/geo-redirect\n[2]: https://geotargetly.com\n[3]: https://geotargetly.com/geo-redirect\n[4]: https://geotargetly.com/docs/geo-redirect",
+				"instructions": "",
+				"alias": "geo-redirect",
+				"orgId": "267067711d599eba08fed55067544f6a",
+				"icon": "https://images.cloudflareapps.com/5pr2t-EArF8O/geotargetly_logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/t4v0UaNFNvNY/cloudflare-geo-redirect-2.png",
+					"https://images.cloudflareapps.com/t4v0UaNFNvNY/cloudflare-geo-redirect-3.png",
+					"https://images.cloudflareapps.com/t4v0UaNFNvNY/cloudflare-geo-redirect-4.png",
+					"https://images.cloudflareapps.com/t4v0UaNFNvNY/cloudflare-geo-redirect-1.png",
+					"https://images.cloudflareapps.com/t4v0UaNFNvNY/cloudflare-geo-redirect-5.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/K8TK2JoDFHyX/geotargetly.png",
+				"featuredAppImage": "",
+				"author": "Geo Targetly",
+				"tagline": "",
+				"website": "https://geotargetly.com/geo-redirect",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://geotargetly.com/saas-agreement",
+				"privacyPolicyURL": "https://geotargetly.com/privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "contact@geotargetly.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "2aEoEahEtLym"
+				},
+				"created": "2021-02-02T02:27:00.288005Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "267067711d599eba08fed55067544f6a",
+				"requestedAt": "2021-10-08T03:27:17.681774449Z",
+				"canceledByUserId": "267067711d599eba08fed55067544f6a",
+				"canceledAt": "2021-10-20T03:48:40.915829992Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.2.1",
+			"appId": "_A5PHlLnBjyS",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./src/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"georedirecthelp1": {
+							"helpvalue": "This app allows you to easily install Geo Targetly's <a href='https://geotargetly.com/geo-redirect' target='_blank'>Geo Redirect</a> product into your website.",
+							"order": 0,
+							"type": "help"
+						},
+						"georedirecthelp2": {
+							"helpvalue": "You will need to signup for an account at <a href='https://dashboard.geotargetly.com/register' target='_blank'>geotargetly.com</a> and setup a Geo Redirect first.",
+							"order": 1,
+							"type": "help"
+						},
+						"georedirecthelp3": {
+							"helpvalue": "<hr>",
+							"order": 2,
+							"type": "help"
+						},
+						"georedirecthelp4": {
+							"helpvalue": "<em>Setup Instructions:<em>",
+							"order": 3,
+							"type": "help"
+						},
+						"georedirecthelp5": {
+							"helpvalue": "1. Signup for an account at <a href='https://dashboard.geotargetly.com/register' target='_blank'>geotargetly.com</a>",
+							"order": 4,
+							"type": "help"
+						},
+						"georedirecthelp6": {
+							"helpvalue": "2. Create a Geo Redirect service using this <a href='https://geotargetly.com/docs/geo-redirect#quick-start-guide' target='_blank'>quick start guide</a>",
+							"order": 5,
+							"type": "help"
+						},
+						"georedirecthelp7": {
+							"helpvalue": "3. Paste the Geo Redirect ID provided in the setup below",
+							"order": 6,
+							"type": "help"
+						},
+						"georedirecthelp8": {
+							"helpvalue": "<hr>",
+							"order": 7,
+							"type": "help"
+						},
+						"georedirectid": {
+							"default": "",
+							"description": "Unique ID provided in the Geo Redirect setup",
+							"order": 10,
+							"required": true,
+							"title": "Geo Redirect ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Updated domain",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/DyrXXuXB9T8C",
+			"metadata": {
+				"code": {
+					"sourceTag": "DyrXXuXB9T8C",
+					"uploadedOn": "2021-10-20T03:48:39.684001578Z"
+				}
+			},
+			"created": "2021-10-20T03:48:39.028675Z",
+			"proposedApp": {
+				"id": "_A5PHlLnBjyS",
+				"title": "Geo Redirect Pro",
+				"shortDescription": "Redirect visitors by country, state & city",
+				"longDescription": "[Geo Targetly's][2] [Geo Redirect][3] app allows your website to automatically redirect visitors by their country, state & city. You can also choose to display a popup or announcment bar to prompt visitors to get redirected.\n\nFeatures:\n- Country, state & city redirection\n- Automatic redirection\n- Popup/announcment bar redirection\n- Countdown timer with auto redirect\n- Remember visitor's choice\n- IP/referrer whitelisting\n- Custom URL mapping\n- Passing page paths & query strings\n- See more features at: [Geo Targetly][1] \n- See docs at : [Geo Targetly][4] \n\n[1]: https://geotargetly.com/geo-redirect\n[2]: https://geotargetly.com\n[3]: https://geotargetly.com/geo-redirect\n[4]: https://geotargetly.com/docs/geo-redirect",
+				"instructions": "",
+				"alias": "geo-redirect",
+				"orgId": "267067711d599eba08fed55067544f6a",
+				"icon": "https://images.cloudflareapps.com/5pr2t-EArF8O/geotargetly_logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/t4v0UaNFNvNY/cloudflare-geo-redirect-2.png",
+					"https://images.cloudflareapps.com/t4v0UaNFNvNY/cloudflare-geo-redirect-3.png",
+					"https://images.cloudflareapps.com/t4v0UaNFNvNY/cloudflare-geo-redirect-4.png",
+					"https://images.cloudflareapps.com/t4v0UaNFNvNY/cloudflare-geo-redirect-1.png",
+					"https://images.cloudflareapps.com/t4v0UaNFNvNY/cloudflare-geo-redirect-5.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/K8TK2JoDFHyX/geotargetly.png",
+				"featuredAppImage": "",
+				"author": "Geo Targetly",
+				"tagline": "",
+				"website": "https://geotargetly.com/geo-redirect",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://geotargetly.com/saas-agreement",
+				"privacyPolicyURL": "https://geotargetly.com/privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "contact@geotargetly.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "2aEoEahEtLym"
+				},
+				"created": "2021-02-02T02:27:00.288005Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "267067711d599eba08fed55067544f6a",
+				"requestedAt": "2021-10-20T03:48:40.923532666Z",
+				"canceledByUserId": "267067711d599eba08fed55067544f6a",
+				"canceledAt": "2021-10-20T03:49:56.974289585Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.2.2",
+			"appId": "_A5PHlLnBjyS",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./src/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"georedirecthelp1": {
+							"helpvalue": "This app allows you to easily install Geo Targetly's <a href='https://geotargetly.com/geo-redirect' target='_blank'>Geo Redirect</a> product into your website.",
+							"order": 0,
+							"type": "help"
+						},
+						"georedirecthelp2": {
+							"helpvalue": "You will need to signup for an account at <a href='https://dashboard.geotargetly.com/register' target='_blank'>geotargetly.com</a> and setup a Geo Redirect first.",
+							"order": 1,
+							"type": "help"
+						},
+						"georedirecthelp3": {
+							"helpvalue": "<hr>",
+							"order": 2,
+							"type": "help"
+						},
+						"georedirecthelp4": {
+							"helpvalue": "<em>Setup Instructions:<em>",
+							"order": 3,
+							"type": "help"
+						},
+						"georedirecthelp5": {
+							"helpvalue": "1. Signup for an account at <a href='https://dashboard.geotargetly.com/register' target='_blank'>geotargetly.com</a>",
+							"order": 4,
+							"type": "help"
+						},
+						"georedirecthelp6": {
+							"helpvalue": "2. Create a Geo Redirect service using this <a href='https://geotargetly.com/docs/geo-redirect#quick-start-guide' target='_blank'>quick start guide</a>",
+							"order": 5,
+							"type": "help"
+						},
+						"georedirecthelp7": {
+							"helpvalue": "3. Paste the Geo Redirect ID provided in the setup below",
+							"order": 6,
+							"type": "help"
+						},
+						"georedirecthelp8": {
+							"helpvalue": "<hr>",
+							"order": 7,
+							"type": "help"
+						},
+						"georedirectid": {
+							"default": "",
+							"description": "Unique ID provided in the Geo Redirect setup",
+							"order": 10,
+							"required": true,
+							"title": "Geo Redirect ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Updated domain",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/DyrXXuXB9T8C",
+			"created": "2021-10-20T03:49:56.317063Z",
+			"proposedApp": {
+				"id": "_A5PHlLnBjyS",
+				"title": "Geo Redirect Pro",
+				"shortDescription": "Redirect visitors by country, state & city",
+				"longDescription": "[Geo Targetly's][2] [Geo Redirect][3] app allows your website to automatically redirect visitors by their country, state & city. You can also choose to display a popup or announcment bar to prompt visitors to get redirected.\n\nFeatures:\n- Country, state & city redirection\n- Automatic redirection\n- Popup/announcment bar redirection\n- Countdown timer with auto redirect\n- Remember visitor's choice\n- IP/referrer whitelisting\n- Custom URL mapping\n- Passing page paths & query strings\n- See more features at: [Geo Targetly][1] \n- See docs at : [Geo Targetly][4] \n\n[1]: https://geotargetly.com/geo-redirect\n[2]: https://geotargetly.com\n[3]: https://geotargetly.com/geo-redirect\n[4]: https://geotargetly.com/docs/geo-redirect",
+				"instructions": "",
+				"alias": "geo-redirect",
+				"orgId": "267067711d599eba08fed55067544f6a",
+				"icon": "https://images.cloudflareapps.com/5pr2t-EArF8O/geotargetly_logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/t4v0UaNFNvNY/cloudflare-geo-redirect-2.png",
+					"https://images.cloudflareapps.com/t4v0UaNFNvNY/cloudflare-geo-redirect-3.png",
+					"https://images.cloudflareapps.com/t4v0UaNFNvNY/cloudflare-geo-redirect-4.png",
+					"https://images.cloudflareapps.com/t4v0UaNFNvNY/cloudflare-geo-redirect-1.png",
+					"https://images.cloudflareapps.com/t4v0UaNFNvNY/cloudflare-geo-redirect-5.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/K8TK2JoDFHyX/geotargetly.png",
+				"featuredAppImage": "",
+				"author": "Geo Targetly",
+				"tagline": "",
+				"website": "https://geotargetly.com/geo-redirect",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://geotargetly.com/saas-agreement",
+				"privacyPolicyURL": "https://geotargetly.com/privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "contact@geotargetly.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "2aEoEahEtLym"
+				},
+				"created": "2021-02-02T02:27:00.288005Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "267067711d599eba08fed55067544f6a",
+				"requestedAt": "2021-10-20T03:49:56.97957242Z",
+				"canceledByUserId": "267067711d599eba08fed55067544f6a",
+				"canceledAt": "2021-11-01T03:50:33.836739255Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.3.0",
+			"appId": "_A5PHlLnBjyS",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./src/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"georedirecthelp1": {
+							"helpvalue": "This app allows you to easily install Geo Targetly's <a href='https://geotargetly.com/geo-redirect' target='_blank'>Geo Redirect</a> product into your website.",
+							"order": 0,
+							"type": "help"
+						},
+						"georedirecthelp2": {
+							"helpvalue": "You will need to signup for an account at <a href='https://dashboard.geotargetly.com/register' target='_blank'>geotargetly.com</a> and setup a Geo Redirect first.",
+							"order": 1,
+							"type": "help"
+						},
+						"georedirecthelp3": {
+							"helpvalue": "<hr>",
+							"order": 2,
+							"type": "help"
+						},
+						"georedirecthelp4": {
+							"helpvalue": "<em>Setup Instructions:<em>",
+							"order": 3,
+							"type": "help"
+						},
+						"georedirecthelp5": {
+							"helpvalue": "1. Signup for an account at <a href='https://dashboard.geotargetly.com/register' target='_blank'>geotargetly.com</a>",
+							"order": 4,
+							"type": "help"
+						},
+						"georedirecthelp6": {
+							"helpvalue": "2. Create a Geo Redirect service using this <a href='https://geotargetly.com/docs/geo-redirect#quick-start-guide' target='_blank'>quick start guide</a>",
+							"order": 5,
+							"type": "help"
+						},
+						"georedirecthelp7": {
+							"helpvalue": "3. Paste the Geo Redirect ID provided in the setup below",
+							"order": 6,
+							"type": "help"
+						},
+						"georedirecthelp8": {
+							"helpvalue": "<hr>",
+							"order": 7,
+							"type": "help"
+						},
+						"georedirectid": {
+							"default": "",
+							"description": "Unique ID provided in the Geo Redirect setup",
+							"order": 10,
+							"required": true,
+							"title": "Geo Redirect ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Updated domain + globally load balanced",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/_QdVVbpmXf36",
+			"metadata": {
+				"code": {
+					"sourceTag": "_QdVVbpmXf36",
+					"uploadedOn": "2021-11-01T03:50:32.697552757Z"
+				}
+			},
+			"created": "2021-11-01T03:50:31.449554Z",
+			"proposedApp": {
+				"id": "_A5PHlLnBjyS",
+				"title": "Geo Redirect Pro",
+				"shortDescription": "Redirect visitors by country, state & city",
+				"longDescription": "[Geo Targetly's][2] [Geo Redirect][3] app allows your website to automatically redirect visitors by their country, state & city. You can also choose to display a popup or announcment bar to prompt visitors to get redirected.\n\nFeatures:\n- Country, state & city redirection\n- Automatic redirection\n- Popup/announcment bar redirection\n- Countdown timer with auto redirect\n- Remember visitor's choice\n- IP/referrer whitelisting\n- Custom URL mapping\n- Passing page paths & query strings\n- See more features at: [Geo Targetly][1] \n- See docs at : [Geo Targetly][4] \n\n[1]: https://geotargetly.com/geo-redirect\n[2]: https://geotargetly.com\n[3]: https://geotargetly.com/geo-redirect\n[4]: https://geotargetly.com/docs/geo-redirect",
+				"instructions": "",
+				"alias": "geo-redirect",
+				"orgId": "267067711d599eba08fed55067544f6a",
+				"icon": "https://images.cloudflareapps.com/5pr2t-EArF8O/geotargetly_logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/t4v0UaNFNvNY/cloudflare-geo-redirect-2.png",
+					"https://images.cloudflareapps.com/t4v0UaNFNvNY/cloudflare-geo-redirect-3.png",
+					"https://images.cloudflareapps.com/t4v0UaNFNvNY/cloudflare-geo-redirect-4.png",
+					"https://images.cloudflareapps.com/t4v0UaNFNvNY/cloudflare-geo-redirect-1.png",
+					"https://images.cloudflareapps.com/t4v0UaNFNvNY/cloudflare-geo-redirect-5.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/K8TK2JoDFHyX/geotargetly.png",
+				"featuredAppImage": "",
+				"author": "Geo Targetly",
+				"tagline": "",
+				"website": "https://geotargetly.com/geo-redirect",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://geotargetly.com/saas-agreement",
+				"privacyPolicyURL": "https://geotargetly.com/privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "contact@geotargetly.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "2aEoEahEtLym"
+				},
+				"created": "2021-02-02T02:27:00.288005Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "267067711d599eba08fed55067544f6a",
+				"requestedAt": "2021-11-01T03:50:33.846704322Z",
+				"canceledByUserId": "267067711d599eba08fed55067544f6a",
+				"canceledAt": "2021-11-26T05:30:12.42346066Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.4.0",
+			"appId": "_A5PHlLnBjyS",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./src/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"georedirecthelp1": {
+							"helpvalue": "This app allows you to easily install Geo Targetly's <a href='https://geotargetly.com/geo-redirect' target='_blank'>Geo Redirect</a> product into your website.",
+							"order": 0,
+							"type": "help"
+						},
+						"georedirecthelp2": {
+							"helpvalue": "You will need to signup for an account at <a href='https://dashboard.geotargetly.com/register' target='_blank'>geotargetly.com</a> and setup a Geo Redirect first.",
+							"order": 1,
+							"type": "help"
+						},
+						"georedirecthelp3": {
+							"helpvalue": "<hr>",
+							"order": 2,
+							"type": "help"
+						},
+						"georedirecthelp4": {
+							"helpvalue": "<em>Setup Instructions:<em>",
+							"order": 3,
+							"type": "help"
+						},
+						"georedirecthelp5": {
+							"helpvalue": "1. Signup for an account at <a href='https://dashboard.geotargetly.com/register' target='_blank'>geotargetly.com</a>",
+							"order": 4,
+							"type": "help"
+						},
+						"georedirecthelp6": {
+							"helpvalue": "2. Create a Geo Redirect service using this <a href='https://geotargetly.com/docs/geo-redirect#quick-start-guide' target='_blank'>quick start guide</a>",
+							"order": 5,
+							"type": "help"
+						},
+						"georedirecthelp7": {
+							"helpvalue": "3. Paste the Geo Redirect ID provided in the setup below",
+							"order": 6,
+							"type": "help"
+						},
+						"georedirecthelp8": {
+							"helpvalue": "<hr>",
+							"order": 7,
+							"type": "help"
+						},
+						"georedirectid": {
+							"default": "",
+							"description": "Unique ID provided in the Geo Redirect setup",
+							"order": 10,
+							"required": true,
+							"title": "Geo Redirect ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.5,
+				"upvotes": 1,
+				"downvotes": 1
+			},
+			"releaseNotes": "Updated domain + globally load balanced",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/EO3zRXLN5mBZ",
+			"metadata": {
+				"code": {
+					"sourceTag": "EO3zRXLN5mBZ",
+					"uploadedOn": "2021-11-26T05:30:10.111980878Z"
+				}
+			},
+			"created": "2021-11-26T05:30:09.436819Z",
+			"proposedApp": {
+				"id": "_A5PHlLnBjyS",
+				"title": "Geo Redirect Pro",
+				"shortDescription": "Redirect visitors by country, state & city",
+				"longDescription": "[Geo Targetly's][2] [Geo Redirect][3] app allows your website to automatically redirect visitors by their country, state & city. You can also choose to display a popup or announcment bar to prompt visitors to get redirected.\n\nFeatures:\n- Country, state & city redirection\n- Automatic redirection\n- Popup/announcment bar redirection\n- Countdown timer with auto redirect\n- Remember visitor's choice\n- IP/referrer whitelisting\n- Custom URL mapping\n- Passing page paths & query strings\n- See more features at: [Geo Targetly][1] \n- See docs at : [Geo Targetly][4] \n\n[1]: https://geotargetly.com/geo-redirect\n[2]: https://geotargetly.com\n[3]: https://geotargetly.com/geo-redirect\n[4]: https://geotargetly.com/docs/geo-redirect",
+				"instructions": "",
+				"alias": "geo-redirect",
+				"orgId": "267067711d599eba08fed55067544f6a",
+				"icon": "https://images.cloudflareapps.com/5pr2t-EArF8O/geotargetly_logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/t4v0UaNFNvNY/cloudflare-geo-redirect-2.png",
+					"https://images.cloudflareapps.com/t4v0UaNFNvNY/cloudflare-geo-redirect-3.png",
+					"https://images.cloudflareapps.com/t4v0UaNFNvNY/cloudflare-geo-redirect-4.png",
+					"https://images.cloudflareapps.com/t4v0UaNFNvNY/cloudflare-geo-redirect-1.png",
+					"https://images.cloudflareapps.com/t4v0UaNFNvNY/cloudflare-geo-redirect-5.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/K8TK2JoDFHyX/geotargetly.png",
+				"featuredAppImage": "",
+				"author": "Geo Targetly",
+				"tagline": "",
+				"website": "https://geotargetly.com/geo-redirect",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://geotargetly.com/saas-agreement",
+				"privacyPolicyURL": "https://geotargetly.com/privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "contact@geotargetly.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "2aEoEahEtLym"
+				},
+				"created": "2021-02-02T02:27:00.288005Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "267067711d599eba08fed55067544f6a",
+				"requestedAt": "2021-11-26T05:30:12.431426763Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2021-11-30T19:50:51.018653371Z"
+			}
+		}
+	]
+}

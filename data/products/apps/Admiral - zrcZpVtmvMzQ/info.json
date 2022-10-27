@@ -1,0 +1,1211 @@
+{
+	"id": "zrcZpVtmvMzQ",
+	"title": "Admiral",
+	"shortDescription": "Free Adblock Analytics, Plus Revenue Recovery for Publishers",
+	"longDescription": "Admiral provides revenue recovery solutions that empower publishers to systematically regain control of their advertising environments from adblockers. Over 2,000 publishers and sites worldwide use Admiral as their 24/7 solution to size and solve revenue loss from adblocking.\n\nAdmiral’s platform is engineered to create lasting solutions through advanced analytics and visitor engagement tools that enable publishers to build and maintain stronger relationships with audiences. \n\n\n**Product Suite**\n\n* **Measure:** Advanced adblock analytics\n* **Engage:** Engagement-based revenue recovery\n* **Recover:** Reinsertion-based revenue recovery\n* **Transact:** Value exchange beyond advertising",
+	"instructions": "To use the Admiral Cloudflare app you must first create an account at [http://getadmiral.com/signup](http://getadmiral.com/signup). Once you've completed the onboarding process you will be presented with a property ID. The property ID will be used to install your Admiral Cloudflare app.",
+	"alias": "admiral",
+	"orgId": "8c6408f06e2c8e357971c4e79501ef14",
+	"icon": "//images.cloudflareapps.com/QrzZ3cpkQk2Bh0gYiRfN_Admiral_Logo_Mark_FullColor-bg.png",
+	"screenshots": [
+		"//images.cloudflareapps.com/tDDpQh7eQvSqteAzmETt_zoomed.jpg",
+		"//images.cloudflareapps.com/Ntmc2nHRUSdNwUvNsnRC_dashboard1.jpg",
+		"//images.cloudflareapps.com/RdAPJ2KDSHu3nxTLYEK9_template-7-hard.jpg",
+		"//images.cloudflareapps.com/PWtiDm0EScanOgi5Dynb_dashboard2.jpg",
+		"//images.cloudflareapps.com/NbgOKnDQ6yOSl3K9HH7K_template-3-hard.jpg"
+	],
+	"tileImage": "//images.cloudflareapps.com/dvfXKJsHTbmpRuCh7t6S_admiral-cftile.jpg",
+	"featuredAppImage": "",
+	"author": "Admiral (Leven Labs, Inc)",
+	"tagline": "",
+	"website": "https://getadmiral.com",
+	"sourceURL": "",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "#3b4969",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.7",
+	"infoVersion": "1.0.7",
+	"points": 210,
+	"supportEmail": "support@getadmiral.com",
+	"products": [],
+	"categoryIds": [
+		"recommended-for-marketing-sites",
+		"insights"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "8c6408f06e2c8e357971c4e79501ef14",
+			"created": "2017-06-27T01:31:08.031450241Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "mq1aO87I1xvz"
+	},
+	"created": "2017-06-12T21:04:08.846342Z",
+	"org": {
+		"id": "8c6408f06e2c8e357971c4e79501ef14",
+		"title": "",
+		"username": "8c6408f06e2c8e357971c4e79501ef14",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "insights",
+			"title": "Insights",
+			"description": "Apps that provide insight into your visitors.",
+			"icon": "",
+			"points": 40,
+			"visible": true,
+			"created": "2018-11-13T20:10:05.739284Z"
+		},
+		{
+			"id": "recommended-for-marketing-sites",
+			"title": "Recommended for Marketing Sites",
+			"description": "Apps for marketing sites in the recommendation engine.",
+			"icon": "",
+			"points": 0,
+			"visible": false,
+			"created": "2018-02-06T19:54:00.378148Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "zrcZpVtmvMzQ",
+			"definition": {
+				"resources": {
+					"body": [],
+					"head": [
+						{
+							"type": "script",
+							"src": "./src/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"services": [
+								"admiral"
+							],
+							"title": "Admiral Account",
+							"type": "object"
+						}
+					}
+				},
+				"hooks": [
+					{
+						"endpoint": "https://cloudflarewh.getadmiral.com/hook",
+						"events": [
+							"option-change:propertyID",
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "Error communicating with Admiral's servers."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/VgTfwEZt_efE",
+			"metadata": {
+				"code": {
+					"sourceTag": "VgTfwEZt_efE",
+					"uploadedOn": "2017-06-20T22:52:28.829618048Z"
+				}
+			},
+			"created": "2017-06-15T20:23:36.801013Z",
+			"proposedApp": {
+				"id": "zrcZpVtmvMzQ",
+				"title": "Admiral",
+				"shortDescription": "Regain control of your advertising environment from adblock",
+				"longDescription": "Admiral builds products that empower publishers to systematically regain control of their advertising environments from adblockers and strengthen relationships with their users. Over 2,000 publishers and sites worldwide use Admiral as their 24/7 solution to size and solve adblock losses. \n\nAdmiral’s platform is engineered to create lasting solutions through advanced analytics, customized interactions, and innovative tools to build and maintain strong relationships with audiences to unlock growth beyond adblock.\n\n**Product Suite**\n\n* **Measure:** Advanced adblock analytics\n* **Engage:** Engagement-based revenue recovery\n* **Recover:** Reinsertion-based revenue recovery\n* **Transact:** Value exchange beyond advertising\n\n*Admiral's Cloudflare application is currently intended to make installation of Admiral's products even easier. All configuration of Admiral products should be done at [http://getadmiral.com/a/](http://getadmiral.com/a/)*",
+				"instructions": "To use the Admiral Cloudflare app you must first create an account at [http://getadmiral.com/signup](http://getadmiral.com/signup). Once you've completed the onboarding process you will be presented with a property ID. The property ID will be used to install your Admiral Cloudflare app.",
+				"alias": "admiral",
+				"orgId": "8c6408f06e2c8e357971c4e79501ef14",
+				"icon": "//images.cloudflareapps.com/oPcJUnoR8emlTAOogKEk_white.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/tDDpQh7eQvSqteAzmETt_zoomed.jpg",
+					"//images.cloudflareapps.com/Ntmc2nHRUSdNwUvNsnRC_dashboard1.jpg",
+					"//images.cloudflareapps.com/RdAPJ2KDSHu3nxTLYEK9_template-7-hard.jpg",
+					"//images.cloudflareapps.com/PWtiDm0EScanOgi5Dynb_dashboard2.jpg",
+					"//images.cloudflareapps.com/NbgOKnDQ6yOSl3K9HH7K_template-3-hard.jpg"
+				],
+				"tileImage": "//images.cloudflareapps.com/dvfXKJsHTbmpRuCh7t6S_admiral-cftile.jpg",
+				"featuredAppImage": "",
+				"author": "Admiral",
+				"tagline": "",
+				"website": "https://getadmiral.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@getadmiral.com",
+				"products": [],
+				"categoryIds": [
+					"analytics",
+					"make-money-on-your-site"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "mq1aO87I1xvz"
+				},
+				"created": "2017-06-12T21:04:08.846342Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "8c6408f06e2c8e357971c4e79501ef14",
+				"requestedAt": "2017-06-21T03:14:24.619029407Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-06-21T22:22:56.186874113Z"
+			}
+		},
+		{
+			"tag": "v1.0.0",
+			"appId": "zrcZpVtmvMzQ",
+			"definition": {
+				"resources": {
+					"body": [],
+					"head": [
+						{
+							"type": "script",
+							"src": "./src/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"includeEngage": {
+							"default": true,
+							"description": "Include the Engage JavaScript on this property. This setting is separate from enabling Engage in your property's Engage settings. If you'd like to use Engage you must also enable it in your propterty's settings on <a href=\"https://getadmiral.com/a/\">getadmiral.com/a/</a>",
+							"order": 1,
+							"title": "Include Engage JavaScript",
+							"type": "boolean"
+						},
+						"propertyID": {
+							"description": "Find your property ID on its settings page at <a href=\"https://getadmiral.com/a/\">getadmiral.com/a/</a>",
+							"maxLength": 28,
+							"order": 0,
+							"placeholder": "X-XXXXXXXXXXXXXXXXXXXXXXXXX-X",
+							"title": "Property ID",
+							"type": "string"
+						}
+					}
+				},
+				"hooks": [
+					{
+						"endpoint": "https://cloudflarewh.getadmiral.com/hook",
+						"events": [
+							"option-change:propertyID"
+						],
+						"block": true,
+						"if": "install.options.propertyID.length === 28",
+						"failure": {
+							"action": "notify",
+							"message": "Error communicating with Admiral's servers."
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/MBWTIsij4an6",
+			"metadata": {
+				"code": {
+					"sourceTag": "MBWTIsij4an6",
+					"uploadedOn": "2017-06-13T22:04:27.871049008Z"
+				}
+			},
+			"created": "2017-06-12T21:04:09.150154Z",
+			"proposedApp": {
+				"id": "zrcZpVtmvMzQ",
+				"title": "Admiral",
+				"shortDescription": "Visitor Relationship Management Based Anti-adblock Solutions",
+				"longDescription": "Admiral builds products that empower publishers to systematically regain control of their advertising environments from adblockers and strengthen relationships with their users. Over 2,000 publishers and sites worldwide use Admiral as their 24/7 solution to size and solve adblock losses. \n\nAdmiral’s platform is engineered to create lasting solutions through advanced analytics, customized interactions, and innovative tools to build and maintain strong relationships with audiences to unlock growth beyond adblock.\n\n**Product Suite**\n\n* **Measure:** Advanced adblock analytics\n* **Engage:** Engagement-based revenue recovery\n* **Recover:** Reinsertion-based revenue recovery\n* **Transact:** Value exchange beyond advertising",
+				"instructions": "To use the Admiral Cloudflare app you must first create an account at [http://getadmiral.com/signup](http://getadmiral.com/signup). Once you've completed the onboarding process you will be presented with a property ID. The property ID will be used to install your Admiral Cloudflare app.",
+				"alias": "admiral",
+				"orgId": "8c6408f06e2c8e357971c4e79501ef14",
+				"icon": "//images.cloudflareapps.com/k8RVria6TyKjMsMhbEuy_admiral-logo-square.jpg",
+				"screenshots": [
+					"//images.cloudflareapps.com/n9RnCtEWR3qAp50yt5jx_dashboard.png",
+					"//images.cloudflareapps.com/gaZCkWnfTXyOmXsxkTcY_template-3-hard.jpg",
+					"//images.cloudflareapps.com/RdAPJ2KDSHu3nxTLYEK9_template-7-hard.jpg",
+					"//images.cloudflareapps.com/lyYgY3ZYRvSr7XlBO5L7_template-5-hard.jpg"
+				],
+				"tileImage": "//images.cloudflareapps.com/dvfXKJsHTbmpRuCh7t6S_admiral-cftile.jpg",
+				"featuredAppImage": "",
+				"author": "Admiral",
+				"tagline": "",
+				"website": "https://getadmiral.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@getadmiral.com",
+				"products": [],
+				"categoryIds": [
+					"analytics",
+					"make-money-on-your-site"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "mq1aO87I1xvz"
+				},
+				"created": "2017-06-12T21:04:08.846342Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "8c6408f06e2c8e357971c4e79501ef14",
+				"requestedAt": "2017-06-13T22:07:42.057651158Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-06-14T23:43:00.112759944Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "zrcZpVtmvMzQ",
+			"definition": {
+				"resources": {
+					"body": [],
+					"head": [
+						{
+							"type": "script",
+							"src": "./src/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"services": [
+								"admiral"
+							],
+							"title": "Admiral Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://cloudflarewh.getadmiral.com/hook",
+						"events": [
+							"option-change:propertyID",
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "Error communicating with Admiral's servers."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/UZ7YIGCQ2a1F",
+			"metadata": {
+				"code": {
+					"sourceTag": "UZ7YIGCQ2a1F",
+					"uploadedOn": "2017-06-25T02:35:25.245894625Z"
+				}
+			},
+			"created": "2017-06-21T22:23:35.620777Z",
+			"proposedApp": {
+				"id": "zrcZpVtmvMzQ",
+				"title": "Admiral",
+				"shortDescription": "Regain control of your advertising environment from adblock.",
+				"longDescription": "Admiral builds products that empower publishers to systematically regain control of their advertising environments from adblockers and strengthen relationships with their users. Over 2,000 publishers and sites worldwide use Admiral as their 24/7 solution to size and solve adblock losses. \n\nAdmiral’s platform is engineered to create lasting solutions through advanced analytics, customized interactions, and innovative tools to build and maintain strong relationships with audiences to unlock growth beyond adblock.\n\n**Product Suite**\n\n* **Measure:** Advanced adblock analytics\n* **Engage:** Engagement-based revenue recovery\n* **Recover:** Reinsertion-based revenue recovery\n* **Transact:** Value exchange beyond advertising",
+				"instructions": "To use the Admiral Cloudflare app you must first create an account at [http://getadmiral.com/signup](http://getadmiral.com/signup). Once you've completed the onboarding process you will be presented with a property ID. The property ID will be used to install your Admiral Cloudflare app.",
+				"alias": "admiral",
+				"orgId": "8c6408f06e2c8e357971c4e79501ef14",
+				"icon": "//images.cloudflareapps.com/oPcJUnoR8emlTAOogKEk_white.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/tDDpQh7eQvSqteAzmETt_zoomed.jpg",
+					"//images.cloudflareapps.com/Ntmc2nHRUSdNwUvNsnRC_dashboard1.jpg",
+					"//images.cloudflareapps.com/RdAPJ2KDSHu3nxTLYEK9_template-7-hard.jpg",
+					"//images.cloudflareapps.com/PWtiDm0EScanOgi5Dynb_dashboard2.jpg",
+					"//images.cloudflareapps.com/NbgOKnDQ6yOSl3K9HH7K_template-3-hard.jpg"
+				],
+				"tileImage": "//images.cloudflareapps.com/dvfXKJsHTbmpRuCh7t6S_admiral-cftile.jpg",
+				"featuredAppImage": "",
+				"author": "Admiral (Leven Labs, Inc)",
+				"tagline": "",
+				"website": "https://getadmiral.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@getadmiral.com",
+				"products": [],
+				"categoryIds": [
+					"analytics",
+					"make-money-on-your-site"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "mq1aO87I1xvz"
+				},
+				"created": "2017-06-12T21:04:08.846342Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "8c6408f06e2c8e357971c4e79501ef14",
+				"requestedAt": "2017-06-25T02:36:32.609144737Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-06-25T04:38:28.361911598Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "zrcZpVtmvMzQ",
+			"definition": {
+				"resources": {
+					"body": [],
+					"head": [
+						{
+							"type": "script",
+							"src": "./src/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"services": [
+								"admiral"
+							],
+							"title": "Admiral Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://cloudflarewh.getadmiral.com/hook",
+						"events": [
+							"option-change:propertyID",
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "Error communicating with Admiral's servers."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/UZ7YIGCQ2a1F",
+			"created": "2017-06-26T20:38:55.082585Z",
+			"proposedApp": {
+				"id": "zrcZpVtmvMzQ",
+				"title": "Admiral",
+				"shortDescription": "Regain control of your advertising environment from adblock.",
+				"longDescription": "Admiral builds products that empower publishers to systematically regain control of their advertising environments from adblockers and strengthen relationships with their users. Over 2,000 publishers and sites worldwide use Admiral as their 24/7 solution to size and solve adblock losses. \n\nAdmiral’s platform is engineered to create lasting solutions through advanced analytics, customized interactions, and innovative tools to build and maintain strong relationships with audiences to unlock growth beyond adblock.\n\n**Product Suite**\n\n* **Measure:** Advanced adblock analytics\n* **Engage:** Engagement-based revenue recovery\n* **Recover:** Reinsertion-based revenue recovery\n* **Transact:** Value exchange beyond advertising",
+				"instructions": "To use the Admiral Cloudflare app you must first create an account at [http://getadmiral.com/signup](http://getadmiral.com/signup). Once you've completed the onboarding process you will be presented with a property ID. The property ID will be used to install your Admiral Cloudflare app.",
+				"alias": "admiral",
+				"orgId": "8c6408f06e2c8e357971c4e79501ef14",
+				"icon": "//images.cloudflareapps.com/oPcJUnoR8emlTAOogKEk_white.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/tDDpQh7eQvSqteAzmETt_zoomed.jpg",
+					"//images.cloudflareapps.com/Ntmc2nHRUSdNwUvNsnRC_dashboard1.jpg",
+					"//images.cloudflareapps.com/RdAPJ2KDSHu3nxTLYEK9_template-7-hard.jpg",
+					"//images.cloudflareapps.com/PWtiDm0EScanOgi5Dynb_dashboard2.jpg",
+					"//images.cloudflareapps.com/NbgOKnDQ6yOSl3K9HH7K_template-3-hard.jpg"
+				],
+				"tileImage": "//images.cloudflareapps.com/dvfXKJsHTbmpRuCh7t6S_admiral-cftile.jpg",
+				"featuredAppImage": "",
+				"author": "Admiral (Leven Labs, Inc)",
+				"tagline": "",
+				"website": "https://getadmiral.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@getadmiral.com",
+				"products": [],
+				"categoryIds": [
+					"analytics",
+					"make-money-on-your-site"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "mq1aO87I1xvz"
+				},
+				"created": "2017-06-12T21:04:08.846342Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "8c6408f06e2c8e357971c4e79501ef14",
+				"requestedAt": "2017-06-26T20:38:55.695157231Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-06-26T21:48:19.532426093Z"
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "zrcZpVtmvMzQ",
+			"definition": {
+				"resources": {
+					"body": [],
+					"head": [
+						{
+							"type": "script",
+							"src": "./src/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"services": [
+								"admiral"
+							],
+							"title": "Admiral Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://cloudflarewh.getadmiral.com/hook",
+						"events": [
+							"option-change:propertyID",
+							"option-change:account",
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "Error communicating with Admiral's servers."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/QFQcdwpj5cvF",
+			"metadata": {
+				"code": {
+					"sourceTag": "QFQcdwpj5cvF",
+					"uploadedOn": "2017-06-27T01:30:24.967078922Z"
+				}
+			},
+			"created": "2017-06-27T01:30:24.64018Z",
+			"proposedApp": {
+				"id": "zrcZpVtmvMzQ",
+				"title": "Admiral",
+				"shortDescription": "Regain control of your advertising environment from adblock.",
+				"longDescription": "Admiral builds products that empower publishers to systematically regain control of their advertising environments from adblockers and strengthen relationships with their users. Over 2,000 publishers and sites worldwide use Admiral as their 24/7 solution to size and solve adblock losses. \n\nAdmiral’s platform is engineered to create lasting solutions through advanced analytics, customized interactions, and innovative tools to build and maintain strong relationships with audiences to unlock growth beyond adblock.\n\n**Product Suite**\n\n* **Measure:** Advanced adblock analytics\n* **Engage:** Engagement-based revenue recovery\n* **Recover:** Reinsertion-based revenue recovery\n* **Transact:** Value exchange beyond advertising",
+				"instructions": "To use the Admiral Cloudflare app you must first create an account at [http://getadmiral.com/signup](http://getadmiral.com/signup). Once you've completed the onboarding process you will be presented with a property ID. The property ID will be used to install your Admiral Cloudflare app.",
+				"alias": "admiral",
+				"orgId": "8c6408f06e2c8e357971c4e79501ef14",
+				"icon": "//images.cloudflareapps.com/QrzZ3cpkQk2Bh0gYiRfN_Admiral_Logo_Mark_FullColor-bg.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/tDDpQh7eQvSqteAzmETt_zoomed.jpg",
+					"//images.cloudflareapps.com/Ntmc2nHRUSdNwUvNsnRC_dashboard1.jpg",
+					"//images.cloudflareapps.com/RdAPJ2KDSHu3nxTLYEK9_template-7-hard.jpg",
+					"//images.cloudflareapps.com/PWtiDm0EScanOgi5Dynb_dashboard2.jpg",
+					"//images.cloudflareapps.com/NbgOKnDQ6yOSl3K9HH7K_template-3-hard.jpg"
+				],
+				"tileImage": "//images.cloudflareapps.com/dvfXKJsHTbmpRuCh7t6S_admiral-cftile.jpg",
+				"featuredAppImage": "",
+				"author": "Admiral (Leven Labs, Inc)",
+				"tagline": "",
+				"website": "https://getadmiral.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@getadmiral.com",
+				"products": [],
+				"categoryIds": [
+					"analytics",
+					"make-money-on-your-site"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "mq1aO87I1xvz"
+				},
+				"created": "2017-06-12T21:04:08.846342Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "8c6408f06e2c8e357971c4e79501ef14",
+				"requestedAt": "2017-06-27T01:31:08.012321481Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-06-27T01:53:58.559261925Z"
+			}
+		},
+		{
+			"tag": "1.0.4",
+			"appId": "zrcZpVtmvMzQ",
+			"definition": {
+				"resources": {
+					"body": [],
+					"head": [
+						{
+							"type": "script",
+							"src": "./src/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"services": [
+								"admiral"
+							],
+							"title": "Admiral Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://cloudflarewh.getadmiral.com/hook",
+						"events": [
+							"option-change:propertyID",
+							"option-change:account",
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "Error communicating with Admiral's servers."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/QFQcdwpj5cvF",
+			"created": "2017-07-25T20:19:20.070551Z",
+			"proposedApp": {
+				"id": "zrcZpVtmvMzQ",
+				"title": "Admiral",
+				"shortDescription": "Free Adblock Analytics, Plus Revenue Recovery for Publishers",
+				"longDescription": "Admiral provides revenue recovery solutions that empower publishers to systematically regain control of their advertising environments from adblockers. Over 2,000 publishers and sites worldwide use Admiral as their 24/7 solution to size and solve revenue loss from adblocking.\n\nAdmiral’s platform is engineered to create lasting solutions through advanced analytics and visitor engagement tools that enable publishers to build and maintain stronger relationships with audiences. \n\n\n**Product Suite**\n\n* **Measure:** Advanced adblock analytics\n* **Engage:** Engagement-based revenue recovery\n* **Recover:** Reinsertion-based revenue recovery\n* **Transact:** Value exchange beyond advertising",
+				"instructions": "To use the Admiral Cloudflare app you must first create an account at [http://getadmiral.com/signup](http://getadmiral.com/signup). Once you've completed the onboarding process you will be presented with a property ID. The property ID will be used to install your Admiral Cloudflare app.",
+				"alias": "admiral",
+				"orgId": "8c6408f06e2c8e357971c4e79501ef14",
+				"icon": "//images.cloudflareapps.com/QrzZ3cpkQk2Bh0gYiRfN_Admiral_Logo_Mark_FullColor-bg.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/tDDpQh7eQvSqteAzmETt_zoomed.jpg",
+					"//images.cloudflareapps.com/Ntmc2nHRUSdNwUvNsnRC_dashboard1.jpg",
+					"//images.cloudflareapps.com/RdAPJ2KDSHu3nxTLYEK9_template-7-hard.jpg",
+					"//images.cloudflareapps.com/PWtiDm0EScanOgi5Dynb_dashboard2.jpg",
+					"//images.cloudflareapps.com/NbgOKnDQ6yOSl3K9HH7K_template-3-hard.jpg"
+				],
+				"tileImage": "//images.cloudflareapps.com/dvfXKJsHTbmpRuCh7t6S_admiral-cftile.jpg",
+				"featuredAppImage": "",
+				"author": "Admiral (Leven Labs, Inc)",
+				"tagline": "",
+				"website": "https://getadmiral.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@getadmiral.com",
+				"products": [],
+				"categoryIds": [
+					"analytics",
+					"make-money-on-your-site",
+					"grow-your-email-list",
+					"get-more-customers",
+					"add-on",
+					"marketing",
+					"communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "mq1aO87I1xvz"
+				},
+				"created": "2017-06-12T21:04:08.846342Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "8c6408f06e2c8e357971c4e79501ef14",
+				"requestedAt": "2017-07-25T20:19:51.707914745Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-07-25T22:29:21.69963312Z"
+			}
+		},
+		{
+			"tag": "1.0.5",
+			"appId": "zrcZpVtmvMzQ",
+			"definition": {
+				"resources": {
+					"body": [],
+					"head": [
+						{
+							"type": "script",
+							"src": "./src/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"services": [
+								"admiral"
+							],
+							"title": "Admiral Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://cloudflarewh.getadmiral.com/hook",
+						"events": [
+							"option-change:propertyID",
+							"option-change:account",
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "Error communicating with Admiral's servers."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 6,
+				"downvotes": 0
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/QFQcdwpj5cvF",
+			"created": "2017-07-25T22:30:33.07975Z",
+			"proposedApp": {
+				"id": "zrcZpVtmvMzQ",
+				"title": "Admiral",
+				"shortDescription": "Free Adblock Analytics, Plus Revenue Recovery for Publishers",
+				"longDescription": "Admiral provides revenue recovery solutions that empower publishers to systematically regain control of their advertising environments from adblockers. Over 2,000 publishers and sites worldwide use Admiral as their 24/7 solution to size and solve revenue loss from adblocking.\n\nAdmiral’s platform is engineered to create lasting solutions through advanced analytics and visitor engagement tools that enable publishers to build and maintain stronger relationships with audiences. \n\n\n**Product Suite**\n\n* **Measure:** Advanced adblock analytics\n* **Engage:** Engagement-based revenue recovery\n* **Recover:** Reinsertion-based revenue recovery\n* **Transact:** Value exchange beyond advertising",
+				"instructions": "To use the Admiral Cloudflare app you must first create an account at [http://getadmiral.com/signup](http://getadmiral.com/signup). Once you've completed the onboarding process you will be presented with a property ID. The property ID will be used to install your Admiral Cloudflare app.",
+				"alias": "admiral",
+				"orgId": "8c6408f06e2c8e357971c4e79501ef14",
+				"icon": "//images.cloudflareapps.com/QrzZ3cpkQk2Bh0gYiRfN_Admiral_Logo_Mark_FullColor-bg.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/tDDpQh7eQvSqteAzmETt_zoomed.jpg",
+					"//images.cloudflareapps.com/Ntmc2nHRUSdNwUvNsnRC_dashboard1.jpg",
+					"//images.cloudflareapps.com/RdAPJ2KDSHu3nxTLYEK9_template-7-hard.jpg",
+					"//images.cloudflareapps.com/PWtiDm0EScanOgi5Dynb_dashboard2.jpg",
+					"//images.cloudflareapps.com/NbgOKnDQ6yOSl3K9HH7K_template-3-hard.jpg"
+				],
+				"tileImage": "//images.cloudflareapps.com/dvfXKJsHTbmpRuCh7t6S_admiral-cftile.jpg",
+				"featuredAppImage": "",
+				"author": "Admiral (Leven Labs, Inc)",
+				"tagline": "",
+				"website": "https://getadmiral.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@getadmiral.com",
+				"products": [],
+				"categoryIds": [
+					"analytics",
+					"get-more-customers",
+					"make-money-on-your-site"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "mq1aO87I1xvz"
+				},
+				"created": "2017-06-12T21:04:08.846342Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-07-25T22:30:33.315123724Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-07-25T22:30:48.531681953Z"
+			}
+		},
+		{
+			"tag": "1.0.6",
+			"appId": "zrcZpVtmvMzQ",
+			"definition": {
+				"resources": {
+					"body": [],
+					"head": [
+						{
+							"type": "script",
+							"src": "./src/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"services": [
+								"admiral"
+							],
+							"title": "Admiral Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://cloudflarewh.getadmiral.com/hook",
+						"events": [
+							"option-change:propertyID",
+							"option-change:account",
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "Error communicating with Admiral's servers."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.4,
+				"upvotes": 10,
+				"downvotes": 15
+			},
+			"releaseNotes": "Added to Cloudflare Apps recommendation engine",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/QFQcdwpj5cvF",
+			"created": "2018-02-06T21:37:25.750521Z",
+			"proposedApp": {
+				"id": "zrcZpVtmvMzQ",
+				"title": "Admiral",
+				"shortDescription": "Free Adblock Analytics, Plus Revenue Recovery for Publishers",
+				"longDescription": "Admiral provides revenue recovery solutions that empower publishers to systematically regain control of their advertising environments from adblockers. Over 2,000 publishers and sites worldwide use Admiral as their 24/7 solution to size and solve revenue loss from adblocking.\n\nAdmiral’s platform is engineered to create lasting solutions through advanced analytics and visitor engagement tools that enable publishers to build and maintain stronger relationships with audiences. \n\n\n**Product Suite**\n\n* **Measure:** Advanced adblock analytics\n* **Engage:** Engagement-based revenue recovery\n* **Recover:** Reinsertion-based revenue recovery\n* **Transact:** Value exchange beyond advertising",
+				"instructions": "To use the Admiral Cloudflare app you must first create an account at [http://getadmiral.com/signup](http://getadmiral.com/signup). Once you've completed the onboarding process you will be presented with a property ID. The property ID will be used to install your Admiral Cloudflare app.",
+				"alias": "admiral",
+				"orgId": "8c6408f06e2c8e357971c4e79501ef14",
+				"icon": "//images.cloudflareapps.com/QrzZ3cpkQk2Bh0gYiRfN_Admiral_Logo_Mark_FullColor-bg.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/tDDpQh7eQvSqteAzmETt_zoomed.jpg",
+					"//images.cloudflareapps.com/Ntmc2nHRUSdNwUvNsnRC_dashboard1.jpg",
+					"//images.cloudflareapps.com/RdAPJ2KDSHu3nxTLYEK9_template-7-hard.jpg",
+					"//images.cloudflareapps.com/PWtiDm0EScanOgi5Dynb_dashboard2.jpg",
+					"//images.cloudflareapps.com/NbgOKnDQ6yOSl3K9HH7K_template-3-hard.jpg"
+				],
+				"tileImage": "//images.cloudflareapps.com/dvfXKJsHTbmpRuCh7t6S_admiral-cftile.jpg",
+				"featuredAppImage": "",
+				"author": "Admiral (Leven Labs, Inc)",
+				"tagline": "",
+				"website": "https://getadmiral.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@getadmiral.com",
+				"products": [],
+				"categoryIds": [
+					"analytics",
+					"get-more-customers",
+					"make-money-on-your-site",
+					"recommended-for-marketing-sites"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "mq1aO87I1xvz"
+				},
+				"created": "2017-06-12T21:04:08.846342Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-02-06T21:37:26.022248035Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-02-06T21:40:23.049836412Z"
+			}
+		},
+		{
+			"tag": "1.0.7-meta-qgmsxd",
+			"appId": "zrcZpVtmvMzQ",
+			"definition": {
+				"resources": {
+					"body": [],
+					"head": [
+						{
+							"type": "script",
+							"src": "./src/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"services": [
+								"admiral"
+							],
+							"title": "Admiral Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://cloudflarewh.getadmiral.com/hook",
+						"events": [
+							"option-change:propertyID",
+							"option-change:account",
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "Error communicating with Admiral's servers."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/QFQcdwpj5cvF",
+			"created": "2020-07-15T14:08:53.877303Z",
+			"proposedApp": {
+				"id": "zrcZpVtmvMzQ",
+				"title": "Admiral",
+				"shortDescription": "Free Adblock Analytics, Plus Revenue Recovery for Publishers",
+				"longDescription": "Admiral provides revenue recovery solutions that empower publishers to systematically regain control of their advertising environments from adblockers. Over 2,000 publishers and sites worldwide use Admiral as their 24/7 solution to size and solve revenue loss from adblocking.\n\nAdmiral’s platform is engineered to create lasting solutions through advanced analytics and visitor engagement tools that enable publishers to build and maintain stronger relationships with audiences. \n\n\n**Product Suite**\n\n* **Measure:** Advanced adblock analytics\n* **Engage:** Engagement-based revenue recovery\n* **Recover:** Reinsertion-based revenue recovery\n* **Transact:** Value exchange beyond advertising",
+				"instructions": "To use the Admiral Cloudflare app you must first create an account at [https://app.getadmiral.com/signup](https://app.getadmiral.com/signup). Once you've completed the onboarding process you will be presented with a property ID. The property ID will be used to install your Admiral Cloudflare app.",
+				"alias": "admiral",
+				"orgId": "8c6408f06e2c8e357971c4e79501ef14",
+				"icon": "https://images.cloudflareapps.com/bpcfRIH8TbyE/admiral-logo-social.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/tDDpQh7eQvSqteAzmETt_zoomed.jpg",
+					"//images.cloudflareapps.com/Ntmc2nHRUSdNwUvNsnRC_dashboard1.jpg",
+					"//images.cloudflareapps.com/RdAPJ2KDSHu3nxTLYEK9_template-7-hard.jpg",
+					"//images.cloudflareapps.com/PWtiDm0EScanOgi5Dynb_dashboard2.jpg",
+					"//images.cloudflareapps.com/NbgOKnDQ6yOSl3K9HH7K_template-3-hard.jpg"
+				],
+				"tileImage": "//images.cloudflareapps.com/dvfXKJsHTbmpRuCh7t6S_admiral-cftile.jpg",
+				"featuredAppImage": "",
+				"author": "Admiral (Leven Labs, Inc)",
+				"tagline": "",
+				"website": "https://getadmiral.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.getadmiral.com/terms-of-service",
+				"privacyPolicyURL": "https://www.iubenda.com/privacy-policy/347981/full-legal",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@getadmiral.com",
+				"products": [],
+				"categoryIds": [
+					"recommended-for-marketing-sites",
+					"insights"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "mq1aO87I1xvz"
+				},
+				"created": "2017-06-12T21:04:08.846342Z"
+			},
+			"moderationStatus": "draft",
+			"moderationMetadata": {
+				"requestedAt": null,
+				"canceledAt": null,
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.7",
+			"appId": "zrcZpVtmvMzQ",
+			"definition": {
+				"resources": {
+					"body": [],
+					"head": [
+						{
+							"type": "script",
+							"src": "./src/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"services": [
+								"admiral"
+							],
+							"title": "Admiral Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://cloudflarewh.getadmiral.com/hook",
+						"events": [
+							"option-change:propertyID",
+							"option-change:account",
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "Error communicating with Admiral's servers."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.36,
+				"upvotes": 32,
+				"downvotes": 57
+			},
+			"releaseNotes": "Updated app's categories",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/QFQcdwpj5cvF",
+			"created": "2018-11-13T20:17:53.477669Z",
+			"proposedApp": {
+				"id": "zrcZpVtmvMzQ",
+				"title": "Admiral",
+				"shortDescription": "Free Adblock Analytics, Plus Revenue Recovery for Publishers",
+				"longDescription": "Admiral provides revenue recovery solutions that empower publishers to systematically regain control of their advertising environments from adblockers. Over 2,000 publishers and sites worldwide use Admiral as their 24/7 solution to size and solve revenue loss from adblocking.\n\nAdmiral’s platform is engineered to create lasting solutions through advanced analytics and visitor engagement tools that enable publishers to build and maintain stronger relationships with audiences. \n\n\n**Product Suite**\n\n* **Measure:** Advanced adblock analytics\n* **Engage:** Engagement-based revenue recovery\n* **Recover:** Reinsertion-based revenue recovery\n* **Transact:** Value exchange beyond advertising",
+				"instructions": "To use the Admiral Cloudflare app you must first create an account at [http://getadmiral.com/signup](http://getadmiral.com/signup). Once you've completed the onboarding process you will be presented with a property ID. The property ID will be used to install your Admiral Cloudflare app.",
+				"alias": "admiral",
+				"orgId": "8c6408f06e2c8e357971c4e79501ef14",
+				"icon": "//images.cloudflareapps.com/QrzZ3cpkQk2Bh0gYiRfN_Admiral_Logo_Mark_FullColor-bg.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/tDDpQh7eQvSqteAzmETt_zoomed.jpg",
+					"//images.cloudflareapps.com/Ntmc2nHRUSdNwUvNsnRC_dashboard1.jpg",
+					"//images.cloudflareapps.com/RdAPJ2KDSHu3nxTLYEK9_template-7-hard.jpg",
+					"//images.cloudflareapps.com/PWtiDm0EScanOgi5Dynb_dashboard2.jpg",
+					"//images.cloudflareapps.com/NbgOKnDQ6yOSl3K9HH7K_template-3-hard.jpg"
+				],
+				"tileImage": "//images.cloudflareapps.com/dvfXKJsHTbmpRuCh7t6S_admiral-cftile.jpg",
+				"featuredAppImage": "",
+				"author": "Admiral (Leven Labs, Inc)",
+				"tagline": "",
+				"website": "https://getadmiral.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@getadmiral.com",
+				"products": [],
+				"categoryIds": [
+					"recommended-for-marketing-sites",
+					"insights"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "mq1aO87I1xvz"
+				},
+				"created": "2017-06-12T21:04:08.846342Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-11-13T20:17:57.381559529Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-11-14T17:45:48.938624548Z"
+			}
+		}
+	]
+}

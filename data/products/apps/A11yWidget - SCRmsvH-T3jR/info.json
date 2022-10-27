@@ -1,0 +1,300 @@
+{
+	"id": "SCRmsvH-T3jR",
+	"title": "A11yWidget",
+	"shortDescription": "Accessibility Toolbox",
+	"longDescription": "## Accessibility Widget\nIt is a simple accessibility component without dependencies that  \nallows users with disabilities easy and convenient way to browse most websites\n\n### Supported Languages\nEnglish by default, Hebrew and Russian.\n\n### Features\n* Keyboard navigation\n* Block animations\n* Color contrast\n* Text size\n* Highlighting content\n* Zoom in\n* Restore settings\n\n---\nLicense\n---\nMIT License",
+	"instructions": "Before installing the toolbox on your site you can set the location and choose between the three languages ​​of it for your users",
+	"alias": "a11ywidget",
+	"orgId": "ac5a1e8d593cac5669c97bea05be7d7e",
+	"icon": "https://images.cloudflareapps.com/gqEAmKyPuqTu/a11yicon.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/jjRvIUVvcyUh/screeen.png",
+		"https://images.cloudflareapps.com/jjRvIUVvcyUh/screen2.png",
+		"https://images.cloudflareapps.com/jjRvIUVvcyUh/screen3.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/VudzCs2ltbTF/banner.png",
+	"featuredAppImage": "",
+	"author": "Francesco De Stefano",
+	"tagline": "",
+	"website": "https://mediamaster.eu",
+	"sourceURL": "",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.2",
+	"infoVersion": "1.0.2",
+	"points": 0,
+	"supportEmail": "ulmdesign@mediamaster.eu",
+	"products": [],
+	"categoryIds": [],
+	"agreements": {
+		"tos": {
+			"userId": "ac5a1e8d593cac5669c97bea05be7d7e",
+			"created": "2020-09-10T14:15:38.759553177Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "GhWt7npHiz-C"
+	},
+	"created": "2020-09-10T13:58:07.410465Z",
+	"org": {
+		"id": "ac5a1e8d593cac5669c97bea05be7d7e",
+		"title": "",
+		"username": "ac5a1e8d593cac5669c97bea05be7d7e",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "SCRmsvH-T3jR",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/saferInnerHTML.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/content.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/addwidget.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"language": {
+							"default": "en",
+							"enum": [
+								"en",
+								"he",
+								"ru-RU"
+							],
+							"enumNames": {
+								"en": "english",
+								"he": "hebrew",
+								"ru-RU": "russian"
+							},
+							"order": 2,
+							"title": "Language",
+							"type": "string"
+						},
+						"position": {
+							"default": "left",
+							"enum": [
+								"left",
+								"right"
+							],
+							"enumNames": {
+								"left": "left",
+								"right": "right"
+							},
+							"order": 1,
+							"title": "Horizontal alignment",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/GhWt7npHiz-C",
+			"metadata": {
+				"code": {
+					"sourceTag": "GhWt7npHiz-C",
+					"uploadedOn": "2020-09-10T13:58:09.760857616Z"
+				}
+			},
+			"created": "2020-09-10T13:58:09.100236Z",
+			"proposedApp": {
+				"id": "SCRmsvH-T3jR",
+				"title": "A11yWidget",
+				"shortDescription": "Accessibility Toolbox",
+				"longDescription": "## Accessibility Widget\nIt is a simple accessibility component without dependencies that  \nallows users with disabilities easy and convenient way to browse most websites\n\n### Supported Languages\nEnglish by default, Hebrew and Russian.\n\n### Features\n* Keyboard navigation\n* Block animations\n* Color contrast\n* Text size\n* Highlighting content\n* Zoom in\n* Restore settings\n\n---\nLicense\n---\nMIT License",
+				"instructions": "Before installing the toolbox on your site you can set the location and choose between the three languages ​​of it for your users",
+				"alias": "a11ywidget",
+				"orgId": "ac5a1e8d593cac5669c97bea05be7d7e",
+				"icon": "https://images.cloudflareapps.com/gqEAmKyPuqTu/a11yicon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/jjRvIUVvcyUh/screeen.png",
+					"https://images.cloudflareapps.com/jjRvIUVvcyUh/screen2.png",
+					"https://images.cloudflareapps.com/jjRvIUVvcyUh/screen3.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/VudzCs2ltbTF/banner.png",
+				"featuredAppImage": "",
+				"author": "Francesco De Stefano",
+				"tagline": "",
+				"website": "https://mediamaster.eu",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "ulmdesign@mediamaster.eu",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "GhWt7npHiz-C"
+				},
+				"created": "2020-09-10T13:58:07.410465Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "ac5a1e8d593cac5669c97bea05be7d7e",
+				"requestedAt": "2020-09-10T14:15:38.748374125Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-10-05T15:33:05.114742551Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "SCRmsvH-T3jR",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/load.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/addwidget.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"language": {
+							"default": "en",
+							"enum": [
+								"en",
+								"he-IL",
+								"ru-RU"
+							],
+							"enumNames": {
+								"en": "english",
+								"he-IL": "hebrew",
+								"ru-RU": "russian"
+							},
+							"order": 1,
+							"title": "Language",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.33,
+				"upvotes": 2,
+				"downvotes": 4
+			},
+			"releaseNotes": "The acc_toolbar library, to improve website accessibility, is now provided through the cdn service offered by jsDelivr",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/cmwrNGJyweIh",
+			"metadata": {
+				"code": {
+					"sourceTag": "cmwrNGJyweIh",
+					"uploadedOn": "2020-10-15T16:25:34.784980783Z"
+				}
+			},
+			"created": "2020-10-15T16:25:33.61601Z",
+			"proposedApp": {
+				"id": "SCRmsvH-T3jR",
+				"title": "A11yWidget",
+				"shortDescription": "Accessibility Toolbox",
+				"longDescription": "## Accessibility Widget\nIt is a simple accessibility component without dependencies that  \nallows users with disabilities easy and convenient way to browse most websites\n\n### Supported Languages\nEnglish by default, Hebrew and Russian.\n\n### Features\n* Keyboard navigation\n* Block animations\n* Color contrast\n* Text size\n* Highlighting content\n* Zoom in\n* Restore settings\n\n---\nLicense\n---\nMIT License",
+				"instructions": "Before installing the toolbox on your site you can set the location and choose between the three languages ​​of it for your users",
+				"alias": "a11ywidget",
+				"orgId": "ac5a1e8d593cac5669c97bea05be7d7e",
+				"icon": "https://images.cloudflareapps.com/gqEAmKyPuqTu/a11yicon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/jjRvIUVvcyUh/screeen.png",
+					"https://images.cloudflareapps.com/jjRvIUVvcyUh/screen2.png",
+					"https://images.cloudflareapps.com/jjRvIUVvcyUh/screen3.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/VudzCs2ltbTF/banner.png",
+				"featuredAppImage": "",
+				"author": "Francesco De Stefano",
+				"tagline": "",
+				"website": "https://mediamaster.eu",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "ulmdesign@mediamaster.eu",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "GhWt7npHiz-C"
+				},
+				"created": "2020-09-10T13:58:07.410465Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "ac5a1e8d593cac5669c97bea05be7d7e",
+				"requestedAt": "2020-10-15T16:25:37.117395918Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-10-26T16:00:42.706057297Z"
+			}
+		}
+	]
+}

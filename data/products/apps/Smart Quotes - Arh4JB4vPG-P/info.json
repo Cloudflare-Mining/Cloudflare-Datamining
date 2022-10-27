@@ -1,0 +1,467 @@
+{
+	"id": "Arh4JB4vPG-P",
+	"title": "Smart Quotes",
+	"shortDescription": "Automatically replace quotes on your site with smart quotes.",
+	"longDescription": "# What are smart quotes?\n\n“Smart quotes”, or “curly quotes”, are the proper typographical way to represent quotation marks. \nUnfortunately, in order to save space on the keyboard, the dumb quote was created. \nSmart Quotes is here to convert all your dumb quotes back to smart ones.\n\n# Why should I use smart quotes?\n\nSmart quotes are the correct way. They increase legibility and professionalism. \nDumb quotes are for the lazy person. \nDumb quotes are unprofessional. \nAnd now you have no excuse not to use smart quotes.\n\n# What about measurements? What quotes do I use?\n\nMeasurements use what are called “primes”. Smart Quotes handles those too.\n\n# Okay, so what about a backwards apostrophe?\n\nTechnically, words that are shortened at the beginning require a backwards apostrophe. \nThere’s only so much a script can do by itself, though. \nSmartquotes.js tries to catch what it can, namely abbreviated years like ’13 and places like the ’burbs, \nbut in the cases that it can’t—there’s not much ’splainin’ to do—just use <code class=\"inline\">&rsquo;</code> or try wrapping the word in a <code class=\"inline\"><span></code> tag.",
+	"instructions": "There's nothing to configure! Smart Quotes takes effect automatically.",
+	"alias": "smart-quotes",
+	"orgId": "2684c89451b6b86b453405beb4662f46",
+	"icon": "//images.cloudflareapps.com/ZMh4QQGRwa5Tt7aVaMBb_icon.png",
+	"screenshots": [],
+	"tileImage": "//images.cloudflareapps.com/iE0ndB6QT5SOubgJ5uEI_tile.png",
+	"featuredAppImage": "",
+	"author": "Kelly Martin",
+	"tagline": "",
+	"website": "http://smartquotesjs.com",
+	"sourceURL": "",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "#F8E734",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.4",
+	"infoVersion": "1.0.4",
+	"points": 0,
+	"supportEmail": "",
+	"products": [],
+	"categoryIds": [
+		"add-on",
+		"ui-and-design",
+		"recommended-for-blogs"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "f1279b4c7912eb17ba469bcbdfe62b19",
+			"created": "2017-08-15T11:38:27.793292641Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "2iMl0XMsP_lN"
+	},
+	"created": "2017-05-26T05:34:54.248479Z",
+	"org": {
+		"id": "2684c89451b6b86b453405beb4662f46",
+		"title": "",
+		"username": "2684c89451b6b86b453405beb4662f46",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "ui-and-design",
+			"title": "UI & Design",
+			"description": "Apps that make your website more beautiful and user friendly.",
+			"icon": "",
+			"points": 10,
+			"visible": true,
+			"created": "2018-01-22T19:17:52.677513Z"
+		},
+		{
+			"id": "add-on",
+			"title": "Add-ons",
+			"description": "Drop-in components to add to your website.",
+			"icon": "//eager-app-images.imgix.net/HZ0uHPrDRp6uAeUTuEH2_add-ons.png",
+			"points": 100,
+			"visible": false,
+			"metadata": {
+				"icon": {
+					"filename": "add-ons.png",
+					"isWriteable": false,
+					"key": "HZ0uHPrDRp6uAeUTuEH2_add-ons.png",
+					"mimetype": "image/png",
+					"size": 1997,
+					"url": "https://www.filepicker.io/api/file/1GlH0WSQTZu0scJr7qY0"
+				}
+			},
+			"created": "2016-01-20T20:14:55.498829Z"
+		},
+		{
+			"id": "recommended-for-blogs",
+			"title": "Recommended for Blogs",
+			"description": "Apps for blogs in the recommendation engine.",
+			"icon": "",
+			"points": 0,
+			"visible": false,
+			"created": "2018-02-06T19:54:23.834831Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "v1.0.0",
+			"appId": "Arh4JB4vPG-P",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "node_modules/smartquotes/smartquotes.js"
+						},
+						{
+							"type": "script",
+							"contents": "smartquotes()"
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/2iMl0XMsP_lN",
+			"metadata": {
+				"code": {
+					"sourceTag": "2iMl0XMsP_lN",
+					"uploadedOn": "2017-05-26T05:34:54.86195983Z"
+				}
+			},
+			"created": "2017-05-26T05:34:54.644032Z",
+			"proposedApp": {
+				"id": "Arh4JB4vPG-P",
+				"title": "SmartQuotes",
+				"shortDescription": "“Smart quotes are smart typography.”",
+				"longDescription": "### What are smart quotes?\n\n“Smart quotes”, or “curly quotes”, are the proper typographical way to represent quotation marks. \nUnfortunately, in order to save space on the keyboard, the dumb quote was created. \nSmartquotes.js is here to convert all your dumb quotes back to smart ones.\n\n### Why should I use smart quotes?\n\nSmart quotes are the correct way. They increase legibility and professionalism. \nDumb quotes are for the lazy person. \nDumb quotes are unprofessional. \nAnd now you have no excuse not to use smart quotes.\n\n### What about measurements? What quotes do I use?\n\nMeasurements use what are called “primes”. Smartquotes.js handles those too.\n\n### Okay, so what about a backwards apostrophe?\n\nTechnically, words that are shortened at the beginning require a backwards apostrophe. \nThere’s only so much a script can do by itself, though. \nSmartquotes.js tries to catch what it can, namely abbreviated years like ’13 and places like the ’burbs, \nbut in the cases that it can’t—there’s not much ’splainin’ to do—just use **&amp;rsquo;** or try wrapping the word in a <code class=\"inline\">&lt;span&gt;</code> tag.",
+				"instructions": "There's nothing to configure! SmartQuotes takes effect automatically.",
+				"alias": "smart-quotes",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/NG6p9GoiRVigdtPn6WLO_icon.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Kelly Martin",
+				"tagline": "",
+				"website": "http://smartquotesjs.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "2iMl0XMsP_lN"
+				},
+				"created": "2017-05-26T05:34:54.248479Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-05-26T05:34:55.790162751Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-05-26T05:35:21.963294296Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "Arh4JB4vPG-P",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "node_modules/smartquotes/smartquotes.js"
+						},
+						{
+							"type": "script",
+							"contents": "smartquotes()"
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/2iMl0XMsP_lN",
+			"created": "2017-08-15T11:38:27.5947Z",
+			"proposedApp": {
+				"id": "Arh4JB4vPG-P",
+				"title": "SmartQuotes",
+				"shortDescription": "“Smart quotes are smart typography.”",
+				"longDescription": "### What are smart quotes?\n\n“Smart quotes”, or “curly quotes”, are the proper typographical way to represent quotation marks. \nUnfortunately, in order to save space on the keyboard, the dumb quote was created. \nSmartquotes.js is here to convert all your dumb quotes back to smart ones.\n\n### Why should I use smart quotes?\n\nSmart quotes are the correct way. They increase legibility and professionalism. \nDumb quotes are for the lazy person. \nDumb quotes are unprofessional. \nAnd now you have no excuse not to use smart quotes.\n\n### What about measurements? What quotes do I use?\n\nMeasurements use what are called “primes”. Smartquotes.js handles those too.\n\n### Okay, so what about a backwards apostrophe?\n\nTechnically, words that are shortened at the beginning require a backwards apostrophe. \nThere’s only so much a script can do by itself, though. \nSmartquotes.js tries to catch what it can, namely abbreviated years like ’13 and places like the ’burbs, \nbut in the cases that it can’t—there’s not much ’splainin’ to do—just use **&amp;rsquo;** or try wrapping the word in a <code class=\"inline\">&lt;span&gt;</code> tag.",
+				"instructions": "There's nothing to configure! SmartQuotes takes effect automatically.",
+				"alias": "smart-quotes",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/ZMh4QQGRwa5Tt7aVaMBb_icon.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/iE0ndB6QT5SOubgJ5uEI_tile.png",
+				"featuredAppImage": "",
+				"author": "Kelly Martin",
+				"tagline": "",
+				"website": "http://smartquotesjs.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "2iMl0XMsP_lN"
+				},
+				"created": "2017-05-26T05:34:54.248479Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-08-15T11:38:27.786457096Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-08-15T11:38:39.779178426Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "Arh4JB4vPG-P",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "node_modules/smartquotes/smartquotes.js"
+						},
+						{
+							"type": "script",
+							"contents": "smartquotes()"
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/2iMl0XMsP_lN",
+			"created": "2017-08-15T11:46:25.482172Z",
+			"proposedApp": {
+				"id": "Arh4JB4vPG-P",
+				"title": "Smart Quotes",
+				"shortDescription": "Automatically replace quotes on your site with smart quotes.",
+				"longDescription": "# What are smart quotes?\n\n“Smart quotes”, or “curly quotes”, are the proper typographical way to represent quotation marks. \nUnfortunately, in order to save space on the keyboard, the dumb quote was created. \nSmart Quotes is here to convert all your dumb quotes back to smart ones.\n\n# Why should I use smart quotes?\n\nSmart quotes are the correct way. They increase legibility and professionalism. \nDumb quotes are for the lazy person. \nDumb quotes are unprofessional. \nAnd now you have no excuse not to use smart quotes.\n\n# What about measurements? What quotes do I use?\n\nMeasurements use what are called “primes”. Smart Quotes handles those too.\n\n# Okay, so what about a backwards apostrophe?\n\nTechnically, words that are shortened at the beginning require a backwards apostrophe. \nThere’s only so much a script can do by itself, though. \nSmartquotes.js tries to catch what it can, namely abbreviated years like ’13 and places like the ’burbs, \nbut in the cases that it can’t—there’s not much ’splainin’ to do—just use <code class=\"inline\">&rsquo;</code> or try wrapping the word in a <code class=\"inline\"><span></code> tag.",
+				"instructions": "There's nothing to configure! Smart Quotes takes effect automatically.",
+				"alias": "smart-quotes",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/ZMh4QQGRwa5Tt7aVaMBb_icon.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/iE0ndB6QT5SOubgJ5uEI_tile.png",
+				"featuredAppImage": "",
+				"author": "Kelly Martin",
+				"tagline": "",
+				"website": "http://smartquotesjs.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "2iMl0XMsP_lN"
+				},
+				"created": "2017-05-26T05:34:54.248479Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-08-15T11:46:25.803954518Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-08-15T11:46:34.59780748Z"
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "Arh4JB4vPG-P",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "node_modules/smartquotes/smartquotes.js"
+						},
+						{
+							"type": "script",
+							"contents": "smartquotes()"
+						}
+					]
+				}
+			},
+			"releaseNotes": "Added to “UI & Design” category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/2iMl0XMsP_lN",
+			"created": "2018-01-23T19:39:57.704569Z",
+			"proposedApp": {
+				"id": "Arh4JB4vPG-P",
+				"title": "Smart Quotes",
+				"shortDescription": "Automatically replace quotes on your site with smart quotes.",
+				"longDescription": "# What are smart quotes?\n\n“Smart quotes”, or “curly quotes”, are the proper typographical way to represent quotation marks. \nUnfortunately, in order to save space on the keyboard, the dumb quote was created. \nSmart Quotes is here to convert all your dumb quotes back to smart ones.\n\n# Why should I use smart quotes?\n\nSmart quotes are the correct way. They increase legibility and professionalism. \nDumb quotes are for the lazy person. \nDumb quotes are unprofessional. \nAnd now you have no excuse not to use smart quotes.\n\n# What about measurements? What quotes do I use?\n\nMeasurements use what are called “primes”. Smart Quotes handles those too.\n\n# Okay, so what about a backwards apostrophe?\n\nTechnically, words that are shortened at the beginning require a backwards apostrophe. \nThere’s only so much a script can do by itself, though. \nSmartquotes.js tries to catch what it can, namely abbreviated years like ’13 and places like the ’burbs, \nbut in the cases that it can’t—there’s not much ’splainin’ to do—just use <code class=\"inline\">&rsquo;</code> or try wrapping the word in a <code class=\"inline\"><span></code> tag.",
+				"instructions": "There's nothing to configure! Smart Quotes takes effect automatically.",
+				"alias": "smart-quotes",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/ZMh4QQGRwa5Tt7aVaMBb_icon.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/iE0ndB6QT5SOubgJ5uEI_tile.png",
+				"featuredAppImage": "",
+				"author": "Kelly Martin",
+				"tagline": "",
+				"website": "http://smartquotesjs.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "2iMl0XMsP_lN"
+				},
+				"created": "2017-05-26T05:34:54.248479Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-01-23T19:39:58.000282398Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-01-23T19:40:02.674037619Z"
+			}
+		},
+		{
+			"tag": "1.0.4",
+			"appId": "Arh4JB4vPG-P",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "node_modules/smartquotes/smartquotes.js"
+						},
+						{
+							"type": "script",
+							"contents": "smartquotes()"
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.52,
+				"upvotes": 14,
+				"downvotes": 13
+			},
+			"releaseNotes": "Added to Cloudflare Apps recommendation engine",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/2iMl0XMsP_lN",
+			"created": "2018-02-06T21:47:31.533512Z",
+			"proposedApp": {
+				"id": "Arh4JB4vPG-P",
+				"title": "Smart Quotes",
+				"shortDescription": "Automatically replace quotes on your site with smart quotes.",
+				"longDescription": "# What are smart quotes?\n\n“Smart quotes”, or “curly quotes”, are the proper typographical way to represent quotation marks. \nUnfortunately, in order to save space on the keyboard, the dumb quote was created. \nSmart Quotes is here to convert all your dumb quotes back to smart ones.\n\n# Why should I use smart quotes?\n\nSmart quotes are the correct way. They increase legibility and professionalism. \nDumb quotes are for the lazy person. \nDumb quotes are unprofessional. \nAnd now you have no excuse not to use smart quotes.\n\n# What about measurements? What quotes do I use?\n\nMeasurements use what are called “primes”. Smart Quotes handles those too.\n\n# Okay, so what about a backwards apostrophe?\n\nTechnically, words that are shortened at the beginning require a backwards apostrophe. \nThere’s only so much a script can do by itself, though. \nSmartquotes.js tries to catch what it can, namely abbreviated years like ’13 and places like the ’burbs, \nbut in the cases that it can’t—there’s not much ’splainin’ to do—just use <code class=\"inline\">&rsquo;</code> or try wrapping the word in a <code class=\"inline\"><span></code> tag.",
+				"instructions": "There's nothing to configure! Smart Quotes takes effect automatically.",
+				"alias": "smart-quotes",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/ZMh4QQGRwa5Tt7aVaMBb_icon.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/iE0ndB6QT5SOubgJ5uEI_tile.png",
+				"featuredAppImage": "",
+				"author": "Kelly Martin",
+				"tagline": "",
+				"website": "http://smartquotesjs.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"ui-and-design",
+					"recommended-for-blogs"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "2iMl0XMsP_lN"
+				},
+				"created": "2017-05-26T05:34:54.248479Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-02-06T21:47:31.813038543Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-02-06T21:56:07.112871229Z"
+			}
+		}
+	]
+}

@@ -1,0 +1,590 @@
+{
+	"id": "4wID3Gl9rHym",
+	"title": "Repuso",
+	"shortDescription": "Social proof reviews on your website",
+	"longDescription": "= Collect social proof reviews from various channels =\nRepuso monitors all your social media channels for reviews by your customers. Reviews can also be collected through our widgets. \nSome of the channels we support:\n\n1. Facebook\n2. Twitter\n3. Google Plus\n4. Instagram\n5. Apple AppStore\n6. Google Play Store\n7. Delighted\n8. Google Places\n9. Yelp\n10. GetApp\n11. Capterra\n12. G2Crowd\n13. Thumbtack\n14. TrustPilot\n15. TripAdvisor\n16. Yellow Pages\n17. Airbnb\n18. Healthgrades\n19. Vrbo / HomeAway\n20. Booking.com\n21. GetYourGuide\n22. Expedia\n23. Zillow\n24. Houzz\n25. HomeAdvisor\n26. Angi\n27. BBB\n28. OpenTable\n29. Realtor\n\nAll your reviews are collected to one dashboard, where you can decide which of them to feature in widgets.\nEasily add these beautiful widgets to your website:\n1. Floating widget\n2. Grid widget\n3. Inline slider widget\n4. Photo slider widget\n5. Badge widget\n6. Flash widget\n7. Masonry widget\n8. List widget\n9. Slider widget\n\n= Organize your reviews =\nSelect your favorite reviews in the dashboard at your Wordpress admin for display in the widgets. Get notified and do this in real-time via our app!\n\n= Showcase reviews on your website to build trust =\nIncrease your website's conversion by showing the selected reviews in the floating widget or inline on your most important pages.\n\nVisit our website for more information about this plugin [Repuso](https://repuso.com/integrations-wordpress/?utm_source=web&utm_medium=cloudflare&utm_campaign=plugin \"Repuso - Social proof reviews and testimonials\")",
+	"instructions": "",
+	"alias": "repuso",
+	"orgId": "bc515e70007b23cdb4ded978c431f059",
+	"icon": "https://images.cloudflareapps.com/m6Uss0slxKr5/beeldmerk_300_rounded2.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/EQkdYb0_S4iq/screenshot-2.png",
+		"https://images.cloudflareapps.com/3B6gjAeqOZ_z/screenshot-1.png",
+		"https://images.cloudflareapps.com/B9-B5F_vTd68/3-widgets.png",
+		"https://images.cloudflareapps.com/ToxUXvKfyL5T/2-reviews.png",
+		"https://images.cloudflareapps.com/JzcVc8RqORVG/1-channels.png"
+	],
+	"tileImage": "",
+	"featuredAppImage": "",
+	"author": "Repuso",
+	"tagline": "",
+	"website": "https://repuso.com",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://repuso.com/terms-of-use/",
+	"privacyPolicyURL": "https://repuso.com/privacy-policy/",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.1",
+	"infoVersion": "1.0.1",
+	"points": 0,
+	"supportEmail": "hello@repuso.com",
+	"products": [],
+	"categoryIds": [],
+	"agreements": {
+		"tos": {
+			"userId": "bc515e70007b23cdb4ded978c431f059",
+			"created": "2020-08-31T10:44:20.596152137Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "uZabfcxrDV3u"
+	},
+	"created": "2020-08-30T11:51:54.732148Z",
+	"org": {
+		"id": "bc515e70007b23cdb4ded978c431f059",
+		"title": "",
+		"username": "bc515e70007b23cdb4ded978c431f059",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "4wID3Gl9rHym",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": false,
+							"services": [
+								"repuso-auth-prod"
+							],
+							"title": "Repuso Account",
+							"type": "object"
+						},
+						"dashboard": {
+							"helpvalue": "Quick links: <a href='https://repuso.com/app?utm_source=cloudflare&utm_medium=apps&utm_campaign=dashboard_link' target='_blank'>Repuso dashboard</a>, our <a href='https://repuso.com/help/?utm_source=cloudflare&utm_medium=apps&utm_campaign=dashboard_link' target='_blank'>video tutorials</a> or <a href='https://repuso.com?utm_source=cloudflare&utm_medium=apps&utm_campaign=dashboard_link' target='_blank'>Repuso home page</a>.<br/>Need help? <a href='https://repuso.com/contact?utm_source=cloudflare&utm_medium=apps&utm_campaign=dashboard_link' target='_blank'>chat with us</a>.",
+							"order": 1,
+							"type": "help"
+						},
+						"subaccount": {
+							"default": "W0",
+							"enum": [
+								"W0"
+							],
+							"enumNames": {
+								"W0": "Main"
+							},
+							"order": 2,
+							"showIf": {
+								"a": "b"
+							},
+							"title": "Account",
+							"type": "string"
+						},
+						"url": {
+							"default": "https://widgets.thereviewsplace.com/2.0/"
+						},
+						"widgets": {
+							"order": 3,
+							"properties": {
+								"W12520": {
+									"order": 2,
+									"properties": {
+										"enabled": {
+											"order": 1,
+											"title": "Flash widget demo",
+											"type": "boolean"
+										},
+										"id": {
+											"default": 12520
+										},
+										"type": {
+											"default": "flash"
+										}
+									},
+									"title": " ",
+									"type": "object"
+								},
+								"W1663": {
+									"order": 4,
+									"properties": {
+										"enabled": {
+											"order": 1,
+											"title": "Slider widget demo",
+											"type": "boolean"
+										},
+										"id": {
+											"default": 1663
+										},
+										"location": {
+											"format": "element",
+											"order": 2,
+											"showIf": {
+												"widgets.W1663.enabled": true
+											},
+											"title": " ",
+											"type": "object"
+										},
+										"type": {
+											"default": "inline"
+										}
+									},
+									"title": " ",
+									"type": "object"
+								},
+								"W17968": {
+									"order": 1,
+									"properties": {
+										"enabled": {
+											"order": 1,
+											"title": "Masonry widget demo",
+											"type": "boolean"
+										},
+										"id": {
+											"default": 17968
+										},
+										"location": {
+											"format": "element",
+											"order": 2,
+											"showIf": {
+												"widgets.W17968.enabled": true
+											},
+											"title": " ",
+											"type": "object"
+										},
+										"type": {
+											"default": "masonry"
+										}
+									},
+									"title": " ",
+									"type": "object"
+								},
+								"W678": {
+									"order": 3,
+									"properties": {
+										"enabled": {
+											"order": 1,
+											"title": "Floating widget demo",
+											"type": "boolean"
+										},
+										"id": {
+											"default": 678
+										},
+										"type": {
+											"default": "floating"
+										}
+									},
+									"title": " ",
+									"type": "object"
+								}
+							},
+							"title": "Here are a few demo widgets for you to test, more widgets and customization options can be found on your Repuso account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.updateOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://api.repuso.com/v1/cloudflare/info",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with Repuso"
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"action": "reset-options",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.33,
+				"upvotes": 1,
+				"downvotes": 2
+			},
+			"manual": true,
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/n4YSRYphq_5-",
+			"metadata": {
+				"code": {
+					"sourceTag": "n4YSRYphq_5-",
+					"uploadedOn": "2020-08-31T10:42:39.241521614Z"
+				}
+			},
+			"created": "2020-08-30T11:51:55.385503Z",
+			"proposedApp": {
+				"id": "4wID3Gl9rHym",
+				"title": "Repuso",
+				"shortDescription": "Social proof reviews on your website",
+				"longDescription": "= Collect social proof reviews from various channels =\nRepuso monitors all your social media channels for reviews by your customers. Reviews can also be collected through our widgets. \nSome of the channels we support:\n\n1. Facebook\n2. Twitter\n3. Google Plus\n4. Instagram\n5. Apple AppStore\n6. Google Play Store\n7. Delighted\n8. Google Places\n9. Yelp\n10. GetApp\n11. Capterra\n12. G2Crowd\n13. Thumbtack\n14. TrustPilot\n15. TripAdvisor\n16. Yellow Pages\n17. Airbnb\n18. Healthgrades\n19. Vrbo / HomeAway\n20. Booking.com\n21. GetYourGuide\n22. Expedia\n23. Zillow\n\nAll your reviews are collected to one dashboard, where you can decide which of them to feature in widgets.\nEasily add these beautiful widgets to your website:\n1. Floating widget\n2. Grid widget\n3. Inline slider widget\n4. Photo slider widget\n5. Badge widget\n6. Flash widget\n7. Masonry widget\n\n= Organize your reviews =\nSelect your favorite reviews in the dashboard at your Wordpress admin for display in the widgets. Get notified and do this in real-time via our app!\n\n= Showcase reviews on your website to build trust =\nIncrease your website's conversion by showing the selected reviews in the floating widget or inline on your most important pages.\n\nVisit our website for more information about this plugin [Repuso](https://repuso.com/integrations-wordpress/?utm_source=web&utm_medium=cloudflare&utm_campaign=plugin \"Repuso - Social proof reviews and testimonials\")",
+				"instructions": "",
+				"alias": "repuso",
+				"orgId": "bc515e70007b23cdb4ded978c431f059",
+				"icon": "https://images.cloudflareapps.com/m6Uss0slxKr5/beeldmerk_300_rounded2.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/EQkdYb0_S4iq/screenshot-2.png",
+					"https://images.cloudflareapps.com/3B6gjAeqOZ_z/screenshot-1.png",
+					"https://images.cloudflareapps.com/B9-B5F_vTd68/3-widgets.png",
+					"https://images.cloudflareapps.com/ToxUXvKfyL5T/2-reviews.png",
+					"https://images.cloudflareapps.com/JzcVc8RqORVG/1-channels.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Repuso",
+				"tagline": "",
+				"website": "https://repuso.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://repuso.com/terms-of-use/",
+				"privacyPolicyURL": "https://repuso.com/privacy-policy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "hello@repuso.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "uZabfcxrDV3u"
+				},
+				"created": "2020-08-30T11:51:54.732148Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "bc515e70007b23cdb4ded978c431f059",
+				"requestedAt": "2020-08-31T10:44:20.575809239Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-09-14T15:36:07.895839251Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "4wID3Gl9rHym",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": false,
+							"services": [
+								"repuso-auth-prod"
+							],
+							"title": "Repuso Account",
+							"type": "object"
+						},
+						"dashboard": {
+							"helpvalue": "Quick links: <a href='https://repuso.com/app?utm_source=cloudflare&utm_medium=apps&utm_campaign=dashboard_link' target='_blank'>Repuso dashboard</a>, our <a href='https://repuso.com/help/?utm_source=cloudflare&utm_medium=apps&utm_campaign=dashboard_link' target='_blank'>video tutorials</a> or <a href='https://repuso.com?utm_source=cloudflare&utm_medium=apps&utm_campaign=dashboard_link' target='_blank'>Repuso home page</a>.<br/>Need help? <a href='https://repuso.com/contact?utm_source=cloudflare&utm_medium=apps&utm_campaign=dashboard_link' target='_blank'>chat with us</a>.",
+							"order": 1,
+							"type": "help"
+						},
+						"subaccount": {
+							"default": "W0",
+							"enum": [
+								"W0"
+							],
+							"enumNames": {
+								"W0": "Main"
+							},
+							"order": 2,
+							"showIf": {
+								"a": "b"
+							},
+							"title": "Account",
+							"type": "string"
+						},
+						"url": {
+							"default": "https://widgets.thereviewsplace.com/2.0/"
+						},
+						"widgets": {
+							"order": 3,
+							"properties": {
+								"W12520": {
+									"order": 2,
+									"properties": {
+										"enabled": {
+											"order": 1,
+											"title": "Flash widget demo",
+											"type": "boolean"
+										},
+										"id": {
+											"default": 12520
+										},
+										"type": {
+											"default": "flash"
+										}
+									},
+									"title": " ",
+									"type": "object"
+								},
+								"W1663": {
+									"order": 4,
+									"properties": {
+										"enabled": {
+											"order": 1,
+											"title": "Slider widget demo",
+											"type": "boolean"
+										},
+										"id": {
+											"default": 1663
+										},
+										"location": {
+											"format": "element",
+											"order": 2,
+											"showIf": {
+												"widgets.W1663.enabled": true
+											},
+											"title": " ",
+											"type": "object"
+										},
+										"type": {
+											"default": "inline"
+										}
+									},
+									"title": " ",
+									"type": "object"
+								},
+								"W17968": {
+									"order": 1,
+									"properties": {
+										"enabled": {
+											"order": 1,
+											"title": "Masonry widget demo",
+											"type": "boolean"
+										},
+										"id": {
+											"default": 17968
+										},
+										"location": {
+											"format": "element",
+											"order": 2,
+											"showIf": {
+												"widgets.W17968.enabled": true
+											},
+											"title": " ",
+											"type": "object"
+										},
+										"type": {
+											"default": "masonry"
+										}
+									},
+									"title": " ",
+									"type": "object"
+								},
+								"W678": {
+									"order": 3,
+									"properties": {
+										"enabled": {
+											"order": 1,
+											"title": "Floating widget demo",
+											"type": "boolean"
+										},
+										"id": {
+											"default": 678
+										},
+										"type": {
+											"default": "floating"
+										}
+									},
+									"title": " ",
+									"type": "object"
+								}
+							},
+							"title": "Here are a few demo widgets for you to test, more widgets and customization options can be found on your Repuso account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.updateOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://api.repuso.com/v1/cloudflare/info",
+						"events": [
+							"oauth-login",
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with Repuso"
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"action": "reset-options",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "Small improvements",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/xyzRZfl4CclC",
+			"metadata": {
+				"code": {
+					"sourceTag": "xyzRZfl4CclC",
+					"uploadedOn": "2022-02-06T12:42:16.642261345Z"
+				}
+			},
+			"created": "2022-02-06T12:42:15.455955Z",
+			"proposedApp": {
+				"id": "4wID3Gl9rHym",
+				"title": "Repuso",
+				"shortDescription": "Social proof reviews on your website",
+				"longDescription": "= Collect social proof reviews from various channels =\nRepuso monitors all your social media channels for reviews by your customers. Reviews can also be collected through our widgets. \nSome of the channels we support:\n\n1. Facebook\n2. Twitter\n3. Google Plus\n4. Instagram\n5. Apple AppStore\n6. Google Play Store\n7. Delighted\n8. Google Places\n9. Yelp\n10. GetApp\n11. Capterra\n12. G2Crowd\n13. Thumbtack\n14. TrustPilot\n15. TripAdvisor\n16. Yellow Pages\n17. Airbnb\n18. Healthgrades\n19. Vrbo / HomeAway\n20. Booking.com\n21. GetYourGuide\n22. Expedia\n23. Zillow\n24. Houzz\n25. HomeAdvisor\n26. Angi\n27. BBB\n28. OpenTable\n29. Realtor\n\nAll your reviews are collected to one dashboard, where you can decide which of them to feature in widgets.\nEasily add these beautiful widgets to your website:\n1. Floating widget\n2. Grid widget\n3. Inline slider widget\n4. Photo slider widget\n5. Badge widget\n6. Flash widget\n7. Masonry widget\n8. List widget\n9. Slider widget\n\n= Organize your reviews =\nSelect your favorite reviews in the dashboard at your Wordpress admin for display in the widgets. Get notified and do this in real-time via our app!\n\n= Showcase reviews on your website to build trust =\nIncrease your website's conversion by showing the selected reviews in the floating widget or inline on your most important pages.\n\nVisit our website for more information about this plugin [Repuso](https://repuso.com/integrations-wordpress/?utm_source=web&utm_medium=cloudflare&utm_campaign=plugin \"Repuso - Social proof reviews and testimonials\")",
+				"instructions": "",
+				"alias": "repuso",
+				"orgId": "bc515e70007b23cdb4ded978c431f059",
+				"icon": "https://images.cloudflareapps.com/m6Uss0slxKr5/beeldmerk_300_rounded2.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/EQkdYb0_S4iq/screenshot-2.png",
+					"https://images.cloudflareapps.com/3B6gjAeqOZ_z/screenshot-1.png",
+					"https://images.cloudflareapps.com/B9-B5F_vTd68/3-widgets.png",
+					"https://images.cloudflareapps.com/ToxUXvKfyL5T/2-reviews.png",
+					"https://images.cloudflareapps.com/JzcVc8RqORVG/1-channels.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Repuso",
+				"tagline": "",
+				"website": "https://repuso.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://repuso.com/terms-of-use/",
+				"privacyPolicyURL": "https://repuso.com/privacy-policy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "hello@repuso.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "uZabfcxrDV3u"
+				},
+				"created": "2020-08-30T11:51:54.732148Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "bc515e70007b23cdb4ded978c431f059",
+				"requestedAt": "2022-02-06T12:44:28.355838255Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2022-02-22T16:08:50.788911754Z"
+			}
+		}
+	]
+}

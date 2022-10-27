@@ -1,0 +1,1485 @@
+{
+	"id": "-YfKAejT0MEG",
+	"title": "Chat",
+	"shortDescription": "Live support through Messenger straight from your website.",
+	"longDescription": "POWr Chat is the convenient and easy way to chat with your site visitors in real time from your website. There are no complex integrations, all you need is your website and your Facebook Page for your business.\n \n# What are the benefits of using POWr Chat?   \n\n* **Boost conversions** - Easily let customers reach you in real time through Facebook Messenger to answer questions, remove blocks and make more sales.\n* **Stay ahead of the competition** - Only 54% of retailers offer live chat on their website. Stay ahead and provide enhanced customer service with a customized chat experience.\n* **Make it yours** - Customize it with your own colors, fonts, icon, welcome message and more. Decide which customers see it and what they see if you’re away.\n\n# Get started for free and enjoy these features:   \n\n* Connect to any Facebook Page from your website and chat through Facebook Messenger.\n* Customize your chat header, description and automated welcome message.\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* * More personalization with custom images, chat icons and backgrounds.\n* Chat trigger control: choose which users see it, the frequency and delays.\n* Away message for when you can’t immediately respond.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=chat).\n\n# Why users love Chat:   \n\n“Pretty awesome! Simple, to the point, clean and reliable.”\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Chat up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+	"instructions": "",
+	"alias": "powr-chat",
+	"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+	"icon": "https://images.cloudflareapps.com/xpCZrNTAC17z/Chat-Icon-Cloudflare.png",
+	"screenshots": [
+		"//images.cloudflareapps.com/pgNXQwiuRAGFjhaoXBBM_Copy of Chat 1.png",
+		"//images.cloudflareapps.com/CCLOOMBUTgeuPIUDXmii_Copy of Facebook chat .png",
+		"//images.cloudflareapps.com/gOfo4GRAQDy6aHJ6QnYW_Screen Shot 2018-03-13 at 10.11.58 AM.png",
+		"//images.cloudflareapps.com/20IxMVxTdMKqpeNBokgR_Copy of chat 3.png",
+		"//images.cloudflareapps.com/d3ufEHQIGusuT7GiRNgJ_Copy of Screenshot 4.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/7rbJb65x_H8s/Chat-Banner-Cloudflare.png",
+	"featuredAppImage": "",
+	"author": "POWr Inc",
+	"tagline": "",
+	"website": "https://www.powr.io",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://www.powr.io/terms",
+	"privacyPolicyURL": "https://www.powr.io/privacy",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.8",
+	"infoVersion": "1.0.8",
+	"points": 0,
+	"supportEmail": "support@powr.io",
+	"products": [],
+	"categoryIds": [
+		"social-and-communication",
+		"powr"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+			"created": "2018-03-13T17:57:14.111294996Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "S98BNmlYxZYL"
+	},
+	"created": "2018-02-06T21:26:29.926441Z",
+	"org": {
+		"id": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+		"title": "",
+		"username": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "powr",
+			"title": "POWR",
+			"description": "Apps created by POWR",
+			"icon": "",
+			"points": 40,
+			"visible": false,
+			"created": "2018-11-06T00:45:54.563564Z"
+		},
+		{
+			"id": "social-and-communication",
+			"title": "Social & Communication",
+			"description": "Apps that make it easier to communicate with your customers.",
+			"icon": "",
+			"points": 80,
+			"visible": true,
+			"created": "2018-01-22T19:17:10.030031Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "-YfKAejT0MEG",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"appId": {
+							"default": "",
+							"label": "App Installation ID",
+							"title": "App Installation ID",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Facebook Chat appear?",
+							"format": "element",
+							"order": 1,
+							"title": "Select Location",
+							"type": "object"
+						},
+						"productId": {
+							"default": "premium",
+							"label": "Plan",
+							"title": "POWr Plan",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://powrful.localtunnel.me/cloudflare/session?app_type=chat",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://powrful.localtunnel.me/cloudflare/install?app_type=chat",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/Biifpoc50rIV",
+			"metadata": {
+				"code": {
+					"sourceTag": "Biifpoc50rIV",
+					"uploadedOn": "2018-03-06T21:46:24.746709062Z"
+				}
+			},
+			"created": "2018-02-06T21:26:30.068987Z",
+			"proposedApp": {
+				"id": "-YfKAejT0MEG",
+				"title": "Chat",
+				"shortDescription": "Easy live support straight from your website.",
+				"longDescription": "POWr Chat is the convenient and easy way to chat with your site visitors in real time from your website. There are no complex integrations, all you need is your website and your Facebook Page for your business.\n \n# What are the benefits of using POWr Chat?   \n\n* **Boost conversions** - Easily let customers reach you in real time through Facebook Messenger to answer questions, remove blocks and make more sales.\n* **Stay ahead of the competition** - Only 54% of retailers offer live chat on their website. Stay ahead and provide enhanced customer service with a customized chat experience.\n* **Make it yours** - Customize it with your own colors, fonts, icon, welcome message and more. Decide which customers see it and what they see if you’re away.\n\n# Get started for free and enjoy these features:   \n\n* Connect to any Facebook Page from your website and chat through Facebook Messenger.\n* Customize your chat header, description and automated welcome message.\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* * More personalization with custom images, chat icons and backgrounds.\n* Chat trigger control: choose which users see it, the frequency and delays.\n* Away message for when you can’t immediately respond.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=chat).\n\n# Why users love Chat:   \n\n“Pretty awesome! Simple, to the point, clean and reliable.”\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Chat up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "//images.cloudflareapps.com/2BwD9KL2RnOM8Xukmjbq_Chat icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/pgNXQwiuRAGFjhaoXBBM_Copy of Chat 1.png",
+					"//images.cloudflareapps.com/CCLOOMBUTgeuPIUDXmii_Copy of Facebook chat .png",
+					"//images.cloudflareapps.com/gOfo4GRAQDy6aHJ6QnYW_Screen Shot 2018-03-13 at 10.11.58 AM.png",
+					"//images.cloudflareapps.com/20IxMVxTdMKqpeNBokgR_Copy of chat 3.png",
+					"//images.cloudflareapps.com/d3ufEHQIGusuT7GiRNgJ_Copy of Screenshot 4.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/DboSu5fQqqW3r22Nu6mg_Chat.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For businesses looking to test the water with new plugins.",
+						"longDescription": "* Connect Any Facebook Account\n* Automated Welcome Message\n* Custom Button Text",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "premium",
+						"title": "Starter",
+						"shortDescription": "For businesses who have their own brand and want extra customization.",
+						"longDescription": "* Remove POWr Branding\n* Connect Any Facebook Account\n* Automated Welcome Message\n* Custom Button Text\n* Custom Header Image\n* Custom Chat Icon\n* Chat Triggers\n* Background Patterns\n* Away Message",
+						"visible": true,
+						"price": 500,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "For growing businesses looking to stand out from the crowd and get more conversions.",
+						"longDescription": "* Remove POWr Branding\n* Connect Any Facebook Account\n* Automated Welcome Message\n* Custom Button Text\n* Custom Header Image\n* Custom Chat Icon\n* Chat Triggers\n* Background Patterns\n* Away Message\n* Trigger Details\n* Chat Delay",
+						"visible": true,
+						"price": 1200,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "For total control that scales with your business, whether it’s big or small. Get every feature for every plugin.",
+						"longDescription": "* Remove POWr Branding\n* Connect Any Facebook Account\n* Automated Welcome Message\n* Custom Button Text\n* Custom Header Image\n* Custom Chat Icon\n* Chat Triggers\n* Background Patterns\n* Away Message\n* Trigger Details\n* Chat Delay\n* Custom CSS & JS\n+ FREE Business Upgrade for all 50 POWr Plugins",
+						"visible": true,
+						"price": 5000,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "S98BNmlYxZYL"
+				},
+				"created": "2018-02-06T21:26:29.926441Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2018-03-13T17:57:14.105263743Z",
+				"canceledByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"canceledAt": "2018-03-13T23:19:21.982891125Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "-YfKAejT0MEG",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"appId": {
+							"default": "",
+							"label": "App Installation ID",
+							"title": "App Installation ID",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Facebook Chat appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						},
+						"productId": {
+							"default": "premium",
+							"label": "Plan",
+							"title": "POWr Plan",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=chat",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=chat",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "Adds live URL",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/YCnWCtecBHM7",
+			"metadata": {
+				"code": {
+					"sourceTag": "YCnWCtecBHM7",
+					"uploadedOn": "2018-03-13T23:18:43.013565563Z"
+				}
+			},
+			"created": "2018-03-13T23:18:42.858574Z",
+			"proposedApp": {
+				"id": "-YfKAejT0MEG",
+				"title": "Chat",
+				"shortDescription": "Easy live support straight from your website.",
+				"longDescription": "POWr Chat is the convenient and easy way to chat with your site visitors in real time from your website. There are no complex integrations, all you need is your website and your Facebook Page for your business.\n \n# What are the benefits of using POWr Chat?   \n\n* **Boost conversions** - Easily let customers reach you in real time through Facebook Messenger to answer questions, remove blocks and make more sales.\n* **Stay ahead of the competition** - Only 54% of retailers offer live chat on their website. Stay ahead and provide enhanced customer service with a customized chat experience.\n* **Make it yours** - Customize it with your own colors, fonts, icon, welcome message and more. Decide which customers see it and what they see if you’re away.\n\n# Get started for free and enjoy these features:   \n\n* Connect to any Facebook Page from your website and chat through Facebook Messenger.\n* Customize your chat header, description and automated welcome message.\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* * More personalization with custom images, chat icons and backgrounds.\n* Chat trigger control: choose which users see it, the frequency and delays.\n* Away message for when you can’t immediately respond.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=chat).\n\n# Why users love Chat:   \n\n“Pretty awesome! Simple, to the point, clean and reliable.”\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Chat up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "//images.cloudflareapps.com/2BwD9KL2RnOM8Xukmjbq_Chat icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/pgNXQwiuRAGFjhaoXBBM_Copy of Chat 1.png",
+					"//images.cloudflareapps.com/CCLOOMBUTgeuPIUDXmii_Copy of Facebook chat .png",
+					"//images.cloudflareapps.com/gOfo4GRAQDy6aHJ6QnYW_Screen Shot 2018-03-13 at 10.11.58 AM.png",
+					"//images.cloudflareapps.com/20IxMVxTdMKqpeNBokgR_Copy of chat 3.png",
+					"//images.cloudflareapps.com/d3ufEHQIGusuT7GiRNgJ_Copy of Screenshot 4.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/DboSu5fQqqW3r22Nu6mg_Chat.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For businesses looking to test the water with new plugins.",
+						"longDescription": "* Connect Any Facebook Account\n* Automated Welcome Message\n* Custom Button Text",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "premium",
+						"title": "Starter",
+						"shortDescription": "For businesses who have their own brand and want extra customization.",
+						"longDescription": "* Remove POWr Branding\n* Connect Any Facebook Account\n* Automated Welcome Message\n* Custom Button Text\n* Custom Header Image\n* Custom Chat Icon\n* Chat Triggers\n* Background Patterns\n* Away Message",
+						"visible": true,
+						"price": 500,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "For growing businesses looking to stand out from the crowd and get more conversions.",
+						"longDescription": "* Remove POWr Branding\n* Connect Any Facebook Account\n* Automated Welcome Message\n* Custom Button Text\n* Custom Header Image\n* Custom Chat Icon\n* Chat Triggers\n* Background Patterns\n* Away Message\n* Trigger Details\n* Chat Delay",
+						"visible": true,
+						"price": 1200,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "For total control that scales with your business, whether it’s big or small. Get every feature for every plugin.",
+						"longDescription": "* Remove POWr Branding\n* Connect Any Facebook Account\n* Automated Welcome Message\n* Custom Button Text\n* Custom Header Image\n* Custom Chat Icon\n* Chat Triggers\n* Background Patterns\n* Away Message\n* Trigger Details\n* Chat Delay\n* Custom CSS & JS\n+ FREE Business Upgrade for all 50 POWr Plugins",
+						"visible": true,
+						"price": 5000,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "S98BNmlYxZYL"
+				},
+				"created": "2018-02-06T21:26:29.926441Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2018-03-13T23:19:21.998558927Z",
+				"canceledByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"canceledAt": "2018-03-23T17:42:27.84243823Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "-YfKAejT0MEG",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"appId": {
+							"default": "",
+							"label": "App Installation ID",
+							"title": "App Installation ID",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Facebook Chat appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						},
+						"productId": {
+							"default": "premium",
+							"label": "Plan",
+							"title": "POWr Plan",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=chat",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=chat",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "User uniq install.id for map POWr app with",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/70Kwo9aBYO1_",
+			"metadata": {
+				"code": {
+					"sourceTag": "70Kwo9aBYO1_",
+					"uploadedOn": "2018-03-23T17:42:05.130146809Z"
+				}
+			},
+			"created": "2018-03-23T17:42:04.689573Z",
+			"proposedApp": {
+				"id": "-YfKAejT0MEG",
+				"title": "Chat",
+				"shortDescription": "Easy live support straight from your website.",
+				"longDescription": "POWr Chat is the convenient and easy way to chat with your site visitors in real time from your website. There are no complex integrations, all you need is your website and your Facebook Page for your business.\n \n# What are the benefits of using POWr Chat?   \n\n* **Boost conversions** - Easily let customers reach you in real time through Facebook Messenger to answer questions, remove blocks and make more sales.\n* **Stay ahead of the competition** - Only 54% of retailers offer live chat on their website. Stay ahead and provide enhanced customer service with a customized chat experience.\n* **Make it yours** - Customize it with your own colors, fonts, icon, welcome message and more. Decide which customers see it and what they see if you’re away.\n\n# Get started for free and enjoy these features:   \n\n* Connect to any Facebook Page from your website and chat through Facebook Messenger.\n* Customize your chat header, description and automated welcome message.\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* * More personalization with custom images, chat icons and backgrounds.\n* Chat trigger control: choose which users see it, the frequency and delays.\n* Away message for when you can’t immediately respond.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=chat).\n\n# Why users love Chat:   \n\n“Pretty awesome! Simple, to the point, clean and reliable.”\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Chat up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "//images.cloudflareapps.com/2BwD9KL2RnOM8Xukmjbq_Chat icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/pgNXQwiuRAGFjhaoXBBM_Copy of Chat 1.png",
+					"//images.cloudflareapps.com/CCLOOMBUTgeuPIUDXmii_Copy of Facebook chat .png",
+					"//images.cloudflareapps.com/gOfo4GRAQDy6aHJ6QnYW_Screen Shot 2018-03-13 at 10.11.58 AM.png",
+					"//images.cloudflareapps.com/20IxMVxTdMKqpeNBokgR_Copy of chat 3.png",
+					"//images.cloudflareapps.com/d3ufEHQIGusuT7GiRNgJ_Copy of Screenshot 4.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/DboSu5fQqqW3r22Nu6mg_Chat.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For businesses looking to test the water with new plugins.",
+						"longDescription": "* Connect Any Facebook Account\n* Automated Welcome Message\n* Custom Button Text",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "premium",
+						"title": "Starter",
+						"shortDescription": "For businesses who have their own brand and want extra customization.",
+						"longDescription": "* Remove POWr Branding\n* Connect Any Facebook Account\n* Automated Welcome Message\n* Custom Button Text\n* Custom Header Image\n* Custom Chat Icon\n* Chat Triggers\n* Background Patterns\n* Away Message",
+						"visible": true,
+						"price": 500,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "For growing businesses looking to stand out from the crowd and get more conversions.",
+						"longDescription": "* Remove POWr Branding\n* Connect Any Facebook Account\n* Automated Welcome Message\n* Custom Button Text\n* Custom Header Image\n* Custom Chat Icon\n* Chat Triggers\n* Background Patterns\n* Away Message\n* Trigger Details\n* Chat Delay",
+						"visible": true,
+						"price": 1200,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "For total control that scales with your business, whether it’s big or small. Get every feature for every plugin.",
+						"longDescription": "* Remove POWr Branding\n* Connect Any Facebook Account\n* Automated Welcome Message\n* Custom Button Text\n* Custom Header Image\n* Custom Chat Icon\n* Chat Triggers\n* Background Patterns\n* Away Message\n* Trigger Details\n* Chat Delay\n* Custom CSS & JS\n+ FREE Business Upgrade for all 50 POWr Plugins",
+						"visible": true,
+						"price": 5000,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "S98BNmlYxZYL"
+				},
+				"created": "2018-02-06T21:26:29.926441Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2018-03-23T17:42:27.891598919Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2018-04-02T21:05:04.438896144Z"
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "-YfKAejT0MEG",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Facebook Chat appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=chat",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=chat",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "Persisting install.id",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/3Xt8Gm2V1kwV",
+			"metadata": {
+				"code": {
+					"sourceTag": "3Xt8Gm2V1kwV",
+					"uploadedOn": "2018-09-19T23:59:28.810994106Z"
+				}
+			},
+			"created": "2018-09-19T23:59:28.65716Z",
+			"proposedApp": {
+				"id": "-YfKAejT0MEG",
+				"title": "Chat",
+				"shortDescription": "Easy live support straight from your website.",
+				"longDescription": "POWr Chat is the convenient and easy way to chat with your site visitors in real time from your website. There are no complex integrations, all you need is your website and your Facebook Page for your business.\n \n# What are the benefits of using POWr Chat?   \n\n* **Boost conversions** - Easily let customers reach you in real time through Facebook Messenger to answer questions, remove blocks and make more sales.\n* **Stay ahead of the competition** - Only 54% of retailers offer live chat on their website. Stay ahead and provide enhanced customer service with a customized chat experience.\n* **Make it yours** - Customize it with your own colors, fonts, icon, welcome message and more. Decide which customers see it and what they see if you’re away.\n\n# Get started for free and enjoy these features:   \n\n* Connect to any Facebook Page from your website and chat through Facebook Messenger.\n* Customize your chat header, description and automated welcome message.\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* * More personalization with custom images, chat icons and backgrounds.\n* Chat trigger control: choose which users see it, the frequency and delays.\n* Away message for when you can’t immediately respond.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=chat).\n\n# Why users love Chat:   \n\n“Pretty awesome! Simple, to the point, clean and reliable.”\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Chat up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "//images.cloudflareapps.com/2BwD9KL2RnOM8Xukmjbq_Chat icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/pgNXQwiuRAGFjhaoXBBM_Copy of Chat 1.png",
+					"//images.cloudflareapps.com/CCLOOMBUTgeuPIUDXmii_Copy of Facebook chat .png",
+					"//images.cloudflareapps.com/gOfo4GRAQDy6aHJ6QnYW_Screen Shot 2018-03-13 at 10.11.58 AM.png",
+					"//images.cloudflareapps.com/20IxMVxTdMKqpeNBokgR_Copy of chat 3.png",
+					"//images.cloudflareapps.com/d3ufEHQIGusuT7GiRNgJ_Copy of Screenshot 4.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/DboSu5fQqqW3r22Nu6mg_Chat.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "S98BNmlYxZYL"
+				},
+				"created": "2018-02-06T21:26:29.926441Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2018-09-19T23:59:45.520619136Z",
+				"canceledByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"canceledAt": "2018-09-25T18:01:57.546710745Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.4",
+			"appId": "-YfKAejT0MEG",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Facebook Chat appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=chat",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=chat",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "Persisting install.id",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/3Xt8Gm2V1kwV",
+			"created": "2018-09-25T17:07:05.882289Z",
+			"proposedApp": {
+				"id": "-YfKAejT0MEG",
+				"title": "Chat",
+				"shortDescription": "Easy live support straight from your website.",
+				"longDescription": "POWr Chat is the convenient and easy way to chat with your site visitors in real time from your website. There are no complex integrations, all you need is your website and your Facebook Page for your business.\n \n# What are the benefits of using POWr Chat?   \n\n* **Boost conversions** - Easily let customers reach you in real time through Facebook Messenger to answer questions, remove blocks and make more sales.\n* **Stay ahead of the competition** - Only 54% of retailers offer live chat on their website. Stay ahead and provide enhanced customer service with a customized chat experience.\n* **Make it yours** - Customize it with your own colors, fonts, icon, welcome message and more. Decide which customers see it and what they see if you’re away.\n\n# Get started for free and enjoy these features:   \n\n* Connect to any Facebook Page from your website and chat through Facebook Messenger.\n* Customize your chat header, description and automated welcome message.\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* * More personalization with custom images, chat icons and backgrounds.\n* Chat trigger control: choose which users see it, the frequency and delays.\n* Away message for when you can’t immediately respond.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=chat).\n\n# Why users love Chat:   \n\n“Pretty awesome! Simple, to the point, clean and reliable.”\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Chat up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "//images.cloudflareapps.com/2BwD9KL2RnOM8Xukmjbq_Chat icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/pgNXQwiuRAGFjhaoXBBM_Copy of Chat 1.png",
+					"//images.cloudflareapps.com/CCLOOMBUTgeuPIUDXmii_Copy of Facebook chat .png",
+					"//images.cloudflareapps.com/gOfo4GRAQDy6aHJ6QnYW_Screen Shot 2018-03-13 at 10.11.58 AM.png",
+					"//images.cloudflareapps.com/20IxMVxTdMKqpeNBokgR_Copy of chat 3.png",
+					"//images.cloudflareapps.com/d3ufEHQIGusuT7GiRNgJ_Copy of Screenshot 4.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/DboSu5fQqqW3r22Nu6mg_Chat.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "S98BNmlYxZYL"
+				},
+				"created": "2018-02-06T21:26:29.926441Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2018-09-25T18:01:57.557474168Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2018-09-26T17:15:58.400088407Z"
+			}
+		},
+		{
+			"tag": "1.0.5",
+			"appId": "-YfKAejT0MEG",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Facebook Chat appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=chat",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=chat",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0,
+				"upvotes": 0,
+				"downvotes": 1
+			},
+			"releaseNotes": "Persisting install.id",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/3Xt8Gm2V1kwV",
+			"created": "2018-09-26T21:46:12.984941Z",
+			"proposedApp": {
+				"id": "-YfKAejT0MEG",
+				"title": "Chat",
+				"shortDescription": "Live support through Messenger straight from your website.",
+				"longDescription": "POWr Chat is the convenient and easy way to chat with your site visitors in real time from your website. There are no complex integrations, all you need is your website and your Facebook Page for your business.\n \n# What are the benefits of using POWr Chat?   \n\n* **Boost conversions** - Easily let customers reach you in real time through Facebook Messenger to answer questions, remove blocks and make more sales.\n* **Stay ahead of the competition** - Only 54% of retailers offer live chat on their website. Stay ahead and provide enhanced customer service with a customized chat experience.\n* **Make it yours** - Customize it with your own colors, fonts, icon, welcome message and more. Decide which customers see it and what they see if you’re away.\n\n# Get started for free and enjoy these features:   \n\n* Connect to any Facebook Page from your website and chat through Facebook Messenger.\n* Customize your chat header, description and automated welcome message.\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* * More personalization with custom images, chat icons and backgrounds.\n* Chat trigger control: choose which users see it, the frequency and delays.\n* Away message for when you can’t immediately respond.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=chat).\n\n# Why users love Chat:   \n\n“Pretty awesome! Simple, to the point, clean and reliable.”\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Chat up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "https://images.cloudflareapps.com/xpCZrNTAC17z/Chat-Icon-Cloudflare.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/pgNXQwiuRAGFjhaoXBBM_Copy of Chat 1.png",
+					"//images.cloudflareapps.com/CCLOOMBUTgeuPIUDXmii_Copy of Facebook chat .png",
+					"//images.cloudflareapps.com/gOfo4GRAQDy6aHJ6QnYW_Screen Shot 2018-03-13 at 10.11.58 AM.png",
+					"//images.cloudflareapps.com/20IxMVxTdMKqpeNBokgR_Copy of chat 3.png",
+					"//images.cloudflareapps.com/d3ufEHQIGusuT7GiRNgJ_Copy of Screenshot 4.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/7rbJb65x_H8s/Chat-Banner-Cloudflare.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "S98BNmlYxZYL"
+				},
+				"created": "2018-02-06T21:26:29.926441Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2018-09-27T20:26:10.547808842Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2018-09-27T20:34:03.087586389Z"
+			}
+		},
+		{
+			"tag": "1.0.6",
+			"appId": "-YfKAejT0MEG",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Facebook Chat appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=chat",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=chat",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.5,
+				"upvotes": 1,
+				"downvotes": 1
+			},
+			"releaseNotes": "We've made minor updates to Social Feed. There is no need to do anything, your app will continue to work as expected.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/3Xt8Gm2V1kwV",
+			"created": "2018-10-16T17:52:57.04158Z",
+			"proposedApp": {
+				"id": "-YfKAejT0MEG",
+				"title": "Chat",
+				"shortDescription": "Live support through Messenger straight from your website.",
+				"longDescription": "POWr Chat is the convenient and easy way to chat with your site visitors in real time from your website. There are no complex integrations, all you need is your website and your Facebook Page for your business.\n \n# What are the benefits of using POWr Chat?   \n\n* **Boost conversions** - Easily let customers reach you in real time through Facebook Messenger to answer questions, remove blocks and make more sales.\n* **Stay ahead of the competition** - Only 54% of retailers offer live chat on their website. Stay ahead and provide enhanced customer service with a customized chat experience.\n* **Make it yours** - Customize it with your own colors, fonts, icon, welcome message and more. Decide which customers see it and what they see if you’re away.\n\n# Get started for free and enjoy these features:   \n\n* Connect to any Facebook Page from your website and chat through Facebook Messenger.\n* Customize your chat header, description and automated welcome message.\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* * More personalization with custom images, chat icons and backgrounds.\n* Chat trigger control: choose which users see it, the frequency and delays.\n* Away message for when you can’t immediately respond.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=chat).\n\n# Why users love Chat:   \n\n“Pretty awesome! Simple, to the point, clean and reliable.”\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Chat up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "powr-chat",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "https://images.cloudflareapps.com/xpCZrNTAC17z/Chat-Icon-Cloudflare.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/pgNXQwiuRAGFjhaoXBBM_Copy of Chat 1.png",
+					"//images.cloudflareapps.com/CCLOOMBUTgeuPIUDXmii_Copy of Facebook chat .png",
+					"//images.cloudflareapps.com/gOfo4GRAQDy6aHJ6QnYW_Screen Shot 2018-03-13 at 10.11.58 AM.png",
+					"//images.cloudflareapps.com/20IxMVxTdMKqpeNBokgR_Copy of chat 3.png",
+					"//images.cloudflareapps.com/d3ufEHQIGusuT7GiRNgJ_Copy of Screenshot 4.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/7rbJb65x_H8s/Chat-Banner-Cloudflare.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "S98BNmlYxZYL"
+				},
+				"created": "2018-02-06T21:26:29.926441Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2018-10-16T17:52:57.195029432Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2018-10-18T18:27:42.18534393Z"
+			}
+		},
+		{
+			"tag": "1.0.7",
+			"appId": "-YfKAejT0MEG",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Facebook Chat appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=chat",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=chat",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0,
+				"upvotes": 0,
+				"downvotes": 4
+			},
+			"releaseNotes": "Add POWR tag",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/3Xt8Gm2V1kwV",
+			"created": "2018-11-06T00:52:33.175469Z",
+			"proposedApp": {
+				"id": "-YfKAejT0MEG",
+				"title": "Chat",
+				"shortDescription": "Live support through Messenger straight from your website.",
+				"longDescription": "POWr Chat is the convenient and easy way to chat with your site visitors in real time from your website. There are no complex integrations, all you need is your website and your Facebook Page for your business.\n \n# What are the benefits of using POWr Chat?   \n\n* **Boost conversions** - Easily let customers reach you in real time through Facebook Messenger to answer questions, remove blocks and make more sales.\n* **Stay ahead of the competition** - Only 54% of retailers offer live chat on their website. Stay ahead and provide enhanced customer service with a customized chat experience.\n* **Make it yours** - Customize it with your own colors, fonts, icon, welcome message and more. Decide which customers see it and what they see if you’re away.\n\n# Get started for free and enjoy these features:   \n\n* Connect to any Facebook Page from your website and chat through Facebook Messenger.\n* Customize your chat header, description and automated welcome message.\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* * More personalization with custom images, chat icons and backgrounds.\n* Chat trigger control: choose which users see it, the frequency and delays.\n* Away message for when you can’t immediately respond.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=chat).\n\n# Why users love Chat:   \n\n“Pretty awesome! Simple, to the point, clean and reliable.”\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Chat up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "powr-chat",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "https://images.cloudflareapps.com/xpCZrNTAC17z/Chat-Icon-Cloudflare.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/pgNXQwiuRAGFjhaoXBBM_Copy of Chat 1.png",
+					"//images.cloudflareapps.com/CCLOOMBUTgeuPIUDXmii_Copy of Facebook chat .png",
+					"//images.cloudflareapps.com/gOfo4GRAQDy6aHJ6QnYW_Screen Shot 2018-03-13 at 10.11.58 AM.png",
+					"//images.cloudflareapps.com/20IxMVxTdMKqpeNBokgR_Copy of chat 3.png",
+					"//images.cloudflareapps.com/d3ufEHQIGusuT7GiRNgJ_Copy of Screenshot 4.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/7rbJb65x_H8s/Chat-Banner-Cloudflare.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication",
+					"powr"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "S98BNmlYxZYL"
+				},
+				"created": "2018-02-06T21:26:29.926441Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "41f272f0efef5d92ddde1aa9398f388a",
+				"requestedAt": "2018-11-06T00:52:33.342547539Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-11-06T01:00:28.849259235Z"
+			}
+		},
+		{
+			"tag": "1.0.8",
+			"appId": "-YfKAejT0MEG",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"exitHelp": {
+							"helpvalue": "<br/><hr/><h2><b>Need help?</b></h2>Visit our glorious <a href='https://www.powr.io/knowledge-base'>Support Center</a> or <a href='https://www.powr.io/feedback/new?&src=cloudflare' target='_blank'>send us a message</a>.",
+							"order": 8,
+							"type": "help"
+						},
+						"externalLink": {
+							"format": "button",
+							"href": "https://www.powr.io/cloudflare/chat",
+							"label": "Open POWr Editor",
+							"order": 2,
+							"title": "Design and customize your Chat",
+							"type": "link"
+						},
+						"introHelp": {
+							"helpvalue": "<center><h1>Welcome to <br/> POWr Chat</h1> Help your visitors with live chat anywhere on your Cloudflare site!</center>",
+							"order": 0,
+							"type": "help"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"format": "element",
+							"order": 6,
+							"title": "Where should the Chat appear?",
+							"type": "object"
+						},
+						"shortcode": {
+							"order": 4,
+							"placeholder": "[powr-chat id='abc123']",
+							"title": "Get the shortcode from the POWr link where you created your Chat",
+							"type": "string"
+						},
+						"step1Help": {
+							"helpvalue": "<p></p><h2><b>1: Configure Your Chat</b></h2>",
+							"order": 1,
+							"type": "help"
+						},
+						"step2Help": {
+							"helpvalue": "<p></p><h2><b>2: Paste Shortcode</b></h2>",
+							"order": 3,
+							"type": "help"
+						},
+						"step3Help": {
+							"helpvalue": "<p></p><h2><b>3: Select Install Location</b></h2>",
+							"order": 5,
+							"type": "help"
+						},
+						"step4Help": {
+							"helpvalue": "<center><h2>------- OR --------</h2></center><br/><h3>Embed your shortcode in your website where you'd like your Chat to appear.</h3>",
+							"order": 7,
+							"type": "help"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.34,
+				"upvotes": 14,
+				"downvotes": 27
+			},
+			"releaseNotes": "New & Improved installation flow ✨",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/fE6R3318P2kp",
+			"metadata": {
+				"code": {
+					"sourceTag": "fE6R3318P2kp",
+					"uploadedOn": "2019-04-16T00:17:32.033773379Z"
+				}
+			},
+			"created": "2019-04-16T00:17:31.860195Z",
+			"proposedApp": {
+				"id": "-YfKAejT0MEG",
+				"title": "Chat",
+				"shortDescription": "Live support through Messenger straight from your website.",
+				"longDescription": "POWr Chat is the convenient and easy way to chat with your site visitors in real time from your website. There are no complex integrations, all you need is your website and your Facebook Page for your business.\n \n# What are the benefits of using POWr Chat?   \n\n* **Boost conversions** - Easily let customers reach you in real time through Facebook Messenger to answer questions, remove blocks and make more sales.\n* **Stay ahead of the competition** - Only 54% of retailers offer live chat on their website. Stay ahead and provide enhanced customer service with a customized chat experience.\n* **Make it yours** - Customize it with your own colors, fonts, icon, welcome message and more. Decide which customers see it and what they see if you’re away.\n\n# Get started for free and enjoy these features:   \n\n* Connect to any Facebook Page from your website and chat through Facebook Messenger.\n* Customize your chat header, description and automated welcome message.\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* * More personalization with custom images, chat icons and backgrounds.\n* Chat trigger control: choose which users see it, the frequency and delays.\n* Away message for when you can’t immediately respond.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=chat).\n\n# Why users love Chat:   \n\n“Pretty awesome! Simple, to the point, clean and reliable.”\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Chat up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "powr-chat",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "https://images.cloudflareapps.com/xpCZrNTAC17z/Chat-Icon-Cloudflare.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/pgNXQwiuRAGFjhaoXBBM_Copy of Chat 1.png",
+					"//images.cloudflareapps.com/CCLOOMBUTgeuPIUDXmii_Copy of Facebook chat .png",
+					"//images.cloudflareapps.com/gOfo4GRAQDy6aHJ6QnYW_Screen Shot 2018-03-13 at 10.11.58 AM.png",
+					"//images.cloudflareapps.com/20IxMVxTdMKqpeNBokgR_Copy of chat 3.png",
+					"//images.cloudflareapps.com/d3ufEHQIGusuT7GiRNgJ_Copy of Screenshot 4.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/7rbJb65x_H8s/Chat-Banner-Cloudflare.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication",
+					"powr"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "S98BNmlYxZYL"
+				},
+				"created": "2018-02-06T21:26:29.926441Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2019-04-16T00:17:32.534293868Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-04-16T20:40:09.891604469Z"
+			}
+		}
+	]
+}

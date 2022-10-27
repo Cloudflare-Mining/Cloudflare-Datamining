@@ -1,0 +1,3104 @@
+{
+	"id": "ngqhM7rZolNP",
+	"title": "AdBlock Minus",
+	"shortDescription": "Stop ad blocking on your site now. Reclaim lost revenue.",
+	"longDescription": "How much revenue do you lose every month to ad blockers?\n\nAdBlock Minus is an easy-to-use system for recapturing lost revenue from your website or blog.",
+	"instructions": "",
+	"alias": "abm",
+	"orgId": "1db6a3d1208550b8a6ef4a21413f2816",
+	"icon": "https://images.cloudflareapps.com/hzQgKwlhsz8y/kisspng-computer-icons-revenue-finance-payment-service-growing-up-healthily-5aded791a26423.9263620615245536176652.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/8z2PWD4k8OYH/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202018-09-22%20%D0%B2%2022.06.22.png",
+		"https://images.cloudflareapps.com/gzaRy-RDVvO_/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202018-09-22%20%D0%B2%2022.07.20.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/XJWuW8CRgwF2/Component%201.png",
+	"featuredAppImage": "",
+	"author": "Anlob LLC",
+	"tagline": "",
+	"website": "https://www.cloudflare.com/apps/abm",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://abm.anlob.ru/terms.html",
+	"privacyPolicyURL": "https://abm.anlob.ru/privacypolicy.html",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.1.5",
+	"infoVersion": "1.1.5",
+	"points": 0,
+	"supportEmail": "mail@anlob.ru",
+	"products": [
+		{
+			"id": "basic",
+			"title": "Basic",
+			"shortDescription": "Basic plan for free",
+			"longDescription": "",
+			"visible": true,
+			"price": 0,
+			"order": 0,
+			"plan": "basic",
+			"created": null
+		},
+		{
+			"id": "pro",
+			"title": "Pro",
+			"shortDescription": "Pro plan allows custom colors and custom labels",
+			"longDescription": "",
+			"visible": true,
+			"price": 100,
+			"order": 1,
+			"plan": "APPS_ADBLOCK_MINUS_PRO",
+			"feature": "apps.adblock_minus_pro.enabled",
+			"created": null
+		}
+	],
+	"categoryIds": [
+		"widgets-and-plugins"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "1db6a3d1208550b8a6ef4a21413f2816",
+			"created": "2018-09-22T20:09:45.960907876Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "FvBbmqMt1uyV"
+	},
+	"created": "2018-09-19T15:53:38.784911Z",
+	"org": {
+		"id": "1db6a3d1208550b8a6ef4a21413f2816",
+		"title": "",
+		"username": "1db6a3d1208550b8a6ef4a21413f2816",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "widgets-and-plugins",
+			"title": "Widgets & Plugins",
+			"description": "Apps that add functionality and services to your website.",
+			"icon": "",
+			"points": 10,
+			"visible": true,
+			"metadata": {
+				"promoted": false
+			},
+			"created": "2018-01-22T19:19:00.135755Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "ngqhM7rZolNP",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./app.css"
+						},
+						{
+							"type": "script",
+							"src": "./app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"close": {
+							"default": true,
+							"order": 2,
+							"title": "Allow users to close the warning",
+							"type": "boolean"
+						},
+						"colors": {
+							"order": 5,
+							"properties": {
+								"colorBackground": {
+									"default": "#ff0000",
+									"format": "color",
+									"order": 2,
+									"title": "Background Color",
+									"type": "string"
+								},
+								"colorText": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 1,
+									"title": "Text Color",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"proColors": true
+							},
+							"title": "Customize Colors",
+							"type": "object"
+						},
+						"once": {
+							"default": false,
+							"order": 3,
+							"showIf": {
+								"close": true
+							},
+							"title": "Show only once per session",
+							"type": "boolean"
+						},
+						"proColors": {
+							"default": false,
+							"order": 4,
+							"products": [
+								"pro"
+							],
+							"title": "Customize Colors",
+							"type": "boolean"
+						},
+						"proTranslation": {
+							"default": false,
+							"order": 6,
+							"products": [
+								"pro"
+							],
+							"title": "Customize Labels",
+							"type": "boolean"
+						},
+						"style": {
+							"default": "top",
+							"enum": [
+								"top",
+								"bottom",
+								"corner",
+								"block"
+							],
+							"enumNames": {
+								"block": "Block full page",
+								"bottom": "Footer banner",
+								"corner": "In the corner",
+								"top": "Top banner"
+							},
+							"order": 1,
+							"title": "Position",
+							"type": "string"
+						},
+						"translation": {
+							"order": 7,
+							"properties": {
+								"translationRefresh": {
+									"default": "I understand, I have disabled my ad blocker.  Let me in!",
+									"order": 3,
+									"placeholder": "I understand, I have disabled my ad blocker.",
+									"title": "Refresh",
+									"type": "string"
+								},
+								"translationText": {
+									"default": "But without advertising-income, we can't keep making this site awesome.",
+									"format": "textarea",
+									"order": 2,
+									"placeholder": "But without advertising-income, we can't keep making this site awesome.",
+									"title": "Text",
+									"type": "string"
+								},
+								"translationTitle": {
+									"default": "It looks like you're using an ad blocker.",
+									"order": 1,
+									"placeholder": "It looks like you're using an ad blocker.",
+									"title": "Title",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"proTranslation": true
+							},
+							"title": "Customize Labels",
+							"type": "object"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Basic plan for free",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "basic",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Pro plan allows custom colors and custom labels",
+						"longDescription": "",
+						"visible": true,
+						"price": 500,
+						"order": 1,
+						"plan": "pro",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/mRJMBjBsvh9W",
+			"metadata": {
+				"code": {
+					"sourceTag": "mRJMBjBsvh9W",
+					"uploadedOn": "2018-09-22T19:53:47.135928251Z"
+				}
+			},
+			"created": "2018-09-19T15:53:39.281767Z",
+			"proposedApp": {
+				"id": "ngqhM7rZolNP",
+				"title": "AdBlock Minus",
+				"shortDescription": "Stop ad blocking on your site now. Reclaim lost revenue.",
+				"longDescription": "How much revenue do you lose every month to ad blockers?\n\nAdBlock Minus is an easy-to-use system for recapturing lost revenue from your website or blog.",
+				"instructions": "",
+				"alias": "abm",
+				"orgId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"icon": "https://images.cloudflareapps.com/hzQgKwlhsz8y/kisspng-computer-icons-revenue-finance-payment-service-growing-up-healthily-5aded791a26423.9263620615245536176652.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/8z2PWD4k8OYH/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202018-09-22%20%D0%B2%2022.06.22.png",
+					"https://images.cloudflareapps.com/gzaRy-RDVvO_/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202018-09-22%20%D0%B2%2022.07.20.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Anlob LLC",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "mail@anlob.ru",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "FvBbmqMt1uyV"
+				},
+				"created": "2018-09-19T15:53:38.784911Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"requestedAt": "2018-09-22T20:09:45.936790931Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2018-10-09T17:05:58.72438944Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "ngqhM7rZolNP",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./app.css"
+						},
+						{
+							"type": "script",
+							"src": "./app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"close": {
+							"default": true,
+							"order": 2,
+							"title": "Allow users to close the warning",
+							"type": "boolean"
+						},
+						"colors": {
+							"order": 5,
+							"properties": {
+								"colorBackground": {
+									"default": "#ff0000",
+									"format": "color",
+									"order": 2,
+									"title": "Background Color",
+									"type": "string"
+								},
+								"colorText": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 1,
+									"title": "Text Color",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"proColors": true
+							},
+							"title": "Customize Colors",
+							"type": "object"
+						},
+						"once": {
+							"default": false,
+							"order": 3,
+							"showIf": {
+								"close": true
+							},
+							"title": "Show only once per session",
+							"type": "boolean"
+						},
+						"proColors": {
+							"default": false,
+							"order": 4,
+							"products": [
+								"pro"
+							],
+							"title": "Customize Colors",
+							"type": "boolean"
+						},
+						"proTranslation": {
+							"default": false,
+							"order": 6,
+							"products": [
+								"pro"
+							],
+							"title": "Customize Labels",
+							"type": "boolean"
+						},
+						"style": {
+							"default": "top",
+							"enum": [
+								"top",
+								"bottom",
+								"corner",
+								"block"
+							],
+							"enumNames": {
+								"block": "Block full page",
+								"bottom": "Footer banner",
+								"corner": "In the corner",
+								"top": "Top banner"
+							},
+							"order": 1,
+							"title": "Position",
+							"type": "string"
+						},
+						"translation": {
+							"order": 7,
+							"properties": {
+								"translationRefresh": {
+									"default": "I understand, I have disabled my ad blocker.  Let me in!",
+									"order": 3,
+									"placeholder": "I understand, I have disabled my ad blocker.",
+									"title": "Refresh",
+									"type": "string"
+								},
+								"translationText": {
+									"default": "But without advertising-income, we can't keep making this site awesome.",
+									"format": "textarea",
+									"order": 2,
+									"placeholder": "But without advertising-income, we can't keep making this site awesome.",
+									"title": "Text",
+									"type": "string"
+								},
+								"translationTitle": {
+									"default": "It looks like you're using an ad blocker.",
+									"order": 1,
+									"placeholder": "It looks like you're using an ad blocker.",
+									"title": "Title",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"proTranslation": true
+							},
+							"title": "Customize Labels",
+							"type": "object"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Basic plan for free",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "basic",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Pro plan allows custom colors and custom labels",
+						"longDescription": "",
+						"visible": true,
+						"price": 500,
+						"order": 1,
+						"plan": "pro",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/mRJMBjBsvh9W",
+			"created": "2018-10-21T22:06:36.048826Z",
+			"proposedApp": {
+				"id": "ngqhM7rZolNP",
+				"title": "AdBlock Minus",
+				"shortDescription": "Stop ad blocking on your site now. Reclaim lost revenue.",
+				"longDescription": "How much revenue do you lose every month to ad blockers?\n\nAdBlock Minus is an easy-to-use system for recapturing lost revenue from your website or blog.",
+				"instructions": "",
+				"alias": "abm",
+				"orgId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"icon": "https://images.cloudflareapps.com/hzQgKwlhsz8y/kisspng-computer-icons-revenue-finance-payment-service-growing-up-healthily-5aded791a26423.9263620615245536176652.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/8z2PWD4k8OYH/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202018-09-22%20%D0%B2%2022.06.22.png",
+					"https://images.cloudflareapps.com/gzaRy-RDVvO_/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202018-09-22%20%D0%B2%2022.07.20.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Anlob LLC",
+				"tagline": "",
+				"website": "https://www.cloudflare.com/apps/abm",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "mail@anlob.ru",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "FvBbmqMt1uyV"
+				},
+				"created": "2018-09-19T15:53:38.784911Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"requestedAt": "2018-10-21T22:08:33.335521242Z",
+				"canceledByUserId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"canceledAt": "2018-12-16T17:34:29.530907284Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "ngqhM7rZolNP",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./app.css"
+						},
+						{
+							"type": "script",
+							"src": "./app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"close": {
+							"default": true,
+							"order": 2,
+							"title": "Allow users to close the warning",
+							"type": "boolean"
+						},
+						"colors": {
+							"order": 5,
+							"properties": {
+								"colorBackground": {
+									"default": "#ff0000",
+									"format": "color",
+									"order": 2,
+									"title": "Background Color",
+									"type": "string"
+								},
+								"colorText": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 1,
+									"title": "Text Color",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"proColors": true
+							},
+							"title": "Customize Colors",
+							"type": "object"
+						},
+						"once": {
+							"default": false,
+							"order": 3,
+							"showIf": {
+								"close": true
+							},
+							"title": "Show only once per session",
+							"type": "boolean"
+						},
+						"proColors": {
+							"default": false,
+							"order": 4,
+							"products": [
+								"pro"
+							],
+							"title": "Customize Colors",
+							"type": "boolean"
+						},
+						"proTranslation": {
+							"default": false,
+							"order": 6,
+							"products": [
+								"pro"
+							],
+							"title": "Customize Labels",
+							"type": "boolean"
+						},
+						"style": {
+							"default": "top",
+							"enum": [
+								"top",
+								"bottom",
+								"corner",
+								"block"
+							],
+							"enumNames": {
+								"block": "Block full page",
+								"bottom": "Footer banner",
+								"corner": "In the corner",
+								"top": "Top banner"
+							},
+							"order": 1,
+							"title": "Position",
+							"type": "string"
+						},
+						"translation": {
+							"order": 7,
+							"properties": {
+								"translationRefresh": {
+									"default": "I understand, I have disabled my ad blocker.  Let me in!",
+									"order": 3,
+									"placeholder": "I understand, I have disabled my ad blocker.",
+									"title": "Refresh",
+									"type": "string"
+								},
+								"translationText": {
+									"default": "But without advertising-income, we can't keep making this site awesome.",
+									"format": "textarea",
+									"order": 2,
+									"placeholder": "But without advertising-income, we can't keep making this site awesome.",
+									"title": "Text",
+									"type": "string"
+								},
+								"translationTitle": {
+									"default": "It looks like you're using an ad blocker.",
+									"order": 1,
+									"placeholder": "It looks like you're using an ad blocker.",
+									"title": "Title",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"proTranslation": true
+							},
+							"title": "Customize Labels",
+							"type": "object"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Basic plan for free",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "basic",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Pro plan allows custom colors and custom labels",
+						"longDescription": "",
+						"visible": true,
+						"price": 500,
+						"order": 1,
+						"plan": "pro",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.57,
+				"upvotes": 12,
+				"downvotes": 9
+			},
+			"releaseNotes": "Terms of Service URL and Privacy Policy URL",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/mRJMBjBsvh9W",
+			"created": "2018-12-16T17:34:28.885282Z",
+			"proposedApp": {
+				"id": "ngqhM7rZolNP",
+				"title": "AdBlock Minus",
+				"shortDescription": "Stop ad blocking on your site now. Reclaim lost revenue.",
+				"longDescription": "How much revenue do you lose every month to ad blockers?\n\nAdBlock Minus is an easy-to-use system for recapturing lost revenue from your website or blog.",
+				"instructions": "",
+				"alias": "abm",
+				"orgId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"icon": "https://images.cloudflareapps.com/hzQgKwlhsz8y/kisspng-computer-icons-revenue-finance-payment-service-growing-up-healthily-5aded791a26423.9263620615245536176652.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/8z2PWD4k8OYH/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202018-09-22%20%D0%B2%2022.06.22.png",
+					"https://images.cloudflareapps.com/gzaRy-RDVvO_/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202018-09-22%20%D0%B2%2022.07.20.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Anlob LLC",
+				"tagline": "",
+				"website": "https://www.cloudflare.com/apps/abm",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://abm.anlob.ru/terms.html",
+				"privacyPolicyURL": "https://abm.anlob.ru/privacypolicy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "mail@anlob.ru",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "FvBbmqMt1uyV"
+				},
+				"created": "2018-09-19T15:53:38.784911Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"requestedAt": "2018-12-16T17:34:29.549321856Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2018-12-18T17:40:25.167734016Z"
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "ngqhM7rZolNP",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./app.css"
+						},
+						{
+							"type": "script",
+							"src": "./app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"close": {
+							"default": true,
+							"order": 2,
+							"title": "Allow users to close the warning",
+							"type": "boolean"
+						},
+						"colors": {
+							"order": 5,
+							"properties": {
+								"colorBackground": {
+									"default": "#ff0000",
+									"format": "color",
+									"order": 2,
+									"title": "Background Color",
+									"type": "string"
+								},
+								"colorText": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 1,
+									"title": "Text Color",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"proColors": true
+							},
+							"title": "Customize Colors",
+							"type": "object"
+						},
+						"once": {
+							"default": false,
+							"order": 3,
+							"showIf": {
+								"close": true
+							},
+							"title": "Show only once per session",
+							"type": "boolean"
+						},
+						"proColors": {
+							"default": false,
+							"order": 4,
+							"products": [
+								"pro"
+							],
+							"title": "Customize Colors",
+							"type": "boolean"
+						},
+						"proTranslation": {
+							"default": false,
+							"order": 6,
+							"products": [
+								"pro"
+							],
+							"title": "Customize Labels",
+							"type": "boolean"
+						},
+						"style": {
+							"default": "top",
+							"enum": [
+								"top",
+								"bottom",
+								"corner",
+								"block"
+							],
+							"enumNames": {
+								"block": "Block full page",
+								"bottom": "Footer banner",
+								"corner": "In the corner",
+								"top": "Top banner"
+							},
+							"order": 1,
+							"title": "Position",
+							"type": "string"
+						},
+						"translation": {
+							"order": 7,
+							"properties": {
+								"translationRefresh": {
+									"default": "I understand, I have disabled my ad blocker.  Let me in!",
+									"order": 3,
+									"placeholder": "I understand, I have disabled my ad blocker.",
+									"title": "Refresh",
+									"type": "string"
+								},
+								"translationText": {
+									"default": "But without advertising-income, we can't keep making this site awesome.",
+									"format": "textarea",
+									"order": 2,
+									"placeholder": "But without advertising-income, we can't keep making this site awesome.",
+									"title": "Text",
+									"type": "string"
+								},
+								"translationTitle": {
+									"default": "It looks like you're using an ad blocker.",
+									"order": 1,
+									"placeholder": "It looks like you're using an ad blocker.",
+									"title": "Title",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"proTranslation": true
+							},
+							"title": "Customize Labels",
+							"type": "object"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Basic plan for free",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "basic",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Pro plan allows custom colors and custom labels",
+						"longDescription": "",
+						"visible": true,
+						"price": 500,
+						"order": 1,
+						"plan": "pro",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "New features",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/mRJMBjBsvh9W",
+			"created": "2019-06-05T21:47:52.42414Z",
+			"proposedApp": {
+				"id": "ngqhM7rZolNP",
+				"title": "AdBlock Minus",
+				"shortDescription": "Stop ad blocking on your site now. Reclaim lost revenue.",
+				"longDescription": "How much revenue do you lose every month to ad blockers?\n\nAdBlock Minus is an easy-to-use system for recapturing lost revenue from your website or blog.",
+				"instructions": "",
+				"alias": "abm",
+				"orgId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"icon": "https://images.cloudflareapps.com/hzQgKwlhsz8y/kisspng-computer-icons-revenue-finance-payment-service-growing-up-healthily-5aded791a26423.9263620615245536176652.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/8z2PWD4k8OYH/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202018-09-22%20%D0%B2%2022.06.22.png",
+					"https://images.cloudflareapps.com/gzaRy-RDVvO_/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202018-09-22%20%D0%B2%2022.07.20.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Anlob LLC",
+				"tagline": "",
+				"website": "https://www.cloudflare.com/apps/abm",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://abm.anlob.ru/terms.html",
+				"privacyPolicyURL": "https://abm.anlob.ru/privacypolicy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "mail@anlob.ru",
+				"products": [
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Pro plan allows custom colors and custom labels",
+						"longDescription": "",
+						"visible": true,
+						"price": 500,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "FvBbmqMt1uyV"
+				},
+				"created": "2018-09-19T15:53:38.784911Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"requestedAt": "2019-06-05T21:48:35.725252657Z",
+				"canceledByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"canceledAt": "2019-06-27T17:17:50.005095276Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.4",
+			"appId": "ngqhM7rZolNP",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./app.css"
+						},
+						{
+							"type": "script",
+							"src": "./app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"close": {
+							"default": true,
+							"order": 2,
+							"title": "Allow users to close the warning",
+							"type": "boolean"
+						},
+						"colors": {
+							"order": 5,
+							"properties": {
+								"colorBackground": {
+									"default": "#ff0000",
+									"format": "color",
+									"order": 2,
+									"title": "Background Color",
+									"type": "string"
+								},
+								"colorText": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 1,
+									"title": "Text Color",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"proColors": true
+							},
+							"title": "Customize Colors",
+							"type": "object"
+						},
+						"once": {
+							"default": false,
+							"order": 3,
+							"showIf": {
+								"close": true
+							},
+							"title": "Show only once per session",
+							"type": "boolean"
+						},
+						"proColors": {
+							"default": false,
+							"order": 4,
+							"products": [
+								"pro"
+							],
+							"title": "Customize Colors",
+							"type": "boolean"
+						},
+						"proTranslation": {
+							"default": false,
+							"order": 6,
+							"products": [
+								"pro"
+							],
+							"title": "Customize Labels",
+							"type": "boolean"
+						},
+						"style": {
+							"default": "top",
+							"enum": [
+								"top",
+								"bottom",
+								"corner",
+								"block"
+							],
+							"enumNames": {
+								"block": "Block full page",
+								"bottom": "Footer banner",
+								"corner": "In the corner",
+								"top": "Top banner"
+							},
+							"order": 1,
+							"title": "Position",
+							"type": "string"
+						},
+						"translation": {
+							"order": 7,
+							"properties": {
+								"translationRefresh": {
+									"default": "I understand, I have disabled my ad blocker.  Let me in!",
+									"order": 3,
+									"placeholder": "I understand, I have disabled my ad blocker.",
+									"title": "Refresh",
+									"type": "string"
+								},
+								"translationText": {
+									"default": "But without advertising-income, we can't keep making this site awesome.",
+									"format": "textarea",
+									"order": 2,
+									"placeholder": "But without advertising-income, we can't keep making this site awesome.",
+									"title": "Text",
+									"type": "string"
+								},
+								"translationTitle": {
+									"default": "It looks like you're using an ad blocker.",
+									"order": 1,
+									"placeholder": "It looks like you're using an ad blocker.",
+									"title": "Title",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"proTranslation": true
+							},
+							"title": "Customize Labels",
+							"type": "object"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Basic plan for free",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "basic",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Pro plan allows custom colors and custom labels",
+						"longDescription": "",
+						"visible": true,
+						"price": 500,
+						"order": 1,
+						"plan": "pro",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Added Pro tier",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/mRJMBjBsvh9W",
+			"created": "2019-06-27T17:17:49.660087Z",
+			"proposedApp": {
+				"id": "ngqhM7rZolNP",
+				"title": "AdBlock Minus",
+				"shortDescription": "Stop ad blocking on your site now. Reclaim lost revenue.",
+				"longDescription": "How much revenue do you lose every month to ad blockers?\n\nAdBlock Minus is an easy-to-use system for recapturing lost revenue from your website or blog.",
+				"instructions": "",
+				"alias": "abm",
+				"orgId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"icon": "https://images.cloudflareapps.com/hzQgKwlhsz8y/kisspng-computer-icons-revenue-finance-payment-service-growing-up-healthily-5aded791a26423.9263620615245536176652.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/8z2PWD4k8OYH/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202018-09-22%20%D0%B2%2022.06.22.png",
+					"https://images.cloudflareapps.com/gzaRy-RDVvO_/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202018-09-22%20%D0%B2%2022.07.20.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Anlob LLC",
+				"tagline": "",
+				"website": "https://www.cloudflare.com/apps/abm",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://abm.anlob.ru/terms.html",
+				"privacyPolicyURL": "https://abm.anlob.ru/privacypolicy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "mail@anlob.ru",
+				"products": [
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Pro plan allows custom colors and custom labels",
+						"longDescription": "",
+						"visible": true,
+						"price": 500,
+						"order": 0,
+						"plan": "ADBLOCK_MINUS_PRO",
+						"feature": "apps.adblock_minus_pro.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "FvBbmqMt1uyV"
+				},
+				"created": "2018-09-19T15:53:38.784911Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2019-06-27T17:17:50.020680059Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-06-27T17:18:15.265776961Z"
+			}
+		},
+		{
+			"tag": "1.0.5",
+			"appId": "ngqhM7rZolNP",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./app.css"
+						},
+						{
+							"type": "script",
+							"src": "./app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"close": {
+							"default": true,
+							"order": 2,
+							"title": "Allow users to close the warning",
+							"type": "boolean"
+						},
+						"colors": {
+							"order": 5,
+							"properties": {
+								"colorBackground": {
+									"default": "#ff0000",
+									"format": "color",
+									"order": 2,
+									"title": "Background Color",
+									"type": "string"
+								},
+								"colorText": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 1,
+									"title": "Text Color",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"proColors": true
+							},
+							"title": "Customize Colors",
+							"type": "object"
+						},
+						"once": {
+							"default": false,
+							"order": 3,
+							"showIf": {
+								"close": true
+							},
+							"title": "Show only once per session",
+							"type": "boolean"
+						},
+						"proColors": {
+							"default": false,
+							"order": 4,
+							"products": [
+								"pro"
+							],
+							"title": "Customize Colors",
+							"type": "boolean"
+						},
+						"proTranslation": {
+							"default": false,
+							"order": 6,
+							"products": [
+								"pro"
+							],
+							"title": "Customize Labels",
+							"type": "boolean"
+						},
+						"style": {
+							"default": "top",
+							"enum": [
+								"top",
+								"bottom",
+								"corner",
+								"block"
+							],
+							"enumNames": {
+								"block": "Block full page",
+								"bottom": "Footer banner",
+								"corner": "In the corner",
+								"top": "Top banner"
+							},
+							"order": 1,
+							"title": "Position",
+							"type": "string"
+						},
+						"translation": {
+							"order": 7,
+							"properties": {
+								"translationRefresh": {
+									"default": "I understand, I have disabled my ad blocker.  Let me in!",
+									"order": 3,
+									"placeholder": "I understand, I have disabled my ad blocker.",
+									"title": "Refresh",
+									"type": "string"
+								},
+								"translationText": {
+									"default": "But without advertising-income, we can't keep making this site awesome.",
+									"format": "textarea",
+									"order": 2,
+									"placeholder": "But without advertising-income, we can't keep making this site awesome.",
+									"title": "Text",
+									"type": "string"
+								},
+								"translationTitle": {
+									"default": "It looks like you're using an ad blocker.",
+									"order": 1,
+									"placeholder": "It looks like you're using an ad blocker.",
+									"title": "Title",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"proTranslation": true
+							},
+							"title": "Customize Labels",
+							"type": "object"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Basic plan for free",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "basic",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Pro plan allows custom colors and custom labels",
+						"longDescription": "",
+						"visible": true,
+						"price": 500,
+						"order": 1,
+						"plan": "pro",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.5,
+				"upvotes": 5,
+				"downvotes": 5
+			},
+			"releaseNotes": "Fixed free version",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/mRJMBjBsvh9W",
+			"created": "2019-06-27T18:34:00.966332Z",
+			"proposedApp": {
+				"id": "ngqhM7rZolNP",
+				"title": "AdBlock Minus",
+				"shortDescription": "Stop ad blocking on your site now. Reclaim lost revenue.",
+				"longDescription": "How much revenue do you lose every month to ad blockers?\n\nAdBlock Minus is an easy-to-use system for recapturing lost revenue from your website or blog.",
+				"instructions": "",
+				"alias": "abm",
+				"orgId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"icon": "https://images.cloudflareapps.com/hzQgKwlhsz8y/kisspng-computer-icons-revenue-finance-payment-service-growing-up-healthily-5aded791a26423.9263620615245536176652.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/8z2PWD4k8OYH/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202018-09-22%20%D0%B2%2022.06.22.png",
+					"https://images.cloudflareapps.com/gzaRy-RDVvO_/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202018-09-22%20%D0%B2%2022.07.20.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Anlob LLC",
+				"tagline": "",
+				"website": "https://www.cloudflare.com/apps/abm",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://abm.anlob.ru/terms.html",
+				"privacyPolicyURL": "https://abm.anlob.ru/privacypolicy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "mail@anlob.ru",
+				"products": [
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Pro plan allows custom colors and custom labels",
+						"longDescription": "",
+						"visible": true,
+						"price": 500,
+						"order": 0,
+						"plan": "ADBLOCK_MINUS_PRO",
+						"feature": "apps.adblock_minus_pro.enabled",
+						"created": null
+					},
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Basic plan for free",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "FvBbmqMt1uyV"
+				},
+				"created": "2018-09-19T15:53:38.784911Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"requestedAt": "2019-06-27T18:34:02.018755218Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-06-28T15:53:07.129324945Z"
+			}
+		},
+		{
+			"tag": "1.1.0",
+			"appId": "ngqhM7rZolNP",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./app.css"
+						},
+						{
+							"type": "script",
+							"src": "./app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"close": {
+							"default": true,
+							"order": 2,
+							"title": "Allow users to close the warning",
+							"type": "boolean"
+						},
+						"colors": {
+							"order": 7,
+							"properties": {
+								"colorBackground": {
+									"default": "#ff0000",
+									"format": "color",
+									"order": 2,
+									"title": "Background Color",
+									"type": "string"
+								},
+								"colorText": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 1,
+									"title": "Text Color",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"proColors": true
+							},
+							"title": "Customize Colors",
+							"type": "object"
+						},
+						"fontSize": {
+							"default": 50,
+							"format": "slider",
+							"maximum": 100,
+							"minimum": 0,
+							"order": 5,
+							"products": [
+								"pro"
+							],
+							"step": 1,
+							"title": "Font size",
+							"type": "number"
+						},
+						"once": {
+							"default": false,
+							"order": 3,
+							"showIf": {
+								"close": true
+							},
+							"title": "Show only once per session",
+							"type": "boolean"
+						},
+						"proColors": {
+							"default": false,
+							"order": 6,
+							"products": [
+								"pro"
+							],
+							"title": "Customize Colors",
+							"type": "boolean"
+						},
+						"proTranslation": {
+							"default": false,
+							"order": 7,
+							"products": [
+								"pro"
+							],
+							"title": "Customize Labels",
+							"type": "boolean"
+						},
+						"style": {
+							"default": "top",
+							"enum": [
+								"top",
+								"bottom",
+								"corner",
+								"block"
+							],
+							"enumNames": {
+								"block": "Block full page",
+								"bottom": "Footer banner",
+								"corner": "In the corner",
+								"top": "Top banner"
+							},
+							"order": 1,
+							"title": "Position",
+							"type": "string"
+						},
+						"translation": {
+							"order": 8,
+							"properties": {
+								"translationRefresh": {
+									"default": "I understand, I have disabled my ad blocker.  Let me in!",
+									"order": 3,
+									"placeholder": "I understand, I have disabled my ad blocker.",
+									"title": "Refresh",
+									"type": "string"
+								},
+								"translationText": {
+									"default": "But without advertising-income, we can't keep making this site awesome.",
+									"format": "textarea",
+									"order": 2,
+									"placeholder": "But without advertising-income, we can't keep making this site awesome.",
+									"title": "Text",
+									"type": "string"
+								},
+								"translationTitle": {
+									"default": "It looks like you're using an ad blocker.",
+									"order": 1,
+									"placeholder": "It looks like you're using an ad blocker.",
+									"title": "Title",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"proTranslation": true
+							},
+							"title": "Customize Labels",
+							"type": "object"
+						},
+						"warningSize": {
+							"default": 20,
+							"format": "slider",
+							"maximum": 100,
+							"minimum": 0,
+							"order": 4,
+							"step": 1,
+							"title": "Warning size",
+							"type": "number"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Basic plan for free",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "basic",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Pro plan allows custom colors and custom labels",
+						"longDescription": "",
+						"visible": true,
+						"price": 500,
+						"order": 1,
+						"plan": "pro",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Fix for close button. Custom font size.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/OOFe1i8nTLcB",
+			"metadata": {
+				"code": {
+					"sourceTag": "OOFe1i8nTLcB",
+					"uploadedOn": "2019-08-27T21:24:13.511018199Z"
+				}
+			},
+			"created": "2019-08-27T21:24:12.944811Z",
+			"proposedApp": {
+				"id": "ngqhM7rZolNP",
+				"title": "AdBlock Minus",
+				"shortDescription": "Stop ad blocking on your site now. Reclaim lost revenue.",
+				"longDescription": "How much revenue do you lose every month to ad blockers?\n\nAdBlock Minus is an easy-to-use system for recapturing lost revenue from your website or blog.",
+				"instructions": "",
+				"alias": "abm",
+				"orgId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"icon": "https://images.cloudflareapps.com/hzQgKwlhsz8y/kisspng-computer-icons-revenue-finance-payment-service-growing-up-healthily-5aded791a26423.9263620615245536176652.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/8z2PWD4k8OYH/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202018-09-22%20%D0%B2%2022.06.22.png",
+					"https://images.cloudflareapps.com/gzaRy-RDVvO_/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202018-09-22%20%D0%B2%2022.07.20.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Anlob LLC",
+				"tagline": "",
+				"website": "https://www.cloudflare.com/apps/abm",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://abm.anlob.ru/terms.html",
+				"privacyPolicyURL": "https://abm.anlob.ru/privacypolicy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "mail@anlob.ru",
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Basic plan for free",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "basic",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Pro plan allows custom colors and custom labels",
+						"longDescription": "",
+						"visible": true,
+						"price": 500,
+						"order": 1,
+						"plan": "pro",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "FvBbmqMt1uyV"
+				},
+				"created": "2018-09-19T15:53:38.784911Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"requestedAt": "2019-08-27T21:26:03.260306324Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-08-29T15:50:15.488795439Z"
+			}
+		},
+		{
+			"tag": "1.1.1",
+			"appId": "ngqhM7rZolNP",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./app.css"
+						},
+						{
+							"type": "script",
+							"src": "./app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"close": {
+							"default": true,
+							"order": 2,
+							"title": "Allow users to close the warning",
+							"type": "boolean"
+						},
+						"colors": {
+							"order": 7,
+							"properties": {
+								"colorBackground": {
+									"default": "#ff0000",
+									"format": "color",
+									"order": 2,
+									"title": "Background Color",
+									"type": "string"
+								},
+								"colorText": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 1,
+									"title": "Text Color",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"proColors": true
+							},
+							"title": "Customize Colors",
+							"type": "object"
+						},
+						"fontSize": {
+							"default": 50,
+							"format": "slider",
+							"maximum": 100,
+							"minimum": 0,
+							"order": 5,
+							"products": [
+								"pro"
+							],
+							"step": 1,
+							"title": "Font size",
+							"type": "number"
+						},
+						"once": {
+							"default": false,
+							"order": 3,
+							"showIf": {
+								"close": true
+							},
+							"title": "Show only once per session",
+							"type": "boolean"
+						},
+						"proColors": {
+							"default": false,
+							"order": 6,
+							"products": [
+								"pro"
+							],
+							"title": "Customize Colors",
+							"type": "boolean"
+						},
+						"proTranslation": {
+							"default": false,
+							"order": 7,
+							"products": [
+								"pro"
+							],
+							"title": "Customize Labels",
+							"type": "boolean"
+						},
+						"style": {
+							"default": "top",
+							"enum": [
+								"top",
+								"bottom",
+								"corner",
+								"block"
+							],
+							"enumNames": {
+								"block": "Block full page",
+								"bottom": "Footer banner",
+								"corner": "In the corner",
+								"top": "Top banner"
+							},
+							"order": 1,
+							"title": "Position",
+							"type": "string"
+						},
+						"translation": {
+							"order": 8,
+							"properties": {
+								"translationRefresh": {
+									"default": "I understand, I have disabled my ad blocker.  Let me in!",
+									"order": 3,
+									"placeholder": "I understand, I have disabled my ad blocker.",
+									"title": "Refresh",
+									"type": "string"
+								},
+								"translationText": {
+									"default": "But without advertising-income, we can't keep making this site awesome.",
+									"format": "textarea",
+									"order": 2,
+									"placeholder": "But without advertising-income, we can't keep making this site awesome.",
+									"title": "Text",
+									"type": "string"
+								},
+								"translationTitle": {
+									"default": "It looks like you're using an ad blocker.",
+									"order": 1,
+									"placeholder": "It looks like you're using an ad blocker.",
+									"title": "Title",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"proTranslation": true
+							},
+							"title": "Customize Labels",
+							"type": "object"
+						},
+						"warningSize": {
+							"default": 20,
+							"format": "slider",
+							"maximum": 100,
+							"minimum": 0,
+							"order": 4,
+							"step": 1,
+							"title": "Warning size",
+							"type": "number"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Basic plan for free",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "basic",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Pro plan allows custom colors and custom labels",
+						"longDescription": "",
+						"visible": true,
+						"price": 500,
+						"order": 1,
+						"plan": "pro",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.64,
+				"upvotes": 18,
+				"downvotes": 10
+			},
+			"releaseNotes": "New features",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/OOFe1i8nTLcB",
+			"created": "2019-08-29T15:57:49.094505Z",
+			"proposedApp": {
+				"id": "ngqhM7rZolNP",
+				"title": "AdBlock Minus",
+				"shortDescription": "Stop ad blocking on your site now. Reclaim lost revenue.",
+				"longDescription": "How much revenue do you lose every month to ad blockers?\n\nAdBlock Minus is an easy-to-use system for recapturing lost revenue from your website or blog.",
+				"instructions": "",
+				"alias": "abm",
+				"orgId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"icon": "https://images.cloudflareapps.com/hzQgKwlhsz8y/kisspng-computer-icons-revenue-finance-payment-service-growing-up-healthily-5aded791a26423.9263620615245536176652.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/8z2PWD4k8OYH/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202018-09-22%20%D0%B2%2022.06.22.png",
+					"https://images.cloudflareapps.com/gzaRy-RDVvO_/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202018-09-22%20%D0%B2%2022.07.20.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Anlob LLC",
+				"tagline": "",
+				"website": "https://www.cloudflare.com/apps/abm",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://abm.anlob.ru/terms.html",
+				"privacyPolicyURL": "https://abm.anlob.ru/privacypolicy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "mail@anlob.ru",
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Basic plan for free",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "basic",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Pro plan allows custom colors and custom labels",
+						"longDescription": "",
+						"visible": true,
+						"price": 500,
+						"order": 1,
+						"plan": "ADBLOCK_MINUS_PRO",
+						"feature": "apps.adblock_minus_pro.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "FvBbmqMt1uyV"
+				},
+				"created": "2018-09-19T15:53:38.784911Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2019-08-29T15:57:49.531130426Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-08-29T15:58:03.39862228Z"
+			}
+		},
+		{
+			"tag": "1.1.2",
+			"appId": "ngqhM7rZolNP",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./app.css"
+						},
+						{
+							"type": "script",
+							"src": "./app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"close": {
+							"default": true,
+							"order": 2,
+							"title": "Allow users to close the warning",
+							"type": "boolean"
+						},
+						"colors": {
+							"order": 7,
+							"properties": {
+								"colorBackground": {
+									"default": "#ff0000",
+									"format": "color",
+									"order": 2,
+									"title": "Background Color",
+									"type": "string"
+								},
+								"colorText": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 1,
+									"title": "Text Color",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"proColors": true
+							},
+							"title": "Customize Colors",
+							"type": "object"
+						},
+						"fontSize": {
+							"default": 50,
+							"format": "slider",
+							"maximum": 100,
+							"minimum": 0,
+							"order": 5,
+							"products": [
+								"pro"
+							],
+							"step": 1,
+							"title": "Font size",
+							"type": "number"
+						},
+						"once": {
+							"default": false,
+							"order": 3,
+							"showIf": {
+								"close": true
+							},
+							"title": "Show only once per session",
+							"type": "boolean"
+						},
+						"proColors": {
+							"default": false,
+							"order": 6,
+							"products": [
+								"pro"
+							],
+							"title": "Customize Colors",
+							"type": "boolean"
+						},
+						"proTranslation": {
+							"default": false,
+							"order": 7,
+							"products": [
+								"pro"
+							],
+							"title": "Customize Labels",
+							"type": "boolean"
+						},
+						"style": {
+							"default": "top",
+							"enum": [
+								"top",
+								"bottom",
+								"corner",
+								"block"
+							],
+							"enumNames": {
+								"block": "Block full page",
+								"bottom": "Footer banner",
+								"corner": "In the corner",
+								"top": "Top banner"
+							},
+							"order": 1,
+							"title": "Position",
+							"type": "string"
+						},
+						"translation": {
+							"order": 8,
+							"properties": {
+								"translationRefresh": {
+									"default": "I understand, I have disabled my ad blocker.  Let me in!",
+									"order": 3,
+									"placeholder": "I understand, I have disabled my ad blocker.",
+									"title": "Refresh",
+									"type": "string"
+								},
+								"translationText": {
+									"default": "But without advertising-income, we can't keep making this site awesome.",
+									"format": "textarea",
+									"order": 2,
+									"placeholder": "But without advertising-income, we can't keep making this site awesome.",
+									"title": "Text",
+									"type": "string"
+								},
+								"translationTitle": {
+									"default": "It looks like you're using an ad blocker.",
+									"order": 1,
+									"placeholder": "It looks like you're using an ad blocker.",
+									"title": "Title",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"proTranslation": true
+							},
+							"title": "Customize Labels",
+							"type": "object"
+						},
+						"warningSize": {
+							"default": 20,
+							"format": "slider",
+							"maximum": 100,
+							"minimum": 0,
+							"order": 4,
+							"step": 1,
+							"title": "Warning size",
+							"type": "number"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Basic plan for free",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "basic",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Pro plan allows custom colors and custom labels",
+						"longDescription": "",
+						"visible": true,
+						"price": 500,
+						"order": 1,
+						"plan": "pro",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Lower price for Pro",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/OOFe1i8nTLcB",
+			"created": "2019-10-28T18:32:01.065134Z",
+			"proposedApp": {
+				"id": "ngqhM7rZolNP",
+				"title": "AdBlock Minus",
+				"shortDescription": "Stop ad blocking on your site now. Reclaim lost revenue.",
+				"longDescription": "How much revenue do you lose every month to ad blockers?\n\nAdBlock Minus is an easy-to-use system for recapturing lost revenue from your website or blog.",
+				"instructions": "",
+				"alias": "abm",
+				"orgId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"icon": "https://images.cloudflareapps.com/hzQgKwlhsz8y/kisspng-computer-icons-revenue-finance-payment-service-growing-up-healthily-5aded791a26423.9263620615245536176652.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/8z2PWD4k8OYH/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202018-09-22%20%D0%B2%2022.06.22.png",
+					"https://images.cloudflareapps.com/gzaRy-RDVvO_/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202018-09-22%20%D0%B2%2022.07.20.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Anlob LLC",
+				"tagline": "",
+				"website": "https://www.cloudflare.com/apps/abm",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://abm.anlob.ru/terms.html",
+				"privacyPolicyURL": "https://abm.anlob.ru/privacypolicy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "mail@anlob.ru",
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Basic plan for free",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "basic",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Pro plan allows custom colors and custom labels",
+						"longDescription": "",
+						"visible": true,
+						"price": 100,
+						"order": 1,
+						"plan": "ADBLOCK_MINUS_PRO",
+						"feature": "apps.adblock_minus_pro.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "FvBbmqMt1uyV"
+				},
+				"created": "2018-09-19T15:53:38.784911Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"requestedAt": "2019-10-28T18:32:01.799894942Z",
+				"canceledByUserId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"canceledAt": "2019-12-19T18:11:06.08260231Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.1.3",
+			"appId": "ngqhM7rZolNP",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./app.css"
+						},
+						{
+							"type": "script",
+							"src": "./app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"close": {
+							"default": true,
+							"order": 2,
+							"title": "Allow users to close the warning",
+							"type": "boolean"
+						},
+						"colors": {
+							"order": 7,
+							"properties": {
+								"colorBackground": {
+									"default": "#ff0000",
+									"format": "color",
+									"order": 2,
+									"title": "Background Color",
+									"type": "string"
+								},
+								"colorText": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 1,
+									"title": "Text Color",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"proColors": true
+							},
+							"title": "Customize Colors",
+							"type": "object"
+						},
+						"fontSize": {
+							"default": 50,
+							"format": "slider",
+							"maximum": 100,
+							"minimum": 0,
+							"order": 5,
+							"products": [
+								"pro"
+							],
+							"step": 1,
+							"title": "Font size",
+							"type": "number"
+						},
+						"once": {
+							"default": false,
+							"order": 3,
+							"showIf": {
+								"close": true
+							},
+							"title": "Show only once per session",
+							"type": "boolean"
+						},
+						"proColors": {
+							"default": false,
+							"order": 6,
+							"products": [
+								"pro"
+							],
+							"title": "Customize Colors",
+							"type": "boolean"
+						},
+						"proTranslation": {
+							"default": false,
+							"order": 7,
+							"products": [
+								"pro"
+							],
+							"title": "Customize Labels",
+							"type": "boolean"
+						},
+						"style": {
+							"default": "top",
+							"enum": [
+								"top",
+								"bottom",
+								"corner",
+								"block"
+							],
+							"enumNames": {
+								"block": "Block full page",
+								"bottom": "Footer banner",
+								"corner": "In the corner",
+								"top": "Top banner"
+							},
+							"order": 1,
+							"title": "Position",
+							"type": "string"
+						},
+						"translation": {
+							"order": 8,
+							"properties": {
+								"translationRefresh": {
+									"default": "I understand, I have disabled my ad blocker.  Let me in!",
+									"order": 3,
+									"placeholder": "I understand, I have disabled my ad blocker.",
+									"title": "Refresh",
+									"type": "string"
+								},
+								"translationText": {
+									"default": "But without advertising-income, we can't keep making this site awesome.",
+									"format": "textarea",
+									"order": 2,
+									"placeholder": "But without advertising-income, we can't keep making this site awesome.",
+									"title": "Text",
+									"type": "string"
+								},
+								"translationTitle": {
+									"default": "It looks like you're using an ad blocker.",
+									"order": 1,
+									"placeholder": "It looks like you're using an ad blocker.",
+									"title": "Title",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"proTranslation": true
+							},
+							"title": "Customize Labels",
+							"type": "object"
+						},
+						"warningSize": {
+							"default": 20,
+							"format": "slider",
+							"maximum": 100,
+							"minimum": 0,
+							"order": 4,
+							"step": 1,
+							"title": "Warning size",
+							"type": "number"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Basic plan for free",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "basic",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Pro plan allows custom colors and custom labels",
+						"longDescription": "",
+						"visible": true,
+						"price": 500,
+						"order": 1,
+						"plan": "pro",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Lower price for Pro",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/OOFe1i8nTLcB",
+			"created": "2019-12-19T18:11:05.60744Z",
+			"proposedApp": {
+				"id": "ngqhM7rZolNP",
+				"title": "AdBlock Minus",
+				"shortDescription": "Stop ad blocking on your site now. Reclaim lost revenue.",
+				"longDescription": "How much revenue do you lose every month to ad blockers?\n\nAdBlock Minus is an easy-to-use system for recapturing lost revenue from your website or blog.",
+				"instructions": "",
+				"alias": "abm",
+				"orgId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"icon": "https://images.cloudflareapps.com/hzQgKwlhsz8y/kisspng-computer-icons-revenue-finance-payment-service-growing-up-healthily-5aded791a26423.9263620615245536176652.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/8z2PWD4k8OYH/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202018-09-22%20%D0%B2%2022.06.22.png",
+					"https://images.cloudflareapps.com/gzaRy-RDVvO_/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202018-09-22%20%D0%B2%2022.07.20.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Anlob LLC",
+				"tagline": "",
+				"website": "https://www.cloudflare.com/apps/abm",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://abm.anlob.ru/terms.html",
+				"privacyPolicyURL": "https://abm.anlob.ru/privacypolicy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "mail@anlob.ru",
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Basic plan for free",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "basic",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Pro plan allows custom colors and custom labels",
+						"longDescription": "",
+						"visible": true,
+						"price": 100,
+						"order": 1,
+						"plan": "ADBLOCK_MINUS_PRO",
+						"feature": "apps.adblock_minus_pro.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "FvBbmqMt1uyV"
+				},
+				"created": "2018-09-19T15:53:38.784911Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"requestedAt": "2019-12-19T18:11:06.107338115Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-01-03T17:19:09.282650911Z"
+			}
+		},
+		{
+			"tag": "1.1.4",
+			"appId": "ngqhM7rZolNP",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./app.css"
+						},
+						{
+							"type": "script",
+							"src": "./app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"close": {
+							"default": true,
+							"order": 2,
+							"title": "Allow users to close the warning",
+							"type": "boolean"
+						},
+						"colors": {
+							"order": 7,
+							"properties": {
+								"colorBackground": {
+									"default": "#ff0000",
+									"format": "color",
+									"order": 2,
+									"title": "Background Color",
+									"type": "string"
+								},
+								"colorText": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 1,
+									"title": "Text Color",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"proColors": true
+							},
+							"title": "Customize Colors",
+							"type": "object"
+						},
+						"fontSize": {
+							"default": 50,
+							"format": "slider",
+							"maximum": 100,
+							"minimum": 0,
+							"order": 5,
+							"products": [
+								"pro"
+							],
+							"step": 1,
+							"title": "Font size",
+							"type": "number"
+						},
+						"once": {
+							"default": false,
+							"order": 3,
+							"showIf": {
+								"close": true
+							},
+							"title": "Show only once per session",
+							"type": "boolean"
+						},
+						"proColors": {
+							"default": false,
+							"order": 6,
+							"products": [
+								"pro"
+							],
+							"title": "Customize Colors",
+							"type": "boolean"
+						},
+						"proTranslation": {
+							"default": false,
+							"order": 7,
+							"products": [
+								"pro"
+							],
+							"title": "Customize Labels",
+							"type": "boolean"
+						},
+						"style": {
+							"default": "top",
+							"enum": [
+								"top",
+								"bottom",
+								"corner",
+								"block"
+							],
+							"enumNames": {
+								"block": "Block full page",
+								"bottom": "Footer banner",
+								"corner": "In the corner",
+								"top": "Top banner"
+							},
+							"order": 1,
+							"title": "Position",
+							"type": "string"
+						},
+						"translation": {
+							"order": 8,
+							"properties": {
+								"translationRefresh": {
+									"default": "I understand, I have disabled my ad blocker.  Let me in!",
+									"order": 3,
+									"placeholder": "I understand, I have disabled my ad blocker.",
+									"title": "Refresh",
+									"type": "string"
+								},
+								"translationText": {
+									"default": "But without advertising-income, we can't keep making this site awesome.",
+									"format": "textarea",
+									"order": 2,
+									"placeholder": "But without advertising-income, we can't keep making this site awesome.",
+									"title": "Text",
+									"type": "string"
+								},
+								"translationTitle": {
+									"default": "It looks like you're using an ad blocker.",
+									"order": 1,
+									"placeholder": "It looks like you're using an ad blocker.",
+									"title": "Title",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"proTranslation": true
+							},
+							"title": "Customize Labels",
+							"type": "object"
+						},
+						"warningSize": {
+							"default": 20,
+							"format": "slider",
+							"maximum": 100,
+							"minimum": 0,
+							"order": 4,
+							"step": 1,
+							"title": "Warning size",
+							"type": "number"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Basic plan for free",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "basic",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Pro plan allows custom colors and custom labels",
+						"longDescription": "",
+						"visible": true,
+						"price": 500,
+						"order": 1,
+						"plan": "pro",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.82,
+				"upvotes": 9,
+				"downvotes": 2
+			},
+			"releaseNotes": "Lower price for Pro",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/OOFe1i8nTLcB",
+			"created": "2020-01-03T22:02:21.902295Z",
+			"proposedApp": {
+				"id": "ngqhM7rZolNP",
+				"title": "AdBlock Minus",
+				"shortDescription": "Stop ad blocking on your site now. Reclaim lost revenue.",
+				"longDescription": "How much revenue do you lose every month to ad blockers?\n\nAdBlock Minus is an easy-to-use system for recapturing lost revenue from your website or blog.",
+				"instructions": "",
+				"alias": "abm",
+				"orgId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"icon": "https://images.cloudflareapps.com/hzQgKwlhsz8y/kisspng-computer-icons-revenue-finance-payment-service-growing-up-healthily-5aded791a26423.9263620615245536176652.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/8z2PWD4k8OYH/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202018-09-22%20%D0%B2%2022.06.22.png",
+					"https://images.cloudflareapps.com/gzaRy-RDVvO_/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202018-09-22%20%D0%B2%2022.07.20.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Anlob LLC",
+				"tagline": "",
+				"website": "https://www.cloudflare.com/apps/abm",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://abm.anlob.ru/terms.html",
+				"privacyPolicyURL": "https://abm.anlob.ru/privacypolicy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "mail@anlob.ru",
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Basic plan for free",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "basic",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Pro plan allows custom colors and custom labels",
+						"longDescription": "",
+						"visible": true,
+						"price": 100,
+						"order": 1,
+						"plan": "APPS_ADBLOCK_MINUS_PRO",
+						"feature": "apps.adblock_minus_pro.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "FvBbmqMt1uyV"
+				},
+				"created": "2018-09-19T15:53:38.784911Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2020-01-03T22:02:24.219172068Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-01-03T22:02:46.59438353Z"
+			}
+		},
+		{
+			"tag": "1.1.5",
+			"appId": "ngqhM7rZolNP",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./app.css"
+						},
+						{
+							"type": "script",
+							"src": "./app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"close": {
+							"default": true,
+							"order": 2,
+							"title": "Allow users to close the warning",
+							"type": "boolean"
+						},
+						"colors": {
+							"order": 7,
+							"properties": {
+								"colorBackground": {
+									"default": "#ff0000",
+									"format": "color",
+									"order": 2,
+									"title": "Background Color",
+									"type": "string"
+								},
+								"colorText": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 1,
+									"title": "Text Color",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"proColors": true
+							},
+							"title": "Customize Colors",
+							"type": "object"
+						},
+						"fontSize": {
+							"default": 50,
+							"format": "slider",
+							"maximum": 100,
+							"minimum": 0,
+							"order": 5,
+							"products": [
+								"pro"
+							],
+							"step": 1,
+							"title": "Font size",
+							"type": "number"
+						},
+						"once": {
+							"default": false,
+							"order": 3,
+							"showIf": {
+								"close": true
+							},
+							"title": "Show only once per session",
+							"type": "boolean"
+						},
+						"proColors": {
+							"default": false,
+							"order": 6,
+							"products": [
+								"pro"
+							],
+							"title": "Customize Colors",
+							"type": "boolean"
+						},
+						"proTranslation": {
+							"default": false,
+							"order": 7,
+							"products": [
+								"pro"
+							],
+							"title": "Customize Labels",
+							"type": "boolean"
+						},
+						"style": {
+							"default": "top",
+							"enum": [
+								"top",
+								"bottom",
+								"corner",
+								"block"
+							],
+							"enumNames": {
+								"block": "Block full page",
+								"bottom": "Footer banner",
+								"corner": "In the corner",
+								"top": "Top banner"
+							},
+							"order": 1,
+							"title": "Position",
+							"type": "string"
+						},
+						"translation": {
+							"order": 8,
+							"properties": {
+								"translationRefresh": {
+									"default": "I understand, I have disabled my ad blocker.  Let me in!",
+									"order": 3,
+									"placeholder": "I understand, I have disabled my ad blocker.",
+									"title": "Refresh",
+									"type": "string"
+								},
+								"translationText": {
+									"default": "But without advertising-income, we can't keep making this site awesome.",
+									"format": "textarea",
+									"order": 2,
+									"placeholder": "But without advertising-income, we can't keep making this site awesome.",
+									"title": "Text",
+									"type": "string"
+								},
+								"translationTitle": {
+									"default": "It looks like you're using an ad blocker.",
+									"order": 1,
+									"placeholder": "It looks like you're using an ad blocker.",
+									"title": "Title",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"proTranslation": true
+							},
+							"title": "Customize Labels",
+							"type": "object"
+						},
+						"warningSize": {
+							"default": 20,
+							"format": "slider",
+							"maximum": 100,
+							"minimum": 0,
+							"order": 4,
+							"step": 1,
+							"title": "Warning size",
+							"type": "number"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Basic plan for free",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "basic",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Pro plan allows custom colors and custom labels",
+						"longDescription": "",
+						"visible": true,
+						"price": 500,
+						"order": 1,
+						"plan": "pro",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.27,
+				"upvotes": 52,
+				"downvotes": 144
+			},
+			"releaseNotes": "New tile image",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/OOFe1i8nTLcB",
+			"created": "2020-03-23T23:14:53.660335Z",
+			"proposedApp": {
+				"id": "ngqhM7rZolNP",
+				"title": "AdBlock Minus",
+				"shortDescription": "Stop ad blocking on your site now. Reclaim lost revenue.",
+				"longDescription": "How much revenue do you lose every month to ad blockers?\n\nAdBlock Minus is an easy-to-use system for recapturing lost revenue from your website or blog.",
+				"instructions": "",
+				"alias": "abm",
+				"orgId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"icon": "https://images.cloudflareapps.com/hzQgKwlhsz8y/kisspng-computer-icons-revenue-finance-payment-service-growing-up-healthily-5aded791a26423.9263620615245536176652.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/8z2PWD4k8OYH/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202018-09-22%20%D0%B2%2022.06.22.png",
+					"https://images.cloudflareapps.com/gzaRy-RDVvO_/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202018-09-22%20%D0%B2%2022.07.20.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/XJWuW8CRgwF2/Component%201.png",
+				"featuredAppImage": "",
+				"author": "Anlob LLC",
+				"tagline": "",
+				"website": "https://www.cloudflare.com/apps/abm",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://abm.anlob.ru/terms.html",
+				"privacyPolicyURL": "https://abm.anlob.ru/privacypolicy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "mail@anlob.ru",
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Basic plan for free",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "basic",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Pro plan allows custom colors and custom labels",
+						"longDescription": "",
+						"visible": true,
+						"price": 100,
+						"order": 1,
+						"plan": "APPS_ADBLOCK_MINUS_PRO",
+						"feature": "apps.adblock_minus_pro.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "FvBbmqMt1uyV"
+				},
+				"created": "2018-09-19T15:53:38.784911Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"requestedAt": "2020-03-23T23:16:29.816910471Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-03-27T19:37:13.179603191Z"
+			}
+		}
+	]
+}

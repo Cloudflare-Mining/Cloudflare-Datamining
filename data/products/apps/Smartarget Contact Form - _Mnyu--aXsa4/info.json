@@ -1,0 +1,1700 @@
+{
+	"id": "_Mnyu--aXsa4",
+	"title": "Smartarget Contact Form",
+	"shortDescription": "Allow users to contact you by filling a form",
+	"longDescription": "Allow users to contact you easily with Smartarget - Contact Form\n\nMake it easy for your site visitors to contact you through their mobile and desktop  from anywhere on your website.\n\nUsers might have a question or need your support and you should make it very visible to contact you. With Smartarget - Contact Form you can have the contact form on all your pages in a visible way. You can also use it to collect emails for newsletter.\n\nCheck the Demo page to see how it work!\nhttps://smartarget.online/demo.html\n\n\nFREE PLUS - Additional Features:\n* Allow customers to contact you using WhatsApp/Skype/Telegram/Facebook Messenger\n* Promote special offers with corner ribbon.\n* Add click to call button on your site!.\n*  Show users special offer before they leave your website with Exit Popup.  etc.",
+	"instructions": "",
+	"alias": "smartarget-contact-form",
+	"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+	"icon": "https://images.cloudflareapps.com/nZSncForymEQ/Contact%20Form.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/NvaefYixisQI/contact_form-1-desktop.png",
+		"https://images.cloudflareapps.com/NvaefYixisQI/contact_form-2-desktop.png",
+		"https://images.cloudflareapps.com/NvaefYixisQI/contact_form-1-mobile.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/PlaQyaRmsR65/Contact%20Form.png",
+	"featuredAppImage": "https://images.cloudflareapps.com/YnleC0EwPGqe/Contact%20Form.png",
+	"author": "TopSoft UG",
+	"tagline": "",
+	"website": "https://smartarget.online",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+	"privacyPolicyURL": "https://smartarget.online/page_privacy.html",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.2",
+	"infoVersion": "1.0.2",
+	"points": 0,
+	"supportEmail": "support@smartarget.online",
+	"products": [
+		{
+			"id": "free",
+			"title": "Free",
+			"shortDescription": "Limited features. Visible on homepage only.",
+			"longDescription": "",
+			"visible": true,
+			"price": 0,
+			"order": 0,
+			"plan": "SMARTARGET_FREE",
+			"feature": "free",
+			"created": null
+		},
+		{
+			"id": "free_plus",
+			"title": "Free Plus",
+			"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+			"longDescription": "",
+			"visible": true,
+			"price": 0,
+			"order": 1,
+			"plan": "SMARTARGET_FREE_PLUS",
+			"created": null
+		}
+	],
+	"categoryIds": [
+		"social-and-communication"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+			"created": "2020-10-26T08:51:15.984771415Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "na1FD30eA-o-"
+	},
+	"created": "2020-10-22T14:41:21.333831Z",
+	"org": {
+		"id": "ce4a075ceeac71fdfd05a79eff7f0faa",
+		"title": "",
+		"username": "ce4a075ceeac71fdfd05a79eff7f0faa",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "social-and-communication",
+			"title": "Social & Communication",
+			"description": "Apps that make it easier to communicate with your customers.",
+			"icon": "",
+			"points": 80,
+			"visible": true,
+			"created": "2018-01-22T19:17:10.030031Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "_Mnyu--aXsa4",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"description": {
+							"helpvalue": "",
+							"order": 17,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<b>Get many more apps for free on <a target='_blank' href='https://smartarget.online/?ref=cloudflare_contact_form'>Smartarget.online</a></b>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_contact_form'>Click to call</a> - Allow users to call you within one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_contact_form'>Ribbon corner</a> - Promote special offers in one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare'>Instagram Follow Us</a> - Get more Instagram followers</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_contact_form'>And more...</a></p>",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"desktopPosition": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another position",
+								"default": "Bottom left"
+							},
+							"format": "radios",
+							"order": 10,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "App position on desktop",
+							"type": "string"
+						},
+						"emailVisibility": {
+							"default": "visible_required",
+							"enum": [
+								"visible_required",
+								"visible",
+								"hidden"
+							],
+							"enumNames": {
+								"hidden": "Hide",
+								"visible": "Show",
+								"visible_required": "Show and required"
+							},
+							"format": "radios",
+							"order": 7,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Email Field Visibility",
+							"type": "string"
+						},
+						"fullNameVisibility": {
+							"default": "visible_required",
+							"enum": [
+								"visible_required",
+								"visible",
+								"hidden"
+							],
+							"enumNames": {
+								"hidden": "Hide",
+								"visible": "Show",
+								"visible_required": "Show and required"
+							},
+							"format": "radios",
+							"order": 6,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Full Name Field Visibility",
+							"type": "string"
+						},
+						"idUser": {
+							"default": "",
+							"format": "text",
+							"order": 16,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": "User ID",
+							"type": "string"
+						},
+						"message": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Pick your own text",
+								"default": "Use default message (Send)"
+							},
+							"format": "radios",
+							"order": 5,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Submit button text",
+							"type": "string"
+						},
+						"messageVisibility": {
+							"default": "visible_required",
+							"enum": [
+								"visible_required",
+								"visible",
+								"hidden"
+							],
+							"enumNames": {
+								"hidden": "Hide",
+								"visible": "Show",
+								"visible_required": "Show and required"
+							},
+							"format": "radios",
+							"order": 9,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Message Field Visibility",
+							"type": "string"
+						},
+						"mobilePosition": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another position",
+								"default": "Bottom left"
+							},
+							"format": "radios",
+							"order": 11,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "App position on mobile",
+							"type": "string"
+						},
+						"ownerEmail": {
+							"default": "",
+							"description": "You will get notification when users fill contact form on your store. Use Smartarget integration (Free Plus) to see detailed statistics in Smartarget Reports.",
+							"format": "text",
+							"order": 1,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Your email",
+							"type": "string"
+						},
+						"phoneVisibility": {
+							"default": "visible_required",
+							"enum": [
+								"visible_required",
+								"visible",
+								"hidden"
+							],
+							"enumNames": {
+								"hidden": "Hide",
+								"visible": "Show",
+								"visible_required": "Show and required"
+							},
+							"format": "radios",
+							"order": 8,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Phone Field Visibility",
+							"type": "string"
+						},
+						"promoFree": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plan.</b></div><br/>\n<div>⚠️ Show app on homepage only</div>\n<div>⚠️ «powered by Smartarget» label</div>\n<div>⚠️ Limited app options</div><br/>\n\n<div>Use Smartarget Integration («Free Plus» plan) with no limitations.</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"promoFreePlus": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plus plan.</b></div><br>\n<div>✅ It's also Free!</div>\n<div>✅️ Show app on all pages</div>\n<div>✅ Change app options</div>\n<div>✅ Analytics reports</div>\n<div>✅ More free apps</div><br>\n\n<div><b>Follow these steps to complete integration:</b></div><br>\n<div>1. Create a <a href=\"https://smartarget.online/page_signup.html?ref=cloudflare\" target=_blank>Smartarget</a> account or log in to yours</div>\n<div>2. <a href=\"https://app.smartarget.online/#/websites\" target=_blank>Add your website</a> and configure Contact Form app for your website</div>\n<div>3. Go to <a href=\"https://app.smartarget.online/#/integration\" target=_blank>Integration</a> and copy the User ID to the input text box to this page</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"subTitle": {
+							"default": "Contact us. We will back to you.",
+							"description": "Contact Form Subtitle",
+							"format": "text",
+							"order": 3,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Subtitle",
+							"type": "string"
+						},
+						"submitButtonColor": {
+							"default": "#540bfa",
+							"format": "color",
+							"order": 14,
+							"products": [
+								"free_plus"
+							],
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Submit button color",
+							"type": "string"
+						},
+						"subtitleColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 13,
+							"products": [
+								"free_plus"
+							],
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Subtitle color",
+							"type": "string"
+						},
+						"successMessage": {
+							"default": "Thanks. We will get back to you",
+							"description": "User will see it after sending form",
+							"format": "text",
+							"order": 4,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Success Message",
+							"type": "string"
+						},
+						"title": {
+							"default": "Any questions?",
+							"description": "Contact Form Title",
+							"format": "text",
+							"order": 2,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Title",
+							"type": "string"
+						},
+						"titleColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 12,
+							"products": [
+								"free_plus"
+							],
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Title color",
+							"type": "string"
+						},
+						"wavesAnimation": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Disabled",
+								"default": "Enabled"
+							},
+							"format": "radios",
+							"order": 15,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Wave animation",
+							"type": "string"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "SMARTARGET_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "SMARTARGET_FREE_PLUS",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.setProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "First version release. Enjoy!",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/na1FD30eA-o-",
+			"metadata": {
+				"code": {
+					"sourceTag": "na1FD30eA-o-",
+					"uploadedOn": "2020-10-22T14:41:22.748653719Z"
+				}
+			},
+			"created": "2020-10-22T14:41:22.005191Z",
+			"proposedApp": {
+				"id": "_Mnyu--aXsa4",
+				"title": "Smartarget Contact Form",
+				"shortDescription": "Allow users to contact you by filling a form",
+				"longDescription": "Allow users to contact you easily with Smartarget - Contact Form\n\nMake it easy for your site visitors to contact you through their mobile and desktop  from anywhere on your website.\n\nUsers might have a question or need your support and you should make it very visible to contact you. With Smartarget - Contact Form you can have the contact form on all your pages in a visible way. You can also use it to collect emails for newsletter.\n\nCheck the Demo page to see how it work!\nhttps://smartarget.online/demo.html\n\n\nFREE PLUS - Additional Features:\n* Allow customers to contact you using WhatsApp/Skype/Telegram/Facebook Messenger\n* Promote special offers with corner ribbon.\n* Add click to call button on your site!.\n*  Show users special offer before they leave your website with Exit Popup.  etc.",
+				"instructions": "",
+				"alias": "smartarget-contact-form",
+				"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"icon": "https://images.cloudflareapps.com/nZSncForymEQ/Contact%20Form.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/Igvzia-J2hdH/Contact%20Form.png",
+					"https://images.cloudflareapps.com/HbjCu_IL8wOh/Contact%20Form.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/PlaQyaRmsR65/Contact%20Form.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/YnleC0EwPGqe/Contact%20Form.png",
+				"author": "TopSoft UG",
+				"tagline": "",
+				"website": "https://smartarget.online",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+				"privacyPolicyURL": "https://smartarget.online/page_privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@smartarget.online",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "SMARTARGET_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "SMARTARGET_FREE_PLUS",
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "na1FD30eA-o-"
+				},
+				"created": "2020-10-22T14:41:21.333831Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"requestedAt": "2020-10-26T08:51:15.97361785Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-10-26T15:56:26.924889443Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "_Mnyu--aXsa4",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"description": {
+							"helpvalue": "",
+							"order": 17,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<b>Get many more apps for free on <a target='_blank' href='https://smartarget.online/?ref=cloudflare_contact_form'>Smartarget.online</a></b>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_contact_form'>Click to call</a> - Allow users to call you within one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_contact_form'>Ribbon corner</a> - Promote special offers in one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare'>Instagram Follow Us</a> - Get more Instagram followers</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_contact_form'>And more...</a></p>",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"desktopPosition": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another position",
+								"default": "Bottom left"
+							},
+							"format": "radios",
+							"order": 10,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "App position on desktop",
+							"type": "string"
+						},
+						"emailVisibility": {
+							"default": "visible_required",
+							"enum": [
+								"visible_required",
+								"visible",
+								"hidden"
+							],
+							"enumNames": {
+								"hidden": "Hide",
+								"visible": "Show",
+								"visible_required": "Show and required"
+							},
+							"format": "radios",
+							"order": 7,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Email Field Visibility",
+							"type": "string"
+						},
+						"fullNameVisibility": {
+							"default": "visible_required",
+							"enum": [
+								"visible_required",
+								"visible",
+								"hidden"
+							],
+							"enumNames": {
+								"hidden": "Hide",
+								"visible": "Show",
+								"visible_required": "Show and required"
+							},
+							"format": "radios",
+							"order": 6,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Full Name Field Visibility",
+							"type": "string"
+						},
+						"idUser": {
+							"default": "",
+							"format": "text",
+							"order": 16,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": "User ID",
+							"type": "string"
+						},
+						"message": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Pick your own text",
+								"default": "Use default message (Send)"
+							},
+							"format": "radios",
+							"order": 5,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Submit button text",
+							"type": "string"
+						},
+						"messageVisibility": {
+							"default": "visible_required",
+							"enum": [
+								"visible_required",
+								"visible",
+								"hidden"
+							],
+							"enumNames": {
+								"hidden": "Hide",
+								"visible": "Show",
+								"visible_required": "Show and required"
+							},
+							"format": "radios",
+							"order": 9,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Message Field Visibility",
+							"type": "string"
+						},
+						"mobilePosition": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another position",
+								"default": "Bottom left"
+							},
+							"format": "radios",
+							"order": 11,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "App position on mobile",
+							"type": "string"
+						},
+						"ownerEmail": {
+							"default": "",
+							"description": "You will get notification when users fill contact form on your store. Use Smartarget integration (Free Plus) to see detailed statistics in Smartarget Reports.",
+							"format": "text",
+							"order": 1,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Your email",
+							"type": "string"
+						},
+						"phoneVisibility": {
+							"default": "visible_required",
+							"enum": [
+								"visible_required",
+								"visible",
+								"hidden"
+							],
+							"enumNames": {
+								"hidden": "Hide",
+								"visible": "Show",
+								"visible_required": "Show and required"
+							},
+							"format": "radios",
+							"order": 8,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Phone Field Visibility",
+							"type": "string"
+						},
+						"promoFree": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plan.</b></div><br/>\n<div>⚠️ Show app on homepage only</div>\n<div>⚠️ «powered by Smartarget» label</div>\n<div>⚠️ Limited app options</div><br/>\n\n<div>Use Smartarget Integration («Free Plus» plan) with no limitations.</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"promoFreePlus": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plus plan.</b></div><br>\n<div>✅ It's also Free!</div>\n<div>✅️ Show app on all pages</div>\n<div>✅ Change app options</div>\n<div>✅ Analytics reports</div>\n<div>✅ More free apps</div><br>\n\n<div><b>Follow these steps to complete integration:</b></div><br>\n<div>1. Create a <a href=\"https://smartarget.online/page_signup.html?ref=cloudflare\" target=_blank>Smartarget</a> account or log in to yours</div>\n<div>2. <a href=\"https://app.smartarget.online/#/websites\" target=_blank>Add your website</a> and configure Contact Form app for your website</div>\n<div>3. Go to <a href=\"https://app.smartarget.online/#/integration\" target=_blank>Integration</a> and copy the User ID to the input text box to this page</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"subTitle": {
+							"default": "Contact us. We will back to you.",
+							"description": "Contact Form Subtitle",
+							"format": "text",
+							"order": 3,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Subtitle",
+							"type": "string"
+						},
+						"submitButtonColor": {
+							"default": "#540bfa",
+							"format": "color",
+							"order": 14,
+							"products": [
+								"free_plus"
+							],
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Submit button color",
+							"type": "string"
+						},
+						"subtitleColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 13,
+							"products": [
+								"free_plus"
+							],
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Subtitle color",
+							"type": "string"
+						},
+						"successMessage": {
+							"default": "Thanks. We will get back to you",
+							"description": "User will see it after sending form",
+							"format": "text",
+							"order": 4,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Success Message",
+							"type": "string"
+						},
+						"title": {
+							"default": "Any questions?",
+							"description": "Contact Form Title",
+							"format": "text",
+							"order": 2,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Title",
+							"type": "string"
+						},
+						"titleColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 12,
+							"products": [
+								"free_plus"
+							],
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Title color",
+							"type": "string"
+						},
+						"wavesAnimation": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Disabled",
+								"default": "Enabled"
+							},
+							"format": "radios",
+							"order": 15,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Wave animation",
+							"type": "string"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "SMARTARGET_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "SMARTARGET_FREE_PLUS",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.setProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.22,
+				"upvotes": 2,
+				"downvotes": 7
+			},
+			"manual": true,
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/na1FD30eA-o-",
+			"created": "2020-10-27T16:49:24.005178Z",
+			"proposedApp": {
+				"id": "_Mnyu--aXsa4",
+				"title": "Smartarget Contact Form",
+				"shortDescription": "Allow users to contact you by filling a form",
+				"longDescription": "Allow users to contact you easily with Smartarget - Contact Form\n\nMake it easy for your site visitors to contact you through their mobile and desktop  from anywhere on your website.\n\nUsers might have a question or need your support and you should make it very visible to contact you. With Smartarget - Contact Form you can have the contact form on all your pages in a visible way. You can also use it to collect emails for newsletter.\n\nCheck the Demo page to see how it work!\nhttps://smartarget.online/demo.html\n\n\nFREE PLUS - Additional Features:\n* Allow customers to contact you using WhatsApp/Skype/Telegram/Facebook Messenger\n* Promote special offers with corner ribbon.\n* Add click to call button on your site!.\n*  Show users special offer before they leave your website with Exit Popup.  etc.",
+				"instructions": "",
+				"alias": "smartarget-contact-form",
+				"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"icon": "https://images.cloudflareapps.com/nZSncForymEQ/Contact%20Form.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/Igvzia-J2hdH/Contact%20Form.png",
+					"https://images.cloudflareapps.com/HbjCu_IL8wOh/Contact%20Form.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/PlaQyaRmsR65/Contact%20Form.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/YnleC0EwPGqe/Contact%20Form.png",
+				"author": "TopSoft UG",
+				"tagline": "",
+				"website": "https://smartarget.online",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+				"privacyPolicyURL": "https://smartarget.online/page_privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@smartarget.online",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "SMARTARGET_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "SMARTARGET_FREE_PLUS",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "na1FD30eA-o-"
+				},
+				"created": "2020-10-22T14:41:21.333831Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2020-10-27T16:49:24.346694116Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-10-27T16:49:38.628853198Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "_Mnyu--aXsa4",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"description": {
+							"helpvalue": "",
+							"order": 17,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<b>Get many more apps for free on <a target='_blank' href='https://smartarget.online/?ref=cloudflare_contact_form'>Smartarget.online</a></b>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_contact_form'>Click to call</a> - Allow users to call you within one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_contact_form'>Ribbon corner</a> - Promote special offers in one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare'>Instagram Follow Us</a> - Get more Instagram followers</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_contact_form'>And more...</a></p>",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"desktopPosition": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another position",
+								"default": "Bottom left"
+							},
+							"format": "radios",
+							"order": 10,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "App position on desktop",
+							"type": "string"
+						},
+						"emailVisibility": {
+							"default": "visible_required",
+							"enum": [
+								"visible_required",
+								"visible",
+								"hidden"
+							],
+							"enumNames": {
+								"hidden": "Hide",
+								"visible": "Show",
+								"visible_required": "Show and required"
+							},
+							"format": "radios",
+							"order": 7,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Email Field Visibility",
+							"type": "string"
+						},
+						"fullNameVisibility": {
+							"default": "visible_required",
+							"enum": [
+								"visible_required",
+								"visible",
+								"hidden"
+							],
+							"enumNames": {
+								"hidden": "Hide",
+								"visible": "Show",
+								"visible_required": "Show and required"
+							},
+							"format": "radios",
+							"order": 6,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Full Name Field Visibility",
+							"type": "string"
+						},
+						"idUser": {
+							"default": "",
+							"format": "text",
+							"order": 16,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": "User ID",
+							"type": "string"
+						},
+						"message": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Pick your own text",
+								"default": "Use default message (Send)"
+							},
+							"format": "radios",
+							"order": 5,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Submit button text",
+							"type": "string"
+						},
+						"messageVisibility": {
+							"default": "visible_required",
+							"enum": [
+								"visible_required",
+								"visible",
+								"hidden"
+							],
+							"enumNames": {
+								"hidden": "Hide",
+								"visible": "Show",
+								"visible_required": "Show and required"
+							},
+							"format": "radios",
+							"order": 9,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Message Field Visibility",
+							"type": "string"
+						},
+						"mobilePosition": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another position",
+								"default": "Bottom left"
+							},
+							"format": "radios",
+							"order": 11,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "App position on mobile",
+							"type": "string"
+						},
+						"ownerEmail": {
+							"default": "",
+							"description": "You will get notification when users fill contact form on your store. Use Smartarget integration (Free Plus) to see detailed statistics in Smartarget Reports.",
+							"format": "text",
+							"order": 1,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Your email",
+							"type": "string"
+						},
+						"phoneVisibility": {
+							"default": "visible_required",
+							"enum": [
+								"visible_required",
+								"visible",
+								"hidden"
+							],
+							"enumNames": {
+								"hidden": "Hide",
+								"visible": "Show",
+								"visible_required": "Show and required"
+							},
+							"format": "radios",
+							"order": 8,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Phone Field Visibility",
+							"type": "string"
+						},
+						"promoFree": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plan.</b></div><br/>\n<div>⚠️ Show app on homepage only</div>\n<div>⚠️ «powered by Smartarget» label</div>\n<div>⚠️ Limited app options</div><br/>\n\n<div>Use Smartarget Integration («Free Plus» plan) with no limitations.</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"promoFreePlus": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plus plan.</b></div><br>\n<div>✅ It's also Free!</div>\n<div>✅️ Show app on all pages</div>\n<div>✅ Change app options</div>\n<div>✅ Analytics reports</div>\n<div>✅ More free apps</div><br>\n\n<div><b>Follow these steps to complete integration:</b></div><br>\n<div>1. Create a <a href=\"https://smartarget.online/page_signup.html?ref=cloudflare\" target=_blank>Smartarget</a> account or log in to yours</div>\n<div>2. <a href=\"https://app.smartarget.online/#/websites\" target=_blank>Add your website</a> and configure Contact Form app for your website</div>\n<div>3. Go to <a href=\"https://app.smartarget.online/#/integration\" target=_blank>Integration</a> and copy the User ID to the input text box to this page</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"subTitle": {
+							"default": "Contact us. We will back to you.",
+							"description": "Contact Form Subtitle",
+							"format": "text",
+							"order": 3,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Subtitle",
+							"type": "string"
+						},
+						"submitButtonColor": {
+							"default": "#540bfa",
+							"format": "color",
+							"order": 14,
+							"products": [
+								"free_plus"
+							],
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Submit button color",
+							"type": "string"
+						},
+						"subtitleColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 13,
+							"products": [
+								"free_plus"
+							],
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Subtitle color",
+							"type": "string"
+						},
+						"successMessage": {
+							"default": "Thanks. We will get back to you",
+							"description": "User will see it after sending form",
+							"format": "text",
+							"order": 4,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Success Message",
+							"type": "string"
+						},
+						"title": {
+							"default": "Any questions?",
+							"description": "Contact Form Title",
+							"format": "text",
+							"order": 2,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Title",
+							"type": "string"
+						},
+						"titleColor": {
+							"default": "#000000",
+							"format": "color",
+							"order": 12,
+							"products": [
+								"free_plus"
+							],
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Title color",
+							"type": "string"
+						},
+						"wavesAnimation": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Disabled",
+								"default": "Enabled"
+							},
+							"format": "radios",
+							"order": 15,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Wave animation",
+							"type": "string"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "SMARTARGET_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "SMARTARGET_FREE_PLUS",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.setProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/na1FD30eA-o-",
+			"created": "2021-11-09T15:07:02.68009Z",
+			"proposedApp": {
+				"id": "_Mnyu--aXsa4",
+				"title": "Smartarget Contact Form",
+				"shortDescription": "Allow users to contact you by filling a form",
+				"longDescription": "Allow users to contact you easily with Smartarget - Contact Form\n\nMake it easy for your site visitors to contact you through their mobile and desktop  from anywhere on your website.\n\nUsers might have a question or need your support and you should make it very visible to contact you. With Smartarget - Contact Form you can have the contact form on all your pages in a visible way. You can also use it to collect emails for newsletter.\n\nCheck the Demo page to see how it work!\nhttps://smartarget.online/demo.html\n\n\nFREE PLUS - Additional Features:\n* Allow customers to contact you using WhatsApp/Skype/Telegram/Facebook Messenger\n* Promote special offers with corner ribbon.\n* Add click to call button on your site!.\n*  Show users special offer before they leave your website with Exit Popup.  etc.",
+				"instructions": "",
+				"alias": "smartarget-contact-form",
+				"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"icon": "https://images.cloudflareapps.com/nZSncForymEQ/Contact%20Form.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/NvaefYixisQI/contact_form-1-desktop.png",
+					"https://images.cloudflareapps.com/NvaefYixisQI/contact_form-2-desktop.png",
+					"https://images.cloudflareapps.com/NvaefYixisQI/contact_form-1-mobile.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/PlaQyaRmsR65/Contact%20Form.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/YnleC0EwPGqe/Contact%20Form.png",
+				"author": "TopSoft UG",
+				"tagline": "",
+				"website": "https://smartarget.online",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+				"privacyPolicyURL": "https://smartarget.online/page_privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@smartarget.online",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "SMARTARGET_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "SMARTARGET_FREE_PLUS",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "na1FD30eA-o-"
+				},
+				"created": "2020-10-22T14:41:21.333831Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"requestedAt": "2021-11-09T15:07:03.326455529Z",
+				"canceledAt": null,
+				"reviewedByUserId": "b663b9a80366828a836e01c93e76da96",
+				"reviewedAt": "2021-11-23T22:18:12.216374582Z"
+			}
+		}
+	]
+}

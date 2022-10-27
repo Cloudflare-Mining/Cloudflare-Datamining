@@ -1,0 +1,1851 @@
+{
+	"id": "q5A_-v9pfE6p",
+	"title": "Smartarget Facebook Messenger - Contact Us",
+	"shortDescription": "Allow customers to contact you using Facebook Messenger",
+	"longDescription": "Do you have a Facebook Messenger or Facebook Profile? Do you want to provide your website visitors approaching you there?\n\nWith 'Facebook Messenger - Contact Us' you can add a small icon on one of your website corners (any of them!) with your a short message as \"Contact us\" or \"message us\" etc. When user click on the icon - new tab will open with the Messenger chat so users can talk with you right away.",
+	"instructions": "",
+	"alias": "smartarget-facebook-messenger-contact-us",
+	"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+	"icon": "https://images.cloudflareapps.com/pV-9pku7Bm1V/Facebook%20Messenger%20-%20Contact%20Us.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/TrODCyt_eClN/facebook_messenger-1-desktop.png",
+		"https://images.cloudflareapps.com/TrODCyt_eClN/facebook_messenger-2-desktop.png",
+		"https://images.cloudflareapps.com/TrODCyt_eClN/facebook_messenger-1-mobile.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/Ozq-qLa6GueU/Facebook%20Messenger%20Contact%20Us.png",
+	"featuredAppImage": "https://images.cloudflareapps.com/4028VBPCsehj/Facebook%20Messenger%20Contact%20Us.png",
+	"author": "TopSoft UG",
+	"tagline": "",
+	"website": "https://smartarget.online/demo.html",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+	"privacyPolicyURL": "https://smartarget.online/page_privacy.html",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.5",
+	"infoVersion": "1.0.5",
+	"points": 0,
+	"supportEmail": "support@smartarget.online",
+	"products": [
+		{
+			"id": "free",
+			"title": "Free",
+			"shortDescription": "Limited features. Visible on homepage only.",
+			"longDescription": "",
+			"visible": true,
+			"price": 0,
+			"order": 0,
+			"plan": "SMARTARGET_FREE",
+			"feature": "free",
+			"created": null
+		},
+		{
+			"id": "free_plus",
+			"title": "Free Plus",
+			"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+			"longDescription": "",
+			"visible": true,
+			"price": 0,
+			"order": 1,
+			"plan": "SMARTARGET_FREE_PLUS",
+			"created": null
+		}
+	],
+	"categoryIds": [
+		"social-and-communication"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+			"created": "2020-04-14T22:07:55.076455588Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "1YYYLFtvJfg4"
+	},
+	"created": "2020-04-14T22:07:49.595596Z",
+	"org": {
+		"id": "ce4a075ceeac71fdfd05a79eff7f0faa",
+		"title": "",
+		"username": "ce4a075ceeac71fdfd05a79eff7f0faa",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "social-and-communication",
+			"title": "Social & Communication",
+			"description": "Apps that make it easier to communicate with your customers.",
+			"icon": "",
+			"points": 80,
+			"visible": true,
+			"created": "2018-01-22T19:17:10.030031Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "q5A_-v9pfE6p",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"callText": {
+							"default": "Have a question? Contact us now",
+							"description": "It's the message in widget tooltip",
+							"format": "text",
+							"order": 1,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Call to action message",
+							"type": "string"
+						},
+						"description": {
+							"helpvalue": "",
+							"order": 8,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<b>Get many more apps for free on <a target='_blank' href='https://smartarget.online/?ref=facebook'>Smartarget.online</a></b>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=facebook'>Click to call</a> - Allow users to call you within one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=facebook'>Ribbon corner</a> - Promote special offers in one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=facebook'>Exit popup</a> - Show users special offer before they leave your website</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=facebook'>And more...</a></p>",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"email": {
+							"default": "",
+							"description": "Enter your email address to be notified for new version releases",
+							"order": 4,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Version updates!",
+							"type": "string"
+						},
+						"facebookMessengerId": {
+							"default": "",
+							"description": "Your fb messenger id",
+							"order": 2,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Facebook messenger id",
+							"type": "string"
+						},
+						"iconPosition": {
+							"default": "bottom-right",
+							"description": "Where the facebook messenger icon should be placed?",
+							"enum": [
+								"top-left",
+								"top-right",
+								"bottom-left",
+								"bottom-right"
+							],
+							"enumNames": {
+								"bottom-left": "Bottom left",
+								"bottom-right": "Bottom right",
+								"top-left": "Top left",
+								"top-right": "Top right"
+							},
+							"format": "radios",
+							"order": 3,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Facebook messenger icon position",
+							"type": "string"
+						},
+						"idUser": {
+							"default": "",
+							"description": "Get your User ID in the <a href='https://app.smartarget.online/#/integration' target='_blank'>Integration page</a>",
+							"format": "text",
+							"order": 7,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": "User ID",
+							"type": "string"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Show the Facebook messenger icon on Homepage only",
+						"longDescription": "Show the Facebook messenger icon on Homepage only",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "APPS_FACEBOOK_CONTACT_US_PLUS",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "Get Facebook messenger and free more apps (include facebook messenger) to improve your website",
+						"longDescription": "Get Facebook messenger and free more apps (include facebook messenger) to improve your website",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "APPS_FACEBOOK_CONTACT_US_FREE_PLUS",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.setProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "First version! yay!!!!",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/1YYYLFtvJfg4",
+			"metadata": {
+				"code": {
+					"sourceTag": "1YYYLFtvJfg4",
+					"uploadedOn": "2020-04-14T22:07:52.295770526Z"
+				}
+			},
+			"created": "2020-04-14T22:07:51.148688Z",
+			"proposedApp": {
+				"id": "q5A_-v9pfE6p",
+				"title": "Facebook Messenger - Contact Us",
+				"shortDescription": "Allow customers to contact you using Facebook Messenger",
+				"longDescription": "Do you have a Facebook Messenger or Facebook Proifle? Do you want to provide your website visiors approaching you there?\n\nWith 'Facebook Messenger - Contact Us' you can add a small icon on one of your website corners (any of them!) with your a short message as \"Contact us\" or \"message us\" etc. \nWhen user click on the icon - new tab will open wiith the Messenger chat so users can talk with you right away.",
+				"instructions": "",
+				"alias": "facebook-messenger-contact-us",
+				"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"icon": "https://images.cloudflareapps.com/egyep2SFrVGJ/facebook-messenger-white-logo-png-transparent.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/7BzfsrLojIRl/Screen%20Shot%202020-04-15%20at%2000.06.56.png",
+					"https://images.cloudflareapps.com/DizaWqmnTysC/Screen%20Shot%202020-04-15%20at%2000.05.44.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/T5I-0Iqmfa9C/428.png",
+				"featuredAppImage": "",
+				"author": "TopSoft UG",
+				"tagline": "",
+				"website": "https://smartarget.online/demo.html",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+				"privacyPolicyURL": "https://smartarget.online/page_privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@smartarget.online",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Show the Facebook messenger icon on Homepage only",
+						"longDescription": "Show the Facebook messenger icon on Homepage only",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "APPS_FACEBOOK_CONTACT_US_PLUS",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "Get Facebook messenger and free more apps (include facebook messenger) to improve your website",
+						"longDescription": "Get Facebook messenger and free more apps (include facebook messenger) to improve your website",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "APPS_FACEBOOK_CONTACT_US_FREE_PLUS",
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "1YYYLFtvJfg4"
+				},
+				"created": "2020-04-14T22:07:49.595596Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"requestedAt": "2020-04-14T22:07:55.060922479Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-04-17T16:13:12.310232442Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "q5A_-v9pfE6p",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"callText": {
+							"default": "Have a question? Contact us now",
+							"description": "It's the message in widget tooltip",
+							"format": "text",
+							"order": 1,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Call to action message",
+							"type": "string"
+						},
+						"description": {
+							"helpvalue": "",
+							"order": 8,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<b>Get many more apps for free on <a target='_blank' href='https://smartarget.online/?ref=facebook'>Smartarget.online</a></b>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=facebook'>Click to call</a> - Allow users to call you within one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=facebook'>Ribbon corner</a> - Promote special offers in one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=facebook'>Exit popup</a> - Show users special offer before they leave your website</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=facebook'>And more...</a></p>",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"email": {
+							"default": "",
+							"description": "Enter your email address to be notified for new version releases",
+							"order": 4,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Version updates!",
+							"type": "string"
+						},
+						"facebookMessengerId": {
+							"default": "",
+							"description": "Your fb messenger id",
+							"order": 2,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Facebook messenger id",
+							"type": "string"
+						},
+						"iconPosition": {
+							"default": "bottom-right",
+							"description": "Where the facebook messenger icon should be placed?",
+							"enum": [
+								"top-left",
+								"top-right",
+								"bottom-left",
+								"bottom-right"
+							],
+							"enumNames": {
+								"bottom-left": "Bottom left",
+								"bottom-right": "Bottom right",
+								"top-left": "Top left",
+								"top-right": "Top right"
+							},
+							"format": "radios",
+							"order": 3,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Facebook messenger icon position",
+							"type": "string"
+						},
+						"idUser": {
+							"default": "",
+							"description": "Get your User ID in the <a href='https://app.smartarget.online/#/integration' target='_blank'>Integration page</a>",
+							"format": "text",
+							"order": 7,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": "User ID",
+							"type": "string"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Show the Facebook messenger icon on Homepage only",
+						"longDescription": "Show the Facebook messenger icon on Homepage only",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "APPS_FACEBOOK_CONTACT_US_PLUS",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "Get Facebook messenger and free more apps (include facebook messenger) to improve your website",
+						"longDescription": "Get Facebook messenger and free more apps (include facebook messenger) to improve your website",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "APPS_FACEBOOK_CONTACT_US_FREE_PLUS",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.setProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Added to Social & Communication category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/1YYYLFtvJfg4",
+			"created": "2020-04-17T16:50:17.37784Z",
+			"proposedApp": {
+				"id": "q5A_-v9pfE6p",
+				"title": "Facebook Messenger - Contact Us",
+				"shortDescription": "Allow customers to contact you using Facebook Messenger",
+				"longDescription": "Do you have a Facebook Messenger or Facebook Proifle? Do you want to provide your website visiors approaching you there?\n\nWith 'Facebook Messenger - Contact Us' you can add a small icon on one of your website corners (any of them!) with your a short message as \"Contact us\" or \"message us\" etc. \nWhen user click on the icon - new tab will open wiith the Messenger chat so users can talk with you right away.",
+				"instructions": "",
+				"alias": "facebook-messenger-contact-us",
+				"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"icon": "https://images.cloudflareapps.com/egyep2SFrVGJ/facebook-messenger-white-logo-png-transparent.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/7BzfsrLojIRl/Screen%20Shot%202020-04-15%20at%2000.06.56.png",
+					"https://images.cloudflareapps.com/DizaWqmnTysC/Screen%20Shot%202020-04-15%20at%2000.05.44.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/T5I-0Iqmfa9C/428.png",
+				"featuredAppImage": "",
+				"author": "TopSoft UG",
+				"tagline": "",
+				"website": "https://smartarget.online/demo.html",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+				"privacyPolicyURL": "https://smartarget.online/page_privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@smartarget.online",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Show the Facebook messenger icon on Homepage only",
+						"longDescription": "Show the Facebook messenger icon on Homepage only",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "APPS_FACEBOOK_CONTACT_US_PLUS",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "Get Facebook messenger and free more apps (include facebook messenger) to improve your website",
+						"longDescription": "Get Facebook messenger and free more apps (include facebook messenger) to improve your website",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "APPS_FACEBOOK_CONTACT_US_FREE_PLUS",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "1YYYLFtvJfg4"
+				},
+				"created": "2020-04-14T22:07:49.595596Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2020-04-17T16:50:17.700648958Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-04-17T16:50:30.104275747Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "q5A_-v9pfE6p",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"callText": {
+							"default": "Have a question? Contact us now",
+							"description": "It's the message in widget tooltip",
+							"format": "text",
+							"order": 1,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Call to action message",
+							"type": "string"
+						},
+						"description": {
+							"helpvalue": "",
+							"order": 8,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<b>Get many more apps for free on <a target='_blank' href='https://smartarget.online/?ref=facebook'>Smartarget.online</a></b>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=facebook'>Click to call</a> - Allow users to call you within one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=facebook'>Ribbon corner</a> - Promote special offers in one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=facebook'>Exit popup</a> - Show users special offer before they leave your website</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=facebook'>And more...</a></p>",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"email": {
+							"default": "",
+							"description": "Enter your email address to be notified for new version releases",
+							"order": 4,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Version updates!",
+							"type": "string"
+						},
+						"facebookMessengerId": {
+							"default": "",
+							"description": "Your fb messenger id",
+							"order": 2,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Facebook messenger id",
+							"type": "string"
+						},
+						"iconPosition": {
+							"default": "bottom-right",
+							"description": "Where the facebook messenger icon should be placed?",
+							"enum": [
+								"top-left",
+								"top-right",
+								"bottom-left",
+								"bottom-right"
+							],
+							"enumNames": {
+								"bottom-left": "Bottom left",
+								"bottom-right": "Bottom right",
+								"top-left": "Top left",
+								"top-right": "Top right"
+							},
+							"format": "radios",
+							"order": 3,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Facebook messenger icon position",
+							"type": "string"
+						},
+						"idUser": {
+							"default": "",
+							"description": "Get your User ID in the <a href='https://app.smartarget.online/#/integration' target='_blank'>Integration page</a>",
+							"format": "text",
+							"order": 7,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": "User ID",
+							"type": "string"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Show the Facebook messenger icon on Homepage only",
+						"longDescription": "Show the Facebook messenger icon on Homepage only",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "Show the Facebook messenger icon on ALL pages",
+						"longDescription": "Show on all pages. Get Facebook messenger and free more apps (include facebook messenger) to improve your website",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.setProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.67,
+				"upvotes": 2,
+				"downvotes": 1
+			},
+			"releaseNotes": "Fixed some bugs :)",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/OLQXXProyW_f",
+			"metadata": {
+				"code": {
+					"sourceTag": "OLQXXProyW_f",
+					"uploadedOn": "2020-06-10T19:26:41.370785027Z"
+				}
+			},
+			"created": "2020-06-07T18:35:29.582481Z",
+			"proposedApp": {
+				"id": "q5A_-v9pfE6p",
+				"title": "Facebook Messenger - Contact Us",
+				"shortDescription": "Allow customers to contact you using Facebook Messenger",
+				"longDescription": "Do you have a Facebook Messenger or Facebook Proifle? Do you want to provide your website visiors approaching you there?\n\nWith 'Facebook Messenger - Contact Us' you can add a small icon on one of your website corners (any of them!) with your a short message as \"Contact us\" or \"message us\" etc. \nWhen user click on the icon - new tab will open wiith the Messenger chat so users can talk with you right away.",
+				"instructions": "",
+				"alias": "facebook-messenger-contact-us",
+				"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"icon": "https://images.cloudflareapps.com/egyep2SFrVGJ/facebook-messenger-white-logo-png-transparent.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/7BzfsrLojIRl/Screen%20Shot%202020-04-15%20at%2000.06.56.png",
+					"https://images.cloudflareapps.com/DizaWqmnTysC/Screen%20Shot%202020-04-15%20at%2000.05.44.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/T5I-0Iqmfa9C/428.png",
+				"featuredAppImage": "",
+				"author": "TopSoft UG",
+				"tagline": "",
+				"website": "https://smartarget.online/demo.html",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+				"privacyPolicyURL": "https://smartarget.online/page_privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@smartarget.online",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Show the Facebook messenger icon on Homepage only",
+						"longDescription": "Show the Facebook messenger icon on Homepage only",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "Show the Facebook messenger icon on ALL pages",
+						"longDescription": "Show on all pages. Get Facebook messenger and free more apps (include facebook messenger) to improve your website",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "1YYYLFtvJfg4"
+				},
+				"created": "2020-04-14T22:07:49.595596Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"requestedAt": "2020-06-10T19:26:43.360715251Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-06-10T20:31:18.005245251Z"
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "q5A_-v9pfE6p",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"callText": {
+							"default": "Have a question? Contact us now",
+							"description": "It's the message in widget tooltip",
+							"format": "text",
+							"order": 1,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Call to action message",
+							"type": "string"
+						},
+						"description": {
+							"helpvalue": "",
+							"order": 8,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<b>Get many more apps for free on <a target='_blank' href='https://smartarget.online/?ref=facebook'>Smartarget.online</a></b>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=facebook'>Click to call</a> - Allow users to call you within one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=facebook'>Ribbon corner</a> - Promote special offers in one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=facebook'>Exit popup</a> - Show users special offer before they leave your website</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=facebook'>And more...</a></p>",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"email": {
+							"default": "",
+							"description": "Enter your email address to be notified for new version releases",
+							"order": 4,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Version updates!",
+							"type": "string"
+						},
+						"facebookMessengerId": {
+							"default": "",
+							"description": "Your fb messenger id",
+							"order": 2,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Facebook messenger id",
+							"type": "string"
+						},
+						"iconPosition": {
+							"default": "bottom-right",
+							"description": "Where the facebook messenger icon should be placed?",
+							"enum": [
+								"top-left",
+								"top-right",
+								"bottom-left",
+								"bottom-right"
+							],
+							"enumNames": {
+								"bottom-left": "Bottom left",
+								"bottom-right": "Bottom right",
+								"top-left": "Top left",
+								"top-right": "Top right"
+							},
+							"format": "radios",
+							"order": 3,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Facebook messenger icon position",
+							"type": "string"
+						},
+						"idUser": {
+							"default": "",
+							"description": "Get your User ID in the <a href='https://app.smartarget.online/#/integration' target='_blank'>Integration page</a>",
+							"format": "text",
+							"order": 7,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": "User ID",
+							"type": "string"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Show the Facebook messenger icon on Homepage only",
+						"longDescription": "Show the Facebook messenger icon on Homepage only",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "Show the Facebook messenger icon on ALL pages",
+						"longDescription": "Show on all pages. Get Facebook messenger and free more apps (include facebook messenger) to improve your website",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.setProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "Description update",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/OLQXXProyW_f",
+			"created": "2020-09-25T08:44:42.506241Z",
+			"proposedApp": {
+				"id": "q5A_-v9pfE6p",
+				"title": "Facebook Messenger - Contact Us",
+				"shortDescription": "Allow customers to contact you using Facebook Messenger",
+				"longDescription": "Do you have a Facebook Messenger or Facebook Profile? Do you want to provide your website visitors approaching you there?\n\nWith 'Facebook Messenger - Contact Us' you can add a small icon on one of your website corners (any of them!) with your a short message as \"Contact us\" or \"message us\" etc. When user click on the icon - new tab will open with the Messenger chat so users can talk with you right away.",
+				"instructions": "",
+				"alias": "facebook-messenger-contact-us",
+				"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"icon": "https://images.cloudflareapps.com/egyep2SFrVGJ/facebook-messenger-white-logo-png-transparent.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/7BzfsrLojIRl/Screen%20Shot%202020-04-15%20at%2000.06.56.png",
+					"https://images.cloudflareapps.com/DizaWqmnTysC/Screen%20Shot%202020-04-15%20at%2000.05.44.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/T5I-0Iqmfa9C/428.png",
+				"featuredAppImage": "",
+				"author": "TopSoft UG",
+				"tagline": "",
+				"website": "https://smartarget.online/demo.html",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+				"privacyPolicyURL": "https://smartarget.online/page_privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@smartarget.online",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Show the Facebook messenger icon on Homepage only",
+						"longDescription": "Show the Facebook messenger icon on Homepage only",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "Show the Facebook messenger icon on ALL pages",
+						"longDescription": "Show on all pages. Get Facebook messenger and free more apps (include facebook messenger) to improve your website",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "1YYYLFtvJfg4"
+				},
+				"created": "2020-04-14T22:07:49.595596Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"requestedAt": "2020-09-25T08:44:42.958053396Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-09-30T15:42:22.674809514Z"
+			}
+		},
+		{
+			"tag": "1.0.4",
+			"appId": "q5A_-v9pfE6p",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"description": {
+							"helpvalue": "",
+							"order": 8,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<b>Get many more apps for free on <a target='_blank' href='https://smartarget.online/?ref=cloudflare_facebook_messenger'>Smartarget.online</a></b>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_facebook_messenger'>Click to call</a> - Allow users to call you within one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_facebook_messenger'>Ribbon corner</a> - Promote special offers in one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare'>Instagram Follow Us</a> - Get more Instagram followers</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_facebook_messenger'>And more...</a></p>",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"desktopPosition": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another position",
+								"default": "Top right"
+							},
+							"format": "radios",
+							"order": 4,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "App position on desktop",
+							"type": "string"
+						},
+						"facebookMessenger": {
+							"default": "",
+							"description": "Your Facebook Messenger account",
+							"format": "text",
+							"order": 1,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Facebook Messenger account",
+							"type": "string"
+						},
+						"hideMessage": {
+							"default": "no",
+							"enum": [
+								"no",
+								"yes"
+							],
+							"enumNames": {
+								"no": "No",
+								"yes": "Yes"
+							},
+							"format": "radios",
+							"order": 3,
+							"products": {
+								"no": [
+									"free",
+									"free_plus"
+								],
+								"yes": [
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Hide message after few seconds",
+							"type": "string"
+						},
+						"idUser": {
+							"default": "",
+							"format": "text",
+							"order": 7,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": "User ID",
+							"type": "string"
+						},
+						"message": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Pick your own message",
+								"default": "Use default message (Contact Us)"
+							},
+							"format": "radios",
+							"order": 2,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Message",
+							"type": "string"
+						},
+						"mobilePosition": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another position",
+								"default": "Top right"
+							},
+							"format": "radios",
+							"order": 5,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "App position on mobile",
+							"type": "string"
+						},
+						"promoFree": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plan.</b></div><br/>\n<div>⚠️ Show app on homepage only</div>\n<div>⚠️ «powered by Smartarget» label</div>\n<div>⚠️ Limited app options</div><br/>\n\n<div>Use Smartarget Integration («Free Plus» plan) with no limitations.</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"promoFreePlus": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plus plan.</b></div><br>\n<div>✅ It's also Free!</div>\n<div>✅️ Show app on all pages</div>\n<div>✅ Change app options</div>\n<div>✅ Analytics reports</div>\n<div>✅ More free apps</div><br>\n\n<div><b>Follow these steps to complete integration:</b></div><br>\n<div>1. Create a <a href=\"https://smartarget.online/page_signup.html?ref=cloudflare\" target=_blank>Smartarget</a> account or log in to yours</div>\n<div>2. <a href=\"https://app.smartarget.online/#/websites\" target=_blank>Add your website</a> and configure Facebook Messenger - Contact Us app for your website</div>\n<div>3. Go to <a href=\"https://app.smartarget.online/#/integration\" target=_blank>Integration</a> and copy the User ID to the input text box to this page</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"wavesAnimation": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Disabled",
+								"default": "Enabled"
+							},
+							"format": "radios",
+							"order": 6,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Wave animation",
+							"type": "string"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "SMARTARGET_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "SMARTARGET_FREE_PLUS",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.setProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.5,
+				"upvotes": 1,
+				"downvotes": 1
+			},
+			"releaseNotes": "New images and screenshots",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/1kfY2QdyCz-I",
+			"metadata": {
+				"code": {
+					"sourceTag": "1kfY2QdyCz-I",
+					"uploadedOn": "2020-10-22T14:34:12.172378102Z"
+				}
+			},
+			"created": "2020-10-22T14:33:28.065158Z",
+			"proposedApp": {
+				"id": "q5A_-v9pfE6p",
+				"title": "Smartarget Facebook Messenger - Contact Us",
+				"shortDescription": "Allow customers to contact you using Facebook Messenger",
+				"longDescription": "Do you have a Facebook Messenger or Facebook Profile? Do you want to provide your website visitors approaching you there?\n\nWith 'Facebook Messenger - Contact Us' you can add a small icon on one of your website corners (any of them!) with your a short message as \"Contact us\" or \"message us\" etc. When user click on the icon - new tab will open with the Messenger chat so users can talk with you right away.",
+				"instructions": "",
+				"alias": "smartarget-facebook-messenger-contact-us",
+				"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"icon": "https://images.cloudflareapps.com/pV-9pku7Bm1V/Facebook%20Messenger%20-%20Contact%20Us.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/bq-RqEuLiRl8/Facebook%20Messenger%20Contact%20Us.png",
+					"https://images.cloudflareapps.com/ooY7If1SnD5o/Facebook%20Messenger%20Contact%20Us.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/Ozq-qLa6GueU/Facebook%20Messenger%20Contact%20Us.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/4028VBPCsehj/Facebook%20Messenger%20Contact%20Us.png",
+				"author": "TopSoft UG",
+				"tagline": "",
+				"website": "https://smartarget.online/demo.html",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+				"privacyPolicyURL": "https://smartarget.online/page_privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@smartarget.online",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "SMARTARGET_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "SMARTARGET_FREE_PLUS",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "1YYYLFtvJfg4"
+				},
+				"created": "2020-04-14T22:07:49.595596Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"requestedAt": "2020-10-26T14:33:02.033429611Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-10-26T15:45:43.054254249Z"
+			}
+		},
+		{
+			"tag": "1.0.5",
+			"appId": "q5A_-v9pfE6p",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"description": {
+							"helpvalue": "",
+							"order": 8,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<b>Get many more apps for free on <a target='_blank' href='https://smartarget.online/?ref=cloudflare_facebook_messenger'>Smartarget.online</a></b>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_facebook_messenger'>Click to call</a> - Allow users to call you within one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_facebook_messenger'>Ribbon corner</a> - Promote special offers in one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare'>Instagram Follow Us</a> - Get more Instagram followers</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_facebook_messenger'>And more...</a></p>",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"desktopPosition": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another position",
+								"default": "Top right"
+							},
+							"format": "radios",
+							"order": 4,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "App position on desktop",
+							"type": "string"
+						},
+						"facebookMessenger": {
+							"default": "",
+							"description": "Your Facebook Messenger account",
+							"format": "text",
+							"order": 1,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Facebook Messenger account",
+							"type": "string"
+						},
+						"hideMessage": {
+							"default": "no",
+							"enum": [
+								"no",
+								"yes"
+							],
+							"enumNames": {
+								"no": "No",
+								"yes": "Yes"
+							},
+							"format": "radios",
+							"order": 3,
+							"products": {
+								"no": [
+									"free",
+									"free_plus"
+								],
+								"yes": [
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Hide message after few seconds",
+							"type": "string"
+						},
+						"idUser": {
+							"default": "",
+							"format": "text",
+							"order": 7,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": "User ID",
+							"type": "string"
+						},
+						"message": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Pick your own message",
+								"default": "Use default message (Contact Us)"
+							},
+							"format": "radios",
+							"order": 2,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Message",
+							"type": "string"
+						},
+						"mobilePosition": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Another position",
+								"default": "Top right"
+							},
+							"format": "radios",
+							"order": 5,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "App position on mobile",
+							"type": "string"
+						},
+						"promoFree": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plan.</b></div><br/>\n<div>⚠️ Show app on homepage only</div>\n<div>⚠️ «powered by Smartarget» label</div>\n<div>⚠️ Limited app options</div><br/>\n\n<div>Use Smartarget Integration («Free Plus» plan) with no limitations.</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"promoFreePlus": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plus plan.</b></div><br>\n<div>✅ It's also Free!</div>\n<div>✅️ Show app on all pages</div>\n<div>✅ Change app options</div>\n<div>✅ Analytics reports</div>\n<div>✅ More free apps</div><br>\n\n<div><b>Follow these steps to complete integration:</b></div><br>\n<div>1. Create a <a href=\"https://smartarget.online/page_signup.html?ref=cloudflare\" target=_blank>Smartarget</a> account or log in to yours</div>\n<div>2. <a href=\"https://app.smartarget.online/#/websites\" target=_blank>Add your website</a> and configure Facebook Messenger - Contact Us app for your website</div>\n<div>3. Go to <a href=\"https://app.smartarget.online/#/integration\" target=_blank>Integration</a> and copy the User ID to the input text box to this page</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"wavesAnimation": {
+							"default": "default",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Disabled",
+								"default": "Enabled"
+							},
+							"format": "radios",
+							"order": 6,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Wave animation",
+							"type": "string"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "SMARTARGET_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "SMARTARGET_FREE_PLUS",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.setProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/1kfY2QdyCz-I",
+			"created": "2021-11-09T15:09:11.068731Z",
+			"proposedApp": {
+				"id": "q5A_-v9pfE6p",
+				"title": "Smartarget Facebook Messenger - Contact Us",
+				"shortDescription": "Allow customers to contact you using Facebook Messenger",
+				"longDescription": "Do you have a Facebook Messenger or Facebook Profile? Do you want to provide your website visitors approaching you there?\n\nWith 'Facebook Messenger - Contact Us' you can add a small icon on one of your website corners (any of them!) with your a short message as \"Contact us\" or \"message us\" etc. When user click on the icon - new tab will open with the Messenger chat so users can talk with you right away.",
+				"instructions": "",
+				"alias": "smartarget-facebook-messenger-contact-us",
+				"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"icon": "https://images.cloudflareapps.com/pV-9pku7Bm1V/Facebook%20Messenger%20-%20Contact%20Us.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/TrODCyt_eClN/facebook_messenger-1-desktop.png",
+					"https://images.cloudflareapps.com/TrODCyt_eClN/facebook_messenger-2-desktop.png",
+					"https://images.cloudflareapps.com/TrODCyt_eClN/facebook_messenger-1-mobile.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/Ozq-qLa6GueU/Facebook%20Messenger%20Contact%20Us.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/4028VBPCsehj/Facebook%20Messenger%20Contact%20Us.png",
+				"author": "TopSoft UG",
+				"tagline": "",
+				"website": "https://smartarget.online/demo.html",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+				"privacyPolicyURL": "https://smartarget.online/page_privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@smartarget.online",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "SMARTARGET_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "SMARTARGET_FREE_PLUS",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "1YYYLFtvJfg4"
+				},
+				"created": "2020-04-14T22:07:49.595596Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"requestedAt": "2021-11-09T15:09:11.729509208Z",
+				"canceledAt": null,
+				"reviewedByUserId": "b663b9a80366828a836e01c93e76da96",
+				"reviewedAt": "2021-11-23T22:17:50.77932093Z"
+			}
+		}
+	]
+}

@@ -1,0 +1,941 @@
+{
+	"id": "MICfJDU5VcKf",
+	"title": "MightyForms Form Builder",
+	"shortDescription": "Create powerful online forms and automate your workflow.",
+	"longDescription": "Create contact forms, form applications, surveys and more with this easy-to-use form builder, and level up your business. With beautiful and responsive free web form templates you can customize in just a few clicks.\n\nCollect information for your business with beautiful and responsive online forms. MightyForms Form Builder makes it easy to create and automate web forms and online PDF forms with its intuitive drag & drop interface.\n\nMightyForms Form Builder is completely code-free to build traditional or conversational multi-step forms. You can create forms from scratch, from a fillable PDF form, or choose from a library of templates:\n\n* Contact form: make it easy for customers to contact you.\n* Surveys and polls: conduct market research for data-driven growth.\n* Order form: streamline business processes from the moment a customer makes an order.\n* Subscription form: grow your email list to increase brand trust.\n* Feedback form: find out what you can improve on and stand out from competitors.\n* Job application form: discover and onboard new talent into your business.\n\n\n## Form Logic Rules, Integrations and Custom Messages\nConnect your contact form with productivity tools to jump-start automatic tasks as soon as a user submits your form. Create logic rules to personalize the experience, customize a success message, email notifications and set up a redirect to a landing page in minutes.\n\n## Collect Leads and Export Data\nThe Form Builder makes all forms automatically responsive, so they will look and function perfectly in any device. You can capture more leads with Real-Time Data Capture, and have your results (and even files) sent straight to your Google Drive or Dropbox, or easily export them as a CSV.\n\n## Customer Service in real-time\nMightyForms' team is available in the Live Chat if you have ever any questions on how to use the form builder or its form builder tools. There are also many Help articles with step-by-step instructions and screenshots to guide your set-up.",
+	"instructions": "Step 1. Authorize your MightyForms account or create new account.\nStep 2. Select the form the embed or create new form\nStep 3. Select where to embed the form.\nStep 4. Done!",
+	"alias": "mightyforms",
+	"orgId": "1d8623d9c8a3b7380dcc4b86d61ab6a7",
+	"icon": "https://images.cloudflareapps.com/Uk8UB3PKmdQu/logo_round_blue.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/7bKiA3A5MzmA/3.png",
+		"https://images.cloudflareapps.com/7bKiA3A5MzmA/1.png",
+		"https://images.cloudflareapps.com/7bKiA3A5MzmA/5.png",
+		"https://images.cloudflareapps.com/7bKiA3A5MzmA/2.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/tI5fOpv4AIzi/420_03@1x.png",
+	"featuredAppImage": "https://images.cloudflareapps.com/FzDFTfeQ5eH9/1824_04@1x.png",
+	"author": "MightyForms LLC",
+	"tagline": "",
+	"website": "https://www.mightyforms.com/",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://help.mightyforms.com/en/articles/2988329-terms-of-use",
+	"privacyPolicyURL": "https://help.mightyforms.com/en/articles/2963327-privacy-policy",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.2.3",
+	"infoVersion": "1.2.3",
+	"points": 0,
+	"supportEmail": "info@mightyforms.com",
+	"products": [],
+	"categoryIds": [],
+	"agreements": {
+		"tos": {
+			"userId": "1d8623d9c8a3b7380dcc4b86d61ab6a7",
+			"created": "2020-07-14T13:19:21.882622971Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "CKXQMhuXdHKv"
+	},
+	"created": "2020-06-24T13:17:04.221161Z",
+	"org": {
+		"id": "1d8623d9c8a3b7380dcc4b86d61ab6a7",
+		"title": "",
+		"username": "1d8623d9c8a3b7380dcc4b86d61ab6a7",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "MICfJDU5VcKf",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					],
+					"head": [
+						{
+							"type": "script",
+							"src": "./build/mightyforms.min.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 1,
+							"services": [
+								"mightyforms"
+							],
+							"title": "MightyForms",
+							"type": "object"
+						},
+						"help": {
+							"helpvalue": "<h2>Simple steps to outstanding form on your website:</h2>\n<br><ul><li>Create MightyForms <a href=\"https://www.mightyforms.com/?utm_source=integrations&utm_medium=CloudFlareSignUp&utm_campaign=CloudflareApp\" target=\"blank\"> account</a> or login if you already have one.</li>\n<li>Prepare your mightyform exactly as you imagined the perfect one</li>\n<li>Pick the place and insert the Form on your Cloudflare website.</li>\n<li>Enjoy and gather submissions via MightyForms account or connecting another integration.</li></ul>",
+							"order": 0,
+							"type": "help"
+						},
+						"regions": {
+							"items": {
+								"notitle": true,
+								"properties": {
+									"location": {
+										"default": {
+											"method": "prepend",
+											"selector": "body"
+										},
+										"description": "Where you want to place the form?",
+										"format": "element",
+										"order": 2,
+										"title": "Form Location",
+										"type": "object"
+									},
+									"selectProject": {
+										"default": "Choose form",
+										"enum": [],
+										"enumNames": {},
+										"order": 1,
+										"title": "Choose your form (you need to log in first)",
+										"type": "string"
+									}
+								},
+								"type": "object"
+							},
+							"order": 1,
+							"title": "Set regions to paste form",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.mightyforms.com/api/cloudflare/projects",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating MightyForms server for getting your projects "
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 2,
+				"downvotes": 0
+			},
+			"releaseNotes": "Initial version",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/uw0LUHvo6r6I",
+			"metadata": {
+				"code": {
+					"sourceTag": "uw0LUHvo6r6I",
+					"uploadedOn": "2020-07-14T13:19:21.181286692Z"
+				}
+			},
+			"created": "2020-06-24T13:17:04.737662Z",
+			"proposedApp": {
+				"id": "MICfJDU5VcKf",
+				"title": "MightyForms Form Builder",
+				"shortDescription": "Create powerful online forms and automate your workflow.",
+				"longDescription": "Create contact forms, form applications, surveys and more with this easy-to-use form builder, and level up your business. With beautiful and responsive free web form templates you can customize in just a few clicks.\n\nCollect information for your business with beautiful and responsive online forms. MightyForms Form Builder makes it easy to create and automate web forms and online PDF forms with its intuitive drag & drop interface.\n\nMightyForms Form Builder is completely code-free to build traditional or conversational multi-step forms. You can create forms from scratch, from a fillable PDF form, or choose from a library of templates:\n\n* Contact form: make it easy for customers to contact you.\n* Surveys and polls: conduct market research for data-driven growth.\n* Order form: streamline business processes from the moment a customer makes an order.\n* Subscription form: grow your email list to increase brand trust.\n* Feedback form: find out what you can improve on and stand out from competitors.\n* Job application form: discover and onboard new talent into your business.\n\n\n##Form Logic Rules, Integrations and Custom Messages\nConnect your contact form with productivity tools to jump-start automatic tasks as soon as a user submits your form. Create logic rules to personalize the experience, customize a success message, email notifications and set up a redirect to a landing page in minutes.\n\n##Collect Leads and Export Data\nThe Form Builder makes all forms automatically responsive, so they will look and function perfectly in any device. You can capture more leads with Real-Time Data Capture, and have your results (and even files) sent straight to your Google Drive or Dropbox, or easily export them as a CSV.\n\n##Customer Service in real-time\nMightyForms' team is available in the Live Chat if you have ever any questions on how to use the form builder or its form builder tools. There are also many Help articles with step-by-step instructions and screenshots to guide your set-up.",
+				"instructions": "Step 1. Authorize your MightyForms account or create new account.\nStep 2. Select the form the embed or create new form\nStep 3. Select where to embed the form.\nStep 4. Done!",
+				"alias": "mightyforms",
+				"orgId": "1d8623d9c8a3b7380dcc4b86d61ab6a7",
+				"icon": "https://images.cloudflareapps.com/Uk8UB3PKmdQu/logo_round_blue.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/7bKiA3A5MzmA/3.png",
+					"https://images.cloudflareapps.com/7bKiA3A5MzmA/1.png",
+					"https://images.cloudflareapps.com/7bKiA3A5MzmA/5.png",
+					"https://images.cloudflareapps.com/7bKiA3A5MzmA/2.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/tI5fOpv4AIzi/420_03@1x.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/FzDFTfeQ5eH9/1824_04@1x.png",
+				"author": "MightyForms LLC",
+				"tagline": "",
+				"website": "https://www.mightyforms.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://help.mightyforms.com/en/articles/2988329-terms-of-use",
+				"privacyPolicyURL": "https://help.mightyforms.com/en/articles/2963327-privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "info@mightyforms.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "CKXQMhuXdHKv"
+				},
+				"created": "2020-06-24T13:17:04.221161Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "1d8623d9c8a3b7380dcc4b86d61ab6a7",
+				"requestedAt": "2020-07-14T13:19:21.867225437Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-07-14T16:15:45.866192957Z"
+			}
+		},
+		{
+			"tag": "1.1.0",
+			"appId": "MICfJDU5VcKf",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					],
+					"head": [
+						{
+							"type": "script",
+							"src": "./build/mightyforms.min.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 1,
+							"services": [
+								"mightyforms"
+							],
+							"title": "MightyForms",
+							"type": "object"
+						},
+						"help": {
+							"helpvalue": "<h2>Simple steps to outstanding form on your website:</h2>\n<br><ul><li>Create MightyForms <a href=\"https://www.mightyforms.com/?utm_source=integrations&utm_medium=CloudFlareSignUp&utm_campaign=CloudflareApp\" target=\"blank\"> account</a> or login if you already have one.</li>\n<li>Prepare your mightyform exactly as you imagined the perfect one</li>\n<li>Pick the place and insert the Form on your Cloudflare website.</li>\n<li>Enjoy and gather submissions via MightyForms account or connecting another integration.</li></ul>",
+							"order": 0,
+							"type": "help"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where you want to place the form?",
+							"format": "element",
+							"order": 2,
+							"title": "Form Location",
+							"type": "object"
+						},
+						"selectProject": {
+							"default": "Choose form",
+							"enum": [],
+							"enumNames": {},
+							"order": 1,
+							"title": "Choose your form (you need to log in first)",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.mightyforms.com/api/cloudflare/projects",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating MightyForms server for getting your projects "
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "bugfixes and stability improvements",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/nW8v8ANt56gn",
+			"metadata": {
+				"code": {
+					"sourceTag": "nW8v8ANt56gn",
+					"uploadedOn": "2020-07-31T14:54:12.678256818Z"
+				}
+			},
+			"created": "2020-07-16T18:30:35.389438Z",
+			"proposedApp": {
+				"id": "MICfJDU5VcKf",
+				"title": "MightyForms Form Builder",
+				"shortDescription": "Create powerful online forms and automate your workflow.",
+				"longDescription": "Create contact forms, form applications, surveys and more with this easy-to-use form builder, and level up your business. With beautiful and responsive free web form templates you can customize in just a few clicks.\n\nCollect information for your business with beautiful and responsive online forms. MightyForms Form Builder makes it easy to create and automate web forms and online PDF forms with its intuitive drag & drop interface.\n\nMightyForms Form Builder is completely code-free to build traditional or conversational multi-step forms. You can create forms from scratch, from a fillable PDF form, or choose from a library of templates:\n\n* Contact form: make it easy for customers to contact you.\n* Surveys and polls: conduct market research for data-driven growth.\n* Order form: streamline business processes from the moment a customer makes an order.\n* Subscription form: grow your email list to increase brand trust.\n* Feedback form: find out what you can improve on and stand out from competitors.\n* Job application form: discover and onboard new talent into your business.\n\n\n## Form Logic Rules, Integrations and Custom Messages\nConnect your contact form with productivity tools to jump-start automatic tasks as soon as a user submits your form. Create logic rules to personalize the experience, customize a success message, email notifications and set up a redirect to a landing page in minutes.\n\n## Collect Leads and Export Data\nThe Form Builder makes all forms automatically responsive, so they will look and function perfectly in any device. You can capture more leads with Real-Time Data Capture, and have your results (and even files) sent straight to your Google Drive or Dropbox, or easily export them as a CSV.\n\n## Customer Service in real-time\nMightyForms' team is available in the Live Chat if you have ever any questions on how to use the form builder or its form builder tools. There are also many Help articles with step-by-step instructions and screenshots to guide your set-up.",
+				"instructions": "Step 1. Authorize your MightyForms account or create new account.\nStep 2. Select the form the embed or create new form\nStep 3. Select where to embed the form.\nStep 4. Done!",
+				"alias": "mightyforms",
+				"orgId": "1d8623d9c8a3b7380dcc4b86d61ab6a7",
+				"icon": "https://images.cloudflareapps.com/Uk8UB3PKmdQu/logo_round_blue.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/7bKiA3A5MzmA/3.png",
+					"https://images.cloudflareapps.com/7bKiA3A5MzmA/1.png",
+					"https://images.cloudflareapps.com/7bKiA3A5MzmA/5.png",
+					"https://images.cloudflareapps.com/7bKiA3A5MzmA/2.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/tI5fOpv4AIzi/420_03@1x.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/FzDFTfeQ5eH9/1824_04@1x.png",
+				"author": "MightyForms LLC",
+				"tagline": "",
+				"website": "https://www.mightyforms.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://help.mightyforms.com/en/articles/2988329-terms-of-use",
+				"privacyPolicyURL": "https://help.mightyforms.com/en/articles/2963327-privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "info@mightyforms.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "CKXQMhuXdHKv"
+				},
+				"created": "2020-06-24T13:17:04.221161Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "1d8623d9c8a3b7380dcc4b86d61ab6a7",
+				"requestedAt": "2020-07-31T14:54:13.73341114Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-08-03T15:40:20.618845242Z"
+			}
+		},
+		{
+			"tag": "1.2.0",
+			"appId": "MICfJDU5VcKf",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					],
+					"head": [
+						{
+							"type": "script",
+							"src": "./build/mightyforms.min.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 1,
+							"services": [
+								"mfs-login"
+							],
+							"title": "MightyForms",
+							"type": "object"
+						},
+						"help": {
+							"helpvalue": "<h2>Simple steps to outstanding form on your website:</h2>\n<br><ul><li>Create MightyForms <a href=\"https://www.mightyforms.com/?utm_source=integrations&utm_medium=CloudFlareSignUp&utm_campaign=CloudflareApp\" target=\"blank\"> account</a> or login if you already have one.</li>\n<li>Prepare your mightyform exactly as you imagined the perfect one</li>\n<li>Pick the place and insert the Form on your Cloudflare website.</li>\n<li>Enjoy and gather submissions via MightyForms account or connecting another integration.</li></ul>",
+							"order": 0,
+							"type": "help"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where you want to place the form?",
+							"format": "element",
+							"order": 2,
+							"title": "Form Location",
+							"type": "object"
+						},
+						"selectProject": {
+							"default": "Choose form",
+							"enum": [],
+							"enumNames": {},
+							"order": 1,
+							"title": "Choose your form (you need to log in first)",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.mightyforms.com/api/cloudflare/projects",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating MightyForms server for getting your projects "
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "fixed login issue",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/H06uTJcEu5Kf",
+			"metadata": {
+				"code": {
+					"sourceTag": "H06uTJcEu5Kf",
+					"uploadedOn": "2020-08-04T20:23:19.330357478Z"
+				}
+			},
+			"created": "2020-08-04T20:23:18.949296Z",
+			"proposedApp": {
+				"id": "MICfJDU5VcKf",
+				"title": "MightyForms Form Builder",
+				"shortDescription": "Create powerful online forms and automate your workflow.",
+				"longDescription": "Create contact forms, form applications, surveys and more with this easy-to-use form builder, and level up your business. With beautiful and responsive free web form templates you can customize in just a few clicks.\n\nCollect information for your business with beautiful and responsive online forms. MightyForms Form Builder makes it easy to create and automate web forms and online PDF forms with its intuitive drag & drop interface.\n\nMightyForms Form Builder is completely code-free to build traditional or conversational multi-step forms. You can create forms from scratch, from a fillable PDF form, or choose from a library of templates:\n\n* Contact form: make it easy for customers to contact you.\n* Surveys and polls: conduct market research for data-driven growth.\n* Order form: streamline business processes from the moment a customer makes an order.\n* Subscription form: grow your email list to increase brand trust.\n* Feedback form: find out what you can improve on and stand out from competitors.\n* Job application form: discover and onboard new talent into your business.\n\n\n## Form Logic Rules, Integrations and Custom Messages\nConnect your contact form with productivity tools to jump-start automatic tasks as soon as a user submits your form. Create logic rules to personalize the experience, customize a success message, email notifications and set up a redirect to a landing page in minutes.\n\n## Collect Leads and Export Data\nThe Form Builder makes all forms automatically responsive, so they will look and function perfectly in any device. You can capture more leads with Real-Time Data Capture, and have your results (and even files) sent straight to your Google Drive or Dropbox, or easily export them as a CSV.\n\n## Customer Service in real-time\nMightyForms' team is available in the Live Chat if you have ever any questions on how to use the form builder or its form builder tools. There are also many Help articles with step-by-step instructions and screenshots to guide your set-up.",
+				"instructions": "Step 1. Authorize your MightyForms account or create new account.\nStep 2. Select the form the embed or create new form\nStep 3. Select where to embed the form.\nStep 4. Done!",
+				"alias": "mightyforms",
+				"orgId": "1d8623d9c8a3b7380dcc4b86d61ab6a7",
+				"icon": "https://images.cloudflareapps.com/Uk8UB3PKmdQu/logo_round_blue.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/7bKiA3A5MzmA/3.png",
+					"https://images.cloudflareapps.com/7bKiA3A5MzmA/1.png",
+					"https://images.cloudflareapps.com/7bKiA3A5MzmA/5.png",
+					"https://images.cloudflareapps.com/7bKiA3A5MzmA/2.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/tI5fOpv4AIzi/420_03@1x.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/FzDFTfeQ5eH9/1824_04@1x.png",
+				"author": "MightyForms LLC",
+				"tagline": "",
+				"website": "https://www.mightyforms.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://help.mightyforms.com/en/articles/2988329-terms-of-use",
+				"privacyPolicyURL": "https://help.mightyforms.com/en/articles/2963327-privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "info@mightyforms.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "CKXQMhuXdHKv"
+				},
+				"created": "2020-06-24T13:17:04.221161Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "1d8623d9c8a3b7380dcc4b86d61ab6a7",
+				"requestedAt": "2020-08-04T20:23:20.097156722Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-08-05T15:09:53.193360931Z"
+			}
+		},
+		{
+			"tag": "1.2.1",
+			"appId": "MICfJDU5VcKf",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					],
+					"head": [
+						{
+							"type": "script",
+							"src": "./build/mightyforms.min.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 1,
+							"services": [
+								"mfs-login"
+							],
+							"title": "MightyForms",
+							"type": "object"
+						},
+						"help": {
+							"helpvalue": "<h2>Simple steps to outstanding form on your website:</h2>\n<br><ul><li>Create MightyForms <a href=\"https://www.mightyforms.com/?utm_source=integrations&utm_medium=CloudFlareSignUp&utm_campaign=CloudflareApp\" target=\"blank\"> account</a> or login if you already have one.</li>\n<li>Prepare your mightyform exactly as you imagined the perfect one</li>\n<li>Pick the place and insert the Form on your Cloudflare website.</li>\n<li>Enjoy and gather submissions via MightyForms account or connecting another integration.</li></ul>",
+							"order": 0,
+							"type": "help"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where you want to place the form?",
+							"format": "element",
+							"order": 2,
+							"title": "Form Location",
+							"type": "object"
+						},
+						"selectProject": {
+							"default": "Choose form",
+							"enum": [],
+							"enumNames": {},
+							"order": 1,
+							"title": "Choose your form (you need to log in first)",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.mightyforms.com/api/cloudflare/projects",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating MightyForms server for getting your projects "
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "fixing issue with login",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/H06uTJcEu5Kf",
+			"created": "2020-08-17T12:44:49.30078Z",
+			"proposedApp": {
+				"id": "MICfJDU5VcKf",
+				"title": "MightyForms Form Builder",
+				"shortDescription": "Create powerful online forms and automate your workflow.",
+				"longDescription": "Create contact forms, form applications, surveys and more with this easy-to-use form builder, and level up your business. With beautiful and responsive free web form templates you can customize in just a few clicks.\n\nCollect information for your business with beautiful and responsive online forms. MightyForms Form Builder makes it easy to create and automate web forms and online PDF forms with its intuitive drag & drop interface.\n\nMightyForms Form Builder is completely code-free to build traditional or conversational multi-step forms. You can create forms from scratch, from a fillable PDF form, or choose from a library of templates:\n\n* Contact form: make it easy for customers to contact you.\n* Surveys and polls: conduct market research for data-driven growth.\n* Order form: streamline business processes from the moment a customer makes an order.\n* Subscription form: grow your email list to increase brand trust.\n* Feedback form: find out what you can improve on and stand out from competitors.\n* Job application form: discover and onboard new talent into your business.\n\n\n## Form Logic Rules, Integrations and Custom Messages\nConnect your contact form with productivity tools to jump-start automatic tasks as soon as a user submits your form. Create logic rules to personalize the experience, customize a success message, email notifications and set up a redirect to a landing page in minutes.\n\n## Collect Leads and Export Data\nThe Form Builder makes all forms automatically responsive, so they will look and function perfectly in any device. You can capture more leads with Real-Time Data Capture, and have your results (and even files) sent straight to your Google Drive or Dropbox, or easily export them as a CSV.\n\n## Customer Service in real-time\nMightyForms' team is available in the Live Chat if you have ever any questions on how to use the form builder or its form builder tools. There are also many Help articles with step-by-step instructions and screenshots to guide your set-up.",
+				"instructions": "Step 1. Authorize your MightyForms account or create new account.\nStep 2. Select the form the embed or create new form\nStep 3. Select where to embed the form.\nStep 4. Done!",
+				"alias": "mfs-login",
+				"orgId": "1d8623d9c8a3b7380dcc4b86d61ab6a7",
+				"icon": "https://images.cloudflareapps.com/Uk8UB3PKmdQu/logo_round_blue.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/7bKiA3A5MzmA/3.png",
+					"https://images.cloudflareapps.com/7bKiA3A5MzmA/1.png",
+					"https://images.cloudflareapps.com/7bKiA3A5MzmA/5.png",
+					"https://images.cloudflareapps.com/7bKiA3A5MzmA/2.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/tI5fOpv4AIzi/420_03@1x.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/FzDFTfeQ5eH9/1824_04@1x.png",
+				"author": "MightyForms LLC",
+				"tagline": "",
+				"website": "https://www.mightyforms.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://help.mightyforms.com/en/articles/2988329-terms-of-use",
+				"privacyPolicyURL": "https://help.mightyforms.com/en/articles/2963327-privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "info@mightyforms.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "CKXQMhuXdHKv"
+				},
+				"created": "2020-06-24T13:17:04.221161Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "1d8623d9c8a3b7380dcc4b86d61ab6a7",
+				"requestedAt": "2020-08-17T12:44:49.606799665Z",
+				"canceledByUserId": "1d8623d9c8a3b7380dcc4b86d61ab6a7",
+				"canceledAt": "2020-08-17T12:53:06.3354974Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.2.2",
+			"appId": "MICfJDU5VcKf",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					],
+					"head": [
+						{
+							"type": "script",
+							"src": "./build/mightyforms.min.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 1,
+							"services": [
+								"mfs-login"
+							],
+							"title": "MightyForms",
+							"type": "object"
+						},
+						"help": {
+							"helpvalue": "<h2>Simple steps to outstanding form on your website:</h2>\n<br><ul><li>Create MightyForms <a href=\"https://www.mightyforms.com/?utm_source=integrations&utm_medium=CloudFlareSignUp&utm_campaign=CloudflareApp\" target=\"blank\"> account</a> or login if you already have one.</li>\n<li>Prepare your mightyform exactly as you imagined the perfect one</li>\n<li>Pick the place and insert the Form on your Cloudflare website.</li>\n<li>Enjoy and gather submissions via MightyForms account or connecting another integration.</li></ul>",
+							"order": 0,
+							"type": "help"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where you want to place the form?",
+							"format": "element",
+							"order": 2,
+							"title": "Form Location",
+							"type": "object"
+						},
+						"selectProject": {
+							"default": "Choose form",
+							"enum": [],
+							"enumNames": {},
+							"order": 1,
+							"title": "Choose your form (you need to log in first)",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.mightyforms.com/api/cloudflare/projects",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating MightyForms server for getting your projects "
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "fixing issue with login",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/H06uTJcEu5Kf",
+			"created": "2020-08-17T12:53:06.029271Z",
+			"proposedApp": {
+				"id": "MICfJDU5VcKf",
+				"title": "MightyForms Form Builder",
+				"shortDescription": "Create powerful online forms and automate your workflow.",
+				"longDescription": "Create contact forms, form applications, surveys and more with this easy-to-use form builder, and level up your business. With beautiful and responsive free web form templates you can customize in just a few clicks.\n\nCollect information for your business with beautiful and responsive online forms. MightyForms Form Builder makes it easy to create and automate web forms and online PDF forms with its intuitive drag & drop interface.\n\nMightyForms Form Builder is completely code-free to build traditional or conversational multi-step forms. You can create forms from scratch, from a fillable PDF form, or choose from a library of templates:\n\n* Contact form: make it easy for customers to contact you.\n* Surveys and polls: conduct market research for data-driven growth.\n* Order form: streamline business processes from the moment a customer makes an order.\n* Subscription form: grow your email list to increase brand trust.\n* Feedback form: find out what you can improve on and stand out from competitors.\n* Job application form: discover and onboard new talent into your business.\n\n\n## Form Logic Rules, Integrations and Custom Messages\nConnect your contact form with productivity tools to jump-start automatic tasks as soon as a user submits your form. Create logic rules to personalize the experience, customize a success message, email notifications and set up a redirect to a landing page in minutes.\n\n## Collect Leads and Export Data\nThe Form Builder makes all forms automatically responsive, so they will look and function perfectly in any device. You can capture more leads with Real-Time Data Capture, and have your results (and even files) sent straight to your Google Drive or Dropbox, or easily export them as a CSV.\n\n## Customer Service in real-time\nMightyForms' team is available in the Live Chat if you have ever any questions on how to use the form builder or its form builder tools. There are also many Help articles with step-by-step instructions and screenshots to guide your set-up.",
+				"instructions": "Step 1. Authorize your MightyForms account or create new account.\nStep 2. Select the form the embed or create new form\nStep 3. Select where to embed the form.\nStep 4. Done!",
+				"alias": "mightyforms",
+				"orgId": "1d8623d9c8a3b7380dcc4b86d61ab6a7",
+				"icon": "https://images.cloudflareapps.com/Uk8UB3PKmdQu/logo_round_blue.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/7bKiA3A5MzmA/3.png",
+					"https://images.cloudflareapps.com/7bKiA3A5MzmA/1.png",
+					"https://images.cloudflareapps.com/7bKiA3A5MzmA/5.png",
+					"https://images.cloudflareapps.com/7bKiA3A5MzmA/2.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/tI5fOpv4AIzi/420_03@1x.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/FzDFTfeQ5eH9/1824_04@1x.png",
+				"author": "MightyForms LLC",
+				"tagline": "",
+				"website": "https://www.mightyforms.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://help.mightyforms.com/en/articles/2988329-terms-of-use",
+				"privacyPolicyURL": "https://help.mightyforms.com/en/articles/2963327-privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "info@mightyforms.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "CKXQMhuXdHKv"
+				},
+				"created": "2020-06-24T13:17:04.221161Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "1d8623d9c8a3b7380dcc4b86d61ab6a7",
+				"requestedAt": "2020-08-17T12:53:06.360274881Z",
+				"canceledByUserId": "1d8623d9c8a3b7380dcc4b86d61ab6a7",
+				"canceledAt": "2020-09-22T19:11:08.100860197Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.2.3",
+			"appId": "MICfJDU5VcKf",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					],
+					"head": [
+						{
+							"type": "script",
+							"src": "./build/mightyforms.min.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 1,
+							"services": [
+								"mfs-login"
+							],
+							"title": "MightyForms",
+							"type": "object"
+						},
+						"help": {
+							"helpvalue": "<h2>Simple steps to outstanding form on your website:</h2>\n<br><ul><li>Create MightyForms <a href=\"https://www.mightyforms.com/?utm_source=integrations&utm_medium=CloudFlareSignUp&utm_campaign=CloudflareApp\" target=\"blank\"> account</a> or login if you already have one.</li>\n<li>Prepare your mightyform exactly as you imagined the perfect one</li>\n<li>Pick the place and insert the Form on your Cloudflare website.</li>\n<li>Enjoy and gather submissions via MightyForms account or connecting another integration.</li></ul>",
+							"order": 0,
+							"type": "help"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where you want to place the form?",
+							"format": "element",
+							"order": 2,
+							"title": "Form Location",
+							"type": "object"
+						},
+						"selectProject": {
+							"default": "Choose form",
+							"enum": [],
+							"enumNames": {},
+							"order": 1,
+							"title": "Choose your form (you need to log in first)",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.mightyforms.com/api/cloudflare/projects",
+						"events": [
+							"option-change:account",
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating MightyForms server for getting your projects "
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "fixing issue with login",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/a6vxPk_B3stM",
+			"metadata": {
+				"code": {
+					"sourceTag": "a6vxPk_B3stM",
+					"uploadedOn": "2020-09-22T19:11:07.152756243Z"
+				}
+			},
+			"created": "2020-09-22T19:11:06.845736Z",
+			"proposedApp": {
+				"id": "MICfJDU5VcKf",
+				"title": "MightyForms Form Builder",
+				"shortDescription": "Create powerful online forms and automate your workflow.",
+				"longDescription": "Create contact forms, form applications, surveys and more with this easy-to-use form builder, and level up your business. With beautiful and responsive free web form templates you can customize in just a few clicks.\n\nCollect information for your business with beautiful and responsive online forms. MightyForms Form Builder makes it easy to create and automate web forms and online PDF forms with its intuitive drag & drop interface.\n\nMightyForms Form Builder is completely code-free to build traditional or conversational multi-step forms. You can create forms from scratch, from a fillable PDF form, or choose from a library of templates:\n\n* Contact form: make it easy for customers to contact you.\n* Surveys and polls: conduct market research for data-driven growth.\n* Order form: streamline business processes from the moment a customer makes an order.\n* Subscription form: grow your email list to increase brand trust.\n* Feedback form: find out what you can improve on and stand out from competitors.\n* Job application form: discover and onboard new talent into your business.\n\n\n## Form Logic Rules, Integrations and Custom Messages\nConnect your contact form with productivity tools to jump-start automatic tasks as soon as a user submits your form. Create logic rules to personalize the experience, customize a success message, email notifications and set up a redirect to a landing page in minutes.\n\n## Collect Leads and Export Data\nThe Form Builder makes all forms automatically responsive, so they will look and function perfectly in any device. You can capture more leads with Real-Time Data Capture, and have your results (and even files) sent straight to your Google Drive or Dropbox, or easily export them as a CSV.\n\n## Customer Service in real-time\nMightyForms' team is available in the Live Chat if you have ever any questions on how to use the form builder or its form builder tools. There are also many Help articles with step-by-step instructions and screenshots to guide your set-up.",
+				"instructions": "Step 1. Authorize your MightyForms account or create new account.\nStep 2. Select the form the embed or create new form\nStep 3. Select where to embed the form.\nStep 4. Done!",
+				"alias": "mightyforms",
+				"orgId": "1d8623d9c8a3b7380dcc4b86d61ab6a7",
+				"icon": "https://images.cloudflareapps.com/Uk8UB3PKmdQu/logo_round_blue.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/7bKiA3A5MzmA/3.png",
+					"https://images.cloudflareapps.com/7bKiA3A5MzmA/1.png",
+					"https://images.cloudflareapps.com/7bKiA3A5MzmA/5.png",
+					"https://images.cloudflareapps.com/7bKiA3A5MzmA/2.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/tI5fOpv4AIzi/420_03@1x.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/FzDFTfeQ5eH9/1824_04@1x.png",
+				"author": "MightyForms LLC",
+				"tagline": "",
+				"website": "https://www.mightyforms.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://help.mightyforms.com/en/articles/2988329-terms-of-use",
+				"privacyPolicyURL": "https://help.mightyforms.com/en/articles/2963327-privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "info@mightyforms.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "CKXQMhuXdHKv"
+				},
+				"created": "2020-06-24T13:17:04.221161Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "1d8623d9c8a3b7380dcc4b86d61ab6a7",
+				"requestedAt": "2020-09-22T19:11:08.113592155Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-09-24T15:47:42.68825225Z"
+			}
+		}
+	]
+}

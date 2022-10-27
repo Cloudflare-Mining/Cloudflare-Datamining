@@ -1,0 +1,983 @@
+{
+	"id": "nDgvWFMOrKWX",
+	"title": "Membership Platform",
+	"shortDescription": "Create members-only part of your site and sell memberships",
+	"longDescription": "Create members-only part of your site and sell memberships.",
+	"instructions": "",
+	"alias": "membership",
+	"orgId": "1db6a3d1208550b8a6ef4a21413f2816",
+	"icon": "https://images.cloudflareapps.com/Qdg2SQ3JoJRG/Component%209.png",
+	"screenshots": [],
+	"tileImage": "https://images.cloudflareapps.com/mYCa5RReTaPZ/memberland.png",
+	"featuredAppImage": "",
+	"author": "Anlob LLC.",
+	"tagline": "",
+	"website": "https://www.member.land",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://www.member.land/tos",
+	"privacyPolicyURL": "https://www.member.land/privacy",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.1.3",
+	"infoVersion": "1.1.3",
+	"points": 0,
+	"supportEmail": "mail@member.land",
+	"products": [],
+	"categoryIds": [
+		"social-and-communication"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "1db6a3d1208550b8a6ef4a21413f2816",
+			"created": "2020-09-16T21:15:29.232252025Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "GhTr9aowvoIv"
+	},
+	"created": "2020-08-02T20:59:05.422917Z",
+	"org": {
+		"id": "1db6a3d1208550b8a6ef4a21413f2816",
+		"title": "",
+		"username": "1db6a3d1208550b8a6ef4a21413f2816",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "social-and-communication",
+			"title": "Social & Communication",
+			"description": "Apps that make it easier to communicate with your customers.",
+			"icon": "",
+			"points": 80,
+			"visible": true,
+			"created": "2018-01-22T19:17:10.030031Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "nDgvWFMOrKWX",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"memberland"
+							],
+							"title": "MemberLand Account",
+							"type": "object"
+						},
+						"info": {
+							"helpvalue": "Lock access to any page of your site for members-only. Please login or register first.",
+							"order": 1,
+							"type": "help"
+						},
+						"info2": {
+							"helpvalue": "Check out the <a href=\"https://demo.member.land\" target=\"_blank\">demo</a> to see MemberLand in action (login and payment pages).",
+							"order": 2,
+							"type": "help"
+						},
+						"urls": {
+							"items": {
+								"format": "url",
+								"title": "URL",
+								"type": "string"
+							},
+							"maxItems": 3,
+							"order": 3,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Members-only URLs on your site",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.member.land/hook/",
+						"events": [
+							"oauth-login",
+							"before-new-install",
+							"before-update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with MemberLand."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://www.member.land/hook/",
+						"events": [
+							"new-install",
+							"update-install",
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with MemberLand."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"action": "reset-options",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				],
+				"dns": [
+					{
+						"created_on": "0001-01-01T00:00:00Z",
+						"modified_on": "0001-01-01T00:00:00Z",
+						"type": "CNAME",
+						"name": "memberland",
+						"content": "cname.member.land"
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 2,
+				"downvotes": 0
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/mG0xsHVjrTeO",
+			"metadata": {
+				"code": {
+					"sourceTag": "mG0xsHVjrTeO",
+					"uploadedOn": "2020-09-16T21:15:12.526406172Z"
+				}
+			},
+			"created": "2020-08-02T20:59:06.989954Z",
+			"proposedApp": {
+				"id": "nDgvWFMOrKWX",
+				"title": "Membership Platform",
+				"shortDescription": "Create members-only part of your site and sell memberships",
+				"longDescription": "Create members-only part of your site and sell memberships.",
+				"instructions": "",
+				"alias": "membership",
+				"orgId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"icon": "https://images.cloudflareapps.com/Qdg2SQ3JoJRG/Component%209.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/mYCa5RReTaPZ/memberland.png",
+				"featuredAppImage": "",
+				"author": "Anlob LLC.",
+				"tagline": "",
+				"website": "https://www.member.land",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.member.land/tos",
+				"privacyPolicyURL": "https://www.member.land/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "mail@member.land",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "GhTr9aowvoIv"
+				},
+				"created": "2020-08-02T20:59:05.422917Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"requestedAt": "2020-09-16T21:15:29.226219709Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-10-05T15:31:17.711364482Z"
+			}
+		},
+		{
+			"tag": "1.1.0",
+			"appId": "nDgvWFMOrKWX",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"memberland"
+							],
+							"title": "MemberLand Account",
+							"type": "object"
+						},
+						"info": {
+							"helpvalue": "<strong>Lock access to any page of your site for members-only. Please login or register first.</strong>",
+							"order": 1,
+							"type": "help"
+						},
+						"info2": {
+							"helpvalue": "<strong>Check out the <a href=\"https://demo.member.land\" target=\"_blank\">demo</a> to see MemberLand in action (login and payment pages).</strong>",
+							"order": 2,
+							"type": "help"
+						},
+						"urls": {
+							"items": {
+								"format": "url",
+								"title": "URL",
+								"type": "string"
+							},
+							"maxItems": 3,
+							"order": 3,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Members-only URLs on your site",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.member.land/hook/",
+						"events": [
+							"oauth-login",
+							"before-new-install",
+							"before-update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with MemberLand."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://www.member.land/hook/",
+						"events": [
+							"new-install",
+							"update-install",
+							"delete-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with MemberLand."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"action": "reset-options",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				],
+				"dns": [
+					{
+						"created_on": "0001-01-01T00:00:00Z",
+						"modified_on": "0001-01-01T00:00:00Z",
+						"type": "CNAME",
+						"name": "memberland",
+						"content": "cname.member.land"
+					}
+				]
+			},
+			"releaseNotes": "Bugfixes",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/lv6evPp9c4Fd",
+			"metadata": {
+				"code": {
+					"sourceTag": "lv6evPp9c4Fd",
+					"uploadedOn": "2020-10-15T22:09:17.059617596Z"
+				}
+			},
+			"created": "2020-10-15T22:09:15.043531Z",
+			"proposedApp": {
+				"id": "nDgvWFMOrKWX",
+				"title": "Membership Platform",
+				"shortDescription": "Create members-only part of your site and sell memberships",
+				"longDescription": "Create members-only part of your site and sell memberships.",
+				"instructions": "",
+				"alias": "membership",
+				"orgId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"icon": "https://images.cloudflareapps.com/Qdg2SQ3JoJRG/Component%209.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/mYCa5RReTaPZ/memberland.png",
+				"featuredAppImage": "",
+				"author": "Anlob LLC.",
+				"tagline": "",
+				"website": "https://www.member.land",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.member.land/tos",
+				"privacyPolicyURL": "https://www.member.land/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "mail@member.land",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "GhTr9aowvoIv"
+				},
+				"created": "2020-08-02T20:59:05.422917Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"requestedAt": "2020-10-15T22:09:51.174105668Z",
+				"canceledByUserId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"canceledAt": "2020-10-15T22:20:07.342840345Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.1.1",
+			"appId": "nDgvWFMOrKWX",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"memberland"
+							],
+							"title": "MemberLand Account",
+							"type": "object"
+						},
+						"info": {
+							"helpvalue": "<strong>Lock access to any page of your site for members-only. Please login or register first.</strong>",
+							"order": 1,
+							"type": "help"
+						},
+						"info2": {
+							"helpvalue": "<strong>Check out the <a href=\"https://demo.member.land\" target=\"_blank\">demo</a> to see MemberLand in action (login and payment pages).</strong>",
+							"order": 2,
+							"type": "help"
+						},
+						"urls": {
+							"items": {
+								"format": "url",
+								"title": "URL",
+								"type": "string"
+							},
+							"maxItems": 3,
+							"order": 3,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Members-only URLs on your site",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.member.land/hook/",
+						"events": [
+							"oauth-login",
+							"before-new-install",
+							"before-update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with MemberLand."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://www.member.land/hook/",
+						"events": [
+							"new-install",
+							"update-install",
+							"delete-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with MemberLand."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"action": "reset-options",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				],
+				"dns": [
+					{
+						"created_on": "0001-01-01T00:00:00Z",
+						"modified_on": "0001-01-01T00:00:00Z",
+						"type": "CNAME",
+						"name": "memberland",
+						"content": "cname.member.land"
+					}
+				]
+			},
+			"releaseNotes": "Bugfixes",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/H3wQErFL-D0Q",
+			"metadata": {
+				"code": {
+					"sourceTag": "H3wQErFL-D0Q",
+					"uploadedOn": "2020-10-15T22:19:58.023152011Z"
+				}
+			},
+			"created": "2020-10-15T22:19:56.961557Z",
+			"proposedApp": {
+				"id": "nDgvWFMOrKWX",
+				"title": "Membership Platform",
+				"shortDescription": "Create members-only part of your site and sell memberships",
+				"longDescription": "Create members-only part of your site and sell memberships.",
+				"instructions": "",
+				"alias": "membership",
+				"orgId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"icon": "https://images.cloudflareapps.com/Qdg2SQ3JoJRG/Component%209.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/mYCa5RReTaPZ/memberland.png",
+				"featuredAppImage": "",
+				"author": "Anlob LLC.",
+				"tagline": "",
+				"website": "https://www.member.land",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.member.land/tos",
+				"privacyPolicyURL": "https://www.member.land/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "mail@member.land",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "GhTr9aowvoIv"
+				},
+				"created": "2020-08-02T20:59:05.422917Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"requestedAt": "2020-10-15T22:20:07.354176129Z",
+				"canceledByUserId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"canceledAt": "2020-10-16T12:46:12.167984763Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.1.2",
+			"appId": "nDgvWFMOrKWX",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"memberland"
+							],
+							"title": "MemberLand Account",
+							"type": "object"
+						},
+						"info": {
+							"helpvalue": "<strong>Lock access to any page of your site for members-only. Please login or register first.</strong>",
+							"order": 1,
+							"type": "help"
+						},
+						"info2": {
+							"helpvalue": "<strong>Check out the <a href=\"https://demo.member.land\" target=\"_blank\">demo</a> to see MemberLand in action (login and payment pages).</strong>",
+							"order": 2,
+							"type": "help"
+						},
+						"urls": {
+							"items": {
+								"placeholder": "yoursite.com/courses/*",
+								"title": "URL",
+								"type": "string"
+							},
+							"maxItems": 3,
+							"order": 3,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Members-only URLs on your site",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.member.land/hook/",
+						"events": [
+							"oauth-login",
+							"before-new-install",
+							"before-update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with MemberLand."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://www.member.land/hook/",
+						"events": [
+							"new-install",
+							"update-install",
+							"delete-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with MemberLand."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"action": "reset-options",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				],
+				"dns": [
+					{
+						"created_on": "0001-01-01T00:00:00Z",
+						"modified_on": "0001-01-01T00:00:00Z",
+						"type": "CNAME",
+						"name": "memberland",
+						"content": "cname.member.land"
+					}
+				]
+			},
+			"releaseNotes": "Bugfixes",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/G_fzsip4oqL5",
+			"metadata": {
+				"code": {
+					"sourceTag": "G_fzsip4oqL5",
+					"uploadedOn": "2020-10-16T12:45:49.671478213Z"
+				}
+			},
+			"created": "2020-10-16T12:45:49.150342Z",
+			"proposedApp": {
+				"id": "nDgvWFMOrKWX",
+				"title": "Membership Platform",
+				"shortDescription": "Create members-only part of your site and sell memberships",
+				"longDescription": "Create members-only part of your site and sell memberships.",
+				"instructions": "",
+				"alias": "membership",
+				"orgId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"icon": "https://images.cloudflareapps.com/Qdg2SQ3JoJRG/Component%209.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/mYCa5RReTaPZ/memberland.png",
+				"featuredAppImage": "",
+				"author": "Anlob LLC.",
+				"tagline": "",
+				"website": "https://www.member.land",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.member.land/tos",
+				"privacyPolicyURL": "https://www.member.land/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "mail@member.land",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "GhTr9aowvoIv"
+				},
+				"created": "2020-08-02T20:59:05.422917Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"requestedAt": "2020-10-16T12:46:12.178884682Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-10-20T20:22:43.44799624Z"
+			}
+		},
+		{
+			"tag": "1.1.3",
+			"appId": "nDgvWFMOrKWX",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"memberland"
+							],
+							"title": "MemberLand Account",
+							"type": "object"
+						},
+						"info": {
+							"helpvalue": "<strong>Lock access to any page of your site for members-only. Please login or register first.</strong>",
+							"order": 1,
+							"type": "help"
+						},
+						"info2": {
+							"helpvalue": "<strong>Check out the <a href=\"https://demo.member.land\" target=\"_blank\">demo</a> to see MemberLand in action (login and payment pages).</strong>",
+							"order": 2,
+							"type": "help"
+						},
+						"urls": {
+							"items": {
+								"placeholder": "yoursite.com/courses/*",
+								"title": "URL",
+								"type": "string"
+							},
+							"maxItems": 3,
+							"order": 3,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Members-only URLs on your site",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.member.land/hook/",
+						"events": [
+							"oauth-login",
+							"before-new-install",
+							"before-update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with MemberLand."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://www.member.land/hook/",
+						"events": [
+							"new-install",
+							"update-install",
+							"delete-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with MemberLand."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"action": "reset-options",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				],
+				"dns": [
+					{
+						"created_on": "0001-01-01T00:00:00Z",
+						"modified_on": "0001-01-01T00:00:00Z",
+						"type": "CNAME",
+						"name": "memberland",
+						"content": "cname.member.land"
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.57,
+				"upvotes": 4,
+				"downvotes": 3
+			},
+			"manual": true,
+			"releaseNotes": "Added to social & communication category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/G_fzsip4oqL5",
+			"created": "2020-10-21T21:03:31.732765Z",
+			"proposedApp": {
+				"id": "nDgvWFMOrKWX",
+				"title": "Membership Platform",
+				"shortDescription": "Create members-only part of your site and sell memberships",
+				"longDescription": "Create members-only part of your site and sell memberships.",
+				"instructions": "",
+				"alias": "membership",
+				"orgId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"icon": "https://images.cloudflareapps.com/Qdg2SQ3JoJRG/Component%209.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/mYCa5RReTaPZ/memberland.png",
+				"featuredAppImage": "",
+				"author": "Anlob LLC.",
+				"tagline": "",
+				"website": "https://www.member.land",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.member.land/tos",
+				"privacyPolicyURL": "https://www.member.land/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "mail@member.land",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "GhTr9aowvoIv"
+				},
+				"created": "2020-08-02T20:59:05.422917Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2020-10-21T21:03:32.345722772Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-10-21T21:03:53.812810877Z"
+			}
+		}
+	]
+}

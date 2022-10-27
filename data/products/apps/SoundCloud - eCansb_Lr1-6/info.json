@@ -1,0 +1,857 @@
+{
+	"id": "eCansb_Lr1-6",
+	"title": "SoundCloud",
+	"shortDescription": "Listen to what you love and share the sounds you create.",
+	"longDescription": "You can't grow as a musician or podcaster if your tracks are not heard! \nEmbed your SoundCloud tracks or playlist directly on your site to grow your audience and find fans.",
+	"instructions": "Copy the URL of your track or playlist from the URL bar at the top of your web browser while you view the track's webpage on [soundcloud.com](http://soundcloud.com)",
+	"alias": "soundcloud",
+	"orgId": "2684c89451b6b86b453405beb4662f46",
+	"icon": "//images.cloudflareapps.com/Lpd9kOhUQGCtVN9zw2Qm_icon.png",
+	"screenshots": [],
+	"tileImage": "//images.cloudflareapps.com/z0f55DzgTpq47jPueCyv_tileImage.png",
+	"featuredAppImage": "",
+	"author": "SoundCloud Inc.",
+	"tagline": "",
+	"website": "https://soundcloud.com",
+	"sourceURL": "https://github.com/cloudflare-apps/soundcloud",
+	"termsOfServiceURL": "https://soundcloud.com/terms-of-use",
+	"privacyPolicyURL": "https://soundcloud.com/pages/privacy",
+	"color": "#f55c24",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.6",
+	"infoVersion": "1.0.6",
+	"points": 400,
+	"supportEmail": "support@cloudflare.com",
+	"products": [],
+	"categoryIds": [
+		"widgets-and-plugins",
+		"recommended-for-blogs"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "f1279b4c7912eb17ba469bcbdfe62b19",
+			"created": "2017-07-06T08:50:46.479283067Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "CCedztraTmJW"
+	},
+	"created": "2017-04-17T22:22:23.115686Z",
+	"org": {
+		"id": "2684c89451b6b86b453405beb4662f46",
+		"title": "",
+		"username": "2684c89451b6b86b453405beb4662f46",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "widgets-and-plugins",
+			"title": "Widgets & Plugins",
+			"description": "Apps that add functionality and services to your website.",
+			"icon": "",
+			"points": 10,
+			"visible": true,
+			"metadata": {
+				"promoted": false
+			},
+			"created": "2018-01-22T19:19:00.135755Z"
+		},
+		{
+			"id": "recommended-for-blogs",
+			"title": "Recommended for Blogs",
+			"description": "Apps for blogs in the recommendation engine.",
+			"icon": "",
+			"points": 0,
+			"visible": false,
+			"created": "2018-02-06T19:54:23.834831Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "v1.0.0",
+			"appId": "eCansb_Lr1-6",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"embeds": {
+							"items": {
+								"properties": {
+									"location": {
+										"default": {
+											"method": "prepend",
+											"selector": "body"
+										},
+										"description": "Select where on the page would you like this embed to appear",
+										"format": "element",
+										"order": 2,
+										"title": "Location",
+										"type": "object"
+									},
+									"showComments": {
+										"default": true,
+										"description": "Should comments be shown on the track(s)?",
+										"order": 3,
+										"title": "Show Comments",
+										"type": "boolean"
+									},
+									"url": {
+										"default": "https://soundcloud.com/chookiemusic/viceroy-dream-of-bombay-feat",
+										"description": "The URL of the SoundCloud track or playlist to be embedded",
+										"order": 1,
+										"title": "URL",
+										"type": "string"
+									}
+								},
+								"title": "Embed",
+								"type": "object"
+							},
+							"title": "Tracks or Playlists",
+							"type": "array"
+						}
+					}
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/CCedztraTmJW",
+			"metadata": {
+				"code": {
+					"sourceTag": "CCedztraTmJW",
+					"uploadedOn": "2017-04-17T22:22:24.015356572Z"
+				}
+			},
+			"created": "2017-04-17T22:22:23.514753Z",
+			"proposedApp": {
+				"id": "eCansb_Lr1-6",
+				"title": "SoundCloud",
+				"shortDescription": "Listen to what you love and share the sounds you create.",
+				"longDescription": "You can't grow as a musician or podcaster if your tracks are not heard! \nEmbed your SoundCloud tracks or playlist directly on your site to grow your audience and find fans.",
+				"instructions": "Copy the URL of your track or playlist from the URL bar at the top of your web browser while you view the track's webpage on [soundcloud.com](http://soundcloud.com)",
+				"alias": "soundcloud",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/Zm25zxUNSuqgAsrEgwvR_icon.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/FLur4ycNS3eUqpVbawYK_tile.png",
+				"featuredAppImage": "",
+				"author": "SoundCloud Inc.",
+				"tagline": "",
+				"website": "https://soundcloud.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"by-cloudflare",
+					"social-media"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "CCedztraTmJW"
+				},
+				"created": "2017-04-17T22:22:23.115686Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedAt": "2017-04-17T22:22:25.224324794Z",
+				"canceledAt": null,
+				"reviewedAt": "2017-04-17T22:23:32.946536291Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "eCansb_Lr1-6",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"embeds": {
+							"items": {
+								"properties": {
+									"location": {
+										"default": {
+											"method": "prepend",
+											"selector": "body"
+										},
+										"description": "Select where on the page would you like this embed to appear",
+										"format": "element",
+										"order": 2,
+										"title": "Location",
+										"type": "object"
+									},
+									"showComments": {
+										"default": true,
+										"description": "Should comments be shown on the track(s)?",
+										"order": 3,
+										"title": "Show Comments",
+										"type": "boolean"
+									},
+									"url": {
+										"default": "https://soundcloud.com/chookiemusic/viceroy-dream-of-bombay-feat",
+										"description": "The URL of the SoundCloud track or playlist to be embedded",
+										"order": 1,
+										"title": "URL",
+										"type": "string"
+									}
+								},
+								"title": "Embed",
+								"type": "object"
+							},
+							"title": "Tracks or Playlists",
+							"type": "array"
+						}
+					}
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/CCedztraTmJW",
+			"created": "2017-06-27T02:23:27.154534Z",
+			"proposedApp": {
+				"id": "eCansb_Lr1-6",
+				"title": "SoundCloud",
+				"shortDescription": "Listen to what you love and share the sounds you create.",
+				"longDescription": "You can't grow as a musician or podcaster if your tracks are not heard! \nEmbed your SoundCloud tracks or playlist directly on your site to grow your audience and find fans.",
+				"instructions": "Copy the URL of your track or playlist from the URL bar at the top of your web browser while you view the track's webpage on [soundcloud.com](http://soundcloud.com)",
+				"alias": "soundcloud",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/Lpd9kOhUQGCtVN9zw2Qm_icon.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/z0f55DzgTpq47jPueCyv_tileImage.png",
+				"featuredAppImage": "",
+				"author": "SoundCloud Inc.",
+				"tagline": "",
+				"website": "https://soundcloud.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"by-cloudflare",
+					"social-media"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "CCedztraTmJW"
+				},
+				"created": "2017-04-17T22:22:23.115686Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "1e57d294e97e29816d5d04c78ed67257",
+				"requestedAt": "2017-06-27T02:23:36.160478254Z",
+				"canceledAt": null,
+				"reviewedByUserId": "1e57d294e97e29816d5d04c78ed67257",
+				"reviewedAt": "2017-06-27T02:23:43.795852154Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "eCansb_Lr1-6",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"embeds": {
+							"items": {
+								"properties": {
+									"location": {
+										"default": {
+											"method": "prepend",
+											"selector": "body"
+										},
+										"description": "Select where on the page would you like this embed to appear",
+										"format": "element",
+										"order": 2,
+										"title": "Location",
+										"type": "object"
+									},
+									"showComments": {
+										"default": true,
+										"description": "Should comments be shown on the track(s)?",
+										"order": 3,
+										"title": "Show Comments",
+										"type": "boolean"
+									},
+									"url": {
+										"default": "https://soundcloud.com/chookiemusic/viceroy-dream-of-bombay-feat",
+										"description": "The URL of the SoundCloud track or playlist to be embedded",
+										"order": 1,
+										"title": "URL",
+										"type": "string"
+									}
+								},
+								"title": "Embed",
+								"type": "object"
+							},
+							"title": "Tracks or Playlists",
+							"type": "array"
+						}
+					}
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/CCedztraTmJW",
+			"created": "2017-07-06T08:50:46.280061Z",
+			"proposedApp": {
+				"id": "eCansb_Lr1-6",
+				"title": "SoundCloud",
+				"shortDescription": "Listen to what you love and share the sounds you create.",
+				"longDescription": "You can't grow as a musician or podcaster if your tracks are not heard! \nEmbed your SoundCloud tracks or playlist directly on your site to grow your audience and find fans.",
+				"instructions": "Copy the URL of your track or playlist from the URL bar at the top of your web browser while you view the track's webpage on [soundcloud.com](http://soundcloud.com)",
+				"alias": "soundcloud",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/Lpd9kOhUQGCtVN9zw2Qm_icon.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/z0f55DzgTpq47jPueCyv_tileImage.png",
+				"featuredAppImage": "",
+				"author": "SoundCloud Inc.",
+				"tagline": "",
+				"website": "https://soundcloud.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"by-cloudflare",
+					"social-media"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "CCedztraTmJW"
+				},
+				"created": "2017-04-17T22:22:23.115686Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-07-06T08:50:46.477221647Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-07-06T08:57:25.239084552Z"
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "eCansb_Lr1-6",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"embeds": {
+							"items": {
+								"properties": {
+									"location": {
+										"default": {
+											"method": "prepend",
+											"selector": "body"
+										},
+										"description": "Select where on the page would you like this embed to appear",
+										"format": "element",
+										"order": 2,
+										"title": "Location",
+										"type": "object"
+									},
+									"showComments": {
+										"default": true,
+										"description": "Should comments be shown on the track(s)?",
+										"order": 3,
+										"title": "Show Comments",
+										"type": "boolean"
+									},
+									"url": {
+										"default": "https://soundcloud.com/chookiemusic/viceroy-dream-of-bombay-feat",
+										"description": "The URL of the SoundCloud track or playlist to be embedded",
+										"order": 1,
+										"title": "URL",
+										"type": "string"
+									}
+								},
+								"title": "Embed",
+								"type": "object"
+							},
+							"title": "Tracks or Playlists",
+							"type": "array"
+						}
+					}
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 6,
+				"downvotes": 0
+			},
+			"releaseNotes": "- Add TOS, Privacy Policy, and source links",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/CCedztraTmJW",
+			"created": "2017-11-08T14:54:08.102012Z",
+			"proposedApp": {
+				"id": "eCansb_Lr1-6",
+				"title": "SoundCloud",
+				"shortDescription": "Listen to what you love and share the sounds you create.",
+				"longDescription": "You can't grow as a musician or podcaster if your tracks are not heard! \nEmbed your SoundCloud tracks or playlist directly on your site to grow your audience and find fans.",
+				"instructions": "Copy the URL of your track or playlist from the URL bar at the top of your web browser while you view the track's webpage on [soundcloud.com](http://soundcloud.com)",
+				"alias": "soundcloud",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/Lpd9kOhUQGCtVN9zw2Qm_icon.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/z0f55DzgTpq47jPueCyv_tileImage.png",
+				"featuredAppImage": "",
+				"author": "SoundCloud Inc.",
+				"tagline": "",
+				"website": "https://soundcloud.com",
+				"sourceURL": "https://github.com/cloudflare-apps/soundcloud",
+				"termsOfServiceURL": "https://soundcloud.com/terms-of-use",
+				"privacyPolicyURL": "https://soundcloud.com/pages/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"by-cloudflare",
+					"social-media"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "CCedztraTmJW"
+				},
+				"created": "2017-04-17T22:22:23.115686Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-11-08T14:54:08.600218814Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-11-08T15:37:55.063059681Z"
+			}
+		},
+		{
+			"tag": "1.0.4",
+			"appId": "eCansb_Lr1-6",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"embeds": {
+							"items": {
+								"properties": {
+									"location": {
+										"default": {
+											"method": "prepend",
+											"selector": "body"
+										},
+										"description": "Select where on the page would you like this embed to appear",
+										"format": "element",
+										"order": 2,
+										"title": "Location",
+										"type": "object"
+									},
+									"showComments": {
+										"default": true,
+										"description": "Should comments be shown on the track(s)?",
+										"order": 3,
+										"title": "Show Comments",
+										"type": "boolean"
+									},
+									"url": {
+										"default": "https://soundcloud.com/chookiemusic/viceroy-dream-of-bombay-feat",
+										"description": "The URL of the SoundCloud track or playlist to be embedded",
+										"order": 1,
+										"title": "URL",
+										"type": "string"
+									}
+								},
+								"title": "Embed",
+								"type": "object"
+							},
+							"title": "Tracks or Playlists",
+							"type": "array"
+						}
+					}
+				}
+			},
+			"releaseNotes": "Added to “Widgets & Plugins” category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/CCedztraTmJW",
+			"created": "2018-01-23T20:27:07.417887Z",
+			"proposedApp": {
+				"id": "eCansb_Lr1-6",
+				"title": "SoundCloud",
+				"shortDescription": "Listen to what you love and share the sounds you create.",
+				"longDescription": "You can't grow as a musician or podcaster if your tracks are not heard! \nEmbed your SoundCloud tracks or playlist directly on your site to grow your audience and find fans.",
+				"instructions": "Copy the URL of your track or playlist from the URL bar at the top of your web browser while you view the track's webpage on [soundcloud.com](http://soundcloud.com)",
+				"alias": "soundcloud",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/Lpd9kOhUQGCtVN9zw2Qm_icon.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/z0f55DzgTpq47jPueCyv_tileImage.png",
+				"featuredAppImage": "",
+				"author": "SoundCloud Inc.",
+				"tagline": "",
+				"website": "https://soundcloud.com",
+				"sourceURL": "https://github.com/cloudflare-apps/soundcloud",
+				"termsOfServiceURL": "https://soundcloud.com/terms-of-use",
+				"privacyPolicyURL": "https://soundcloud.com/pages/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"by-cloudflare",
+					"social-media",
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "CCedztraTmJW"
+				},
+				"created": "2017-04-17T22:22:23.115686Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-01-23T20:27:07.664833119Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-01-23T20:27:24.054072627Z"
+			}
+		},
+		{
+			"tag": "1.0.5",
+			"appId": "eCansb_Lr1-6",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"embeds": {
+							"items": {
+								"properties": {
+									"location": {
+										"default": {
+											"method": "prepend",
+											"selector": "body"
+										},
+										"description": "Select where on the page would you like this embed to appear",
+										"format": "element",
+										"order": 2,
+										"title": "Location",
+										"type": "object"
+									},
+									"showComments": {
+										"default": true,
+										"description": "Should comments be shown on the track(s)?",
+										"order": 3,
+										"title": "Show Comments",
+										"type": "boolean"
+									},
+									"url": {
+										"default": "https://soundcloud.com/chookiemusic/viceroy-dream-of-bombay-feat",
+										"description": "The URL of the SoundCloud track or playlist to be embedded",
+										"order": 1,
+										"title": "URL",
+										"type": "string"
+									}
+								},
+								"title": "Embed",
+								"type": "object"
+							},
+							"title": "Tracks or Playlists",
+							"type": "array"
+						}
+					}
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 6,
+				"downvotes": 0
+			},
+			"releaseNotes": "Added to Cloudflare Apps recommendation engine",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/CCedztraTmJW",
+			"created": "2018-02-06T21:49:45.513Z",
+			"proposedApp": {
+				"id": "eCansb_Lr1-6",
+				"title": "SoundCloud",
+				"shortDescription": "Listen to what you love and share the sounds you create.",
+				"longDescription": "You can't grow as a musician or podcaster if your tracks are not heard! \nEmbed your SoundCloud tracks or playlist directly on your site to grow your audience and find fans.",
+				"instructions": "Copy the URL of your track or playlist from the URL bar at the top of your web browser while you view the track's webpage on [soundcloud.com](http://soundcloud.com)",
+				"alias": "soundcloud",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/Lpd9kOhUQGCtVN9zw2Qm_icon.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/z0f55DzgTpq47jPueCyv_tileImage.png",
+				"featuredAppImage": "",
+				"author": "SoundCloud Inc.",
+				"tagline": "",
+				"website": "https://soundcloud.com",
+				"sourceURL": "https://github.com/cloudflare-apps/soundcloud",
+				"termsOfServiceURL": "https://soundcloud.com/terms-of-use",
+				"privacyPolicyURL": "https://soundcloud.com/pages/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"by-cloudflare",
+					"social-media",
+					"widgets-and-plugins",
+					"recommended-for-blogs"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "CCedztraTmJW"
+				},
+				"created": "2017-04-17T22:22:23.115686Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-02-06T21:49:45.792832407Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-02-06T21:55:56.248772296Z"
+			}
+		},
+		{
+			"tag": "1.0.6",
+			"appId": "eCansb_Lr1-6",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"embeds": {
+							"items": {
+								"properties": {
+									"location": {
+										"default": {
+											"method": "prepend",
+											"selector": "body"
+										},
+										"description": "Select where on the page would you like this embed to appear",
+										"format": "element",
+										"order": 2,
+										"title": "Location",
+										"type": "object"
+									},
+									"showComments": {
+										"default": true,
+										"description": "Should comments be shown on the track(s)?",
+										"order": 3,
+										"title": "Show Comments",
+										"type": "boolean"
+									},
+									"url": {
+										"default": "https://soundcloud.com/chookiemusic/viceroy-dream-of-bombay-feat",
+										"description": "The URL of the SoundCloud track or playlist to be embedded",
+										"order": 1,
+										"title": "URL",
+										"type": "string"
+									}
+								},
+								"title": "Embed",
+								"type": "object"
+							},
+							"title": "Tracks or Playlists",
+							"type": "array"
+						}
+					}
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.92,
+				"upvotes": 22,
+				"downvotes": 2
+			},
+			"releaseNotes": "Updated app's categories",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/CCedztraTmJW",
+			"created": "2018-11-13T20:52:36.127165Z",
+			"proposedApp": {
+				"id": "eCansb_Lr1-6",
+				"title": "SoundCloud",
+				"shortDescription": "Listen to what you love and share the sounds you create.",
+				"longDescription": "You can't grow as a musician or podcaster if your tracks are not heard! \nEmbed your SoundCloud tracks or playlist directly on your site to grow your audience and find fans.",
+				"instructions": "Copy the URL of your track or playlist from the URL bar at the top of your web browser while you view the track's webpage on [soundcloud.com](http://soundcloud.com)",
+				"alias": "soundcloud",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/Lpd9kOhUQGCtVN9zw2Qm_icon.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/z0f55DzgTpq47jPueCyv_tileImage.png",
+				"featuredAppImage": "",
+				"author": "SoundCloud Inc.",
+				"tagline": "",
+				"website": "https://soundcloud.com",
+				"sourceURL": "https://github.com/cloudflare-apps/soundcloud",
+				"termsOfServiceURL": "https://soundcloud.com/terms-of-use",
+				"privacyPolicyURL": "https://soundcloud.com/pages/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"recommended-for-blogs"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "CCedztraTmJW"
+				},
+				"created": "2017-04-17T22:22:23.115686Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-11-13T20:52:36.436774413Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-11-14T17:37:20.135435842Z"
+			}
+		}
+	]
+}

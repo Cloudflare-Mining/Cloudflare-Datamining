@@ -1,0 +1,604 @@
+{
+	"id": "Gv254pgrRzlx",
+	"title": "worker-app-test",
+	"shortDescription": "",
+	"longDescription": "Our first worker app",
+	"instructions": "Need to have Workers license if you are a self-serve customer",
+	"alias": "worker-first",
+	"orgId": "681cef98e592b3db33836ad01f84726e",
+	"icon": "",
+	"screenshots": [],
+	"tileImage": "",
+	"featuredAppImage": "",
+	"author": "Jonathan Bruce",
+	"tagline": "",
+	"website": "https://www.cloudflare.com",
+	"sourceURL": "",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.1",
+	"infoVersion": "1.0.1",
+	"points": 0,
+	"supportEmail": "jbruce@cloudflare.com",
+	"products": [],
+	"categoryIds": [],
+	"agreements": {
+		"tos": {
+			"userId": "681cef98e592b3db33836ad01f84726e",
+			"created": "2018-09-18T22:08:50.102689256Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "SdkNemMP6jLh"
+	},
+	"created": "2018-09-18T22:08:48.353142Z",
+	"org": {
+		"id": "681cef98e592b3db33836ad01f84726e",
+		"title": "",
+		"username": "681cef98e592b3db33836ad01f84726e",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "Gv254pgrRzlx",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the message appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Message Location",
+							"type": "object"
+						},
+						"message": {
+							"default": "<p>Welcome to Cloudflare Apps! This is our example app.</p><p>Download this app every time you want to make a new project.</p>",
+							"description": "A short example message.",
+							"format": "richtext",
+							"order": 1,
+							"title": "Message",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/SdkNemMP6jLh",
+			"metadata": {
+				"code": {
+					"sourceTag": "SdkNemMP6jLh",
+					"uploadedOn": "2018-09-18T22:08:48.913745498Z"
+				}
+			},
+			"created": "2018-09-18T22:08:48.705359Z",
+			"proposedApp": {
+				"id": "Gv254pgrRzlx",
+				"title": "worker-app-test",
+				"shortDescription": "",
+				"longDescription": "Our first worker app",
+				"instructions": "Need to have Workers license if you are a self-serve customer",
+				"alias": "worker-first",
+				"orgId": "681cef98e592b3db33836ad01f84726e",
+				"icon": "",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Jonathan Bruce",
+				"tagline": "",
+				"website": "https://www.cloudflare.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "jbruce@cloudflare.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "SdkNemMP6jLh"
+				},
+				"created": "2018-09-18T22:08:48.353142Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"requestedAt": "2018-09-18T22:08:50.085515317Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2018-09-18T22:31:52.08718811Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "Gv254pgrRzlx",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the message appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Message Location",
+							"type": "object"
+						},
+						"message": {
+							"default": "<p>Welcome to Cloudflare Apps! This is our example app.</p><p>Download this app every time you want to make a new project.</p>",
+							"description": "A short example message.",
+							"format": "richtext",
+							"order": 1,
+							"title": "Message",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.33,
+				"upvotes": 3,
+				"downvotes": 6
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/SdkNemMP6jLh",
+			"created": "2019-01-14T20:37:02.784367Z",
+			"proposedApp": {
+				"id": "Gv254pgrRzlx",
+				"title": "worker-app-test",
+				"shortDescription": "",
+				"longDescription": "Our first worker app",
+				"instructions": "Need to have Workers license if you are a self-serve customer",
+				"alias": "worker-first",
+				"orgId": "681cef98e592b3db33836ad01f84726e",
+				"icon": "",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Jonathan Bruce",
+				"tagline": "",
+				"website": "https://www.cloudflare.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "jbruce@cloudflare.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "SdkNemMP6jLh"
+				},
+				"created": "2018-09-18T22:08:48.353142Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"assignedToReviewerUserId": "681cef98e592b3db33836ad01f84726e",
+				"requestedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"requestedAt": "2019-01-14T20:37:02.96041434Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2019-01-14T20:41:48.911838458Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "Gv254pgrRzlx",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the message appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Message Location",
+							"type": "object"
+						},
+						"message": {
+							"default": "<p>Welcome to Cloudflare Apps! This is our example app.</p><p>Download this app every time you want to make a new project.</p>",
+							"description": "A short example message.",
+							"format": "richtext",
+							"order": 1,
+							"title": "Message",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/8Hu2N4h6GbJo",
+			"metadata": {
+				"code": {
+					"sourceTag": "8Hu2N4h6GbJo",
+					"uploadedOn": "2019-01-14T20:44:05.298073015Z"
+				}
+			},
+			"created": "2019-01-14T20:44:05.117037Z",
+			"proposedApp": {
+				"id": "Gv254pgrRzlx",
+				"title": "worker-app-test",
+				"shortDescription": "",
+				"longDescription": "Our first worker app",
+				"instructions": "Need to have Workers license if you are a self-serve customer",
+				"alias": "worker-first",
+				"orgId": "681cef98e592b3db33836ad01f84726e",
+				"icon": "",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Jonathan Bruce",
+				"tagline": "",
+				"website": "https://www.cloudflare.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "jbruce@cloudflare.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "SdkNemMP6jLh"
+				},
+				"created": "2018-09-18T22:08:48.353142Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"requestedAt": "2019-01-14T20:44:05.734531267Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2019-01-16T17:26:57.924171117Z"
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "Gv254pgrRzlx",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the message appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Message Location",
+							"type": "object"
+						},
+						"message": {
+							"default": "<p>Welcome to Cloudflare Apps! This is our example app.</p><p>Download this app every time you want to make a new project.</p>",
+							"description": "A short example message.",
+							"format": "richtext",
+							"order": 1,
+							"title": "Message",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"workers": [
+					{
+						"priority": 500,
+						"src": ""
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/E6bBpOlzOVx1",
+			"metadata": {
+				"code": {
+					"sourceTag": "E6bBpOlzOVx1",
+					"uploadedOn": "2019-01-25T19:38:46.84099205Z"
+				}
+			},
+			"created": "2019-01-25T19:38:46.648858Z",
+			"proposedApp": {
+				"id": "Gv254pgrRzlx",
+				"title": "worker-app-test",
+				"shortDescription": "",
+				"longDescription": "Our first worker app",
+				"instructions": "Need to have Workers license if you are a self-serve customer",
+				"alias": "worker-first",
+				"orgId": "681cef98e592b3db33836ad01f84726e",
+				"icon": "",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Jonathan Bruce",
+				"tagline": "",
+				"website": "https://www.cloudflare.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "jbruce@cloudflare.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "SdkNemMP6jLh"
+				},
+				"created": "2018-09-18T22:08:48.353142Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"requestedAt": "2019-01-25T19:38:47.36647444Z",
+				"canceledByUserId": "681cef98e592b3db33836ad01f84726e",
+				"canceledAt": "2019-01-25T19:39:19.469741966Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.4",
+			"appId": "Gv254pgrRzlx",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the message appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Message Location",
+							"type": "object"
+						},
+						"message": {
+							"default": "<p>Welcome to Cloudflare Apps! This is our example app.</p><p>Download this app every time you want to make a new project.</p>",
+							"description": "A short example message.",
+							"format": "richtext",
+							"order": 1,
+							"title": "Message",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"workers": [
+					{
+						"priority": 500,
+						"src": ""
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/E6bBpOlzOVx1",
+			"created": "2019-01-25T19:39:19.26744Z",
+			"proposedApp": {
+				"id": "Gv254pgrRzlx",
+				"title": "worker-app-test",
+				"shortDescription": "",
+				"longDescription": "Our first worker app",
+				"instructions": "Need to have Workers license if you are a self-serve customer",
+				"alias": "worker-first",
+				"orgId": "681cef98e592b3db33836ad01f84726e",
+				"icon": "",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Jonathan Bruce",
+				"tagline": "",
+				"website": "https://www.cloudflare.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "jbruce@cloudflare.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "SdkNemMP6jLh"
+				},
+				"created": "2018-09-18T22:08:48.353142Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"requestedAt": "2019-01-25T19:39:19.478087111Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2019-02-08T18:22:44.803898685Z"
+			}
+		}
+	]
+}

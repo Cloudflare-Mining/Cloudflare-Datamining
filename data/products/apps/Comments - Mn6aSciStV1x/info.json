@@ -1,0 +1,1296 @@
+{
+	"id": "Mn6aSciStV1x",
+	"title": "Comments",
+	"shortDescription": "Build confidence with feedback & ratings on your site.",
+	"longDescription": "POWr Comments is a user-friendly, easy to implement plugin that enables you to build customer confidence, engage new visitors and curate a strong sense of community. Display comments on your site, collect feedback, provide social proof, manage a discussion forum, and collect 5-star reviews for your product or brand. \n \n# What are the benefits of using POWr Comments?   \n\n* **Boost customer confidence** - By collecting and displaying customer reviews and ratings of your product. \n* **Build a sense of community** - Engage with customers and answer their questions right on your site.\n* **Stay in control** - Moderate content and choose which reviews to show.\n\n# Get started for free and enjoy these features:   \n\n* Collect and display reviews and/or ratings for your product\n* Show ratings and/or comments to highlight popular products\n* Remove any unwanted comments\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more\n* Supports text in any language\n* Mobile responsive on any device\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins)\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Comment moderation: publish new comments after approval \n* Email alerts about new comments so you can respond to feedback quickly\n* Anonymous commenting\n* Reply to individual comments\n* Let website visitors upvote individual reviews\n* Order comments by newest first, oldest first, popularity, or manually.\n* Unlock premium features in other POWr apps\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=comments).\n\n# Why users love Comments:   \n\n“Perfect for my needs. Having honest comments within my website helps to grow business.” - Judith Wareham\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Comments up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+	"instructions": "",
+	"alias": "powr-comments",
+	"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+	"icon": "https://images.cloudflareapps.com/APjYQNcNC0vL/Comments-Icon-Cloudflare.png",
+	"screenshots": [
+		"//images.cloudflareapps.com/c7hrBDgUQWiZkjYEOFp1_screenshot-1-15- (2).png",
+		"//images.cloudflareapps.com/1aHEF2exQsSDqIoRbbRi_screenshot-2-7- (2).png",
+		"//images.cloudflareapps.com/6tAInTMT9arNPJV6Oofo_Screen Shot 2018-01-30 at 10.47.28 AM.png",
+		"//images.cloudflareapps.com/b8VJ7XLRRCy4oaYwtrSs_screenshot-3-3- (2).png",
+		"//images.cloudflareapps.com/OD4pnJoIRCy3oZTAgRnw_all-purpose-banner copy.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/T1OAsSNeSoIl/Comments-Banner-Cloudflare-.png",
+	"featuredAppImage": "",
+	"author": "POWr Inc",
+	"tagline": "",
+	"website": "https://www.powr.io",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://www.powr.io/terms",
+	"privacyPolicyURL": "https://www.powr.io/privacy",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.7",
+	"infoVersion": "1.0.7",
+	"points": 0,
+	"supportEmail": "support@powr.io",
+	"products": [],
+	"categoryIds": [
+		"social-and-communication",
+		"powr"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+			"created": "2018-03-13T17:57:48.207827976Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "K-fA0g30Akpq"
+	},
+	"created": "2017-11-21T02:11:03.13534Z",
+	"org": {
+		"id": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+		"title": "",
+		"username": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "powr",
+			"title": "POWR",
+			"description": "Apps created by POWR",
+			"icon": "",
+			"points": 40,
+			"visible": false,
+			"created": "2018-11-06T00:45:54.563564Z"
+		},
+		{
+			"id": "social-and-communication",
+			"title": "Social & Communication",
+			"description": "Apps that make it easier to communicate with your customers.",
+			"icon": "",
+			"points": 80,
+			"visible": true,
+			"created": "2018-01-22T19:17:10.030031Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "Mn6aSciStV1x",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"appId": {
+							"default": "",
+							"label": "App Installation ID",
+							"title": "App Installation ID",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Comments appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						},
+						"productId": {
+							"default": "premium",
+							"label": "Plan",
+							"title": "POWr Plan",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=comments",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=comments",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/jbuf14bJg_-D",
+			"metadata": {
+				"code": {
+					"sourceTag": "jbuf14bJg_-D",
+					"uploadedOn": "2018-03-12T18:31:42.432816668Z"
+				}
+			},
+			"created": "2017-11-21T02:11:03.421561Z",
+			"proposedApp": {
+				"id": "Mn6aSciStV1x",
+				"title": "Comments",
+				"shortDescription": "Build confidence with feedback & ratings on your site",
+				"longDescription": "POWr Comments is a user-friendly, easy to implement plugin that enables you to build customer confidence, engage new visitors and curate a strong sense of community. Display comments on your site, collect feedback, provide social proof, manage a discussion forum, and collect 5-star reviews for your product or brand. \n \n# What are the benefits of using POWr Comments?   \n\n* **Boost customer confidence** - By collecting and displaying customer reviews and ratings of your product. \n* **Build a sense of community** - Engage with customers and answer their questions right on your site.\n* **Stay in control** - Moderate content and choose which reviews to show.\n\n# Get started for free and enjoy these features:   \n\n* Collect and display reviews and/or ratings for your product\n* Show ratings and/or comments to highlight popular products\n* Remove any unwanted comments\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more\n* Supports text in any language\n* Mobile responsive on any device\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins)\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Comment moderation: publish new comments after approval \n* Email alerts about new comments so you can respond to feedback quickly\n* Anonymous commenting\n* Reply to individual comments\n* Let website visitors upvote individual reviews\n* Order comments by newest first, oldest first, popularity, or manually.\n* Unlock premium features in other POWr apps\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=comments).\n\n# Why users love Comments:   \n\n“Perfect for my needs. Having honest comments within my website helps to grow business.” - Judith Wareham\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Comments up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "//images.cloudflareapps.com/oNm7tY6Smqnfr0hHxYwH_Icon - Comments Cloudflare.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/c7hrBDgUQWiZkjYEOFp1_screenshot-1-15- (2).png",
+					"//images.cloudflareapps.com/1aHEF2exQsSDqIoRbbRi_screenshot-2-7- (2).png",
+					"//images.cloudflareapps.com/6tAInTMT9arNPJV6Oofo_Screen Shot 2018-01-30 at 10.47.28 AM.png",
+					"//images.cloudflareapps.com/b8VJ7XLRRCy4oaYwtrSs_screenshot-3-3- (2).png",
+					"//images.cloudflareapps.com/OD4pnJoIRCy3oZTAgRnw_all-purpose-banner copy.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/PsTtDZakQY6Te4tXBj0o_Comments banner.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For businesses looking to test the water with new plugins.",
+						"longDescription": "*1 Email Administrators",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "premium",
+						"title": "Starter",
+						"shortDescription": "For businesses who have their own brand and want extra customization.",
+						"longDescription": "* Remove POWr Logo\n* 2 Email Administrators\n* Anonymous Commenting\n* Email Alerts\n* Advanced Sorting Options",
+						"visible": true,
+						"price": 500,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "For growing businesses looking to stand out from the crowd and get more conversions.",
+						"longDescription": "* Remove POWr Logo\n* 3 Email Administrators\n* Anonymous Commenting\n* Email Alerts\n* Advanced Sorting Options\n* Manual Approval\n* Custom CSS & JavaScript\n* Replies & Voting",
+						"visible": true,
+						"price": 1200,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "For total control that scales with your business, whether it’s big or small. Get every feature for every plugin.",
+						"longDescription": "* Remove POWr Logo\n* 10 Email Administrators\n* Anonymous Commenting\n* Email Alerts\n* Advanced Sorting Options\n* Manual Approval\n* Custom CSS & JavaScript\n* Replies & Voting\n+ FREE Business Upgrade for all 50 POWr Plugins",
+						"visible": true,
+						"price": 5000,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "K-fA0g30Akpq"
+				},
+				"created": "2017-11-21T02:11:03.13534Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2018-03-13T17:57:48.201551564Z",
+				"canceledByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"canceledAt": "2018-03-23T17:43:31.098216545Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "Mn6aSciStV1x",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"appId": {
+							"default": "",
+							"label": "App Installation ID",
+							"title": "App Installation ID",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Comments appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						},
+						"productId": {
+							"default": "premium",
+							"label": "Plan",
+							"title": "POWr Plan",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=comments",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=comments",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "User uniq install.id for map POWr app with",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/ZexiHtnefbrn",
+			"metadata": {
+				"code": {
+					"sourceTag": "ZexiHtnefbrn",
+					"uploadedOn": "2018-03-23T17:43:30.541904016Z"
+				}
+			},
+			"created": "2018-03-23T17:43:30.043657Z",
+			"proposedApp": {
+				"id": "Mn6aSciStV1x",
+				"title": "Comments",
+				"shortDescription": "Build confidence with feedback & ratings on your site",
+				"longDescription": "POWr Comments is a user-friendly, easy to implement plugin that enables you to build customer confidence, engage new visitors and curate a strong sense of community. Display comments on your site, collect feedback, provide social proof, manage a discussion forum, and collect 5-star reviews for your product or brand. \n \n# What are the benefits of using POWr Comments?   \n\n* **Boost customer confidence** - By collecting and displaying customer reviews and ratings of your product. \n* **Build a sense of community** - Engage with customers and answer their questions right on your site.\n* **Stay in control** - Moderate content and choose which reviews to show.\n\n# Get started for free and enjoy these features:   \n\n* Collect and display reviews and/or ratings for your product\n* Show ratings and/or comments to highlight popular products\n* Remove any unwanted comments\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more\n* Supports text in any language\n* Mobile responsive on any device\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins)\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Comment moderation: publish new comments after approval \n* Email alerts about new comments so you can respond to feedback quickly\n* Anonymous commenting\n* Reply to individual comments\n* Let website visitors upvote individual reviews\n* Order comments by newest first, oldest first, popularity, or manually.\n* Unlock premium features in other POWr apps\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=comments).\n\n# Why users love Comments:   \n\n“Perfect for my needs. Having honest comments within my website helps to grow business.” - Judith Wareham\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Comments up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "//images.cloudflareapps.com/oNm7tY6Smqnfr0hHxYwH_Icon - Comments Cloudflare.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/c7hrBDgUQWiZkjYEOFp1_screenshot-1-15- (2).png",
+					"//images.cloudflareapps.com/1aHEF2exQsSDqIoRbbRi_screenshot-2-7- (2).png",
+					"//images.cloudflareapps.com/6tAInTMT9arNPJV6Oofo_Screen Shot 2018-01-30 at 10.47.28 AM.png",
+					"//images.cloudflareapps.com/b8VJ7XLRRCy4oaYwtrSs_screenshot-3-3- (2).png",
+					"//images.cloudflareapps.com/OD4pnJoIRCy3oZTAgRnw_all-purpose-banner copy.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/PsTtDZakQY6Te4tXBj0o_Comments banner.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For businesses looking to test the water with new plugins.",
+						"longDescription": "*1 Email Administrators",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "premium",
+						"title": "Starter",
+						"shortDescription": "For businesses who have their own brand and want extra customization.",
+						"longDescription": "* Remove POWr Logo\n* 2 Email Administrators\n* Anonymous Commenting\n* Email Alerts\n* Advanced Sorting Options",
+						"visible": true,
+						"price": 500,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "For growing businesses looking to stand out from the crowd and get more conversions.",
+						"longDescription": "* Remove POWr Logo\n* 3 Email Administrators\n* Anonymous Commenting\n* Email Alerts\n* Advanced Sorting Options\n* Manual Approval\n* Custom CSS & JavaScript\n* Replies & Voting",
+						"visible": true,
+						"price": 1200,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "For total control that scales with your business, whether it’s big or small. Get every feature for every plugin.",
+						"longDescription": "* Remove POWr Logo\n* 10 Email Administrators\n* Anonymous Commenting\n* Email Alerts\n* Advanced Sorting Options\n* Manual Approval\n* Custom CSS & JavaScript\n* Replies & Voting\n+ FREE Business Upgrade for all 50 POWr Plugins",
+						"visible": true,
+						"price": 5000,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "K-fA0g30Akpq"
+				},
+				"created": "2017-11-21T02:11:03.13534Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2018-03-23T17:43:31.122612476Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2018-04-02T21:05:02.319247716Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "Mn6aSciStV1x",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Comments appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=comments",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=comments",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "Persisting install.id",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/ZkJBQBy5Je59",
+			"metadata": {
+				"code": {
+					"sourceTag": "ZkJBQBy5Je59",
+					"uploadedOn": "2018-09-20T00:00:23.588729897Z"
+				}
+			},
+			"created": "2018-09-20T00:00:23.431687Z",
+			"proposedApp": {
+				"id": "Mn6aSciStV1x",
+				"title": "Comments",
+				"shortDescription": "Build confidence with feedback & ratings on your site",
+				"longDescription": "POWr Comments is a user-friendly, easy to implement plugin that enables you to build customer confidence, engage new visitors and curate a strong sense of community. Display comments on your site, collect feedback, provide social proof, manage a discussion forum, and collect 5-star reviews for your product or brand. \n \n# What are the benefits of using POWr Comments?   \n\n* **Boost customer confidence** - By collecting and displaying customer reviews and ratings of your product. \n* **Build a sense of community** - Engage with customers and answer their questions right on your site.\n* **Stay in control** - Moderate content and choose which reviews to show.\n\n# Get started for free and enjoy these features:   \n\n* Collect and display reviews and/or ratings for your product\n* Show ratings and/or comments to highlight popular products\n* Remove any unwanted comments\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more\n* Supports text in any language\n* Mobile responsive on any device\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins)\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Comment moderation: publish new comments after approval \n* Email alerts about new comments so you can respond to feedback quickly\n* Anonymous commenting\n* Reply to individual comments\n* Let website visitors upvote individual reviews\n* Order comments by newest first, oldest first, popularity, or manually.\n* Unlock premium features in other POWr apps\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=comments).\n\n# Why users love Comments:   \n\n“Perfect for my needs. Having honest comments within my website helps to grow business.” - Judith Wareham\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Comments up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "//images.cloudflareapps.com/oNm7tY6Smqnfr0hHxYwH_Icon - Comments Cloudflare.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/c7hrBDgUQWiZkjYEOFp1_screenshot-1-15- (2).png",
+					"//images.cloudflareapps.com/1aHEF2exQsSDqIoRbbRi_screenshot-2-7- (2).png",
+					"//images.cloudflareapps.com/6tAInTMT9arNPJV6Oofo_Screen Shot 2018-01-30 at 10.47.28 AM.png",
+					"//images.cloudflareapps.com/b8VJ7XLRRCy4oaYwtrSs_screenshot-3-3- (2).png",
+					"//images.cloudflareapps.com/OD4pnJoIRCy3oZTAgRnw_all-purpose-banner copy.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/PsTtDZakQY6Te4tXBj0o_Comments banner.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "K-fA0g30Akpq"
+				},
+				"created": "2017-11-21T02:11:03.13534Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2018-09-20T00:00:33.240335647Z",
+				"canceledByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"canceledAt": "2018-09-25T18:02:12.641527788Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "Mn6aSciStV1x",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Comments appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=comments",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=comments",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "Persisting install.id",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/ZkJBQBy5Je59",
+			"created": "2018-09-25T17:07:33.138509Z",
+			"proposedApp": {
+				"id": "Mn6aSciStV1x",
+				"title": "Comments",
+				"shortDescription": "Build confidence with feedback & ratings on your site",
+				"longDescription": "POWr Comments is a user-friendly, easy to implement plugin that enables you to build customer confidence, engage new visitors and curate a strong sense of community. Display comments on your site, collect feedback, provide social proof, manage a discussion forum, and collect 5-star reviews for your product or brand. \n \n# What are the benefits of using POWr Comments?   \n\n* **Boost customer confidence** - By collecting and displaying customer reviews and ratings of your product. \n* **Build a sense of community** - Engage with customers and answer their questions right on your site.\n* **Stay in control** - Moderate content and choose which reviews to show.\n\n# Get started for free and enjoy these features:   \n\n* Collect and display reviews and/or ratings for your product\n* Show ratings and/or comments to highlight popular products\n* Remove any unwanted comments\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more\n* Supports text in any language\n* Mobile responsive on any device\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins)\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Comment moderation: publish new comments after approval \n* Email alerts about new comments so you can respond to feedback quickly\n* Anonymous commenting\n* Reply to individual comments\n* Let website visitors upvote individual reviews\n* Order comments by newest first, oldest first, popularity, or manually.\n* Unlock premium features in other POWr apps\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=comments).\n\n# Why users love Comments:   \n\n“Perfect for my needs. Having honest comments within my website helps to grow business.” - Judith Wareham\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Comments up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "//images.cloudflareapps.com/oNm7tY6Smqnfr0hHxYwH_Icon - Comments Cloudflare.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/c7hrBDgUQWiZkjYEOFp1_screenshot-1-15- (2).png",
+					"//images.cloudflareapps.com/1aHEF2exQsSDqIoRbbRi_screenshot-2-7- (2).png",
+					"//images.cloudflareapps.com/6tAInTMT9arNPJV6Oofo_Screen Shot 2018-01-30 at 10.47.28 AM.png",
+					"//images.cloudflareapps.com/b8VJ7XLRRCy4oaYwtrSs_screenshot-3-3- (2).png",
+					"//images.cloudflareapps.com/OD4pnJoIRCy3oZTAgRnw_all-purpose-banner copy.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/PsTtDZakQY6Te4tXBj0o_Comments banner.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "K-fA0g30Akpq"
+				},
+				"created": "2017-11-21T02:11:03.13534Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"assignedToReviewerUserId": "681cef98e592b3db33836ad01f84726e",
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2018-09-25T18:02:12.660949091Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2018-09-26T17:13:28.188006093Z"
+			}
+		},
+		{
+			"tag": "1.0.4",
+			"appId": "Mn6aSciStV1x",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Comments appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=comments",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=comments",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0,
+				"upvotes": 0,
+				"downvotes": 1
+			},
+			"releaseNotes": "Persisting install.id",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/ZkJBQBy5Je59",
+			"created": "2018-09-26T21:46:54.693589Z",
+			"proposedApp": {
+				"id": "Mn6aSciStV1x",
+				"title": "Comments",
+				"shortDescription": "Build confidence with feedback & ratings on your site.",
+				"longDescription": "POWr Comments is a user-friendly, easy to implement plugin that enables you to build customer confidence, engage new visitors and curate a strong sense of community. Display comments on your site, collect feedback, provide social proof, manage a discussion forum, and collect 5-star reviews for your product or brand. \n \n# What are the benefits of using POWr Comments?   \n\n* **Boost customer confidence** - By collecting and displaying customer reviews and ratings of your product. \n* **Build a sense of community** - Engage with customers and answer their questions right on your site.\n* **Stay in control** - Moderate content and choose which reviews to show.\n\n# Get started for free and enjoy these features:   \n\n* Collect and display reviews and/or ratings for your product\n* Show ratings and/or comments to highlight popular products\n* Remove any unwanted comments\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more\n* Supports text in any language\n* Mobile responsive on any device\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins)\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Comment moderation: publish new comments after approval \n* Email alerts about new comments so you can respond to feedback quickly\n* Anonymous commenting\n* Reply to individual comments\n* Let website visitors upvote individual reviews\n* Order comments by newest first, oldest first, popularity, or manually.\n* Unlock premium features in other POWr apps\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=comments).\n\n# Why users love Comments:   \n\n“Perfect for my needs. Having honest comments within my website helps to grow business.” - Judith Wareham\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Comments up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "https://images.cloudflareapps.com/APjYQNcNC0vL/Comments-Icon-Cloudflare.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/c7hrBDgUQWiZkjYEOFp1_screenshot-1-15- (2).png",
+					"//images.cloudflareapps.com/1aHEF2exQsSDqIoRbbRi_screenshot-2-7- (2).png",
+					"//images.cloudflareapps.com/6tAInTMT9arNPJV6Oofo_Screen Shot 2018-01-30 at 10.47.28 AM.png",
+					"//images.cloudflareapps.com/b8VJ7XLRRCy4oaYwtrSs_screenshot-3-3- (2).png",
+					"//images.cloudflareapps.com/OD4pnJoIRCy3oZTAgRnw_all-purpose-banner copy.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/T1OAsSNeSoIl/Comments-Banner-Cloudflare-.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "K-fA0g30Akpq"
+				},
+				"created": "2017-11-21T02:11:03.13534Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2018-09-27T20:27:44.754127915Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2018-09-27T20:33:59.177041399Z"
+			}
+		},
+		{
+			"tag": "1.0.5",
+			"appId": "Mn6aSciStV1x",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Comments appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=comments",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=comments",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0,
+				"upvotes": 0,
+				"downvotes": 1
+			},
+			"releaseNotes": "We've made minor updates to Comments. There is no need to do anything, your app will continue to work as expected.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/ZkJBQBy5Je59",
+			"created": "2018-10-16T17:55:29.128462Z",
+			"proposedApp": {
+				"id": "Mn6aSciStV1x",
+				"title": "Comments",
+				"shortDescription": "Build confidence with feedback & ratings on your site.",
+				"longDescription": "POWr Comments is a user-friendly, easy to implement plugin that enables you to build customer confidence, engage new visitors and curate a strong sense of community. Display comments on your site, collect feedback, provide social proof, manage a discussion forum, and collect 5-star reviews for your product or brand. \n \n# What are the benefits of using POWr Comments?   \n\n* **Boost customer confidence** - By collecting and displaying customer reviews and ratings of your product. \n* **Build a sense of community** - Engage with customers and answer their questions right on your site.\n* **Stay in control** - Moderate content and choose which reviews to show.\n\n# Get started for free and enjoy these features:   \n\n* Collect and display reviews and/or ratings for your product\n* Show ratings and/or comments to highlight popular products\n* Remove any unwanted comments\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more\n* Supports text in any language\n* Mobile responsive on any device\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins)\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Comment moderation: publish new comments after approval \n* Email alerts about new comments so you can respond to feedback quickly\n* Anonymous commenting\n* Reply to individual comments\n* Let website visitors upvote individual reviews\n* Order comments by newest first, oldest first, popularity, or manually.\n* Unlock premium features in other POWr apps\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=comments).\n\n# Why users love Comments:   \n\n“Perfect for my needs. Having honest comments within my website helps to grow business.” - Judith Wareham\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Comments up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "powr-comments",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "https://images.cloudflareapps.com/APjYQNcNC0vL/Comments-Icon-Cloudflare.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/c7hrBDgUQWiZkjYEOFp1_screenshot-1-15- (2).png",
+					"//images.cloudflareapps.com/1aHEF2exQsSDqIoRbbRi_screenshot-2-7- (2).png",
+					"//images.cloudflareapps.com/6tAInTMT9arNPJV6Oofo_Screen Shot 2018-01-30 at 10.47.28 AM.png",
+					"//images.cloudflareapps.com/b8VJ7XLRRCy4oaYwtrSs_screenshot-3-3- (2).png",
+					"//images.cloudflareapps.com/OD4pnJoIRCy3oZTAgRnw_all-purpose-banner copy.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/T1OAsSNeSoIl/Comments-Banner-Cloudflare-.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "K-fA0g30Akpq"
+				},
+				"created": "2017-11-21T02:11:03.13534Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2018-10-16T17:55:29.3889725Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2018-10-18T18:27:35.794168625Z"
+			}
+		},
+		{
+			"tag": "1.0.6",
+			"appId": "Mn6aSciStV1x",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Comments appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=comments",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=comments",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.33,
+				"upvotes": 1,
+				"downvotes": 2
+			},
+			"releaseNotes": "Add POWR tag",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/ZkJBQBy5Je59",
+			"created": "2018-11-06T00:52:57.179838Z",
+			"proposedApp": {
+				"id": "Mn6aSciStV1x",
+				"title": "Comments",
+				"shortDescription": "Build confidence with feedback & ratings on your site.",
+				"longDescription": "POWr Comments is a user-friendly, easy to implement plugin that enables you to build customer confidence, engage new visitors and curate a strong sense of community. Display comments on your site, collect feedback, provide social proof, manage a discussion forum, and collect 5-star reviews for your product or brand. \n \n# What are the benefits of using POWr Comments?   \n\n* **Boost customer confidence** - By collecting and displaying customer reviews and ratings of your product. \n* **Build a sense of community** - Engage with customers and answer their questions right on your site.\n* **Stay in control** - Moderate content and choose which reviews to show.\n\n# Get started for free and enjoy these features:   \n\n* Collect and display reviews and/or ratings for your product\n* Show ratings and/or comments to highlight popular products\n* Remove any unwanted comments\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more\n* Supports text in any language\n* Mobile responsive on any device\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins)\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Comment moderation: publish new comments after approval \n* Email alerts about new comments so you can respond to feedback quickly\n* Anonymous commenting\n* Reply to individual comments\n* Let website visitors upvote individual reviews\n* Order comments by newest first, oldest first, popularity, or manually.\n* Unlock premium features in other POWr apps\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=comments).\n\n# Why users love Comments:   \n\n“Perfect for my needs. Having honest comments within my website helps to grow business.” - Judith Wareham\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Comments up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "powr-comments",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "https://images.cloudflareapps.com/APjYQNcNC0vL/Comments-Icon-Cloudflare.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/c7hrBDgUQWiZkjYEOFp1_screenshot-1-15- (2).png",
+					"//images.cloudflareapps.com/1aHEF2exQsSDqIoRbbRi_screenshot-2-7- (2).png",
+					"//images.cloudflareapps.com/6tAInTMT9arNPJV6Oofo_Screen Shot 2018-01-30 at 10.47.28 AM.png",
+					"//images.cloudflareapps.com/b8VJ7XLRRCy4oaYwtrSs_screenshot-3-3- (2).png",
+					"//images.cloudflareapps.com/OD4pnJoIRCy3oZTAgRnw_all-purpose-banner copy.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/T1OAsSNeSoIl/Comments-Banner-Cloudflare-.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication",
+					"powr"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "K-fA0g30Akpq"
+				},
+				"created": "2017-11-21T02:11:03.13534Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "41f272f0efef5d92ddde1aa9398f388a",
+				"requestedAt": "2018-11-06T00:52:57.313558073Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-11-06T01:00:31.84778224Z"
+			}
+		},
+		{
+			"tag": "1.0.7",
+			"appId": "Mn6aSciStV1x",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"exitHelp": {
+							"helpvalue": "<br/><hr/><h2><b>Need help?</b></h2>Visit our glorious <a href='https://www.powr.io/knowledge-base'>Support Center</a> or <a href='https://www.powr.io/feedback/new?&src=cloudflare' target='_blank'>send us a message</a>.",
+							"order": 8,
+							"type": "help"
+						},
+						"externalLink": {
+							"format": "button",
+							"href": "https://www.powr.io/cloudflare/comments",
+							"label": "Open POWr Editor",
+							"order": 2,
+							"title": "Design and customize your Comments",
+							"type": "link"
+						},
+						"introHelp": {
+							"helpvalue": "<center><h1>Welcome to <br/> POWr Comments</h1> Easily add a comments section anywhere on your Cloudflare site!</center>",
+							"order": 0,
+							"type": "help"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"format": "element",
+							"order": 6,
+							"title": "Where should the Comments appear?",
+							"type": "object"
+						},
+						"shortcode": {
+							"order": 4,
+							"placeholder": "[powr-comments id='abc123']",
+							"title": "Get the shortcode from the POWr link where you created your Comments",
+							"type": "string"
+						},
+						"step1Help": {
+							"helpvalue": "<p></p><h2><b>1: Configure Your Comments</b></h2>",
+							"order": 1,
+							"type": "help"
+						},
+						"step2Help": {
+							"helpvalue": "<p></p><h2><b>2: Paste Shortcode</b></h2>",
+							"order": 3,
+							"type": "help"
+						},
+						"step3Help": {
+							"helpvalue": "<p></p><h2><b>3: Select Install Location</b></h2>",
+							"order": 5,
+							"type": "help"
+						},
+						"step4Help": {
+							"helpvalue": "<center><h2>------- OR --------</h2></center><br/><h3>Embed your shortcode in your website where you'd like your Comments to appear.</h3>",
+							"order": 7,
+							"type": "help"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.33,
+				"upvotes": 10,
+				"downvotes": 20
+			},
+			"releaseNotes": "New & Improved installation flow ✨",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/IZZCluQJLKH9",
+			"metadata": {
+				"code": {
+					"sourceTag": "IZZCluQJLKH9",
+					"uploadedOn": "2019-04-16T00:18:12.216538242Z"
+				}
+			},
+			"created": "2019-04-16T00:18:12.060271Z",
+			"proposedApp": {
+				"id": "Mn6aSciStV1x",
+				"title": "Comments",
+				"shortDescription": "Build confidence with feedback & ratings on your site.",
+				"longDescription": "POWr Comments is a user-friendly, easy to implement plugin that enables you to build customer confidence, engage new visitors and curate a strong sense of community. Display comments on your site, collect feedback, provide social proof, manage a discussion forum, and collect 5-star reviews for your product or brand. \n \n# What are the benefits of using POWr Comments?   \n\n* **Boost customer confidence** - By collecting and displaying customer reviews and ratings of your product. \n* **Build a sense of community** - Engage with customers and answer their questions right on your site.\n* **Stay in control** - Moderate content and choose which reviews to show.\n\n# Get started for free and enjoy these features:   \n\n* Collect and display reviews and/or ratings for your product\n* Show ratings and/or comments to highlight popular products\n* Remove any unwanted comments\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more\n* Supports text in any language\n* Mobile responsive on any device\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins)\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Comment moderation: publish new comments after approval \n* Email alerts about new comments so you can respond to feedback quickly\n* Anonymous commenting\n* Reply to individual comments\n* Let website visitors upvote individual reviews\n* Order comments by newest first, oldest first, popularity, or manually.\n* Unlock premium features in other POWr apps\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=comments).\n\n# Why users love Comments:   \n\n“Perfect for my needs. Having honest comments within my website helps to grow business.” - Judith Wareham\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Comments up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "powr-comments",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "https://images.cloudflareapps.com/APjYQNcNC0vL/Comments-Icon-Cloudflare.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/c7hrBDgUQWiZkjYEOFp1_screenshot-1-15- (2).png",
+					"//images.cloudflareapps.com/1aHEF2exQsSDqIoRbbRi_screenshot-2-7- (2).png",
+					"//images.cloudflareapps.com/6tAInTMT9arNPJV6Oofo_Screen Shot 2018-01-30 at 10.47.28 AM.png",
+					"//images.cloudflareapps.com/b8VJ7XLRRCy4oaYwtrSs_screenshot-3-3- (2).png",
+					"//images.cloudflareapps.com/OD4pnJoIRCy3oZTAgRnw_all-purpose-banner copy.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/T1OAsSNeSoIl/Comments-Banner-Cloudflare-.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication",
+					"powr"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "K-fA0g30Akpq"
+				},
+				"created": "2017-11-21T02:11:03.13534Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2019-04-16T00:18:12.788869382Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-04-16T20:43:42.777091539Z"
+			}
+		}
+	]
+}

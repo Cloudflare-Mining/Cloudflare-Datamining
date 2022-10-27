@@ -1,0 +1,155 @@
+{
+	"id": "FLSx5mBHPVNf",
+	"title": "GDPR Compliance Made Easy",
+	"shortDescription": "Allow your users to agree to your GDPR compliance policy.",
+	"longDescription": "This app allows you to put a message at the bottom of your site with a customizable GDPR alert in it.",
+	"instructions": "",
+	"alias": "",
+	"orgId": "32ec9b730280839f03577a0e02f6f301",
+	"icon": "https://images.cloudflareapps.com/miWCx7q8IT0k/big-GDPR-C-ME-Icon.png",
+	"screenshots": [],
+	"tileImage": "https://images.cloudflareapps.com/_NJ4CrJhHGpv/big-GDPR-C-ME-2.png",
+	"featuredAppImage": "",
+	"author": "2by2host.com",
+	"tagline": "",
+	"website": "https://2by2host.com/cf",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://2by2host.com/legal/tos/",
+	"privacyPolicyURL": "https://2by2host.com/legal/privacy-policy/",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.0",
+	"infoVersion": "1.0.0",
+	"points": 0,
+	"supportEmail": "support-team@2by2host.com",
+	"products": [],
+	"categoryIds": [],
+	"agreements": {
+		"tos": {
+			"userId": "4c036d6c1f36249c38cb3a0b25a8b1ef",
+			"created": "2018-12-27T20:55:36.379033733Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "8lGiJegaQbMU"
+	},
+	"created": "2018-12-27T20:55:33.426617Z",
+	"org": {
+		"id": "32ec9b730280839f03577a0e02f6f301",
+		"title": "",
+		"username": "32ec9b730280839f03577a0e02f6f301",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "FLSx5mBHPVNf",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"message": {
+							"default": "By clicking the Agree button you acknowledge and accept that this site can read and store some personal information about yourself automatically, like your IP address, browser and operating system name and version and cookies. If and when you fill out any web forms on this site, you might be asked to enter your name, email, address and other personal data - depending on the subject of these forms. Please note that it is up to you to share this information with us or not.",
+							"format": "textarea",
+							"order": 1,
+							"title": "Text for policy alert",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.65,
+				"upvotes": 13,
+				"downvotes": 7
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/8lGiJegaQbMU",
+			"metadata": {
+				"code": {
+					"sourceTag": "8lGiJegaQbMU",
+					"uploadedOn": "2018-12-27T20:55:35.091882304Z"
+				}
+			},
+			"created": "2018-12-27T20:55:34.564351Z",
+			"proposedApp": {
+				"id": "FLSx5mBHPVNf",
+				"title": "GDPR Compliance Made Easy",
+				"shortDescription": "Allow your users to agree to your GDPR compliance policy.",
+				"longDescription": "This app allows you to put a message at the bottom of your site with a customizable GDPR alert in it.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "4c036d6c1f36249c38cb3a0b25a8b1ef",
+				"icon": "https://images.cloudflareapps.com/miWCx7q8IT0k/big-GDPR-C-ME-Icon.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/_NJ4CrJhHGpv/big-GDPR-C-ME-2.png",
+				"featuredAppImage": "",
+				"author": "2by2host.com",
+				"tagline": "",
+				"website": "https://2by2host.com/cf",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://2by2host.com/legal/tos/",
+				"privacyPolicyURL": "https://2by2host.com/legal/privacy-policy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support-team@2by2host.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "8lGiJegaQbMU"
+				},
+				"created": "2018-12-27T20:55:33.426617Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4c036d6c1f36249c38cb3a0b25a8b1ef",
+				"requestedAt": "2018-12-27T20:55:36.363634852Z",
+				"canceledAt": null,
+				"reviewedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"reviewedAt": "2019-02-20T21:08:56.149065177Z"
+			}
+		}
+	]
+}

@@ -1,0 +1,2445 @@
+{
+	"id": "FH1vI4J87vYr",
+	"title": "Site Audit",
+	"shortDescription": "Audits for performance, best practices, SEO",
+	"longDescription": "Daily or weekly audits for performance, best practices, SEO.",
+	"instructions": "",
+	"alias": "audit",
+	"orgId": "1db6a3d1208550b8a6ef4a21413f2816",
+	"icon": "https://images.cloudflareapps.com/bfoIdS2e_fgY/Component%201.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/vHhzz7MC4Zf3/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202020-03-11%20%D0%B2%2020.30.17.png",
+		"https://images.cloudflareapps.com/XapmZtuCypNn/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202020-03-11%20%D0%B2%2020.34.30.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/zE0i_HyOXVKy/Component%202.png",
+	"featuredAppImage": "",
+	"author": "Upmon",
+	"tagline": "",
+	"website": "https://audit.upmon.com/",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://www.upmon.com/tos/",
+	"privacyPolicyURL": "https://www.upmon.com/privacy/",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.6",
+	"infoVersion": "1.0.6",
+	"points": 0,
+	"supportEmail": "mail@upmon.com",
+	"products": [
+		{
+			"id": "basic",
+			"title": "Basic",
+			"shortDescription": "Weekly reports. Performance audit.",
+			"longDescription": "",
+			"visible": true,
+			"price": 0,
+			"order": 0,
+			"plan": "basic",
+			"created": null
+		},
+		{
+			"id": "pro",
+			"title": "Pro",
+			"shortDescription": "Daily reports. Performance, best practices and SEO audit.",
+			"longDescription": "",
+			"visible": true,
+			"price": 100,
+			"order": 1,
+			"plan": "APPS_SITE_AUDIT_PRO",
+			"feature": "apps.siteaudit_pro.enabled",
+			"created": null
+		}
+	],
+	"categoryIds": [
+		"performance"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "1db6a3d1208550b8a6ef4a21413f2816",
+			"created": "2020-03-11T19:51:55.951018416Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "rwIxkloN11xO"
+	},
+	"created": "2020-03-08T23:34:11.117471Z",
+	"org": {
+		"id": "1db6a3d1208550b8a6ef4a21413f2816",
+		"title": "",
+		"username": "1db6a3d1208550b8a6ef4a21413f2816",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "performance",
+			"title": "Performance",
+			"description": "Improve the speed or perceived responsiveness of your website.",
+			"icon": "//eager-app-images.imgix.net/emdMA2bjSlm0xCvE4vlC_performance.png",
+			"points": 40,
+			"visible": true,
+			"metadata": {
+				"icon": {
+					"filename": "performance.png",
+					"isWriteable": false,
+					"key": "emdMA2bjSlm0xCvE4vlC_performance.png",
+					"mimetype": "image/png",
+					"size": 3642,
+					"url": "https://www.filepicker.io/api/file/mib586WWTei9D1h355Se"
+				}
+			},
+			"created": "2016-01-21T18:06:28.968723Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "FH1vI4J87vYr",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"upmon"
+							],
+							"title": "Upmon Account",
+							"type": "object"
+						},
+						"demo": {
+							"helpvalue": "<strong>📃 <a href='https://audit.upmon.com/report?site=cloudflare.com' target='_blank'>View demo report</a>.</strong>",
+							"order": 2,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"type": "help"
+						},
+						"help": {
+							"helpvalue": "<strong>📬 You will get reports to linked email.</strong>",
+							"order": 1,
+							"type": "help"
+						},
+						"interval": {
+							"default": "week",
+							"enum": [
+								"day",
+								"week"
+							],
+							"enumNames": {
+								"day": "Daily",
+								"week": "Weekly"
+							},
+							"format": "radios",
+							"order": 3,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Audit Interval",
+							"type": "string"
+						},
+						"language": {
+							"default": "en",
+							"enum": [
+								"en",
+								"ar",
+								"bg",
+								"ca",
+								"cs",
+								"da",
+								"de",
+								"el",
+								"es",
+								"fi",
+								"fil",
+								"fr",
+								"he",
+								"hi",
+								"hr",
+								"hu",
+								"id",
+								"it",
+								"ja",
+								"ko",
+								"lt",
+								"lv",
+								"nl",
+								"no",
+								"pl",
+								"pt",
+								"ro",
+								"ru",
+								"sk",
+								"sl",
+								"sr",
+								"sv",
+								"ta",
+								"te",
+								"th",
+								"tr",
+								"uk",
+								"vi",
+								"zh"
+							],
+							"enumNames": {
+								"ar": "ﺔﻴﺐﺮﻌﻠﺍ",
+								"bg": "Български",
+								"ca": "Català",
+								"cs": "Čeština",
+								"da": "Dansk",
+								"de": "Deutsch",
+								"el": "Ελληνικά",
+								"en": "English",
+								"es": "Español",
+								"fi": "Suomi",
+								"fil": "Filipino",
+								"fr": "Français",
+								"he": "תירבע",
+								"hi": "हिन्दी (भारत)",
+								"hr": "Hrvatski",
+								"hu": "Magyar",
+								"id": "Bahasa Indonesia",
+								"it": "Italiano",
+								"ja": "日本語",
+								"ko": "한국어",
+								"lt": "Lietuvių",
+								"lv": "Latviešu",
+								"nl": "Nederlands",
+								"no": "Bokmål",
+								"pl": "Polski",
+								"pt": "Português",
+								"ro": "Română",
+								"ru": "Русский",
+								"sk": "Slovenčina",
+								"sl": "Slovenski",
+								"sr": "Српски",
+								"sv": "Svenska",
+								"ta": "தமிழ்",
+								"te": "తెలుగు",
+								"th": "ไทย",
+								"tr": "Türkçe",
+								"uk": "Україньска",
+								"vi": "Tiểng Việt",
+								"zh": "中文"
+							},
+							"order": 4,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Report Language",
+							"type": "string"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Weekly reports. Performance audit.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "basic",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Daily reports. Performance, best practices and SEO audit.",
+						"longDescription": "",
+						"visible": false,
+						"price": 100,
+						"order": 1,
+						"plan": "pro",
+						"created": null
+					}
+				],
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://audit.upmon.com/hook/",
+						"events": [
+							"oauth-login",
+							"before-new-install",
+							"before-update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with Site Audit."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://audit.upmon.com/hook/",
+						"events": [
+							"new-install",
+							"update-install",
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with Site Audit."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"action": "reset-options",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/21VTGJc5GIP-",
+			"metadata": {
+				"code": {
+					"sourceTag": "21VTGJc5GIP-",
+					"uploadedOn": "2020-03-11T00:31:24.466872522Z"
+				}
+			},
+			"created": "2020-03-08T23:34:11.743198Z",
+			"proposedApp": {
+				"id": "FH1vI4J87vYr",
+				"title": "Site Audit",
+				"shortDescription": "Audits for performance, best practices, SEO",
+				"longDescription": "Daily or weekly audits for performance, best practices, SEO.",
+				"instructions": "",
+				"alias": "audit",
+				"orgId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"icon": "https://images.cloudflareapps.com/bfoIdS2e_fgY/Component%201.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/vHhzz7MC4Zf3/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202020-03-11%20%D0%B2%2020.30.17.png",
+					"https://images.cloudflareapps.com/XapmZtuCypNn/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202020-03-11%20%D0%B2%2020.34.30.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/zE0i_HyOXVKy/Component%202.png",
+				"featuredAppImage": "",
+				"author": "Upmon",
+				"tagline": "",
+				"website": "https://audit.upmon.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.upmon.com/tos/",
+				"privacyPolicyURL": "https://www.upmon.com/privacy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "mail@upmon.com",
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Weekly reports. Performance audit.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "basic",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Daily reports. Performance, best practices and SEO audit.",
+						"longDescription": "",
+						"visible": false,
+						"price": 100,
+						"order": 1,
+						"plan": "pro",
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "rwIxkloN11xO"
+				},
+				"created": "2020-03-08T23:34:11.117471Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"requestedAt": "2020-03-11T19:51:55.928682612Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-03-13T15:29:06.043495636Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "FH1vI4J87vYr",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"upmon"
+							],
+							"title": "Upmon Account",
+							"type": "object"
+						},
+						"demo": {
+							"helpvalue": "<strong>📃 <a href='https://audit.upmon.com/report?site=cloudflare.com' target='_blank'>View demo report</a>.</strong>",
+							"order": 2,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"type": "help"
+						},
+						"help": {
+							"helpvalue": "<strong>📬 You will get reports to linked email.</strong>",
+							"order": 1,
+							"type": "help"
+						},
+						"interval": {
+							"default": "week",
+							"enum": [
+								"day",
+								"week"
+							],
+							"enumNames": {
+								"day": "Daily",
+								"week": "Weekly"
+							},
+							"format": "radios",
+							"order": 3,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Audit Interval",
+							"type": "string"
+						},
+						"language": {
+							"default": "en",
+							"enum": [
+								"en",
+								"ar",
+								"bg",
+								"ca",
+								"cs",
+								"da",
+								"de",
+								"el",
+								"es",
+								"fi",
+								"fil",
+								"fr",
+								"he",
+								"hi",
+								"hr",
+								"hu",
+								"id",
+								"it",
+								"ja",
+								"ko",
+								"lt",
+								"lv",
+								"nl",
+								"no",
+								"pl",
+								"pt",
+								"ro",
+								"ru",
+								"sk",
+								"sl",
+								"sr",
+								"sv",
+								"ta",
+								"te",
+								"th",
+								"tr",
+								"uk",
+								"vi",
+								"zh"
+							],
+							"enumNames": {
+								"ar": "ﺔﻴﺐﺮﻌﻠﺍ",
+								"bg": "Български",
+								"ca": "Català",
+								"cs": "Čeština",
+								"da": "Dansk",
+								"de": "Deutsch",
+								"el": "Ελληνικά",
+								"en": "English",
+								"es": "Español",
+								"fi": "Suomi",
+								"fil": "Filipino",
+								"fr": "Français",
+								"he": "תירבע",
+								"hi": "हिन्दी (भारत)",
+								"hr": "Hrvatski",
+								"hu": "Magyar",
+								"id": "Bahasa Indonesia",
+								"it": "Italiano",
+								"ja": "日本語",
+								"ko": "한국어",
+								"lt": "Lietuvių",
+								"lv": "Latviešu",
+								"nl": "Nederlands",
+								"no": "Bokmål",
+								"pl": "Polski",
+								"pt": "Português",
+								"ro": "Română",
+								"ru": "Русский",
+								"sk": "Slovenčina",
+								"sl": "Slovenski",
+								"sr": "Српски",
+								"sv": "Svenska",
+								"ta": "தமிழ்",
+								"te": "తెలుగు",
+								"th": "ไทย",
+								"tr": "Türkçe",
+								"uk": "Україньска",
+								"vi": "Tiểng Việt",
+								"zh": "中文"
+							},
+							"order": 4,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Report Language",
+							"type": "string"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Weekly reports. Performance audit.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "basic",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Daily reports. Performance, best practices and SEO audit.",
+						"longDescription": "",
+						"visible": false,
+						"price": 100,
+						"order": 1,
+						"plan": "pro",
+						"created": null
+					}
+				],
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://audit.upmon.com/hook/",
+						"events": [
+							"oauth-login",
+							"before-new-install",
+							"before-update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with Site Audit."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://audit.upmon.com/hook/",
+						"events": [
+							"new-install",
+							"update-install",
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with Site Audit."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"action": "reset-options",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.8,
+				"upvotes": 8,
+				"downvotes": 2
+			},
+			"releaseNotes": "Added to Performance category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/21VTGJc5GIP-",
+			"created": "2020-03-16T15:55:04.439089Z",
+			"proposedApp": {
+				"id": "FH1vI4J87vYr",
+				"title": "Site Audit",
+				"shortDescription": "Audits for performance, best practices, SEO",
+				"longDescription": "Daily or weekly audits for performance, best practices, SEO.",
+				"instructions": "",
+				"alias": "audit",
+				"orgId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"icon": "https://images.cloudflareapps.com/bfoIdS2e_fgY/Component%201.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/vHhzz7MC4Zf3/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202020-03-11%20%D0%B2%2020.30.17.png",
+					"https://images.cloudflareapps.com/XapmZtuCypNn/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202020-03-11%20%D0%B2%2020.34.30.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/zE0i_HyOXVKy/Component%202.png",
+				"featuredAppImage": "",
+				"author": "Upmon",
+				"tagline": "",
+				"website": "https://audit.upmon.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.upmon.com/tos/",
+				"privacyPolicyURL": "https://www.upmon.com/privacy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "mail@upmon.com",
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Weekly reports. Performance audit.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "basic",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Daily reports. Performance, best practices and SEO audit.",
+						"longDescription": "",
+						"visible": false,
+						"price": 100,
+						"order": 1,
+						"plan": "pro",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"performance"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "rwIxkloN11xO"
+				},
+				"created": "2020-03-08T23:34:11.117471Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2020-03-16T15:55:04.827599824Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-03-16T15:55:14.880838521Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "FH1vI4J87vYr",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"upmon"
+							],
+							"title": "Upmon Account",
+							"type": "object"
+						},
+						"demo": {
+							"helpvalue": "<strong>📃 <a href='https://audit.upmon.com/report?site=cloudflare.com' target='_blank'>View demo report</a>.</strong>",
+							"order": 2,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"type": "help"
+						},
+						"help": {
+							"helpvalue": "<strong>📬 You will get reports to linked email.</strong>",
+							"order": 1,
+							"type": "help"
+						},
+						"interval": {
+							"default": "week",
+							"enum": [
+								"day",
+								"week"
+							],
+							"enumNames": {
+								"day": "Daily",
+								"week": "Weekly"
+							},
+							"format": "radios",
+							"order": 3,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Audit Interval",
+							"type": "string"
+						},
+						"language": {
+							"default": "en",
+							"enum": [
+								"en",
+								"ar",
+								"bg",
+								"ca",
+								"cs",
+								"da",
+								"de",
+								"el",
+								"es",
+								"fi",
+								"fil",
+								"fr",
+								"he",
+								"hi",
+								"hr",
+								"hu",
+								"id",
+								"it",
+								"ja",
+								"ko",
+								"lt",
+								"lv",
+								"nl",
+								"no",
+								"pl",
+								"pt",
+								"ro",
+								"ru",
+								"sk",
+								"sl",
+								"sr",
+								"sv",
+								"ta",
+								"te",
+								"th",
+								"tr",
+								"uk",
+								"vi",
+								"zh"
+							],
+							"enumNames": {
+								"ar": "ﺔﻴﺐﺮﻌﻠﺍ",
+								"bg": "Български",
+								"ca": "Català",
+								"cs": "Čeština",
+								"da": "Dansk",
+								"de": "Deutsch",
+								"el": "Ελληνικά",
+								"en": "English",
+								"es": "Español",
+								"fi": "Suomi",
+								"fil": "Filipino",
+								"fr": "Français",
+								"he": "תירבע",
+								"hi": "हिन्दी (भारत)",
+								"hr": "Hrvatski",
+								"hu": "Magyar",
+								"id": "Bahasa Indonesia",
+								"it": "Italiano",
+								"ja": "日本語",
+								"ko": "한국어",
+								"lt": "Lietuvių",
+								"lv": "Latviešu",
+								"nl": "Nederlands",
+								"no": "Bokmål",
+								"pl": "Polski",
+								"pt": "Português",
+								"ro": "Română",
+								"ru": "Русский",
+								"sk": "Slovenčina",
+								"sl": "Slovenski",
+								"sr": "Српски",
+								"sv": "Svenska",
+								"ta": "தமிழ்",
+								"te": "తెలుగు",
+								"th": "ไทย",
+								"tr": "Türkçe",
+								"uk": "Україньска",
+								"vi": "Tiểng Việt",
+								"zh": "中文"
+							},
+							"order": 4,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Report Language",
+							"type": "string"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Weekly reports. Performance audit.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "basic",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Daily reports. Performance, best practices and SEO audit.",
+						"longDescription": "",
+						"visible": false,
+						"price": 100,
+						"order": 1,
+						"plan": "pro",
+						"created": null
+					}
+				],
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://audit.upmon.com/hook/",
+						"events": [
+							"oauth-login",
+							"before-new-install",
+							"before-update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with Site Audit."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://audit.upmon.com/hook/",
+						"events": [
+							"new-install",
+							"update-install",
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with Site Audit."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"action": "reset-options",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "Added paid plan",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/21VTGJc5GIP-",
+			"created": "2020-05-13T17:05:23.66808Z",
+			"proposedApp": {
+				"id": "FH1vI4J87vYr",
+				"title": "Site Audit",
+				"shortDescription": "Audits for performance, best practices, SEO",
+				"longDescription": "Daily or weekly audits for performance, best practices, SEO.",
+				"instructions": "",
+				"alias": "audit",
+				"orgId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"icon": "https://images.cloudflareapps.com/bfoIdS2e_fgY/Component%201.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/vHhzz7MC4Zf3/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202020-03-11%20%D0%B2%2020.30.17.png",
+					"https://images.cloudflareapps.com/XapmZtuCypNn/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202020-03-11%20%D0%B2%2020.34.30.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/zE0i_HyOXVKy/Component%202.png",
+				"featuredAppImage": "",
+				"author": "Upmon",
+				"tagline": "",
+				"website": "https://audit.upmon.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.upmon.com/tos/",
+				"privacyPolicyURL": "https://www.upmon.com/privacy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "mail@upmon.com",
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Weekly reports. Performance audit.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "basic",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Daily reports. Performance, best practices and SEO audit.",
+						"longDescription": "",
+						"visible": true,
+						"price": 100,
+						"order": 1,
+						"plan": "APPS_SITE_AUDIT_PRO",
+						"feature": "apps.siteaudit_pro.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"performance"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "rwIxkloN11xO"
+				},
+				"created": "2020-03-08T23:34:11.117471Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2020-05-20T18:28:08.979719837Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-05-20T18:29:20.53216167Z"
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "FH1vI4J87vYr",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"upmon"
+							],
+							"title": "Upmon Account",
+							"type": "object"
+						},
+						"demo": {
+							"helpvalue": "<strong>📃 <a href='https://audit.upmon.com/report?site=cloudflare.com' target='_blank'>View demo report</a>.</strong>",
+							"order": 2,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"type": "help"
+						},
+						"help": {
+							"helpvalue": "<strong>📬 You will get reports to linked email.</strong>",
+							"order": 1,
+							"type": "help"
+						},
+						"interval": {
+							"default": "week",
+							"enum": [
+								"day",
+								"week"
+							],
+							"enumNames": {
+								"day": "Daily",
+								"week": "Weekly"
+							},
+							"format": "radios",
+							"order": 3,
+							"products": {
+								"day": [
+									"pro"
+								],
+								"week": [
+									"basic",
+									"pro"
+								]
+							},
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Audit Interval",
+							"type": "string"
+						},
+						"language": {
+							"default": "en",
+							"enum": [
+								"en",
+								"ar",
+								"bg",
+								"ca",
+								"cs",
+								"da",
+								"de",
+								"el",
+								"es",
+								"fi",
+								"fil",
+								"fr",
+								"he",
+								"hi",
+								"hr",
+								"hu",
+								"id",
+								"it",
+								"ja",
+								"ko",
+								"lt",
+								"lv",
+								"nl",
+								"no",
+								"pl",
+								"pt",
+								"ro",
+								"ru",
+								"sk",
+								"sl",
+								"sr",
+								"sv",
+								"ta",
+								"te",
+								"th",
+								"tr",
+								"uk",
+								"vi",
+								"zh"
+							],
+							"enumNames": {
+								"ar": "ﺔﻴﺐﺮﻌﻠﺍ",
+								"bg": "Български",
+								"ca": "Català",
+								"cs": "Čeština",
+								"da": "Dansk",
+								"de": "Deutsch",
+								"el": "Ελληνικά",
+								"en": "English",
+								"es": "Español",
+								"fi": "Suomi",
+								"fil": "Filipino",
+								"fr": "Français",
+								"he": "תירבע",
+								"hi": "हिन्दी (भारत)",
+								"hr": "Hrvatski",
+								"hu": "Magyar",
+								"id": "Bahasa Indonesia",
+								"it": "Italiano",
+								"ja": "日本語",
+								"ko": "한국어",
+								"lt": "Lietuvių",
+								"lv": "Latviešu",
+								"nl": "Nederlands",
+								"no": "Bokmål",
+								"pl": "Polski",
+								"pt": "Português",
+								"ro": "Română",
+								"ru": "Русский",
+								"sk": "Slovenčina",
+								"sl": "Slovenski",
+								"sr": "Српски",
+								"sv": "Svenska",
+								"ta": "தமிழ்",
+								"te": "తెలుగు",
+								"th": "ไทย",
+								"tr": "Türkçe",
+								"uk": "Україньска",
+								"vi": "Tiểng Việt",
+								"zh": "中文"
+							},
+							"order": 4,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Report Language",
+							"type": "string"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Weekly reports. Performance audit.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "basic",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Daily reports. Performance, best practices and SEO audit.",
+						"longDescription": "",
+						"visible": true,
+						"price": 100,
+						"order": 1,
+						"plan": "pro",
+						"created": null
+					}
+				],
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://audit.upmon.com/hook/",
+						"events": [
+							"oauth-login",
+							"before-new-install",
+							"before-update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with Site Audit."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://audit.upmon.com/hook/",
+						"events": [
+							"new-install",
+							"update-install",
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with Site Audit."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"action": "reset-options",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "Daily audit on paid version.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/SFEbEy2bl3dr",
+			"metadata": {
+				"code": {
+					"sourceTag": "SFEbEy2bl3dr",
+					"uploadedOn": "2020-05-23T15:59:24.133811631Z"
+				}
+			},
+			"created": "2020-05-23T15:59:23.556Z",
+			"proposedApp": {
+				"id": "FH1vI4J87vYr",
+				"title": "Site Audit",
+				"shortDescription": "Audits for performance, best practices, SEO",
+				"longDescription": "Daily or weekly audits for performance, best practices, SEO.",
+				"instructions": "",
+				"alias": "audit",
+				"orgId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"icon": "https://images.cloudflareapps.com/bfoIdS2e_fgY/Component%201.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/vHhzz7MC4Zf3/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202020-03-11%20%D0%B2%2020.30.17.png",
+					"https://images.cloudflareapps.com/XapmZtuCypNn/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202020-03-11%20%D0%B2%2020.34.30.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/zE0i_HyOXVKy/Component%202.png",
+				"featuredAppImage": "",
+				"author": "Upmon",
+				"tagline": "",
+				"website": "https://audit.upmon.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.upmon.com/tos/",
+				"privacyPolicyURL": "https://www.upmon.com/privacy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "mail@upmon.com",
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Weekly reports. Performance audit.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "basic",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Daily reports. Performance, best practices and SEO audit.",
+						"longDescription": "",
+						"visible": true,
+						"price": 100,
+						"order": 1,
+						"plan": "pro",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"performance"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "rwIxkloN11xO"
+				},
+				"created": "2020-03-08T23:34:11.117471Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"requestedAt": "2020-05-23T15:59:25.821757195Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-05-26T18:22:48.237315805Z"
+			}
+		},
+		{
+			"tag": "1.0.4",
+			"appId": "FH1vI4J87vYr",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"upmon"
+							],
+							"title": "Upmon Account",
+							"type": "object"
+						},
+						"demo": {
+							"helpvalue": "<strong>📃 <a href='https://audit.upmon.com/report?site=cloudflare.com' target='_blank'>View demo report</a>.</strong>",
+							"order": 2,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"type": "help"
+						},
+						"help": {
+							"helpvalue": "<strong>📬 You will get reports to linked email.</strong>",
+							"order": 1,
+							"type": "help"
+						},
+						"interval": {
+							"default": "week",
+							"enum": [
+								"day",
+								"week"
+							],
+							"enumNames": {
+								"day": "Daily",
+								"week": "Weekly"
+							},
+							"format": "radios",
+							"order": 3,
+							"products": {
+								"day": [
+									"pro"
+								],
+								"week": [
+									"basic",
+									"pro"
+								]
+							},
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Audit Interval",
+							"type": "string"
+						},
+						"language": {
+							"default": "en",
+							"enum": [
+								"en",
+								"ar",
+								"bg",
+								"ca",
+								"cs",
+								"da",
+								"de",
+								"el",
+								"es",
+								"fi",
+								"fil",
+								"fr",
+								"he",
+								"hi",
+								"hr",
+								"hu",
+								"id",
+								"it",
+								"ja",
+								"ko",
+								"lt",
+								"lv",
+								"nl",
+								"no",
+								"pl",
+								"pt",
+								"ro",
+								"ru",
+								"sk",
+								"sl",
+								"sr",
+								"sv",
+								"ta",
+								"te",
+								"th",
+								"tr",
+								"uk",
+								"vi",
+								"zh"
+							],
+							"enumNames": {
+								"ar": "ﺔﻴﺐﺮﻌﻠﺍ",
+								"bg": "Български",
+								"ca": "Català",
+								"cs": "Čeština",
+								"da": "Dansk",
+								"de": "Deutsch",
+								"el": "Ελληνικά",
+								"en": "English",
+								"es": "Español",
+								"fi": "Suomi",
+								"fil": "Filipino",
+								"fr": "Français",
+								"he": "תירבע",
+								"hi": "हिन्दी (भारत)",
+								"hr": "Hrvatski",
+								"hu": "Magyar",
+								"id": "Bahasa Indonesia",
+								"it": "Italiano",
+								"ja": "日本語",
+								"ko": "한국어",
+								"lt": "Lietuvių",
+								"lv": "Latviešu",
+								"nl": "Nederlands",
+								"no": "Bokmål",
+								"pl": "Polski",
+								"pt": "Português",
+								"ro": "Română",
+								"ru": "Русский",
+								"sk": "Slovenčina",
+								"sl": "Slovenski",
+								"sr": "Српски",
+								"sv": "Svenska",
+								"ta": "தமிழ்",
+								"te": "తెలుగు",
+								"th": "ไทย",
+								"tr": "Türkçe",
+								"uk": "Україньска",
+								"vi": "Tiểng Việt",
+								"zh": "中文"
+							},
+							"order": 4,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Report Language",
+							"type": "string"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Weekly reports. Performance audit.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "basic",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Daily reports. Performance, best practices and SEO audit.",
+						"longDescription": "",
+						"visible": true,
+						"price": 100,
+						"order": 1,
+						"plan": "pro",
+						"created": null
+					}
+				],
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://audit.upmon.com/hook/",
+						"events": [
+							"oauth-login",
+							"before-new-install",
+							"before-update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with Site Audit."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://audit.upmon.com/hook/",
+						"events": [
+							"new-install",
+							"update-install",
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with Site Audit."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"action": "reset-options",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.75,
+				"upvotes": 3,
+				"downvotes": 1
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/SFEbEy2bl3dr",
+			"created": "2020-05-26T18:24:01.899496Z",
+			"proposedApp": {
+				"id": "FH1vI4J87vYr",
+				"title": "Site Audit",
+				"shortDescription": "Audits for performance, best practices, SEO",
+				"longDescription": "Daily or weekly audits for performance, best practices, SEO.",
+				"instructions": "",
+				"alias": "audit",
+				"orgId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"icon": "https://images.cloudflareapps.com/bfoIdS2e_fgY/Component%201.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/vHhzz7MC4Zf3/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202020-03-11%20%D0%B2%2020.30.17.png",
+					"https://images.cloudflareapps.com/XapmZtuCypNn/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202020-03-11%20%D0%B2%2020.34.30.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/zE0i_HyOXVKy/Component%202.png",
+				"featuredAppImage": "",
+				"author": "Upmon",
+				"tagline": "",
+				"website": "https://audit.upmon.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.upmon.com/tos/",
+				"privacyPolicyURL": "https://www.upmon.com/privacy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "mail@upmon.com",
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Weekly reports. Performance audit.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "basic",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Daily reports. Performance, best practices and SEO audit.",
+						"longDescription": "",
+						"visible": true,
+						"price": 100,
+						"order": 1,
+						"plan": "APPS_SITE_AUDIT_PRO",
+						"feature": "apps.siteaudit_pro.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"performance"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "rwIxkloN11xO"
+				},
+				"created": "2020-03-08T23:34:11.117471Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2020-05-26T18:24:04.578577659Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-05-26T18:24:50.682782854Z"
+			}
+		},
+		{
+			"tag": "1.0.5",
+			"appId": "FH1vI4J87vYr",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"upmon"
+							],
+							"title": "Upmon Account",
+							"type": "object"
+						},
+						"categories": {
+							"default": "performance",
+							"enum": [
+								"performance",
+								"all"
+							],
+							"enumNames": {
+								"all": "Performance, best practices and SEO audit.",
+								"performance": "Performance audit."
+							},
+							"format": "radios",
+							"order": 4,
+							"products": {
+								"all": [
+									"pro"
+								],
+								"performance": [
+									"basic",
+									"pro"
+								]
+							},
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Audit Categories",
+							"type": "string"
+						},
+						"demo": {
+							"helpvalue": "<strong>📃 <a href='https://audit.upmon.com/report?site=cloudflare.com' target='_blank'>View demo report</a>.</strong>",
+							"order": 2,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"type": "help"
+						},
+						"help": {
+							"helpvalue": "<strong>📬 You will get reports to linked email.</strong>",
+							"order": 1,
+							"type": "help"
+						},
+						"interval": {
+							"default": "week",
+							"enum": [
+								"day",
+								"week"
+							],
+							"enumNames": {
+								"day": "Daily",
+								"week": "Weekly"
+							},
+							"format": "radios",
+							"order": 3,
+							"products": {
+								"day": [
+									"pro"
+								],
+								"week": [
+									"basic",
+									"pro"
+								]
+							},
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Audit Interval",
+							"type": "string"
+						},
+						"language": {
+							"default": "en",
+							"enum": [
+								"en",
+								"ar",
+								"bg",
+								"ca",
+								"cs",
+								"da",
+								"de",
+								"el",
+								"es",
+								"fi",
+								"fil",
+								"fr",
+								"he",
+								"hi",
+								"hr",
+								"hu",
+								"id",
+								"it",
+								"ja",
+								"ko",
+								"lt",
+								"lv",
+								"nl",
+								"no",
+								"pl",
+								"pt",
+								"ro",
+								"ru",
+								"sk",
+								"sl",
+								"sr",
+								"sv",
+								"ta",
+								"te",
+								"th",
+								"tr",
+								"uk",
+								"vi",
+								"zh"
+							],
+							"enumNames": {
+								"ar": "ﺔﻴﺐﺮﻌﻠﺍ",
+								"bg": "Български",
+								"ca": "Català",
+								"cs": "Čeština",
+								"da": "Dansk",
+								"de": "Deutsch",
+								"el": "Ελληνικά",
+								"en": "English",
+								"es": "Español",
+								"fi": "Suomi",
+								"fil": "Filipino",
+								"fr": "Français",
+								"he": "תירבע",
+								"hi": "हिन्दी (भारत)",
+								"hr": "Hrvatski",
+								"hu": "Magyar",
+								"id": "Bahasa Indonesia",
+								"it": "Italiano",
+								"ja": "日本語",
+								"ko": "한국어",
+								"lt": "Lietuvių",
+								"lv": "Latviešu",
+								"nl": "Nederlands",
+								"no": "Bokmål",
+								"pl": "Polski",
+								"pt": "Português",
+								"ro": "Română",
+								"ru": "Русский",
+								"sk": "Slovenčina",
+								"sl": "Slovenski",
+								"sr": "Српски",
+								"sv": "Svenska",
+								"ta": "தமிழ்",
+								"te": "తెలుగు",
+								"th": "ไทย",
+								"tr": "Türkçe",
+								"uk": "Україньска",
+								"vi": "Tiểng Việt",
+								"zh": "中文"
+							},
+							"order": 5,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Report Language",
+							"type": "string"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Weekly reports. Performance audit.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "basic",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Daily reports. Performance, best practices and SEO audit.",
+						"longDescription": "",
+						"visible": true,
+						"price": 100,
+						"order": 1,
+						"plan": "pro",
+						"created": null
+					}
+				],
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://audit.upmon.com/hook/",
+						"events": [
+							"oauth-login",
+							"before-new-install",
+							"before-update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with Site Audit."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://audit.upmon.com/hook/",
+						"events": [
+							"new-install",
+							"update-install",
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with Site Audit."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"action": "reset-options",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/6-kSl3_8bIu0",
+			"metadata": {
+				"code": {
+					"sourceTag": "6-kSl3_8bIu0",
+					"uploadedOn": "2020-07-02T23:04:11.185017606Z"
+				}
+			},
+			"created": "2020-07-02T23:04:10.160238Z",
+			"proposedApp": {
+				"id": "FH1vI4J87vYr",
+				"title": "Site Audit",
+				"shortDescription": "Audits for performance, best practices, SEO",
+				"longDescription": "Daily or weekly audits for performance, best practices, SEO.",
+				"instructions": "",
+				"alias": "audit",
+				"orgId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"icon": "https://images.cloudflareapps.com/bfoIdS2e_fgY/Component%201.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/vHhzz7MC4Zf3/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202020-03-11%20%D0%B2%2020.30.17.png",
+					"https://images.cloudflareapps.com/XapmZtuCypNn/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202020-03-11%20%D0%B2%2020.34.30.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/zE0i_HyOXVKy/Component%202.png",
+				"featuredAppImage": "",
+				"author": "Upmon",
+				"tagline": "",
+				"website": "https://audit.upmon.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.upmon.com/tos/",
+				"privacyPolicyURL": "https://www.upmon.com/privacy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "mail@upmon.com",
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Weekly reports. Performance audit.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "basic",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Daily reports. Performance, best practices and SEO audit.",
+						"longDescription": "",
+						"visible": true,
+						"price": 100,
+						"order": 1,
+						"plan": "pro",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"performance"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "rwIxkloN11xO"
+				},
+				"created": "2020-03-08T23:34:11.117471Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"requestedAt": "2020-07-02T23:04:57.079885324Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-07-06T15:38:59.659700236Z"
+			}
+		},
+		{
+			"tag": "1.0.6",
+			"appId": "FH1vI4J87vYr",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"upmon"
+							],
+							"title": "Upmon Account",
+							"type": "object"
+						},
+						"categories": {
+							"default": "performance",
+							"enum": [
+								"performance",
+								"all"
+							],
+							"enumNames": {
+								"all": "Performance, best practices and SEO audit.",
+								"performance": "Performance audit."
+							},
+							"format": "radios",
+							"order": 4,
+							"products": {
+								"all": [
+									"pro"
+								],
+								"performance": [
+									"basic",
+									"pro"
+								]
+							},
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Audit Categories",
+							"type": "string"
+						},
+						"demo": {
+							"helpvalue": "<strong>📃 <a href='https://audit.upmon.com/report?site=cloudflare.com' target='_blank'>View demo report</a>.</strong>",
+							"order": 2,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"type": "help"
+						},
+						"help": {
+							"helpvalue": "<strong>📬 You will get reports to linked email.</strong>",
+							"order": 1,
+							"type": "help"
+						},
+						"interval": {
+							"default": "week",
+							"enum": [
+								"day",
+								"week"
+							],
+							"enumNames": {
+								"day": "Daily",
+								"week": "Weekly"
+							},
+							"format": "radios",
+							"order": 3,
+							"products": {
+								"day": [
+									"pro"
+								],
+								"week": [
+									"basic",
+									"pro"
+								]
+							},
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Audit Interval",
+							"type": "string"
+						},
+						"language": {
+							"default": "en",
+							"enum": [
+								"en",
+								"ar",
+								"bg",
+								"ca",
+								"cs",
+								"da",
+								"de",
+								"el",
+								"es",
+								"fi",
+								"fil",
+								"fr",
+								"he",
+								"hi",
+								"hr",
+								"hu",
+								"id",
+								"it",
+								"ja",
+								"ko",
+								"lt",
+								"lv",
+								"nl",
+								"no",
+								"pl",
+								"pt",
+								"ro",
+								"ru",
+								"sk",
+								"sl",
+								"sr",
+								"sv",
+								"ta",
+								"te",
+								"th",
+								"tr",
+								"uk",
+								"vi",
+								"zh"
+							],
+							"enumNames": {
+								"ar": "ﺔﻴﺐﺮﻌﻠﺍ",
+								"bg": "Български",
+								"ca": "Català",
+								"cs": "Čeština",
+								"da": "Dansk",
+								"de": "Deutsch",
+								"el": "Ελληνικά",
+								"en": "English",
+								"es": "Español",
+								"fi": "Suomi",
+								"fil": "Filipino",
+								"fr": "Français",
+								"he": "תירבע",
+								"hi": "हिन्दी (भारत)",
+								"hr": "Hrvatski",
+								"hu": "Magyar",
+								"id": "Bahasa Indonesia",
+								"it": "Italiano",
+								"ja": "日本語",
+								"ko": "한국어",
+								"lt": "Lietuvių",
+								"lv": "Latviešu",
+								"nl": "Nederlands",
+								"no": "Bokmål",
+								"pl": "Polski",
+								"pt": "Português",
+								"ro": "Română",
+								"ru": "Русский",
+								"sk": "Slovenčina",
+								"sl": "Slovenski",
+								"sr": "Српски",
+								"sv": "Svenska",
+								"ta": "தமிழ்",
+								"te": "తెలుగు",
+								"th": "ไทย",
+								"tr": "Türkçe",
+								"uk": "Україньска",
+								"vi": "Tiểng Việt",
+								"zh": "中文"
+							},
+							"order": 5,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Report Language",
+							"type": "string"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Weekly reports. Performance audit.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "basic",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Daily reports. Performance, best practices and SEO audit.",
+						"longDescription": "",
+						"visible": true,
+						"price": 100,
+						"order": 1,
+						"plan": "pro",
+						"created": null
+					}
+				],
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://audit.upmon.com/hook/",
+						"events": [
+							"oauth-login",
+							"before-new-install",
+							"before-update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with Site Audit."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://audit.upmon.com/hook/",
+						"events": [
+							"new-install",
+							"update-install",
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with Site Audit."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"action": "reset-options",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.77,
+				"upvotes": 40,
+				"downvotes": 12
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/6-kSl3_8bIu0",
+			"created": "2020-07-06T15:40:34.560905Z",
+			"proposedApp": {
+				"id": "FH1vI4J87vYr",
+				"title": "Site Audit",
+				"shortDescription": "Audits for performance, best practices, SEO",
+				"longDescription": "Daily or weekly audits for performance, best practices, SEO.",
+				"instructions": "",
+				"alias": "audit",
+				"orgId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"icon": "https://images.cloudflareapps.com/bfoIdS2e_fgY/Component%201.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/vHhzz7MC4Zf3/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202020-03-11%20%D0%B2%2020.30.17.png",
+					"https://images.cloudflareapps.com/XapmZtuCypNn/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202020-03-11%20%D0%B2%2020.34.30.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/zE0i_HyOXVKy/Component%202.png",
+				"featuredAppImage": "",
+				"author": "Upmon",
+				"tagline": "",
+				"website": "https://audit.upmon.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.upmon.com/tos/",
+				"privacyPolicyURL": "https://www.upmon.com/privacy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "mail@upmon.com",
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "Weekly reports. Performance audit.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "basic",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Daily reports. Performance, best practices and SEO audit.",
+						"longDescription": "",
+						"visible": true,
+						"price": 100,
+						"order": 1,
+						"plan": "APPS_SITE_AUDIT_PRO",
+						"feature": "apps.siteaudit_pro.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"performance"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "rwIxkloN11xO"
+				},
+				"created": "2020-03-08T23:34:11.117471Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2020-07-06T15:40:35.239049168Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-07-06T15:40:49.152623479Z"
+			}
+		}
+	]
+}

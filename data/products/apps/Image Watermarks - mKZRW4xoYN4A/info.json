@@ -1,0 +1,780 @@
+{
+	"id": "mKZRW4xoYN4A",
+	"title": "Image Watermarks",
+	"shortDescription": "Add a watermark to identify your images.",
+	"longDescription": "## Add your custom mark to the images on your site.\n\nImage Watermarks helps users know where your content originates from.\n\n### A custom watermark for every occassion\n\nSet your watermark's text size, transparency, color, and position.",
+	"instructions": "",
+	"alias": "image-watermarks",
+	"orgId": "30c44bfcea5b7de6c21368f48f15863a",
+	"icon": "//images.cloudflareapps.com/A9E1yYaEQje2eGrwRLIV_icon.png",
+	"screenshots": [
+		"//images.cloudflareapps.com/rXmNzZ8XRtuB9FS4CUID_4.png",
+		"//images.cloudflareapps.com/LTYu4cnMSMWeE2VIp0ee_5.png",
+		"//images.cloudflareapps.com/29rSbPUwQsWmKp3JIrhd_1.png",
+		"//images.cloudflareapps.com/IkVLZV8nTSmdNwOya4rq_3.png",
+		"//images.cloudflareapps.com/NY8qGXYaS52rSDQBkHTi_2.png"
+	],
+	"tileImage": "//images.cloudflareapps.com/64ME1h6NTrKKBdc3deVl_tile.png",
+	"featuredAppImage": "",
+	"author": "Dmitriy Akulov, Brian Scaturro, Cloudflare Labs",
+	"tagline": "",
+	"website": "",
+	"sourceURL": "",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "#242463",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.2",
+	"infoVersion": "1.0.2",
+	"points": 800,
+	"supportEmail": "dak@prospectone.io",
+	"products": [
+		{
+			"id": "plus",
+			"title": "Plus",
+			"shortDescription": "Unlimited watermarking of images",
+			"longDescription": "",
+			"visible": true,
+			"price": 200,
+			"order": 0,
+			"plan": "image_watermarks_regular",
+			"feature": "apps.image_watermarks.regular.enabled",
+			"created": null
+		}
+	],
+	"categoryIds": [
+		"add-on",
+		"for-developers",
+		"ui-and-design"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "f1279b4c7912eb17ba469bcbdfe62b19",
+			"created": "2017-09-05T19:43:37.821516371Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "qq6vpxBYGjTK"
+	},
+	"created": "2017-09-05T19:42:21.892633Z",
+	"org": {
+		"id": "30c44bfcea5b7de6c21368f48f15863a",
+		"title": "",
+		"username": "30c44bfcea5b7de6c21368f48f15863a",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "ui-and-design",
+			"title": "UI & Design",
+			"description": "Apps that make your website more beautiful and user friendly.",
+			"icon": "",
+			"points": 10,
+			"visible": true,
+			"created": "2018-01-22T19:17:52.677513Z"
+		},
+		{
+			"id": "add-on",
+			"title": "Add-ons",
+			"description": "Drop-in components to add to your website.",
+			"icon": "//eager-app-images.imgix.net/HZ0uHPrDRp6uAeUTuEH2_add-ons.png",
+			"points": 100,
+			"visible": false,
+			"metadata": {
+				"icon": {
+					"filename": "add-ons.png",
+					"isWriteable": false,
+					"key": "HZ0uHPrDRp6uAeUTuEH2_add-ons.png",
+					"mimetype": "image/png",
+					"size": 1997,
+					"url": "https://www.filepicker.io/api/file/1GlH0WSQTZu0scJr7qY0"
+				}
+			},
+			"created": "2016-01-20T20:14:55.498829Z"
+		},
+		{
+			"id": "for-developers",
+			"title": "For Developers",
+			"description": "Apps made for web developers and designers.",
+			"icon": "//eager-app-images.imgix.net/M8OoB0Z4R7Cc0lRgQowe_for-developers.png",
+			"points": 10,
+			"visible": false,
+			"metadata": {
+				"icon": {
+					"filename": "for-developers.png",
+					"isWriteable": false,
+					"key": "M8OoB0Z4R7Cc0lRgQowe_for-developers.png",
+					"mimetype": "image/png",
+					"size": 2358,
+					"url": "https://www.filepicker.io/api/file/WTiHbDKRRuUItcUjsmmq"
+				}
+			},
+			"created": "2016-01-21T18:07:23.384148Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "mKZRW4xoYN4A",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./vendor/watermark.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"advanced": {
+							"order": 33,
+							"properties": {
+								"location": {
+									"default": "body",
+									"format": "selector",
+									"order": 0,
+									"title": "Location",
+									"type": "string"
+								},
+								"minHeight": {
+									"default": 300,
+									"description": "Only watermark images with a minimum pixel height of...",
+									"minimum": 0,
+									"order": 2,
+									"title": "Minimum height",
+									"type": "number"
+								},
+								"minWidth": {
+									"default": 300,
+									"description": "Only watermark images with a minimum pixel width of...",
+									"minimum": 0,
+									"order": 1,
+									"title": "Minimum width",
+									"type": "number"
+								}
+							},
+							"showIf": {
+								"showAdvanced": true
+							},
+							"title": "Advanced options",
+							"type": "object"
+						},
+						"opacity": {
+							"default": 50,
+							"format": "slider",
+							"maximum": 100,
+							"minimum": 0,
+							"order": 31,
+							"step": 1,
+							"title": "Watermark opacity",
+							"type": "number"
+						},
+						"position": {
+							"default": "center",
+							"enum": [
+								"upperLeft",
+								"upperRight",
+								"lowerLeft",
+								"lowerRight",
+								"center"
+							],
+							"enumNames": {
+								"center": "Center",
+								"lowerLeft": "Lower left corner",
+								"lowerRight": "Lower right corner",
+								"upperLeft": "Upper left corner",
+								"upperRight": "Upper right corner"
+							},
+							"order": 30,
+							"title": "Watermark position",
+							"type": "string"
+						},
+						"showAdvanced": {
+							"default": false,
+							"order": 32,
+							"title": "Show advanced options",
+							"type": "boolean"
+						},
+						"text": {
+							"default": "Sample text",
+							"order": 20,
+							"title": "Watermark text",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 22,
+							"title": "Text color",
+							"type": "string"
+						},
+						"textSize": {
+							"default": "48",
+							"enum": [
+								"24",
+								"48",
+								"96"
+							],
+							"enumNames": {
+								"24": "Small",
+								"48": "Medium",
+								"96": "Large"
+							},
+							"order": 21,
+							"title": "Text size",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"text",
+								"textSize",
+								"textColor",
+								"position",
+								"opacity"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/qq6vpxBYGjTK",
+			"metadata": {
+				"code": {
+					"sourceTag": "qq6vpxBYGjTK",
+					"uploadedOn": "2017-09-05T19:42:22.270798225Z"
+				}
+			},
+			"created": "2017-09-05T19:42:22.122315Z",
+			"proposedApp": {
+				"id": "mKZRW4xoYN4A",
+				"title": "Image Watermarks",
+				"shortDescription": "Add a watermark to identify your images.",
+				"longDescription": "# Add your custom mark to the images on your site.\n\nImage Watermarks helps users know where your content originates from.\n\n### A custom watermark for every occassion\n\nSet your watermark's text size, transparency, color, and position.",
+				"instructions": "",
+				"alias": "image-watermarks",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/A9E1yYaEQje2eGrwRLIV_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/rXmNzZ8XRtuB9FS4CUID_4.png",
+					"//images.cloudflareapps.com/LTYu4cnMSMWeE2VIp0ee_5.png",
+					"//images.cloudflareapps.com/29rSbPUwQsWmKp3JIrhd_1.png",
+					"//images.cloudflareapps.com/IkVLZV8nTSmdNwOya4rq_3.png",
+					"//images.cloudflareapps.com/NY8qGXYaS52rSDQBkHTi_2.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/64ME1h6NTrKKBdc3deVl_tile.png",
+				"featuredAppImage": "",
+				"author": "Dmitriy Akulov, Brian Scaturro, Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "dak@prospectone.io",
+				"products": [
+					{
+						"id": "plus",
+						"title": "Plus",
+						"shortDescription": "Unlimited watermarking of images",
+						"longDescription": "",
+						"visible": true,
+						"price": 200,
+						"order": 0,
+						"plan": "image_watermarks_regular",
+						"feature": "apps.image_watermarks.regular.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"add-on",
+					"design",
+					"for-developers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "qq6vpxBYGjTK"
+				},
+				"created": "2017-09-05T19:42:21.892633Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-09-05T19:43:37.806332987Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-09-05T19:44:07.250049794Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "mKZRW4xoYN4A",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./vendor/watermark.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"advanced": {
+							"order": 33,
+							"properties": {
+								"location": {
+									"default": "body",
+									"format": "selector",
+									"order": 0,
+									"title": "Location",
+									"type": "string"
+								},
+								"minHeight": {
+									"default": 300,
+									"description": "Only watermark images with a minimum pixel height of...",
+									"minimum": 0,
+									"order": 2,
+									"title": "Minimum height",
+									"type": "number"
+								},
+								"minWidth": {
+									"default": 300,
+									"description": "Only watermark images with a minimum pixel width of...",
+									"minimum": 0,
+									"order": 1,
+									"title": "Minimum width",
+									"type": "number"
+								}
+							},
+							"showIf": {
+								"showAdvanced": true
+							},
+							"title": "Advanced options",
+							"type": "object"
+						},
+						"opacity": {
+							"default": 50,
+							"format": "slider",
+							"maximum": 100,
+							"minimum": 0,
+							"order": 31,
+							"step": 1,
+							"title": "Watermark opacity",
+							"type": "number"
+						},
+						"position": {
+							"default": "center",
+							"enum": [
+								"upperLeft",
+								"upperRight",
+								"lowerLeft",
+								"lowerRight",
+								"center"
+							],
+							"enumNames": {
+								"center": "Center",
+								"lowerLeft": "Lower left corner",
+								"lowerRight": "Lower right corner",
+								"upperLeft": "Upper left corner",
+								"upperRight": "Upper right corner"
+							},
+							"order": 30,
+							"title": "Watermark position",
+							"type": "string"
+						},
+						"showAdvanced": {
+							"default": false,
+							"order": 32,
+							"title": "Show advanced options",
+							"type": "boolean"
+						},
+						"text": {
+							"default": "Sample text",
+							"order": 20,
+							"title": "Watermark text",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 22,
+							"title": "Text color",
+							"type": "string"
+						},
+						"textSize": {
+							"default": "48",
+							"enum": [
+								"24",
+								"48",
+								"96"
+							],
+							"enumNames": {
+								"24": "Small",
+								"48": "Medium",
+								"96": "Large"
+							},
+							"order": 21,
+							"title": "Text size",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"text",
+								"textSize",
+								"textColor",
+								"position",
+								"opacity"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0,
+				"upvotes": 0,
+				"downvotes": 2
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/qq6vpxBYGjTK",
+			"created": "2017-09-05T19:47:07.787369Z",
+			"proposedApp": {
+				"id": "mKZRW4xoYN4A",
+				"title": "Image Watermarks",
+				"shortDescription": "Add a watermark to identify your images.",
+				"longDescription": "## Add your custom mark to the images on your site.\n\nImage Watermarks helps users know where your content originates from.\n\n### A custom watermark for every occassion\n\nSet your watermark's text size, transparency, color, and position.",
+				"instructions": "",
+				"alias": "image-watermarks",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/A9E1yYaEQje2eGrwRLIV_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/rXmNzZ8XRtuB9FS4CUID_4.png",
+					"//images.cloudflareapps.com/LTYu4cnMSMWeE2VIp0ee_5.png",
+					"//images.cloudflareapps.com/29rSbPUwQsWmKp3JIrhd_1.png",
+					"//images.cloudflareapps.com/IkVLZV8nTSmdNwOya4rq_3.png",
+					"//images.cloudflareapps.com/NY8qGXYaS52rSDQBkHTi_2.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/64ME1h6NTrKKBdc3deVl_tile.png",
+				"featuredAppImage": "",
+				"author": "Dmitriy Akulov, Brian Scaturro, Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "dak@prospectone.io",
+				"products": [
+					{
+						"id": "plus",
+						"title": "Plus",
+						"shortDescription": "Unlimited watermarking of images",
+						"longDescription": "",
+						"visible": true,
+						"price": 200,
+						"order": 0,
+						"plan": "image_watermarks_regular",
+						"feature": "apps.image_watermarks.regular.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"add-on",
+					"design",
+					"for-developers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "qq6vpxBYGjTK"
+				},
+				"created": "2017-09-05T19:42:21.892633Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-09-05T19:47:14.299071044Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-09-05T20:46:05.959144675Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "mKZRW4xoYN4A",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./vendor/watermark.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"advanced": {
+							"order": 33,
+							"properties": {
+								"location": {
+									"default": "body",
+									"format": "selector",
+									"order": 0,
+									"title": "Location",
+									"type": "string"
+								},
+								"minHeight": {
+									"default": 300,
+									"description": "Only watermark images with a minimum pixel height of...",
+									"minimum": 0,
+									"order": 2,
+									"title": "Minimum height",
+									"type": "number"
+								},
+								"minWidth": {
+									"default": 300,
+									"description": "Only watermark images with a minimum pixel width of...",
+									"minimum": 0,
+									"order": 1,
+									"title": "Minimum width",
+									"type": "number"
+								}
+							},
+							"showIf": {
+								"showAdvanced": true
+							},
+							"title": "Advanced options",
+							"type": "object"
+						},
+						"opacity": {
+							"default": 50,
+							"format": "slider",
+							"maximum": 100,
+							"minimum": 0,
+							"order": 31,
+							"step": 1,
+							"title": "Watermark opacity",
+							"type": "number"
+						},
+						"position": {
+							"default": "center",
+							"enum": [
+								"upperLeft",
+								"upperRight",
+								"lowerLeft",
+								"lowerRight",
+								"center"
+							],
+							"enumNames": {
+								"center": "Center",
+								"lowerLeft": "Lower left corner",
+								"lowerRight": "Lower right corner",
+								"upperLeft": "Upper left corner",
+								"upperRight": "Upper right corner"
+							},
+							"order": 30,
+							"title": "Watermark position",
+							"type": "string"
+						},
+						"showAdvanced": {
+							"default": false,
+							"order": 32,
+							"title": "Show advanced options",
+							"type": "boolean"
+						},
+						"text": {
+							"default": "Sample text",
+							"order": 20,
+							"title": "Watermark text",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 22,
+							"title": "Text color",
+							"type": "string"
+						},
+						"textSize": {
+							"default": "48",
+							"enum": [
+								"24",
+								"48",
+								"96"
+							],
+							"enumNames": {
+								"24": "Small",
+								"48": "Medium",
+								"96": "Large"
+							},
+							"order": 21,
+							"title": "Text size",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"text",
+								"textSize",
+								"textColor",
+								"position",
+								"opacity"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.14,
+				"upvotes": 20,
+				"downvotes": 118
+			},
+			"releaseNotes": "Added to “UI & Design” category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/qq6vpxBYGjTK",
+			"created": "2018-01-22T21:07:23.764469Z",
+			"proposedApp": {
+				"id": "mKZRW4xoYN4A",
+				"title": "Image Watermarks",
+				"shortDescription": "Add a watermark to identify your images.",
+				"longDescription": "## Add your custom mark to the images on your site.\n\nImage Watermarks helps users know where your content originates from.\n\n### A custom watermark for every occassion\n\nSet your watermark's text size, transparency, color, and position.",
+				"instructions": "",
+				"alias": "image-watermarks",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/A9E1yYaEQje2eGrwRLIV_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/rXmNzZ8XRtuB9FS4CUID_4.png",
+					"//images.cloudflareapps.com/LTYu4cnMSMWeE2VIp0ee_5.png",
+					"//images.cloudflareapps.com/29rSbPUwQsWmKp3JIrhd_1.png",
+					"//images.cloudflareapps.com/IkVLZV8nTSmdNwOya4rq_3.png",
+					"//images.cloudflareapps.com/NY8qGXYaS52rSDQBkHTi_2.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/64ME1h6NTrKKBdc3deVl_tile.png",
+				"featuredAppImage": "",
+				"author": "Dmitriy Akulov, Brian Scaturro, Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "dak@prospectone.io",
+				"products": [
+					{
+						"id": "plus",
+						"title": "Plus",
+						"shortDescription": "Unlimited watermarking of images",
+						"longDescription": "",
+						"visible": true,
+						"price": 200,
+						"order": 0,
+						"plan": "image_watermarks_regular",
+						"feature": "apps.image_watermarks.regular.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"add-on",
+					"for-developers",
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "qq6vpxBYGjTK"
+				},
+				"created": "2017-09-05T19:42:21.892633Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-01-22T21:07:24.052993026Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-01-22T21:07:39.515247211Z"
+			}
+		}
+	]
+}

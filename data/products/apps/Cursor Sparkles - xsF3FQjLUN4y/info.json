@@ -1,0 +1,573 @@
+{
+	"id": "xsF3FQjLUN4y",
+	"title": "Cursor Sparkles",
+	"shortDescription": "Add sparkles to your cursor.",
+	"longDescription": "Add sparkles to your cursor. <a href=\"https://www.youtube.com/watch?v=0cyjrI7JhxM\" class=\"more\">Watch the effect</a>",
+	"instructions": "",
+	"alias": "cursor-sparkles",
+	"orgId": "564ece807991e89395d813d4153ab656",
+	"icon": "//images.cloudflareapps.com/xZGH2duQ7uYF1Y1iNuVr_logo.png",
+	"screenshots": [
+		"//images.cloudflareapps.com/N0346OLjR3yieCRnXmMf_sparkle.png"
+	],
+	"tileImage": "",
+	"featuredAppImage": "",
+	"author": "John Fawcett",
+	"tagline": "",
+	"website": "",
+	"sourceURL": "",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.1.1",
+	"infoVersion": "1.1.1",
+	"points": -1,
+	"supportEmail": "jrf0110@gmail.com",
+	"products": [],
+	"categoryIds": [
+		"humor",
+		"ui-and-design"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "564ece807991e89395d813d4153ab656",
+			"created": "2017-08-05T02:40:06.8748327Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "hRxluMOdPyUF"
+	},
+	"created": "2017-08-05T02:19:21.199227Z",
+	"org": {
+		"id": "564ece807991e89395d813d4153ab656",
+		"title": "",
+		"username": "564ece807991e89395d813d4153ab656",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "ui-and-design",
+			"title": "UI & Design",
+			"description": "Apps that make your website more beautiful and user friendly.",
+			"icon": "",
+			"points": 10,
+			"visible": true,
+			"created": "2018-01-22T19:17:52.677513Z"
+		},
+		{
+			"id": "humor",
+			"title": "Humor",
+			"description": "Apps that add fun widgets and Easter eggs to your site.",
+			"icon": "",
+			"points": 0,
+			"visible": false,
+			"created": "2017-06-15T00:08:28.364393Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "xsF3FQjLUN4y",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./cf-app-sparkle.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"numSparkles": {
+							"default": 20,
+							"description": "How many objects you should have at any given time",
+							"format": "slider",
+							"maximum": 500,
+							"minimum": 1,
+							"step": 1,
+							"title": "Number of Objects",
+							"type": "number"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/hRxluMOdPyUF",
+			"metadata": {
+				"code": {
+					"sourceTag": "hRxluMOdPyUF",
+					"uploadedOn": "2017-08-05T02:19:22.483859493Z"
+				}
+			},
+			"created": "2017-08-05T02:19:22.056753Z",
+			"proposedApp": {
+				"id": "xsF3FQjLUN4y",
+				"title": "Cursor Sparkles",
+				"shortDescription": "Add sparkles to your cursor",
+				"longDescription": "Sparkleify your cursor",
+				"instructions": "",
+				"alias": "",
+				"orgId": "564ece807991e89395d813d4153ab656",
+				"icon": "//images.cloudflareapps.com/xZGH2duQ7uYF1Y1iNuVr_logo.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/3CsdnYWtTCmFvgh219i4_sparkles-screen-1.jpg"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "John Fawcett",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "jrf0110@gmail.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "hRxluMOdPyUF"
+				},
+				"created": "2017-08-05T02:19:21.199227Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "564ece807991e89395d813d4153ab656",
+				"requestedAt": "2017-08-05T02:40:06.857443716Z",
+				"canceledByUserId": "564ece807991e89395d813d4153ab656",
+				"canceledAt": "2017-08-05T02:57:22.82817703Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "xsF3FQjLUN4y",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./cf-app-sparkle.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"numSparkles": {
+							"default": 20,
+							"description": "How many objects you should have at any given time",
+							"format": "slider",
+							"maximum": 500,
+							"minimum": 1,
+							"step": 1,
+							"title": "Number of Objects",
+							"type": "number"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/hRxluMOdPyUF",
+			"created": "2017-08-05T02:57:09.11179Z",
+			"proposedApp": {
+				"id": "xsF3FQjLUN4y",
+				"title": "Cursor Sparkles",
+				"shortDescription": "Add sparkles to your cursor",
+				"longDescription": "Sparkleify your cursor\nhttps://www.youtube.com/watch?v=0cyjrI7JhxM",
+				"instructions": "",
+				"alias": "",
+				"orgId": "564ece807991e89395d813d4153ab656",
+				"icon": "//images.cloudflareapps.com/xZGH2duQ7uYF1Y1iNuVr_logo.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/3CsdnYWtTCmFvgh219i4_sparkles-screen-1.jpg"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "John Fawcett",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "jrf0110@gmail.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "hRxluMOdPyUF"
+				},
+				"created": "2017-08-05T02:19:21.199227Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "564ece807991e89395d813d4153ab656",
+				"requestedAt": "2017-08-05T02:57:22.834184434Z",
+				"canceledByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"canceledAt": "2017-08-08T10:11:30.367488973Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "xsF3FQjLUN4y",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./cf-app-sparkle.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"numSparkles": {
+							"default": 20,
+							"description": "How many particles should follow the cursor?",
+							"format": "slider",
+							"maximum": 500,
+							"minimum": 1,
+							"step": 1,
+							"title": "Particle Density",
+							"type": "number"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/ayun3y8YwvpX",
+			"metadata": {
+				"code": {
+					"sourceTag": "ayun3y8YwvpX",
+					"uploadedOn": "2017-08-08T10:11:28.952528622Z"
+				}
+			},
+			"created": "2017-08-08T10:10:55.825691Z",
+			"proposedApp": {
+				"id": "xsF3FQjLUN4y",
+				"title": "Cursor Sparkles",
+				"shortDescription": "Add sparkles to your cursor.",
+				"longDescription": "Add sparkles to your cursor. <a href=\"https://www.youtube.com/watch?v=0cyjrI7JhxM\" class=\"more\">Watch the effect</a>",
+				"instructions": "",
+				"alias": "cursor-sparkles",
+				"orgId": "564ece807991e89395d813d4153ab656",
+				"icon": "//images.cloudflareapps.com/xZGH2duQ7uYF1Y1iNuVr_logo.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/N0346OLjR3yieCRnXmMf_sparkle.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "John Fawcett",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "jrf0110@gmail.com",
+				"products": [],
+				"categoryIds": [
+					"humor"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "hRxluMOdPyUF"
+				},
+				"created": "2017-08-05T02:19:21.199227Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-08-08T10:11:30.377802018Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-08-08T10:11:54.065859676Z"
+			}
+		},
+		{
+			"tag": "1.1.0",
+			"appId": "xsF3FQjLUN4y",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./cf-app-sparkle.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"numSparkles": {
+							"default": 20,
+							"description": "How many particles should follow the cursor?",
+							"format": "slider",
+							"maximum": 100,
+							"minimum": 1,
+							"step": 1,
+							"title": "Particle Density",
+							"type": "number"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.5,
+				"upvotes": 2,
+				"downvotes": 2
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/gjkMmqb7iCJO",
+			"metadata": {
+				"code": {
+					"sourceTag": "gjkMmqb7iCJO",
+					"uploadedOn": "2017-08-08T22:00:45.582384365Z"
+				}
+			},
+			"created": "2017-08-08T22:00:45.363587Z",
+			"proposedApp": {
+				"id": "xsF3FQjLUN4y",
+				"title": "Cursor Sparkles",
+				"shortDescription": "Add sparkles to your cursor.",
+				"longDescription": "Add sparkles to your cursor. <a href=\"https://www.youtube.com/watch?v=0cyjrI7JhxM\" class=\"more\">Watch the effect</a>",
+				"instructions": "",
+				"alias": "cursor-sparkles",
+				"orgId": "564ece807991e89395d813d4153ab656",
+				"icon": "//images.cloudflareapps.com/xZGH2duQ7uYF1Y1iNuVr_logo.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/N0346OLjR3yieCRnXmMf_sparkle.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "John Fawcett",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "jrf0110@gmail.com",
+				"products": [],
+				"categoryIds": [
+					"humor"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "hRxluMOdPyUF"
+				},
+				"created": "2017-08-05T02:19:21.199227Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-08-08T22:00:46.243062882Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-08-08T22:01:00.086286738Z"
+			}
+		},
+		{
+			"tag": "1.1.1",
+			"appId": "xsF3FQjLUN4y",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./cf-app-sparkle.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"numSparkles": {
+							"default": 20,
+							"description": "How many particles should follow the cursor?",
+							"format": "slider",
+							"maximum": 100,
+							"minimum": 1,
+							"step": 1,
+							"title": "Particle Density",
+							"type": "number"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.75,
+				"upvotes": 24,
+				"downvotes": 8
+			},
+			"releaseNotes": "Added to “UI & Design” category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/gjkMmqb7iCJO",
+			"created": "2018-01-23T19:40:46.949826Z",
+			"proposedApp": {
+				"id": "xsF3FQjLUN4y",
+				"title": "Cursor Sparkles",
+				"shortDescription": "Add sparkles to your cursor.",
+				"longDescription": "Add sparkles to your cursor. <a href=\"https://www.youtube.com/watch?v=0cyjrI7JhxM\" class=\"more\">Watch the effect</a>",
+				"instructions": "",
+				"alias": "cursor-sparkles",
+				"orgId": "564ece807991e89395d813d4153ab656",
+				"icon": "//images.cloudflareapps.com/xZGH2duQ7uYF1Y1iNuVr_logo.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/N0346OLjR3yieCRnXmMf_sparkle.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "John Fawcett",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "jrf0110@gmail.com",
+				"products": [],
+				"categoryIds": [
+					"humor",
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "hRxluMOdPyUF"
+				},
+				"created": "2017-08-05T02:19:21.199227Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-01-23T19:40:47.329425608Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-01-23T19:40:51.903046856Z"
+			}
+		}
+	]
+}

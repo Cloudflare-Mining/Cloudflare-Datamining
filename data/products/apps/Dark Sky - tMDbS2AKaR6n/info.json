@@ -1,0 +1,920 @@
+{
+	"id": "tMDbS2AKaR6n",
+	"title": "Dark Sky",
+	"shortDescription": "Display local weather information on your site.",
+	"longDescription": "Add a [Dark Sky](https://darksky.net) forecast to your website so everyone knows the weather!\n\nWhen you install Dark Sky, your visitors will be able to see the current weather, as well as the forecast for the next week. \nThe weather adds a powerful local-touch to your website, encouraging visitors to recognize you as member of their local community.",
+	"instructions": "",
+	"alias": "dark-sky",
+	"orgId": "2684c89451b6b86b453405beb4662f46",
+	"icon": "//images.cloudflareapps.com/RWT2ETPRQVuhEyv2SbTt_icon.png",
+	"screenshots": [
+		"//images.cloudflareapps.com/5f0onR7kQzSfln7d4kFC_screenshot-1.png",
+		"//images.cloudflareapps.com/ECpP0eaiTGWsqfbEx77X_screenshot-2.png",
+		"//images.cloudflareapps.com/LHvRFTfQhCPQ4vgZl9BQ_screenshot-3.png"
+	],
+	"tileImage": "//images.cloudflareapps.com/ho07ojwXRm2BTMVDfund_tile.png",
+	"featuredAppImage": "",
+	"author": "The Dark Sky Company, LLC.",
+	"tagline": "",
+	"website": "https://darksky.net",
+	"sourceURL": "",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "#000000",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "2.0.4",
+	"infoVersion": "2.0.4",
+	"points": 2,
+	"supportEmail": "support@cloudflare.com",
+	"products": [],
+	"categoryIds": [
+		"add-on",
+		"by-cloudflare",
+		"widgets-and-plugins"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "f1279b4c7912eb17ba469bcbdfe62b19",
+			"created": "2017-07-06T08:54:26.109947625Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "h-ZTyBR6XhTU"
+	},
+	"created": "2017-06-04T08:02:51.67783Z",
+	"org": {
+		"id": "2684c89451b6b86b453405beb4662f46",
+		"title": "",
+		"username": "2684c89451b6b86b453405beb4662f46",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "widgets-and-plugins",
+			"title": "Widgets & Plugins",
+			"description": "Apps that add functionality and services to your website.",
+			"icon": "",
+			"points": 10,
+			"visible": true,
+			"metadata": {
+				"promoted": false
+			},
+			"created": "2018-01-22T19:19:00.135755Z"
+		},
+		{
+			"id": "by-cloudflare",
+			"title": "Cloudflare Labs",
+			"description": "Apps made by Cloudflare.",
+			"icon": "//eager-app-images.imgix.net/SqOCfuxiSImSVf2eqQuo_made-by-eager.png",
+			"points": 110,
+			"visible": false,
+			"metadata": {
+				"icon": {
+					"filename": "made-by-eager.png",
+					"isWriteable": false,
+					"key": "SqOCfuxiSImSVf2eqQuo_made-by-eager.png",
+					"mimetype": "image/png",
+					"size": 5743,
+					"url": "https://www.filepicker.io/api/file/aKLQraDzQbSHq7SHN3s6"
+				}
+			},
+			"created": "2016-01-21T18:06:58.822625Z"
+		},
+		{
+			"id": "add-on",
+			"title": "Add-ons",
+			"description": "Drop-in components to add to your website.",
+			"icon": "//eager-app-images.imgix.net/HZ0uHPrDRp6uAeUTuEH2_add-ons.png",
+			"points": 100,
+			"visible": false,
+			"metadata": {
+				"icon": {
+					"filename": "add-ons.png",
+					"isWriteable": false,
+					"key": "HZ0uHPrDRp6uAeUTuEH2_add-ons.png",
+					"mimetype": "image/png",
+					"size": 1997,
+					"url": "https://www.filepicker.io/api/file/1GlH0WSQTZu0scJr7qY0"
+				}
+			},
+			"created": "2016-01-20T20:14:55.498829Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "v2.0.0",
+			"appId": "tMDbS2AKaR6n",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"address": {
+							"default": "",
+							"description": "What's the address for the weather forecast?",
+							"order": 1,
+							"placeholder": "San Francisco, CA 94107",
+							"title": "Forecast Address",
+							"type": "string"
+						},
+						"colors": {
+							"order": 2,
+							"properties": {
+								"backgroundColor": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 2,
+									"showIf": {
+										"colors.enableBackgroundColor": true
+									},
+									"title": "Background",
+									"type": "string"
+								},
+								"enableBackgroundColor": {
+									"order": 1,
+									"title": "Show a background color behind the forecast",
+									"type": "boolean"
+								},
+								"tempColor": {
+									"default": "#000000",
+									"format": "color",
+									"order": 0,
+									"title": "Temperature bars",
+									"type": "string"
+								}
+							},
+							"title": "Colors",
+							"type": "object"
+						},
+						"element": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where do you want the forecast to appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Forecast location",
+							"type": "object"
+						},
+						"units": {
+							"default": "us",
+							"description": "What units should be used for temperature and wind speed?",
+							"enum": [
+								"us",
+								"uk",
+								"si",
+								"ca"
+							],
+							"enumNames": {
+								"ca": "Celsius and km/h",
+								"si": "Celsius and m/s",
+								"uk": "Celsius and mph",
+								"us": "Fahrenheit and mph"
+							},
+							"order": 3,
+							"title": "Units",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/h-ZTyBR6XhTU",
+			"metadata": {
+				"code": {
+					"sourceTag": "h-ZTyBR6XhTU",
+					"uploadedOn": "2017-06-04T08:02:52.426310621Z"
+				}
+			},
+			"created": "2017-06-04T08:02:52.091776Z",
+			"proposedApp": {
+				"id": "tMDbS2AKaR6n",
+				"title": "Dark Sky",
+				"shortDescription": "Display local weather information on your website.",
+				"longDescription": "Add a [Dark Sky](https://darksky.net) forecast to your website so everyone knows the weather!\n\nWhen you install Dark Sky, your visitors will be able to see the current weather, as well as the forecast for the next week. \nThe weather adds a powerful local-touch to your website, encouraging visitors to recognize you as member of their local community.",
+				"instructions": "",
+				"alias": "dark-sky",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/RWT2ETPRQVuhEyv2SbTt_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/5f0onR7kQzSfln7d4kFC_screenshot-1.png",
+					"//images.cloudflareapps.com/ECpP0eaiTGWsqfbEx77X_screenshot-2.png",
+					"//images.cloudflareapps.com/LHvRFTfQhCPQ4vgZl9BQ_screenshot-3.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/ho07ojwXRm2BTMVDfund_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"by-cloudflare"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "h-ZTyBR6XhTU"
+				},
+				"created": "2017-06-04T08:02:51.67783Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-06-04T08:14:33.246413084Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-06-04T08:15:48.532657296Z"
+			}
+		},
+		{
+			"tag": "2.0.1",
+			"appId": "tMDbS2AKaR6n",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"address": {
+							"default": "",
+							"description": "What's the address for the weather forecast?",
+							"order": 1,
+							"placeholder": "San Francisco, CA 94107",
+							"title": "Forecast Address",
+							"type": "string"
+						},
+						"colors": {
+							"order": 2,
+							"properties": {
+								"backgroundColor": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 2,
+									"showIf": {
+										"colors.enableBackgroundColor": true
+									},
+									"title": "Background",
+									"type": "string"
+								},
+								"enableBackgroundColor": {
+									"order": 1,
+									"title": "Show a background color behind the forecast",
+									"type": "boolean"
+								},
+								"tempColor": {
+									"default": "#000000",
+									"format": "color",
+									"order": 0,
+									"title": "Temperature bars",
+									"type": "string"
+								}
+							},
+							"title": "Colors",
+							"type": "object"
+						},
+						"element": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where do you want the forecast to appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Forecast location",
+							"type": "object"
+						},
+						"units": {
+							"default": "us",
+							"description": "What units should be used for temperature and wind speed?",
+							"enum": [
+								"us",
+								"uk",
+								"si",
+								"ca"
+							],
+							"enumNames": {
+								"ca": "Celsius and km/h",
+								"si": "Celsius and m/s",
+								"uk": "Celsius and mph",
+								"us": "Fahrenheit and mph"
+							},
+							"order": 3,
+							"title": "Units",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/h-ZTyBR6XhTU",
+			"created": "2017-06-14T03:52:48.477143Z",
+			"proposedApp": {
+				"id": "tMDbS2AKaR6n",
+				"title": "Dark Sky",
+				"shortDescription": "Display local weather information on your site.",
+				"longDescription": "Add a [Dark Sky](https://darksky.net) forecast to your website so everyone knows the weather!\n\nWhen you install Dark Sky, your visitors will be able to see the current weather, as well as the forecast for the next week. \nThe weather adds a powerful local-touch to your website, encouraging visitors to recognize you as member of their local community.",
+				"instructions": "",
+				"alias": "dark-sky",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/RWT2ETPRQVuhEyv2SbTt_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/5f0onR7kQzSfln7d4kFC_screenshot-1.png",
+					"//images.cloudflareapps.com/ECpP0eaiTGWsqfbEx77X_screenshot-2.png",
+					"//images.cloudflareapps.com/LHvRFTfQhCPQ4vgZl9BQ_screenshot-3.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/ho07ojwXRm2BTMVDfund_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"by-cloudflare"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "h-ZTyBR6XhTU"
+				},
+				"created": "2017-06-04T08:02:51.67783Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-06-14T03:52:48.628695343Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-06-14T04:14:46.295305653Z"
+			}
+		},
+		{
+			"tag": "2.0.2",
+			"appId": "tMDbS2AKaR6n",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"address": {
+							"default": "",
+							"description": "What's the address for the weather forecast?",
+							"order": 1,
+							"placeholder": "San Francisco, CA 94107",
+							"title": "Forecast Address",
+							"type": "string"
+						},
+						"colors": {
+							"order": 2,
+							"properties": {
+								"backgroundColor": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 2,
+									"showIf": {
+										"colors.enableBackgroundColor": true
+									},
+									"title": "Background",
+									"type": "string"
+								},
+								"enableBackgroundColor": {
+									"order": 1,
+									"title": "Show a background color behind the forecast",
+									"type": "boolean"
+								},
+								"tempColor": {
+									"default": "#000000",
+									"format": "color",
+									"order": 0,
+									"title": "Temperature bars",
+									"type": "string"
+								}
+							},
+							"title": "Colors",
+							"type": "object"
+						},
+						"element": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where do you want the forecast to appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Forecast location",
+							"type": "object"
+						},
+						"units": {
+							"default": "us",
+							"description": "What units should be used for temperature and wind speed?",
+							"enum": [
+								"us",
+								"uk",
+								"si",
+								"ca"
+							],
+							"enumNames": {
+								"ca": "Celsius and km/h",
+								"si": "Celsius and m/s",
+								"uk": "Celsius and mph",
+								"us": "Fahrenheit and mph"
+							},
+							"order": 3,
+							"title": "Units",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/h-ZTyBR6XhTU",
+			"created": "2017-06-16T20:27:44.179176Z",
+			"proposedApp": {
+				"id": "tMDbS2AKaR6n",
+				"title": "Dark Sky",
+				"shortDescription": "Display local weather information on your site.",
+				"longDescription": "Add a [Dark Sky](https://darksky.net) forecast to your website so everyone knows the weather!\n\nWhen you install Dark Sky, your visitors will be able to see the current weather, as well as the forecast for the next week. \nThe weather adds a powerful local-touch to your website, encouraging visitors to recognize you as member of their local community.",
+				"instructions": "",
+				"alias": "dark-sky",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/RWT2ETPRQVuhEyv2SbTt_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/5f0onR7kQzSfln7d4kFC_screenshot-1.png",
+					"//images.cloudflareapps.com/ECpP0eaiTGWsqfbEx77X_screenshot-2.png",
+					"//images.cloudflareapps.com/LHvRFTfQhCPQ4vgZl9BQ_screenshot-3.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/ho07ojwXRm2BTMVDfund_tile.png",
+				"featuredAppImage": "",
+				"author": "The Dark Sky Company, LLC.",
+				"tagline": "",
+				"website": "https://darksky.net",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"by-cloudflare"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "h-ZTyBR6XhTU"
+				},
+				"created": "2017-06-04T08:02:51.67783Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-06-16T20:27:44.516979327Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-06-18T20:29:27.140421675Z"
+			}
+		},
+		{
+			"tag": "2.0.3",
+			"appId": "tMDbS2AKaR6n",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"address": {
+							"default": "",
+							"description": "What's the address for the weather forecast?",
+							"order": 1,
+							"placeholder": "San Francisco, CA 94107",
+							"title": "Forecast Address",
+							"type": "string"
+						},
+						"colors": {
+							"order": 2,
+							"properties": {
+								"backgroundColor": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 2,
+									"showIf": {
+										"colors.enableBackgroundColor": true
+									},
+									"title": "Background",
+									"type": "string"
+								},
+								"enableBackgroundColor": {
+									"order": 1,
+									"title": "Show a background color behind the forecast",
+									"type": "boolean"
+								},
+								"tempColor": {
+									"default": "#000000",
+									"format": "color",
+									"order": 0,
+									"title": "Temperature bars",
+									"type": "string"
+								}
+							},
+							"title": "Colors",
+							"type": "object"
+						},
+						"element": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where do you want the forecast to appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Forecast location",
+							"type": "object"
+						},
+						"units": {
+							"default": "us",
+							"description": "What units should be used for temperature and wind speed?",
+							"enum": [
+								"us",
+								"uk",
+								"si",
+								"ca"
+							],
+							"enumNames": {
+								"ca": "Celsius and km/h",
+								"si": "Celsius and m/s",
+								"uk": "Celsius and mph",
+								"us": "Fahrenheit and mph"
+							},
+							"order": 3,
+							"title": "Units",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0,
+				"upvotes": 0,
+				"downvotes": 1
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/h-ZTyBR6XhTU",
+			"created": "2017-07-06T08:54:25.855968Z",
+			"proposedApp": {
+				"id": "tMDbS2AKaR6n",
+				"title": "Dark Sky",
+				"shortDescription": "Display local weather information on your site.",
+				"longDescription": "Add a [Dark Sky](https://darksky.net) forecast to your website so everyone knows the weather!\n\nWhen you install Dark Sky, your visitors will be able to see the current weather, as well as the forecast for the next week. \nThe weather adds a powerful local-touch to your website, encouraging visitors to recognize you as member of their local community.",
+				"instructions": "",
+				"alias": "dark-sky",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/RWT2ETPRQVuhEyv2SbTt_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/5f0onR7kQzSfln7d4kFC_screenshot-1.png",
+					"//images.cloudflareapps.com/ECpP0eaiTGWsqfbEx77X_screenshot-2.png",
+					"//images.cloudflareapps.com/LHvRFTfQhCPQ4vgZl9BQ_screenshot-3.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/ho07ojwXRm2BTMVDfund_tile.png",
+				"featuredAppImage": "",
+				"author": "The Dark Sky Company, LLC.",
+				"tagline": "",
+				"website": "https://darksky.net",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"by-cloudflare"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "h-ZTyBR6XhTU"
+				},
+				"created": "2017-06-04T08:02:51.67783Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-07-06T08:54:26.107190907Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-07-06T08:56:51.530389044Z"
+			}
+		},
+		{
+			"tag": "2.0.4",
+			"appId": "tMDbS2AKaR6n",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"address": {
+							"default": "",
+							"description": "What's the address for the weather forecast?",
+							"order": 1,
+							"placeholder": "San Francisco, CA 94107",
+							"title": "Forecast Address",
+							"type": "string"
+						},
+						"colors": {
+							"order": 2,
+							"properties": {
+								"backgroundColor": {
+									"default": "#ffffff",
+									"format": "color",
+									"order": 2,
+									"showIf": {
+										"colors.enableBackgroundColor": true
+									},
+									"title": "Background",
+									"type": "string"
+								},
+								"enableBackgroundColor": {
+									"order": 1,
+									"title": "Show a background color behind the forecast",
+									"type": "boolean"
+								},
+								"tempColor": {
+									"default": "#000000",
+									"format": "color",
+									"order": 0,
+									"title": "Temperature bars",
+									"type": "string"
+								}
+							},
+							"title": "Colors",
+							"type": "object"
+						},
+						"element": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where do you want the forecast to appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Forecast location",
+							"type": "object"
+						},
+						"units": {
+							"default": "us",
+							"description": "What units should be used for temperature and wind speed?",
+							"enum": [
+								"us",
+								"uk",
+								"si",
+								"ca"
+							],
+							"enumNames": {
+								"ca": "Celsius and km/h",
+								"si": "Celsius and m/s",
+								"uk": "Celsius and mph",
+								"us": "Fahrenheit and mph"
+							},
+							"order": 3,
+							"title": "Units",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.35,
+				"upvotes": 15,
+				"downvotes": 28
+			},
+			"releaseNotes": "Added to “Widgets & Plugins” category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/h-ZTyBR6XhTU",
+			"created": "2018-01-23T20:33:30.868749Z",
+			"proposedApp": {
+				"id": "tMDbS2AKaR6n",
+				"title": "Dark Sky",
+				"shortDescription": "Display local weather information on your site.",
+				"longDescription": "Add a [Dark Sky](https://darksky.net) forecast to your website so everyone knows the weather!\n\nWhen you install Dark Sky, your visitors will be able to see the current weather, as well as the forecast for the next week. \nThe weather adds a powerful local-touch to your website, encouraging visitors to recognize you as member of their local community.",
+				"instructions": "",
+				"alias": "dark-sky",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/RWT2ETPRQVuhEyv2SbTt_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/5f0onR7kQzSfln7d4kFC_screenshot-1.png",
+					"//images.cloudflareapps.com/ECpP0eaiTGWsqfbEx77X_screenshot-2.png",
+					"//images.cloudflareapps.com/LHvRFTfQhCPQ4vgZl9BQ_screenshot-3.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/ho07ojwXRm2BTMVDfund_tile.png",
+				"featuredAppImage": "",
+				"author": "The Dark Sky Company, LLC.",
+				"tagline": "",
+				"website": "https://darksky.net",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"by-cloudflare",
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "h-ZTyBR6XhTU"
+				},
+				"created": "2017-06-04T08:02:51.67783Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-01-23T20:33:31.142691638Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-01-23T20:33:39.080410237Z"
+			}
+		}
+	]
+}

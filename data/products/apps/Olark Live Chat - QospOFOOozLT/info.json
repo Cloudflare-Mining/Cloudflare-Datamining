@@ -1,0 +1,975 @@
+{
+	"id": "QospOFOOozLT",
+	"title": "Olark Live Chat",
+	"shortDescription": "Live Chat for sales and customer support.",
+	"longDescription": "Add live chat capabilities to your site in **just a few minutes**, with the world’s simplest\nlive chat software, Olark!\n\n## Why?\n\nAdding live chat to your site can help you to:\n\n* Increase sales\n* Provide support\n* Acquire Leads\n\n## About Olark\n\nOlark is one of the most well-known live chat companies out there. They have an easy to use, battle tested, beautiful software. Plus, their support is out of this world. Prepare to be impressed :)\n\n## Be closer to your customers! Stand out! **Start today!**",
+	"instructions": "",
+	"alias": "olark-mdelcid",
+	"orgId": "e42fc0f4122d1590a772d96c83b955f1",
+	"icon": "//images.cloudflareapps.com/WMjIh2oTRB2lxqlOrpd4_image(1).png",
+	"screenshots": [
+		"//images.cloudflareapps.com/ZCOCYOEMSXR977BzEIcm_Apps-Olark-06.png",
+		"//images.cloudflareapps.com/7bMeuFPHQGKxBkbLKxfR_60386.png"
+	],
+	"tileImage": "//images.cloudflareapps.com/ZWXw2DbSzj7qlkxQ6NVA_baby.png",
+	"featuredAppImage": "",
+	"author": "Mardo Alberto Del Cid Portillo",
+	"tagline": "",
+	"website": "https://www.olark.com/",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://www.olark.com/tos",
+	"privacyPolicyURL": "https://www.olark.com/privacy-policy",
+	"color": "#66c3cb",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.1.8",
+	"infoVersion": "1.1.8",
+	"points": 300,
+	"supportEmail": "m@mdelcid.com",
+	"products": [],
+	"categoryIds": [
+		"social-and-communication"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "e42fc0f4122d1590a772d96c83b955f1",
+			"created": "2018-01-25T03:07:10.820354857Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "qrgVoyjXOP_Y"
+	},
+	"created": "2018-01-25T03:03:35.0298Z",
+	"org": {
+		"id": "e42fc0f4122d1590a772d96c83b955f1",
+		"title": "",
+		"username": "e42fc0f4122d1590a772d96c83b955f1",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "social-and-communication",
+			"title": "Social & Communication",
+			"description": "Apps that make it easier to communicate with your customers.",
+			"icon": "",
+			"points": 80,
+			"visible": true,
+			"created": "2018-01-22T19:17:10.030031Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "QospOFOOozLT",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"get-started": {
+							"helpvalue": "<h2>Quick start:</h2><br><p>  <b>Step 1:</b>  <a href='http://special.olark.com/l6SCg' target='_blank'>Create an Olark account (click here)</a></p><p> * By using the link above you are helping this app &amp; its support to remain FREE.</p><p>  <b>Step 2:</b>  <a href='https://www.olark.com/settings/code' target='_blank'>Go to Olark's Installation section (click here)</a> &amp; look for the 'Site ID' in the right-hand side of the page.</p><p>  <b>Step 3:</b>  Input the Site ID in the field below, save &amp; enjoy!.</p>",
+							"order": 0,
+							"type": "help"
+						},
+						"siteID": {
+							"order": 1,
+							"title": "Site ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/qrgVoyjXOP_Y",
+			"metadata": {
+				"code": {
+					"sourceTag": "qrgVoyjXOP_Y",
+					"uploadedOn": "2018-01-25T03:03:36.274610192Z"
+				}
+			},
+			"created": "2018-01-25T03:03:35.80348Z",
+			"proposedApp": {
+				"id": "QospOFOOozLT",
+				"title": "Olark",
+				"shortDescription": "Live Chat Software for Sales and Customer Support",
+				"longDescription": "Easy to use CloudFlare app to add Olark to your site!",
+				"instructions": "",
+				"alias": "olark",
+				"orgId": "e42fc0f4122d1590a772d96c83b955f1",
+				"icon": "//images.cloudflareapps.com/2Udqi7XtRyO5L8IUAabB_olark-logo.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/ZCOCYOEMSXR977BzEIcm_Apps-Olark-06.png",
+					"//images.cloudflareapps.com/7bMeuFPHQGKxBkbLKxfR_60386.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Mardo Alberto Del Cid Portillo",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "m@mdelcid.com",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication",
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "qrgVoyjXOP_Y"
+				},
+				"created": "2018-01-25T03:03:35.0298Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "e42fc0f4122d1590a772d96c83b955f1",
+				"requestedAt": "2018-01-25T03:07:10.809773453Z",
+				"canceledByUserId": "e42fc0f4122d1590a772d96c83b955f1",
+				"canceledAt": "2018-01-25T12:14:39.990988505Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.1.0",
+			"appId": "QospOFOOozLT",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"get-started": {
+							"helpvalue": "<h2>Quick start:</h2><br><p>  <b>Step 1:</b>  <a href='http://special.olark.com/l6SCg' target='_blank'>Create an Olark account (click here)</a></p><p> * By using the link above you are helping this app &amp; its support to remain FREE.</p><p>  <b>Step 2:</b>  <a href='https://www.olark.com/settings/code' target='_blank'>Go to Olark's Installation section (click here)</a> &amp; look for the 'Site ID' in the right-hand side of the page.</p><p>  <b>Step 3:</b>  Input the Site ID in the field below, save &amp; enjoy!.</p>",
+							"order": 0,
+							"type": "help"
+						},
+						"siteId": {
+							"order": 1,
+							"required": true,
+							"title": "Site ID",
+							"type": "string"
+						}
+					}
+				}
+			},
+			"releaseNotes": "Bug fixes:\n- Fixed hard-wired site ID\n- Site ID is now required",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/RwcyG_WzWRZt",
+			"metadata": {
+				"code": {
+					"sourceTag": "RwcyG_WzWRZt",
+					"uploadedOn": "2018-01-25T12:14:15.426416634Z"
+				}
+			},
+			"created": "2018-01-25T12:14:15.090317Z",
+			"proposedApp": {
+				"id": "QospOFOOozLT",
+				"title": "Olark",
+				"shortDescription": "Live Chat Software for Sales and Customer Support",
+				"longDescription": "Easy to use CloudFlare app to add Olark to your site!",
+				"instructions": "",
+				"alias": "olark",
+				"orgId": "e42fc0f4122d1590a772d96c83b955f1",
+				"icon": "//images.cloudflareapps.com/2Udqi7XtRyO5L8IUAabB_olark-logo.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/ZCOCYOEMSXR977BzEIcm_Apps-Olark-06.png",
+					"//images.cloudflareapps.com/7bMeuFPHQGKxBkbLKxfR_60386.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Mardo Alberto Del Cid Portillo",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "m@mdelcid.com",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication",
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "qrgVoyjXOP_Y"
+				},
+				"created": "2018-01-25T03:03:35.0298Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "e42fc0f4122d1590a772d96c83b955f1",
+				"requestedAt": "2018-01-25T12:14:40.006653888Z",
+				"canceledByUserId": "e42fc0f4122d1590a772d96c83b955f1",
+				"canceledAt": "2018-01-25T12:19:48.62354565Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.1.1",
+			"appId": "QospOFOOozLT",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"get-started": {
+							"helpvalue": "<h2>Quick start:</h2><br><p>  <b>Step 1:</b>  <a href='http://special.olark.com/l6SCg' target='_blank'>Create an Olark account (click here)</a></p><p> * By using the link above you are helping this app &amp; its support to remain FREE.</p><p>  <b>Step 2:</b>  <a href='https://www.olark.com/settings/code' target='_blank'>Go to Olark's Installation section (click here)</a> &amp; look for the 'Site ID' in the right-hand side of the page.</p><p>  <b>Step 3:</b>  Input the Site ID in the field below, save &amp; enjoy!.</p>",
+							"order": 0,
+							"type": "help"
+						},
+						"siteId": {
+							"order": 1,
+							"required": true,
+							"title": "Site ID",
+							"type": "string"
+						}
+					}
+				}
+			},
+			"releaseNotes": "Bug fixes:\n- Cleanups",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/U7xrQ3nh941E",
+			"metadata": {
+				"code": {
+					"sourceTag": "U7xrQ3nh941E",
+					"uploadedOn": "2018-01-25T12:19:47.591905369Z"
+				}
+			},
+			"created": "2018-01-25T12:19:47.346186Z",
+			"proposedApp": {
+				"id": "QospOFOOozLT",
+				"title": "Olark",
+				"shortDescription": "Live Chat Software for Sales and Customer Support",
+				"longDescription": "Easy to use CloudFlare app to add Olark to your site!",
+				"instructions": "",
+				"alias": "olark",
+				"orgId": "e42fc0f4122d1590a772d96c83b955f1",
+				"icon": "//images.cloudflareapps.com/2Udqi7XtRyO5L8IUAabB_olark-logo.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/ZCOCYOEMSXR977BzEIcm_Apps-Olark-06.png",
+					"//images.cloudflareapps.com/7bMeuFPHQGKxBkbLKxfR_60386.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Mardo Alberto Del Cid Portillo",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "m@mdelcid.com",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication",
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "qrgVoyjXOP_Y"
+				},
+				"created": "2018-01-25T03:03:35.0298Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "e42fc0f4122d1590a772d96c83b955f1",
+				"requestedAt": "2018-01-25T12:19:48.628948033Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2018-01-26T03:05:48.108189288Z"
+			}
+		},
+		{
+			"tag": "1.1.2",
+			"appId": "QospOFOOozLT",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"get-started": {
+							"helpvalue": "<h2>Quick start:</h2><br><p>  <b>Step 1:</b>  <a href='http://special.olark.com/l6SCg' target='_blank'>Create an Olark account (click here)</a></p><p> * By using the link above you are helping this app &amp; its support to remain FREE.</p><p>  <b>Step 2:</b>  <a href='https://www.olark.com/settings/code' target='_blank'>Go to Olark's Installation section (click here)</a> &amp; look for the 'Site ID' in the right-hand side of the page.</p><p>  <b>Step 3:</b>  Input the Site ID in the field below, save &amp; enjoy!.</p>",
+							"order": 0,
+							"type": "help"
+						},
+						"siteId": {
+							"order": 1,
+							"required": true,
+							"title": "Site ID",
+							"type": "string"
+						}
+					}
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/U7xrQ3nh941E",
+			"created": "2018-02-07T12:22:13.663141Z",
+			"proposedApp": {
+				"id": "QospOFOOozLT",
+				"title": "Olark Live Chat",
+				"shortDescription": "Live Chat for sales and customer support.",
+				"longDescription": "Easy to use Cloudflare app to add Olark to your site!",
+				"instructions": "",
+				"alias": "olark",
+				"orgId": "e42fc0f4122d1590a772d96c83b955f1",
+				"icon": "//images.cloudflareapps.com/2Udqi7XtRyO5L8IUAabB_olark-logo.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/ZCOCYOEMSXR977BzEIcm_Apps-Olark-06.png",
+					"//images.cloudflareapps.com/7bMeuFPHQGKxBkbLKxfR_60386.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Mardo Alberto Del Cid Portillo",
+				"tagline": "",
+				"website": "https://www.olark.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.olark.com/tos",
+				"privacyPolicyURL": "https://www.olark.com/privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "m@mdelcid.com",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication",
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "qrgVoyjXOP_Y"
+				},
+				"created": "2018-01-25T03:03:35.0298Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2018-02-07T12:22:13.844969885Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2018-02-07T12:22:32.062361186Z"
+			}
+		},
+		{
+			"tag": "1.1.3",
+			"appId": "QospOFOOozLT",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"get-started": {
+							"helpvalue": "<h2>Quick start:</h2><br><p>  <b>Step 1:</b>  <a href='http://special.olark.com/l6SCg' target='_blank'>Create an Olark account (click here)</a></p><p> * By using the link above you are helping this app &amp; its support to remain FREE.</p><p>  <b>Step 2:</b>  <a href='https://www.olark.com/settings/code' target='_blank'>Go to Olark's Installation section (click here)</a> &amp; look for the 'Site ID' in the right-hand side of the page.</p><p>  <b>Step 3:</b>  Input the Site ID in the field below, save &amp; enjoy!.</p>",
+							"order": 0,
+							"type": "help"
+						},
+						"siteId": {
+							"order": 1,
+							"required": true,
+							"title": "Site ID",
+							"type": "string"
+						}
+					}
+				}
+			},
+			"releaseNotes": "Bug fixes:\n- Icon & Brand changes",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/U7xrQ3nh941E",
+			"created": "2018-02-07T21:55:09.880276Z",
+			"proposedApp": {
+				"id": "QospOFOOozLT",
+				"title": "Olark Live Chat integration by MDELCID",
+				"shortDescription": "Live Chat for sales and customer support.",
+				"longDescription": "Easy to use Cloudflare app to add Olark to your site!",
+				"instructions": "",
+				"alias": "olark",
+				"orgId": "e42fc0f4122d1590a772d96c83b955f1",
+				"icon": "//images.cloudflareapps.com/WMjIh2oTRB2lxqlOrpd4_image(1).png",
+				"screenshots": [
+					"//images.cloudflareapps.com/ZCOCYOEMSXR977BzEIcm_Apps-Olark-06.png",
+					"//images.cloudflareapps.com/7bMeuFPHQGKxBkbLKxfR_60386.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/ZWXw2DbSzj7qlkxQ6NVA_baby.png",
+				"featuredAppImage": "",
+				"author": "Mardo Alberto Del Cid Portillo",
+				"tagline": "",
+				"website": "https://www.olark.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.olark.com/tos",
+				"privacyPolicyURL": "https://www.olark.com/privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "m@mdelcid.com",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication",
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "qrgVoyjXOP_Y"
+				},
+				"created": "2018-01-25T03:03:35.0298Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "e42fc0f4122d1590a772d96c83b955f1",
+				"requestedAt": "2018-02-12T22:35:23.329425644Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2018-02-13T17:27:02.093145203Z"
+			}
+		},
+		{
+			"tag": "1.1.4",
+			"appId": "QospOFOOozLT",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"get-started": {
+							"helpvalue": "<h2>Quick start:</h2><br><p>  <b>Step 1:</b>  <a href='http://special.olark.com/l6SCg' target='_blank'>Create an Olark account (click here)</a></p><p> * By using the link above you are helping this app &amp; its support to remain FREE.</p><p>  <b>Step 2:</b>  <a href='https://www.olark.com/settings/code' target='_blank'>Go to Olark's Installation section (click here)</a> &amp; look for the 'Site ID' in the right-hand side of the page.</p><p>  <b>Step 3:</b>  Input the Site ID in the field below, save &amp; enjoy!.</p>",
+							"order": 0,
+							"type": "help"
+						},
+						"siteId": {
+							"order": 1,
+							"required": true,
+							"title": "Site ID",
+							"type": "string"
+						}
+					}
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/U7xrQ3nh941E",
+			"created": "2018-02-21T07:29:52.804835Z",
+			"proposedApp": {
+				"id": "QospOFOOozLT",
+				"title": "Olark Live Chat",
+				"shortDescription": "Live Chat for sales and customer support.",
+				"longDescription": "Easy to use Cloudflare app to add Olark to your site!",
+				"instructions": "",
+				"alias": "olark-mdelcid",
+				"orgId": "e42fc0f4122d1590a772d96c83b955f1",
+				"icon": "//images.cloudflareapps.com/WMjIh2oTRB2lxqlOrpd4_image(1).png",
+				"screenshots": [
+					"//images.cloudflareapps.com/ZCOCYOEMSXR977BzEIcm_Apps-Olark-06.png",
+					"//images.cloudflareapps.com/7bMeuFPHQGKxBkbLKxfR_60386.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/ZWXw2DbSzj7qlkxQ6NVA_baby.png",
+				"featuredAppImage": "",
+				"author": "Mardo Alberto Del Cid Portillo",
+				"tagline": "",
+				"website": "https://www.olark.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.olark.com/tos",
+				"privacyPolicyURL": "https://www.olark.com/privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "m@mdelcid.com",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication",
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "qrgVoyjXOP_Y"
+				},
+				"created": "2018-01-25T03:03:35.0298Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2018-02-21T07:29:53.007045306Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2018-02-21T07:34:33.723616319Z"
+			}
+		},
+		{
+			"tag": "1.1.5",
+			"appId": "QospOFOOozLT",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"get-started": {
+							"helpvalue": "<h2>Quick start:</h2><br><p>  <b>Step 1:</b>  <a href='http://special.olark.com/l6SCg' target='_blank'>Create an Olark account (click here)</a></p><p> * By using the link above you are helping this app &amp; its support to remain FREE.</p><p>  <b>Step 2:</b>  <a href='https://www.olark.com/settings/code' target='_blank'>Go to Olark's Installation section (click here)</a> &amp; look for the 'Site ID' in the right-hand side of the page.</p><p>  <b>Step 3:</b>  Input the Site ID in the field below, save &amp; enjoy!.</p>",
+							"order": 0,
+							"type": "help"
+						},
+						"siteId": {
+							"order": 1,
+							"required": true,
+							"title": "Site ID",
+							"type": "string"
+						}
+					}
+				}
+			},
+			"releaseNotes": "- Better description\n - New title",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/U7xrQ3nh941E",
+			"created": "2018-02-21T18:13:58.628772Z",
+			"proposedApp": {
+				"id": "QospOFOOozLT",
+				"title": "Olark Live Chat integration by MDELCID",
+				"shortDescription": "Live Chat for sales and customer support.",
+				"longDescription": "# Easy to use Cloudflare app to add Olark to your site!\n\nAdd live chat capabilities to your site in **just a few minutes**, with the world’s simplest\nlive chat software, Olark!\n\n## Why?\n\nAdding live chat to your site can help you to:\n\n* Increase sales\n* Provide support\n* Acquire Leads\n\n## About Olark\n\nOlark is one of the most well-known live chat companies out there. They have an easy to use, battle tested, beautiful software. Plus, their support is out of this world. Prepare to be impressed :)\n\n## Be closer to your customers! Stand out! **Start today!**",
+				"instructions": "",
+				"alias": "olark-mdelcid",
+				"orgId": "e42fc0f4122d1590a772d96c83b955f1",
+				"icon": "//images.cloudflareapps.com/WMjIh2oTRB2lxqlOrpd4_image(1).png",
+				"screenshots": [
+					"//images.cloudflareapps.com/ZCOCYOEMSXR977BzEIcm_Apps-Olark-06.png",
+					"//images.cloudflareapps.com/7bMeuFPHQGKxBkbLKxfR_60386.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/ZWXw2DbSzj7qlkxQ6NVA_baby.png",
+				"featuredAppImage": "",
+				"author": "Mardo Alberto Del Cid Portillo",
+				"tagline": "",
+				"website": "https://www.olark.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.olark.com/tos",
+				"privacyPolicyURL": "https://www.olark.com/privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "m@mdelcid.com",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication",
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "qrgVoyjXOP_Y"
+				},
+				"created": "2018-01-25T03:03:35.0298Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "e42fc0f4122d1590a772d96c83b955f1",
+				"requestedAt": "2018-02-21T18:24:26.719230016Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2018-02-22T22:46:21.807637888Z"
+			}
+		},
+		{
+			"tag": "1.1.6",
+			"appId": "QospOFOOozLT",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"get-started": {
+							"helpvalue": "<h2>Quick start:</h2><br><p>  <b>Step 1:</b>  <a href='http://special.olark.com/l6SCg' target='_blank'>Create an Olark account (click here)</a></p><p> * By using the link above you are helping this app &amp; its support to remain FREE.</p><p>  <b>Step 2:</b>  <a href='https://www.olark.com/settings/code' target='_blank'>Go to Olark's Installation section (click here)</a> &amp; look for the 'Site ID' in the right-hand side of the page.</p><p>  <b>Step 3:</b>  Input the Site ID in the field below, save &amp; enjoy!.</p>",
+							"order": 0,
+							"type": "help"
+						},
+						"siteId": {
+							"order": 1,
+							"required": true,
+							"title": "Site ID",
+							"type": "string"
+						}
+					}
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 2,
+				"downvotes": 0
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/U7xrQ3nh941E",
+			"created": "2018-02-22T22:47:45.64032Z",
+			"proposedApp": {
+				"id": "QospOFOOozLT",
+				"title": "Olark Live Chat",
+				"shortDescription": "Live Chat for sales and customer support.",
+				"longDescription": "Add live chat capabilities to your site in **just a few minutes**, with the world’s simplest\nlive chat software, Olark!\n\n## Why?\n\nAdding live chat to your site can help you to:\n\n* Increase sales\n* Provide support\n* Acquire Leads\n\n## About Olark\n\nOlark is one of the most well-known live chat companies out there. They have an easy to use, battle tested, beautiful software. Plus, their support is out of this world. Prepare to be impressed :)\n\n## Be closer to your customers! Stand out! **Start today!**",
+				"instructions": "",
+				"alias": "olark-mdelcid",
+				"orgId": "e42fc0f4122d1590a772d96c83b955f1",
+				"icon": "//images.cloudflareapps.com/WMjIh2oTRB2lxqlOrpd4_image(1).png",
+				"screenshots": [
+					"//images.cloudflareapps.com/ZCOCYOEMSXR977BzEIcm_Apps-Olark-06.png",
+					"//images.cloudflareapps.com/7bMeuFPHQGKxBkbLKxfR_60386.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/ZWXw2DbSzj7qlkxQ6NVA_baby.png",
+				"featuredAppImage": "",
+				"author": "Mardo Alberto Del Cid Portillo",
+				"tagline": "",
+				"website": "https://www.olark.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.olark.com/tos",
+				"privacyPolicyURL": "https://www.olark.com/privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "m@mdelcid.com",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication",
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "qrgVoyjXOP_Y"
+				},
+				"created": "2018-01-25T03:03:35.0298Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2018-02-22T22:47:45.831442365Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2018-02-22T22:48:40.35667279Z"
+			}
+		},
+		{
+			"tag": "1.1.7",
+			"appId": "QospOFOOozLT",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"get-started": {
+							"helpvalue": "<h2>Quick start:</h2><br><p>  <b>Step 1:</b>  <a href='http://special.olark.com/l6SCg' target='_blank'>Create an Olark account (click here)</a></p><p> * By using the link above you are helping this app &amp; its support to remain FREE.</p><p>  <b>Step 2:</b>  <a href='https://www.olark.com/settings/code' target='_blank'>Go to Olark's Installation section (click here)</a> &amp; look for the 'Site ID' in the right-hand side of the page.</p><p>  <b>Step 3:</b>  Input the Site ID in the field below, save &amp; enjoy!.</p>",
+							"order": 0,
+							"type": "help"
+						},
+						"siteId": {
+							"order": 1,
+							"required": true,
+							"title": "Site ID",
+							"type": "string"
+						}
+					}
+				}
+			},
+			"releaseNotes": "Updated app's categories",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/U7xrQ3nh941E",
+			"created": "2018-11-13T20:13:34.566656Z",
+			"proposedApp": {
+				"id": "QospOFOOozLT",
+				"title": "Olark Live Chat",
+				"shortDescription": "Live Chat for sales and customer support.",
+				"longDescription": "Add live chat capabilities to your site in **just a few minutes**, with the world’s simplest\nlive chat software, Olark!\n\n## Why?\n\nAdding live chat to your site can help you to:\n\n* Increase sales\n* Provide support\n* Acquire Leads\n\n## About Olark\n\nOlark is one of the most well-known live chat companies out there. They have an easy to use, battle tested, beautiful software. Plus, their support is out of this world. Prepare to be impressed :)\n\n## Be closer to your customers! Stand out! **Start today!**",
+				"instructions": "",
+				"alias": "olark-mdelcid",
+				"orgId": "e42fc0f4122d1590a772d96c83b955f1",
+				"icon": "//images.cloudflareapps.com/WMjIh2oTRB2lxqlOrpd4_image(1).png",
+				"screenshots": [
+					"//images.cloudflareapps.com/ZCOCYOEMSXR977BzEIcm_Apps-Olark-06.png",
+					"//images.cloudflareapps.com/7bMeuFPHQGKxBkbLKxfR_60386.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/ZWXw2DbSzj7qlkxQ6NVA_baby.png",
+				"featuredAppImage": "",
+				"author": "Mardo Alberto Del Cid Portillo",
+				"tagline": "",
+				"website": "https://www.olark.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.olark.com/tos",
+				"privacyPolicyURL": "https://www.olark.com/privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "m@mdelcid.com",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "qrgVoyjXOP_Y"
+				},
+				"created": "2018-01-25T03:03:35.0298Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-11-13T20:13:34.916165233Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-11-14T17:47:29.015199691Z"
+			}
+		},
+		{
+			"tag": "1.1.8",
+			"appId": "QospOFOOozLT",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"get-started": {
+							"helpvalue": "<h2>Quick start:</h2><br><p>  <b>Step 1:</b>  <a href='https://www.olark.com/pricing?ref=mardodelcid' target='_blank'>Create an Olark account (click here)</a></p><p> * By using the link above you are helping this app &amp; its support to remain FREE.</p><p>  <b>Step 2:</b>  <a href='https://www.olark.com/settings/code' target='_blank'>Go to Olark's Installation section (click here)</a> &amp; look for the 'Site ID' in the right-hand side of the page.</p><p>  <b>Step 3:</b>  Input the Site ID in the field below, save &amp; enjoy!.</p>",
+							"order": 0,
+							"type": "help"
+						},
+						"siteId": {
+							"order": 1,
+							"required": true,
+							"title": "Site ID",
+							"type": "string"
+						}
+					}
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "Updated signup link",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/371UNU-Jh_PP",
+			"metadata": {
+				"code": {
+					"sourceTag": "371UNU-Jh_PP",
+					"uploadedOn": "2020-01-31T23:12:04.940216116Z"
+				}
+			},
+			"created": "2020-01-31T23:12:04.469382Z",
+			"proposedApp": {
+				"id": "QospOFOOozLT",
+				"title": "Olark Live Chat",
+				"shortDescription": "Live Chat for sales and customer support.",
+				"longDescription": "Add live chat capabilities to your site in **just a few minutes**, with the world’s simplest\nlive chat software, Olark!\n\n## Why?\n\nAdding live chat to your site can help you to:\n\n* Increase sales\n* Provide support\n* Acquire Leads\n\n## About Olark\n\nOlark is one of the most well-known live chat companies out there. They have an easy to use, battle tested, beautiful software. Plus, their support is out of this world. Prepare to be impressed :)\n\n## Be closer to your customers! Stand out! **Start today!**",
+				"instructions": "",
+				"alias": "olark-mdelcid",
+				"orgId": "e42fc0f4122d1590a772d96c83b955f1",
+				"icon": "//images.cloudflareapps.com/WMjIh2oTRB2lxqlOrpd4_image(1).png",
+				"screenshots": [
+					"//images.cloudflareapps.com/ZCOCYOEMSXR977BzEIcm_Apps-Olark-06.png",
+					"//images.cloudflareapps.com/7bMeuFPHQGKxBkbLKxfR_60386.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/ZWXw2DbSzj7qlkxQ6NVA_baby.png",
+				"featuredAppImage": "",
+				"author": "Mardo Alberto Del Cid Portillo",
+				"tagline": "",
+				"website": "https://www.olark.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.olark.com/tos",
+				"privacyPolicyURL": "https://www.olark.com/privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "m@mdelcid.com",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "qrgVoyjXOP_Y"
+				},
+				"created": "2018-01-25T03:03:35.0298Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "e42fc0f4122d1590a772d96c83b955f1",
+				"requestedAt": "2020-01-31T23:12:44.748098011Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-01-31T23:48:40.47814268Z"
+			}
+		}
+	]
+}

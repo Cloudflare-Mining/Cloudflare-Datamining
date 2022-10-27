@@ -1,0 +1,1494 @@
+{
+	"id": "rIQbHNLC4vUy",
+	"title": "Vimeo",
+	"shortDescription": "Embed your favorite videos from Vimeo.",
+	"longDescription": "This app allows Vimeo video's to be embedded directly onto your site, so people can see videos you've made, or maybe just a few of your favorites. This app supports autoplay and multiple videos on one page.",
+	"instructions": "",
+	"alias": "vimeo",
+	"orgId": "2684c89451b6b86b453405beb4662f46",
+	"icon": "//images.cloudflareapps.com/6AuuSmSMT4uL7i9Xx56w_icon.png",
+	"screenshots": [],
+	"tileImage": "//images.cloudflareapps.com/kZDpsdZMTWyeTn5xZRLB_tile.png",
+	"featuredAppImage": "",
+	"author": "Vimeo Inc.",
+	"tagline": "",
+	"website": "https://vimeo.com",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://vimeo.com/terms",
+	"privacyPolicyURL": "https://vimeo.com/privacy",
+	"color": "#2bb7e8",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "2.0.10",
+	"infoVersion": "2.0.10",
+	"points": 0,
+	"supportEmail": "support@cloudflare.com",
+	"products": [],
+	"categoryIds": [
+		"add-on",
+		"social-media",
+		"widgets-and-plugins",
+		"recommended-for-all-sites"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "f1279b4c7912eb17ba469bcbdfe62b19",
+			"created": "2017-07-07T05:45:52.293789989Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "crqd-fkOBmCX"
+	},
+	"created": "2017-07-07T05:40:59.634781Z",
+	"org": {
+		"id": "2684c89451b6b86b453405beb4662f46",
+		"title": "",
+		"username": "2684c89451b6b86b453405beb4662f46",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "widgets-and-plugins",
+			"title": "Widgets & Plugins",
+			"description": "Apps that add functionality and services to your website.",
+			"icon": "",
+			"points": 10,
+			"visible": true,
+			"metadata": {
+				"promoted": false
+			},
+			"created": "2018-01-22T19:19:00.135755Z"
+		},
+		{
+			"id": "recommended-for-all-sites",
+			"title": "Recommended for All Sites",
+			"description": "Apps that are recommended for all sites.",
+			"icon": "",
+			"points": 0,
+			"visible": false,
+			"created": "2018-02-06T19:53:13.516865Z"
+		},
+		{
+			"id": "add-on",
+			"title": "Add-ons",
+			"description": "Drop-in components to add to your website.",
+			"icon": "//eager-app-images.imgix.net/HZ0uHPrDRp6uAeUTuEH2_add-ons.png",
+			"points": 100,
+			"visible": false,
+			"metadata": {
+				"icon": {
+					"filename": "add-ons.png",
+					"isWriteable": false,
+					"key": "HZ0uHPrDRp6uAeUTuEH2_add-ons.png",
+					"mimetype": "image/png",
+					"size": 1997,
+					"url": "https://www.filepicker.io/api/file/1GlH0WSQTZu0scJr7qY0"
+				}
+			},
+			"created": "2016-01-20T20:14:55.498829Z"
+		},
+		{
+			"id": "social-media",
+			"title": "Social Media",
+			"description": "Integrate your website with Twitter, Facebook, and other networks.",
+			"icon": "//eager-app-images.imgix.net/4g1U96yUSIGAvmGAHnUH_social-media.png",
+			"points": 60,
+			"visible": false,
+			"metadata": {
+				"icon": {
+					"filename": "social-media.png",
+					"isWriteable": false,
+					"key": "4g1U96yUSIGAvmGAHnUH_social-media.png",
+					"mimetype": "image/png",
+					"size": 3951,
+					"url": "https://www.filepicker.io/api/file/Zoyj89qVTdGgOJpNQTKK"
+				}
+			},
+			"created": "2016-01-20T20:14:55.498829Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "rIQbHNLC4vUy",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						},
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"embeds": {
+							"items": {
+								"properties": {
+									"autoplay": {
+										"description": "Play the video when the page loads.",
+										"order": 2,
+										"title": "Autoplay",
+										"type": "boolean"
+									},
+									"url": {
+										"default": "https://vimeo.com/45196609",
+										"description": "The URL of the Vimeo video to be embedded.",
+										"order": 1,
+										"placeholder": "https://vimeo.com/123...",
+										"title": "URL",
+										"type": "string"
+									}
+								},
+								"title": "Embed",
+								"type": "object"
+							},
+							"title": "Videos",
+							"type": "array"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the vidoes appear on your site?.",
+							"format": "element",
+							"order": 0,
+							"title": "Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/crqd-fkOBmCX",
+			"metadata": {
+				"code": {
+					"sourceTag": "crqd-fkOBmCX",
+					"uploadedOn": "2017-07-07T05:41:00.027950654Z"
+				}
+			},
+			"created": "2017-07-07T05:40:59.820388Z",
+			"proposedApp": {
+				"id": "rIQbHNLC4vUy",
+				"title": "Vimeo",
+				"shortDescription": "Embed your favorite videos from Vimeo.",
+				"longDescription": "This app allows Vimeo video's to be embedded directly onto your site, so people can see videos you've made, or maybe just a few of your favorites. This app supports autoplay and multiple videos on one page.",
+				"instructions": "",
+				"alias": "vimeo",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/6AuuSmSMT4uL7i9Xx56w_icon.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/kZDpsdZMTWyeTn5xZRLB_tile.png",
+				"featuredAppImage": "",
+				"author": "Vimeo Inc.",
+				"tagline": "",
+				"website": "https://vimeo.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"by-cloudflare",
+					"social-media"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "crqd-fkOBmCX"
+				},
+				"created": "2017-07-07T05:40:59.634781Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-07-07T05:45:52.278427968Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-07-07T07:26:29.815555635Z"
+			}
+		},
+		{
+			"tag": "2.0.0",
+			"appId": "rIQbHNLC4vUy",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						},
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"embeds": {
+							"items": {
+								"properties": {
+									"autoplay": {
+										"description": "Play the video when the page loads.",
+										"order": 2,
+										"title": "Autoplay",
+										"type": "boolean"
+									},
+									"location": {
+										"default": {
+											"method": "prepend",
+											"selector": "body"
+										},
+										"description": "Where should the video appear on your site?.",
+										"format": "element",
+										"order": 0,
+										"title": "Location",
+										"type": "object"
+									},
+									"url": {
+										"default": "https://vimeo.com/45196609",
+										"description": "The URL of the Vimeo video to be embedded.",
+										"order": 1,
+										"placeholder": "https://vimeo.com/123...",
+										"title": "URL",
+										"type": "string"
+									}
+								},
+								"title": "Embed",
+								"type": "object"
+							},
+							"title": "Videos",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/eJDseN-0ekfn",
+			"metadata": {
+				"code": {
+					"sourceTag": "eJDseN-0ekfn",
+					"uploadedOn": "2017-08-08T09:37:21.165054546Z"
+				}
+			},
+			"created": "2017-08-08T09:37:20.952715Z",
+			"proposedApp": {
+				"id": "rIQbHNLC4vUy",
+				"title": "Vimeo",
+				"shortDescription": "Embed your favorite videos from Vimeo.",
+				"longDescription": "This app allows Vimeo video's to be embedded directly onto your site, so people can see videos you've made, or maybe just a few of your favorites. This app supports autoplay and multiple videos on one page.",
+				"instructions": "",
+				"alias": "vimeo",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/6AuuSmSMT4uL7i9Xx56w_icon.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/kZDpsdZMTWyeTn5xZRLB_tile.png",
+				"featuredAppImage": "",
+				"author": "Vimeo Inc.",
+				"tagline": "",
+				"website": "https://vimeo.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"by-cloudflare",
+					"social-media"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "crqd-fkOBmCX"
+				},
+				"created": "2017-07-07T05:40:59.634781Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-08-08T09:37:22.499112935Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-08-08T09:39:32.762920548Z"
+			}
+		},
+		{
+			"tag": "2.0.1",
+			"appId": "rIQbHNLC4vUy",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						},
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"embeds": {
+							"items": {
+								"properties": {
+									"autoplay": {
+										"description": "Play the video when the page loads.",
+										"order": 2,
+										"title": "Autoplay",
+										"type": "boolean"
+									},
+									"location": {
+										"default": {
+											"method": "prepend",
+											"selector": "body"
+										},
+										"description": "Where should the video appear on your site?",
+										"format": "element",
+										"order": 0,
+										"title": "Location",
+										"type": "object"
+									},
+									"url": {
+										"default": "https://vimeo.com/45196609",
+										"description": "The URL of the Vimeo video to be embedded.",
+										"order": 1,
+										"placeholder": "https://vimeo.com/123...",
+										"title": "URL",
+										"type": "string"
+									}
+								},
+								"title": "Embed",
+								"type": "object"
+							},
+							"title": "Videos",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/Q1KGLMKmEcZ2",
+			"metadata": {
+				"code": {
+					"sourceTag": "Q1KGLMKmEcZ2",
+					"uploadedOn": "2017-08-25T08:06:31.15664937Z"
+				}
+			},
+			"created": "2017-08-25T08:06:30.935905Z",
+			"proposedApp": {
+				"id": "rIQbHNLC4vUy",
+				"title": "Vimeo",
+				"shortDescription": "Embed your favorite videos from Vimeo.",
+				"longDescription": "This app allows Vimeo video's to be embedded directly onto your site, so people can see videos you've made, or maybe just a few of your favorites. This app supports autoplay and multiple videos on one page.",
+				"instructions": "",
+				"alias": "vimeo",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/6AuuSmSMT4uL7i9Xx56w_icon.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/kZDpsdZMTWyeTn5xZRLB_tile.png",
+				"featuredAppImage": "",
+				"author": "Vimeo Inc.",
+				"tagline": "",
+				"website": "https://vimeo.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"by-cloudflare",
+					"social-media"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "crqd-fkOBmCX"
+				},
+				"created": "2017-07-07T05:40:59.634781Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-08-25T08:06:31.855817036Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-08-25T08:07:56.506716292Z"
+			}
+		},
+		{
+			"tag": "2.0.2",
+			"appId": "rIQbHNLC4vUy",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						},
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"embeds": {
+							"items": {
+								"properties": {
+									"autoplay": {
+										"description": "Play the video when the page loads.",
+										"order": 2,
+										"title": "Autoplay",
+										"type": "boolean"
+									},
+									"location": {
+										"default": {
+											"method": "prepend",
+											"selector": "body"
+										},
+										"description": "Where should the video appear on your site?",
+										"format": "element",
+										"order": 0,
+										"title": "Location",
+										"type": "object"
+									},
+									"url": {
+										"default": "https://vimeo.com/45196609",
+										"description": "The URL of the Vimeo video to be embedded.",
+										"order": 1,
+										"placeholder": "https://vimeo.com/123...",
+										"title": "URL",
+										"type": "string"
+									}
+								},
+								"title": "Embed",
+								"type": "object"
+							},
+							"title": "Videos",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/Q1KGLMKmEcZ2",
+			"created": "2017-08-30T04:04:36.072025Z",
+			"proposedApp": {
+				"id": "rIQbHNLC4vUy",
+				"title": "Vimeo",
+				"shortDescription": "Embed your favorite videos from Vimeo.",
+				"longDescription": "This app allows Vimeo video's to be embedded directly onto your site, so people can see videos you've made, or maybe just a few of your favorites. This app supports autoplay and multiple videos on one page.",
+				"instructions": "",
+				"alias": "vimeo",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/6AuuSmSMT4uL7i9Xx56w_icon.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/kZDpsdZMTWyeTn5xZRLB_tile.png",
+				"featuredAppImage": "",
+				"author": "Vimeo Inc.",
+				"tagline": "",
+				"website": "https://vimeo.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"by-cloudflare",
+					"social-media"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "crqd-fkOBmCX"
+				},
+				"created": "2017-07-07T05:40:59.634781Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-08-30T04:04:36.319385127Z",
+				"canceledByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"canceledAt": "2017-08-30T05:11:08.389219583Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "2.0.3",
+			"appId": "rIQbHNLC4vUy",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						},
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"embeds": {
+							"items": {
+								"properties": {
+									"autoplay": {
+										"description": "Play the video when the page loads.",
+										"order": 2,
+										"title": "Autoplay",
+										"type": "boolean"
+									},
+									"location": {
+										"default": {
+											"method": "prepend",
+											"selector": "body"
+										},
+										"description": "Where should the video appear on your site?",
+										"format": "element",
+										"order": 0,
+										"title": "Location",
+										"type": "object"
+									},
+									"url": {
+										"default": "https://vimeo.com/45196609",
+										"description": "The URL of the Vimeo video to be embedded.",
+										"order": 1,
+										"placeholder": "https://vimeo.com/123...",
+										"title": "URL",
+										"type": "string"
+									}
+								},
+								"title": "Embed",
+								"type": "object"
+							},
+							"title": "Videos",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/Q1KGLMKmEcZ2",
+			"created": "2017-08-30T05:11:08.181889Z",
+			"proposedApp": {
+				"id": "rIQbHNLC4vUy",
+				"title": "Vimeo",
+				"shortDescription": "Embed your favorite videos from Vimeo.",
+				"longDescription": "This app allows Vimeo video's to be embedded directly onto your site, so people can see videos you've made, or maybe just a few of your favorites. This app supports autoplay and multiple videos on one page.",
+				"instructions": "",
+				"alias": "vimeo",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/6AuuSmSMT4uL7i9Xx56w_icon.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/kZDpsdZMTWyeTn5xZRLB_tile.png",
+				"featuredAppImage": "",
+				"author": "Vimeo Inc.",
+				"tagline": "",
+				"website": "https://vimeo.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"by-cloudflare",
+					"social-media"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "crqd-fkOBmCX"
+				},
+				"created": "2017-07-07T05:40:59.634781Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-08-30T05:11:08.404868922Z",
+				"canceledByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"canceledAt": "2017-08-30T05:15:41.331936769Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "2.0.4",
+			"appId": "rIQbHNLC4vUy",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						},
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"embeds": {
+							"items": {
+								"properties": {
+									"autoplay": {
+										"description": "Play the video when the page loads.",
+										"order": 2,
+										"title": "Autoplay",
+										"type": "boolean"
+									},
+									"location": {
+										"default": {
+											"method": "prepend",
+											"selector": "body"
+										},
+										"description": "Where should the video appear on your site?",
+										"format": "element",
+										"order": 0,
+										"title": "Location",
+										"type": "object"
+									},
+									"url": {
+										"default": "https://vimeo.com/45196609",
+										"description": "The URL of the Vimeo video to be embedded.",
+										"order": 1,
+										"placeholder": "https://vimeo.com/123...",
+										"title": "URL",
+										"type": "string"
+									}
+								},
+								"title": "Embed",
+								"type": "object"
+							},
+							"title": "Videos",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/Q1KGLMKmEcZ2",
+			"created": "2017-08-30T05:15:41.112794Z",
+			"proposedApp": {
+				"id": "rIQbHNLC4vUy",
+				"title": "Vimeo",
+				"shortDescription": "Embed your favorite videos from Vimeo.",
+				"longDescription": "This app allows Vimeo video's to be embedded directly onto your site, so people can see videos you've made, or maybe just a few of your favorites. This app supports autoplay and multiple videos on one page.",
+				"instructions": "",
+				"alias": "vimeo",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/6AuuSmSMT4uL7i9Xx56w_icon.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/kZDpsdZMTWyeTn5xZRLB_tile.png",
+				"featuredAppImage": "",
+				"author": "Vimeo Inc.",
+				"tagline": "",
+				"website": "https://vimeo.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"by-cloudflare",
+					"social-media"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "crqd-fkOBmCX"
+				},
+				"created": "2017-07-07T05:40:59.634781Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-08-30T05:15:41.336137863Z",
+				"canceledByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"canceledAt": "2017-08-30T05:24:25.95640251Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "2.0.5",
+			"appId": "rIQbHNLC4vUy",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						},
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"embeds": {
+							"items": {
+								"properties": {
+									"autoplay": {
+										"description": "Play the video when the page loads.",
+										"order": 2,
+										"title": "Autoplay",
+										"type": "boolean"
+									},
+									"location": {
+										"default": {
+											"method": "prepend",
+											"selector": "body"
+										},
+										"description": "Where should the video appear on your site?",
+										"format": "element",
+										"order": 0,
+										"title": "Location",
+										"type": "object"
+									},
+									"url": {
+										"default": "https://vimeo.com/45196609",
+										"description": "The URL of the Vimeo video to be embedded.",
+										"order": 1,
+										"placeholder": "https://vimeo.com/123...",
+										"title": "URL",
+										"type": "string"
+									}
+								},
+								"title": "Embed",
+								"type": "object"
+							},
+							"title": "Videos",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/Q1KGLMKmEcZ2",
+			"created": "2017-08-30T05:21:53.379996Z",
+			"proposedApp": {
+				"id": "rIQbHNLC4vUy",
+				"title": "Vimeo",
+				"shortDescription": "Embed your favorite videos from Vimeo.",
+				"longDescription": "This app allows Vimeo video's to be embedded directly onto your site, so people can see videos you've made, or maybe just a few of your favorites. This app supports autoplay and multiple videos on one page.",
+				"instructions": "",
+				"alias": "vimeo",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/6AuuSmSMT4uL7i9Xx56w_icon.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/kZDpsdZMTWyeTn5xZRLB_tile.png",
+				"featuredAppImage": "",
+				"author": "Vimeo Inc.",
+				"tagline": "",
+				"website": "https://vimeo.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"by-cloudflare",
+					"social-media"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "crqd-fkOBmCX"
+				},
+				"created": "2017-07-07T05:40:59.634781Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-08-30T05:24:25.960423281Z",
+				"canceledByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"canceledAt": "2017-08-30T05:28:38.565807483Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "2.0.6",
+			"appId": "rIQbHNLC4vUy",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						},
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"embeds": {
+							"items": {
+								"properties": {
+									"autoplay": {
+										"description": "Play the video when the page loads.",
+										"order": 2,
+										"title": "Autoplay",
+										"type": "boolean"
+									},
+									"location": {
+										"default": {
+											"method": "prepend",
+											"selector": "body"
+										},
+										"description": "Where should the video appear on your site?",
+										"format": "element",
+										"order": 0,
+										"title": "Location",
+										"type": "object"
+									},
+									"url": {
+										"default": "https://vimeo.com/45196609",
+										"description": "The URL of the Vimeo video to be embedded.",
+										"order": 1,
+										"placeholder": "https://vimeo.com/123...",
+										"title": "URL",
+										"type": "string"
+									}
+								},
+								"title": "Embed",
+								"type": "object"
+							},
+							"title": "Videos",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/Q1KGLMKmEcZ2",
+			"created": "2017-08-30T05:28:38.27967Z",
+			"proposedApp": {
+				"id": "rIQbHNLC4vUy",
+				"title": "Vimeo",
+				"shortDescription": "Embed your favorite videos from Vimeo.",
+				"longDescription": "This app allows Vimeo video's to be embedded directly onto your site, so people can see videos you've made, or maybe just a few of your favorites. This app supports autoplay and multiple videos on one page.",
+				"instructions": "",
+				"alias": "vimeo",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/6AuuSmSMT4uL7i9Xx56w_icon.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/kZDpsdZMTWyeTn5xZRLB_tile.png",
+				"featuredAppImage": "",
+				"author": "Vimeo Inc.",
+				"tagline": "",
+				"website": "https://vimeo.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"by-cloudflare",
+					"social-media"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "crqd-fkOBmCX"
+				},
+				"created": "2017-07-07T05:40:59.634781Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-08-30T05:28:38.570079902Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-09-01T22:50:26.543876054Z"
+			}
+		},
+		{
+			"tag": "2.0.8",
+			"appId": "rIQbHNLC4vUy",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						},
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"embeds": {
+							"items": {
+								"properties": {
+									"autoplay": {
+										"description": "Play the video when the page loads.",
+										"order": 2,
+										"title": "Autoplay",
+										"type": "boolean"
+									},
+									"location": {
+										"default": {
+											"method": "prepend",
+											"selector": "body"
+										},
+										"description": "Where should the video appear on your site?",
+										"format": "element",
+										"order": 0,
+										"title": "Location",
+										"type": "object"
+									},
+									"url": {
+										"default": "https://vimeo.com/45196609",
+										"description": "The URL of the Vimeo video to be embedded.",
+										"order": 1,
+										"placeholder": "https://vimeo.com/123...",
+										"title": "URL",
+										"type": "string"
+									}
+								},
+								"title": "Embed",
+								"type": "object"
+							},
+							"title": "Videos",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Cleaned up app description and metadata.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/Q1KGLMKmEcZ2",
+			"created": "2017-08-30T05:32:43.078766Z",
+			"proposedApp": {
+				"id": "rIQbHNLC4vUy",
+				"title": "Vimeo",
+				"shortDescription": "Embed your favorite videos from Vimeo.",
+				"longDescription": "This app allows Vimeo video's to be embedded directly onto your site, so people can see videos you've made, or maybe just a few of your favorites. This app supports autoplay and multiple videos on one page.",
+				"instructions": "",
+				"alias": "vimeo",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/6AuuSmSMT4uL7i9Xx56w_icon.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/kZDpsdZMTWyeTn5xZRLB_tile.png",
+				"featuredAppImage": "",
+				"author": "Vimeo Inc.",
+				"tagline": "",
+				"website": "https://vimeo.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://vimeo.com/terms",
+				"privacyPolicyURL": "https://vimeo.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"social-media"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "crqd-fkOBmCX"
+				},
+				"created": "2017-07-07T05:40:59.634781Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-09-23T01:44:14.632362166Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-09-23T01:44:34.315412722Z"
+			}
+		},
+		{
+			"tag": "2.0.9",
+			"appId": "rIQbHNLC4vUy",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						},
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"embeds": {
+							"items": {
+								"properties": {
+									"autoplay": {
+										"description": "Play the video when the page loads.",
+										"order": 2,
+										"title": "Autoplay",
+										"type": "boolean"
+									},
+									"location": {
+										"default": {
+											"method": "prepend",
+											"selector": "body"
+										},
+										"description": "Where should the video appear on your site?",
+										"format": "element",
+										"order": 0,
+										"title": "Location",
+										"type": "object"
+									},
+									"url": {
+										"default": "https://vimeo.com/45196609",
+										"description": "The URL of the Vimeo video to be embedded.",
+										"order": 1,
+										"placeholder": "https://vimeo.com/123...",
+										"title": "URL",
+										"type": "string"
+									}
+								},
+								"title": "Embed",
+								"type": "object"
+							},
+							"title": "Videos",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Added to “Widgets & Plugins” category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/Q1KGLMKmEcZ2",
+			"created": "2018-01-23T20:35:39.921722Z",
+			"proposedApp": {
+				"id": "rIQbHNLC4vUy",
+				"title": "Vimeo",
+				"shortDescription": "Embed your favorite videos from Vimeo.",
+				"longDescription": "This app allows Vimeo video's to be embedded directly onto your site, so people can see videos you've made, or maybe just a few of your favorites. This app supports autoplay and multiple videos on one page.",
+				"instructions": "",
+				"alias": "vimeo",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/6AuuSmSMT4uL7i9Xx56w_icon.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/kZDpsdZMTWyeTn5xZRLB_tile.png",
+				"featuredAppImage": "",
+				"author": "Vimeo Inc.",
+				"tagline": "",
+				"website": "https://vimeo.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://vimeo.com/terms",
+				"privacyPolicyURL": "https://vimeo.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"social-media",
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "crqd-fkOBmCX"
+				},
+				"created": "2017-07-07T05:40:59.634781Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-01-23T20:35:40.173974009Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-01-23T20:35:48.003918126Z"
+			}
+		},
+		{
+			"tag": "2.0.10",
+			"appId": "rIQbHNLC4vUy",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						},
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"embeds": {
+							"items": {
+								"properties": {
+									"autoplay": {
+										"description": "Play the video when the page loads.",
+										"order": 2,
+										"title": "Autoplay",
+										"type": "boolean"
+									},
+									"location": {
+										"default": {
+											"method": "prepend",
+											"selector": "body"
+										},
+										"description": "Where should the video appear on your site?",
+										"format": "element",
+										"order": 0,
+										"title": "Location",
+										"type": "object"
+									},
+									"url": {
+										"default": "https://vimeo.com/45196609",
+										"description": "The URL of the Vimeo video to be embedded.",
+										"order": 1,
+										"placeholder": "https://vimeo.com/123...",
+										"title": "URL",
+										"type": "string"
+									}
+								},
+								"title": "Embed",
+								"type": "object"
+							},
+							"title": "Videos",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 4,
+				"downvotes": 0
+			},
+			"releaseNotes": "Added to Cloudflare Apps recommendation engine",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/Q1KGLMKmEcZ2",
+			"created": "2018-02-06T20:42:50.921198Z",
+			"proposedApp": {
+				"id": "rIQbHNLC4vUy",
+				"title": "Vimeo",
+				"shortDescription": "Embed your favorite videos from Vimeo.",
+				"longDescription": "This app allows Vimeo video's to be embedded directly onto your site, so people can see videos you've made, or maybe just a few of your favorites. This app supports autoplay and multiple videos on one page.",
+				"instructions": "",
+				"alias": "vimeo",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/6AuuSmSMT4uL7i9Xx56w_icon.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/kZDpsdZMTWyeTn5xZRLB_tile.png",
+				"featuredAppImage": "",
+				"author": "Vimeo Inc.",
+				"tagline": "",
+				"website": "https://vimeo.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://vimeo.com/terms",
+				"privacyPolicyURL": "https://vimeo.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"social-media",
+					"widgets-and-plugins",
+					"recommended-for-all-sites"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "crqd-fkOBmCX"
+				},
+				"created": "2017-07-07T05:40:59.634781Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-02-06T20:42:51.181921556Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-02-06T20:44:47.629574386Z"
+			}
+		}
+	]
+}

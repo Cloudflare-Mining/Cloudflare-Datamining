@@ -1,0 +1,1912 @@
+{
+	"id": "Bqo4JBRinHeM",
+	"title": "Like Button",
+	"shortDescription": "Build your social media presence with Facebook!",
+	"longDescription": "Add a Facebook Like button to your site to build your social media presence.\n\n### Features\n\n- Multiple sizes and shapes\n- Optional share button\n- Custom URLs",
+	"instructions": "Please note the “Like” count within the preview may not reflect the number of likes of your actual page.",
+	"alias": "like-button",
+	"orgId": "2684c89451b6b86b453405beb4662f46",
+	"icon": "//images.cloudflareapps.com/A2zN8mtIQuuj7c1EVHaq_icon.png",
+	"screenshots": [],
+	"tileImage": "//images.cloudflareapps.com/zl9eCAk7S5KKEnF9sMsr_tile.png",
+	"featuredAppImage": "",
+	"author": "Facebook Inc.",
+	"tagline": "",
+	"website": "https://facebook.com",
+	"sourceURL": "",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "#7c92b4",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.2.4",
+	"infoVersion": "1.2.4",
+	"points": 930,
+	"supportEmail": "support@cloudflare.com",
+	"products": [],
+	"categoryIds": [
+		"social-and-communication",
+		"recommended-for-blogs"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "f1279b4c7912eb17ba469bcbdfe62b19",
+			"created": "2017-07-06T08:49:48.949237187Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "6MA5UrectMX3"
+	},
+	"created": "2017-05-18T04:47:10.22564Z",
+	"org": {
+		"id": "2684c89451b6b86b453405beb4662f46",
+		"title": "",
+		"username": "2684c89451b6b86b453405beb4662f46",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "recommended-for-blogs",
+			"title": "Recommended for Blogs",
+			"description": "Apps for blogs in the recommendation engine.",
+			"icon": "",
+			"points": 0,
+			"visible": false,
+			"created": "2018-02-06T19:54:23.834831Z"
+		},
+		{
+			"id": "social-and-communication",
+			"title": "Social & Communication",
+			"description": "Apps that make it easier to communicate with your customers.",
+			"icon": "",
+			"points": 80,
+			"visible": true,
+			"created": "2018-01-22T19:17:10.030031Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "v1.0.0",
+			"appId": "Bqo4JBRinHeM",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						},
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"advanced": {
+							"order": 4,
+							"properties": {
+								"action": {
+									"default": "like",
+									"description": "Facebook allows Like buttons to alternatively use the text “Recommend”.",
+									"enum": [
+										"like",
+										"recommend"
+									],
+									"enumNames": {
+										"like": "“Like”",
+										"recommend": "“Recommend”"
+									},
+									"format": "radios",
+									"order": 3,
+									"showIf": {
+										"layout": "standard"
+									},
+									"title": "Button text",
+									"type": "string"
+								},
+								"share": {
+									"default": true,
+									"order": 4,
+									"title": "Also show “Share” button",
+									"type": "boolean"
+								},
+								"showFaces": {
+									"default": false,
+									"order": 5,
+									"showIf": {
+										"layout": "standard"
+									},
+									"title": "Show profile photos of those who’ve liked alongside the button",
+									"type": "boolean"
+								},
+								"url": {
+									"order": 2,
+									"showIf": {
+										"advanced.urlType": "provided"
+									},
+									"title": "URL",
+									"type": "string"
+								},
+								"urlType": {
+									"default": "automatic",
+									"enum": [
+										"automatic",
+										"provided"
+									],
+									"enumNames": {
+										"automatic": "Automatically use the URL of the page displaying the button",
+										"provided": "Specify a particular URL"
+									},
+									"format": "radios",
+									"order": 1,
+									"title": "URL to Like",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"showAdvanced": true
+							},
+							"title": "Advanced options",
+							"type": "object"
+						},
+						"layout": {
+							"default": "button_count",
+							"enum": [
+								"button",
+								"button_count",
+								"box_count",
+								"standard"
+							],
+							"enumNames": {
+								"box_count": "Large button with Like count",
+								"button": "Small button",
+								"button_count": "Small button with Like count",
+								"standard": "Small button with Like count and message"
+							},
+							"format": "radios",
+							"order": 2,
+							"title": "Button style",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "after",
+								"selector": "h1"
+							},
+							"description": "Select where you want the icons to be added to your site.",
+							"format": "element",
+							"order": 2,
+							"title": "Location",
+							"type": "object"
+						},
+						"showAdvanced": {
+							"default": false,
+							"order": 3,
+							"title": "Show advanced options",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"layout",
+								"location",
+								"advanced"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"showAdvanced"
+							],
+							"execute": "window",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/6MA5UrectMX3",
+			"metadata": {
+				"code": {
+					"sourceTag": "6MA5UrectMX3",
+					"uploadedOn": "2017-05-18T04:47:11.384989725Z"
+				}
+			},
+			"created": "2017-05-18T04:47:10.978064Z",
+			"proposedApp": {
+				"id": "Bqo4JBRinHeM",
+				"title": "Like Button",
+				"shortDescription": "Build your social media presence with Facebook!",
+				"longDescription": "# A Like button for every occasion.\n\nAdd a Facebook Like button to your site to build your social media presence.\n\n## Features\n\n- Multiple sizes and shapes\n- Optional share button\n- Custom URLs",
+				"instructions": "Please note the “Like” count within the preview may not reflect the number of likes of your actual page.",
+				"alias": "like-button",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/pdZlnuCRpC9RcPXulcwp_icon.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/NhEipkGT4KfnqBcPw1cg_tile.png",
+				"featuredAppImage": "",
+				"author": "Facebook Inc.",
+				"tagline": "",
+				"website": "https://facebook.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"social-media",
+					"by-cloudflare",
+					"marketing"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "6MA5UrectMX3"
+				},
+				"created": "2017-05-18T04:47:10.22564Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedAt": "2017-05-18T04:47:12.415551857Z",
+				"canceledAt": null,
+				"reviewedAt": "2017-05-18T04:50:12.732828148Z"
+			}
+		},
+		{
+			"tag": "v1.0.1",
+			"appId": "Bqo4JBRinHeM",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						},
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"advanced": {
+							"order": 4,
+							"properties": {
+								"action": {
+									"default": "like",
+									"description": "Facebook allows Like buttons to alternatively use the text “Recommend”.",
+									"enum": [
+										"like",
+										"recommend"
+									],
+									"enumNames": {
+										"like": "“Like”",
+										"recommend": "“Recommend”"
+									},
+									"format": "radios",
+									"order": 3,
+									"showIf": {
+										"layout": "standard"
+									},
+									"title": "Button text",
+									"type": "string"
+								},
+								"share": {
+									"default": true,
+									"order": 4,
+									"title": "Also show “Share” button",
+									"type": "boolean"
+								},
+								"showFaces": {
+									"default": false,
+									"order": 5,
+									"showIf": {
+										"layout": "standard"
+									},
+									"title": "Show profile photos of those who’ve liked alongside the button",
+									"type": "boolean"
+								},
+								"url": {
+									"order": 2,
+									"showIf": {
+										"advanced.urlType": "provided"
+									},
+									"title": "URL",
+									"type": "string"
+								},
+								"urlType": {
+									"default": "automatic",
+									"enum": [
+										"automatic",
+										"provided"
+									],
+									"enumNames": {
+										"automatic": "Automatically use the URL of the page displaying the button",
+										"provided": "Specify a particular URL"
+									},
+									"format": "radios",
+									"order": 1,
+									"title": "URL to Like",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"showAdvanced": true
+							},
+							"title": "Advanced options",
+							"type": "object"
+						},
+						"layout": {
+							"default": "button_count",
+							"enum": [
+								"button",
+								"button_count",
+								"box_count",
+								"standard"
+							],
+							"enumNames": {
+								"box_count": "Large button with Like count",
+								"button": "Small button",
+								"button_count": "Small button with Like count",
+								"standard": "Small button with Like count and message"
+							},
+							"format": "radios",
+							"order": 2,
+							"title": "Button style",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "after",
+								"selector": "h1"
+							},
+							"description": "Select where you want the icons to be added to your site.",
+							"format": "element",
+							"order": 2,
+							"title": "Location",
+							"type": "object"
+						},
+						"showAdvanced": {
+							"default": false,
+							"order": 3,
+							"title": "Show advanced options",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"layout",
+								"location",
+								"advanced"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"showAdvanced"
+							],
+							"execute": "window",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/6MA5UrectMX3",
+			"created": "2017-05-18T21:37:15.857024Z",
+			"proposedApp": {
+				"id": "Bqo4JBRinHeM",
+				"title": "Like Button",
+				"shortDescription": "Build your social media presence with Facebook!",
+				"longDescription": "# A Like button for every occasion.\n\nAdd a Facebook Like button to your site to build your social media presence.\n\n## Features\n\n- Multiple sizes and shapes\n- Optional share button\n- Custom URLs",
+				"instructions": "Please note the “Like” count within the preview may not reflect the number of likes of your actual page.",
+				"alias": "like-button",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/pdZlnuCRpC9RcPXulcwp_icon.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Facebook Inc.",
+				"tagline": "",
+				"website": "https://facebook.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"social-media",
+					"by-cloudflare",
+					"marketing"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "6MA5UrectMX3"
+				},
+				"created": "2017-05-18T04:47:10.22564Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "1e57d294e97e29816d5d04c78ed67257",
+				"requestedAt": "2017-05-18T21:37:33.324287306Z",
+				"canceledAt": null,
+				"reviewedByUserId": "1e57d294e97e29816d5d04c78ed67257",
+				"reviewedAt": "2017-05-18T21:37:41.814469293Z"
+			}
+		},
+		{
+			"tag": "v1.0.2",
+			"appId": "Bqo4JBRinHeM",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						},
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"advanced": {
+							"order": 4,
+							"properties": {
+								"action": {
+									"default": "like",
+									"description": "Facebook allows Like buttons to alternatively use the text “Recommend”.",
+									"enum": [
+										"like",
+										"recommend"
+									],
+									"enumNames": {
+										"like": "“Like”",
+										"recommend": "“Recommend”"
+									},
+									"format": "radios",
+									"order": 3,
+									"showIf": {
+										"layout": "standard"
+									},
+									"title": "Button text",
+									"type": "string"
+								},
+								"share": {
+									"default": true,
+									"order": 4,
+									"title": "Also show “Share” button",
+									"type": "boolean"
+								},
+								"showFaces": {
+									"default": false,
+									"order": 5,
+									"showIf": {
+										"layout": "standard"
+									},
+									"title": "Show profile photos of those who’ve liked alongside the button",
+									"type": "boolean"
+								},
+								"url": {
+									"order": 2,
+									"showIf": {
+										"advanced.urlType": "provided"
+									},
+									"title": "URL",
+									"type": "string"
+								},
+								"urlType": {
+									"default": "automatic",
+									"enum": [
+										"automatic",
+										"provided"
+									],
+									"enumNames": {
+										"automatic": "Automatically use the URL of the page displaying the button",
+										"provided": "Specify a particular URL"
+									},
+									"format": "radios",
+									"order": 1,
+									"title": "URL to Like",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"showAdvanced": true
+							},
+							"title": "Advanced options",
+							"type": "object"
+						},
+						"layout": {
+							"default": "button_count",
+							"enum": [
+								"button",
+								"button_count",
+								"box_count",
+								"standard"
+							],
+							"enumNames": {
+								"box_count": "Large button with Like count",
+								"button": "Small button",
+								"button_count": "Small button with Like count",
+								"standard": "Small button with Like count and message"
+							},
+							"format": "radios",
+							"order": 2,
+							"title": "Button style",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "after",
+								"selector": "h1"
+							},
+							"description": "Select where you want the icons to be added to your site.",
+							"format": "element",
+							"order": 2,
+							"title": "Location",
+							"type": "object"
+						},
+						"showAdvanced": {
+							"default": false,
+							"order": 3,
+							"title": "Show advanced options",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"layout",
+								"location",
+								"advanced"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"showAdvanced"
+							],
+							"execute": "window",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/6MA5UrectMX3",
+			"created": "2017-05-24T23:13:21.206661Z",
+			"proposedApp": {
+				"id": "Bqo4JBRinHeM",
+				"title": "Like Button",
+				"shortDescription": "Build your social media presence with Facebook!",
+				"longDescription": "Add a Facebook Like button to your site to build your social media presence.\n\n### Features\n\n- Multiple sizes and shapes\n- Optional share button\n- Custom URLs",
+				"instructions": "Please note the “Like” count within the preview may not reflect the number of likes of your actual page.",
+				"alias": "like-button",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/pdZlnuCRpC9RcPXulcwp_icon.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Facebook Inc.",
+				"tagline": "",
+				"website": "https://facebook.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"social-media",
+					"by-cloudflare",
+					"marketing"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "6MA5UrectMX3"
+				},
+				"created": "2017-05-18T04:47:10.22564Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "1e57d294e97e29816d5d04c78ed67257",
+				"requestedAt": "2017-05-24T23:13:30.764355673Z",
+				"canceledAt": null,
+				"reviewedByUserId": "1e57d294e97e29816d5d04c78ed67257",
+				"reviewedAt": "2017-05-24T23:13:44.928684851Z"
+			}
+		},
+		{
+			"tag": "1.1.0",
+			"appId": "Bqo4JBRinHeM",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						},
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"advanced": {
+							"order": 4,
+							"properties": {
+								"action": {
+									"default": "like",
+									"description": "Facebook allows Like buttons to alternatively use the text “Recommend”.",
+									"enum": [
+										"like",
+										"recommend"
+									],
+									"enumNames": {
+										"like": "“Like”",
+										"recommend": "“Recommend”"
+									},
+									"format": "radios",
+									"order": 3,
+									"showIf": {
+										"layout": "standard"
+									},
+									"title": "Button text",
+									"type": "string"
+								},
+								"share": {
+									"default": true,
+									"order": 4,
+									"title": "Also show “Share” button",
+									"type": "boolean"
+								},
+								"showFaces": {
+									"default": false,
+									"order": 5,
+									"showIf": {
+										"layout": "standard"
+									},
+									"title": "Show profile photos of those who’ve liked alongside the button",
+									"type": "boolean"
+								},
+								"url": {
+									"order": 2,
+									"showIf": {
+										"advanced.urlType": "provided"
+									},
+									"title": "URL",
+									"type": "string"
+								},
+								"urlType": {
+									"default": "automatic",
+									"enum": [
+										"automatic",
+										"provided"
+									],
+									"enumNames": {
+										"automatic": "Automatically use the URL of the page displaying the button",
+										"provided": "Specify a particular URL"
+									},
+									"format": "radios",
+									"order": 1,
+									"title": "URL to Like",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"showAdvanced": true
+							},
+							"title": "Advanced options",
+							"type": "object"
+						},
+						"layout": {
+							"default": "button_count",
+							"enum": [
+								"button",
+								"button_count",
+								"box_count",
+								"standard"
+							],
+							"enumNames": {
+								"box_count": "Large button with Like count",
+								"button": "Small button",
+								"button_count": "Small button with Like count",
+								"standard": "Small button with Like count and message"
+							},
+							"format": "radios",
+							"order": 2,
+							"title": "Button style",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "after",
+								"selector": "h1"
+							},
+							"description": "Select where you want the icons to be added to your site.",
+							"format": "element",
+							"order": 2,
+							"title": "Location",
+							"type": "object"
+						},
+						"showAdvanced": {
+							"default": false,
+							"order": 3,
+							"title": "Show advanced options",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"layout",
+								"location",
+								"advanced"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"showAdvanced"
+							],
+							"execute": "window",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/6MA5UrectMX3",
+			"created": "2017-06-16T18:04:50.350721Z",
+			"proposedApp": {
+				"id": "Bqo4JBRinHeM",
+				"title": "Like Button",
+				"shortDescription": "Build your social media presence with Facebook!",
+				"longDescription": "Add a Facebook Like button to your site to build your social media presence.\n\n### Features\n\n- Multiple sizes and shapes\n- Optional share button\n- Custom URLs",
+				"instructions": "Please note the “Like” count within the preview may not reflect the number of likes of your actual page.",
+				"alias": "like-button",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/A2zN8mtIQuuj7c1EVHaq_icon.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/0gggOxURySn1GGyBuOXv_tile.png",
+				"featuredAppImage": "",
+				"author": "Facebook Inc.",
+				"tagline": "",
+				"website": "https://facebook.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"social-media",
+					"by-cloudflare",
+					"marketing"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "6MA5UrectMX3"
+				},
+				"created": "2017-05-18T04:47:10.22564Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "1e57d294e97e29816d5d04c78ed67257",
+				"requestedAt": "2017-06-16T18:05:24.626292359Z",
+				"canceledAt": null,
+				"reviewedByUserId": "1e57d294e97e29816d5d04c78ed67257",
+				"reviewedAt": "2017-06-16T18:05:35.714205532Z"
+			}
+		},
+		{
+			"tag": "1.2.0",
+			"appId": "Bqo4JBRinHeM",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						},
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"advanced": {
+							"order": 4,
+							"properties": {
+								"action": {
+									"default": "like",
+									"description": "Facebook allows Like buttons to alternatively use the text “Recommend”.",
+									"enum": [
+										"like",
+										"recommend"
+									],
+									"enumNames": {
+										"like": "“Like”",
+										"recommend": "“Recommend”"
+									},
+									"format": "radios",
+									"order": 3,
+									"showIf": {
+										"layout": "standard"
+									},
+									"title": "Button text",
+									"type": "string"
+								},
+								"share": {
+									"default": true,
+									"order": 4,
+									"title": "Also show “Share” button",
+									"type": "boolean"
+								},
+								"showFaces": {
+									"default": false,
+									"order": 5,
+									"showIf": {
+										"layout": "standard"
+									},
+									"title": "Show profile photos of those who’ve liked alongside the button",
+									"type": "boolean"
+								},
+								"url": {
+									"order": 2,
+									"showIf": {
+										"advanced.urlType": "provided"
+									},
+									"title": "URL",
+									"type": "string"
+								},
+								"urlType": {
+									"default": "automatic",
+									"enum": [
+										"automatic",
+										"provided"
+									],
+									"enumNames": {
+										"automatic": "Automatically use the URL of the page displaying the button",
+										"provided": "Specify a particular URL"
+									},
+									"format": "radios",
+									"order": 1,
+									"title": "URL to Like",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"showAdvanced": true
+							},
+							"title": "Advanced options",
+							"type": "object"
+						},
+						"layout": {
+							"default": "button_count",
+							"enum": [
+								"button",
+								"button_count",
+								"box_count",
+								"standard"
+							],
+							"enumNames": {
+								"box_count": "Large button with Like count",
+								"button": "Small button",
+								"button_count": "Small button with Like count",
+								"standard": "Small button with Like count and message"
+							},
+							"format": "radios",
+							"order": 2,
+							"title": "Button style",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "after",
+								"selector": "h1"
+							},
+							"description": "Select where you want the icons to be added to your site.",
+							"format": "element",
+							"order": 2,
+							"title": "Location",
+							"type": "object"
+						},
+						"showAdvanced": {
+							"default": false,
+							"order": 3,
+							"title": "Show advanced options",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"layout",
+								"location",
+								"advanced"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"showAdvanced"
+							],
+							"execute": "window",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/6MA5UrectMX3",
+			"created": "2017-06-16T20:26:40.724856Z",
+			"proposedApp": {
+				"id": "Bqo4JBRinHeM",
+				"title": "Like Button",
+				"shortDescription": "Build your social media presence with Facebook!",
+				"longDescription": "Add a Facebook Like button to your site to build your social media presence.\n\n### Features\n\n- Multiple sizes and shapes\n- Optional share button\n- Custom URLs",
+				"instructions": "Please note the “Like” count within the preview may not reflect the number of likes of your actual page.",
+				"alias": "like-button",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/A2zN8mtIQuuj7c1EVHaq_icon.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/zl9eCAk7S5KKEnF9sMsr_tile.png",
+				"featuredAppImage": "",
+				"author": "Facebook Inc.",
+				"tagline": "",
+				"website": "https://facebook.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"social-media",
+					"by-cloudflare",
+					"marketing"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "6MA5UrectMX3"
+				},
+				"created": "2017-05-18T04:47:10.22564Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "1e57d294e97e29816d5d04c78ed67257",
+				"requestedAt": "2017-06-16T20:27:11.60968095Z",
+				"canceledAt": null,
+				"reviewedByUserId": "1e57d294e97e29816d5d04c78ed67257",
+				"reviewedAt": "2017-06-16T20:27:24.753089043Z"
+			}
+		},
+		{
+			"tag": "1.2.1",
+			"appId": "Bqo4JBRinHeM",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						},
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"advanced": {
+							"order": 4,
+							"properties": {
+								"action": {
+									"default": "like",
+									"description": "Facebook allows Like buttons to alternatively use the text “Recommend”.",
+									"enum": [
+										"like",
+										"recommend"
+									],
+									"enumNames": {
+										"like": "“Like”",
+										"recommend": "“Recommend”"
+									},
+									"format": "radios",
+									"order": 3,
+									"showIf": {
+										"layout": "standard"
+									},
+									"title": "Button text",
+									"type": "string"
+								},
+								"share": {
+									"default": true,
+									"order": 4,
+									"title": "Also show “Share” button",
+									"type": "boolean"
+								},
+								"showFaces": {
+									"default": false,
+									"order": 5,
+									"showIf": {
+										"layout": "standard"
+									},
+									"title": "Show profile photos of those who’ve liked alongside the button",
+									"type": "boolean"
+								},
+								"url": {
+									"order": 2,
+									"showIf": {
+										"advanced.urlType": "provided"
+									},
+									"title": "URL",
+									"type": "string"
+								},
+								"urlType": {
+									"default": "automatic",
+									"enum": [
+										"automatic",
+										"provided"
+									],
+									"enumNames": {
+										"automatic": "Automatically use the URL of the page displaying the button",
+										"provided": "Specify a particular URL"
+									},
+									"format": "radios",
+									"order": 1,
+									"title": "URL to Like",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"showAdvanced": true
+							},
+							"title": "Advanced options",
+							"type": "object"
+						},
+						"layout": {
+							"default": "button_count",
+							"enum": [
+								"button",
+								"button_count",
+								"box_count",
+								"standard"
+							],
+							"enumNames": {
+								"box_count": "Large button with Like count",
+								"button": "Small button",
+								"button_count": "Small button with Like count",
+								"standard": "Small button with Like count and message"
+							},
+							"format": "radios",
+							"order": 2,
+							"title": "Button style",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "after",
+								"selector": "h1"
+							},
+							"description": "Select where you want the icons to be added to your site.",
+							"format": "element",
+							"order": 2,
+							"title": "Location",
+							"type": "object"
+						},
+						"showAdvanced": {
+							"default": false,
+							"order": 3,
+							"title": "Show advanced options",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"layout",
+								"location",
+								"advanced"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"showAdvanced"
+							],
+							"execute": "window",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.9,
+				"upvotes": 18,
+				"downvotes": 2
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/6MA5UrectMX3",
+			"created": "2017-07-06T08:49:48.743102Z",
+			"proposedApp": {
+				"id": "Bqo4JBRinHeM",
+				"title": "Like Button",
+				"shortDescription": "Build your social media presence with Facebook!",
+				"longDescription": "Add a Facebook Like button to your site to build your social media presence.\n\n### Features\n\n- Multiple sizes and shapes\n- Optional share button\n- Custom URLs",
+				"instructions": "Please note the “Like” count within the preview may not reflect the number of likes of your actual page.",
+				"alias": "like-button",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/A2zN8mtIQuuj7c1EVHaq_icon.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/zl9eCAk7S5KKEnF9sMsr_tile.png",
+				"featuredAppImage": "",
+				"author": "Facebook Inc.",
+				"tagline": "",
+				"website": "https://facebook.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"social-media",
+					"by-cloudflare",
+					"marketing"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "6MA5UrectMX3"
+				},
+				"created": "2017-05-18T04:47:10.22564Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-07-06T08:49:48.935877247Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-07-06T08:57:34.434083456Z"
+			}
+		},
+		{
+			"tag": "1.2.2",
+			"appId": "Bqo4JBRinHeM",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						},
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"advanced": {
+							"order": 4,
+							"properties": {
+								"action": {
+									"default": "like",
+									"description": "Facebook allows Like buttons to alternatively use the text “Recommend”.",
+									"enum": [
+										"like",
+										"recommend"
+									],
+									"enumNames": {
+										"like": "“Like”",
+										"recommend": "“Recommend”"
+									},
+									"format": "radios",
+									"order": 3,
+									"showIf": {
+										"layout": "standard"
+									},
+									"title": "Button text",
+									"type": "string"
+								},
+								"share": {
+									"default": true,
+									"order": 4,
+									"title": "Also show “Share” button",
+									"type": "boolean"
+								},
+								"showFaces": {
+									"default": false,
+									"order": 5,
+									"showIf": {
+										"layout": "standard"
+									},
+									"title": "Show profile photos of those who’ve liked alongside the button",
+									"type": "boolean"
+								},
+								"url": {
+									"order": 2,
+									"showIf": {
+										"advanced.urlType": "provided"
+									},
+									"title": "URL",
+									"type": "string"
+								},
+								"urlType": {
+									"default": "automatic",
+									"enum": [
+										"automatic",
+										"provided"
+									],
+									"enumNames": {
+										"automatic": "Automatically use the URL of the page displaying the button",
+										"provided": "Specify a particular URL"
+									},
+									"format": "radios",
+									"order": 1,
+									"title": "URL to Like",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"showAdvanced": true
+							},
+							"title": "Advanced options",
+							"type": "object"
+						},
+						"layout": {
+							"default": "button_count",
+							"enum": [
+								"button",
+								"button_count",
+								"box_count",
+								"standard"
+							],
+							"enumNames": {
+								"box_count": "Large button with Like count",
+								"button": "Small button",
+								"button_count": "Small button with Like count",
+								"standard": "Small button with Like count and message"
+							},
+							"format": "radios",
+							"order": 2,
+							"title": "Button style",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "after",
+								"selector": "h1"
+							},
+							"description": "Select where you want the icons to be added to your site.",
+							"format": "element",
+							"order": 2,
+							"title": "Location",
+							"type": "object"
+						},
+						"showAdvanced": {
+							"default": false,
+							"order": 3,
+							"title": "Show advanced options",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"layout",
+								"location",
+								"advanced"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"showAdvanced"
+							],
+							"execute": "window",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/6MA5UrectMX3",
+			"created": "2018-01-22T20:38:50.921909Z",
+			"proposedApp": {
+				"id": "Bqo4JBRinHeM",
+				"title": "Like Button",
+				"shortDescription": "Build your social media presence with Facebook!",
+				"longDescription": "Add a Facebook Like button to your site to build your social media presence.\n\n### Features\n\n- Multiple sizes and shapes\n- Optional share button\n- Custom URLs",
+				"instructions": "Please note the “Like” count within the preview may not reflect the number of likes of your actual page.",
+				"alias": "like-button",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/A2zN8mtIQuuj7c1EVHaq_icon.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/zl9eCAk7S5KKEnF9sMsr_tile.png",
+				"featuredAppImage": "",
+				"author": "Facebook Inc.",
+				"tagline": "",
+				"website": "https://facebook.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"social-media",
+					"by-cloudflare",
+					"marketing",
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "6MA5UrectMX3"
+				},
+				"created": "2017-05-18T04:47:10.22564Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-01-22T20:38:51.210136061Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-01-22T20:39:00.162783595Z"
+			}
+		},
+		{
+			"tag": "1.2.3",
+			"appId": "Bqo4JBRinHeM",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						},
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"advanced": {
+							"order": 4,
+							"properties": {
+								"action": {
+									"default": "like",
+									"description": "Facebook allows Like buttons to alternatively use the text “Recommend”.",
+									"enum": [
+										"like",
+										"recommend"
+									],
+									"enumNames": {
+										"like": "“Like”",
+										"recommend": "“Recommend”"
+									},
+									"format": "radios",
+									"order": 3,
+									"showIf": {
+										"layout": "standard"
+									},
+									"title": "Button text",
+									"type": "string"
+								},
+								"share": {
+									"default": true,
+									"order": 4,
+									"title": "Also show “Share” button",
+									"type": "boolean"
+								},
+								"showFaces": {
+									"default": false,
+									"order": 5,
+									"showIf": {
+										"layout": "standard"
+									},
+									"title": "Show profile photos of those who’ve liked alongside the button",
+									"type": "boolean"
+								},
+								"url": {
+									"order": 2,
+									"showIf": {
+										"advanced.urlType": "provided"
+									},
+									"title": "URL",
+									"type": "string"
+								},
+								"urlType": {
+									"default": "automatic",
+									"enum": [
+										"automatic",
+										"provided"
+									],
+									"enumNames": {
+										"automatic": "Automatically use the URL of the page displaying the button",
+										"provided": "Specify a particular URL"
+									},
+									"format": "radios",
+									"order": 1,
+									"title": "URL to Like",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"showAdvanced": true
+							},
+							"title": "Advanced options",
+							"type": "object"
+						},
+						"layout": {
+							"default": "button_count",
+							"enum": [
+								"button",
+								"button_count",
+								"box_count",
+								"standard"
+							],
+							"enumNames": {
+								"box_count": "Large button with Like count",
+								"button": "Small button",
+								"button_count": "Small button with Like count",
+								"standard": "Small button with Like count and message"
+							},
+							"format": "radios",
+							"order": 2,
+							"title": "Button style",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "after",
+								"selector": "h1"
+							},
+							"description": "Select where you want the icons to be added to your site.",
+							"format": "element",
+							"order": 2,
+							"title": "Location",
+							"type": "object"
+						},
+						"showAdvanced": {
+							"default": false,
+							"order": 3,
+							"title": "Show advanced options",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"layout",
+								"location",
+								"advanced"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"showAdvanced"
+							],
+							"execute": "window",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.84,
+				"upvotes": 16,
+				"downvotes": 3
+			},
+			"releaseNotes": "Added to Cloudflare Apps recommendation engine",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/6MA5UrectMX3",
+			"created": "2018-02-06T21:46:00.852675Z",
+			"proposedApp": {
+				"id": "Bqo4JBRinHeM",
+				"title": "Like Button",
+				"shortDescription": "Build your social media presence with Facebook!",
+				"longDescription": "Add a Facebook Like button to your site to build your social media presence.\n\n### Features\n\n- Multiple sizes and shapes\n- Optional share button\n- Custom URLs",
+				"instructions": "Please note the “Like” count within the preview may not reflect the number of likes of your actual page.",
+				"alias": "like-button",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/A2zN8mtIQuuj7c1EVHaq_icon.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/zl9eCAk7S5KKEnF9sMsr_tile.png",
+				"featuredAppImage": "",
+				"author": "Facebook Inc.",
+				"tagline": "",
+				"website": "https://facebook.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"social-media",
+					"by-cloudflare",
+					"marketing",
+					"social-and-communication",
+					"recommended-for-blogs"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "6MA5UrectMX3"
+				},
+				"created": "2017-05-18T04:47:10.22564Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-02-06T21:46:01.1988796Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-02-06T21:56:14.401222523Z"
+			}
+		},
+		{
+			"tag": "1.2.4",
+			"appId": "Bqo4JBRinHeM",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						},
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"advanced": {
+							"order": 4,
+							"properties": {
+								"action": {
+									"default": "like",
+									"description": "Facebook allows Like buttons to alternatively use the text “Recommend”.",
+									"enum": [
+										"like",
+										"recommend"
+									],
+									"enumNames": {
+										"like": "“Like”",
+										"recommend": "“Recommend”"
+									},
+									"format": "radios",
+									"order": 3,
+									"showIf": {
+										"layout": "standard"
+									},
+									"title": "Button text",
+									"type": "string"
+								},
+								"share": {
+									"default": true,
+									"order": 4,
+									"title": "Also show “Share” button",
+									"type": "boolean"
+								},
+								"showFaces": {
+									"default": false,
+									"order": 5,
+									"showIf": {
+										"layout": "standard"
+									},
+									"title": "Show profile photos of those who’ve liked alongside the button",
+									"type": "boolean"
+								},
+								"url": {
+									"order": 2,
+									"showIf": {
+										"advanced.urlType": "provided"
+									},
+									"title": "URL",
+									"type": "string"
+								},
+								"urlType": {
+									"default": "automatic",
+									"enum": [
+										"automatic",
+										"provided"
+									],
+									"enumNames": {
+										"automatic": "Automatically use the URL of the page displaying the button",
+										"provided": "Specify a particular URL"
+									},
+									"format": "radios",
+									"order": 1,
+									"title": "URL to Like",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"showAdvanced": true
+							},
+							"title": "Advanced options",
+							"type": "object"
+						},
+						"layout": {
+							"default": "button_count",
+							"enum": [
+								"button",
+								"button_count",
+								"box_count",
+								"standard"
+							],
+							"enumNames": {
+								"box_count": "Large button with Like count",
+								"button": "Small button",
+								"button_count": "Small button with Like count",
+								"standard": "Small button with Like count and message"
+							},
+							"format": "radios",
+							"order": 2,
+							"title": "Button style",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "after",
+								"selector": "h1"
+							},
+							"description": "Select where you want the icons to be added to your site.",
+							"format": "element",
+							"order": 2,
+							"title": "Location",
+							"type": "object"
+						},
+						"showAdvanced": {
+							"default": false,
+							"order": 3,
+							"title": "Show advanced options",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"layout",
+								"location",
+								"advanced"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"showAdvanced"
+							],
+							"execute": "window",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.81,
+				"upvotes": 236,
+				"downvotes": 54
+			},
+			"releaseNotes": "Updated app's categories",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/6MA5UrectMX3",
+			"created": "2018-11-13T20:25:09.105086Z",
+			"proposedApp": {
+				"id": "Bqo4JBRinHeM",
+				"title": "Like Button",
+				"shortDescription": "Build your social media presence with Facebook!",
+				"longDescription": "Add a Facebook Like button to your site to build your social media presence.\n\n### Features\n\n- Multiple sizes and shapes\n- Optional share button\n- Custom URLs",
+				"instructions": "Please note the “Like” count within the preview may not reflect the number of likes of your actual page.",
+				"alias": "like-button",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/A2zN8mtIQuuj7c1EVHaq_icon.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/zl9eCAk7S5KKEnF9sMsr_tile.png",
+				"featuredAppImage": "",
+				"author": "Facebook Inc.",
+				"tagline": "",
+				"website": "https://facebook.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication",
+					"recommended-for-blogs"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "6MA5UrectMX3"
+				},
+				"created": "2017-05-18T04:47:10.22564Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-11-13T20:25:10.408988066Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-11-14T17:45:23.325404158Z"
+			}
+		}
+	]
+}

@@ -1,0 +1,1804 @@
+{
+	"id": "3qZ8AkruuVSy",
+	"title": "Moesif API Insights",
+	"shortDescription": "Deep product insights into your APIs and customers.",
+	"longDescription": "Build better API products with user-centric API observability:\n\n## API Product Intelligence\n* [Understand API usage](https://www.moesif.com/features/api-analytics) and user behavior\n* [Debug and fix ](https://www.moesif.com/features/api-logs) API issues quickly\n\n## API Monitoring\n* [Get alerted on issues](https://www.moesif.com/features/api-monitoring) and anomalous behavior\n* [Create dashboards](https://www.moesif.com/features/api-dashboards) and share KPIs with colleagues\n* [Embed metrics](https://www.moesif.com/features/embedded-api-logs) in your app to improve developer experience\n\n## Targeting and Automation\n* [Leverage behavioral emails](https://www.moesif.com/features/user-behavioral-emails) to keep customers informed\n* [Block threats and restrict access](https://www.moesif.com/features/api-governance-rules) with governance.",
+	"instructions": "Create your free account at [moesif.com](https://www.moesif.com/) to get started.",
+	"alias": "moesif",
+	"orgId": "9293da51a35cb733359ac4e4bb7fd844",
+	"icon": "https://images.cloudflareapps.com/b4QiGkoUKFSk/moesif_square-320w.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/RhuaHExpFgjr/real-time-api-logs.png",
+		"https://images.cloudflareapps.com/RhuaHExpFgjr/cohort-retention-analysis.png",
+		"https://images.cloudflareapps.com/RhuaHExpFgjr/time-series.png",
+		"https://images.cloudflareapps.com/RhuaHExpFgjr/deep-segmentation.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/iBXo9kU87GkD/moesif-cloudflare%20%281%29.png",
+	"featuredAppImage": "",
+	"author": "Moesif",
+	"tagline": "",
+	"website": "https://www.moesif.com/",
+	"sourceURL": "https://github.com/moesif/moesif-cloudflare",
+	"termsOfServiceURL": "https://www.moesif.com/terms",
+	"privacyPolicyURL": "https://www.moesif.com/privacy",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.1.4",
+	"infoVersion": "1.1.4",
+	"points": 0,
+	"supportEmail": "support@moesif.com",
+	"products": [],
+	"categoryIds": [
+		"insights"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "9293da51a35cb733359ac4e4bb7fd844",
+			"created": "2019-01-31T00:36:14.195343708Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "bjUN2B-DrQGv"
+	},
+	"created": "2019-01-31T00:06:37.349421Z",
+	"org": {
+		"id": "9293da51a35cb733359ac4e4bb7fd844",
+		"title": "",
+		"username": "9293da51a35cb733359ac4e4bb7fd844",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "insights",
+			"title": "Insights",
+			"description": "Apps that provide insight into your visitors.",
+			"icon": "",
+			"points": 40,
+			"visible": true,
+			"created": "2018-11-13T20:10:05.739284Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "0.0.1",
+			"appId": "3qZ8AkruuVSy",
+			"definition": {
+				"options": {
+					"properties": {
+						"appId": {
+							"default": "",
+							"title": "Moesif App Id (required)",
+							"type": "string"
+						},
+						"hideCreditCards": {
+							"default": true,
+							"title": "Remove Credit Card Numbers from API Requests. Leave this enabled if your API processes credit card information.",
+							"type": "boolean"
+						},
+						"sessionTokenHeader": {
+							"default": "",
+							"title": "Request / Response Header Containing Session Token (optional)",
+							"type": "string"
+						},
+						"userIdHeader": {
+							"default": "",
+							"title": "Request / Response Header Containing User ID (optional)",
+							"type": "string"
+						}
+					}
+				},
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./MoesifWorker.js"
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": false,
+				"rating": 0,
+				"upvotes": 0,
+				"downvotes": 0
+			},
+			"releaseNotes": "V0.0.1 with support for credit card info removal as well as session / user identification.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/bjUN2B-DrQGv",
+			"metadata": {
+				"code": {
+					"sourceTag": "bjUN2B-DrQGv",
+					"uploadedOn": "2019-01-31T00:06:37.677511708Z"
+				}
+			},
+			"created": "2019-01-31T00:06:37.540011Z",
+			"proposedApp": {
+				"id": "3qZ8AkruuVSy",
+				"title": "moesif-cloudflare",
+				"shortDescription": "Deep product insights into your APIs and customers.",
+				"longDescription": "# Moesif is an AI-powered API insights platform for:\n- API Debugging\n- API Monitoring\n- API Analytics\n\nSupport for REST, GraphQL, Ethereum Web3, JSON-RPC, SOAP, & more\n\nGet real-time visibility into your (or your 3rd party) live API traffic saving you debug time\n\n- Understand how your customers actually use your API\n- Root cause issues quickly with ML powered features like Smart Diff\n- Get Slack and PagerDuty alerts of anomalous API behavior that pings tests don’t catch\n\n## Why Moesif?\nMoesif is the most advanced AI-powered debugging and analytics platform designed specifically for production APIs including RESTful, GraphQL, Ethereum Web3, and SOAP APIs.\nIt helps you debug and understand deeply API related issues. Moesif prevents minor issues from becoming major outages through deep API monitoring for anomalous behavior of your production API traffic.\n\n## Who is Moesif for?\nMoesif is designed for API developers and product managers of APIs such as public/open API with a developer community or partner APIs. In addition, applications that are architected around using 3rd party services or serverless functions can benefit deeply from Moesif’s API insights.\n\nThousands of developers process billions of API calls through Moesif for debugging, monitoring and understanding usage.",
+				"instructions": "Create your app at [moesif.com](https://www.moesif.com/) to get started.",
+				"alias": "moesif",
+				"orgId": "9293da51a35cb733359ac4e4bb7fd844",
+				"icon": "https://images.cloudflareapps.com/b4QiGkoUKFSk/moesif_square-320w.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/3oZPv27SIrDF/4-answers-analytics-map-duration-delay.png",
+					"https://images.cloudflareapps.com/3oZPv27SIrDF/1-answers-monitoring-average-time.png",
+					"https://images.cloudflareapps.com/3oZPv27SIrDF/2-answers-realtime-event-stream.png",
+					"https://images.cloudflareapps.com/3oZPv27SIrDF/5-answers-analytics-customers-401.png",
+					"https://images.cloudflareapps.com/3oZPv27SIrDF/3-answers-debugging-sankey.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/iBXo9kU87GkD/moesif-cloudflare%20%281%29.png",
+				"featuredAppImage": "",
+				"author": "Moesif",
+				"tagline": "",
+				"website": "https://www.moesif.com/",
+				"sourceURL": "https://github.com/moesif/moesif-cloudflare",
+				"termsOfServiceURL": "https://www.moesif.com/terms",
+				"privacyPolicyURL": "https://www.moesif.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@moesif.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "bjUN2B-DrQGv"
+				},
+				"created": "2019-01-31T00:06:37.349421Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "9293da51a35cb733359ac4e4bb7fd844",
+				"requestedAt": "2019-01-31T00:36:14.179126246Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2019-02-07T20:17:54.841122474Z"
+			}
+		},
+		{
+			"tag": "1.0.0",
+			"appId": "3qZ8AkruuVSy",
+			"definition": {
+				"options": {
+					"properties": {
+						"appId": {
+							"default": "",
+							"description": "Requred, unless \"App Id Overrides\" are used",
+							"order": 1,
+							"title": "Default Moesif App Id",
+							"type": "string"
+						},
+						"hideCreditCards": {
+							"default": true,
+							"order": 4,
+							"title": "Remove Credit Card Numbers from API Requests. Leave this enabled if your API processes credit card information.",
+							"type": "boolean"
+						},
+						"sessionTokenHeader": {
+							"default": "",
+							"description": "Optional",
+							"order": 3,
+							"title": "Request / Response Header Containing Session Token",
+							"type": "string"
+						},
+						"urlPatterns": {
+							"description": "Advanced usage. For assistance with advanced configuration, please contact support@moesif.com. Regular expressions are evaluated in order (top to bottom), and the appId for the first matching regex will be used for a given request. To manually test your regular expressions, you can use the following JavaScript code: new RegExp(urlRegex).test(moesifAppId)",
+							"items": {
+								"properties": {
+									"appId": {
+										"order": 2,
+										"placeholder": "leave blank to ignore requests matching this pattern",
+										"title": "Moesif App Id for Requests with URLs Matching Above Regular Expression",
+										"type": "string"
+									},
+									"regex": {
+										"order": 1,
+										"placeholder": "^https://mydomain.com/api",
+										"title": "URL Regex",
+										"type": "string"
+									}
+								},
+								"title": "Item",
+								"type": "object"
+							},
+							"order": 5,
+							"title": "App Id Overrides",
+							"type": "array"
+						},
+						"userIdHeader": {
+							"default": "",
+							"description": "Optional",
+							"order": 2,
+							"title": "Request / Response Header Containing User ID",
+							"type": "string"
+						}
+					}
+				},
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./MoesifWorker.js"
+					}
+				]
+			},
+			"releaseNotes": "Adds support for whitelisting / blacklisting URLs and support for multiple App IDs.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/bPZT5R2HBivY",
+			"metadata": {
+				"code": {
+					"sourceTag": "bPZT5R2HBivY",
+					"uploadedOn": "2019-02-11T20:14:42.373403654Z"
+				}
+			},
+			"created": "2019-02-11T20:14:42.235949Z",
+			"proposedApp": {
+				"id": "3qZ8AkruuVSy",
+				"title": "moesif-cloudflare",
+				"shortDescription": "Deep product insights into your APIs and customers.",
+				"longDescription": "# Moesif is an AI-powered API insights platform for:\n- API Debugging\n- API Monitoring\n- API Analytics\n\nSupport for REST, GraphQL, Ethereum Web3, JSON-RPC, SOAP, & more\n\nGet real-time visibility into your (or your 3rd party) live API traffic saving you debug time\n\n- Understand how your customers actually use your API\n- Root cause issues quickly with ML powered features like Smart Diff\n- Get Slack and PagerDuty alerts of anomalous API behavior that pings tests don’t catch\n\n## Why Moesif?\nMoesif is the most advanced AI-powered debugging and analytics platform designed specifically for production APIs including RESTful, GraphQL, Ethereum Web3, and SOAP APIs.\nIt helps you debug and understand deeply API related issues. Moesif prevents minor issues from becoming major outages through deep API monitoring for anomalous behavior of your production API traffic.\n\n## Who is Moesif for?\nMoesif is designed for API developers and product managers of APIs such as public/open API with a developer community or partner APIs. In addition, applications that are architected around using 3rd party services or serverless functions can benefit deeply from Moesif’s API insights.\n\nThousands of developers process billions of API calls through Moesif for debugging, monitoring and understanding usage.",
+				"instructions": "Create your app at [moesif.com](https://www.moesif.com/) to get started.",
+				"alias": "moesif",
+				"orgId": "9293da51a35cb733359ac4e4bb7fd844",
+				"icon": "https://images.cloudflareapps.com/b4QiGkoUKFSk/moesif_square-320w.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/3oZPv27SIrDF/4-answers-analytics-map-duration-delay.png",
+					"https://images.cloudflareapps.com/3oZPv27SIrDF/1-answers-monitoring-average-time.png",
+					"https://images.cloudflareapps.com/3oZPv27SIrDF/2-answers-realtime-event-stream.png",
+					"https://images.cloudflareapps.com/3oZPv27SIrDF/5-answers-analytics-customers-401.png",
+					"https://images.cloudflareapps.com/3oZPv27SIrDF/3-answers-debugging-sankey.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/iBXo9kU87GkD/moesif-cloudflare%20%281%29.png",
+				"featuredAppImage": "",
+				"author": "Moesif",
+				"tagline": "",
+				"website": "https://www.moesif.com/",
+				"sourceURL": "https://github.com/moesif/moesif-cloudflare",
+				"termsOfServiceURL": "https://www.moesif.com/terms",
+				"privacyPolicyURL": "https://www.moesif.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@moesif.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "bjUN2B-DrQGv"
+				},
+				"created": "2019-01-31T00:06:37.349421Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "9293da51a35cb733359ac4e4bb7fd844",
+				"requestedAt": "2019-02-11T20:14:42.894655085Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2019-02-13T05:26:53.768217327Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "3qZ8AkruuVSy",
+			"definition": {
+				"options": {
+					"properties": {
+						"appId": {
+							"default": "",
+							"description": "Requred, unless \"App Id Overrides\" are used",
+							"order": 1,
+							"title": "Default Moesif App Id",
+							"type": "string"
+						},
+						"hideCreditCards": {
+							"default": true,
+							"order": 4,
+							"title": "Remove Credit Card Numbers from API Requests. Leave this enabled if your API processes credit card information.",
+							"type": "boolean"
+						},
+						"sessionTokenHeader": {
+							"default": "",
+							"description": "Optional",
+							"order": 3,
+							"title": "Request / Response Header Containing Session Token",
+							"type": "string"
+						},
+						"urlPatterns": {
+							"description": "Advanced usage. For assistance with advanced configuration, please contact support@moesif.com. Regular expressions are evaluated in order (top to bottom), and the appId for the first matching regex will be used for a given request. To manually test your regular expressions, you can use the following JavaScript code: new RegExp(urlRegex).test(moesifAppId)",
+							"items": {
+								"properties": {
+									"appId": {
+										"order": 2,
+										"placeholder": "leave blank to ignore requests matching this pattern",
+										"title": "Moesif App Id for Requests with URLs Matching Above Regular Expression",
+										"type": "string"
+									},
+									"regex": {
+										"order": 1,
+										"placeholder": "^https://mydomain.com/api",
+										"title": "URL Regex",
+										"type": "string"
+									}
+								},
+								"title": "Item",
+								"type": "object"
+							},
+							"order": 5,
+							"title": "App Id Overrides",
+							"type": "array"
+						},
+						"userIdHeader": {
+							"default": "",
+							"description": "Optional",
+							"order": 2,
+							"title": "Request / Response Header Containing User ID",
+							"type": "string"
+						}
+					}
+				},
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./MoesifWorker.js"
+					}
+				]
+			},
+			"releaseNotes": "App renamed from \"moesif-cloudflare\" to \"Moesif API Insights\"",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/bPZT5R2HBivY",
+			"created": "2019-02-14T00:14:29.889325Z",
+			"proposedApp": {
+				"id": "3qZ8AkruuVSy",
+				"title": "Moesif API Insights",
+				"shortDescription": "Deep product insights into your APIs and customers.",
+				"longDescription": "# Moesif is an AI-powered API insights platform for:\n- API Debugging\n- API Monitoring\n- API Analytics\n\nSupport for REST, GraphQL, Ethereum Web3, JSON-RPC, SOAP, & more\n\nGet real-time visibility into your (or your 3rd party) live API traffic saving you debug time\n\n- Understand how your customers actually use your API\n- Root cause issues quickly with ML powered features like Smart Diff\n- Get Slack and PagerDuty alerts of anomalous API behavior that pings tests don’t catch\n\n## Why Moesif?\nMoesif is the most advanced AI-powered debugging and analytics platform designed specifically for production APIs including RESTful, GraphQL, Ethereum Web3, and SOAP APIs.\nIt helps you debug and understand deeply API related issues. Moesif prevents minor issues from becoming major outages through deep API monitoring for anomalous behavior of your production API traffic.\n\n## Who is Moesif for?\nMoesif is designed for API developers and product managers of APIs such as public/open API with a developer community or partner APIs. In addition, applications that are architected around using 3rd party services or serverless functions can benefit deeply from Moesif’s API insights.\n\nThousands of developers process billions of API calls through Moesif for debugging, monitoring and understanding usage.",
+				"instructions": "Create your app at [moesif.com](https://www.moesif.com/) to get started.",
+				"alias": "moesif",
+				"orgId": "9293da51a35cb733359ac4e4bb7fd844",
+				"icon": "https://images.cloudflareapps.com/b4QiGkoUKFSk/moesif_square-320w.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/3oZPv27SIrDF/4-answers-analytics-map-duration-delay.png",
+					"https://images.cloudflareapps.com/3oZPv27SIrDF/1-answers-monitoring-average-time.png",
+					"https://images.cloudflareapps.com/3oZPv27SIrDF/2-answers-realtime-event-stream.png",
+					"https://images.cloudflareapps.com/3oZPv27SIrDF/5-answers-analytics-customers-401.png",
+					"https://images.cloudflareapps.com/3oZPv27SIrDF/3-answers-debugging-sankey.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/iBXo9kU87GkD/moesif-cloudflare%20%281%29.png",
+				"featuredAppImage": "",
+				"author": "Moesif",
+				"tagline": "",
+				"website": "https://www.moesif.com/",
+				"sourceURL": "https://github.com/moesif/moesif-cloudflare",
+				"termsOfServiceURL": "https://www.moesif.com/terms",
+				"privacyPolicyURL": "https://www.moesif.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@moesif.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "bjUN2B-DrQGv"
+				},
+				"created": "2019-01-31T00:06:37.349421Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "9293da51a35cb733359ac4e4bb7fd844",
+				"requestedAt": "2019-02-14T00:14:30.025897392Z",
+				"canceledAt": null,
+				"reviewedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"reviewedAt": "2019-02-14T20:37:16.965047492Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "3qZ8AkruuVSy",
+			"definition": {
+				"options": {
+					"properties": {
+						"appId": {
+							"default": "",
+							"description": "Requred, unless \"App Id Overrides\" are used",
+							"order": 1,
+							"title": "Default Moesif App Id",
+							"type": "string"
+						},
+						"hideCreditCards": {
+							"default": true,
+							"order": 4,
+							"title": "Remove Credit Card Numbers from API Requests. Leave this enabled if your API processes credit card information.",
+							"type": "boolean"
+						},
+						"sessionTokenHeader": {
+							"default": "",
+							"description": "Optional",
+							"order": 3,
+							"title": "Request / Response Header Containing Session Token",
+							"type": "string"
+						},
+						"urlPatterns": {
+							"description": "Advanced usage. For assistance with advanced configuration, please contact support@moesif.com. Regular expressions are evaluated in order (top to bottom), and the appId for the first matching regex will be used for a given request. To manually test your regular expressions, you can use the following JavaScript code: new RegExp(urlRegex).test(moesifAppId)",
+							"items": {
+								"properties": {
+									"appId": {
+										"order": 2,
+										"placeholder": "leave blank to ignore requests matching this pattern",
+										"title": "Moesif App Id for Requests with URLs Matching Above Regular Expression",
+										"type": "string"
+									},
+									"regex": {
+										"order": 1,
+										"placeholder": "^https://mydomain.com/api",
+										"title": "URL Regex",
+										"type": "string"
+									}
+								},
+								"title": "Item",
+								"type": "object"
+							},
+							"order": 5,
+							"title": "App Id Overrides",
+							"type": "array"
+						},
+						"userIdHeader": {
+							"default": "",
+							"description": "Optional",
+							"order": 2,
+							"title": "Request / Response Header Containing User ID",
+							"type": "string"
+						}
+					}
+				},
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./MoesifWorker.js"
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/bPZT5R2HBivY",
+			"created": "2019-02-27T20:43:40.445253Z",
+			"proposedApp": {
+				"id": "3qZ8AkruuVSy",
+				"title": "Moesif API Insights",
+				"shortDescription": "Deep product insights into your APIs and customers.",
+				"longDescription": "# Moesif is an AI-powered API insights platform for:\n- API Debugging\n- API Monitoring\n- API Analytics\n\nSupport for REST, GraphQL, Ethereum Web3, JSON-RPC, SOAP, & more\n\nGet real-time visibility into your (or your 3rd party) live API traffic saving you debug time\n\n- Understand how your customers actually use your API\n- Root cause issues quickly with ML powered features like Smart Diff\n- Get Slack and PagerDuty alerts of anomalous API behavior that pings tests don’t catch\n\n## Why Moesif?\nMoesif is the most advanced AI-powered debugging and analytics platform designed specifically for production APIs including RESTful, GraphQL, Ethereum Web3, and SOAP APIs.\nIt helps you debug and understand deeply API related issues. Moesif prevents minor issues from becoming major outages through deep API monitoring for anomalous behavior of your production API traffic.\n\n## Who is Moesif for?\nMoesif is designed for API developers and product managers of APIs such as public/open API with a developer community or partner APIs. In addition, applications that are architected around using 3rd party services or serverless functions can benefit deeply from Moesif’s API insights.\n\nThousands of developers process billions of API calls through Moesif for debugging, monitoring and understanding usage.",
+				"instructions": "Create your app at [moesif.com](https://www.moesif.com/) to get started.",
+				"alias": "moesif",
+				"orgId": "9293da51a35cb733359ac4e4bb7fd844",
+				"icon": "https://images.cloudflareapps.com/b4QiGkoUKFSk/moesif_square-320w.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/3oZPv27SIrDF/4-answers-analytics-map-duration-delay.png",
+					"https://images.cloudflareapps.com/3oZPv27SIrDF/1-answers-monitoring-average-time.png",
+					"https://images.cloudflareapps.com/3oZPv27SIrDF/2-answers-realtime-event-stream.png",
+					"https://images.cloudflareapps.com/3oZPv27SIrDF/5-answers-analytics-customers-401.png",
+					"https://images.cloudflareapps.com/3oZPv27SIrDF/3-answers-debugging-sankey.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/iBXo9kU87GkD/moesif-cloudflare%20%281%29.png",
+				"featuredAppImage": "",
+				"author": "Moesif",
+				"tagline": "",
+				"website": "https://www.moesif.com/",
+				"sourceURL": "https://github.com/moesif/moesif-cloudflare",
+				"termsOfServiceURL": "https://www.moesif.com/terms",
+				"privacyPolicyURL": "https://www.moesif.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@moesif.com",
+				"products": [],
+				"categoryIds": [
+					"insights"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "bjUN2B-DrQGv"
+				},
+				"created": "2019-01-31T00:06:37.349421Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"requestedAt": "2019-02-27T20:43:40.740440294Z",
+				"canceledAt": null,
+				"reviewedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"reviewedAt": "2019-02-27T21:50:58.879379696Z"
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "3qZ8AkruuVSy",
+			"definition": {
+				"options": {
+					"properties": {
+						"appId": {
+							"default": "",
+							"description": "Requred, unless \"App Id Overrides\" are used",
+							"order": 1,
+							"title": "Default Moesif App Id",
+							"type": "string"
+						},
+						"hideCreditCards": {
+							"default": true,
+							"order": 4,
+							"title": "Remove Credit Card Numbers from API Requests. Leave this enabled if your API processes credit card information.",
+							"type": "boolean"
+						},
+						"sessionTokenHeader": {
+							"default": "",
+							"description": "Optional",
+							"order": 3,
+							"title": "Request / Response Header Containing Session Token",
+							"type": "string"
+						},
+						"urlPatterns": {
+							"description": "Advanced usage. For assistance with advanced configuration, please contact support@moesif.com. Regular expressions are evaluated in order (top to bottom), and the appId for the first matching regex will be used for a given request. To manually test your regular expressions, you can use the following JavaScript code: new RegExp(urlRegex).test(moesifAppId)",
+							"items": {
+								"properties": {
+									"appId": {
+										"order": 2,
+										"placeholder": "leave blank to ignore requests matching this pattern",
+										"title": "Moesif App Id for Requests with URLs Matching Above Regular Expression",
+										"type": "string"
+									},
+									"regex": {
+										"order": 1,
+										"placeholder": "^https://mydomain.com/api",
+										"title": "URL Regex",
+										"type": "string"
+									}
+								},
+								"title": "Item",
+								"type": "object"
+							},
+							"order": 5,
+							"title": "App Id Overrides",
+							"type": "array"
+						},
+						"userIdHeader": {
+							"default": "",
+							"description": "Optional",
+							"order": 2,
+							"title": "Request / Response Header Containing User ID",
+							"type": "string"
+						}
+					}
+				},
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./MoesifWorker.js"
+					}
+				]
+			},
+			"releaseNotes": "Added support for X-Moesif-Transaction-Id.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/Ej5Gr7rD0ptN",
+			"metadata": {
+				"code": {
+					"sourceTag": "Ej5Gr7rD0ptN",
+					"uploadedOn": "2019-03-08T22:12:20.905921835Z"
+				}
+			},
+			"created": "2019-03-08T22:12:20.669334Z",
+			"proposedApp": {
+				"id": "3qZ8AkruuVSy",
+				"title": "Moesif API Insights",
+				"shortDescription": "Deep product insights into your APIs and customers.",
+				"longDescription": "# Moesif is an AI-powered API insights platform for:\n- API Debugging\n- API Monitoring\n- API Analytics\n\nSupport for REST, GraphQL, Ethereum Web3, JSON-RPC, SOAP, & more\n\nGet real-time visibility into your (or your 3rd party) live API traffic saving you debug time\n\n- Understand how your customers actually use your API\n- Root cause issues quickly with ML powered features like Smart Diff\n- Get Slack and PagerDuty alerts of anomalous API behavior that pings tests don’t catch\n\n## Why Moesif?\nMoesif is the most advanced AI-powered debugging and analytics platform designed specifically for production APIs including RESTful, GraphQL, Ethereum Web3, and SOAP APIs.\nIt helps you debug and understand deeply API related issues. Moesif prevents minor issues from becoming major outages through deep API monitoring for anomalous behavior of your production API traffic.\n\n## Who is Moesif for?\nMoesif is designed for API developers and product managers of APIs such as public/open API with a developer community or partner APIs. In addition, applications that are architected around using 3rd party services or serverless functions can benefit deeply from Moesif’s API insights.\n\nThousands of developers process billions of API calls through Moesif for debugging, monitoring and understanding usage.",
+				"instructions": "Create your app at [moesif.com](https://www.moesif.com/) to get started.",
+				"alias": "moesif",
+				"orgId": "9293da51a35cb733359ac4e4bb7fd844",
+				"icon": "https://images.cloudflareapps.com/b4QiGkoUKFSk/moesif_square-320w.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/3oZPv27SIrDF/4-answers-analytics-map-duration-delay.png",
+					"https://images.cloudflareapps.com/3oZPv27SIrDF/1-answers-monitoring-average-time.png",
+					"https://images.cloudflareapps.com/3oZPv27SIrDF/2-answers-realtime-event-stream.png",
+					"https://images.cloudflareapps.com/3oZPv27SIrDF/5-answers-analytics-customers-401.png",
+					"https://images.cloudflareapps.com/3oZPv27SIrDF/3-answers-debugging-sankey.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/iBXo9kU87GkD/moesif-cloudflare%20%281%29.png",
+				"featuredAppImage": "",
+				"author": "Moesif",
+				"tagline": "",
+				"website": "https://www.moesif.com/",
+				"sourceURL": "https://github.com/moesif/moesif-cloudflare",
+				"termsOfServiceURL": "https://www.moesif.com/terms",
+				"privacyPolicyURL": "https://www.moesif.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@moesif.com",
+				"products": [],
+				"categoryIds": [
+					"insights"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "bjUN2B-DrQGv"
+				},
+				"created": "2019-01-31T00:06:37.349421Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "9293da51a35cb733359ac4e4bb7fd844",
+				"requestedAt": "2019-03-08T22:12:21.802090029Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-03-08T22:30:15.795251996Z"
+			}
+		},
+		{
+			"tag": "1.0.4",
+			"appId": "3qZ8AkruuVSy",
+			"definition": {
+				"options": {
+					"properties": {
+						"appId": {
+							"default": "",
+							"description": "Requred, unless \"App Id Overrides\" are used",
+							"order": 10,
+							"title": "Default Moesif App Id",
+							"type": "string"
+						},
+						"companyIdHeader": {
+							"default": "",
+							"description": "Optional",
+							"order": 40,
+							"title": "Request / Response Header to Identify Company",
+							"type": "string"
+						},
+						"disableTransactionId": {
+							"default": false,
+							"description": "Setting to true will prevent insertion of the <code>X-Moesif-Transaction-Id</code> header.",
+							"order": 65,
+							"title": "Disable Transaction Id generation",
+							"type": "boolean"
+						},
+						"hideCreditCards": {
+							"default": true,
+							"order": 60,
+							"title": "Remove Credit Card Numbers from API Requests. Leave this enabled if your API processes credit card information.",
+							"type": "boolean"
+						},
+						"sessionTokenHeader": {
+							"default": "",
+							"description": "Optional",
+							"order": 50,
+							"title": "Request / Response Header Containing Session Token",
+							"type": "string"
+						},
+						"urlPatterns": {
+							"description": "Advanced usage.<br>For assistance with advanced configuration, please contact <a href='mailto:support@moesif.com'>support@moesif.com</a>. Regular expressions are evaluated in order (top to bottom), and the appId for the first matching regex will be used for a given request. <br> To manually test your regular expressions, you can use the following JavaScript code: new RegExp(urlRegex).test(moesifAppId)",
+							"items": {
+								"properties": {
+									"appId": {
+										"order": 2,
+										"placeholder": "leave blank to ignore requests matching this pattern",
+										"title": "Moesif App Id for Requests with URLs Matching Above Regular Expression",
+										"type": "string"
+									},
+									"regex": {
+										"order": 1,
+										"placeholder": "^https://mydomain.com/api",
+										"title": "URL Regex",
+										"type": "string"
+									}
+								},
+								"title": "Item",
+								"type": "object"
+							},
+							"order": 70,
+							"title": "App Id Overrides",
+							"type": "array"
+						},
+						"userIdHeader": {
+							"default": "",
+							"description": "Optional<br>For more info, see <a href='https://www.moesif.com/docs/getting-started/users/'>User Profiles</a> and <a href='https://www.moesif.com/docs/getting-started/companies/'>Company Profiles</a>.",
+							"order": 20,
+							"title": "Request / Response Header to Identify User",
+							"type": "string"
+						}
+					}
+				},
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./MoesifWorker.js"
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.75,
+				"upvotes": 3,
+				"downvotes": 1
+			},
+			"releaseNotes": "- adds option to turn off transaction ID tracking\n- forwards transaction ID to client\n- adds option to specify company ID header",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/nuoOM_3MIo5Z",
+			"metadata": {
+				"code": {
+					"sourceTag": "nuoOM_3MIo5Z",
+					"uploadedOn": "2019-03-26T21:21:23.124371951Z"
+				}
+			},
+			"created": "2019-03-26T21:21:22.91799Z",
+			"proposedApp": {
+				"id": "3qZ8AkruuVSy",
+				"title": "Moesif API Insights",
+				"shortDescription": "Deep product insights into your APIs and customers.",
+				"longDescription": "# Moesif is an AI-powered API insights platform for:\n- API Debugging\n- API Monitoring\n- API Analytics\n\nSupport for REST, GraphQL, Ethereum Web3, JSON-RPC, SOAP, & more\n\nGet real-time visibility into your (or your 3rd party) live API traffic saving you debug time\n\n- Understand how your customers actually use your API\n- Root cause issues quickly with ML powered features like Smart Diff\n- Get Slack and PagerDuty alerts of anomalous API behavior that pings tests don’t catch\n\n## Why Moesif?\nMoesif is the most advanced AI-powered debugging and analytics platform designed specifically for production APIs including RESTful, GraphQL, Ethereum Web3, and SOAP APIs.\nIt helps you debug and understand deeply API related issues. Moesif prevents minor issues from becoming major outages through deep API monitoring for anomalous behavior of your production API traffic.\n\n## Who is Moesif for?\nMoesif is designed for API developers and product managers of APIs such as public/open API with a developer community or partner APIs. In addition, applications that are architected around using 3rd party services or serverless functions can benefit deeply from Moesif’s API insights.\n\nThousands of developers process billions of API calls through Moesif for debugging, monitoring and understanding usage.",
+				"instructions": "Create your app at [moesif.com](https://www.moesif.com/) to get started.",
+				"alias": "moesif",
+				"orgId": "9293da51a35cb733359ac4e4bb7fd844",
+				"icon": "https://images.cloudflareapps.com/b4QiGkoUKFSk/moesif_square-320w.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/3oZPv27SIrDF/4-answers-analytics-map-duration-delay.png",
+					"https://images.cloudflareapps.com/3oZPv27SIrDF/1-answers-monitoring-average-time.png",
+					"https://images.cloudflareapps.com/3oZPv27SIrDF/2-answers-realtime-event-stream.png",
+					"https://images.cloudflareapps.com/3oZPv27SIrDF/5-answers-analytics-customers-401.png",
+					"https://images.cloudflareapps.com/3oZPv27SIrDF/3-answers-debugging-sankey.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/iBXo9kU87GkD/moesif-cloudflare%20%281%29.png",
+				"featuredAppImage": "",
+				"author": "Moesif",
+				"tagline": "",
+				"website": "https://www.moesif.com/",
+				"sourceURL": "https://github.com/moesif/moesif-cloudflare",
+				"termsOfServiceURL": "https://www.moesif.com/terms",
+				"privacyPolicyURL": "https://www.moesif.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@moesif.com",
+				"products": [],
+				"categoryIds": [
+					"insights"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "bjUN2B-DrQGv"
+				},
+				"created": "2019-01-31T00:06:37.349421Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "9293da51a35cb733359ac4e4bb7fd844",
+				"requestedAt": "2019-03-26T21:21:23.775161217Z",
+				"canceledAt": null,
+				"reviewedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"reviewedAt": "2019-03-29T16:17:31.06395097Z"
+			}
+		},
+		{
+			"tag": "1.0.5",
+			"appId": "3qZ8AkruuVSy",
+			"definition": {
+				"options": {
+					"properties": {
+						"appId": {
+							"default": "",
+							"description": "Requred, unless \"App Id Overrides\" are used",
+							"order": 10,
+							"title": "Default Moesif App Id",
+							"type": "string"
+						},
+						"companyIdHeader": {
+							"default": "",
+							"description": "Optional",
+							"order": 40,
+							"title": "Request / Response Header to Identify Company",
+							"type": "string"
+						},
+						"disableTransactionId": {
+							"default": false,
+							"description": "Setting to true will prevent insertion of the <code>X-Moesif-Transaction-Id</code> header.",
+							"order": 65,
+							"title": "Disable Transaction Id generation",
+							"type": "boolean"
+						},
+						"hideCreditCards": {
+							"default": true,
+							"order": 60,
+							"title": "Remove Credit Card Numbers from API Requests. Leave this enabled if your API processes credit card information.",
+							"type": "boolean"
+						},
+						"sessionTokenHeader": {
+							"default": "",
+							"description": "Optional",
+							"order": 50,
+							"title": "Request / Response Header Containing Session Token",
+							"type": "string"
+						},
+						"urlPatterns": {
+							"description": "Advanced usage.<br>For assistance with advanced configuration, please contact <a href='mailto:support@moesif.com'>support@moesif.com</a>. Regular expressions are evaluated in order (top to bottom), and the appId for the first matching regex will be used for a given request. <br> To manually test your regular expressions, you can use the following JavaScript code: new RegExp(urlRegex).test(moesifAppId)",
+							"items": {
+								"properties": {
+									"appId": {
+										"order": 2,
+										"placeholder": "leave blank to ignore requests matching this pattern",
+										"title": "Moesif App Id for Requests with URLs Matching Above Regular Expression",
+										"type": "string"
+									},
+									"regex": {
+										"order": 1,
+										"placeholder": "^https://mydomain.com/api",
+										"title": "URL Regex",
+										"type": "string"
+									}
+								},
+								"title": "Item",
+								"type": "object"
+							},
+							"order": 70,
+							"title": "App Id Overrides",
+							"type": "array"
+						},
+						"userIdHeader": {
+							"default": "",
+							"description": "Optional<br>For more info, see <a href='https://www.moesif.com/docs/getting-started/users/'>User Profiles</a> and <a href='https://www.moesif.com/docs/getting-started/companies/'>Company Profiles</a>.",
+							"order": 20,
+							"title": "Request / Response Header to Identify User",
+							"type": "string"
+						}
+					}
+				},
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./MoesifWorker.js"
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "Tracking improvements for internal use.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/-I5kR8wUy0rU",
+			"metadata": {
+				"code": {
+					"sourceTag": "-I5kR8wUy0rU",
+					"uploadedOn": "2019-12-05T21:30:06.946127494Z"
+				}
+			},
+			"created": "2019-12-05T21:30:06.304542Z",
+			"proposedApp": {
+				"id": "3qZ8AkruuVSy",
+				"title": "Moesif API Insights",
+				"shortDescription": "Deep product insights into your APIs and customers.",
+				"longDescription": "# Moesif is an AI-powered API insights platform for:\n- API Debugging\n- API Monitoring\n- API Analytics\n\nSupport for REST, GraphQL, Ethereum Web3, JSON-RPC, SOAP, & more\n\nGet real-time visibility into your (or your 3rd party) live API traffic saving you debug time\n\n- Understand how your customers actually use your API\n- Root cause issues quickly with ML powered features like Smart Diff\n- Get Slack and PagerDuty alerts of anomalous API behavior that pings tests don’t catch\n\n## Why Moesif?\nMoesif is the most advanced AI-powered debugging and analytics platform designed specifically for production APIs including RESTful, GraphQL, Ethereum Web3, and SOAP APIs.\nIt helps you debug and understand deeply API related issues. Moesif prevents minor issues from becoming major outages through deep API monitoring for anomalous behavior of your production API traffic.\n\n## Who is Moesif for?\nMoesif is designed for API developers and product managers of APIs such as public/open API with a developer community or partner APIs. In addition, applications that are architected around using 3rd party services or serverless functions can benefit deeply from Moesif’s API insights.\n\nThousands of developers process billions of API calls through Moesif for debugging, monitoring and understanding usage.",
+				"instructions": "Create your app at [moesif.com](https://www.moesif.com/) to get started.",
+				"alias": "moesif",
+				"orgId": "9293da51a35cb733359ac4e4bb7fd844",
+				"icon": "https://images.cloudflareapps.com/b4QiGkoUKFSk/moesif_square-320w.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/RhuaHExpFgjr/real-time-api-logs.png",
+					"https://images.cloudflareapps.com/RhuaHExpFgjr/cohort-retention-analysis.png",
+					"https://images.cloudflareapps.com/RhuaHExpFgjr/time-series.png",
+					"https://images.cloudflareapps.com/RhuaHExpFgjr/deep-segmentation.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/iBXo9kU87GkD/moesif-cloudflare%20%281%29.png",
+				"featuredAppImage": "",
+				"author": "Moesif",
+				"tagline": "",
+				"website": "https://www.moesif.com/",
+				"sourceURL": "https://github.com/moesif/moesif-cloudflare",
+				"termsOfServiceURL": "https://www.moesif.com/terms",
+				"privacyPolicyURL": "https://www.moesif.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@moesif.com",
+				"products": [],
+				"categoryIds": [
+					"insights"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "bjUN2B-DrQGv"
+				},
+				"created": "2019-01-31T00:06:37.349421Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "9293da51a35cb733359ac4e4bb7fd844",
+				"requestedAt": "2019-12-05T21:31:00.784900758Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-12-06T17:10:20.12600726Z"
+			}
+		},
+		{
+			"tag": "1.0.6",
+			"appId": "3qZ8AkruuVSy",
+			"definition": {
+				"options": {
+					"properties": {
+						"appId": {
+							"default": "",
+							"description": "Requred, unless \"App Id Overrides\" are used",
+							"order": 10,
+							"title": "Default Moesif App Id",
+							"type": "string"
+						},
+						"companyIdHeader": {
+							"default": "",
+							"description": "Optional",
+							"order": 40,
+							"title": "Request / Response Header to Identify Company",
+							"type": "string"
+						},
+						"disableTransactionId": {
+							"default": false,
+							"description": "Setting to true will prevent insertion of the <code>X-Moesif-Transaction-Id</code> header.",
+							"order": 65,
+							"title": "Disable Transaction Id generation",
+							"type": "boolean"
+						},
+						"hideCreditCards": {
+							"default": true,
+							"order": 60,
+							"title": "Remove Credit Card Numbers from API Requests. Leave this enabled if your API processes credit card information.",
+							"type": "boolean"
+						},
+						"sessionTokenHeader": {
+							"default": "",
+							"description": "Optional",
+							"order": 50,
+							"title": "Request / Response Header Containing Session Token",
+							"type": "string"
+						},
+						"urlPatterns": {
+							"description": "Advanced usage.<br>For assistance with advanced configuration, please contact <a href='mailto:support@moesif.com'>support@moesif.com</a>. Regular expressions are evaluated in order (top to bottom), and the appId for the first matching regex will be used for a given request. <br> To manually test your regular expressions, you can use the following JavaScript code: new RegExp(urlRegex).test(moesifAppId)",
+							"items": {
+								"properties": {
+									"appId": {
+										"order": 2,
+										"placeholder": "leave blank to ignore requests matching this pattern",
+										"title": "Moesif App Id for Requests with URLs Matching Above Regular Expression",
+										"type": "string"
+									},
+									"regex": {
+										"order": 1,
+										"placeholder": "^https://mydomain.com/api",
+										"title": "URL Regex",
+										"type": "string"
+									}
+								},
+								"title": "Item",
+								"type": "object"
+							},
+							"order": 70,
+							"title": "App Id Overrides",
+							"type": "array"
+						},
+						"userIdHeader": {
+							"default": "",
+							"description": "Optional<br>For more info, see <a href='https://www.moesif.com/docs/getting-started/users/'>User Profiles</a> and <a href='https://www.moesif.com/docs/getting-started/companies/'>Company Profiles</a>.",
+							"order": 20,
+							"title": "Request / Response Header to Identify User",
+							"type": "string"
+						}
+					}
+				},
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./MoesifWorker.js"
+					}
+				]
+			},
+			"releaseNotes": "Cleanup description",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/-I5kR8wUy0rU",
+			"created": "2020-12-15T07:47:54.586942Z",
+			"proposedApp": {
+				"id": "3qZ8AkruuVSy",
+				"title": "Moesif API Insights",
+				"shortDescription": "Deep product insights into your APIs and customers.",
+				"longDescription": "Build better API products with user-centric API observability:\n\n## API Product Intelligence\n* [Understand API usage](https://www.moesif.com/features/api-analytics) and user behavior\n* [Debug and fix ](https://www.moesif.com/features/api-logs) API issues quickly\n\n## API Monitoring\n* [Get alerted on issues](https://www.moesif.com/features/api-monitoring) and anomalous behavior\n* [Create dashboards](https://www.moesif.com/features/api-dashboards) and share KPIs with colleagues\n* [Embed metrics](https://www.moesif.com/features/embedded-api-logs) in your app to improve developer experience\n\n## Targeting and Automation\n* [Leverage behavioral emails](https://www.moesif.com/features/user-behavioral-emails) to keep customers informed\n* [Block threats and restrict access](https://www.moesif.com/features/api-governance-rules) with governance.",
+				"instructions": "Create your free account at [moesif.com](https://www.moesif.com/) to get started.",
+				"alias": "moesif",
+				"orgId": "9293da51a35cb733359ac4e4bb7fd844",
+				"icon": "https://images.cloudflareapps.com/b4QiGkoUKFSk/moesif_square-320w.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/RhuaHExpFgjr/real-time-api-logs.png",
+					"https://images.cloudflareapps.com/RhuaHExpFgjr/cohort-retention-analysis.png",
+					"https://images.cloudflareapps.com/RhuaHExpFgjr/time-series.png",
+					"https://images.cloudflareapps.com/RhuaHExpFgjr/deep-segmentation.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/iBXo9kU87GkD/moesif-cloudflare%20%281%29.png",
+				"featuredAppImage": "",
+				"author": "Moesif",
+				"tagline": "",
+				"website": "https://www.moesif.com/",
+				"sourceURL": "https://github.com/moesif/moesif-cloudflare",
+				"termsOfServiceURL": "https://www.moesif.com/terms",
+				"privacyPolicyURL": "https://www.moesif.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@moesif.com",
+				"products": [],
+				"categoryIds": [
+					"insights"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "bjUN2B-DrQGv"
+				},
+				"created": "2019-01-31T00:06:37.349421Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "9293da51a35cb733359ac4e4bb7fd844",
+				"requestedAt": "2020-12-15T07:48:03.326246641Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-12-16T21:22:38.611223048Z"
+			}
+		},
+		{
+			"tag": "1.0.7",
+			"appId": "3qZ8AkruuVSy",
+			"definition": {
+				"options": {
+					"properties": {
+						"applicationId": {
+							"default": "",
+							"description": "Required, unless you set the urlPatterns option. sign up for free on <a href='https://www.moesif.com/?language=cloudflare-workers'>Moesif's website</a>",
+							"order": 10,
+							"title": "Your Moesif Application Id",
+							"type": "string"
+						},
+						"companyIdHeader": {
+							"default": "",
+							"description": "Optional<br>For more info, see <a href='https://www.moesif.com/docs/getting-started/users/'>User Profiles</a>.",
+							"order": 40,
+							"title": "Request or Response header name to identify companies",
+							"type": "string"
+						},
+						"debug": {
+							"default": false,
+							"description": "Print debug messages to console which may be helpful when contacting Moesif support.",
+							"order": 100,
+							"title": "Enable debug mode",
+							"type": "boolean"
+						},
+						"disableTransactionId": {
+							"default": false,
+							"description": "Setting to true will prevent insertion of the <code>X-Moesif-Transaction-Id</code> headers.",
+							"order": 65,
+							"title": "Disable Transaction Id generation",
+							"type": "boolean"
+						},
+						"hideCreditCards": {
+							"default": true,
+							"order": 60,
+							"title": "Remove Credit Card Numbers from API Requests based on a Luhn check.",
+							"type": "boolean"
+						},
+						"logIncomingRequests": {
+							"default": true,
+							"description": "Log incoming API calls hitting your Cloudflare Worker.",
+							"order": 75,
+							"title": "Log Incoming API Requests",
+							"type": "boolean"
+						},
+						"logOutgoingRequests": {
+							"default": true,
+							"description": "Log outgoing calls to your origin server from your Cloudflare Worker.",
+							"order": 80,
+							"title": "Log Outgoing API Requests",
+							"type": "boolean"
+						},
+						"sessionTokenHeader": {
+							"default": "",
+							"description": "Optional",
+							"order": 50,
+							"title": "Request or Response header name containing a user's API key or session token",
+							"type": "string"
+						},
+						"urlPatterns": {
+							"description": "Use multiple applications ids based on URL patterns. For example, if your worker has multiple environments like a staging at <i>staging.api.acmeinc.com</i> and production at <i>api.acmeinc.com</i>, you can log to different application in Moesif. Patterns are prioritized in order from top. <br> You can manually test your expression via <a href='https://regex101.com/'>this site</a>.",
+							"items": {
+								"properties": {
+									"applicationId": {
+										"order": 2,
+										"placeholder": "Your Moesif Application Id",
+										"title": "Your Moesif Application Id. If blank, requests are not logged to Moesif.",
+										"type": "string"
+									},
+									"regex": {
+										"order": 1,
+										"placeholder": "^https://staging.acmeinc.com/api",
+										"title": "URL RegEx",
+										"type": "string"
+									}
+								},
+								"title": "Item",
+								"type": "object"
+							},
+							"order": 70,
+							"title": "Mapping of URL RegEx to Moesif Application Ids",
+							"type": "array"
+						},
+						"userIdHeader": {
+							"default": "",
+							"description": "Optional<br>For more info, see <a href='https://www.moesif.com/docs/getting-started/companies/'>Company Profiles</a>.",
+							"order": 20,
+							"title": "Request or Response header name to identify users",
+							"type": "string"
+						}
+					}
+				},
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./MoesifWorker.js"
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "- Renamed appId to applicationId\n- Fixed issue when respondWith is used and wranger build flow wouldn't log requests.\n- Integration now logs both incoming API calls hitting CloudFlare Worker and outgoing to origin server.\n- Ensure empty response is still logged.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/LaGXdRk126RY",
+			"metadata": {
+				"code": {
+					"sourceTag": "LaGXdRk126RY",
+					"uploadedOn": "2020-12-17T00:06:51.851900022Z"
+				}
+			},
+			"created": "2020-12-17T00:06:51.600248Z",
+			"proposedApp": {
+				"id": "3qZ8AkruuVSy",
+				"title": "Moesif API Insights",
+				"shortDescription": "Deep product insights into your APIs and customers.",
+				"longDescription": "Build better API products with user-centric API observability:\n\n## API Product Intelligence\n* [Understand API usage](https://www.moesif.com/features/api-analytics) and user behavior\n* [Debug and fix ](https://www.moesif.com/features/api-logs) API issues quickly\n\n## API Monitoring\n* [Get alerted on issues](https://www.moesif.com/features/api-monitoring) and anomalous behavior\n* [Create dashboards](https://www.moesif.com/features/api-dashboards) and share KPIs with colleagues\n* [Embed metrics](https://www.moesif.com/features/embedded-api-logs) in your app to improve developer experience\n\n## Targeting and Automation\n* [Leverage behavioral emails](https://www.moesif.com/features/user-behavioral-emails) to keep customers informed\n* [Block threats and restrict access](https://www.moesif.com/features/api-governance-rules) with governance.",
+				"instructions": "Create your free account at [moesif.com](https://www.moesif.com/) to get started.",
+				"alias": "moesif",
+				"orgId": "9293da51a35cb733359ac4e4bb7fd844",
+				"icon": "https://images.cloudflareapps.com/b4QiGkoUKFSk/moesif_square-320w.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/RhuaHExpFgjr/real-time-api-logs.png",
+					"https://images.cloudflareapps.com/RhuaHExpFgjr/cohort-retention-analysis.png",
+					"https://images.cloudflareapps.com/RhuaHExpFgjr/time-series.png",
+					"https://images.cloudflareapps.com/RhuaHExpFgjr/deep-segmentation.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/iBXo9kU87GkD/moesif-cloudflare%20%281%29.png",
+				"featuredAppImage": "",
+				"author": "Moesif",
+				"tagline": "",
+				"website": "https://www.moesif.com/",
+				"sourceURL": "https://github.com/moesif/moesif-cloudflare",
+				"termsOfServiceURL": "https://www.moesif.com/terms",
+				"privacyPolicyURL": "https://www.moesif.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@moesif.com",
+				"products": [],
+				"categoryIds": [
+					"insights"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "bjUN2B-DrQGv"
+				},
+				"created": "2019-01-31T00:06:37.349421Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "9293da51a35cb733359ac4e4bb7fd844",
+				"requestedAt": "2020-12-17T00:06:52.467744826Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-12-21T17:42:41.188172453Z"
+			}
+		},
+		{
+			"tag": "1.1.0",
+			"appId": "3qZ8AkruuVSy",
+			"definition": {
+				"options": {
+					"properties": {
+						"applicationId": {
+							"default": "",
+							"description": "Required, unless you set the urlPatterns option. sign up for free on <a href='https://www.moesif.com/?language=cloudflare-workers'>Moesif's website</a>",
+							"order": 10,
+							"title": "Your Moesif Application Id",
+							"type": "string"
+						},
+						"companyIdHeader": {
+							"default": "",
+							"description": "Optional<br>For more info, see <a href='https://www.moesif.com/docs/getting-started/users/'>User Profiles</a>.",
+							"order": 40,
+							"title": "Request or Response header name to identify companies",
+							"type": "string"
+						},
+						"debug": {
+							"default": false,
+							"description": "Print debug messages to console which may be helpful when contacting Moesif support.",
+							"order": 100,
+							"title": "Enable debug mode",
+							"type": "boolean"
+						},
+						"disableTransactionId": {
+							"default": false,
+							"description": "Setting to true will prevent insertion of the <code>X-Moesif-Transaction-Id</code> headers.",
+							"order": 65,
+							"title": "Disable Transaction Id generation",
+							"type": "boolean"
+						},
+						"hideCreditCards": {
+							"default": true,
+							"order": 60,
+							"title": "Remove Credit Card Numbers from API Requests based on a Luhn check.",
+							"type": "boolean"
+						},
+						"logIncomingRequests": {
+							"default": true,
+							"description": "Log incoming API calls hitting your Cloudflare Worker.",
+							"order": 75,
+							"title": "Log Incoming API Requests",
+							"type": "boolean"
+						},
+						"logOutgoingRequests": {
+							"default": true,
+							"description": "Log outgoing calls to your origin server from your Cloudflare Worker.",
+							"order": 80,
+							"title": "Log Outgoing API Requests",
+							"type": "boolean"
+						},
+						"sessionTokenHeader": {
+							"default": "",
+							"description": "Optional",
+							"order": 50,
+							"title": "Request or Response header name containing a user's API key or session token",
+							"type": "string"
+						},
+						"urlPatterns": {
+							"description": "Use multiple applications ids based on URL patterns. For example, if your worker has multiple environments like a staging at <i>staging.api.acmeinc.com</i> and production at <i>api.acmeinc.com</i>, you can log to different application in Moesif. Patterns are prioritized in order from top. <br> You can manually test your expression via <a href='https://regex101.com/'>this site</a>.",
+							"items": {
+								"properties": {
+									"applicationId": {
+										"order": 2,
+										"placeholder": "Your Moesif Application Id",
+										"title": "Your Moesif Application Id. If blank, requests are not logged to Moesif.",
+										"type": "string"
+									},
+									"regex": {
+										"order": 1,
+										"placeholder": "^https://staging.acmeinc.com/api",
+										"title": "URL RegEx",
+										"type": "string"
+									}
+								},
+								"title": "Item",
+								"type": "object"
+							},
+							"order": 70,
+							"title": "Mapping of URL RegEx to Moesif Application Ids",
+							"type": "array"
+						},
+						"userIdHeader": {
+							"default": "",
+							"description": "Optional<br>For more info, see <a href='https://www.moesif.com/docs/getting-started/companies/'>Company Profiles</a>.",
+							"order": 20,
+							"title": "Request or Response header name to identify users",
+							"type": "string"
+						}
+					}
+				},
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./MoesifWorker.js"
+					}
+				]
+			},
+			"releaseNotes": "Add: Support for sampling events",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/BWqSyvn6pPte",
+			"metadata": {
+				"code": {
+					"sourceTag": "BWqSyvn6pPte",
+					"uploadedOn": "2021-08-02T23:39:27.665364078Z"
+				}
+			},
+			"created": "2021-08-02T23:39:27.403625Z",
+			"proposedApp": {
+				"id": "3qZ8AkruuVSy",
+				"title": "Moesif API Insights",
+				"shortDescription": "Deep product insights into your APIs and customers.",
+				"longDescription": "Build better API products with user-centric API observability:\n\n## API Product Intelligence\n* [Understand API usage](https://www.moesif.com/features/api-analytics) and user behavior\n* [Debug and fix ](https://www.moesif.com/features/api-logs) API issues quickly\n\n## API Monitoring\n* [Get alerted on issues](https://www.moesif.com/features/api-monitoring) and anomalous behavior\n* [Create dashboards](https://www.moesif.com/features/api-dashboards) and share KPIs with colleagues\n* [Embed metrics](https://www.moesif.com/features/embedded-api-logs) in your app to improve developer experience\n\n## Targeting and Automation\n* [Leverage behavioral emails](https://www.moesif.com/features/user-behavioral-emails) to keep customers informed\n* [Block threats and restrict access](https://www.moesif.com/features/api-governance-rules) with governance.",
+				"instructions": "Create your free account at [moesif.com](https://www.moesif.com/) to get started.",
+				"alias": "moesif",
+				"orgId": "9293da51a35cb733359ac4e4bb7fd844",
+				"icon": "https://images.cloudflareapps.com/b4QiGkoUKFSk/moesif_square-320w.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/RhuaHExpFgjr/real-time-api-logs.png",
+					"https://images.cloudflareapps.com/RhuaHExpFgjr/cohort-retention-analysis.png",
+					"https://images.cloudflareapps.com/RhuaHExpFgjr/time-series.png",
+					"https://images.cloudflareapps.com/RhuaHExpFgjr/deep-segmentation.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/iBXo9kU87GkD/moesif-cloudflare%20%281%29.png",
+				"featuredAppImage": "",
+				"author": "Moesif",
+				"tagline": "",
+				"website": "https://www.moesif.com/",
+				"sourceURL": "https://github.com/moesif/moesif-cloudflare",
+				"termsOfServiceURL": "https://www.moesif.com/terms",
+				"privacyPolicyURL": "https://www.moesif.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@moesif.com",
+				"products": [],
+				"categoryIds": [
+					"insights"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "bjUN2B-DrQGv"
+				},
+				"created": "2019-01-31T00:06:37.349421Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "9293da51a35cb733359ac4e4bb7fd844",
+				"requestedAt": "2021-08-02T23:39:28.1317355Z",
+				"canceledByUserId": "9293da51a35cb733359ac4e4bb7fd844",
+				"canceledAt": "2021-11-02T20:03:36.913575224Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.1.1",
+			"appId": "3qZ8AkruuVSy",
+			"definition": {
+				"options": {
+					"properties": {
+						"applicationId": {
+							"default": "",
+							"description": "Required, unless you set the urlPatterns option.<br>Sign up for free on <a href='https://www.moesif.com/?language=cloudflare-workers'>Moesif's website</a>",
+							"order": 10,
+							"title": "Your Moesif Application Id",
+							"type": "string"
+						},
+						"companyIdHeader": {
+							"default": "",
+							"description": "Optional<br>For more info, see <a href='https://www.moesif.com/docs/getting-started/users/'>User Profiles</a>.",
+							"order": 40,
+							"title": "Request or Response header name to identify companies",
+							"type": "string"
+						},
+						"debug": {
+							"default": false,
+							"description": "Print debug messages to console which may be helpful when contacting Moesif support.",
+							"order": 100,
+							"title": "Enable debug mode",
+							"type": "boolean"
+						},
+						"disableTransactionId": {
+							"default": false,
+							"description": "Setting to true will prevent insertion of the <code>X-Moesif-Transaction-Id</code> headers.",
+							"order": 65,
+							"title": "Disable Transaction Id generation",
+							"type": "boolean"
+						},
+						"hideCreditCards": {
+							"default": true,
+							"order": 60,
+							"title": "Remove Credit Card Numbers from API Requests based on a Luhn check.",
+							"type": "boolean"
+						},
+						"logIncomingRequests": {
+							"default": true,
+							"description": "Log incoming API calls hitting your Cloudflare Worker.",
+							"order": 75,
+							"title": "Log Incoming API Requests",
+							"type": "boolean"
+						},
+						"logOutgoingRequests": {
+							"default": true,
+							"description": "Log outgoing calls to your origin server from your Cloudflare Worker.",
+							"order": 80,
+							"title": "Log Outgoing API Requests",
+							"type": "boolean"
+						},
+						"sessionTokenHeader": {
+							"default": "",
+							"description": "Optional",
+							"order": 50,
+							"title": "Request or Response header name containing a user's API key or session token",
+							"type": "string"
+						},
+						"urlPatterns": {
+							"description": "Optional<br>Use multiple applications ids based on URL patterns. For example, if your worker has multiple environments like a staging at <i>staging.api.acmeinc.com</i> and production at <i>api.acmeinc.com</i>, you can log to different application in Moesif. Patterns are prioritized in order from top. <br> You can manually test your expression via <a href='https://regex101.com/'>this site</a>.",
+							"items": {
+								"properties": {
+									"applicationId": {
+										"order": 2,
+										"placeholder": "Your Moesif Application Id",
+										"title": "Your Moesif Application Id. If blank, requests are not logged to Moesif.",
+										"type": "string"
+									},
+									"regex": {
+										"order": 1,
+										"placeholder": "^https://staging.acmeinc.com/api",
+										"title": "URL RegEx",
+										"type": "string"
+									}
+								},
+								"title": "Item",
+								"type": "object"
+							},
+							"order": 70,
+							"title": "Mapping of URL RegEx to Moesif Application Ids",
+							"type": "array"
+						},
+						"userIdHeader": {
+							"default": "",
+							"description": "Optional<br>For more info, see <a href='https://www.moesif.com/docs/getting-started/companies/'>Company Profiles</a>.",
+							"order": 20,
+							"title": "Request or Response header name to identify users",
+							"type": "string"
+						}
+					}
+				},
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./src/index.js"
+					}
+				]
+			},
+			"releaseNotes": "Add: Support for sampling events (v1.1.0)\nFix: handle scenario leading to duplicate outbound requests\nFix: config issue with empty url and empty application id",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/rkR_EFHrEc5-",
+			"metadata": {
+				"code": {
+					"sourceTag": "rkR_EFHrEc5-",
+					"uploadedOn": "2021-11-02T20:03:36.258410586Z"
+				}
+			},
+			"created": "2021-11-02T20:03:35.979315Z",
+			"proposedApp": {
+				"id": "3qZ8AkruuVSy",
+				"title": "Moesif API Insights",
+				"shortDescription": "Deep product insights into your APIs and customers.",
+				"longDescription": "Build better API products with user-centric API observability:\n\n## API Product Intelligence\n* [Understand API usage](https://www.moesif.com/features/api-analytics) and user behavior\n* [Debug and fix ](https://www.moesif.com/features/api-logs) API issues quickly\n\n## API Monitoring\n* [Get alerted on issues](https://www.moesif.com/features/api-monitoring) and anomalous behavior\n* [Create dashboards](https://www.moesif.com/features/api-dashboards) and share KPIs with colleagues\n* [Embed metrics](https://www.moesif.com/features/embedded-api-logs) in your app to improve developer experience\n\n## Targeting and Automation\n* [Leverage behavioral emails](https://www.moesif.com/features/user-behavioral-emails) to keep customers informed\n* [Block threats and restrict access](https://www.moesif.com/features/api-governance-rules) with governance.",
+				"instructions": "Create your free account at [moesif.com](https://www.moesif.com/) to get started.",
+				"alias": "moesif",
+				"orgId": "9293da51a35cb733359ac4e4bb7fd844",
+				"icon": "https://images.cloudflareapps.com/b4QiGkoUKFSk/moesif_square-320w.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/RhuaHExpFgjr/real-time-api-logs.png",
+					"https://images.cloudflareapps.com/RhuaHExpFgjr/cohort-retention-analysis.png",
+					"https://images.cloudflareapps.com/RhuaHExpFgjr/time-series.png",
+					"https://images.cloudflareapps.com/RhuaHExpFgjr/deep-segmentation.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/iBXo9kU87GkD/moesif-cloudflare%20%281%29.png",
+				"featuredAppImage": "",
+				"author": "Moesif",
+				"tagline": "",
+				"website": "https://www.moesif.com/",
+				"sourceURL": "https://github.com/moesif/moesif-cloudflare",
+				"termsOfServiceURL": "https://www.moesif.com/terms",
+				"privacyPolicyURL": "https://www.moesif.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@moesif.com",
+				"products": [],
+				"categoryIds": [
+					"insights"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "bjUN2B-DrQGv"
+				},
+				"created": "2019-01-31T00:06:37.349421Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "9293da51a35cb733359ac4e4bb7fd844",
+				"requestedAt": "2021-11-02T20:03:36.922887397Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2021-11-03T18:33:45.324687031Z"
+			}
+		},
+		{
+			"tag": "1.1.4",
+			"appId": "3qZ8AkruuVSy",
+			"definition": {
+				"options": {
+					"properties": {
+						"applicationId": {
+							"default": "",
+							"description": "Required, unless you set the urlPatterns option.<br>Sign up for free on <a href='https://www.moesif.com/?language=cloudflare-workers'>Moesif's website</a>",
+							"order": 10,
+							"title": "Your Moesif Application Id",
+							"type": "string"
+						},
+						"companyIdHeader": {
+							"default": "",
+							"description": "Optional<br>For more info, see <a href='https://www.moesif.com/docs/getting-started/companies/'>Company Profiles</a>.",
+							"order": 40,
+							"title": "Request or Response header name to identify companies",
+							"type": "string"
+						},
+						"debug": {
+							"default": false,
+							"description": "Print debug messages to console which may be helpful when contacting Moesif support.",
+							"order": 100,
+							"title": "Enable debug mode",
+							"type": "boolean"
+						},
+						"disableTransactionId": {
+							"default": false,
+							"description": "Setting to true will prevent insertion of the <code>X-Moesif-Transaction-Id</code> headers.",
+							"order": 65,
+							"title": "Disable Transaction Id generation",
+							"type": "boolean"
+						},
+						"hideCreditCards": {
+							"default": true,
+							"order": 60,
+							"title": "Remove Credit Card Numbers from API Requests based on a Luhn check.",
+							"type": "boolean"
+						},
+						"logIncomingRequests": {
+							"default": true,
+							"description": "Log incoming API calls hitting your Cloudflare Worker.",
+							"order": 75,
+							"title": "Log Incoming API Requests",
+							"type": "boolean"
+						},
+						"logOutgoingRequests": {
+							"default": true,
+							"description": "Log responses from your origin server.",
+							"order": 80,
+							"title": "Log Outgoing API Requests",
+							"type": "boolean"
+						},
+						"sessionTokenHeader": {
+							"default": "",
+							"description": "Optional",
+							"order": 50,
+							"title": "Request or Response header name containing a user's API key or session token",
+							"type": "string"
+						},
+						"urlPatterns": {
+							"description": "Optional<br>Use multiple applications ids based on URL patterns. For example, if your worker has multiple environments like a staging at <i>staging.api.acmeinc.com</i> and production at <i>api.acmeinc.com</i>, you can log to different application in Moesif. Patterns are prioritized in order from top. <br> You can manually test your expression via <a href='https://regex101.com/'>this site</a>.",
+							"items": {
+								"properties": {
+									"applicationId": {
+										"order": 2,
+										"placeholder": "Your Moesif Application Id",
+										"title": "Your Moesif Application Id. If blank, requests are not logged to Moesif.",
+										"type": "string"
+									},
+									"regex": {
+										"order": 1,
+										"placeholder": "^https://staging.acmeinc.com/api",
+										"title": "URL RegEx",
+										"type": "string"
+									}
+								},
+								"title": "Item",
+								"type": "object"
+							},
+							"order": 70,
+							"title": "Mapping of URL RegEx to Moesif Application Ids",
+							"type": "array"
+						},
+						"userIdHeader": {
+							"default": "",
+							"description": "Optional<br>For more info, see <a href='https://www.moesif.com/docs/getting-started/users/'>User Profiles</a>.",
+							"order": 20,
+							"title": "Request or Response header name to identify users",
+							"type": "string"
+						}
+					}
+				},
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./src/index.js"
+					}
+				]
+			},
+			"releaseNotes": "better exception handling.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/klbjel-ethwk",
+			"metadata": {
+				"code": {
+					"sourceTag": "klbjel-ethwk",
+					"uploadedOn": "2021-11-17T18:13:47.608179113Z"
+				}
+			},
+			"created": "2021-11-17T18:13:47.259921Z",
+			"proposedApp": {
+				"id": "3qZ8AkruuVSy",
+				"title": "Moesif API Insights",
+				"shortDescription": "Deep product insights into your APIs and customers.",
+				"longDescription": "Build better API products with user-centric API observability:\n\n## API Product Intelligence\n* [Understand API usage](https://www.moesif.com/features/api-analytics) and user behavior\n* [Debug and fix ](https://www.moesif.com/features/api-logs) API issues quickly\n\n## API Monitoring\n* [Get alerted on issues](https://www.moesif.com/features/api-monitoring) and anomalous behavior\n* [Create dashboards](https://www.moesif.com/features/api-dashboards) and share KPIs with colleagues\n* [Embed metrics](https://www.moesif.com/features/embedded-api-logs) in your app to improve developer experience\n\n## Targeting and Automation\n* [Leverage behavioral emails](https://www.moesif.com/features/user-behavioral-emails) to keep customers informed\n* [Block threats and restrict access](https://www.moesif.com/features/api-governance-rules) with governance.",
+				"instructions": "Create your free account at [moesif.com](https://www.moesif.com/) to get started.",
+				"alias": "moesif",
+				"orgId": "9293da51a35cb733359ac4e4bb7fd844",
+				"icon": "https://images.cloudflareapps.com/b4QiGkoUKFSk/moesif_square-320w.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/RhuaHExpFgjr/real-time-api-logs.png",
+					"https://images.cloudflareapps.com/RhuaHExpFgjr/cohort-retention-analysis.png",
+					"https://images.cloudflareapps.com/RhuaHExpFgjr/time-series.png",
+					"https://images.cloudflareapps.com/RhuaHExpFgjr/deep-segmentation.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/iBXo9kU87GkD/moesif-cloudflare%20%281%29.png",
+				"featuredAppImage": "",
+				"author": "Moesif",
+				"tagline": "",
+				"website": "https://www.moesif.com/",
+				"sourceURL": "https://github.com/moesif/moesif-cloudflare",
+				"termsOfServiceURL": "https://www.moesif.com/terms",
+				"privacyPolicyURL": "https://www.moesif.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@moesif.com",
+				"products": [],
+				"categoryIds": [
+					"insights"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "bjUN2B-DrQGv"
+				},
+				"created": "2019-01-31T00:06:37.349421Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "9293da51a35cb733359ac4e4bb7fd844",
+				"requestedAt": "2021-11-17T18:15:08.373062259Z",
+				"canceledAt": null,
+				"reviewedByUserId": "b663b9a80366828a836e01c93e76da96",
+				"reviewedAt": "2021-11-24T00:10:51.356900402Z"
+			}
+		}
+	]
+}

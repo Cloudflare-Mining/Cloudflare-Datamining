@@ -1,0 +1,1749 @@
+{
+	"id": "uuryAwtwRdUp",
+	"title": "Social Feed",
+	"shortDescription": "Automatic stream for Instagram, Facebook, Twitter and more!",
+	"longDescription": "POWr Social Feed is the easy way of displaying your social media accounts on your website, so you can get more followers. Any time you post to social media the new post will also appear on your website, so you can automatically keep your content fresh and up-to-date.\n \n# What are the benefits of using POWr Social Feed?   \n\n* **Boost conversions** - The easy way to increase conversions, SEO, and time spent on your website: automatically show fresh content from all of your social channels. \n* **Make it yours** - Customize your feed with your own colors and styles to perfectly match the design of your site. Control the frequency of updates too!\n* **Get more followers** - Pull in any content from Facebook, Twitter, Instagram, YouTube, Vine, Vimeo, Google+, Pinterest and more. Allow your users to share  too!\n\n# Get started for free and enjoy these features:   \n\n* Connect to Facebook, Instagram, Pinterest, YouTube, Twitter, Tumblr, Flickr, Vimeo, Dailymotion, or RSS.\n* Combine images, videos, and text from all of your social sources in one gallery.\n* Follow @handles, #hashtags, account, or site URLs.\n* 24 hour automatic content updates.\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Enable content moderation and choose which posts to display or hide. \n* Update content more frequently (every hour or every 20 minutes).\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=social-feed).\n\n# Why users love Social Feed:   \n\n“I am in love with this cool app! Keeping up with social media content is always a struggle for me because I do everything, but this app makes it super easy to post my social media content to my site and in turn, get more social media followers from the process.\" - Defense Divas \n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Social Feed up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+	"instructions": "",
+	"alias": "powr-social-feed",
+	"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+	"icon": "https://images.cloudflareapps.com/2_dRalWR_M2V/Social-Feed-Icon-Cloudflare.png",
+	"screenshots": [
+		"//images.cloudflareapps.com/uNHha5iLSg28858aqQTL_social feed 1 (1) (3).png",
+		"//images.cloudflareapps.com/4NgE6dpqSDuSxt4kDWqj_social feed 2 (4).png",
+		"//images.cloudflareapps.com/7T5GooMQvCqkaYlovYXO_Screen Shot 2018-01-30 at 11.12.13 AM.png",
+		"//images.cloudflareapps.com/EVRboUxTh6c1tF96UjzY_Shea radiance (1).png",
+		"//images.cloudflareapps.com/Z1RcALCISsWkaOGiBBky_all-purpose-banner copy (1).png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/uFxvVE5D4-gq/Social-Feed-Banner-Cloudflare.png",
+	"featuredAppImage": "",
+	"author": "POWr Inc",
+	"tagline": "",
+	"website": "https://www.powr.io",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://www.powr.io/terms",
+	"privacyPolicyURL": "https://www.powr.io/privacy",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.1.0",
+	"infoVersion": "1.1.0",
+	"points": 0,
+	"supportEmail": "support@powr.io",
+	"products": [],
+	"categoryIds": [
+		"social-and-communication",
+		"powr"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+			"created": "2018-03-13T17:45:48.494583337Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "iM-tHL9ueOAO"
+	},
+	"created": "2018-03-12T18:38:20.844944Z",
+	"org": {
+		"id": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+		"title": "",
+		"username": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "powr",
+			"title": "POWR",
+			"description": "Apps created by POWR",
+			"icon": "",
+			"points": 40,
+			"visible": false,
+			"created": "2018-11-06T00:45:54.563564Z"
+		},
+		{
+			"id": "social-and-communication",
+			"title": "Social & Communication",
+			"description": "Apps that make it easier to communicate with your customers.",
+			"icon": "",
+			"points": 80,
+			"visible": true,
+			"created": "2018-01-22T19:17:10.030031Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "uuryAwtwRdUp",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"appId": {
+							"default": "",
+							"label": "App Installation ID",
+							"title": "App Installation ID",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Social Feed appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						},
+						"productId": {
+							"default": "premium",
+							"label": "Plan",
+							"title": "POWr Plan",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=socialFeed",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=socialFeed",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/iM-tHL9ueOAO",
+			"metadata": {
+				"code": {
+					"sourceTag": "iM-tHL9ueOAO",
+					"uploadedOn": "2018-03-12T18:38:21.139449107Z"
+				}
+			},
+			"created": "2018-03-12T18:38:20.992102Z",
+			"proposedApp": {
+				"id": "uuryAwtwRdUp",
+				"title": "Social Feed",
+				"shortDescription": "Boost SEO & display fresh content with a custom social feed",
+				"longDescription": "POWr Social Feed is the easy way of displaying your social media accounts on your website, so you can get more followers. Any time you post to social media the new post will also appear on your website, so you can automatically keep your content fresh and up-to-date.\n \n# What are the benefits of using POWr Social Feed?   \n\n* **Boost conversions** - The easy way to increase conversions, SEO, and time spent on your website: automatically show fresh content from all of your social channels. \n* **Make it yours** - Customize your feed with your own colors and styles to perfectly match the design of your site. Control the frequency of updates too!\n* **Get more followers** - Pull in any content from Facebook, Twitter, Instagram, YouTube, Vine, Vimeo, Google+, Pinterest and more. Allow your users to share  too!\n\n# Get started for free and enjoy these features:   \n\n* Connect to Facebook, Instagram, Pinterest, YouTube, Twitter, Tumblr, Flickr, Vimeo, Dailymotion, or RSS.\n* Combine images, videos, and text from all of your social sources in one gallery.\n* Follow @handles, #hashtags, account, or site URLs.\n* 24 hour automatic content updates.\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Enable content moderation and choose which posts to display or hide. \n* Update content more frequently (every hour or every 20 minutes).\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=social-feed).\n\n# Why users love Social Feed:   \n\n“I am in love with this cool app! Keeping up with social media content is always a struggle for me because I do everything, but this app makes it super easy to post my social media content to my site and in turn, get more social media followers from the process.\" - Defense Divas \n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Social Feed up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "//images.cloudflareapps.com/E1cCUhIKSdapDbMPbMkB_Icon - Social Feed Cloudflare (1).png",
+				"screenshots": [
+					"//images.cloudflareapps.com/uNHha5iLSg28858aqQTL_social feed 1 (1) (3).png",
+					"//images.cloudflareapps.com/4NgE6dpqSDuSxt4kDWqj_social feed 2 (4).png",
+					"//images.cloudflareapps.com/7T5GooMQvCqkaYlovYXO_Screen Shot 2018-01-30 at 11.12.13 AM.png",
+					"//images.cloudflareapps.com/EVRboUxTh6c1tF96UjzY_Shea radiance (1).png",
+					"//images.cloudflareapps.com/Z1RcALCISsWkaOGiBBky_all-purpose-banner copy (1).png"
+				],
+				"tileImage": "//images.cloudflareapps.com/37bNHj4pQPOwlhO5tleo_Social Feed banner (1).png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For businesses looking to test the water with new plugins.",
+						"longDescription": "* 24-Hour Content Updates\n* Add 1 Account/Hashtag per Feed\n* Display 6 Posts per Account",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "premium",
+						"title": "Starter",
+						"shortDescription": "For businesses who have their own brand and want extra customization.",
+						"longDescription": "* Remove POWr Logo\n* 12-Hour Content Updates\n* Add 2 Accounts/Hashtags per Feed\n* Display 12 Posts per Account\n* Add Social Share Buttons",
+						"visible": true,
+						"price": 500,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "For growing businesses looking to stand out from the crowd and get more conversions.",
+						"longDescription": "* Remove POWr Logo\n* 3-Hour Content Updates\n* Add 4 Accounts/Hashtags per Feed\n* Display 20 Posts per Account\n* Add Social Share Buttons\n* Add Custom CSS & JavaScript",
+						"visible": true,
+						"price": 1200,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "For total control that scales with your business, whether it’s big or small. Get every feature for every plugin.",
+						"longDescription": "* Remove POWr Logo\n* 20-Minute Content Updates\n* Add 15 Accounts/Hashtags per Feed\n* Display 50 Posts per Account\n* Add Social Share Buttons\n* Add Custom CSS & JavaScript\n* Manually Approve Posts\n+ FREE Business Upgrade for all 50 POWr Plugins",
+						"visible": true,
+						"price": 5000,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "iM-tHL9ueOAO"
+				},
+				"created": "2018-03-12T18:38:20.844944Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2018-03-13T17:45:48.482844215Z",
+				"canceledByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"canceledAt": "2018-03-23T17:33:36.871562349Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "uuryAwtwRdUp",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"appId": {
+							"default": "",
+							"label": "App Installation ID",
+							"title": "App Installation ID",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Social Feed appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						},
+						"productId": {
+							"default": "premium",
+							"label": "Plan",
+							"title": "POWr Plan",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=socialFeed",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=socialFeed",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "User uniq install.id for map POWr app with",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/cFy7S3sgHriv",
+			"metadata": {
+				"code": {
+					"sourceTag": "cFy7S3sgHriv",
+					"uploadedOn": "2018-03-23T17:33:36.404413836Z"
+				}
+			},
+			"created": "2018-03-23T17:33:36.201495Z",
+			"proposedApp": {
+				"id": "uuryAwtwRdUp",
+				"title": "Social Feed",
+				"shortDescription": "Boost SEO & display fresh content with a custom social feed",
+				"longDescription": "POWr Social Feed is the easy way of displaying your social media accounts on your website, so you can get more followers. Any time you post to social media the new post will also appear on your website, so you can automatically keep your content fresh and up-to-date.\n \n# What are the benefits of using POWr Social Feed?   \n\n* **Boost conversions** - The easy way to increase conversions, SEO, and time spent on your website: automatically show fresh content from all of your social channels. \n* **Make it yours** - Customize your feed with your own colors and styles to perfectly match the design of your site. Control the frequency of updates too!\n* **Get more followers** - Pull in any content from Facebook, Twitter, Instagram, YouTube, Vine, Vimeo, Google+, Pinterest and more. Allow your users to share  too!\n\n# Get started for free and enjoy these features:   \n\n* Connect to Facebook, Instagram, Pinterest, YouTube, Twitter, Tumblr, Flickr, Vimeo, Dailymotion, or RSS.\n* Combine images, videos, and text from all of your social sources in one gallery.\n* Follow @handles, #hashtags, account, or site URLs.\n* 24 hour automatic content updates.\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Enable content moderation and choose which posts to display or hide. \n* Update content more frequently (every hour or every 20 minutes).\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=social-feed).\n\n# Why users love Social Feed:   \n\n“I am in love with this cool app! Keeping up with social media content is always a struggle for me because I do everything, but this app makes it super easy to post my social media content to my site and in turn, get more social media followers from the process.\" - Defense Divas \n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Social Feed up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "//images.cloudflareapps.com/E1cCUhIKSdapDbMPbMkB_Icon - Social Feed Cloudflare (1).png",
+				"screenshots": [
+					"//images.cloudflareapps.com/uNHha5iLSg28858aqQTL_social feed 1 (1) (3).png",
+					"//images.cloudflareapps.com/4NgE6dpqSDuSxt4kDWqj_social feed 2 (4).png",
+					"//images.cloudflareapps.com/7T5GooMQvCqkaYlovYXO_Screen Shot 2018-01-30 at 11.12.13 AM.png",
+					"//images.cloudflareapps.com/EVRboUxTh6c1tF96UjzY_Shea radiance (1).png",
+					"//images.cloudflareapps.com/Z1RcALCISsWkaOGiBBky_all-purpose-banner copy (1).png"
+				],
+				"tileImage": "//images.cloudflareapps.com/37bNHj4pQPOwlhO5tleo_Social Feed banner (1).png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For businesses looking to test the water with new plugins.",
+						"longDescription": "* 24-Hour Content Updates\n* Add 1 Account/Hashtag per Feed\n* Display 6 Posts per Account",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "premium",
+						"title": "Starter",
+						"shortDescription": "For businesses who have their own brand and want extra customization.",
+						"longDescription": "* Remove POWr Logo\n* 12-Hour Content Updates\n* Add 2 Accounts/Hashtags per Feed\n* Display 12 Posts per Account\n* Add Social Share Buttons",
+						"visible": true,
+						"price": 500,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "For growing businesses looking to stand out from the crowd and get more conversions.",
+						"longDescription": "* Remove POWr Logo\n* 3-Hour Content Updates\n* Add 4 Accounts/Hashtags per Feed\n* Display 20 Posts per Account\n* Add Social Share Buttons\n* Add Custom CSS & JavaScript",
+						"visible": true,
+						"price": 1200,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "For total control that scales with your business, whether it’s big or small. Get every feature for every plugin.",
+						"longDescription": "* Remove POWr Logo\n* 20-Minute Content Updates\n* Add 15 Accounts/Hashtags per Feed\n* Display 50 Posts per Account\n* Add Social Share Buttons\n* Add Custom CSS & JavaScript\n* Manually Approve Posts\n+ FREE Business Upgrade for all 50 POWr Plugins",
+						"visible": true,
+						"price": 5000,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "iM-tHL9ueOAO"
+				},
+				"created": "2018-03-12T18:38:20.844944Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2018-03-23T17:33:36.894284891Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2018-04-02T21:05:20.727862546Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "uuryAwtwRdUp",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Social Feed appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=socialFeed",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=socialFeed",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "Persisting install.id",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/F4EX00eUbYNK",
+			"metadata": {
+				"code": {
+					"sourceTag": "F4EX00eUbYNK",
+					"uploadedOn": "2018-09-19T23:50:35.966050076Z"
+				}
+			},
+			"created": "2018-09-19T23:50:35.788049Z",
+			"proposedApp": {
+				"id": "uuryAwtwRdUp",
+				"title": "Social Feed",
+				"shortDescription": "Boost SEO & display fresh content with a custom social feed",
+				"longDescription": "POWr Social Feed is the easy way of displaying your social media accounts on your website, so you can get more followers. Any time you post to social media the new post will also appear on your website, so you can automatically keep your content fresh and up-to-date.\n \n# What are the benefits of using POWr Social Feed?   \n\n* **Boost conversions** - The easy way to increase conversions, SEO, and time spent on your website: automatically show fresh content from all of your social channels. \n* **Make it yours** - Customize your feed with your own colors and styles to perfectly match the design of your site. Control the frequency of updates too!\n* **Get more followers** - Pull in any content from Facebook, Twitter, Instagram, YouTube, Vine, Vimeo, Google+, Pinterest and more. Allow your users to share  too!\n\n# Get started for free and enjoy these features:   \n\n* Connect to Facebook, Instagram, Pinterest, YouTube, Twitter, Tumblr, Flickr, Vimeo, Dailymotion, or RSS.\n* Combine images, videos, and text from all of your social sources in one gallery.\n* Follow @handles, #hashtags, account, or site URLs.\n* 24 hour automatic content updates.\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Enable content moderation and choose which posts to display or hide. \n* Update content more frequently (every hour or every 20 minutes).\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=social-feed).\n\n# Why users love Social Feed:   \n\n“I am in love with this cool app! Keeping up with social media content is always a struggle for me because I do everything, but this app makes it super easy to post my social media content to my site and in turn, get more social media followers from the process.\" - Defense Divas \n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Social Feed up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "//images.cloudflareapps.com/E1cCUhIKSdapDbMPbMkB_Icon - Social Feed Cloudflare (1).png",
+				"screenshots": [
+					"//images.cloudflareapps.com/uNHha5iLSg28858aqQTL_social feed 1 (1) (3).png",
+					"//images.cloudflareapps.com/4NgE6dpqSDuSxt4kDWqj_social feed 2 (4).png",
+					"//images.cloudflareapps.com/7T5GooMQvCqkaYlovYXO_Screen Shot 2018-01-30 at 11.12.13 AM.png",
+					"//images.cloudflareapps.com/EVRboUxTh6c1tF96UjzY_Shea radiance (1).png",
+					"//images.cloudflareapps.com/Z1RcALCISsWkaOGiBBky_all-purpose-banner copy (1).png"
+				],
+				"tileImage": "//images.cloudflareapps.com/37bNHj4pQPOwlhO5tleo_Social Feed banner (1).png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "iM-tHL9ueOAO"
+				},
+				"created": "2018-03-12T18:38:20.844944Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2018-09-19T23:50:36.403826589Z",
+				"canceledByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"canceledAt": "2018-09-25T17:56:49.498902975Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "uuryAwtwRdUp",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Social Feed appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=socialFeed",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=socialFeed",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "Persisting install.id",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/F4EX00eUbYNK",
+			"created": "2018-09-25T17:02:15.403966Z",
+			"proposedApp": {
+				"id": "uuryAwtwRdUp",
+				"title": "Social Feed",
+				"shortDescription": "Boost SEO & display fresh content with a custom social feed",
+				"longDescription": "POWr Social Feed is the easy way of displaying your social media accounts on your website, so you can get more followers. Any time you post to social media the new post will also appear on your website, so you can automatically keep your content fresh and up-to-date.\n \n# What are the benefits of using POWr Social Feed?   \n\n* **Boost conversions** - The easy way to increase conversions, SEO, and time spent on your website: automatically show fresh content from all of your social channels. \n* **Make it yours** - Customize your feed with your own colors and styles to perfectly match the design of your site. Control the frequency of updates too!\n* **Get more followers** - Pull in any content from Facebook, Twitter, Instagram, YouTube, Vine, Vimeo, Google+, Pinterest and more. Allow your users to share  too!\n\n# Get started for free and enjoy these features:   \n\n* Connect to Facebook, Instagram, Pinterest, YouTube, Twitter, Tumblr, Flickr, Vimeo, Dailymotion, or RSS.\n* Combine images, videos, and text from all of your social sources in one gallery.\n* Follow @handles, #hashtags, account, or site URLs.\n* 24 hour automatic content updates.\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Enable content moderation and choose which posts to display or hide. \n* Update content more frequently (every hour or every 20 minutes).\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=social-feed).\n\n# Why users love Social Feed:   \n\n“I am in love with this cool app! Keeping up with social media content is always a struggle for me because I do everything, but this app makes it super easy to post my social media content to my site and in turn, get more social media followers from the process.\" - Defense Divas \n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Social Feed up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "//images.cloudflareapps.com/E1cCUhIKSdapDbMPbMkB_Icon - Social Feed Cloudflare (1).png",
+				"screenshots": [
+					"//images.cloudflareapps.com/uNHha5iLSg28858aqQTL_social feed 1 (1) (3).png",
+					"//images.cloudflareapps.com/4NgE6dpqSDuSxt4kDWqj_social feed 2 (4).png",
+					"//images.cloudflareapps.com/7T5GooMQvCqkaYlovYXO_Screen Shot 2018-01-30 at 11.12.13 AM.png",
+					"//images.cloudflareapps.com/EVRboUxTh6c1tF96UjzY_Shea radiance (1).png",
+					"//images.cloudflareapps.com/Z1RcALCISsWkaOGiBBky_all-purpose-banner copy (1).png"
+				],
+				"tileImage": "//images.cloudflareapps.com/37bNHj4pQPOwlhO5tleo_Social Feed banner (1).png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "iM-tHL9ueOAO"
+				},
+				"created": "2018-03-12T18:38:20.844944Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2018-09-25T17:56:49.530902062Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2018-09-26T17:16:31.532628614Z"
+			}
+		},
+		{
+			"tag": "1.0.4",
+			"appId": "uuryAwtwRdUp",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Social Feed appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=socialFeed",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=socialFeed",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "Persisting install.id",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/F4EX00eUbYNK",
+			"created": "2018-09-26T21:15:18.669185Z",
+			"proposedApp": {
+				"id": "uuryAwtwRdUp",
+				"title": "Social Feed",
+				"shortDescription": "Automatic stream for Instagram, Facebook, Twitter and more!",
+				"longDescription": "POWr Social Feed is the easy way of displaying your social media accounts on your website, so you can get more followers. Any time you post to social media the new post will also appear on your website, so you can automatically keep your content fresh and up-to-date.\n \n# What are the benefits of using POWr Social Feed?   \n\n* **Boost conversions** - The easy way to increase conversions, SEO, and time spent on your website: automatically show fresh content from all of your social channels. \n* **Make it yours** - Customize your feed with your own colors and styles to perfectly match the design of your site. Control the frequency of updates too!\n* **Get more followers** - Pull in any content from Facebook, Twitter, Instagram, YouTube, Vine, Vimeo, Google+, Pinterest and more. Allow your users to share  too!\n\n# Get started for free and enjoy these features:   \n\n* Connect to Facebook, Instagram, Pinterest, YouTube, Twitter, Tumblr, Flickr, Vimeo, Dailymotion, or RSS.\n* Combine images, videos, and text from all of your social sources in one gallery.\n* Follow @handles, #hashtags, account, or site URLs.\n* 24 hour automatic content updates.\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Enable content moderation and choose which posts to display or hide. \n* Update content more frequently (every hour or every 20 minutes).\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=social-feed).\n\n# Why users love Social Feed:   \n\n“I am in love with this cool app! Keeping up with social media content is always a struggle for me because I do everything, but this app makes it super easy to post my social media content to my site and in turn, get more social media followers from the process.\" - Defense Divas \n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Social Feed up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "https://images.cloudflareapps.com/2_dRalWR_M2V/Social-Feed-Icon-Cloudflare.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/uNHha5iLSg28858aqQTL_social feed 1 (1) (3).png",
+					"//images.cloudflareapps.com/4NgE6dpqSDuSxt4kDWqj_social feed 2 (4).png",
+					"//images.cloudflareapps.com/7T5GooMQvCqkaYlovYXO_Screen Shot 2018-01-30 at 11.12.13 AM.png",
+					"//images.cloudflareapps.com/EVRboUxTh6c1tF96UjzY_Shea radiance (1).png",
+					"//images.cloudflareapps.com/Z1RcALCISsWkaOGiBBky_all-purpose-banner copy (1).png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/uFxvVE5D4-gq/Social-Feed-Banner-Cloudflare.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "iM-tHL9ueOAO"
+				},
+				"created": "2018-03-12T18:38:20.844944Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2018-09-27T20:15:25.775734285Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2018-09-27T22:51:10.073651813Z"
+			}
+		},
+		{
+			"tag": "1.0.5",
+			"appId": "uuryAwtwRdUp",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Social Feed appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=socialFeed",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=socialFeed",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "We've made minor updates to Social Feed. There is no need to do anything, your app will continue to work as expected.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/F4EX00eUbYNK",
+			"created": "2018-10-16T17:47:58.14621Z",
+			"proposedApp": {
+				"id": "uuryAwtwRdUp",
+				"title": "Social Feed",
+				"shortDescription": "Automatic stream for Instagram, Facebook, Twitter and more!",
+				"longDescription": "POWr Social Feed is the easy way of displaying your social media accounts on your website, so you can get more followers. Any time you post to social media the new post will also appear on your website, so you can automatically keep your content fresh and up-to-date.\n \n# What are the benefits of using POWr Social Feed?   \n\n* **Boost conversions** - The easy way to increase conversions, SEO, and time spent on your website: automatically show fresh content from all of your social channels. \n* **Make it yours** - Customize your feed with your own colors and styles to perfectly match the design of your site. Control the frequency of updates too!\n* **Get more followers** - Pull in any content from Facebook, Twitter, Instagram, YouTube, Vine, Vimeo, Google+, Pinterest and more. Allow your users to share  too!\n\n# Get started for free and enjoy these features:   \n\n* Connect to Facebook, Instagram, Pinterest, YouTube, Twitter, Tumblr, Flickr, Vimeo, Dailymotion, or RSS.\n* Combine images, videos, and text from all of your social sources in one gallery.\n* Follow @handles, #hashtags, account, or site URLs.\n* 24 hour automatic content updates.\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Enable content moderation and choose which posts to display or hide. \n* Update content more frequently (every hour or every 20 minutes).\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=social-feed).\n\n# Why users love Social Feed:   \n\n“I am in love with this cool app! Keeping up with social media content is always a struggle for me because I do everything, but this app makes it super easy to post my social media content to my site and in turn, get more social media followers from the process.\" - Defense Divas \n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Social Feed up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "powr-social-feed",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "https://images.cloudflareapps.com/2_dRalWR_M2V/Social-Feed-Icon-Cloudflare.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/uNHha5iLSg28858aqQTL_social feed 1 (1) (3).png",
+					"//images.cloudflareapps.com/4NgE6dpqSDuSxt4kDWqj_social feed 2 (4).png",
+					"//images.cloudflareapps.com/7T5GooMQvCqkaYlovYXO_Screen Shot 2018-01-30 at 11.12.13 AM.png",
+					"//images.cloudflareapps.com/EVRboUxTh6c1tF96UjzY_Shea radiance (1).png",
+					"//images.cloudflareapps.com/Z1RcALCISsWkaOGiBBky_all-purpose-banner copy (1).png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/uFxvVE5D4-gq/Social-Feed-Banner-Cloudflare.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "iM-tHL9ueOAO"
+				},
+				"created": "2018-03-12T18:38:20.844944Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2018-10-16T17:47:58.400901185Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2018-10-18T18:28:23.57259842Z"
+			}
+		},
+		{
+			"tag": "1.0.6",
+			"appId": "uuryAwtwRdUp",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Social Feed appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=socialFeed",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=socialFeed",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.5,
+				"upvotes": 1,
+				"downvotes": 1
+			},
+			"releaseNotes": "Add POWR tag",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/F4EX00eUbYNK",
+			"created": "2018-11-06T00:54:53.927169Z",
+			"proposedApp": {
+				"id": "uuryAwtwRdUp",
+				"title": "Social Feed",
+				"shortDescription": "Automatic stream for Instagram, Facebook, Twitter and more!",
+				"longDescription": "POWr Social Feed is the easy way of displaying your social media accounts on your website, so you can get more followers. Any time you post to social media the new post will also appear on your website, so you can automatically keep your content fresh and up-to-date.\n \n# What are the benefits of using POWr Social Feed?   \n\n* **Boost conversions** - The easy way to increase conversions, SEO, and time spent on your website: automatically show fresh content from all of your social channels. \n* **Make it yours** - Customize your feed with your own colors and styles to perfectly match the design of your site. Control the frequency of updates too!\n* **Get more followers** - Pull in any content from Facebook, Twitter, Instagram, YouTube, Vine, Vimeo, Google+, Pinterest and more. Allow your users to share  too!\n\n# Get started for free and enjoy these features:   \n\n* Connect to Facebook, Instagram, Pinterest, YouTube, Twitter, Tumblr, Flickr, Vimeo, Dailymotion, or RSS.\n* Combine images, videos, and text from all of your social sources in one gallery.\n* Follow @handles, #hashtags, account, or site URLs.\n* 24 hour automatic content updates.\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Enable content moderation and choose which posts to display or hide. \n* Update content more frequently (every hour or every 20 minutes).\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=social-feed).\n\n# Why users love Social Feed:   \n\n“I am in love with this cool app! Keeping up with social media content is always a struggle for me because I do everything, but this app makes it super easy to post my social media content to my site and in turn, get more social media followers from the process.\" - Defense Divas \n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Social Feed up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "powr-social-feed",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "https://images.cloudflareapps.com/2_dRalWR_M2V/Social-Feed-Icon-Cloudflare.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/uNHha5iLSg28858aqQTL_social feed 1 (1) (3).png",
+					"//images.cloudflareapps.com/4NgE6dpqSDuSxt4kDWqj_social feed 2 (4).png",
+					"//images.cloudflareapps.com/7T5GooMQvCqkaYlovYXO_Screen Shot 2018-01-30 at 11.12.13 AM.png",
+					"//images.cloudflareapps.com/EVRboUxTh6c1tF96UjzY_Shea radiance (1).png",
+					"//images.cloudflareapps.com/Z1RcALCISsWkaOGiBBky_all-purpose-banner copy (1).png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/uFxvVE5D4-gq/Social-Feed-Banner-Cloudflare.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication",
+					"powr"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "iM-tHL9ueOAO"
+				},
+				"created": "2018-03-12T18:38:20.844944Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "41f272f0efef5d92ddde1aa9398f388a",
+				"requestedAt": "2018-11-06T00:54:54.069177892Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-11-06T01:00:44.974754688Z"
+			}
+		},
+		{
+			"tag": "1.0.7",
+			"appId": "uuryAwtwRdUp",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"exitHelp": {
+							"helpvalue": "<p></p><h2><b>Need help?</b></h2>Visit our glorious <a href='https://www.powr.io/knowledge-base'>Support Center</a> or <a href='https://www.powr.io/feedback/new?&src=cloudflare' target='_blank'>send us a message</a>.",
+							"order": 5,
+							"type": "help"
+						},
+						"introHelp": {
+							"helpvalue": "<center><h1>🌟 Welcome to POWr Social Feed 🌟</h1> Easily stream your social posts anywhere on your Cloudflare site!</center>",
+							"order": 0,
+							"type": "help"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"format": "element",
+							"order": 4,
+							"title": "Choose where you’d like to add your Social Feed",
+							"type": "object"
+						},
+						"step1Help": {
+							"helpvalue": "<p></p><h2><b>STEP 1: Design your Social Feed</b></h2>",
+							"order": 1,
+							"type": "help"
+						},
+						"step2Help": {
+							"helpvalue": "<p></p><h2><b>STEP 2: Where would you like to add your Social Feed?</b></h2>",
+							"order": 3,
+							"type": "help"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=socialFeed&v=2",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=socialFeed&v=2",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"manual": true,
+			"releaseNotes": "Updated UI",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/OA1KcGJWRQra",
+			"metadata": {
+				"code": {
+					"sourceTag": "OA1KcGJWRQra",
+					"uploadedOn": "2019-01-30T04:16:42.848092884Z"
+				}
+			},
+			"created": "2019-01-30T02:17:03.965444Z",
+			"proposedApp": {
+				"id": "uuryAwtwRdUp",
+				"title": "Social Feed",
+				"shortDescription": "Automatic stream for Instagram, Facebook, Twitter and more!",
+				"longDescription": "POWr Social Feed is the easy way of displaying your social media accounts on your website, so you can get more followers. Any time you post to social media the new post will also appear on your website, so you can automatically keep your content fresh and up-to-date.\n \n# What are the benefits of using POWr Social Feed?   \n\n* **Boost conversions** - The easy way to increase conversions, SEO, and time spent on your website: automatically show fresh content from all of your social channels. \n* **Make it yours** - Customize your feed with your own colors and styles to perfectly match the design of your site. Control the frequency of updates too!\n* **Get more followers** - Pull in any content from Facebook, Twitter, Instagram, YouTube, Vine, Vimeo, Google+, Pinterest and more. Allow your users to share  too!\n\n# Get started for free and enjoy these features:   \n\n* Connect to Facebook, Instagram, Pinterest, YouTube, Twitter, Tumblr, Flickr, Vimeo, Dailymotion, or RSS.\n* Combine images, videos, and text from all of your social sources in one gallery.\n* Follow @handles, #hashtags, account, or site URLs.\n* 24 hour automatic content updates.\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Enable content moderation and choose which posts to display or hide. \n* Update content more frequently (every hour or every 20 minutes).\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=social-feed).\n\n# Why users love Social Feed:   \n\n“I am in love with this cool app! Keeping up with social media content is always a struggle for me because I do everything, but this app makes it super easy to post my social media content to my site and in turn, get more social media followers from the process.\" - Defense Divas \n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Social Feed up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "powr-social-feed",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "https://images.cloudflareapps.com/2_dRalWR_M2V/Social-Feed-Icon-Cloudflare.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/uNHha5iLSg28858aqQTL_social feed 1 (1) (3).png",
+					"//images.cloudflareapps.com/4NgE6dpqSDuSxt4kDWqj_social feed 2 (4).png",
+					"//images.cloudflareapps.com/7T5GooMQvCqkaYlovYXO_Screen Shot 2018-01-30 at 11.12.13 AM.png",
+					"//images.cloudflareapps.com/EVRboUxTh6c1tF96UjzY_Shea radiance (1).png",
+					"//images.cloudflareapps.com/Z1RcALCISsWkaOGiBBky_all-purpose-banner copy (1).png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/uFxvVE5D4-gq/Social-Feed-Banner-Cloudflare.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication",
+					"powr"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "iM-tHL9ueOAO"
+				},
+				"created": "2018-03-12T18:38:20.844944Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2019-01-30T04:18:41.31482825Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2019-01-30T21:50:22.160327216Z"
+			}
+		},
+		{
+			"tag": "1.0.8",
+			"appId": "uuryAwtwRdUp",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"exitHelp": {
+							"helpvalue": "<p></p><h2><b>Need help?</b></h2>Visit our glorious <a href='https://www.powr.io/knowledge-base'>Support Center</a> or <a href='https://www.powr.io/feedback/new?&src=cloudflare' target='_blank'>send us a message</a>.",
+							"order": 5,
+							"type": "help"
+						},
+						"introHelp": {
+							"helpvalue": "<center><h1>🌟 Welcome to POWr Social Feed 🌟</h1> Easily stream your social posts anywhere on your Cloudflare site!</center> ",
+							"order": 0,
+							"type": "help"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"format": "element",
+							"order": 4,
+							"title": "Choose where you’d like to add your Social Feed",
+							"type": "object"
+						},
+						"step1Help": {
+							"helpvalue": "<p></p><h2><b>STEP 1: Design your Social Feed</b></h2>",
+							"order": 1,
+							"type": "help"
+						},
+						"step2Help": {
+							"helpvalue": "<p></p><h2><b>STEP 2: Where would you like to add your Social Feed?</b></h2>",
+							"order": 3,
+							"type": "help"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=socialFeed&v=2",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=socialFeed&v=2",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "Cleaner & more helpful interface!",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/NDhlhBeD-ib2",
+			"metadata": {
+				"code": {
+					"sourceTag": "NDhlhBeD-ib2",
+					"uploadedOn": "2019-02-14T00:00:22.979340583Z"
+				}
+			},
+			"created": "2019-01-30T04:20:55.311563Z",
+			"proposedApp": {
+				"id": "uuryAwtwRdUp",
+				"title": "Social Feed",
+				"shortDescription": "Automatic stream for Instagram, Facebook, Twitter and more!",
+				"longDescription": "POWr Social Feed is the easy way of displaying your social media accounts on your website, so you can get more followers. Any time you post to social media the new post will also appear on your website, so you can automatically keep your content fresh and up-to-date.\n \n# What are the benefits of using POWr Social Feed?   \n\n* **Boost conversions** - The easy way to increase conversions, SEO, and time spent on your website: automatically show fresh content from all of your social channels. \n* **Make it yours** - Customize your feed with your own colors and styles to perfectly match the design of your site. Control the frequency of updates too!\n* **Get more followers** - Pull in any content from Facebook, Twitter, Instagram, YouTube, Vine, Vimeo, Google+, Pinterest and more. Allow your users to share  too!\n\n# Get started for free and enjoy these features:   \n\n* Connect to Facebook, Instagram, Pinterest, YouTube, Twitter, Tumblr, Flickr, Vimeo, Dailymotion, or RSS.\n* Combine images, videos, and text from all of your social sources in one gallery.\n* Follow @handles, #hashtags, account, or site URLs.\n* 24 hour automatic content updates.\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Enable content moderation and choose which posts to display or hide. \n* Update content more frequently (every hour or every 20 minutes).\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=social-feed).\n\n# Why users love Social Feed:   \n\n“I am in love with this cool app! Keeping up with social media content is always a struggle for me because I do everything, but this app makes it super easy to post my social media content to my site and in turn, get more social media followers from the process.\" - Defense Divas \n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Social Feed up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "powr-social-feed",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "https://images.cloudflareapps.com/2_dRalWR_M2V/Social-Feed-Icon-Cloudflare.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/uNHha5iLSg28858aqQTL_social feed 1 (1) (3).png",
+					"//images.cloudflareapps.com/4NgE6dpqSDuSxt4kDWqj_social feed 2 (4).png",
+					"//images.cloudflareapps.com/7T5GooMQvCqkaYlovYXO_Screen Shot 2018-01-30 at 11.12.13 AM.png",
+					"//images.cloudflareapps.com/EVRboUxTh6c1tF96UjzY_Shea radiance (1).png",
+					"//images.cloudflareapps.com/Z1RcALCISsWkaOGiBBky_all-purpose-banner copy (1).png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/uFxvVE5D4-gq/Social-Feed-Banner-Cloudflare.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication",
+					"powr"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "iM-tHL9ueOAO"
+				},
+				"created": "2018-03-12T18:38:20.844944Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2019-02-14T00:01:05.475821713Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2019-02-14T00:10:06.951796775Z"
+			}
+		},
+		{
+			"tag": "1.0.9",
+			"appId": "uuryAwtwRdUp",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"exitHelp": {
+							"helpvalue": "<br/><hr/><h2><b>Need help?</b></h2>Visit our glorious <a href='https://www.powr.io/knowledge-base'>Support Center</a> or <a href='https://www.powr.io/feedback/new?&src=cloudflare' target='_blank'>send us a message</a>.",
+							"order": 8,
+							"type": "help"
+						},
+						"externalLink": {
+							"format": "button",
+							"href": "https://www.powr.io/cloudflare/social-feed",
+							"label": "Open POWr Editor",
+							"order": 2,
+							"title": "Design and customize your Social Feed",
+							"type": "link"
+						},
+						"introHelp": {
+							"helpvalue": "<center><h1>Welcome to <br/> POWr Social Feed</h1> Easily stream your social posts anywhere on your Cloudflare site!</center>",
+							"order": 0,
+							"type": "help"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"format": "element",
+							"order": 6,
+							"title": "Where should the Social Feed appear?",
+							"type": "object"
+						},
+						"shortcode": {
+							"order": 4,
+							"placeholder": "[powr-social-feed id='abc123']",
+							"title": "Get the shortcode from the POWr link where you created your Social Feed",
+							"type": "string"
+						},
+						"step1Help": {
+							"helpvalue": "<p></p><h2><b>1: Configure Your Social Feed</b></h2>",
+							"order": 1,
+							"type": "help"
+						},
+						"step2Help": {
+							"helpvalue": "<p></p><h2><b>2: Paste Shortcode</b></h2>",
+							"order": 3,
+							"type": "help"
+						},
+						"step3Help": {
+							"helpvalue": "<p></p><h2><b>3: Select Install Location</b></h2>",
+							"order": 5,
+							"type": "help"
+						},
+						"step4Help": {
+							"helpvalue": "<center><h2>------- OR --------</h2></center><br/><h3>Embed your shortcode in your website where you'd like your Social Feed to appear.</h3>",
+							"order": 7,
+							"type": "help"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Simplified flow to install and manage plugins!",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/crvrCLyGZOvG",
+			"metadata": {
+				"code": {
+					"sourceTag": "crvrCLyGZOvG",
+					"uploadedOn": "2019-02-26T19:23:13.049710956Z"
+				}
+			},
+			"created": "2019-02-26T19:23:12.890001Z",
+			"proposedApp": {
+				"id": "uuryAwtwRdUp",
+				"title": "Social Feed",
+				"shortDescription": "Automatic stream for Instagram, Facebook, Twitter and more!",
+				"longDescription": "POWr Social Feed is the easy way of displaying your social media accounts on your website, so you can get more followers. Any time you post to social media the new post will also appear on your website, so you can automatically keep your content fresh and up-to-date.\n \n# What are the benefits of using POWr Social Feed?   \n\n* **Boost conversions** - The easy way to increase conversions, SEO, and time spent on your website: automatically show fresh content from all of your social channels. \n* **Make it yours** - Customize your feed with your own colors and styles to perfectly match the design of your site. Control the frequency of updates too!\n* **Get more followers** - Pull in any content from Facebook, Twitter, Instagram, YouTube, Vine, Vimeo, Google+, Pinterest and more. Allow your users to share  too!\n\n# Get started for free and enjoy these features:   \n\n* Connect to Facebook, Instagram, Pinterest, YouTube, Twitter, Tumblr, Flickr, Vimeo, Dailymotion, or RSS.\n* Combine images, videos, and text from all of your social sources in one gallery.\n* Follow @handles, #hashtags, account, or site URLs.\n* 24 hour automatic content updates.\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Enable content moderation and choose which posts to display or hide. \n* Update content more frequently (every hour or every 20 minutes).\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=social-feed).\n\n# Why users love Social Feed:   \n\n“I am in love with this cool app! Keeping up with social media content is always a struggle for me because I do everything, but this app makes it super easy to post my social media content to my site and in turn, get more social media followers from the process.\" - Defense Divas \n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Social Feed up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "powr-social-feed",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "https://images.cloudflareapps.com/2_dRalWR_M2V/Social-Feed-Icon-Cloudflare.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/uNHha5iLSg28858aqQTL_social feed 1 (1) (3).png",
+					"//images.cloudflareapps.com/4NgE6dpqSDuSxt4kDWqj_social feed 2 (4).png",
+					"//images.cloudflareapps.com/7T5GooMQvCqkaYlovYXO_Screen Shot 2018-01-30 at 11.12.13 AM.png",
+					"//images.cloudflareapps.com/EVRboUxTh6c1tF96UjzY_Shea radiance (1).png",
+					"//images.cloudflareapps.com/Z1RcALCISsWkaOGiBBky_all-purpose-banner copy (1).png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/uFxvVE5D4-gq/Social-Feed-Banner-Cloudflare.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication",
+					"powr"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "iM-tHL9ueOAO"
+				},
+				"created": "2018-03-12T18:38:20.844944Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2019-02-26T19:27:11.576182149Z",
+				"canceledByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"canceledAt": "2019-02-26T19:35:18.843133904Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.1.0",
+			"appId": "uuryAwtwRdUp",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"exitHelp": {
+							"helpvalue": "<br/><hr/><h2><b>Need help?</b></h2>Visit our glorious <a href='https://www.powr.io/knowledge-base'>Support Center</a> or <a href='https://www.powr.io/feedback/new?&src=cloudflare' target='_blank'>send us a message</a>.",
+							"order": 8,
+							"type": "help"
+						},
+						"externalLink": {
+							"format": "button",
+							"href": "https://www.powr.io/cloudflare/social-feed",
+							"label": "Open POWr Editor",
+							"order": 2,
+							"title": "Design and customize your Social Feed",
+							"type": "link"
+						},
+						"introHelp": {
+							"helpvalue": "<center><h1>Welcome to <br/> POWr Social Feed</h1> Easily stream your social posts anywhere on your Cloudflare site!</center>",
+							"order": 0,
+							"type": "help"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"format": "element",
+							"order": 6,
+							"title": "Where should the Social Feed appear?",
+							"type": "object"
+						},
+						"shortcode": {
+							"order": 4,
+							"placeholder": "[powr-social-feed id='abc123']",
+							"title": "Get the shortcode from the POWr link where you created your Social Feed",
+							"type": "string"
+						},
+						"step1Help": {
+							"helpvalue": "<p></p><h2><b>1: Configure Your Social Feed</b></h2>",
+							"order": 1,
+							"type": "help"
+						},
+						"step2Help": {
+							"helpvalue": "<p></p><h2><b>2: Paste Shortcode</b></h2>",
+							"order": 3,
+							"type": "help"
+						},
+						"step3Help": {
+							"helpvalue": "<p></p><h2><b>3: Select Install Location</b></h2>",
+							"order": 5,
+							"type": "help"
+						},
+						"step4Help": {
+							"helpvalue": "<center><h2>------- OR --------</h2></center><br/><h3>Embed your shortcode in your website where you'd like your Social Feed to appear.</h3>",
+							"order": 7,
+							"type": "help"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 4,
+				"downvotes": 0
+			},
+			"releaseNotes": "Simplified flow to install and manage plugins!",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/PsPBl1uJK3Ql",
+			"metadata": {
+				"code": {
+					"sourceTag": "PsPBl1uJK3Ql",
+					"uploadedOn": "2019-02-26T19:35:18.191729803Z"
+				}
+			},
+			"created": "2019-02-26T19:35:17.983303Z",
+			"proposedApp": {
+				"id": "uuryAwtwRdUp",
+				"title": "Social Feed",
+				"shortDescription": "Automatic stream for Instagram, Facebook, Twitter and more!",
+				"longDescription": "POWr Social Feed is the easy way of displaying your social media accounts on your website, so you can get more followers. Any time you post to social media the new post will also appear on your website, so you can automatically keep your content fresh and up-to-date.\n \n# What are the benefits of using POWr Social Feed?   \n\n* **Boost conversions** - The easy way to increase conversions, SEO, and time spent on your website: automatically show fresh content from all of your social channels. \n* **Make it yours** - Customize your feed with your own colors and styles to perfectly match the design of your site. Control the frequency of updates too!\n* **Get more followers** - Pull in any content from Facebook, Twitter, Instagram, YouTube, Vine, Vimeo, Google+, Pinterest and more. Allow your users to share  too!\n\n# Get started for free and enjoy these features:   \n\n* Connect to Facebook, Instagram, Pinterest, YouTube, Twitter, Tumblr, Flickr, Vimeo, Dailymotion, or RSS.\n* Combine images, videos, and text from all of your social sources in one gallery.\n* Follow @handles, #hashtags, account, or site URLs.\n* 24 hour automatic content updates.\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Enable content moderation and choose which posts to display or hide. \n* Update content more frequently (every hour or every 20 minutes).\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=social-feed).\n\n# Why users love Social Feed:   \n\n“I am in love with this cool app! Keeping up with social media content is always a struggle for me because I do everything, but this app makes it super easy to post my social media content to my site and in turn, get more social media followers from the process.\" - Defense Divas \n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Social Feed up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "powr-social-feed",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "https://images.cloudflareapps.com/2_dRalWR_M2V/Social-Feed-Icon-Cloudflare.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/uNHha5iLSg28858aqQTL_social feed 1 (1) (3).png",
+					"//images.cloudflareapps.com/4NgE6dpqSDuSxt4kDWqj_social feed 2 (4).png",
+					"//images.cloudflareapps.com/7T5GooMQvCqkaYlovYXO_Screen Shot 2018-01-30 at 11.12.13 AM.png",
+					"//images.cloudflareapps.com/EVRboUxTh6c1tF96UjzY_Shea radiance (1).png",
+					"//images.cloudflareapps.com/Z1RcALCISsWkaOGiBBky_all-purpose-banner copy (1).png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/uFxvVE5D4-gq/Social-Feed-Banner-Cloudflare.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication",
+					"powr"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "iM-tHL9ueOAO"
+				},
+				"created": "2018-03-12T18:38:20.844944Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2019-02-26T19:35:18.853307443Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2019-02-27T00:47:22.347135962Z"
+			}
+		}
+	]
+}

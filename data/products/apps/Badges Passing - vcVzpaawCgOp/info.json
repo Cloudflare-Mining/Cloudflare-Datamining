@@ -1,0 +1,603 @@
+{
+	"id": "vcVzpaawCgOp",
+	"title": "Badges Passing",
+	"shortDescription": "Add badges to your website.",
+	"longDescription": "Add badges to your website, powered by shields.io.",
+	"instructions": "",
+	"alias": "badges-passing",
+	"orgId": "070fea224e069523cd1da157d0cbea26",
+	"icon": "https://images.cloudflareapps.com/hM09Ls1R7vZK/Artboard2.png",
+	"screenshots": [],
+	"tileImage": "https://images.cloudflareapps.com/U6ijtq1cW5RX/Artboard3.png",
+	"featuredAppImage": "",
+	"author": "Richie Bendall",
+	"tagline": "",
+	"website": "",
+	"sourceURL": "https://github.com/Richienb/cloudflare-badges-app",
+	"termsOfServiceURL": "https://docs.google.com/document/d/1VdujSYPVONr13Au0t4HNCC_7xK4v-eGMS3_AHCDPFdc/edit?usp=sharing",
+	"privacyPolicyURL": "https://docs.google.com/document/d/1ROjgJhr12dAv_wxjcCR_MJUC-j46B1x6nUCyhVZZ2Qk/edit?usp=sharing",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "0.0.2",
+	"infoVersion": "0.0.2",
+	"points": 0,
+	"supportEmail": "richiebendall@gmail.com",
+	"products": [
+		{
+			"id": "starter",
+			"title": "Starter",
+			"shortDescription": "Core features",
+			"longDescription": "",
+			"visible": true,
+			"price": 0,
+			"order": 0,
+			"created": null
+		},
+		{
+			"id": "pro",
+			"title": "Pro",
+			"shortDescription": "More customisation options",
+			"longDescription": "Set the logo, cache duration, size and more.",
+			"visible": true,
+			"price": 200,
+			"order": 0,
+			"plan": "BADGES_PASSING_PRO",
+			"feature": "apps.badges_passing_pro.enabled",
+			"created": null
+		}
+	],
+	"categoryIds": [
+		"ui-and-design"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "070fea224e069523cd1da157d0cbea26",
+			"created": "2019-06-29T09:37:16.821631817Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "EuMyW5VswBQR"
+	},
+	"created": "2019-06-28T11:13:26.371833Z",
+	"org": {
+		"id": "070fea224e069523cd1da157d0cbea26",
+		"title": "",
+		"username": "070fea224e069523cd1da157d0cbea26",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "ui-and-design",
+			"title": "UI & Design",
+			"description": "Apps that make your website more beautiful and user friendly.",
+			"icon": "",
+			"points": 10,
+			"visible": true,
+			"created": "2018-01-22T19:17:52.677513Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "0.0.1",
+			"appId": "vcVzpaawCgOp",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"badges": {
+							"items": {
+								"properties": {
+									"colour": {
+										"default": "#000000",
+										"format": "color",
+										"order": 0,
+										"title": "Color",
+										"type": "string"
+									},
+									"dataquery": {
+										"description": "This is the path of the data from the file.",
+										"order": 0,
+										"placeholder": "userId",
+										"showIf": {
+											"badges[].type": "dynamic"
+										},
+										"title": "Data Query",
+										"type": "string"
+									},
+									"dataurl": {
+										"description": "This is the url to your external JSON file/API.",
+										"format": "url",
+										"order": 0,
+										"placeholder": "https://jsonplaceholder.typicode.com/posts/1",
+										"showIf": {
+											"badges[].type": "dynamic"
+										},
+										"title": "Data URL",
+										"type": "string"
+									},
+									"label": {
+										"default": "Label title",
+										"order": 0,
+										"title": "Label",
+										"type": "string"
+									},
+									"lefturl": {
+										"format": "url",
+										"order": 0,
+										"showIf": {
+											"INSTALL_PRODUCT.id": "pro",
+											"style": "social"
+										},
+										"title": "Left URL",
+										"type": "string"
+									},
+									"location": {
+										"default": {
+											"method": "prepend"
+										},
+										"description": "Where should the badge appear?",
+										"format": "element",
+										"order": 0,
+										"title": "Badge location",
+										"type": "object"
+									},
+									"logo": {
+										"description": "Specify any logo from <a href='https://simpleicons.org/'>simple-icons</a>.",
+										"order": 0,
+										"placeholder": "cloudflare",
+										"showIf": {
+											"INSTALL_PRODUCT.id": "pro"
+										},
+										"title": "Logo",
+										"type": "string"
+									},
+									"message": {
+										"default": "Label content",
+										"order": 0,
+										"showIf": {
+											"badges[].type": "static"
+										},
+										"title": "Message",
+										"type": "string"
+									},
+									"righturl": {
+										"format": "url",
+										"order": 0,
+										"showIf": {
+											"INSTALL_PRODUCT.id": "pro",
+											"style": "social"
+										},
+										"title": "Right URL",
+										"type": "string"
+									},
+									"type": {
+										"default": "static",
+										"enum": [
+											"static",
+											"dynamic"
+										],
+										"enumNames": {
+											"dynamic": "Dynamic",
+											"static": "Static"
+										},
+										"order": 0,
+										"title": "Badge Type",
+										"type": "string"
+									}
+								},
+								"title": "Item",
+								"type": "object"
+							},
+							"order": 0,
+							"title": "Badges",
+							"type": "array"
+						},
+						"cache": {
+							"default": 3600,
+							"minimum": 0,
+							"order": 0,
+							"showIf": {
+								"INSTALL_PRODUCT.id": "pro"
+							},
+							"title": "Badge cache duration (seconds)",
+							"type": "integer"
+						},
+						"style": {
+							"default": "flat",
+							"enum": [
+								"plastic",
+								"flat",
+								"flat-square",
+								"for-the-badge",
+								"popout",
+								"popout-square",
+								"social"
+							],
+							"enumNames": {
+								"flat": "Flat",
+								"flat-square": "Flat square",
+								"for-the-badge": "For the badge",
+								"plastic": "Plastic",
+								"popout": "Popout",
+								"popout-square": "Square popout",
+								"social": "Social"
+							},
+							"order": 0,
+							"title": "Style",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "Initial release",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/19SCaXqGZaRP",
+			"metadata": {
+				"code": {
+					"sourceTag": "19SCaXqGZaRP",
+					"uploadedOn": "2019-06-29T09:37:14.953531453Z"
+				}
+			},
+			"created": "2019-06-28T11:13:26.837487Z",
+			"proposedApp": {
+				"id": "vcVzpaawCgOp",
+				"title": "Badges Passing",
+				"shortDescription": "Add badges to your website.",
+				"longDescription": "Add badges to your website, powered by shields.io.",
+				"instructions": "",
+				"alias": "badges-passing",
+				"orgId": "070fea224e069523cd1da157d0cbea26",
+				"icon": "https://images.cloudflareapps.com/hM09Ls1R7vZK/Artboard2.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/U6ijtq1cW5RX/Artboard3.png",
+				"featuredAppImage": "",
+				"author": "Richie Bendall",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "https://github.com/Richienb/cloudflare-badges-app",
+				"termsOfServiceURL": "https://docs.google.com/document/d/1VdujSYPVONr13Au0t4HNCC_7xK4v-eGMS3_AHCDPFdc/edit?usp=sharing",
+				"privacyPolicyURL": "https://docs.google.com/document/d/1ROjgJhr12dAv_wxjcCR_MJUC-j46B1x6nUCyhVZZ2Qk/edit?usp=sharing",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "richiebendall@gmail.com",
+				"products": [
+					{
+						"id": "starter",
+						"title": "Starter",
+						"shortDescription": "Core features",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "More customisation options",
+						"longDescription": "Set the logo, cache duration, size and more.",
+						"visible": false,
+						"price": 200,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "EuMyW5VswBQR"
+				},
+				"created": "2019-06-28T11:13:26.371833Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "070fea224e069523cd1da157d0cbea26",
+				"requestedAt": "2019-06-29T09:37:16.801634488Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-07-01T15:52:19.857569298Z"
+			}
+		},
+		{
+			"tag": "0.0.2",
+			"appId": "vcVzpaawCgOp",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"badges": {
+							"items": {
+								"properties": {
+									"colour": {
+										"default": "#000000",
+										"format": "color",
+										"order": 0,
+										"title": "Color",
+										"type": "string"
+									},
+									"dataquery": {
+										"description": "This is the path of the data from the file.",
+										"order": 0,
+										"placeholder": "userId",
+										"showIf": {
+											"badges[].type": "dynamic"
+										},
+										"title": "Data Query",
+										"type": "string"
+									},
+									"dataurl": {
+										"description": "This is the url to your external JSON file/API.",
+										"format": "url",
+										"order": 0,
+										"placeholder": "https://jsonplaceholder.typicode.com/posts/1",
+										"showIf": {
+											"badges[].type": "dynamic"
+										},
+										"title": "Data URL",
+										"type": "string"
+									},
+									"label": {
+										"default": "Label title",
+										"order": 0,
+										"title": "Label",
+										"type": "string"
+									},
+									"lefturl": {
+										"format": "url",
+										"order": 0,
+										"showIf": {
+											"INSTALL_PRODUCT.id": "pro",
+											"style": "social"
+										},
+										"title": "Left URL",
+										"type": "string"
+									},
+									"location": {
+										"default": {
+											"method": "prepend"
+										},
+										"description": "Where should the badge appear?",
+										"format": "element",
+										"order": 0,
+										"title": "Badge location",
+										"type": "object"
+									},
+									"logo": {
+										"description": "Specify any logo from <a href='https://simpleicons.org/'>simple-icons</a>.",
+										"order": 0,
+										"placeholder": "cloudflare",
+										"showIf": {
+											"INSTALL_PRODUCT.id": "pro"
+										},
+										"title": "Logo",
+										"type": "string"
+									},
+									"message": {
+										"default": "Label content",
+										"order": 0,
+										"showIf": {
+											"badges[].type": "static"
+										},
+										"title": "Message",
+										"type": "string"
+									},
+									"righturl": {
+										"format": "url",
+										"order": 0,
+										"showIf": {
+											"INSTALL_PRODUCT.id": "pro",
+											"style": "social"
+										},
+										"title": "Right URL",
+										"type": "string"
+									},
+									"type": {
+										"default": "static",
+										"enum": [
+											"static",
+											"dynamic"
+										],
+										"enumNames": {
+											"dynamic": "Dynamic",
+											"static": "Static"
+										},
+										"order": 0,
+										"title": "Badge Type",
+										"type": "string"
+									}
+								},
+								"title": "Item",
+								"type": "object"
+							},
+							"order": 0,
+							"title": "Badges",
+							"type": "array"
+						},
+						"cache": {
+							"default": 3600,
+							"minimum": 0,
+							"order": 0,
+							"showIf": {
+								"INSTALL_PRODUCT.id": "pro"
+							},
+							"title": "Badge cache duration (seconds)",
+							"type": "integer"
+						},
+						"style": {
+							"default": "flat",
+							"enum": [
+								"plastic",
+								"flat",
+								"flat-square",
+								"for-the-badge",
+								"popout",
+								"popout-square",
+								"social"
+							],
+							"enumNames": {
+								"flat": "Flat",
+								"flat-square": "Flat square",
+								"for-the-badge": "For the badge",
+								"plastic": "Plastic",
+								"popout": "Popout",
+								"popout-square": "Square popout",
+								"social": "Social"
+							},
+							"order": 0,
+							"title": "Style",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.52,
+				"upvotes": 13,
+				"downvotes": 12
+			},
+			"releaseNotes": "Added Pro Tier and Category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/19SCaXqGZaRP",
+			"created": "2019-07-29T17:40:38.038317Z",
+			"proposedApp": {
+				"id": "vcVzpaawCgOp",
+				"title": "Badges Passing",
+				"shortDescription": "Add badges to your website.",
+				"longDescription": "Add badges to your website, powered by shields.io.",
+				"instructions": "",
+				"alias": "badges-passing",
+				"orgId": "070fea224e069523cd1da157d0cbea26",
+				"icon": "https://images.cloudflareapps.com/hM09Ls1R7vZK/Artboard2.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/U6ijtq1cW5RX/Artboard3.png",
+				"featuredAppImage": "",
+				"author": "Richie Bendall",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "https://github.com/Richienb/cloudflare-badges-app",
+				"termsOfServiceURL": "https://docs.google.com/document/d/1VdujSYPVONr13Au0t4HNCC_7xK4v-eGMS3_AHCDPFdc/edit?usp=sharing",
+				"privacyPolicyURL": "https://docs.google.com/document/d/1ROjgJhr12dAv_wxjcCR_MJUC-j46B1x6nUCyhVZZ2Qk/edit?usp=sharing",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "richiebendall@gmail.com",
+				"products": [
+					{
+						"id": "starter",
+						"title": "Starter",
+						"shortDescription": "Core features",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "More customisation options",
+						"longDescription": "Set the logo, cache duration, size and more.",
+						"visible": true,
+						"price": 200,
+						"order": 0,
+						"plan": "BADGES_PASSING_PRO",
+						"feature": "apps.badges_passing_pro.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "EuMyW5VswBQR"
+				},
+				"created": "2019-06-28T11:13:26.371833Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2019-07-29T17:40:38.353387888Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-07-29T17:41:32.496501754Z"
+			}
+		}
+	]
+}

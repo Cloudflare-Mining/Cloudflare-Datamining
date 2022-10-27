@@ -1,0 +1,1802 @@
+{
+	"id": "RV-QzZv0Mpa_",
+	"title": "Hardenize",
+	"shortDescription": "Comprehensive security report card for your site.",
+	"longDescription": "Hardenize is a comprehensive security tool that continuously monitors the security and configuration of your domain name, email, and website. We focus on modern security standards and best development practices. Here's a selection of the most important acronyms we cover: DNS, DNSSEC, CAA, SMTP, STARTTLS, SPF, DMARC, DANE, HTTP, Cookies, SRI, TLS, PKI, CSP, HSTS, HPKP, and so on. If you know what these are, great! If you don't, also great, because our report will help you understand which ones are important and which ones to deploy.\n\nOur Cloudflare app will show-off your good security to your visitors via a small embedded badge. The badge changes based on the configuration of your web site. By default, everyone gets the standard version. If your site has better than average security, we'll show that to your visitors!\n\nAt this time, if your web site has robust HTTPS (good TLS and PKI configuration, redirection from plaintext to HTTPS, and HSTS with preloading), the badge will show a nice friendly checkmark. To be certain you have everything well configured, visit your simplified report by clicking on the badge itself. If you see four green checkmarks, you're all set. Otherwise, proceed to the full report, which will help you make the necessary improvements. At this time, about 7% of top 500 sites get the tick. You can too!",
+	"instructions": "Thanks for trying the Hardenize app! Please note that during the installation we may show you the default badge image (without the tick) even if your web site satisfies all our security requirements. That will happen if we haven't seen your web site before. The correct badge image will show up once we complete our assessment and after the HTTP caches (of the badge image) expire.\n\nIf you're making changes to your site configuration, it may take several days before the badge reflects them. To make this process faster, simply visit our web site and manually re-test your web site.",
+	"alias": "hardenize",
+	"orgId": "5813e061f46becd5d7c3384394ebab18",
+	"icon": "//images.cloudflareapps.com/Lje6UHU2StuiX5Bv896w_hardenize2.png",
+	"screenshots": [
+		"//images.cloudflareapps.com/Uj2aiAuTwa39v6eOvQ16_hardenize-home.png",
+		"//images.cloudflareapps.com/nqsGWV4eQba0Gd4HAvmi_hardenize-report-part-v3-retina.png",
+		"//images.cloudflareapps.com/IRXVYr2US2C0AV9ZzPaE_hardenize-report-full.png"
+	],
+	"tileImage": "//images.cloudflareapps.com/c3Vn9aYCSqSnUxBFSfPf_hardenize1.png",
+	"featuredAppImage": "",
+	"author": "Hardenize Limited",
+	"tagline": "",
+	"website": "https://www.hardenize.com",
+	"sourceURL": "",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "#1a79b0",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "2.0.5",
+	"infoVersion": "2.0.5",
+	"points": 920,
+	"supportEmail": "support@hardenize.com",
+	"products": [],
+	"categoryIds": [
+		"recommended-for-all-sites",
+		"security"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "5813e061f46becd5d7c3384394ebab18",
+			"created": "2017-06-02T10:20:47.358143342Z",
+			"version": "04-24-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "ljpR7sHwGoL1"
+	},
+	"created": "2017-05-17T11:44:41.061156Z",
+	"org": {
+		"id": "5813e061f46becd5d7c3384394ebab18",
+		"title": "",
+		"username": "5813e061f46becd5d7c3384394ebab18",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "recommended-for-all-sites",
+			"title": "Recommended for All Sites",
+			"description": "Apps that are recommended for all sites.",
+			"icon": "",
+			"points": 0,
+			"visible": false,
+			"created": "2018-02-06T19:53:13.516865Z"
+		},
+		{
+			"id": "security",
+			"title": "Security",
+			"description": "Apps which make your site safer and protect you from threats.",
+			"icon": "",
+			"points": 40,
+			"visible": true,
+			"created": "2017-05-19T23:56:31.822492Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "v0.1.0",
+			"appId": "RV-QzZv0Mpa_",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "hardenize-badge.js"
+						}
+					],
+					"head": []
+				},
+				"options": {
+					"properties": {}
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.hardenize.com/_cfapp/hook?secret=42ad7f5cc983768bc9e83cfe5f7dfefd",
+						"events": [
+							"preview"
+						],
+						"block": false,
+						"failure": {
+							"action": "ignore",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"manual": true,
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/F9itAAXFmzlc",
+			"metadata": {
+				"code": {
+					"sourceTag": "F9itAAXFmzlc",
+					"uploadedOn": "2017-05-17T14:26:45.043117517Z"
+				}
+			},
+			"created": "2017-05-17T11:44:41.808617Z",
+			"proposedApp": {
+				"id": "RV-QzZv0Mpa_",
+				"title": "Hardenize App",
+				"shortDescription": "Comprehensive security report card for your web site.",
+				"longDescription": "Hardenize is a comprehensive security tool that continuously monitors the security and configuration of your domain name, email, and web site. We focus on modern security standards and best practices. Here's a selection of the most important acronyms we cover: DNS, DNSSEC, CAA, SMTP, STARTTLS, SPF, DMARC, DANE, HTTP, Cookies, SRI, TLS, PKI, CSP, HSTS, HPKP, and many more. If you know what these are, great! If you don't, also great, because our report will help you understand why they are important. We don't check for vulnerabilities of any sort.\n\nOur Cloudflare app will show-off your good security to your visitors via a handy report card that pops up when requested. Don't worry, the report card won't show up if any problems are identified!",
+				"instructions": "When you first preview our app we won't have the real report to show you, so we'll show you a mockup instead. We will examine your site in the background so if you refresh the preview after a couple of minutes, the real thing will show. Also in preview, we'll show you your report card even if it contains warnings or errors. Your visitors will see your report card only if it contains neutral and green entries.",
+				"alias": "hardenize",
+				"orgId": "5813e061f46becd5d7c3384394ebab18",
+				"icon": "//images.cloudflareapps.com/Lje6UHU2StuiX5Bv896w_hardenize2.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/Uj2aiAuTwa39v6eOvQ16_hardenize-home.png",
+					"//images.cloudflareapps.com/nqsGWV4eQba0Gd4HAvmi_hardenize-report-part-v3-retina.png",
+					"//images.cloudflareapps.com/IRXVYr2US2C0AV9ZzPaE_hardenize-report-full.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/c3Vn9aYCSqSnUxBFSfPf_hardenize1.png",
+				"featuredAppImage": "",
+				"author": "Hardenize (Ivan Ristić)",
+				"tagline": "",
+				"website": "https://www.hardenize.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"test-category"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "ljpR7sHwGoL1"
+				},
+				"created": "2017-05-17T11:44:41.061156Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedAt": "2017-05-17T14:28:47.237457715Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-05-23T09:10:52.520398046Z"
+			}
+		},
+		{
+			"tag": "v0.1.1",
+			"appId": "RV-QzZv0Mpa_",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "report-card.css"
+						},
+						{
+							"type": "script",
+							"src": "report-card-module.js"
+						},
+						{
+							"type": "script",
+							"src": "report-card-cf.js"
+						}
+					],
+					"head": []
+				},
+				"options": {
+					"properties": {}
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.hardenize.com/_cfapp/hook?secret=2a7b450889e70f32b8e306e08ccc78a8",
+						"events": [
+							"preview"
+						],
+						"block": false,
+						"failure": {
+							"action": "ignore",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/_hEzHrWp2Hzx",
+			"metadata": {
+				"code": {
+					"sourceTag": "_hEzHrWp2Hzx",
+					"uploadedOn": "2017-05-30T14:50:29.289924994Z"
+				}
+			},
+			"created": "2017-05-30T14:50:28.878237Z",
+			"proposedApp": {
+				"id": "RV-QzZv0Mpa_",
+				"title": "Hardenize App",
+				"shortDescription": "Comprehensive security report card for your web site.",
+				"longDescription": "Hardenize is a comprehensive security tool that continuously monitors the security and configuration of your domain name, email, and web site. We focus on modern security standards and best practices. Here's a selection of the most important acronyms we cover: DNS, DNSSEC, CAA, SMTP, STARTTLS, SPF, DMARC, DANE, HTTP, Cookies, SRI, TLS, PKI, CSP, HSTS, HPKP, and many more. If you know what these are, great! If you don't, also great, because our report will help you understand why they are important. We don't check for vulnerabilities of any sort.\n\nOur Cloudflare app will show-off your good security to your visitors via a handy report card that pops up when requested. Don't worry, the report card won't show up if any problems are identified!",
+				"instructions": "When you first preview our app we won't have the real report to show you, so we'll show you a mockup instead. We will examine your site in the background so if you refresh the preview after a couple of minutes, the real thing will show. Also in preview, we'll show you your report card even if it contains warnings or errors. Your visitors will see your report card only if it contains neutral and green entries.",
+				"alias": "hardenize",
+				"orgId": "5813e061f46becd5d7c3384394ebab18",
+				"icon": "//images.cloudflareapps.com/Lje6UHU2StuiX5Bv896w_hardenize2.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/Uj2aiAuTwa39v6eOvQ16_hardenize-home.png",
+					"//images.cloudflareapps.com/nqsGWV4eQba0Gd4HAvmi_hardenize-report-part-v3-retina.png",
+					"//images.cloudflareapps.com/IRXVYr2US2C0AV9ZzPaE_hardenize-report-full.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/c3Vn9aYCSqSnUxBFSfPf_hardenize1.png",
+				"featuredAppImage": "",
+				"author": "Hardenize (Ivan Ristić)",
+				"tagline": "",
+				"website": "https://www.hardenize.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"security"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "ljpR7sHwGoL1"
+				},
+				"created": "2017-05-17T11:44:41.061156Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "5813e061f46becd5d7c3384394ebab18",
+				"requestedAt": "2017-05-30T15:04:27.650936746Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-05-30T22:04:33.857840712Z"
+			}
+		},
+		{
+			"tag": "v0.1.2",
+			"appId": "RV-QzZv0Mpa_",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "report-card.css"
+						},
+						{
+							"type": "script",
+							"src": "report-card-module.js"
+						},
+						{
+							"type": "script",
+							"src": "report-card-cf.js"
+						}
+					],
+					"head": []
+				},
+				"options": {
+					"properties": {}
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.hardenize.com/_cfapp/hook?secret=2a7b450889e70f32b8e306e08ccc78a8",
+						"events": [
+							"preview"
+						],
+						"block": false,
+						"failure": {
+							"action": "ignore",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/_hEzHrWp2Hzx",
+			"created": "2017-06-02T10:02:39.627798Z",
+			"proposedApp": {
+				"id": "RV-QzZv0Mpa_",
+				"title": "Hardenize",
+				"shortDescription": "Comprehensive security report card for your web site.",
+				"longDescription": "Hardenize is a comprehensive security tool that continuously monitors the security and configuration of your domain name, email, and website. We focus on modern security standards and best development practices. Here's a selection of the most important acronyms we cover: DNS, DNSSEC, CAA, SMTP, STARTTLS, SPF, DMARC, DANE, HTTP, Cookies, SRI, TLS, PKI, CSP, HSTS, HPKP, and many more. If you know what these are, great! If you don't, also great, because our report will help you understand why they are important.\n\nOur Cloudflare app will show-off your good security to your visitors via a handy report card that pops up when requested. Don't worry, the report card won't show up if any problems are identified!",
+				"instructions": "When you first preview our app we won't have the real report to show you, so we'll show you a mockup instead. We will examine your site in the background so if you refresh the preview after a couple of minutes, the real thing will show. Also in preview, we'll show you your report card even if it contains warnings or errors. Your visitors will see your report card only if it contains neutral and green entries.",
+				"alias": "hardenize",
+				"orgId": "5813e061f46becd5d7c3384394ebab18",
+				"icon": "//images.cloudflareapps.com/Lje6UHU2StuiX5Bv896w_hardenize2.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/Uj2aiAuTwa39v6eOvQ16_hardenize-home.png",
+					"//images.cloudflareapps.com/nqsGWV4eQba0Gd4HAvmi_hardenize-report-part-v3-retina.png",
+					"//images.cloudflareapps.com/IRXVYr2US2C0AV9ZzPaE_hardenize-report-full.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/c3Vn9aYCSqSnUxBFSfPf_hardenize1.png",
+				"featuredAppImage": "",
+				"author": "Hardenize Limited",
+				"tagline": "",
+				"website": "https://www.hardenize.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"security"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "ljpR7sHwGoL1"
+				},
+				"created": "2017-05-17T11:44:41.061156Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "5813e061f46becd5d7c3384394ebab18",
+				"requestedAt": "2017-06-02T10:20:47.304110674Z",
+				"canceledByUserId": "5813e061f46becd5d7c3384394ebab18",
+				"canceledAt": "2017-06-02T11:00:32.086049321Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "v0.1.3",
+			"appId": "RV-QzZv0Mpa_",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "report-card.css"
+						},
+						{
+							"type": "script",
+							"src": "report-card-module.js"
+						},
+						{
+							"type": "script",
+							"src": "report-card-cf.js"
+						}
+					],
+					"head": []
+				},
+				"options": {
+					"properties": {}
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.hardenize.com/_cfapp/hook?secret=2a7b450889e70f32b8e306e08ccc78a8",
+						"events": [
+							"preview"
+						],
+						"block": false,
+						"failure": {
+							"action": "ignore",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/_hEzHrWp2Hzx",
+			"created": "2017-06-02T11:00:24.659154Z",
+			"proposedApp": {
+				"id": "RV-QzZv0Mpa_",
+				"title": "Hardenize",
+				"shortDescription": "Comprehensive security report card for your website.",
+				"longDescription": "Hardenize is a comprehensive security tool that continuously monitors the security and configuration of your domain name, email, and website. We focus on modern security standards and best development practices. Here's a selection of the most important acronyms we cover: DNS, DNSSEC, CAA, SMTP, STARTTLS, SPF, DMARC, DANE, HTTP, Cookies, SRI, TLS, PKI, CSP, HSTS, HPKP, and many more. If you know what these are, great! If you don't, also great, because our report will help you understand why they are important.\n\nOur Cloudflare app will show-off your good security to your visitors via a handy report card that pops up when requested. Don't worry, the report card won't show up if any problems are identified!",
+				"instructions": "When you first preview our app we won't have the real report to show you, so we'll show you a mockup instead. We will examine your site in the background so if you refresh the preview after a couple of minutes, the real thing will show. Also in preview, we'll show you your report card even if it contains warnings or errors. Your visitors will see your report card only if it contains neutral and green entries.",
+				"alias": "hardenize",
+				"orgId": "5813e061f46becd5d7c3384394ebab18",
+				"icon": "//images.cloudflareapps.com/Lje6UHU2StuiX5Bv896w_hardenize2.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/Uj2aiAuTwa39v6eOvQ16_hardenize-home.png",
+					"//images.cloudflareapps.com/nqsGWV4eQba0Gd4HAvmi_hardenize-report-part-v3-retina.png",
+					"//images.cloudflareapps.com/IRXVYr2US2C0AV9ZzPaE_hardenize-report-full.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/c3Vn9aYCSqSnUxBFSfPf_hardenize1.png",
+				"featuredAppImage": "",
+				"author": "Hardenize Limited",
+				"tagline": "",
+				"website": "https://www.hardenize.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"security"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "ljpR7sHwGoL1"
+				},
+				"created": "2017-05-17T11:44:41.061156Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "5813e061f46becd5d7c3384394ebab18",
+				"requestedAt": "2017-06-02T11:00:32.438540768Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-06-03T19:35:00.291667707Z"
+			}
+		},
+		{
+			"tag": "v0.1.5",
+			"appId": "RV-QzZv0Mpa_",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "report-card.css"
+						},
+						{
+							"type": "script",
+							"src": "report-card-module.js"
+						},
+						{
+							"type": "script",
+							"src": "report-card-cf.js"
+						}
+					],
+					"head": []
+				},
+				"options": {
+					"properties": {}
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.hardenize.com/_cfapp/previewHook",
+						"events": [
+							"preview"
+						],
+						"block": false,
+						"failure": {
+							"action": "ignore",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/7QNmn8mho92z",
+			"metadata": {
+				"code": {
+					"sourceTag": "7QNmn8mho92z",
+					"uploadedOn": "2017-06-08T11:57:12.968981407Z"
+				}
+			},
+			"created": "2017-06-08T11:57:11.552532Z",
+			"proposedApp": {
+				"id": "RV-QzZv0Mpa_",
+				"title": "Hardenize",
+				"shortDescription": "Comprehensive security report card for your website.",
+				"longDescription": "Hardenize is a comprehensive security tool that continuously monitors the security and configuration of your domain name, email, and website. We focus on modern security standards and best development practices. Here's a selection of the most important acronyms we cover: DNS, DNSSEC, CAA, SMTP, STARTTLS, SPF, DMARC, DANE, HTTP, Cookies, SRI, TLS, PKI, CSP, HSTS, HPKP, and many more. If you know what these are, great! If you don't, also great, because our report will help you understand why they are important.\n\nOur Cloudflare app will show-off your good security to your visitors via a handy report card that pops up when requested. Don't worry, the report card won't show up if any problems are identified!",
+				"instructions": "When you first preview our app we won't have the real report to show you, so we'll show you a mockup instead. We will examine your site in the background so if you refresh the preview after a couple of minutes, the real thing will show. Also in preview, we'll show you your report card even if it contains warnings or errors. Your visitors will see your report card only if it contains neutral and green entries.",
+				"alias": "hardenize",
+				"orgId": "5813e061f46becd5d7c3384394ebab18",
+				"icon": "//images.cloudflareapps.com/Lje6UHU2StuiX5Bv896w_hardenize2.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/Uj2aiAuTwa39v6eOvQ16_hardenize-home.png",
+					"//images.cloudflareapps.com/nqsGWV4eQba0Gd4HAvmi_hardenize-report-part-v3-retina.png",
+					"//images.cloudflareapps.com/IRXVYr2US2C0AV9ZzPaE_hardenize-report-full.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/c3Vn9aYCSqSnUxBFSfPf_hardenize1.png",
+				"featuredAppImage": "",
+				"author": "Hardenize Limited",
+				"tagline": "",
+				"website": "https://www.hardenize.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"security"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "ljpR7sHwGoL1"
+				},
+				"created": "2017-05-17T11:44:41.061156Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "5813e061f46becd5d7c3384394ebab18",
+				"requestedAt": "2017-06-08T11:58:46.306339471Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-06-10T23:19:24.748020843Z"
+			}
+		},
+		{
+			"tag": "v1.0.0",
+			"appId": "RV-QzZv0Mpa_",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "report-card.css"
+						},
+						{
+							"type": "script",
+							"src": "report-card-module.js"
+						},
+						{
+							"type": "script",
+							"src": "report-card-cf.js"
+						}
+					],
+					"head": []
+				},
+				"options": {
+					"properties": {}
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.hardenize.com/_cfapp/hook?secret=2a7b450889e70f32b8e306e08ccc78a8",
+						"events": [
+							"preview"
+						],
+						"block": false,
+						"failure": {
+							"action": "ignore",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/_hEzHrWp2Hzx",
+			"created": "2017-06-06T09:29:22.897461Z",
+			"proposedApp": {
+				"id": "RV-QzZv0Mpa_",
+				"title": "Hardenize",
+				"shortDescription": "Comprehensive security report card for your website.",
+				"longDescription": "Hardenize is a comprehensive security tool that continuously monitors the security and configuration of your domain name, email, and website. We focus on modern security standards and best development practices. Here's a selection of the most important acronyms we cover: DNS, DNSSEC, CAA, SMTP, STARTTLS, SPF, DMARC, DANE, HTTP, Cookies, SRI, TLS, PKI, CSP, HSTS, HPKP, and many more. If you know what these are, great! If you don't, also great, because our report will help you understand why they are important.\n\nOur Cloudflare app will show-off your good security to your visitors via a handy report card that pops up when requested. Don't worry, the report card won't show up if any problems are identified!",
+				"instructions": "When you first preview our app we won't have the real report to show you, so we'll show you a mockup instead. We will examine your site in the background so if you refresh the preview after a couple of minutes, the real thing will show. Also in preview, we'll show you your report card even if it contains warnings or errors. Your visitors will see your report card only if it contains neutral and green entries.",
+				"alias": "hardenize",
+				"orgId": "5813e061f46becd5d7c3384394ebab18",
+				"icon": "//images.cloudflareapps.com/Lje6UHU2StuiX5Bv896w_hardenize2.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/Uj2aiAuTwa39v6eOvQ16_hardenize-home.png",
+					"//images.cloudflareapps.com/nqsGWV4eQba0Gd4HAvmi_hardenize-report-part-v3-retina.png",
+					"//images.cloudflareapps.com/IRXVYr2US2C0AV9ZzPaE_hardenize-report-full.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/c3Vn9aYCSqSnUxBFSfPf_hardenize1.png",
+				"featuredAppImage": "",
+				"author": "Hardenize Limited",
+				"tagline": "",
+				"website": "https://www.hardenize.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"security"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "ljpR7sHwGoL1"
+				},
+				"created": "2017-05-17T11:44:41.061156Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-06-06T09:29:23.772136576Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-06-06T11:02:48.206570649Z"
+			}
+		},
+		{
+			"tag": "1.0.0",
+			"appId": "RV-QzZv0Mpa_",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "report-card.css"
+						},
+						{
+							"type": "script",
+							"src": "report-card-module.js"
+						},
+						{
+							"type": "script",
+							"src": "report-card-cf.js"
+						}
+					],
+					"head": []
+				},
+				"options": {
+					"properties": {}
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.hardenize.com/_cfapp/previewHook",
+						"events": [
+							"preview"
+						],
+						"block": false,
+						"failure": {
+							"action": "ignore",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/7QNmn8mho92z",
+			"created": "2017-07-07T20:59:00.341879Z",
+			"proposedApp": {
+				"id": "RV-QzZv0Mpa_",
+				"title": "Hardenize",
+				"shortDescription": "Comprehensive security report card for your site.",
+				"longDescription": "Hardenize is a comprehensive security tool that continuously monitors the security and configuration of your domain name, email, and website. We focus on modern security standards and best development practices. Here's a selection of the most important acronyms we cover: DNS, DNSSEC, CAA, SMTP, STARTTLS, SPF, DMARC, DANE, HTTP, Cookies, SRI, TLS, PKI, CSP, HSTS, HPKP, and many more. If you know what these are, great! If you don't, also great, because our report will help you understand why they are important.\n\nOur Cloudflare app will show-off your good security to your visitors via a handy report card that pops up when requested. Don't worry, the report card won't show up if any problems are identified!",
+				"instructions": "When you first preview our app we won't have the real report to show you, so we'll show you a mockup instead. We will examine your site in the background so if you refresh the preview after a couple of minutes, the real thing will show. Also in preview, we'll show you your report card even if it contains warnings or errors. Your visitors will see your report card only if it contains neutral and green entries.",
+				"alias": "hardenize",
+				"orgId": "5813e061f46becd5d7c3384394ebab18",
+				"icon": "//images.cloudflareapps.com/Lje6UHU2StuiX5Bv896w_hardenize2.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/Uj2aiAuTwa39v6eOvQ16_hardenize-home.png",
+					"//images.cloudflareapps.com/nqsGWV4eQba0Gd4HAvmi_hardenize-report-part-v3-retina.png",
+					"//images.cloudflareapps.com/IRXVYr2US2C0AV9ZzPaE_hardenize-report-full.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/c3Vn9aYCSqSnUxBFSfPf_hardenize1.png",
+				"featuredAppImage": "",
+				"author": "Hardenize Limited",
+				"tagline": "",
+				"website": "https://www.hardenize.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"security"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "ljpR7sHwGoL1"
+				},
+				"created": "2017-05-17T11:44:41.061156Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-07-07T20:59:00.543929627Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-07-07T21:05:12.293991081Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "RV-QzZv0Mpa_",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "report-card.css"
+						},
+						{
+							"type": "script",
+							"src": "report-card-module.js"
+						},
+						{
+							"type": "script",
+							"src": "report-card-cf.js"
+						}
+					],
+					"head": []
+				},
+				"options": {
+					"properties": {}
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.hardenize.com/_cfapp/previewHook",
+						"events": [
+							"preview"
+						],
+						"block": false,
+						"failure": {
+							"action": "ignore",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/UGIHyoCz40Q_",
+			"metadata": {
+				"code": {
+					"sourceTag": "UGIHyoCz40Q_",
+					"uploadedOn": "2017-08-21T13:24:43.75406559Z"
+				}
+			},
+			"created": "2017-08-21T13:24:43.13Z",
+			"proposedApp": {
+				"id": "RV-QzZv0Mpa_",
+				"title": "Hardenize",
+				"shortDescription": "Comprehensive security report card for your site.",
+				"longDescription": "Hardenize is a comprehensive security tool that continuously monitors the security and configuration of your domain name, email, and website. We focus on modern security standards and best development practices. Here's a selection of the most important acronyms we cover: DNS, DNSSEC, CAA, SMTP, STARTTLS, SPF, DMARC, DANE, HTTP, Cookies, SRI, TLS, PKI, CSP, HSTS, HPKP, and many more. If you know what these are, great! If you don't, also great, because our report will help you understand why they are important.\n\nOur Cloudflare app will show-off your good security to your visitors via a handy report card that pops up when requested. Don't worry, the report card won't show up if any problems are identified!",
+				"instructions": "When you first preview our app we won't have the real report to show you, so we'll show you a mockup instead. We will examine your site in the background so if you refresh the preview after a couple of minutes, the real thing will show. Also in preview, we'll show you your report card even if it contains warnings or errors. Your visitors will see your report card only if it contains neutral and green entries.",
+				"alias": "hardenize",
+				"orgId": "5813e061f46becd5d7c3384394ebab18",
+				"icon": "//images.cloudflareapps.com/Lje6UHU2StuiX5Bv896w_hardenize2.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/Uj2aiAuTwa39v6eOvQ16_hardenize-home.png",
+					"//images.cloudflareapps.com/nqsGWV4eQba0Gd4HAvmi_hardenize-report-part-v3-retina.png",
+					"//images.cloudflareapps.com/IRXVYr2US2C0AV9ZzPaE_hardenize-report-full.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/c3Vn9aYCSqSnUxBFSfPf_hardenize1.png",
+				"featuredAppImage": "",
+				"author": "Hardenize Limited",
+				"tagline": "",
+				"website": "https://www.hardenize.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@hardenize.com",
+				"products": [],
+				"categoryIds": [
+					"security"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "ljpR7sHwGoL1"
+				},
+				"created": "2017-05-17T11:44:41.061156Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "5813e061f46becd5d7c3384394ebab18",
+				"requestedAt": "2017-08-21T13:31:05.405012305Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-08-22T03:24:36.213389715Z"
+			}
+		},
+		{
+			"tag": "2.0.0",
+			"appId": "RV-QzZv0Mpa_",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "app.css"
+						},
+						{
+							"type": "script",
+							"src": "app.js"
+						}
+					],
+					"head": []
+				},
+				"options": {
+					"properties": {
+						"horizontal_padding": {
+							"default": "0px",
+							"description": "Please enter the desired value, in pixels.",
+							"order": 3,
+							"placeholder": "0px",
+							"title": "Horizontal padding",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "append",
+								"selector": "body"
+							},
+							"description": "Where should the badge appear on the page?",
+							"format": "element",
+							"order": 1,
+							"title": "Badge location",
+							"type": "object"
+						},
+						"position": {
+							"default": "center",
+							"enum": [
+								"left",
+								"center",
+								"right"
+							],
+							"enumNames": {
+								"center": "Center",
+								"left": "Left",
+								"right": "Right"
+							},
+							"order": 2,
+							"title": "Horizontal alignment",
+							"type": "string"
+						},
+						"vertical_padding": {
+							"default": "0px",
+							"description": "Please enter the desired value, in pixels.",
+							"order": 4,
+							"placeholder": "0px",
+							"title": "Vertical padding",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.hardenize.com/_cfapp/previewHook",
+						"events": [
+							"preview"
+						],
+						"block": false,
+						"failure": {
+							"action": "ignore",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "We've completely redesigned our app based on your feedback! The badge that we show is now being embedded into web pages and you can choose the exact location where you want it. We have a brand new badge design, which not only looks much cooler, but also changes appearance based on the configuration of your web site. By default, everyone gets the standard badge, but sites with robust HTTPS get a nice checkmark. We've also completely redesigned the security report (which your visitors can open by clicking on the badge). It now opens in a separate window, showing a report that's much more user friendly and focuses on only four key aspects of HTTPS configuration.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/dMlmBFmb_8fD",
+			"metadata": {
+				"code": {
+					"sourceTag": "dMlmBFmb_8fD",
+					"uploadedOn": "2017-10-18T11:02:13.298370671Z"
+				}
+			},
+			"created": "2017-10-11T16:27:28.677192Z",
+			"proposedApp": {
+				"id": "RV-QzZv0Mpa_",
+				"title": "Hardenize",
+				"shortDescription": "Comprehensive security report card for your site.",
+				"longDescription": "Hardenize is a comprehensive security tool that continuously monitors the security and configuration of your domain name, email, and website. We focus on modern security standards and best development practices. Here's a selection of the most important acronyms we cover: DNS, DNSSEC, CAA, SMTP, STARTTLS, SPF, DMARC, DANE, HTTP, Cookies, SRI, TLS, PKI, CSP, HSTS, HPKP, and so on. If you know what these are, great! If you don't, also great, because our report will help you understand which ones are important and which ones to deploy.\n\nOur Cloudflare app will show-off your good security to your visitors via a small embedded badge. The badge changes based on the configuration of your web site. By default, everyone gets the standard version. If your site has better than average security, we'll show that to your visitors! At this time, if your web site has robust HTTPS (good TLS and PKI configuration, redirection from plaintext to HTTPS, and HSTS with preloading), the badge will show a nice friendly checkmark. To be certain you have everything well configured, visit your simplified report by clicking on the badge itself. If you see four green checkmarks, you're all set. Otherwise, proceed to the full report, which will help you make the necessary improvements. At this time, about 7% of top 500 sites get the tick. You can too!",
+				"instructions": "Thanks for trying the Hardenize app! Please note that during the installation we may show you the default badge image (without the tick) even if your web site satisfies all our security requirements. That will happen if we haven't seen your web site before. The correct badge image will show up once we complete our assessment and after the HTTP caches (of the badge image) expire. If you're making changes to your site configuration, it may take several days before the badge reflects them. To make this process faster, simply visit our web site and manually re-test your web site.",
+				"alias": "hardenize",
+				"orgId": "5813e061f46becd5d7c3384394ebab18",
+				"icon": "//images.cloudflareapps.com/Lje6UHU2StuiX5Bv896w_hardenize2.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/Uj2aiAuTwa39v6eOvQ16_hardenize-home.png",
+					"//images.cloudflareapps.com/nqsGWV4eQba0Gd4HAvmi_hardenize-report-part-v3-retina.png",
+					"//images.cloudflareapps.com/IRXVYr2US2C0AV9ZzPaE_hardenize-report-full.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/c3Vn9aYCSqSnUxBFSfPf_hardenize1.png",
+				"featuredAppImage": "",
+				"author": "Hardenize Limited",
+				"tagline": "",
+				"website": "https://www.hardenize.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@hardenize.com",
+				"products": [],
+				"categoryIds": [
+					"security"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "ljpR7sHwGoL1"
+				},
+				"created": "2017-05-17T11:44:41.061156Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "5813e061f46becd5d7c3384394ebab18",
+				"requestedAt": "2017-10-18T11:50:20.351040901Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-10-23T16:29:43.699015357Z"
+			}
+		},
+		{
+			"tag": "2.0.1",
+			"appId": "RV-QzZv0Mpa_",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "app.css"
+						},
+						{
+							"type": "script",
+							"src": "app.js"
+						}
+					],
+					"head": []
+				},
+				"options": {
+					"properties": {
+						"horizontal_padding": {
+							"default": "0",
+							"description": "Please enter the desired value, in pixels.",
+							"order": 3,
+							"placeholder": "0",
+							"title": "Horizontal padding",
+							"type": "integer"
+						},
+						"location": {
+							"default": {
+								"method": "append",
+								"selector": "body"
+							},
+							"description": "Where should the badge appear on the page?",
+							"format": "element",
+							"order": 1,
+							"title": "Badge location",
+							"type": "object"
+						},
+						"position": {
+							"default": "center",
+							"enum": [
+								"left",
+								"center",
+								"right"
+							],
+							"enumNames": {
+								"center": "Center",
+								"left": "Left",
+								"right": "Right"
+							},
+							"format": "radios",
+							"order": 2,
+							"title": "Horizontal alignment",
+							"type": "string"
+						},
+						"vertical_padding": {
+							"default": "0",
+							"description": "Please enter the desired value, in pixels.",
+							"order": 4,
+							"placeholder": "0",
+							"title": "Vertical padding",
+							"type": "integer"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.hardenize.com/_cfapp/previewHook",
+						"events": [
+							"preview"
+						],
+						"block": false,
+						"failure": {
+							"action": "ignore",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "We've completely redesigned our app based on your feedback! The badge is now being embedded into web pages and you can choose the exact location where you want it.\n\nThe badge itself is brand new and not only looks much better, but also changes appearance based on the configuration of your web site. By default, everyone gets the standard badge, but sites with robust HTTPS get a nice checkmark as a bonus.\n\nWe've also completely redesigned the security report (which your visitors can open by clicking on the badge). It now opens in a separate window, showing a report that's much more user friendly and focuses on only four key aspects of HTTPS configuration.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/ZJ-4kRZYmRWt",
+			"metadata": {
+				"code": {
+					"sourceTag": "ZJ-4kRZYmRWt",
+					"uploadedOn": "2017-10-25T11:05:52.144602981Z"
+				}
+			},
+			"created": "2017-10-24T07:26:03.788645Z",
+			"proposedApp": {
+				"id": "RV-QzZv0Mpa_",
+				"title": "Hardenize",
+				"shortDescription": "Comprehensive security report card for your site.",
+				"longDescription": "Hardenize is a comprehensive security tool that continuously monitors the security and configuration of your domain name, email, and website. We focus on modern security standards and best development practices. Here's a selection of the most important acronyms we cover: DNS, DNSSEC, CAA, SMTP, STARTTLS, SPF, DMARC, DANE, HTTP, Cookies, SRI, TLS, PKI, CSP, HSTS, HPKP, and so on. If you know what these are, great! If you don't, also great, because our report will help you understand which ones are important and which ones to deploy.\n\nOur Cloudflare app will show-off your good security to your visitors via a small embedded badge. The badge changes based on the configuration of your web site. By default, everyone gets the standard version. If your site has better than average security, we'll show that to your visitors!\n\nAt this time, if your web site has robust HTTPS (good TLS and PKI configuration, redirection from plaintext to HTTPS, and HSTS with preloading), the badge will show a nice friendly checkmark. To be certain you have everything well configured, visit your simplified report by clicking on the badge itself. If you see four green checkmarks, you're all set. Otherwise, proceed to the full report, which will help you make the necessary improvements. At this time, about 7% of top 500 sites get the tick. You can too!",
+				"instructions": "Thanks for trying the Hardenize app! Please note that during the installation we may show you the default badge image (without the tick) even if your web site satisfies all our security requirements. That will happen if we haven't seen your web site before. The correct badge image will show up once we complete our assessment and after the HTTP caches (of the badge image) expire.\n\nIf you're making changes to your site configuration, it may take several days before the badge reflects them. To make this process faster, simply visit our web site and manually re-test your web site.",
+				"alias": "hardenize",
+				"orgId": "5813e061f46becd5d7c3384394ebab18",
+				"icon": "//images.cloudflareapps.com/Lje6UHU2StuiX5Bv896w_hardenize2.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/Uj2aiAuTwa39v6eOvQ16_hardenize-home.png",
+					"//images.cloudflareapps.com/nqsGWV4eQba0Gd4HAvmi_hardenize-report-part-v3-retina.png",
+					"//images.cloudflareapps.com/IRXVYr2US2C0AV9ZzPaE_hardenize-report-full.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/c3Vn9aYCSqSnUxBFSfPf_hardenize1.png",
+				"featuredAppImage": "",
+				"author": "Hardenize Limited",
+				"tagline": "",
+				"website": "https://www.hardenize.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@hardenize.com",
+				"products": [],
+				"categoryIds": [
+					"security"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "ljpR7sHwGoL1"
+				},
+				"created": "2017-05-17T11:44:41.061156Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "5813e061f46becd5d7c3384394ebab18",
+				"requestedAt": "2017-10-25T11:07:36.304488761Z",
+				"canceledByUserId": "5813e061f46becd5d7c3384394ebab18",
+				"canceledAt": "2017-10-25T11:31:27.814851128Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "2.0.2",
+			"appId": "RV-QzZv0Mpa_",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "app.css"
+						},
+						{
+							"type": "script",
+							"src": "app.js"
+						}
+					],
+					"head": []
+				},
+				"options": {
+					"properties": {
+						"horizontal_padding": {
+							"default": "0",
+							"description": "Please enter the desired value, in pixels.",
+							"order": 3,
+							"placeholder": "0",
+							"title": "Horizontal padding",
+							"type": "integer"
+						},
+						"location": {
+							"default": {
+								"method": "append",
+								"selector": "body"
+							},
+							"description": "Where should the badge appear on the page?",
+							"format": "element",
+							"order": 1,
+							"title": "Badge location",
+							"type": "object"
+						},
+						"position": {
+							"default": "center",
+							"enum": [
+								"left",
+								"center",
+								"right"
+							],
+							"enumNames": {
+								"center": "Center",
+								"left": "Left",
+								"right": "Right"
+							},
+							"format": "radios",
+							"order": 2,
+							"title": "Horizontal alignment",
+							"type": "string"
+						},
+						"vertical_padding": {
+							"default": "0",
+							"description": "Please enter the desired value, in pixels.",
+							"order": 4,
+							"placeholder": "0",
+							"title": "Vertical padding",
+							"type": "integer"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.hardenize.com/_cfapp/previewHook",
+						"events": [
+							"preview"
+						],
+						"block": false,
+						"failure": {
+							"action": "ignore",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.4,
+				"upvotes": 2,
+				"downvotes": 3
+			},
+			"releaseNotes": "We've completely redesigned our app based on your feedback! The badge is now being embedded into web pages and you can choose the exact location where you want it.\n\nThe badge itself is brand new and not only looks much better, but also changes appearance based on the configuration of your web site. By default, everyone gets the standard badge, but sites with robust HTTPS get a nice checkmark as a bonus.\n\nWe've also completely redesigned the security report (which your visitors can open by clicking on the badge). It now opens in a separate window, showing a report that's much more user friendly and focuses on only four key aspects of HTTPS configuration.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/ZaTt_pLQGSwr",
+			"metadata": {
+				"code": {
+					"sourceTag": "ZaTt_pLQGSwr",
+					"uploadedOn": "2017-10-25T11:31:17.97255861Z"
+				}
+			},
+			"created": "2017-10-25T11:31:16.475974Z",
+			"proposedApp": {
+				"id": "RV-QzZv0Mpa_",
+				"title": "Hardenize",
+				"shortDescription": "Comprehensive security report card for your site.",
+				"longDescription": "Hardenize is a comprehensive security tool that continuously monitors the security and configuration of your domain name, email, and website. We focus on modern security standards and best development practices. Here's a selection of the most important acronyms we cover: DNS, DNSSEC, CAA, SMTP, STARTTLS, SPF, DMARC, DANE, HTTP, Cookies, SRI, TLS, PKI, CSP, HSTS, HPKP, and so on. If you know what these are, great! If you don't, also great, because our report will help you understand which ones are important and which ones to deploy.\n\nOur Cloudflare app will show-off your good security to your visitors via a small embedded badge. The badge changes based on the configuration of your web site. By default, everyone gets the standard version. If your site has better than average security, we'll show that to your visitors!\n\nAt this time, if your web site has robust HTTPS (good TLS and PKI configuration, redirection from plaintext to HTTPS, and HSTS with preloading), the badge will show a nice friendly checkmark. To be certain you have everything well configured, visit your simplified report by clicking on the badge itself. If you see four green checkmarks, you're all set. Otherwise, proceed to the full report, which will help you make the necessary improvements. At this time, about 7% of top 500 sites get the tick. You can too!",
+				"instructions": "Thanks for trying the Hardenize app! Please note that during the installation we may show you the default badge image (without the tick) even if your web site satisfies all our security requirements. That will happen if we haven't seen your web site before. The correct badge image will show up once we complete our assessment and after the HTTP caches (of the badge image) expire.\n\nIf you're making changes to your site configuration, it may take several days before the badge reflects them. To make this process faster, simply visit our web site and manually re-test your web site.",
+				"alias": "hardenize",
+				"orgId": "5813e061f46becd5d7c3384394ebab18",
+				"icon": "//images.cloudflareapps.com/Lje6UHU2StuiX5Bv896w_hardenize2.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/Uj2aiAuTwa39v6eOvQ16_hardenize-home.png",
+					"//images.cloudflareapps.com/nqsGWV4eQba0Gd4HAvmi_hardenize-report-part-v3-retina.png",
+					"//images.cloudflareapps.com/IRXVYr2US2C0AV9ZzPaE_hardenize-report-full.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/c3Vn9aYCSqSnUxBFSfPf_hardenize1.png",
+				"featuredAppImage": "",
+				"author": "Hardenize Limited",
+				"tagline": "",
+				"website": "https://www.hardenize.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@hardenize.com",
+				"products": [],
+				"categoryIds": [
+					"security"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "ljpR7sHwGoL1"
+				},
+				"created": "2017-05-17T11:44:41.061156Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"assignedToReviewerUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedByUserId": "5813e061f46becd5d7c3384394ebab18",
+				"requestedAt": "2017-10-25T11:31:27.818808759Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-10-26T08:45:12.652213915Z"
+			}
+		},
+		{
+			"tag": "2.0.3",
+			"appId": "RV-QzZv0Mpa_",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "app.css"
+						},
+						{
+							"type": "script",
+							"src": "app.js"
+						}
+					],
+					"head": []
+				},
+				"options": {
+					"properties": {
+						"horizontal_padding": {
+							"default": "0",
+							"description": "Please enter the desired value, in pixels.",
+							"order": 3,
+							"placeholder": "0",
+							"title": "Horizontal padding",
+							"type": "integer"
+						},
+						"location": {
+							"default": {
+								"method": "append",
+								"selector": "body"
+							},
+							"description": "Where should the badge appear on the page?",
+							"format": "element",
+							"order": 1,
+							"title": "Badge location",
+							"type": "object"
+						},
+						"position": {
+							"default": "center",
+							"enum": [
+								"left",
+								"center",
+								"right"
+							],
+							"enumNames": {
+								"center": "Center",
+								"left": "Left",
+								"right": "Right"
+							},
+							"format": "radios",
+							"order": 2,
+							"title": "Horizontal alignment",
+							"type": "string"
+						},
+						"vertical_padding": {
+							"default": "0",
+							"description": "Please enter the desired value, in pixels.",
+							"order": 4,
+							"placeholder": "0",
+							"title": "Vertical padding",
+							"type": "integer"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.hardenize.com/_cfapp/previewHook",
+						"events": [
+							"preview"
+						],
+						"block": false,
+						"failure": {
+							"action": "ignore",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "We've completely redesigned our app based on your feedback! The badge is now being embedded into web pages and you can choose the exact location where you want it.\n\nThe badge itself is brand new and not only looks much better, but also changes appearance based on the configuration of your web site. By default, everyone gets the standard badge, but sites with robust HTTPS get a nice checkmark as a bonus.\n\nWe've also completely redesigned the security report (which your visitors can open by clicking on the badge). It now opens in a separate window, showing a report that's much more user friendly and focuses on only four key aspects of HTTPS configuration.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/ZaTt_pLQGSwr",
+			"created": "2018-01-22T19:43:23.01594Z",
+			"proposedApp": {
+				"id": "RV-QzZv0Mpa_",
+				"title": "Hardenize",
+				"shortDescription": "Comprehensive security report card for your site.",
+				"longDescription": "Hardenize is a comprehensive security tool that continuously monitors the security and configuration of your domain name, email, and website. We focus on modern security standards and best development practices. Here's a selection of the most important acronyms we cover: DNS, DNSSEC, CAA, SMTP, STARTTLS, SPF, DMARC, DANE, HTTP, Cookies, SRI, TLS, PKI, CSP, HSTS, HPKP, and so on. If you know what these are, great! If you don't, also great, because our report will help you understand which ones are important and which ones to deploy.\n\nOur Cloudflare app will show-off your good security to your visitors via a small embedded badge. The badge changes based on the configuration of your web site. By default, everyone gets the standard version. If your site has better than average security, we'll show that to your visitors!\n\nAt this time, if your web site has robust HTTPS (good TLS and PKI configuration, redirection from plaintext to HTTPS, and HSTS with preloading), the badge will show a nice friendly checkmark. To be certain you have everything well configured, visit your simplified report by clicking on the badge itself. If you see four green checkmarks, you're all set. Otherwise, proceed to the full report, which will help you make the necessary improvements. At this time, about 7% of top 500 sites get the tick. You can too!",
+				"instructions": "Thanks for trying the Hardenize app! Please note that during the installation we may show you the default badge image (without the tick) even if your web site satisfies all our security requirements. That will happen if we haven't seen your web site before. The correct badge image will show up once we complete our assessment and after the HTTP caches (of the badge image) expire.\n\nIf you're making changes to your site configuration, it may take several days before the badge reflects them. To make this process faster, simply visit our web site and manually re-test your web site.",
+				"alias": "hardenize",
+				"orgId": "5813e061f46becd5d7c3384394ebab18",
+				"icon": "//images.cloudflareapps.com/Lje6UHU2StuiX5Bv896w_hardenize2.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/Uj2aiAuTwa39v6eOvQ16_hardenize-home.png",
+					"//images.cloudflareapps.com/nqsGWV4eQba0Gd4HAvmi_hardenize-report-part-v3-retina.png",
+					"//images.cloudflareapps.com/IRXVYr2US2C0AV9ZzPaE_hardenize-report-full.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/c3Vn9aYCSqSnUxBFSfPf_hardenize1.png",
+				"featuredAppImage": "",
+				"author": "Hardenize Limited",
+				"tagline": "",
+				"website": "https://www.hardenize.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@hardenize.com",
+				"products": [],
+				"categoryIds": [
+					"performance-and-security"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "ljpR7sHwGoL1"
+				},
+				"created": "2017-05-17T11:44:41.061156Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-01-22T19:43:23.311140338Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-01-22T19:43:40.79154655Z"
+			}
+		},
+		{
+			"tag": "2.0.4",
+			"appId": "RV-QzZv0Mpa_",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "app.css"
+						},
+						{
+							"type": "script",
+							"src": "app.js"
+						}
+					],
+					"head": []
+				},
+				"options": {
+					"properties": {
+						"horizontal_padding": {
+							"default": "0",
+							"description": "Please enter the desired value, in pixels.",
+							"order": 3,
+							"placeholder": "0",
+							"title": "Horizontal padding",
+							"type": "integer"
+						},
+						"location": {
+							"default": {
+								"method": "append",
+								"selector": "body"
+							},
+							"description": "Where should the badge appear on the page?",
+							"format": "element",
+							"order": 1,
+							"title": "Badge location",
+							"type": "object"
+						},
+						"position": {
+							"default": "center",
+							"enum": [
+								"left",
+								"center",
+								"right"
+							],
+							"enumNames": {
+								"center": "Center",
+								"left": "Left",
+								"right": "Right"
+							},
+							"format": "radios",
+							"order": 2,
+							"title": "Horizontal alignment",
+							"type": "string"
+						},
+						"vertical_padding": {
+							"default": "0",
+							"description": "Please enter the desired value, in pixels.",
+							"order": 4,
+							"placeholder": "0",
+							"title": "Vertical padding",
+							"type": "integer"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.hardenize.com/_cfapp/previewHook",
+						"events": [
+							"preview"
+						],
+						"block": false,
+						"failure": {
+							"action": "ignore",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.63,
+				"upvotes": 12,
+				"downvotes": 7
+			},
+			"releaseNotes": "Added to Cloudflare Apps recommendation engine",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/ZaTt_pLQGSwr",
+			"created": "2018-02-06T20:33:46.446722Z",
+			"proposedApp": {
+				"id": "RV-QzZv0Mpa_",
+				"title": "Hardenize",
+				"shortDescription": "Comprehensive security report card for your site.",
+				"longDescription": "Hardenize is a comprehensive security tool that continuously monitors the security and configuration of your domain name, email, and website. We focus on modern security standards and best development practices. Here's a selection of the most important acronyms we cover: DNS, DNSSEC, CAA, SMTP, STARTTLS, SPF, DMARC, DANE, HTTP, Cookies, SRI, TLS, PKI, CSP, HSTS, HPKP, and so on. If you know what these are, great! If you don't, also great, because our report will help you understand which ones are important and which ones to deploy.\n\nOur Cloudflare app will show-off your good security to your visitors via a small embedded badge. The badge changes based on the configuration of your web site. By default, everyone gets the standard version. If your site has better than average security, we'll show that to your visitors!\n\nAt this time, if your web site has robust HTTPS (good TLS and PKI configuration, redirection from plaintext to HTTPS, and HSTS with preloading), the badge will show a nice friendly checkmark. To be certain you have everything well configured, visit your simplified report by clicking on the badge itself. If you see four green checkmarks, you're all set. Otherwise, proceed to the full report, which will help you make the necessary improvements. At this time, about 7% of top 500 sites get the tick. You can too!",
+				"instructions": "Thanks for trying the Hardenize app! Please note that during the installation we may show you the default badge image (without the tick) even if your web site satisfies all our security requirements. That will happen if we haven't seen your web site before. The correct badge image will show up once we complete our assessment and after the HTTP caches (of the badge image) expire.\n\nIf you're making changes to your site configuration, it may take several days before the badge reflects them. To make this process faster, simply visit our web site and manually re-test your web site.",
+				"alias": "hardenize",
+				"orgId": "5813e061f46becd5d7c3384394ebab18",
+				"icon": "//images.cloudflareapps.com/Lje6UHU2StuiX5Bv896w_hardenize2.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/Uj2aiAuTwa39v6eOvQ16_hardenize-home.png",
+					"//images.cloudflareapps.com/nqsGWV4eQba0Gd4HAvmi_hardenize-report-part-v3-retina.png",
+					"//images.cloudflareapps.com/IRXVYr2US2C0AV9ZzPaE_hardenize-report-full.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/c3Vn9aYCSqSnUxBFSfPf_hardenize1.png",
+				"featuredAppImage": "",
+				"author": "Hardenize Limited",
+				"tagline": "",
+				"website": "https://www.hardenize.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@hardenize.com",
+				"products": [],
+				"categoryIds": [
+					"performance-and-security",
+					"recommended-for-all-sites"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "ljpR7sHwGoL1"
+				},
+				"created": "2017-05-17T11:44:41.061156Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-02-06T20:33:46.730132546Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-02-06T20:45:24.795337916Z"
+			}
+		},
+		{
+			"tag": "2.0.5",
+			"appId": "RV-QzZv0Mpa_",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "app.css"
+						},
+						{
+							"type": "script",
+							"src": "app.js"
+						}
+					],
+					"head": []
+				},
+				"options": {
+					"properties": {
+						"horizontal_padding": {
+							"default": "0",
+							"description": "Please enter the desired value, in pixels.",
+							"order": 3,
+							"placeholder": "0",
+							"title": "Horizontal padding",
+							"type": "integer"
+						},
+						"location": {
+							"default": {
+								"method": "append",
+								"selector": "body"
+							},
+							"description": "Where should the badge appear on the page?",
+							"format": "element",
+							"order": 1,
+							"title": "Badge location",
+							"type": "object"
+						},
+						"position": {
+							"default": "center",
+							"enum": [
+								"left",
+								"center",
+								"right"
+							],
+							"enumNames": {
+								"center": "Center",
+								"left": "Left",
+								"right": "Right"
+							},
+							"format": "radios",
+							"order": 2,
+							"title": "Horizontal alignment",
+							"type": "string"
+						},
+						"vertical_padding": {
+							"default": "0",
+							"description": "Please enter the desired value, in pixels.",
+							"order": 4,
+							"placeholder": "0",
+							"title": "Vertical padding",
+							"type": "integer"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.hardenize.com/_cfapp/previewHook",
+						"events": [
+							"preview"
+						],
+						"block": false,
+						"failure": {
+							"action": "ignore",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.68,
+				"upvotes": 51,
+				"downvotes": 24
+			},
+			"releaseNotes": "We've completely redesigned our app based on your feedback! The badge is now being embedded into web pages and you can choose the exact location where you want it.\n\nThe badge itself is brand new and not only looks much better, but also changes appearance based on the configuration of your web site. By default, everyone gets the standard badge, but sites with robust HTTPS get a nice checkmark as a bonus.\n\nWe've also completely redesigned the security report (which your visitors can open by clicking on the badge). It now opens in a separate window, showing a report that's much more user friendly and focuses on only four key aspects of HTTPS configuration.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/ZaTt_pLQGSwr",
+			"created": "2018-11-14T20:37:01.895676Z",
+			"proposedApp": {
+				"id": "RV-QzZv0Mpa_",
+				"title": "Hardenize",
+				"shortDescription": "Comprehensive security report card for your site.",
+				"longDescription": "Hardenize is a comprehensive security tool that continuously monitors the security and configuration of your domain name, email, and website. We focus on modern security standards and best development practices. Here's a selection of the most important acronyms we cover: DNS, DNSSEC, CAA, SMTP, STARTTLS, SPF, DMARC, DANE, HTTP, Cookies, SRI, TLS, PKI, CSP, HSTS, HPKP, and so on. If you know what these are, great! If you don't, also great, because our report will help you understand which ones are important and which ones to deploy.\n\nOur Cloudflare app will show-off your good security to your visitors via a small embedded badge. The badge changes based on the configuration of your web site. By default, everyone gets the standard version. If your site has better than average security, we'll show that to your visitors!\n\nAt this time, if your web site has robust HTTPS (good TLS and PKI configuration, redirection from plaintext to HTTPS, and HSTS with preloading), the badge will show a nice friendly checkmark. To be certain you have everything well configured, visit your simplified report by clicking on the badge itself. If you see four green checkmarks, you're all set. Otherwise, proceed to the full report, which will help you make the necessary improvements. At this time, about 7% of top 500 sites get the tick. You can too!",
+				"instructions": "Thanks for trying the Hardenize app! Please note that during the installation we may show you the default badge image (without the tick) even if your web site satisfies all our security requirements. That will happen if we haven't seen your web site before. The correct badge image will show up once we complete our assessment and after the HTTP caches (of the badge image) expire.\n\nIf you're making changes to your site configuration, it may take several days before the badge reflects them. To make this process faster, simply visit our web site and manually re-test your web site.",
+				"alias": "hardenize",
+				"orgId": "5813e061f46becd5d7c3384394ebab18",
+				"icon": "//images.cloudflareapps.com/Lje6UHU2StuiX5Bv896w_hardenize2.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/Uj2aiAuTwa39v6eOvQ16_hardenize-home.png",
+					"//images.cloudflareapps.com/nqsGWV4eQba0Gd4HAvmi_hardenize-report-part-v3-retina.png",
+					"//images.cloudflareapps.com/IRXVYr2US2C0AV9ZzPaE_hardenize-report-full.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/c3Vn9aYCSqSnUxBFSfPf_hardenize1.png",
+				"featuredAppImage": "",
+				"author": "Hardenize Limited",
+				"tagline": "",
+				"website": "https://www.hardenize.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@hardenize.com",
+				"products": [],
+				"categoryIds": [
+					"recommended-for-all-sites",
+					"security"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "ljpR7sHwGoL1"
+				},
+				"created": "2017-05-17T11:44:41.061156Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-11-14T20:37:02.919410518Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-11-14T21:09:45.792517336Z"
+			}
+		}
+	]
+}

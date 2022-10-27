@@ -1,0 +1,484 @@
+{
+	"id": "mt9QUlJFKGSg",
+	"title": "JSGuardian",
+	"shortDescription": "Improved security to protect your website and your users.",
+	"longDescription": "Adds invisible protections to your site that upgrade page loads and links to the secure https protocol, sanitize input to remove malicious code, activate other protections to protect your site from attacks that can mislead your users, harvest their login credentials or private data, inject malicious code into your databases, or abuse your intellectual property.",
+	"instructions": "You should immediately test your site after installing JSGuardian to ensure you are not preventing user actions you wish to allow. If your site collects input from users that is intended to be HTML, you may need to lower some protection levels. If your site JavaScript sets values to 'innerHTML' and breaks when JSGuardian is installed, it is likely you have a large security hole and should consider re-writing portions of your site to protect your company and your end-users.",
+	"alias": "jsguardian",
+	"orgId": "2b4bc3275274500b743a353784708691",
+	"icon": "https://images.cloudflareapps.com/XGqpGRsKp83G/logo300x300.png",
+	"screenshots": [],
+	"tileImage": "https://images.cloudflareapps.com/aNezNsyR6Cs3/jsguardian420x268.png",
+	"featuredAppImage": "",
+	"author": "AnyWhichWay, LLC dba Cyberzoa",
+	"tagline": "",
+	"website": "https://www.cyberzoa.com",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://www.cyberzoa.com/#tandc",
+	"privacyPolicyURL": "https://www.cyberzoa.com/#privacy",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.1",
+	"infoVersion": "1.0.1",
+	"points": 0,
+	"supportEmail": "support@cyberzoa.com",
+	"products": [],
+	"categoryIds": [
+		"security"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "2b4bc3275274500b743a353784708691",
+			"created": "2019-10-02T18:22:50.270330877Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "ESbQU34fsu-8"
+	},
+	"created": "2019-10-02T18:01:26.682666Z",
+	"org": {
+		"id": "2b4bc3275274500b743a353784708691",
+		"title": "",
+		"username": "2b4bc3275274500b743a353784708691",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "security",
+			"title": "Security",
+			"description": "Apps which make your site safer and protect you from threats.",
+			"icon": "",
+			"points": 40,
+			"visible": true,
+			"created": "2017-05-19T23:56:31.822492Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "mt9QUlJFKGSg",
+			"definition": {
+				"resources": {
+					"body": [],
+					"head": [
+						{
+							"type": "script",
+							"src": "./jsguardian-free.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 4,
+							"required": true,
+							"services": [
+								"jsguardian"
+							],
+							"title": "Cyberzoa Account",
+							"type": "object"
+						},
+						"disclaimer": {
+							"helpvalue": "Note: This service is not a guarantee of site security, it just helps to improve it.",
+							"order": 3,
+							"type": "help"
+						},
+						"free": {
+							"properties": {
+								"guardInnerHTML": {
+									"default": "clean",
+									"description": "Manage changes to documents via innerHTML, a well know security hole.",
+									"enum": [
+										"off",
+										"clean",
+										"strict"
+									],
+									"enumNames": {
+										"clean": "clean - remove suspicious content",
+										"off": "off duty",
+										"strict": "strict - ensure clean value is same as the one provided"
+									},
+									"format": "radios",
+									"order": 8,
+									"title": "guardInnerHTML",
+									"type": "string"
+								},
+								"guardInput": {
+									"default": "clean",
+									"description": "Manage input via forms.",
+									"enum": [
+										"off",
+										"clean",
+										"strict"
+									],
+									"enumNames": {
+										"clean": "clean - remove suspicious content",
+										"off": "off duty",
+										"strict": "strict - ensure clean value is the same as the one entered"
+									},
+									"format": "radios",
+									"order": 10,
+									"title": "guardInput",
+									"type": "string"
+								},
+								"guardPrompt": {
+									"default": "clean",
+									"description": "Manage input via JavaScript prompt function.",
+									"enum": [
+										"off",
+										"clean",
+										"strict",
+										"prevent"
+									],
+									"enumNames": {
+										"clean": "clean - remove suspicious content",
+										"off": "off duty",
+										"prevent": "prevent - do not allow the use of JavaScript prompt",
+										"strict": "strict - ensure clean value is the same as the one entered"
+									},
+									"format": "radios",
+									"order": 9,
+									"title": "guardPrompt",
+									"type": "string"
+								},
+								"guardTransport": {
+									"default": "https-only",
+									"description": "Manage secure https protocol use.",
+									"enum": [
+										"off",
+										"https-only"
+									],
+									"enumNames": {
+										"https-only": "https-only - ensure all requests and links use secure protocol",
+										"off": "off duty"
+									},
+									"format": "radios",
+									"order": 11,
+									"title": "guardTransport",
+									"type": "string"
+								},
+								"guardWhen": {
+									"default": "before",
+									"description": "Guard before or after a page has fully loaded. The 'after' option may be required on older site that load files to patch JavaScript functionality. Note, security will be reduced.",
+									"enum": [
+										"before",
+										"after"
+									],
+									"enumNames": {
+										"after": "after load (less strict)",
+										"before": "before (most strict)"
+									},
+									"format": "radios",
+									"order": 6,
+									"title": "guardWhen",
+									"type": "string"
+								},
+								"guardXSS": {
+									"default": "sanitize",
+									"description": "Turn on built-in browser defenses against XSS if available. Automatic in newer browsers.",
+									"enum": [
+										"off",
+										"sanitize",
+										"block"
+									],
+									"enumNames": {
+										"block": "block - prevent the action",
+										"off": "off duty",
+										"sanitize": "santize - remove threats, similar to clean"
+									},
+									"format": "radios",
+									"order": 12,
+									"title": "guardXSS",
+									"type": "string"
+								}
+							},
+							"title": "Options",
+							"type": "object"
+						},
+						"introduction": {
+							"helpvalue": "JSGuardian by Cyberzoa helps to protect your site from attacks that can mislead your users, harvest their login credentials or private data, inject malicious code into your databases, or abuse your intellectual property.",
+							"order": 1,
+							"type": "help"
+						}
+					}
+				},
+				"preview": {}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/ESbQU34fsu-8",
+			"metadata": {
+				"code": {
+					"sourceTag": "ESbQU34fsu-8",
+					"uploadedOn": "2019-10-02T18:01:27.552135642Z"
+				}
+			},
+			"created": "2019-10-02T18:01:26.995036Z",
+			"proposedApp": {
+				"id": "mt9QUlJFKGSg",
+				"title": "JSGuardian",
+				"shortDescription": "Improved security to protect your website and your users.",
+				"longDescription": "Adds invisible protections to your site that upgrade page loads and links to the secure https protocol, sanitize input to remove malicious code, activate other protections to protect your site from attacks that can mislead your users, harvest their login credentials or private data, inject malicious code into your databases, or abuse your intellectual property.",
+				"instructions": "You should immediately test your site after installing JSGuardian to ensure you are not preventing user actions you wish to allow. If your site collects input from users that is intended to be HTML, you may need to lower some protection levels. If your site JavaScript sets values to 'innerHTML' and breaks when JSGuardian is installed, it is likely you have a large security hole and should consider re-writing portions of your site to protect your company and your end-users.",
+				"alias": "jsguardian",
+				"orgId": "2b4bc3275274500b743a353784708691",
+				"icon": "https://images.cloudflareapps.com/XGqpGRsKp83G/logo300x300.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/aNezNsyR6Cs3/jsguardian420x268.png",
+				"featuredAppImage": "",
+				"author": "AnyWhichWay, LLC dba Cyberzoa",
+				"tagline": "",
+				"website": "https://www.cyberzoa.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.cyberzoa.com/#tandc",
+				"privacyPolicyURL": "https://www.cyberzoa.com/#privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cyberzoa.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "ESbQU34fsu-8"
+				},
+				"created": "2019-10-02T18:01:26.682666Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "2b4bc3275274500b743a353784708691",
+				"requestedAt": "2019-10-02T18:22:50.23254114Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-10-03T17:52:31.371047226Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "mt9QUlJFKGSg",
+			"definition": {
+				"resources": {
+					"body": [],
+					"head": [
+						{
+							"type": "script",
+							"src": "./jsguardian-free.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 4,
+							"required": true,
+							"services": [
+								"jsguardian"
+							],
+							"title": "Cyberzoa Account",
+							"type": "object"
+						},
+						"disclaimer": {
+							"helpvalue": "Note: This service is not a guarantee of site security, it just helps to improve it.",
+							"order": 3,
+							"type": "help"
+						},
+						"free": {
+							"properties": {
+								"guardInnerHTML": {
+									"default": "clean",
+									"description": "Manage changes to documents via innerHTML, a well know security hole.",
+									"enum": [
+										"off",
+										"clean",
+										"strict"
+									],
+									"enumNames": {
+										"clean": "clean - remove suspicious content",
+										"off": "off duty",
+										"strict": "strict - ensure clean value is same as the one provided"
+									},
+									"format": "radios",
+									"order": 8,
+									"title": "guardInnerHTML",
+									"type": "string"
+								},
+								"guardInput": {
+									"default": "clean",
+									"description": "Manage input via forms.",
+									"enum": [
+										"off",
+										"clean",
+										"strict"
+									],
+									"enumNames": {
+										"clean": "clean - remove suspicious content",
+										"off": "off duty",
+										"strict": "strict - ensure clean value is the same as the one entered"
+									},
+									"format": "radios",
+									"order": 10,
+									"title": "guardInput",
+									"type": "string"
+								},
+								"guardPrompt": {
+									"default": "clean",
+									"description": "Manage input via JavaScript prompt function.",
+									"enum": [
+										"off",
+										"clean",
+										"strict",
+										"prevent"
+									],
+									"enumNames": {
+										"clean": "clean - remove suspicious content",
+										"off": "off duty",
+										"prevent": "prevent - do not allow the use of JavaScript prompt",
+										"strict": "strict - ensure clean value is the same as the one entered"
+									},
+									"format": "radios",
+									"order": 9,
+									"title": "guardPrompt",
+									"type": "string"
+								},
+								"guardTransport": {
+									"default": "https-only",
+									"description": "Manage secure https protocol use.",
+									"enum": [
+										"off",
+										"https-only"
+									],
+									"enumNames": {
+										"https-only": "https-only - ensure all requests and links use secure protocol",
+										"off": "off duty"
+									},
+									"format": "radios",
+									"order": 11,
+									"title": "guardTransport",
+									"type": "string"
+								},
+								"guardWhen": {
+									"default": "before",
+									"description": "Guard before or after a page has fully loaded. The 'after' option may be required on older site that load files to patch JavaScript functionality. Note, security will be reduced.",
+									"enum": [
+										"before",
+										"after"
+									],
+									"enumNames": {
+										"after": "after load (less strict)",
+										"before": "before (most strict)"
+									},
+									"format": "radios",
+									"order": 6,
+									"title": "guardWhen",
+									"type": "string"
+								},
+								"guardXSS": {
+									"default": "sanitize",
+									"description": "Turn on built-in browser defenses against XSS if available. Automatic in newer browsers.",
+									"enum": [
+										"off",
+										"sanitize",
+										"block"
+									],
+									"enumNames": {
+										"block": "block - prevent the action",
+										"off": "off duty",
+										"sanitize": "santize - remove threats, similar to clean"
+									},
+									"format": "radios",
+									"order": 12,
+									"title": "guardXSS",
+									"type": "string"
+								}
+							},
+							"title": "Options",
+							"type": "object"
+						},
+						"introduction": {
+							"helpvalue": "JSGuardian by Cyberzoa helps to protect your site from attacks that can mislead your users, harvest their login credentials or private data, inject malicious code into your databases, or abuse your intellectual property.",
+							"order": 1,
+							"type": "help"
+						}
+					}
+				},
+				"preview": {}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.91,
+				"upvotes": 143,
+				"downvotes": 14
+			},
+			"releaseNotes": "Added to Security category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/ESbQU34fsu-8",
+			"created": "2019-10-03T17:57:10.101902Z",
+			"proposedApp": {
+				"id": "mt9QUlJFKGSg",
+				"title": "JSGuardian",
+				"shortDescription": "Improved security to protect your website and your users.",
+				"longDescription": "Adds invisible protections to your site that upgrade page loads and links to the secure https protocol, sanitize input to remove malicious code, activate other protections to protect your site from attacks that can mislead your users, harvest their login credentials or private data, inject malicious code into your databases, or abuse your intellectual property.",
+				"instructions": "You should immediately test your site after installing JSGuardian to ensure you are not preventing user actions you wish to allow. If your site collects input from users that is intended to be HTML, you may need to lower some protection levels. If your site JavaScript sets values to 'innerHTML' and breaks when JSGuardian is installed, it is likely you have a large security hole and should consider re-writing portions of your site to protect your company and your end-users.",
+				"alias": "jsguardian",
+				"orgId": "2b4bc3275274500b743a353784708691",
+				"icon": "https://images.cloudflareapps.com/XGqpGRsKp83G/logo300x300.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/aNezNsyR6Cs3/jsguardian420x268.png",
+				"featuredAppImage": "",
+				"author": "AnyWhichWay, LLC dba Cyberzoa",
+				"tagline": "",
+				"website": "https://www.cyberzoa.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.cyberzoa.com/#tandc",
+				"privacyPolicyURL": "https://www.cyberzoa.com/#privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cyberzoa.com",
+				"products": [],
+				"categoryIds": [
+					"security"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "ESbQU34fsu-8"
+				},
+				"created": "2019-10-02T18:01:26.682666Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2019-10-03T17:57:10.374358Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-10-03T17:57:28.540256433Z"
+			}
+		}
+	]
+}

@@ -1,0 +1,1277 @@
+{
+	"id": "GTEwwyxyvh0m",
+	"title": "Gallery",
+	"shortDescription": "Add an image or video gallery in grid or collage layout.",
+	"longDescription": "POWr Gallery is the perfect tool for showcasing your products, making customers fall in love with your brand, and seamlessly increasing conversions across all devices. You can create customized product grids, user testimonial pages, and press galleries, the choice is yours! By adding built-in call-to-action buttons within your gallery, that link directly to other pages on your site, you can get your visitors to take action and get them exactly where they need to be.You can even use Gallery to get more followers by allowing customers to share photos and videos on Pinterest, Twitter, Facebook, and Google.\n \n# What are the benefits of using POWr Gallery?   \n\n* **Get more conversions** - Display your product photos and videos with custom text and buttons to send customers where you want them.\n* **Boost SEO** - Add alt text to anything you add to your gallery to rank better in search engines.\n* **Make it yours** - Customize your gallery with your own pictures, files, text, colors, videos, links, fonts and more! Make it match your store design.\n\n# Get started for free and enjoy these features:   \n\n* Add anything to your media gallery to showcase your best deals, products and other information!\n* Embed videos, add photos, images, upload files, add links and buttons to drive action on your page.\n* Highly customizable design: adjust spacing between entries, choose ideal photo size, add borders, pick custom fonts, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Add alt text to each element to rank better in search engines.\n* Enable lightbox popup to let customers take a closer look at your pictures or videos.\n* Get more followers by adding social media sharing buttons to your media gallery.\n* Add a text search so that customers can quickly find what they’re looking for.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=media-gallery).\n\n# Why users love Gallery:   \n\n“Awesome application - great features. Easiest way to achieve a pinterest style effect.” - David07\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Gallery up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+	"instructions": "",
+	"alias": "powr-gallery",
+	"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+	"icon": "https://images.cloudflareapps.com/mDmN5QHTwrL8/Gallery-Icon-Cloudflare.png",
+	"screenshots": [
+		"//images.cloudflareapps.com/IewiXuwqSCyDXvykipob_Media Gallery 1 (1).png",
+		"//images.cloudflareapps.com/mt0Zx8C9TpGzrCWL7hXo_Media Gallery 2 (1).png",
+		"//images.cloudflareapps.com/BLZqd1R8R1eNrxgBHWNQ_screenshot-3-5- (1).png",
+		"//images.cloudflareapps.com/6GXOcVFITUKVwzNGHsts_all-purpose-banner copy.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/qIoawUhyadp4/Gallery-Banner-Cloudflare.png",
+	"featuredAppImage": "",
+	"author": "POWr Inc",
+	"tagline": "",
+	"website": "https://www.powr.io",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://www.powr.io/terms",
+	"privacyPolicyURL": "https://www.powr.io/privacy",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.7",
+	"infoVersion": "1.0.7",
+	"points": 0,
+	"supportEmail": "support@powr.io",
+	"products": [],
+	"categoryIds": [
+		"ui-and-design",
+		"powr"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+			"created": "2018-03-13T17:50:07.430965387Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "VoiMVW0PUBD_"
+	},
+	"created": "2018-03-12T18:34:51.735916Z",
+	"org": {
+		"id": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+		"title": "",
+		"username": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "ui-and-design",
+			"title": "UI & Design",
+			"description": "Apps that make your website more beautiful and user friendly.",
+			"icon": "",
+			"points": 10,
+			"visible": true,
+			"created": "2018-01-22T19:17:52.677513Z"
+		},
+		{
+			"id": "powr",
+			"title": "POWR",
+			"description": "Apps created by POWR",
+			"icon": "",
+			"points": 40,
+			"visible": false,
+			"created": "2018-11-06T00:45:54.563564Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "GTEwwyxyvh0m",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"appId": {
+							"default": "",
+							"label": "App Installation ID",
+							"title": "App Installation ID",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Media Gallery appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						},
+						"productId": {
+							"default": "premium",
+							"label": "Plan",
+							"title": "POWr Plan",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=mediaGallery",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=mediaGallery",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/VoiMVW0PUBD_",
+			"metadata": {
+				"code": {
+					"sourceTag": "VoiMVW0PUBD_",
+					"uploadedOn": "2018-03-12T18:34:52.038867217Z"
+				}
+			},
+			"created": "2018-03-12T18:34:51.881773Z",
+			"proposedApp": {
+				"id": "GTEwwyxyvh0m",
+				"title": "Gallery",
+				"shortDescription": "Boost SEO and conversions with a mixed-media gallery.",
+				"longDescription": "POWr Gallery is the perfect tool for showcasing your products, making customers fall in love with your brand, and seamlessly increasing conversions across all devices. You can create customized product grids, user testimonial pages, and press galleries, the choice is yours! By adding built-in call-to-action buttons within your gallery, that link directly to other pages on your site, you can get your visitors to take action and get them exactly where they need to be.You can even use Gallery to get more followers by allowing customers to share photos and videos on Pinterest, Twitter, Facebook, and Google.\n \n# What are the benefits of using POWr Gallery?   \n\n* **Get more conversions** - Display your product photos and videos with custom text and buttons to send customers where you want them.\n* **Boost SEO** - Add alt text to anything you add to your gallery to rank better in search engines.\n* **Make it yours** - Customize your gallery with your own pictures, files, text, colors, videos, links, fonts and more! Make it match your store design.\n\n# Get started for free and enjoy these features:   \n\n* Add anything to your media gallery to showcase your best deals, products and other information!\n* Embed videos, add photos, images, upload files, add links and buttons to drive action on your page.\n* Highly customizable design: adjust spacing between entries, choose ideal photo size, add borders, pick custom fonts, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Add alt text to each element to rank better in search engines.\n* Enable lightbox popup to let customers take a closer look at your pictures or videos.\n* Get more followers by adding social media sharing buttons to your media gallery.\n* Add a text search so that customers can quickly find what they’re looking for.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=media-gallery).\n\n# Why users love Gallery:   \n\n“Awesome application - great features. Easiest way to achieve a pinterest style effect.” - David07\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Gallery up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "//images.cloudflareapps.com/jmsVgvEDQK6oHgCLebR2_Icon - Gallery Cloudflare.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/IewiXuwqSCyDXvykipob_Media Gallery 1 (1).png",
+					"//images.cloudflareapps.com/mt0Zx8C9TpGzrCWL7hXo_Media Gallery 2 (1).png",
+					"//images.cloudflareapps.com/BLZqd1R8R1eNrxgBHWNQ_screenshot-3-5- (1).png",
+					"//images.cloudflareapps.com/6GXOcVFITUKVwzNGHsts_all-purpose-banner copy.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/EvRwJcCUQz2KYgUwcNBb_Gallery banner.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For businesses looking to test the water with new plugins",
+						"longDescription": "* Add 6 Entries (Images, Videos etc.)",
+						"visible": false,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "premium",
+						"title": "Starter",
+						"shortDescription": "For businesses who have their own brand and want extra customization.",
+						"longDescription": "* Remove POWr Branding\n* Add 12 Entries (Images, Videos etc.)",
+						"visible": true,
+						"price": 500,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "For growing businesses looking to stand out from the crowd and get more conversions.",
+						"longDescription": "* Remove POWr Branding\n* Add 20 Entries (Images, Videos etc.)\n* Add Social Share Buttons\n* Add SEO Alt Tags for Images\n* Add Lightbox Popup\n* Add a Text Search Bar\n* Add Custom CSS & JavaScript",
+						"visible": true,
+						"price": 1200,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "For total control that scales with your business, whether it’s big or small. Get every feature for every plugin.",
+						"longDescription": "* Remove POWr Branding\n* Add Unlimited Entries (Images, Videos etc.)\n* Add Social Share Buttons\n* Add SEO Alt Tags for Images\n* Add Lightbox Popup\n* Add a Text Search Bar\n* Add Custom CSS & JavaScript\n+ FREE Business Upgrade for all 50 POWr Plugins",
+						"visible": true,
+						"price": 5000,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"social-and-communication",
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "VoiMVW0PUBD_"
+				},
+				"created": "2018-03-12T18:34:51.735916Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2018-03-13T17:50:07.423208626Z",
+				"canceledByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"canceledAt": "2018-03-23T17:38:46.507033997Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "GTEwwyxyvh0m",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"appId": {
+							"default": "",
+							"label": "App Installation ID",
+							"title": "App Installation ID",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Media Gallery appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						},
+						"productId": {
+							"default": "premium",
+							"label": "Plan",
+							"title": "POWr Plan",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=mediaGallery",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=mediaGallery",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "User uniq install.id for map POWr app with",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/r0ZkdAiuyzhf",
+			"metadata": {
+				"code": {
+					"sourceTag": "r0ZkdAiuyzhf",
+					"uploadedOn": "2018-03-23T17:38:45.750077887Z"
+				}
+			},
+			"created": "2018-03-23T17:38:45.334836Z",
+			"proposedApp": {
+				"id": "GTEwwyxyvh0m",
+				"title": "Gallery",
+				"shortDescription": "Boost SEO and conversions with a mixed-media gallery.",
+				"longDescription": "POWr Gallery is the perfect tool for showcasing your products, making customers fall in love with your brand, and seamlessly increasing conversions across all devices. You can create customized product grids, user testimonial pages, and press galleries, the choice is yours! By adding built-in call-to-action buttons within your gallery, that link directly to other pages on your site, you can get your visitors to take action and get them exactly where they need to be.You can even use Gallery to get more followers by allowing customers to share photos and videos on Pinterest, Twitter, Facebook, and Google.\n \n# What are the benefits of using POWr Gallery?   \n\n* **Get more conversions** - Display your product photos and videos with custom text and buttons to send customers where you want them.\n* **Boost SEO** - Add alt text to anything you add to your gallery to rank better in search engines.\n* **Make it yours** - Customize your gallery with your own pictures, files, text, colors, videos, links, fonts and more! Make it match your store design.\n\n# Get started for free and enjoy these features:   \n\n* Add anything to your media gallery to showcase your best deals, products and other information!\n* Embed videos, add photos, images, upload files, add links and buttons to drive action on your page.\n* Highly customizable design: adjust spacing between entries, choose ideal photo size, add borders, pick custom fonts, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Add alt text to each element to rank better in search engines.\n* Enable lightbox popup to let customers take a closer look at your pictures or videos.\n* Get more followers by adding social media sharing buttons to your media gallery.\n* Add a text search so that customers can quickly find what they’re looking for.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=media-gallery).\n\n# Why users love Gallery:   \n\n“Awesome application - great features. Easiest way to achieve a pinterest style effect.” - David07\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Gallery up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "//images.cloudflareapps.com/jmsVgvEDQK6oHgCLebR2_Icon - Gallery Cloudflare.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/IewiXuwqSCyDXvykipob_Media Gallery 1 (1).png",
+					"//images.cloudflareapps.com/mt0Zx8C9TpGzrCWL7hXo_Media Gallery 2 (1).png",
+					"//images.cloudflareapps.com/BLZqd1R8R1eNrxgBHWNQ_screenshot-3-5- (1).png",
+					"//images.cloudflareapps.com/6GXOcVFITUKVwzNGHsts_all-purpose-banner copy.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/EvRwJcCUQz2KYgUwcNBb_Gallery banner.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For businesses looking to test the water with new plugins",
+						"longDescription": "* Add 6 Entries (Images, Videos etc.)",
+						"visible": false,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "premium",
+						"title": "Starter",
+						"shortDescription": "For businesses who have their own brand and want extra customization.",
+						"longDescription": "* Remove POWr Branding\n* Add 12 Entries (Images, Videos etc.)",
+						"visible": true,
+						"price": 500,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "For growing businesses looking to stand out from the crowd and get more conversions.",
+						"longDescription": "* Remove POWr Branding\n* Add 20 Entries (Images, Videos etc.)\n* Add Social Share Buttons\n* Add SEO Alt Tags for Images\n* Add Lightbox Popup\n* Add a Text Search Bar\n* Add Custom CSS & JavaScript",
+						"visible": true,
+						"price": 1200,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "For total control that scales with your business, whether it’s big or small. Get every feature for every plugin.",
+						"longDescription": "* Remove POWr Branding\n* Add Unlimited Entries (Images, Videos etc.)\n* Add Social Share Buttons\n* Add SEO Alt Tags for Images\n* Add Lightbox Popup\n* Add a Text Search Bar\n* Add Custom CSS & JavaScript\n+ FREE Business Upgrade for all 50 POWr Plugins",
+						"visible": true,
+						"price": 5000,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"social-and-communication",
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "VoiMVW0PUBD_"
+				},
+				"created": "2018-03-12T18:34:51.735916Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2018-03-23T17:38:46.534825184Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2018-04-02T21:05:12.060708166Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "GTEwwyxyvh0m",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Media Gallery appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=mediaGallery",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=mediaGallery",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "Persisting install.id",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/1LCjzzUSCQo-",
+			"metadata": {
+				"code": {
+					"sourceTag": "1LCjzzUSCQo-",
+					"uploadedOn": "2018-09-19T23:55:30.69271574Z"
+				}
+			},
+			"created": "2018-09-19T23:55:30.517308Z",
+			"proposedApp": {
+				"id": "GTEwwyxyvh0m",
+				"title": "Gallery",
+				"shortDescription": "Boost SEO and conversions with a mixed-media gallery.",
+				"longDescription": "POWr Gallery is the perfect tool for showcasing your products, making customers fall in love with your brand, and seamlessly increasing conversions across all devices. You can create customized product grids, user testimonial pages, and press galleries, the choice is yours! By adding built-in call-to-action buttons within your gallery, that link directly to other pages on your site, you can get your visitors to take action and get them exactly where they need to be.You can even use Gallery to get more followers by allowing customers to share photos and videos on Pinterest, Twitter, Facebook, and Google.\n \n# What are the benefits of using POWr Gallery?   \n\n* **Get more conversions** - Display your product photos and videos with custom text and buttons to send customers where you want them.\n* **Boost SEO** - Add alt text to anything you add to your gallery to rank better in search engines.\n* **Make it yours** - Customize your gallery with your own pictures, files, text, colors, videos, links, fonts and more! Make it match your store design.\n\n# Get started for free and enjoy these features:   \n\n* Add anything to your media gallery to showcase your best deals, products and other information!\n* Embed videos, add photos, images, upload files, add links and buttons to drive action on your page.\n* Highly customizable design: adjust spacing between entries, choose ideal photo size, add borders, pick custom fonts, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Add alt text to each element to rank better in search engines.\n* Enable lightbox popup to let customers take a closer look at your pictures or videos.\n* Get more followers by adding social media sharing buttons to your media gallery.\n* Add a text search so that customers can quickly find what they’re looking for.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=media-gallery).\n\n# Why users love Gallery:   \n\n“Awesome application - great features. Easiest way to achieve a pinterest style effect.” - David07\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Gallery up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "//images.cloudflareapps.com/jmsVgvEDQK6oHgCLebR2_Icon - Gallery Cloudflare.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/IewiXuwqSCyDXvykipob_Media Gallery 1 (1).png",
+					"//images.cloudflareapps.com/mt0Zx8C9TpGzrCWL7hXo_Media Gallery 2 (1).png",
+					"//images.cloudflareapps.com/BLZqd1R8R1eNrxgBHWNQ_screenshot-3-5- (1).png",
+					"//images.cloudflareapps.com/6GXOcVFITUKVwzNGHsts_all-purpose-banner copy.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/EvRwJcCUQz2KYgUwcNBb_Gallery banner.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"social-and-communication",
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "VoiMVW0PUBD_"
+				},
+				"created": "2018-03-12T18:34:51.735916Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2018-09-19T23:55:42.722568768Z",
+				"canceledByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"canceledAt": "2018-09-25T18:01:07.267546891Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "GTEwwyxyvh0m",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Media Gallery appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=mediaGallery",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=mediaGallery",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "Persisting install.id",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/1LCjzzUSCQo-",
+			"created": "2018-09-25T17:05:21.009226Z",
+			"proposedApp": {
+				"id": "GTEwwyxyvh0m",
+				"title": "Gallery",
+				"shortDescription": "Boost SEO and conversions with a mixed-media gallery.",
+				"longDescription": "POWr Gallery is the perfect tool for showcasing your products, making customers fall in love with your brand, and seamlessly increasing conversions across all devices. You can create customized product grids, user testimonial pages, and press galleries, the choice is yours! By adding built-in call-to-action buttons within your gallery, that link directly to other pages on your site, you can get your visitors to take action and get them exactly where they need to be.You can even use Gallery to get more followers by allowing customers to share photos and videos on Pinterest, Twitter, Facebook, and Google.\n \n# What are the benefits of using POWr Gallery?   \n\n* **Get more conversions** - Display your product photos and videos with custom text and buttons to send customers where you want them.\n* **Boost SEO** - Add alt text to anything you add to your gallery to rank better in search engines.\n* **Make it yours** - Customize your gallery with your own pictures, files, text, colors, videos, links, fonts and more! Make it match your store design.\n\n# Get started for free and enjoy these features:   \n\n* Add anything to your media gallery to showcase your best deals, products and other information!\n* Embed videos, add photos, images, upload files, add links and buttons to drive action on your page.\n* Highly customizable design: adjust spacing between entries, choose ideal photo size, add borders, pick custom fonts, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Add alt text to each element to rank better in search engines.\n* Enable lightbox popup to let customers take a closer look at your pictures or videos.\n* Get more followers by adding social media sharing buttons to your media gallery.\n* Add a text search so that customers can quickly find what they’re looking for.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=media-gallery).\n\n# Why users love Gallery:   \n\n“Awesome application - great features. Easiest way to achieve a pinterest style effect.” - David07\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Gallery up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "//images.cloudflareapps.com/jmsVgvEDQK6oHgCLebR2_Icon - Gallery Cloudflare.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/IewiXuwqSCyDXvykipob_Media Gallery 1 (1).png",
+					"//images.cloudflareapps.com/mt0Zx8C9TpGzrCWL7hXo_Media Gallery 2 (1).png",
+					"//images.cloudflareapps.com/BLZqd1R8R1eNrxgBHWNQ_screenshot-3-5- (1).png",
+					"//images.cloudflareapps.com/6GXOcVFITUKVwzNGHsts_all-purpose-banner copy.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/EvRwJcCUQz2KYgUwcNBb_Gallery banner.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [],
+				"categoryIds": [
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "VoiMVW0PUBD_"
+				},
+				"created": "2018-03-12T18:34:51.735916Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2018-09-25T18:01:07.28057378Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2018-09-26T17:16:09.77912615Z"
+			}
+		},
+		{
+			"tag": "1.0.4",
+			"appId": "GTEwwyxyvh0m",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Media Gallery appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=mediaGallery",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=mediaGallery",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "Persisting install.id",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/1LCjzzUSCQo-",
+			"created": "2018-09-26T21:35:13.241985Z",
+			"proposedApp": {
+				"id": "GTEwwyxyvh0m",
+				"title": "Gallery",
+				"shortDescription": "Add an image or video gallery in grid or collage layout.",
+				"longDescription": "POWr Gallery is the perfect tool for showcasing your products, making customers fall in love with your brand, and seamlessly increasing conversions across all devices. You can create customized product grids, user testimonial pages, and press galleries, the choice is yours! By adding built-in call-to-action buttons within your gallery, that link directly to other pages on your site, you can get your visitors to take action and get them exactly where they need to be.You can even use Gallery to get more followers by allowing customers to share photos and videos on Pinterest, Twitter, Facebook, and Google.\n \n# What are the benefits of using POWr Gallery?   \n\n* **Get more conversions** - Display your product photos and videos with custom text and buttons to send customers where you want them.\n* **Boost SEO** - Add alt text to anything you add to your gallery to rank better in search engines.\n* **Make it yours** - Customize your gallery with your own pictures, files, text, colors, videos, links, fonts and more! Make it match your store design.\n\n# Get started for free and enjoy these features:   \n\n* Add anything to your media gallery to showcase your best deals, products and other information!\n* Embed videos, add photos, images, upload files, add links and buttons to drive action on your page.\n* Highly customizable design: adjust spacing between entries, choose ideal photo size, add borders, pick custom fonts, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Add alt text to each element to rank better in search engines.\n* Enable lightbox popup to let customers take a closer look at your pictures or videos.\n* Get more followers by adding social media sharing buttons to your media gallery.\n* Add a text search so that customers can quickly find what they’re looking for.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=media-gallery).\n\n# Why users love Gallery:   \n\n“Awesome application - great features. Easiest way to achieve a pinterest style effect.” - David07\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Gallery up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "https://images.cloudflareapps.com/mDmN5QHTwrL8/Gallery-Icon-Cloudflare.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/IewiXuwqSCyDXvykipob_Media Gallery 1 (1).png",
+					"//images.cloudflareapps.com/mt0Zx8C9TpGzrCWL7hXo_Media Gallery 2 (1).png",
+					"//images.cloudflareapps.com/BLZqd1R8R1eNrxgBHWNQ_screenshot-3-5- (1).png",
+					"//images.cloudflareapps.com/6GXOcVFITUKVwzNGHsts_all-purpose-banner copy.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/qIoawUhyadp4/Gallery-Banner-Cloudflare.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [],
+				"categoryIds": [
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "VoiMVW0PUBD_"
+				},
+				"created": "2018-03-12T18:34:51.735916Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2018-09-27T20:20:55.4811573Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2018-09-27T22:50:48.716719665Z"
+			}
+		},
+		{
+			"tag": "1.0.5",
+			"appId": "GTEwwyxyvh0m",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Media Gallery appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=mediaGallery",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=mediaGallery",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "We've made minor updates to Social Feed. There is no need to do anything, your app will continue to work as expected.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/1LCjzzUSCQo-",
+			"created": "2018-10-16T17:51:06.470098Z",
+			"proposedApp": {
+				"id": "GTEwwyxyvh0m",
+				"title": "Gallery",
+				"shortDescription": "Add an image or video gallery in grid or collage layout.",
+				"longDescription": "POWr Gallery is the perfect tool for showcasing your products, making customers fall in love with your brand, and seamlessly increasing conversions across all devices. You can create customized product grids, user testimonial pages, and press galleries, the choice is yours! By adding built-in call-to-action buttons within your gallery, that link directly to other pages on your site, you can get your visitors to take action and get them exactly where they need to be.You can even use Gallery to get more followers by allowing customers to share photos and videos on Pinterest, Twitter, Facebook, and Google.\n \n# What are the benefits of using POWr Gallery?   \n\n* **Get more conversions** - Display your product photos and videos with custom text and buttons to send customers where you want them.\n* **Boost SEO** - Add alt text to anything you add to your gallery to rank better in search engines.\n* **Make it yours** - Customize your gallery with your own pictures, files, text, colors, videos, links, fonts and more! Make it match your store design.\n\n# Get started for free and enjoy these features:   \n\n* Add anything to your media gallery to showcase your best deals, products and other information!\n* Embed videos, add photos, images, upload files, add links and buttons to drive action on your page.\n* Highly customizable design: adjust spacing between entries, choose ideal photo size, add borders, pick custom fonts, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Add alt text to each element to rank better in search engines.\n* Enable lightbox popup to let customers take a closer look at your pictures or videos.\n* Get more followers by adding social media sharing buttons to your media gallery.\n* Add a text search so that customers can quickly find what they’re looking for.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=media-gallery).\n\n# Why users love Gallery:   \n\n“Awesome application - great features. Easiest way to achieve a pinterest style effect.” - David07\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Gallery up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "powr-gallery",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "https://images.cloudflareapps.com/mDmN5QHTwrL8/Gallery-Icon-Cloudflare.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/IewiXuwqSCyDXvykipob_Media Gallery 1 (1).png",
+					"//images.cloudflareapps.com/mt0Zx8C9TpGzrCWL7hXo_Media Gallery 2 (1).png",
+					"//images.cloudflareapps.com/BLZqd1R8R1eNrxgBHWNQ_screenshot-3-5- (1).png",
+					"//images.cloudflareapps.com/6GXOcVFITUKVwzNGHsts_all-purpose-banner copy.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/qIoawUhyadp4/Gallery-Banner-Cloudflare.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [],
+				"categoryIds": [
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "VoiMVW0PUBD_"
+				},
+				"created": "2018-03-12T18:34:51.735916Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2018-10-16T17:51:06.656207294Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2018-10-18T18:28:01.902797235Z"
+			}
+		},
+		{
+			"tag": "1.0.6",
+			"appId": "GTEwwyxyvh0m",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Media Gallery appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=mediaGallery",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=mediaGallery",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.67,
+				"upvotes": 2,
+				"downvotes": 1
+			},
+			"releaseNotes": "Add POWR tag",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/1LCjzzUSCQo-",
+			"created": "2018-11-06T00:53:55.203945Z",
+			"proposedApp": {
+				"id": "GTEwwyxyvh0m",
+				"title": "Gallery",
+				"shortDescription": "Add an image or video gallery in grid or collage layout.",
+				"longDescription": "POWr Gallery is the perfect tool for showcasing your products, making customers fall in love with your brand, and seamlessly increasing conversions across all devices. You can create customized product grids, user testimonial pages, and press galleries, the choice is yours! By adding built-in call-to-action buttons within your gallery, that link directly to other pages on your site, you can get your visitors to take action and get them exactly where they need to be.You can even use Gallery to get more followers by allowing customers to share photos and videos on Pinterest, Twitter, Facebook, and Google.\n \n# What are the benefits of using POWr Gallery?   \n\n* **Get more conversions** - Display your product photos and videos with custom text and buttons to send customers where you want them.\n* **Boost SEO** - Add alt text to anything you add to your gallery to rank better in search engines.\n* **Make it yours** - Customize your gallery with your own pictures, files, text, colors, videos, links, fonts and more! Make it match your store design.\n\n# Get started for free and enjoy these features:   \n\n* Add anything to your media gallery to showcase your best deals, products and other information!\n* Embed videos, add photos, images, upload files, add links and buttons to drive action on your page.\n* Highly customizable design: adjust spacing between entries, choose ideal photo size, add borders, pick custom fonts, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Add alt text to each element to rank better in search engines.\n* Enable lightbox popup to let customers take a closer look at your pictures or videos.\n* Get more followers by adding social media sharing buttons to your media gallery.\n* Add a text search so that customers can quickly find what they’re looking for.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=media-gallery).\n\n# Why users love Gallery:   \n\n“Awesome application - great features. Easiest way to achieve a pinterest style effect.” - David07\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Gallery up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "powr-gallery",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "https://images.cloudflareapps.com/mDmN5QHTwrL8/Gallery-Icon-Cloudflare.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/IewiXuwqSCyDXvykipob_Media Gallery 1 (1).png",
+					"//images.cloudflareapps.com/mt0Zx8C9TpGzrCWL7hXo_Media Gallery 2 (1).png",
+					"//images.cloudflareapps.com/BLZqd1R8R1eNrxgBHWNQ_screenshot-3-5- (1).png",
+					"//images.cloudflareapps.com/6GXOcVFITUKVwzNGHsts_all-purpose-banner copy.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/qIoawUhyadp4/Gallery-Banner-Cloudflare.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [],
+				"categoryIds": [
+					"ui-and-design",
+					"powr"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "VoiMVW0PUBD_"
+				},
+				"created": "2018-03-12T18:34:51.735916Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "41f272f0efef5d92ddde1aa9398f388a",
+				"requestedAt": "2018-11-06T00:53:55.549832456Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-11-06T01:00:38.595737013Z"
+			}
+		},
+		{
+			"tag": "1.0.7",
+			"appId": "GTEwwyxyvh0m",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"exitHelp": {
+							"helpvalue": "<br/><hr/><h2><b>Need help?</b></h2>Visit our glorious <a href='https://www.powr.io/knowledge-base'>Support Center</a> or <a href='https://www.powr.io/feedback/new?&src=cloudflare' target='_blank'>send us a message</a>.",
+							"order": 8,
+							"type": "help"
+						},
+						"externalLink": {
+							"format": "button",
+							"href": "https://www.powr.io/cloudflare/media-gallery",
+							"label": "Open POWr Editor",
+							"order": 2,
+							"title": "Design and customize your Media Gallery",
+							"type": "link"
+						},
+						"introHelp": {
+							"helpvalue": "<center><h1>Welcome to <br/> POWr Media Gallery</h1> Easily add a grid or collage gallery anywhere on your Cloudflare site!</center>",
+							"order": 0,
+							"type": "help"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"format": "element",
+							"order": 6,
+							"title": "Where should the Media Gallery appear?",
+							"type": "object"
+						},
+						"shortcode": {
+							"order": 4,
+							"placeholder": "[powr-media-gallery id='abc123']",
+							"title": "Get the shortcode from the POWr link where you created your Media Gallery",
+							"type": "string"
+						},
+						"step1Help": {
+							"helpvalue": "<p></p><h2><b>1: Configure Your Media Gallery</b></h2>",
+							"order": 1,
+							"type": "help"
+						},
+						"step2Help": {
+							"helpvalue": "<p></p><h2><b>2: Paste Shortcode</b></h2>",
+							"order": 3,
+							"type": "help"
+						},
+						"step3Help": {
+							"helpvalue": "<p></p><h2><b>3: Select Install Location</b></h2>",
+							"order": 5,
+							"type": "help"
+						},
+						"step4Help": {
+							"helpvalue": "<center><h2>------- OR --------</h2></center><br/><h3>Embed your shortcode in your website where you'd like your Media Gallery to appear.</h3>",
+							"order": 7,
+							"type": "help"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "New & Improved installation flow ✨",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/5nQ2hyEI2h0S",
+			"metadata": {
+				"code": {
+					"sourceTag": "5nQ2hyEI2h0S",
+					"uploadedOn": "2019-04-16T00:14:44.479344693Z"
+				}
+			},
+			"created": "2019-04-16T00:14:44.321184Z",
+			"proposedApp": {
+				"id": "GTEwwyxyvh0m",
+				"title": "Gallery",
+				"shortDescription": "Add an image or video gallery in grid or collage layout.",
+				"longDescription": "POWr Gallery is the perfect tool for showcasing your products, making customers fall in love with your brand, and seamlessly increasing conversions across all devices. You can create customized product grids, user testimonial pages, and press galleries, the choice is yours! By adding built-in call-to-action buttons within your gallery, that link directly to other pages on your site, you can get your visitors to take action and get them exactly where they need to be.You can even use Gallery to get more followers by allowing customers to share photos and videos on Pinterest, Twitter, Facebook, and Google.\n \n# What are the benefits of using POWr Gallery?   \n\n* **Get more conversions** - Display your product photos and videos with custom text and buttons to send customers where you want them.\n* **Boost SEO** - Add alt text to anything you add to your gallery to rank better in search engines.\n* **Make it yours** - Customize your gallery with your own pictures, files, text, colors, videos, links, fonts and more! Make it match your store design.\n\n# Get started for free and enjoy these features:   \n\n* Add anything to your media gallery to showcase your best deals, products and other information!\n* Embed videos, add photos, images, upload files, add links and buttons to drive action on your page.\n* Highly customizable design: adjust spacing between entries, choose ideal photo size, add borders, pick custom fonts, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Add alt text to each element to rank better in search engines.\n* Enable lightbox popup to let customers take a closer look at your pictures or videos.\n* Get more followers by adding social media sharing buttons to your media gallery.\n* Add a text search so that customers can quickly find what they’re looking for.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=media-gallery).\n\n# Why users love Gallery:   \n\n“Awesome application - great features. Easiest way to achieve a pinterest style effect.” - David07\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Gallery up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "powr-gallery",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "https://images.cloudflareapps.com/mDmN5QHTwrL8/Gallery-Icon-Cloudflare.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/IewiXuwqSCyDXvykipob_Media Gallery 1 (1).png",
+					"//images.cloudflareapps.com/mt0Zx8C9TpGzrCWL7hXo_Media Gallery 2 (1).png",
+					"//images.cloudflareapps.com/BLZqd1R8R1eNrxgBHWNQ_screenshot-3-5- (1).png",
+					"//images.cloudflareapps.com/6GXOcVFITUKVwzNGHsts_all-purpose-banner copy.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/qIoawUhyadp4/Gallery-Banner-Cloudflare.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [],
+				"categoryIds": [
+					"ui-and-design",
+					"powr"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "VoiMVW0PUBD_"
+				},
+				"created": "2018-03-12T18:34:51.735916Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2019-04-16T00:14:45.028314859Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-04-16T20:40:53.072907841Z"
+			}
+		}
+	]
+}

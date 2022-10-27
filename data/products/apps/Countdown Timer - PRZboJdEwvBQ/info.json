@@ -1,0 +1,2038 @@
+{
+	"id": "PRZboJdEwvBQ",
+	"title": "Countdown Timer",
+	"shortDescription": "Get more sales and create urgency with a countdown timer.",
+	"longDescription": "Countdown Timer is the easy way to drive more clicks to your ‘Buy Now’ or call-to-action button by creating a sense of urgency. Use it to countdown to the beginning or end of sales, special promotions, store launch or other events.\n \n# What are the benefits of using POWr Countdown Timer?   \n\n* **Boost conversions** - Announce promotions with a countdown. Create a sense of urgency to boost sales by alerting the user that current deal is nearly over.\n* **Make it yours** - Customize your countdown timer with your own colors, sizing, style and animations to make it fit perfectly with the design of your site.\n* **Show social proof** - Drive more sales by displaying the number of users that have purchased item X.\n\n# Get started for free and enjoy these features:   \n\n* Display the remaining years, days, hours, and minutes of a special deal or sale event.\n* Add a custom title, supporting text and button to redirect users to your sales or offer page, both during and after count.\n* Count down to any future date to build up excitement for an upcoming event, such as an end-of-season sale, new collection launch, and more.\n* Count down to a specific number.\n* Count up from any number or past date, perfect for displaying the number of users who have purchased an item. \n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock advanced features, such as:   \n\n* Make the countdown automatically repeat after it has hit the target date or number.\n* Reset the timer for each new visitor to offer them exclusive time-limited offers.\n* Count up from a fixed number or date for each new visitor.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=countdown-timer).\n\n# Why users love Countdown Timer:   \n\n“We love the Countdown Timer, it does everything that we need in this area, love the features to add a title, to add text after, to add text that is for during the countdown and the other features. Great timer - thumbs up.\" - Kidzmic Beta \n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Countdown Timer up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+	"instructions": "",
+	"alias": "powr-countdown-timer",
+	"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+	"icon": "https://images.cloudflareapps.com/EN_R_iMykANJ/Countdown-Timer-Icon-Cloudflare.png",
+	"screenshots": [
+		"//images.cloudflareapps.com/SmplNEMvRom9k43rrd2S_screenshot-1-62- (1) (1).png",
+		"//images.cloudflareapps.com/6j4AIGD9Tc3YPhkWQ3oe_screenshot-2-13- (1) (1).png",
+		"//images.cloudflareapps.com/MMJ2r9MxTlKsqfkQvoPa_Screen Shot 2018-01-09 at 12.56.36 PM.png",
+		"//images.cloudflareapps.com/qjFJL3sUTyS0qhRPi9cB_Countdown (3) (1).png",
+		"//images.cloudflareapps.com/g8il88YUSmCurFsaPNzZ_all-purpose-banner copy.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/BsHIc4PS-oQE/Countdown-Timer-Banner-Cloudflare.png",
+	"featuredAppImage": "https://images.cloudflareapps.com/RsOCssjAU-DV/Countdown%20Timer.png",
+	"author": "POWr Inc",
+	"tagline": "",
+	"website": "https://www.powr.io",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://www.powr.io/terms",
+	"privacyPolicyURL": "https://www.powr.io/privacy",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.1.1",
+	"infoVersion": "1.1.1",
+	"points": 0,
+	"supportEmail": "support@powr.io",
+	"products": [],
+	"categoryIds": [
+		"powr",
+		"ui-and-design"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+			"created": "2018-03-13T17:55:32.505235807Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "jhWvRj8apPE-"
+	},
+	"created": "2018-03-12T17:45:29.64843Z",
+	"org": {
+		"id": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+		"title": "",
+		"username": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "ui-and-design",
+			"title": "UI & Design",
+			"description": "Apps that make your website more beautiful and user friendly.",
+			"icon": "",
+			"points": 10,
+			"visible": true,
+			"created": "2018-01-22T19:17:52.677513Z"
+		},
+		{
+			"id": "powr",
+			"title": "POWR",
+			"description": "Apps created by POWR",
+			"icon": "",
+			"points": 40,
+			"visible": false,
+			"created": "2018-11-06T00:45:54.563564Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "PRZboJdEwvBQ",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"appId": {
+							"default": "",
+							"label": "App Installation ID",
+							"title": "App Installation ID",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Countdown Timer appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						},
+						"productId": {
+							"default": "premium",
+							"label": "Plan",
+							"title": "POWr Plan",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=countdownTimer",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=countdownTimer",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/9oIiUXFain-s",
+			"metadata": {
+				"code": {
+					"sourceTag": "9oIiUXFain-s",
+					"uploadedOn": "2018-03-12T18:32:34.888481082Z"
+				}
+			},
+			"created": "2018-03-12T17:45:29.79755Z",
+			"proposedApp": {
+				"id": "PRZboJdEwvBQ",
+				"title": "Countdown Timer",
+				"shortDescription": "",
+				"longDescription": "Countdown Timer is the easy way to drive more clicks to your ‘Buy Now’ or call-to-action button by creating a sense of urgency. Use it to countdown to the beginning or end of sales, special promotions, store launch or other events.\n \n# What are the benefits of using POWr Countdown Timer?   \n\n* **Boost conversions** - Announce promotions with a countdown. Create a sense of urgency to boost sales by alerting the user that current deal is nearly over.\n* **Make it yours** - Customize your countdown timer with your own colors, sizing, style and animations to make it fit perfectly with the design of your site.\n* **Show social proof** - Drive more sales by displaying the number of users that have purchased item X.\n\n# Get started for free and enjoy these features:   \n\n* Display the remaining days, hours, and minutes of a special deal or sale event.\n* Count down to any future date to build up excitement for an upcoming event, such as an end-of-season sale, new collection launch, and more.\n* Count down to a specific number.\n* Count up from any number or past date, perfect for displaying a fictitious number of users who have purchased an item. \n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Make the countdown automatically repeat after it has hit the target date or number.\n* Reset the timer on page load or based on browser cookies so that each visitor sees the time from the beginning.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=countdown-timer).\n\n# Why users love Countdown Timer:   \n\n“We love the Countdown Timer, it does everything that we need in this area, love the features to add a title, to add text after, to add text that is for during the countdown and the other features. Great timer - thumbs up.\" - Kidzmic Beta \n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Countdown Timer up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "//images.cloudflareapps.com/fsSb0BQJTqWqnEXIb6tx_Icon - Countdown Timer Cloudflare.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/SmplNEMvRom9k43rrd2S_screenshot-1-62- (1) (1).png",
+					"//images.cloudflareapps.com/6j4AIGD9Tc3YPhkWQ3oe_screenshot-2-13- (1) (1).png",
+					"//images.cloudflareapps.com/MMJ2r9MxTlKsqfkQvoPa_Screen Shot 2018-01-09 at 12.56.36 PM.png",
+					"//images.cloudflareapps.com/qjFJL3sUTyS0qhRPi9cB_Countdown (3) (1).png",
+					"//images.cloudflareapps.com/g8il88YUSmCurFsaPNzZ_all-purpose-banner copy.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/FlEQWHUjRWepQmYBgp4R_Countdown timer banner.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For businesses looking to test the water with new plugins.",
+						"longDescription": "* Countdown to a future date/time\n* Count up from a number\n* Count up from a date",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "premium",
+						"title": "Starter",
+						"shortDescription": "For businesses who have their own brand and want extra customization.",
+						"longDescription": "* Remove POWr Logo\n* Reset on Page Load\n* Advanced Animation Effects\n* Accept PayPal Payments\n* Display Custom Content During/After Count",
+						"visible": true,
+						"price": 500,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "For growing businesses looking to stand out from the crowd and get more conversions.",
+						"longDescription": "* Remove POWr Logo\n* Reset on Page Load\n* Advanced Animation Effects\n* Accept PayPal Payments\n* Display Custom Content During/After Count\n* Reset Timer per Visitor\n* Custom CSS & JavaScript",
+						"visible": true,
+						"price": 1200,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "For total control that scales with your business, whether it’s big or small. Get every feature for every plugin.",
+						"longDescription": "* Remove POWr Logo\n* Reset on Page Load\n* Advanced Animation Effects\n* Accept PayPal Payments\n* Display Custom Content During/After Count\n* Reset Timer per Visitor\n* Custom CSS & JavaScript\n+ FREE Business Upgrade for all 50 POWr Plugins",
+						"visible": true,
+						"price": 5000,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "jhWvRj8apPE-"
+				},
+				"created": "2018-03-12T17:45:29.64843Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2018-03-13T17:55:32.496978921Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2018-03-15T23:02:36.197865572Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "PRZboJdEwvBQ",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"appId": {
+							"default": "",
+							"label": "App Installation ID",
+							"title": "App Installation ID",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Countdown Timer appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						},
+						"productId": {
+							"default": "premium",
+							"label": "Plan",
+							"title": "POWr Plan",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=countdownTimer",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=countdownTimer",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "User uniq install.id for map POWr app with",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/3jX9AhznnlAD",
+			"metadata": {
+				"code": {
+					"sourceTag": "3jX9AhznnlAD",
+					"uploadedOn": "2018-03-23T17:41:11.560959104Z"
+				}
+			},
+			"created": "2018-03-23T17:41:11.370345Z",
+			"proposedApp": {
+				"id": "PRZboJdEwvBQ",
+				"title": "Countdown Timer",
+				"shortDescription": "",
+				"longDescription": "Countdown Timer is the easy way to drive more clicks to your ‘Buy Now’ or call-to-action button by creating a sense of urgency. Use it to countdown to the beginning or end of sales, special promotions, store launch or other events.\n \n# What are the benefits of using POWr Countdown Timer?   \n\n* **Boost conversions** - Announce promotions with a countdown. Create a sense of urgency to boost sales by alerting the user that current deal is nearly over.\n* **Make it yours** - Customize your countdown timer with your own colors, sizing, style and animations to make it fit perfectly with the design of your site.\n* **Show social proof** - Drive more sales by displaying the number of users that have purchased item X.\n\n# Get started for free and enjoy these features:   \n\n* Display the remaining days, hours, and minutes of a special deal or sale event.\n* Count down to any future date to build up excitement for an upcoming event, such as an end-of-season sale, new collection launch, and more.\n* Count down to a specific number.\n* Count up from any number or past date, perfect for displaying a fictitious number of users who have purchased an item. \n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Make the countdown automatically repeat after it has hit the target date or number.\n* Reset the timer on page load or based on browser cookies so that each visitor sees the time from the beginning.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=countdown-timer).\n\n# Why users love Countdown Timer:   \n\n“We love the Countdown Timer, it does everything that we need in this area, love the features to add a title, to add text after, to add text that is for during the countdown and the other features. Great timer - thumbs up.\" - Kidzmic Beta \n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Countdown Timer up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "//images.cloudflareapps.com/fsSb0BQJTqWqnEXIb6tx_Icon - Countdown Timer Cloudflare.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/SmplNEMvRom9k43rrd2S_screenshot-1-62- (1) (1).png",
+					"//images.cloudflareapps.com/6j4AIGD9Tc3YPhkWQ3oe_screenshot-2-13- (1) (1).png",
+					"//images.cloudflareapps.com/MMJ2r9MxTlKsqfkQvoPa_Screen Shot 2018-01-09 at 12.56.36 PM.png",
+					"//images.cloudflareapps.com/qjFJL3sUTyS0qhRPi9cB_Countdown (3) (1).png",
+					"//images.cloudflareapps.com/g8il88YUSmCurFsaPNzZ_all-purpose-banner copy.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/FlEQWHUjRWepQmYBgp4R_Countdown timer banner.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For businesses looking to test the water with new plugins.",
+						"longDescription": "* Countdown to a future date/time\n* Count up from a number\n* Count up from a date",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "premium",
+						"title": "Starter",
+						"shortDescription": "For businesses who have their own brand and want extra customization.",
+						"longDescription": "* Remove POWr Logo\n* Reset on Page Load\n* Advanced Animation Effects\n* Accept PayPal Payments\n* Display Custom Content During/After Count",
+						"visible": true,
+						"price": 500,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "For growing businesses looking to stand out from the crowd and get more conversions.",
+						"longDescription": "* Remove POWr Logo\n* Reset on Page Load\n* Advanced Animation Effects\n* Accept PayPal Payments\n* Display Custom Content During/After Count\n* Reset Timer per Visitor\n* Custom CSS & JavaScript",
+						"visible": true,
+						"price": 1200,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "For total control that scales with your business, whether it’s big or small. Get every feature for every plugin.",
+						"longDescription": "* Remove POWr Logo\n* Reset on Page Load\n* Advanced Animation Effects\n* Accept PayPal Payments\n* Display Custom Content During/After Count\n* Reset Timer per Visitor\n* Custom CSS & JavaScript\n+ FREE Business Upgrade for all 50 POWr Plugins",
+						"visible": true,
+						"price": 5000,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "jhWvRj8apPE-"
+				},
+				"created": "2018-03-12T17:45:29.64843Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2018-03-23T17:41:12.136709231Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2018-04-02T21:05:06.215982104Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "PRZboJdEwvBQ",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Countdown Timer appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=countdownTimer",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=countdownTimer",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "Persisting install.id",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/kToKxJ9KpXx2",
+			"metadata": {
+				"code": {
+					"sourceTag": "kToKxJ9KpXx2",
+					"uploadedOn": "2018-09-19T23:58:15.34761341Z"
+				}
+			},
+			"created": "2018-09-19T23:58:15.19669Z",
+			"proposedApp": {
+				"id": "PRZboJdEwvBQ",
+				"title": "Countdown Timer",
+				"shortDescription": "",
+				"longDescription": "Countdown Timer is the easy way to drive more clicks to your ‘Buy Now’ or call-to-action button by creating a sense of urgency. Use it to countdown to the beginning or end of sales, special promotions, store launch or other events.\n \n# What are the benefits of using POWr Countdown Timer?   \n\n* **Boost conversions** - Announce promotions with a countdown. Create a sense of urgency to boost sales by alerting the user that current deal is nearly over.\n* **Make it yours** - Customize your countdown timer with your own colors, sizing, style and animations to make it fit perfectly with the design of your site.\n* **Show social proof** - Drive more sales by displaying the number of users that have purchased item X.\n\n# Get started for free and enjoy these features:   \n\n* Display the remaining days, hours, and minutes of a special deal or sale event.\n* Count down to any future date to build up excitement for an upcoming event, such as an end-of-season sale, new collection launch, and more.\n* Count down to a specific number.\n* Count up from any number or past date, perfect for displaying a fictitious number of users who have purchased an item. \n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n\n* Make the countdown automatically repeat after it has hit the target date or number.\n* Reset the timer on page load or based on browser cookies so that each visitor sees the time from the beginning.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=countdown-timer).\n\n# Why users love Countdown Timer:   \n\n“We love the Countdown Timer, it does everything that we need in this area, love the features to add a title, to add text after, to add text that is for during the countdown and the other features. Great timer - thumbs up.\" - Kidzmic Beta \n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Countdown Timer up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "//images.cloudflareapps.com/fsSb0BQJTqWqnEXIb6tx_Icon - Countdown Timer Cloudflare.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/SmplNEMvRom9k43rrd2S_screenshot-1-62- (1) (1).png",
+					"//images.cloudflareapps.com/6j4AIGD9Tc3YPhkWQ3oe_screenshot-2-13- (1) (1).png",
+					"//images.cloudflareapps.com/MMJ2r9MxTlKsqfkQvoPa_Screen Shot 2018-01-09 at 12.56.36 PM.png",
+					"//images.cloudflareapps.com/qjFJL3sUTyS0qhRPi9cB_Countdown (3) (1).png",
+					"//images.cloudflareapps.com/g8il88YUSmCurFsaPNzZ_all-purpose-banner copy.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/FlEQWHUjRWepQmYBgp4R_Countdown timer banner.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For businesses looking to test the water with new plugins.",
+						"longDescription": "* Countdown to a future date/time\n* Count up from a number\n* Count up from a date",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "premium",
+						"title": "Starter",
+						"shortDescription": "For businesses who have their own brand and want extra customization.",
+						"longDescription": "* Remove POWr Logo\n* Reset on Page Load\n* Advanced Animation Effects\n* Accept PayPal Payments\n* Display Custom Content During/After Count",
+						"visible": true,
+						"price": 500,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "For growing businesses looking to stand out from the crowd and get more conversions.",
+						"longDescription": "* Remove POWr Logo\n* Reset on Page Load\n* Advanced Animation Effects\n* Accept PayPal Payments\n* Display Custom Content During/After Count\n* Reset Timer per Visitor\n* Custom CSS & JavaScript",
+						"visible": true,
+						"price": 1200,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "For total control that scales with your business, whether it’s big or small. Get every feature for every plugin.",
+						"longDescription": "* Remove POWr Logo\n* Reset on Page Load\n* Advanced Animation Effects\n* Accept PayPal Payments\n* Display Custom Content During/After Count\n* Reset Timer per Visitor\n* Custom CSS & JavaScript\n+ FREE Business Upgrade for all 50 POWr Plugins",
+						"visible": true,
+						"price": 5000,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "jhWvRj8apPE-"
+				},
+				"created": "2018-03-12T17:45:29.64843Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2018-09-19T23:58:34.014208654Z",
+				"canceledByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"canceledAt": "2018-09-27T20:25:16.867514946Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "PRZboJdEwvBQ",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Countdown Timer appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=countdownTimer",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=countdownTimer",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "Persisting install.id",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/kToKxJ9KpXx2",
+			"created": "2018-09-26T21:44:47.572923Z",
+			"proposedApp": {
+				"id": "PRZboJdEwvBQ",
+				"title": "Countdown Timer",
+				"shortDescription": "Get more sales and create urgency with a countdown timer.",
+				"longDescription": "Countdown Timer is the easy way to drive more clicks to your ‘Buy Now’ or call-to-action button by creating a sense of urgency. Use it to countdown to the beginning or end of sales, special promotions, store launch or other events.\n \n# What are the benefits of using POWr Countdown Timer?   \n\n* **Boost conversions** - Announce promotions with a countdown. Create a sense of urgency to boost sales by alerting the user that current deal is nearly over.\n* **Make it yours** - Customize your countdown timer with your own colors, sizing, style and animations to make it fit perfectly with the design of your site.\n* **Show social proof** - Drive more sales by displaying the number of users that have purchased item X.\n\n# Get started for free and enjoy these features:   \n\n* Display the remaining years, days, hours, and minutes of a special deal or sale event.\n* Add a custom title, supporting text and button to redirect users to your sales or offer page, both during and after count.\n* Count down to any future date to build up excitement for an upcoming event, such as an end-of-season sale, new collection launch, and more.\n* Count down to a specific number.\n* Count up from any number or past date, perfect for displaying the number of users who have purchased an item. \n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock advanced features, such as:   \n\n* Make the countdown automatically repeat after it has hit the target date or number.\n* Reset the timer for each new visitor to offer them exclusive time-limited offers.\n* Count up from a fixed number or date for each new visitor.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=countdown-timer).\n\n# Why users love Countdown Timer:   \n\n“We love the Countdown Timer, it does everything that we need in this area, love the features to add a title, to add text after, to add text that is for during the countdown and the other features. Great timer - thumbs up.\" - Kidzmic Beta \n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Countdown Timer up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "https://images.cloudflareapps.com/EN_R_iMykANJ/Countdown-Timer-Icon-Cloudflare.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/SmplNEMvRom9k43rrd2S_screenshot-1-62- (1) (1).png",
+					"//images.cloudflareapps.com/6j4AIGD9Tc3YPhkWQ3oe_screenshot-2-13- (1) (1).png",
+					"//images.cloudflareapps.com/MMJ2r9MxTlKsqfkQvoPa_Screen Shot 2018-01-09 at 12.56.36 PM.png",
+					"//images.cloudflareapps.com/qjFJL3sUTyS0qhRPi9cB_Countdown (3) (1).png",
+					"//images.cloudflareapps.com/g8il88YUSmCurFsaPNzZ_all-purpose-banner copy.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/BsHIc4PS-oQE/Countdown-Timer-Banner-Cloudflare.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For businesses looking to test the water with new plugins.",
+						"longDescription": "* Countdown to a future date/time\n* Count up from a number\n* Count up from a date",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "premium",
+						"title": "Starter",
+						"shortDescription": "For businesses who have their own brand and want extra customization.",
+						"longDescription": "* Remove POWr Logo\n* Reset on Page Load\n* Advanced Animation Effects\n* Accept PayPal Payments\n* Display Custom Content During/After Count",
+						"visible": true,
+						"price": 500,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "For growing businesses looking to stand out from the crowd and get more conversions.",
+						"longDescription": "* Remove POWr Logo\n* Reset on Page Load\n* Advanced Animation Effects\n* Accept PayPal Payments\n* Display Custom Content During/After Count\n* Reset Timer per Visitor\n* Custom CSS & JavaScript",
+						"visible": true,
+						"price": 1200,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "For total control that scales with your business, whether it’s big or small. Get every feature for every plugin.",
+						"longDescription": "* Remove POWr Logo\n* Reset on Page Load\n* Advanced Animation Effects\n* Accept PayPal Payments\n* Display Custom Content During/After Count\n* Reset Timer per Visitor\n* Custom CSS & JavaScript\n+ FREE Business Upgrade for all 50 POWr Plugins",
+						"visible": true,
+						"price": 5000,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "jhWvRj8apPE-"
+				},
+				"created": "2018-03-12T17:45:29.64843Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2018-09-27T20:25:16.881019403Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2018-09-27T20:34:15.55900373Z"
+			}
+		},
+		{
+			"tag": "1.0.4",
+			"appId": "PRZboJdEwvBQ",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Countdown Timer appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=countdownTimer",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=countdownTimer",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0,
+				"upvotes": 0,
+				"downvotes": 1
+			},
+			"releaseNotes": "We've made minor updates to Social Feed. There is no need to do anything, your app will continue to work as expected.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/kToKxJ9KpXx2",
+			"created": "2018-10-16T17:52:21.036942Z",
+			"proposedApp": {
+				"id": "PRZboJdEwvBQ",
+				"title": "Countdown Timer",
+				"shortDescription": "Get more sales and create urgency with a countdown timer.",
+				"longDescription": "Countdown Timer is the easy way to drive more clicks to your ‘Buy Now’ or call-to-action button by creating a sense of urgency. Use it to countdown to the beginning or end of sales, special promotions, store launch or other events.\n \n# What are the benefits of using POWr Countdown Timer?   \n\n* **Boost conversions** - Announce promotions with a countdown. Create a sense of urgency to boost sales by alerting the user that current deal is nearly over.\n* **Make it yours** - Customize your countdown timer with your own colors, sizing, style and animations to make it fit perfectly with the design of your site.\n* **Show social proof** - Drive more sales by displaying the number of users that have purchased item X.\n\n# Get started for free and enjoy these features:   \n\n* Display the remaining years, days, hours, and minutes of a special deal or sale event.\n* Add a custom title, supporting text and button to redirect users to your sales or offer page, both during and after count.\n* Count down to any future date to build up excitement for an upcoming event, such as an end-of-season sale, new collection launch, and more.\n* Count down to a specific number.\n* Count up from any number or past date, perfect for displaying the number of users who have purchased an item. \n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock advanced features, such as:   \n\n* Make the countdown automatically repeat after it has hit the target date or number.\n* Reset the timer for each new visitor to offer them exclusive time-limited offers.\n* Count up from a fixed number or date for each new visitor.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=countdown-timer).\n\n# Why users love Countdown Timer:   \n\n“We love the Countdown Timer, it does everything that we need in this area, love the features to add a title, to add text after, to add text that is for during the countdown and the other features. Great timer - thumbs up.\" - Kidzmic Beta \n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Countdown Timer up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "powr-countdown-timer",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "https://images.cloudflareapps.com/EN_R_iMykANJ/Countdown-Timer-Icon-Cloudflare.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/SmplNEMvRom9k43rrd2S_screenshot-1-62- (1) (1).png",
+					"//images.cloudflareapps.com/6j4AIGD9Tc3YPhkWQ3oe_screenshot-2-13- (1) (1).png",
+					"//images.cloudflareapps.com/MMJ2r9MxTlKsqfkQvoPa_Screen Shot 2018-01-09 at 12.56.36 PM.png",
+					"//images.cloudflareapps.com/qjFJL3sUTyS0qhRPi9cB_Countdown (3) (1).png",
+					"//images.cloudflareapps.com/g8il88YUSmCurFsaPNzZ_all-purpose-banner copy.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/BsHIc4PS-oQE/Countdown-Timer-Banner-Cloudflare.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For businesses looking to test the water with new plugins.",
+						"longDescription": "* Countdown to a future date/time\n* Count up from a number\n* Count up from a date",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "premium",
+						"title": "Starter",
+						"shortDescription": "For businesses who have their own brand and want extra customization.",
+						"longDescription": "* Remove POWr Logo\n* Reset on Page Load\n* Advanced Animation Effects\n* Accept PayPal Payments\n* Display Custom Content During/After Count",
+						"visible": true,
+						"price": 500,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "For growing businesses looking to stand out from the crowd and get more conversions.",
+						"longDescription": "* Remove POWr Logo\n* Reset on Page Load\n* Advanced Animation Effects\n* Accept PayPal Payments\n* Display Custom Content During/After Count\n* Reset Timer per Visitor\n* Custom CSS & JavaScript",
+						"visible": true,
+						"price": 1200,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "For total control that scales with your business, whether it’s big or small. Get every feature for every plugin.",
+						"longDescription": "* Remove POWr Logo\n* Reset on Page Load\n* Advanced Animation Effects\n* Accept PayPal Payments\n* Display Custom Content During/After Count\n* Reset Timer per Visitor\n* Custom CSS & JavaScript\n+ FREE Business Upgrade for all 50 POWr Plugins",
+						"visible": true,
+						"price": 5000,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "jhWvRj8apPE-"
+				},
+				"created": "2018-03-12T17:45:29.64843Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2018-10-16T17:52:21.2026438Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2018-10-18T18:27:47.929987071Z"
+			}
+		},
+		{
+			"tag": "1.0.5",
+			"appId": "PRZboJdEwvBQ",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Countdown Timer appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=countdownTimer",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=countdownTimer",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "Add POWR tag",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/kToKxJ9KpXx2",
+			"created": "2018-11-06T00:55:19.022223Z",
+			"proposedApp": {
+				"id": "PRZboJdEwvBQ",
+				"title": "Countdown Timer",
+				"shortDescription": "Get more sales and create urgency with a countdown timer.",
+				"longDescription": "Countdown Timer is the easy way to drive more clicks to your ‘Buy Now’ or call-to-action button by creating a sense of urgency. Use it to countdown to the beginning or end of sales, special promotions, store launch or other events.\n \n# What are the benefits of using POWr Countdown Timer?   \n\n* **Boost conversions** - Announce promotions with a countdown. Create a sense of urgency to boost sales by alerting the user that current deal is nearly over.\n* **Make it yours** - Customize your countdown timer with your own colors, sizing, style and animations to make it fit perfectly with the design of your site.\n* **Show social proof** - Drive more sales by displaying the number of users that have purchased item X.\n\n# Get started for free and enjoy these features:   \n\n* Display the remaining years, days, hours, and minutes of a special deal or sale event.\n* Add a custom title, supporting text and button to redirect users to your sales or offer page, both during and after count.\n* Count down to any future date to build up excitement for an upcoming event, such as an end-of-season sale, new collection launch, and more.\n* Count down to a specific number.\n* Count up from any number or past date, perfect for displaying the number of users who have purchased an item. \n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock advanced features, such as:   \n\n* Make the countdown automatically repeat after it has hit the target date or number.\n* Reset the timer for each new visitor to offer them exclusive time-limited offers.\n* Count up from a fixed number or date for each new visitor.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=countdown-timer).\n\n# Why users love Countdown Timer:   \n\n“We love the Countdown Timer, it does everything that we need in this area, love the features to add a title, to add text after, to add text that is for during the countdown and the other features. Great timer - thumbs up.\" - Kidzmic Beta \n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Countdown Timer up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "powr-countdown-timer",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "https://images.cloudflareapps.com/EN_R_iMykANJ/Countdown-Timer-Icon-Cloudflare.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/SmplNEMvRom9k43rrd2S_screenshot-1-62- (1) (1).png",
+					"//images.cloudflareapps.com/6j4AIGD9Tc3YPhkWQ3oe_screenshot-2-13- (1) (1).png",
+					"//images.cloudflareapps.com/MMJ2r9MxTlKsqfkQvoPa_Screen Shot 2018-01-09 at 12.56.36 PM.png",
+					"//images.cloudflareapps.com/qjFJL3sUTyS0qhRPi9cB_Countdown (3) (1).png",
+					"//images.cloudflareapps.com/g8il88YUSmCurFsaPNzZ_all-purpose-banner copy.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/BsHIc4PS-oQE/Countdown-Timer-Banner-Cloudflare.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For businesses looking to test the water with new plugins.",
+						"longDescription": "* Countdown to a future date/time\n* Count up from a number\n* Count up from a date",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "premium",
+						"title": "Starter",
+						"shortDescription": "For businesses who have their own brand and want extra customization.",
+						"longDescription": "* Remove POWr Logo\n* Reset on Page Load\n* Advanced Animation Effects\n* Accept PayPal Payments\n* Display Custom Content During/After Count",
+						"visible": true,
+						"price": 500,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "For growing businesses looking to stand out from the crowd and get more conversions.",
+						"longDescription": "* Remove POWr Logo\n* Reset on Page Load\n* Advanced Animation Effects\n* Accept PayPal Payments\n* Display Custom Content During/After Count\n* Reset Timer per Visitor\n* Custom CSS & JavaScript",
+						"visible": true,
+						"price": 1200,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "For total control that scales with your business, whether it’s big or small. Get every feature for every plugin.",
+						"longDescription": "* Remove POWr Logo\n* Reset on Page Load\n* Advanced Animation Effects\n* Accept PayPal Payments\n* Display Custom Content During/After Count\n* Reset Timer per Visitor\n* Custom CSS & JavaScript\n+ FREE Business Upgrade for all 50 POWr Plugins",
+						"visible": true,
+						"price": 5000,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"social-and-communication",
+					"powr"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "jhWvRj8apPE-"
+				},
+				"created": "2018-03-12T17:45:29.64843Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "41f272f0efef5d92ddde1aa9398f388a",
+				"requestedAt": "2018-11-06T00:55:19.25343095Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-11-06T01:00:52.174450333Z"
+			}
+		},
+		{
+			"tag": "1.0.6",
+			"appId": "PRZboJdEwvBQ",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Countdown Timer appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=countdownTimer",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=countdownTimer",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "Remove products",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/kToKxJ9KpXx2",
+			"created": "2018-11-07T00:23:52.206291Z",
+			"proposedApp": {
+				"id": "PRZboJdEwvBQ",
+				"title": "Countdown Timer",
+				"shortDescription": "Get more sales and create urgency with a countdown timer.",
+				"longDescription": "Countdown Timer is the easy way to drive more clicks to your ‘Buy Now’ or call-to-action button by creating a sense of urgency. Use it to countdown to the beginning or end of sales, special promotions, store launch or other events.\n \n# What are the benefits of using POWr Countdown Timer?   \n\n* **Boost conversions** - Announce promotions with a countdown. Create a sense of urgency to boost sales by alerting the user that current deal is nearly over.\n* **Make it yours** - Customize your countdown timer with your own colors, sizing, style and animations to make it fit perfectly with the design of your site.\n* **Show social proof** - Drive more sales by displaying the number of users that have purchased item X.\n\n# Get started for free and enjoy these features:   \n\n* Display the remaining years, days, hours, and minutes of a special deal or sale event.\n* Add a custom title, supporting text and button to redirect users to your sales or offer page, both during and after count.\n* Count down to any future date to build up excitement for an upcoming event, such as an end-of-season sale, new collection launch, and more.\n* Count down to a specific number.\n* Count up from any number or past date, perfect for displaying the number of users who have purchased an item. \n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock advanced features, such as:   \n\n* Make the countdown automatically repeat after it has hit the target date or number.\n* Reset the timer for each new visitor to offer them exclusive time-limited offers.\n* Count up from a fixed number or date for each new visitor.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=countdown-timer).\n\n# Why users love Countdown Timer:   \n\n“We love the Countdown Timer, it does everything that we need in this area, love the features to add a title, to add text after, to add text that is for during the countdown and the other features. Great timer - thumbs up.\" - Kidzmic Beta \n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Countdown Timer up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "powr-countdown-timer",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "https://images.cloudflareapps.com/EN_R_iMykANJ/Countdown-Timer-Icon-Cloudflare.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/SmplNEMvRom9k43rrd2S_screenshot-1-62- (1) (1).png",
+					"//images.cloudflareapps.com/6j4AIGD9Tc3YPhkWQ3oe_screenshot-2-13- (1) (1).png",
+					"//images.cloudflareapps.com/MMJ2r9MxTlKsqfkQvoPa_Screen Shot 2018-01-09 at 12.56.36 PM.png",
+					"//images.cloudflareapps.com/qjFJL3sUTyS0qhRPi9cB_Countdown (3) (1).png",
+					"//images.cloudflareapps.com/g8il88YUSmCurFsaPNzZ_all-purpose-banner copy.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/BsHIc4PS-oQE/Countdown-Timer-Banner-Cloudflare.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For businesses looking to test the water with new plugins.",
+						"longDescription": "* Countdown to a future date/time\n* Count up from a number\n* Count up from a date",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"social-and-communication",
+					"powr"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "jhWvRj8apPE-"
+				},
+				"created": "2018-03-12T17:45:29.64843Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"requestedAt": "2018-11-07T00:23:52.376492945Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2018-11-07T00:24:19.537803683Z"
+			}
+		},
+		{
+			"tag": "1.0.7",
+			"appId": "PRZboJdEwvBQ",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Countdown Timer appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=countdownTimer",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=countdownTimer",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "Removing outstanding products",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/kToKxJ9KpXx2",
+			"created": "2018-11-07T00:43:05.656528Z",
+			"proposedApp": {
+				"id": "PRZboJdEwvBQ",
+				"title": "Countdown Timer",
+				"shortDescription": "Get more sales and create urgency with a countdown timer.",
+				"longDescription": "Countdown Timer is the easy way to drive more clicks to your ‘Buy Now’ or call-to-action button by creating a sense of urgency. Use it to countdown to the beginning or end of sales, special promotions, store launch or other events.\n \n# What are the benefits of using POWr Countdown Timer?   \n\n* **Boost conversions** - Announce promotions with a countdown. Create a sense of urgency to boost sales by alerting the user that current deal is nearly over.\n* **Make it yours** - Customize your countdown timer with your own colors, sizing, style and animations to make it fit perfectly with the design of your site.\n* **Show social proof** - Drive more sales by displaying the number of users that have purchased item X.\n\n# Get started for free and enjoy these features:   \n\n* Display the remaining years, days, hours, and minutes of a special deal or sale event.\n* Add a custom title, supporting text and button to redirect users to your sales or offer page, both during and after count.\n* Count down to any future date to build up excitement for an upcoming event, such as an end-of-season sale, new collection launch, and more.\n* Count down to a specific number.\n* Count up from any number or past date, perfect for displaying the number of users who have purchased an item. \n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock advanced features, such as:   \n\n* Make the countdown automatically repeat after it has hit the target date or number.\n* Reset the timer for each new visitor to offer them exclusive time-limited offers.\n* Count up from a fixed number or date for each new visitor.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=countdown-timer).\n\n# Why users love Countdown Timer:   \n\n“We love the Countdown Timer, it does everything that we need in this area, love the features to add a title, to add text after, to add text that is for during the countdown and the other features. Great timer - thumbs up.\" - Kidzmic Beta \n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Countdown Timer up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "powr-countdown-timer",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "https://images.cloudflareapps.com/EN_R_iMykANJ/Countdown-Timer-Icon-Cloudflare.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/SmplNEMvRom9k43rrd2S_screenshot-1-62- (1) (1).png",
+					"//images.cloudflareapps.com/6j4AIGD9Tc3YPhkWQ3oe_screenshot-2-13- (1) (1).png",
+					"//images.cloudflareapps.com/MMJ2r9MxTlKsqfkQvoPa_Screen Shot 2018-01-09 at 12.56.36 PM.png",
+					"//images.cloudflareapps.com/qjFJL3sUTyS0qhRPi9cB_Countdown (3) (1).png",
+					"//images.cloudflareapps.com/g8il88YUSmCurFsaPNzZ_all-purpose-banner copy.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/BsHIc4PS-oQE/Countdown-Timer-Banner-Cloudflare.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"social-and-communication",
+					"powr"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "jhWvRj8apPE-"
+				},
+				"created": "2018-03-12T17:45:29.64843Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"requestedAt": "2018-11-07T00:43:06.20536482Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2018-11-07T00:43:30.264970852Z"
+			}
+		},
+		{
+			"tag": "1.0.8",
+			"appId": "PRZboJdEwvBQ",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Countdown Timer appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=countdownTimer",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=countdownTimer",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0,
+				"upvotes": 0,
+				"downvotes": 4
+			},
+			"releaseNotes": "Persisting install.id",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/kToKxJ9KpXx2",
+			"created": "2018-11-13T21:25:10.742916Z",
+			"proposedApp": {
+				"id": "PRZboJdEwvBQ",
+				"title": "Countdown Timer",
+				"shortDescription": "Get more sales and create urgency with a countdown timer.",
+				"longDescription": "Countdown Timer is the easy way to drive more clicks to your ‘Buy Now’ or call-to-action button by creating a sense of urgency. Use it to countdown to the beginning or end of sales, special promotions, store launch or other events.\n \n# What are the benefits of using POWr Countdown Timer?   \n\n* **Boost conversions** - Announce promotions with a countdown. Create a sense of urgency to boost sales by alerting the user that current deal is nearly over.\n* **Make it yours** - Customize your countdown timer with your own colors, sizing, style and animations to make it fit perfectly with the design of your site.\n* **Show social proof** - Drive more sales by displaying the number of users that have purchased item X.\n\n# Get started for free and enjoy these features:   \n\n* Display the remaining years, days, hours, and minutes of a special deal or sale event.\n* Add a custom title, supporting text and button to redirect users to your sales or offer page, both during and after count.\n* Count down to any future date to build up excitement for an upcoming event, such as an end-of-season sale, new collection launch, and more.\n* Count down to a specific number.\n* Count up from any number or past date, perfect for displaying the number of users who have purchased an item. \n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock advanced features, such as:   \n\n* Make the countdown automatically repeat after it has hit the target date or number.\n* Reset the timer for each new visitor to offer them exclusive time-limited offers.\n* Count up from a fixed number or date for each new visitor.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=countdown-timer).\n\n# Why users love Countdown Timer:   \n\n“We love the Countdown Timer, it does everything that we need in this area, love the features to add a title, to add text after, to add text that is for during the countdown and the other features. Great timer - thumbs up.\" - Kidzmic Beta \n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Countdown Timer up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "powr-countdown-timer",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "https://images.cloudflareapps.com/EN_R_iMykANJ/Countdown-Timer-Icon-Cloudflare.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/SmplNEMvRom9k43rrd2S_screenshot-1-62- (1) (1).png",
+					"//images.cloudflareapps.com/6j4AIGD9Tc3YPhkWQ3oe_screenshot-2-13- (1) (1).png",
+					"//images.cloudflareapps.com/MMJ2r9MxTlKsqfkQvoPa_Screen Shot 2018-01-09 at 12.56.36 PM.png",
+					"//images.cloudflareapps.com/qjFJL3sUTyS0qhRPi9cB_Countdown (3) (1).png",
+					"//images.cloudflareapps.com/g8il88YUSmCurFsaPNzZ_all-purpose-banner copy.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/BsHIc4PS-oQE/Countdown-Timer-Banner-Cloudflare.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [],
+				"categoryIds": [
+					"powr",
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "jhWvRj8apPE-"
+				},
+				"created": "2018-03-12T17:45:29.64843Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-11-13T21:25:11.976648409Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-11-14T17:32:35.608744196Z"
+			}
+		},
+		{
+			"tag": "1.0.9",
+			"appId": "PRZboJdEwvBQ",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"exitHelp": {
+							"helpvalue": "<br/><hr/><h2><b>Need help?</b></h2>Visit our glorious <a href='https://www.powr.io/knowledge-base'>Support Center</a> or <a href='https://www.powr.io/feedback/new?&src=cloudflare' target='_blank'>send us a message</a>.",
+							"order": 8,
+							"type": "help"
+						},
+						"externalLink": {
+							"format": "button",
+							"href": "https://www.powr.io/cloudflare/countdown-timer",
+							"label": "Open POWr Editor",
+							"order": 2,
+							"title": "Design and customize your Countdown Timer",
+							"type": "link"
+						},
+						"introHelp": {
+							"helpvalue": "<center><h1>Welcome to <br/> POWr Countdown Timer</h1> Create urgency with a countdown anywhere on your Cloudflare site!</center>",
+							"order": 0,
+							"type": "help"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"format": "element",
+							"order": 6,
+							"title": "Where should the Countdown Timer appear?",
+							"type": "object"
+						},
+						"shortcode": {
+							"order": 4,
+							"placeholder": "[powr-countdown-timer id='abc123']",
+							"title": "Get the shortcode from the POWr link where you created your Countdown Timer",
+							"type": "string"
+						},
+						"step1Help": {
+							"helpvalue": "<p></p><h2><b>1: Configure Your Countdown Timer</b></h2>",
+							"order": 1,
+							"type": "help"
+						},
+						"step2Help": {
+							"helpvalue": "<p></p><h2><b>2: Paste Shortcode</b></h2>",
+							"order": 3,
+							"type": "help"
+						},
+						"step3Help": {
+							"helpvalue": "<p></p><h2><b>3: Select Install Location</b></h2>",
+							"order": 5,
+							"type": "help"
+						},
+						"step4Help": {
+							"helpvalue": "<center><h2>------- OR --------</h2></center><br/><h3>Embed your shortcode in your website where you'd like your Countdown Timer to appear.</h3>",
+							"order": 7,
+							"type": "help"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Simplified flow to install and manage plugins!",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/3yeIWMx8--qC",
+			"metadata": {
+				"code": {
+					"sourceTag": "3yeIWMx8--qC",
+					"uploadedOn": "2019-02-26T19:29:56.515053394Z"
+				}
+			},
+			"created": "2019-02-26T19:29:56.341429Z",
+			"proposedApp": {
+				"id": "PRZboJdEwvBQ",
+				"title": "Countdown Timer",
+				"shortDescription": "Get more sales and create urgency with a countdown timer.",
+				"longDescription": "Countdown Timer is the easy way to drive more clicks to your ‘Buy Now’ or call-to-action button by creating a sense of urgency. Use it to countdown to the beginning or end of sales, special promotions, store launch or other events.\n \n# What are the benefits of using POWr Countdown Timer?   \n\n* **Boost conversions** - Announce promotions with a countdown. Create a sense of urgency to boost sales by alerting the user that current deal is nearly over.\n* **Make it yours** - Customize your countdown timer with your own colors, sizing, style and animations to make it fit perfectly with the design of your site.\n* **Show social proof** - Drive more sales by displaying the number of users that have purchased item X.\n\n# Get started for free and enjoy these features:   \n\n* Display the remaining years, days, hours, and minutes of a special deal or sale event.\n* Add a custom title, supporting text and button to redirect users to your sales or offer page, both during and after count.\n* Count down to any future date to build up excitement for an upcoming event, such as an end-of-season sale, new collection launch, and more.\n* Count down to a specific number.\n* Count up from any number or past date, perfect for displaying the number of users who have purchased an item. \n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock advanced features, such as:   \n\n* Make the countdown automatically repeat after it has hit the target date or number.\n* Reset the timer for each new visitor to offer them exclusive time-limited offers.\n* Count up from a fixed number or date for each new visitor.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=countdown-timer).\n\n# Why users love Countdown Timer:   \n\n“We love the Countdown Timer, it does everything that we need in this area, love the features to add a title, to add text after, to add text that is for during the countdown and the other features. Great timer - thumbs up.\" - Kidzmic Beta \n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Countdown Timer up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "powr-countdown-timer",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "https://images.cloudflareapps.com/EN_R_iMykANJ/Countdown-Timer-Icon-Cloudflare.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/SmplNEMvRom9k43rrd2S_screenshot-1-62- (1) (1).png",
+					"//images.cloudflareapps.com/6j4AIGD9Tc3YPhkWQ3oe_screenshot-2-13- (1) (1).png",
+					"//images.cloudflareapps.com/MMJ2r9MxTlKsqfkQvoPa_Screen Shot 2018-01-09 at 12.56.36 PM.png",
+					"//images.cloudflareapps.com/qjFJL3sUTyS0qhRPi9cB_Countdown (3) (1).png",
+					"//images.cloudflareapps.com/g8il88YUSmCurFsaPNzZ_all-purpose-banner copy.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/BsHIc4PS-oQE/Countdown-Timer-Banner-Cloudflare.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [],
+				"categoryIds": [
+					"powr",
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "jhWvRj8apPE-"
+				},
+				"created": "2018-03-12T17:45:29.64843Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2019-02-26T19:30:04.044173086Z",
+				"canceledByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"canceledAt": "2019-02-26T19:34:21.410410297Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.1.0",
+			"appId": "PRZboJdEwvBQ",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"exitHelp": {
+							"helpvalue": "<br/><hr/><h2><b>Need help?</b></h2>Visit our glorious <a href='https://www.powr.io/knowledge-base'>Support Center</a> or <a href='https://www.powr.io/feedback/new?&src=cloudflare' target='_blank'>send us a message</a>.",
+							"order": 8,
+							"type": "help"
+						},
+						"externalLink": {
+							"format": "button",
+							"href": "https://www.powr.io/cloudflare/countdown-timer",
+							"label": "Open POWr Editor",
+							"order": 2,
+							"title": "Design and customize your Countdown Timer",
+							"type": "link"
+						},
+						"introHelp": {
+							"helpvalue": "<center><h1>Welcome to <br/> POWr Countdown Timer</h1> Create urgency with a countdown anywhere on your Cloudflare site!</center>",
+							"order": 0,
+							"type": "help"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"format": "element",
+							"order": 6,
+							"title": "Where should the Countdown Timer appear?",
+							"type": "object"
+						},
+						"shortcode": {
+							"order": 4,
+							"placeholder": "[powr-countdown-timer id='abc123']",
+							"title": "Get the shortcode from the POWr link where you created your Countdown Timer",
+							"type": "string"
+						},
+						"step1Help": {
+							"helpvalue": "<p></p><h2><b>1: Configure Your Countdown Timer</b></h2>",
+							"order": 1,
+							"type": "help"
+						},
+						"step2Help": {
+							"helpvalue": "<p></p><h2><b>2: Paste Shortcode</b></h2>",
+							"order": 3,
+							"type": "help"
+						},
+						"step3Help": {
+							"helpvalue": "<p></p><h2><b>3: Select Install Location</b></h2>",
+							"order": 5,
+							"type": "help"
+						},
+						"step4Help": {
+							"helpvalue": "<center><h2>------- OR --------</h2></center><br/><h3>Embed your shortcode in your website where you'd like your Countdown Timer to appear.</h3>",
+							"order": 7,
+							"type": "help"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": false,
+				"rating": 0,
+				"upvotes": 0,
+				"downvotes": 0
+			},
+			"releaseNotes": "Simplified flow to install and manage plugins!",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/X6fSjXbPY-ga",
+			"metadata": {
+				"code": {
+					"sourceTag": "X6fSjXbPY-ga",
+					"uploadedOn": "2019-02-26T19:34:07.121410158Z"
+				}
+			},
+			"created": "2019-02-26T19:34:06.958371Z",
+			"proposedApp": {
+				"id": "PRZboJdEwvBQ",
+				"title": "Countdown Timer",
+				"shortDescription": "Get more sales and create urgency with a countdown timer.",
+				"longDescription": "Countdown Timer is the easy way to drive more clicks to your ‘Buy Now’ or call-to-action button by creating a sense of urgency. Use it to countdown to the beginning or end of sales, special promotions, store launch or other events.\n \n# What are the benefits of using POWr Countdown Timer?   \n\n* **Boost conversions** - Announce promotions with a countdown. Create a sense of urgency to boost sales by alerting the user that current deal is nearly over.\n* **Make it yours** - Customize your countdown timer with your own colors, sizing, style and animations to make it fit perfectly with the design of your site.\n* **Show social proof** - Drive more sales by displaying the number of users that have purchased item X.\n\n# Get started for free and enjoy these features:   \n\n* Display the remaining years, days, hours, and minutes of a special deal or sale event.\n* Add a custom title, supporting text and button to redirect users to your sales or offer page, both during and after count.\n* Count down to any future date to build up excitement for an upcoming event, such as an end-of-season sale, new collection launch, and more.\n* Count down to a specific number.\n* Count up from any number or past date, perfect for displaying the number of users who have purchased an item. \n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock advanced features, such as:   \n\n* Make the countdown automatically repeat after it has hit the target date or number.\n* Reset the timer for each new visitor to offer them exclusive time-limited offers.\n* Count up from a fixed number or date for each new visitor.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=countdown-timer).\n\n# Why users love Countdown Timer:   \n\n“We love the Countdown Timer, it does everything that we need in this area, love the features to add a title, to add text after, to add text that is for during the countdown and the other features. Great timer - thumbs up.\" - Kidzmic Beta \n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Countdown Timer up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "powr-countdown-timer",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "https://images.cloudflareapps.com/EN_R_iMykANJ/Countdown-Timer-Icon-Cloudflare.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/SmplNEMvRom9k43rrd2S_screenshot-1-62- (1) (1).png",
+					"//images.cloudflareapps.com/6j4AIGD9Tc3YPhkWQ3oe_screenshot-2-13- (1) (1).png",
+					"//images.cloudflareapps.com/MMJ2r9MxTlKsqfkQvoPa_Screen Shot 2018-01-09 at 12.56.36 PM.png",
+					"//images.cloudflareapps.com/qjFJL3sUTyS0qhRPi9cB_Countdown (3) (1).png",
+					"//images.cloudflareapps.com/g8il88YUSmCurFsaPNzZ_all-purpose-banner copy.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/BsHIc4PS-oQE/Countdown-Timer-Banner-Cloudflare.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [],
+				"categoryIds": [
+					"powr",
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "jhWvRj8apPE-"
+				},
+				"created": "2018-03-12T17:45:29.64843Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2019-02-26T19:34:21.419775509Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2019-02-27T00:47:28.795338307Z"
+			}
+		},
+		{
+			"tag": "1.1.1",
+			"appId": "PRZboJdEwvBQ",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"exitHelp": {
+							"helpvalue": "<br/><hr/><h2><b>Need help?</b></h2>Visit our glorious <a href='https://www.powr.io/knowledge-base'>Support Center</a> or <a href='https://www.powr.io/feedback/new?&src=cloudflare' target='_blank'>send us a message</a>.",
+							"order": 8,
+							"type": "help"
+						},
+						"externalLink": {
+							"format": "button",
+							"href": "https://www.powr.io/cloudflare/countdown-timer",
+							"label": "Open POWr Editor",
+							"order": 2,
+							"title": "Design and customize your Countdown Timer",
+							"type": "link"
+						},
+						"introHelp": {
+							"helpvalue": "<center><h1>Welcome to <br/> POWr Countdown Timer</h1> Create urgency with a countdown anywhere on your Cloudflare site!</center>",
+							"order": 0,
+							"type": "help"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"format": "element",
+							"order": 6,
+							"title": "Where should the Countdown Timer appear?",
+							"type": "object"
+						},
+						"shortcode": {
+							"order": 4,
+							"placeholder": "[powr-countdown-timer id='abc123']",
+							"title": "Get the shortcode from the POWr link where you created your Countdown Timer",
+							"type": "string"
+						},
+						"step1Help": {
+							"helpvalue": "<p></p><h2><b>1: Configure Your Countdown Timer</b></h2>",
+							"order": 1,
+							"type": "help"
+						},
+						"step2Help": {
+							"helpvalue": "<p></p><h2><b>2: Paste Shortcode</b></h2>",
+							"order": 3,
+							"type": "help"
+						},
+						"step3Help": {
+							"helpvalue": "<p></p><h2><b>3: Select Install Location</b></h2>",
+							"order": 5,
+							"type": "help"
+						},
+						"step4Help": {
+							"helpvalue": "<center><h2>------- OR --------</h2></center><br/><h3>Embed your shortcode in your website where you'd like your Countdown Timer to appear.</h3>",
+							"order": 7,
+							"type": "help"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.29,
+				"upvotes": 7,
+				"downvotes": 17
+			},
+			"releaseNotes": "Simplified flow to install and manage plugins!",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/X6fSjXbPY-ga",
+			"created": "2019-03-08T20:57:00.733441Z",
+			"proposedApp": {
+				"id": "PRZboJdEwvBQ",
+				"title": "Countdown Timer",
+				"shortDescription": "Get more sales and create urgency with a countdown timer.",
+				"longDescription": "Countdown Timer is the easy way to drive more clicks to your ‘Buy Now’ or call-to-action button by creating a sense of urgency. Use it to countdown to the beginning or end of sales, special promotions, store launch or other events.\n \n# What are the benefits of using POWr Countdown Timer?   \n\n* **Boost conversions** - Announce promotions with a countdown. Create a sense of urgency to boost sales by alerting the user that current deal is nearly over.\n* **Make it yours** - Customize your countdown timer with your own colors, sizing, style and animations to make it fit perfectly with the design of your site.\n* **Show social proof** - Drive more sales by displaying the number of users that have purchased item X.\n\n# Get started for free and enjoy these features:   \n\n* Display the remaining years, days, hours, and minutes of a special deal or sale event.\n* Add a custom title, supporting text and button to redirect users to your sales or offer page, both during and after count.\n* Count down to any future date to build up excitement for an upcoming event, such as an end-of-season sale, new collection launch, and more.\n* Count down to a specific number.\n* Count up from any number or past date, perfect for displaying the number of users who have purchased an item. \n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock advanced features, such as:   \n\n* Make the countdown automatically repeat after it has hit the target date or number.\n* Reset the timer for each new visitor to offer them exclusive time-limited offers.\n* Count up from a fixed number or date for each new visitor.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=countdown-timer).\n\n# Why users love Countdown Timer:   \n\n“We love the Countdown Timer, it does everything that we need in this area, love the features to add a title, to add text after, to add text that is for during the countdown and the other features. Great timer - thumbs up.\" - Kidzmic Beta \n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Countdown Timer up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "powr-countdown-timer",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "https://images.cloudflareapps.com/EN_R_iMykANJ/Countdown-Timer-Icon-Cloudflare.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/SmplNEMvRom9k43rrd2S_screenshot-1-62- (1) (1).png",
+					"//images.cloudflareapps.com/6j4AIGD9Tc3YPhkWQ3oe_screenshot-2-13- (1) (1).png",
+					"//images.cloudflareapps.com/MMJ2r9MxTlKsqfkQvoPa_Screen Shot 2018-01-09 at 12.56.36 PM.png",
+					"//images.cloudflareapps.com/qjFJL3sUTyS0qhRPi9cB_Countdown (3) (1).png",
+					"//images.cloudflareapps.com/g8il88YUSmCurFsaPNzZ_all-purpose-banner copy.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/BsHIc4PS-oQE/Countdown-Timer-Banner-Cloudflare.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/RsOCssjAU-DV/Countdown%20Timer.png",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [],
+				"categoryIds": [
+					"powr",
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "jhWvRj8apPE-"
+				},
+				"created": "2018-03-12T17:45:29.64843Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2019-03-08T20:58:30.531243595Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-03-08T21:35:02.537140109Z"
+			}
+		}
+	]
+}

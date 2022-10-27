@@ -1,0 +1,150 @@
+{
+	"id": "RRs7AJDVP1t4",
+	"title": "File Watcher",
+	"shortDescription": "Protect for upload form",
+	"longDescription": "# File Watcher \n\n## 0-day detection \n\nDistributing unprecedented malware has been a concern of countless tools so far, but not ours. Taking advantage of a wide range of technologies such as  file reviews, in-depth analysis, AI applications we have detected numerous 0-day samples being distributed daily, which helps preventing the use of your website as a place to spread malware.  \n\n \n\n## AI Implmentation \n\nBy machine learning application and training over 50,000 malicious code based on their characteristics, we are pretty confident with the AI ​​system whose accuracy rates is up to 95.99% in the period of 10 to 30 seconds. \n\n \n\n## Deep analysis with sandbox \n\nIt can be said that Dynamic analysis is our strength. Thanks to Sandbox system integrated auto-scoring technology, behavior analysis, process evaluation, even the most sophisticated malware samples have been eliminated. \n \n\n## Up-to-date database  \n\nAs a partner of Virustotal, we are updated with thousands malware samples from reports of users every hour. Combining with a collection of customers including enterprises, banks and finance groups, we have the latest and most typical virus samples in hand.  \n\n \n\n## Comprehensive protect your files  \n\nIf your need is allowing files to be uploaded to your server, our mission is making sure the files are completely clean. We protect all forms of uploading, popular plugins and editors including CKEditor, TinyMCE ..., on any platform. \n\n \n\n## Quick Deploy  \n\nBy simply using Cloudflare and selecting our app; making 3 steps as following: Preview -> Options -> Install, you now do not have to worried about any attacks on your uploading form.",
+	"instructions": "",
+	"alias": "",
+	"orgId": "1a9df941e5394664db473e956be6ab53",
+	"icon": "",
+	"screenshots": [],
+	"tileImage": "",
+	"featuredAppImage": "",
+	"author": "CyRadar",
+	"tagline": "",
+	"website": "https://cyradar.com",
+	"sourceURL": "",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "0.0.1",
+	"infoVersion": "0.0.1",
+	"points": 0,
+	"supportEmail": "support@cyradar.com",
+	"products": [],
+	"categoryIds": [],
+	"agreements": {
+		"tos": {
+			"userId": "1a9df941e5394664db473e956be6ab53",
+			"created": "2020-02-12T04:32:56.790829513Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "xSUvwSUE4Pqt"
+	},
+	"created": "2020-02-05T07:36:20.173719Z",
+	"org": {
+		"id": "1a9df941e5394664db473e956be6ab53",
+		"title": "",
+		"username": "1a9df941e5394664db473e956be6ab53",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [],
+	"versions": [
+		{
+			"tag": "0.0.1",
+			"appId": "RRs7AJDVP1t4",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "build/index.js"
+						}
+					],
+					"head": [
+						{
+							"type": "style",
+							"src": "build/styles.css"
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://apis.cyradar.com/cyflare/hook/before-install",
+						"events": [
+							"before-new-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with server"
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.5,
+				"upvotes": 1,
+				"downvotes": 1
+			},
+			"manual": true,
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/WsAi3r0qzDdP",
+			"metadata": {
+				"code": {
+					"sourceTag": "WsAi3r0qzDdP",
+					"uploadedOn": "2020-02-06T14:08:38.299909434Z"
+				}
+			},
+			"created": "2020-02-05T07:36:20.748918Z",
+			"proposedApp": {
+				"id": "RRs7AJDVP1t4",
+				"title": "File Watcher",
+				"shortDescription": "Protect for upload form",
+				"longDescription": "# File Watcher \n\n## 0-day detection \n\nDistributing unprecedented malware has been a concern of countless tools so far, but not ours. Taking advantage of a wide range of technologies such as  file reviews, in-depth analysis, AI applications we have detected numerous 0-day samples being distributed daily, which helps preventing the use of your website as a place to spread malware.  \n\n \n\n## AI Implmentation \n\nBy machine learning application and training over 50,000 malicious code based on their characteristics, we are pretty confident with the AI ​​system whose accuracy rates is up to 95.99% in the period of 10 to 30 seconds. \n\n \n\n## Deep analysis with sandbox \n\nIt can be said that Dynamic analysis is our strength. Thanks to Sandbox system integrated auto-scoring technology, behavior analysis, process evaluation, even the most sophisticated malware samples have been eliminated. \n \n\n## Up-to-date database  \n\nAs a partner of Virustotal, we are updated with thousands malware samples from reports of users every hour. Combining with a collection of customers including enterprises, banks and finance groups, we have the latest and most typical virus samples in hand.  \n\n \n\n## Comprehensive protect your files  \n\nIf your need is allowing files to be uploaded to your server, our mission is making sure the files are completely clean. We protect all forms of uploading, popular plugins and editors including CKEditor, TinyMCE ..., on any platform. \n\n \n\n## Quick Deploy  \n\nBy simply using Cloudflare and selecting our app; making 3 steps as following: Preview -> Options -> Install, you now do not have to worried about any attacks on your uploading form.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "1a9df941e5394664db473e956be6ab53",
+				"icon": "",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "CyRadar",
+				"tagline": "",
+				"website": "https://cyradar.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cyradar.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "xSUvwSUE4Pqt"
+				},
+				"created": "2020-02-05T07:36:20.173719Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "1a9df941e5394664db473e956be6ab53",
+				"requestedAt": "2020-02-12T04:32:56.768474516Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-02-12T18:17:47.357748919Z"
+			}
+		}
+	]
+}

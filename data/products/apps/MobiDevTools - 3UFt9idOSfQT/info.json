@@ -1,0 +1,439 @@
+{
+	"id": "3UFt9idOSfQT",
+	"title": "MobiDevTools",
+	"shortDescription": "Console for mobile browsers",
+	"longDescription": "Mobile DevTools based on open source eruda project [https://github.com/liriliri/eruda] allows you to view the console, DOM elements, network traffic, page source, resources, and more.\n\n### Main Features\n* Console - View JavaScript logs, errors, warnings, and other debug info. Execute arbitrary JS to interact with the webpage.\n* Inspect into the DOM tree to see attributes, inline styles, CSS rules, and computed styles.\n* Exploring in detail the network requests being made and inspect the responses.\n* Resource - Show HTML5 Local Storage, HTML5 Session Storage, cookies, scripts, stylesheets, iframes, and image assets.\n* Source code viewer for HTML, JS, and CSS.\n* View the current URL, User Agent, and device details.\n* Execute useful JavaScript snippets.\n* Manage basic and advanced options directly in devtools\n## Release notes\nv0.2.3 - Fixed some bugs\n### Limitations\nMobile DevTools may not work on all websites, depending on the page content's security policies.",
+	"instructions": "`After installation in your website click on icon-tool to open the overlay for debugging web apps`",
+	"alias": "mobidevtools",
+	"orgId": "ac5a1e8d593cac5669c97bea05be7d7e",
+	"icon": "https://images.cloudflareapps.com/6G6VoXXgzxOy/icon.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/E4UTgoCkJTtS/screen.png",
+		"https://images.cloudflareapps.com/E4UTgoCkJTtS/screen5.png",
+		"https://images.cloudflareapps.com/E4UTgoCkJTtS/screen4.png",
+		"https://images.cloudflareapps.com/E4UTgoCkJTtS/screen3.png",
+		"https://images.cloudflareapps.com/E4UTgoCkJTtS/screen2.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/5eLXvtSgCVPi/tile.png",
+	"featuredAppImage": "",
+	"author": "Francesco De Stefano",
+	"tagline": "",
+	"website": "https://mediamaster.eu",
+	"sourceURL": "",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "0.2.3",
+	"infoVersion": "0.2.3",
+	"points": 0,
+	"supportEmail": "ulmdesign@mediamaster.eu",
+	"products": [],
+	"categoryIds": [],
+	"agreements": {
+		"tos": {
+			"userId": "ac5a1e8d593cac5669c97bea05be7d7e",
+			"created": "2020-07-22T09:39:20.769553045Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "GR6Vl-zr1TbC"
+	},
+	"created": "2020-07-22T09:39:16.988155Z",
+	"org": {
+		"id": "ac5a1e8d593cac5669c97bea05be7d7e",
+		"title": "",
+		"username": "ac5a1e8d593cac5669c97bea05be7d7e",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [],
+	"versions": [
+		{
+			"tag": "0.2.0",
+			"appId": "3UFt9idOSfQT",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/lib/eruda/eruda.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Improved scroll performance",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/GR6Vl-zr1TbC",
+			"metadata": {
+				"code": {
+					"sourceTag": "GR6Vl-zr1TbC",
+					"uploadedOn": "2020-07-22T09:39:18.58835093Z"
+				}
+			},
+			"created": "2020-07-22T09:39:18.098245Z",
+			"proposedApp": {
+				"id": "3UFt9idOSfQT",
+				"title": "MobiDevTools",
+				"shortDescription": "Console for mobile browsers",
+				"longDescription": "Mobile DevTools based on open source eruda project [https://github.com/liriliri/eruda] allows you to view the console, DOM elements, network traffic, page source, resources, and more.\n\n### Main Features\n* Console - View JavaScript logs, errors, warnings, and other debug info. Execute arbitrary JS to interact with the webpage.\n* Inspect into the DOM tree to see attributes, inline styles, CSS rules, and computed styles.\n* Exploring in detail the network requests being made and inspect the responses.\n* Resource - Show HTML5 Local Storage, HTML5 Session Storage, cookies, scripts, stylesheets, iframes, and image assets.\n* Source code viewer for HTML, JS, and CSS.\n* View the current URL, User Agent, and device details.\n* Execute useful JavaScript snippets.\n* Manage basic and advanced options directly in devtools\n\n### Limitations\nMobile DevTools may not work on all websites, depending on the page content's security policies.",
+				"instructions": "`After installation in your website click on icon-tool to open the overlay for debugging web apps`",
+				"alias": "mobidevtools",
+				"orgId": "ac5a1e8d593cac5669c97bea05be7d7e",
+				"icon": "https://images.cloudflareapps.com/6G6VoXXgzxOy/icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/E4UTgoCkJTtS/screen.png",
+					"https://images.cloudflareapps.com/E4UTgoCkJTtS/screen5.png",
+					"https://images.cloudflareapps.com/E4UTgoCkJTtS/screen4.png",
+					"https://images.cloudflareapps.com/E4UTgoCkJTtS/screen3.png",
+					"https://images.cloudflareapps.com/E4UTgoCkJTtS/screen2.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/5eLXvtSgCVPi/tile.png",
+				"featuredAppImage": "",
+				"author": "Francesco De Stefano",
+				"tagline": "",
+				"website": "https://mediamaster.eu",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "ulmdesign@mediamaster.eu",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "GR6Vl-zr1TbC"
+				},
+				"created": "2020-07-22T09:39:16.988155Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "ac5a1e8d593cac5669c97bea05be7d7e",
+				"requestedAt": "2020-07-22T09:39:20.74906934Z",
+				"canceledByUserId": "ac5a1e8d593cac5669c97bea05be7d7e",
+				"canceledAt": "2020-08-04T08:48:08.372923569Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "0.2.1",
+			"appId": "3UFt9idOSfQT",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/lib/eruda/eruda.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"manual": true,
+			"releaseNotes": "Improved scroll performance",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/QiovvmPOCI3f",
+			"metadata": {
+				"code": {
+					"sourceTag": "QiovvmPOCI3f",
+					"uploadedOn": "2020-08-04T08:48:05.238952286Z"
+				}
+			},
+			"created": "2020-08-04T08:48:03.446158Z",
+			"proposedApp": {
+				"id": "3UFt9idOSfQT",
+				"title": "MobiDevTools",
+				"shortDescription": "Console for mobile browsers",
+				"longDescription": "Mobile DevTools based on open source eruda project [https://github.com/liriliri/eruda] allows you to view the console, DOM elements, network traffic, page source, resources, and more.\n\n### Main Features\n* Console - View JavaScript logs, errors, warnings, and other debug info. Execute arbitrary JS to interact with the webpage.\n* Inspect into the DOM tree to see attributes, inline styles, CSS rules, and computed styles.\n* Exploring in detail the network requests being made and inspect the responses.\n* Resource - Show HTML5 Local Storage, HTML5 Session Storage, cookies, scripts, stylesheets, iframes, and image assets.\n* Source code viewer for HTML, JS, and CSS.\n* View the current URL, User Agent, and device details.\n* Execute useful JavaScript snippets.\n* Manage basic and advanced options directly in devtools\n\n### Limitations\nMobile DevTools may not work on all websites, depending on the page content's security policies.",
+				"instructions": "`After installation in your website click on icon-tool to open the overlay for debugging web apps`",
+				"alias": "mobidevtools",
+				"orgId": "ac5a1e8d593cac5669c97bea05be7d7e",
+				"icon": "https://images.cloudflareapps.com/6G6VoXXgzxOy/icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/E4UTgoCkJTtS/screen.png",
+					"https://images.cloudflareapps.com/E4UTgoCkJTtS/screen5.png",
+					"https://images.cloudflareapps.com/E4UTgoCkJTtS/screen4.png",
+					"https://images.cloudflareapps.com/E4UTgoCkJTtS/screen3.png",
+					"https://images.cloudflareapps.com/E4UTgoCkJTtS/screen2.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/5eLXvtSgCVPi/tile.png",
+				"featuredAppImage": "",
+				"author": "Francesco De Stefano",
+				"tagline": "",
+				"website": "https://mediamaster.eu",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "ulmdesign@mediamaster.eu",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "GR6Vl-zr1TbC"
+				},
+				"created": "2020-07-22T09:39:16.988155Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "ac5a1e8d593cac5669c97bea05be7d7e",
+				"requestedAt": "2020-08-04T08:48:08.401891304Z",
+				"canceledByUserId": "ac5a1e8d593cac5669c97bea05be7d7e",
+				"canceledAt": "2020-08-05T08:24:59.817312966Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "0.2.2",
+			"appId": "3UFt9idOSfQT",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/load.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0,
+				"upvotes": 0,
+				"downvotes": 2
+			},
+			"releaseNotes": "Added to the project the eruda js library (mobile devtools) hosted on cdnjs",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/vNYLiijimTsX",
+			"metadata": {
+				"code": {
+					"sourceTag": "vNYLiijimTsX",
+					"uploadedOn": "2020-08-05T08:24:58.641891351Z"
+				}
+			},
+			"created": "2020-08-05T08:24:57.532649Z",
+			"proposedApp": {
+				"id": "3UFt9idOSfQT",
+				"title": "MobiDevTools",
+				"shortDescription": "Console for mobile browsers",
+				"longDescription": "Mobile DevTools based on open source eruda project [https://github.com/liriliri/eruda] allows you to view the console, DOM elements, network traffic, page source, resources, and more.\n\n### Main Features\n* Console - View JavaScript logs, errors, warnings, and other debug info. Execute arbitrary JS to interact with the webpage.\n* Inspect into the DOM tree to see attributes, inline styles, CSS rules, and computed styles.\n* Exploring in detail the network requests being made and inspect the responses.\n* Resource - Show HTML5 Local Storage, HTML5 Session Storage, cookies, scripts, stylesheets, iframes, and image assets.\n* Source code viewer for HTML, JS, and CSS.\n* View the current URL, User Agent, and device details.\n* Execute useful JavaScript snippets.\n* Manage basic and advanced options directly in devtools\n\n### Limitations\nMobile DevTools may not work on all websites, depending on the page content's security policies.",
+				"instructions": "`After installation in your website click on icon-tool to open the overlay for debugging web apps`",
+				"alias": "mobidevtools",
+				"orgId": "ac5a1e8d593cac5669c97bea05be7d7e",
+				"icon": "https://images.cloudflareapps.com/6G6VoXXgzxOy/icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/E4UTgoCkJTtS/screen.png",
+					"https://images.cloudflareapps.com/E4UTgoCkJTtS/screen5.png",
+					"https://images.cloudflareapps.com/E4UTgoCkJTtS/screen4.png",
+					"https://images.cloudflareapps.com/E4UTgoCkJTtS/screen3.png",
+					"https://images.cloudflareapps.com/E4UTgoCkJTtS/screen2.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/5eLXvtSgCVPi/tile.png",
+				"featuredAppImage": "",
+				"author": "Francesco De Stefano",
+				"tagline": "",
+				"website": "https://mediamaster.eu",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "ulmdesign@mediamaster.eu",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "GR6Vl-zr1TbC"
+				},
+				"created": "2020-07-22T09:39:16.988155Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "ac5a1e8d593cac5669c97bea05be7d7e",
+				"requestedAt": "2020-08-05T08:24:59.838117851Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-08-05T15:08:15.487920099Z"
+			}
+		},
+		{
+			"tag": "0.2.3",
+			"appId": "3UFt9idOSfQT",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/load.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 3,
+				"downvotes": 0
+			},
+			"releaseNotes": "Fixed some bugs",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/mMCc8JLB7mTN",
+			"metadata": {
+				"code": {
+					"sourceTag": "mMCc8JLB7mTN",
+					"uploadedOn": "2020-10-15T15:45:30.854062555Z"
+				}
+			},
+			"created": "2020-10-15T15:45:30.234296Z",
+			"proposedApp": {
+				"id": "3UFt9idOSfQT",
+				"title": "MobiDevTools",
+				"shortDescription": "Console for mobile browsers",
+				"longDescription": "Mobile DevTools based on open source eruda project [https://github.com/liriliri/eruda] allows you to view the console, DOM elements, network traffic, page source, resources, and more.\n\n### Main Features\n* Console - View JavaScript logs, errors, warnings, and other debug info. Execute arbitrary JS to interact with the webpage.\n* Inspect into the DOM tree to see attributes, inline styles, CSS rules, and computed styles.\n* Exploring in detail the network requests being made and inspect the responses.\n* Resource - Show HTML5 Local Storage, HTML5 Session Storage, cookies, scripts, stylesheets, iframes, and image assets.\n* Source code viewer for HTML, JS, and CSS.\n* View the current URL, User Agent, and device details.\n* Execute useful JavaScript snippets.\n* Manage basic and advanced options directly in devtools\n## Release notes\nv0.2.3 - Fixed some bugs\n### Limitations\nMobile DevTools may not work on all websites, depending on the page content's security policies.",
+				"instructions": "`After installation in your website click on icon-tool to open the overlay for debugging web apps`",
+				"alias": "mobidevtools",
+				"orgId": "ac5a1e8d593cac5669c97bea05be7d7e",
+				"icon": "https://images.cloudflareapps.com/6G6VoXXgzxOy/icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/E4UTgoCkJTtS/screen.png",
+					"https://images.cloudflareapps.com/E4UTgoCkJTtS/screen5.png",
+					"https://images.cloudflareapps.com/E4UTgoCkJTtS/screen4.png",
+					"https://images.cloudflareapps.com/E4UTgoCkJTtS/screen3.png",
+					"https://images.cloudflareapps.com/E4UTgoCkJTtS/screen2.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/5eLXvtSgCVPi/tile.png",
+				"featuredAppImage": "",
+				"author": "Francesco De Stefano",
+				"tagline": "",
+				"website": "https://mediamaster.eu",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "ulmdesign@mediamaster.eu",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "GR6Vl-zr1TbC"
+				},
+				"created": "2020-07-22T09:39:16.988155Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "ac5a1e8d593cac5669c97bea05be7d7e",
+				"requestedAt": "2020-10-15T15:45:32.057294473Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-10-20T20:23:43.422134323Z"
+			}
+		}
+	]
+}

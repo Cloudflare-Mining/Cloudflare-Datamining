@@ -1,0 +1,5742 @@
+{
+	"id": "7f-ZRgYPIGaN",
+	"title": "Trebble",
+	"shortDescription": "Engage visitors by adding your own curated shortcast feed",
+	"longDescription": "Trebble.fm lets you stay up-to-date with  all the topics that are essential to you in just a few minutes per day without having to stay glued to your screen. It brings all your favorite sources in one place and allows you to consume their content in one normalized audio format called shortcast. Shortcasts are very short podcasts that are usually 2 to 3 minutes long and often published daily.\n\nUsing the Trebble platform, you subscribe to all your favorite sources and every day you'll get a playlist made of fresh shortcasts from your subscriptions to listen to . In a few minutes each day,  you'll learn everything you need to know for the day. It's easy, simple and free.\n\nTrebble's Cloudflare application makes it easy to embed your Trebble shortcast feed directly on your website. In one click, your visitors will be able to get informed by listening to a shortcast feed made of sources you've handpicked. This unique experience will increase the engagement of your visitors and will encourage them to come back.",
+	"instructions": "* Sign-up for a Trebble FM account as listener <a target=\"_blank\" href=\"https://web.trebble.fm\">here</a>\n* Once you've successfully created your account, build your Trebble shortcast feed by subscribing to all the Trebble stations that you want to have part of your feed. You can browse them by categories and language in the  <a  target=\"_blank\" href=\"https://web.trebble.fm/ExplorePage\">Browse Page</a>\n* Login in Cloudflare with your newly created Trebbe FM account\n* Choose where you want the Trebble player to be located on your website and customize.\n\nVoilà! Your visitors can now listen to your personalized shortcast feed right from your website. Your feed will automatically be updated with fresh shortcast from your subscriptions.",
+	"alias": "trebble",
+	"orgId": "0503a7774210fee228bbe55946c40682",
+	"icon": "//images.cloudflareapps.com/k9Pkh2brQVyyRlHbW0fa_trebbleLogoBB288X288.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/sXbMhlM4S1tx/Cloudlare_Landing_Page.png",
+		"https://images.cloudflareapps.com/sXbMhlM4S1tx/Cloudlare_Trebble_Player.png",
+		"https://images.cloudflareapps.com/sXbMhlM4S1tx/Cloudlare_Browse.png",
+		"https://images.cloudflareapps.com/sXbMhlM4S1tx/Cloudlare_Subscribe.png",
+		"https://images.cloudflareapps.com/sXbMhlM4S1tx/Cloudlare_Add_Player.png"
+	],
+	"tileImage": "//images.cloudflareapps.com/3rzPQNHzQQany8rdG3Fb_trebbleLogoFullWhite_cloudflare2.png",
+	"featuredAppImage": "https://images.cloudflareapps.com/isAEtOnPPHED/TrebbleCloudlareBanner.png",
+	"author": "Trebble.fm Inc.",
+	"tagline": "",
+	"website": "https://www.trebble.fm",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://www.trebble.fm/trebblefm-inc-terms-of-service",
+	"privacyPolicyURL": "https://www.trebble.fm/trebble-fm-inc-privacy-policy",
+	"color": "#ed1b78",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "2.0.3",
+	"infoVersion": "2.0.3",
+	"points": 901,
+	"supportEmail": "help@trebble.fm",
+	"products": [
+		{
+			"id": "",
+			"title": "",
+			"shortDescription": "",
+			"longDescription": "",
+			"visible": false,
+			"price": 0,
+			"order": 0,
+			"created": null
+		}
+	],
+	"categoryIds": [
+		"add-on",
+		"marketing",
+		"get-more-customers",
+		"widgets-and-plugins",
+		"recommended-for-blogs"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "0503a7774210fee228bbe55946c40682",
+			"created": "2017-07-04T04:04:45.548997097Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "8DAV5VH7gb9j"
+	},
+	"created": "2017-03-30T16:52:51.248018Z",
+	"org": {
+		"id": "0503a7774210fee228bbe55946c40682",
+		"title": "",
+		"username": "0503a7774210fee228bbe55946c40682",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "widgets-and-plugins",
+			"title": "Widgets & Plugins",
+			"description": "Apps that add functionality and services to your website.",
+			"icon": "",
+			"points": 10,
+			"visible": true,
+			"metadata": {
+				"promoted": false
+			},
+			"created": "2018-01-22T19:19:00.135755Z"
+		},
+		{
+			"id": "get-more-customers",
+			"title": "Get More Customers",
+			"description": "Apps to help you grow your customer base.",
+			"icon": "",
+			"points": 1040,
+			"visible": false,
+			"metadata": {
+				"promoted": true
+			},
+			"created": "2017-03-16T17:52:28.842441Z"
+		},
+		{
+			"id": "add-on",
+			"title": "Add-ons",
+			"description": "Drop-in components to add to your website.",
+			"icon": "//eager-app-images.imgix.net/HZ0uHPrDRp6uAeUTuEH2_add-ons.png",
+			"points": 100,
+			"visible": false,
+			"metadata": {
+				"icon": {
+					"filename": "add-ons.png",
+					"isWriteable": false,
+					"key": "HZ0uHPrDRp6uAeUTuEH2_add-ons.png",
+					"mimetype": "image/png",
+					"size": 1997,
+					"url": "https://www.filepicker.io/api/file/1GlH0WSQTZu0scJr7qY0"
+				}
+			},
+			"created": "2016-01-20T20:14:55.498829Z"
+		},
+		{
+			"id": "recommended-for-blogs",
+			"title": "Recommended for Blogs",
+			"description": "Apps for blogs in the recommendation engine.",
+			"icon": "",
+			"points": 0,
+			"visible": false,
+			"created": "2018-02-06T19:54:23.834831Z"
+		},
+		{
+			"id": "marketing",
+			"title": "Marketing",
+			"description": "Promote content, collect email addresses, and increase engagement.",
+			"icon": "//eager-app-images.imgix.net/BsDSsdPnR5ytmW2jYDXi_marketing.png",
+			"points": 90,
+			"visible": false,
+			"metadata": {
+				"icon": {
+					"filename": "marketing.png",
+					"isWriteable": false,
+					"key": "BsDSsdPnR5ytmW2jYDXi_marketing.png",
+					"mimetype": "image/png",
+					"size": 3293,
+					"url": "https://www.filepicker.io/api/file/6auWmeBSSTKnHxboTyoh"
+				}
+			},
+			"created": "2016-01-20T20:14:55.498829Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "v1.0.0",
+			"appId": "7f-ZRgYPIGaN",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./eagerTrebbleWidgetInstallHelper.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"alwaysVisibible": {
+							"default": true,
+							"order": 4,
+							"showIf": {
+								"whereToAppend": {
+									"op": "!=",
+									"value": "ChooseYourOwn"
+								}
+							},
+							"title": "Always Visible",
+							"type": "boolean"
+						},
+						"customHeight": {
+							"default": 400,
+							"description": "Enter the height of the trebble widget in pixel.",
+							"minimum": 150,
+							"order": 7,
+							"showIf": {
+								"heightFitContainer": false,
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Custom Height",
+							"type": "integer"
+						},
+						"customWidth": {
+							"default": 300,
+							"description": "Enter the width of the trebble widget in pixel.",
+							"minimum": 200,
+							"order": 5,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn",
+								"widthFitContainer": false
+							},
+							"title": "Custom Width",
+							"type": "integer"
+						},
+						"heightFitContainer": {
+							"default": false,
+							"order": 6,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Expand vertically",
+							"type": "boolean"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Select where on the page would you like the Trebble widget to appear.",
+							"format": "element",
+							"order": 3,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Choose your own location",
+							"type": "object"
+						},
+						"trebbleId": {
+							"default": "",
+							"description": "The unique identifier of the Trebble to be embedded.",
+							"order": 1,
+							"title": "Trebble URL",
+							"type": "string"
+						},
+						"whereToAppend": {
+							"default": "AfterThePage",
+							"enum": [
+								"BeforeThePage",
+								"AfterThePage",
+								"ChooseYourOwn"
+							],
+							"enumNames": {
+								"AfterThePage": "After the page content",
+								"BeforeThePage": "Before the page content",
+								"ChooseYourOwn": "Choose your own location ..."
+							},
+							"order": 2,
+							"title": "Location",
+							"type": "string"
+						},
+						"widthFitContainer": {
+							"default": true,
+							"order": 4,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Expand horizontally",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"trebbleId",
+								"widthFitContainer",
+								"customWidth",
+								"heightFitContainer",
+								"customHeight"
+							],
+							"execute": "EagerAddTrebbleWiget.setOptions(INSTALL_OPTIONS)",
+							"reload": false
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/8DAV5VH7gb9j",
+			"metadata": {
+				"code": {
+					"sourceTag": "8DAV5VH7gb9j",
+					"uploadedOn": "2017-03-30T16:52:53.283008818Z"
+				}
+			},
+			"created": "2017-03-30T16:52:52.529474Z",
+			"proposedApp": {
+				"id": "7f-ZRgYPIGaN",
+				"title": "Trebble",
+				"shortDescription": "This application makes it easy to embed your trebble radio station on your website so that your visitors can enjoy music curated by you and seamlessly hear you talking to them through \"capsules\" without leaving your site. Embedding the trebble widget on your website allows you to deliver an enriched curated music experience unique to you and increase the engagement of your visitors with your content.",
+				"longDescription": "Trebble.fm is a new kind of music-sharing platform that gives you the power to curate your own interactive music radio and sharing it with the world. In addition to being easy to use and having access to a vast catalog of music, Trebble allows you to add your personal touch to the music you add to your station and speak to people listening to your station through ‘Capsules’. These are brief audio messages that you can record through the platform to play to your listeners in between songs. Wether you want to share why you love a specific song, share an interesting news people should know about or just share your personal opinion on a topic your care about, capsules are the perfect way to convey your message.\n\nThis application makes it easy to embed your trebble radio station on your website so that your visitors can enjoy music curated by you and seamlessly hear you talking to them through \"capsules\" without leaving your site. Embedding the trebble widget on your website allows you to deliver an enriched curated music experience unique to you and increase the engagement of your visitors with your content.",
+				"instructions": "#Find And Copy Your Trebble Sharing URL\nLogin into your Trebble account using your username and password. If you do not have an account on Trebble, please visit www.trebble.fm to get one.\nIn the \"Trebbles\" page under the \"My Trebbles\" tab, find your trebble station you want to embed on your website and click on the sharing icon on that Trebble station. Click on the \"Copy\" button next to the shareable link of the trebble.\n\n#Paste Your Trebble Sharing URL\nIn the appropriate text field, paste the URL link of the trebble you want to embed on your website.\n\n#Choose where your trebble should be embedded\nYou can choose to your trebble embedded at the beginning of the page or have it embedded at the end of the page. You are not satisfied with any of the previous options, you can also pick a specific location on your website where you would like the trebble station to be embedded. In that case, you can customize the height and width of the trebble widget on the site.",
+				"alias": "",
+				"orgId": "0503a7774210fee228bbe55946c40682",
+				"icon": "//images.cloudflareapps.com/1JqE9sURJykvsUye9USa_trebbleLogoFull.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/URTJhvaxReW7umCTDvMS_eagerAppEdited1.png",
+					"//images.cloudflareapps.com/fqVMUswGS3a8PIExhDqE_trebbleEagerSc2.png",
+					"//images.cloudflareapps.com/BcGDoSY9QnCbbjD4Uqz5_trebbleEagerSc3.png",
+					"//images.cloudflareapps.com/Ni867hDtQA21dt8rX5fk_Screen Shot 2017-04-01 at 9.32.56 AM.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Trebble.fm Inc.",
+				"tagline": "",
+				"website": "www.trebble.fm",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "8DAV5VH7gb9j"
+				},
+				"created": "2017-03-30T16:52:51.248018Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedAt": "2017-04-01T17:17:36.480758203Z",
+				"canceledAt": null,
+				"reviewedAt": "2017-04-13T05:08:41.14448292Z"
+			}
+		},
+		{
+			"tag": "v1.0.1",
+			"appId": "7f-ZRgYPIGaN",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"preview": {
+						"handlers": [
+							{
+								"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+								"options": [
+									"trebbleId",
+									"trebbleUserId",
+									"widthFitContainer",
+									"customWidth",
+									"heightFitContainer",
+									"customHeight"
+								],
+								"reload": false
+							}
+						]
+					},
+					"properties": {
+						"alwaysVisibible": {
+							"default": true,
+							"order": 5,
+							"showIf": {
+								"whereToAppend": {
+									"op": "!=",
+									"value": "ChooseYourOwn"
+								}
+							},
+							"title": "Always Visible",
+							"type": "boolean"
+						},
+						"customHeight": {
+							"default": 400,
+							"description": "Enter the height of the trebble widget in pixel.",
+							"minimum": 150,
+							"order": 8,
+							"showIf": {
+								"heightFitContainer": false,
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Custom Height",
+							"type": "integer"
+						},
+						"customWidth": {
+							"default": 300,
+							"description": "Enter the width of the trebble widget in pixel.",
+							"minimum": 200,
+							"order": 6,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn",
+								"widthFitContainer": false
+							},
+							"title": "Custom Width",
+							"type": "integer"
+						},
+						"heightFitContainer": {
+							"default": false,
+							"order": 7,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Expand vertically",
+							"type": "boolean"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Select where on the page would you like the Trebble widget to appear.",
+							"format": "element",
+							"order": 4,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Choose your own location",
+							"type": "object"
+						},
+						"myTrebbleToEmbed": {
+							"default": "chooseAnotherTrebbleToEmbed",
+							"enum": [
+								"chooseAnotherTrebbleToEmbed"
+							],
+							"enumNames": {
+								"chooseAnotherTrebbleToEmbed": "Choose another Trebble to embed ..."
+							},
+							"order": 2,
+							"showIf": {
+								"trebbleUserId": {
+									"op": "!=",
+									"value": null
+								}
+							},
+							"title": "Trebble to embed",
+							"type": "string"
+						},
+						"trebbleId": {
+							"default": "",
+							"description": "The unique identifier of the Trebble to be embedded.",
+							"order": 3,
+							"showIf": {
+								"myTrebbleToEmbed": {
+									"op": "==",
+									"value": "chooseAnotherTrebbleToEmbed"
+								}
+							},
+							"title": "Trebble URL",
+							"type": "string"
+						},
+						"trebbleUserId": {
+							"description": "Login or choose the user account who owns the Trebble you want to embed.",
+							"format": "account",
+							"order": 1,
+							"services": [
+								"Trebble"
+							],
+							"title": "Trebble Account",
+							"type": "object"
+						},
+						"whereToAppend": {
+							"default": "AfterThePage",
+							"enum": [
+								"BeforeThePage",
+								"AfterThePage",
+								"ChooseYourOwn"
+							],
+							"enumNames": {
+								"AfterThePage": "After the page content",
+								"BeforeThePage": "Before the page content",
+								"ChooseYourOwn": "Choose your own location ..."
+							},
+							"order": 3,
+							"title": "Location",
+							"type": "string"
+						},
+						"widthFitContainer": {
+							"default": true,
+							"order": 5,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Expand horizontally",
+							"type": "boolean"
+						}
+					}
+				},
+				"hooks": [
+					{
+						"endpoint": "https://s.trebble.fm/hooks/v1/cloudflare/onUserAuthenticated",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Trebble."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/P_jeyfvqgM_n",
+			"metadata": {
+				"code": {
+					"sourceTag": "P_jeyfvqgM_n",
+					"uploadedOn": "2017-04-26T14:49:49.563711215Z"
+				}
+			},
+			"created": "2017-04-13T01:57:32.549827Z",
+			"proposedApp": {
+				"id": "7f-ZRgYPIGaN",
+				"title": "Trebble",
+				"shortDescription": "24/7  radio playing music handpicked by you with your pre-recorded audio messages",
+				"longDescription": "Trebble.fm is a new kind of music sharing platform that allows you to curate your own interactive radio with the music that you love and share your sounds with the world. Access a vast catalog of music to find your favorite tracks and discover new treasures.\n\tAdd a personal touch to the music and speak directly to the people who listen to your station through the innovative Capsule feature. Capsules allow you to record brief audio messages that play between songs so that you can reveal your love for a particular song, discuss interesting news, share a personal story, or tell a joke for your listeners. Capsules are the perfect way to convey your message and allow your voice to be heard in a stream of curated music that is special to you!\n\tWith this Cloudflare application, you can easily embed a player for your Trebble radio station on websites. This allows you to share your personally curated musical selections and enriched capsule messages to the visitors on your site and increase engagement for your content.",
+				"instructions": "",
+				"alias": "trebble",
+				"orgId": "0503a7774210fee228bbe55946c40682",
+				"icon": "//images.cloudflareapps.com/k9Pkh2brQVyyRlHbW0fa_trebbleLogoBB288X288.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/URTJhvaxReW7umCTDvMS_eagerAppEdited1.png",
+					"//images.cloudflareapps.com/fqVMUswGS3a8PIExhDqE_trebbleEagerSc2.png",
+					"//images.cloudflareapps.com/BcGDoSY9QnCbbjD4Uqz5_trebbleEagerSc3.png",
+					"//images.cloudflareapps.com/Ni867hDtQA21dt8rX5fk_Screen Shot 2017-04-01 at 9.32.56 AM.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Trebble.fm Inc.",
+				"tagline": "",
+				"website": "www.trebble.fm",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "8DAV5VH7gb9j"
+				},
+				"created": "2017-03-30T16:52:51.248018Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedAt": "2017-04-27T20:38:20.334405304Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-05-19T02:15:30.861450558Z"
+			}
+		},
+		{
+			"tag": "v1.0.5",
+			"appId": "7f-ZRgYPIGaN",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/libs/drop-theme-arrows-bounce-dark.css"
+						},
+						{
+							"type": "style",
+							"src": "./source/style.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/libs/tether.min.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/libs/drop.min.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"alwaysVisibible": {
+							"default": true,
+							"order": 5,
+							"showIf": {
+								"whereToAppend": {
+									"op": "!=",
+									"value": "ChooseYourOwn"
+								}
+							},
+							"title": "Always Visible",
+							"type": "boolean"
+						},
+						"customHeight": {
+							"default": 400,
+							"description": "Enter the height of the trebble widget in pixel.",
+							"minimum": 150,
+							"order": 8,
+							"showIf": {
+								"heightFitContainer": false,
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Custom Height",
+							"type": "integer"
+						},
+						"customWidth": {
+							"default": 300,
+							"description": "Enter the width of the trebble widget in pixel.",
+							"minimum": 200,
+							"order": 6,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn",
+								"widthFitContainer": false
+							},
+							"title": "Custom Width",
+							"type": "integer"
+						},
+						"heightFitContainer": {
+							"default": false,
+							"order": 7,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Expand vertically",
+							"type": "boolean"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Select where on the page would you like the Trebble widget to appear.",
+							"format": "element",
+							"order": 4,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Choose your own location",
+							"type": "object"
+						},
+						"myTrebbleToEmbed": {
+							"default": "chooseAnotherTrebbleToEmbed",
+							"enum": [
+								"chooseAnotherTrebbleToEmbed"
+							],
+							"enumNames": {
+								"chooseAnotherTrebbleToEmbed": "Choose another Trebble to embed ..."
+							},
+							"order": 2,
+							"showIf": {
+								"trebbleUserId": {
+									"op": "!=",
+									"value": null
+								}
+							},
+							"title": "Trebble to embed",
+							"type": "string"
+						},
+						"trebbleId": {
+							"default": "",
+							"description": "The unique identifier of the Trebble to be embedded.",
+							"order": 3,
+							"showIf": {
+								"myTrebbleToEmbed": {
+									"op": "==",
+									"value": "chooseAnotherTrebbleToEmbed"
+								}
+							},
+							"title": "Trebble URL",
+							"type": "string"
+						},
+						"trebbleUserId": {
+							"description": "Login or choose the user account who owns the Trebble you want to embed.",
+							"format": "account",
+							"order": 1,
+							"services": [
+								"Trebble"
+							],
+							"title": "Trebble Account",
+							"type": "object"
+						},
+						"whereToAppend": {
+							"default": "AfterThePage",
+							"enum": [
+								"BeforeThePage",
+								"AfterThePage",
+								"ChooseYourOwn"
+							],
+							"enumNames": {
+								"AfterThePage": "After the page content",
+								"BeforeThePage": "Before the page content",
+								"ChooseYourOwn": "Choose your own location ..."
+							},
+							"order": 3,
+							"title": "Location",
+							"type": "string"
+						},
+						"widgetPlaceholderBackgroundColor": {
+							"default": "#333",
+							"format": "color",
+							"title": "Widget placeholder background color",
+							"type": "string"
+						},
+						"widthFitContainer": {
+							"default": true,
+							"order": 5,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Expand horizontally",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"trebbleId",
+								"trebbleUserId",
+								"widthFitContainer",
+								"customWidth",
+								"heightFitContainer",
+								"widgetPlaceholderBackgroundColor",
+								"customHeight"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://s.trebble.fm/hooks/v1/cloudflare/onUserAuthenticated",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Trebble."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/bDa48iQ4faHf",
+			"metadata": {
+				"code": {
+					"sourceTag": "bDa48iQ4faHf",
+					"uploadedOn": "2017-06-06T14:59:04.821199719Z"
+				}
+			},
+			"created": "2017-04-30T19:25:48.981222Z",
+			"proposedApp": {
+				"id": "7f-ZRgYPIGaN",
+				"title": "Trebble",
+				"shortDescription": "A radio to share music you love & speak to your audience",
+				"longDescription": "Trebble.fm is a music-sharing platform that gives you the power to curate your own radio and share it with the world. Trebble is easy to use, provides access to a vast catalog of music, and enables an unprecedented connection with your audience through Capsules. Capsules are brief audio recordings that you can pre-record for your station and have play between songs, allowing you to add your personal touch to your radio by speaking directly to your listeners. Whether you want to share a personal story of why you love a specific song, spread interesting news people should know about, or discuss a topic you care about, Capsules are the perfect way to convey your message.\n\nTrebble's Cloudflare application makes it easy to embed your Trebble radio station directly on your website. In one click, your visitors can enjoy music handpicked by you and listen to your Capsules without leaving your site. Embedding the Trebble widget on your website allows you to deliver an enriched curated unique music experience and increase engagement with your visitors through the content you create.",
+				"instructions": "",
+				"alias": "trebble",
+				"orgId": "0503a7774210fee228bbe55946c40682",
+				"icon": "//images.cloudflareapps.com/k9Pkh2brQVyyRlHbW0fa_trebbleLogoBB288X288.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/URTJhvaxReW7umCTDvMS_eagerAppEdited1.png",
+					"//images.cloudflareapps.com/fqVMUswGS3a8PIExhDqE_trebbleEagerSc2.png",
+					"//images.cloudflareapps.com/BcGDoSY9QnCbbjD4Uqz5_trebbleEagerSc3.png",
+					"//images.cloudflareapps.com/Ni867hDtQA21dt8rX5fk_Screen Shot 2017-04-01 at 9.32.56 AM.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/3rzPQNHzQQany8rdG3Fb_trebbleLogoFullWhite_cloudflare2.png",
+				"featuredAppImage": "",
+				"author": "Trebble.fm Inc.",
+				"tagline": "",
+				"website": "www.trebble.fm",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "8DAV5VH7gb9j"
+				},
+				"created": "2017-03-30T16:52:51.248018Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "0503a7774210fee228bbe55946c40682",
+				"requestedAt": "2017-06-06T15:00:22.142781324Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-06-06T20:16:12.46421569Z"
+			}
+		},
+		{
+			"tag": "v1.0.6",
+			"appId": "7f-ZRgYPIGaN",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/libs/drop-theme-arrows-bounce-dark.css"
+						},
+						{
+							"type": "style",
+							"src": "./source/style.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/libs/tether.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/libs/drop.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"alwaysVisibible": {
+							"default": true,
+							"order": 5,
+							"showIf": {
+								"whereToAppend": {
+									"op": "!=",
+									"value": "ChooseYourOwn"
+								}
+							},
+							"title": "Always Visible",
+							"type": "boolean"
+						},
+						"customHeight": {
+							"default": 400,
+							"description": "Enter the height of the trebble widget in pixel.",
+							"minimum": 150,
+							"order": 10,
+							"showIf": {
+								"heightFitContainer": false,
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Custom Height",
+							"type": "integer"
+						},
+						"customWidth": {
+							"default": 300,
+							"description": "Enter the width of the trebble widget in pixel.",
+							"minimum": 200,
+							"order": 8,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn",
+								"widthFitContainer": false
+							},
+							"title": "Custom Width",
+							"type": "integer"
+						},
+						"heightFitContainer": {
+							"default": false,
+							"order": 9,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Expand vertically",
+							"type": "boolean"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Select where on the page would you like the Trebble widget to appear.",
+							"format": "element",
+							"order": 6,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Choose your own location",
+							"type": "object"
+						},
+						"myTrebbleToEmbed": {
+							"default": "chooseAnotherTrebbleToEmbed",
+							"enum": [
+								"chooseAnotherTrebbleToEmbed"
+							],
+							"enumNames": {
+								"chooseAnotherTrebbleToEmbed": "Choose another Trebble to embed ..."
+							},
+							"order": 2,
+							"showIf": {
+								"trebbleUserId": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Trebbles",
+							"type": "string"
+						},
+						"trebbleId": {
+							"default": "",
+							"description": "The unique identifier of the Trebble to be embedded.",
+							"order": 3,
+							"showIf": {
+								"myTrebbleToEmbed": {
+									"op": "==",
+									"value": "chooseAnotherTrebbleToEmbed"
+								}
+							},
+							"title": "Trebble URL",
+							"type": "string"
+						},
+						"trebbleUserId": {
+							"description": "Login or choose the user account who owns the Trebble you want to embed.",
+							"format": "account",
+							"order": 1,
+							"services": [
+								"Trebble"
+							],
+							"title": "Trebble Account",
+							"type": "object"
+						},
+						"whereToAppend": {
+							"default": "AfterThePage",
+							"enum": [
+								"BeforeThePage",
+								"AfterThePage",
+								"ChooseYourOwn"
+							],
+							"enumNames": {
+								"AfterThePage": "After the page content",
+								"BeforeThePage": "Before the page content",
+								"ChooseYourOwn": "Choose your own location ..."
+							},
+							"order": 4,
+							"title": "Location",
+							"type": "string"
+						},
+						"widgetPlaceholderBackgroundColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"title": "Widget placeholder background color",
+							"type": "string"
+						},
+						"widthFitContainer": {
+							"default": true,
+							"order": 7,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Expand horizontally",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"trebbleId",
+								"trebbleUserId",
+								"widthFitContainer",
+								"customWidth",
+								"heightFitContainer",
+								"widgetPlaceholderBackgroundColor",
+								"customHeight"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://s.trebble.fm/hooks/v1/cloudflare/onUserAuthenticated",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Trebble."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/M2_SzA4Ecxom",
+			"metadata": {
+				"code": {
+					"sourceTag": "M2_SzA4Ecxom",
+					"uploadedOn": "2017-06-09T04:53:29.311497189Z"
+				}
+			},
+			"created": "2017-06-06T19:52:11.332858Z",
+			"proposedApp": {
+				"id": "7f-ZRgYPIGaN",
+				"title": "Trebble",
+				"shortDescription": "A radio to share music you love & speak to your audience.",
+				"longDescription": "Trebble.fm is a music-sharing platform that gives you the power to curate your own radio and share it with the world. Trebble is easy to use, provides access to a vast catalog of music, and enables an unprecedented connection with your audience through Capsules. Capsules are brief audio recordings that you can pre-record for your station and have play between songs, allowing you to add your personal touch to your radio by speaking directly to your listeners. Whether you want to share a personal story of why you love a specific song, spread interesting news people should know about, or discuss a topic you care about, Capsules are the perfect way to convey your message.\n\nTrebble's Cloudflare application makes it easy to embed your Trebble radio station directly on your website. In one click, your visitors can enjoy music handpicked by you and listen to your Capsules without leaving your site. Embedding the Trebble widget on your website allows you to deliver an enriched curated unique music experience and increase engagement with your visitors through the content you create.",
+				"instructions": "",
+				"alias": "trebble",
+				"orgId": "0503a7774210fee228bbe55946c40682",
+				"icon": "//images.cloudflareapps.com/k9Pkh2brQVyyRlHbW0fa_trebbleLogoBB288X288.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/zcyQo80KRAa6hluEvxjc_Screen Shot 2017-06-09 at 12.46.24 AM.png",
+					"//images.cloudflareapps.com/fqVMUswGS3a8PIExhDqE_trebbleEagerSc2.png",
+					"//images.cloudflareapps.com/BcGDoSY9QnCbbjD4Uqz5_trebbleEagerSc3.png",
+					"//images.cloudflareapps.com/Ni867hDtQA21dt8rX5fk_Screen Shot 2017-04-01 at 9.32.56 AM.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/3rzPQNHzQQany8rdG3Fb_trebbleLogoFullWhite_cloudflare2.png",
+				"featuredAppImage": "",
+				"author": "Trebble.fm Inc.",
+				"tagline": "",
+				"website": "www.trebble.fm",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "8DAV5VH7gb9j"
+				},
+				"created": "2017-03-30T16:52:51.248018Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "0503a7774210fee228bbe55946c40682",
+				"requestedAt": "2017-06-09T04:53:51.279553703Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-06-11T19:25:42.739802842Z"
+			}
+		},
+		{
+			"tag": "v1.0.7",
+			"appId": "7f-ZRgYPIGaN",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/libs/drop-theme-arrows-bounce-dark.css"
+						},
+						{
+							"type": "style",
+							"src": "./source/style.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/libs/tether.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/libs/drop.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"alwaysVisibible": {
+							"default": true,
+							"order": 5,
+							"showIf": {
+								"whereToAppend": {
+									"op": "!=",
+									"value": "ChooseYourOwn"
+								}
+							},
+							"title": "Always Visible",
+							"type": "boolean"
+						},
+						"customHeight": {
+							"default": 400,
+							"description": "Enter the height of the trebble widget in pixel.",
+							"minimum": 150,
+							"order": 10,
+							"showIf": {
+								"heightFitContainer": false,
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Custom Height",
+							"type": "integer"
+						},
+						"customWidth": {
+							"default": 300,
+							"description": "Enter the width of the trebble widget in pixel.",
+							"minimum": 200,
+							"order": 8,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn",
+								"widthFitContainer": false
+							},
+							"title": "Custom Width",
+							"type": "integer"
+						},
+						"heightFitContainer": {
+							"default": false,
+							"order": 9,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Expand vertically",
+							"type": "boolean"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Select where on the page would you like the Trebble widget to appear.",
+							"format": "element",
+							"order": 6,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Choose your own location",
+							"type": "object"
+						},
+						"myTrebbleToEmbed": {
+							"default": "chooseAnotherTrebbleToEmbed",
+							"enum": [
+								"chooseAnotherTrebbleToEmbed"
+							],
+							"enumNames": {
+								"chooseAnotherTrebbleToEmbed": "Choose another Trebble to embed ..."
+							},
+							"order": 2,
+							"showIf": {
+								"trebbleUserId": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Trebbles",
+							"type": "string"
+						},
+						"trebbleId": {
+							"default": "",
+							"description": "The unique identifier of the Trebble to be embedded.",
+							"order": 3,
+							"placeholder": "https://s.trebble.fm/p/p/t/01234567890123456789",
+							"showIf": {
+								"myTrebbleToEmbed": {
+									"op": "==",
+									"value": "chooseAnotherTrebbleToEmbed"
+								}
+							},
+							"title": "Trebble URL",
+							"type": "string"
+						},
+						"trebbleUserId": {
+							"format": "account",
+							"order": 1,
+							"services": [
+								"Trebble"
+							],
+							"title": "Trebble Account",
+							"type": "object"
+						},
+						"whereToAppend": {
+							"default": "AfterThePage",
+							"enum": [
+								"BeforeThePage",
+								"AfterThePage",
+								"ChooseYourOwn"
+							],
+							"enumNames": {
+								"AfterThePage": "After the page content",
+								"BeforeThePage": "Before the page content",
+								"ChooseYourOwn": "Choose your own location ..."
+							},
+							"order": 4,
+							"title": "Location",
+							"type": "string"
+						},
+						"widgetPlaceholderBackgroundColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"title": "Widget placeholder background color",
+							"type": "string"
+						},
+						"widthFitContainer": {
+							"default": true,
+							"order": 7,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Expand horizontally",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"trebbleId",
+								"trebbleUserId",
+								"widthFitContainer",
+								"customWidth",
+								"heightFitContainer",
+								"widgetPlaceholderBackgroundColor",
+								"customHeight"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://s.trebble.fm/hooks/v1/cloudflare/onUserAuthenticated",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Trebble."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/6GHLfE9lPo4X",
+			"metadata": {
+				"code": {
+					"sourceTag": "6GHLfE9lPo4X",
+					"uploadedOn": "2017-06-13T17:53:38.842109009Z"
+				}
+			},
+			"created": "2017-06-13T17:53:38.543835Z",
+			"proposedApp": {
+				"id": "7f-ZRgYPIGaN",
+				"title": "Trebble",
+				"shortDescription": "A radio to share music you love & speak to your audience.",
+				"longDescription": "Trebble.fm is a music-sharing platform that gives you the power to curate your own radio and share it with the world. Trebble is easy to use, provides access to a vast catalog of music, and enables an unprecedented connection with your audience through Capsules. Capsules are brief audio recordings that you can pre-record for your station and have play between songs, allowing you to add your personal touch to your radio by speaking directly to your listeners. Whether you want to share a personal story of why you love a specific song, spread interesting news people should know about, or discuss a topic you care about, Capsules are the perfect way to convey your message.\n\nTrebble's Cloudflare application makes it easy to embed your Trebble radio station directly on your website. In one click, your visitors can enjoy music handpicked by you and listen to your Capsules without leaving your site. Embedding the Trebble widget on your website allows you to deliver an enriched curated unique music experience and increase engagement with your visitors through the content you create.",
+				"instructions": "",
+				"alias": "trebble",
+				"orgId": "0503a7774210fee228bbe55946c40682",
+				"icon": "//images.cloudflareapps.com/k9Pkh2brQVyyRlHbW0fa_trebbleLogoBB288X288.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/zcyQo80KRAa6hluEvxjc_Screen Shot 2017-06-09 at 12.46.24 AM.png",
+					"//images.cloudflareapps.com/fqVMUswGS3a8PIExhDqE_trebbleEagerSc2.png",
+					"//images.cloudflareapps.com/BcGDoSY9QnCbbjD4Uqz5_trebbleEagerSc3.png",
+					"//images.cloudflareapps.com/Ni867hDtQA21dt8rX5fk_Screen Shot 2017-04-01 at 9.32.56 AM.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/3rzPQNHzQQany8rdG3Fb_trebbleLogoFullWhite_cloudflare2.png",
+				"featuredAppImage": "",
+				"author": "Trebble.fm Inc.",
+				"tagline": "",
+				"website": "www.trebble.fm",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "8DAV5VH7gb9j"
+				},
+				"created": "2017-03-30T16:52:51.248018Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "0503a7774210fee228bbe55946c40682",
+				"requestedAt": "2017-06-13T17:54:05.867515421Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-06-15T23:37:55.507951022Z"
+			}
+		},
+		{
+			"tag": "v1.0.8",
+			"appId": "7f-ZRgYPIGaN",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/libs/drop-theme-arrows-bounce-dark.css"
+						},
+						{
+							"type": "style",
+							"src": "./source/style.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/libs/tether.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/libs/drop.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"alwaysVisibible": {
+							"default": true,
+							"order": 5,
+							"showIf": {
+								"whereToAppend": {
+									"op": "!=",
+									"value": "ChooseYourOwn"
+								}
+							},
+							"title": "Always Visible",
+							"type": "boolean"
+						},
+						"customHeight": {
+							"default": 400,
+							"description": "Enter the height of the trebble widget in pixel.",
+							"minimum": 150,
+							"order": 10,
+							"showIf": {
+								"heightFitContainer": false,
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Custom Height",
+							"type": "integer"
+						},
+						"customWidth": {
+							"default": 300,
+							"description": "Enter the width of the trebble widget in pixel.",
+							"minimum": 200,
+							"order": 8,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn",
+								"widthFitContainer": false
+							},
+							"title": "Custom Width",
+							"type": "integer"
+						},
+						"heightFitContainer": {
+							"default": false,
+							"order": 9,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Expand vertically",
+							"type": "boolean"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Select where on the page would you like the Trebble widget to appear.",
+							"format": "element",
+							"order": 6,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Choose your own location",
+							"type": "object"
+						},
+						"myTrebbleToEmbed": {
+							"default": "chooseAnotherTrebbleToEmbed",
+							"enum": [
+								"chooseAnotherTrebbleToEmbed"
+							],
+							"enumNames": {
+								"chooseAnotherTrebbleToEmbed": "Choose another Trebble to embed ..."
+							},
+							"order": 2,
+							"showIf": {
+								"trebbleUserId": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Trebbles",
+							"type": "string"
+						},
+						"trebbleId": {
+							"default": "",
+							"description": "The unique identifier of the Trebble to be embedded.",
+							"order": 3,
+							"placeholder": "https://s.trebble.fm/p/p/t/01234567890123456789",
+							"showIf": {
+								"myTrebbleToEmbed": {
+									"op": "==",
+									"value": "chooseAnotherTrebbleToEmbed"
+								}
+							},
+							"title": "Trebble URL",
+							"type": "string"
+						},
+						"trebbleUserId": {
+							"format": "account",
+							"order": 1,
+							"services": [
+								"Trebble"
+							],
+							"title": "Trebble Account",
+							"type": "object"
+						},
+						"whereToAppend": {
+							"default": "AfterThePage",
+							"enum": [
+								"BeforeThePage",
+								"AfterThePage",
+								"ChooseYourOwn"
+							],
+							"enumNames": {
+								"AfterThePage": "After the page content",
+								"BeforeThePage": "Before the page content",
+								"ChooseYourOwn": "Choose your own location ..."
+							},
+							"order": 4,
+							"title": "Location",
+							"type": "string"
+						},
+						"widgetPlaceholderBackgroundColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"title": "Widget placeholder background color",
+							"type": "string"
+						},
+						"widthFitContainer": {
+							"default": true,
+							"order": 7,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Expand horizontally",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"trebbleId",
+								"trebbleUserId",
+								"widthFitContainer",
+								"customWidth",
+								"heightFitContainer",
+								"widgetPlaceholderBackgroundColor",
+								"customHeight"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://s.trebble.fm/hooks/v1/cloudflare/onUserAuthenticated",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Trebble."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/6GHLfE9lPo4X",
+			"created": "2017-06-16T01:28:34.721381Z",
+			"proposedApp": {
+				"id": "7f-ZRgYPIGaN",
+				"title": "Trebble",
+				"shortDescription": "A radio to share music you love & speak to your audience.",
+				"longDescription": "Trebble.fm is a music-sharing platform that gives you the power to curate your own radio and share it with the world. Trebble is easy to use, provides access to a vast catalog of music, and enables an unprecedented connection with your audience through Capsules. Capsules are brief audio recordings that you can pre-record for your station and have play between songs, allowing you to add your personal touch to your radio by speaking directly to your listeners. Whether you want to share a personal story of why you love a specific song, spread interesting news people should know about, or discuss a topic you care about, Capsules are the perfect way to convey your message.\n\nTrebble's Cloudflare application makes it easy to embed your Trebble radio station directly on your website. In one click, your visitors can enjoy music handpicked by you and listen to your Capsules without leaving your site. Embedding the Trebble widget on your website allows you to deliver an enriched curated unique music experience and increase engagement with your visitors through the content you create.",
+				"instructions": "",
+				"alias": "trebble",
+				"orgId": "0503a7774210fee228bbe55946c40682",
+				"icon": "//images.cloudflareapps.com/k9Pkh2brQVyyRlHbW0fa_trebbleLogoBB288X288.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/zcyQo80KRAa6hluEvxjc_Screen Shot 2017-06-09 at 12.46.24 AM.png",
+					"//images.cloudflareapps.com/fqVMUswGS3a8PIExhDqE_trebbleEagerSc2.png",
+					"//images.cloudflareapps.com/BcGDoSY9QnCbbjD4Uqz5_trebbleEagerSc3.png",
+					"//images.cloudflareapps.com/Ni867hDtQA21dt8rX5fk_Screen Shot 2017-04-01 at 9.32.56 AM.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/3rzPQNHzQQany8rdG3Fb_trebbleLogoFullWhite_cloudflare2.png",
+				"featuredAppImage": "",
+				"author": "Trebble.fm Inc.",
+				"tagline": "",
+				"website": "www.trebble.fm",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "help@trebble.fm",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "8DAV5VH7gb9j"
+				},
+				"created": "2017-03-30T16:52:51.248018Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "0503a7774210fee228bbe55946c40682",
+				"requestedAt": "2017-06-16T01:29:13.951187062Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-06-16T01:29:28.118720118Z"
+			}
+		},
+		{
+			"tag": "v1.0.9",
+			"appId": "7f-ZRgYPIGaN",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/libs/drop-theme-arrows-bounce-dark.css"
+						},
+						{
+							"type": "style",
+							"src": "./source/style.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/libs/tether.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/libs/drop.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"alwaysVisibible": {
+							"default": true,
+							"order": 5,
+							"showIf": {
+								"whereToAppend": {
+									"op": "!=",
+									"value": "ChooseYourOwn"
+								}
+							},
+							"title": "Always Visible",
+							"type": "boolean"
+						},
+						"customHeight": {
+							"default": 400,
+							"description": "Enter the height of the trebble widget in pixel.",
+							"minimum": 150,
+							"order": 10,
+							"showIf": {
+								"heightFitContainer": false,
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Custom Height",
+							"type": "integer"
+						},
+						"customWidth": {
+							"default": 300,
+							"description": "Enter the width of the trebble widget in pixel.",
+							"minimum": 200,
+							"order": 8,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn",
+								"widthFitContainer": false
+							},
+							"title": "Custom Width",
+							"type": "integer"
+						},
+						"heightFitContainer": {
+							"default": false,
+							"order": 9,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Expand vertically",
+							"type": "boolean"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Select where on the page would you like the Trebble widget to appear.",
+							"format": "element",
+							"order": 6,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Choose your own location",
+							"type": "object"
+						},
+						"myTrebbleToEmbed": {
+							"default": "chooseAnotherTrebbleToEmbed",
+							"enum": [
+								"chooseAnotherTrebbleToEmbed"
+							],
+							"enumNames": {
+								"chooseAnotherTrebbleToEmbed": "Choose another Trebble to embed ..."
+							},
+							"order": 2,
+							"showIf": {
+								"trebbleUserId": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Trebbles",
+							"type": "string"
+						},
+						"trebbleId": {
+							"default": "",
+							"description": "The unique identifier of the Trebble to be embedded.",
+							"order": 3,
+							"placeholder": "https://s.trebble.fm/p/p/t/01234567890123456789",
+							"showIf": {
+								"myTrebbleToEmbed": {
+									"op": "==",
+									"value": "chooseAnotherTrebbleToEmbed"
+								}
+							},
+							"title": "Trebble URL",
+							"type": "string"
+						},
+						"trebbleUserId": {
+							"format": "account",
+							"order": 1,
+							"services": [
+								"Trebble"
+							],
+							"title": "Trebble Account",
+							"type": "object"
+						},
+						"whereToAppend": {
+							"default": "AfterThePage",
+							"enum": [
+								"BeforeThePage",
+								"AfterThePage",
+								"ChooseYourOwn"
+							],
+							"enumNames": {
+								"AfterThePage": "After the page content",
+								"BeforeThePage": "Before the page content",
+								"ChooseYourOwn": "Choose your own location ..."
+							},
+							"order": 4,
+							"title": "Location",
+							"type": "string"
+						},
+						"widgetPlaceholderBackgroundColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"title": "Widget placeholder background color",
+							"type": "string"
+						},
+						"widthFitContainer": {
+							"default": true,
+							"order": 7,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Expand horizontally",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"trebbleId",
+								"trebbleUserId",
+								"widthFitContainer",
+								"customWidth",
+								"heightFitContainer",
+								"widgetPlaceholderBackgroundColor",
+								"customHeight"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://s.trebble.fm/hooks/v1/cloudflare/onUserAuthenticated",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Trebble."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/g3nPcb6v-q9r",
+			"metadata": {
+				"code": {
+					"sourceTag": "g3nPcb6v-q9r",
+					"uploadedOn": "2017-06-18T00:16:47.908999407Z"
+				}
+			},
+			"created": "2017-06-18T00:16:46.669719Z",
+			"proposedApp": {
+				"id": "7f-ZRgYPIGaN",
+				"title": "Trebble",
+				"shortDescription": "A radio to share music you love & speak to your audience.",
+				"longDescription": "Trebble.fm is a music-sharing platform that gives you the power to curate your own radio and share it with the world. Trebble is easy to use, provides access to a vast catalog of music, and enables an unprecedented connection with your audience through Capsules. Capsules are brief audio recordings that you can pre-record for your station and have play between songs, allowing you to add your personal touch to your radio by speaking directly to your listeners. Whether you want to share a personal story of why you love a specific song, spread interesting news people should know about, or discuss a topic you care about, Capsules are the perfect way to convey your message.\n\nTrebble's Cloudflare application makes it easy to embed your Trebble radio station directly on your website. In one click, your visitors can enjoy music handpicked by you and listen to your Capsules without leaving your site. Embedding the Trebble widget on your website allows you to deliver an enriched curated unique music experience and increase engagement with your visitors through the content you create.",
+				"instructions": "",
+				"alias": "trebble",
+				"orgId": "0503a7774210fee228bbe55946c40682",
+				"icon": "//images.cloudflareapps.com/k9Pkh2brQVyyRlHbW0fa_trebbleLogoBB288X288.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/zcyQo80KRAa6hluEvxjc_Screen Shot 2017-06-09 at 12.46.24 AM.png",
+					"//images.cloudflareapps.com/fqVMUswGS3a8PIExhDqE_trebbleEagerSc2.png",
+					"//images.cloudflareapps.com/BcGDoSY9QnCbbjD4Uqz5_trebbleEagerSc3.png",
+					"//images.cloudflareapps.com/Ni867hDtQA21dt8rX5fk_Screen Shot 2017-04-01 at 9.32.56 AM.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/3rzPQNHzQQany8rdG3Fb_trebbleLogoFullWhite_cloudflare2.png",
+				"featuredAppImage": "",
+				"author": "Trebble.fm Inc.",
+				"tagline": "",
+				"website": "www.trebble.fm",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "help@trebble.fm",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "8DAV5VH7gb9j"
+				},
+				"created": "2017-03-30T16:52:51.248018Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "0503a7774210fee228bbe55946c40682",
+				"requestedAt": "2017-06-18T00:16:57.751323738Z",
+				"canceledByUserId": "0503a7774210fee228bbe55946c40682",
+				"canceledAt": "2017-06-18T00:39:44.819133157Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "v1.0.10",
+			"appId": "7f-ZRgYPIGaN",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/libs/drop-theme-arrows-bounce-dark.css"
+						},
+						{
+							"type": "style",
+							"src": "./source/style.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/libs/tether.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/libs/drop.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"alwaysVisibible": {
+							"default": true,
+							"order": 5,
+							"showIf": {
+								"whereToAppend": {
+									"op": "!=",
+									"value": "ChooseYourOwn"
+								}
+							},
+							"title": "Always Visible",
+							"type": "boolean"
+						},
+						"customHeight": {
+							"default": 400,
+							"description": "Enter the height of the trebble widget in pixel.",
+							"minimum": 150,
+							"order": 10,
+							"showIf": {
+								"heightFitContainer": false,
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Custom Height",
+							"type": "integer"
+						},
+						"customWidth": {
+							"default": 300,
+							"description": "Enter the width of the trebble widget in pixel.",
+							"minimum": 200,
+							"order": 8,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn",
+								"widthFitContainer": false
+							},
+							"title": "Custom Width",
+							"type": "integer"
+						},
+						"heightFitContainer": {
+							"default": false,
+							"order": 9,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Expand vertically",
+							"type": "boolean"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Select where on the page would you like the Trebble widget to appear.",
+							"format": "element",
+							"order": 6,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Choose your own location",
+							"type": "object"
+						},
+						"myTrebbleToEmbed": {
+							"default": "chooseAnotherTrebbleToEmbed",
+							"enum": [
+								"chooseAnotherTrebbleToEmbed"
+							],
+							"enumNames": {
+								"chooseAnotherTrebbleToEmbed": "Choose another Trebble to embed ..."
+							},
+							"order": 2,
+							"showIf": {
+								"trebbleUserId": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Trebbles",
+							"type": "string"
+						},
+						"trebbleId": {
+							"default": "",
+							"description": "The unique identifier of the Trebble to be embedded.",
+							"order": 3,
+							"placeholder": "https://s.trebble.fm/p/p/t/01234567890123456789",
+							"showIf": {
+								"myTrebbleToEmbed": {
+									"op": "==",
+									"value": "chooseAnotherTrebbleToEmbed"
+								}
+							},
+							"title": "Trebble URL",
+							"type": "string"
+						},
+						"trebbleUserId": {
+							"format": "account",
+							"order": 1,
+							"services": [
+								"Trebble"
+							],
+							"title": "Trebble Account",
+							"type": "object"
+						},
+						"whereToAppend": {
+							"default": "AfterThePage",
+							"enum": [
+								"BeforeThePage",
+								"AfterThePage",
+								"ChooseYourOwn"
+							],
+							"enumNames": {
+								"AfterThePage": "After the page content",
+								"BeforeThePage": "Before the page content",
+								"ChooseYourOwn": "Choose your own location ..."
+							},
+							"order": 4,
+							"title": "Location",
+							"type": "string"
+						},
+						"widgetPlaceholderBackgroundColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"title": "Widget placeholder background color",
+							"type": "string"
+						},
+						"widthFitContainer": {
+							"default": true,
+							"order": 7,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Expand horizontally",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"trebbleId",
+								"trebbleUserId",
+								"widthFitContainer",
+								"customWidth",
+								"heightFitContainer",
+								"widgetPlaceholderBackgroundColor",
+								"customHeight"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://s.trebble.fm/hooks/v1/cloudflare/onUserAuthenticated",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Trebble."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/IO67fYFGnG5t",
+			"metadata": {
+				"code": {
+					"sourceTag": "IO67fYFGnG5t",
+					"uploadedOn": "2017-06-18T00:39:19.09125523Z"
+				}
+			},
+			"created": "2017-06-18T00:39:17.859556Z",
+			"proposedApp": {
+				"id": "7f-ZRgYPIGaN",
+				"title": "Trebble",
+				"shortDescription": "A radio to share music you love & speak to your audience.",
+				"longDescription": "Trebble.fm is a music-sharing platform that gives you the power to curate your own radio and share it with the world. Trebble is easy to use, provides access to a vast catalog of music, and enables an unprecedented connection with your audience through Capsules. Capsules are brief audio recordings that you can pre-record for your station and have play between songs, allowing you to add your personal touch to your radio by speaking directly to your listeners. Whether you want to share a personal story of why you love a specific song, spread interesting news people should know about, or discuss a topic you care about, Capsules are the perfect way to convey your message.\n\nTrebble's Cloudflare application makes it easy to embed your Trebble radio station directly on your website. In one click, your visitors can enjoy music handpicked by you and listen to your Capsules without leaving your site. Embedding the Trebble widget on your website allows you to deliver an enriched curated unique music experience and increase engagement with your visitors through the content you create.",
+				"instructions": "",
+				"alias": "trebble",
+				"orgId": "0503a7774210fee228bbe55946c40682",
+				"icon": "//images.cloudflareapps.com/k9Pkh2brQVyyRlHbW0fa_trebbleLogoBB288X288.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/zcyQo80KRAa6hluEvxjc_Screen Shot 2017-06-09 at 12.46.24 AM.png",
+					"//images.cloudflareapps.com/fqVMUswGS3a8PIExhDqE_trebbleEagerSc2.png",
+					"//images.cloudflareapps.com/BcGDoSY9QnCbbjD4Uqz5_trebbleEagerSc3.png",
+					"//images.cloudflareapps.com/Ni867hDtQA21dt8rX5fk_Screen Shot 2017-04-01 at 9.32.56 AM.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/3rzPQNHzQQany8rdG3Fb_trebbleLogoFullWhite_cloudflare2.png",
+				"featuredAppImage": "",
+				"author": "Trebble.fm Inc.",
+				"tagline": "",
+				"website": "www.trebble.fm",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "help@trebble.fm",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "8DAV5VH7gb9j"
+				},
+				"created": "2017-03-30T16:52:51.248018Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "0503a7774210fee228bbe55946c40682",
+				"requestedAt": "2017-06-18T00:40:27.450832677Z",
+				"canceledByUserId": "0503a7774210fee228bbe55946c40682",
+				"canceledAt": "2017-06-20T14:44:58.387958149Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "v1.0.11",
+			"appId": "7f-ZRgYPIGaN",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/libs/drop-theme-arrows-bounce-dark.css"
+						},
+						{
+							"type": "style",
+							"src": "./source/style.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/libs/tether.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/libs/drop.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"alwaysVisibible": {
+							"default": true,
+							"order": 5,
+							"showIf": {
+								"whereToAppend": {
+									"op": "!=",
+									"value": "ChooseYourOwn"
+								}
+							},
+							"title": "Always Visible",
+							"type": "boolean"
+						},
+						"customHeight": {
+							"default": 400,
+							"description": "Enter the height of the trebble widget in pixel.",
+							"minimum": 150,
+							"order": 10,
+							"showIf": {
+								"heightFitContainer": false,
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Custom Height",
+							"type": "integer"
+						},
+						"customWidth": {
+							"default": 300,
+							"description": "Enter the width of the trebble widget in pixel.",
+							"minimum": 200,
+							"order": 8,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn",
+								"widthFitContainer": false
+							},
+							"title": "Custom Width",
+							"type": "integer"
+						},
+						"heightFitContainer": {
+							"default": false,
+							"order": 9,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Expand vertically",
+							"type": "boolean"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Select where on the page would you like the Trebble widget to appear.",
+							"format": "element",
+							"order": 6,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Choose your own location",
+							"type": "object"
+						},
+						"myTrebbleToEmbed": {
+							"default": "chooseAnotherTrebbleToEmbed",
+							"enum": [
+								"chooseAnotherTrebbleToEmbed"
+							],
+							"enumNames": {
+								"chooseAnotherTrebbleToEmbed": "Choose another Trebble to embed ..."
+							},
+							"order": 2,
+							"showIf": {
+								"trebbleUserId": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Trebbles",
+							"type": "string"
+						},
+						"trebbleId": {
+							"default": "",
+							"description": "The unique identifier of the Trebble to be embedded.",
+							"order": 3,
+							"placeholder": "https://s.trebble.fm/p/p/t/01234567890123456789",
+							"showIf": {
+								"myTrebbleToEmbed": {
+									"op": "==",
+									"value": "chooseAnotherTrebbleToEmbed"
+								}
+							},
+							"title": "Trebble URL",
+							"type": "string"
+						},
+						"trebbleUserId": {
+							"format": "account",
+							"order": 1,
+							"services": [
+								"Trebble"
+							],
+							"title": "Trebble Account",
+							"type": "object"
+						},
+						"whereToAppend": {
+							"default": "AfterThePage",
+							"enum": [
+								"BeforeThePage",
+								"AfterThePage",
+								"ChooseYourOwn"
+							],
+							"enumNames": {
+								"AfterThePage": "After the page content",
+								"BeforeThePage": "Before the page content",
+								"ChooseYourOwn": "Choose your own location ..."
+							},
+							"order": 4,
+							"title": "Location",
+							"type": "string"
+						},
+						"widgetPlaceholderBackgroundColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"title": "Widget placeholder background color",
+							"type": "string"
+						},
+						"widthFitContainer": {
+							"default": true,
+							"order": 7,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Expand horizontally",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"trebbleId",
+								"trebbleUserId",
+								"widthFitContainer",
+								"customWidth",
+								"heightFitContainer",
+								"widgetPlaceholderBackgroundColor",
+								"customHeight"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://s.trebble.fm/hooks/v1/cloudflare/onUserAuthenticated",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Trebble."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/5ujSugT94TTm",
+			"metadata": {
+				"code": {
+					"sourceTag": "5ujSugT94TTm",
+					"uploadedOn": "2017-06-20T14:44:37.831058917Z"
+				}
+			},
+			"created": "2017-06-20T14:44:37.527927Z",
+			"proposedApp": {
+				"id": "7f-ZRgYPIGaN",
+				"title": "Trebble",
+				"shortDescription": "A radio to share music you love & speak to your audience.",
+				"longDescription": "Trebble.fm is a music-sharing platform that gives you the power to curate your own radio and share it with the world. Trebble is easy to use, provides access to a vast catalog of music, and enables an unprecedented connection with your audience through Capsules. Capsules are brief audio recordings that you can pre-record for your station and have play between songs, allowing you to add your personal touch to your radio by speaking directly to your listeners. Whether you want to share a personal story of why you love a specific song, spread interesting news people should know about, or discuss a topic you care about, Capsules are the perfect way to convey your message.\n\nTrebble's Cloudflare application makes it easy to embed your Trebble radio station directly on your website. In one click, your visitors can enjoy music handpicked by you and listen to your Capsules without leaving your site. Embedding the Trebble widget on your website allows you to deliver an enriched curated unique music experience and increase engagement with your visitors through the content you create.",
+				"instructions": "",
+				"alias": "trebble",
+				"orgId": "0503a7774210fee228bbe55946c40682",
+				"icon": "//images.cloudflareapps.com/k9Pkh2brQVyyRlHbW0fa_trebbleLogoBB288X288.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/zcyQo80KRAa6hluEvxjc_Screen Shot 2017-06-09 at 12.46.24 AM.png",
+					"//images.cloudflareapps.com/fqVMUswGS3a8PIExhDqE_trebbleEagerSc2.png",
+					"//images.cloudflareapps.com/BcGDoSY9QnCbbjD4Uqz5_trebbleEagerSc3.png",
+					"//images.cloudflareapps.com/Ni867hDtQA21dt8rX5fk_Screen Shot 2017-04-01 at 9.32.56 AM.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/3rzPQNHzQQany8rdG3Fb_trebbleLogoFullWhite_cloudflare2.png",
+				"featuredAppImage": "",
+				"author": "Trebble.fm Inc.",
+				"tagline": "",
+				"website": "www.trebble.fm",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "help@trebble.fm",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "8DAV5VH7gb9j"
+				},
+				"created": "2017-03-30T16:52:51.248018Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "0503a7774210fee228bbe55946c40682",
+				"requestedAt": "2017-06-20T14:44:58.404409263Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-06-21T03:44:48.450415902Z"
+			}
+		},
+		{
+			"tag": "v1.0.12",
+			"appId": "7f-ZRgYPIGaN",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/libs/drop-theme-arrows-bounce-dark.css"
+						},
+						{
+							"type": "style",
+							"src": "./source/style.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/libs/tether.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/libs/drop.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"alwaysVisible": {
+							"default": true,
+							"order": 5,
+							"showIf": {
+								"whereToAppend": {
+									"op": "!=",
+									"value": "ChooseYourOwn"
+								}
+							},
+							"title": "Always Visible",
+							"type": "boolean"
+						},
+						"customHeight": {
+							"default": 400,
+							"description": "Enter the height of the trebble widget in pixel.",
+							"minimum": 150,
+							"order": 10,
+							"showIf": {
+								"heightFitContainer": false,
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Custom Height",
+							"type": "integer"
+						},
+						"customWidth": {
+							"default": 300,
+							"description": "Enter the width of the trebble widget in pixel.",
+							"minimum": 200,
+							"order": 8,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn",
+								"widthFitContainer": false
+							},
+							"title": "Custom Width",
+							"type": "integer"
+						},
+						"heightFitContainer": {
+							"default": false,
+							"order": 9,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Expand vertically",
+							"type": "boolean"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Select where on the page would you like the Trebble widget to appear.",
+							"format": "element",
+							"order": 6,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Choose your own location",
+							"type": "object"
+						},
+						"myTrebbleToEmbed": {
+							"default": "chooseAnotherTrebbleToEmbed",
+							"enum": [
+								"chooseAnotherTrebbleToEmbed"
+							],
+							"enumNames": {
+								"chooseAnotherTrebbleToEmbed": "Choose another Trebble to embed ..."
+							},
+							"order": 2,
+							"showIf": {
+								"trebbleUserId": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Trebbles",
+							"type": "string"
+						},
+						"trebbleId": {
+							"default": "",
+							"description": "The unique identifier of the Trebble to be embedded.",
+							"order": 3,
+							"placeholder": "https://s.trebble.fm/p/p/t/01234567890123456789",
+							"showIf": {
+								"myTrebbleToEmbed": {
+									"op": "==",
+									"value": "chooseAnotherTrebbleToEmbed"
+								}
+							},
+							"title": "Trebble URL",
+							"type": "string"
+						},
+						"trebbleUserId": {
+							"format": "account",
+							"order": 1,
+							"services": [
+								"Trebble"
+							],
+							"title": "Trebble Account",
+							"type": "object"
+						},
+						"whereToAppend": {
+							"default": "AfterThePage",
+							"enum": [
+								"BeforeThePage",
+								"AfterThePage",
+								"ChooseYourOwn"
+							],
+							"enumNames": {
+								"AfterThePage": "After the page content",
+								"BeforeThePage": "Before the page content",
+								"ChooseYourOwn": "Choose your own location ..."
+							},
+							"order": 4,
+							"title": "Location",
+							"type": "string"
+						},
+						"widgetPlaceholderBackgroundColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"title": "Widget placeholder background color",
+							"type": "string"
+						},
+						"widthFitContainer": {
+							"default": true,
+							"order": 7,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Expand horizontally",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"trebbleId",
+								"trebbleUserId",
+								"widthFitContainer",
+								"customWidth",
+								"heightFitContainer",
+								"widgetPlaceholderBackgroundColor",
+								"customHeight"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://s.trebble.fm/hooks/v1/cloudflare/onUserAuthenticated",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Trebble."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/MaleQgUALLpB",
+			"metadata": {
+				"code": {
+					"sourceTag": "MaleQgUALLpB",
+					"uploadedOn": "2017-06-21T15:30:45.458974142Z"
+				}
+			},
+			"created": "2017-06-21T15:30:45.032629Z",
+			"proposedApp": {
+				"id": "7f-ZRgYPIGaN",
+				"title": "Trebble",
+				"shortDescription": "A radio to share music you love & speak to your audience.",
+				"longDescription": "Trebble.fm is a music-sharing platform that gives you the power to curate your own radio and share it with the world. Trebble is easy to use, provides access to a vast catalog of music, and enables an unprecedented connection with your audience through Capsules. Capsules are brief audio recordings that you can pre-record for your station and have play between songs, allowing you to add your personal touch to your radio by speaking directly to your listeners. Whether you want to share a personal story of why you love a specific song, spread interesting news people should know about, or discuss a topic you care about, Capsules are the perfect way to convey your message.\n\nTrebble's Cloudflare application makes it easy to embed your Trebble radio station directly on your website. In one click, your visitors can enjoy music handpicked by you and listen to your Capsules without leaving your site. Embedding the Trebble widget on your website allows you to deliver an enriched curated unique music experience and increase engagement with your visitors through the content you create.",
+				"instructions": "",
+				"alias": "trebble",
+				"orgId": "0503a7774210fee228bbe55946c40682",
+				"icon": "//images.cloudflareapps.com/k9Pkh2brQVyyRlHbW0fa_trebbleLogoBB288X288.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/zcyQo80KRAa6hluEvxjc_Screen Shot 2017-06-09 at 12.46.24 AM.png",
+					"//images.cloudflareapps.com/fqVMUswGS3a8PIExhDqE_trebbleEagerSc2.png",
+					"//images.cloudflareapps.com/BcGDoSY9QnCbbjD4Uqz5_trebbleEagerSc3.png",
+					"//images.cloudflareapps.com/Ni867hDtQA21dt8rX5fk_Screen Shot 2017-04-01 at 9.32.56 AM.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/3rzPQNHzQQany8rdG3Fb_trebbleLogoFullWhite_cloudflare2.png",
+				"featuredAppImage": "",
+				"author": "Trebble.fm Inc.",
+				"tagline": "",
+				"website": "www.trebble.fm",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "help@trebble.fm",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "8DAV5VH7gb9j"
+				},
+				"created": "2017-03-30T16:52:51.248018Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "0503a7774210fee228bbe55946c40682",
+				"requestedAt": "2017-06-21T15:30:56.661843241Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-06-21T20:59:06.395514478Z"
+			}
+		},
+		{
+			"tag": "1.0.13",
+			"appId": "7f-ZRgYPIGaN",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/libs/drop-theme-arrows-bounce-dark.css"
+						},
+						{
+							"type": "style",
+							"src": "./source/style.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/libs/tether.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/libs/drop.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"alwaysVisible": {
+							"default": true,
+							"order": 5,
+							"showIf": {
+								"whereToAppend": {
+									"op": "!=",
+									"value": "ChooseYourOwn"
+								}
+							},
+							"title": "Always Visible",
+							"type": "boolean"
+						},
+						"customHeight": {
+							"default": 400,
+							"description": "Enter the height of the trebble widget in pixel.",
+							"minimum": 150,
+							"order": 10,
+							"showIf": {
+								"heightFitContainer": false,
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Custom Height",
+							"type": "integer"
+						},
+						"customWidth": {
+							"default": 300,
+							"description": "Enter the width of the trebble widget in pixel.",
+							"minimum": 200,
+							"order": 8,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn",
+								"widthFitContainer": false
+							},
+							"title": "Custom Width",
+							"type": "integer"
+						},
+						"heightFitContainer": {
+							"default": false,
+							"order": 9,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Expand vertically",
+							"type": "boolean"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Select where on the page would you like the Trebble widget to appear.",
+							"format": "element",
+							"order": 6,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Choose your own location",
+							"type": "object"
+						},
+						"myTrebbleToEmbed": {
+							"default": "chooseAnotherTrebbleToEmbed",
+							"enum": [
+								"chooseAnotherTrebbleToEmbed"
+							],
+							"enumNames": {
+								"chooseAnotherTrebbleToEmbed": "Choose another Trebble to embed ..."
+							},
+							"order": 2,
+							"showIf": {
+								"trebbleUserId": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Trebbles",
+							"type": "string"
+						},
+						"trebbleId": {
+							"default": "",
+							"description": "The unique identifier of the Trebble to be embedded.",
+							"order": 3,
+							"placeholder": "https://s.trebble.fm/p/p/t/01234567890123456789",
+							"showIf": {
+								"myTrebbleToEmbed": {
+									"op": "==",
+									"value": "chooseAnotherTrebbleToEmbed"
+								}
+							},
+							"title": "Trebble URL",
+							"type": "string"
+						},
+						"trebbleUserId": {
+							"format": "account",
+							"order": 1,
+							"services": [
+								"Trebble"
+							],
+							"title": "Trebble Account",
+							"type": "object"
+						},
+						"whereToAppend": {
+							"default": "AfterThePage",
+							"enum": [
+								"BeforeThePage",
+								"AfterThePage",
+								"ChooseYourOwn"
+							],
+							"enumNames": {
+								"AfterThePage": "After the page content",
+								"BeforeThePage": "Before the page content",
+								"ChooseYourOwn": "Choose your own location ..."
+							},
+							"order": 4,
+							"title": "Location",
+							"type": "string"
+						},
+						"widgetPlaceholderBackgroundColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"title": "Widget placeholder background color",
+							"type": "string"
+						},
+						"widthFitContainer": {
+							"default": true,
+							"order": 7,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Expand horizontally",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"trebbleId",
+								"trebbleUserId",
+								"widthFitContainer",
+								"customWidth",
+								"heightFitContainer",
+								"widgetPlaceholderBackgroundColor",
+								"customHeight"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://s.trebble.fm/hooks/v1/cloudflare/onUserAuthenticated",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Trebble."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/MaleQgUALLpB",
+			"created": "2017-06-23T01:25:23.139789Z",
+			"proposedApp": {
+				"id": "7f-ZRgYPIGaN",
+				"title": "Trebble",
+				"shortDescription": "A radio to share music you love & speak to your audience.",
+				"longDescription": "Trebble.fm is a music-sharing platform that gives you the power to curate your own radio and share it with the world. Trebble is easy to use, provides access to a vast catalog of music, and enables an unprecedented connection with your audience through Capsules. Capsules are brief audio recordings that you can pre-record for your station and have play between songs, allowing you to add your personal touch to your radio by speaking directly to your listeners. Whether you want to share a personal story of why you love a specific song, spread interesting news people should know about, or discuss a topic you care about, Capsules are the perfect way to convey your message.\n\nTrebble's Cloudflare application makes it easy to embed your Trebble radio station directly on your website. In one click, your visitors can enjoy music handpicked by you and listen to your Capsules without leaving your site. Embedding the Trebble widget on your website allows you to deliver an enriched curated unique music experience and increase engagement with your visitors through the content you create.",
+				"instructions": "",
+				"alias": "trebble",
+				"orgId": "0503a7774210fee228bbe55946c40682",
+				"icon": "//images.cloudflareapps.com/k9Pkh2brQVyyRlHbW0fa_trebbleLogoBB288X288.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/zcyQo80KRAa6hluEvxjc_Screen Shot 2017-06-09 at 12.46.24 AM.png",
+					"//images.cloudflareapps.com/fqVMUswGS3a8PIExhDqE_trebbleEagerSc2.png",
+					"//images.cloudflareapps.com/BcGDoSY9QnCbbjD4Uqz5_trebbleEagerSc3.png",
+					"//images.cloudflareapps.com/Ni867hDtQA21dt8rX5fk_Screen Shot 2017-04-01 at 9.32.56 AM.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/3rzPQNHzQQany8rdG3Fb_trebbleLogoFullWhite_cloudflare2.png",
+				"featuredAppImage": "",
+				"author": "Trebble.fm Inc.",
+				"tagline": "",
+				"website": "https://www.trebble.fm",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "help@trebble.fm",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "8DAV5VH7gb9j"
+				},
+				"created": "2017-03-30T16:52:51.248018Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-06-23T01:25:23.380396822Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-06-23T01:25:34.204384202Z"
+			}
+		},
+		{
+			"tag": "1.0.14",
+			"appId": "7f-ZRgYPIGaN",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/libs/drop-theme-arrows-bounce-dark.css"
+						},
+						{
+							"type": "style",
+							"src": "./source/style.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/libs/tether.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/libs/drop.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"alwaysVisible": {
+							"default": true,
+							"order": 5,
+							"showIf": {
+								"whereToAppend": {
+									"op": "!=",
+									"value": "ChooseYourOwn"
+								}
+							},
+							"title": "Always Visible",
+							"type": "boolean"
+						},
+						"customHeight": {
+							"default": 400,
+							"description": "Enter the height of the trebble widget in pixel.",
+							"minimum": 150,
+							"order": 10,
+							"showIf": {
+								"heightFitContainer": false,
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Custom Height",
+							"type": "integer"
+						},
+						"customWidth": {
+							"default": 300,
+							"description": "Enter the width of the trebble widget in pixel.",
+							"minimum": 200,
+							"order": 8,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn",
+								"widthFitContainer": false
+							},
+							"title": "Custom Width",
+							"type": "integer"
+						},
+						"heightFitContainer": {
+							"default": false,
+							"order": 9,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Expand vertically",
+							"type": "boolean"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Select where on the page would you like the Trebble widget to appear.",
+							"format": "element",
+							"order": 6,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Choose your own location",
+							"type": "object"
+						},
+						"myTrebbleToEmbed": {
+							"default": "chooseAnotherTrebbleToEmbed",
+							"enum": [
+								"chooseAnotherTrebbleToEmbed"
+							],
+							"enumNames": {
+								"chooseAnotherTrebbleToEmbed": "Choose another Trebble to embed ..."
+							},
+							"order": 2,
+							"showIf": {
+								"trebbleUserId": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Trebbles",
+							"type": "string"
+						},
+						"trebbleId": {
+							"default": "",
+							"description": "The unique identifier of the Trebble to be embedded.",
+							"order": 3,
+							"placeholder": "https://s.trebble.fm/p/p/t/01234567890123456789",
+							"showIf": {
+								"myTrebbleToEmbed": {
+									"op": "==",
+									"value": "chooseAnotherTrebbleToEmbed"
+								}
+							},
+							"title": "Trebble URL",
+							"type": "string"
+						},
+						"trebbleUserId": {
+							"format": "account",
+							"order": 1,
+							"services": [
+								"Trebble"
+							],
+							"title": "Trebble Account",
+							"type": "object"
+						},
+						"whereToAppend": {
+							"default": "AfterThePage",
+							"enum": [
+								"BeforeThePage",
+								"AfterThePage",
+								"ChooseYourOwn"
+							],
+							"enumNames": {
+								"AfterThePage": "After the page content",
+								"BeforeThePage": "Before the page content",
+								"ChooseYourOwn": "Choose your own location ..."
+							},
+							"order": 4,
+							"title": "Location",
+							"type": "string"
+						},
+						"widgetPlaceholderBackgroundColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"title": "Widget placeholder background color",
+							"type": "string"
+						},
+						"widthFitContainer": {
+							"default": true,
+							"order": 7,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Expand horizontally",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"trebbleId",
+								"trebbleUserId",
+								"widthFitContainer",
+								"customWidth",
+								"heightFitContainer",
+								"widgetPlaceholderBackgroundColor",
+								"customHeight"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://s.trebble.fm/hooks/v1/cloudflare/onUserAuthenticated",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Trebble."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/kAm2LFz_pB33",
+			"metadata": {
+				"code": {
+					"sourceTag": "kAm2LFz_pB33",
+					"uploadedOn": "2017-06-26T13:27:02.954471046Z"
+				}
+			},
+			"created": "2017-06-26T13:27:02.597168Z",
+			"proposedApp": {
+				"id": "7f-ZRgYPIGaN",
+				"title": "Trebble",
+				"shortDescription": "A radio to share music you love & speak to your audience.",
+				"longDescription": "Trebble.fm is a music-sharing platform that gives you the power to curate your own radio and share it with the world. Trebble is easy to use, provides access to a vast catalog of music, and enables an unprecedented connection with your audience through Capsules. Capsules are brief audio recordings that you can pre-record for your station and have play between songs, allowing you to add your personal touch to your radio by speaking directly to your listeners. Whether you want to share a personal story of why you love a specific song, spread interesting news people should know about, or discuss a topic you care about, Capsules are the perfect way to convey your message.\n\nTrebble's Cloudflare application makes it easy to embed your Trebble radio station directly on your website. In one click, your visitors can enjoy music handpicked by you and listen to your Capsules without leaving your site. Embedding the Trebble widget on your website allows you to deliver an enriched curated unique music experience and increase engagement with your visitors through the content you create.",
+				"instructions": "",
+				"alias": "trebble",
+				"orgId": "0503a7774210fee228bbe55946c40682",
+				"icon": "//images.cloudflareapps.com/k9Pkh2brQVyyRlHbW0fa_trebbleLogoBB288X288.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/zcyQo80KRAa6hluEvxjc_Screen Shot 2017-06-09 at 12.46.24 AM.png",
+					"//images.cloudflareapps.com/fqVMUswGS3a8PIExhDqE_trebbleEagerSc2.png",
+					"//images.cloudflareapps.com/BcGDoSY9QnCbbjD4Uqz5_trebbleEagerSc3.png",
+					"//images.cloudflareapps.com/Ni867hDtQA21dt8rX5fk_Screen Shot 2017-04-01 at 9.32.56 AM.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/3rzPQNHzQQany8rdG3Fb_trebbleLogoFullWhite_cloudflare2.png",
+				"featuredAppImage": "",
+				"author": "Trebble.fm Inc.",
+				"tagline": "",
+				"website": "https://www.trebble.fm",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "help@trebble.fm",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "8DAV5VH7gb9j"
+				},
+				"created": "2017-03-30T16:52:51.248018Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "0503a7774210fee228bbe55946c40682",
+				"requestedAt": "2017-06-26T13:27:19.312208272Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-06-26T19:36:44.222898061Z"
+			}
+		},
+		{
+			"tag": "1.0.15",
+			"appId": "7f-ZRgYPIGaN",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/libs/drop-theme-arrows-bounce-dark.css"
+						},
+						{
+							"type": "style",
+							"src": "./source/style.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/libs/tether.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/libs/drop.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"alwaysVisible": {
+							"default": true,
+							"order": 5,
+							"showIf": {
+								"whereToAppend": {
+									"op": "!=",
+									"value": "ChooseYourOwn"
+								}
+							},
+							"title": "Always Visible",
+							"type": "boolean"
+						},
+						"customHeight": {
+							"default": 400,
+							"description": "Enter the height of the trebble widget in pixel.",
+							"minimum": 150,
+							"order": 10,
+							"showIf": {
+								"heightFitContainer": false,
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Custom Height",
+							"type": "integer"
+						},
+						"customWidth": {
+							"default": 300,
+							"description": "Enter the width of the trebble widget in pixel.",
+							"minimum": 200,
+							"order": 8,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn",
+								"widthFitContainer": false
+							},
+							"title": "Custom Width",
+							"type": "integer"
+						},
+						"heightFitContainer": {
+							"default": false,
+							"order": 9,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Expand vertically",
+							"type": "boolean"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Select where on the page would you like the Trebble widget to appear.",
+							"format": "element",
+							"order": 6,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Choose your own location",
+							"type": "object"
+						},
+						"myTrebbleToEmbed": {
+							"default": "chooseAnotherTrebbleToEmbed",
+							"enum": [
+								"chooseAnotherTrebbleToEmbed"
+							],
+							"enumNames": {
+								"chooseAnotherTrebbleToEmbed": "Choose another Trebble to embed ..."
+							},
+							"order": 2,
+							"showIf": {
+								"trebbleUserId": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Trebbles",
+							"type": "string"
+						},
+						"trebbleId": {
+							"default": "",
+							"description": "The unique identifier of the Trebble to be embedded.",
+							"order": 3,
+							"placeholder": "https://s.trebble.fm/p/p/t/01234567890123456789",
+							"showIf": {
+								"myTrebbleToEmbed": {
+									"op": "==",
+									"value": "chooseAnotherTrebbleToEmbed"
+								}
+							},
+							"title": "Trebble URL",
+							"type": "string"
+						},
+						"trebbleUserId": {
+							"format": "account",
+							"order": 1,
+							"services": [
+								"Trebble"
+							],
+							"title": "Trebble Account",
+							"type": "object"
+						},
+						"whereToAppend": {
+							"default": "AfterThePage",
+							"enum": [
+								"BeforeThePage",
+								"AfterThePage",
+								"ChooseYourOwn"
+							],
+							"enumNames": {
+								"AfterThePage": "After the page content",
+								"BeforeThePage": "Before the page content",
+								"ChooseYourOwn": "Choose your own location ..."
+							},
+							"order": 4,
+							"title": "Location",
+							"type": "string"
+						},
+						"widgetPlaceholderBackgroundColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"title": "Widget placeholder background color",
+							"type": "string"
+						},
+						"widthFitContainer": {
+							"default": true,
+							"order": 7,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Expand horizontally",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"trebbleId",
+								"trebbleUserId",
+								"widthFitContainer",
+								"customWidth",
+								"heightFitContainer",
+								"widgetPlaceholderBackgroundColor",
+								"customHeight"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://s.trebble.fm/hooks/v1/cloudflare/onUserAuthenticated",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Trebble."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/kAm2LFz_pB33",
+			"created": "2017-06-28T04:23:10.970693Z",
+			"proposedApp": {
+				"id": "7f-ZRgYPIGaN",
+				"title": "Trebble",
+				"shortDescription": "A radio to share music you love & speak to your audience.",
+				"longDescription": "Trebble.fm is a music-sharing platform that gives you the power to curate your own radio and share it with the world. Trebble is easy to use, provides access to a vast catalog of music, and enables an unprecedented connection with your audience through Capsules. Capsules are brief audio recordings that you can pre-record for your station and have play between songs, allowing you to add your personal touch to your radio by speaking directly to your listeners. Whether you want to share a personal story of why you love a specific song, spread interesting news people should know about, or discuss a topic you care about, Capsules are the perfect way to convey your message.\n\nTrebble's Cloudflare application makes it easy to embed your Trebble radio station directly on your website. In one click, your visitors can enjoy music handpicked by you and listen to your Capsules without leaving your site. Embedding the Trebble widget on your website allows you to deliver an enriched curated unique music experience and increase engagement with your visitors through the content you create.",
+				"instructions": "",
+				"alias": "trebble",
+				"orgId": "0503a7774210fee228bbe55946c40682",
+				"icon": "//images.cloudflareapps.com/k9Pkh2brQVyyRlHbW0fa_trebbleLogoBB288X288.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/zcyQo80KRAa6hluEvxjc_Screen Shot 2017-06-09 at 12.46.24 AM.png",
+					"//images.cloudflareapps.com/fqVMUswGS3a8PIExhDqE_trebbleEagerSc2.png",
+					"//images.cloudflareapps.com/BcGDoSY9QnCbbjD4Uqz5_trebbleEagerSc3.png",
+					"//images.cloudflareapps.com/Ni867hDtQA21dt8rX5fk_Screen Shot 2017-04-01 at 9.32.56 AM.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/3rzPQNHzQQany8rdG3Fb_trebbleLogoFullWhite_cloudflare2.png",
+				"featuredAppImage": "",
+				"author": "Trebble.fm Inc.",
+				"tagline": "",
+				"website": "https://www.trebble.fm",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "help@trebble.fm",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"marketing",
+					"get-more-customers",
+					"communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "8DAV5VH7gb9j"
+				},
+				"created": "2017-03-30T16:52:51.248018Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "0503a7774210fee228bbe55946c40682",
+				"requestedAt": "2017-06-28T04:23:23.006832568Z",
+				"canceledByUserId": "0503a7774210fee228bbe55946c40682",
+				"canceledAt": "2017-06-30T03:23:00.835480924Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.16",
+			"appId": "7f-ZRgYPIGaN",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/libs/drop-theme-arrows-bounce-dark.css"
+						},
+						{
+							"type": "style",
+							"src": "./source/style.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/libs/tether.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/libs/drop.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"alwaysVisible": {
+							"default": true,
+							"order": 5,
+							"showIf": {
+								"whereToAppend": {
+									"op": "!=",
+									"value": "ChooseYourOwn"
+								}
+							},
+							"title": "Always Visible",
+							"type": "boolean"
+						},
+						"customHeight": {
+							"default": 400,
+							"description": "Enter the height of the trebble widget in pixel.",
+							"minimum": 150,
+							"order": 10,
+							"showIf": {
+								"heightFitContainer": false,
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Custom Height",
+							"type": "integer"
+						},
+						"customWidth": {
+							"default": 300,
+							"description": "Enter the width of the trebble widget in pixel.",
+							"minimum": 200,
+							"order": 8,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn",
+								"widthFitContainer": false
+							},
+							"title": "Custom Width",
+							"type": "integer"
+						},
+						"heightFitContainer": {
+							"default": false,
+							"order": 9,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Expand vertically",
+							"type": "boolean"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Select where on the page would you like the Trebble widget to appear.",
+							"format": "element",
+							"order": 6,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Choose your own location",
+							"type": "object"
+						},
+						"myTrebbleToEmbed": {
+							"default": "chooseAnotherTrebbleToEmbed",
+							"enum": [
+								"chooseAnotherTrebbleToEmbed"
+							],
+							"enumNames": {
+								"chooseAnotherTrebbleToEmbed": "Choose another Trebble to embed ..."
+							},
+							"order": 2,
+							"showIf": {
+								"trebbleUserId": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Trebbles",
+							"type": "string"
+						},
+						"trebbleId": {
+							"default": "",
+							"description": "The unique identifier of the Trebble to be embedded.",
+							"order": 3,
+							"placeholder": "https://s.trebble.fm/p/p/t/01234567890123456789",
+							"showIf": {
+								"myTrebbleToEmbed": {
+									"op": "==",
+									"value": "chooseAnotherTrebbleToEmbed"
+								}
+							},
+							"title": "Trebble URL",
+							"type": "string"
+						},
+						"trebbleUserId": {
+							"format": "account",
+							"order": 1,
+							"services": [
+								"Trebble"
+							],
+							"title": "Trebble Account",
+							"type": "object"
+						},
+						"whereToAppend": {
+							"default": "AfterThePage",
+							"enum": [
+								"BeforeThePage",
+								"AfterThePage",
+								"ChooseYourOwn"
+							],
+							"enumNames": {
+								"AfterThePage": "After the page content",
+								"BeforeThePage": "Before the page content",
+								"ChooseYourOwn": "Choose your own location ..."
+							},
+							"order": 4,
+							"title": "Location",
+							"type": "string"
+						},
+						"widgetPlaceholderBackgroundColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"title": "Widget placeholder background color",
+							"type": "string"
+						},
+						"widthFitContainer": {
+							"default": true,
+							"order": 7,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Expand horizontally",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"trebbleId",
+								"trebbleUserId",
+								"widthFitContainer",
+								"customWidth",
+								"heightFitContainer",
+								"widgetPlaceholderBackgroundColor",
+								"customHeight"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://s.trebble.fm/hooks/v1/cloudflare/onUserAuthenticated",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Trebble."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/kAm2LFz_pB33",
+			"created": "2017-06-30T03:22:37.143352Z",
+			"proposedApp": {
+				"id": "7f-ZRgYPIGaN",
+				"title": "Trebble",
+				"shortDescription": "Broadcast your voice and the music you love on your site.",
+				"longDescription": "Trebble.fm is a music-sharing platform that gives you the power to curate your own radio and share it with the world. Trebble is easy to use, provides access to a vast catalog of music, and enables an unprecedented connection with your audience through Capsules. Capsules are brief audio recordings that you can pre-record for your station and have play between songs, allowing you to add your personal touch to your radio by speaking directly to your listeners. Whether you want to share a personal story of why you love a specific song, spread interesting news people should know about, or discuss a topic you care about, Capsules are the perfect way to convey your message.\n\nTrebble's Cloudflare application makes it easy to embed your Trebble radio station directly on your website. In one click, your visitors can enjoy music handpicked by you and listen to your Capsules without leaving your site. Embedding the Trebble widget on your website allows you to deliver an enriched curated unique music experience and increase engagement with your visitors through the content you create.",
+				"instructions": "",
+				"alias": "trebble",
+				"orgId": "0503a7774210fee228bbe55946c40682",
+				"icon": "//images.cloudflareapps.com/k9Pkh2brQVyyRlHbW0fa_trebbleLogoBB288X288.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/zcyQo80KRAa6hluEvxjc_Screen Shot 2017-06-09 at 12.46.24 AM.png",
+					"//images.cloudflareapps.com/fqVMUswGS3a8PIExhDqE_trebbleEagerSc2.png",
+					"//images.cloudflareapps.com/BcGDoSY9QnCbbjD4Uqz5_trebbleEagerSc3.png",
+					"//images.cloudflareapps.com/Ni867hDtQA21dt8rX5fk_Screen Shot 2017-04-01 at 9.32.56 AM.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/3rzPQNHzQQany8rdG3Fb_trebbleLogoFullWhite_cloudflare2.png",
+				"featuredAppImage": "",
+				"author": "Trebble.fm Inc.",
+				"tagline": "",
+				"website": "https://www.trebble.fm",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "help@trebble.fm",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"marketing",
+					"get-more-customers",
+					"communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "8DAV5VH7gb9j"
+				},
+				"created": "2017-03-30T16:52:51.248018Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "0503a7774210fee228bbe55946c40682",
+				"requestedAt": "2017-06-30T03:23:00.851208393Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-06-30T06:15:01.142216979Z"
+			}
+		},
+		{
+			"tag": "1.0.17",
+			"appId": "7f-ZRgYPIGaN",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/libs/drop-theme-arrows-bounce-dark.css"
+						},
+						{
+							"type": "style",
+							"src": "./source/style.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/libs/tether.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/libs/drop.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"alwaysVisible": {
+							"default": true,
+							"order": 5,
+							"showIf": {
+								"whereToAppend": {
+									"op": "!=",
+									"value": "ChooseYourOwn"
+								}
+							},
+							"title": "Always Visible",
+							"type": "boolean"
+						},
+						"customHeight": {
+							"default": 400,
+							"description": "Enter the height of the trebble widget in pixel.",
+							"minimum": 150,
+							"order": 10,
+							"showIf": {
+								"heightFitContainer": false,
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Custom Height",
+							"type": "integer"
+						},
+						"customWidth": {
+							"default": 300,
+							"description": "Enter the width of the trebble widget in pixel.",
+							"minimum": 200,
+							"order": 8,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn",
+								"widthFitContainer": false
+							},
+							"title": "Custom Width",
+							"type": "integer"
+						},
+						"heightFitContainer": {
+							"default": false,
+							"order": 9,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Expand vertically",
+							"type": "boolean"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Select where on the page would you like the Trebble widget to appear.",
+							"format": "element",
+							"order": 6,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Choose your own location",
+							"type": "object"
+						},
+						"myTrebbleToEmbed": {
+							"default": "chooseAnotherTrebbleToEmbed",
+							"enum": [
+								"chooseAnotherTrebbleToEmbed"
+							],
+							"enumNames": {
+								"chooseAnotherTrebbleToEmbed": "Choose another Trebble to embed ..."
+							},
+							"order": 2,
+							"showIf": {
+								"trebbleUserId": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Trebbles",
+							"type": "string"
+						},
+						"trebbleId": {
+							"default": "",
+							"description": "The unique identifier of the Trebble to be embedded.",
+							"order": 3,
+							"placeholder": "https://s.trebble.fm/p/p/t/01234567890123456789",
+							"showIf": {
+								"myTrebbleToEmbed": {
+									"op": "==",
+									"value": "chooseAnotherTrebbleToEmbed"
+								}
+							},
+							"title": "Trebble URL",
+							"type": "string"
+						},
+						"trebbleUserId": {
+							"format": "account",
+							"order": 1,
+							"services": [
+								"Trebble"
+							],
+							"title": "Trebble Account",
+							"type": "object"
+						},
+						"whereToAppend": {
+							"default": "AfterThePage",
+							"enum": [
+								"BeforeThePage",
+								"AfterThePage",
+								"ChooseYourOwn"
+							],
+							"enumNames": {
+								"AfterThePage": "After the page content",
+								"BeforeThePage": "Before the page content",
+								"ChooseYourOwn": "Choose your own location ..."
+							},
+							"order": 4,
+							"title": "Location",
+							"type": "string"
+						},
+						"widgetPlaceholderBackgroundColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"title": "Widget placeholder background color",
+							"type": "string"
+						},
+						"widthFitContainer": {
+							"default": true,
+							"order": 7,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Expand horizontally",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"trebbleId",
+								"trebbleUserId",
+								"widthFitContainer",
+								"customWidth",
+								"heightFitContainer",
+								"widgetPlaceholderBackgroundColor",
+								"customHeight"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://s.trebble.fm/hooks/v1/cloudflare/onUserAuthenticated",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Trebble."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/c32ZiBIdeZCg",
+			"metadata": {
+				"code": {
+					"sourceTag": "c32ZiBIdeZCg",
+					"uploadedOn": "2017-07-03T16:23:05.123093536Z"
+				}
+			},
+			"created": "2017-07-03T16:23:04.387241Z",
+			"proposedApp": {
+				"id": "7f-ZRgYPIGaN",
+				"title": "Trebble",
+				"shortDescription": "Broadcast your voice and the music you love on your site.",
+				"longDescription": "Trebble.fm is a music-sharing platform that gives you the power to curate your own radio and share it with the world. Trebble is easy to use, provides access to a vast catalog of music, and enables an unprecedented connection with your audience through Capsules. Capsules are brief audio recordings that you can pre-record for your station and have play between songs, allowing you to add your personal touch to your radio by speaking directly to your listeners. Whether you want to share a personal story of why you love a specific song, spread interesting news people should know about, or discuss a topic you care about, Capsules are the perfect way to convey your message.\n\nTrebble's Cloudflare application makes it easy to embed your Trebble radio station directly on your website. In one click, your visitors can enjoy music handpicked by you and listen to your Capsules without leaving your site. Embedding the Trebble widget on your website allows you to deliver an enriched curated unique music experience and increase engagement with your visitors through the content you create.",
+				"instructions": "",
+				"alias": "trebble",
+				"orgId": "0503a7774210fee228bbe55946c40682",
+				"icon": "//images.cloudflareapps.com/k9Pkh2brQVyyRlHbW0fa_trebbleLogoBB288X288.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/zcyQo80KRAa6hluEvxjc_Screen Shot 2017-06-09 at 12.46.24 AM.png",
+					"//images.cloudflareapps.com/fqVMUswGS3a8PIExhDqE_trebbleEagerSc2.png",
+					"//images.cloudflareapps.com/BcGDoSY9QnCbbjD4Uqz5_trebbleEagerSc3.png",
+					"//images.cloudflareapps.com/Ni867hDtQA21dt8rX5fk_Screen Shot 2017-04-01 at 9.32.56 AM.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/3rzPQNHzQQany8rdG3Fb_trebbleLogoFullWhite_cloudflare2.png",
+				"featuredAppImage": "",
+				"author": "Trebble.fm Inc.",
+				"tagline": "",
+				"website": "https://www.trebble.fm",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "help@trebble.fm",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"marketing",
+					"get-more-customers",
+					"communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "8DAV5VH7gb9j"
+				},
+				"created": "2017-03-30T16:52:51.248018Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "0503a7774210fee228bbe55946c40682",
+				"requestedAt": "2017-07-03T16:23:30.202212379Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-07-03T20:57:28.400726565Z"
+			}
+		},
+		{
+			"tag": "1.0.18",
+			"appId": "7f-ZRgYPIGaN",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/libs/drop-theme-arrows-bounce-dark.css"
+						},
+						{
+							"type": "style",
+							"src": "./source/style.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/libs/tether.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/libs/drop.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"alwaysVisible": {
+							"default": true,
+							"order": 5,
+							"showIf": {
+								"whereToAppend": {
+									"op": "!=",
+									"value": "ChooseYourOwn"
+								}
+							},
+							"title": "Always Visible",
+							"type": "boolean"
+						},
+						"customHeight": {
+							"default": 400,
+							"description": "Enter the height of the trebble widget in pixel.",
+							"minimum": 150,
+							"order": 10,
+							"showIf": {
+								"heightFitContainer": false,
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Custom Height",
+							"type": "integer"
+						},
+						"customWidth": {
+							"default": 300,
+							"description": "Enter the width of the trebble widget in pixel.",
+							"minimum": 200,
+							"order": 8,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn",
+								"widthFitContainer": false
+							},
+							"title": "Custom Width",
+							"type": "integer"
+						},
+						"heightFitContainer": {
+							"default": false,
+							"order": 9,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Expand vertically",
+							"type": "boolean"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Select where on the page would you like the Trebble widget to appear.",
+							"format": "element",
+							"order": 6,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Choose your own location",
+							"type": "object"
+						},
+						"myTrebbleToEmbed": {
+							"default": "chooseAnotherTrebbleToEmbed",
+							"enum": [
+								"chooseAnotherTrebbleToEmbed"
+							],
+							"enumNames": {
+								"chooseAnotherTrebbleToEmbed": "Choose another Trebble to embed ..."
+							},
+							"order": 2,
+							"showIf": {
+								"trebbleUserId": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Trebbles",
+							"type": "string"
+						},
+						"trebbleId": {
+							"default": "",
+							"description": "The unique identifier of the Trebble to be embedded.",
+							"order": 3,
+							"placeholder": "https://s.trebble.fm/p/p/t/01234567890123456789",
+							"showIf": {
+								"myTrebbleToEmbed": {
+									"op": "==",
+									"value": "chooseAnotherTrebbleToEmbed"
+								}
+							},
+							"title": "Trebble URL",
+							"type": "string"
+						},
+						"trebbleUserId": {
+							"format": "account",
+							"order": 1,
+							"services": [
+								"Trebble"
+							],
+							"title": "Trebble Account",
+							"type": "object"
+						},
+						"whereToAppend": {
+							"default": "AfterThePage",
+							"enum": [
+								"BeforeThePage",
+								"AfterThePage",
+								"ChooseYourOwn"
+							],
+							"enumNames": {
+								"AfterThePage": "After the page content",
+								"BeforeThePage": "Before the page content",
+								"ChooseYourOwn": "Choose your own location ..."
+							},
+							"order": 4,
+							"title": "Location",
+							"type": "string"
+						},
+						"widgetPlaceholderBackgroundColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"title": "Widget placeholder background color",
+							"type": "string"
+						},
+						"widthFitContainer": {
+							"default": true,
+							"order": 7,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Expand horizontally",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"trebbleId",
+								"trebbleUserId",
+								"widthFitContainer",
+								"customWidth",
+								"heightFitContainer",
+								"widgetPlaceholderBackgroundColor",
+								"customHeight"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://s.trebble.fm/hooks/v1/cloudflare/onUserAuthenticated",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Trebble."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0,
+				"upvotes": 0,
+				"downvotes": 1
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/fFT__XYDXLMN",
+			"metadata": {
+				"code": {
+					"sourceTag": "fFT__XYDXLMN",
+					"uploadedOn": "2017-07-04T04:03:21.446597015Z"
+				}
+			},
+			"created": "2017-07-04T04:03:20.779495Z",
+			"proposedApp": {
+				"id": "7f-ZRgYPIGaN",
+				"title": "Trebble",
+				"shortDescription": "Broadcast your voice and the music you love on your site.",
+				"longDescription": "Trebble.fm is a music-sharing platform that gives you the power to curate your own radio and share it with the world. Trebble is easy to use, provides access to a vast catalog of music, and enables an unprecedented connection with your audience through Capsules. Capsules are brief audio recordings that you can pre-record for your station and have play between songs, allowing you to add your personal touch to your radio by speaking directly to your listeners. Whether you want to share a personal story of why you love a specific song, spread interesting news people should know about, or discuss a topic you care about, Capsules are the perfect way to convey your message.\n\nTrebble's Cloudflare application makes it easy to embed your Trebble radio station directly on your website. In one click, your visitors can enjoy music handpicked by you and listen to your Capsules without leaving your site. Embedding the Trebble widget on your website allows you to deliver an enriched curated unique music experience and increase engagement with your visitors through the content you create.",
+				"instructions": "",
+				"alias": "trebble",
+				"orgId": "0503a7774210fee228bbe55946c40682",
+				"icon": "//images.cloudflareapps.com/k9Pkh2brQVyyRlHbW0fa_trebbleLogoBB288X288.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/zcyQo80KRAa6hluEvxjc_Screen Shot 2017-06-09 at 12.46.24 AM.png",
+					"//images.cloudflareapps.com/fqVMUswGS3a8PIExhDqE_trebbleEagerSc2.png",
+					"//images.cloudflareapps.com/BcGDoSY9QnCbbjD4Uqz5_trebbleEagerSc3.png",
+					"//images.cloudflareapps.com/Ni867hDtQA21dt8rX5fk_Screen Shot 2017-04-01 at 9.32.56 AM.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/3rzPQNHzQQany8rdG3Fb_trebbleLogoFullWhite_cloudflare2.png",
+				"featuredAppImage": "",
+				"author": "Trebble.fm Inc.",
+				"tagline": "",
+				"website": "https://www.trebble.fm",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "help@trebble.fm",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"marketing",
+					"get-more-customers",
+					"communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "8DAV5VH7gb9j"
+				},
+				"created": "2017-03-30T16:52:51.248018Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "0503a7774210fee228bbe55946c40682",
+				"requestedAt": "2017-07-04T04:04:45.541329478Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-07-05T09:29:42.139037853Z"
+			}
+		},
+		{
+			"tag": "1.0.19",
+			"appId": "7f-ZRgYPIGaN",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/libs/drop-theme-arrows-bounce-dark.css"
+						},
+						{
+							"type": "style",
+							"src": "./source/style.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/libs/tether.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/libs/drop.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"alwaysVisible": {
+							"default": true,
+							"order": 5,
+							"showIf": {
+								"whereToAppend": {
+									"op": "!=",
+									"value": "ChooseYourOwn"
+								}
+							},
+							"title": "Always Visible",
+							"type": "boolean"
+						},
+						"customHeight": {
+							"default": 400,
+							"description": "Enter the height of the trebble widget in pixel.",
+							"minimum": 150,
+							"order": 10,
+							"showIf": {
+								"heightFitContainer": false,
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Custom Height",
+							"type": "integer"
+						},
+						"customWidth": {
+							"default": 300,
+							"description": "Enter the width of the trebble widget in pixel.",
+							"minimum": 200,
+							"order": 8,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn",
+								"widthFitContainer": false
+							},
+							"title": "Custom Width",
+							"type": "integer"
+						},
+						"heightFitContainer": {
+							"default": false,
+							"order": 9,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Expand vertically",
+							"type": "boolean"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Select where on the page would you like the Trebble widget to appear.",
+							"format": "element",
+							"order": 6,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Choose your own location",
+							"type": "object"
+						},
+						"myTrebbleToEmbed": {
+							"default": "chooseAnotherTrebbleToEmbed",
+							"enum": [
+								"chooseAnotherTrebbleToEmbed"
+							],
+							"enumNames": {
+								"chooseAnotherTrebbleToEmbed": "Choose another Trebble to embed ..."
+							},
+							"order": 2,
+							"showIf": {
+								"trebbleUserId": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Trebbles",
+							"type": "string"
+						},
+						"trebbleId": {
+							"default": "",
+							"description": "The unique identifier of the Trebble to be embedded.",
+							"order": 3,
+							"placeholder": "https://s.trebble.fm/p/p/t/01234567890123456789",
+							"showIf": {
+								"myTrebbleToEmbed": {
+									"op": "==",
+									"value": "chooseAnotherTrebbleToEmbed"
+								}
+							},
+							"title": "Trebble URL",
+							"type": "string"
+						},
+						"trebbleUserId": {
+							"format": "account",
+							"order": 1,
+							"services": [
+								"Trebble"
+							],
+							"title": "Trebble Account",
+							"type": "object"
+						},
+						"whereToAppend": {
+							"default": "AfterThePage",
+							"enum": [
+								"BeforeThePage",
+								"AfterThePage",
+								"ChooseYourOwn"
+							],
+							"enumNames": {
+								"AfterThePage": "After the page content",
+								"BeforeThePage": "Before the page content",
+								"ChooseYourOwn": "Choose your own location ..."
+							},
+							"order": 4,
+							"title": "Location",
+							"type": "string"
+						},
+						"widgetPlaceholderBackgroundColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"title": "Widget placeholder background color",
+							"type": "string"
+						},
+						"widthFitContainer": {
+							"default": true,
+							"order": 7,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Expand horizontally",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"trebbleId",
+								"trebbleUserId",
+								"widthFitContainer",
+								"customWidth",
+								"heightFitContainer",
+								"widgetPlaceholderBackgroundColor",
+								"customHeight"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://s.trebble.fm/hooks/v1/cloudflare/onUserAuthenticated",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Trebble."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "Added to “Widgets & Plugins” category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/fFT__XYDXLMN",
+			"created": "2018-01-23T19:59:08.916944Z",
+			"proposedApp": {
+				"id": "7f-ZRgYPIGaN",
+				"title": "Trebble",
+				"shortDescription": "Broadcast your voice and the music you love on your site.",
+				"longDescription": "Trebble.fm is a music-sharing platform that gives you the power to curate your own radio and share it with the world. Trebble is easy to use, provides access to a vast catalog of music, and enables an unprecedented connection with your audience through Capsules. Capsules are brief audio recordings that you can pre-record for your station and have play between songs, allowing you to add your personal touch to your radio by speaking directly to your listeners. Whether you want to share a personal story of why you love a specific song, spread interesting news people should know about, or discuss a topic you care about, Capsules are the perfect way to convey your message.\n\nTrebble's Cloudflare application makes it easy to embed your Trebble radio station directly on your website. In one click, your visitors can enjoy music handpicked by you and listen to your Capsules without leaving your site. Embedding the Trebble widget on your website allows you to deliver an enriched curated unique music experience and increase engagement with your visitors through the content you create.",
+				"instructions": "",
+				"alias": "trebble",
+				"orgId": "0503a7774210fee228bbe55946c40682",
+				"icon": "//images.cloudflareapps.com/k9Pkh2brQVyyRlHbW0fa_trebbleLogoBB288X288.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/zcyQo80KRAa6hluEvxjc_Screen Shot 2017-06-09 at 12.46.24 AM.png",
+					"//images.cloudflareapps.com/fqVMUswGS3a8PIExhDqE_trebbleEagerSc2.png",
+					"//images.cloudflareapps.com/BcGDoSY9QnCbbjD4Uqz5_trebbleEagerSc3.png",
+					"//images.cloudflareapps.com/Ni867hDtQA21dt8rX5fk_Screen Shot 2017-04-01 at 9.32.56 AM.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/3rzPQNHzQQany8rdG3Fb_trebbleLogoFullWhite_cloudflare2.png",
+				"featuredAppImage": "",
+				"author": "Trebble.fm Inc.",
+				"tagline": "",
+				"website": "https://www.trebble.fm",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "help@trebble.fm",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"marketing",
+					"get-more-customers",
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "8DAV5VH7gb9j"
+				},
+				"created": "2017-03-30T16:52:51.248018Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-01-23T19:59:09.184348308Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-01-23T20:06:50.565940535Z"
+			}
+		},
+		{
+			"tag": "1.0.20",
+			"appId": "7f-ZRgYPIGaN",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/libs/drop-theme-arrows-bounce-dark.css"
+						},
+						{
+							"type": "style",
+							"src": "./source/style.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/libs/tether.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/libs/drop.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"alwaysVisible": {
+							"default": true,
+							"order": 5,
+							"showIf": {
+								"whereToAppend": {
+									"op": "!=",
+									"value": "ChooseYourOwn"
+								}
+							},
+							"title": "Always Visible",
+							"type": "boolean"
+						},
+						"customHeight": {
+							"default": 400,
+							"description": "Enter the height of the trebble widget in pixel.",
+							"minimum": 150,
+							"order": 10,
+							"showIf": {
+								"heightFitContainer": false,
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Custom Height",
+							"type": "integer"
+						},
+						"customWidth": {
+							"default": 300,
+							"description": "Enter the width of the trebble widget in pixel.",
+							"minimum": 200,
+							"order": 8,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn",
+								"widthFitContainer": false
+							},
+							"title": "Custom Width",
+							"type": "integer"
+						},
+						"heightFitContainer": {
+							"default": false,
+							"order": 9,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Expand vertically",
+							"type": "boolean"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Select where on the page would you like the Trebble widget to appear.",
+							"format": "element",
+							"order": 6,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Choose your own location",
+							"type": "object"
+						},
+						"myTrebbleToEmbed": {
+							"default": "chooseAnotherTrebbleToEmbed",
+							"enum": [
+								"chooseAnotherTrebbleToEmbed"
+							],
+							"enumNames": {
+								"chooseAnotherTrebbleToEmbed": "Choose another Trebble to embed ..."
+							},
+							"order": 2,
+							"showIf": {
+								"trebbleUserId": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Trebbles",
+							"type": "string"
+						},
+						"trebbleId": {
+							"default": "",
+							"description": "The unique identifier of the Trebble to be embedded.",
+							"order": 3,
+							"placeholder": "https://s.trebble.fm/p/p/t/01234567890123456789",
+							"showIf": {
+								"myTrebbleToEmbed": {
+									"op": "==",
+									"value": "chooseAnotherTrebbleToEmbed"
+								}
+							},
+							"title": "Trebble URL",
+							"type": "string"
+						},
+						"trebbleUserId": {
+							"format": "account",
+							"order": 1,
+							"services": [
+								"Trebble"
+							],
+							"title": "Trebble Account",
+							"type": "object"
+						},
+						"whereToAppend": {
+							"default": "AfterThePage",
+							"enum": [
+								"BeforeThePage",
+								"AfterThePage",
+								"ChooseYourOwn"
+							],
+							"enumNames": {
+								"AfterThePage": "After the page content",
+								"BeforeThePage": "Before the page content",
+								"ChooseYourOwn": "Choose your own location ..."
+							},
+							"order": 4,
+							"title": "Location",
+							"type": "string"
+						},
+						"widgetPlaceholderBackgroundColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"title": "Widget placeholder background color",
+							"type": "string"
+						},
+						"widthFitContainer": {
+							"default": true,
+							"order": 7,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Expand horizontally",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"trebbleId",
+								"trebbleUserId",
+								"widthFitContainer",
+								"customWidth",
+								"heightFitContainer",
+								"widgetPlaceholderBackgroundColor",
+								"customHeight"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://s.trebble.fm/hooks/v1/cloudflare/onUserAuthenticated",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Trebble."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.57,
+				"upvotes": 4,
+				"downvotes": 3
+			},
+			"releaseNotes": "Added to Cloudflare Apps recommendation engine",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/fFT__XYDXLMN",
+			"created": "2018-02-06T21:46:27.200712Z",
+			"proposedApp": {
+				"id": "7f-ZRgYPIGaN",
+				"title": "Trebble",
+				"shortDescription": "Broadcast your voice and the music you love on your site.",
+				"longDescription": "Trebble.fm is a music-sharing platform that gives you the power to curate your own radio and share it with the world. Trebble is easy to use, provides access to a vast catalog of music, and enables an unprecedented connection with your audience through Capsules. Capsules are brief audio recordings that you can pre-record for your station and have play between songs, allowing you to add your personal touch to your radio by speaking directly to your listeners. Whether you want to share a personal story of why you love a specific song, spread interesting news people should know about, or discuss a topic you care about, Capsules are the perfect way to convey your message.\n\nTrebble's Cloudflare application makes it easy to embed your Trebble radio station directly on your website. In one click, your visitors can enjoy music handpicked by you and listen to your Capsules without leaving your site. Embedding the Trebble widget on your website allows you to deliver an enriched curated unique music experience and increase engagement with your visitors through the content you create.",
+				"instructions": "",
+				"alias": "trebble",
+				"orgId": "0503a7774210fee228bbe55946c40682",
+				"icon": "//images.cloudflareapps.com/k9Pkh2brQVyyRlHbW0fa_trebbleLogoBB288X288.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/zcyQo80KRAa6hluEvxjc_Screen Shot 2017-06-09 at 12.46.24 AM.png",
+					"//images.cloudflareapps.com/fqVMUswGS3a8PIExhDqE_trebbleEagerSc2.png",
+					"//images.cloudflareapps.com/BcGDoSY9QnCbbjD4Uqz5_trebbleEagerSc3.png",
+					"//images.cloudflareapps.com/Ni867hDtQA21dt8rX5fk_Screen Shot 2017-04-01 at 9.32.56 AM.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/3rzPQNHzQQany8rdG3Fb_trebbleLogoFullWhite_cloudflare2.png",
+				"featuredAppImage": "",
+				"author": "Trebble.fm Inc.",
+				"tagline": "",
+				"website": "https://www.trebble.fm",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "help@trebble.fm",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"marketing",
+					"get-more-customers",
+					"widgets-and-plugins",
+					"recommended-for-blogs"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "8DAV5VH7gb9j"
+				},
+				"created": "2017-03-30T16:52:51.248018Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-02-06T21:46:27.452697842Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-02-06T21:56:11.665964091Z"
+			}
+		},
+		{
+			"tag": "2.0.0",
+			"appId": "7f-ZRgYPIGaN",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/libs/drop-theme-arrows-bounce-dark.css"
+						},
+						{
+							"type": "style",
+							"src": "./source/style.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/libs/tether.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/libs/drop.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"alwaysVisible": {
+							"default": true,
+							"order": 4,
+							"showIf": {
+								"whereToAppend": {
+									"op": "!=",
+									"value": "ChooseYourOwn"
+								}
+							},
+							"title": "Always Visible",
+							"type": "boolean"
+						},
+						"customHeight": {
+							"default": 400,
+							"description": "Enter the height of the trebble widget in pixel.",
+							"minimum": 150,
+							"order": 9,
+							"showIf": {
+								"heightFitContainer": false,
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Custom Height",
+							"type": "integer"
+						},
+						"customWidth": {
+							"default": 300,
+							"description": "Enter the width of the trebble widget in pixel.",
+							"minimum": 200,
+							"order": 7,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn",
+								"widthFitContainer": false
+							},
+							"title": "Custom Width",
+							"type": "integer"
+						},
+						"heightFitContainer": {
+							"default": false,
+							"order": 8,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Expand vertically",
+							"type": "boolean"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Select where on the page would you like the Trebble widget to appear.",
+							"format": "element",
+							"order": 5,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Choose your own location",
+							"type": "object"
+						},
+						"trebbleUserId": {
+							"format": "account",
+							"order": 1,
+							"services": [
+								"Trebble"
+							],
+							"title": "Trebble Account",
+							"type": "object"
+						},
+						"whereToAppend": {
+							"default": "AfterThePage",
+							"enum": [
+								"BeforeThePage",
+								"AfterThePage",
+								"ChooseYourOwn"
+							],
+							"enumNames": {
+								"AfterThePage": "After the page content",
+								"BeforeThePage": "Before the page content",
+								"ChooseYourOwn": "Choose your own location ..."
+							},
+							"order": 3,
+							"title": "Location",
+							"type": "string"
+						},
+						"widgetPlaceholderBackgroundColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 2,
+							"title": "Widget placeholder background color",
+							"type": "string"
+						},
+						"widthFitContainer": {
+							"default": true,
+							"order": 6,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Expand horizontally",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"trebbleUserId",
+								"widthFitContainer",
+								"customWidth",
+								"heightFitContainer",
+								"widgetPlaceholderBackgroundColor",
+								"customHeight"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://s.trebble.fm/hooks/v1/cloudflare/onUserAuthenticated",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Trebble."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "This release is a completely new version of the Trebble Cloudflare app. It allows you to help keep your visitors informed by adding a shortcast player to your website. This unique experience will help increase the engagement on your website and will encourage your visitors to visit your site regularly.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/DmkEc15MMQfT",
+			"metadata": {
+				"code": {
+					"sourceTag": "DmkEc15MMQfT",
+					"uploadedOn": "2020-01-03T22:32:06.948306232Z"
+				}
+			},
+			"created": "2020-01-03T22:32:05.992784Z",
+			"proposedApp": {
+				"id": "7f-ZRgYPIGaN",
+				"title": "Trebble",
+				"shortDescription": "Engage visitors by adding your own curated shortcast feed",
+				"longDescription": "Trebble.fm lets you stay up-to-date with  all the topics that essential to you in just a few minutes per day without having to stay glued to your screen. It brings all your favorite sources in one place and allows you to consume their content in one normalized audio format called shortcast. Shortcasts are very short podcasts that are usually 2 to 3 minutes long and often published daily.\n\nUsing the Trebble platform, you subscribe to all your favorite sources and every day you'll get a playlist made of fresh shortcasts from your subscriptions to listen to . In a few minutes each day,  you'll learn everything you need to know for the day. It's easy, simple and free.\n\nTrebble's Cloudflare application makes it easy to embed your Trebble shortcast feed directly on your website. In one click, your visitors will be able to get informed by listening to a shortcast feed made of sources you've handpicked. This unique experience will increase the engagement of your visitors and will encourage them to come back.",
+				"instructions": "* Sign-up for a Trebble FM account as listener <a href=\"https://web.trebble.fm\">here</a>\n* Once you've successfully created your account, build your Trebble shortcast feed by subscribing to all the Trebble stations that you want to have part of your feed. You can browse them by categories and language in the  <a href=\"https://web.trebble.fm/ExplorePage\">Browse Page</a>\n* Login in Cloudflare with your newly created Trebbe FM account\n* Choose where you want the Trebble player to be located on your website and customize.\n\nVoilà! Your visitors can now listen to your personalized shortcast feed right from your website. Your feed will automatically be updated with fresh shortcast from your subscriptions.",
+				"alias": "trebble",
+				"orgId": "0503a7774210fee228bbe55946c40682",
+				"icon": "//images.cloudflareapps.com/k9Pkh2brQVyyRlHbW0fa_trebbleLogoBB288X288.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/sXbMhlM4S1tx/Cloudlare_Landing_Page.png",
+					"https://images.cloudflareapps.com/sXbMhlM4S1tx/Cloudlare_Trebble_Player.png",
+					"https://images.cloudflareapps.com/sXbMhlM4S1tx/Cloudlare_Add_Player.png",
+					"https://images.cloudflareapps.com/sXbMhlM4S1tx/Cloudlare_Subscribe.png",
+					"https://images.cloudflareapps.com/sXbMhlM4S1tx/Cloudlare_Browse.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/3rzPQNHzQQany8rdG3Fb_trebbleLogoFullWhite_cloudflare2.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/isAEtOnPPHED/TrebbleCloudlareBanner.png",
+				"author": "Trebble.fm Inc.",
+				"tagline": "",
+				"website": "https://www.trebble.fm",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.trebble.fm/trebblefm-inc-terms-of-service",
+				"privacyPolicyURL": "https://www.trebble.fm/trebble-fm-inc-privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "help@trebble.fm",
+				"products": [
+					{
+						"id": "",
+						"title": "",
+						"shortDescription": "",
+						"longDescription": "",
+						"visible": false,
+						"price": 0,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"add-on",
+					"marketing",
+					"get-more-customers",
+					"widgets-and-plugins",
+					"recommended-for-blogs"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "8DAV5VH7gb9j"
+				},
+				"created": "2017-03-30T16:52:51.248018Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "0503a7774210fee228bbe55946c40682",
+				"requestedAt": "2020-01-04T20:16:09.197531443Z",
+				"canceledByUserId": "0503a7774210fee228bbe55946c40682",
+				"canceledAt": "2020-01-04T20:18:17.103534203Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "2.0.1",
+			"appId": "7f-ZRgYPIGaN",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/libs/drop-theme-arrows-bounce-dark.css"
+						},
+						{
+							"type": "style",
+							"src": "./source/style.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/libs/tether.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/libs/drop.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"alwaysVisible": {
+							"default": true,
+							"order": 4,
+							"showIf": {
+								"whereToAppend": {
+									"op": "!=",
+									"value": "ChooseYourOwn"
+								}
+							},
+							"title": "Always Visible",
+							"type": "boolean"
+						},
+						"customHeight": {
+							"default": 400,
+							"description": "Enter the height of the trebble widget in pixel.",
+							"minimum": 150,
+							"order": 9,
+							"showIf": {
+								"heightFitContainer": false,
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Custom Height",
+							"type": "integer"
+						},
+						"customWidth": {
+							"default": 300,
+							"description": "Enter the width of the trebble widget in pixel.",
+							"minimum": 200,
+							"order": 7,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn",
+								"widthFitContainer": false
+							},
+							"title": "Custom Width",
+							"type": "integer"
+						},
+						"heightFitContainer": {
+							"default": false,
+							"order": 8,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Expand vertically",
+							"type": "boolean"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Select where on the page would you like the Trebble widget to appear.",
+							"format": "element",
+							"order": 5,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Choose your own location",
+							"type": "object"
+						},
+						"trebbleUserId": {
+							"format": "account",
+							"order": 1,
+							"services": [
+								"Trebble"
+							],
+							"title": "Trebble Account",
+							"type": "object"
+						},
+						"whereToAppend": {
+							"default": "AfterThePage",
+							"enum": [
+								"BeforeThePage",
+								"AfterThePage",
+								"ChooseYourOwn"
+							],
+							"enumNames": {
+								"AfterThePage": "After the page content",
+								"BeforeThePage": "Before the page content",
+								"ChooseYourOwn": "Choose your own location ..."
+							},
+							"order": 3,
+							"title": "Location",
+							"type": "string"
+						},
+						"widgetPlaceholderBackgroundColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 2,
+							"title": "Widget placeholder background color",
+							"type": "string"
+						},
+						"widthFitContainer": {
+							"default": true,
+							"order": 6,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Expand horizontally",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"trebbleUserId",
+								"widthFitContainer",
+								"customWidth",
+								"heightFitContainer",
+								"widgetPlaceholderBackgroundColor",
+								"customHeight"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://s.trebble.fm/hooks/v1/cloudflare/onUserAuthenticated",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Trebble."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "This release is a completely new version of the Trebble Cloudflare app. It allows you to help keep your visitors informed by adding a shortcast player to your website. This unique experience will help increase the engagement on your website and will encourage your visitors to visit your site regularly.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/DmkEc15MMQfT",
+			"created": "2020-01-04T20:17:41.825004Z",
+			"proposedApp": {
+				"id": "7f-ZRgYPIGaN",
+				"title": "Trebble",
+				"shortDescription": "Engage visitors by adding your own curated shortcast feed",
+				"longDescription": "Trebble.fm lets you stay up-to-date with  all the topics that essential to you in just a few minutes per day without having to stay glued to your screen. It brings all your favorite sources in one place and allows you to consume their content in one normalized audio format called shortcast. Shortcasts are very short podcasts that are usually 2 to 3 minutes long and often published daily.\n\nUsing the Trebble platform, you subscribe to all your favorite sources and every day you'll get a playlist made of fresh shortcasts from your subscriptions to listen to . In a few minutes each day,  you'll learn everything you need to know for the day. It's easy, simple and free.\n\nTrebble's Cloudflare application makes it easy to embed your Trebble shortcast feed directly on your website. In one click, your visitors will be able to get informed by listening to a shortcast feed made of sources you've handpicked. This unique experience will increase the engagement of your visitors and will encourage them to come back.",
+				"instructions": "* Sign-up for a Trebble FM account as listener <a target=\"_blank\" href=\"https://web.trebble.fm\">here</a>\n* Once you've successfully created your account, build your Trebble shortcast feed by subscribing to all the Trebble stations that you want to have part of your feed. You can browse them by categories and language in the  <a  target=\"_blank\" href=\"https://web.trebble.fm/ExplorePage\">Browse Page</a>\n* Login in Cloudflare with your newly created Trebbe FM account\n* Choose where you want the Trebble player to be located on your website and customize.\n\nVoilà! Your visitors can now listen to your personalized shortcast feed right from your website. Your feed will automatically be updated with fresh shortcast from your subscriptions.",
+				"alias": "trebble",
+				"orgId": "0503a7774210fee228bbe55946c40682",
+				"icon": "//images.cloudflareapps.com/k9Pkh2brQVyyRlHbW0fa_trebbleLogoBB288X288.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/sXbMhlM4S1tx/Cloudlare_Landing_Page.png",
+					"https://images.cloudflareapps.com/sXbMhlM4S1tx/Cloudlare_Trebble_Player.png",
+					"https://images.cloudflareapps.com/sXbMhlM4S1tx/Cloudlare_Add_Player.png",
+					"https://images.cloudflareapps.com/sXbMhlM4S1tx/Cloudlare_Subscribe.png",
+					"https://images.cloudflareapps.com/sXbMhlM4S1tx/Cloudlare_Browse.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/3rzPQNHzQQany8rdG3Fb_trebbleLogoFullWhite_cloudflare2.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/isAEtOnPPHED/TrebbleCloudlareBanner.png",
+				"author": "Trebble.fm Inc.",
+				"tagline": "",
+				"website": "https://www.trebble.fm",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.trebble.fm/trebblefm-inc-terms-of-service",
+				"privacyPolicyURL": "https://www.trebble.fm/trebble-fm-inc-privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "help@trebble.fm",
+				"products": [
+					{
+						"id": "",
+						"title": "",
+						"shortDescription": "",
+						"longDescription": "",
+						"visible": false,
+						"price": 0,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"add-on",
+					"marketing",
+					"get-more-customers",
+					"widgets-and-plugins",
+					"recommended-for-blogs"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "8DAV5VH7gb9j"
+				},
+				"created": "2017-03-30T16:52:51.248018Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "0503a7774210fee228bbe55946c40682",
+				"requestedAt": "2020-01-04T20:18:17.115361793Z",
+				"canceledByUserId": "0503a7774210fee228bbe55946c40682",
+				"canceledAt": "2020-01-04T20:20:50.054082932Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "2.0.2",
+			"appId": "7f-ZRgYPIGaN",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/libs/drop-theme-arrows-bounce-dark.css"
+						},
+						{
+							"type": "style",
+							"src": "./source/style.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/libs/tether.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/libs/drop.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"alwaysVisible": {
+							"default": true,
+							"order": 4,
+							"showIf": {
+								"whereToAppend": {
+									"op": "!=",
+									"value": "ChooseYourOwn"
+								}
+							},
+							"title": "Always Visible",
+							"type": "boolean"
+						},
+						"customHeight": {
+							"default": 400,
+							"description": "Enter the height of the trebble widget in pixel.",
+							"minimum": 150,
+							"order": 9,
+							"showIf": {
+								"heightFitContainer": false,
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Custom Height",
+							"type": "integer"
+						},
+						"customWidth": {
+							"default": 300,
+							"description": "Enter the width of the trebble widget in pixel.",
+							"minimum": 200,
+							"order": 7,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn",
+								"widthFitContainer": false
+							},
+							"title": "Custom Width",
+							"type": "integer"
+						},
+						"heightFitContainer": {
+							"default": false,
+							"order": 8,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Expand vertically",
+							"type": "boolean"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Select where on the page would you like the Trebble widget to appear.",
+							"format": "element",
+							"order": 5,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Choose your own location",
+							"type": "object"
+						},
+						"trebbleUserId": {
+							"format": "account",
+							"order": 1,
+							"services": [
+								"Trebble"
+							],
+							"title": "Trebble Account",
+							"type": "object"
+						},
+						"whereToAppend": {
+							"default": "AfterThePage",
+							"enum": [
+								"BeforeThePage",
+								"AfterThePage",
+								"ChooseYourOwn"
+							],
+							"enumNames": {
+								"AfterThePage": "After the page content",
+								"BeforeThePage": "Before the page content",
+								"ChooseYourOwn": "Choose your own location ..."
+							},
+							"order": 3,
+							"title": "Location",
+							"type": "string"
+						},
+						"widgetPlaceholderBackgroundColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 2,
+							"title": "Widget placeholder background color",
+							"type": "string"
+						},
+						"widthFitContainer": {
+							"default": true,
+							"order": 6,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Expand horizontally",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"trebbleUserId",
+								"widthFitContainer",
+								"customWidth",
+								"heightFitContainer",
+								"widgetPlaceholderBackgroundColor",
+								"customHeight"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://s.trebble.fm/hooks/v1/cloudflare/onUserAuthenticated",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Trebble."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "This release is a completely new version of the Trebble Cloudflare app. It allows you to help keep your visitors informed by adding a shortcast player to your website. This unique experience will help increase the engagement on your website and will encourage your visitors to visit your site regularly.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/DmkEc15MMQfT",
+			"created": "2020-01-04T20:20:39.06366Z",
+			"proposedApp": {
+				"id": "7f-ZRgYPIGaN",
+				"title": "Trebble",
+				"shortDescription": "Engage visitors by adding your own curated shortcast feed",
+				"longDescription": "Trebble.fm lets you stay up-to-date with  all the topics that essential to you in just a few minutes per day without having to stay glued to your screen. It brings all your favorite sources in one place and allows you to consume their content in one normalized audio format called shortcast. Shortcasts are very short podcasts that are usually 2 to 3 minutes long and often published daily.\n\nUsing the Trebble platform, you subscribe to all your favorite sources and every day you'll get a playlist made of fresh shortcasts from your subscriptions to listen to . In a few minutes each day,  you'll learn everything you need to know for the day. It's easy, simple and free.\n\nTrebble's Cloudflare application makes it easy to embed your Trebble shortcast feed directly on your website. In one click, your visitors will be able to get informed by listening to a shortcast feed made of sources you've handpicked. This unique experience will increase the engagement of your visitors and will encourage them to come back.",
+				"instructions": "* Sign-up for a Trebble FM account as listener <a target=\"_blank\" href=\"https://web.trebble.fm\">here</a>\n* Once you've successfully created your account, build your Trebble shortcast feed by subscribing to all the Trebble stations that you want to have part of your feed. You can browse them by categories and language in the  <a  target=\"_blank\" href=\"https://web.trebble.fm/ExplorePage\">Browse Page</a>\n* Login in Cloudflare with your newly created Trebbe FM account\n* Choose where you want the Trebble player to be located on your website and customize.\n\nVoilà! Your visitors can now listen to your personalized shortcast feed right from your website. Your feed will automatically be updated with fresh shortcast from your subscriptions.",
+				"alias": "trebble",
+				"orgId": "0503a7774210fee228bbe55946c40682",
+				"icon": "//images.cloudflareapps.com/k9Pkh2brQVyyRlHbW0fa_trebbleLogoBB288X288.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/sXbMhlM4S1tx/Cloudlare_Landing_Page.png",
+					"https://images.cloudflareapps.com/sXbMhlM4S1tx/Cloudlare_Trebble_Player.png",
+					"https://images.cloudflareapps.com/sXbMhlM4S1tx/Cloudlare_Browse.png",
+					"https://images.cloudflareapps.com/sXbMhlM4S1tx/Cloudlare_Subscribe.png",
+					"https://images.cloudflareapps.com/sXbMhlM4S1tx/Cloudlare_Add_Player.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/3rzPQNHzQQany8rdG3Fb_trebbleLogoFullWhite_cloudflare2.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/isAEtOnPPHED/TrebbleCloudlareBanner.png",
+				"author": "Trebble.fm Inc.",
+				"tagline": "",
+				"website": "https://www.trebble.fm",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.trebble.fm/trebblefm-inc-terms-of-service",
+				"privacyPolicyURL": "https://www.trebble.fm/trebble-fm-inc-privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "help@trebble.fm",
+				"products": [
+					{
+						"id": "",
+						"title": "",
+						"shortDescription": "",
+						"longDescription": "",
+						"visible": false,
+						"price": 0,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"add-on",
+					"marketing",
+					"get-more-customers",
+					"widgets-and-plugins",
+					"recommended-for-blogs"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "8DAV5VH7gb9j"
+				},
+				"created": "2017-03-30T16:52:51.248018Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "0503a7774210fee228bbe55946c40682",
+				"requestedAt": "2020-01-04T20:20:50.066986756Z",
+				"canceledByUserId": "0503a7774210fee228bbe55946c40682",
+				"canceledAt": "2020-01-05T09:07:32.463482042Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "2.0.3",
+			"appId": "7f-ZRgYPIGaN",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/libs/drop-theme-arrows-bounce-dark.css"
+						},
+						{
+							"type": "style",
+							"src": "./source/style.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/libs/tether.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/libs/drop.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"alwaysVisible": {
+							"default": true,
+							"order": 4,
+							"showIf": {
+								"whereToAppend": {
+									"op": "!=",
+									"value": "ChooseYourOwn"
+								}
+							},
+							"title": "Always Visible",
+							"type": "boolean"
+						},
+						"customHeight": {
+							"default": 400,
+							"description": "Enter the height of the trebble widget in pixel.",
+							"minimum": 150,
+							"order": 9,
+							"showIf": {
+								"heightFitContainer": false,
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Custom Height",
+							"type": "integer"
+						},
+						"customWidth": {
+							"default": 300,
+							"description": "Enter the width of the trebble widget in pixel.",
+							"minimum": 200,
+							"order": 7,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn",
+								"widthFitContainer": false
+							},
+							"title": "Custom Width",
+							"type": "integer"
+						},
+						"heightFitContainer": {
+							"default": false,
+							"order": 8,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Expand vertically",
+							"type": "boolean"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Select where on the page would you like the Trebble widget to appear.",
+							"format": "element",
+							"order": 5,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Choose your own location",
+							"type": "object"
+						},
+						"trebbleUserId": {
+							"format": "account",
+							"order": 1,
+							"services": [
+								"Trebble"
+							],
+							"title": "Trebble Account",
+							"type": "object"
+						},
+						"whereToAppend": {
+							"default": "AfterThePage",
+							"enum": [
+								"BeforeThePage",
+								"AfterThePage",
+								"ChooseYourOwn"
+							],
+							"enumNames": {
+								"AfterThePage": "After the page content",
+								"BeforeThePage": "Before the page content",
+								"ChooseYourOwn": "Choose your own location ..."
+							},
+							"order": 3,
+							"title": "Location",
+							"type": "string"
+						},
+						"widgetPlaceholderBackgroundColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 2,
+							"title": "Widget placeholder background color",
+							"type": "string"
+						},
+						"widthFitContainer": {
+							"default": true,
+							"order": 6,
+							"showIf": {
+								"whereToAppend": "ChooseYourOwn"
+							},
+							"title": "Expand horizontally",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"trebbleUserId",
+								"widthFitContainer",
+								"customWidth",
+								"heightFitContainer",
+								"widgetPlaceholderBackgroundColor",
+								"customHeight"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://s.trebble.fm/hooks/v1/cloudflare/onUserAuthenticated",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Trebble."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.6,
+				"upvotes": 3,
+				"downvotes": 2
+			},
+			"releaseNotes": "This release is a completely new version of the Trebble Cloudflare app. It allows you to help keep your visitors informed by adding a shortcast player to your website. This unique experience will help increase the engagement on your website and will encourage your visitors to visit your site regularly.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/DmkEc15MMQfT",
+			"created": "2020-01-05T09:07:22.141366Z",
+			"proposedApp": {
+				"id": "7f-ZRgYPIGaN",
+				"title": "Trebble",
+				"shortDescription": "Engage visitors by adding your own curated shortcast feed",
+				"longDescription": "Trebble.fm lets you stay up-to-date with  all the topics that are essential to you in just a few minutes per day without having to stay glued to your screen. It brings all your favorite sources in one place and allows you to consume their content in one normalized audio format called shortcast. Shortcasts are very short podcasts that are usually 2 to 3 minutes long and often published daily.\n\nUsing the Trebble platform, you subscribe to all your favorite sources and every day you'll get a playlist made of fresh shortcasts from your subscriptions to listen to . In a few minutes each day,  you'll learn everything you need to know for the day. It's easy, simple and free.\n\nTrebble's Cloudflare application makes it easy to embed your Trebble shortcast feed directly on your website. In one click, your visitors will be able to get informed by listening to a shortcast feed made of sources you've handpicked. This unique experience will increase the engagement of your visitors and will encourage them to come back.",
+				"instructions": "* Sign-up for a Trebble FM account as listener <a target=\"_blank\" href=\"https://web.trebble.fm\">here</a>\n* Once you've successfully created your account, build your Trebble shortcast feed by subscribing to all the Trebble stations that you want to have part of your feed. You can browse them by categories and language in the  <a  target=\"_blank\" href=\"https://web.trebble.fm/ExplorePage\">Browse Page</a>\n* Login in Cloudflare with your newly created Trebbe FM account\n* Choose where you want the Trebble player to be located on your website and customize.\n\nVoilà! Your visitors can now listen to your personalized shortcast feed right from your website. Your feed will automatically be updated with fresh shortcast from your subscriptions.",
+				"alias": "trebble",
+				"orgId": "0503a7774210fee228bbe55946c40682",
+				"icon": "//images.cloudflareapps.com/k9Pkh2brQVyyRlHbW0fa_trebbleLogoBB288X288.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/sXbMhlM4S1tx/Cloudlare_Landing_Page.png",
+					"https://images.cloudflareapps.com/sXbMhlM4S1tx/Cloudlare_Trebble_Player.png",
+					"https://images.cloudflareapps.com/sXbMhlM4S1tx/Cloudlare_Browse.png",
+					"https://images.cloudflareapps.com/sXbMhlM4S1tx/Cloudlare_Subscribe.png",
+					"https://images.cloudflareapps.com/sXbMhlM4S1tx/Cloudlare_Add_Player.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/3rzPQNHzQQany8rdG3Fb_trebbleLogoFullWhite_cloudflare2.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/isAEtOnPPHED/TrebbleCloudlareBanner.png",
+				"author": "Trebble.fm Inc.",
+				"tagline": "",
+				"website": "https://www.trebble.fm",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.trebble.fm/trebblefm-inc-terms-of-service",
+				"privacyPolicyURL": "https://www.trebble.fm/trebble-fm-inc-privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "help@trebble.fm",
+				"products": [
+					{
+						"id": "",
+						"title": "",
+						"shortDescription": "",
+						"longDescription": "",
+						"visible": false,
+						"price": 0,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"add-on",
+					"marketing",
+					"get-more-customers",
+					"widgets-and-plugins",
+					"recommended-for-blogs"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "8DAV5VH7gb9j"
+				},
+				"created": "2017-03-30T16:52:51.248018Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "0503a7774210fee228bbe55946c40682",
+				"requestedAt": "2020-01-05T09:07:32.487453768Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-01-06T16:36:09.697106242Z"
+			}
+		}
+	]
+}

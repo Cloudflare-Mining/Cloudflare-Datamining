@@ -1,0 +1,275 @@
+{
+	"id": "nWAsCo-to5Ug",
+	"title": "Story Widget",
+	"shortDescription": "Create and embed stories into any website",
+	"longDescription": "#Create and embed stories into any website.\n\nStories makes it easy for marketers to engage with visitors, humanize their brands, create new client prospects and generate more revenue.\n\n🚀 Boost conversion rates\n📈 Increase time on site\n📉 Reduce bounce rates\n\nSelf service Story Builder\nQuick integration with a simple JS code\nTrack every single event in Google Analytics\nStory Level Reporting\nCustomize everything\nUse in your own language",
+	"instructions": "",
+	"alias": "storywidget",
+	"orgId": "63f50abb71ebbd047458d332fa2b1833",
+	"icon": "https://images.cloudflareapps.com/q0lwy-uJrqE6/cf_square.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/rHqKXPtqkuEo/cf_gallery_1.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/b-85xXVrxalB/cf_tile.png",
+	"featuredAppImage": "https://images.cloudflareapps.com/D1t3FYqfTPNU/cf_featured.png",
+	"author": "Story Widget",
+	"tagline": "",
+	"website": "https://storywidget.com",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://storywidget.com/terms",
+	"privacyPolicyURL": "https://storywidget.com/privacy-policy",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.1",
+	"infoVersion": "1.0.1",
+	"points": 0,
+	"supportEmail": "support@storywidget.com",
+	"products": [],
+	"categoryIds": [],
+	"agreements": {
+		"tos": {
+			"userId": "63f50abb71ebbd047458d332fa2b1833",
+			"created": "2020-12-30T12:13:55.587203264Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "wlj_1PdQoIkl"
+	},
+	"created": "2020-12-30T12:13:53.061728Z",
+	"org": {
+		"id": "63f50abb71ebbd047458d332fa2b1833",
+		"title": "",
+		"username": "63f50abb71ebbd047458d332fa2b1833",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "nWAsCo-to5Ug",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"code": {
+							"default": "fd2ac00f-4337-4a90-92f1-5d04e310964b",
+							"description": "<h3><a class=\"with-inherited-color with-underline\" href=\"https://use.storywidget.com\" target=\"_blank\">Get your widget ID from <strong>Story Widget > </strong></a><h3>",
+							"order": 1,
+							"placeholder": "StoryWidget ID",
+							"title": "Paste Your Story Widget ID",
+							"type": "string"
+						},
+						"container": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Select where you want the Story Widget to be added to your site.",
+							"format": "element",
+							"order": 2,
+							"title": "Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "first release",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/wlj_1PdQoIkl",
+			"metadata": {
+				"code": {
+					"sourceTag": "wlj_1PdQoIkl",
+					"uploadedOn": "2020-12-30T12:13:54.28893738Z"
+				}
+			},
+			"created": "2020-12-30T12:13:53.687062Z",
+			"proposedApp": {
+				"id": "nWAsCo-to5Ug",
+				"title": "Story Widget",
+				"shortDescription": "Create and embed stories into any website",
+				"longDescription": "#Create and embed stories into any website.\n\nStories makes it easy for marketers to engage with visitors, humanize their brands, create new client prospects and generate more revenue.\n\n🚀 Boost conversion rates\n📈 Increase time on site\n📉 Reduce bounce rates\n\nSelf service Story Builder\nQuick integration with a simple JS code\nTrack every single event in Google Analytics\nStory Level Reporting\nCustomize everything\nUse in your own language",
+				"instructions": "",
+				"alias": "storywidget",
+				"orgId": "63f50abb71ebbd047458d332fa2b1833",
+				"icon": "https://images.cloudflareapps.com/q0lwy-uJrqE6/cf_square.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/rHqKXPtqkuEo/cf_gallery_1.png",
+					"https://images.cloudflareapps.com/rHqKXPtqkuEo/cf_gallery_2.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/b-85xXVrxalB/cf_tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/D1t3FYqfTPNU/cf_featured.png",
+				"author": "Story Widget",
+				"tagline": "",
+				"website": "https://storywidget.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://storywidget.com/terms",
+				"privacyPolicyURL": "https://storywidget.com/privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@storywidget.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "wlj_1PdQoIkl"
+				},
+				"created": "2020-12-30T12:13:53.061728Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "63f50abb71ebbd047458d332fa2b1833",
+				"requestedAt": "2020-12-30T12:13:55.574380973Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2021-01-11T17:31:45.053605479Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "nWAsCo-to5Ug",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"code": {
+							"default": "fd2ac00f-4337-4a90-92f1-5d04e310964b",
+							"description": "<h3><a class=\"with-inherited-color with-underline\" href=\"https://use.storywidget.com\" target=\"_blank\">Get your widget ID from <strong>Story Widget > </strong></a><h3>",
+							"order": 1,
+							"placeholder": "StoryWidget ID",
+							"title": "Paste Your Story Widget ID",
+							"type": "string"
+						},
+						"container": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Select where you want the Story Widget to be added to your site.",
+							"format": "element",
+							"order": 2,
+							"title": "Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "bugfix on position picker",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/xniCR6gCtFxR",
+			"metadata": {
+				"code": {
+					"sourceTag": "xniCR6gCtFxR",
+					"uploadedOn": "2021-02-16T10:41:35.944415457Z"
+				}
+			},
+			"created": "2021-02-16T10:41:34.84794Z",
+			"proposedApp": {
+				"id": "nWAsCo-to5Ug",
+				"title": "Story Widget",
+				"shortDescription": "Create and embed stories into any website",
+				"longDescription": "#Create and embed stories into any website.\n\nStories makes it easy for marketers to engage with visitors, humanize their brands, create new client prospects and generate more revenue.\n\n🚀 Boost conversion rates\n📈 Increase time on site\n📉 Reduce bounce rates\n\nSelf service Story Builder\nQuick integration with a simple JS code\nTrack every single event in Google Analytics\nStory Level Reporting\nCustomize everything\nUse in your own language",
+				"instructions": "",
+				"alias": "storywidget",
+				"orgId": "63f50abb71ebbd047458d332fa2b1833",
+				"icon": "https://images.cloudflareapps.com/q0lwy-uJrqE6/cf_square.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/rHqKXPtqkuEo/cf_gallery_1.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/b-85xXVrxalB/cf_tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/D1t3FYqfTPNU/cf_featured.png",
+				"author": "Story Widget",
+				"tagline": "",
+				"website": "https://storywidget.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://storywidget.com/terms",
+				"privacyPolicyURL": "https://storywidget.com/privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@storywidget.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "wlj_1PdQoIkl"
+				},
+				"created": "2020-12-30T12:13:53.061728Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "63f50abb71ebbd047458d332fa2b1833",
+				"requestedAt": "2021-02-16T10:41:37.122650911Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2021-02-19T22:20:18.114638611Z"
+			}
+		}
+	]
+}

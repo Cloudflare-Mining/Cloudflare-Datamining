@@ -1,0 +1,4378 @@
+{
+	"id": "PXc0VflaKwmv",
+	"title": "Cover Message",
+	"shortDescription": "Show visitors announcements and newsletter sign-ups.",
+	"longDescription": "Cover message is a great way to get visitors involved in your website!\n\nCover Message lets visitors sign up for your newsletters, link to exclusive deals and information, or show them important announcements.",
+	"instructions": "",
+	"alias": "cover-message",
+	"orgId": "2684c89451b6b86b453405beb4662f46",
+	"icon": "//images.cloudflareapps.com/LanHsWz0QS09iVBoa4tw_icon.png",
+	"screenshots": [
+		"//images.cloudflareapps.com/gzTC3EBbTTKJAIPwyOKB_screenshot-1.png",
+		"//images.cloudflareapps.com/41g7LkdcR9OBlCWVbXb8_screenshot-3.png",
+		"//images.cloudflareapps.com/nTLzepQQgSEiwPbgsXNx_screenshot-2.png"
+	],
+	"tileImage": "//images.cloudflareapps.com/MLmEggjSRriPpOtqOddR_tile.png",
+	"featuredAppImage": "",
+	"author": "Cloudflare Labs",
+	"tagline": "",
+	"website": "",
+	"sourceURL": "",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "#F17D6A",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.1.6",
+	"infoVersion": "1.1.6",
+	"points": 100,
+	"supportEmail": "support@cloudflare.com",
+	"products": [],
+	"categoryIds": [
+		"ui-and-design",
+		"recommended-for-stores"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "f1279b4c7912eb17ba469bcbdfe62b19",
+			"created": "2017-07-06T08:51:31.97800638Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "ESLQtTSzxjYb"
+	},
+	"created": "2017-06-06T14:54:22.276978Z",
+	"org": {
+		"id": "2684c89451b6b86b453405beb4662f46",
+		"title": "",
+		"username": "2684c89451b6b86b453405beb4662f46",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "ui-and-design",
+			"title": "UI & Design",
+			"description": "Apps that make your website more beautiful and user friendly.",
+			"icon": "",
+			"points": 10,
+			"visible": true,
+			"created": "2018-01-22T19:17:52.677513Z"
+		},
+		{
+			"id": "recommended-for-stores",
+			"title": "Recommended For Stores",
+			"description": "Apps for stores in the recommendation engine.",
+			"icon": "",
+			"points": 0,
+			"visible": false,
+			"created": "2018-02-06T19:54:54.539444Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "v1.0.0",
+			"appId": "PXc0VflaKwmv",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Select the mailing list service which you would like to send subscriptions to.",
+							"format": "account",
+							"order": 8,
+							"services": [
+								"mailchimp",
+								"constant-contact"
+							],
+							"showIf": {
+								"goal": "signup",
+								"signupDestination": "service"
+							},
+							"title": "Mailing list service",
+							"type": "object"
+						},
+						"announcementButtonText": {
+							"default": "Got it!",
+							"order": 18,
+							"showIf": {
+								"goal": "announcement"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"announcementText": {
+							"default": "Sale! Everything is 75% off this entire week.",
+							"format": "textarea",
+							"order": 17,
+							"showIf": {
+								"goal": "announcement"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"announcementTitle": {
+							"default": "Announcement",
+							"order": 16,
+							"showIf": {
+								"goal": "announcement"
+							},
+							"title": "Message title",
+							"type": "string"
+						},
+						"color": {
+							"default": "#0099ff",
+							"format": "color",
+							"order": 19,
+							"title": "Accent color",
+							"type": "string"
+						},
+						"ctaButtonText": {
+							"default": "Take me there!",
+							"order": 4,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"ctaLinkAddress": {
+							"order": 5,
+							"placeholder": "https://...",
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "URL to drive traffic to",
+							"type": "string"
+						},
+						"ctaText": {
+							"default": "We just launched an amazing new product!",
+							"format": "textarea",
+							"order": 3,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"ctaTitle": {
+							"default": "New products!",
+							"order": 2,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Message title",
+							"type": "string"
+						},
+						"email": {
+							"description": "<strong>Required</strong>",
+							"order": 7,
+							"placeholder": "you@email.com",
+							"required": true,
+							"showIf": {
+								"goal": "signup",
+								"signupDestination": "email"
+							},
+							"title": "What email address should signups be sent to?",
+							"type": "string"
+						},
+						"goal": {
+							"default": "signup",
+							"enum": [
+								"signup",
+								"cta",
+								"announcement"
+							],
+							"enumNames": {
+								"announcement": "Just show a message.",
+								"cta": "Redirect them to a special page.",
+								"signup": "Gather emails to sign visitors up for your newsletter."
+							},
+							"format": "radios",
+							"order": 1,
+							"title": "What’s the goal you’re trying to achieve?",
+							"type": "string"
+						},
+						"list": {
+							"default": "",
+							"description": "Select the list in your account which email submissions should be added to.",
+							"enum": [
+								""
+							],
+							"enumNames": {
+								"": "Loading lists..."
+							},
+							"order": 9,
+							"showIf": {
+								"account.service": {
+									"op": "!=",
+									"value": null
+								},
+								"goal": "signup",
+								"signupDestination": "service"
+							},
+							"title": "List",
+							"type": "string"
+						},
+						"signupButtonText": {
+							"default": "Sign up!",
+							"order": 13,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"signupDestination": {
+							"default": "email",
+							"enum": [
+								"email",
+								"service"
+							],
+							"enumNames": {
+								"email": "Send me an email with the collected email address.<span class=\"help-text\"><small>Powered by <a href=\"https://formspree.io\" target=\"_blank\" class=\"with-inherited-color\"><strong>Formspree</strong></a></small></span>",
+								"service": "Add them as contacts to the mailing list service of my choice.<span class=\"help-text\"><small>Currently, <a href=\"https://www.constantcontact.com\" target=\"_blank\" class=\"with-inherited-color\"><strong>Constant Contact</strong></a> and <a href=\"https://mailchimp.com\" target=\"_blank\" class=\"with-inherited-color\"><strong>Mailchimp</strong></a> are supported.</small></span>"
+							},
+							"format": "radios",
+							"order": 6,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "What should we do with the emails we collect?",
+							"type": "string"
+						},
+						"signupInputPlaceholder": {
+							"default": "Email address",
+							"order": 12,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Input placeholder text",
+							"type": "string"
+						},
+						"signupSuccessText": {
+							"default": "You'll be kept up to date with our newsletter.",
+							"description": "This text will display after visitors enter their email.",
+							"order": 15,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Thank you text",
+							"type": "string"
+						},
+						"signupSuccessTitle": {
+							"default": "Thanks for signing up!",
+							"description": "This title will display after visitors enter their email.",
+							"order": 14,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Thank you title",
+							"type": "string"
+						},
+						"signupText": {
+							"default": "Join our mailing list to be the first to know what we’re up to!",
+							"format": "textarea",
+							"order": 11,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"signupTitle": {
+							"default": "Sign up",
+							"order": 10,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Message title",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://provisioner.appstore.cfdata.org/{{ install.options.account.service }}/hook",
+						"events": [
+							"option-change:account",
+							"preview"
+						],
+						"block": true,
+						"if": "install.options.signupDestination == 'service' && install.options.account && install.options.account.service",
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with the mail service."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://provisioner.appstore.cfdata.org/constant-contact/hook",
+						"events": [
+							"option-change:list"
+						],
+						"block": true,
+						"if": "install.options.signupDestination == 'service' && install.options.account && install.options.account.service == 'constant-contact'",
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Constant Contact."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/ESLQtTSzxjYb",
+			"metadata": {
+				"code": {
+					"sourceTag": "ESLQtTSzxjYb",
+					"uploadedOn": "2017-06-06T14:54:23.088416825Z"
+				}
+			},
+			"created": "2017-06-06T14:54:22.783659Z",
+			"proposedApp": {
+				"id": "PXc0VflaKwmv",
+				"title": "Cover Message",
+				"shortDescription": "Show visitors a message, sign them up for a newsletter and m",
+				"longDescription": "Cover message is a great way to get visitors involved in your website!\n\nCover Message lets visitors sign up for your newsletters, link to exclusive deals and information, or show them important announcements.",
+				"instructions": "",
+				"alias": "cover-message",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/LanHsWz0QS09iVBoa4tw_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/gzTC3EBbTTKJAIPwyOKB_screenshot-1.png",
+					"//images.cloudflareapps.com/41g7LkdcR9OBlCWVbXb8_screenshot-3.png",
+					"//images.cloudflareapps.com/nTLzepQQgSEiwPbgsXNx_screenshot-2.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/MLmEggjSRriPpOtqOddR_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Apps",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"marketing",
+					"by-cloudflare"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "ESLQtTSzxjYb"
+				},
+				"created": "2017-06-06T14:54:22.276978Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-06-06T14:54:23.980211838Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-06-06T14:54:41.29510525Z"
+			}
+		},
+		{
+			"tag": "v1.0.1",
+			"appId": "PXc0VflaKwmv",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Select the mailing list service which you would like to send subscriptions to.",
+							"format": "account",
+							"order": 8,
+							"services": [
+								"mailchimp",
+								"constant-contact"
+							],
+							"showIf": {
+								"goal": "signup",
+								"signupDestination": "service"
+							},
+							"title": "Mailing list service",
+							"type": "object"
+						},
+						"announcementButtonText": {
+							"default": "Got it!",
+							"order": 18,
+							"showIf": {
+								"goal": "announcement"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"announcementText": {
+							"default": "Sale! Everything is 75% off this entire week.",
+							"format": "textarea",
+							"order": 17,
+							"showIf": {
+								"goal": "announcement"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"announcementTitle": {
+							"default": "Announcement",
+							"order": 16,
+							"showIf": {
+								"goal": "announcement"
+							},
+							"title": "Message title",
+							"type": "string"
+						},
+						"color": {
+							"default": "#0099ff",
+							"format": "color",
+							"order": 19,
+							"title": "Accent color",
+							"type": "string"
+						},
+						"ctaButtonText": {
+							"default": "Take me there!",
+							"order": 4,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"ctaLinkAddress": {
+							"order": 5,
+							"placeholder": "https://...",
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "URL to drive traffic to",
+							"type": "string"
+						},
+						"ctaText": {
+							"default": "We just launched an amazing new product!",
+							"format": "textarea",
+							"order": 3,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"ctaTitle": {
+							"default": "New products!",
+							"order": 2,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Message title",
+							"type": "string"
+						},
+						"email": {
+							"description": "<strong>Required</strong>",
+							"order": 7,
+							"placeholder": "you@email.com",
+							"required": true,
+							"showIf": {
+								"goal": "signup",
+								"signupDestination": "email"
+							},
+							"title": "What email address should signups be sent to?",
+							"type": "string"
+						},
+						"goal": {
+							"default": "signup",
+							"enum": [
+								"signup",
+								"cta",
+								"announcement"
+							],
+							"enumNames": {
+								"announcement": "Just show a message.",
+								"cta": "Redirect them to a special page.",
+								"signup": "Gather emails to sign visitors up for your newsletter."
+							},
+							"format": "radios",
+							"order": 1,
+							"title": "What’s the goal you’re trying to achieve?",
+							"type": "string"
+						},
+						"list": {
+							"default": "",
+							"description": "Select the list in your account which email submissions should be added to.",
+							"enum": [
+								""
+							],
+							"enumNames": {
+								"": "Loading lists..."
+							},
+							"order": 9,
+							"showIf": {
+								"account.service": {
+									"op": "!=",
+									"value": null
+								},
+								"goal": "signup",
+								"signupDestination": "service"
+							},
+							"title": "List",
+							"type": "string"
+						},
+						"signupButtonText": {
+							"default": "Sign up!",
+							"order": 13,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"signupDestination": {
+							"default": "email",
+							"enum": [
+								"email",
+								"service"
+							],
+							"enumNames": {
+								"email": "Send me an email with the collected email address.<span class=\"help-text\"><small>Powered by <a href=\"https://formspree.io\" target=\"_blank\" class=\"with-inherited-color\"><strong>Formspree</strong></a></small></span>",
+								"service": "Add them as contacts to the mailing list service of my choice.<span class=\"help-text\"><small>Currently, <a href=\"https://www.constantcontact.com\" target=\"_blank\" class=\"with-inherited-color\"><strong>Constant Contact</strong></a> and <a href=\"https://mailchimp.com\" target=\"_blank\" class=\"with-inherited-color\"><strong>Mailchimp</strong></a> are supported.</small></span>"
+							},
+							"format": "radios",
+							"order": 6,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "What should we do with the emails we collect?",
+							"type": "string"
+						},
+						"signupInputPlaceholder": {
+							"default": "Email address",
+							"order": 12,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Input placeholder text",
+							"type": "string"
+						},
+						"signupSuccessText": {
+							"default": "You'll be kept up to date with our newsletter.",
+							"description": "This text will display after visitors enter their email.",
+							"order": 15,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Thank you text",
+							"type": "string"
+						},
+						"signupSuccessTitle": {
+							"default": "Thanks for signing up!",
+							"description": "This title will display after visitors enter their email.",
+							"order": 14,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Thank you title",
+							"type": "string"
+						},
+						"signupText": {
+							"default": "Join our mailing list to be the first to know what we’re up to!",
+							"format": "textarea",
+							"order": 11,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"signupTitle": {
+							"default": "Sign up",
+							"order": 10,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Message title",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://provisioner.appstore.cfdata.org/{{ install.options.account.service }}/hook",
+						"events": [
+							"option-change:account",
+							"preview"
+						],
+						"block": true,
+						"if": "install.options.signupDestination == 'service' && install.options.account && install.options.account.service",
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with the mail service."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://provisioner.appstore.cfdata.org/constant-contact/hook",
+						"events": [
+							"option-change:list"
+						],
+						"block": true,
+						"if": "install.options.signupDestination == 'service' && install.options.account && install.options.account.service == 'constant-contact'",
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Constant Contact."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/ESLQtTSzxjYb",
+			"created": "2017-06-07T20:26:14.519594Z",
+			"proposedApp": {
+				"id": "PXc0VflaKwmv",
+				"title": "Cover Message",
+				"shortDescription": "Show visitors announcements and newsletter sign ups.",
+				"longDescription": "Cover message is a great way to get visitors involved in your website!\n\nCover Message lets visitors sign up for your newsletters, link to exclusive deals and information, or show them important announcements.",
+				"instructions": "",
+				"alias": "cover-message",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/LanHsWz0QS09iVBoa4tw_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/gzTC3EBbTTKJAIPwyOKB_screenshot-1.png",
+					"//images.cloudflareapps.com/41g7LkdcR9OBlCWVbXb8_screenshot-3.png",
+					"//images.cloudflareapps.com/nTLzepQQgSEiwPbgsXNx_screenshot-2.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/MLmEggjSRriPpOtqOddR_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Apps",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"marketing",
+					"by-cloudflare"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "ESLQtTSzxjYb"
+				},
+				"created": "2017-06-06T14:54:22.276978Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-06-07T20:26:14.828219299Z",
+				"canceledByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"canceledAt": "2017-06-07T20:34:40.563526914Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "v1.0.2",
+			"appId": "PXc0VflaKwmv",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Select the mailing list service which you would like to send subscriptions to.",
+							"format": "account",
+							"order": 8,
+							"services": [
+								"mailchimp",
+								"constant-contact"
+							],
+							"showIf": {
+								"goal": "signup",
+								"signupDestination": "service"
+							},
+							"title": "Mailing list service",
+							"type": "object"
+						},
+						"announcementButtonText": {
+							"default": "Got it!",
+							"order": 18,
+							"showIf": {
+								"goal": "announcement"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"announcementText": {
+							"default": "Sale! Everything is 75% off this entire week.",
+							"format": "textarea",
+							"order": 17,
+							"showIf": {
+								"goal": "announcement"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"announcementTitle": {
+							"default": "Announcement",
+							"order": 16,
+							"showIf": {
+								"goal": "announcement"
+							},
+							"title": "Message title",
+							"type": "string"
+						},
+						"color": {
+							"default": "#0099ff",
+							"format": "color",
+							"order": 19,
+							"title": "Accent color",
+							"type": "string"
+						},
+						"ctaButtonText": {
+							"default": "Take me there!",
+							"order": 4,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"ctaLinkAddress": {
+							"order": 5,
+							"placeholder": "https://...",
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "URL to drive traffic to",
+							"type": "string"
+						},
+						"ctaText": {
+							"default": "We just launched an amazing new product!",
+							"format": "textarea",
+							"order": 3,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"ctaTitle": {
+							"default": "New products!",
+							"order": 2,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Message title",
+							"type": "string"
+						},
+						"email": {
+							"description": "<strong>Required</strong>",
+							"order": 7,
+							"placeholder": "you@email.com",
+							"required": true,
+							"showIf": {
+								"goal": "signup",
+								"signupDestination": "email"
+							},
+							"title": "What email address should signups be sent to?",
+							"type": "string"
+						},
+						"goal": {
+							"default": "signup",
+							"enum": [
+								"signup",
+								"cta",
+								"announcement"
+							],
+							"enumNames": {
+								"announcement": "Just show a message.",
+								"cta": "Redirect them to a special page.",
+								"signup": "Gather emails to sign visitors up for your newsletter."
+							},
+							"format": "radios",
+							"order": 1,
+							"title": "What’s the goal you’re trying to achieve?",
+							"type": "string"
+						},
+						"list": {
+							"default": "",
+							"description": "Select the list in your account which email submissions should be added to.",
+							"enum": [
+								""
+							],
+							"enumNames": {
+								"": "Loading lists..."
+							},
+							"order": 9,
+							"showIf": {
+								"account.service": {
+									"op": "!=",
+									"value": null
+								},
+								"goal": "signup",
+								"signupDestination": "service"
+							},
+							"title": "List",
+							"type": "string"
+						},
+						"signupButtonText": {
+							"default": "Sign up!",
+							"order": 13,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"signupDestination": {
+							"default": "email",
+							"enum": [
+								"email",
+								"service"
+							],
+							"enumNames": {
+								"email": "Send me an email with the collected email address.<span class=\"help-text\"><small>Powered by <a href=\"https://formspree.io\" target=\"_blank\" class=\"with-inherited-color\"><strong>Formspree</strong></a></small></span>",
+								"service": "Add them as contacts to the mailing list service of my choice.<span class=\"help-text\"><small>Currently, <a href=\"https://www.constantcontact.com\" target=\"_blank\" class=\"with-inherited-color\"><strong>Constant Contact</strong></a> and <a href=\"https://mailchimp.com\" target=\"_blank\" class=\"with-inherited-color\"><strong>Mailchimp</strong></a> are supported.</small></span>"
+							},
+							"format": "radios",
+							"order": 6,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "What should we do with the emails we collect?",
+							"type": "string"
+						},
+						"signupInputPlaceholder": {
+							"default": "Email address",
+							"order": 12,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Input placeholder text",
+							"type": "string"
+						},
+						"signupSuccessText": {
+							"default": "You'll be kept up to date with our newsletter.",
+							"description": "This text will display after visitors enter their email.",
+							"order": 15,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Thank you text",
+							"type": "string"
+						},
+						"signupSuccessTitle": {
+							"default": "Thanks for signing up!",
+							"description": "This title will display after visitors enter their email.",
+							"order": 14,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Thank you title",
+							"type": "string"
+						},
+						"signupText": {
+							"default": "Join our mailing list to be the first to know what we’re up to!",
+							"format": "textarea",
+							"order": 11,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"signupTitle": {
+							"default": "Sign up",
+							"order": 10,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Message title",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://provisioner.appstore.cfdata.org/{{ install.options.account.service }}/hook",
+						"events": [
+							"option-change:account",
+							"preview"
+						],
+						"block": true,
+						"if": "install.options.signupDestination == 'service' && install.options.account && install.options.account.service",
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with the mail service."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://provisioner.appstore.cfdata.org/constant-contact/hook",
+						"events": [
+							"option-change:list"
+						],
+						"block": true,
+						"if": "install.options.signupDestination == 'service' && install.options.account && install.options.account.service == 'constant-contact'",
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Constant Contact."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/ESLQtTSzxjYb",
+			"created": "2017-06-07T20:34:54.262079Z",
+			"proposedApp": {
+				"id": "PXc0VflaKwmv",
+				"title": "Cover Message",
+				"shortDescription": "Show visitors announcements and newsletter sign-ups.",
+				"longDescription": "Cover message is a great way to get visitors involved in your website!\n\nCover Message lets visitors sign up for your newsletters, link to exclusive deals and information, or show them important announcements.",
+				"instructions": "",
+				"alias": "cover-message",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/LanHsWz0QS09iVBoa4tw_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/gzTC3EBbTTKJAIPwyOKB_screenshot-1.png",
+					"//images.cloudflareapps.com/41g7LkdcR9OBlCWVbXb8_screenshot-3.png",
+					"//images.cloudflareapps.com/nTLzepQQgSEiwPbgsXNx_screenshot-2.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/MLmEggjSRriPpOtqOddR_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Apps",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"marketing",
+					"by-cloudflare"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "ESLQtTSzxjYb"
+				},
+				"created": "2017-06-06T14:54:22.276978Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-06-07T20:34:54.770027947Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-06-07T20:35:07.561514151Z"
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "PXc0VflaKwmv",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Select the mailing list service which you would like to send subscriptions to.",
+							"format": "account",
+							"order": 8,
+							"services": [
+								"mailchimp",
+								"constant-contact"
+							],
+							"showIf": {
+								"goal": "signup",
+								"signupDestination": "service"
+							},
+							"title": "Mailing list service",
+							"type": "object"
+						},
+						"announcementButtonText": {
+							"default": "Got it!",
+							"order": 18,
+							"showIf": {
+								"goal": "announcement"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"announcementText": {
+							"default": "Sale! Everything is 75% off this entire week.",
+							"format": "textarea",
+							"order": 17,
+							"showIf": {
+								"goal": "announcement"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"announcementTitle": {
+							"default": "Announcement",
+							"order": 16,
+							"showIf": {
+								"goal": "announcement"
+							},
+							"title": "Message title",
+							"type": "string"
+						},
+						"color": {
+							"default": "#0099ff",
+							"format": "color",
+							"order": 19,
+							"title": "Accent color",
+							"type": "string"
+						},
+						"ctaButtonText": {
+							"default": "Take me there!",
+							"order": 4,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"ctaLinkAddress": {
+							"order": 5,
+							"placeholder": "https://...",
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "URL to drive traffic to",
+							"type": "string"
+						},
+						"ctaText": {
+							"default": "We just launched an amazing new product!",
+							"format": "textarea",
+							"order": 3,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"ctaTitle": {
+							"default": "New products!",
+							"order": 2,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Message title",
+							"type": "string"
+						},
+						"email": {
+							"description": "<strong>Required</strong>",
+							"order": 7,
+							"placeholder": "you@email.com",
+							"required": true,
+							"showIf": {
+								"goal": "signup",
+								"signupDestination": "email"
+							},
+							"title": "What email address should signups be sent to?",
+							"type": "string"
+						},
+						"goal": {
+							"default": "signup",
+							"enum": [
+								"signup",
+								"cta",
+								"announcement"
+							],
+							"enumNames": {
+								"announcement": "Just show a message.",
+								"cta": "Redirect them to a special page.",
+								"signup": "Gather emails to sign visitors up for your newsletter."
+							},
+							"format": "radios",
+							"order": 1,
+							"title": "What’s the goal you’re trying to achieve?",
+							"type": "string"
+						},
+						"list": {
+							"default": "",
+							"description": "Select the list in your account which email submissions should be added to.",
+							"enum": [
+								""
+							],
+							"enumNames": {
+								"": "Loading lists..."
+							},
+							"order": 9,
+							"showIf": {
+								"account.service": {
+									"op": "!=",
+									"value": null
+								},
+								"goal": "signup",
+								"signupDestination": "service"
+							},
+							"title": "List",
+							"type": "string"
+						},
+						"signupButtonText": {
+							"default": "Sign up!",
+							"order": 13,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"signupDestination": {
+							"default": "email",
+							"enum": [
+								"email",
+								"service"
+							],
+							"enumNames": {
+								"email": "Send me an email with the collected email address.<span class=\"help-text\"><small>Powered by <a href=\"https://formspree.io\" target=\"_blank\" class=\"with-inherited-color\"><strong>Formspree</strong></a></small></span>",
+								"service": "Add them as contacts to the mailing list service of my choice.<span class=\"help-text\"><small>Currently, <a href=\"https://www.constantcontact.com\" target=\"_blank\" class=\"with-inherited-color\"><strong>Constant Contact</strong></a> and <a href=\"https://mailchimp.com\" target=\"_blank\" class=\"with-inherited-color\"><strong>Mailchimp</strong></a> are supported.</small></span>"
+							},
+							"format": "radios",
+							"order": 6,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "What should we do with the emails we collect?",
+							"type": "string"
+						},
+						"signupInputPlaceholder": {
+							"default": "Email address",
+							"order": 12,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Input placeholder text",
+							"type": "string"
+						},
+						"signupSuccessText": {
+							"default": "You'll be kept up to date with our newsletter.",
+							"description": "This text will display after visitors enter their email.",
+							"order": 15,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Thank you text",
+							"type": "string"
+						},
+						"signupSuccessTitle": {
+							"default": "Thanks for signing up!",
+							"description": "This title will display after visitors enter their email.",
+							"order": 14,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Thank you title",
+							"type": "string"
+						},
+						"signupText": {
+							"default": "Join our mailing list to be the first to know what we’re up to!",
+							"format": "textarea",
+							"order": 11,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"signupTitle": {
+							"default": "Sign up",
+							"order": 10,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Message title",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://provisioner.appstore.cfdata.org/{{ install.options.account.service }}/hook",
+						"events": [
+							"option-change:account",
+							"preview"
+						],
+						"block": true,
+						"if": "install.options.signupDestination == 'service' && install.options.account && install.options.account.service",
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with the mail service."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://provisioner.appstore.cfdata.org/constant-contact/hook",
+						"events": [
+							"option-change:list"
+						],
+						"block": true,
+						"if": "install.options.signupDestination == 'service' && install.options.account && install.options.account.service == 'constant-contact'",
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Constant Contact."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/ESLQtTSzxjYb",
+			"created": "2017-06-14T22:22:10.626679Z",
+			"proposedApp": {
+				"id": "PXc0VflaKwmv",
+				"title": "Cover Message",
+				"shortDescription": "Show visitors announcements and newsletter sign-ups.",
+				"longDescription": "Cover message is a great way to get visitors involved in your website!\n\nCover Message lets visitors sign up for your newsletters, link to exclusive deals and information, or show them important announcements.",
+				"instructions": "",
+				"alias": "cover-message",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/LanHsWz0QS09iVBoa4tw_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/gzTC3EBbTTKJAIPwyOKB_screenshot-1.png",
+					"//images.cloudflareapps.com/41g7LkdcR9OBlCWVbXb8_screenshot-3.png",
+					"//images.cloudflareapps.com/nTLzepQQgSEiwPbgsXNx_screenshot-2.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/MLmEggjSRriPpOtqOddR_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Apps",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"marketing",
+					"by-cloudflare",
+					"grow-your-email-list",
+					"get-more-customers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "ESLQtTSzxjYb"
+				},
+				"created": "2017-06-06T14:54:22.276978Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "dda328da295860bf84630d277c4d53d9",
+				"requestedAt": "2017-06-14T22:22:10.785343922Z",
+				"canceledAt": null,
+				"reviewedByUserId": "dda328da295860bf84630d277c4d53d9",
+				"reviewedAt": "2017-06-14T23:11:59.005411043Z"
+			}
+		},
+		{
+			"tag": "1.0.4",
+			"appId": "PXc0VflaKwmv",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Select the mailing list service which you would like to send subscriptions to.",
+							"format": "account",
+							"order": 8,
+							"services": [
+								"mailchimp",
+								"constant-contact"
+							],
+							"showIf": {
+								"goal": "signup",
+								"signupDestination": "service"
+							},
+							"title": "Mailing list service",
+							"type": "object"
+						},
+						"announcementButtonText": {
+							"default": "Got it",
+							"order": 18,
+							"showIf": {
+								"goal": "announcement"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"announcementText": {
+							"default": "Sale! Everything is 75% off this entire week.",
+							"format": "textarea",
+							"order": 17,
+							"showIf": {
+								"goal": "announcement"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"announcementTitle": {
+							"default": "Announcement",
+							"order": 16,
+							"showIf": {
+								"goal": "announcement"
+							},
+							"title": "Message title",
+							"type": "string"
+						},
+						"color": {
+							"default": "#0099ff",
+							"format": "color",
+							"order": 19,
+							"title": "Accent color",
+							"type": "string"
+						},
+						"ctaButtonText": {
+							"default": "Check it out",
+							"order": 4,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"ctaLinkAddress": {
+							"order": 5,
+							"placeholder": "https://...",
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "URL to drive traffic to",
+							"type": "string"
+						},
+						"ctaText": {
+							"default": "We just launched an amazing new product.",
+							"format": "textarea",
+							"order": 3,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"ctaTitle": {
+							"default": "New products!",
+							"order": 2,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Message title",
+							"type": "string"
+						},
+						"email": {
+							"description": "<strong>Required</strong>",
+							"order": 7,
+							"placeholder": "you@email.com",
+							"required": true,
+							"showIf": {
+								"goal": "signup",
+								"signupDestination": "email"
+							},
+							"title": "What email address should signups be sent to?",
+							"type": "string"
+						},
+						"goal": {
+							"default": "signup",
+							"enum": [
+								"signup",
+								"cta",
+								"announcement"
+							],
+							"enumNames": {
+								"announcement": "Just show a message.",
+								"cta": "Redirect them to a special page.",
+								"signup": "Gather emails to sign visitors up for your newsletter."
+							},
+							"format": "radios",
+							"order": 1,
+							"title": "What’s the goal you’re trying to achieve?",
+							"type": "string"
+						},
+						"list": {
+							"default": "",
+							"description": "Select the list in your account which email submissions should be added to.",
+							"enum": [
+								""
+							],
+							"enumNames": {
+								"": "Loading lists..."
+							},
+							"order": 9,
+							"showIf": {
+								"account.service": {
+									"op": "!=",
+									"value": null
+								},
+								"goal": "signup",
+								"signupDestination": "service"
+							},
+							"title": "List",
+							"type": "string"
+						},
+						"signupButtonText": {
+							"default": "Sign up",
+							"order": 13,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"signupDestination": {
+							"default": "email",
+							"enum": [
+								"email",
+								"service"
+							],
+							"enumNames": {
+								"email": "Send me an email with the collected email address.<span class=\"help-text\"><small>Powered by <a href=\"https://formspree.io\" target=\"_blank\" class=\"with-inherited-color\"><strong>Formspree</strong></a></small></span>",
+								"service": "Add them as contacts to the mailing list service of my choice.<span class=\"help-text\"><small>Currently, <a href=\"https://www.constantcontact.com\" target=\"_blank\" class=\"with-inherited-color\"><strong>Constant Contact</strong></a> and <a href=\"https://mailchimp.com\" target=\"_blank\" class=\"with-inherited-color\"><strong>Mailchimp</strong></a> are supported.</small></span>"
+							},
+							"format": "radios",
+							"order": 6,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "What should we do with the emails we collect?",
+							"type": "string"
+						},
+						"signupInputPlaceholder": {
+							"default": "Email address",
+							"order": 12,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Input placeholder text",
+							"type": "string"
+						},
+						"signupSuccessText": {
+							"default": "You’ll be kept up to date with our newsletter.",
+							"description": "This text will display after visitors enter their email.",
+							"order": 15,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Thank you text",
+							"type": "string"
+						},
+						"signupSuccessTitle": {
+							"default": "Thanks for signing up!",
+							"description": "This title will display after visitors enter their email.",
+							"order": 14,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Thank you title",
+							"type": "string"
+						},
+						"signupText": {
+							"default": "Join our mailing list to be the first to know what we’re up to.",
+							"format": "textarea",
+							"order": 11,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"signupTitle": {
+							"default": "Sign up for our newsletter",
+							"order": 10,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Message title",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"color"
+							],
+							"execute": "INSTALL_SCOPE.setColor(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://provisioner.appstore.cfdata.org/{{ install.options.account.service }}/hook",
+						"events": [
+							"option-change:account",
+							"preview"
+						],
+						"block": true,
+						"if": "install.options.signupDestination == 'service' && install.options.account && install.options.account.service",
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with the mail service."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://provisioner.appstore.cfdata.org/constant-contact/hook",
+						"events": [
+							"option-change:list"
+						],
+						"block": true,
+						"if": "install.options.signupDestination == 'service' && install.options.account && install.options.account.service == 'constant-contact'",
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Constant Contact."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/NlzwUjLwC_td",
+			"metadata": {
+				"code": {
+					"sourceTag": "NlzwUjLwC_td",
+					"uploadedOn": "2017-06-22T22:39:15.701289963Z"
+				}
+			},
+			"created": "2017-06-22T22:39:15.446315Z",
+			"proposedApp": {
+				"id": "PXc0VflaKwmv",
+				"title": "Cover Message",
+				"shortDescription": "Show visitors announcements and newsletter sign-ups.",
+				"longDescription": "Cover message is a great way to get visitors involved in your website!\n\nCover Message lets visitors sign up for your newsletters, link to exclusive deals and information, or show them important announcements.",
+				"instructions": "",
+				"alias": "cover-message",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/LanHsWz0QS09iVBoa4tw_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/gzTC3EBbTTKJAIPwyOKB_screenshot-1.png",
+					"//images.cloudflareapps.com/41g7LkdcR9OBlCWVbXb8_screenshot-3.png",
+					"//images.cloudflareapps.com/nTLzepQQgSEiwPbgsXNx_screenshot-2.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/MLmEggjSRriPpOtqOddR_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Apps",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"marketing",
+					"by-cloudflare",
+					"grow-your-email-list",
+					"get-more-customers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "ESLQtTSzxjYb"
+				},
+				"created": "2017-06-06T14:54:22.276978Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-06-22T22:39:16.564811034Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-06-22T22:42:03.547355569Z"
+			}
+		},
+		{
+			"tag": "1.1.0",
+			"appId": "PXc0VflaKwmv",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Select the mailing list service which you would like to send subscriptions to.",
+							"format": "account",
+							"order": 8,
+							"services": [
+								"mailchimp",
+								"constant-contact"
+							],
+							"showIf": {
+								"goal": "signup",
+								"signupDestination": "service"
+							},
+							"title": "Mailing list service",
+							"type": "object"
+						},
+						"announcementButtonText": {
+							"default": "Got it",
+							"order": 18,
+							"showIf": {
+								"goal": "announcement"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"announcementText": {
+							"default": "Sale! Everything is 75% off this entire week.",
+							"format": "textarea",
+							"order": 17,
+							"showIf": {
+								"goal": "announcement"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"announcementTitle": {
+							"default": "Announcement",
+							"order": 16,
+							"showIf": {
+								"goal": "announcement"
+							},
+							"title": "Message title",
+							"type": "string"
+						},
+						"color": {
+							"default": "#0099ff",
+							"format": "color",
+							"order": 19,
+							"title": "Accent color",
+							"type": "string"
+						},
+						"ctaButtonText": {
+							"default": "Check it out",
+							"order": 4,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"ctaLinkAddress": {
+							"order": 5,
+							"placeholder": "https://...",
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "URL to drive traffic to",
+							"type": "string"
+						},
+						"ctaText": {
+							"default": "We just launched an amazing new product.",
+							"format": "textarea",
+							"order": 3,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"ctaTitle": {
+							"default": "New products!",
+							"order": 2,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Message title",
+							"type": "string"
+						},
+						"email": {
+							"description": "<strong>Required</strong>",
+							"order": 7,
+							"placeholder": "you@email.com",
+							"required": true,
+							"showIf": {
+								"goal": "signup",
+								"signupDestination": "email"
+							},
+							"title": "What email address should signups be sent to?",
+							"type": "string"
+						},
+						"goal": {
+							"default": "signup",
+							"enum": [
+								"signup",
+								"cta",
+								"announcement"
+							],
+							"enumNames": {
+								"announcement": "Just show a message.",
+								"cta": "Redirect them to a special page.",
+								"signup": "Gather emails to sign visitors up for your newsletter."
+							},
+							"format": "radios",
+							"order": 1,
+							"title": "What’s the goal you’re trying to achieve?",
+							"type": "string"
+						},
+						"list": {
+							"default": "",
+							"description": "Select the list in your account which email submissions should be added to.",
+							"enum": [
+								""
+							],
+							"enumNames": {
+								"": "Loading lists..."
+							},
+							"order": 9,
+							"showIf": {
+								"account.service": {
+									"op": "!=",
+									"value": null
+								},
+								"goal": "signup",
+								"signupDestination": "service"
+							},
+							"title": "List",
+							"type": "string"
+						},
+						"signupButtonText": {
+							"default": "Sign up",
+							"order": 13,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"signupDestination": {
+							"default": "email",
+							"enum": [
+								"email",
+								"service"
+							],
+							"enumNames": {
+								"email": "Send me an email with the collected email address.<span class=\"help-text\"><small>Powered by <a href=\"https://formspree.io\" target=\"_blank\" class=\"with-inherited-color\"><strong>Formspree</strong></a></small></span>",
+								"service": "Add them as contacts to the mailing list service of my choice.<span class=\"help-text\"><small>Currently, <a href=\"https://www.constantcontact.com\" target=\"_blank\" class=\"with-inherited-color\"><strong>Constant Contact</strong></a> and <a href=\"https://mailchimp.com\" target=\"_blank\" class=\"with-inherited-color\"><strong>Mailchimp</strong></a> are supported.</small></span>"
+							},
+							"format": "radios",
+							"order": 6,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "What should we do with the emails we collect?",
+							"type": "string"
+						},
+						"signupInputPlaceholder": {
+							"default": "Email address",
+							"order": 12,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Input placeholder text",
+							"type": "string"
+						},
+						"signupSuccessText": {
+							"default": "You’ll be kept up to date with our newsletter.",
+							"description": "This text will display after visitors enter their email.",
+							"order": 15,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Thank you text",
+							"type": "string"
+						},
+						"signupSuccessTitle": {
+							"default": "Thanks for signing up!",
+							"description": "This title will display after visitors enter their email.",
+							"order": 14,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Thank you title",
+							"type": "string"
+						},
+						"signupText": {
+							"default": "Join our mailing list to be the first to know what we’re up to.",
+							"format": "textarea",
+							"order": 11,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"signupTitle": {
+							"default": "Sign up for our newsletter",
+							"order": 10,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Message title",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"color"
+							],
+							"execute": "INSTALL_SCOPE.setColor(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://provisioner.appstore.cfdata.org/{{ install.options.account.service }}/hook",
+						"events": [
+							"option-change:account",
+							"preview"
+						],
+						"block": true,
+						"if": "install.options.signupDestination == 'service' && install.options.account && install.options.account.service",
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with the mail service."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://provisioner.appstore.cfdata.org/constant-contact/hook",
+						"events": [
+							"option-change:list"
+						],
+						"block": true,
+						"if": "install.options.signupDestination == 'service' && install.options.account && install.options.account.service == 'constant-contact'",
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Constant Contact."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/rFOeFR6Me5WY",
+			"metadata": {
+				"code": {
+					"sourceTag": "rFOeFR6Me5WY",
+					"uploadedOn": "2017-06-23T01:41:11.969796074Z"
+				}
+			},
+			"created": "2017-06-23T01:41:11.589785Z",
+			"proposedApp": {
+				"id": "PXc0VflaKwmv",
+				"title": "Cover Message",
+				"shortDescription": "Show visitors announcements and newsletter sign-ups.",
+				"longDescription": "Cover message is a great way to get visitors involved in your website!\n\nCover Message lets visitors sign up for your newsletters, link to exclusive deals and information, or show them important announcements.",
+				"instructions": "",
+				"alias": "cover-message",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/LanHsWz0QS09iVBoa4tw_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/gzTC3EBbTTKJAIPwyOKB_screenshot-1.png",
+					"//images.cloudflareapps.com/41g7LkdcR9OBlCWVbXb8_screenshot-3.png",
+					"//images.cloudflareapps.com/nTLzepQQgSEiwPbgsXNx_screenshot-2.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/MLmEggjSRriPpOtqOddR_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Apps",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"marketing",
+					"by-cloudflare",
+					"grow-your-email-list",
+					"get-more-customers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "ESLQtTSzxjYb"
+				},
+				"created": "2017-06-06T14:54:22.276978Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "1e57d294e97e29816d5d04c78ed67257",
+				"requestedAt": "2017-06-23T01:41:12.694406456Z",
+				"canceledAt": null,
+				"reviewedByUserId": "1e57d294e97e29816d5d04c78ed67257",
+				"reviewedAt": "2017-06-23T01:41:34.049540182Z"
+			}
+		},
+		{
+			"tag": "1.1.1",
+			"appId": "PXc0VflaKwmv",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Select the mailing list service which you would like to send subscriptions to.",
+							"format": "account",
+							"order": 8,
+							"services": [
+								"mailchimp",
+								"constant-contact"
+							],
+							"showIf": {
+								"goal": "signup",
+								"signupDestination": "service"
+							},
+							"title": "Mailing list service",
+							"type": "object"
+						},
+						"announcementButtonText": {
+							"default": "Got it",
+							"order": 18,
+							"showIf": {
+								"goal": "announcement"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"announcementText": {
+							"default": "Sale! Everything is 75% off this entire week.",
+							"format": "textarea",
+							"order": 17,
+							"showIf": {
+								"goal": "announcement"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"announcementTitle": {
+							"default": "Announcement",
+							"order": 16,
+							"showIf": {
+								"goal": "announcement"
+							},
+							"title": "Message title",
+							"type": "string"
+						},
+						"color": {
+							"default": "#0099ff",
+							"format": "color",
+							"order": 19,
+							"title": "Accent color",
+							"type": "string"
+						},
+						"ctaButtonText": {
+							"default": "Check it out",
+							"order": 4,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"ctaLinkAddress": {
+							"order": 5,
+							"placeholder": "https://...",
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "URL to drive traffic to",
+							"type": "string"
+						},
+						"ctaText": {
+							"default": "We just launched an amazing new product.",
+							"format": "textarea",
+							"order": 3,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"ctaTitle": {
+							"default": "New products!",
+							"order": 2,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Message title",
+							"type": "string"
+						},
+						"email": {
+							"description": "<strong>Required</strong>",
+							"order": 7,
+							"placeholder": "you@email.com",
+							"required": true,
+							"showIf": {
+								"goal": "signup",
+								"signupDestination": "email"
+							},
+							"title": "What email address should signups be sent to?",
+							"type": "string"
+						},
+						"goal": {
+							"default": "signup",
+							"enum": [
+								"signup",
+								"cta",
+								"announcement"
+							],
+							"enumNames": {
+								"announcement": "Just show a message.",
+								"cta": "Redirect them to a special page.",
+								"signup": "Gather emails to sign visitors up for your newsletter."
+							},
+							"format": "radios",
+							"order": 1,
+							"title": "What’s the goal you’re trying to achieve?",
+							"type": "string"
+						},
+						"list": {
+							"default": "",
+							"description": "Select the list in your account which email submissions should be added to.",
+							"enum": [
+								""
+							],
+							"enumNames": {
+								"": "Loading lists..."
+							},
+							"order": 9,
+							"showIf": {
+								"account.service": {
+									"op": "!=",
+									"value": null
+								},
+								"goal": "signup",
+								"signupDestination": "service"
+							},
+							"title": "List",
+							"type": "string"
+						},
+						"signupButtonText": {
+							"default": "Sign up",
+							"order": 13,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"signupDestination": {
+							"default": "email",
+							"enum": [
+								"email",
+								"service"
+							],
+							"enumNames": {
+								"email": "Send me an email with the collected email address.<span class=\"help-text\"><small>Powered by <a href=\"https://formspree.io\" target=\"_blank\" class=\"with-inherited-color\"><strong>Formspree</strong></a></small></span>",
+								"service": "Add them as contacts to the mailing list service of my choice.<span class=\"help-text\"><small>Currently, <a href=\"https://www.constantcontact.com\" target=\"_blank\" class=\"with-inherited-color\"><strong>Constant Contact</strong></a> and <a href=\"https://mailchimp.com\" target=\"_blank\" class=\"with-inherited-color\"><strong>Mailchimp</strong></a> are supported.</small></span>"
+							},
+							"format": "radios",
+							"order": 6,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "What should we do with the emails we collect?",
+							"type": "string"
+						},
+						"signupInputPlaceholder": {
+							"default": "Email address",
+							"order": 12,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Input placeholder text",
+							"type": "string"
+						},
+						"signupSuccessText": {
+							"default": "You’ll be kept up to date with our newsletter.",
+							"description": "This text will display after visitors enter their email.",
+							"order": 15,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Thank you text",
+							"type": "string"
+						},
+						"signupSuccessTitle": {
+							"default": "Thanks for signing up!",
+							"description": "This title will display after visitors enter their email.",
+							"order": 14,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Thank you title",
+							"type": "string"
+						},
+						"signupText": {
+							"default": "Join our mailing list to be the first to know what we’re up to.",
+							"format": "textarea",
+							"order": 11,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"signupTitle": {
+							"default": "Sign up for our newsletter",
+							"order": 10,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Message title",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"color"
+							],
+							"execute": "INSTALL_SCOPE.setColor(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://provisioner.appstore.cfdata.org/{{ install.options.account.service }}/hook",
+						"events": [
+							"option-change:account",
+							"preview"
+						],
+						"block": true,
+						"if": "install.options.signupDestination == 'service' && install.options.account && install.options.account.service",
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with the mail service."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://provisioner.appstore.cfdata.org/constant-contact/hook",
+						"events": [
+							"option-change:list"
+						],
+						"block": true,
+						"if": "install.options.signupDestination == 'service' && install.options.account && install.options.account.service == 'constant-contact'",
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Constant Contact."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/rFOeFR6Me5WY",
+			"created": "2017-07-06T08:51:31.731651Z",
+			"proposedApp": {
+				"id": "PXc0VflaKwmv",
+				"title": "Cover Message",
+				"shortDescription": "Show visitors announcements and newsletter sign-ups.",
+				"longDescription": "Cover message is a great way to get visitors involved in your website!\n\nCover Message lets visitors sign up for your newsletters, link to exclusive deals and information, or show them important announcements.",
+				"instructions": "",
+				"alias": "cover-message",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/LanHsWz0QS09iVBoa4tw_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/gzTC3EBbTTKJAIPwyOKB_screenshot-1.png",
+					"//images.cloudflareapps.com/41g7LkdcR9OBlCWVbXb8_screenshot-3.png",
+					"//images.cloudflareapps.com/nTLzepQQgSEiwPbgsXNx_screenshot-2.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/MLmEggjSRriPpOtqOddR_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Apps",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"marketing",
+					"by-cloudflare",
+					"grow-your-email-list",
+					"get-more-customers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "ESLQtTSzxjYb"
+				},
+				"created": "2017-06-06T14:54:22.276978Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-07-06T08:51:31.945794177Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-07-06T08:57:17.777692148Z"
+			}
+		},
+		{
+			"tag": "1.1.2",
+			"appId": "PXc0VflaKwmv",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Select the mailing list service which you would like to send subscriptions to.",
+							"format": "account",
+							"order": 8,
+							"services": [
+								"mailchimp",
+								"constant-contact"
+							],
+							"showIf": {
+								"goal": "signup",
+								"signupDestination": "service"
+							},
+							"title": "Mailing list service",
+							"type": "object"
+						},
+						"announcementButtonText": {
+							"default": "Got it",
+							"order": 18,
+							"showIf": {
+								"goal": "announcement"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"announcementText": {
+							"default": "Sale! Everything is 75% off this entire week.",
+							"format": "textarea",
+							"order": 17,
+							"showIf": {
+								"goal": "announcement"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"announcementTitle": {
+							"default": "Announcement",
+							"order": 16,
+							"showIf": {
+								"goal": "announcement"
+							},
+							"title": "Message title",
+							"type": "string"
+						},
+						"color": {
+							"default": "#0099ff",
+							"format": "color",
+							"order": 19,
+							"title": "Accent color",
+							"type": "string"
+						},
+						"ctaButtonText": {
+							"default": "Check it out",
+							"order": 4,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"ctaLinkAddress": {
+							"format": "url",
+							"order": 5,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "URL to drive traffic to",
+							"type": "string"
+						},
+						"ctaText": {
+							"default": "We just launched an amazing new product.",
+							"format": "textarea",
+							"order": 3,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"ctaTitle": {
+							"default": "New products!",
+							"order": 2,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Message title",
+							"type": "string"
+						},
+						"email": {
+							"format": "email",
+							"order": 7,
+							"required": true,
+							"showIf": {
+								"goal": "signup",
+								"signupDestination": "email"
+							},
+							"title": "What email address should signups be sent to?",
+							"type": "string"
+						},
+						"goal": {
+							"default": "signup",
+							"enum": [
+								"signup",
+								"cta",
+								"announcement"
+							],
+							"enumNames": {
+								"announcement": "Just show a message.",
+								"cta": "Redirect them to a special page.",
+								"signup": "Gather emails to sign visitors up for your newsletter."
+							},
+							"format": "radios",
+							"order": 1,
+							"title": "What’s the goal you’re trying to achieve?",
+							"type": "string"
+						},
+						"list": {
+							"default": "",
+							"description": "Select the list in your account which email submissions should be added to.",
+							"enum": [
+								""
+							],
+							"enumNames": {
+								"": "Loading lists..."
+							},
+							"order": 9,
+							"showIf": {
+								"account.service": {
+									"op": "!=",
+									"value": null
+								},
+								"goal": "signup",
+								"signupDestination": "service"
+							},
+							"title": "List",
+							"type": "string"
+						},
+						"signupButtonText": {
+							"default": "Sign up",
+							"order": 13,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"signupDestination": {
+							"default": "email",
+							"enum": [
+								"email",
+								"service"
+							],
+							"enumNames": {
+								"email": "Send me an email with the collected email address.<span class=\"help-text\"><small>Powered by <a href=\"https://formspree.io\" target=\"_blank\" class=\"with-inherited-color\"><strong>Formspree</strong></a></small></span>",
+								"service": "Add them as contacts to the mailing list service of my choice.<span class=\"help-text\"><small>Currently, <a href=\"https://www.constantcontact.com\" target=\"_blank\" class=\"with-inherited-color\"><strong>Constant Contact</strong></a> and <a href=\"https://mailchimp.com\" target=\"_blank\" class=\"with-inherited-color\"><strong>Mailchimp</strong></a> are supported.</small></span>"
+							},
+							"format": "radios",
+							"order": 6,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "What should we do with the emails we collect?",
+							"type": "string"
+						},
+						"signupInputPlaceholder": {
+							"default": "Email address",
+							"order": 12,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Input placeholder text",
+							"type": "string"
+						},
+						"signupSuccessText": {
+							"default": "You’ll be kept up to date with our newsletter.",
+							"description": "This text will display after visitors enter their email.",
+							"order": 15,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Thank you text",
+							"type": "string"
+						},
+						"signupSuccessTitle": {
+							"default": "Thanks for signing up!",
+							"description": "This title will display after visitors enter their email.",
+							"order": 14,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Thank you title",
+							"type": "string"
+						},
+						"signupText": {
+							"default": "Join our mailing list to be the first to know what we’re up to.",
+							"format": "textarea",
+							"order": 11,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"signupTitle": {
+							"default": "Sign up for our newsletter",
+							"order": 10,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Message title",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"color"
+							],
+							"execute": "INSTALL_SCOPE.setColor(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://provisioner.appstore.cfdata.org/{{ install.options.account.service }}/hook",
+						"events": [
+							"option-change:account",
+							"preview"
+						],
+						"block": true,
+						"if": "install.options.signupDestination == 'service' && install.options.account && install.options.account.service",
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with the mail service."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://provisioner.appstore.cfdata.org/constant-contact/hook",
+						"events": [
+							"option-change:list"
+						],
+						"block": true,
+						"if": "install.options.signupDestination == 'service' && install.options.account && install.options.account.service == 'constant-contact'",
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Constant Contact."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.4,
+				"upvotes": 2,
+				"downvotes": 3
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/js2UCt_5e-0u",
+			"metadata": {
+				"code": {
+					"sourceTag": "js2UCt_5e-0u",
+					"uploadedOn": "2017-09-21T03:58:14.580537606Z"
+				}
+			},
+			"created": "2017-09-21T03:58:14.229133Z",
+			"proposedApp": {
+				"id": "PXc0VflaKwmv",
+				"title": "Cover Message",
+				"shortDescription": "Show visitors announcements and newsletter sign-ups.",
+				"longDescription": "Cover message is a great way to get visitors involved in your website!\n\nCover Message lets visitors sign up for your newsletters, link to exclusive deals and information, or show them important announcements.",
+				"instructions": "",
+				"alias": "cover-message",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/LanHsWz0QS09iVBoa4tw_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/gzTC3EBbTTKJAIPwyOKB_screenshot-1.png",
+					"//images.cloudflareapps.com/41g7LkdcR9OBlCWVbXb8_screenshot-3.png",
+					"//images.cloudflareapps.com/nTLzepQQgSEiwPbgsXNx_screenshot-2.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/MLmEggjSRriPpOtqOddR_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"marketing",
+					"by-cloudflare",
+					"grow-your-email-list",
+					"get-more-customers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "ESLQtTSzxjYb"
+				},
+				"created": "2017-06-06T14:54:22.276978Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-09-21T03:58:15.958332833Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-09-21T03:58:49.78048835Z"
+			}
+		},
+		{
+			"tag": "1.1.3",
+			"appId": "PXc0VflaKwmv",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Select the mailing list service which you would like to send subscriptions to.",
+							"format": "account",
+							"order": 8,
+							"services": [
+								"mailchimp",
+								"constant-contact"
+							],
+							"showIf": {
+								"goal": "signup",
+								"signupDestination": "service"
+							},
+							"title": "Mailing list service",
+							"type": "object"
+						},
+						"announcementButtonText": {
+							"default": "Got it",
+							"order": 18,
+							"showIf": {
+								"goal": "announcement"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"announcementText": {
+							"default": "Sale! Everything is 75% off this entire week.",
+							"format": "textarea",
+							"order": 17,
+							"showIf": {
+								"goal": "announcement"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"announcementTitle": {
+							"default": "Announcement",
+							"order": 16,
+							"showIf": {
+								"goal": "announcement"
+							},
+							"title": "Message title",
+							"type": "string"
+						},
+						"color": {
+							"default": "#0099ff",
+							"format": "color",
+							"order": 19,
+							"title": "Accent color",
+							"type": "string"
+						},
+						"ctaButtonText": {
+							"default": "Check it out",
+							"order": 4,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"ctaLinkAddress": {
+							"format": "url",
+							"order": 5,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "URL to drive traffic to",
+							"type": "string"
+						},
+						"ctaText": {
+							"default": "We just launched an amazing new product.",
+							"format": "textarea",
+							"order": 3,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"ctaTitle": {
+							"default": "New products!",
+							"order": 2,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Message title",
+							"type": "string"
+						},
+						"email": {
+							"format": "email",
+							"order": 7,
+							"required": true,
+							"showIf": {
+								"goal": "signup",
+								"signupDestination": "email"
+							},
+							"title": "What email address should signups be sent to?",
+							"type": "string"
+						},
+						"goal": {
+							"default": "signup",
+							"enum": [
+								"signup",
+								"cta",
+								"announcement"
+							],
+							"enumNames": {
+								"announcement": "Just show a message.",
+								"cta": "Redirect them to a special page.",
+								"signup": "Gather emails to sign visitors up for your newsletter."
+							},
+							"format": "radios",
+							"order": 1,
+							"title": "What’s the goal you’re trying to achieve?",
+							"type": "string"
+						},
+						"list": {
+							"default": "",
+							"description": "Select the list in your account which email submissions should be added to.",
+							"enum": [
+								""
+							],
+							"enumNames": {
+								"": "Loading lists..."
+							},
+							"order": 9,
+							"showIf": {
+								"account.service": {
+									"op": "!=",
+									"value": null
+								},
+								"goal": "signup",
+								"signupDestination": "service"
+							},
+							"title": "List",
+							"type": "string"
+						},
+						"signupButtonText": {
+							"default": "Sign up",
+							"order": 13,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"signupDestination": {
+							"default": "email",
+							"enum": [
+								"email",
+								"service"
+							],
+							"enumNames": {
+								"email": "Send me an email with the collected email address.<span class=\"help-text\"><small>Powered by <a href=\"https://formspree.io\" target=\"_blank\" class=\"with-inherited-color\"><strong>Formspree</strong></a></small></span>",
+								"service": "Add them as contacts to the mailing list service of my choice.<span class=\"help-text\"><small>Currently, <a href=\"https://www.constantcontact.com\" target=\"_blank\" class=\"with-inherited-color\"><strong>Constant Contact</strong></a> and <a href=\"https://mailchimp.com\" target=\"_blank\" class=\"with-inherited-color\"><strong>Mailchimp</strong></a> are supported.</small></span>"
+							},
+							"format": "radios",
+							"order": 6,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "What should we do with the emails we collect?",
+							"type": "string"
+						},
+						"signupInputPlaceholder": {
+							"default": "Email address",
+							"order": 12,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Input placeholder text",
+							"type": "string"
+						},
+						"signupSuccessText": {
+							"default": "You’ll be kept up to date with our newsletter.",
+							"description": "This text will display after visitors enter their email.",
+							"order": 15,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Thank you text",
+							"type": "string"
+						},
+						"signupSuccessTitle": {
+							"default": "Thanks for signing up!",
+							"description": "This title will display after visitors enter their email.",
+							"order": 14,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Thank you title",
+							"type": "string"
+						},
+						"signupText": {
+							"default": "Join our mailing list to be the first to know what we’re up to.",
+							"format": "textarea",
+							"order": 11,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"signupTitle": {
+							"default": "Sign up for our newsletter",
+							"order": 10,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Message title",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"color"
+							],
+							"execute": "INSTALL_SCOPE.setColor(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://provisioner.appstore.cfdata.org/{{ install.options.account.service }}/hook",
+						"events": [
+							"option-change:account",
+							"preview"
+						],
+						"block": true,
+						"if": "install.options.signupDestination == 'service' && install.options.account && install.options.account.service",
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with the mail service."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://provisioner.appstore.cfdata.org/constant-contact/hook",
+						"events": [
+							"option-change:list"
+						],
+						"block": true,
+						"if": "install.options.signupDestination == 'service' && install.options.account && install.options.account.service == 'constant-contact'",
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Constant Contact."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "- Fixed HTTPS issues.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/3v-tV5g765Wh",
+			"metadata": {
+				"code": {
+					"sourceTag": "3v-tV5g765Wh",
+					"uploadedOn": "2017-11-27T18:23:20.009958142Z"
+				}
+			},
+			"created": "2017-11-27T18:23:19.532013Z",
+			"proposedApp": {
+				"id": "PXc0VflaKwmv",
+				"title": "Cover Message",
+				"shortDescription": "Show visitors announcements and newsletter sign-ups.",
+				"longDescription": "Cover message is a great way to get visitors involved in your website!\n\nCover Message lets visitors sign up for your newsletters, link to exclusive deals and information, or show them important announcements.",
+				"instructions": "",
+				"alias": "cover-message",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/LanHsWz0QS09iVBoa4tw_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/gzTC3EBbTTKJAIPwyOKB_screenshot-1.png",
+					"//images.cloudflareapps.com/41g7LkdcR9OBlCWVbXb8_screenshot-3.png",
+					"//images.cloudflareapps.com/nTLzepQQgSEiwPbgsXNx_screenshot-2.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/MLmEggjSRriPpOtqOddR_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"marketing",
+					"by-cloudflare",
+					"grow-your-email-list",
+					"get-more-customers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "ESLQtTSzxjYb"
+				},
+				"created": "2017-06-06T14:54:22.276978Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-11-27T18:23:20.949221539Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-11-27T18:32:04.103295154Z"
+			}
+		},
+		{
+			"tag": "1.1.4",
+			"appId": "PXc0VflaKwmv",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Select the mailing list service which you would like to send subscriptions to.",
+							"format": "account",
+							"order": 8,
+							"services": [
+								"mailchimp",
+								"constant-contact"
+							],
+							"showIf": {
+								"goal": "signup",
+								"signupDestination": "service"
+							},
+							"title": "Mailing list service",
+							"type": "object"
+						},
+						"announcementButtonText": {
+							"default": "Got it",
+							"order": 18,
+							"showIf": {
+								"goal": "announcement"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"announcementText": {
+							"default": "Sale! Everything is 75% off this entire week.",
+							"format": "textarea",
+							"order": 17,
+							"showIf": {
+								"goal": "announcement"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"announcementTitle": {
+							"default": "Announcement",
+							"order": 16,
+							"showIf": {
+								"goal": "announcement"
+							},
+							"title": "Message title",
+							"type": "string"
+						},
+						"color": {
+							"default": "#0099ff",
+							"format": "color",
+							"order": 19,
+							"title": "Accent color",
+							"type": "string"
+						},
+						"ctaButtonText": {
+							"default": "Check it out",
+							"order": 4,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"ctaLinkAddress": {
+							"format": "url",
+							"order": 5,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "URL to drive traffic to",
+							"type": "string"
+						},
+						"ctaText": {
+							"default": "We just launched an amazing new product.",
+							"format": "textarea",
+							"order": 3,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"ctaTitle": {
+							"default": "New products!",
+							"order": 2,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Message title",
+							"type": "string"
+						},
+						"email": {
+							"format": "email",
+							"order": 7,
+							"required": true,
+							"showIf": {
+								"goal": "signup",
+								"signupDestination": "email"
+							},
+							"title": "What email address should signups be sent to?",
+							"type": "string"
+						},
+						"goal": {
+							"default": "signup",
+							"enum": [
+								"signup",
+								"cta",
+								"announcement"
+							],
+							"enumNames": {
+								"announcement": "Just show a message.",
+								"cta": "Redirect them to a special page.",
+								"signup": "Gather emails to sign visitors up for your newsletter."
+							},
+							"format": "radios",
+							"order": 1,
+							"title": "What’s the goal you’re trying to achieve?",
+							"type": "string"
+						},
+						"list": {
+							"default": "",
+							"description": "Select the list in your account which email submissions should be added to.",
+							"enum": [
+								""
+							],
+							"enumNames": {
+								"": "Loading lists..."
+							},
+							"order": 9,
+							"showIf": {
+								"account.service": {
+									"op": "!=",
+									"value": null
+								},
+								"goal": "signup",
+								"signupDestination": "service"
+							},
+							"title": "List",
+							"type": "string"
+						},
+						"signupButtonText": {
+							"default": "Sign up",
+							"order": 13,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"signupDestination": {
+							"default": "email",
+							"enum": [
+								"email",
+								"service"
+							],
+							"enumNames": {
+								"email": "Send me an email with the collected email address.<span class=\"help-text\"><small>Powered by <a href=\"https://formspree.io\" target=\"_blank\" class=\"with-inherited-color\"><strong>Formspree</strong></a></small></span>",
+								"service": "Add them as contacts to the mailing list service of my choice.<span class=\"help-text\"><small>Currently, <a href=\"https://www.constantcontact.com\" target=\"_blank\" class=\"with-inherited-color\"><strong>Constant Contact</strong></a> and <a href=\"https://mailchimp.com\" target=\"_blank\" class=\"with-inherited-color\"><strong>Mailchimp</strong></a> are supported.</small></span>"
+							},
+							"format": "radios",
+							"order": 6,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "What should we do with the emails we collect?",
+							"type": "string"
+						},
+						"signupInputPlaceholder": {
+							"default": "Email address",
+							"order": 12,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Input placeholder text",
+							"type": "string"
+						},
+						"signupSuccessText": {
+							"default": "You’ll be kept up to date with our newsletter.",
+							"description": "This text will display after visitors enter their email.",
+							"order": 15,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Thank you text",
+							"type": "string"
+						},
+						"signupSuccessTitle": {
+							"default": "Thanks for signing up!",
+							"description": "This title will display after visitors enter their email.",
+							"order": 14,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Thank you title",
+							"type": "string"
+						},
+						"signupText": {
+							"default": "Join our mailing list to be the first to know what we’re up to.",
+							"format": "textarea",
+							"order": 11,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"signupTitle": {
+							"default": "Sign up for our newsletter",
+							"order": 10,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Message title",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"color"
+							],
+							"execute": "INSTALL_SCOPE.setColor(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://provisioner.appstore.cfdata.org/{{ install.options.account.service }}/hook",
+						"events": [
+							"option-change:account",
+							"preview"
+						],
+						"block": true,
+						"if": "install.options.signupDestination == 'service' && install.options.account && install.options.account.service",
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with the mail service."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://provisioner.appstore.cfdata.org/constant-contact/hook",
+						"events": [
+							"option-change:list"
+						],
+						"block": true,
+						"if": "install.options.signupDestination == 'service' && install.options.account && install.options.account.service == 'constant-contact'",
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Constant Contact."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "Added to “UI & Design” category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/3v-tV5g765Wh",
+			"created": "2018-01-23T18:55:32.435023Z",
+			"proposedApp": {
+				"id": "PXc0VflaKwmv",
+				"title": "Cover Message",
+				"shortDescription": "Show visitors announcements and newsletter sign-ups.",
+				"longDescription": "Cover message is a great way to get visitors involved in your website!\n\nCover Message lets visitors sign up for your newsletters, link to exclusive deals and information, or show them important announcements.",
+				"instructions": "",
+				"alias": "cover-message",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/LanHsWz0QS09iVBoa4tw_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/gzTC3EBbTTKJAIPwyOKB_screenshot-1.png",
+					"//images.cloudflareapps.com/41g7LkdcR9OBlCWVbXb8_screenshot-3.png",
+					"//images.cloudflareapps.com/nTLzepQQgSEiwPbgsXNx_screenshot-2.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/MLmEggjSRriPpOtqOddR_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"marketing",
+					"by-cloudflare",
+					"grow-your-email-list",
+					"get-more-customers",
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "ESLQtTSzxjYb"
+				},
+				"created": "2017-06-06T14:54:22.276978Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-01-23T18:55:32.691095907Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-01-23T18:55:40.753895619Z"
+			}
+		},
+		{
+			"tag": "1.1.5",
+			"appId": "PXc0VflaKwmv",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Select the mailing list service which you would like to send subscriptions to.",
+							"format": "account",
+							"order": 8,
+							"services": [
+								"mailchimp",
+								"constant-contact"
+							],
+							"showIf": {
+								"goal": "signup",
+								"signupDestination": "service"
+							},
+							"title": "Mailing list service",
+							"type": "object"
+						},
+						"announcementButtonText": {
+							"default": "Got it",
+							"order": 18,
+							"showIf": {
+								"goal": "announcement"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"announcementText": {
+							"default": "Sale! Everything is 75% off this entire week.",
+							"format": "textarea",
+							"order": 17,
+							"showIf": {
+								"goal": "announcement"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"announcementTitle": {
+							"default": "Announcement",
+							"order": 16,
+							"showIf": {
+								"goal": "announcement"
+							},
+							"title": "Message title",
+							"type": "string"
+						},
+						"color": {
+							"default": "#0099ff",
+							"format": "color",
+							"order": 19,
+							"title": "Accent color",
+							"type": "string"
+						},
+						"ctaButtonText": {
+							"default": "Check it out",
+							"order": 4,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"ctaLinkAddress": {
+							"format": "url",
+							"order": 5,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "URL to drive traffic to",
+							"type": "string"
+						},
+						"ctaText": {
+							"default": "We just launched an amazing new product.",
+							"format": "textarea",
+							"order": 3,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"ctaTitle": {
+							"default": "New products!",
+							"order": 2,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Message title",
+							"type": "string"
+						},
+						"email": {
+							"format": "email",
+							"order": 7,
+							"required": true,
+							"showIf": {
+								"goal": "signup",
+								"signupDestination": "email"
+							},
+							"title": "What email address should signups be sent to?",
+							"type": "string"
+						},
+						"goal": {
+							"default": "signup",
+							"enum": [
+								"signup",
+								"cta",
+								"announcement"
+							],
+							"enumNames": {
+								"announcement": "Just show a message.",
+								"cta": "Redirect them to a special page.",
+								"signup": "Gather emails to sign visitors up for your newsletter."
+							},
+							"format": "radios",
+							"order": 1,
+							"title": "What’s the goal you’re trying to achieve?",
+							"type": "string"
+						},
+						"list": {
+							"default": "",
+							"description": "Select the list in your account which email submissions should be added to.",
+							"enum": [
+								""
+							],
+							"enumNames": {
+								"": "Loading lists..."
+							},
+							"order": 9,
+							"showIf": {
+								"account.service": {
+									"op": "!=",
+									"value": null
+								},
+								"goal": "signup",
+								"signupDestination": "service"
+							},
+							"title": "List",
+							"type": "string"
+						},
+						"signupButtonText": {
+							"default": "Sign up",
+							"order": 13,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"signupDestination": {
+							"default": "email",
+							"enum": [
+								"email",
+								"service"
+							],
+							"enumNames": {
+								"email": "Send me an email with the collected email address.<span class=\"help-text\"><small>Powered by <a href=\"https://formspree.io\" target=\"_blank\" class=\"with-inherited-color\"><strong>Formspree</strong></a></small></span>",
+								"service": "Add them as contacts to the mailing list service of my choice.<span class=\"help-text\"><small>Currently, <a href=\"https://www.constantcontact.com\" target=\"_blank\" class=\"with-inherited-color\"><strong>Constant Contact</strong></a> and <a href=\"https://mailchimp.com\" target=\"_blank\" class=\"with-inherited-color\"><strong>Mailchimp</strong></a> are supported.</small></span>"
+							},
+							"format": "radios",
+							"order": 6,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "What should we do with the emails we collect?",
+							"type": "string"
+						},
+						"signupInputPlaceholder": {
+							"default": "Email address",
+							"order": 12,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Input placeholder text",
+							"type": "string"
+						},
+						"signupSuccessText": {
+							"default": "You’ll be kept up to date with our newsletter.",
+							"description": "This text will display after visitors enter their email.",
+							"order": 15,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Thank you text",
+							"type": "string"
+						},
+						"signupSuccessTitle": {
+							"default": "Thanks for signing up!",
+							"description": "This title will display after visitors enter their email.",
+							"order": 14,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Thank you title",
+							"type": "string"
+						},
+						"signupText": {
+							"default": "Join our mailing list to be the first to know what we’re up to.",
+							"format": "textarea",
+							"order": 11,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"signupTitle": {
+							"default": "Sign up for our newsletter",
+							"order": 10,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Message title",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"color"
+							],
+							"execute": "INSTALL_SCOPE.setColor(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://provisioner.appstore.cfdata.org/{{ install.options.account.service }}/hook",
+						"events": [
+							"option-change:account",
+							"preview"
+						],
+						"block": true,
+						"if": "install.options.signupDestination == 'service' && install.options.account && install.options.account.service",
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with the mail service."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://provisioner.appstore.cfdata.org/constant-contact/hook",
+						"events": [
+							"option-change:list"
+						],
+						"block": true,
+						"if": "install.options.signupDestination == 'service' && install.options.account && install.options.account.service == 'constant-contact'",
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Constant Contact."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.5,
+				"upvotes": 9,
+				"downvotes": 9
+			},
+			"releaseNotes": "Added to Cloudflare Apps recommendation engine",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/3v-tV5g765Wh",
+			"created": "2018-02-06T20:59:11.013621Z",
+			"proposedApp": {
+				"id": "PXc0VflaKwmv",
+				"title": "Cover Message",
+				"shortDescription": "Show visitors announcements and newsletter sign-ups.",
+				"longDescription": "Cover message is a great way to get visitors involved in your website!\n\nCover Message lets visitors sign up for your newsletters, link to exclusive deals and information, or show them important announcements.",
+				"instructions": "",
+				"alias": "cover-message",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/LanHsWz0QS09iVBoa4tw_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/gzTC3EBbTTKJAIPwyOKB_screenshot-1.png",
+					"//images.cloudflareapps.com/41g7LkdcR9OBlCWVbXb8_screenshot-3.png",
+					"//images.cloudflareapps.com/nTLzepQQgSEiwPbgsXNx_screenshot-2.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/MLmEggjSRriPpOtqOddR_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"marketing",
+					"by-cloudflare",
+					"grow-your-email-list",
+					"get-more-customers",
+					"ui-and-design",
+					"recommended-for-stores"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "ESLQtTSzxjYb"
+				},
+				"created": "2017-06-06T14:54:22.276978Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-02-06T20:59:11.254995396Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-02-06T21:05:11.259982846Z"
+			}
+		},
+		{
+			"tag": "1.1.6",
+			"appId": "PXc0VflaKwmv",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Select the mailing list service which you would like to send subscriptions to.",
+							"format": "account",
+							"order": 8,
+							"services": [
+								"mailchimp",
+								"constant-contact"
+							],
+							"showIf": {
+								"goal": "signup",
+								"signupDestination": "service"
+							},
+							"title": "Mailing list service",
+							"type": "object"
+						},
+						"announcementButtonText": {
+							"default": "Got it",
+							"order": 18,
+							"showIf": {
+								"goal": "announcement"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"announcementText": {
+							"default": "Sale! Everything is 75% off this entire week.",
+							"format": "textarea",
+							"order": 17,
+							"showIf": {
+								"goal": "announcement"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"announcementTitle": {
+							"default": "Announcement",
+							"order": 16,
+							"showIf": {
+								"goal": "announcement"
+							},
+							"title": "Message title",
+							"type": "string"
+						},
+						"color": {
+							"default": "#0099ff",
+							"format": "color",
+							"order": 19,
+							"title": "Accent color",
+							"type": "string"
+						},
+						"ctaButtonText": {
+							"default": "Check it out",
+							"order": 4,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"ctaLinkAddress": {
+							"format": "url",
+							"order": 5,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "URL to drive traffic to",
+							"type": "string"
+						},
+						"ctaText": {
+							"default": "We just launched an amazing new product.",
+							"format": "textarea",
+							"order": 3,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"ctaTitle": {
+							"default": "New products!",
+							"order": 2,
+							"showIf": {
+								"goal": "cta"
+							},
+							"title": "Message title",
+							"type": "string"
+						},
+						"email": {
+							"format": "email",
+							"order": 7,
+							"required": true,
+							"showIf": {
+								"goal": "signup",
+								"signupDestination": "email"
+							},
+							"title": "What email address should signups be sent to?",
+							"type": "string"
+						},
+						"goal": {
+							"default": "signup",
+							"enum": [
+								"signup",
+								"cta",
+								"announcement"
+							],
+							"enumNames": {
+								"announcement": "Just show a message.",
+								"cta": "Redirect them to a special page.",
+								"signup": "Gather emails to sign visitors up for your newsletter."
+							},
+							"format": "radios",
+							"order": 1,
+							"title": "What’s the goal you’re trying to achieve?",
+							"type": "string"
+						},
+						"list": {
+							"default": "",
+							"description": "Select the list in your account which email submissions should be added to.",
+							"enum": [
+								""
+							],
+							"enumNames": {
+								"": "Loading lists..."
+							},
+							"order": 9,
+							"showIf": {
+								"account.service": {
+									"op": "!=",
+									"value": null
+								},
+								"goal": "signup",
+								"signupDestination": "service"
+							},
+							"title": "List",
+							"type": "string"
+						},
+						"signupButtonText": {
+							"default": "Sign up",
+							"order": 13,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Button text",
+							"type": "string"
+						},
+						"signupDestination": {
+							"default": "email",
+							"enum": [
+								"email",
+								"service"
+							],
+							"enumNames": {
+								"email": "Send me an email with the collected email address.<span class=\"help-text\"><small>Powered by <a href=\"https://formspree.io\" target=\"_blank\" class=\"with-inherited-color\"><strong>Formspree</strong></a></small></span>",
+								"service": "Add them as contacts to the mailing list service of my choice.<span class=\"help-text\"><small>Currently, <a href=\"https://www.constantcontact.com\" target=\"_blank\" class=\"with-inherited-color\"><strong>Constant Contact</strong></a> and <a href=\"https://mailchimp.com\" target=\"_blank\" class=\"with-inherited-color\"><strong>Mailchimp</strong></a> are supported.</small></span>"
+							},
+							"format": "radios",
+							"order": 6,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "What should we do with the emails we collect?",
+							"type": "string"
+						},
+						"signupInputPlaceholder": {
+							"default": "Email address",
+							"order": 12,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Input placeholder text",
+							"type": "string"
+						},
+						"signupSuccessText": {
+							"default": "You’ll be kept up to date with our newsletter.",
+							"description": "This text will display after visitors enter their email.",
+							"order": 15,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Thank you text",
+							"type": "string"
+						},
+						"signupSuccessTitle": {
+							"default": "Thanks for signing up!",
+							"description": "This title will display after visitors enter their email.",
+							"order": 14,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Thank you title",
+							"type": "string"
+						},
+						"signupText": {
+							"default": "Join our mailing list to be the first to know what we’re up to.",
+							"format": "textarea",
+							"order": 11,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Message text",
+							"type": "string"
+						},
+						"signupTitle": {
+							"default": "Sign up for our newsletter",
+							"order": 10,
+							"showIf": {
+								"goal": "signup"
+							},
+							"title": "Message title",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"color"
+							],
+							"execute": "INSTALL_SCOPE.setColor(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://provisioner.appstore.cfdata.org/{{ install.options.account.service }}/hook",
+						"events": [
+							"option-change:account",
+							"preview"
+						],
+						"block": true,
+						"if": "install.options.signupDestination == 'service' && install.options.account && install.options.account.service",
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with the mail service."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://provisioner.appstore.cfdata.org/constant-contact/hook",
+						"events": [
+							"option-change:list"
+						],
+						"block": true,
+						"if": "install.options.signupDestination == 'service' && install.options.account && install.options.account.service == 'constant-contact'",
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Constant Contact."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.67,
+				"upvotes": 85,
+				"downvotes": 42
+			},
+			"releaseNotes": "Updated app's categories",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/3v-tV5g765Wh",
+			"created": "2018-11-13T18:05:47.741902Z",
+			"proposedApp": {
+				"id": "PXc0VflaKwmv",
+				"title": "Cover Message",
+				"shortDescription": "Show visitors announcements and newsletter sign-ups.",
+				"longDescription": "Cover message is a great way to get visitors involved in your website!\n\nCover Message lets visitors sign up for your newsletters, link to exclusive deals and information, or show them important announcements.",
+				"instructions": "",
+				"alias": "cover-message",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/LanHsWz0QS09iVBoa4tw_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/gzTC3EBbTTKJAIPwyOKB_screenshot-1.png",
+					"//images.cloudflareapps.com/41g7LkdcR9OBlCWVbXb8_screenshot-3.png",
+					"//images.cloudflareapps.com/nTLzepQQgSEiwPbgsXNx_screenshot-2.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/MLmEggjSRriPpOtqOddR_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"ui-and-design",
+					"recommended-for-stores"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "ESLQtTSzxjYb"
+				},
+				"created": "2017-06-06T14:54:22.276978Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-11-13T18:05:48.03918388Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-11-14T17:49:42.471543491Z"
+			}
+		}
+	]
+}

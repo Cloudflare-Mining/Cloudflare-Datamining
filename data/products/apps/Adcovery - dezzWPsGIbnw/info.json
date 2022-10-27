@@ -1,0 +1,172 @@
+{
+	"id": "dezzWPsGIbnw",
+	"title": "Adcovery",
+	"shortDescription": "Monetize your adblocked visitors",
+	"longDescription": "#Adcovery allows you to reach ad-blocked users with high-performance quality native advertising.#\n\n***\n\n   * Install our Cloudflare app in 1minute and start earning\n   * Ads fill 'whitespace' created by ad blockers\n   * Easy revenue win\n   * Monthly payments\n   * Non-intrusive native ads\n   * No upfront fees or ongoing maintenance\n\n**FAQs**\n\n*\"What % of my website visitors use ad blockers?\"*   \nMost websites we work with are in the 15-35% range\n\n*\"Will this slow down my page load times?\"*   \nNo. Adcovery ads load asynchronously, and only do so if Ad-blocked users are detected.\n\n*\"Do I need to position the ads myself?\"*   \nNo. Adblocker's rules change everyday. The Adcovery Team will do this for you.\n\n*\"Can I have a say in where ads should show on my website?\"*   \nIf you have a preference, just let the Adcovery Team know and they will take care of this for you ;)\n\n*\"What type of ad content does Adcovery display?\"*   \nNative advertising that links to Advertiser’s products or services.\n\n*\"How and when do I get paid?\"*   \nWe pay on a monthly basis. Send us your invoice with your bank payment details and get paid instantly!\n\n*\"How can I contact the Adcovery Team?\"*   \nYou can email us at contact@adcovery.com .",
+	"instructions": "**If you do not have an Adcovery account yet, please get in touch with us so we can create and tailor your account to your needs.**\n\nIf you already are an Adcovery customer, enter your Website ID and your API Key and click on \"Finish installing onto your site\".\n\nIf you have any troubles, contact us : contact@adcovery.com",
+	"alias": "adcovery",
+	"orgId": "bc569cbde30a63a35f41c3342065a238",
+	"icon": "https://images.cloudflareapps.com/yMbTnKaxp_Nv/AD_FAV.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/Vmw-KHOMFzuo/SLIDE2.png",
+		"https://images.cloudflareapps.com/ZdzAEBdd5cda/SLIDE3.png",
+		"https://images.cloudflareapps.com/2puxtKJgsUVz/SLIDE4.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/TnM8pgJkcDMr/logo_420x268.png",
+	"featuredAppImage": "",
+	"author": "Adcovery.com",
+	"tagline": "",
+	"website": "https://adcovery.com",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://adcovery.com/terms-of-service/",
+	"privacyPolicyURL": "https://adcovery.com/privacy-policy/",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.0",
+	"infoVersion": "1.0.0",
+	"points": 0,
+	"supportEmail": "contact@adcovery.com",
+	"products": [],
+	"categoryIds": [],
+	"agreements": {
+		"tos": {
+			"userId": "bc569cbde30a63a35f41c3342065a238",
+			"created": "2021-02-02T11:19:24.342545337Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "58EN08RRXpqH"
+	},
+	"created": "2021-02-02T09:38:19.891855Z",
+	"org": {
+		"id": "bc569cbde30a63a35f41c3342065a238",
+		"title": "",
+		"username": "bc569cbde30a63a35f41c3342065a238",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "dezzWPsGIbnw",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"apiKey": {
+							"order": 1,
+							"title": "Adcovery API Key",
+							"type": "string"
+						},
+						"websiteId": {
+							"order": 0,
+							"title": "Adcovery Website ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.7,
+				"upvotes": 7,
+				"downvotes": 3
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/58EN08RRXpqH",
+			"metadata": {
+				"code": {
+					"sourceTag": "58EN08RRXpqH",
+					"uploadedOn": "2021-02-02T09:38:21.952423509Z"
+				}
+			},
+			"created": "2021-02-02T09:38:21.451178Z",
+			"proposedApp": {
+				"id": "dezzWPsGIbnw",
+				"title": "Adcovery",
+				"shortDescription": "Monetize your adblocked visitors",
+				"longDescription": "#Adcovery allows you to reach ad-blocked users with high-performance quality native advertising.#\n\n***\n\n   * Install our Cloudflare app in 1minute and start earning\n   * Ads fill 'whitespace' created by ad blockers\n   * Easy revenue win\n   * Monthly payments\n   * Non-intrusive native ads\n   * No upfront fees or ongoing maintenance\n\n**FAQs**\n\n*\"What % of my website visitors use ad blockers?\"*   \nMost websites we work with are in the 15-35% range\n\n*\"Will this slow down my page load times?\"*   \nNo. Adcovery ads load asynchronously, and only do so if Ad-blocked users are detected.\n\n*\"Do I need to position the ads myself?\"*   \nNo. Adblocker's rules change everyday. The Adcovery Team will do this for you.\n\n*\"Can I have a say in where ads should show on my website?\"*   \nIf you have a preference, just let the Adcovery Team know and they will take care of this for you ;)\n\n*\"What type of ad content does Adcovery display?\"*   \nNative advertising that links to Advertiser’s products or services.\n\n*\"How and when do I get paid?\"*   \nWe pay on a monthly basis. Send us your invoice with your bank payment details and get paid instantly!\n\n*\"How can I contact the Adcovery Team?\"*   \nYou can email us at contact@adcovery.com .",
+				"instructions": "**If you do not have an Adcovery account yet, please get in touch with us so we can create and tailor your account to your needs.**\n\nIf you already are an Adcovery customer, enter your Website ID and your API Key and click on \"Finish installing onto your site\".\n\nIf you have any troubles, contact us : contact@adcovery.com",
+				"alias": "adcovery",
+				"orgId": "bc569cbde30a63a35f41c3342065a238",
+				"icon": "https://images.cloudflareapps.com/yMbTnKaxp_Nv/AD_FAV.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/Vmw-KHOMFzuo/SLIDE2.png",
+					"https://images.cloudflareapps.com/ZdzAEBdd5cda/SLIDE3.png",
+					"https://images.cloudflareapps.com/2puxtKJgsUVz/SLIDE4.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/TnM8pgJkcDMr/logo_420x268.png",
+				"featuredAppImage": "",
+				"author": "Adcovery.com",
+				"tagline": "",
+				"website": "https://adcovery.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://adcovery.com/terms-of-service/",
+				"privacyPolicyURL": "https://adcovery.com/privacy-policy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "contact@adcovery.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "58EN08RRXpqH"
+				},
+				"created": "2021-02-02T09:38:19.891855Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "bc569cbde30a63a35f41c3342065a238",
+				"requestedAt": "2021-02-02T11:19:24.333438649Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2021-02-08T16:59:31.174059031Z"
+			}
+		}
+	]
+}

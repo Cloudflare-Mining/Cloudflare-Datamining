@@ -1,0 +1,536 @@
+{
+	"id": "DsgJlv2AYmyW",
+	"title": "OpenDyslexic",
+	"shortDescription": "Improve site readability for Dyslexic users.",
+	"longDescription": "OpenDyslexic adds a font that's easier to read for Dyslexic users and adds alternate paragraph shading.",
+	"instructions": "",
+	"alias": "open-dyslexic",
+	"orgId": "2684c89451b6b86b453405beb4662f46",
+	"icon": "//images.cloudflareapps.com/CJdIHRMRIedzVsA2guwQ_icon.png",
+	"screenshots": [
+		"//images.cloudflareapps.com/Vo0EwKQK29ny8dwCxlwp_Screen Shot 2017-03-28 at 15.57.58.png",
+		"//images.cloudflareapps.com/WDNnHJd3SQOwsOBJWQvN_Screen Shot 2017-03-28 at 15.58.15.png"
+	],
+	"tileImage": "",
+	"featuredAppImage": "",
+	"author": "Cloudflare Labs",
+	"tagline": "",
+	"website": "http://opendyslexic.org/about-2/",
+	"sourceURL": "",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "#000000",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.5",
+	"infoVersion": "1.0.5",
+	"points": -1,
+	"supportEmail": "support@cloudflare.com",
+	"products": [],
+	"categoryIds": [
+		"social-and-communication",
+		"recommended-for-stores"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "f1279b4c7912eb17ba469bcbdfe62b19",
+			"created": "2017-07-06T08:55:52.937863528Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "IPDLRXq5V9Jo"
+	},
+	"created": "2017-03-29T19:54:14.328837Z",
+	"org": {
+		"id": "2684c89451b6b86b453405beb4662f46",
+		"title": "",
+		"username": "2684c89451b6b86b453405beb4662f46",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "recommended-for-stores",
+			"title": "Recommended For Stores",
+			"description": "Apps for stores in the recommendation engine.",
+			"icon": "",
+			"points": 0,
+			"visible": false,
+			"created": "2018-02-06T19:54:54.539444Z"
+		},
+		{
+			"id": "social-and-communication",
+			"title": "Social & Communication",
+			"description": "Apps that make it easier to communicate with your customers.",
+			"icon": "",
+			"points": 80,
+			"visible": true,
+			"created": "2018-01-22T19:17:10.030031Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "v1.0.0",
+			"appId": "DsgJlv2AYmyW",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/open-dyslexic.css"
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/IPDLRXq5V9Jo",
+			"metadata": {
+				"code": {
+					"sourceTag": "IPDLRXq5V9Jo",
+					"uploadedOn": "2017-03-29T19:54:15.616705066Z"
+				}
+			},
+			"created": "2017-03-29T19:54:15.02969Z",
+			"proposedApp": {
+				"id": "DsgJlv2AYmyW",
+				"title": "OpenDyslexic",
+				"shortDescription": "Improve site readability for Dyslexic users.",
+				"longDescription": "OpenDyslexic adds a font that's easier to read for Dyslexic users and adds alternate paragraph shading.",
+				"instructions": "",
+				"alias": "open-dyslexic",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/CJdIHRMRIedzVsA2guwQ_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/Vo0EwKQK29ny8dwCxlwp_Screen Shot 2017-03-28 at 15.57.58.png",
+					"//images.cloudflareapps.com/WDNnHJd3SQOwsOBJWQvN_Screen Shot 2017-03-28 at 15.58.15.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "http://opendyslexic.org/about-2/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"by-cloudflare",
+					"add-on",
+					"design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "IPDLRXq5V9Jo"
+				},
+				"created": "2017-03-29T19:54:14.328837Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedAt": "2017-03-29T19:54:17.024118256Z",
+				"canceledAt": "2017-03-29T19:57:34.53496616Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "v1.0.1",
+			"appId": "DsgJlv2AYmyW",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/open-dyslexic.css"
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/kze7dv6VQ5WG",
+			"metadata": {
+				"code": {
+					"sourceTag": "kze7dv6VQ5WG",
+					"uploadedOn": "2017-03-29T19:57:33.194674885Z"
+				}
+			},
+			"created": "2017-03-29T19:57:32.782138Z",
+			"proposedApp": {
+				"id": "DsgJlv2AYmyW",
+				"title": "OpenDyslexic",
+				"shortDescription": "Improve site readability for Dyslexic users.",
+				"longDescription": "OpenDyslexic adds a font that's easier to read for Dyslexic users and adds alternate paragraph shading.",
+				"instructions": "",
+				"alias": "open-dyslexic",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/CJdIHRMRIedzVsA2guwQ_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/Vo0EwKQK29ny8dwCxlwp_Screen Shot 2017-03-28 at 15.57.58.png",
+					"//images.cloudflareapps.com/WDNnHJd3SQOwsOBJWQvN_Screen Shot 2017-03-28 at 15.58.15.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "http://opendyslexic.org/about-2/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"by-cloudflare",
+					"add-on",
+					"design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "IPDLRXq5V9Jo"
+				},
+				"created": "2017-03-29T19:54:14.328837Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedAt": "2017-03-29T19:57:34.539001758Z",
+				"canceledAt": null,
+				"reviewedByUserId": "c3PQq6W4M1fg",
+				"reviewedAt": "2017-03-29T19:59:28.03819588Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "DsgJlv2AYmyW",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/open-dyslexic.css"
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.5,
+				"upvotes": 2,
+				"downvotes": 2
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/kze7dv6VQ5WG",
+			"created": "2017-07-06T08:55:52.648161Z",
+			"proposedApp": {
+				"id": "DsgJlv2AYmyW",
+				"title": "OpenDyslexic",
+				"shortDescription": "Improve site readability for Dyslexic users.",
+				"longDescription": "OpenDyslexic adds a font that's easier to read for Dyslexic users and adds alternate paragraph shading.",
+				"instructions": "",
+				"alias": "open-dyslexic",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/CJdIHRMRIedzVsA2guwQ_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/Vo0EwKQK29ny8dwCxlwp_Screen Shot 2017-03-28 at 15.57.58.png",
+					"//images.cloudflareapps.com/WDNnHJd3SQOwsOBJWQvN_Screen Shot 2017-03-28 at 15.58.15.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "http://opendyslexic.org/about-2/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"by-cloudflare",
+					"add-on",
+					"design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "IPDLRXq5V9Jo"
+				},
+				"created": "2017-03-29T19:54:14.328837Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-07-06T08:55:52.876874688Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-07-06T08:56:34.701846565Z"
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "DsgJlv2AYmyW",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/open-dyslexic.css"
+						}
+					]
+				}
+			},
+			"releaseNotes": "Added to “Social & Communication” category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/kze7dv6VQ5WG",
+			"created": "2018-01-22T20:46:43.010542Z",
+			"proposedApp": {
+				"id": "DsgJlv2AYmyW",
+				"title": "OpenDyslexic",
+				"shortDescription": "Improve site readability for Dyslexic users.",
+				"longDescription": "OpenDyslexic adds a font that's easier to read for Dyslexic users and adds alternate paragraph shading.",
+				"instructions": "",
+				"alias": "open-dyslexic",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/CJdIHRMRIedzVsA2guwQ_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/Vo0EwKQK29ny8dwCxlwp_Screen Shot 2017-03-28 at 15.57.58.png",
+					"//images.cloudflareapps.com/WDNnHJd3SQOwsOBJWQvN_Screen Shot 2017-03-28 at 15.58.15.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "http://opendyslexic.org/about-2/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"by-cloudflare",
+					"add-on",
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "IPDLRXq5V9Jo"
+				},
+				"created": "2017-03-29T19:54:14.328837Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-01-22T20:46:43.275647226Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-01-22T20:46:55.391073951Z"
+			}
+		},
+		{
+			"tag": "1.0.4",
+			"appId": "DsgJlv2AYmyW",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/open-dyslexic.css"
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.29,
+				"upvotes": 2,
+				"downvotes": 5
+			},
+			"releaseNotes": "Added to Cloudflare Apps recommendation engine",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/kze7dv6VQ5WG",
+			"created": "2018-02-06T20:54:32.807254Z",
+			"proposedApp": {
+				"id": "DsgJlv2AYmyW",
+				"title": "OpenDyslexic",
+				"shortDescription": "Improve site readability for Dyslexic users.",
+				"longDescription": "OpenDyslexic adds a font that's easier to read for Dyslexic users and adds alternate paragraph shading.",
+				"instructions": "",
+				"alias": "open-dyslexic",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/CJdIHRMRIedzVsA2guwQ_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/Vo0EwKQK29ny8dwCxlwp_Screen Shot 2017-03-28 at 15.57.58.png",
+					"//images.cloudflareapps.com/WDNnHJd3SQOwsOBJWQvN_Screen Shot 2017-03-28 at 15.58.15.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "http://opendyslexic.org/about-2/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"by-cloudflare",
+					"add-on",
+					"social-and-communication",
+					"recommended-for-stores"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "IPDLRXq5V9Jo"
+				},
+				"created": "2017-03-29T19:54:14.328837Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-02-06T20:54:33.25816678Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-02-06T21:05:32.231874238Z"
+			}
+		},
+		{
+			"tag": "1.0.5",
+			"appId": "DsgJlv2AYmyW",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/open-dyslexic.css"
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.6,
+				"upvotes": 25,
+				"downvotes": 17
+			},
+			"releaseNotes": "Updated app's categories",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/kze7dv6VQ5WG",
+			"created": "2018-11-13T20:45:47.537025Z",
+			"proposedApp": {
+				"id": "DsgJlv2AYmyW",
+				"title": "OpenDyslexic",
+				"shortDescription": "Improve site readability for Dyslexic users.",
+				"longDescription": "OpenDyslexic adds a font that's easier to read for Dyslexic users and adds alternate paragraph shading.",
+				"instructions": "",
+				"alias": "open-dyslexic",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/CJdIHRMRIedzVsA2guwQ_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/Vo0EwKQK29ny8dwCxlwp_Screen Shot 2017-03-28 at 15.57.58.png",
+					"//images.cloudflareapps.com/WDNnHJd3SQOwsOBJWQvN_Screen Shot 2017-03-28 at 15.58.15.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "http://opendyslexic.org/about-2/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication",
+					"recommended-for-stores"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "IPDLRXq5V9Jo"
+				},
+				"created": "2017-03-29T19:54:14.328837Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-11-13T20:45:57.074377277Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-11-14T17:42:15.599444713Z"
+			}
+		}
+	]
+}

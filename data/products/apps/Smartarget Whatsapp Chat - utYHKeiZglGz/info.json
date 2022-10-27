@@ -1,0 +1,1906 @@
+{
+	"id": "utYHKeiZglGz",
+	"title": "Smartarget Whatsapp Chat",
+	"shortDescription": "Add WhatsApp chat on your website",
+	"longDescription": "Let's make it easier for your customers to contact you!\n\nProbably most of your users are using Whatsapp, so its time to give them the option to contact you by using Whatsapp chat widget.",
+	"instructions": "",
+	"alias": "smartarget-whatsapp-chat",
+	"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+	"icon": "https://images.cloudflareapps.com/u_ikDd_BxFF1/Whatsapp%20-%20Chat.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/DEm-Kkf5j6Hv/whatsapp-1-desktop.png",
+		"https://images.cloudflareapps.com/DEm-Kkf5j6Hv/whatsapp-2-desktop.png",
+		"https://images.cloudflareapps.com/DEm-Kkf5j6Hv/whatsapp-3-desktop.png",
+		"https://images.cloudflareapps.com/DEm-Kkf5j6Hv/whatsapp-1-mobile.png",
+		"https://images.cloudflareapps.com/DEm-Kkf5j6Hv/whatsapp-2-mobile.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/MBjgiP_ILy0l/Whatsapp%20Chat.png",
+	"featuredAppImage": "",
+	"author": "TopSoft UG",
+	"tagline": "",
+	"website": "https://smartarget.online",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+	"privacyPolicyURL": "https://smartarget.online/page_privacy.html",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.2",
+	"infoVersion": "1.0.2",
+	"points": 0,
+	"supportEmail": "support@smartarget.online",
+	"products": [
+		{
+			"id": "free",
+			"title": "Free",
+			"shortDescription": "Limited features. Visible on homepage only. One manager.",
+			"longDescription": "",
+			"visible": true,
+			"price": 0,
+			"order": 0,
+			"plan": "SMARTARGET_FREE",
+			"feature": "free",
+			"created": null
+		},
+		{
+			"id": "free_plus",
+			"title": "Free Plus",
+			"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+			"longDescription": "",
+			"visible": true,
+			"price": 0,
+			"order": 1,
+			"plan": "SMARTARGET_FREE_PLUS",
+			"created": null
+		}
+	],
+	"categoryIds": [
+		"social-and-communication"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+			"created": "2021-01-18T10:41:14.074641274Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "Y2Pc6wwmOt1G"
+	},
+	"created": "2021-01-18T10:34:39.218601Z",
+	"org": {
+		"id": "ce4a075ceeac71fdfd05a79eff7f0faa",
+		"title": "",
+		"username": "ce4a075ceeac71fdfd05a79eff7f0faa",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "social-and-communication",
+			"title": "Social & Communication",
+			"description": "Apps that make it easier to communicate with your customers.",
+			"icon": "",
+			"points": 80,
+			"visible": true,
+			"created": "2018-01-22T19:17:10.030031Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "utYHKeiZglGz",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"behavior": {
+							"default": "default",
+							"description": "When user clicks on button...",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Open chat (the first support manager will be used)",
+								"default": "Open window with support managers list. User selects one of managers to chat."
+							},
+							"format": "radios",
+							"order": 1,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "App behavior",
+							"type": "string"
+						},
+						"button": {
+							"order": 4,
+							"properties": {
+								"desktopPosition": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Another position",
+										"default": "Bottom right"
+									},
+									"format": "radios",
+									"order": 3,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Button position on desktop",
+									"type": "string"
+								},
+								"mobilePosition": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Another position",
+										"default": "Bottom right"
+									},
+									"format": "radios",
+									"order": 4,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Button position on mobile",
+									"type": "string"
+								},
+								"text": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Pick your own button text",
+										"default": "Use default button text (Any questions? Ask in Whatsapp)"
+									},
+									"format": "radios",
+									"order": 2,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Button text",
+									"type": "string"
+								},
+								"type": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Another button type",
+										"default": "Rounded with text"
+									},
+									"format": "radios",
+									"order": 1,
+									"placeholder": "How Whatsapp chat button should looks",
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"another2": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Button Type",
+									"type": "string"
+								},
+								"wavesAnimation": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Disabled",
+										"default": "Enabled"
+									},
+									"format": "radios",
+									"order": 5,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Wave animation",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Button",
+							"type": "object"
+						},
+						"chatWindow": {
+							"order": 3,
+							"properties": {
+								"footer": {
+									"default": "Call us to +89997774652 de 0:00hs a 24:00hs",
+									"format": "text",
+									"order": 3,
+									"title": "Footer Text",
+									"type": "string"
+								},
+								"inputPlaceholder": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Pick your own input placeholder",
+										"default": "Use default input placeholder (Write a response)"
+									},
+									"format": "radios",
+									"order": 4,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Input Placeholder",
+									"type": "string"
+								},
+								"subtitle": {
+									"default": "Click one of our representatives below to chat on WhatsApp or send us an email to example@gmail.com",
+									"format": "text",
+									"order": 2,
+									"title": "Subtitle",
+									"type": "string"
+								},
+								"title": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Pick your own title",
+										"default": "Use default title (Hello!)"
+									},
+									"format": "radios",
+									"order": 1,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Title",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Chat Window Content",
+							"type": "object"
+						},
+						"description": {
+							"helpvalue": "",
+							"order": 7,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<b>Get many more apps for free on <a target='_blank' href='https://smartarget.online/?ref=cloudflare_whatsapp_chat'>Smartarget.online</a></b>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_whatsapp_chat'>Click to call</a> - Allow users to call you within one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_whatsapp_chat'>Ribbon corner</a> - Promote special offers in one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare'>Instagram Follow Us</a> - Get more Instagram followers</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_whatsapp_chat'>And more...</a></p>",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"idUser": {
+							"default": "",
+							"format": "text",
+							"order": 5,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": "User ID",
+							"type": "string"
+						},
+						"manager": {
+							"order": 2,
+							"placeholder": "Upgrade to Free Plus to add more managers",
+							"properties": {
+								"avatar": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Pick your own avatar",
+										"default": "Use default avatar"
+									},
+									"format": "radios",
+									"order": 5,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Avatar",
+									"type": "string"
+								},
+								"caption": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Pick your own caption",
+										"default": "Use default caption (For all questions)"
+									},
+									"format": "radios",
+									"order": 4,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Caption",
+									"type": "string"
+								},
+								"initialMessage": {
+									"default": "default",
+									"description": "User will see this message in chat after he picked manager",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Pick your own message",
+										"default": "Use default message (Ask any question. We'll get back to you shortly.)"
+									},
+									"format": "radios",
+									"order": 6,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Initial Message",
+									"type": "string"
+								},
+								"name": {
+									"default": "Michael Burry",
+									"format": "text",
+									"order": 1,
+									"title": "Name",
+									"type": "string"
+								},
+								"phone": {
+									"default": "15417543010",
+									"format": "text",
+									"order": 2,
+									"title": "Phone Number",
+									"type": "string"
+								},
+								"role": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Pick your own role",
+										"default": "Use default role (Support Manager)"
+									},
+									"format": "radios",
+									"order": 3,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Role",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Support manager",
+							"type": "object"
+						},
+						"promoDemo": {
+							"helpvalue": "",
+							"order": -1,
+							"properties": {
+								"demoItem": {
+									"helpvalue": "<a href=\"https://smartarget.online/demo.html?ref=cloudflare&app=whatsapp\" target=_blank>Check App Full Demo</a>",
+									"order": -1,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"promoFree": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plan.</b></div><br/>\n<div>⚠️ Show app on homepage only</div>\n<div>⚠️ «powered by Smartarget» label</div>\n<div>⚠️ Limited app options</div><br/>\n\n<div>Use Smartarget Integration («Free Plus» plan) with no limitations.</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"promoFreePlus": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plus plan.</b></div><br>\n<div>✅ It's also Free!</div>\n<div>✅️ Show app on all pages</div>\n<div>✅ Change app options</div>\n<div>✅ Analytics reports</div>\n<div>✅ More free apps</div><br>\n\n<div><b>Follow these steps to complete integration:</b></div><br>\n<div>1. Create a <a href=\"https://smartarget.online/page_signup.html?ref=cloudflare\" target=_blank>Smartarget</a> account or log in to yours</div>\n<div>2. <a href=\"https://app.smartarget.online/#/websites\" target=_blank>Add your website</a> and configure Whatsapp - Contact Us app for your website</div>\n<div>3. Go to <a href=\"https://app.smartarget.online/#/integration\" target=_blank>Integration</a> and copy the User ID to the input text box to this page</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only. One manager.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "SMARTARGET_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "SMARTARGET_FREE_PLUS",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.setProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 2,
+				"downvotes": 0
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/Y2Pc6wwmOt1G",
+			"metadata": {
+				"code": {
+					"sourceTag": "Y2Pc6wwmOt1G",
+					"uploadedOn": "2021-01-18T10:34:41.698983684Z"
+				}
+			},
+			"created": "2021-01-18T10:34:41.145637Z",
+			"proposedApp": {
+				"id": "utYHKeiZglGz",
+				"title": "Smartarget Whatsapp Chat",
+				"shortDescription": "Add WhatsApp chat on your website",
+				"longDescription": "Let's make it easier for your customers to contact you!\n\nProbably most of your users are using Whatsapp, so its time to give them the option to contact you by using Whatsapp chat widget.",
+				"instructions": "",
+				"alias": "smartarget-whatsapp-chat",
+				"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"icon": "https://images.cloudflareapps.com/u_ikDd_BxFF1/Whatsapp%20-%20Chat.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/bze_CXdOzRp7/Whatsapp%20Chat.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/MBjgiP_ILy0l/Whatsapp%20Chat.png",
+				"featuredAppImage": "",
+				"author": "TopSoft UG",
+				"tagline": "",
+				"website": "https://smartarget.online",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+				"privacyPolicyURL": "https://smartarget.online/page_privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@smartarget.online",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only. One manager.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "SMARTARGET_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "SMARTARGET_FREE_PLUS",
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Y2Pc6wwmOt1G"
+				},
+				"created": "2021-01-18T10:34:39.218601Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"requestedAt": "2021-01-18T10:41:14.065045421Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2021-01-19T20:14:24.496589082Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "utYHKeiZglGz",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"behavior": {
+							"default": "default",
+							"description": "When user clicks on button...",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Open chat (the first support manager will be used)",
+								"default": "Open window with support managers list. User selects one of managers to chat."
+							},
+							"format": "radios",
+							"order": 1,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "App behavior",
+							"type": "string"
+						},
+						"button": {
+							"order": 4,
+							"properties": {
+								"desktopPosition": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Another position",
+										"default": "Bottom right"
+									},
+									"format": "radios",
+									"order": 3,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Button position on desktop",
+									"type": "string"
+								},
+								"mobilePosition": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Another position",
+										"default": "Bottom right"
+									},
+									"format": "radios",
+									"order": 4,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Button position on mobile",
+									"type": "string"
+								},
+								"text": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Pick your own button text",
+										"default": "Use default button text (Any questions? Ask in Whatsapp)"
+									},
+									"format": "radios",
+									"order": 2,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Button text",
+									"type": "string"
+								},
+								"type": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Another button type",
+										"default": "Rounded with text"
+									},
+									"format": "radios",
+									"order": 1,
+									"placeholder": "How Whatsapp chat button should looks",
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"another2": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Button Type",
+									"type": "string"
+								},
+								"wavesAnimation": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Disabled",
+										"default": "Enabled"
+									},
+									"format": "radios",
+									"order": 5,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Wave animation",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Button",
+							"type": "object"
+						},
+						"chatWindow": {
+							"order": 3,
+							"properties": {
+								"footer": {
+									"default": "Call us to +89997774652 de 0:00hs a 24:00hs",
+									"format": "text",
+									"order": 3,
+									"title": "Footer Text",
+									"type": "string"
+								},
+								"inputPlaceholder": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Pick your own input placeholder",
+										"default": "Use default input placeholder (Write a response)"
+									},
+									"format": "radios",
+									"order": 4,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Input Placeholder",
+									"type": "string"
+								},
+								"subtitle": {
+									"default": "Click one of our representatives below to chat on WhatsApp or send us an email to example@gmail.com",
+									"format": "text",
+									"order": 2,
+									"title": "Subtitle",
+									"type": "string"
+								},
+								"title": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Pick your own title",
+										"default": "Use default title (Hello!)"
+									},
+									"format": "radios",
+									"order": 1,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Title",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Chat Window Content",
+							"type": "object"
+						},
+						"description": {
+							"helpvalue": "",
+							"order": 7,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<b>Get many more apps for free on <a target='_blank' href='https://smartarget.online/?ref=cloudflare_whatsapp_chat'>Smartarget.online</a></b>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_whatsapp_chat'>Click to call</a> - Allow users to call you within one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_whatsapp_chat'>Ribbon corner</a> - Promote special offers in one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare'>Instagram Follow Us</a> - Get more Instagram followers</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_whatsapp_chat'>And more...</a></p>",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"idUser": {
+							"default": "",
+							"format": "text",
+							"order": 5,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": "User ID",
+							"type": "string"
+						},
+						"manager": {
+							"order": 2,
+							"placeholder": "Upgrade to Free Plus to add more managers",
+							"properties": {
+								"avatar": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Pick your own avatar",
+										"default": "Use default avatar"
+									},
+									"format": "radios",
+									"order": 5,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Avatar",
+									"type": "string"
+								},
+								"caption": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Pick your own caption",
+										"default": "Use default caption (For all questions)"
+									},
+									"format": "radios",
+									"order": 4,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Caption",
+									"type": "string"
+								},
+								"initialMessage": {
+									"default": "default",
+									"description": "User will see this message in chat after he picked manager",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Pick your own message",
+										"default": "Use default message (Ask any question. We'll get back to you shortly.)"
+									},
+									"format": "radios",
+									"order": 6,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Initial Message",
+									"type": "string"
+								},
+								"name": {
+									"default": "Michael Burry",
+									"format": "text",
+									"order": 1,
+									"title": "Name",
+									"type": "string"
+								},
+								"phone": {
+									"default": "15417543010",
+									"format": "text",
+									"order": 2,
+									"title": "Phone Number",
+									"type": "string"
+								},
+								"role": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Pick your own role",
+										"default": "Use default role (Support Manager)"
+									},
+									"format": "radios",
+									"order": 3,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Role",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Support manager",
+							"type": "object"
+						},
+						"promoDemo": {
+							"helpvalue": "",
+							"order": -1,
+							"properties": {
+								"demoItem": {
+									"helpvalue": "<a href=\"https://smartarget.online/demo.html?ref=cloudflare&app=whatsapp\" target=_blank>Check App Full Demo</a>",
+									"order": -1,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"promoFree": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plan.</b></div><br/>\n<div>⚠️ Show app on homepage only</div>\n<div>⚠️ «powered by Smartarget» label</div>\n<div>⚠️ Limited app options</div><br/>\n\n<div>Use Smartarget Integration («Free Plus» plan) with no limitations.</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"promoFreePlus": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plus plan.</b></div><br>\n<div>✅ It's also Free!</div>\n<div>✅️ Show app on all pages</div>\n<div>✅ Change app options</div>\n<div>✅ Analytics reports</div>\n<div>✅ More free apps</div><br>\n\n<div><b>Follow these steps to complete integration:</b></div><br>\n<div>1. Create a <a href=\"https://smartarget.online/page_signup.html?ref=cloudflare\" target=_blank>Smartarget</a> account or log in to yours</div>\n<div>2. <a href=\"https://app.smartarget.online/#/websites\" target=_blank>Add your website</a> and configure Whatsapp - Contact Us app for your website</div>\n<div>3. Go to <a href=\"https://app.smartarget.online/#/integration\" target=_blank>Integration</a> and copy the User ID to the input text box to this page</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only. One manager.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "SMARTARGET_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "SMARTARGET_FREE_PLUS",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.setProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.8,
+				"upvotes": 4,
+				"downvotes": 1
+			},
+			"manual": true,
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/Y2Pc6wwmOt1G",
+			"created": "2021-01-20T17:01:29.165055Z",
+			"proposedApp": {
+				"id": "utYHKeiZglGz",
+				"title": "Smartarget Whatsapp Chat",
+				"shortDescription": "Add WhatsApp chat on your website",
+				"longDescription": "Let's make it easier for your customers to contact you!\n\nProbably most of your users are using Whatsapp, so its time to give them the option to contact you by using Whatsapp chat widget.",
+				"instructions": "",
+				"alias": "smartarget-whatsapp-chat",
+				"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"icon": "https://images.cloudflareapps.com/u_ikDd_BxFF1/Whatsapp%20-%20Chat.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/bze_CXdOzRp7/Whatsapp%20Chat.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/MBjgiP_ILy0l/Whatsapp%20Chat.png",
+				"featuredAppImage": "",
+				"author": "TopSoft UG",
+				"tagline": "",
+				"website": "https://smartarget.online",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+				"privacyPolicyURL": "https://smartarget.online/page_privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@smartarget.online",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only. One manager.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "SMARTARGET_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "SMARTARGET_FREE_PLUS",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Y2Pc6wwmOt1G"
+				},
+				"created": "2021-01-18T10:34:39.218601Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2021-01-20T17:01:29.47559363Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2021-01-20T17:01:46.113069163Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "utYHKeiZglGz",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"behavior": {
+							"default": "default",
+							"description": "When user clicks on button...",
+							"enum": [
+								"default",
+								"another"
+							],
+							"enumNames": {
+								"another": "Open chat (the first support manager will be used)",
+								"default": "Open window with support managers list. User selects one of managers to chat."
+							},
+							"format": "radios",
+							"order": 1,
+							"products": {
+								"another": [
+									"free_plus"
+								],
+								"default": [
+									"free",
+									"free_plus"
+								]
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "App behavior",
+							"type": "string"
+						},
+						"button": {
+							"order": 4,
+							"properties": {
+								"desktopPosition": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Another position",
+										"default": "Bottom right"
+									},
+									"format": "radios",
+									"order": 3,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Button position on desktop",
+									"type": "string"
+								},
+								"mobilePosition": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Another position",
+										"default": "Bottom right"
+									},
+									"format": "radios",
+									"order": 4,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Button position on mobile",
+									"type": "string"
+								},
+								"text": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Pick your own button text",
+										"default": "Use default button text (Any questions? Ask in Whatsapp)"
+									},
+									"format": "radios",
+									"order": 2,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Button text",
+									"type": "string"
+								},
+								"type": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Another button type",
+										"default": "Rounded with text"
+									},
+									"format": "radios",
+									"order": 1,
+									"placeholder": "How Whatsapp chat button should looks",
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"another2": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Button Type",
+									"type": "string"
+								},
+								"wavesAnimation": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Disabled",
+										"default": "Enabled"
+									},
+									"format": "radios",
+									"order": 5,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Wave animation",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Button",
+							"type": "object"
+						},
+						"chatWindow": {
+							"order": 3,
+							"properties": {
+								"footer": {
+									"default": "Call us to +89997774652 de 0:00hs a 24:00hs",
+									"format": "text",
+									"order": 3,
+									"title": "Footer Text",
+									"type": "string"
+								},
+								"inputPlaceholder": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Pick your own input placeholder",
+										"default": "Use default input placeholder (Write a response)"
+									},
+									"format": "radios",
+									"order": 4,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Input Placeholder",
+									"type": "string"
+								},
+								"subtitle": {
+									"default": "Click one of our representatives below to chat on WhatsApp or send us an email to example@gmail.com",
+									"format": "text",
+									"order": 2,
+									"title": "Subtitle",
+									"type": "string"
+								},
+								"title": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Pick your own title",
+										"default": "Use default title (Hello!)"
+									},
+									"format": "radios",
+									"order": 1,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Title",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Chat Window Content",
+							"type": "object"
+						},
+						"description": {
+							"helpvalue": "",
+							"order": 7,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<b>Get many more apps for free on <a target='_blank' href='https://smartarget.online/?ref=cloudflare_whatsapp_chat'>Smartarget.online</a></b>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_whatsapp_chat'>Click to call</a> - Allow users to call you within one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_whatsapp_chat'>Ribbon corner</a> - Promote special offers in one click</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare'>Instagram Follow Us</a> - Get more Instagram followers</p>\n<p>👍 <a target='_blank' href='https://smartarget.online/?ref=cloudflare_whatsapp_chat'>And more...</a></p>",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"idUser": {
+							"default": "",
+							"format": "text",
+							"order": 5,
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": "User ID",
+							"type": "string"
+						},
+						"manager": {
+							"order": 2,
+							"placeholder": "Upgrade to Free Plus to add more managers",
+							"properties": {
+								"avatar": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Pick your own avatar",
+										"default": "Use default avatar"
+									},
+									"format": "radios",
+									"order": 5,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Avatar",
+									"type": "string"
+								},
+								"caption": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Pick your own caption",
+										"default": "Use default caption (For all questions)"
+									},
+									"format": "radios",
+									"order": 4,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Caption",
+									"type": "string"
+								},
+								"initialMessage": {
+									"default": "default",
+									"description": "User will see this message in chat after he picked manager",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Pick your own message",
+										"default": "Use default message (Ask any question. We'll get back to you shortly.)"
+									},
+									"format": "radios",
+									"order": 6,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Initial Message",
+									"type": "string"
+								},
+								"name": {
+									"default": "Michael Burry",
+									"format": "text",
+									"order": 1,
+									"title": "Name",
+									"type": "string"
+								},
+								"phone": {
+									"default": "15417543010",
+									"format": "text",
+									"order": 2,
+									"title": "Phone Number",
+									"type": "string"
+								},
+								"role": {
+									"default": "default",
+									"enum": [
+										"default",
+										"another"
+									],
+									"enumNames": {
+										"another": "Pick your own role",
+										"default": "Use default role (Support Manager)"
+									},
+									"format": "radios",
+									"order": 3,
+									"products": {
+										"another": [
+											"free_plus"
+										],
+										"default": [
+											"free",
+											"free_plus"
+										]
+									},
+									"title": "Role",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "!=",
+									"value": "free_plus"
+								}
+							},
+							"title": "Support manager",
+							"type": "object"
+						},
+						"promoDemo": {
+							"helpvalue": "",
+							"order": -1,
+							"properties": {
+								"demoItem": {
+									"helpvalue": "<a href=\"https://smartarget.online/demo.html?ref=cloudflare&app=whatsapp\" target=_blank>Check App Full Demo</a>",
+									"order": -1,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"promoFree": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plan.</b></div><br/>\n<div>⚠️ Show app on homepage only</div>\n<div>⚠️ «powered by Smartarget» label</div>\n<div>⚠️ Limited app options</div><br/>\n\n<div>Use Smartarget Integration («Free Plus» plan) with no limitations.</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"promoFreePlus": {
+							"helpvalue": "",
+							"order": 0,
+							"properties": {
+								"descriptionItem": {
+									"helpvalue": "<div><b>You chose Free plus plan.</b></div><br>\n<div>✅ It's also Free!</div>\n<div>✅️ Show app on all pages</div>\n<div>✅ Change app options</div>\n<div>✅ Analytics reports</div>\n<div>✅ More free apps</div><br>\n\n<div><b>Follow these steps to complete integration:</b></div><br>\n<div>1. Create a <a href=\"https://smartarget.online/page_signup.html?ref=cloudflare\" target=_blank>Smartarget</a> account or log in to yours</div>\n<div>2. <a href=\"https://app.smartarget.online/#/websites\" target=_blank>Add your website</a> and configure Whatsapp - Contact Us app for your website</div>\n<div>3. Go to <a href=\"https://app.smartarget.online/#/integration\" target=_blank>Integration</a> and copy the User ID to the input text box to this page</div>\n",
+									"order": 0,
+									"title": "",
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"INSTALL_PRODUCT.id": {
+									"op": "==",
+									"value": "free_plus"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only. One manager.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "SMARTARGET_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "SMARTARGET_FREE_PLUS",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.setProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.33,
+				"upvotes": 1,
+				"downvotes": 2
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/Y2Pc6wwmOt1G",
+			"created": "2021-11-09T15:02:49.711955Z",
+			"proposedApp": {
+				"id": "utYHKeiZglGz",
+				"title": "Smartarget Whatsapp Chat",
+				"shortDescription": "Add WhatsApp chat on your website",
+				"longDescription": "Let's make it easier for your customers to contact you!\n\nProbably most of your users are using Whatsapp, so its time to give them the option to contact you by using Whatsapp chat widget.",
+				"instructions": "",
+				"alias": "smartarget-whatsapp-chat",
+				"orgId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"icon": "https://images.cloudflareapps.com/u_ikDd_BxFF1/Whatsapp%20-%20Chat.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/DEm-Kkf5j6Hv/whatsapp-1-desktop.png",
+					"https://images.cloudflareapps.com/DEm-Kkf5j6Hv/whatsapp-2-desktop.png",
+					"https://images.cloudflareapps.com/DEm-Kkf5j6Hv/whatsapp-3-desktop.png",
+					"https://images.cloudflareapps.com/DEm-Kkf5j6Hv/whatsapp-1-mobile.png",
+					"https://images.cloudflareapps.com/DEm-Kkf5j6Hv/whatsapp-2-mobile.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/MBjgiP_ILy0l/Whatsapp%20Chat.png",
+				"featuredAppImage": "",
+				"author": "TopSoft UG",
+				"tagline": "",
+				"website": "https://smartarget.online",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://smartarget.online/page_terms.html",
+				"privacyPolicyURL": "https://smartarget.online/page_privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@smartarget.online",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "Limited features. Visible on homepage only. One manager.",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "SMARTARGET_FREE",
+						"feature": "free",
+						"created": null
+					},
+					{
+						"id": "free_plus",
+						"title": "Free Plus",
+						"shortDescription": "No limitations. Visible on all pages. Still FREE!",
+						"longDescription": "",
+						"visible": true,
+						"price": 0,
+						"order": 1,
+						"plan": "SMARTARGET_FREE_PLUS",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Y2Pc6wwmOt1G"
+				},
+				"created": "2021-01-18T10:34:39.218601Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "ce4a075ceeac71fdfd05a79eff7f0faa",
+				"requestedAt": "2021-11-09T15:02:50.866720779Z",
+				"canceledAt": null,
+				"reviewedByUserId": "b663b9a80366828a836e01c93e76da96",
+				"reviewedAt": "2021-11-23T22:18:52.663086349Z"
+			}
+		}
+	]
+}

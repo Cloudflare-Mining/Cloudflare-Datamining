@@ -1,0 +1,4009 @@
+{
+	"id": "JI85SyC9e8es",
+	"title": "AddToAny Share Buttons",
+	"shortDescription": "Share your content with floating & inline share buttons.",
+	"longDescription": "<a href=\"https://www.addtoany.com/\" rel=\"noopener\" target=\"_blank\">AddToAny</a> provides share buttons to help people share your content to any service, such as Facebook, Twitter, Pinterest, WhatsApp, LinkedIn, Tumblr, Reddit, email, SMS and over 100 more sharing and social media sites & apps.\n\n### Floating Share Buttons\n* Floating share bars stay in place as you scroll.\n* Vertical buttons are great for desktop.\n* Horizontal buttons are great for mobile.\n\n### Inline Share Buttons\n* Share buttons inline with content.\n* Universal share menu fits on all displays.\n* SVG icons are pixel-perfect at any size.\n\n### Custom Sharing\n* Show official share counts from supported services.\n* Add, remove, or rearrange your share icons.\n* Share the current URL, or a specific URL.\n* Get sharing stats in <a href=\"https://www.addtoany.com/ext/google_analytics/\" rel=\"noopener\" target=\"_blank\">Google Analytics</a>.\n\n### Custom Styles\n* Change the background color of buttons.\n* Change the foreground color of buttons.\n* Change the size of buttons.\n* Change the space between buttons.\n\n### Custom Placement\n* Align share buttons left, right, or center.\n* Place share buttons anywhere on a page.\n* Hide the vertical share bar on mobile.\n* Hide the horizontal share bar on desktop.\n\nAddToAny is the universal sharing platform used by millions of websites, making sites social media ready since 2006.",
+	"instructions": "Customize and install AddToAny on your site.",
+	"alias": "addtoany",
+	"orgId": "46de8cbe1dd5f897e87c92a7ebc07eb1",
+	"icon": "//images.cloudflareapps.com/cVoQ73eIQjCZA6S1lgCl_AddToAny-icon.png",
+	"screenshots": [
+		"//images.cloudflareapps.com/L4oC7C2RlWKAF71iwQyw_Buttons.png",
+		"//images.cloudflareapps.com/DuAnvBmvRievucdLHCSF_Menu Mini.png",
+		"//images.cloudflareapps.com/Cj686MljQoq4XWp0dZhe_Menu Full.png",
+		"//images.cloudflareapps.com/cdqFj8t8SRy97ulHi8h0_AddToAny-Example-Site-Screenshot.png"
+	],
+	"tileImage": "",
+	"featuredAppImage": "",
+	"author": "AddToAny",
+	"tagline": "",
+	"website": "https://www.addtoany.com/",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://www.addtoany.com/terms",
+	"privacyPolicyURL": "https://www.addtoany.com/privacy",
+	"color": "#136bfb",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.1.2",
+	"infoVersion": "1.1.2",
+	"points": 200,
+	"supportEmail": "support+cloudflareapp@addtoany.com",
+	"products": [],
+	"categoryIds": [
+		"social-and-communication",
+		"recommended-for-blogs"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "46de8cbe1dd5f897e87c92a7ebc07eb1",
+			"created": "2017-07-05T22:40:29.528235287Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "Kr1eWy_t52oE"
+	},
+	"created": "2017-06-16T00:49:39.468896Z",
+	"org": {
+		"id": "46de8cbe1dd5f897e87c92a7ebc07eb1",
+		"title": "",
+		"username": "46de8cbe1dd5f897e87c92a7ebc07eb1",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "recommended-for-blogs",
+			"title": "Recommended for Blogs",
+			"description": "Apps for blogs in the recommendation engine.",
+			"icon": "",
+			"points": 0,
+			"visible": false,
+			"created": "2018-02-06T19:54:23.834831Z"
+		},
+		{
+			"id": "social-and-communication",
+			"title": "Social & Communication",
+			"description": "Apps that make it easier to communicate with your customers.",
+			"icon": "",
+			"points": 80,
+			"visible": true,
+			"created": "2018-01-22T19:17:10.030031Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "v1.0.0",
+			"appId": "JI85SyC9e8es",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"instances": {
+							"description": "Customize one or more sets of AddToAny buttons.",
+							"items": {
+								"properties": {
+									"align": {
+										"default": "left",
+										"enum": [
+											"left",
+											"center",
+											"right"
+										],
+										"enumNames": {
+											"center": "Center",
+											"left": "Left",
+											"right": "Right"
+										},
+										"order": 1,
+										"title": "Buttons alignment",
+										"type": "string"
+									},
+									"container": {
+										"format": "element",
+										"order": 0,
+										"title": "Buttons location",
+										"type": "object"
+									},
+									"iconStyle": {
+										"order": 2,
+										"properties": {
+											"bgColor": {
+												"default": "#0166ff",
+												"format": "color",
+												"order": 1,
+												"showIf": {
+													"instances[].iconStyle.color": {
+														"op": "==",
+														"value": "custom"
+													}
+												},
+												"title": "Background color",
+												"type": "string"
+											},
+											"color": {
+												"default": "original",
+												"enum": [
+													"original",
+													"custom"
+												],
+												"enumNames": {
+													"custom": "Custom",
+													"original": "Original"
+												},
+												"format": "radios",
+												"order": 0,
+												"title": "Button colors",
+												"type": "string"
+											},
+											"fgColor": {
+												"default": "#ffffff",
+												"format": "color",
+												"order": 2,
+												"showIf": {
+													"instances[].iconStyle.color": {
+														"op": "==",
+														"value": "custom"
+													}
+												},
+												"title": "Foreground color",
+												"type": "string"
+											},
+											"size": {
+												"default": 32,
+												"format": "slider",
+												"maximum": 64,
+												"minimum": 16,
+												"order": 3,
+												"step": 2,
+												"title": "Button size",
+												"type": "number"
+											}
+										},
+										"title": "Button style",
+										"type": "object"
+									},
+									"services": {
+										"default": [
+											{
+												"serviceCode": "facebook"
+											},
+											{
+												"serviceCode": "twitter"
+											},
+											{
+												"serviceCode": "google_plus"
+											},
+											{
+												"serviceCode": "email"
+											},
+											{
+												"serviceCode": "addtoany"
+											}
+										],
+										"description": "Look up the <a href=\"https://www.addtoany.com/services/\" rel=\"noopener\" target=\"_blank\">AddToAny service code</a> to add a service.",
+										"items": {
+											"properties": {
+												"serviceCode": {
+													"order": 0,
+													"title": "Service code",
+													"type": "string"
+												}
+											},
+											"title": "Service",
+											"type": "object"
+										},
+										"order": 4,
+										"showIf": {
+											"instances[].showSharingOptions": true
+										},
+										"title": "Services",
+										"type": "array"
+									},
+									"shareTitle": {
+										"description": "Leave blank to share the current page's title. Some services will use the page's <a href=\"https://www.addtoany.com/ext/meta-tags/\" rel=\"noopener\" target=\"_blank\">meta tags</a> instead.",
+										"order": 6,
+										"placeholder": "Example Page",
+										"showIf": {
+											"instances[].shareURL": {
+												"op": "!=",
+												"value": ""
+											},
+											"instances[].showSharingOptions": true
+										},
+										"title": "Title to share",
+										"type": "string"
+									},
+									"shareURL": {
+										"description": "Leave blank to share the current page's URL.",
+										"order": 5,
+										"placeholder": "https://www.example.com/page.html",
+										"showIf": {
+											"instances[].showSharingOptions": true
+										},
+										"title": "URL to share",
+										"type": "string"
+									},
+									"showSharingOptions": {
+										"default": false,
+										"order": 3,
+										"title": "Show sharing options",
+										"type": "boolean"
+									}
+								},
+								"title": "AddToAny instance",
+								"type": "object"
+							},
+							"order": 0,
+							"title": "AddToAny buttons",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/lJlXrDw6Ny0v",
+			"metadata": {
+				"code": {
+					"sourceTag": "lJlXrDw6Ny0v",
+					"uploadedOn": "2017-06-16T06:59:25.730347004Z"
+				}
+			},
+			"created": "2017-06-16T00:49:39.908801Z",
+			"proposedApp": {
+				"id": "JI85SyC9e8es",
+				"title": "AddToAny Buttons",
+				"shortDescription": "Share buttons to share and save anywhere.",
+				"longDescription": "<a href=\"https://www.addtoany.com/\" rel=\"noopener\" target=\"_blank\">AddToAny</a> provides share buttons to help people share your content to any service, such as Facebook, Twitter, Pinterest, Google, WhatsApp, LinkedIn, Tumblr, Reddit, email, SMS and over 100 more sharing and social media sites & apps.\n\n### Share Buttons\n* AddToAny SVG icons are super-lightweight and pixel-perfect at any size.\n* Universal share menu fits on all displays.\n* Automatic Google Analytics integration (<a href=\"https://www.addtoany.com/ext/google_analytics/\" rel=\"noopener\" target=\"_blank\">access guide</a>) for sharing analytics.\n\n### Custom Styles\n* Change the background color of buttons.\n* Change the foreground color of buttons.\n* Change the size of buttons.\n\n### Custom Placement\n* Place share buttons anywhere on a page.\n* Align share buttons left, right, or center.\n\n### Custom Sharing\n* Share icons can be added, removed, or rearranged.\n* Share the current URL, or a specific URL.\n\nAddToAny is the universal sharing platform used by millions of websites, making sites social media ready since 2006.",
+				"instructions": "",
+				"alias": "addtoany",
+				"orgId": "46de8cbe1dd5f897e87c92a7ebc07eb1",
+				"icon": "//images.cloudflareapps.com/cVoQ73eIQjCZA6S1lgCl_AddToAny-icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/L4oC7C2RlWKAF71iwQyw_Buttons.png",
+					"//images.cloudflareapps.com/DuAnvBmvRievucdLHCSF_Menu Mini.png",
+					"//images.cloudflareapps.com/Cj686MljQoq4XWp0dZhe_Menu Full.png",
+					"//images.cloudflareapps.com/cdqFj8t8SRy97ulHi8h0_AddToAny-Example-Site-Screenshot.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "AddToAny",
+				"tagline": "",
+				"website": "https://www.addtoany.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "info+cloudflareapp@addtoany.com",
+				"products": [],
+				"categoryIds": [
+					"social-media",
+					"add-on",
+					"for-developers",
+					"get-more-customers",
+					"marketing",
+					"e-commerce",
+					"design",
+					"analytics"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Kr1eWy_t52oE"
+				},
+				"created": "2017-06-16T00:49:39.468896Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"assignedToReviewerUserId": "ee86f206b11d7a3462145a704baa145a",
+				"requestedByUserId": "46de8cbe1dd5f897e87c92a7ebc07eb1",
+				"requestedAt": "2017-06-16T07:01:48.229110047Z",
+				"canceledByUserId": "46de8cbe1dd5f897e87c92a7ebc07eb1",
+				"canceledAt": "2017-07-05T22:40:29.51989696Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.0",
+			"appId": "JI85SyC9e8es",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"instances": {
+							"description": "Customize one or more sets of AddToAny buttons.",
+							"items": {
+								"properties": {
+									"align": {
+										"default": "left",
+										"enum": [
+											"left",
+											"center",
+											"right"
+										],
+										"enumNames": {
+											"center": "Center",
+											"left": "Left",
+											"right": "Right"
+										},
+										"order": 1,
+										"title": "Buttons alignment",
+										"type": "string"
+									},
+									"container": {
+										"format": "element",
+										"order": 0,
+										"title": "Buttons location",
+										"type": "object"
+									},
+									"iconStyle": {
+										"order": 2,
+										"properties": {
+											"bgColor": {
+												"default": "#0166ff",
+												"format": "color",
+												"order": 1,
+												"showIf": {
+													"instances[].iconStyle.color": {
+														"op": "==",
+														"value": "custom"
+													}
+												},
+												"title": "Background color",
+												"type": "string"
+											},
+											"color": {
+												"default": "original",
+												"enum": [
+													"original",
+													"custom"
+												],
+												"enumNames": {
+													"custom": "Custom",
+													"original": "Original"
+												},
+												"format": "radios",
+												"order": 0,
+												"title": "Button colors",
+												"type": "string"
+											},
+											"fgColor": {
+												"default": "#ffffff",
+												"format": "color",
+												"order": 2,
+												"showIf": {
+													"instances[].iconStyle.color": {
+														"op": "==",
+														"value": "custom"
+													}
+												},
+												"title": "Foreground color",
+												"type": "string"
+											},
+											"size": {
+												"default": 32,
+												"format": "slider",
+												"maximum": 64,
+												"minimum": 16,
+												"order": 3,
+												"step": 2,
+												"title": "Button size",
+												"type": "number"
+											}
+										},
+										"title": "Button style",
+										"type": "object"
+									},
+									"services": {
+										"default": [
+											{
+												"serviceCode": "facebook"
+											},
+											{
+												"serviceCode": "twitter"
+											},
+											{
+												"serviceCode": "google_plus"
+											},
+											{
+												"serviceCode": "email"
+											},
+											{
+												"serviceCode": "addtoany"
+											}
+										],
+										"description": "Look up the <a href=\"https://www.addtoany.com/services/\" rel=\"noopener\" target=\"_blank\">AddToAny service code</a> to add a service.",
+										"items": {
+											"properties": {
+												"serviceCode": {
+													"order": 0,
+													"title": "Service code",
+													"type": "string"
+												}
+											},
+											"title": "Service",
+											"type": "object"
+										},
+										"order": 4,
+										"showIf": {
+											"instances[].showSharingOptions": true
+										},
+										"title": "Services",
+										"type": "array"
+									},
+									"shareTitle": {
+										"description": "Leave blank to share the current page's title. Some services will use the page's <a href=\"https://www.addtoany.com/ext/meta-tags/\" rel=\"noopener\" target=\"_blank\">meta tags</a> instead.",
+										"order": 6,
+										"placeholder": "Example Page",
+										"showIf": {
+											"instances[].shareURL": {
+												"op": "!=",
+												"value": ""
+											},
+											"instances[].showSharingOptions": true
+										},
+										"title": "Title to share",
+										"type": "string"
+									},
+									"shareURL": {
+										"description": "Leave blank to share the current page's URL.",
+										"order": 5,
+										"placeholder": "https://www.example.com/page.html",
+										"showIf": {
+											"instances[].showSharingOptions": true
+										},
+										"title": "URL to share",
+										"type": "string"
+									},
+									"showSharingOptions": {
+										"default": false,
+										"order": 3,
+										"title": "Show sharing options",
+										"type": "boolean"
+									}
+								},
+								"title": "AddToAny instance",
+								"type": "object"
+							},
+							"order": 0,
+							"title": "AddToAny buttons",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/lJlXrDw6Ny0v",
+			"created": "2017-07-05T22:40:08.072198Z",
+			"proposedApp": {
+				"id": "JI85SyC9e8es",
+				"title": "AddToAny Buttons",
+				"shortDescription": "Share buttons to share and save anywhere.",
+				"longDescription": "<a href=\"https://www.addtoany.com/\" rel=\"noopener\" target=\"_blank\">AddToAny</a> provides share buttons to help people share your content to any service, such as Facebook, Twitter, Pinterest, Google, WhatsApp, LinkedIn, Tumblr, Reddit, email, SMS and over 100 more sharing and social media sites & apps.\n\n### Share Buttons\n* AddToAny SVG icons are super-lightweight and pixel-perfect at any size.\n* Universal share menu fits on all displays.\n* Automatic Google Analytics integration (<a href=\"https://www.addtoany.com/ext/google_analytics/\" rel=\"noopener\" target=\"_blank\">access guide</a>) for sharing analytics.\n\n### Custom Styles\n* Change the background color of buttons.\n* Change the foreground color of buttons.\n* Change the size of buttons.\n\n### Custom Placement\n* Place share buttons anywhere on a page.\n* Align share buttons left, right, or center.\n\n### Custom Sharing\n* Share icons can be added, removed, or rearranged.\n* Share the current URL, or a specific URL.\n\nAddToAny is the universal sharing platform used by millions of websites, making sites social media ready since 2006.",
+				"instructions": "",
+				"alias": "addtoany",
+				"orgId": "46de8cbe1dd5f897e87c92a7ebc07eb1",
+				"icon": "//images.cloudflareapps.com/cVoQ73eIQjCZA6S1lgCl_AddToAny-icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/L4oC7C2RlWKAF71iwQyw_Buttons.png",
+					"//images.cloudflareapps.com/DuAnvBmvRievucdLHCSF_Menu Mini.png",
+					"//images.cloudflareapps.com/Cj686MljQoq4XWp0dZhe_Menu Full.png",
+					"//images.cloudflareapps.com/cdqFj8t8SRy97ulHi8h0_AddToAny-Example-Site-Screenshot.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "AddToAny",
+				"tagline": "",
+				"website": "https://www.addtoany.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support+cloudflareapp@addtoany.com",
+				"products": [],
+				"categoryIds": [
+					"social-media",
+					"add-on",
+					"for-developers",
+					"get-more-customers",
+					"marketing",
+					"e-commerce",
+					"design",
+					"analytics"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Kr1eWy_t52oE"
+				},
+				"created": "2017-06-16T00:49:39.468896Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "46de8cbe1dd5f897e87c92a7ebc07eb1",
+				"requestedAt": "2017-07-05T22:40:29.526403282Z",
+				"canceledAt": null,
+				"reviewedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"reviewedAt": "2017-07-06T19:35:31.573973682Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "JI85SyC9e8es",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"instances": {
+							"items": {
+								"properties": {
+									"align": {
+										"default": "left",
+										"enum": [
+											"left",
+											"center",
+											"right"
+										],
+										"enumNames": {
+											"center": "Center",
+											"left": "Left",
+											"right": "Right"
+										},
+										"order": 1,
+										"title": "Buttons alignment",
+										"type": "string"
+									},
+									"container": {
+										"format": "element",
+										"order": 0,
+										"title": "Buttons location",
+										"type": "object"
+									},
+									"iconStyle": {
+										"order": 2,
+										"properties": {
+											"bgColor": {
+												"default": "#0166ff",
+												"format": "color",
+												"order": 1,
+												"showIf": {
+													"instances[].iconStyle.color": {
+														"op": "==",
+														"value": "custom"
+													}
+												},
+												"title": "Background color",
+												"type": "string"
+											},
+											"color": {
+												"default": "original",
+												"enum": [
+													"original",
+													"custom"
+												],
+												"enumNames": {
+													"custom": "Custom",
+													"original": "Original"
+												},
+												"format": "radios",
+												"order": 0,
+												"title": "Colors",
+												"type": "string"
+											},
+											"fgColor": {
+												"default": "#ffffff",
+												"format": "color",
+												"order": 2,
+												"showIf": {
+													"instances[].iconStyle.color": {
+														"op": "==",
+														"value": "custom"
+													}
+												},
+												"title": "Foreground color",
+												"type": "string"
+											},
+											"size": {
+												"default": 32,
+												"format": "slider",
+												"maximum": 64,
+												"minimum": 16,
+												"order": 3,
+												"step": 2,
+												"title": "Size",
+												"type": "number"
+											}
+										},
+										"title": "Buttons style",
+										"type": "object"
+									},
+									"services": {
+										"default": [
+											{
+												"serviceCode": "facebook"
+											},
+											{
+												"serviceCode": "twitter"
+											},
+											{
+												"serviceCode": "google_plus"
+											},
+											{
+												"serviceCode": "email"
+											},
+											{
+												"serviceCode": "addtoany"
+											}
+										],
+										"description": "Look up the <a href=\"https://www.addtoany.com/services/\" rel=\"noopener\" target=\"_blank\">AddToAny service code</a> to add a service.",
+										"items": {
+											"properties": {
+												"serviceCode": {
+													"order": 0,
+													"title": "Service code",
+													"type": "string"
+												}
+											},
+											"title": "Service",
+											"type": "object"
+										},
+										"order": 4,
+										"showIf": {
+											"instances[].showSharingOptions": true
+										},
+										"title": "Services",
+										"type": "array"
+									},
+									"shareTitle": {
+										"description": "Leave blank to share the current page's title. Some services will use the page's <a href=\"https://www.addtoany.com/ext/meta-tags/\" rel=\"noopener\" target=\"_blank\">meta tags</a> instead.",
+										"order": 6,
+										"placeholder": "Example Page",
+										"showIf": {
+											"instances[].shareURL": {
+												"op": "!=",
+												"value": ""
+											},
+											"instances[].showSharingOptions": true
+										},
+										"title": "Title to share",
+										"type": "string"
+									},
+									"shareURL": {
+										"description": "Leave blank to share the current page's URL.",
+										"order": 5,
+										"placeholder": "https://www.example.com/page.html",
+										"showIf": {
+											"instances[].showSharingOptions": true
+										},
+										"title": "URL to share",
+										"type": "string"
+									},
+									"showSharingOptions": {
+										"default": false,
+										"order": 3,
+										"title": "Show sharing options",
+										"type": "boolean"
+									}
+								},
+								"title": "AddToAny instance",
+								"type": "object"
+							},
+							"order": 0,
+							"title": "AddToAny buttons",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/nGtTYcD_WhrO",
+			"metadata": {
+				"code": {
+					"sourceTag": "nGtTYcD_WhrO",
+					"uploadedOn": "2017-07-07T01:05:54.997726743Z"
+				}
+			},
+			"created": "2017-07-07T00:07:36.900342Z",
+			"proposedApp": {
+				"id": "JI85SyC9e8es",
+				"title": "AddToAny Buttons",
+				"shortDescription": "Share buttons to share and save anywhere.",
+				"longDescription": "<a href=\"https://www.addtoany.com/\" rel=\"noopener\" target=\"_blank\">AddToAny</a> provides share buttons to help people share your content to any service, such as Facebook, Twitter, Pinterest, Google, WhatsApp, LinkedIn, Tumblr, Reddit, email, SMS and over 100 more sharing and social media sites & apps.\n\n### Share Buttons\n* AddToAny SVG icons are super-lightweight and pixel-perfect at any size.\n* Universal share menu fits on all displays.\n* Automatic Google Analytics integration (<a href=\"https://www.addtoany.com/ext/google_analytics/\" rel=\"noopener\" target=\"_blank\">access guide</a>) for sharing analytics.\n\n### Custom Styles\n* Change the background color of buttons.\n* Change the foreground color of buttons.\n* Change the size of buttons.\n\n### Custom Placement\n* Place share buttons anywhere on a page.\n* Align share buttons left, right, or center.\n\n### Custom Sharing\n* Share icons can be added, removed, or rearranged.\n* Share the current URL, or a specific URL.\n\nAddToAny is the universal sharing platform used by millions of websites, making sites social media ready since 2006.",
+				"instructions": "Pick a location for your buttons, then customize and install AddToAny on your site.",
+				"alias": "addtoany",
+				"orgId": "46de8cbe1dd5f897e87c92a7ebc07eb1",
+				"icon": "//images.cloudflareapps.com/cVoQ73eIQjCZA6S1lgCl_AddToAny-icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/L4oC7C2RlWKAF71iwQyw_Buttons.png",
+					"//images.cloudflareapps.com/DuAnvBmvRievucdLHCSF_Menu Mini.png",
+					"//images.cloudflareapps.com/Cj686MljQoq4XWp0dZhe_Menu Full.png",
+					"//images.cloudflareapps.com/cdqFj8t8SRy97ulHi8h0_AddToAny-Example-Site-Screenshot.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "AddToAny",
+				"tagline": "",
+				"website": "https://www.addtoany.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support+cloudflareapp@addtoany.com",
+				"products": [],
+				"categoryIds": [
+					"social-media",
+					"add-on",
+					"get-more-customers",
+					"marketing",
+					"design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Kr1eWy_t52oE"
+				},
+				"created": "2017-06-16T00:49:39.468896Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "46de8cbe1dd5f897e87c92a7ebc07eb1",
+				"requestedAt": "2017-07-07T01:06:16.130755868Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-07-11T07:26:44.883726636Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "JI85SyC9e8es",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"instances": {
+							"items": {
+								"properties": {
+									"align": {
+										"default": "left",
+										"enum": [
+											"left",
+											"center",
+											"right"
+										],
+										"enumNames": {
+											"center": "Center",
+											"left": "Left",
+											"right": "Right"
+										},
+										"order": 1,
+										"title": "Buttons alignment",
+										"type": "string"
+									},
+									"container": {
+										"format": "element",
+										"order": 0,
+										"title": "Buttons location",
+										"type": "object"
+									},
+									"iconStyle": {
+										"order": 2,
+										"properties": {
+											"bgColor": {
+												"default": "#0166ff",
+												"format": "color",
+												"order": 1,
+												"showIf": {
+													"instances[].iconStyle.color": {
+														"op": "==",
+														"value": "custom"
+													}
+												},
+												"title": "Background color",
+												"type": "string"
+											},
+											"color": {
+												"default": "original",
+												"enum": [
+													"original",
+													"custom"
+												],
+												"enumNames": {
+													"custom": "Custom",
+													"original": "Original"
+												},
+												"format": "radios",
+												"order": 0,
+												"title": "Colors",
+												"type": "string"
+											},
+											"fgColor": {
+												"default": "#ffffff",
+												"format": "color",
+												"order": 2,
+												"showIf": {
+													"instances[].iconStyle.color": {
+														"op": "==",
+														"value": "custom"
+													}
+												},
+												"title": "Foreground color",
+												"type": "string"
+											},
+											"size": {
+												"default": 32,
+												"format": "slider",
+												"maximum": 64,
+												"minimum": 16,
+												"order": 3,
+												"step": 2,
+												"title": "Size",
+												"type": "number"
+											}
+										},
+										"title": "Buttons style",
+										"type": "object"
+									},
+									"services": {
+										"default": [
+											{
+												"serviceCode": "facebook"
+											},
+											{
+												"serviceCode": "twitter"
+											},
+											{
+												"serviceCode": "google_plus"
+											},
+											{
+												"serviceCode": "email"
+											},
+											{
+												"serviceCode": "addtoany"
+											}
+										],
+										"items": {
+											"properties": {
+												"serviceCode": {
+													"default": "__other",
+													"enum": [
+														"addtoany",
+														"email",
+														"facebook",
+														"google_plus",
+														"linkedin",
+														"pinterest",
+														"reddit",
+														"tumblr",
+														"twitter",
+														"whatsapp",
+														"__other"
+													],
+													"enumNames": {
+														"__other": "Other…",
+														"addtoany": "AddToAny",
+														"email": "Email",
+														"facebook": "Facebook",
+														"google_plus": "Google+",
+														"linkedin": "LinkedIn",
+														"pinterest": "Pinterest",
+														"reddit": "Reddit",
+														"tumblr": "Tumblr",
+														"twitter": "Twitter",
+														"whatsapp": "WhatsApp"
+													},
+													"order": 0,
+													"title": "Service",
+													"type": "string"
+												},
+												"serviceCodeOther": {
+													"description": "Look up the <a href=\"https://www.addtoany.com/services/\" rel=\"noopener\" target=\"_blank\">AddToAny service code</a> to add another service.",
+													"order": 1,
+													"placeholder": "service_code",
+													"showIf": {
+														"instances[].services[].serviceCode": {
+															"op": "==",
+															"value": "__other"
+														}
+													},
+													"title": "Service code",
+													"type": "string"
+												},
+												"serviceCounter": {
+													"default": false,
+													"order": 2,
+													"showIf": {
+														"instances[].services[].serviceCode": {
+															"method": "any",
+															"op": "==",
+															"value": [
+																"facebook",
+																"linkedin",
+																"pinterest",
+																"reddit",
+																"tumblr",
+																"addtoany"
+															]
+														}
+													},
+													"title": "Show count",
+													"type": "boolean"
+												}
+											},
+											"title": "Service",
+											"type": "object"
+										},
+										"order": 4,
+										"showIf": {
+											"instances[].showSharingOptions": true
+										},
+										"title": "Services",
+										"type": "array"
+									},
+									"shareTitle": {
+										"description": "Leave blank to share the current page's title. Some services will use the page's <a href=\"https://www.addtoany.com/ext/meta-tags/\" rel=\"noopener\" target=\"_blank\">meta tags</a> instead.",
+										"order": 6,
+										"placeholder": "Example Page",
+										"showIf": {
+											"instances[].shareURL": {
+												"op": "!=",
+												"value": ""
+											},
+											"instances[].showSharingOptions": true
+										},
+										"title": "Title to share",
+										"type": "string"
+									},
+									"shareURL": {
+										"description": "Leave blank to share the current page's URL.",
+										"order": 5,
+										"placeholder": "https://www.example.com/page.html",
+										"showIf": {
+											"instances[].showSharingOptions": true
+										},
+										"title": "URL to share",
+										"type": "string"
+									},
+									"showSharingOptions": {
+										"default": false,
+										"order": 3,
+										"title": "Show sharing options",
+										"type": "boolean"
+									}
+								},
+								"title": "AddToAny instance",
+								"type": "object"
+							},
+							"order": 0,
+							"title": "AddToAny buttons",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/3SGa6j9ZZWGJ",
+			"metadata": {
+				"code": {
+					"sourceTag": "3SGa6j9ZZWGJ",
+					"uploadedOn": "2017-07-12T03:39:59.393516646Z"
+				}
+			},
+			"created": "2017-07-12T03:34:58.689026Z",
+			"proposedApp": {
+				"id": "JI85SyC9e8es",
+				"title": "AddToAny Buttons",
+				"shortDescription": "Share buttons to share and save anywhere.",
+				"longDescription": "<a href=\"https://www.addtoany.com/\" rel=\"noopener\" target=\"_blank\">AddToAny</a> provides share buttons to help people share your content to any service, such as Facebook, Twitter, Pinterest, Google+, WhatsApp, LinkedIn, Tumblr, Reddit, email, SMS and over 100 more sharing and social media sites & apps.\n\n### Share Buttons\n* AddToAny SVG icons are super-lightweight and pixel-perfect at any size.\n* Universal share menu fits on all displays.\n* Automatic Google Analytics integration (<a href=\"https://www.addtoany.com/ext/google_analytics/\" rel=\"noopener\" target=\"_blank\">access guide</a>) for sharing analytics.\n\n### Custom Sharing\n* Show official share counts from supported services.\n* Share icons can be added, removed, or rearranged.\n* Share the current URL, or a specific URL.\n\n### Custom Styles\n* Change the background color of buttons.\n* Change the foreground color of buttons.\n* Change the size of buttons.\n\n### Custom Placement\n* Place share buttons anywhere on a page.\n* Align share buttons left, right, or center.\n\nAddToAny is the universal sharing platform used by millions of websites, making sites social media ready since 2006.",
+				"instructions": "Pick a location for your buttons, then customize and install AddToAny on your site.",
+				"alias": "addtoany",
+				"orgId": "46de8cbe1dd5f897e87c92a7ebc07eb1",
+				"icon": "//images.cloudflareapps.com/cVoQ73eIQjCZA6S1lgCl_AddToAny-icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/L4oC7C2RlWKAF71iwQyw_Buttons.png",
+					"//images.cloudflareapps.com/DuAnvBmvRievucdLHCSF_Menu Mini.png",
+					"//images.cloudflareapps.com/Cj686MljQoq4XWp0dZhe_Menu Full.png",
+					"//images.cloudflareapps.com/cdqFj8t8SRy97ulHi8h0_AddToAny-Example-Site-Screenshot.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "AddToAny",
+				"tagline": "",
+				"website": "https://www.addtoany.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support+cloudflareapp@addtoany.com",
+				"products": [],
+				"categoryIds": [
+					"social-media",
+					"add-on",
+					"get-more-customers",
+					"marketing",
+					"design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Kr1eWy_t52oE"
+				},
+				"created": "2017-06-16T00:49:39.468896Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"assignedToReviewerUserId": "ee86f206b11d7a3462145a704baa145a",
+				"requestedByUserId": "46de8cbe1dd5f897e87c92a7ebc07eb1",
+				"requestedAt": "2017-07-12T03:41:56.897037371Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-07-15T05:39:43.911017191Z"
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "JI85SyC9e8es",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"instances": {
+							"items": {
+								"properties": {
+									"align": {
+										"default": "left",
+										"enum": [
+											"left",
+											"center",
+											"right"
+										],
+										"enumNames": {
+											"center": "Center",
+											"left": "Left",
+											"right": "Right"
+										},
+										"order": 1,
+										"title": "Buttons alignment",
+										"type": "string"
+									},
+									"container": {
+										"format": "element",
+										"order": 0,
+										"title": "Buttons location",
+										"type": "object"
+									},
+									"iconStyle": {
+										"order": 2,
+										"properties": {
+											"bgColor": {
+												"default": "#0166ff",
+												"format": "color",
+												"order": 1,
+												"showIf": {
+													"instances[].iconStyle.color": {
+														"op": "==",
+														"value": "custom"
+													}
+												},
+												"title": "Background color",
+												"type": "string"
+											},
+											"color": {
+												"default": "original",
+												"enum": [
+													"original",
+													"custom"
+												],
+												"enumNames": {
+													"custom": "Custom",
+													"original": "Original"
+												},
+												"format": "radios",
+												"order": 0,
+												"title": "Colors",
+												"type": "string"
+											},
+											"fgColor": {
+												"default": "#ffffff",
+												"format": "color",
+												"order": 2,
+												"showIf": {
+													"instances[].iconStyle.color": {
+														"op": "==",
+														"value": "custom"
+													}
+												},
+												"title": "Foreground color",
+												"type": "string"
+											},
+											"size": {
+												"default": 32,
+												"format": "slider",
+												"maximum": 64,
+												"minimum": 16,
+												"order": 3,
+												"step": 2,
+												"title": "Size",
+												"type": "number"
+											}
+										},
+										"title": "Buttons style",
+										"type": "object"
+									},
+									"services": {
+										"default": [
+											{
+												"serviceCode": "facebook"
+											},
+											{
+												"serviceCode": "twitter"
+											},
+											{
+												"serviceCode": "google_plus"
+											},
+											{
+												"serviceCode": "email"
+											},
+											{
+												"serviceCode": "addtoany"
+											}
+										],
+										"items": {
+											"properties": {
+												"serviceCode": {
+													"default": "__other",
+													"enum": [
+														"addtoany",
+														"email",
+														"facebook",
+														"google_plus",
+														"linkedin",
+														"pinterest",
+														"reddit",
+														"tumblr",
+														"twitter",
+														"whatsapp",
+														"__other"
+													],
+													"enumNames": {
+														"__other": "Other…",
+														"addtoany": "AddToAny",
+														"email": "Email",
+														"facebook": "Facebook",
+														"google_plus": "Google+",
+														"linkedin": "LinkedIn",
+														"pinterest": "Pinterest",
+														"reddit": "Reddit",
+														"tumblr": "Tumblr",
+														"twitter": "Twitter",
+														"whatsapp": "WhatsApp"
+													},
+													"order": 0,
+													"title": "Service",
+													"type": "string"
+												},
+												"serviceCodeOther": {
+													"description": "Look up the <a href=\"https://www.addtoany.com/services/\" rel=\"noopener\" target=\"_blank\">AddToAny service code</a> to add another service.",
+													"order": 1,
+													"placeholder": "service_code",
+													"showIf": {
+														"instances[].services[].serviceCode": {
+															"op": "==",
+															"value": "__other"
+														}
+													},
+													"title": "Service code",
+													"type": "string"
+												},
+												"serviceCounter": {
+													"default": false,
+													"order": 2,
+													"showIf": {
+														"instances[].services[].serviceCode": {
+															"method": "any",
+															"op": "==",
+															"value": [
+																"facebook",
+																"linkedin",
+																"pinterest",
+																"reddit",
+																"tumblr",
+																"addtoany"
+															]
+														}
+													},
+													"title": "Show count",
+													"type": "boolean"
+												}
+											},
+											"title": "Service",
+											"type": "object"
+										},
+										"order": 4,
+										"showIf": {
+											"instances[].showSharingOptions": true
+										},
+										"title": "Services",
+										"type": "array"
+									},
+									"shareTitle": {
+										"description": "Leave blank to share the current page's title. Some services will use the page's <a href=\"https://www.addtoany.com/ext/meta-tags/\" rel=\"noopener\" target=\"_blank\">meta tags</a> instead.",
+										"order": 6,
+										"placeholder": "Example Page",
+										"showIf": {
+											"instances[].shareURL": {
+												"op": "!=",
+												"value": ""
+											},
+											"instances[].showSharingOptions": true
+										},
+										"title": "Title to share",
+										"type": "string"
+									},
+									"shareURL": {
+										"description": "Leave blank to share the current page's URL.",
+										"format": "url",
+										"order": 5,
+										"placeholder": "https://www.example.com/page.html",
+										"showIf": {
+											"instances[].showSharingOptions": true
+										},
+										"title": "URL to share",
+										"type": "string"
+									},
+									"showSharingOptions": {
+										"default": false,
+										"order": 3,
+										"title": "Show sharing options",
+										"type": "boolean"
+									}
+								},
+								"title": "AddToAny instance",
+								"type": "object"
+							},
+							"order": 0,
+							"title": "AddToAny buttons",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.6,
+				"upvotes": 3,
+				"downvotes": 2
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/NZw5S2Oupfpv",
+			"metadata": {
+				"code": {
+					"sourceTag": "NZw5S2Oupfpv",
+					"uploadedOn": "2017-07-15T21:56:51.508612839Z"
+				}
+			},
+			"created": "2017-07-15T21:45:43.934916Z",
+			"proposedApp": {
+				"id": "JI85SyC9e8es",
+				"title": "AddToAny Buttons",
+				"shortDescription": "Share buttons to share and save anywhere.",
+				"longDescription": "<a href=\"https://www.addtoany.com/\" rel=\"noopener\" target=\"_blank\">AddToAny</a> provides share buttons to help people share your content to any service, such as Facebook, Twitter, Pinterest, Google+, WhatsApp, LinkedIn, Tumblr, Reddit, email, SMS and over 100 more sharing and social media sites & apps.\n\n### Share Buttons\n* AddToAny SVG icons are super-lightweight and pixel-perfect at any size.\n* Universal share menu fits on all displays.\n* Automatic Google Analytics integration (<a href=\"https://www.addtoany.com/ext/google_analytics/\" rel=\"noopener\" target=\"_blank\">access guide</a>) for sharing analytics.\n\n### Custom Sharing\n* Show official share counts from supported services.\n* Share icons can be added, removed, or rearranged.\n* Share the current URL, or a specific URL.\n\n### Custom Styles\n* Change the background color of buttons.\n* Change the foreground color of buttons.\n* Change the size of buttons.\n\n### Custom Placement\n* Place share buttons anywhere on a page.\n* Align share buttons left, right, or center.\n\nAddToAny is the universal sharing platform used by millions of websites, making sites social media ready since 2006.",
+				"instructions": "Pick a location for your buttons, then customize and install AddToAny on your site.",
+				"alias": "addtoany",
+				"orgId": "46de8cbe1dd5f897e87c92a7ebc07eb1",
+				"icon": "//images.cloudflareapps.com/cVoQ73eIQjCZA6S1lgCl_AddToAny-icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/L4oC7C2RlWKAF71iwQyw_Buttons.png",
+					"//images.cloudflareapps.com/DuAnvBmvRievucdLHCSF_Menu Mini.png",
+					"//images.cloudflareapps.com/Cj686MljQoq4XWp0dZhe_Menu Full.png",
+					"//images.cloudflareapps.com/cdqFj8t8SRy97ulHi8h0_AddToAny-Example-Site-Screenshot.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "AddToAny",
+				"tagline": "",
+				"website": "https://www.addtoany.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.addtoany.com/terms",
+				"privacyPolicyURL": "https://www.addtoany.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support+cloudflareapp@addtoany.com",
+				"products": [],
+				"categoryIds": [
+					"social-media",
+					"add-on",
+					"get-more-customers",
+					"marketing",
+					"design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Kr1eWy_t52oE"
+				},
+				"created": "2017-06-16T00:49:39.468896Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "46de8cbe1dd5f897e87c92a7ebc07eb1",
+				"requestedAt": "2017-07-15T21:58:42.097836295Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-07-18T10:09:48.398975584Z"
+			}
+		},
+		{
+			"tag": "1.0.4",
+			"appId": "JI85SyC9e8es",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"instances": {
+							"items": {
+								"properties": {
+									"align": {
+										"default": "left",
+										"enum": [
+											"left",
+											"center",
+											"right"
+										],
+										"enumNames": {
+											"center": "Center",
+											"left": "Left",
+											"right": "Right"
+										},
+										"order": 1,
+										"title": "Buttons alignment",
+										"type": "string"
+									},
+									"container": {
+										"format": "element",
+										"order": 0,
+										"title": "Buttons location",
+										"type": "object"
+									},
+									"iconStyle": {
+										"order": 2,
+										"properties": {
+											"bgColor": {
+												"default": "#0166ff",
+												"format": "color",
+												"order": 1,
+												"showIf": {
+													"instances[].iconStyle.color": {
+														"op": "==",
+														"value": "custom"
+													}
+												},
+												"title": "Background color",
+												"type": "string"
+											},
+											"color": {
+												"default": "original",
+												"enum": [
+													"original",
+													"custom"
+												],
+												"enumNames": {
+													"custom": "Custom",
+													"original": "Original"
+												},
+												"format": "radios",
+												"order": 0,
+												"title": "Colors",
+												"type": "string"
+											},
+											"fgColor": {
+												"default": "#ffffff",
+												"format": "color",
+												"order": 2,
+												"showIf": {
+													"instances[].iconStyle.color": {
+														"op": "==",
+														"value": "custom"
+													}
+												},
+												"title": "Foreground color",
+												"type": "string"
+											},
+											"size": {
+												"default": 32,
+												"format": "slider",
+												"maximum": 64,
+												"minimum": 16,
+												"order": 3,
+												"step": 2,
+												"title": "Size",
+												"type": "number"
+											}
+										},
+										"title": "Buttons style",
+										"type": "object"
+									},
+									"services": {
+										"default": [
+											{
+												"serviceCode": "facebook"
+											},
+											{
+												"serviceCode": "twitter"
+											},
+											{
+												"serviceCode": "google_plus"
+											},
+											{
+												"serviceCode": "email"
+											},
+											{
+												"serviceCode": "addtoany"
+											}
+										],
+										"items": {
+											"properties": {
+												"serviceCode": {
+													"default": "__other",
+													"enum": [
+														"addtoany",
+														"email",
+														"facebook",
+														"google_plus",
+														"linkedin",
+														"pinterest",
+														"reddit",
+														"tumblr",
+														"twitter",
+														"whatsapp",
+														"__other"
+													],
+													"enumNames": {
+														"__other": "Other…",
+														"addtoany": "AddToAny",
+														"email": "Email",
+														"facebook": "Facebook",
+														"google_plus": "Google+",
+														"linkedin": "LinkedIn",
+														"pinterest": "Pinterest",
+														"reddit": "Reddit",
+														"tumblr": "Tumblr",
+														"twitter": "Twitter",
+														"whatsapp": "WhatsApp"
+													},
+													"order": 0,
+													"title": "Service",
+													"type": "string"
+												},
+												"serviceCodeOther": {
+													"description": "Look up the <a href=\"https://www.addtoany.com/services/\" rel=\"noopener\" target=\"_blank\">AddToAny service code</a> to add another service.",
+													"order": 1,
+													"placeholder": "service_code",
+													"showIf": {
+														"instances[].services[].serviceCode": {
+															"op": "==",
+															"value": "__other"
+														}
+													},
+													"title": "Service code",
+													"type": "string"
+												},
+												"serviceCounter": {
+													"default": false,
+													"order": 2,
+													"showIf": {
+														"instances[].services[].serviceCode": {
+															"method": "any",
+															"op": "==",
+															"value": [
+																"facebook",
+																"linkedin",
+																"pinterest",
+																"reddit",
+																"tumblr",
+																"addtoany"
+															]
+														}
+													},
+													"title": "Show count",
+													"type": "boolean"
+												}
+											},
+											"title": "Service",
+											"type": "object"
+										},
+										"order": 4,
+										"showIf": {
+											"instances[].showSharingOptions": true
+										},
+										"title": "Services",
+										"type": "array"
+									},
+									"shareTitle": {
+										"description": "Leave blank to share the current page's title. Some services will use the page's <a href=\"https://www.addtoany.com/ext/meta-tags/\" rel=\"noopener\" target=\"_blank\">meta tags</a> instead.",
+										"order": 6,
+										"placeholder": "Example Page",
+										"showIf": {
+											"instances[].shareURL": {
+												"op": "!=",
+												"value": ""
+											},
+											"instances[].showSharingOptions": true
+										},
+										"title": "Title to share",
+										"type": "string"
+									},
+									"shareURL": {
+										"description": "Leave blank to share the current page's URL.",
+										"format": "url",
+										"order": 5,
+										"placeholder": "https://www.example.com/page.html",
+										"showIf": {
+											"instances[].showSharingOptions": true
+										},
+										"title": "URL to share",
+										"type": "string"
+									},
+									"showSharingOptions": {
+										"default": false,
+										"order": 3,
+										"title": "Show sharing options",
+										"type": "boolean"
+									}
+								},
+								"title": "AddToAny instance",
+								"type": "object"
+							},
+							"order": 0,
+							"title": "AddToAny buttons",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Added to “Social & Communication” category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/NZw5S2Oupfpv",
+			"created": "2018-01-23T18:52:45.085059Z",
+			"proposedApp": {
+				"id": "JI85SyC9e8es",
+				"title": "AddToAny Buttons",
+				"shortDescription": "Share buttons to share and save anywhere.",
+				"longDescription": "<a href=\"https://www.addtoany.com/\" rel=\"noopener\" target=\"_blank\">AddToAny</a> provides share buttons to help people share your content to any service, such as Facebook, Twitter, Pinterest, Google+, WhatsApp, LinkedIn, Tumblr, Reddit, email, SMS and over 100 more sharing and social media sites & apps.\n\n### Share Buttons\n* AddToAny SVG icons are super-lightweight and pixel-perfect at any size.\n* Universal share menu fits on all displays.\n* Automatic Google Analytics integration (<a href=\"https://www.addtoany.com/ext/google_analytics/\" rel=\"noopener\" target=\"_blank\">access guide</a>) for sharing analytics.\n\n### Custom Sharing\n* Show official share counts from supported services.\n* Share icons can be added, removed, or rearranged.\n* Share the current URL, or a specific URL.\n\n### Custom Styles\n* Change the background color of buttons.\n* Change the foreground color of buttons.\n* Change the size of buttons.\n\n### Custom Placement\n* Place share buttons anywhere on a page.\n* Align share buttons left, right, or center.\n\nAddToAny is the universal sharing platform used by millions of websites, making sites social media ready since 2006.",
+				"instructions": "Pick a location for your buttons, then customize and install AddToAny on your site.",
+				"alias": "addtoany",
+				"orgId": "46de8cbe1dd5f897e87c92a7ebc07eb1",
+				"icon": "//images.cloudflareapps.com/cVoQ73eIQjCZA6S1lgCl_AddToAny-icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/L4oC7C2RlWKAF71iwQyw_Buttons.png",
+					"//images.cloudflareapps.com/DuAnvBmvRievucdLHCSF_Menu Mini.png",
+					"//images.cloudflareapps.com/Cj686MljQoq4XWp0dZhe_Menu Full.png",
+					"//images.cloudflareapps.com/cdqFj8t8SRy97ulHi8h0_AddToAny-Example-Site-Screenshot.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "AddToAny",
+				"tagline": "",
+				"website": "https://www.addtoany.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.addtoany.com/terms",
+				"privacyPolicyURL": "https://www.addtoany.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support+cloudflareapp@addtoany.com",
+				"products": [],
+				"categoryIds": [
+					"social-media",
+					"add-on",
+					"get-more-customers",
+					"marketing",
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Kr1eWy_t52oE"
+				},
+				"created": "2017-06-16T00:49:39.468896Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-01-23T18:52:45.345495758Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-01-23T18:52:52.535416858Z"
+			}
+		},
+		{
+			"tag": "1.0.5",
+			"appId": "JI85SyC9e8es",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"instances": {
+							"items": {
+								"properties": {
+									"align": {
+										"default": "left",
+										"enum": [
+											"left",
+											"center",
+											"right"
+										],
+										"enumNames": {
+											"center": "Center",
+											"left": "Left",
+											"right": "Right"
+										},
+										"order": 1,
+										"title": "Buttons alignment",
+										"type": "string"
+									},
+									"container": {
+										"format": "element",
+										"order": 0,
+										"title": "Buttons location",
+										"type": "object"
+									},
+									"iconStyle": {
+										"order": 2,
+										"properties": {
+											"bgColor": {
+												"default": "#0166ff",
+												"format": "color",
+												"order": 1,
+												"showIf": {
+													"instances[].iconStyle.color": {
+														"op": "==",
+														"value": "custom"
+													}
+												},
+												"title": "Background color",
+												"type": "string"
+											},
+											"color": {
+												"default": "original",
+												"enum": [
+													"original",
+													"custom"
+												],
+												"enumNames": {
+													"custom": "Custom",
+													"original": "Original"
+												},
+												"format": "radios",
+												"order": 0,
+												"title": "Colors",
+												"type": "string"
+											},
+											"fgColor": {
+												"default": "#ffffff",
+												"format": "color",
+												"order": 2,
+												"showIf": {
+													"instances[].iconStyle.color": {
+														"op": "==",
+														"value": "custom"
+													}
+												},
+												"title": "Foreground color",
+												"type": "string"
+											},
+											"size": {
+												"default": 32,
+												"format": "slider",
+												"maximum": 64,
+												"minimum": 16,
+												"order": 3,
+												"step": 2,
+												"title": "Size",
+												"type": "number"
+											}
+										},
+										"title": "Buttons style",
+										"type": "object"
+									},
+									"services": {
+										"default": [
+											{
+												"serviceCode": "facebook"
+											},
+											{
+												"serviceCode": "twitter"
+											},
+											{
+												"serviceCode": "google_plus"
+											},
+											{
+												"serviceCode": "email"
+											},
+											{
+												"serviceCode": "addtoany"
+											}
+										],
+										"items": {
+											"properties": {
+												"serviceCode": {
+													"default": "__other",
+													"enum": [
+														"addtoany",
+														"email",
+														"facebook",
+														"google_plus",
+														"linkedin",
+														"pinterest",
+														"reddit",
+														"tumblr",
+														"twitter",
+														"whatsapp",
+														"__other"
+													],
+													"enumNames": {
+														"__other": "Other…",
+														"addtoany": "AddToAny",
+														"email": "Email",
+														"facebook": "Facebook",
+														"google_plus": "Google+",
+														"linkedin": "LinkedIn",
+														"pinterest": "Pinterest",
+														"reddit": "Reddit",
+														"tumblr": "Tumblr",
+														"twitter": "Twitter",
+														"whatsapp": "WhatsApp"
+													},
+													"order": 0,
+													"title": "Service",
+													"type": "string"
+												},
+												"serviceCodeOther": {
+													"description": "Look up the <a href=\"https://www.addtoany.com/services/\" rel=\"noopener\" target=\"_blank\">AddToAny service code</a> to add another service.",
+													"order": 1,
+													"placeholder": "service_code",
+													"showIf": {
+														"instances[].services[].serviceCode": {
+															"op": "==",
+															"value": "__other"
+														}
+													},
+													"title": "Service code",
+													"type": "string"
+												},
+												"serviceCounter": {
+													"default": false,
+													"order": 2,
+													"showIf": {
+														"instances[].services[].serviceCode": {
+															"method": "any",
+															"op": "==",
+															"value": [
+																"facebook",
+																"linkedin",
+																"pinterest",
+																"reddit",
+																"tumblr",
+																"addtoany"
+															]
+														}
+													},
+													"title": "Show count",
+													"type": "boolean"
+												}
+											},
+											"title": "Service",
+											"type": "object"
+										},
+										"order": 4,
+										"showIf": {
+											"instances[].showSharingOptions": true
+										},
+										"title": "Services",
+										"type": "array"
+									},
+									"shareTitle": {
+										"description": "Leave blank to share the current page's title. Some services will use the page's <a href=\"https://www.addtoany.com/ext/meta-tags/\" rel=\"noopener\" target=\"_blank\">meta tags</a> instead.",
+										"order": 6,
+										"placeholder": "Example Page",
+										"showIf": {
+											"instances[].shareURL": {
+												"op": "!=",
+												"value": ""
+											},
+											"instances[].showSharingOptions": true
+										},
+										"title": "Title to share",
+										"type": "string"
+									},
+									"shareURL": {
+										"description": "Leave blank to share the current page's URL.",
+										"format": "url",
+										"order": 5,
+										"placeholder": "https://www.example.com/page.html",
+										"showIf": {
+											"instances[].showSharingOptions": true
+										},
+										"title": "URL to share",
+										"type": "string"
+									},
+									"showSharingOptions": {
+										"default": false,
+										"order": 3,
+										"title": "Show sharing options",
+										"type": "boolean"
+									}
+								},
+								"title": "AddToAny instance",
+								"type": "object"
+							},
+							"order": 0,
+							"title": "AddToAny buttons",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.67,
+				"upvotes": 2,
+				"downvotes": 1
+			},
+			"releaseNotes": "Added to Cloudflare Apps recommendation engine",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/NZw5S2Oupfpv",
+			"created": "2018-02-06T21:53:03.64369Z",
+			"proposedApp": {
+				"id": "JI85SyC9e8es",
+				"title": "AddToAny Buttons",
+				"shortDescription": "Share buttons to share and save anywhere.",
+				"longDescription": "<a href=\"https://www.addtoany.com/\" rel=\"noopener\" target=\"_blank\">AddToAny</a> provides share buttons to help people share your content to any service, such as Facebook, Twitter, Pinterest, Google+, WhatsApp, LinkedIn, Tumblr, Reddit, email, SMS and over 100 more sharing and social media sites & apps.\n\n### Share Buttons\n* AddToAny SVG icons are super-lightweight and pixel-perfect at any size.\n* Universal share menu fits on all displays.\n* Automatic Google Analytics integration (<a href=\"https://www.addtoany.com/ext/google_analytics/\" rel=\"noopener\" target=\"_blank\">access guide</a>) for sharing analytics.\n\n### Custom Sharing\n* Show official share counts from supported services.\n* Share icons can be added, removed, or rearranged.\n* Share the current URL, or a specific URL.\n\n### Custom Styles\n* Change the background color of buttons.\n* Change the foreground color of buttons.\n* Change the size of buttons.\n\n### Custom Placement\n* Place share buttons anywhere on a page.\n* Align share buttons left, right, or center.\n\nAddToAny is the universal sharing platform used by millions of websites, making sites social media ready since 2006.",
+				"instructions": "Pick a location for your buttons, then customize and install AddToAny on your site.",
+				"alias": "addtoany",
+				"orgId": "46de8cbe1dd5f897e87c92a7ebc07eb1",
+				"icon": "//images.cloudflareapps.com/cVoQ73eIQjCZA6S1lgCl_AddToAny-icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/L4oC7C2RlWKAF71iwQyw_Buttons.png",
+					"//images.cloudflareapps.com/DuAnvBmvRievucdLHCSF_Menu Mini.png",
+					"//images.cloudflareapps.com/Cj686MljQoq4XWp0dZhe_Menu Full.png",
+					"//images.cloudflareapps.com/cdqFj8t8SRy97ulHi8h0_AddToAny-Example-Site-Screenshot.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "AddToAny",
+				"tagline": "",
+				"website": "https://www.addtoany.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.addtoany.com/terms",
+				"privacyPolicyURL": "https://www.addtoany.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support+cloudflareapp@addtoany.com",
+				"products": [],
+				"categoryIds": [
+					"social-media",
+					"add-on",
+					"get-more-customers",
+					"marketing",
+					"social-and-communication",
+					"recommended-for-blogs"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Kr1eWy_t52oE"
+				},
+				"created": "2017-06-16T00:49:39.468896Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-02-06T21:53:03.898167794Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-02-06T21:55:43.368500562Z"
+			}
+		},
+		{
+			"tag": "1.0.6",
+			"appId": "JI85SyC9e8es",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"instances": {
+							"items": {
+								"properties": {
+									"align": {
+										"default": "left",
+										"enum": [
+											"left",
+											"center",
+											"right"
+										],
+										"enumNames": {
+											"center": "Center",
+											"left": "Left",
+											"right": "Right"
+										},
+										"order": 1,
+										"title": "Buttons alignment",
+										"type": "string"
+									},
+									"iconStyle": {
+										"order": 2,
+										"properties": {
+											"bgColor": {
+												"default": "#0166ff",
+												"format": "color",
+												"order": 1,
+												"showIf": {
+													"instances[].iconStyle.color": {
+														"op": "==",
+														"value": "custom"
+													}
+												},
+												"title": "Background color",
+												"type": "string"
+											},
+											"color": {
+												"default": "original",
+												"enum": [
+													"original",
+													"custom"
+												],
+												"enumNames": {
+													"custom": "Custom",
+													"original": "Original"
+												},
+												"format": "radios",
+												"order": 0,
+												"title": "Colors",
+												"type": "string"
+											},
+											"fgColor": {
+												"default": "#ffffff",
+												"format": "color",
+												"order": 2,
+												"showIf": {
+													"instances[].iconStyle.color": {
+														"op": "==",
+														"value": "custom"
+													}
+												},
+												"title": "Foreground color",
+												"type": "string"
+											},
+											"size": {
+												"default": 32,
+												"format": "slider",
+												"maximum": 64,
+												"minimum": 16,
+												"order": 3,
+												"step": 2,
+												"title": "Size",
+												"type": "number"
+											}
+										},
+										"title": "Buttons style",
+										"type": "object"
+									},
+									"location": {
+										"default": {
+											"method": "prepend",
+											"selector": "body"
+										},
+										"format": "element",
+										"order": 0,
+										"title": "Buttons location",
+										"type": "object"
+									},
+									"services": {
+										"default": [
+											{
+												"serviceCode": "facebook"
+											},
+											{
+												"serviceCode": "twitter"
+											},
+											{
+												"serviceCode": "google_plus"
+											},
+											{
+												"serviceCode": "email"
+											},
+											{
+												"serviceCode": "addtoany"
+											}
+										],
+										"items": {
+											"properties": {
+												"serviceCode": {
+													"default": "__other",
+													"enum": [
+														"addtoany",
+														"email",
+														"facebook",
+														"google_plus",
+														"linkedin",
+														"pinterest",
+														"reddit",
+														"tumblr",
+														"twitter",
+														"whatsapp",
+														"__other"
+													],
+													"enumNames": {
+														"__other": "Other…",
+														"addtoany": "AddToAny",
+														"email": "Email",
+														"facebook": "Facebook",
+														"google_plus": "Google+",
+														"linkedin": "LinkedIn",
+														"pinterest": "Pinterest",
+														"reddit": "Reddit",
+														"tumblr": "Tumblr",
+														"twitter": "Twitter",
+														"whatsapp": "WhatsApp"
+													},
+													"order": 0,
+													"title": "Service",
+													"type": "string"
+												},
+												"serviceCodeOther": {
+													"description": "Look up the <a href=\"https://www.addtoany.com/services/\" rel=\"noopener\" target=\"_blank\">AddToAny service code</a> to add another service.",
+													"order": 1,
+													"placeholder": "service_code",
+													"showIf": {
+														"instances[].services[].serviceCode": {
+															"op": "==",
+															"value": "__other"
+														}
+													},
+													"title": "Service code",
+													"type": "string"
+												},
+												"serviceCounter": {
+													"default": false,
+													"order": 2,
+													"showIf": {
+														"instances[].services[].serviceCode": {
+															"method": "any",
+															"op": "==",
+															"value": [
+																"facebook",
+																"linkedin",
+																"pinterest",
+																"reddit",
+																"tumblr",
+																"addtoany"
+															]
+														}
+													},
+													"title": "Show count",
+													"type": "boolean"
+												}
+											},
+											"title": "Service",
+											"type": "object"
+										},
+										"order": 4,
+										"showIf": {
+											"instances[].showSharingOptions": true
+										},
+										"title": "Services",
+										"type": "array"
+									},
+									"shareTitle": {
+										"description": "Leave blank to share the current page's title. Some services will use the page's <a href=\"https://www.addtoany.com/ext/meta-tags/\" rel=\"noopener\" target=\"_blank\">meta tags</a> instead.",
+										"order": 6,
+										"placeholder": "Example Page",
+										"showIf": {
+											"instances[].shareURL": {
+												"op": "!=",
+												"value": ""
+											},
+											"instances[].showSharingOptions": true
+										},
+										"title": "Title to share",
+										"type": "string"
+									},
+									"shareURL": {
+										"description": "Leave blank to share the current page's URL.",
+										"format": "url",
+										"order": 5,
+										"placeholder": "https://www.example.com/page.html",
+										"showIf": {
+											"instances[].showSharingOptions": true
+										},
+										"title": "URL to share",
+										"type": "string"
+									},
+									"showSharingOptions": {
+										"default": false,
+										"order": 3,
+										"title": "Show sharing options",
+										"type": "boolean"
+									}
+								},
+								"title": "AddToAny instance",
+								"type": "object"
+							},
+							"order": 0,
+							"title": "AddToAny buttons",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Fixes a potential issue on some pages, and makes previewing easier.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/io6mtJuD9W6x",
+			"metadata": {
+				"code": {
+					"sourceTag": "io6mtJuD9W6x",
+					"uploadedOn": "2018-07-08T05:27:57.70223191Z"
+				}
+			},
+			"created": "2018-07-08T05:27:57.274669Z",
+			"proposedApp": {
+				"id": "JI85SyC9e8es",
+				"title": "AddToAny Buttons",
+				"shortDescription": "Share buttons to share and save anywhere.",
+				"longDescription": "<a href=\"https://www.addtoany.com/\" rel=\"noopener\" target=\"_blank\">AddToAny</a> provides share buttons to help people share your content to any service, such as Facebook, Twitter, Pinterest, Google+, WhatsApp, LinkedIn, Tumblr, Reddit, email, SMS and over 100 more sharing and social media sites & apps.\n\n### Share Buttons\n* AddToAny SVG icons are super-lightweight and pixel-perfect at any size.\n* Universal share menu fits on all displays.\n* Automatic Google Analytics integration (<a href=\"https://www.addtoany.com/ext/google_analytics/\" rel=\"noopener\" target=\"_blank\">access guide</a>) for sharing analytics.\n\n### Custom Sharing\n* Show official share counts from supported services.\n* Share icons can be added, removed, or rearranged.\n* Share the current URL, or a specific URL.\n\n### Custom Styles\n* Change the background color of buttons.\n* Change the foreground color of buttons.\n* Change the size of buttons.\n\n### Custom Placement\n* Place share buttons anywhere on a page.\n* Align share buttons left, right, or center.\n\nAddToAny is the universal sharing platform used by millions of websites, making sites social media ready since 2006.",
+				"instructions": "Pick a location for your buttons, then customize and install AddToAny on your site.",
+				"alias": "addtoany",
+				"orgId": "46de8cbe1dd5f897e87c92a7ebc07eb1",
+				"icon": "//images.cloudflareapps.com/cVoQ73eIQjCZA6S1lgCl_AddToAny-icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/L4oC7C2RlWKAF71iwQyw_Buttons.png",
+					"//images.cloudflareapps.com/DuAnvBmvRievucdLHCSF_Menu Mini.png",
+					"//images.cloudflareapps.com/Cj686MljQoq4XWp0dZhe_Menu Full.png",
+					"//images.cloudflareapps.com/cdqFj8t8SRy97ulHi8h0_AddToAny-Example-Site-Screenshot.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "AddToAny",
+				"tagline": "",
+				"website": "https://www.addtoany.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.addtoany.com/terms",
+				"privacyPolicyURL": "https://www.addtoany.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support+cloudflareapp@addtoany.com",
+				"products": [],
+				"categoryIds": [
+					"social-media",
+					"add-on",
+					"get-more-customers",
+					"marketing",
+					"social-and-communication",
+					"recommended-for-blogs",
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Kr1eWy_t52oE"
+				},
+				"created": "2017-06-16T00:49:39.468896Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "46de8cbe1dd5f897e87c92a7ebc07eb1",
+				"requestedAt": "2018-07-08T05:31:08.603753469Z",
+				"canceledAt": null,
+				"reviewedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"reviewedAt": "2018-07-09T21:05:37.045174368Z"
+			}
+		},
+		{
+			"tag": "1.1.0",
+			"appId": "JI85SyC9e8es",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"instances": {
+							"default": [
+								{
+									"align": "left",
+									"buttonsType": "floating",
+									"floatingHorizontal": {
+										"hideOnDesktop": true,
+										"placement": "center"
+									},
+									"floatingVertical": {
+										"hideOnMobile": true,
+										"placement": "left"
+									},
+									"iconStyle": {
+										"bgColor": "#82b0ff",
+										"color": "original",
+										"fgColor": "#ffffff",
+										"floatingMargin": 4,
+										"padding": 4,
+										"radius": 0.125,
+										"size": 48
+									},
+									"location": {
+										"method": "append",
+										"selector": "body"
+									},
+									"services": [
+										{
+											"serviceCode": "facebook"
+										},
+										{
+											"serviceCode": "twitter"
+										},
+										{
+											"serviceCode": "google_plus"
+										},
+										{
+											"serviceCode": "email"
+										},
+										{
+											"serviceCode": "addtoany"
+										}
+									]
+								}
+							],
+							"items": {
+								"properties": {
+									"align": {
+										"default": "left",
+										"enum": [
+											"left",
+											"center",
+											"right"
+										],
+										"enumNames": {
+											"center": "Center",
+											"left": "Left",
+											"right": "Right"
+										},
+										"order": 2,
+										"showIf": {
+											"instances[].buttonsType": {
+												"op": "==",
+												"value": "inline"
+											}
+										},
+										"title": "Buttons alignment",
+										"type": "string"
+									},
+									"buttonsType": {
+										"default": "inline",
+										"enum": [
+											"floating",
+											"inline"
+										],
+										"enumNames": {
+											"floating": "Floating",
+											"inline": "Inline"
+										},
+										"order": 0,
+										"title": "Buttons type",
+										"type": "string"
+									},
+									"floatingHorizontal": {
+										"order": 2.1,
+										"properties": {
+											"hideOnDesktop": {
+												"default": true,
+												"description": "Hide on wide screens.",
+												"order": 2,
+												"showIf": {
+													"instances[].floatingHorizontal.placement": {
+														"op": "!=",
+														"value": "none"
+													}
+												},
+												"title": "Hide on desktop",
+												"type": "boolean"
+											},
+											"placement": {
+												"default": "center",
+												"description": "Select a bottom alignment for the horizontal bar.",
+												"enum": [
+													"left",
+													"center",
+													"right",
+													"none"
+												],
+												"enumNames": {
+													"center": "Center",
+													"left": "Left",
+													"none": "None",
+													"right": "Right"
+												},
+												"order": 1,
+												"title": "Location",
+												"type": "string"
+											}
+										},
+										"showIf": {
+											"instances[].buttonsType": {
+												"op": "==",
+												"value": "floating"
+											}
+										},
+										"title": "Horizontal bar",
+										"type": "object"
+									},
+									"floatingVertical": {
+										"order": 2,
+										"properties": {
+											"hideOnMobile": {
+												"default": true,
+												"description": "Hide on narrow screens.",
+												"order": 2,
+												"showIf": {
+													"instances[].floatingVertical.placement": {
+														"op": "!=",
+														"value": "none"
+													}
+												},
+												"title": "Hide on mobile",
+												"type": "boolean"
+											},
+											"placement": {
+												"default": "left",
+												"description": "Select a side for the vertical bar.",
+												"enum": [
+													"left",
+													"right",
+													"none"
+												],
+												"enumNames": {
+													"left": "Left",
+													"none": "None",
+													"right": "Right"
+												},
+												"order": 1,
+												"title": "Location",
+												"type": "string"
+											}
+										},
+										"showIf": {
+											"instances[].buttonsType": {
+												"op": "==",
+												"value": "floating"
+											}
+										},
+										"title": "Vertical bar",
+										"type": "object"
+									},
+									"iconStyle": {
+										"order": 3,
+										"properties": {
+											"bgColor": {
+												"default": "#82b0ff",
+												"format": "color",
+												"order": 1,
+												"showIf": {
+													"instances[].iconStyle.color": {
+														"op": "==",
+														"value": "custom"
+													}
+												},
+												"title": "Background color",
+												"type": "string"
+											},
+											"color": {
+												"default": "original",
+												"enum": [
+													"original",
+													"custom"
+												],
+												"enumNames": {
+													"custom": "Custom",
+													"original": "Original"
+												},
+												"format": "radios",
+												"order": 0,
+												"title": "Colors",
+												"type": "string"
+											},
+											"fgColor": {
+												"default": "#ffffff",
+												"format": "color",
+												"order": 2,
+												"showIf": {
+													"instances[].iconStyle.color": {
+														"op": "==",
+														"value": "custom"
+													}
+												},
+												"title": "Foreground color",
+												"type": "string"
+											},
+											"floatingMargin": {
+												"default": 4,
+												"format": "slider",
+												"maximum": 32,
+												"minimum": 0,
+												"order": 6,
+												"showIf": {
+													"instances[].buttonsType": {
+														"op": "==",
+														"value": "floating"
+													}
+												},
+												"step": 1,
+												"title": "Space from edge",
+												"type": "number"
+											},
+											"padding": {
+												"default": 4,
+												"format": "slider",
+												"maximum": 32,
+												"minimum": 0,
+												"order": 5,
+												"step": 1,
+												"title": "Space between",
+												"type": "number"
+											},
+											"radius": {
+												"default": 0.25,
+												"format": "slider",
+												"maximum": 1,
+												"minimum": 0,
+												"order": 4,
+												"step": 0.01,
+												"title": "Roundness",
+												"type": "number"
+											},
+											"size": {
+												"default": 32,
+												"format": "slider",
+												"maximum": 64,
+												"minimum": 16,
+												"order": 3,
+												"step": 2,
+												"title": "Size",
+												"type": "number"
+											}
+										},
+										"title": "Buttons style",
+										"type": "object"
+									},
+									"location": {
+										"default": {
+											"method": "prepend",
+											"selector": "body"
+										},
+										"format": "element",
+										"order": 1,
+										"showIf": {
+											"instances[].buttonsType": {
+												"op": "==",
+												"value": "inline"
+											}
+										},
+										"title": "Buttons location",
+										"type": "object"
+									},
+									"services": {
+										"default": [
+											{
+												"serviceCode": "facebook"
+											},
+											{
+												"serviceCode": "twitter"
+											},
+											{
+												"serviceCode": "google_plus"
+											},
+											{
+												"serviceCode": "email"
+											},
+											{
+												"serviceCode": "addtoany"
+											}
+										],
+										"items": {
+											"properties": {
+												"serviceCode": {
+													"default": "__other",
+													"enum": [
+														"addtoany",
+														"email",
+														"facebook",
+														"google_plus",
+														"linkedin",
+														"pinterest",
+														"reddit",
+														"tumblr",
+														"twitter",
+														"whatsapp",
+														"__other"
+													],
+													"enumNames": {
+														"__other": "Other…",
+														"addtoany": "AddToAny",
+														"email": "Email",
+														"facebook": "Facebook",
+														"google_plus": "Google+",
+														"linkedin": "LinkedIn",
+														"pinterest": "Pinterest",
+														"reddit": "Reddit",
+														"tumblr": "Tumblr",
+														"twitter": "Twitter",
+														"whatsapp": "WhatsApp"
+													},
+													"order": 0,
+													"title": "Service",
+													"type": "string"
+												},
+												"serviceCodeOther": {
+													"description": "Look up the <a href=\"https://www.addtoany.com/services/\" rel=\"noopener\" target=\"_blank\">AddToAny service code</a> to add another service.",
+													"order": 1,
+													"placeholder": "service_code",
+													"showIf": {
+														"instances[].services[].serviceCode": {
+															"op": "==",
+															"value": "__other"
+														}
+													},
+													"title": "Service code",
+													"type": "string"
+												},
+												"serviceCounter": {
+													"default": false,
+													"order": 2,
+													"showIf": {
+														"instances[].services[].serviceCode": {
+															"method": "any",
+															"op": "==",
+															"value": [
+																"facebook",
+																"pinterest",
+																"reddit",
+																"tumblr",
+																"addtoany"
+															]
+														}
+													},
+													"title": "Show count",
+													"type": "boolean"
+												}
+											},
+											"title": "Service",
+											"type": "object"
+										},
+										"order": 5,
+										"showIf": {
+											"instances[].showSharingOptions": true
+										},
+										"title": "Services",
+										"type": "array"
+									},
+									"shareTitle": {
+										"description": "Leave blank to share the current page's title. Some services will use the page's <a href=\"https://www.addtoany.com/ext/meta-tags/\" rel=\"noopener\" target=\"_blank\">meta tags</a> instead.",
+										"order": 7,
+										"placeholder": "Example Page",
+										"showIf": {
+											"instances[].shareURL": {
+												"op": "!=",
+												"value": ""
+											},
+											"instances[].showSharingOptions": true
+										},
+										"title": "Title to share",
+										"type": "string"
+									},
+									"shareURL": {
+										"description": "Leave blank to share the current page's URL.",
+										"format": "url",
+										"order": 6,
+										"placeholder": "https://www.example.com/page.html",
+										"showIf": {
+											"instances[].showSharingOptions": true
+										},
+										"title": "URL to share",
+										"type": "string"
+									},
+									"showSharingOptions": {
+										"default": false,
+										"order": 4,
+										"title": "Show sharing options",
+										"type": "boolean"
+									}
+								},
+								"title": "AddToAny instance",
+								"type": "object"
+							},
+							"order": 0,
+							"title": "AddToAny buttons",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 4,
+				"downvotes": 0
+			},
+			"releaseNotes": "New: AddToAny Floating Share Buttons!\nA floating vertical share bar for desktop.\nA floating horizontal share bar for mobile.\nChoose whether to hide each bar on desktop/mobile.\nPlace your floating buttons on the left or right side.\nCenter your horizontal share bar.\nAdjust the space from the edge.\n\nNew: Adjust the roundness of icons.\nNew: Adjust the space between buttons.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/g8Zc1hGhx8Ni",
+			"metadata": {
+				"code": {
+					"sourceTag": "g8Zc1hGhx8Ni",
+					"uploadedOn": "2018-07-20T05:53:29.915352606Z"
+				}
+			},
+			"created": "2018-07-20T02:44:44.65422Z",
+			"proposedApp": {
+				"id": "JI85SyC9e8es",
+				"title": "AddToAny Share Buttons",
+				"shortDescription": "Share your content with floating & inline share buttons.",
+				"longDescription": "<a href=\"https://www.addtoany.com/\" rel=\"noopener\" target=\"_blank\">AddToAny</a> provides share buttons to help people share your content to any service, such as Facebook, Twitter, Pinterest, Google+, WhatsApp, LinkedIn, Tumblr, Reddit, email, SMS and over 100 more sharing and social media sites & apps.\n\n### Floating Share Buttons\n* Floating share bars stay in place as you scroll.\n* Vertical buttons are great for desktop.\n* Horizontal buttons are great for mobile.\n\n### Inline Share Buttons\n* Share buttons inline with content.\n* Universal share menu fits on all displays.\n* SVG icons are pixel-perfect at any size.\n\n### Custom Sharing\n* Show official share counts from supported services.\n* Add, remove, or rearrange your share icons.\n* Share the current URL, or a specific URL.\n* Get sharing stats in <a href=\"https://www.addtoany.com/ext/google_analytics/\" rel=\"noopener\" target=\"_blank\">Google Analytics</a>.\n\n### Custom Styles\n* Change the background color of buttons.\n* Change the foreground color of buttons.\n* Change the size of buttons.\n* Change the space between buttons.\n\n### Custom Placement\n* Align share buttons left, right, or center.\n* Place share buttons anywhere on a page.\n* Hide the vertical share bar on mobile.\n* Hide the horizontal share bar on desktop.\n\nAddToAny is the universal sharing platform used by millions of websites, making sites social media ready since 2006.",
+				"instructions": "Customize and install AddToAny on your site.",
+				"alias": "addtoany",
+				"orgId": "46de8cbe1dd5f897e87c92a7ebc07eb1",
+				"icon": "//images.cloudflareapps.com/cVoQ73eIQjCZA6S1lgCl_AddToAny-icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/L4oC7C2RlWKAF71iwQyw_Buttons.png",
+					"//images.cloudflareapps.com/DuAnvBmvRievucdLHCSF_Menu Mini.png",
+					"//images.cloudflareapps.com/Cj686MljQoq4XWp0dZhe_Menu Full.png",
+					"//images.cloudflareapps.com/cdqFj8t8SRy97ulHi8h0_AddToAny-Example-Site-Screenshot.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "AddToAny",
+				"tagline": "",
+				"website": "https://www.addtoany.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.addtoany.com/terms",
+				"privacyPolicyURL": "https://www.addtoany.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support+cloudflareapp@addtoany.com",
+				"products": [],
+				"categoryIds": [
+					"social-media",
+					"add-on",
+					"get-more-customers",
+					"marketing",
+					"social-and-communication",
+					"recommended-for-blogs",
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Kr1eWy_t52oE"
+				},
+				"created": "2017-06-16T00:49:39.468896Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "46de8cbe1dd5f897e87c92a7ebc07eb1",
+				"requestedAt": "2018-07-20T05:54:09.291981952Z",
+				"canceledAt": null,
+				"reviewedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"reviewedAt": "2018-07-23T18:44:44.324914036Z"
+			}
+		},
+		{
+			"tag": "1.1.1",
+			"appId": "JI85SyC9e8es",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"instances": {
+							"default": [
+								{
+									"align": "left",
+									"buttonsType": "floating",
+									"floatingHorizontal": {
+										"hideOnDesktop": true,
+										"placement": "center"
+									},
+									"floatingVertical": {
+										"hideOnMobile": true,
+										"placement": "left"
+									},
+									"iconStyle": {
+										"bgColor": "#82b0ff",
+										"color": "original",
+										"fgColor": "#ffffff",
+										"floatingMargin": 4,
+										"padding": 4,
+										"radius": 0.125,
+										"size": 48
+									},
+									"location": {
+										"method": "append",
+										"selector": "body"
+									},
+									"services": [
+										{
+											"serviceCode": "facebook"
+										},
+										{
+											"serviceCode": "twitter"
+										},
+										{
+											"serviceCode": "google_plus"
+										},
+										{
+											"serviceCode": "email"
+										},
+										{
+											"serviceCode": "addtoany"
+										}
+									]
+								}
+							],
+							"items": {
+								"properties": {
+									"align": {
+										"default": "left",
+										"enum": [
+											"left",
+											"center",
+											"right"
+										],
+										"enumNames": {
+											"center": "Center",
+											"left": "Left",
+											"right": "Right"
+										},
+										"order": 2,
+										"showIf": {
+											"instances[].buttonsType": {
+												"op": "==",
+												"value": "inline"
+											}
+										},
+										"title": "Buttons alignment",
+										"type": "string"
+									},
+									"buttonsType": {
+										"default": "inline",
+										"enum": [
+											"floating",
+											"inline"
+										],
+										"enumNames": {
+											"floating": "Floating",
+											"inline": "Inline"
+										},
+										"order": 0,
+										"title": "Buttons type",
+										"type": "string"
+									},
+									"floatingHorizontal": {
+										"order": 2.1,
+										"properties": {
+											"hideOnDesktop": {
+												"default": true,
+												"description": "Hide on wide screens.",
+												"order": 2,
+												"showIf": {
+													"instances[].floatingHorizontal.placement": {
+														"op": "!=",
+														"value": "none"
+													}
+												},
+												"title": "Hide on desktop",
+												"type": "boolean"
+											},
+											"placement": {
+												"default": "center",
+												"description": "Select a bottom alignment for the horizontal bar.",
+												"enum": [
+													"left",
+													"center",
+													"right",
+													"none"
+												],
+												"enumNames": {
+													"center": "Center",
+													"left": "Left",
+													"none": "None",
+													"right": "Right"
+												},
+												"order": 1,
+												"title": "Location",
+												"type": "string"
+											}
+										},
+										"showIf": {
+											"instances[].buttonsType": {
+												"op": "==",
+												"value": "floating"
+											}
+										},
+										"title": "Horizontal bar",
+										"type": "object"
+									},
+									"floatingVertical": {
+										"order": 2,
+										"properties": {
+											"hideOnMobile": {
+												"default": true,
+												"description": "Hide on narrow screens.",
+												"order": 2,
+												"showIf": {
+													"instances[].floatingVertical.placement": {
+														"op": "!=",
+														"value": "none"
+													}
+												},
+												"title": "Hide on mobile",
+												"type": "boolean"
+											},
+											"placement": {
+												"default": "left",
+												"description": "Select a side for the vertical bar.",
+												"enum": [
+													"left",
+													"right",
+													"none"
+												],
+												"enumNames": {
+													"left": "Left",
+													"none": "None",
+													"right": "Right"
+												},
+												"order": 1,
+												"title": "Location",
+												"type": "string"
+											}
+										},
+										"showIf": {
+											"instances[].buttonsType": {
+												"op": "==",
+												"value": "floating"
+											}
+										},
+										"title": "Vertical bar",
+										"type": "object"
+									},
+									"iconStyle": {
+										"order": 3,
+										"properties": {
+											"bgColor": {
+												"default": "#82b0ff",
+												"format": "color",
+												"order": 1,
+												"showIf": {
+													"instances[].iconStyle.color": {
+														"op": "==",
+														"value": "custom"
+													}
+												},
+												"title": "Background color",
+												"type": "string"
+											},
+											"color": {
+												"default": "original",
+												"enum": [
+													"original",
+													"custom"
+												],
+												"enumNames": {
+													"custom": "Custom",
+													"original": "Original"
+												},
+												"format": "radios",
+												"order": 0,
+												"title": "Colors",
+												"type": "string"
+											},
+											"fgColor": {
+												"default": "#ffffff",
+												"format": "color",
+												"order": 2,
+												"showIf": {
+													"instances[].iconStyle.color": {
+														"op": "==",
+														"value": "custom"
+													}
+												},
+												"title": "Foreground color",
+												"type": "string"
+											},
+											"floatingMargin": {
+												"default": 4,
+												"format": "slider",
+												"maximum": 32,
+												"minimum": 0,
+												"order": 6,
+												"showIf": {
+													"instances[].buttonsType": {
+														"op": "==",
+														"value": "floating"
+													}
+												},
+												"step": 1,
+												"title": "Space from edge",
+												"type": "number"
+											},
+											"padding": {
+												"default": 4,
+												"format": "slider",
+												"maximum": 32,
+												"minimum": 0,
+												"order": 5,
+												"step": 1,
+												"title": "Space between",
+												"type": "number"
+											},
+											"radius": {
+												"default": 0.25,
+												"format": "slider",
+												"maximum": 1,
+												"minimum": 0,
+												"order": 4,
+												"step": 0.01,
+												"title": "Roundness",
+												"type": "number"
+											},
+											"size": {
+												"default": 32,
+												"format": "slider",
+												"maximum": 64,
+												"minimum": 16,
+												"order": 3,
+												"step": 2,
+												"title": "Size",
+												"type": "number"
+											}
+										},
+										"title": "Buttons style",
+										"type": "object"
+									},
+									"location": {
+										"default": {
+											"method": "prepend",
+											"selector": "body"
+										},
+										"format": "element",
+										"order": 1,
+										"showIf": {
+											"instances[].buttonsType": {
+												"op": "==",
+												"value": "inline"
+											}
+										},
+										"title": "Buttons location",
+										"type": "object"
+									},
+									"services": {
+										"default": [
+											{
+												"serviceCode": "facebook"
+											},
+											{
+												"serviceCode": "twitter"
+											},
+											{
+												"serviceCode": "google_plus"
+											},
+											{
+												"serviceCode": "email"
+											},
+											{
+												"serviceCode": "addtoany"
+											}
+										],
+										"items": {
+											"properties": {
+												"serviceCode": {
+													"default": "__other",
+													"enum": [
+														"addtoany",
+														"email",
+														"facebook",
+														"google_plus",
+														"linkedin",
+														"pinterest",
+														"reddit",
+														"tumblr",
+														"twitter",
+														"whatsapp",
+														"__other"
+													],
+													"enumNames": {
+														"__other": "Other…",
+														"addtoany": "AddToAny",
+														"email": "Email",
+														"facebook": "Facebook",
+														"google_plus": "Google+",
+														"linkedin": "LinkedIn",
+														"pinterest": "Pinterest",
+														"reddit": "Reddit",
+														"tumblr": "Tumblr",
+														"twitter": "Twitter",
+														"whatsapp": "WhatsApp"
+													},
+													"order": 0,
+													"title": "Service",
+													"type": "string"
+												},
+												"serviceCodeOther": {
+													"description": "Look up the <a href=\"https://www.addtoany.com/services/\" rel=\"noopener\" target=\"_blank\">AddToAny service code</a> to add another service.",
+													"order": 1,
+													"placeholder": "service_code",
+													"showIf": {
+														"instances[].services[].serviceCode": {
+															"op": "==",
+															"value": "__other"
+														}
+													},
+													"title": "Service code",
+													"type": "string"
+												},
+												"serviceCounter": {
+													"default": false,
+													"order": 2,
+													"showIf": {
+														"instances[].services[].serviceCode": {
+															"method": "any",
+															"op": "==",
+															"value": [
+																"facebook",
+																"pinterest",
+																"reddit",
+																"tumblr",
+																"addtoany"
+															]
+														}
+													},
+													"title": "Show count",
+													"type": "boolean"
+												}
+											},
+											"title": "Service",
+											"type": "object"
+										},
+										"order": 5,
+										"showIf": {
+											"instances[].showSharingOptions": true
+										},
+										"title": "Services",
+										"type": "array"
+									},
+									"shareTitle": {
+										"description": "Leave blank to share the current page's title. Some services will use the page's <a href=\"https://www.addtoany.com/ext/meta-tags/\" rel=\"noopener\" target=\"_blank\">meta tags</a> instead.",
+										"order": 7,
+										"placeholder": "Example Page",
+										"showIf": {
+											"instances[].shareURL": {
+												"op": "!=",
+												"value": ""
+											},
+											"instances[].showSharingOptions": true
+										},
+										"title": "Title to share",
+										"type": "string"
+									},
+									"shareURL": {
+										"description": "Leave blank to share the current page's URL.",
+										"format": "url",
+										"order": 6,
+										"placeholder": "https://www.example.com/page.html",
+										"showIf": {
+											"instances[].showSharingOptions": true
+										},
+										"title": "URL to share",
+										"type": "string"
+									},
+									"showSharingOptions": {
+										"default": false,
+										"order": 4,
+										"title": "Show sharing options",
+										"type": "boolean"
+									}
+								},
+								"title": "AddToAny instance",
+								"type": "object"
+							},
+							"order": 0,
+							"title": "AddToAny buttons",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.57,
+				"upvotes": 4,
+				"downvotes": 3
+			},
+			"releaseNotes": "Updated app's categories",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/g8Zc1hGhx8Ni",
+			"created": "2018-11-13T20:12:54.225476Z",
+			"proposedApp": {
+				"id": "JI85SyC9e8es",
+				"title": "AddToAny Share Buttons",
+				"shortDescription": "Share your content with floating & inline share buttons.",
+				"longDescription": "<a href=\"https://www.addtoany.com/\" rel=\"noopener\" target=\"_blank\">AddToAny</a> provides share buttons to help people share your content to any service, such as Facebook, Twitter, Pinterest, Google+, WhatsApp, LinkedIn, Tumblr, Reddit, email, SMS and over 100 more sharing and social media sites & apps.\n\n### Floating Share Buttons\n* Floating share bars stay in place as you scroll.\n* Vertical buttons are great for desktop.\n* Horizontal buttons are great for mobile.\n\n### Inline Share Buttons\n* Share buttons inline with content.\n* Universal share menu fits on all displays.\n* SVG icons are pixel-perfect at any size.\n\n### Custom Sharing\n* Show official share counts from supported services.\n* Add, remove, or rearrange your share icons.\n* Share the current URL, or a specific URL.\n* Get sharing stats in <a href=\"https://www.addtoany.com/ext/google_analytics/\" rel=\"noopener\" target=\"_blank\">Google Analytics</a>.\n\n### Custom Styles\n* Change the background color of buttons.\n* Change the foreground color of buttons.\n* Change the size of buttons.\n* Change the space between buttons.\n\n### Custom Placement\n* Align share buttons left, right, or center.\n* Place share buttons anywhere on a page.\n* Hide the vertical share bar on mobile.\n* Hide the horizontal share bar on desktop.\n\nAddToAny is the universal sharing platform used by millions of websites, making sites social media ready since 2006.",
+				"instructions": "Customize and install AddToAny on your site.",
+				"alias": "addtoany",
+				"orgId": "46de8cbe1dd5f897e87c92a7ebc07eb1",
+				"icon": "//images.cloudflareapps.com/cVoQ73eIQjCZA6S1lgCl_AddToAny-icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/L4oC7C2RlWKAF71iwQyw_Buttons.png",
+					"//images.cloudflareapps.com/DuAnvBmvRievucdLHCSF_Menu Mini.png",
+					"//images.cloudflareapps.com/Cj686MljQoq4XWp0dZhe_Menu Full.png",
+					"//images.cloudflareapps.com/cdqFj8t8SRy97ulHi8h0_AddToAny-Example-Site-Screenshot.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "AddToAny",
+				"tagline": "",
+				"website": "https://www.addtoany.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.addtoany.com/terms",
+				"privacyPolicyURL": "https://www.addtoany.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support+cloudflareapp@addtoany.com",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication",
+					"recommended-for-blogs"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Kr1eWy_t52oE"
+				},
+				"created": "2017-06-16T00:49:39.468896Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-11-13T20:12:54.794113928Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-11-14T17:47:43.450863163Z"
+			}
+		},
+		{
+			"tag": "1.1.2",
+			"appId": "JI85SyC9e8es",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"instances": {
+							"default": [
+								{
+									"align": "left",
+									"buttonsType": "floating",
+									"floatingHorizontal": {
+										"hideOnDesktop": true,
+										"placement": "center"
+									},
+									"floatingVertical": {
+										"hideOnMobile": true,
+										"placement": "left"
+									},
+									"iconStyle": {
+										"bgColor": "#82b0ff",
+										"color": "original",
+										"fgColor": "#ffffff",
+										"floatingMargin": 4,
+										"padding": 4,
+										"radius": 0.125,
+										"size": 48
+									},
+									"location": {
+										"method": "append",
+										"selector": "body"
+									},
+									"services": [
+										{
+											"serviceCode": "facebook"
+										},
+										{
+											"serviceCode": "twitter"
+										},
+										{
+											"serviceCode": "email"
+										},
+										{
+											"serviceCode": "addtoany"
+										}
+									]
+								}
+							],
+							"items": {
+								"properties": {
+									"align": {
+										"default": "left",
+										"enum": [
+											"left",
+											"center",
+											"right"
+										],
+										"enumNames": {
+											"center": "Center",
+											"left": "Left",
+											"right": "Right"
+										},
+										"order": 2,
+										"showIf": {
+											"instances[].buttonsType": {
+												"op": "==",
+												"value": "inline"
+											}
+										},
+										"title": "Buttons alignment",
+										"type": "string"
+									},
+									"buttonsType": {
+										"default": "inline",
+										"enum": [
+											"floating",
+											"inline"
+										],
+										"enumNames": {
+											"floating": "Floating",
+											"inline": "Inline"
+										},
+										"order": 0,
+										"title": "Buttons type",
+										"type": "string"
+									},
+									"floatingHorizontal": {
+										"order": 2.1,
+										"properties": {
+											"hideOnDesktop": {
+												"default": true,
+												"description": "Hide on wide screens.",
+												"order": 2,
+												"showIf": {
+													"instances[].floatingHorizontal.placement": {
+														"op": "!=",
+														"value": "none"
+													}
+												},
+												"title": "Hide on desktop",
+												"type": "boolean"
+											},
+											"placement": {
+												"default": "center",
+												"description": "Select a bottom alignment for the horizontal bar.",
+												"enum": [
+													"left",
+													"center",
+													"right",
+													"none"
+												],
+												"enumNames": {
+													"center": "Center",
+													"left": "Left",
+													"none": "None",
+													"right": "Right"
+												},
+												"order": 1,
+												"title": "Location",
+												"type": "string"
+											}
+										},
+										"showIf": {
+											"instances[].buttonsType": {
+												"op": "==",
+												"value": "floating"
+											}
+										},
+										"title": "Horizontal bar",
+										"type": "object"
+									},
+									"floatingVertical": {
+										"order": 2,
+										"properties": {
+											"hideOnMobile": {
+												"default": true,
+												"description": "Hide on narrow screens.",
+												"order": 2,
+												"showIf": {
+													"instances[].floatingVertical.placement": {
+														"op": "!=",
+														"value": "none"
+													}
+												},
+												"title": "Hide on mobile",
+												"type": "boolean"
+											},
+											"placement": {
+												"default": "left",
+												"description": "Select a side for the vertical bar.",
+												"enum": [
+													"left",
+													"right",
+													"none"
+												],
+												"enumNames": {
+													"left": "Left",
+													"none": "None",
+													"right": "Right"
+												},
+												"order": 1,
+												"title": "Location",
+												"type": "string"
+											}
+										},
+										"showIf": {
+											"instances[].buttonsType": {
+												"op": "==",
+												"value": "floating"
+											}
+										},
+										"title": "Vertical bar",
+										"type": "object"
+									},
+									"iconStyle": {
+										"order": 3,
+										"properties": {
+											"bgColor": {
+												"default": "#82b0ff",
+												"format": "color",
+												"order": 1,
+												"showIf": {
+													"instances[].iconStyle.color": {
+														"op": "==",
+														"value": "custom"
+													}
+												},
+												"title": "Background color",
+												"type": "string"
+											},
+											"color": {
+												"default": "original",
+												"enum": [
+													"original",
+													"custom"
+												],
+												"enumNames": {
+													"custom": "Custom",
+													"original": "Original"
+												},
+												"format": "radios",
+												"order": 0,
+												"title": "Colors",
+												"type": "string"
+											},
+											"fgColor": {
+												"default": "#ffffff",
+												"format": "color",
+												"order": 2,
+												"showIf": {
+													"instances[].iconStyle.color": {
+														"op": "==",
+														"value": "custom"
+													}
+												},
+												"title": "Foreground color",
+												"type": "string"
+											},
+											"floatingMargin": {
+												"default": 4,
+												"format": "slider",
+												"maximum": 32,
+												"minimum": 0,
+												"order": 6,
+												"showIf": {
+													"instances[].buttonsType": {
+														"op": "==",
+														"value": "floating"
+													}
+												},
+												"step": 1,
+												"title": "Space from edge",
+												"type": "number"
+											},
+											"padding": {
+												"default": 4,
+												"format": "slider",
+												"maximum": 32,
+												"minimum": 0,
+												"order": 5,
+												"step": 1,
+												"title": "Space between",
+												"type": "number"
+											},
+											"radius": {
+												"default": 0.25,
+												"format": "slider",
+												"maximum": 1,
+												"minimum": 0,
+												"order": 4,
+												"step": 0.01,
+												"title": "Roundness",
+												"type": "number"
+											},
+											"size": {
+												"default": 32,
+												"format": "slider",
+												"maximum": 64,
+												"minimum": 16,
+												"order": 3,
+												"step": 2,
+												"title": "Size",
+												"type": "number"
+											}
+										},
+										"title": "Buttons style",
+										"type": "object"
+									},
+									"location": {
+										"default": {
+											"method": "prepend",
+											"selector": "body"
+										},
+										"format": "element",
+										"order": 1,
+										"showIf": {
+											"instances[].buttonsType": {
+												"op": "==",
+												"value": "inline"
+											}
+										},
+										"title": "Buttons location",
+										"type": "object"
+									},
+									"services": {
+										"default": [
+											{
+												"serviceCode": "facebook"
+											},
+											{
+												"serviceCode": "twitter"
+											},
+											{
+												"serviceCode": "email"
+											},
+											{
+												"serviceCode": "addtoany"
+											}
+										],
+										"items": {
+											"properties": {
+												"serviceCode": {
+													"default": "__other",
+													"enum": [
+														"addtoany",
+														"email",
+														"facebook",
+														"linkedin",
+														"pinterest",
+														"reddit",
+														"tumblr",
+														"twitter",
+														"whatsapp",
+														"__other"
+													],
+													"enumNames": {
+														"__other": "Other…",
+														"addtoany": "AddToAny",
+														"email": "Email",
+														"facebook": "Facebook",
+														"linkedin": "LinkedIn",
+														"pinterest": "Pinterest",
+														"reddit": "Reddit",
+														"tumblr": "Tumblr",
+														"twitter": "Twitter",
+														"whatsapp": "WhatsApp"
+													},
+													"order": 0,
+													"title": "Service",
+													"type": "string"
+												},
+												"serviceCodeOther": {
+													"description": "Look up the <a href=\"https://www.addtoany.com/services/\" rel=\"noopener\" target=\"_blank\">AddToAny service code</a> to add another service.",
+													"order": 1,
+													"placeholder": "service_code",
+													"showIf": {
+														"instances[].services[].serviceCode": {
+															"op": "==",
+															"value": "__other"
+														}
+													},
+													"title": "Service code",
+													"type": "string"
+												},
+												"serviceCounter": {
+													"default": false,
+													"order": 2,
+													"showIf": {
+														"instances[].services[].serviceCode": {
+															"method": "any",
+															"op": "==",
+															"value": [
+																"facebook",
+																"pinterest",
+																"reddit",
+																"tumblr",
+																"addtoany"
+															]
+														}
+													},
+													"title": "Show count",
+													"type": "boolean"
+												}
+											},
+											"title": "Service",
+											"type": "object"
+										},
+										"order": 5,
+										"showIf": {
+											"instances[].showSharingOptions": true
+										},
+										"title": "Services",
+										"type": "array"
+									},
+									"shareTitle": {
+										"description": "Leave blank to share the current page's title. Some services will use the page's <a href=\"https://www.addtoany.com/ext/meta-tags/\" rel=\"noopener\" target=\"_blank\">meta tags</a> instead.",
+										"order": 7,
+										"placeholder": "Example Page",
+										"showIf": {
+											"instances[].shareURL": {
+												"op": "!=",
+												"value": ""
+											},
+											"instances[].showSharingOptions": true
+										},
+										"title": "Title to share",
+										"type": "string"
+									},
+									"shareURL": {
+										"description": "Leave blank to share the current page's URL.",
+										"format": "url",
+										"order": 6,
+										"placeholder": "https://www.example.com/page.html",
+										"showIf": {
+											"instances[].showSharingOptions": true
+										},
+										"title": "URL to share",
+										"type": "string"
+									},
+									"showSharingOptions": {
+										"default": false,
+										"order": 4,
+										"title": "Show sharing options",
+										"type": "boolean"
+									}
+								},
+								"title": "AddToAny instance",
+								"type": "object"
+							},
+							"order": 0,
+							"title": "AddToAny buttons",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.75,
+				"upvotes": 33,
+				"downvotes": 11
+			},
+			"releaseNotes": "Remove Google+ as a default button because Google has shut down Google+.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/gEHgYYqfkitv",
+			"metadata": {
+				"code": {
+					"sourceTag": "gEHgYYqfkitv",
+					"uploadedOn": "2019-04-09T22:55:17.404457546Z"
+				}
+			},
+			"created": "2019-04-09T22:39:47.158739Z",
+			"proposedApp": {
+				"id": "JI85SyC9e8es",
+				"title": "AddToAny Share Buttons",
+				"shortDescription": "Share your content with floating & inline share buttons.",
+				"longDescription": "<a href=\"https://www.addtoany.com/\" rel=\"noopener\" target=\"_blank\">AddToAny</a> provides share buttons to help people share your content to any service, such as Facebook, Twitter, Pinterest, WhatsApp, LinkedIn, Tumblr, Reddit, email, SMS and over 100 more sharing and social media sites & apps.\n\n### Floating Share Buttons\n* Floating share bars stay in place as you scroll.\n* Vertical buttons are great for desktop.\n* Horizontal buttons are great for mobile.\n\n### Inline Share Buttons\n* Share buttons inline with content.\n* Universal share menu fits on all displays.\n* SVG icons are pixel-perfect at any size.\n\n### Custom Sharing\n* Show official share counts from supported services.\n* Add, remove, or rearrange your share icons.\n* Share the current URL, or a specific URL.\n* Get sharing stats in <a href=\"https://www.addtoany.com/ext/google_analytics/\" rel=\"noopener\" target=\"_blank\">Google Analytics</a>.\n\n### Custom Styles\n* Change the background color of buttons.\n* Change the foreground color of buttons.\n* Change the size of buttons.\n* Change the space between buttons.\n\n### Custom Placement\n* Align share buttons left, right, or center.\n* Place share buttons anywhere on a page.\n* Hide the vertical share bar on mobile.\n* Hide the horizontal share bar on desktop.\n\nAddToAny is the universal sharing platform used by millions of websites, making sites social media ready since 2006.",
+				"instructions": "Customize and install AddToAny on your site.",
+				"alias": "addtoany",
+				"orgId": "46de8cbe1dd5f897e87c92a7ebc07eb1",
+				"icon": "//images.cloudflareapps.com/cVoQ73eIQjCZA6S1lgCl_AddToAny-icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/L4oC7C2RlWKAF71iwQyw_Buttons.png",
+					"//images.cloudflareapps.com/DuAnvBmvRievucdLHCSF_Menu Mini.png",
+					"//images.cloudflareapps.com/Cj686MljQoq4XWp0dZhe_Menu Full.png",
+					"//images.cloudflareapps.com/cdqFj8t8SRy97ulHi8h0_AddToAny-Example-Site-Screenshot.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "AddToAny",
+				"tagline": "",
+				"website": "https://www.addtoany.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.addtoany.com/terms",
+				"privacyPolicyURL": "https://www.addtoany.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support+cloudflareapp@addtoany.com",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication",
+					"recommended-for-blogs"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Kr1eWy_t52oE"
+				},
+				"created": "2017-06-16T00:49:39.468896Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "46de8cbe1dd5f897e87c92a7ebc07eb1",
+				"requestedAt": "2019-04-09T22:55:17.844224882Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-04-11T17:23:34.088051639Z"
+			}
+		}
+	]
+}

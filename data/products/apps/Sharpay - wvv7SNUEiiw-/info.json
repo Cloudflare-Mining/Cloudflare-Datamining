@@ -1,0 +1,2512 @@
+{
+	"id": "wvv7SNUEiiw-",
+	"title": "Sharpay",
+	"shortDescription": "Multishare button with blockchain profit",
+	"longDescription": "The Sharpay is the multi-share button for sites with blockchain-based rewards for content promotion for users. Multisharing is an opportunity to share the content in several networks in one click. Users receive rewards for the act of sharing or for the visits of other users via the shared links (depends on site settings). All that means the conversion growth for sites and comfortable sharing for users.",
+	"instructions": "We have simplified the installation process Sharpay button to Cloudflare users. Users need to specify the site ID from app.sharpay.io in the Sharpay plug-in settings and configure the button's display on their site.",
+	"alias": "sharpay",
+	"orgId": "a9cc13432974b93e1f102dcbdc46f2a0",
+	"icon": "https://images.cloudflareapps.com/3E1dtQYiS_6j/icon.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/xAuzzVmIDPFE/new-share-window2.PNG",
+		"https://images.cloudflareapps.com/6OGozDmjqbTx/screenshot-1.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/llKJnQ78Rr_M/tile.png",
+	"featuredAppImage": "",
+	"author": "Sharpay ltd.",
+	"tagline": "",
+	"website": "https://sharpay.io",
+	"sourceURL": "https://github.com/sharpay-io/cloudflare",
+	"termsOfServiceURL": "https://app.sharpay.io/index/terms",
+	"privacyPolicyURL": "https://app.sharpay.io/index/privacypolicy",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.16",
+	"infoVersion": "1.0.16",
+	"points": 0,
+	"supportEmail": "support@sharpay.io",
+	"products": [],
+	"categoryIds": [
+		"social-and-communication"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "a9cc13432974b93e1f102dcbdc46f2a0",
+			"created": "2018-05-14T17:59:37.191965902Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "1XpCEx6lx4RY"
+	},
+	"created": "2018-05-14T17:59:28.2657Z",
+	"org": {
+		"id": "a9cc13432974b93e1f102dcbdc46f2a0",
+		"title": "",
+		"username": "a9cc13432974b93e1f102dcbdc46f2a0",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "social-and-communication",
+			"title": "Social & Communication",
+			"description": "Apps that make it easier to communicate with your customers.",
+			"icon": "",
+			"points": 80,
+			"visible": true,
+			"created": "2018-01-22T19:17:10.030031Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "wvv7SNUEiiw-",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"code": {
+							"default": "",
+							"placeholder": "xxxxx",
+							"title": "Enter site ID",
+							"type": "string"
+						},
+						"color": {
+							"default": "dark",
+							"enum": [
+								"light",
+								"dark"
+							],
+							"enumNames": {
+								"dark": "Dark",
+								"light": "Light"
+							},
+							"format": "radios",
+							"title": "Select floating button style.",
+							"type": "string"
+						},
+						"counter": {
+							"default": "no",
+							"enum": [
+								"no",
+								"separate",
+								"all"
+							],
+							"enumNames": {
+								"all": "Common for all site",
+								"no": "Disable",
+								"separate": "Separate for every page"
+							},
+							"format": "radios",
+							"title": "Share counter",
+							"type": "string"
+						},
+						"help-code": {
+							"helpvalue": "To get site ID register your site <a href='https://app.sharpay.io' target='_blank'>here</a>.",
+							"type": "help"
+						},
+						"help-counter": {
+							"helpvalue": "Check if you want our button to show how many times your page was shared via Sharpay.",
+							"type": "help"
+						},
+						"position": {
+							"default": "right",
+							"enum": [
+								"left",
+								"right"
+							],
+							"enumNames": {
+								"left": "Left",
+								"right": "Right"
+							},
+							"format": "radios",
+							"title": "Select floating button position at the bottom of the page.",
+							"type": "string"
+						}
+					}
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/1XpCEx6lx4RY",
+			"metadata": {
+				"code": {
+					"sourceTag": "1XpCEx6lx4RY",
+					"uploadedOn": "2018-05-14T17:59:31.631094904Z"
+				}
+			},
+			"created": "2018-05-14T17:59:29.305856Z",
+			"proposedApp": {
+				"id": "wvv7SNUEiiw-",
+				"title": "Sharpay",
+				"shortDescription": "Cloudflare app for installation on you site Sharpay multisha",
+				"longDescription": "The sharpay is the share and multi-share button for sites with blockchain-based rewards for content promotion for users. Multisharing is an opportunity to share the content in several networks in one click. Users receive rewards for the act of sharing or for the visits of other users via the shared links (depends on site settings). All that means the conversion growth for sites and comfortable sharing for users.",
+				"instructions": "We have streamlined and simplified the whole button installing process for Cloudflare users. Users need only a site ID from app.sharpay.io and put it on the Sharpay app setting and save all his preferences.",
+				"alias": "sharpay",
+				"orgId": "a9cc13432974b93e1f102dcbdc46f2a0",
+				"icon": "https://images.cloudflareapps.com/3E1dtQYiS_6j/icon.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/llKJnQ78Rr_M/tile.png",
+				"featuredAppImage": "",
+				"author": "Sharpay ltd.",
+				"tagline": "",
+				"website": "https://sharpay.io",
+				"sourceURL": "https://github.com/sharpay-io/cloudflare",
+				"termsOfServiceURL": "https://app.sharpay.io/index/terms",
+				"privacyPolicyURL": "https://app.sharpay.io/index/privacypolicy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@sharpay.io",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication",
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "1XpCEx6lx4RY"
+				},
+				"created": "2018-05-14T17:59:28.2657Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "a9cc13432974b93e1f102dcbdc46f2a0",
+				"requestedAt": "2018-05-14T17:59:37.175617399Z",
+				"canceledByUserId": "a9cc13432974b93e1f102dcbdc46f2a0",
+				"canceledAt": "2018-05-14T18:05:22.614282476Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "wvv7SNUEiiw-",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"code": {
+							"default": "",
+							"placeholder": "xxxxx",
+							"title": "Enter site ID",
+							"type": "string"
+						},
+						"color": {
+							"default": "dark",
+							"enum": [
+								"light",
+								"dark"
+							],
+							"enumNames": {
+								"dark": "Dark",
+								"light": "Light"
+							},
+							"format": "radios",
+							"title": "Select floating button style.",
+							"type": "string"
+						},
+						"counter": {
+							"default": "no",
+							"enum": [
+								"no",
+								"separate",
+								"all"
+							],
+							"enumNames": {
+								"all": "Common for all site",
+								"no": "Disable",
+								"separate": "Separate for every page"
+							},
+							"format": "radios",
+							"title": "Share counter",
+							"type": "string"
+						},
+						"help-code": {
+							"helpvalue": "To get site ID register your site <a href='https://app.sharpay.io' target='_blank'>here</a>.",
+							"type": "help"
+						},
+						"help-counter": {
+							"helpvalue": "Check if you want our button to show how many times your page was shared via Sharpay.",
+							"type": "help"
+						},
+						"position": {
+							"default": "right",
+							"enum": [
+								"left",
+								"right"
+							],
+							"enumNames": {
+								"left": "Left",
+								"right": "Right"
+							},
+							"format": "radios",
+							"title": "Select floating button position at the bottom of the page.",
+							"type": "string"
+						}
+					}
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/35UqBYyDBN0d",
+			"metadata": {
+				"code": {
+					"sourceTag": "35UqBYyDBN0d",
+					"uploadedOn": "2018-05-14T18:05:21.646790042Z"
+				}
+			},
+			"created": "2018-05-14T18:05:20.803268Z",
+			"proposedApp": {
+				"id": "wvv7SNUEiiw-",
+				"title": "Sharpay",
+				"shortDescription": "Cloudflare app for installation on you site Sharpay multisha",
+				"longDescription": "The sharpay is the share and multi-share button for sites with blockchain-based rewards for content promotion for users. Multisharing is an opportunity to share the content in several networks in one click. Users receive rewards for the act of sharing or for the visits of other users via the shared links (depends on site settings). All that means the conversion growth for sites and comfortable sharing for users.",
+				"instructions": "We have streamlined and simplified the whole button installing process for Cloudflare users. Users need only a site ID from app.sharpay.io and put it on the Sharpay app setting and save all his preferences.",
+				"alias": "sharpay",
+				"orgId": "a9cc13432974b93e1f102dcbdc46f2a0",
+				"icon": "https://images.cloudflareapps.com/3E1dtQYiS_6j/icon.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/llKJnQ78Rr_M/tile.png",
+				"featuredAppImage": "",
+				"author": "Sharpay ltd.",
+				"tagline": "",
+				"website": "https://sharpay.io",
+				"sourceURL": "https://github.com/sharpay-io/cloudflare",
+				"termsOfServiceURL": "https://app.sharpay.io/index/terms",
+				"privacyPolicyURL": "https://app.sharpay.io/index/privacypolicy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@sharpay.io",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication",
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "1XpCEx6lx4RY"
+				},
+				"created": "2018-05-14T17:59:28.2657Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "a9cc13432974b93e1f102dcbdc46f2a0",
+				"requestedAt": "2018-05-14T18:05:22.631627891Z",
+				"canceledByUserId": "a9cc13432974b93e1f102dcbdc46f2a0",
+				"canceledAt": "2018-05-15T06:17:51.690371757Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "wvv7SNUEiiw-",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"code": {
+							"default": "",
+							"placeholder": "xxxxx",
+							"title": "Enter site ID",
+							"type": "string"
+						},
+						"color": {
+							"default": "dark",
+							"enum": [
+								"light",
+								"dark"
+							],
+							"enumNames": {
+								"dark": "Dark",
+								"light": "Light"
+							},
+							"format": "radios",
+							"title": "Select floating button style.",
+							"type": "string"
+						},
+						"counter": {
+							"default": "no",
+							"enum": [
+								"no",
+								"separate",
+								"all"
+							],
+							"enumNames": {
+								"all": "Common for all site",
+								"no": "Disable",
+								"separate": "Separate for every page"
+							},
+							"format": "radios",
+							"title": "Share counter",
+							"type": "string"
+						},
+						"help-code": {
+							"helpvalue": "To get site ID register your site <a href='https://app.sharpay.io' target='_blank'>here</a>.",
+							"type": "help"
+						},
+						"help-counter": {
+							"helpvalue": "Check if you want our button to show how many times your page was shared via Sharpay.",
+							"type": "help"
+						},
+						"position": {
+							"default": "right",
+							"enum": [
+								"left",
+								"right"
+							],
+							"enumNames": {
+								"left": "Left",
+								"right": "Right"
+							},
+							"format": "radios",
+							"title": "Select floating button position at the bottom of the page.",
+							"type": "string"
+						}
+					}
+				}
+			},
+			"releaseNotes": "Bugfixes and stability improvements",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/BhZXnErTPqHz",
+			"metadata": {
+				"code": {
+					"sourceTag": "BhZXnErTPqHz",
+					"uploadedOn": "2018-05-15T06:17:50.010388903Z"
+				}
+			},
+			"created": "2018-05-15T06:17:49.463145Z",
+			"proposedApp": {
+				"id": "wvv7SNUEiiw-",
+				"title": "Sharpay",
+				"shortDescription": "Cloudflare app for installation on you site Sharpay multisha",
+				"longDescription": "The sharpay is the share and multi-share button for sites with blockchain-based rewards for content promotion for users. Multisharing is an opportunity to share the content in several networks in one click. Users receive rewards for the act of sharing or for the visits of other users via the shared links (depends on site settings). All that means the conversion growth for sites and comfortable sharing for users.",
+				"instructions": "We have streamlined and simplified the whole button installing process for Cloudflare users. Users need only a site ID from app.sharpay.io and put it on the Sharpay app setting and save all his preferences.",
+				"alias": "sharpay",
+				"orgId": "a9cc13432974b93e1f102dcbdc46f2a0",
+				"icon": "https://images.cloudflareapps.com/3E1dtQYiS_6j/icon.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/llKJnQ78Rr_M/tile.png",
+				"featuredAppImage": "",
+				"author": "Sharpay ltd.",
+				"tagline": "",
+				"website": "https://sharpay.io",
+				"sourceURL": "https://github.com/sharpay-io/cloudflare",
+				"termsOfServiceURL": "https://app.sharpay.io/index/terms",
+				"privacyPolicyURL": "https://app.sharpay.io/index/privacypolicy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@sharpay.io",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication",
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "1XpCEx6lx4RY"
+				},
+				"created": "2018-05-14T17:59:28.2657Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "a9cc13432974b93e1f102dcbdc46f2a0",
+				"requestedAt": "2018-05-15T06:17:51.711218921Z",
+				"canceledByUserId": "a9cc13432974b93e1f102dcbdc46f2a0",
+				"canceledAt": "2018-05-15T06:21:20.389681688Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "wvv7SNUEiiw-",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"code": {
+							"default": "",
+							"placeholder": "xxxxx",
+							"title": "Enter site ID",
+							"type": "string"
+						},
+						"color": {
+							"default": "dark",
+							"enum": [
+								"light",
+								"dark"
+							],
+							"enumNames": {
+								"dark": "Dark",
+								"light": "Light"
+							},
+							"format": "radios",
+							"title": "Select floating button style.",
+							"type": "string"
+						},
+						"counter": {
+							"default": "no",
+							"enum": [
+								"no",
+								"separate",
+								"all"
+							],
+							"enumNames": {
+								"all": "Common for all site",
+								"no": "Disable",
+								"separate": "Separate for every page"
+							},
+							"format": "radios",
+							"title": "Share counter",
+							"type": "string"
+						},
+						"help-code": {
+							"helpvalue": "To get site ID register your site <a href='https://app.sharpay.io' target='_blank'>here</a>.",
+							"type": "help"
+						},
+						"help-counter": {
+							"helpvalue": "Check if you want our button to show how many times your page was shared via Sharpay.",
+							"type": "help"
+						},
+						"position": {
+							"default": "right",
+							"enum": [
+								"left",
+								"right"
+							],
+							"enumNames": {
+								"left": "Left",
+								"right": "Right"
+							},
+							"format": "radios",
+							"title": "Select floating button position at the bottom of the page.",
+							"type": "string"
+						}
+					}
+				}
+			},
+			"releaseNotes": "Bugfixes and stability improvements",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/fa3yyxLh_-f_",
+			"metadata": {
+				"code": {
+					"sourceTag": "fa3yyxLh_-f_",
+					"uploadedOn": "2018-05-15T06:21:19.351790127Z"
+				}
+			},
+			"created": "2018-05-15T06:21:18.468781Z",
+			"proposedApp": {
+				"id": "wvv7SNUEiiw-",
+				"title": "Sharpay",
+				"shortDescription": "Cloudflare app for installation on you site Sharpay multisha",
+				"longDescription": "The sharpay is the share and multi-share button for sites with blockchain-based rewards for content promotion for users. Multisharing is an opportunity to share the content in several networks in one click. Users receive rewards for the act of sharing or for the visits of other users via the shared links (depends on site settings). All that means the conversion growth for sites and comfortable sharing for users.",
+				"instructions": "We have streamlined and simplified the whole button installing process for Cloudflare users. Users need only a site ID from app.sharpay.io and put it on the Sharpay app setting and save all his preferences.",
+				"alias": "sharpay",
+				"orgId": "a9cc13432974b93e1f102dcbdc46f2a0",
+				"icon": "https://images.cloudflareapps.com/3E1dtQYiS_6j/icon.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/llKJnQ78Rr_M/tile.png",
+				"featuredAppImage": "",
+				"author": "Sharpay ltd.",
+				"tagline": "",
+				"website": "https://sharpay.io",
+				"sourceURL": "https://github.com/sharpay-io/cloudflare",
+				"termsOfServiceURL": "https://app.sharpay.io/index/terms",
+				"privacyPolicyURL": "https://app.sharpay.io/index/privacypolicy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@sharpay.io",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication",
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "1XpCEx6lx4RY"
+				},
+				"created": "2018-05-14T17:59:28.2657Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "a9cc13432974b93e1f102dcbdc46f2a0",
+				"requestedAt": "2018-05-15T06:21:20.395471183Z",
+				"canceledAt": null,
+				"reviewedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"reviewedAt": "2018-05-18T21:36:00.95664775Z"
+			}
+		},
+		{
+			"tag": "1.0.4",
+			"appId": "wvv7SNUEiiw-",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"code": {
+							"default": "",
+							"placeholder": "xxxxx",
+							"title": "Enter site ID",
+							"type": "string"
+						},
+						"color": {
+							"default": "dark",
+							"enum": [
+								"light",
+								"dark"
+							],
+							"enumNames": {
+								"dark": "Dark",
+								"light": "Light"
+							},
+							"format": "radios",
+							"title": "Select floating button style.",
+							"type": "string"
+						},
+						"counter": {
+							"default": "no",
+							"enum": [
+								"no",
+								"separate",
+								"all"
+							],
+							"enumNames": {
+								"all": "Common for all site",
+								"no": "Disable",
+								"separate": "Separate for every page"
+							},
+							"format": "radios",
+							"title": "Share counter",
+							"type": "string"
+						},
+						"help-code": {
+							"helpvalue": "To get site ID register your site <a href='https://app.sharpay.io' target='_blank'>here</a>.",
+							"type": "help"
+						},
+						"help-counter": {
+							"helpvalue": "Check if you want our button to show how many times your page was shared via Sharpay.",
+							"type": "help"
+						},
+						"position": {
+							"default": "right",
+							"enum": [
+								"left",
+								"right"
+							],
+							"enumNames": {
+								"left": "Left",
+								"right": "Right"
+							},
+							"format": "radios",
+							"title": "Select floating button position at the bottom of the page.",
+							"type": "string"
+						}
+					}
+				}
+			},
+			"releaseNotes": "Bugfixes and stability improvements",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/xEjuEvI6pnmx",
+			"metadata": {
+				"code": {
+					"sourceTag": "xEjuEvI6pnmx",
+					"uploadedOn": "2018-05-19T04:36:57.483978353Z"
+				}
+			},
+			"created": "2018-05-19T04:36:56.710459Z",
+			"proposedApp": {
+				"id": "wvv7SNUEiiw-",
+				"title": "Sharpay",
+				"shortDescription": "Multishare button with blockchain profit",
+				"longDescription": "The sharpay is the share and multi-share button for sites with blockchain-based rewards for content promotion for users. Multisharing is an opportunity to share the content in several networks in one click. Users receive rewards for the act of sharing or for the visits of other users via the shared links (depends on site settings). All that means the conversion growth for sites and comfortable sharing for users.",
+				"instructions": "We have streamlined and simplified the whole button installing process for Cloudflare users. Users need only a site ID from app.sharpay.io and put it on the Sharpay app setting and save all his preferences.",
+				"alias": "sharpay",
+				"orgId": "a9cc13432974b93e1f102dcbdc46f2a0",
+				"icon": "https://images.cloudflareapps.com/3E1dtQYiS_6j/icon.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/llKJnQ78Rr_M/tile.png",
+				"featuredAppImage": "",
+				"author": "Sharpay ltd.",
+				"tagline": "",
+				"website": "https://sharpay.io",
+				"sourceURL": "https://github.com/sharpay-io/cloudflare",
+				"termsOfServiceURL": "https://app.sharpay.io/index/terms",
+				"privacyPolicyURL": "https://app.sharpay.io/index/privacypolicy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@sharpay.io",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication",
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "1XpCEx6lx4RY"
+				},
+				"created": "2018-05-14T17:59:28.2657Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "a9cc13432974b93e1f102dcbdc46f2a0",
+				"requestedAt": "2018-05-19T04:36:58.982870501Z",
+				"canceledAt": null,
+				"reviewedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"reviewedAt": "2018-05-24T18:24:57.087857881Z"
+			}
+		},
+		{
+			"tag": "1.0.5",
+			"appId": "wvv7SNUEiiw-",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"code": {
+							"default": "",
+							"placeholder": "xxxxx",
+							"title": "Enter site ID",
+							"type": "string"
+						},
+						"color": {
+							"default": "dark",
+							"enum": [
+								"light",
+								"dark"
+							],
+							"enumNames": {
+								"dark": "Dark",
+								"light": "Light"
+							},
+							"format": "radios",
+							"title": "Select floating button style.",
+							"type": "string"
+						},
+						"counter": {
+							"default": "no",
+							"enum": [
+								"no",
+								"separate",
+								"all"
+							],
+							"enumNames": {
+								"all": "Common for all site",
+								"no": "Disable",
+								"separate": "Separate for every page"
+							},
+							"format": "radios",
+							"title": "Share counter",
+							"type": "string"
+						},
+						"help-code": {
+							"helpvalue": "To get site ID register your site <a href='https://app.sharpay.io' target='_blank'>here</a>.",
+							"type": "help"
+						},
+						"help-counter": {
+							"helpvalue": "Check if you want our button to show how many times your page was shared via Sharpay.",
+							"type": "help"
+						},
+						"position": {
+							"default": "right",
+							"enum": [
+								"left",
+								"right"
+							],
+							"enumNames": {
+								"left": "Left",
+								"right": "Right"
+							},
+							"format": "radios",
+							"title": "Select floating button position at the bottom of the page.",
+							"type": "string"
+						}
+					}
+				}
+			},
+			"releaseNotes": "Bugfixes and stability improvements",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/xEjuEvI6pnmx",
+			"created": "2018-05-25T08:33:56.514129Z",
+			"proposedApp": {
+				"id": "wvv7SNUEiiw-",
+				"title": "Sharpay",
+				"shortDescription": "Multishare button with blockchain profit",
+				"longDescription": "The Sharpay is the multi-share button for sites with blockchain-based rewards for content promotion for users. Multisharing is an opportunity to share the content in several networks in one click. Users receive rewards for the act of sharing or for the visits of other users via the shared links (depends on site settings). All that means the conversion growth for sites and comfortable sharing for users.",
+				"instructions": "We have simplified the installation process Sharpay button to Cloudflare users. Users need to specify the site ID from app.sharpay.io in the Sharpay plug-in settings and configure the button's display on their site.",
+				"alias": "sharpay",
+				"orgId": "a9cc13432974b93e1f102dcbdc46f2a0",
+				"icon": "https://images.cloudflareapps.com/3E1dtQYiS_6j/icon.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/llKJnQ78Rr_M/tile.png",
+				"featuredAppImage": "",
+				"author": "Sharpay ltd.",
+				"tagline": "",
+				"website": "https://sharpay.io",
+				"sourceURL": "https://github.com/sharpay-io/cloudflare",
+				"termsOfServiceURL": "https://app.sharpay.io/index/terms",
+				"privacyPolicyURL": "https://app.sharpay.io/index/privacypolicy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@sharpay.io",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication",
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "1XpCEx6lx4RY"
+				},
+				"created": "2018-05-14T17:59:28.2657Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "a9cc13432974b93e1f102dcbdc46f2a0",
+				"requestedAt": "2018-05-25T08:35:56.364454683Z",
+				"canceledAt": null,
+				"reviewedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"reviewedAt": "2018-05-29T18:01:44.239533985Z"
+			}
+		},
+		{
+			"tag": "1.0.6",
+			"appId": "wvv7SNUEiiw-",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"code": {
+							"default": "",
+							"description": "To get site ID register your site <a href='https://app.sharpay.io' target='_blank'>here</a>.",
+							"placeholder": "xxxxx",
+							"title": "Enter site ID",
+							"type": "string"
+						},
+						"color": {
+							"default": "light",
+							"enum": [
+								"light",
+								"dark"
+							],
+							"enumNames": {
+								"dark": "Dark",
+								"light": "Light"
+							},
+							"format": "radios",
+							"title": "Select floating button style.",
+							"type": "string"
+						},
+						"counter": {
+							"default": "no",
+							"description": "Check if you want our button to show how many times your page was shared via Sharpay.",
+							"enum": [
+								"no",
+								"separate",
+								"all"
+							],
+							"enumNames": {
+								"all": "Common for all site",
+								"no": "Disable",
+								"separate": "Separate for every page"
+							},
+							"format": "radios",
+							"title": "Share counter",
+							"type": "string"
+						},
+						"position": {
+							"default": "right",
+							"enum": [
+								"left",
+								"right"
+							],
+							"enumNames": {
+								"left": "Left",
+								"right": "Right"
+							},
+							"format": "radios",
+							"title": "Select floating button position at the bottom of the page.",
+							"type": "string"
+						}
+					}
+				}
+			},
+			"releaseNotes": "Bugfixes and stability improvements",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/bBp9BNf5mgNk",
+			"metadata": {
+				"code": {
+					"sourceTag": "bBp9BNf5mgNk",
+					"uploadedOn": "2018-07-03T08:52:59.196579508Z"
+				}
+			},
+			"created": "2018-07-03T08:52:57.963256Z",
+			"proposedApp": {
+				"id": "wvv7SNUEiiw-",
+				"title": "Sharpay",
+				"shortDescription": "Multishare button with blockchain profit",
+				"longDescription": "The Sharpay is the multi-share button for sites with blockchain-based rewards for content promotion for users. Multisharing is an opportunity to share the content in several networks in one click. Users receive rewards for the act of sharing or for the visits of other users via the shared links (depends on site settings). All that means the conversion growth for sites and comfortable sharing for users.",
+				"instructions": "We have simplified the installation process Sharpay button to Cloudflare users. Users need to specify the site ID from app.sharpay.io in the Sharpay plug-in settings and configure the button's display on their site.",
+				"alias": "sharpay",
+				"orgId": "a9cc13432974b93e1f102dcbdc46f2a0",
+				"icon": "https://images.cloudflareapps.com/3E1dtQYiS_6j/icon.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/llKJnQ78Rr_M/tile.png",
+				"featuredAppImage": "",
+				"author": "Sharpay ltd.",
+				"tagline": "",
+				"website": "https://sharpay.io",
+				"sourceURL": "https://github.com/sharpay-io/cloudflare",
+				"termsOfServiceURL": "https://app.sharpay.io/index/terms",
+				"privacyPolicyURL": "https://app.sharpay.io/index/privacypolicy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@sharpay.io",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication",
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "1XpCEx6lx4RY"
+				},
+				"created": "2018-05-14T17:59:28.2657Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "a9cc13432974b93e1f102dcbdc46f2a0",
+				"requestedAt": "2018-07-03T08:53:25.513706923Z",
+				"canceledAt": null,
+				"reviewedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"reviewedAt": "2018-07-03T22:29:31.750551219Z"
+			}
+		},
+		{
+			"tag": "1.0.7",
+			"appId": "wvv7SNUEiiw-",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"required": true,
+							"services": [
+								"sharpay"
+							],
+							"title": "Sharpay Account",
+							"type": "object"
+						},
+						"code": {
+							"default": "",
+							"description": "To get site ID register your site <a href='https://app.sharpay.io' target='_blank'>here</a>.",
+							"placeholder": "xxxxx",
+							"title": "Enter site ID",
+							"type": "string"
+						},
+						"color": {
+							"default": "light",
+							"enum": [
+								"light",
+								"dark"
+							],
+							"enumNames": {
+								"dark": "Dark",
+								"light": "Light"
+							},
+							"format": "radios",
+							"title": "Select floating button style.",
+							"type": "string"
+						},
+						"counter": {
+							"default": "no",
+							"description": "Check if you want our button to show how many times your page was shared via Sharpay.",
+							"enum": [
+								"no",
+								"separate",
+								"all"
+							],
+							"enumNames": {
+								"all": "Common for all site",
+								"no": "Disable",
+								"separate": "Separate for every page"
+							},
+							"format": "radios",
+							"title": "Share counter",
+							"type": "string"
+						},
+						"position": {
+							"default": "right",
+							"enum": [
+								"left",
+								"right"
+							],
+							"enumNames": {
+								"left": "Left",
+								"right": "Right"
+							},
+							"format": "radios",
+							"title": "Select floating button position at the bottom of the page.",
+							"type": "string"
+						}
+					}
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.sharpay.io/cloudflare/hook",
+						"events": [
+							"option-change:account",
+							"item-add"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Sharpay."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "Bugfixes and stability improvements",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/FFk99uh4kyXA",
+			"metadata": {
+				"code": {
+					"sourceTag": "FFk99uh4kyXA",
+					"uploadedOn": "2018-09-05T06:00:38.480043945Z"
+				}
+			},
+			"created": "2018-09-05T06:00:37.912994Z",
+			"proposedApp": {
+				"id": "wvv7SNUEiiw-",
+				"title": "Sharpay",
+				"shortDescription": "Multishare button with blockchain profit",
+				"longDescription": "The Sharpay is the multi-share button for sites with blockchain-based rewards for content promotion for users. Multisharing is an opportunity to share the content in several networks in one click. Users receive rewards for the act of sharing or for the visits of other users via the shared links (depends on site settings). All that means the conversion growth for sites and comfortable sharing for users.",
+				"instructions": "We have simplified the installation process Sharpay button to Cloudflare users. Users need to specify the site ID from app.sharpay.io in the Sharpay plug-in settings and configure the button's display on their site.",
+				"alias": "sharpay",
+				"orgId": "a9cc13432974b93e1f102dcbdc46f2a0",
+				"icon": "https://images.cloudflareapps.com/3E1dtQYiS_6j/icon.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/llKJnQ78Rr_M/tile.png",
+				"featuredAppImage": "",
+				"author": "Sharpay ltd.",
+				"tagline": "",
+				"website": "https://sharpay.io",
+				"sourceURL": "https://github.com/sharpay-io/cloudflare",
+				"termsOfServiceURL": "https://app.sharpay.io/index/terms",
+				"privacyPolicyURL": "https://app.sharpay.io/index/privacypolicy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@sharpay.io",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication",
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "1XpCEx6lx4RY"
+				},
+				"created": "2018-05-14T17:59:28.2657Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"assignedToReviewerUserId": "681cef98e592b3db33836ad01f84726e",
+				"requestedByUserId": "a9cc13432974b93e1f102dcbdc46f2a0",
+				"requestedAt": "2018-09-05T06:00:39.51266536Z",
+				"canceledByUserId": "a9cc13432974b93e1f102dcbdc46f2a0",
+				"canceledAt": "2018-09-21T11:59:25.109137177Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.8",
+			"appId": "wvv7SNUEiiw-",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"required": true,
+							"services": [
+								"sharpay"
+							],
+							"title": "Sharpay Account",
+							"type": "object"
+						},
+						"code": {
+							"default": "",
+							"description": "To get site ID register your site <a href='https://app.sharpay.io' target='_blank'>here</a>.",
+							"placeholder": "xxxxx",
+							"title": "Enter site ID",
+							"type": "string"
+						},
+						"color": {
+							"default": "light",
+							"enum": [
+								"light",
+								"dark"
+							],
+							"enumNames": {
+								"dark": "Dark",
+								"light": "Light"
+							},
+							"format": "radios",
+							"title": "Select floating button style.",
+							"type": "string"
+						},
+						"counter": {
+							"default": "no",
+							"description": "Check if you want our button to show how many times your page was shared via Sharpay.",
+							"enum": [
+								"no",
+								"separate",
+								"all"
+							],
+							"enumNames": {
+								"all": "Common for all site",
+								"no": "Disable",
+								"separate": "Separate for every page"
+							},
+							"format": "radios",
+							"title": "Share counter",
+							"type": "string"
+						},
+						"mini": {
+							"description": "Makes a floating widget compact",
+							"title": "Mini widget",
+							"type": "boolean"
+						},
+						"position": {
+							"default": "right",
+							"enum": [
+								"left",
+								"right"
+							],
+							"enumNames": {
+								"left": "Left",
+								"right": "Right"
+							},
+							"format": "radios",
+							"title": "Select floating button position at the bottom of the page.",
+							"type": "string"
+						}
+					}
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.sharpay.io/cloudflare/hook",
+						"events": [
+							"option-change:account",
+							"item-add"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Sharpay."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "New widget features added",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/N1EuKaMe5ExH",
+			"metadata": {
+				"code": {
+					"sourceTag": "N1EuKaMe5ExH",
+					"uploadedOn": "2018-09-18T08:14:11.277083461Z"
+				}
+			},
+			"created": "2018-09-18T08:14:10.579201Z",
+			"proposedApp": {
+				"id": "wvv7SNUEiiw-",
+				"title": "Sharpay",
+				"shortDescription": "Multishare button with blockchain profit",
+				"longDescription": "The Sharpay is the multi-share button for sites with blockchain-based rewards for content promotion for users. Multisharing is an opportunity to share the content in several networks in one click. Users receive rewards for the act of sharing or for the visits of other users via the shared links (depends on site settings). All that means the conversion growth for sites and comfortable sharing for users.",
+				"instructions": "We have simplified the installation process Sharpay button to Cloudflare users. Users need to specify the site ID from app.sharpay.io in the Sharpay plug-in settings and configure the button's display on their site.",
+				"alias": "sharpay",
+				"orgId": "a9cc13432974b93e1f102dcbdc46f2a0",
+				"icon": "https://images.cloudflareapps.com/3E1dtQYiS_6j/icon.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/llKJnQ78Rr_M/tile.png",
+				"featuredAppImage": "",
+				"author": "Sharpay ltd.",
+				"tagline": "",
+				"website": "https://sharpay.io",
+				"sourceURL": "https://github.com/sharpay-io/cloudflare",
+				"termsOfServiceURL": "https://app.sharpay.io/index/terms",
+				"privacyPolicyURL": "https://app.sharpay.io/index/privacypolicy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@sharpay.io",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication",
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "1XpCEx6lx4RY"
+				},
+				"created": "2018-05-14T17:59:28.2657Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "a9cc13432974b93e1f102dcbdc46f2a0",
+				"requestedAt": "2018-09-21T11:59:25.14479115Z",
+				"canceledByUserId": "a9cc13432974b93e1f102dcbdc46f2a0",
+				"canceledAt": "2018-09-24T20:50:18.544211595Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.9",
+			"appId": "wvv7SNUEiiw-",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"required": true,
+							"services": [
+								"sharpay"
+							],
+							"title": "Sharpay Account",
+							"type": "object"
+						},
+						"code": {
+							"default": "",
+							"description": "To get site ID register your site <a href='https://app.sharpay.io' target='_blank'>here</a>.",
+							"placeholder": "xxxxx",
+							"title": "Enter site ID",
+							"type": "string"
+						},
+						"color": {
+							"default": "light",
+							"enum": [
+								"light",
+								"dark"
+							],
+							"enumNames": {
+								"dark": "Dark",
+								"light": "Light"
+							},
+							"format": "radios",
+							"title": "Select floating button style.",
+							"type": "string"
+						},
+						"counter": {
+							"default": "no",
+							"description": "Check if you want our button to show how many times your page was shared via Sharpay.",
+							"enum": [
+								"no",
+								"separate",
+								"all"
+							],
+							"enumNames": {
+								"all": "Common for all site",
+								"no": "Disable",
+								"separate": "Separate for every page"
+							},
+							"format": "radios",
+							"title": "Share counter",
+							"type": "string"
+						},
+						"mini": {
+							"description": "Makes a floating widget compact",
+							"title": "Mini widget",
+							"type": "boolean"
+						},
+						"position": {
+							"default": "right",
+							"enum": [
+								"left",
+								"right"
+							],
+							"enumNames": {
+								"left": "Left",
+								"right": "Right"
+							},
+							"format": "radios",
+							"title": "Select floating button position at the bottom of the page.",
+							"type": "string"
+						}
+					}
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.sharpay.io/cloudflare/hook",
+						"events": [
+							"option-change:account",
+							"item-add"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Sharpay."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 3,
+				"downvotes": 0
+			},
+			"releaseNotes": "New widget features added",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/N1EuKaMe5ExH",
+			"created": "2018-09-24T20:50:17.744884Z",
+			"proposedApp": {
+				"id": "wvv7SNUEiiw-",
+				"title": "Sharpay",
+				"shortDescription": "Multishare button with blockchain profit",
+				"longDescription": "The Sharpay is the multi-share button for sites with blockchain-based rewards for content promotion for users. Multisharing is an opportunity to share the content in several networks in one click. Users receive rewards for the act of sharing or for the visits of other users via the shared links (depends on site settings). All that means the conversion growth for sites and comfortable sharing for users.",
+				"instructions": "We have simplified the installation process Sharpay button to Cloudflare users. Users need to specify the site ID from app.sharpay.io in the Sharpay plug-in settings and configure the button's display on their site.",
+				"alias": "sharpay",
+				"orgId": "a9cc13432974b93e1f102dcbdc46f2a0",
+				"icon": "https://images.cloudflareapps.com/3E1dtQYiS_6j/icon.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/llKJnQ78Rr_M/tile.png",
+				"featuredAppImage": "",
+				"author": "Sharpay ltd.",
+				"tagline": "",
+				"website": "https://sharpay.io",
+				"sourceURL": "https://github.com/sharpay-io/cloudflare",
+				"termsOfServiceURL": "https://app.sharpay.io/index/terms",
+				"privacyPolicyURL": "https://app.sharpay.io/index/privacypolicy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@sharpay.io",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "1XpCEx6lx4RY"
+				},
+				"created": "2018-05-14T17:59:28.2657Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "a9cc13432974b93e1f102dcbdc46f2a0",
+				"requestedAt": "2018-09-24T20:50:18.564792642Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-09-26T21:53:17.008359071Z"
+			}
+		},
+		{
+			"tag": "1.0.10",
+			"appId": "wvv7SNUEiiw-",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"required": true,
+							"services": [
+								"sharpay"
+							],
+							"title": "Sharpay Account",
+							"type": "object"
+						},
+						"code": {
+							"default": "",
+							"description": "To get site ID register your site <a href='https://app.sharpay.io' target='_blank'>here</a>.",
+							"placeholder": "xxxxx",
+							"title": "Enter site ID",
+							"type": "string"
+						},
+						"color": {
+							"default": "light",
+							"enum": [
+								"light",
+								"dark"
+							],
+							"enumNames": {
+								"dark": "Dark",
+								"light": "Light"
+							},
+							"format": "radios",
+							"title": "Select floating button style.",
+							"type": "string"
+						},
+						"counter": {
+							"default": "no",
+							"description": "Check if you want our button to show how many times your page was shared via Sharpay.",
+							"enum": [
+								"no",
+								"separate",
+								"all"
+							],
+							"enumNames": {
+								"all": "Common for all site",
+								"no": "Disable",
+								"separate": "Separate for every page"
+							},
+							"format": "radios",
+							"title": "Share counter",
+							"type": "string"
+						},
+						"mini": {
+							"default": "no",
+							"description": "Makes a floating widget compact",
+							"enum": [
+								"no",
+								"mini",
+								"animate"
+							],
+							"enumNames": {
+								"animate": "Animated expanding",
+								"mini": "Compact view",
+								"no": "Full view"
+							},
+							"format": "radios",
+							"title": "Mini widget",
+							"type": "string"
+						},
+						"position": {
+							"default": "right",
+							"enum": [
+								"left",
+								"right"
+							],
+							"enumNames": {
+								"left": "Left",
+								"right": "Right"
+							},
+							"format": "radios",
+							"title": "Select floating button position at the bottom of the page.",
+							"type": "string"
+						}
+					}
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.sharpay.io/cloudflare/hook",
+						"events": [
+							"option-change:account",
+							"item-add"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Sharpay."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "New widget features added",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/5fn7U9m8So1m",
+			"metadata": {
+				"code": {
+					"sourceTag": "5fn7U9m8So1m",
+					"uploadedOn": "2018-10-29T10:30:33.684886647Z"
+				}
+			},
+			"created": "2018-10-29T10:30:33.102863Z",
+			"proposedApp": {
+				"id": "wvv7SNUEiiw-",
+				"title": "Sharpay",
+				"shortDescription": "Multishare button with blockchain profit",
+				"longDescription": "The Sharpay is the multi-share button for sites with blockchain-based rewards for content promotion for users. Multisharing is an opportunity to share the content in several networks in one click. Users receive rewards for the act of sharing or for the visits of other users via the shared links (depends on site settings). All that means the conversion growth for sites and comfortable sharing for users.",
+				"instructions": "We have simplified the installation process Sharpay button to Cloudflare users. Users need to specify the site ID from app.sharpay.io in the Sharpay plug-in settings and configure the button's display on their site.",
+				"alias": "sharpay",
+				"orgId": "a9cc13432974b93e1f102dcbdc46f2a0",
+				"icon": "https://images.cloudflareapps.com/3E1dtQYiS_6j/icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/6OGozDmjqbTx/screenshot-1.png",
+					"https://images.cloudflareapps.com/6OGozDmjqbTx/screenshot-2.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/llKJnQ78Rr_M/tile.png",
+				"featuredAppImage": "",
+				"author": "Sharpay ltd.",
+				"tagline": "",
+				"website": "https://sharpay.io",
+				"sourceURL": "https://github.com/sharpay-io/cloudflare",
+				"termsOfServiceURL": "https://app.sharpay.io/index/terms",
+				"privacyPolicyURL": "https://app.sharpay.io/index/privacypolicy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@sharpay.io",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "1XpCEx6lx4RY"
+				},
+				"created": "2018-05-14T17:59:28.2657Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "a9cc13432974b93e1f102dcbdc46f2a0",
+				"requestedAt": "2018-10-29T10:30:35.049782483Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2018-10-30T17:19:56.787169737Z"
+			}
+		},
+		{
+			"tag": "1.0.13",
+			"appId": "wvv7SNUEiiw-",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"sharpay"
+							],
+							"title": "Sharpay Account",
+							"type": "object"
+						},
+						"code": {
+							"default": "",
+							"description": "To get site ID register your site <a href='https://app.sharpay.io' target='_blank'>here</a>.",
+							"order": 2,
+							"placeholder": "xxxxx",
+							"title": "Enter site ID",
+							"type": "string"
+						},
+						"color": {
+							"default": "light",
+							"enum": [
+								"light",
+								"dark"
+							],
+							"enumNames": {
+								"dark": "Dark",
+								"light": "Light"
+							},
+							"format": "radios",
+							"order": 4,
+							"title": "Select floating button style.",
+							"type": "string"
+						},
+						"counter": {
+							"default": "no",
+							"description": "Check if you want our button to show how many times your page was shared via Sharpay.",
+							"enum": [
+								"no",
+								"separate",
+								"all"
+							],
+							"enumNames": {
+								"all": "Common for all site",
+								"no": "Disable",
+								"separate": "Separate for every page"
+							},
+							"format": "radios",
+							"order": 5,
+							"title": "Share counter",
+							"type": "string"
+						},
+						"image": {
+							"default": "",
+							"order": 7,
+							"placeholder": ".img | #img | http://...",
+							"title": "Enter class, id or URL of an image to make it selected by default in sharing window.",
+							"type": "string"
+						},
+						"position": {
+							"default": "right",
+							"enum": [
+								"left",
+								"right"
+							],
+							"enumNames": {
+								"left": "Left",
+								"right": "Right"
+							},
+							"format": "radios",
+							"order": 3,
+							"title": "Select floating button position at the bottom of the page.",
+							"type": "string"
+						}
+					}
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.sharpay.io/cloudflare/hook",
+						"events": [
+							"option-change:account",
+							"item-add"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Sharpay."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://app.sharpay.io/cloudflare/addSite",
+						"events": [
+							"item-add"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Sharpay."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "Added the ability to create a new project",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/oex7DP157dEa",
+			"metadata": {
+				"code": {
+					"sourceTag": "oex7DP157dEa",
+					"uploadedOn": "2019-03-11T05:45:03.712524342Z"
+				}
+			},
+			"created": "2019-03-11T05:45:02.530228Z",
+			"proposedApp": {
+				"id": "wvv7SNUEiiw-",
+				"title": "Sharpay",
+				"shortDescription": "Multishare button with blockchain profit",
+				"longDescription": "The Sharpay is the multi-share button for sites with blockchain-based rewards for content promotion for users. Multisharing is an opportunity to share the content in several networks in one click. Users receive rewards for the act of sharing or for the visits of other users via the shared links (depends on site settings). All that means the conversion growth for sites and comfortable sharing for users.",
+				"instructions": "We have simplified the installation process Sharpay button to Cloudflare users. Users need to specify the site ID from app.sharpay.io in the Sharpay plug-in settings and configure the button's display on their site.",
+				"alias": "sharpay",
+				"orgId": "a9cc13432974b93e1f102dcbdc46f2a0",
+				"icon": "https://images.cloudflareapps.com/3E1dtQYiS_6j/icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/6OGozDmjqbTx/screenshot-1.png",
+					"https://images.cloudflareapps.com/6OGozDmjqbTx/screenshot-2.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/llKJnQ78Rr_M/tile.png",
+				"featuredAppImage": "",
+				"author": "Sharpay ltd.",
+				"tagline": "",
+				"website": "https://sharpay.io",
+				"sourceURL": "https://github.com/sharpay-io/cloudflare",
+				"termsOfServiceURL": "https://app.sharpay.io/index/terms",
+				"privacyPolicyURL": "https://app.sharpay.io/index/privacypolicy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@sharpay.io",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "1XpCEx6lx4RY"
+				},
+				"created": "2018-05-14T17:59:28.2657Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "a9cc13432974b93e1f102dcbdc46f2a0",
+				"requestedAt": "2019-03-11T05:45:04.704463559Z",
+				"canceledAt": null,
+				"reviewedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"reviewedAt": "2019-03-11T16:11:14.269530034Z"
+			}
+		},
+		{
+			"tag": "1.0.14",
+			"appId": "wvv7SNUEiiw-",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"sharpay2"
+							],
+							"title": "Sharpay Account",
+							"type": "object"
+						},
+						"code": {
+							"default": "",
+							"description": "To get site ID register your site <a href='https://app.sharpay.io' target='_blank'>here</a>.",
+							"order": 2,
+							"placeholder": "xxxxx",
+							"title": "Enter site ID",
+							"type": "string"
+						},
+						"color": {
+							"default": "light",
+							"enum": [
+								"light",
+								"dark"
+							],
+							"enumNames": {
+								"dark": "Dark",
+								"light": "Light"
+							},
+							"format": "radios",
+							"order": 4,
+							"title": "Select floating button style.",
+							"type": "string"
+						},
+						"counter": {
+							"default": "no",
+							"description": "Check if you want our button to show how many times your page was shared via Sharpay.",
+							"enum": [
+								"no",
+								"separate",
+								"all"
+							],
+							"enumNames": {
+								"all": "Common for all site",
+								"no": "Disable",
+								"separate": "Separate for every page"
+							},
+							"format": "radios",
+							"order": 5,
+							"title": "Share counter",
+							"type": "string"
+						},
+						"image": {
+							"default": "",
+							"order": 7,
+							"placeholder": ".img | #img | http://...",
+							"title": "Enter class, id or URL of an image to make it selected by default in sharing window.",
+							"type": "string"
+						},
+						"position": {
+							"default": "right",
+							"enum": [
+								"left",
+								"right"
+							],
+							"enumNames": {
+								"left": "Left",
+								"right": "Right"
+							},
+							"format": "radios",
+							"order": 3,
+							"title": "Select floating button position at the bottom of the page.",
+							"type": "string"
+						}
+					}
+				},
+				"hooks": [
+					{
+						"endpoint": "https://api.sharpay.io/cloudflare/hook",
+						"events": [
+							"option-change:account",
+							"item-add"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Sharpay."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://api.sharpay.io/cloudflare/sites/add",
+						"events": [
+							"item-add"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Sharpay."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "Update oauth platform",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/sCZ131g7-o1y",
+			"metadata": {
+				"code": {
+					"sourceTag": "sCZ131g7-o1y",
+					"uploadedOn": "2019-03-27T19:12:36.977583545Z"
+				}
+			},
+			"created": "2019-03-27T19:12:35.765039Z",
+			"proposedApp": {
+				"id": "wvv7SNUEiiw-",
+				"title": "Sharpay",
+				"shortDescription": "Multishare button with blockchain profit",
+				"longDescription": "The Sharpay is the multi-share button for sites with blockchain-based rewards for content promotion for users. Multisharing is an opportunity to share the content in several networks in one click. Users receive rewards for the act of sharing or for the visits of other users via the shared links (depends on site settings). All that means the conversion growth for sites and comfortable sharing for users.",
+				"instructions": "We have simplified the installation process Sharpay button to Cloudflare users. Users need to specify the site ID from app.sharpay.io in the Sharpay plug-in settings and configure the button's display on their site.",
+				"alias": "sharpay",
+				"orgId": "a9cc13432974b93e1f102dcbdc46f2a0",
+				"icon": "https://images.cloudflareapps.com/3E1dtQYiS_6j/icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/6OGozDmjqbTx/screenshot-1.png",
+					"https://images.cloudflareapps.com/6OGozDmjqbTx/screenshot-2.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/llKJnQ78Rr_M/tile.png",
+				"featuredAppImage": "",
+				"author": "Sharpay ltd.",
+				"tagline": "",
+				"website": "https://sharpay.io",
+				"sourceURL": "https://github.com/sharpay-io/cloudflare",
+				"termsOfServiceURL": "https://app.sharpay.io/index/terms",
+				"privacyPolicyURL": "https://app.sharpay.io/index/privacypolicy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@sharpay.io",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "1XpCEx6lx4RY"
+				},
+				"created": "2018-05-14T17:59:28.2657Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "a9cc13432974b93e1f102dcbdc46f2a0",
+				"requestedAt": "2019-03-27T19:13:28.988095761Z",
+				"canceledAt": null,
+				"reviewedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"reviewedAt": "2019-03-29T16:18:04.90183624Z"
+			}
+		},
+		{
+			"tag": "1.0.15",
+			"appId": "wvv7SNUEiiw-",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"sharpay2"
+							],
+							"title": "Sharpay Account",
+							"type": "object"
+						},
+						"code": {
+							"default": "",
+							"description": "To get site ID register your site <a href='https://app.sharpay.io' target='_blank'>here</a>.",
+							"order": 2,
+							"placeholder": "xxxxx",
+							"title": "Enter site ID",
+							"type": "string"
+						},
+						"color": {
+							"default": "light",
+							"enum": [
+								"light",
+								"dark"
+							],
+							"enumNames": {
+								"dark": "Dark",
+								"light": "Light"
+							},
+							"format": "radios",
+							"order": 4,
+							"title": "Select floating button style.",
+							"type": "string"
+						},
+						"counter": {
+							"default": "no",
+							"description": "Check if you want our button to show how many times your page was shared via Sharpay.",
+							"enum": [
+								"no",
+								"separate",
+								"all"
+							],
+							"enumNames": {
+								"all": "Common for all site",
+								"no": "Disable",
+								"separate": "Separate for every page"
+							},
+							"format": "radios",
+							"order": 5,
+							"title": "Share counter",
+							"type": "string"
+						},
+						"image": {
+							"default": "",
+							"order": 7,
+							"placeholder": ".img | #img | http://...",
+							"title": "Enter class, id or URL of an image to make it selected by default in sharing window.",
+							"type": "string"
+						},
+						"modal": {
+							"default": true,
+							"description": "The sharing window will open in modal mode without creating a new browser window.",
+							"order": 6,
+							"title": "Open in modal window",
+							"type": "boolean"
+						},
+						"position": {
+							"default": "right",
+							"enum": [
+								"left",
+								"right"
+							],
+							"enumNames": {
+								"left": "Left",
+								"right": "Right"
+							},
+							"format": "radios",
+							"order": 3,
+							"title": "Select floating button position at the bottom of the page.",
+							"type": "string"
+						}
+					}
+				},
+				"hooks": [
+					{
+						"endpoint": "https://api.sharpay.io/cloudflare/hook",
+						"events": [
+							"option-change:account",
+							"item-add"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Sharpay."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://api.sharpay.io/cloudflare/sites/add",
+						"events": [
+							"item-add"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Sharpay."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"manual": true,
+			"releaseNotes": "Modal window mode",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/IGatUu1Z__Cv",
+			"metadata": {
+				"code": {
+					"sourceTag": "IGatUu1Z__Cv",
+					"uploadedOn": "2019-07-23T09:13:53.861675206Z"
+				}
+			},
+			"created": "2019-07-23T09:13:53.338463Z",
+			"proposedApp": {
+				"id": "wvv7SNUEiiw-",
+				"title": "Sharpay",
+				"shortDescription": "Multishare button with blockchain profit",
+				"longDescription": "The Sharpay is the multi-share button for sites with blockchain-based rewards for content promotion for users. Multisharing is an opportunity to share the content in several networks in one click. Users receive rewards for the act of sharing or for the visits of other users via the shared links (depends on site settings). All that means the conversion growth for sites and comfortable sharing for users.",
+				"instructions": "We have simplified the installation process Sharpay button to Cloudflare users. Users need to specify the site ID from app.sharpay.io in the Sharpay plug-in settings and configure the button's display on their site.",
+				"alias": "sharpay",
+				"orgId": "a9cc13432974b93e1f102dcbdc46f2a0",
+				"icon": "https://images.cloudflareapps.com/3E1dtQYiS_6j/icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/xAuzzVmIDPFE/new-share-window2.PNG",
+					"https://images.cloudflareapps.com/6OGozDmjqbTx/screenshot-1.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/llKJnQ78Rr_M/tile.png",
+				"featuredAppImage": "",
+				"author": "Sharpay ltd.",
+				"tagline": "",
+				"website": "https://sharpay.io",
+				"sourceURL": "https://github.com/sharpay-io/cloudflare",
+				"termsOfServiceURL": "https://app.sharpay.io/index/terms",
+				"privacyPolicyURL": "https://app.sharpay.io/index/privacypolicy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@sharpay.io",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "1XpCEx6lx4RY"
+				},
+				"created": "2018-05-14T17:59:28.2657Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "a9cc13432974b93e1f102dcbdc46f2a0",
+				"requestedAt": "2019-07-23T09:13:55.471658508Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-07-24T15:39:38.088615986Z"
+			}
+		},
+		{
+			"tag": "1.0.16",
+			"appId": "wvv7SNUEiiw-",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"sharpay2"
+							],
+							"title": "Sharpay Account",
+							"type": "object"
+						},
+						"code": {
+							"default": "",
+							"description": "To get site ID register your site <a href='https://app.sharpay.io' target='_blank'>here</a>.",
+							"order": 2,
+							"placeholder": "xxxxx",
+							"title": "Enter site ID",
+							"type": "string"
+						},
+						"color": {
+							"default": "light",
+							"enum": [
+								"light",
+								"dark"
+							],
+							"enumNames": {
+								"dark": "Dark",
+								"light": "Light"
+							},
+							"format": "radios",
+							"order": 4,
+							"title": "Select floating button style.",
+							"type": "string"
+						},
+						"counter": {
+							"default": "no",
+							"description": "Check if you want our button to show how many times your page was shared via Sharpay.",
+							"enum": [
+								"no",
+								"separate",
+								"all"
+							],
+							"enumNames": {
+								"all": "Common for all site",
+								"no": "Disable",
+								"separate": "Separate for every page"
+							},
+							"format": "radios",
+							"order": 5,
+							"title": "Share counter",
+							"type": "string"
+						},
+						"image": {
+							"default": "",
+							"order": 7,
+							"placeholder": ".img | #img | http://...",
+							"title": "Enter class, id or URL of an image to make it selected by default in sharing window.",
+							"type": "string"
+						},
+						"position": {
+							"default": "right",
+							"enum": [
+								"left",
+								"right"
+							],
+							"enumNames": {
+								"left": "Left",
+								"right": "Right"
+							},
+							"format": "radios",
+							"order": 3,
+							"title": "Select floating button position at the bottom of the page.",
+							"type": "string"
+						}
+					}
+				},
+				"hooks": [
+					{
+						"endpoint": "https://api.sharpay.io/cloudflare/hook",
+						"events": [
+							"option-change:account",
+							"item-add"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Sharpay."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://api.sharpay.io/cloudflare/sites/add",
+						"events": [
+							"item-add"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Sharpay."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 4,
+				"downvotes": 0
+			},
+			"releaseNotes": "Update settings",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/gL0eWJhAZOZn",
+			"metadata": {
+				"code": {
+					"sourceTag": "gL0eWJhAZOZn",
+					"uploadedOn": "2019-08-19T13:07:37.431153467Z"
+				}
+			},
+			"created": "2019-08-19T13:07:36.891745Z",
+			"proposedApp": {
+				"id": "wvv7SNUEiiw-",
+				"title": "Sharpay",
+				"shortDescription": "Multishare button with blockchain profit",
+				"longDescription": "The Sharpay is the multi-share button for sites with blockchain-based rewards for content promotion for users. Multisharing is an opportunity to share the content in several networks in one click. Users receive rewards for the act of sharing or for the visits of other users via the shared links (depends on site settings). All that means the conversion growth for sites and comfortable sharing for users.",
+				"instructions": "We have simplified the installation process Sharpay button to Cloudflare users. Users need to specify the site ID from app.sharpay.io in the Sharpay plug-in settings and configure the button's display on their site.",
+				"alias": "sharpay",
+				"orgId": "a9cc13432974b93e1f102dcbdc46f2a0",
+				"icon": "https://images.cloudflareapps.com/3E1dtQYiS_6j/icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/xAuzzVmIDPFE/new-share-window2.PNG",
+					"https://images.cloudflareapps.com/6OGozDmjqbTx/screenshot-1.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/llKJnQ78Rr_M/tile.png",
+				"featuredAppImage": "",
+				"author": "Sharpay ltd.",
+				"tagline": "",
+				"website": "https://sharpay.io",
+				"sourceURL": "https://github.com/sharpay-io/cloudflare",
+				"termsOfServiceURL": "https://app.sharpay.io/index/terms",
+				"privacyPolicyURL": "https://app.sharpay.io/index/privacypolicy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@sharpay.io",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "1XpCEx6lx4RY"
+				},
+				"created": "2018-05-14T17:59:28.2657Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "a9cc13432974b93e1f102dcbdc46f2a0",
+				"requestedAt": "2019-08-19T13:07:38.975573843Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-08-19T21:55:49.659109582Z"
+			}
+		}
+	]
+}

@@ -1,0 +1,541 @@
+{
+	"id": "qol6LbaS6Zwu",
+	"title": "Select",
+	"shortDescription": "Select inputs with style.",
+	"longDescription": "Select gives dropdown inputs a fresh look without any technical setup.\nChoose one of the three included themes and let us do the rest.",
+	"instructions": "Select gives dropdown inputs a fresh look without any technical setup. Just add to your page and any select boxes (dropdown form inputs) will be automatically restyled. \n\nBe sure to navigate to a page which contains a select input to see the app at work.",
+	"alias": "select",
+	"orgId": "2684c89451b6b86b453405beb4662f46",
+	"icon": "//images.cloudflareapps.com/ujVKW1qRQHOoVVhrAgVg_logo.png",
+	"screenshots": [
+		"//images.cloudflareapps.com/eh5xwb6URbWfNJqg0RX4_compact-screenshot.png",
+		"//images.cloudflareapps.com/N79KxzVQQtC2NkCPVFwv_dark-screenshot.png",
+		"//images.cloudflareapps.com/2ONRPIn6R8nJd5AduYYe_light-screenshot.png"
+	],
+	"tileImage": "",
+	"featuredAppImage": "",
+	"author": "HubSpot",
+	"tagline": "",
+	"website": "http://github.hubspot.com/select/docs/welcome/",
+	"sourceURL": "",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.2",
+	"infoVersion": "1.0.2",
+	"points": 0,
+	"supportEmail": "",
+	"products": [],
+	"categoryIds": [
+		"add-on",
+		"ui-and-design"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "4ab3e9449a64a5949326a81e6639d4fa",
+			"created": "2018-01-23T19:39:14.68194757Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "Hvgh8D7lHGy_"
+	},
+	"created": "2017-04-05T07:11:32.979094Z",
+	"org": {
+		"id": "2684c89451b6b86b453405beb4662f46",
+		"title": "",
+		"username": "2684c89451b6b86b453405beb4662f46",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "ui-and-design",
+			"title": "UI & Design",
+			"description": "Apps that make your website more beautiful and user friendly.",
+			"icon": "",
+			"points": 10,
+			"visible": true,
+			"created": "2018-01-22T19:17:52.677513Z"
+		},
+		{
+			"id": "add-on",
+			"title": "Add-ons",
+			"description": "Drop-in components to add to your website.",
+			"icon": "//eager-app-images.imgix.net/HZ0uHPrDRp6uAeUTuEH2_add-ons.png",
+			"points": 100,
+			"visible": false,
+			"metadata": {
+				"icon": {
+					"filename": "add-ons.png",
+					"isWriteable": false,
+					"key": "HZ0uHPrDRp6uAeUTuEH2_add-ons.png",
+					"mimetype": "image/png",
+					"size": 1997,
+					"url": "https://www.filepicker.io/api/file/1GlH0WSQTZu0scJr7qY0"
+				}
+			},
+			"created": "2016-01-20T20:14:55.498829Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "v1.0.0",
+			"appId": "qol6LbaS6Zwu",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./vendor/select-theme-default.css"
+						},
+						{
+							"type": "style",
+							"src": "./vendor/select-theme-dark.css"
+						},
+						{
+							"type": "style",
+							"src": "./vendor/select-theme-chosen.css"
+						},
+						{
+							"type": "script",
+							"src": "./vendor/tether.js"
+						},
+						{
+							"type": "script",
+							"src": "./vendor/select.js"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"theme": {
+							"default": "select-theme-default",
+							"enum": [
+								"select-theme-default",
+								"select-theme-dark",
+								"select-theme-chosen"
+							],
+							"enumNames": {
+								"select-theme-chosen": "Compact",
+								"select-theme-dark": "Dark",
+								"select-theme-default": "Light"
+							},
+							"order": 1,
+							"title": "Theme",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/Hvgh8D7lHGy_",
+			"metadata": {
+				"code": {
+					"sourceTag": "Hvgh8D7lHGy_",
+					"uploadedOn": "2017-04-05T07:11:34.016418852Z"
+				}
+			},
+			"created": "2017-04-05T07:11:33.470542Z",
+			"proposedApp": {
+				"id": "qol6LbaS6Zwu",
+				"title": "Select",
+				"shortDescription": "Select with style.",
+				"longDescription": "Select gives dropdown inputs a fresh look without any technical setup.\nChoose one of the three included themes and let us do the rest.",
+				"instructions": "Select gives dropdown inputs a fresh look without any technical setup. Just add to your page and any select boxes (dropdown form inputs) will be automatically restyled. \n\nBe sure to navigate to a page which contains a select input to see the app at work.",
+				"alias": "select",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/ujVKW1qRQHOoVVhrAgVg_logo.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/eh5xwb6URbWfNJqg0RX4_compact-screenshot.png",
+					"//images.cloudflareapps.com/N79KxzVQQtC2NkCPVFwv_dark-screenshot.png",
+					"//images.cloudflareapps.com/2ONRPIn6R8nJd5AduYYe_light-screenshot.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "HubSpot",
+				"tagline": "",
+				"website": "http://github.hubspot.com/select/docs/welcome/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Hvgh8D7lHGy_"
+				},
+				"created": "2017-04-05T07:11:32.979094Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedAt": "2017-04-05T07:11:35.732348876Z",
+				"canceledAt": null,
+				"reviewedAt": "2017-04-05T07:12:55.638866364Z"
+			}
+		},
+		{
+			"tag": "v1.0.1",
+			"appId": "qol6LbaS6Zwu",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./vendor/select-theme-{{options.theme}}.css"
+						},
+						{
+							"type": "script",
+							"src": "./vendor/tether.js"
+						},
+						{
+							"type": "script",
+							"src": "./vendor/select.js"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"theme": {
+							"default": "default",
+							"enum": [
+								"default",
+								"dark",
+								"chosen"
+							],
+							"enumNames": {
+								"chosen": "Compact",
+								"dark": "Dark",
+								"default": "Light"
+							},
+							"order": 1,
+							"title": "Theme",
+							"type": "string"
+						}
+					}
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0,
+				"upvotes": 0,
+				"downvotes": 2
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/Phq0i7wfry8K",
+			"created": "2017-04-08T02:40:05.825553Z",
+			"proposedApp": {
+				"id": "qol6LbaS6Zwu",
+				"title": "Select",
+				"shortDescription": "Select inputs with style.",
+				"longDescription": "Select gives dropdown inputs a fresh look without any technical setup.\nChoose one of the three included themes and let us do the rest.",
+				"instructions": "Select gives dropdown inputs a fresh look without any technical setup. Just add to your page and any select boxes (dropdown form inputs) will be automatically restyled. \n\nBe sure to navigate to a page which contains a select input to see the app at work.",
+				"alias": "select",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/ujVKW1qRQHOoVVhrAgVg_logo.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/eh5xwb6URbWfNJqg0RX4_compact-screenshot.png",
+					"//images.cloudflareapps.com/N79KxzVQQtC2NkCPVFwv_dark-screenshot.png",
+					"//images.cloudflareapps.com/2ONRPIn6R8nJd5AduYYe_light-screenshot.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "HubSpot",
+				"tagline": "",
+				"website": "http://github.hubspot.com/select/docs/welcome/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Hvgh8D7lHGy_"
+				},
+				"created": "2017-04-05T07:11:32.979094Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedAt": "2017-04-08T02:40:24.935709813Z",
+				"canceledAt": null,
+				"reviewedAt": "2017-04-12T22:07:24.81593152Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "qol6LbaS6Zwu",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./vendor/select-theme-{{options.theme}}.css"
+						},
+						{
+							"type": "script",
+							"src": "./vendor/tether.js"
+						},
+						{
+							"type": "script",
+							"src": "./vendor/select.js"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"theme": {
+							"default": "default",
+							"enum": [
+								"default",
+								"dark",
+								"chosen"
+							],
+							"enumNames": {
+								"chosen": "Compact",
+								"dark": "Dark",
+								"default": "Light"
+							},
+							"order": 1,
+							"title": "Theme",
+							"type": "string"
+						}
+					}
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.55,
+				"upvotes": 21,
+				"downvotes": 17
+			},
+			"releaseNotes": "Added to “UI & Design” category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/Phq0i7wfry8K",
+			"created": "2018-01-23T19:39:07.038612Z",
+			"proposedApp": {
+				"id": "qol6LbaS6Zwu",
+				"title": "Select",
+				"shortDescription": "Select inputs with style.",
+				"longDescription": "Select gives dropdown inputs a fresh look without any technical setup.\nChoose one of the three included themes and let us do the rest.",
+				"instructions": "Select gives dropdown inputs a fresh look without any technical setup. Just add to your page and any select boxes (dropdown form inputs) will be automatically restyled. \n\nBe sure to navigate to a page which contains a select input to see the app at work.",
+				"alias": "select",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/ujVKW1qRQHOoVVhrAgVg_logo.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/eh5xwb6URbWfNJqg0RX4_compact-screenshot.png",
+					"//images.cloudflareapps.com/N79KxzVQQtC2NkCPVFwv_dark-screenshot.png",
+					"//images.cloudflareapps.com/2ONRPIn6R8nJd5AduYYe_light-screenshot.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "HubSpot",
+				"tagline": "",
+				"website": "http://github.hubspot.com/select/docs/welcome/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Hvgh8D7lHGy_"
+				},
+				"created": "2017-04-05T07:11:32.979094Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-01-23T19:39:14.677959131Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-01-23T19:39:20.388880555Z"
+			}
+		},
+		{
+			"tag": "v1.1.0",
+			"appId": "qol6LbaS6Zwu",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "style",
+							"src": "./vendor/select-theme-{{options.theme}}.css"
+						},
+						{
+							"type": "script",
+							"src": "./vendor/tether.js"
+						},
+						{
+							"type": "script",
+							"src": "./vendor/select.js"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"theme": {
+							"default": "default",
+							"enum": [
+								"default",
+								"dark",
+								"chosen"
+							],
+							"enumNames": {
+								"chosen": "Compact",
+								"dark": "Dark",
+								"default": "Light"
+							},
+							"order": 1,
+							"title": "Theme",
+							"type": "string"
+						}
+					}
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/Phq0i7wfry8K",
+			"metadata": {
+				"code": {
+					"sourceTag": "Phq0i7wfry8K",
+					"uploadedOn": "2017-04-07T21:28:53.667564655Z"
+				}
+			},
+			"created": "2017-04-07T21:28:53.080356Z",
+			"proposedApp": {
+				"id": "qol6LbaS6Zwu",
+				"title": "Select",
+				"shortDescription": "Select with style.",
+				"longDescription": "Select gives dropdown inputs a fresh look without any technical setup.\nChoose one of the three included themes and let us do the rest.",
+				"instructions": "Select gives dropdown inputs a fresh look without any technical setup. Just add to your page and any select boxes (dropdown form inputs) will be automatically restyled. \n\nBe sure to navigate to a page which contains a select input to see the app at work.",
+				"alias": "select",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/ujVKW1qRQHOoVVhrAgVg_logo.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/eh5xwb6URbWfNJqg0RX4_compact-screenshot.png",
+					"//images.cloudflareapps.com/N79KxzVQQtC2NkCPVFwv_dark-screenshot.png",
+					"//images.cloudflareapps.com/2ONRPIn6R8nJd5AduYYe_light-screenshot.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "HubSpot",
+				"tagline": "",
+				"website": "http://github.hubspot.com/select/docs/welcome/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Hvgh8D7lHGy_"
+				},
+				"created": "2017-04-05T07:11:32.979094Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedAt": "2017-04-07T21:28:55.744221536Z",
+				"canceledAt": null,
+				"reviewedAt": "2017-04-07T21:29:41.125886636Z"
+			}
+		}
+	]
+}

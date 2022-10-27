@@ -1,0 +1,4364 @@
+{
+	"id": "0ld4sTq-IlZv",
+	"title": "CodeGuard",
+	"shortDescription": "Site & Database Backups. Protect your site today!",
+	"longDescription": "CodeGuard is the leading provider of website and database backup services and is trusted by some of the largest hosting providers in the world, providing incremental backups at 99.9% levels of reliability for over 400,000 websites and databases globally.",
+	"instructions": "After creating your CodeGuard account, follow the instructions in the application for enabling backups for your website and database.",
+	"alias": "codeguard",
+	"orgId": "e55f5ff991af50594dc1d58f92c5b5bf",
+	"icon": "//images.cloudflareapps.com/OvrDTovcSDyWsICyCZYX_icon.png",
+	"screenshots": [
+		"//images.cloudflareapps.com/3Sbwu8eT4ClZSHFuhf0Q_large_ss_1-8f13253f.jpg",
+		"//images.cloudflareapps.com/SbVV1PDSTdaNBK1JegkR_large_ss_3-b5f35a82.jpg",
+		"//images.cloudflareapps.com/TTtsOyvPRsuEWJTgbbeM_large_ss_2-a4021bc6.jpg"
+	],
+	"tileImage": "//images.cloudflareapps.com/rMbKXA7KSuaEdCGJSKaz_tileImage.png",
+	"featuredAppImage": "",
+	"author": "CodeGuard Inc.",
+	"tagline": "",
+	"website": "https://www.codeguard.com",
+	"sourceURL": "",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "#1a1919",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.1.16",
+	"infoVersion": "1.1.16",
+	"points": 1004,
+	"supportEmail": "",
+	"products": [
+		{
+			"id": "codeguard-personal",
+			"title": "Personal",
+			"shortDescription": "",
+			"longDescription": "",
+			"visible": true,
+			"price": 500,
+			"order": 1,
+			"plan": "codeguard_plan_2",
+			"feature": "apps.codeguard.plan_2.enabled",
+			"created": null
+		},
+		{
+			"id": "codeguard-professional",
+			"title": "Professional",
+			"shortDescription": "",
+			"longDescription": "",
+			"visible": true,
+			"price": 9900,
+			"order": 2,
+			"plan": "codeguard_plan_3",
+			"feature": "apps.codeguard.plan_3.enabled",
+			"created": null
+		},
+		{
+			"id": "codeguard-legacy",
+			"title": "Legacy",
+			"shortDescription": "",
+			"longDescription": "",
+			"visible": false,
+			"price": 0,
+			"order": 0,
+			"created": null
+		}
+	],
+	"categoryIds": [
+		"recommended-for-all-sites",
+		"security"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "e55f5ff991af50594dc1d58f92c5b5bf",
+			"created": "2017-05-30T23:50:39.919977482Z",
+			"version": "04-24-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "3OwBi42_G_7j"
+	},
+	"created": "2017-04-25T17:43:56.099308Z",
+	"org": {
+		"id": "e55f5ff991af50594dc1d58f92c5b5bf",
+		"title": "",
+		"username": "e55f5ff991af50594dc1d58f92c5b5bf",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "recommended-for-all-sites",
+			"title": "Recommended for All Sites",
+			"description": "Apps that are recommended for all sites.",
+			"icon": "",
+			"points": 0,
+			"visible": false,
+			"created": "2018-02-06T19:53:13.516865Z"
+		},
+		{
+			"id": "security",
+			"title": "Security",
+			"description": "Apps which make your site safer and protect you from threats.",
+			"icon": "",
+			"points": 40,
+			"visible": true,
+			"created": "2017-05-19T23:56:31.822492Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "v0.0.2",
+			"appId": "0ld4sTq-IlZv",
+			"definition": {
+				"resources": {
+					"body": []
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"services": [
+								"6jaI2n52jzj-"
+							],
+							"title": "CodeGuard Account",
+							"type": "object"
+						},
+						"message": {
+							"description": "The fastest, most reliable website backup service - which tracks all of your changes daily.",
+							"helpvalue": "Hey, no action on your side is required after this point. Soon you'll receive an email with further details.",
+							"title": "CodeGuard",
+							"type": "help"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.staging.codeguard.com/cloudflare/hook",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Disqus."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://www.staging.codeguard.com/cloudflare/install",
+						"events": [
+							"before-new-install",
+							"before-update-install",
+							"new-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Disqus."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://www.staging.codeguard.com/cloudflare/delete",
+						"events": [
+							"delete-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Disqus."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"manual": true,
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/cEeXuRgD47UC",
+			"metadata": {
+				"code": {
+					"sourceTag": "cEeXuRgD47UC",
+					"uploadedOn": "2017-05-17T01:14:23.832992733Z"
+				}
+			},
+			"created": "2017-04-27T15:35:49.63092Z",
+			"proposedApp": {
+				"id": "0ld4sTq-IlZv",
+				"title": "CodeGuard - Website & Database Backup",
+				"shortDescription": "Protect your website today!",
+				"longDescription": "CodeGuard is the leading provider of website and database backup services and is trusted by some of the largest hosting providers in the world, providing incremental backups at 99.9% levels of reliability for over 400,000 websites and databases globally.",
+				"instructions": "After creating your CodeGuard account, follow the instructions in the application for enabling backups for your website and database.",
+				"alias": "codeguard",
+				"orgId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"icon": "//images.cloudflareapps.com/72FrDJUwRQS5R4BHWCER_cg_logo_shield_mobile.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "CodeGuard",
+				"tagline": "",
+				"website": "https://codeguard.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "3OwBi42_G_7j"
+				},
+				"created": "2017-04-25T17:43:56.099308Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "dda328da295860bf84630d277c4d53d9",
+				"requestedAt": "2017-05-23T18:55:42.220980169Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-05-23T22:40:47.087291984Z"
+			}
+		},
+		{
+			"tag": "v0.0.3",
+			"appId": "0ld4sTq-IlZv",
+			"definition": {
+				"resources": {
+					"body": []
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"services": [
+								"6jaI2n52jzj-"
+							],
+							"title": "CodeGuard Account",
+							"type": "object"
+						},
+						"message": {
+							"description": "The fastest, most reliable website backup service - which tracks all of your changes daily.",
+							"title": "CodeGuard"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.staging.codeguard.com/cloudflare/install",
+						"events": [
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.staging.codeguard.com/cloudflare/delete",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"manual": true,
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/zPQzwsjj2Lxg",
+			"metadata": {
+				"code": {
+					"sourceTag": "zPQzwsjj2Lxg",
+					"uploadedOn": "2017-05-24T06:55:08.481647574Z"
+				}
+			},
+			"created": "2017-05-24T06:55:07.706797Z",
+			"proposedApp": {
+				"id": "0ld4sTq-IlZv",
+				"title": "CodeGuard",
+				"shortDescription": "Website & Database Backups. Protect your website today!",
+				"longDescription": "CodeGuard is the leading provider of website and database backup services and is trusted by some of the largest hosting providers in the world, providing incremental backups at 99.9% levels of reliability for over 400,000 websites and databases globally.",
+				"instructions": "After creating your CodeGuard account, follow the instructions in the application for enabling backups for your website and database.",
+				"alias": "codeguard",
+				"orgId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"icon": "//images.cloudflareapps.com/72FrDJUwRQS5R4BHWCER_cg_logo_shield_mobile.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "CodeGuard",
+				"tagline": "",
+				"website": "https://codeguard.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"security",
+					"for-developers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "3OwBi42_G_7j"
+				},
+				"created": "2017-04-25T17:43:56.099308Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"requestedAt": "2017-05-24T06:58:15.82377989Z",
+				"canceledByUserId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"canceledAt": "2017-05-24T07:01:16.163500042Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "v0.0.4",
+			"appId": "0ld4sTq-IlZv",
+			"definition": {
+				"resources": {
+					"body": []
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"services": [
+								"6jaI2n52jzj-"
+							],
+							"title": "CodeGuard Account",
+							"type": "object"
+						},
+						"message": {
+							"description": "The fastest, most reliable website backup service - which tracks all of your changes daily.",
+							"title": "CodeGuard"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.staging.codeguard.com/cloudflare/install",
+						"events": [
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.staging.codeguard.com/cloudflare/delete",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"manual": true,
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/zPQzwsjj2Lxg",
+			"created": "2017-05-24T07:00:47.882989Z",
+			"proposedApp": {
+				"id": "0ld4sTq-IlZv",
+				"title": "CodeGuard",
+				"shortDescription": "Website & Database Backups. Protect your website today!",
+				"longDescription": "CodeGuard is the leading provider of website and database backup services and is trusted by some of the largest hosting providers in the world, providing incremental backups at 99.9% levels of reliability for over 400,000 websites and databases globally.",
+				"instructions": "After creating your CodeGuard account, follow the instructions in the application for enabling backups for your website and database.",
+				"alias": "codeguard",
+				"orgId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"icon": "//images.cloudflareapps.com/72FrDJUwRQS5R4BHWCER_cg_logo_shield_mobile.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "CodeGuard Inc.",
+				"tagline": "",
+				"website": "https://codeguard.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"security",
+					"for-developers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "3OwBi42_G_7j"
+				},
+				"created": "2017-04-25T17:43:56.099308Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"requestedAt": "2017-05-24T07:01:16.370715107Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-05-26T04:25:01.807775183Z"
+			}
+		},
+		{
+			"tag": "v1.0.0",
+			"appId": "0ld4sTq-IlZv",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"services": [
+								"6jaI2n52jzj-"
+							],
+							"title": "Account Example",
+							"type": "object"
+						},
+						"message": {
+							"default": "Hey, no action on your side is required after this point. Soon you'll receive an email with further details.",
+							"description": "The fastest, most reliable website backup service - which tracks all of your changes daily.",
+							"format": "textarea",
+							"order": 1,
+							"title": "CodeGuard",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"manual": true,
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/3OwBi42_G_7j",
+			"metadata": {
+				"code": {
+					"sourceTag": "3OwBi42_G_7j",
+					"uploadedOn": "2017-04-25T17:43:57.758820465Z"
+				}
+			},
+			"created": "2017-04-25T17:43:56.968974Z",
+			"proposedApp": {
+				"id": "0ld4sTq-IlZv",
+				"title": "CodeGuard - Website & Database Backup",
+				"shortDescription": "Protect your website today!",
+				"longDescription": "CodeGuard is the leading provider of website and database backup services and is trusted by some of the largest hosting providers in the world, providing incremental backups at 99.9% levels of reliability for over 400,000 websites and databases globally.",
+				"instructions": "After creating your CodeGuard account, follow the instructions in the application for enabling backups for your website and database.",
+				"alias": "codeguard",
+				"orgId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"icon": "//images.cloudflareapps.com/72FrDJUwRQS5R4BHWCER_cg_logo_shield_mobile.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "CodeGuard",
+				"tagline": "",
+				"website": "https://codeguard.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "3OwBi42_G_7j"
+				},
+				"created": "2017-04-25T17:43:56.099308Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedAt": "2017-04-26T23:53:27.835000002Z",
+				"canceledAt": null,
+				"reviewedAt": "2017-05-06T14:01:17.400024695Z"
+			}
+		},
+		{
+			"tag": "v1.0.1",
+			"appId": "0ld4sTq-IlZv",
+			"definition": {
+				"resources": {
+					"body": []
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"services": [
+								"6jaI2n52jzj-"
+							],
+							"title": "CodeGuard Account",
+							"type": "object"
+						},
+						"message": {
+							"description": "The fastest, most reliable website backup service - which tracks all of your changes daily.",
+							"title": "CodeGuard"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/install",
+						"events": [
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/delete",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"manual": true,
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/h6D74hy2Xn6j",
+			"metadata": {
+				"code": {
+					"sourceTag": "h6D74hy2Xn6j",
+					"uploadedOn": "2017-05-30T17:19:20.307946307Z"
+				}
+			},
+			"created": "2017-05-30T17:19:19.535362Z",
+			"proposedApp": {
+				"id": "0ld4sTq-IlZv",
+				"title": "CodeGuard",
+				"shortDescription": "Website & Database Backups. Protect your website today!",
+				"longDescription": "CodeGuard is the leading provider of website and database backup services and is trusted by some of the largest hosting providers in the world, providing incremental backups at 99.9% levels of reliability for over 400,000 websites and databases globally.",
+				"instructions": "After creating your CodeGuard account, follow the instructions in the application for enabling backups for your website and database.",
+				"alias": "codeguard",
+				"orgId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"icon": "//images.cloudflareapps.com/72FrDJUwRQS5R4BHWCER_cg_logo_shield_mobile.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "CodeGuard Inc.",
+				"tagline": "",
+				"website": "https://codeguard.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"security",
+					"for-developers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "3OwBi42_G_7j"
+				},
+				"created": "2017-04-25T17:43:56.099308Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"requestedAt": "2017-05-30T17:19:33.902998342Z",
+				"canceledByUserId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"canceledAt": "2017-05-30T18:56:11.347565737Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "v1.0.2",
+			"appId": "0ld4sTq-IlZv",
+			"definition": {
+				"resources": {
+					"body": []
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"services": [
+								"6jaI2n52jzj-"
+							],
+							"title": "CodeGuard Account",
+							"type": "object"
+						},
+						"message": {
+							"description": "The fastest, most reliable website backup service - which tracks all of your changes daily.",
+							"title": "CodeGuard"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/install",
+						"events": [
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/delete",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"manual": true,
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/g9lgg1Y4p7rp",
+			"metadata": {
+				"code": {
+					"sourceTag": "g9lgg1Y4p7rp",
+					"uploadedOn": "2017-05-30T18:56:03.984984048Z"
+				}
+			},
+			"created": "2017-05-30T18:56:03.369212Z",
+			"proposedApp": {
+				"id": "0ld4sTq-IlZv",
+				"title": "CodeGuard",
+				"shortDescription": "Website & Database Backups. Protect your website today!",
+				"longDescription": "CodeGuard is the leading provider of website and database backup services and is trusted by some of the largest hosting providers in the world, providing incremental backups at 99.9% levels of reliability for over 400,000 websites and databases globally.",
+				"instructions": "After creating your CodeGuard account, follow the instructions in the application for enabling backups for your website and database.",
+				"alias": "codeguard",
+				"orgId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"icon": "//images.cloudflareapps.com/72FrDJUwRQS5R4BHWCER_cg_logo_shield_mobile.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "CodeGuard Inc.",
+				"tagline": "",
+				"website": "https://codeguard.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"security",
+					"for-developers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "3OwBi42_G_7j"
+				},
+				"created": "2017-04-25T17:43:56.099308Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"requestedAt": "2017-05-30T18:56:11.360370138Z",
+				"canceledByUserId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"canceledAt": "2017-05-30T19:35:19.303801802Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "v1.0.3",
+			"appId": "0ld4sTq-IlZv",
+			"definition": {
+				"resources": {
+					"body": []
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"services": [
+								"6jaI2n52jzj-"
+							],
+							"title": "CodeGuard Account",
+							"type": "object"
+						},
+						"message": {
+							"description": "The fastest, most reliable website backup service - which tracks all of your changes daily.",
+							"title": "CodeGuard"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/install",
+						"events": [
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/delete",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"manual": true,
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/BQ5gMRBUMIPN",
+			"metadata": {
+				"code": {
+					"sourceTag": "BQ5gMRBUMIPN",
+					"uploadedOn": "2017-05-30T19:35:10.715416789Z"
+				}
+			},
+			"created": "2017-05-30T19:35:09.98049Z",
+			"proposedApp": {
+				"id": "0ld4sTq-IlZv",
+				"title": "CodeGuard",
+				"shortDescription": "Website & Database Backups. Protect your website today!",
+				"longDescription": "CodeGuard is the leading provider of website and database backup services and is trusted by some of the largest hosting providers in the world, providing incremental backups at 99.9% levels of reliability for over 400,000 websites and databases globally.",
+				"instructions": "After creating your CodeGuard account, follow the instructions in the application for enabling backups for your website and database.",
+				"alias": "codeguard",
+				"orgId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"icon": "//images.cloudflareapps.com/72FrDJUwRQS5R4BHWCER_cg_logo_shield_mobile.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "CodeGuard Inc.",
+				"tagline": "",
+				"website": "https://codeguard.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"security",
+					"for-developers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "3OwBi42_G_7j"
+				},
+				"created": "2017-04-25T17:43:56.099308Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"requestedAt": "2017-05-30T19:35:19.307307566Z",
+				"canceledByUserId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"canceledAt": "2017-05-30T20:24:33.962529658Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "v1.0.4",
+			"appId": "0ld4sTq-IlZv",
+			"definition": {
+				"resources": {
+					"body": []
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"services": [
+								"6jaI2n52jzj-"
+							],
+							"title": "CodeGuard Account",
+							"type": "object"
+						},
+						"message": {
+							"description": "The fastest, most reliable website backup service - which tracks all of your changes daily.",
+							"title": "CodeGuard"
+						},
+						"successful_installation": {
+							"helpvalue": "Congratulations! The CodeGuard application has been installed successfully. Backups can be managed from the CodeGuard dashboard.",
+							"showIf": "account",
+							"type": "help"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/install",
+						"events": [
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/delete",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"manual": true,
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/P2wgmV1ylq3e",
+			"metadata": {
+				"code": {
+					"sourceTag": "P2wgmV1ylq3e",
+					"uploadedOn": "2017-05-30T20:24:27.071071525Z"
+				}
+			},
+			"created": "2017-05-30T20:24:25.773731Z",
+			"proposedApp": {
+				"id": "0ld4sTq-IlZv",
+				"title": "CodeGuard",
+				"shortDescription": "Website & Database Backups. Protect your website today!",
+				"longDescription": "CodeGuard is the leading provider of website and database backup services and is trusted by some of the largest hosting providers in the world, providing incremental backups at 99.9% levels of reliability for over 400,000 websites and databases globally.",
+				"instructions": "After creating your CodeGuard account, follow the instructions in the application for enabling backups for your website and database.",
+				"alias": "codeguard",
+				"orgId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"icon": "//images.cloudflareapps.com/72FrDJUwRQS5R4BHWCER_cg_logo_shield_mobile.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "CodeGuard Inc.",
+				"tagline": "",
+				"website": "https://codeguard.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"security",
+					"for-developers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "3OwBi42_G_7j"
+				},
+				"created": "2017-04-25T17:43:56.099308Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"requestedAt": "2017-05-30T20:24:34.038620044Z",
+				"canceledByUserId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"canceledAt": "2017-05-30T20:48:06.258236134Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "v1.0.5",
+			"appId": "0ld4sTq-IlZv",
+			"definition": {
+				"resources": {
+					"body": []
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"services": [
+								"6jaI2n52jzj-"
+							],
+							"title": "CodeGuard Account",
+							"type": "object"
+						},
+						"message": {
+							"description": "The fastest, most reliable website backup service - which tracks all of your changes daily.",
+							"title": "CodeGuard"
+						},
+						"successful_installation": {
+							"helpvalue": "Congratulations! The CodeGuard application has been installed successfully. Backups can be managed from the CodeGuard dashboard.",
+							"showIf": {
+								"account.service": {
+									"op": "!=",
+									"value": null
+								}
+							},
+							"type": "help"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/install",
+						"events": [
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/delete",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"manual": true,
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/8w5u9nXatQ6K",
+			"metadata": {
+				"code": {
+					"sourceTag": "8w5u9nXatQ6K",
+					"uploadedOn": "2017-05-30T20:48:00.622960868Z"
+				}
+			},
+			"created": "2017-05-30T20:48:00.027059Z",
+			"proposedApp": {
+				"id": "0ld4sTq-IlZv",
+				"title": "CodeGuard",
+				"shortDescription": "Website & Database Backups. Protect your website today!",
+				"longDescription": "CodeGuard is the leading provider of website and database backup services and is trusted by some of the largest hosting providers in the world, providing incremental backups at 99.9% levels of reliability for over 400,000 websites and databases globally.",
+				"instructions": "After creating your CodeGuard account, follow the instructions in the application for enabling backups for your website and database.",
+				"alias": "codeguard",
+				"orgId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"icon": "//images.cloudflareapps.com/72FrDJUwRQS5R4BHWCER_cg_logo_shield_mobile.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "CodeGuard Inc.",
+				"tagline": "",
+				"website": "https://codeguard.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"security",
+					"for-developers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "3OwBi42_G_7j"
+				},
+				"created": "2017-04-25T17:43:56.099308Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"requestedAt": "2017-05-30T20:48:06.264807394Z",
+				"canceledByUserId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"canceledAt": "2017-05-30T23:50:39.910100118Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "v1.0.6",
+			"appId": "0ld4sTq-IlZv",
+			"definition": {
+				"resources": {
+					"body": []
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"services": [
+								"6jaI2n52jzj-"
+							],
+							"title": "CodeGuard Account",
+							"type": "object"
+						},
+						"message": {
+							"description": "The fastest, most reliable website backup service - which tracks all of your changes daily.",
+							"title": "CodeGuard"
+						},
+						"successful_installation": {
+							"helpvalue": "Congratulations! The CodeGuard application has been installed successfully. Backups can be managed from the CodeGuard dashboard.",
+							"showIf": {
+								"account.service": {
+									"op": "!=",
+									"value": null
+								}
+							},
+							"type": "help"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/install",
+						"events": [
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/delete",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/hook",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"manual": true,
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/YriemI_hPgkg",
+			"metadata": {
+				"code": {
+					"sourceTag": "YriemI_hPgkg",
+					"uploadedOn": "2017-05-30T23:50:24.795326202Z"
+				}
+			},
+			"created": "2017-05-30T23:50:23.679141Z",
+			"proposedApp": {
+				"id": "0ld4sTq-IlZv",
+				"title": "CodeGuard",
+				"shortDescription": "Website & Database Backups. Protect your website today!",
+				"longDescription": "CodeGuard is the leading provider of website and database backup services and is trusted by some of the largest hosting providers in the world, providing incremental backups at 99.9% levels of reliability for over 400,000 websites and databases globally.",
+				"instructions": "After creating your CodeGuard account, follow the instructions in the application for enabling backups for your website and database.",
+				"alias": "codeguard",
+				"orgId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"icon": "//images.cloudflareapps.com/72FrDJUwRQS5R4BHWCER_cg_logo_shield_mobile.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "CodeGuard Inc.",
+				"tagline": "",
+				"website": "https://codeguard.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"security",
+					"for-developers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "3OwBi42_G_7j"
+				},
+				"created": "2017-04-25T17:43:56.099308Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"requestedAt": "2017-05-30T23:50:39.918187013Z",
+				"canceledByUserId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"canceledAt": "2017-05-31T00:42:05.850007054Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "v1.0.7",
+			"appId": "0ld4sTq-IlZv",
+			"definition": {
+				"resources": {
+					"body": []
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"services": [
+								"6jaI2n52jzj-"
+							],
+							"title": "CodeGuard Account",
+							"type": "object"
+						},
+						"message": {
+							"description": "The fastest, most reliable website backup service - which tracks all of your changes daily.",
+							"title": "CodeGuard"
+						},
+						"successful_installation": {
+							"helpvalue": "Congratulations! The CodeGuard application has been installed successfully. Backups can be managed from the CodeGuard dashboard.",
+							"showIf": {
+								"account.service": {
+									"op": "!=",
+									"value": null
+								}
+							},
+							"type": "help"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/install",
+						"events": [
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/delete",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/hook",
+						"events": [
+							"before-new-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"manual": true,
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/Emks09P3mm12",
+			"metadata": {
+				"code": {
+					"sourceTag": "Emks09P3mm12",
+					"uploadedOn": "2017-05-31T00:41:54.314668251Z"
+				}
+			},
+			"created": "2017-05-31T00:41:53.332934Z",
+			"proposedApp": {
+				"id": "0ld4sTq-IlZv",
+				"title": "CodeGuard",
+				"shortDescription": "Website & Database Backups. Protect your website today!",
+				"longDescription": "CodeGuard is the leading provider of website and database backup services and is trusted by some of the largest hosting providers in the world, providing incremental backups at 99.9% levels of reliability for over 400,000 websites and databases globally.",
+				"instructions": "After creating your CodeGuard account, follow the instructions in the application for enabling backups for your website and database.",
+				"alias": "codeguard",
+				"orgId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"icon": "//images.cloudflareapps.com/72FrDJUwRQS5R4BHWCER_cg_logo_shield_mobile.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "CodeGuard Inc.",
+				"tagline": "",
+				"website": "https://codeguard.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"security",
+					"for-developers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "3OwBi42_G_7j"
+				},
+				"created": "2017-04-25T17:43:56.099308Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"requestedAt": "2017-05-31T00:42:05.878176985Z",
+				"canceledByUserId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"canceledAt": "2017-05-31T01:05:05.790816932Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "v1.0.8",
+			"appId": "0ld4sTq-IlZv",
+			"definition": {
+				"resources": {
+					"body": []
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"services": [
+								"6jaI2n52jzj-"
+							],
+							"title": "CodeGuard Account",
+							"type": "object"
+						},
+						"message": {
+							"description": "The fastest, most reliable website backup service - which tracks all of your changes daily.",
+							"title": "CodeGuard"
+						},
+						"successful_installation": {
+							"helpvalue": "Congratulations! The CodeGuard application has been installed successfully. Backups can be managed from the CodeGuard dashboard.",
+							"showIf": {
+								"account.service": {
+									"op": "!=",
+									"value": null
+								}
+							},
+							"type": "help"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/install",
+						"events": [
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/delete",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/hook",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"manual": true,
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/INuAZYl5XZEW",
+			"metadata": {
+				"code": {
+					"sourceTag": "INuAZYl5XZEW",
+					"uploadedOn": "2017-05-31T01:04:56.960654695Z"
+				}
+			},
+			"created": "2017-05-31T01:04:55.777835Z",
+			"proposedApp": {
+				"id": "0ld4sTq-IlZv",
+				"title": "CodeGuard",
+				"shortDescription": "Website & Database Backups. Protect your website today!",
+				"longDescription": "CodeGuard is the leading provider of website and database backup services and is trusted by some of the largest hosting providers in the world, providing incremental backups at 99.9% levels of reliability for over 400,000 websites and databases globally.",
+				"instructions": "After creating your CodeGuard account, follow the instructions in the application for enabling backups for your website and database.",
+				"alias": "codeguard",
+				"orgId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"icon": "//images.cloudflareapps.com/72FrDJUwRQS5R4BHWCER_cg_logo_shield_mobile.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "CodeGuard Inc.",
+				"tagline": "",
+				"website": "https://codeguard.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"security",
+					"for-developers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "3OwBi42_G_7j"
+				},
+				"created": "2017-04-25T17:43:56.099308Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"requestedAt": "2017-05-31T01:05:05.796284015Z",
+				"canceledByUserId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"canceledAt": "2017-05-31T01:13:51.60165674Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "v1.0.9",
+			"appId": "0ld4sTq-IlZv",
+			"definition": {
+				"resources": {
+					"body": []
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"services": [
+								"6jaI2n52jzj-"
+							],
+							"title": "CodeGuard Account",
+							"type": "object"
+						},
+						"message": {
+							"description": "The fastest, most reliable website backup service - which tracks all of your changes daily.",
+							"title": "CodeGuard"
+						},
+						"successful_installation": {
+							"helpvalue": "Congratulations! The CodeGuard application has been installed successfully. Backups can be managed from the CodeGuard dashboard.",
+							"showIf": {
+								"account.service": {
+									"op": "!=",
+									"value": null
+								}
+							},
+							"type": "help"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/install",
+						"events": [
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/delete",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"manual": true,
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/JWZVB_ngVTpm",
+			"metadata": {
+				"code": {
+					"sourceTag": "JWZVB_ngVTpm",
+					"uploadedOn": "2017-05-31T01:13:42.938002455Z"
+				}
+			},
+			"created": "2017-05-31T01:13:42.449147Z",
+			"proposedApp": {
+				"id": "0ld4sTq-IlZv",
+				"title": "CodeGuard",
+				"shortDescription": "Website & Database Backups. Protect your website today!",
+				"longDescription": "CodeGuard is the leading provider of website and database backup services and is trusted by some of the largest hosting providers in the world, providing incremental backups at 99.9% levels of reliability for over 400,000 websites and databases globally.",
+				"instructions": "After creating your CodeGuard account, follow the instructions in the application for enabling backups for your website and database.",
+				"alias": "codeguard",
+				"orgId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"icon": "//images.cloudflareapps.com/72FrDJUwRQS5R4BHWCER_cg_logo_shield_mobile.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "CodeGuard Inc.",
+				"tagline": "",
+				"website": "https://codeguard.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"security",
+					"for-developers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "3OwBi42_G_7j"
+				},
+				"created": "2017-04-25T17:43:56.099308Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"requestedAt": "2017-05-31T01:13:51.688304693Z",
+				"canceledByUserId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"canceledAt": "2017-05-31T01:19:09.595872153Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "v1.1.0",
+			"appId": "0ld4sTq-IlZv",
+			"definition": {
+				"resources": {
+					"body": []
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"services": [
+								"6jaI2n52jzj-"
+							],
+							"title": "CodeGuard Account",
+							"type": "object"
+						},
+						"message": {
+							"description": "The fastest, most reliable website backup service - which tracks all of your changes daily.",
+							"title": "CodeGuard"
+						},
+						"successful_installation": {
+							"helpvalue": "Congratulations! The CodeGuard application has been installed successfully. Backups can be managed from the CodeGuard dashboard.",
+							"showIf": {
+								"account.service": {
+									"op": "!=",
+									"value": null
+								}
+							},
+							"type": "help"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/install",
+						"events": [
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/delete",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/hook",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"manual": true,
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/Hj7M1K9YonIw",
+			"metadata": {
+				"code": {
+					"sourceTag": "Hj7M1K9YonIw",
+					"uploadedOn": "2017-05-31T01:18:57.109919592Z"
+				}
+			},
+			"created": "2017-05-31T01:18:56.327524Z",
+			"proposedApp": {
+				"id": "0ld4sTq-IlZv",
+				"title": "CodeGuard",
+				"shortDescription": "Website & Database Backups. Protect your website today!",
+				"longDescription": "CodeGuard is the leading provider of website and database backup services and is trusted by some of the largest hosting providers in the world, providing incremental backups at 99.9% levels of reliability for over 400,000 websites and databases globally.",
+				"instructions": "After creating your CodeGuard account, follow the instructions in the application for enabling backups for your website and database.",
+				"alias": "codeguard",
+				"orgId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"icon": "//images.cloudflareapps.com/72FrDJUwRQS5R4BHWCER_cg_logo_shield_mobile.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "CodeGuard Inc.",
+				"tagline": "",
+				"website": "https://codeguard.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"security",
+					"for-developers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "3OwBi42_G_7j"
+				},
+				"created": "2017-04-25T17:43:56.099308Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"requestedAt": "2017-05-31T01:19:09.612336004Z",
+				"canceledByUserId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"canceledAt": "2017-05-31T01:45:59.81814922Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "v1.1.1",
+			"appId": "0ld4sTq-IlZv",
+			"definition": {
+				"resources": {
+					"body": []
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"services": [
+								"6jaI2n52jzj-"
+							],
+							"title": "CodeGuard Account",
+							"type": "object"
+						},
+						"message": {
+							"description": "The fastest, most reliable website backup service - which tracks all of your changes daily.",
+							"title": "CodeGuard"
+						},
+						"successful_installation": {
+							"helpvalue": "Congratulations! The CodeGuard application has been installed successfully. Backups can be managed from the CodeGuard dashboard.",
+							"showIf": {
+								"account.service": {
+									"op": "!=",
+									"value": null
+								}
+							},
+							"type": "help"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/hook",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"manual": true,
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/cbPR4EiWkfaf",
+			"metadata": {
+				"code": {
+					"sourceTag": "cbPR4EiWkfaf",
+					"uploadedOn": "2017-05-31T01:45:52.50784963Z"
+				}
+			},
+			"created": "2017-05-31T01:45:51.247299Z",
+			"proposedApp": {
+				"id": "0ld4sTq-IlZv",
+				"title": "CodeGuard",
+				"shortDescription": "Website & Database Backups. Protect your website today!",
+				"longDescription": "CodeGuard is the leading provider of website and database backup services and is trusted by some of the largest hosting providers in the world, providing incremental backups at 99.9% levels of reliability for over 400,000 websites and databases globally.",
+				"instructions": "After creating your CodeGuard account, follow the instructions in the application for enabling backups for your website and database.",
+				"alias": "codeguard",
+				"orgId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"icon": "//images.cloudflareapps.com/72FrDJUwRQS5R4BHWCER_cg_logo_shield_mobile.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "CodeGuard Inc.",
+				"tagline": "",
+				"website": "https://codeguard.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"security",
+					"for-developers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "3OwBi42_G_7j"
+				},
+				"created": "2017-04-25T17:43:56.099308Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"requestedAt": "2017-05-31T01:45:59.940631987Z",
+				"canceledByUserId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"canceledAt": "2017-05-31T16:35:04.437014619Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "v1.1.2",
+			"appId": "0ld4sTq-IlZv",
+			"definition": {
+				"resources": {
+					"body": []
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"services": [
+								"6jaI2n52jzj-"
+							],
+							"title": "CodeGuard Account",
+							"type": "object"
+						},
+						"message": {
+							"description": "The fastest, most reliable website backup service - which tracks all of your changes daily.",
+							"title": "CodeGuard"
+						},
+						"successful_installation": {
+							"helpvalue": "Congratulations! The CodeGuard application has been installed successfully. Backups can be managed from the CodeGuard dashboard.",
+							"showIf": {
+								"account.service": {
+									"op": "!=",
+									"value": null
+								}
+							},
+							"type": "help"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/install",
+						"events": [
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/delete",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/hook",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"manual": true,
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/pDDobMiGxeLN",
+			"metadata": {
+				"code": {
+					"sourceTag": "pDDobMiGxeLN",
+					"uploadedOn": "2017-05-31T16:34:57.047358672Z"
+				}
+			},
+			"created": "2017-05-31T16:34:56.564247Z",
+			"proposedApp": {
+				"id": "0ld4sTq-IlZv",
+				"title": "CodeGuard",
+				"shortDescription": "Website & Database Backups. Protect your website today!",
+				"longDescription": "CodeGuard is the leading provider of website and database backup services and is trusted by some of the largest hosting providers in the world, providing incremental backups at 99.9% levels of reliability for over 400,000 websites and databases globally.",
+				"instructions": "After creating your CodeGuard account, follow the instructions in the application for enabling backups for your website and database.",
+				"alias": "codeguard",
+				"orgId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"icon": "//images.cloudflareapps.com/72FrDJUwRQS5R4BHWCER_cg_logo_shield_mobile.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "CodeGuard Inc.",
+				"tagline": "",
+				"website": "https://codeguard.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"security",
+					"for-developers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "3OwBi42_G_7j"
+				},
+				"created": "2017-04-25T17:43:56.099308Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"requestedAt": "2017-05-31T16:35:04.553788136Z",
+				"canceledByUserId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"canceledAt": "2017-05-31T17:57:40.469069231Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "v1.1.3",
+			"appId": "0ld4sTq-IlZv",
+			"definition": {
+				"resources": {
+					"body": []
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"services": [
+								"6jaI2n52jzj-"
+							],
+							"title": "CodeGuard Account",
+							"type": "object"
+						},
+						"message": {
+							"description": "The fastest, most reliable website backup service - which tracks all of your changes daily.",
+							"title": "CodeGuard"
+						},
+						"successful_installation": {
+							"helpvalue": "Congratulations! The CodeGuard application has been installed successfully. Backups can be managed from the CodeGuard dashboard.",
+							"showIf": {
+								"account.service": {
+									"op": "!=",
+									"value": null
+								}
+							},
+							"type": "help"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "http://cftest.codeguard.com/cloudflare/install",
+						"events": [
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "http://cftest.codeguard.com/cloudflare/delete",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "http://cftest.codeguard.com/cloudflare/hook",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"manual": true,
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/St-t7N8uDcMS",
+			"metadata": {
+				"code": {
+					"sourceTag": "St-t7N8uDcMS",
+					"uploadedOn": "2017-05-31T17:57:33.372498793Z"
+				}
+			},
+			"created": "2017-05-31T17:57:32.496457Z",
+			"proposedApp": {
+				"id": "0ld4sTq-IlZv",
+				"title": "CodeGuard",
+				"shortDescription": "Website & Database Backups. Protect your website today!",
+				"longDescription": "CodeGuard is the leading provider of website and database backup services and is trusted by some of the largest hosting providers in the world, providing incremental backups at 99.9% levels of reliability for over 400,000 websites and databases globally.",
+				"instructions": "After creating your CodeGuard account, follow the instructions in the application for enabling backups for your website and database.",
+				"alias": "codeguard",
+				"orgId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"icon": "//images.cloudflareapps.com/72FrDJUwRQS5R4BHWCER_cg_logo_shield_mobile.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "CodeGuard Inc.",
+				"tagline": "",
+				"website": "https://codeguard.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"security",
+					"for-developers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "3OwBi42_G_7j"
+				},
+				"created": "2017-04-25T17:43:56.099308Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"requestedAt": "2017-05-31T17:57:40.492840752Z",
+				"canceledByUserId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"canceledAt": "2017-06-01T18:47:10.403393323Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "v1.1.4",
+			"appId": "0ld4sTq-IlZv",
+			"definition": {
+				"resources": {
+					"body": []
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"services": [
+								"6jaI2n52jzj-"
+							],
+							"title": "CodeGuard Account",
+							"type": "object"
+						},
+						"account_success": {
+							"helpvalue": "Congratulations! Your CodeGuard account is ready for use. Please install the CodeGuard service and after that you'll receive further instructions by email on how to configure the backup for your website and database.",
+							"showIf": {
+								"account.service": {
+									"op": "!=",
+									"value": null
+								}
+							},
+							"type": "help"
+						},
+						"message": {
+							"description": "The fastest, most reliable website backup service - which tracks all of your changes daily.",
+							"title": "CodeGuard"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "http://cftest.codeguard.com/cloudflare/install",
+						"events": [
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "http://cftest.codeguard.com/cloudflare/delete",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "http://cftest.codeguard.com/cloudflare/hook",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"manual": true,
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/LPX7bF15e-Xu",
+			"metadata": {
+				"code": {
+					"sourceTag": "LPX7bF15e-Xu",
+					"uploadedOn": "2017-06-01T18:47:01.171317021Z"
+				}
+			},
+			"created": "2017-06-01T18:47:00.613993Z",
+			"proposedApp": {
+				"id": "0ld4sTq-IlZv",
+				"title": "CodeGuard",
+				"shortDescription": "Website & Database Backups. Protect your website today!",
+				"longDescription": "CodeGuard is the leading provider of website and database backup services and is trusted by some of the largest hosting providers in the world, providing incremental backups at 99.9% levels of reliability for over 400,000 websites and databases globally.",
+				"instructions": "After creating your CodeGuard account, follow the instructions in the application for enabling backups for your website and database.",
+				"alias": "codeguard",
+				"orgId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"icon": "//images.cloudflareapps.com/72FrDJUwRQS5R4BHWCER_cg_logo_shield_mobile.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "CodeGuard Inc.",
+				"tagline": "",
+				"website": "https://codeguard.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"security",
+					"for-developers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "3OwBi42_G_7j"
+				},
+				"created": "2017-04-25T17:43:56.099308Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"requestedAt": "2017-06-01T18:47:10.418512577Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-06-01T19:11:43.353370513Z"
+			}
+		},
+		{
+			"tag": "v1.1.5",
+			"appId": "0ld4sTq-IlZv",
+			"definition": {
+				"resources": {
+					"body": []
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"services": [
+								"6jaI2n52jzj-"
+							],
+							"title": "CodeGuard Account",
+							"type": "object"
+						},
+						"account_success": {
+							"helpvalue": "Congratulations! Your CodeGuard account is ready for use. Please install the CodeGuard service and after that you'll receive further instructions by email on how to configure the backup for your website and database on <a target=\"_blank\" href=\"https://www.codeguard.com/websites\">CodeGuard Dashboard</a>.",
+							"showIf": {
+								"account.service": {
+									"op": "!=",
+									"value": null
+								}
+							},
+							"type": "help"
+						},
+						"message": {
+							"description": "The fastest, most reliable website backup service - which tracks all of your changes daily.",
+							"title": "CodeGuard"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "http://cftest.codeguard.com/cloudflare/install",
+						"events": [
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "http://cftest.codeguard.com/cloudflare/delete",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "http://cftest.codeguard.com/cloudflare/hook",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"manual": true,
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/-Li5jo1Eu3z5",
+			"metadata": {
+				"code": {
+					"sourceTag": "-Li5jo1Eu3z5",
+					"uploadedOn": "2017-06-01T19:44:55.899006355Z"
+				}
+			},
+			"created": "2017-06-01T19:44:55.38984Z",
+			"proposedApp": {
+				"id": "0ld4sTq-IlZv",
+				"title": "CodeGuard",
+				"shortDescription": "Website & Database Backups. Protect your website today!",
+				"longDescription": "CodeGuard is the leading provider of website and database backup services and is trusted by some of the largest hosting providers in the world, providing incremental backups at 99.9% levels of reliability for over 400,000 websites and databases globally.",
+				"instructions": "After creating your CodeGuard account, follow the instructions in the application for enabling backups for your website and database.",
+				"alias": "codeguard",
+				"orgId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"icon": "//images.cloudflareapps.com/72FrDJUwRQS5R4BHWCER_cg_logo_shield_mobile.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "CodeGuard Inc.",
+				"tagline": "",
+				"website": "https://codeguard.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"security",
+					"for-developers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "3OwBi42_G_7j"
+				},
+				"created": "2017-04-25T17:43:56.099308Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"requestedAt": "2017-06-01T19:45:03.902158048Z",
+				"canceledByUserId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"canceledAt": "2017-06-02T14:42:59.708602134Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "v1.1.6",
+			"appId": "0ld4sTq-IlZv",
+			"definition": {
+				"resources": {
+					"body": []
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"services": [
+								"6jaI2n52jzj-"
+							],
+							"title": "CodeGuard Account",
+							"type": "object"
+						},
+						"account_success": {
+							"helpvalue": "Congratulations! Your CodeGuard account is ready for use. Please install the CodeGuard service and after that you'll receive further instructions by email on how to configure the backup for your website and database on <a target=\"_blank\" href=\"https://www.codeguard.com/websites\">CodeGuard Dashboard</a>.",
+							"showIf": {
+								"account.service": {
+									"op": "!=",
+									"value": null
+								}
+							},
+							"type": "help"
+						},
+						"message": {
+							"description": "The fastest, most reliable website backup service - which tracks all of your changes daily.",
+							"title": "CodeGuard"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "http://www.codeguard.com/cloudflare/install",
+						"events": [
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "http://www.codeguard.com/cloudflare/delete",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "http://www.codeguard.com/cloudflare/hook",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"manual": true,
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/yIEvG_4RsW7A",
+			"metadata": {
+				"code": {
+					"sourceTag": "yIEvG_4RsW7A",
+					"uploadedOn": "2017-06-02T14:42:53.930314594Z"
+				}
+			},
+			"created": "2017-06-02T14:42:53.216992Z",
+			"proposedApp": {
+				"id": "0ld4sTq-IlZv",
+				"title": "CodeGuard",
+				"shortDescription": "Website & Database Backups. Protect your website today!",
+				"longDescription": "CodeGuard is the leading provider of website and database backup services and is trusted by some of the largest hosting providers in the world, providing incremental backups at 99.9% levels of reliability for over 400,000 websites and databases globally.",
+				"instructions": "After creating your CodeGuard account, follow the instructions in the application for enabling backups for your website and database.",
+				"alias": "codeguard",
+				"orgId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"icon": "//images.cloudflareapps.com/72FrDJUwRQS5R4BHWCER_cg_logo_shield_mobile.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "CodeGuard Inc.",
+				"tagline": "",
+				"website": "https://codeguard.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"security",
+					"for-developers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "3OwBi42_G_7j"
+				},
+				"created": "2017-04-25T17:43:56.099308Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"requestedAt": "2017-06-02T14:42:59.839611816Z",
+				"canceledByUserId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"canceledAt": "2017-06-02T14:47:58.725282578Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "v1.1.7",
+			"appId": "0ld4sTq-IlZv",
+			"definition": {
+				"resources": {
+					"body": []
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"services": [
+								"6jaI2n52jzj-"
+							],
+							"title": "CodeGuard Account",
+							"type": "object"
+						},
+						"account_success": {
+							"helpvalue": "Congratulations! Your CodeGuard account is ready for use. Please install the CodeGuard service and after that you'll receive further instructions by email on how to configure the backup for your website and database on <a target=\"_blank\" href=\"https://www.codeguard.com/websites\">CodeGuard Dashboard</a>.",
+							"showIf": {
+								"account.service": {
+									"op": "!=",
+									"value": null
+								}
+							},
+							"type": "help"
+						},
+						"message": {
+							"description": "The fastest, most reliable website backup service - which tracks all of your changes daily.",
+							"title": "CodeGuard"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/install",
+						"events": [
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/delete",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/hook",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/CkGuHfPUihOu",
+			"metadata": {
+				"code": {
+					"sourceTag": "CkGuHfPUihOu",
+					"uploadedOn": "2017-06-02T14:47:49.475923921Z"
+				}
+			},
+			"created": "2017-06-02T14:47:49.119028Z",
+			"proposedApp": {
+				"id": "0ld4sTq-IlZv",
+				"title": "CodeGuard",
+				"shortDescription": "Website & Database Backups. Protect your website today!",
+				"longDescription": "CodeGuard is the leading provider of website and database backup services and is trusted by some of the largest hosting providers in the world, providing incremental backups at 99.9% levels of reliability for over 400,000 websites and databases globally.",
+				"instructions": "After creating your CodeGuard account, follow the instructions in the application for enabling backups for your website and database.",
+				"alias": "codeguard",
+				"orgId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"icon": "//images.cloudflareapps.com/72FrDJUwRQS5R4BHWCER_cg_logo_shield_mobile.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "CodeGuard Inc.",
+				"tagline": "",
+				"website": "https://codeguard.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"security",
+					"for-developers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "3OwBi42_G_7j"
+				},
+				"created": "2017-04-25T17:43:56.099308Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"requestedAt": "2017-06-02T14:47:58.976239416Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-06-05T18:45:08.960379875Z"
+			}
+		},
+		{
+			"tag": "v1.1.8",
+			"appId": "0ld4sTq-IlZv",
+			"definition": {
+				"resources": {
+					"body": []
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"services": [
+								"6jaI2n52jzj-"
+							],
+							"title": "CodeGuard Account",
+							"type": "object"
+						},
+						"account_success": {
+							"helpvalue": "Congratulations! Your CodeGuard account is ready for use. Please install the CodeGuard service and after that you'll receive further instructions by email on how to configure the backup for your website and database on <a target=\"_blank\" href=\"https://www.codeguard.com/websites\">CodeGuard Dashboard</a>.",
+							"showIf": {
+								"account.service": {
+									"op": "!=",
+									"value": null
+								}
+							},
+							"type": "help"
+						},
+						"message": {
+							"description": "The fastest, most reliable website backup service - which tracks all of your changes daily.",
+							"title": "CodeGuard"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/install",
+						"events": [
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/delete",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/hook",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"manual": true,
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/1427D3cB1IqZ",
+			"metadata": {
+				"code": {
+					"sourceTag": "1427D3cB1IqZ",
+					"uploadedOn": "2017-06-06T20:09:17.477778243Z"
+				}
+			},
+			"created": "2017-06-06T20:07:31.414213Z",
+			"proposedApp": {
+				"id": "0ld4sTq-IlZv",
+				"title": "CodeGuard",
+				"shortDescription": "Website & Database Backups. Protect your website today!",
+				"longDescription": "CodeGuard is the leading provider of website and database backup services and is trusted by some of the largest hosting providers in the world, providing incremental backups at 99.9% levels of reliability for over 400,000 websites and databases globally.",
+				"instructions": "After creating your CodeGuard account, follow the instructions in the application for enabling backups for your website and database.",
+				"alias": "codeguard",
+				"orgId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"icon": "//images.cloudflareapps.com/72FrDJUwRQS5R4BHWCER_cg_logo_shield_mobile.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "CodeGuard Inc.",
+				"tagline": "",
+				"website": "https://codeguard.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"security",
+					"for-developers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "3OwBi42_G_7j"
+				},
+				"created": "2017-04-25T17:43:56.099308Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"requestedAt": "2017-06-06T20:09:26.374779629Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-06-07T20:55:21.293721381Z"
+			}
+		},
+		{
+			"tag": "1.1.9",
+			"appId": "0ld4sTq-IlZv",
+			"definition": {
+				"resources": {
+					"body": []
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"services": [
+								"6jaI2n52jzj-"
+							],
+							"title": "CodeGuard Account",
+							"type": "object"
+						},
+						"account_success": {
+							"helpvalue": "Congratulations! Your CodeGuard account is ready for use. Please install the CodeGuard service and after that you'll receive further instructions by email on how to configure the backup for your website and database on <a target=\"_blank\" href=\"https://www.codeguard.com/websites\">CodeGuard Dashboard</a>.",
+							"showIf": {
+								"account.service": {
+									"op": "!=",
+									"value": null
+								}
+							},
+							"type": "help"
+						},
+						"message": {
+							"description": "The fastest, most reliable website backup service - which tracks all of your changes daily.",
+							"title": "CodeGuard"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/install",
+						"events": [
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/delete",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/hook",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/mHwR8UmUfMXx",
+			"metadata": {
+				"code": {
+					"sourceTag": "mHwR8UmUfMXx",
+					"uploadedOn": "2017-06-14T18:17:13.176241534Z"
+				}
+			},
+			"created": "2017-06-08T17:56:13.765805Z",
+			"proposedApp": {
+				"id": "0ld4sTq-IlZv",
+				"title": "CodeGuard",
+				"shortDescription": "Website & Database Backups. Protect your website today!",
+				"longDescription": "CodeGuard is the leading provider of website and database backup services and is trusted by some of the largest hosting providers in the world, providing incremental backups at 99.9% levels of reliability for over 400,000 websites and databases globally.",
+				"instructions": "After creating your CodeGuard account, follow the instructions in the application for enabling backups for your website and database.",
+				"alias": "codeguard",
+				"orgId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"icon": "//images.cloudflareapps.com/72FrDJUwRQS5R4BHWCER_cg_logo_shield_mobile.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/3Sbwu8eT4ClZSHFuhf0Q_large_ss_1-8f13253f.jpg",
+					"//images.cloudflareapps.com/SbVV1PDSTdaNBK1JegkR_large_ss_3-b5f35a82.jpg",
+					"//images.cloudflareapps.com/TTtsOyvPRsuEWJTgbbeM_large_ss_2-a4021bc6.jpg"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "CodeGuard Inc.",
+				"tagline": "",
+				"website": "https://www.codeguard.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"security",
+					"for-developers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "3OwBi42_G_7j"
+				},
+				"created": "2017-04-25T17:43:56.099308Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"requestedAt": "2017-06-14T18:17:33.952622557Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-06-16T01:45:41.828818541Z"
+			}
+		},
+		{
+			"tag": "1.1.10",
+			"appId": "0ld4sTq-IlZv",
+			"definition": {
+				"resources": {
+					"body": []
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"services": [
+								"6jaI2n52jzj-"
+							],
+							"title": "CodeGuard Account",
+							"type": "object"
+						},
+						"account_success": {
+							"helpvalue": "Congratulations! Your CodeGuard account is ready for use. Please install the CodeGuard service and after that you'll receive further instructions by email on how to configure the backup for your website and database on <a target=\"_blank\" href=\"https://www.codeguard.com/websites\">CodeGuard Dashboard</a>.",
+							"showIf": {
+								"account.service": {
+									"op": "!=",
+									"value": null
+								}
+							},
+							"type": "help"
+						},
+						"message": {
+							"description": "The fastest, most reliable website backup service - which tracks all of your changes daily.",
+							"title": "CodeGuard"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/install",
+						"events": [
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/delete",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/hook",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/mHwR8UmUfMXx",
+			"created": "2017-07-07T21:01:28.332076Z",
+			"proposedApp": {
+				"id": "0ld4sTq-IlZv",
+				"title": "CodeGuard",
+				"shortDescription": "Site & Database Backups. Protect your site today!",
+				"longDescription": "CodeGuard is the leading provider of website and database backup services and is trusted by some of the largest hosting providers in the world, providing incremental backups at 99.9% levels of reliability for over 400,000 websites and databases globally.",
+				"instructions": "After creating your CodeGuard account, follow the instructions in the application for enabling backups for your website and database.",
+				"alias": "codeguard",
+				"orgId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"icon": "//images.cloudflareapps.com/72FrDJUwRQS5R4BHWCER_cg_logo_shield_mobile.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/3Sbwu8eT4ClZSHFuhf0Q_large_ss_1-8f13253f.jpg",
+					"//images.cloudflareapps.com/SbVV1PDSTdaNBK1JegkR_large_ss_3-b5f35a82.jpg",
+					"//images.cloudflareapps.com/TTtsOyvPRsuEWJTgbbeM_large_ss_2-a4021bc6.jpg"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "CodeGuard Inc.",
+				"tagline": "",
+				"website": "https://www.codeguard.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [
+					{
+						"id": "codeguard-personal",
+						"title": "CodeGuard Personal",
+						"shortDescription": "",
+						"longDescription": "",
+						"visible": true,
+						"price": 500,
+						"order": 1,
+						"plan": "codeguard_plan_2",
+						"feature": "apps.codeguard.plan_2.enabled",
+						"created": null
+					},
+					{
+						"id": "codeguard-professional",
+						"title": "CodeGuard Professional",
+						"shortDescription": "",
+						"longDescription": "",
+						"visible": true,
+						"price": 9900,
+						"order": 2,
+						"plan": "codeguard_plan_3",
+						"feature": "apps.codeguard.plan_3.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"security",
+					"for-developers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "3OwBi42_G_7j"
+				},
+				"created": "2017-04-25T17:43:56.099308Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-07-07T21:01:28.57474333Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-07-07T21:04:51.840433861Z"
+			}
+		},
+		{
+			"tag": "1.1.11",
+			"appId": "0ld4sTq-IlZv",
+			"definition": {
+				"resources": {
+					"body": []
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"services": [
+								"6jaI2n52jzj-"
+							],
+							"title": "CodeGuard Account",
+							"type": "object"
+						},
+						"account_success": {
+							"helpvalue": "Congratulations! Your CodeGuard account is ready for use. Please install the CodeGuard service and after that you'll receive further instructions by email on how to configure the backup for your website and database on <a target=\"_blank\" href=\"https://www.codeguard.com/websites\">CodeGuard Dashboard</a>.",
+							"showIf": {
+								"account.service": {
+									"op": "!=",
+									"value": null
+								}
+							},
+							"type": "help"
+						},
+						"message": {
+							"description": "The fastest, most reliable website backup service - which tracks all of your changes daily.",
+							"title": "CodeGuard"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/install",
+						"events": [
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/delete",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/hook",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/mHwR8UmUfMXx",
+			"created": "2017-07-20T00:28:00.868048Z",
+			"proposedApp": {
+				"id": "0ld4sTq-IlZv",
+				"title": "CodeGuard",
+				"shortDescription": "Site & Database Backups. Protect your site today!",
+				"longDescription": "CodeGuard is the leading provider of website and database backup services and is trusted by some of the largest hosting providers in the world, providing incremental backups at 99.9% levels of reliability for over 400,000 websites and databases globally.",
+				"instructions": "After creating your CodeGuard account, follow the instructions in the application for enabling backups for your website and database.",
+				"alias": "codeguard",
+				"orgId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"icon": "//images.cloudflareapps.com/OvrDTovcSDyWsICyCZYX_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/3Sbwu8eT4ClZSHFuhf0Q_large_ss_1-8f13253f.jpg",
+					"//images.cloudflareapps.com/SbVV1PDSTdaNBK1JegkR_large_ss_3-b5f35a82.jpg",
+					"//images.cloudflareapps.com/TTtsOyvPRsuEWJTgbbeM_large_ss_2-a4021bc6.jpg"
+				],
+				"tileImage": "//images.cloudflareapps.com/rMbKXA7KSuaEdCGJSKaz_tileImage.png",
+				"featuredAppImage": "",
+				"author": "CodeGuard Inc.",
+				"tagline": "",
+				"website": "https://www.codeguard.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [
+					{
+						"id": "codeguard-personal",
+						"title": "CodeGuard Personal",
+						"shortDescription": "",
+						"longDescription": "",
+						"visible": true,
+						"price": 500,
+						"order": 1,
+						"plan": "codeguard_plan_2",
+						"feature": "apps.codeguard.plan_2.enabled",
+						"created": null
+					},
+					{
+						"id": "codeguard-professional",
+						"title": "CodeGuard Professional",
+						"shortDescription": "",
+						"longDescription": "",
+						"visible": true,
+						"price": 9900,
+						"order": 2,
+						"plan": "codeguard_plan_3",
+						"feature": "apps.codeguard.plan_3.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"security",
+					"for-developers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "3OwBi42_G_7j"
+				},
+				"created": "2017-04-25T17:43:56.099308Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "1e57d294e97e29816d5d04c78ed67257",
+				"requestedAt": "2017-07-20T00:28:01.238390027Z",
+				"canceledAt": null,
+				"reviewedByUserId": "1e57d294e97e29816d5d04c78ed67257",
+				"reviewedAt": "2017-07-20T00:28:09.99822438Z"
+			}
+		},
+		{
+			"tag": "1.1.12",
+			"appId": "0ld4sTq-IlZv",
+			"definition": {
+				"resources": {
+					"body": []
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"services": [
+								"6jaI2n52jzj-"
+							],
+							"title": "CodeGuard Account",
+							"type": "object"
+						},
+						"account_success": {
+							"helpvalue": "Congratulations! Your CodeGuard account is ready for use. Please install the CodeGuard service and after that you'll receive further instructions by email on how to configure the backup for your website and database on <a target=\"_blank\" href=\"https://www.codeguard.com/websites\">CodeGuard Dashboard</a>.",
+							"showIf": {
+								"account.service": {
+									"op": "!=",
+									"value": null
+								}
+							},
+							"type": "help"
+						},
+						"message": {
+							"description": "The fastest, most reliable website backup service - which tracks all of your changes daily.",
+							"title": "CodeGuard"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/install",
+						"events": [
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/delete",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/hook",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/mHwR8UmUfMXx",
+			"created": "2017-07-20T00:40:56.189431Z",
+			"proposedApp": {
+				"id": "0ld4sTq-IlZv",
+				"title": "CodeGuard",
+				"shortDescription": "Site & Database Backups. Protect your site today!",
+				"longDescription": "CodeGuard is the leading provider of website and database backup services and is trusted by some of the largest hosting providers in the world, providing incremental backups at 99.9% levels of reliability for over 400,000 websites and databases globally.",
+				"instructions": "After creating your CodeGuard account, follow the instructions in the application for enabling backups for your website and database.",
+				"alias": "codeguard",
+				"orgId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"icon": "//images.cloudflareapps.com/OvrDTovcSDyWsICyCZYX_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/3Sbwu8eT4ClZSHFuhf0Q_large_ss_1-8f13253f.jpg",
+					"//images.cloudflareapps.com/SbVV1PDSTdaNBK1JegkR_large_ss_3-b5f35a82.jpg",
+					"//images.cloudflareapps.com/TTtsOyvPRsuEWJTgbbeM_large_ss_2-a4021bc6.jpg"
+				],
+				"tileImage": "//images.cloudflareapps.com/rMbKXA7KSuaEdCGJSKaz_tileImage.png",
+				"featuredAppImage": "",
+				"author": "CodeGuard Inc.",
+				"tagline": "",
+				"website": "https://www.codeguard.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [
+					{
+						"id": "codeguard-personal",
+						"title": "Personal",
+						"shortDescription": "",
+						"longDescription": "",
+						"visible": true,
+						"price": 500,
+						"order": 1,
+						"plan": "codeguard_plan_2",
+						"feature": "apps.codeguard.plan_2.enabled",
+						"created": null
+					},
+					{
+						"id": "codeguard-professional",
+						"title": "Professional",
+						"shortDescription": "",
+						"longDescription": "",
+						"visible": true,
+						"price": 9900,
+						"order": 2,
+						"plan": "codeguard_plan_3",
+						"feature": "apps.codeguard.plan_3.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"security",
+					"for-developers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "3OwBi42_G_7j"
+				},
+				"created": "2017-04-25T17:43:56.099308Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "1e57d294e97e29816d5d04c78ed67257",
+				"requestedAt": "2017-07-20T00:41:49.878538755Z",
+				"canceledAt": null,
+				"reviewedByUserId": "1e57d294e97e29816d5d04c78ed67257",
+				"reviewedAt": "2017-07-20T00:41:58.118393871Z"
+			}
+		},
+		{
+			"tag": "1.1.13",
+			"appId": "0ld4sTq-IlZv",
+			"definition": {
+				"resources": {
+					"body": []
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"services": [
+								"6jaI2n52jzj-"
+							],
+							"title": "CodeGuard Account",
+							"type": "object"
+						},
+						"account_success": {
+							"helpvalue": "Congratulations! Your CodeGuard account is ready for use. Please install the CodeGuard service and after that you'll receive further instructions by email on how to configure the backup for your website and database on <a target=\"_blank\" href=\"https://www.codeguard.com/websites\">CodeGuard Dashboard</a>.",
+							"showIf": {
+								"account.service": {
+									"op": "!=",
+									"value": null
+								}
+							},
+							"type": "help"
+						},
+						"message": {
+							"description": "The fastest, most reliable website backup service - which tracks all of your changes daily.",
+							"title": "CodeGuard"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/install",
+						"events": [
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/delete",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/hook",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.57,
+				"upvotes": 4,
+				"downvotes": 3
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/mHwR8UmUfMXx",
+			"created": "2017-07-25T22:45:37.866404Z",
+			"proposedApp": {
+				"id": "0ld4sTq-IlZv",
+				"title": "CodeGuard",
+				"shortDescription": "Site & Database Backups. Protect your site today!",
+				"longDescription": "CodeGuard is the leading provider of website and database backup services and is trusted by some of the largest hosting providers in the world, providing incremental backups at 99.9% levels of reliability for over 400,000 websites and databases globally.",
+				"instructions": "After creating your CodeGuard account, follow the instructions in the application for enabling backups for your website and database.",
+				"alias": "codeguard",
+				"orgId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"icon": "//images.cloudflareapps.com/OvrDTovcSDyWsICyCZYX_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/3Sbwu8eT4ClZSHFuhf0Q_large_ss_1-8f13253f.jpg",
+					"//images.cloudflareapps.com/SbVV1PDSTdaNBK1JegkR_large_ss_3-b5f35a82.jpg",
+					"//images.cloudflareapps.com/TTtsOyvPRsuEWJTgbbeM_large_ss_2-a4021bc6.jpg"
+				],
+				"tileImage": "//images.cloudflareapps.com/rMbKXA7KSuaEdCGJSKaz_tileImage.png",
+				"featuredAppImage": "",
+				"author": "CodeGuard Inc.",
+				"tagline": "",
+				"website": "https://www.codeguard.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [
+					{
+						"id": "codeguard-personal",
+						"title": "Personal",
+						"shortDescription": "",
+						"longDescription": "",
+						"visible": true,
+						"price": 500,
+						"order": 1,
+						"plan": "codeguard_plan_2",
+						"feature": "apps.codeguard.plan_2.enabled",
+						"created": null
+					},
+					{
+						"id": "codeguard-professional",
+						"title": "Professional",
+						"shortDescription": "",
+						"longDescription": "",
+						"visible": true,
+						"price": 9900,
+						"order": 2,
+						"plan": "codeguard_plan_3",
+						"feature": "apps.codeguard.plan_3.enabled",
+						"created": null
+					},
+					{
+						"id": "codeguard-legacy",
+						"title": "Legacy",
+						"shortDescription": "",
+						"longDescription": "",
+						"visible": false,
+						"price": 0,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"security",
+					"for-developers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "3OwBi42_G_7j"
+				},
+				"created": "2017-04-25T17:43:56.099308Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "dda328da295860bf84630d277c4d53d9",
+				"requestedAt": "2017-07-25T22:45:38.219447847Z",
+				"canceledAt": null,
+				"reviewedByUserId": "dda328da295860bf84630d277c4d53d9",
+				"reviewedAt": "2017-07-25T22:45:45.400849368Z"
+			}
+		},
+		{
+			"tag": "1.1.14",
+			"appId": "0ld4sTq-IlZv",
+			"definition": {
+				"resources": {
+					"body": []
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"services": [
+								"6jaI2n52jzj-"
+							],
+							"title": "CodeGuard Account",
+							"type": "object"
+						},
+						"account_success": {
+							"helpvalue": "Congratulations! Your CodeGuard account is ready for use. Please install the CodeGuard service and after that you'll receive further instructions by email on how to configure the backup for your website and database on <a target=\"_blank\" href=\"https://www.codeguard.com/websites\">CodeGuard Dashboard</a>.",
+							"showIf": {
+								"account.service": {
+									"op": "!=",
+									"value": null
+								}
+							},
+							"type": "help"
+						},
+						"message": {
+							"description": "The fastest, most reliable website backup service - which tracks all of your changes daily.",
+							"title": "CodeGuard"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/install",
+						"events": [
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/delete",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/hook",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0,
+				"upvotes": 0,
+				"downvotes": 1
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/mHwR8UmUfMXx",
+			"created": "2018-01-22T19:25:07.210434Z",
+			"proposedApp": {
+				"id": "0ld4sTq-IlZv",
+				"title": "CodeGuard",
+				"shortDescription": "Site & Database Backups. Protect your site today!",
+				"longDescription": "CodeGuard is the leading provider of website and database backup services and is trusted by some of the largest hosting providers in the world, providing incremental backups at 99.9% levels of reliability for over 400,000 websites and databases globally.",
+				"instructions": "After creating your CodeGuard account, follow the instructions in the application for enabling backups for your website and database.",
+				"alias": "codeguard",
+				"orgId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"icon": "//images.cloudflareapps.com/OvrDTovcSDyWsICyCZYX_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/3Sbwu8eT4ClZSHFuhf0Q_large_ss_1-8f13253f.jpg",
+					"//images.cloudflareapps.com/SbVV1PDSTdaNBK1JegkR_large_ss_3-b5f35a82.jpg",
+					"//images.cloudflareapps.com/TTtsOyvPRsuEWJTgbbeM_large_ss_2-a4021bc6.jpg"
+				],
+				"tileImage": "//images.cloudflareapps.com/rMbKXA7KSuaEdCGJSKaz_tileImage.png",
+				"featuredAppImage": "",
+				"author": "CodeGuard Inc.",
+				"tagline": "",
+				"website": "https://www.codeguard.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [
+					{
+						"id": "codeguard-personal",
+						"title": "Personal",
+						"shortDescription": "",
+						"longDescription": "",
+						"visible": true,
+						"price": 500,
+						"order": 1,
+						"plan": "codeguard_plan_2",
+						"feature": "apps.codeguard.plan_2.enabled",
+						"created": null
+					},
+					{
+						"id": "codeguard-professional",
+						"title": "Professional",
+						"shortDescription": "",
+						"longDescription": "",
+						"visible": true,
+						"price": 9900,
+						"order": 2,
+						"plan": "codeguard_plan_3",
+						"feature": "apps.codeguard.plan_3.enabled",
+						"created": null
+					},
+					{
+						"id": "codeguard-legacy",
+						"title": "Legacy",
+						"shortDescription": "",
+						"longDescription": "",
+						"visible": false,
+						"price": 0,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"for-developers",
+					"performance-and-security"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "3OwBi42_G_7j"
+				},
+				"created": "2017-04-25T17:43:56.099308Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-01-22T19:26:26.033314864Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-01-22T19:31:31.23987394Z"
+			}
+		},
+		{
+			"tag": "1.1.15",
+			"appId": "0ld4sTq-IlZv",
+			"definition": {
+				"resources": {
+					"body": []
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"services": [
+								"6jaI2n52jzj-"
+							],
+							"title": "CodeGuard Account",
+							"type": "object"
+						},
+						"account_success": {
+							"helpvalue": "Congratulations! Your CodeGuard account is ready for use. Please install the CodeGuard service and after that you'll receive further instructions by email on how to configure the backup for your website and database on <a target=\"_blank\" href=\"https://www.codeguard.com/websites\">CodeGuard Dashboard</a>.",
+							"showIf": {
+								"account.service": {
+									"op": "!=",
+									"value": null
+								}
+							},
+							"type": "help"
+						},
+						"message": {
+							"description": "The fastest, most reliable website backup service - which tracks all of your changes daily.",
+							"title": "CodeGuard"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/install",
+						"events": [
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/delete",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/hook",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.23,
+				"upvotes": 3,
+				"downvotes": 10
+			},
+			"releaseNotes": "Added to Cloudflare Apps recommendation engine",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/mHwR8UmUfMXx",
+			"created": "2018-02-06T20:36:23.430599Z",
+			"proposedApp": {
+				"id": "0ld4sTq-IlZv",
+				"title": "CodeGuard",
+				"shortDescription": "Site & Database Backups. Protect your site today!",
+				"longDescription": "CodeGuard is the leading provider of website and database backup services and is trusted by some of the largest hosting providers in the world, providing incremental backups at 99.9% levels of reliability for over 400,000 websites and databases globally.",
+				"instructions": "After creating your CodeGuard account, follow the instructions in the application for enabling backups for your website and database.",
+				"alias": "codeguard",
+				"orgId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"icon": "//images.cloudflareapps.com/OvrDTovcSDyWsICyCZYX_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/3Sbwu8eT4ClZSHFuhf0Q_large_ss_1-8f13253f.jpg",
+					"//images.cloudflareapps.com/SbVV1PDSTdaNBK1JegkR_large_ss_3-b5f35a82.jpg",
+					"//images.cloudflareapps.com/TTtsOyvPRsuEWJTgbbeM_large_ss_2-a4021bc6.jpg"
+				],
+				"tileImage": "//images.cloudflareapps.com/rMbKXA7KSuaEdCGJSKaz_tileImage.png",
+				"featuredAppImage": "",
+				"author": "CodeGuard Inc.",
+				"tagline": "",
+				"website": "https://www.codeguard.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [
+					{
+						"id": "codeguard-personal",
+						"title": "Personal",
+						"shortDescription": "",
+						"longDescription": "",
+						"visible": true,
+						"price": 500,
+						"order": 1,
+						"plan": "codeguard_plan_2",
+						"feature": "apps.codeguard.plan_2.enabled",
+						"created": null
+					},
+					{
+						"id": "codeguard-professional",
+						"title": "Professional",
+						"shortDescription": "",
+						"longDescription": "",
+						"visible": true,
+						"price": 9900,
+						"order": 2,
+						"plan": "codeguard_plan_3",
+						"feature": "apps.codeguard.plan_3.enabled",
+						"created": null
+					},
+					{
+						"id": "codeguard-legacy",
+						"title": "Legacy",
+						"shortDescription": "",
+						"longDescription": "",
+						"visible": false,
+						"price": 0,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"for-developers",
+					"performance-and-security",
+					"recommended-for-all-sites"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "3OwBi42_G_7j"
+				},
+				"created": "2017-04-25T17:43:56.099308Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-02-06T20:36:23.688084935Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-02-06T20:45:16.174367385Z"
+			}
+		},
+		{
+			"tag": "1.1.16",
+			"appId": "0ld4sTq-IlZv",
+			"definition": {
+				"resources": {
+					"body": []
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"services": [
+								"6jaI2n52jzj-"
+							],
+							"title": "CodeGuard Account",
+							"type": "object"
+						},
+						"account_success": {
+							"helpvalue": "Congratulations! Your CodeGuard account is ready for use. Please install the CodeGuard service and after that you'll receive further instructions by email on how to configure the backup for your website and database on <a target=\"_blank\" href=\"https://www.codeguard.com/websites\">CodeGuard Dashboard</a>.",
+							"showIf": {
+								"account.service": {
+									"op": "!=",
+									"value": null
+								}
+							},
+							"type": "help"
+						},
+						"message": {
+							"description": "The fastest, most reliable website backup service - which tracks all of your changes daily.",
+							"title": "CodeGuard"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/install",
+						"events": [
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/delete",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://www.codeguard.com/cloudflare/hook",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.25,
+				"upvotes": 22,
+				"downvotes": 66
+			},
+			"releaseNotes": "Updated app's categories",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/mHwR8UmUfMXx",
+			"created": "2018-11-14T20:35:41.29163Z",
+			"proposedApp": {
+				"id": "0ld4sTq-IlZv",
+				"title": "CodeGuard",
+				"shortDescription": "Site & Database Backups. Protect your site today!",
+				"longDescription": "CodeGuard is the leading provider of website and database backup services and is trusted by some of the largest hosting providers in the world, providing incremental backups at 99.9% levels of reliability for over 400,000 websites and databases globally.",
+				"instructions": "After creating your CodeGuard account, follow the instructions in the application for enabling backups for your website and database.",
+				"alias": "codeguard",
+				"orgId": "e55f5ff991af50594dc1d58f92c5b5bf",
+				"icon": "//images.cloudflareapps.com/OvrDTovcSDyWsICyCZYX_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/3Sbwu8eT4ClZSHFuhf0Q_large_ss_1-8f13253f.jpg",
+					"//images.cloudflareapps.com/SbVV1PDSTdaNBK1JegkR_large_ss_3-b5f35a82.jpg",
+					"//images.cloudflareapps.com/TTtsOyvPRsuEWJTgbbeM_large_ss_2-a4021bc6.jpg"
+				],
+				"tileImage": "//images.cloudflareapps.com/rMbKXA7KSuaEdCGJSKaz_tileImage.png",
+				"featuredAppImage": "",
+				"author": "CodeGuard Inc.",
+				"tagline": "",
+				"website": "https://www.codeguard.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [
+					{
+						"id": "codeguard-personal",
+						"title": "Personal",
+						"shortDescription": "",
+						"longDescription": "",
+						"visible": true,
+						"price": 500,
+						"order": 1,
+						"plan": "codeguard_plan_2",
+						"feature": "apps.codeguard.plan_2.enabled",
+						"created": null
+					},
+					{
+						"id": "codeguard-professional",
+						"title": "Professional",
+						"shortDescription": "",
+						"longDescription": "",
+						"visible": true,
+						"price": 9900,
+						"order": 2,
+						"plan": "codeguard_plan_3",
+						"feature": "apps.codeguard.plan_3.enabled",
+						"created": null
+					},
+					{
+						"id": "codeguard-legacy",
+						"title": "Legacy",
+						"shortDescription": "",
+						"longDescription": "",
+						"visible": false,
+						"price": 0,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"recommended-for-all-sites",
+					"security"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "3OwBi42_G_7j"
+				},
+				"created": "2017-04-25T17:43:56.099308Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-11-14T20:35:41.586732652Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-11-14T21:09:58.86024582Z"
+			}
+		}
+	]
+}

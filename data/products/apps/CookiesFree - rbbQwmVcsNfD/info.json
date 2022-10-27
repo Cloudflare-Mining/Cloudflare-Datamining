@@ -1,0 +1,171 @@
+{
+	"id": "rbbQwmVcsNfD",
+	"title": "CookiesFree",
+	"shortDescription": "La aplicación agregará un banner de pantalla inferior que in",
+	"longDescription": "La aplicación agregará un banner de pantalla inferior que informará al usuario sobre la política de cookies en su sitio.\n\nLa pantalla de configuración le da la opción de cambiar el texto y la transparencia del banner.",
+	"instructions": "La aplicación agregará un banner de pantalla inferior que informará al usuario sobre la política de cookies en su sitio.\n\nLa pantalla de configuración le da la opción de cambiar el texto y la transparencia del banner.",
+	"alias": "cookiesfree",
+	"orgId": "085163a126d083fc2e6b47d20f1b0dc6",
+	"icon": "https://images.cloudflareapps.com/uPRS1GDiftZ_/icon.png",
+	"screenshots": [],
+	"tileImage": "https://images.cloudflareapps.com/YQX-5eYCyWSC/tile.png",
+	"featuredAppImage": "https://images.cloudflareapps.com/iXp3RDaf2P56/tile.png",
+	"author": "teamcr",
+	"tagline": "",
+	"website": "https://team.cr",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://team.cr",
+	"privacyPolicyURL": "https://team.cr",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.0",
+	"infoVersion": "1.0.0",
+	"points": 0,
+	"supportEmail": "pablo@team.cr",
+	"products": [],
+	"categoryIds": [],
+	"agreements": {
+		"tos": {
+			"userId": "085163a126d083fc2e6b47d20f1b0dc6",
+			"created": "2020-06-13T10:01:29.147277483Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "uq1DAocK8crZ"
+	},
+	"created": "2020-06-13T10:01:27.129766Z",
+	"org": {
+		"id": "085163a126d083fc2e6b47d20f1b0dc6",
+		"title": "",
+		"username": "085163a126d083fc2e6b47d20f1b0dc6",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "rbbQwmVcsNfD",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"acceptButton": {
+							"default": "Entiendo",
+							"order": 2,
+							"title": "Botton de aceptar",
+							"type": "string"
+						},
+						"opacity": {
+							"default": 70,
+							"format": "slider",
+							"maximum": 100,
+							"minimum": 60,
+							"order": 3,
+							"spep": 1,
+							"title": "Opacity",
+							"type": "number"
+						},
+						"policyText": {
+							"default": "Al usar este sitio web, usted acepta que nosotros y nuestros socios podemos establecer cookies para fines tales como personalizar el contenido y la publicidad.",
+							"format": "textarea",
+							"order": 1,
+							"title": "Texto para las politicas",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.25,
+				"upvotes": 1,
+				"downvotes": 3
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/uq1DAocK8crZ",
+			"metadata": {
+				"code": {
+					"sourceTag": "uq1DAocK8crZ",
+					"uploadedOn": "2020-06-13T10:01:28.051837274Z"
+				}
+			},
+			"created": "2020-06-13T10:01:27.599819Z",
+			"proposedApp": {
+				"id": "rbbQwmVcsNfD",
+				"title": "CookiesFree",
+				"shortDescription": "La aplicación agregará un banner de pantalla inferior que in",
+				"longDescription": "La aplicación agregará un banner de pantalla inferior que informará al usuario sobre la política de cookies en su sitio.\n\nLa pantalla de configuración le da la opción de cambiar el texto y la transparencia del banner.",
+				"instructions": "La aplicación agregará un banner de pantalla inferior que informará al usuario sobre la política de cookies en su sitio.\n\nLa pantalla de configuración le da la opción de cambiar el texto y la transparencia del banner.",
+				"alias": "cookiesfree",
+				"orgId": "085163a126d083fc2e6b47d20f1b0dc6",
+				"icon": "https://images.cloudflareapps.com/uPRS1GDiftZ_/icon.png",
+				"screenshots": [],
+				"tileImage": "https://images.cloudflareapps.com/YQX-5eYCyWSC/tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/iXp3RDaf2P56/tile.png",
+				"author": "teamcr",
+				"tagline": "",
+				"website": "https://team.cr",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://team.cr",
+				"privacyPolicyURL": "https://team.cr",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "pablo@team.cr",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "uq1DAocK8crZ"
+				},
+				"created": "2020-06-13T10:01:27.129766Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "085163a126d083fc2e6b47d20f1b0dc6",
+				"requestedAt": "2020-06-13T10:01:29.133977807Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-06-14T18:47:31.895622295Z"
+			}
+		}
+	]
+}

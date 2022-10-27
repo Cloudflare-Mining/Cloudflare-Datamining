@@ -1,0 +1,536 @@
+{
+	"id": "Y7XQHZ2XJNLN",
+	"title": "Add CSS",
+	"shortDescription": "Add custom CSS to any part of your site.",
+	"longDescription": "Sometimes the styling and theming options available for an app just don’t fit your needs. If you know CSS, or you have a snippet, the __Add CSS__ app has got you covered. \n\nAdd CSS allows you insert CSS into the `<head>` of your website, making it easy to make small style adjustments to any other app you install with Cloudflare Apps.",
+	"instructions": "",
+	"alias": "add-css",
+	"orgId": "2684c89451b6b86b453405beb4662f46",
+	"icon": "//images.cloudflareapps.com/MldclVNMRb2Q90DCLZNL_icon.png",
+	"screenshots": [],
+	"tileImage": "",
+	"featuredAppImage": "",
+	"author": "Cloudflare Labs",
+	"tagline": "",
+	"website": "",
+	"sourceURL": "",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "#F17D6A",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "2.0.4",
+	"infoVersion": "2.0.4",
+	"points": 48,
+	"supportEmail": "support@cloudflare.com",
+	"products": [],
+	"categoryIds": [
+		"ui-and-design"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "f1279b4c7912eb17ba469bcbdfe62b19",
+			"created": "2017-07-06T08:52:26.851974664Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "jRBXueRLMQhK"
+	},
+	"created": "2017-06-04T06:39:13.735286Z",
+	"org": {
+		"id": "2684c89451b6b86b453405beb4662f46",
+		"title": "",
+		"username": "2684c89451b6b86b453405beb4662f46",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "ui-and-design",
+			"title": "UI & Design",
+			"description": "Apps that make your website more beautiful and user friendly.",
+			"icon": "",
+			"points": 10,
+			"visible": true,
+			"created": "2018-01-22T19:17:52.677513Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "v2.0.0",
+			"appId": "Y7XQHZ2XJNLN",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"css": {
+							"format": "code",
+							"placeholder": "body {\n color: #000;\n}",
+							"title": "CSS Code",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/jRBXueRLMQhK",
+			"metadata": {
+				"code": {
+					"sourceTag": "jRBXueRLMQhK",
+					"uploadedOn": "2017-06-04T06:39:15.164492366Z"
+				}
+			},
+			"created": "2017-06-04T06:39:14.229576Z",
+			"proposedApp": {
+				"id": "Y7XQHZ2XJNLN",
+				"title": "Add CSS",
+				"shortDescription": "Add custom CSS to any part of your website.",
+				"longDescription": "Sometimes the styling and theming options available for an app just don’t fit your needs. If you know CSS, or you have a snippet, the __Add CSS__ app has got you covered. \n\nAdd CSS allows you insert CSS into the `<head>` of your website, making it easy to make small style adjustments to any other app you install with Cloudflare Apps.",
+				"instructions": "",
+				"alias": "add-css",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/MldclVNMRb2Q90DCLZNL_icon.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"design",
+					"by-cloudflare",
+					"for-developers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "jRBXueRLMQhK"
+				},
+				"created": "2017-06-04T06:39:13.735286Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-06-04T06:39:16.211651608Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-06-04T08:16:13.535590678Z"
+			}
+		},
+		{
+			"tag": "2.0.1",
+			"appId": "Y7XQHZ2XJNLN",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"css": {
+							"format": "code",
+							"placeholder": "body {\n color: #000;\n}",
+							"title": "CSS Code",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/jRBXueRLMQhK",
+			"created": "2017-06-14T03:52:56.365912Z",
+			"proposedApp": {
+				"id": "Y7XQHZ2XJNLN",
+				"title": "Add CSS",
+				"shortDescription": "Add custom CSS to any part of your site.",
+				"longDescription": "Sometimes the styling and theming options available for an app just don’t fit your needs. If you know CSS, or you have a snippet, the __Add CSS__ app has got you covered. \n\nAdd CSS allows you insert CSS into the `<head>` of your website, making it easy to make small style adjustments to any other app you install with Cloudflare Apps.",
+				"instructions": "",
+				"alias": "add-css",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/MldclVNMRb2Q90DCLZNL_icon.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"design",
+					"by-cloudflare",
+					"for-developers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "jRBXueRLMQhK"
+				},
+				"created": "2017-06-04T06:39:13.735286Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-06-14T03:53:00.813134341Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-06-14T04:12:49.785970764Z"
+			}
+		},
+		{
+			"tag": "2.0.2",
+			"appId": "Y7XQHZ2XJNLN",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"css": {
+							"format": "code",
+							"placeholder": "body {\n color: #000;\n}",
+							"title": "CSS Code",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 3,
+				"downvotes": 0
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/jRBXueRLMQhK",
+			"created": "2017-07-06T08:52:26.637892Z",
+			"proposedApp": {
+				"id": "Y7XQHZ2XJNLN",
+				"title": "Add CSS",
+				"shortDescription": "Add custom CSS to any part of your site.",
+				"longDescription": "Sometimes the styling and theming options available for an app just don’t fit your needs. If you know CSS, or you have a snippet, the __Add CSS__ app has got you covered. \n\nAdd CSS allows you insert CSS into the `<head>` of your website, making it easy to make small style adjustments to any other app you install with Cloudflare Apps.",
+				"instructions": "",
+				"alias": "add-css",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/MldclVNMRb2Q90DCLZNL_icon.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"design",
+					"by-cloudflare",
+					"for-developers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "jRBXueRLMQhK"
+				},
+				"created": "2017-06-04T06:39:13.735286Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-07-06T08:52:26.850327678Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-07-06T08:57:07.933376282Z"
+			}
+		},
+		{
+			"tag": "2.0.3",
+			"appId": "Y7XQHZ2XJNLN",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"css": {
+							"format": "code",
+							"placeholder": "body {\n color: #000;\n}",
+							"title": "CSS Code",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.6,
+				"upvotes": 3,
+				"downvotes": 2
+			},
+			"releaseNotes": "Added to “UI & Design” category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/jRBXueRLMQhK",
+			"created": "2018-01-23T18:59:06.917029Z",
+			"proposedApp": {
+				"id": "Y7XQHZ2XJNLN",
+				"title": "Add CSS",
+				"shortDescription": "Add custom CSS to any part of your site.",
+				"longDescription": "Sometimes the styling and theming options available for an app just don’t fit your needs. If you know CSS, or you have a snippet, the __Add CSS__ app has got you covered. \n\nAdd CSS allows you insert CSS into the `<head>` of your website, making it easy to make small style adjustments to any other app you install with Cloudflare Apps.",
+				"instructions": "",
+				"alias": "add-css",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/MldclVNMRb2Q90DCLZNL_icon.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"by-cloudflare",
+					"for-developers",
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "jRBXueRLMQhK"
+				},
+				"created": "2017-06-04T06:39:13.735286Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-01-23T18:59:07.202776713Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-01-23T18:59:18.398239684Z"
+			}
+		},
+		{
+			"tag": "2.0.4",
+			"appId": "Y7XQHZ2XJNLN",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"css": {
+							"format": "code",
+							"placeholder": "body {\n color: #000;\n}",
+							"title": "CSS Code",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.92,
+				"upvotes": 35,
+				"downvotes": 3
+			},
+			"releaseNotes": "Updated app's categories",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/jRBXueRLMQhK",
+			"created": "2018-11-13T20:22:16.417428Z",
+			"proposedApp": {
+				"id": "Y7XQHZ2XJNLN",
+				"title": "Add CSS",
+				"shortDescription": "Add custom CSS to any part of your site.",
+				"longDescription": "Sometimes the styling and theming options available for an app just don’t fit your needs. If you know CSS, or you have a snippet, the __Add CSS__ app has got you covered. \n\nAdd CSS allows you insert CSS into the `<head>` of your website, making it easy to make small style adjustments to any other app you install with Cloudflare Apps.",
+				"instructions": "",
+				"alias": "add-css",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/MldclVNMRb2Q90DCLZNL_icon.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "jRBXueRLMQhK"
+				},
+				"created": "2017-06-04T06:39:13.735286Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-11-13T20:22:19.691320344Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-11-14T21:13:25.876031617Z"
+			}
+		}
+	]
+}

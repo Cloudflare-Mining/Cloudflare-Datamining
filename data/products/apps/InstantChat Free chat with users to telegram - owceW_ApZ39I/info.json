@@ -1,0 +1,181 @@
+{
+	"id": "owceW_ApZ39I",
+	"title": "InstantChat Free chat with users to telegram",
+	"shortDescription": "Free Live chat for your site for telegram, make quick answer",
+	"longDescription": "instantchat, support group https://t.me/joinchat/AiY260_LEx72gUlLjJsD3w",
+	"instructions": "https://t.me/InstantChatBot",
+	"alias": "instantchat",
+	"orgId": "d3b00f62f86da2f3ec8006a17386e98a",
+	"icon": "https://images.cloudflareapps.com/3V5yvIvcqGws/photo_2021-01-06_10-22-09.png",
+	"screenshots": [],
+	"tileImage": "",
+	"featuredAppImage": "",
+	"author": "Albert Safiullin",
+	"tagline": "",
+	"website": "https://cafechat.app",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://cafechat.app/terms.html",
+	"privacyPolicyURL": "",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.0",
+	"infoVersion": "1.0.0",
+	"points": 0,
+	"supportEmail": "albertincx@gmail.com",
+	"products": [],
+	"categoryIds": [],
+	"agreements": {
+		"tos": {
+			"userId": "d3b00f62f86da2f3ec8006a17386e98a",
+			"created": "2021-01-06T07:45:17.472745395Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "YUcIOjFYLLLH"
+	},
+	"created": "2021-01-06T07:45:13.270879Z",
+	"org": {
+		"id": "d3b00f62f86da2f3ec8006a17386e98a",
+		"title": "",
+		"username": "d3b00f62f86da2f3ec8006a17386e98a",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "owceW_ApZ39I",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						},
+						{
+							"type": "script",
+							"src": "./build/start.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "after",
+								"selector": "body"
+							},
+							"description": "Where should the message appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Message Location",
+							"type": "object"
+						},
+						"message": {
+							"default": "453150584",
+							"description": "A short example message.",
+							"format": "element",
+							"order": 1,
+							"title": "Message",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"dns": [
+					{
+						"created_on": "0001-01-01T00:00:00Z",
+						"modified_on": "0001-01-01T00:00:00Z",
+						"type": "TXT",
+						"name": "InstantChat Free chat with users to telegram",
+						"content": "Managed TXT Record",
+						"ttl": 120
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 3,
+				"downvotes": 0
+			},
+			"releaseNotes": "support group https://t.me/joinchat/AiY260_LEx72gUlLjJsD3w",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/YUcIOjFYLLLH",
+			"metadata": {
+				"code": {
+					"sourceTag": "YUcIOjFYLLLH",
+					"uploadedOn": "2021-01-06T07:45:15.550683526Z"
+				}
+			},
+			"created": "2021-01-06T07:45:14.9876Z",
+			"proposedApp": {
+				"id": "owceW_ApZ39I",
+				"title": "InstantChat Free chat with users to telegram",
+				"shortDescription": "Free Live chat for your site for telegram, make quick answer",
+				"longDescription": "instantchat, support group https://t.me/joinchat/AiY260_LEx72gUlLjJsD3w",
+				"instructions": "https://t.me/InstantChatBot",
+				"alias": "instantchat",
+				"orgId": "d3b00f62f86da2f3ec8006a17386e98a",
+				"icon": "https://images.cloudflareapps.com/3V5yvIvcqGws/photo_2021-01-06_10-22-09.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Albert Safiullin",
+				"tagline": "",
+				"website": "https://cafechat.app",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://cafechat.app/terms.html",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "albertincx@gmail.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "YUcIOjFYLLLH"
+				},
+				"created": "2021-01-06T07:45:13.270879Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "d3b00f62f86da2f3ec8006a17386e98a",
+				"requestedAt": "2021-01-06T07:45:17.462563114Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2021-01-11T17:27:26.202184495Z"
+			}
+		}
+	]
+}

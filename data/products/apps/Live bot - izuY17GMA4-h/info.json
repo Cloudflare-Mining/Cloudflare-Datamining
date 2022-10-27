@@ -1,0 +1,326 @@
+{
+	"id": "izuY17GMA4-h",
+	"title": "Live bot",
+	"shortDescription": "Discord Live Bot",
+	"longDescription": "",
+	"instructions": "",
+	"alias": "",
+	"orgId": "7c98e142fa0b58b73ceb20228fe45330",
+	"icon": "https://images.cloudflareapps.com/2F8XKx6KyNMX/DBqaDBERzpwAAAAASUVORK5CYII.png",
+	"screenshots": [],
+	"tileImage": "",
+	"featuredAppImage": "",
+	"author": "",
+	"tagline": "",
+	"website": "",
+	"sourceURL": "",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.0",
+	"infoVersion": "1.0.0",
+	"points": 0,
+	"supportEmail": "",
+	"products": [],
+	"categoryIds": [],
+	"agreements": {
+		"tos": {
+			"userId": "7c98e142fa0b58b73ceb20228fe45330",
+			"created": "2020-02-16T06:39:25.897668823Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "4k5iK2ajBo54"
+	},
+	"created": "2020-02-16T06:38:28.392284Z",
+	"org": {
+		"id": "7c98e142fa0b58b73ceb20228fe45330",
+		"title": "",
+		"username": "7c98e142fa0b58b73ceb20228fe45330",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "izuY17GMA4-h",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./src/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"buttons": {
+							"items": {
+								"properties": {
+									"advanced": {
+										"order": 8,
+										"properties": {
+											"beta": {
+												"default": false,
+												"description": "<a href=\"https://beta.widgetbot.io\" class=\"more\" target=\"_blank\">Learn more</a>",
+												"title": "WidgetBot BETA",
+												"type": "boolean"
+											},
+											"delay": {
+												"default": false,
+												"description": "Only load the WidgetBot embed when the user toggles it open",
+												"title": "Delay until interaction",
+												"type": "boolean"
+											}
+										},
+										"showIf": {
+											"buttons[].showAdvanced": true
+										},
+										"title": "Advanced options",
+										"type": "object"
+									},
+									"channel": {
+										"order": 2,
+										"placeholder": "339515332702240769",
+										"title": "Discord channel ID",
+										"type": "string"
+									},
+									"colors": {
+										"order": 4,
+										"properties": {
+											"background": {
+												"default": "#36393E",
+												"format": "color",
+												"showIf": {
+													"tier": {
+														"op": "!=",
+														"value": "free"
+													}
+												},
+												"title": "Widget background",
+												"type": "string"
+											},
+											"button": {
+												"default": "#607CDA",
+												"format": "color",
+												"showIf": {
+													"tier": {
+														"op": "!=",
+														"value": "free"
+													}
+												},
+												"title": "Widget button",
+												"type": "string"
+											},
+											"toggle": {
+												"default": "#7289DA",
+												"format": "color",
+												"title": "Toggle button",
+												"type": "string"
+											}
+										},
+										"title": "Colors",
+										"type": "object"
+									},
+									"customization": {
+										"order": 6,
+										"properties": {
+											"image": {
+												"format": "image",
+												"title": "Custom toggle icon",
+												"type": "string"
+											},
+											"imageSize": {
+												"default": 50,
+												"format": "slider",
+												"maximum": 200,
+												"minimum": 0,
+												"showIf": {
+													"buttons[].customization.image": {
+														"op": "!=",
+														"value": ""
+													}
+												},
+												"step": 1,
+												"title": "Adjust toggle icon zoom",
+												"type": "number"
+											},
+											"indicator": {
+												"default": true,
+												"title": "Enable unread indicator",
+												"type": "boolean"
+											},
+											"showToasts": {
+												"default": true,
+												"title": "Enable notifications",
+												"type": "boolean"
+											},
+											"toasts": {
+												"properties": {
+													"visibilityTime": {
+														"default": 10,
+														"title": "Visibility time (seconds)",
+														"type": "number"
+													}
+												},
+												"showIf": {
+													"buttons[].customization.showToasts": true
+												},
+												"title": "Notification options",
+												"type": "object"
+											}
+										},
+										"showIf": {
+											"buttons[].showCustomization": true
+										},
+										"title": "Customization options",
+										"type": "object"
+									},
+									"position": {
+										"default": "bottom-right",
+										"enum": [
+											"top-left",
+											"top-right",
+											"bottom-left",
+											"bottom-right"
+										],
+										"enumNames": {
+											"bottom-left": "Bottom left",
+											"bottom-right": "Bottom right",
+											"top-left": "Top left",
+											"top-right": "Top right"
+										},
+										"order": 3,
+										"title": "Position",
+										"type": "string"
+									},
+									"server": {
+										"order": 1,
+										"placeholder": "339515332702240769",
+										"title": "Discord server ID",
+										"type": "string"
+									},
+									"showAdvanced": {
+										"default": false,
+										"order": 7,
+										"title": "Show advanced options",
+										"type": "boolean"
+									},
+									"showCustomization": {
+										"default": false,
+										"order": 5,
+										"title": "More customization options",
+										"type": "boolean"
+									}
+								},
+								"type": "object"
+							},
+							"order": 2,
+							"title": "Crate buttons",
+							"type": "array"
+						},
+						"tier": {
+							"default": "free",
+							"description": "Becoming a <a href=\"https://www.patreon.com/bePatron?u=5594164\" target=\"_blank\">patreon</a>, enables access to more customization",
+							"enum": [
+								"free",
+								"patreon",
+								"ultimate"
+							],
+							"enumNames": {
+								"free": "Free",
+								"patreon": "Patreon ($1)",
+								"ultimate": "Ultimate patreon ($5)"
+							},
+							"order": 1,
+							"title": "WidgetBot patreon tier",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.08,
+				"upvotes": 1,
+				"downvotes": 12
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/4k5iK2ajBo54",
+			"metadata": {
+				"code": {
+					"sourceTag": "4k5iK2ajBo54",
+					"uploadedOn": "2020-02-16T06:38:29.157637249Z"
+				}
+			},
+			"created": "2020-02-16T06:38:28.780151Z",
+			"proposedApp": {
+				"id": "izuY17GMA4-h",
+				"title": "Live bot",
+				"shortDescription": "Discord Live Bot",
+				"longDescription": "",
+				"instructions": "",
+				"alias": "",
+				"orgId": "7c98e142fa0b58b73ceb20228fe45330",
+				"icon": "https://images.cloudflareapps.com/2F8XKx6KyNMX/DBqaDBERzpwAAAAASUVORK5CYII.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "4k5iK2ajBo54"
+				},
+				"created": "2020-02-16T06:38:28.392284Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "7c98e142fa0b58b73ceb20228fe45330",
+				"requestedAt": "2020-02-16T06:39:25.880601917Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-02-18T17:18:55.915453322Z"
+			}
+		}
+	]
+}

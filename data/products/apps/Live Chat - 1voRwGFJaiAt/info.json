@@ -1,0 +1,2465 @@
+{
+	"id": "1voRwGFJaiAt",
+	"title": "Live Chat",
+	"shortDescription": "Live chat and messaging platform for sales and customer help",
+	"longDescription": "LiveChat is a **live chat application for customer support and online sales**; designed to help businesses manage communication and interactions with customers.\n\nHaving live chat on your website means that on-site visitors can send you their questions and receive answers in no time. Collect feedback and increase conversions through live conversations. \n\nThe way it works is simple: you add live chat to your website, wait for your visitors to ask a question or, alternatively, approach them with chat invitations. For you, it means more satisfied customers, more resolved problems, and more sold products.\n\nIn addition to live chat support, this chat app comes with a help desk that is in-built – without any additional charge. All email communication can be sent to and managed from LiveChat, which will serve as a customer service platform for all kinds of interactions with your customers.\n\nAdd LiveChat to your website free of charge and **make sure that no visitor will stay unattended**!\n\nLiveChat comes with a 30-day free trial so you can use our software without risk or obligation. No credit card required.",
+	"instructions": "For the detailed instructions on how to adopt LiveChat alongside Cloudflare see this https://www.livechatinc.com/kb/cloudflare-add-livechat/",
+	"alias": "livechat",
+	"orgId": "d572df6acee7f322a191345be045910b",
+	"icon": "https://images.cloudflareapps.com/usZpfecAHEeb/icon.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/ZO65uTZFqgnk/livechat_chats.png",
+		"https://images.cloudflareapps.com/eqiiwIsJBbeH/livechat_customers.png",
+		"https://images.cloudflareapps.com/Mm5kFUJJ7lon/livechat_archives.png",
+		"https://images.cloudflareapps.com/PUVNdf5SkoBT/livechat_settings.png",
+		"https://images.cloudflareapps.com/2V35WgueXf02/livechat_agents.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/6x47kMRwVkHt/tile.png",
+	"featuredAppImage": "https://images.cloudflareapps.com/XvbMAYiapfYt/CloudFlare_02.png",
+	"author": "LiveChat Inc.",
+	"tagline": "",
+	"website": "https://www.livechatinc.com/?a=YeAa_yEig&utm_source=cloudflare.com&utm_medium=referral&utm_campaign=cloudflare_marketplace&a=Pe9-QefEg8A",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://www.livechatinc.com/terms-and-conditions/?a=YeAa_yEig&utm_source=cloudflare.com&utm_medium=referral&utm_campaign=cloudflare_marketplace&a=Pe9-QefEg8A",
+	"privacyPolicyURL": "https://www.livechatinc.com/privacy-policy/?a=YeAa_yEig&utm_source=cloudflare.com&utm_medium=referral&utm_campaign=cloudflare_marketplace&a=Pe9-QefEg8A",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.10",
+	"infoVersion": "1.0.10",
+	"points": 0,
+	"supportEmail": "support@livechatinc.com",
+	"products": [],
+	"categoryIds": [
+		"social-and-communication"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "d572df6acee7f322a191345be045910b",
+			"created": "2018-12-14T11:02:32.106624109Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "HLf7G-WxfjYs"
+	},
+	"created": "2018-12-12T12:09:00.127633Z",
+	"org": {
+		"id": "d572df6acee7f322a191345be045910b",
+		"title": "",
+		"username": "d572df6acee7f322a191345be045910b",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "social-and-communication",
+			"title": "Social & Communication",
+			"description": "Apps that make it easier to communicate with your customers.",
+			"icon": "",
+			"points": 80,
+			"visible": true,
+			"created": "2018-01-22T19:17:10.030031Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "1voRwGFJaiAt",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./src/code.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"info": {
+							"helpvalue": "You see example of a LiveChat widget. Please login or register to customize your own instance. If you need any help, you are welcome to start a chat with our support team.",
+							"showIf": {
+								"livechat": {
+									"op": "==",
+									"value": ""
+								}
+							},
+							"type": "help"
+						},
+						"licenseID": {
+							"placeholder": "0123456789",
+							"showIf": {
+								"livechat": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "License Number:",
+							"type": "string"
+						},
+						"livechat": {
+							"format": "account",
+							"order": 1,
+							"services": [
+								"livechat-accounts-prod"
+							],
+							"title": "Login or register...",
+							"type": "object"
+						}
+					}
+				},
+				"hooks": [
+					{
+						"action": "reset-options",
+						"events": [
+							"preview"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/option-change/account",
+						"events": [
+							"option-change:livechat"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error when account was changed. Please try again."
+						},
+						"authenticate": [
+							"livechat"
+						]
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/preview",
+						"events": [
+							"preview"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error for a preview. Please try again."
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/new",
+						"events": [
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error for installation. Please try again."
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/update",
+						"events": [
+							"update-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error for updating. Please try again."
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/delete",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error for deleting. Please try again."
+						},
+						"authenticate": []
+					},
+					{
+						"action": "reset-options",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"manual": true,
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/yze4o6MRtW8r",
+			"metadata": {
+				"code": {
+					"sourceTag": "yze4o6MRtW8r",
+					"uploadedOn": "2018-12-12T15:07:48.182187275Z"
+				}
+			},
+			"created": "2018-12-12T12:09:00.61009Z",
+			"proposedApp": {
+				"id": "1voRwGFJaiAt",
+				"title": "LiveChat",
+				"shortDescription": "Sell more by engaging with website visitors in real-time",
+				"longDescription": "LiveChat is a live chat application that can be integrated into your website to capture more leads and close more sales. Having LiveChat on your website means that on-site visitors can send you their questions and receive answers in no time. Collect feedback and increase conversions through live conversations. \n\nThe way it works is simple: you add live chat to your website, wait for your visitors to ask a question or, alternatively, approach them with chat invitations. For you, it means more satisfied customers, more resolved problems, and more sold products.\n\nIn addition to that, we offer our dedicated ticketing system – without any additional charge. All email communication can be sent to and managed from LiveChat, which will serve as a customer service platform for all kinds of interactions with your customers.\n\nWith LiveChat, you can:\n* identify people on the website and engage them using proactive chats;\n* make use of the detailed metrics to measure your customer service efficiency;\n* provide 24/7 support with the use of the built-in ticketing system;\n* answer chats on the go via mobile applications for iPad, iPhone, and Android devices.\n\nIntegrate LiveChat with your website and make sure that no visitor will stay unattended!",
+				"instructions": "",
+				"alias": "livechat",
+				"orgId": "d572df6acee7f322a191345be045910b",
+				"icon": "https://images.cloudflareapps.com/usZpfecAHEeb/icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/2O-_L00hJziE/screenshot-1.png",
+					"https://images.cloudflareapps.com/2O-_L00hJziE/screenshot-2.png",
+					"https://images.cloudflareapps.com/2O-_L00hJziE/screenshot-4.png",
+					"https://images.cloudflareapps.com/2O-_L00hJziE/screenshot-3.png",
+					"https://images.cloudflareapps.com/2O-_L00hJziE/screenshot-5.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/6x47kMRwVkHt/tile.png",
+				"featuredAppImage": "",
+				"author": "LiveChat Inc.",
+				"tagline": "",
+				"website": "https://www.livechatinc.com/?utm_source=cloudflare.com&utm_medium=referral&utm_campaign=cloudflare_marketplace&a=Pe9-QefEg8A",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.livechatinc.com/terms-and-conditions/?utm_source=cloudflare.com&utm_medium=referral&utm_campaign=cloudflare_marketplace&a=Pe9-QefEg8A",
+				"privacyPolicyURL": "https://www.livechatinc.com/privacy-policy/?utm_source=cloudflare.com&utm_medium=referral&utm_campaign=cloudflare_marketplace&a=Pe9-QefEg8A",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@livechatinc.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "HLf7G-WxfjYs"
+				},
+				"created": "2018-12-12T12:09:00.127633Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "d572df6acee7f322a191345be045910b",
+				"requestedAt": "2018-12-14T11:02:32.094761012Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2018-12-18T17:54:46.303959875Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "1voRwGFJaiAt",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./src/code.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"info": {
+							"helpvalue": "You see example of a LiveChat widget. Please login or register to customize your own instance. If you need any help, you are welcome to start a chat with our support team.",
+							"showIf": {
+								"livechat": {
+									"op": "==",
+									"value": ""
+								}
+							},
+							"type": "help"
+						},
+						"licenseID": {
+							"placeholder": "0123456789",
+							"showIf": {
+								"livechat": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "License Number:",
+							"type": "string"
+						},
+						"livechat": {
+							"format": "account",
+							"order": 1,
+							"services": [
+								"livechat-accounts-prod"
+							],
+							"title": "Login or register...",
+							"type": "object"
+						}
+					}
+				},
+				"hooks": [
+					{
+						"action": "reset-options",
+						"events": [
+							"preview"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/option-change/account",
+						"events": [
+							"option-change:livechat"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error when account was changed. Please try again."
+						},
+						"authenticate": [
+							"livechat"
+						]
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/preview",
+						"events": [
+							"preview"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error for a preview. Please try again."
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/new",
+						"events": [
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error for installation. Please try again."
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/update",
+						"events": [
+							"update-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error for updating. Please try again."
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/delete",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error for deleting. Please try again."
+						},
+						"authenticate": []
+					},
+					{
+						"action": "reset-options",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/yze4o6MRtW8r",
+			"created": "2018-12-18T20:43:48.254185Z",
+			"proposedApp": {
+				"id": "1voRwGFJaiAt",
+				"title": "LiveChat",
+				"shortDescription": "Sell more by engaging with website visitors in real-time",
+				"longDescription": "LiveChat is a live chat application that can be integrated into your website to capture more leads and close more sales. Having LiveChat on your website means that on-site visitors can send you their questions and receive answers in no time. Collect feedback and increase conversions through live conversations. \n\nThe way it works is simple: you add live chat to your website, wait for your visitors to ask a question or, alternatively, approach them with chat invitations. For you, it means more satisfied customers, more resolved problems, and more sold products.\n\nIn addition to that, we offer our dedicated ticketing system – without any additional charge. All email communication can be sent to and managed from LiveChat, which will serve as a customer service platform for all kinds of interactions with your customers.\n\nWith LiveChat, you can:\n* identify people on the website and engage them using proactive chats;\n* make use of the detailed metrics to measure your customer service efficiency;\n* provide 24/7 support with the use of the built-in ticketing system;\n* answer chats on the go via mobile applications for iPad, iPhone, and Android devices.\n\nIntegrate LiveChat with your website and make sure that no visitor will stay unattended!",
+				"instructions": "",
+				"alias": "livechat",
+				"orgId": "d572df6acee7f322a191345be045910b",
+				"icon": "https://images.cloudflareapps.com/usZpfecAHEeb/icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/2O-_L00hJziE/screenshot-1.png",
+					"https://images.cloudflareapps.com/2O-_L00hJziE/screenshot-2.png",
+					"https://images.cloudflareapps.com/2O-_L00hJziE/screenshot-4.png",
+					"https://images.cloudflareapps.com/2O-_L00hJziE/screenshot-3.png",
+					"https://images.cloudflareapps.com/2O-_L00hJziE/screenshot-5.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/6x47kMRwVkHt/tile.png",
+				"featuredAppImage": "",
+				"author": "LiveChat Inc.",
+				"tagline": "",
+				"website": "https://www.livechatinc.com/?utm_source=cloudflare.com&utm_medium=referral&utm_campaign=cloudflare_marketplace&a=Pe9-QefEg8A",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.livechatinc.com/terms-and-conditions/?utm_source=cloudflare.com&utm_medium=referral&utm_campaign=cloudflare_marketplace&a=Pe9-QefEg8A",
+				"privacyPolicyURL": "https://www.livechatinc.com/privacy-policy/?utm_source=cloudflare.com&utm_medium=referral&utm_campaign=cloudflare_marketplace&a=Pe9-QefEg8A",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@livechatinc.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "HLf7G-WxfjYs"
+				},
+				"created": "2018-12-12T12:09:00.127633Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-12-18T20:43:48.534480383Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-12-18T20:44:55.449134066Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "1voRwGFJaiAt",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./src/code.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"info": {
+							"helpvalue": "You see example of a LiveChat widget. Please login or register to customize your own instance. If you need any help, you are welcome to start a chat with our support team.",
+							"showIf": {
+								"livechat": {
+									"op": "==",
+									"value": ""
+								}
+							},
+							"type": "help"
+						},
+						"licenseID": {
+							"placeholder": "0123456789",
+							"required": true,
+							"showIf": {
+								"livechat": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "License Number:",
+							"type": "string"
+						},
+						"livechat": {
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"livechat-accounts-prod"
+							],
+							"title": "Login or register...",
+							"type": "object"
+						}
+					}
+				},
+				"hooks": [
+					{
+						"action": "reset-options",
+						"events": [
+							"preview"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/option-change/account",
+						"events": [
+							"option-change:livechat"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error when account was changed. Please try again."
+						},
+						"authenticate": [
+							"livechat"
+						]
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/preview",
+						"events": [
+							"preview"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error for a preview. Please try again."
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/new",
+						"events": [
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error for installation. Please try again."
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/update",
+						"events": [
+							"update-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error for updating. Please try again."
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/delete",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error for deleting. Please try again."
+						},
+						"authenticate": []
+					},
+					{
+						"action": "reset-options",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/AhOFALLJNlti",
+			"metadata": {
+				"code": {
+					"sourceTag": "AhOFALLJNlti",
+					"uploadedOn": "2018-12-21T16:52:46.053544721Z"
+				}
+			},
+			"created": "2018-12-21T16:52:45.610816Z",
+			"proposedApp": {
+				"id": "1voRwGFJaiAt",
+				"title": "LiveChat",
+				"shortDescription": "Live chat and messaging platform for sales and customer help",
+				"longDescription": "LiveChat is a **live chat application for customer support and online sales**; designed to help businesses manage communication and interactions with customers.\n\nHaving live chat on your website means that on-site visitors can send you their questions and receive answers in no time. Collect feedback and increase conversions through live conversations. \n\nThe way it works is simple: you add live chat to your website, wait for your visitors to ask a question or, alternatively, approach them with chat invitations. For you, it means more satisfied customers, more resolved problems, and more sold products.\n\nIn addition to live chat support, this chat app comes with a help desk that is in-built – without any additional charge. All email communication can be sent to and managed from LiveChat, which will serve as a customer service platform for all kinds of interactions with your customers.\n\nAdd LiveChat to your website free of charge and **make sure that no visitor will stay unattended**!",
+				"instructions": "",
+				"alias": "livechat",
+				"orgId": "d572df6acee7f322a191345be045910b",
+				"icon": "https://images.cloudflareapps.com/usZpfecAHEeb/icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/2O-_L00hJziE/screenshot-1.png",
+					"https://images.cloudflareapps.com/2O-_L00hJziE/screenshot-2.png",
+					"https://images.cloudflareapps.com/2O-_L00hJziE/screenshot-4.png",
+					"https://images.cloudflareapps.com/2O-_L00hJziE/screenshot-3.png",
+					"https://images.cloudflareapps.com/2O-_L00hJziE/screenshot-5.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/6x47kMRwVkHt/tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/rF5aRb7zzrjs/Cloudflare_banner.png",
+				"author": "LiveChat Inc.",
+				"tagline": "",
+				"website": "https://www.livechatinc.com/?a=YeAa_yEig&utm_source=cloudflare.com&utm_medium=referral&utm_campaign=cloudflare_marketplace&a=Pe9-QefEg8A",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.livechatinc.com/terms-and-conditions/?a=YeAa_yEig&utm_source=cloudflare.com&utm_medium=referral&utm_campaign=cloudflare_marketplace&a=Pe9-QefEg8A",
+				"privacyPolicyURL": "https://www.livechatinc.com/privacy-policy/?a=YeAa_yEig&utm_source=cloudflare.com&utm_medium=referral&utm_campaign=cloudflare_marketplace&a=Pe9-QefEg8A",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@livechatinc.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "HLf7G-WxfjYs"
+				},
+				"created": "2018-12-12T12:09:00.127633Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "d572df6acee7f322a191345be045910b",
+				"requestedAt": "2018-12-31T11:48:48.323769957Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2019-01-03T22:03:27.221183708Z"
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "1voRwGFJaiAt",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./src/code.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"info": {
+							"helpvalue": "You see example of a LiveChat widget. Please login or register to customize your own instance. If you need any help, you are welcome to start a chat with our support team.",
+							"showIf": {
+								"livechat": {
+									"op": "==",
+									"value": ""
+								}
+							},
+							"type": "help"
+						},
+						"licenseID": {
+							"placeholder": "0123456789",
+							"required": true,
+							"showIf": {
+								"livechat": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "License Number:",
+							"type": "string"
+						},
+						"livechat": {
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"livechat-accounts-prod"
+							],
+							"title": "Login or register...",
+							"type": "object"
+						}
+					}
+				},
+				"hooks": [
+					{
+						"action": "reset-options",
+						"events": [
+							"preview"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/option-change/account",
+						"events": [
+							"option-change:livechat"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error when account was changed. Please try again."
+						},
+						"authenticate": [
+							"livechat"
+						]
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/preview",
+						"events": [
+							"preview"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error for a preview. Please try again."
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/new",
+						"events": [
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error for installation. Please try again."
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/update",
+						"events": [
+							"update-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error for updating. Please try again."
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/delete",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error for deleting. Please try again."
+						},
+						"authenticate": []
+					},
+					{
+						"action": "reset-options",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/AhOFALLJNlti",
+			"created": "2019-01-11T14:56:07.398216Z",
+			"proposedApp": {
+				"id": "1voRwGFJaiAt",
+				"title": "Live Chat",
+				"shortDescription": "Live chat and messaging platform for sales and customer help",
+				"longDescription": "LiveChat is a **live chat application for customer support and online sales**; designed to help businesses manage communication and interactions with customers.\n\nHaving live chat on your website means that on-site visitors can send you their questions and receive answers in no time. Collect feedback and increase conversions through live conversations. \n\nThe way it works is simple: you add live chat to your website, wait for your visitors to ask a question or, alternatively, approach them with chat invitations. For you, it means more satisfied customers, more resolved problems, and more sold products.\n\nIn addition to live chat support, this chat app comes with a help desk that is in-built – without any additional charge. All email communication can be sent to and managed from LiveChat, which will serve as a customer service platform for all kinds of interactions with your customers.\n\nAdd LiveChat to your website free of charge and **make sure that no visitor will stay unattended**!",
+				"instructions": "For the detailed instructions on how to adopt LiveChat alongside Cloudflare see this https://www.livechatinc.com/kb/cloudflare-add-livechat/",
+				"alias": "livechat",
+				"orgId": "d572df6acee7f322a191345be045910b",
+				"icon": "https://images.cloudflareapps.com/usZpfecAHEeb/icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/2O-_L00hJziE/screenshot-1.png",
+					"https://images.cloudflareapps.com/tGOQFwk3g3Ty/livechat_chats.png",
+					"https://images.cloudflareapps.com/H_ziDnF3nL_f/livechat_customers.png",
+					"https://images.cloudflareapps.com/ZO-1_cmN0Qj5/livechat_settings.png",
+					"https://images.cloudflareapps.com/_LrSCe0BBRRu/livechat_agents.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/6x47kMRwVkHt/tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/kVHsmv4lZbKe/CloudFlare_01_v01-07.png",
+				"author": "LiveChat Inc.",
+				"tagline": "",
+				"website": "https://www.livechatinc.com/?a=YeAa_yEig&utm_source=cloudflare.com&utm_medium=referral&utm_campaign=cloudflare_marketplace&a=Pe9-QefEg8A",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.livechatinc.com/terms-and-conditions/?a=YeAa_yEig&utm_source=cloudflare.com&utm_medium=referral&utm_campaign=cloudflare_marketplace&a=Pe9-QefEg8A",
+				"privacyPolicyURL": "https://www.livechatinc.com/privacy-policy/?a=YeAa_yEig&utm_source=cloudflare.com&utm_medium=referral&utm_campaign=cloudflare_marketplace&a=Pe9-QefEg8A",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@livechatinc.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "HLf7G-WxfjYs"
+				},
+				"created": "2018-12-12T12:09:00.127633Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "d572df6acee7f322a191345be045910b",
+				"requestedAt": "2019-01-11T14:57:07.905679692Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2019-01-11T17:32:21.008309095Z"
+			}
+		},
+		{
+			"tag": "1.0.4",
+			"appId": "1voRwGFJaiAt",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./src/code.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"info": {
+							"helpvalue": "You see example of a LiveChat widget. Please login or register to customize your own instance. If you need any help, you are welcome to start a chat with our support team.",
+							"showIf": {
+								"livechat": {
+									"op": "==",
+									"value": ""
+								}
+							},
+							"type": "help"
+						},
+						"licenseID": {
+							"placeholder": "0123456789",
+							"required": true,
+							"showIf": {
+								"livechat": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "License Number:",
+							"type": "string"
+						},
+						"livechat": {
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"livechat-accounts-prod"
+							],
+							"title": "Login or register...",
+							"type": "object"
+						}
+					}
+				},
+				"hooks": [
+					{
+						"action": "reset-options",
+						"events": [
+							"preview"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/option-change/account",
+						"events": [
+							"option-change:livechat"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error when account was changed. Please try again."
+						},
+						"authenticate": [
+							"livechat"
+						]
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/preview",
+						"events": [
+							"preview"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error for a preview. Please try again."
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/new",
+						"events": [
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error for installation. Please try again."
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/update",
+						"events": [
+							"update-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error for updating. Please try again."
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/delete",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error for deleting. Please try again."
+						},
+						"authenticate": []
+					},
+					{
+						"action": "reset-options",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/AhOFALLJNlti",
+			"created": "2019-01-15T21:25:37.662024Z",
+			"proposedApp": {
+				"id": "1voRwGFJaiAt",
+				"title": "Live Chat",
+				"shortDescription": "Live chat and messaging platform for sales and customer help",
+				"longDescription": "LiveChat is a **live chat application for customer support and online sales**; designed to help businesses manage communication and interactions with customers.\n\nHaving live chat on your website means that on-site visitors can send you their questions and receive answers in no time. Collect feedback and increase conversions through live conversations. \n\nThe way it works is simple: you add live chat to your website, wait for your visitors to ask a question or, alternatively, approach them with chat invitations. For you, it means more satisfied customers, more resolved problems, and more sold products.\n\nIn addition to live chat support, this chat app comes with a help desk that is in-built – without any additional charge. All email communication can be sent to and managed from LiveChat, which will serve as a customer service platform for all kinds of interactions with your customers.\n\nAdd LiveChat to your website free of charge and **make sure that no visitor will stay unattended**!\n\nLiveChat comes with a 30-day free trial so you can use our software without risk or obligation. No credit card required.",
+				"instructions": "For the detailed instructions on how to adopt LiveChat alongside Cloudflare see this https://www.livechatinc.com/kb/cloudflare-add-livechat/",
+				"alias": "livechat",
+				"orgId": "d572df6acee7f322a191345be045910b",
+				"icon": "https://images.cloudflareapps.com/usZpfecAHEeb/icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/2O-_L00hJziE/screenshot-1.png",
+					"https://images.cloudflareapps.com/tGOQFwk3g3Ty/livechat_chats.png",
+					"https://images.cloudflareapps.com/H_ziDnF3nL_f/livechat_customers.png",
+					"https://images.cloudflareapps.com/ZO-1_cmN0Qj5/livechat_settings.png",
+					"https://images.cloudflareapps.com/_LrSCe0BBRRu/livechat_agents.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/6x47kMRwVkHt/tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/kVHsmv4lZbKe/CloudFlare_01_v01-07.png",
+				"author": "LiveChat Inc.",
+				"tagline": "",
+				"website": "https://www.livechatinc.com/?a=YeAa_yEig&utm_source=cloudflare.com&utm_medium=referral&utm_campaign=cloudflare_marketplace&a=Pe9-QefEg8A",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.livechatinc.com/terms-and-conditions/?a=YeAa_yEig&utm_source=cloudflare.com&utm_medium=referral&utm_campaign=cloudflare_marketplace&a=Pe9-QefEg8A",
+				"privacyPolicyURL": "https://www.livechatinc.com/privacy-policy/?a=YeAa_yEig&utm_source=cloudflare.com&utm_medium=referral&utm_campaign=cloudflare_marketplace&a=Pe9-QefEg8A",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@livechatinc.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "HLf7G-WxfjYs"
+				},
+				"created": "2018-12-12T12:09:00.127633Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "d572df6acee7f322a191345be045910b",
+				"requestedAt": "2019-01-15T21:25:39.159092069Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2019-01-16T17:26:38.232352467Z"
+			}
+		},
+		{
+			"tag": "1.0.5",
+			"appId": "1voRwGFJaiAt",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./src/code.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"info": {
+							"helpvalue": "You see example of a LiveChat widget. Please login or register to customize your own instance. If you need any help, you are welcome to start a chat with our support team.",
+							"showIf": {
+								"livechat": {
+									"op": "==",
+									"value": ""
+								}
+							},
+							"type": "help"
+						},
+						"licenseID": {
+							"placeholder": "0123456789",
+							"required": true,
+							"showIf": {
+								"livechat": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "License Number:",
+							"type": "string"
+						},
+						"livechat": {
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"livechat-accounts-prod"
+							],
+							"title": "Login or register...",
+							"type": "object"
+						}
+					}
+				},
+				"hooks": [
+					{
+						"action": "reset-options",
+						"events": [
+							"preview"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/option-change/account",
+						"events": [
+							"option-change:livechat"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error when account was changed. Please try again."
+						},
+						"authenticate": [
+							"livechat"
+						]
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/preview",
+						"events": [
+							"preview"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error for a preview. Please try again."
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/new",
+						"events": [
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error for installation. Please try again."
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/update",
+						"events": [
+							"update-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error for updating. Please try again."
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/delete",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error for deleting. Please try again."
+						},
+						"authenticate": []
+					},
+					{
+						"action": "reset-options",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 4,
+				"downvotes": 0
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/AhOFALLJNlti",
+			"created": "2019-01-31T13:19:01.49391Z",
+			"proposedApp": {
+				"id": "1voRwGFJaiAt",
+				"title": "Live Chat",
+				"shortDescription": "Live chat and messaging platform for sales and customer help",
+				"longDescription": "LiveChat is a **live chat application for customer support and online sales**; designed to help businesses manage communication and interactions with customers.\n\nHaving live chat on your website means that on-site visitors can send you their questions and receive answers in no time. Collect feedback and increase conversions through live conversations. \n\nThe way it works is simple: you add live chat to your website, wait for your visitors to ask a question or, alternatively, approach them with chat invitations. For you, it means more satisfied customers, more resolved problems, and more sold products.\n\nIn addition to live chat support, this chat app comes with a help desk that is in-built – without any additional charge. All email communication can be sent to and managed from LiveChat, which will serve as a customer service platform for all kinds of interactions with your customers.\n\nAdd LiveChat to your website free of charge and **make sure that no visitor will stay unattended**!\n\nLiveChat comes with a 30-day free trial so you can use our software without risk or obligation. No credit card required.",
+				"instructions": "For the detailed instructions on how to adopt LiveChat alongside Cloudflare see this https://www.livechatinc.com/kb/cloudflare-add-livechat/",
+				"alias": "livechat",
+				"orgId": "d572df6acee7f322a191345be045910b",
+				"icon": "https://images.cloudflareapps.com/usZpfecAHEeb/icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/2O-_L00hJziE/screenshot-1.png",
+					"https://images.cloudflareapps.com/tGOQFwk3g3Ty/livechat_chats.png",
+					"https://images.cloudflareapps.com/H_ziDnF3nL_f/livechat_customers.png",
+					"https://images.cloudflareapps.com/ZO-1_cmN0Qj5/livechat_settings.png",
+					"https://images.cloudflareapps.com/_LrSCe0BBRRu/livechat_agents.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/6x47kMRwVkHt/tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/pqh26dkoof9T/CloudFlare_1824x385px.png",
+				"author": "LiveChat Inc.",
+				"tagline": "",
+				"website": "https://www.livechatinc.com/?a=YeAa_yEig&utm_source=cloudflare.com&utm_medium=referral&utm_campaign=cloudflare_marketplace&a=Pe9-QefEg8A",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.livechatinc.com/terms-and-conditions/?a=YeAa_yEig&utm_source=cloudflare.com&utm_medium=referral&utm_campaign=cloudflare_marketplace&a=Pe9-QefEg8A",
+				"privacyPolicyURL": "https://www.livechatinc.com/privacy-policy/?a=YeAa_yEig&utm_source=cloudflare.com&utm_medium=referral&utm_campaign=cloudflare_marketplace&a=Pe9-QefEg8A",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@livechatinc.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "HLf7G-WxfjYs"
+				},
+				"created": "2018-12-12T12:09:00.127633Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "d572df6acee7f322a191345be045910b",
+				"requestedAt": "2019-01-31T13:19:02.484371889Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2019-01-31T18:43:43.594149483Z"
+			}
+		},
+		{
+			"tag": "1.0.6",
+			"appId": "1voRwGFJaiAt",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./src/code.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"info": {
+							"helpvalue": "You see example of a LiveChat widget. Please login or register to customize your own instance. If you need any help, you are welcome to start a chat with our support team.",
+							"showIf": {
+								"livechat": {
+									"op": "==",
+									"value": ""
+								}
+							},
+							"type": "help"
+						},
+						"licenseID": {
+							"placeholder": "0123456789",
+							"required": true,
+							"showIf": {
+								"livechat": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "License Number:",
+							"type": "string"
+						},
+						"livechat": {
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"livechat-accounts-prod"
+							],
+							"title": "Login or register...",
+							"type": "object"
+						}
+					}
+				},
+				"hooks": [
+					{
+						"action": "reset-options",
+						"events": [
+							"preview"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/option-change/account",
+						"events": [
+							"option-change:livechat"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error when account was changed. Please try again."
+						},
+						"authenticate": [
+							"livechat"
+						]
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/preview",
+						"events": [
+							"preview"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error for a preview. Please try again."
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/new",
+						"events": [
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error for installation. Please try again."
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/update",
+						"events": [
+							"update-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error for updating. Please try again."
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/delete",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error for deleting. Please try again."
+						},
+						"authenticate": []
+					},
+					{
+						"action": "reset-options",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.25,
+				"upvotes": 1,
+				"downvotes": 3
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/AhOFALLJNlti",
+			"created": "2019-04-02T10:21:30.428132Z",
+			"proposedApp": {
+				"id": "1voRwGFJaiAt",
+				"title": "Live Chat",
+				"shortDescription": "Live chat and messaging platform for sales and customer help",
+				"longDescription": "LiveChat is a **live chat application for customer support and online sales**; designed to help businesses manage communication and interactions with customers.\n\nHaving live chat on your website means that on-site visitors can send you their questions and receive answers in no time. Collect feedback and increase conversions through live conversations. \n\nThe way it works is simple: you add live chat to your website, wait for your visitors to ask a question or, alternatively, approach them with chat invitations. For you, it means more satisfied customers, more resolved problems, and more sold products.\n\nIn addition to live chat support, this chat app comes with a help desk that is in-built – without any additional charge. All email communication can be sent to and managed from LiveChat, which will serve as a customer service platform for all kinds of interactions with your customers.\n\nAdd LiveChat to your website free of charge and **make sure that no visitor will stay unattended**!\n\nLiveChat comes with a 30-day free trial so you can use our software without risk or obligation. No credit card required.",
+				"instructions": "For the detailed instructions on how to adopt LiveChat alongside Cloudflare see this https://www.livechatinc.com/kb/cloudflare-add-livechat/",
+				"alias": "livechat",
+				"orgId": "d572df6acee7f322a191345be045910b",
+				"icon": "https://images.cloudflareapps.com/usZpfecAHEeb/icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/2O-_L00hJziE/screenshot-1.png",
+					"https://images.cloudflareapps.com/tGOQFwk3g3Ty/livechat_chats.png",
+					"https://images.cloudflareapps.com/H_ziDnF3nL_f/livechat_customers.png",
+					"https://images.cloudflareapps.com/ZO-1_cmN0Qj5/livechat_settings.png",
+					"https://images.cloudflareapps.com/_LrSCe0BBRRu/livechat_agents.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/6x47kMRwVkHt/tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/rZptudTNWPRB/CloudFlare_01_v03-08.png",
+				"author": "LiveChat Inc.",
+				"tagline": "",
+				"website": "https://www.livechatinc.com/?a=YeAa_yEig&utm_source=cloudflare.com&utm_medium=referral&utm_campaign=cloudflare_marketplace&a=Pe9-QefEg8A",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.livechatinc.com/terms-and-conditions/?a=YeAa_yEig&utm_source=cloudflare.com&utm_medium=referral&utm_campaign=cloudflare_marketplace&a=Pe9-QefEg8A",
+				"privacyPolicyURL": "https://www.livechatinc.com/privacy-policy/?a=YeAa_yEig&utm_source=cloudflare.com&utm_medium=referral&utm_campaign=cloudflare_marketplace&a=Pe9-QefEg8A",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@livechatinc.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "HLf7G-WxfjYs"
+				},
+				"created": "2018-12-12T12:09:00.127633Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "d572df6acee7f322a191345be045910b",
+				"requestedAt": "2019-04-02T10:21:30.925330247Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-04-05T16:11:59.283496748Z"
+			}
+		},
+		{
+			"tag": "1.0.7",
+			"appId": "1voRwGFJaiAt",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./src/code.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"info": {
+							"helpvalue": "You see example of a LiveChat widget. Please login or register to customize your own instance. If you need any help, you are welcome to start a chat with our support team.",
+							"showIf": {
+								"livechat": {
+									"op": "==",
+									"value": ""
+								}
+							},
+							"type": "help"
+						},
+						"licenseID": {
+							"placeholder": "0123456789",
+							"required": true,
+							"showIf": {
+								"livechat": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "License Number:",
+							"type": "string"
+						},
+						"livechat": {
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"livechat-accounts-prod"
+							],
+							"title": "Login or register...",
+							"type": "object"
+						}
+					}
+				},
+				"hooks": [
+					{
+						"action": "reset-options",
+						"events": [
+							"preview"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/option-change/account",
+						"events": [
+							"option-change:livechat"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error when account was changed. Please try again."
+						},
+						"authenticate": [
+							"livechat"
+						]
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/preview",
+						"events": [
+							"preview"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error for a preview. Please try again."
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/new",
+						"events": [
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error for installation. Please try again."
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/update",
+						"events": [
+							"update-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error for updating. Please try again."
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/delete",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error for deleting. Please try again."
+						},
+						"authenticate": []
+					},
+					{
+						"action": "reset-options",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/AhOFALLJNlti",
+			"created": "2019-05-06T08:01:29.288974Z",
+			"proposedApp": {
+				"id": "1voRwGFJaiAt",
+				"title": "Live Chat",
+				"shortDescription": "Live chat and messaging platform for sales and customer help",
+				"longDescription": "LiveChat is a **live chat application for customer support and online sales**; designed to help businesses manage communication and interactions with customers.\n\nHaving live chat on your website means that on-site visitors can send you their questions and receive answers in no time. Collect feedback and increase conversions through live conversations. \n\nThe way it works is simple: you add live chat to your website, wait for your visitors to ask a question or, alternatively, approach them with chat invitations. For you, it means more satisfied customers, more resolved problems, and more sold products.\n\nIn addition to live chat support, this chat app comes with a help desk that is in-built – without any additional charge. All email communication can be sent to and managed from LiveChat, which will serve as a customer service platform for all kinds of interactions with your customers.\n\nAdd LiveChat to your website free of charge and **make sure that no visitor will stay unattended**!\n\nLiveChat comes with a 30-day free trial so you can use our software without risk or obligation. No credit card required.",
+				"instructions": "For the detailed instructions on how to adopt LiveChat alongside Cloudflare see this https://www.livechatinc.com/kb/cloudflare-add-livechat/",
+				"alias": "livechat",
+				"orgId": "d572df6acee7f322a191345be045910b",
+				"icon": "https://images.cloudflareapps.com/usZpfecAHEeb/icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/2O-_L00hJziE/screenshot-1.png",
+					"https://images.cloudflareapps.com/tGOQFwk3g3Ty/livechat_chats.png",
+					"https://images.cloudflareapps.com/H_ziDnF3nL_f/livechat_customers.png",
+					"https://images.cloudflareapps.com/ZO-1_cmN0Qj5/livechat_settings.png",
+					"https://images.cloudflareapps.com/_LrSCe0BBRRu/livechat_agents.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/6x47kMRwVkHt/tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/BfKBX33IOpC7/CloudFlare_01_v06-09.png",
+				"author": "LiveChat Inc.",
+				"tagline": "",
+				"website": "https://www.livechatinc.com/?a=YeAa_yEig&utm_source=cloudflare.com&utm_medium=referral&utm_campaign=cloudflare_marketplace&a=Pe9-QefEg8A",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.livechatinc.com/terms-and-conditions/?a=YeAa_yEig&utm_source=cloudflare.com&utm_medium=referral&utm_campaign=cloudflare_marketplace&a=Pe9-QefEg8A",
+				"privacyPolicyURL": "https://www.livechatinc.com/privacy-policy/?a=YeAa_yEig&utm_source=cloudflare.com&utm_medium=referral&utm_campaign=cloudflare_marketplace&a=Pe9-QefEg8A",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@livechatinc.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "HLf7G-WxfjYs"
+				},
+				"created": "2018-12-12T12:09:00.127633Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "d572df6acee7f322a191345be045910b",
+				"requestedAt": "2019-05-06T08:01:29.891695253Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-05-06T17:46:36.500767094Z"
+			}
+		},
+		{
+			"tag": "1.0.8",
+			"appId": "1voRwGFJaiAt",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./src/code.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"info": {
+							"helpvalue": "You see example of a LiveChat widget. Please login or register to customize your own instance. If you need any help, you are welcome to start a chat with our support team.",
+							"showIf": {
+								"livechat": {
+									"op": "==",
+									"value": ""
+								}
+							},
+							"type": "help"
+						},
+						"licenseID": {
+							"placeholder": "0123456789",
+							"required": true,
+							"showIf": {
+								"livechat": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "License Number:",
+							"type": "string"
+						},
+						"livechat": {
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"livechat-accounts-prod"
+							],
+							"title": "Login or register...",
+							"type": "object"
+						}
+					}
+				},
+				"hooks": [
+					{
+						"action": "reset-options",
+						"events": [
+							"preview"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/option-change/account",
+						"events": [
+							"option-change:livechat"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error when account was changed. Please try again."
+						},
+						"authenticate": [
+							"livechat"
+						]
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/preview",
+						"events": [
+							"preview"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error for a preview. Please try again."
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/new",
+						"events": [
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error for installation. Please try again."
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/update",
+						"events": [
+							"update-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error for updating. Please try again."
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/delete",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error for deleting. Please try again."
+						},
+						"authenticate": []
+					},
+					{
+						"action": "reset-options",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/AhOFALLJNlti",
+			"created": "2019-05-30T21:45:55.267585Z",
+			"proposedApp": {
+				"id": "1voRwGFJaiAt",
+				"title": "Live Chat",
+				"shortDescription": "Live chat and messaging platform for sales and customer help",
+				"longDescription": "LiveChat is a **live chat application for customer support and online sales**; designed to help businesses manage communication and interactions with customers.\n\nHaving live chat on your website means that on-site visitors can send you their questions and receive answers in no time. Collect feedback and increase conversions through live conversations. \n\nThe way it works is simple: you add live chat to your website, wait for your visitors to ask a question or, alternatively, approach them with chat invitations. For you, it means more satisfied customers, more resolved problems, and more sold products.\n\nIn addition to live chat support, this chat app comes with a help desk that is in-built – without any additional charge. All email communication can be sent to and managed from LiveChat, which will serve as a customer service platform for all kinds of interactions with your customers.\n\nAdd LiveChat to your website free of charge and **make sure that no visitor will stay unattended**!\n\nLiveChat comes with a 30-day free trial so you can use our software without risk or obligation. No credit card required.",
+				"instructions": "For the detailed instructions on how to adopt LiveChat alongside Cloudflare see this https://www.livechatinc.com/kb/cloudflare-add-livechat/",
+				"alias": "livechat",
+				"orgId": "d572df6acee7f322a191345be045910b",
+				"icon": "https://images.cloudflareapps.com/usZpfecAHEeb/icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/ZO65uTZFqgnk/livechat_chats.png",
+					"https://images.cloudflareapps.com/eqiiwIsJBbeH/livechat_customers.png",
+					"https://images.cloudflareapps.com/Mm5kFUJJ7lon/livechat_archives.png",
+					"https://images.cloudflareapps.com/PUVNdf5SkoBT/livechat_settings.png",
+					"https://images.cloudflareapps.com/2V35WgueXf02/livechat_agents.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/6x47kMRwVkHt/tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/XvbMAYiapfYt/CloudFlare_02.png",
+				"author": "LiveChat Inc.",
+				"tagline": "",
+				"website": "https://www.livechatinc.com/?a=YeAa_yEig&utm_source=cloudflare.com&utm_medium=referral&utm_campaign=cloudflare_marketplace&a=Pe9-QefEg8A",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.livechatinc.com/terms-and-conditions/?a=YeAa_yEig&utm_source=cloudflare.com&utm_medium=referral&utm_campaign=cloudflare_marketplace&a=Pe9-QefEg8A",
+				"privacyPolicyURL": "https://www.livechatinc.com/privacy-policy/?a=YeAa_yEig&utm_source=cloudflare.com&utm_medium=referral&utm_campaign=cloudflare_marketplace&a=Pe9-QefEg8A",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@livechatinc.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "HLf7G-WxfjYs"
+				},
+				"created": "2018-12-12T12:09:00.127633Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "d572df6acee7f322a191345be045910b",
+				"requestedAt": "2019-05-30T21:45:55.760796539Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-05-31T15:45:02.82126252Z"
+			}
+		},
+		{
+			"tag": "1.0.9",
+			"appId": "1voRwGFJaiAt",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./src/code.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"info": {
+							"helpvalue": "You see example of a LiveChat widget. Please login or register to customize your own instance. If you need any help, you are welcome to start a chat with our support team.",
+							"showIf": {
+								"livechat": {
+									"op": "==",
+									"value": ""
+								}
+							},
+							"type": "help"
+						},
+						"licenseID": {
+							"placeholder": "0123456789",
+							"required": true,
+							"showIf": {
+								"livechat": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "License Number:",
+							"type": "string"
+						},
+						"livechat": {
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"livechat-accounts-prod"
+							],
+							"title": "Login or register...",
+							"type": "object"
+						}
+					}
+				},
+				"hooks": [
+					{
+						"action": "reset-options",
+						"events": [
+							"preview"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/option-change/account",
+						"events": [
+							"option-change:livechat"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error when account was changed. Please try again."
+						},
+						"authenticate": [
+							"livechat"
+						]
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/preview",
+						"events": [
+							"preview"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error for a preview. Please try again."
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/new",
+						"events": [
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error for installation. Please try again."
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/update",
+						"events": [
+							"update-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error for updating. Please try again."
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/delete",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error for deleting. Please try again."
+						},
+						"authenticate": []
+					},
+					{
+						"action": "reset-options",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "Added to Social and Communication category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/AhOFALLJNlti",
+			"created": "2019-07-02T15:25:29.798413Z",
+			"proposedApp": {
+				"id": "1voRwGFJaiAt",
+				"title": "Live Chat",
+				"shortDescription": "Live chat and messaging platform for sales and customer help",
+				"longDescription": "LiveChat is a **live chat application for customer support and online sales**; designed to help businesses manage communication and interactions with customers.\n\nHaving live chat on your website means that on-site visitors can send you their questions and receive answers in no time. Collect feedback and increase conversions through live conversations. \n\nThe way it works is simple: you add live chat to your website, wait for your visitors to ask a question or, alternatively, approach them with chat invitations. For you, it means more satisfied customers, more resolved problems, and more sold products.\n\nIn addition to live chat support, this chat app comes with a help desk that is in-built – without any additional charge. All email communication can be sent to and managed from LiveChat, which will serve as a customer service platform for all kinds of interactions with your customers.\n\nAdd LiveChat to your website free of charge and **make sure that no visitor will stay unattended**!\n\nLiveChat comes with a 30-day free trial so you can use our software without risk or obligation. No credit card required.",
+				"instructions": "For the detailed instructions on how to adopt LiveChat alongside Cloudflare see this https://www.livechatinc.com/kb/cloudflare-add-livechat/",
+				"alias": "livechat",
+				"orgId": "d572df6acee7f322a191345be045910b",
+				"icon": "https://images.cloudflareapps.com/usZpfecAHEeb/icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/ZO65uTZFqgnk/livechat_chats.png",
+					"https://images.cloudflareapps.com/eqiiwIsJBbeH/livechat_customers.png",
+					"https://images.cloudflareapps.com/Mm5kFUJJ7lon/livechat_archives.png",
+					"https://images.cloudflareapps.com/PUVNdf5SkoBT/livechat_settings.png",
+					"https://images.cloudflareapps.com/2V35WgueXf02/livechat_agents.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/6x47kMRwVkHt/tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/XvbMAYiapfYt/CloudFlare_02.png",
+				"author": "LiveChat Inc.",
+				"tagline": "",
+				"website": "https://www.livechatinc.com/?a=YeAa_yEig&utm_source=cloudflare.com&utm_medium=referral&utm_campaign=cloudflare_marketplace&a=Pe9-QefEg8A",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.livechatinc.com/terms-and-conditions/?a=YeAa_yEig&utm_source=cloudflare.com&utm_medium=referral&utm_campaign=cloudflare_marketplace&a=Pe9-QefEg8A",
+				"privacyPolicyURL": "https://www.livechatinc.com/privacy-policy/?a=YeAa_yEig&utm_source=cloudflare.com&utm_medium=referral&utm_campaign=cloudflare_marketplace&a=Pe9-QefEg8A",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@livechatinc.com",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "HLf7G-WxfjYs"
+				},
+				"created": "2018-12-12T12:09:00.127633Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2019-07-02T15:25:45.866375872Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-07-02T15:25:58.332924959Z"
+			}
+		},
+		{
+			"tag": "1.0.10-meta-GnfjZL",
+			"appId": "1voRwGFJaiAt",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./src/code.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"info": {
+							"helpvalue": "You see example of a LiveChat widget. Please login or register to customize your own instance. If you need any help, you are welcome to start a chat with our support team.",
+							"showIf": {
+								"livechat": {
+									"op": "==",
+									"value": ""
+								}
+							},
+							"type": "help"
+						},
+						"licenseID": {
+							"placeholder": "0123456789",
+							"required": true,
+							"showIf": {
+								"livechat": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "License Number:",
+							"type": "string"
+						},
+						"livechat": {
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"lcsso-new"
+							],
+							"title": "Login or register...",
+							"type": "object"
+						}
+					}
+				},
+				"hooks": [
+					{
+						"action": "reset-options",
+						"events": [
+							"preview"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/option-change/account",
+						"events": [
+							"option-change:livechat"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error when account was changed. Please try again."
+						},
+						"authenticate": [
+							"livechat"
+						]
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/preview",
+						"events": [
+							"preview"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error for a preview. Please try again."
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/new",
+						"events": [
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error for installation. Please try again."
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/update",
+						"events": [
+							"update-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error for updating. Please try again."
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/delete",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error for deleting. Please try again."
+						},
+						"authenticate": []
+					},
+					{
+						"action": "reset-options",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/d6bRCVzNnYaJ",
+			"metadata": {
+				"code": {
+					"sourceTag": "d6bRCVzNnYaJ",
+					"uploadedOn": "2022-05-23T11:54:34.424513373Z"
+				}
+			},
+			"created": "2022-05-12T15:07:17.988821Z",
+			"proposedApp": {
+				"id": "1voRwGFJaiAt",
+				"title": "LiveChat",
+				"shortDescription": "Sell more by engaging with website visitors in real-time",
+				"longDescription": "LiveChat is a live chat application that can be integrated into your website to capture more leads and close more sales. Having LiveChat on your website means that on-site visitors can send you their questions and receive answers in no time. Collect feedback and increase conversions through live conversations. \n\nThe way it works is simple: you add live chat to your website, wait for your visitors to ask a question or, alternatively, approach them with chat invitations. For you, it means more satisfied customers, more resolved problems, and more sold products.\n\nIn addition to that, we offer our dedicated ticketing system – without any additional charge. All email communication can be sent to and managed from LiveChat, which will serve as a customer service platform for all kinds of interactions with your customers.\n\nWith LiveChat, you can:\n* identify people on the website and engage them using proactive chats;\n* make use of the detailed metrics to measure your customer service efficiency;\n* provide 24/7 support with the use of the built-in ticketing system;\n* answer chats on the go via mobile applications for iPad, iPhone, and Android devices.\n\nIntegrate LiveChat with your website and make sure that no visitor will stay unattended!",
+				"instructions": "For the detailed instructions on how to adopt LiveChat alongside Cloudflare see this https://www.livechatinc.com/kb/cloudflare-add-livechat/",
+				"alias": "livechat",
+				"orgId": "d572df6acee7f322a191345be045910b",
+				"icon": "https://images.cloudflareapps.com/Iu5_jfdW2JLA/livechat-icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/ZO65uTZFqgnk/livechat_chats.png",
+					"https://images.cloudflareapps.com/eqiiwIsJBbeH/livechat_customers.png",
+					"https://images.cloudflareapps.com/Mm5kFUJJ7lon/livechat_archives.png",
+					"https://images.cloudflareapps.com/PUVNdf5SkoBT/livechat_settings.png",
+					"https://images.cloudflareapps.com/2V35WgueXf02/livechat_agents.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "https://images.cloudflareapps.com/XvbMAYiapfYt/CloudFlare_02.png",
+				"author": "LiveChat Inc.",
+				"tagline": "",
+				"website": "https://www.livechatinc.com/?utm_source=cloudflare.com&utm_medium=referral&utm_campaign=cloudflare_marketplace&a=YeAa_yEig",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.livechatinc.com/terms-and-conditions/?utm_source=cloudflare.com&utm_medium=referral&utm_campaign=cloudflare_marketplace&a=YeAa_yEig",
+				"privacyPolicyURL": "https://www.livechatinc.com/privacy-policy/?utm_source=cloudflare.com&utm_medium=referral&utm_campaign=cloudflare_marketplace&a=YeAa_yEig",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@livechatinc.com",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "HLf7G-WxfjYs"
+				},
+				"created": "2018-12-12T12:09:00.127633Z"
+			},
+			"moderationStatus": "draft",
+			"moderationMetadata": {
+				"requestedAt": null,
+				"canceledAt": null,
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.10",
+			"appId": "1voRwGFJaiAt",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./src/code.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"info": {
+							"helpvalue": "You see example of a LiveChat widget. Please login or register to customize your own instance. If you need any help, you are welcome to start a chat with our support team.",
+							"showIf": {
+								"livechat": {
+									"op": "==",
+									"value": ""
+								}
+							},
+							"type": "help"
+						},
+						"licenseID": {
+							"placeholder": "0123456789",
+							"required": true,
+							"showIf": {
+								"livechat": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "License Number:",
+							"type": "string"
+						},
+						"livechat": {
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"livechat-accounts-prod"
+							],
+							"title": "Login or register...",
+							"type": "object"
+						}
+					}
+				},
+				"hooks": [
+					{
+						"action": "reset-options",
+						"events": [
+							"preview"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/option-change/account",
+						"events": [
+							"option-change:livechat"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error when account was changed. Please try again."
+						},
+						"authenticate": [
+							"livechat"
+						]
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/preview",
+						"events": [
+							"preview"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error for a preview. Please try again."
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/new",
+						"events": [
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error for installation. Please try again."
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/update",
+						"events": [
+							"update-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error for updating. Please try again."
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://cloudflare.livechatinc.com/v1/installation/delete",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error for deleting. Please try again."
+						},
+						"authenticate": []
+					},
+					{
+						"action": "reset-options",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.39,
+				"upvotes": 7,
+				"downvotes": 11
+			},
+			"releaseNotes": "A new version of a tracking code",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/snnNCO2Zn88c",
+			"metadata": {
+				"code": {
+					"sourceTag": "snnNCO2Zn88c",
+					"uploadedOn": "2019-10-17T09:02:38.174112208Z"
+				}
+			},
+			"created": "2019-10-17T09:02:37.483425Z",
+			"proposedApp": {
+				"id": "1voRwGFJaiAt",
+				"title": "Live Chat",
+				"shortDescription": "Live chat and messaging platform for sales and customer help",
+				"longDescription": "LiveChat is a **live chat application for customer support and online sales**; designed to help businesses manage communication and interactions with customers.\n\nHaving live chat on your website means that on-site visitors can send you their questions and receive answers in no time. Collect feedback and increase conversions through live conversations. \n\nThe way it works is simple: you add live chat to your website, wait for your visitors to ask a question or, alternatively, approach them with chat invitations. For you, it means more satisfied customers, more resolved problems, and more sold products.\n\nIn addition to live chat support, this chat app comes with a help desk that is in-built – without any additional charge. All email communication can be sent to and managed from LiveChat, which will serve as a customer service platform for all kinds of interactions with your customers.\n\nAdd LiveChat to your website free of charge and **make sure that no visitor will stay unattended**!\n\nLiveChat comes with a 30-day free trial so you can use our software without risk or obligation. No credit card required.",
+				"instructions": "For the detailed instructions on how to adopt LiveChat alongside Cloudflare see this https://www.livechatinc.com/kb/cloudflare-add-livechat/",
+				"alias": "livechat",
+				"orgId": "d572df6acee7f322a191345be045910b",
+				"icon": "https://images.cloudflareapps.com/usZpfecAHEeb/icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/ZO65uTZFqgnk/livechat_chats.png",
+					"https://images.cloudflareapps.com/eqiiwIsJBbeH/livechat_customers.png",
+					"https://images.cloudflareapps.com/Mm5kFUJJ7lon/livechat_archives.png",
+					"https://images.cloudflareapps.com/PUVNdf5SkoBT/livechat_settings.png",
+					"https://images.cloudflareapps.com/2V35WgueXf02/livechat_agents.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/6x47kMRwVkHt/tile.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/XvbMAYiapfYt/CloudFlare_02.png",
+				"author": "LiveChat Inc.",
+				"tagline": "",
+				"website": "https://www.livechatinc.com/?a=YeAa_yEig&utm_source=cloudflare.com&utm_medium=referral&utm_campaign=cloudflare_marketplace&a=Pe9-QefEg8A",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.livechatinc.com/terms-and-conditions/?a=YeAa_yEig&utm_source=cloudflare.com&utm_medium=referral&utm_campaign=cloudflare_marketplace&a=Pe9-QefEg8A",
+				"privacyPolicyURL": "https://www.livechatinc.com/privacy-policy/?a=YeAa_yEig&utm_source=cloudflare.com&utm_medium=referral&utm_campaign=cloudflare_marketplace&a=Pe9-QefEg8A",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@livechatinc.com",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "HLf7G-WxfjYs"
+				},
+				"created": "2018-12-12T12:09:00.127633Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "d572df6acee7f322a191345be045910b",
+				"requestedAt": "2019-10-17T09:05:10.537662216Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-10-17T15:22:30.314938596Z"
+			}
+		}
+	]
+}

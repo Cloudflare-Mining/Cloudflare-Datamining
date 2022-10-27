@@ -1,0 +1,1807 @@
+{
+	"id": "-gXRR7q4QzkP",
+	"title": "Flashcard",
+	"shortDescription": "Show important updates and information on your site.",
+	"longDescription": "### Flashcard is a great way to display important notifications\n\nFlashcard makes it super easy to add any information on your site in the form of a floating card. You can show a title, a message and a button which takes the user to any link when clicked.\n\n+ Its one of the few apps on Cloudflare with 100% rating\n+ Being used on 1000+ websites\n\n# Common use-cases \n\n- Sales annoucements\n- Blog posts\n- Product launches\n- Price changes\n- Cookie consent",
+	"instructions": "",
+	"alias": "flashcard",
+	"orgId": "d15ddd8371319a3c987ef5411b371550",
+	"icon": "//images.cloudflareapps.com/jlqGPamCTXavS4mwkXMg_Icon.png",
+	"screenshots": [
+		"//images.cloudflareapps.com/iMIGumx5Q9uOiQoZUvv1_Graphic - 4.png",
+		"//images.cloudflareapps.com/UaFLKyr4SFS65MuxmcO0_Graphic - 3.png",
+		"//images.cloudflareapps.com/0Zp9aEhUQpSX2mYrTOHG_Graphic - 2.png",
+		"//images.cloudflareapps.com/uY5cgfMQW4VePGKH3L8A_Graphic-1.png",
+		"//images.cloudflareapps.com/xfFaF7jtRyOeR5MJQWOM_Screen Shot 2017-08-19 at 19.08.10.jpg"
+	],
+	"tileImage": "//images.cloudflareapps.com/b4NfrHAjTdOuP7gM0vd9_flashcard.png",
+	"featuredAppImage": "",
+	"author": "Moin Uddin",
+	"tagline": "",
+	"website": "",
+	"sourceURL": "",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.1.4",
+	"infoVersion": "1.1.4",
+	"points": 700,
+	"supportEmail": "me@moin.im",
+	"products": [],
+	"categoryIds": [
+		"marketing",
+		"add-on",
+		"ui-and-design",
+		"recommended-for-stores"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "d15ddd8371319a3c987ef5411b371550",
+			"created": "2017-08-19T15:43:45.51107599Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "Eh8w6PC6zb1G"
+	},
+	"created": "2017-08-18T19:46:04.474896Z",
+	"org": {
+		"id": "d15ddd8371319a3c987ef5411b371550",
+		"title": "",
+		"username": "d15ddd8371319a3c987ef5411b371550",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "ui-and-design",
+			"title": "UI & Design",
+			"description": "Apps that make your website more beautiful and user friendly.",
+			"icon": "",
+			"points": 10,
+			"visible": true,
+			"created": "2018-01-22T19:17:52.677513Z"
+		},
+		{
+			"id": "recommended-for-stores",
+			"title": "Recommended For Stores",
+			"description": "Apps for stores in the recommendation engine.",
+			"icon": "",
+			"points": 0,
+			"visible": false,
+			"created": "2018-02-06T19:54:54.539444Z"
+		},
+		{
+			"id": "add-on",
+			"title": "Add-ons",
+			"description": "Drop-in components to add to your website.",
+			"icon": "//eager-app-images.imgix.net/HZ0uHPrDRp6uAeUTuEH2_add-ons.png",
+			"points": 100,
+			"visible": false,
+			"metadata": {
+				"icon": {
+					"filename": "add-ons.png",
+					"isWriteable": false,
+					"key": "HZ0uHPrDRp6uAeUTuEH2_add-ons.png",
+					"mimetype": "image/png",
+					"size": 1997,
+					"url": "https://www.filepicker.io/api/file/1GlH0WSQTZu0scJr7qY0"
+				}
+			},
+			"created": "2016-01-20T20:14:55.498829Z"
+		},
+		{
+			"id": "marketing",
+			"title": "Marketing",
+			"description": "Promote content, collect email addresses, and increase engagement.",
+			"icon": "//eager-app-images.imgix.net/BsDSsdPnR5ytmW2jYDXi_marketing.png",
+			"points": 90,
+			"visible": false,
+			"metadata": {
+				"icon": {
+					"filename": "marketing.png",
+					"isWriteable": false,
+					"key": "BsDSsdPnR5ytmW2jYDXi_marketing.png",
+					"mimetype": "image/png",
+					"size": 3293,
+					"url": "https://www.filepicker.io/api/file/6auWmeBSSTKnHxboTyoh"
+				}
+			},
+			"created": "2016-01-20T20:14:55.498829Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "-gXRR7q4QzkP",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./src/app.js"
+						}
+					],
+					"head": [
+						{
+							"type": "style",
+							"src": "./src/style.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"action": {
+							"default": "Take me there",
+							"description": "You can leave this empty to hide second button.",
+							"order": 5,
+							"placeholder": "Take me there",
+							"title": "Action Button",
+							"type": "string"
+						},
+						"action_url": {
+							"description": "URL to load when second button is clicked.",
+							"format": "url",
+							"order": 6,
+							"title": "Action URL",
+							"type": "string"
+						},
+						"close": {
+							"default": "Close",
+							"order": 4,
+							"placeholder": "Not interested",
+							"title": "Close Text",
+							"type": "string"
+						},
+						"delay": {
+							"default": 5,
+							"description": "After page is opened, how long should it wait before appearing?",
+							"maximum": 59,
+							"minimum": 1,
+							"order": 8,
+							"title": "Delay (in seconds)",
+							"type": "integer"
+						},
+						"id": {
+							"default": 1,
+							"description": "Use a unique ID for every message. Tip: Just increment the number here.",
+							"maximum": 50,
+							"minimum": 1,
+							"order": 7,
+							"title": "ID",
+							"type": "integer"
+						},
+						"position": {
+							"default": "left",
+							"enum": [
+								"left",
+								"right"
+							],
+							"enumNames": {
+								"left": "Left",
+								"right": "Right"
+							},
+							"format": "radios",
+							"order": 3,
+							"title": "Position",
+							"type": "string"
+						},
+						"renew": {
+							"default": "0sec",
+							"description": "When user has closed it, how long should it wait before showing it again?",
+							"enum": [
+								"0sec",
+								"12hours",
+								"24hours",
+								"1week"
+							],
+							"enumNames": {
+								"0sec": "Show on every visit",
+								"12hours": "12 Hours",
+								"1week": "1 Week",
+								"24hours": "1 Day"
+							},
+							"order": 9,
+							"title": "Show again once closed",
+							"type": "string"
+						},
+						"text": {
+							"default": "We have a new post on our blog that might interest you.",
+							"format": "textarea",
+							"maxLength": 65,
+							"order": 2,
+							"title": "Message",
+							"type": "string"
+						},
+						"title": {
+							"default": "New Blog Post",
+							"maxLength": 30,
+							"order": 1,
+							"placeholder": "New Blog Post",
+							"title": "Title",
+							"type": "string"
+						}
+					}
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/4fE9Lua9_xxk",
+			"metadata": {
+				"code": {
+					"sourceTag": "4fE9Lua9_xxk",
+					"uploadedOn": "2017-08-18T20:58:21.33807516Z"
+				}
+			},
+			"created": "2017-08-18T19:46:05.974998Z",
+			"proposedApp": {
+				"id": "-gXRR7q4QzkP",
+				"title": "Flashcard",
+				"shortDescription": "Show important updates and information on your site",
+				"longDescription": "Flashcard makes it supper easy to add any information on your site in form of a card.\n\nIt can have a title, a message and a button which can take user to any link you want.\n\nits a great way to display an important notification without any effort.\n\nSome examples of what you can use it for:\n\n- Cookie consent\n- Announcement of Sale\n- Change in prices\n- New product launch\n- New eBook release\n- A new blog post\n\nIts beautifuly designed and uses minimal resources. It won't take much of bandwidth and is also optimized for mobile devices.\n\nYou can use it to display different messages. It intelligently keeps track of closed messages and shows new ones without any conflict.",
+				"instructions": "",
+				"alias": "flashcard",
+				"orgId": "d15ddd8371319a3c987ef5411b371550",
+				"icon": "//images.cloudflareapps.com/jlqGPamCTXavS4mwkXMg_Icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/iMIGumx5Q9uOiQoZUvv1_Graphic - 4.png",
+					"//images.cloudflareapps.com/UaFLKyr4SFS65MuxmcO0_Graphic - 3.png",
+					"//images.cloudflareapps.com/0Zp9aEhUQpSX2mYrTOHG_Graphic - 2.png",
+					"//images.cloudflareapps.com/uY5cgfMQW4VePGKH3L8A_Graphic-1.png",
+					"//images.cloudflareapps.com/xfFaF7jtRyOeR5MJQWOM_Screen Shot 2017-08-19 at 19.08.10.jpg"
+				],
+				"tileImage": "//images.cloudflareapps.com/MjomfsxXQPea5XV1XtbZ_Tile Image.png",
+				"featuredAppImage": "",
+				"author": "Moin Uddin",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "me@moin.im",
+				"products": [],
+				"categoryIds": [
+					"marketing",
+					"add-on"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Eh8w6PC6zb1G"
+				},
+				"created": "2017-08-18T19:46:04.474896Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"assignedToReviewerUserId": "ee86f206b11d7a3462145a704baa145a",
+				"requestedByUserId": "d15ddd8371319a3c987ef5411b371550",
+				"requestedAt": "2017-08-19T15:43:45.481660269Z",
+				"canceledAt": null,
+				"reviewedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"reviewedAt": "2017-08-25T03:45:51.494579245Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "-gXRR7q4QzkP",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./src/app.js"
+						}
+					],
+					"head": [
+						{
+							"type": "style",
+							"src": "./src/style.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"action": {
+							"default": "Take me there",
+							"description": "You can leave this empty to hide second button.",
+							"order": 5,
+							"placeholder": "Take me there",
+							"title": "Action Button",
+							"type": "string"
+						},
+						"action_url": {
+							"description": "URL to load when second button is clicked.",
+							"format": "url",
+							"order": 6,
+							"title": "Action URL",
+							"type": "string"
+						},
+						"close": {
+							"default": "Close",
+							"order": 4,
+							"placeholder": "Not interested",
+							"title": "Close Text",
+							"type": "string"
+						},
+						"delay": {
+							"default": 1,
+							"description": "After page is opened, how long should it wait before appearing?",
+							"maximum": 59,
+							"minimum": 1,
+							"order": 8,
+							"title": "Delay (in seconds)",
+							"type": "integer"
+						},
+						"id": {
+							"default": 1,
+							"description": "Use a unique ID for every message. Tip: Just increment the number here.",
+							"maximum": 50,
+							"minimum": 1,
+							"order": 7,
+							"title": "ID",
+							"type": "integer"
+						},
+						"position": {
+							"default": "left",
+							"enum": [
+								"left",
+								"right"
+							],
+							"enumNames": {
+								"left": "Left",
+								"right": "Right"
+							},
+							"format": "radios",
+							"order": 3,
+							"title": "Position",
+							"type": "string"
+						},
+						"renew": {
+							"default": "0sec",
+							"description": "When user has closed it, how long should it wait before showing it again?",
+							"enum": [
+								"0sec",
+								"12hours",
+								"24hours",
+								"1week"
+							],
+							"enumNames": {
+								"0sec": "Show on every visit",
+								"12hours": "12 Hours",
+								"1week": "1 Week",
+								"24hours": "1 Day"
+							},
+							"order": 9,
+							"title": "Show again once closed",
+							"type": "string"
+						},
+						"text": {
+							"default": "We have a new post on our blog that might interest you.",
+							"format": "textarea",
+							"maxLength": 65,
+							"order": 2,
+							"title": "Message",
+							"type": "string"
+						},
+						"title": {
+							"default": "New Blog Post",
+							"maxLength": 30,
+							"order": 1,
+							"placeholder": "New Blog Post",
+							"title": "Title",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_all"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/w38dl_HauX90",
+			"metadata": {
+				"code": {
+					"sourceTag": "w38dl_HauX90",
+					"uploadedOn": "2017-08-25T15:50:57.934907172Z"
+				}
+			},
+			"created": "2017-08-25T12:46:32.692164Z",
+			"proposedApp": {
+				"id": "-gXRR7q4QzkP",
+				"title": "Flashcard",
+				"shortDescription": "Show important updates and information on your site",
+				"longDescription": "Flashcard makes it super easy to add any information on your site in the form of a floating card. You can show a title, a message and a button which takes the user to any link when clicked.\n\nFlashcard is a great way to display an important notification without any effort.\n\nSome examples of what you can use it for:\n\n- Cookie consent\n- Announcement of a Sale\n- Change in prices\n- New product launch\n- New eBook release\n- A new blog post\n\nFlashcard is beautifully designed and uses minimal resources. It doesn't take much of bandwidth and is also optimized for mobile devices.\n\nYou can use Flashcard to display different messages. It intelligently keeps track of closed messages and shows the new ones without any conflict.",
+				"instructions": "",
+				"alias": "flashcard",
+				"orgId": "d15ddd8371319a3c987ef5411b371550",
+				"icon": "//images.cloudflareapps.com/jlqGPamCTXavS4mwkXMg_Icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/iMIGumx5Q9uOiQoZUvv1_Graphic - 4.png",
+					"//images.cloudflareapps.com/UaFLKyr4SFS65MuxmcO0_Graphic - 3.png",
+					"//images.cloudflareapps.com/0Zp9aEhUQpSX2mYrTOHG_Graphic - 2.png",
+					"//images.cloudflareapps.com/uY5cgfMQW4VePGKH3L8A_Graphic-1.png",
+					"//images.cloudflareapps.com/xfFaF7jtRyOeR5MJQWOM_Screen Shot 2017-08-19 at 19.08.10.jpg"
+				],
+				"tileImage": "//images.cloudflareapps.com/MjomfsxXQPea5XV1XtbZ_Tile Image.png",
+				"featuredAppImage": "",
+				"author": "Moin Uddin",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "me@moin.im",
+				"products": [],
+				"categoryIds": [
+					"marketing",
+					"add-on"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Eh8w6PC6zb1G"
+				},
+				"created": "2017-08-18T19:46:04.474896Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"assignedToReviewerUserId": "ee86f206b11d7a3462145a704baa145a",
+				"requestedByUserId": "d15ddd8371319a3c987ef5411b371550",
+				"requestedAt": "2017-08-25T15:51:34.271193332Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-08-29T06:57:13.936183953Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "-gXRR7q4QzkP",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./src/app.js"
+						}
+					],
+					"head": [
+						{
+							"type": "style",
+							"src": "./src/style.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"action": {
+							"default": "Take me there",
+							"description": "You can leave this empty to hide second button.",
+							"order": 5,
+							"placeholder": "Take me there",
+							"title": "Action Button",
+							"type": "string"
+						},
+						"action_url": {
+							"description": "URL to load when second button is clicked.",
+							"format": "url",
+							"order": 6,
+							"title": "Action URL",
+							"type": "string"
+						},
+						"close": {
+							"default": "Close",
+							"order": 4,
+							"placeholder": "Not interested",
+							"title": "Close Text",
+							"type": "string"
+						},
+						"delay": {
+							"default": 1,
+							"description": "After page is opened, how long should it wait before appearing?",
+							"maximum": 59,
+							"minimum": 1,
+							"order": 7,
+							"title": "Delay (in seconds)",
+							"type": "integer"
+						},
+						"position": {
+							"default": "left",
+							"enum": [
+								"left",
+								"right"
+							],
+							"enumNames": {
+								"left": "Left",
+								"right": "Right"
+							},
+							"format": "radios",
+							"order": 3,
+							"title": "Position",
+							"type": "string"
+						},
+						"renew": {
+							"default": "0sec",
+							"description": "When user has closed it, how long should it wait before showing it again?",
+							"enum": [
+								"0sec",
+								"12hours",
+								"24hours",
+								"1week"
+							],
+							"enumNames": {
+								"0sec": "Show on every visit",
+								"12hours": "12 Hours",
+								"1week": "1 Week",
+								"24hours": "1 Day"
+							},
+							"order": 8,
+							"title": "Show again once closed",
+							"type": "string"
+						},
+						"text": {
+							"default": "We have a new post on our blog that might interest you.",
+							"format": "textarea",
+							"maxLength": 65,
+							"order": 2,
+							"title": "Message",
+							"type": "string"
+						},
+						"title": {
+							"default": "New Blog Post",
+							"maxLength": 30,
+							"order": 1,
+							"placeholder": "New Blog Post",
+							"title": "Title",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_all"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/dpCsuk-LfNiP",
+			"metadata": {
+				"code": {
+					"sourceTag": "dpCsuk-LfNiP",
+					"uploadedOn": "2017-08-29T11:19:40.222123961Z"
+				}
+			},
+			"created": "2017-08-29T11:19:39.329875Z",
+			"proposedApp": {
+				"id": "-gXRR7q4QzkP",
+				"title": "Flashcard",
+				"shortDescription": "Show important updates and information on your site",
+				"longDescription": "Flashcard makes it super easy to add any information on your site in the form of a floating card. You can show a title, a message and a button which takes the user to any link when clicked.\n\nFlashcard is a great way to display an important notification without any effort.\n\nSome examples of what you can use it for:\n\n- Cookie consent\n- Announcement of a Sale\n- Change in prices\n- New product launch\n- New eBook release\n- A new blog post\n\nFlashcard is beautifully designed and uses minimal resources. It doesn't take much of bandwidth and is also optimized for mobile devices.\n\nYou can use Flashcard to display different messages. It intelligently keeps track of closed messages and shows the new ones without any conflict.",
+				"instructions": "",
+				"alias": "flashcard",
+				"orgId": "d15ddd8371319a3c987ef5411b371550",
+				"icon": "//images.cloudflareapps.com/jlqGPamCTXavS4mwkXMg_Icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/iMIGumx5Q9uOiQoZUvv1_Graphic - 4.png",
+					"//images.cloudflareapps.com/UaFLKyr4SFS65MuxmcO0_Graphic - 3.png",
+					"//images.cloudflareapps.com/0Zp9aEhUQpSX2mYrTOHG_Graphic - 2.png",
+					"//images.cloudflareapps.com/uY5cgfMQW4VePGKH3L8A_Graphic-1.png",
+					"//images.cloudflareapps.com/xfFaF7jtRyOeR5MJQWOM_Screen Shot 2017-08-19 at 19.08.10.jpg"
+				],
+				"tileImage": "//images.cloudflareapps.com/MjomfsxXQPea5XV1XtbZ_Tile Image.png",
+				"featuredAppImage": "",
+				"author": "Moin Uddin",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "me@moin.im",
+				"products": [],
+				"categoryIds": [
+					"marketing",
+					"add-on"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Eh8w6PC6zb1G"
+				},
+				"created": "2017-08-18T19:46:04.474896Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "d15ddd8371319a3c987ef5411b371550",
+				"requestedAt": "2017-08-29T11:40:20.082570082Z",
+				"canceledByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"canceledAt": "2017-09-02T01:25:35.759915902Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.1.0",
+			"appId": "-gXRR7q4QzkP",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./src/app.js"
+						}
+					],
+					"head": [
+						{
+							"type": "style",
+							"src": "./src/style.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"action": {
+							"order": 3,
+							"properties": {
+								"label": {
+									"description": "You can leave this empty to hide second button.",
+									"order": 1,
+									"placeholder": "Take me there",
+									"showIf": "action.show",
+									"title": "Action Button",
+									"type": "string"
+								},
+								"show": {
+									"default": true,
+									"order": 0,
+									"title": "Show action button",
+									"type": "boolean"
+								},
+								"url": {
+									"description": "URL to load when second button is clicked.",
+									"format": "url",
+									"order": 2,
+									"showIf": "action.show",
+									"title": "Action URL",
+									"type": "string"
+								}
+							},
+							"title": "Action Button",
+							"type": "object"
+						},
+						"delay": {
+							"default": 0,
+							"description": "How long in seconds before the Flashcard appears?",
+							"order": 6,
+							"title": "Delay",
+							"type": "number"
+						},
+						"position": {
+							"default": "left",
+							"enum": [
+								"left",
+								"right"
+							],
+							"enumNames": {
+								"left": "Left",
+								"right": "Right"
+							},
+							"format": "radios",
+							"order": 4,
+							"title": "Position",
+							"type": "string"
+						},
+						"renew": {
+							"default": "1week",
+							"enum": [
+								"1week",
+								"24hours",
+								"12hours",
+								"0sec"
+							],
+							"enumNames": {
+								"0sec": "Show on every visit",
+								"12hours": "Half a day",
+								"1week": "A week",
+								"24hours": "A day"
+							},
+							"format": "radios",
+							"order": 7,
+							"title": "How long should the Flashcard stay hidden after dismissal?",
+							"type": "string"
+						},
+						"text": {
+							"default": "We have a new post on our blog that might interest you.",
+							"format": "markdown",
+							"maxLength": 65,
+							"order": 2,
+							"title": "Message",
+							"type": "object"
+						},
+						"title": {
+							"default": "New Blog Post",
+							"maxLength": 30,
+							"order": 1,
+							"placeholder": "Announcement",
+							"title": "Title",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.updateOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"delay"
+							],
+							"execute": "INSTALL_SCOPE.updateDelay(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/J2d41GycEi8n",
+			"metadata": {
+				"code": {
+					"sourceTag": "J2d41GycEi8n",
+					"uploadedOn": "2017-09-02T01:25:34.987451889Z"
+				}
+			},
+			"created": "2017-08-31T17:44:04.782514Z",
+			"proposedApp": {
+				"id": "-gXRR7q4QzkP",
+				"title": "Flashcard",
+				"shortDescription": "Show important updates and information on your site.",
+				"longDescription": "Flashcard makes it super easy to add any information on your site in the form of a floating card. You can show a title, a message and a button which takes the user to any link when clicked.\n\nFlashcard is a great way to display an important notification without any effort.\n\nSome examples of what you can use it for:\n\n- Cookie consent\n- Announcement of a Sale\n- Change in prices\n- New product launch\n- New eBook release\n- A new blog post\n\nFlashcard is beautifully designed and uses minimal resources. It doesn't take much of bandwidth and is also optimized for mobile devices.\n\nYou can use Flashcard to display different messages. It intelligently keeps track of closed messages and shows the new ones without any conflict.",
+				"instructions": "",
+				"alias": "flashcard",
+				"orgId": "d15ddd8371319a3c987ef5411b371550",
+				"icon": "//images.cloudflareapps.com/jlqGPamCTXavS4mwkXMg_Icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/iMIGumx5Q9uOiQoZUvv1_Graphic - 4.png",
+					"//images.cloudflareapps.com/UaFLKyr4SFS65MuxmcO0_Graphic - 3.png",
+					"//images.cloudflareapps.com/0Zp9aEhUQpSX2mYrTOHG_Graphic - 2.png",
+					"//images.cloudflareapps.com/uY5cgfMQW4VePGKH3L8A_Graphic-1.png",
+					"//images.cloudflareapps.com/xfFaF7jtRyOeR5MJQWOM_Screen Shot 2017-08-19 at 19.08.10.jpg"
+				],
+				"tileImage": "//images.cloudflareapps.com/b4NfrHAjTdOuP7gM0vd9_flashcard.png",
+				"featuredAppImage": "",
+				"author": "Moin Uddin",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "me@moin.im",
+				"products": [
+					{
+						"id": "Free",
+						"title": "free",
+						"shortDescription": "Use basic version without image support.",
+						"longDescription": "This free version does not support adding an image to the Flashcard.\n\n'Powered by Flashcard' is also added at the bottom.",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "Pro",
+						"title": "pro",
+						"shortDescription": "With Image support",
+						"longDescription": "### Add Image\n\nAdd image to your flashcard to increase conversion. Studies have shown that images can increase the number of clicks.",
+						"visible": true,
+						"price": 275,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"marketing",
+					"add-on"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Eh8w6PC6zb1G"
+				},
+				"created": "2017-08-18T19:46:04.474896Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-09-02T01:25:35.838370927Z",
+				"canceledByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"canceledAt": "2017-09-06T20:49:09.794124209Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.1.1",
+			"appId": "-gXRR7q4QzkP",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./src/app.js"
+						}
+					],
+					"head": [
+						{
+							"type": "style",
+							"src": "./src/style.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"action": {
+							"order": 3,
+							"properties": {
+								"label": {
+									"description": "You can leave this empty to hide second button.",
+									"order": 1,
+									"placeholder": "Take me there",
+									"showIf": "action.show",
+									"title": "Action Button",
+									"type": "string"
+								},
+								"show": {
+									"default": true,
+									"order": 0,
+									"title": "Show action button",
+									"type": "boolean"
+								},
+								"url": {
+									"description": "URL to load when second button is clicked.",
+									"format": "url",
+									"order": 2,
+									"showIf": "action.show",
+									"title": "Action URL",
+									"type": "string"
+								}
+							},
+							"title": "Action Button",
+							"type": "object"
+						},
+						"delay": {
+							"default": 0,
+							"description": "How long in seconds before the Flashcard appears?",
+							"order": 6,
+							"title": "Delay",
+							"type": "number"
+						},
+						"position": {
+							"default": "left",
+							"enum": [
+								"left",
+								"right"
+							],
+							"enumNames": {
+								"left": "Left",
+								"right": "Right"
+							},
+							"format": "radios",
+							"order": 4,
+							"title": "Position",
+							"type": "string"
+						},
+						"renew": {
+							"default": "1week",
+							"enum": [
+								"1week",
+								"24hours",
+								"12hours",
+								"0sec"
+							],
+							"enumNames": {
+								"0sec": "Show on every visit",
+								"12hours": "Half a day",
+								"1week": "A week",
+								"24hours": "A day"
+							},
+							"format": "radios",
+							"order": 7,
+							"title": "How long should the Flashcard stay hidden after dismissal?",
+							"type": "string"
+						},
+						"text": {
+							"default": "We have a new post on our blog that might interest you.",
+							"format": "markdown",
+							"maxLength": 65,
+							"order": 2,
+							"title": "Message",
+							"type": "object"
+						},
+						"title": {
+							"default": "New Blog Post",
+							"maxLength": 30,
+							"order": 1,
+							"placeholder": "Announcement",
+							"title": "Title",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.updateOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"delay"
+							],
+							"execute": "INSTALL_SCOPE.updateDelay(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 5,
+				"downvotes": 0
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/J2d41GycEi8n",
+			"created": "2017-09-06T20:48:36.884074Z",
+			"proposedApp": {
+				"id": "-gXRR7q4QzkP",
+				"title": "Flashcard",
+				"shortDescription": "Show important updates and information on your site.",
+				"longDescription": "### Flashcard is a great way to display important notifications\n\nFlashcard makes it super easy to add any information on your site in the form of a floating card. You can show a title, a message and a button which takes the user to any link when clicked.\n\n# Common use-cases \n\n- Sales annoucements\n- Blog posts\n- Product launches\n- Price changes\n- Cookie consent",
+				"instructions": "",
+				"alias": "flashcard",
+				"orgId": "d15ddd8371319a3c987ef5411b371550",
+				"icon": "//images.cloudflareapps.com/jlqGPamCTXavS4mwkXMg_Icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/iMIGumx5Q9uOiQoZUvv1_Graphic - 4.png",
+					"//images.cloudflareapps.com/UaFLKyr4SFS65MuxmcO0_Graphic - 3.png",
+					"//images.cloudflareapps.com/0Zp9aEhUQpSX2mYrTOHG_Graphic - 2.png",
+					"//images.cloudflareapps.com/uY5cgfMQW4VePGKH3L8A_Graphic-1.png",
+					"//images.cloudflareapps.com/xfFaF7jtRyOeR5MJQWOM_Screen Shot 2017-08-19 at 19.08.10.jpg"
+				],
+				"tileImage": "//images.cloudflareapps.com/b4NfrHAjTdOuP7gM0vd9_flashcard.png",
+				"featuredAppImage": "",
+				"author": "Moin Uddin",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "me@moin.im",
+				"products": [],
+				"categoryIds": [
+					"marketing",
+					"add-on"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Eh8w6PC6zb1G"
+				},
+				"created": "2017-08-18T19:46:04.474896Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-09-06T20:49:09.810099593Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-09-06T20:50:55.470956963Z"
+			}
+		},
+		{
+			"tag": "1.1.2",
+			"appId": "-gXRR7q4QzkP",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./src/app.js"
+						}
+					],
+					"head": [
+						{
+							"type": "style",
+							"src": "./src/style.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"action": {
+							"order": 3,
+							"properties": {
+								"color": {
+									"default": "#0073ce",
+									"format": "color",
+									"order": 1,
+									"showIf": "action.show",
+									"title": "Color Scheme",
+									"type": "string"
+								},
+								"label": {
+									"order": 2,
+									"placeholder": "Take me there",
+									"showIf": "action.show",
+									"title": "Action Button",
+									"type": "string"
+								},
+								"newtab": {
+									"default": true,
+									"order": 4,
+									"showIf": "action.show",
+									"title": "Open in new tab",
+									"type": "boolean"
+								},
+								"show": {
+									"default": true,
+									"order": 0,
+									"title": "Show action button",
+									"type": "boolean"
+								},
+								"url": {
+									"description": "URL to load when the button is clicked.",
+									"format": "url",
+									"order": 3,
+									"showIf": "action.show",
+									"title": "Action URL",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"paused": false
+							},
+							"title": "Action Button",
+							"type": "object"
+						},
+						"delay": {
+							"default": 1,
+							"description": "How long in seconds before the Flashcard appears?",
+							"order": 5,
+							"showIf": {
+								"paused": false
+							},
+							"title": "Delay",
+							"type": "number"
+						},
+						"paused": {
+							"default": false,
+							"description": "Stop showing the Flashcard for now.",
+							"order": 7,
+							"title": "Pause Flashcard",
+							"type": "boolean"
+						},
+						"position": {
+							"default": "left",
+							"enum": [
+								"left",
+								"right"
+							],
+							"enumNames": {
+								"left": "Left",
+								"right": "Right"
+							},
+							"format": "radios",
+							"order": 4,
+							"showIf": {
+								"paused": false
+							},
+							"title": "Position",
+							"type": "string"
+						},
+						"renew": {
+							"default": "1week",
+							"enum": [
+								"1week",
+								"24hours",
+								"12hours",
+								"0sec"
+							],
+							"enumNames": {
+								"0sec": "Show on every visit",
+								"12hours": "Half a day",
+								"1week": "A week",
+								"24hours": "A day"
+							},
+							"format": "radios",
+							"order": 6,
+							"showIf": {
+								"paused": false
+							},
+							"title": "How long should the Flashcard stay hidden after dismissal?",
+							"type": "string"
+						},
+						"text": {
+							"default": "We have a new post on our blog that might interest you.",
+							"format": "markdown",
+							"maxLength": 65,
+							"order": 2,
+							"showIf": {
+								"paused": false
+							},
+							"title": "Message",
+							"type": "object"
+						},
+						"title": {
+							"default": "New Blog Post",
+							"maxLength": 30,
+							"order": 1,
+							"placeholder": "Announcement",
+							"showIf": {
+								"paused": false
+							},
+							"title": "Title",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.updateOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"delay"
+							],
+							"execute": "INSTALL_SCOPE.updateDelay(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"paused"
+							],
+							"execute": "INSTALL_SCOPE.updatePause(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0,
+				"upvotes": 0,
+				"downvotes": 1
+			},
+			"releaseNotes": "This update adds some of the most requested features.\n\n- Adds the ability to stop showing Flashcard when not needed\n- Allows custom color option for action button\n- Adds the option to set if the action URL should be opened in current tab or new one\n- You can now also hide the action button if you just want to show text",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/Q2LnF78fbPDC",
+			"metadata": {
+				"code": {
+					"sourceTag": "Q2LnF78fbPDC",
+					"uploadedOn": "2017-12-24T18:51:17.412617278Z"
+				}
+			},
+			"created": "2017-12-24T18:51:16.668182Z",
+			"proposedApp": {
+				"id": "-gXRR7q4QzkP",
+				"title": "Flashcard",
+				"shortDescription": "Show important updates and information on your site.",
+				"longDescription": "### Flashcard is a great way to display important notifications\n\nFlashcard makes it super easy to add any information on your site in the form of a floating card. You can show a title, a message and a button which takes the user to any link when clicked.\n\n+ Its one of the few apps on Cloudflare with 100% rating\n+ Being used on 1000+ websites\n\n# Common use-cases \n\n- Sales annoucements\n- Blog posts\n- Product launches\n- Price changes\n- Cookie consent",
+				"instructions": "",
+				"alias": "flashcard",
+				"orgId": "d15ddd8371319a3c987ef5411b371550",
+				"icon": "//images.cloudflareapps.com/jlqGPamCTXavS4mwkXMg_Icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/iMIGumx5Q9uOiQoZUvv1_Graphic - 4.png",
+					"//images.cloudflareapps.com/UaFLKyr4SFS65MuxmcO0_Graphic - 3.png",
+					"//images.cloudflareapps.com/0Zp9aEhUQpSX2mYrTOHG_Graphic - 2.png",
+					"//images.cloudflareapps.com/uY5cgfMQW4VePGKH3L8A_Graphic-1.png",
+					"//images.cloudflareapps.com/xfFaF7jtRyOeR5MJQWOM_Screen Shot 2017-08-19 at 19.08.10.jpg"
+				],
+				"tileImage": "//images.cloudflareapps.com/b4NfrHAjTdOuP7gM0vd9_flashcard.png",
+				"featuredAppImage": "",
+				"author": "Moin Uddin",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "me@moin.im",
+				"products": [],
+				"categoryIds": [
+					"marketing",
+					"add-on"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Eh8w6PC6zb1G"
+				},
+				"created": "2017-08-18T19:46:04.474896Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "d15ddd8371319a3c987ef5411b371550",
+				"requestedAt": "2017-12-24T18:51:19.080468611Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2018-01-06T08:46:38.974557098Z"
+			}
+		},
+		{
+			"tag": "1.1.3",
+			"appId": "-gXRR7q4QzkP",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./src/app.js"
+						}
+					],
+					"head": [
+						{
+							"type": "style",
+							"src": "./src/style.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"action": {
+							"order": 3,
+							"properties": {
+								"color": {
+									"default": "#0073ce",
+									"format": "color",
+									"order": 1,
+									"showIf": "action.show",
+									"title": "Color Scheme",
+									"type": "string"
+								},
+								"label": {
+									"order": 2,
+									"placeholder": "Take me there",
+									"showIf": "action.show",
+									"title": "Action Button",
+									"type": "string"
+								},
+								"newtab": {
+									"default": true,
+									"order": 4,
+									"showIf": "action.show",
+									"title": "Open in new tab",
+									"type": "boolean"
+								},
+								"show": {
+									"default": true,
+									"order": 0,
+									"title": "Show action button",
+									"type": "boolean"
+								},
+								"url": {
+									"description": "URL to load when the button is clicked.",
+									"format": "url",
+									"order": 3,
+									"showIf": "action.show",
+									"title": "Action URL",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"paused": false
+							},
+							"title": "Action Button",
+							"type": "object"
+						},
+						"delay": {
+							"default": 1,
+							"description": "How long in seconds before the Flashcard appears?",
+							"order": 5,
+							"showIf": {
+								"paused": false
+							},
+							"title": "Delay",
+							"type": "number"
+						},
+						"paused": {
+							"default": false,
+							"description": "Stop showing the Flashcard for now.",
+							"order": 7,
+							"title": "Pause Flashcard",
+							"type": "boolean"
+						},
+						"position": {
+							"default": "left",
+							"enum": [
+								"left",
+								"right"
+							],
+							"enumNames": {
+								"left": "Left",
+								"right": "Right"
+							},
+							"format": "radios",
+							"order": 4,
+							"showIf": {
+								"paused": false
+							},
+							"title": "Position",
+							"type": "string"
+						},
+						"renew": {
+							"default": "1week",
+							"enum": [
+								"1week",
+								"24hours",
+								"12hours",
+								"0sec"
+							],
+							"enumNames": {
+								"0sec": "Show on every visit",
+								"12hours": "Half a day",
+								"1week": "A week",
+								"24hours": "A day"
+							},
+							"format": "radios",
+							"order": 6,
+							"showIf": {
+								"paused": false
+							},
+							"title": "How long should the Flashcard stay hidden after dismissal?",
+							"type": "string"
+						},
+						"text": {
+							"default": "We have a new post on our blog that might interest you.",
+							"format": "markdown",
+							"maxLength": 65,
+							"order": 2,
+							"showIf": {
+								"paused": false
+							},
+							"title": "Message",
+							"type": "object"
+						},
+						"title": {
+							"default": "New Blog Post",
+							"maxLength": 30,
+							"order": 1,
+							"placeholder": "Announcement",
+							"showIf": {
+								"paused": false
+							},
+							"title": "Title",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.updateOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"delay"
+							],
+							"execute": "INSTALL_SCOPE.updateDelay(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"paused"
+							],
+							"execute": "INSTALL_SCOPE.updatePause(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Added to “UI & Design” category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/Q2LnF78fbPDC",
+			"created": "2018-01-22T21:09:58.709063Z",
+			"proposedApp": {
+				"id": "-gXRR7q4QzkP",
+				"title": "Flashcard",
+				"shortDescription": "Show important updates and information on your site.",
+				"longDescription": "### Flashcard is a great way to display important notifications\n\nFlashcard makes it super easy to add any information on your site in the form of a floating card. You can show a title, a message and a button which takes the user to any link when clicked.\n\n+ Its one of the few apps on Cloudflare with 100% rating\n+ Being used on 1000+ websites\n\n# Common use-cases \n\n- Sales annoucements\n- Blog posts\n- Product launches\n- Price changes\n- Cookie consent",
+				"instructions": "",
+				"alias": "flashcard",
+				"orgId": "d15ddd8371319a3c987ef5411b371550",
+				"icon": "//images.cloudflareapps.com/jlqGPamCTXavS4mwkXMg_Icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/iMIGumx5Q9uOiQoZUvv1_Graphic - 4.png",
+					"//images.cloudflareapps.com/UaFLKyr4SFS65MuxmcO0_Graphic - 3.png",
+					"//images.cloudflareapps.com/0Zp9aEhUQpSX2mYrTOHG_Graphic - 2.png",
+					"//images.cloudflareapps.com/uY5cgfMQW4VePGKH3L8A_Graphic-1.png",
+					"//images.cloudflareapps.com/xfFaF7jtRyOeR5MJQWOM_Screen Shot 2017-08-19 at 19.08.10.jpg"
+				],
+				"tileImage": "//images.cloudflareapps.com/b4NfrHAjTdOuP7gM0vd9_flashcard.png",
+				"featuredAppImage": "",
+				"author": "Moin Uddin",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "me@moin.im",
+				"products": [],
+				"categoryIds": [
+					"marketing",
+					"add-on",
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Eh8w6PC6zb1G"
+				},
+				"created": "2017-08-18T19:46:04.474896Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-01-22T21:09:58.977509641Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-01-22T21:10:05.176081801Z"
+			}
+		},
+		{
+			"tag": "1.1.4",
+			"appId": "-gXRR7q4QzkP",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./src/app.js"
+						}
+					],
+					"head": [
+						{
+							"type": "style",
+							"src": "./src/style.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"action": {
+							"order": 3,
+							"properties": {
+								"color": {
+									"default": "#0073ce",
+									"format": "color",
+									"order": 1,
+									"showIf": "action.show",
+									"title": "Color Scheme",
+									"type": "string"
+								},
+								"label": {
+									"order": 2,
+									"placeholder": "Take me there",
+									"showIf": "action.show",
+									"title": "Action Button",
+									"type": "string"
+								},
+								"newtab": {
+									"default": true,
+									"order": 4,
+									"showIf": "action.show",
+									"title": "Open in new tab",
+									"type": "boolean"
+								},
+								"show": {
+									"default": true,
+									"order": 0,
+									"title": "Show action button",
+									"type": "boolean"
+								},
+								"url": {
+									"description": "URL to load when the button is clicked.",
+									"format": "url",
+									"order": 3,
+									"showIf": "action.show",
+									"title": "Action URL",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"paused": false
+							},
+							"title": "Action Button",
+							"type": "object"
+						},
+						"delay": {
+							"default": 1,
+							"description": "How long in seconds before the Flashcard appears?",
+							"order": 5,
+							"showIf": {
+								"paused": false
+							},
+							"title": "Delay",
+							"type": "number"
+						},
+						"paused": {
+							"default": false,
+							"description": "Stop showing the Flashcard for now.",
+							"order": 7,
+							"title": "Pause Flashcard",
+							"type": "boolean"
+						},
+						"position": {
+							"default": "left",
+							"enum": [
+								"left",
+								"right"
+							],
+							"enumNames": {
+								"left": "Left",
+								"right": "Right"
+							},
+							"format": "radios",
+							"order": 4,
+							"showIf": {
+								"paused": false
+							},
+							"title": "Position",
+							"type": "string"
+						},
+						"renew": {
+							"default": "1week",
+							"enum": [
+								"1week",
+								"24hours",
+								"12hours",
+								"0sec"
+							],
+							"enumNames": {
+								"0sec": "Show on every visit",
+								"12hours": "Half a day",
+								"1week": "A week",
+								"24hours": "A day"
+							},
+							"format": "radios",
+							"order": 6,
+							"showIf": {
+								"paused": false
+							},
+							"title": "How long should the Flashcard stay hidden after dismissal?",
+							"type": "string"
+						},
+						"text": {
+							"default": "We have a new post on our blog that might interest you.",
+							"format": "markdown",
+							"maxLength": 65,
+							"order": 2,
+							"showIf": {
+								"paused": false
+							},
+							"title": "Message",
+							"type": "object"
+						},
+						"title": {
+							"default": "New Blog Post",
+							"maxLength": 30,
+							"order": 1,
+							"placeholder": "Announcement",
+							"showIf": {
+								"paused": false
+							},
+							"title": "Title",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.updateOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"delay"
+							],
+							"execute": "INSTALL_SCOPE.updateDelay(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"paused"
+							],
+							"execute": "INSTALL_SCOPE.updatePause(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.81,
+				"upvotes": 197,
+				"downvotes": 47
+			},
+			"releaseNotes": "Added to Cloudflare Apps recommendation engine",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/Q2LnF78fbPDC",
+			"created": "2018-02-06T21:00:46.04399Z",
+			"proposedApp": {
+				"id": "-gXRR7q4QzkP",
+				"title": "Flashcard",
+				"shortDescription": "Show important updates and information on your site.",
+				"longDescription": "### Flashcard is a great way to display important notifications\n\nFlashcard makes it super easy to add any information on your site in the form of a floating card. You can show a title, a message and a button which takes the user to any link when clicked.\n\n+ Its one of the few apps on Cloudflare with 100% rating\n+ Being used on 1000+ websites\n\n# Common use-cases \n\n- Sales annoucements\n- Blog posts\n- Product launches\n- Price changes\n- Cookie consent",
+				"instructions": "",
+				"alias": "flashcard",
+				"orgId": "d15ddd8371319a3c987ef5411b371550",
+				"icon": "//images.cloudflareapps.com/jlqGPamCTXavS4mwkXMg_Icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/iMIGumx5Q9uOiQoZUvv1_Graphic - 4.png",
+					"//images.cloudflareapps.com/UaFLKyr4SFS65MuxmcO0_Graphic - 3.png",
+					"//images.cloudflareapps.com/0Zp9aEhUQpSX2mYrTOHG_Graphic - 2.png",
+					"//images.cloudflareapps.com/uY5cgfMQW4VePGKH3L8A_Graphic-1.png",
+					"//images.cloudflareapps.com/xfFaF7jtRyOeR5MJQWOM_Screen Shot 2017-08-19 at 19.08.10.jpg"
+				],
+				"tileImage": "//images.cloudflareapps.com/b4NfrHAjTdOuP7gM0vd9_flashcard.png",
+				"featuredAppImage": "",
+				"author": "Moin Uddin",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "me@moin.im",
+				"products": [],
+				"categoryIds": [
+					"marketing",
+					"add-on",
+					"ui-and-design",
+					"recommended-for-stores"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Eh8w6PC6zb1G"
+				},
+				"created": "2017-08-18T19:46:04.474896Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-02-06T21:00:46.306624543Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-02-06T21:04:57.276873671Z"
+			}
+		}
+	]
+}

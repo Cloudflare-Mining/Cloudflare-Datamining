@@ -1,0 +1,771 @@
+{
+	"id": "RVaR_vPwa0_9",
+	"title": "AdBlock Blocker",
+	"shortDescription": "Disable ad blockers, increase your ad revenue.",
+	"longDescription": "# New! – Disable ad blockers\n\nAsk your users to disable ad blockers to view your content. Detects AdBlock, AdBlock Plus, uBlock, AdGuard, and others.\n\n# Increase ad revenue\n\nBlock users from viewing your website unless they whitelist your ads. And decide which pages you'd like to protect, so that you don't block access to account settings or important information.\n\n# Customize everything\n\nCustomize colors, font sizes, and alignments, to match your site's design.\n\n# Easy to install, no coding\n\nGet up and running within seconds. Our simple interface makes it easy to add Ad Blocker detection to your site.\n\n# Premium support\n\nWe pride ourselves on offering lightning-fast, thorough responses to questions and technical issues. Send us an email and try us out.\n\n# The Impress Story\n\nWe’re a tiny, scrappy team of programmers based out of San Francisco, California. We know we can “outbuild” teams 10x our size, which allows us to sell apps at a fraction of the cost of the “other guys,” while offering the same (or better) functionality.",
+	"instructions": "",
+	"alias": "adblock-blocker",
+	"orgId": "f8a48afd73c74aef8b3dc54aa60ac840",
+	"icon": "https://images.cloudflareapps.com/q0ZfErlKBxDL/Shopify%20-%20App%20Icon.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/7DGMHY3mXNln/CF%20-%20Screen%20-%20Desktop%20Copy%203.png",
+		"https://images.cloudflareapps.com/7DGMHY3mXNln/CF%20-%20Screen%20-%20Desktop%20Copy%204.png",
+		"https://images.cloudflareapps.com/7DGMHY3mXNln/CF%20-%20Screen%20-%20Desktop%20Copy%205.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/uSFyAxZFphrM/CloudFlare%20Banner.png",
+	"featuredAppImage": "https://images.cloudflareapps.com/dgBJRQkbv9Ci/Cloudflare%20-%20Feature%20Banner.png",
+	"author": "Upsell, Inc.",
+	"tagline": "",
+	"website": "https://impress.store",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://passwordprotectedpages.upsell-apps.com/help/privacy",
+	"privacyPolicyURL": "https://passwordprotectedpages.upsell-apps.com/help/privacy",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.2",
+	"infoVersion": "1.0.2",
+	"points": 0,
+	"supportEmail": "support@impress.store",
+	"products": [
+		{
+			"id": "free",
+			"title": "Basic",
+			"shortDescription": "Desktop",
+			"longDescription": "* Block AdBlock on Desktop browsers\n* Select which pages to protect\n* Customize everything",
+			"visible": true,
+			"price": 0,
+			"order": 0,
+			"created": null
+		},
+		{
+			"id": "pro",
+			"title": "Pro",
+			"shortDescription": "Desktop & Mobile",
+			"longDescription": "* All the features of Basic\n* Block AdBlock on Mobile devices\n* Support independent software",
+			"visible": true,
+			"price": 300,
+			"order": 0,
+			"created": null
+		}
+	],
+	"categoryIds": [],
+	"agreements": {
+		"tos": {
+			"userId": "f8a48afd73c74aef8b3dc54aa60ac840",
+			"created": "2019-09-16T03:55:18.123825671Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "OmZPLzjxFScC"
+	},
+	"created": "2019-09-16T01:36:07.174358Z",
+	"org": {
+		"id": "f8a48afd73c74aef8b3dc54aa60ac840",
+		"title": "",
+		"username": "f8a48afd73c74aef8b3dc54aa60ac840",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "RVaR_vPwa0_9",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"general": {
+							"order": 0,
+							"properties": {
+								"pages": {
+									"format": "page",
+									"order": 0,
+									"title": "Block AdBlock on:",
+									"type": "object"
+								}
+							},
+							"title": "General",
+							"type": "object"
+						},
+						"message": {
+							"order": 3,
+							"properties": {
+								"color": {
+									"default": "#f6E7B86",
+									"format": "color",
+									"order": 1,
+									"title": "Color",
+									"type": "string"
+								},
+								"content": {
+									"default": "<p style=\"text-align: center;\">We rely on ad revenue, please consider whitelisting this site. It just takes a second.</p>",
+									"format": "richtext",
+									"maxLength": 500,
+									"order": 0,
+									"title": "Text",
+									"type": "string"
+								}
+							},
+							"title": "Message",
+							"type": "object"
+						},
+						"mobile": {
+							"order": 1,
+							"properties": {
+								"help": {
+									"helpvalue": "Mobile typically represents 50% of traffic.",
+									"type": "help"
+								},
+								"runOnMobile": {
+									"default": false,
+									"order": 1,
+									"products": [
+										"pro"
+									],
+									"title": "Block AdBlock on mobile devices",
+									"type": "boolean"
+								}
+							},
+							"title": "Mobile",
+							"type": "object"
+						},
+						"other": {
+							"order": 4,
+							"properties": {
+								"backgroundColor": {
+									"default": "#2B2B2B",
+									"format": "color",
+									"order": 0,
+									"title": "Background color",
+									"type": "string"
+								},
+								"cornerRadius": {
+									"default": 0.008,
+									"format": "slider",
+									"maximum": 0.2,
+									"minimum": 0,
+									"order": 2,
+									"step": 0.001,
+									"title": "Corner radius",
+									"type": "number"
+								},
+								"overlayColor": {
+									"default": "#000000",
+									"format": "color",
+									"order": 1,
+									"title": "Overlay color",
+									"type": "string"
+								}
+							},
+							"title": "Other colors",
+							"type": "object"
+						},
+						"title": {
+							"order": 2,
+							"properties": {
+								"color": {
+									"default": "#f38020",
+									"format": "color",
+									"order": 1,
+									"title": "Color",
+									"type": "string"
+								},
+								"content": {
+									"default": "<h1 style=\"text-align: center;\">It looks like you're using an ad blocker.</h1>",
+									"format": "richtext",
+									"maxLength": 500,
+									"order": 0,
+									"title": "Text",
+									"type": "string"
+								}
+							},
+							"title": "Title",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.updateProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/4p709IhAJSsl",
+			"metadata": {
+				"code": {
+					"sourceTag": "4p709IhAJSsl",
+					"uploadedOn": "2019-09-16T03:52:04.866330554Z"
+				}
+			},
+			"created": "2019-09-16T01:36:07.417677Z",
+			"proposedApp": {
+				"id": "RVaR_vPwa0_9",
+				"title": "AdBlock Blocker",
+				"shortDescription": "Disable ad blockers, increase your ad revenue.",
+				"longDescription": "# New! – Disable ad blockers\n\nAsk your users to disable ad blockers to view your content. Detects AdBlock, AdBlock Plus, uBlock, AdGuard, and others.\n\n# Increase ad revenue\n\nBlock users from viewing your website unless they whitelist your ads. And decide which pages you'd like to protect, so that you don't block access to account settings or important information.\n\n# Customize everything\n\nCustomize colors, font sizes, and alignments, to match your site's design.\n\n# Easy to install, no coding\n\nGet up and running within seconds. Our simple interface makes it easy to add Ad Blocker detection to your store.\n\n# Premium support\n\nWe pride ourselves on offering lightning-fast, thorough responses to questions and technical issues. Send us an email and try us out.\n\n# The Impress Story\n\nWe’re a tiny, scrappy team of programmers based out of San Francisco, California. We know we can “outbuild” teams 10x our size, which allows us to sell apps at a fraction of the cost of the “other guys,” while offering the same (or better) functionality.",
+				"instructions": "",
+				"alias": "adblock-blocker",
+				"orgId": "f8a48afd73c74aef8b3dc54aa60ac840",
+				"icon": "https://images.cloudflareapps.com/q0ZfErlKBxDL/Shopify%20-%20App%20Icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/LMXFeMSYe4Hg/nochrome%20Shopify%20-%20Screen%20-%20Desktop.png",
+					"https://images.cloudflareapps.com/LMXFeMSYe4Hg/nochrome%20Shopify%20-%20Screen%20-%20Desktop%20Copy%202.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/uSFyAxZFphrM/CloudFlare%20Banner.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/P02-eHlrBrtk/Cloudflare%20-%20Feature%20Banner.png",
+				"author": "Upsell, Inc.",
+				"tagline": "",
+				"website": "https://impress.store",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://passwordprotectedpages.upsell-apps.com/help/privacy",
+				"privacyPolicyURL": "https://passwordprotectedpages.upsell-apps.com/help/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@impress.store",
+				"products": [
+					{
+						"id": "free",
+						"title": "Basic",
+						"shortDescription": "Desktop",
+						"longDescription": "* Block AdBlock on Desktop browsers\n* Select which pages to protect\n* Customize everything",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Desktop & Mobile",
+						"longDescription": "* All the features of Basic\n* Block AdBlock on Mobile devices\n* Support independent software",
+						"visible": true,
+						"price": 300,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "OmZPLzjxFScC"
+				},
+				"created": "2019-09-16T01:36:07.174358Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "f8a48afd73c74aef8b3dc54aa60ac840",
+				"requestedAt": "2019-09-16T03:55:18.097682738Z",
+				"canceledByUserId": "f8a48afd73c74aef8b3dc54aa60ac840",
+				"canceledAt": "2019-09-17T17:00:15.383499825Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "RVaR_vPwa0_9",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"general": {
+							"order": 0,
+							"properties": {
+								"pages": {
+									"format": "page",
+									"order": 0,
+									"title": "Block AdBlock on:",
+									"type": "object"
+								}
+							},
+							"title": "General",
+							"type": "object"
+						},
+						"message": {
+							"order": 3,
+							"properties": {
+								"color": {
+									"default": "#f6E7B86",
+									"format": "color",
+									"order": 1,
+									"title": "Color",
+									"type": "string"
+								},
+								"content": {
+									"default": "<p style=\"text-align: center;\">We rely on ad revenue, please consider whitelisting this site. It just takes a second.</p>",
+									"format": "richtext",
+									"maxLength": 500,
+									"order": 0,
+									"title": "Text",
+									"type": "string"
+								}
+							},
+							"title": "Message",
+							"type": "object"
+						},
+						"mobile": {
+							"order": 1,
+							"properties": {
+								"help": {
+									"helpvalue": "Mobile typically represents 50% of traffic.",
+									"type": "help"
+								},
+								"runOnMobile": {
+									"default": false,
+									"order": 1,
+									"products": [
+										"pro"
+									],
+									"title": "Block AdBlock on mobile devices",
+									"type": "boolean"
+								}
+							},
+							"title": "Mobile",
+							"type": "object"
+						},
+						"other": {
+							"order": 4,
+							"properties": {
+								"backgroundColor": {
+									"default": "#2B2B2B",
+									"format": "color",
+									"order": 0,
+									"title": "Background color",
+									"type": "string"
+								},
+								"cornerRadius": {
+									"default": 0.008,
+									"format": "slider",
+									"maximum": 0.2,
+									"minimum": 0,
+									"order": 2,
+									"step": 0.001,
+									"title": "Corner radius",
+									"type": "number"
+								},
+								"overlayColor": {
+									"default": "#000000",
+									"format": "color",
+									"order": 1,
+									"title": "Overlay color",
+									"type": "string"
+								}
+							},
+							"title": "Other colors",
+							"type": "object"
+						},
+						"title": {
+							"order": 2,
+							"properties": {
+								"color": {
+									"default": "#f38020",
+									"format": "color",
+									"order": 1,
+									"title": "Color",
+									"type": "string"
+								},
+								"content": {
+									"default": "<h1 style=\"text-align: center;\">It looks like you're using an ad blocker.</h1>",
+									"format": "richtext",
+									"maxLength": 500,
+									"order": 0,
+									"title": "Text",
+									"type": "string"
+								}
+							},
+							"title": "Title",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.updateProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Linter fixes",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/ypJvzybG7xKG",
+			"metadata": {
+				"code": {
+					"sourceTag": "ypJvzybG7xKG",
+					"uploadedOn": "2019-09-17T16:59:50.843026102Z"
+				}
+			},
+			"created": "2019-09-17T16:57:34.678815Z",
+			"proposedApp": {
+				"id": "RVaR_vPwa0_9",
+				"title": "AdBlock Blocker",
+				"shortDescription": "Disable ad blockers, increase your ad revenue.",
+				"longDescription": "# New! – Disable ad blockers\n\nAsk your users to disable ad blockers to view your content. Detects AdBlock, AdBlock Plus, uBlock, AdGuard, and others.\n\n# Increase ad revenue\n\nBlock users from viewing your website unless they whitelist your ads. And decide which pages you'd like to protect, so that you don't block access to account settings or important information.\n\n# Customize everything\n\nCustomize colors, font sizes, and alignments, to match your site's design.\n\n# Easy to install, no coding\n\nGet up and running within seconds. Our simple interface makes it easy to add Ad Blocker detection to your store.\n\n# Premium support\n\nWe pride ourselves on offering lightning-fast, thorough responses to questions and technical issues. Send us an email and try us out.\n\n# The Impress Story\n\nWe’re a tiny, scrappy team of programmers based out of San Francisco, California. We know we can “outbuild” teams 10x our size, which allows us to sell apps at a fraction of the cost of the “other guys,” while offering the same (or better) functionality.",
+				"instructions": "",
+				"alias": "adblock-blocker",
+				"orgId": "f8a48afd73c74aef8b3dc54aa60ac840",
+				"icon": "https://images.cloudflareapps.com/q0ZfErlKBxDL/Shopify%20-%20App%20Icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/LMXFeMSYe4Hg/nochrome%20Shopify%20-%20Screen%20-%20Desktop.png",
+					"https://images.cloudflareapps.com/LMXFeMSYe4Hg/nochrome%20Shopify%20-%20Screen%20-%20Desktop%20Copy%202.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/uSFyAxZFphrM/CloudFlare%20Banner.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/P02-eHlrBrtk/Cloudflare%20-%20Feature%20Banner.png",
+				"author": "Upsell, Inc.",
+				"tagline": "",
+				"website": "https://impress.store",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://passwordprotectedpages.upsell-apps.com/help/privacy",
+				"privacyPolicyURL": "https://passwordprotectedpages.upsell-apps.com/help/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@impress.store",
+				"products": [
+					{
+						"id": "free",
+						"title": "Basic",
+						"shortDescription": "Desktop",
+						"longDescription": "* Block AdBlock on Desktop browsers\n* Select which pages to protect\n* Customize everything",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Desktop & Mobile",
+						"longDescription": "* All the features of Basic\n* Block AdBlock on Mobile devices\n* Support independent software",
+						"visible": true,
+						"price": 300,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "OmZPLzjxFScC"
+				},
+				"created": "2019-09-16T01:36:07.174358Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f8a48afd73c74aef8b3dc54aa60ac840",
+				"requestedAt": "2019-09-17T17:00:15.406785538Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-09-17T20:06:44.823647149Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "RVaR_vPwa0_9",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"general": {
+							"order": 0,
+							"properties": {
+								"pages": {
+									"format": "page",
+									"order": 0,
+									"title": "Block AdBlock on:",
+									"type": "object"
+								}
+							},
+							"title": "General",
+							"type": "object"
+						},
+						"message": {
+							"order": 3,
+							"properties": {
+								"color": {
+									"default": "#f6E7B86",
+									"format": "color",
+									"order": 1,
+									"title": "Color",
+									"type": "string"
+								},
+								"content": {
+									"default": "<p style=\"text-align: center;\">We rely on ad revenue, please consider whitelisting this site. It just takes a second.</p>",
+									"format": "richtext",
+									"maxLength": 500,
+									"order": 0,
+									"title": "Text",
+									"type": "string"
+								}
+							},
+							"title": "Message",
+							"type": "object"
+						},
+						"mobile": {
+							"order": 1,
+							"properties": {
+								"help": {
+									"helpvalue": "Mobile typically represents 50% of traffic.",
+									"type": "help"
+								},
+								"runOnMobile": {
+									"default": false,
+									"order": 1,
+									"products": [
+										"pro"
+									],
+									"title": "Block AdBlock on mobile devices",
+									"type": "boolean"
+								}
+							},
+							"title": "Mobile",
+							"type": "object"
+						},
+						"other": {
+							"order": 4,
+							"properties": {
+								"backgroundColor": {
+									"default": "#2B2B2B",
+									"format": "color",
+									"order": 0,
+									"title": "Background color",
+									"type": "string"
+								},
+								"cornerRadius": {
+									"default": 0.008,
+									"format": "slider",
+									"maximum": 0.2,
+									"minimum": 0,
+									"order": 2,
+									"step": 0.001,
+									"title": "Corner radius",
+									"type": "number"
+								},
+								"overlayColor": {
+									"default": "#000000",
+									"format": "color",
+									"order": 1,
+									"title": "Overlay color",
+									"type": "string"
+								}
+							},
+							"title": "Other colors",
+							"type": "object"
+						},
+						"title": {
+							"order": 2,
+							"properties": {
+								"color": {
+									"default": "#f38020",
+									"format": "color",
+									"order": 1,
+									"title": "Color",
+									"type": "string"
+								},
+								"content": {
+									"default": "<h1 style=\"text-align: center;\">It looks like you're using an ad blocker.</h1>",
+									"format": "richtext",
+									"maxLength": 500,
+									"order": 0,
+									"title": "Text",
+									"type": "string"
+								}
+							},
+							"title": "Title",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.updateProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.19,
+				"upvotes": 13,
+				"downvotes": 57
+			},
+			"releaseNotes": "Marketing updates - no code changes",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/ws49pMOqg1Tx",
+			"metadata": {
+				"code": {
+					"sourceTag": "ws49pMOqg1Tx",
+					"uploadedOn": "2019-09-18T17:07:31.517619029Z"
+				}
+			},
+			"created": "2019-09-18T17:00:17.19431Z",
+			"proposedApp": {
+				"id": "RVaR_vPwa0_9",
+				"title": "AdBlock Blocker",
+				"shortDescription": "Disable ad blockers, increase your ad revenue.",
+				"longDescription": "# New! – Disable ad blockers\n\nAsk your users to disable ad blockers to view your content. Detects AdBlock, AdBlock Plus, uBlock, AdGuard, and others.\n\n# Increase ad revenue\n\nBlock users from viewing your website unless they whitelist your ads. And decide which pages you'd like to protect, so that you don't block access to account settings or important information.\n\n# Customize everything\n\nCustomize colors, font sizes, and alignments, to match your site's design.\n\n# Easy to install, no coding\n\nGet up and running within seconds. Our simple interface makes it easy to add Ad Blocker detection to your site.\n\n# Premium support\n\nWe pride ourselves on offering lightning-fast, thorough responses to questions and technical issues. Send us an email and try us out.\n\n# The Impress Story\n\nWe’re a tiny, scrappy team of programmers based out of San Francisco, California. We know we can “outbuild” teams 10x our size, which allows us to sell apps at a fraction of the cost of the “other guys,” while offering the same (or better) functionality.",
+				"instructions": "",
+				"alias": "adblock-blocker",
+				"orgId": "f8a48afd73c74aef8b3dc54aa60ac840",
+				"icon": "https://images.cloudflareapps.com/q0ZfErlKBxDL/Shopify%20-%20App%20Icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/7DGMHY3mXNln/CF%20-%20Screen%20-%20Desktop%20Copy%203.png",
+					"https://images.cloudflareapps.com/7DGMHY3mXNln/CF%20-%20Screen%20-%20Desktop%20Copy%204.png",
+					"https://images.cloudflareapps.com/7DGMHY3mXNln/CF%20-%20Screen%20-%20Desktop%20Copy%205.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/uSFyAxZFphrM/CloudFlare%20Banner.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/dgBJRQkbv9Ci/Cloudflare%20-%20Feature%20Banner.png",
+				"author": "Upsell, Inc.",
+				"tagline": "",
+				"website": "https://impress.store",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://passwordprotectedpages.upsell-apps.com/help/privacy",
+				"privacyPolicyURL": "https://passwordprotectedpages.upsell-apps.com/help/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@impress.store",
+				"products": [
+					{
+						"id": "free",
+						"title": "Basic",
+						"shortDescription": "Desktop",
+						"longDescription": "* Block AdBlock on Desktop browsers\n* Select which pages to protect\n* Customize everything",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Desktop & Mobile",
+						"longDescription": "* All the features of Basic\n* Block AdBlock on Mobile devices\n* Support independent software",
+						"visible": true,
+						"price": 300,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "OmZPLzjxFScC"
+				},
+				"created": "2019-09-16T01:36:07.174358Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f8a48afd73c74aef8b3dc54aa60ac840",
+				"requestedAt": "2019-09-18T17:07:55.527294781Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-09-20T15:42:11.781909551Z"
+			}
+		}
+	]
+}

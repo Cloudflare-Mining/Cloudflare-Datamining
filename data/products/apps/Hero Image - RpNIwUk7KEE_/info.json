@@ -1,0 +1,3203 @@
+{
+	"id": "RpNIwUk7KEE_",
+	"title": "Hero Image",
+	"shortDescription": "Add stylish full screen visuals above the fold.",
+	"longDescription": "## Stylish full screen visuals above the fold.\n\nHero Image adds a full screen image that pulls in visitors to read on.",
+	"instructions": "",
+	"alias": "hero-image",
+	"orgId": "2684c89451b6b86b453405beb4662f46",
+	"icon": "//images.cloudflareapps.com/l3pPDzbgRAylVABfTj51_icon.png",
+	"screenshots": [
+		"//images.cloudflareapps.com/UMRxQYEpRKSnTnxkTD5v_default-screenshot.png"
+	],
+	"tileImage": "//images.cloudflareapps.com/qQxQsoBySomJwuduMKKV_tile.png",
+	"featuredAppImage": "",
+	"author": "Cloudflare Labs",
+	"tagline": "",
+	"website": "",
+	"sourceURL": "https://github.com/cloudflare-apps/hero-image",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "#3f2a4c",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.1.10",
+	"infoVersion": "1.1.10",
+	"points": 900,
+	"supportEmail": "support@cloudflare.com",
+	"products": [],
+	"categoryIds": [
+		"ui-and-design"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "f1279b4c7912eb17ba469bcbdfe62b19",
+			"created": "2017-07-06T08:52:40.52276457Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "vgIk2IRSrASU"
+	},
+	"created": "2017-03-23T06:23:01.121933Z",
+	"org": {
+		"id": "2684c89451b6b86b453405beb4662f46",
+		"title": "",
+		"username": "2684c89451b6b86b453405beb4662f46",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "ui-and-design",
+			"title": "UI & Design",
+			"description": "Apps that make your website more beautiful and user friendly.",
+			"icon": "",
+			"points": 10,
+			"visible": true,
+			"created": "2018-01-22T19:17:52.677513Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "v1.0.0",
+			"appId": "RpNIwUk7KEE_",
+			"definition": {
+				"resources": {
+					"body": [],
+					"head": [
+						{
+							"type": "style",
+							"src": "build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"alignment": {
+							"default": "center",
+							"enum": [
+								"left",
+								"center",
+								"right"
+							],
+							"enumNames": {
+								"center": "Center",
+								"left": "Left",
+								"right": "Right"
+							},
+							"order": 6,
+							"title": "Text alignment",
+							"type": "string"
+						},
+						"backgroundImage": {
+							"default": "https://eager-app-images.imgix.net/lturyv6bQ0KLnXdnNLCi_life.jpg",
+							"description": "This image will resize to fit the screen.",
+							"format": "image",
+							"order": 0,
+							"title": "Background image",
+							"type": "string"
+						},
+						"message": {
+							"default": "# First impressions in full screen.\nA summary of your content to encourage visitors to read on.",
+							"description": "A summary of your content formatted with <a target='_blank' href='https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet'>Markdown</a>.",
+							"format": "markdown",
+							"order": 1,
+							"placeholder": "Your hero summary...",
+							"title": "Message",
+							"type": "object"
+						},
+						"navigatorBehavior": {
+							"default": "scroll",
+							"enum": [
+								"scroll",
+								"redirect"
+							],
+							"enumNames": {
+								"redirect": "Redirect to a different site.",
+								"scroll": "Scroll down the page."
+							},
+							"format": "radios",
+							"order": 4,
+							"title": "When the user clicks the Hero Image...",
+							"type": "string"
+						},
+						"redirectURL": {
+							"order": 5,
+							"placeholder": "https://",
+							"showIf": {
+								"navigatorBehavior": "redirect"
+							},
+							"title": "Redirect URL",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 2,
+							"placeholder": "#...",
+							"title": "Text color",
+							"type": "string"
+						},
+						"textShadowColor": {
+							"default": "dark",
+							"enum": [
+								"dark",
+								"light",
+								"none"
+							],
+							"enumNames": {
+								"dark": "Dark",
+								"light": "Light",
+								"none": "None"
+							},
+							"order": 3,
+							"title": "Text shadow color",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"textColor",
+								"textShadowColor",
+								"alignment",
+								"message"
+							],
+							"execute": "INSTALL_SCOPE.updateInnerContent(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"backgroundImage"
+							],
+							"execute": "INSTALL_SCOPE.updateBackground(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"location"
+							],
+							"execute": "INSTALL_SCOPE.updateElement(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"navigatorBehavior",
+								"redirectURL"
+							],
+							"execute": "INSTALL_SCOPE.updateNavigatorBehavior(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [
+				{
+					"referencedAs": "build/app.css",
+					"path": "build/app.css",
+					"location": "RpNIwUk7KEE_/v1.0.0/build/app.css"
+				},
+				{
+					"referencedAs": "./build/app.js",
+					"path": "build/app.js",
+					"location": "RpNIwUk7KEE_/v1.0.0/build/app.js"
+				}
+			],
+			"hasCode": true,
+			"fileHandle": "RpNIwUk7KEE_/v1.0.0",
+			"metadata": {
+				"code": {
+					"sourceTag": "vgIk2IRSrASU",
+					"uploadedOn": "2017-03-23T06:23:03.493559054Z"
+				}
+			},
+			"created": "2017-03-23T06:23:03.012917Z",
+			"proposedApp": {
+				"id": "RpNIwUk7KEE_",
+				"title": "Hero Image",
+				"shortDescription": "First impressions in full screen.",
+				"longDescription": "## Stylish full screen visuals above the fold.\n\nHero Image adds a full screen image that pulls in visitors to read on.",
+				"instructions": "",
+				"alias": "hero-image",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/wf8y3tpTOy5qXUOdTkGF_logo.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/UMRxQYEpRKSnTnxkTD5v_default-screenshot.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/GJimepnpQPaJx7fd8kFZ_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"design",
+					"by-cloudflare"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "vgIk2IRSrASU"
+				},
+				"created": "2017-03-23T06:23:01.121933Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedAt": "2017-03-23T06:23:10.019550163Z",
+				"canceledAt": null,
+				"reviewedByUserId": "c3PQq6W4M1fg",
+				"reviewedAt": "2017-03-23T06:25:50.75167284Z"
+			}
+		},
+		{
+			"tag": "v1.0.1",
+			"appId": "RpNIwUk7KEE_",
+			"definition": {
+				"resources": {
+					"body": [],
+					"head": [
+						{
+							"type": "style",
+							"src": "build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"alignment": {
+							"default": "center",
+							"enum": [
+								"left",
+								"center",
+								"right"
+							],
+							"enumNames": {
+								"center": "Center",
+								"left": "Left",
+								"right": "Right"
+							},
+							"order": 6,
+							"title": "Text alignment",
+							"type": "string"
+						},
+						"backgroundImage": {
+							"default": "https://eager-app-images.imgix.net/lturyv6bQ0KLnXdnNLCi_life.jpg",
+							"description": "This image will resize to fit the screen.",
+							"format": "image",
+							"order": 0,
+							"title": "Background image",
+							"type": "string"
+						},
+						"message": {
+							"default": "# First impressions in full screen.\nA summary of your content to encourage visitors to read on.",
+							"description": "A summary of your content formatted with <a target='_blank' href='https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet'>Markdown</a>.",
+							"format": "markdown",
+							"order": 1,
+							"placeholder": "Your hero summary...",
+							"title": "Message",
+							"type": "object"
+						},
+						"navigatorBehavior": {
+							"default": "scroll",
+							"enum": [
+								"scroll",
+								"redirect"
+							],
+							"enumNames": {
+								"redirect": "Redirect to a different site.",
+								"scroll": "Scroll down the page."
+							},
+							"format": "radios",
+							"order": 4,
+							"title": "When the user clicks the Hero Image...",
+							"type": "string"
+						},
+						"redirectURL": {
+							"order": 5,
+							"placeholder": "https://",
+							"showIf": {
+								"navigatorBehavior": "redirect"
+							},
+							"title": "Redirect URL",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 2,
+							"placeholder": "#...",
+							"title": "Text color",
+							"type": "string"
+						},
+						"textShadowColor": {
+							"default": "dark",
+							"enum": [
+								"dark",
+								"light",
+								"none"
+							],
+							"enumNames": {
+								"dark": "Dark",
+								"light": "Light",
+								"none": "None"
+							},
+							"order": 3,
+							"title": "Text shadow color",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"textColor",
+								"textShadowColor",
+								"alignment",
+								"message"
+							],
+							"execute": "INSTALL_SCOPE.updateInnerContent(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"backgroundImage"
+							],
+							"execute": "INSTALL_SCOPE.updateBackground(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"location"
+							],
+							"execute": "INSTALL_SCOPE.updateElement(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"navigatorBehavior",
+								"redirectURL"
+							],
+							"execute": "INSTALL_SCOPE.updateNavigatorBehavior(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "RpNIwUk7KEE_/v1.0.1",
+			"created": "2017-03-23T06:28:13.970546Z",
+			"proposedApp": {
+				"id": "RpNIwUk7KEE_",
+				"title": "Hero Image",
+				"shortDescription": "First impressions in full screen.",
+				"longDescription": "## Stylish full screen visuals above the fold.\n\nHero Image adds a full screen image that pulls in visitors to read on.",
+				"instructions": "",
+				"alias": "hero-image",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/wf8y3tpTOy5qXUOdTkGF_logo.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/UMRxQYEpRKSnTnxkTD5v_default-screenshot.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/GEdgsJwRFOVb0YalYo5Q_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"design",
+					"by-cloudflare"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "vgIk2IRSrASU"
+				},
+				"created": "2017-03-23T06:23:01.121933Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedAt": "2017-03-23T06:30:24.997580474Z",
+				"canceledAt": null,
+				"reviewedByUserId": "c3PQq6W4M1fg",
+				"reviewedAt": "2017-03-23T06:30:49.221117774Z"
+			}
+		},
+		{
+			"tag": "v1.0.2",
+			"appId": "RpNIwUk7KEE_",
+			"definition": {
+				"resources": {
+					"body": [],
+					"head": [
+						{
+							"type": "style",
+							"src": "build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"alignment": {
+							"default": "center",
+							"enum": [
+								"left",
+								"center",
+								"right"
+							],
+							"enumNames": {
+								"center": "Center",
+								"left": "Left",
+								"right": "Right"
+							},
+							"order": 6,
+							"title": "Text alignment",
+							"type": "string"
+						},
+						"backgroundImage": {
+							"default": "https://eager-app-images.imgix.net/lturyv6bQ0KLnXdnNLCi_life.jpg",
+							"description": "This image will resize to fit the screen.",
+							"format": "image",
+							"order": 0,
+							"title": "Background image",
+							"type": "string"
+						},
+						"message": {
+							"default": "# First impressions in full screen.\nA summary of your content to encourage visitors to read on.",
+							"description": "A summary of your content formatted with <a target='_blank' href='https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet'>Markdown</a>.",
+							"format": "markdown",
+							"order": 1,
+							"placeholder": "Your hero summary...",
+							"title": "Message",
+							"type": "object"
+						},
+						"navigatorBehavior": {
+							"default": "scroll",
+							"enum": [
+								"scroll",
+								"redirect"
+							],
+							"enumNames": {
+								"redirect": "Redirect to a different site.",
+								"scroll": "Scroll down the page."
+							},
+							"format": "radios",
+							"order": 4,
+							"title": "When the user clicks the Hero Image...",
+							"type": "string"
+						},
+						"redirectURL": {
+							"order": 5,
+							"placeholder": "https://",
+							"showIf": {
+								"navigatorBehavior": "redirect"
+							},
+							"title": "Redirect URL",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 2,
+							"placeholder": "#...",
+							"title": "Text color",
+							"type": "string"
+						},
+						"textShadowColor": {
+							"default": "dark",
+							"enum": [
+								"dark",
+								"light",
+								"none"
+							],
+							"enumNames": {
+								"dark": "Dark",
+								"light": "Light",
+								"none": "None"
+							},
+							"order": 3,
+							"title": "Text shadow color",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"textColor",
+								"textShadowColor",
+								"alignment",
+								"message"
+							],
+							"execute": "INSTALL_SCOPE.updateInnerContent(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"backgroundImage"
+							],
+							"execute": "INSTALL_SCOPE.updateBackground(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"location"
+							],
+							"execute": "INSTALL_SCOPE.updateElement(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"navigatorBehavior",
+								"redirectURL"
+							],
+							"execute": "INSTALL_SCOPE.updateNavigatorBehavior(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "RpNIwUk7KEE_/v1.0.2",
+			"created": "2017-03-23T06:33:46.293436Z",
+			"proposedApp": {
+				"id": "RpNIwUk7KEE_",
+				"title": "Hero Image",
+				"shortDescription": "First impressions in full screen.",
+				"longDescription": "## Stylish full screen visuals above the fold.\n\nHero Image adds a full screen image that pulls in visitors to read on.",
+				"instructions": "",
+				"alias": "hero-image",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/wf8y3tpTOy5qXUOdTkGF_logo.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/UMRxQYEpRKSnTnxkTD5v_default-screenshot.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/MIPZh8Z8TleRlzbafumk_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"design",
+					"by-cloudflare"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "vgIk2IRSrASU"
+				},
+				"created": "2017-03-23T06:23:01.121933Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedAt": "2017-03-23T06:33:46.810604462Z",
+				"canceledAt": null,
+				"reviewedByUserId": "c3PQq6W4M1fg",
+				"reviewedAt": "2017-03-23T06:34:36.183029738Z"
+			}
+		},
+		{
+			"tag": "v1.0.3",
+			"appId": "RpNIwUk7KEE_",
+			"definition": {
+				"resources": {
+					"body": [],
+					"head": [
+						{
+							"type": "style",
+							"src": "build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"alignment": {
+							"default": "center",
+							"enum": [
+								"left",
+								"center",
+								"right"
+							],
+							"enumNames": {
+								"center": "Center",
+								"left": "Left",
+								"right": "Right"
+							},
+							"order": 6,
+							"title": "Text alignment",
+							"type": "string"
+						},
+						"backgroundImage": {
+							"default": "https://eager-app-images.imgix.net/lturyv6bQ0KLnXdnNLCi_life.jpg",
+							"description": "This image will resize to fit the screen.",
+							"format": "image",
+							"order": 0,
+							"title": "Background image",
+							"type": "string"
+						},
+						"message": {
+							"default": "# First impressions in full screen.\nA summary of your content to encourage visitors to read on.",
+							"description": "A summary of your content formatted with <a target='_blank' href='https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet'>Markdown</a>.",
+							"format": "markdown",
+							"order": 1,
+							"placeholder": "Your hero summary...",
+							"title": "Message",
+							"type": "object"
+						},
+						"navigatorBehavior": {
+							"default": "scroll",
+							"enum": [
+								"scroll",
+								"redirect"
+							],
+							"enumNames": {
+								"redirect": "Redirect to a different site.",
+								"scroll": "Scroll down the page."
+							},
+							"format": "radios",
+							"order": 4,
+							"title": "When the user clicks the Hero Image...",
+							"type": "string"
+						},
+						"redirectURL": {
+							"order": 5,
+							"placeholder": "https://",
+							"showIf": {
+								"navigatorBehavior": "redirect"
+							},
+							"title": "Redirect URL",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 2,
+							"placeholder": "#...",
+							"title": "Text color",
+							"type": "string"
+						},
+						"textShadowColor": {
+							"default": "dark",
+							"enum": [
+								"dark",
+								"light",
+								"none"
+							],
+							"enumNames": {
+								"dark": "Dark",
+								"light": "Light",
+								"none": "None"
+							},
+							"order": 3,
+							"title": "Text shadow color",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"textColor",
+								"textShadowColor",
+								"alignment",
+								"message"
+							],
+							"execute": "INSTALL_SCOPE.updateInnerContent(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"backgroundImage"
+							],
+							"execute": "INSTALL_SCOPE.updateBackground(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"location"
+							],
+							"execute": "INSTALL_SCOPE.updateElement(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"navigatorBehavior",
+								"redirectURL"
+							],
+							"execute": "INSTALL_SCOPE.updateNavigatorBehavior(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/9z064VQG5uoz",
+			"metadata": {
+				"code": {
+					"sourceTag": "9z064VQG5uoz",
+					"uploadedOn": "2017-04-25T17:34:48.463825728Z"
+				}
+			},
+			"created": "2017-04-25T17:34:47.854732Z",
+			"proposedApp": {
+				"id": "RpNIwUk7KEE_",
+				"title": "Hero Image",
+				"shortDescription": "First impressions in full screen.",
+				"longDescription": "## Stylish full screen visuals above the fold.\n\nHero Image adds a full screen image that pulls in visitors to read on.",
+				"instructions": "",
+				"alias": "hero-image",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/wf8y3tpTOy5qXUOdTkGF_logo.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/UMRxQYEpRKSnTnxkTD5v_default-screenshot.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/MIPZh8Z8TleRlzbafumk_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"design",
+					"by-cloudflare"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "vgIk2IRSrASU"
+				},
+				"created": "2017-03-23T06:23:01.121933Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedAt": "2017-04-25T17:35:10.304495448Z",
+				"canceledAt": null,
+				"reviewedAt": "2017-04-25T17:35:30.573014019Z"
+			}
+		},
+		{
+			"tag": "1.1.0",
+			"appId": "RpNIwUk7KEE_",
+			"definition": {
+				"resources": {
+					"body": [],
+					"head": [
+						{
+							"type": "style",
+							"src": "build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"alignment": {
+							"default": "center",
+							"enum": [
+								"left",
+								"center",
+								"right"
+							],
+							"enumNames": {
+								"center": "Center",
+								"left": "Left",
+								"right": "Right"
+							},
+							"order": 6,
+							"title": "Text alignment",
+							"type": "string"
+						},
+						"backgroundImage": {
+							"default": "https://eager-app-images.imgix.net/lturyv6bQ0KLnXdnNLCi_life.jpg",
+							"description": "This image will resize to fit the screen.",
+							"format": "image",
+							"order": 0,
+							"title": "Background image",
+							"type": "string"
+						},
+						"message": {
+							"default": "# First impressions in full screen.\nA summary of your content to encourage visitors to read on.",
+							"description": "A summary of your content formatted with <a target='_blank' href='https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet'>Markdown</a>.",
+							"format": "markdown",
+							"order": 1,
+							"placeholder": "Your hero summary...",
+							"title": "Message",
+							"type": "object"
+						},
+						"navigatorBehavior": {
+							"default": "scroll",
+							"enum": [
+								"scroll",
+								"redirect"
+							],
+							"enumNames": {
+								"redirect": "Redirect to a different site.",
+								"scroll": "Scroll down the page."
+							},
+							"format": "radios",
+							"order": 4,
+							"title": "When the user clicks the Hero Image...",
+							"type": "string"
+						},
+						"redirectURL": {
+							"order": 5,
+							"placeholder": "https://",
+							"showIf": {
+								"navigatorBehavior": "redirect"
+							},
+							"title": "Redirect URL",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 2,
+							"placeholder": "#...",
+							"title": "Text color",
+							"type": "string"
+						},
+						"textShadowColor": {
+							"default": "dark",
+							"enum": [
+								"dark",
+								"light",
+								"none"
+							],
+							"enumNames": {
+								"dark": "Dark",
+								"light": "Light",
+								"none": "None"
+							},
+							"order": 3,
+							"title": "Text shadow color",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"textColor",
+								"textShadowColor",
+								"alignment",
+								"message"
+							],
+							"execute": "INSTALL_SCOPE.updateInnerContent(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"backgroundImage"
+							],
+							"execute": "INSTALL_SCOPE.updateBackground(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"location"
+							],
+							"execute": "INSTALL_SCOPE.updateElement(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"navigatorBehavior",
+								"redirectURL"
+							],
+							"execute": "INSTALL_SCOPE.updateNavigatorBehavior(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/9jjGqCTGW8bW",
+			"metadata": {
+				"code": {
+					"sourceTag": "9jjGqCTGW8bW",
+					"uploadedOn": "2017-04-25T17:49:25.588965676Z"
+				}
+			},
+			"created": "2017-04-25T17:42:06.652482Z",
+			"proposedApp": {
+				"id": "RpNIwUk7KEE_",
+				"title": "Hero Image",
+				"shortDescription": "First impressions in full screen.",
+				"longDescription": "## Stylish full screen visuals above the fold.\n\nHero Image adds a full screen image that pulls in visitors to read on.",
+				"instructions": "",
+				"alias": "hero-image",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/wf8y3tpTOy5qXUOdTkGF_logo.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/UMRxQYEpRKSnTnxkTD5v_default-screenshot.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"design",
+					"by-cloudflare"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "vgIk2IRSrASU"
+				},
+				"created": "2017-03-23T06:23:01.121933Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "1e57d294e97e29816d5d04c78ed67257",
+				"requestedAt": "2017-06-17T04:59:37.524642099Z",
+				"canceledAt": null,
+				"reviewedByUserId": "1e57d294e97e29816d5d04c78ed67257",
+				"reviewedAt": "2017-06-17T05:00:48.849176633Z"
+			}
+		},
+		{
+			"tag": "1.1.1",
+			"appId": "RpNIwUk7KEE_",
+			"definition": {
+				"resources": {
+					"body": [],
+					"head": [
+						{
+							"type": "style",
+							"src": "build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"alignment": {
+							"default": "center",
+							"enum": [
+								"left",
+								"center",
+								"right"
+							],
+							"enumNames": {
+								"center": "Center",
+								"left": "Left",
+								"right": "Right"
+							},
+							"order": 6,
+							"title": "Text alignment",
+							"type": "string"
+						},
+						"backgroundImage": {
+							"default": "https://eager-app-images.imgix.net/lturyv6bQ0KLnXdnNLCi_life.jpg",
+							"description": "This image will resize to fit the screen.",
+							"format": "image",
+							"order": 0,
+							"title": "Background image",
+							"type": "string"
+						},
+						"message": {
+							"default": "# First impressions in full screen.\nA summary of your content to encourage visitors to read on.",
+							"description": "A summary of your content formatted with <a target='_blank' href='https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet'>Markdown</a>.",
+							"format": "markdown",
+							"order": 1,
+							"placeholder": "Your hero summary...",
+							"title": "Message",
+							"type": "object"
+						},
+						"navigatorBehavior": {
+							"default": "scroll",
+							"enum": [
+								"scroll",
+								"redirect"
+							],
+							"enumNames": {
+								"redirect": "Redirect to a different site.",
+								"scroll": "Scroll down the page."
+							},
+							"format": "radios",
+							"order": 4,
+							"title": "When the user clicks the Hero Image...",
+							"type": "string"
+						},
+						"redirectURL": {
+							"order": 5,
+							"placeholder": "https://",
+							"showIf": {
+								"navigatorBehavior": "redirect"
+							},
+							"title": "Redirect URL",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 2,
+							"placeholder": "#...",
+							"title": "Text color",
+							"type": "string"
+						},
+						"textShadowColor": {
+							"default": "dark",
+							"enum": [
+								"dark",
+								"light",
+								"none"
+							],
+							"enumNames": {
+								"dark": "Dark",
+								"light": "Light",
+								"none": "None"
+							},
+							"order": 3,
+							"title": "Text shadow color",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"textColor",
+								"textShadowColor",
+								"alignment",
+								"message"
+							],
+							"execute": "INSTALL_SCOPE.updateInnerContent(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"backgroundImage"
+							],
+							"execute": "INSTALL_SCOPE.updateBackground(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"location"
+							],
+							"execute": "INSTALL_SCOPE.updateElement(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"navigatorBehavior",
+								"redirectURL"
+							],
+							"execute": "INSTALL_SCOPE.updateNavigatorBehavior(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/9jjGqCTGW8bW",
+			"created": "2017-07-06T08:52:40.215597Z",
+			"proposedApp": {
+				"id": "RpNIwUk7KEE_",
+				"title": "Hero Image",
+				"shortDescription": "First impressions in full screen.",
+				"longDescription": "## Stylish full screen visuals above the fold.\n\nHero Image adds a full screen image that pulls in visitors to read on.",
+				"instructions": "",
+				"alias": "hero-image",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/wf8y3tpTOy5qXUOdTkGF_logo.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/UMRxQYEpRKSnTnxkTD5v_default-screenshot.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"design",
+					"by-cloudflare"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "vgIk2IRSrASU"
+				},
+				"created": "2017-03-23T06:23:01.121933Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-07-06T08:52:40.520680544Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-07-06T08:57:05.337892588Z"
+			}
+		},
+		{
+			"tag": "1.1.2",
+			"appId": "RpNIwUk7KEE_",
+			"definition": {
+				"resources": {
+					"body": [],
+					"head": [
+						{
+							"type": "style",
+							"src": "build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"alignment": {
+							"default": "center",
+							"enum": [
+								"left",
+								"center",
+								"right"
+							],
+							"enumNames": {
+								"center": "Center",
+								"left": "Left",
+								"right": "Right"
+							},
+							"order": 6,
+							"title": "Text alignment",
+							"type": "string"
+						},
+						"backgroundImage": {
+							"default": "https://eager-app-images.imgix.net/lturyv6bQ0KLnXdnNLCi_life.jpg",
+							"description": "This image will resize to fit the screen.",
+							"format": "image",
+							"order": 0,
+							"title": "Background image",
+							"type": "string"
+						},
+						"message": {
+							"default": "# First impressions in full screen.\nA summary of your content to encourage visitors to read on.",
+							"description": "A summary of your content formatted with <a target='_blank' href='https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet'>Markdown</a>.",
+							"format": "markdown",
+							"order": 1,
+							"placeholder": "Your hero summary...",
+							"title": "Message",
+							"type": "object"
+						},
+						"navigatorBehavior": {
+							"default": "scroll",
+							"enum": [
+								"scroll",
+								"redirect"
+							],
+							"enumNames": {
+								"redirect": "Redirect to a different site.",
+								"scroll": "Scroll down the page."
+							},
+							"format": "radios",
+							"order": 4,
+							"title": "When the user clicks the Hero Image...",
+							"type": "string"
+						},
+						"redirectURL": {
+							"order": 5,
+							"placeholder": "https://",
+							"showIf": {
+								"navigatorBehavior": "redirect"
+							},
+							"title": "Redirect URL",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 2,
+							"placeholder": "#...",
+							"title": "Text color",
+							"type": "string"
+						},
+						"textShadowColor": {
+							"default": "dark",
+							"enum": [
+								"dark",
+								"light",
+								"none"
+							],
+							"enumNames": {
+								"dark": "Dark",
+								"light": "Light",
+								"none": "None"
+							},
+							"order": 3,
+							"title": "Text shadow color",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"textColor",
+								"textShadowColor",
+								"alignment",
+								"message"
+							],
+							"execute": "INSTALL_SCOPE.updateInnerContent(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"backgroundImage"
+							],
+							"execute": "INSTALL_SCOPE.updateBackground(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"location"
+							],
+							"execute": "INSTALL_SCOPE.updateElement(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"navigatorBehavior",
+								"redirectURL"
+							],
+							"execute": "INSTALL_SCOPE.updateNavigatorBehavior(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/9jjGqCTGW8bW",
+			"created": "2017-08-04T01:18:57.508977Z",
+			"proposedApp": {
+				"id": "RpNIwUk7KEE_",
+				"title": "Hero Image",
+				"shortDescription": "First impressions in full screen.",
+				"longDescription": "## Stylish full screen visuals above the fold.\n\nHero Image adds a full screen image that pulls in visitors to read on.",
+				"instructions": "",
+				"alias": "hero-image",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/IbVGORHAT8u0DGr9bWJC_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/UMRxQYEpRKSnTnxkTD5v_default-screenshot.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/btNahwQdTMinuI1xe36S_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"design",
+					"by-cloudflare"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "vgIk2IRSrASU"
+				},
+				"created": "2017-03-23T06:23:01.121933Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-08-04T01:18:57.740808436Z",
+				"canceledByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"canceledAt": "2017-08-04T01:20:18.549378854Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.1.3",
+			"appId": "RpNIwUk7KEE_",
+			"definition": {
+				"resources": {
+					"body": [],
+					"head": [
+						{
+							"type": "style",
+							"src": "build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"alignment": {
+							"default": "center",
+							"enum": [
+								"left",
+								"center",
+								"right"
+							],
+							"enumNames": {
+								"center": "Center",
+								"left": "Left",
+								"right": "Right"
+							},
+							"order": 6,
+							"title": "Text alignment",
+							"type": "string"
+						},
+						"backgroundImage": {
+							"default": "https://eager-app-images.imgix.net/lturyv6bQ0KLnXdnNLCi_life.jpg",
+							"description": "This image will resize to fit the screen.",
+							"format": "image",
+							"order": 0,
+							"title": "Background image",
+							"type": "string"
+						},
+						"message": {
+							"default": "# First impressions in full screen.\nA summary of your content to encourage visitors to read on.",
+							"description": "A summary of your content formatted with <a target='_blank' href='https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet'>Markdown</a>.",
+							"format": "markdown",
+							"order": 1,
+							"placeholder": "Your hero summary...",
+							"title": "Message",
+							"type": "object"
+						},
+						"navigatorBehavior": {
+							"default": "scroll",
+							"enum": [
+								"scroll",
+								"redirect"
+							],
+							"enumNames": {
+								"redirect": "Redirect to a different site.",
+								"scroll": "Scroll down the page."
+							},
+							"format": "radios",
+							"order": 4,
+							"title": "When the user clicks the Hero Image...",
+							"type": "string"
+						},
+						"redirectURL": {
+							"order": 5,
+							"placeholder": "https://",
+							"showIf": {
+								"navigatorBehavior": "redirect"
+							},
+							"title": "Redirect URL",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 2,
+							"placeholder": "#...",
+							"title": "Text color",
+							"type": "string"
+						},
+						"textShadowColor": {
+							"default": "dark",
+							"enum": [
+								"dark",
+								"light",
+								"none"
+							],
+							"enumNames": {
+								"dark": "Dark",
+								"light": "Light",
+								"none": "None"
+							},
+							"order": 3,
+							"title": "Text shadow color",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"textColor",
+								"textShadowColor",
+								"alignment",
+								"message"
+							],
+							"execute": "INSTALL_SCOPE.updateInnerContent(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"backgroundImage"
+							],
+							"execute": "INSTALL_SCOPE.updateBackground(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"location"
+							],
+							"execute": "INSTALL_SCOPE.updateElement(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"navigatorBehavior",
+								"redirectURL"
+							],
+							"execute": "INSTALL_SCOPE.updateNavigatorBehavior(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/9jjGqCTGW8bW",
+			"created": "2017-08-04T01:20:18.307819Z",
+			"proposedApp": {
+				"id": "RpNIwUk7KEE_",
+				"title": "Hero Image",
+				"shortDescription": "Add stylish full screen visuals above the fold.",
+				"longDescription": "## Stylish full screen visuals above the fold.\n\nHero Image adds a full screen image that pulls in visitors to read on.",
+				"instructions": "",
+				"alias": "hero-image",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/IbVGORHAT8u0DGr9bWJC_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/UMRxQYEpRKSnTnxkTD5v_default-screenshot.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/btNahwQdTMinuI1xe36S_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"design",
+					"by-cloudflare"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "vgIk2IRSrASU"
+				},
+				"created": "2017-03-23T06:23:01.121933Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-08-04T01:20:18.654041274Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-08-04T01:20:30.336382972Z"
+			}
+		},
+		{
+			"tag": "1.1.4",
+			"appId": "RpNIwUk7KEE_",
+			"definition": {
+				"resources": {
+					"body": [],
+					"head": [
+						{
+							"type": "style",
+							"src": "build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"alignment": {
+							"default": "center",
+							"enum": [
+								"left",
+								"center",
+								"right"
+							],
+							"enumNames": {
+								"center": "Center",
+								"left": "Left",
+								"right": "Right"
+							},
+							"order": 6,
+							"title": "Text alignment",
+							"type": "string"
+						},
+						"backgroundImage": {
+							"default": "https://eager-app-images.imgix.net/lturyv6bQ0KLnXdnNLCi_life.jpg",
+							"description": "This image will resize to fit the screen.",
+							"format": "image",
+							"order": 0,
+							"title": "Background image",
+							"type": "string"
+						},
+						"message": {
+							"default": "# First impressions in full screen.\nA summary of your content to encourage visitors to read on.",
+							"description": "A summary of your content formatted with <a target='_blank' href='https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet'>Markdown</a>.",
+							"format": "markdown",
+							"order": 1,
+							"placeholder": "Your hero summary...",
+							"title": "Message",
+							"type": "object"
+						},
+						"navigatorBehavior": {
+							"default": "scroll",
+							"enum": [
+								"scroll",
+								"redirect"
+							],
+							"enumNames": {
+								"redirect": "Redirect to a different site.",
+								"scroll": "Scroll down the page."
+							},
+							"format": "radios",
+							"order": 4,
+							"title": "When the user clicks the Hero Image...",
+							"type": "string"
+						},
+						"redirectURL": {
+							"order": 5,
+							"placeholder": "https://",
+							"showIf": {
+								"navigatorBehavior": "redirect"
+							},
+							"title": "Redirect URL",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 2,
+							"placeholder": "#...",
+							"title": "Text color",
+							"type": "string"
+						},
+						"textShadowColor": {
+							"default": "dark",
+							"enum": [
+								"dark",
+								"light",
+								"none"
+							],
+							"enumNames": {
+								"dark": "Dark",
+								"light": "Light",
+								"none": "None"
+							},
+							"order": 3,
+							"title": "Text shadow color",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"textColor",
+								"textShadowColor",
+								"alignment",
+								"message"
+							],
+							"execute": "INSTALL_SCOPE.updateInnerContent(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"backgroundImage"
+							],
+							"execute": "INSTALL_SCOPE.updateBackground(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"location"
+							],
+							"execute": "INSTALL_SCOPE.updateElement(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"navigatorBehavior",
+								"redirectURL"
+							],
+							"execute": "INSTALL_SCOPE.updateNavigatorBehavior(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/9jjGqCTGW8bW",
+			"created": "2017-08-12T05:02:36.130758Z",
+			"proposedApp": {
+				"id": "RpNIwUk7KEE_",
+				"title": "Hero Image",
+				"shortDescription": "Add stylish full screen visuals above the fold.",
+				"longDescription": "## Stylish full screen visuals above the fold.\n\nHero Image adds a full screen image that pulls in visitors to read on.",
+				"instructions": "",
+				"alias": "hero-image",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/l3pPDzbgRAylVABfTj51_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/UMRxQYEpRKSnTnxkTD5v_default-screenshot.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/qQxQsoBySomJwuduMKKV_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"design",
+					"by-cloudflare"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "vgIk2IRSrASU"
+				},
+				"created": "2017-03-23T06:23:01.121933Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-08-12T05:02:36.329943197Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-08-12T05:02:45.910162631Z"
+			}
+		},
+		{
+			"tag": "1.1.5",
+			"appId": "RpNIwUk7KEE_",
+			"definition": {
+				"resources": {
+					"body": [],
+					"head": [
+						{
+							"type": "style",
+							"src": "build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"alignment": {
+							"default": "center",
+							"enum": [
+								"left",
+								"center",
+								"right"
+							],
+							"enumNames": {
+								"center": "Center",
+								"left": "Left",
+								"right": "Right"
+							},
+							"format": "radios",
+							"order": 6,
+							"title": "Text alignment",
+							"type": "string"
+						},
+						"backgroundImage": {
+							"default": "https://eager-app-images.imgix.net/lturyv6bQ0KLnXdnNLCi_life.jpg",
+							"description": "This image will resize to fit the screen.",
+							"format": "image",
+							"order": 0,
+							"title": "Background image",
+							"type": "string"
+						},
+						"backgroundPosition": {
+							"default": "center",
+							"enum": [
+								"left top",
+								"right top",
+								"center",
+								"right bottom",
+								"left bottom"
+							],
+							"enumNames": {
+								"center": "Center",
+								"left bottom": "Bottom left",
+								"left top": "Top Left",
+								"right bottom": "Bottom right",
+								"right top": "Top Right"
+							},
+							"format": "radios",
+							"order": 7,
+							"title": "Background Position",
+							"type": "string"
+						},
+						"message": {
+							"default": "# First impressions in full screen.\nA summary of your content to encourage visitors to read on.",
+							"description": "A summary of your content formatted with <a target='_blank' href='https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet'>Markdown</a>.",
+							"format": "markdown",
+							"order": 1,
+							"placeholder": "Your hero summary...",
+							"title": "Message",
+							"type": "object"
+						},
+						"navigatorBehavior": {
+							"default": "scroll",
+							"enum": [
+								"scroll",
+								"redirect"
+							],
+							"enumNames": {
+								"redirect": "Redirect to a different site.",
+								"scroll": "Scroll down the page."
+							},
+							"format": "radios",
+							"order": 4,
+							"title": "When the user clicks the Hero Image...",
+							"type": "string"
+						},
+						"redirectURL": {
+							"order": 5,
+							"placeholder": "https://",
+							"showIf": {
+								"navigatorBehavior": "redirect"
+							},
+							"title": "Redirect URL",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 2,
+							"placeholder": "#...",
+							"title": "Text color",
+							"type": "string"
+						},
+						"textShadowColor": {
+							"default": "dark",
+							"enum": [
+								"dark",
+								"light",
+								"none"
+							],
+							"enumNames": {
+								"dark": "Dark",
+								"light": "Light",
+								"none": "None"
+							},
+							"order": 3,
+							"title": "Text shadow color",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"textColor",
+								"textShadowColor",
+								"alignment",
+								"backgroundPosition",
+								"message"
+							],
+							"execute": "INSTALL_SCOPE.updateInnerContent(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"backgroundImage"
+							],
+							"execute": "INSTALL_SCOPE.updateBackground(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"location"
+							],
+							"execute": "INSTALL_SCOPE.updateElement(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"navigatorBehavior",
+								"redirectURL"
+							],
+							"execute": "INSTALL_SCOPE.updateNavigatorBehavior(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Added background position option.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/F9KtVZfUegKB",
+			"metadata": {
+				"code": {
+					"sourceTag": "F9KtVZfUegKB",
+					"uploadedOn": "2017-10-04T17:28:55.131566683Z"
+				}
+			},
+			"created": "2017-10-04T17:28:54.705676Z",
+			"proposedApp": {
+				"id": "RpNIwUk7KEE_",
+				"title": "Hero Image",
+				"shortDescription": "Add stylish full screen visuals above the fold.",
+				"longDescription": "## Stylish full screen visuals above the fold.\n\nHero Image adds a full screen image that pulls in visitors to read on.",
+				"instructions": "",
+				"alias": "hero-image",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/l3pPDzbgRAylVABfTj51_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/UMRxQYEpRKSnTnxkTD5v_default-screenshot.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/qQxQsoBySomJwuduMKKV_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"design",
+					"by-cloudflare"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "vgIk2IRSrASU"
+				},
+				"created": "2017-03-23T06:23:01.121933Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-10-04T17:28:56.281770022Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-10-04T17:32:40.122259726Z"
+			}
+		},
+		{
+			"tag": "1.1.6",
+			"appId": "RpNIwUk7KEE_",
+			"definition": {
+				"resources": {
+					"body": [],
+					"head": [
+						{
+							"type": "style",
+							"src": "build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"alignment": {
+							"default": "center",
+							"enum": [
+								"left",
+								"center",
+								"right"
+							],
+							"enumNames": {
+								"center": "Center",
+								"left": "Left",
+								"right": "Right"
+							},
+							"format": "radios",
+							"order": 6,
+							"title": "Text alignment",
+							"type": "string"
+						},
+						"backgroundImage": {
+							"default": "https://eager-app-images.imgix.net/lturyv6bQ0KLnXdnNLCi_life.jpg",
+							"description": "This image will resize to fit the screen.",
+							"format": "image",
+							"order": 0,
+							"title": "Background image",
+							"type": "string"
+						},
+						"backgroundPosition": {
+							"default": "center center",
+							"description": "Where should the image focus when the screen is too small?",
+							"enum": [
+								"center top",
+								"center center",
+								"center bottom"
+							],
+							"enumNames": {
+								"center bottom": "Bottom",
+								"center center": "Center",
+								"center top": "Top"
+							},
+							"format": "radios",
+							"order": 7,
+							"title": "Background Position",
+							"type": "string"
+						},
+						"message": {
+							"default": "# First impressions in full screen.\nA summary of your content to encourage visitors to read on.",
+							"description": "A summary of your content formatted with <a target='_blank' href='https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet'>Markdown</a>.",
+							"format": "markdown",
+							"order": 1,
+							"placeholder": "Your hero summary...",
+							"title": "Message",
+							"type": "object"
+						},
+						"navigatorBehavior": {
+							"default": "scroll",
+							"enum": [
+								"scroll",
+								"redirect"
+							],
+							"enumNames": {
+								"redirect": "Redirect to a different site",
+								"scroll": "Scroll down the page"
+							},
+							"format": "radios",
+							"order": 4,
+							"title": "When the user clicks the Hero Image...",
+							"type": "string"
+						},
+						"redirectURL": {
+							"format": "url",
+							"order": 5,
+							"showIf": {
+								"navigatorBehavior": "redirect"
+							},
+							"title": "Redirect URL",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 2,
+							"placeholder": "#...",
+							"title": "Text color",
+							"type": "string"
+						},
+						"textShadowColor": {
+							"default": "dark",
+							"enum": [
+								"dark",
+								"light",
+								"none"
+							],
+							"enumNames": {
+								"dark": "Dark",
+								"light": "Light",
+								"none": "None"
+							},
+							"order": 3,
+							"title": "Text shadow color",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"textColor",
+								"textShadowColor",
+								"alignment",
+								"backgroundPosition",
+								"message"
+							],
+							"execute": "INSTALL_SCOPE.updateInnerContent(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"backgroundImage"
+							],
+							"execute": "INSTALL_SCOPE.updateBackground(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"location"
+							],
+							"execute": "INSTALL_SCOPE.updateElement(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"navigatorBehavior",
+								"redirectURL"
+							],
+							"execute": "INSTALL_SCOPE.updateNavigatorBehavior(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Added background position option.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/_TWp2_HFaolJ",
+			"metadata": {
+				"code": {
+					"sourceTag": "_TWp2_HFaolJ",
+					"uploadedOn": "2017-10-04T17:42:49.866964138Z"
+				}
+			},
+			"created": "2017-10-04T17:42:49.390012Z",
+			"proposedApp": {
+				"id": "RpNIwUk7KEE_",
+				"title": "Hero Image",
+				"shortDescription": "Add stylish full screen visuals above the fold.",
+				"longDescription": "## Stylish full screen visuals above the fold.\n\nHero Image adds a full screen image that pulls in visitors to read on.",
+				"instructions": "",
+				"alias": "hero-image",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/l3pPDzbgRAylVABfTj51_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/UMRxQYEpRKSnTnxkTD5v_default-screenshot.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/qQxQsoBySomJwuduMKKV_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"design",
+					"by-cloudflare"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "vgIk2IRSrASU"
+				},
+				"created": "2017-03-23T06:23:01.121933Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-10-04T17:42:50.719874002Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-10-04T17:43:06.569348357Z"
+			}
+		},
+		{
+			"tag": "1.1.7",
+			"appId": "RpNIwUk7KEE_",
+			"definition": {
+				"resources": {
+					"body": [],
+					"head": [
+						{
+							"type": "style",
+							"src": "build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"alignment": {
+							"default": "center",
+							"enum": [
+								"left",
+								"center",
+								"right"
+							],
+							"enumNames": {
+								"center": "Center",
+								"left": "Left",
+								"right": "Right"
+							},
+							"format": "radios",
+							"order": 6,
+							"title": "Text alignment",
+							"type": "string"
+						},
+						"backgroundImage": {
+							"default": "https://eager-app-images.imgix.net/lturyv6bQ0KLnXdnNLCi_life.jpg",
+							"description": "This image will resize to fit the screen.",
+							"format": "image",
+							"order": 0,
+							"title": "Background image",
+							"type": "string"
+						},
+						"backgroundPosition": {
+							"default": "center center",
+							"description": "Where should the image focus when the screen is too small?",
+							"enum": [
+								"center top",
+								"center center",
+								"center bottom"
+							],
+							"enumNames": {
+								"center bottom": "Bottom",
+								"center center": "Center",
+								"center top": "Top"
+							},
+							"format": "radios",
+							"order": 7,
+							"title": "Background Position",
+							"type": "string"
+						},
+						"message": {
+							"default": "# First impressions in full screen.\nA summary of your content to encourage visitors to read on.",
+							"description": "A summary of your content formatted with <a target='_blank' href='https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet'>Markdown</a>.",
+							"format": "markdown",
+							"order": 1,
+							"placeholder": "Your hero summary...",
+							"title": "Message",
+							"type": "object"
+						},
+						"navigatorBehavior": {
+							"default": "scroll",
+							"enum": [
+								"scroll",
+								"redirect"
+							],
+							"enumNames": {
+								"redirect": "Redirect to a different site",
+								"scroll": "Scroll down the page"
+							},
+							"format": "radios",
+							"order": 4,
+							"title": "When the user clicks the Hero Image...",
+							"type": "string"
+						},
+						"redirectURL": {
+							"format": "url",
+							"order": 5,
+							"showIf": {
+								"navigatorBehavior": "redirect"
+							},
+							"title": "Redirect URL",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 2,
+							"placeholder": "#...",
+							"title": "Text color",
+							"type": "string"
+						},
+						"textShadowColor": {
+							"default": "dark",
+							"enum": [
+								"dark",
+								"light",
+								"none"
+							],
+							"enumNames": {
+								"dark": "Dark",
+								"light": "Light",
+								"none": "None"
+							},
+							"order": 3,
+							"title": "Text shadow color",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"textColor",
+								"textShadowColor",
+								"alignment",
+								"backgroundPosition",
+								"message"
+							],
+							"execute": "INSTALL_SCOPE.updateInnerContent(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"backgroundImage"
+							],
+							"execute": "INSTALL_SCOPE.updateBackground(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"location"
+							],
+							"execute": "INSTALL_SCOPE.updateElement(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"navigatorBehavior",
+								"redirectURL"
+							],
+							"execute": "INSTALL_SCOPE.updateNavigatorBehavior(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 6,
+				"downvotes": 0
+			},
+			"releaseNotes": "- Added link to source code.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/_TWp2_HFaolJ",
+			"created": "2017-11-07T15:34:17.46195Z",
+			"proposedApp": {
+				"id": "RpNIwUk7KEE_",
+				"title": "Hero Image",
+				"shortDescription": "Add stylish full screen visuals above the fold.",
+				"longDescription": "## Stylish full screen visuals above the fold.\n\nHero Image adds a full screen image that pulls in visitors to read on.",
+				"instructions": "",
+				"alias": "hero-image",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/l3pPDzbgRAylVABfTj51_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/UMRxQYEpRKSnTnxkTD5v_default-screenshot.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/qQxQsoBySomJwuduMKKV_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "https://github.com/cloudflare-apps/hero-image",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"design",
+					"by-cloudflare"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "vgIk2IRSrASU"
+				},
+				"created": "2017-03-23T06:23:01.121933Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-11-07T15:34:17.979362064Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-11-07T15:34:37.44352941Z"
+			}
+		},
+		{
+			"tag": "1.1.8",
+			"appId": "RpNIwUk7KEE_",
+			"definition": {
+				"resources": {
+					"body": [],
+					"head": [
+						{
+							"type": "style",
+							"src": "build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"alignment": {
+							"default": "center",
+							"enum": [
+								"left",
+								"center",
+								"right"
+							],
+							"enumNames": {
+								"center": "Center",
+								"left": "Left",
+								"right": "Right"
+							},
+							"format": "radios",
+							"order": 6,
+							"title": "Text alignment",
+							"type": "string"
+						},
+						"backgroundImage": {
+							"default": "https://eager-app-images.imgix.net/lturyv6bQ0KLnXdnNLCi_life.jpg",
+							"description": "This image will resize to fit the screen.",
+							"format": "image",
+							"order": 0,
+							"title": "Background image",
+							"type": "string"
+						},
+						"backgroundPosition": {
+							"default": "center center",
+							"description": "Where should the image focus when the screen is too small?",
+							"enum": [
+								"center top",
+								"center center",
+								"center bottom"
+							],
+							"enumNames": {
+								"center bottom": "Bottom",
+								"center center": "Center",
+								"center top": "Top"
+							},
+							"format": "radios",
+							"order": 7,
+							"title": "Background Position",
+							"type": "string"
+						},
+						"message": {
+							"default": "# First impressions in full screen.\nA summary of your content to encourage visitors to read on.",
+							"description": "A summary of your content formatted with <a target='_blank' href='https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet'>Markdown</a>.",
+							"format": "markdown",
+							"order": 1,
+							"placeholder": "Your hero summary...",
+							"title": "Message",
+							"type": "object"
+						},
+						"navigatorBehavior": {
+							"default": "scroll",
+							"enum": [
+								"scroll",
+								"redirect"
+							],
+							"enumNames": {
+								"redirect": "Redirect to a different site",
+								"scroll": "Scroll down the page"
+							},
+							"format": "radios",
+							"order": 4,
+							"title": "When the user clicks the Hero Image...",
+							"type": "string"
+						},
+						"redirectURL": {
+							"format": "url",
+							"order": 5,
+							"showIf": {
+								"navigatorBehavior": "redirect"
+							},
+							"title": "Redirect URL",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 2,
+							"placeholder": "#...",
+							"title": "Text color",
+							"type": "string"
+						},
+						"textShadowColor": {
+							"default": "dark",
+							"enum": [
+								"dark",
+								"light",
+								"none"
+							],
+							"enumNames": {
+								"dark": "Dark",
+								"light": "Light",
+								"none": "None"
+							},
+							"order": 3,
+							"title": "Text shadow color",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"textColor",
+								"textShadowColor",
+								"alignment",
+								"backgroundPosition",
+								"message"
+							],
+							"execute": "INSTALL_SCOPE.updateInnerContent(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"backgroundImage"
+							],
+							"execute": "INSTALL_SCOPE.updateBackground(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"location"
+							],
+							"execute": "INSTALL_SCOPE.updateElement(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"navigatorBehavior",
+								"redirectURL"
+							],
+							"execute": "INSTALL_SCOPE.updateNavigatorBehavior(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 3,
+				"downvotes": 0
+			},
+			"releaseNotes": "Added to “UI & Design” category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/_TWp2_HFaolJ",
+			"created": "2018-01-22T21:02:21.589981Z",
+			"proposedApp": {
+				"id": "RpNIwUk7KEE_",
+				"title": "Hero Image",
+				"shortDescription": "Add stylish full screen visuals above the fold.",
+				"longDescription": "## Stylish full screen visuals above the fold.\n\nHero Image adds a full screen image that pulls in visitors to read on.",
+				"instructions": "",
+				"alias": "hero-image",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/l3pPDzbgRAylVABfTj51_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/UMRxQYEpRKSnTnxkTD5v_default-screenshot.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/qQxQsoBySomJwuduMKKV_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "https://github.com/cloudflare-apps/hero-image",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"by-cloudflare",
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "vgIk2IRSrASU"
+				},
+				"created": "2017-03-23T06:23:01.121933Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-01-22T21:02:21.877717692Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-01-22T21:02:30.178686346Z"
+			}
+		},
+		{
+			"tag": "1.1.9",
+			"appId": "RpNIwUk7KEE_",
+			"definition": {
+				"resources": {
+					"body": [],
+					"head": [
+						{
+							"type": "style",
+							"src": "build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"alignment": {
+							"default": "center",
+							"enum": [
+								"left",
+								"center",
+								"right"
+							],
+							"enumNames": {
+								"center": "Center",
+								"left": "Left",
+								"right": "Right"
+							},
+							"format": "radios",
+							"order": 6,
+							"title": "Text alignment",
+							"type": "string"
+						},
+						"backgroundImage": {
+							"default": "https://eager-app-images.imgix.net/lturyv6bQ0KLnXdnNLCi_life.jpg",
+							"description": "This image will resize to fit the screen.",
+							"format": "image",
+							"order": 0,
+							"title": "Background image",
+							"type": "string"
+						},
+						"backgroundPosition": {
+							"default": "center center",
+							"description": "Where should the image focus when the screen is too small?",
+							"enum": [
+								"center top",
+								"center center",
+								"center bottom"
+							],
+							"enumNames": {
+								"center bottom": "Bottom",
+								"center center": "Center",
+								"center top": "Top"
+							},
+							"format": "radios",
+							"order": 7,
+							"title": "Background Position",
+							"type": "string"
+						},
+						"message": {
+							"default": "# First impressions in full screen.\nA summary of your content to encourage visitors to read on.",
+							"description": "A summary of your content formatted with <a target='_blank' href='https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet'>Markdown</a>.",
+							"format": "markdown",
+							"order": 1,
+							"placeholder": "Your hero summary...",
+							"title": "Message",
+							"type": "object"
+						},
+						"navigatorBehavior": {
+							"default": "scroll",
+							"enum": [
+								"scroll",
+								"redirect"
+							],
+							"enumNames": {
+								"redirect": "Redirect to a different site",
+								"scroll": "Scroll down the page"
+							},
+							"format": "radios",
+							"order": 4,
+							"title": "When the user clicks the Hero Image...",
+							"type": "string"
+						},
+						"redirectURL": {
+							"format": "url",
+							"order": 5,
+							"showIf": {
+								"navigatorBehavior": "redirect"
+							},
+							"title": "Redirect URL",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 2,
+							"placeholder": "#...",
+							"title": "Text color",
+							"type": "string"
+						},
+						"textShadowColor": {
+							"default": "dark",
+							"enum": [
+								"dark",
+								"light",
+								"none"
+							],
+							"enumNames": {
+								"dark": "Dark",
+								"light": "Light",
+								"none": "None"
+							},
+							"order": 3,
+							"title": "Text shadow color",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"textColor",
+								"textShadowColor",
+								"alignment",
+								"backgroundPosition",
+								"message"
+							],
+							"execute": "INSTALL_SCOPE.updateInnerContent(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"backgroundImage"
+							],
+							"execute": "INSTALL_SCOPE.updateBackground(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"location"
+							],
+							"execute": "INSTALL_SCOPE.updateElement(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"navigatorBehavior",
+								"redirectURL"
+							],
+							"execute": "INSTALL_SCOPE.updateNavigatorBehavior(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.78,
+				"upvotes": 14,
+				"downvotes": 4
+			},
+			"releaseNotes": "Added to Cloudflare Apps recommendation engine",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/_TWp2_HFaolJ",
+			"created": "2018-02-06T21:42:52.640769Z",
+			"proposedApp": {
+				"id": "RpNIwUk7KEE_",
+				"title": "Hero Image",
+				"shortDescription": "Add stylish full screen visuals above the fold.",
+				"longDescription": "## Stylish full screen visuals above the fold.\n\nHero Image adds a full screen image that pulls in visitors to read on.",
+				"instructions": "",
+				"alias": "hero-image",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/l3pPDzbgRAylVABfTj51_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/UMRxQYEpRKSnTnxkTD5v_default-screenshot.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/qQxQsoBySomJwuduMKKV_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "https://github.com/cloudflare-apps/hero-image",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"by-cloudflare",
+					"ui-and-design",
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "vgIk2IRSrASU"
+				},
+				"created": "2017-03-23T06:23:01.121933Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-02-06T21:42:52.900971345Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-02-06T21:56:27.900979165Z"
+			}
+		},
+		{
+			"tag": "1.1.10",
+			"appId": "RpNIwUk7KEE_",
+			"definition": {
+				"resources": {
+					"body": [],
+					"head": [
+						{
+							"type": "style",
+							"src": "build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"alignment": {
+							"default": "center",
+							"enum": [
+								"left",
+								"center",
+								"right"
+							],
+							"enumNames": {
+								"center": "Center",
+								"left": "Left",
+								"right": "Right"
+							},
+							"format": "radios",
+							"order": 6,
+							"title": "Text alignment",
+							"type": "string"
+						},
+						"backgroundImage": {
+							"default": "https://eager-app-images.imgix.net/lturyv6bQ0KLnXdnNLCi_life.jpg",
+							"description": "This image will resize to fit the screen.",
+							"format": "image",
+							"order": 0,
+							"title": "Background image",
+							"type": "string"
+						},
+						"backgroundPosition": {
+							"default": "center center",
+							"description": "Where should the image focus when the screen is too small?",
+							"enum": [
+								"center top",
+								"center center",
+								"center bottom"
+							],
+							"enumNames": {
+								"center bottom": "Bottom",
+								"center center": "Center",
+								"center top": "Top"
+							},
+							"format": "radios",
+							"order": 7,
+							"title": "Background Position",
+							"type": "string"
+						},
+						"message": {
+							"default": "# First impressions in full screen.\nA summary of your content to encourage visitors to read on.",
+							"description": "A summary of your content formatted with <a target='_blank' href='https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet'>Markdown</a>.",
+							"format": "markdown",
+							"order": 1,
+							"placeholder": "Your hero summary...",
+							"title": "Message",
+							"type": "object"
+						},
+						"navigatorBehavior": {
+							"default": "scroll",
+							"enum": [
+								"scroll",
+								"redirect"
+							],
+							"enumNames": {
+								"redirect": "Redirect to a different site",
+								"scroll": "Scroll down the page"
+							},
+							"format": "radios",
+							"order": 4,
+							"title": "When the user clicks the Hero Image...",
+							"type": "string"
+						},
+						"redirectURL": {
+							"format": "url",
+							"order": 5,
+							"showIf": {
+								"navigatorBehavior": "redirect"
+							},
+							"title": "Redirect URL",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 2,
+							"placeholder": "#...",
+							"title": "Text color",
+							"type": "string"
+						},
+						"textShadowColor": {
+							"default": "dark",
+							"enum": [
+								"dark",
+								"light",
+								"none"
+							],
+							"enumNames": {
+								"dark": "Dark",
+								"light": "Light",
+								"none": "None"
+							},
+							"order": 3,
+							"title": "Text shadow color",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"textColor",
+								"textShadowColor",
+								"alignment",
+								"backgroundPosition",
+								"message"
+							],
+							"execute": "INSTALL_SCOPE.updateInnerContent(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"backgroundImage"
+							],
+							"execute": "INSTALL_SCOPE.updateBackground(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"location"
+							],
+							"execute": "INSTALL_SCOPE.updateElement(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"navigatorBehavior",
+								"redirectURL"
+							],
+							"execute": "INSTALL_SCOPE.updateNavigatorBehavior(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.65,
+				"upvotes": 26,
+				"downvotes": 14
+			},
+			"releaseNotes": "Updated app's categories",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/_TWp2_HFaolJ",
+			"created": "2018-11-13T20:35:30.654323Z",
+			"proposedApp": {
+				"id": "RpNIwUk7KEE_",
+				"title": "Hero Image",
+				"shortDescription": "Add stylish full screen visuals above the fold.",
+				"longDescription": "## Stylish full screen visuals above the fold.\n\nHero Image adds a full screen image that pulls in visitors to read on.",
+				"instructions": "",
+				"alias": "hero-image",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/l3pPDzbgRAylVABfTj51_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/UMRxQYEpRKSnTnxkTD5v_default-screenshot.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/qQxQsoBySomJwuduMKKV_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "https://github.com/cloudflare-apps/hero-image",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": false,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "vgIk2IRSrASU"
+				},
+				"created": "2017-03-23T06:23:01.121933Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-11-13T20:35:31.047172459Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-11-14T17:43:49.989270893Z"
+			}
+		}
+	]
+}

@@ -1,0 +1,1059 @@
+{
+	"id": "JPyOww8PPsvJ",
+	"title": "Perfect Contact Form",
+	"shortDescription": "Add an elegant contact form to your website",
+	"longDescription": "Most websites lack an easy way to reach relevant people. Contact information is hard to find and writing an email is cumbersome.\n\nThese websites often miss out on critical feedback, queries, and opportunities. \n\nPerfect Contact Form gives a frictionless way to visitors for reaching out. Each response is directly sent to your inbox. And you can respond to it by simply clicking the reply button; no need to learn a new UI or  change your workflow. \n\nGrow your website by understanding your visitors.",
+	"instructions": "",
+	"alias": "perfect-contact-form",
+	"orgId": "0668e321d95344bd4375cc475f6c27ce",
+	"icon": "//images.cloudflareapps.com/TBcMCDS7QQyFpSVDMu4X_pcf2.png",
+	"screenshots": [
+		"//images.cloudflareapps.com/tCAPkb5VShySSy82Ur2Q_cs1.png",
+		"//images.cloudflareapps.com/OUqbVM74TsSaOpkFP6Ja_cs2.png",
+		"//images.cloudflareapps.com/5Jd25XUHRtWUs4g7t12m_cs5.png",
+		"//images.cloudflareapps.com/tInrPWB7RbOvkULggd0j_cs4.png",
+		"//images.cloudflareapps.com/Ps9ClUU4SLipe4WKsZwB_cs3.png"
+	],
+	"tileImage": "//images.cloudflareapps.com/ynK3yFBZQg2evF34BCj1_pcf4.png",
+	"featuredAppImage": "",
+	"author": "Shubham Jain",
+	"tagline": "",
+	"website": "https://perfectcontactform.com",
+	"sourceURL": "",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "https://perfectcontactform.com/privacy.html",
+	"color": "#000000",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.3",
+	"infoVersion": "1.0.3",
+	"points": 500,
+	"supportEmail": "support@perfectcontactform.com",
+	"products": [
+		{
+			"id": "basic",
+			"title": "Basic",
+			"shortDescription": "250 Responses",
+			"longDescription": "Perfect for small websites and individuals. Get 250 responses delivered to your inbox.",
+			"visible": true,
+			"price": 600,
+			"order": 0,
+			"plan": "perfect_contact_form_basic",
+			"feature": "apps.perfect_contact_form.basic.enabled",
+			"created": null
+		},
+		{
+			"id": "pro",
+			"title": "Professional",
+			"shortDescription": "1000 Responses",
+			"longDescription": "Great for high-traffic websites. Get 1000 responses delivered to your inbox.",
+			"visible": true,
+			"price": 1200,
+			"order": 0,
+			"plan": "perfect_contact_form_pro",
+			"feature": "apps.perfect_contact_form.pro.enabled",
+			"created": null
+		}
+	],
+	"categoryIds": [
+		"marketing",
+		"communication"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "0668e321d95344bd4375cc475f6c27ce",
+			"created": "2017-11-18T09:22:34.15142726Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "MOV_JyQFd3-7"
+	},
+	"created": "2017-09-13T18:09:11.881632Z",
+	"org": {
+		"id": "0668e321d95344bd4375cc475f6c27ce",
+		"title": "",
+		"username": "0668e321d95344bd4375cc475f6c27ce",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "communication",
+			"title": "Communication",
+			"description": "Communicate with and provide support to your website visitors.",
+			"icon": "//eager-app-images.imgix.net/ojbdxlulTGCljqg2BdjS_communication.png",
+			"points": 30,
+			"visible": false,
+			"metadata": {
+				"icon": {
+					"filename": "communication.png",
+					"isWriteable": false,
+					"key": "ojbdxlulTGCljqg2BdjS_communication.png",
+					"mimetype": "image/png",
+					"size": 4028,
+					"url": "https://www.filepicker.io/api/file/inxDruhNQcGR0RsXvJXU"
+				}
+			},
+			"created": "2016-01-21T18:05:39.338986Z"
+		},
+		{
+			"id": "marketing",
+			"title": "Marketing",
+			"description": "Promote content, collect email addresses, and increase engagement.",
+			"icon": "//eager-app-images.imgix.net/BsDSsdPnR5ytmW2jYDXi_marketing.png",
+			"points": 90,
+			"visible": false,
+			"metadata": {
+				"icon": {
+					"filename": "marketing.png",
+					"isWriteable": false,
+					"key": "BsDSsdPnR5ytmW2jYDXi_marketing.png",
+					"mimetype": "image/png",
+					"size": 3293,
+					"url": "https://www.filepicker.io/api/file/6auWmeBSSTKnHxboTyoh"
+				}
+			},
+			"created": "2016-01-20T20:14:55.498829Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "JPyOww8PPsvJ",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/build/modal.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"perfect-contact-form"
+							],
+							"title": "Perfect Contact Form",
+							"type": "object"
+						},
+						"contactForm": {
+							"description": "Configure the contact form which is shown on clicking the launcher.",
+							"order": 4,
+							"properties": {
+								"fullName": {
+									"order": 1,
+									"title": "Include name field?",
+									"type": "boolean"
+								},
+								"headerText": {
+									"default": "Get in Touch",
+									"order": 3,
+									"title": "Header Text",
+									"type": "string"
+								},
+								"introText": {
+									"default": "Want to reach out to us? Feel free to drop a note.",
+									"format": "textarea",
+									"order": 4,
+									"title": "Introduction Message",
+									"type": "string"
+								},
+								"subject": {
+									"order": 2,
+									"title": "Include subject field?",
+									"type": "boolean"
+								},
+								"successMessage": {
+									"default": "Thank you! Your message has been recieved. If you're expecting a response, we'll get back to you shortly.",
+									"description": "What should be shown after a message has been sent?",
+									"format": "textarea",
+									"order": 5,
+									"title": "Success Message",
+									"type": "string"
+								}
+							},
+							"title": "Contact Form Configuration",
+							"type": "object"
+						},
+						"launcherText": {
+							"default": "Contact Us",
+							"order": 3,
+							"title": "Launcher Text",
+							"type": "string"
+						},
+						"receiverEmail": {
+							"authenticate": [
+								"account"
+							],
+							"description": "To which Email ID should the responses be sent?",
+							"format": "email",
+							"order": 2,
+							"placeholder": "me@gmail.com",
+							"required": true,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Receiving Email ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.perfectcontactform.com/oauth/hook",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://app.perfectcontactform.com/oauth/updateEmailHook",
+						"events": [
+							"option-change:receiverEmail"
+						],
+						"block": false,
+						"if": "install.options.receiverEmail",
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://app.perfectcontactform.com/oauth/installHook",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/hJKcoSKeUUhl",
+			"metadata": {
+				"code": {
+					"sourceTag": "hJKcoSKeUUhl",
+					"uploadedOn": "2017-11-18T09:12:38.053948175Z"
+				}
+			},
+			"created": "2017-09-13T18:09:14.809445Z",
+			"proposedApp": {
+				"id": "JPyOww8PPsvJ",
+				"title": "Perfect Contact Form",
+				"shortDescription": "Add an elegant contact form to your website",
+				"longDescription": "Most websites lack an easy way to reach relevant people. Contact information is hard to find and writing an email is cumbersome.\n\nThese websites often miss out on critical feedback, queries, and opportunities. \n\nPerfect Contact Form gives a frictionless way to visitors for reaching out. Each response is directly sent to your inbox. And you can respond to it by simply clicking the reply button; no need to learn a new UI or  change your workflow. \n\nGrow your website by understanding your visitors.",
+				"instructions": "",
+				"alias": "pcf",
+				"orgId": "0668e321d95344bd4375cc475f6c27ce",
+				"icon": "//images.cloudflareapps.com/TBcMCDS7QQyFpSVDMu4X_pcf2.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/tCAPkb5VShySSy82Ur2Q_cs1.png",
+					"//images.cloudflareapps.com/OUqbVM74TsSaOpkFP6Ja_cs2.png",
+					"//images.cloudflareapps.com/5Jd25XUHRtWUs4g7t12m_cs5.png",
+					"//images.cloudflareapps.com/tInrPWB7RbOvkULggd0j_cs4.png",
+					"//images.cloudflareapps.com/Ps9ClUU4SLipe4WKsZwB_cs3.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/ynK3yFBZQg2evF34BCj1_pcf4.png",
+				"featuredAppImage": "",
+				"author": "Shubham Jain",
+				"tagline": "",
+				"website": "https://perfectcontactform.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@perfectcontactform.com",
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "250 Responses",
+						"longDescription": "Perfect for small websites and individuals. Get 250 responses delivered to your inbox.",
+						"visible": true,
+						"price": 600,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Professional",
+						"shortDescription": "1000 Responses",
+						"longDescription": "Great for high-traffic websites. Get 1000 responses delivered to your inbox.",
+						"visible": true,
+						"price": 1200,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"marketing",
+					"communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "MOV_JyQFd3-7"
+				},
+				"created": "2017-09-13T18:09:11.881632Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "0668e321d95344bd4375cc475f6c27ce",
+				"requestedAt": "2017-11-18T09:22:34.131770553Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-11-25T16:31:50.269365519Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "JPyOww8PPsvJ",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/build/modal.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"perfect-contact-form"
+							],
+							"title": "Perfect Contact Form Account",
+							"type": "object"
+						},
+						"contactForm": {
+							"description": "Configure the contact form which is shown on clicking the launcher.",
+							"order": 4,
+							"properties": {
+								"fullName": {
+									"order": 1,
+									"title": "Include name field?",
+									"type": "boolean"
+								},
+								"headerText": {
+									"default": "Get in Touch",
+									"order": 3,
+									"title": "Header Text",
+									"type": "string"
+								},
+								"introText": {
+									"default": "Want to reach out to us? Feel free to drop a note.",
+									"format": "textarea",
+									"order": 4,
+									"title": "Introduction Message",
+									"type": "string"
+								},
+								"subject": {
+									"order": 2,
+									"title": "Include subject field?",
+									"type": "boolean"
+								},
+								"successMessage": {
+									"default": "Thank you! Your message has been received. If you're expecting a response, we'll get back to you shortly.",
+									"description": "What should be shown after a message has been sent?",
+									"format": "textarea",
+									"order": 5,
+									"title": "Success Message",
+									"type": "string"
+								}
+							},
+							"title": "Contact Form",
+							"type": "object"
+						},
+						"launcherText": {
+							"default": "Contact Us",
+							"order": 3,
+							"title": "Launcher Text",
+							"type": "string"
+						},
+						"receiverEmail": {
+							"authenticate": [
+								"account"
+							],
+							"description": "To which Email address should the responses be sent?",
+							"format": "email",
+							"order": 2,
+							"placeholder": "me@gmail.com",
+							"required": true,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Receiving Email Address",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.perfectcontactform.com/oauth/hook",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://app.perfectcontactform.com/oauth/updateEmailHook",
+						"events": [
+							"option-change:receiverEmail"
+						],
+						"block": false,
+						"if": "install.options.receiverEmail",
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://app.perfectcontactform.com/oauth/installHook",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/disr6Uaz4q-D",
+			"metadata": {
+				"code": {
+					"sourceTag": "disr6Uaz4q-D",
+					"uploadedOn": "2017-11-28T16:24:27.138730631Z"
+				}
+			},
+			"created": "2017-11-26T10:31:43.61018Z",
+			"proposedApp": {
+				"id": "JPyOww8PPsvJ",
+				"title": "Perfect Contact Form",
+				"shortDescription": "Add an elegant contact form to your website",
+				"longDescription": "Most websites lack an easy way to reach relevant people. Contact information is hard to find and writing an email is cumbersome.\n\nThese websites often miss out on critical feedback, queries, and opportunities. \n\nPerfect Contact Form gives a frictionless way to visitors for reaching out. Each response is directly sent to your inbox. And you can respond to it by simply clicking the reply button; no need to learn a new UI or  change your workflow. \n\nGrow your website by understanding your visitors.",
+				"instructions": "",
+				"alias": "pcf",
+				"orgId": "0668e321d95344bd4375cc475f6c27ce",
+				"icon": "//images.cloudflareapps.com/TBcMCDS7QQyFpSVDMu4X_pcf2.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/tCAPkb5VShySSy82Ur2Q_cs1.png",
+					"//images.cloudflareapps.com/OUqbVM74TsSaOpkFP6Ja_cs2.png",
+					"//images.cloudflareapps.com/5Jd25XUHRtWUs4g7t12m_cs5.png",
+					"//images.cloudflareapps.com/tInrPWB7RbOvkULggd0j_cs4.png",
+					"//images.cloudflareapps.com/Ps9ClUU4SLipe4WKsZwB_cs3.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/ynK3yFBZQg2evF34BCj1_pcf4.png",
+				"featuredAppImage": "",
+				"author": "Shubham Jain",
+				"tagline": "",
+				"website": "https://perfectcontactform.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "http://perfectcontactform.com/privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@perfectcontactform.com",
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "250 Responses",
+						"longDescription": "Perfect for small websites and individuals. Get 250 responses delivered to your inbox.",
+						"visible": true,
+						"price": 600,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Professional",
+						"shortDescription": "1000 Responses",
+						"longDescription": "Great for high-traffic websites. Get 1000 responses delivered to your inbox.",
+						"visible": true,
+						"price": 1200,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"marketing",
+					"communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "MOV_JyQFd3-7"
+				},
+				"created": "2017-09-13T18:09:11.881632Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "0668e321d95344bd4375cc475f6c27ce",
+				"requestedAt": "2017-11-28T16:26:09.552657068Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-12-02T01:16:46.614680647Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "JPyOww8PPsvJ",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/build/modal.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"perfect-contact-form"
+							],
+							"title": "Perfect Contact Form Account",
+							"type": "object"
+						},
+						"contactForm": {
+							"description": "Configure the contact form which is shown on clicking the launcher.",
+							"order": 4,
+							"properties": {
+								"fullName": {
+									"order": 1,
+									"title": "Include name field?",
+									"type": "boolean"
+								},
+								"headerText": {
+									"default": "Get in Touch",
+									"order": 3,
+									"title": "Header Text",
+									"type": "string"
+								},
+								"introText": {
+									"default": "Want to reach out to us? Feel free to drop a note.",
+									"format": "textarea",
+									"order": 4,
+									"title": "Introduction Message",
+									"type": "string"
+								},
+								"subject": {
+									"order": 2,
+									"title": "Include subject field?",
+									"type": "boolean"
+								},
+								"successMessage": {
+									"default": "Thank you! Your message has been received. If you're expecting a response, we'll get back to you shortly.",
+									"description": "What should be shown after a message has been sent?",
+									"format": "textarea",
+									"order": 5,
+									"title": "Success Message",
+									"type": "string"
+								}
+							},
+							"title": "Contact Form",
+							"type": "object"
+						},
+						"launcherText": {
+							"default": "Contact Us",
+							"order": 3,
+							"title": "Launcher Text",
+							"type": "string"
+						},
+						"receiverEmail": {
+							"authenticate": [
+								"account"
+							],
+							"description": "To which Email address should the responses be sent?",
+							"format": "email",
+							"order": 2,
+							"placeholder": "me@gmail.com",
+							"required": true,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Receiving Email Address",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.perfectcontactform.com/oauth/hook",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://app.perfectcontactform.com/oauth/updateEmailHook",
+						"events": [
+							"option-change:receiverEmail"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://app.perfectcontactform.com/oauth/installHook",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/qkHwbgdR3uZW",
+			"metadata": {
+				"code": {
+					"sourceTag": "qkHwbgdR3uZW",
+					"uploadedOn": "2017-12-07T16:08:08.559670232Z"
+				}
+			},
+			"created": "2017-12-02T01:09:01.129673Z",
+			"proposedApp": {
+				"id": "JPyOww8PPsvJ",
+				"title": "Perfect Contact Form",
+				"shortDescription": "Add an elegant contact form to your website",
+				"longDescription": "Most websites lack an easy way to reach relevant people. Contact information is hard to find and writing an email is cumbersome.\n\nThese websites often miss out on critical feedback, queries, and opportunities. \n\nPerfect Contact Form gives a frictionless way to visitors for reaching out. Each response is directly sent to your inbox. And you can respond to it by simply clicking the reply button; no need to learn a new UI or  change your workflow. \n\nGrow your website by understanding your visitors.",
+				"instructions": "",
+				"alias": "perfect-contact-form",
+				"orgId": "0668e321d95344bd4375cc475f6c27ce",
+				"icon": "//images.cloudflareapps.com/TBcMCDS7QQyFpSVDMu4X_pcf2.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/tCAPkb5VShySSy82Ur2Q_cs1.png",
+					"//images.cloudflareapps.com/OUqbVM74TsSaOpkFP6Ja_cs2.png",
+					"//images.cloudflareapps.com/5Jd25XUHRtWUs4g7t12m_cs5.png",
+					"//images.cloudflareapps.com/tInrPWB7RbOvkULggd0j_cs4.png",
+					"//images.cloudflareapps.com/Ps9ClUU4SLipe4WKsZwB_cs3.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/ynK3yFBZQg2evF34BCj1_pcf4.png",
+				"featuredAppImage": "",
+				"author": "Shubham Jain",
+				"tagline": "",
+				"website": "https://perfectcontactform.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "https://perfectcontactform.com/privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@perfectcontactform.com",
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "250 Responses",
+						"longDescription": "Perfect for small websites and individuals. Get 250 responses delivered to your inbox.",
+						"visible": true,
+						"price": 600,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Professional",
+						"shortDescription": "1000 Responses",
+						"longDescription": "Great for high-traffic websites. Get 1000 responses delivered to your inbox.",
+						"visible": true,
+						"price": 1200,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"marketing",
+					"communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "MOV_JyQFd3-7"
+				},
+				"created": "2017-09-13T18:09:11.881632Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "0668e321d95344bd4375cc475f6c27ce",
+				"requestedAt": "2017-12-07T16:08:12.525263463Z",
+				"canceledByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"canceledAt": "2017-12-12T08:03:52.97118607Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "JPyOww8PPsvJ",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/build/modal.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 1,
+							"required": true,
+							"services": [
+								"perfect-contact-form"
+							],
+							"title": "Perfect Contact Form Account",
+							"type": "object"
+						},
+						"contactForm": {
+							"description": "Configure the contact form which is shown on clicking the launcher.",
+							"order": 4,
+							"properties": {
+								"fullName": {
+									"order": 1,
+									"title": "Include name field?",
+									"type": "boolean"
+								},
+								"headerText": {
+									"default": "Get in Touch",
+									"order": 3,
+									"title": "Header Text",
+									"type": "string"
+								},
+								"introText": {
+									"default": "Want to reach out to us? Feel free to drop a note.",
+									"format": "textarea",
+									"order": 4,
+									"title": "Introduction Message",
+									"type": "string"
+								},
+								"subject": {
+									"order": 2,
+									"title": "Include subject field?",
+									"type": "boolean"
+								},
+								"successMessage": {
+									"default": "Thank you! Your message has been received. If you're expecting a response, we'll get back to you shortly.",
+									"description": "What should be shown after a message has been sent?",
+									"format": "textarea",
+									"order": 5,
+									"title": "Success Message",
+									"type": "string"
+								}
+							},
+							"title": "Contact Form",
+							"type": "object"
+						},
+						"launcherText": {
+							"default": "Contact Us",
+							"order": 3,
+							"title": "Launcher Text",
+							"type": "string"
+						},
+						"receiverEmail": {
+							"authenticate": [
+								"account"
+							],
+							"description": "To which Email address should the responses be sent?",
+							"format": "email",
+							"order": 2,
+							"placeholder": "me@gmail.com",
+							"required": true,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "Receiving Email Address",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.perfectcontactform.com/oauth/hook",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://app.perfectcontactform.com/oauth/updateEmailHook",
+						"events": [
+							"option-change:receiverEmail"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://app.perfectcontactform.com/oauth/installHook",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0,
+				"upvotes": 0,
+				"downvotes": 5
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/qkHwbgdR3uZW",
+			"created": "2017-12-12T08:03:52.674743Z",
+			"proposedApp": {
+				"id": "JPyOww8PPsvJ",
+				"title": "Perfect Contact Form",
+				"shortDescription": "Add an elegant contact form to your website",
+				"longDescription": "Most websites lack an easy way to reach relevant people. Contact information is hard to find and writing an email is cumbersome.\n\nThese websites often miss out on critical feedback, queries, and opportunities. \n\nPerfect Contact Form gives a frictionless way to visitors for reaching out. Each response is directly sent to your inbox. And you can respond to it by simply clicking the reply button; no need to learn a new UI or  change your workflow. \n\nGrow your website by understanding your visitors.",
+				"instructions": "",
+				"alias": "perfect-contact-form",
+				"orgId": "0668e321d95344bd4375cc475f6c27ce",
+				"icon": "//images.cloudflareapps.com/TBcMCDS7QQyFpSVDMu4X_pcf2.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/tCAPkb5VShySSy82Ur2Q_cs1.png",
+					"//images.cloudflareapps.com/OUqbVM74TsSaOpkFP6Ja_cs2.png",
+					"//images.cloudflareapps.com/5Jd25XUHRtWUs4g7t12m_cs5.png",
+					"//images.cloudflareapps.com/tInrPWB7RbOvkULggd0j_cs4.png",
+					"//images.cloudflareapps.com/Ps9ClUU4SLipe4WKsZwB_cs3.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/ynK3yFBZQg2evF34BCj1_pcf4.png",
+				"featuredAppImage": "",
+				"author": "Shubham Jain",
+				"tagline": "",
+				"website": "https://perfectcontactform.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "https://perfectcontactform.com/privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@perfectcontactform.com",
+				"products": [
+					{
+						"id": "basic",
+						"title": "Basic",
+						"shortDescription": "250 Responses",
+						"longDescription": "Perfect for small websites and individuals. Get 250 responses delivered to your inbox.",
+						"visible": true,
+						"price": 600,
+						"order": 0,
+						"plan": "perfect_contact_form_basic",
+						"feature": "apps.perfect_contact_form.basic.enabled",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Professional",
+						"shortDescription": "1000 Responses",
+						"longDescription": "Great for high-traffic websites. Get 1000 responses delivered to your inbox.",
+						"visible": true,
+						"price": 1200,
+						"order": 0,
+						"plan": "perfect_contact_form_pro",
+						"feature": "apps.perfect_contact_form.pro.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"marketing",
+					"communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "MOV_JyQFd3-7"
+				},
+				"created": "2017-09-13T18:09:11.881632Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-12-12T08:03:52.976802119Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-12-12T08:05:08.750825608Z"
+			}
+		}
+	]
+}

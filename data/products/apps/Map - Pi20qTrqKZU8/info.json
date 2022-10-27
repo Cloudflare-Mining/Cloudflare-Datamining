@@ -1,0 +1,1283 @@
+{
+	"id": "Pi20qTrqKZU8",
+	"title": "Map",
+	"shortDescription": "Help customers find you with a custom map",
+	"longDescription": "POWr Map enables you to easily help customers find your stores, events and products in a fully customizable map that can be up and running in seconds. Choose between satellite, roadmap, or hybrid maps, and enjoy an intuitive location panel that lets users jump between multiple locations. In addition, Maps includes highly customizable design, is mobile responsive on any device and supports text in all languages.\n\n \n# What are the benefits of using POWr Map?   \n\n* **Get more customers** - Add a customized map to your site to help customers find your physical stores and events and drive more business.\n* **Build confidence** - Showing a physical store location helps build your customers’ confidence in your business and brand, which keeps them coming back.\n* **Make it yours** - Customize your map to match your site design with your own colors, borders, location pins and choose between satellite, hybrid or roadmaps.\n\n# Get started for free and enjoy these features:   \n\n* Fully functional in seconds.\n* Show up to 5 locations\n* Intuitive location panel lets users jump between multiple locations.\n* Choose between satellite, roadmap, or hybrid maps.\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n* Add a search bar to your map.\n* Show from 10, 50 or unlimited locations (depending on your plan).\n* Automatically show the location nearest to your customer.\n* Add your own custom pins.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=map)\n\n# Why users love Map:   \n\n“Map is very easy to use, update (with a good range of display options)!” - The Cornish Vegan Pasty Company\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Map up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+	"instructions": "",
+	"alias": "powr-map",
+	"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+	"icon": "https://images.cloudflareapps.com/0HtGWDXtfKZj/Map-Icon-Cloudflare.png",
+	"screenshots": [
+		"//images.cloudflareapps.com/41tLOnl8TjK0F5lPVPTu_Copy of screenshot-1-46-.png",
+		"//images.cloudflareapps.com/cOlo3VjCTtOCX9JwmV1F_Copy of screenshot-2-27-.png",
+		"//images.cloudflareapps.com/8SBUtc7QIWuVmpSmJMi8_Copy of Screen Shot 2018-01-19 at 1.29.10 PM.png",
+		"//images.cloudflareapps.com/twHloOaFTJeiy663oKaw_Copy of screenshot-3-13-.png",
+		"//images.cloudflareapps.com/qkZtc8QjCIaal1ZXLVwg_Copy of Screenshot 4.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/Zb2BxOLNs-au/Map-Banner-Cloudflare.png",
+	"featuredAppImage": "",
+	"author": "POWr Inc",
+	"tagline": "",
+	"website": "https://www.powr.io",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://www.powr.io/terms",
+	"privacyPolicyURL": "https://www.powr.io/privacy",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.7",
+	"infoVersion": "1.0.7",
+	"points": 0,
+	"supportEmail": "support@powr.io",
+	"products": [],
+	"categoryIds": [
+		"ui-and-design",
+		"powr"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+			"created": "2018-03-13T17:49:35.453351289Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "p16Gw5baQVLa"
+	},
+	"created": "2018-03-12T18:35:24.904676Z",
+	"org": {
+		"id": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+		"title": "",
+		"username": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "ui-and-design",
+			"title": "UI & Design",
+			"description": "Apps that make your website more beautiful and user friendly.",
+			"icon": "",
+			"points": 10,
+			"visible": true,
+			"created": "2018-01-22T19:17:52.677513Z"
+		},
+		{
+			"id": "powr",
+			"title": "POWR",
+			"description": "Apps created by POWR",
+			"icon": "",
+			"points": 40,
+			"visible": false,
+			"created": "2018-11-06T00:45:54.563564Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "Pi20qTrqKZU8",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"appId": {
+							"default": "",
+							"label": "App Installation ID",
+							"title": "App Installation ID",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Map appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						},
+						"productId": {
+							"default": "premium",
+							"label": "Plan",
+							"title": "POWr Plan",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=map",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=map",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/p16Gw5baQVLa",
+			"metadata": {
+				"code": {
+					"sourceTag": "p16Gw5baQVLa",
+					"uploadedOn": "2018-03-12T18:35:25.194688846Z"
+				}
+			},
+			"created": "2018-03-12T18:35:25.047404Z",
+			"proposedApp": {
+				"id": "Pi20qTrqKZU8",
+				"title": "Map",
+				"shortDescription": "Help customers find you with a custom map",
+				"longDescription": "POWr Map enables you to easily help customers find your stores, events and products in a fully customizable map that can be up and running in seconds. Choose between satellite, roadmap, or hybrid maps, and enjoy an intuitive location panel that lets users jump between multiple locations. In addition, Maps includes highly customizable design, is mobile responsive on any device and supports text in all languages.\n\n \n# What are the benefits of using POWr Map?   \n\n* **Get more customers** - Add a customized map to your site to help customers find your physical stores and events and drive more business.\n* **Build confidence** - Showing a physical store location helps build your customers’ confidence in your business and brand, which keeps them coming back.\n* **Make it yours** - Customize your map to match your site design with your own colors, borders, location pins and choose between satellite, hybrid or roadmaps.\n\n# Get started for free and enjoy these features:   \n\n* Fully functional in seconds.\n* Show up to 5 locations\n* Intuitive location panel lets users jump between multiple locations.\n* Choose between satellite, roadmap, or hybrid maps.\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n* Add a search bar to your map.\n* Show from 10, 50 or unlimited locations (depending on your plan).\n* Automatically show the location nearest to your customer.\n* Add your own custom pins.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=map)\n\n# Why users love Map:   \n\n“Map is very easy to use, update (with a good range of display options)!” - The Cornish Vegan Pasty Company\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Map up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "//images.cloudflareapps.com/UgYl08kCT1e1v27jj9ei_Map icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/41tLOnl8TjK0F5lPVPTu_Copy of screenshot-1-46-.png",
+					"//images.cloudflareapps.com/cOlo3VjCTtOCX9JwmV1F_Copy of screenshot-2-27-.png",
+					"//images.cloudflareapps.com/8SBUtc7QIWuVmpSmJMi8_Copy of Screen Shot 2018-01-19 at 1.29.10 PM.png",
+					"//images.cloudflareapps.com/twHloOaFTJeiy663oKaw_Copy of screenshot-3-13-.png",
+					"//images.cloudflareapps.com/qkZtc8QjCIaal1ZXLVwg_Copy of Screenshot 4.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/THacU0nqSseVTEqaJ78l_Cloudflare banner - Map.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For businesses looking to test the water with new plugins",
+						"longDescription": "* Add 5 Locations",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "premium",
+						"title": "Starter",
+						"shortDescription": "For businesses who have their own brand and want extra customization.",
+						"longDescription": "* Remove POWr Logo\n* 10 Locations\n* Search Bar\n* Center on Visitor\n* Custom Pin",
+						"visible": true,
+						"price": 500,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "For growing businesses looking to stand out from the crowd and get more conversions.",
+						"longDescription": "* Remove POWr Logo\n* 50 Locations\n* Search Bar\n* Center on Visitor\n* Custom Pin\n* Mass Import via CSV\n* Custom CSS & JavaScript",
+						"visible": true,
+						"price": 1200,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "For total control that scales with your business, whether it’s big or small. Get every feature for every plugin.",
+						"longDescription": "* Remove POWr Logo\n* Unlimited Locations\n* Search Bar\n* Center on Visitor\n* Custom Pin\n* Mass Import via CSV\n* Custom CSS & JavaScript\n+ FREE Business Upgrade for all 50 POWr Plugins",
+						"visible": true,
+						"price": 5000,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"ui-and-design",
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "p16Gw5baQVLa"
+				},
+				"created": "2018-03-12T18:35:24.904676Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2018-03-13T17:49:35.445449288Z",
+				"canceledByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"canceledAt": "2018-03-23T17:37:51.599596982Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "Pi20qTrqKZU8",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"appId": {
+							"default": "",
+							"label": "App Installation ID",
+							"title": "App Installation ID",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Map appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						},
+						"productId": {
+							"default": "premium",
+							"label": "Plan",
+							"title": "POWr Plan",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=map",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=map",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "User uniq install.id for map POWr app with",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/FKp9WExx-iKR",
+			"metadata": {
+				"code": {
+					"sourceTag": "FKp9WExx-iKR",
+					"uploadedOn": "2018-03-23T17:37:50.924052567Z"
+				}
+			},
+			"created": "2018-03-23T17:37:50.6947Z",
+			"proposedApp": {
+				"id": "Pi20qTrqKZU8",
+				"title": "Map",
+				"shortDescription": "Help customers find you with a custom map",
+				"longDescription": "POWr Map enables you to easily help customers find your stores, events and products in a fully customizable map that can be up and running in seconds. Choose between satellite, roadmap, or hybrid maps, and enjoy an intuitive location panel that lets users jump between multiple locations. In addition, Maps includes highly customizable design, is mobile responsive on any device and supports text in all languages.\n\n \n# What are the benefits of using POWr Map?   \n\n* **Get more customers** - Add a customized map to your site to help customers find your physical stores and events and drive more business.\n* **Build confidence** - Showing a physical store location helps build your customers’ confidence in your business and brand, which keeps them coming back.\n* **Make it yours** - Customize your map to match your site design with your own colors, borders, location pins and choose between satellite, hybrid or roadmaps.\n\n# Get started for free and enjoy these features:   \n\n* Fully functional in seconds.\n* Show up to 5 locations\n* Intuitive location panel lets users jump between multiple locations.\n* Choose between satellite, roadmap, or hybrid maps.\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n* Add a search bar to your map.\n* Show from 10, 50 or unlimited locations (depending on your plan).\n* Automatically show the location nearest to your customer.\n* Add your own custom pins.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=map)\n\n# Why users love Map:   \n\n“Map is very easy to use, update (with a good range of display options)!” - The Cornish Vegan Pasty Company\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Map up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "//images.cloudflareapps.com/UgYl08kCT1e1v27jj9ei_Map icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/41tLOnl8TjK0F5lPVPTu_Copy of screenshot-1-46-.png",
+					"//images.cloudflareapps.com/cOlo3VjCTtOCX9JwmV1F_Copy of screenshot-2-27-.png",
+					"//images.cloudflareapps.com/8SBUtc7QIWuVmpSmJMi8_Copy of Screen Shot 2018-01-19 at 1.29.10 PM.png",
+					"//images.cloudflareapps.com/twHloOaFTJeiy663oKaw_Copy of screenshot-3-13-.png",
+					"//images.cloudflareapps.com/qkZtc8QjCIaal1ZXLVwg_Copy of Screenshot 4.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/THacU0nqSseVTEqaJ78l_Cloudflare banner - Map.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For businesses looking to test the water with new plugins",
+						"longDescription": "* Add 5 Locations",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "premium",
+						"title": "Starter",
+						"shortDescription": "For businesses who have their own brand and want extra customization.",
+						"longDescription": "* Remove POWr Logo\n* 10 Locations\n* Search Bar\n* Center on Visitor\n* Custom Pin",
+						"visible": true,
+						"price": 500,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "For growing businesses looking to stand out from the crowd and get more conversions.",
+						"longDescription": "* Remove POWr Logo\n* 50 Locations\n* Search Bar\n* Center on Visitor\n* Custom Pin\n* Mass Import via CSV\n* Custom CSS & JavaScript",
+						"visible": true,
+						"price": 1200,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "For total control that scales with your business, whether it’s big or small. Get every feature for every plugin.",
+						"longDescription": "* Remove POWr Logo\n* Unlimited Locations\n* Search Bar\n* Center on Visitor\n* Custom Pin\n* Mass Import via CSV\n* Custom CSS & JavaScript\n+ FREE Business Upgrade for all 50 POWr Plugins",
+						"visible": true,
+						"price": 5000,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"ui-and-design",
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "p16Gw5baQVLa"
+				},
+				"created": "2018-03-12T18:35:24.904676Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2018-03-23T17:37:51.61102751Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2018-04-02T21:05:13.914079161Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "Pi20qTrqKZU8",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Map appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=map",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=map",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "Persisting install.id",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/3rcaRAO8-Od9",
+			"metadata": {
+				"code": {
+					"sourceTag": "3rcaRAO8-Od9",
+					"uploadedOn": "2018-09-19T23:54:33.849337735Z"
+				}
+			},
+			"created": "2018-09-19T23:54:33.620526Z",
+			"proposedApp": {
+				"id": "Pi20qTrqKZU8",
+				"title": "Map",
+				"shortDescription": "Help customers find you with a custom map",
+				"longDescription": "POWr Map enables you to easily help customers find your stores, events and products in a fully customizable map that can be up and running in seconds. Choose between satellite, roadmap, or hybrid maps, and enjoy an intuitive location panel that lets users jump between multiple locations. In addition, Maps includes highly customizable design, is mobile responsive on any device and supports text in all languages.\n\n \n# What are the benefits of using POWr Map?   \n\n* **Get more customers** - Add a customized map to your site to help customers find your physical stores and events and drive more business.\n* **Build confidence** - Showing a physical store location helps build your customers’ confidence in your business and brand, which keeps them coming back.\n* **Make it yours** - Customize your map to match your site design with your own colors, borders, location pins and choose between satellite, hybrid or roadmaps.\n\n# Get started for free and enjoy these features:   \n\n* Fully functional in seconds.\n* Show up to 5 locations\n* Intuitive location panel lets users jump between multiple locations.\n* Choose between satellite, roadmap, or hybrid maps.\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n* Add a search bar to your map.\n* Show from 10, 50 or unlimited locations (depending on your plan).\n* Automatically show the location nearest to your customer.\n* Add your own custom pins.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=map)\n\n# Why users love Map:   \n\n“Map is very easy to use, update (with a good range of display options)!” - The Cornish Vegan Pasty Company\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Map up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "//images.cloudflareapps.com/UgYl08kCT1e1v27jj9ei_Map icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/41tLOnl8TjK0F5lPVPTu_Copy of screenshot-1-46-.png",
+					"//images.cloudflareapps.com/cOlo3VjCTtOCX9JwmV1F_Copy of screenshot-2-27-.png",
+					"//images.cloudflareapps.com/8SBUtc7QIWuVmpSmJMi8_Copy of Screen Shot 2018-01-19 at 1.29.10 PM.png",
+					"//images.cloudflareapps.com/twHloOaFTJeiy663oKaw_Copy of screenshot-3-13-.png",
+					"//images.cloudflareapps.com/qkZtc8QjCIaal1ZXLVwg_Copy of Screenshot 4.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/THacU0nqSseVTEqaJ78l_Cloudflare banner - Map.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [],
+				"categoryIds": [
+					"ui-and-design",
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "p16Gw5baQVLa"
+				},
+				"created": "2018-03-12T18:35:24.904676Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2018-09-19T23:54:41.627779243Z",
+				"canceledByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"canceledAt": "2018-09-25T18:00:52.835762143Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "Pi20qTrqKZU8",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Map appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=map",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=map",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "Persisting install.id",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/3rcaRAO8-Od9",
+			"created": "2018-09-25T17:05:05.225696Z",
+			"proposedApp": {
+				"id": "Pi20qTrqKZU8",
+				"title": "Map",
+				"shortDescription": "Help customers find you with a custom map",
+				"longDescription": "POWr Map enables you to easily help customers find your stores, events and products in a fully customizable map that can be up and running in seconds. Choose between satellite, roadmap, or hybrid maps, and enjoy an intuitive location panel that lets users jump between multiple locations. In addition, Maps includes highly customizable design, is mobile responsive on any device and supports text in all languages.\n\n \n# What are the benefits of using POWr Map?   \n\n* **Get more customers** - Add a customized map to your site to help customers find your physical stores and events and drive more business.\n* **Build confidence** - Showing a physical store location helps build your customers’ confidence in your business and brand, which keeps them coming back.\n* **Make it yours** - Customize your map to match your site design with your own colors, borders, location pins and choose between satellite, hybrid or roadmaps.\n\n# Get started for free and enjoy these features:   \n\n* Fully functional in seconds.\n* Show up to 5 locations\n* Intuitive location panel lets users jump between multiple locations.\n* Choose between satellite, roadmap, or hybrid maps.\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n* Add a search bar to your map.\n* Show from 10, 50 or unlimited locations (depending on your plan).\n* Automatically show the location nearest to your customer.\n* Add your own custom pins.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=map)\n\n# Why users love Map:   \n\n“Map is very easy to use, update (with a good range of display options)!” - The Cornish Vegan Pasty Company\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Map up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "//images.cloudflareapps.com/UgYl08kCT1e1v27jj9ei_Map icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/41tLOnl8TjK0F5lPVPTu_Copy of screenshot-1-46-.png",
+					"//images.cloudflareapps.com/cOlo3VjCTtOCX9JwmV1F_Copy of screenshot-2-27-.png",
+					"//images.cloudflareapps.com/8SBUtc7QIWuVmpSmJMi8_Copy of Screen Shot 2018-01-19 at 1.29.10 PM.png",
+					"//images.cloudflareapps.com/twHloOaFTJeiy663oKaw_Copy of screenshot-3-13-.png",
+					"//images.cloudflareapps.com/qkZtc8QjCIaal1ZXLVwg_Copy of Screenshot 4.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/THacU0nqSseVTEqaJ78l_Cloudflare banner - Map.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [],
+				"categoryIds": [
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "p16Gw5baQVLa"
+				},
+				"created": "2018-03-12T18:35:24.904676Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2018-09-25T18:00:52.854799405Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2018-09-26T17:16:14.376380871Z"
+			}
+		},
+		{
+			"tag": "1.0.4",
+			"appId": "Pi20qTrqKZU8",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Map appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=map",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=map",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "Persisting install.id",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/3rcaRAO8-Od9",
+			"created": "2018-09-26T21:32:24.323158Z",
+			"proposedApp": {
+				"id": "Pi20qTrqKZU8",
+				"title": "Map",
+				"shortDescription": "Help customers find you with a custom map",
+				"longDescription": "POWr Map enables you to easily help customers find your stores, events and products in a fully customizable map that can be up and running in seconds. Choose between satellite, roadmap, or hybrid maps, and enjoy an intuitive location panel that lets users jump between multiple locations. In addition, Maps includes highly customizable design, is mobile responsive on any device and supports text in all languages.\n\n \n# What are the benefits of using POWr Map?   \n\n* **Get more customers** - Add a customized map to your site to help customers find your physical stores and events and drive more business.\n* **Build confidence** - Showing a physical store location helps build your customers’ confidence in your business and brand, which keeps them coming back.\n* **Make it yours** - Customize your map to match your site design with your own colors, borders, location pins and choose between satellite, hybrid or roadmaps.\n\n# Get started for free and enjoy these features:   \n\n* Fully functional in seconds.\n* Show up to 5 locations\n* Intuitive location panel lets users jump between multiple locations.\n* Choose between satellite, roadmap, or hybrid maps.\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n* Add a search bar to your map.\n* Show from 10, 50 or unlimited locations (depending on your plan).\n* Automatically show the location nearest to your customer.\n* Add your own custom pins.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=map)\n\n# Why users love Map:   \n\n“Map is very easy to use, update (with a good range of display options)!” - The Cornish Vegan Pasty Company\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Map up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "https://images.cloudflareapps.com/0HtGWDXtfKZj/Map-Icon-Cloudflare.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/41tLOnl8TjK0F5lPVPTu_Copy of screenshot-1-46-.png",
+					"//images.cloudflareapps.com/cOlo3VjCTtOCX9JwmV1F_Copy of screenshot-2-27-.png",
+					"//images.cloudflareapps.com/8SBUtc7QIWuVmpSmJMi8_Copy of Screen Shot 2018-01-19 at 1.29.10 PM.png",
+					"//images.cloudflareapps.com/twHloOaFTJeiy663oKaw_Copy of screenshot-3-13-.png",
+					"//images.cloudflareapps.com/qkZtc8QjCIaal1ZXLVwg_Copy of Screenshot 4.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/Zb2BxOLNs-au/Map-Banner-Cloudflare.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [],
+				"categoryIds": [
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "p16Gw5baQVLa"
+				},
+				"created": "2018-03-12T18:35:24.904676Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2018-09-27T20:19:10.067944751Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2018-09-27T22:50:52.152009783Z"
+			}
+		},
+		{
+			"tag": "1.0.5",
+			"appId": "Pi20qTrqKZU8",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Map appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=map",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=map",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "We've made minor updates to Social Feed. There is no need to do anything, your app will continue to work as expected.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/3rcaRAO8-Od9",
+			"created": "2018-10-16T17:50:42.990736Z",
+			"proposedApp": {
+				"id": "Pi20qTrqKZU8",
+				"title": "Map",
+				"shortDescription": "Help customers find you with a custom map",
+				"longDescription": "POWr Map enables you to easily help customers find your stores, events and products in a fully customizable map that can be up and running in seconds. Choose between satellite, roadmap, or hybrid maps, and enjoy an intuitive location panel that lets users jump between multiple locations. In addition, Maps includes highly customizable design, is mobile responsive on any device and supports text in all languages.\n\n \n# What are the benefits of using POWr Map?   \n\n* **Get more customers** - Add a customized map to your site to help customers find your physical stores and events and drive more business.\n* **Build confidence** - Showing a physical store location helps build your customers’ confidence in your business and brand, which keeps them coming back.\n* **Make it yours** - Customize your map to match your site design with your own colors, borders, location pins and choose between satellite, hybrid or roadmaps.\n\n# Get started for free and enjoy these features:   \n\n* Fully functional in seconds.\n* Show up to 5 locations\n* Intuitive location panel lets users jump between multiple locations.\n* Choose between satellite, roadmap, or hybrid maps.\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n* Add a search bar to your map.\n* Show from 10, 50 or unlimited locations (depending on your plan).\n* Automatically show the location nearest to your customer.\n* Add your own custom pins.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=map)\n\n# Why users love Map:   \n\n“Map is very easy to use, update (with a good range of display options)!” - The Cornish Vegan Pasty Company\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Map up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "powr-map",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "https://images.cloudflareapps.com/0HtGWDXtfKZj/Map-Icon-Cloudflare.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/41tLOnl8TjK0F5lPVPTu_Copy of screenshot-1-46-.png",
+					"//images.cloudflareapps.com/cOlo3VjCTtOCX9JwmV1F_Copy of screenshot-2-27-.png",
+					"//images.cloudflareapps.com/8SBUtc7QIWuVmpSmJMi8_Copy of Screen Shot 2018-01-19 at 1.29.10 PM.png",
+					"//images.cloudflareapps.com/twHloOaFTJeiy663oKaw_Copy of screenshot-3-13-.png",
+					"//images.cloudflareapps.com/qkZtc8QjCIaal1ZXLVwg_Copy of Screenshot 4.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/Zb2BxOLNs-au/Map-Banner-Cloudflare.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [],
+				"categoryIds": [
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "p16Gw5baQVLa"
+				},
+				"created": "2018-03-12T18:35:24.904676Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2018-10-16T17:50:43.276192258Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2018-10-18T18:28:05.736807916Z"
+			}
+		},
+		{
+			"tag": "1.0.6",
+			"appId": "Pi20qTrqKZU8",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the Map appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Select Location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.powr.io/cloudflare/session?app_type=map",
+						"events": [
+							"preview"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://www.powr.io/cloudflare/install?app_type=map",
+						"events": [
+							"new-install",
+							"update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "Add POWR tag",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/3rcaRAO8-Od9",
+			"created": "2018-11-06T00:56:58.020868Z",
+			"proposedApp": {
+				"id": "Pi20qTrqKZU8",
+				"title": "Map",
+				"shortDescription": "Help customers find you with a custom map",
+				"longDescription": "POWr Map enables you to easily help customers find your stores, events and products in a fully customizable map that can be up and running in seconds. Choose between satellite, roadmap, or hybrid maps, and enjoy an intuitive location panel that lets users jump between multiple locations. In addition, Maps includes highly customizable design, is mobile responsive on any device and supports text in all languages.\n\n \n# What are the benefits of using POWr Map?   \n\n* **Get more customers** - Add a customized map to your site to help customers find your physical stores and events and drive more business.\n* **Build confidence** - Showing a physical store location helps build your customers’ confidence in your business and brand, which keeps them coming back.\n* **Make it yours** - Customize your map to match your site design with your own colors, borders, location pins and choose between satellite, hybrid or roadmaps.\n\n# Get started for free and enjoy these features:   \n\n* Fully functional in seconds.\n* Show up to 5 locations\n* Intuitive location panel lets users jump between multiple locations.\n* Choose between satellite, roadmap, or hybrid maps.\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n* Add a search bar to your map.\n* Show from 10, 50 or unlimited locations (depending on your plan).\n* Automatically show the location nearest to your customer.\n* Add your own custom pins.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=map)\n\n# Why users love Map:   \n\n“Map is very easy to use, update (with a good range of display options)!” - The Cornish Vegan Pasty Company\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Map up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "powr-map",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "https://images.cloudflareapps.com/0HtGWDXtfKZj/Map-Icon-Cloudflare.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/41tLOnl8TjK0F5lPVPTu_Copy of screenshot-1-46-.png",
+					"//images.cloudflareapps.com/cOlo3VjCTtOCX9JwmV1F_Copy of screenshot-2-27-.png",
+					"//images.cloudflareapps.com/8SBUtc7QIWuVmpSmJMi8_Copy of Screen Shot 2018-01-19 at 1.29.10 PM.png",
+					"//images.cloudflareapps.com/twHloOaFTJeiy663oKaw_Copy of screenshot-3-13-.png",
+					"//images.cloudflareapps.com/qkZtc8QjCIaal1ZXLVwg_Copy of Screenshot 4.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/Zb2BxOLNs-au/Map-Banner-Cloudflare.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [],
+				"categoryIds": [
+					"ui-and-design",
+					"powr"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "p16Gw5baQVLa"
+				},
+				"created": "2018-03-12T18:35:24.904676Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "41f272f0efef5d92ddde1aa9398f388a",
+				"requestedAt": "2018-11-06T00:56:58.298451217Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-11-06T01:00:57.282242787Z"
+			}
+		},
+		{
+			"tag": "1.0.7",
+			"appId": "Pi20qTrqKZU8",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"exitHelp": {
+							"helpvalue": "<br/><hr/><h2><b>Need help?</b></h2>Visit our glorious <a href='https://www.powr.io/knowledge-base'>Support Center</a> or <a href='https://www.powr.io/feedback/new?&src=cloudflare' target='_blank'>send us a message</a>.",
+							"order": 8,
+							"type": "help"
+						},
+						"externalLink": {
+							"format": "button",
+							"href": "https://www.powr.io/cloudflare/map",
+							"label": "Open POWr Editor",
+							"order": 2,
+							"title": "Design and customize your Map",
+							"type": "link"
+						},
+						"introHelp": {
+							"helpvalue": "<center><h1>Welcome to <br/> POWr Map</h1> Easily add a custom map anywhere on your Cloudflare site!</center>",
+							"order": 0,
+							"type": "help"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"format": "element",
+							"order": 6,
+							"title": "Where should the Map appear?",
+							"type": "object"
+						},
+						"shortcode": {
+							"order": 4,
+							"placeholder": "[powr-map id='abc123']",
+							"title": "Get the shortcode from the POWr link where you created your Map",
+							"type": "string"
+						},
+						"step1Help": {
+							"helpvalue": "<p></p><h2><b>1: Configure Your Map</b></h2>",
+							"order": 1,
+							"type": "help"
+						},
+						"step2Help": {
+							"helpvalue": "<p></p><h2><b>2: Paste Shortcode</b></h2>",
+							"order": 3,
+							"type": "help"
+						},
+						"step3Help": {
+							"helpvalue": "<p></p><h2><b>3: Select Install Location</b></h2>",
+							"order": 5,
+							"type": "help"
+						},
+						"step4Help": {
+							"helpvalue": "<center><h2>------- OR --------</h2></center><br/><h3>Embed your shortcode in your website where you'd like your Map to appear.</h3>",
+							"order": 7,
+							"type": "help"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 2,
+				"downvotes": 0
+			},
+			"releaseNotes": "New & Improved installation flow ✨",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/LfWRpsKa-oUN",
+			"metadata": {
+				"code": {
+					"sourceTag": "LfWRpsKa-oUN",
+					"uploadedOn": "2019-04-16T00:07:33.737921518Z"
+				}
+			},
+			"created": "2019-04-16T00:07:33.577519Z",
+			"proposedApp": {
+				"id": "Pi20qTrqKZU8",
+				"title": "Map",
+				"shortDescription": "Help customers find you with a custom map",
+				"longDescription": "POWr Map enables you to easily help customers find your stores, events and products in a fully customizable map that can be up and running in seconds. Choose between satellite, roadmap, or hybrid maps, and enjoy an intuitive location panel that lets users jump between multiple locations. In addition, Maps includes highly customizable design, is mobile responsive on any device and supports text in all languages.\n\n \n# What are the benefits of using POWr Map?   \n\n* **Get more customers** - Add a customized map to your site to help customers find your physical stores and events and drive more business.\n* **Build confidence** - Showing a physical store location helps build your customers’ confidence in your business and brand, which keeps them coming back.\n* **Make it yours** - Customize your map to match your site design with your own colors, borders, location pins and choose between satellite, hybrid or roadmaps.\n\n# Get started for free and enjoy these features:   \n\n* Fully functional in seconds.\n* Show up to 5 locations\n* Intuitive location panel lets users jump between multiple locations.\n* Choose between satellite, roadmap, or hybrid maps.\n* Highly customizable design: pick custom colors and fonts, adjust size, add borders, and more.\n* Supports text in any language.\n* Mobile responsive on any device.\n* Instant access to the full [POWr plugin library] (https://www.powr.io/plugins).\n\n# Upgrade to remove POWr branding and unlock premium features, such as:   \n* Add a search bar to your map.\n* Show from 10, 50 or unlimited locations (depending on your plan).\n* Automatically show the location nearest to your customer.\n* Add your own custom pins.\n* Unlock premium features in other POWr apps.\n\nFull pricing information is available [here] (https://www.powr.io/pricing?app_type=map)\n\n# Why users love Map:   \n\n“Map is very easy to use, update (with a good range of display options)!” - The Cornish Vegan Pasty Company\n\n# Customer Support You Can Count On \n\nIf you have any questions or need help getting Map up and running, we’re here to help! Please visit our [Help Center] (https://powr-support.zendesk.com/hc/en-us) for tips, support, and answers to common questions or contact support@powr.io.\n\n# About POWr \n\n[POWr] (https://www.powr.io) brings you all the tools you need for effortless business growth, all in one place. With over 50 website plugins available that are easy-to-use and customizable, you'll find everything you need to boost conversions, engage and support customers, grow your following and collect information.",
+				"instructions": "",
+				"alias": "powr-map",
+				"orgId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"icon": "https://images.cloudflareapps.com/0HtGWDXtfKZj/Map-Icon-Cloudflare.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/41tLOnl8TjK0F5lPVPTu_Copy of screenshot-1-46-.png",
+					"//images.cloudflareapps.com/cOlo3VjCTtOCX9JwmV1F_Copy of screenshot-2-27-.png",
+					"//images.cloudflareapps.com/8SBUtc7QIWuVmpSmJMi8_Copy of Screen Shot 2018-01-19 at 1.29.10 PM.png",
+					"//images.cloudflareapps.com/twHloOaFTJeiy663oKaw_Copy of screenshot-3-13-.png",
+					"//images.cloudflareapps.com/qkZtc8QjCIaal1ZXLVwg_Copy of Screenshot 4.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/Zb2BxOLNs-au/Map-Banner-Cloudflare.png",
+				"featuredAppImage": "",
+				"author": "POWr Inc",
+				"tagline": "",
+				"website": "https://www.powr.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.powr.io/terms",
+				"privacyPolicyURL": "https://www.powr.io/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@powr.io",
+				"products": [],
+				"categoryIds": [
+					"ui-and-design",
+					"powr"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "p16Gw5baQVLa"
+				},
+				"created": "2018-03-12T18:35:24.904676Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "8d7ac32f2a02aac7fbedac9b7e3c86f6",
+				"requestedAt": "2019-04-16T00:07:34.291597635Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-04-16T20:41:59.216367449Z"
+			}
+		}
+	]
+}

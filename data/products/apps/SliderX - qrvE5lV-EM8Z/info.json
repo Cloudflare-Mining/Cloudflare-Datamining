@@ -1,0 +1,2896 @@
+{
+	"id": "qrvE5lV-EM8Z",
+	"title": "SliderX",
+	"shortDescription": "Ultra-lightweight, modern & fully customisable slideshow app",
+	"longDescription": "**SliderX** is an ultra-lightweight and modern <u>slideshow app</u> for your site. It supports **images**, **video** and **text**.\n\nIt has been crafted with great ❤️ and you get a *plethora* of options to customise it to your like.\n\nIf you find it useful please leave a review and thumbs up 👍 🙏\n\n*If you have any issue or an idea for a nice feature, please <a href=\"mailto:contact@francesconatali.com?subject=SliderX\">get in touch</a>.*\n\n🚀",
+	"instructions": "",
+	"alias": "sliderx",
+	"orgId": "8d0f50fdfa6c03f22e138cc6885d354d",
+	"icon": "https://images.cloudflareapps.com/uUw_W6sB6PG0/icon.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/1yGTjmI5Xnsm/screenshot_1.png",
+		"https://images.cloudflareapps.com/1yGTjmI5Xnsm/screenshot_2.png",
+		"https://images.cloudflareapps.com/1yGTjmI5Xnsm/screenshot_3.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/5UlV-rhT1v2k/tile%20image.png",
+	"featuredAppImage": "https://images.cloudflareapps.com/2bCuStb-3veu/featured%20app%20image.png",
+	"author": "Francesco Natali",
+	"tagline": "",
+	"website": "",
+	"sourceURL": "",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.4",
+	"infoVersion": "1.0.4",
+	"points": 0,
+	"supportEmail": "contact@francesconatali.com",
+	"products": [
+		{
+			"id": "pro",
+			"title": "Pro",
+			"shortDescription": "Complete control, full power and all options. Create a stunning slideshow. 🚀 ⭐️",
+			"longDescription": "",
+			"visible": true,
+			"price": 100,
+			"order": 0,
+			"plan": "APPS_SLIDERX_PRO",
+			"feature": "apps.sliderx_pro.enabled",
+			"created": null
+		}
+	],
+	"categoryIds": [],
+	"agreements": {
+		"tos": {
+			"userId": "8d0f50fdfa6c03f22e138cc6885d354d",
+			"created": "2018-12-30T12:39:41.947437521Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "vAm30Xd8G87t"
+	},
+	"created": "2018-12-30T12:39:39.36095Z",
+	"org": {
+		"id": "8d0f50fdfa6c03f22e138cc6885d354d",
+		"title": "",
+		"username": "8d0f50fdfa6c03f22e138cc6885d354d",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "qrvE5lV-EM8Z",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./app.css"
+						},
+						{
+							"type": "script",
+							"src": "./app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"alignment": {
+							"order": 15,
+							"properties": {
+								"positionsliderbottom": {
+									"default": 0,
+									"description": "Change this value for fine-grained positioning (bottom).",
+									"order": 3,
+									"title": "Position Slider (bottom)",
+									"type": "number"
+								},
+								"positionsliderleft": {
+									"default": 0,
+									"description": "Change this value for fine-grained positioning (left).",
+									"order": 4,
+									"title": "Position Slider (left)",
+									"type": "number"
+								},
+								"positionsliderright": {
+									"default": 0,
+									"description": "Change this value for fine-grained positioning (right).",
+									"order": 5,
+									"title": "Position Slider (right)",
+									"type": "number"
+								},
+								"positionslidertop": {
+									"default": 0,
+									"description": "Change this value for fine-grained positioning (top).",
+									"order": 2,
+									"title": "Position Slider (top)",
+									"type": "number"
+								}
+							},
+							"showIf": {
+								"alignmenttoggle": true
+							},
+							"title": "Position",
+							"type": "object"
+						},
+						"alignmenttoggle": {
+							"default": false,
+							"description": "Fine-grained positioning.",
+							"order": 14,
+							"title": "Show Position Options",
+							"type": "boolean"
+						},
+						"border": {
+							"order": 11,
+							"properties": {
+								"borderColor": {
+									"default": "#ffcc66",
+									"format": "color",
+									"order": 2,
+									"products": [
+										"pro"
+									],
+									"title": "Border color",
+									"type": "string"
+								},
+								"borderHigh": {
+									"default": 5,
+									"description": "Increase or decrease the thickness of the border.",
+									"minimum": 0,
+									"order": 1,
+									"title": "High (pixels)",
+									"type": "number"
+								},
+								"borderShowHide": {
+									"default": "hideborder",
+									"description": "Enable or Disable a border.",
+									"enum": [
+										"showborder",
+										"hideborder"
+									],
+									"enumNames": {
+										"hideborder": "Hide",
+										"showborder": "Show"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": "Enable/Disable",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"bordertoggle": true
+							},
+							"title": "Border",
+							"type": "object"
+						},
+						"bordertoggle": {
+							"default": false,
+							"description": "Enable/Disable a border, change thickness and color.",
+							"order": 10,
+							"title": "Show Border Options",
+							"type": "boolean"
+						},
+						"enabledisable": {
+							"default": "enable",
+							"description": "You can easily enable and disable SliderX here.",
+							"enum": [
+								"enable",
+								"disable"
+							],
+							"enumNames": {
+								"disable": "Disable",
+								"enable": "Enable"
+							},
+							"format": "radios",
+							"order": 1,
+							"title": "Enable/Disable",
+							"type": "string"
+						},
+						"endMessage": {
+							"helpvalue": "<u>Thank you for using SliderX!</u> 🙏 <br><i>For any question or suggestion, please <a href=\"mailto:contact@francesconatali.com?subject=SliderX\">get in touch</a></i>.<br><br>Other great apps from the same author:<br><ul><li><a href='https://www.cloudflare.com/apps/toast-notification-bar' target='_blank'>Toast</a>: the best and most advanced Notification Bar</li><li><a href='https://www.cloudflare.com/apps/scroll-progress' target='_blank'>Scroll Progress</a>: a beautiful Scroll Progress indicator</li><li><a href='https://www.cloudflare.com/apps/shareit' target='_blank'>Shareit</a>: modern and lightweight Sharing Widget</li><li><a href='https://www.cloudflare.com/apps/liquid-button' target='_blank'>Liquid Button</a>: professional Call-To-Action button</li></ul>",
+							"order": 16,
+							"type": "help"
+						},
+						"introMessage": {
+							"helpvalue": "Hi there! 👋  <em>SliderX</em> is an ultra-lightweight, modern and fully customisable slideshow app for your site.<br><br>It has been crafted with great ❤️  If you find it useful please leave a <a href=\"https://www.cloudflare.com/apps/sliderx\" target=\"_blank\">review</a> and thumbs up 👍 🙏<br><br><em>If you have any issue or an idea for a nice feature, please <a href=\"mailto:contact@francesconatali.com?subject=SliderX\">get in touch</a>.</em><br><br><u>SliderX version <strong>1.0</strong></u>",
+							"order": 0,
+							"type": "help"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"format": "element",
+							"order": 3,
+							"showIf": {
+								"locationtoggle": true
+							},
+							"title": "Location",
+							"type": "object"
+						},
+						"locationtoggle": {
+							"default": false,
+							"description": "📍 Where should it appear on your site?",
+							"order": 2,
+							"title": "Show Location Options",
+							"type": "boolean"
+						},
+						"sizeoptions": {
+							"order": 13,
+							"properties": {
+								"height": {
+									"default": {
+										"unit": "px",
+										"value": 300
+									},
+									"format": "number",
+									"minimum": 0,
+									"order": 2,
+									"title": "Height",
+									"type": "object",
+									"units": [
+										"px",
+										"%"
+									]
+								},
+								"width": {
+									"default": {
+										"unit": "px",
+										"value": 500
+									},
+									"format": "number",
+									"minimum": 0,
+									"order": 1,
+									"title": "Width",
+									"type": "object",
+									"units": [
+										"px",
+										"%"
+									]
+								}
+							},
+							"showIf": {
+								"sizeoptionstoggle": true
+							},
+							"title": "Size",
+							"type": "object"
+						},
+						"sizeoptionstoggle": {
+							"default": false,
+							"description": "You can set fixed size (pixels) or relative (%).",
+							"order": 12,
+							"title": "Show Size Options",
+							"type": "boolean"
+						},
+						"slides": {
+							"items": {
+								"properties": {
+									"backgroundColor": {
+										"default": "#f7f7f7",
+										"format": "color",
+										"order": 6,
+										"showIf": {
+											"slides[].slidetype": "text"
+										},
+										"title": "Background Color",
+										"type": "string"
+									},
+									"backgroundColorImage": {
+										"default": "#f7f7f7",
+										"format": "color",
+										"order": 4,
+										"showIf": {
+											"slides[].imagefit": "contain",
+											"slides[].slidetype": "image"
+										},
+										"title": "Background Color",
+										"type": "string"
+									},
+									"image": {
+										"format": "image",
+										"order": 2,
+										"showIf": {
+											"slides[].slidetype": "image"
+										},
+										"title": "Image",
+										"type": "string"
+									},
+									"imagefit": {
+										"default": "contain",
+										"enum": [
+											"cover",
+											"contain"
+										],
+										"enumNames": {
+											"contain": "It fits entirly within its slide",
+											"cover": "It covers the entire slide (It might be clipped to fit)"
+										},
+										"format": "radios",
+										"order": 3,
+										"showIf": {
+											"slides[].slidetype": "image"
+										},
+										"title": "How this image should fit its container?",
+										"type": "string"
+									},
+									"slidetype": {
+										"default": "image",
+										"enum": [
+											"image",
+											"text",
+											"video"
+										],
+										"enumNames": {
+											"image": "Image",
+											"text": "Text",
+											"video": "Video"
+										},
+										"format": "radios",
+										"order": 1,
+										"products": {
+											"text": [
+												"pro"
+											],
+											"video": [
+												"pro"
+											]
+										},
+										"title": "Which type of slide?",
+										"type": "string"
+									},
+									"text": {
+										"default": "",
+										"description": "Support rich text, links, images and emoji.",
+										"format": "richtext",
+										"order": 5,
+										"placeholder": "Insert here your message",
+										"showIf": {
+											"slides[].slidetype": "text"
+										},
+										"title": "Message",
+										"type": "string"
+									},
+									"video": {
+										"default": "",
+										"description": "From any video platform: YouTube, Vimeo, etc. <br>Please note: <u>use the URL generated when you share the video</u>, instead of the URL of the webpage where the video can be seen. (e.g. https://player.vimeo.com/video/123, instead of https://vimeo.com/123).",
+										"format": "url",
+										"order": 7,
+										"placeholder": "URL of the shared/embed video",
+										"showIf": {
+											"slides[].slidetype": "video"
+										},
+										"title": "Video URL",
+										"type": "string"
+									}
+								},
+								"title": "Slide",
+								"type": "object"
+							},
+							"maxItems": 20,
+							"order": 5,
+							"showIf": {
+								"slidestoggle": true
+							},
+							"title": "Slides",
+							"type": "array"
+						},
+						"slidestoggle": {
+							"default": false,
+							"description": "🌄 Add images, text, video to your SliderX.",
+							"order": 4,
+							"title": "Show Slides Options",
+							"type": "boolean"
+						},
+						"theme": {
+							"order": 7,
+							"properties": {
+								"arrowsShowHide": {
+									"default": "showarrows",
+									"description": "Show or Hide arrows.",
+									"enum": [
+										"showarrows",
+										"hidearrows"
+									],
+									"enumNames": {
+										"hidearrows": "Hide",
+										"showarrows": "Show"
+									},
+									"format": "radios",
+									"order": 5,
+									"products": {
+										"hidearrows": [
+											"pro"
+										]
+									},
+									"title": "Arrows",
+									"type": "string"
+								},
+								"navigationdots": {
+									"default": "outside",
+									"description": "Outside, Inside or Hidden.",
+									"enum": [
+										"outside",
+										"inside",
+										"hide"
+									],
+									"enumNames": {
+										"hide": "Hide them",
+										"inside": "Show them inside",
+										"outside": "Show them outside"
+									},
+									"format": "radios",
+									"order": 4,
+									"products": {
+										"hide": [
+											"pro"
+										],
+										"inside": [
+											"pro"
+										]
+									},
+									"title": "Navigation Dots",
+									"type": "string"
+								},
+								"opacity": {
+									"default": 1,
+									"description": "Make SliderX more or less transparent.",
+									"format": "slider",
+									"maximum": 1,
+									"minimum": 0,
+									"order": 2,
+									"products": [
+										"pro"
+									],
+									"step": 0.1,
+									"title": "Opacity",
+									"type": "number"
+								},
+								"shadow": {
+									"default": true,
+									"description": "Enable/disable a nice shadow to add an elegant depth.",
+									"order": 3,
+									"title": "Shadow",
+									"type": "boolean"
+								},
+								"themeColor": {
+									"default": "#4c94ff",
+									"description": "It affects arrows and navigation dots.",
+									"format": "color",
+									"order": 1,
+									"title": "Theme Color",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"themetoggle": true
+							},
+							"title": "Theme",
+							"type": "object"
+						},
+						"themetoggle": {
+							"default": false,
+							"description": "🌈 Change color, opacity, shadow, navigation dots and arrows.",
+							"order": 6,
+							"title": "Show Theme Options",
+							"type": "boolean"
+						},
+						"timer": {
+							"order": 9,
+							"properties": {
+								"timerEnableDisable": {
+									"default": "disabletimer",
+									"description": "Enable or Disable a timer.",
+									"enum": [
+										"enabletimer",
+										"disabletimer"
+									],
+									"enumNames": {
+										"disabletimer": "Disable",
+										"enabletimer": "Enable"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": "Enable/Disable",
+									"type": "string"
+								},
+								"timerSeconds": {
+									"default": 2,
+									"minimum": 1,
+									"order": 1,
+									"title": "Number of seconds between each slide.",
+									"type": "number"
+								}
+							},
+							"showIf": {
+								"timertoggle": true
+							},
+							"title": "Timer",
+							"type": "object"
+						},
+						"timertoggle": {
+							"default": false,
+							"description": "⏰ Enable / Disable automatic change of slide.",
+							"order": 8,
+							"title": "Show Timer Options",
+							"type": "boolean"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Complete control, full power and all options. Create a stunning slideshow. 🚀 ⭐️",
+						"longDescription": "",
+						"visible": true,
+						"price": 100,
+						"order": 0,
+						"plan": "pro",
+						"feature": "apps.pro-only-feature",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.updateTheme(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"location"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/vAm30Xd8G87t",
+			"metadata": {
+				"code": {
+					"sourceTag": "vAm30Xd8G87t",
+					"uploadedOn": "2018-12-30T12:39:40.348737575Z"
+				}
+			},
+			"created": "2018-12-30T12:39:39.856843Z",
+			"proposedApp": {
+				"id": "qrvE5lV-EM8Z",
+				"title": "SliderX",
+				"shortDescription": "Ultra-lightweight, modern & fully customisable slideshow app",
+				"longDescription": "**SliderX** is an ultra-lightweight and modern <u>slideshow app</u> for your site. It supports **images**, **video** and **text**.\n\nIt has been crafted with great ❤️ and you get a *plethora* of options to customise it to your like.\n\nIf you find it useful please leave a review and thumbs up 👍 🙏\n\n*If you have any issue or an idea for a nice feature, please <a href=\"mailto:contact@francesconatali.com?subject=SliderX\">get in touch</a>.*\n\n🚀",
+				"instructions": "",
+				"alias": "sliderx",
+				"orgId": "8d0f50fdfa6c03f22e138cc6885d354d",
+				"icon": "https://images.cloudflareapps.com/uUw_W6sB6PG0/icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/1yGTjmI5Xnsm/screenshot_1.png",
+					"https://images.cloudflareapps.com/1yGTjmI5Xnsm/screenshot_2.png",
+					"https://images.cloudflareapps.com/1yGTjmI5Xnsm/screenshot_3.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/WbWbCQlTpEry/tile%20image.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/_UWatWvORlXq/featured%20app%20image.png",
+				"author": "Francesco Natali",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "contact@francesconatali.com",
+				"products": [
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Complete control, full power and all options. Create a stunning slideshow. 🚀 ⭐️",
+						"longDescription": "",
+						"visible": true,
+						"price": 100,
+						"order": 0,
+						"plan": "pro",
+						"feature": "apps.pro-only-feature",
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "vAm30Xd8G87t"
+				},
+				"created": "2018-12-30T12:39:39.36095Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "8d0f50fdfa6c03f22e138cc6885d354d",
+				"requestedAt": "2018-12-30T12:39:41.932793921Z",
+				"canceledByUserId": "8d0f50fdfa6c03f22e138cc6885d354d",
+				"canceledAt": "2019-01-01T11:30:46.15678317Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "qrvE5lV-EM8Z",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./app.css"
+						},
+						{
+							"type": "script",
+							"src": "./app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"alignment": {
+							"order": 15,
+							"properties": {
+								"positionsliderbottom": {
+									"default": 0,
+									"description": "Change this value for fine-grained positioning (bottom).",
+									"order": 3,
+									"title": "Position Slider (bottom)",
+									"type": "number"
+								},
+								"positionsliderleft": {
+									"default": 0,
+									"description": "Change this value for fine-grained positioning (left).",
+									"order": 4,
+									"title": "Position Slider (left)",
+									"type": "number"
+								},
+								"positionsliderright": {
+									"default": 0,
+									"description": "Change this value for fine-grained positioning (right).",
+									"order": 5,
+									"title": "Position Slider (right)",
+									"type": "number"
+								},
+								"positionslidertop": {
+									"default": 0,
+									"description": "Change this value for fine-grained positioning (top).",
+									"order": 2,
+									"title": "Position Slider (top)",
+									"type": "number"
+								}
+							},
+							"showIf": {
+								"alignmenttoggle": true
+							},
+							"title": "Position",
+							"type": "object"
+						},
+						"alignmenttoggle": {
+							"default": false,
+							"description": "Fine-grained positioning.",
+							"order": 14,
+							"title": "Show Position Options",
+							"type": "boolean"
+						},
+						"border": {
+							"order": 11,
+							"properties": {
+								"borderColor": {
+									"default": "#ffcc66",
+									"format": "color",
+									"order": 2,
+									"products": [
+										"pro"
+									],
+									"title": "Border color",
+									"type": "string"
+								},
+								"borderHigh": {
+									"default": 5,
+									"description": "Increase or decrease the thickness of the border.",
+									"minimum": 0,
+									"order": 1,
+									"title": "High (pixels)",
+									"type": "number"
+								},
+								"borderShowHide": {
+									"default": "hideborder",
+									"description": "Enable or Disable a border.",
+									"enum": [
+										"showborder",
+										"hideborder"
+									],
+									"enumNames": {
+										"hideborder": "Hide",
+										"showborder": "Show"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": "Enable/Disable",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"bordertoggle": true
+							},
+							"title": "Border",
+							"type": "object"
+						},
+						"bordertoggle": {
+							"default": false,
+							"description": "Enable/Disable a border, change thickness and color.",
+							"order": 10,
+							"title": "Show Border Options",
+							"type": "boolean"
+						},
+						"enabledisable": {
+							"default": "enable",
+							"description": "You can easily enable and disable SliderX here.",
+							"enum": [
+								"enable",
+								"disable"
+							],
+							"enumNames": {
+								"disable": "Disable",
+								"enable": "Enable"
+							},
+							"format": "radios",
+							"order": 1,
+							"title": "Enable/Disable",
+							"type": "string"
+						},
+						"endMessage": {
+							"helpvalue": "<u>Thank you for using SliderX!</u> 🙏 <br><i>For any question or suggestion, please <a href=\"mailto:contact@francesconatali.com?subject=SliderX\">get in touch</a></i>.<br><br>Other great apps from the same author:<br><ul><li><a href='https://www.cloudflare.com/apps/toast-notification-bar' target='_blank'>Toast</a>: the best and most advanced Notification Bar</li><li><a href='https://www.cloudflare.com/apps/scroll-progress' target='_blank'>Scroll Progress</a>: a beautiful Scroll Progress indicator</li><li><a href='https://www.cloudflare.com/apps/shareit' target='_blank'>Shareit</a>: modern and lightweight Sharing Widget</li><li><a href='https://www.cloudflare.com/apps/liquid-button' target='_blank'>Liquid Button</a>: professional Call-To-Action button</li></ul>",
+							"order": 16,
+							"type": "help"
+						},
+						"introMessage": {
+							"helpvalue": "Hi there! 👋  <em>SliderX</em> is an ultra-lightweight, modern and fully customisable slideshow app for your site.<br><br>It has been crafted with great ❤️  If you find it useful please leave a <a href=\"https://www.cloudflare.com/apps/sliderx\" target=\"_blank\">review</a> and thumbs up 👍 🙏<br><br><em>If you have any issue or an idea for a nice feature, please <a href=\"mailto:contact@francesconatali.com?subject=SliderX\">get in touch</a>.</em><br><br><u>SliderX version <strong>1.0</strong></u>",
+							"order": 0,
+							"type": "help"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"format": "element",
+							"order": 3,
+							"showIf": {
+								"locationtoggle": true
+							},
+							"title": "Location",
+							"type": "object"
+						},
+						"locationtoggle": {
+							"default": false,
+							"description": "📍 Where should it appear on your site?",
+							"order": 2,
+							"title": "Show Location Options",
+							"type": "boolean"
+						},
+						"sizeoptions": {
+							"order": 13,
+							"properties": {
+								"height": {
+									"default": {
+										"unit": "px",
+										"value": 300
+									},
+									"format": "number",
+									"minimum": 0,
+									"order": 2,
+									"title": "Height",
+									"type": "object",
+									"units": [
+										"px",
+										"%"
+									]
+								},
+								"width": {
+									"default": {
+										"unit": "px",
+										"value": 500
+									},
+									"format": "number",
+									"minimum": 0,
+									"order": 1,
+									"title": "Width",
+									"type": "object",
+									"units": [
+										"px",
+										"%"
+									]
+								}
+							},
+							"showIf": {
+								"sizeoptionstoggle": true
+							},
+							"title": "Size",
+							"type": "object"
+						},
+						"sizeoptionstoggle": {
+							"default": false,
+							"description": "You can set fixed size (pixels) or relative (%).",
+							"order": 12,
+							"title": "Show Size Options",
+							"type": "boolean"
+						},
+						"slides": {
+							"items": {
+								"properties": {
+									"backgroundColor": {
+										"default": "#f7f7f7",
+										"format": "color",
+										"order": 6,
+										"showIf": {
+											"slides[].slidetype": "text"
+										},
+										"title": "Background Color",
+										"type": "string"
+									},
+									"backgroundColorImage": {
+										"default": "#f7f7f7",
+										"format": "color",
+										"order": 4,
+										"showIf": {
+											"slides[].imagefit": "contain",
+											"slides[].slidetype": "image"
+										},
+										"title": "Background Color",
+										"type": "string"
+									},
+									"image": {
+										"format": "image",
+										"order": 2,
+										"showIf": {
+											"slides[].slidetype": "image"
+										},
+										"title": "Image",
+										"type": "string"
+									},
+									"imagefit": {
+										"default": "contain",
+										"enum": [
+											"cover",
+											"contain"
+										],
+										"enumNames": {
+											"contain": "It fits entirly within its slide",
+											"cover": "It covers the entire slide (It might be clipped to fit)"
+										},
+										"format": "radios",
+										"order": 3,
+										"showIf": {
+											"slides[].slidetype": "image"
+										},
+										"title": "How this image should fit its container?",
+										"type": "string"
+									},
+									"slidetype": {
+										"default": "image",
+										"enum": [
+											"image",
+											"text",
+											"video"
+										],
+										"enumNames": {
+											"image": "Image",
+											"text": "Text",
+											"video": "Video"
+										},
+										"format": "radios",
+										"order": 1,
+										"products": {
+											"text": [
+												"pro"
+											],
+											"video": [
+												"pro"
+											]
+										},
+										"title": "Which type of slide?",
+										"type": "string"
+									},
+									"text": {
+										"default": "",
+										"description": "Support rich text, links, images and emoji.",
+										"format": "richtext",
+										"order": 5,
+										"placeholder": "Insert here your message",
+										"showIf": {
+											"slides[].slidetype": "text"
+										},
+										"title": "Message",
+										"type": "string"
+									},
+									"video": {
+										"default": "",
+										"description": "From any video platform: YouTube, Vimeo, etc. <br>Please note: <u>use the URL generated when you share the video</u>, instead of the URL of the webpage where the video can be seen. (e.g. https://player.vimeo.com/video/123, instead of https://vimeo.com/123).",
+										"format": "url",
+										"order": 7,
+										"placeholder": "URL of the shared/embed video",
+										"showIf": {
+											"slides[].slidetype": "video"
+										},
+										"title": "Video URL",
+										"type": "string"
+									}
+								},
+								"title": "Slide",
+								"type": "object"
+							},
+							"maxItems": 20,
+							"order": 5,
+							"showIf": {
+								"slidestoggle": true
+							},
+							"title": "Slides",
+							"type": "array"
+						},
+						"slidestoggle": {
+							"default": false,
+							"description": "🌄 Add images, text, video to your SliderX.",
+							"order": 4,
+							"title": "Show Slides Options",
+							"type": "boolean"
+						},
+						"theme": {
+							"order": 7,
+							"properties": {
+								"arrowsShowHide": {
+									"default": "showarrows",
+									"description": "Show or Hide arrows.",
+									"enum": [
+										"showarrows",
+										"hidearrows"
+									],
+									"enumNames": {
+										"hidearrows": "Hide",
+										"showarrows": "Show"
+									},
+									"format": "radios",
+									"order": 5,
+									"products": {
+										"hidearrows": [
+											"pro"
+										]
+									},
+									"title": "Arrows",
+									"type": "string"
+								},
+								"navigationdots": {
+									"default": "outside",
+									"description": "Outside, Inside or Hidden.",
+									"enum": [
+										"outside",
+										"inside",
+										"hide"
+									],
+									"enumNames": {
+										"hide": "Hide them",
+										"inside": "Show them inside",
+										"outside": "Show them outside"
+									},
+									"format": "radios",
+									"order": 4,
+									"products": {
+										"hide": [
+											"pro"
+										],
+										"inside": [
+											"pro"
+										]
+									},
+									"title": "Navigation Dots",
+									"type": "string"
+								},
+								"opacity": {
+									"default": 1,
+									"description": "Make SliderX more or less transparent.",
+									"format": "slider",
+									"maximum": 1,
+									"minimum": 0,
+									"order": 2,
+									"products": [
+										"pro"
+									],
+									"step": 0.1,
+									"title": "Opacity",
+									"type": "number"
+								},
+								"shadow": {
+									"default": true,
+									"description": "Enable/disable a nice shadow to add an elegant depth.",
+									"order": 3,
+									"title": "Shadow",
+									"type": "boolean"
+								},
+								"themeColor": {
+									"default": "#4c94ff",
+									"description": "It affects arrows and navigation dots.",
+									"format": "color",
+									"order": 1,
+									"title": "Theme Color",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"themetoggle": true
+							},
+							"title": "Theme",
+							"type": "object"
+						},
+						"themetoggle": {
+							"default": false,
+							"description": "🌈 Change color, opacity, shadow, navigation dots and arrows.",
+							"order": 6,
+							"title": "Show Theme Options",
+							"type": "boolean"
+						},
+						"timer": {
+							"order": 9,
+							"properties": {
+								"timerEnableDisable": {
+									"default": "disabletimer",
+									"description": "Enable or Disable a timer.",
+									"enum": [
+										"enabletimer",
+										"disabletimer"
+									],
+									"enumNames": {
+										"disabletimer": "Disable",
+										"enabletimer": "Enable"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": "Enable/Disable",
+									"type": "string"
+								},
+								"timerSeconds": {
+									"default": 2,
+									"minimum": 1,
+									"order": 1,
+									"title": "Number of seconds between each slide.",
+									"type": "number"
+								}
+							},
+							"showIf": {
+								"timertoggle": true
+							},
+							"title": "Timer",
+							"type": "object"
+						},
+						"timertoggle": {
+							"default": false,
+							"description": "⏰ Enable / Disable automatic change of slide.",
+							"order": 8,
+							"title": "Show Timer Options",
+							"type": "boolean"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Complete control, full power and all options. Create a stunning slideshow. 🚀 ⭐️",
+						"longDescription": "",
+						"visible": true,
+						"price": 100,
+						"order": 0,
+						"plan": "pro",
+						"feature": "apps.pro-only-feature",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.updateTheme(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"location"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Updated graphics.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/vAm30Xd8G87t",
+			"created": "2019-01-01T11:30:45.664794Z",
+			"proposedApp": {
+				"id": "qrvE5lV-EM8Z",
+				"title": "SliderX",
+				"shortDescription": "Ultra-lightweight, modern & fully customisable slideshow app",
+				"longDescription": "**SliderX** is an ultra-lightweight and modern <u>slideshow app</u> for your site. It supports **images**, **video** and **text**.\n\nIt has been crafted with great ❤️ and you get a *plethora* of options to customise it to your like.\n\nIf you find it useful please leave a review and thumbs up 👍 🙏\n\n*If you have any issue or an idea for a nice feature, please <a href=\"mailto:contact@francesconatali.com?subject=SliderX\">get in touch</a>.*\n\n🚀",
+				"instructions": "",
+				"alias": "sliderx",
+				"orgId": "8d0f50fdfa6c03f22e138cc6885d354d",
+				"icon": "https://images.cloudflareapps.com/uUw_W6sB6PG0/icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/1yGTjmI5Xnsm/screenshot_1.png",
+					"https://images.cloudflareapps.com/1yGTjmI5Xnsm/screenshot_2.png",
+					"https://images.cloudflareapps.com/1yGTjmI5Xnsm/screenshot_3.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/5UlV-rhT1v2k/tile%20image.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/2bCuStb-3veu/featured%20app%20image.png",
+				"author": "Francesco Natali",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "contact@francesconatali.com",
+				"products": [
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Complete control, full power and all options. Create a stunning slideshow. 🚀 ⭐️",
+						"longDescription": "",
+						"visible": true,
+						"price": 100,
+						"order": 0,
+						"plan": "pro",
+						"feature": "apps.pro-only-feature",
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "vAm30Xd8G87t"
+				},
+				"created": "2018-12-30T12:39:39.36095Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "8d0f50fdfa6c03f22e138cc6885d354d",
+				"requestedAt": "2019-01-01T11:30:46.167492154Z",
+				"canceledAt": null,
+				"reviewedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"reviewedAt": "2019-02-20T21:09:29.372800086Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "qrvE5lV-EM8Z",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./app.css"
+						},
+						{
+							"type": "script",
+							"src": "./app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"alignment": {
+							"order": 15,
+							"properties": {
+								"positionsliderbottom": {
+									"default": 0,
+									"description": "Change this value for fine-grained positioning (bottom).",
+									"order": 3,
+									"title": "Position Slider (bottom)",
+									"type": "number"
+								},
+								"positionsliderleft": {
+									"default": 0,
+									"description": "Change this value for fine-grained positioning (left).",
+									"order": 4,
+									"title": "Position Slider (left)",
+									"type": "number"
+								},
+								"positionsliderright": {
+									"default": 0,
+									"description": "Change this value for fine-grained positioning (right).",
+									"order": 5,
+									"title": "Position Slider (right)",
+									"type": "number"
+								},
+								"positionslidertop": {
+									"default": 0,
+									"description": "Change this value for fine-grained positioning (top).",
+									"order": 2,
+									"title": "Position Slider (top)",
+									"type": "number"
+								}
+							},
+							"showIf": {
+								"alignmenttoggle": true
+							},
+							"title": "Position",
+							"type": "object"
+						},
+						"alignmenttoggle": {
+							"default": false,
+							"description": "Fine-grained positioning.",
+							"order": 14,
+							"title": "Show Position Options",
+							"type": "boolean"
+						},
+						"border": {
+							"order": 11,
+							"properties": {
+								"borderColor": {
+									"default": "#ffcc66",
+									"format": "color",
+									"order": 2,
+									"products": [
+										"pro"
+									],
+									"title": "Border color",
+									"type": "string"
+								},
+								"borderHigh": {
+									"default": 5,
+									"description": "Increase or decrease the thickness of the border.",
+									"minimum": 0,
+									"order": 1,
+									"title": "High (pixels)",
+									"type": "number"
+								},
+								"borderShowHide": {
+									"default": "hideborder",
+									"description": "Enable or Disable a border.",
+									"enum": [
+										"showborder",
+										"hideborder"
+									],
+									"enumNames": {
+										"hideborder": "Hide",
+										"showborder": "Show"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": "Enable/Disable",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"bordertoggle": true
+							},
+							"title": "Border",
+							"type": "object"
+						},
+						"bordertoggle": {
+							"default": false,
+							"description": "Enable/Disable a border, change thickness and color.",
+							"order": 10,
+							"title": "Show Border Options",
+							"type": "boolean"
+						},
+						"enabledisable": {
+							"default": "enable",
+							"description": "You can easily enable and disable SliderX here.",
+							"enum": [
+								"enable",
+								"disable"
+							],
+							"enumNames": {
+								"disable": "Disable",
+								"enable": "Enable"
+							},
+							"format": "radios",
+							"order": 1,
+							"title": "Enable/Disable",
+							"type": "string"
+						},
+						"endMessage": {
+							"helpvalue": "<u>Thank you for using SliderX!</u> 🙏 <br><i>For any question or suggestion, please <a href=\"mailto:contact@francesconatali.com?subject=SliderX\">get in touch</a></i>.<br><br>Other great apps from the same author:<br><ul><li><a href='https://www.cloudflare.com/apps/toast-notification-bar' target='_blank'>Toast</a>: the best and most advanced Notification Bar</li><li><a href='https://www.cloudflare.com/apps/scroll-progress' target='_blank'>Scroll Progress</a>: a beautiful Scroll Progress indicator</li><li><a href='https://www.cloudflare.com/apps/shareit' target='_blank'>Shareit</a>: modern and lightweight Sharing Widget</li><li><a href='https://www.cloudflare.com/apps/liquid-button' target='_blank'>Liquid Button</a>: professional Call-To-Action button</li></ul>",
+							"order": 16,
+							"type": "help"
+						},
+						"introMessage": {
+							"helpvalue": "Hi there! 👋  <em>SliderX</em> is an ultra-lightweight, modern and fully customisable slideshow app for your site.<br><br>It has been crafted with great ❤️  If you find it useful please leave a <a href=\"https://www.cloudflare.com/apps/sliderx\" target=\"_blank\">review</a> and thumbs up 👍 🙏<br><br><em>If you have any issue or an idea for a nice feature, please <a href=\"mailto:contact@francesconatali.com?subject=SliderX\">get in touch</a>.</em><br><br><u>SliderX version <strong>1.0</strong></u>",
+							"order": 0,
+							"type": "help"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"format": "element",
+							"order": 3,
+							"showIf": {
+								"locationtoggle": true
+							},
+							"title": "Location",
+							"type": "object"
+						},
+						"locationtoggle": {
+							"default": false,
+							"description": "📍 Where should it appear on your site?",
+							"order": 2,
+							"title": "Show Location Options",
+							"type": "boolean"
+						},
+						"sizeoptions": {
+							"order": 13,
+							"properties": {
+								"height": {
+									"default": {
+										"unit": "px",
+										"value": 300
+									},
+									"format": "number",
+									"minimum": 0,
+									"order": 2,
+									"title": "Height",
+									"type": "object",
+									"units": [
+										"px",
+										"%"
+									]
+								},
+								"width": {
+									"default": {
+										"unit": "px",
+										"value": 500
+									},
+									"format": "number",
+									"minimum": 0,
+									"order": 1,
+									"title": "Width",
+									"type": "object",
+									"units": [
+										"px",
+										"%"
+									]
+								}
+							},
+							"showIf": {
+								"sizeoptionstoggle": true
+							},
+							"title": "Size",
+							"type": "object"
+						},
+						"sizeoptionstoggle": {
+							"default": false,
+							"description": "You can set fixed size (pixels) or relative (%).",
+							"order": 12,
+							"title": "Show Size Options",
+							"type": "boolean"
+						},
+						"slides": {
+							"items": {
+								"properties": {
+									"backgroundColor": {
+										"default": "#f7f7f7",
+										"format": "color",
+										"order": 6,
+										"showIf": {
+											"slides[].slidetype": "text"
+										},
+										"title": "Background Color",
+										"type": "string"
+									},
+									"backgroundColorImage": {
+										"default": "#f7f7f7",
+										"format": "color",
+										"order": 4,
+										"showIf": {
+											"slides[].imagefit": "contain",
+											"slides[].slidetype": "image"
+										},
+										"title": "Background Color",
+										"type": "string"
+									},
+									"image": {
+										"format": "image",
+										"order": 2,
+										"showIf": {
+											"slides[].slidetype": "image"
+										},
+										"title": "Image",
+										"type": "string"
+									},
+									"imagefit": {
+										"default": "contain",
+										"enum": [
+											"cover",
+											"contain"
+										],
+										"enumNames": {
+											"contain": "It fits entirly within its slide",
+											"cover": "It covers the entire slide (It might be clipped to fit)"
+										},
+										"format": "radios",
+										"order": 3,
+										"showIf": {
+											"slides[].slidetype": "image"
+										},
+										"title": "How this image should fit its container?",
+										"type": "string"
+									},
+									"slidetype": {
+										"default": "image",
+										"enum": [
+											"image",
+											"text",
+											"video"
+										],
+										"enumNames": {
+											"image": "Image",
+											"text": "Text",
+											"video": "Video"
+										},
+										"format": "radios",
+										"order": 1,
+										"products": {
+											"text": [
+												"pro"
+											],
+											"video": [
+												"pro"
+											]
+										},
+										"title": "Which type of slide?",
+										"type": "string"
+									},
+									"text": {
+										"default": "",
+										"description": "Support rich text, links, images and emoji.",
+										"format": "richtext",
+										"order": 5,
+										"placeholder": "Insert here your message",
+										"showIf": {
+											"slides[].slidetype": "text"
+										},
+										"title": "Message",
+										"type": "string"
+									},
+									"video": {
+										"default": "",
+										"description": "From any video platform: YouTube, Vimeo, etc. <br>Please note: <u>use the URL generated when you share the video</u>, instead of the URL of the webpage where the video can be seen. (e.g. https://player.vimeo.com/video/123, instead of https://vimeo.com/123).",
+										"format": "url",
+										"order": 7,
+										"placeholder": "URL of the shared/embed video",
+										"showIf": {
+											"slides[].slidetype": "video"
+										},
+										"title": "Video URL",
+										"type": "string"
+									}
+								},
+								"title": "Slide",
+								"type": "object"
+							},
+							"maxItems": 20,
+							"order": 5,
+							"showIf": {
+								"slidestoggle": true
+							},
+							"title": "Slides",
+							"type": "array"
+						},
+						"slidestoggle": {
+							"default": false,
+							"description": "🌄 Add images, text, video to your SliderX.",
+							"order": 4,
+							"title": "Show Slides Options",
+							"type": "boolean"
+						},
+						"theme": {
+							"order": 7,
+							"properties": {
+								"arrowsShowHide": {
+									"default": "showarrows",
+									"description": "Show or Hide arrows.",
+									"enum": [
+										"showarrows",
+										"hidearrows"
+									],
+									"enumNames": {
+										"hidearrows": "Hide",
+										"showarrows": "Show"
+									},
+									"format": "radios",
+									"order": 5,
+									"products": {
+										"hidearrows": [
+											"pro"
+										]
+									},
+									"title": "Arrows",
+									"type": "string"
+								},
+								"navigationdots": {
+									"default": "outside",
+									"description": "Outside, Inside or Hidden.",
+									"enum": [
+										"outside",
+										"inside",
+										"hide"
+									],
+									"enumNames": {
+										"hide": "Hide them",
+										"inside": "Show them inside",
+										"outside": "Show them outside"
+									},
+									"format": "radios",
+									"order": 4,
+									"products": {
+										"hide": [
+											"pro"
+										],
+										"inside": [
+											"pro"
+										]
+									},
+									"title": "Navigation Dots",
+									"type": "string"
+								},
+								"opacity": {
+									"default": 1,
+									"description": "Make SliderX more or less transparent.",
+									"format": "slider",
+									"maximum": 1,
+									"minimum": 0,
+									"order": 2,
+									"products": [
+										"pro"
+									],
+									"step": 0.1,
+									"title": "Opacity",
+									"type": "number"
+								},
+								"shadow": {
+									"default": true,
+									"description": "Enable/disable a nice shadow to add an elegant depth.",
+									"order": 3,
+									"title": "Shadow",
+									"type": "boolean"
+								},
+								"themeColor": {
+									"default": "#4c94ff",
+									"description": "It affects arrows and navigation dots.",
+									"format": "color",
+									"order": 1,
+									"title": "Theme Color",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"themetoggle": true
+							},
+							"title": "Theme",
+							"type": "object"
+						},
+						"themetoggle": {
+							"default": false,
+							"description": "🌈 Change color, opacity, shadow, navigation dots and arrows.",
+							"order": 6,
+							"title": "Show Theme Options",
+							"type": "boolean"
+						},
+						"timer": {
+							"order": 9,
+							"properties": {
+								"timerEnableDisable": {
+									"default": "disabletimer",
+									"description": "Enable or Disable a timer.",
+									"enum": [
+										"enabletimer",
+										"disabletimer"
+									],
+									"enumNames": {
+										"disabletimer": "Disable",
+										"enabletimer": "Enable"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": "Enable/Disable",
+									"type": "string"
+								},
+								"timerSeconds": {
+									"default": 2,
+									"minimum": 1,
+									"order": 1,
+									"title": "Number of seconds between each slide.",
+									"type": "number"
+								}
+							},
+							"showIf": {
+								"timertoggle": true
+							},
+							"title": "Timer",
+							"type": "object"
+						},
+						"timertoggle": {
+							"default": false,
+							"description": "⏰ Enable / Disable automatic change of slide.",
+							"order": 8,
+							"title": "Show Timer Options",
+							"type": "boolean"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Complete control, full power and all options. Create a stunning slideshow. 🚀 ⭐️",
+						"longDescription": "",
+						"visible": true,
+						"price": 100,
+						"order": 0,
+						"plan": "pro",
+						"feature": "apps.pro-only-feature",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.updateTheme(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"location"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Updated graphics and price",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/vAm30Xd8G87t",
+			"created": "2019-03-12T12:30:56.206199Z",
+			"proposedApp": {
+				"id": "qrvE5lV-EM8Z",
+				"title": "SliderX",
+				"shortDescription": "Ultra-lightweight, modern & fully customisable slideshow app",
+				"longDescription": "**SliderX** is an ultra-lightweight and modern <u>slideshow app</u> for your site. It supports **images**, **video** and **text**.\n\nIt has been crafted with great ❤️ and you get a *plethora* of options to customise it to your like.\n\nIf you find it useful please leave a review and thumbs up 👍 🙏\n\n*If you have any issue or an idea for a nice feature, please <a href=\"mailto:contact@francesconatali.com?subject=SliderX\">get in touch</a>.*\n\n🚀",
+				"instructions": "",
+				"alias": "sliderx",
+				"orgId": "8d0f50fdfa6c03f22e138cc6885d354d",
+				"icon": "https://images.cloudflareapps.com/uUw_W6sB6PG0/icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/1yGTjmI5Xnsm/screenshot_1.png",
+					"https://images.cloudflareapps.com/1yGTjmI5Xnsm/screenshot_2.png",
+					"https://images.cloudflareapps.com/1yGTjmI5Xnsm/screenshot_3.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/5UlV-rhT1v2k/tile%20image.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/2bCuStb-3veu/featured%20app%20image.png",
+				"author": "Francesco Natali",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "contact@francesconatali.com",
+				"products": [
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Complete control, full power and all options. Create a stunning slideshow. 🚀 ⭐️",
+						"longDescription": "",
+						"visible": true,
+						"price": 75,
+						"order": 0,
+						"plan": "pro",
+						"feature": "apps.pro-only-feature",
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "vAm30Xd8G87t"
+				},
+				"created": "2018-12-30T12:39:39.36095Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "8d0f50fdfa6c03f22e138cc6885d354d",
+				"requestedAt": "2019-03-12T12:30:56.700168271Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-03-20T21:01:17.733142298Z"
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "qrvE5lV-EM8Z",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./app.css"
+						},
+						{
+							"type": "script",
+							"src": "./app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"alignment": {
+							"order": 15,
+							"properties": {
+								"positionsliderbottom": {
+									"default": 0,
+									"description": "Change this value for fine-grained positioning (bottom).",
+									"order": 3,
+									"title": "Position Slider (bottom)",
+									"type": "number"
+								},
+								"positionsliderleft": {
+									"default": 0,
+									"description": "Change this value for fine-grained positioning (left).",
+									"order": 4,
+									"title": "Position Slider (left)",
+									"type": "number"
+								},
+								"positionsliderright": {
+									"default": 0,
+									"description": "Change this value for fine-grained positioning (right).",
+									"order": 5,
+									"title": "Position Slider (right)",
+									"type": "number"
+								},
+								"positionslidertop": {
+									"default": 0,
+									"description": "Change this value for fine-grained positioning (top).",
+									"order": 2,
+									"title": "Position Slider (top)",
+									"type": "number"
+								}
+							},
+							"showIf": {
+								"alignmenttoggle": true
+							},
+							"title": "Position",
+							"type": "object"
+						},
+						"alignmenttoggle": {
+							"default": false,
+							"description": "Fine-grained positioning.",
+							"order": 14,
+							"title": "Show Position Options",
+							"type": "boolean"
+						},
+						"border": {
+							"order": 11,
+							"properties": {
+								"borderColor": {
+									"default": "#ffcc66",
+									"format": "color",
+									"order": 2,
+									"products": [
+										"pro"
+									],
+									"title": "Border color",
+									"type": "string"
+								},
+								"borderHigh": {
+									"default": 5,
+									"description": "Increase or decrease the thickness of the border.",
+									"minimum": 0,
+									"order": 1,
+									"title": "High (pixels)",
+									"type": "number"
+								},
+								"borderShowHide": {
+									"default": "hideborder",
+									"description": "Enable or Disable a border.",
+									"enum": [
+										"showborder",
+										"hideborder"
+									],
+									"enumNames": {
+										"hideborder": "Hide",
+										"showborder": "Show"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": "Enable/Disable",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"bordertoggle": true
+							},
+							"title": "Border",
+							"type": "object"
+						},
+						"bordertoggle": {
+							"default": false,
+							"description": "Enable/Disable a border, change thickness and color.",
+							"order": 10,
+							"title": "Show Border Options",
+							"type": "boolean"
+						},
+						"enabledisable": {
+							"default": "enable",
+							"description": "You can easily enable and disable SliderX here.",
+							"enum": [
+								"enable",
+								"disable"
+							],
+							"enumNames": {
+								"disable": "Disable",
+								"enable": "Enable"
+							},
+							"format": "radios",
+							"order": 1,
+							"title": "Enable/Disable",
+							"type": "string"
+						},
+						"endMessage": {
+							"helpvalue": "<u>Thank you for using SliderX!</u> 🙏 <br><i>For any question or suggestion, please <a href=\"mailto:contact@francesconatali.com?subject=SliderX\">get in touch</a></i>.<br><br>Other great apps from the same author:<br><ul><li><a href='https://www.cloudflare.com/apps/toast-notification-bar' target='_blank'>Toast</a>: the best and most advanced Notification Bar</li><li><a href='https://www.cloudflare.com/apps/scroll-progress' target='_blank'>Scroll Progress</a>: a beautiful Scroll Progress indicator</li><li><a href='https://www.cloudflare.com/apps/shareit' target='_blank'>Shareit</a>: modern and lightweight Sharing Widget</li><li><a href='https://www.cloudflare.com/apps/liquid-button' target='_blank'>Liquid Button</a>: professional Call-To-Action button</li></ul>",
+							"order": 16,
+							"type": "help"
+						},
+						"introMessage": {
+							"helpvalue": "Hi there! 👋  <em>SliderX</em> is an ultra-lightweight, modern and fully customisable slideshow app for your site.<br><br>It has been crafted with great ❤️  If you find it useful please leave a <a href=\"https://www.cloudflare.com/apps/sliderx\" target=\"_blank\">review</a> and thumbs up 👍 🙏<br><br><em>If you have any issue or an idea for a nice feature, please <a href=\"mailto:contact@francesconatali.com?subject=SliderX\">get in touch</a>.</em><br><br><u>SliderX version <strong>1.0</strong></u>",
+							"order": 0,
+							"type": "help"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"format": "element",
+							"order": 3,
+							"showIf": {
+								"locationtoggle": true
+							},
+							"title": "Location",
+							"type": "object"
+						},
+						"locationtoggle": {
+							"default": false,
+							"description": "📍 Where should it appear on your site?",
+							"order": 2,
+							"title": "Show Location Options",
+							"type": "boolean"
+						},
+						"sizeoptions": {
+							"order": 13,
+							"properties": {
+								"height": {
+									"default": {
+										"unit": "px",
+										"value": 300
+									},
+									"format": "number",
+									"minimum": 0,
+									"order": 2,
+									"title": "Height",
+									"type": "object",
+									"units": [
+										"px",
+										"%"
+									]
+								},
+								"width": {
+									"default": {
+										"unit": "px",
+										"value": 500
+									},
+									"format": "number",
+									"minimum": 0,
+									"order": 1,
+									"title": "Width",
+									"type": "object",
+									"units": [
+										"px",
+										"%"
+									]
+								}
+							},
+							"showIf": {
+								"sizeoptionstoggle": true
+							},
+							"title": "Size",
+							"type": "object"
+						},
+						"sizeoptionstoggle": {
+							"default": false,
+							"description": "You can set fixed size (pixels) or relative (%).",
+							"order": 12,
+							"title": "Show Size Options",
+							"type": "boolean"
+						},
+						"slides": {
+							"items": {
+								"properties": {
+									"backgroundColor": {
+										"default": "#f7f7f7",
+										"format": "color",
+										"order": 6,
+										"showIf": {
+											"slides[].slidetype": "text"
+										},
+										"title": "Background Color",
+										"type": "string"
+									},
+									"backgroundColorImage": {
+										"default": "#f7f7f7",
+										"format": "color",
+										"order": 4,
+										"showIf": {
+											"slides[].imagefit": "contain",
+											"slides[].slidetype": "image"
+										},
+										"title": "Background Color",
+										"type": "string"
+									},
+									"image": {
+										"format": "image",
+										"order": 2,
+										"showIf": {
+											"slides[].slidetype": "image"
+										},
+										"title": "Image",
+										"type": "string"
+									},
+									"imagefit": {
+										"default": "contain",
+										"enum": [
+											"cover",
+											"contain"
+										],
+										"enumNames": {
+											"contain": "It fits entirly within its slide",
+											"cover": "It covers the entire slide (It might be clipped to fit)"
+										},
+										"format": "radios",
+										"order": 3,
+										"showIf": {
+											"slides[].slidetype": "image"
+										},
+										"title": "How this image should fit its container?",
+										"type": "string"
+									},
+									"slidetype": {
+										"default": "image",
+										"enum": [
+											"image",
+											"text",
+											"video"
+										],
+										"enumNames": {
+											"image": "Image",
+											"text": "Text",
+											"video": "Video"
+										},
+										"format": "radios",
+										"order": 1,
+										"products": {
+											"text": [
+												"pro"
+											],
+											"video": [
+												"pro"
+											]
+										},
+										"title": "Which type of slide?",
+										"type": "string"
+									},
+									"text": {
+										"default": "",
+										"description": "Support rich text, links, images and emoji.",
+										"format": "richtext",
+										"order": 5,
+										"placeholder": "Insert here your message",
+										"showIf": {
+											"slides[].slidetype": "text"
+										},
+										"title": "Message",
+										"type": "string"
+									},
+									"video": {
+										"default": "",
+										"description": "From any video platform: YouTube, Vimeo, etc. <br>Please note: <u>use the URL generated when you share the video</u>, instead of the URL of the webpage where the video can be seen. (e.g. https://player.vimeo.com/video/123, instead of https://vimeo.com/123).",
+										"format": "url",
+										"order": 7,
+										"placeholder": "URL of the shared/embed video",
+										"showIf": {
+											"slides[].slidetype": "video"
+										},
+										"title": "Video URL",
+										"type": "string"
+									}
+								},
+								"title": "Slide",
+								"type": "object"
+							},
+							"maxItems": 20,
+							"order": 5,
+							"showIf": {
+								"slidestoggle": true
+							},
+							"title": "Slides",
+							"type": "array"
+						},
+						"slidestoggle": {
+							"default": false,
+							"description": "🌄 Add images, text, video to your SliderX.",
+							"order": 4,
+							"title": "Show Slides Options",
+							"type": "boolean"
+						},
+						"theme": {
+							"order": 7,
+							"properties": {
+								"arrowsShowHide": {
+									"default": "showarrows",
+									"description": "Show or Hide arrows.",
+									"enum": [
+										"showarrows",
+										"hidearrows"
+									],
+									"enumNames": {
+										"hidearrows": "Hide",
+										"showarrows": "Show"
+									},
+									"format": "radios",
+									"order": 5,
+									"products": {
+										"hidearrows": [
+											"pro"
+										]
+									},
+									"title": "Arrows",
+									"type": "string"
+								},
+								"navigationdots": {
+									"default": "outside",
+									"description": "Outside, Inside or Hidden.",
+									"enum": [
+										"outside",
+										"inside",
+										"hide"
+									],
+									"enumNames": {
+										"hide": "Hide them",
+										"inside": "Show them inside",
+										"outside": "Show them outside"
+									},
+									"format": "radios",
+									"order": 4,
+									"products": {
+										"hide": [
+											"pro"
+										],
+										"inside": [
+											"pro"
+										]
+									},
+									"title": "Navigation Dots",
+									"type": "string"
+								},
+								"opacity": {
+									"default": 1,
+									"description": "Make SliderX more or less transparent.",
+									"format": "slider",
+									"maximum": 1,
+									"minimum": 0,
+									"order": 2,
+									"products": [
+										"pro"
+									],
+									"step": 0.1,
+									"title": "Opacity",
+									"type": "number"
+								},
+								"shadow": {
+									"default": true,
+									"description": "Enable/disable a nice shadow to add an elegant depth.",
+									"order": 3,
+									"title": "Shadow",
+									"type": "boolean"
+								},
+								"themeColor": {
+									"default": "#4c94ff",
+									"description": "It affects arrows and navigation dots.",
+									"format": "color",
+									"order": 1,
+									"title": "Theme Color",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"themetoggle": true
+							},
+							"title": "Theme",
+							"type": "object"
+						},
+						"themetoggle": {
+							"default": false,
+							"description": "🌈 Change color, opacity, shadow, navigation dots and arrows.",
+							"order": 6,
+							"title": "Show Theme Options",
+							"type": "boolean"
+						},
+						"timer": {
+							"order": 9,
+							"properties": {
+								"timerEnableDisable": {
+									"default": "disabletimer",
+									"description": "Enable or Disable a timer.",
+									"enum": [
+										"enabletimer",
+										"disabletimer"
+									],
+									"enumNames": {
+										"disabletimer": "Disable",
+										"enabletimer": "Enable"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": "Enable/Disable",
+									"type": "string"
+								},
+								"timerSeconds": {
+									"default": 2,
+									"minimum": 1,
+									"order": 1,
+									"title": "Number of seconds between each slide.",
+									"type": "number"
+								}
+							},
+							"showIf": {
+								"timertoggle": true
+							},
+							"title": "Timer",
+							"type": "object"
+						},
+						"timertoggle": {
+							"default": false,
+							"description": "⏰ Enable / Disable automatic change of slide.",
+							"order": 8,
+							"title": "Show Timer Options",
+							"type": "boolean"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Complete control, full power and all options. Create a stunning slideshow. 🚀 ⭐️",
+						"longDescription": "",
+						"visible": true,
+						"price": 100,
+						"order": 0,
+						"plan": "pro",
+						"feature": "apps.pro-only-feature",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.updateTheme(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"location"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Updated graphics and price",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/vAm30Xd8G87t",
+			"created": "2019-03-21T11:29:05.500552Z",
+			"proposedApp": {
+				"id": "qrvE5lV-EM8Z",
+				"title": "SliderX",
+				"shortDescription": "Ultra-lightweight, modern & fully customisable slideshow app",
+				"longDescription": "**SliderX** is an ultra-lightweight and modern <u>slideshow app</u> for your site. It supports **images**, **video** and **text**.\n\nIt has been crafted with great ❤️ and you get a *plethora* of options to customise it to your like.\n\nIf you find it useful please leave a review and thumbs up 👍 🙏\n\n*If you have any issue or an idea for a nice feature, please <a href=\"mailto:contact@francesconatali.com?subject=SliderX\">get in touch</a>.*\n\n🚀",
+				"instructions": "",
+				"alias": "sliderx",
+				"orgId": "8d0f50fdfa6c03f22e138cc6885d354d",
+				"icon": "https://images.cloudflareapps.com/uUw_W6sB6PG0/icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/1yGTjmI5Xnsm/screenshot_1.png",
+					"https://images.cloudflareapps.com/1yGTjmI5Xnsm/screenshot_2.png",
+					"https://images.cloudflareapps.com/1yGTjmI5Xnsm/screenshot_3.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/5UlV-rhT1v2k/tile%20image.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/2bCuStb-3veu/featured%20app%20image.png",
+				"author": "Francesco Natali",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "contact@francesconatali.com",
+				"products": [
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Complete control, full power and all options. Create a stunning slideshow. 🚀 ⭐️",
+						"longDescription": "",
+						"visible": true,
+						"price": 100,
+						"order": 0,
+						"plan": "pro",
+						"feature": "apps.pro-only-feature",
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "vAm30Xd8G87t"
+				},
+				"created": "2018-12-30T12:39:39.36095Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "8d0f50fdfa6c03f22e138cc6885d354d",
+				"requestedAt": "2019-03-21T11:29:05.972656692Z",
+				"canceledByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"canceledAt": "2019-04-24T16:56:48.384184857Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.4",
+			"appId": "qrvE5lV-EM8Z",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./app.css"
+						},
+						{
+							"type": "script",
+							"src": "./app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"alignment": {
+							"order": 15,
+							"properties": {
+								"positionsliderbottom": {
+									"default": 0,
+									"description": "Change this value for fine-grained positioning (bottom).",
+									"order": 3,
+									"title": "Position Slider (bottom)",
+									"type": "number"
+								},
+								"positionsliderleft": {
+									"default": 0,
+									"description": "Change this value for fine-grained positioning (left).",
+									"order": 4,
+									"title": "Position Slider (left)",
+									"type": "number"
+								},
+								"positionsliderright": {
+									"default": 0,
+									"description": "Change this value for fine-grained positioning (right).",
+									"order": 5,
+									"title": "Position Slider (right)",
+									"type": "number"
+								},
+								"positionslidertop": {
+									"default": 0,
+									"description": "Change this value for fine-grained positioning (top).",
+									"order": 2,
+									"title": "Position Slider (top)",
+									"type": "number"
+								}
+							},
+							"showIf": {
+								"alignmenttoggle": true
+							},
+							"title": "Position",
+							"type": "object"
+						},
+						"alignmenttoggle": {
+							"default": false,
+							"description": "Fine-grained positioning.",
+							"order": 14,
+							"title": "Show Position Options",
+							"type": "boolean"
+						},
+						"border": {
+							"order": 11,
+							"properties": {
+								"borderColor": {
+									"default": "#ffcc66",
+									"format": "color",
+									"order": 2,
+									"products": [
+										"pro"
+									],
+									"title": "Border color",
+									"type": "string"
+								},
+								"borderHigh": {
+									"default": 5,
+									"description": "Increase or decrease the thickness of the border.",
+									"minimum": 0,
+									"order": 1,
+									"title": "High (pixels)",
+									"type": "number"
+								},
+								"borderShowHide": {
+									"default": "hideborder",
+									"description": "Enable or Disable a border.",
+									"enum": [
+										"showborder",
+										"hideborder"
+									],
+									"enumNames": {
+										"hideborder": "Hide",
+										"showborder": "Show"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": "Enable/Disable",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"bordertoggle": true
+							},
+							"title": "Border",
+							"type": "object"
+						},
+						"bordertoggle": {
+							"default": false,
+							"description": "Enable/Disable a border, change thickness and color.",
+							"order": 10,
+							"title": "Show Border Options",
+							"type": "boolean"
+						},
+						"enabledisable": {
+							"default": "enable",
+							"description": "You can easily enable and disable SliderX here.",
+							"enum": [
+								"enable",
+								"disable"
+							],
+							"enumNames": {
+								"disable": "Disable",
+								"enable": "Enable"
+							},
+							"format": "radios",
+							"order": 1,
+							"title": "Enable/Disable",
+							"type": "string"
+						},
+						"endMessage": {
+							"helpvalue": "<u>Thank you for using SliderX!</u> 🙏 <br><i>For any question or suggestion, please <a href=\"mailto:contact@francesconatali.com?subject=SliderX\">get in touch</a></i>.<br><br>Other great apps from the same author:<br><ul><li><a href='https://www.cloudflare.com/apps/toast-notification-bar' target='_blank'>Toast</a>: the best and most advanced Notification Bar</li><li><a href='https://www.cloudflare.com/apps/scroll-progress' target='_blank'>Scroll Progress</a>: a beautiful Scroll Progress indicator</li><li><a href='https://www.cloudflare.com/apps/shareit' target='_blank'>Shareit</a>: modern and lightweight Sharing Widget</li><li><a href='https://www.cloudflare.com/apps/liquid-button' target='_blank'>Liquid Button</a>: professional Call-To-Action button</li></ul>",
+							"order": 16,
+							"type": "help"
+						},
+						"introMessage": {
+							"helpvalue": "Hi there! 👋  <em>SliderX</em> is an ultra-lightweight, modern and fully customisable slideshow app for your site.<br><br>It has been crafted with great ❤️  If you find it useful please leave a <a href=\"https://www.cloudflare.com/apps/sliderx\" target=\"_blank\">review</a> and thumbs up 👍 🙏<br><br><em>If you have any issue or an idea for a nice feature, please <a href=\"mailto:contact@francesconatali.com?subject=SliderX\">get in touch</a>.</em><br><br><u>SliderX version <strong>1.0</strong></u>",
+							"order": 0,
+							"type": "help"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"format": "element",
+							"order": 3,
+							"showIf": {
+								"locationtoggle": true
+							},
+							"title": "Location",
+							"type": "object"
+						},
+						"locationtoggle": {
+							"default": false,
+							"description": "📍 Where should it appear on your site?",
+							"order": 2,
+							"title": "Show Location Options",
+							"type": "boolean"
+						},
+						"sizeoptions": {
+							"order": 13,
+							"properties": {
+								"height": {
+									"default": {
+										"unit": "px",
+										"value": 300
+									},
+									"format": "number",
+									"minimum": 0,
+									"order": 2,
+									"title": "Height",
+									"type": "object",
+									"units": [
+										"px",
+										"%"
+									]
+								},
+								"width": {
+									"default": {
+										"unit": "px",
+										"value": 500
+									},
+									"format": "number",
+									"minimum": 0,
+									"order": 1,
+									"title": "Width",
+									"type": "object",
+									"units": [
+										"px",
+										"%"
+									]
+								}
+							},
+							"showIf": {
+								"sizeoptionstoggle": true
+							},
+							"title": "Size",
+							"type": "object"
+						},
+						"sizeoptionstoggle": {
+							"default": false,
+							"description": "You can set fixed size (pixels) or relative (%).",
+							"order": 12,
+							"title": "Show Size Options",
+							"type": "boolean"
+						},
+						"slides": {
+							"items": {
+								"properties": {
+									"backgroundColor": {
+										"default": "#f7f7f7",
+										"format": "color",
+										"order": 6,
+										"showIf": {
+											"slides[].slidetype": "text"
+										},
+										"title": "Background Color",
+										"type": "string"
+									},
+									"backgroundColorImage": {
+										"default": "#f7f7f7",
+										"format": "color",
+										"order": 4,
+										"showIf": {
+											"slides[].imagefit": "contain",
+											"slides[].slidetype": "image"
+										},
+										"title": "Background Color",
+										"type": "string"
+									},
+									"image": {
+										"format": "image",
+										"order": 2,
+										"showIf": {
+											"slides[].slidetype": "image"
+										},
+										"title": "Image",
+										"type": "string"
+									},
+									"imagefit": {
+										"default": "contain",
+										"enum": [
+											"cover",
+											"contain"
+										],
+										"enumNames": {
+											"contain": "It fits entirly within its slide",
+											"cover": "It covers the entire slide (It might be clipped to fit)"
+										},
+										"format": "radios",
+										"order": 3,
+										"showIf": {
+											"slides[].slidetype": "image"
+										},
+										"title": "How this image should fit its container?",
+										"type": "string"
+									},
+									"slidetype": {
+										"default": "image",
+										"enum": [
+											"image",
+											"text",
+											"video"
+										],
+										"enumNames": {
+											"image": "Image",
+											"text": "Text",
+											"video": "Video"
+										},
+										"format": "radios",
+										"order": 1,
+										"products": {
+											"text": [
+												"pro"
+											],
+											"video": [
+												"pro"
+											]
+										},
+										"title": "Which type of slide?",
+										"type": "string"
+									},
+									"text": {
+										"default": "",
+										"description": "Support rich text, links, images and emoji.",
+										"format": "richtext",
+										"order": 5,
+										"placeholder": "Insert here your message",
+										"showIf": {
+											"slides[].slidetype": "text"
+										},
+										"title": "Message",
+										"type": "string"
+									},
+									"video": {
+										"default": "",
+										"description": "From any video platform: YouTube, Vimeo, etc. <br>Please note: <u>use the URL generated when you share the video</u>, instead of the URL of the webpage where the video can be seen. (e.g. https://player.vimeo.com/video/123, instead of https://vimeo.com/123).",
+										"format": "url",
+										"order": 7,
+										"placeholder": "URL of the shared/embed video",
+										"showIf": {
+											"slides[].slidetype": "video"
+										},
+										"title": "Video URL",
+										"type": "string"
+									}
+								},
+								"title": "Slide",
+								"type": "object"
+							},
+							"maxItems": 20,
+							"order": 5,
+							"showIf": {
+								"slidestoggle": true
+							},
+							"title": "Slides",
+							"type": "array"
+						},
+						"slidestoggle": {
+							"default": false,
+							"description": "🌄 Add images, text, video to your SliderX.",
+							"order": 4,
+							"title": "Show Slides Options",
+							"type": "boolean"
+						},
+						"theme": {
+							"order": 7,
+							"properties": {
+								"arrowsShowHide": {
+									"default": "showarrows",
+									"description": "Show or Hide arrows.",
+									"enum": [
+										"showarrows",
+										"hidearrows"
+									],
+									"enumNames": {
+										"hidearrows": "Hide",
+										"showarrows": "Show"
+									},
+									"format": "radios",
+									"order": 5,
+									"products": {
+										"hidearrows": [
+											"pro"
+										]
+									},
+									"title": "Arrows",
+									"type": "string"
+								},
+								"navigationdots": {
+									"default": "outside",
+									"description": "Outside, Inside or Hidden.",
+									"enum": [
+										"outside",
+										"inside",
+										"hide"
+									],
+									"enumNames": {
+										"hide": "Hide them",
+										"inside": "Show them inside",
+										"outside": "Show them outside"
+									},
+									"format": "radios",
+									"order": 4,
+									"products": {
+										"hide": [
+											"pro"
+										],
+										"inside": [
+											"pro"
+										]
+									},
+									"title": "Navigation Dots",
+									"type": "string"
+								},
+								"opacity": {
+									"default": 1,
+									"description": "Make SliderX more or less transparent.",
+									"format": "slider",
+									"maximum": 1,
+									"minimum": 0,
+									"order": 2,
+									"products": [
+										"pro"
+									],
+									"step": 0.1,
+									"title": "Opacity",
+									"type": "number"
+								},
+								"shadow": {
+									"default": true,
+									"description": "Enable/disable a nice shadow to add an elegant depth.",
+									"order": 3,
+									"title": "Shadow",
+									"type": "boolean"
+								},
+								"themeColor": {
+									"default": "#4c94ff",
+									"description": "It affects arrows and navigation dots.",
+									"format": "color",
+									"order": 1,
+									"title": "Theme Color",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"themetoggle": true
+							},
+							"title": "Theme",
+							"type": "object"
+						},
+						"themetoggle": {
+							"default": false,
+							"description": "🌈 Change color, opacity, shadow, navigation dots and arrows.",
+							"order": 6,
+							"title": "Show Theme Options",
+							"type": "boolean"
+						},
+						"timer": {
+							"order": 9,
+							"properties": {
+								"timerEnableDisable": {
+									"default": "disabletimer",
+									"description": "Enable or Disable a timer.",
+									"enum": [
+										"enabletimer",
+										"disabletimer"
+									],
+									"enumNames": {
+										"disabletimer": "Disable",
+										"enabletimer": "Enable"
+									},
+									"format": "radios",
+									"order": 0,
+									"title": "Enable/Disable",
+									"type": "string"
+								},
+								"timerSeconds": {
+									"default": 2,
+									"minimum": 1,
+									"order": 1,
+									"title": "Number of seconds between each slide.",
+									"type": "number"
+								}
+							},
+							"showIf": {
+								"timertoggle": true
+							},
+							"title": "Timer",
+							"type": "object"
+						},
+						"timertoggle": {
+							"default": false,
+							"description": "⏰ Enable / Disable automatic change of slide.",
+							"order": 8,
+							"title": "Show Timer Options",
+							"type": "boolean"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Complete control, full power and all options. Create a stunning slideshow. 🚀 ⭐️",
+						"longDescription": "",
+						"visible": true,
+						"price": 100,
+						"order": 0,
+						"plan": "pro",
+						"feature": "apps.pro-only-feature",
+						"created": null
+					}
+				],
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.updateTheme(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"location"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0,
+				"upvotes": 0,
+				"downvotes": 2
+			},
+			"releaseNotes": "Updated billing information",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/vAm30Xd8G87t",
+			"created": "2019-04-24T16:56:47.729761Z",
+			"proposedApp": {
+				"id": "qrvE5lV-EM8Z",
+				"title": "SliderX",
+				"shortDescription": "Ultra-lightweight, modern & fully customisable slideshow app",
+				"longDescription": "**SliderX** is an ultra-lightweight and modern <u>slideshow app</u> for your site. It supports **images**, **video** and **text**.\n\nIt has been crafted with great ❤️ and you get a *plethora* of options to customise it to your like.\n\nIf you find it useful please leave a review and thumbs up 👍 🙏\n\n*If you have any issue or an idea for a nice feature, please <a href=\"mailto:contact@francesconatali.com?subject=SliderX\">get in touch</a>.*\n\n🚀",
+				"instructions": "",
+				"alias": "sliderx",
+				"orgId": "8d0f50fdfa6c03f22e138cc6885d354d",
+				"icon": "https://images.cloudflareapps.com/uUw_W6sB6PG0/icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/1yGTjmI5Xnsm/screenshot_1.png",
+					"https://images.cloudflareapps.com/1yGTjmI5Xnsm/screenshot_2.png",
+					"https://images.cloudflareapps.com/1yGTjmI5Xnsm/screenshot_3.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/5UlV-rhT1v2k/tile%20image.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/2bCuStb-3veu/featured%20app%20image.png",
+				"author": "Francesco Natali",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "contact@francesconatali.com",
+				"products": [
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "Complete control, full power and all options. Create a stunning slideshow. 🚀 ⭐️",
+						"longDescription": "",
+						"visible": true,
+						"price": 100,
+						"order": 0,
+						"plan": "APPS_SLIDERX_PRO",
+						"feature": "apps.sliderx_pro.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "vAm30Xd8G87t"
+				},
+				"created": "2018-12-30T12:39:39.36095Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2019-04-24T16:56:48.415035003Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-04-24T16:57:17.52547608Z"
+			}
+		}
+	]
+}

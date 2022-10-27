@@ -1,0 +1,569 @@
+{
+	"id": "tiZh56dr4lyy",
+	"title": "Upmon",
+	"shortDescription": "Know when your website goes down",
+	"longDescription": "Uptime monitoring service.\nYou you will be the first to know when your site goes down.\nUpmon sends an email alert when your website is down.",
+	"instructions": "",
+	"alias": "upmon",
+	"orgId": "1db6a3d1208550b8a6ef4a21413f2816",
+	"icon": "https://images.cloudflareapps.com/ZndV6RiNdqcb/upmon_288.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/6hksmvA7rOT4/Component%205.png",
+		"https://images.cloudflareapps.com/iEYJ-gSSiP2E/screen2.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/WU0xBvRcGkH_/logo_420_268.png",
+	"featuredAppImage": "https://images.cloudflareapps.com/6mqdQts4AGWc/Component%206.png",
+	"author": "Anlob LLC",
+	"tagline": "",
+	"website": "https://www.upmon.com",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://www.upmon.com/tos",
+	"privacyPolicyURL": "https://www.upmon.com/privacy",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.2",
+	"infoVersion": "1.0.2",
+	"points": 0,
+	"supportEmail": "mail@upmon.com",
+	"products": [],
+	"categoryIds": [
+		"performance"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "1db6a3d1208550b8a6ef4a21413f2816",
+			"created": "2019-06-15T22:48:42.532157877Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "vCtFAhEcPkaX"
+	},
+	"created": "2019-05-31T13:14:22.665458Z",
+	"org": {
+		"id": "1db6a3d1208550b8a6ef4a21413f2816",
+		"title": "",
+		"username": "1db6a3d1208550b8a6ef4a21413f2816",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "performance",
+			"title": "Performance",
+			"description": "Improve the speed or perceived responsiveness of your website.",
+			"icon": "//eager-app-images.imgix.net/emdMA2bjSlm0xCvE4vlC_performance.png",
+			"points": 40,
+			"visible": true,
+			"metadata": {
+				"icon": {
+					"filename": "performance.png",
+					"isWriteable": false,
+					"key": "emdMA2bjSlm0xCvE4vlC_performance.png",
+					"mimetype": "image/png",
+					"size": 3642,
+					"url": "https://www.filepicker.io/api/file/mib586WWTei9D1h355Se"
+				}
+			},
+			"created": "2016-01-21T18:06:28.968723Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "tiZh56dr4lyy",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"upmon"
+							],
+							"title": "Upmon Account",
+							"type": "object"
+						},
+						"urls": {
+							"items": {
+								"format": "url",
+								"title": "URL",
+								"type": "string"
+							},
+							"maxItems": 3,
+							"order": 1,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "URLs for monitoring",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.upmon.com/hook/",
+						"events": [
+							"oauth-login",
+							"before-new-install",
+							"before-update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with Upmon."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://www.upmon.com/hook/",
+						"events": [
+							"new-install",
+							"update-install",
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with Upmon."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"action": "reset-options",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/hvt_ZhzOhinh",
+			"metadata": {
+				"code": {
+					"sourceTag": "hvt_ZhzOhinh",
+					"uploadedOn": "2019-06-15T17:35:41.976725685Z"
+				}
+			},
+			"created": "2019-05-31T13:14:23.226532Z",
+			"proposedApp": {
+				"id": "tiZh56dr4lyy",
+				"title": "Upmon",
+				"shortDescription": "Know when your website goes down",
+				"longDescription": "Uptime monitoring service.\nYou you will be the first to know when your site goes down.\nUpmon sends an email alert when your website is down.",
+				"instructions": "",
+				"alias": "upmon",
+				"orgId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"icon": "https://images.cloudflareapps.com/ZndV6RiNdqcb/upmon_288.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/6hksmvA7rOT4/Component%205.png",
+					"https://images.cloudflareapps.com/iEYJ-gSSiP2E/screen2.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/WU0xBvRcGkH_/logo_420_268.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/6mqdQts4AGWc/Component%206.png",
+				"author": "Anlob LLC",
+				"tagline": "",
+				"website": "https://www.upmon.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.upmon.com/tos",
+				"privacyPolicyURL": "https://www.upmon.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "mail@upmon.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "vCtFAhEcPkaX"
+				},
+				"created": "2019-05-31T13:14:22.665458Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"requestedAt": "2019-06-15T22:48:42.510178985Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-06-18T15:42:21.629398971Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "tiZh56dr4lyy",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"upmon"
+							],
+							"title": "Upmon Account",
+							"type": "object"
+						},
+						"info": {
+							"helpvalue": "You can add up to 3 URLs for monitoring. When we spot an error, we’ll alert you by email specified above. Please login or register first.",
+							"order": 1,
+							"type": "help"
+						},
+						"urls": {
+							"items": {
+								"format": "url",
+								"title": "URL",
+								"type": "string"
+							},
+							"maxItems": 3,
+							"order": 2,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "URLs for monitoring",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.upmon.com/hook/",
+						"events": [
+							"oauth-login",
+							"before-new-install",
+							"before-update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with Upmon."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://www.upmon.com/hook/",
+						"events": [
+							"new-install",
+							"update-install",
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with Upmon."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"action": "reset-options",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/KdsJsZa_uqgD",
+			"metadata": {
+				"code": {
+					"sourceTag": "KdsJsZa_uqgD",
+					"uploadedOn": "2019-06-18T21:09:36.496306065Z"
+				}
+			},
+			"created": "2019-06-18T21:09:35.969563Z",
+			"proposedApp": {
+				"id": "tiZh56dr4lyy",
+				"title": "Upmon",
+				"shortDescription": "Know when your website goes down",
+				"longDescription": "Uptime monitoring service.\nYou you will be the first to know when your site goes down.\nUpmon sends an email alert when your website is down.",
+				"instructions": "",
+				"alias": "upmon",
+				"orgId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"icon": "https://images.cloudflareapps.com/ZndV6RiNdqcb/upmon_288.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/6hksmvA7rOT4/Component%205.png",
+					"https://images.cloudflareapps.com/iEYJ-gSSiP2E/screen2.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/WU0xBvRcGkH_/logo_420_268.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/6mqdQts4AGWc/Component%206.png",
+				"author": "Anlob LLC",
+				"tagline": "",
+				"website": "https://www.upmon.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.upmon.com/tos",
+				"privacyPolicyURL": "https://www.upmon.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "mail@upmon.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "vCtFAhEcPkaX"
+				},
+				"created": "2019-05-31T13:14:22.665458Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"requestedAt": "2019-06-18T21:10:39.421388577Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-06-20T15:43:25.657565387Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "tiZh56dr4lyy",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"upmon"
+							],
+							"title": "Upmon Account",
+							"type": "object"
+						},
+						"info": {
+							"helpvalue": "You can add up to 3 URLs for monitoring. When we spot an error, we’ll alert you by email specified above. Please login or register first.",
+							"order": 1,
+							"type": "help"
+						},
+						"urls": {
+							"items": {
+								"format": "url",
+								"title": "URL",
+								"type": "string"
+							},
+							"maxItems": 3,
+							"order": 2,
+							"showIf": {
+								"account": {
+									"op": "!=",
+									"value": ""
+								}
+							},
+							"title": "URLs for monitoring",
+							"type": "array"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://www.upmon.com/hook/",
+						"events": [
+							"oauth-login",
+							"before-new-install",
+							"before-update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with Upmon."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://www.upmon.com/hook/",
+						"events": [
+							"new-install",
+							"update-install",
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error communicating with Upmon."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"action": "reset-options",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.85,
+				"upvotes": 51,
+				"downvotes": 9
+			},
+			"releaseNotes": "Added to Performance category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/KdsJsZa_uqgD",
+			"created": "2019-07-01T15:46:39.55942Z",
+			"proposedApp": {
+				"id": "tiZh56dr4lyy",
+				"title": "Upmon",
+				"shortDescription": "Know when your website goes down",
+				"longDescription": "Uptime monitoring service.\nYou you will be the first to know when your site goes down.\nUpmon sends an email alert when your website is down.",
+				"instructions": "",
+				"alias": "upmon",
+				"orgId": "1db6a3d1208550b8a6ef4a21413f2816",
+				"icon": "https://images.cloudflareapps.com/ZndV6RiNdqcb/upmon_288.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/6hksmvA7rOT4/Component%205.png",
+					"https://images.cloudflareapps.com/iEYJ-gSSiP2E/screen2.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/WU0xBvRcGkH_/logo_420_268.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/6mqdQts4AGWc/Component%206.png",
+				"author": "Anlob LLC",
+				"tagline": "",
+				"website": "https://www.upmon.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.upmon.com/tos",
+				"privacyPolicyURL": "https://www.upmon.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "mail@upmon.com",
+				"products": [],
+				"categoryIds": [
+					"performance"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "vCtFAhEcPkaX"
+				},
+				"created": "2019-05-31T13:14:22.665458Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2019-07-01T15:46:39.906254493Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-07-01T15:47:03.344771423Z"
+			}
+		}
+	]
+}

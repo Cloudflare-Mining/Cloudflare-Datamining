@@ -1,0 +1,4146 @@
+{
+	"id": "I-rumKjdJowi",
+	"title": "Clickflow",
+	"shortDescription": "A/B Testing for SEO",
+	"longDescription": "<p>ClickFlow is SEO and business intelligence software that helps you grow your SEO traffic through SEO A/B testing.</p>\n\n<div><strong>ClickFlow will allow you to:</strong></div>\n\n- Run single page title and meta description tests to increase your traffic\n- Track each and every tests that you’ve ran automatically to save you time\n- Run group tests on entire categories (for larger websites)\n- Run reports to validate your work\n- See the top 50 keywords per page and traffic, ranking, CTR and impression numbers",
+	"instructions": "",
+	"alias": "clickflow",
+	"orgId": "cbb60f18b67d4c57d4191fb559f509af",
+	"icon": "https://images.cloudflareapps.com/PMplOsKppQGv/favicon-96x96.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/02YC0dWQUwqo/pasted%20image%200.png",
+		"https://images.cloudflareapps.com/5csUDy8Gpwd0/pasted%20image%200-2.png",
+		"https://images.cloudflareapps.com/mXzVshF-zlyv/pasted%20image%200-1.png"
+	],
+	"tileImage": "",
+	"featuredAppImage": "",
+	"author": "Clickflow Solutions",
+	"tagline": "",
+	"website": "https://www.clickflow.com",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://www.clickflow.com/terms-and-conditions/",
+	"privacyPolicyURL": "https://www.clickflow.com/privacy/",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "2.2.1",
+	"infoVersion": "2.2.1",
+	"points": 100,
+	"supportEmail": "help@clickflow.com",
+	"products": [],
+	"categoryIds": [
+		"insights"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "cbb60f18b67d4c57d4191fb559f509af",
+			"created": "2018-10-26T16:37:45.686856659Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "Ij-6vkAzYMQy"
+	},
+	"created": "2018-10-19T20:20:37.88679Z",
+	"org": {
+		"id": "cbb60f18b67d4c57d4191fb559f509af",
+		"title": "",
+		"username": "cbb60f18b67d4c57d4191fb559f509af",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "insights",
+			"title": "Insights",
+			"description": "Apps that provide insight into your visitors.",
+			"icon": "",
+			"points": 40,
+			"visible": true,
+			"created": "2018-11-13T20:10:05.739284Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "0.10.0",
+			"appId": "I-rumKjdJowi",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./src/app/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./src/app/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"clickflow-2"
+							],
+							"title": "Clickflow Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://api.clickflow.com/api/v1/authorizations/cloudflare/install",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Clickflow."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "Initial release of the Clickflow Cloudflare app.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/21Jv8FP4xxUH",
+			"metadata": {
+				"code": {
+					"sourceTag": "21Jv8FP4xxUH",
+					"uploadedOn": "2018-10-26T16:35:42.460179098Z"
+				}
+			},
+			"created": "2018-10-19T20:20:38.534898Z",
+			"proposedApp": {
+				"id": "I-rumKjdJowi",
+				"title": "Clickflow",
+				"shortDescription": "A/B Testing for SEO",
+				"longDescription": "ClickFlow is SEO software that helps you grow your organic traffic through SEO A/B testing.",
+				"instructions": "",
+				"alias": "clickflow",
+				"orgId": "cbb60f18b67d4c57d4191fb559f509af",
+				"icon": "https://images.cloudflareapps.com/PMplOsKppQGv/favicon-96x96.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step1.png",
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step2.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Clickflow Solutions",
+				"tagline": "",
+				"website": "https://www.clickflow.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.clickflow.com/terms-and-conditions/",
+				"privacyPolicyURL": "https://www.clickflow.com/privacy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "help@clickflow.com",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"analytics"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Ij-6vkAzYMQy"
+				},
+				"created": "2018-10-19T20:20:37.88679Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "cbb60f18b67d4c57d4191fb559f509af",
+				"requestedAt": "2018-10-26T16:37:45.678977662Z",
+				"canceledByUserId": "cbb60f18b67d4c57d4191fb559f509af",
+				"canceledAt": "2018-11-05T23:39:33.186191343Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "0.11.0",
+			"appId": "I-rumKjdJowi",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./src/app/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./src/app/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"clickflow-2"
+							],
+							"title": "Clickflow Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://api.clickflow.com/api/v1/authorizations/cloudflare/install",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Clickflow."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "Initial release of the Clickflow Cloudflare app.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/21Jv8FP4xxUH",
+			"created": "2018-11-05T23:39:26.728089Z",
+			"proposedApp": {
+				"id": "I-rumKjdJowi",
+				"title": "Clickflow",
+				"shortDescription": "A/B Testing for SEO",
+				"longDescription": "ClickFlow is SEO software that helps you grow your organic traffic through SEO A/B testing.",
+				"instructions": "",
+				"alias": "clickflow",
+				"orgId": "cbb60f18b67d4c57d4191fb559f509af",
+				"icon": "https://images.cloudflareapps.com/PMplOsKppQGv/favicon-96x96.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step1.png",
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step2.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Clickflow Solutions",
+				"tagline": "",
+				"website": "https://www.clickflow.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.clickflow.com/terms-and-conditions/",
+				"privacyPolicyURL": "https://www.clickflow.com/privacy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "help@clickflow.com",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"analytics"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Ij-6vkAzYMQy"
+				},
+				"created": "2018-10-19T20:20:37.88679Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "cbb60f18b67d4c57d4191fb559f509af",
+				"requestedAt": "2018-11-05T23:39:33.193783325Z",
+				"canceledByUserId": "cbb60f18b67d4c57d4191fb559f509af",
+				"canceledAt": "2018-11-06T00:02:15.070596594Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "0.11.1",
+			"appId": "I-rumKjdJowi",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./src/app/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./src/app/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"clickflow-2"
+							],
+							"title": "Clickflow Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://api.clickflow.com/api/v1/authorizations/cloudflare/install",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Clickflow."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "Initial release of the Clickflow Cloudflare app with worker in dist folder.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/Se5b5thZmgCM",
+			"metadata": {
+				"code": {
+					"sourceTag": "Se5b5thZmgCM",
+					"uploadedOn": "2018-11-06T00:02:00.313338389Z"
+				}
+			},
+			"created": "2018-11-06T00:02:00.040532Z",
+			"proposedApp": {
+				"id": "I-rumKjdJowi",
+				"title": "Clickflow",
+				"shortDescription": "A/B Testing for SEO",
+				"longDescription": "ClickFlow is SEO software that helps you grow your organic traffic through SEO A/B testing.",
+				"instructions": "",
+				"alias": "clickflow",
+				"orgId": "cbb60f18b67d4c57d4191fb559f509af",
+				"icon": "https://images.cloudflareapps.com/PMplOsKppQGv/favicon-96x96.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step1.png",
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step2.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Clickflow Solutions",
+				"tagline": "",
+				"website": "https://www.clickflow.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.clickflow.com/terms-and-conditions/",
+				"privacyPolicyURL": "https://www.clickflow.com/privacy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "help@clickflow.com",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"analytics"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Ij-6vkAzYMQy"
+				},
+				"created": "2018-10-19T20:20:37.88679Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "cbb60f18b67d4c57d4191fb559f509af",
+				"requestedAt": "2018-11-06T00:02:15.079141572Z",
+				"canceledByUserId": "cbb60f18b67d4c57d4191fb559f509af",
+				"canceledAt": "2018-11-06T01:11:50.222231677Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "0.12.0",
+			"appId": "I-rumKjdJowi",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./src/app/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./src/app/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"clickflow-2"
+							],
+							"title": "Clickflow Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://api.clickflow.com/api/v1/authorizations/cloudflare/install",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Clickflow."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./dist/main.js"
+					}
+				]
+			},
+			"releaseNotes": "Initial release of the Clickflow Cloudflare app with worker support.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/G1TwORBgomW9",
+			"metadata": {
+				"code": {
+					"sourceTag": "G1TwORBgomW9",
+					"uploadedOn": "2018-11-06T01:11:49.415176654Z"
+				}
+			},
+			"created": "2018-11-06T01:11:47.641479Z",
+			"proposedApp": {
+				"id": "I-rumKjdJowi",
+				"title": "Clickflow",
+				"shortDescription": "A/B Testing for SEO",
+				"longDescription": "ClickFlow is SEO software that helps you grow your organic traffic through SEO A/B testing.",
+				"instructions": "",
+				"alias": "clickflow",
+				"orgId": "cbb60f18b67d4c57d4191fb559f509af",
+				"icon": "https://images.cloudflareapps.com/PMplOsKppQGv/favicon-96x96.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step1.png",
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step2.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Clickflow Solutions",
+				"tagline": "",
+				"website": "https://www.clickflow.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.clickflow.com/terms-and-conditions/",
+				"privacyPolicyURL": "https://www.clickflow.com/privacy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "help@clickflow.com",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"analytics"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Ij-6vkAzYMQy"
+				},
+				"created": "2018-10-19T20:20:37.88679Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "cbb60f18b67d4c57d4191fb559f509af",
+				"requestedAt": "2018-11-06T01:11:50.229187418Z",
+				"canceledByUserId": "cbb60f18b67d4c57d4191fb559f509af",
+				"canceledAt": "2018-11-06T20:42:36.369043577Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "0.12.1",
+			"appId": "I-rumKjdJowi",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./src/app/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./src/app/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"clickflow-2"
+							],
+							"title": "Clickflow Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://api.clickflow.com/api/v1/authorizations/cloudflare/install",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Clickflow."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./dist/main.js"
+					}
+				]
+			},
+			"releaseNotes": "Initial release of the Clickflow Cloudflare app with worker support.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/G1TwORBgomW9",
+			"created": "2018-11-06T20:42:27.618489Z",
+			"proposedApp": {
+				"id": "I-rumKjdJowi",
+				"title": "Clickflow",
+				"shortDescription": "A/B Testing for SEO",
+				"longDescription": "ClickFlow is SEO software that helps you grow your organic traffic through SEO A/B testing.",
+				"instructions": "",
+				"alias": "clickflow",
+				"orgId": "cbb60f18b67d4c57d4191fb559f509af",
+				"icon": "https://images.cloudflareapps.com/PMplOsKppQGv/favicon-96x96.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step1.png",
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step2.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Clickflow Solutions",
+				"tagline": "",
+				"website": "https://www.clickflow.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.clickflow.com/terms-and-conditions/",
+				"privacyPolicyURL": "https://www.clickflow.com/privacy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "help@clickflow.com",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"analytics"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Ij-6vkAzYMQy"
+				},
+				"created": "2018-10-19T20:20:37.88679Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "cbb60f18b67d4c57d4191fb559f509af",
+				"requestedAt": "2018-11-06T20:42:36.37696266Z",
+				"canceledByUserId": "cbb60f18b67d4c57d4191fb559f509af",
+				"canceledAt": "2018-11-06T23:32:20.765633517Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "0.12.2",
+			"appId": "I-rumKjdJowi",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./src/app/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./src/app/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"clickflow-2"
+							],
+							"title": "Clickflow Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://api.clickflow.com/api/v1/authorizations/cloudflare/install",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Clickflow."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./dist/main.js"
+					}
+				]
+			},
+			"releaseNotes": "Initial release of the Clickflow Cloudflare app with worker support.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/nObtbrfOcoiL",
+			"metadata": {
+				"code": {
+					"sourceTag": "nObtbrfOcoiL",
+					"uploadedOn": "2018-11-06T23:32:13.680010007Z"
+				}
+			},
+			"created": "2018-11-06T23:29:17.873713Z",
+			"proposedApp": {
+				"id": "I-rumKjdJowi",
+				"title": "Clickflow",
+				"shortDescription": "A/B Testing for SEO",
+				"longDescription": "ClickFlow is SEO software that helps you grow your organic traffic through SEO A/B testing.",
+				"instructions": "",
+				"alias": "clickflow",
+				"orgId": "cbb60f18b67d4c57d4191fb559f509af",
+				"icon": "https://images.cloudflareapps.com/PMplOsKppQGv/favicon-96x96.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step1.png",
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step2.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Clickflow Solutions",
+				"tagline": "",
+				"website": "https://www.clickflow.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.clickflow.com/terms-and-conditions/",
+				"privacyPolicyURL": "https://www.clickflow.com/privacy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "help@clickflow.com",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"analytics"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Ij-6vkAzYMQy"
+				},
+				"created": "2018-10-19T20:20:37.88679Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "cbb60f18b67d4c57d4191fb559f509af",
+				"requestedAt": "2018-11-06T23:32:20.775362408Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2018-11-07T17:01:43.721060745Z"
+			}
+		},
+		{
+			"tag": "0.12.3",
+			"appId": "I-rumKjdJowi",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"clickflow-2"
+							],
+							"title": "Clickflow Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://api.clickflow.com/api/v1/authorizations/cloudflare/install",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Clickflow."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"releaseNotes": "Initial release of the Clickflow Cloudflare app with worker support.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/OErLJIQ_tNjN",
+			"metadata": {
+				"code": {
+					"sourceTag": "OErLJIQ_tNjN",
+					"uploadedOn": "2018-11-13T17:41:03.047480286Z"
+				}
+			},
+			"created": "2018-11-13T17:41:02.208676Z",
+			"proposedApp": {
+				"id": "I-rumKjdJowi",
+				"title": "Clickflow",
+				"shortDescription": "A/B Testing for SEO",
+				"longDescription": "ClickFlow is SEO software that helps you grow your organic traffic through SEO A/B testing.",
+				"instructions": "",
+				"alias": "clickflow",
+				"orgId": "cbb60f18b67d4c57d4191fb559f509af",
+				"icon": "https://images.cloudflareapps.com/PMplOsKppQGv/favicon-96x96.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step1.png",
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step2.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Clickflow Solutions",
+				"tagline": "",
+				"website": "https://www.clickflow.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.clickflow.com/terms-and-conditions/",
+				"privacyPolicyURL": "https://www.clickflow.com/privacy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "help@clickflow.com",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"analytics"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Ij-6vkAzYMQy"
+				},
+				"created": "2018-10-19T20:20:37.88679Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "cbb60f18b67d4c57d4191fb559f509af",
+				"requestedAt": "2018-11-13T17:50:27.896420482Z",
+				"canceledByUserId": "cbb60f18b67d4c57d4191fb559f509af",
+				"canceledAt": "2018-11-13T17:55:47.581545775Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "0.12.4",
+			"appId": "I-rumKjdJowi",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"clickflow-2"
+							],
+							"title": "Clickflow Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://api.clickflow.com/api/v1/authorizations/cloudflare/install",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Clickflow."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"releaseNotes": "Initial release of the Clickflow Cloudflare app with worker support.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/rP0pqCkL1cjw",
+			"metadata": {
+				"code": {
+					"sourceTag": "rP0pqCkL1cjw",
+					"uploadedOn": "2018-11-13T17:55:40.783693499Z"
+				}
+			},
+			"created": "2018-11-13T17:55:35.131238Z",
+			"proposedApp": {
+				"id": "I-rumKjdJowi",
+				"title": "Clickflow",
+				"shortDescription": "A/B Testing for SEO",
+				"longDescription": "ClickFlow is SEO software that helps you grow your organic traffic through SEO A/B testing.",
+				"instructions": "",
+				"alias": "clickflow",
+				"orgId": "cbb60f18b67d4c57d4191fb559f509af",
+				"icon": "https://images.cloudflareapps.com/PMplOsKppQGv/favicon-96x96.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step1.png",
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step2.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Clickflow Solutions",
+				"tagline": "",
+				"website": "https://www.clickflow.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.clickflow.com/terms-and-conditions/",
+				"privacyPolicyURL": "https://www.clickflow.com/privacy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "help@clickflow.com",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"analytics"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Ij-6vkAzYMQy"
+				},
+				"created": "2018-10-19T20:20:37.88679Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "cbb60f18b67d4c57d4191fb559f509af",
+				"requestedAt": "2018-11-13T17:55:47.588379453Z",
+				"canceledByUserId": "cbb60f18b67d4c57d4191fb559f509af",
+				"canceledAt": "2018-11-20T16:38:19.027096574Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "0.12.5",
+			"appId": "I-rumKjdJowi",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"clickflow-2"
+							],
+							"title": "Clickflow Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://api.clickflow.com/api/v1/authorizations/cloudflare/install",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Clickflow."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"releaseNotes": "Initial release of the Clickflow Cloudflare app with worker support.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/rFDDSSL0XMd2",
+			"metadata": {
+				"code": {
+					"sourceTag": "rFDDSSL0XMd2",
+					"uploadedOn": "2018-11-20T16:38:04.669365652Z"
+				}
+			},
+			"created": "2018-11-20T16:38:04.081647Z",
+			"proposedApp": {
+				"id": "I-rumKjdJowi",
+				"title": "Clickflow",
+				"shortDescription": "A/B Testing for SEO",
+				"longDescription": "ClickFlow is SEO software that helps you grow your organic traffic through SEO A/B testing.",
+				"instructions": "",
+				"alias": "clickflow",
+				"orgId": "cbb60f18b67d4c57d4191fb559f509af",
+				"icon": "https://images.cloudflareapps.com/PMplOsKppQGv/favicon-96x96.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step1.png",
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step2.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Clickflow Solutions",
+				"tagline": "",
+				"website": "https://www.clickflow.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.clickflow.com/terms-and-conditions/",
+				"privacyPolicyURL": "https://www.clickflow.com/privacy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "help@clickflow.com",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"analytics"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Ij-6vkAzYMQy"
+				},
+				"created": "2018-10-19T20:20:37.88679Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "cbb60f18b67d4c57d4191fb559f509af",
+				"requestedAt": "2018-11-20T16:38:19.041008342Z",
+				"canceledByUserId": "cbb60f18b67d4c57d4191fb559f509af",
+				"canceledAt": "2018-11-20T20:13:34.937238819Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "0.12.6",
+			"appId": "I-rumKjdJowi",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"clickflow-2"
+							],
+							"title": "Clickflow Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.updateOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.updateProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://api.clickflow.com/api/v1/authorizations/cloudflare/install",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://api.clickflow.com/api/v1/authorizations/cloudflare/update_site",
+						"events": [
+							"option-change:site"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"releaseNotes": "Initial release of the Clickflow Cloudflare app with worker support.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/aUM6y0Ps0NVo",
+			"metadata": {
+				"code": {
+					"sourceTag": "aUM6y0Ps0NVo",
+					"uploadedOn": "2018-11-20T20:13:22.430328286Z"
+				}
+			},
+			"created": "2018-11-20T20:13:22.214055Z",
+			"proposedApp": {
+				"id": "I-rumKjdJowi",
+				"title": "Clickflow",
+				"shortDescription": "A/B Testing for SEO",
+				"longDescription": "ClickFlow is SEO software that helps you grow your organic traffic through SEO A/B testing.",
+				"instructions": "",
+				"alias": "clickflow",
+				"orgId": "cbb60f18b67d4c57d4191fb559f509af",
+				"icon": "https://images.cloudflareapps.com/PMplOsKppQGv/favicon-96x96.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step1.png",
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step2.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Clickflow Solutions",
+				"tagline": "",
+				"website": "https://www.clickflow.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.clickflow.com/terms-and-conditions/",
+				"privacyPolicyURL": "https://www.clickflow.com/privacy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "help@clickflow.com",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"analytics"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Ij-6vkAzYMQy"
+				},
+				"created": "2018-10-19T20:20:37.88679Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "cbb60f18b67d4c57d4191fb559f509af",
+				"requestedAt": "2018-11-20T20:13:34.947964328Z",
+				"canceledByUserId": "cbb60f18b67d4c57d4191fb559f509af",
+				"canceledAt": "2018-11-26T21:41:57.304592824Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "0.12.7",
+			"appId": "I-rumKjdJowi",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"clickflow-2"
+							],
+							"title": "Clickflow Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.updateOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.updateProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://api.clickflow.com/api/v1/authorizations/cloudflare/install",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://api.clickflow.com/api/v1/authorizations/cloudflare/update_site",
+						"events": [
+							"option-change:site"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"releaseNotes": "Initial release of the Clickflow Cloudflare app with worker support.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/xH21Pc9hQIcD",
+			"metadata": {
+				"code": {
+					"sourceTag": "xH21Pc9hQIcD",
+					"uploadedOn": "2018-11-26T21:41:51.286296847Z"
+				}
+			},
+			"created": "2018-11-26T21:41:50.781815Z",
+			"proposedApp": {
+				"id": "I-rumKjdJowi",
+				"title": "Clickflow",
+				"shortDescription": "A/B Testing for SEO",
+				"longDescription": "ClickFlow is SEO software that helps you grow your organic traffic through SEO A/B testing.",
+				"instructions": "",
+				"alias": "clickflow",
+				"orgId": "cbb60f18b67d4c57d4191fb559f509af",
+				"icon": "https://images.cloudflareapps.com/PMplOsKppQGv/favicon-96x96.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step1.png",
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step2.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Clickflow Solutions",
+				"tagline": "",
+				"website": "https://www.clickflow.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.clickflow.com/terms-and-conditions/",
+				"privacyPolicyURL": "https://www.clickflow.com/privacy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "help@clickflow.com",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"analytics"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Ij-6vkAzYMQy"
+				},
+				"created": "2018-10-19T20:20:37.88679Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "cbb60f18b67d4c57d4191fb559f509af",
+				"requestedAt": "2018-11-26T21:41:57.318915112Z",
+				"canceledByUserId": "cbb60f18b67d4c57d4191fb559f509af",
+				"canceledAt": "2018-11-26T22:38:16.824778025Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "0.13.0",
+			"appId": "I-rumKjdJowi",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"clickflow-2"
+							],
+							"title": "Clickflow Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.updateOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.updateProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://api.clickflow.com/api/v1/authorizations/cloudflare/install",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://api.clickflow.com/api/v1/authorizations/cloudflare/update_site",
+						"events": [
+							"option-change:site"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"releaseNotes": "Initial release of the Clickflow Cloudflare app with worker support.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/-sQ2gLskGS4W",
+			"metadata": {
+				"code": {
+					"sourceTag": "-sQ2gLskGS4W",
+					"uploadedOn": "2018-11-26T22:38:10.532719975Z"
+				}
+			},
+			"created": "2018-11-26T22:38:10.328306Z",
+			"proposedApp": {
+				"id": "I-rumKjdJowi",
+				"title": "Clickflow",
+				"shortDescription": "A/B Testing for SEO",
+				"longDescription": "ClickFlow is SEO software that helps you grow your organic traffic through SEO A/B testing.",
+				"instructions": "",
+				"alias": "clickflow",
+				"orgId": "cbb60f18b67d4c57d4191fb559f509af",
+				"icon": "https://images.cloudflareapps.com/PMplOsKppQGv/favicon-96x96.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step1.png",
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step2.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Clickflow Solutions",
+				"tagline": "",
+				"website": "https://www.clickflow.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.clickflow.com/terms-and-conditions/",
+				"privacyPolicyURL": "https://www.clickflow.com/privacy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "help@clickflow.com",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"analytics"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Ij-6vkAzYMQy"
+				},
+				"created": "2018-10-19T20:20:37.88679Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "cbb60f18b67d4c57d4191fb559f509af",
+				"requestedAt": "2018-11-26T22:38:16.861838082Z",
+				"canceledByUserId": "cbb60f18b67d4c57d4191fb559f509af",
+				"canceledAt": "2018-11-28T00:06:08.565732645Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "0.13.1",
+			"appId": "I-rumKjdJowi",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"clickflow-2"
+							],
+							"title": "Clickflow Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.updateOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.updateProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://api.clickflow.com/api/v1/authorizations/cloudflare/install",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://api.clickflow.com/api/v1/authorizations/cloudflare/update_site",
+						"events": [
+							"option-change:site"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"releaseNotes": "Initial release of the Clickflow Cloudflare app with worker support.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/txE9Y8j1OCf2",
+			"metadata": {
+				"code": {
+					"sourceTag": "txE9Y8j1OCf2",
+					"uploadedOn": "2018-11-28T00:06:02.574328089Z"
+				}
+			},
+			"created": "2018-11-28T00:06:01.696554Z",
+			"proposedApp": {
+				"id": "I-rumKjdJowi",
+				"title": "Clickflow",
+				"shortDescription": "A/B Testing for SEO",
+				"longDescription": "ClickFlow is SEO software that helps you grow your organic traffic through SEO A/B testing.",
+				"instructions": "",
+				"alias": "clickflow",
+				"orgId": "cbb60f18b67d4c57d4191fb559f509af",
+				"icon": "https://images.cloudflareapps.com/PMplOsKppQGv/favicon-96x96.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step1.png",
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step2.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Clickflow Solutions",
+				"tagline": "",
+				"website": "https://www.clickflow.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.clickflow.com/terms-and-conditions/",
+				"privacyPolicyURL": "https://www.clickflow.com/privacy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "help@clickflow.com",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"analytics"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Ij-6vkAzYMQy"
+				},
+				"created": "2018-10-19T20:20:37.88679Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "cbb60f18b67d4c57d4191fb559f509af",
+				"requestedAt": "2018-11-28T00:06:08.578936508Z",
+				"canceledByUserId": "cbb60f18b67d4c57d4191fb559f509af",
+				"canceledAt": "2018-11-28T00:39:00.234087235Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "0.13.2",
+			"appId": "I-rumKjdJowi",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"clickflow-2"
+							],
+							"title": "Clickflow Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.updateOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.updateProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://api.clickflow.com/api/v1/authorizations/cloudflare/install",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://api.clickflow.com/api/v1/authorizations/cloudflare/update_site",
+						"events": [
+							"option-change:site"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"releaseNotes": "Initial release of the Clickflow Cloudflare app with worker support.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/_kLXEdvp1E2f",
+			"metadata": {
+				"code": {
+					"sourceTag": "_kLXEdvp1E2f",
+					"uploadedOn": "2018-11-28T00:38:56.681782587Z"
+				}
+			},
+			"created": "2018-11-28T00:10:10.199977Z",
+			"proposedApp": {
+				"id": "I-rumKjdJowi",
+				"title": "Clickflow",
+				"shortDescription": "A/B Testing for SEO",
+				"longDescription": "ClickFlow is SEO software that helps you grow your organic traffic through SEO A/B testing.",
+				"instructions": "",
+				"alias": "clickflow",
+				"orgId": "cbb60f18b67d4c57d4191fb559f509af",
+				"icon": "https://images.cloudflareapps.com/PMplOsKppQGv/favicon-96x96.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step1.png",
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step2.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Clickflow Solutions",
+				"tagline": "",
+				"website": "https://www.clickflow.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.clickflow.com/terms-and-conditions/",
+				"privacyPolicyURL": "https://www.clickflow.com/privacy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "help@clickflow.com",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"analytics"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Ij-6vkAzYMQy"
+				},
+				"created": "2018-10-19T20:20:37.88679Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "cbb60f18b67d4c57d4191fb559f509af",
+				"requestedAt": "2018-11-28T00:39:00.240893287Z",
+				"canceledByUserId": "cbb60f18b67d4c57d4191fb559f509af",
+				"canceledAt": "2018-11-28T00:41:16.765387359Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "0.13.3",
+			"appId": "I-rumKjdJowi",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"clickflow-2"
+							],
+							"title": "Clickflow Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.updateOptions(INSTALL_OPTIONS)",
+							"reload": null
+						},
+						{
+							"options": [
+								"_product"
+							],
+							"execute": "INSTALL_SCOPE.updateProduct(INSTALL_PRODUCT)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://api.clickflow.com/api/v1/authorizations/cloudflare/install",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://api.clickflow.com/api/v1/authorizations/cloudflare/update_site",
+						"events": [
+							"option-change:site"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"releaseNotes": "Fixed INSTALL_OPTIONS within worker.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/VAyC3Y-CXHmK",
+			"metadata": {
+				"code": {
+					"sourceTag": "VAyC3Y-CXHmK",
+					"uploadedOn": "2018-11-28T00:40:52.373335961Z"
+				}
+			},
+			"created": "2018-11-28T00:40:52.100259Z",
+			"proposedApp": {
+				"id": "I-rumKjdJowi",
+				"title": "Clickflow",
+				"shortDescription": "A/B Testing for SEO",
+				"longDescription": "ClickFlow is SEO software that helps you grow your organic traffic through SEO A/B testing.",
+				"instructions": "",
+				"alias": "clickflow",
+				"orgId": "cbb60f18b67d4c57d4191fb559f509af",
+				"icon": "https://images.cloudflareapps.com/PMplOsKppQGv/favicon-96x96.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step1.png",
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step2.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Clickflow Solutions",
+				"tagline": "",
+				"website": "https://www.clickflow.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.clickflow.com/terms-and-conditions/",
+				"privacyPolicyURL": "https://www.clickflow.com/privacy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "help@clickflow.com",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"analytics"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Ij-6vkAzYMQy"
+				},
+				"created": "2018-10-19T20:20:37.88679Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "cbb60f18b67d4c57d4191fb559f509af",
+				"requestedAt": "2018-11-28T00:41:16.772341032Z",
+				"canceledByUserId": "cbb60f18b67d4c57d4191fb559f509af",
+				"canceledAt": "2018-11-28T00:53:18.504356566Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "I-rumKjdJowi",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"clickflow-2"
+							],
+							"title": "Clickflow Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://api.clickflow.com/api/v1/authorizations/cloudflare/install",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://api.clickflow.com/api/v1/authorizations/cloudflare/update_site",
+						"events": [
+							"option-change:site"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"releaseNotes": "Fixed INSTALL_OPTIONS within worker.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/f3EktyB9O7zS",
+			"metadata": {
+				"code": {
+					"sourceTag": "f3EktyB9O7zS",
+					"uploadedOn": "2018-11-28T00:53:08.013357764Z"
+				}
+			},
+			"created": "2018-11-28T00:53:07.806986Z",
+			"proposedApp": {
+				"id": "I-rumKjdJowi",
+				"title": "Clickflow",
+				"shortDescription": "A/B Testing for SEO",
+				"longDescription": "ClickFlow is SEO software that helps you grow your organic traffic through SEO A/B testing.",
+				"instructions": "",
+				"alias": "clickflow",
+				"orgId": "cbb60f18b67d4c57d4191fb559f509af",
+				"icon": "https://images.cloudflareapps.com/PMplOsKppQGv/favicon-96x96.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step1.png",
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step2.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Clickflow Solutions",
+				"tagline": "",
+				"website": "https://www.clickflow.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.clickflow.com/terms-and-conditions/",
+				"privacyPolicyURL": "https://www.clickflow.com/privacy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "help@clickflow.com",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"analytics"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Ij-6vkAzYMQy"
+				},
+				"created": "2018-10-19T20:20:37.88679Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "cbb60f18b67d4c57d4191fb559f509af",
+				"requestedAt": "2018-11-28T00:53:18.519516603Z",
+				"canceledByUserId": "cbb60f18b67d4c57d4191fb559f509af",
+				"canceledAt": "2018-11-28T00:55:36.604485282Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "I-rumKjdJowi",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"clickflow-2"
+							],
+							"title": "Clickflow Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {},
+				"hooks": [
+					{
+						"endpoint": "https://api.clickflow.com/api/v1/authorizations/cloudflare/install",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://api.clickflow.com/api/v1/authorizations/cloudflare/update_site",
+						"events": [
+							"option-change:site"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"releaseNotes": "Fixed INSTALL_OPTIONS within worker.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/wQpaXMQ34RyT",
+			"metadata": {
+				"code": {
+					"sourceTag": "wQpaXMQ34RyT",
+					"uploadedOn": "2018-11-28T00:55:31.941662336Z"
+				}
+			},
+			"created": "2018-11-28T00:55:31.79917Z",
+			"proposedApp": {
+				"id": "I-rumKjdJowi",
+				"title": "Clickflow",
+				"shortDescription": "A/B Testing for SEO",
+				"longDescription": "ClickFlow is SEO software that helps you grow your organic traffic through SEO A/B testing.",
+				"instructions": "",
+				"alias": "clickflow",
+				"orgId": "cbb60f18b67d4c57d4191fb559f509af",
+				"icon": "https://images.cloudflareapps.com/PMplOsKppQGv/favicon-96x96.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step1.png",
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step2.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Clickflow Solutions",
+				"tagline": "",
+				"website": "https://www.clickflow.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.clickflow.com/terms-and-conditions/",
+				"privacyPolicyURL": "https://www.clickflow.com/privacy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "help@clickflow.com",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"analytics"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Ij-6vkAzYMQy"
+				},
+				"created": "2018-10-19T20:20:37.88679Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "cbb60f18b67d4c57d4191fb559f509af",
+				"requestedAt": "2018-11-28T00:55:36.611292437Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2018-11-29T19:05:28.030992449Z"
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "I-rumKjdJowi",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"clickflow-2"
+							],
+							"title": "Clickflow Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {},
+				"hooks": [
+					{
+						"endpoint": "https://api.clickflow.com/api/v1/authorizations/cloudflare/install",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://api.clickflow.com/api/v1/authorizations/cloudflare/update_site",
+						"events": [
+							"option-change:site"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"releaseNotes": "Added 2 second timeout for API calls.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/tRRNAizjTHNQ",
+			"metadata": {
+				"code": {
+					"sourceTag": "tRRNAizjTHNQ",
+					"uploadedOn": "2018-12-05T21:22:12.978016445Z"
+				}
+			},
+			"created": "2018-12-05T21:22:12.53635Z",
+			"proposedApp": {
+				"id": "I-rumKjdJowi",
+				"title": "Clickflow",
+				"shortDescription": "A/B Testing for SEO",
+				"longDescription": "ClickFlow is SEO software that helps you grow your organic traffic through SEO A/B testing.",
+				"instructions": "",
+				"alias": "clickflow",
+				"orgId": "cbb60f18b67d4c57d4191fb559f509af",
+				"icon": "https://images.cloudflareapps.com/PMplOsKppQGv/favicon-96x96.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step1.png",
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step2.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Clickflow Solutions",
+				"tagline": "",
+				"website": "https://www.clickflow.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.clickflow.com/terms-and-conditions/",
+				"privacyPolicyURL": "https://www.clickflow.com/privacy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "help@clickflow.com",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"analytics"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Ij-6vkAzYMQy"
+				},
+				"created": "2018-10-19T20:20:37.88679Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "cbb60f18b67d4c57d4191fb559f509af",
+				"requestedAt": "2018-12-05T21:22:55.290173077Z",
+				"canceledByUserId": "cbb60f18b67d4c57d4191fb559f509af",
+				"canceledAt": "2018-12-07T21:11:42.932047718Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.4",
+			"appId": "I-rumKjdJowi",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"clickflow-2"
+							],
+							"title": "Clickflow Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {},
+				"hooks": [
+					{
+						"endpoint": "https://api.clickflow.com/api/v1/authorizations/cloudflare/install",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://api.clickflow.com/api/v1/authorizations/cloudflare/update_site",
+						"events": [
+							"option-change:site"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"releaseNotes": "Unminified worker.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/x7-Rc-Mn3oQo",
+			"metadata": {
+				"code": {
+					"sourceTag": "x7-Rc-Mn3oQo",
+					"uploadedOn": "2018-12-07T21:09:26.919573602Z"
+				}
+			},
+			"created": "2018-12-07T21:09:26.669858Z",
+			"proposedApp": {
+				"id": "I-rumKjdJowi",
+				"title": "Clickflow",
+				"shortDescription": "A/B Testing for SEO",
+				"longDescription": "ClickFlow is SEO software that helps you grow your organic traffic through SEO A/B testing.",
+				"instructions": "",
+				"alias": "clickflow",
+				"orgId": "cbb60f18b67d4c57d4191fb559f509af",
+				"icon": "https://images.cloudflareapps.com/PMplOsKppQGv/favicon-96x96.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step1.png",
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step2.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Clickflow Solutions",
+				"tagline": "",
+				"website": "https://www.clickflow.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.clickflow.com/terms-and-conditions/",
+				"privacyPolicyURL": "https://www.clickflow.com/privacy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "help@clickflow.com",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"analytics"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Ij-6vkAzYMQy"
+				},
+				"created": "2018-10-19T20:20:37.88679Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "cbb60f18b67d4c57d4191fb559f509af",
+				"requestedAt": "2018-12-07T21:11:42.948036813Z",
+				"canceledByUserId": "cbb60f18b67d4c57d4191fb559f509af",
+				"canceledAt": "2018-12-12T17:59:50.659428879Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.5",
+			"appId": "I-rumKjdJowi",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"clickflow-2"
+							],
+							"title": "Clickflow Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {},
+				"hooks": [
+					{
+						"endpoint": "https://api.clickflow.com/api/v1/authorizations/cloudflare/install",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://api.clickflow.com/api/v1/authorizations/cloudflare/update_site",
+						"events": [
+							"option-change:site"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"releaseNotes": "Fixed an issue with missing h1 tags.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/wXauNRbBrUyB",
+			"metadata": {
+				"code": {
+					"sourceTag": "wXauNRbBrUyB",
+					"uploadedOn": "2018-12-12T17:55:43.309203917Z"
+				}
+			},
+			"created": "2018-12-12T17:55:43.055372Z",
+			"proposedApp": {
+				"id": "I-rumKjdJowi",
+				"title": "Clickflow",
+				"shortDescription": "A/B Testing for SEO",
+				"longDescription": "ClickFlow is SEO software that helps you grow your organic traffic through SEO A/B testing.",
+				"instructions": "",
+				"alias": "clickflow",
+				"orgId": "cbb60f18b67d4c57d4191fb559f509af",
+				"icon": "https://images.cloudflareapps.com/PMplOsKppQGv/favicon-96x96.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step1.png",
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step2.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Clickflow Solutions",
+				"tagline": "",
+				"website": "https://www.clickflow.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.clickflow.com/terms-and-conditions/",
+				"privacyPolicyURL": "https://www.clickflow.com/privacy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "help@clickflow.com",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"analytics"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Ij-6vkAzYMQy"
+				},
+				"created": "2018-10-19T20:20:37.88679Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "cbb60f18b67d4c57d4191fb559f509af",
+				"requestedAt": "2018-12-12T17:59:50.66907649Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2018-12-12T18:02:37.186902985Z"
+			}
+		},
+		{
+			"tag": "1.0.6",
+			"appId": "I-rumKjdJowi",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"clickflow-2"
+							],
+							"title": "Clickflow Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {},
+				"hooks": [
+					{
+						"endpoint": "https://api.clickflow.com/api/v1/authorizations/cloudflare/install",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://api.clickflow.com/api/v1/authorizations/cloudflare/update_site",
+						"events": [
+							"option-change:site"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"releaseNotes": "Fixed an issue with missing h1 tags.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/TVon8lJN3RVM",
+			"metadata": {
+				"code": {
+					"sourceTag": "TVon8lJN3RVM",
+					"uploadedOn": "2018-12-12T18:04:24.769379218Z"
+				}
+			},
+			"created": "2018-12-12T18:04:24.639315Z",
+			"proposedApp": {
+				"id": "I-rumKjdJowi",
+				"title": "Clickflow",
+				"shortDescription": "A/B Testing for SEO",
+				"longDescription": "ClickFlow is SEO software that helps you grow your organic traffic through SEO A/B testing.",
+				"instructions": "",
+				"alias": "clickflow",
+				"orgId": "cbb60f18b67d4c57d4191fb559f509af",
+				"icon": "https://images.cloudflareapps.com/PMplOsKppQGv/favicon-96x96.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step1.png",
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step2.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Clickflow Solutions",
+				"tagline": "",
+				"website": "https://www.clickflow.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.clickflow.com/terms-and-conditions/",
+				"privacyPolicyURL": "https://www.clickflow.com/privacy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "help@clickflow.com",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"analytics"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Ij-6vkAzYMQy"
+				},
+				"created": "2018-10-19T20:20:37.88679Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "cbb60f18b67d4c57d4191fb559f509af",
+				"requestedAt": "2018-12-12T18:04:54.578699792Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2018-12-12T18:08:21.111568431Z"
+			}
+		},
+		{
+			"tag": "1.0.7",
+			"appId": "I-rumKjdJowi",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"clickflow-2"
+							],
+							"title": "Clickflow Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {},
+				"hooks": [
+					{
+						"endpoint": "https://api.clickflow.com/api/v1/authorizations/cloudflare/install",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://api.clickflow.com/api/v1/authorizations/cloudflare/update_site",
+						"events": [
+							"option-change:site"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"releaseNotes": "Added ability to insert meta description when it's missing.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/D6OSO1Y4Y4CO",
+			"metadata": {
+				"code": {
+					"sourceTag": "D6OSO1Y4Y4CO",
+					"uploadedOn": "2018-12-17T20:17:42.859742549Z"
+				}
+			},
+			"created": "2018-12-14T17:00:03.799057Z",
+			"proposedApp": {
+				"id": "I-rumKjdJowi",
+				"title": "Clickflow",
+				"shortDescription": "A/B Testing for SEO",
+				"longDescription": "ClickFlow is SEO and business intelligence software that helps you grow your SEO traffic through SEO A/B testing.",
+				"instructions": "",
+				"alias": "clickflow",
+				"orgId": "cbb60f18b67d4c57d4191fb559f509af",
+				"icon": "https://images.cloudflareapps.com/PMplOsKppQGv/favicon-96x96.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step1.png",
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step2.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Clickflow Solutions",
+				"tagline": "",
+				"website": "https://www.clickflow.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.clickflow.com/terms-and-conditions/",
+				"privacyPolicyURL": "https://www.clickflow.com/privacy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "help@clickflow.com",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"analytics"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Ij-6vkAzYMQy"
+				},
+				"created": "2018-10-19T20:20:37.88679Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "cbb60f18b67d4c57d4191fb559f509af",
+				"requestedAt": "2018-12-17T20:18:05.091214904Z",
+				"canceledByUserId": "cbb60f18b67d4c57d4191fb559f509af",
+				"canceledAt": "2018-12-17T23:29:15.694291678Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.8",
+			"appId": "I-rumKjdJowi",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"clickflow-2"
+							],
+							"title": "Clickflow Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {},
+				"hooks": [
+					{
+						"endpoint": "https://api.clickflow.com/api/v1/authorizations/cloudflare/install",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://api.clickflow.com/api/v1/authorizations/cloudflare/update_site",
+						"events": [
+							"option-change:site"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"releaseNotes": "Fixed an issue with inline javascript.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/UjCdz51NYLBo",
+			"metadata": {
+				"code": {
+					"sourceTag": "UjCdz51NYLBo",
+					"uploadedOn": "2018-12-17T23:28:44.803114337Z"
+				}
+			},
+			"created": "2018-12-17T23:28:44.611383Z",
+			"proposedApp": {
+				"id": "I-rumKjdJowi",
+				"title": "Clickflow",
+				"shortDescription": "A/B Testing for SEO",
+				"longDescription": "ClickFlow is SEO and business intelligence software that helps you grow your SEO traffic through SEO A/B testing.",
+				"instructions": "",
+				"alias": "clickflow",
+				"orgId": "cbb60f18b67d4c57d4191fb559f509af",
+				"icon": "https://images.cloudflareapps.com/PMplOsKppQGv/favicon-96x96.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step1.png",
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step2.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Clickflow Solutions",
+				"tagline": "",
+				"website": "https://www.clickflow.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.clickflow.com/terms-and-conditions/",
+				"privacyPolicyURL": "https://www.clickflow.com/privacy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "help@clickflow.com",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"analytics"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Ij-6vkAzYMQy"
+				},
+				"created": "2018-10-19T20:20:37.88679Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "cbb60f18b67d4c57d4191fb559f509af",
+				"requestedAt": "2018-12-17T23:29:15.715538371Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2018-12-18T16:21:23.107475185Z"
+			}
+		},
+		{
+			"tag": "1.1.0",
+			"appId": "I-rumKjdJowi",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"clickflow-2"
+							],
+							"title": "Clickflow Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {},
+				"hooks": [
+					{
+						"endpoint": "https://api.clickflow.com/api/v1/authorizations/cloudflare/install",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://api.clickflow.com/api/v1/authorizations/cloudflare/update_site",
+						"events": [
+							"option-change:site"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"manual": true,
+			"releaseNotes": "Reverted to regexp parser",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/0JSXWskIRpKk",
+			"metadata": {
+				"code": {
+					"sourceTag": "0JSXWskIRpKk",
+					"uploadedOn": "2019-01-16T16:46:30.172812229Z"
+				}
+			},
+			"created": "2019-01-16T16:46:29.926425Z",
+			"proposedApp": {
+				"id": "I-rumKjdJowi",
+				"title": "Clickflow",
+				"shortDescription": "A/B Testing for SEO",
+				"longDescription": "ClickFlow is SEO and business intelligence software that helps you grow your SEO traffic through SEO A/B testing.",
+				"instructions": "",
+				"alias": "clickflow",
+				"orgId": "cbb60f18b67d4c57d4191fb559f509af",
+				"icon": "https://images.cloudflareapps.com/PMplOsKppQGv/favicon-96x96.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step1.png",
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step2.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Clickflow Solutions",
+				"tagline": "",
+				"website": "https://www.clickflow.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.clickflow.com/terms-and-conditions/",
+				"privacyPolicyURL": "https://www.clickflow.com/privacy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "help@clickflow.com",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"analytics"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Ij-6vkAzYMQy"
+				},
+				"created": "2018-10-19T20:20:37.88679Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "cbb60f18b67d4c57d4191fb559f509af",
+				"requestedAt": "2019-01-16T16:48:02.600534331Z",
+				"canceledByUserId": "cbb60f18b67d4c57d4191fb559f509af",
+				"canceledAt": "2019-01-16T16:51:53.035830999Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.1.1",
+			"appId": "I-rumKjdJowi",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"clickflow-2"
+							],
+							"title": "Clickflow Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {},
+				"hooks": [
+					{
+						"endpoint": "https://api.clickflow.com/api/v1/authorizations/cloudflare/install",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://api.clickflow.com/api/v1/authorizations/cloudflare/update_site",
+						"events": [
+							"option-change:site"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"manual": true,
+			"releaseNotes": "Reverted to regexp parser. Added version to header.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/bYyOTn6VhJOQ",
+			"metadata": {
+				"code": {
+					"sourceTag": "bYyOTn6VhJOQ",
+					"uploadedOn": "2019-01-16T16:51:51.352989163Z"
+				}
+			},
+			"created": "2019-01-16T16:51:51.208756Z",
+			"proposedApp": {
+				"id": "I-rumKjdJowi",
+				"title": "Clickflow",
+				"shortDescription": "A/B Testing for SEO",
+				"longDescription": "ClickFlow is SEO and business intelligence software that helps you grow your SEO traffic through SEO A/B testing.",
+				"instructions": "",
+				"alias": "clickflow",
+				"orgId": "cbb60f18b67d4c57d4191fb559f509af",
+				"icon": "https://images.cloudflareapps.com/PMplOsKppQGv/favicon-96x96.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step1.png",
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step2.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Clickflow Solutions",
+				"tagline": "",
+				"website": "https://www.clickflow.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.clickflow.com/terms-and-conditions/",
+				"privacyPolicyURL": "https://www.clickflow.com/privacy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "help@clickflow.com",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"analytics"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Ij-6vkAzYMQy"
+				},
+				"created": "2018-10-19T20:20:37.88679Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "cbb60f18b67d4c57d4191fb559f509af",
+				"requestedAt": "2019-01-16T16:51:53.046484739Z",
+				"canceledByUserId": "cbb60f18b67d4c57d4191fb559f509af",
+				"canceledAt": "2019-01-16T17:07:19.178393013Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.1.2",
+			"appId": "I-rumKjdJowi",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"clickflow-2"
+							],
+							"title": "Clickflow Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {},
+				"hooks": [
+					{
+						"endpoint": "https://api.clickflow.com/api/v1/authorizations/cloudflare/install",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://api.clickflow.com/api/v1/authorizations/cloudflare/update_site",
+						"events": [
+							"option-change:site"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"manual": true,
+			"releaseNotes": "Reverted to regexp parser. Added version to header.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/znjKkmg7BANH",
+			"metadata": {
+				"code": {
+					"sourceTag": "znjKkmg7BANH",
+					"uploadedOn": "2019-01-16T17:07:10.558010504Z"
+				}
+			},
+			"created": "2019-01-16T17:07:10.339649Z",
+			"proposedApp": {
+				"id": "I-rumKjdJowi",
+				"title": "Clickflow",
+				"shortDescription": "A/B Testing for SEO",
+				"longDescription": "ClickFlow is SEO and business intelligence software that helps you grow your SEO traffic through SEO A/B testing.",
+				"instructions": "",
+				"alias": "clickflow",
+				"orgId": "cbb60f18b67d4c57d4191fb559f509af",
+				"icon": "https://images.cloudflareapps.com/PMplOsKppQGv/favicon-96x96.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step1.png",
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step2.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Clickflow Solutions",
+				"tagline": "",
+				"website": "https://www.clickflow.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.clickflow.com/terms-and-conditions/",
+				"privacyPolicyURL": "https://www.clickflow.com/privacy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "help@clickflow.com",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"analytics"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Ij-6vkAzYMQy"
+				},
+				"created": "2018-10-19T20:20:37.88679Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "cbb60f18b67d4c57d4191fb559f509af",
+				"requestedAt": "2019-01-16T17:07:19.192255538Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2019-01-16T17:26:13.593714948Z"
+			}
+		},
+		{
+			"tag": "1.1.3",
+			"appId": "I-rumKjdJowi",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"clickflow-2"
+							],
+							"title": "Clickflow Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {},
+				"hooks": [
+					{
+						"endpoint": "https://api.clickflow.com/api/v1/authorizations/cloudflare/install",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://api.clickflow.com/api/v1/authorizations/cloudflare/update_site",
+						"events": [
+							"option-change:site"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 3,
+				"downvotes": 0
+			},
+			"releaseNotes": "Reverted to regexp parser. Added version to header.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/3n9RXFHyZXJS",
+			"metadata": {
+				"code": {
+					"sourceTag": "3n9RXFHyZXJS",
+					"uploadedOn": "2019-01-18T02:38:59.23316959Z"
+				}
+			},
+			"created": "2019-01-18T02:38:58.958173Z",
+			"proposedApp": {
+				"id": "I-rumKjdJowi",
+				"title": "Clickflow",
+				"shortDescription": "A/B Testing for SEO",
+				"longDescription": "ClickFlow is SEO and business intelligence software that helps you grow your SEO traffic through SEO A/B testing.",
+				"instructions": "",
+				"alias": "clickflow",
+				"orgId": "cbb60f18b67d4c57d4191fb559f509af",
+				"icon": "https://images.cloudflareapps.com/PMplOsKppQGv/favicon-96x96.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step1.png",
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step2.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Clickflow Solutions",
+				"tagline": "",
+				"website": "https://www.clickflow.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.clickflow.com/terms-and-conditions/",
+				"privacyPolicyURL": "https://www.clickflow.com/privacy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "help@clickflow.com",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"analytics"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Ij-6vkAzYMQy"
+				},
+				"created": "2018-10-19T20:20:37.88679Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "cbb60f18b67d4c57d4191fb559f509af",
+				"requestedAt": "2019-01-18T02:39:11.59385309Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2019-01-18T18:06:36.800693311Z"
+			}
+		},
+		{
+			"tag": "2.0.1",
+			"appId": "I-rumKjdJowi",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"clickflow-2"
+							],
+							"title": "Clickflow Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {},
+				"hooks": [
+					{
+						"endpoint": "https://api.clickflow.com/api/v1/authorizations/cloudflare/install",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://api.clickflow.com/api/v1/authorizations/cloudflare/update_site",
+						"events": [
+							"option-change:site"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"manual": true,
+			"releaseNotes": "Launching 2.0 version of Clickflow",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/2DupnKa1mJsn",
+			"metadata": {
+				"code": {
+					"sourceTag": "2DupnKa1mJsn",
+					"uploadedOn": "2019-02-12T18:46:44.012761844Z"
+				}
+			},
+			"created": "2019-02-12T18:46:43.785031Z",
+			"proposedApp": {
+				"id": "I-rumKjdJowi",
+				"title": "Clickflow",
+				"shortDescription": "A/B Testing for SEO",
+				"longDescription": "ClickFlow is SEO and business intelligence software that helps you grow your SEO traffic through SEO A/B testing.",
+				"instructions": "",
+				"alias": "clickflow",
+				"orgId": "cbb60f18b67d4c57d4191fb559f509af",
+				"icon": "https://images.cloudflareapps.com/PMplOsKppQGv/favicon-96x96.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step1.png",
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step2.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Clickflow Solutions",
+				"tagline": "",
+				"website": "https://www.clickflow.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.clickflow.com/terms-and-conditions/",
+				"privacyPolicyURL": "https://www.clickflow.com/privacy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "help@clickflow.com",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"analytics"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Ij-6vkAzYMQy"
+				},
+				"created": "2018-10-19T20:20:37.88679Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "cbb60f18b67d4c57d4191fb559f509af",
+				"requestedAt": "2019-02-12T18:47:31.445817978Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2019-02-13T05:26:37.629614892Z"
+			}
+		},
+		{
+			"tag": "2.0.2",
+			"appId": "I-rumKjdJowi",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"clickflow-2"
+							],
+							"title": "Clickflow Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {},
+				"hooks": [
+					{
+						"endpoint": "https://api.clickflow.com/api/v1/authorizations/cloudflare/install",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://api.clickflow.com/api/v1/authorizations/cloudflare/update_site",
+						"events": [
+							"option-change:site"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"manual": true,
+			"releaseNotes": "Launching 2.0 version of the app",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/7wjE1DodlYR3",
+			"metadata": {
+				"code": {
+					"sourceTag": "7wjE1DodlYR3",
+					"uploadedOn": "2019-02-19T23:13:19.244483066Z"
+				}
+			},
+			"created": "2019-02-13T17:12:06.433539Z",
+			"proposedApp": {
+				"id": "I-rumKjdJowi",
+				"title": "Clickflow",
+				"shortDescription": "A/B Testing for SEO",
+				"longDescription": "ClickFlow is SEO and business intelligence software that helps you grow your SEO traffic through SEO A/B testing.",
+				"instructions": "",
+				"alias": "clickflow",
+				"orgId": "cbb60f18b67d4c57d4191fb559f509af",
+				"icon": "https://images.cloudflareapps.com/PMplOsKppQGv/favicon-96x96.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step1.png",
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step2.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Clickflow Solutions",
+				"tagline": "",
+				"website": "https://www.clickflow.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.clickflow.com/terms-and-conditions/",
+				"privacyPolicyURL": "https://www.clickflow.com/privacy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "help@clickflow.com",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"analytics"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Ij-6vkAzYMQy"
+				},
+				"created": "2018-10-19T20:20:37.88679Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "cbb60f18b67d4c57d4191fb559f509af",
+				"requestedAt": "2019-02-19T23:13:19.776398989Z",
+				"canceledAt": null,
+				"reviewedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"reviewedAt": "2019-02-22T17:57:59.612539939Z"
+			}
+		},
+		{
+			"tag": "2.1.0",
+			"appId": "I-rumKjdJowi",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"clickflow-2"
+							],
+							"title": "Clickflow Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {},
+				"hooks": [
+					{
+						"endpoint": "https://api.clickflow.com/api/v1/authorizations/cloudflare/install",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://api.clickflow.com/api/v1/authorizations/cloudflare/update_site",
+						"events": [
+							"option-change:site"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"releaseNotes": "Added a few minor fixes and enhancements.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/oFwr1moChaYt",
+			"metadata": {
+				"code": {
+					"sourceTag": "oFwr1moChaYt",
+					"uploadedOn": "2019-02-28T01:42:56.988006069Z"
+				}
+			},
+			"created": "2019-02-28T01:42:56.787927Z",
+			"proposedApp": {
+				"id": "I-rumKjdJowi",
+				"title": "Clickflow",
+				"shortDescription": "A/B Testing for SEO",
+				"longDescription": "ClickFlow is SEO and business intelligence software that helps you grow your SEO traffic through SEO A/B testing.",
+				"instructions": "",
+				"alias": "clickflow",
+				"orgId": "cbb60f18b67d4c57d4191fb559f509af",
+				"icon": "https://images.cloudflareapps.com/PMplOsKppQGv/favicon-96x96.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step1.png",
+					"https://images.cloudflareapps.com/wjNx89Zp3YXo/cf2-step2.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Clickflow Solutions",
+				"tagline": "",
+				"website": "https://www.clickflow.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.clickflow.com/terms-and-conditions/",
+				"privacyPolicyURL": "https://www.clickflow.com/privacy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "help@clickflow.com",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"analytics"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Ij-6vkAzYMQy"
+				},
+				"created": "2018-10-19T20:20:37.88679Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "cbb60f18b67d4c57d4191fb559f509af",
+				"requestedAt": "2019-02-28T01:42:57.565463641Z",
+				"canceledAt": null,
+				"reviewedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"reviewedAt": "2019-02-28T22:45:33.240145902Z"
+			}
+		},
+		{
+			"tag": "2.2.0",
+			"appId": "I-rumKjdJowi",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"clickflow-2"
+							],
+							"title": "Clickflow Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {},
+				"hooks": [
+					{
+						"endpoint": "https://api.clickflow.com/api/v1/authorizations/cloudflare/install",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://api.clickflow.com/api/v1/authorizations/cloudflare/update_site",
+						"events": [
+							"option-change:site"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"releaseNotes": "Added a few minor fixes and enhancements.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/jzvDlX_YX-xl",
+			"metadata": {
+				"code": {
+					"sourceTag": "jzvDlX_YX-xl",
+					"uploadedOn": "2019-05-15T21:16:04.198201893Z"
+				}
+			},
+			"created": "2019-05-15T21:16:03.90459Z",
+			"proposedApp": {
+				"id": "I-rumKjdJowi",
+				"title": "Clickflow",
+				"shortDescription": "A/B Testing for SEO",
+				"longDescription": "<p>ClickFlow is SEO and business intelligence software that helps you grow your SEO traffic through SEO A/B testing.</p>\n\n<div><strong>ClickFlow will allow you to:</strong></div>\n\n- Run single page title and meta description tests to increase your traffic\n- Track each and every tests that you’ve ran automatically to save you time\n- Run group tests on entire categories (for larger websites)\n- Run reports to validate your work\n- See the top 50 keywords per page and traffic, ranking, CTR and impression numbers",
+				"instructions": "",
+				"alias": "clickflow",
+				"orgId": "cbb60f18b67d4c57d4191fb559f509af",
+				"icon": "https://images.cloudflareapps.com/PMplOsKppQGv/favicon-96x96.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/02YC0dWQUwqo/pasted%20image%200.png",
+					"https://images.cloudflareapps.com/5csUDy8Gpwd0/pasted%20image%200-2.png",
+					"https://images.cloudflareapps.com/mXzVshF-zlyv/pasted%20image%200-1.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Clickflow Solutions",
+				"tagline": "",
+				"website": "https://www.clickflow.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.clickflow.com/terms-and-conditions/",
+				"privacyPolicyURL": "https://www.clickflow.com/privacy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "help@clickflow.com",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"analytics"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Ij-6vkAzYMQy"
+				},
+				"created": "2018-10-19T20:20:37.88679Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "cbb60f18b67d4c57d4191fb559f509af",
+				"requestedAt": "2019-05-21T18:56:09.88803562Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-05-22T15:56:54.301266211Z"
+			}
+		},
+		{
+			"tag": "2.2.1",
+			"appId": "I-rumKjdJowi",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"clickflow-2"
+							],
+							"title": "Clickflow Account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {},
+				"hooks": [
+					{
+						"endpoint": "https://api.clickflow.com/api/v1/authorizations/cloudflare/install",
+						"events": [
+							"oauth-login"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://api.clickflow.com/api/v1/authorizations/cloudflare/update_site",
+						"events": [
+							"option-change:site"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.67,
+				"upvotes": 12,
+				"downvotes": 6
+			},
+			"releaseNotes": "Added to Insights category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/jzvDlX_YX-xl",
+			"created": "2019-05-22T15:58:06.071578Z",
+			"proposedApp": {
+				"id": "I-rumKjdJowi",
+				"title": "Clickflow",
+				"shortDescription": "A/B Testing for SEO",
+				"longDescription": "<p>ClickFlow is SEO and business intelligence software that helps you grow your SEO traffic through SEO A/B testing.</p>\n\n<div><strong>ClickFlow will allow you to:</strong></div>\n\n- Run single page title and meta description tests to increase your traffic\n- Track each and every tests that you’ve ran automatically to save you time\n- Run group tests on entire categories (for larger websites)\n- Run reports to validate your work\n- See the top 50 keywords per page and traffic, ranking, CTR and impression numbers",
+				"instructions": "",
+				"alias": "clickflow",
+				"orgId": "cbb60f18b67d4c57d4191fb559f509af",
+				"icon": "https://images.cloudflareapps.com/PMplOsKppQGv/favicon-96x96.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/02YC0dWQUwqo/pasted%20image%200.png",
+					"https://images.cloudflareapps.com/5csUDy8Gpwd0/pasted%20image%200-2.png",
+					"https://images.cloudflareapps.com/mXzVshF-zlyv/pasted%20image%200-1.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Clickflow Solutions",
+				"tagline": "",
+				"website": "https://www.clickflow.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.clickflow.com/terms-and-conditions/",
+				"privacyPolicyURL": "https://www.clickflow.com/privacy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "help@clickflow.com",
+				"products": [],
+				"categoryIds": [
+					"insights"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "Ij-6vkAzYMQy"
+				},
+				"created": "2018-10-19T20:20:37.88679Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2019-05-22T15:58:06.390887311Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-05-22T15:58:31.175649918Z"
+			}
+		}
+	]
+}

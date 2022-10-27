@@ -1,0 +1,1810 @@
+{
+	"id": "Epf9IcVPb-I5",
+	"title": "AutoLink",
+	"shortDescription": "Automatically link websites, email address and more!",
+	"longDescription": "AutoLink automatically creates links for the URLs found in the text on your website.\n\nSo “example.com”, becomes <a class=\"with-inherited-color with-underline\" target=\"_blank\" href=\"https://www.example.com\">example.com</a>.\n\nWith AutoLink installed, you’ll never see text like www.example.com as just text again. Instead it will be replaced with a real link that your visitors can click.\n\n# AutoLink handles it all.\n\n- URLs\n- Email addresses\n- Phone numbers\n- @usernames for Twitter, and Instagram\n- #hashtags for Twitter, Instagram, and Facebook\n\n# Why would I need this?\n\nWhen a website has a comments section or contains other user-generated content, often users put links in their content which your comment system or app doesn’t recognize. This creates a frustrating experience for content creators who want to link to their content, and for other commenters who want to visit those links.\n\n# AutoLink is secure.\n\nIf handled incorrectly, the process for converting user-generated text into a link can put your site at risk, especially if that process is handled on your server. Since AutoLink runs in the browser, and always sanitizes the text it converts, you can rest easing knowing that no matter what, the worst that a user can do is create a link, nothing more.",
+	"instructions": "",
+	"alias": "autolink",
+	"orgId": "2684c89451b6b86b453405beb4662f46",
+	"icon": "//images.cloudflareapps.com/qWKmkdvVQUKpQta1bWGX_icon.png",
+	"screenshots": [],
+	"tileImage": "//images.cloudflareapps.com/UEATaO8wQPypsr7mP93W_tile.png",
+	"featuredAppImage": "",
+	"author": "Greg Jacobs",
+	"tagline": "",
+	"website": "https://github.com/gregjacobs/Autolinker.js/",
+	"sourceURL": "",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "#0b7baa",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "2.1.6",
+	"infoVersion": "2.1.6",
+	"points": 300,
+	"supportEmail": "support@cloudflare.com",
+	"products": [],
+	"categoryIds": [
+		"widgets-and-plugins",
+		"recommended-for-blogs"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "f1279b4c7912eb17ba469bcbdfe62b19",
+			"created": "2017-07-06T08:55:22.310874389Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "_OukNG9a51FU"
+	},
+	"created": "2017-05-22T21:40:14.688775Z",
+	"org": {
+		"id": "2684c89451b6b86b453405beb4662f46",
+		"title": "",
+		"username": "2684c89451b6b86b453405beb4662f46",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "widgets-and-plugins",
+			"title": "Widgets & Plugins",
+			"description": "Apps that add functionality and services to your website.",
+			"icon": "",
+			"points": 10,
+			"visible": true,
+			"metadata": {
+				"promoted": false
+			},
+			"created": "2018-01-22T19:19:00.135755Z"
+		},
+		{
+			"id": "recommended-for-blogs",
+			"title": "Recommended for Blogs",
+			"description": "Apps for blogs in the recommendation engine.",
+			"icon": "",
+			"points": 0,
+			"visible": false,
+			"created": "2018-02-06T19:54:23.834831Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "v2.0.0",
+			"appId": "Epf9IcVPb-I5",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./bower_components/Autolinker.js/dist/Autolinker.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"advanced": {
+							"order": 5,
+							"properties": {
+								"location": {
+									"default": "body",
+									"format": "selector",
+									"order": 3,
+									"title": "Location",
+									"type": "string"
+								},
+								"newWindow": {
+									"default": false,
+									"order": 0,
+									"title": "Open links in new tab",
+									"type": "boolean"
+								},
+								"stripPrefix": {
+									"default": false,
+									"order": 1,
+									"title": "Hide “http” and “www” from link",
+									"type": "boolean"
+								}
+							},
+							"showIf": "showAdvancedOptions",
+							"title": "Advanced Options",
+							"type": "object"
+						},
+						"email": {
+							"default": true,
+							"description": "Link email addresses to email apps.",
+							"order": 0,
+							"title": "Email Addresses",
+							"type": "boolean"
+						},
+						"hashtag": {
+							"default": "twitter",
+							"description": "Link hashtags beginning with “#”",
+							"enum": [
+								"none",
+								"twitter",
+								"instagram",
+								"facebook"
+							],
+							"enumNames": {
+								"facebook": "Facebook",
+								"instagram": "Instagram",
+								"none": "none",
+								"twitter": "Twitter"
+							},
+							"order": 3,
+							"title": "Hashtags",
+							"type": "string"
+						},
+						"mention": {
+							"default": "twitter",
+							"description": "Link usernames beginning with “@”",
+							"enum": [
+								"none",
+								"twitter",
+								"instagram"
+							],
+							"enumNames": {
+								"instagram": "Instagram",
+								"none": "none",
+								"twitter": "Twitter"
+							},
+							"order": 2,
+							"title": "Mentions",
+							"type": "string"
+						},
+						"phone": {
+							"default": true,
+							"description": "Link phone numbers on devices that can make calls.",
+							"order": 1,
+							"title": "Phone Numbers",
+							"type": "boolean"
+						},
+						"showAdvancedOptions": {
+							"default": false,
+							"order": 4,
+							"title": "Show advanced options",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/_OukNG9a51FU",
+			"metadata": {
+				"code": {
+					"sourceTag": "_OukNG9a51FU",
+					"uploadedOn": "2017-05-22T21:40:15.548045784Z"
+				}
+			},
+			"created": "2017-05-22T21:40:15.211681Z",
+			"proposedApp": {
+				"id": "Epf9IcVPb-I5",
+				"title": "AutoLink",
+				"shortDescription": "Automatically fix broken links on your website.",
+				"longDescription": "AutoLink automatically creates links for the URLs found in the text on your website.\n\nSo “example.com”, becomes <a class=\"with-inherited-color with-underline\" target=\"_blank\" href=\"https://www.example.com\">example.com</a>.\n\nWith AutoLink installed, you’ll never see text like www.example.com as just text again. Instead it will be replaced with a real link that your visitors can click.\n\n# AutoLink handles it all.\n\n- URLs\n- Email addresses\n- Phone numbers\n- @usernames for Twitter, and Instagram\n- #hashtags for Twitter, Instagram, and Facebook\n\n# Why would I need this?\n\nWhen a website has a comments section or contains other user-generated content, often users put links in their content which your comment system or app doesn’t recognize. This creates a frustrating experience for content creators who want to link to their content, and for other commenters who want to visit those links.\n\n# AutoLink is secure.\n\nIf handled incorrectly, the process for converting user-generated text into a link can put your site at risk, especially if that process is handled on your server. Since AutoLink runs in the browser, and always sanitizes the text it converts, you can rest easing knowing that no matter what, the worst that a user can do is create a link, nothing more.",
+				"instructions": "",
+				"alias": "autolinker",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/82qzzB0iQgCetuOR6zn4_autolink-icon.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Greg Jacobs",
+				"tagline": "",
+				"website": "https://github.com/gregjacobs/Autolinker.js/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"by-cloudflare",
+					"add-on"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "_OukNG9a51FU"
+				},
+				"created": "2017-05-22T21:40:14.688775Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-05-22T21:40:16.653351606Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-05-22T21:40:54.688986234Z"
+			}
+		},
+		{
+			"tag": "2.0.1",
+			"appId": "Epf9IcVPb-I5",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./bower_components/Autolinker.js/dist/Autolinker.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"advanced": {
+							"order": 5,
+							"properties": {
+								"location": {
+									"default": "body",
+									"format": "selector",
+									"order": 3,
+									"title": "Location",
+									"type": "string"
+								},
+								"newWindow": {
+									"default": false,
+									"order": 0,
+									"title": "Open links in new tab",
+									"type": "boolean"
+								},
+								"stripPrefix": {
+									"default": false,
+									"order": 1,
+									"title": "Hide “http” and “www” from link",
+									"type": "boolean"
+								}
+							},
+							"showIf": "showAdvancedOptions",
+							"title": "Advanced Options",
+							"type": "object"
+						},
+						"email": {
+							"default": true,
+							"description": "Link email addresses to email apps.",
+							"order": 0,
+							"title": "Email Addresses",
+							"type": "boolean"
+						},
+						"hashtag": {
+							"default": "twitter",
+							"description": "Link hashtags beginning with “#”",
+							"enum": [
+								"none",
+								"twitter",
+								"instagram",
+								"facebook"
+							],
+							"enumNames": {
+								"facebook": "Facebook",
+								"instagram": "Instagram",
+								"none": "none",
+								"twitter": "Twitter"
+							},
+							"order": 3,
+							"title": "Hashtags",
+							"type": "string"
+						},
+						"mention": {
+							"default": "twitter",
+							"description": "Link usernames beginning with “@”",
+							"enum": [
+								"none",
+								"twitter",
+								"instagram"
+							],
+							"enumNames": {
+								"instagram": "Instagram",
+								"none": "none",
+								"twitter": "Twitter"
+							},
+							"order": 2,
+							"title": "Mentions",
+							"type": "string"
+						},
+						"phone": {
+							"default": true,
+							"description": "Link phone numbers on devices that can make calls.",
+							"order": 1,
+							"title": "Phone Numbers",
+							"type": "boolean"
+						},
+						"showAdvancedOptions": {
+							"default": false,
+							"order": 4,
+							"title": "Show advanced options",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/_OukNG9a51FU",
+			"created": "2017-06-14T03:52:01.498918Z",
+			"proposedApp": {
+				"id": "Epf9IcVPb-I5",
+				"title": "AutoLink",
+				"shortDescription": "Automatically fix broken links on your site.",
+				"longDescription": "AutoLink automatically creates links for the URLs found in the text on your website.\n\nSo “example.com”, becomes <a class=\"with-inherited-color with-underline\" target=\"_blank\" href=\"https://www.example.com\">example.com</a>.\n\nWith AutoLink installed, you’ll never see text like www.example.com as just text again. Instead it will be replaced with a real link that your visitors can click.\n\n# AutoLink handles it all.\n\n- URLs\n- Email addresses\n- Phone numbers\n- @usernames for Twitter, and Instagram\n- #hashtags for Twitter, Instagram, and Facebook\n\n# Why would I need this?\n\nWhen a website has a comments section or contains other user-generated content, often users put links in their content which your comment system or app doesn’t recognize. This creates a frustrating experience for content creators who want to link to their content, and for other commenters who want to visit those links.\n\n# AutoLink is secure.\n\nIf handled incorrectly, the process for converting user-generated text into a link can put your site at risk, especially if that process is handled on your server. Since AutoLink runs in the browser, and always sanitizes the text it converts, you can rest easing knowing that no matter what, the worst that a user can do is create a link, nothing more.",
+				"instructions": "",
+				"alias": "autolinker",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/82qzzB0iQgCetuOR6zn4_autolink-icon.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Greg Jacobs",
+				"tagline": "",
+				"website": "https://github.com/gregjacobs/Autolinker.js/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"by-cloudflare",
+					"add-on"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "_OukNG9a51FU"
+				},
+				"created": "2017-05-22T21:40:14.688775Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-06-14T03:52:29.034603842Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-06-14T04:14:55.363414685Z"
+			}
+		},
+		{
+			"tag": "2.0.2",
+			"appId": "Epf9IcVPb-I5",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./bower_components/Autolinker.js/dist/Autolinker.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"advanced": {
+							"order": 5,
+							"properties": {
+								"location": {
+									"default": "body",
+									"format": "selector",
+									"order": 3,
+									"title": "Location",
+									"type": "string"
+								},
+								"newWindow": {
+									"default": false,
+									"order": 0,
+									"title": "Open links in new tab",
+									"type": "boolean"
+								},
+								"stripPrefix": {
+									"default": false,
+									"order": 1,
+									"title": "Hide “http” and “www” from link",
+									"type": "boolean"
+								}
+							},
+							"showIf": "showAdvancedOptions",
+							"title": "Advanced Options",
+							"type": "object"
+						},
+						"email": {
+							"default": true,
+							"description": "Link email addresses to email apps.",
+							"order": 0,
+							"title": "Email Addresses",
+							"type": "boolean"
+						},
+						"hashtag": {
+							"default": "twitter",
+							"description": "Link hashtags beginning with “#”",
+							"enum": [
+								"none",
+								"twitter",
+								"instagram",
+								"facebook"
+							],
+							"enumNames": {
+								"facebook": "Facebook",
+								"instagram": "Instagram",
+								"none": "none",
+								"twitter": "Twitter"
+							},
+							"order": 3,
+							"title": "Hashtags",
+							"type": "string"
+						},
+						"mention": {
+							"default": "twitter",
+							"description": "Link usernames beginning with “@”",
+							"enum": [
+								"none",
+								"twitter",
+								"instagram"
+							],
+							"enumNames": {
+								"instagram": "Instagram",
+								"none": "none",
+								"twitter": "Twitter"
+							},
+							"order": 2,
+							"title": "Mentions",
+							"type": "string"
+						},
+						"phone": {
+							"default": true,
+							"description": "Link phone numbers on devices that can make calls.",
+							"order": 1,
+							"title": "Phone Numbers",
+							"type": "boolean"
+						},
+						"showAdvancedOptions": {
+							"default": false,
+							"order": 4,
+							"title": "Show advanced options",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/_OukNG9a51FU",
+			"created": "2017-07-06T08:55:22.096286Z",
+			"proposedApp": {
+				"id": "Epf9IcVPb-I5",
+				"title": "AutoLink",
+				"shortDescription": "Automatically fix broken links on your site.",
+				"longDescription": "AutoLink automatically creates links for the URLs found in the text on your website.\n\nSo “example.com”, becomes <a class=\"with-inherited-color with-underline\" target=\"_blank\" href=\"https://www.example.com\">example.com</a>.\n\nWith AutoLink installed, you’ll never see text like www.example.com as just text again. Instead it will be replaced with a real link that your visitors can click.\n\n# AutoLink handles it all.\n\n- URLs\n- Email addresses\n- Phone numbers\n- @usernames for Twitter, and Instagram\n- #hashtags for Twitter, Instagram, and Facebook\n\n# Why would I need this?\n\nWhen a website has a comments section or contains other user-generated content, often users put links in their content which your comment system or app doesn’t recognize. This creates a frustrating experience for content creators who want to link to their content, and for other commenters who want to visit those links.\n\n# AutoLink is secure.\n\nIf handled incorrectly, the process for converting user-generated text into a link can put your site at risk, especially if that process is handled on your server. Since AutoLink runs in the browser, and always sanitizes the text it converts, you can rest easing knowing that no matter what, the worst that a user can do is create a link, nothing more.",
+				"instructions": "",
+				"alias": "autolinker",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/82qzzB0iQgCetuOR6zn4_autolink-icon.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Greg Jacobs",
+				"tagline": "",
+				"website": "https://github.com/gregjacobs/Autolinker.js/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"by-cloudflare",
+					"add-on"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "_OukNG9a51FU"
+				},
+				"created": "2017-05-22T21:40:14.688775Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-07-06T08:55:22.308839456Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-07-06T08:56:40.940077113Z"
+			}
+		},
+		{
+			"tag": "2.1.0",
+			"appId": "Epf9IcVPb-I5",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./bower_components/Autolinker.js/dist/Autolinker.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"advanced": {
+							"order": 5,
+							"properties": {
+								"location": {
+									"default": "body",
+									"format": "selector",
+									"order": 3,
+									"title": "Location",
+									"type": "string"
+								},
+								"newWindow": {
+									"default": false,
+									"order": 0,
+									"title": "Open links in new tab",
+									"type": "boolean"
+								},
+								"stripPrefix": {
+									"default": false,
+									"order": 1,
+									"title": "Hide “http” and “www” from link",
+									"type": "boolean"
+								}
+							},
+							"showIf": "showAdvancedOptions",
+							"title": "Advanced Options",
+							"type": "object"
+						},
+						"email": {
+							"default": true,
+							"description": "Link email addresses to email apps.",
+							"order": 0,
+							"title": "Email Addresses",
+							"type": "boolean"
+						},
+						"hashtag": {
+							"default": "twitter",
+							"description": "Link hashtags beginning with “#”",
+							"enum": [
+								"none",
+								"twitter",
+								"instagram",
+								"facebook"
+							],
+							"enumNames": {
+								"facebook": "Facebook",
+								"instagram": "Instagram",
+								"none": "none",
+								"twitter": "Twitter"
+							},
+							"order": 3,
+							"title": "Hashtags",
+							"type": "string"
+						},
+						"mention": {
+							"default": "twitter",
+							"description": "Link usernames beginning with “@”",
+							"enum": [
+								"none",
+								"twitter",
+								"instagram"
+							],
+							"enumNames": {
+								"instagram": "Instagram",
+								"none": "none",
+								"twitter": "Twitter"
+							},
+							"order": 2,
+							"title": "Mentions",
+							"type": "string"
+						},
+						"phone": {
+							"default": true,
+							"description": "Link phone numbers on devices that can make calls.",
+							"order": 1,
+							"title": "Phone Numbers",
+							"type": "boolean"
+						},
+						"showAdvancedOptions": {
+							"default": false,
+							"order": 4,
+							"title": "Show advanced options",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/aAVYJFvZ8YBu",
+			"metadata": {
+				"code": {
+					"sourceTag": "aAVYJFvZ8YBu",
+					"uploadedOn": "2017-09-13T20:17:27.205779971Z"
+				}
+			},
+			"created": "2017-09-13T20:17:27.052193Z",
+			"proposedApp": {
+				"id": "Epf9IcVPb-I5",
+				"title": "AutoLink",
+				"shortDescription": "Automatically link websites, email address and more!",
+				"longDescription": "AutoLink automatically creates links for the URLs found in the text on your website.\n\nSo “example.com”, becomes <a class=\"with-inherited-color with-underline\" target=\"_blank\" href=\"https://www.example.com\">example.com</a>.\n\nWith AutoLink installed, you’ll never see text like www.example.com as just text again. Instead it will be replaced with a real link that your visitors can click.\n\n# AutoLink handles it all.\n\n- URLs\n- Email addresses\n- Phone numbers\n- @usernames for Twitter, and Instagram\n- #hashtags for Twitter, Instagram, and Facebook\n\n# Why would I need this?\n\nWhen a website has a comments section or contains other user-generated content, often users put links in their content which your comment system or app doesn’t recognize. This creates a frustrating experience for content creators who want to link to their content, and for other commenters who want to visit those links.\n\n# AutoLink is secure.\n\nIf handled incorrectly, the process for converting user-generated text into a link can put your site at risk, especially if that process is handled on your server. Since AutoLink runs in the browser, and always sanitizes the text it converts, you can rest easing knowing that no matter what, the worst that a user can do is create a link, nothing more.",
+				"instructions": "",
+				"alias": "autolinker",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/qWKmkdvVQUKpQta1bWGX_icon.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/HnOnrx5CRdiIvcK2LIkw_tile.png",
+				"featuredAppImage": "",
+				"author": "Greg Jacobs",
+				"tagline": "",
+				"website": "https://github.com/gregjacobs/Autolinker.js/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"by-cloudflare",
+					"add-on"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "_OukNG9a51FU"
+				},
+				"created": "2017-05-22T21:40:14.688775Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-09-13T20:17:27.808105542Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-09-13T20:17:52.120894502Z"
+			}
+		},
+		{
+			"tag": "2.1.1",
+			"appId": "Epf9IcVPb-I5",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./bower_components/Autolinker.js/dist/Autolinker.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"advanced": {
+							"order": 5,
+							"properties": {
+								"location": {
+									"default": "body",
+									"format": "selector",
+									"order": 3,
+									"title": "Location",
+									"type": "string"
+								},
+								"newWindow": {
+									"default": false,
+									"order": 0,
+									"title": "Open links in new tab",
+									"type": "boolean"
+								},
+								"stripPrefix": {
+									"default": false,
+									"order": 1,
+									"title": "Hide “http” and “www” from link",
+									"type": "boolean"
+								}
+							},
+							"showIf": "showAdvancedOptions",
+							"title": "Advanced Options",
+							"type": "object"
+						},
+						"email": {
+							"default": true,
+							"description": "Link email addresses to email apps.",
+							"order": 0,
+							"title": "Email Addresses",
+							"type": "boolean"
+						},
+						"hashtag": {
+							"default": "twitter",
+							"description": "Link hashtags beginning with “#”",
+							"enum": [
+								"none",
+								"twitter",
+								"instagram",
+								"facebook"
+							],
+							"enumNames": {
+								"facebook": "Facebook",
+								"instagram": "Instagram",
+								"none": "none",
+								"twitter": "Twitter"
+							},
+							"order": 3,
+							"title": "Hashtags",
+							"type": "string"
+						},
+						"mention": {
+							"default": "twitter",
+							"description": "Link usernames beginning with “@”",
+							"enum": [
+								"none",
+								"twitter",
+								"instagram"
+							],
+							"enumNames": {
+								"instagram": "Instagram",
+								"none": "none",
+								"twitter": "Twitter"
+							},
+							"order": 2,
+							"title": "Mentions",
+							"type": "string"
+						},
+						"phone": {
+							"default": true,
+							"description": "Link phone numbers on devices that can make calls.",
+							"order": 1,
+							"title": "Phone Numbers",
+							"type": "boolean"
+						},
+						"showAdvancedOptions": {
+							"default": false,
+							"order": 4,
+							"title": "Show advanced options",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/aAVYJFvZ8YBu",
+			"created": "2017-09-13T21:11:28.883292Z",
+			"proposedApp": {
+				"id": "Epf9IcVPb-I5",
+				"title": "AutoLink",
+				"shortDescription": "Automatically link websites, email address and more!",
+				"longDescription": "AutoLink automatically creates links for the URLs found in the text on your website.\n\nSo “example.com”, becomes <a class=\"with-inherited-color with-underline\" target=\"_blank\" href=\"https://www.example.com\">example.com</a>.\n\nWith AutoLink installed, you’ll never see text like www.example.com as just text again. Instead it will be replaced with a real link that your visitors can click.\n\n# AutoLink handles it all.\n\n- URLs\n- Email addresses\n- Phone numbers\n- @usernames for Twitter, and Instagram\n- #hashtags for Twitter, Instagram, and Facebook\n\n# Why would I need this?\n\nWhen a website has a comments section or contains other user-generated content, often users put links in their content which your comment system or app doesn’t recognize. This creates a frustrating experience for content creators who want to link to their content, and for other commenters who want to visit those links.\n\n# AutoLink is secure.\n\nIf handled incorrectly, the process for converting user-generated text into a link can put your site at risk, especially if that process is handled on your server. Since AutoLink runs in the browser, and always sanitizes the text it converts, you can rest easing knowing that no matter what, the worst that a user can do is create a link, nothing more.",
+				"instructions": "",
+				"alias": "autolinker",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/qWKmkdvVQUKpQta1bWGX_icon.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/CHokBhjFRCCOAPvKG31F_tile.png",
+				"featuredAppImage": "",
+				"author": "Greg Jacobs",
+				"tagline": "",
+				"website": "https://github.com/gregjacobs/Autolinker.js/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"by-cloudflare",
+					"add-on"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "_OukNG9a51FU"
+				},
+				"created": "2017-05-22T21:40:14.688775Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-09-13T21:11:29.04351131Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-09-13T21:11:55.580220231Z"
+			}
+		},
+		{
+			"tag": "2.1.2",
+			"appId": "Epf9IcVPb-I5",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./bower_components/Autolinker.js/dist/Autolinker.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"advanced": {
+							"order": 5,
+							"properties": {
+								"location": {
+									"default": "body",
+									"format": "selector",
+									"order": 3,
+									"title": "Location",
+									"type": "string"
+								},
+								"newWindow": {
+									"default": false,
+									"order": 0,
+									"title": "Open links in new tab",
+									"type": "boolean"
+								},
+								"stripPrefix": {
+									"default": false,
+									"order": 1,
+									"title": "Hide “http” and “www” from link",
+									"type": "boolean"
+								}
+							},
+							"showIf": "showAdvancedOptions",
+							"title": "Advanced Options",
+							"type": "object"
+						},
+						"email": {
+							"default": true,
+							"description": "Link email addresses to email apps.",
+							"order": 0,
+							"title": "Email Addresses",
+							"type": "boolean"
+						},
+						"hashtag": {
+							"default": "twitter",
+							"description": "Link hashtags beginning with “#”",
+							"enum": [
+								"none",
+								"twitter",
+								"instagram",
+								"facebook"
+							],
+							"enumNames": {
+								"facebook": "Facebook",
+								"instagram": "Instagram",
+								"none": "none",
+								"twitter": "Twitter"
+							},
+							"order": 3,
+							"title": "Hashtags",
+							"type": "string"
+						},
+						"mention": {
+							"default": "twitter",
+							"description": "Link usernames beginning with “@”",
+							"enum": [
+								"none",
+								"twitter",
+								"instagram"
+							],
+							"enumNames": {
+								"instagram": "Instagram",
+								"none": "none",
+								"twitter": "Twitter"
+							},
+							"order": 2,
+							"title": "Mentions",
+							"type": "string"
+						},
+						"phone": {
+							"default": true,
+							"description": "Link phone numbers on devices that can make calls.",
+							"order": 1,
+							"title": "Phone Numbers",
+							"type": "boolean"
+						},
+						"showAdvancedOptions": {
+							"default": false,
+							"order": 4,
+							"title": "Show advanced options",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/aAVYJFvZ8YBu",
+			"created": "2017-09-14T01:38:49.475103Z",
+			"proposedApp": {
+				"id": "Epf9IcVPb-I5",
+				"title": "AutoLink",
+				"shortDescription": "Automatically link websites, email address and more!",
+				"longDescription": "AutoLink automatically creates links for the URLs found in the text on your website.\n\nSo “example.com”, becomes <a class=\"with-inherited-color with-underline\" target=\"_blank\" href=\"https://www.example.com\">example.com</a>.\n\nWith AutoLink installed, you’ll never see text like www.example.com as just text again. Instead it will be replaced with a real link that your visitors can click.\n\n# AutoLink handles it all.\n\n- URLs\n- Email addresses\n- Phone numbers\n- @usernames for Twitter, and Instagram\n- #hashtags for Twitter, Instagram, and Facebook\n\n# Why would I need this?\n\nWhen a website has a comments section or contains other user-generated content, often users put links in their content which your comment system or app doesn’t recognize. This creates a frustrating experience for content creators who want to link to their content, and for other commenters who want to visit those links.\n\n# AutoLink is secure.\n\nIf handled incorrectly, the process for converting user-generated text into a link can put your site at risk, especially if that process is handled on your server. Since AutoLink runs in the browser, and always sanitizes the text it converts, you can rest easing knowing that no matter what, the worst that a user can do is create a link, nothing more.",
+				"instructions": "",
+				"alias": "autolinker",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/qWKmkdvVQUKpQta1bWGX_icon.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/UEATaO8wQPypsr7mP93W_tile.png",
+				"featuredAppImage": "",
+				"author": "Greg Jacobs",
+				"tagline": "",
+				"website": "https://github.com/gregjacobs/Autolinker.js/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"by-cloudflare",
+					"add-on"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "_OukNG9a51FU"
+				},
+				"created": "2017-05-22T21:40:14.688775Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-09-14T01:40:11.914004732Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-09-14T01:40:26.141469073Z"
+			}
+		},
+		{
+			"tag": "2.1.3",
+			"appId": "Epf9IcVPb-I5",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./bower_components/Autolinker.js/dist/Autolinker.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"advanced": {
+							"order": 5,
+							"properties": {
+								"location": {
+									"default": "body",
+									"format": "selector",
+									"order": 3,
+									"title": "Location",
+									"type": "string"
+								},
+								"newWindow": {
+									"default": false,
+									"order": 0,
+									"title": "Open links in new tab",
+									"type": "boolean"
+								},
+								"stripPrefix": {
+									"default": false,
+									"order": 1,
+									"title": "Hide “http” and “www” from link",
+									"type": "boolean"
+								}
+							},
+							"showIf": "showAdvancedOptions",
+							"title": "Advanced Options",
+							"type": "object"
+						},
+						"email": {
+							"default": true,
+							"description": "Link email addresses to email apps.",
+							"order": 0,
+							"title": "Email Addresses",
+							"type": "boolean"
+						},
+						"hashtag": {
+							"default": "twitter",
+							"description": "Link hashtags beginning with “#”",
+							"enum": [
+								"none",
+								"twitter",
+								"instagram",
+								"facebook"
+							],
+							"enumNames": {
+								"facebook": "Facebook",
+								"instagram": "Instagram",
+								"none": "none",
+								"twitter": "Twitter"
+							},
+							"order": 3,
+							"title": "Hashtags",
+							"type": "string"
+						},
+						"mention": {
+							"default": "twitter",
+							"description": "Link usernames beginning with “@”",
+							"enum": [
+								"none",
+								"twitter",
+								"instagram"
+							],
+							"enumNames": {
+								"instagram": "Instagram",
+								"none": "none",
+								"twitter": "Twitter"
+							},
+							"order": 2,
+							"title": "Mentions",
+							"type": "string"
+						},
+						"phone": {
+							"default": true,
+							"description": "Link phone numbers on devices that can make calls.",
+							"order": 1,
+							"title": "Phone Numbers",
+							"type": "boolean"
+						},
+						"showAdvancedOptions": {
+							"default": false,
+							"order": 4,
+							"title": "Show advanced options",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.67,
+				"upvotes": 2,
+				"downvotes": 1
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/aAVYJFvZ8YBu",
+			"created": "2017-09-21T18:50:49.935779Z",
+			"proposedApp": {
+				"id": "Epf9IcVPb-I5",
+				"title": "AutoLink",
+				"shortDescription": "Automatically link websites, email address and more!",
+				"longDescription": "AutoLink automatically creates links for the URLs found in the text on your website.\n\nSo “example.com”, becomes <a class=\"with-inherited-color with-underline\" target=\"_blank\" href=\"https://www.example.com\">example.com</a>.\n\nWith AutoLink installed, you’ll never see text like www.example.com as just text again. Instead it will be replaced with a real link that your visitors can click.\n\n# AutoLink handles it all.\n\n- URLs\n- Email addresses\n- Phone numbers\n- @usernames for Twitter, and Instagram\n- #hashtags for Twitter, Instagram, and Facebook\n\n# Why would I need this?\n\nWhen a website has a comments section or contains other user-generated content, often users put links in their content which your comment system or app doesn’t recognize. This creates a frustrating experience for content creators who want to link to their content, and for other commenters who want to visit those links.\n\n# AutoLink is secure.\n\nIf handled incorrectly, the process for converting user-generated text into a link can put your site at risk, especially if that process is handled on your server. Since AutoLink runs in the browser, and always sanitizes the text it converts, you can rest easing knowing that no matter what, the worst that a user can do is create a link, nothing more.",
+				"instructions": "",
+				"alias": "autolink",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/qWKmkdvVQUKpQta1bWGX_icon.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/UEATaO8wQPypsr7mP93W_tile.png",
+				"featuredAppImage": "",
+				"author": "Greg Jacobs",
+				"tagline": "",
+				"website": "https://github.com/gregjacobs/Autolinker.js/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"by-cloudflare",
+					"add-on"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "_OukNG9a51FU"
+				},
+				"created": "2017-05-22T21:40:14.688775Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-09-21T18:50:50.245125448Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-09-21T18:51:02.506641962Z"
+			}
+		},
+		{
+			"tag": "2.1.4",
+			"appId": "Epf9IcVPb-I5",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./bower_components/Autolinker.js/dist/Autolinker.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"advanced": {
+							"order": 5,
+							"properties": {
+								"location": {
+									"default": "body",
+									"format": "selector",
+									"order": 3,
+									"title": "Location",
+									"type": "string"
+								},
+								"newWindow": {
+									"default": false,
+									"order": 0,
+									"title": "Open links in new tab",
+									"type": "boolean"
+								},
+								"stripPrefix": {
+									"default": false,
+									"order": 1,
+									"title": "Hide “http” and “www” from link",
+									"type": "boolean"
+								}
+							},
+							"showIf": "showAdvancedOptions",
+							"title": "Advanced Options",
+							"type": "object"
+						},
+						"email": {
+							"default": true,
+							"description": "Link email addresses to email apps.",
+							"order": 0,
+							"title": "Email Addresses",
+							"type": "boolean"
+						},
+						"hashtag": {
+							"default": "twitter",
+							"description": "Link hashtags beginning with “#”",
+							"enum": [
+								"none",
+								"twitter",
+								"instagram",
+								"facebook"
+							],
+							"enumNames": {
+								"facebook": "Facebook",
+								"instagram": "Instagram",
+								"none": "none",
+								"twitter": "Twitter"
+							},
+							"order": 3,
+							"title": "Hashtags",
+							"type": "string"
+						},
+						"mention": {
+							"default": "twitter",
+							"description": "Link usernames beginning with “@”",
+							"enum": [
+								"none",
+								"twitter",
+								"instagram"
+							],
+							"enumNames": {
+								"instagram": "Instagram",
+								"none": "none",
+								"twitter": "Twitter"
+							},
+							"order": 2,
+							"title": "Mentions",
+							"type": "string"
+						},
+						"phone": {
+							"default": true,
+							"description": "Link phone numbers on devices that can make calls.",
+							"order": 1,
+							"title": "Phone Numbers",
+							"type": "boolean"
+						},
+						"showAdvancedOptions": {
+							"default": false,
+							"order": 4,
+							"title": "Show advanced options",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Added to “Widgets & Plugins” category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/aAVYJFvZ8YBu",
+			"created": "2018-01-23T18:48:12.482187Z",
+			"proposedApp": {
+				"id": "Epf9IcVPb-I5",
+				"title": "AutoLink",
+				"shortDescription": "Automatically link websites, email address and more!",
+				"longDescription": "AutoLink automatically creates links for the URLs found in the text on your website.\n\nSo “example.com”, becomes <a class=\"with-inherited-color with-underline\" target=\"_blank\" href=\"https://www.example.com\">example.com</a>.\n\nWith AutoLink installed, you’ll never see text like www.example.com as just text again. Instead it will be replaced with a real link that your visitors can click.\n\n# AutoLink handles it all.\n\n- URLs\n- Email addresses\n- Phone numbers\n- @usernames for Twitter, and Instagram\n- #hashtags for Twitter, Instagram, and Facebook\n\n# Why would I need this?\n\nWhen a website has a comments section or contains other user-generated content, often users put links in their content which your comment system or app doesn’t recognize. This creates a frustrating experience for content creators who want to link to their content, and for other commenters who want to visit those links.\n\n# AutoLink is secure.\n\nIf handled incorrectly, the process for converting user-generated text into a link can put your site at risk, especially if that process is handled on your server. Since AutoLink runs in the browser, and always sanitizes the text it converts, you can rest easing knowing that no matter what, the worst that a user can do is create a link, nothing more.",
+				"instructions": "",
+				"alias": "autolink",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/qWKmkdvVQUKpQta1bWGX_icon.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/UEATaO8wQPypsr7mP93W_tile.png",
+				"featuredAppImage": "",
+				"author": "Greg Jacobs",
+				"tagline": "",
+				"website": "https://github.com/gregjacobs/Autolinker.js/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"by-cloudflare",
+					"add-on",
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "_OukNG9a51FU"
+				},
+				"created": "2017-05-22T21:40:14.688775Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-01-23T18:48:12.737184233Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-01-23T18:48:35.335530583Z"
+			}
+		},
+		{
+			"tag": "2.1.5",
+			"appId": "Epf9IcVPb-I5",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./bower_components/Autolinker.js/dist/Autolinker.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"advanced": {
+							"order": 5,
+							"properties": {
+								"location": {
+									"default": "body",
+									"format": "selector",
+									"order": 3,
+									"title": "Location",
+									"type": "string"
+								},
+								"newWindow": {
+									"default": false,
+									"order": 0,
+									"title": "Open links in new tab",
+									"type": "boolean"
+								},
+								"stripPrefix": {
+									"default": false,
+									"order": 1,
+									"title": "Hide “http” and “www” from link",
+									"type": "boolean"
+								}
+							},
+							"showIf": "showAdvancedOptions",
+							"title": "Advanced Options",
+							"type": "object"
+						},
+						"email": {
+							"default": true,
+							"description": "Link email addresses to email apps.",
+							"order": 0,
+							"title": "Email Addresses",
+							"type": "boolean"
+						},
+						"hashtag": {
+							"default": "twitter",
+							"description": "Link hashtags beginning with “#”",
+							"enum": [
+								"none",
+								"twitter",
+								"instagram",
+								"facebook"
+							],
+							"enumNames": {
+								"facebook": "Facebook",
+								"instagram": "Instagram",
+								"none": "none",
+								"twitter": "Twitter"
+							},
+							"order": 3,
+							"title": "Hashtags",
+							"type": "string"
+						},
+						"mention": {
+							"default": "twitter",
+							"description": "Link usernames beginning with “@”",
+							"enum": [
+								"none",
+								"twitter",
+								"instagram"
+							],
+							"enumNames": {
+								"instagram": "Instagram",
+								"none": "none",
+								"twitter": "Twitter"
+							},
+							"order": 2,
+							"title": "Mentions",
+							"type": "string"
+						},
+						"phone": {
+							"default": true,
+							"description": "Link phone numbers on devices that can make calls.",
+							"order": 1,
+							"title": "Phone Numbers",
+							"type": "boolean"
+						},
+						"showAdvancedOptions": {
+							"default": false,
+							"order": 4,
+							"title": "Show advanced options",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 7,
+				"downvotes": 0
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/aAVYJFvZ8YBu",
+			"created": "2018-02-06T21:51:06.226377Z",
+			"proposedApp": {
+				"id": "Epf9IcVPb-I5",
+				"title": "AutoLink",
+				"shortDescription": "Automatically link websites, email address and more!",
+				"longDescription": "AutoLink automatically creates links for the URLs found in the text on your website.\n\nSo “example.com”, becomes <a class=\"with-inherited-color with-underline\" target=\"_blank\" href=\"https://www.example.com\">example.com</a>.\n\nWith AutoLink installed, you’ll never see text like www.example.com as just text again. Instead it will be replaced with a real link that your visitors can click.\n\n# AutoLink handles it all.\n\n- URLs\n- Email addresses\n- Phone numbers\n- @usernames for Twitter, and Instagram\n- #hashtags for Twitter, Instagram, and Facebook\n\n# Why would I need this?\n\nWhen a website has a comments section or contains other user-generated content, often users put links in their content which your comment system or app doesn’t recognize. This creates a frustrating experience for content creators who want to link to their content, and for other commenters who want to visit those links.\n\n# AutoLink is secure.\n\nIf handled incorrectly, the process for converting user-generated text into a link can put your site at risk, especially if that process is handled on your server. Since AutoLink runs in the browser, and always sanitizes the text it converts, you can rest easing knowing that no matter what, the worst that a user can do is create a link, nothing more.",
+				"instructions": "",
+				"alias": "autolink",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/qWKmkdvVQUKpQta1bWGX_icon.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/UEATaO8wQPypsr7mP93W_tile.png",
+				"featuredAppImage": "",
+				"author": "Greg Jacobs",
+				"tagline": "",
+				"website": "https://github.com/gregjacobs/Autolinker.js/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"by-cloudflare",
+					"add-on",
+					"widgets-and-plugins",
+					"recommended-for-blogs"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "_OukNG9a51FU"
+				},
+				"created": "2017-05-22T21:40:14.688775Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-02-06T21:51:06.476139145Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-02-06T21:55:48.612026554Z"
+			}
+		},
+		{
+			"tag": "2.1.6",
+			"appId": "Epf9IcVPb-I5",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./bower_components/Autolinker.js/dist/Autolinker.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"advanced": {
+							"order": 5,
+							"properties": {
+								"location": {
+									"default": "body",
+									"format": "selector",
+									"order": 3,
+									"title": "Location",
+									"type": "string"
+								},
+								"newWindow": {
+									"default": false,
+									"order": 0,
+									"title": "Open links in new tab",
+									"type": "boolean"
+								},
+								"stripPrefix": {
+									"default": false,
+									"order": 1,
+									"title": "Hide “http” and “www” from link",
+									"type": "boolean"
+								}
+							},
+							"showIf": "showAdvancedOptions",
+							"title": "Advanced Options",
+							"type": "object"
+						},
+						"email": {
+							"default": true,
+							"description": "Link email addresses to email apps.",
+							"order": 0,
+							"title": "Email Addresses",
+							"type": "boolean"
+						},
+						"hashtag": {
+							"default": "twitter",
+							"description": "Link hashtags beginning with “#”",
+							"enum": [
+								"none",
+								"twitter",
+								"instagram",
+								"facebook"
+							],
+							"enumNames": {
+								"facebook": "Facebook",
+								"instagram": "Instagram",
+								"none": "none",
+								"twitter": "Twitter"
+							},
+							"order": 3,
+							"title": "Hashtags",
+							"type": "string"
+						},
+						"mention": {
+							"default": "twitter",
+							"description": "Link usernames beginning with “@”",
+							"enum": [
+								"none",
+								"twitter",
+								"instagram"
+							],
+							"enumNames": {
+								"instagram": "Instagram",
+								"none": "none",
+								"twitter": "Twitter"
+							},
+							"order": 2,
+							"title": "Mentions",
+							"type": "string"
+						},
+						"phone": {
+							"default": true,
+							"description": "Link phone numbers on devices that can make calls.",
+							"order": 1,
+							"title": "Phone Numbers",
+							"type": "boolean"
+						},
+						"showAdvancedOptions": {
+							"default": false,
+							"order": 4,
+							"title": "Show advanced options",
+							"type": "boolean"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.83,
+				"upvotes": 30,
+				"downvotes": 6
+			},
+			"releaseNotes": "Updated app's categories",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/aAVYJFvZ8YBu",
+			"created": "2018-11-13T22:33:45.020272Z",
+			"proposedApp": {
+				"id": "Epf9IcVPb-I5",
+				"title": "AutoLink",
+				"shortDescription": "Automatically link websites, email address and more!",
+				"longDescription": "AutoLink automatically creates links for the URLs found in the text on your website.\n\nSo “example.com”, becomes <a class=\"with-inherited-color with-underline\" target=\"_blank\" href=\"https://www.example.com\">example.com</a>.\n\nWith AutoLink installed, you’ll never see text like www.example.com as just text again. Instead it will be replaced with a real link that your visitors can click.\n\n# AutoLink handles it all.\n\n- URLs\n- Email addresses\n- Phone numbers\n- @usernames for Twitter, and Instagram\n- #hashtags for Twitter, Instagram, and Facebook\n\n# Why would I need this?\n\nWhen a website has a comments section or contains other user-generated content, often users put links in their content which your comment system or app doesn’t recognize. This creates a frustrating experience for content creators who want to link to their content, and for other commenters who want to visit those links.\n\n# AutoLink is secure.\n\nIf handled incorrectly, the process for converting user-generated text into a link can put your site at risk, especially if that process is handled on your server. Since AutoLink runs in the browser, and always sanitizes the text it converts, you can rest easing knowing that no matter what, the worst that a user can do is create a link, nothing more.",
+				"instructions": "",
+				"alias": "autolink",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/qWKmkdvVQUKpQta1bWGX_icon.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/UEATaO8wQPypsr7mP93W_tile.png",
+				"featuredAppImage": "",
+				"author": "Greg Jacobs",
+				"tagline": "",
+				"website": "https://github.com/gregjacobs/Autolinker.js/",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"recommended-for-blogs"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "_OukNG9a51FU"
+				},
+				"created": "2017-05-22T21:40:14.688775Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-11-13T22:34:19.353288685Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-11-14T17:30:35.4782686Z"
+			}
+		}
+	]
+}

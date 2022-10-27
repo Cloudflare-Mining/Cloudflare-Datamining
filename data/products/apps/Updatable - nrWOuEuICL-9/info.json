@@ -1,0 +1,4008 @@
+{
+	"id": "nrWOuEuICL-9",
+	"title": "Updatable",
+	"shortDescription": "Update any part of your website, instantly.",
+	"longDescription": "#Update your site in an instant \n\nUpdatable lets you tweak your site before it’s served, with no code or devs required. Change what users and search engine crawlers see, either as a temporary fix or a permanent solution.\n\nFix a simple SEO issue with our live page editor, add bulk page redirects, or reverse proxy your content without waiting for developers to get round to your request.\n\nUpdatable reduces the need for developer involvement, taking tedious jobs off their hands and freeing up their time to focus on bigger projects.\n\n#What can you change?\n\n*SEOs can update metadata and tags by page, folder or domain\n*Developers can overcome the restrictions and limitations of their CMS\n*Paid Media teams can create an infinite number of landing pages\n*Data analysts can add or amend custom events and dimensions\n\nStruggling to get a simple change prioritized, or unable to achieve your goals due to a code freeze? Updatable gives you greater freedom and complete flexibility.",
+	"instructions": "",
+	"alias": "updatable",
+	"orgId": "32c444499da1fba317ccf121dc0c9fc6",
+	"icon": "https://images.cloudflareapps.com/afP_U2-JG3NB/updatable-logo.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-live-editor.png",
+		"https://images.cloudflareapps.com/ULWIUevrAN3G/app-store-modifications%20%281%29.png",
+		"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-robots.png",
+		"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-settings.png",
+		"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-redirect.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/PAwiuM0Dq3qk/app-thumbnail.png",
+	"featuredAppImage": "https://images.cloudflareapps.com/xgQKHM4TMepX/app-logo.png",
+	"author": "Updatable",
+	"tagline": "",
+	"website": "https://www.updatable.com",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://www.updatable.com/terms-of-service.html",
+	"privacyPolicyURL": "https://www.updatable.com/privacy-policy.html",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.2.2",
+	"infoVersion": "1.2.2",
+	"points": 0,
+	"supportEmail": "support@updatable.com",
+	"products": [
+		{
+			"id": "free",
+			"title": "Free",
+			"shortDescription": "For anyone who wants to explore Updatable. Includes 5 active modifications, unlimited team members, unlimited revisions  and access to Advanced DOM, Status Codes, Redirects, URL Rewrites, Response Headers, Robots.txt & Live Editor",
+			"longDescription": "For anyone who wants to explore Updatable. Includes **5 active modifications**, unlimited team members, unlimited revisions  and access to Advanced DOM, Status Codes, Redirects, URL Rewrites, Response Headers, Robots.txt & Live Editor",
+			"visible": true,
+			"price": 0,
+			"order": 0,
+			"plan": "free",
+			"created": null
+		},
+		{
+			"id": "starter",
+			"title": "Starter",
+			"shortDescription": "For small & hobbyist websites. Everything in the Free tier with 100 active modifications and access to Dynamic Directories.",
+			"longDescription": "For small & hobbyist websites. Everything in the Free tier with **100 active modifications** and access to Dynamic Directories.",
+			"visible": true,
+			"price": 2900,
+			"order": 0,
+			"plan": "UPDATABLE_STARTER",
+			"feature": "apps.updatable_starter.enabled",
+			"created": null
+		},
+		{
+			"id": "pro",
+			"title": "Pro",
+			"shortDescription": "For professional websites who need to update their content. Everything in the Starter tier with 300 active modifications and access to Bulk Redirects & Bulk Status Codes and email support.",
+			"longDescription": "For professional websites who need to update their content. Everything in the Starter tier with **300 active modifications** and access to **Bulk Redirects, **Bulk Status Codes** & email support.",
+			"visible": true,
+			"price": 7900,
+			"order": 2,
+			"plan": "UPDATABLE_PRO",
+			"feature": "apps.updatable_pro.enabled",
+			"created": null
+		},
+		{
+			"id": "business",
+			"title": "Business",
+			"shortDescription": "For websites that are customer facing or business critical.",
+			"longDescription": "Everything in the Pro tier with **750 active modifications**.",
+			"visible": true,
+			"price": 14900,
+			"order": 3,
+			"plan": "UPDATABLE_BIZ",
+			"feature": "apps.updatable_biz.enabled",
+			"created": null
+		}
+	],
+	"categoryIds": [
+		"widgets-and-plugins"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "6e3239477f7832028d03b9dbdd5b2848",
+			"created": "2019-05-10T15:38:40.843881582Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "r3MG9XBrV1Ls"
+	},
+	"created": "2019-05-10T15:38:38.433861Z",
+	"org": {
+		"id": "32c444499da1fba317ccf121dc0c9fc6",
+		"title": "",
+		"username": "32c444499da1fba317ccf121dc0c9fc6",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "widgets-and-plugins",
+			"title": "Widgets & Plugins",
+			"description": "Apps that add functionality and services to your website.",
+			"icon": "",
+			"points": 10,
+			"visible": true,
+			"metadata": {
+				"promoted": false
+			},
+			"created": "2018-01-22T19:19:00.135755Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.1",
+			"appId": "nrWOuEuICL-9",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 2,
+							"required": true,
+							"services": [
+								"WvY46Jg582mZ"
+							],
+							"title": "Updatable",
+							"type": "object"
+						},
+						"help": {
+							"helpvalue": "After creating your Updatable account, follow the instructions in the application for making changes to your website.",
+							"order": 1,
+							"type": "help"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "For professional websites who need to update their content.",
+						"longDescription": "Everything in free including Custom Headers, URL Rewrites, Live Editor and Dynamic Directories. Includes 100,000 transformed pages.",
+						"visible": true,
+						"price": 6900,
+						"order": 1,
+						"plan": "pro",
+						"created": null
+					},
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For anyone who wants to explore Updatable.",
+						"longDescription": "Features include URL Redirects, Custom Status Codes and Robots.txt. Includes no transformed pages.",
+						"visible": true,
+						"price": 0,
+						"order": 2,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "For website with fairly high traffic.",
+						"longDescription": "Everything in Pro including Advanced DOM Modifications, Bulk Redirects, Bulk Status Codes amd Team Management. Includes 500,000 transformed pages.",
+						"visible": true,
+						"price": 39900,
+						"order": 0,
+						"plan": "business",
+						"created": null
+					}
+				],
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.updatable.com/api/webhooks/cf/events",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error in the Updatable system. Please try again."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://app.updatable.com/api/webhooks/cf/events",
+						"events": [
+							"update-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://app.updatable.com/api/webhooks/cf/events",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://app.updatable.com/api/webhooks/cf/events",
+						"events": [
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"releaseNotes": "Our first release",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/r3MG9XBrV1Ls",
+			"metadata": {
+				"code": {
+					"sourceTag": "r3MG9XBrV1Ls",
+					"uploadedOn": "2019-05-10T15:38:39.774907854Z"
+				}
+			},
+			"created": "2019-05-10T15:38:39.341108Z",
+			"proposedApp": {
+				"id": "nrWOuEuICL-9",
+				"title": "Updatable",
+				"shortDescription": "Update any part of your website, instantly.",
+				"longDescription": "#Update your site in an instant \n\nUpdatable lets you tweak your site before it’s served, with no code or devs required. Change what users and search engine crawlers see, either as a temporary fix or a permanent solution.\n\nFix a simple SEO issue with our live page editor, add bulk page redirects, or reverse proxy your content without waiting for developers to get round to your request.\n\nUpdatable reduces the need for developer involvement, taking tedious jobs off their hands and freeing up their time to focus on bigger projects.\n\n#What can you change?\n\n*SEOs can update metadata and tags by page, folder or domain\n*Developers can overcome the restrictions and limitations of their CMS\n*Paid Media teams can create an infinite number of landing pages\n*Data analysts can add or amend custom events and dimensions\n\nStruggling to get a simple change prioritized, or unable to achieve your goals due to a code freeze? Updatable gives you greater freedom and complete flexibility.",
+				"instructions": "",
+				"alias": "updatable",
+				"orgId": "6e3239477f7832028d03b9dbdd5b2848",
+				"icon": "https://images.cloudflareapps.com/afP_U2-JG3NB/updatable-logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-live-editor.png",
+					"https://images.cloudflareapps.com/ULWIUevrAN3G/app-store-modifications%20%281%29.png",
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-robots.png",
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-settings.png",
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-redirect.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/PAwiuM0Dq3qk/app-thumbnail.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/xgQKHM4TMepX/app-logo.png",
+				"author": "Updatable",
+				"tagline": "",
+				"website": "https://www.updatable.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.updatable.com/terms-of-service.html",
+				"privacyPolicyURL": "https://www.updatable.com/privacy-policy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@updatable.com",
+				"products": [
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "For professional websites who need to update their content.",
+						"longDescription": "Everything in free including Custom Headers, URL Rewrites, Live Editor and Dynamic Directories. Includes 100,000 transformed pages.",
+						"visible": true,
+						"price": 6900,
+						"order": 1,
+						"plan": "pro",
+						"created": null
+					},
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For anyone who wants to explore Updatable.",
+						"longDescription": "Features include URL Redirects, Custom Status Codes and Robots.txt. Includes no transformed pages.",
+						"visible": true,
+						"price": 0,
+						"order": 2,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "For website with fairly high traffic.",
+						"longDescription": "Everything in Pro including Advanced DOM Modifications, Bulk Redirects, Bulk Status Codes amd Team Management. Includes 500,000 transformed pages.",
+						"visible": true,
+						"price": 39900,
+						"order": 0,
+						"plan": "business",
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "r3MG9XBrV1Ls"
+				},
+				"created": "2019-05-10T15:38:38.433861Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "6e3239477f7832028d03b9dbdd5b2848",
+				"requestedAt": "2019-05-10T15:38:40.82263416Z",
+				"canceledByUserId": "6e3239477f7832028d03b9dbdd5b2848",
+				"canceledAt": "2019-05-20T09:47:44.885256145Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "nrWOuEuICL-9",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 2,
+							"required": true,
+							"services": [
+								"WvY46Jg582mZ"
+							],
+							"title": "Updatable",
+							"type": "object"
+						},
+						"help": {
+							"helpvalue": "After creating your Updatable account, follow the instructions in the application for making changes to your website.",
+							"order": 1,
+							"type": "help"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "For professional websites who need to update their content.",
+						"longDescription": "Everything in free including Custom Headers, URL Rewrites, Live Editor and Dynamic Directories. Includes 100,000 transformed pages.",
+						"visible": true,
+						"price": 6900,
+						"order": 1,
+						"plan": "pro",
+						"created": null
+					},
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For anyone who wants to explore Updatable.",
+						"longDescription": "Features include URL Redirects, Custom Status Codes and Robots.txt. Includes no transformed pages.",
+						"visible": true,
+						"price": 0,
+						"order": 2,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "For website with fairly high traffic.",
+						"longDescription": "Everything in Pro including Advanced DOM Modifications, Bulk Redirects, Bulk Status Codes amd Team Management. Includes 500,000 transformed pages.",
+						"visible": true,
+						"price": 39900,
+						"order": 0,
+						"plan": "business",
+						"created": null
+					}
+				],
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.updatable.com/api/webhooks/cf/events",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error in the Updatable system. Please try again."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://app.updatable.com/api/webhooks/cf/events",
+						"events": [
+							"update-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://app.updatable.com/api/webhooks/cf/events",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://app.updatable.com/api/webhooks/cf/events",
+						"events": [
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"releaseNotes": "Releasing a free beta",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/r3MG9XBrV1Ls",
+			"created": "2019-05-20T09:47:43.887146Z",
+			"proposedApp": {
+				"id": "nrWOuEuICL-9",
+				"title": "Updatable",
+				"shortDescription": "Update any part of your website, instantly.",
+				"longDescription": "#Update your site in an instant \n\nUpdatable lets you tweak your site before it’s served, with no code or devs required. Change what users and search engine crawlers see, either as a temporary fix or a permanent solution.\n\nFix a simple SEO issue with our live page editor, add bulk page redirects, or reverse proxy your content without waiting for developers to get round to your request.\n\nUpdatable reduces the need for developer involvement, taking tedious jobs off their hands and freeing up their time to focus on bigger projects.\n\n#What can you change?\n\n*SEOs can update metadata and tags by page, folder or domain\n*Developers can overcome the restrictions and limitations of their CMS\n*Paid Media teams can create an infinite number of landing pages\n*Data analysts can add or amend custom events and dimensions\n\nStruggling to get a simple change prioritized, or unable to achieve your goals due to a code freeze? Updatable gives you greater freedom and complete flexibility.",
+				"instructions": "",
+				"alias": "updatable",
+				"orgId": "6e3239477f7832028d03b9dbdd5b2848",
+				"icon": "https://images.cloudflareapps.com/afP_U2-JG3NB/updatable-logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-live-editor.png",
+					"https://images.cloudflareapps.com/ULWIUevrAN3G/app-store-modifications%20%281%29.png",
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-robots.png",
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-settings.png",
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-redirect.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/PAwiuM0Dq3qk/app-thumbnail.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/xgQKHM4TMepX/app-logo.png",
+				"author": "Updatable",
+				"tagline": "",
+				"website": "https://www.updatable.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.updatable.com/terms-of-service.html",
+				"privacyPolicyURL": "https://www.updatable.com/privacy-policy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@updatable.com",
+				"products": [
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "For professional websites who need to update their content.",
+						"longDescription": "Everything in free including Custom Headers, URL Rewrites, Live Editor and Dynamic Directories. Includes 100,000 transformed pages.",
+						"visible": false,
+						"price": 6900,
+						"order": 1,
+						"plan": "pro",
+						"created": null
+					},
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For anyone who wants to explore Updatable.",
+						"longDescription": "Features include URL Redirects, Custom Status Codes and Robots.txt. Includes no transformed pages.",
+						"visible": true,
+						"price": 0,
+						"order": 2,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "For website with fairly high traffic.",
+						"longDescription": "Everything in Pro including Advanced DOM Modifications, Bulk Redirects, Bulk Status Codes amd Team Management. Includes 500,000 transformed pages.",
+						"visible": false,
+						"price": 39900,
+						"order": 0,
+						"plan": "business",
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "r3MG9XBrV1Ls"
+				},
+				"created": "2019-05-10T15:38:38.433861Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "6e3239477f7832028d03b9dbdd5b2848",
+				"requestedAt": "2019-05-20T09:47:44.907634371Z",
+				"canceledByUserId": "6e3239477f7832028d03b9dbdd5b2848",
+				"canceledAt": "2019-06-03T09:41:09.009067351Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "nrWOuEuICL-9",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 2,
+							"required": true,
+							"services": [
+								"WvY46Jg582mZ"
+							],
+							"title": "Updatable",
+							"type": "object"
+						},
+						"help": {
+							"helpvalue": "After creating your Updatable account, follow the instructions in the application for making changes to your website.",
+							"order": 1,
+							"type": "help"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "For professional websites who need to update their content.",
+						"longDescription": "Everything in free including Custom Headers, URL Rewrites, Live Editor and Dynamic Directories. Includes 100,000 transformed pages.",
+						"visible": true,
+						"price": 6900,
+						"order": 1,
+						"plan": "pro",
+						"created": null
+					},
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For anyone who wants to explore Updatable.",
+						"longDescription": "Features include URL Redirects, Custom Status Codes and Robots.txt. Includes no transformed pages.",
+						"visible": true,
+						"price": 0,
+						"order": 2,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "For website with fairly high traffic.",
+						"longDescription": "Everything in Pro including Advanced DOM Modifications, Bulk Redirects, Bulk Status Codes amd Team Management. Includes 500,000 transformed pages.",
+						"visible": true,
+						"price": 39900,
+						"order": 0,
+						"plan": "business",
+						"created": null
+					}
+				],
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.updatable.com/api/webhooks/cf/events",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error in the Updatable system. Please try again."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://app.updatable.com/api/webhooks/cf/events",
+						"events": [
+							"update-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://app.updatable.com/api/webhooks/cf/events",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://app.updatable.com/api/webhooks/cf/events",
+						"events": [
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"manual": true,
+			"releaseNotes": "Releasing a free beta",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/r3MG9XBrV1Ls",
+			"created": "2019-06-03T09:41:08.541996Z",
+			"proposedApp": {
+				"id": "nrWOuEuICL-9",
+				"title": "Updatable",
+				"shortDescription": "Update any part of your website, instantly.",
+				"longDescription": "#Update your site in an instant \n\nUpdatable lets you tweak your site before it’s served, with no code or devs required. Change what users and search engine crawlers see, either as a temporary fix or a permanent solution.\n\nFix a simple SEO issue with our live page editor, add bulk page redirects, or reverse proxy your content without waiting for developers to get round to your request.\n\nUpdatable reduces the need for developer involvement, taking tedious jobs off their hands and freeing up their time to focus on bigger projects.\n\n#What can you change?\n\n*SEOs can update metadata and tags by page, folder or domain\n*Developers can overcome the restrictions and limitations of their CMS\n*Paid Media teams can create an infinite number of landing pages\n*Data analysts can add or amend custom events and dimensions\n\nStruggling to get a simple change prioritized, or unable to achieve your goals due to a code freeze? Updatable gives you greater freedom and complete flexibility.",
+				"instructions": "",
+				"alias": "updatable",
+				"orgId": "6e3239477f7832028d03b9dbdd5b2848",
+				"icon": "https://images.cloudflareapps.com/afP_U2-JG3NB/updatable-logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-live-editor.png",
+					"https://images.cloudflareapps.com/ULWIUevrAN3G/app-store-modifications%20%281%29.png",
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-robots.png",
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-settings.png",
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-redirect.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/PAwiuM0Dq3qk/app-thumbnail.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/xgQKHM4TMepX/app-logo.png",
+				"author": "Updatable",
+				"tagline": "",
+				"website": "https://www.updatable.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.updatable.com/terms-of-service.html",
+				"privacyPolicyURL": "https://www.updatable.com/privacy-policy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@updatable.com",
+				"products": [
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "For professional websites who need to update their content.",
+						"longDescription": "Everything in free including Custom Headers, URL Rewrites, Live Editor and Dynamic Directories. Includes 100,000 transformed pages.",
+						"visible": false,
+						"price": 6900,
+						"order": 1,
+						"plan": "pro",
+						"created": null
+					},
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For anyone who wants to explore Updatable.",
+						"longDescription": "Features include URL Redirects, Custom Status Codes and Robots.txt. Includes no transformed pages.",
+						"visible": true,
+						"price": 0,
+						"order": 2,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "For website with fairly high traffic.",
+						"longDescription": "Everything in Pro including Advanced DOM Modifications, Bulk Redirects, Bulk Status Codes amd Team Management. Includes 500,000 transformed pages.",
+						"visible": false,
+						"price": 39900,
+						"order": 0,
+						"plan": "business",
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "r3MG9XBrV1Ls"
+				},
+				"created": "2019-05-10T15:38:38.433861Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "6e3239477f7832028d03b9dbdd5b2848",
+				"requestedAt": "2019-06-03T09:41:09.063158003Z",
+				"canceledByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"canceledAt": "2019-06-04T19:40:04.549335869Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.4",
+			"appId": "nrWOuEuICL-9",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 2,
+							"required": true,
+							"services": [
+								"WvY46Jg582mZ"
+							],
+							"title": "Updatable",
+							"type": "object"
+						},
+						"help": {
+							"helpvalue": "After creating your Updatable account, follow the instructions in the application for making changes to your website.",
+							"order": 1,
+							"type": "help"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "For professional websites who need to update their content.",
+						"longDescription": "Everything in free including Custom Headers, URL Rewrites, Live Editor and Dynamic Directories. Includes 100,000 transformed pages.",
+						"visible": true,
+						"price": 6900,
+						"order": 1,
+						"plan": "pro",
+						"created": null
+					},
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For anyone who wants to explore Updatable.",
+						"longDescription": "Features include URL Redirects, Custom Status Codes and Robots.txt. Includes no transformed pages.",
+						"visible": true,
+						"price": 0,
+						"order": 2,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "For website with fairly high traffic.",
+						"longDescription": "Everything in Pro including Advanced DOM Modifications, Bulk Redirects, Bulk Status Codes amd Team Management. Includes 500,000 transformed pages.",
+						"visible": true,
+						"price": 39900,
+						"order": 0,
+						"plan": "business",
+						"created": null
+					}
+				],
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.updatable.com/api/webhooks/cf/events",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error in the Updatable system. Please try again."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://app.updatable.com/api/webhooks/cf/events",
+						"events": [
+							"update-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://app.updatable.com/api/webhooks/cf/events",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://app.updatable.com/api/webhooks/cf/events",
+						"events": [
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"manual": true,
+			"releaseNotes": "Added product code",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/r3MG9XBrV1Ls",
+			"created": "2019-06-04T19:40:03.488919Z",
+			"proposedApp": {
+				"id": "nrWOuEuICL-9",
+				"title": "Updatable",
+				"shortDescription": "Update any part of your website, instantly.",
+				"longDescription": "#Update your site in an instant \n\nUpdatable lets you tweak your site before it’s served, with no code or devs required. Change what users and search engine crawlers see, either as a temporary fix or a permanent solution.\n\nFix a simple SEO issue with our live page editor, add bulk page redirects, or reverse proxy your content without waiting for developers to get round to your request.\n\nUpdatable reduces the need for developer involvement, taking tedious jobs off their hands and freeing up their time to focus on bigger projects.\n\n#What can you change?\n\n*SEOs can update metadata and tags by page, folder or domain\n*Developers can overcome the restrictions and limitations of their CMS\n*Paid Media teams can create an infinite number of landing pages\n*Data analysts can add or amend custom events and dimensions\n\nStruggling to get a simple change prioritized, or unable to achieve your goals due to a code freeze? Updatable gives you greater freedom and complete flexibility.",
+				"instructions": "",
+				"alias": "updatable",
+				"orgId": "6e3239477f7832028d03b9dbdd5b2848",
+				"icon": "https://images.cloudflareapps.com/afP_U2-JG3NB/updatable-logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-live-editor.png",
+					"https://images.cloudflareapps.com/ULWIUevrAN3G/app-store-modifications%20%281%29.png",
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-robots.png",
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-settings.png",
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-redirect.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/PAwiuM0Dq3qk/app-thumbnail.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/xgQKHM4TMepX/app-logo.png",
+				"author": "Updatable",
+				"tagline": "",
+				"website": "https://www.updatable.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.updatable.com/terms-of-service.html",
+				"privacyPolicyURL": "https://www.updatable.com/privacy-policy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@updatable.com",
+				"products": [
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "For professional websites who need to update their content.",
+						"longDescription": "Everything in free including Custom Headers, URL Rewrites, Live Editor and Dynamic Directories. Includes 100,000 transformed pages.",
+						"visible": false,
+						"price": 6900,
+						"order": 1,
+						"plan": "UPDATABLE_PRO",
+						"feature": "apps.updatable_pro.enabled",
+						"created": null
+					},
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For anyone who wants to explore Updatable.",
+						"longDescription": "Features include URL Redirects, Custom Status Codes and Robots.txt. Includes no transformed pages.",
+						"visible": true,
+						"price": 0,
+						"order": 2,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "For website with fairly high traffic.",
+						"longDescription": "Everything in Pro including Advanced DOM Modifications, Bulk Redirects, Bulk Status Codes amd Team Management. Includes 500,000 transformed pages.",
+						"visible": false,
+						"price": 39900,
+						"order": 0,
+						"plan": "UPDATABLE_BIZ",
+						"feature": "apps.updatable_biz.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "r3MG9XBrV1Ls"
+				},
+				"created": "2019-05-10T15:38:38.433861Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"requestedAt": "2019-06-04T19:40:04.605938261Z",
+				"canceledAt": null,
+				"reviewedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"reviewedAt": "2019-06-04T19:46:37.282740841Z"
+			}
+		},
+		{
+			"tag": "1.0.5",
+			"appId": "nrWOuEuICL-9",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 2,
+							"required": true,
+							"services": [
+								"WvY46Jg582mZ"
+							],
+							"title": "Updatable",
+							"type": "object"
+						},
+						"help": {
+							"helpvalue": "After creating your Updatable account, follow the instructions in the application for making changes to your website.",
+							"order": 1,
+							"type": "help"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "For professional websites who need to update their content.",
+						"longDescription": "Everything in free including Custom Headers, URL Rewrites, Live Editor and Dynamic Directories. Includes 100,000 transformed pages.",
+						"visible": true,
+						"price": 6900,
+						"order": 1,
+						"plan": "UPDATABLE_PRO",
+						"feature": "apps.updatable_pro.enabled",
+						"created": null
+					},
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For anyone who wants to explore Updatable.",
+						"longDescription": "Features include URL Redirects, Custom Status Codes and Robots.txt. Includes no transformed pages.",
+						"visible": true,
+						"price": 0,
+						"order": 2,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "For website with fairly high traffic.",
+						"longDescription": "Everything in Pro including Advanced DOM Modifications, Bulk Redirects, Bulk Status Codes amd Team Management. Includes 500,000 transformed pages.",
+						"visible": true,
+						"price": 39900,
+						"order": 0,
+						"plan": "UPDATABLE_BIZ",
+						"feature": "apps.updatable_biz.enabled",
+						"created": null
+					}
+				],
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.updatable.com/api/webhooks/cf/events",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error in the Updatable system. Please try again."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://app.updatable.com/api/webhooks/cf/events",
+						"events": [
+							"update-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://app.updatable.com/api/webhooks/cf/events",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://app.updatable.com/api/webhooks/cf/events",
+						"events": [
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"manual": true,
+			"releaseNotes": "Fixed install.json issues",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/hV8RuCrzyHTG",
+			"metadata": {
+				"code": {
+					"sourceTag": "hV8RuCrzyHTG",
+					"uploadedOn": "2019-06-05T09:54:41.742713384Z"
+				}
+			},
+			"created": "2019-06-05T09:54:41.164368Z",
+			"proposedApp": {
+				"id": "nrWOuEuICL-9",
+				"title": "Updatable",
+				"shortDescription": "Update any part of your website, instantly.",
+				"longDescription": "#Update your site in an instant \n\nUpdatable lets you tweak your site before it’s served, with no code or devs required. Change what users and search engine crawlers see, either as a temporary fix or a permanent solution.\n\nFix a simple SEO issue with our live page editor, add bulk page redirects, or reverse proxy your content without waiting for developers to get round to your request.\n\nUpdatable reduces the need for developer involvement, taking tedious jobs off their hands and freeing up their time to focus on bigger projects.\n\n#What can you change?\n\n*SEOs can update metadata and tags by page, folder or domain\n*Developers can overcome the restrictions and limitations of their CMS\n*Paid Media teams can create an infinite number of landing pages\n*Data analysts can add or amend custom events and dimensions\n\nStruggling to get a simple change prioritized, or unable to achieve your goals due to a code freeze? Updatable gives you greater freedom and complete flexibility.",
+				"instructions": "",
+				"alias": "updatable",
+				"orgId": "6e3239477f7832028d03b9dbdd5b2848",
+				"icon": "https://images.cloudflareapps.com/afP_U2-JG3NB/updatable-logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-live-editor.png",
+					"https://images.cloudflareapps.com/ULWIUevrAN3G/app-store-modifications%20%281%29.png",
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-robots.png",
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-settings.png",
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-redirect.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/PAwiuM0Dq3qk/app-thumbnail.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/xgQKHM4TMepX/app-logo.png",
+				"author": "Updatable",
+				"tagline": "",
+				"website": "https://www.updatable.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.updatable.com/terms-of-service.html",
+				"privacyPolicyURL": "https://www.updatable.com/privacy-policy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@updatable.com",
+				"products": [
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "For professional websites who need to update their content.",
+						"longDescription": "Everything in free including Custom Headers, URL Rewrites, Live Editor and Dynamic Directories. Includes 100,000 transformed pages.",
+						"visible": true,
+						"price": 6900,
+						"order": 1,
+						"plan": "UPDATABLE_PRO",
+						"feature": "apps.updatable_pro.enabled",
+						"created": null
+					},
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For anyone who wants to explore Updatable.",
+						"longDescription": "Features include URL Redirects, Custom Status Codes and Robots.txt. Includes no transformed pages.",
+						"visible": true,
+						"price": 0,
+						"order": 2,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "For website with fairly high traffic.",
+						"longDescription": "Everything in Pro including Advanced DOM Modifications, Bulk Redirects, Bulk Status Codes amd Team Management. Includes 500,000 transformed pages.",
+						"visible": true,
+						"price": 39900,
+						"order": 0,
+						"plan": "UPDATABLE_BIZ",
+						"feature": "apps.updatable_biz.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "r3MG9XBrV1Ls"
+				},
+				"created": "2019-05-10T15:38:38.433861Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "6e3239477f7832028d03b9dbdd5b2848",
+				"requestedAt": "2019-06-05T09:54:42.707156154Z",
+				"canceledByUserId": "6e3239477f7832028d03b9dbdd5b2848",
+				"canceledAt": "2019-06-06T09:07:58.493913922Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.6",
+			"appId": "nrWOuEuICL-9",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 2,
+							"required": true,
+							"services": [
+								"WvY46Jg582mZ"
+							],
+							"title": "Updatable",
+							"type": "object"
+						},
+						"help": {
+							"helpvalue": "After creating your Updatable account, follow the instructions in the application for making changes to your website.",
+							"order": 1,
+							"type": "help"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "For professional websites who need to update their content.",
+						"longDescription": "Everything in free including Custom Headers, URL Rewrites, Live Editor and Dynamic Directories. Includes 100,000 transformed pages.",
+						"visible": true,
+						"price": 6900,
+						"order": 1,
+						"plan": "UPDATABLE_PRO",
+						"feature": "apps.updatable_pro.enabled",
+						"created": null
+					},
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For anyone who wants to explore Updatable.",
+						"longDescription": "Features include URL Redirects, Custom Status Codes and Robots.txt. Includes no transformed pages.",
+						"visible": true,
+						"price": 0,
+						"order": 2,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "For website with fairly high traffic.",
+						"longDescription": "Everything in Pro including Advanced DOM Modifications, Bulk Redirects, Bulk Status Codes amd Team Management. Includes 500,000 transformed pages.",
+						"visible": true,
+						"price": 39900,
+						"order": 0,
+						"plan": "UPDATABLE_BIZ",
+						"feature": "apps.updatable_biz.enabled",
+						"created": null
+					}
+				],
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.updatable.com/api/webhooks/cf/events",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error in the Updatable system. Please try again."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://app.updatable.com/api/webhooks/cf/events",
+						"events": [
+							"update-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://app.updatable.com/api/webhooks/cf/events",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://app.updatable.com/api/webhooks/cf/events",
+						"events": [
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"manual": true,
+			"releaseNotes": "Fixed install.json issues",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/hV8RuCrzyHTG",
+			"created": "2019-06-06T09:07:58.007877Z",
+			"proposedApp": {
+				"id": "nrWOuEuICL-9",
+				"title": "Updatable",
+				"shortDescription": "Update any part of your website, instantly.",
+				"longDescription": "#Update your site in an instant \n\nUpdatable lets you tweak your site before it’s served, with no code or devs required. Change what users and search engine crawlers see, either as a temporary fix or a permanent solution.\n\nFix a simple SEO issue with our live page editor, add bulk page redirects, or reverse proxy your content without waiting for developers to get round to your request.\n\nUpdatable reduces the need for developer involvement, taking tedious jobs off their hands and freeing up their time to focus on bigger projects.\n\n#What can you change?\n\n*SEOs can update metadata and tags by page, folder or domain\n*Developers can overcome the restrictions and limitations of their CMS\n*Paid Media teams can create an infinite number of landing pages\n*Data analysts can add or amend custom events and dimensions\n\nStruggling to get a simple change prioritized, or unable to achieve your goals due to a code freeze? Updatable gives you greater freedom and complete flexibility.",
+				"instructions": "",
+				"alias": "updatable",
+				"orgId": "6e3239477f7832028d03b9dbdd5b2848",
+				"icon": "https://images.cloudflareapps.com/afP_U2-JG3NB/updatable-logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-live-editor.png",
+					"https://images.cloudflareapps.com/ULWIUevrAN3G/app-store-modifications%20%281%29.png",
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-robots.png",
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-settings.png",
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-redirect.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/PAwiuM0Dq3qk/app-thumbnail.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/xgQKHM4TMepX/app-logo.png",
+				"author": "Updatable",
+				"tagline": "",
+				"website": "https://www.updatable.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.updatable.com/terms-of-service.html",
+				"privacyPolicyURL": "https://www.updatable.com/privacy-policy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@updatable.com",
+				"products": [
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "For professional websites who need to update their content.",
+						"longDescription": "Everything in free including Custom Headers, URL Rewrites, Live Editor and Dynamic Directories. Includes 100,000 transformed pages.",
+						"visible": true,
+						"price": 6900,
+						"order": 1,
+						"plan": "UPDATABLE_PRO",
+						"feature": "apps.updatable_pro.enabled",
+						"created": null
+					},
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For anyone who wants to explore Updatable.",
+						"longDescription": "Features include URL Redirects, Custom Status Codes and Robots.txt. Includes no transformed pages.",
+						"visible": true,
+						"price": 0,
+						"order": 2,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "For website with fairly high traffic.",
+						"longDescription": "Everything in Pro including Advanced DOM Modifications, Bulk Redirects, Bulk Status Codes amd Team Management. Includes 500,000 transformed pages.",
+						"visible": true,
+						"price": 39900,
+						"order": 0,
+						"plan": "UPDATABLE_BIZ",
+						"feature": "apps.updatable_biz.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "r3MG9XBrV1Ls"
+				},
+				"created": "2019-05-10T15:38:38.433861Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "6e3239477f7832028d03b9dbdd5b2848",
+				"requestedAt": "2019-06-06T09:08:11.084476932Z",
+				"canceledAt": null,
+				"reviewedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"reviewedAt": "2019-06-12T19:04:07.07001923Z"
+			}
+		},
+		{
+			"tag": "1.0.7",
+			"appId": "nrWOuEuICL-9",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 2,
+							"required": true,
+							"services": [
+								"WvY46Jg582mZ"
+							],
+							"title": "Updatable",
+							"type": "object"
+						},
+						"help": {
+							"helpvalue": "After creating your Updatable account, follow the instructions in the application for making changes to your website.",
+							"order": 1,
+							"type": "help"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "For professional websites who need to update their content.",
+						"longDescription": "Everything in free including Custom Headers, URL Rewrites, Live Editor and Dynamic Directories. Includes 100,000 transformed pages.",
+						"visible": true,
+						"price": 6900,
+						"order": 1,
+						"plan": "UPDATABLE_PRO",
+						"feature": "apps.updatable_pro.enabled",
+						"created": null
+					},
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For anyone who wants to explore Updatable.",
+						"longDescription": "Features include URL Redirects, Custom Status Codes and Robots.txt. Includes no transformed pages.",
+						"visible": true,
+						"price": 0,
+						"order": 2,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "For website with fairly high traffic.",
+						"longDescription": "Everything in Pro including Advanced DOM Modifications, Bulk Redirects, Bulk Status Codes amd Team Management. Includes 500,000 transformed pages.",
+						"visible": true,
+						"price": 39900,
+						"order": 0,
+						"plan": "UPDATABLE_BIZ",
+						"feature": "apps.updatable_biz.enabled",
+						"created": null
+					}
+				],
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.updatable.com/api/webhooks/cf/events",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error in the Updatable system. Please try again."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://app.updatable.com/api/webhooks/cf/events",
+						"events": [
+							"update-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://app.updatable.com/api/webhooks/cf/events",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://app.updatable.com/api/webhooks/cf/events",
+						"events": [
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"manual": true,
+			"releaseNotes": "Fixed build issues causing errors",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/iB4XW4EZ87Ic",
+			"metadata": {
+				"code": {
+					"sourceTag": "iB4XW4EZ87Ic",
+					"uploadedOn": "2019-06-20T16:54:17.993605268Z"
+				}
+			},
+			"created": "2019-06-20T16:54:17.523162Z",
+			"proposedApp": {
+				"id": "nrWOuEuICL-9",
+				"title": "Updatable",
+				"shortDescription": "Update any part of your website, instantly.",
+				"longDescription": "#Update your site in an instant \n\nUpdatable lets you tweak your site before it’s served, with no code or devs required. Change what users and search engine crawlers see, either as a temporary fix or a permanent solution.\n\nFix a simple SEO issue with our live page editor, add bulk page redirects, or reverse proxy your content without waiting for developers to get round to your request.\n\nUpdatable reduces the need for developer involvement, taking tedious jobs off their hands and freeing up their time to focus on bigger projects.\n\n#What can you change?\n\n*SEOs can update metadata and tags by page, folder or domain\n*Developers can overcome the restrictions and limitations of their CMS\n*Paid Media teams can create an infinite number of landing pages\n*Data analysts can add or amend custom events and dimensions\n\nStruggling to get a simple change prioritized, or unable to achieve your goals due to a code freeze? Updatable gives you greater freedom and complete flexibility.",
+				"instructions": "",
+				"alias": "updatable",
+				"orgId": "6e3239477f7832028d03b9dbdd5b2848",
+				"icon": "https://images.cloudflareapps.com/afP_U2-JG3NB/updatable-logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-live-editor.png",
+					"https://images.cloudflareapps.com/ULWIUevrAN3G/app-store-modifications%20%281%29.png",
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-robots.png",
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-settings.png",
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-redirect.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/PAwiuM0Dq3qk/app-thumbnail.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/xgQKHM4TMepX/app-logo.png",
+				"author": "Updatable",
+				"tagline": "",
+				"website": "https://www.updatable.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.updatable.com/terms-of-service.html",
+				"privacyPolicyURL": "https://www.updatable.com/privacy-policy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@updatable.com",
+				"products": [
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "For professional websites who need to update their content.",
+						"longDescription": "Everything in free including Custom Headers, URL Rewrites, Live Editor and Dynamic Directories. Includes 100,000 transformed pages.",
+						"visible": true,
+						"price": 6900,
+						"order": 1,
+						"plan": "UPDATABLE_PRO",
+						"feature": "apps.updatable_pro.enabled",
+						"created": null
+					},
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For anyone who wants to explore Updatable.",
+						"longDescription": "Features include URL Redirects, Custom Status Codes and Robots.txt. Includes no transformed pages.",
+						"visible": true,
+						"price": 0,
+						"order": 2,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "For website with fairly high traffic.",
+						"longDescription": "Everything in Pro including Advanced DOM Modifications, Bulk Redirects, Bulk Status Codes amd Team Management. Includes 500,000 transformed pages.",
+						"visible": true,
+						"price": 39900,
+						"order": 0,
+						"plan": "UPDATABLE_BIZ",
+						"feature": "apps.updatable_biz.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "r3MG9XBrV1Ls"
+				},
+				"created": "2019-05-10T15:38:38.433861Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "6e3239477f7832028d03b9dbdd5b2848",
+				"requestedAt": "2019-06-20T16:54:19.017767745Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-06-21T15:50:48.325815338Z"
+			}
+		},
+		{
+			"tag": "1.0.8",
+			"appId": "nrWOuEuICL-9",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 2,
+							"required": true,
+							"services": [
+								"WvY46Jg582mZ"
+							],
+							"title": "Updatable",
+							"type": "object"
+						},
+						"help": {
+							"helpvalue": "After creating your Updatable account, follow the instructions in the application for making changes to your website.",
+							"order": 1,
+							"type": "help"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "For professional websites who need to update their content.",
+						"longDescription": "Everything in free including Custom Headers, URL Rewrites, Live Editor and Dynamic Directories. Includes 100,000 transformed pages.",
+						"visible": true,
+						"price": 6900,
+						"order": 1,
+						"plan": "UPDATABLE_PRO",
+						"feature": "apps.updatable_pro.enabled",
+						"created": null
+					},
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For anyone who wants to explore Updatable.",
+						"longDescription": "Features include URL Redirects, Custom Status Codes and Robots.txt. Includes no transformed pages.",
+						"visible": true,
+						"price": 0,
+						"order": 2,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "For websites with fairly high traffic.",
+						"longDescription": "Everything in Pro including Advanced DOM Modifications, Bulk Redirects, Bulk Status Codes amd Team Management. Includes 500,000 transformed pages.",
+						"visible": true,
+						"price": 39900,
+						"order": 0,
+						"plan": "UPDATABLE_BIZ",
+						"feature": "apps.updatable_biz.enabled",
+						"created": null
+					}
+				],
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.updatable.com/api/webhooks/cf/events",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error in the Updatable system. Please try again."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://app.updatable.com/api/webhooks/cf/events",
+						"events": [
+							"update-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://app.updatable.com/api/webhooks/cf/events",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://app.updatable.com/api/webhooks/cf/events",
+						"events": [
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"releaseNotes": "Remove redundant code and files",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/1po8-C2h3FIf",
+			"metadata": {
+				"code": {
+					"sourceTag": "1po8-C2h3FIf",
+					"uploadedOn": "2019-06-25T11:04:01.025966193Z"
+				}
+			},
+			"created": "2019-06-25T11:04:00.441295Z",
+			"proposedApp": {
+				"id": "nrWOuEuICL-9",
+				"title": "Updatable",
+				"shortDescription": "Update any part of your website, instantly.",
+				"longDescription": "#Update your site in an instant \n\nUpdatable lets you tweak your site before it’s served, with no code or devs required. Change what users and search engine crawlers see, either as a temporary fix or a permanent solution.\n\nFix a simple SEO issue with our live page editor, add bulk page redirects, or reverse proxy your content without waiting for developers to get round to your request.\n\nUpdatable reduces the need for developer involvement, taking tedious jobs off their hands and freeing up their time to focus on bigger projects.\n\n#What can you change?\n\n*SEOs can update metadata and tags by page, folder or domain\n*Developers can overcome the restrictions and limitations of their CMS\n*Paid Media teams can create an infinite number of landing pages\n*Data analysts can add or amend custom events and dimensions\n\nStruggling to get a simple change prioritized, or unable to achieve your goals due to a code freeze? Updatable gives you greater freedom and complete flexibility.",
+				"instructions": "",
+				"alias": "updatable",
+				"orgId": "6e3239477f7832028d03b9dbdd5b2848",
+				"icon": "https://images.cloudflareapps.com/afP_U2-JG3NB/updatable-logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-live-editor.png",
+					"https://images.cloudflareapps.com/ULWIUevrAN3G/app-store-modifications%20%281%29.png",
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-robots.png",
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-settings.png",
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-redirect.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/PAwiuM0Dq3qk/app-thumbnail.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/xgQKHM4TMepX/app-logo.png",
+				"author": "Updatable",
+				"tagline": "",
+				"website": "https://www.updatable.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.updatable.com/terms-of-service.html",
+				"privacyPolicyURL": "https://www.updatable.com/privacy-policy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@updatable.com",
+				"products": [
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "For professional websites who need to update their content.",
+						"longDescription": "Everything in free including Custom Headers, URL Rewrites, Live Editor and Dynamic Directories. Includes 100,000 transformed pages.",
+						"visible": true,
+						"price": 6900,
+						"order": 1,
+						"plan": "UPDATABLE_PRO",
+						"feature": "apps.updatable_pro.enabled",
+						"created": null
+					},
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For anyone who wants to explore Updatable.",
+						"longDescription": "Features include URL Redirects, Custom Status Codes and Robots.txt. Includes no transformed pages.",
+						"visible": true,
+						"price": 0,
+						"order": 2,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "For websites with fairly high traffic.",
+						"longDescription": "Everything in Pro including Advanced DOM Modifications, Bulk Redirects, Bulk Status Codes amd Team Management. Includes 500,000 transformed pages.",
+						"visible": true,
+						"price": 39900,
+						"order": 0,
+						"plan": "UPDATABLE_BIZ",
+						"feature": "apps.updatable_biz.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "r3MG9XBrV1Ls"
+				},
+				"created": "2019-05-10T15:38:38.433861Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "e6c47b48424b86ee8da7d2f7298e5212",
+				"requestedAt": "2019-06-25T11:05:33.43457914Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-06-27T17:10:58.415556686Z"
+			}
+		},
+		{
+			"tag": "1.0.9",
+			"appId": "nrWOuEuICL-9",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 2,
+							"required": true,
+							"services": [
+								"WvY46Jg582mZ"
+							],
+							"title": "Updatable",
+							"type": "object"
+						},
+						"help": {
+							"helpvalue": "After creating your Updatable account, follow the instructions in the application for making changes to your website.",
+							"order": 1,
+							"type": "help"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "For professional websites who need to update their content.",
+						"longDescription": "Everything in free including Custom Headers, URL Rewrites, Live Editor and Dynamic Directories. Includes 100,000 transformed pages.",
+						"visible": true,
+						"price": 6900,
+						"order": 1,
+						"plan": "UPDATABLE_PRO",
+						"feature": "apps.updatable_pro.enabled",
+						"created": null
+					},
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For anyone who wants to explore Updatable.",
+						"longDescription": "Features include URL Redirects, Custom Status Codes and Robots.txt. Includes no transformed pages.",
+						"visible": true,
+						"price": 0,
+						"order": 2,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "For websites with fairly high traffic.",
+						"longDescription": "Everything in Pro including Advanced DOM Modifications, Bulk Redirects, Bulk Status Codes amd Team Management. Includes 500,000 transformed pages.",
+						"visible": true,
+						"price": 39900,
+						"order": 0,
+						"plan": "UPDATABLE_BIZ",
+						"feature": "apps.updatable_biz.enabled",
+						"created": null
+					}
+				],
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.updatable.com/api/webhooks/cf/events",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error in the Updatable system. Please try again."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://app.updatable.com/api/webhooks/cf/events",
+						"events": [
+							"update-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://app.updatable.com/api/webhooks/cf/events",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://app.updatable.com/api/webhooks/cf/events",
+						"events": [
+							"new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"releaseNotes": "Added category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/1po8-C2h3FIf",
+			"created": "2019-06-27T17:15:43.965463Z",
+			"proposedApp": {
+				"id": "nrWOuEuICL-9",
+				"title": "Updatable",
+				"shortDescription": "Update any part of your website, instantly.",
+				"longDescription": "#Update your site in an instant \n\nUpdatable lets you tweak your site before it’s served, with no code or devs required. Change what users and search engine crawlers see, either as a temporary fix or a permanent solution.\n\nFix a simple SEO issue with our live page editor, add bulk page redirects, or reverse proxy your content without waiting for developers to get round to your request.\n\nUpdatable reduces the need for developer involvement, taking tedious jobs off their hands and freeing up their time to focus on bigger projects.\n\n#What can you change?\n\n*SEOs can update metadata and tags by page, folder or domain\n*Developers can overcome the restrictions and limitations of their CMS\n*Paid Media teams can create an infinite number of landing pages\n*Data analysts can add or amend custom events and dimensions\n\nStruggling to get a simple change prioritized, or unable to achieve your goals due to a code freeze? Updatable gives you greater freedom and complete flexibility.",
+				"instructions": "",
+				"alias": "updatable",
+				"orgId": "6e3239477f7832028d03b9dbdd5b2848",
+				"icon": "https://images.cloudflareapps.com/afP_U2-JG3NB/updatable-logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-live-editor.png",
+					"https://images.cloudflareapps.com/ULWIUevrAN3G/app-store-modifications%20%281%29.png",
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-robots.png",
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-settings.png",
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-redirect.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/PAwiuM0Dq3qk/app-thumbnail.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/xgQKHM4TMepX/app-logo.png",
+				"author": "Updatable",
+				"tagline": "",
+				"website": "https://www.updatable.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.updatable.com/terms-of-service.html",
+				"privacyPolicyURL": "https://www.updatable.com/privacy-policy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@updatable.com",
+				"products": [
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "For professional websites who need to update their content.",
+						"longDescription": "Everything in free including Custom Headers, URL Rewrites, Live Editor and Dynamic Directories. Includes 100,000 transformed pages.",
+						"visible": true,
+						"price": 6900,
+						"order": 1,
+						"plan": "UPDATABLE_PRO",
+						"feature": "apps.updatable_pro.enabled",
+						"created": null
+					},
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For anyone who wants to explore Updatable.",
+						"longDescription": "Features include URL Redirects, Custom Status Codes and Robots.txt. Includes no transformed pages.",
+						"visible": true,
+						"price": 0,
+						"order": 2,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "For websites with fairly high traffic.",
+						"longDescription": "Everything in Pro including Advanced DOM Modifications, Bulk Redirects, Bulk Status Codes amd Team Management. Includes 500,000 transformed pages.",
+						"visible": true,
+						"price": 39900,
+						"order": 0,
+						"plan": "UPDATABLE_BIZ",
+						"feature": "apps.updatable_biz.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "r3MG9XBrV1Ls"
+				},
+				"created": "2019-05-10T15:38:38.433861Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2019-06-27T17:15:44.554342321Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-06-27T17:15:59.744379578Z"
+			}
+		},
+		{
+			"tag": "1.0.10",
+			"appId": "nrWOuEuICL-9",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 2,
+							"required": true,
+							"services": [
+								"WvY46Jg582mZ"
+							],
+							"title": "Updatable",
+							"type": "object"
+						},
+						"help": {
+							"helpvalue": "After creating your Updatable account, follow the instructions in the application for making changes to your website.",
+							"order": 1,
+							"type": "help"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "For professional websites who need to update their content.",
+						"longDescription": "Everything in free including Custom Headers, URL Rewrites, Live Editor and Dynamic Directories. Includes 100,000 transformed pages.",
+						"visible": true,
+						"price": 6900,
+						"order": 1,
+						"plan": "UPDATABLE_PRO",
+						"feature": "apps.updatable_pro.enabled",
+						"created": null
+					},
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For anyone who wants to explore Updatable.",
+						"longDescription": "Features include URL Redirects, Custom Status Codes and Robots.txt. Includes no transformed pages.",
+						"visible": true,
+						"price": 0,
+						"order": 2,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "For websites with fairly high traffic.",
+						"longDescription": "Everything in Pro including Advanced DOM Modifications, Bulk Redirects, Bulk Status Codes amd Team Management. Includes 500,000 transformed pages.",
+						"visible": true,
+						"price": 39900,
+						"order": 0,
+						"plan": "UPDATABLE_BIZ",
+						"feature": "apps.updatable_biz.enabled",
+						"created": null
+					}
+				],
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.updatable.com/api/webhooks/cf/events",
+						"events": [
+							"option-change:account",
+							"update-install",
+							"delete-install",
+							"new-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error in the Updatable system. Please try again."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0,
+				"upvotes": 0,
+				"downvotes": 1
+			},
+			"releaseNotes": "Combined callback events so all receive auth data",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/omCIhToz4Zlu",
+			"metadata": {
+				"code": {
+					"sourceTag": "omCIhToz4Zlu",
+					"uploadedOn": "2019-07-01T12:21:04.362341944Z"
+				}
+			},
+			"created": "2019-07-01T12:21:03.940071Z",
+			"proposedApp": {
+				"id": "nrWOuEuICL-9",
+				"title": "Updatable",
+				"shortDescription": "Update any part of your website, instantly.",
+				"longDescription": "#Update your site in an instant \n\nUpdatable lets you tweak your site before it’s served, with no code or devs required. Change what users and search engine crawlers see, either as a temporary fix or a permanent solution.\n\nFix a simple SEO issue with our live page editor, add bulk page redirects, or reverse proxy your content without waiting for developers to get round to your request.\n\nUpdatable reduces the need for developer involvement, taking tedious jobs off their hands and freeing up their time to focus on bigger projects.\n\n#What can you change?\n\n*SEOs can update metadata and tags by page, folder or domain\n*Developers can overcome the restrictions and limitations of their CMS\n*Paid Media teams can create an infinite number of landing pages\n*Data analysts can add or amend custom events and dimensions\n\nStruggling to get a simple change prioritized, or unable to achieve your goals due to a code freeze? Updatable gives you greater freedom and complete flexibility.",
+				"instructions": "",
+				"alias": "updatable",
+				"orgId": "6e3239477f7832028d03b9dbdd5b2848",
+				"icon": "https://images.cloudflareapps.com/afP_U2-JG3NB/updatable-logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-live-editor.png",
+					"https://images.cloudflareapps.com/ULWIUevrAN3G/app-store-modifications%20%281%29.png",
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-robots.png",
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-settings.png",
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-redirect.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/PAwiuM0Dq3qk/app-thumbnail.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/xgQKHM4TMepX/app-logo.png",
+				"author": "Updatable",
+				"tagline": "",
+				"website": "https://www.updatable.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.updatable.com/terms-of-service.html",
+				"privacyPolicyURL": "https://www.updatable.com/privacy-policy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@updatable.com",
+				"products": [
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "For professional websites who need to update their content.",
+						"longDescription": "Everything in free including Custom Headers, URL Rewrites, Live Editor and Dynamic Directories. Includes 100,000 transformed pages.",
+						"visible": true,
+						"price": 6900,
+						"order": 1,
+						"plan": "UPDATABLE_PRO",
+						"feature": "apps.updatable_pro.enabled",
+						"created": null
+					},
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For anyone who wants to explore Updatable.",
+						"longDescription": "Features include URL Redirects, Custom Status Codes and Robots.txt. Includes no transformed pages.",
+						"visible": true,
+						"price": 0,
+						"order": 2,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "For websites with fairly high traffic.",
+						"longDescription": "Everything in Pro including Advanced DOM Modifications, Bulk Redirects, Bulk Status Codes amd Team Management. Includes 500,000 transformed pages.",
+						"visible": true,
+						"price": 39900,
+						"order": 0,
+						"plan": "UPDATABLE_BIZ",
+						"feature": "apps.updatable_biz.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "r3MG9XBrV1Ls"
+				},
+				"created": "2019-05-10T15:38:38.433861Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "e6c47b48424b86ee8da7d2f7298e5212",
+				"requestedAt": "2019-07-01T12:22:04.255214825Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-07-01T15:42:20.597962116Z"
+			}
+		},
+		{
+			"tag": "1.0.11",
+			"appId": "nrWOuEuICL-9",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 2,
+							"required": true,
+							"services": [
+								"WvY46Jg582mZ"
+							],
+							"title": "Updatable",
+							"type": "object"
+						},
+						"help": {
+							"helpvalue": "After creating your Updatable account, follow the instructions in the application for making changes to your website.",
+							"order": 1,
+							"type": "help"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "For professional websites who need to update their content.",
+						"longDescription": "Everything in free including Custom Headers, URL Rewrites, Live Editor and Dynamic Directories. Includes 100,000 transformed pages.",
+						"visible": true,
+						"price": 6900,
+						"order": 1,
+						"plan": "UPDATABLE_PRO",
+						"feature": "apps.updatable_pro.enabled",
+						"created": null
+					},
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For anyone who wants to explore Updatable.",
+						"longDescription": "Features include URL Redirects, Custom Status Codes and Robots.txt. Includes no transformed pages.",
+						"visible": true,
+						"price": 0,
+						"order": 2,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "For websites with fairly high traffic.",
+						"longDescription": "Everything in Pro including Advanced DOM Modifications, Bulk Redirects, Bulk Status Codes amd Team Management. Includes 500,000 transformed pages.",
+						"visible": true,
+						"price": 39900,
+						"order": 0,
+						"plan": "UPDATABLE_BIZ",
+						"feature": "apps.updatable_biz.enabled",
+						"created": null
+					}
+				],
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.updatable.com/api/webhooks/cf/events",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error in the Updatable system. Please try again."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"releaseNotes": "Attempting to work around speed/rate limit errors",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/rnjZxfDCPmE4",
+			"metadata": {
+				"code": {
+					"sourceTag": "rnjZxfDCPmE4",
+					"uploadedOn": "2019-07-05T15:04:14.285475963Z"
+				}
+			},
+			"created": "2019-07-05T15:04:13.857441Z",
+			"proposedApp": {
+				"id": "nrWOuEuICL-9",
+				"title": "Updatable",
+				"shortDescription": "Update any part of your website, instantly.",
+				"longDescription": "#Update your site in an instant \n\nUpdatable lets you tweak your site before it’s served, with no code or devs required. Change what users and search engine crawlers see, either as a temporary fix or a permanent solution.\n\nFix a simple SEO issue with our live page editor, add bulk page redirects, or reverse proxy your content without waiting for developers to get round to your request.\n\nUpdatable reduces the need for developer involvement, taking tedious jobs off their hands and freeing up their time to focus on bigger projects.\n\n#What can you change?\n\n*SEOs can update metadata and tags by page, folder or domain\n*Developers can overcome the restrictions and limitations of their CMS\n*Paid Media teams can create an infinite number of landing pages\n*Data analysts can add or amend custom events and dimensions\n\nStruggling to get a simple change prioritized, or unable to achieve your goals due to a code freeze? Updatable gives you greater freedom and complete flexibility.",
+				"instructions": "",
+				"alias": "updatable",
+				"orgId": "6e3239477f7832028d03b9dbdd5b2848",
+				"icon": "https://images.cloudflareapps.com/afP_U2-JG3NB/updatable-logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-live-editor.png",
+					"https://images.cloudflareapps.com/ULWIUevrAN3G/app-store-modifications%20%281%29.png",
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-robots.png",
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-settings.png",
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-redirect.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/PAwiuM0Dq3qk/app-thumbnail.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/xgQKHM4TMepX/app-logo.png",
+				"author": "Updatable",
+				"tagline": "",
+				"website": "https://www.updatable.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.updatable.com/terms-of-service.html",
+				"privacyPolicyURL": "https://www.updatable.com/privacy-policy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@updatable.com",
+				"products": [
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "For professional websites who need to update their content.",
+						"longDescription": "Everything in free including Custom Headers, URL Rewrites, Live Editor and Dynamic Directories. Includes 100,000 transformed pages.",
+						"visible": true,
+						"price": 6900,
+						"order": 1,
+						"plan": "UPDATABLE_PRO",
+						"feature": "apps.updatable_pro.enabled",
+						"created": null
+					},
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For anyone who wants to explore Updatable.",
+						"longDescription": "Features include URL Redirects, Custom Status Codes and Robots.txt. Includes no transformed pages.",
+						"visible": true,
+						"price": 0,
+						"order": 2,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "For websites with fairly high traffic.",
+						"longDescription": "Everything in Pro including Advanced DOM Modifications, Bulk Redirects, Bulk Status Codes amd Team Management. Includes 500,000 transformed pages.",
+						"visible": true,
+						"price": 39900,
+						"order": 0,
+						"plan": "UPDATABLE_BIZ",
+						"feature": "apps.updatable_biz.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "r3MG9XBrV1Ls"
+				},
+				"created": "2019-05-10T15:38:38.433861Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "e6c47b48424b86ee8da7d2f7298e5212",
+				"requestedAt": "2019-07-05T15:04:37.474762761Z",
+				"canceledByUserId": "e6c47b48424b86ee8da7d2f7298e5212",
+				"canceledAt": "2019-07-05T15:51:57.885735469Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.12",
+			"appId": "nrWOuEuICL-9",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 2,
+							"required": true,
+							"services": [
+								"WvY46Jg582mZ"
+							],
+							"title": "Updatable",
+							"type": "object"
+						},
+						"help": {
+							"helpvalue": "After creating your Updatable account, follow the instructions in the application for making changes to your website.",
+							"order": 1,
+							"type": "help"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "For professional websites who need to update their content.",
+						"longDescription": "Everything in free including Custom Headers, URL Rewrites, Live Editor and Dynamic Directories. Includes 100,000 transformed pages.",
+						"visible": true,
+						"price": 6900,
+						"order": 1,
+						"plan": "UPDATABLE_PRO",
+						"feature": "apps.updatable_pro.enabled",
+						"created": null
+					},
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For anyone who wants to explore Updatable.",
+						"longDescription": "Features include URL Redirects, Custom Status Codes and Robots.txt. Includes no transformed pages.",
+						"visible": true,
+						"price": 0,
+						"order": 2,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "For websites with fairly high traffic.",
+						"longDescription": "Everything in Pro including Advanced DOM Modifications, Bulk Redirects, Bulk Status Codes amd Team Management. Includes 500,000 transformed pages.",
+						"visible": true,
+						"price": 39900,
+						"order": 0,
+						"plan": "UPDATABLE_BIZ",
+						"feature": "apps.updatable_biz.enabled",
+						"created": null
+					}
+				],
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.updatable.com/api/webhooks/cf/events",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error in the Updatable system. Please try again."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"releaseNotes": "Small fixes",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/ISmxxwrgoBb6",
+			"metadata": {
+				"code": {
+					"sourceTag": "ISmxxwrgoBb6",
+					"uploadedOn": "2019-07-05T15:51:28.989418905Z"
+				}
+			},
+			"created": "2019-07-05T15:51:28.721405Z",
+			"proposedApp": {
+				"id": "nrWOuEuICL-9",
+				"title": "Updatable",
+				"shortDescription": "Update any part of your website, instantly.",
+				"longDescription": "#Update your site in an instant \n\nUpdatable lets you tweak your site before it’s served, with no code or devs required. Change what users and search engine crawlers see, either as a temporary fix or a permanent solution.\n\nFix a simple SEO issue with our live page editor, add bulk page redirects, or reverse proxy your content without waiting for developers to get round to your request.\n\nUpdatable reduces the need for developer involvement, taking tedious jobs off their hands and freeing up their time to focus on bigger projects.\n\n#What can you change?\n\n*SEOs can update metadata and tags by page, folder or domain\n*Developers can overcome the restrictions and limitations of their CMS\n*Paid Media teams can create an infinite number of landing pages\n*Data analysts can add or amend custom events and dimensions\n\nStruggling to get a simple change prioritized, or unable to achieve your goals due to a code freeze? Updatable gives you greater freedom and complete flexibility.",
+				"instructions": "",
+				"alias": "updatable",
+				"orgId": "6e3239477f7832028d03b9dbdd5b2848",
+				"icon": "https://images.cloudflareapps.com/afP_U2-JG3NB/updatable-logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-live-editor.png",
+					"https://images.cloudflareapps.com/ULWIUevrAN3G/app-store-modifications%20%281%29.png",
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-robots.png",
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-settings.png",
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-redirect.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/PAwiuM0Dq3qk/app-thumbnail.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/xgQKHM4TMepX/app-logo.png",
+				"author": "Updatable",
+				"tagline": "",
+				"website": "https://www.updatable.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.updatable.com/terms-of-service.html",
+				"privacyPolicyURL": "https://www.updatable.com/privacy-policy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@updatable.com",
+				"products": [
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "For professional websites who need to update their content.",
+						"longDescription": "Everything in free including Custom Headers, URL Rewrites, Live Editor and Dynamic Directories. Includes 100,000 transformed pages.",
+						"visible": true,
+						"price": 6900,
+						"order": 1,
+						"plan": "UPDATABLE_PRO",
+						"feature": "apps.updatable_pro.enabled",
+						"created": null
+					},
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For anyone who wants to explore Updatable.",
+						"longDescription": "Features include URL Redirects, Custom Status Codes and Robots.txt. Includes no transformed pages.",
+						"visible": true,
+						"price": 0,
+						"order": 2,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "For websites with fairly high traffic.",
+						"longDescription": "Everything in Pro including Advanced DOM Modifications, Bulk Redirects, Bulk Status Codes amd Team Management. Includes 500,000 transformed pages.",
+						"visible": true,
+						"price": 39900,
+						"order": 0,
+						"plan": "UPDATABLE_BIZ",
+						"feature": "apps.updatable_biz.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "r3MG9XBrV1Ls"
+				},
+				"created": "2019-05-10T15:38:38.433861Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "e6c47b48424b86ee8da7d2f7298e5212",
+				"requestedAt": "2019-07-05T15:51:57.897356226Z",
+				"canceledByUserId": "e6c47b48424b86ee8da7d2f7298e5212",
+				"canceledAt": "2019-07-05T16:07:13.74132305Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.13",
+			"appId": "nrWOuEuICL-9",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 2,
+							"required": true,
+							"services": [
+								"WvY46Jg582mZ"
+							],
+							"title": "Updatable",
+							"type": "object"
+						},
+						"help": {
+							"helpvalue": "After creating your Updatable account, follow the instructions in the application for making changes to your website.",
+							"order": 1,
+							"type": "help"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "For professional websites who need to update their content.",
+						"longDescription": "Everything in free including Custom Headers, URL Rewrites, Live Editor and Dynamic Directories. Includes 100,000 transformed pages.",
+						"visible": true,
+						"price": 6900,
+						"order": 1,
+						"plan": "UPDATABLE_PRO",
+						"feature": "apps.updatable_pro.enabled",
+						"created": null
+					},
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For anyone who wants to explore Updatable.",
+						"longDescription": "Features include URL Redirects, Custom Status Codes and Robots.txt. Includes no transformed pages.",
+						"visible": true,
+						"price": 0,
+						"order": 2,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "For websites with fairly high traffic.",
+						"longDescription": "Everything in Pro including Advanced DOM Modifications, Bulk Redirects, Bulk Status Codes amd Team Management. Includes 500,000 transformed pages.",
+						"visible": true,
+						"price": 39900,
+						"order": 0,
+						"plan": "UPDATABLE_BIZ",
+						"feature": "apps.updatable_biz.enabled",
+						"created": null
+					}
+				],
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.updatable.com/api/webhooks/cf/events",
+						"events": [
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error in the Updatable system. Please try again."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"releaseNotes": "Small fixes",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/snAKQuo9Z8Xd",
+			"metadata": {
+				"code": {
+					"sourceTag": "snAKQuo9Z8Xd",
+					"uploadedOn": "2019-07-05T16:07:02.919708677Z"
+				}
+			},
+			"created": "2019-07-05T16:07:02.62872Z",
+			"proposedApp": {
+				"id": "nrWOuEuICL-9",
+				"title": "Updatable",
+				"shortDescription": "Update any part of your website, instantly.",
+				"longDescription": "#Update your site in an instant \n\nUpdatable lets you tweak your site before it’s served, with no code or devs required. Change what users and search engine crawlers see, either as a temporary fix or a permanent solution.\n\nFix a simple SEO issue with our live page editor, add bulk page redirects, or reverse proxy your content without waiting for developers to get round to your request.\n\nUpdatable reduces the need for developer involvement, taking tedious jobs off their hands and freeing up their time to focus on bigger projects.\n\n#What can you change?\n\n*SEOs can update metadata and tags by page, folder or domain\n*Developers can overcome the restrictions and limitations of their CMS\n*Paid Media teams can create an infinite number of landing pages\n*Data analysts can add or amend custom events and dimensions\n\nStruggling to get a simple change prioritized, or unable to achieve your goals due to a code freeze? Updatable gives you greater freedom and complete flexibility.",
+				"instructions": "",
+				"alias": "updatable",
+				"orgId": "6e3239477f7832028d03b9dbdd5b2848",
+				"icon": "https://images.cloudflareapps.com/afP_U2-JG3NB/updatable-logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-live-editor.png",
+					"https://images.cloudflareapps.com/ULWIUevrAN3G/app-store-modifications%20%281%29.png",
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-robots.png",
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-settings.png",
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-redirect.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/PAwiuM0Dq3qk/app-thumbnail.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/xgQKHM4TMepX/app-logo.png",
+				"author": "Updatable",
+				"tagline": "",
+				"website": "https://www.updatable.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.updatable.com/terms-of-service.html",
+				"privacyPolicyURL": "https://www.updatable.com/privacy-policy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@updatable.com",
+				"products": [
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "For professional websites who need to update their content.",
+						"longDescription": "Everything in free including Custom Headers, URL Rewrites, Live Editor and Dynamic Directories. Includes 100,000 transformed pages.",
+						"visible": true,
+						"price": 6900,
+						"order": 1,
+						"plan": "UPDATABLE_PRO",
+						"feature": "apps.updatable_pro.enabled",
+						"created": null
+					},
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For anyone who wants to explore Updatable.",
+						"longDescription": "Features include URL Redirects, Custom Status Codes and Robots.txt. Includes no transformed pages.",
+						"visible": true,
+						"price": 0,
+						"order": 2,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "For websites with fairly high traffic.",
+						"longDescription": "Everything in Pro including Advanced DOM Modifications, Bulk Redirects, Bulk Status Codes amd Team Management. Includes 500,000 transformed pages.",
+						"visible": true,
+						"price": 39900,
+						"order": 0,
+						"plan": "UPDATABLE_BIZ",
+						"feature": "apps.updatable_biz.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "r3MG9XBrV1Ls"
+				},
+				"created": "2019-05-10T15:38:38.433861Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "e6c47b48424b86ee8da7d2f7298e5212",
+				"requestedAt": "2019-07-05T16:07:13.764447782Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-07-08T18:16:54.422725072Z"
+			}
+		},
+		{
+			"tag": "1.0.14",
+			"appId": "nrWOuEuICL-9",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 2,
+							"required": true,
+							"services": [
+								"WvY46Jg582mZ"
+							],
+							"title": "Updatable",
+							"type": "object"
+						},
+						"help": {
+							"helpvalue": "After creating your Updatable account, follow the instructions in the application for making changes to your website.",
+							"order": 1,
+							"type": "help"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "For professional websites who need to update their content.",
+						"longDescription": "Everything in free including Custom Headers, URL Rewrites, Live Editor and Dynamic Directories. Includes 100,000 transformed pages.",
+						"visible": true,
+						"price": 6900,
+						"order": 1,
+						"plan": "UPDATABLE_PRO",
+						"feature": "apps.updatable_pro.enabled",
+						"created": null
+					},
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For anyone who wants to explore Updatable.",
+						"longDescription": "Features include URL Redirects, Custom Status Codes and Robots.txt. Includes no transformed pages.",
+						"visible": true,
+						"price": 0,
+						"order": 2,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "For websites with fairly high traffic.",
+						"longDescription": "Everything in Pro including Advanced DOM Modifications, Bulk Redirects, Bulk Status Codes amd Team Management. Includes 500,000 transformed pages.",
+						"visible": true,
+						"price": 39900,
+						"order": 0,
+						"plan": "UPDATABLE_BIZ",
+						"feature": "apps.updatable_biz.enabled",
+						"created": null
+					}
+				],
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.updatable.com/api/webhooks/cf/events",
+						"events": [
+							"option-change:account",
+							"update-install",
+							"new-install",
+							"delete-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error in the Updatable system. Please try again."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.91,
+				"upvotes": 10,
+				"downvotes": 1
+			},
+			"releaseNotes": "Check for static extensions and ignore/bypass those calls.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/TWQkH3yX43KQ",
+			"metadata": {
+				"code": {
+					"sourceTag": "TWQkH3yX43KQ",
+					"uploadedOn": "2019-07-17T14:13:49.035429269Z"
+				}
+			},
+			"created": "2019-07-17T14:13:48.580555Z",
+			"proposedApp": {
+				"id": "nrWOuEuICL-9",
+				"title": "Updatable",
+				"shortDescription": "Update any part of your website, instantly.",
+				"longDescription": "#Update your site in an instant \n\nUpdatable lets you tweak your site before it’s served, with no code or devs required. Change what users and search engine crawlers see, either as a temporary fix or a permanent solution.\n\nFix a simple SEO issue with our live page editor, add bulk page redirects, or reverse proxy your content without waiting for developers to get round to your request.\n\nUpdatable reduces the need for developer involvement, taking tedious jobs off their hands and freeing up their time to focus on bigger projects.\n\n#What can you change?\n\n*SEOs can update metadata and tags by page, folder or domain\n*Developers can overcome the restrictions and limitations of their CMS\n*Paid Media teams can create an infinite number of landing pages\n*Data analysts can add or amend custom events and dimensions\n\nStruggling to get a simple change prioritized, or unable to achieve your goals due to a code freeze? Updatable gives you greater freedom and complete flexibility.",
+				"instructions": "",
+				"alias": "updatable",
+				"orgId": "6e3239477f7832028d03b9dbdd5b2848",
+				"icon": "https://images.cloudflareapps.com/afP_U2-JG3NB/updatable-logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-live-editor.png",
+					"https://images.cloudflareapps.com/ULWIUevrAN3G/app-store-modifications%20%281%29.png",
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-robots.png",
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-settings.png",
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-redirect.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/PAwiuM0Dq3qk/app-thumbnail.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/xgQKHM4TMepX/app-logo.png",
+				"author": "Updatable",
+				"tagline": "",
+				"website": "https://www.updatable.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.updatable.com/terms-of-service.html",
+				"privacyPolicyURL": "https://www.updatable.com/privacy-policy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@updatable.com",
+				"products": [
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "For professional websites who need to update their content.",
+						"longDescription": "Everything in free including Custom Headers, URL Rewrites, Live Editor and Dynamic Directories. Includes 100,000 transformed pages.",
+						"visible": true,
+						"price": 6900,
+						"order": 1,
+						"plan": "UPDATABLE_PRO",
+						"feature": "apps.updatable_pro.enabled",
+						"created": null
+					},
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For anyone who wants to explore Updatable.",
+						"longDescription": "Features include URL Redirects, Custom Status Codes and Robots.txt. Includes no transformed pages.",
+						"visible": true,
+						"price": 0,
+						"order": 2,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "For websites with fairly high traffic.",
+						"longDescription": "Everything in Pro including Advanced DOM Modifications, Bulk Redirects, Bulk Status Codes amd Team Management. Includes 500,000 transformed pages.",
+						"visible": true,
+						"price": 39900,
+						"order": 0,
+						"plan": "UPDATABLE_BIZ",
+						"feature": "apps.updatable_biz.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "r3MG9XBrV1Ls"
+				},
+				"created": "2019-05-10T15:38:38.433861Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "e6c47b48424b86ee8da7d2f7298e5212",
+				"requestedAt": "2019-07-17T14:14:22.635989518Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-07-18T20:16:41.710164441Z"
+			}
+		},
+		{
+			"tag": "1.0.18",
+			"appId": "nrWOuEuICL-9",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 2,
+							"required": true,
+							"services": [
+								"WvY46Jg582mZ"
+							],
+							"title": "Updatable",
+							"type": "object"
+						},
+						"help": {
+							"helpvalue": "After creating your Updatable account, follow the instructions in the application for making changes to your website.",
+							"order": 1,
+							"type": "help"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For anyone who wants to explore Updatable. Includes 5 active modifications, unlimited team members, unlimited revisions  and access to Advanced DOM, Status Codes, Redirects, URL Rewrites, Response Headers, Robots.txt & Live Editor",
+						"longDescription": "For anyone who wants to explore Updatable. Includes 5 active modifications, unlimited team members, unlimited revisions  and access to Advanced DOM, Status Codes, Redirects, URL Rewrites, Response Headers, Robots.txt & Live Editor",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "starter",
+						"title": "Starter",
+						"shortDescription": "For small & hobbyist websites. Everything in the Free tier with 100 active modifications and access to Dynamic Directories.",
+						"longDescription": "For small & hobbyist websites. Everything in the Free tier with 100 active modifications and access to Dynamic Directories.",
+						"visible": true,
+						"price": 4900,
+						"order": 0,
+						"plan": "UPDATABLE_STR",
+						"feature": "apps.updatable_str.enabled",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "For professional websites who need to update their content. Everything in the Starter tier with 300 active modifications and access to Bulk Redirects & Bulk Status Codes and email support.",
+						"longDescription": "For professional websites who need to update their content. Everything in the Starter tier with 300 active modifications and access to Bulk Redirects & Bulk Status Codes and email support.",
+						"visible": true,
+						"price": 9900,
+						"order": 2,
+						"plan": "UPDATABLE_PRO",
+						"feature": "apps.updatable_pro.enabled",
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "For websites that are customer facing or business critical.",
+						"longDescription": "Everything in the Pro tier with 750 active modifications.",
+						"visible": true,
+						"price": 19900,
+						"order": 3,
+						"plan": "UPDATABLE_BIZ",
+						"feature": "apps.updatable_biz.enabled",
+						"created": null
+					},
+					{
+						"id": "enterprise",
+						"title": "Enterprise",
+						"shortDescription": "For websites with fairly high traffic.",
+						"longDescription": "Everything in the Business tier with 3000 active modifications and slack support.",
+						"visible": true,
+						"price": 39900,
+						"order": 4,
+						"plan": "UPDATABLE_ENT",
+						"feature": "apps.updatable_ent.enabled",
+						"created": null
+					}
+				],
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.updatable.com/api/webhooks/cf/events",
+						"events": [
+							"option-change:account",
+							"update-install",
+							"new-install",
+							"delete-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error in the Updatable system. Please try again."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"releaseNotes": "Uses HTMLRewriter instead of third-party servers",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/zYRC1JxsHW9M",
+			"metadata": {
+				"code": {
+					"sourceTag": "zYRC1JxsHW9M",
+					"uploadedOn": "2019-11-11T14:12:04.466014469Z"
+				}
+			},
+			"created": "2019-11-11T14:12:03.931358Z",
+			"proposedApp": {
+				"id": "nrWOuEuICL-9",
+				"title": "Updatable",
+				"shortDescription": "Update any part of your website, instantly.",
+				"longDescription": "#Update your site in an instant \n\nUpdatable lets you tweak your site before it’s served, with no code or devs required. Change what users and search engine crawlers see, either as a temporary fix or a permanent solution.\n\nFix a simple SEO issue with our live page editor, add bulk page redirects, or reverse proxy your content without waiting for developers to get round to your request.\n\nUpdatable reduces the need for developer involvement, taking tedious jobs off their hands and freeing up their time to focus on bigger projects.\n\n#What can you change?\n\n*SEOs can update metadata and tags by page, folder or domain\n*Developers can overcome the restrictions and limitations of their CMS\n*Paid Media teams can create an infinite number of landing pages\n*Data analysts can add or amend custom events and dimensions\n\nStruggling to get a simple change prioritized, or unable to achieve your goals due to a code freeze? Updatable gives you greater freedom and complete flexibility.",
+				"instructions": "",
+				"alias": "updatable",
+				"orgId": "6e3239477f7832028d03b9dbdd5b2848",
+				"icon": "https://images.cloudflareapps.com/afP_U2-JG3NB/updatable-logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-live-editor.png",
+					"https://images.cloudflareapps.com/ULWIUevrAN3G/app-store-modifications%20%281%29.png",
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-robots.png",
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-settings.png",
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-redirect.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/PAwiuM0Dq3qk/app-thumbnail.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/xgQKHM4TMepX/app-logo.png",
+				"author": "Updatable",
+				"tagline": "",
+				"website": "https://www.updatable.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.updatable.com/terms-of-service.html",
+				"privacyPolicyURL": "https://www.updatable.com/privacy-policy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@updatable.com",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For anyone who wants to explore Updatable. Includes 5 active modifications, unlimited team members, unlimited revisions  and access to Advanced DOM, Status Codes, Redirects, URL Rewrites, Response Headers, Robots.txt & Live Editor",
+						"longDescription": "For anyone who wants to explore Updatable. Includes 5 active modifications, unlimited team members, unlimited revisions  and access to Advanced DOM, Status Codes, Redirects, URL Rewrites, Response Headers, Robots.txt & Live Editor",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "starter",
+						"title": "Starter",
+						"shortDescription": "For small & hobbyist websites. Everything in the Free tier with 100 active modifications and access to Dynamic Directories.",
+						"longDescription": "For small & hobbyist websites. Everything in the Free tier with 100 active modifications and access to Dynamic Directories.",
+						"visible": true,
+						"price": 4900,
+						"order": 0,
+						"plan": "UPDATABLE_STR",
+						"feature": "apps.updatable_str.enabled",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "For professional websites who need to update their content. Everything in the Starter tier with 300 active modifications and access to Bulk Redirects & Bulk Status Codes and email support.",
+						"longDescription": "For professional websites who need to update their content. Everything in the Starter tier with 300 active modifications and access to Bulk Redirects & Bulk Status Codes and email support.",
+						"visible": true,
+						"price": 9900,
+						"order": 2,
+						"plan": "UPDATABLE_PRO",
+						"feature": "apps.updatable_pro.enabled",
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "For websites that are customer facing or business critical.",
+						"longDescription": "Everything in the Pro tier with 750 active modifications.",
+						"visible": true,
+						"price": 19900,
+						"order": 3,
+						"plan": "UPDATABLE_BIZ",
+						"feature": "apps.updatable_biz.enabled",
+						"created": null
+					},
+					{
+						"id": "enterprise",
+						"title": "Enterprise",
+						"shortDescription": "For websites with fairly high traffic.",
+						"longDescription": "Everything in the Business tier with 3000 active modifications and slack support.",
+						"visible": true,
+						"price": 39900,
+						"order": 4,
+						"plan": "UPDATABLE_ENT",
+						"feature": "apps.updatable_ent.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "r3MG9XBrV1Ls"
+				},
+				"created": "2019-05-10T15:38:38.433861Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "22dea39495f29f35e6201bcf2b3e1968",
+				"requestedAt": "2019-11-11T14:12:05.639847807Z",
+				"canceledByUserId": "22dea39495f29f35e6201bcf2b3e1968",
+				"canceledAt": "2019-11-14T13:44:29.914952684Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.2.0",
+			"appId": "nrWOuEuICL-9",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 2,
+							"required": true,
+							"services": [
+								"WvY46Jg582mZ"
+							],
+							"title": "Updatable",
+							"type": "object"
+						},
+						"help": {
+							"helpvalue": "After creating your Updatable account, follow the instructions in the application for making changes to your website.",
+							"order": 1,
+							"type": "help"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For anyone who wants to explore Updatable. Includes 5 active modifications, unlimited team members, unlimited revisions  and access to Advanced DOM, Status Codes, Redirects, URL Rewrites, Response Headers, Robots.txt & Live Editor",
+						"longDescription": "For anyone who wants to explore Updatable. Includes **5 active modifications**, unlimited team members, unlimited revisions  and access to Advanced DOM, Status Codes, Redirects, URL Rewrites, Response Headers, Robots.txt & Live Editor",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "starter",
+						"title": "Starter",
+						"shortDescription": "For small & hobbyist websites. Everything in the Free tier with 100 active modifications and access to Dynamic Directories.",
+						"longDescription": "For small & hobbyist websites. Everything in the Free tier with **100 active modifications** and access to Dynamic Directories.",
+						"visible": true,
+						"price": 2900,
+						"order": 0,
+						"plan": "UPDATABLE_STR",
+						"feature": "apps.updatable_str.enabled",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "For professional websites who need to update their content. Everything in the Starter tier with 300 active modifications and access to Bulk Redirects & Bulk Status Codes and email support.",
+						"longDescription": "For professional websites who need to update their content. Everything in the Starter tier with **300 active modifications** and access to **Bulk Redirects, **Bulk Status Codes** & email support.",
+						"visible": true,
+						"price": 7900,
+						"order": 2,
+						"plan": "UPDATABLE_PRO",
+						"feature": "apps.updatable_pro.enabled",
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "For websites that are customer facing or business critical.",
+						"longDescription": "Everything in the Pro tier with **750 active modifications**.",
+						"visible": true,
+						"price": 14900,
+						"order": 3,
+						"plan": "UPDATABLE_BIZ",
+						"feature": "apps.updatable_biz.enabled",
+						"created": null
+					}
+				],
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.updatable.com/api/webhooks/cf/events",
+						"events": [
+							"option-change:account",
+							"update-install",
+							"new-install",
+							"delete-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error in the Updatable system. Please try again."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"releaseNotes": "Fixed a huge timeout streaming error. We have also revisited out pricing and removed Enterprise.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/nDnxCXPgXbky",
+			"metadata": {
+				"code": {
+					"sourceTag": "nDnxCXPgXbky",
+					"uploadedOn": "2019-11-14T13:44:28.865135552Z"
+				}
+			},
+			"created": "2019-11-14T13:44:28.360468Z",
+			"proposedApp": {
+				"id": "nrWOuEuICL-9",
+				"title": "Updatable",
+				"shortDescription": "Update any part of your website, instantly.",
+				"longDescription": "#Update your site in an instant \n\nUpdatable lets you tweak your site before it’s served, with no code or devs required. Change what users and search engine crawlers see, either as a temporary fix or a permanent solution.\n\nFix a simple SEO issue with our live page editor, add bulk page redirects, or reverse proxy your content without waiting for developers to get round to your request.\n\nUpdatable reduces the need for developer involvement, taking tedious jobs off their hands and freeing up their time to focus on bigger projects.\n\n#What can you change?\n\n*SEOs can update metadata and tags by page, folder or domain\n*Developers can overcome the restrictions and limitations of their CMS\n*Paid Media teams can create an infinite number of landing pages\n*Data analysts can add or amend custom events and dimensions\n\nStruggling to get a simple change prioritized, or unable to achieve your goals due to a code freeze? Updatable gives you greater freedom and complete flexibility.",
+				"instructions": "",
+				"alias": "updatable",
+				"orgId": "6e3239477f7832028d03b9dbdd5b2848",
+				"icon": "https://images.cloudflareapps.com/afP_U2-JG3NB/updatable-logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-live-editor.png",
+					"https://images.cloudflareapps.com/ULWIUevrAN3G/app-store-modifications%20%281%29.png",
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-robots.png",
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-settings.png",
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-redirect.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/PAwiuM0Dq3qk/app-thumbnail.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/xgQKHM4TMepX/app-logo.png",
+				"author": "Updatable",
+				"tagline": "",
+				"website": "https://www.updatable.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.updatable.com/terms-of-service.html",
+				"privacyPolicyURL": "https://www.updatable.com/privacy-policy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@updatable.com",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For anyone who wants to explore Updatable. Includes 5 active modifications, unlimited team members, unlimited revisions  and access to Advanced DOM, Status Codes, Redirects, URL Rewrites, Response Headers, Robots.txt & Live Editor",
+						"longDescription": "For anyone who wants to explore Updatable. Includes **5 active modifications**, unlimited team members, unlimited revisions  and access to Advanced DOM, Status Codes, Redirects, URL Rewrites, Response Headers, Robots.txt & Live Editor",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "starter",
+						"title": "Starter",
+						"shortDescription": "For small & hobbyist websites. Everything in the Free tier with 100 active modifications and access to Dynamic Directories.",
+						"longDescription": "For small & hobbyist websites. Everything in the Free tier with **100 active modifications** and access to Dynamic Directories.",
+						"visible": true,
+						"price": 2900,
+						"order": 0,
+						"plan": "UPDATABLE_STR",
+						"feature": "apps.updatable_str.enabled",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "For professional websites who need to update their content. Everything in the Starter tier with 300 active modifications and access to Bulk Redirects & Bulk Status Codes and email support.",
+						"longDescription": "For professional websites who need to update their content. Everything in the Starter tier with **300 active modifications** and access to **Bulk Redirects, **Bulk Status Codes** & email support.",
+						"visible": true,
+						"price": 7900,
+						"order": 2,
+						"plan": "UPDATABLE_PRO",
+						"feature": "apps.updatable_pro.enabled",
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "For websites that are customer facing or business critical.",
+						"longDescription": "Everything in the Pro tier with **750 active modifications**.",
+						"visible": true,
+						"price": 14900,
+						"order": 3,
+						"plan": "UPDATABLE_BIZ",
+						"feature": "apps.updatable_biz.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "r3MG9XBrV1Ls"
+				},
+				"created": "2019-05-10T15:38:38.433861Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "22dea39495f29f35e6201bcf2b3e1968",
+				"requestedAt": "2019-11-14T13:44:29.973698431Z",
+				"canceledByUserId": "22dea39495f29f35e6201bcf2b3e1968",
+				"canceledAt": "2019-11-14T13:47:23.051434647Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.2.1",
+			"appId": "nrWOuEuICL-9",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 2,
+							"required": true,
+							"services": [
+								"WvY46Jg582mZ"
+							],
+							"title": "Updatable",
+							"type": "object"
+						},
+						"help": {
+							"helpvalue": "After creating your Updatable account, follow the instructions in the application for making changes to your website.",
+							"order": 1,
+							"type": "help"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For anyone who wants to explore Updatable. Includes 5 active modifications, unlimited team members, unlimited revisions  and access to Advanced DOM, Status Codes, Redirects, URL Rewrites, Response Headers, Robots.txt & Live Editor",
+						"longDescription": "For anyone who wants to explore Updatable. Includes **5 active modifications**, unlimited team members, unlimited revisions  and access to Advanced DOM, Status Codes, Redirects, URL Rewrites, Response Headers, Robots.txt & Live Editor",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "starter",
+						"title": "Starter",
+						"shortDescription": "For small & hobbyist websites. Everything in the Free tier with 100 active modifications and access to Dynamic Directories.",
+						"longDescription": "For small & hobbyist websites. Everything in the Free tier with **100 active modifications** and access to Dynamic Directories.",
+						"visible": true,
+						"price": 2900,
+						"order": 0,
+						"plan": "UPDATABLE_STR",
+						"feature": "apps.updatable_str.enabled",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "For professional websites who need to update their content. Everything in the Starter tier with 300 active modifications and access to Bulk Redirects & Bulk Status Codes and email support.",
+						"longDescription": "For professional websites who need to update their content. Everything in the Starter tier with **300 active modifications** and access to **Bulk Redirects, **Bulk Status Codes** & email support.",
+						"visible": true,
+						"price": 7900,
+						"order": 2,
+						"plan": "UPDATABLE_PRO",
+						"feature": "apps.updatable_pro.enabled",
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "For websites that are customer facing or business critical.",
+						"longDescription": "Everything in the Pro tier with **750 active modifications**.",
+						"visible": true,
+						"price": 14900,
+						"order": 3,
+						"plan": "UPDATABLE_BIZ",
+						"feature": "apps.updatable_biz.enabled",
+						"created": null
+					}
+				],
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.updatable.com/api/webhooks/cf/events",
+						"events": [
+							"option-change:account",
+							"update-install",
+							"new-install",
+							"delete-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error in the Updatable system. Please try again."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"releaseNotes": "Fixed a huge timeout streaming error. We have also revisited out pricing and removed Enterprise.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/w8QyQ9DRDjdm",
+			"metadata": {
+				"code": {
+					"sourceTag": "w8QyQ9DRDjdm",
+					"uploadedOn": "2019-11-14T13:47:34.497288888Z"
+				}
+			},
+			"created": "2019-11-14T13:47:21.765407Z",
+			"proposedApp": {
+				"id": "nrWOuEuICL-9",
+				"title": "Updatable",
+				"shortDescription": "Update any part of your website, instantly.",
+				"longDescription": "#Update your site in an instant \n\nUpdatable lets you tweak your site before it’s served, with no code or devs required. Change what users and search engine crawlers see, either as a temporary fix or a permanent solution.\n\nFix a simple SEO issue with our live page editor, add bulk page redirects, or reverse proxy your content without waiting for developers to get round to your request.\n\nUpdatable reduces the need for developer involvement, taking tedious jobs off their hands and freeing up their time to focus on bigger projects.\n\n#What can you change?\n\n*SEOs can update metadata and tags by page, folder or domain\n*Developers can overcome the restrictions and limitations of their CMS\n*Paid Media teams can create an infinite number of landing pages\n*Data analysts can add or amend custom events and dimensions\n\nStruggling to get a simple change prioritized, or unable to achieve your goals due to a code freeze? Updatable gives you greater freedom and complete flexibility.",
+				"instructions": "",
+				"alias": "updatable",
+				"orgId": "6e3239477f7832028d03b9dbdd5b2848",
+				"icon": "https://images.cloudflareapps.com/afP_U2-JG3NB/updatable-logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-live-editor.png",
+					"https://images.cloudflareapps.com/ULWIUevrAN3G/app-store-modifications%20%281%29.png",
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-robots.png",
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-settings.png",
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-redirect.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/PAwiuM0Dq3qk/app-thumbnail.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/xgQKHM4TMepX/app-logo.png",
+				"author": "Updatable",
+				"tagline": "",
+				"website": "https://www.updatable.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.updatable.com/terms-of-service.html",
+				"privacyPolicyURL": "https://www.updatable.com/privacy-policy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@updatable.com",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For anyone who wants to explore Updatable. Includes 5 active modifications, unlimited team members, unlimited revisions  and access to Advanced DOM, Status Codes, Redirects, URL Rewrites, Response Headers, Robots.txt & Live Editor",
+						"longDescription": "For anyone who wants to explore Updatable. Includes **5 active modifications**, unlimited team members, unlimited revisions  and access to Advanced DOM, Status Codes, Redirects, URL Rewrites, Response Headers, Robots.txt & Live Editor",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "starter",
+						"title": "Starter",
+						"shortDescription": "For small & hobbyist websites. Everything in the Free tier with 100 active modifications and access to Dynamic Directories.",
+						"longDescription": "For small & hobbyist websites. Everything in the Free tier with **100 active modifications** and access to Dynamic Directories.",
+						"visible": true,
+						"price": 2900,
+						"order": 0,
+						"plan": "UPDATABLE_STR",
+						"feature": "apps.updatable_str.enabled",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "For professional websites who need to update their content. Everything in the Starter tier with 300 active modifications and access to Bulk Redirects & Bulk Status Codes and email support.",
+						"longDescription": "For professional websites who need to update their content. Everything in the Starter tier with **300 active modifications** and access to **Bulk Redirects, **Bulk Status Codes** & email support.",
+						"visible": true,
+						"price": 7900,
+						"order": 2,
+						"plan": "UPDATABLE_PRO",
+						"feature": "apps.updatable_pro.enabled",
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "For websites that are customer facing or business critical.",
+						"longDescription": "Everything in the Pro tier with **750 active modifications**.",
+						"visible": true,
+						"price": 14900,
+						"order": 3,
+						"plan": "UPDATABLE_BIZ",
+						"feature": "apps.updatable_biz.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "r3MG9XBrV1Ls"
+				},
+				"created": "2019-05-10T15:38:38.433861Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "22dea39495f29f35e6201bcf2b3e1968",
+				"requestedAt": "2019-11-14T13:47:35.161269185Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-01-03T20:20:44.792302703Z"
+			}
+		},
+		{
+			"tag": "1.2.2",
+			"appId": "nrWOuEuICL-9",
+			"definition": {
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 2,
+							"required": true,
+							"services": [
+								"WvY46Jg582mZ"
+							],
+							"title": "Updatable",
+							"type": "object"
+						},
+						"help": {
+							"helpvalue": "After creating your Updatable account, follow the instructions in the application for making changes to your website.",
+							"order": 1,
+							"type": "help"
+						}
+					}
+				},
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For anyone who wants to explore Updatable. Includes 5 active modifications, unlimited team members, unlimited revisions  and access to Advanced DOM, Status Codes, Redirects, URL Rewrites, Response Headers, Robots.txt & Live Editor",
+						"longDescription": "For anyone who wants to explore Updatable. Includes **5 active modifications**, unlimited team members, unlimited revisions  and access to Advanced DOM, Status Codes, Redirects, URL Rewrites, Response Headers, Robots.txt & Live Editor",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "starter",
+						"title": "Starter",
+						"shortDescription": "For small & hobbyist websites. Everything in the Free tier with 100 active modifications and access to Dynamic Directories.",
+						"longDescription": "For small & hobbyist websites. Everything in the Free tier with **100 active modifications** and access to Dynamic Directories.",
+						"visible": true,
+						"price": 2900,
+						"order": 0,
+						"plan": "UPDATABLE_STR",
+						"feature": "apps.updatable_str.enabled",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "For professional websites who need to update their content. Everything in the Starter tier with 300 active modifications and access to Bulk Redirects & Bulk Status Codes and email support.",
+						"longDescription": "For professional websites who need to update their content. Everything in the Starter tier with **300 active modifications** and access to **Bulk Redirects, **Bulk Status Codes** & email support.",
+						"visible": true,
+						"price": 7900,
+						"order": 2,
+						"plan": "UPDATABLE_PRO",
+						"feature": "apps.updatable_pro.enabled",
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "For websites that are customer facing or business critical.",
+						"longDescription": "Everything in the Pro tier with **750 active modifications**.",
+						"visible": true,
+						"price": 14900,
+						"order": 3,
+						"plan": "UPDATABLE_BIZ",
+						"feature": "apps.updatable_biz.enabled",
+						"created": null
+					}
+				],
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://app.updatable.com/api/webhooks/cf/events",
+						"events": [
+							"option-change:account",
+							"update-install",
+							"new-install",
+							"delete-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "failure",
+							"message": "There was an error in the Updatable system. Please try again."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.33,
+				"upvotes": 9,
+				"downvotes": 18
+			},
+			"releaseNotes": "Fixed a huge timeout streaming error. We have also revisited out pricing and removed Enterprise.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/w8QyQ9DRDjdm",
+			"created": "2020-01-03T20:21:35.427489Z",
+			"proposedApp": {
+				"id": "nrWOuEuICL-9",
+				"title": "Updatable",
+				"shortDescription": "Update any part of your website, instantly.",
+				"longDescription": "#Update your site in an instant \n\nUpdatable lets you tweak your site before it’s served, with no code or devs required. Change what users and search engine crawlers see, either as a temporary fix or a permanent solution.\n\nFix a simple SEO issue with our live page editor, add bulk page redirects, or reverse proxy your content without waiting for developers to get round to your request.\n\nUpdatable reduces the need for developer involvement, taking tedious jobs off their hands and freeing up their time to focus on bigger projects.\n\n#What can you change?\n\n*SEOs can update metadata and tags by page, folder or domain\n*Developers can overcome the restrictions and limitations of their CMS\n*Paid Media teams can create an infinite number of landing pages\n*Data analysts can add or amend custom events and dimensions\n\nStruggling to get a simple change prioritized, or unable to achieve your goals due to a code freeze? Updatable gives you greater freedom and complete flexibility.",
+				"instructions": "",
+				"alias": "updatable",
+				"orgId": "6e3239477f7832028d03b9dbdd5b2848",
+				"icon": "https://images.cloudflareapps.com/afP_U2-JG3NB/updatable-logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-live-editor.png",
+					"https://images.cloudflareapps.com/ULWIUevrAN3G/app-store-modifications%20%281%29.png",
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-robots.png",
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-settings.png",
+					"https://images.cloudflareapps.com/DUhMbADuz5Of/app-store-redirect.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/PAwiuM0Dq3qk/app-thumbnail.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/xgQKHM4TMepX/app-logo.png",
+				"author": "Updatable",
+				"tagline": "",
+				"website": "https://www.updatable.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.updatable.com/terms-of-service.html",
+				"privacyPolicyURL": "https://www.updatable.com/privacy-policy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@updatable.com",
+				"products": [
+					{
+						"id": "free",
+						"title": "Free",
+						"shortDescription": "For anyone who wants to explore Updatable. Includes 5 active modifications, unlimited team members, unlimited revisions  and access to Advanced DOM, Status Codes, Redirects, URL Rewrites, Response Headers, Robots.txt & Live Editor",
+						"longDescription": "For anyone who wants to explore Updatable. Includes **5 active modifications**, unlimited team members, unlimited revisions  and access to Advanced DOM, Status Codes, Redirects, URL Rewrites, Response Headers, Robots.txt & Live Editor",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"plan": "free",
+						"created": null
+					},
+					{
+						"id": "starter",
+						"title": "Starter",
+						"shortDescription": "For small & hobbyist websites. Everything in the Free tier with 100 active modifications and access to Dynamic Directories.",
+						"longDescription": "For small & hobbyist websites. Everything in the Free tier with **100 active modifications** and access to Dynamic Directories.",
+						"visible": true,
+						"price": 2900,
+						"order": 0,
+						"plan": "UPDATABLE_STARTER",
+						"feature": "apps.updatable_starter.enabled",
+						"created": null
+					},
+					{
+						"id": "pro",
+						"title": "Pro",
+						"shortDescription": "For professional websites who need to update their content. Everything in the Starter tier with 300 active modifications and access to Bulk Redirects & Bulk Status Codes and email support.",
+						"longDescription": "For professional websites who need to update their content. Everything in the Starter tier with **300 active modifications** and access to **Bulk Redirects, **Bulk Status Codes** & email support.",
+						"visible": true,
+						"price": 7900,
+						"order": 2,
+						"plan": "UPDATABLE_PRO",
+						"feature": "apps.updatable_pro.enabled",
+						"created": null
+					},
+					{
+						"id": "business",
+						"title": "Business",
+						"shortDescription": "For websites that are customer facing or business critical.",
+						"longDescription": "Everything in the Pro tier with **750 active modifications**.",
+						"visible": true,
+						"price": 14900,
+						"order": 3,
+						"plan": "UPDATABLE_BIZ",
+						"feature": "apps.updatable_biz.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "r3MG9XBrV1Ls"
+				},
+				"created": "2019-05-10T15:38:38.433861Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2020-01-03T20:21:35.861030783Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-01-03T20:21:50.929392216Z"
+			}
+		}
+	]
+}

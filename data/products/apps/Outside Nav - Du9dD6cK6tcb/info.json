@@ -1,0 +1,212 @@
+{
+	"id": "Du9dD6cK6tcb",
+	"title": "Outside Nav",
+	"shortDescription": "Creates table of contents in the sidebar",
+	"longDescription": "Outline is a sidebar that outlines the page.\nIt generates a table of contents by extracting all the headings in the page. Automatically creates table of contents in the sidebar that can be clicked through, for easy document navigation.",
+	"instructions": "1. Click the Outline NAV button to activate it in web page. You will see a box coming from left with the outline in it.\n2. Click on any of the headings in the outline to jump to the corresponding section on the page.\n3. Click the cross button on the bottom left to close the outline.",
+	"alias": "outline-tool",
+	"orgId": "ac5a1e8d593cac5669c97bea05be7d7e",
+	"icon": "https://images.cloudflareapps.com/UeiMakt7poU9/icon.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/AiHo3Awd_Usi/screen.png",
+		"https://images.cloudflareapps.com/AiHo3Awd_Usi/screen2.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/LSmGFioHZMXr/tile.png",
+	"featuredAppImage": "",
+	"author": "Francesco De Stefano",
+	"tagline": "",
+	"website": "https://mediamaster.eu",
+	"sourceURL": "",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.0",
+	"infoVersion": "1.0.0",
+	"points": 0,
+	"supportEmail": "ulmdesign@mediamaster.eu",
+	"products": [],
+	"categoryIds": [],
+	"agreements": {
+		"tos": {
+			"userId": "ac5a1e8d593cac5669c97bea05be7d7e",
+			"created": "2020-02-13T11:02:00.523095193Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "2ig8dZBmGW6T"
+	},
+	"created": "2020-02-13T11:01:42.878451Z",
+	"org": {
+		"id": "ac5a1e8d593cac5669c97bea05be7d7e",
+		"title": "",
+		"username": "ac5a1e8d593cac5669c97bea05be7d7e",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "Du9dD6cK6tcb",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "style",
+							"src": "./source/style.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/lib/jquery-3.4.1.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/lib/html5-outliner.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/outliner.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"backgrounColor": {
+							"default": "black",
+							"enum": [
+								"black",
+								"red",
+								"blue",
+								"brown",
+								"green",
+								"grey"
+							],
+							"enumNames": {
+								"black": "black",
+								"blue": "blue",
+								"brown": "brown",
+								"green": "green",
+								"grey": "grey",
+								"red": "red"
+							},
+							"order": 3,
+							"title": "Background Color tip",
+							"type": "string"
+						},
+						"position": {
+							"default": "right",
+							"enum": [
+								"left",
+								"right"
+							],
+							"enumNames": {
+								"left": "left",
+								"right": "right"
+							},
+							"order": 1,
+							"title": "Horizontal alignment",
+							"type": "string"
+						},
+						"top": {
+							"default": 50,
+							"order": 2,
+							"title": "Margin top",
+							"type": "number"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.4,
+				"upvotes": 2,
+				"downvotes": 3
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/2ig8dZBmGW6T",
+			"metadata": {
+				"code": {
+					"sourceTag": "2ig8dZBmGW6T",
+					"uploadedOn": "2020-02-13T11:01:59.020589689Z"
+				}
+			},
+			"created": "2020-02-13T11:01:57.863179Z",
+			"proposedApp": {
+				"id": "Du9dD6cK6tcb",
+				"title": "Outside Nav",
+				"shortDescription": "Creates table of contents in the sidebar",
+				"longDescription": "Outline is a sidebar that outlines the page.\nIt generates a table of contents by extracting all the headings in the page. Automatically creates table of contents in the sidebar that can be clicked through, for easy document navigation.",
+				"instructions": "1. Click the Outline NAV button to activate it in web page. You will see a box coming from left with the outline in it.\n2. Click on any of the headings in the outline to jump to the corresponding section on the page.\n3. Click the cross button on the bottom left to close the outline.",
+				"alias": "outline-tool",
+				"orgId": "ac5a1e8d593cac5669c97bea05be7d7e",
+				"icon": "https://images.cloudflareapps.com/UeiMakt7poU9/icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/AiHo3Awd_Usi/screen.png",
+					"https://images.cloudflareapps.com/AiHo3Awd_Usi/screen2.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/LSmGFioHZMXr/tile.png",
+				"featuredAppImage": "",
+				"author": "Francesco De Stefano",
+				"tagline": "",
+				"website": "https://mediamaster.eu",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "ulmdesign@mediamaster.eu",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "2ig8dZBmGW6T"
+				},
+				"created": "2020-02-13T11:01:42.878451Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "ac5a1e8d593cac5669c97bea05be7d7e",
+				"requestedAt": "2020-02-13T11:02:00.503992399Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-02-18T17:33:25.741437615Z"
+			}
+		}
+	]
+}

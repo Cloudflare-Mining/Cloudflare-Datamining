@@ -1,0 +1,395 @@
+{
+	"id": "Ek_0U0d0YWhZ",
+	"title": "Autosave",
+	"shortDescription": "Prevent data loss by saving text input fields locally.",
+	"longDescription": "Your users can lose their form data when they accidently close tabs, or navigate to a different web page. Autosave prevents this by persisting all text inputs locally until the form is submitted. Whenever the page is refreshed, all text fields are automatically restored, thereby saving your users tremendous amount of effort \n of filling all the fields.\n\nAutosave is install and go. No configuration needed. It'll automatically scan the forms on your page and save the fields as user fills them. \n\nNote: **Autosave doesn't save sensitive information like passwords and credit card fields.**",
+	"instructions": "",
+	"alias": "autosave",
+	"orgId": "0668e321d95344bd4375cc475f6c27ce",
+	"icon": "//images.cloudflareapps.com/KdwZKL4KTq2GTN8nB1me_autosave.png",
+	"screenshots": [],
+	"tileImage": "//images.cloudflareapps.com/DuqWkQDlQ7ywAu1DFCBw_autosave.png",
+	"featuredAppImage": "",
+	"author": "Shubham Jain",
+	"tagline": "",
+	"website": "",
+	"sourceURL": "",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.3",
+	"infoVersion": "1.0.3",
+	"points": 0,
+	"supportEmail": "hi@shubhamjain.co",
+	"products": [],
+	"categoryIds": [
+		"recommended-for-all-sites",
+		"performance"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "0668e321d95344bd4375cc475f6c27ce",
+			"created": "2017-09-28T06:44:22.495038109Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "BqUvLdTLNGHI"
+	},
+	"created": "2017-09-28T06:13:10.710243Z",
+	"org": {
+		"id": "0668e321d95344bd4375cc475f6c27ce",
+		"title": "",
+		"username": "0668e321d95344bd4375cc475f6c27ce",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "recommended-for-all-sites",
+			"title": "Recommended for All Sites",
+			"description": "Apps that are recommended for all sites.",
+			"icon": "",
+			"points": 0,
+			"visible": false,
+			"created": "2018-02-06T19:53:13.516865Z"
+		},
+		{
+			"id": "performance",
+			"title": "Performance",
+			"description": "Improve the speed or perceived responsiveness of your website.",
+			"icon": "//eager-app-images.imgix.net/emdMA2bjSlm0xCvE4vlC_performance.png",
+			"points": 40,
+			"visible": true,
+			"metadata": {
+				"icon": {
+					"filename": "performance.png",
+					"isWriteable": false,
+					"key": "emdMA2bjSlm0xCvE4vlC_performance.png",
+					"mimetype": "image/png",
+					"size": 3642,
+					"url": "https://www.filepicker.io/api/file/mib586WWTei9D1h355Se"
+				}
+			},
+			"created": "2016-01-21T18:06:28.968723Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "Ek_0U0d0YWhZ",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/build/cfAutoSave.js"
+						}
+					]
+				},
+				"preview": {}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.6,
+				"upvotes": 3,
+				"downvotes": 2
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/BqUvLdTLNGHI",
+			"metadata": {
+				"code": {
+					"sourceTag": "BqUvLdTLNGHI",
+					"uploadedOn": "2017-09-28T06:13:15.031209035Z"
+				}
+			},
+			"created": "2017-09-28T06:13:13.37568Z",
+			"proposedApp": {
+				"id": "Ek_0U0d0YWhZ",
+				"title": "Autosave",
+				"shortDescription": "Prevent data loss by saving text input fields locally.",
+				"longDescription": "Your users can lose their form data when they accidently close tabs, or navigate to a different web page. Autosave prevents this by persisting all text inputs locally until the form is submitted. Whenever the page is refreshed, all text fields are automatically restored, thereby saving your users tremendous amount of effort \n of filling all the fields.\n\nAutosave is install and go. No configuration needed. It'll automatically scan the forms on your page and save the fields as user fills them. \n\nNote: **Autosave doesn't save sensitive information like passwords and credit card fields.**",
+				"instructions": "",
+				"alias": "autosave",
+				"orgId": "0668e321d95344bd4375cc475f6c27ce",
+				"icon": "//images.cloudflareapps.com/KdwZKL4KTq2GTN8nB1me_autosave.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/DuqWkQDlQ7ywAu1DFCBw_autosave.png",
+				"featuredAppImage": "",
+				"author": "Shubham Jain",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "hi@shubhamjain.co",
+				"products": [],
+				"categoryIds": [
+					"design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "BqUvLdTLNGHI"
+				},
+				"created": "2017-09-28T06:13:10.710243Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "0668e321d95344bd4375cc475f6c27ce",
+				"requestedAt": "2017-09-28T06:44:22.486326023Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-10-05T15:17:56.238054478Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "Ek_0U0d0YWhZ",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/build/cfAutoSave.js"
+						}
+					]
+				},
+				"preview": {}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0,
+				"upvotes": 0,
+				"downvotes": 1
+			},
+			"releaseNotes": "Added to “Performance & Security” Category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/pXW9POkof45r",
+			"metadata": {
+				"code": {
+					"sourceTag": "pXW9POkof45r",
+					"uploadedOn": "2017-10-14T08:24:31.290388415Z"
+				}
+			},
+			"created": "2017-10-14T08:24:29.509597Z",
+			"proposedApp": {
+				"id": "Ek_0U0d0YWhZ",
+				"title": "Autosave",
+				"shortDescription": "Prevent data loss by saving text input fields locally.",
+				"longDescription": "Your users can lose their form data when they accidently close tabs, or navigate to a different web page. Autosave prevents this by persisting all text inputs locally until the form is submitted. Whenever the page is refreshed, all text fields are automatically restored, thereby saving your users tremendous amount of effort \n of filling all the fields.\n\nAutosave is install and go. No configuration needed. It'll automatically scan the forms on your page and save the fields as user fills them. \n\nNote: **Autosave doesn't save sensitive information like passwords and credit card fields.**",
+				"instructions": "",
+				"alias": "autosave",
+				"orgId": "0668e321d95344bd4375cc475f6c27ce",
+				"icon": "//images.cloudflareapps.com/KdwZKL4KTq2GTN8nB1me_autosave.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/DuqWkQDlQ7ywAu1DFCBw_autosave.png",
+				"featuredAppImage": "",
+				"author": "Shubham Jain",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "hi@shubhamjain.co",
+				"products": [],
+				"categoryIds": [
+					"design",
+					"performance-and-security"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "BqUvLdTLNGHI"
+				},
+				"created": "2017-09-28T06:13:10.710243Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-01-22T20:19:23.501407184Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-01-22T20:19:52.04984542Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "Ek_0U0d0YWhZ",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/build/cfAutoSave.js"
+						}
+					]
+				},
+				"preview": {}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.89,
+				"upvotes": 34,
+				"downvotes": 4
+			},
+			"releaseNotes": "Added to Cloudflare Apps recommendation engine",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/pXW9POkof45r",
+			"created": "2018-02-06T20:38:28.056527Z",
+			"proposedApp": {
+				"id": "Ek_0U0d0YWhZ",
+				"title": "Autosave",
+				"shortDescription": "Prevent data loss by saving text input fields locally.",
+				"longDescription": "Your users can lose their form data when they accidently close tabs, or navigate to a different web page. Autosave prevents this by persisting all text inputs locally until the form is submitted. Whenever the page is refreshed, all text fields are automatically restored, thereby saving your users tremendous amount of effort \n of filling all the fields.\n\nAutosave is install and go. No configuration needed. It'll automatically scan the forms on your page and save the fields as user fills them. \n\nNote: **Autosave doesn't save sensitive information like passwords and credit card fields.**",
+				"instructions": "",
+				"alias": "autosave",
+				"orgId": "0668e321d95344bd4375cc475f6c27ce",
+				"icon": "//images.cloudflareapps.com/KdwZKL4KTq2GTN8nB1me_autosave.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/DuqWkQDlQ7ywAu1DFCBw_autosave.png",
+				"featuredAppImage": "",
+				"author": "Shubham Jain",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "hi@shubhamjain.co",
+				"products": [],
+				"categoryIds": [
+					"performance-and-security",
+					"recommended-for-all-sites"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "BqUvLdTLNGHI"
+				},
+				"created": "2017-09-28T06:13:10.710243Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-02-06T20:38:28.303928281Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-02-06T20:45:08.517242517Z"
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "Ek_0U0d0YWhZ",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/build/cfAutoSave.js"
+						}
+					]
+				},
+				"preview": {}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.85,
+				"upvotes": 129,
+				"downvotes": 23
+			},
+			"releaseNotes": "Updated app's categories",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/pXW9POkof45r",
+			"created": "2018-11-14T20:37:35.647201Z",
+			"proposedApp": {
+				"id": "Ek_0U0d0YWhZ",
+				"title": "Autosave",
+				"shortDescription": "Prevent data loss by saving text input fields locally.",
+				"longDescription": "Your users can lose their form data when they accidently close tabs, or navigate to a different web page. Autosave prevents this by persisting all text inputs locally until the form is submitted. Whenever the page is refreshed, all text fields are automatically restored, thereby saving your users tremendous amount of effort \n of filling all the fields.\n\nAutosave is install and go. No configuration needed. It'll automatically scan the forms on your page and save the fields as user fills them. \n\nNote: **Autosave doesn't save sensitive information like passwords and credit card fields.**",
+				"instructions": "",
+				"alias": "autosave",
+				"orgId": "0668e321d95344bd4375cc475f6c27ce",
+				"icon": "//images.cloudflareapps.com/KdwZKL4KTq2GTN8nB1me_autosave.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/DuqWkQDlQ7ywAu1DFCBw_autosave.png",
+				"featuredAppImage": "",
+				"author": "Shubham Jain",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "hi@shubhamjain.co",
+				"products": [],
+				"categoryIds": [
+					"recommended-for-all-sites",
+					"performance"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "BqUvLdTLNGHI"
+				},
+				"created": "2017-09-28T06:13:10.710243Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-11-14T20:37:36.224544416Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-11-14T21:09:35.547190608Z"
+			}
+		}
+	]
+}

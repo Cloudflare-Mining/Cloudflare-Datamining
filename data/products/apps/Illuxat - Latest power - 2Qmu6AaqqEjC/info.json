@@ -1,0 +1,426 @@
+{
+	"id": "2Qmu6AaqqEjC",
+	"title": "Illuxat - Latest power",
+	"shortDescription": "Display the information of the latest power on your website!",
+	"longDescription": "Display the information of the latest xat power on your website for free!",
+	"instructions": "",
+	"alias": "",
+	"orgId": "9625a637c93c4b17c9cefc9ec9176da9",
+	"icon": "https://images.cloudflareapps.com/8mmUTGHHgBvO/logo2.png",
+	"screenshots": [],
+	"tileImage": "",
+	"featuredAppImage": "",
+	"author": "Illuxat",
+	"tagline": "",
+	"website": "https://illuxat.com",
+	"sourceURL": "",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.0",
+	"infoVersion": "1.0.0",
+	"points": 0,
+	"supportEmail": "admin@illuxat.com",
+	"products": [],
+	"categoryIds": [],
+	"agreements": {
+		"tos": {
+			"userId": "9625a637c93c4b17c9cefc9ec9176da9",
+			"created": "2018-12-30T21:59:49.893034336Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "_ft42V4N-t91"
+	},
+	"created": "2018-12-30T21:59:46.731742Z",
+	"org": {
+		"id": "9625a637c93c4b17c9cefc9ec9176da9",
+		"title": "",
+		"username": "9625a637c93c4b17c9cefc9ec9176da9",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [],
+	"versions": [
+		{
+			"tag": "v1.0.0-meta-lSLKx6",
+			"appId": "2Qmu6AaqqEjC",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./src/js/app.js"
+						}
+					],
+					"head": [
+						{
+							"type": "style",
+							"src": "./src/css/app.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"DescriptionTranslate": {
+							"default": "Description",
+							"order": 8,
+							"title": "Translation for ''Description'':",
+							"type": "string"
+						},
+						"IDTranslate": {
+							"default": "ID",
+							"order": 5,
+							"title": "Translation for ''ID'':",
+							"type": "string"
+						},
+						"ImageTranslate": {
+							"default": "Image",
+							"order": 6,
+							"title": "Translation for ''Image'':",
+							"type": "string"
+						},
+						"NameTranslate": {
+							"default": "Name",
+							"order": 7,
+							"title": "Translation for ''Name'':",
+							"type": "string"
+						},
+						"SmileysTranslate": {
+							"default": "Smileys for",
+							"order": 11,
+							"title": "Translation for ''Smileys for'':",
+							"type": "string"
+						},
+						"StatusTranslate": {
+							"default": "Status",
+							"order": 9,
+							"title": "Translation for ''Status'':",
+							"type": "string"
+						},
+						"StorePTranslate": {
+							"default": "Store price",
+							"order": 10,
+							"title": "Translation for ''Store price'':",
+							"type": "string"
+						},
+						"displayPawns": {
+							"default": "text",
+							"description": "How should the pawns list be displayed?",
+							"enum": [
+								"text",
+								"image"
+							],
+							"enumNames": {
+								"image": "Image (animations included)",
+								"text": "Text"
+							},
+							"order": 4,
+							"title": "Display pawns list as:",
+							"type": "string"
+						},
+						"displaySmileys": {
+							"default": "text",
+							"description": "How should the smileys list be displayed?",
+							"enum": [
+								"text",
+								"image"
+							],
+							"enumNames": {
+								"image": "Image (animations included)",
+								"text": "Text"
+							},
+							"order": 3,
+							"title": "Display smileys list as:",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the latest data appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Location",
+							"type": "object"
+						},
+						"noPawnsTranslate": {
+							"default": "No pawns for this power",
+							"order": 13,
+							"title": "Translation for ''No pawns for this power'':",
+							"type": "string"
+						},
+						"pawnsTranslate": {
+							"default": "Pawns for",
+							"order": 12,
+							"title": "Translation for ''Pawns for'':",
+							"type": "string"
+						},
+						"showPawns": {
+							"description": "Should pawns list be displayed on page?",
+							"order": 2,
+							"title": "Display pawns list",
+							"type": "boolean"
+						},
+						"showSmileys": {
+							"description": "Should smileys list be displayed on page?",
+							"order": 1,
+							"title": "Display smileys list",
+							"type": "boolean"
+						}
+					}
+				}
+			},
+			"releaseNotes": "Added information, smileys, pawns.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/_ft42V4N-t91",
+			"created": "2018-12-30T22:11:16.34968Z",
+			"proposedApp": {
+				"id": "2Qmu6AaqqEjC",
+				"title": "Illuxat - Latest power",
+				"shortDescription": "Display the information of the latest power on your website!",
+				"longDescription": "This application allows you to display:\n\n- The information\n- Smileys list\n- Pawns list\n\nYou have the choice to display/hide the smileys and pawns list.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "9625a637c93c4b17c9cefc9ec9176da9",
+				"icon": "https://images.cloudflareapps.com/8mmUTGHHgBvO/logo2.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Illuxat",
+				"tagline": "",
+				"website": "https://illuxat.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "admin@illuxat.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "_ft42V4N-t91"
+				},
+				"created": "2018-12-30T21:59:46.731742Z"
+			},
+			"moderationStatus": "draft",
+			"moderationMetadata": {
+				"requestedAt": null,
+				"canceledAt": null,
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.0",
+			"appId": "2Qmu6AaqqEjC",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./src/js/app.js"
+						}
+					],
+					"head": [
+						{
+							"type": "style",
+							"src": "./src/css/app.css"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"DescriptionTranslate": {
+							"default": "Description",
+							"order": 8,
+							"title": "Translation for ''Description'':",
+							"type": "string"
+						},
+						"IDTranslate": {
+							"default": "ID",
+							"order": 5,
+							"title": "Translation for ''ID'':",
+							"type": "string"
+						},
+						"ImageTranslate": {
+							"default": "Image",
+							"order": 6,
+							"title": "Translation for ''Image'':",
+							"type": "string"
+						},
+						"NameTranslate": {
+							"default": "Name",
+							"order": 7,
+							"title": "Translation for ''Name'':",
+							"type": "string"
+						},
+						"SmileysTranslate": {
+							"default": "Smileys for",
+							"order": 11,
+							"title": "Translation for ''Smileys for'':",
+							"type": "string"
+						},
+						"StatusTranslate": {
+							"default": "Status",
+							"order": 9,
+							"title": "Translation for ''Status'':",
+							"type": "string"
+						},
+						"StorePTranslate": {
+							"default": "Store price",
+							"order": 10,
+							"title": "Translation for ''Store price'':",
+							"type": "string"
+						},
+						"displayPawns": {
+							"default": "text",
+							"description": "How should the pawns list be displayed?",
+							"enum": [
+								"text",
+								"image"
+							],
+							"enumNames": {
+								"image": "Image (animations included)",
+								"text": "Text"
+							},
+							"order": 4,
+							"title": "Display pawns list as:",
+							"type": "string"
+						},
+						"displaySmileys": {
+							"default": "text",
+							"description": "How should the smileys list be displayed?",
+							"enum": [
+								"text",
+								"image"
+							],
+							"enumNames": {
+								"image": "Image (animations included)",
+								"text": "Text"
+							},
+							"order": 3,
+							"title": "Display smileys list as:",
+							"type": "string"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the latest data appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Location",
+							"type": "object"
+						},
+						"noPawnsTranslate": {
+							"default": "No pawns for this power",
+							"order": 13,
+							"title": "Translation for ''No pawns for this power'':",
+							"type": "string"
+						},
+						"pawnsTranslate": {
+							"default": "Pawns for",
+							"order": 12,
+							"title": "Translation for ''Pawns for'':",
+							"type": "string"
+						},
+						"showPawns": {
+							"description": "Should pawns list be displayed on page?",
+							"order": 2,
+							"title": "Display pawns list",
+							"type": "boolean"
+						},
+						"showSmileys": {
+							"description": "Should smileys list be displayed on page?",
+							"order": 1,
+							"title": "Display smileys list",
+							"type": "boolean"
+						}
+					}
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.5,
+				"upvotes": 1,
+				"downvotes": 1
+			},
+			"releaseNotes": "Added information, smileys, pawns.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/_ft42V4N-t91",
+			"metadata": {
+				"code": {
+					"sourceTag": "_ft42V4N-t91",
+					"uploadedOn": "2018-12-30T21:59:48.636032965Z"
+				}
+			},
+			"created": "2018-12-30T21:59:47.697293Z",
+			"proposedApp": {
+				"id": "2Qmu6AaqqEjC",
+				"title": "Illuxat - Latest power",
+				"shortDescription": "Display the information of the latest power on your website!",
+				"longDescription": "Display the information of the latest xat power on your website for free!",
+				"instructions": "",
+				"alias": "",
+				"orgId": "9625a637c93c4b17c9cefc9ec9176da9",
+				"icon": "https://images.cloudflareapps.com/8mmUTGHHgBvO/logo2.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Illuxat",
+				"tagline": "",
+				"website": "https://illuxat.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "admin@illuxat.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "_ft42V4N-t91"
+				},
+				"created": "2018-12-30T21:59:46.731742Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "9625a637c93c4b17c9cefc9ec9176da9",
+				"requestedAt": "2018-12-30T21:59:49.881674955Z",
+				"canceledAt": null,
+				"reviewedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"reviewedAt": "2019-02-28T22:42:32.494908041Z"
+			}
+		}
+	]
+}

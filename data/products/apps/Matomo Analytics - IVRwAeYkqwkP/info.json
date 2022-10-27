@@ -1,0 +1,1268 @@
+{
+	"id": "IVRwAeYkqwkP",
+	"title": "Matomo Analytics",
+	"shortDescription": "Amazing insights on your users and website activity to grow.",
+	"longDescription": "<p class=\"message\">\nMatomo Analytics (formerly Piwik) requires an <a href=\"https://matomo.org/docs/installation\" target=\"_blank\">additional open source software</a> installed on your server.\n<br />\nAlternatively, <a href=\"https://matomo.org/start-free-analytics-trial/\" target=\"_blank\">start a free trial</a> on our reliable and secure Matomo Analytics Cloud.\n</p>\n\nThis app will automatically add the Matomo tracking code to your website and track your visitors into your Matomo so you can get a 360 degree view on your users and customers. Increase your conversions, sales, and revenue with all the insights you get. Matomo gives you 100% data ownership and much more:\n\n* Track all page views and visits by your visitors\n* Set up goals to monitor your business goals\n<a href=\"https://matomo.org/docs/ecommerce-analytics/\" target=\"_blank\">Measure E-commerce sales and cart updates</a>\n* Find out which marketing campaigns are the most successful\n* Explore where your visitors are located\n* Analyze which devices and software they use to optimize your website\n* Discover through which <a href=\"https://matomo.org/docs/tracking-campaigns/\" target=\"_blank\">channels your visitors find you</a> and <a href=\"https://matomo.org/docs/search-engine-keywords-performance/\" target=\"_blank\">which keywords they use</a>\n* Determine at which time of the day they access your website the most\n* Monitor your site search engine and see exactly what people are looking for\n* <a href=\"https://matomo.org/docs/funnels/\" target=\"_blank\">See where you lose your visitors in your funnels</a>\n* Slice and dice your visitors into segments\n* <a href=\"https://matomo.org/integrate/\" target=\"_blank\">Over 100 integrations available</a>\n* Supports over 50 languages\n* <a href=\"https://themes.matomo.org/\" target=\"_blank\">Enjoy another look &amp; feel with themes</a>\n* <a href=\"http://matomo.org/features/#premium\" target=\"_blank\">Dozens of premium features available to take Matomo to the next level</a>\n\n_Learn <a href=\"https://matomo.org/features\" target=\"_blank\">more</a> about Matomo Analytics or <a href=\"https://matomo.org/start-free-analytics-trial/\" target=\"_blank\">signup to get started now</a>._",
+	"instructions": "<p class=\"message info\">\nMatomo Analytics requires an <a href=\"https://matomo.org/docs/installation\" target=\"_blank\">additional open source software</a> installed on your server.\n<br />\nAlternatively, <a href=\"https://matomo.org/start-free-analytics-trial/\" target=\"_blank\">start a free trial</a> on our reliable and secure Matomo Analytics Cloud.\n</p>",
+	"alias": "piwik",
+	"orgId": "1dfdd4be4cd7344b372e2348889ce688",
+	"icon": "https://images.cloudflareapps.com/nC1CY4MH-OMI/icon.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/w5BrOK7x7Jq6/Screenshot%202021-04-28%20at%208.48.03%20AM.png",
+		"//images.cloudflareapps.com/DBk7RPXSC6aBG2CEvIUH_piwik2_3.png",
+		"//images.cloudflareapps.com/Dwig3HGcRY6T195I0WLD_piwik2_4.png",
+		"//images.cloudflareapps.com/QbyjoVufRzqpyulcos6Q_piwik2_6.png",
+		"//images.cloudflareapps.com/4u5qnrBARvmm4SWRqtIX_piwik2_7.png"
+	],
+	"tileImage": "",
+	"featuredAppImage": "",
+	"author": "Matomo.org",
+	"tagline": "",
+	"website": "https://matomo.org",
+	"sourceURL": "",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "https://matomo.org/privacy-policy/",
+	"color": "#d32c27",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.1.0",
+	"infoVersion": "1.1.0",
+	"points": 10,
+	"supportEmail": "hello@matomo.org",
+	"products": [],
+	"categoryIds": [
+		"insights"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "1dfdd4be4cd7344b372e2348889ce688",
+			"created": "2017-08-16T02:11:59.865914675Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "CcqoRvebikZu"
+	},
+	"created": "2017-08-16T01:55:06.313187Z",
+	"org": {
+		"id": "1dfdd4be4cd7344b372e2348889ce688",
+		"title": "",
+		"username": "1dfdd4be4cd7344b372e2348889ce688",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "insights",
+			"title": "Insights",
+			"description": "Apps that provide insight into your visitors.",
+			"icon": "",
+			"points": 40,
+			"visible": true,
+			"created": "2018-11-13T20:10:05.739284Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "IVRwAeYkqwkP",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"piwikdomain": {
+							"description": "Enter the URL where your Piwik is installed, eg http://piwik.example.com",
+							"format": "url",
+							"title": "Piwik URL",
+							"type": "string"
+						},
+						"piwikidsite": {
+							"default": 1,
+							"description": "Enter the ID of the site you want to track the data into.",
+							"minimum": 1,
+							"title": "Piwik Site ID",
+							"type": "integer"
+						}
+					}
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/CcqoRvebikZu",
+			"metadata": {
+				"code": {
+					"sourceTag": "CcqoRvebikZu",
+					"uploadedOn": "2017-08-16T01:55:07.445160654Z"
+				}
+			},
+			"created": "2017-08-16T01:55:06.778855Z",
+			"proposedApp": {
+				"id": "IVRwAeYkqwkP",
+				"title": "Piwik Analytics",
+				"shortDescription": "Tracks your website visitors in your existing Piwik.",
+				"longDescription": "To use this analytics app, you first need to download Piwik Analytics from [https://piwik.org](https://piwik.org/download) and [install](https://piwik.org/docs/installation) it on your server. Piwik gives you 100% data ownership.\n\nThis app will automatically add the Piwik tracking code to your website and track your visitors into your Piwik so you can get a 360 degree view on your users and customers. Increase your conversions, sales, and revenue with all the insights you get. \n\n[Learn more about Piwik](https://piwik.org/what-is-piwik/)",
+				"instructions": "",
+				"alias": "piwik",
+				"orgId": "1dfdd4be4cd7344b372e2348889ce688",
+				"icon": "//images.cloudflareapps.com/gliXzGEGQW6GSWDtoGyM_5QcL09EsScaurHZ33NPA_large_app_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/SMEtG9VTLi7ojHeYn4BD_Screenshot at Aug 16 14-10-39.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/skvvtglzSJ22xt9b6wFU_0mhHlDOMTTGlQ7ZL2PVo_large_app_icon2 (2).png",
+				"featuredAppImage": "",
+				"author": "Piwik.org",
+				"tagline": "",
+				"website": "https://piwik.org",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "https://piwik.org/privacy-policy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "hello@piwik.org",
+				"products": [],
+				"categoryIds": [
+					"analytics",
+					"get-more-customers",
+					"add-on"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "CcqoRvebikZu"
+				},
+				"created": "2017-08-16T01:55:06.313187Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "1dfdd4be4cd7344b372e2348889ce688",
+				"requestedAt": "2017-08-16T02:11:59.795785044Z",
+				"canceledByUserId": "1dfdd4be4cd7344b372e2348889ce688",
+				"canceledAt": "2017-08-16T02:51:48.936371426Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "IVRwAeYkqwkP",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"piwikdomain": {
+							"description": "Enter the URL where your Piwik is installed, eg http://piwik.example.com",
+							"format": "url",
+							"title": "Piwik URL",
+							"type": "string"
+						},
+						"piwikidsite": {
+							"default": 1,
+							"description": "Enter the ID of the site you want to track the data into.",
+							"minimum": 1,
+							"title": "Piwik Site ID",
+							"type": "integer"
+						}
+					}
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/CcqoRvebikZu",
+			"created": "2017-08-16T02:48:49.43222Z",
+			"proposedApp": {
+				"id": "IVRwAeYkqwkP",
+				"title": "Piwik Analytics",
+				"shortDescription": "Tracks your website visitors in your existing Piwik.",
+				"longDescription": "To use this analytics app, you first need to download Piwik Analytics from [https://piwik.org](https://piwik.org/download) and [install](https://piwik.org/docs/installation) it on your server. Alternatively, you can start a free trial on our reliable and secure [Piwik Analytics Cloud](https://www.innocraft.cloud/start-30-day-free-analytics-trial).\n\nThis app will automatically add the Piwik tracking code to your website and track your visitors into your Piwik so you can get a 360 degree view on your users and customers. Increase your conversions, sales, and revenue with all the insights you get. Piwik gives you 100% data ownership and much more:\n\n* Track all page views and visits by your visitors\n* Set up goals to monitor your business goals\n* Measure Ecommerce sales and cart updates\n* Find out which campaigns are the most successful\n* Explore where your visitors are located\n* Analyze which devices and software they use to optimize your website\n* Discover through which channels your visitors find you and which keywords they use\n* Determine at which time of the day they access your website the most\n* See where you lose your visitors in your funnels\n* Slice and dice your visitors into segments\n* Over 100 integrations available\n* Supports over 50 languages\n* and much [more](https://piwik.org/features).",
+				"instructions": "If you don't have an existing Piwik yet, you can either \n\n* download Piwik Analytics from [https://piwik.org](https://piwik.org/download) and [install](https://piwik.org/docs/installation) it on your server, or\n* start a free trial on our reliable and secure [Piwik Analytics Cloud](https://www.innocraft.cloud/start-30-day-free-analytics-trial)",
+				"alias": "piwik",
+				"orgId": "1dfdd4be4cd7344b372e2348889ce688",
+				"icon": "//images.cloudflareapps.com/gliXzGEGQW6GSWDtoGyM_5QcL09EsScaurHZ33NPA_large_app_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/SMEtG9VTLi7ojHeYn4BD_Screenshot at Aug 16 14-10-39.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/skvvtglzSJ22xt9b6wFU_0mhHlDOMTTGlQ7ZL2PVo_large_app_icon2 (2).png",
+				"featuredAppImage": "",
+				"author": "Piwik.org",
+				"tagline": "",
+				"website": "https://piwik.org",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "https://piwik.org/privacy-policy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "hello@piwik.org",
+				"products": [],
+				"categoryIds": [
+					"analytics",
+					"get-more-customers",
+					"add-on"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "CcqoRvebikZu"
+				},
+				"created": "2017-08-16T01:55:06.313187Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"assignedToReviewerUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedByUserId": "1dfdd4be4cd7344b372e2348889ce688",
+				"requestedAt": "2017-08-16T02:51:48.945149651Z",
+				"canceledByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"canceledAt": "2017-08-18T10:09:08.142024736Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "IVRwAeYkqwkP",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"piwikdomain": {
+							"description": "Enter the URL where your Piwik is installed, eg http://piwik.example.com",
+							"format": "url",
+							"title": "Piwik URL",
+							"type": "string"
+						},
+						"piwikidsite": {
+							"default": 1,
+							"description": "Enter the ID of the site you want to track the data into.",
+							"minimum": 1,
+							"title": "Piwik Site ID",
+							"type": "integer"
+						}
+					}
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/CcqoRvebikZu",
+			"created": "2017-08-18T10:09:07.93241Z",
+			"proposedApp": {
+				"id": "IVRwAeYkqwkP",
+				"title": "Piwik Analytics",
+				"shortDescription": "Detailed reports on your site's SEO and its visitor demographics.",
+				"longDescription": "<p class=\"message\">\nPiwik Analytics requires an <a href=\"https://piwik.org/docs/installation\" target=\"_blank\">additional software</a> installed on your server. \n<br />\nAlternatively, you can start a free trial on our reliable and secure <a href=\"https://www.innocraft.cloud/start-30-day-free-analytics-trial\" target=\"_blank\">Piwik Analytics Cloud</a>.\n</p>\n\nThis app will automatically add the Piwik tracking code to your website and track your visitors into your Piwik so you can get a 360 degree view on your users and customers. Increase your conversions, sales, and revenue with all the insights you get. Piwik gives you 100% data ownership and much more:\n\n* Track all page views and visits by your visitors\n* Set up goals to monitor your business goals\n* Measure Ecommerce sales and cart updates\n* Find out which campaigns are the most successful\n* Explore where your visitors are located\n* Analyze which devices and software they use to optimize your website\n* Discover through which channels your visitors find you and which keywords they use\n* Determine at which time of the day they access your website the most\n* See where you lose your visitors in your funnels\n* Slice and dice your visitors into segments\n* Over 100 integrations available\n* Supports over 50 languages\n\n_Learn more about Piwik <a href=\"https://piwik.org/features\" class=\"more\" target=\"_blank\">more</a>_",
+				"instructions": "<p class=\"message info\">\nPiwik Analytics requires an <a href=\"https://piwik.org/docs/installation\" target=\"_blank\">additional software</a> installed on your server. \n<br />\nAlternatively, you can start a free trial on our reliable and secure <a href=\"https://www.innocraft.cloud/start-30-day-free-analytics-trial\" target=\"_blank\">Piwik Analytics Cloud</a>.\n</p>",
+				"alias": "piwik",
+				"orgId": "1dfdd4be4cd7344b372e2348889ce688",
+				"icon": "//images.cloudflareapps.com/gliXzGEGQW6GSWDtoGyM_5QcL09EsScaurHZ33NPA_large_app_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/SMEtG9VTLi7ojHeYn4BD_Screenshot at Aug 16 14-10-39.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/skvvtglzSJ22xt9b6wFU_0mhHlDOMTTGlQ7ZL2PVo_large_app_icon2 (2).png",
+				"featuredAppImage": "",
+				"author": "Piwik.org",
+				"tagline": "",
+				"website": "https://piwik.org",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "https://piwik.org/privacy-policy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "hello@piwik.org",
+				"products": [],
+				"categoryIds": [
+					"analytics",
+					"get-more-customers",
+					"for-developers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "CcqoRvebikZu"
+				},
+				"created": "2017-08-16T01:55:06.313187Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-08-18T10:09:08.151898453Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-08-18T10:49:39.689059685Z"
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "IVRwAeYkqwkP",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"piwikdomain": {
+							"description": "Enter the URL where your Piwik is installed, eg https://piwik.example.com",
+							"format": "url",
+							"placeholder": "https://piwik.example.com",
+							"required": true,
+							"title": "The URL of your Piwik installation",
+							"type": "string"
+						},
+						"piwikidsite": {
+							"description": "Enter the ID of the site you want to track the data into. You can retrieve the ID of your site by logging into your Piwik and going to 'Administration => Websites: Manage'.",
+							"minimum": 1,
+							"required": true,
+							"title": "Piwik Site ID",
+							"type": "integer"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/XVdRl-SYE3ZS",
+			"metadata": {
+				"code": {
+					"sourceTag": "XVdRl-SYE3ZS",
+					"uploadedOn": "2017-08-25T00:51:03.53037005Z"
+				}
+			},
+			"created": "2017-08-23T05:24:13.753085Z",
+			"proposedApp": {
+				"id": "IVRwAeYkqwkP",
+				"title": "Piwik Analytics",
+				"shortDescription": "",
+				"longDescription": "<p class=\"message\">\nPiwik Analytics requires an <a href=\"https://piwik.org/docs/installation\" target=\"_blank\">additional software</a> installed on your server. \n<br />\nAlternatively, you can start a free trial on our reliable and secure <a href=\"https://www.innocraft.cloud/start-30-day-free-analytics-trial\" target=\"_blank\">Piwik Analytics Cloud</a>.\n</p>\n\nThis app will automatically add the Piwik tracking code to your website and track your visitors into your Piwik so you can get a 360 degree view on your users and customers. Increase your conversions, sales, and revenue with all the insights you get. Piwik gives you 100% data ownership and much more:\n\n* Track all page views and visits by your visitors\n* Set up goals to monitor your business goals\n* Measure Ecommerce sales and cart updates\n* Find out which campaigns are the most successful\n* Explore where your visitors are located\n* Analyze which devices and software they use to optimize your website\n* Discover through which channels your visitors find you and which keywords they use\n* Determine at which time of the day they access your website the most\n* See where you lose your visitors in your funnels\n* Slice and dice your visitors into segments\n* Over 100 integrations available\n* Supports over 50 languages\n\n_Learn more about Piwik <a href=\"https://piwik.org/features\" class=\"more\" target=\"_blank\">more</a>_",
+				"instructions": "<p class=\"message info\">\nPiwik Analytics requires an <a href=\"https://piwik.org/docs/installation\" target=\"_blank\">additional software</a> installed on your server. \n<br />\nAlternatively, you can start a free trial on our reliable and secure <a href=\"https://www.innocraft.cloud/start-30-day-free-analytics-trial\" target=\"_blank\">Piwik Analytics Cloud</a>.\n</p>",
+				"alias": "piwik",
+				"orgId": "1dfdd4be4cd7344b372e2348889ce688",
+				"icon": "//images.cloudflareapps.com/gliXzGEGQW6GSWDtoGyM_5QcL09EsScaurHZ33NPA_large_app_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/27Q9TYvTLxGi7Nds8kAR_piwik_10.png",
+					"//images.cloudflareapps.com/DBk7RPXSC6aBG2CEvIUH_piwik2_3.png",
+					"//images.cloudflareapps.com/Dwig3HGcRY6T195I0WLD_piwik2_4.png",
+					"//images.cloudflareapps.com/QbyjoVufRzqpyulcos6Q_piwik2_6.png",
+					"//images.cloudflareapps.com/4u5qnrBARvmm4SWRqtIX_piwik2_7.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/skvvtglzSJ22xt9b6wFU_0mhHlDOMTTGlQ7ZL2PVo_large_app_icon2 (2).png",
+				"featuredAppImage": "",
+				"author": "Piwik.org",
+				"tagline": "",
+				"website": "https://piwik.org",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "https://piwik.org/privacy-policy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "hello@piwik.org",
+				"products": [],
+				"categoryIds": [
+					"analytics",
+					"get-more-customers",
+					"for-developers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "CcqoRvebikZu"
+				},
+				"created": "2017-08-16T01:55:06.313187Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "1dfdd4be4cd7344b372e2348889ce688",
+				"requestedAt": "2017-08-25T00:52:08.606888554Z",
+				"canceledByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"canceledAt": "2017-08-29T05:55:11.573688543Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.4",
+			"appId": "IVRwAeYkqwkP",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"piwikdomain": {
+							"description": "Enter the URL where your Piwik is installed, eg https://piwik.example.com",
+							"format": "url",
+							"placeholder": "https://piwik.example.com",
+							"required": true,
+							"title": "The URL of your Piwik installation",
+							"type": "string"
+						},
+						"piwikidsite": {
+							"description": "Enter the ID of the site you want to track the data into. You can retrieve the ID of your site by logging into your Piwik and going to 'Administration => Websites: Manage'.",
+							"minimum": 1,
+							"required": true,
+							"title": "Piwik Site ID",
+							"type": "integer"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/XVdRl-SYE3ZS",
+			"created": "2017-08-29T05:55:05.3834Z",
+			"proposedApp": {
+				"id": "IVRwAeYkqwkP",
+				"title": "Piwik Analytics",
+				"shortDescription": "Detailed reports on your site's SEO and its visitor demographics.",
+				"longDescription": "<p class=\"message\">\nPiwik Analytics requires an <a href=\"https://piwik.org/docs/installation\" target=\"_blank\">additional software</a> installed on your server. \n<br />\nAlternatively, you can start a free trial on our reliable and secure <a href=\"https://www.innocraft.cloud/start-30-day-free-analytics-trial\" target=\"_blank\">Piwik Analytics Cloud</a>.\n</p>\n\nThis app will automatically add the Piwik tracking code to your website and track your visitors into your Piwik so you can get a 360 degree view on your users and customers. Increase your conversions, sales, and revenue with all the insights you get. Piwik gives you 100% data ownership and much more:\n\n* Track all page views and visits by your visitors\n* Set up goals to monitor your business goals\n* Measure Ecommerce sales and cart updates\n* Find out which campaigns are the most successful\n* Explore where your visitors are located\n* Analyze which devices and software they use to optimize your website\n* Discover through which channels your visitors find you and which keywords they use\n* Determine at which time of the day they access your website the most\n* See where you lose your visitors in your funnels\n* Slice and dice your visitors into segments\n* Over 100 integrations available\n* Supports over 50 languages\n\n_Learn more about Piwik <a href=\"https://piwik.org/features\" class=\"more\" target=\"_blank\">more</a>_",
+				"instructions": "<p class=\"message info\">\nPiwik Analytics requires an <a href=\"https://piwik.org/docs/installation\" target=\"_blank\">additional software</a> installed on your server. \n<br />\nAlternatively, you can start a free trial on our reliable and secure <a href=\"https://www.innocraft.cloud/start-30-day-free-analytics-trial\" target=\"_blank\">Piwik Analytics Cloud</a>.\n</p>",
+				"alias": "piwik",
+				"orgId": "1dfdd4be4cd7344b372e2348889ce688",
+				"icon": "//images.cloudflareapps.com/gliXzGEGQW6GSWDtoGyM_5QcL09EsScaurHZ33NPA_large_app_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/27Q9TYvTLxGi7Nds8kAR_piwik_10.png",
+					"//images.cloudflareapps.com/DBk7RPXSC6aBG2CEvIUH_piwik2_3.png",
+					"//images.cloudflareapps.com/Dwig3HGcRY6T195I0WLD_piwik2_4.png",
+					"//images.cloudflareapps.com/QbyjoVufRzqpyulcos6Q_piwik2_6.png",
+					"//images.cloudflareapps.com/4u5qnrBARvmm4SWRqtIX_piwik2_7.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/skvvtglzSJ22xt9b6wFU_0mhHlDOMTTGlQ7ZL2PVo_large_app_icon2 (2).png",
+				"featuredAppImage": "",
+				"author": "Piwik.org",
+				"tagline": "",
+				"website": "https://piwik.org",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "https://piwik.org/privacy-policy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "hello@piwik.org",
+				"products": [],
+				"categoryIds": [
+					"analytics",
+					"get-more-customers",
+					"for-developers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "CcqoRvebikZu"
+				},
+				"created": "2017-08-16T01:55:06.313187Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-08-29T05:55:11.579051838Z",
+				"canceledByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"canceledAt": "2017-08-29T06:02:20.347828489Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.5",
+			"appId": "IVRwAeYkqwkP",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"piwikdomain": {
+							"description": "Enter the URL where your Piwik is installed.",
+							"format": "url",
+							"placeholder": "https://piwik.example.com",
+							"required": true,
+							"title": "Piwik installation URL",
+							"type": "string"
+						},
+						"piwikidsite": {
+							"description": "You can retrieve the ID of your site by logging into your Piwik dashboard and navigating to <strong>Administration</strong> › <strong>Websites: Manage</strong>",
+							"minimum": 1,
+							"required": true,
+							"title": "Piwik Site ID",
+							"type": "integer"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/vDYbXrPzk2Kt",
+			"metadata": {
+				"code": {
+					"sourceTag": "vDYbXrPzk2Kt",
+					"uploadedOn": "2017-08-29T06:02:13.043137876Z"
+				}
+			},
+			"created": "2017-08-29T06:02:12.816803Z",
+			"proposedApp": {
+				"id": "IVRwAeYkqwkP",
+				"title": "Piwik Analytics",
+				"shortDescription": "Detailed reports on your site's SEO and its visitor demographics.",
+				"longDescription": "<p class=\"message\">\nPiwik Analytics requires an <a href=\"https://piwik.org/docs/installation\" target=\"_blank\">additional software</a> installed on your server. \n<br />\nAlternatively, you can start a free trial on our reliable and secure <a href=\"https://www.innocraft.cloud/start-30-day-free-analytics-trial\" target=\"_blank\">Piwik Analytics Cloud</a>.\n</p>\n\nThis app will automatically add the Piwik tracking code to your website and track your visitors into your Piwik so you can get a 360 degree view on your users and customers. Increase your conversions, sales, and revenue with all the insights you get. Piwik gives you 100% data ownership and much more:\n\n* Track all page views and visits by your visitors\n* Set up goals to monitor your business goals\n* Measure Ecommerce sales and cart updates\n* Find out which campaigns are the most successful\n* Explore where your visitors are located\n* Analyze which devices and software they use to optimize your website\n* Discover through which channels your visitors find you and which keywords they use\n* Determine at which time of the day they access your website the most\n* See where you lose your visitors in your funnels\n* Slice and dice your visitors into segments\n* Over 100 integrations available\n* Supports over 50 languages\n\n_Learn more about Piwik <a href=\"https://piwik.org/features\" class=\"more\" target=\"_blank\">more</a>_",
+				"instructions": "<p class=\"message info\">\nPiwik Analytics requires an <a href=\"https://piwik.org/docs/installation\" target=\"_blank\">additional software</a> installed on your server. \n<br />\nAlternatively, you can start a free trial on our reliable and secure <a href=\"https://www.innocraft.cloud/start-30-day-free-analytics-trial\" target=\"_blank\">Piwik Analytics Cloud</a>.\n</p>",
+				"alias": "piwik",
+				"orgId": "1dfdd4be4cd7344b372e2348889ce688",
+				"icon": "//images.cloudflareapps.com/gliXzGEGQW6GSWDtoGyM_5QcL09EsScaurHZ33NPA_large_app_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/27Q9TYvTLxGi7Nds8kAR_piwik_10.png",
+					"//images.cloudflareapps.com/DBk7RPXSC6aBG2CEvIUH_piwik2_3.png",
+					"//images.cloudflareapps.com/Dwig3HGcRY6T195I0WLD_piwik2_4.png",
+					"//images.cloudflareapps.com/QbyjoVufRzqpyulcos6Q_piwik2_6.png",
+					"//images.cloudflareapps.com/4u5qnrBARvmm4SWRqtIX_piwik2_7.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/skvvtglzSJ22xt9b6wFU_0mhHlDOMTTGlQ7ZL2PVo_large_app_icon2 (2).png",
+				"featuredAppImage": "",
+				"author": "Piwik.org",
+				"tagline": "",
+				"website": "https://piwik.org",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "https://piwik.org/privacy-policy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "hello@piwik.org",
+				"products": [],
+				"categoryIds": [
+					"analytics",
+					"get-more-customers",
+					"for-developers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "CcqoRvebikZu"
+				},
+				"created": "2017-08-16T01:55:06.313187Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-08-29T06:02:20.351927806Z",
+				"canceledByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"canceledAt": "2017-08-29T06:07:53.340960824Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.6",
+			"appId": "IVRwAeYkqwkP",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"piwikdomain": {
+							"description": "Enter the URL where your Piwik is installed.",
+							"format": "url",
+							"placeholder": "https://piwik.example.com",
+							"required": true,
+							"title": "Piwik installation URL",
+							"type": "string"
+						},
+						"piwikidsite": {
+							"description": "You can retrieve the ID of your site by logging into your Piwik dashboard and navigating to <strong>Administration</strong> › <strong>Websites: Manage</strong>",
+							"minimum": 1,
+							"required": true,
+							"title": "Piwik Site ID",
+							"type": "integer"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/2JwSNe9whstg",
+			"metadata": {
+				"code": {
+					"sourceTag": "2JwSNe9whstg",
+					"uploadedOn": "2017-08-29T06:06:51.785863018Z"
+				}
+			},
+			"created": "2017-08-29T06:06:51.624413Z",
+			"proposedApp": {
+				"id": "IVRwAeYkqwkP",
+				"title": "Piwik Analytics",
+				"shortDescription": "Detailed reports on your site's SEO and its visitor demographics.",
+				"longDescription": "<p class=\"message\">\nPiwik Analytics requires an <a href=\"https://piwik.org/docs/installation\" target=\"_blank\">additional software</a> installed on your server. \n<br />\nAlternatively, you can start a free trial on our reliable and secure <a href=\"https://www.innocraft.cloud/start-30-day-free-analytics-trial\" target=\"_blank\">Piwik Analytics Cloud</a>.\n</p>\n\nThis app will automatically add the Piwik tracking code to your website and track your visitors into your Piwik so you can get a 360 degree view on your users and customers. Increase your conversions, sales, and revenue with all the insights you get. Piwik gives you 100% data ownership and much more:\n\n* Track all page views and visits by your visitors\n* Set up goals to monitor your business goals\n* Measure Ecommerce sales and cart updates\n* Find out which campaigns are the most successful\n* Explore where your visitors are located\n* Analyze which devices and software they use to optimize your website\n* Discover through which channels your visitors find you and which keywords they use\n* Determine at which time of the day they access your website the most\n* See where you lose your visitors in your funnels\n* Slice and dice your visitors into segments\n* Over 100 integrations available\n* Supports over 50 languages\n\n_Learn more about Piwik <a href=\"https://piwik.org/features\" class=\"more\" target=\"_blank\">more</a>_",
+				"instructions": "<p class=\"message info\">\nPiwik Analytics requires an <a href=\"https://piwik.org/docs/installation\" target=\"_blank\">additional software</a> installed on your server. \n<br />\nAlternatively, you can start a free trial on our reliable and secure <a href=\"https://www.innocraft.cloud/start-30-day-free-analytics-trial\" target=\"_blank\">Piwik Analytics Cloud</a>.\n</p>",
+				"alias": "piwik",
+				"orgId": "1dfdd4be4cd7344b372e2348889ce688",
+				"icon": "//images.cloudflareapps.com/gliXzGEGQW6GSWDtoGyM_5QcL09EsScaurHZ33NPA_large_app_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/27Q9TYvTLxGi7Nds8kAR_piwik_10.png",
+					"//images.cloudflareapps.com/DBk7RPXSC6aBG2CEvIUH_piwik2_3.png",
+					"//images.cloudflareapps.com/Dwig3HGcRY6T195I0WLD_piwik2_4.png",
+					"//images.cloudflareapps.com/QbyjoVufRzqpyulcos6Q_piwik2_6.png",
+					"//images.cloudflareapps.com/4u5qnrBARvmm4SWRqtIX_piwik2_7.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/skvvtglzSJ22xt9b6wFU_0mhHlDOMTTGlQ7ZL2PVo_large_app_icon2 (2).png",
+				"featuredAppImage": "",
+				"author": "Piwik.org",
+				"tagline": "",
+				"website": "https://piwik.org",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "https://piwik.org/privacy-policy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "hello@piwik.org",
+				"products": [],
+				"categoryIds": [
+					"analytics",
+					"get-more-customers",
+					"for-developers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "CcqoRvebikZu"
+				},
+				"created": "2017-08-16T01:55:06.313187Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-08-29T06:07:53.344573606Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-08-29T06:08:59.750661505Z"
+			}
+		},
+		{
+			"tag": "1.0.7",
+			"appId": "IVRwAeYkqwkP",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"piwikdomain": {
+							"description": "Enter the URL where your Piwik is installed.",
+							"format": "url",
+							"placeholder": "https://piwik.example.com",
+							"required": true,
+							"title": "Piwik installation URL",
+							"type": "string"
+						},
+						"piwikidsite": {
+							"description": "You can retrieve the ID of your site by logging into your Piwik dashboard and navigating to <strong>Administration</strong> › <strong>Websites: Manage</strong>",
+							"minimum": 1,
+							"required": true,
+							"title": "Piwik Site ID",
+							"type": "integer"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				}
+			},
+			"releaseNotes": "Updated app description based on user feedback.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/2JwSNe9whstg",
+			"created": "2017-10-30T23:20:14.068836Z",
+			"proposedApp": {
+				"id": "IVRwAeYkqwkP",
+				"title": "Piwik Analytics",
+				"shortDescription": "Amazing insights on your users and website activity to grow.",
+				"longDescription": "<p class=\"message\">\nPiwik Analytics requires an <a href=\"https://piwik.org/docs/installation\" target=\"_blank\">additional open source software</a> installed on your server.\n<br />\nAlternatively, <a href=\"https://www.innocraft.cloud/start-30-day-free-analytics-trial\" target=\"_blank\">start a free trial</a> on our reliable and secure <a href=\"https://www.innocraft.cloud/\" target=\"_blank\">Piwik Analytics Cloud</a>.\n</p>\n\nThis app will automatically add the Piwik tracking code to your website and track your visitors into your Piwik so you can get a 360 degree view on your users and customers. Increase your conversions, sales, and revenue with all the insights you get. Piwik gives you 100% data ownership and much more:\n\n* Track all page views and visits by your visitors\n* Set up goals to monitor your business goals\n<a href=\"https://piwik.org/docs/ecommerce-analytics/\" target=\"_blank\">Measure E-commerce sales and cart updates</a>\n* Find out which marketing campaigns are the most successful\n* Explore where your visitors are located\n* Analyze which devices and software they use to optimize your website\n* Discover through which <a href=\"https://piwik.org/docs/tracking-campaigns/\" target=\"_blank\">channels your visitors find you and <a href=\"https://piwik.org/docs/search-engine-keywords-performance/\" target=\"_blank\">which keywords they use</a>\n* Determine at which time of the day they access your website the most\n* Monitor your site search engine and see exactly what people are looking for\n* <a href=\"https://piwik.org/docs/funnels/\" target=\"_blank\">See where you lose your visitors in your funnels</a>\n* Slice and dice your visitors into segments\n* <a href=\"https://piwik.org/integrate/\" target=\"_blank\">Over 100 integrations available</a>\n* Supports over 50 languages\n* <a href=\"https://themes.piwik.org/\" target=\"_blank\">Enjoy another look &amp; feel with themes</a>\n* <a href=\"http://piwik.org/features/#premium\" target=\"_blank\">Dozens of premium features available to take Piwik to the next level</a>\n\n<em>Learn </em><em> about Piwik Analytic. </em>\n\n_Learn <a href=\"https://piwik.org/features\" target=\"_blank\">more</a> about Piwik Analytics or <a href=\"http://www.innocraft.cloud/start-30-day-free-analytics-trial\" target=\"_blank\">signup to get started now</a>._",
+				"instructions": "<p class=\"message\">\nPiwik Analytics requires an <a href=\"https://piwik.org/docs/installation\" target=\"_blank\">additional open source software</a> installed on your server.\n<br />\nAlternatively, <a href=\"https://www.innocraft.cloud/start-30-day-free-analytics-trial\" target=\"_blank\">start a free trial</a> on our reliable and secure <a href=\"https://www.innocraft.cloud/\" target=\"_blank\">Piwik Analytics Cloud</a>.\n</p>",
+				"alias": "piwik",
+				"orgId": "1dfdd4be4cd7344b372e2348889ce688",
+				"icon": "//images.cloudflareapps.com/gliXzGEGQW6GSWDtoGyM_5QcL09EsScaurHZ33NPA_large_app_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/27Q9TYvTLxGi7Nds8kAR_piwik_10.png",
+					"//images.cloudflareapps.com/DBk7RPXSC6aBG2CEvIUH_piwik2_3.png",
+					"//images.cloudflareapps.com/Dwig3HGcRY6T195I0WLD_piwik2_4.png",
+					"//images.cloudflareapps.com/QbyjoVufRzqpyulcos6Q_piwik2_6.png",
+					"//images.cloudflareapps.com/4u5qnrBARvmm4SWRqtIX_piwik2_7.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/skvvtglzSJ22xt9b6wFU_0mhHlDOMTTGlQ7ZL2PVo_large_app_icon2 (2).png",
+				"featuredAppImage": "",
+				"author": "Piwik.org",
+				"tagline": "",
+				"website": "https://piwik.org",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "https://piwik.org/privacy-policy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "hello@piwik.org",
+				"products": [],
+				"categoryIds": [
+					"analytics",
+					"get-more-customers",
+					"for-developers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "CcqoRvebikZu"
+				},
+				"created": "2017-08-16T01:55:06.313187Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "1dfdd4be4cd7344b372e2348889ce688",
+				"requestedAt": "2017-10-30T23:21:01.13257903Z",
+				"canceledByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"canceledAt": "2017-10-31T09:31:16.82364922Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.8",
+			"appId": "IVRwAeYkqwkP",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"piwikdomain": {
+							"description": "Enter the URL where your Piwik is installed.",
+							"format": "url",
+							"placeholder": "https://piwik.example.com",
+							"required": true,
+							"title": "Piwik installation URL",
+							"type": "string"
+						},
+						"piwikidsite": {
+							"description": "You can retrieve the ID of your site by logging into your Piwik dashboard and navigating to <strong>Administration</strong> › <strong>Websites: Manage</strong>",
+							"minimum": 1,
+							"required": true,
+							"title": "Piwik Site ID",
+							"type": "integer"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				}
+			},
+			"releaseNotes": "Updated app description based on user feedback.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/2JwSNe9whstg",
+			"created": "2017-10-31T09:31:16.380874Z",
+			"proposedApp": {
+				"id": "IVRwAeYkqwkP",
+				"title": "Piwik Analytics",
+				"shortDescription": "Amazing insights on your users and website activity to grow.",
+				"longDescription": "<p class=\"message\">\nPiwik Analytics requires an <a href=\"https://piwik.org/docs/installation\" target=\"_blank\">additional open source software</a> installed on your server.\n<br />\nAlternatively, <a href=\"https://www.innocraft.cloud/start-30-day-free-analytics-trial\" target=\"_blank\">start a free trial</a> on our reliable and secure <a href=\"https://www.innocraft.cloud/\" target=\"_blank\">Piwik Analytics Cloud</a>.\n</p>\n\nThis app will automatically add the Piwik tracking code to your website and track your visitors into your Piwik so you can get a 360 degree view on your users and customers. Increase your conversions, sales, and revenue with all the insights you get. Piwik gives you 100% data ownership and much more:\n\n* Track all page views and visits by your visitors\n* Set up goals to monitor your business goals\n<a href=\"https://piwik.org/docs/ecommerce-analytics/\" target=\"_blank\">Measure E-commerce sales and cart updates</a>\n* Find out which marketing campaigns are the most successful\n* Explore where your visitors are located\n* Analyze which devices and software they use to optimize your website\n* Discover through which <a href=\"https://piwik.org/docs/tracking-campaigns/\" target=\"_blank\">channels your visitors find you and <a href=\"https://piwik.org/docs/search-engine-keywords-performance/\" target=\"_blank\">which keywords they use</a>\n* Determine at which time of the day they access your website the most\n* Monitor your site search engine and see exactly what people are looking for\n* <a href=\"https://piwik.org/docs/funnels/\" target=\"_blank\">See where you lose your visitors in your funnels</a>\n* Slice and dice your visitors into segments\n* <a href=\"https://piwik.org/integrate/\" target=\"_blank\">Over 100 integrations available</a>\n* Supports over 50 languages\n* <a href=\"https://themes.piwik.org/\" target=\"_blank\">Enjoy another look &amp; feel with themes</a>\n* <a href=\"http://piwik.org/features/#premium\" target=\"_blank\">Dozens of premium features available to take Piwik to the next level</a>\n\n<em>Learn </em><em> about Piwik Analytic. </em>\n\n_Learn <a href=\"https://piwik.org/features\" target=\"_blank\">more</a> about Piwik Analytics or <a href=\"http://www.innocraft.cloud/start-30-day-free-analytics-trial\" target=\"_blank\">signup to get started now</a>._",
+				"instructions": "<p class=\"message info\">\nPiwik Analytics requires an <a href=\"https://piwik.org/docs/installation\" target=\"_blank\">additional open source software</a> installed on your server.\n<br />\nAlternatively, <a href=\"https://www.innocraft.cloud/start-30-day-free-analytics-trial\" target=\"_blank\">start a free trial</a> on our reliable and secure <a href=\"https://www.innocraft.cloud/\" target=\"_blank\">Piwik Analytics Cloud</a>.\n</p>",
+				"alias": "piwik",
+				"orgId": "1dfdd4be4cd7344b372e2348889ce688",
+				"icon": "//images.cloudflareapps.com/gliXzGEGQW6GSWDtoGyM_5QcL09EsScaurHZ33NPA_large_app_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/27Q9TYvTLxGi7Nds8kAR_piwik_10.png",
+					"//images.cloudflareapps.com/DBk7RPXSC6aBG2CEvIUH_piwik2_3.png",
+					"//images.cloudflareapps.com/Dwig3HGcRY6T195I0WLD_piwik2_4.png",
+					"//images.cloudflareapps.com/QbyjoVufRzqpyulcos6Q_piwik2_6.png",
+					"//images.cloudflareapps.com/4u5qnrBARvmm4SWRqtIX_piwik2_7.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/skvvtglzSJ22xt9b6wFU_0mhHlDOMTTGlQ7ZL2PVo_large_app_icon2 (2).png",
+				"featuredAppImage": "",
+				"author": "Piwik.org",
+				"tagline": "",
+				"website": "https://piwik.org",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "https://piwik.org/privacy-policy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "hello@piwik.org",
+				"products": [],
+				"categoryIds": [
+					"analytics",
+					"get-more-customers",
+					"for-developers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "CcqoRvebikZu"
+				},
+				"created": "2017-08-16T01:55:06.313187Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-10-31T09:31:16.834483114Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-10-31T09:31:29.197844162Z"
+			}
+		},
+		{
+			"tag": "1.0.9",
+			"appId": "IVRwAeYkqwkP",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"piwikdomain": {
+							"description": "Enter the URL where your Piwik is installed.",
+							"format": "url",
+							"placeholder": "https://piwik.example.com",
+							"required": true,
+							"title": "Piwik installation URL",
+							"type": "string"
+						},
+						"piwikidsite": {
+							"description": "You can retrieve the ID of your site by logging into your Piwik dashboard and navigating to <strong>Administration</strong> › <strong>Websites: Manage</strong>",
+							"minimum": 1,
+							"required": true,
+							"title": "Piwik Site ID",
+							"type": "integer"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.93,
+				"upvotes": 14,
+				"downvotes": 1
+			},
+			"releaseNotes": "Updated app description based on user feedback.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/2JwSNe9whstg",
+			"created": "2017-10-31T09:48:43.300358Z",
+			"proposedApp": {
+				"id": "IVRwAeYkqwkP",
+				"title": "Piwik Analytics",
+				"shortDescription": "Amazing insights on your users and website activity to grow.",
+				"longDescription": "<p class=\"message\">\nPiwik Analytics requires an <a href=\"https://piwik.org/docs/installation\" target=\"_blank\">additional open source software</a> installed on your server.\n<br />\nAlternatively, <a href=\"https://www.innocraft.cloud/start-30-day-free-analytics-trial\" target=\"_blank\">start a free trial</a> on our reliable and secure <a href=\"https://www.innocraft.cloud/\" target=\"_blank\">Piwik Analytics Cloud</a>.\n</p>\n\nThis app will automatically add the Piwik tracking code to your website and track your visitors into your Piwik so you can get a 360 degree view on your users and customers. Increase your conversions, sales, and revenue with all the insights you get. Piwik gives you 100% data ownership and much more:\n\n* Track all page views and visits by your visitors\n* Set up goals to monitor your business goals\n<a href=\"https://piwik.org/docs/ecommerce-analytics/\" target=\"_blank\">Measure E-commerce sales and cart updates</a>\n* Find out which marketing campaigns are the most successful\n* Explore where your visitors are located\n* Analyze which devices and software they use to optimize your website\n* Discover through which <a href=\"https://piwik.org/docs/tracking-campaigns/\" target=\"_blank\">channels your visitors find you</a> and <a href=\"https://piwik.org/docs/search-engine-keywords-performance/\" target=\"_blank\">which keywords they use</a>\n* Determine at which time of the day they access your website the most\n* Monitor your site search engine and see exactly what people are looking for\n* <a href=\"https://piwik.org/docs/funnels/\" target=\"_blank\">See where you lose your visitors in your funnels</a>\n* Slice and dice your visitors into segments\n* <a href=\"https://piwik.org/integrate/\" target=\"_blank\">Over 100 integrations available</a>\n* Supports over 50 languages\n* <a href=\"https://themes.piwik.org/\" target=\"_blank\">Enjoy another look &amp; feel with themes</a>\n* <a href=\"http://piwik.org/features/#premium\" target=\"_blank\">Dozens of premium features available to take Piwik to the next level</a>\n\n_Learn <a href=\"https://piwik.org/features\" target=\"_blank\">more</a> about Piwik Analytics or <a href=\"http://www.innocraft.cloud/start-30-day-free-analytics-trial\" target=\"_blank\">signup to get started now</a>._",
+				"instructions": "<p class=\"message info\">\nPiwik Analytics requires an <a href=\"https://piwik.org/docs/installation\" target=\"_blank\">additional open source software</a> installed on your server.\n<br />\nAlternatively, <a href=\"https://www.innocraft.cloud/start-30-day-free-analytics-trial\" target=\"_blank\">start a free trial</a> on our reliable and secure <a href=\"https://www.innocraft.cloud/\" target=\"_blank\">Piwik Analytics Cloud</a>.\n</p>",
+				"alias": "piwik",
+				"orgId": "1dfdd4be4cd7344b372e2348889ce688",
+				"icon": "//images.cloudflareapps.com/gliXzGEGQW6GSWDtoGyM_5QcL09EsScaurHZ33NPA_large_app_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/27Q9TYvTLxGi7Nds8kAR_piwik_10.png",
+					"//images.cloudflareapps.com/DBk7RPXSC6aBG2CEvIUH_piwik2_3.png",
+					"//images.cloudflareapps.com/Dwig3HGcRY6T195I0WLD_piwik2_4.png",
+					"//images.cloudflareapps.com/QbyjoVufRzqpyulcos6Q_piwik2_6.png",
+					"//images.cloudflareapps.com/4u5qnrBARvmm4SWRqtIX_piwik2_7.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/skvvtglzSJ22xt9b6wFU_0mhHlDOMTTGlQ7ZL2PVo_large_app_icon2 (2).png",
+				"featuredAppImage": "",
+				"author": "Piwik.org",
+				"tagline": "",
+				"website": "https://piwik.org",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "https://piwik.org/privacy-policy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "hello@piwik.org",
+				"products": [],
+				"categoryIds": [
+					"analytics",
+					"get-more-customers",
+					"for-developers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "CcqoRvebikZu"
+				},
+				"created": "2017-08-16T01:55:06.313187Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "1dfdd4be4cd7344b372e2348889ce688",
+				"requestedAt": "2017-10-31T09:48:43.848719261Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-10-31T10:43:22.079136674Z"
+			}
+		},
+		{
+			"tag": "1.0.10",
+			"appId": "IVRwAeYkqwkP",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"piwikdomain": {
+							"description": "Enter the URL where your Piwik is installed.",
+							"format": "url",
+							"placeholder": "https://piwik.example.com",
+							"required": true,
+							"title": "Piwik installation URL",
+							"type": "string"
+						},
+						"piwikidsite": {
+							"description": "You can retrieve the ID of your site by logging into your Piwik dashboard and navigating to <strong>Administration</strong> › <strong>Websites: Manage</strong>",
+							"minimum": 1,
+							"required": true,
+							"title": "Piwik Site ID",
+							"type": "integer"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.82,
+				"upvotes": 23,
+				"downvotes": 5
+			},
+			"releaseNotes": "Updated app's categories",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/2JwSNe9whstg",
+			"created": "2018-11-13T22:23:36.505753Z",
+			"proposedApp": {
+				"id": "IVRwAeYkqwkP",
+				"title": "Piwik Analytics",
+				"shortDescription": "Amazing insights on your users and website activity to grow.",
+				"longDescription": "<p class=\"message\">\nPiwik Analytics requires an <a href=\"https://piwik.org/docs/installation\" target=\"_blank\">additional open source software</a> installed on your server.\n<br />\nAlternatively, <a href=\"https://www.innocraft.cloud/start-30-day-free-analytics-trial\" target=\"_blank\">start a free trial</a> on our reliable and secure <a href=\"https://www.innocraft.cloud/\" target=\"_blank\">Piwik Analytics Cloud</a>.\n</p>\n\nThis app will automatically add the Piwik tracking code to your website and track your visitors into your Piwik so you can get a 360 degree view on your users and customers. Increase your conversions, sales, and revenue with all the insights you get. Piwik gives you 100% data ownership and much more:\n\n* Track all page views and visits by your visitors\n* Set up goals to monitor your business goals\n<a href=\"https://piwik.org/docs/ecommerce-analytics/\" target=\"_blank\">Measure E-commerce sales and cart updates</a>\n* Find out which marketing campaigns are the most successful\n* Explore where your visitors are located\n* Analyze which devices and software they use to optimize your website\n* Discover through which <a href=\"https://piwik.org/docs/tracking-campaigns/\" target=\"_blank\">channels your visitors find you</a> and <a href=\"https://piwik.org/docs/search-engine-keywords-performance/\" target=\"_blank\">which keywords they use</a>\n* Determine at which time of the day they access your website the most\n* Monitor your site search engine and see exactly what people are looking for\n* <a href=\"https://piwik.org/docs/funnels/\" target=\"_blank\">See where you lose your visitors in your funnels</a>\n* Slice and dice your visitors into segments\n* <a href=\"https://piwik.org/integrate/\" target=\"_blank\">Over 100 integrations available</a>\n* Supports over 50 languages\n* <a href=\"https://themes.piwik.org/\" target=\"_blank\">Enjoy another look &amp; feel with themes</a>\n* <a href=\"http://piwik.org/features/#premium\" target=\"_blank\">Dozens of premium features available to take Piwik to the next level</a>\n\n_Learn <a href=\"https://piwik.org/features\" target=\"_blank\">more</a> about Piwik Analytics or <a href=\"http://www.innocraft.cloud/start-30-day-free-analytics-trial\" target=\"_blank\">signup to get started now</a>._",
+				"instructions": "<p class=\"message info\">\nPiwik Analytics requires an <a href=\"https://piwik.org/docs/installation\" target=\"_blank\">additional open source software</a> installed on your server.\n<br />\nAlternatively, <a href=\"https://www.innocraft.cloud/start-30-day-free-analytics-trial\" target=\"_blank\">start a free trial</a> on our reliable and secure <a href=\"https://www.innocraft.cloud/\" target=\"_blank\">Piwik Analytics Cloud</a>.\n</p>",
+				"alias": "piwik",
+				"orgId": "1dfdd4be4cd7344b372e2348889ce688",
+				"icon": "//images.cloudflareapps.com/gliXzGEGQW6GSWDtoGyM_5QcL09EsScaurHZ33NPA_large_app_icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/27Q9TYvTLxGi7Nds8kAR_piwik_10.png",
+					"//images.cloudflareapps.com/DBk7RPXSC6aBG2CEvIUH_piwik2_3.png",
+					"//images.cloudflareapps.com/Dwig3HGcRY6T195I0WLD_piwik2_4.png",
+					"//images.cloudflareapps.com/QbyjoVufRzqpyulcos6Q_piwik2_6.png",
+					"//images.cloudflareapps.com/4u5qnrBARvmm4SWRqtIX_piwik2_7.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/skvvtglzSJ22xt9b6wFU_0mhHlDOMTTGlQ7ZL2PVo_large_app_icon2 (2).png",
+				"featuredAppImage": "",
+				"author": "Piwik.org",
+				"tagline": "",
+				"website": "https://piwik.org",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "https://piwik.org/privacy-policy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "hello@piwik.org",
+				"products": [],
+				"categoryIds": [
+					"insights"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "CcqoRvebikZu"
+				},
+				"created": "2017-08-16T01:55:06.313187Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-11-13T22:23:37.531019949Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-11-14T17:31:40.289860617Z"
+			}
+		},
+		{
+			"tag": "1.1.0",
+			"appId": "IVRwAeYkqwkP",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"clientSideDNT": {
+							"default": false,
+							"description": "So tracking requests will not be sent if visitors do not wish to be tracked.",
+							"order": 4,
+							"title": "Enable client side DoNotTrack detection",
+							"type": "boolean"
+						},
+						"disableCookies": {
+							"default": false,
+							"description": "Disables all first party cookies",
+							"order": 3,
+							"title": "Disable all tracking cookies",
+							"type": "boolean"
+						},
+						"piwikdomain": {
+							"description": "Enter the URL where your Matomo is installed, eg https://matomo.example.com",
+							"format": "url",
+							"order": 1,
+							"placeholder": "https://matomo.example.com",
+							"required": true,
+							"title": "The URL of your Matomo installation",
+							"type": "string"
+						},
+						"piwikidsite": {
+							"description": "Enter the ID of the site you want to track the data into. You can retrieve the ID of your site by logging into your Matomo and going to 'Administration => Websites: Manage'.",
+							"minimum": 1,
+							"order": 2,
+							"required": true,
+							"title": "Matomo Site ID",
+							"type": "integer"
+						}
+					}
+				},
+				"preview": {
+					"hide": true
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.62,
+				"upvotes": 8,
+				"downvotes": 5
+			},
+			"releaseNotes": "Updated app description and our branding as we renamed from Piwik to Matomo. Also added more options to adjust tracking code.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/2CZEjmmR6Huk",
+			"metadata": {
+				"code": {
+					"sourceTag": "2CZEjmmR6Huk",
+					"uploadedOn": "2021-04-27T20:49:31.642124854Z"
+				}
+			},
+			"created": "2021-04-27T20:49:29.576526Z",
+			"proposedApp": {
+				"id": "IVRwAeYkqwkP",
+				"title": "Matomo Analytics",
+				"shortDescription": "Amazing insights on your users and website activity to grow.",
+				"longDescription": "<p class=\"message\">\nMatomo Analytics (formerly Piwik) requires an <a href=\"https://matomo.org/docs/installation\" target=\"_blank\">additional open source software</a> installed on your server.\n<br />\nAlternatively, <a href=\"https://matomo.org/start-free-analytics-trial/\" target=\"_blank\">start a free trial</a> on our reliable and secure Matomo Analytics Cloud.\n</p>\n\nThis app will automatically add the Matomo tracking code to your website and track your visitors into your Matomo so you can get a 360 degree view on your users and customers. Increase your conversions, sales, and revenue with all the insights you get. Matomo gives you 100% data ownership and much more:\n\n* Track all page views and visits by your visitors\n* Set up goals to monitor your business goals\n<a href=\"https://matomo.org/docs/ecommerce-analytics/\" target=\"_blank\">Measure E-commerce sales and cart updates</a>\n* Find out which marketing campaigns are the most successful\n* Explore where your visitors are located\n* Analyze which devices and software they use to optimize your website\n* Discover through which <a href=\"https://matomo.org/docs/tracking-campaigns/\" target=\"_blank\">channels your visitors find you</a> and <a href=\"https://matomo.org/docs/search-engine-keywords-performance/\" target=\"_blank\">which keywords they use</a>\n* Determine at which time of the day they access your website the most\n* Monitor your site search engine and see exactly what people are looking for\n* <a href=\"https://matomo.org/docs/funnels/\" target=\"_blank\">See where you lose your visitors in your funnels</a>\n* Slice and dice your visitors into segments\n* <a href=\"https://matomo.org/integrate/\" target=\"_blank\">Over 100 integrations available</a>\n* Supports over 50 languages\n* <a href=\"https://themes.matomo.org/\" target=\"_blank\">Enjoy another look &amp; feel with themes</a>\n* <a href=\"http://matomo.org/features/#premium\" target=\"_blank\">Dozens of premium features available to take Matomo to the next level</a>\n\n_Learn <a href=\"https://matomo.org/features\" target=\"_blank\">more</a> about Matomo Analytics or <a href=\"https://matomo.org/start-free-analytics-trial/\" target=\"_blank\">signup to get started now</a>._",
+				"instructions": "<p class=\"message info\">\nMatomo Analytics requires an <a href=\"https://matomo.org/docs/installation\" target=\"_blank\">additional open source software</a> installed on your server.\n<br />\nAlternatively, <a href=\"https://matomo.org/start-free-analytics-trial/\" target=\"_blank\">start a free trial</a> on our reliable and secure Matomo Analytics Cloud.\n</p>",
+				"alias": "piwik",
+				"orgId": "1dfdd4be4cd7344b372e2348889ce688",
+				"icon": "https://images.cloudflareapps.com/nC1CY4MH-OMI/icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/w5BrOK7x7Jq6/Screenshot%202021-04-28%20at%208.48.03%20AM.png",
+					"//images.cloudflareapps.com/DBk7RPXSC6aBG2CEvIUH_piwik2_3.png",
+					"//images.cloudflareapps.com/Dwig3HGcRY6T195I0WLD_piwik2_4.png",
+					"//images.cloudflareapps.com/QbyjoVufRzqpyulcos6Q_piwik2_6.png",
+					"//images.cloudflareapps.com/4u5qnrBARvmm4SWRqtIX_piwik2_7.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Matomo.org",
+				"tagline": "",
+				"website": "https://matomo.org",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "https://matomo.org/privacy-policy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "hello@matomo.org",
+				"products": [],
+				"categoryIds": [
+					"insights"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "CcqoRvebikZu"
+				},
+				"created": "2017-08-16T01:55:06.313187Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "1dfdd4be4cd7344b372e2348889ce688",
+				"requestedAt": "2021-04-27T20:49:35.410086685Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2021-06-01T20:27:16.007657426Z"
+			}
+		}
+	]
+}

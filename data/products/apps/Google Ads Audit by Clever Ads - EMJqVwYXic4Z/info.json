@@ -1,0 +1,490 @@
+{
+	"id": "EMJqVwYXic4Z",
+	"title": "Google Ads Audit by Clever Ads",
+	"shortDescription": "Get a free, instant Google Ads audit of your account.",
+	"longDescription": "# **Google Ads Audit by Clever Ads**\n## \nAt **Clever Ads**, we know that taking care of your Google Ads campaigns and keeping them optimized is not a piece of cake. There are so many things to know, to remember and to watch for. Quite a challenge when also your level of optimization has a direct effect on your budget and ROI, don’t you think?\n\n## **Why use Clever Ads’ Free Google Ads Audit?**\n### \n-**Stop wasting money:** Clever Ads Audit will detect which campaigns and keywords are underperforming and making you waste money while helping you improve your results. \n\n-**Save time:** Instantly optimize your Google Ads campaigns with applicable insights. You will be able to apply Clever Ads improvements right away. No need to spend hours reviewing your Google Ads account anymore.\n\n-**Don’t miss a thing:** Inefficient campaigns? Missing ads? Outperforming keywords? Be in charge and always know what to do next to reach the best ROI possible.\n\nJoin the 100,000 businesses worldwide that have already used Clever Ads Google Ads Audit!\n\n## **How to get started with Clever Ads Audit?**\n### \n1. Sign in on Google and select the Google Ads account you want to have analyzed by Clever Ads.\n2. We’ll automatically perform a complete Google Ads Audit of your campaigns & provide you with the best insights and optimization suggestions.\n3. Understand where you stand and make the right improvements instantly, our tips are applicable directly from our dashboard!\n\nPerforming a deep analysis and optimization of your Google Ads account at least once a month will allow you to save money and maximize your ROI. \n\n## **Features: What will you get?**\n### \n-**Your Google Ads overall score:** Clever Ads will score your account out of 100 points. This way you’ll learn where you stand and how far you are from having highly optimized Google Ads campaigns. This grade is based on key metrics such as your bidding strategy, quality score, keywords performance and other relevant data.\n\n-**Bidding Improvement Suggestions:** Learn which keywords, ads and campaigns are underperforming and adjust your bids accordingly. Discover your least profitable products, non effective display placements and other relevant metrics.\n\n-**Optimize your Google Ads at all levels:** Get recommendations and insights at a campaign, ad group and keyword level. Do you have inefficient campaigns? Are you missing ads in your ad groups? Which keywords that are converting the most? Which should be removed from your campaigns? You’ll know it all.\n\n-**Applicable Insights:** The report Clever Ads generates for you is full of applicable insights so you can make improvements instantly. Increase or decrease bids, add keywords, optimize your targeting… in just one click! \n\nImproving your Google Ads account has never been easier. Get your Google Ads campaigns on point with the guarantee of a **Premier Google Partner**. \n\nAt Clever Ads we’re always launching new free products for leveraging your Google Ads strategy while saving you money and time, stay tuned at cleverads.com!",
+	"instructions": "**Authenticate with your Google Ads account in order to audit your campaigns, and we'll take it from there!**",
+	"alias": "clever-ads-audit",
+	"orgId": "9fc36f9119ee00d7fdf49125ce092414",
+	"icon": "https://images.cloudflareapps.com/rkimVbu1CGaC/logo_cleverads_cloudflare.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/n8kIcFVYSnqM/4_4_crop_cloudflare.png",
+		"https://images.cloudflareapps.com/n8kIcFVYSnqM/5_5_crop_cloudflare.png",
+		"https://images.cloudflareapps.com/n8kIcFVYSnqM/2_2_crop_cloudflare.png",
+		"https://images.cloudflareapps.com/n8kIcFVYSnqM/3_3_crop_cloudflare.png",
+		"https://images.cloudflareapps.com/n8kIcFVYSnqM/1_1_crop_cloudflare.png"
+	],
+	"tileImage": "",
+	"featuredAppImage": "https://images.cloudflareapps.com/tGYlv147C-22/cleverads_module_install_ready.png",
+	"author": "Clever PPC S.L",
+	"tagline": "",
+	"website": "https://cleverads.com/google-ads-audit",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://cleverads.com/terms-conditions",
+	"privacyPolicyURL": "https://cleverads.com/privacy-policy",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.3",
+	"infoVersion": "1.0.3",
+	"points": 0,
+	"supportEmail": "support@cleverads.com",
+	"products": [],
+	"categoryIds": [
+		"social-and-communication"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "9fc36f9119ee00d7fdf49125ce092414",
+			"created": "2020-03-06T13:55:09.235700498Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "_cHimtUDWsTj"
+	},
+	"created": "2020-03-05T15:48:08.94097Z",
+	"org": {
+		"id": "9fc36f9119ee00d7fdf49125ce092414",
+		"title": "",
+		"username": "9fc36f9119ee00d7fdf49125ce092414",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "social-and-communication",
+			"title": "Social & Communication",
+			"description": "Apps that make it easier to communicate with your customers.",
+			"icon": "",
+			"points": 80,
+			"visible": true,
+			"created": "2018-01-22T19:17:10.030031Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "EMJqVwYXic4Z",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Login with your Google Ads account.",
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"Cleverads_Campaigns_Audit"
+							],
+							"title": "Google Ads account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					],
+					"hide": true
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.75,
+				"upvotes": 3,
+				"downvotes": 1
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/ld-Re1hvUUhE",
+			"metadata": {
+				"code": {
+					"sourceTag": "ld-Re1hvUUhE",
+					"uploadedOn": "2020-03-05T15:51:21.644164435Z"
+				}
+			},
+			"created": "2020-03-05T15:48:10.145013Z",
+			"proposedApp": {
+				"id": "EMJqVwYXic4Z",
+				"title": "Google Ads Audit by Clever Ads",
+				"shortDescription": "Get a free, instant Google Ads audit of your account.",
+				"longDescription": "# Clever Ads will help you detect your campaigns' weaknesses and provide you with tips and practical information to improve your current Google Ads campaigns. All for free!\n\n# You will be able to apply the improvements automatically from Clever Ads' dashboard, meaning hours of work saved adjusting bids, adding better performing keywords, and performing other improvements.\n\n# Our bidding management system will suggest how to optimize your campaigns based on your targeting in terms of gender, age, device, schedule, etc.\n\n# Clever Ads analyzes your landing pages' quality scores, detecting which landing pages are not relevant enough to ads you're displaying to potential customers.\n\n# After auditing your campaigns, Clever Ads will provide you with insight regarding your current keywords while analyzing them to provide you with long-tail keyword suggestions. You will instantly know which keywords are performing good and which ones aren't.\n\nEasy! Clever Ads Audit uses machine-learning technology and it's fully integrated with Plesk: clean, easy-to-use, intuitive, and interactive.",
+				"instructions": "Give us access to your Google Ads account in order to perform the Google Ads audit, and we'll take it from there!",
+				"alias": "clever-ads-audit",
+				"orgId": "9fc36f9119ee00d7fdf49125ce092414",
+				"icon": "https://images.cloudflareapps.com/rkimVbu1CGaC/logo_cleverads_cloudflare.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/K0RH8iVjTlt6/1_1.png",
+					"https://images.cloudflareapps.com/K0RH8iVjTlt6/5_5.png",
+					"https://images.cloudflareapps.com/K0RH8iVjTlt6/2_2.png",
+					"https://images.cloudflareapps.com/K0RH8iVjTlt6/3_3.png",
+					"https://images.cloudflareapps.com/K0RH8iVjTlt6/4_4.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "https://images.cloudflareapps.com/tGYlv147C-22/cleverads_module_install_ready.png",
+				"author": "Clever PPC S.L",
+				"tagline": "",
+				"website": "https://cleverads.com/google-ads-audit",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://cleverads.com/terms-conditions",
+				"privacyPolicyURL": "https://cleverads.com/privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cleverads.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "_cHimtUDWsTj"
+				},
+				"created": "2020-03-05T15:48:08.94097Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "9fc36f9119ee00d7fdf49125ce092414",
+				"requestedAt": "2020-03-06T13:55:09.214822094Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-03-06T16:25:46.387706013Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "EMJqVwYXic4Z",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Login with your Google Ads account.",
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"Cleverads_Campaigns_Audit"
+							],
+							"title": "Google Ads account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					],
+					"hide": true
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "Changes on app description - listing process",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/ld-Re1hvUUhE",
+			"created": "2020-03-09T12:06:51.256627Z",
+			"proposedApp": {
+				"id": "EMJqVwYXic4Z",
+				"title": "Google Ads Audit by Clever Ads",
+				"shortDescription": "Get a free, instant Google Ads audit of your account.",
+				"longDescription": "# **Google Ads Audit by Clever Ads**\n\n**Clever Ads** will help you detect your campaigns' weaknesses and provide you with tips and practical information to improve your current **Google Ads campaigns**. All for free!\n\n## Features\n**Audit your Google  Campaigns**\nScan your current **Google Ads campaigns** and have a holistic overview of their performance.\n\n**Bid Adjustments**\nOur bidding management system will suggest how to optimize your campaigns based on the variables of your customer such as gender, device, age, schedules, etc.\n\n**Keywords Smart Analysis and Suggestion**\nAfter auditing your campaigns, **\"Google Ads Audit\"** will provide some insights about your current keywords. You will instantly know which keywords are performing well and which are not performing that well.\n\n**Landing Page Quality Score**\nShow yours Landing pages that are not relevant enough to the ads you are displaying to potential customers\n\n**Metric Summaries**\nSee the evolution of your **Google Ads campaigns** fast and easily, it will help you to know which points you should focus more!\n\n**Campaign improvement**\nYou will be able to apply the improvements automatically from Clever Ads' dashboard, meaning hours of work saved adjusting bids, adding better performing keywords, and performing other improvements.\n\n## **Other Important Points**\n**- Easy and clear interface.**\n**- Intuitive usage.**\n**- Automatically scans and rates your current Google Adwords campaigns.**\n**- Detects the weak points of your campaigns.**\n**- Shows tips to improve your current Google Ads campaigns.**\n**- Gives potential keywords that your campaigns could use.**",
+				"instructions": "**Authenticate with your Google Ads account in order to audit your campaigns, and we'll take it from there!**",
+				"alias": "clever-ads-audit",
+				"orgId": "9fc36f9119ee00d7fdf49125ce092414",
+				"icon": "https://images.cloudflareapps.com/rkimVbu1CGaC/logo_cleverads_cloudflare.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/n8kIcFVYSnqM/4_4_crop_cloudflare.png",
+					"https://images.cloudflareapps.com/n8kIcFVYSnqM/5_5_crop_cloudflare.png",
+					"https://images.cloudflareapps.com/n8kIcFVYSnqM/2_2_crop_cloudflare.png",
+					"https://images.cloudflareapps.com/n8kIcFVYSnqM/3_3_crop_cloudflare.png",
+					"https://images.cloudflareapps.com/n8kIcFVYSnqM/1_1_crop_cloudflare.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "https://images.cloudflareapps.com/tGYlv147C-22/cleverads_module_install_ready.png",
+				"author": "Clever PPC S.L",
+				"tagline": "",
+				"website": "https://cleverads.com/google-ads-audit",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://cleverads.com/terms-conditions",
+				"privacyPolicyURL": "https://cleverads.com/privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cleverads.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "_cHimtUDWsTj"
+				},
+				"created": "2020-03-05T15:48:08.94097Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "9fc36f9119ee00d7fdf49125ce092414",
+				"requestedAt": "2020-03-09T14:15:27.542952547Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-03-10T15:53:40.051332268Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "EMJqVwYXic4Z",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Login with your Google Ads account.",
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"Cleverads_Campaigns_Audit"
+							],
+							"title": "Google Ads account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					],
+					"hide": true
+				}
+			},
+			"releaseNotes": "Added to Social & Communication category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/ld-Re1hvUUhE",
+			"created": "2020-03-27T19:40:38.761673Z",
+			"proposedApp": {
+				"id": "EMJqVwYXic4Z",
+				"title": "Google Ads Audit by Clever Ads",
+				"shortDescription": "Get a free, instant Google Ads audit of your account.",
+				"longDescription": "# **Google Ads Audit by Clever Ads**\n\n**Clever Ads** will help you detect your campaigns' weaknesses and provide you with tips and practical information to improve your current **Google Ads campaigns**. All for free!\n\n## Features\n**Audit your Google  Campaigns**\nScan your current **Google Ads campaigns** and have a holistic overview of their performance.\n\n**Bid Adjustments**\nOur bidding management system will suggest how to optimize your campaigns based on the variables of your customer such as gender, device, age, schedules, etc.\n\n**Keywords Smart Analysis and Suggestion**\nAfter auditing your campaigns, **\"Google Ads Audit\"** will provide some insights about your current keywords. You will instantly know which keywords are performing well and which are not performing that well.\n\n**Landing Page Quality Score**\nShow yours Landing pages that are not relevant enough to the ads you are displaying to potential customers\n\n**Metric Summaries**\nSee the evolution of your **Google Ads campaigns** fast and easily, it will help you to know which points you should focus more!\n\n**Campaign improvement**\nYou will be able to apply the improvements automatically from Clever Ads' dashboard, meaning hours of work saved adjusting bids, adding better performing keywords, and performing other improvements.\n\n## **Other Important Points**\n**- Easy and clear interface.**\n**- Intuitive usage.**\n**- Automatically scans and rates your current Google Adwords campaigns.**\n**- Detects the weak points of your campaigns.**\n**- Shows tips to improve your current Google Ads campaigns.**\n**- Gives potential keywords that your campaigns could use.**",
+				"instructions": "**Authenticate with your Google Ads account in order to audit your campaigns, and we'll take it from there!**",
+				"alias": "clever-ads-audit",
+				"orgId": "9fc36f9119ee00d7fdf49125ce092414",
+				"icon": "https://images.cloudflareapps.com/rkimVbu1CGaC/logo_cleverads_cloudflare.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/n8kIcFVYSnqM/4_4_crop_cloudflare.png",
+					"https://images.cloudflareapps.com/n8kIcFVYSnqM/5_5_crop_cloudflare.png",
+					"https://images.cloudflareapps.com/n8kIcFVYSnqM/2_2_crop_cloudflare.png",
+					"https://images.cloudflareapps.com/n8kIcFVYSnqM/3_3_crop_cloudflare.png",
+					"https://images.cloudflareapps.com/n8kIcFVYSnqM/1_1_crop_cloudflare.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "https://images.cloudflareapps.com/tGYlv147C-22/cleverads_module_install_ready.png",
+				"author": "Clever PPC S.L",
+				"tagline": "",
+				"website": "https://cleverads.com/google-ads-audit",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://cleverads.com/terms-conditions",
+				"privacyPolicyURL": "https://cleverads.com/privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cleverads.com",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "_cHimtUDWsTj"
+				},
+				"created": "2020-03-05T15:48:08.94097Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2020-03-27T19:40:39.124902209Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-03-27T19:40:53.12778601Z"
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "EMJqVwYXic4Z",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"description": "Login with your Google Ads account.",
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"Cleverads_Campaigns_Audit"
+							],
+							"title": "Google Ads account",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					],
+					"hide": true
+				}
+			},
+			"ratingSummary": {
+				"valid": false,
+				"rating": 0,
+				"upvotes": 0,
+				"downvotes": 0
+			},
+			"releaseNotes": "changes on preview description",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/ld-Re1hvUUhE",
+			"created": "2020-04-14T08:33:20.347836Z",
+			"proposedApp": {
+				"id": "EMJqVwYXic4Z",
+				"title": "Google Ads Audit by Clever Ads",
+				"shortDescription": "Get a free, instant Google Ads audit of your account.",
+				"longDescription": "# **Google Ads Audit by Clever Ads**\n## \nAt **Clever Ads**, we know that taking care of your Google Ads campaigns and keeping them optimized is not a piece of cake. There are so many things to know, to remember and to watch for. Quite a challenge when also your level of optimization has a direct effect on your budget and ROI, don’t you think?\n\n## **Why use Clever Ads’ Free Google Ads Audit?**\n### \n-**Stop wasting money:** Clever Ads Audit will detect which campaigns and keywords are underperforming and making you waste money while helping you improve your results. \n\n-**Save time:** Instantly optimize your Google Ads campaigns with applicable insights. You will be able to apply Clever Ads improvements right away. No need to spend hours reviewing your Google Ads account anymore.\n\n-**Don’t miss a thing:** Inefficient campaigns? Missing ads? Outperforming keywords? Be in charge and always know what to do next to reach the best ROI possible.\n\nJoin the 100,000 businesses worldwide that have already used Clever Ads Google Ads Audit!\n\n## **How to get started with Clever Ads Audit?**\n### \n1. Sign in on Google and select the Google Ads account you want to have analyzed by Clever Ads.\n2. We’ll automatically perform a complete Google Ads Audit of your campaigns & provide you with the best insights and optimization suggestions.\n3. Understand where you stand and make the right improvements instantly, our tips are applicable directly from our dashboard!\n\nPerforming a deep analysis and optimization of your Google Ads account at least once a month will allow you to save money and maximize your ROI. \n\n## **Features: What will you get?**\n### \n-**Your Google Ads overall score:** Clever Ads will score your account out of 100 points. This way you’ll learn where you stand and how far you are from having highly optimized Google Ads campaigns. This grade is based on key metrics such as your bidding strategy, quality score, keywords performance and other relevant data.\n\n-**Bidding Improvement Suggestions:** Learn which keywords, ads and campaigns are underperforming and adjust your bids accordingly. Discover your least profitable products, non effective display placements and other relevant metrics.\n\n-**Optimize your Google Ads at all levels:** Get recommendations and insights at a campaign, ad group and keyword level. Do you have inefficient campaigns? Are you missing ads in your ad groups? Which keywords that are converting the most? Which should be removed from your campaigns? You’ll know it all.\n\n-**Applicable Insights:** The report Clever Ads generates for you is full of applicable insights so you can make improvements instantly. Increase or decrease bids, add keywords, optimize your targeting… in just one click! \n\nImproving your Google Ads account has never been easier. Get your Google Ads campaigns on point with the guarantee of a **Premier Google Partner**. \n\nAt Clever Ads we’re always launching new free products for leveraging your Google Ads strategy while saving you money and time, stay tuned at cleverads.com!",
+				"instructions": "**Authenticate with your Google Ads account in order to audit your campaigns, and we'll take it from there!**",
+				"alias": "clever-ads-audit",
+				"orgId": "9fc36f9119ee00d7fdf49125ce092414",
+				"icon": "https://images.cloudflareapps.com/rkimVbu1CGaC/logo_cleverads_cloudflare.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/n8kIcFVYSnqM/4_4_crop_cloudflare.png",
+					"https://images.cloudflareapps.com/n8kIcFVYSnqM/5_5_crop_cloudflare.png",
+					"https://images.cloudflareapps.com/n8kIcFVYSnqM/2_2_crop_cloudflare.png",
+					"https://images.cloudflareapps.com/n8kIcFVYSnqM/3_3_crop_cloudflare.png",
+					"https://images.cloudflareapps.com/n8kIcFVYSnqM/1_1_crop_cloudflare.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "https://images.cloudflareapps.com/tGYlv147C-22/cleverads_module_install_ready.png",
+				"author": "Clever PPC S.L",
+				"tagline": "",
+				"website": "https://cleverads.com/google-ads-audit",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://cleverads.com/terms-conditions",
+				"privacyPolicyURL": "https://cleverads.com/privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cleverads.com",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "_cHimtUDWsTj"
+				},
+				"created": "2020-03-05T15:48:08.94097Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "9fc36f9119ee00d7fdf49125ce092414",
+				"requestedAt": "2020-04-14T09:17:48.071243022Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-04-17T16:17:14.127467754Z"
+			}
+		}
+	]
+}

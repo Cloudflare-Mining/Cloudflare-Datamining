@@ -1,0 +1,335 @@
+{
+	"id": "6vibthdDnES1",
+	"title": "Google Tag Manager",
+	"shortDescription": "Add google tag manager and exclude it on pages",
+	"longDescription": "Add Google Tag Manager to all pages. Only GTM Id is needed. (It starts with GTM-******)\n\nFeatures:\n- Added scripts of google tag manager in head as well as body.  //As per google requirment\n- Added Ablility to exclude URL\n- Added Regex to Exclusion\n\nKnown Problems:\n1. Wordpress admin's Add post pages will become blank.\n(Exclude Wordpress admin url to fix it.)\n\nRequirement:\nOnly a google tag manager ID is required which starts with GTM-******.\n\nAdditional Info:\nNo permission and no user details are needed.\n\nProject Type:\nIt is a opensource project. Comments are welcomed to fix unforeseem bugs..\nFeature requests are werlcomed.\n\nRepo:\nhttps://github.com/Prashant-Elango/CloudflareApps--GoogletagManager\n\nGoogle Tag Manager and its logo are owned by google.",
+	"instructions": "Wordpress users must exclude Admin URL.",
+	"alias": "google-tag-manager",
+	"orgId": "ac1c39f289c2821079b074b4fd14a56c",
+	"icon": "https://images.cloudflareapps.com/XxbnWTvHYa__/ic_tag_manager.png",
+	"screenshots": [],
+	"tileImage": "",
+	"featuredAppImage": "",
+	"author": "Prashant Elango",
+	"tagline": "",
+	"website": "https://0News0.com/cloudflareApps",
+	"sourceURL": "https://github.com/Prashant-Elango/CloudflareApps--GoogletagManager",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.2",
+	"infoVersion": "1.0.2",
+	"points": 0,
+	"supportEmail": "developer@0news0.com",
+	"products": [],
+	"categoryIds": [
+		"widgets-and-plugins"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "ac1c39f289c2821079b074b4fd14a56c",
+			"created": "2021-04-24T06:30:54.701730807Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "EFqUyd7pLkZc"
+	},
+	"created": "2021-04-24T06:30:30.417168Z",
+	"org": {
+		"id": "ac1c39f289c2821079b074b4fd14a56c",
+		"title": "",
+		"username": "ac1c39f289c2821079b074b4fd14a56c",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "widgets-and-plugins",
+			"title": "Widgets & Plugins",
+			"description": "Apps that add functionality and services to your website.",
+			"icon": "",
+			"points": 10,
+			"visible": true,
+			"metadata": {
+				"promoted": false
+			},
+			"created": "2018-01-22T19:19:00.135755Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "6vibthdDnES1",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./src/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"google_tag_id": {
+							"order": 0,
+							"placeholder": "GTM-ABCDE12",
+							"required": true,
+							"title": "Google Tag Id",
+							"type": "string"
+						}
+					}
+				}
+			},
+			"releaseNotes": "Initial release",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/EFqUyd7pLkZc",
+			"metadata": {
+				"code": {
+					"sourceTag": "EFqUyd7pLkZc",
+					"uploadedOn": "2021-04-24T06:30:50.96419293Z"
+				}
+			},
+			"created": "2021-04-24T06:30:47.26442Z",
+			"proposedApp": {
+				"id": "6vibthdDnES1",
+				"title": "Google Tag Manager",
+				"shortDescription": "Just Installs google tag manager with specified Id.",
+				"longDescription": "There already exists an app of similar kind but it requires to share Cloudflare email address with them.\nI feel insecure on sharing the confidential email address. So, I developed this to solve my problem.\n\nI had made the mini project open source and will get actively maintained by me.\n\nFeatures:\n- Added scripts of google tag manager in head as well as body.  //As per google requirment\n\nRequirement:\nOnly a google tag manager ID is required which starts with GTM-******.\n\nAdditional Info:\nNo permission and no user details are needed.",
+				"instructions": "",
+				"alias": "google-tag-manager",
+				"orgId": "ac1c39f289c2821079b074b4fd14a56c",
+				"icon": "",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Prashant Elango",
+				"tagline": "",
+				"website": "https://0News0.com/cloudflareApps",
+				"sourceURL": "https://github.com/Prashant-Elango/CloudflareApps--GoogletagManager",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "developer@0news0.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "EFqUyd7pLkZc"
+				},
+				"created": "2021-04-24T06:30:30.417168Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "ac1c39f289c2821079b074b4fd14a56c",
+				"requestedAt": "2021-04-24T06:30:54.695228037Z",
+				"canceledByUserId": "ac1c39f289c2821079b074b4fd14a56c",
+				"canceledAt": "2021-04-25T18:17:32.940347263Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "6vibthdDnES1",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./src/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"exclude_url": {
+							"description": "Sometime google tag can cause problem in certain pages such as wordpress admnin's Add Post which causes a blank screen.  Url or Regex",
+							"items": {
+								"title": "Exclude page or domain",
+								"type": "string"
+							},
+							"order": 1,
+							"title": "Exclude pages and domain from installing Google Tags",
+							"type": "array"
+						},
+						"google_tag_id": {
+							"order": 0,
+							"placeholder": "GTM-ABCDE12",
+							"required": true,
+							"title": "Google Tag Id",
+							"type": "string"
+						}
+					}
+				}
+			},
+			"releaseNotes": "Added support to exclude pages (URL or domain) from places where it shouldn't be.\n\nThis feature is added to prevent Google Tag Manager from causing problem on certain location's such as wordpress admin dashboard.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/PirjHu4kcR3s",
+			"metadata": {
+				"code": {
+					"sourceTag": "PirjHu4kcR3s",
+					"uploadedOn": "2021-04-25T18:17:29.889702375Z"
+				}
+			},
+			"created": "2021-04-25T18:03:46.699753Z",
+			"proposedApp": {
+				"id": "6vibthdDnES1",
+				"title": "Google Tag Manager",
+				"shortDescription": "Add google tag manager and exclude it on pages",
+				"longDescription": "Add Google Tag Manager to all pages. Only GTM Id is needed. (It starts with GTM-******)\n\nFeatures:\n- Added scripts of google tag manager in head as well as body.  //As per google requirment\n- Added Ablility to exclude URL\n- Added Regex to Exclusion\n\nKnown Problems:\n1. Wordpress admin's Add post pages will become blank.\n(Exclude Wordpress admin url to fix it.)\n\nRequirement:\nOnly a google tag manager ID is required which starts with GTM-******.\n\nAdditional Info:\nNo permission and no user details are needed.\n\nProject Type:\nIt is a opensource project. Comments are welcomed to fix unforeseem bugs..\nFeature requests are werlcomed.\n\nRepo:\nhttps://github.com/Prashant-Elango/CloudflareApps--GoogletagManager\n\nGoogle Tag Manager and its logo are owned by google.",
+				"instructions": "Wordpress users must exclude Admin URL.",
+				"alias": "google-tag-manager",
+				"orgId": "ac1c39f289c2821079b074b4fd14a56c",
+				"icon": "https://images.cloudflareapps.com/XxbnWTvHYa__/ic_tag_manager.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Prashant Elango",
+				"tagline": "",
+				"website": "https://0News0.com/cloudflareApps",
+				"sourceURL": "https://github.com/Prashant-Elango/CloudflareApps--GoogletagManager",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "developer@0news0.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "EFqUyd7pLkZc"
+				},
+				"created": "2021-04-24T06:30:30.417168Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "ac1c39f289c2821079b074b4fd14a56c",
+				"requestedAt": "2021-04-25T18:17:32.952860523Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2021-06-01T18:19:36.347322511Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "6vibthdDnES1",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./src/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"exclude_url": {
+							"description": "Sometime google tag can cause problem in certain pages such as wordpress admnin's Add Post which causes a blank screen.  Url or Regex",
+							"items": {
+								"title": "Exclude page or domain",
+								"type": "string"
+							},
+							"order": 1,
+							"title": "Exclude pages and domain from installing Google Tags",
+							"type": "array"
+						},
+						"google_tag_id": {
+							"order": 0,
+							"placeholder": "GTM-ABCDE12",
+							"required": true,
+							"title": "Google Tag Id",
+							"type": "string"
+						}
+					}
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.63,
+				"upvotes": 5,
+				"downvotes": 3
+			},
+			"releaseNotes": "Initial release",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/PirjHu4kcR3s",
+			"created": "2021-06-01T18:23:03.302799Z",
+			"proposedApp": {
+				"id": "6vibthdDnES1",
+				"title": "Google Tag Manager",
+				"shortDescription": "Add google tag manager and exclude it on pages",
+				"longDescription": "Add Google Tag Manager to all pages. Only GTM Id is needed. (It starts with GTM-******)\n\nFeatures:\n- Added scripts of google tag manager in head as well as body.  //As per google requirment\n- Added Ablility to exclude URL\n- Added Regex to Exclusion\n\nKnown Problems:\n1. Wordpress admin's Add post pages will become blank.\n(Exclude Wordpress admin url to fix it.)\n\nRequirement:\nOnly a google tag manager ID is required which starts with GTM-******.\n\nAdditional Info:\nNo permission and no user details are needed.\n\nProject Type:\nIt is a opensource project. Comments are welcomed to fix unforeseem bugs..\nFeature requests are werlcomed.\n\nRepo:\nhttps://github.com/Prashant-Elango/CloudflareApps--GoogletagManager\n\nGoogle Tag Manager and its logo are owned by google.",
+				"instructions": "Wordpress users must exclude Admin URL.",
+				"alias": "google-tag-manager",
+				"orgId": "ac1c39f289c2821079b074b4fd14a56c",
+				"icon": "https://images.cloudflareapps.com/XxbnWTvHYa__/ic_tag_manager.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Prashant Elango",
+				"tagline": "",
+				"website": "https://0News0.com/cloudflareApps",
+				"sourceURL": "https://github.com/Prashant-Elango/CloudflareApps--GoogletagManager",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "developer@0news0.com",
+				"products": [],
+				"categoryIds": [
+					"widgets-and-plugins"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "EFqUyd7pLkZc"
+				},
+				"created": "2021-04-24T06:30:30.417168Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "b663b9a80366828a836e01c93e76da96",
+				"requestedAt": "2021-06-01T18:23:03.606194085Z",
+				"canceledAt": null,
+				"reviewedByUserId": "b663b9a80366828a836e01c93e76da96",
+				"reviewedAt": "2021-06-01T18:23:29.227598457Z"
+			}
+		}
+	]
+}

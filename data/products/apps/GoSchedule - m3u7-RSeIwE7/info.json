@@ -1,0 +1,193 @@
+{
+	"id": "m3u7-RSeIwE7",
+	"title": "GoSchedule",
+	"shortDescription": "Online Appointment Scheduling Software",
+	"longDescription": "GoSchedule is the appointment scheduling SaaS Software for SMB and Enterprise Segment to schedule resources, book online appointments, accept payments online, and seamlessly integrates with websites and apps with API first notion.",
+	"instructions": "Signup for GoSchedule Account ( https://accounts.goschedule.io/signup )\n\nOnce the account setup is done, visit the dashboard application ( https://app.goschedule.io ) \n\n1. Click the Settings from Left Navigation Panel\n2. Configure booking page with your business subdomain ( eg: SimpleVentures.goschedule.io )\n3. Hit Save\n\nKeep the Subdomain name handy which will be used as Organization Subdomain while configuring the goschedule plugin.",
+	"alias": "goschedule",
+	"orgId": "9ced008cd8e7adabad999d300008e863",
+	"icon": "https://images.cloudflareapps.com/-_OZ3hCxW5kq/512x512.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/ESA8xTj-biqr/plugin-01.jpg",
+		"https://images.cloudflareapps.com/ESA8xTj-biqr/plugin-02.jpg",
+		"https://images.cloudflareapps.com/ESA8xTj-biqr/plugin-03.jpg"
+	],
+	"tileImage": "",
+	"featuredAppImage": "",
+	"author": "Shakthi, LLC",
+	"tagline": "",
+	"website": "https://www.goschedule.io",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://www.goschedule.io/tos",
+	"privacyPolicyURL": "https://www.goschedule.io/privacy-policy",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.0",
+	"infoVersion": "1.0.0",
+	"points": 0,
+	"supportEmail": "support@goschedule.io",
+	"products": [],
+	"categoryIds": [],
+	"agreements": {
+		"tos": {
+			"userId": "9ced008cd8e7adabad999d300008e863",
+			"created": "2020-06-15T00:18:04.118262495Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "OTZXtdrrzMs2"
+	},
+	"created": "2020-06-15T00:01:59.916029Z",
+	"org": {
+		"id": "9ced008cd8e7adabad999d300008e863",
+		"title": "",
+		"username": "9ced008cd8e7adabad999d300008e863",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "m3u7-RSeIwE7",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"border": {
+							"default": 0,
+							"placeholder": "Plugin Border Value in Number",
+							"title": "Plugin Border",
+							"type": "integer"
+						},
+						"height": {
+							"default": 600,
+							"placeholder": "Plugin Height in Number",
+							"title": "Plugin Height",
+							"type": "integer"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": "body"
+							},
+							"description": "Where should the embeddable scheduling plugin appear?",
+							"format": "element",
+							"order": 0,
+							"title": "Appointment Scheduling Plugin",
+							"type": "object"
+						},
+						"subdomain": {
+							"default": "demo",
+							"maxLength": 25,
+							"placeholder": "Unique Organization Subdomain",
+							"title": "GoSchedule Organization Subdomain",
+							"type": "string"
+						},
+						"width": {
+							"default": 100,
+							"description": "Plugin Width",
+							"placeholder": "Plugin Width in Number",
+							"title": "Plugin Width",
+							"type": "integer"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.25,
+				"upvotes": 1,
+				"downvotes": 3
+			},
+			"releaseNotes": "The first initial release of GoSchedule Plugin",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/OTZXtdrrzMs2",
+			"metadata": {
+				"code": {
+					"sourceTag": "OTZXtdrrzMs2",
+					"uploadedOn": "2020-06-15T00:02:00.55621401Z"
+				}
+			},
+			"created": "2020-06-15T00:02:00.231842Z",
+			"proposedApp": {
+				"id": "m3u7-RSeIwE7",
+				"title": "GoSchedule",
+				"shortDescription": "Online Appointment Scheduling Software",
+				"longDescription": "GoSchedule is the appointment scheduling SaaS Software for SMB and Enterprise Segment to schedule resources, book online appointments, accept payments online, and seamlessly integrates with websites and apps with API first notion.",
+				"instructions": "Signup for GoSchedule Account ( https://accounts.goschedule.io/signup )\n\nOnce the account setup is done, visit the dashboard application ( https://app.goschedule.io ) \n\n1. Click the Settings from Left Navigation Panel\n2. Configure booking page with your business subdomain ( eg: SimpleVentures.goschedule.io )\n3. Hit Save\n\nKeep the Subdomain name handy which will be used as Organization Subdomain while configuring the goschedule plugin.",
+				"alias": "goschedule",
+				"orgId": "9ced008cd8e7adabad999d300008e863",
+				"icon": "https://images.cloudflareapps.com/-_OZ3hCxW5kq/512x512.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/ESA8xTj-biqr/plugin-01.jpg",
+					"https://images.cloudflareapps.com/ESA8xTj-biqr/plugin-02.jpg",
+					"https://images.cloudflareapps.com/ESA8xTj-biqr/plugin-03.jpg"
+				],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Shakthi, LLC",
+				"tagline": "",
+				"website": "https://www.goschedule.io",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.goschedule.io/tos",
+				"privacyPolicyURL": "https://www.goschedule.io/privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@goschedule.io",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "OTZXtdrrzMs2"
+				},
+				"created": "2020-06-15T00:01:59.916029Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "9ced008cd8e7adabad999d300008e863",
+				"requestedAt": "2020-06-15T00:18:04.103074923Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-06-17T16:31:46.998344272Z"
+			}
+		}
+	]
+}

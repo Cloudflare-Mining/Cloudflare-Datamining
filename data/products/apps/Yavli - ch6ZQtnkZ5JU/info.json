@@ -1,0 +1,1174 @@
+{
+	"id": "ch6ZQtnkZ5JU",
+	"title": "Yavli",
+	"shortDescription": "Serve non-intrusive ads to ad blocking visitors.",
+	"longDescription": "**Monetize visitors accessing your website with ad blockers.**\n\n* Install and start earning\n* Ads fill 'whitespace' created by ad blockers\n* Easy revenue win\n* Monthly payments\n* Non-intrusive native ads\n* No upfront fees or ongoing maintenance\n\n**FAQs**\n\n*What % of my website visitors use ad blockers?*   \nMost websites we work with are in the 10-15% range.   \n\n*Will this slow down my page load times?*   \nNope. Yavli ads load asynchronously.\n\n*Do I need to position the ads myself?*   \nNo. We will do this for you.\n\n*Can I have a say in where ads appear on my website?*   \nIf you have a specific preference please email publishers@yavli.com.\n\n*What type of ad content does Yavli display?*   \nNative ad thumbnails that link to advertorials and sponsored videos.\n\n*How do I know Yavli won't inject ads for non-ad blocker users?*   \nIf we misbehave Cloudflare would terminate our app.\n\n*How do I get paid?*   \nPlease submit your bank payment details to publishers@yavli.com.\n\n*When do I get paid?*   \nMonthly. Net 45.",
+	"instructions": "To install Yavli you will need a unique Website ID and API key. Please email your company name and website URL to publishers@yavli.com if you do not already have this.",
+	"alias": "yavli",
+	"orgId": "bc569cbde30a63a35f41c3342065a238",
+	"icon": "https://images.cloudflareapps.com/Z8hwonzLEcxo/YL.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/_eqOB4_cIr8v/SLIDE1.png",
+		"https://images.cloudflareapps.com/Rli_ycmq-3p2/slide3.png",
+		"https://images.cloudflareapps.com/7CzpzH1yGLef/slide2.3.png",
+		"https://images.cloudflareapps.com/Hx-07FB-6c_T/Slide5.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/X1rSkLEj6a3G/yavli%20logo%202.png",
+	"featuredAppImage": "",
+	"author": "Yavli Limited",
+	"tagline": "",
+	"website": "http://yavli.com",
+	"sourceURL": "",
+	"termsOfServiceURL": "http://yavli.com/publisher-terms-conditions-v1.0",
+	"privacyPolicyURL": "http://yavli.com/privacy.html",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "0.1.9",
+	"infoVersion": "0.1.9",
+	"points": 100,
+	"supportEmail": "publishers@yavli.com",
+	"products": [],
+	"categoryIds": [],
+	"agreements": {
+		"tos": {
+			"userId": "bc569cbde30a63a35f41c3342065a238",
+			"created": "2018-12-12T17:38:25.358864603Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "_7xetXtje3Jc"
+	},
+	"created": "2018-12-12T17:37:12.250053Z",
+	"org": {
+		"id": "bc569cbde30a63a35f41c3342065a238",
+		"title": "",
+		"username": "bc569cbde30a63a35f41c3342065a238",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [],
+	"versions": [
+		{
+			"tag": "0.1.0",
+			"appId": "ch6ZQtnkZ5JU",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"apiKey": {
+							"order": 1,
+							"title": "Yavli API Key",
+							"type": "string"
+						},
+						"websiteId": {
+							"order": 0,
+							"title": "Yavli Website ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"manual": true,
+			"releaseNotes": "Trying to save this so we can actually test it (contains worker). It is not meant to be released yet.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/_7xetXtje3Jc",
+			"metadata": {
+				"code": {
+					"sourceTag": "_7xetXtje3Jc",
+					"uploadedOn": "2018-12-12T17:37:12.639224631Z"
+				}
+			},
+			"created": "2018-12-12T17:37:12.477126Z",
+			"proposedApp": {
+				"id": "ch6ZQtnkZ5JU",
+				"title": "cfres",
+				"shortDescription": "",
+				"longDescription": "",
+				"instructions": "",
+				"alias": "",
+				"orgId": "bc569cbde30a63a35f41c3342065a238",
+				"icon": "",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "_7xetXtje3Jc"
+				},
+				"created": "2018-12-12T17:37:12.250053Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "bc569cbde30a63a35f41c3342065a238",
+				"requestedAt": "2018-12-12T17:38:25.345802073Z",
+				"canceledByUserId": "bc569cbde30a63a35f41c3342065a238",
+				"canceledAt": "2018-12-17T13:05:45.351675683Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "0.1.1",
+			"appId": "ch6ZQtnkZ5JU",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"apiKey": {
+							"order": 1,
+							"title": "Yavli API Key",
+							"type": "string"
+						},
+						"websiteId": {
+							"order": 0,
+							"title": "Yavli Website ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"manual": true,
+			"releaseNotes": "Trying to save this so we can actually test it (contains worker). It is not meant to be released yet.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/_7xetXtje3Jc",
+			"created": "2018-12-13T15:57:24.718923Z",
+			"proposedApp": {
+				"id": "ch6ZQtnkZ5JU",
+				"title": "Yavli",
+				"shortDescription": "Serve non-intrusive ads to ad blocking visitors.",
+				"longDescription": "**Monetize visitors accessing your website with ad blockers.**\n\n* Install and start earning\n* Ads fill 'whitespace' created by ad blockers\n* Easy revenue win\n* Monthly payments\n* Non-intrusive native ads\n* No upfront fees or ongoing maintenance\n\n**FAQs**\n\n*What % of my website visitors use ad blockers?*   \nMost websites we work with are in the 10-15% range.   \n\n*Will this slow down my page load times?*   \nNope. Yavli ads load asynchronously.\n\n*Do I need to position the ads myself?*   \nNo. Please allow up to 24 hours for the ads to appear (all websites are reviewed prior to ad activation).\n\n*Can I have a say in where ads appear on my website?*   \nIf you have a specific preference please email support@yavli.com.\n\n*What type of ad content does Yavli display?*   \nNative ad thumbnails that link to advertorials and sponsored videos.\n\n*How do I know Yavli won't inject ads for non-ad blocker users?*   \nIf we misbehave Cloudflare would terminate our app.\n\n*How do I get paid?*   \nPlease submit your bank payment details to support@yavli.com.\n\n*When do I get paid?*   \nMonthly. Net 45.",
+				"instructions": "Once you have installed the app please allow up to 24 hours for ads to appear (all websites are reviewed prior to ad activation).",
+				"alias": "yavli",
+				"orgId": "bc569cbde30a63a35f41c3342065a238",
+				"icon": "https://images.cloudflareapps.com/vBmUeWAnUmqG/Yavli%20logo.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/_eqOB4_cIr8v/SLIDE1.png",
+					"https://images.cloudflareapps.com/Rli_ycmq-3p2/slide3.png",
+					"https://images.cloudflareapps.com/7CzpzH1yGLef/slide2.3.png",
+					"https://images.cloudflareapps.com/Hx-07FB-6c_T/Slide5.png",
+					"https://images.cloudflareapps.com/K8yeuJAWZ_lG/slide6.1.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/X1rSkLEj6a3G/yavli%20logo%202.png",
+				"featuredAppImage": "",
+				"author": "Yavli Limited",
+				"tagline": "",
+				"website": "http://yavli.com/",
+				"sourceURL": "",
+				"termsOfServiceURL": "http://yavli.com/publisher-terms-conditions-v1.0",
+				"privacyPolicyURL": "http://yavli.com/privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@yavli.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "_7xetXtje3Jc"
+				},
+				"created": "2018-12-12T17:37:12.250053Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "bc569cbde30a63a35f41c3342065a238",
+				"requestedAt": "2018-12-17T13:05:45.370889415Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2019-01-04T17:13:28.247035429Z"
+			}
+		},
+		{
+			"tag": "0.1.2",
+			"appId": "ch6ZQtnkZ5JU",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"apiKey": {
+							"order": 1,
+							"title": "Yavli API Key",
+							"type": "string"
+						},
+						"websiteId": {
+							"order": 0,
+							"title": "Yavli Website ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"releaseNotes": "Small change for testing",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/_7xetXtje3Jc",
+			"created": "2019-01-09T10:06:00.728793Z",
+			"proposedApp": {
+				"id": "ch6ZQtnkZ5JU",
+				"title": "Yavli",
+				"shortDescription": "Serve non-intrusive ads to ad blocking visitors.",
+				"longDescription": "**Monetize visitors accessing your website with ad blockers.**\n\n* Install and start earning\n* Ads fill 'whitespace' created by ad blockers\n* Easy revenue win\n* Monthly payments\n* Non-intrusive native ads\n* No upfront fees or ongoing maintenance\n\n**FAQs**\n\n*What % of my website visitors use ad blockers?*   \nMost websites we work with are in the 10-15% range.   \n\n*Will this slow down my page load times?*   \nNope. Yavli ads load asynchronously.\n\n*Do I need to position the ads myself?*   \nNo. Please allow up to 24 hours for the ads to appear (all websites are reviewed prior to ad activation).\n\n*Can I have a say in where ads appear on my website?*   \nIf you have a specific preference please email support@yavli.com.\n\n*What type of ad content does Yavli display?*   \nNative ad thumbnails that link to advertorials and sponsored videos.\n\n*How do I know Yavli won't inject ads for non-ad blocker users?*   \nIf we misbehave Cloudflare would terminate our app.\n\n*How do I get paid?*   \nPlease submit your bank payment details to publishers@yavli.com.\n\n*When do I get paid?*   \nMonthly. Net 45.",
+				"instructions": "To install Yavli you will need a unique Website ID and API key. Please email your company name and website URL to publishers@yavli.com if you do not already have this.",
+				"alias": "yavli",
+				"orgId": "bc569cbde30a63a35f41c3342065a238",
+				"icon": "https://images.cloudflareapps.com/Z8hwonzLEcxo/YL.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/_eqOB4_cIr8v/SLIDE1.png",
+					"https://images.cloudflareapps.com/Rli_ycmq-3p2/slide3.png",
+					"https://images.cloudflareapps.com/7CzpzH1yGLef/slide2.3.png",
+					"https://images.cloudflareapps.com/Hx-07FB-6c_T/Slide5.png",
+					"https://images.cloudflareapps.com/K8yeuJAWZ_lG/slide6.1.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/X1rSkLEj6a3G/yavli%20logo%202.png",
+				"featuredAppImage": "",
+				"author": "Yavli Limited",
+				"tagline": "",
+				"website": "http://yavli.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "http://yavli.com/publisher-terms-conditions-v1.0",
+				"privacyPolicyURL": "http://yavli.com/privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "publishers@yavli.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "_7xetXtje3Jc"
+				},
+				"created": "2018-12-12T17:37:12.250053Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"requestedAt": "2019-01-09T15:58:24.22695336Z",
+				"canceledByUserId": "bc569cbde30a63a35f41c3342065a238",
+				"canceledAt": "2019-01-11T11:11:10.606564824Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "0.1.3",
+			"appId": "ch6ZQtnkZ5JU",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"apiKey": {
+							"order": 1,
+							"title": "Yavli API Key",
+							"type": "string"
+						},
+						"websiteId": {
+							"order": 0,
+							"title": "Yavli Website ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.33,
+				"upvotes": 1,
+				"downvotes": 2
+			},
+			"releaseNotes": "Small change for testing",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/_7xetXtje3Jc",
+			"created": "2019-01-11T11:11:09.894262Z",
+			"proposedApp": {
+				"id": "ch6ZQtnkZ5JU",
+				"title": "Yavli",
+				"shortDescription": "Serve non-intrusive ads to ad blocking visitors.",
+				"longDescription": "**Monetize visitors accessing your website with ad blockers.**\n\n* Install and start earning\n* Ads fill 'whitespace' created by ad blockers\n* Easy revenue win\n* Monthly payments\n* Non-intrusive native ads\n* No upfront fees or ongoing maintenance\n\n**FAQs**\n\n*What % of my website visitors use ad blockers?*   \nMost websites we work with are in the 10-15% range.   \n\n*Will this slow down my page load times?*   \nNope. Yavli ads load asynchronously.\n\n*Do I need to position the ads myself?*   \nNo. We will do this for you.\n\n*Can I have a say in where ads appear on my website?*   \nIf you have a specific preference please email publishers@yavli.com.\n\n*What type of ad content does Yavli display?*   \nNative ad thumbnails that link to advertorials and sponsored videos.\n\n*How do I know Yavli won't inject ads for non-ad blocker users?*   \nIf we misbehave Cloudflare would terminate our app.\n\n*How do I get paid?*   \nPlease submit your bank payment details to publishers@yavli.com.\n\n*When do I get paid?*   \nMonthly. Net 45.",
+				"instructions": "To install Yavli you will need a unique Website ID and API key. Please email your company name and website URL to publishers@yavli.com if you do not already have this.",
+				"alias": "yavli",
+				"orgId": "bc569cbde30a63a35f41c3342065a238",
+				"icon": "https://images.cloudflareapps.com/Z8hwonzLEcxo/YL.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/_eqOB4_cIr8v/SLIDE1.png",
+					"https://images.cloudflareapps.com/Rli_ycmq-3p2/slide3.png",
+					"https://images.cloudflareapps.com/7CzpzH1yGLef/slide2.3.png",
+					"https://images.cloudflareapps.com/Hx-07FB-6c_T/Slide5.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/X1rSkLEj6a3G/yavli%20logo%202.png",
+				"featuredAppImage": "",
+				"author": "Yavli Limited",
+				"tagline": "",
+				"website": "http://yavli.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "http://yavli.com/publisher-terms-conditions-v1.0",
+				"privacyPolicyURL": "http://yavli.com/privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "publishers@yavli.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "_7xetXtje3Jc"
+				},
+				"created": "2018-12-12T17:37:12.250053Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "bc569cbde30a63a35f41c3342065a238",
+				"requestedAt": "2019-01-11T11:11:10.62944136Z",
+				"canceledAt": null,
+				"reviewedByUserId": "681cef98e592b3db33836ad01f84726e",
+				"reviewedAt": "2019-01-11T17:32:03.033608336Z"
+			}
+		},
+		{
+			"tag": "0.1.4",
+			"appId": "ch6ZQtnkZ5JU",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"apiKey": {
+							"order": 1,
+							"title": "Yavli API Key",
+							"type": "string"
+						},
+						"websiteId": {
+							"order": 0,
+							"title": "Yavli Website ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"releaseNotes": "Small change",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/_7xetXtje3Jc",
+			"created": "2019-08-22T08:22:25.020528Z",
+			"proposedApp": {
+				"id": "ch6ZQtnkZ5JU",
+				"title": "Yavli",
+				"shortDescription": "Serve non-intrusive ads to ad blocking visitors.",
+				"longDescription": "**Monetize visitors accessing your website with ad blockers.**\n\n* Install and start earning\n* Ads fill 'whitespace' created by ad blockers\n* Easy revenue win\n* Monthly payments\n* Non-intrusive native ads\n* No upfront fees or ongoing maintenance\n\n**FAQs**\n\n*What % of my website visitors use ad blockers?*   \nMost websites we work with are in the 10-15% range.   \n\n*Will this slow down my page load times?*   \nNope. Yavli ads load asynchronously.\n\n*Do I need to position the ads myself?*   \nNo. We will do this for you.\n\n*Can I have a say in where ads appear on my website?*   \nIf you have a specific preference please email publishers@yavli.com.\n\n*What type of ad content does Yavli display?*   \nNative ad thumbnails that link to advertorials and sponsored videos.\n\n*How do I know Yavli won't inject ads for non-ad blocker users?*   \nIf we misbehave Cloudflare would terminate our app.\n\n*How do I get paid?*   \nPlease submit your bank payment details to publishers@yavli.com.\n\n*When do I get paid?*   \nMonthly. Net 45.",
+				"instructions": "To install Yavli you will need a unique Website ID and API key. Please email your company name and website URL to publishers@yavli.com if you do not already have this.",
+				"alias": "yavli",
+				"orgId": "bc569cbde30a63a35f41c3342065a238",
+				"icon": "https://images.cloudflareapps.com/Z8hwonzLEcxo/YL.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/_eqOB4_cIr8v/SLIDE1.png",
+					"https://images.cloudflareapps.com/Rli_ycmq-3p2/slide3.png",
+					"https://images.cloudflareapps.com/7CzpzH1yGLef/slide2.3.png",
+					"https://images.cloudflareapps.com/Hx-07FB-6c_T/Slide5.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/X1rSkLEj6a3G/yavli%20logo%202.png",
+				"featuredAppImage": "",
+				"author": "Yavli Limited",
+				"tagline": "",
+				"website": "http://yavli.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "http://yavli.com/publisher-terms-conditions-v1.0",
+				"privacyPolicyURL": "http://yavli.com/privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "publishers@yavli.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "_7xetXtje3Jc"
+				},
+				"created": "2018-12-12T17:37:12.250053Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "bc569cbde30a63a35f41c3342065a238",
+				"requestedAt": "2019-08-22T08:22:25.515167511Z",
+				"canceledByUserId": "bc569cbde30a63a35f41c3342065a238",
+				"canceledAt": "2019-08-23T07:49:28.345425532Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "0.1.5",
+			"appId": "ch6ZQtnkZ5JU",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"apiKey": {
+							"order": 1,
+							"title": "Yavli API Key",
+							"type": "string"
+						},
+						"websiteId": {
+							"order": 0,
+							"title": "Yavli Website ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0,
+				"upvotes": 0,
+				"downvotes": 1
+			},
+			"releaseNotes": "Small change to speed up Yavli App",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/fB7sTFW0YGWL",
+			"metadata": {
+				"code": {
+					"sourceTag": "fB7sTFW0YGWL",
+					"uploadedOn": "2019-08-23T07:49:27.042872409Z"
+				}
+			},
+			"created": "2019-08-23T07:49:26.577916Z",
+			"proposedApp": {
+				"id": "ch6ZQtnkZ5JU",
+				"title": "Yavli",
+				"shortDescription": "Serve non-intrusive ads to ad blocking visitors.",
+				"longDescription": "**Monetize visitors accessing your website with ad blockers.**\n\n* Install and start earning\n* Ads fill 'whitespace' created by ad blockers\n* Easy revenue win\n* Monthly payments\n* Non-intrusive native ads\n* No upfront fees or ongoing maintenance\n\n**FAQs**\n\n*What % of my website visitors use ad blockers?*   \nMost websites we work with are in the 10-15% range.   \n\n*Will this slow down my page load times?*   \nNope. Yavli ads load asynchronously.\n\n*Do I need to position the ads myself?*   \nNo. We will do this for you.\n\n*Can I have a say in where ads appear on my website?*   \nIf you have a specific preference please email publishers@yavli.com.\n\n*What type of ad content does Yavli display?*   \nNative ad thumbnails that link to advertorials and sponsored videos.\n\n*How do I know Yavli won't inject ads for non-ad blocker users?*   \nIf we misbehave Cloudflare would terminate our app.\n\n*How do I get paid?*   \nPlease submit your bank payment details to publishers@yavli.com.\n\n*When do I get paid?*   \nMonthly. Net 45.",
+				"instructions": "To install Yavli you will need a unique Website ID and API key. Please email your company name and website URL to publishers@yavli.com if you do not already have this.",
+				"alias": "yavli",
+				"orgId": "bc569cbde30a63a35f41c3342065a238",
+				"icon": "https://images.cloudflareapps.com/Z8hwonzLEcxo/YL.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/_eqOB4_cIr8v/SLIDE1.png",
+					"https://images.cloudflareapps.com/Rli_ycmq-3p2/slide3.png",
+					"https://images.cloudflareapps.com/7CzpzH1yGLef/slide2.3.png",
+					"https://images.cloudflareapps.com/Hx-07FB-6c_T/Slide5.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/X1rSkLEj6a3G/yavli%20logo%202.png",
+				"featuredAppImage": "",
+				"author": "Yavli Limited",
+				"tagline": "",
+				"website": "http://yavli.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "http://yavli.com/publisher-terms-conditions-v1.0",
+				"privacyPolicyURL": "http://yavli.com/privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "publishers@yavli.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "_7xetXtje3Jc"
+				},
+				"created": "2018-12-12T17:37:12.250053Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "bc569cbde30a63a35f41c3342065a238",
+				"requestedAt": "2019-08-23T07:49:28.372546773Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-08-23T15:10:12.076425522Z"
+			}
+		},
+		{
+			"tag": "0.1.6",
+			"appId": "ch6ZQtnkZ5JU",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"apiKey": {
+							"order": 1,
+							"title": "Yavli API Key",
+							"type": "string"
+						},
+						"websiteId": {
+							"order": 0,
+							"title": "Yavli Website ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": false,
+				"rating": 0,
+				"upvotes": 0,
+				"downvotes": 0
+			},
+			"manual": true,
+			"releaseNotes": "Small change to optimize Yavli App",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/T6IRU5WH4Z0A",
+			"metadata": {
+				"code": {
+					"sourceTag": "T6IRU5WH4Z0A",
+					"uploadedOn": "2019-12-20T14:19:26.087382145Z"
+				}
+			},
+			"created": "2019-12-20T14:19:25.575119Z",
+			"proposedApp": {
+				"id": "ch6ZQtnkZ5JU",
+				"title": "Yavli",
+				"shortDescription": "Serve non-intrusive ads to ad blocking visitors.",
+				"longDescription": "**Monetize visitors accessing your website with ad blockers.**\n\n* Install and start earning\n* Ads fill 'whitespace' created by ad blockers\n* Easy revenue win\n* Monthly payments\n* Non-intrusive native ads\n* No upfront fees or ongoing maintenance\n\n**FAQs**\n\n*What % of my website visitors use ad blockers?*   \nMost websites we work with are in the 10-15% range.   \n\n*Will this slow down my page load times?*   \nNope. Yavli ads load asynchronously.\n\n*Do I need to position the ads myself?*   \nNo. We will do this for you.\n\n*Can I have a say in where ads appear on my website?*   \nIf you have a specific preference please email publishers@yavli.com.\n\n*What type of ad content does Yavli display?*   \nNative ad thumbnails that link to advertorials and sponsored videos.\n\n*How do I know Yavli won't inject ads for non-ad blocker users?*   \nIf we misbehave Cloudflare would terminate our app.\n\n*How do I get paid?*   \nPlease submit your bank payment details to publishers@yavli.com.\n\n*When do I get paid?*   \nMonthly. Net 45.",
+				"instructions": "To install Yavli you will need a unique Website ID and API key. Please email your company name and website URL to publishers@yavli.com if you do not already have this.",
+				"alias": "yavli",
+				"orgId": "bc569cbde30a63a35f41c3342065a238",
+				"icon": "https://images.cloudflareapps.com/Z8hwonzLEcxo/YL.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/_eqOB4_cIr8v/SLIDE1.png",
+					"https://images.cloudflareapps.com/Rli_ycmq-3p2/slide3.png",
+					"https://images.cloudflareapps.com/7CzpzH1yGLef/slide2.3.png",
+					"https://images.cloudflareapps.com/Hx-07FB-6c_T/Slide5.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/X1rSkLEj6a3G/yavli%20logo%202.png",
+				"featuredAppImage": "",
+				"author": "Yavli Limited",
+				"tagline": "",
+				"website": "http://yavli.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "http://yavli.com/publisher-terms-conditions-v1.0",
+				"privacyPolicyURL": "http://yavli.com/privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "publishers@yavli.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "_7xetXtje3Jc"
+				},
+				"created": "2018-12-12T17:37:12.250053Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "bc569cbde30a63a35f41c3342065a238",
+				"requestedAt": "2019-12-20T14:20:48.700918448Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-12-20T17:07:29.5955812Z"
+			}
+		},
+		{
+			"tag": "0.1.7",
+			"appId": "ch6ZQtnkZ5JU",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"apiKey": {
+							"order": 1,
+							"title": "Yavli API Key",
+							"type": "string"
+						},
+						"websiteId": {
+							"order": 0,
+							"title": "Yavli Website ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 2,
+				"downvotes": 0
+			},
+			"manual": true,
+			"releaseNotes": "Small change to optimize app",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/ZrOhTsEGPugo",
+			"metadata": {
+				"code": {
+					"sourceTag": "ZrOhTsEGPugo",
+					"uploadedOn": "2020-04-29T16:41:18.116933611Z"
+				}
+			},
+			"created": "2020-04-29T16:41:16.839914Z",
+			"proposedApp": {
+				"id": "ch6ZQtnkZ5JU",
+				"title": "Yavli",
+				"shortDescription": "Serve non-intrusive ads to ad blocking visitors.",
+				"longDescription": "**Monetize visitors accessing your website with ad blockers.**\n\n* Install and start earning\n* Ads fill 'whitespace' created by ad blockers\n* Easy revenue win\n* Monthly payments\n* Non-intrusive native ads\n* No upfront fees or ongoing maintenance\n\n**FAQs**\n\n*What % of my website visitors use ad blockers?*   \nMost websites we work with are in the 10-15% range.   \n\n*Will this slow down my page load times?*   \nNope. Yavli ads load asynchronously.\n\n*Do I need to position the ads myself?*   \nNo. We will do this for you.\n\n*Can I have a say in where ads appear on my website?*   \nIf you have a specific preference please email publishers@yavli.com.\n\n*What type of ad content does Yavli display?*   \nNative ad thumbnails that link to advertorials and sponsored videos.\n\n*How do I know Yavli won't inject ads for non-ad blocker users?*   \nIf we misbehave Cloudflare would terminate our app.\n\n*How do I get paid?*   \nPlease submit your bank payment details to publishers@yavli.com.\n\n*When do I get paid?*   \nMonthly. Net 45.",
+				"instructions": "To install Yavli you will need a unique Website ID and API key. Please email your company name and website URL to publishers@yavli.com if you do not already have this.",
+				"alias": "yavli",
+				"orgId": "bc569cbde30a63a35f41c3342065a238",
+				"icon": "https://images.cloudflareapps.com/Z8hwonzLEcxo/YL.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/_eqOB4_cIr8v/SLIDE1.png",
+					"https://images.cloudflareapps.com/Rli_ycmq-3p2/slide3.png",
+					"https://images.cloudflareapps.com/7CzpzH1yGLef/slide2.3.png",
+					"https://images.cloudflareapps.com/Hx-07FB-6c_T/Slide5.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/X1rSkLEj6a3G/yavli%20logo%202.png",
+				"featuredAppImage": "",
+				"author": "Yavli Limited",
+				"tagline": "",
+				"website": "http://yavli.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "http://yavli.com/publisher-terms-conditions-v1.0",
+				"privacyPolicyURL": "http://yavli.com/privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "publishers@yavli.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "_7xetXtje3Jc"
+				},
+				"created": "2018-12-12T17:37:12.250053Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "bc569cbde30a63a35f41c3342065a238",
+				"requestedAt": "2020-04-29T16:41:20.273884062Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-05-01T19:57:08.583679771Z"
+			}
+		},
+		{
+			"tag": "0.1.8",
+			"appId": "ch6ZQtnkZ5JU",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"apiKey": {
+							"order": 1,
+							"title": "Yavli API Key",
+							"type": "string"
+						},
+						"websiteId": {
+							"order": 0,
+							"title": "Yavli Website ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"releaseNotes": "Small change to speed up CF worker",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/MFTvbaFnUMar",
+			"metadata": {
+				"code": {
+					"sourceTag": "MFTvbaFnUMar",
+					"uploadedOn": "2020-10-12T12:24:15.18321057Z"
+				}
+			},
+			"created": "2020-10-12T12:24:14.659862Z",
+			"proposedApp": {
+				"id": "ch6ZQtnkZ5JU",
+				"title": "Yavli",
+				"shortDescription": "Serve non-intrusive ads to ad blocking visitors.",
+				"longDescription": "**Monetize visitors accessing your website with ad blockers.**\n\n* Install and start earning\n* Ads fill 'whitespace' created by ad blockers\n* Easy revenue win\n* Monthly payments\n* Non-intrusive native ads\n* No upfront fees or ongoing maintenance\n\n**FAQs**\n\n*What % of my website visitors use ad blockers?*   \nMost websites we work with are in the 10-15% range.   \n\n*Will this slow down my page load times?*   \nNope. Yavli ads load asynchronously.\n\n*Do I need to position the ads myself?*   \nNo. We will do this for you.\n\n*Can I have a say in where ads appear on my website?*   \nIf you have a specific preference please email publishers@yavli.com.\n\n*What type of ad content does Yavli display?*   \nNative ad thumbnails that link to advertorials and sponsored videos.\n\n*How do I know Yavli won't inject ads for non-ad blocker users?*   \nIf we misbehave Cloudflare would terminate our app.\n\n*How do I get paid?*   \nPlease submit your bank payment details to publishers@yavli.com.\n\n*When do I get paid?*   \nMonthly. Net 45.",
+				"instructions": "To install Yavli you will need a unique Website ID and API key. Please email your company name and website URL to publishers@yavli.com if you do not already have this.",
+				"alias": "yavli",
+				"orgId": "bc569cbde30a63a35f41c3342065a238",
+				"icon": "https://images.cloudflareapps.com/Z8hwonzLEcxo/YL.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/_eqOB4_cIr8v/SLIDE1.png",
+					"https://images.cloudflareapps.com/Rli_ycmq-3p2/slide3.png",
+					"https://images.cloudflareapps.com/7CzpzH1yGLef/slide2.3.png",
+					"https://images.cloudflareapps.com/Hx-07FB-6c_T/Slide5.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/X1rSkLEj6a3G/yavli%20logo%202.png",
+				"featuredAppImage": "",
+				"author": "Yavli Limited",
+				"tagline": "",
+				"website": "http://yavli.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "http://yavli.com/publisher-terms-conditions-v1.0",
+				"privacyPolicyURL": "http://yavli.com/privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "publishers@yavli.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "_7xetXtje3Jc"
+				},
+				"created": "2018-12-12T17:37:12.250053Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "bc569cbde30a63a35f41c3342065a238",
+				"requestedAt": "2020-10-12T12:24:16.894972979Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-10-13T15:20:34.921922687Z"
+			}
+		},
+		{
+			"tag": "0.1.9",
+			"appId": "ch6ZQtnkZ5JU",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"apiKey": {
+							"order": 1,
+							"title": "Yavli API Key",
+							"type": "string"
+						},
+						"websiteId": {
+							"order": 0,
+							"title": "Yavli Website ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/worker.js"
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.8,
+				"upvotes": 4,
+				"downvotes": 1
+			},
+			"releaseNotes": "Small change",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/MZr6o9iPex8_",
+			"metadata": {
+				"code": {
+					"sourceTag": "MZr6o9iPex8_",
+					"uploadedOn": "2020-10-15T08:44:55.592934376Z"
+				}
+			},
+			"created": "2020-10-15T07:33:32.318984Z",
+			"proposedApp": {
+				"id": "ch6ZQtnkZ5JU",
+				"title": "Yavli",
+				"shortDescription": "Serve non-intrusive ads to ad blocking visitors.",
+				"longDescription": "**Monetize visitors accessing your website with ad blockers.**\n\n* Install and start earning\n* Ads fill 'whitespace' created by ad blockers\n* Easy revenue win\n* Monthly payments\n* Non-intrusive native ads\n* No upfront fees or ongoing maintenance\n\n**FAQs**\n\n*What % of my website visitors use ad blockers?*   \nMost websites we work with are in the 10-15% range.   \n\n*Will this slow down my page load times?*   \nNope. Yavli ads load asynchronously.\n\n*Do I need to position the ads myself?*   \nNo. We will do this for you.\n\n*Can I have a say in where ads appear on my website?*   \nIf you have a specific preference please email publishers@yavli.com.\n\n*What type of ad content does Yavli display?*   \nNative ad thumbnails that link to advertorials and sponsored videos.\n\n*How do I know Yavli won't inject ads for non-ad blocker users?*   \nIf we misbehave Cloudflare would terminate our app.\n\n*How do I get paid?*   \nPlease submit your bank payment details to publishers@yavli.com.\n\n*When do I get paid?*   \nMonthly. Net 45.",
+				"instructions": "To install Yavli you will need a unique Website ID and API key. Please email your company name and website URL to publishers@yavli.com if you do not already have this.",
+				"alias": "yavli",
+				"orgId": "bc569cbde30a63a35f41c3342065a238",
+				"icon": "https://images.cloudflareapps.com/Z8hwonzLEcxo/YL.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/_eqOB4_cIr8v/SLIDE1.png",
+					"https://images.cloudflareapps.com/Rli_ycmq-3p2/slide3.png",
+					"https://images.cloudflareapps.com/7CzpzH1yGLef/slide2.3.png",
+					"https://images.cloudflareapps.com/Hx-07FB-6c_T/Slide5.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/X1rSkLEj6a3G/yavli%20logo%202.png",
+				"featuredAppImage": "",
+				"author": "Yavli Limited",
+				"tagline": "",
+				"website": "http://yavli.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "http://yavli.com/publisher-terms-conditions-v1.0",
+				"privacyPolicyURL": "http://yavli.com/privacy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "publishers@yavli.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "_7xetXtje3Jc"
+				},
+				"created": "2018-12-12T17:37:12.250053Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "bc569cbde30a63a35f41c3342065a238",
+				"requestedAt": "2020-10-15T08:48:26.339269553Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-10-23T15:50:52.90205355Z"
+			}
+		}
+	]
+}

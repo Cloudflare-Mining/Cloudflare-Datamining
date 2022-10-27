@@ -1,0 +1,208 @@
+{
+	"id": "0n-Tbk3FbOG8",
+	"title": "Instant Page",
+	"shortDescription": "Preload pages just before a user clicks on the link",
+	"longDescription": "instant.page is a free and open source library that uses just-in-time preloading, meaning it preloads a page right before a user clicks on it. Pages are preloaded only when there's a good chance that a user will visit them, and only the HTML is preloaded, being respectful of your users' and servers' bandwidth and CPU. It uses passive event listeners so that your pages stay smooth and doesn't preload when the user has data saver enabled.",
+	"instructions": "There are no settings - this app just works out of the box",
+	"alias": "instant-page-app",
+	"orgId": "434d8ab07cec70b312d1c0d0764e37fe",
+	"icon": "https://images.cloudflareapps.com/cqdo85nlzmqJ/instant.page.png",
+	"screenshots": [],
+	"tileImage": "",
+	"featuredAppImage": "",
+	"author": "Rik Lewis",
+	"tagline": "",
+	"website": "https://www.riklewis.com",
+	"sourceURL": "https://github.com/riklewis/instant-page-app",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.1",
+	"infoVersion": "1.0.1",
+	"points": 0,
+	"supportEmail": "rik@riklewis.com",
+	"products": [],
+	"categoryIds": [],
+	"agreements": {
+		"tos": {
+			"userId": "434d8ab07cec70b312d1c0d0764e37fe",
+			"created": "2019-07-22T21:17:04.009480155Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "YXfwiOCHsvPD"
+	},
+	"created": "2019-07-22T21:17:01.374263Z",
+	"org": {
+		"id": "434d8ab07cec70b312d1c0d0764e37fe",
+		"title": "",
+		"username": "434d8ab07cec70b312d1c0d0764e37fe",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "0n-Tbk3FbOG8",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./instant.page.min.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {}
+				},
+				"preview": {}
+			},
+			"releaseNotes": "First version of the app (includes version 1.2.2 of instant.page)",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/YXfwiOCHsvPD",
+			"metadata": {
+				"code": {
+					"sourceTag": "YXfwiOCHsvPD",
+					"uploadedOn": "2019-07-22T21:17:02.782034465Z"
+				}
+			},
+			"created": "2019-07-22T21:17:02.292114Z",
+			"proposedApp": {
+				"id": "0n-Tbk3FbOG8",
+				"title": "Instant Page",
+				"shortDescription": "Preload pages just before a user clicks on the link",
+				"longDescription": "",
+				"instructions": "There are no settings - this app just works out of the box",
+				"alias": "instant-page-app",
+				"orgId": "434d8ab07cec70b312d1c0d0764e37fe",
+				"icon": "https://images.cloudflareapps.com/cqdo85nlzmqJ/instant.page.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Rik Lewis",
+				"tagline": "",
+				"website": "https://www.riklewis.com",
+				"sourceURL": "https://github.com/riklewis/instant-page-app",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "rik@rik.onl",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "YXfwiOCHsvPD"
+				},
+				"created": "2019-07-22T21:17:01.374263Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "434d8ab07cec70b312d1c0d0764e37fe",
+				"requestedAt": "2019-07-22T21:17:03.991155622Z",
+				"canceledByUserId": "434d8ab07cec70b312d1c0d0764e37fe",
+				"canceledAt": "2019-07-24T16:19:41.915634618Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "0n-Tbk3FbOG8",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./instant.page.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {}
+				},
+				"preview": {}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.89,
+				"upvotes": 90,
+				"downvotes": 11
+			},
+			"releaseNotes": "First version of the app (includes version 1.2.2 of instant.page)",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/M7YlmSx-0bmO",
+			"metadata": {
+				"code": {
+					"sourceTag": "M7YlmSx-0bmO",
+					"uploadedOn": "2019-07-24T16:19:40.751407492Z"
+				}
+			},
+			"created": "2019-07-24T16:19:40.130362Z",
+			"proposedApp": {
+				"id": "0n-Tbk3FbOG8",
+				"title": "Instant Page",
+				"shortDescription": "Preload pages just before a user clicks on the link",
+				"longDescription": "instant.page is a free and open source library that uses just-in-time preloading, meaning it preloads a page right before a user clicks on it. Pages are preloaded only when there's a good chance that a user will visit them, and only the HTML is preloaded, being respectful of your users' and servers' bandwidth and CPU. It uses passive event listeners so that your pages stay smooth and doesn't preload when the user has data saver enabled.",
+				"instructions": "There are no settings - this app just works out of the box",
+				"alias": "instant-page-app",
+				"orgId": "434d8ab07cec70b312d1c0d0764e37fe",
+				"icon": "https://images.cloudflareapps.com/cqdo85nlzmqJ/instant.page.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Rik Lewis",
+				"tagline": "",
+				"website": "https://www.riklewis.com",
+				"sourceURL": "https://github.com/riklewis/instant-page-app",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "rik@riklewis.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "YXfwiOCHsvPD"
+				},
+				"created": "2019-07-22T21:17:01.374263Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "434d8ab07cec70b312d1c0d0764e37fe",
+				"requestedAt": "2019-07-24T16:19:41.930530362Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-07-24T16:55:14.731258441Z"
+			}
+		}
+	]
+}

@@ -1,0 +1,758 @@
+{
+	"id": "3CC6G1nDxRco",
+	"title": "Sleekplan",
+	"shortDescription": "All-in-one feedback widget for your website",
+	"longDescription": "Sleekplan is a **customer feedback tool** that can easily be embedded in any web application. The widget assists you to track suggestions, ideas, and bugs from your customers, share a roadmap, and keep a changelog. Moreover, Sleekplan calculates an impact score to prioritize feedback automatically by using meaningful metrics. You don’t need to have a paid subscription from Sleekplan to use the feedback widget.\n\n## Some essential features:\n\n* Collect & manage feedback via an embedded widget\n* Measure and monitor customer satisfaction\n* Calculate an impact score based on meaningful metrics\n* Structure feedback with custom categories and statuses\n* Create a Roadmap\n* Keep a Changelog and notify customers\n* Get full control over the widget via the JavaScript SDK\n\n## The challenge\n\n**Listening to users is huge. It’s important.** But relying on the number of votes when making product decisions can be harmful. Consider that your largest customers‘ vote counts exactly the same as a person running a free trial. I decided to introduce an algorithm that calculates an impact score. The score is based on much more meaningful metrics (e.g. customer satisfaction, customer weighting, implementation effort).\n\n## How to get started\n\nSleekplan offers a free tier that can be used by anyone - free forever. If you are new to Sleekplan, you can try [Sleekplan Business](https://sleekplan.com/pricing) free for 30 days without any conditions - No credit card required. During the free trial, you will be able to use all of the Business.",
+	"instructions": "",
+	"alias": "sleekplan",
+	"orgId": "a63db8e92f8c06d608b8601ebe18c095",
+	"icon": "https://images.cloudflareapps.com/XLzZSmwZHWZo/logo.7f8bbc03.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/jClkPXOi2aG1/screen_1.png",
+		"https://images.cloudflareapps.com/jClkPXOi2aG1/screen_2.png",
+		"https://images.cloudflareapps.com/jClkPXOi2aG1/screen_3.png",
+		"https://images.cloudflareapps.com/jClkPXOi2aG1/screen_4.png",
+		"https://images.cloudflareapps.com/jClkPXOi2aG1/screen_5.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/OTGTjNIsrLOe/prev_small.png",
+	"featuredAppImage": "https://images.cloudflareapps.com/hVdIyHaWC4fx/prev_large.png",
+	"author": "Sleek Products Limited",
+	"tagline": "",
+	"website": "https://sleekplan.com",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://sleekplan.com/terms/",
+	"privacyPolicyURL": "https://sleekplan.com/privacy/",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "0.0.3",
+	"infoVersion": "0.0.3",
+	"points": 0,
+	"supportEmail": "integrations@sleekplan.com",
+	"products": [],
+	"categoryIds": [
+		"social-and-communication"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "a63db8e92f8c06d608b8601ebe18c095",
+			"created": "2020-06-18T19:01:17.322430225Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "s_omBmnErwaw"
+	},
+	"created": "2020-06-18T19:00:25.37735Z",
+	"org": {
+		"id": "a63db8e92f8c06d608b8601ebe18c095",
+		"title": "",
+		"username": "a63db8e92f8c06d608b8601ebe18c095",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "social-and-communication",
+			"title": "Social & Communication",
+			"description": "Apps that make it easier to communicate with your customers.",
+			"icon": "",
+			"points": 80,
+			"visible": true,
+			"created": "2018-01-22T19:17:10.030031Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "0.0.1",
+			"appId": "3CC6G1nDxRco",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"sleekplan"
+							],
+							"title": "Connect your Sleekplan account",
+							"type": "object"
+						},
+						"color_widget": {
+							"default": "#f38020",
+							"format": "color",
+							"order": 5,
+							"showIf": {
+								"product": {
+									"op": "!=",
+									"value": "select"
+								}
+							},
+							"title": "Brand color",
+							"type": "string"
+						},
+						"position_button": {
+							"description": "The button appears on the same side as your widget",
+							"enum": [
+								"top",
+								"middle",
+								"bottom"
+							],
+							"enumNames": {
+								"bottom": "Bottom",
+								"middle": "Middle",
+								"top": "Top"
+							},
+							"order": 3,
+							"showIf": {
+								"product": {
+									"op": "!=",
+									"value": "select"
+								}
+							},
+							"title": "Button position",
+							"type": "string"
+						},
+						"position_widget": {
+							"description": "The widget can be placed on the right or left side of your website",
+							"enum": [
+								"left",
+								"right"
+							],
+							"enumNames": {
+								"left": "Left",
+								"right": "Right"
+							},
+							"order": 2,
+							"showIf": {
+								"product": {
+									"op": "!=",
+									"value": "select"
+								}
+							},
+							"title": "Widget position",
+							"type": "string"
+						},
+						"product": {
+							"description": "Which product do you want associated with your site?",
+							"enum": [
+								"select"
+							],
+							"enumNames": {
+								"select": "Select a website..."
+							},
+							"order": 1,
+							"title": "Select your website",
+							"type": "string"
+						},
+						"theme_widget": {
+							"description": "Depending on the style of your site you can choose between a light or dark mode",
+							"enum": [
+								"light",
+								"dark"
+							],
+							"enumNames": {
+								"dark": "Dark mode",
+								"light": "Light mode"
+							},
+							"order": 4,
+							"showIf": {
+								"product": {
+									"op": "!=",
+									"value": "select"
+								}
+							},
+							"title": "Widget theme",
+							"type": "string"
+						}
+					}
+				},
+				"hooks": [
+					{
+						"endpoint": "https://api.sleekplan.com/external/v1/integration/cloudflare/install?access_token={{authentications.account.token.token}}",
+						"events": [
+							"option-change:account",
+							"option-change:product"
+						],
+						"block": true,
+						"if": "install.options.account && install.options.account.service",
+						"failure": {
+							"action": "notify",
+							"message": "There was an error installing Sleekplan."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://api.sleekplan.com/external/v1/integration/cloudflare/settings?access_token={{authentications.account.token.token}}",
+						"events": [
+							"option-change:position_widget",
+							"option-change:position_button",
+							"option-change:theme_widget",
+							"option-change:color_widget"
+						],
+						"block": true,
+						"if": "install.options.account && install.options.account.service",
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Sleekplan."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "initial release",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/s_omBmnErwaw",
+			"metadata": {
+				"code": {
+					"sourceTag": "s_omBmnErwaw",
+					"uploadedOn": "2020-06-18T19:00:27.715753498Z"
+				}
+			},
+			"created": "2020-06-18T19:00:26.519204Z",
+			"proposedApp": {
+				"id": "3CC6G1nDxRco",
+				"title": "Sleekplan",
+				"shortDescription": "All-in-one feedback widget for your website",
+				"longDescription": "Sleekplan is a **customer feedback tool** that can easily be embedded in any web application. The widget assists you to track suggestions, ideas, and bugs from your customers, share a roadmap, and keep a changelog. Moreover, Sleekplan calculates an impact score to prioritize feedback automatically by using meaningful metrics. You don’t need to have a paid subscription from Sleekplan to use the feedback widget.\n\n## Some essential features:\n\n* Collect & manage feedback via an embedded widget\n* Measure and monitor customer satisfaction\n* Calculate an impact score based on meaningful metrics\n* Structure feedback with custom categories and statuses\n* Create a Roadmap\n* Keep a Changelog and notify customers\n* Get full control over the widget via the JavaScript SDK\n\n## The challenge\n\n**Listening to users is huge. It’s important.** But relying on the number of votes when making product decisions can be harmful. Consider that your largest customers‘ vote counts exactly the same as a person running a free trial. I decided to introduce an algorithm that calculates an impact score. The score is based on much more meaningful metrics (e.g. customer satisfaction, customer weighting, implementation effort).\n\n## How to get started\n\nSleekplan offers a free tier that can be used by anyone - free forever. If you are new to Sleekplan, you can try [Sleekplan Business](https://sleekplan.com/pricing) free for 30 days without any conditions - No credit card required. During the free trial, you will be able to use all of the Business.",
+				"instructions": "",
+				"alias": "sleekplan",
+				"orgId": "a63db8e92f8c06d608b8601ebe18c095",
+				"icon": "https://images.cloudflareapps.com/XLzZSmwZHWZo/logo.7f8bbc03.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/jClkPXOi2aG1/screen_1.png",
+					"https://images.cloudflareapps.com/jClkPXOi2aG1/screen_2.png",
+					"https://images.cloudflareapps.com/jClkPXOi2aG1/screen_3.png",
+					"https://images.cloudflareapps.com/jClkPXOi2aG1/screen_4.png",
+					"https://images.cloudflareapps.com/jClkPXOi2aG1/screen_5.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/OTGTjNIsrLOe/prev_small.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/hVdIyHaWC4fx/prev_large.png",
+				"author": "Sleek Products Limited",
+				"tagline": "",
+				"website": "https://sleekplan.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://sleekplan.com/terms/",
+				"privacyPolicyURL": "https://sleekplan.com/privacy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "integrations@sleekplan.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "s_omBmnErwaw"
+				},
+				"created": "2020-06-18T19:00:25.37735Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "a63db8e92f8c06d608b8601ebe18c095",
+				"requestedAt": "2020-06-18T19:01:17.306336122Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-06-19T16:18:52.027569307Z"
+			}
+		},
+		{
+			"tag": "0.0.2",
+			"appId": "3CC6G1nDxRco",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"sleekplan"
+							],
+							"title": "Connect your Sleekplan account",
+							"type": "object"
+						},
+						"color_widget": {
+							"default": "#f38020",
+							"format": "color",
+							"order": 5,
+							"showIf": {
+								"product": {
+									"op": "!=",
+									"value": "select"
+								}
+							},
+							"title": "Brand color",
+							"type": "string"
+						},
+						"position_button": {
+							"description": "The button appears on the same side as your widget",
+							"enum": [
+								"top",
+								"middle",
+								"bottom"
+							],
+							"enumNames": {
+								"bottom": "Bottom",
+								"middle": "Middle",
+								"top": "Top"
+							},
+							"order": 3,
+							"showIf": {
+								"product": {
+									"op": "!=",
+									"value": "select"
+								}
+							},
+							"title": "Button position",
+							"type": "string"
+						},
+						"position_widget": {
+							"description": "The widget can be placed on the right or left side of your website",
+							"enum": [
+								"left",
+								"right"
+							],
+							"enumNames": {
+								"left": "Left",
+								"right": "Right"
+							},
+							"order": 2,
+							"showIf": {
+								"product": {
+									"op": "!=",
+									"value": "select"
+								}
+							},
+							"title": "Widget position",
+							"type": "string"
+						},
+						"product": {
+							"description": "Which product do you want associated with your site?",
+							"enum": [
+								"select"
+							],
+							"enumNames": {
+								"select": "Select a website..."
+							},
+							"order": 1,
+							"title": "Select your website",
+							"type": "string"
+						},
+						"theme_widget": {
+							"description": "Depending on the style of your site you can choose between a light or dark mode",
+							"enum": [
+								"light",
+								"dark"
+							],
+							"enumNames": {
+								"dark": "Dark mode",
+								"light": "Light mode"
+							},
+							"order": 4,
+							"showIf": {
+								"product": {
+									"op": "!=",
+									"value": "select"
+								}
+							},
+							"title": "Widget theme",
+							"type": "string"
+						}
+					}
+				},
+				"hooks": [
+					{
+						"endpoint": "https://api.sleekplan.com/external/v1/integration/cloudflare/install?access_token={{authentications.account.token.token}}",
+						"events": [
+							"option-change:account",
+							"option-change:product"
+						],
+						"block": true,
+						"if": "install.options.account && install.options.account.service",
+						"failure": {
+							"action": "notify",
+							"message": "There was an error installing Sleekplan."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://api.sleekplan.com/external/v1/integration/cloudflare/settings?access_token={{authentications.account.token.token}}",
+						"events": [
+							"option-change:position_widget",
+							"option-change:position_button",
+							"option-change:theme_widget",
+							"option-change:color_widget"
+						],
+						"block": true,
+						"if": "install.options.account && install.options.account.service",
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Sleekplan."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "Added to Social & Communication category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/s_omBmnErwaw",
+			"created": "2020-06-19T16:20:03.290999Z",
+			"proposedApp": {
+				"id": "3CC6G1nDxRco",
+				"title": "Sleekplan",
+				"shortDescription": "All-in-one feedback widget for your website",
+				"longDescription": "Sleekplan is a **customer feedback tool** that can easily be embedded in any web application. The widget assists you to track suggestions, ideas, and bugs from your customers, share a roadmap, and keep a changelog. Moreover, Sleekplan calculates an impact score to prioritize feedback automatically by using meaningful metrics. You don’t need to have a paid subscription from Sleekplan to use the feedback widget.\n\n## Some essential features:\n\n* Collect & manage feedback via an embedded widget\n* Measure and monitor customer satisfaction\n* Calculate an impact score based on meaningful metrics\n* Structure feedback with custom categories and statuses\n* Create a Roadmap\n* Keep a Changelog and notify customers\n* Get full control over the widget via the JavaScript SDK\n\n## The challenge\n\n**Listening to users is huge. It’s important.** But relying on the number of votes when making product decisions can be harmful. Consider that your largest customers‘ vote counts exactly the same as a person running a free trial. I decided to introduce an algorithm that calculates an impact score. The score is based on much more meaningful metrics (e.g. customer satisfaction, customer weighting, implementation effort).\n\n## How to get started\n\nSleekplan offers a free tier that can be used by anyone - free forever. If you are new to Sleekplan, you can try [Sleekplan Business](https://sleekplan.com/pricing) free for 30 days without any conditions - No credit card required. During the free trial, you will be able to use all of the Business.",
+				"instructions": "",
+				"alias": "sleekplan",
+				"orgId": "a63db8e92f8c06d608b8601ebe18c095",
+				"icon": "https://images.cloudflareapps.com/XLzZSmwZHWZo/logo.7f8bbc03.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/jClkPXOi2aG1/screen_1.png",
+					"https://images.cloudflareapps.com/jClkPXOi2aG1/screen_2.png",
+					"https://images.cloudflareapps.com/jClkPXOi2aG1/screen_3.png",
+					"https://images.cloudflareapps.com/jClkPXOi2aG1/screen_4.png",
+					"https://images.cloudflareapps.com/jClkPXOi2aG1/screen_5.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/OTGTjNIsrLOe/prev_small.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/hVdIyHaWC4fx/prev_large.png",
+				"author": "Sleek Products Limited",
+				"tagline": "",
+				"website": "https://sleekplan.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://sleekplan.com/terms/",
+				"privacyPolicyURL": "https://sleekplan.com/privacy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "integrations@sleekplan.com",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "s_omBmnErwaw"
+				},
+				"created": "2020-06-18T19:00:25.37735Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2020-06-19T16:20:09.60419567Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-06-19T17:05:16.937712309Z"
+			}
+		},
+		{
+			"tag": "0.0.3",
+			"appId": "3CC6G1nDxRco",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 0,
+							"required": true,
+							"services": [
+								"sleekplan"
+							],
+							"title": "Connect your Sleekplan account",
+							"type": "object"
+						},
+						"color_widget": {
+							"default": "#f38020",
+							"format": "color",
+							"order": 5,
+							"showIf": {
+								"product": {
+									"op": "!=",
+									"value": "select"
+								}
+							},
+							"title": "Brand color",
+							"type": "string"
+						},
+						"position_button": {
+							"description": "The button appears on the same side as your widget",
+							"enum": [
+								"top",
+								"middle",
+								"bottom"
+							],
+							"enumNames": {
+								"bottom": "Bottom",
+								"middle": "Middle",
+								"top": "Top"
+							},
+							"order": 3,
+							"showIf": {
+								"product": {
+									"op": "!=",
+									"value": "select"
+								}
+							},
+							"title": "Button position",
+							"type": "string"
+						},
+						"position_widget": {
+							"description": "The widget can be placed on the right or left side of your website",
+							"enum": [
+								"left",
+								"right"
+							],
+							"enumNames": {
+								"left": "Left",
+								"right": "Right"
+							},
+							"order": 2,
+							"showIf": {
+								"product": {
+									"op": "!=",
+									"value": "select"
+								}
+							},
+							"title": "Widget position",
+							"type": "string"
+						},
+						"product": {
+							"description": "Which product do you want associated with your site?",
+							"enum": [
+								"select"
+							],
+							"enumNames": {
+								"select": "Select a website..."
+							},
+							"order": 1,
+							"title": "Select your website",
+							"type": "string"
+						},
+						"theme_widget": {
+							"description": "Depending on the style of your site you can choose between a light or dark mode",
+							"enum": [
+								"light",
+								"dark"
+							],
+							"enumNames": {
+								"dark": "Dark mode",
+								"light": "Light mode"
+							},
+							"order": 4,
+							"showIf": {
+								"product": {
+									"op": "!=",
+									"value": "select"
+								}
+							},
+							"title": "Widget theme",
+							"type": "string"
+						}
+					}
+				},
+				"hooks": [
+					{
+						"endpoint": "https://api.sleekplan.com/external/v1/integration/cloudflare/install?access_token={{authentications.account.token.token}}",
+						"events": [
+							"option-change:account",
+							"option-change:product"
+						],
+						"block": true,
+						"if": "install.options.account && install.options.account.service",
+						"failure": {
+							"action": "notify",
+							"message": "There was an error installing Sleekplan."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"endpoint": "https://api.sleekplan.com/external/v1/integration/cloudflare/settings?access_token={{authentications.account.token.token}}",
+						"events": [
+							"option-change:position_widget",
+							"option-change:position_button",
+							"option-change:theme_widget",
+							"option-change:color_widget"
+						],
+						"block": true,
+						"if": "install.options.account && install.options.account.service",
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Sleekplan."
+						},
+						"authenticate": [
+							"account"
+						]
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": false,
+				"rating": 0,
+				"upvotes": 0,
+				"downvotes": 0
+			},
+			"releaseNotes": "+ added an app preview",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/WEttYX6p3Egx",
+			"metadata": {
+				"code": {
+					"sourceTag": "WEttYX6p3Egx",
+					"uploadedOn": "2020-06-30T18:40:57.621343913Z"
+				}
+			},
+			"created": "2020-06-30T18:40:57.081585Z",
+			"proposedApp": {
+				"id": "3CC6G1nDxRco",
+				"title": "Sleekplan",
+				"shortDescription": "All-in-one feedback widget for your website",
+				"longDescription": "Sleekplan is a **customer feedback tool** that can easily be embedded in any web application. The widget assists you to track suggestions, ideas, and bugs from your customers, share a roadmap, and keep a changelog. Moreover, Sleekplan calculates an impact score to prioritize feedback automatically by using meaningful metrics. You don’t need to have a paid subscription from Sleekplan to use the feedback widget.\n\n## Some essential features:\n\n* Collect & manage feedback via an embedded widget\n* Measure and monitor customer satisfaction\n* Calculate an impact score based on meaningful metrics\n* Structure feedback with custom categories and statuses\n* Create a Roadmap\n* Keep a Changelog and notify customers\n* Get full control over the widget via the JavaScript SDK\n\n## The challenge\n\n**Listening to users is huge. It’s important.** But relying on the number of votes when making product decisions can be harmful. Consider that your largest customers‘ vote counts exactly the same as a person running a free trial. I decided to introduce an algorithm that calculates an impact score. The score is based on much more meaningful metrics (e.g. customer satisfaction, customer weighting, implementation effort).\n\n## How to get started\n\nSleekplan offers a free tier that can be used by anyone - free forever. If you are new to Sleekplan, you can try [Sleekplan Business](https://sleekplan.com/pricing) free for 30 days without any conditions - No credit card required. During the free trial, you will be able to use all of the Business.",
+				"instructions": "",
+				"alias": "sleekplan",
+				"orgId": "a63db8e92f8c06d608b8601ebe18c095",
+				"icon": "https://images.cloudflareapps.com/XLzZSmwZHWZo/logo.7f8bbc03.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/jClkPXOi2aG1/screen_1.png",
+					"https://images.cloudflareapps.com/jClkPXOi2aG1/screen_2.png",
+					"https://images.cloudflareapps.com/jClkPXOi2aG1/screen_3.png",
+					"https://images.cloudflareapps.com/jClkPXOi2aG1/screen_4.png",
+					"https://images.cloudflareapps.com/jClkPXOi2aG1/screen_5.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/OTGTjNIsrLOe/prev_small.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/hVdIyHaWC4fx/prev_large.png",
+				"author": "Sleek Products Limited",
+				"tagline": "",
+				"website": "https://sleekplan.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://sleekplan.com/terms/",
+				"privacyPolicyURL": "https://sleekplan.com/privacy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "integrations@sleekplan.com",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "s_omBmnErwaw"
+				},
+				"created": "2020-06-18T19:00:25.37735Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "a63db8e92f8c06d608b8601ebe18c095",
+				"requestedAt": "2020-06-30T18:40:59.119638157Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-07-02T23:29:58.890718371Z"
+			}
+		}
+	]
+}

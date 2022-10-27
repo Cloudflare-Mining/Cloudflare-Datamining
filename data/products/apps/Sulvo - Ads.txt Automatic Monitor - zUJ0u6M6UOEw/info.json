@@ -1,0 +1,455 @@
+{
+	"id": "zUJ0u6M6UOEw",
+	"title": "Sulvo - Ads.txt Automatic Monitor",
+	"shortDescription": "Ads.txt checker to keep your ads.txt file always accessible.",
+	"longDescription": "By blocking bots and crawlers on your /ads.txt you may have unknowingly lowered your ad revenue. This app will check for your ads.txt file to make sure it is not blocked from being accessible by the buyers of your ad spaces. As you know, ads.txt needs to be accessible at all times for all buyers otherwise they are not able to buy ads on your site, lowering your prices and overall site earnings. \nWhen this app cannot reach your ads.txt file it will alert you by email. You can also sign up for free text alerts if you already have a Sulvo publisher account under the \"Alerts\" section within the Sulvo dashboard.",
+	"instructions": "You can install our automatic ads.txt monitor with just one click from the Cloudflare interface, if you want free SMS/text alerts to be sent to you then you will also need a Sulvo publisher account.",
+	"alias": "",
+	"orgId": "e643e13c8276afcd55ec62f00fb2eed6",
+	"icon": "https://images.cloudflareapps.com/94P6pZBShrMw/App%20Icon%20Image.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/fbUcAHXBhTwS/cfcover1.png",
+		"https://images.cloudflareapps.com/fbUcAHXBhTwS/cfcover2.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/Bhy6fpoDWy3y/App%20Cover%20Image.png",
+	"featuredAppImage": "",
+	"author": "Sulvo LLC",
+	"tagline": "",
+	"website": "https://sulvo.com",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://sulvo.com/terms-of-service",
+	"privacyPolicyURL": "https://sulvo.com/privacy-policy",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.2.1",
+	"infoVersion": "1.2.1",
+	"points": 0,
+	"supportEmail": "support@sulvo.com",
+	"products": [],
+	"categoryIds": [
+		"insights"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "e643e13c8276afcd55ec62f00fb2eed6",
+			"created": "2019-04-03T17:47:12.776100716Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "ADBpyCM4DV4D"
+	},
+	"created": "2019-04-03T17:47:09.287934Z",
+	"org": {
+		"id": "e643e13c8276afcd55ec62f00fb2eed6",
+		"title": "",
+		"username": "e643e13c8276afcd55ec62f00fb2eed6",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "insights",
+			"title": "Insights",
+			"description": "Apps that provide insight into your visitors.",
+			"icon": "",
+			"points": 40,
+			"visible": true,
+			"created": "2018-11-13T20:10:05.739284Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "zUJ0u6M6UOEw",
+			"definition": {
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://monitoring.sulvo.com/production/create",
+						"events": [
+							"before-new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://monitoring.sulvo.com/production/delete",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 3,
+				"downvotes": 0
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/ADBpyCM4DV4D",
+			"metadata": {
+				"code": {
+					"sourceTag": "ADBpyCM4DV4D",
+					"uploadedOn": "2019-04-03T17:47:11.286174835Z"
+				}
+			},
+			"created": "2019-04-03T17:47:10.710458Z",
+			"proposedApp": {
+				"id": "zUJ0u6M6UOEw",
+				"title": "Ads.txt Automatic Monitor",
+				"shortDescription": "Ads.txt checker to keep your ads.txt file always accessible.",
+				"longDescription": "By blocking bots and crawlers on your /ads.txt you may have unknowingly lowered your ad revenue. This app will check for your ads.txt file to make sure it is not blocked from being accessible by the buyers of your ad spaces. As you know, ads.txt needs to be accessible at all times for all buyers otherwise they are not able to buy ads on your site, lowering your prices and overall site earnings. \nWhen this app cannot reach your ads.txt file it will alert you by email. You can also sign up for free text alerts if you already have a Sulvo publisher account under the \"Alerts\" section within the Sulvo dashboard.",
+				"instructions": "You can install our automatic ads.txt monitor with just one click from the Cloudflare interface, if you want free SMS/text alerts to be sent to you then you will also need a Sulvo publisher account.",
+				"alias": "",
+				"orgId": "e643e13c8276afcd55ec62f00fb2eed6",
+				"icon": "https://images.cloudflareapps.com/94P6pZBShrMw/App%20Icon%20Image.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/fbUcAHXBhTwS/cfcover1.png",
+					"https://images.cloudflareapps.com/fbUcAHXBhTwS/cfcover2.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/Bhy6fpoDWy3y/App%20Cover%20Image.png",
+				"featuredAppImage": "",
+				"author": "Sulvo LLC",
+				"tagline": "",
+				"website": "https://sulvo.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://sulvo.com/terms-of-service",
+				"privacyPolicyURL": "https://sulvo.com/privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@sulvo.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "ADBpyCM4DV4D"
+				},
+				"created": "2019-04-03T17:47:09.287934Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "e643e13c8276afcd55ec62f00fb2eed6",
+				"requestedAt": "2019-04-03T17:47:12.754270364Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-04-05T16:10:25.402269789Z"
+			}
+		},
+		{
+			"tag": "1.1.0",
+			"appId": "zUJ0u6M6UOEw",
+			"definition": {
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://monitoring.sulvo.com/production/create",
+						"events": [
+							"before-new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://monitoring.sulvo.com/production/delete",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 2,
+				"downvotes": 0
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/MKiaRmCXBx9a",
+			"metadata": {
+				"code": {
+					"sourceTag": "MKiaRmCXBx9a",
+					"uploadedOn": "2019-04-08T19:22:32.035055854Z"
+				}
+			},
+			"created": "2019-04-08T19:22:31.177105Z",
+			"proposedApp": {
+				"id": "zUJ0u6M6UOEw",
+				"title": "Ads.txt Automatic Monitor",
+				"shortDescription": "Ads.txt checker to keep your ads.txt file always accessible.",
+				"longDescription": "By blocking bots and crawlers on your /ads.txt you may have unknowingly lowered your ad revenue. This app will check for your ads.txt file to make sure it is not blocked from being accessible by the buyers of your ad spaces. As you know, ads.txt needs to be accessible at all times for all buyers otherwise they are not able to buy ads on your site, lowering your prices and overall site earnings. \nWhen this app cannot reach your ads.txt file it will alert you by email. You can also sign up for free text alerts if you already have a Sulvo publisher account under the \"Alerts\" section within the Sulvo dashboard.",
+				"instructions": "You can install our automatic ads.txt monitor with just one click from the Cloudflare interface, if you want free SMS/text alerts to be sent to you then you will also need a Sulvo publisher account.",
+				"alias": "",
+				"orgId": "e643e13c8276afcd55ec62f00fb2eed6",
+				"icon": "https://images.cloudflareapps.com/94P6pZBShrMw/App%20Icon%20Image.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/fbUcAHXBhTwS/cfcover1.png",
+					"https://images.cloudflareapps.com/fbUcAHXBhTwS/cfcover2.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/Bhy6fpoDWy3y/App%20Cover%20Image.png",
+				"featuredAppImage": "",
+				"author": "Sulvo LLC",
+				"tagline": "",
+				"website": "https://sulvo.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://sulvo.com/terms-of-service",
+				"privacyPolicyURL": "https://sulvo.com/privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@sulvo.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "ADBpyCM4DV4D"
+				},
+				"created": "2019-04-03T17:47:09.287934Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "e643e13c8276afcd55ec62f00fb2eed6",
+				"requestedAt": "2019-04-08T19:22:33.73655403Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-04-11T17:23:17.180812603Z"
+			}
+		},
+		{
+			"tag": "1.2.0",
+			"appId": "zUJ0u6M6UOEw",
+			"definition": {
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://monitoring.sulvo.com/production/create",
+						"events": [
+							"before-new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://monitoring.sulvo.com/production/delete",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/MKiaRmCXBx9a",
+			"created": "2019-04-11T19:21:48.49117Z",
+			"proposedApp": {
+				"id": "zUJ0u6M6UOEw",
+				"title": "Sulvo - Ads.txt Automatic Monitor",
+				"shortDescription": "Ads.txt checker to keep your ads.txt file always accessible.",
+				"longDescription": "By blocking bots and crawlers on your /ads.txt you may have unknowingly lowered your ad revenue. This app will check for your ads.txt file to make sure it is not blocked from being accessible by the buyers of your ad spaces. As you know, ads.txt needs to be accessible at all times for all buyers otherwise they are not able to buy ads on your site, lowering your prices and overall site earnings. \nWhen this app cannot reach your ads.txt file it will alert you by email. You can also sign up for free text alerts if you already have a Sulvo publisher account under the \"Alerts\" section within the Sulvo dashboard.",
+				"instructions": "You can install our automatic ads.txt monitor with just one click from the Cloudflare interface, if you want free SMS/text alerts to be sent to you then you will also need a Sulvo publisher account.",
+				"alias": "",
+				"orgId": "e643e13c8276afcd55ec62f00fb2eed6",
+				"icon": "https://images.cloudflareapps.com/94P6pZBShrMw/App%20Icon%20Image.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/fbUcAHXBhTwS/cfcover1.png",
+					"https://images.cloudflareapps.com/fbUcAHXBhTwS/cfcover2.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/Bhy6fpoDWy3y/App%20Cover%20Image.png",
+				"featuredAppImage": "",
+				"author": "Sulvo LLC",
+				"tagline": "",
+				"website": "https://sulvo.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://sulvo.com/terms-of-service",
+				"privacyPolicyURL": "https://sulvo.com/privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@sulvo.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "ADBpyCM4DV4D"
+				},
+				"created": "2019-04-03T17:47:09.287934Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "e643e13c8276afcd55ec62f00fb2eed6",
+				"requestedAt": "2019-04-11T19:21:49.623962585Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-04-11T19:46:37.314499349Z"
+			}
+		},
+		{
+			"tag": "1.2.1",
+			"appId": "zUJ0u6M6UOEw",
+			"definition": {
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://monitoring.sulvo.com/production/create",
+						"events": [
+							"before-new-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://monitoring.sulvo.com/production/delete",
+						"events": [
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.88,
+				"upvotes": 21,
+				"downvotes": 3
+			},
+			"releaseNotes": "Added to Insights category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/MKiaRmCXBx9a",
+			"created": "2019-04-11T19:48:07.533354Z",
+			"proposedApp": {
+				"id": "zUJ0u6M6UOEw",
+				"title": "Sulvo - Ads.txt Automatic Monitor",
+				"shortDescription": "Ads.txt checker to keep your ads.txt file always accessible.",
+				"longDescription": "By blocking bots and crawlers on your /ads.txt you may have unknowingly lowered your ad revenue. This app will check for your ads.txt file to make sure it is not blocked from being accessible by the buyers of your ad spaces. As you know, ads.txt needs to be accessible at all times for all buyers otherwise they are not able to buy ads on your site, lowering your prices and overall site earnings. \nWhen this app cannot reach your ads.txt file it will alert you by email. You can also sign up for free text alerts if you already have a Sulvo publisher account under the \"Alerts\" section within the Sulvo dashboard.",
+				"instructions": "You can install our automatic ads.txt monitor with just one click from the Cloudflare interface, if you want free SMS/text alerts to be sent to you then you will also need a Sulvo publisher account.",
+				"alias": "",
+				"orgId": "e643e13c8276afcd55ec62f00fb2eed6",
+				"icon": "https://images.cloudflareapps.com/94P6pZBShrMw/App%20Icon%20Image.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/fbUcAHXBhTwS/cfcover1.png",
+					"https://images.cloudflareapps.com/fbUcAHXBhTwS/cfcover2.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/Bhy6fpoDWy3y/App%20Cover%20Image.png",
+				"featuredAppImage": "",
+				"author": "Sulvo LLC",
+				"tagline": "",
+				"website": "https://sulvo.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://sulvo.com/terms-of-service",
+				"privacyPolicyURL": "https://sulvo.com/privacy-policy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@sulvo.com",
+				"products": [],
+				"categoryIds": [
+					"insights"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "ADBpyCM4DV4D"
+				},
+				"created": "2019-04-03T17:47:09.287934Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2019-04-11T19:48:36.397984429Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-04-11T19:48:47.25711338Z"
+			}
+		}
+	]
+}

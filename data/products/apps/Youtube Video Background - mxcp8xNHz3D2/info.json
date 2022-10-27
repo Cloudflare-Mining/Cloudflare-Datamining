@@ -1,0 +1,1459 @@
+{
+	"id": "mxcp8xNHz3D2",
+	"title": "Youtube Video Background",
+	"shortDescription": "Enable background video for your website in seconds",
+	"longDescription": "This app allow you to enable video background on any element on your website in two simple steps: copy/paste any youtube video url and pick any element on your page. Video will be enabled via HTML5 video tag and can be played on any device.\n\nVideo fill all available space in selected element, no need to worry about aspect ratio or video dimentions. Plays inline automaticaly. You can adjust grayscale filter, HD mode, background color.\n\nNo need to load any third party script like Youtube/Google API libraries. All video links are cached in localStorage and can improve page load speed after first load.",
+	"instructions": "",
+	"alias": "videobg",
+	"orgId": "c537308c56a5b91cbd959650102e4bdb",
+	"icon": "https://images.cloudflareapps.com/uHkMHMjMs6W4/cfapp_videobg.png",
+	"screenshots": [
+		"https://images.cloudflareapps.com/dPTQGWTShuSf/maxresdefault.png"
+	],
+	"tileImage": "https://images.cloudflareapps.com/WtrRBmU__yZ5/cfapp_videobg_preview.png",
+	"featuredAppImage": "https://images.cloudflareapps.com/QoTSQ4Z5RmnH/cfapp_videobg_featured.png",
+	"author": "Vladimir Sobolev",
+	"tagline": "",
+	"website": "https://fbapp.us",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://www.iubenda.com/privacy-policy/8000697/legal",
+	"privacyPolicyURL": "https://www.iubenda.com/privacy-policy/8000697/legal",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "0.0.9",
+	"infoVersion": "0.0.9",
+	"points": 0,
+	"supportEmail": "info@fbapp.us",
+	"products": [
+		{
+			"id": "pro",
+			"title": "PRO",
+			"shortDescription": "Video quality, filters and no branding",
+			"longDescription": "With PRO usbscription you can be sure that your visitors can get best experience with background video. High quality HD video stream, grayscale filter (if needed), white labeled playback and many other features will be available soon.",
+			"visible": true,
+			"price": 500,
+			"order": 0,
+			"plan": "APPS_YOUTUBE_VIDEO_BACKGROUND_PRO",
+			"feature": "apps.youtube_video_background_pro.enabled",
+			"created": null
+		}
+	],
+	"categoryIds": [
+		"ui-and-design"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "c537308c56a5b91cbd959650102e4bdb",
+			"created": "2020-01-18T18:24:53.755921659Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "uhOAUhbQiWG8"
+	},
+	"created": "2020-01-18T18:24:39.469291Z",
+	"org": {
+		"id": "c537308c56a5b91cbd959650102e4bdb",
+		"title": "",
+		"username": "c537308c56a5b91cbd959650102e4bdb",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "ui-and-design",
+			"title": "UI & Design",
+			"description": "Apps that make your website more beautiful and user friendly.",
+			"icon": "",
+			"points": 10,
+			"visible": true,
+			"created": "2018-01-22T19:17:52.677513Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "0.0.1",
+			"appId": "mxcp8xNHz3D2",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "styles.css"
+						},
+						{
+							"type": "script",
+							"src": "index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"branding": {
+							"default": false,
+							"products": [
+								"pro"
+							],
+							"title": "Disable branding",
+							"type": "boolean"
+						},
+						"grayscale": {
+							"default": false,
+							"products": [
+								"pro"
+							],
+							"title": "Grayscale filter",
+							"type": "boolean"
+						},
+						"hd": {
+							"default": false,
+							"products": [
+								"pro"
+							],
+							"title": "Enable HD",
+							"type": "boolean"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": ".content .post-lead-image"
+							},
+							"format": "element",
+							"order": 1,
+							"title": "Location",
+							"type": "object"
+						},
+						"videobg": {
+							"default": "#EEEEEE",
+							"format": "color",
+							"products": [
+								"pro"
+							],
+							"title": "Video background color",
+							"type": "string"
+						},
+						"videourl": {
+							"default": "https://youtu.be/FUUw3zNTXH8",
+							"description": "Youtube video url with video you want to display as background",
+							"format": "url",
+							"order": 0,
+							"title": "Youtube Video URL",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.updatePlayer(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/uhOAUhbQiWG8",
+			"metadata": {
+				"code": {
+					"sourceTag": "uhOAUhbQiWG8",
+					"uploadedOn": "2020-01-18T18:24:52.067027897Z"
+				}
+			},
+			"created": "2020-01-18T18:24:51.597792Z",
+			"proposedApp": {
+				"id": "mxcp8xNHz3D2",
+				"title": "Youtube Video Background",
+				"shortDescription": "Enable background video for your website in seconds",
+				"longDescription": "This app allow you to enable video background on any element on your website in two simple steps: copy/paste any youtube video url and pick any element on your page. Video will be enabled via HTML5 video tag and can be played on any device.",
+				"instructions": "",
+				"alias": "videobg",
+				"orgId": "c537308c56a5b91cbd959650102e4bdb",
+				"icon": "https://images.cloudflareapps.com/uHkMHMjMs6W4/cfapp_videobg.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/dPTQGWTShuSf/maxresdefault.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/WtrRBmU__yZ5/cfapp_videobg_preview.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/QoTSQ4Z5RmnH/cfapp_videobg_featured.png",
+				"author": "Vladimir Sobolev",
+				"tagline": "",
+				"website": "https://fbapp.us",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.iubenda.com/privacy-policy/8000697/legal",
+				"privacyPolicyURL": "https://www.iubenda.com/privacy-policy/8000697/legal",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "info@fbapp.us",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "uhOAUhbQiWG8"
+				},
+				"created": "2020-01-18T18:24:39.469291Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "c537308c56a5b91cbd959650102e4bdb",
+				"requestedAt": "2020-01-18T18:24:53.739008296Z",
+				"canceledByUserId": "c537308c56a5b91cbd959650102e4bdb",
+				"canceledAt": "2020-01-18T18:32:43.826371162Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "0.0.2",
+			"appId": "mxcp8xNHz3D2",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "styles.css"
+						},
+						{
+							"type": "script",
+							"src": "index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"branding": {
+							"default": false,
+							"products": [
+								"pro"
+							],
+							"title": "Disable branding",
+							"type": "boolean"
+						},
+						"grayscale": {
+							"default": false,
+							"products": [
+								"pro"
+							],
+							"title": "Grayscale filter",
+							"type": "boolean"
+						},
+						"hd": {
+							"default": false,
+							"products": [
+								"pro"
+							],
+							"title": "Enable HD",
+							"type": "boolean"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": ".content .post-lead-image"
+							},
+							"format": "element",
+							"order": 1,
+							"title": "Location",
+							"type": "object"
+						},
+						"videobg": {
+							"default": "#EEEEEE",
+							"format": "color",
+							"products": [
+								"pro"
+							],
+							"title": "Video background color",
+							"type": "string"
+						},
+						"videourl": {
+							"default": "https://youtu.be/FUUw3zNTXH8",
+							"description": "Youtube video url with video you want to display as background",
+							"format": "url",
+							"order": 0,
+							"title": "Youtube Video URL",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.updatePlayer(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Description update",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/uhOAUhbQiWG8",
+			"created": "2020-01-18T18:32:42.835109Z",
+			"proposedApp": {
+				"id": "mxcp8xNHz3D2",
+				"title": "Youtube Video Background",
+				"shortDescription": "Enable background video for your website in seconds",
+				"longDescription": "This app allow you to enable video background on any element on your website in two simple steps: copy/paste any youtube video url and pick any element on your page. Video will be enabled via HTML5 video tag and can be played on any device.\n\nVideo fill all available space in selected element, no need to worry about aspect ratio or video dimentions. Plays inline automaticaly. You can adjust grayscale filter, HD mode, background color.\n\nNo need to load any third party script like Youtube/Google API libraries.",
+				"instructions": "",
+				"alias": "videobg",
+				"orgId": "c537308c56a5b91cbd959650102e4bdb",
+				"icon": "https://images.cloudflareapps.com/uHkMHMjMs6W4/cfapp_videobg.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/dPTQGWTShuSf/maxresdefault.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/WtrRBmU__yZ5/cfapp_videobg_preview.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/QoTSQ4Z5RmnH/cfapp_videobg_featured.png",
+				"author": "Vladimir Sobolev",
+				"tagline": "",
+				"website": "https://fbapp.us",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.iubenda.com/privacy-policy/8000697/legal",
+				"privacyPolicyURL": "https://www.iubenda.com/privacy-policy/8000697/legal",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "info@fbapp.us",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "uhOAUhbQiWG8"
+				},
+				"created": "2020-01-18T18:24:39.469291Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "c537308c56a5b91cbd959650102e4bdb",
+				"requestedAt": "2020-01-18T18:32:43.842446671Z",
+				"canceledByUserId": "c537308c56a5b91cbd959650102e4bdb",
+				"canceledAt": "2020-01-18T18:56:00.231549884Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "0.0.3",
+			"appId": "mxcp8xNHz3D2",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "styles.css"
+						},
+						{
+							"type": "script",
+							"src": "index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"branding": {
+							"default": false,
+							"products": [
+								"pro"
+							],
+							"title": "Disable branding",
+							"type": "boolean"
+						},
+						"grayscale": {
+							"default": false,
+							"products": [
+								"pro"
+							],
+							"title": "Grayscale filter",
+							"type": "boolean"
+						},
+						"hd": {
+							"default": false,
+							"products": [
+								"pro"
+							],
+							"title": "Enable HD",
+							"type": "boolean"
+						},
+						"location": {
+							"default": {
+								"method": "prepend",
+								"selector": ".content .post-lead-image"
+							},
+							"format": "element",
+							"order": 1,
+							"title": "Location",
+							"type": "object"
+						},
+						"videobg": {
+							"default": "#EEEEEE",
+							"format": "color",
+							"products": [
+								"pro"
+							],
+							"title": "Video background color",
+							"type": "string"
+						},
+						"videourl": {
+							"default": "https://youtu.be/FUUw3zNTXH8",
+							"description": "Youtube video url with video you want to display as background",
+							"format": "url",
+							"order": 0,
+							"title": "Youtube Video URL",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.updatePlayer(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "LocalStorage cache for video URLS.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/ojZLdtANVRjZ",
+			"metadata": {
+				"code": {
+					"sourceTag": "ojZLdtANVRjZ",
+					"uploadedOn": "2020-01-18T18:55:58.758016735Z"
+				}
+			},
+			"created": "2020-01-18T18:55:57.202396Z",
+			"proposedApp": {
+				"id": "mxcp8xNHz3D2",
+				"title": "Youtube Video Background",
+				"shortDescription": "Enable background video for your website in seconds",
+				"longDescription": "This app allow you to enable video background on any element on your website in two simple steps: copy/paste any youtube video url and pick any element on your page. Video will be enabled via HTML5 video tag and can be played on any device.\n\nVideo fill all available space in selected element, no need to worry about aspect ratio or video dimentions. Plays inline automaticaly. You can adjust grayscale filter, HD mode, background color.\n\nNo need to load any third party script like Youtube/Google API libraries. All video links are cached in localStorage and can improve page load speed after first load.",
+				"instructions": "",
+				"alias": "videobg",
+				"orgId": "c537308c56a5b91cbd959650102e4bdb",
+				"icon": "https://images.cloudflareapps.com/uHkMHMjMs6W4/cfapp_videobg.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/dPTQGWTShuSf/maxresdefault.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/WtrRBmU__yZ5/cfapp_videobg_preview.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/QoTSQ4Z5RmnH/cfapp_videobg_featured.png",
+				"author": "Vladimir Sobolev",
+				"tagline": "",
+				"website": "https://fbapp.us",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.iubenda.com/privacy-policy/8000697/legal",
+				"privacyPolicyURL": "https://www.iubenda.com/privacy-policy/8000697/legal",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "info@fbapp.us",
+				"products": [
+					{
+						"id": "pro",
+						"title": "PRO",
+						"shortDescription": "Video quality, filters and branding",
+						"longDescription": "With PRO usbscription you can be sure that your visitors can get best experience with background video. High quality HD video stream, grayscale filter (if needed), white labeled playback and many other features will be available soon.",
+						"visible": false,
+						"price": 1000,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "uhOAUhbQiWG8"
+				},
+				"created": "2020-01-18T18:24:39.469291Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "c537308c56a5b91cbd959650102e4bdb",
+				"requestedAt": "2020-01-18T18:56:00.254042857Z",
+				"canceledByUserId": "c537308c56a5b91cbd959650102e4bdb",
+				"canceledAt": "2020-01-19T00:21:56.71493939Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "0.0.4",
+			"appId": "mxcp8xNHz3D2",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "styles.css"
+						},
+						{
+							"type": "script",
+							"src": "index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"branding": {
+							"default": false,
+							"products": [
+								"pro"
+							],
+							"title": "Disable branding",
+							"type": "boolean"
+						},
+						"grayscale": {
+							"default": false,
+							"products": [
+								"pro"
+							],
+							"title": "Grayscale filter",
+							"type": "boolean"
+						},
+						"hd": {
+							"default": false,
+							"products": [
+								"pro"
+							],
+							"title": "Enable HD",
+							"type": "boolean"
+						},
+						"location": {
+							"default": ".content .post-lead-image",
+							"format": "selector",
+							"order": 1,
+							"title": "Location",
+							"type": "string"
+						},
+						"videobg": {
+							"default": "#EEEEEE",
+							"format": "color",
+							"products": [
+								"pro"
+							],
+							"title": "Video background color",
+							"type": "string"
+						},
+						"videourl": {
+							"default": "https://youtu.be/FUUw3zNTXH8",
+							"description": "Youtube video url with video you want to display as background",
+							"format": "url",
+							"order": 0,
+							"title": "Youtube Video URL",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.updatePlayer(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Cach validation, branding switch, simplified UI",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/HfqZ-Tp9fF0A",
+			"metadata": {
+				"code": {
+					"sourceTag": "HfqZ-Tp9fF0A",
+					"uploadedOn": "2020-01-19T00:21:55.256565422Z"
+				}
+			},
+			"created": "2020-01-19T00:21:54.810371Z",
+			"proposedApp": {
+				"id": "mxcp8xNHz3D2",
+				"title": "Youtube Video Background",
+				"shortDescription": "Enable background video for your website in seconds",
+				"longDescription": "This app allow you to enable video background on any element on your website in two simple steps: copy/paste any youtube video url and pick any element on your page. Video will be enabled via HTML5 video tag and can be played on any device.\n\nVideo fill all available space in selected element, no need to worry about aspect ratio or video dimentions. Plays inline automaticaly. You can adjust grayscale filter, HD mode, background color.\n\nNo need to load any third party script like Youtube/Google API libraries. All video links are cached in localStorage and can improve page load speed after first load.",
+				"instructions": "",
+				"alias": "videobg",
+				"orgId": "c537308c56a5b91cbd959650102e4bdb",
+				"icon": "https://images.cloudflareapps.com/uHkMHMjMs6W4/cfapp_videobg.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/dPTQGWTShuSf/maxresdefault.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/WtrRBmU__yZ5/cfapp_videobg_preview.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/QoTSQ4Z5RmnH/cfapp_videobg_featured.png",
+				"author": "Vladimir Sobolev",
+				"tagline": "",
+				"website": "https://fbapp.us",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.iubenda.com/privacy-policy/8000697/legal",
+				"privacyPolicyURL": "https://www.iubenda.com/privacy-policy/8000697/legal",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "info@fbapp.us",
+				"products": [
+					{
+						"id": "pro",
+						"title": "PRO",
+						"shortDescription": "Video quality, filters and branding",
+						"longDescription": "With PRO usbscription you can be sure that your visitors can get best experience with background video. High quality HD video stream, grayscale filter (if needed), white labeled playback and many other features will be available soon.",
+						"visible": true,
+						"price": 1000,
+						"order": 0,
+						"created": null
+					}
+				],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "uhOAUhbQiWG8"
+				},
+				"created": "2020-01-18T18:24:39.469291Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "c537308c56a5b91cbd959650102e4bdb",
+				"requestedAt": "2020-01-19T00:21:56.757238322Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-03-06T16:32:02.887136815Z"
+			}
+		},
+		{
+			"tag": "0.0.5",
+			"appId": "mxcp8xNHz3D2",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "styles.css"
+						},
+						{
+							"type": "script",
+							"src": "index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"branding": {
+							"default": false,
+							"products": [
+								"pro"
+							],
+							"title": "Disable branding",
+							"type": "boolean"
+						},
+						"grayscale": {
+							"default": false,
+							"products": [
+								"pro"
+							],
+							"title": "Grayscale filter",
+							"type": "boolean"
+						},
+						"hd": {
+							"default": false,
+							"products": [
+								"pro"
+							],
+							"title": "Enable HD",
+							"type": "boolean"
+						},
+						"location": {
+							"default": ".content .post-lead-image",
+							"format": "selector",
+							"order": 1,
+							"title": "Location",
+							"type": "string"
+						},
+						"videobg": {
+							"default": "#EEEEEE",
+							"format": "color",
+							"products": [
+								"pro"
+							],
+							"title": "Video background color",
+							"type": "string"
+						},
+						"videourl": {
+							"default": "https://youtu.be/FUUw3zNTXH8",
+							"description": "Youtube video url with video you want to display as background",
+							"format": "url",
+							"order": 0,
+							"title": "Youtube Video URL",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.updatePlayer(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0,
+				"upvotes": 0,
+				"downvotes": 4
+			},
+			"releaseNotes": "LocalStorage cache for video URLS.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/HfqZ-Tp9fF0A",
+			"created": "2020-03-06T16:36:58.065506Z",
+			"proposedApp": {
+				"id": "mxcp8xNHz3D2",
+				"title": "Youtube Video Background",
+				"shortDescription": "Enable background video for your website in seconds",
+				"longDescription": "This app allow you to enable video background on any element on your website in two simple steps: copy/paste any youtube video url and pick any element on your page. Video will be enabled via HTML5 video tag and can be played on any device.\n\nVideo fill all available space in selected element, no need to worry about aspect ratio or video dimentions. Plays inline automaticaly. You can adjust grayscale filter, HD mode, background color.\n\nNo need to load any third party script like Youtube/Google API libraries. All video links are cached in localStorage and can improve page load speed after first load.",
+				"instructions": "",
+				"alias": "videobg",
+				"orgId": "c537308c56a5b91cbd959650102e4bdb",
+				"icon": "https://images.cloudflareapps.com/uHkMHMjMs6W4/cfapp_videobg.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/dPTQGWTShuSf/maxresdefault.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/WtrRBmU__yZ5/cfapp_videobg_preview.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/QoTSQ4Z5RmnH/cfapp_videobg_featured.png",
+				"author": "Vladimir Sobolev",
+				"tagline": "",
+				"website": "https://fbapp.us",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.iubenda.com/privacy-policy/8000697/legal",
+				"privacyPolicyURL": "https://www.iubenda.com/privacy-policy/8000697/legal",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "info@fbapp.us",
+				"products": [
+					{
+						"id": "pro",
+						"title": "PRO",
+						"shortDescription": "Video quality, filters and branding",
+						"longDescription": "With PRO usbscription you can be sure that your visitors can get best experience with background video. High quality HD video stream, grayscale filter (if needed), white labeled playback and many other features will be available soon.",
+						"visible": true,
+						"price": 1000,
+						"order": 0,
+						"plan": "APPS_YOUTUBE_VIDEO_BACKGROUND_PRO",
+						"feature": "apps.youtube_video_background_pro.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "uhOAUhbQiWG8"
+				},
+				"created": "2020-01-18T18:24:39.469291Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2020-03-06T16:36:58.323368509Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-03-06T16:37:15.493828198Z"
+			}
+		},
+		{
+			"tag": "0.0.6",
+			"appId": "mxcp8xNHz3D2",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "styles.css"
+						},
+						{
+							"type": "script",
+							"src": "index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"branding": {
+							"default": false,
+							"products": [
+								"pro"
+							],
+							"title": "Disable branding",
+							"type": "boolean"
+						},
+						"grayscale": {
+							"default": false,
+							"products": [
+								"pro"
+							],
+							"title": "Grayscale filter",
+							"type": "boolean"
+						},
+						"hd": {
+							"default": false,
+							"products": [
+								"pro"
+							],
+							"title": "Enable HD",
+							"type": "boolean"
+						},
+						"location": {
+							"default": ".content .post-lead-image",
+							"format": "selector",
+							"order": 1,
+							"title": "Location",
+							"type": "string"
+						},
+						"videobg": {
+							"default": "#EEEEEE",
+							"format": "color",
+							"products": [
+								"pro"
+							],
+							"title": "Video background color",
+							"type": "string"
+						},
+						"videourl": {
+							"default": "https://youtu.be/FUUw3zNTXH8",
+							"description": "Youtube video url with video you want to display as background",
+							"format": "url",
+							"order": 0,
+							"title": "Youtube Video URL",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.updatePlayer(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.16,
+				"upvotes": 7,
+				"downvotes": 38
+			},
+			"releaseNotes": "Price adjustments",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/HfqZ-Tp9fF0A",
+			"created": "2020-04-18T22:12:43.974111Z",
+			"proposedApp": {
+				"id": "mxcp8xNHz3D2",
+				"title": "Youtube Video Background",
+				"shortDescription": "Enable background video for your website in seconds",
+				"longDescription": "This app allow you to enable video background on any element on your website in two simple steps: copy/paste any youtube video url and pick any element on your page. Video will be enabled via HTML5 video tag and can be played on any device.\n\nVideo fill all available space in selected element, no need to worry about aspect ratio or video dimentions. Plays inline automaticaly. You can adjust grayscale filter, HD mode, background color.\n\nNo need to load any third party script like Youtube/Google API libraries. All video links are cached in localStorage and can improve page load speed after first load.",
+				"instructions": "",
+				"alias": "videobg",
+				"orgId": "c537308c56a5b91cbd959650102e4bdb",
+				"icon": "https://images.cloudflareapps.com/uHkMHMjMs6W4/cfapp_videobg.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/dPTQGWTShuSf/maxresdefault.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/WtrRBmU__yZ5/cfapp_videobg_preview.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/QoTSQ4Z5RmnH/cfapp_videobg_featured.png",
+				"author": "Vladimir Sobolev",
+				"tagline": "",
+				"website": "https://fbapp.us",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.iubenda.com/privacy-policy/8000697/legal",
+				"privacyPolicyURL": "https://www.iubenda.com/privacy-policy/8000697/legal",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "info@fbapp.us",
+				"products": [
+					{
+						"id": "pro",
+						"title": "PRO",
+						"shortDescription": "Video quality, filters and no branding",
+						"longDescription": "With PRO usbscription you can be sure that your visitors can get best experience with background video. High quality HD video stream, grayscale filter (if needed), white labeled playback and many other features will be available soon.",
+						"visible": true,
+						"price": 500,
+						"order": 0,
+						"plan": "APPS_YOUTUBE_VIDEO_BACKGROUND_PRO",
+						"feature": "apps.youtube_video_background_pro.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "uhOAUhbQiWG8"
+				},
+				"created": "2020-01-18T18:24:39.469291Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "c537308c56a5b91cbd959650102e4bdb",
+				"requestedAt": "2020-04-18T22:12:44.443528003Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2020-05-20T18:10:05.01479796Z"
+			}
+		},
+		{
+			"tag": "0.0.7",
+			"appId": "mxcp8xNHz3D2",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "styles.css"
+						},
+						{
+							"type": "script",
+							"src": "index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"branding": {
+							"default": false,
+							"products": [
+								"pro"
+							],
+							"title": "Disable branding",
+							"type": "boolean"
+						},
+						"grayscale": {
+							"default": false,
+							"products": [
+								"pro"
+							],
+							"title": "Grayscale filter",
+							"type": "boolean"
+						},
+						"hd": {
+							"default": false,
+							"products": [
+								"pro"
+							],
+							"title": "Enable HD",
+							"type": "boolean"
+						},
+						"location": {
+							"default": ".content .post-lead-image",
+							"format": "selector",
+							"order": 1,
+							"title": "Location",
+							"type": "string"
+						},
+						"videobg": {
+							"default": "#EEEEEE",
+							"format": "color",
+							"products": [
+								"pro"
+							],
+							"title": "Video background color",
+							"type": "string"
+						},
+						"videourl": {
+							"default": "https://youtu.be/FUUw3zNTXH8",
+							"description": "Youtube video url with video you want to display as background",
+							"format": "url",
+							"order": 0,
+							"title": "Youtube Video URL",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.updatePlayer(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Updated parser for YouTube video streams",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/MO01xJo6ocCC",
+			"metadata": {
+				"code": {
+					"sourceTag": "MO01xJo6ocCC",
+					"uploadedOn": "2021-11-09T22:31:07.376847882Z"
+				}
+			},
+			"created": "2021-11-09T22:31:06.547169Z",
+			"proposedApp": {
+				"id": "mxcp8xNHz3D2",
+				"title": "Youtube Video Background",
+				"shortDescription": "Enable background video for your website in seconds",
+				"longDescription": "This app allow you to enable video background on any element on your website in two simple steps: copy/paste any youtube video url and pick any element on your page. Video will be enabled via HTML5 video tag and can be played on any device.\n\nVideo fill all available space in selected element, no need to worry about aspect ratio or video dimentions. Plays inline automaticaly. You can adjust grayscale filter, HD mode, background color.\n\nNo need to load any third party script like Youtube/Google API libraries. All video links are cached in localStorage and can improve page load speed after first load.",
+				"instructions": "",
+				"alias": "videobg",
+				"orgId": "c537308c56a5b91cbd959650102e4bdb",
+				"icon": "https://images.cloudflareapps.com/uHkMHMjMs6W4/cfapp_videobg.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/dPTQGWTShuSf/maxresdefault.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/WtrRBmU__yZ5/cfapp_videobg_preview.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/QoTSQ4Z5RmnH/cfapp_videobg_featured.png",
+				"author": "Vladimir Sobolev",
+				"tagline": "",
+				"website": "https://fbapp.us",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.iubenda.com/privacy-policy/8000697/legal",
+				"privacyPolicyURL": "https://www.iubenda.com/privacy-policy/8000697/legal",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "info@fbapp.us",
+				"products": [
+					{
+						"id": "pro",
+						"title": "PRO",
+						"shortDescription": "Video quality, filters and no branding",
+						"longDescription": "With PRO usbscription you can be sure that your visitors can get best experience with background video. High quality HD video stream, grayscale filter (if needed), white labeled playback and many other features will be available soon.",
+						"visible": true,
+						"price": 500,
+						"order": 0,
+						"plan": "APPS_YOUTUBE_VIDEO_BACKGROUND_PRO",
+						"feature": "apps.youtube_video_background_pro.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "uhOAUhbQiWG8"
+				},
+				"created": "2020-01-18T18:24:39.469291Z"
+			},
+			"moderationStatus": "canceled",
+			"moderationMetadata": {
+				"requestedByUserId": "c537308c56a5b91cbd959650102e4bdb",
+				"requestedAt": "2021-11-09T22:31:08.132705694Z",
+				"canceledByUserId": "c537308c56a5b91cbd959650102e4bdb",
+				"canceledAt": "2021-12-08T19:27:51.6293352Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "0.0.8",
+			"appId": "mxcp8xNHz3D2",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "styles.css"
+						},
+						{
+							"type": "script",
+							"src": "index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"branding": {
+							"default": false,
+							"products": [
+								"pro"
+							],
+							"title": "Disable branding",
+							"type": "boolean"
+						},
+						"grayscale": {
+							"default": false,
+							"products": [
+								"pro"
+							],
+							"title": "Grayscale filter",
+							"type": "boolean"
+						},
+						"hd": {
+							"default": false,
+							"products": [
+								"pro"
+							],
+							"title": "Enable HD",
+							"type": "boolean"
+						},
+						"location": {
+							"default": ".content .post-lead-image",
+							"format": "selector",
+							"order": 1,
+							"title": "Location",
+							"type": "string"
+						},
+						"videobg": {
+							"default": "#EEEEEE",
+							"format": "color",
+							"products": [
+								"pro"
+							],
+							"title": "Video background color",
+							"type": "string"
+						},
+						"videourl": {
+							"default": "https://youtu.be/FUUw3zNTXH8",
+							"description": "Youtube video url with video you want to display as background",
+							"format": "url",
+							"order": 0,
+							"title": "Youtube Video URL",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.updatePlayer(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.22,
+				"upvotes": 2,
+				"downvotes": 7
+			},
+			"releaseNotes": "Updated parser for YouTube video streams",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/PaikDqds3DSz",
+			"metadata": {
+				"code": {
+					"sourceTag": "PaikDqds3DSz",
+					"uploadedOn": "2021-12-08T19:27:50.693694397Z"
+				}
+			},
+			"created": "2021-12-08T19:27:49.656798Z",
+			"proposedApp": {
+				"id": "mxcp8xNHz3D2",
+				"title": "Youtube Video Background",
+				"shortDescription": "Enable background video for your website in seconds",
+				"longDescription": "This app allow you to enable video background on any element on your website in two simple steps: copy/paste any youtube video url and pick any element on your page. Video will be enabled via HTML5 video tag and can be played on any device.\n\nVideo fill all available space in selected element, no need to worry about aspect ratio or video dimentions. Plays inline automaticaly. You can adjust grayscale filter, HD mode, background color.\n\nNo need to load any third party script like Youtube/Google API libraries. All video links are cached in localStorage and can improve page load speed after first load.",
+				"instructions": "",
+				"alias": "videobg",
+				"orgId": "c537308c56a5b91cbd959650102e4bdb",
+				"icon": "https://images.cloudflareapps.com/uHkMHMjMs6W4/cfapp_videobg.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/dPTQGWTShuSf/maxresdefault.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/WtrRBmU__yZ5/cfapp_videobg_preview.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/QoTSQ4Z5RmnH/cfapp_videobg_featured.png",
+				"author": "Vladimir Sobolev",
+				"tagline": "",
+				"website": "https://fbapp.us",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.iubenda.com/privacy-policy/8000697/legal",
+				"privacyPolicyURL": "https://www.iubenda.com/privacy-policy/8000697/legal",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "info@fbapp.us",
+				"products": [
+					{
+						"id": "pro",
+						"title": "PRO",
+						"shortDescription": "Video quality, filters and no branding",
+						"longDescription": "With PRO usbscription you can be sure that your visitors can get best experience with background video. High quality HD video stream, grayscale filter (if needed), white labeled playback and many other features will be available soon.",
+						"visible": true,
+						"price": 500,
+						"order": 0,
+						"plan": "APPS_YOUTUBE_VIDEO_BACKGROUND_PRO",
+						"feature": "apps.youtube_video_background_pro.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "uhOAUhbQiWG8"
+				},
+				"created": "2020-01-18T18:24:39.469291Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "c537308c56a5b91cbd959650102e4bdb",
+				"requestedAt": "2021-12-08T19:27:51.642483217Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2021-12-17T16:29:48.706352061Z"
+			}
+		},
+		{
+			"tag": "0.0.9",
+			"appId": "mxcp8xNHz3D2",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "styles.css"
+						},
+						{
+							"type": "script",
+							"src": "index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"branding": {
+							"default": false,
+							"products": [
+								"pro"
+							],
+							"title": "Disable branding",
+							"type": "boolean"
+						},
+						"grayscale": {
+							"default": false,
+							"products": [
+								"pro"
+							],
+							"title": "Grayscale filter",
+							"type": "boolean"
+						},
+						"hd": {
+							"default": false,
+							"products": [
+								"pro"
+							],
+							"title": "Enable HD",
+							"type": "boolean"
+						},
+						"location": {
+							"default": ".content .post-lead-image",
+							"format": "selector",
+							"order": 1,
+							"title": "Location",
+							"type": "string"
+						},
+						"placeholder": {
+							"default": false,
+							"products": [
+								"pro"
+							],
+							"title": "Smooth video background",
+							"type": "boolean"
+						},
+						"videobg": {
+							"default": "#EEEEEE",
+							"format": "color",
+							"products": [
+								"pro"
+							],
+							"title": "Video background color",
+							"type": "string"
+						},
+						"videourl": {
+							"default": "https://youtu.be/FUUw3zNTXH8",
+							"description": "Youtube video url with video you want to display as background",
+							"format": "url",
+							"order": 0,
+							"title": "Youtube Video URL",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.updatePlayer(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0,
+				"upvotes": 0,
+				"downvotes": 2
+			},
+			"releaseNotes": "Updated check for modern Safari video compatibilities\nColor background added",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/9aiCA83WhziL",
+			"metadata": {
+				"code": {
+					"sourceTag": "9aiCA83WhziL",
+					"uploadedOn": "2022-07-26T16:52:27.021791221Z"
+				}
+			},
+			"created": "2022-07-26T16:52:26.588365Z",
+			"proposedApp": {
+				"id": "mxcp8xNHz3D2",
+				"title": "Youtube Video Background",
+				"shortDescription": "Enable background video for your website in seconds",
+				"longDescription": "This app allow you to enable video background on any element on your website in two simple steps: copy/paste any youtube video url and pick any element on your page. Video will be enabled via HTML5 video tag and can be played on any device.\n\nVideo fill all available space in selected element, no need to worry about aspect ratio or video dimentions. Plays inline automaticaly. You can adjust grayscale filter, HD mode, background color.\n\nNo need to load any third party script like Youtube/Google API libraries. All video links are cached in localStorage and can improve page load speed after first load.",
+				"instructions": "",
+				"alias": "videobg",
+				"orgId": "c537308c56a5b91cbd959650102e4bdb",
+				"icon": "https://images.cloudflareapps.com/uHkMHMjMs6W4/cfapp_videobg.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/dPTQGWTShuSf/maxresdefault.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/WtrRBmU__yZ5/cfapp_videobg_preview.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/QoTSQ4Z5RmnH/cfapp_videobg_featured.png",
+				"author": "Vladimir Sobolev",
+				"tagline": "",
+				"website": "https://fbapp.us",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.iubenda.com/privacy-policy/8000697/legal",
+				"privacyPolicyURL": "https://www.iubenda.com/privacy-policy/8000697/legal",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "info@fbapp.us",
+				"products": [
+					{
+						"id": "pro",
+						"title": "PRO",
+						"shortDescription": "Video quality, filters and no branding",
+						"longDescription": "With PRO usbscription you can be sure that your visitors can get best experience with background video. High quality HD video stream, grayscale filter (if needed), white labeled playback and many other features will be available soon.",
+						"visible": true,
+						"price": 500,
+						"order": 0,
+						"plan": "APPS_YOUTUBE_VIDEO_BACKGROUND_PRO",
+						"feature": "apps.youtube_video_background_pro.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"ui-and-design"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "uhOAUhbQiWG8"
+				},
+				"created": "2020-01-18T18:24:39.469291Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "c537308c56a5b91cbd959650102e4bdb",
+				"requestedAt": "2022-07-26T16:52:27.885266944Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2022-08-17T20:22:17.901583636Z"
+			}
+		}
+	]
+}

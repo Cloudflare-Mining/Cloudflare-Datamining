@@ -1,0 +1,800 @@
+{
+	"id": "WQ5Kuzdfy9fb",
+	"title": "LiveSupporti",
+	"shortDescription": "Live Chat for your website",
+	"longDescription": "With LiveSupporti you can add live chat on your website and provide great customer support in real-time.\n\n# Live Chat\nChat with your customers and increase your sales.\n# Easy customization\nYou can easily customize the colors and the text of your live chat.\n# Multiple languages\nUse any language you want.\n#  Use your brand\nUpload your own logo and your photo.\n# Who's browsing\nYou can see who is browsing your website in real-time.\n# Mobile apps\nWith you iOS or Android device, you can receive messages from your customers while on the go.\n# Integrations\nAdd new contacts to your Salesforce, Zoho or HubSpot.\n# REST API\nYou can integrate LiveSupporti with your website.",
+	"instructions": "",
+	"alias": "livesupporti",
+	"orgId": "865c3172cbc86d1f05c007029f6d7833",
+	"icon": "//images.cloudflareapps.com/PtKMKmlQYGxw5lH3ACQQ_livesupporti-cloudflare-appstore-icon.png",
+	"screenshots": [
+		"//images.cloudflareapps.com/pDCKi13LR0SMKsrvcH0B_livesupporti-cloudflare-appstore-screenshot-website-with-chat.png",
+		"//images.cloudflareapps.com/ImmgjqBCSoun9hsvE3t4_livesupporti-cloudflare-appstore-screenshot-customization.png",
+		"//images.cloudflareapps.com/fZtXgisQmuFII6Jku2JT_livesupporti-cloudflare-appstore-screenshot-dashboard.png"
+	],
+	"tileImage": "//images.cloudflareapps.com/7bY0xajNSN219YzShIpw_livesupporti-cloudflare-appstore-tile-image.png",
+	"featuredAppImage": "",
+	"author": "Tachyonsoft Ltd",
+	"tagline": "",
+	"website": "https://livesupporti.com",
+	"sourceURL": "",
+	"termsOfServiceURL": "https://livesupporti.com/terms",
+	"privacyPolicyURL": "https://livesupporti.com/privacy",
+	"color": "",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "1.0.5",
+	"infoVersion": "1.0.5",
+	"points": 0,
+	"supportEmail": "support@livesupporti.com",
+	"products": [],
+	"categoryIds": [
+		"social-and-communication"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "865c3172cbc86d1f05c007029f6d7833",
+			"created": "2018-02-22T12:11:16.920686826Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "SzM60lC7MA0E"
+	},
+	"created": "2017-12-29T13:40:58.118017Z",
+	"org": {
+		"id": "865c3172cbc86d1f05c007029f6d7833",
+		"title": "",
+		"username": "865c3172cbc86d1f05c007029f6d7833",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "social-and-communication",
+			"title": "Social & Communication",
+			"description": "Apps that make it easier to communicate with your customers.",
+			"icon": "",
+			"points": 80,
+			"visible": true,
+			"created": "2018-01-22T19:17:10.030031Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "1.0.0",
+			"appId": "WQ5Kuzdfy9fb",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"productKey": {
+							"description": "You can get your product key from here: <a href='https://livesupporti.com/pk' target='_blank'>Get key</a>",
+							"maxLength": 36,
+							"order": 2,
+							"placeholder": "Eneter your product key here",
+							"title": "Product key",
+							"type": "string"
+						},
+						"registerInfo": {
+							"helpvalue": "<a href='https://livesupporti.com/signup' target='_blank'><b>Sign up now</b></a> to add LiveSupporti on your website.",
+							"order": 1,
+							"type": "help"
+						},
+						"skinName": {
+							"description": "Select the skin of your live chat",
+							"enum": [
+								"Classic",
+								"Modern"
+							],
+							"enumNames": {
+								"Classic": "Classic",
+								"Modern": "Modern"
+							},
+							"order": 3,
+							"title": "Skin",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/wVlx6KsgMwhE",
+			"metadata": {
+				"code": {
+					"sourceTag": "wVlx6KsgMwhE",
+					"uploadedOn": "2018-02-22T12:07:38.084596559Z"
+				}
+			},
+			"created": "2017-12-29T13:40:59.913205Z",
+			"proposedApp": {
+				"id": "WQ5Kuzdfy9fb",
+				"title": "LiveSupporti",
+				"shortDescription": "Live Chat for your website",
+				"longDescription": "With LiveSupporti you can add live chat on your website and provide great customer support in real-time.\n\n# Live Chat\nChat with your customers and increase your sales.\n# Easy customization\nYou can easily customize the colors and the text of your live chat.\n# Multiple languages\nUse any language you want.\n#  Use your brand\nUpload your own logo and your photo.\n# Who's browsing\nYou can see who is browsing your website in real-time.\n# Mobile apps\nWith you iOS or Android device, you can receive messages from your customers while on the go.\n# Integrations\nAdd new contacts to your Salesforce, Zoho or HubSpot.\n# REST API\nYou can integrate LiveSupporti with your website.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "865c3172cbc86d1f05c007029f6d7833",
+				"icon": "//images.cloudflareapps.com/PtKMKmlQYGxw5lH3ACQQ_livesupporti-cloudflare-appstore-icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/pDCKi13LR0SMKsrvcH0B_livesupporti-cloudflare-appstore-screenshot-website-with-chat.png",
+					"//images.cloudflareapps.com/ImmgjqBCSoun9hsvE3t4_livesupporti-cloudflare-appstore-screenshot-customization.png",
+					"//images.cloudflareapps.com/fZtXgisQmuFII6Jku2JT_livesupporti-cloudflare-appstore-screenshot-dashboard.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/7bY0xajNSN219YzShIpw_livesupporti-cloudflare-appstore-tile-image.png",
+				"featuredAppImage": "",
+				"author": "Tachyonsoft Ltd",
+				"tagline": "",
+				"website": "https://livesupporti.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://livesupporti.com/terms",
+				"privacyPolicyURL": "https://livesupporti.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@livesupporti.com",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication",
+					"widgets-and-plugins",
+					"analytics"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "SzM60lC7MA0E"
+				},
+				"created": "2017-12-29T13:40:58.118017Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "865c3172cbc86d1f05c007029f6d7833",
+				"requestedAt": "2018-02-22T12:11:16.905811655Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2018-02-22T23:03:42.723586586Z"
+			}
+		},
+		{
+			"tag": "1.0.1",
+			"appId": "WQ5Kuzdfy9fb",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 2,
+							"required": true,
+							"services": [
+								"livesupporti"
+							],
+							"title": "LiveSupporti Account",
+							"type": "object"
+						},
+						"signUpInInfo": {
+							"helpvalue": "This is LiveSupporti demo. <b>Login</b> or <b>Register</b> to add LiveSupporti on your website.",
+							"order": 1,
+							"showIf": {
+								"account.service": {
+									"op": "==",
+									"value": null
+								}
+							},
+							"type": "help"
+						}
+					}
+				},
+				"hooks": [
+					{
+						"endpoint": "https://livesupporti.com/cloudflare/webhook",
+						"events": [
+							"before-new-install",
+							"before-update-install",
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "ignore",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "Bugfixes",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/a1qqgNxu8-L3",
+			"metadata": {
+				"code": {
+					"sourceTag": "a1qqgNxu8-L3",
+					"uploadedOn": "2018-04-14T08:42:27.201744066Z"
+				}
+			},
+			"created": "2018-04-14T08:42:26.627725Z",
+			"proposedApp": {
+				"id": "WQ5Kuzdfy9fb",
+				"title": "LiveSupporti",
+				"shortDescription": "Live Chat for your website",
+				"longDescription": "With LiveSupporti you can add live chat on your website and provide great customer support in real-time.\n\n# Live Chat\nChat with your customers and increase your sales.\n# Easy customization\nYou can easily customize the colors and the text of your live chat.\n# Multiple languages\nUse any language you want.\n#  Use your brand\nUpload your own logo and your photo.\n# Who's browsing\nYou can see who is browsing your website in real-time.\n# Mobile apps\nWith you iOS or Android device, you can receive messages from your customers while on the go.\n# Integrations\nAdd new contacts to your Salesforce, Zoho or HubSpot.\n# REST API\nYou can integrate LiveSupporti with your website.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "865c3172cbc86d1f05c007029f6d7833",
+				"icon": "//images.cloudflareapps.com/PtKMKmlQYGxw5lH3ACQQ_livesupporti-cloudflare-appstore-icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/pDCKi13LR0SMKsrvcH0B_livesupporti-cloudflare-appstore-screenshot-website-with-chat.png",
+					"//images.cloudflareapps.com/ImmgjqBCSoun9hsvE3t4_livesupporti-cloudflare-appstore-screenshot-customization.png",
+					"//images.cloudflareapps.com/fZtXgisQmuFII6Jku2JT_livesupporti-cloudflare-appstore-screenshot-dashboard.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/7bY0xajNSN219YzShIpw_livesupporti-cloudflare-appstore-tile-image.png",
+				"featuredAppImage": "",
+				"author": "Tachyonsoft Ltd",
+				"tagline": "",
+				"website": "https://livesupporti.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://livesupporti.com/terms",
+				"privacyPolicyURL": "https://livesupporti.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@livesupporti.com",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication",
+					"widgets-and-plugins",
+					"analytics"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "SzM60lC7MA0E"
+				},
+				"created": "2017-12-29T13:40:58.118017Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"assignedToReviewerUserId": "ee86f206b11d7a3462145a704baa145a",
+				"requestedByUserId": "865c3172cbc86d1f05c007029f6d7833",
+				"requestedAt": "2018-04-14T08:48:20.209777215Z",
+				"canceledAt": null,
+				"reviewedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"reviewedAt": "2018-04-18T19:11:54.010174267Z"
+			}
+		},
+		{
+			"tag": "1.0.2",
+			"appId": "WQ5Kuzdfy9fb",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 2,
+							"required": true,
+							"services": [
+								"livesupporti"
+							],
+							"title": "LiveSupporti Account",
+							"type": "object"
+						},
+						"signUpInInfo": {
+							"helpvalue": "This is LiveSupporti demo. <b>Login</b> or <b>Register</b> to add LiveSupporti on your website.",
+							"order": 1,
+							"showIf": {
+								"account.service": {
+									"op": "==",
+									"value": null
+								}
+							},
+							"type": "help"
+						}
+					}
+				},
+				"hooks": [
+					{
+						"endpoint": "https://livesupporti.com/cloudflare/webhook",
+						"events": [
+							"before-new-install",
+							"before-update-install",
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "ignore",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "Bugfixes",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/kXF_S7jAd26b",
+			"metadata": {
+				"code": {
+					"sourceTag": "kXF_S7jAd26b",
+					"uploadedOn": "2018-05-13T10:55:57.009547187Z"
+				}
+			},
+			"created": "2018-05-13T10:55:56.483199Z",
+			"proposedApp": {
+				"id": "WQ5Kuzdfy9fb",
+				"title": "LiveSupporti",
+				"shortDescription": "Live Chat for your website",
+				"longDescription": "With LiveSupporti you can add live chat on your website and provide great customer support in real-time.\n\n# Live Chat\nChat with your customers and increase your sales.\n# Easy customization\nYou can easily customize the colors and the text of your live chat.\n# Multiple languages\nUse any language you want.\n#  Use your brand\nUpload your own logo and your photo.\n# Who's browsing\nYou can see who is browsing your website in real-time.\n# Mobile apps\nWith you iOS or Android device, you can receive messages from your customers while on the go.\n# Integrations\nAdd new contacts to your Salesforce, Zoho or HubSpot.\n# REST API\nYou can integrate LiveSupporti with your website.",
+				"instructions": "",
+				"alias": "",
+				"orgId": "865c3172cbc86d1f05c007029f6d7833",
+				"icon": "//images.cloudflareapps.com/PtKMKmlQYGxw5lH3ACQQ_livesupporti-cloudflare-appstore-icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/pDCKi13LR0SMKsrvcH0B_livesupporti-cloudflare-appstore-screenshot-website-with-chat.png",
+					"//images.cloudflareapps.com/ImmgjqBCSoun9hsvE3t4_livesupporti-cloudflare-appstore-screenshot-customization.png",
+					"//images.cloudflareapps.com/fZtXgisQmuFII6Jku2JT_livesupporti-cloudflare-appstore-screenshot-dashboard.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/7bY0xajNSN219YzShIpw_livesupporti-cloudflare-appstore-tile-image.png",
+				"featuredAppImage": "",
+				"author": "Tachyonsoft Ltd",
+				"tagline": "",
+				"website": "https://livesupporti.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://livesupporti.com/terms",
+				"privacyPolicyURL": "https://livesupporti.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@livesupporti.com",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication",
+					"widgets-and-plugins",
+					"analytics"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "SzM60lC7MA0E"
+				},
+				"created": "2017-12-29T13:40:58.118017Z"
+			},
+			"moderationStatus": "rejected",
+			"moderationMetadata": {
+				"requestedByUserId": "865c3172cbc86d1f05c007029f6d7833",
+				"requestedAt": "2018-05-13T10:55:59.994401962Z",
+				"canceledAt": null,
+				"reviewedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"reviewedAt": "2018-05-18T17:11:59.411839083Z"
+			}
+		},
+		{
+			"tag": "1.0.3",
+			"appId": "WQ5Kuzdfy9fb",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 2,
+							"required": true,
+							"services": [
+								"livesupporti"
+							],
+							"title": "LiveSupporti Account",
+							"type": "object"
+						},
+						"signUpInInfo": {
+							"helpvalue": "This is LiveSupporti demo. <b>Login</b> or <b>Register</b> to add LiveSupporti on your website.",
+							"order": 1,
+							"showIf": {
+								"account.service": {
+									"op": "==",
+									"value": null
+								}
+							},
+							"type": "help"
+						}
+					}
+				},
+				"hooks": [
+					{
+						"endpoint": "https://livesupporti.com/cloudflare/webhook",
+						"events": [
+							"before-new-install",
+							"before-update-install",
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "ignore",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.8,
+				"upvotes": 4,
+				"downvotes": 1
+			},
+			"releaseNotes": "By moderator",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/kXF_S7jAd26b",
+			"created": "2018-06-13T20:40:47.760053Z",
+			"proposedApp": {
+				"id": "WQ5Kuzdfy9fb",
+				"title": "LiveSupporti",
+				"shortDescription": "Live Chat for your website",
+				"longDescription": "With LiveSupporti you can add live chat on your website and provide great customer support in real-time.\n\n# Live Chat\nChat with your customers and increase your sales.\n# Easy customization\nYou can easily customize the colors and the text of your live chat.\n# Multiple languages\nUse any language you want.\n#  Use your brand\nUpload your own logo and your photo.\n# Who's browsing\nYou can see who is browsing your website in real-time.\n# Mobile apps\nWith you iOS or Android device, you can receive messages from your customers while on the go.\n# Integrations\nAdd new contacts to your Salesforce, Zoho or HubSpot.\n# REST API\nYou can integrate LiveSupporti with your website.",
+				"instructions": "",
+				"alias": "livesupporti",
+				"orgId": "865c3172cbc86d1f05c007029f6d7833",
+				"icon": "//images.cloudflareapps.com/PtKMKmlQYGxw5lH3ACQQ_livesupporti-cloudflare-appstore-icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/pDCKi13LR0SMKsrvcH0B_livesupporti-cloudflare-appstore-screenshot-website-with-chat.png",
+					"//images.cloudflareapps.com/ImmgjqBCSoun9hsvE3t4_livesupporti-cloudflare-appstore-screenshot-customization.png",
+					"//images.cloudflareapps.com/fZtXgisQmuFII6Jku2JT_livesupporti-cloudflare-appstore-screenshot-dashboard.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/7bY0xajNSN219YzShIpw_livesupporti-cloudflare-appstore-tile-image.png",
+				"featuredAppImage": "",
+				"author": "Tachyonsoft Ltd",
+				"tagline": "",
+				"website": "https://livesupporti.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://livesupporti.com/terms",
+				"privacyPolicyURL": "https://livesupporti.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@livesupporti.com",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication",
+					"widgets-and-plugins",
+					"analytics"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "SzM60lC7MA0E"
+				},
+				"created": "2017-12-29T13:40:58.118017Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"requestedAt": "2018-06-13T20:40:48.199163535Z",
+				"canceledAt": null,
+				"reviewedByUserId": "ee86f206b11d7a3462145a704baa145a",
+				"reviewedAt": "2018-06-13T20:41:00.140857798Z"
+			}
+		},
+		{
+			"tag": "1.0.4",
+			"appId": "WQ5Kuzdfy9fb",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 2,
+							"required": true,
+							"services": [
+								"livesupporti"
+							],
+							"title": "LiveSupporti Account",
+							"type": "object"
+						},
+						"signUpInInfo": {
+							"helpvalue": "This is LiveSupporti demo. <b>Login</b> or <b>Register</b> to add LiveSupporti on your website.",
+							"order": 1,
+							"showIf": {
+								"account.service": {
+									"op": "==",
+									"value": null
+								}
+							},
+							"type": "help"
+						}
+					}
+				},
+				"hooks": [
+					{
+						"endpoint": "https://livesupporti.com/cloudflare/webhook",
+						"events": [
+							"before-new-install",
+							"before-update-install",
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "ignore",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "Updated app's categories",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/kXF_S7jAd26b",
+			"created": "2018-11-13T21:10:55.058847Z",
+			"proposedApp": {
+				"id": "WQ5Kuzdfy9fb",
+				"title": "LiveSupporti",
+				"shortDescription": "Live Chat for your website",
+				"longDescription": "With LiveSupporti you can add live chat on your website and provide great customer support in real-time.\n\n# Live Chat\nChat with your customers and increase your sales.\n# Easy customization\nYou can easily customize the colors and the text of your live chat.\n# Multiple languages\nUse any language you want.\n#  Use your brand\nUpload your own logo and your photo.\n# Who's browsing\nYou can see who is browsing your website in real-time.\n# Mobile apps\nWith you iOS or Android device, you can receive messages from your customers while on the go.\n# Integrations\nAdd new contacts to your Salesforce, Zoho or HubSpot.\n# REST API\nYou can integrate LiveSupporti with your website.",
+				"instructions": "",
+				"alias": "livesupporti",
+				"orgId": "865c3172cbc86d1f05c007029f6d7833",
+				"icon": "//images.cloudflareapps.com/PtKMKmlQYGxw5lH3ACQQ_livesupporti-cloudflare-appstore-icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/pDCKi13LR0SMKsrvcH0B_livesupporti-cloudflare-appstore-screenshot-website-with-chat.png",
+					"//images.cloudflareapps.com/ImmgjqBCSoun9hsvE3t4_livesupporti-cloudflare-appstore-screenshot-customization.png",
+					"//images.cloudflareapps.com/fZtXgisQmuFII6Jku2JT_livesupporti-cloudflare-appstore-screenshot-dashboard.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/7bY0xajNSN219YzShIpw_livesupporti-cloudflare-appstore-tile-image.png",
+				"featuredAppImage": "",
+				"author": "Tachyonsoft Ltd",
+				"tagline": "",
+				"website": "https://livesupporti.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://livesupporti.com/terms",
+				"privacyPolicyURL": "https://livesupporti.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@livesupporti.com",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "SzM60lC7MA0E"
+				},
+				"created": "2017-12-29T13:40:58.118017Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-11-13T21:10:55.404371091Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-11-14T17:38:35.672836598Z"
+			}
+		},
+		{
+			"tag": "1.0.5",
+			"appId": "WQ5Kuzdfy9fb",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"order": 2,
+							"required": true,
+							"services": [
+								"livesupporti"
+							],
+							"title": "LiveSupporti Account",
+							"type": "object"
+						},
+						"signUpInInfo": {
+							"helpvalue": "This is LiveSupporti demo. <b>Login</b> or <b>Register</b> to add LiveSupporti on your website.",
+							"order": 1,
+							"showIf": {
+								"account.service": {
+									"op": "==",
+									"value": null
+								}
+							},
+							"type": "help"
+						}
+					}
+				},
+				"hooks": [
+					{
+						"endpoint": "https://livesupporti.com/cloudflare/webhook",
+						"events": [
+							"before-new-install",
+							"before-update-install",
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "ignore",
+							"message": ""
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 0.67,
+				"upvotes": 2,
+				"downvotes": 1
+			},
+			"releaseNotes": "New chat box skin.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/3Ob4mgAg8vV6",
+			"metadata": {
+				"code": {
+					"sourceTag": "3Ob4mgAg8vV6",
+					"uploadedOn": "2019-09-18T15:26:27.585131345Z"
+				}
+			},
+			"created": "2019-09-18T15:26:26.452115Z",
+			"proposedApp": {
+				"id": "WQ5Kuzdfy9fb",
+				"title": "LiveSupporti",
+				"shortDescription": "Live Chat for your website",
+				"longDescription": "With LiveSupporti you can add live chat on your website and provide great customer support in real-time.\n\n# Live Chat\nChat with your customers and increase your sales.\n# Easy customization\nYou can easily customize the colors and the text of your live chat.\n# Multiple languages\nUse any language you want.\n#  Use your brand\nUpload your own logo and your photo.\n# Who's browsing\nYou can see who is browsing your website in real-time.\n# Mobile apps\nWith you iOS or Android device, you can receive messages from your customers while on the go.\n# Integrations\nAdd new contacts to your Salesforce, Zoho or HubSpot.\n# REST API\nYou can integrate LiveSupporti with your website.",
+				"instructions": "",
+				"alias": "livesupporti",
+				"orgId": "865c3172cbc86d1f05c007029f6d7833",
+				"icon": "//images.cloudflareapps.com/PtKMKmlQYGxw5lH3ACQQ_livesupporti-cloudflare-appstore-icon.png",
+				"screenshots": [
+					"//images.cloudflareapps.com/pDCKi13LR0SMKsrvcH0B_livesupporti-cloudflare-appstore-screenshot-website-with-chat.png",
+					"//images.cloudflareapps.com/ImmgjqBCSoun9hsvE3t4_livesupporti-cloudflare-appstore-screenshot-customization.png",
+					"//images.cloudflareapps.com/fZtXgisQmuFII6Jku2JT_livesupporti-cloudflare-appstore-screenshot-dashboard.png"
+				],
+				"tileImage": "//images.cloudflareapps.com/7bY0xajNSN219YzShIpw_livesupporti-cloudflare-appstore-tile-image.png",
+				"featuredAppImage": "",
+				"author": "Tachyonsoft Ltd",
+				"tagline": "",
+				"website": "https://livesupporti.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://livesupporti.com/terms",
+				"privacyPolicyURL": "https://livesupporti.com/privacy",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@livesupporti.com",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "SzM60lC7MA0E"
+				},
+				"created": "2017-12-29T13:40:58.118017Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "865c3172cbc86d1f05c007029f6d7833",
+				"requestedAt": "2019-09-18T15:29:56.87438337Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2019-09-20T15:45:29.515764565Z"
+			}
+		}
+	]
+}

@@ -1,0 +1,1046 @@
+{
+	"id": "VwCjdIGYXxkq",
+	"title": "embeddit",
+	"shortDescription": "Reddit comments on your site.",
+	"longDescription": "Embeddit searches <a href=\"https://reddit.com\" target=\"_blank\" class=\"with-underline\">Reddit</a> to find comments about your website.\n\nComments will appear on your site when a redditor shares your content on Reddit.\n\nEmbeddit is powered by <a href=\"https://embedd.io/\" target=\"_blank\" class=\"with-underline more\">Embedd</a>",
+	"instructions": "Comments will automatically be fetched when a visitor shares your website on Reddit.",
+	"alias": "embeddit",
+	"orgId": "2684c89451b6b86b453405beb4662f46",
+	"icon": "//images.cloudflareapps.com/sby8nlWbTbGlANe08B1Y_logo.png",
+	"screenshots": [],
+	"tileImage": "//images.cloudflareapps.com/rcHZGFHqQzupgVtqn8PH_tile.png",
+	"featuredAppImage": "",
+	"author": "Cloudflare Labs",
+	"tagline": "",
+	"website": "",
+	"sourceURL": "",
+	"termsOfServiceURL": "",
+	"privacyPolicyURL": "",
+	"color": "#ff4500",
+	"source": "",
+	"adminVisible": true,
+	"userVisible": true,
+	"installable": true,
+	"codeVersion": "2.1.4",
+	"infoVersion": "2.1.4",
+	"points": 0,
+	"supportEmail": "support@cloudflare.com",
+	"products": [],
+	"categoryIds": [
+		"social-and-communication",
+		"recommended-for-blogs"
+	],
+	"agreements": {
+		"tos": {
+			"userId": "f1279b4c7912eb17ba469bcbdfe62b19",
+			"created": "2017-07-06T08:56:17.818319029Z",
+			"version": "06-22-2017"
+		}
+	},
+	"metadata": {
+		"importedFromVersion": "IV_kPzTK71sv"
+	},
+	"created": "2017-05-31T22:25:54.490621Z",
+	"org": {
+		"id": "2684c89451b6b86b453405beb4662f46",
+		"title": "",
+		"username": "2684c89451b6b86b453405beb4662f46",
+		"personal": true,
+		"permissions": [],
+		"created": null
+	},
+	"categories": [
+		{
+			"id": "recommended-for-blogs",
+			"title": "Recommended for Blogs",
+			"description": "Apps for blogs in the recommendation engine.",
+			"icon": "",
+			"points": 0,
+			"visible": false,
+			"created": "2018-02-06T19:54:23.834831Z"
+		},
+		{
+			"id": "social-and-communication",
+			"title": "Social & Communication",
+			"description": "Apps that make it easier to communicate with your customers.",
+			"icon": "",
+			"points": 80,
+			"visible": true,
+			"created": "2018-01-22T19:17:10.030031Z"
+		}
+	],
+	"versions": [
+		{
+			"tag": "v2.0.0",
+			"appId": "VwCjdIGYXxkq",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "vendor/embedd.js"
+						},
+						{
+							"type": "style",
+							"src": "build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "append",
+								"selector": "body"
+							},
+							"description": "Where should the comments appear on the page?",
+							"format": "element",
+							"order": 0,
+							"title": "Comments location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/IV_kPzTK71sv",
+			"metadata": {
+				"code": {
+					"sourceTag": "IV_kPzTK71sv",
+					"uploadedOn": "2017-05-31T22:25:54.988306996Z"
+				}
+			},
+			"created": "2017-05-31T22:25:54.734245Z",
+			"proposedApp": {
+				"id": "VwCjdIGYXxkq",
+				"title": "embeddit",
+				"shortDescription": "The frontpage of the internet.",
+				"longDescription": "Embeddit searches <a href=\"https://reddit.com\" target=\"_blank\" class=\"with-underline\">Reddit</a> to find comments about your website.\n\nComments will appear on your site when a redditor shares your content on Reddit.\n\nEmbeddit is powered by <a href=\"https://embedd.io/\" target=\"_blank\" class=\"with-underline more\">Embedd</a>",
+				"instructions": "Comments will automatically be fetched when a visitor shares your website on Reddit.",
+				"alias": "embeddit",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/sby8nlWbTbGlANe08B1Y_logo.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/rcHZGFHqQzupgVtqn8PH_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"social-media",
+					"by-cloudflare",
+					"communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "IV_kPzTK71sv"
+				},
+				"created": "2017-05-31T22:25:54.490621Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-05-31T22:25:55.793223269Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-05-31T22:26:41.564353717Z"
+			}
+		},
+		{
+			"tag": "v2.0.1",
+			"appId": "VwCjdIGYXxkq",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "vendor/embedd.js"
+						},
+						{
+							"type": "style",
+							"src": "build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "append",
+								"selector": "body"
+							},
+							"description": "Where should the comments appear on the page?",
+							"format": "element",
+							"order": 0,
+							"title": "Comments location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/IV_kPzTK71sv",
+			"created": "2017-06-01T18:41:58.204741Z",
+			"proposedApp": {
+				"id": "VwCjdIGYXxkq",
+				"title": "embeddit",
+				"shortDescription": "Reddit comments on your site.",
+				"longDescription": "Embeddit searches <a href=\"https://reddit.com\" target=\"_blank\" class=\"with-underline\">Reddit</a> to find comments about your website.\n\nComments will appear on your site when a redditor shares your content on Reddit.\n\nEmbeddit is powered by <a href=\"https://embedd.io/\" target=\"_blank\" class=\"with-underline more\">Embedd</a>",
+				"instructions": "Comments will automatically be fetched when a visitor shares your website on Reddit.",
+				"alias": "embeddit",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/sby8nlWbTbGlANe08B1Y_logo.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/rcHZGFHqQzupgVtqn8PH_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"social-media",
+					"by-cloudflare",
+					"communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "IV_kPzTK71sv"
+				},
+				"created": "2017-05-31T22:25:54.490621Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-06-01T18:41:58.652689351Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-06-01T18:58:52.873332169Z"
+			}
+		},
+		{
+			"tag": "2.0.2",
+			"appId": "VwCjdIGYXxkq",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "vendor/embedd.js"
+						},
+						{
+							"type": "style",
+							"src": "build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "append",
+								"selector": "body"
+							},
+							"description": "Where should the comments appear on the page?",
+							"format": "element",
+							"order": 0,
+							"title": "Comments location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/IV_kPzTK71sv",
+			"created": "2017-06-14T22:22:48.394334Z",
+			"proposedApp": {
+				"id": "VwCjdIGYXxkq",
+				"title": "embeddit",
+				"shortDescription": "Reddit comments on your site.",
+				"longDescription": "Embeddit searches <a href=\"https://reddit.com\" target=\"_blank\" class=\"with-underline\">Reddit</a> to find comments about your website.\n\nComments will appear on your site when a redditor shares your content on Reddit.\n\nEmbeddit is powered by <a href=\"https://embedd.io/\" target=\"_blank\" class=\"with-underline more\">Embedd</a>",
+				"instructions": "Comments will automatically be fetched when a visitor shares your website on Reddit.",
+				"alias": "embeddit",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/sby8nlWbTbGlANe08B1Y_logo.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/rcHZGFHqQzupgVtqn8PH_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"social-media",
+					"by-cloudflare",
+					"communication",
+					"get-more-customers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "IV_kPzTK71sv"
+				},
+				"created": "2017-05-31T22:25:54.490621Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "dda328da295860bf84630d277c4d53d9",
+				"requestedAt": "2017-06-14T22:22:48.53597175Z",
+				"canceledAt": null,
+				"reviewedByUserId": "dda328da295860bf84630d277c4d53d9",
+				"reviewedAt": "2017-06-14T23:11:54.933414345Z"
+			}
+		},
+		{
+			"tag": "2.0.3",
+			"appId": "VwCjdIGYXxkq",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "vendor/embedd.js"
+						},
+						{
+							"type": "style",
+							"src": "build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "append",
+								"selector": "body"
+							},
+							"description": "Where should the comments appear on the page?",
+							"format": "element",
+							"order": 0,
+							"title": "Comments location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/IV_kPzTK71sv",
+			"created": "2017-07-06T08:56:17.592744Z",
+			"proposedApp": {
+				"id": "VwCjdIGYXxkq",
+				"title": "embeddit",
+				"shortDescription": "Reddit comments on your site.",
+				"longDescription": "Embeddit searches <a href=\"https://reddit.com\" target=\"_blank\" class=\"with-underline\">Reddit</a> to find comments about your website.\n\nComments will appear on your site when a redditor shares your content on Reddit.\n\nEmbeddit is powered by <a href=\"https://embedd.io/\" target=\"_blank\" class=\"with-underline more\">Embedd</a>",
+				"instructions": "Comments will automatically be fetched when a visitor shares your website on Reddit.",
+				"alias": "embeddit",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/sby8nlWbTbGlANe08B1Y_logo.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/rcHZGFHqQzupgVtqn8PH_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"social-media",
+					"by-cloudflare",
+					"communication",
+					"get-more-customers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "IV_kPzTK71sv"
+				},
+				"created": "2017-05-31T22:25:54.490621Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-07-06T08:56:17.815227831Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-07-06T08:56:29.724094128Z"
+			}
+		},
+		{
+			"tag": "2.1.0",
+			"appId": "VwCjdIGYXxkq",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "vendor/embedd.js"
+						},
+						{
+							"type": "style",
+							"src": "build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "append",
+								"selector": "body"
+							},
+							"description": "Where should the comments appear on the page?",
+							"format": "element",
+							"order": 0,
+							"title": "Comments location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/DhB-T3x6Y3GD",
+			"metadata": {
+				"code": {
+					"sourceTag": "DhB-T3x6Y3GD",
+					"uploadedOn": "2017-07-25T01:38:14.248676811Z"
+				}
+			},
+			"created": "2017-07-25T01:38:14.01966Z",
+			"proposedApp": {
+				"id": "VwCjdIGYXxkq",
+				"title": "embeddit",
+				"shortDescription": "Reddit comments on your site.",
+				"longDescription": "Embeddit searches <a href=\"https://reddit.com\" target=\"_blank\" class=\"with-underline\">Reddit</a> to find comments about your website.\n\nComments will appear on your site when a redditor shares your content on Reddit.\n\nEmbeddit is powered by <a href=\"https://embedd.io/\" target=\"_blank\" class=\"with-underline more\">Embedd</a>",
+				"instructions": "Comments will automatically be fetched when a visitor shares your website on Reddit.",
+				"alias": "embeddit",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/sby8nlWbTbGlANe08B1Y_logo.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/rcHZGFHqQzupgVtqn8PH_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"social-media",
+					"by-cloudflare",
+					"communication",
+					"get-more-customers"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "IV_kPzTK71sv"
+				},
+				"created": "2017-05-31T22:25:54.490621Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2017-07-25T01:38:14.869104791Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2017-07-25T01:41:37.871040237Z"
+			}
+		},
+		{
+			"tag": "2.1.1",
+			"appId": "VwCjdIGYXxkq",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "vendor/embedd.js"
+						},
+						{
+							"type": "style",
+							"src": "build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "append",
+								"selector": "body"
+							},
+							"description": "Where should the comments appear on the page?",
+							"format": "element",
+							"order": 0,
+							"title": "Comments location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Added to “Social & Communication” category",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/DhB-T3x6Y3GD",
+			"created": "2018-01-22T20:44:34.472346Z",
+			"proposedApp": {
+				"id": "VwCjdIGYXxkq",
+				"title": "embeddit",
+				"shortDescription": "Reddit comments on your site.",
+				"longDescription": "Embeddit searches <a href=\"https://reddit.com\" target=\"_blank\" class=\"with-underline\">Reddit</a> to find comments about your website.\n\nComments will appear on your site when a redditor shares your content on Reddit.\n\nEmbeddit is powered by <a href=\"https://embedd.io/\" target=\"_blank\" class=\"with-underline more\">Embedd</a>",
+				"instructions": "Comments will automatically be fetched when a visitor shares your website on Reddit.",
+				"alias": "embeddit",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/sby8nlWbTbGlANe08B1Y_logo.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/rcHZGFHqQzupgVtqn8PH_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"social-media",
+					"by-cloudflare",
+					"get-more-customers",
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "IV_kPzTK71sv"
+				},
+				"created": "2017-05-31T22:25:54.490621Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-01-22T20:44:34.756929517Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-01-22T20:44:37.442760118Z"
+			}
+		},
+		{
+			"tag": "2.1.2",
+			"appId": "VwCjdIGYXxkq",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "vendor/embedd.js"
+						},
+						{
+							"type": "style",
+							"src": "build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "append",
+								"selector": "body"
+							},
+							"description": "Where should the comments appear on the page?",
+							"format": "element",
+							"order": 0,
+							"title": "Comments location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Added to Cloudflare Apps recommendation engine",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/DhB-T3x6Y3GD",
+			"created": "2018-02-06T21:50:45.499672Z",
+			"proposedApp": {
+				"id": "VwCjdIGYXxkq",
+				"title": "embeddit",
+				"shortDescription": "Reddit comments on your site.",
+				"longDescription": "Embeddit searches <a href=\"https://reddit.com\" target=\"_blank\" class=\"with-underline\">Reddit</a> to find comments about your website.\n\nComments will appear on your site when a redditor shares your content on Reddit.\n\nEmbeddit is powered by <a href=\"https://embedd.io/\" target=\"_blank\" class=\"with-underline more\">Embedd</a>",
+				"instructions": "Comments will automatically be fetched when a visitor shares your website on Reddit.",
+				"alias": "embeddit",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/sby8nlWbTbGlANe08B1Y_logo.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/rcHZGFHqQzupgVtqn8PH_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"social-media",
+					"by-cloudflare",
+					"get-more-customers",
+					"social-and-communication",
+					"recommended-for-blogs"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "IV_kPzTK71sv"
+				},
+				"created": "2017-05-31T22:25:54.490621Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-02-06T21:50:45.797422084Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-02-06T21:55:51.048963753Z"
+			}
+		},
+		{
+			"tag": "2.1.3",
+			"appId": "VwCjdIGYXxkq",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "vendor/embedd.js"
+						},
+						{
+							"type": "style",
+							"src": "build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "append",
+								"selector": "body"
+							},
+							"description": "Where should the comments appear on the page?",
+							"format": "element",
+							"order": 0,
+							"title": "Comments location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 1,
+				"downvotes": 0
+			},
+			"releaseNotes": "Fix issue where Embeddit doesn't load",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/cDlKBkiLUkqw",
+			"metadata": {
+				"code": {
+					"sourceTag": "cDlKBkiLUkqw",
+					"uploadedOn": "2018-02-07T12:10:44.628981849Z"
+				}
+			},
+			"created": "2018-02-07T12:10:44.437888Z",
+			"proposedApp": {
+				"id": "VwCjdIGYXxkq",
+				"title": "embeddit",
+				"shortDescription": "Reddit comments on your site.",
+				"longDescription": "Embeddit searches <a href=\"https://reddit.com\" target=\"_blank\" class=\"with-underline\">Reddit</a> to find comments about your website.\n\nComments will appear on your site when a redditor shares your content on Reddit.\n\nEmbeddit is powered by <a href=\"https://embedd.io/\" target=\"_blank\" class=\"with-underline more\">Embedd</a>",
+				"instructions": "Comments will automatically be fetched when a visitor shares your website on Reddit.",
+				"alias": "embeddit",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/sby8nlWbTbGlANe08B1Y_logo.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/rcHZGFHqQzupgVtqn8PH_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"add-on",
+					"social-media",
+					"by-cloudflare",
+					"get-more-customers",
+					"social-and-communication",
+					"recommended-for-blogs"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "IV_kPzTK71sv"
+				},
+				"created": "2017-05-31T22:25:54.490621Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"requestedAt": "2018-02-07T12:11:14.984139537Z",
+				"canceledAt": null,
+				"reviewedByUserId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"reviewedAt": "2018-02-07T12:11:38.755084346Z"
+			}
+		},
+		{
+			"tag": "2.1.4",
+			"appId": "VwCjdIGYXxkq",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "vendor/embedd.js"
+						},
+						{
+							"type": "style",
+							"src": "build/app.css"
+						},
+						{
+							"type": "script",
+							"src": "build/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"location": {
+							"default": {
+								"method": "append",
+								"selector": "body"
+							},
+							"description": "Where should the comments appear on the page?",
+							"format": "element",
+							"order": 0,
+							"title": "Comments location",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"ratingSummary": {
+				"valid": true,
+				"rating": 1,
+				"upvotes": 5,
+				"downvotes": 0
+			},
+			"releaseNotes": "",
+			"source": "",
+			"creatorUserId": "",
+			"installable": true,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/cDlKBkiLUkqw",
+			"created": "2018-11-13T20:43:39.634449Z",
+			"proposedApp": {
+				"id": "VwCjdIGYXxkq",
+				"title": "embeddit",
+				"shortDescription": "Reddit comments on your site.",
+				"longDescription": "Embeddit searches <a href=\"https://reddit.com\" target=\"_blank\" class=\"with-underline\">Reddit</a> to find comments about your website.\n\nComments will appear on your site when a redditor shares your content on Reddit.\n\nEmbeddit is powered by <a href=\"https://embedd.io/\" target=\"_blank\" class=\"with-underline more\">Embedd</a>",
+				"instructions": "Comments will automatically be fetched when a visitor shares your website on Reddit.",
+				"alias": "embeddit",
+				"orgId": "f1279b4c7912eb17ba469bcbdfe62b19",
+				"icon": "//images.cloudflareapps.com/sby8nlWbTbGlANe08B1Y_logo.png",
+				"screenshots": [],
+				"tileImage": "//images.cloudflareapps.com/rcHZGFHqQzupgVtqn8PH_tile.png",
+				"featuredAppImage": "",
+				"author": "Cloudflare Labs",
+				"tagline": "",
+				"website": "",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@cloudflare.com",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication",
+					"recommended-for-blogs"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "IV_kPzTK71sv"
+				},
+				"created": "2017-05-31T22:25:54.490621Z"
+			},
+			"moderationStatus": "approved",
+			"moderationMetadata": {
+				"requestedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"requestedAt": "2018-11-13T20:43:39.994172053Z",
+				"canceledAt": null,
+				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
+				"reviewedAt": "2018-11-14T17:42:36.498145293Z"
+			}
+		}
+	]
+}
