@@ -97735,22 +97735,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -97816,22 +97801,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -97897,22 +97867,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -97945,13 +97900,13 @@
 																			},
 																			"startTime": {
 																				"type": "string",
-																				"format": "date-time",
-																				"example": "2022-09-17T10:22:57.555000+00:00"
+																				"example": "2022-09-15T00:00:00+00:00",
+																				"format": "date-time"
 																			},
 																			"endTime": {
 																				"type": "string",
-																				"format": "date-time",
-																				"example": "2022-09-17T10:22:57.555000+00:00"
+																				"example": "2022-09-15T00:00:00+00:00",
+																				"format": "date-time"
 																			}
 																		}
 																	}
@@ -97963,15 +97918,15 @@
 															"properties": {
 																"startTime": {
 																	"type": "string",
-																	"format": "date-time",
+																	"description": "Adjusted start of date range.",
 																	"example": "2022-09-16T10:22:57.555000+00:00",
-																	"description": "Adjusted start of date range."
+																	"format": "date-time"
 																},
 																"endTime": {
 																	"type": "string",
-																	"format": "date-time",
+																	"description": "Adjusted end of date range.",
 																	"example": "2022-09-17T10:22:57.555000+00:00",
-																	"description": "Adjusted end of date range."
+																	"format": "date-time"
 																}
 															}
 														},
@@ -97981,8 +97936,8 @@
 														},
 														"lastUpdated": {
 															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00"
+															"example": "2022-09-15T00:00:00+00:00",
+															"format": "date-time"
 														}
 													}
 												},
@@ -97993,8 +97948,8 @@
 															"type": "array",
 															"items": {
 																"type": "string",
-																"format": "date-time",
-																"example": "2022-09-17T10:22:57.555000+00:00"
+																"example": "2022-09-15T00:00:00+00:00",
+																"format": "date-time"
 															}
 														},
 														"values": {
@@ -98046,22 +98001,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -98128,22 +98068,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -98206,22 +98131,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -98288,22 +98198,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -98366,22 +98261,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -98444,22 +98324,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -98534,22 +98399,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -98628,22 +98478,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -98716,22 +98551,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -98810,22 +98630,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -98898,22 +98703,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -98986,22 +98776,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -99092,22 +98867,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -99174,22 +98934,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -99255,10 +99000,10 @@
 							"type": "string",
 							"description": "Bot class.",
 							"enum": [
-								"likely_automated",
-								"likely_human"
+								"LIKELY_AUTOMATED",
+								"LIKELY_HUMAN"
 							],
-							"default": "likely_automated"
+							"default": "LIKELY_AUTOMATED"
 						}
 					}
 				],
@@ -99271,22 +99016,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -99316,13 +99046,13 @@
 																			},
 																			"startTime": {
 																				"type": "string",
-																				"format": "date-time",
-																				"example": "2022-09-17T10:22:57.555000+00:00"
+																				"example": "2022-09-15T00:00:00+00:00",
+																				"format": "date-time"
 																			},
 																			"endTime": {
 																				"type": "string",
-																				"format": "date-time",
-																				"example": "2022-09-17T10:22:57.555000+00:00"
+																				"example": "2022-09-15T00:00:00+00:00",
+																				"format": "date-time"
 																			}
 																		}
 																	}
@@ -99334,13 +99064,13 @@
 															"properties": {
 																"startTime": {
 																	"type": "string",
-																	"format": "date-time",
-																	"example": "2022-09-17T10:22:57.555000+00:00"
+																	"example": "2022-09-15T00:00:00+00:00",
+																	"format": "date-time"
 																},
 																"endTime": {
 																	"type": "string",
-																	"format": "date-time",
-																	"example": "2022-09-17T10:22:57.555000+00:00"
+																	"example": "2022-09-15T00:00:00+00:00",
+																	"format": "date-time"
 																}
 															}
 														}
@@ -99406,11 +99136,11 @@
 							"type": "string",
 							"description": "Device type.",
 							"enum": [
-								"desktop",
-								"mobile",
-								"other"
+								"DESKTOP",
+								"MOBILE",
+								"OTHER"
 							],
-							"default": "desktop"
+							"default": "DESKTOP"
 						}
 					}
 				],
@@ -99423,22 +99153,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -99468,13 +99183,13 @@
 																			},
 																			"startTime": {
 																				"type": "string",
-																				"format": "date-time",
-																				"example": "2022-09-17T10:22:57.555000+00:00"
+																				"example": "2022-09-15T00:00:00+00:00",
+																				"format": "date-time"
 																			},
 																			"endTime": {
 																				"type": "string",
-																				"format": "date-time",
-																				"example": "2022-09-17T10:22:57.555000+00:00"
+																				"example": "2022-09-15T00:00:00+00:00",
+																				"format": "date-time"
 																			}
 																		}
 																	}
@@ -99486,13 +99201,13 @@
 															"properties": {
 																"startTime": {
 																	"type": "string",
-																	"format": "date-time",
-																	"example": "2022-09-17T10:22:57.555000+00:00"
+																	"example": "2022-09-15T00:00:00+00:00",
+																	"format": "date-time"
 																},
 																"endTime": {
 																	"type": "string",
-																	"format": "date-time",
-																	"example": "2022-09-17T10:22:57.555000+00:00"
+																	"example": "2022-09-15T00:00:00+00:00",
+																	"format": "date-time"
 																}
 															}
 														}
@@ -99558,13 +99273,13 @@
 							"type": "string",
 							"description": "TLS version.",
 							"enum": [
-								"tlsv1_0",
-								"tlsv1_1",
-								"tlsv1_2",
-								"tlsv1_3",
-								"tlsvquic"
+								"TLSv1_0",
+								"TLSv1_1",
+								"TLSv1_2",
+								"TLSv1_3",
+								"TLSvQUIC"
 							],
-							"default": "tlsv1_0"
+							"default": "TLSv1_0"
 						}
 					}
 				],
@@ -99577,22 +99292,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -99622,13 +99322,13 @@
 																			},
 																			"startTime": {
 																				"type": "string",
-																				"format": "date-time",
-																				"example": "2022-09-17T10:22:57.555000+00:00"
+																				"example": "2022-09-15T00:00:00+00:00",
+																				"format": "date-time"
 																			},
 																			"endTime": {
 																				"type": "string",
-																				"format": "date-time",
-																				"example": "2022-09-17T10:22:57.555000+00:00"
+																				"example": "2022-09-15T00:00:00+00:00",
+																				"format": "date-time"
 																			}
 																		}
 																	}
@@ -99640,13 +99340,13 @@
 															"properties": {
 																"startTime": {
 																	"type": "string",
-																	"format": "date-time",
-																	"example": "2022-09-17T10:22:57.555000+00:00"
+																	"example": "2022-09-15T00:00:00+00:00",
+																	"format": "date-time"
 																},
 																"endTime": {
 																	"type": "string",
-																	"format": "date-time",
-																	"example": "2022-09-17T10:22:57.555000+00:00"
+																	"example": "2022-09-15T00:00:00+00:00",
+																	"format": "date-time"
 																}
 															}
 														}
@@ -99712,10 +99412,10 @@
 							"type": "string",
 							"description": "HTTP Protocol.",
 							"enum": [
-								"http",
-								"https"
+								"HTTP",
+								"HTTPS"
 							],
-							"default": "http"
+							"default": "HTTP"
 						}
 					}
 				],
@@ -99728,22 +99428,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -99773,13 +99458,13 @@
 																			},
 																			"startTime": {
 																				"type": "string",
-																				"format": "date-time",
-																				"example": "2022-09-17T10:22:57.555000+00:00"
+																				"example": "2022-09-15T00:00:00+00:00",
+																				"format": "date-time"
 																			},
 																			"endTime": {
 																				"type": "string",
-																				"format": "date-time",
-																				"example": "2022-09-17T10:22:57.555000+00:00"
+																				"example": "2022-09-15T00:00:00+00:00",
+																				"format": "date-time"
 																			}
 																		}
 																	}
@@ -99791,13 +99476,13 @@
 															"properties": {
 																"startTime": {
 																	"type": "string",
-																	"format": "date-time",
-																	"example": "2022-09-17T10:22:57.555000+00:00"
+																	"example": "2022-09-15T00:00:00+00:00",
+																	"format": "date-time"
 																},
 																"endTime": {
 																	"type": "string",
-																	"format": "date-time",
-																	"example": "2022-09-17T10:22:57.555000+00:00"
+																	"example": "2022-09-15T00:00:00+00:00",
+																	"format": "date-time"
 																}
 															}
 														}
@@ -99863,11 +99548,11 @@
 							"type": "string",
 							"description": "HTTP version.",
 							"enum": [
-								"httpv1",
-								"httpv2",
-								"httpv3"
+								"HTTPv1",
+								"HTTPv2",
+								"HTTPv3"
 							],
-							"default": "httpv1"
+							"default": "HTTPv1"
 						}
 					}
 				],
@@ -99880,22 +99565,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -99925,13 +99595,13 @@
 																			},
 																			"startTime": {
 																				"type": "string",
-																				"format": "date-time",
-																				"example": "2022-09-17T10:22:57.555000+00:00"
+																				"example": "2022-09-15T00:00:00+00:00",
+																				"format": "date-time"
 																			},
 																			"endTime": {
 																				"type": "string",
-																				"format": "date-time",
-																				"example": "2022-09-17T10:22:57.555000+00:00"
+																				"example": "2022-09-15T00:00:00+00:00",
+																				"format": "date-time"
 																			}
 																		}
 																	}
@@ -99943,13 +99613,13 @@
 															"properties": {
 																"startTime": {
 																	"type": "string",
-																	"format": "date-time",
-																	"example": "2022-09-17T10:22:57.555000+00:00"
+																	"example": "2022-09-15T00:00:00+00:00",
+																	"format": "date-time"
 																},
 																"endTime": {
 																	"type": "string",
-																	"format": "date-time",
-																	"example": "2022-09-17T10:22:57.555000+00:00"
+																	"example": "2022-09-15T00:00:00+00:00",
+																	"format": "date-time"
 																}
 															}
 														}
@@ -100015,10 +99685,10 @@
 							"type": "string",
 							"description": "IP version.",
 							"enum": [
-								"ipv4",
-								"ipv6"
+								"IPv4",
+								"IPv6"
 							],
-							"default": "ipv4"
+							"default": "IPv4"
 						}
 					}
 				],
@@ -100031,22 +99701,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -100076,13 +99731,13 @@
 																			},
 																			"startTime": {
 																				"type": "string",
-																				"format": "date-time",
-																				"example": "2022-09-17T10:22:57.555000+00:00"
+																				"example": "2022-09-15T00:00:00+00:00",
+																				"format": "date-time"
 																			},
 																			"endTime": {
 																				"type": "string",
-																				"format": "date-time",
-																				"example": "2022-09-17T10:22:57.555000+00:00"
+																				"example": "2022-09-15T00:00:00+00:00",
+																				"format": "date-time"
 																			}
 																		}
 																	}
@@ -100094,13 +99749,13 @@
 															"properties": {
 																"startTime": {
 																	"type": "string",
-																	"format": "date-time",
-																	"example": "2022-09-17T10:22:57.555000+00:00"
+																	"example": "2022-09-15T00:00:00+00:00",
+																	"format": "date-time"
 																},
 																"endTime": {
 																	"type": "string",
-																	"format": "date-time",
-																	"example": "2022-09-17T10:22:57.555000+00:00"
+																	"example": "2022-09-15T00:00:00+00:00",
+																	"format": "date-time"
 																}
 															}
 														}
@@ -100167,22 +99822,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -100212,13 +99852,13 @@
 																			},
 																			"startTime": {
 																				"type": "string",
-																				"format": "date-time",
-																				"example": "2022-09-17T10:22:57.555000+00:00"
+																				"example": "2022-09-15T00:00:00+00:00",
+																				"format": "date-time"
 																			},
 																			"endTime": {
 																				"type": "string",
-																				"format": "date-time",
-																				"example": "2022-09-17T10:22:57.555000+00:00"
+																				"example": "2022-09-15T00:00:00+00:00",
+																				"format": "date-time"
 																			}
 																		}
 																	}
@@ -100230,13 +99870,13 @@
 															"properties": {
 																"startTime": {
 																	"type": "string",
-																	"format": "date-time",
-																	"example": "2022-09-17T10:22:57.555000+00:00"
+																	"example": "2022-09-15T00:00:00+00:00",
+																	"format": "date-time"
 																},
 																"endTime": {
 																	"type": "string",
-																	"format": "date-time",
-																	"example": "2022-09-17T10:22:57.555000+00:00"
+																	"example": "2022-09-15T00:00:00+00:00",
+																	"format": "date-time"
 																}
 															}
 														}
@@ -100302,10 +99942,10 @@
 							"type": "string",
 							"description": "Bot class.",
 							"enum": [
-								"likely_automated",
-								"likely_human"
+								"LIKELY_AUTOMATED",
+								"LIKELY_HUMAN"
 							],
-							"default": "likely_automated"
+							"default": "LIKELY_AUTOMATED"
 						}
 					}
 				],
@@ -100318,22 +99958,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -100363,13 +99988,13 @@
 																			},
 																			"startTime": {
 																				"type": "string",
-																				"format": "date-time",
-																				"example": "2022-09-17T10:22:57.555000+00:00"
+																				"example": "2022-09-15T00:00:00+00:00",
+																				"format": "date-time"
 																			},
 																			"endTime": {
 																				"type": "string",
-																				"format": "date-time",
-																				"example": "2022-09-17T10:22:57.555000+00:00"
+																				"example": "2022-09-15T00:00:00+00:00",
+																				"format": "date-time"
 																			}
 																		}
 																	}
@@ -100381,13 +100006,13 @@
 															"properties": {
 																"startTime": {
 																	"type": "string",
-																	"format": "date-time",
-																	"example": "2022-09-17T10:22:57.555000+00:00"
+																	"example": "2022-09-15T00:00:00+00:00",
+																	"format": "date-time"
 																},
 																"endTime": {
 																	"type": "string",
-																	"format": "date-time",
-																	"example": "2022-09-17T10:22:57.555000+00:00"
+																	"example": "2022-09-15T00:00:00+00:00",
+																	"format": "date-time"
 																}
 															}
 														}
@@ -100453,11 +100078,11 @@
 							"type": "string",
 							"description": "Device type.",
 							"enum": [
-								"desktop",
-								"mobile",
-								"other"
+								"DESKTOP",
+								"MOBILE",
+								"OTHER"
 							],
-							"default": "desktop"
+							"default": "DESKTOP"
 						}
 					}
 				],
@@ -100470,22 +100095,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -100515,13 +100125,13 @@
 																			},
 																			"startTime": {
 																				"type": "string",
-																				"format": "date-time",
-																				"example": "2022-09-17T10:22:57.555000+00:00"
+																				"example": "2022-09-15T00:00:00+00:00",
+																				"format": "date-time"
 																			},
 																			"endTime": {
 																				"type": "string",
-																				"format": "date-time",
-																				"example": "2022-09-17T10:22:57.555000+00:00"
+																				"example": "2022-09-15T00:00:00+00:00",
+																				"format": "date-time"
 																			}
 																		}
 																	}
@@ -100533,13 +100143,13 @@
 															"properties": {
 																"startTime": {
 																	"type": "string",
-																	"format": "date-time",
-																	"example": "2022-09-17T10:22:57.555000+00:00"
+																	"example": "2022-09-15T00:00:00+00:00",
+																	"format": "date-time"
 																},
 																"endTime": {
 																	"type": "string",
-																	"format": "date-time",
-																	"example": "2022-09-17T10:22:57.555000+00:00"
+																	"example": "2022-09-15T00:00:00+00:00",
+																	"format": "date-time"
 																}
 															}
 														}
@@ -100605,13 +100215,13 @@
 							"type": "string",
 							"description": "TLS version.",
 							"enum": [
-								"tlsv1_0",
-								"tlsv1_1",
-								"tlsv1_2",
-								"tlsv1_3",
-								"tlsvquic"
+								"TLSv1_0",
+								"TLSv1_1",
+								"TLSv1_2",
+								"TLSv1_3",
+								"TLSvQUIC"
 							],
-							"default": "tlsv1_0"
+							"default": "TLSv1_0"
 						}
 					}
 				],
@@ -100624,22 +100234,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -100669,13 +100264,13 @@
 																			},
 																			"startTime": {
 																				"type": "string",
-																				"format": "date-time",
-																				"example": "2022-09-17T10:22:57.555000+00:00"
+																				"example": "2022-09-15T00:00:00+00:00",
+																				"format": "date-time"
 																			},
 																			"endTime": {
 																				"type": "string",
-																				"format": "date-time",
-																				"example": "2022-09-17T10:22:57.555000+00:00"
+																				"example": "2022-09-15T00:00:00+00:00",
+																				"format": "date-time"
 																			}
 																		}
 																	}
@@ -100687,13 +100282,13 @@
 															"properties": {
 																"startTime": {
 																	"type": "string",
-																	"format": "date-time",
-																	"example": "2022-09-17T10:22:57.555000+00:00"
+																	"example": "2022-09-15T00:00:00+00:00",
+																	"format": "date-time"
 																},
 																"endTime": {
 																	"type": "string",
-																	"format": "date-time",
-																	"example": "2022-09-17T10:22:57.555000+00:00"
+																	"example": "2022-09-15T00:00:00+00:00",
+																	"format": "date-time"
 																}
 															}
 														}
@@ -100759,10 +100354,10 @@
 							"type": "string",
 							"description": "HTTP Protocol.",
 							"enum": [
-								"http",
-								"https"
+								"HTTP",
+								"HTTPS"
 							],
-							"default": "http"
+							"default": "HTTP"
 						}
 					}
 				],
@@ -100775,22 +100370,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -100820,13 +100400,13 @@
 																			},
 																			"startTime": {
 																				"type": "string",
-																				"format": "date-time",
-																				"example": "2022-09-17T10:22:57.555000+00:00"
+																				"example": "2022-09-15T00:00:00+00:00",
+																				"format": "date-time"
 																			},
 																			"endTime": {
 																				"type": "string",
-																				"format": "date-time",
-																				"example": "2022-09-17T10:22:57.555000+00:00"
+																				"example": "2022-09-15T00:00:00+00:00",
+																				"format": "date-time"
 																			}
 																		}
 																	}
@@ -100838,13 +100418,13 @@
 															"properties": {
 																"startTime": {
 																	"type": "string",
-																	"format": "date-time",
-																	"example": "2022-09-17T10:22:57.555000+00:00"
+																	"example": "2022-09-15T00:00:00+00:00",
+																	"format": "date-time"
 																},
 																"endTime": {
 																	"type": "string",
-																	"format": "date-time",
-																	"example": "2022-09-17T10:22:57.555000+00:00"
+																	"example": "2022-09-15T00:00:00+00:00",
+																	"format": "date-time"
 																}
 															}
 														}
@@ -100910,11 +100490,11 @@
 							"type": "string",
 							"description": "HTTP version.",
 							"enum": [
-								"httpv1",
-								"httpv2",
-								"httpv3"
+								"HTTPv1",
+								"HTTPv2",
+								"HTTPv3"
 							],
-							"default": "httpv1"
+							"default": "HTTPv1"
 						}
 					}
 				],
@@ -100927,22 +100507,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -100972,13 +100537,13 @@
 																			},
 																			"startTime": {
 																				"type": "string",
-																				"format": "date-time",
-																				"example": "2022-09-17T10:22:57.555000+00:00"
+																				"example": "2022-09-15T00:00:00+00:00",
+																				"format": "date-time"
 																			},
 																			"endTime": {
 																				"type": "string",
-																				"format": "date-time",
-																				"example": "2022-09-17T10:22:57.555000+00:00"
+																				"example": "2022-09-15T00:00:00+00:00",
+																				"format": "date-time"
 																			}
 																		}
 																	}
@@ -100990,13 +100555,13 @@
 															"properties": {
 																"startTime": {
 																	"type": "string",
-																	"format": "date-time",
-																	"example": "2022-09-17T10:22:57.555000+00:00"
+																	"example": "2022-09-15T00:00:00+00:00",
+																	"format": "date-time"
 																},
 																"endTime": {
 																	"type": "string",
-																	"format": "date-time",
-																	"example": "2022-09-17T10:22:57.555000+00:00"
+																	"example": "2022-09-15T00:00:00+00:00",
+																	"format": "date-time"
 																}
 															}
 														}
@@ -101062,10 +100627,10 @@
 							"type": "string",
 							"description": "IP version.",
 							"enum": [
-								"ipv4",
-								"ipv6"
+								"IPv4",
+								"IPv6"
 							],
-							"default": "ipv4"
+							"default": "IPv4"
 						}
 					}
 				],
@@ -101078,22 +100643,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -101123,13 +100673,13 @@
 																			},
 																			"startTime": {
 																				"type": "string",
-																				"format": "date-time",
-																				"example": "2022-09-17T10:22:57.555000+00:00"
+																				"example": "2022-09-15T00:00:00+00:00",
+																				"format": "date-time"
 																			},
 																			"endTime": {
 																				"type": "string",
-																				"format": "date-time",
-																				"example": "2022-09-17T10:22:57.555000+00:00"
+																				"example": "2022-09-15T00:00:00+00:00",
+																				"format": "date-time"
 																			}
 																		}
 																	}
@@ -101141,13 +100691,13 @@
 															"properties": {
 																"startTime": {
 																	"type": "string",
-																	"format": "date-time",
-																	"example": "2022-09-17T10:22:57.555000+00:00"
+																	"example": "2022-09-15T00:00:00+00:00",
+																	"format": "date-time"
 																},
 																"endTime": {
 																	"type": "string",
-																	"format": "date-time",
-																	"example": "2022-09-17T10:22:57.555000+00:00"
+																	"example": "2022-09-15T00:00:00+00:00",
+																	"format": "date-time"
 																}
 															}
 														}
@@ -101214,22 +100764,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -101259,13 +100794,13 @@
 																			},
 																			"startTime": {
 																				"type": "string",
-																				"format": "date-time",
-																				"example": "2022-09-17T10:22:57.555000+00:00"
+																				"example": "2022-09-15T00:00:00+00:00",
+																				"format": "date-time"
 																			},
 																			"endTime": {
 																				"type": "string",
-																				"format": "date-time",
-																				"example": "2022-09-17T10:22:57.555000+00:00"
+																				"example": "2022-09-15T00:00:00+00:00",
+																				"format": "date-time"
 																			}
 																		}
 																	}
@@ -101277,13 +100812,13 @@
 															"properties": {
 																"startTime": {
 																	"type": "string",
-																	"format": "date-time",
-																	"example": "2022-09-17T10:22:57.555000+00:00"
+																	"example": "2022-09-15T00:00:00+00:00",
+																	"format": "date-time"
 																},
 																"endTime": {
 																	"type": "string",
-																	"format": "date-time",
-																	"example": "2022-09-17T10:22:57.555000+00:00"
+																	"example": "2022-09-15T00:00:00+00:00",
+																	"format": "date-time"
 																}
 															}
 														}
@@ -101350,22 +100885,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -101395,13 +100915,13 @@
 																			},
 																			"startTime": {
 																				"type": "string",
-																				"format": "date-time",
-																				"example": "2022-09-17T10:22:57.555000+00:00"
+																				"example": "2022-09-15T00:00:00+00:00",
+																				"format": "date-time"
 																			},
 																			"endTime": {
 																				"type": "string",
-																				"format": "date-time",
-																				"example": "2022-09-17T10:22:57.555000+00:00"
+																				"example": "2022-09-15T00:00:00+00:00",
+																				"format": "date-time"
 																			}
 																		}
 																	}
@@ -101413,13 +100933,13 @@
 															"properties": {
 																"startTime": {
 																	"type": "string",
-																	"format": "date-time",
-																	"example": "2022-09-17T10:22:57.555000+00:00"
+																	"example": "2022-09-15T00:00:00+00:00",
+																	"format": "date-time"
 																},
 																"endTime": {
 																	"type": "string",
-																	"format": "date-time",
-																	"example": "2022-09-17T10:22:57.555000+00:00"
+																	"example": "2022-09-15T00:00:00+00:00",
+																	"format": "date-time"
 																}
 															}
 														}
@@ -101480,22 +101000,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -101525,13 +101030,13 @@
 																			},
 																			"startTime": {
 																				"type": "string",
-																				"format": "date-time",
-																				"example": "2022-09-17T10:22:57.555000+00:00"
+																				"example": "2022-09-15T00:00:00+00:00",
+																				"format": "date-time"
 																			},
 																			"endTime": {
 																				"type": "string",
-																				"format": "date-time",
-																				"example": "2022-09-17T10:22:57.555000+00:00"
+																				"example": "2022-09-15T00:00:00+00:00",
+																				"format": "date-time"
 																			}
 																		}
 																	}
@@ -101543,13 +101048,13 @@
 															"properties": {
 																"startTime": {
 																	"type": "string",
-																	"format": "date-time",
-																	"example": "2022-09-17T10:22:57.555000+00:00"
+																	"example": "2022-09-15T00:00:00+00:00",
+																	"format": "date-time"
 																},
 																"endTime": {
 																	"type": "string",
-																	"format": "date-time",
-																	"example": "2022-09-17T10:22:57.555000+00:00"
+																	"example": "2022-09-15T00:00:00+00:00",
+																	"format": "date-time"
 																}
 															}
 														}
@@ -101610,22 +101115,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -101655,13 +101145,13 @@
 																			},
 																			"startTime": {
 																				"type": "string",
-																				"format": "date-time",
-																				"example": "2022-09-17T10:22:57.555000+00:00"
+																				"example": "2022-09-15T00:00:00+00:00",
+																				"format": "date-time"
 																			},
 																			"endTime": {
 																				"type": "string",
-																				"format": "date-time",
-																				"example": "2022-09-17T10:22:57.555000+00:00"
+																				"example": "2022-09-15T00:00:00+00:00",
+																				"format": "date-time"
 																			}
 																		}
 																	}
@@ -101673,13 +101163,13 @@
 															"properties": {
 																"startTime": {
 																	"type": "string",
-																	"format": "date-time",
-																	"example": "2022-09-17T10:22:57.555000+00:00"
+																	"example": "2022-09-15T00:00:00+00:00",
+																	"format": "date-time"
 																},
 																"endTime": {
 																	"type": "string",
-																	"format": "date-time",
-																	"example": "2022-09-17T10:22:57.555000+00:00"
+																	"example": "2022-09-15T00:00:00+00:00",
+																	"format": "date-time"
 																}
 															}
 														}
@@ -101750,22 +101240,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -101795,13 +101270,13 @@
 																			},
 																			"startTime": {
 																				"type": "string",
-																				"format": "date-time",
-																				"example": "2022-09-17T10:22:57.555000+00:00"
+																				"example": "2022-09-15T00:00:00+00:00",
+																				"format": "date-time"
 																			},
 																			"endTime": {
 																				"type": "string",
-																				"format": "date-time",
-																				"example": "2022-09-17T10:22:57.555000+00:00"
+																				"example": "2022-09-15T00:00:00+00:00",
+																				"format": "date-time"
 																			}
 																		}
 																	}
@@ -101813,13 +101288,13 @@
 															"properties": {
 																"startTime": {
 																	"type": "string",
-																	"format": "date-time",
-																	"example": "2022-09-17T10:22:57.555000+00:00"
+																	"example": "2022-09-15T00:00:00+00:00",
+																	"format": "date-time"
 																},
 																"endTime": {
 																	"type": "string",
-																	"format": "date-time",
-																	"example": "2022-09-17T10:22:57.555000+00:00"
+																	"example": "2022-09-15T00:00:00+00:00",
+																	"format": "date-time"
 																}
 															}
 														}
@@ -101879,8 +101354,8 @@
 						"required": true,
 						"schema": {
 							"type": "string",
-							"example": "US",
-							"description": "Alpha-2 country code."
+							"description": "Alpha-2 country code.",
+							"example": "US"
 						}
 					}
 				],
@@ -101893,22 +101368,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -101984,22 +101444,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -102067,22 +101512,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -102167,7 +101597,7 @@
 						"required": true,
 						"schema": {
 							"type": "integer",
-							"description": "ASN."
+							"description": "Autonomous System Number (ASN)."
 						}
 					}
 				],
@@ -102180,22 +101610,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -102229,7 +101644,8 @@
 																		"example": "Cogent-174"
 																	},
 																	"aka": {
-																		"type": "string"
+																		"type": "string",
+																		"example": ""
 																	},
 																	"asn": {
 																		"type": "integer"
@@ -102350,22 +101766,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -102378,15 +101779,15 @@
 															"properties": {
 																"startTime": {
 																	"type": "string",
-																	"format": "date-time",
+																	"description": "Adjusted start of date range.",
 																	"example": "2022-09-16T10:22:57.555000+00:00",
-																	"description": "Adjusted start of date range."
+																	"format": "date-time"
 																},
 																"endTime": {
 																	"type": "string",
-																	"format": "date-time",
+																	"description": "Adjusted end of date range.",
 																	"example": "2022-09-17T10:22:57.555000+00:00",
-																	"description": "Adjusted end of date range."
+																	"format": "date-time"
 																}
 															}
 														},
@@ -102395,15 +101796,15 @@
 															"properties": {
 																"startTime": {
 																	"type": "string",
-																	"format": "date-time",
+																	"description": "Adjusted start of date range.",
 																	"example": "2022-09-16T10:22:57.555000+00:00",
-																	"description": "Adjusted start of date range."
+																	"format": "date-time"
 																},
 																"endTime": {
 																	"type": "string",
-																	"format": "date-time",
+																	"description": "Adjusted end of date range.",
 																	"example": "2022-09-17T10:22:57.555000+00:00",
-																	"description": "Adjusted end of date range."
+																	"format": "date-time"
 																}
 															}
 														},
@@ -102413,8 +101814,8 @@
 														},
 														"lastUpdated": {
 															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00"
+															"example": "2022-09-15T00:00:00+00:00",
+															"format": "date-time"
 														}
 													}
 												},
@@ -102425,8 +101826,8 @@
 															"type": "array",
 															"items": {
 																"type": "string",
-																"format": "date-time",
-																"example": "2022-09-17T10:22:57.555000+00:00"
+																"example": "2022-09-15T00:00:00+00:00",
+																"format": "date-time"
 															}
 														},
 														"values": {
@@ -102478,22 +101879,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -102526,13 +101912,13 @@
 																			},
 																			"startTime": {
 																				"type": "string",
-																				"format": "date-time",
-																				"example": "2022-09-17T10:22:57.555000+00:00"
+																				"example": "2022-09-15T00:00:00+00:00",
+																				"format": "date-time"
 																			},
 																			"endTime": {
 																				"type": "string",
-																				"format": "date-time",
-																				"example": "2022-09-17T10:22:57.555000+00:00"
+																				"example": "2022-09-15T00:00:00+00:00",
+																				"format": "date-time"
 																			}
 																		}
 																	}
@@ -102544,15 +101930,15 @@
 															"properties": {
 																"startTime": {
 																	"type": "string",
-																	"format": "date-time",
+																	"description": "Adjusted start of date range.",
 																	"example": "2022-09-16T10:22:57.555000+00:00",
-																	"description": "Adjusted start of date range."
+																	"format": "date-time"
 																},
 																"endTime": {
 																	"type": "string",
-																	"format": "date-time",
+																	"description": "Adjusted end of date range.",
 																	"example": "2022-09-17T10:22:57.555000+00:00",
-																	"description": "Adjusted end of date range."
+																	"format": "date-time"
 																}
 															}
 														},
@@ -102562,8 +101948,8 @@
 														},
 														"lastUpdated": {
 															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00"
+															"example": "2022-09-15T00:00:00+00:00",
+															"format": "date-time"
 														}
 													}
 												},
@@ -102647,22 +102033,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -102695,13 +102066,13 @@
 																			},
 																			"startTime": {
 																				"type": "string",
-																				"format": "date-time",
-																				"example": "2022-09-17T10:22:57.555000+00:00"
+																				"example": "2022-09-15T00:00:00+00:00",
+																				"format": "date-time"
 																			},
 																			"endTime": {
 																				"type": "string",
-																				"format": "date-time",
-																				"example": "2022-09-17T10:22:57.555000+00:00"
+																				"example": "2022-09-15T00:00:00+00:00",
+																				"format": "date-time"
 																			}
 																		}
 																	}
@@ -102713,15 +102084,15 @@
 															"properties": {
 																"startTime": {
 																	"type": "string",
-																	"format": "date-time",
+																	"description": "Adjusted start of date range.",
 																	"example": "2022-09-16T10:22:57.555000+00:00",
-																	"description": "Adjusted start of date range."
+																	"format": "date-time"
 																},
 																"endTime": {
 																	"type": "string",
-																	"format": "date-time",
+																	"description": "Adjusted end of date range.",
 																	"example": "2022-09-17T10:22:57.555000+00:00",
-																	"description": "Adjusted end of date range."
+																	"format": "date-time"
 																}
 															}
 														}
@@ -102789,22 +102160,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -102837,13 +102193,13 @@
 																			},
 																			"startTime": {
 																				"type": "string",
-																				"format": "date-time",
-																				"example": "2022-09-17T10:22:57.555000+00:00"
+																				"example": "2022-09-15T00:00:00+00:00",
+																				"format": "date-time"
 																			},
 																			"endTime": {
 																				"type": "string",
-																				"format": "date-time",
-																				"example": "2022-09-17T10:22:57.555000+00:00"
+																				"example": "2022-09-15T00:00:00+00:00",
+																				"format": "date-time"
 																			}
 																		}
 																	}
@@ -102855,15 +102211,15 @@
 															"properties": {
 																"startTime": {
 																	"type": "string",
-																	"format": "date-time",
+																	"description": "Adjusted start of date range.",
 																	"example": "2022-09-16T10:22:57.555000+00:00",
-																	"description": "Adjusted start of date range."
+																	"format": "date-time"
 																},
 																"endTime": {
 																	"type": "string",
-																	"format": "date-time",
+																	"description": "Adjusted end of date range.",
 																	"example": "2022-09-17T10:22:57.555000+00:00",
-																	"description": "Adjusted end of date range."
+																	"format": "date-time"
 																}
 															}
 														},
@@ -102873,8 +102229,8 @@
 														},
 														"lastUpdated": {
 															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00"
+															"example": "2022-09-15T00:00:00+00:00",
+															"format": "date-time"
 														}
 													}
 												},
@@ -102885,8 +102241,8 @@
 															"type": "array",
 															"items": {
 																"type": "string",
-																"format": "date-time",
-																"example": "2022-09-17T10:22:57.555000+00:00"
+																"example": "2022-09-15T00:00:00+00:00",
+																"format": "date-time"
 															}
 														},
 														"values": {
@@ -102938,22 +102294,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -102986,13 +102327,13 @@
 																			},
 																			"startTime": {
 																				"type": "string",
-																				"format": "date-time",
-																				"example": "2022-09-17T10:22:57.555000+00:00"
+																				"example": "2022-09-15T00:00:00+00:00",
+																				"format": "date-time"
 																			},
 																			"endTime": {
 																				"type": "string",
-																				"format": "date-time",
-																				"example": "2022-09-17T10:22:57.555000+00:00"
+																				"example": "2022-09-15T00:00:00+00:00",
+																				"format": "date-time"
 																			}
 																		}
 																	}
@@ -103004,15 +102345,15 @@
 															"properties": {
 																"startTime": {
 																	"type": "string",
-																	"format": "date-time",
+																	"description": "Adjusted start of date range.",
 																	"example": "2022-09-16T10:22:57.555000+00:00",
-																	"description": "Adjusted start of date range."
+																	"format": "date-time"
 																},
 																"endTime": {
 																	"type": "string",
-																	"format": "date-time",
+																	"description": "Adjusted end of date range.",
 																	"example": "2022-09-17T10:22:57.555000+00:00",
-																	"description": "Adjusted end of date range."
+																	"format": "date-time"
 																}
 															}
 														},
@@ -103022,8 +102363,8 @@
 														},
 														"lastUpdated": {
 															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00"
+															"example": "2022-09-15T00:00:00+00:00",
+															"format": "date-time"
 														}
 													}
 												},
@@ -103034,8 +102375,8 @@
 															"type": "array",
 															"items": {
 																"type": "string",
-																"format": "date-time",
-																"example": "2022-09-17T10:22:57.555000+00:00"
+																"example": "2022-09-15T00:00:00+00:00",
+																"format": "date-time"
 															}
 														},
 														"udp": {
@@ -103109,22 +102450,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -103157,13 +102483,13 @@
 																			},
 																			"startTime": {
 																				"type": "string",
-																				"format": "date-time",
-																				"example": "2022-09-17T10:22:57.555000+00:00"
+																				"example": "2022-09-15T00:00:00+00:00",
+																				"format": "date-time"
 																			},
 																			"endTime": {
 																				"type": "string",
-																				"format": "date-time",
-																				"example": "2022-09-17T10:22:57.555000+00:00"
+																				"example": "2022-09-15T00:00:00+00:00",
+																				"format": "date-time"
 																			}
 																		}
 																	}
@@ -103175,15 +102501,15 @@
 															"properties": {
 																"startTime": {
 																	"type": "string",
-																	"format": "date-time",
+																	"description": "Adjusted start of date range.",
 																	"example": "2022-09-16T10:22:57.555000+00:00",
-																	"description": "Adjusted start of date range."
+																	"format": "date-time"
 																},
 																"endTime": {
 																	"type": "string",
-																	"format": "date-time",
+																	"description": "Adjusted end of date range.",
 																	"example": "2022-09-17T10:22:57.555000+00:00",
-																	"description": "Adjusted end of date range."
+																	"format": "date-time"
 																}
 															}
 														}
@@ -103251,22 +102577,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -103336,22 +102647,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -103488,22 +102784,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -103581,22 +102862,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -103629,13 +102895,13 @@
 																			},
 																			"startTime": {
 																				"type": "string",
-																				"format": "date-time",
-																				"example": "2022-09-17T10:22:57.555000+00:00"
+																				"example": "2022-09-15T00:00:00+00:00",
+																				"format": "date-time"
 																			},
 																			"endTime": {
 																				"type": "string",
-																				"format": "date-time",
-																				"example": "2022-09-17T10:22:57.555000+00:00"
+																				"example": "2022-09-15T00:00:00+00:00",
+																				"format": "date-time"
 																			}
 																		}
 																	}
@@ -103647,15 +102913,15 @@
 															"properties": {
 																"startTime": {
 																	"type": "string",
-																	"format": "date-time",
+																	"description": "Adjusted start of date range.",
 																	"example": "2022-09-16T10:22:57.555000+00:00",
-																	"description": "Adjusted start of date range."
+																	"format": "date-time"
 																},
 																"endTime": {
 																	"type": "string",
-																	"format": "date-time",
+																	"description": "Adjusted end of date range.",
 																	"example": "2022-09-17T10:22:57.555000+00:00",
-																	"description": "Adjusted end of date range."
+																	"format": "date-time"
 																}
 															}
 														},
@@ -103665,8 +102931,8 @@
 														},
 														"lastUpdated": {
 															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00"
+															"example": "2022-09-15T00:00:00+00:00",
+															"format": "date-time"
 														}
 													}
 												},
@@ -103677,8 +102943,8 @@
 															"type": "array",
 															"items": {
 																"type": "string",
-																"format": "date-time",
-																"example": "2022-09-17T10:22:57.555000+00:00"
+																"example": "2022-09-15T00:00:00+00:00",
+																"format": "date-time"
 															}
 														},
 														"values": {
@@ -103730,22 +102996,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -103758,15 +103009,15 @@
 															"properties": {
 																"startTime": {
 																	"type": "string",
-																	"format": "date-time",
+																	"description": "Adjusted start of date range.",
 																	"example": "2022-09-16T10:22:57.555000+00:00",
-																	"description": "Adjusted start of date range."
+																	"format": "date-time"
 																},
 																"endTime": {
 																	"type": "string",
-																	"format": "date-time",
+																	"description": "Adjusted end of date range.",
 																	"example": "2022-09-17T10:22:57.555000+00:00",
-																	"description": "Adjusted end of date range."
+																	"format": "date-time"
 																}
 															}
 														}
@@ -103829,22 +103080,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -103857,15 +103093,15 @@
 															"properties": {
 																"startTime": {
 																	"type": "string",
-																	"format": "date-time",
+																	"description": "Adjusted start of date range.",
 																	"example": "2022-09-16T10:22:57.555000+00:00",
-																	"description": "Adjusted start of date range."
+																	"format": "date-time"
 																},
 																"endTime": {
 																	"type": "string",
-																	"format": "date-time",
+																	"description": "Adjusted end of date range.",
 																	"example": "2022-09-17T10:22:57.555000+00:00",
-																	"description": "Adjusted end of date range."
+																	"format": "date-time"
 																}
 															}
 														}
@@ -103886,8 +103122,8 @@
 															},
 															"value": {
 																"type": "string",
-																"example": "0.73996",
-																"description": "Percentage of updates by this AS out of the total updates by all autonomous systems."
+																"description": "Percentage of updates by this AS out of the total updates by all autonomous systems.",
+																"example": "0.73996"
 															}
 														}
 													}
@@ -103933,22 +103169,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "array",
@@ -104009,22 +103230,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -104057,13 +103263,13 @@
 																			},
 																			"startTime": {
 																				"type": "string",
-																				"format": "date-time",
-																				"example": "2022-09-17T10:22:57.555000+00:00"
+																				"example": "2022-09-15T00:00:00+00:00",
+																				"format": "date-time"
 																			},
 																			"endTime": {
 																				"type": "string",
-																				"format": "date-time",
-																				"example": "2022-09-17T10:22:57.555000+00:00"
+																				"example": "2022-09-15T00:00:00+00:00",
+																				"format": "date-time"
 																			}
 																		}
 																	}
@@ -104075,15 +103281,15 @@
 															"properties": {
 																"startTime": {
 																	"type": "string",
-																	"format": "date-time",
+																	"description": "Adjusted start of date range.",
 																	"example": "2022-09-16T10:22:57.555000+00:00",
-																	"description": "Adjusted start of date range."
+																	"format": "date-time"
 																},
 																"endTime": {
 																	"type": "string",
-																	"format": "date-time",
+																	"description": "Adjusted end of date range.",
 																	"example": "2022-09-17T10:22:57.555000+00:00",
-																	"description": "Adjusted end of date range."
+																	"format": "date-time"
 																}
 															}
 														},
@@ -104093,8 +103299,8 @@
 														},
 														"lastUpdated": {
 															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00"
+															"example": "2022-09-15T00:00:00+00:00",
+															"format": "date-time"
 														}
 													}
 												},
@@ -104105,8 +103311,8 @@
 															"type": "array",
 															"items": {
 																"type": "string",
-																"format": "date-time",
-																"example": "2022-09-17T10:22:57.555000+00:00"
+																"example": "2022-09-15T00:00:00+00:00",
+																"format": "date-time"
 															}
 														},
 														"values": {
@@ -104158,22 +103364,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -104203,13 +103394,13 @@
 																			},
 																			"startTime": {
 																				"type": "string",
-																				"format": "date-time",
-																				"example": "2022-09-17T10:22:57.555000+00:00"
+																				"example": "2022-09-15T00:00:00+00:00",
+																				"format": "date-time"
 																			},
 																			"endTime": {
 																				"type": "string",
-																				"format": "date-time",
-																				"example": "2022-09-17T10:22:57.555000+00:00"
+																				"example": "2022-09-15T00:00:00+00:00",
+																				"format": "date-time"
 																			}
 																		}
 																	}
@@ -104221,13 +103412,13 @@
 															"properties": {
 																"startTime": {
 																	"type": "string",
-																	"format": "date-time",
-																	"example": "2022-09-17T10:22:57.555000+00:00"
+																	"example": "2022-09-15T00:00:00+00:00",
+																	"format": "date-time"
 																},
 																"endTime": {
 																	"type": "string",
-																	"format": "date-time",
-																	"example": "2022-09-17T10:22:57.555000+00:00"
+																	"example": "2022-09-15T00:00:00+00:00",
+																	"format": "date-time"
 																}
 															}
 														}
@@ -104294,22 +103485,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -104339,13 +103515,13 @@
 																			},
 																			"startTime": {
 																				"type": "string",
-																				"format": "date-time",
-																				"example": "2022-09-17T10:22:57.555000+00:00"
+																				"example": "2022-09-15T00:00:00+00:00",
+																				"format": "date-time"
 																			},
 																			"endTime": {
 																				"type": "string",
-																				"format": "date-time",
-																				"example": "2022-09-17T10:22:57.555000+00:00"
+																				"example": "2022-09-15T00:00:00+00:00",
+																				"format": "date-time"
 																			}
 																		}
 																	}
@@ -104357,13 +103533,13 @@
 															"properties": {
 																"startTime": {
 																	"type": "string",
-																	"format": "date-time",
-																	"example": "2022-09-17T10:22:57.555000+00:00"
+																	"example": "2022-09-15T00:00:00+00:00",
+																	"format": "date-time"
 																},
 																"endTime": {
 																	"type": "string",
-																	"format": "date-time",
-																	"example": "2022-09-17T10:22:57.555000+00:00"
+																	"example": "2022-09-15T00:00:00+00:00",
+																	"format": "date-time"
 																}
 															}
 														}
@@ -104430,22 +103606,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -104458,15 +103619,15 @@
 															"properties": {
 																"startTime": {
 																	"type": "string",
-																	"format": "date-time",
+																	"description": "Adjusted start of date range.",
 																	"example": "2022-09-16T10:22:57.555000+00:00",
-																	"description": "Adjusted start of date range."
+																	"format": "date-time"
 																},
 																"endTime": {
 																	"type": "string",
-																	"format": "date-time",
+																	"description": "Adjusted end of date range.",
 																	"example": "2022-09-17T10:22:57.555000+00:00",
-																	"description": "Adjusted end of date range."
+																	"format": "date-time"
 																}
 															}
 														}
@@ -104531,22 +103692,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -104621,22 +103767,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -104702,22 +103833,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -104811,6 +103927,151 @@
 				}
 			}
 		},
+		"/radar/reports/datasets": {
+			"get": {
+				"summary": "Get Datasets",
+				"description": "Get a list of datasets.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Get Datasets response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"success": {
+											"type": "string"
+										},
+										"result": {
+											"type": "object",
+											"properties": {
+												"datasets": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"id": {
+																"type": "integer"
+															},
+															"title": {
+																"type": "string",
+																"example": "Top bucket 20000 domains"
+															},
+															"description": {
+																"type": "string",
+																"example": "This dataset contains a list of the op 20000 domains globally"
+															},
+															"type": {
+																"type": "string",
+																"example": "RANKING_BUCKET"
+															},
+															"tags": {
+																"type": "array",
+																"items": {
+																	"type": "string",
+																	"example": "global"
+																}
+															},
+															"meta": {
+																"type": "object",
+																"properties": {}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/reports/datasets/download": {
+			"post": {
+				"summary": "Get Dataset download url",
+				"description": "Get a list of datasets.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Get Dataset download url response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"dataset": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"url": {
+														"type": "string",
+														"example": "https://example.com/download"
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				},
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"datasetId": {
+										"type": "integer"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
 		"/radar/datasets": {
 			"get": {
 				"summary": "Get Datasets",
@@ -104825,22 +104086,7 @@
 									"type": "object",
 									"properties": {
 										"success": {
-											"type": "boolean",
-											"example": true
-										},
-										"errors": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"code": {
-														"type": "string"
-													},
-													"message": {
-														"type": "string"
-													}
-												}
-											}
+											"type": "string"
 										},
 										"result": {
 											"type": "object",
@@ -104961,19 +104207,276 @@
 							"schema": {
 								"type": "object",
 								"properties": {
-									"format": {
-										"type": "string",
-										"default": "json",
-										"enum": [
-											"json",
-											"csv"
-										],
-										"description": "Format results are returned in."
+									"datasetId": {
+										"type": "integer"
 									}
 								}
 							}
 						}
 					}
+				}
+			}
+		},
+		"/radar/specialevents": {
+			"get": {
+				"summary": "List Special Events",
+				"description": "Get a list of Special Events.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "List Special Events response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"success": {
+											"type": "string"
+										},
+										"result": {
+											"type": "object",
+											"properties": {
+												"specialEvents": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"id": {
+																"type": "integer"
+															},
+															"title": {
+																"type": "string",
+																"example": "Euro2020"
+															},
+															"description": {
+																"type": "string",
+																"example": "The 2020 UEFA European Football Championship"
+															},
+															"alias": {
+																"type": "string",
+																"example": "euro2020"
+															},
+															"categories": {
+																"type": "array",
+																"items": {
+																	"type": "object",
+																	"properties": {
+																		"categoryAlias": {
+																			"type": "string",
+																			"example": "streaming"
+																		},
+																		"location": {
+																			"type": "string",
+																			"example": "GLOBAL"
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/specialevents/{itemId}": {
+			"get": {
+				"summary": "Get a Single Special Events",
+				"description": "Get a single Special Event.",
+				"parameters": [
+					{
+						"name": "itemId",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "integer",
+							"description": "Special Event id"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Get a Single Special Events response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"success": {
+											"type": "string"
+										},
+										"result": {
+											"type": "object",
+											"properties": {
+												"specialEvent": {
+													"type": "object",
+													"properties": {
+														"id": {
+															"type": "integer"
+														},
+														"title": {
+															"type": "string",
+															"example": "Euro2020"
+														},
+														"description": {
+															"type": "string",
+															"example": "The 2020 UEFA European Football Championship"
+														},
+														"alias": {
+															"type": "string",
+															"example": "euro2020"
+														},
+														"categories": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"categoryAlias": {
+																		"type": "string",
+																		"example": "streaming"
+																	},
+																	"location": {
+																		"type": "string",
+																		"example": "GLOBAL"
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/specialevents/{eventAlias}/{categoryAlias}": {
+			"get": {
+				"summary": "Get Special Events time series",
+				"description": "",
+				"parameters": [
+					{
+						"name": "categoryAlias",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string",
+							"description": "Special Event Category alias",
+							"example": "videos"
+						}
+					},
+					{
+						"name": "eventAlias",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string",
+							"description": "Special Event alias",
+							"example": "eurovision-2022"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Get Special Events time series response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"success": {
+											"type": "string"
+										},
+										"result": {
+											"type": "object",
+											"properties": {
+												"serie_0": {
+													"type": "object",
+													"properties": {
+														"timestamps": {
+															"type": "array",
+															"items": {
+																"type": "string",
+																"example": "2022-09-15T00:00:00+00:00",
+																"format": "date-time"
+															}
+														},
+														"values": {
+															"type": "array",
+															"items": {
+																"type": "string"
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
 				}
 			}
 		}
