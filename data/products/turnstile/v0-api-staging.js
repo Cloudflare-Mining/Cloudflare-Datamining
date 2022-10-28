@@ -31,7 +31,7 @@
 		Z = "cf_challenge_response",
 		Q = "cf-turnstile-response",
 		ee = "g-recaptcha-response",
-		C = !1;
+		k = !1;
 
 	function c(e) {
 		console.error(`[Cloudflare Turnstile] ${e}.`)
@@ -48,21 +48,21 @@
 	function L(e) {
 		B(e, "")
 	}
-	var x = "cf-chl-widget-";
+	var C = "cf-chl-widget-";
 
 	function z(e) {
-		return e.startsWith(x) ? e.substring(x.length) : null
+		return e.startsWith(C) ? e.substring(C.length) : null
 	}
 
-	function _(e) {
-		return `${x}${e}`
+	function x(e) {
+		return `${C}${e}`
 	}
 
 	function B(e, s) {
 		let i = document.getElementById(`${e}_response`);
 		i !== null && (i.value = s);
 		let u = document.getElementById(`${e}_legacy_response`);
-		if (u !== null && (u.value = s), C) {
+		if (u !== null && (u.value = s), k) {
 			let t = document.getElementById(`${e}_g_response`);
 			t !== null && (t.value = s)
 		}
@@ -92,7 +92,7 @@
 					return
 				}
 				if (!n.widgetId || !e.has(n.widgetId)) return;
-				let o = _(n.widgetId),
+				let o = x(n.widgetId),
 					l = e.get(n.widgetId);
 				switch (n.event) {
 					case "init": {
@@ -179,7 +179,7 @@
 
 		function u(t) {
 			if (typeof t == "string") {
-				if (t.startsWith(x) && (t = z(t)), e.has(t)) return t;
+				if (t.startsWith(C) && (t = z(t)), e.has(t)) return t;
 				try {
 					let n = document.querySelector(t);
 					return n ? u(n) : null
@@ -257,9 +257,9 @@
 				}
 				d = d === void 0 ? null : d;
 				let j = "https://challenges.cloudflare.com",
-					k = i(),
-					I = _(k);
-				if (e.set(k, {
+					_ = i(),
+					I = x(_);
+				if (e.set(_, {
 						action: r,
 						cData: d,
 						cbSuccess: A,
@@ -267,14 +267,14 @@
 						cbExpired: v,
 						cbTimeout: V,
 						params: a
-					}), m.style.display = "none", m.style.border = "none", m.style.overflow = "hidden", m.setAttribute("src", `${j}/cdn-cgi/challenge-platform/turnstile/if/ov2/av0/${k}/${g}/${f}/${h}`), m.id = I, m.tabIndex = (P = a.tabindex) != null ? P : 0, m.title = "Widget containing a Cloudflare security challenge", o.appendChild(m), (N = a["response-field"]) != null ? N : !0) {
+					}), m.style.display = "none", m.style.border = "none", m.style.overflow = "hidden", m.setAttribute("src", `${j}/cdn-cgi/challenge-platform/turnstile/if/ov2/av0/${_}/${g}/${f}/${h}`), m.id = I, m.tabIndex = (P = a.tabindex) != null ? P : 0, m.title = "Widget containing a Cloudflare security challenge", o.appendChild(m), (N = a["response-field"]) != null ? N : !0) {
 					let p = document.createElement("input");
 					if (p.type = "hidden", p.name = (W = a["response-field-name"]) != null ? W : Q, p.id = `${I}_response`, o.appendChild(p), typeof a["response-field-name"] != "string" && re(g)) {
 						let T = document.createElement("input");
 						T.type = "hidden", T.name = Z, T.id = `${I}_legacy_response`, o.appendChild(T)
 					}
 				}
-				if (C) {
+				if (k) {
 					let p = document.createElement("input");
 					p.type = "hidden", p.name = ee, p.id = `${I}_g_response`, o.appendChild(p)
 				}
@@ -286,7 +286,7 @@
 					c(`Nothing to reset found for ${t}`);
 					return
 				}
-				let o = _(n),
+				let o = x(n),
 					l = document.querySelector(`#${o}`);
 				l.src += "", L(o)
 			},
@@ -296,7 +296,7 @@
 					E(`Nothing to remove found for ${t}`);
 					return
 				}
-				let o = _(n),
+				let o = x(n),
 					l = [`iframe#${o}`, `input#${o}_response`, `input#${o}_legacy_response`, `input#${o}_g_response`],
 					a = document.querySelectorAll(l.join(", "));
 				for (let r = 0; r < a.length; ++r) a[r].remove();
@@ -352,7 +352,7 @@
 
 	function F() {
 		let e = [Y, J];
-		C && e.push(K);
+		k && e.push(K);
 		let s = document.querySelectorAll(e.join(", "));
 		for (let i = 0; i < s.length; i++) y.render(s[i])
 	}
@@ -377,7 +377,7 @@
 	var w = se();
 	if (w) {
 		let e = w.get("compat");
-		(e == null ? void 0 : e.toLowerCase()) === "recaptcha" ? window.grecaptcha ? E("grecaptcha is already defined. The compatibility layer will not be enabled") : (E("Compatibility layer enabled"), C = !0, window.grecaptcha = y): e !== null && E(`Unknown value for api.js?compat: "${e}", ignoring`), w.forEach(function(i, u) {
+		(e == null ? void 0 : e.toLowerCase()) === "recaptcha" ? window.grecaptcha ? E("grecaptcha is already defined. The compatibility layer will not be enabled") : (E("Compatibility layer enabled"), k = !0, window.grecaptcha = y): e !== null && E(`Unknown value for api.js?compat: "${e}", ignoring`), w.forEach(function(i, u) {
 			b(["onload", "compat", "render"], u) || E(`Unknown parameter passed to api.js: "?${u}=...", ignoring`)
 		});
 		let s = w.get("onload");
