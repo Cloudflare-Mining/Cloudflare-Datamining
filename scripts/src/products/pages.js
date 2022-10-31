@@ -33,36 +33,31 @@ const reqs = [
 	},
 	{
 		name: 'projects-get',
-		url: `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/pages/projects/{project_name}`,
+		url: `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/pages/projects/blank-index`,
 		method: 'GET',
 	},
 	{
 		name: 'deployments-create',
-		url: `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/pages/projects/{project_name}/deployments`,
+		url: `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/pages/projects/blank-index/deployments`,
 		method: 'POST',
 	},
 	{
 		name: 'deployments-get',
-		url: `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/pages/projects/{project_name}/deployments/{deployment_id}`,
+		url: `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/pages/projects/blank-index/deployments/{deployment_id}`,
 		method: 'GET',
 	},
 	{
 		name: 'deployments-list',
-		url: `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/pages/projects/{project_name}/deployments`,
+		url: `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/pages/projects/blank-index/deployments`,
 		method: 'GET',
 		write: false,
 	},
 ];
 const results = {};
-let projectName = null;
 console.log('Making requests...');
 for(const req of reqs){
 	const file = path.resolve(dir, `${req.name}.json`);
 	let url = req.url;
-	if(url.includes('{project_name}') && results['projects-list']?.result?.[0]?.name){
-		url = url.replace('{project_name}', results['projects-list'].result[0].name);
-		projectName = results['projects-list'].result[0].name;
-	}
 	if(url.includes('{deployment_id}') && results['deployments-create']?.result?.id){
 		url = url.replace('{deployment_id}', results['deployments-create'].result.id);
 	}
@@ -103,7 +98,7 @@ while(waiting){
 		throw new Error('Max attempts reached, exiting.');
 	}
 	attempts++;
-	const deploymentRes = await cfRequest(`https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/pages/projects/${projectName}/deployments/${results['deployments-create'].result.id}`);
+	const deploymentRes = await cfRequest(`https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/pages/projects/blank-index/deployments/${results['deployments-create'].result.id}`);
 	if(!deploymentRes.ok){
 		console.log(`deployment-get failed: ${deploymentRes.status} ${deploymentRes.statusText}`);
 		continue;
@@ -125,7 +120,7 @@ const truncateEnvVars = new Set([
 	'CF_PAGES_URL',
 ]);
 const deployiD = results['deployments-create']?.result?.id;
-const logsReq = await cfRequest(`https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/pages/projects/${projectName}/deployments/${deployiD}/history/logs`);
+const logsReq = await cfRequest(`https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/pages/projects/blank-index/deployments/${deployiD}/history/logs`);
 const logsRes = await logsReq.json();
 const logs = logsRes.result.data ?? [];
 
@@ -248,7 +243,7 @@ for(const deployment of results['deployments-list'].result){
 	if(deployment.id === results['deployments-create']?.result?.id){
 		continue;
 	}
-	const res = await cfRequest(`https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/pages/projects/${projectName}/deployments/${deployment.id}`, {
+	const res = await cfRequest(`https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/pages/projects/blank-index/deployments/${deployment.id}`, {
 		method: 'DELETE',
 	});
 	if(!res.ok){
