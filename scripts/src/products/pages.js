@@ -27,7 +27,7 @@ const reqs = [
 		method: 'GET',
 		required: true,
 		transform: (json) => {
-			json.result = json.result.slice(0, 1);
+			json.result = json.result.filter(project => project.name === 'blank-index');
 			return propertiesToArray(json).sort();
 		},
 	},
