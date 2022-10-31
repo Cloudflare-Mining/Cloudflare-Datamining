@@ -25,7 +25,11 @@ const reqs = [
 		name: 'projects-list',
 		url: `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/pages/projects`,
 		method: 'GET',
-		reequired: true,
+		required: true,
+		transform: (json) => {
+			json.result = json.result.slice(0, 1);
+			return propertiesToArray(json).sort();
+		},
 	},
 	{
 		name: 'projects-get',
