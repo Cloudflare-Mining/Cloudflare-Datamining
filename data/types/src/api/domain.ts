@@ -84,14 +84,14 @@ export const DomainFees = eg.object({
 export type DomainFees = TypeFromCodec<typeof DomainFees>;
 
 export enum DomainProtectionStatus {
-  ONBOARDING_INITIATED = 'Onboarding initiated',
+  ONBOARDING_INITIATED = 'Onboarding Initiated',
   ONBOARDED = 'Onboarded',
-  PENDING_REGISTRY_LOCK = 'Pending registry lock',
-  PENDING_REGISTRY_UNLOCK = 'Pending registry unlock',
-  REGISTRY_UNLOCKED = 'Registry unlocked',
+  PENDING_REGISTRY_LOCK = 'Pending Registry Lock',
+  PENDING_REGISTRY_UNLOCK = 'Pending Registry Unlock',
+  REGISTRY_UNLOCKED = 'Registry Unlocked',
   LOCKED = 'Locked',
-  FAILED_TO_LOCK = 'Failed to lock',
-  PENDING_UNLOCK_APPROVAL = 'Pending unlock approval',
+  FAILED_TO_LOCK = 'Failed To Lock',
+  PENDING_UNLOCK_APPROVAL = 'Pending Unlock Approval',
   UNLOCKED = 'Unlocked',
   OFFBOARDED = 'Offboarded'
 }
@@ -207,10 +207,10 @@ export enum ApproverStatus {
 
 export const DesignatedApprover = eg.object({
   email: eg.string,
-  first_name: eg.string.optional,
-  last_name: eg.string.optional,
-  phone_number: eg.string.optional,
-  status: eg.enum(ApproverStatus).optional
+  first_name: eg.union([eg.null, eg.string]).optional,
+  last_name: eg.union([eg.null, eg.string]).optional,
+  phone_number: eg.union([eg.null, eg.string]).optional,
+  status: eg.union([eg.null, eg.enum(ApproverStatus)]).optional
 });
 
 export type Approver = TypeFromCodec<typeof DesignatedApprover>;
