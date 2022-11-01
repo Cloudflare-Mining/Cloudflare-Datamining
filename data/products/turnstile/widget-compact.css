@@ -4,18 +4,18 @@ body {
 	height: 100%;
 	margin: 0;
 	padding: 0;
-	overflow: hidden;
+	overflow: hidden
 }
 
 body {
-	background-color: #ffffff;
-	color: #1D1F20;
-	font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, "Helvetica Neue", Arial, sans-serif;
+	background-color: #fff;
+	color: #1d1f20;
+	font-family: -apple-system, system-ui, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Helvetica Neue, Arial, sans-serif;
 	font-style: normal;
 	font-weight: 400;
 	font-size: 14px;
 	line-height: 17px;
-	-webkit-font-smoothing: antialiased;
+	-webkit-font-smoothing: antialiased
 }
 
 h1 {
@@ -23,42 +23,42 @@ h1 {
 	font-weight: 700;
 	margin: 16px 0;
 	font-size: 16px;
-	color: #1D1F20;
-	line-height: 1.25;
+	color: #1d1f20;
+	line-height: 1.25
 }
 
 p {
 	text-align: center;
 	font-size: 20px;
 	font-weight: 400;
-	margin: 8px 0;
+	margin: 8px 0
 }
 
 #content {
-	background-color: #FAFAFA;
-	border: 1px solid #E0E0E0;
+	background-color: #fafafa;
+	border: 1px solid #e0e0e0;
 	height: 60px;
-	user-select: none;
+	user-select: none
 }
 
 table,
 td,
 tr {
 	margin: 0;
-	padding: 0;
+	padding: 0
 }
 
 #branding {
 	text-align: center;
 	width: 60px;
-	padding-right: 13px;
+	padding-right: 13px
 }
 
 #cf-stage {
 	width: 180px;
 	height: 58px;
 	text-align: left;
-	padding-left: 52px;
+	padding-left: 52px
 }
 
 #spinner-icon {
@@ -70,28 +70,25 @@ tr {
 	width: 30px;
 	padding: 0;
 	height: 30px;
-	animation: rotate 5s linear infinite;
+	animation: rotate 5s linear infinite
 }
 
 #fail-icon {
-	display: block;
 	position: absolute;
 	left: 15px;
 	top: 20px;
-
 	width: 30px;
 	height: 30px;
 	border-radius: 50%;
 	display: block;
 	stroke-width: 6px;
-	stroke: #F8F8F8;
+	stroke: #f8f8f8;
 	stroke-miterlimit: 10;
-	box-shadow: inset 0 0 0 #DE5052;
-	animation: fillfail .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+	box-shadow: inset 0 0 #de5052;
+	animation: fillfail .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both
 }
 
 #success-icon {
-	display: block;
 	position: absolute;
 	left: 15px;
 	top: 20px;
@@ -100,30 +97,30 @@ tr {
 	border-radius: 50%;
 	display: block;
 	stroke-width: 6px;
-	stroke: #F8F8F8;
+	stroke: #f8f8f8;
 	stroke-miterlimit: 10;
-	box-shadow: inset 0 0 0 #049F30;
-	animation: scale-up-center 0.6s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+	box-shadow: inset 0 0 #049f30;
+	animation: scale-up-center .6s cubic-bezier(.55, .085, .68, .53) both
 }
 
 #success-icon .p1 {
 	stroke-dasharray: 242;
 	stroke-dashoffset: 242;
-	box-shadow: inset 0 0 0 #049F30;
-	animation: stroke 0.4s cubic-bezier(0.65, 0, 0.45, 1) forwards;
-	animation-delay: 0.5s;
+	box-shadow: inset 0 0 #049f30;
+	animation: stroke .4s cubic-bezier(.65, 0, .45, 1) forwards;
+	animation-delay: .5s
 }
 
 .success_circle {
 	stroke-dashoffset: 0;
 	stroke-width: 2;
 	stroke-miterlimit: 10;
-	stroke: #049F30;
+	stroke: #049f30
 }
 
 #logo {
 	height: 26px;
-	margin-bottom: 1px;
+	margin-bottom: 1px
 }
 
 .failure_circle {
@@ -131,31 +128,31 @@ tr {
 	stroke-dashoffset: 166;
 	stroke-width: 2;
 	stroke-miterlimit: 10;
-	stroke: #DE5052;
+	stroke: #de5052;
 	fill: none;
-	animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+	animation: stroke .6s cubic-bezier(.65, 0, .45, 1) forwards
 }
 
 .failure_cross {
 	transform-origin: 50% 50%;
 	stroke-dasharray: 48;
 	stroke-dashoffset: 48;
-	animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+	animation: stroke .3s cubic-bezier(.65, 0, .45, 1) .8s forwards
 }
 
 .ctp-checkbox-container {
 	box-sizing: border-box;
-	text-align: center;
+	text-align: center
 }
 
 .ctp-checkbox-label {
-	cursor: pointer;
+	cursor: pointer
 }
 
 .ctp-checkbox-label input {
 	position: absolute;
 	opacity: 0;
-	cursor: pointer;
+	cursor: pointer
 }
 
 .ctp-checkbox-label .mark {
@@ -164,28 +161,28 @@ tr {
 	position: absolute;
 	height: 24px;
 	width: 24px;
-	transition: all 0.1s ease-in;
-	background: #FFF;
-	border: 2px solid #E0E0E0;
+	transition: all .1s ease-in;
+	background: #fff;
+	border: 2px solid #e0e0e0;
 	border-radius: 3px;
-	animation: scale-up-center 0.4s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+	animation: scale-up-center .4s cubic-bezier(.55, .085, .68, .53) both
 }
 
 .ctp-checkbox-label input:checked~.mark {
-	background-color: white;
+	background-color: #fff;
 	border-radius: 5px;
-	transform: rotate(0deg) scale(1);
+	transform: rotate(0) scale(1);
 	opacity: 1;
-	border: 2px solid white;
+	border: 2px solid white
 }
 
-.ctp-checkbox-label .mark::after {
+.ctp-checkbox-label .mark:after {
 	position: absolute;
 	content: "";
-	border-radius: 5px;
+	border-radius: 5px
 }
 
-.ctp-checkbox-label input:checked~.mark::after {
+.ctp-checkbox-label input:checked~.mark:after {
 	transform: rotate(45deg) scale(1);
 	left: 8px;
 	top: 3px;
@@ -193,18 +190,18 @@ tr {
 	height: 12px;
 	border: solid orange;
 	border-width: 0 4px 4px 0;
-	border-radius: 0;
+	border-radius: 0
 }
 
 #terms {
-	word-spacing: 0.2em;
+	word-spacing: .2em;
 	padding-right: 2px;
 	text-align: right;
 	font-style: normal;
 	font-weight: 400;
 	font-size: 8px;
 	line-height: 10px;
-	color: #1D1F20;
+	color: #1d1f20
 }
 
 #terms a,
@@ -215,71 +212,71 @@ tr {
 	font-weight: 400;
 	font-size: 8px;
 	line-height: 10px;
-	color: #1D1F20;
+	color: #1d1f20
 }
 
 #terms a:hover,
 #terms a:active {
-	text-decoration: underline;
+	text-decoration: underline
 }
 
 .unspun .circle {
-	animation: unspin 0.7s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+	animation: unspin .7s cubic-bezier(.65, 0, .45, 1) forwards
 }
 
 .circle {
 	stroke-width: 3px;
 	stroke-linecap: round;
-	stroke: #049F30;
+	stroke: #049f30;
 	stroke-dasharray: 0, 100, 0;
 	stroke-dashoffset: 200;
 	stroke-miterlimit: 1;
-	stroke-linejoin: round;
+	stroke-linejoin: round
 }
 
 @keyframes rotate {
-	100% {
-		transform: rotate(360deg);
+	to {
+		transform: rotate(360deg)
 	}
 }
 
 @keyframes stroke {
-	100% {
-		stroke-dashoffset: 0;
+	to {
+		stroke-dashoffset: 0
 	}
 }
 
 @keyframes scale {
 
 	0%,
-	100% {
-		transform: none;
+	to {
+		transform: none
 	}
 
 	50% {
-		transform: scale3d(1.1, 1.1, 1);
+		transform: scale3d(1.1, 1.1, 1)
 	}
 }
 
 @keyframes fill {
-	100% {
-		transform: scale(1.0);
+	to {
+		transform: scale(1)
 	}
 }
 
 @keyframes fillfail {
-	100% {
-		box-shadow: inset 0 0 0 30px #DE5052;
+	to {
+		box-shadow: inset 0 0 0 30px #de5052
 	}
 }
 
 @keyframes scale-up-center {
 	0% {
-		transform: scale(0.01);
+		transform: scale(.01)
 	}
 
-	100% {
-		transform: scale(1);
+	to {
+		transform: scale(1)
 	}
 }
 
@@ -287,140 +284,158 @@ tr {
 	40% {
 		stroke-width: 1px;
 		stroke-linecap: square;
-		stroke-dashoffset: 192;
+		stroke-dashoffset: 192
 	}
 
-	100% {
-		stroke-width: 0px;
+	to {
+		stroke-width: 0px
 	}
 }
 
 .logo-text {
-	fill: #000000;
+	fill: #000
 }
 
 #qr {
-	fill: #1D1F20;
+	fill: #1d1f20
 }
 
 @media (prefers-color-scheme: dark) {
 	body.theme-auto {
 		background-color: #222;
-		color: #fff;
+		color: #fff
 	}
 
 	.theme-auto h1 {
-		color: #fff;
+		color: #fff
 	}
 
 	.theme-auto #terms,
 	.theme-auto #terms a,
 	.theme-auto #terms a:link,
 	.theme-auto #terms a:visited {
-		color: #BBBBBB;
+		color: #bbb
 	}
 
 	.theme-auto #content {
-		border-color: #999999;
-		background-color: #222222;
+		border-color: #999;
+		background-color: #222
 	}
 
 	.theme-auto #qr {
-		fill: rgb(243, 128, 32)
+		fill: #f38020
 	}
 
 	.theme-auto .logo-text {
-		fill: #ffffff;
+		fill: #fff
 	}
 
 	.theme-auto .ctp-checkbox-label .mark {
-		background-color: #525252;
+		background-color: #525252
 	}
 
 	.theme-auto .ctp-checkbox-label input:checked~.mark {
-		background-color: #525252;
+		background-color: #525252
 	}
 }
 
 body.theme-dark {
 	background-color: #222;
-	color: #fff;
+	color: #fff
 }
 
 .theme-dark h1 {
-	color: #fff;
+	color: #fff
 }
 
 .theme-dark #terms,
 .theme-dark #terms a,
 .theme-dark #terms a:link,
 .theme-dark #terms a:visited {
-	color: #BBBBBB;
+	color: #bbb
 }
 
 .theme-dark #content {
-	border-color: #999999;
-	background-color: #222222;
+	border-color: #999;
+	background-color: #222
 }
 
 .theme-dark #qr {
-	fill: rgb(243, 128, 32)
+	fill: #f38020
 }
 
 .theme-dark .logo-text {
-	fill: #ffffff;
+	fill: #fff
 }
 
 .theme-dark .ctp-checkbox-label .mark {
-	background-color: #525252;
+	background-color: #525252
 }
 
 .theme-dark .ctp-checkbox-label input:checked~.mark {
-	background-color: #525252;
+	background-color: #525252
+}
+
+#challenge-error-title {
+	position: absolute;
+	top: 0;
+	color: red;
+	width: 200px;
+	height: 55px;
+	margin: 5px 0
+}
+
+#challenge-error-title .icon-wrapper {
+	display: none
 }
 
 .size-compact #content {
-	height: 115px;
+	height: 115px
 }
 
 .size-compact {
-	font-size: 13px;
+	font-size: 13px
 }
 
 .size-compact .ctp-checkbox-container {
-	text-align: left;
+	text-align: left
 }
 
 .size-compact #logo {
 	height: 22px;
 	margin-bottom: 0;
-	margin-top: 5px;
+	margin-top: 5px
 }
 
 .size-compact #branding {
-	padding-right: 0;
+	padding-right: 0
 }
 
 .size-compact #terms {
-	text-align: center;
+	text-align: center
 }
 
 .size-compact #cf-stage {
 	padding-left: 48px;
-	height: 63px;
+	height: 63px
 }
 
 .size-compact .ctp-checkbox-label .mark,
 .size-compact #success-icon,
 .size-compact #spinner-icon,
 .size-compact #fail-icon {
-	left: 12px;
+	left: 12px
 }
 
 .size-compact #qr svg {
-	width: 40px;
+	width: 40px
 }
 
 .size-compact #qr {
-	text-align: center;
+	text-align: center
+}
+
+.size-compact #challenge-error-title {
+	margin-top: 3px;
+	width: auto
 }

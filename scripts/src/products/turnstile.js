@@ -105,19 +105,11 @@ for(const js of javascripts){
 // get HTML/CSS
 const htmlCssUrls = [
 	{
-		name: 'staging',
-		url: `https://challenges-staging.cloudflare.com/cdn-cgi/challenge-platform/turnstile/if/ov2/av0/00000/${results['widgets-list'].result[0].sitekey}/auto/normal`,
-	},
-	{
-		name: 'prod',
+		name: 'normal',
 		url: `https://challenges.cloudflare.com/cdn-cgi/challenge-platform/turnstile/if/ov2/av0/00000/${results['widgets-list'].result[0].sitekey}/auto/normal`,
 	},
 	{
-		name: 'staging-compact',
-		url: `https://challenges-staging.cloudflare.com/cdn-cgi/challenge-platform/turnstile/if/ov2/av0/00000/${results['widgets-list'].result[0].sitekey}/auto/compact`,
-	},
-	{
-		name: 'prod-compact',
+		name: 'compact',
 		url: `https://challenges.cloudflare.com/cdn-cgi/challenge-platform/turnstile/if/ov2/av0/00000/${results['widgets-list'].result[0].sitekey}/auto/compact`,
 	},
 ];
