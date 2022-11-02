@@ -1,4 +1,5 @@
 import { eg, TypeFromCodec } from '@cloudflare/util-en-garde';
+import { enumerable, TypeFromEnumerable } from '../utils/enumerable';
 
 export const PagesUploadFileResult = eg.object({
   id: eg.string
@@ -240,4 +241,9 @@ export const UploadFileGroupPayload = eg.object({
 });
 export type UploadFileGroupPayload = TypeFromCodec<
   typeof UploadFileGroupPayload
+>;
+
+export const FunctionsUsageModel = enumerable(['bundled', 'unbound']);
+export type FunctionsUsageModel = TypeFromEnumerable<
+  typeof FunctionsUsageModel
 >;
