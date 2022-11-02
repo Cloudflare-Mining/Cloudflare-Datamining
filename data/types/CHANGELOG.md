@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.18.0](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/types@6.17.5...@cloudflare/types@6.18.0) (2022-11-02)
+
+
+### Features
+
+* **stratus:** UI-5465 Add Ent Self Serve to Rate Limiting ([faa8d8f](http://stash.cfops.it:7999/fe/stratus/commits/faa8d8f))
+
+
+
+
+
 ## [6.17.5](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/types@6.17.4...@cloudflare/types@6.17.5) (2022-11-01)
 
 **Note:** Version bump only for package @cloudflare/types
