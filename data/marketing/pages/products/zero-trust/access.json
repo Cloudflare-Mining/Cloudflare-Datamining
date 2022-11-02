@@ -91,8 +91,8 @@
 						"sectionPadding": null,
 						"streamPosterAssetFile": null,
 						"streamPoster": null,
-						"imageSize": "Large",
-						"imagePosition": null,
+						"imageSize": "Medium",
+						"imagePosition": false,
 						"leftLinkUrl": null,
 						"leftLink": null,
 						"leftLinkLoggedIn": null,
@@ -101,12 +101,21 @@
 						"textlayoutMode": null,
 						"backgroundAssetFile": null,
 						"imageLayout": null,
-						"image": {
-							"file": {
-								"publicURL": "[path]/teams-access-one-dash.svg"
-							}
-						},
-						"imageAssetFile": null
+						"image": null,
+						"imageAssetFile": {
+							"id": "e5e68b70-b150-5a60-be15-cf94394e4f05",
+							"altText": null,
+							"title": "Cloudflare Access - Hero Image",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "[path]/Access_2x.png"
+								}
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						}
 					},
 					{
 						"contentTypeId": "bladeSubNav",
