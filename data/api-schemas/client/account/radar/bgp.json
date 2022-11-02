@@ -24,7 +24,7 @@
 			},
 			"html_id": "radar-bgp-get-bgp-time-series",
 			"uri": "radar/bgp/timeseries",
-			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/bgp/timeseries?aggInterval=1h&name=main_series&dateRange=7d&dateStart=2022-08-01T09:58:33Z&dateEnd=2022-09-01T09:58:33Z&prefix=1.1.1.0/24&updateType=ANNOUNCEMENT&asn=15169&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/bgp/timeseries?aggInterval=1h&name=main_series&dateRange=[object Object]&dateStart=2022-09-15T00:00:00Z&dateEnd=2022-09-15T00:00:00Z&prefix=1.1.1.0/24&updateType=ANNOUNCEMENT&asn=15169&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -33,27 +33,29 @@
 					"aggInterval": {
 						"type": "string",
 						"example": "\"1h\"",
+						"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals).",
 						"enum": [
 							"15m",
 							"1h",
 							"1d"
-						],
-						"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals)."
+						]
 					},
 					"name": {
 						"type": "array",
 						"example": "[\n  \"main_series\"\n]",
 						"items": {
 							"type": "string",
+							"description": "Array of names that will be used to name the series in responses.",
 							"example": "main_series"
 						},
 						"description": "Array of names that will be used to name the series in responses."
 					},
 					"dateRange": {
 						"type": "array",
-						"example": "[\n  \"7d\"\n]",
+						"example": "[\n  {}\n]",
 						"items": {
 							"type": "string",
+							"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 							"enum": [
 								"1d",
 								"7d",
@@ -63,8 +65,7 @@
 								"7dControl",
 								"14dControl",
 								"28dControl"
-							],
-							"example": "7d"
+							]
 						},
 						"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 						"enum": [
@@ -80,21 +81,21 @@
 					},
 					"dateStart": {
 						"type": "array",
-						"example": "[\n  \"2022-08-01T09:58:33Z\"\n]",
+						"example": "[\n  \"2022-09-15T00:00:00Z\"\n]",
 						"items": {
 							"type": "string",
-							"format": "date-time",
-							"example": "2022-08-01T09:58:33Z"
+							"example": "2022-09-15T00:00:00Z",
+							"format": "date-time"
 						},
 						"description": "Array of datetimes to filter the start of a series."
 					},
 					"dateEnd": {
 						"type": "array",
-						"example": "[\n  \"2022-09-01T09:58:33Z\"\n]",
+						"example": "[\n  \"2022-09-15T00:00:00Z\"\n]",
 						"items": {
 							"type": "string",
-							"format": "date-time",
-							"example": "2022-09-01T09:58:33Z"
+							"example": "2022-09-15T00:00:00Z",
+							"format": "date-time"
 						},
 						"description": "Array of datetimes to filter the end of a series."
 					},
@@ -108,13 +109,14 @@
 						"example": "[\n  \"ANNOUNCEMENT\"\n]",
 						"items": {
 							"type": "string",
+							"description": "Array of BGP update types.",
+							"example": "ANNOUNCEMENT",
 							"enum": [
 								"ANNOUNCEMENT",
 								"WITHDRAWAL"
-							],
-							"example": "ANNOUNCEMENT"
+							]
 						},
-						"description": "Array of BGP update type.",
+						"description": "Array of BGP update types.",
 						"enum": [
 							"ANNOUNCEMENT",
 							"WITHDRAWAL"
@@ -125,6 +127,7 @@
 						"example": "[\n  \"15169\"\n]",
 						"items": {
 							"type": "string",
+							"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `[-174, 3356]` excludes results from AS174, but includes results from AS3356.",
 							"example": "15169"
 						},
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `[-174, 3356]` excludes results from AS174, but includes results from AS3356."
@@ -132,12 +135,11 @@
 					"format": {
 						"type": "string",
 						"example": "\"json\"",
-						"default": "json",
+						"description": "Format results are returned in.",
 						"enum": [
 							"json",
 							"csv"
-						],
-						"description": "Format results are returned in."
+						]
 					}
 				},
 				"required_props": [],
@@ -153,9 +155,9 @@
 					"format"
 				],
 				"objects": [],
-				"example": "{\n  \"aggInterval\": \"1h\",\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"prefix\": \"1.1.1.0/24\",\n  \"updateType\": [\n    \"ANNOUNCEMENT\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"format\": \"json\"\n}"
+				"example": "{\n  \"aggInterval\": \"1h\",\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    {}\n  ],\n  \"dateStart\": [\n    \"2022-09-15T00:00:00Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-15T00:00:00Z\"\n  ],\n  \"prefix\": \"1.1.1.0/24\",\n  \"updateType\": [\n    \"ANNOUNCEMENT\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"meta\": {\n      \"confidenceInfo\": {\n        \"annotations\": [\n          {\n            \"dataSource\": \"ALL\",\n            \"eventType\": \"OUTAGE\",\n            \"description\": \"Cable cut in Tonga\",\n            \"startTime\": \"2022-09-17T10:22:57.555Z\",\n            \"endTime\": \"2022-09-17T10:22:57.555Z\"\n          }\n        ]\n      },\n      \"dateRange\": {\n        \"startTime\": \"2022-09-16T10:22:57.555Z\",\n        \"endTime\": \"2022-09-17T10:22:57.555Z\"\n      },\n      \"aggInterval\": \"1h\",\n      \"lastUpdated\": \"2022-09-17T10:22:57.555Z\"\n    },\n    \"series\": {\n      \"timestamps\": [\n        \"2022-09-17T10:22:57.555Z\"\n      ],\n      \"values\": [\n        0.56\n      ]\n    }\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"result\": {\n    \"meta\": {\n      \"confidenceInfo\": {\n        \"annotations\": [\n          {\n            \"dataSource\": \"ALL\",\n            \"eventType\": \"OUTAGE\",\n            \"description\": \"Cable cut in Tonga\",\n            \"startTime\": \"2022-09-15T00:00:00Z\",\n            \"endTime\": \"2022-09-15T00:00:00Z\"\n          }\n        ]\n      },\n      \"dateRange\": {\n        \"startTime\": \"2022-09-16T10:22:57.555Z\",\n        \"endTime\": \"2022-09-17T10:22:57.555Z\"\n      },\n      \"aggInterval\": \"1h\",\n      \"lastUpdated\": \"2022-09-15T00:00:00Z\"\n    },\n    \"series\": {\n      \"timestamps\": [\n        \"2022-09-15T00:00:00Z\"\n      ],\n      \"values\": [\n        0.56\n      ]\n    }\n  }\n}"
 		},
 		{
 			"title": "Get top prefixes",
@@ -177,32 +179,34 @@
 			},
 			"html_id": "radar-bgp-get-top-prefixes",
 			"uri": "radar/bgp/top/prefixes",
-			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/bgp/top/prefixes?limit=5&name=main_series&dateRange=7d&dateStart=2022-08-01T09:58:33Z&dateEnd=2022-09-01T09:58:33Z&asn=15169&updateType=ANNOUNCEMENT&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/bgp/top/prefixes?limit=5&name=main_series&dateRange=[object Object]&dateStart=2022-09-15T00:00:00Z&dateEnd=2022-09-15T00:00:00Z&asn=15169&updateType=ANNOUNCEMENT&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
 				},
 				"all_props": {
 					"limit": {
-						"type": "number",
+						"type": "integer",
 						"example": "5",
-						"default": 5,
-						"description": "Limit the number of objects in the response."
+						"description": "Limit the number of objects in the response.",
+						"default": 5
 					},
 					"name": {
 						"type": "array",
 						"example": "[\n  \"main_series\"\n]",
 						"items": {
 							"type": "string",
+							"description": "Array of names that will be used to name the series in responses.",
 							"example": "main_series"
 						},
 						"description": "Array of names that will be used to name the series in responses."
 					},
 					"dateRange": {
 						"type": "array",
-						"example": "[\n  \"7d\"\n]",
+						"example": "[\n  {}\n]",
 						"items": {
 							"type": "string",
+							"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 							"enum": [
 								"1d",
 								"7d",
@@ -212,8 +216,7 @@
 								"7dControl",
 								"14dControl",
 								"28dControl"
-							],
-							"example": "7d"
+							]
 						},
 						"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 						"enum": [
@@ -229,21 +232,21 @@
 					},
 					"dateStart": {
 						"type": "array",
-						"example": "[\n  \"2022-08-01T09:58:33Z\"\n]",
+						"example": "[\n  \"2022-09-15T00:00:00Z\"\n]",
 						"items": {
 							"type": "string",
-							"format": "date-time",
-							"example": "2022-08-01T09:58:33Z"
+							"example": "2022-09-15T00:00:00Z",
+							"format": "date-time"
 						},
 						"description": "Array of datetimes to filter the start of a series."
 					},
 					"dateEnd": {
 						"type": "array",
-						"example": "[\n  \"2022-09-01T09:58:33Z\"\n]",
+						"example": "[\n  \"2022-09-15T00:00:00Z\"\n]",
 						"items": {
 							"type": "string",
-							"format": "date-time",
-							"example": "2022-09-01T09:58:33Z"
+							"example": "2022-09-15T00:00:00Z",
+							"format": "date-time"
 						},
 						"description": "Array of datetimes to filter the end of a series."
 					},
@@ -252,6 +255,7 @@
 						"example": "[\n  \"15169\"\n]",
 						"items": {
 							"type": "string",
+							"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `[-174, 3356]` excludes results from AS174, but includes results from AS3356.",
 							"example": "15169"
 						},
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `[-174, 3356]` excludes results from AS174, but includes results from AS3356."
@@ -261,13 +265,14 @@
 						"example": "[\n  \"ANNOUNCEMENT\"\n]",
 						"items": {
 							"type": "string",
+							"description": "Array of BGP update types.",
+							"example": "ANNOUNCEMENT",
 							"enum": [
 								"ANNOUNCEMENT",
 								"WITHDRAWAL"
-							],
-							"example": "ANNOUNCEMENT"
+							]
 						},
-						"description": "Array of BGP update type.",
+						"description": "Array of BGP update types.",
 						"enum": [
 							"ANNOUNCEMENT",
 							"WITHDRAWAL"
@@ -276,12 +281,11 @@
 					"format": {
 						"type": "string",
 						"example": "\"json\"",
-						"default": "json",
+						"description": "Format results are returned in.",
 						"enum": [
 							"json",
 							"csv"
-						],
-						"description": "Format results are returned in."
+						]
 					}
 				},
 				"required_props": [],
@@ -296,9 +300,9 @@
 					"format"
 				],
 				"objects": [],
-				"example": "{\n  \"limit\": 5,\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"updateType\": [\n    \"ANNOUNCEMENT\"\n  ],\n  \"format\": \"json\"\n}"
+				"example": "{\n  \"limit\": 5,\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    {}\n  ],\n  \"dateStart\": [\n    \"2022-09-15T00:00:00Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-15T00:00:00Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"updateType\": [\n    \"ANNOUNCEMENT\"\n  ],\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"meta\": {\n      \"dateRange\": {\n        \"startTime\": \"2022-09-16T10:22:57.555Z\",\n        \"endTime\": \"2022-09-17T10:22:57.555Z\"\n      }\n    },\n    \"top_0\": [\n      {\n        \"prefix\": \"2804:77cc:8000::/33\",\n        \"value\": \"0.73996\"\n      }\n    ]\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"result\": {\n    \"meta\": {\n      \"dateRange\": {\n        \"startTime\": \"2022-09-16T10:22:57.555Z\",\n        \"endTime\": \"2022-09-17T10:22:57.555Z\"\n      }\n    },\n    \"top_0\": [\n      {\n        \"prefix\": \"2804:77cc:8000::/33\",\n        \"value\": \"0.73996\"\n      }\n    ]\n  }\n}"
 		},
 		{
 			"title": "Get top autonomous systems",
@@ -320,32 +324,34 @@
 			},
 			"html_id": "radar-bgp-get-top-autonomous-systems",
 			"uri": "radar/bgp/top/ases",
-			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/bgp/top/ases?limit=5&name=main_series&dateRange=7d&dateStart=2022-08-01T09:58:33Z&dateEnd=2022-09-01T09:58:33Z&asn=15169&prefix=1.1.1.0/24&updateType=ANNOUNCEMENT&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/bgp/top/ases?limit=5&name=main_series&dateRange=[object Object]&dateStart=2022-09-15T00:00:00Z&dateEnd=2022-09-15T00:00:00Z&asn=15169&prefix=1.1.1.0/24&updateType=ANNOUNCEMENT&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
 				},
 				"all_props": {
 					"limit": {
-						"type": "number",
+						"type": "integer",
 						"example": "5",
-						"default": 5,
-						"description": "Limit the number of objects in the response."
+						"description": "Limit the number of objects in the response.",
+						"default": 5
 					},
 					"name": {
 						"type": "array",
 						"example": "[\n  \"main_series\"\n]",
 						"items": {
 							"type": "string",
+							"description": "Array of names that will be used to name the series in responses.",
 							"example": "main_series"
 						},
 						"description": "Array of names that will be used to name the series in responses."
 					},
 					"dateRange": {
 						"type": "array",
-						"example": "[\n  \"7d\"\n]",
+						"example": "[\n  {}\n]",
 						"items": {
 							"type": "string",
+							"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 							"enum": [
 								"1d",
 								"7d",
@@ -355,8 +361,7 @@
 								"7dControl",
 								"14dControl",
 								"28dControl"
-							],
-							"example": "7d"
+							]
 						},
 						"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 						"enum": [
@@ -372,21 +377,21 @@
 					},
 					"dateStart": {
 						"type": "array",
-						"example": "[\n  \"2022-08-01T09:58:33Z\"\n]",
+						"example": "[\n  \"2022-09-15T00:00:00Z\"\n]",
 						"items": {
 							"type": "string",
-							"format": "date-time",
-							"example": "2022-08-01T09:58:33Z"
+							"example": "2022-09-15T00:00:00Z",
+							"format": "date-time"
 						},
 						"description": "Array of datetimes to filter the start of a series."
 					},
 					"dateEnd": {
 						"type": "array",
-						"example": "[\n  \"2022-09-01T09:58:33Z\"\n]",
+						"example": "[\n  \"2022-09-15T00:00:00Z\"\n]",
 						"items": {
 							"type": "string",
-							"format": "date-time",
-							"example": "2022-09-01T09:58:33Z"
+							"example": "2022-09-15T00:00:00Z",
+							"format": "date-time"
 						},
 						"description": "Array of datetimes to filter the end of a series."
 					},
@@ -395,6 +400,7 @@
 						"example": "[\n  \"15169\"\n]",
 						"items": {
 							"type": "string",
+							"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `[-174, 3356]` excludes results from AS174, but includes results from AS3356.",
 							"example": "15169"
 						},
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `[-174, 3356]` excludes results from AS174, but includes results from AS3356."
@@ -404,6 +410,7 @@
 						"example": "[\n  \"1.1.1.0/24\"\n]",
 						"items": {
 							"type": "string",
+							"description": "Array of BGP network prefixes.",
 							"example": "1.1.1.0/24"
 						},
 						"description": "Array of BGP network prefixes."
@@ -413,13 +420,14 @@
 						"example": "[\n  \"ANNOUNCEMENT\"\n]",
 						"items": {
 							"type": "string",
+							"description": "Array of BGP update types.",
+							"example": "ANNOUNCEMENT",
 							"enum": [
 								"ANNOUNCEMENT",
 								"WITHDRAWAL"
-							],
-							"example": "ANNOUNCEMENT"
+							]
 						},
-						"description": "Array of BGP update type.",
+						"description": "Array of BGP update types.",
 						"enum": [
 							"ANNOUNCEMENT",
 							"WITHDRAWAL"
@@ -428,12 +436,11 @@
 					"format": {
 						"type": "string",
 						"example": "\"json\"",
-						"default": "json",
+						"description": "Format results are returned in.",
 						"enum": [
 							"json",
 							"csv"
-						],
-						"description": "Format results are returned in."
+						]
 					}
 				},
 				"required_props": [],
@@ -449,9 +456,9 @@
 					"format"
 				],
 				"objects": [],
-				"example": "{\n  \"limit\": 5,\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"prefix\": [\n    \"1.1.1.0/24\"\n  ],\n  \"updateType\": [\n    \"ANNOUNCEMENT\"\n  ],\n  \"format\": \"json\"\n}"
+				"example": "{\n  \"limit\": 5,\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    {}\n  ],\n  \"dateStart\": [\n    \"2022-09-15T00:00:00Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-15T00:00:00Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"prefix\": [\n    \"1.1.1.0/24\"\n  ],\n  \"updateType\": [\n    \"ANNOUNCEMENT\"\n  ],\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"meta\": {\n      \"dateRange\": {\n        \"startTime\": \"2022-09-16T10:22:57.555Z\",\n        \"endTime\": \"2022-09-17T10:22:57.555Z\"\n      }\n    },\n    \"top_0\": [\n      {\n        \"asn\": \"714\",\n        \"ASName\": \"Apple-Engineering\",\n        \"value\": \"0.73996\"\n      }\n    ]\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"result\": {\n    \"meta\": {\n      \"dateRange\": {\n        \"startTime\": \"2022-09-16T10:22:57.555Z\",\n        \"endTime\": \"2022-09-17T10:22:57.555Z\"\n      }\n    },\n    \"top_0\": [\n      {\n        \"asn\": \"714\",\n        \"ASName\": \"Apple-Engineering\",\n        \"value\": \"0.73996\"\n      }\n    ]\n  }\n}"
 		}
 	],
 	"cfExtendedDescription": "Either one or multiple queries can be requested at the same time - this is useful when you want, for example, to compare multiple time series (eg. `dateRange=7d&location=US&dateRange=7d&location=CA` would fetch two time series at the same time, the first for the US, the second for Canada). Take into account that the api is not real time and has a delay of about two hours.",

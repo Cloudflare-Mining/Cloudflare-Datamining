@@ -24,7 +24,7 @@
 			},
 			"html_id": "radar-attacks-get-layer-3-attacks-time-series",
 			"uri": "radar/attacks/layer3/timeseries",
-			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/attacks/layer3/timeseries?aggInterval=1h&name=main_series&dateRange=7d&dateStart=2022-08-01T09:58:33Z&dateEnd=2022-09-01T09:58:33Z&attack=tcp&asn=15169&location=US,CA&normalization=MIN0_MAX&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/attacks/layer3/timeseries?aggInterval=1h&name=main_series&dateRange=[object Object]&dateStart=2022-09-15T00:00:00Z&dateEnd=2022-09-15T00:00:00Z&attack=[object Object]&asn=15169&location=US,CA&normalization=MIN0_MAX&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -33,27 +33,29 @@
 					"aggInterval": {
 						"type": "string",
 						"example": "\"1h\"",
+						"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals).",
 						"enum": [
 							"15m",
 							"1h",
 							"1d"
-						],
-						"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals)."
+						]
 					},
 					"name": {
 						"type": "array",
 						"example": "[\n  \"main_series\"\n]",
 						"items": {
 							"type": "string",
+							"description": "Array of names that will be used to name the series in responses.",
 							"example": "main_series"
 						},
 						"description": "Array of names that will be used to name the series in responses."
 					},
 					"dateRange": {
 						"type": "array",
-						"example": "[\n  \"7d\"\n]",
+						"example": "[\n  {}\n]",
 						"items": {
 							"type": "string",
+							"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 							"enum": [
 								"1d",
 								"7d",
@@ -63,8 +65,7 @@
 								"7dControl",
 								"14dControl",
 								"28dControl"
-							],
-							"example": "7d"
+							]
 						},
 						"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 						"enum": [
@@ -80,36 +81,36 @@
 					},
 					"dateStart": {
 						"type": "array",
-						"example": "[\n  \"2022-08-01T09:58:33Z\"\n]",
+						"example": "[\n  \"2022-09-15T00:00:00Z\"\n]",
 						"items": {
 							"type": "string",
-							"format": "date-time",
-							"example": "2022-08-01T09:58:33Z"
+							"example": "2022-09-15T00:00:00Z",
+							"format": "date-time"
 						},
 						"description": "Array of datetimes to filter the start of a series."
 					},
 					"dateEnd": {
 						"type": "array",
-						"example": "[\n  \"2022-09-01T09:58:33Z\"\n]",
+						"example": "[\n  \"2022-09-15T00:00:00Z\"\n]",
 						"items": {
 							"type": "string",
-							"format": "date-time",
-							"example": "2022-09-01T09:58:33Z"
+							"example": "2022-09-15T00:00:00Z",
+							"format": "date-time"
 						},
 						"description": "Array of datetimes to filter the end of a series."
 					},
 					"attack": {
 						"type": "array",
-						"example": "[\n  \"tcp\"\n]",
+						"example": "[\n  {}\n]",
 						"items": {
 							"type": "string",
+							"description": "Array of L3/4 attack types.",
 							"enum": [
 								"udp",
 								"tcp",
 								"icmp",
 								"gre"
-							],
-							"example": "tcp"
+							]
 						},
 						"description": "Array of L3/4 attack types.",
 						"enum": [
@@ -124,6 +125,7 @@
 						"example": "[\n  \"15169\"\n]",
 						"items": {
 							"type": "string",
+							"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `[-174, 3356]` excludes results from AS174, but includes results from AS3356.",
 							"example": "15169"
 						},
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `[-174, 3356]` excludes results from AS174, but includes results from AS3356."
@@ -133,6 +135,7 @@
 						"example": "[\n  \"US,CA\"\n]",
 						"items": {
 							"type": "string",
+							"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `[-US, PT]` excludes results from the US, but includes results from PT.",
 							"example": "US,CA"
 						},
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `[-US, PT]` excludes results from the US, but includes results from PT."
@@ -149,12 +152,11 @@
 					"format": {
 						"type": "string",
 						"example": "\"json\"",
-						"default": "json",
+						"description": "Format results are returned in.",
 						"enum": [
 							"json",
 							"csv"
-						],
-						"description": "Format results are returned in."
+						]
 					}
 				},
 				"required_props": [],
@@ -171,9 +173,9 @@
 					"format"
 				],
 				"objects": [],
-				"example": "{\n  \"aggInterval\": \"1h\",\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"attack\": [\n    \"tcp\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"normalization\": \"MIN0_MAX\",\n  \"format\": \"json\"\n}"
+				"example": "{\n  \"aggInterval\": \"1h\",\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    {}\n  ],\n  \"dateStart\": [\n    \"2022-09-15T00:00:00Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-15T00:00:00Z\"\n  ],\n  \"attack\": [\n    {}\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"normalization\": \"MIN0_MAX\",\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"meta\": {\n      \"confidenceInfo\": {\n        \"startTime\": \"2022-09-16T10:22:57.555Z\",\n        \"endTime\": \"2022-09-17T10:22:57.555Z\"\n      },\n      \"dateRange\": {\n        \"startTime\": \"2022-09-16T10:22:57.555Z\",\n        \"endTime\": \"2022-09-17T10:22:57.555Z\"\n      },\n      \"aggInterval\": \"1h\",\n      \"lastUpdated\": \"2022-09-17T10:22:57.555Z\"\n    },\n    \"series\": {\n      \"timestamps\": [\n        \"2022-09-17T10:22:57.555Z\"\n      ],\n      \"values\": [\n        0.56\n      ]\n    }\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"result\": {\n    \"meta\": {\n      \"confidenceInfo\": {\n        \"startTime\": \"2022-09-16T10:22:57.555Z\",\n        \"endTime\": \"2022-09-17T10:22:57.555Z\"\n      },\n      \"dateRange\": {\n        \"startTime\": \"2022-09-16T10:22:57.555Z\",\n        \"endTime\": \"2022-09-17T10:22:57.555Z\"\n      },\n      \"aggInterval\": \"1h\",\n      \"lastUpdated\": \"2022-09-15T00:00:00Z\"\n    },\n    \"series\": {\n      \"timestamps\": [\n        \"2022-09-15T00:00:00Z\"\n      ],\n      \"values\": [\n        0.56\n      ]\n    }\n  }\n}"
 		},
 		{
 			"title": "Get layer 3 attacks by network protocol, over time",
@@ -195,7 +197,7 @@
 			},
 			"html_id": "radar-attacks-get-layer-3-attacks-by-network-protocol,-over-time",
 			"uri": "radar/attacks/layer3/timeseries_groups",
-			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/attacks/layer3/timeseries_groups?aggInterval=1h&name=main_series&dateRange=7d&dateStart=2022-08-01T09:58:33Z&dateEnd=2022-09-01T09:58:33Z&asn=15169&location=US,CA&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/attacks/layer3/timeseries_groups?aggInterval=1h&name=main_series&dateRange=[object Object]&dateStart=2022-09-15T00:00:00Z&dateEnd=2022-09-15T00:00:00Z&asn=15169&location=US,CA&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -204,27 +206,29 @@
 					"aggInterval": {
 						"type": "string",
 						"example": "\"1h\"",
+						"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals).",
 						"enum": [
 							"15m",
 							"1h",
 							"1d"
-						],
-						"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals)."
+						]
 					},
 					"name": {
 						"type": "array",
 						"example": "[\n  \"main_series\"\n]",
 						"items": {
 							"type": "string",
+							"description": "Array of names that will be used to name the series in responses.",
 							"example": "main_series"
 						},
 						"description": "Array of names that will be used to name the series in responses."
 					},
 					"dateRange": {
 						"type": "array",
-						"example": "[\n  \"7d\"\n]",
+						"example": "[\n  {}\n]",
 						"items": {
 							"type": "string",
+							"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 							"enum": [
 								"1d",
 								"7d",
@@ -234,8 +238,7 @@
 								"7dControl",
 								"14dControl",
 								"28dControl"
-							],
-							"example": "7d"
+							]
 						},
 						"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 						"enum": [
@@ -251,21 +254,21 @@
 					},
 					"dateStart": {
 						"type": "array",
-						"example": "[\n  \"2022-08-01T09:58:33Z\"\n]",
+						"example": "[\n  \"2022-09-15T00:00:00Z\"\n]",
 						"items": {
 							"type": "string",
-							"format": "date-time",
-							"example": "2022-08-01T09:58:33Z"
+							"example": "2022-09-15T00:00:00Z",
+							"format": "date-time"
 						},
 						"description": "Array of datetimes to filter the start of a series."
 					},
 					"dateEnd": {
 						"type": "array",
-						"example": "[\n  \"2022-09-01T09:58:33Z\"\n]",
+						"example": "[\n  \"2022-09-15T00:00:00Z\"\n]",
 						"items": {
 							"type": "string",
-							"format": "date-time",
-							"example": "2022-09-01T09:58:33Z"
+							"example": "2022-09-15T00:00:00Z",
+							"format": "date-time"
 						},
 						"description": "Array of datetimes to filter the end of a series."
 					},
@@ -274,6 +277,7 @@
 						"example": "[\n  \"15169\"\n]",
 						"items": {
 							"type": "string",
+							"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `[-174, 3356]` excludes results from AS174, but includes results from AS3356.",
 							"example": "15169"
 						},
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `[-174, 3356]` excludes results from AS174, but includes results from AS3356."
@@ -283,6 +287,7 @@
 						"example": "[\n  \"US,CA\"\n]",
 						"items": {
 							"type": "string",
+							"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `[-US, PT]` excludes results from the US, but includes results from PT.",
 							"example": "US,CA"
 						},
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `[-US, PT]` excludes results from the US, but includes results from PT."
@@ -290,12 +295,11 @@
 					"format": {
 						"type": "string",
 						"example": "\"json\"",
-						"default": "json",
+						"description": "Format results are returned in.",
 						"enum": [
 							"json",
 							"csv"
-						],
-						"description": "Format results are returned in."
+						]
 					}
 				},
 				"required_props": [],
@@ -310,9 +314,9 @@
 					"format"
 				],
 				"objects": [],
-				"example": "{\n  \"aggInterval\": \"1h\",\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"format\": \"json\"\n}"
+				"example": "{\n  \"aggInterval\": \"1h\",\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    {}\n  ],\n  \"dateStart\": [\n    \"2022-09-15T00:00:00Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-15T00:00:00Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"meta\": {\n      \"confidenceInfo\": {\n        \"annotations\": [\n          {\n            \"dataSource\": \"ALL\",\n            \"eventType\": \"OUTAGE\",\n            \"description\": \"Cable cut in Tonga\",\n            \"startTime\": \"2022-09-17T10:22:57.555Z\",\n            \"endTime\": \"2022-09-17T10:22:57.555Z\"\n          }\n        ]\n      },\n      \"dateRange\": {\n        \"startTime\": \"2022-09-16T10:22:57.555Z\",\n        \"endTime\": \"2022-09-17T10:22:57.555Z\"\n      },\n      \"aggInterval\": \"1h\",\n      \"lastUpdated\": \"2022-09-17T10:22:57.555Z\"\n    },\n    \"serie_0\": {\n      \"timeseries\": [\n        {}\n      ],\n      \"udp\": [\n        \"29\"\n      ],\n      \"tcp\": [\n        \"70\"\n      ],\n      \"gre\": [\n        \"0.9\"\n      ],\n      \"icmp\": [\n        \"0.1\"\n      ]\n    }\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"result\": {\n    \"meta\": {\n      \"confidenceInfo\": {\n        \"annotations\": [\n          {\n            \"dataSource\": \"ALL\",\n            \"eventType\": \"OUTAGE\",\n            \"description\": \"Cable cut in Tonga\",\n            \"startTime\": \"2022-09-15T00:00:00Z\",\n            \"endTime\": \"2022-09-15T00:00:00Z\"\n          }\n        ]\n      },\n      \"dateRange\": {\n        \"startTime\": \"2022-09-16T10:22:57.555Z\",\n        \"endTime\": \"2022-09-17T10:22:57.555Z\"\n      },\n      \"aggInterval\": \"1h\",\n      \"lastUpdated\": \"2022-09-15T00:00:00Z\"\n    },\n    \"serie_0\": {\n      \"timeseries\": [\n        {}\n      ],\n      \"udp\": [\n        \"29\"\n      ],\n      \"tcp\": [\n        \"70\"\n      ],\n      \"gre\": [\n        \"0.9\"\n      ],\n      \"icmp\": [\n        \"0.1\"\n      ]\n    }\n  }\n}"
 		},
 		{
 			"title": "Get a summary of layer 3 attacks",
@@ -334,7 +338,7 @@
 			},
 			"html_id": "radar-attacks-get-a-summary-of-layer-3-attacks",
 			"uri": "radar/attacks/layer3/summary",
-			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/attacks/layer3/summary?name=main_series&dateRange=7d&dateStart=2022-08-01T09:58:33Z&dateEnd=2022-09-01T09:58:33Z&asn=15169&location=US,CA&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/attacks/layer3/summary?name=main_series&dateRange=[object Object]&dateStart=2022-09-15T00:00:00Z&dateEnd=2022-09-15T00:00:00Z&asn=15169&location=US,CA&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -345,15 +349,17 @@
 						"example": "[\n  \"main_series\"\n]",
 						"items": {
 							"type": "string",
+							"description": "Array of names that will be used to name the series in responses.",
 							"example": "main_series"
 						},
 						"description": "Array of names that will be used to name the series in responses."
 					},
 					"dateRange": {
 						"type": "array",
-						"example": "[\n  \"7d\"\n]",
+						"example": "[\n  {}\n]",
 						"items": {
 							"type": "string",
+							"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 							"enum": [
 								"1d",
 								"7d",
@@ -363,8 +369,7 @@
 								"7dControl",
 								"14dControl",
 								"28dControl"
-							],
-							"example": "7d"
+							]
 						},
 						"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 						"enum": [
@@ -380,21 +385,21 @@
 					},
 					"dateStart": {
 						"type": "array",
-						"example": "[\n  \"2022-08-01T09:58:33Z\"\n]",
+						"example": "[\n  \"2022-09-15T00:00:00Z\"\n]",
 						"items": {
 							"type": "string",
-							"format": "date-time",
-							"example": "2022-08-01T09:58:33Z"
+							"example": "2022-09-15T00:00:00Z",
+							"format": "date-time"
 						},
 						"description": "Array of datetimes to filter the start of a series."
 					},
 					"dateEnd": {
 						"type": "array",
-						"example": "[\n  \"2022-09-01T09:58:33Z\"\n]",
+						"example": "[\n  \"2022-09-15T00:00:00Z\"\n]",
 						"items": {
 							"type": "string",
-							"format": "date-time",
-							"example": "2022-09-01T09:58:33Z"
+							"example": "2022-09-15T00:00:00Z",
+							"format": "date-time"
 						},
 						"description": "Array of datetimes to filter the end of a series."
 					},
@@ -403,6 +408,7 @@
 						"example": "[\n  \"15169\"\n]",
 						"items": {
 							"type": "string",
+							"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `[-174, 3356]` excludes results from AS174, but includes results from AS3356.",
 							"example": "15169"
 						},
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `[-174, 3356]` excludes results from AS174, but includes results from AS3356."
@@ -412,6 +418,7 @@
 						"example": "[\n  \"US,CA\"\n]",
 						"items": {
 							"type": "string",
+							"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `[-US, PT]` excludes results from the US, but includes results from PT.",
 							"example": "US,CA"
 						},
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `[-US, PT]` excludes results from the US, but includes results from PT."
@@ -419,12 +426,11 @@
 					"format": {
 						"type": "string",
 						"example": "\"json\"",
-						"default": "json",
+						"description": "Format results are returned in.",
 						"enum": [
 							"json",
 							"csv"
-						],
-						"description": "Format results are returned in."
+						]
 					}
 				},
 				"required_props": [],
@@ -438,9 +444,9 @@
 					"format"
 				],
 				"objects": [],
-				"example": "{\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"format\": \"json\"\n}"
+				"example": "{\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    {}\n  ],\n  \"dateStart\": [\n    \"2022-09-15T00:00:00Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-15T00:00:00Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"meta\": {\n      \"confidenceInfo\": {\n        \"annotations\": [\n          {\n            \"dataSource\": \"ALL\",\n            \"eventType\": \"OUTAGE\",\n            \"description\": \"Cable cut in Tonga\",\n            \"startTime\": \"2022-09-17T10:22:57.555Z\",\n            \"endTime\": \"2022-09-17T10:22:57.555Z\"\n          }\n        ]\n      },\n      \"dateRange\": {\n        \"startTime\": \"2022-09-16T10:22:57.555Z\",\n        \"endTime\": \"2022-09-17T10:22:57.555Z\"\n      }\n    },\n    \"summary_0\": {\n      \"tcp\": \"60\",\n      \"udp\": \"39\",\n      \"gre\": \"0.9\",\n      \"icmp\": \"0.1\"\n    }\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"result\": {\n    \"meta\": {\n      \"confidenceInfo\": {\n        \"annotations\": [\n          {\n            \"dataSource\": \"ALL\",\n            \"eventType\": \"OUTAGE\",\n            \"description\": \"Cable cut in Tonga\",\n            \"startTime\": \"2022-09-15T00:00:00Z\",\n            \"endTime\": \"2022-09-15T00:00:00Z\"\n          }\n        ]\n      },\n      \"dateRange\": {\n        \"startTime\": \"2022-09-16T10:22:57.555Z\",\n        \"endTime\": \"2022-09-17T10:22:57.555Z\"\n      }\n    },\n    \"summary_0\": {\n      \"tcp\": \"60\",\n      \"udp\": \"39\",\n      \"gre\": \"0.9\",\n      \"icmp\": \"0.1\"\n    }\n  }\n}"
 		},
 		{
 			"title": "Get attacks layer 7 time series",
@@ -462,7 +468,7 @@
 			},
 			"html_id": "radar-attacks-get-attacks-layer-7-time-series",
 			"uri": "radar/attacks/layer7/timeseries",
-			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/attacks/layer7/timeseries?aggInterval=1h&name=main_series&dateRange=7d&dateStart=2022-08-01T09:58:33Z&dateEnd=2022-09-01T09:58:33Z&attack=ddos&asn=15169&location=US,CA&normalization=MIN0_MAX&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/attacks/layer7/timeseries?aggInterval=1h&name=main_series&dateRange=[object Object]&dateStart=2022-09-15T00:00:00Z&dateEnd=2022-09-15T00:00:00Z&attack=[object Object]&asn=15169&location=US,CA&normalization=MIN0_MAX&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -471,27 +477,29 @@
 					"aggInterval": {
 						"type": "string",
 						"example": "\"1h\"",
+						"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals).",
 						"enum": [
 							"15m",
 							"1h",
 							"1d"
-						],
-						"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals)."
+						]
 					},
 					"name": {
 						"type": "array",
 						"example": "[\n  \"main_series\"\n]",
 						"items": {
 							"type": "string",
+							"description": "Array of names that will be used to name the series in responses.",
 							"example": "main_series"
 						},
 						"description": "Array of names that will be used to name the series in responses."
 					},
 					"dateRange": {
 						"type": "array",
-						"example": "[\n  \"7d\"\n]",
+						"example": "[\n  {}\n]",
 						"items": {
 							"type": "string",
+							"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 							"enum": [
 								"1d",
 								"7d",
@@ -501,8 +509,7 @@
 								"7dControl",
 								"14dControl",
 								"28dControl"
-							],
-							"example": "7d"
+							]
 						},
 						"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 						"enum": [
@@ -518,29 +525,30 @@
 					},
 					"dateStart": {
 						"type": "array",
-						"example": "[\n  \"2022-08-01T09:58:33Z\"\n]",
+						"example": "[\n  \"2022-09-15T00:00:00Z\"\n]",
 						"items": {
 							"type": "string",
-							"format": "date-time",
-							"example": "2022-08-01T09:58:33Z"
+							"example": "2022-09-15T00:00:00Z",
+							"format": "date-time"
 						},
 						"description": "Array of datetimes to filter the start of a series."
 					},
 					"dateEnd": {
 						"type": "array",
-						"example": "[\n  \"2022-09-01T09:58:33Z\"\n]",
+						"example": "[\n  \"2022-09-15T00:00:00Z\"\n]",
 						"items": {
 							"type": "string",
-							"format": "date-time",
-							"example": "2022-09-01T09:58:33Z"
+							"example": "2022-09-15T00:00:00Z",
+							"format": "date-time"
 						},
 						"description": "Array of datetimes to filter the end of a series."
 					},
 					"attack": {
 						"type": "array",
-						"example": "[\n  \"ddos\"\n]",
+						"example": "[\n  {}\n]",
 						"items": {
 							"type": "string",
+							"description": "Array of L7 attack types.",
 							"enum": [
 								"ddos",
 								"waf",
@@ -549,8 +557,7 @@
 								"ip_reputation",
 								"api_shield",
 								"data_loss_prevention"
-							],
-							"example": "ddos"
+							]
 						},
 						"description": "Array of L7 attack types.",
 						"enum": [
@@ -568,6 +575,7 @@
 						"example": "[\n  \"15169\"\n]",
 						"items": {
 							"type": "string",
+							"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `[-174, 3356]` excludes results from AS174, but includes results from AS3356.",
 							"example": "15169"
 						},
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `[-174, 3356]` excludes results from AS174, but includes results from AS3356."
@@ -577,6 +585,7 @@
 						"example": "[\n  \"US,CA\"\n]",
 						"items": {
 							"type": "string",
+							"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `[-US, PT]` excludes results from the US, but includes results from PT.",
 							"example": "US,CA"
 						},
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `[-US, PT]` excludes results from the US, but includes results from PT."
@@ -593,12 +602,11 @@
 					"format": {
 						"type": "string",
 						"example": "\"json\"",
-						"default": "json",
+						"description": "Format results are returned in.",
 						"enum": [
 							"json",
 							"csv"
-						],
-						"description": "Format results are returned in."
+						]
 					}
 				},
 				"required_props": [],
@@ -615,9 +623,9 @@
 					"format"
 				],
 				"objects": [],
-				"example": "{\n  \"aggInterval\": \"1h\",\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"attack\": [\n    \"ddos\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"normalization\": \"MIN0_MAX\",\n  \"format\": \"json\"\n}"
+				"example": "{\n  \"aggInterval\": \"1h\",\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    {}\n  ],\n  \"dateStart\": [\n    \"2022-09-15T00:00:00Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-15T00:00:00Z\"\n  ],\n  \"attack\": [\n    {}\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"normalization\": \"MIN0_MAX\",\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"meta\": {\n      \"confidenceInfo\": {\n        \"annotations\": [\n          {\n            \"dataSource\": \"ALL\",\n            \"eventType\": \"OUTAGE\",\n            \"description\": \"Cable cut in Tonga\",\n            \"startTime\": \"2022-09-17T10:22:57.555Z\",\n            \"endTime\": \"2022-09-17T10:22:57.555Z\"\n          }\n        ]\n      },\n      \"dateRange\": {\n        \"startTime\": \"2022-09-16T10:22:57.555Z\",\n        \"endTime\": \"2022-09-17T10:22:57.555Z\"\n      },\n      \"aggInterval\": \"1h\",\n      \"lastUpdated\": \"2022-09-17T10:22:57.555Z\"\n    },\n    \"series\": {\n      \"timestamps\": [\n        \"2022-09-17T10:22:57.555Z\"\n      ],\n      \"values\": [\n        0.56\n      ]\n    }\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"result\": {\n    \"meta\": {\n      \"confidenceInfo\": {\n        \"annotations\": [\n          {\n            \"dataSource\": \"ALL\",\n            \"eventType\": \"OUTAGE\",\n            \"description\": \"Cable cut in Tonga\",\n            \"startTime\": \"2022-09-15T00:00:00Z\",\n            \"endTime\": \"2022-09-15T00:00:00Z\"\n          }\n        ]\n      },\n      \"dateRange\": {\n        \"startTime\": \"2022-09-16T10:22:57.555Z\",\n        \"endTime\": \"2022-09-17T10:22:57.555Z\"\n      },\n      \"aggInterval\": \"1h\",\n      \"lastUpdated\": \"2022-09-15T00:00:00Z\"\n    },\n    \"series\": {\n      \"timestamps\": [\n        \"2022-09-15T00:00:00Z\"\n      ],\n      \"values\": [\n        0.56\n      ]\n    }\n  }\n}"
 		},
 		{
 			"title": "Get layer 7 attacks by mitigation technique, over time",
@@ -639,7 +647,7 @@
 			},
 			"html_id": "radar-attacks-get-layer-7-attacks-by-mitigation-technique,-over-time",
 			"uri": "radar/attacks/layer7/timeseries_groups",
-			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/attacks/layer7/timeseries_groups?aggInterval=1h&name=main_series&dateRange=7d&dateStart=2022-08-01T09:58:33Z&dateEnd=2022-09-01T09:58:33Z&asn=15169&location=US,CA&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/attacks/layer7/timeseries_groups?aggInterval=1h&name=main_series&dateRange=[object Object]&dateStart=2022-09-15T00:00:00Z&dateEnd=2022-09-15T00:00:00Z&asn=15169&location=US,CA&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -648,27 +656,29 @@
 					"aggInterval": {
 						"type": "string",
 						"example": "\"1h\"",
+						"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals).",
 						"enum": [
 							"15m",
 							"1h",
 							"1d"
-						],
-						"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals)."
+						]
 					},
 					"name": {
 						"type": "array",
 						"example": "[\n  \"main_series\"\n]",
 						"items": {
 							"type": "string",
+							"description": "Array of names that will be used to name the series in responses.",
 							"example": "main_series"
 						},
 						"description": "Array of names that will be used to name the series in responses."
 					},
 					"dateRange": {
 						"type": "array",
-						"example": "[\n  \"7d\"\n]",
+						"example": "[\n  {}\n]",
 						"items": {
 							"type": "string",
+							"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 							"enum": [
 								"1d",
 								"7d",
@@ -678,8 +688,7 @@
 								"7dControl",
 								"14dControl",
 								"28dControl"
-							],
-							"example": "7d"
+							]
 						},
 						"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 						"enum": [
@@ -695,21 +704,21 @@
 					},
 					"dateStart": {
 						"type": "array",
-						"example": "[\n  \"2022-08-01T09:58:33Z\"\n]",
+						"example": "[\n  \"2022-09-15T00:00:00Z\"\n]",
 						"items": {
 							"type": "string",
-							"format": "date-time",
-							"example": "2022-08-01T09:58:33Z"
+							"example": "2022-09-15T00:00:00Z",
+							"format": "date-time"
 						},
 						"description": "Array of datetimes to filter the start of a series."
 					},
 					"dateEnd": {
 						"type": "array",
-						"example": "[\n  \"2022-09-01T09:58:33Z\"\n]",
+						"example": "[\n  \"2022-09-15T00:00:00Z\"\n]",
 						"items": {
 							"type": "string",
-							"format": "date-time",
-							"example": "2022-09-01T09:58:33Z"
+							"example": "2022-09-15T00:00:00Z",
+							"format": "date-time"
 						},
 						"description": "Array of datetimes to filter the end of a series."
 					},
@@ -718,6 +727,7 @@
 						"example": "[\n  \"15169\"\n]",
 						"items": {
 							"type": "string",
+							"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `[-174, 3356]` excludes results from AS174, but includes results from AS3356.",
 							"example": "15169"
 						},
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `[-174, 3356]` excludes results from AS174, but includes results from AS3356."
@@ -727,6 +737,7 @@
 						"example": "[\n  \"US,CA\"\n]",
 						"items": {
 							"type": "string",
+							"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `[-US, PT]` excludes results from the US, but includes results from PT.",
 							"example": "US,CA"
 						},
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `[-US, PT]` excludes results from the US, but includes results from PT."
@@ -734,12 +745,11 @@
 					"format": {
 						"type": "string",
 						"example": "\"json\"",
-						"default": "json",
+						"description": "Format results are returned in.",
 						"enum": [
 							"json",
 							"csv"
-						],
-						"description": "Format results are returned in."
+						]
 					}
 				},
 				"required_props": [],
@@ -754,9 +764,9 @@
 					"format"
 				],
 				"objects": [],
-				"example": "{\n  \"aggInterval\": \"1h\",\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"format\": \"json\"\n}"
+				"example": "{\n  \"aggInterval\": \"1h\",\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    {}\n  ],\n  \"dateStart\": [\n    \"2022-09-15T00:00:00Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-15T00:00:00Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"meta\": {\n      \"confidenceInfo\": {\n        \"annotations\": [\n          {\n            \"dataSource\": \"ALL\",\n            \"eventType\": \"OUTAGE\",\n            \"description\": \"Cable cut in Tonga\",\n            \"startTime\": \"2022-09-17T10:22:57.555Z\",\n            \"endTime\": \"2022-09-17T10:22:57.555Z\"\n          }\n        ]\n      },\n      \"dateRange\": {\n        \"startTime\": \"2022-09-16T10:22:57.555Z\",\n        \"endTime\": \"2022-09-17T10:22:57.555Z\"\n      },\n      \"aggInterval\": \"1h\",\n      \"lastUpdated\": \"2022-09-17T10:22:57.555Z\"\n    },\n    \"serie_0\": {\n      \"timeseries\": [\n        \"2022-09-17T10:22:57.555Z\"\n      ],\n      \"udp\": [\n        \"30\"\n      ],\n      \"tcp\": [\n        \"60\"\n      ],\n      \"gre\": [\n        \"5\"\n      ],\n      \"icmp\": [\n        \"5\"\n      ]\n    }\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"result\": {\n    \"meta\": {\n      \"confidenceInfo\": {\n        \"annotations\": [\n          {\n            \"dataSource\": \"ALL\",\n            \"eventType\": \"OUTAGE\",\n            \"description\": \"Cable cut in Tonga\",\n            \"startTime\": \"2022-09-15T00:00:00Z\",\n            \"endTime\": \"2022-09-15T00:00:00Z\"\n          }\n        ]\n      },\n      \"dateRange\": {\n        \"startTime\": \"2022-09-16T10:22:57.555Z\",\n        \"endTime\": \"2022-09-17T10:22:57.555Z\"\n      },\n      \"aggInterval\": \"1h\",\n      \"lastUpdated\": \"2022-09-15T00:00:00Z\"\n    },\n    \"serie_0\": {\n      \"timeseries\": [\n        \"2022-09-15T00:00:00Z\"\n      ],\n      \"udp\": [\n        \"30\"\n      ],\n      \"tcp\": [\n        \"60\"\n      ],\n      \"gre\": [\n        \"5\"\n      ],\n      \"icmp\": [\n        \"5\"\n      ]\n    }\n  }\n}"
 		},
 		{
 			"title": "Get a summary of layer 7 attacks",
@@ -778,7 +788,7 @@
 			},
 			"html_id": "radar-attacks-get-a-summary-of-layer-7-attacks",
 			"uri": "radar/attacks/layer7/summary",
-			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/attacks/layer7/summary?name=main_series&dateRange=7d&dateStart=2022-08-01T09:58:33Z&dateEnd=2022-09-01T09:58:33Z&asn=15169&location=US,CA&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/attacks/layer7/summary?name=main_series&dateRange=[object Object]&dateStart=2022-09-15T00:00:00Z&dateEnd=2022-09-15T00:00:00Z&asn=15169&location=US,CA&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -789,15 +799,17 @@
 						"example": "[\n  \"main_series\"\n]",
 						"items": {
 							"type": "string",
+							"description": "Array of names that will be used to name the series in responses.",
 							"example": "main_series"
 						},
 						"description": "Array of names that will be used to name the series in responses."
 					},
 					"dateRange": {
 						"type": "array",
-						"example": "[\n  \"7d\"\n]",
+						"example": "[\n  {}\n]",
 						"items": {
 							"type": "string",
+							"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 							"enum": [
 								"1d",
 								"7d",
@@ -807,8 +819,7 @@
 								"7dControl",
 								"14dControl",
 								"28dControl"
-							],
-							"example": "7d"
+							]
 						},
 						"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 						"enum": [
@@ -824,21 +835,21 @@
 					},
 					"dateStart": {
 						"type": "array",
-						"example": "[\n  \"2022-08-01T09:58:33Z\"\n]",
+						"example": "[\n  \"2022-09-15T00:00:00Z\"\n]",
 						"items": {
 							"type": "string",
-							"format": "date-time",
-							"example": "2022-08-01T09:58:33Z"
+							"example": "2022-09-15T00:00:00Z",
+							"format": "date-time"
 						},
 						"description": "Array of datetimes to filter the start of a series."
 					},
 					"dateEnd": {
 						"type": "array",
-						"example": "[\n  \"2022-09-01T09:58:33Z\"\n]",
+						"example": "[\n  \"2022-09-15T00:00:00Z\"\n]",
 						"items": {
 							"type": "string",
-							"format": "date-time",
-							"example": "2022-09-01T09:58:33Z"
+							"example": "2022-09-15T00:00:00Z",
+							"format": "date-time"
 						},
 						"description": "Array of datetimes to filter the end of a series."
 					},
@@ -847,6 +858,7 @@
 						"example": "[\n  \"15169\"\n]",
 						"items": {
 							"type": "string",
+							"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `[-174, 3356]` excludes results from AS174, but includes results from AS3356.",
 							"example": "15169"
 						},
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `[-174, 3356]` excludes results from AS174, but includes results from AS3356."
@@ -856,6 +868,7 @@
 						"example": "[\n  \"US,CA\"\n]",
 						"items": {
 							"type": "string",
+							"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `[-US, PT]` excludes results from the US, but includes results from PT.",
 							"example": "US,CA"
 						},
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `[-US, PT]` excludes results from the US, but includes results from PT."
@@ -863,12 +876,11 @@
 					"format": {
 						"type": "string",
 						"example": "\"json\"",
-						"default": "json",
+						"description": "Format results are returned in.",
 						"enum": [
 							"json",
 							"csv"
-						],
-						"description": "Format results are returned in."
+						]
 					}
 				},
 				"required_props": [],
@@ -882,9 +894,9 @@
 					"format"
 				],
 				"objects": [],
-				"example": "{\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"format\": \"json\"\n}"
+				"example": "{\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    {}\n  ],\n  \"dateStart\": [\n    \"2022-09-15T00:00:00Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-15T00:00:00Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"meta\": {\n      \"confidenceInfo\": {\n        \"annotations\": [\n          {\n            \"dataSource\": \"ALL\",\n            \"eventType\": \"OUTAGE\",\n            \"description\": \"Cable cut in Tonga\",\n            \"startTime\": \"2022-09-17T10:22:57.555Z\",\n            \"endTime\": \"2022-09-17T10:22:57.555Z\"\n          }\n        ]\n      },\n      \"dateRange\": {\n        \"startTime\": \"2022-09-16T10:22:57.555Z\",\n        \"endTime\": \"2022-09-17T10:22:57.555Z\"\n      }\n    },\n    \"summary_0\": {\n      \"tcp\": \"65\",\n      \"udp\": \"34\",\n      \"gre\": \"0.1\",\n      \"icmp\": \"0.9\"\n    }\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"result\": {\n    \"meta\": {\n      \"confidenceInfo\": {\n        \"annotations\": [\n          {\n            \"dataSource\": \"ALL\",\n            \"eventType\": \"OUTAGE\",\n            \"description\": \"Cable cut in Tonga\",\n            \"startTime\": \"2022-09-15T00:00:00Z\",\n            \"endTime\": \"2022-09-15T00:00:00Z\"\n          }\n        ]\n      },\n      \"dateRange\": {\n        \"startTime\": \"2022-09-16T10:22:57.555Z\",\n        \"endTime\": \"2022-09-17T10:22:57.555Z\"\n      }\n    },\n    \"summary_0\": {\n      \"tcp\": \"65\",\n      \"udp\": \"34\",\n      \"gre\": \"0.1\",\n      \"icmp\": \"0.9\"\n    }\n  }\n}"
 		},
 		{
 			"title": "Get layer 7 top origin locations",
@@ -906,32 +918,34 @@
 			},
 			"html_id": "radar-attacks-get-layer-7-top-origin-locations",
 			"uri": "radar/attacks/layer7/top/locations/origin",
-			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/attacks/layer7/top/locations/origin?limit=5&name=main_series&dateRange=7d&dateStart=2022-08-01T09:58:33Z&dateEnd=2022-09-01T09:58:33Z&asn=15169&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/attacks/layer7/top/locations/origin?limit=5&name=main_series&dateRange=[object Object]&dateStart=2022-09-15T00:00:00Z&dateEnd=2022-09-15T00:00:00Z&asn=15169&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
 				},
 				"all_props": {
 					"limit": {
-						"type": "number",
+						"type": "integer",
 						"example": "5",
-						"default": 5,
-						"description": "Limit the number of objects in the response."
+						"description": "Limit the number of objects in the response.",
+						"default": 5
 					},
 					"name": {
 						"type": "array",
 						"example": "[\n  \"main_series\"\n]",
 						"items": {
 							"type": "string",
+							"description": "Array of names that will be used to name the series in responses.",
 							"example": "main_series"
 						},
 						"description": "Array of names that will be used to name the series in responses."
 					},
 					"dateRange": {
 						"type": "array",
-						"example": "[\n  \"7d\"\n]",
+						"example": "[\n  {}\n]",
 						"items": {
 							"type": "string",
+							"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 							"enum": [
 								"1d",
 								"7d",
@@ -941,8 +955,7 @@
 								"7dControl",
 								"14dControl",
 								"28dControl"
-							],
-							"example": "7d"
+							]
 						},
 						"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 						"enum": [
@@ -958,21 +971,21 @@
 					},
 					"dateStart": {
 						"type": "array",
-						"example": "[\n  \"2022-08-01T09:58:33Z\"\n]",
+						"example": "[\n  \"2022-09-15T00:00:00Z\"\n]",
 						"items": {
 							"type": "string",
-							"format": "date-time",
-							"example": "2022-08-01T09:58:33Z"
+							"example": "2022-09-15T00:00:00Z",
+							"format": "date-time"
 						},
 						"description": "Array of datetimes to filter the start of a series."
 					},
 					"dateEnd": {
 						"type": "array",
-						"example": "[\n  \"2022-09-01T09:58:33Z\"\n]",
+						"example": "[\n  \"2022-09-15T00:00:00Z\"\n]",
 						"items": {
 							"type": "string",
-							"format": "date-time",
-							"example": "2022-09-01T09:58:33Z"
+							"example": "2022-09-15T00:00:00Z",
+							"format": "date-time"
 						},
 						"description": "Array of datetimes to filter the end of a series."
 					},
@@ -981,6 +994,7 @@
 						"example": "[\n  \"15169\"\n]",
 						"items": {
 							"type": "string",
+							"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `[-174, 3356]` excludes results from AS174, but includes results from AS3356.",
 							"example": "15169"
 						},
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `[-174, 3356]` excludes results from AS174, but includes results from AS3356."
@@ -988,12 +1002,11 @@
 					"format": {
 						"type": "string",
 						"example": "\"json\"",
-						"default": "json",
+						"description": "Format results are returned in.",
 						"enum": [
 							"json",
 							"csv"
-						],
-						"description": "Format results are returned in."
+						]
 					}
 				},
 				"required_props": [],
@@ -1007,9 +1020,9 @@
 					"format"
 				],
 				"objects": [],
-				"example": "{\n  \"limit\": 5,\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"format\": \"json\"\n}"
+				"example": "{\n  \"limit\": 5,\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    {}\n  ],\n  \"dateStart\": [\n    \"2022-09-15T00:00:00Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-15T00:00:00Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"top_0\": [\n      {\n        \"originCountryName\": \"United States\",\n        \"originCountryAlpha2\": \"US\",\n        \"value\": \"0.73996\",\n        \"rank\": \"1\"\n      }\n    ]\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"result\": {\n    \"top_0\": [\n      {\n        \"originCountryName\": \"United States\",\n        \"originCountryAlpha2\": \"US\",\n        \"value\": \"0.73996\",\n        \"rank\": \"1\"\n      }\n    ]\n  }\n}"
 		},
 		{
 			"title": "Get layer 7 top origin ASes",
@@ -1031,32 +1044,34 @@
 			},
 			"html_id": "radar-attacks-get-layer-7-top-origin-ases",
 			"uri": "radar/attacks/layer7/top/ases/origin",
-			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/attacks/layer7/top/ases/origin?limit=5&name=main_series&dateRange=7d&dateStart=2022-08-01T09:58:33Z&dateEnd=2022-09-01T09:58:33Z&location=US&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/attacks/layer7/top/ases/origin?limit=5&name=main_series&dateRange=[object Object]&dateStart=2022-09-15T00:00:00Z&dateEnd=2022-09-15T00:00:00Z&location=US&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
 				},
 				"all_props": {
 					"limit": {
-						"type": "number",
+						"type": "integer",
 						"example": "5",
-						"default": 5,
-						"description": "Limit the number of objects in the response."
+						"description": "Limit the number of objects in the response.",
+						"default": 5
 					},
 					"name": {
 						"type": "array",
 						"example": "[\n  \"main_series\"\n]",
 						"items": {
 							"type": "string",
+							"description": "Array of names that will be used to name the series in responses.",
 							"example": "main_series"
 						},
 						"description": "Array of names that will be used to name the series in responses."
 					},
 					"dateRange": {
 						"type": "array",
-						"example": "[\n  \"7d\"\n]",
+						"example": "[\n  {}\n]",
 						"items": {
 							"type": "string",
+							"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 							"enum": [
 								"1d",
 								"7d",
@@ -1066,8 +1081,7 @@
 								"7dControl",
 								"14dControl",
 								"28dControl"
-							],
-							"example": "7d"
+							]
 						},
 						"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 						"enum": [
@@ -1083,21 +1097,21 @@
 					},
 					"dateStart": {
 						"type": "array",
-						"example": "[\n  \"2022-08-01T09:58:33Z\"\n]",
+						"example": "[\n  \"2022-09-15T00:00:00Z\"\n]",
 						"items": {
 							"type": "string",
-							"format": "date-time",
-							"example": "2022-08-01T09:58:33Z"
+							"example": "2022-09-15T00:00:00Z",
+							"format": "date-time"
 						},
 						"description": "Array of datetimes to filter the start of a series."
 					},
 					"dateEnd": {
 						"type": "array",
-						"example": "[\n  \"2022-09-01T09:58:33Z\"\n]",
+						"example": "[\n  \"2022-09-15T00:00:00Z\"\n]",
 						"items": {
 							"type": "string",
-							"format": "date-time",
-							"example": "2022-09-01T09:58:33Z"
+							"example": "2022-09-15T00:00:00Z",
+							"format": "date-time"
 						},
 						"description": "Array of datetimes to filter the end of a series."
 					},
@@ -1106,6 +1120,7 @@
 						"example": "[\n  \"US\"\n]",
 						"items": {
 							"type": "string",
+							"description": "Array of locations (alpha-2 country codes).",
 							"example": "US"
 						},
 						"description": "Array of locations (alpha-2 country codes)."
@@ -1113,12 +1128,11 @@
 					"format": {
 						"type": "string",
 						"example": "\"json\"",
-						"default": "json",
+						"description": "Format results are returned in.",
 						"enum": [
 							"json",
 							"csv"
-						],
-						"description": "Format results are returned in."
+						]
 					}
 				},
 				"required_props": [],
@@ -1132,9 +1146,9 @@
 					"format"
 				],
 				"objects": [],
-				"example": "{\n  \"limit\": 5,\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"location\": [\n    \"US\"\n  ],\n  \"format\": \"json\"\n}"
+				"example": "{\n  \"limit\": 5,\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    {}\n  ],\n  \"dateStart\": [\n    \"2022-09-15T00:00:00Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-15T00:00:00Z\"\n  ],\n  \"location\": [\n    \"US\"\n  ],\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"top_0\": [\n      {\n        \"originAsn\": 16509,\n        \"originAsnName\": \"AMAZON-02\",\n        \"value\": \"0.73996\",\n        \"rank\": \"1\"\n      }\n    ]\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"result\": {\n    \"top_0\": [\n      {\n        \"originAsn\": 16509,\n        \"originAsnName\": \"AMAZON-02\",\n        \"value\": \"0.73996\",\n        \"rank\": \"1\"\n      }\n    ]\n  }\n}"
 		},
 		{
 			"title": "Get layer 7 top target locations",
@@ -1156,32 +1170,34 @@
 			},
 			"html_id": "radar-attacks-get-layer-7-top-target-locations",
 			"uri": "radar/attacks/layer7/top/locations/target",
-			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/attacks/layer7/top/locations/target?limit=5&name=main_series&dateRange=7d&dateStart=2022-08-01T09:58:33Z&dateEnd=2022-09-01T09:58:33Z&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/attacks/layer7/top/locations/target?limit=5&name=main_series&dateRange=[object Object]&dateStart=2022-09-15T00:00:00Z&dateEnd=2022-09-15T00:00:00Z&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
 				},
 				"all_props": {
 					"limit": {
-						"type": "number",
+						"type": "integer",
 						"example": "5",
-						"default": 5,
-						"description": "Limit the number of objects in the response."
+						"description": "Limit the number of objects in the response.",
+						"default": 5
 					},
 					"name": {
 						"type": "array",
 						"example": "[\n  \"main_series\"\n]",
 						"items": {
 							"type": "string",
+							"description": "Array of names that will be used to name the series in responses.",
 							"example": "main_series"
 						},
 						"description": "Array of names that will be used to name the series in responses."
 					},
 					"dateRange": {
 						"type": "array",
-						"example": "[\n  \"7d\"\n]",
+						"example": "[\n  {}\n]",
 						"items": {
 							"type": "string",
+							"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 							"enum": [
 								"1d",
 								"7d",
@@ -1191,8 +1207,7 @@
 								"7dControl",
 								"14dControl",
 								"28dControl"
-							],
-							"example": "7d"
+							]
 						},
 						"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 						"enum": [
@@ -1208,33 +1223,32 @@
 					},
 					"dateStart": {
 						"type": "array",
-						"example": "[\n  \"2022-08-01T09:58:33Z\"\n]",
+						"example": "[\n  \"2022-09-15T00:00:00Z\"\n]",
 						"items": {
 							"type": "string",
-							"format": "date-time",
-							"example": "2022-08-01T09:58:33Z"
+							"example": "2022-09-15T00:00:00Z",
+							"format": "date-time"
 						},
 						"description": "Array of datetimes to filter the start of a series."
 					},
 					"dateEnd": {
 						"type": "array",
-						"example": "[\n  \"2022-09-01T09:58:33Z\"\n]",
+						"example": "[\n  \"2022-09-15T00:00:00Z\"\n]",
 						"items": {
 							"type": "string",
-							"format": "date-time",
-							"example": "2022-09-01T09:58:33Z"
+							"example": "2022-09-15T00:00:00Z",
+							"format": "date-time"
 						},
 						"description": "Array of datetimes to filter the end of a series."
 					},
 					"format": {
 						"type": "string",
 						"example": "\"json\"",
-						"default": "json",
+						"description": "Format results are returned in.",
 						"enum": [
 							"json",
 							"csv"
-						],
-						"description": "Format results are returned in."
+						]
 					}
 				},
 				"required_props": [],
@@ -1247,7 +1261,7 @@
 					"format"
 				],
 				"objects": [],
-				"example": "{\n  \"limit\": 5,\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"format\": \"json\"\n}"
+				"example": "{\n  \"limit\": 5,\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    {}\n  ],\n  \"dateStart\": [\n    \"2022-09-15T00:00:00Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-15T00:00:00Z\"\n  ],\n  \"format\": \"json\"\n}"
 			},
 			"response": "{\n  \"data\": {\n    \"top_0\": [\n      {\n        \"targetCountryName\": \"United States\",\n        \"targetCountryAlpha2\": \"US\",\n        \"value\": \"0.73996\",\n        \"rank\": \"1\"\n      }\n    ]\n  }\n}"
 		},
@@ -1271,32 +1285,34 @@
 			},
 			"html_id": "radar-attacks-get-layer-7-top-attack-pairs-origin-and-target-locations-",
 			"uri": "radar/attacks/layer7/top/attacks",
-			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/attacks/layer7/top/attacks?limit=5&name=main_series&dateRange=7d&dateStart=2022-08-01T09:58:33Z&dateEnd=2022-09-01T09:58:33Z&location=US,CA&magnitude=mitigated_requests&limitDirection=origin&limitPerLocation=10&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/attacks/layer7/top/attacks?limit=5&name=main_series&dateRange=[object Object]&dateStart=2022-09-15T00:00:00Z&dateEnd=2022-09-15T00:00:00Z&location=US,CA&magnitude=mitigated_requests&limitDirection=origin&limitPerLocation=10&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
 				},
 				"all_props": {
 					"limit": {
-						"type": "number",
+						"type": "integer",
 						"example": "5",
-						"default": 5,
-						"description": "Limit the number of objects in the response."
+						"description": "Limit the number of objects in the response.",
+						"default": 5
 					},
 					"name": {
 						"type": "array",
 						"example": "[\n  \"main_series\"\n]",
 						"items": {
 							"type": "string",
+							"description": "Array of names that will be used to name the series in responses.",
 							"example": "main_series"
 						},
 						"description": "Array of names that will be used to name the series in responses."
 					},
 					"dateRange": {
 						"type": "array",
-						"example": "[\n  \"7d\"\n]",
+						"example": "[\n  {}\n]",
 						"items": {
 							"type": "string",
+							"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 							"enum": [
 								"1d",
 								"7d",
@@ -1306,8 +1322,7 @@
 								"7dControl",
 								"14dControl",
 								"28dControl"
-							],
-							"example": "7d"
+							]
 						},
 						"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 						"enum": [
@@ -1323,21 +1338,21 @@
 					},
 					"dateStart": {
 						"type": "array",
-						"example": "[\n  \"2022-08-01T09:58:33Z\"\n]",
+						"example": "[\n  \"2022-09-15T00:00:00Z\"\n]",
 						"items": {
 							"type": "string",
-							"format": "date-time",
-							"example": "2022-08-01T09:58:33Z"
+							"example": "2022-09-15T00:00:00Z",
+							"format": "date-time"
 						},
 						"description": "Array of datetimes to filter the start of a series."
 					},
 					"dateEnd": {
 						"type": "array",
-						"example": "[\n  \"2022-09-01T09:58:33Z\"\n]",
+						"example": "[\n  \"2022-09-15T00:00:00Z\"\n]",
 						"items": {
 							"type": "string",
-							"format": "date-time",
-							"example": "2022-09-01T09:58:33Z"
+							"example": "2022-09-15T00:00:00Z",
+							"format": "date-time"
 						},
 						"description": "Array of datetimes to filter the end of a series."
 					},
@@ -1346,22 +1361,15 @@
 						"example": "[\n  \"US,CA\"\n]",
 						"items": {
 							"type": "string",
+							"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `[-US, PT]` excludes results from the US, but includes results from PT.",
 							"example": "US,CA"
 						},
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `[-US, PT]` excludes results from the US, but includes results from PT."
 					},
 					"magnitude": {
-						"type": "array",
-						"example": "[\n  \"mitigated_requests\"\n]",
-						"items": {
-							"type": "string",
-							"enum": [
-								"AFFECTED_ZONES",
-								"MITIGATED_REQUESTS"
-							],
-							"example": "mitigated_requests"
-						},
-						"description": "Array of attack magnitude options. Attack magnitude can be defined by total requests mitigated or by total zones attacked.",
+						"type": "string",
+						"example": "\"mitigated_requests\"",
+						"description": "Attack magnitude can be defined by total requests mitigated or by total zones attacked.",
 						"enum": [
 							"AFFECTED_ZONES",
 							"MITIGATED_REQUESTS"
@@ -1372,11 +1380,12 @@
 						"example": "[\n  \"origin\"\n]",
 						"items": {
 							"type": "string",
+							"description": "Array of attack origin/target location attack limits. Together with `limitPerLocation`, limits how many objects will be fetched per origin/target location.",
+							"example": "origin",
 							"enum": [
 								"ORIGIN",
 								"TARGET"
-							],
-							"example": "origin"
+							]
 						},
 						"description": "Array of attack origin/target location attack limits. Together with `limitPerLocation`, limits how many objects will be fetched per origin/target location.",
 						"enum": [
@@ -1385,20 +1394,24 @@
 						]
 					},
 					"limitPerLocation": {
-						"type": "number",
-						"example": "10",
-						"default": 10,
+						"type": "array",
+						"example": "[\n  10\n]",
+						"items": {
+							"type": "integer",
+							"description": "Limit the number of attacks per origin/target (see `limitDirection` parameter) location.",
+							"example": 10,
+							"default": 10
+						},
 						"description": "Limit the number of attacks per origin/target (see `limitDirection` parameter) location."
 					},
 					"format": {
 						"type": "string",
 						"example": "\"json\"",
-						"default": "json",
+						"description": "Format results are returned in.",
 						"enum": [
 							"json",
 							"csv"
-						],
-						"description": "Format results are returned in."
+						]
 					}
 				},
 				"required_props": [],
@@ -1415,9 +1428,9 @@
 					"format"
 				],
 				"objects": [],
-				"example": "{\n  \"limit\": 5,\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"magnitude\": [\n    \"mitigated_requests\"\n  ],\n  \"limitDirection\": [\n    \"origin\"\n  ],\n  \"limitPerLocation\": 10,\n  \"format\": \"json\"\n}"
+				"example": "{\n  \"limit\": 5,\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    {}\n  ],\n  \"dateStart\": [\n    \"2022-09-15T00:00:00Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-15T00:00:00Z\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"magnitude\": \"mitigated_requests\",\n  \"limitDirection\": [\n    \"origin\"\n  ],\n  \"limitPerLocation\": [\n    10\n  ],\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"top_0\": [\n      {\n        \"originCountryName\": \"United States\",\n        \"originCountryAlpha2\": \"US\",\n        \"targetCountryName\": \"Portugal\",\n        \"targetCountryAlpha2\": \"PT\",\n        \"value\": \"0.73996\",\n        \"rank\": \"1\"\n      }\n    ]\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"result\": {\n    \"top_0\": [\n      {\n        \"originCountryName\": \"United States\",\n        \"originCountryAlpha2\": \"US\",\n        \"targetCountryName\": \"Portugal\",\n        \"targetCountryAlpha2\": \"PT\",\n        \"value\": \"0.73996\",\n        \"rank\": \"1\"\n      }\n    ]\n  }\n}"
 		}
 	],
 	"cfExtendedDescription": "Either one or multiple queries can be requested at the same time - this is useful when you want, for example, to compare multiple time series (eg. `dateRange=7d&location=US&dateRange=7d&location=CA` would fetch two time series at the same time, the first for the US, the second for Canada). Take into account that the api is not real time and has a delay of about two hours.",

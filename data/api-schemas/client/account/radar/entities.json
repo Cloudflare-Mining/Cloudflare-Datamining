@@ -33,12 +33,11 @@
 					"format": {
 						"type": "string",
 						"example": "\"json\"",
-						"default": "json",
+						"description": "Format results are returned in.",
 						"enum": [
 							"json",
 							"csv"
-						],
-						"description": "Format results are returned in."
+						]
 					}
 				},
 				"required_props": [],
@@ -48,7 +47,7 @@
 				"objects": [],
 				"example": "{\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"location\": {\n      \"name\": \"Afghanistan\",\n      \"region\": \"Middle East\",\n      \"subregion\": \"Southern Asia\",\n      \"latitude\": 33.939116,\n      \"longitude\": 67.709953,\n      \"alpha2\": \"AF\",\n      \"confidenceLvel\": 5\n    }\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"result\": {\n    \"location\": {\n      \"name\": \"Afghanistan\",\n      \"region\": \"Middle East\",\n      \"subregion\": \"Southern Asia\",\n      \"latitude\": 33.939116,\n      \"longitude\": 67.709953,\n      \"alpha2\": \"AF\",\n      \"confidenceLvel\": 5\n    }\n  }\n}"
 		},
 		{
 			"title": "Get locations",
@@ -77,31 +76,30 @@
 				},
 				"all_props": {
 					"limit": {
-						"type": "number",
+						"type": "integer",
 						"example": "5",
-						"default": 5,
-						"description": "Limit the number of objects in the response."
+						"description": "Limit the number of objects in the response.",
+						"default": 5
 					},
 					"offset": {
-						"type": "number",
-						"example": "\"0\"",
-						"default": "0",
-						"description": "Number of objects to skip before grabbing results."
+						"type": "integer",
+						"example": "0",
+						"description": "Number of objects to skip before grabbing results.",
+						"default": 0
 					},
 					"location": {
 						"type": "string",
 						"example": "\"US,CA\"",
-						"description": "Comma separated list of locations. Start with `-` to exclude from results. For example, `[-US, PT]` excludes results from the US, but includes results from PT."
+						"description": "Comma separated list of locations."
 					},
 					"format": {
 						"type": "string",
 						"example": "\"json\"",
-						"default": "json",
+						"description": "Format results are returned in.",
 						"enum": [
 							"json",
 							"csv"
-						],
-						"description": "Format results are returned in."
+						]
 					}
 				},
 				"required_props": [],
@@ -112,9 +110,9 @@
 					"format"
 				],
 				"objects": [],
-				"example": "{\n  \"limit\": 5,\n  \"offset\": \"0\",\n  \"location\": \"US,CA\",\n  \"format\": \"json\"\n}"
+				"example": "{\n  \"limit\": 5,\n  \"offset\": 0,\n  \"location\": \"US,CA\",\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"locations\": [\n      {\n        \"name\": \"Afghanistan\",\n        \"latitude\": 33.939116,\n        \"longitude\": 67.709953,\n        \"alpha2\": \"AF\"\n      }\n    ]\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"result\": {\n    \"locations\": [\n      {\n        \"name\": \"Afghanistan\",\n        \"latitude\": 33.939116,\n        \"longitude\": 67.709953,\n        \"alpha2\": \"AF\"\n      }\n    ]\n  }\n}"
 		},
 		{
 			"title": "Get autonomous system information by IP address",
@@ -150,12 +148,11 @@
 					"format": {
 						"type": "string",
 						"example": "\"json\"",
-						"default": "json",
+						"description": "Format results are returned in.",
 						"enum": [
 							"json",
 							"csv"
-						],
-						"description": "Format results are returned in."
+						]
 					}
 				},
 				"required_props": [],
@@ -166,7 +163,7 @@
 				"objects": [],
 				"example": "{\n  \"ip\": \"1.1.1.1\",\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"asn\": {\n      \"name\": \"Apple Inc.\",\n      \"related\": [\n        {}\n      ],\n      \"asn\": 714,\n      \"website\": \"https://www.apple.com/support/systemstatus/\"\n    }\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"result\": {\n    \"asn\": {\n      \"name\": \"Apple Inc.\",\n      \"related\": [\n        {}\n      ],\n      \"asn\": 714,\n      \"website\": \"https://www.apple.com/support/systemstatus/\"\n    }\n  }\n}"
 		},
 		{
 			"title": "Get autonomous system (AS) by ID",
@@ -197,12 +194,11 @@
 					"format": {
 						"type": "string",
 						"example": "\"json\"",
-						"default": "json",
+						"description": "Format results are returned in.",
 						"enum": [
 							"json",
 							"csv"
-						],
-						"description": "Format results are returned in."
+						]
 					}
 				},
 				"required_props": [],
@@ -212,7 +208,7 @@
 				"objects": [],
 				"example": "{\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"asn\": {\n      \"name\": \"Apple Inc.\",\n      \"confidenceLevel\": 5,\n      \"related\": [\n        {\n          \"name\": \"Cogent-174\",\n          \"asn\": 174\n        }\n      ],\n      \"asn\": 714,\n      \"website\": \"https://www.apple.com/support/systemstatus/\"\n    }\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"result\": {\n    \"asn\": {\n      \"name\": \"Apple Inc.\",\n      \"confidenceLevel\": 5,\n      \"related\": [\n        {\n          \"name\": \"Cogent-174\",\n          \"aka\": \"\",\n          \"asn\": 174\n        }\n      ],\n      \"asn\": 714,\n      \"website\": \"https://www.apple.com/support/systemstatus/\"\n    }\n  }\n}"
 		},
 		{
 			"title": "Get autonomous systems",
@@ -241,31 +237,30 @@
 				},
 				"all_props": {
 					"limit": {
-						"type": "number",
+						"type": "integer",
 						"example": "5",
-						"default": 5,
-						"description": "Limit the number of objects in the response."
+						"description": "Limit the number of objects in the response.",
+						"default": 5
 					},
 					"offset": {
-						"type": "number",
-						"example": "\"0\"",
-						"default": "0",
-						"description": "Number of objects to skip before grabbing results."
+						"type": "integer",
+						"example": "0",
+						"description": "Number of objects to skip before grabbing results.",
+						"default": 0
 					},
 					"asn": {
 						"type": "string",
 						"example": "\"174,7922\"",
-						"description": "Comma separated list of ASNs. Start with `-` to exclude from results. For example, `[-174, 3356]` excludes results from AS174, but includes results from AS3356."
+						"description": "Comma separated list of ASNs."
 					},
 					"format": {
 						"type": "string",
 						"example": "\"json\"",
-						"default": "json",
+						"description": "Format results are returned in.",
 						"enum": [
 							"json",
 							"csv"
-						],
-						"description": "Format results are returned in."
+						]
 					}
 				},
 				"required_props": [],
@@ -276,7 +271,7 @@
 					"format"
 				],
 				"objects": [],
-				"example": "{\n  \"limit\": 5,\n  \"offset\": \"0\",\n  \"asn\": \"174,7922\",\n  \"format\": \"json\"\n}"
+				"example": "{\n  \"limit\": 5,\n  \"offset\": 0,\n  \"asn\": \"174,7922\",\n  \"format\": \"json\"\n}"
 			},
 			"response": "{\n  \"ases\": [\n    {\n      \"name\": \"Apple Inc.\",\n      \"asn\": 714,\n      \"website\": \"https://www.apple.com/support/systemstatus/\"\n    }\n  ]\n}"
 		}
