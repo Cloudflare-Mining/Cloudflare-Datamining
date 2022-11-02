@@ -1,7 +1,7 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/account/radar/annotations",
 	"title": "Radar annotations",
-	"description": "Shows Outages data gathered. (Beta)",
+	"description": "Shows Outages data available in the Cloudflare Radar Outage Center (CROC). (Beta)",
 	"type": "object",
 	"links": [
 		{
@@ -24,21 +24,22 @@
 			},
 			"html_id": "radar-annotations-get-top-outages-annotations",
 			"uri": "radar/annotations/outages/locations",
-			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/annotations/outages/locations?limit=5&dateRange=7d&dateStart=2022-09-15T00:00:00Z&dateEnd=2022-09-15T23:59:59&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/annotations/outages/locations?limit=5&dateRange=7d&dateStart=2022-09-15T00:00:00Z&dateEnd=2022-09-15T00:00:00Z&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
 				},
 				"all_props": {
 					"limit": {
-						"type": "number",
+						"type": "integer",
 						"example": "5",
-						"default": 5,
-						"description": "Limit the number of objects in the response."
+						"description": "Limit the number of objects in the response.",
+						"default": 5
 					},
 					"dateRange": {
 						"type": "string",
 						"example": "\"7d\"",
+						"description": "Shorthand date ranges for the last X days - use when you don't need specific start and end dates.",
 						"enum": [
 							"1d",
 							"7d",
@@ -48,28 +49,28 @@
 							"7dControl",
 							"14dControl",
 							"28dControl"
-						],
-						"description": "Shorthand date ranges for the last X days - use when you don't need specific start and end dates."
+						]
 					},
 					"dateStart": {
 						"type": "string",
 						"example": "\"2022-09-15T00:00:00Z\"",
+						"format": "date-time",
 						"description": "Start of the date range (inclusive)."
 					},
 					"dateEnd": {
 						"type": "string",
-						"example": "\"2022-09-15T23:59:59\"",
+						"example": "\"2022-09-15T00:00:00Z\"",
+						"format": "date-time",
 						"description": "End of the date range (inclusive)."
 					},
 					"format": {
 						"type": "string",
 						"example": "\"json\"",
-						"default": "json",
+						"description": "Format results are returned in.",
 						"enum": [
 							"json",
 							"csv"
-						],
-						"description": "Format results are returned in."
+						]
 					}
 				},
 				"required_props": [],
@@ -81,9 +82,9 @@
 					"format"
 				],
 				"objects": [],
-				"example": "{\n  \"limit\": 5,\n  \"dateRange\": \"7d\",\n  \"dateStart\": \"2022-09-15T00:00:00Z\",\n  \"dateEnd\": \"2022-09-15T23:59:59\",\n  \"format\": \"json\"\n}"
+				"example": "{\n  \"limit\": 5,\n  \"dateRange\": \"7d\",\n  \"dateStart\": \"2022-09-15T00:00:00Z\",\n  \"dateEnd\": \"2022-09-15T00:00:00Z\",\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"annotations\": [\n      {\n        \"clientCountryAlpha2\": \"PT\",\n        \"clientCountryName\": \"Portugal\",\n        \"value\": \"5\"\n      }\n    ]\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"result\": {\n    \"annotations\": [\n      {\n        \"clientCountryAlpha2\": \"PT\",\n        \"clientCountryName\": \"Portugal\",\n        \"value\": \"5\"\n      }\n    ]\n  }\n}"
 		},
 		{
 			"title": "Get outages annotations",
@@ -105,27 +106,28 @@
 			},
 			"html_id": "radar-annotations-get-outages-annotations",
 			"uri": "radar/annotations/outages",
-			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/annotations/outages?limit=5&offset=0&dateRange=7d&dateStart=2022-09-15T00:00:00Z&dateEnd=2022-09-15T23:59:59&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/annotations/outages?limit=5&offset=0&dateRange=7d&dateStart=2022-09-15T00:00:00Z&dateEnd=2022-09-15T00:00:00Z&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
 				},
 				"all_props": {
 					"limit": {
-						"type": "number",
+						"type": "integer",
 						"example": "5",
-						"default": 5,
-						"description": "Limit the number of objects in the response."
+						"description": "Limit the number of objects in the response.",
+						"default": 5
 					},
 					"offset": {
-						"type": "number",
-						"example": "\"0\"",
-						"default": "0",
-						"description": "Number of objects to skip before grabbing results."
+						"type": "integer",
+						"example": "0",
+						"description": "Number of objects to skip before grabbing results.",
+						"default": 0
 					},
 					"dateRange": {
 						"type": "string",
 						"example": "\"7d\"",
+						"description": "Shorthand date ranges for the last X days - use when you don't need specific start and end dates.",
 						"enum": [
 							"1d",
 							"7d",
@@ -135,28 +137,28 @@
 							"7dControl",
 							"14dControl",
 							"28dControl"
-						],
-						"description": "Shorthand date ranges for the last X days - use when you don't need specific start and end dates."
+						]
 					},
 					"dateStart": {
 						"type": "string",
 						"example": "\"2022-09-15T00:00:00Z\"",
+						"format": "date-time",
 						"description": "Start of the date range (inclusive)."
 					},
 					"dateEnd": {
 						"type": "string",
-						"example": "\"2022-09-15T23:59:59\"",
+						"example": "\"2022-09-15T00:00:00Z\"",
+						"format": "date-time",
 						"description": "End of the date range (inclusive)."
 					},
 					"format": {
 						"type": "string",
 						"example": "\"json\"",
-						"default": "json",
+						"description": "Format results are returned in.",
 						"enum": [
 							"json",
 							"csv"
-						],
-						"description": "Format results are returned in."
+						]
 					}
 				},
 				"required_props": [],
@@ -169,12 +171,12 @@
 					"format"
 				],
 				"objects": [],
-				"example": "{\n  \"limit\": 5,\n  \"offset\": \"0\",\n  \"dateRange\": \"7d\",\n  \"dateStart\": \"2022-09-15T00:00:00Z\",\n  \"dateEnd\": \"2022-09-15T23:59:59\",\n  \"format\": \"json\"\n}"
+				"example": "{\n  \"limit\": 5,\n  \"offset\": 0,\n  \"dateRange\": \"7d\",\n  \"dateStart\": \"2022-09-15T00:00:00Z\",\n  \"dateEnd\": \"2022-09-15T00:00:00Z\",\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"annotations\": [\n      {\n        \"dataSource\": \"ALL\",\n        \"description\": \"example\",\n        \"scope\": \"Colima, Michoacán, México\",\n        \"startDate\": \"2022-09-06T10:00:28Z\",\n        \"endDate\": \"2022-09-08T10:00:28Z\",\n        \"asns\": [\n          189\n        ],\n        \"locations\": [\n          \"MX\"\n        ],\n        \"eventType\": \"OUTAGE\",\n        \"linkedUrl\": \"http://example.com\",\n        \"outage\": {\n          \"outageCause\": \"CABLE_CUT\",\n          \"outageType\": \"NATIONWIDE\"\n        }\n      }\n    ]\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"result\": {\n    \"annotations\": [\n      {\n        \"dataSource\": \"ALL\",\n        \"description\": \"example\",\n        \"scope\": \"Colima, Michoacán, México\",\n        \"startDate\": \"2022-09-06T10:00:28Z\",\n        \"endDate\": \"2022-09-08T10:00:28Z\",\n        \"asns\": [\n          189\n        ],\n        \"locations\": [\n          \"MX\"\n        ],\n        \"eventType\": \"OUTAGE\",\n        \"linkedUrl\": \"http://example.com\",\n        \"outage\": {\n          \"outageCause\": \"CABLE_CUT\",\n          \"outageType\": \"NATIONWIDE\"\n        }\n      }\n    ]\n  }\n}"
 		}
 	],
-	"cfExtendedDescription": "",
+	"cfExtendedDescription": "See https://blog.cloudflare.com/announcing-cloudflare-radar-outage-center/ for further information.",
 	"html_id": "radar-annotations",
 	"object_definition": {
 		"_formatter": {
@@ -186,6 +188,6 @@
 		"objects": [],
 		"example": "{}",
 		"title": "Radar annotations",
-		"description": "Shows Outages data gathered. (Beta)"
+		"description": "Shows Outages data available in the Cloudflare Radar Outage Center (CROC). (Beta)"
 	}
 }

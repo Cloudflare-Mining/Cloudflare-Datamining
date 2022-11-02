@@ -1,0 +1,208 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/radar/specialevents",
+	"title": "Radar specialevents",
+	"description": "",
+	"type": "object",
+	"links": [
+		{
+			"title": "List Special Events",
+			"description": "Get a list of Special Events.",
+			"rel": "collection",
+			"href": "radar/specialevents",
+			"method": "GET",
+			"cfOwnership": "radar",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.api.user.read"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "radar-specialevents-list-special-events",
+			"uri": "radar/specialevents",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/specialevents?limit=5&offset=0&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"limit": {
+						"type": "integer",
+						"example": "5",
+						"description": "Limit the number of objects in the response.",
+						"default": 5
+					},
+					"offset": {
+						"type": "integer",
+						"example": "0",
+						"description": "Number of objects to skip before grabbing results.",
+						"default": 0
+					},
+					"format": {
+						"type": "string",
+						"example": "\"json\"",
+						"description": "Format results are returned in.",
+						"enum": [
+							"json",
+							"csv"
+						]
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"limit",
+					"offset",
+					"format"
+				],
+				"objects": [],
+				"example": "{\n  \"limit\": 5,\n  \"offset\": 0,\n  \"format\": \"json\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"result\": {\n    \"specialEvents\": [\n      {\n        \"id\": 1,\n        \"title\": \"Euro2020\",\n        \"description\": \"The 2020 UEFA European Football Championship\",\n        \"alias\": \"euro2020\",\n        \"categories\": [\n          {\n            \"categoryAlias\": \"streaming\",\n            \"location\": \"GLOBAL\"\n          }\n        ]\n      }\n    ]\n  }\n}"
+		},
+		{
+			"title": "Get a Single Special Events",
+			"description": "Get a single Special Event.",
+			"rel": "collection",
+			"href": "radar/specialevents/{#/definitions/itemId}",
+			"method": "GET",
+			"cfOwnership": "radar",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.api.user.read"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "radar-specialevents-get-a-single-special-events",
+			"uri": "radar/specialevents/:itemId",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/specialevents/1?format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"format": {
+						"type": "string",
+						"example": "\"json\"",
+						"description": "Format results are returned in.",
+						"enum": [
+							"json",
+							"csv"
+						]
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"format"
+				],
+				"objects": [],
+				"example": "{\n  \"format\": \"json\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"result\": {\n    \"specialEvent\": {\n      \"id\": 1,\n      \"title\": \"Euro2020\",\n      \"description\": \"The 2020 UEFA European Football Championship\",\n      \"alias\": \"euro2020\",\n      \"categories\": [\n        {\n          \"categoryAlias\": \"streaming\",\n          \"location\": \"GLOBAL\"\n        }\n      ]\n    }\n  }\n}"
+		},
+		{
+			"title": "Get Special Events time series",
+			"description": "",
+			"rel": "collection",
+			"href": "radar/specialevents/{#/definitions/eventAlias}/{#/definitions/categoryAlias}",
+			"method": "GET",
+			"cfOwnership": "radar",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.api.user.read"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "radar-specialevents-get-special-events-time-series",
+			"uri": "radar/specialevents/:eventAlias/:categoryAlias",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/specialevents/eurovision-2022/videos?aggInterval=1h&name=main_series&dateStart=2022-09-15T00:00:00Z&dateEnd=2022-09-15T00:00:00Z&location=US&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"aggInterval": {
+						"type": "string",
+						"example": "\"1h\"",
+						"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals).",
+						"enum": [
+							"15m",
+							"1h",
+							"1d"
+						]
+					},
+					"name": {
+						"type": "string",
+						"example": "\"main_series\"",
+						"description": "Name that will be used to name the series in response."
+					},
+					"dateStart": {
+						"type": "string",
+						"example": "\"2022-09-15T00:00:00Z\"",
+						"format": "date-time",
+						"description": "Start of the date range (inclusive)."
+					},
+					"dateEnd": {
+						"type": "string",
+						"example": "\"2022-09-15T00:00:00Z\"",
+						"format": "date-time",
+						"description": "End of the date range (inclusive)."
+					},
+					"location": {
+						"type": "string",
+						"example": "\"US\"",
+						"description": "Location Alpha2 code."
+					},
+					"format": {
+						"type": "string",
+						"example": "\"json\"",
+						"description": "Format results are returned in.",
+						"enum": [
+							"json",
+							"csv"
+						]
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"aggInterval",
+					"name",
+					"dateStart",
+					"dateEnd",
+					"location",
+					"format"
+				],
+				"objects": [],
+				"example": "{\n  \"aggInterval\": \"1h\",\n  \"name\": \"main_series\",\n  \"dateStart\": \"2022-09-15T00:00:00Z\",\n  \"dateEnd\": \"2022-09-15T00:00:00Z\",\n  \"location\": \"US\",\n  \"format\": \"json\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"result\": {\n    \"serie_0\": {\n      \"timestamps\": [\n        \"2022-09-15T00:00:00Z\"\n      ],\n      \"values\": [\n        0.56\n      ]\n    }\n  }\n}"
+		}
+	],
+	"cfExtendedDescription": "",
+	"html_id": "radar-specialevents",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {},
+		"required_props": [],
+		"optional_props": [],
+		"objects": [],
+		"example": "{}",
+		"title": "Radar specialevents",
+		"description": ""
+	}
+}

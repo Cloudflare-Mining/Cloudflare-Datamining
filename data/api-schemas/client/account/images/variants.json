@@ -1,7 +1,7 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/account/images/variants.json",
 	"title": "Cloudflare Images Variants",
-	"description": "Cloudflare Images supports variants that specify different image sizes for different use cases. You can configure up to 20 variants.",
+	"description": "Cloudflare Images supports variants that specify different image sizes for different use cases. You can configure up to 100 variants.",
 	"type": "object",
 	"links": [
 		{
@@ -354,6 +354,6 @@
 		"objects": [],
 		"example": "{\n  \"id\": \"hero\",\n  \"options\": {\n    \"fit\": \"scale-down\",\n    \"metadata\": \"none\",\n    \"width\": 1366,\n    \"height\": 768\n  },\n  \"neverRequireSignedURLs\": true\n}",
 		"title": "Cloudflare Images Variants",
-		"description": "Cloudflare Images supports variants that specify different image sizes for different use cases. You can configure up to 20 variants."
+		"description": "Cloudflare Images supports variants that specify different image sizes for different use cases. You can configure up to 100 variants."
 	}
 }

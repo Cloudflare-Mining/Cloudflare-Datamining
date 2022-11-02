@@ -24,23 +24,24 @@
 			},
 			"html_id": "radar-ranking-get-domains-rank-time-series",
 			"uri": "radar/ranking/timeseries",
-			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/ranking/timeseries?limit=5&name=main_series&location=US&domains=google.com,facebook.com&dateRange=7d&dateStart=2022-08-01T09:58:33Z&dateEnd=2022-09-01T09:58:33Z&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/ranking/timeseries?limit=5&name=main_series&location=US&domains=google.com,facebook.com&dateRange=[object Object]&dateStart=2022-09-15T00:00:00Z&dateEnd=2022-09-15T00:00:00Z&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
 				},
 				"all_props": {
 					"limit": {
-						"type": "number",
+						"type": "integer",
 						"example": "5",
-						"default": 5,
-						"description": "Limit the number of objects in the response."
+						"description": "Limit the number of objects in the response.",
+						"default": 5
 					},
 					"name": {
 						"type": "array",
 						"example": "[\n  \"main_series\"\n]",
 						"items": {
 							"type": "string",
+							"description": "Array of names that will be used to name the series in responses.",
 							"example": "main_series"
 						},
 						"description": "Array of names that will be used to name the series in responses."
@@ -50,6 +51,7 @@
 						"example": "[\n  \"US\"\n]",
 						"items": {
 							"type": "string",
+							"description": "Array of locations (alpha-2 country codes).",
 							"example": "US"
 						},
 						"description": "Array of locations (alpha-2 country codes)."
@@ -59,15 +61,17 @@
 						"example": "[\n  \"google.com,facebook.com\"\n]",
 						"items": {
 							"type": "string",
+							"description": "Array of comma separated list of domains names.",
 							"example": "google.com,facebook.com"
 						},
 						"description": "Array of comma separated list of domains names."
 					},
 					"dateRange": {
 						"type": "array",
-						"example": "[\n  \"7d\"\n]",
+						"example": "[\n  {}\n]",
 						"items": {
 							"type": "string",
+							"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 							"enum": [
 								"1d",
 								"7d",
@@ -77,8 +81,7 @@
 								"7dControl",
 								"14dControl",
 								"28dControl"
-							],
-							"example": "7d"
+							]
 						},
 						"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 						"enum": [
@@ -94,33 +97,32 @@
 					},
 					"dateStart": {
 						"type": "array",
-						"example": "[\n  \"2022-08-01T09:58:33Z\"\n]",
+						"example": "[\n  \"2022-09-15T00:00:00Z\"\n]",
 						"items": {
 							"type": "string",
-							"format": "date-time",
-							"example": "2022-08-01T09:58:33Z"
+							"example": "2022-09-15T00:00:00Z",
+							"format": "date-time"
 						},
 						"description": "Array of datetimes to filter the start of a series."
 					},
 					"dateEnd": {
 						"type": "array",
-						"example": "[\n  \"2022-09-01T09:58:33Z\"\n]",
+						"example": "[\n  \"2022-09-15T00:00:00Z\"\n]",
 						"items": {
 							"type": "string",
-							"format": "date-time",
-							"example": "2022-09-01T09:58:33Z"
+							"example": "2022-09-15T00:00:00Z",
+							"format": "date-time"
 						},
 						"description": "Array of datetimes to filter the end of a series."
 					},
 					"format": {
 						"type": "string",
 						"example": "\"json\"",
-						"default": "json",
+						"description": "Format results are returned in.",
 						"enum": [
 							"json",
 							"csv"
-						],
-						"description": "Format results are returned in."
+						]
 					}
 				},
 				"required_props": [],
@@ -135,9 +137,9 @@
 					"format"
 				],
 				"objects": [],
-				"example": "{\n  \"limit\": 5,\n  \"name\": [\n    \"main_series\"\n  ],\n  \"location\": [\n    \"US\"\n  ],\n  \"domains\": [\n    \"google.com,facebook.com\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"format\": \"json\"\n}"
+				"example": "{\n  \"limit\": 5,\n  \"name\": [\n    \"main_series\"\n  ],\n  \"location\": [\n    \"US\"\n  ],\n  \"domains\": [\n    \"google.com,facebook.com\"\n  ],\n  \"dateRange\": [\n    {}\n  ],\n  \"dateStart\": [\n    \"2022-09-15T00:00:00Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-15T00:00:00Z\"\n  ],\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"meta\": {\n      \"dateRange\": {\n        \"startTime\": \"2022-09-16T10:22:57.555Z\",\n        \"endTime\": \"2022-09-17T10:22:57.555Z\"\n      }\n    },\n    \"serie_0\": {\n      \"timestamps\": [\n        \"2022-09-02\"\n      ],\n      \"<domain name>\": [\n        2\n      ]\n    }\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"result\": {\n    \"meta\": {\n      \"dateRange\": {\n        \"startTime\": \"2022-09-16T10:22:57.555Z\",\n        \"endTime\": \"2022-09-17T10:22:57.555Z\"\n      }\n    },\n    \"serie_0\": {\n      \"timestamps\": [\n        \"2022-09-02\"\n      ],\n      \"<domain name>\": [\n        2\n      ]\n    }\n  }\n}"
 		},
 		{
 			"title": "Get Domains Rank top",
@@ -166,16 +168,17 @@
 				},
 				"all_props": {
 					"limit": {
-						"type": "number",
+						"type": "integer",
 						"example": "5",
-						"default": 5,
-						"description": "Limit the number of objects in the response."
+						"description": "Limit the number of objects in the response.",
+						"default": 5
 					},
 					"name": {
 						"type": "array",
 						"example": "[\n  \"main_series\"\n]",
 						"items": {
 							"type": "string",
+							"description": "Array of names that will be used to name the series in responses.",
 							"example": "main_series"
 						},
 						"description": "Array of names that will be used to name the series in responses."
@@ -185,6 +188,7 @@
 						"example": "[\n  \"US\"\n]",
 						"items": {
 							"type": "string",
+							"description": "Array of locations (alpha-2 country codes).",
 							"example": "US"
 						},
 						"description": "Array of locations (alpha-2 country codes)."
@@ -194,20 +198,20 @@
 						"example": "[\n  \"2022-09-19\"\n]",
 						"items": {
 							"type": "string",
-							"format": "date-time",
-							"example": "2022-09-19"
+							"description": "Array of dates to filter the ranking.",
+							"example": "2022-09-19",
+							"format": "date"
 						},
 						"description": "Array of dates to filter the ranking."
 					},
 					"format": {
 						"type": "string",
 						"example": "\"json\"",
-						"default": "json",
+						"description": "Format results are returned in.",
 						"enum": [
 							"json",
 							"csv"
-						],
-						"description": "Format results are returned in."
+						]
 					}
 				},
 				"required_props": [],
@@ -221,7 +225,7 @@
 				"objects": [],
 				"example": "{\n  \"limit\": 5,\n  \"name\": [\n    \"main_series\"\n  ],\n  \"location\": [\n    \"US\"\n  ],\n  \"date\": [\n    \"2022-09-19\"\n  ],\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"meta\": {\n      \"top_0\": {\n        \"date\": \"2022-09-19\"\n      }\n    },\n    \"top_0\": [\n      {\n        \"rank\": 1,\n        \"domain\": \"google.com\"\n      }\n    ]\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"result\": {\n    \"meta\": {\n      \"top_0\": {\n        \"date\": \"2022-09-19\"\n      }\n    },\n    \"top_0\": [\n      {\n        \"rank\": 1,\n        \"domain\": \"google.com\"\n      }\n    ]\n  }\n}"
 		}
 	],
 	"cfExtendedDescription": "",

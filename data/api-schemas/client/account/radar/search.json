@@ -31,25 +31,24 @@
 				},
 				"all_props": {
 					"limit": {
-						"type": "number",
+						"type": "integer",
 						"example": "5",
-						"default": 5,
-						"description": "Limit the number of objects in the response."
+						"description": "Limit the number of objects in the response.",
+						"default": 5
 					},
 					"query": {
 						"type": "string",
 						"example": "\"United\"",
-						"description": "Search for locations, AS and reports."
+						"description": "Search for locations, AS and reports"
 					},
 					"format": {
 						"type": "string",
 						"example": "\"json\"",
-						"default": "json",
+						"description": "Format results are returned in.",
 						"enum": [
 							"json",
 							"csv"
-						],
-						"description": "Format results are returned in."
+						]
 					}
 				},
 				"required_props": [],
@@ -61,7 +60,7 @@
 				"objects": [],
 				"example": "{\n  \"limit\": 5,\n  \"query\": \"United\",\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": [\n    {\n      \"code\": \"13335\",\n      \"name\": \"Cloudflare\",\n      \"type\": \"asn\"\n    }\n  ]\n}"
+			"response": "{\n  \"success\": true,\n  \"result\": [\n    {\n      \"code\": \"13335\",\n      \"name\": \"Cloudflare\",\n      \"type\": \"asn\"\n    }\n  ]\n}"
 		}
 	],
 	"cfExtendedDescription": "",

@@ -24,32 +24,34 @@
 			},
 			"html_id": "radar-verified-bots-get-top-verified-bots-by-http-requests",
 			"uri": "radar/verified_bots/top/bots",
-			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/verified_bots/top/bots?limit=5&name=main_series&dateRange=7d&dateStart=2022-08-01T09:58:33Z&dateEnd=2022-09-01T09:58:33Z&asn=15169&location=US,CA&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/verified_bots/top/bots?limit=5&name=main_series&dateRange=[object Object]&dateStart=2022-09-15T00:00:00Z&dateEnd=2022-09-15T00:00:00Z&asn=15169&location=US,CA&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
 				},
 				"all_props": {
 					"limit": {
-						"type": "number",
+						"type": "integer",
 						"example": "5",
-						"default": 5,
-						"description": "Limit the number of objects in the response."
+						"description": "Limit the number of objects in the response.",
+						"default": 5
 					},
 					"name": {
 						"type": "array",
 						"example": "[\n  \"main_series\"\n]",
 						"items": {
 							"type": "string",
+							"description": "Array of names that will be used to name the series in responses.",
 							"example": "main_series"
 						},
 						"description": "Array of names that will be used to name the series in responses."
 					},
 					"dateRange": {
 						"type": "array",
-						"example": "[\n  \"7d\"\n]",
+						"example": "[\n  {}\n]",
 						"items": {
 							"type": "string",
+							"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 							"enum": [
 								"1d",
 								"7d",
@@ -59,8 +61,7 @@
 								"7dControl",
 								"14dControl",
 								"28dControl"
-							],
-							"example": "7d"
+							]
 						},
 						"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 						"enum": [
@@ -76,21 +77,21 @@
 					},
 					"dateStart": {
 						"type": "array",
-						"example": "[\n  \"2022-08-01T09:58:33Z\"\n]",
+						"example": "[\n  \"2022-09-15T00:00:00Z\"\n]",
 						"items": {
 							"type": "string",
-							"format": "date-time",
-							"example": "2022-08-01T09:58:33Z"
+							"example": "2022-09-15T00:00:00Z",
+							"format": "date-time"
 						},
 						"description": "Array of datetimes to filter the start of a series."
 					},
 					"dateEnd": {
 						"type": "array",
-						"example": "[\n  \"2022-09-01T09:58:33Z\"\n]",
+						"example": "[\n  \"2022-09-15T00:00:00Z\"\n]",
 						"items": {
 							"type": "string",
-							"format": "date-time",
-							"example": "2022-09-01T09:58:33Z"
+							"example": "2022-09-15T00:00:00Z",
+							"format": "date-time"
 						},
 						"description": "Array of datetimes to filter the end of a series."
 					},
@@ -99,6 +100,7 @@
 						"example": "[\n  \"15169\"\n]",
 						"items": {
 							"type": "string",
+							"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `[-174, 3356]` excludes results from AS174, but includes results from AS3356.",
 							"example": "15169"
 						},
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `[-174, 3356]` excludes results from AS174, but includes results from AS3356."
@@ -108,6 +110,7 @@
 						"example": "[\n  \"US,CA\"\n]",
 						"items": {
 							"type": "string",
+							"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `[-US, PT]` excludes results from the US, but includes results from PT.",
 							"example": "US,CA"
 						},
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `[-US, PT]` excludes results from the US, but includes results from PT."
@@ -115,12 +118,11 @@
 					"format": {
 						"type": "string",
 						"example": "\"json\"",
-						"default": "json",
+						"description": "Format results are returned in.",
 						"enum": [
 							"json",
 							"csv"
-						],
-						"description": "Format results are returned in."
+						]
 					}
 				},
 				"required_props": [],
@@ -135,9 +137,9 @@
 					"format"
 				],
 				"objects": [],
-				"example": "{\n  \"limit\": 5,\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"format\": \"json\"\n}"
+				"example": "{\n  \"limit\": 5,\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    {}\n  ],\n  \"dateStart\": [\n    \"2022-09-15T00:00:00Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-15T00:00:00Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"meta\": {\n      \"confidenceInfo\": {\n        \"annotations\": [\n          {\n            \"startTime\": \"2022-09-17T10:22:57.555Z\",\n            \"endTime\": \"2022-09-17T10:22:57.555Z\"\n          }\n        ]\n      },\n      \"dateRange\": {\n        \"startTime\": \"2022-09-17T10:22:57.555Z\",\n        \"endTime\": \"2022-09-17T10:22:57.555Z\"\n      }\n    },\n    \"top_0\": [\n      {\n        \"botName\": \"GoogleBot\",\n        \"botCategory\": \"Search Engine Crawler\",\n        \"botOwner\": \"Google\",\n        \"value\": \"29.034407\"\n      }\n    ]\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"result\": {\n    \"meta\": {\n      \"confidenceInfo\": {\n        \"annotations\": [\n          {\n            \"startTime\": \"2022-09-15T00:00:00Z\",\n            \"endTime\": \"2022-09-15T00:00:00Z\"\n          }\n        ]\n      },\n      \"dateRange\": {\n        \"startTime\": \"2022-09-15T00:00:00Z\",\n        \"endTime\": \"2022-09-15T00:00:00Z\"\n      }\n    },\n    \"top_0\": [\n      {\n        \"botName\": \"GoogleBot\",\n        \"botCategory\": \"Search Engine Crawler\",\n        \"botOwner\": \"Google\",\n        \"value\": \"29.034407\"\n      }\n    ]\n  }\n}"
 		},
 		{
 			"title": "Get top verified bot categories by HTTP requests",
@@ -159,32 +161,34 @@
 			},
 			"html_id": "radar-verified-bots-get-top-verified-bot-categories-by-http-requests",
 			"uri": "radar/verified_bots/top/categories",
-			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/verified_bots/top/categories?limit=5&name=main_series&dateRange=7d&dateStart=2022-08-01T09:58:33Z&dateEnd=2022-09-01T09:58:33Z&asn=15169&location=US,CA&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/verified_bots/top/categories?limit=5&name=main_series&dateRange=[object Object]&dateStart=2022-09-15T00:00:00Z&dateEnd=2022-09-15T00:00:00Z&asn=15169&location=US,CA&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
 				},
 				"all_props": {
 					"limit": {
-						"type": "number",
+						"type": "integer",
 						"example": "5",
-						"default": 5,
-						"description": "Limit the number of objects in the response."
+						"description": "Limit the number of objects in the response.",
+						"default": 5
 					},
 					"name": {
 						"type": "array",
 						"example": "[\n  \"main_series\"\n]",
 						"items": {
 							"type": "string",
+							"description": "Array of names that will be used to name the series in responses.",
 							"example": "main_series"
 						},
 						"description": "Array of names that will be used to name the series in responses."
 					},
 					"dateRange": {
 						"type": "array",
-						"example": "[\n  \"7d\"\n]",
+						"example": "[\n  {}\n]",
 						"items": {
 							"type": "string",
+							"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 							"enum": [
 								"1d",
 								"7d",
@@ -194,8 +198,7 @@
 								"7dControl",
 								"14dControl",
 								"28dControl"
-							],
-							"example": "7d"
+							]
 						},
 						"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
 						"enum": [
@@ -211,21 +214,21 @@
 					},
 					"dateStart": {
 						"type": "array",
-						"example": "[\n  \"2022-08-01T09:58:33Z\"\n]",
+						"example": "[\n  \"2022-09-15T00:00:00Z\"\n]",
 						"items": {
 							"type": "string",
-							"format": "date-time",
-							"example": "2022-08-01T09:58:33Z"
+							"example": "2022-09-15T00:00:00Z",
+							"format": "date-time"
 						},
 						"description": "Array of datetimes to filter the start of a series."
 					},
 					"dateEnd": {
 						"type": "array",
-						"example": "[\n  \"2022-09-01T09:58:33Z\"\n]",
+						"example": "[\n  \"2022-09-15T00:00:00Z\"\n]",
 						"items": {
 							"type": "string",
-							"format": "date-time",
-							"example": "2022-09-01T09:58:33Z"
+							"example": "2022-09-15T00:00:00Z",
+							"format": "date-time"
 						},
 						"description": "Array of datetimes to filter the end of a series."
 					},
@@ -234,6 +237,7 @@
 						"example": "[\n  \"15169\"\n]",
 						"items": {
 							"type": "string",
+							"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `[-174, 3356]` excludes results from AS174, but includes results from AS3356.",
 							"example": "15169"
 						},
 						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `[-174, 3356]` excludes results from AS174, but includes results from AS3356."
@@ -243,6 +247,7 @@
 						"example": "[\n  \"US,CA\"\n]",
 						"items": {
 							"type": "string",
+							"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `[-US, PT]` excludes results from the US, but includes results from PT.",
 							"example": "US,CA"
 						},
 						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `[-US, PT]` excludes results from the US, but includes results from PT."
@@ -250,12 +255,11 @@
 					"format": {
 						"type": "string",
 						"example": "\"json\"",
-						"default": "json",
+						"description": "Format results are returned in.",
 						"enum": [
 							"json",
 							"csv"
-						],
-						"description": "Format results are returned in."
+						]
 					}
 				},
 				"required_props": [],
@@ -270,9 +274,9 @@
 					"format"
 				],
 				"objects": [],
-				"example": "{\n  \"limit\": 5,\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"format\": \"json\"\n}"
+				"example": "{\n  \"limit\": 5,\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    {}\n  ],\n  \"dateStart\": [\n    \"2022-09-15T00:00:00Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-15T00:00:00Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"meta\": {\n      \"confidenceInfo\": {\n        \"annotations\": [\n          {\n            \"startTime\": \"2022-09-17T10:22:57.555Z\",\n            \"endTime\": \"2022-09-17T10:22:57.555Z\"\n          }\n        ]\n      },\n      \"dateRange\": {\n        \"startTime\": \"2022-09-17T10:22:57.555Z\",\n        \"endTime\": \"2022-09-17T10:22:57.555Z\"\n      }\n    },\n    \"top_0\": [\n      {\n        \"botCategory\": \"Search\",\n        \"value\": \"65\"\n      }\n    ]\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"result\": {\n    \"meta\": {\n      \"confidenceInfo\": {\n        \"annotations\": [\n          {\n            \"startTime\": \"2022-09-15T00:00:00Z\",\n            \"endTime\": \"2022-09-15T00:00:00Z\"\n          }\n        ]\n      },\n      \"dateRange\": {\n        \"startTime\": \"2022-09-15T00:00:00Z\",\n        \"endTime\": \"2022-09-15T00:00:00Z\"\n      }\n    },\n    \"top_0\": [\n      {\n        \"botCategory\": \"Search\",\n        \"value\": \"65\"\n      }\n    ]\n  }\n}"
 		}
 	],
 	"cfExtendedDescription": "Either one or multiple queries can be requested at the same time - this is useful when you want, for example, to compare multiple time series (eg. `dateRange=7d&location=US&dateRange=7d&location=CA` would fetch two time series at the same time, the first for the US, the second for Canada). Take into account that the api is not real time and has a delay of about two hours.",
