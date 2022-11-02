@@ -1,4 +1,6 @@
 import * as React from 'react';
+export * from './enumerable';
+
 // (A - keys of B)
 // In set theory, this would be the set complement A ∖ B (https://en.wikipedia.org/wiki/Complement_(set_theory)#Relative_complement)
 // Example:
