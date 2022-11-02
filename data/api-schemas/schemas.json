@@ -104302,18 +104302,19 @@
 				}
 			}
 		},
-		"/radar/specialevents/{itemId}": {
+		"/radar/specialevents/{eventAlias}": {
 			"get": {
 				"summary": "Get a Single Special Events",
 				"description": "Get a single Special Event.",
 				"parameters": [
 					{
-						"name": "itemId",
+						"name": "eventAlias",
 						"in": "path",
 						"required": true,
 						"schema": {
-							"type": "integer",
-							"description": "Special Event id"
+							"type": "string",
+							"description": "Special Event alias",
+							"example": "eurovision-2022"
 						}
 					}
 				],
