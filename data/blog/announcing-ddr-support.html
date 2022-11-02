@@ -60,7 +60,7 @@ QUESTION SECTION
 _dns.resolver.arpa.               IN SVCB 
 
 ANSWER SECTION
-_dns.resolver.arpa.                           300    IN SVCB  1 one.one.one.one. alpn="h2,h3" port="443" ipv4hint="1.1.1.1,1.0.0.1" ipv6hint="2606:4700:4700::1111,2606:4700:4700::1001" key7="/dns-query{?name}"
+_dns.resolver.arpa.                           300    IN SVCB  1 one.one.one.one. alpn="h2,h3" port="443" ipv4hint="1.1.1.1,1.0.0.1" ipv6hint="2606:4700:4700::1111,2606:4700:4700::1001" key7="/dns-query{?dns}"
 _dns.resolver.arpa.                           300    IN SVCB  2 one.one.one.one. alpn="dot" port="853" ipv4hint="1.1.1.1,1.0.0.1" ipv6hint="2606:4700:4700::1111,2606:4700:4700::1001"
 
 ADDITIONAL SECTION
@@ -70,8 +70,8 @@ one.one.one.one.                              300    IN A     1.1.1.1
 one.one.one.one.                              300    IN A     1.0.0.1
 </code></pre>
 	<p>This command sends a SVCB query (type64) for the reserved name _dns.resolver.arpa to 1.1.1.1. The output lists the contents of this record, including the DoH and DoT designation parameters. Let’s walk through the contents of this record:</p>
-	<pre><code>_dns.resolver.arpa.                           300    IN SVCB  1 one.one.one.one. alpn="h2,h3" port="443" ipv4hint="1.1.1.1,1.0.0.1" ipv6hint="2606:4700:4700::1111,2606:4700:4700::1001" key7="/dns-query{?name}"</code></pre>
-	<p>This says that the DoH target one.one.one.one is accessible over port 443 (port=”443”) using either HTTP/2 or HTTP/3 (alpn=”h2,h3”), and the DoH path (key7) for queries is “/dns-query{?name}”. </p>
+	<pre><code>_dns.resolver.arpa.                           300    IN SVCB  1 one.one.one.one. alpn="h2,h3" port="443" ipv4hint="1.1.1.1,1.0.0.1" ipv6hint="2606:4700:4700::1111,2606:4700:4700::1001" key7="/dns-query{?dns}"</code></pre>
+	<p>This says that the DoH target one.one.one.one is accessible over port 443 (port=”443”) using either HTTP/2 or HTTP/3 (alpn=”h2,h3”), and the DoH path (key7) for queries is “/dns-query{?dns}”. </p>
 	<h3 id="moving-forward">Moving forward</h3>
 	<p>DDR is a simple mechanism that lets clients automatically upgrade to encrypted transport protocols for DNS queries without any manual configuration. At the end of the day, users running compatible clients will enjoy a more private Internet experience. Happily, both <a href="https://techcommunity.microsoft.com/t5/networking-blog/making-doh-discoverable-introducing-ddr/ba-p/2887289" target="_blank">Microsoft</a> and <a href="https://mailarchive.ietf.org/arch/msg/add/rMJOhpvh1zBpnjBMtT8tN4NQFtk/" target="_blank">Apple</a> recently announced experimental support for this emerging standard, and we’re pleased to help them and other clients test support. <br>Going forward, we hope to help add support for DDR to open source DNS resolver software such as dnscrypt-proxy and Bind. If you’re interested in helping us continue to drive adoption of encrypted DNS and related protocols to help build a better Internet, we’re <a href="https://www.cloudflare.com/careers/" target="_blank">hiring</a>!</p>
 </div>
