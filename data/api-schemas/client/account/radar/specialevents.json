@@ -67,7 +67,7 @@
 			"title": "Get a Single Special Events",
 			"description": "Get a single Special Event.",
 			"rel": "collection",
-			"href": "radar/specialevents/{#/definitions/itemId}",
+			"href": "radar/specialevents/{#/definitions/eventAlias}",
 			"method": "GET",
 			"cfOwnership": "radar",
 			"cfPermissionsRequired": {
@@ -82,8 +82,8 @@
 				"enterprise": true
 			},
 			"html_id": "radar-specialevents-get-a-single-special-events",
-			"uri": "radar/specialevents/:itemId",
-			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/specialevents/1?format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"uri": "radar/specialevents/:eventAlias",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/specialevents/eurovision-2022?format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
