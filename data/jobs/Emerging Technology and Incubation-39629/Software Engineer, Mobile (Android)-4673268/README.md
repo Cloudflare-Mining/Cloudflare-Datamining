@@ -5,17 +5,17 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About the department</strong></p>
+<h3>About the department</h3>
 <p><span style="font-weight: 400;">In </span><a href="https://blog.cloudflare.com/from-amp-to-signed-exchanges-or-how-innovation-happens-at-cloudflare/"><span style="font-weight: 400;">Emerging Technologies &amp; Incubation</span></a><span style="font-weight: 400;"> (ETI) we build and release new and bold products within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</span></p>
-<p><strong>About the product</strong></p>
+<h3>About the product</h3>
 <p><span style="font-weight: 400;">At Cloudflare, we’re investing in </span><strong>consumer privacy</strong><span style="font-weight: 400;">: bringing new &amp; differentiated privacy and security capabilities to consumers at scale, democratizing our enterprise features, and introducing the Cloudflare brand to a larger audience beyond site &amp; infrastructure owners. </span><strong>Privacy is core to what we do</strong><span style="font-weight: 400;">, and it’s important that we do it without sacrificing performance, security, or the user experience of our products.</span></p>
 <p><span style="font-weight: 400;">Our </span><strong>1.1.1.1 + WARP</strong><span style="font-weight: 400;"> </span><a href="https://play.google.com/store/apps/details?id=com.cloudflare.onedotonedotonedotone"><span style="font-weight: 400;">Android app</span></a><span style="font-weight: 400;"> makes browsing the Internet </span><strong>safer</strong><span style="font-weight: 400;"> and </span><strong>more private</strong><span style="font-weight: 400;"> for millions of users by routing DNS queries through our 1.1.1.1 resolver and encrypting traffic to our edge through our </span><a href="https://blog.cloudflare.com/1111-warp-better-vpn/"><span style="font-weight: 400;">WARP</span></a><span style="font-weight: 400;"> technology.</span></p>
-<p><strong>About you</strong></p>
+<h3>About you</h3>
 <p><span style="font-weight: 400;">We’re looking for a </span><strong>Software Engineer</strong><span style="font-weight: 400;"> to lead the development of our 1.1.1.1 + WARP </span><a href="https://play.google.com/store/apps/details?id=com.cloudflare.onedotonedotonedotone"><span style="font-weight: 400;">Android app</span></a><span style="font-weight: 400;">, who is passionate and unwavering about </span><strong>privacy</strong><span style="font-weight: 400;"> as well as </span><strong>code quality</strong><span style="font-weight: 400;"> and </span><strong>documentation</strong><span style="font-weight: 400;">.</span></p>
 <p><span style="font-weight: 400;">In your role, you’ll be using </span><strong>Java</strong><span style="font-weight: 400;"> and </span><strong>Kotlin</strong><span style="font-weight: 400;"> to work on both the UI and the networking components of the app. You’ll be expected to improve the </span><strong>code quality</strong><span style="font-weight: 400;"> and build solid, </span><strong>well-documented</strong><span style="font-weight: 400;"> foundations. While not required, you will be even more successful in this role if you have a good understanding of </span><strong>operating system concepts</strong><span style="font-weight: 400;"> (virtual memory, multi-threading, process lifecycle, etc.) and </span><strong>networking protocols</strong><span style="font-weight: 400;"> (IP, TCP, UDP, DNS, QUIC, H/3, etc.). You may also interact with other languages, such as Rust, Swift, C, C++, or JavaScript.</span></p>
 <p><span style="font-weight: 400;">We expect you to make significant contributions to the design and implementation of major development projects, working closely with our product managers, designers, and other engineers within the company to lead the development and improvement of the WARP Android app.</span></p>
 <p><span style="font-weight: 400;">This is a </span><strong>remote-friendly</strong><span style="font-weight: 400;"> position. Even if you work from one of our offices, we expect you to be comfortable working in distributed teams, and to have </span><strong>excellent communication skills</strong><span style="font-weight: 400;">.</span></p>
-<p><strong>Your responsibilities</strong></p>
+<h3>Your responsibilities</h3>
 <ul>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Lead the development of the Android app: develop features from design and architecture to implementation and tests</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Establish and maintain high standards for code quality, tests, and documentation, to uphold the reliability and stability of the product</span></li>
@@ -23,7 +23,7 @@
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Present your work and give demos to colleagues and internal stakeholders</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Advocate for end-user privacy in all steps of the development process</span></li>
 </ul>
-<p><strong>What we need from you</strong></p>
+<h3>What we need from you</h3>
 <ul>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Demonstrable experience working on Android consumer-facing or enterprise apps</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience designing and producing very high-quality software with excellent documentation</span></li>
@@ -32,7 +32,7 @@
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to communicate, collaborate, and work effectively in a distributed team</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">A kind and generous attitude towards customers and co-workers alike</span></li>
 </ul>
-<p><strong>What would make your even more successful</strong></p>
+<h3>What would make your even more successful</h3>
 <ul>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">An understanding of how VPN technology works, and the trade-offs between privacy, security, and anonymity</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">An understanding of the web and browser technologies, such as building web applications or services</span></li>
