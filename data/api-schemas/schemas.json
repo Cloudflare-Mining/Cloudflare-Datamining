@@ -7652,6 +7652,37 @@
 													]
 												},
 												{
+													"title": "Network Error Logging",
+													"description": "Enable Network Error Logging reporting on your zone. (Beta) ",
+													"allOf": [
+														{
+															"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1settings/patch/requestBody/content/application~1json/schema/properties/items/items/oneOf/0/allOf/0"
+														},
+														{
+															"properties": {
+																"id": {
+																	"enum": [
+																		"nel"
+																	],
+																	"example": "nel",
+																	"description": "Zone setting identifier."
+																},
+																"value": {
+																	"type": "object",
+																	"description": "Value of the zone setting.",
+																	"properties": {
+																		"enabled": {
+																			"type": "boolean",
+																			"example": false,
+																			"default": false
+																		}
+																	}
+																}
+															}
+														}
+													]
+												},
+												{
 													"title": "Polish Image Optimization",
 													"description": "Removes metadata and compresses your images for faster page load times. Basic (Lossless): Reduce the size of PNG, JPEG, and GIF files - no impact on visual quality. Basic + JPEG (Lossy): Further reduce the size of JPEG files for faster image loading. Larger JPEGs are converted to progressive images, loading a lower-resolution image first and ending in a higher-resolution version. Not recommended for hi-res photography sites.",
 													"allOf": [
@@ -12697,6 +12728,219 @@
 										],
 										"description": "Value of the zone setting.",
 										"default": false
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/zones/{zone_identifier}/settings/nel": {
+			"get": {
+				"summary": "Get Network Error Logging setting",
+				"description": "Enable Network Error Logging reporting on your zone. (Beta) ",
+				"parameters": [
+					{
+						"name": "zone_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1argo~1smart_routing/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Get Network Error Logging setting response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+												},
+												{
+													"properties": {
+														"result": {
+															"type": "object"
+														}
+													}
+												}
+											]
+										},
+										{
+											"properties": {
+												"result": {
+													"title": "Network Error Logging",
+													"description": "Enable Network Error Logging reporting on your zone. (Beta) ",
+													"allOf": [
+														{
+															"properties": {
+																"id": {
+																	"type": "string",
+																	"example": "development_mode",
+																	"description": "Identifier of the zone setting."
+																},
+																"value": {
+																	"example": true,
+																	"description": "Current value of the zone setting.",
+																	"anyOf": [
+																		{
+																			"type": "string"
+																		},
+																		{
+																			"type": "number"
+																		},
+																		{
+																			"type": "object"
+																		},
+																		{
+																			"type": "array",
+																			"items": {}
+																		}
+																	]
+																},
+																"editable": {
+																	"type": "boolean",
+																	"readOnly": true,
+																	"enum": [
+																		true,
+																		false
+																	],
+																	"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
+																	"default": true
+																},
+																"modified_on": {
+																	"type": "string",
+																	"readOnly": true,
+																	"format": "date-time",
+																	"description": "last time this setting was modified.",
+																	"example": "2014-01-01T05:20:00.123450+00:00",
+																	"nullable": true
+																}
+															},
+															"required": [
+																"id",
+																"value"
+															]
+														},
+														{
+															"properties": {
+																"id": {
+																	"enum": [
+																		"nel"
+																	],
+																	"example": "nel",
+																	"description": "Zone setting identifier."
+																},
+																"value": {
+																	"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1settings~1nel/patch/requestBody/content/application~1json/schema/properties/value"
+																}
+															}
+														}
+													]
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"#zone_settings:read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": false,
+					"enterprise": true
+				}
+			},
+			"patch": {
+				"summary": "Change Network Error Logging setting",
+				"description": "Enable Network Error Logging reporting on your zone. (Beta) ",
+				"parameters": [
+					{
+						"name": "zone_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1settings~1nel/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Change Network Error Logging setting response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1settings~1nel/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1settings~1nel/get/responses/200/content/application~1json/schema/allOf/1/properties/result"
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"#zone_settings:edit"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": false,
+					"enterprise": true
+				},
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"required": [
+									"value"
+								],
+								"properties": {
+									"value": {
+										"type": "object",
+										"description": "Value of the zone setting.",
+										"properties": {
+											"enabled": {
+												"type": "boolean",
+												"example": false,
+												"default": false
+											}
+										}
 									}
 								}
 							}
@@ -19115,7 +19359,7 @@
 																	"description": "ID of the zone setting."
 																},
 																"value": {
-																	"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1settings/patch/requestBody/content/application~1json/schema/properties/items/items/oneOf/54/allOf/1/properties/value"
+																	"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1settings/patch/requestBody/content/application~1json/schema/properties/items/items/oneOf/55/allOf/1/properties/value"
 																}
 															}
 														}
@@ -19210,7 +19454,7 @@
 								],
 								"properties": {
 									"value": {
-										"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1settings/patch/requestBody/content/application~1json/schema/properties/items/items/oneOf/54/allOf/1/properties/value"
+										"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1settings/patch/requestBody/content/application~1json/schema/properties/items/items/oneOf/55/allOf/1/properties/value"
 									}
 								}
 							}
