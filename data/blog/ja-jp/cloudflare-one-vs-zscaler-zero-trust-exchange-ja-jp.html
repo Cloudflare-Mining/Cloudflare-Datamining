@@ -1,0 +1,470 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/Zero-Trust-Exchange.png" class="kg-image" alt="Cloudflare One vs Zscaler Zero Trust Exchange: who is most feature complete? It’s not who you might expect"></figure>
+	<p>Zscalerは15年間、セキュリティ・サービスの実績を積み重ねてきました。Cloudflareの歴史は13年で、Zero Trustの提供は4年というところです。しかし、この記事では、<a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank"> Zero Trust</a>、<a href="https://www.cloudflare.com/learning/access-management/security-service-edge-sse/" target="_blank"> SSE</a> 、<a href="https://www.cloudflare.com/learning/access-management/what-is-sase/" target="_blank"> SASE</a> の全体において、Cloudflare Oneの機能はZscaler Zero Trust Exchangeを上回っているというお話をしたいと思います。</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-onfx {
+			background-color: #afe4fd;
+			color: #3663ae;
+			font-size: 18px;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-baqh {
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-c3ow {
+			border-color: inherit;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-cmei {
+			background-color: #afe4fd;
+			border-color: inherit;
+			color: #3663ae;
+			font-size: 18px;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-8d3w {
+			background-color: #FFF;
+			border-color: inherit;
+			color: #222;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-q8v8 {
+			background-color: #afe4fd;
+			border-color: inherit;
+			color: #3663ae;
+			font-size: 18px;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-0pky {
+			border-color: inherit;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-gct1 {
+			background-color: #FFF;
+			border-color: inherit;
+			color: #222;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-4ufn {
+			background-color: #FFF;
+			color: #222;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" style="undefined;table-layout: fixed; width: 592px">
+		<colgroup>
+			<col style="width: 332.003472px">
+			<col style="width: 130.003472px">
+			<col style="width: 130.003472px">
+		</colgroup>
+		<thead>
+			<tr>
+				<th class="tg-cmei"><span style="font-style:normal;text-decoration:none">機能基準グループ</span></th>
+				<th class="tg-onfx"><span style="font-style:normal;text-decoration:none">Cloudflare</span></th>
+				<th class="tg-q8v8"><span style="font-style:normal;text-decoration:none">Zscaler</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:600;font-style:normal;text-decoration:none">インターネットネイティブなネットワークプラットフォーム</span></td>
+				<td class="tg-baqh"><span style="font-weight:700;font-style:normal;text-decoration:none">100% </span>(5/5)</td>
+				<td class="tg-gct1"><span style="font-weight:bold">20%</span> (1/5)</td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:600;font-style:normal;text-decoration:none">クラウドネイティブサービスプラットフォーム</span></td>
+				<td class="tg-baqh"><span style="font-weight:700;font-style:normal;text-decoration:none">100% </span>(4/4)</td>
+				<td class="tg-8d3w"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#222;background-color:transparent">25% </span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#222;background-color:transparent">(1/4)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:600;font-style:normal;text-decoration:none">SASEを採用するためのサービス</span></td>
+				<td class="tg-4ufn"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#222;background-color:transparent">83%</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#222;background-color:transparent"> (5/6)</span></td>
+				<td class="tg-c3ow"><span style="font-weight:bold">66%</span> (4/6)</td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:600;font-style:normal;text-decoration:none">ZT、SSE、SASEとその先を拡張するサービス</span></td>
+				<td class="tg-4ufn"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#222;background-color:transparent">66%</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#222;background-color:transparent"> (8/12)</span></td>
+				<td class="tg-c3ow"><span style="font-weight:bold">58%</span> (7/12)</td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:600;font-style:normal;text-decoration:none">ネットワークオンランプ</span></td>
+				<td class="tg-baqh"><span style="font-weight:bold">90%</span> (9/10)</td>
+				<td class="tg-c3ow"><span style="font-weight:700;font-style:normal;text-decoration:none">50% </span>(5/10)</td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>この事実は、意外に思われる人が多いかもしれません。お客様にお伝えすると、よく次のような質問をいただきます。<em>どうやってそこまで？</em>Cloudflareが競争力のあるサービスをこれほど構築できたのはどうして？</p>
+	<p>世界最大のプログラマブルなエニーキャストネットワークを構築してきたことは、確かに大きなアドバンテージだったと言えるでしょう。これは、世界中の顧客に安全でパフォーマンスの高いネット環境やアプリケーション体験を提供する、Cloudflareの既存アプリケーションサービス事業の基礎となりました。インターネット上のセキュリティとパフォーマンスに関する、深いインサイトを得ることができたのはこのおかげです。また、当社のサーバーレス開発プラットフォーム<a href="https://workers.cloudflare.com/" target="_blank"> Workers</a> は、セキュリティ、信頼性、パフォーマンスを備えたグローバル分散型アプリケーションの構築を目的に、特別な設計が施されています。このプラットフォームの上に構築することで、比類ない速度のZero Trustサービスを実現しました。</p>
+	<p>しかし、この時系列には表れていない、もうひとつの優位性もあります。この15年間で、企業のセキュリティ領域は大きく移り変わりました。例えば、当社のようなパフォーマンスの高いグローバル・ネットワークは、当時は想像もしていなかったでしょう。Zero Trustのサービスを構築する際、白紙の状態からスタートし、まったく新しかったクラウドを前提にして、サービスを構築してきました。</p>
+	<p>そうですよね、その根拠となる話を知りたいと思ってらっしゃるでしょう。以下のように、ZscalerとCloudflareのプラットフォームの比較<a href="https://www.cloudflare.com/products/zero-trust/cloudflare-vs-zscaler/" target="_blank">公開ページで新しい機能の詳細情報をリリースしました</a> 。5つの基準グループのうち、SASEを採用するサービスとネットワーク・オンランプの2つについて、その内容を紹介したいと思います。<a href="https://assets.ctfassets.net/slt3lc6tev37/1lybjMN3kXG7Jo8NEOrxc4/fdb46d4cd1ed5bdd4dd0d3c7f4bf8e6a/Whitepaper_A-Cloudflare-vs-Zscaler-comparison-of-Zero-Trust-SSE-SASE-and-beyond_Japanese_20220809.pdf" target="_blank"> PDF</a>の中で、 多くの基準には脚注があり、文脈や説明をご覧いただけます（*で表示）。</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-ucok {
+			background-color: #afe4fd;
+			border-color: #000000;
+			color: #3663ae;
+			font-size: 18px;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-baki {
+			background-color: #fe0000;
+			border-color: #000000;
+			color: #ffffff;
+			text-align: center;
+			vertical-align: middle
+		}
+
+		.tg .tg-ru72 {
+			background-color: #fe0000;
+			border-color: #000000;
+			color: #ffffff;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-ycfl {
+			background-color: #009901;
+			border-color: #000000;
+			color: #ffffff;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-68aq {
+			background-color: #afe4fd;
+			border-color: #000000;
+			color: #3663ae;
+			font-size: 18px;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-73oq {
+			border-color: #000000;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-dp1c {
+			background-color: #009901;
+			border-color: #000000;
+			color: #ffffff;
+			text-align: center;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" style="undefined;table-layout: fixed; width: 610px">
+		<colgroup>
+			<col style="width: 342.003472px">
+			<col style="width: 134.003472px">
+			<col style="width: 134.003472px">
+		</colgroup>
+		<thead>
+			<tr>
+				<th class="tg-68aq"><span style="font-weight:600;font-style:normal;text-decoration:none">SASEを採用するためのサービス</span></th>
+				<th class="tg-ucok"><span style="font-style:normal;text-decoration:none">Cloudflare</span></th>
+				<th class="tg-ucok"><span style="font-style:normal;text-decoration:none">Zscaler</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-73oq"><span style="font-weight:600;font-style:normal;text-decoration:none">Zero Trustネットワークアクセス（ZTNA）</span></td>
+				<td class="tg-ycfl">あり</td>
+				<td class="tg-dp1c"><span style="font-weight:700;font-style:normal">あり</span></td>
+			</tr>
+			<tr>
+				<td class="tg-73oq"><span style="font-weight:600;font-style:normal;text-decoration:none">クラウドアクセスセキュリティブローカー（CASB）</span></td>
+				<td class="tg-dp1c"><span style="font-weight:700;font-style:normal">あり</span></td>
+				<td class="tg-ycfl"><span style="font-weight:700;font-style:normal">あり</span></td>
+			</tr>
+			<tr>
+				<td class="tg-73oq"><span style="font-weight:600;font-style:normal;text-decoration:none">セキュアWebゲートウェイ（SWG）</span></td>
+				<td class="tg-ycfl"><span style="font-weight:700;font-style:normal">あり</span></td>
+				<td class="tg-dp1c"><span style="font-weight:700;font-style:normal">あり</span></td>
+			</tr>
+			<tr>
+				<td class="tg-73oq"><span style="font-weight:600;font-style:normal;text-decoration:none">Firewall as a Service (FWaaS)</span></td>
+				<td class="tg-ycfl"><span style="font-weight:700;font-style:normal">あり</span></td>
+				<td class="tg-dp1c"><span style="font-weight:700;font-style:normal">あり</span></td>
+			</tr>
+			<tr>
+				<td class="tg-73oq"><span style="font-weight:600;font-style:normal;text-decoration:none">L3～7のトラフィックアクセラレーションを使用したWAN as a Service*</span></td>
+				<td class="tg-dp1c"><span style="font-weight:700;font-style:normal">あり</span></td>
+				<td class="tg-ru72"><span style="font-weight:700;font-style:normal">なし</span></td>
+			</tr>
+			<tr>
+				<td class="tg-73oq"><span style="font-weight:600;font-style:normal;text-decoration:none">オンプレミスSD-WAN*</span></td>
+				<td class="tg-baki"><span style="font-weight:700;font-style:normal">なし - パートナー</span></td>
+				<td class="tg-baki"><span style="font-weight:700;font-style:normal">なし - パートナー</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html--><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-baki {
+			background-color: #fe0000;
+			border-color: #000000;
+			color: #ffffff;
+			text-align: center;
+			vertical-align: middle
+		}
+
+		.tg .tg-ph0s {
+			background-color: #afe4fd;
+			border-color: #000000;
+			color: #3663ae;
+			font-size: 18px;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: middle
+		}
+
+		.tg .tg-tpun {
+			background-color: #009901;
+			color: #ffffff;
+			text-align: center;
+			vertical-align: middle
+		}
+
+		.tg .tg-68aq {
+			background-color: #afe4fd;
+			border-color: #000000;
+			color: #3663ae;
+			font-size: 18px;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-73oq {
+			border-color: #000000;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-kos1 {
+			background-color: #009901;
+			border-color: #000000;
+			color: #ffffff;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: middle
+		}
+
+		.tg .tg-w7s0 {
+			background-color: #009901;
+			border-color: #000000;
+			color: #ffffff;
+			text-align: center;
+			vertical-align: middle
+		}
+
+		.tg .tg-d6fj {
+			background-color: #fe0000;
+			border-color: #000000;
+			color: #ffffff;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: middle
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-ydhf {
+			background-color: #fe0000;
+			color: #ffffff;
+			text-align: center;
+			vertical-align: middle
+		}
+	</style>
+	<table class="tg" style="undefined;table-layout: fixed; width: 748px">
+		<colgroup>
+			<col style="width: 420.003472px">
+			<col style="width: 164.003472px">
+			<col style="width: 164.003472px">
+		</colgroup>
+		<thead>
+			<tr>
+				<th class="tg-68aq"><span style="font-weight:600;font-style:normal;text-decoration:none">ネットワークオンランプ</span></th>
+				<th class="tg-ph0s"><span style="font-style:normal;text-decoration:none">Cloudflare</span></th>
+				<th class="tg-ph0s"><span style="font-style:normal;text-decoration:none">Zscaler</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-73oq"><span style="font-weight:600;font-style:normal;text-decoration:none">クライアントレスなブラウザベースのアクセス</span></td>
+				<td class="tg-kos1">あり</td>
+				<td class="tg-w7s0"><span style="font-weight:700;font-style:normal">あり</span></td>
+			</tr>
+			<tr>
+				<td class="tg-73oq"><span style="font-weight:600;font-style:normal;text-decoration:none">デバイスへのクライアントソフトウェア</span></td>
+				<td class="tg-w7s0"><span style="font-weight:700;font-style:normal">あり</span></td>
+				<td class="tg-kos1"><span style="font-weight:700;font-style:normal">あり</span></td>
+			</tr>
+			<tr>
+				<td class="tg-73oq"><span style="font-weight:600;font-style:normal;text-decoration:none">アプリケーションコネクターソフトウェア*</span></td>
+				<td class="tg-kos1"><span style="font-weight:700;font-style:normal">あり</span></td>
+				<td class="tg-w7s0"><span style="font-weight:700;font-style:normal">あり</span></td>
+			</tr>
+			<tr>
+				<td class="tg-73oq"><span style="font-weight:600;font-style:normal;text-decoration:none">分岐可能な接続用ソフトウェア*</span></td>
+				<td class="tg-d6fj"><span style="font-weight:700;font-style:normal">なし</span></td>
+				<td class="tg-w7s0"><span style="font-weight:700;font-style:normal">あり</span></td>
+			</tr>
+			<tr>
+				<td class="tg-73oq"><span style="font-weight:600;font-style:normal;text-decoration:none">エニーキャストDNS、GRE、IPsec、QUIC、WireGuardトンネル*</span></td>
+				<td class="tg-w7s0"><span style="font-weight:700;font-style:normal">あり</span></td>
+				<td class="tg-baki"><span style="font-weight:bold">なし</span></td>
+			</tr>
+			<tr>
+				<td class="tg-73oq"><span style="font-weight:600;font-style:normal;text-decoration:none">データセンターおよびオフィス向けプライベートネットワーク内部接続</span></td>
+				<td class="tg-w7s0"><span style="font-weight:700;font-style:normal">あり</span></td>
+				<td class="tg-baki"><span style="font-weight:700;font-style:normal">なし</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:600;font-style:normal;text-decoration:none">インバウンドIPの中継（BYOIP）</span></td>
+				<td class="tg-tpun"><span style="font-weight:700;font-style:normal">あり</span></td>
+				<td class="tg-ydhf"><span style="font-weight:700;font-style:normal">なし</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:600;font-style:normal;text-decoration:none">IPv6オンリーの接続への対応*</span></td>
+				<td class="tg-tpun"><span style="font-weight:700;font-style:normal">あり</span></td>
+				<td class="tg-ydhf"><span style="font-weight:700;font-style:normal">なし</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:600;font-style:normal;text-decoration:none">再帰DNSリゾルバ</span></td>
+				<td class="tg-tpun"><span style="font-weight:700;font-style:normal">あり</span></td>
+				<td class="tg-tpun"><span style="font-weight:700;font-style:normal">あり</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:600;font-style:normal;text-decoration:none">デバイスクライアントとDNSリゾルバの自由公開*</span></td>
+				<td class="tg-tpun"><span style="font-weight:700;font-style:normal">あり</span></td>
+				<td class="tg-ydhf"><span style="font-weight:700;font-style:normal">なし</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>この<a href="https://cfl.re/cloudflare-vs-zscaler-functional" target="_blank">37の機能基準の詳細な比較</a>を見てみると、当社製品が優れていることをご理解いただけると思います。また、<a href="https://www.cloudflare.com/products/zero-trust/cloudflare-vs-zscaler/" target="_blank">当社のページにおいて</a>、当社のアーキテクチャがよりシンプルで信頼性が高く、革新が迅速な理由を説明しています。もちろん製品は機能が多ければそれでいいというものではありません。Zero Trustが組織全体に展開されることを考えると、製品の使用体験が何より重要となります。エンドユーザーと管理者の両方にとって、Cloudflae OneがZscaler Zero Trust Exchangeより優れている3つの主要な領域を紹介します。</p>
+	<h4 id="1-">1) あらゆるサービスが、あらゆる場所で、エンタープライズスケールで動作するように構築されている</h4>
+	<p><strong>実績：</strong>Zscalerは、"<a href="https://www.zscaler.com/company/about-zscaler" target="_blank"> 世界最大のセキュリティクラウド </a>"を運営しているという実績を残していますが、Zscalerのネットワークは、独自の構成リソースによると<a href="https://config.zscaler.com/zscaler.net/cenr" target="_blank">少なくとも8つの異なるクラウドに</a>分割されています。zscalertwo.net、zscalerthree.netなどがその例です。フロントエンドにおけるユーザビリティの観点からすると、シームレスな管理者エクスペリエンスが実現できるクラウドはあまりありません。Zscalerの主要製品にはそれぞれ独自のポータルとログインがあり、単一の「セキュリティクラウド」ではなく、個別の製品のようにそれぞれとやり取りすることになります。</p>
+	<p><strong>Cloudflare Oneの優位性：</strong>私たちは、大規模でグローバルなエニーキャストネットワークの規模について透明性を持ち、データセンターではなく都市の数で報告しています。お客様の所在地は重要であり、お客様がどこにいても当社のすべてのサービスにアクセスする能力が重要です。データセンターを持つ都市の数は、Zscalerの55都市と比較して270以上(すべて同じクラウドネットワーク内にあります)です(そして、これらの都市のすべてが同じクラウドネットワーク内にあるわけではありません)。Cloudflare Oneのすべてのサービス(およびそのアップデートと新機能)は、すべての都市のすべてのデータセンターのすべてのサーバー上で実行されるように構築されており、すべてのお客様が利用できます。フロントエンドでは、Cloudflare Oneは、<a href="https://www.cloudflare.com/learning/access-management/what-is-ztna/" target="_blank">ZTNA</a>、<a href="https://www.cloudflare.com/learning/access-management/what-is-a-casb/" target="_blank">CASB</a>、<a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway/" target="_blank">SWG</a>、<a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation/" target="_blank">RBI</a>、<a href="https://www.cloudflare.com/learning/access-management/what-is-dlp/" target="_blank">DLP</a>など、すべてのZero Trustに対応する1つのダッシュボードを提供し、個別の画面間で分離されたポリシーと分析を手動で調整するのに時間を費やすことなく、回転椅子の問題を解決します。</p>
+	<h4 id="2-">2) スループット上昇によるエンドユーザーエクスペリエンスの向上</h4>
+	<p>優れたセキュリティを提供しても、ユーザーエクスペリエンスを低下させては意味がありません。また、Zero Trustの導入を成功させるためには、<strong>高速</strong>アクセスが不可欠です。そうでなければ、いつの間にかユーザーの方で回避策を探す状況になってしまうことでしょう。</p>
+	<p>Zscalerは、「...内部IPアドレスがNATの背後にない場合、各<a href="https://www.cloudflare.com/learning/network-layer/what-is-gre-tunneling/" target="_blank">GRE</a> &nbsp;[IP]トンネルで1Gbpsの最大帯域幅をサポートします」と言います。ほとんどのインターネット・アプリケーションと接続は、エンドユーザーまでの経路のどこかで1Gbpsのネットワーク・ボトルネックが生じていますが、一部のアプリケーションはより多くの帯域幅を必要とし、それをサポートするように設計されています。たとえば、ユーザーはビデオストリームや大きなファイル共有がインターネット上の他のものと同じくらい瞬時に行われることを期待しているのです。ボトルネックがあるという前提は、達成可能なスループットの種類に人為的な制限を生み出し、リンク速度と接続性が保証されている場合でもスループットを制限してしまいます。</p>
+	<p><strong>Cloudflare Oneの優位性：</strong>当社では多くの時間をかけてテストを行い、次のように明らかな結果を得ることができました。エンドユーザーの視点からすると、Cloudflare Oneのパフォーマンスは群を抜いており、Zscalerを凌駕しています。高帯域幅のアプリケーションを実行している2つのデバイス間のスループットについてテストを実施しました。これらのデバイスはパブリッククラウドのネットワーク内の異なるVPCにありましたが、オンプレミスのプライベートネットワーク内の異なるサブネットに配置することも可能でした。各VPCはCloudflareのAnycast IPトンネルをCloudflareのネットワークへのオンランプとして使用するように設定されており、これにより両方のデバイスがCloudflare Oneを介して安全に接続できるようになりました。そして、双方向で記録されたスループット結果は6Gbpsで、これはZscalerなどが設定した制限を大幅に上回る容量です。このように、お客様の組織において、新たに採用した広帯域のアプリケーションが、採用したZero Trustプラットフォームによって制約を受ける心配がなくなりました。</p>
+	<h4 id="3-">3）その他のインターネットとの接続性向上</h4>
+	<p>Zscalerは「インターネットへの最速のオンランプ」を謳い文句にしています。しかし、これはある種のまやかしで、オンランプは諸問題の一部分に過ぎないのです。オンランプの先に高速で効果的な接続機能がなければ、Zscalerは単なるSSEプラットフォームに過ぎず、SASEとは言えません。Zscalerはプラットフォームのネットワーキング部分にフォーカスしていない、ということです。</p>
+	<p><strong>Cloudflare Oneの優位性：</strong>10,500を超える相互接続ピアがあり、圧倒的な数字となっています。当社ではZscalerのようにネットワークエッジで顧客を引き渡すことはありません。Cloudflareの仮想バックボーンをトランジットに使用できます。Cloudflareネットワークは1日あたり3兆件以上のリクエストをルーティングし、Argo Smart Routing にリアルタイムの輻輳を検出し、 最速かつ最も信頼性の高いネットワークパスを介して<a href="https://blog.cloudflare.com/ja-jp/argo-for-packets-generally-available-ja-jp/">IPパケットをルーティング</a>するための固有バンテージ・ポイントを提供します。</p>
+	<p>機能性の重要性について触れたので、ここで本記事を締めくくりたいと思います。すべてのピアリングや、全体における実績のある優位性は、提供サービスを考慮しなければ、それほど重要なことではないでしょう。Zscalerは、SWGやZTNAなどのサービスを提供することで地域のDCハブの必要性を排除できるとしています。しかし、Webアプリケーション・ファイアウォール、ロードバランシング、権威DNS、DDoS保護などを使用して、クラウドアプリケーションやオンプレミスサーバーをエンドツーエンド（インターネットに公開されている場合はインバウンドトラフィックも含む）で保護するという組織のニーズにまったく対応していません。</p>
+	<p>この4年間で、導入の簡便性、ネットワーク回復力、革新的な速度など、提供するサービスの完全性において当社はZscalerを上回りました。<a href="https://www.cloudflare.com/products/zero-trust/cloudflare-vs-zscaler/" target="_blank">詳細はこちらをご覧ください。</a>私たちと一緒に次の4年、さらにその先を見据えていきませんか。</p>
+</div>

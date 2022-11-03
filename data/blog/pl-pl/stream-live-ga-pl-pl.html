@@ -1,0 +1,194 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image2-21.png" class="kg-image" alt="Stream Live is now Generally Available"></figure>
+	<p>Mamy przyjemność ogłosić, że Stream Live wyszło z bety – jest teraz dostępne dla wszystkich i gotowe na ruch produkcyjny w dużej skali. Stream Live to funkcja <a href="https://www.cloudflare.com/products/cloudflare-stream/" target="_blank">Cloudflare Stream</a> pozwalająca deweloperom budować funkcje wideo na żywo na stronach internetowych i w aplikacjach natywnych.</p>
+	<p>Od czasu <a href="https://blog.cloudflare.com/stream-live/">uruchomienia bety</a> deweloperzy wykorzystują Stream do transmitowania na żywo koncertów najpopularniejszych artystów na świecie bezpośrednio do fanów, budowania zupełnie nowych platform dla twórców wideo, prowadzenia globalnej, dostępnej 24 godziny na dobę usługi OTT i nie tylko. W okresie bety Stream pozyskał miliony minut nagrań na żywo i dostarczył je użytkownikom na całym świecie.</p>
+	<p><strong>Możecie powierzyć nam wielkie imprezy na żywo, ambitne platformy streamingowe czy aplikacje mobilne do publikacji wideo z milionami użytkowników – jesteśmy na nie gotowi.</strong></p>
+	<h2 id="streaming-na-du-skal-nie-jest-atwy">Streaming na dużą skalę nie jest łatwy</h2>
+	<p><strong>Strumieniowanie na żywo wymaga ogromnej przepustowości.</strong> Przykładowo jedna godzina w rozdzielczości 1080p i prędkości 8 Mb/s potrzebuje aż 3,6 GB. Przy <a href="https://blog.cloudflare.com/aws-egregious-egress/">typowych cenach ruchu wychodzącego u dostawców usług w chmurze</a> nawet niewielkie wideo może kosztować fortunę.</p>
+	<p><strong>Wideo na żywo musi być kodowane na bieżąco, w czasie rzeczywistym.</strong> Konsumenci chcą je oglądać w telefonie, korzystając z sieci mobilnej o mniejszej przepustowości, większych opóźnieniach i często przerywanym połączeniu. Aby spełniać te oczekiwania, wideo na żywo musi być ponownie kodowane w czasie rzeczywistym w różnych rozdzielczościach, by umożliwić przejście na niższą rozdzielczość i dalsze odtwarzanie materiału. Bywa to dość skomplikowane (jakie wybrać szybkości transmisji bitów? które kodeki? ile?) i kosztowne – cała flota wirtualnych maszyn nie jest tania.</p>
+	<p><strong>Ważna jest lokalizacja pozyskiwania – protokoły strumieniowania takie jak RTMPS wysyłają wideo przez TCP</strong>. Jeśli jeden pakiet zostanie porzucony lub utracony, całe połączenie musi się zatrzymać na czas jego odnalezienia i ponownego przesyłu. To zjawisko jest znane jako blokowanie się portów („head of line blocking”). Im dalej od serwera pozyskiwania znajduje się nadawca, tym więcej przeskoków, a więc i tym większe prawdopodobieństwo porzucenia lub utraty pakietów danych, co skutkuje opóźnieniami i buforowaniem po stronie widzów.</p>
+	<p><strong>Lokalizacja dostawy również jest ważna</strong> – wideo na żywo muszą być zapisywane w pamięci podręcznej i obsługiwane z punktów obecności jak najbliższych widzom. Im dłuższa podróż po sieci, tym większa szansa buforowania lub obniżenia jakości.</p>
+	<p><strong>Protokoły transmisji to kolejny problem</strong> – najpowszechniejszy protokół do strumieniowania na żywo, RTMPS, został porzucony w 2012 roku i sięga czasów formatu Flash we wczesnych latach 2000. Powstaje nowy standard, SRT, jednak na razie nie jest wszędzie wspierany. A Web RTC dopiero niedawno stał się jedną z możliwości w transmisji wideo w wysokiej rozdzielczości do wielu użytkowników.</p>
+	<p>Tradycyjnym rozwiązaniem jest połączyć oddzielne usługi w chmurze od różnych dostawców. Jeden zapewnia doskonałe dostarczanie treści, ale nie kodowanie. Inny oferuje interfejsy API lub sprzęt do kodowania, ale każe budować własną warstwę magazynu. Jako deweloper musisz nauczyć się wszystkiego o protokołach, kodekach, ustawieniach kodowania i procesach dostawy, a następnie napisać warstwę kodu pośredniczącego między nimi i potem nią zarządzać.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image4-8.png" class="kg-image"></figure>
+	<p>Dlatego zbudowaliśmy Stream Live, by strumieniowanie na żywo było tak łatwe, jak dodawanie znacznika &lt;img&gt; do strony internetowej. Wideo na żywo stało się w ostatnich latach podstawowym elementem treści w Internecie i uważamy, że każdy deweloper powinien mieć narzędzia pozwalające dodawać je do strony internetowej lub aplikacji natywnej.</p>
+	<p>Stream pozwala Tobie i Twoim użytkownikom strumieniować wideo na żywo bezpośrednio do Cloudflare, by Cloudflare dostarczało je bezpośrednio widzom. Nie musisz martwić się kodowaniem, pamięcią czy dostawą – tylko zawartością, którą chcesz przesyłać.</p>
+	<h2 id="nasza-sie-i-sprz-t-rozwi-zanie-kt-re-oferuje-tylko-cloudflare">Nasza sieć i sprzęt = rozwiązanie, które oferuje tylko Cloudflare</h2>
+	<p>Nie jesteśmy jedyną firmą budującą interfejsy API do wideo na żywo, ale tylko my mamy <em>własną</em> globalną sieć i sprzęt, które sami kontrolujemy i optymalizujemy pod kątem wideo. To daje nam unikatowe możliwości, na przykład <a href="https://blog.cloudflare.com/magic-hdmi-cable/">opóźnienie na całej trasie poniżej sekundy</a> z wykorzystaniem RTMPS i SRT na dużą skalę.</p>
+	<p>Nowsze kodeki wideo wymagają wyspecjalizowanych koderów sprzętowych. Podczas gdy inni są ograniczeni możliwościami sprzętowymi dostawców publicznej chmury, my już instalujemy najnowszy sprzęt kodujący we własnych szafach, co umożliwi Ci dostarczanie wideo w wysokiej rozdzielczości przy jeszcze mniejszej przepustowości. Chcemy, by to, co obecnie potrafią tylko giganci branży wideo, było możliwe dla wszystkich naszych klientów – już w przyszłym tygodniu podzielimy się ekscytującymi informacjami w tym temacie.</p>
+	<p>Większość dostawców ogranicza liczbę lokalizacji, do których można jednocześnie przesyłać wiele strumieni wideo. Ponieważ obsługujemy własną sieć, nigdy nie było to dla nas problemem, a nasi klienci mogą <a href="https://developers.cloudflare.com/stream/stream-live/simulcasting/" target="_blank">przesyłać strumienie wideo do nieograniczonej liczby lokalizacji</a>.</p>
+	<p>Własna sieć pozwala nam także wyceniać Stream na podstawie dostarczonych minut wideo – w przeciwieństwie do innych, nie płacimy stronie trzeciej za przepustowość, by potem sprzedawać ją własnym klientom z zyskiem. Powszechna praktyka pobierania opłat za przepustowość lub każdy gigabajt pamięci oznacza wyższe koszty przechowywania i dostarczania zawartości w wysokiej rozdzielczości. Gdyby zapytać dlaczego, zwykle okazuje się, że inni przenoszą własne struktury koszty na klientów.</p>
+	<p>Kodowanie wideo wymaga ogromnej mocy obliczeniowej, dostarczanie wymaga dużej przepustowości, a podczas pozyskiwania wideo na żywo istotna jest lokalizacja. Korzystając ze Stream, nie musisz martwić się ciągłym optymalizowaniem wydajności, znajdowaniem CDN czy dostosowywaniem konfiguracji. Stream zajmuje się wszystkim za Ciebie.</p>
+	<h2 id="uwolnij-swoje-wideo-na-ywo-od-modeli-biznesowych-wielkich-platform">Uwolnij swoje wideo na żywo od modeli biznesowych wielkich platform</h2>
+	<p>Niemal każda organizacja wykorzystuje wideo na żywo – do przyciągania klientów, transmitowania wydarzeń lub monetyzacji treści. Jednak większość z nich nie ma specjalistycznych zasobów technologicznych pozwalających samodzielnie dostarczać wideo na żywo w dużej skali, więc zamiast tego łączy wiele usług w chmurze niższego poziomu. Do dziś wielu największych twórców treści wideo, chcąc dotrzeć do widzów na żywo, musi polegać na garści aplikacji społecznościowych i usług streamingowych.</p>
+	<p>W przeciwieństwie do platform standardowych dostawców, którzy zmuszają do publikacji wideo w <em>ich</em> aplikacjach i usługach oraz dostosowania się do <em>ich</em> modelu biznesowego, Stream daje Ci pełną kontrolę nad materiałami, które są dostępne w <em>Twojej</em> aplikacji czy stronie, na dowolnym urządzeniu, na dużą skalę, bez zmuszania użytkowników do korzystania z usług stron trzecich.</p>
+	<h2 id="darmowe-kodowanie-darmowe-pozyskiwanie-darmowa-analiza-danych-proste-op-aty-za-minut-">Darmowe kodowanie. Darmowe pozyskiwanie. Darmowa analiza danych. Proste opłaty za minutę.</h2><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-c6q4 {
+			font-family: inherit;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-dkn2 {
+			background-color: #CCC;
+			font-family: inherit;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0fkh {
+			background-color: #CCC;
+			font-family: inherit;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-3xvn {
+			font-family: inherit;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-dkn2"></th>
+				<th class="tg-0fkh"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Inni</span></th>
+				<th class="tg-0fkh"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Stream</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-3xvn"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Kodowanie</span></td>
+				<td class="tg-c6q4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">$ za minutę</span></td>
+				<td class="tg-c6q4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Za darmo</span></td>
+			</tr>
+			<tr>
+				<td class="tg-3xvn"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Pozyskiwanie</span></td>
+				<td class="tg-c6q4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">$ za GB</span></td>
+				<td class="tg-c6q4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Za darmo</span></td>
+			</tr>
+			<tr>
+				<td class="tg-3xvn"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Analytics</span></td>
+				<td class="tg-c6q4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Oddzielny produkt</span></td>
+				<td class="tg-c6q4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Za darmo</span></td>
+			</tr>
+			<tr>
+				<td class="tg-3xvn"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Nagrania na żywo</span></td>
+				<td class="tg-c6q4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Minuty lub godziny później</span></td>
+				<td class="tg-c6q4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Natychmiast</span></td>
+			</tr>
+			<tr>
+				<td class="tg-3xvn"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Przechowywanie</span></td>
+				<td class="tg-c6q4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">$ za GB </span></td>
+				<td class="tg-c6q4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">za minutę przechowywanych treści</span></td>
+			</tr>
+			<tr>
+				<td class="tg-3xvn"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Dostawa</span></td>
+				<td class="tg-c6q4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">$ za GB</span></td>
+				<td class="tg-c6q4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">za minutę dostarczonych treści</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Inne platformy pobierają opłaty za pozyskiwanie i kodowanie. Często koszty różnią się w zależności od tego, skąd i dokąd przesyłane są treści, jaka jest szybkość transmisji bitów, ile klatek na sekundę ma wideo, a nawet z których centrów danych korzystasz.</p>
+	<p><strong>W Stream kodowanie i pozyskiwanie są darmowe.</strong> Inne platformy pobierają opłaty od przepustowości, co zniechęca do dostarczania widzom materiałów wysokiej jakości. Transmisja w wysokiej rozdzielczości kosztuje wówczas więcej.</p>
+	<p><strong>W Stream nie musisz dopłacać za dostarczanie wideo w wysokiej rozdzielczości.</strong> Cennik Stream jest prosty – płacisz za przechowywane i dostarczone minuty wideo. A ponieważ płacisz za minutę, nie za gigabajt, możesz streamować w rozdzielczości najbardziej odpowiadającej Twoim widzom, nie martwiąc się kosztami przepustowości.</p>
+	<p>Inne platformy pobierają opłaty za analizę statystyk transmisji na żywo, wymagając zakupu dodatkowego produktu.</p>
+	<p><strong>W Stream analiza jest całkowicie darmowa.</strong> Stream zapewnia <a href="https://developers.cloudflare.com/stream/getting-analytics/fetching-bulk-analytics/" target="_blank">interfejs API</a> oraz <a href="https://dash.cloudflare.com/?to=/:account/stream/analytics" target="_blank">pulpit nawigacyjny</a> do analizy danych po stronie serwera oraz po stronie klienta, pod kątem danego wideo, twórcy, kraju itd. Analiza pozwala na przykład określić, którzy twórcy w aplikacji mają najpopularniejsze transmisje na żywo, jaką opłatę pobrać od klienta za jego zużycie albo gdzie treści gwałtownie zyskują popularność.</p>
+	<p>Inne platformy dodają nagrania na żywo lub możliwość przewijania jako oddzielne, dodatkowe funkcje, a nagrania są dostępne dopiero kilka minut lub nawet godzin po zakończeniu transmisji.</p>
+	<p><strong>W Stream nagrania na żywo są wbudowane w usługę i dostępne <a href="https://developers.cloudflare.com/stream/stream-live/watch-live-stream/#replaying-recordings" target="_blank">natychmiast po zakończeniu transmisji</a>. </strong>Gdy tylko transmisja na żywo staje się dostępna, działa zupełnie tak samo, jak każde wideo przesłane na Stream. Do zarządzania materiałami nagranymi z wyprzedzeniem oraz transmisjami na żywo służą te same interfejsy API.</p>
+	<h2 id="wbuduj-wideo-na-ywo-w-stron-internetow-lub-aplikacj-w-ci-gu-minut">Wbuduj wideo na żywo w stronę internetową lub aplikację w ciągu minut</h2>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image1-26.png" class="kg-image"></figure>
+	<p>Cloudflare Stream pozwala Tobie lub Twoim użytkownikom nadawać na żywo z wykorzystaniem tych samych protokołów i narzędzi, których używają twórcy na platformach takich jak YouTube czy Twitch, ale daje Ci pełną kontrolę nad dostępem do transmisji oraz ich prezentacją.</p>
+	<h3 id="krok-1-utw-rz-wideo-wej-ciowe"><strong>Krok 1: Utwórz wideo wejściowe</strong></h3>
+	<p><a href="https://dash.cloudflare.com/?to=/:account/stream/inputs/create" target="_blank">Utwórz wideo wejściowe na żywo z pulpitu nawigacyjnego Cloudflare</a> lub wykorzystaj do tego interfejs API Stream:</p>
+	<p><strong>Żądanie</strong></p><!--kg-card-begin: markdown-->
+	<pre><code>curl -X POST \
+-H "Authorization: Bearer &lt;YOUR_API_TOKEN&gt;" \
+-d "{"recording": { "mode": "automatic" } }" \
+https://api.cloudflare.com/client/v4/accounts/&lt;YOUR_CLOUDFLARE_ACCOUNT_ID&gt;/stream/live_inputs
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p><strong>Odpowiedź</strong></p><!--kg-card-begin: markdown-->
+	<pre><code>{
+"result": {
+"uid": "&lt;UID_OF_YOUR_LIVE_INPUT&gt;",
+"rtmps": {
+"url": "rtmps://live.cloudflare.com:443/live/",
+"streamKey": "&lt;PRIVATE_RTMPS_STREAM_KEY&gt;"
+},
+...
+}
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="krok-2-u-yj-klucza-rtmps-z-dowolnym-oprogramowaniem-do-transmisji-na-ywo-lub-w-asn-aplikacj-natywn-">Krok 2: Użyj klucza RTMPS z dowolnym oprogramowaniem do transmisji na żywo lub własną aplikacją natywną</h3>
+	<p>Skopiuj klucz i adres URL RTMPS i użyj ich w aplikacji do transmisji strumieniowej. Zalecamy na początek <a href="https://obsproject.com/" target="_blank">Open Broadcaster Software (OBS)</a>, ale dowolny program zgodny z RTMPS lub SRT powinien również współpracować ze Stream Live.</p>
+	<p>Wprowadź adres URL RTMPS i klucz z kroku 1:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image5-7.png" class="kg-image"></figure>
+	<h3 id="krok-3-wy-wietl-podgl-d-transmisji-na-ywo-w-pulpicie-nawigacyjnym-cloudflare">Krok 3: wyświetl podgląd transmisji na żywo w pulpicie nawigacyjnym Cloudflare</h3>
+	<p>W pulpicie nawigacyjnym Stream, w ciągu sekund od rozpoczęcia transmisji, zobaczysz podgląd tego, co będą widzieli Twoi widzowie, a także status połączenia transmisji w czasie rzeczywistym.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/Screen-Shot-2022-09-21-at-12.34.35-PM.png" class="kg-image"></figure>
+	<h3 id="krok-4-dodaj-odtwarzanie-wideo-na-ywo-do-strony-internetowej-lub-aplikacji">Krok 4: dodaj odtwarzanie wideo na żywo do strony internetowej lub aplikacji</h3>
+	<p>Transmituj wideo za pomocą naszego <a href="https://developers.cloudflare.com/stream/viewing-videos/using-the-stream-player/" target="_blank">kodu osadzania Stream Player</a> lub użyj <a href="https://developers.cloudflare.com/stream/viewing-videos/using-own-player/" target="_blank">dowolnego odtwarzacza wideo ze wsparciem dla HLS lub DASH</a> – transmisje na żywo można odtwarzać na stronach internetowych lub w aplikacjach natywnych dla systemów iOS i Android.</p>
+	<p>Na przykład w iOS wystarczy dostarczyć AVPlayer adres URL manifestu HLS wejścia wideo, który można znaleźć <a href="https://developers.cloudflare.com/stream/stream-live/watch-live-stream/" target="_blank">przez interfejs API</a> lub na <a href="https://dash.cloudflare.com/?to=/:account/stream" target="_blank">pulpicie nawigacyjnym Stream</a>.</p>
+	<pre><code class="language-swift">import SwiftUI
+import AVKit
+
+struct MyView: View {
+    // Change the url to the Cloudflare Stream HLS manifest URL
+    private let player = AVPlayer(url: URL(string: "https://customer-9cbb9x7nxdw5hb57.cloudflarestream.com/8f92fe7d2c1c0983767649e065e691fc/manifest/video.m3u8")!)
+
+    var body: some View {
+        VideoPlayer(player: player)
+            .onAppear() {
+                player.play()
+            }
+    }
+}
+
+struct MyView_Previews: PreviewProvider {
+    static var previews: some View {
+        MyView()
+    }
+}</code></pre>
+	<p>Aby uruchomić pełną przykładową aplikację w XCode, postępuj zgodnie z <a href="https://developers.cloudflare.com/stream/examples/ios/" target="_blank">tym przewodnikiem</a> dostępnym w dokumentacji Stream dla deweloperów.</p>
+	<h2 id="firmy-buduj-ca-e-platformy-wideo-w-oparciu-o-stream">Firmy budują całe platformy wideo w oparciu o Stream</h2>
+	<p>Deweloperzy chcą mieć kontrolę nad owocami swojej pracy, ale zwykle nie mają czasu na poznanie tematyki transmisji wideo od podszewki. A nawet eksperci od wideo budujący innowacyjne nowe platformy nie chcą zarządzać infrastrukturą transmisji na żywo.</p>
+	<p>Cała działalność Switcher Studio opiera się na transmisjach na żywo – ich aplikacja na iOS pozwala twórcom i firmom produkować pod własną marką transmisje na żywo z kilku kamer. Stream stanowi kluczowy element infrastruktury transmisji tej firmy. Sami mówią o nas tak:</p>
+	<blockquote><em>„Switcher pomaga twórcom transmisji na żywo docierać do widzów od 2014 roku. Obecnie nasi użytkownicy tworzą ponad 100 000 transmisji miesięcznie. W związku z rozwojem firmy potrzebowaliśmy skalowalnego rozwiązania umożliwiającego dostarczanie zawartości. Cloudflare oferuje bezpieczne, szybkie dostarczanie zawartości i umożliwiło nam dodanie do oferty nowych funkcji, takich jak multistreaming. Powierzenie infrastruktury Cloudflare Stream pozwala nam skupić się na narzędziach do produkcji na żywo, które odróżniają nas od konkurencji”.</em></blockquote>
+	<p>Podczas bety Stream Live pracowaliśmy z licznymi klientami takimi jak Switcher, dla których wideo na żywo jest nie jedną z funkcji, a <em>podstawą</em> produktu. Nawet jako eksperci w wideo na żywo, zespół Switcher postanowił korzystać ze Stream, by skupić swoją uwagę na unikalnej wartości, którą tworzą dla klientów, zostawiając kwestię pozyskiwania, kodowania, nagrywania i dostarczania wideo na żywo Cloudflare.</p>
+	<h2 id="zacznij-dodawa-wideo-na-ywo-do-swojej-strony-internetowej-lub-aplikacji-ju-dzi-">Zacznij dodawać wideo na żywo do swojej strony internetowej lub aplikacji już dziś</h2>
+	<p>Rejestracja i rozpoczęcie pierwszej transmisji na żywo z pulpitu nawigacyjnego Cloudflare zajmuje tylko kilka minut i nie wymaga kodu. Kiedy postanowisz budować własne funkcje wideo na żywo, będą na Ciebie czekać <a href="https://developers.cloudflare.com/stream/" target="_blank">interfejsy API</a>. <a href="https://dash.cloudflare.com/?to=/:account/stream" target="_blank">Spróbuj</a> – jesteśmy na Ciebie gotowi, bez względu na rozmiar Twojej widowni.</p>
+</div>

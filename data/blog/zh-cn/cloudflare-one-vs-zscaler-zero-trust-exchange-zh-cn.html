@@ -1,0 +1,472 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/Zero-Trust-Exchange.png" class="kg-image" alt="Cloudflare One vs Zscaler Zero Trust Exchange: who is most feature complete? It’s not who you might expect"></figure>
+	<p>15 年来，Zscaler 一直在构建安全产品。Cloudflare 已有 13 年历史，过去四年以来，我们一直在打造 Zero Trust。听起来好像我们起步得晚一些。但本文我们将综合展示 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trust</a>、<a href="https://www.cloudflare.com/learning/access-management/security-service-edge-sse/" target="_blank">SSE</a>、<a href="https://www.cloudflare.com/learning/access-management/what-is-sase/" target="_blank">SASE</a> 及其他产品。Cloudflare One 的功能要优于 Zscaler Zero Trust Exchange。</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-onfx {
+			background-color: #afe4fd;
+			color: #3663ae;
+			font-size: 18px;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-baqh {
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-c3ow {
+			border-color: inherit;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-cmei {
+			background-color: #afe4fd;
+			border-color: inherit;
+			color: #3663ae;
+			font-size: 18px;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-8d3w {
+			background-color: #FFF;
+			border-color: inherit;
+			color: #222;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-q8v8 {
+			background-color: #afe4fd;
+			border-color: inherit;
+			color: #3663ae;
+			font-size: 18px;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-0pky {
+			border-color: inherit;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-gct1 {
+			background-color: #FFF;
+			border-color: inherit;
+			color: #222;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-4ufn {
+			background-color: #FFF;
+			color: #222;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" style="undefined;table-layout: fixed; width: 592px">
+		<colgroup>
+			<col style="width: 332.003472px">
+			<col style="width: 130.003472px">
+			<col style="width: 130.003472px">
+		</colgroup>
+		<thead>
+			<tr>
+				<th class="tg-cmei"><span style="font-style:normal;text-decoration:none">功能标准组</span></th>
+				<th class="tg-onfx"><span style="font-style:normal;text-decoration:none">Cloudflare</span></th>
+				<th class="tg-q8v8"><span style="font-style:normal;text-decoration:none">Zscaler</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:600;font-style:normal;text-decoration:none">互联网原生网络平台</span></td>
+				<td class="tg-baqh"><span style="font-weight:700;font-style:normal;text-decoration:none">100% </span>（5 个中有 5 个）</td>
+				<td class="tg-gct1"><span style="font-weight:bold">20%</span> （5 个中有 1 个）</td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:600;font-style:normal;text-decoration:none">云原生服务平台</span></td>
+				<td class="tg-baqh"><span style="font-weight:700;font-style:normal;text-decoration:none">100% </span>（4 个中有 4 个）</td>
+				<td class="tg-8d3w"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#222;background-color:transparent">25% </span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#222;background-color:transparent">（4 个中有 1 个）</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:600;font-style:normal;text-decoration:none">采用 SASE 的服务</span></td>
+				<td class="tg-4ufn"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#222;background-color:transparent">83%</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#222;background-color:transparent">（6 个中有 5 个）</span></td>
+				<td class="tg-c3ow"><span style="font-weight:bold">66%</span>（6 个中有 4 个）</td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:600;font-style:normal;text-decoration:none">扩展 ZTNA、SSE、SASE 及更多的服务</span></td>
+				<td class="tg-4ufn"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#222;background-color:transparent">66%</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#222;background-color:transparent">（12 个中有 8 个）</span></td>
+				<td class="tg-c3ow"><span style="font-weight:bold">58%</span>（12 个中有 7 个）</td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:600;font-style:normal;text-decoration:none">网络入口</span></td>
+				<td class="tg-baqh"><span style="font-weight:bold">90%</span>（10 个中有 9 个）</td>
+				<td class="tg-c3ow"><span style="font-weight:700;font-style:normal;text-decoration:none">50% </span>（10 个中有 5 个）</td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>许多人可能会很惊讶。我们与客户分享这些时，经常会收到这样的问题：<em>怎么可能？</em>Cloudflare 怎么能够这么快就打造出有竞争力的产品？</p>
+	<p>建立起世界上最大的可编程 Anycast 网络无疑是一项巨大优势。这是 Cloudflare 现有应用程序服务业务的基础。应用程序服务业务为世界各地的客户提供安全、高性能的网络和应用程序体验，让我们对互联网安全和性能有了深刻的认识。但是，不仅我们的基础设施已准备就绪，为客户大规模解决真正的问题，而且我们的无服务器计算开发平台 <a href="https://workers.cloudflare.com/" target="_blank">Workers</a> 也旨在构建内置安全性、可靠性和性能的全球分布式应用程序。我们已经能够在我们的平台之上，极速提供 Zero Trust 服务——这个速度只可能继续增长。</p>
+	<p>我们还有另一个优势，只是这个时间线让人产生了误解。过去 15 年中，企业安全领域发生了太多变化。例如，想打造像我们这样的性能良好的全球网络，当年根本不可能做出这种假设。我们构建“Zero Trust”产品之初是完全一片空白，然后在完全现代的云计算假设上构建了我们的产品。</p>
+	<p>但我们知道您为什么来这里——您想看证据。这就是证据：我们在我们的公共网页上发布了一份新的功能深入剖析，<a href="https://www.cloudflare.com/products/zero-trust/cloudflare-vs-zscaler/" target="_blank">对比 Zscaler 和 Cloudflare 的平台</a>。让我们先快速对比一下五个标准组中的两个标准——采用 SASE 的服务和网络入口。许多标准在 <a href="https://assets.ctfassets.net/slt3lc6tev37/1lybjMN3kXG7Jo8NEOrxc4/18c2c124710c6cc962b7d5732535d3a4/Whitepaper_A-Cloudflare-vs-Zscaler-comparison-of-Zero-Trust-SSE-SASE-and-beyond_Simplified-Chinese_20221018.pdf" target="_blank">PDF</a> 中包括脚注，以增加背景，提高清晰度（用*表示）。</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-ucok {
+			background-color: #afe4fd;
+			border-color: #000000;
+			color: #3663ae;
+			font-size: 18px;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-baki {
+			background-color: #fe0000;
+			border-color: #000000;
+			color: #ffffff;
+			text-align: center;
+			vertical-align: middle
+		}
+
+		.tg .tg-ru72 {
+			background-color: #fe0000;
+			border-color: #000000;
+			color: #ffffff;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-ycfl {
+			background-color: #009901;
+			border-color: #000000;
+			color: #ffffff;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-68aq {
+			background-color: #afe4fd;
+			border-color: #000000;
+			color: #3663ae;
+			font-size: 18px;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-73oq {
+			border-color: #000000;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-dp1c {
+			background-color: #009901;
+			border-color: #000000;
+			color: #ffffff;
+			text-align: center;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" style="undefined;table-layout: fixed; width: 610px">
+		<colgroup>
+			<col style="width: 342.003472px">
+			<col style="width: 134.003472px">
+			<col style="width: 134.003472px">
+		</colgroup>
+		<thead>
+			<tr>
+				<th class="tg-68aq"><span style="font-weight:600;font-style:normal;text-decoration:none">采用 SASE 的服务</span></th>
+				<th class="tg-ucok"><span style="font-style:normal;text-decoration:none">Cloudflare</span></th>
+				<th class="tg-ucok"><span style="font-style:normal;text-decoration:none">Zscaler</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-73oq"><span style="font-weight:600;font-style:normal;text-decoration:none">Zero Trust 网络访问（ZTNA）</span></td>
+				<td class="tg-ycfl">是</td>
+				<td class="tg-dp1c"><span style="font-weight:700;font-style:normal">是</span></td>
+			</tr>
+			<tr>
+				<td class="tg-73oq"><span style="font-weight:600;font-style:normal;text-decoration:none">云访问安全代理（CASB）</span></td>
+				<td class="tg-dp1c"><span style="font-weight:700;font-style:normal">是</span></td>
+				<td class="tg-ycfl"><span style="font-weight:700;font-style:normal">是</span></td>
+			</tr>
+			<tr>
+				<td class="tg-73oq"><span style="font-weight:600;font-style:normal;text-decoration:none">安全 web 网关（SWG）</span></td>
+				<td class="tg-ycfl"><span style="font-weight:700;font-style:normal">是</span></td>
+				<td class="tg-dp1c"><span style="font-weight:700;font-style:normal">是</span></td>
+			</tr>
+			<tr>
+				<td class="tg-73oq"><span style="font-weight:600;font-style:normal;text-decoration:none">防火墙即服务（FWaaS）</span></td>
+				<td class="tg-ycfl"><span style="font-weight:700;font-style:normal">是</span></td>
+				<td class="tg-dp1c"><span style="font-weight:700;font-style:normal">是</span></td>
+			</tr>
+			<tr>
+				<td class="tg-73oq"><span style="font-weight:600;font-style:normal;text-decoration:none">WAN 即服务提供 L3-7 流量加速*</span></td>
+				<td class="tg-dp1c"><span style="font-weight:700;font-style:normal">是</span></td>
+				<td class="tg-ru72"><span style="font-weight:700;font-style:normal">否</span></td>
+			</tr>
+			<tr>
+				<td class="tg-73oq"><span style="font-weight:600;font-style:normal;text-decoration:none">本地 SD-WAN*</span></td>
+				<td class="tg-baki"><span style="font-weight:700;font-style:normal">否 - 合作伙伴</span></td>
+				<td class="tg-baki"><span style="font-weight:700;font-style:normal">否 - 合作伙伴</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html--><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-baki {
+			background-color: #fe0000;
+			border-color: #000000;
+			color: #ffffff;
+			text-align: center;
+			vertical-align: middle
+		}
+
+		.tg .tg-ph0s {
+			background-color: #afe4fd;
+			border-color: #000000;
+			color: #3663ae;
+			font-size: 18px;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: middle
+		}
+
+		.tg .tg-tpun {
+			background-color: #009901;
+			color: #ffffff;
+			text-align: center;
+			vertical-align: middle
+		}
+
+		.tg .tg-68aq {
+			background-color: #afe4fd;
+			border-color: #000000;
+			color: #3663ae;
+			font-size: 18px;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-73oq {
+			border-color: #000000;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-kos1 {
+			background-color: #009901;
+			border-color: #000000;
+			color: #ffffff;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: middle
+		}
+
+		.tg .tg-w7s0 {
+			background-color: #009901;
+			border-color: #000000;
+			color: #ffffff;
+			text-align: center;
+			vertical-align: middle
+		}
+
+		.tg .tg-d6fj {
+			background-color: #fe0000;
+			border-color: #000000;
+			color: #ffffff;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: middle
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-ydhf {
+			background-color: #fe0000;
+			color: #ffffff;
+			text-align: center;
+			vertical-align: middle
+		}
+	</style>
+	<table class="tg" style="undefined;table-layout: fixed; width: 748px">
+		<colgroup>
+			<col style="width: 420.003472px">
+			<col style="width: 164.003472px">
+			<col style="width: 164.003472px">
+		</colgroup>
+		<thead>
+			<tr>
+				<th class="tg-68aq"><span style="font-weight:600;font-style:normal;text-decoration:none">网络入口</span></th>
+				<th class="tg-ph0s"><span style="font-style:normal;text-decoration:none">Cloudflare</span></th>
+				<th class="tg-ph0s"><span style="font-style:normal;text-decoration:none">Zscaler</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-73oq"><span style="font-weight:600;font-style:normal;text-decoration:none">基于浏览器的无客户端访问</span></td>
+				<td class="tg-kos1">是</td>
+				<td class="tg-w7s0"><span style="font-weight:700;font-style:normal">是</span></td>
+			</tr>
+			<tr>
+				<td class="tg-73oq"><span style="font-weight:600;font-style:normal;text-decoration:none">设备客户端软件</span></td>
+				<td class="tg-w7s0"><span style="font-weight:700;font-style:normal">是</span></td>
+				<td class="tg-kos1"><span style="font-weight:700;font-style:normal">是</span></td>
+			</tr>
+			<tr>
+				<td class="tg-73oq"><span style="font-weight:600;font-style:normal;text-decoration:none">应用连接器软件*</span></td>
+				<td class="tg-kos1"><span style="font-weight:700;font-style:normal">是</span></td>
+				<td class="tg-w7s0"><span style="font-weight:700;font-style:normal">是</span></td>
+			</tr>
+			<tr>
+				<td class="tg-73oq"><span style="font-weight:600;font-style:normal;text-decoration:none">分支连接器软件*</span></td>
+				<td class="tg-d6fj"><span style="font-weight:700;font-style:normal">否</span></td>
+				<td class="tg-w7s0"><span style="font-weight:700;font-style:normal">是</span></td>
+			</tr>
+			<tr>
+				<td class="tg-73oq"><span style="font-weight:600;font-style:normal;text-decoration:none">Anycast DNS，GRE，IPsec，QUIC， Wireguard 隧道*</span></td>
+				<td class="tg-w7s0"><span style="font-weight:700;font-style:normal">是</span></td>
+				<td class="tg-baki"><span style="font-weight:bold">否</span></td>
+			</tr>
+			<tr>
+				<td class="tg-73oq"><span style="font-weight:600;font-style:normal;text-decoration:none">适用于数据中心和办公室的专用网络互连</span></td>
+				<td class="tg-w7s0"><span style="font-weight:700;font-style:normal">是</span></td>
+				<td class="tg-baki"><span style="font-weight:700;font-style:normal">否</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:600;font-style:normal;text-decoration:none">入站 IP 传输（BYOIP）</span></td>
+				<td class="tg-tpun"><span style="font-weight:700;font-style:normal">是</span></td>
+				<td class="tg-ydhf"><span style="font-weight:700;font-style:normal">否</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:600;font-style:normal;text-decoration:none">纯 IPv6 连接支持*</span></td>
+				<td class="tg-tpun"><span style="font-weight:700;font-style:normal">是</span></td>
+				<td class="tg-ydhf"><span style="font-weight:700;font-style:normal">否</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:600;font-style:normal;text-decoration:none">递归 DNS 解析器</span></td>
+				<td class="tg-tpun"><span style="font-weight:700;font-style:normal">是</span></td>
+
+				<td class="tg-tpun"><span style="font-weight:700;font-style:normal">是</span></td>
+
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:600;font-style:normal;text-decoration:none">设备客户端和 DNS 解析器免费对公众开放*</span></td>
+				<td class="tg-tpun"><span style="font-weight:700;font-style:normal">是</span></td>
+
+				<td class="tg-ydhf"><span style="font-weight:700;font-style:normal">否</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>虽然，<a href="https://cfl.re/cloudflare-vs-zscaler-functional" target="_blank">对 37 项功能标准的深入剖析</a>表明我们领先，而且<a href="https://www.cloudflare.com/products/zero-trust/cloudflare-vs-zscaler/" target="_blank">我们的页面</a>解释了为何我们的架构更简单、更值得信赖且创新速度更快。但是，我们也知道，产品不只是功能列表。由于 Zero Trust 是在整个组织中推广，因此，使用体验至关重要。对最终用户和管理员来说，Cloudflare One 在以下三个重要方面优于 Zscaler Zero Trust Exchange。</p>
+	<h4 id="1-">1) 每项服务都致力于在每个地点支持企业规模的运行</h4>
+	<p><strong>声称：</strong>Zscaler 声称运行着“<a href="https://www.zscaler.com/company/about-zscaler" target="_blank">地球上最大的安全云</a>”，但 Zscaler 的网络根据自己的配置资源进行了分解，分成了<a href="https://config.zscaler.com/zscaler.net/cenr" target="_blank">至少 8 个不同的云</a>：例如 zscalertwo.net、zscalerthree.net。在前端，从可用性的角度来看，许多云并没有提供无缝的管理员体验，因为 Zscaler 的每个关键产品均有自己的门户和登录页，这意味着您与产品交互时，每个产品都像是单独的产品，并非同一个单一的“安全云”。</p>
+	<p><strong>Cloudflare One 的优势：</strong>我们庞大的全球 Anycast 网络规模是透明的，我们报告的是城市数量，而不是数据中心数量。客户的地点非常重要，无论他们身在何处，都必须能访问我们的每一项服务。Zscaler 在 55 个城市建立了数据中心（请注意，并非所有城市都在同一个云网络中），我们在超过 270 个城市建立了数据中心（都在同一个云网络中）。Cloudflare One 上的每一项服务（及其更新和新功能）的构建，都致力于在每个城市的每个数据中心的每台服务器上运行，让我们的每一位客户都可以使用这些服务。在前端，Cloudflare One 为所有 Zero Trust 产品（<a href="https://www.cloudflare.com/learning/access-management/what-is-ztna/" target="_blank">ZTNA</a>、<a href="https://www.cloudflare.com/learning/access-management/what-is-a-casb/" target="_blank">CASB</a>、<a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway/" target="_blank">SWG</a>、<a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation/" target="_blank">RBI</a>、<a href="https://www.cloudflare.com/learning/access-management/what-is-dlp/" target="_blank">DLP</a> 等）提供了一个仪表板，不需要花很多时间即可手动统一不同界面的政策和分析，从而解决反复操作的问题。</p>
+	<h4 id="2-">2) 提高吞吐量，改善终端用户体验</h4>
+	<p>如果会减慢速度，恶化用户体验，那么高安全性又有什么用？无缝、无摩擦的<strong>快速</strong>访问对于成功的 Zero Trust 部署至关重要。否则您会发现，您还不了解情况，用户就在寻找变通方法了。</p>
+	<p>Zscaler 表示，他们支持“每个 <a href="https://www.cloudflare.com/learning/network-layer/what-is-gre-tunneling/" target="_blank">GRE</a> [IP] 隧道的最大带宽为 1 Gbps，如果其内部 IP 地址不是在 NAT 后面”。大多数互联网应用程序和连接会在通往最终用户的某个地方遇到 1 Gbps 的网络瓶颈，而有些应用程序则需要更高的带宽，并且设计为支持更高带宽。例如，用户希望视频流或大型文件共享像互联网上的其他内容一样即时。假设会遇到瓶颈，就人为限制了可以实现的各种吞吐量，甚至在链接速度和连接性可以得到保证的情况下，也限制了吞吐量。</p>
+	<p><strong>Cloudflare One 的优势：</strong>我们花了很多时间进行测试，结果很明显：从最终用户的角度来看，Cloudflare One 的性能非常好，优于 Zscaler 的性能。我们测试了两个运行高带宽应用程序的设备之间的吞吐量。这些设备位于公共云网络的不同 VPC 中，但它们也可能位于内部专用网络的不同子网中。每个 VPC 均配置为使用 Cloudflare 的 Anycast IP 隧道作为进入 Cloudflare 网络的入口，因而两个设备均可通过 Cloudflare One 安全连接。在两个方向记录的吞吐量结果为 6 Gbps，比 Zscaler 和其他公司的限制要高得多。因此，您的组织不需要担心新的高带宽应用程序会因采用 Zero Trust 平台而受到限制。</p>
+	<h4 id="3-">3) 更好地连接互联网的其他部分</h4>
+	<p>Zscaler 声称自己是“互联网的最快入口”。但这是一种狡猾的说法：入口只是其中一部分；您的数据在网络中需要中转，到达目的地时还要传出。没有快速有效的连接能力，除入口外，Zscaler 只是一个 SSE 平台，并没有扩展为 SASE（请把首字母缩写翻译成英文），Zscaler 没有把重点放在平台的网络工作环节。</p>
+	<p><strong>Cloudflare One 的优势：</strong>我们有超过 10,500 个对等互连，这一优势是数量级的。我们不会像 Zscaler 那样，在边缘将客户切断。您可以使用 Cloudflare 的虚拟骨干网进行中转。Cloudflare 网络每天路由超过 3 万亿次请求，这给 Argo 智能路由带来了独特优势——实时检测最快、最可靠的网络路径中的拥塞情况和<a href="https://blog.cloudflare.com/zh-cn/argo-for-packets-generally-available-zh-cn/">路由 IP 数据包</a>。</p>
+	<p>本文从开篇就开始讲功能的重要性，我们到此结束吧。如果不考虑所提供的服务，所有的对等和公认的吞吐量优势也就没那么重要了。而且，虽然 Zscaler 声称能够通过提供 SWG 和 ZTNA 等服务来消除对区域 DC 中心的需求，但他们完全没有解决企业需要使用 Web 应用程序防火墙、负载平衡、权威 DNS 和 DDoS 保护来保护其云应用程序或本地服务器的端到端需求（包括暴露在互联网上的入站流量），这正是 Cloudflare 的发展起源，至今仍保持领先地位。四年来，我们在产品完整性方面已经超过了 Zscaler，包括部署的简单性、网络弹性和创新速度；<a href="https://www.cloudflare.com/products/zero-trust/cloudflare-vs-zscaler/" target="_blank">您可在这里自行阅读详情</a>并加入我们，一起期待未来四年的发展，展望更远的未来。</p>
+</div>

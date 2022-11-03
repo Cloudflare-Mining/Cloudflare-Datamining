@@ -1,0 +1,32 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image1-37.png" class="kg-image" alt="Cloudflare Gateway dedicated egress and egress policies"></figure>
+	<p>今天，我们重点介绍 Cloudflare 如何帮助管理员在使用专用源 IP 的同时创建安全策略。凭借传统 VPN、防火墙和安全网络网关 (SWG) 等本地设备，组织可方便地依靠基于静态源 IP 的允许列表策略。但是，这些硬件设备很难管理/规模化，存在固有的漏洞，而且难以支持远程工作人员带来的全球分布式流量。</p>
+	<p>本周，我们<a href="https://www.cloudflare.com/cloudflare-one-week/" target="_blank">撰写</a>了关于如何从这些传统工具过渡到由我们的 <a href="https://www.cloudflare.com/products/zero-trust/gateway/" target="_blank">SWG</a>——Cloudflare Gateway 等服务提供的互联网原生<a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank"> Zero Trust 安全性</a>的文章。Cloudflare Gateway 是与我们整个 Zero Trust 平台其余部分原生集成的一项关键服务，它还支持递归 DNS、Zero Trust 网络访问、远程浏览器隔离和内联 CASB 等功能的流量过滤和路由。</p>
+	<p>尽管如此，我们发现，随着组织向基于云的代理服务过渡，管理员希望保留源 IP 的便利性。在本篇博客中，我们描述了我们为出口流量提供专用 IP 的方法，并分享了即将推出一些提高管理员控制权的功能。</p>
+	<h3 id="cloudflare-ip">Cloudflare 的专用出口 IP</h3>
+	<p>在访问互联网上的应用程序和第三方目的地时，源 IP 仍然是验证流量来自已知组织/用户的常见方法。当组织使用 Cloudflare 作为安全网络网关时，用户流量通过我们的全球网络进行代理，我们在离用户最近的数据中心使用过滤和路由策略。对遍布全球的员工队伍或漫游用户来说，这个功能特别强大。管理员不必在用户出差时对静态 IP 列表进行更新，也没有地点会成为用户流量瓶颈。</p>
+	<p>今天，代理流量的源 IP 有以下两个选项：</p>
+	<ul>
+		<li>设备客户端 (WARP) 代理 IP - Cloudflare 使用所有 Zero Trust 账户共享默认 IP 范围内的一个 IP 转发代理用户的流量。</li>
+		<li>专用出口 IP - Cloudflare 为客户提供一个专用 IP（IPv4 和 IPv6）或其地理位置确定为一个或多个 Cloudflare 网络位置的 IP 范围</li>
+	</ul>
+	<p>WARP 代理的 IP 范围是所有 Cloudflare Zero Trust 客户的默认出口方法。这是保护企业隐私的好方法，因为将用户流量发送到了最近的 Cloudflare 网络位置。最近的 Cloudflare 网络位置可确保互联网体验最佳。但是，根据默认 IP 范围设置源 IP 安全策略并不能提供细粒度，而管理员在过滤用户流量时通常需要细粒度。</p>
+	<p>专用出口 IP 在管理员想根据持久标识符来路由允许列表流量的情况下很有用。顾名思义，这些专用出口 IP 只供指定客户使用，不供通过 Cloudflare 网络路由流量的任何其他客户使用。</p>
+	<p>此外，从 Cloudflare 租赁这些专用出口 IP，有助于避免从组织自己的 IP 范围中划分出这些 IP 时出现的任何隐私问题。此外，还不再那么需要保护您本地 VPN 设备所分配的任何 IP 范围免受 DDoS 攻击或其他攻击。</p>
+	<p>Cloudflare Zero Trust 的任何企业合同客户均可使用专用出口 IP 作为附加服务。合同客户可以为其专用出口选择特定 Cloudflare 数据中心，所有订阅客户都会收到至少两个 IP 来启动服务，因此，总是会将用户流量路由到最近的专用出口数据中心，确保性能和弹性。最后，组织可以通过其首选入口和 Cloudflare 的专用 IP，将其流量排出。这包括 Cloudflare 的设备客户端 (WARP)、代理端点、GRE 和 IPsec 入口，或我们的任何对等网络位置（包括主要 ISP、云供应商和企业，共计 1600 多个）。</p>
+	<h3 id="-">现有客户使用案例</h3>
+	<p>世界各地的 Cloudflare 客户正在利用 Gateway 专用出口 IP 的优势，简化应用程序访问。下文将介绍我们不同规模、不同行业的客户部署的三个最常见的使用案例。</p>
+	<ul>
+		<li><strong>允许列表访问第三方应用程序：</strong> 用户经常需要访问由供应商、合作伙伴和其他第三方组织控制的工具。许多这些外部组织仍然使用源 IP 来验证流量。专用出口 IP 让这些第三方轻松适应这些现有限制。</li>
+		<li><strong>允许列表访问 SaaS 应用程序：</strong>源 IP 仍然通常用作用户访问 SaaS 应用程序的纵深防御层，以及其他更高级的措施，例如<a href="https://www.cloudflare.com/learning/access-management/what-is-multi-factor-authentication/" target="_blank">多因素身份验证</a>和<a href="https://www.cloudflare.com/learning/access-management/what-is-an-identity-provider/" target="_blank">标识提供程序检查</a>。</li>
+		<li><strong>放弃使用 VPN： </strong>通常情况下，托管 VPN 会在客户宣传的 IP 范围内分配 IP。我们<a href="https://blog.cloudflare.com/how-to-augment-or-replace-your-vpn">最近的 Cloudflare 博客</a>详细介绍了 VPN 的安全缺陷、性能限制和管理难度。为了方便客户迁移，用户通常会选择保留目前的任何 IP 允许列表流程。</li>
+	</ul>
+	<p>通过这种方式，管理员依然能够方便地使用固定的已知 IP 建立策略，同时通过 Cloudflare 的全球网络进行路由，为终端用户提速。</p>
+	<h3 id="cloudflare-zero-trust-">Cloudflare Zero Trust 出口策略</h3>
+	<p>今天，我们很高兴地宣布，我们即将推出一种方法，利用 Cloudflare 的专用出口 IP 建立更精细的政策。我们即将在 Cloudflare Zero Trust 仪表板中推出出口 IP 策略构建器，让管理员可以根据身份、应用程序、网络和地理位置属性指定出口流量使用哪个 IP。</p>
+	<p>管理员往往仅希望通过专用出口 IP 路由特定流量——无论是特定应用、特定互联网目的地还是特定用户组。很快，管理员将可根据多种选择器（例如应用程序、内容类别、域、用户组、目的地 IP 等）设定首选出口方法。这种灵活性有助于组织采取分层的安全方法，同时还能高效访问（通常通过专用 IP）最关键的目的地。</p>
+	<p>此外，管理员将能够使用出口 IP 策略构建器，将流量定位到可以使用 Cloudflare 的任何国家或地区。这种地理定位能力对遍布全球的团队特别有用，因为他们需要针对特定地理位置的体验。</p>
+	<p>例如，大型媒体集团需要营销团队验证跨地区运营的数字广告的布局。在与 Cloudflare 合作之前，这些营销团队需要通过繁琐的手动过程来验证其广告在当地市场的展现情况是否符合预期：他们要么必须请当地市场的同事来检查，要么必须注册 VPN 服务来代理该地区的流量。有了出口策略，这些团队只需为每个地区匹配自定义测试域，并使用当地部署的专用出口 IP。</p>
+	<h3 id="--1">下一步</h3>
+	<p>您可以通过在 Cloudflare Zero Trust <a href="https://www.cloudflare.com/products/zero-trust/plans/enterprise/" target="_blank">Enterprise 计划</a>上添加 Cloudflare 的专用出口 IP 或联系您的客户团队，充分利用 Cloudflare 的专用出口 IP。如果希望我们在发布 Gateway 出口策略构建器时与您联系，<a href="https://www.cloudflare.com/zero-trust/lp/egress-policies-beta" target="_blank">请在此加入等候名单</a>。</p>
+</div>

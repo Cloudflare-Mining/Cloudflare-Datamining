@@ -1,0 +1,60 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image4-4.png" class="kg-image" alt="A Zero Trust terminal in your web browser"></figure>
+	<p>Cloudflare for Teams 让任何规模的组织都能够为资源和数据添加 Zero Trust 控制，同时还能利用 Cloudflare 的网络提高性能。从今天起，您的团队可以使用同一平台从浏览器内部无缝连接到非 HTTP 资源，并拥有与 Web 应用程序相同级别的审计控制。</p><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 62.5%;"><iframe src="https://iframe.videodelivery.net/9e62cddf4ac40dc7237f4136f946fa12?preload=true&amp;loop=true&amp;autoplay=true" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<p></p><!--kg-card-end: html-->
+	<p>Cloudflare 基于浏览器的终端提供了一个功能齐全的控制台，用户只需点击一下即可启动。用户使用其组织的 SSO 进行身份验证，Cloudflare 的边缘会检查他们是否符合团队对所访问资源的 Zero Trust 规则。</p>
+	<p>批准之后，用户可以通过 SSH 运行命令，就像使用本地命令行一样，无需任何客户端配置或代理。Cloudflare 的网络会提高他们的连接速度，应用有关可以进行哪些数据传输的规则，并记录会话，以便管理员按需审计。</p>
+	<p>我们构建了基于浏览器的终端，因为根据 Cloudflare 与客户的对话，客户难以保护和提供不在浏览器中的应用程序。有些开发人员说，他们不得不使用和支持现有的工作流程，通过 SSH 连接设备，或将传统的应用程序扩展到大型远程工作团队中。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image5-6.png" class="kg-image"></figure>
+	<p>我们先介绍一个 SSH 用例的终端，但 Cloudflare 的平台将提供一个基于浏览器、适用于您团队所需的几乎任何应用程序的界面。您的安全团队可以创建“Zero Trust”规则，以确定哪些人可以如何访问这些资源，同时记录每次连接。您将能够添加高级安全功能来记录会话，检查和过滤数据，以阻止安全事件在非 HTTP 连接（例如 SSH 和即将适用的 RDP）中启动。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/04/Tunnel-Diagram.png" class="kg-image"></figure>
+	<p>平台还能提高终端用户的应用程序的速度。Cloudflare 的网络可加快您的服务与您任何地区的团队之间的连接。现有团队成员可以迁移到<a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank"> Zero Trust 模式</a>，无需任何客户端配置。新员工可以在一个地方找到他们所需的所有资源（不仅仅是 Web 应用程序），只需点击一下即可启动。</p>
+	<h2 id="-web-">非 Web 应用程序的挑战</h2>
+	<h3 id="zero-trust-">Zero Trust 控制</h3>
+	<p>得益于 Web 浏览器、反向代理和浏览器 cookie，IT 部门可以更轻松地为 Web 应用程序添加 Zero Trust 控制。过去存在于专用网络上的 Web 应用程序可以部署在反向代理（例如 Cloudflare）后面，用户可以在任何网络浏览器中访问公共 DNS 地址，同时反向代理会检查身份。Cloudflare Access 构建在这些工具的基础之上，让您的团队能够在 10 分钟内为任何 Web 应用程序添加 Zero Trust 规则。</p>
+	<p>非 Web 应用程序带来了一些挑战。大多数需要胖客户端的传统应用都依赖于专用网络。客户端软件希望通过一个特定协议访问一个专用 IP，由于存在数据丢失的风险，对几乎所有组织来说，将该 IP 公开是不可取的。即使公开，终端用户仍然需要在设备上运行客户端软件。</p>
+	<p>对这些应用程序进行验证也依赖于传统方法。开发人员持有访问设备的长期 SSH 密钥，企业用户将用户名和密码记录在便条上，以便进行 RDP 会话。此类资源使得集成您的 SSO 供应商与其他控制措施（例如设备态势）变得困难甚至不可能。</p>
+	<h3 id="-">数据安全和记录</h3>
+	<p>您还可以使用 Cloudflare 来记录每一个验证事件以及 HTTP 请求和响应，无需修改任何服务器端代码。团队可以为任何 Web 应用程序和 Zero Trust 控制部署一个全面的日志层，无需修改任何服务器端代码。</p>
+	<p>客户告诉我们，不在浏览器中的“其他每一个应用程序”都仍然存在数据控制与记录缺口。当团队投资于重大的 Web 应用程序改进时，浏览器之外的任何东西都成为盲点。</p>
+	<h3 id="--1">用户体验</h3>
+	<p>Web 浏览器使得任何设备上的任何用户均可访问几乎所有 SaaS 应用。用户可以拿起任何制造商的任何笔记本电脑，在 Microsoft 365 中编辑 Excel 电子表格或更新 Salesforce 中的客户记录。</p>
+	<p>对于包括移动设备或不在浏览器中运行的应用程序的任何其他组合，这种简易操作开始出现问题。一些组织将带有特定操作系统的专用硬件交给某些需要的团队成员。更多团队依赖昂贵的虚拟化平台，减缓了用户的工作流程。</p>
+	<p>无论采用哪种客户端方法，用户和资源之间的连接也存在任何传统专用网络都有的共同问题。流量通过集中式设备回传，用户完成关键任务的工作流程非常缓慢，例如管理生产机器或企业资源规划。</p>
+	<h3 id="--2">客户端配置</h3>
+	<p>如果终端用户不得不改变他们对非 Web 应用程序的本地配置，迁移到 Zero Trust 模式可能很很麻烦。我们自己的团队第一次删除我们的 VPN 时，最受欢迎的聊天室变成了只有一个话题——工程师们分享 SSH 配置文件，回答设置哪些环境变量以达到 Kubernetes 工作负载等问题。</p>
+	<p>应用程序发现也成为一个问题。各组织必须更新维基页面，列出常用服务的 IP 地址和端口清单。终端用户必须向其他团队成员寻求帮助，以连接特定资源。</p>
+	<h2 id="--3">推出可审计、基于浏览器的终端</h2>
+	<p>今天，我们隆重宣布，我们将帮助您的团队解决所有这四项挑战。与 Web 应用程序程序流一样，部署该解决方案只需几分钟时间，无需终端用户配置，仅包括三个组件：</p>
+	<ol>
+		<li>您在企业内部环境或公共云中运行的服务</li>
+		<li>从该服务到 Cloudflare 边缘的安全连接，其中使用了名为 <code>cloudflared</code> 的轻量级后台程序</li>
+		<li>用户的浏览器，Cloudflare 支持其中的 SSH 会话</li>
+	</ol>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/04/Tunnel-Diagram-with-the-Partners.png" class="kg-image"></figure>
+	<h3 id="-zero-trust-">对任何资源应用 Zero Trust 控制</h3>
+	<p>我们曾与有合规要求的企业交流，他们需要在他们自我托管的所有应用程序中添加第二重身份验证，但他们估计需要几个月的开发时间。通过 Cloudflare Access，您的团队可以使用标识提供程序的第二重身份验证作为访问任何类型的应用程序的要求，几分钟便可完成。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image1-21.png" class="kg-image"></figure>
+	<p>您可以使用与 Tanium、Carbon Black、Crowdstrike 和其他提供商的集成，将这些类型的基于身份的规则与其他信号分层，例如用户所在国家/地区或<a href="https://blog.cloudflare.com/zh-cn/endpoint-partnerships-zh-cn/">设备的运行状况</a>。组织可以要求用户仅<a href="https://blog.cloudflare.com/zero-trust-with-managed-devices/">使用公司设备进行连接</a>，或者构建支持 Okta 和 Azure AD 等企业提供商以及 GitHub 和 Google 等公共身份验证选项的登录流程。</p>
+	<p>Cloudflare 的 Zero Trust 平台还可以帮助您的团队摆脱过时的身份验证过程，例如长期 SSH 安全密钥。该解决方案采用登录过程发布的 JSON 网络令牌，并将其转换为短期证书，授权用户在机器进行会话。</p>
+	<h3 id="--4">每个应用程序中的审计会话和安全数据</h3>
+	<p>通过 Cloudflare Zero Trust Apps 平台，您的团队在控制文件、数据、甚至命令时可获得与通过 Cloudflare Gateway 相同级别的控制，并将其应用于企业中支持的任何应用程序类型。</p>
+	<p>首先，您的团队现在可以制定相关规则，控制组织中哪些人可以通过 SSH 连接将数据传入或传出设备，或通过 RDP 传送到远程桌面。按设备、用户和群组身份，或国家/地区和设备制定规则。将数据保存在组织内的设备或桌面上，而不是在组织外面的漫游设备上。</p>
+	<p>即将推出：通过启用任何连接类型的会话记录，轻松部署具有高可见性的解决方案。Cloudflare Zero Trust Apps 将记录任何会话的屏幕，按时间间隔批量记录，并将记录发送至您配置的存储位置。我们也将在这个流程中加入结构化的命令记录和键盘输入。</p>
+	<h3 id="--5">点击一下即可启动任何应用程序</h3>
+	<p>今天推出的新产品不仅可提高您组织中任何应用程序的安全性，还能让您的所有用户工作更加轻松。</p>
+	<p>Cloudflare Zero Trust Apps 提供了一个基于浏览器的界面，可以从一个根据每位最终用户的权限定制的单一仪表板启动。用户登录您组织控制的一个主页时，Cloudflare 会显示他们可以访问的每个应用程序——网络、SSH、RDP 等。</p>
+	<p>用户可以点击视图中的任何选项卡，无需离开浏览器即可启动指定应用程序的界面。Cloudflare 的 Zero Trust 登录流程授权他们进入会话，他们便可开始工作，无需修改 SSH 配置文件或在本地编辑 RDP 客户端。</p><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 62.5%;"><iframe src="https://iframe.videodelivery.net/9e62cddf4ac40dc7237f4136f946fa12?preload=true&amp;loop=true&amp;autoplay=true" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<p></p><!--kg-card-end: html-->
+	<p>手机上也可工作。Cloudflare 支持在平板电脑和手机上的任何常用浏览器中进行会话，让工作现场的技术人员或远离办公桌的用户可能像能连接 Web 应用程序程序一样无缝访问任何服务。</p>
+	<h3 id="--6">提升用户体验</h3>
+	<p>与 Cloudflare One 的任何产品一样，该解决方案不会迫使您的团队需要在安全性和性能之间做出选择。Cloudflare Zero Trust Apps 让您团队所需的应用程序速度更快。</p>
+	<p>该解决方案的基础是支持 Cloudflare 浏览器的远程浏览器隔离技术。Cloudflare Zero Trust Apps 在浏览器中提供应用程序，就像本地应用程序一样。用户可以突出显示、复制粘贴，并使用快捷键。</p>
+	<p>接下来，该解决方案使用 Cloudflare 的网络来加速从服务器到您的终端用户的流量。Cloudflare 在我们的全球骨干网中找到最快的路径，从离您团队最近的数据中心（我们在 100 多个国家/地区的 200 多个城市建立了数据中心）为其提供体验。</p>
+	<h2 id="--7">接下来？</h2>
+	<p>今天先发布对 SSH 的支持。未来几个月内，我们计划将为 SSH 提供结构化的命令记录和过滤功能，并继续增加对其他应用程序类型的支持。您的团队存在使用麻烦的资源吗？<a href="https://forms.gle/a9EhhCj9dm2jY8EE8" target="_blank">请告知我们</a>，以便我们排列扩展优先顺序。</p>
+	<p>如果您的团队使用 Cloudflare Access 支持 SSH 流量，您只需改变一下配置，便可立即开始使用 Zero Trust Apps。<a href="https://community.cloudflare.com/t/feedback-for-cloudflares-zero-trust-browser-based-ssh-client/260745" target="_blank">请按照这里的说明</a>进行操作。</p>
+	<p>作为 Cloudflare for Teams 的组成部分，Cloudflare Zero Trust Apps 现可可供您的组织免费使用。根据<a href="https://dash.cloudflare.com/signup/teams" target="_blank"> Cloudflare for Teams 免费计划</a>，最多向 50 个用户免费提供。Cloudflare for Teams 标准计划中将提供一些高级安全功能，例如会话记录。</p>
+</div>

@@ -1,0 +1,127 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image1-25.png" class="kg-image" alt="R2 is now Generally Available"></figure>
+	<p>R2 umożliwia deweloperom przechowywanie obiektów bez opłat za ruch wychodzący. Przed R2 dostawcy chmur przyzwyczaili nas do opłat za transfer przy każdym użyciu przechowywanych w chmurze danych. Kto przechowuje dane, nie mając zamiaru ich później odczytywać? Nikt. A jednak za każdym razem, gdy odczytujesz dane, musisz zapłacić. R2 daje programistom wolny dostęp do danych, zrywając z uzależnieniem od jednego ekosystemu, które od dawna ograniczało deweloperów aplikacji.</p>
+	<p>W maju 2022 roku udostępniliśmy R2 w otwartej wersji beta. W ciągu zaledwie czterech miesięcy zostaliśmy zasypani zgłoszeniami od ponad 12 tysięcy deweloperów (a liczba ta szybko rośnie), którzy zaczęli korzystać z R2. Przyszli do nas z rozmaitymi przypadkami użycia, od aplikacji podcastowych przez platformy wideo po portale e-commerce, a wśród nich znalazło się m. in. <a href="https://www.vecteezy.com/" target="_blank">Vecteezy</a>, wydające na opłaty za ruch wychodzący setki tysięcy dolarów. W tym czasie wiele się nauczyliśmy o potrzebach klientów i otrzymaliśmy bardzo pozytywne informacje zwrotne, a teraz mamy przyjemność ogłosić, że R2 jest już ogólnie dostępne.</p>
+	<p>Nie prosilibyśmy o zaufanie technologii, w którą sami nie wierzymy w 100%. Podczas otwartej bety przenieśliśmy do R2 własne produkty. Przykładowo Cloudflare Images, które obsługuje tysiące klientów, oparte jest teraz na R2.</p>
+	<h2 id="czego-mo-na-si-spodziewa-po-r2">Czego można się spodziewać po R2?</h2>
+	<h3 id="zgodno-z-s3">Zgodność z S3</h3>
+	<p>R2 oferuje deweloperom dobrze znany interfejs do przechowywania obiektów – API S3. Zgodność z S3 umożliwia bezproblemową migrację aplikacji i natychmiastowe wykorzystywanie zalet R2.</p>
+	<p>Przyjrzyjmy się podstawowym operacjom na danych w języku javascript. Jeśli chcesz je samodzielnie przeprowadzić, musisz <a href="https://developers.cloudflare.com/r2/platform/s3-compatibility/tokens/" target="_blank">wygenerować klucz dostępu</a>.</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">// First we import our bindings as usual
+import {
+  S3Client,
+  ListBucketsCommand,
+} from "@aws-sdk/client-s3";
+
+// Then we create a new client. Note that while R2 requires a region for S3 compatibility, only “auto” is supported
+const S3 = new S3Client({
+  region: "auto",
+  endpoint: `https://${ACCOUNT_ID}.r2.cloudflarestorage.com`,
+  credentials: {
+    accessKeyId: ACCESS_KEY_ID, //  fill in your own
+    secretAccessKey: SECRET_ACCESS_KEY, // fill in your own
+  },
+});
+
+// And now we can use our client to list associated buckets just like we would with any other S3 compatible object storage
+console.log(
+  await S3.send(
+    new ListBucketsCommand('')
+  )
+);
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>W interfejsie API S3 odnajdzie się każdy, bez względu na język programowania. Mamy przykłady w <a href="https://developers.cloudflare.com/r2/examples/aws-sdk-go/" target="_blank">Go</a>, <a href="https://developers.cloudflare.com/r2/examples/boto3/" target="_blank">Javie</a></p>
+	<h3 id="region-automatyczny">Region: automatyczny</h3>
+	<p>Nie chcemy żyć w świecie, gdzie deweloperzy tracą czas na próby przewidzenia, skąd może pochodzić ruch aplikacji. Wybór regionu na samym początku tworzenia aplikacji wymusza podejmowanie decyzji o optymalizacji na długo, zanim pojawią się pierwsi użytkownicy.</p>
+	<p>Choć zgodność z S3 wymaga wskazania regionu, jedynym wyborem w R2 jest „automatyczny”. Obecnie R2 automatycznie wybiera lokalizację wiadra w najbliższym żądaniu utworzenia wiadra regionie, jaki jest dostępny. Jeśli utworzę wiadro z mojego domu w Austin, wiadro to będzie się znajdowało w najbliższym Austin regionie R2, jaki jest dostępny.</p>
+	<p>W przyszłości R2 będzie automatycznie optymalizować lokalizację przechowywania danych na podstawie wzorców dostępu w celu zapewnienia jak najlepszego środowiska użytkownika.</p>
+	<h3 id="integracja-cloudflare-workers">Integracja Cloudflare Workers</h3>
+	<p>Platforma Workers oferuje deweloperom potężną moc obliczeniową w całej sieci Cloudflare. Kiedy wdrażasz kod w Workers, ten kod jest automatycznie wdrażany do <a href="https://www.cloudflare.com/network/" target="_blank">ponad 275 lokalizacji</a> Cloudflare na całym świecie. W połączeniu z R2 Workers pozwala deweloperom dodawać do danych logikę niestandardową bez żadnych kosztów wydajności. Platforma Workers jest zbudowana na izolatach, a nie kontenerach, co eliminuje problem długich zimnych startów.</p>
+	<p>Spróbujmy utworzyć prosty interfejs API REST do wiadra w R2! Na początek <a href="https://developers.cloudflare.com/r2/data-access/workers-api/workers-api-usage/#3-create-your-bucket" target="_blank">utwórz</a> swoje wiadro, a potem dodaj do procesu roboczego <a href="https://developers.cloudflare.com/r2/data-access/workers-api/workers-api-usage/#4-bind-your-bucket-to-a-worker" target="_blank">wiązanie</a>.</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">export default {
+  async fetch(request, env) {
+    const url = new URL(request.url);
+    const key = url.pathname.slice(1); // we’ll derive a key from the url path
+
+    switch (request.method) {
+      // For writes, we capture the request body and write that out to our bucket under the associated key
+      case 'PUT':
+        await env.MY_BUCKET.put(key, request.body);
+        return new Response(`Put ${key} successfully!`);
+
+      // For reads, we’ll use our key to perform a lookup
+      case 'GET':
+        const object = await env.MY_BUCKET.get(key);
+
+        // if we don’t find the given key we’ll return a 404 error
+        if (object === null) {
+          return new Response('Object Not Found', { status: 404 });
+        }
+
+        const headers = new Headers();
+        object.writeHttpMetadata(headers);
+        headers.set('etag', object.httpEtag);
+
+        return new Response(object.body, {
+          headers,
+        });
+    }
+  },
+};
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Za pomocą tego interfejsu API Workers możemy dodawać rozmaite pomocne logiki do ścieżki krytycznej żądania R2.</p>
+	<h3 id="wst-pnie-podpisane-adresy-url">Wstępnie podpisane adresy URL</h3>
+	<p>Zdarza się, że chcemy dać użytkownikom uprawnienia do konkretnych obiektów w R2 w prosty i szybki sposób. Wstępnie podpisane adresy URL delegują użytkownikom uprawnienia do dowolnej unikatowej kombinacji obiektu i akcji. To dobre rozwiązanie, kiedy chcemy udostępnić plik lub pozwolić komuś przesłać plik bez udzielania dostępu do całego wiadra.</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">import {
+  S3Client,
+  PutObjectCommand
+} from "@aws-sdk/client-s3";
+
+import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
+
+const S3 = new S3Client({
+  region: "auto",
+  endpoint: `https://${ACCOUNT_ID}.r2.cloudflarestorage.com`,
+  credentials: {
+    accessKeyId: ACCESS_KEY_ID,
+    secretAccessKey: SECRET_ACCESS_KEY,
+  },
+});
+
+// With getSignedUrl we can produce a custom url with a one hour expiration which will allow our end user to upload their dog pic
+console.log(
+  await getSignedUrl(S3, new PutObjectCommand({Bucket: 'my-bucket-name', Key: 'dog.png'}), { expiresIn: 3600 })
+)
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Wstępnie podpisane adresy URL ułatwiają budowę aplikacji, które dają użytkownikom końcowym bezpieczny dostęp bezpośrednio do R2.</p>
+	<h3 id="wiadra-publiczne">Wiadra publiczne</h3>
+	<p>Włączenie <a href="https://developers.cloudflare.com/r2/data-access/public-buckets/" target="_blank">publicznego dostępu do wiadra R2</a> pozwala na przyjmowanie nieuwierzytelnionych żądań. Samo w sobie ma to ograniczone zastosowania, jednak kiedy takie wiadra są połączone z domeną na koncie Cloudflare, możemy bez problemu dodać inne funkcje Cloudflare, na przykład Access, Cache i zarządzanie botami.</p>
+	<p>Podsumowując, wiadra publiczne pomagają wypełnić lukę między funkcjami Cloudflare zorientowanymi na domeny i wiadrami w R2.</p>
+	<h3 id="przejrzyste-ceny">Przejrzyste ceny</h3>
+	<p>R2 nigdy nie będzie pobierać opłat za ruch wychodzący. Na cenę składają się jedynie trzy czynniki: wykorzystywana pamięć, <a href="https://developers.cloudflare.com/r2/platform/pricing/#class-a-operations" target="_blank">operacje klasy A</a> (zapisy, listy) i <a href="https://developers.cloudflare.com/r2/platform/pricing/#class-b-operations" target="_blank">operacji klasy B</a> (odczyty).</p>
+	<ul>
+		<li>Pamięć kosztuje 0,015 $/GB na miesiąc.</li>
+		<li>Operacje klasy A kosztują 4,50 $/milion.</li>
+		<li>Operacje klasy B kosztują 0,36 $ /milion.</li>
+	</ul>
+	<p>Jednak zanim zdecydujesz się na takie opłaty, możesz wypróbować R2 całkowicie za darmo. Wersja darmowa zawiera:</p>
+	<ul>
+		<li>10 gigabajtomiesięcy danych</li>
+		<li>1 000 000 operacji klasy A miesięcznie</li>
+		<li>10 000 000 operacji klasy B miesięcznie</li>
+	</ul>
+	<h2 id="co-dalej">Co dalej?</h2>
+	<p>Ogólne udostępnienie R2 to dopiero początek naszej przygody w dziedzinie przechowywania obiektów. A już teraz chcemy podzielić się naszymi planami na przyszłość.</p>
+	<h3 id="cykle-ycia-obiekt-w">Cykle życia obiektów</h3>
+	<p>W przyszłości R2 pozwoli deweloperom określać zasady obiektów, na przykład zasadę usuwającą obiekt 60 dni od ostatniego dostępu. Cykle życia obiektów przenoszą zarządzanie na poziom magazynu obiektów.</p>
+	<h3 id="ograniczenia-jurysdykcyjne">Ograniczenia jurysdykcyjne</h3>
+	<p>Choć nie planujemy wsparcia regionów, wiemy, że lokalizacja danych jest nierzadko istotna dla zgodności. Ograniczenia jurysdykcyjne pozwolą deweloperom wybrać jurysdykcję, np. „UE”, co uniemożliwi danym opuszczenie danej jurysdykcji.</p>
+	<h3 id="migracja-na-ywo-bez-przestoj-w">Migracja na żywo bez przestojów</h3>
+	<p>W większych zestawach danych migracje są ciągłe i odbywają się na żywo, ponieważ przeniesienie danych wymaga czasu. Rezerwa pamięci podręcznej to prosty sposób na szybką migrację zasobów do wystąpienia zarządzanego w R2, pozwalający ograniczyć koszty ruchu wychodzącego jednym kliknięciem. W przyszłości rozbudujemy ten mechanizm, aby umożliwić migrację dowolnych istniejących wiader obiektów w S3 do R2.</p>
+	<p>Zapraszamy do zarejestrowania się i rozpoczęcia pracy w R2 już dzisiaj. Dołącz do rosnącej społeczności deweloperów programujących w Cloudflare! Jeśli masz jakieś uwagi lub pytania, skontaktuj się z nami na serwerze Discord dostępnym pod <a href="https://discord.gg/V3GEduuBjP" target="_blank">tym linkiem</a>. Chętnie zobaczymy, co stworzysz w R2.</p>
+	<h3 id="obejrzyj-na-cloudflare-tv">Obejrzyj na Cloudflare TV</h3><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/bc29cb06e3dd2bcdf68977b7544d2084/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Fbc29cb06e3dd2bcdf68977b7544d2084%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D1s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
+</div>

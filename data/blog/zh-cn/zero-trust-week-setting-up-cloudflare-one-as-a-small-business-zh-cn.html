@@ -1,0 +1,62 @@
+<div class="post-content lh-copy gray1">
+	<p>本周早些时候，<a href="https://blog.cloudflare.com/zh-cn/introducing-cloudflare-one-zh-cn/">我们宣布推出</a> Cloudflare One™，一个全面的、基于云的网络即服务解决方案。<a href="https://blog.cloudflare.com/zh-cn/cloudflare-one-zh-cn/">Cloudflare One</a> 可以提高网络性能和安全性，同时为各种规模的公司降低成本和复杂性。</p>
+	<p>Cloudflare One 旨在解决最大型企业网络的规模和复杂性。但是，谈及到网络安全和性能时，业界往往只关注那些拥有大量预算和技术团队的最大客户。在 Cloudflare，我们认为，为所有人服务，帮助各种规模的公司享受更优质的互联网，是我们的机会和责任。</p>
+	<p>今年是 Cloudflare 的 Zero Trust 周，我们的口号是<a href="https://blog.cloudflare.com/zh-cn/teams-plans-zh-cn/">人人均可享有 Zero Trust</a>。我们快速回顾一下，“Zero Trust”是一个安全框架，它假设所有的网络、设备和互联网目的地都存在固有缺陷，因此不应该完全信任它们。Cloudflare One 通过确保您的用户与企业应用程序和整个互联网安全连接，推进<a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank"> Zero Trust 安全</a>。</p>
+	<p>作为小型企业的网络管理员，从根本上说，您需要保护三样东西：设备、应用程序和网络本身。下面我将概述，如何通过转向 Zero Trust 安全模式（访问），确保您的设备（无论是您办公室的设备（DNS 过滤）还是远程设备（WARP+ 和网关）、应用程序和网络的安全。</p>
+	<p>根据设计，Cloudflare One 可供任何规模的团队使用。您应该不需要一个庞大的 IT 部门，也不需要财富 500 强企业的预算，即可安全连接您的工具。本周二，我们<a href="https://blog.cloudflare.com/zh-cn/teams-plans-zh-cn/">宣布了</a>一个新的免费计划，将提供Cloudflare One 的许多功能，包括 DNS 过滤、 Zero Trust 访问和管理仪表板——最多向 50 个用户免费提供。</p>
+	<p>从现在开始，您的团队只需操作几个简单的步骤，即可开始在组织中部署 Cloudflare One。</p>
+	<p>第 1 步：使用 DNS 过滤保护办公室免受互联网上的威胁（10 分钟）<br>第 2 步：使用 Cloudflare WARP+ 保护联网的远程员工（30 分钟）<br>第 3 步：在不使用 VPN 的情况下，使用 Cloudflare Access 将用户连接到应用程序（1 小时）<br>第 4 步：使用安全 Web 网关阻止威胁，防止设备丢失数据（1 小时）<br>第 5 步：为您的 SaaS 应用程序添加 Zero Trust（2 小时）</p>
+	<h3 id="1-10-">1. 花 10 分钟即可开始阻止恶意网站和网络钓鱼企图</h3>
+	<p>互联网上充满危险，到处都潜伏着恶意软件和威胁。要保护员工免受互联网上的威胁，需要采取方法检查并过滤他们的流量。首先是 DNS 过滤，它可以轻松快速地删除已知的恶意网站，并限制访问互联网上存在潜在危险的地方。</p>
+	<p>设备连接到一个网站时，首先会向 DNS 解析器发送一个 DNS 查询，以找到该网站主机名的 IP 地址。解析器响应后，设备开始连接。这个最初的查询给您的团队安全带来了两大挑战。</p>
+	<ul>
+		<li>大多数 DNS 查询没有加密。ISP 可以监视您的员工和公司设备进行的 DNS 查询，哪怕员工是远程办公。更糟糕的是，恶意行为者可以修改响应，发起攻击。</li>
+		<li>DNS 查询可能解析到恶意的主机名。团队成员可能会点击一些招致网络钓鱼攻击或下载恶意软件的链接。</li>
+	</ul>
+	<p>Cloudflare One 可以在最初查询时保密，防止设备无意中请求了一个已知的恶意主机名。</p>
+	<p>首先，注册一个 Cloudflare 账户，然后前往 Cloudflare for <a href="https://dash.teams.cloudflare.com/" target="_blank">Teams 仪表板</a>。</p>
+	<p>接下来，设置一个位置。<a href="https://developers.cloudflare.com/gateway/getting-started-new/onboarding-gateway/" target="_blank">将会提示您创建一个位置</a>，若想保护办公室网络的 DNS 查询，您可以创建一个位置。只需更改网络的路由器，使其指向<a href="https://developers.cloudflare.com/gateway/reference-new/location/" target="_blank">所分配的</a> Gateway 的 IP 地址，即可为您的办公室部署 Gateway 的 DNS 过滤。</p>
+	<p>Cloudflare 运行 1.1.1.1，是世界最快的 DNS 解析器。我们将 Cloudflare Gateway 的 DNS 过滤工具建立在同样的架构之上，为您的团队提供更快、更安全的 DNS。</p>
+	<p>现在，您可以轻松创建一个 Gateway DNS 策略，过滤安全威胁或特定的内容类别。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image9-4.png" class="kg-image"></figure>
+	<p>然后使用 Gateway 仪表板来监控允许或阻止的查询。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image5-8.png" class="kg-image"></figure>
+	<p>然后前往仪表板上的“Overview”选项卡，查看您的流量，包括您阻止和允许的内容。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image2-16.png" class="kg-image"></figure>
+	<h3 id="2-cloudflare-">2. 接下来，保护所有远程员工，并利用加密连接通过 Cloudflare 发送所有流量。</h3>
+	<p>曾经通过您的办公室网络联网的员工，现在是通过成百上千个不同的家庭网络或移动热点联网来完成工作。这些流量依赖的连接可能不是专用连接。</p>
+	<p>您可以使用 Cloudflare One，通过 Cloudflare WARP 将所有团队成员的流量通过一个加密的加速路径路由到互联网。您的团队成员可在 macOS、Windows、iOS 和 Android 上安装 Cloudflare WARP 应用程序。客户端将通过 Cloudflare 的<a href="https://blog.cloudflare.com/boringtun-userspace-wireguard-rust/">实施</a>——WireGuard 技术，将员工设备的所有流量路由到附近的 Cloudflare 数据中心。</p>
+	<p>连接时，Cloudflare One 使用 WARP+（我们使用 Argo 智能路由服务实施的 WARP），通过我们的全球数据中心网络找到最短路径，到达用户的目的地。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image6-8.png" class="kg-image"></figure>
+	<p>您的团队现在即可开始使用 Cloudflare WARP。前往 Cloudflare for Teams 仪表板，购买 Cloudflare Gateway 或 Cloudflare for Teams Standard 计划。购买后，您<a href="https://developers.cloudflare.com/gateway/connecting-to-gateway/with-client" target="_blank">可以创建规则</a>，确定组织中哪些人可以使用 Cloudflare WARP。</p>
+	<p>您的终端用户可以启动客户端，输入您团队的组织名称，登录并开始使用 WARP+。您也可以使用 JAMF 或 InTune 等设备管理解决方案预先配置的设置来<a href="https://developers.cloudflare.com/warpclient/teams" target="_blank">部署应用程序</a>。</p>
+	<p>Cloudflare WARP 与 Gateway 的 DNS 过滤无缝集成，为漫游设备提供安全、加密的 DNS 解析。用户可以在您的 Cloudflare for Teams 账户中输入某个地点的 DoH 子域，在其工作地点开始使用您组织的 DNS 过滤设置。</p>
+	<h3 id="3-cloudflare-access-vpn">3. 使用 Cloudflare Access 替代 VPN</h3>
+	<p>如果是依赖 VPN 的较小型团队，我们的 IT 服务台收到了数百份抱怨 VPN 的工单。其中有些问题可能看起来非常熟悉。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image8-3.png" class="kg-image"></figure>
+	<p>我们构建了 Cloudflare Access，替代使用 VPN 作为应用程序守门员。Cloudflare Access 遵循所谓的 Zero Trust 安全模式，Cloudflare 的网络默认不信任任何连接。每一个试图连接应用程序的用户都必须证明，根据管理员配置的规则，应该允许他们访问该应用程序。我们提供了新的 Teams 免费计划，最多可供 50 个用户免费使用 Access。</p>
+	<p>这听起来好像增加了负担，但 Cloudflare Access 与您团队的标识提供程序和单点登录 (SSO) 选项相集成，任何应用程序都能提供像使用 SSO 的 SaaS 应用程序一样的无缝体验。即使您的团队没有企业标识提供程序，您也可以将 Access 与 GitHub 和 LinkedIn 等免费服务集成，让您的<a href="https://blog.cloudflare.com/multi-sso-and-cloudflare-access-adding-linkedin-and-github-teams/">员工和合作伙伴可以在不增加成本的情况下验证身份</a>。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image10-2.png" class="kg-image"></figure>
+	<p>对于托管应用程序，您可以<a href="https://blog.cloudflare.com/argo-tunnels-that-live-forever/">使用 Argo Tunnel</a> 将源站与 Cloudflare 的网络连接，避免打开防火墙中的漏洞。Cloudflare 的网络将使用我们的全球专用骨干网，将源站的流量沿快速通道加速传输给您的用户。</p>
+	<p>当您的团队成员需要连接一个应用程序时，他们可以直接访问该应用程序，或从您团队的定制应用程序启动器启动该应用程序。启动时，会提示他们使用您的标识提供程序登录，Access 将根据您在 Cloudflare for Teams 仪表板中创建的规则，检查其身份和其他特征（例如登录国家/地区）。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image1-18.png" class="kg-image"></figure>
+	<p>Cloudflare 的免费计划最多提供 50 个 Cloudflare Access 免费席位，快让您的团队开始使用</p>
+	<h3 id="4-web-">4. 添加一个安全 Web 网关，阻止威胁，防止文件丢失</h3>
+	<p>使用 Cloudflare WARP，所有离开设备的流量都需要通过 Cloudflare 的网络。然而，这些流量中可能暗藏威胁和数据丢失。您可以将 Cloudflare Gateway 的 HTTP 过滤功能添加到您团队的 Cloudflare WARP 使用中，以阻止威胁，防止文件丢失。例如，如果您的团队使用 Box，您可以限制所有文件上传到其他基于云的存储服务，以确保所有内容都待在同一个已获批准的地方。</p>
+	<p>立即开始体验，请前往 Cloudflare for Teams 仪表板的策略部分。选择 HTTP 标签，开始建立流量检查规则，发现潜在问题，例如已知的恶意 URL，或将文件上传到未经批准的目的地。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image3-16.png" class="kg-image"></figure>
+	<p>为了检查流量，您需要在注册的设备上<a href="https://developers.cloudflare.com/gateway/connecting-to-gateway/with-client" target="_blank">下载和安装</a>证书。安装后，您可以从“Policies”选项卡中启用 HTTP 过滤，开始执行您所创建的策略，获取事件日志。</p>
+	<h3 id="5-saas-zero-trust-">5. 您的 SaaS 应用也可适用 Zero Trust 规则</h3>
+	<p>如果您没有自我托管的应用程序，或者也使用 SaaS 应用程序，您仍然可以利用<a href="https://blog.cloudflare.com/zh-cn/cloudflare-access-for-saas-zh-cn/"> Cloudflare Access for SaaS</a>，让您团队使用的 SaaS 应用程序也适用同样的 Zero Trust 规则，无论团队成员位于何处。通过 Access for SaaS，公司可以集中管理所有应用程序的用户访问和安全监控。</p>
+	<p>您可以将 Cloudflare Access 作为标识提供程序集成到任何支持 SAML SSO 的 SaaS 应用程序中。集成后即可通过 Cloudflare 的网络将所有登录尝试发送给您配置的标识提供程序，并执行您的控制规则。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image7-5.png" class="kg-image"></figure>
+	<p>访问 SaaS 仍然包括同时运行多个标识提供程序的能力。用户登录 SaaS 应用程序时，会提示他们选择需要的标识提供程序，或者我们会将他们直接发送到您希望该应用程序使用的唯一标识提供程序。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image4-12.png" class="kg-image"></figure>
+	<p>部署后，Access for SaaS 就能让您的团队轻松了解内部和 SaaS 应用程序的每一次登录。您可以使用新的 Access for SaaS 功能，这是 Cloudflare for Teams 免费计划的组成部分，最多可向 50 个用户免费提供。</p>
+	<h3 id="6-">6. 即将推出：保护小型企业的办公网络</h3>
+	<p>Cloudflare 的 Magic Transit™ 产品运用了我们在保护自己的网络免受 IP 层攻击方面所学的一切知识，我们希望经营自己的 IP 地址空间的客户也可借此获得这种安全性。通过保护该网络，客户也从高性能和可靠 IP 连接的互联网中受益。</p>
+	<p>如今，全球最大的一些企业依靠 Magic Transit 来保护企业不受攻击。我们计划通过即将发布的版本，让运营小型网络的团队获得同样的安全性和连接性。</p>
+	<h3 id="-">接下来？</h3>
+	<p>Cloudflare One 代表了我们憧憬的企业网络的未来，我们刚刚开始增加产品和功能，帮助团队向该模式转变。因此，您的团队应该不用等多久即可开始通过 Cloudflare 进行连接，并通过我们的网络保护您的数据和应用程序。</p>
+	<p>立即开始体验，<a href="https://dash.cloudflare.com/sign-up/teams" target="_blank">请注册一个 Cloudflare 账户</a>，并按上述步骤操作。如果您对小型企业或大型企业设置 Cloudflare One 有任何疑问，请在本社区论坛帖子中告知我们。</p>
+</div>
