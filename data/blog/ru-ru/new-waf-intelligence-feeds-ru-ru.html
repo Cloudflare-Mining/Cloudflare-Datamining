@@ -1,0 +1,158 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/unnamed.png" class="kg-image" alt="New WAF intelligence feeds"></figure>
+	<p>В Cloudflare WAF теперь доступен более широкий спектр аналитической информации об угрозах: мы добавили четыре новых управляемых списка IP-адресов, которые можно использовать при настройке любого пользовательского правила межсетевого экрана.</p>
+	<p>Управляемые списки создаются и поддерживаются Cloudflare, они составляются на основе аналитической информации об угрозах, собираемой путем анализа характеристик и тенденций трафика, наблюдаемого в Интернете. Клиенты на плане Enterprise <a href="https://blog.cloudflare.com/protecting-apis-from-abuse-and-data-exfiltration/">с марта 2021 г.</a> могут использовать список Open SOCKS Proxy (Открытые прокси-серверы SOCKS). Сегодня мы добавляем четыре новых списка IP-адресов: "VPN", "Botnets, Command and Control Servers", "Malware" и "Anonymizers" ("VPN", "Ботнеты и командные серверы", "Вредоносное ПО" и "Анонимайзеры").</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://lh3.googleusercontent.com/XkegdawMtkmBmuCmAin8MIzby8BSozlKq1g_EJRwpKwYIkmx_e0t49a3yoc8YYNltTLJBQ3oFxDRmBFxP01RTytGgD-zCwQsfiQr5r2WyFChLu9wsmDjeAx5Rb0iN5qu4TXz-AYyJQmuPZirUeiwXw" class="kg-image" alt="Вы можете проверить, какие правила доступны на вашем плане, перейдя в раздел Manage Account → Configuration → Lists (Управление учетной записью → Конфигурация → Списки).">
+		<figcaption>Вы можете проверить, какие правила доступны на вашем плане, перейдя в раздел Manage Account → Configuration → Lists (Управление учетной записью → Конфигурация → Списки).</figcaption>
+	</figure>
+	<p>Клиенты могут обращаться к этим спискам при создании пользовательских правил межсетевого экрана, а также в разделе <a href="https://blog.cloudflare.com/advanced-rate-limiting/">Advanced Rate Limiting</a> (Расширенные возможности ограничения числа запросов). Например, вы можете выбрать блокировку всего трафика, поступающего с IP-адресов, классифицированных нами как VPN, или ограничить число запросов для трафика, приходящего с анонимайзеров. Для этого достаточно добавить ссылки на управляемые списки IP-адресов в нашем мощном конструкторе правил межсетевого экрана. Разумеется, вы также можете использовать <a href="https://blog.cloudflare.com/introducing-ip-lists/">свой собственный список IP-адресов</a>.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://lh6.googleusercontent.com/WsDGsltjclo0RVf5cZlM3yiQFzdDUIIteuM2jE80480j63zup6IMVvJtrazsG7VSaBTFSgnX0kYqZBpf3xzgqdLOX_VTpxX3sb398t_tj86gO-EiDKFwVoltRR85EF6CO1n1-wojGxV9tO2wh7IBLA" class="kg-image" alt="Управляемые списки IP-адресов могут использоваться в правилах WAF для управления входящим трафиком с данных IP-адресов.">
+		<figcaption>Управляемые списки IP-адресов могут использоваться в правилах WAF для управления входящим трафиком с данных IP-адресов.</figcaption>
+	</figure>
+	<h3 id="-">Откуда поступают данные?</h3>
+	<p>Списки основаны на формируемых Cloudflare потоках данных об угрозах, которые предоставляются в виде списков IP-адресов для удобства использования в WAF. Каждый IP-адрес классифицируется путем объединения данных из открытых источников, а также, благодаря масштабу и охвату сети Cloudflare, за счет анализа поведения каждого IP-адреса. После появления IP-адреса в одном из этих потоков данных мы проверяем его классификацию, а затем направляем эту информацию обратно в наши системы безопасности и делаем ее доступной для клиентов в виде управляемого списка IP-адресов. Содержание каждого списка обновляется несколько раз в день.</p>
+	<p>Помимо классификации IP-адресов на основе собственных данных, Cloudflare отбирает и объединяет несколько источников данных, которые, по нашему мнению, надежно отслеживают активные угрозы безопасности, имея при этом низкий уровень ложных срабатываний. В современной среде IP-адрес, принадлежащий поставщику облачного сервиса, сегодня может распространять вредоносное ПО, а завтра — оказаться критически важным ресурсом для вашей компании.</p>
+	<p>Некоторые классификации IP-адресов общедоступны: в частности, данные OSINT или выходные узлы Tor, и мы включаем их в наш список анонимайзеров, чтобы вам не нужно было заново интегрировать этот список в каждый ресурс вашей сети. Другие классификации формируются или проверяются с использованием различных методов DNS, таких как DNS-поиск, поиск записей PTR и наблюдение за пассивным DNS через сеть Cloudflare.</p>
+	<p>Наши списки вредоносного ПО и командных серверов создаются в результате взаимодействия с тщательно отобранными партнерами, при этом один из типов данных, которые для нас особенно важны при выборе партнеров, — это IP-адреса источников угроз, которые не имеют связанных с ними записей DNS.</p>
+	<p>Наш список анонимайзеров включает несколько типов сервисов, выполняющих анонимизацию, в том числе VPN, открытые прокси-серверы и узлы Tor. Он включает в себя в качестве подмножеств более узкоспециализированные списки Cloudflare: VPN (известные коммерческие VPN-узлы) и Open Proxies (прокси-серверы, передающие трафик без необходимости аутентификации).</p>
+	<h3 id="-ip-">Аннотация IP-адресов на информационной панели</h3>
+	<p>Использование списков IP-адресов для развертывания политики превентивной безопасности — очень хорошо, но как узнать, является ли IP-адрес, взаимодействующий с вашим веб-сайтом или приложением, частью ботнета или VPN? В рамках Недели безопасности 2022 мы объявили о предоставлении <a href="https://blog.cloudflare.com/security-center-investigate/">контекстной информации</a> для списка анонимайзеров, а сейчас мы замыкаем круг, делая эту функцию доступной для всех новых списков.</p>
+	<p>На основе аналитических данных об угрозах категория IP-адреса отображается непосредственно на информационной панели Cloudflare. Допустим, вы анализируете запросы, которые были заблокированы WAF и которые, по всей видимости, прощупывали ваше приложение на наличие известных уязвимостей. Если IP-адрес источника этих запросов присутствует в одном из наших потоков данных (например, является частью VPN), соответствующая контекстная информация появится непосредственно на странице аналитики.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://lh3.googleusercontent.com/ba1SUQnRFtLMyaBYf580Fup-l4DJXdqOXEFrBm_KtT6egoEuFy0dh5HSZJvTSokZvDYC1d7US1dlhXMjn2jFgAgNr3Hmf455vhT6sT76JzXpI5ZyTO7bxGrXdj8oVmxCrRlnN9mIPqoa8snfYxx7PQ" class="kg-image" alt="Если при проверке исходного IP-адреса какого-либо события WAF обнаруживается присутствие данного IP-адреса в одном из потоков данных об угрозах, соответствующая контекстная информация отображается непосредственно на информационной панели Cloudflare.">
+		<figcaption>Если при проверке исходного IP-адреса какого-либо события WAF обнаруживается присутствие данного IP-адреса в одном из потоков данных об угрозах, соответствующая контекстная информация отображается непосредственно на информационной панели Cloudflare.</figcaption>
+	</figure>
+	<p>Эта информация может помочь вам выявить закономерности и решить, есть ли необходимость использовать управляемые списки для обработки трафика с этих IP-адресов определенным образом, например, путем создания правила, ограничивающего число запросов, принимаемых от данных пользователей в течение определенного периода времени.</p>
+	<h3 id="--1">Кто имеет доступ?</h3>
+	<p>В следующей таблице указано, какие планы имеют доступ к каждой из этих функций. Пользователи на всех платных планах получат доступ к контекстуальной аннотации на информационной панели, а клиенты на плане Enterprise смогут пользоваться различными управляемыми списками. Управляемые списки можно использовать только для зон Enterprise в рамках учетной записи Enterprise.</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-tfgg {
+			background-color: #EFEFEF;
+			color: #F00;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-gpin {
+			background-color: #C9DAF8;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-ekg0 {
+			background-color: #EFEFEF;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-5ll9 {
+			background-color: #EFEFEF;
+			color: #009901;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-m0cw {
+			background-color: #C9DAF8;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-gpin"></th>
+				<th class="tg-m0cw"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> FREE</span></th>
+				<th class="tg-m0cw"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">PRO</span></th>
+				<th class="tg-m0cw"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">BIZ</span></th>
+				<th class="tg-m0cw"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ENT</span></th>
+				<th class="tg-m0cw"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Advanced ENT *</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-ekg0"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Аннотация</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-5ll9"><span style="font-weight:700;font-style:normal;text-decoration:none;background-color:transparent">✅</span></td>
+				<td class="tg-5ll9"><span style="font-weight:700;font-style:normal;text-decoration:none;background-color:transparent">✅</span></td>
+				<td class="tg-5ll9"><span style="font-weight:700;font-style:normal;text-decoration:none;background-color:transparent">✅</span></td>
+				<td class="tg-5ll9"><span style="font-weight:700;font-style:normal;text-decoration:none;background-color:transparent">✅</span></td>
+			</tr>
+			<tr>
+				<td class="tg-ekg0"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Открытые прокси-серверы</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-5ll9"><span style="font-weight:700;font-style:normal;text-decoration:none;background-color:transparent">✅</span></td>
+				<td class="tg-5ll9"><span style="font-weight:700;font-style:normal;text-decoration:none;background-color:transparent">✅</span></td>
+			</tr>
+			<tr>
+				<td class="tg-ekg0"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Анонимайзеры</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-5ll9"><span style="font-weight:700;font-style:normal;text-decoration:none;background-color:transparent">✅</span></td>
+			</tr>
+			<tr>
+				<td class="tg-ekg0"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">VPN</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-5ll9"><span style="font-weight:700;font-style:normal;text-decoration:none;background-color:transparent">✅</span></td>
+			</tr>
+			<tr>
+				<td class="tg-ekg0"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Ботнеты, командные серверы</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-5ll9"><span style="font-weight:700;font-style:normal;text-decoration:none;background-color:transparent">✅</span></td>
+			</tr>
+			<tr>
+				<td class="tg-ekg0"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Вредоносное ПО</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-5ll9"><span style="font-weight:700;font-style:normal;text-decoration:none;background-color:transparent">✅</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html--><!--kg-card-begin: markdown-->
+	<p><small>* Свяжитесь с вашим менеджером Customer Success, чтобы узнать, как получить доступ к этим спискам.</small></p>
+	<!--kg-card-end: markdown-->
+	<h3 id="--2">Планы на будущее</h3>
+	<p>Мы работаем над расширением охвата наших данных об угрозах. В ближайшие месяцы мы предложим новые списки IP-адресов, в частности, мы готовим списки поставщиков облачных сервисов и служб преобразования сетевых адресов операторского класса (CG-NAT).</p>
+</div>

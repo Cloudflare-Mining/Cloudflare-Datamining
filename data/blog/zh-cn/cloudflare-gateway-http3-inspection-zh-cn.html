@@ -1,0 +1,19 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/pasted-image-0--1-.png" class="kg-image" alt="HTTP/3 inspection on Cloudflare Gateway"></figure>
+	<p>今天，我们隆重宣布，通过我们全面的安全 Web 网关Cloudflare Gateway，将可支持 HTTP/3 检查。目前，HTTP/3 支持着 25% 的互联网，提供更快速的浏览体验，同时不影响安全性。目前，管理员想要过滤和检查 HTTP/3 支持的网站或 API，要么需要退回到 HTTP/2，这会牺牲性能；要么需要避开检查，这会丧失可见性。但从今以后，您可以利用支持 HTTP/3 的 Cloudflare Gateway，充分了解所有流量，为用户提供最快的浏览体验。</p>
+	<h3 id="web-http-3-">Web 为何在向 HTTP/3 迁移？</h3>
+	<p>HTTP 是推动互联网发展的最老的技术之一。早在 1996 年，安全性和性能都是事后才考虑的，而加密则留给了传输层来管理。这种模式无法满足现代互联网的性能需求，因而将 HTTP <a href="https://blog.cloudflare.com/zh-cn/http3-the-past-present-and-future-zh-cn/">升级到了 HTTP/2 以及现在的 HTTP/3</a>。</p>
+	<p>HTTP/3 通过使用 QUIC 加速浏览活动。QUIC 是一个现代传输协议，总是默认加密。通过减少用户和网络服务器之间的往返次数，HTTP/3 提高了速度，对网络连接不可靠的用户来说，还提高了性能。进一步了解 HTTP/3 的性能优势，请<a href="https://blog.cloudflare.com/http-3-vs-http-2/">在此</a>查阅我们以前的博客。</p>
+	<h3 id="http-3-">HTTP/3 的发展和采用</h3>
+	<p>Cloudflare 的使命是帮助建设更好的互联网。我们认为，HTTP/3 是建设更快、更安全的互联网的重要基石。我们与 IETF 密切合作，在 HTTP/3 和 QUIC 标准文件的基础上迭代。再加上默认启用 QUIC 的 Chrome 和 Firefox 等常用浏览器取得的进步，现已有超过 25% 的网站使用 HTTP/3，并用于进行更彻底的<a href="https://blog.cloudflare.com/cloudflare-view-http3-usage/">分析</a>。</p>
+	<p>过去几年中，我们一直在大力提倡 HTTP/3。<a href="https://blog.cloudflare.com/the-quicening/">2018 年 9 月</a>，我们首次引入对底层传输层 QUIC 的支持，然后在 <a href="https://blog.cloudflare.com/zh-cn/http3-the-past-present-and-future-zh-cn/">2019 年 9 月</a>，引入对反向代理服务的 HTTP/3 支持。此后，我们的脚步并没有放缓。如今，我们支持最新版本的 HTTP/3，使用最终的“h3”标识符匹配 RFC 9114。</p>
+	<h3 id="http-3--1">HTTP/3 检查存在的障碍</h3>
+	<p>但是，虽然 HTTP/3 有很多优点，但其引入给希望在网络上过滤和检查 HTTP 流量的管理员带来了部署复杂和安全性折衷的问题。HTTP/3 提供熟悉的 HTTP 请求和响应语义，但使用 QUIC 改变了其在网络上的外观和行为方式。QUIC 是在 UDP 上运行，其架构与基于 TCP 的传统协议不同，传统的安全 Web 网关难以支持。因此，既要满足用户对性能的期望，又要确保对互联网流量的可见性和控制权，还要跟上不断变化的技术形势，对管理员来说充满挑战。</p>
+	<p>如果没有支持 HTTP/3 的安全 Web 网关，管理员需要替用户在安全性和/或性能之间做出取舍。安全性折衷包括不检查 UDP 流量，甚至弃用关键的安全功能，例如内联的反病毒扫描、预防数据丢失、浏览器隔离和/或流量记录。当然，对于任何有安全意识的组织来说，放弃安全性和可见性是不可接受的，因此，管理员直接在其终端用户设备上主动禁用 HTTP/3。这导致部署复杂，而且牺牲了性能，因为它需要在用户的网络浏览器中禁用 QUIC 支持。</p>
+	<h3 id="-http-3-">如何启用 HTTP/3 检查</h3>
+	<p>今年晚些时候，有些优质浏览器将会支持 HTTP/3 检查，您到时候可以通过仪表板启用 HTTP/3 检查。登录 Zero Trust 仪表板后，切换到代理，点击 UDP 流量框，并在<strong>设置&gt; 网络&gt; 防火墙</strong>下启用 TLS 解密。启用这些设置后，AV 扫描、远程浏览器隔离、DLP 和 HTTP 过滤均可通过 HTTP 策略应用于您组织的所有代理 HTTP 流量。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/pasted-image-0--2-.png" class="kg-image"></figure>
+	<h3 id="-">下一步</h3>
+	<p>管理员将不再需要根据不断变化的技术环境进行安全性权衡，可以专注于保护其组织和团队。可以使用 HTTP/3 检查后，我们就会联系所有 Cloudflare One 客户，为管理员简化安全 Web 网关的部署。</p>
+	<p>HTTP/3 流量检查将可供所有计划类型的所有管理员使用；如果尚未注册，请<a href="https://dash.cloudflare.com/sign-up/teams" target="_blank">点击此处</a>。</p>
+</div>

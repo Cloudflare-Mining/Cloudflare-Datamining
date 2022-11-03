@@ -1,0 +1,95 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/Image_20201016_072224.jpeg" class="kg-image"></figure>
+	<p>Nos complace anunciar hoy Magic Firewall™, un firewall a nivel de red que se integra en Cloudflare para proteger tu empresa. Magic Firewall protege a tus usuarios remotos, sucursales, centros de datos e infraestructura en la nube. Lo mejor de todo es que está plenamente integrado con Cloudflare One™, lo cual te ofrece una visión general de todo lo que ocurre en tu red.</p>
+	<p>Cloudflare Magic Transit™ protege subredes IP con la misma tecnología de protección contra DDoS que desarrollamos para mantener segura nuestra propia red global. Eso ayuda a garantizar que tu red esté a salvo de ataques y siempre disponible, y reemplaza los dispositivos físicos que tienen límites por la red de Cloudflare.</p>
+	<p>Sin embargo, aún es necesario hardware local para una función diferente: los firewalls. Las redes no solo necesitan protección ante los ataques DDoS. Los administradores necesitan una manera de establecer políticas para todo el tráfico que entra y sale de la red. Con Magic Firewall, queremos ayudar a tu equipo a dejar de lado esos dispositivos de firewall de red y trasladar esa carga a la red global de Cloudflare.</p>
+	<h2 id="gestionar-firewalls-en-formato-hardware-es-horrible">Gestionar firewalls en formato hardware es horrible</h2>
+	<p>Los firewall de red siempre han sido engorrosos. No solo son caros, sino que también están sujetos a sus propias limitaciones de hardware. Si necesitas más CPU o memoria, tienes que comprar más hardware. Si te falta capacidad, toda la red se ve impactada, lo cual repercute directamente en los empleados que intentan hacer su trabajo. Para compensar, los operadores de red y los equipos de seguridad se ven obligados a comprar más capacidad de la que se necesita, lo que hace que tengas que pagar más de lo necesario.</p>
+	<p>Nos hemos enterado de este problema por nuestros clientes de Magic Transit, que se enfrentan constantemente a problemas de capacidad:</p>
+	<blockquote><em>"Siempre nos quedamos sin memoria y nos topamos con los límites de conexión de nuestros firewalls. Es un gran problema".</em></blockquote>
+	<p>Los operadores de las redes tienen que recurrir a soluciones de diferentes proveedores, combinando funciones, y preocupándose por mantener las políticas sincronizadas en toda la red. El resultado es que todo es más complicado y tiene un coste añadido.</p>
+	<h2 id="la-soluci-n-no-es-m-s-hardware">La solución no es más hardware</h2>
+	<p>Algunas organizaciones recurren entonces a más proveedores y compran hardware adicional para gestionar el entramado de hardware de firewall que han implementado. Entonces, los equipos tienen que equilibrar los ciclos de renovación, las actualizaciones y la gestión del final de vida útil en más plataformas todavía. Estas soluciones son solo un parche, que no resuelven el problema fundamental: ¿cómo crear una visión única de toda la red que ofrezca información sobre lo que ocurre (bueno y malo) y aplicar la política de forma instantánea <em>a nivel global?</em></p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/10/image2-18.png" class="kg-image">
+		<figcaption>Arquitectura de firewall tradicional</figcaption>
+	</figure>
+	<h2 id="novedad-magic-firewall">Novedad: Magic Firewall</h2>
+	<p>En lugar de ofrecer más parches, estamos encantados de lanzar Magic Firewall como una solución única y completa para el filtrado de red. A diferencia de los dispositivos heredados, Magic Firewall se ejecuta en la red de Cloudflare. Esa red se amplía o se reduce según las necesidades del cliente en cada momento.</p>
+	<p>Trabajar en nuestra red ofrece una ventaja añadida. Muchos clientes redireccionan el tráfico de red a embudos únicos para realizar operaciones de firewall, lo cual crea latencia. Cloudflare gestiona centros de datos en 200 ciudades de todo el mundo, y cada uno de esos puntos de presencia es capaz de ofrecer la misma solución. En cambio, las oficinas regionales y los centros de datos se basan en un motor de Cloudflare Magic Firewall que funciona en 100 milisegundos de su ubicación.</p>
+	<h2 id="integraci-n-con-cloudflare-one">Integración con Cloudflare One</h2>
+	<p>Cloudflare One consta de productos que te permiten aplicar un único motor de filtrado con controles de seguridad coherentes a toda tu red, y no solo a una parte de la misma. Los mismos tipos de controles que tu organización quiere aplicar al tráfico que sale de tus redes se deben aplicar al tráfico que sale de tus dispositivos.</p>
+	<p>Magic Firewall se integrará con lo que ya estás utilizando en Cloudflare. Por ejemplo, el tráfico que sale de los puntos finales de fuera de la red puede llegar a Cloudflare utilizando el cliente Cloudflare Warp, donde Gateway aplicará las mismas reglas que tu equipo configure para el filtrado a nivel de red. Las sucursales y los centros de datos se pueden conectar a través de Magic Transit con el mismo conjunto de reglas. Esto te ofrece una visión general de toda tu red, para que no tengas que buscar información en varios dispositivos y proveedores.</p>
+	<h2 id="-c-mo-funciona">¿Cómo funciona?</h2>
+	<p>Entonces, ¿qué <em>es</em> Magic Firewall? Es una forma de reemplazar tu firewall de red local obsoleto por una solución como servicio, llevando tu perímetro al borde. Ya te permitimos aplicar reglas de firewall en el perímetro con Magic Transit, pero el proceso para añadir o cambiar reglas implicaba anteriormente trabajar con tu equipo de cuenta o con Soporte de Cloudflare. Nuestra primera versión, disponible en general en los próximos meses, permitirá a todos nuestros clientes de Magic Transit aplicar mitigaciones estáticas en la capa 3 y 4 de OSI como autoservicio, a escala de Cloudflare.</p><!--kg-card-begin: markdown-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+			margin: 0px auto;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-afol {
+			background-color: #FFF;
+			color: #36393A;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-0lax"><img src="https://blog.cloudflare.com/content/images/2020/10/image1-23.png" alt="Cloudflare applies firewall policies at every data center" width="340" height="213"></th>
+				<th class="tg-0lax"><img src="https://blog.cloudflare.com/content/images/2020/10/image3-18.png" alt="Meaning you have firewalls applying policies across the globe" width="340" height="213"></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-afol">Cloudflare aplica políticas de firewall en cada centro de datos</td>
+				<td class="tg-afol">Lo que significa que tus firewalls aplican políticas en todo el mundo</td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: markdown--><!--kg-card-begin: html-->
+	<p></p><!--kg-card-end: html-->
+	<p>Nuestra primera versión de Magic Firewall se centrará en las mitigaciones estáticas, lo que te permitirá establecer un conjunto estándar de reglas que valgan para toda tu red, tanto si los dispositivos o las aplicaciones están en la nube, como si se trata del dispositivo de un empleado o de una sucursal. Podrás expresar reglas que permitan o bloqueen en función de:</p>
+	<ul>
+		<li>Protocolo</li>
+		<li>IP y puerto de origen o destino</li>
+		<li>Longitud del paquete</li>
+		<li>Coincidencia de campos de bits</li>
+	</ul>
+	<p>Las reglas se pueden crear en <a href="https://www.wireshark.org/docs/wsug_html_chunked/ChWorkBuildDisplayFilterSection.html" target="_blank">sintaxis de Wireshark</a>, un lenguaje específico del mundo de las redes y la misma sintaxis que utilizamos en otros productos. Con esta sintaxis, puedes crear con facilidad reglas muy potentes para permitir o denegar con precisión cualquier tráfico que entre o salga de tu red. Si tienes sospechas de que hay un actor malintencionado dentro o fuera de tu perímetro, solo tienes que entrar en el panel de control y bloquear ese tráfico. Las reglas se propagan globalmente en cuestión de segundos, poniendo fin así a las amenazas en el perímetro.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image4-13.png" class="kg-image"></figure>
+	<p>Configurar los firewalls debería ser algo fácil y potente. Con Magic Firewall, se pueden configurar las reglas mediante el uso de una sencilla interfaz de usuario que permita una lógica compleja, o escribiendo la regla de filtrado manualmente utilizando la sintaxis de filtros de Wireshark y configurarla de ese modo. ¿No quieres complicarte con una interfaz de usuario? Las reglas se pueden añadir con la misma facilidad a través de la API.</p>
+	<h2 id="-y-despu-s">¿Y después?</h2>
+	<p>Tener visibilidad de los paquetes no es suficiente... Incluso con reglas de firewall, los equipos siguen necesitando visibilidad de lo que realmente sucede en su red: ¿qué está ocurriendo dentro de estos flujos de datos? ¿Se trata de tráfico legítimo o tenemos actores malintencionados dentro o fuera de nuestra red llevando a cabo actividades maliciosas? Implementar Cloudflare para que se sitúe entre dos actores que interactúen con cualquiera de tus activos (ya sean dispositivos de los empleados o servicios expuestos a Internet) nos permite aplicar cualquier política, en cualquier lugar, ya sea sobre la procedencia del tráfico o sobre lo que hay dentro del mismo. No queda nada para aplicar políticas basadas en el tipo de tráfico y nos ilusiona anunciar que tenemos previsto añadir funciones adicionales para detectar de forma automática eventos de intrusión basados en lo que ocurre dentro de los flujos de datos en un futuro próximo.</p>
+	<p>Nos emociona este nuevo camino. Con Cloudflare One, estamos reinventando la red para las empresas. Integramos la gestión de acceso, las funciones de seguridad y el rendimiento en todos los ámbitos para los visitantes de tu red, pero también para cualquier persona que esté dentro de ella. Todo ello está diseñado sobre una red que fue <a href="https://blog.cloudflare.com/our-network-cloudflare-one">#BuiltForThis.</a></p>
+	<p>Para empezar, vamos a abrir la versión beta limitada de Magic Firewall para clientes actuales de Magic Transit. Si te interesa, <a href="https://www.cloudflare.com/lp/magic-firewall-beta/" target="_blank">ponte en contacto con nosotros</a>.</p>
+</div>

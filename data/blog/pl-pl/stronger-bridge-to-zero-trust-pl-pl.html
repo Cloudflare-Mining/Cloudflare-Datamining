@@ -1,0 +1,83 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image1-43.png" class="kg-image" alt="A stronger bridge to Zero Trust"></figure>
+	<p>Wiemy, że dla większości organizacji migracja do architektury Zero Trust nie przebiegnie z dnia na dzień, zwłaszcza po latach korzystania z tradycyjnego sprzętu i sieci łączonych wskutek fuzji firm. Możemy jednak z dumą powiedzieć, że Cloudflare One stanowi doskonały pomost do modelu <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trust</a> dla firm migrujących ze starszych architektur sieci.</p>
+	<p>Dziś podwajamy wysiłki w tym kierunku, wprowadzając kolejne udoskonalenia platformy Cloudflare One, dzięki którym przejście ze starszej architektury do przyszłościowej sieci Zero Trust stanie się jeszcze łatwiejsze: są to nowa infrastruktura dla kolejnych rozwiązań łączących Cloudflare One, obsługa dodatkowych parametrów IPsec i łatwiejsze łączenie istniejących urządzeń SD-WAN.</p>
+	<h3 id="w-pe-ni-komponowalne-i-wsp-dzia-aj-ce-czenia"><strong>W pełni komponowalne i współdziałające łączenia</strong></h3>
+	<p>Ogłaszając <a href="https://blog.cloudflare.com/cloudflare-one/">naszą wizję Cloudflare One</a>, podkreślaliśmy, jak ważne jest, by klienci mogli podłączyć się do naszej sieci w taki sposób, jaki odpowiada im najbardziej – korzystając z dotychczasowych urządzeń sprzętowych, dowolnych operatorów, istniejących standardów takich jak tunele IPsec lub stosując rozwiązanie bliższe do modelu Zero Trust, na przykład nasz lekki <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/" target="_blank">łącznik aplikacji</a>. Podczas setek rozmów z klientami, jakie przeprowadziliśmy od czasu wprowadzenia Cloudflare One, podkreślaliście, jak ważna jest dla Was ta elastyczność. Potrzebujecie platformy, z której możecie skorzystać już dziś, a która <em>jednocześnie</em> sprawdzi się z architekturą sieci, którą wdrożycie w przyszłości – platformy, która stanowi globalny router z jedną płaszczyzną sterowania do wszelkich możliwych sposobów łączenia i zarządzania ruchem sieciowym.</p>
+	<p>Z radością informujemy, że w ciągu minionych kilku miesięcy zdołaliśmy zrealizować tę wizję. Klienci mogą już korzystać z dowolnych rozwiązań łączących i bezproblemowo kierować ruch między urządzeniami, oddziałami, centrami danych, zasobami w chmurze i aplikacjami na własnym serwerze lub typu SaaS. Obejmuje to także (nowo wprowadzoną, pokazaną na końcu poniższej tabeli) możliwość kierowania ruchu z sieci połączonych tunelem GRE, IPsec lub CNI do aplikacji połączonych <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/" target="_blank">tunelem Cloudflare</a>.</p><!--kg-card-begin: html-->
+	<center><strong>W pełni komponowalne rozwiązania łączące Cloudflare One</strong></center><!--kg-card-end: html--><!--kg-card-begin: markdown-->
+	<table>
+		<thead>
+			<tr>
+				<th>Z ↓ do →</th>
+				<th>BYOIP</th>
+				<th>Klient WARP</th>
+				<th>CNI</th>
+				<th>Tunel GRE</th>
+				<th>Tunel IPSec</th>
+				<th>Tunel Cloudflare</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>BYOIP</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+			</tr>
+			<tr>
+				<td>Klient WARP</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+			</tr>
+			<tr>
+				<td>CNI</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+			</tr>
+			<tr>
+				<td>Tunel GRE</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+			</tr>
+			<tr>
+				<td>Tunel IPSec</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<p>To współdziałanie jest kluczowe w strategii migracji ze starszej architektury sieci do modelu Zero Trust. Możesz zacząć od poprawy wydajności i wzmocnienia zabezpieczeń, korzystając z technologii przypominających te, do których przywykł Twój zespół, i stopniowo przechodzić do modelu Zero Trust w tempie odpowiadającym Twojej organizacji.</p>
+	<h3 id="rozszerzone-opcje-i-atwiejsze-zarz-dzanie-tunelami-anycast-ipsec">Rozszerzone opcje i łatwiejsze zarządzanie tunelami Anycast IPsec</h3>
+	<p>Od czasu uruchomienia <a href="https://blog.cloudflare.com/anycast-ipsec/">Anycast IPsec jako rozwiązania łączącego do Cloudflare One</a> w grudniu zainteresowanie klientów przerosło nasze oczekiwania. Ponieważ IPsec jest standardem branżowym od prawie trzydziestu lat, możemy wybierać spośród wielu implementacji i parametrów, a nasi klienci korzystają z różnorodnych urządzeń sieciowych do zakończenia tych tuneli. W celu ułatwienia konfiguracji tuneli IPsec i zarządzania nimi z dowolnej sieci rozbudowaliśmy nasze pierwotne rozwiązanie o obsługę nowych parametrów, nowy interfejs oraz obsługę dostawcy Terraform, a także dodaliśmy szczegółowe instrukcje do popularnych implementacji.</p>
+	<ul>
+		<li>Obsługa dodatkowych parametrów konfiguracyjnych: zaczęliśmy od niewielkiego zestawu parametrów domyślnych, opierając się na najlepszych praktykach branżowych, a następnie rozszerzyliśmy wsparcie o dodatkowe parametry – aktualna lista dostępna jest w naszej <a href="https://developers.cloudflare.com/magic-wan/tutorials/ipsec/#supported-configuration-parameters" target="_blank">dokumentacji dla deweloperów</a>. Od czasu wprowadzenia naszej własnej implementacji IPsec od podstaw (o tym, dlaczego to zrobiliśmy, można przeczytać w <a href="https://blog.cloudflare.com/anycast-ipsec/">ogłaszającym to wpisie</a>) jesteśmy w stanie dodać wsparcie nowych parametrów w trakcie zaledwie jednego (szybkiego!) cyklu tworzenia oprogramowania. Jeśli interesujące Cię ustawienia nie są jeszcze na naszej liście, skontaktuj się z nami, by poznać nasze plany ich obsługi.</li>
+		<li>Konfiguracja tuneli i zarządzanie z pulpitu nawigacyjnego Cloudflare: do zarządzania konfiguracją tuneli IPsec i GRE wystarczy kilka kliknięć na pulpicie nawigacyjnym Cloudflare. Po utworzeniu tunelu można wyświetlić łączność z każdej lokalizacji Cloudflare na świecie i wykonywać polecenia traceroute lub <a href="https://blog.cloudflare.com/packet-captures-at-edge/">przechwytywanie pakietów na żądanie</a>, by uzyskać bardziej kompleksowy wgląd w ruch w celu rozwiązywania problemów.</li>
+		<li>Obsługa dostawcy Terraform umożliwiająca zarządzanie siecią jako kodem: zapracowane zespoły IT uwielbiają możliwość zarządzania całą konfiguracją sieci z jednego miejsca dzięki <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/3.10.1/docs/resources/ipsec_tunnel" target="_blank">Terraform</a>.</li>
+		<li>Poradniki krok po kroku do konfiguracji z istniejącymi urządzeniami: opracowaliśmy już pierwsze poradniki i będziemy dodawać kolejne w naszej <a href="https://developers.cloudflare.com/magic-wan/tutorials/ipsec/" target="_blank">dokumentacji dla deweloperów</a>. Dzięki nim z łatwością stworzysz tunele IPsec z Cloudflare z wielu urządzeń.</li>
+	</ul>
+	<h3 id="-jeszcze-atwiejsze-czenie-z-istniej-cych-urz-dze-sd-wan">(Jeszcze) łatwiejsze łączenie z istniejących urządzeń SD-WAN</h3>
+	<p>Niejednokrotnie słyszeliśmy od naszych klientów, że chcą łączyć się z Cloudflare One przy użyciu posiadanego już sprzętu. Jedną z najłatwiejszych metod łączenia jest wykorzystanie istniejących urządzeń SD-WAN, zwłaszcza w przypadku organizacji o licznych lokalizacjach. W przeszłości ogłosiliśmy już <a href="https://www.cloudflare.com/network-onramp-partners/" target="_blank">współpracę z czołowymi dostawcami SD-WAN</a>, która dodatkowo uprościła proces konfiguracji. Dziś idziemy o krok dalej i przedstawiamy nowe <a href="https://developers.cloudflare.com/magic-wan/tutorials/" target="_blank">poradniki integracji</a> dla dodatkowych urządzeń i mechanizmów tuneli, w tym Cisco Viptela. Te instrukcje krok po kroku zagwarantują bezproblemową konfigurację łączności z siecią Cloudflare.</p>
+	<h3 id="rozpocznij-swoj-drog-do-modelu-zero-trust">Rozpocznij swoją drogę do modelu Zero Trust</h3>
+	<p>Nasz zespół pomaga tysiącom organizacji takich jak Twoja przejść ze starszych architektur sieci do modelu Zero Trust. Chętnie dowiemy się, jakie nowe produkty i funkcje możemy zbudować, by jeszcze bardziej ułatwić Wam ten proces. <a href="https://www.cloudflare.com/cloudflare-one/#transformation" target="_blank">Dowiedz się więcej o Cloudflare One</a> albo skontaktuj się z zespołem opiekującym się Twoim kontem, by omówić, jak możemy wspólnie przekształcić Twoją sieć – zaczynając już dzisiaj!</p>
+</div>

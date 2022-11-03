@@ -1,0 +1,83 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/image-7.png" class="kg-image"></figure>
+	<p>Sabemos que la migración a la arquitectura Zero Trust no se producirá de la noche a la mañana para la mayoría de las organizaciones, especialmente aquellas que llevan años implementando hardware tradicional y redes combinadas mediante fusiones y adquisiciones. No obstante, uno de los motivos por el que nos entusiasma Cloudflare One es que proporciona un puente a <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trust</a> para las empresas que migran de arquitecturas de red heredadas.</p>
+	<p>Hoy, redoblamos esta apuesta, anunciando más mejoras de la plataforma Cloudflare One que hacen que la transición de una arquitectura heredada a la red Zero Trust del futuro sea más fácil que nunca: nueva tunelización para más accesos de entrada a Cloudflare One, soporte ampliado para parámetros IPsec adicionales y accesos de entrada más fáciles desde tus aplicaciones SD-WAN existentes.</p>
+	<h3 id="cualquier-acceso-de-entrada-o-de-salida-totalmente-modular-e-interoperable">Cualquier acceso de entrada o de salida: totalmente modular e interoperable</h3>
+	<p>Cuando anunciamos <a href="https://blog.cloudflare.com/cloudflare-one/">nuestra visión para Cloudflare One</a>, destacamos la importancia de permitir a los clientes conectarse a nuestra red de la forma que quisieran: con dispositivos de hardware que ya tuvieran implementados, con cualquier operador que ya utilizaran, con estándares de tecnología existentes como túneles IPsec o más enfoques Zero Trust como nuestro <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/" target="_blank">conector de aplicaciones</a> ligero. Desde su lanzamiento, en cientos de conversaciones con los clientes, te hemos escuchado reiterar la importancia de esta flexibilidad. Necesitas una plataforma que se ajuste al punto en el que te encuentras actualmente <em>y</em> que te proporcione una ruta fluida a tu arquitectura de red futura actuando como un enrutador global con un único plano de control, sea cual sea la manera en que desees conectarte al tráfico de red y administrarlo.</p>
+	<p>Nos complace compartir que, durante los últimos meses, hemos encajado las últimas piezas de este puzle. Ahora, los clientes pueden utilizar cualquier acceso de entrada y salida de Cloudflare One para enrutar el tráfico de forma fluida entre dispositivos, oficinas, centros de datos, propiedades de nube y aplicaciones autoalojadas o SaaS. Esto incluye (lo que constituye una novedad respecto a nuestro último anuncio, y completa la siguiente matriz de compatibilidad) la capacidad de enrutar el tráfico desde redes conectadas con un túnel GRE, un túnel IPsec o CNI a aplicaciones conectadas con <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/" target="_blank">Cloudflare Tunnel</a>.</p><!--kg-card-begin: html-->
+	<center><b>Accesos de entrada de Cloudflare One totalmente modulables</b></center><!--kg-card-end: html--><!--kg-card-begin: markdown-->
+	<table>
+		<thead>
+			<tr>
+				<th>De ↓ a →</th>
+				<th>BYOIP</th>
+				<th>Cliente WARP</th>
+				<th>CNI</th>
+				<th>Túnel GRE</th>
+				<th>Túnel IPSec</th>
+				<th>Cloudflare Tunnel</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>BYOIP</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+			</tr>
+			<tr>
+				<td>Cliente WARP</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+			</tr>
+			<tr>
+				<td>CNI</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+			</tr>
+			<tr>
+				<td>Túnel GRE</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+			</tr>
+			<tr>
+				<td>Túnel IPSec</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<p>Esta interoperabilidad es clave para la estrategia de las organizaciones para migrar de una arquitectura de red heredada a Zero Trust. Puedes empezar mejorando el rendimiento y la seguridad utilizando tecnologías similares a las que has utilizado hasta ahora y, gradualmente, actualizar a Zero Trust a un ritmo que tenga sentido para tu organización.</p>
+	<h3 id="opciones-ampliadas-y-administraci-n-m-s-f-cil-de-los-t-neles-anycast-ipsec">Opciones ampliadas y administración más fácil de los túneles Anycast IPsec</h3>
+	<p>Desde nuestro lanzamiento de <a href="https://blog.cloudflare.com/anycast-ipsec/">Anycast IPsec como un acceso de entrada para Cloudflare One</a> en diciembre, hemos visto una demanda increíblemente interesante. Puesto que IPsec ha sido el estándar de la industria para la conectividad de red encriptada durante casi 30 años, hay muchas implementaciones y parámetros disponibles entre los que elegir, y nuestros clientes utilizan una gran variedad de dispositivos de red para terminar estos túneles. Para facilitar el proceso de configuración y administración de los túneles IPsec desde cualquier red, hemos desarrollado sobre nuestra versión inicial con compatibilidad para nuevos parámetros, una nueva interfaz de usuario y compatibilidad con proveedores Terraform, así como guías paso a paso para las implementaciones más populares. </p>
+	<ul>
+		<li><strong>Compatibilidad ampliada para parámetros de configuración adicionales:</strong> empezamos con un pequeño conjunto de parámetros predeterminados basados en las prácticas recomendadas de la industria, que hemos ampliado. Puedes ver la lista actualizada en nuestra <a href="https://developers.cloudflare.com/magic-wan/tutorials/ipsec/#supported-configuration-parameters" target="_blank">documentación para desarrolladores</a>. Puesto que escribimos nuestra propia implementación de IPsec desde cero (puedes leer más sobre los motivos en nuestro <a href="https://blog.cloudflare.com/anycast-ipsec/">blog de anuncios</a>), podemos admitir nuevos parámetros con un único ciclo de desarrollo (¡rápido!). Si los ajustes que buscas aún no están en nuestra lista, ponte en contacto con nosotros para conocer nuestros planes acerca de su compatibilidad.</li>
+		<li><strong>Configura y administra túneles desde el panel de control de Cloudflare:</strong> la configuración de los túneles Anycast IPsec y GRE se puede administrar con solo unos clics desde el panel de control de Cloudflare. Después de crear un túnel, puedes ver la conectividad al mismo desde cualquier ubicación de Cloudflare en todo el mundo, y ejecutar traceroute o <a href="https://blog.cloudflare.com/packet-captures-at-edge/">capturas de paquete bajo demanda</a> para obtener una vista más detallada de tu tráfico para la resolución de problemas.</li>
+		<li><strong>Compatibilidad con proveedores Terraform para administrar tu red como código:</strong> a los ajetreados equipos informáticos les encanta poder administrar toda la configuración de su red desde una única ubicación con <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/3.10.1/docs/resources/ipsec_tunnel" target="_blank">Terraform</a>.</li>
+		<li><strong>Guías paso a paso para la configuración con tus dispositivos existentes: </strong>hemos desarrollado y continuaremos añadiendo nuevas guías en nuestra <a href="https://developers.cloudflare.com/magic-wan/tutorials/ipsec/" target="_blank">documentación para desarrolladores</a> para ayudarte a establecer los túneles IPsec desde distintos dispositivos.</li>
+	</ul>
+	<h3 id="acceso-de-entrada-incluso-m-s-f-cil-desde-tus-dispositivos-sd-wan-existentes">Acceso de entrada (incluso) más fácil desde tus dispositivos SD-WAN existentes</h3>
+	<p>Te hemos escuchado decir repetidamente que quieres poder utilizar cualquier hardware que tengas hoy para conectarte a Cloudflare One. Uno de los métodos de acceso de entrada más fáciles es aprovechar tus dispositivos SD-WAN existentes para conectarte con nosotros, especialmente para las organizaciones con muchas ubicaciones. Anteriormente, anunciamos <a href="https://www.cloudflare.com/network-onramp-partners/" target="_blank">colaboraciones con proveedores líderes de SD-WAN</a> para que la configuración del acceso de entrada fuera aún más fluida. Hoy, ampliamos esto añadiendo nuevas <a href="https://developers.cloudflare.com/magic-wan/tutorials/" target="_blank">guías de integración</a> para dispositivos adicionales y mecanismos de túnel, incluido Cisco Viptela. Tu equipo informático puede seguir estas instrucciones paso a paso verificadas para configurar fácilmente la configuración a la red de Cloudflare.</p>
+	<h3 id="empieza-ahora-tu-experiencia-con-zero-trust">Empieza ahora tu experiencia con Zero Trust</h3>
+	<p>Nuestro equipo está ayudando a miles de organizaciones como la tuya a realizar la transición desde una arquitectura de red heredada a Zero Trust. Nos encantaría conocer tu opinión sobre los nuevos productos y funciones que podemos seguir desarrollando para facilitarte aún más esta experiencia. <a href="https://www.cloudflare.com/cloudflare-one/#transformation" target="_blank">Obtén más información sobre Cloudflare One</a> o ponte en contacto con tu equipo de cuenta para comentar cómo podemos colaborar para transformar tu red, empezando ya.</p>
+</div>

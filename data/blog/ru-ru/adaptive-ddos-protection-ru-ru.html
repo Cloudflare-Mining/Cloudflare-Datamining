@@ -1,0 +1,114 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image1-12.png" class="kg-image" alt="Introducing Cloudflare Adaptive DDoS Protection - our new traffic profiling system for mitigating DDoS attacks"></figure>
+	<p>Каждый интернет-ресурс уникален, и его трафик имеет свои собственные характеристики и особенности. Например, для веб-сайта может быть характерен пользовательский трафик только из определенных регионов, а для сети — лишь ограниченный набор протоколов.</p>
+	<p>Уникальность характеристик трафика каждого ресурса и лежит в основе разработанной нами системы адаптивной DDoS-защиты. Адаптивная DDoS-защита становится составной частью нашего пакета <a href="https://blog.cloudflare.com/deep-dive-cloudflare-autonomous-edge-ddos-protection/">автоматизированных средств защиты от DDoS</a> и выводит его на следующий уровень. Новая система, анализируя уникальные особенности вашего трафика, адаптируется для защиты от сложных DDoS-атак.</p>
+	<p>Адаптивная защита от DDoS теперь доступна всем клиентам на плане Enterprise:</p>
+	<ul>
+		<li><strong>Адаптивная защита от DDoS-атак по HTTP</strong> доступна клиентам WAF/CDN на плане Enterprise, если они подписаны на сервис Advanced DDoS Protection (Расширенная DDoS-защита).</li>
+		<li><strong>Адаптивная защита от DDoS-атак на уровнях L3/L4</strong> доступна клиентам Magic Transit и Spectrum на плане Enterprise.</li>
+	</ul>
+	<h3 id="-ddos-">Адаптивная защита от DDoS анализирует особенности вашего трафика</h3>
+	<p>Система адаптивной DDoS-защиты формирует профили трафика, исходя из максимальной интенсивности трафика за сутки в течение последних семи дней. Профили ежедневно пересчитываются на основе истории за последние семь дней. Система сохраняет данные о максимальной интенсивности трафика по каждому заранее определенному параметру. В каждом профиле используется только один параметр. В число параметров входят: страна-источник запроса, страна местонахождения центра обработки данных Cloudflare, получившего IP-пакет, агент пользователя, протокол IP, порты назначения и др.</p>
+	<p>Так, например, для <a href="https://blog.cloudflare.com/location-aware-ddos-protection/">профиля с параметром «страна-источник»</a> система будет регистрировать максимальную интенсивность трафика, поступающего из каждой страны, например: 2 000 запросов/сек. из Германии, 3 000 запросов/сек. из Франции, 10 000 запросов/сек. из Бразилии и т. д. Этот пример касается HTTP-трафика, но система адаптивной DDoS-защиты также осуществляет профилирование трафика уровней L3/L4 для клиентов сервисов Magic Transit и Spectrum на плане Enterprise.</p>
+	<p>Следует иметь в виду, что для данных о максимальной интенсивности трафика мы используем 95-ю процентиль. Это означает, что мы берем максимальные величины и отбрасываем верхние 5 %. Это делается для того, чтобы удалить из расчетов экстремальные значения.</p>
+	<p>Расчет профилей трафика осуществляется асинхронно, т. е. он не приводит к увеличению сетевых задержек для трафика клиента. Система затем распространяет компактные представления профилей по всей нашей сети, и они используются нашими системами DDoS-защиты для обнаружения и нейтрализации DDoS-атак.</p>
+	<p>Помимо профилей трафика, адаптивная DDoS-защита также использует генерируемые <a href="https://developers.cloudflare.com/bots/concepts/bot-score/#machine-learning" target="_blank">системой машинного обучения</a> Cloudflare <a href="https://developers.cloudflare.com/bots/concepts/bot-score/" target="_blank">"оценки бота"</a>, они служат в качестве дополнительного сигнала, помогающего отличить пользовательский трафик от автоматизированного. Эти оценки используются для того, чтобы отличить отклоняющиеся от профиля пики легитимного трафика от всплесков автоматизированного и потенциально вредоносного трафика.</p>
+	<h3 id="-">Защита "из коробки", легкость в использовании</h3>
+	<p>Адаптивная DDoS-защита начинает работать сразу после подключения. Она автоматически создает профили, после чего клиенты по мере необходимости могут корректировать и оптимизировать настройки с помощью правил <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/" target="_blank">DDoS Managed</a>. Клиенты могут менять уровень чувствительности, создавать исключения, используя поля выражений (например, чтобы исключить трафик <em>такого типа</em>), а также выбирать вид противодействия, что дает возможность адаптировать поведение системы в соответствии с потребностями и особенностями трафика.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image2-11.png" class="kg-image" alt="A screenshot of Cloudflare Adaptive DDoS Protection rules"></figure>
+	<p>Адаптивная DDoS-защита служит в качестве дополнения к нашей системе защиты от DDoS, использующей для обнаружения и нейтрализации DDoS-атак динамическое формирование цифровых отпечатков. Обе системы работают совместно, защищая наших клиентов от DDoS-атак. Как только клиент подключает к Cloudflare новый интернет-ресурс, система динамического формирования цифровых отпечатков автоматически и немедленно берет его под защиту, от пользователя не требуется никаких действий. После того как система адаптивной DDoS-защиты проанализирует особенности легитимного трафика клиента и создаст его профиль, пользователь может включить ее, чтобы обеспечить дополнительный уровень защиты.</p>
+	<h3 id="-ddos--1">Правила, включенные в адаптивную систему DDoS-защиты</h3>
+	<p>Мы рады сообщить, что в рамках данного релиза в систему адаптивной DDoS-защиты Cloudflare включены следующие функции:</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-q2ib {
+			background-color: #CFE2F3;
+			font-family: inherit;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-u5z2 {
+			font-family: inherit;
+			text-align: center;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-q2ib" rowspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Параметр профиля</span></th>
+				<th class="tg-q2ib" colspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Доступность</span></th>
+			</tr>
+			<tr>
+				<th class="tg-q2ib"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Клиенты WAF/CDN на плане Enterprise с подпиской на Advanced DDoS</span></th>
+				<th class="tg-q2ib"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Клиенты Magic Transit и Spectrum на плане Enterprise</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-u5z2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Ошибки сервера-источника</span></td>
+				<td class="tg-u5z2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-u5z2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">❌</span></td>
+			</tr>
+			<tr>
+				<td class="tg-u5z2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Страна и регион IP-адреса пользователя</span></td>
+				<td class="tg-u5z2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-u5z2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Скоро</span></td>
+			</tr>
+			<tr>
+				<td class="tg-u5z2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Агент пользователя (глобально, без детализации по отдельным клиентам*)</span></td>
+				<td class="tg-u5z2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-u5z2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">❌</span></td>
+			</tr>
+			<tr>
+				<td class="tg-u5z2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Протокол IP</span></td>
+				<td class="tg-u5z2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">❌</span></td>
+				<td class="tg-u5z2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+			</tr>
+			<tr>
+				<td class="tg-u5z2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Сочетание протокола IP и порта назначения</span></td>
+				<td class="tg-u5z2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">❌</span></td>
+				<td class="tg-u5z2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Скоро</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html--><!--kg-card-begin: markdown-->
+	<p><small><sup>*</sup>Функция UA-aware DDoS Protection (DDoS-защита с учетом агентов пользователя) анализирует и профилирует наиболее распространенные агенты пользователя, наблюдаемые в сети Cloudflare. Данная функция помогает обнаружить DDoS-атаки, использующие устаревшие или неправильно сконфигурированные агенты пользователя.</small></p>
+	<!--kg-card-end: markdown-->
+	<p>За исключением UA-aware DDoS Protection, правила адаптивной DDoS-защиты работают в режиме журналирования. Клиенты могут просмотреть помеченный трафик, настроить при необходимости уровень чувствительности и затем развернуть правила в режиме нейтрализации. Для этого необходимо выполнить шаги, приведенные в <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/adjust-rules/false-positive/" target="_blank">данном руководстве</a>.</p>
+	<h3 id="-ddos--2">Наша цель: лишить DDoS-атаки возможности причинять ущерб</h3>
+	<p>Миссия Cloudflare — способствовать развитию и совершенствованию Интернета. Задачи наших специалистов по защите от DDoS вытекают из этой миссии. Наша цель состоит в том, чтобы лишить DDoS-атаки возможности причинять ущерб. Адаптивная DDoS-защита Cloudflare — шаг на пути к этой цели: мы стремимся сделать DDoS-защиту Cloudflare еще более интеллектуальной, высокотехнологичной и адаптированной к уникальным особенностям трафика и индивидуальным потребностям наших клиентов.</p>
+	<p>Хотите узнать подробнее об адаптивной DDoS-защите Cloudflare? Посетите наш <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/adaptive-protection/" target="_blank">сайт для разработчиков</a>.</p>
+	<p>Хотите сменить тарифный план, чтобы получить доступ к адаптивной DDoS-защите? Свяжитесь с нашими специалистами по работе с клиентами.</p>
+	<p>Пока не являетесь клиентом Cloudflare? <a href="https://www.cloudflare.com/plans/enterprise/discover/contact/" target="_blank">Поговорите с нашим экспертом</a>.</p>
+	<h3 id="-cloudflare-tv">Посмотреть на Cloudflare TV</h3><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/15a28a27c4f115533951f075b1fad6b5/iframe?poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2F15a28a27c4f115533951f075b1fad6b5%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D2s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
+</div>

@@ -1,0 +1,62 @@
+<div class="post-content lh-copy gray1">
+	<p>今週初め、Cloudflareは包括的なクラウドベースのNetwork as a Service（ サービスとしてのネットワーク）ソリューションであるCloudflare One™を<a href="https://blog.cloudflare.com/ja-jp/introducing-cloudflare-one-ja-jp/">発表しました</a>。<a href="https://blog.cloudflare.com/ja-jp/cloudflare-one-ja-jp/">Cloudflare One</a>は、あらゆる規模の企業のコストと複雑さを軽減しながら、ネットワークのパフォーマンスとセキュリティを向上させます。</p>
+	<p>Cloudflare Oneは、最大規模の企業ネットワークのスケールと複雑性に対応できるように構築されています。しかし、ネットワークのセキュリティとパフォーマンスの観点では、多額の予算と技術チームを有する最大手の顧客に焦点を当てることが業界では多くなっています。Cloudflareでは、すべての人にサービスを提供し、あらゆる規模の企業がより良いインターネットから利益を得られるよう支援することが、私たちの機会であり責任であると考えています。</p>
+	<p>CloudflareのZero Trustウィークで、私たちの信念である<a href="https://blog.cloudflare.com/ja-jp/teams-plans-ja-jp/">Zero Trust for Everyone（すべての人にZero Trustを）</a>についてはすでにお話ししました。Zero Trustとは、すべてのネットワーク、デバイス、インターネット接続先が本質的に危険であり、したがって信頼すべきではないとするセキュリティの枠組みです。Cloudflare Oneは、ユーザーが企業アプリケーションやインターネット全体に接続する方法を保護することで、<a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trustセキュリティ</a>を促進します。</p>
+	<p>中小企業のネットワーク管理者は、基本的にデバイス、アプリケーション、ネットワーク自体の3つを保護する必要があります。以下では、Zero Trustモデルのセキュリティ（Access）に移行することで、オフィス内のデバイス（DNSフィルタリング）、リモートデバイス（WARP+とGateway）、アプリケーション、ネットワークを保護する方法について説明します。</p>
+	<p>Cloudflare Oneは、どのような規模のチームでも利用できるように設計されています。ツールに安全に接続するために、大規模なIT部門やフォーチュン500の予算は必要ありません。火曜日には、新しい無料プランを<a href="https://blog.cloudflare.com/ja-jp/teams-plans-ja-jp/">発表しました</a>。この新しいFreeプランは、DNSフィルタリング、Zero Trustアクセス、管理ダッシュボードなどのCloudflare Oneの機能の多くを、最大50ユーザーまで無料で提供するものです。</p>
+	<p>Cloudflare Oneは、簡単なステップでデプロイできます。</p>
+	<p>ステップ1：DNSフィルタリングでインターネット上の脅威からオフィスを守る（10分）<br>ステップ2：Cloudflare WARP+でインターネットに接続しリモートワーカーを保護（30分）<br>ステップ3：Cloudflare AccessでVPNを使わずにユーザーをアプリケーションに接続（1時間）<br>ステップ4：セキュアWebゲートウェイでデバイス上の脅威とデータ損失をブロック（1時間）<br>ステップ5：SaaSアプリケーションにZero Trustを追加（2時間）</p>
+	<h3 id="1-10-">1. 10分で悪意のあるサイトやフィッシング攻撃のブロックを開始する</h3>
+	<p>インターネットは、マルウェアや脅威がいたるところに潜んでいる危険な場所です。インターネット上の脅威から従業員を守るには、従業員のトラフィックを検査し、フィルタリングする方法が必要です。これはDNSレベルのフィルタリングから始まり、既知の悪質なサイトを迅速かつ容易に排除し、インターネット上の危険なエリアへのアクセスを制限することができます。</p>
+	<p>お使いのデバイスがWebサイトに接続する場合、まずDNSリゾルバーにDNSクエリーを送信し、そのサイトのホスト名のIPアドレスを探します。リゾルバーが応答し、デバイスは接続を開始します。この最初のクエリーにより、チームのセキュリティに2つの課題が生じます。</p>
+	<ul>
+		<li>ほとんどのDNSクエリーは暗号化されていません。ISPは、従業員と会社のデバイスが在宅勤務中に行ったDNSクエリーを盗み見ることができます。さらに、悪意のある行為者は、攻撃を仕掛けるために応答を修正することができます。</li>
+		<li>DNSクエリーが悪意のあるホスト名に解決される場合があります。チームメンバーは、フィッシング攻撃やマルウェアのダウンロードにつながるリンクをクリックする可能性があります。</li>
+	</ul>
+	<p>Cloudflare Oneは、最初のクエリーをプライベートにし、デバイスが不注意に既知の悪意のあるホスト名を要求するのを防ぐことができます。</p>
+	<p>まず、Cloudflareアカウントにサインアップし、Cloudflare for <a href="https://dash.teams.cloudflare.com/" target="_blank">Teamsダッシュボード</a>に移動します。</p>
+	<p>次に、ロケーションを設定します。オフィスネットワークのDNSクエリーを保護したい場合は、<a href="https://developers.cloudflare.com/gateway/getting-started-new/onboarding-gateway/" target="_blank">ロケーションを作成するよう表示されるプロンプト</a>で設定できます。<a href="https://developers.cloudflare.com/gateway/reference-new/location/" target="_blank">割り当てられた</a>Gateway IPアドレスを指すようにネットワークのルーターを変更することで、GatewayのDNSフィルタリングをオフィス向けに簡単にデプロイできます。</p>
+	<p>Cloudflareは、世界最速のDNSリゾルバーである1.1.1.1を運用しています。Cloudflare GatewayのDNSフィルタリングツールは、この同じアーキテクチャ上に構築されており、お客様のチームがより速く、より安全なDNSを利用できるようになっています。</p>
+	<p>これで、セキュリティ上の脅威や特定のコンテンツカテゴリをフィルタリングするためのGateway DNSポリシーを簡単に作成できるようになりました。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image9-4.png" class="kg-image"></figure>
+	<p>次に、Gatewayダッシュボードを使用して、許可またはブロックされたクエリーを監視します。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image5-8.png" class="kg-image"></figure>
+	<p>次に、ダッシュボードの「概要」タブに移動して、ブロックおよび許可しているものを含むトラフィックを確認します。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image2-16.png" class="kg-image"></figure>
+	<h3 id="2-cloudflare-">2. 次に、リモートの従業員全員を保護し、すべてのトラフィックを暗号化された接続でCloudflareを経由して送信する</h3>
+	<p>これまでオフィスのネットワークからインターネットに接続していた従業員が、数百または数千もの異なるホームネットワークやモバイルホットスポットから接続して、仕事をするようになっています。そのトラフィックは、プライベートでない可能性のある接続に依存しています。</p>
+	<p>Cloudflare Oneを使用すると、Cloudflare WARPにより、チームメンバーのすべてのトラフィックをインターネットへの暗号化された高速パスにルーティングすることができます。Cloudflare WARPは、チームメンバーがmacOS、Windows、iOS、Androidにインストールできるアプリケーションとして提供されています。クライアントは、CloudflareによるWireGuardと呼ばれる技術の<a href="https://blog.cloudflare.com/boringtun-userspace-wireguard-rust/">実装</a>を介して、デバイスのすべてのトラフィックを近くのCloudflareデータセンターへルーティングします。</p>
+	<p>接続すると、Cloudflare Oneは、WARPの実装であるWARP+を使用し、Argo Smart Routingサービスにより、グローバルなデータセンターのネットワークからユーザーの目的地に到達するための最短パスを見つけます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image6-8.png" class="kg-image"></figure>
+	<p>チームは今日からCloudflare WARPを使い始めることができます。Cloudflare for Teamsのダッシュボードに移動し、Cloudflare GatewayまたはCloudflare for Teams Standardプランを購入します。購入後は、<a href="https://developers.cloudflare.com/gateway/connecting-to-gateway/with-client" target="_blank">ルールを作成</a>することで、Cloudflare WARPを使用できる組織の人物を決定できます。</p>
+	<p>エンドユーザーは、クライアントを起動し、チームの組織名を入力してログインすることでWARP+を使い始めることができます。JAMFやInTuneなどのデバイス管理ソリューションを使って、事前に設定された状態で<a href="https://developers.cloudflare.com/warpclient/teams" target="_blank">アプリケーションをデプロイ</a>することも可能です。</p>
+	<p>Cloudflare WARPは、GatewayのDNSフィルタリングとシームレスに統合され、ローミングデバイスに安全かつ暗号化されたDNS解決を提供します。ユーザーは、Cloudflare for Teamsアカウントに拠点のDoHサブドメインを入力することで、どこで仕事をしていても組織のDNSフィルタリング設定を使い始めることができます。</p>
+	<h3 id="3-vpn-cloudflare-access-">3. VPNをCloudflare Accessに置き換える</h3>
+	<p>私たちが小規模なチームでVPNに依存していた頃、ITヘルプデスクにはVPNに関する苦情のチケットが何百も届いていました。これらの中には、見覚えのあるものもあるかもしれません。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image8-3.png" class="kg-image"></figure>
+	<p>私たちは、アプリケーションのゲートキーパーとしてVPNを使用する代わりに、Cloudflare Accessを構築しました。Cloudflare Accessは、Zero Trustセキュリティとして知られるモデルに従っており、Cloudflareのネットワークは、デフォルトで、いかなる接続も信用しないようになっています。アプリケーションにアクセスしようとするすべてのユーザーは、管理者が設定したルールに基づいて、そのアプリケーションへのアクセスが許可されていることを証明する必要があります。新しいTeams Freeプランでは、Accessを50シートまで無料で利用できます。</p>
+	<p>負担が増すように聞こえるかもしれませんが、Cloudflare AccessはチームのIDプロバイダーやシングルサインオン（SSO）オプションと統合され、どのようなアプリケーションもSSOを備えたSaaSアプリケーションのようにシームレスに操作できるようにします。企業のIDプロバイダーがない場合でも、GitHubやLinkedInなどの無料サービスとAccessを統合できるので、コストをかけずに<a href="https://blog.cloudflare.com/multi-sso-and-cloudflare-access-adding-linkedin-and-github-teams/">従業員やパートナーによる認証</a>が可能です。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image10-2.png" class="kg-image"></figure>
+	<p>ホスト型アプリケーションの場合は、<a href="https://blog.cloudflare.com/argo-tunnels-that-live-forever/">Argo Tunnelを使用</a>することで、お客様のファイアウォールを侵害することなく、オリジンをCloudflareのネットワークに接続することができます。Cloudflareのネットワークは、当社のグローバルプライベートバックボーンを利用した高速レーンにより、オリジンからお客様のユーザーまでのトラフィックを高速化します。</p>
+	<p>チームメンバーがアプリケーションに接続する必要がある場合、そのアプリケーションに直接アクセスするか、チーム用のカスタムアプリランチャーから起動することができます。これにより、IDプロバイダーでログインするためのプロンプトが表示され、AccessがCloudflare for Teamsダッシュボードで作成されたルールと照合して、IDおよびログインしている国などの特性をチェックします。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image1-18.png" class="kg-image"></figure>
+	<p>CloudflareのFreeプランには、Cloudflare Accessが50シートまで無料で含まれており、お客様のチームが使い始められるようになっています</p>
+	<h3 id="4-web-">4. セキュアWebゲートウェイを追加し、脅威やファイル損失をブロックする</h3>
+	<p>Cloudflare WARPでは、お客様のデバイスから送信されるすべてのトラフィックがCloudflareのネットワークをルーティングするようになります。しかし、そのトラフィックの中に脅威やデータ損失が潜んでいることがあります。チームのCloudflare WARPにCloudflare GatewayのHTTPフィルタリングを追加して、脅威やファイル損失をブロックすることができます。例えば、チームがBoxを使用している場合、他のクラウドストレージサービスへのファイルのアップロードをすべて制限することで、すべてのファイルを1つの承認された場所に保存することができます。</p>
+	<p>まず、Cloudflare for Teamsダッシュボードの「ポリシー」セクションに移動します。「HTTP」タブを選択して、既知の悪意のあるURLや承認されていない場所にアップロードされたファイルなどの潜在的な問題について、トラフィックを検査するルールを作成します。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image3-16.png" class="kg-image"></figure>
+	<p>トラフィックを検査するには、登録されたデバイスに証明書を<a href="https://developers.cloudflare.com/gateway/connecting-to-gateway/with-client" target="_blank">ダウンロードしてインストールする</a>必要があります。インストールが完了したら、「ポリシー」タブからHTTPフィルタリングを有効にして、作成したポリシーの適用とイベントログの取得を開始できます。</p>
+	<h3 id="5-saas-zero-trust-">5. SaaSアプリケーションにZero Trustルールを導入する</h3>
+	<p>セルフホスト型アプリケーションがない場合や、SaaSアプリケーションを使用している場合でも、<a href="https://blog.cloudflare.com/cloudflare-access-for-saas/">Cloudflare Access for SaaS</a>により、場所に関係なく、チームが使用するSaaSアプリケーションに同じZero Trustルールを導入できます。Access for SaaSを利用することで、企業はすべてのアプリケーションのユーザーアクセスとセキュリティ監視を一元的に管理できるようになります。</p>
+	<p>SAML SSOをサポートするSaaSアプリケーションに、Cloudflare AccessをIDプロバイダーとして統合することができます。この統合により、すべてのログイン試行がCloudflareのネットワークを通じてお客様の設定したIDプロバイダーに送られ、お客様が管理するルールが適用されます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image7-5.png" class="kg-image"></figure>
+	<p>Access for SaaSは、複数のIDプロバイダーを同時に実行する機能を引き続き備えています。ユーザーがSaaSアプリケーションにログインすると、必要なIDプロバイダーを選択するプロンプトが表示されます。すなわち、そのアプリケーションに使用したいプロバイダーのみにCloudflareが直接送信します。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image4-12.png" class="kg-image"></figure>
+	<p>Access for SaaSをデプロイすると、内部アプリケーションとSaaSアプリケーションの両方へのすべてのログインを、少ない労力で可視化できます。Cloudflare for TeamsのFreeプランの一環として、Access for SaaSの新機能を50ユーザーまで利用することができます。</p>
+	<h3 id="6-">6. 近日公開：中小企業のオフィスネットワークを保護する</h3>
+	<p>CloudflareのMagic Transit™は、私たちが自社のネットワークをIP層への攻撃から守るために学んだことをすべて取り入れ、そのセキュリティは、IPアドレス空間を自社で運用されるお客様にも拡張しています。そのネットワークを保護することで、お客様はパフォーマンスと信頼性の高いインターネットへのIP接続の恩恵を受けることもできます。</p>
+	<p>今では世界の複数の大企業が、ビジネスを攻撃から守るためにMagic Transitを採用しています。今後のリリースでは、小規模なネットワークを運用するチームにも同様の保護と接続性を拡張する予定です。</p>
+	<h3 id="-">今後の展開は？</h3>
+	<p>Cloudflare Oneは、企業ネットワークの未来に対する我々のビジョンを表しており、チームがそのモデルに移行するための製品や機能を追加し始めたところです。とはいえ、Cloudflareを通じた接続や、当社のネットワークによるデータやアプリケーションの保護は、お客様のチームにとって緊急を要する課題です。</p>
+	<p>開始するには、<a href="https://dash.cloudflare.com/sign-up/teams" target="_blank">Cloudflareアカウントにサインアップ</a>して、上記の手順に従ってください。Cloudflare Oneの設定についてご質問のある中小企業や大企業のお客様は、このコミュニティフォーラムに投稿してお知らせください。</p>
+</div>

@@ -1,0 +1,158 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/unnamed.png" class="kg-image" alt="New WAF intelligence feeds"></figure>
+	<p>Cloudflare rozszerza możliwości analizy zagrożeń naszej zapory aplikacji internetowej (WAF), dodając cztery zarządzane listy adresów IP, które można wykorzystywać w ramach dowolnej niestandardowej reguły zapory.</p>
+	<p>Listy zarządzane są tworzone i utrzymywane przez Cloudflare. Budujemy je na podstawie informacji dotyczących zagrożeń, uzyskiwanych w procesie analizy wzorców i trendów w Internecie. Klienci Enterprise mogą już korzystać z listy otwartych serwerów proxy SOCKS (<a href="https://blog.cloudflare.com/protecting-apis-from-abuse-and-data-exfiltration/">powstałej w marcu 2021 roku</a>), do której dziś dołączają cztery kolejne listy adresów IP: VPN, botnety i serwery dowodzenia, złośliwe oprogramowanie, anonimizatory.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://lh3.googleusercontent.com/XkegdawMtkmBmuCmAin8MIzby8BSozlKq1g_EJRwpKwYIkmx_e0t49a3yoc8YYNltTLJBQ3oFxDRmBFxP01RTytGgD-zCwQsfiQr5r2WyFChLu9wsmDjeAx5Rb0iN5qu4TXz-AYyJQmuPZirUeiwXw" class="kg-image" alt="Aby sprawdzić, jakie reguły są dostępne w ramach Twojego planu, przejdź do Manage Account → Configuration → Lists.">
+		<figcaption>Aby sprawdzić, jakie reguły są dostępne w ramach Twojego planu, przejdź do Manage Account → Configuration → Lists.</figcaption>
+	</figure>
+	<p>Klienci mogą posługiwać się tymi listami, tworząc niestandardową regułę zapory lub włączając <a href="https://blog.cloudflare.com/advanced-rate-limiting/">zaawansowane ograniczenie przepustowości</a>. Można na przykład zablokować wszelki ruch generowany przez adresy IP, które klasyfikujemy jako sieci VPN, albo ograniczyć prędkość ruchu generowanego przez wszystkie anonimizatory. Wystarczy włączyć zarządzane listy adresów IP w potężny konstruktor reguł zapory. Oczywiście klienci mogą również korzystać z własnych <a href="https://blog.cloudflare.com/introducing-ip-lists/">niestandardowych list adresów IP</a>.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://lh6.googleusercontent.com/WsDGsltjclo0RVf5cZlM3yiQFzdDUIIteuM2jE80480j63zup6IMVvJtrazsG7VSaBTFSgnX0kYqZBpf3xzgqdLOX_VTpxX3sb398t_tj86gO-EiDKFwVoltRR85EF6CO1n1-wojGxV9tO2wh7IBLA" class="kg-image" alt="Zarządzane listy adresów IP można wykorzystywać w regułach WAF do zarządzania ruchem przychodzącym z tych adresów.">
+		<figcaption>Zarządzane listy adresów IP można wykorzystywać w regułach WAF do zarządzania ruchem przychodzącym z tych adresów.</figcaption>
+	</figure>
+	<h3 id="sk-d-pochodz-kana-y-informacyjne">Skąd pochodzą kanały informacyjne?</h3>
+	<p>Listy bazują na generowanych przez Cloudflare kanałach zagrożeń, które są dostępne jako listy adresów IP, co umożliwia bezpośrednią konsumpcję przez WAF. Każdy adres IP jest klasyfikowany poprzez połączenie danych z otwartych źródeł oraz analizę zachowania każdego adresu IP, w czym bardzo pomocna jest skala i zasięg sieci Cloudflare. Po dodaniu adresu IP do jednego z kanałów weryfikujemy jego klasyfikację, przesyłamy tę informację do naszych systemów bezpieczeństwa i udostępniamy ją naszym klientom w postaci zarządzanej listy adresów IP. Zawartość każdej listy jest aktualizowana wiele razy w ciągu dnia.</p>
+	<p>Oprócz generowania klasyfikacji adresów IP na podstawie wewnętrznych danych Cloudflare selekcjonujemy i łączymy kilka źródeł danych, które według nas zapewniają wiarygodny obraz aktywnych zagrożeń bezpieczeństwa i mają niewiele wyników fałszywie dodatnich. W obecnych warunkach adres IP należący do dostawcy chmury może jednego dnia rozpowszechniać złośliwe oprogramowanie, a następnego okazać się dla Twojej firmy krytycznym zasobem.</p>
+	<p>Niektóre klasyfikacje adresów IP to ogólnodostępne dane ze źródeł typu OSINT, na przykład węzły wyjściowe sieci Tor. Cloudflare integruje je w listę anonimizatorów za Ciebie, dzięki czemu nie musisz integrować tej listy w każdy zasób w swojej sieci. Inne klasyfikacje są wyznaczane lub weryfikowane z użyciem różnorakich technik DNS, takich jak wyszukiwanie, wyszukiwanie rekordów PTR czy obserwacja pasywnych DNS z sieci Cloudflare.</p>
+	<p>Nasze listy skupiające się na złośliwym oprogramowaniu i serwerach dowodzenia są generowane dzięki wyselekcjonowanym partnerstwom. Wybierając partnerów, bierzemy pod uwagę między innymi źródła danych identyfikujące zagrożenia bezpieczeństwa, z którymi nie są powiązane rekordy DNS.</p>
+	<p>Nasza lista anonimizatorów obejmuje kilka typów usług, które ukrywają tożsamość, w tym VPN, otwarte proxy i węzły sieci Tor. Jest to zbiór obejmujący między innymi zawartość zawężonej listy VPN (węzłów znanych komercyjnych sieci VPN) i naszej listy otwartych serwerów proxy (serwerów pośredniczących niewymagających uwierzytelnienia).</p>
+	<h3 id="adnotacje-o-adresach-ip-na-pulpicie">Adnotacje o adresach IP na pulpicie</h3>
+	<p>Korzystanie z tych list do wdrożenia prewencyjnej zasady bezpieczeństwa dla tych adresów IP jest bardzo pomocne, ale warto też wiedzieć, czy adres IP mający dostęp do strony internetowej czy aplikacji należy do botnetu albo sieci VPN. Udostępniliśmy już <a href="https://blog.cloudflare.com/security-center-investigate/">dane kontekstowe</a> anonimizatorów w ramach tygodnia bezpieczeństwa na rok 2022, a teraz zamykamy koło, rozszerzając tę funkcję, by obejmowała wszystkie nowe listy.</p>
+	<p>Dzięki kanałom informacyjnym nt. zagrożeń Cloudflare kategoria adresów IP przejdzie bezpośrednio na pulpit nawigacyjny. Powiedzmy, że badasz żądania zablokowane przez WAF, które zdawały się szukać w Twojej aplikacji znanych luk w zabezpieczeniach. Jeśli adres IP źródła tych żądań zgadza się z jednym z naszych kanałów (np. należy do sieci VPN), informacje kontekstowe pojawią się bezpośrednio na stronie analizy danych.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://lh3.googleusercontent.com/ba1SUQnRFtLMyaBYf580Fup-l4DJXdqOXEFrBm_KtT6egoEuFy0dh5HSZJvTSokZvDYC1d7US1dlhXMjn2jFgAgNr3Hmf455vhT6sT76JzXpI5ZyTO7bxGrXdj8oVmxCrRlnN9mIPqoa8snfYxx7PQ" class="kg-image" alt="Kiedy adres IP źródła wydarzenia WAF znajduje się w jednym z kanałów zagrożeń, informacje kontekstowe są dostępne bezpośrednio na pulpicie nawigacyjnym Cloudflare.">
+		<figcaption>Kiedy adres IP źródła wydarzenia WAF znajduje się w jednym z kanałów zagrożeń, informacje kontekstowe są dostępne bezpośrednio na pulpicie nawigacyjnym Cloudflare.</figcaption>
+	</figure>
+	<p>Te informacje mogą pomóc w znalezieniu wzorców ruchu i podjęciu decyzji, czy należy zastosować listy zarządzane, na przykład tworząc regułę ograniczenia przepustowości, która ogranicza liczbę żądań, jakie dane adresy IP mogą wysłać w określonym czasie.</p>
+	<h3 id="dla-kogo-s-te-kana-y">Dla kogo są te kanały?</h3>
+	<p>Poniższa tabela przedstawia, które plany zapewniają dostęp do poszczególnych funkcji. Każdy płatny plan zapewnia dostęp do informacji kontekstowych na panelu, natomiast plan Enterprise dodatkowo daje dostęp do różnych list zarządzanych. Z list zarządzanych można korzystać wyłącznie w strefach Enterprise w ramach konta Enterprise.</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-tfgg {
+			background-color: #EFEFEF;
+			color: #F00;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-gpin {
+			background-color: #C9DAF8;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-ekg0 {
+			background-color: #EFEFEF;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-5ll9 {
+			background-color: #EFEFEF;
+			color: #009901;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-m0cw {
+			background-color: #C9DAF8;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-gpin"></th>
+				<th class="tg-m0cw"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> DARMOWY</span></th>
+				<th class="tg-m0cw"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">PRO</span></th>
+				<th class="tg-m0cw"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">BIZ</span></th>
+				<th class="tg-m0cw"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ENT</span></th>
+				<th class="tg-m0cw"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Advanced ENT *</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-ekg0"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Adnotacje</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-5ll9"><span style="font-weight:700;font-style:normal;text-decoration:none;background-color:transparent">✅</span></td>
+				<td class="tg-5ll9"><span style="font-weight:700;font-style:normal;text-decoration:none;background-color:transparent">✅</span></td>
+				<td class="tg-5ll9"><span style="font-weight:700;font-style:normal;text-decoration:none;background-color:transparent">✅</span></td>
+				<td class="tg-5ll9"><span style="font-weight:700;font-style:normal;text-decoration:none;background-color:transparent">✅</span></td>
+			</tr>
+			<tr>
+				<td class="tg-ekg0"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Otwarte proxy</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-5ll9"><span style="font-weight:700;font-style:normal;text-decoration:none;background-color:transparent">✅</span></td>
+				<td class="tg-5ll9"><span style="font-weight:700;font-style:normal;text-decoration:none;background-color:transparent">✅</span></td>
+			</tr>
+			<tr>
+				<td class="tg-ekg0"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Anonimizatory</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-5ll9"><span style="font-weight:700;font-style:normal;text-decoration:none;background-color:transparent">✅</span></td>
+			</tr>
+			<tr>
+				<td class="tg-ekg0"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">VPN</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-5ll9"><span style="font-weight:700;font-style:normal;text-decoration:none;background-color:transparent">✅</span></td>
+			</tr>
+			<tr>
+				<td class="tg-ekg0"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Botnety i serwery dowodzenia</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-5ll9"><span style="font-weight:700;font-style:normal;text-decoration:none;background-color:transparent">✅</span></td>
+			</tr>
+			<tr>
+				<td class="tg-ekg0"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Złośliwe oprogramowanie</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-5ll9"><span style="font-weight:700;font-style:normal;text-decoration:none;background-color:transparent">✅</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html--><!--kg-card-begin: markdown-->
+	<p><small>* Aby dowiedzieć się, jak uzyskać dostęp do tych list, skontaktuj się ze swoim doradcą klienta.</small></p>
+	<!--kg-card-end: markdown-->
+	<h3 id="przysz-e-wersje">Przyszłe wersje</h3>
+	<p>Prowadzimy już prace nad dalszym wzbogaceniem naszych kanałów informacyjnych. W kolejnych miesiącach zaczniemy zapewniać więcej list adresów IP, a szczególnie interesują nas dostawcy chmur i translacja adresów sieciowych typu CG-NAT.</p>
+</div>

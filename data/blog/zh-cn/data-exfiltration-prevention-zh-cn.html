@@ -1,0 +1,21 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image4-31.png" class="kg-image"></figure>
+	<p>数据泄露或数据丢失可能是一项严峻考验，非常耗时，成本高昂，会导致经济损失、负面品牌联想和隐私法律的惩罚。例如，<a href="https://www.power-grid.com/td/what-we-learned-from-a-data-exfiltration-incident-at-an-electric-utility/#gref" target="_blank">北美有一家电力公司，其工业控制系统</a>的智能电网和计量研发知识信息疑似因网络内部攻击而泄露。未经授权访问公用事业公司的数据可能破坏智能电网或导致停电。</p>
+	<p>再如，一名安全研究人员发现<a href="https://blog.rapid7.com/2020/11/17/dont-put-it-on-the-internet-tesla-backup-gateway-edition/" target="_blank"> Tesla 的备份网关</a>暴露了未知（未记录）的 API 端点，不法分子可能会利用该端点导出数据或进行未经授权的更改。如果攻击者利用未经验证的 API 端点破坏电池或连接的电网，这将产生非常现实的后果。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/03/image5-29.png" class="kg-image" alt="来源：Verizon 2020 年数据泄露调查报告">
+		<figcaption>来源：Verizon 2020 年数据泄露调查报告</figcaption>
+	</figure>
+	<p>这两个例子都说明，在考虑如何保护网络免遭数据泄漏时，必须同时考虑内部和外部威胁。内部威胁不一定是用户故意攻击：根据 Fortinet 2019 年的内部威胁报告，在接受调查的组织中，71% 的组织担心用户不小心造成意外泄漏，65% 的组织担心用户无视策略，虽然用户并非恶意。2020 年的<a href="https://www.dfs.ny.gov/Twitter_Report" target="_blank"> Twitter 黑客攻击事件</a>中，访问名人账户的攻击者便是从对员工发起社会工程学攻击开始的。然后，攻击者转向利用内部管理工具，更改客户账户的设置，包括代替他们发布帖子或修改他们的电子邮件和 2FA。</p>
+	<p>表面上看，这可能只是一个比特币骗局，但攻击者还<a href="https://blog.twitter.com/en_us/topics/company/2020/an-update-on-our-security-incident.html" target="_blank">下载并泄漏了七个账户的数据</a>。如果攻击者通过话钓（使用基于语音的网络钓鱼的社会工程学攻击），成功入侵了一个内部用户的账户，添加硬件密钥或对管理工具实施细化的账户权限可以阻碍攻击者的活动。之后在 Security Week 中，我们从账户接管攻击的角度解释了 Twitter 黑客攻击事件，以及如何缓解这一问题。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image2-33.png" class="kg-image"></figure>
+	<p>数据泄漏不需要复杂的技术或一些费解的工具。上钓的用户以及终端（而非账户）上过度许可的政策即可让攻击者获得所需权限泄漏数据。为应对社会工程学攻击，许多安全团队首先是在电子邮件保护解决方案上阻止恶意域名。但是，如果是横向分享恶意资源，而不是从外部来源分享给内部来源，那该怎么办？恶意域名可以通过聊天或其他非电子邮件的交流形式在员工之间分享。这就留下了缺口，让安全团队在保护内部用户和数据时处于不利地位。</p>
+	<p>我们一直强调多层次的预防和监控方法。对于我们的内部工具，我们有基于角色和基于风险的访问控制。我们把我们的应用程序放在 Access 后面，在身份验证的基础上增加了一个授权层。在 Access 后面添加 SaaS 应用程序，我们能够安全地将用户与其所需内容连接，无论是本地还是云端的内容。对于远程员工，Access 让我们可以根据地点、设备类型、设备态势和 MFA 方法来配置策略。随着我们转向无 VPN 的环境，Access 作为安全隧道将其取代。我们的检测和响应团队同时监测 Access 日志和 SaaS 应用程序日志的异常情况。不久之后，我们将在 SaaS 应用程序内添加 Access 日志，这将进一步丰富日志内容并提供上下文信息。</p>
+	<p>使用 Cloudflare 保护端点还包括一个用于执行政策的客户端。Gateway 防火墙规则可与 Access 一起使用，在 L4（网络）和 L7 (HTTP) 层采用更全面的方法。我们利用 Gateway 位置来限制对恶意域的 DNS 查询。</p>
+	<p>由于有些员工远程工作，公司无法在办公室出口处执行网络政策。通过在用户端点使用我们的 WARP 桌面客户端和 Gateway，安全团队可以查看 DNS 日志，能够执行曾经在公司办公室使用的政策，同时保护隐私。Gateway 相当于公司设备上的 DNS 解析器。这不仅能让团队更有效地响应事件，找到根本原因，还通过识别访问恶意域的受损机器来帮助预防。WARP 可确保 DNS 流量已加密，从而保护用户的隐私。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image3-30.png" class="kg-image"></figure>
+	<p>我们的浏览器隔离工具在最接近用户的那一层提供保护，在那一层，用户可能大部分时间都在访问基于云的应用程序。浏览器隔离可以方便地预防和应对攻击。它可以用来删除对某些 SaaS 应用程序的访问权限，防止用户复制/粘贴，限制打印，并阻止文件下载。换句话说，托管在云服务中的数据可以在多个关键点上获得保护，让他们更难泄漏。通过各种政策，可以为单个域、用户或广泛的网站类别配置浏览器隔离。浏览器隔离还可以通过捕捉哪些人通过浏览器访问了已知的恶意网站或下载了某些文件，让响应者快速发现可能已遭入侵的端点。</p>
+	<p>这就是 Zero Trust 模式的真正作用。如果您以前从未听说，请看这里的精彩<a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">介绍</a>。Cloudflare Access 属于 Cloudflare One 的一套工具，帮助组织在其网络上实施 Zero Trust 模式。我们使用 Cloudflare Access 来管理内部资源政策的统一方法。作为检测和响应团队的安全工程师，在应对我们必须在全公司范围内更改访问权限的事件时，Cloudflare Access 和 Cloudflare Access for SaaS 应用程序让我们能够有效地推送政策，专注于更重要的事情，而不必担心应用程序层面的更改。在一个中心点管理应用程序的访问权限，而不是单独管理，极大地缩短了我们的响应时间。</p>
+	<p>再来看 API 层，Cloudflare 的 API Shield 是管理 API 安全控制的第一要点。想想那些经众多 API 暴露的物联网设备，例如 Tesla 的网关。API Shield 提供了一个多层次方法来限制意外的数据暴露。例如，可以使用模式验证，尽量降低下游系统被意外输入破坏的可能性；对终端的请求可以限制为持有有效客户端 SSL/TLS 证书的客户端；可以过滤来自 Open SOCKS 代理等来源的噪音，以及来自 API 不该与之通信的设备或地区的请求。今天的公告包括新的数据混淆功能，以及本周晚些时候，我们将宣布发现安全团队可能不知道的“影子”API、发现异常调用活动的方法。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image1-39.png" class="kg-image"></figure>
+	<p>作为一名检测和响应工程师，在许多事件中，一些安全问题要求我们当场了解为何可以访问这些系统。不同系统有不同的管理方式，角色的定义也不总是一致的。因此，我们很难立马响应，大多数情况下，我们需要与系统所有者对话，以更好地了解访问权限。利用 Cloudflare One、浏览器隔离和 API Shield 提供的多层保护，安全团队可以专注于预防而不是响应。</p>
+</div>
