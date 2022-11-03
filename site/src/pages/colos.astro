@@ -122,7 +122,7 @@ async function getColosStatus(){
 			continue;
 		}
 		total.textContent = colosStatuses[status] as unknown as string;
-		percent.textContent = Math.floor(colosStatuses[status] / totalColos * 100).toString() + "%";
+		percent.textContent = (colosStatuses[status] / totalColos * 100).toFixed(2) + "%";
 	}
 }
 
