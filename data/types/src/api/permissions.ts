@@ -13,6 +13,7 @@ export const Permissions = eg.object({
   app: PermValue,
   auditlogs: PermValue,
   billing: PermValue,
+  blocks: PermValue,
   cache_purge: PermValue,
   dns_records: PermValue,
   lb: PermValue,
