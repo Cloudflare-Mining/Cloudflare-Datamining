@@ -1,6 +1,6 @@
 /*
   Access-Control-Allow-Methods: GET, OPTIONS
-  Content-Security-Policy: default-src 'self'; script-src 'self' static.cloudflareinsights.com; connect-src 'self' colos-status.jross.workers.dev cloudflareinsights.com;
+  Content-Security-Policy: default-src 'self'; script-src 'self' static.cloudflareinsights.com; connect-src 'self' colos-status.jross.workers.dev cloudflareinsights.com; style-src 'self' 'unsafe-inline';
   Cross-Origin-Embedder-Policy: require-corp;
   Cross-Origin-Opener-Policy: same-origin;
   Cross-Origin-Resource-Policy: same-origin;
