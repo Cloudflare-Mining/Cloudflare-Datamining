@@ -1,0 +1,33 @@
+---
+import CopyIcon from '../../../data/icons/es/reactsvgs/Copy.js';
+
+export interface Props {
+	icon: Function;
+	key: string;
+}
+
+const {icon, key}: {
+	icon: Function,
+	key: string
+} = Astro.props;
+
+const Icon = icon;
+
+---
+<Icon style={{
+	fill: 'currentColor',
+}}></Icon>
+<div class="flex-none w-full text-center">
+	<code class="inline text-xs text-center">{key}</code>
+	<button
+		type="button"
+		class="copyButton w-4 h-auto hover:text-blue-300"
+		data-name={key}
+		title="Copy to clipboard"
+	>
+		<CopyIcon style={{
+			fill: 'currentColor',
+			display: 'inline',
+		}}></CopyIcon>
+	</button>
+</div>

@@ -1,0 +1,41 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+import icons from "../../../data/icons/es/reactsvgs/index.js";
+import CFIcon from "../components/CFIcon.astro";
+
+import MainHeading from "../components/MainHeading.astro";
+
+---
+<Layout title="Brand Icons - Cloudflare Datamining" description="List of Cloudflare brand icons">
+	<MainHeading title="Icons" />
+	<div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-10 gap-4">
+		{Object.entries(icons).map(([key, iconComponent]) => (
+			<div class="flex flex-col items-center">
+				<CFIcon icon={iconComponent} key={key}></CFIcon>
+			</div>
+		))}
+	</div>
+</Layout>
+
+<script>
+	function addButtonClickHandlers(){
+		const copyButtons = document.querySelectorAll('button.copyButton');
+		if(!copyButtons){
+			return;
+		}
+		for(const button of copyButtons){
+			button.addEventListener('click', async (event) => {
+				const target = event?.target as HTMLElement;
+				const parent = target?.parentElement?.parentElement?.parentElement;
+				const code = parent?.querySelector('svg');
+				if(!code){
+					return alert('Could not find code to copy');
+				}
+				await navigator.clipboard.writeText(code.outerHTML);
+				alert(`Copied icon ${(button as HTMLButtonElement).dataset.name} to clipboard`);
+			});
+		}
+	}
+	addButtonClickHandlers();
+</script>
