@@ -101,12 +101,13 @@ async function getColosStatus(){
 			spanElement.classList.add('bg-red-100', 'dark:bg-red-800', 'text-red-800', 'dark:text-red-100');
 			spanElement.textContent = 'Offline';
 		}
-		colosStatuses[spanElement.textContent]++;
+		const statusText = spanElement.textContent as 'Online' | 'China' | 'Offline';
+		colosStatuses[statusText]++;
 		totalColos++;
 	}
 
 	const statusTable = document.querySelector('table#status');
-	if(!coloTable){
+	if(!statusTable){
 		return;
 	}
 	tableRows = statusTable.querySelectorAll('tbody tr');
@@ -114,13 +115,13 @@ async function getColosStatus(){
 		return;
 	}
 	for(const row of tableRows){
-		const status = row.querySelector('td:nth-child(1)')?.textContent;
+		const status = row.querySelector('td:nth-child(1)')?.textContent as 'Online' | 'Offline' | 'China';
 		const total = row.querySelector('td:nth-child(2)');
 		const percent = row.querySelector('td:nth-child(3)');
-		if(!status || colosStatuses[status] === undefined){
+		if(!status || !total || !percent || colosStatuses[status] === undefined){
 			continue;
 		}
-		total.textContent = colosStatuses[status];
+		total.textContent = colosStatuses[status] as unknown as string;
 		percent.textContent = Math.floor(colosStatuses[status] / totalColos * 100).toString() + "%";
 	}
 }
