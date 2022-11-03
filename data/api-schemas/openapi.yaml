@@ -10126,9 +10126,6 @@ components:
       - source_url
       - target_url
       type: object
-    itemId:
-      description: Special Event id
-      type: integer
     items:
       items:
         $ref: '#/components/schemas/item'
@@ -51108,97 +51105,16 @@ paths:
         enterprise: true
         free: true
         pro: true
-  /radar/specialevents/{eventAlias}/{categoryAlias}:
-    get:
-      operationId: radar-specialevents-get-special-events-time-series
-      parameters:
-      - in: path
-        name: categoryAlias
-        required: true
-        schema:
-          $ref: '#/components/schemas/categoryAlias'
-      - in: path
-        name: eventAlias
-        required: true
-        schema:
-          $ref: '#/components/schemas/eventAlias'
-      responses:
-        4xx:
-          content:
-            application/json:
-              schema:
-                allOf:
-                - properties:
-                    result:
-                      properties:
-                        serie_0:
-                          properties:
-                            timestamps:
-                              items:
-                                example: "2022-09-15T00:00:00Z"
-                                format: date-time
-                                type: string
-                              type: array
-                            values:
-                              items:
-                                type: string
-                              type: array
-                          type: object
-                      type: object
-                    success:
-                      type: string
-                  type: object
-                - $ref: '#/components/schemas/api-response-common-failure'
-          description: Get Special Events time series response failure
-        "200":
-          content:
-            application/json:
-              schema:
-                properties:
-                  result:
-                    properties:
-                      serie_0:
-                        properties:
-                          timestamps:
-                            items:
-                              example: "2022-09-15T00:00:00Z"
-                              format: date-time
-                              type: string
-                            type: array
-                          values:
-                            items:
-                              type: string
-                            type: array
-                        type: object
-                    type: object
-                  success:
-                    type: string
-                type: object
-          description: Get Special Events time series response
-      security:
-      - api_email: []
-        api_key: []
-      summary: Get Special Events time series
-      tags:
-      - Radar specialevents
-      x-cfPermissionsRequired:
-        enum:
-        - com.cloudflare.api.user.read
-      x-cfPlanAvailability:
-        business: true
-        enterprise: true
-        free: true
-        pro: true
-  /radar/specialevents/{itemId}:
+  /radar/specialevents/{eventAlias}:
     get:
       description: Get a single Special Event.
       operationId: radar-specialevents-get-a-single-special-events
       parameters:
       - in: path
-        name: itemId
+        name: eventAlias
         required: true
         schema:
-          $ref: '#/components/schemas/itemId'
+          $ref: '#/components/schemas/eventAlias'
       responses:
         4xx:
           content:
@@ -51280,6 +51196,87 @@ paths:
       - api_email: []
         api_key: []
       summary: Get a Single Special Events
+      tags:
+      - Radar specialevents
+      x-cfPermissionsRequired:
+        enum:
+        - com.cloudflare.api.user.read
+      x-cfPlanAvailability:
+        business: true
+        enterprise: true
+        free: true
+        pro: true
+  /radar/specialevents/{eventAlias}/{categoryAlias}:
+    get:
+      operationId: radar-specialevents-get-special-events-time-series
+      parameters:
+      - in: path
+        name: categoryAlias
+        required: true
+        schema:
+          $ref: '#/components/schemas/categoryAlias'
+      - in: path
+        name: eventAlias
+        required: true
+        schema:
+          $ref: '#/components/schemas/eventAlias'
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - properties:
+                    result:
+                      properties:
+                        serie_0:
+                          properties:
+                            timestamps:
+                              items:
+                                example: "2022-09-15T00:00:00Z"
+                                format: date-time
+                                type: string
+                              type: array
+                            values:
+                              items:
+                                type: string
+                              type: array
+                          type: object
+                      type: object
+                    success:
+                      type: string
+                  type: object
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Get Special Events time series response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                properties:
+                  result:
+                    properties:
+                      serie_0:
+                        properties:
+                          timestamps:
+                            items:
+                              example: "2022-09-15T00:00:00Z"
+                              format: date-time
+                              type: string
+                            type: array
+                          values:
+                            items:
+                              type: string
+                            type: array
+                        type: object
+                    type: object
+                  success:
+                    type: string
+                type: object
+          description: Get Special Events time series response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Get Special Events time series
       tags:
       - Radar specialevents
       x-cfPermissionsRequired:
