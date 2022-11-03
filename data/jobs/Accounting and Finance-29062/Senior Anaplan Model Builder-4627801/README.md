@@ -32,7 +32,11 @@
 	<li><span style="font-weight: 400;">Ability to develop documentation for training</span></li>
 </ul>
 <p><strong>Compensation</strong></p>
-<p><span style="font-weight: 400;">Compensation may be adjusted depending on work location. For Colorado-based hires: Estimated annual salary of $<span data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:103000}" data-sheets-userformat="{&quot;2&quot;:515,&quot;3&quot;:{&quot;1&quot;:0},&quot;4&quot;:{&quot;1&quot;:2,&quot;2&quot;:15724527},&quot;12&quot;:0}">131,000</span>&nbsp;- $<span data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:125000}" data-sheets-userformat="{&quot;2&quot;:515,&quot;3&quot;:{&quot;1&quot;:0},&quot;4&quot;:{&quot;1&quot;:2,&quot;2&quot;:15724527},&quot;12&quot;:0}">161,000.</span></span></p>
+<p><span style="font-weight: 400;">Compensation may be adjusted depending on work location. </span></p>
+<ul>
+	<li><span style="font-weight: 400;">For Colorado-based hires: Estimated annual salary of $<span data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:103000}" data-sheets-userformat="{&quot;2&quot;:515,&quot;3&quot;:{&quot;1&quot;:0},&quot;4&quot;:{&quot;1&quot;:2,&quot;2&quot;:15724527},&quot;12&quot;:0}">103,000</span> - $<span data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:125000}" data-sheets-userformat="{&quot;2&quot;:515,&quot;3&quot;:{&quot;1&quot;:0},&quot;4&quot;:{&quot;1&quot;:2,&quot;2&quot;:15724527},&quot;12&quot;:0}">125,000.</span></span></li>
+	<li><span style="font-weight: 400;"><span data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:125000}" data-sheets-userformat="{&quot;2&quot;:515,&quot;3&quot;:{&quot;1&quot;:0},&quot;4&quot;:{&quot;1&quot;:2,&quot;2&quot;:15724527},&quot;12&quot;:0}">For New York City-based hires: Estimated annual salary of $129,000 - $157,000.</span></span></li>
+</ul>
 <p><strong>Equity</strong></p>
 <p><span style="font-weight: 400;">This role is eligible to participate in Cloudflare’s equity plan.</span></p>
 <p><strong>Benefits</strong></p>
