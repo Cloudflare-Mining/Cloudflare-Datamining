@@ -1130,6 +1130,26 @@
 		"id": "zone-settings-change-mobile-redirect-setting"
 	},
 	{
+		"uri": "/zones/:zone_identifier/settings/nel",
+		"method": "GET",
+		"id": "nel.api.title.get"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/nel",
+		"method": "PATCH",
+		"id": "nel.api.title.patch"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/nel",
+		"method": "GET",
+		"id": "nel.api.title.get"
+	},
+	{
+		"uri": "/zones/:zone_identifier/settings/nel",
+		"method": "PATCH",
+		"id": "nel.api.title.patch"
+	},
+	{
 		"uri": "/zones/:zone_identifier/settings/opportunistic_encryption",
 		"method": "GET",
 		"id": "zone-settings-get-opportunistic-encryption-setting"

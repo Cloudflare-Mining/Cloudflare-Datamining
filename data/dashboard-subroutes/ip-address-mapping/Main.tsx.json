@@ -1,5 +1,10 @@
 [
 	"/[id]/proxy-ips",
+	"/[id]/proxy-ips/[id]/edit",
+	"/[id]/proxy-ips/[id]/review",
 	"/[id]/proxy-ips/create",
-	"/accounts/[id]/addressing/address_maps"
+	"/accounts/[id]/addressing/address_maps",
+	"/accounts/[id]/addressing/address_maps/[id]/*",
+	"/accounts/[id]/addressing/address_maps/[id]/ips/[id]/*",
+	"/accounts/[id]/addressing/address_maps/[id]/zones/[id]/*"
 ]
