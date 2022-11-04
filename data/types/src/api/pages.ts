@@ -104,14 +104,24 @@ export const Deployment = eg.object({
 
 export type Deployment = TypeFromCodec<typeof Deployment>;
 
+export const PlainText = eg.literal('plain_text');
+export type PlainText = TypeFromCodec<typeof PlainText>;
+
+export const SecretText = eg.literal('secret_text');
+export type SecretText = TypeFromCodec<typeof SecretText>;
+
 export const EnvironmentVariableBindingValue = eg.object({
   value: eg.string,
-  type: eg.union([eg.literal('plain_text'), eg.literal('secret_text')]).optional
+  type: eg.union([PlainText, SecretText]).optional
 });
+
+export type EnvironmentVariableBindingValue = TypeFromCodec<
+  typeof EnvironmentVariableBindingValue
+>;
 
 export const EnvironmentVariableBindingMap = eg.record(
   eg.string,
-  EnvironmentVariableBindingValue
+  eg.union([EnvironmentVariableBindingValue, eg.null])
 );
 
 export type EnvironmentVariableBindingMap = TypeFromCodec<
