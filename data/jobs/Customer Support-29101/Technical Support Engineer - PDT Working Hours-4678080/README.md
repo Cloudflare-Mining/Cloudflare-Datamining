@@ -5,6 +5,8 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
+<p><strong>To the attention of candidates (Mexico City):&nbsp;</strong></p>
+<p><strong>This role requires full time work over the Weekends. Candidates should be comfortable working with a “Wed-Sun” or “Sat-Wed” 5-day working week schedule. Candidates MUST have right-to-work in Mexico.&nbsp;&nbsp;</strong><strong>Visa sponsorship is NOT provided for this position</strong><strong>.</strong></p>
 <h4><strong>About the Department</strong></h4>
 <p>The Customer Support Team solves complicated problems and answers technical inquiries via phone, email, chat, and social media. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, our team is always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - to help build a better service and future product development.</p>
 <h4><strong>What You’ll do</strong></h4>
