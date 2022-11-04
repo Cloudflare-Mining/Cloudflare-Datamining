@@ -7,19 +7,14 @@
 </div>
 <p><strong>Candidate Requirements:</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">5+ years of customer/partner-facing experience, and experience translating business requirements into technological solutions.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Proven experience building deep technical relationships with channel partners, systems integrators, and third-party developers to deliver high-impact Cloudflare solutions.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Previous technical service delivery experience in service organization is preferred, e.g., project management, technical account manager, professional services consultant</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Hands-on experience in one of these solutions:</span></li>
-	<ul>
-		<li style="font-weight: 400;"><span style="font-weight: 400;">Internet application performance and security</span></li>
-		<li style="font-weight: 400;"><span style="font-weight: 400;">Network security solutions</span></li>
-		<li style="font-weight: 400;"><span style="font-weight: 400;">SASE, ZTNA, identity management, end points, cloud and SaaS environments</span></li>
-	</ul>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to perform troubleshooting and solve technical problems</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to prioritize, multi-task, and perform effectively in a fast-paced environment while helping partners drive successful services engagements and outcomes</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience in educating services partners</span><span style="font-weight: 400;"> </span><span style="font-weight: 400;">to build technical competency and practice and deliver quality services to Cloudflare customers</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Excellent communication, documentation, problem-solving, and project management skills</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">5+ years of customer/partner-facing experience, and experience translating business requirements into technological solutions.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Proven experience building deep technical relationships with channel partners, systems integrators, and third-party developers to deliver high-impact Cloudflare solutions.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Previous technical service delivery experience in service organization is preferred, e.g., project management, technical account manager, professional services consultant</span></li>
 </ul>
 <p><strong>Bonus points:</strong></p>
 <ul>
