@@ -1,33 +1,42 @@
 ---
-import CopyIcon from '../../../data/icons/es/reactsvgs/Copy.js';
+import CopyIcon from "../../../data/icons/es/reactsvgs/Copy.js";
 
 export interface Props {
 	icon: Function;
 	key: string;
 }
 
-const {icon, key}: {
-	icon: Function,
-	key: string
+const {
+	icon,
+	key,
+}: {
+	icon: Function;
+	key: string;
 } = Astro.props;
 
 const Icon = icon;
-
 ---
-<Icon style={{
-	fill: 'currentColor',
-}}></Icon>
-<div class="flex-none w-full text-center">
-	<code class="inline text-xs text-center">{key}</code>
-	<button
-		type="button"
-		class="copyButton w-4 h-auto hover:text-blue-300"
-		data-name={key}
-		title="Copy to clipboard"
+
+<button
+	class="copyButton relative bg-white dark:bg-gray-800 shadow-md rounded-md p-2 w-full h-full flex flex-col items-center group"
+	data-name={key}
+	title={`Copy {key} to clipboard`}
+>
+	<div class="flex-1 flex items-center">
+		<div
+			class="w-8 fill-gray-700 dark:fill-gray-300 group-hover:fill-gray-900 dark:group-hover:fill-gray-100"
+		>
+			<Icon />
+		</div>
+	</div>
+	<p
+		class="flex-none w-full text-center text-xs mt-4 leading-tight font-mono"
 	>
-		<CopyIcon style={{
-			fill: 'currentColor',
-			display: 'inline',
-		}}></CopyIcon>
-	</button>
-</div>
+		{key}
+	</p>
+	<div
+		class="absolute p-2 w-8 h-8 top-0.5 right-0.5 m-0 fill-gray-600 dark:fill-gray-400 rounded-full group-hover:bg-gray-200 group-hover:fill-gray-900 dark:group-hover:bg-gray-600 dark:group-hover:fill-gray-100"
+	>
+		<CopyIcon />
+	</div>
+</button>
