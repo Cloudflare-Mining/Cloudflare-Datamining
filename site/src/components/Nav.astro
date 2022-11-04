@@ -76,10 +76,10 @@ const navItems = [
 ];
 
 let currentPath = Astro.url.pathname;
-if (currentPath.charAt(-1) === "/") {
+if(currentPath.charAt(-1) === "/"){
 	currentPath = currentPath.slice(-1);
 }
-const { usage } = Astro.props;
+const {usage} = Astro.props;
 ---
 
 <nav aria-label="Sidebar" class="sticky top-4">
@@ -87,7 +87,7 @@ const { usage } = Astro.props;
 		<div class="space-y-1">
 			{
 				navItems.map((item, index) => {
-					if (item.submenu) {
+					if(item.submenu){
 						return (
 							<div class="space-y-1">
 								<button
@@ -125,7 +125,7 @@ const { usage } = Astro.props;
 											: "hidden"
 									}
 								>
-									{item.submenu.map((submenu) => (
+									{item.submenu.map(submenu => (
 										<a
 											href={`${item.path}${submenu.path}/`}
 											class={[
@@ -177,7 +177,7 @@ const { usage } = Astro.props;
 					viewBox="0 0 16 16"
 					aria-hidden="true"
 					focusable="false"
-					><path
+				><path
 						d="M6.082 8.44c0-.414.305-.753.691-.753.386 0 .698.339.691.752 0 .414-.305.753-.691.753-.38 0-.691-.34-.691-.753zM8.556 8.44c0-.414.305-.753.691-.753.386 0 .691.339.691.752 0 .414-.305.753-.691.753-.38 0-.691-.34-.691-.753z"
 					></path><path
 						fill-rule="evenodd"
@@ -206,7 +206,7 @@ const { usage } = Astro.props;
 					viewBox="0 0 16 16"
 					aria-hidden="true"
 					focusable="false"
-					><path
+				><path
 						fill-rule="evenodd"
 						d="M7.997 1.488c-3.588 0-6.5 2.983-6.5 6.665a6.653 6.653 0 004.447 6.323c.325.061.443-.145.443-.321 0-.158-.005-.577-.009-1.133-1.808.402-2.19-.894-2.19-.894-.295-.77-.721-.975-.721-.975-.59-.414.045-.405.045-.405a1.369 1.369 0 01.995.687c.58 1.018 1.522.725 1.892.553.029-.336.175-.651.413-.89-1.444-.168-2.962-.74-2.962-3.294-.01-.66.228-1.298.669-1.788a2.452 2.452 0 01.064-1.764s.545-.18 1.787.683a6.01 6.01 0 013.255 0c1.24-.862 1.785-.683 1.785-.683.24.56.263 1.188.065 1.764.44.49.68 1.129.668 1.788 0 2.56-1.52 3.125-2.968 3.288a1.613 1.613 0 01.442 1.235c0 .89-.008 1.61-.008 1.828 0 .178.117.386.447.32a6.654 6.654 0 004.442-6.322c0-3.682-2.91-6.665-6.5-6.665z"
 					></path><path
@@ -235,21 +235,21 @@ const { usage } = Astro.props;
 </nav>
 
 <script>
-	for (const button of document.querySelectorAll("button")) {
-		button.addEventListener("click", function () {
+	for(const button of document.querySelectorAll("button")){
+		button.addEventListener("click", function(){
 			document
 				.querySelector(`#${button.id}-menu`)
 				?.classList.toggle("hidden");
 			const icon = document.querySelector(`#${button.id}-icon`)!;
-			if (!icon) {
+			if(!icon){
 				return;
 			}
 			icon.classList.toggle("text-gray-300");
 			icon.classList.toggle("text-gray-400");
 			icon.classList.toggle("rotate-90");
-			if (button.ariaExpanded === "true") {
+			if(button.ariaExpanded === "true"){
 				button.ariaExpanded = "false";
-			} else {
+			}else{
 				button.ariaExpanded = "true";
 			}
 		});
