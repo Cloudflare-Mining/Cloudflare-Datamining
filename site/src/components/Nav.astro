@@ -4,159 +4,254 @@ export interface Props {
 }
 const navItems = [
 	{
-		label: 'Home',
-		path: '',
+		label: "Home",
+		path: "",
 	},
 	{
-		label: 'Account',
-		path: '/account',
+		label: "Account",
+		path: "/account",
 		submenu: [
 			{
-				label: 'Flags',
-				path: '/flags',
+				label: "Flags",
+				path: "/flags",
 			},
 			{
-				label: 'Entitlements',
-				path: '/entitlements',
+				label: "Entitlements",
+				path: "/entitlements",
 			},
 			{
-				label: 'Known Entitlements',
-				path: '/known-entitlements',
+				label: "Known Entitlements",
+				path: "/known-entitlements",
 			},
 		],
 	},
 	{
-		label: 'Zone',
-		path: '/zone',
+		label: "Zone",
+		path: "/zone",
 		submenu: [
 			{
-				label: 'Flags',
-				path: '/flags',
+				label: "Flags",
+				path: "/flags",
 			},
 			{
-				label: 'Entitlements',
-				path: '/entitlements',
+				label: "Entitlements",
+				path: "/entitlements",
 			},
 			{
-				label: 'Known Entitlements',
-				path: '/known-entitlements',
+				label: "Known Entitlements",
+				path: "/known-entitlements",
 			},
 		],
 	},
 	{
-		label: 'Gates',
-		path: '/gates',
+		label: "Gates",
+		path: "/gates",
 	},
 	{
-		label: 'GraphQL',
-		path: '/graphql',
+		label: "GraphQL",
+		path: "/graphql",
 	},
 	{
-		label: 'Colos',
-		path: '/colos',
+		label: "Colos",
+		path: "/colos",
 	},
 	{
-		label: 'NPM',
-		path: '/npm',
+		label: "NPM",
+		path: "/npm",
 	},
 	{
-		label: 'Icons',
-		path: '/icons',
+		label: "Icons",
+		path: "/icons",
 	},
 	{
-		label: 'Products',
-		path: '/products',
+		label: "Products",
+		path: "/products",
 		submenu: [
 			{
-				label: 'Pages',
-				path: '/pages',
+				label: "Pages",
+				path: "/pages",
 			},
 		],
 	},
 ];
 
 let currentPath = Astro.url.pathname;
-if(currentPath.charAt(-1) === '/'){
+if (currentPath.charAt(-1) === "/") {
 	currentPath = currentPath.slice(-1);
 }
-const {usage} = Astro.props;
+const { usage } = Astro.props;
 ---
 
 <nav aria-label="Sidebar" class="sticky top-4">
 	<div class="divide-y divide-gray-300">
 		<div class="space-y-1">
-			{navItems.map((item, index) => {
-				if(item.submenu){
-					return (
-						<div class="space-y-1">
-							<button id={`${usage}-submenu-${index}`} type="button" class="group flex w-full items-center rounded-md py-2 pr-2 text-left text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-500 dark:text-gray-200 dark:hover:bg-gray-700" aria-controls="sub-menu-2" aria-expanded="false">
-								<svg id={`${usage}-submenu-${index}-icon`} class={[
-									currentPath.startsWith(item.path) ? 'text-gray-300 dark:text-gray-500 rotate-90' : 'text-gray-300 dark:text-gray-500', "mr-2 h-5 w-5 flex-shrink-0 transform transition-colors duration-150 ease-in-out",
-								].join(' ').trim()} viewBox="0 0 20 20" aria-hidden="true">
-									<path d="M6 6L14 10L6 14V6Z" fill="currentColor" />
-								</svg>
-								<span class="truncate">{item.label}</span>
-							</button>
-							<div id={`${usage}-submenu-${index}-menu`} class={currentPath.startsWith(item.path) ? '' : 'hidden'}>
-								{item.submenu.map(submenu => (<a
-									href={`${item.path}${submenu.path}/`}
-									class={[
-										currentPath === `${item.path}${submenu.path}/` ? 'bg-gray-200 text-gray-900 dark:text-gray-200 dark:bg-gray-700' : 'text-gray-700 hover:bg-gray-50 dark:text-gray-200 dark:hover:bg-gray-700',
-										"group flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md",
-									].join(' ').trim()}
+			{
+				navItems.map((item, index) => {
+					if (item.submenu) {
+						return (
+							<div class="space-y-1">
+								<button
+									id={`${usage}-submenu-${index}`}
+									type="button"
+									class="group flex w-full items-center rounded-md py-2 pr-2 text-left text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-500 dark:text-gray-200 dark:hover:bg-gray-700"
+									aria-controls="sub-menu-2"
+									aria-expanded="false"
 								>
-									<span class="truncate">{submenu.label}</span>
-								</a>))}
+									<svg
+										id={`${usage}-submenu-${index}-icon`}
+										class={[
+											currentPath.startsWith(item.path)
+												? "text-gray-300 dark:text-gray-500 rotate-90"
+												: "text-gray-300 dark:text-gray-500",
+											"mr-2 h-5 w-5 flex-shrink-0 transform transition-colors duration-150 ease-in-out",
+										]
+											.join(" ")
+											.trim()}
+										viewBox="0 0 20 20"
+										aria-hidden="true"
+									>
+										<path
+											d="M6 6L14 10L6 14V6Z"
+											fill="currentColor"
+										/>
+									</svg>
+									<span class="truncate">{item.label}</span>
+								</button>
+								<div
+									id={`${usage}-submenu-${index}-menu`}
+									class={
+										currentPath.startsWith(item.path)
+											? ""
+											: "hidden"
+									}
+								>
+									{item.submenu.map((submenu) => (
+										<a
+											href={`${item.path}${submenu.path}/`}
+											class={[
+												currentPath ===
+												`${item.path}${submenu.path}/`
+													? "bg-gray-200 text-gray-900 dark:text-gray-200 dark:bg-gray-700"
+													: "text-gray-700 hover:bg-gray-50 dark:text-gray-200 dark:hover:bg-gray-700",
+												"group flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md",
+											]
+												.join(" ")
+												.trim()}
+										>
+											<span class="truncate">
+												{submenu.label}
+											</span>
+										</a>
+									))}
+								</div>
 							</div>
-						</div>
+						);
+					}
+					return (
+						<a
+							href={`${item.path}/`}
+							class={[
+								currentPath === `${item.path}/`
+									? "bg-gray-200 text-gray-900 dark:bg-gray-700 dark:text-gray-200"
+									: "text-gray-700 hover:bg-gray-50 dark:text-gray-100 dark:hover:bg-gray-700",
+								"group flex items-center pl-7 pr-2 py-2 text-sm font-medium rounded-md",
+							]
+								.join(" ")
+								.trim()}
+						>
+							<span class="truncate">{item.label}</span>
+						</a>
 					);
-				}
-				return (<a
-					href={`${item.path}/`}
-					class={[
-						currentPath === `${item.path}/` ? 'bg-gray-200 text-gray-900 dark:bg-gray-700 dark:text-gray-200' : 'text-gray-700 hover:bg-gray-50 dark:text-gray-100 dark:hover:bg-gray-700',
-						"group flex items-center pl-7 pr-2 py-2 text-sm font-medium rounded-md",
-					].join(' ').trim()}
-				>
-					<span class="truncate">{item.label}</span>
-				</a>);
-
-			})}
+				})
+			}
 		</div>
 		<div class="mt-4 pt-4">
-			<a href="https://discord.gg/Z94Hn6qVDm" target="_blank" class="group flex items-center space-x-2 rounded-md p-2 text-sm font-medium text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">
+			<a
+				href="https://discord.gg/Z94Hn6qVDm"
+				target="_blank"
+				class="group flex items-center space-x-2 rounded-md p-2 text-sm font-medium text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700"
+			>
+				<svg
+					class="h-4 fill-gray-600 dark:fill-gray-200"
+					xmlns="http://www.w3.org/2000/svg"
+					viewBox="0 0 16 16"
+					aria-hidden="true"
+					focusable="false"
+					><path
+						d="M6.082 8.44c0-.414.305-.753.691-.753.386 0 .698.339.691.752 0 .414-.305.753-.691.753-.38 0-.691-.34-.691-.753zM8.556 8.44c0-.414.305-.753.691-.753.386 0 .691.339.691.752 0 .414-.305.753-.691.753-.38 0-.691-.34-.691-.753z"
+					></path><path
+						fill-rule="evenodd"
+						d="M3.458 2h9.083c.766 0 1.39.624 1.39 1.396v12.16l-1.457-1.287-.82-.76-.868-.806.359 1.254H3.458c-.766 0-1.39-.624-1.39-1.397V3.396c0-.772.624-1.396 1.39-1.396zm6.02 8.303c.203.258.447.55.447.55 1.498-.048 2.074-1.03 2.074-1.03 0-2.184-.976-3.953-.976-3.953-.976-.732-1.905-.711-1.905-.711l-.095.108c1.153.353 1.688.86 1.688.86a5.525 5.525 0 00-3.41-.636.57.57 0 00-.115.013c-.237.02-.813.109-1.538.427-.251.116-.4.197-.4.197s.562-.536 1.783-.888l-.068-.081s-.929-.02-1.905.711c0 0-.976 1.77-.976 3.952 0 0 .57.983 2.067 1.03 0 0 .251-.305.455-.562-.861-.258-1.187-.8-1.187-.8s.068.047.19.115a.272.272 0 00.058.037c.01.006.02.01.03.017.17.095.34.17.495.23.278.11.61.218.996.292a4.748 4.748 0 001.756.007 4.46 4.46 0 00.983-.291 3.88 3.88 0 00.78-.4s-.34.556-1.228.806z"
+					></path>
+				</svg>
 				<span class="truncate">Discord</span>
-				<svg class="h-4 fill-gray-600 dark:fill-gray-200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-					<path d="M272 64C263.2 64 256 56.84 256 48C256 39.16 263.2 32 272 32H432C440.8 32 448 39.16 448 48V208C448 216.8 440.8 224 432 224C423.2 224 416 216.8 416 208V86.63L187.3 315.3C181.1 321.6 170.9 321.6 164.7 315.3C158.4 309.1 158.4 298.9 164.7 292.7L393.4 64H272zM0 112C0 85.49 21.49 64 48 64H176C184.8 64 192 71.16 192 80C192 88.84 184.8 96 176 96H48C39.16 96 32 103.2 32 112V432C32 440.8 39.16 448 48 448H368C376.8 448 384 440.8 384 432V304C384 295.2 391.2 288 400 288C408.8 288 416 295.2 416 304V432C416 458.5 394.5 480 368 480H48C21.49 480 0 458.5 0 432V112z"/>
+				<svg
+					class="h-4 fill-gray-600 dark:fill-gray-200"
+					xmlns="http://www.w3.org/2000/svg"
+					viewBox="0 0 448 512"
+				>
+					<path
+						d="M272 64C263.2 64 256 56.84 256 48C256 39.16 263.2 32 272 32H432C440.8 32 448 39.16 448 48V208C448 216.8 440.8 224 432 224C423.2 224 416 216.8 416 208V86.63L187.3 315.3C181.1 321.6 170.9 321.6 164.7 315.3C158.4 309.1 158.4 298.9 164.7 292.7L393.4 64H272zM0 112C0 85.49 21.49 64 48 64H176C184.8 64 192 71.16 192 80C192 88.84 184.8 96 176 96H48C39.16 96 32 103.2 32 112V432C32 440.8 39.16 448 48 448H368C376.8 448 384 440.8 384 432V304C384 295.2 391.2 288 400 288C408.8 288 416 295.2 416 304V432C416 458.5 394.5 480 368 480H48C21.49 480 0 458.5 0 432V112z"
+					></path>
 				</svg>
 			</a>
-			<a href="https://github.com/Cloudflare-Mining/Cloudflare-Datamining" target="_blank" class="group flex items-center space-x-2 rounded-md p-2 text-sm font-medium text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">
+			<a
+				href="https://github.com/Cloudflare-Mining/Cloudflare-Datamining"
+				target="_blank"
+				class="group flex items-center space-x-2 rounded-md p-2 text-sm font-medium text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700"
+			>
+				<svg
+					class="h-4 fill-gray-600 dark:fill-gray-200"
+					xmlns="http://www.w3.org/2000/svg"
+					viewBox="0 0 16 16"
+					aria-hidden="true"
+					focusable="false"
+					><path
+						fill-rule="evenodd"
+						d="M7.997 1.488c-3.588 0-6.5 2.983-6.5 6.665a6.653 6.653 0 004.447 6.323c.325.061.443-.145.443-.321 0-.158-.005-.577-.009-1.133-1.808.402-2.19-.894-2.19-.894-.295-.77-.721-.975-.721-.975-.59-.414.045-.405.045-.405a1.369 1.369 0 01.995.687c.58 1.018 1.522.725 1.892.553.029-.336.175-.651.413-.89-1.444-.168-2.962-.74-2.962-3.294-.01-.66.228-1.298.669-1.788a2.452 2.452 0 01.064-1.764s.545-.18 1.787.683a6.01 6.01 0 013.255 0c1.24-.862 1.785-.683 1.785-.683.24.56.263 1.188.065 1.764.44.49.68 1.129.668 1.788 0 2.56-1.52 3.125-2.968 3.288a1.613 1.613 0 01.442 1.235c0 .89-.008 1.61-.008 1.828 0 .178.117.386.447.32a6.654 6.654 0 004.442-6.322c0-3.682-2.91-6.665-6.5-6.665z"
+					></path><path
+						d="M3 7.271l.002.067L3 7.26v.011zM14.5 7.271l-.001-.053v.136l.001-.083zM14.5 7.183l-.002-.06.002.095c-.002-.011 0-.023 0-.035z"
+					></path>
+				</svg>
 				<span class="truncate">GitHub</span>
-				<svg class="h-4 fill-gray-600 dark:fill-gray-200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-					<path d="M272 64C263.2 64 256 56.84 256 48C256 39.16 263.2 32 272 32H432C440.8 32 448 39.16 448 48V208C448 216.8 440.8 224 432 224C423.2 224 416 216.8 416 208V86.63L187.3 315.3C181.1 321.6 170.9 321.6 164.7 315.3C158.4 309.1 158.4 298.9 164.7 292.7L393.4 64H272zM0 112C0 85.49 21.49 64 48 64H176C184.8 64 192 71.16 192 80C192 88.84 184.8 96 176 96H48C39.16 96 32 103.2 32 112V432C32 440.8 39.16 448 48 448H368C376.8 448 384 440.8 384 432V304C384 295.2 391.2 288 400 288C408.8 288 416 295.2 416 304V432C416 458.5 394.5 480 368 480H48C21.49 480 0 458.5 0 432V112z"/>
+				<svg
+					class="h-4 fill-gray-600 dark:fill-gray-200"
+					xmlns="http://www.w3.org/2000/svg"
+					viewBox="0 0 448 512"
+				>
+					<path
+						d="M272 64C263.2 64 256 56.84 256 48C256 39.16 263.2 32 272 32H432C440.8 32 448 39.16 448 48V208C448 216.8 440.8 224 432 224C423.2 224 416 216.8 416 208V86.63L187.3 315.3C181.1 321.6 170.9 321.6 164.7 315.3C158.4 309.1 158.4 298.9 164.7 292.7L393.4 64H272zM0 112C0 85.49 21.49 64 48 64H176C184.8 64 192 71.16 192 80C192 88.84 184.8 96 176 96H48C39.16 96 32 103.2 32 112V432C32 440.8 39.16 448 48 448H368C376.8 448 384 440.8 384 432V304C384 295.2 391.2 288 400 288C408.8 288 416 295.2 416 304V432C416 458.5 394.5 480 368 480H48C21.49 480 0 458.5 0 432V112z"
+					></path>
 				</svg>
 			</a>
 		</div>
 	</div>
 	<p class="mx-auto mt-4 max-w-prose pt-4 lg:text-xs">
-		All data listed on this website is &copy; Cloudflare, Inc. unless otherwise stated. I assert no claims to its accuracy or ownership, and am happy to remove anything upon request. I only do this because I love Cloudflare. 🧡
+		All data listed on this website is &copy; Cloudflare, Inc. unless
+		otherwise stated. I assert no claims to its accuracy or ownership, and
+		am happy to remove anything upon request. I only do this because I love
+		Cloudflare. 🧡
 	</p>
 </nav>
 
 <script>
-for(const button of document.querySelectorAll('button')){
-	button.addEventListener('click', function(){
-		document.querySelector(`#${button.id}-menu`)?.classList.toggle('hidden');
-		const icon = document.querySelector(`#${button.id}-icon`)!;
-		if(!icon){ return; }
-		icon.classList.toggle('text-gray-300');
-		icon.classList.toggle('text-gray-400');
-		icon.classList.toggle('rotate-90');
-		if(button.ariaExpanded === 'true'){
-			button.ariaExpanded = 'false';
-		}else{
-			button.ariaExpanded = 'true';
-		}
-	});
-}
+	for (const button of document.querySelectorAll("button")) {
+		button.addEventListener("click", function () {
+			document
+				.querySelector(`#${button.id}-menu`)
+				?.classList.toggle("hidden");
+			const icon = document.querySelector(`#${button.id}-icon`)!;
+			if (!icon) {
+				return;
+			}
+			icon.classList.toggle("text-gray-300");
+			icon.classList.toggle("text-gray-400");
+			icon.classList.toggle("rotate-90");
+			if (button.ariaExpanded === "true") {
+				button.ariaExpanded = "false";
+			} else {
+				button.ariaExpanded = "true";
+			}
+		});
+	}
 </script>
