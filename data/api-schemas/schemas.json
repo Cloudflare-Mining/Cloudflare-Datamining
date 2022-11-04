@@ -993,6 +993,11 @@
 																"readOnly": true,
 																"example": "05dd05cce12bbed97c0d87cd78e89bc2fd41a6cee72f27f6fc84af2e45c0fac0"
 															},
+															"api_access_enabled": {
+																"type": "boolean",
+																"description": "Enterprise only. Indicates whether or not API access is enabled specifically for this user on a given account.",
+																"example": true
+															},
 															"status": {
 																"type": "string",
 																"enum": [
@@ -1032,6 +1037,11 @@
 																					"enforce_twofactor": {
 																						"type": "boolean",
 																						"description": "Indicates whether or not membership in this account requires that Two-Factor Authentication is enabled.",
+																						"default": false
+																					},
+																					"api_access_enabled": {
+																						"type": "boolean",
+																						"description": "Enterprise only. Indicates whether or not API access is enabled for members of this account.",
 																						"default": false
 																					},
 																					"use_account_custom_ns_by_default": {
