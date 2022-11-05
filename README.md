@@ -25,6 +25,7 @@ You can join the Discord at https://discord.gg/Z94Hn6qVDm for notifications of c
 - `doh`: This tracks the DOH schema returned by 1.1.1.1
 - `domains`: This tracks domains that Cloudflare owns. It's not perfect, but it does pick up a lot of domains owned by Cloudflare.
 - `entitlements`: This isn't automated, but tracks a list of all known entitlements for accounts and zones.
+- `icons`: This tracks the `@cloudflare/component-icon` NPM package.
 - `gates`: This tracks the active gates used for A/B experiments on the dash, etc.
 - `github-repos`: This tracks updates, additions, etc. to all GitHub repos under the Cloudflare org.
 - `jobs`: This tracks Cloudflare job post listings, which can reveal upcoming projects.
