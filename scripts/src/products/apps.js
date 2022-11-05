@@ -14,6 +14,8 @@ await fs.emptyDir(dir);
 const apps = await fetch('https://api.cloudflareapps.com/apps/');
 const appsJson = await apps.json();
 
+const ratePlans = new Set([]);
+
 for(const app of appsJson){
 	const filename = filenamify(`${app.title} - ${app.id}`);
 	const appDir = path.resolve(dir, filename);
@@ -25,13 +27,24 @@ for(const app of appsJson){
 	const file = path.resolve(appDir, 'info.json');
 	// delete some fields we don't care for
 	const json = appsJson;
+	for(const product of json.products || []){
+		if(product.plan){
+			ratePlans.add(product.plan);
+		}
+	}
 	for(const version of json.versions){
 		delete version.ratingSummary;
+		for(const product of version.products || []){
+			if(product.plan){
+				ratePlans.add(product.plan);
+			}
+		}
 	}
 	delete json.ratingSummary;
 	await fs.writeJson(file, json, {spaces: '\t'});
 }
 
+await fs.writeJson(path.resolve(dir, 'rate-plans.json'), [...ratePlans].sort(), {spaces: '\t'});
 const prefix = dateFormat(new Date(), 'd mmmm yyyy');
 await tryAndPush(
 	[
