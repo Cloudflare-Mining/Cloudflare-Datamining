@@ -29,20 +29,20 @@ for(const app of appsJson){
 	const json = appsJson;
 	for(const product of json.products || []){
 		if(product.plan){
-			ratePlans.add(product.plan);
+			ratePlans.add(product.plan.toLowerCase());
 		}
 		if(product.feature && !product.feature.includes('.')){
-			ratePlans.add(product.feature);
+			ratePlans.add(product.feature.toLowerCase());
 		}
 	}
 	for(const version of json.versions){
 		delete version.ratingSummary;
 		for(const product of version?.definition?.products || []){
 			if(product.plan){
-				ratePlans.add(product.plan);
+				ratePlans.add(product.plan.toLowerCase());
 			}
 			if(product.feature && !product.feature.includes('.')){
-				ratePlans.add(product.feature);
+				ratePlans.add(product.feature.toLowerCase());
 			}
 		}
 	}
