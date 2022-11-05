@@ -31,12 +31,18 @@ for(const app of appsJson){
 		if(product.plan){
 			ratePlans.add(product.plan);
 		}
+		if(product.feature && !product.feature.includes('.')){
+			ratePlans.add(product.feature);
+		}
 	}
 	for(const version of json.versions){
 		delete version.ratingSummary;
-		for(const product of version.products || []){
+		for(const product of version?.definition?.products || []){
 			if(product.plan){
 				ratePlans.add(product.plan);
+			}
+			if(product.feature && !product.feature.includes('.')){
+				ratePlans.add(product.feature);
 			}
 		}
 	}
