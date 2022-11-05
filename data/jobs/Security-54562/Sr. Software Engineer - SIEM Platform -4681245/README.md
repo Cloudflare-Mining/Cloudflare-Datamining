@@ -5,34 +5,39 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About The Role</strong></p>
-<p><span style="font-weight: 400;">Cloudflare is seeking a Head of Pricing Strategy to lead and execute our global pricing strategy team. &nbsp; You will be responsible for our growing suite of products and services.&nbsp; You will collaborate cross-functionally with Product, Sales, Finance, and Operations to drive executive decision making and bring our strategies to life.&nbsp; You have a passion for customer value drivers, a drive for great product strategy, comfort with product/financial analytics, and a desire to build a great business.&nbsp; A successful candidate will have a proven track record developing pricing/packaging strategies, taking end-to-end ownership, and successfully delivering results in a fast-paced and dynamic business environment.&nbsp; This is a team leadership role, reporting to the Vice President of Monetization.</span></p>
-<p><strong>Job Responsibilities</strong></p>
+<p><strong>About the Department</strong></p>
+<p><span style="font-weight: 400;">Information Security at Cloudflare is a focused team committed to helping secure both Cloudflare and our customers. The Detection and Response team is responsible for engineering the systems and programs needed to protect our company and customer from real world threats.</span></p>
+<p><strong>About the Role</strong></p>
+<p><span style="font-weight: 400;">We are looking for a Sr. Software engineer to join our team. You will be part of the team responsible for building our next generation Security Platform on Cloudflare's edge to secure Cloudflare customers, products and infrastructure. You’ll be designing and building services to; ingest and manage large datasets, process streaming and batch analytics, enrich and alert on data throughout the pipelines, and incorporate Machine Learning as an integral aspect of the whole system.</span></p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Lead all aspects of pricing/packaging strategy.&nbsp; Develop insights and recommendations through customer segmentation, competitive differentiation, price discovery &amp; experimentation, product strategy, and financial analysis. Define pricing strategies and optimization initiatives to deliver significant growth (reach and revenue).</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Build and lead an exceptional team to drive pricing excellence across Cloudflare.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Collaborate extensively across all functional teams within Cloudflare, including significant exposure to our executive leadership.&nbsp; In particular, you will partner with Product, Sales, Finance, Analytics, and Operations.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Develop customer insights to understand customer segmentation, value drivers, willingness to pay, purchase behaviors, and adoption incentives.&nbsp; Conduct customer research, including qualitative, quantitative, and pricing pilots/experimentation.&nbsp; Monitor and analyze customer metrics.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Understand competitive landscape and develop competitive differentiation to support our pricing &amp; packaging and sales motion.&nbsp; Understand competitive pricing practices.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Enable Sales to articulate P&amp;P value proposition to support value selling motion.&nbsp; Create compelling sales enablement assets and customer facing materials.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Work with product management to understand (and influence) product roadmap, communicate customer value drivers &amp; willingness to pay, and develop P&amp;P recommendations.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Develop pricing metrics and dashboards to provide insights across the organization.&nbsp; Analyze customer research, sales data, product usage data, and financial data to uncover insights and drive recommendations.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Support Sales and Deal Desk during sales motion and negotiations.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Participate in our annual planning process with executive leadership and FP&amp;A team.</span></li>
+	<li>Experience working with big data pipelines across various stages of processing</li>
 </ul>
-<p><strong>Qualifications</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">10+ years of experience in pricing strategy or marketing strategy experience in top tier consulting firm or leading software provider</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Bachelor's degree required; MBA preferred</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong communication and influence, both written and oral, across all levels of the organization (executive to manager, multiple functions)</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong leader with ability to build, motivate, and coach teams</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience in building pricing systems, tools, and processes </span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Able to analyze data and distill into actionable insights for leadership</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">High level of attention to detail and ability to prioritize multiple projects at once</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Able to identify and develop solutions to complex problems from a strategic and operational perspective</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Self-motivated and thrives in a fast-paced environment</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Highly proficient in all applications of Microsoft Office including Word, Excel, PowerPoint, and Outlook</span></li>
+	<li><span style="font-weight: 400;">Understand strategies for large scale streaming and batch log analysis</span></li>
 </ul>
+<ul>
+	<li><span style="font-weight: 400;">Proficiency in programming in Golang, Java, or Rust</span></li>
+</ul>
+<ul>
+	<li><span style="font-weight: 400;">Experience in building highly available distributed systems</span></li>
+</ul>
+<ul>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Familiarity in continuous integration and Infrastructure as Code</span></li>
+</ul>
+<p><strong>Bonus Points</strong></p>
+<ul>
+	<li><span style="font-weight: 400;">Experience designing, and optimizing high throughput ETL pipelines</span></li>
+	<li><span style="font-weight: 400;">Deep understanding of SIEM, UEBA, and SOAR technologies from an implementers perspective</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience building robust and scalable products in public clouds (GCP or AWS)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with CI/CD and a devops mindset</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Familiarity with Agile Software Development Life Cycle (SDLC) methodologies</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with cloud serverless architectures like Cloudflare Workers, Lambda Functions or Cloud Functions</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Familiarity with containerization and orchestration tools such as Docker and Kubernetes</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Familiarity writing and optimizing advanced SQL queries</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience developing Machine Learning frameworks to enable teams to quickly and efficiently create new ML models</span></li>
+</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
