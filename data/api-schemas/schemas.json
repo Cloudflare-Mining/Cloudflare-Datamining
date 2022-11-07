@@ -44116,6 +44116,493 @@
 				}
 			}
 		},
+		"/accounts/{account_identifier}/workers/queues": {
+			"get": {
+				"summary": "List Queues",
+				"description": "Returns the queues owned by an account.",
+				"parameters": [
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1available_plans~1%7Bplan_identifier%7D/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "List Queues response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user~1tokens~1permission_groups/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"errors": {
+													"example": null,
+													"nullable": true
+												}
+											}
+										},
+										{
+											"properties": {
+												"messages": {
+													"example": null,
+													"nullable": true
+												}
+											}
+										},
+										{
+											"properties": {
+												"result_info": {
+													"type": "object",
+													"properties": {
+														"page": {
+															"example": 1
+														},
+														"per_page": {
+															"example": 100
+														},
+														"count": {
+															"example": 1
+														},
+														"total_count": {
+															"example": 1
+														},
+														"total_pages": {
+															"example": 1
+														}
+													}
+												}
+											}
+										},
+										{
+											"type": "object",
+											"required": [
+												"queue_id",
+												"queue_name",
+												"created_on",
+												"modified_on",
+												"producers_total_count",
+												"producers",
+												"consumers_total_count",
+												"consumers"
+											],
+											"properties": {
+												"result": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"queue_id": {
+																"readOnly": true
+															},
+															"queue_name": {
+																"example": "example-queue",
+																"type": "string"
+															},
+															"created_on": {
+																"readOnly": true
+															},
+															"modified_on": {
+																"readOnly": true
+															},
+															"producers_total_count": {
+																"readOnly": true
+															},
+															"producers": {
+																"readOnly": true
+															},
+															"consumers_total_count": {
+																"readOnly": true
+															},
+															"consumers": {
+																"readOnly": true
+															}
+														}
+													}
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					},
+					{
+						"api_token": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.edge.worker.queue.list"
+					]
+				}
+			},
+			"post": {
+				"summary": "Create Queue",
+				"description": "Creates a new queue.",
+				"parameters": [
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1workers~1queues/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Create Queue response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user~1tokens~1permission_groups/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"type": "object",
+											"required": [
+												"queue_id",
+												"queue_name",
+												"created_on",
+												"modified_on"
+											],
+											"properties": {
+												"result": {
+													"type": "object",
+													"allOf": [
+														{
+															"type": "object",
+															"properties": {
+																"queue_id": {
+																	"readOnly": true
+																},
+																"queue_name": {
+																	"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1workers~1queues/get/responses/200/content/application~1json/schema/allOf/4/properties/result/items/properties/queue_name"
+																},
+																"created_on": {
+																	"readOnly": true
+																},
+																"modified_on": {
+																	"readOnly": true
+																}
+															}
+														}
+													]
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					},
+					{
+						"api_token": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.edge.worker.queue.create"
+					]
+				},
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"example": {
+									"queue_name": "example-queue"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/accounts/{account_identifier}/workers/queues/{name}": {
+			"delete": {
+				"summary": "Delete Queue",
+				"description": "Deletes a queue.",
+				"parameters": [
+					{
+						"name": "name",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"example": "example-queue",
+							"type": "string"
+						}
+					},
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1available_plans~1%7Bplan_identifier%7D/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Delete Queue response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user~1tokens~1permission_groups/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"example": null,
+													"nullable": true
+												}
+											},
+											"nullable": true
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					},
+					{
+						"api_token": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.edge.worker.queue.delete"
+					]
+				},
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {}
+					}
+				}
+			},
+			"get": {
+				"summary": "Queue Details",
+				"description": "Get information about a specific queue.",
+				"parameters": [
+					{
+						"name": "name",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1workers~1queues~1%7Bname%7D/delete/parameters/0/schema"
+						}
+					},
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1workers~1queues~1%7Bname%7D/delete/parameters/1/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Queue Details response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user~1tokens~1permission_groups/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"type": "object",
+											"required": [
+												"queue_id",
+												"queue_name",
+												"created_on",
+												"modified_on"
+											],
+											"properties": {
+												"result": {
+													"type": "object",
+													"allOf": [
+														{
+															"type": "object",
+															"properties": {
+																"queue_id": {
+																	"readOnly": true
+																},
+																"queue_name": {
+																	"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1workers~1queues~1%7Bname%7D/delete/parameters/0/schema"
+																},
+																"created_on": {
+																	"readOnly": true
+																},
+																"modified_on": {
+																	"readOnly": true
+																},
+																"producers_total_count": {
+																	"readOnly": true
+																},
+																"producers": {
+																	"readOnly": true
+																},
+																"consumers_total_count": {
+																	"readOnly": true
+																},
+																"consumers": {
+																	"readOnly": true
+																}
+															}
+														}
+													]
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					},
+					{
+						"api_token": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.edge.worker.queue.read"
+					]
+				}
+			},
+			"put": {
+				"summary": "Update Queue",
+				"description": "Updates a queue.",
+				"parameters": [
+					{
+						"name": "name",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1workers~1queues~1%7Bname%7D/delete/parameters/0/schema"
+						}
+					},
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1workers~1queues~1%7Bname%7D/delete/parameters/1/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Update Queue response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user~1tokens~1permission_groups/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"type": "object",
+											"required": [
+												"queue_id",
+												"queue_name",
+												"created_on",
+												"modified_on"
+											],
+											"properties": {
+												"result": {
+													"type": "object",
+													"allOf": [
+														{
+															"type": "object",
+															"properties": {
+																"queue_id": {
+																	"readOnly": true
+																},
+																"queue_name": {
+																	"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1workers~1queues~1%7Bname%7D/delete/parameters/0/schema"
+																},
+																"created_on": {
+																	"readOnly": true
+																},
+																"modified_on": {
+																	"readOnly": true
+																}
+															}
+														}
+													]
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					},
+					{
+						"api_token": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.edge.worker.queue.update"
+					]
+				},
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"example": {
+									"queue_name": "rename-example-queue"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
 		"/accounts/{account_identifier}/r2/buckets": {
 			"post": {
 				"summary": "Create Bucket",
