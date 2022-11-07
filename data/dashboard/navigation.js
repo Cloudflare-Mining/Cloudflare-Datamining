@@ -72,7 +72,7 @@ const navigation = {
 			title: "navigation.account.registrar.domain_protection",
 			url: "/domains/protection",
 			hasPermission: function(m) {
-				return U(m)
+				return B(m)
 			}
 		}]
 	}, {
@@ -172,8 +172,8 @@ const navigation = {
 			title: "navigation.account.workers.plans",
 			url: "/workers/plans",
 			hasPermission: function(m) {
-				var F = (0, Z.getSubscriptions)(m);
-				return !(0, V.ky)(F, [X.uD.UnboundEnterpriseTrial])
+				var F = (0, Q.getSubscriptions)(m);
+				return !(0, V.ky)(F, [q.uD.UnboundEnterpriseTrial])
 			}
 		}]
 	}, {
@@ -316,13 +316,13 @@ const navigation = {
 		url: "/network-security",
 		iconType: "cloudflare-security-network",
 		hasPermission: function(m) {
-			return d(m) && !!z(m)
+			return d(m) && !!R(m)
 		},
 		pages: [{
 			title: "navigation.account.firewall_rulesets.ddos",
 			url: "/network-security/ddos",
 			hasPermission: function(m) {
-				var F = !!P(m) && !!_(m);
+				var F = !!_(m) && !!z(m);
 				return !!l(m) || F
 			}
 		}, {
@@ -330,7 +330,7 @@ const navigation = {
 			url: "/network-security/magic_firewall",
 			testId: "account-magic-firewall-rules",
 			hasPermission: function(m) {
-				return !!z(m)
+				return !!R(m)
 			}
 		}]
 	}, {
@@ -459,15 +459,15 @@ const navigation = {
 			title: "navigation.zone.analytics.origin_reachability",
 			url: "/analytics/originReachability",
 			hasPermission: function(m) {
-				var F = (0, s.getZone)(m);
-				return F ? !!(!(0, M.zoneIsDNSOnly)(m) && !!(0, s.getZoneFlipperFlag)(m, "origin_reachability_dash", "dash_view") && (0, s.isPlanAtLeast)(F, "enterprise") && !!(0, i.getZoneGraphQLSettingEnabled)(m, "httpRequestsAdaptiveGroups")) : !1
+				var F = (0, i.getZone)(m);
+				return F ? !!(!(0, M.zoneIsDNSOnly)(m) && !!(0, i.getZoneFlipperFlag)(m, "origin_reachability_dash", "dash_view") && (0, i.isPlanAtLeast)(F, "enterprise") && !!(0, s.getZoneGraphQLSettingEnabled)(m, "httpRequestsAdaptiveGroups")) : !1
 			}
 		}, {
 			title: "navigation.zone.analytics.edge_reachability",
 			url: "/analytics/edgeReachability",
 			hasPermission: function(m) {
-				var F = (0, s.getZone)(m);
-				return F ? !!(!(0, M.zoneIsDNSOnly)(m) && !!(0, s.getZoneFlipperFlag)(m, "edge_reachability_dash", "dash_view") && (0, s.isPlanAtLeast)(F, "enterprise") && !!(0, i.getZoneGraphQLSettingEnabled)(m, "nelReportsAdaptiveGroups")) : !1
+				var F = (0, i.getZone)(m);
+				return F ? !!(!(0, M.zoneIsDNSOnly)(m) && !!(0, i.getZoneFlipperFlag)(m, "edge_reachability_dash", "dash_view") && (0, i.isPlanAtLeast)(F, "enterprise") && !!(0, s.getZoneGraphQLSettingEnabled)(m, "nelReportsAdaptiveGroups")) : !1
 			}
 		}, {
 			title: "navigation.zone.analytics.dns",
@@ -482,13 +482,13 @@ const navigation = {
 			title: "navigation.zone.analytics.logs",
 			url: "/analytics/logs",
 			hasPermission: function(m) {
-				return Object.values((0, w.H_)(m)).some(Boolean)
+				return Object.values((0, P.H_)(m)).some(Boolean)
 			}
 		}, {
 			title: "navigation.zone.analytics.instant_logs",
 			url: "/analytics/instant-logs",
 			hasPermission: function(m) {
-				return !(0, M.zoneIsDNSOnly)(m) && !!(0, s.getZoneFlipperFlag)(m, "logs", "instant_log") && !!(0, M.getZoneEntitlement)(m, "logpush.max_instant_logs_jobs_allowed")
+				return !(0, M.zoneIsDNSOnly)(m) && !!(0, i.getZoneFlipperFlag)(m, "logs", "instant_log") && !!(0, M.getZoneEntitlement)(m, "logpush.max_instant_logs_jobs_allowed")
 			}
 		}]
 	}, {
@@ -498,7 +498,22 @@ const navigation = {
 		testId: "zone-navigation-link-dns",
 		hasPermission: function(m) {
 			return h(m, "dns_records", "dns-record")
-		}
+		},
+		pages: [{
+			title: "navigation.zone.dns.records",
+			url: "/dns/records",
+			testId: "zone-navigation-link-dns-records",
+			hasPermission: function(m) {
+				return !!(0, n.z1)("dns-tab-sections")(m)
+			}
+		}, {
+			title: "navigation.zone.dns.settings",
+			url: "/dns/settings",
+			testId: "zone-navigation-link-dns-settings",
+			hasPermission: function(m) {
+				return !!(0, n.z1)("dns-tab-sections")(m)
+			}
+		}]
 	}, {
 		title: "navigation.zone.email",
 		url: "/email",
@@ -520,11 +535,11 @@ const navigation = {
 		iconType: "spectrum",
 		testId: "zone-navigation-link-spectrum",
 		hasPermission: function(m) {
-			var F = (0, s.getZone)(m);
-			if ((0, M.zoneIsDNSOnly)(m) || !R(m, "zone_settings", "spectrum.app") || !F) return !1;
-			var K = !!((0, u.userHasEntZones)(m) || (0, s.userHasDelegatedEntZones)(m)),
-				me = !!(0, s.getZoneFlipperFlag)(m, "spectrum", "enabled"),
-				ye = !!(0, s.isFree)(F);
+			var F = (0, i.getZone)(m);
+			if ((0, M.zoneIsDNSOnly)(m) || !x(m, "zone_settings", "spectrum.app") || !F) return !1;
+			var K = !!((0, u.userHasEntZones)(m) || (0, i.userHasDelegatedEntZones)(m)),
+				me = !!(0, i.getZoneFlipperFlag)(m, "spectrum", "enabled"),
+				ye = !!(0, i.isFree)(F);
 			return me || K || !ye
 		}
 	}, {
@@ -551,7 +566,7 @@ const navigation = {
 			title: "navigation.zone.ssl-tls.client_certs",
 			url: "/ssl-tls/client-certificates",
 			hasPermission: function(m) {
-				return !!(0, n.z1)("client-certificates")(m) || !!(0, s.getZoneFlipperFlag)(m, "ssl", "client_certificates")
+				return !!(0, n.z1)("client-certificates")(m) || !!(0, i.getZoneFlipperFlag)(m, "ssl", "client_certificates")
 			}
 		}, {
 			title: "navigation.zone.ssl-tls.origin_server",
@@ -600,8 +615,8 @@ const navigation = {
 			url: "/security/api-shield",
 			labels: ["new"],
 			hasPermission: function(m) {
-				var F = (0, s.getZone)(m);
-				return F ? !!(0, s.getZoneFlipperFlag)(m, "firewall", "api_shield_tab") && (0, s.isPlanAtLeast)(F, "business") : !1
+				var F = (0, i.getZone)(m);
+				return F ? !!(0, i.getZoneFlipperFlag)(m, "firewall", "api_shield_tab") && (0, i.isPlanAtLeast)(F, "business") : !1
 			}
 		}, {
 			title: "navigation.zone.security.ddos",
@@ -616,7 +631,7 @@ const navigation = {
 		iconType: "cloudflare-access",
 		testId: "zone-navigation-link-access",
 		hasPermission: function(m) {
-			return !(0, M.zoneIsDNSOnly)(m) && (R(m, "access", "access.app") || R(m, "access", "access.zone.app"))
+			return !(0, M.zoneIsDNSOnly)(m) && (x(m, "access", "access.app") || x(m, "access", "access.zone.app"))
 		}
 	}, {
 		title: "navigation.zone.speed",
@@ -674,7 +689,7 @@ const navigation = {
 			url: "/caching/cache-reserve",
 			labels: ["beta"],
 			hasPermission: function(m) {
-				return !!ae(m)
+				return !!re(m)
 			}
 		}]
 	}, {
@@ -683,7 +698,7 @@ const navigation = {
 		iconType: "edgeworker",
 		testId: "zone-navigation-link-workers",
 		hasPermission: function(m) {
-			return !(0, M.zoneIsDNSOnly)(m) && R(m, "worker", "worker.route")
+			return !(0, M.zoneIsDNSOnly)(m) && x(m, "worker", "worker.route")
 		}
 	}, {
 		title: "navigation.zone.rules",
@@ -777,13 +792,13 @@ const navigation = {
 			title: "navigation.zone.traffic.health_check_analytics",
 			url: "/traffic/health-check-analytics",
 			hasPermission: function(m) {
-				return !(0, M.zoneIsDNSOnly)(m) && !!(0, i.getZoneGraphQLSettingEnabled)(m, "healthCheckEventsAdaptiveGroups")
+				return !(0, M.zoneIsDNSOnly)(m) && !!(0, s.getZoneGraphQLSettingEnabled)(m, "healthCheckEventsAdaptiveGroups")
 			}
 		}, {
 			title: "navigation.zone.traffic.waiting_rooms",
 			url: "/traffic/waiting-rooms",
 			hasPermission: function(m) {
-				return !(0, M.zoneIsDNSOnly)(m) && ((0, M.hasZoneEntitlement)(m, "waiting_rooms.allowed") || !!(0, s.getZoneFlipperFlag)(m, "waitingroomaccessfeatureflipper", "waiting_rooms_ga"))
+				return !(0, M.zoneIsDNSOnly)(m) && ((0, M.hasZoneEntitlement)(m, "waiting_rooms.allowed") || !!(0, i.getZoneFlipperFlag)(m, "waitingroomaccessfeatureflipper", "waiting_rooms_ga"))
 			}
 		}]
 	}, {
@@ -815,8 +830,8 @@ const navigation = {
 		url: "/zaraz",
 		labels: function(m) {
 			var F = [],
-				K = (0, s.getZone)(m);
-			return K && !(0, s.isPlanAtLeast)(K, "pro") && F.push("beta"), F
+				K = (0, i.getZone)(m);
+			return K && !(0, i.isPlanAtLeast)(K, "pro") && F.push("beta"), F
 		},
 		iconType: "zaraz",
 		testId: "zone-navigation-link-zaraz",
@@ -832,8 +847,8 @@ const navigation = {
 		}, {
 			title: "navigation.zone.zaraz.consent",
 			hasPermission: function(m) {
-				var F = (0, s.getZone)(m);
-				return !!(F && !(0, s.isPlanAtLeast)(F, "pro"))
+				var F = (0, i.getZone)(m);
+				return !!(F && !(0, i.isPlanAtLeast)(F, "pro"))
 			},
 			url: "/zaraz/consent"
 		}, {
