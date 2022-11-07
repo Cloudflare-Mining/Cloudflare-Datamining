@@ -19,7 +19,7 @@
 <p>Because knowingly distributing or viewing CSAM is illegal, the owner of the website has enabled Cloudflare's CSAM scanning tool to proactively identify and block images identified as CSAM located on their website.</p>
 <hr>
 <h2 id="h_01EFEZXEQ5X1S4315WMAYGWMYN">Configuring the CSAM scanning tool</h2>
-<p>To enable the tool, go to the <a href="https://dash.cloudflare.com/?to=/:account/:zone/caching/configuration">Cache Configuration</a> section of the dashboard. When enabling the tool, you must provide an email address and NCMEC CyberTipline credentials for reporting purposes. </p><img src="https://images.ctfassets.net/slt3lc6tev37/1TGr6c39OzCJBPJ0OwQ9wl/010c2bf8f092667992efeb240469c2c1/image2.png" alt="">
+<p>To enable the tool, go to the <a href="https://dash.cloudflare.com/?to=/:account/:zone/caching/configuration">Cache Configuration</a> section of the dashboard. When enabling the tool, you must provide an email address and NCMEC CyberTipline credentials for reporting purposes. </p><img src="https://images.ctfassets.net/slt3lc6tev37/1TGr6c39OzCJBPJ0OwQ9wl/010c2bf8f092667992efeb240469c2c1/image2.png" alt="The Caching tab from the Cloudflare dashboard displaying the CSAM Scanning Tool configuration page.">
 <p>This email address will be used to both notify you in the event Cloudflare detects a positive match, and to provide NCMEC in case they or law enforcement need more information about the content reported to them.</p>
 <p>In order to get CyberTipline API credentials, you can email the <a href="mailto:espteam@ncmec.org"><u>espteam@ncmec.org</u></a> to get an application started. Go to the <a href="https://www.missingkids.org/theissues/csam"><u>NCMEC website</u></a> for more information. Cloudflare will use the credentials you provide in order to create reports to NCMEC when potential CSAM is identified on your zones. </p>
 <p>Once you’ve verified your reporting email and entered your NCMEC credentials, scanning to identify potential CSAM will begin.</p>
@@ -54,7 +54,14 @@
 <p>Once any preservation obligations have been fulfilled, you should remove the content from your website. This is especially important if Cloudflare’s notice to you indicates that our firewall block was unsuccessful. Notify <a href="mailto:csamscanningtool@cloudflare.com"><u>csamscanningtool@cloudflare.com</u></a> once the content has been removed so that we can disable the block.  We will notify NCMEC at the same time that we have removed the block based on your representation.</p>
 <hr>
 <h2 id="h_3nmaKiZDQtoTT1mT0AZpas">What if there's a false positive?</h2>
-<p>To disable a block, either because you have determined that the blocked content is not CSAM or because you have taken down the blocked content, please email <a href="mailto:csamscanningtool@cloudflare.com"><u>csamscanningtool@cloudflare.com</u></a>. A request to remove a block must be accompanied by a representation from you confirming that the blocked content is not CSAM or has been removed.  We will notify NCMEC at the same time that we have removed the block based on your representation.</p>
+<p>To disable a block, either because you have determined that the blocked content is not CSAM or because you have taken down the blocked content, please navigate to the Cloudflare dashboard for your zone and request reviews on the relevant blocks. A request to remove a block must be accompanied by a representation from you confirming that the blocked content is not CSAM or has been removed.  We will notify NCMEC at the same time that we have removed the block based on your representation.</p><img src="https://images.ctfassets.net/slt3lc6tev37/qtZf616CYRoyu66z9swmE/cccb643ca4b0e8f9641ab2da27484da2/csam-blocked-content.png" alt="Example error message for a domain with blocked content.">
+<p>These actions are available to users with the following roles:</p>
+<ul>
+	<li>Admin</li>
+	<li>Super Admin</li>
+	<li>Trust &amp; Safety</li>
+</ul>
+<p></p>
 <hr>
 <h2 id="h_15vT9ZXRlUUGVVmlYi3566">Additional Resources</h2>
 <p><a href="https://www.cloudflare.com/supplemental-terms/"><u>CSAM Scanning Tool Supplemental Terms</u></a></p>
