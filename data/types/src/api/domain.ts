@@ -178,7 +178,17 @@ export const DomainSearchResult = eg.object({
       name: eg.string,
       availability: eg.string,
       price: eg.number,
-      icann_fee: eg.number
+      icann_fee: eg.number,
+      pricing: eg.object({
+        currency: eg.string,
+        registration_fee: eg.number,
+        renewal_fee: eg.number
+      }),
+      pricing_local: eg.object({
+        currency: eg.string,
+        registration_fee: eg.number,
+        renewal_fee: eg.number
+      })
     })
   )
 });
