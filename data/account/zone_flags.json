@@ -247,6 +247,10 @@
 	"r2": {
 		"r2_logpush": true
 	},
+	"r2_storage_migrator": {
+		"r2_migrator_waitlist": false,
+		"r2migrator": false
+	},
 	"real_user_monitoring": {
 		"enabled": false,
 		"releaseVer": 1,
