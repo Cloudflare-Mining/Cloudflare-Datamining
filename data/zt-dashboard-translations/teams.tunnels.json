@@ -44,6 +44,8 @@
 	"empty_state_description": "Tunnels allow you to easily and securely connect your environment to Cloudflare so that your users can reach public or private resources.",
 	"empty_state_more_info": "If you need help, check out our <0>documentation</0> on tunnels.",
 	"empty_state_title": "Create your first tunnel",
+	"enable_http2_origin": "HTTP2 connection",
+	"enable_http2_origin_desc": "Attempt to connect to origin using HTTP2. Origin must be configured as https.",
 	"hostname_required": "hostname is required",
 	"install_and_run_a_connector_description": "To connect your tunnel to Cloudflare, copy-paste one of the following commands into a terminal window. Remotely managed tunnels require that you install cloudflared 2022.03.04 or later.",
 	"install_and_run_a_connector_description_no_token": "This tunnel is currently running with credentials stored in your local credentials file. To generate a new token for this tunnel, click Refresh token. Next, run the command in your terminal window with the newly generated token.",
