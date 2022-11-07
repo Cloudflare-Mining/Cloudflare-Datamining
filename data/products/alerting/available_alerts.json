@@ -134,45 +134,45 @@
 	],
 	"Script Monitor": [
 		{
-			"display_name": "Script Monitor New Code Change Detection Alert",
+			"display_name": "Page Shield New Code Change Detection Alert",
 			"type": "scriptmonitor_alert_new_code_change_detections",
 			"description": "Receive an alert whenever a code change is detected in a script getting monitored.",
 			"filter_options": []
 		},
 		{
-			"display_name": "Script Monitor New Domain Alert",
+			"display_name": "Page Shield New Domain Alert",
 			"type": "scriptmonitor_alert_new_hosts",
-			"description": "Receive an alert whenever your users load a JavaScript file from a new domain not previously seen.",
+			"description": "Receive an alert whenever your users load a resource from a new domain not previously seen.",
 			"filter_options": []
 		},
 		{
-			"display_name": "Script Monitor New Malicious Domain Alert",
+			"display_name": "Page Shield New Malicious Domain Alert",
 			"type": "scriptmonitor_alert_new_malicious_hosts",
-			"description": "Receive an alert whenever a JavaScript file loaded by your users is hosted under a domain reported as malicious.",
+			"description": "Receive an alert whenever a resource loaded by your users is hosted under a domain reported as malicious.",
 			"filter_options": []
 		},
 		{
-			"display_name": "Script Monitor New Malicious Script Alert",
+			"display_name": "Page Shield New Malicious Script Alert",
 			"type": "scriptmonitor_alert_new_malicious_scripts",
 			"description": "Receive an alert whenever a JavaScript file loaded by your users is classified as malicious.",
 			"filter_options": []
 		},
 		{
-			"display_name": "Script Monitor New Malicious URL Alert",
+			"display_name": "Page Shield New Malicious URL Alert",
 			"type": "scriptmonitor_alert_new_malicious_url",
-			"description": "Receive an alert whenever a JavaScript file loaded by your users is from a URL reported as malicious.",
+			"description": "Receive an alert whenever a resource loaded by your users is from a URL reported as malicious.",
 			"filter_options": []
 		},
 		{
-			"display_name": "Script Monitor New Script URL Exceeds Max Length Alert",
+			"display_name": "Page Shield New Resource URL Exceeds Max Length Alert",
 			"type": "scriptmonitor_alert_new_max_length_script_url",
-			"description": "Receive an alert whenever we detect a script with a very large URL",
+			"description": "Receive an alert whenever we detect a resource with a very large URL",
 			"filter_options": []
 		},
 		{
-			"display_name": "Script Monitor New Scripts Alert",
+			"display_name": "Page Shield New Resources Alert",
 			"type": "scriptmonitor_alert_new_scripts",
-			"description": "Receive an alert whenever your users load a new JavaScript file that has not been previously seen.",
+			"description": "Receive an alert whenever your users load a new resource that has not been previously seen.",
 			"filter_options": []
 		}
 	],
@@ -211,6 +211,26 @@
 			"display_name": "Zone-level Authenticated Origin Pulls Certificate Expiration Alert",
 			"type": "zone_aop_custom_certificate_expiration_type",
 			"description": "Expiration notices for custom uploaded zone-level Authenticated Origin Pulls certificates",
+			"filter_options": []
+		}
+	],
+	"Trust and Safety Blocks": [
+		{
+			"display_name": "Notifications for Block Review Rejection",
+			"type": "block_notification_review_rejected",
+			"description": "Get notifications when Cloudflare Trust & Safety rejects a request for block removal",
+			"filter_options": []
+		},
+		{
+			"display_name": "Notifications for New Blocks",
+			"type": "block_notification_new_block",
+			"description": "Get notifications when Cloudflare Trust & Safety places a block in one of your websites",
+			"filter_options": []
+		},
+		{
+			"display_name": "Notifications for Removed Blocks",
+			"type": "block_notification_block_removed",
+			"description": "Get notifications when Cloudflare Trust & Safety removes a block from your website",
 			"filter_options": []
 		}
 	],
