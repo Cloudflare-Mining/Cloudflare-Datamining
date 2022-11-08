@@ -5,37 +5,31 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About the Department</strong></p>
-<p><span style="font-weight: 400;">The Cloudflare Customer Support Team solves complicated problems and answers technical questions via phone, email, chat and social media. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, we are always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - for better service and future product development.</span></p>
-<h4><strong>Description</strong></h4>
-<p><span style="font-weight: 400;">Security Operations Center </span><span style="font-weight: 400;">Engineers provide premium-level support for Cloudflare’s security products and features. Our largest and most technically sophisticated customers will contact Support for assistance and intelligence in dealing with threats or attacks on their infrastructure at OSI Layers 3, 4, and 7. This will span the range of Cloudflare security products from Magic Transit Infrastructure Protection, DDoS mitigation and Network Firewall, to using the Web Application firewall (WAF), Spectrum, Bot Management and Rate Limiting to help customers.</span></p>
-<p><span style="font-weight: 400;">Security Operations Center </span><span style="font-weight: 400;">Engineers analyze threats, make detailed and informed suggestions for mitigation and may need to implement mitigation strategies directly on behalf of the customer. The team also provides attack reporting beyond Cloudflare’s self-service reports.</span></p>
-<h4><strong>Responsibilities</strong></h4>
+<p><strong>What You'll Do</strong></p>
+<p><span style="font-weight: 400;">We are looking for a Sales Compensation Analyst to join our team within Global Sales Operations. As a key team member of a high-visibility organization, the Sales Compensation Analyst will provide data analysis, reporting and operational assistance in support of Cloudflare’s Global Sales Compensation Program. Working closely with the existing Sales Compensation team and partnering with Sales Finance, the Sales Compensation Analyst will play an active role in compensation plan administration, including data management within the Anaplan ICM platform, compensation plan distribution, commissions calculations and auditing, performance reporting, and data validation.&nbsp;</span></p>
+<p><span style="font-weight: 400;">This position also offers tremendous growth opportunity, with the successful candidate eventually playing a much larger role in Incentive Compensation Management (ICM) platform administration, process development/refinement,&nbsp; and the ongoing operational execution of Cloudflare’s Sales Compensation Program.&nbsp;</span></p>
+<p><strong>Responsibilities</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Monitor and investigate the alerts to identify attacks</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Work with Engineering and Operations teams to mitigate attacks, suggest steps to mitigate, and apply the appropriate mitigation, when applicable</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Work with Engineering and Product teams to improve the products and tools</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Communicate with customers via chat, email, and phone&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Review the latest alerts to determine relevancy and urgency. Create new tracking tickets for alerts that signal an incident and require review or escalation</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Configure / Manager security monitoring rules and contribute to tool improvements</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Compare traffic signatures and attributes including IP addresses, cookie variations, HTTP headers, and JavaScript footprints to determine what is good traffic and what is malicious</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">DDoS mitigation for OSI layers 3,4, &amp; 7: filter malicious traffic using Cloudflare tools like Magic Transit, Network Firewall, WAF, IP reputation lists, packet inspection, blacklisting, whitelisting, and/or rate limiting</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Data management (data entry, administration, ownership) within Cloudflare’s Incentive Compensation management platform</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Employee onboarding/off-boarding and change management</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Compensation Plan document distribution and tracking</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Commission and incentive compensation calculations</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Sales performance reporting and visualization</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Data validation and auditing</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">General data analysis</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">General Sales Compensation Program support</span></li>
 </ul>
-<p><strong>Key skill sets</strong></p>
+<p><strong>About You</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Modern internet protocols like UDP, TCP, etc.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Advanced understanding of iptables</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Analysis of traffic for attack anomaly detection and creation of mitigation rules</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience in handling attack mitigation and thorough knowledge of various attacks (L3/4 and L7)</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Knowledge of Cloudflare Security Products &amp; Features</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Technical Support experience</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Good communication skills with high-value VIP customers under attack</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Computer Networking fundamentals&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Command line / Bash shell</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Sysadmin skills (Linux/Mac/Windows) &amp; Programming skills (Python, Ruby, PHP, C, C#, Java, Perl, Git etc.)</span></li>
-	<li style="font-weight: 400;">Security skills and certifications preferred: CISSP, GCIA GCIH, GCFA, GCFE, etc.</li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Calm under pressure</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">3-5 years of Sales Compensation or Commissions experience in the High-Tech sector, with emphasis on program administration and tactical execution. Familiarity/experience with Sales Compensation ICM tools a very strong plus (i.e. Anaplan, Xactly, Callidus, Varicent, etc.)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Firm grasp of the Sales Comp administrative process flow, including plan document distribution and tracking; transaction crediting; incentive calculations; payment file preparation; and issue resolution</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Highly proficient in complex Excel / GoogleSheet files</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Proficient in additional analytics, reporting and data visualization tools/platforms</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Exceptionally motivated and driven self-starter, with the desire to learn and build a career</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Demonstrated ability to multitask in a highly deadline-driven environment</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong verbal and written communication skills&nbsp;</span></li>
 </ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
