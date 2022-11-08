@@ -57736,10 +57736,10 @@
 																		"example": "my_ref"
 																	},
 																	"categories": {
-																		"description": "The categories of the rule",
+																		"description": "The categories of the rule.",
 																		"type": "array",
 																		"items": {
-																			"description": "A category of the rule",
+																			"description": "A category of the rule.",
 																			"type": "string",
 																			"example": "directory-traversal"
 																		},
@@ -58240,7 +58240,7 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"description": "A category of the rule",
+							"description": "A category of the rule.",
 							"type": "string",
 							"example": "directory-traversal"
 						}
