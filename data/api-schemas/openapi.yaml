@@ -4384,6 +4384,7 @@ components:
       - ethereum
       - ipfs
       - ipfs_universal_path
+      - polygon
       example: ipfs
       type: string
     components-schemas-ttl:
@@ -12194,6 +12195,27 @@ components:
       minimum: 30
       nullable: true
       type: number
+    nel:
+      allOf:
+      - $ref: '#/components/schemas/schemas-base'
+      - properties:
+          id:
+            description: Zone setting identifier.
+            enum:
+            - nel
+            example: nel
+          value:
+            $ref: '#/components/schemas/nel_value'
+      description: 'Enable Network Error Logging reporting on your zone. (Beta) '
+      title: Network Error Logging
+    nel_value:
+      description: Value of the zone setting.
+      properties:
+        enabled:
+          default: false
+          example: false
+          type: boolean
+      type: object
     network:
       description: A list of network ranges that requests from this location would
         originate from.
@@ -14741,6 +14763,25 @@ components:
       - new_users_per_minute
       - total_active_users
       type: object
+    queue:
+      properties:
+        consumers:
+          readOnly: true
+        consumers_total_count:
+          readOnly: true
+        created_on:
+          readOnly: true
+        modified_on:
+          readOnly: true
+        producers:
+          readOnly: true
+        producers_total_count:
+          readOnly: true
+        queue_id:
+          readOnly: true
+        queue_name:
+          $ref: '#/components/schemas/queues_components-schemas-name'
+      type: object
     queue_all:
       default: false
       description: If queue_all is `true`, all the traffic that is coming to a route
@@ -14748,6 +14789,28 @@ components:
         this field is set and estimated time will become unavailable.
       example: true
       type: boolean
+    queue_created:
+      properties:
+        created_on:
+          readOnly: true
+        modified_on:
+          readOnly: true
+        queue_id:
+          readOnly: true
+        queue_name:
+          $ref: '#/components/schemas/queues_components-schemas-name'
+      type: object
+    queue_updated:
+      properties:
+        created_on:
+          readOnly: true
+        modified_on:
+          readOnly: true
+        queue_id:
+          readOnly: true
+        queue_name:
+          $ref: '#/components/schemas/queues_components-schemas-name'
+      type: object
     queueing_method:
       default: fifo
       description: |-
@@ -14762,6 +14825,9 @@ components:
       - passthrough
       - reject
       example: fifo
+      type: string
+    queues_components-schemas-name:
+      example: example-queue
       type: string
     quota:
       properties:
@@ -19070,6 +19136,7 @@ components:
       - $ref: '#/components/schemas/max_upload'
       - $ref: '#/components/schemas/mobile_redirect'
       - $ref: '#/components/schemas/mirage'
+      - $ref: '#/components/schemas/nel'
       - $ref: '#/components/schemas/polish'
       - $ref: '#/components/schemas/webp'
       - $ref: '#/components/schemas/prefetch_preload'
@@ -36058,6 +36125,360 @@ paths:
       x-cfPermissionsRequired:
         enum:
         - com.cloudflare.edge.worker.durable-object.class.read
+  /accounts/{account_identifier}/workers/queues:
+    get:
+      description: Returns the queues owned by an account.
+      operationId: queue-list-queues
+      parameters:
+      - in: path
+        name: account_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - allOf:
+                  - $ref: '#/components/schemas/api-response-collection'
+                  - properties:
+                      errors:
+                        nullable: true
+                  - properties:
+                      messages:
+                        nullable: true
+                  - properties:
+                      result_info:
+                        properties:
+                          count:
+                            example: 1
+                          page:
+                            example: 1
+                          per_page:
+                            example: 100
+                          total_count:
+                            example: 1
+                          total_pages:
+                            example: 1
+                        type: object
+                  - properties:
+                      result:
+                        items:
+                          $ref: '#/components/schemas/queue'
+                        type: array
+                    required:
+                    - queue_id
+                    - queue_name
+                    - created_on
+                    - modified_on
+                    - producers_total_count
+                    - producers
+                    - consumers_total_count
+                    - consumers
+                    type: object
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: List Queues response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/api-response-collection'
+                - properties:
+                    errors:
+                      nullable: true
+                - properties:
+                    messages:
+                      nullable: true
+                - properties:
+                    result_info:
+                      properties:
+                        count:
+                          example: 1
+                        page:
+                          example: 1
+                        per_page:
+                          example: 100
+                        total_count:
+                          example: 1
+                        total_pages:
+                          example: 1
+                      type: object
+                - properties:
+                    result:
+                      items:
+                        $ref: '#/components/schemas/queue'
+                      type: array
+                  required:
+                  - queue_id
+                  - queue_name
+                  - created_on
+                  - modified_on
+                  - producers_total_count
+                  - producers
+                  - consumers_total_count
+                  - consumers
+                  type: object
+          description: List Queues response
+      security:
+      - api_email: []
+        api_key: []
+      summary: List Queues
+      tags:
+      - Queue
+      x-cfPermissionsRequired:
+        enum:
+        - com.cloudflare.edge.worker.queue.list
+    post:
+      description: Creates a new queue.
+      operationId: queue-create-queue
+      parameters:
+      - in: path
+        name: account_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                queue_name: example-queue
+        required: true
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - allOf:
+                  - $ref: '#/components/schemas/api-response-collection'
+                  - properties:
+                      result:
+                        allOf:
+                        - $ref: '#/components/schemas/queue_created'
+                        type: object
+                    required:
+                    - queue_id
+                    - queue_name
+                    - created_on
+                    - modified_on
+                    type: object
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Create Queue response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/api-response-collection'
+                - properties:
+                    result:
+                      allOf:
+                      - $ref: '#/components/schemas/queue_created'
+                      type: object
+                  required:
+                  - queue_id
+                  - queue_name
+                  - created_on
+                  - modified_on
+                  type: object
+          description: Create Queue response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Create Queue
+      tags:
+      - Queue
+      x-cfPermissionsRequired:
+        enum:
+        - com.cloudflare.edge.worker.queue.create
+  /accounts/{account_identifier}/workers/queues/{name}:
+    delete:
+      description: Deletes a queue.
+      operationId: queue-delete-queue
+      parameters:
+      - in: path
+        name: name
+        required: true
+        schema:
+          $ref: '#/components/schemas/queues_components-schemas-name'
+      - in: path
+        name: account_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      requestBody:
+        content:
+          application/json: {}
+        required: true
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - allOf:
+                  - $ref: '#/components/schemas/api-response-collection'
+                  - nullable: true
+                    properties:
+                      result:
+                        nullable: true
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Delete Queue response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/api-response-collection'
+                - nullable: true
+                  properties:
+                    result:
+                      nullable: true
+          description: Delete Queue response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Delete Queue
+      tags:
+      - Queue
+      x-cfPermissionsRequired:
+        enum:
+        - com.cloudflare.edge.worker.queue.delete
+    get:
+      description: Get information about a specific queue.
+      operationId: queue-queue-details
+      parameters:
+      - in: path
+        name: name
+        required: true
+        schema:
+          $ref: '#/components/schemas/queues_components-schemas-name'
+      - in: path
+        name: account_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - allOf:
+                  - $ref: '#/components/schemas/api-response-collection'
+                  - properties:
+                      result:
+                        allOf:
+                        - $ref: '#/components/schemas/queue'
+                        type: object
+                    required:
+                    - queue_id
+                    - queue_name
+                    - created_on
+                    - modified_on
+                    type: object
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Queue Details response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/api-response-collection'
+                - properties:
+                    result:
+                      allOf:
+                      - $ref: '#/components/schemas/queue'
+                      type: object
+                  required:
+                  - queue_id
+                  - queue_name
+                  - created_on
+                  - modified_on
+                  type: object
+          description: Queue Details response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Queue Details
+      tags:
+      - Queue
+      x-cfPermissionsRequired:
+        enum:
+        - com.cloudflare.edge.worker.queue.read
+    put:
+      description: Updates a queue.
+      operationId: queue-update-queue
+      parameters:
+      - in: path
+        name: name
+        required: true
+        schema:
+          $ref: '#/components/schemas/queues_components-schemas-name'
+      - in: path
+        name: account_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                queue_name: rename-example-queue
+        required: true
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - allOf:
+                  - $ref: '#/components/schemas/api-response-collection'
+                  - properties:
+                      result:
+                        allOf:
+                        - $ref: '#/components/schemas/queue_updated'
+                        type: object
+                    required:
+                    - queue_id
+                    - queue_name
+                    - created_on
+                    - modified_on
+                    type: object
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Update Queue response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/api-response-collection'
+                - properties:
+                    result:
+                      allOf:
+                      - $ref: '#/components/schemas/queue_updated'
+                      type: object
+                  required:
+                  - queue_id
+                  - queue_name
+                  - created_on
+                  - modified_on
+                  type: object
+          description: Update Queue response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Update Queue
+      tags:
+      - Queue
+      x-cfPermissionsRequired:
+        enum:
+        - com.cloudflare.edge.worker.queue.update
   /accounts/{account_identifier}/workers/scripts:
     get:
       description: Fetch a list of uploaded workers.
@@ -68501,6 +68922,109 @@ paths:
         - '#zone_settings:edit'
       x-cfPlanAvailability:
         business: true
+        enterprise: true
+        free: true
+        pro: true
+  /zones/{zone_identifier}/settings/nel:
+    get:
+      description: 'Enable Network Error Logging reporting on your zone. (Beta) '
+      operationId: zone-settings-get-network-error-logging-setting
+      parameters:
+      - in: path
+        name: zone_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - allOf:
+                  - $ref: '#/components/schemas/zone_settings_response_single'
+                  - properties:
+                      result:
+                        $ref: '#/components/schemas/nel'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Get Network Error Logging setting response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/zone_settings_response_single'
+                - properties:
+                    result:
+                      $ref: '#/components/schemas/nel'
+          description: Get Network Error Logging setting response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Get Network Error Logging setting
+      tags:
+      - Zone Settings
+      x-cfPermissionsRequired:
+        enum:
+        - '#zone_settings:read'
+      x-cfPlanAvailability:
+        business: false
+        enterprise: true
+        free: true
+        pro: true
+    patch:
+      description: 'Enable Network Error Logging reporting on your zone. (Beta) '
+      operationId: zone-settings-change-network-error-logging-setting
+      parameters:
+      - in: path
+        name: zone_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                value:
+                  $ref: '#/components/schemas/nel_value'
+              required:
+              - value
+        required: true
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - allOf:
+                  - $ref: '#/components/schemas/zone_settings_response_single'
+                  - properties:
+                      result:
+                        $ref: '#/components/schemas/nel'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Change Network Error Logging setting response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/zone_settings_response_single'
+                - properties:
+                    result:
+                      $ref: '#/components/schemas/nel'
+          description: Change Network Error Logging setting response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Change Network Error Logging setting
+      tags:
+      - Zone Settings
+      x-cfPermissionsRequired:
+        enum:
+        - '#zone_settings:edit'
+      x-cfPlanAvailability:
+        business: false
         enterprise: true
         free: true
         pro: true
