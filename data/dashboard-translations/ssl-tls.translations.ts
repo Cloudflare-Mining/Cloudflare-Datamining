@@ -682,7 +682,7 @@ This feature requires additional configuration at your web server. Refer to our 
 	tls_client_auth_title: "Authenticated Origin Pulls",
 	total_tls: {
 		card_title: "Total TLS",
-		card_description: "Cloudflare will issue individual certificates for every proxied hostname. These certificates will protect proxied hostnames that are not covered by the Universal certificate.",
+		card_description: "Cloudflare will issue individual certificates for every proxied hostname. Once enabled, all hostnames in your domain will be covered by a TLS certificate.",
 		card_switch_ca_note: "Select your Certificate Authority preference to enable Total TLS. Once this feature is enabled, the Certificate Authority cannot be changed without disabling the feature.",
 		card_enabling_note: "Please allow some time for certificates to be provisioned for each of your DNS records. You can monitor the progress via the Edge Certificates table.",
 		disable_modal_title: "Disable Total TLS",
