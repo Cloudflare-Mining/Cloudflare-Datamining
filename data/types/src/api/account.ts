@@ -327,9 +327,15 @@ const AccountFirewallRuleSkipOverride = eg.object({
 export const AccountFirewallRuleHTTPApplication = eg.object({
   ...baseRuleProperties,
   action: eg.literal('select_config'),
+  position: eg.object({
+    index: eg.number,
+    after: eg.string,
+    before: eg.string
+  }),
   action_parameters: eg.object({
     http_application: eg.string,
-    version: eg.string
+    version: eg.string,
+    lock_by_default: eg.boolean
   })
 });
 
