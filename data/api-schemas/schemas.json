@@ -57620,7 +57620,7 @@
 				}
 			},
 			"post": {
-				"summary": "Create account ruleset",
+				"summary": "Create an account ruleset",
 				"description": "Creates a ruleset at the account level.",
 				"parameters": [
 					{
@@ -57634,7 +57634,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Create account ruleset response",
+						"description": "Create an account ruleset response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -57734,6 +57734,19 @@
 																		"description": "The reference of the rule (the rule ID by default).",
 																		"type": "string",
 																		"example": "my_ref"
+																	},
+																	"categories": {
+																		"description": "The categories of the rule",
+																		"type": "array",
+																		"items": {
+																			"description": "A category of the rule",
+																			"type": "string",
+																			"example": "directory-traversal"
+																		},
+																		"example": [
+																			"directory-traversal",
+																			"header"
+																		]
 																	},
 																	"enabled": {
 																		"description": "Whether the rule should be executed.",
@@ -58047,7 +58060,7 @@
 		},
 		"/accounts/{account_id}/rulesets/{ruleset_id}/versions": {
 			"get": {
-				"summary": "List account ruleset versions",
+				"summary": "List an account ruleset's versions",
 				"description": "Fetches the versions of an account ruleset.",
 				"parameters": [
 					{
@@ -58069,7 +58082,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "List account ruleset versions response",
+						"description": "List an account ruleset's versions response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -58217,9 +58230,78 @@
 				}
 			}
 		},
+		"/accounts/{account_id}/rulesets/{ruleset_id}/versions/{ruleset_version}/by_tag/{rule_tag}": {
+			"get": {
+				"summary": "List an account ruleset version's rules by tag",
+				"description": "Fetches the rules of a managed account ruleset version for a given tag.",
+				"parameters": [
+					{
+						"name": "rule_tag",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"description": "A category of the rule",
+							"type": "string",
+							"example": "directory-traversal"
+						}
+					},
+					{
+						"name": "ruleset_version",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D~1versions~1%7Bruleset_version%7D/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "ruleset_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "account_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1audit_logs/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "List an account ruleset version's rules by tag response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					},
+					{
+						"api_token": []
+					}
+				],
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
 		"/accounts/{account_id}/rulesets/{ruleset_id}/rules": {
 			"post": {
-				"summary": "Create account ruleset rule",
+				"summary": "Create an account ruleset rule",
 				"description": "Adds a new rule to an account ruleset. The rule will be added to the end of the existing list of rules in the ruleset.",
 				"parameters": [
 					{
@@ -58241,7 +58323,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Create account ruleset rule response",
+						"description": "Create an account ruleset rule response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -58471,7 +58553,7 @@
 		"/accounts/{account_id}/rulesets/phases/{ruleset_phase}/entrypoint": {
 			"get": {
 				"summary": "Get an account entry point ruleset",
-				"description": "Fetches the latest version of an account entry point ruleset for a given phase.",
+				"description": "Fetches the latest version of the account entry point ruleset for a given phase.",
 				"parameters": [
 					{
 						"name": "ruleset_phase",
@@ -58581,6 +58663,116 @@
 				}
 			}
 		},
+		"/accounts/{account_id}/rulesets/phases/{ruleset_phase}/versions": {
+			"get": {
+				"summary": "List an account entry point ruleset's versions",
+				"description": "Fetches the versions of an account entry point ruleset.",
+				"parameters": [
+					{
+						"name": "ruleset_phase",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1phases~1%7Bruleset_phase%7D~1entrypoint/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "account_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1audit_logs/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "List an account entry point ruleset's versions response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/get/responses/200/content/application~1json/schema"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					},
+					{
+						"api_token": []
+					}
+				],
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/accounts/{account_id}/rulesets/phases/{ruleset_phase}/versions/{ruleset_version}": {
+			"get": {
+				"summary": "Get an account entry point ruleset version",
+				"description": "Fetches a specific version of an account entry point ruleset.",
+				"parameters": [
+					{
+						"name": "ruleset_version",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D~1versions~1%7Bruleset_version%7D/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "ruleset_phase",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1phases~1%7Bruleset_phase%7D~1entrypoint/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "account_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1audit_logs/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Get an account entry point ruleset version response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					},
+					{
+						"api_token": []
+					}
+				],
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
 		"/zones/{zone_id}/rulesets": {
 			"get": {
 				"summary": "List zone rulesets",
@@ -58624,7 +58816,7 @@
 				}
 			},
 			"post": {
-				"summary": "Create zone ruleset",
+				"summary": "Create a zone ruleset",
 				"description": "Creates a ruleset at the zone level.",
 				"parameters": [
 					{
@@ -58638,7 +58830,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Create zone ruleset response",
+						"description": "Create a zone ruleset response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -58838,7 +59030,7 @@
 		},
 		"/zones/{zone_id}/rulesets/{ruleset_id}/versions": {
 			"get": {
-				"summary": "List zone ruleset versions",
+				"summary": "List a zone ruleset's versions",
 				"description": "Fetches the versions of a zone ruleset.",
 				"parameters": [
 					{
@@ -58860,7 +59052,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "List zone ruleset versions response",
+						"description": "List a zone ruleset's versions response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -59007,7 +59199,7 @@
 		},
 		"/zones/{zone_id}/rulesets/{ruleset_id}/rules": {
 			"post": {
-				"summary": "Create zone ruleset rule",
+				"summary": "Create a zone ruleset rule",
 				"description": "Adds a new rule to a zone ruleset. The rule will be added to the end of the existing list of rules in the ruleset.",
 				"parameters": [
 					{
@@ -59029,7 +59221,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Create zone ruleset rule response",
+						"description": "Create a zone ruleset rule response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -59201,7 +59393,7 @@
 		"/zones/{zone_id}/rulesets/phases/{ruleset_phase}/entrypoint": {
 			"get": {
 				"summary": "Get a zone entry point ruleset",
-				"description": "Fetches the latest version of a zone entry point ruleset for a given phase.",
+				"description": "Fetches the latest version of the zone entry point ruleset for a given phase.",
 				"parameters": [
 					{
 						"name": "ruleset_phase",
@@ -59249,7 +59441,7 @@
 				}
 			},
 			"put": {
-				"summary": "Update zone entry point ruleset",
+				"summary": "Update a zone entry point ruleset",
 				"description": "Updates a zone entry point ruleset, creating a new version.",
 				"parameters": [
 					{
@@ -59271,7 +59463,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Update zone entry point ruleset response",
+						"description": "Update a zone entry point ruleset response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -59305,6 +59497,116 @@
 							}
 						}
 					}
+				}
+			}
+		},
+		"/zones/{zone_id}/rulesets/phases/{ruleset_phase}/versions": {
+			"get": {
+				"summary": "List a zone entry point ruleset's versions",
+				"description": "Fetches the versions of a zone entry point ruleset.",
+				"parameters": [
+					{
+						"name": "ruleset_phase",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1phases~1%7Bruleset_phase%7D~1entrypoint/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "zone_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1argo~1smart_routing/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "List a zone entry point ruleset's versions response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/get/responses/200/content/application~1json/schema"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					},
+					{
+						"api_token": []
+					}
+				],
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/zones/{zone_id}/rulesets/phases/{ruleset_phase}/versions/{ruleset_version}": {
+			"get": {
+				"summary": "Get a zone entry point ruleset version",
+				"description": "Fetches a specific version of a zone entry point ruleset.",
+				"parameters": [
+					{
+						"name": "ruleset_version",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D~1versions~1%7Bruleset_version%7D/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "ruleset_phase",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1phases~1%7Bruleset_phase%7D~1entrypoint/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "zone_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1argo~1smart_routing/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Get a zone entry point ruleset version response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets/post/responses/200/content/application~1json/schema"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					},
+					{
+						"api_token": []
+					}
+				],
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
 				}
 			}
 		},
