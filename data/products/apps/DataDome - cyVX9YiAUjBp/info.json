@@ -27,8 +27,8 @@
 	"adminVisible": true,
 	"userVisible": true,
 	"installable": true,
-	"codeVersion": "1.12.0",
-	"infoVersion": "1.12.0",
+	"codeVersion": "1.13.1",
+	"infoVersion": "1.13.1",
 	"points": 0,
 	"supportEmail": "support@datadome.co",
 	"products": [],
@@ -11381,7 +11381,7 @@
 			"releaseNotes": "Added include regex option for client side detection (fixed code)",
 			"source": "",
 			"creatorUserId": "",
-			"installable": false,
+			"installable": true,
 			"files": [],
 			"hasCode": true,
 			"fileHandle": "local/KUGSz5fw1hMS",
@@ -11435,12 +11435,13 @@
 				},
 				"created": "2019-03-10T12:47:28.280954Z"
 			},
-			"moderationStatus": "pending",
+			"moderationStatus": "approved",
 			"moderationMetadata": {
 				"requestedByUserId": "9f5a5924c8351d8d95de58ee8f349c1c",
 				"requestedAt": "2022-09-29T11:58:11.139075526Z",
 				"canceledAt": null,
-				"reviewedAt": null
+				"reviewedByUserId": "8c9e7d1b61bf20952b1efe3a0af3f30e",
+				"reviewedAt": "2022-11-08T19:20:51.543551781Z"
 			}
 		}
 	]
