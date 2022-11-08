@@ -249,3 +249,10 @@ export const DomainProtectionPostResult = eg.object({
   status: eg.number,
   message: eg.string
 });
+
+export enum ResendDomainProtectionEmailRequest {
+  UNLOCK_APPROVAL = 'UnlockApprovalRequest',
+  CONFIGURATION_UPDATE = 'ConfigurationUpdateRequest',
+  APPROVER_EMAIL_VERIFICATION = 'DesignatedApproverVerificationRequest',
+  APPROVER_REMOVAL = 'DesignatedApproverRemovalRequest'
+}
