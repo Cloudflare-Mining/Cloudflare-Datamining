@@ -473,6 +473,29 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"mirage\",\n    \"value\": \"off\",\n    \"editable\": true,\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
 		},
 		{
+			"title": "Get Network Error Logging setting",
+			"description": "Enable Network Error Logging reporting on your zone. (Beta) ",
+			"rel": "tag:cloudflare.com,2017:setting-nel",
+			"href": "zones/{#/definitions/zone_identifier}/settings/nel",
+			"method": "GET",
+			"cfOwnership": "www",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#zone_settings:read"
+				]
+			},
+			"html_id": "zone-settings-get-network-error-logging-setting",
+			"uri": "zones/:zone_identifier/settings/nel",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/settings/nel\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"nel\",\n    \"value\": {\n      \"enabled\": false\n    },\n    \"editable\": true,\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
+		},
+		{
 			"title": "Get Enable Error Pages On setting",
 			"description": "Cloudflare will proxy customer error pages on any 502,504 errors on origin server instead of showing a default Cloudflare error page. This does not apply to 522 errors and is limited to Enterprise Zones.",
 			"rel": "tag:cloudflare.com,2017:setting-origin-error-page-pass-thru",
@@ -2236,6 +2259,54 @@
 				"example": "{\n  \"value\": \"off\"\n}"
 			},
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"mirage\",\n    \"value\": \"off\",\n    \"editable\": true,\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
+		},
+		{
+			"title": "Change Network Error Logging setting",
+			"description": "Enable Network Error Logging reporting on your zone. (Beta) ",
+			"rel": "tag:cloudflare.com,2017:setting-nel",
+			"href": "zones/{#/definitions/zone_identifier}/settings/nel",
+			"method": "PATCH",
+			"cfOwnership": "www",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#zone_settings:edit"
+				]
+			},
+			"html_id": "zone-settings-change-network-error-logging-setting",
+			"uri": "zones/:zone_identifier/settings/nel",
+			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/settings/nel\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"value\":{\"enabled\":false}}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"value": {
+						"type": "object",
+						"example": "{\n  \"enabled\": false\n}",
+						"properties": {
+							"enabled": {
+								"type": "boolean",
+								"example": "false",
+								"default": false
+							}
+						},
+						"description": "Value of the zone setting."
+					}
+				},
+				"required_props": [
+					"value"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"value\": {\n    \"enabled\": false\n  }\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"nel\",\n    \"value\": {\n      \"enabled\": false\n    },\n    \"editable\": true,\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
 		},
 		{
 			"title": "Change Opportunistic Encryption setting",
@@ -5216,6 +5287,68 @@
 				"example": "{\n  \"id\": \"mirage\",\n  \"value\": \"off\",\n  \"editable\": true,\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n}",
 				"title": "Mirage Image Optimization",
 				"description": "Automatically optimize image loading for website visitors on mobile devices. Refer to [our blog post](http://blog.cloudflare.com/mirage2-solving-mobile-speed) for more information."
+			},
+			{
+				"all_props": {
+					"id": {
+						"type": "string",
+						"example": "\"nel\"",
+						"description": "Zone setting identifier.",
+						"enum": [
+							"nel"
+						]
+					},
+					"value": {
+						"type": [
+							"string",
+							"number",
+							"object",
+							"array",
+							"object"
+						],
+						"example": "{\n  \"enabled\": false\n}",
+						"description": "Value of the zone setting.",
+						"properties": {
+							"enabled": {
+								"type": "boolean",
+								"example": "false",
+								"default": false
+							}
+						}
+					},
+					"editable": {
+						"type": "boolean",
+						"example": "true",
+						"readOnly": true,
+						"enum": [
+							true,
+							false
+						],
+						"description": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).",
+						"default": true
+					},
+					"modified_on": {
+						"type": [
+							"string",
+							"null"
+						],
+						"example": "\"2014-01-01T05:20:00.12345Z\"",
+						"readOnly": true,
+						"format": "date-time",
+						"description": "last time this setting was modified."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"id",
+					"value",
+					"editable",
+					"modified_on"
+				],
+				"objects": [],
+				"example": "{\n  \"id\": \"nel\",\n  \"value\": {\n    \"enabled\": false\n  },\n  \"editable\": true,\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n}",
+				"title": "Network Error Logging",
+				"description": "Enable Network Error Logging reporting on your zone. (Beta) "
 			},
 			{
 				"all_props": {
