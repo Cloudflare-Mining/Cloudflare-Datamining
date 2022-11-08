@@ -4,7 +4,7 @@
 		"title": "Cloudflare Client API",
 		"description": "The Cloudflare Client API",
 		"version": "4.0.0",
-		"x-revision": "261-99e1622"
+		"x-revision": "262-9859412"
 	},
 	"servers": [
 		{
@@ -1868,7 +1868,7 @@
 														},
 														"name": {
 															"type": "string",
-															"description": "Role Name.",
+															"description": "Role name.",
 															"maxLength": 120,
 															"readOnly": true,
 															"example": "Account Administrator"
@@ -2076,7 +2076,7 @@
 		"/accounts/{account_identifier}/subscriptions": {
 			"get": {
 				"summary": "List Subscriptions",
-				"description": "List all of an account's subscriptions.",
+				"description": "Lists all of an account's subscriptions.",
 				"parameters": [
 					{
 						"name": "account_identifier",
@@ -2158,7 +2158,7 @@
 																			"type": "object",
 																			"properties": {
 																				"name": {
-																					"description": "The name of the component_value.",
+																					"description": "The name of the component value.",
 																					"type": "string",
 																					"example": "page_rules"
 																				},
@@ -2208,7 +2208,7 @@
 																		"type": "object",
 																		"properties": {
 																			"id": {
-																				"description": "The ID of the rate_plan.",
+																				"description": "The ID of the rate plan.",
 																				"example": "free"
 																			},
 																			"public_name": {
@@ -2217,43 +2217,43 @@
 																				"example": "Business Plan"
 																			},
 																			"currency": {
-																				"description": "The currency applied to the rate_plan subscription.",
+																				"description": "The currency applied to the rate plan subscription.",
 																				"type": "string",
 																				"example": "USD"
 																			},
 																			"scope": {
-																				"description": "The scope that this rate_plan applies to.",
+																				"description": "The scope that this rate plan applies to.",
 																				"type": "string",
 																				"example": "zone"
 																			},
 																			"sets": {
-																				"description": "The list of sets this rate_plan applies to.",
+																				"description": "The list of sets this rate plan applies to.",
 																				"type": "array",
 																				"items": {
 																					"type": "string"
 																				}
 																			},
 																			"is_contract": {
-																				"description": "Whether or not a rate_plan is enterprise-based (or newly adopted term contract).",
+																				"description": "Whether a rate plan is enterprise-based (or newly adopted term contract).",
 																				"type": "boolean",
 																				"example": false
 																			},
 																			"externally_managed": {
-																				"description": "Whether this rate_plan is managed externally from Cloudflare.",
+																				"description": "Whether this rate plan is managed externally from Cloudflare.",
 																				"type": "boolean",
 																				"example": false
 																			}
 																		}
 																	},
 																	"current_period_end": {
-																		"description": "The end of the current period, and also when the next billing is due.",
+																		"description": "The end of the current period and also when the next billing is due.",
 																		"type": "string",
 																		"format": "date-time",
 																		"readOnly": true,
 																		"example": "2014-03-31T12:20:00+00:00"
 																	},
 																	"current_period_start": {
-																		"description": "When the current billing period started, may be the same as InitialPeriodStart if this is the first period.",
+																		"description": "When the current billing period started. May match initial_period_start if this is the first period.",
 																		"type": "string",
 																		"format": "date-time",
 																		"readOnly": true,
@@ -2295,7 +2295,7 @@
 			},
 			"post": {
 				"summary": "Create Subscription",
-				"description": "Create an account subscription.",
+				"description": "Creates an account subscription.",
 				"parameters": [
 					{
 						"name": "account_identifier",
@@ -2366,7 +2366,7 @@
 		"/accounts/{account_identifier}/subscriptions/{subscription_identifier}": {
 			"put": {
 				"summary": "Update Subscription",
-				"description": "Update an account subscription.",
+				"description": "Updates an account subscription.",
 				"parameters": [
 					{
 						"name": "subscription_identifier",
@@ -2643,7 +2643,7 @@
 								"type": "object",
 								"properties": {
 									"name": {
-										"description": "Organization Name.",
+										"description": "Organization name.",
 										"type": "string",
 										"maxLength": 100,
 										"example": "Cloudflare, Inc."
@@ -2704,7 +2704,7 @@
 																				"example": "4f5f0c14a2a41d5063dd301b2f829f04"
 																			},
 																			"invited_member_id": {
-																				"description": "Id of the user to be added to the Organization.",
+																				"description": "ID of the user to add to the organization.",
 																				"type": "string",
 																				"maxLength": 32,
 																				"readOnly": true,
@@ -2712,27 +2712,27 @@
 																				"nullable": true
 																			},
 																			"invited_member_email": {
-																				"description": "Email address of the user to be added to the Organization.",
+																				"description": "Email address of the user to add to the organization.",
 																				"type": "string",
 																				"maxLength": 90,
 																				"example": "user@example.com"
 																			},
 																			"organization_id": {
-																				"description": "ID of the Organization the user will be added to.",
+																				"description": "ID of the organization the user will be added to.",
 																				"type": "string",
 																				"maxLength": 32,
 																				"readOnly": true,
 																				"example": "5a7805061c76ada191ed06f989cc3dac"
 																			},
 																			"organization_name": {
-																				"description": "Organization Name.",
+																				"description": "Organization name.",
 																				"type": "string",
 																				"maxLength": 100,
 																				"readOnly": true,
 																				"example": "Cloudflare, Inc."
 																			},
 																			"roles": {
-																				"description": "Roles to be assigned to this Member.",
+																				"description": "Roles to be assigned to this user.",
 																				"type": "array",
 																				"items": {
 																					"type": "object",
@@ -2801,7 +2801,7 @@
 																	{
 																		"properties": {
 																			"organization_is_enforcing_twofactor": {
-																				"description": "Current status of two factor enforcement on the organization.",
+																				"description": "Current status of two-factor enforcement on the organization.",
 																				"type": "boolean",
 																				"example": true,
 																				"default": false
@@ -2938,7 +2938,7 @@
 								],
 								"properties": {
 									"invited_member_email": {
-										"description": "Email address of the user to be added to the Organization.",
+										"description": "Email address of the user to add to the organization.",
 										"type": "string",
 										"maxLength": 90,
 										"example": "user@example.com"
@@ -3728,7 +3728,7 @@
 		"/user/invites": {
 			"get": {
 				"summary": "List Invitations",
-				"description": "List all invitations associated with my user.",
+				"description": "Lists all invitations associated with my user.",
 				"parameters": [],
 				"responses": {
 					"200": {
@@ -3765,7 +3765,7 @@
 																				"example": "4f5f0c14a2a41d5063dd301b2f829f04"
 																			},
 																			"invited_member_id": {
-																				"description": "Id of the user to be added to the Organization.",
+																				"description": "ID of the user to add to the organization.",
 																				"type": "string",
 																				"maxLength": 32,
 																				"readOnly": true,
@@ -3773,27 +3773,27 @@
 																				"nullable": true
 																			},
 																			"invited_member_email": {
-																				"description": "Email address of the user to be added to the Organization.",
+																				"description": "Email address of the user to add to the organization.",
 																				"type": "string",
 																				"maxLength": 90,
 																				"example": "user@example.com"
 																			},
 																			"organization_id": {
-																				"description": "ID of the Organization the user will be added to.",
+																				"description": "ID of the organization the user will be added to.",
 																				"type": "string",
 																				"maxLength": 32,
 																				"readOnly": true,
 																				"example": "5a7805061c76ada191ed06f989cc3dac"
 																			},
 																			"organization_name": {
-																				"description": "Organization Name.",
+																				"description": "Organization name.",
 																				"type": "string",
 																				"maxLength": 100,
 																				"readOnly": true,
 																				"example": "Cloudflare, Inc."
 																			},
 																			"roles": {
-																				"description": "Roles to be assigned to this Member.",
+																				"description": "Roles to be assigned to this user.",
 																				"type": "array",
 																				"items": {
 																					"$ref": "#/paths/~1organizations~1%7Borganization_identifier%7D~1invites/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/allOf/0/allOf/0/properties/roles/items"
@@ -3868,7 +3868,7 @@
 		"/user/invites/{identifier}": {
 			"get": {
 				"summary": "Invitation Details",
-				"description": "Get the details of an invitation.",
+				"description": "Gets the details of an invitation.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -3921,7 +3921,7 @@
 			},
 			"patch": {
 				"summary": "Respond to Invitation",
-				"description": "Respond to an invitation.",
+				"description": "Responds to an invitation.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -3987,7 +3987,7 @@
 		"/user/organizations": {
 			"get": {
 				"summary": "List Organizations",
-				"description": "List organizations the user is associated with.",
+				"description": "Lists organizations the user is associated with.",
 				"parameters": [],
 				"responses": {
 					"200": {
@@ -4019,7 +4019,7 @@
 																	"member",
 																	"invited"
 																],
-																"description": "Whether or not the user is a member of the organization or has an inivitation pending.",
+																"description": "Whether the user is a member of the organization or has an inivitation pending.",
 																"example": "member"
 															},
 															"permissions": {
@@ -4027,7 +4027,7 @@
 															},
 															"roles": {
 																"type": "array",
-																"description": "List of role names for the User at the Organization.",
+																"description": "List of roles that a user has within an organization.",
 																"readOnly": true,
 																"items": {
 																	"type": "string",
@@ -4066,7 +4066,7 @@
 		"/user/organizations/{identifier}": {
 			"get": {
 				"summary": "Organization Details",
-				"description": "Get a specific organization the user is associated with.",
+				"description": "Gets a specific organization the user is associated with.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -4119,7 +4119,7 @@
 			},
 			"delete": {
 				"summary": "Leave Organization",
-				"description": "Remove association to an organization.",
+				"description": "Removes association to an organization.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -4173,7 +4173,7 @@
 		"/user/billing/profile": {
 			"get": {
 				"summary": "Billing Profile Details",
-				"description": "Access your billing profile object.",
+				"description": "Accesses your billing profile object.",
 				"parameters": [],
 				"responses": {
 					"200": {
@@ -4224,7 +4224,7 @@
 		"/user/billing/history": {
 			"get": {
 				"summary": "Billing History Details",
-				"description": "Access your billing history object.",
+				"description": "Accesses your billing history object.",
 				"parameters": [],
 				"responses": {
 					"200": {
@@ -4344,7 +4344,7 @@
 		"/user/subscriptions": {
 			"get": {
 				"summary": "Get User Subscriptions",
-				"description": "Lists all a user's subscriptions.",
+				"description": "Lists all of a user's subscriptions.",
 				"parameters": [],
 				"responses": {
 					"200": {
@@ -4397,7 +4397,7 @@
 		"/user/subscriptions/{identifier}": {
 			"put": {
 				"summary": "Update User Subscription",
-				"description": "Update a user subscriptions.",
+				"description": "Updates a user's subscriptions.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -4519,7 +4519,7 @@
 		"/accounts/{account_identifier}/billing/profile": {
 			"get": {
 				"summary": "Billing Profile Details",
-				"description": "Get the current billing profile for the account.",
+				"description": "Gets the current billing profile for the account.",
 				"parameters": [
 					{
 						"name": "account_identifier",
@@ -4567,7 +4567,7 @@
 		"/zones/{zone_identifier}/available_rate_plans": {
 			"get": {
 				"summary": "List Available Rate Plans",
-				"description": "List all rate plans the zone can subscribe to.",
+				"description": "Lists all rate plans the zone can subscribe to.",
 				"parameters": [
 					{
 						"name": "zone_identifier",
@@ -4703,7 +4703,7 @@
 		"/zones/{zone_identifier}/available_plans": {
 			"get": {
 				"summary": "List Available Plans",
-				"description": "List available plans the zone can subscribe to.",
+				"description": "Lists available plans the zone can subscribe to.",
 				"parameters": [
 					{
 						"name": "zone_identifier",
@@ -4760,7 +4760,7 @@
 																"example": "monthly"
 															},
 															"price": {
-																"description": "The amount for which you will be billed for this plan.",
+																"description": "The amount you will be billed for this plan.",
 																"type": "number",
 																"example": 0
 															},
@@ -4784,18 +4784,18 @@
 															},
 															"legacy_discount": {
 																"type": "boolean",
-																"description": "Indicates if this plan has a legacy discount applied.",
+																"description": "Indicates whether this plan has a legacy discount applied.",
 																"default": false,
 																"example": false
 															},
 															"externally_managed": {
 																"type": "boolean",
-																"description": "Indicates if this plan is managed externally.",
+																"description": "Indicates whether this plan is managed externally.",
 																"default": false,
 																"example": false
 															}
 														},
-														"x-$comment": "Both this schema and rate-plan.json describe a rate plan, but the fields are different. Notably the id in this schema can be used as the identifier for subsequent API calls"
+														"x-$comment": "Both this schema and rate-plan.json describe a rate plan, but the fields are different. Notably the ID in this schema can be used as the identifier for subsequent API calls"
 													}
 												}
 											}
@@ -4831,7 +4831,7 @@
 		"/zones/{zone_identifier}/available_plans/{plan_identifier}": {
 			"get": {
 				"summary": "Available Plan Details",
-				"description": "Details of an available plan that the zone can subscribe to.",
+				"description": "Details of the available plan that the zone can subscribe to.",
 				"parameters": [
 					{
 						"name": "plan_identifier",
@@ -4901,7 +4901,7 @@
 		"/zones/{identifier}/subscription": {
 			"get": {
 				"summary": "Zone Subscription Details",
-				"description": "Zone subscription details.",
+				"description": "Lists zone subscription details.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -4959,7 +4959,7 @@
 			},
 			"put": {
 				"summary": "Update Zone Subscription",
-				"description": "Update Zone subscriptions. Either plan and add-ons.",
+				"description": "Updates zone subscriptions, either plan or add-ons.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -5016,7 +5016,7 @@
 			},
 			"post": {
 				"summary": "Create Zone Subscription",
-				"description": "Create a Zone subscriptions. Either plan or add-ons.",
+				"description": "Create a zone subscription, either plan or add-ons.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -5972,7 +5972,7 @@
 		"/zones": {
 			"get": {
 				"summary": "List Zones",
-				"description": "List, search, sort, and filter your zones.",
+				"description": "Lists, searches, sorts, and filters your zones.",
 				"parameters": [],
 				"responses": {
 					"200": {
@@ -6004,7 +6004,7 @@
 																				"type": "object",
 																				"oneOf": [
 																					{
-																						"description": "A user that owns the zone.",
+																						"description": "The user that owns the zone.",
 																						"type": "object",
 																						"properties": {
 																							"id": {
@@ -6038,7 +6038,7 @@
 																						}
 																					},
 																					{
-																						"description": "An organization that owns the zone.",
+																						"description": "The organization that owns the zone.",
 																						"type": "object",
 																						"properties": {
 																							"id": {
@@ -6178,7 +6178,7 @@
 																				"example": "active"
 																			},
 																			"paused": {
-																				"description": "Indicates if the zone is only using Cloudflare DNS services. A true value means the zone will not receive security or performance benefits.",
+																				"description": "Indicates whether the zone is only using Cloudflare DNS services. A true value means the zone will not receive security or performance benefits.",
 																				"type": "boolean",
 																				"readOnly": true,
 																				"default": false
@@ -6283,7 +6283,7 @@
 																			},
 																			"phishing_detected": {
 																				"type": "boolean",
-																				"description": "Indicates if URLs on the zone have been identified as hosting phishing content.",
+																				"description": "Indicates whether URLs on the zone have been identified as hosting phishing content.",
 																				"default": false,
 																				"example": false
 																			},
@@ -6313,13 +6313,13 @@
 															"1002": "Invalid domain",
 															"1003": "'jump_start' must be boolean",
 															"1006": "Invalid or missing zone",
-															"1008": "Invalid or missing Zone id",
+															"1008": "Invalid or missing zone ID",
 															"1010": "Bulk deal limit reached",
 															"1012": "Request must contain one of 'purge_everything', 'files', 'tags', 'hosts' or 'prefixes'",
 															"1013": "'purge_everything' must be true",
 															"1014": "'files', 'tags', 'hosts' or 'prefixes' must be an array",
-															"1015": "Unable to purge <url>",
-															"1016": "Unable to purge any urls",
+															"1015": "Unable to purge <URL>",
+															"1016": "Unable to purge any URLs",
 															"1017": "Unable to purge all",
 															"1018": "Invalid zone status",
 															"1019": "Zone is already paused",
@@ -6328,7 +6328,7 @@
 															"1022": "Zone is already unpaused",
 															"1023": "Invalid or missing zone",
 															"1049": "<domain> is not a registered domain",
-															"1050": "<domain> is currently being tasted. It is not currently a registered domain",
+															"1050": "<domain> is currently being tested. It is not currently a registered domain",
 															"1051": "Cloudflare is already hosting <domain>",
 															"1052": "An error has occurred and it has been logged. We will fix this problem promptly. We apologize for the inconvenience",
 															"1055": "Failed to disable <domain>",
@@ -6502,7 +6502,7 @@
 										"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1railguns~1%7Brailgun_identifier%7D~1connections/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/zone/properties/name"
 									},
 									"account": {
-										"description": "Account of which the zone is created in.",
+										"description": "Account in which the zone was created.",
 										"type": "object",
 										"properties": {
 											"id": {
@@ -6585,7 +6585,7 @@
 			},
 			"patch": {
 				"summary": "Edit Zone",
-				"description": "Only one zone property can be changed at a time.",
+				"description": "Editz a zone. Only one zone property can be changed at a time.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -6631,7 +6631,7 @@
 								"type": "object",
 								"properties": {
 									"paused": {
-										"description": "Indicates if the zone is only using Cloudflare DNS services. A true value means the zone will not receive security or performance benefits.",
+										"description": "Indicates whether the zone is only using Cloudflare DNS services. A true value means the zone will not receive security or performance benefits.",
 										"type": "boolean",
 										"readOnly": true,
 										"default": false
@@ -6672,7 +6672,7 @@
 			},
 			"delete": {
 				"summary": "Delete Zone",
-				"description": "Delete an existing zone.",
+				"description": "Deletes an existing zone.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -6726,7 +6726,7 @@
 		"/zones/{identifier}/activation_check": {
 			"put": {
 				"summary": "Zone Activation Check",
-				"description": "Initiate another zone activation check.",
+				"description": "Initiates another zone activation check.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -6779,8 +6779,8 @@
 		},
 		"/zones/{identifier}/purge_cache": {
 			"post": {
-				"summary": "Purge Files by Cache-Tags, Host or Prefix",
-				"description": "Granularly remove one or more files from Cloudflare's cache either by specifying the host, the associated Cache-Tag, or a Prefix.\n\n**NB:** Cache-Tag, host and prefix purging each have a rate limit of 30,000 purge API calls in every 24 hour period. You may purge up to 30 tags, hosts, or prefixes in one API call. This rate limit can be raised for customers who need to purge at higher volume.",
+				"summary": "Purge Files by Cache-Tags, Host, or Prefix",
+				"description": "Granularly removes one or more files from Cloudflare's cache either by specifying the host, the associated Cache-Tag, or a Prefix.\n\n**NB:** Cache-Tag, host, and prefix purging each have a rate limit of 30,000 purge API calls in every 24 hour period. You may purge up to 30 tags, hosts, or prefixes in one API call. This rate limit can be raised for customers who need to purge at higher volume.",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -6793,7 +6793,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Purge Files by Cache-Tags, Host or Prefix response",
+						"description": "Purge Files by Cache-Tags, Host, or Prefix response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -6854,7 +6854,7 @@
 										]
 									},
 									"prefixes": {
-										"description": "Any assets at URLs that match the prefix will be purged from the Cloudflare cache. For instance, a.com/b will purge a.com/b/c/d.png but not a.com/bc.png. The prefixes a.com/b and a.com/b/c are redundant.",
+										"description": "Any assets at URLs that match the prefix will be purged from the Cloudflare cache. For example, a.com/b will purge a.com/b/c/d.png but not a.com/bc.png. The prefixes a.com/b and a.com/b/c are redundant.",
 										"type": "array",
 										"items": {
 											"type": "string"
