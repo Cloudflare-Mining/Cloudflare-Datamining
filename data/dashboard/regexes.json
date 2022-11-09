@@ -932,6 +932,7 @@
 	"/cloudflare\\.com/",
 	"/cloudflare\\.lol/",
 	"/cloudflareapps.com$/",
+	"/edit\\/(\\w{32,})(\\/[^.]*)?/",
 	"/false|true/",
 	"/firefox\\/(\\d+)/",
 	"/https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)?/gi",

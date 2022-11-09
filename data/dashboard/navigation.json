@@ -374,82 +374,106 @@
 			"title": "navigation.common.overview",
 			"url": "/",
 			"iconType": "clipboard",
-			"testId": "zone-navigation-link-overview"
+			"testId": "zone-navigation-link-overview",
+			"canBeVersioned": true
 		},
 		{
 			"title": "navigation.common.analytics",
 			"url": "/analytics",
 			"iconType": "chart",
 			"testId": "zone-navigation-link-analytics",
+			"canBeVersioned": true,
 			"pages": [
 				{
 					"title": "navigation.zone.analytics.traffic",
-					"url": "/analytics/traffic"
+					"url": "/analytics/traffic",
+					"canBeVersioned": true
 				},
 				{
 					"title": "navigation.zone.analytics.security",
-					"url": "/analytics/security"
+					"url": "/analytics/security",
+					"canBeVersioned": false
 				},
 				{
 					"title": "navigation.zone.analytics.performance",
-					"url": "/analytics/performance"
+					"url": "/analytics/performance",
+					"canBeVersioned": false
 				},
 				{
 					"title": "navigation.zone.analytics.origin_reachability",
-					"url": "/analytics/originReachability"
+					"url": "/analytics/originReachability",
+					"canBeVersioned": false
 				},
 				{
 					"title": "navigation.zone.analytics.edge_reachability",
-					"url": "/analytics/edgeReachability"
+					"url": "/analytics/edgeReachability",
+					"canBeVersioned": false
 				},
 				{
 					"title": "navigation.zone.analytics.dns",
+					"canBeVersioned": false,
 					"url": "/analytics/dns"
 				},
 				{
 					"title": "navigation.zone.analytics.workers",
-					"url": "/analytics/workers"
+					"url": "/analytics/workers",
+					"canBeVersioned": false
 				},
 				{
 					"title": "navigation.zone.analytics.logs",
-					"url": "/analytics/logs"
+					"url": "/analytics/logs",
+					"canBeVersioned": false
 				},
 				{
 					"title": "navigation.zone.analytics.instant_logs",
-					"url": "/analytics/instant-logs"
+					"url": "/analytics/instant-logs",
+					"canBeVersioned": false
 				}
 			]
 		},
 		{
+			"title": "navigation.zone.http_applications_v2",
+			"url": "/versioning",
+			"canBeVersioned": false,
+			"iconType": "git-branch",
+			"testId": "zone-navigation-link-http_applications_v2"
+		},
+		{
 			"title": "navigation.zone.dns",
 			"url": "/dns",
+			"canBeVersioned": false,
 			"iconType": "reliability-dns",
 			"testId": "zone-navigation-link-dns",
 			"pages": [
 				{
 					"title": "navigation.zone.dns.records",
 					"url": "/dns/records",
-					"testId": "zone-navigation-link-dns-records"
+					"testId": "zone-navigation-link-dns-records",
+					"canBeVersioned": false
 				},
 				{
 					"title": "navigation.zone.dns.settings",
 					"url": "/dns/settings",
-					"testId": "zone-navigation-link-dns-settings"
+					"testId": "zone-navigation-link-dns-settings",
+					"canBeVersioned": false
 				}
 			]
 		},
 		{
 			"title": "navigation.zone.email",
 			"url": "/email",
+			"canBeVersioned": false,
 			"iconType": "email-forwarding",
 			"testId": "zone-navigation-link-email",
 			"pages": [
 				{
 					"title": "navigation.zone.email.routing",
+					"canBeVersioned": false,
 					"url": "/email/routing"
 				},
 				{
 					"title": "navigation.zone.email.security",
+					"canBeVersioned": false,
 					"url": "/email/security"
 				}
 			]
@@ -457,6 +481,7 @@
 		{
 			"title": "navigation.zone.spectrum",
 			"url": "/spectrum",
+			"canBeVersioned": false,
 			"iconType": "spectrum",
 			"testId": "zone-navigation-link-spectrum"
 		},
@@ -465,29 +490,36 @@
 			"url": "/ssl-tls",
 			"iconType": "lock",
 			"testId": "zone-navigation-link-ssl-tls",
+			"canBeVersioned": true,
 			"pages": [
 				{
 					"title": "navigation.common.overview",
-					"url": "/ssl-tls"
+					"url": "/ssl-tls",
+					"canBeVersioned": true
 				},
 				{
 					"title": "navigation.zone.ssl-tls.edge_certs",
-					"url": "/ssl-tls/edge-certificates"
+					"url": "/ssl-tls/edge-certificates",
+					"canBeVersioned": true
 				},
 				{
 					"title": "navigation.zone.ssl-tls.staging_certs",
-					"url": "/ssl-tls/staging-certificates"
+					"url": "/ssl-tls/staging-certificates",
+					"canBeVersioned": false
 				},
 				{
 					"title": "navigation.zone.ssl-tls.client_certs",
-					"url": "/ssl-tls/client-certificates"
+					"url": "/ssl-tls/client-certificates",
+					"canBeVersioned": false
 				},
 				{
 					"title": "navigation.zone.ssl-tls.origin_server",
+					"canBeVersioned": false,
 					"url": "/ssl-tls/origin"
 				},
 				{
 					"title": "navigation.zone.ssl-tls.custom_hostnames",
+					"canBeVersioned": false,
 					"url": "/ssl-tls/custom-hostnames"
 				}
 			]
@@ -497,51 +529,62 @@
 			"url": "/security",
 			"iconType": "shield",
 			"testId": "zone-navigation-link-security",
+			"canBeVersioned": true,
 			"pages": [
 				{
 					"title": "navigation.common.overview",
-					"url": "/security"
+					"url": "/security",
+					"canBeVersioned": true
 				},
 				{
 					"title": "navigation.zone.security.events",
+					"canBeVersioned": false,
 					"url": "/security/events"
 				},
 				{
 					"title": "navigation.zone.security.waf",
-					"url": "/security/waf"
+					"url": "/security/waf",
+					"canBeVersioned": true
 				},
 				{
 					"title": "navigation.zone.security.page_shield",
+					"canBeVersioned": false,
 					"url": "/security/page-shield"
 				},
 				{
 					"title": "navigation.zone.security.bots",
-					"url": "/security/bots"
+					"url": "/security/bots",
+					"canBeVersioned": true
 				},
 				{
 					"title": "navigation.zone.security.data",
-					"url": "/security/data"
+					"url": "/security/data",
+					"canBeVersioned": false
 				},
 				{
 					"title": "navigation.zone.security.api_shield",
 					"url": "/security/api-shield",
+					"canBeVersioned": false,
 					"labels": [
 						"new"
 					]
 				},
 				{
 					"title": "navigation.zone.security.ddos",
-					"url": "/security/ddos"
+					"url": "/security/ddos",
+					"canBeVersioned": true
 				},
 				{
 					"title": "navigation.zone.security.settings",
-					"url": "/security/settings"
+					"url": "/security/settings",
+					"canBeVersioned": true
 				}
 			]
 		},
 		{
 			"title": "navigation.zone.access",
 			"url": "/access",
+			"canBeVersioned": false,
 			"iconType": "cloudflare-access",
 			"testId": "zone-navigation-link-access"
 		},
@@ -550,21 +593,26 @@
 			"url": "/speed",
 			"iconType": "bolt",
 			"testId": "zone-navigation-link-speed",
+			"canBeVersioned": true,
 			"pages": [
 				{
 					"title": "navigation.common.overview",
-					"url": "/speed"
+					"url": "/speed",
+					"canBeVersioned": true
 				},
 				{
 					"title": "navigation.zone.speed.test",
-					"url": "/speed/test"
+					"url": "/speed/test",
+					"canBeVersioned": false
 				},
 				{
 					"title": "navigation.zone.speed.optimization",
-					"url": "/speed/optimization"
+					"url": "/speed/optimization",
+					"canBeVersioned": true
 				},
 				{
 					"title": "navigation.zone.speed.browser_insights",
+					"canBeVersioned": false,
 					"url": "/speed/browser-insights"
 				}
 			]
@@ -574,28 +622,34 @@
 			"url": "/caching",
 			"iconType": "drive",
 			"testId": "zone-navigation-link-caching",
+			"canBeVersioned": true,
 			"pages": [
 				{
 					"title": "navigation.common.overview",
+					"canBeVersioned": false,
 					"url": "/caching"
 				},
 				{
 					"title": "navigation.zone.caching.configuration",
-					"url": "/caching/configuration"
+					"url": "/caching/configuration",
+					"canBeVersioned": true
 				},
 				{
 					"title": "navigation.zone.caching.cache_rules",
 					"url": "/caching/cache-rules",
+					"canBeVersioned": true,
 					"labels": [
 						"beta"
 					]
 				},
 				{
 					"title": "navigation.zone.caching.tiered_cache",
-					"url": "/caching/tiered-cache"
+					"url": "/caching/tiered-cache",
+					"canBeVersioned": true
 				},
 				{
 					"title": "navigation.zone.caching.cache_reserve",
+					"canBeVersioned": false,
 					"url": "/caching/cache-reserve",
 					"labels": [
 						"beta"
@@ -607,46 +661,54 @@
 			"title": "navigation.zone.workers",
 			"url": "/workers",
 			"iconType": "edgeworker",
-			"testId": "zone-navigation-link-workers"
+			"testId": "zone-navigation-link-workers",
+			"canBeVersioned": true
 		},
 		{
 			"title": "navigation.zone.rules",
 			"url": "/rules",
 			"iconType": "filter",
 			"testId": "zone-navigation-link-page-rules",
+			"canBeVersioned": true,
 			"pages": [
 				{
 					"title": "navigation.zone.rules.page_rules",
-					"url": "/rules"
+					"url": "/rules",
+					"canBeVersioned": true
 				},
 				{
 					"title": "navigation.zone.rules.configuration_rules",
 					"labels": [
 						"beta"
 					],
-					"url": "/rules/configuration-rules"
+					"url": "/rules/configuration-rules",
+					"canBeVersioned": true
 				},
 				{
 					"title": "navigation.zone.rules.transform_rules",
-					"url": "/rules/transform-rules"
+					"url": "/rules/transform-rules",
+					"canBeVersioned": true
 				},
 				{
 					"title": "navigation.zone.rules.redirect_rules",
 					"labels": [
 						"beta"
 					],
-					"url": "/rules/redirect-rules"
+					"url": "/rules/redirect-rules",
+					"canBeVersioned": true
 				},
 				{
 					"title": "navigation.zone.rules.origin_rules",
 					"url": "/rules/origin-rules",
 					"labels": [
 						"beta"
-					]
+					],
+					"canBeVersioned": true
 				},
 				{
 					"title": "navigation.zone.rules.settings",
-					"url": "/rules/settings"
+					"url": "/rules/settings",
+					"canBeVersioned": false
 				}
 			]
 		},
@@ -654,41 +716,50 @@
 			"title": "navigation.zone.network",
 			"url": "/network",
 			"iconType": "network",
-			"testId": "zone-navigation-link-network"
+			"testId": "zone-navigation-link-network",
+			"canBeVersioned": true
 		},
 		{
 			"title": "navigation.zone.traffic",
 			"url": "/traffic",
 			"iconType": "reliability-load-balancer",
 			"testId": "zone-navigation-link-traffic",
+			"canBeVersioned": true,
 			"pages": [
 				{
 					"title": "navigation.zone.traffic.argo",
-					"url": "/traffic"
+					"url": "/traffic",
+					"canBeVersioned": false
 				},
 				{
 					"title": "navigation.zone.traffic.argo_tunnel",
-					"url": "/traffic/argo-tunnel"
+					"url": "/traffic/argo-tunnel",
+					"canBeVersioned": true
 				},
 				{
 					"title": "navigation.zone.traffic.load_balancing",
-					"url": "/traffic/load-balancing"
+					"url": "/traffic/load-balancing",
+					"canBeVersioned": false
 				},
 				{
 					"title": "navigation.zone.traffic.load_balancing_analytics",
-					"url": "/traffic/load-balancing-analytics"
+					"url": "/traffic/load-balancing-analytics",
+					"canBeVersioned": false
 				},
 				{
 					"title": "navigation.zone.traffic.health_checks",
-					"url": "/traffic/health-checks"
+					"url": "/traffic/health-checks",
+					"canBeVersioned": false
 				},
 				{
 					"title": "navigation.zone.traffic.health_check_analytics",
-					"url": "/traffic/health-check-analytics"
+					"url": "/traffic/health-check-analytics",
+					"canBeVersioned": false
 				},
 				{
 					"title": "navigation.zone.traffic.waiting_rooms",
-					"url": "/traffic/waiting-rooms"
+					"url": "/traffic/waiting-rooms",
+					"canBeVersioned": false
 				}
 			]
 		},
@@ -696,11 +767,13 @@
 			"title": "navigation.zone.custom_pages",
 			"url": "/custom-pages",
 			"iconType": "wrench",
-			"testId": "zone-navigation-link-custom-pages"
+			"testId": "zone-navigation-link-custom-pages",
+			"canBeVersioned": true
 		},
 		{
 			"title": "navigation.zone.apps",
 			"url": "/apps",
+			"canBeVersioned": false,
 			"iconType": "platform-apps",
 			"testId": "zone-navigation-link-apps"
 		},
@@ -708,39 +781,52 @@
 			"title": "navigation.zone.scrape_shield",
 			"url": "/content-protection",
 			"iconType": "file",
-			"testId": "zone-navigation-link-content-protection"
+			"testId": "zone-navigation-link-content-protection",
+			"canBeVersioned": true
 		},
 		{
 			"title": "navigation.zone.zaraz",
 			"url": "/zaraz",
+			"canBeVersioned": false,
 			"iconType": "zaraz",
 			"testId": "zone-navigation-link-zaraz",
 			"pages": [
 				{
 					"title": "navigation.zone.zaraz.tools",
+					"canBeVersioned": false,
 					"url": "/zaraz"
 				},
 				{
 					"title": "navigation.zone.zaraz.triggers",
+					"canBeVersioned": false,
 					"url": "/zaraz/triggers"
 				},
 				{
 					"title": "navigation.zone.zaraz.consent",
+					"canBeVersioned": false,
 					"url": "/zaraz/consent"
 				},
 				{
 					"title": "navigation.zone.zaraz.variables",
+					"canBeVersioned": false,
 					"url": "/zaraz/variables"
 				},
 				{
 					"title": "navigation.zone.zaraz.settings",
+					"canBeVersioned": false,
 					"url": "/zaraz/settings"
+				},
+				{
+					"title": "navigation.zone.zaraz.monitoring",
+					"canBeVersioned": false,
+					"url": "/zaraz/monitoring"
 				}
 			]
 		},
 		{
 			"title": "navigation.zone.web3",
 			"url": "/web3",
+			"canBeVersioned": false,
 			"iconType": "web3",
 			"labels": [
 				"new"
