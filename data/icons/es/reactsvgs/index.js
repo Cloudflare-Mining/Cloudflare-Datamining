@@ -57,6 +57,7 @@ import Link from './Link';
 import Linkedin from './Linkedin';
 import List from './List';
 import Lock from './Lock';
+import Logs from './Logs';
 import MagicTransitLogo from './MagicTransitLogo';
 import Mail from './Mail';
 import Minus from './Minus';
@@ -177,6 +178,7 @@ export default {
   linkedin: Linkedin,
   list: List,
   lock: Lock,
+  logs: Logs,
   'magic-transit-logo': MagicTransitLogo,
   mail: Mail,
   minus: Minus,
