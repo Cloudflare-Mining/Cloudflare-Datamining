@@ -940,6 +940,22 @@
 		"deleted_date": ""
 	},
 	{
+		"id": "rulesets.max_ratelimit_rules_per_ruleset",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 883,
+			"key": "rulesets.max_ratelimit_rules_per_ruleset",
+			"name": "Rulesets - Max Ratelimit Rules Per Ruleset"
+		},
+		"allocation": {
+			"value": 1,
+			"type": "max_count"
+		},
+		"created_date": "2022-11-09T00:29:44.000000",
+		"edited_date": "2022-11-09T00:29:44.000000",
+		"deleted_date": ""
+	},
+	{
 		"id": "rulesets.fw_global_rulesets_execute_ddos_l7_allowed",
 		"feature": {
 			"feature_set": "rulesets",
@@ -1068,6 +1084,40 @@
 		"deleted_date": ""
 	},
 	{
+		"id": "rulesets.ratelimit_level",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 993,
+			"key": "rulesets.ratelimit_level",
+			"name": "Rulesets - Ratelimit Level"
+		},
+		"allocation": {
+			"value": 0,
+			"type": "max_count"
+		},
+		"created_date": "2022-11-09T00:29:44.000000",
+		"edited_date": "2022-11-09T00:29:44.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "rulesets.ratelimit_sampling_period",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 994,
+			"key": "rulesets.ratelimit_sampling_period",
+			"name": "Rulesets - Ratelimit Sampling Period"
+		},
+		"allocation": {
+			"value": [
+				10
+			],
+			"type": "enum_number"
+		},
+		"created_date": "2022-11-09T00:29:44.000000",
+		"edited_date": "2022-11-09T00:29:44.000000",
+		"deleted_date": ""
+	},
+	{
 		"id": "rulesets.origin_rule_origin_port_allowed",
 		"feature": {
 			"feature_set": "rulesets",
@@ -1081,6 +1131,22 @@
 		},
 		"created_date": "2022-08-16T17:48:04.000000",
 		"edited_date": "2022-08-16T17:48:04.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "rulesets.block_customized_response_allowed",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 1016,
+			"key": "rulesets.block_customized_response_allowed",
+			"name": "Rulesets - Block Customization Response Allowed"
+		},
+		"allocation": {
+			"value": false,
+			"type": "bool"
+		},
+		"created_date": "2022-08-16T17:51:08.000000",
+		"edited_date": "2022-11-09T00:29:44.000000",
 		"deleted_date": ""
 	},
 	{
@@ -1124,11 +1190,11 @@
 			"name": "Rulesets - Config Rule Max"
 		},
 		"allocation": {
-			"value": 3,
+			"value": 10,
 			"type": "max_count"
 		},
 		"created_date": "2022-08-16T17:48:04.000000",
-		"edited_date": "2022-08-16T17:57:53.000000",
+		"edited_date": "2022-11-09T00:29:44.000000",
 		"deleted_date": ""
 	},
 	{
@@ -1161,6 +1227,54 @@
 		},
 		"created_date": "2022-08-16T17:48:04.000000",
 		"edited_date": "2022-08-16T17:48:04.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "authoritative_dns.max_record_comment_length",
+		"feature": {
+			"feature_set": "dns",
+			"id": 1105,
+			"key": "authoritative_dns.max_record_comment_length",
+			"name": "Authoritative DNS - Maximum Record Comment Length"
+		},
+		"allocation": {
+			"value": 50,
+			"type": "max_count"
+		},
+		"created_date": "2022-11-09T00:29:44.000000",
+		"edited_date": "2022-11-09T00:29:44.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "authoritative_dns.max_record_tags",
+		"feature": {
+			"feature_set": "dns",
+			"id": 1106,
+			"key": "authoritative_dns.max_record_tags",
+			"name": "Authoritative DNS - Maximum Tags Per Record"
+		},
+		"allocation": {
+			"value": 0,
+			"type": "max_count"
+		},
+		"created_date": "2022-11-09T00:29:44.000000",
+		"edited_date": "2022-11-09T00:29:44.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "authoritative_dns.max_record_tag_value_length",
+		"feature": {
+			"feature_set": "dns",
+			"id": 1107,
+			"key": "authoritative_dns.max_record_tag_value_length",
+			"name": "Authoritative DNS - Maximum Record Tag Value Length"
+		},
+		"allocation": {
+			"value": 100,
+			"type": "max_count"
+		},
+		"created_date": "2022-11-09T00:29:44.000000",
+		"edited_date": "2022-11-09T00:29:44.000000",
 		"deleted_date": ""
 	}
 ]
