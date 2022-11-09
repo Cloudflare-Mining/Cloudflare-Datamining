@@ -1,5 +1,11 @@
 # Change Log
 
+## 9.6.0
+
+### Minor Changes
+
+- a9f88bcf85: Adding logs icon
+
 ## 9.5.0
 
 ### Minor Changes
