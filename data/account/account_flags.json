@@ -202,6 +202,7 @@
 	"workers": {
 		"actors": false,
 		"appworker_develop": false,
+		"backend_region": false,
 		"bulk_compute": true,
 		"cfsql_admin": false,
 		"cfsql_alpha_acknowledgement": false,
@@ -247,6 +248,7 @@
 		"scripts": 1000,
 		"service_bindings": true,
 		"subrequest_limit": 1000,
+		"supercloud": false,
 		"tail_rps_limit": 200,
 		"text_binding_size_limit_exception": 5120,
 		"trace_workers_self_tracing": false,
