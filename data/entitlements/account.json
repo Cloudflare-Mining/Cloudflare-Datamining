@@ -1080,6 +1080,18 @@
 		}
 	},
 	{
+		"id": "logpush.magic_ids_detections.max_jobs_allowed",
+		"feature": {
+			"feature_set": "logpush",
+			"id": 1148,
+			"key": "logpush.magic_ids_detections.max_jobs_allowed",
+			"name": "Logpush - Magic IDS - Max Jobs"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
 		"id": "logpush.network_analytics_logs.max_jobs_allowed",
 		"feature": {
 			"feature_set": "logpush",
@@ -1185,6 +1197,42 @@
 		},
 		"allocation": {
 			"type": "bool"
+		}
+	},
+	{
+		"id": "queues.enabled",
+		"feature": {
+			"feature_set": "queues",
+			"id": 1115,
+			"key": "queues.enabled",
+			"name": "Queues - Enabled"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "queues.max_queues",
+		"feature": {
+			"feature_set": "queues",
+			"id": 1116,
+			"key": "queues.max_queues",
+			"name": "Queues - Maximum Number of Queues Allowed"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "queues.max_retention_hours",
+		"feature": {
+			"feature_set": "queues",
+			"id": 1117,
+			"key": "queues.max_retention_hours",
+			"name": "Queues - Maximum Number of Retention Hours"
+		},
+		"allocation": {
+			"type": "max_count"
 		}
 	},
 	{
