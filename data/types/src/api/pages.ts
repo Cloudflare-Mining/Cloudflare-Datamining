@@ -257,3 +257,7 @@ export const FunctionsUsageModel = enumerable(['bundled', 'unbound']);
 export type FunctionsUsageModel = TypeFromEnumerable<
   typeof FunctionsUsageModel
 >;
+
+export const AccountSettingsResult = eg.object({
+  default_usage_model: eg.string
+});
