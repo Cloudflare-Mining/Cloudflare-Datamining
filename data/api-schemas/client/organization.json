@@ -77,7 +77,7 @@
 					"name": {
 						"type": "string",
 						"example": "\"Cloudflare, Inc.\"",
-						"description": "Organization Name.",
+						"description": "Organization name.",
 						"maxLength": 100
 					}
 				},
@@ -107,7 +107,7 @@
 			"name": {
 				"type": "string",
 				"example": "\"Cloudflare, Inc.\"",
-				"description": "Organization Name.",
+				"description": "Organization name.",
 				"maxLength": 100
 			},
 			"members": {
@@ -1286,7 +1286,7 @@
 											"example": "4f5f0c14a2a41d5063dd301b2f829f04"
 										},
 										"invited_member_id": {
-											"description": "Id of the user to be added to the Organization.",
+											"description": "ID of the user to add to the organization.",
 											"type": [
 												"string",
 												"null"
@@ -1296,27 +1296,27 @@
 											"example": "5a7805061c76ada191ed06f989cc3dac"
 										},
 										"invited_member_email": {
-											"description": "Email address of the user to be added to the Organization.",
+											"description": "Email address of the user to add to the organization.",
 											"type": "string",
 											"maxLength": 90,
 											"example": "user@example.com"
 										},
 										"organization_id": {
-											"description": "ID of the Organization the user will be added to.",
+											"description": "ID of the organization the user will be added to.",
 											"type": "string",
 											"maxLength": 32,
 											"readOnly": true,
 											"example": "5a7805061c76ada191ed06f989cc3dac"
 										},
 										"organization_name": {
-											"description": "Organization Name.",
+											"description": "Organization name.",
 											"type": "string",
 											"maxLength": 100,
 											"readOnly": true,
 											"example": "Cloudflare, Inc."
 										},
 										"roles": {
-											"description": "Roles to be assigned to this Member.",
+											"description": "Roles to be assigned to this user.",
 											"type": "array",
 											"items": {
 												"id": "https://api.cloudflare.com/schemas/v4/client/definitions/organization/role.json",
@@ -1914,7 +1914,7 @@
 								{
 									"properties": {
 										"organization_is_enforcing_twofactor": {
-											"description": "Current status of two factor enforcement on the organization.",
+											"description": "Current status of two-factor enforcement on the organization.",
 											"type": "boolean",
 											"example": true,
 											"default": false
@@ -1953,7 +1953,7 @@
 											"example": "4f5f0c14a2a41d5063dd301b2f829f04"
 										},
 										"invited_member_id": {
-											"description": "Id of the user to be added to the Organization.",
+											"description": "ID of the user to add to the organization.",
 											"type": [
 												"string",
 												"null"
@@ -1963,27 +1963,27 @@
 											"example": "5a7805061c76ada191ed06f989cc3dac"
 										},
 										"invited_member_email": {
-											"description": "Email address of the user to be added to the Organization.",
+											"description": "Email address of the user to add to the organization.",
 											"type": "string",
 											"maxLength": 90,
 											"example": "user@example.com"
 										},
 										"organization_id": {
-											"description": "ID of the Organization the user will be added to.",
+											"description": "ID of the organization the user will be added to.",
 											"type": "string",
 											"maxLength": 32,
 											"readOnly": true,
 											"example": "5a7805061c76ada191ed06f989cc3dac"
 										},
 										"organization_name": {
-											"description": "Organization Name.",
+											"description": "Organization name.",
 											"type": "string",
 											"maxLength": 100,
 											"readOnly": true,
 											"example": "Cloudflare, Inc."
 										},
 										"roles": {
-											"description": "Roles to be assigned to this Member.",
+											"description": "Roles to be assigned to this user.",
 											"type": "array",
 											"items": {
 												"id": "https://api.cloudflare.com/schemas/v4/client/definitions/organization/role.json",
@@ -2624,7 +2624,7 @@
 							"example": "2014-01-01T05:20:00Z"
 						},
 						"invited_member_email": {
-							"description": "Email address of the user to be added to the Organization.",
+							"description": "Email address of the user to add to the organization.",
 							"type": "string",
 							"maxLength": 90,
 							"example": "user@example.com"
@@ -2644,7 +2644,7 @@
 									"example": "4f5f0c14a2a41d5063dd301b2f829f04"
 								},
 								"invited_member_id": {
-									"description": "Id of the user to be added to the Organization.",
+									"description": "ID of the user to add to the organization.",
 									"type": [
 										"string",
 										"null"
@@ -2654,27 +2654,27 @@
 									"example": "5a7805061c76ada191ed06f989cc3dac"
 								},
 								"invited_member_email": {
-									"description": "Email address of the user to be added to the Organization.",
+									"description": "Email address of the user to add to the organization.",
 									"type": "string",
 									"maxLength": 90,
 									"example": "user@example.com"
 								},
 								"organization_id": {
-									"description": "ID of the Organization the user will be added to.",
+									"description": "ID of the organization the user will be added to.",
 									"type": "string",
 									"maxLength": 32,
 									"readOnly": true,
 									"example": "5a7805061c76ada191ed06f989cc3dac"
 								},
 								"organization_name": {
-									"description": "Organization Name.",
+									"description": "Organization name.",
 									"type": "string",
 									"maxLength": 100,
 									"readOnly": true,
 									"example": "Cloudflare, Inc."
 								},
 								"roles": {
-									"description": "Roles to be assigned to this Member.",
+									"description": "Roles to be assigned to this user.",
 									"type": "array",
 									"items": {
 										"id": "https://api.cloudflare.com/schemas/v4/client/definitions/organization/role.json",
@@ -3286,7 +3286,7 @@
 											"example": "4f5f0c14a2a41d5063dd301b2f829f04"
 										},
 										"invited_member_id": {
-											"description": "Id of the user to be added to the Organization.",
+											"description": "ID of the user to add to the organization.",
 											"type": [
 												"string",
 												"null"
@@ -3296,27 +3296,27 @@
 											"example": "5a7805061c76ada191ed06f989cc3dac"
 										},
 										"invited_member_email": {
-											"description": "Email address of the user to be added to the Organization.",
+											"description": "Email address of the user to add to the organization.",
 											"type": "string",
 											"maxLength": 90,
 											"example": "user@example.com"
 										},
 										"organization_id": {
-											"description": "ID of the Organization the user will be added to.",
+											"description": "ID of the organization the user will be added to.",
 											"type": "string",
 											"maxLength": 32,
 											"readOnly": true,
 											"example": "5a7805061c76ada191ed06f989cc3dac"
 										},
 										"organization_name": {
-											"description": "Organization Name.",
+											"description": "Organization name.",
 											"type": "string",
 											"maxLength": 100,
 											"readOnly": true,
 											"example": "Cloudflare, Inc."
 										},
 										"roles": {
-											"description": "Roles to be assigned to this Member.",
+											"description": "Roles to be assigned to this user.",
 											"type": "array",
 											"items": {
 												"id": "https://api.cloudflare.com/schemas/v4/client/definitions/organization/role.json",
@@ -3914,7 +3914,7 @@
 								{
 									"properties": {
 										"organization_is_enforcing_twofactor": {
-											"description": "Current status of two factor enforcement on the organization.",
+											"description": "Current status of two-factor enforcement on the organization.",
 											"type": "boolean",
 											"example": true,
 											"default": false
@@ -3953,7 +3953,7 @@
 											"example": "4f5f0c14a2a41d5063dd301b2f829f04"
 										},
 										"invited_member_id": {
-											"description": "Id of the user to be added to the Organization.",
+											"description": "ID of the user to add to the organization.",
 											"type": [
 												"string",
 												"null"
@@ -3963,27 +3963,27 @@
 											"example": "5a7805061c76ada191ed06f989cc3dac"
 										},
 										"invited_member_email": {
-											"description": "Email address of the user to be added to the Organization.",
+											"description": "Email address of the user to add to the organization.",
 											"type": "string",
 											"maxLength": 90,
 											"example": "user@example.com"
 										},
 										"organization_id": {
-											"description": "ID of the Organization the user will be added to.",
+											"description": "ID of the organization the user will be added to.",
 											"type": "string",
 											"maxLength": 32,
 											"readOnly": true,
 											"example": "5a7805061c76ada191ed06f989cc3dac"
 										},
 										"organization_name": {
-											"description": "Organization Name.",
+											"description": "Organization name.",
 											"type": "string",
 											"maxLength": 100,
 											"readOnly": true,
 											"example": "Cloudflare, Inc."
 										},
 										"roles": {
-											"description": "Roles to be assigned to this Member.",
+											"description": "Roles to be assigned to this user.",
 											"type": "array",
 											"items": {
 												"id": "https://api.cloudflare.com/schemas/v4/client/definitions/organization/role.json",
@@ -4600,7 +4600,7 @@
 			"roles": {
 				"type": "array",
 				"example": "[\n  {\n    \"id\": \"3536bcfad5faccb999b47003c79917fb\",\n    \"name\": \"Organization Admin\",\n    \"description\": \"Administrative access to the entire Organization\",\n    \"permissions\": [\n      \"#zones:read\"\n    ]\n  }\n]",
-				"description": "Roles available to assign to members of the Organization.",
+				"description": "Roles available to assign to members of the organization.",
 				"items": {
 					"id": "https://api.cloudflare.com/schemas/v4/client/definitions/organization/role.json",
 					"title": "Organization Roles",

@@ -242,7 +242,7 @@
 							"example": "01a7362d577a6c3019a474fd6f485823"
 						},
 						"name": {
-							"description": "Organization Name.",
+							"description": "Organization name.",
 							"type": "string",
 							"maxLength": 100,
 							"example": "Cloudflare, Inc."
@@ -253,7 +253,7 @@
 								"member",
 								"invited"
 							],
-							"description": "Whether or not the user is a member of the organization or has an inivitation pending.",
+							"description": "Whether the user is a member of the organization or has an inivitation pending.",
 							"example": "member"
 						},
 						"permissions": {
@@ -268,7 +268,7 @@
 						},
 						"roles": {
 							"type": "array",
-							"description": "List of role names for the User at the Organization.",
+							"description": "List of roles that a user has within an organization.",
 							"readOnly": true,
 							"items": {
 								"type": "string",
@@ -291,7 +291,7 @@
 								"member",
 								"invited"
 							],
-							"description": "Whether or not the user is a member of the organization or has an inivitation pending.",
+							"description": "Whether the user is a member of the organization or has an inivitation pending.",
 							"example": "member"
 						},
 						"single_organization_response": {
@@ -784,7 +784,7 @@
 					"links": [
 						{
 							"title": "List Organizations",
-							"description": "List organizations the user is associated with.",
+							"description": "Lists organizations the user is associated with.",
 							"rel": "collection",
 							"href": "user/organizations",
 							"method": "GET",
@@ -796,11 +796,11 @@
 											"member",
 											"invited"
 										],
-										"description": "Whether or not the user is a member of the organization or has an inivitation pending.",
+										"description": "Whether the user is a member of the organization or has an inivitation pending.",
 										"example": "member"
 									},
 									"name": {
-										"description": "Organization Name.",
+										"description": "Organization name.",
 										"type": "string",
 										"maxLength": 100,
 										"example": "Cloudflare, Inc."
@@ -1135,7 +1135,7 @@
 						},
 						{
 							"title": "Organization Details",
-							"description": "Get a specific organization the user is associated with.",
+							"description": "Gets a specific organization the user is associated with.",
 							"rel": "self",
 							"href": "user/organizations/{#/definitions/identifier}",
 							"method": "GET",
@@ -1358,7 +1358,7 @@
 						},
 						{
 							"title": "Leave Organization",
-							"description": "Remove association to an organization.",
+							"description": "Removes association to an organization.",
 							"rel": "self",
 							"href": "user/organizations/{#/definitions/identifier}",
 							"method": "DELETE",

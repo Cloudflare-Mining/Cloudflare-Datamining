@@ -6,7 +6,7 @@
 	"links": [
 		{
 			"title": "List Available Rate Plans",
-			"description": "List all rate plans the zone can subscribe to.",
+			"description": "Lists all rate plans the zone can subscribe to.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/zone_identifier}/available_rate_plans",
 			"method": "GET",
@@ -29,7 +29,7 @@
 		},
 		{
 			"title": "List Available Plans",
-			"description": "List available plans the zone can subscribe to.",
+			"description": "Lists available plans the zone can subscribe to.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/zone_identifier}/available_plans",
 			"method": "GET",
@@ -52,7 +52,7 @@
 		},
 		{
 			"title": "Available Plan Details",
-			"description": "Details of an available plan that the zone can subscribe to.",
+			"description": "Details of the available plan that the zone can subscribe to.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/zone_identifier}/available_plans/{#/definitions/plan_identifier}",
 			"method": "GET",

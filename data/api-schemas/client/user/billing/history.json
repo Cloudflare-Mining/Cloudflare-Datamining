@@ -1,13 +1,13 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/user/billing/history.json",
 	"title": "User Billing History",
-	"description": "A user billing history.",
+	"description": "A user's billing history.",
 	"type": "object",
 	"links": [
 		{
 			"title": "Billing History Details",
 			"trakalIgnore": true,
-			"description": "Access your billing history object.",
+			"description": "Accesses your billing history object.",
 			"rel": "self",
 			"href": "user/billing/history",
 			"method": "GET",
@@ -175,6 +175,6 @@
 		"objects": [],
 		"example": "{\n  \"id\": \"b69a9f3492637782896352daae219e7d\",\n  \"type\": \"charge\",\n  \"action\": \"subscription\",\n  \"description\": \"The billing item description\",\n  \"occurred_at\": \"2014-03-01T12:21:59.3456Z\",\n  \"amount\": 20.99,\n  \"currency\": \"USD\",\n  \"zone\": {\n    \"name\": \"example.com\"\n  }\n}",
 		"title": "User Billing History",
-		"description": "A user billing history."
+		"description": "A user's billing history."
 	}
 }

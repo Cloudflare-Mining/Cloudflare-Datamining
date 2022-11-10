@@ -82,7 +82,7 @@
 				"objects": [],
 				"example": "{\n  \"status\": \"accepted\",\n  \"account.name\": \"Demo Account\",\n  \"page\": 1,\n  \"per_page\": 20,\n  \"order\": \"status\",\n  \"direction\": \"desc\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"4536bcfad5faccb111b47003c79917fa\",\n      \"code\": \"05dd05cce12bbed97c0d87cd78e89bc2fd41a6cee72f27f6fc84af2e45c0fac0\",\n      \"status\": \"accepted\",\n      \"account\": {\n        \"id\": \"01a7362d577a6c3019a474fd6f485823\",\n        \"name\": \"Demo Account\",\n        \"settings\": {\n          \"enforce_twofactor\": false,\n          \"use_account_custom_ns_by_default\": false\n        },\n        \"created_on\": \"2014-03-01T12:21:02.0000Z\"\n      },\n      \"roles\": [\n        \"Account Administrator\"\n      ],\n      \"permissions\": {\n        \"analytics\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"billing\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"cache_purge\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"dns\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"dns_records\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"lb\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"logs\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"organization\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"ssl\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"waf\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"zones\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"zone_settings\": {\n          \"read\": true,\n          \"write\": true\n        }\n      }\n    }\n  ]\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"4536bcfad5faccb111b47003c79917fa\",\n      \"code\": \"05dd05cce12bbed97c0d87cd78e89bc2fd41a6cee72f27f6fc84af2e45c0fac0\",\n      \"api_access_enabled\": true,\n      \"status\": \"accepted\",\n      \"account\": {\n        \"id\": \"01a7362d577a6c3019a474fd6f485823\",\n        \"name\": \"Demo Account\",\n        \"settings\": {\n          \"enforce_twofactor\": false,\n          \"api_access_enabled\": null,\n          \"use_account_custom_ns_by_default\": false\n        },\n        \"created_on\": \"2014-03-01T12:21:02.0000Z\"\n      },\n      \"roles\": [\n        \"Account Administrator\"\n      ],\n      \"permissions\": {\n        \"analytics\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"billing\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"cache_purge\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"dns\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"dns_records\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"lb\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"logs\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"organization\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"ssl\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"waf\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"zones\": {\n          \"read\": true,\n          \"write\": true\n        },\n        \"zone_settings\": {\n          \"read\": true,\n          \"write\": true\n        }\n      }\n    }\n  ]\n}"
 		},
 		{
 			"title": "Membership Details",
@@ -94,7 +94,7 @@
 			"html_id": "user-s-account-memberships-membership-details",
 			"uri": "memberships/:identifier",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/memberships/4536bcfad5faccb111b47003c79917fa\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"4536bcfad5faccb111b47003c79917fa\",\n    \"code\": \"05dd05cce12bbed97c0d87cd78e89bc2fd41a6cee72f27f6fc84af2e45c0fac0\",\n    \"status\": \"accepted\",\n    \"account\": {\n      \"id\": \"01a7362d577a6c3019a474fd6f485823\",\n      \"name\": \"Demo Account\",\n      \"settings\": {\n        \"enforce_twofactor\": false,\n        \"use_account_custom_ns_by_default\": false\n      },\n      \"created_on\": \"2014-03-01T12:21:02.0000Z\"\n    },\n    \"roles\": [\n      \"Account Administrator\"\n    ],\n    \"permissions\": {\n      \"analytics\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"billing\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"cache_purge\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"dns\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"dns_records\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"lb\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"logs\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"organization\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"ssl\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"waf\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"zones\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"zone_settings\": {\n        \"read\": true,\n        \"write\": true\n      }\n    }\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"4536bcfad5faccb111b47003c79917fa\",\n    \"code\": \"05dd05cce12bbed97c0d87cd78e89bc2fd41a6cee72f27f6fc84af2e45c0fac0\",\n    \"api_access_enabled\": true,\n    \"status\": \"accepted\",\n    \"account\": {\n      \"id\": \"01a7362d577a6c3019a474fd6f485823\",\n      \"name\": \"Demo Account\",\n      \"settings\": {\n        \"enforce_twofactor\": false,\n        \"api_access_enabled\": null,\n        \"use_account_custom_ns_by_default\": false\n      },\n      \"created_on\": \"2014-03-01T12:21:02.0000Z\"\n    },\n    \"roles\": [\n      \"Account Administrator\"\n    ],\n    \"permissions\": {\n      \"analytics\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"billing\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"cache_purge\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"dns\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"dns_records\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"lb\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"logs\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"organization\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"ssl\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"waf\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"zones\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"zone_settings\": {\n        \"read\": true,\n        \"write\": true\n      }\n    }\n  }\n}"
 		},
 		{
 			"title": "Update Membership",
@@ -128,7 +128,7 @@
 				"objects": [],
 				"example": "{\n  \"status\": \"accepted\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"4536bcfad5faccb111b47003c79917fa\",\n    \"code\": \"05dd05cce12bbed97c0d87cd78e89bc2fd41a6cee72f27f6fc84af2e45c0fac0\",\n    \"status\": \"accepted\",\n    \"account\": {\n      \"id\": \"01a7362d577a6c3019a474fd6f485823\",\n      \"name\": \"Demo Account\",\n      \"settings\": {\n        \"enforce_twofactor\": false,\n        \"use_account_custom_ns_by_default\": false\n      },\n      \"created_on\": \"2014-03-01T12:21:02.0000Z\"\n    },\n    \"roles\": [\n      \"Account Administrator\"\n    ],\n    \"permissions\": {\n      \"analytics\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"billing\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"cache_purge\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"dns\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"dns_records\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"lb\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"logs\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"organization\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"ssl\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"waf\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"zones\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"zone_settings\": {\n        \"read\": true,\n        \"write\": true\n      }\n    }\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"4536bcfad5faccb111b47003c79917fa\",\n    \"code\": \"05dd05cce12bbed97c0d87cd78e89bc2fd41a6cee72f27f6fc84af2e45c0fac0\",\n    \"api_access_enabled\": true,\n    \"status\": \"accepted\",\n    \"account\": {\n      \"id\": \"01a7362d577a6c3019a474fd6f485823\",\n      \"name\": \"Demo Account\",\n      \"settings\": {\n        \"enforce_twofactor\": false,\n        \"api_access_enabled\": null,\n        \"use_account_custom_ns_by_default\": false\n      },\n      \"created_on\": \"2014-03-01T12:21:02.0000Z\"\n    },\n    \"roles\": [\n      \"Account Administrator\"\n    ],\n    \"permissions\": {\n      \"analytics\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"billing\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"cache_purge\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"dns\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"dns_records\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"lb\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"logs\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"organization\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"ssl\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"waf\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"zones\": {\n        \"read\": true,\n        \"write\": true\n      },\n      \"zone_settings\": {\n        \"read\": true,\n        \"write\": true\n      }\n    }\n  }\n}"
 		},
 		{
 			"title": "Delete Membership",
@@ -169,6 +169,14 @@
 				"maxLength": 64,
 				"readOnly": true
 			},
+			"api_access_enabled": {
+				"type": [
+					"boolean",
+					"null"
+				],
+				"example": "true",
+				"description": "Enterprise only. Indicates whether or not API access is enabled specifically for this user on a given account."
+			},
 			"status": {
 				"type": "string",
 				"example": "\"accepted\"",
@@ -180,7 +188,7 @@
 				"description": "Status of this membership."
 			},
 			"account": {
-				"example": "{\n  \"id\": \"01a7362d577a6c3019a474fd6f485823\",\n  \"name\": \"Demo Account\",\n  \"settings\": {\n    \"enforce_twofactor\": false,\n    \"use_account_custom_ns_by_default\": false\n  },\n  \"created_on\": \"2014-03-01T12:21:02.0000Z\"\n}",
+				"example": "{\n  \"id\": \"01a7362d577a6c3019a474fd6f485823\",\n  \"name\": \"Demo Account\",\n  \"settings\": {\n    \"enforce_twofactor\": false,\n    \"api_access_enabled\": null,\n    \"use_account_custom_ns_by_default\": false\n  },\n  \"created_on\": \"2014-03-01T12:21:02.0000Z\"\n}",
 				"properties": {
 					"id": {
 						"type": "string",
@@ -197,13 +205,22 @@
 					},
 					"settings": {
 						"type": "object",
-						"example": "{\n  \"enforce_twofactor\": false,\n  \"use_account_custom_ns_by_default\": false\n}",
+						"example": "{\n  \"enforce_twofactor\": false,\n  \"api_access_enabled\": null,\n  \"use_account_custom_ns_by_default\": false\n}",
 						"properties": {
 							"enforce_twofactor": {
 								"type": "boolean",
 								"example": "false",
 								"description": "Indicates whether or not membership in this account requires that Two-Factor Authentication is enabled.",
 								"default": false
+							},
+							"api_access_enabled": {
+								"type": [
+									"boolean",
+									"null"
+								],
+								"example": "null",
+								"description": "Enterprise only. Indicates whether or not API access is enabled for members of this account.",
+								"default": null
 							},
 							"use_account_custom_ns_by_default": {
 								"type": "boolean",
@@ -253,6 +270,14 @@
 										"type": "boolean",
 										"description": "Indicates whether or not membership in this account requires that Two-Factor Authentication is enabled.",
 										"default": false
+									},
+									"api_access_enabled": {
+										"type": [
+											"boolean",
+											"null"
+										],
+										"description": "Enterprise only. Indicates whether or not API access is enabled for members of this account.",
+										"default": null
 									},
 									"use_account_custom_ns_by_default": {
 										"type": "boolean",
@@ -752,13 +777,14 @@
 		"optional_props": [
 			"id",
 			"code",
+			"api_access_enabled",
 			"status",
 			"account",
 			"roles",
 			"permissions"
 		],
 		"objects": [],
-		"example": "{\n  \"id\": \"4536bcfad5faccb111b47003c79917fa\",\n  \"code\": \"05dd05cce12bbed97c0d87cd78e89bc2fd41a6cee72f27f6fc84af2e45c0fac0\",\n  \"status\": \"accepted\",\n  \"account\": {\n    \"id\": \"01a7362d577a6c3019a474fd6f485823\",\n    \"name\": \"Demo Account\",\n    \"settings\": {\n      \"enforce_twofactor\": false,\n      \"use_account_custom_ns_by_default\": false\n    },\n    \"created_on\": \"2014-03-01T12:21:02.0000Z\"\n  },\n  \"roles\": [\n    \"Account Administrator\"\n  ],\n  \"permissions\": {\n    \"analytics\": {\n      \"read\": true,\n      \"write\": true\n    },\n    \"billing\": {\n      \"read\": true,\n      \"write\": true\n    },\n    \"cache_purge\": {\n      \"read\": true,\n      \"write\": true\n    },\n    \"dns\": {\n      \"read\": true,\n      \"write\": true\n    },\n    \"dns_records\": {\n      \"read\": true,\n      \"write\": true\n    },\n    \"lb\": {\n      \"read\": true,\n      \"write\": true\n    },\n    \"logs\": {\n      \"read\": true,\n      \"write\": true\n    },\n    \"organization\": {\n      \"read\": true,\n      \"write\": true\n    },\n    \"ssl\": {\n      \"read\": true,\n      \"write\": true\n    },\n    \"waf\": {\n      \"read\": true,\n      \"write\": true\n    },\n    \"zones\": {\n      \"read\": true,\n      \"write\": true\n    },\n    \"zone_settings\": {\n      \"read\": true,\n      \"write\": true\n    }\n  }\n}",
+		"example": "{\n  \"id\": \"4536bcfad5faccb111b47003c79917fa\",\n  \"code\": \"05dd05cce12bbed97c0d87cd78e89bc2fd41a6cee72f27f6fc84af2e45c0fac0\",\n  \"api_access_enabled\": true,\n  \"status\": \"accepted\",\n  \"account\": {\n    \"id\": \"01a7362d577a6c3019a474fd6f485823\",\n    \"name\": \"Demo Account\",\n    \"settings\": {\n      \"enforce_twofactor\": false,\n      \"api_access_enabled\": null,\n      \"use_account_custom_ns_by_default\": false\n    },\n    \"created_on\": \"2014-03-01T12:21:02.0000Z\"\n  },\n  \"roles\": [\n    \"Account Administrator\"\n  ],\n  \"permissions\": {\n    \"analytics\": {\n      \"read\": true,\n      \"write\": true\n    },\n    \"billing\": {\n      \"read\": true,\n      \"write\": true\n    },\n    \"cache_purge\": {\n      \"read\": true,\n      \"write\": true\n    },\n    \"dns\": {\n      \"read\": true,\n      \"write\": true\n    },\n    \"dns_records\": {\n      \"read\": true,\n      \"write\": true\n    },\n    \"lb\": {\n      \"read\": true,\n      \"write\": true\n    },\n    \"logs\": {\n      \"read\": true,\n      \"write\": true\n    },\n    \"organization\": {\n      \"read\": true,\n      \"write\": true\n    },\n    \"ssl\": {\n      \"read\": true,\n      \"write\": true\n    },\n    \"waf\": {\n      \"read\": true,\n      \"write\": true\n    },\n    \"zones\": {\n      \"read\": true,\n      \"write\": true\n    },\n    \"zone_settings\": {\n      \"read\": true,\n      \"write\": true\n    }\n  }\n}",
 		"title": "User's Account Memberships",
 		"description": "A list of memberships of accounts this user can access."
 	}

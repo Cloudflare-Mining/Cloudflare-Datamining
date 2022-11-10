@@ -6,7 +6,7 @@
 	"links": [
 		{
 			"title": "Zone Subscription Details",
-			"description": "Zone subscription details.",
+			"description": "Lists zone subscription details.",
 			"rel": "self",
 			"href": "zones/{#/definitions/identifier}/subscription",
 			"method": "GET",
@@ -29,7 +29,7 @@
 		},
 		{
 			"title": "Update Zone Subscription",
-			"description": "Update Zone subscriptions. Either plan and add-ons.",
+			"description": "Updates zone subscriptions, either plan or add-ons.",
 			"rel": "self",
 			"href": "zones/{#/definitions/identifier}/subscription",
 			"method": "PUT",
@@ -107,7 +107,7 @@
 							"type": "object",
 							"properties": {
 								"name": {
-									"description": "The name of the component_value.",
+									"description": "The name of the component value.",
 									"type": "string",
 									"example": "page_rules"
 								},
@@ -168,7 +168,7 @@
 						"properties": {
 							"id": {
 								"example": "\"free\"",
-								"description": "The ID of the rate_plan."
+								"description": "The ID of the rate plan."
 							},
 							"public_name": {
 								"type": "string",
@@ -178,17 +178,17 @@
 							"currency": {
 								"type": "string",
 								"example": "\"USD\"",
-								"description": "The currency applied to the rate_plan subscription."
+								"description": "The currency applied to the rate plan subscription."
 							},
 							"scope": {
 								"type": "string",
 								"example": "\"zone\"",
-								"description": "The scope that this rate_plan applies to."
+								"description": "The scope that this rate plan applies to."
 							},
 							"sets": {
 								"type": "array",
 								"example": "[\n  {}\n]",
-								"description": "The list of sets this rate_plan applies to.",
+								"description": "The list of sets this rate plan applies to.",
 								"items": {
 									"type": "string"
 								}
@@ -196,12 +196,12 @@
 							"is_contract": {
 								"type": "boolean",
 								"example": "false",
-								"description": "Whether or not a rate_plan is enterprise-based (or newly adopted term contract)."
+								"description": "Whether a rate plan is enterprise-based (or newly adopted term contract)."
 							},
 							"externally_managed": {
 								"type": "boolean",
 								"example": "false",
-								"description": "Whether this rate_plan is managed externally from Cloudflare."
+								"description": "Whether this rate plan is managed externally from Cloudflare."
 							}
 						},
 						"description": "The rate plan applied to the subscription."
@@ -209,14 +209,14 @@
 					"current_period_end": {
 						"type": "string",
 						"example": "\"2014-03-31T12:20:00Z\"",
-						"description": "The end of the current period, and also when the next billing is due.",
+						"description": "The end of the current period and also when the next billing is due.",
 						"format": "date-time",
 						"readOnly": true
 					},
 					"current_period_start": {
 						"type": "string",
 						"example": "\"2014-05-11T12:20:00Z\"",
-						"description": "When the current billing period started, may be the same as InitialPeriodStart if this is the first period.",
+						"description": "When the current billing period started. May match initial_period_start if this is the first period.",
 						"format": "date-time",
 						"readOnly": true
 					}
@@ -238,13 +238,13 @@
 				"objects": [],
 				"example": "{\n  \"app\": {\n    \"install_id\": null\n  },\n  \"id\": \"506e3185e9c882d175a2d0cb0093d9f2\",\n  \"state\": \"Paid\",\n  \"price\": 20,\n  \"currency\": \"USD\",\n  \"component_values\": [\n    {\n      \"name\": \"page_rules\",\n      \"value\": 20,\n      \"default\": 5,\n      \"price\": 5\n    }\n  ],\n  \"zone\": {\n    \"id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n    \"name\": \"example.com\"\n  },\n  \"frequency\": \"monthly\",\n  \"rate_plan\": {\n    \"id\": \"free\",\n    \"public_name\": \"Business Plan\",\n    \"currency\": \"USD\",\n    \"scope\": \"zone\",\n    \"sets\": [\n      {}\n    ],\n    \"is_contract\": false,\n    \"externally_managed\": false\n  },\n  \"current_period_end\": \"2014-03-31T12:20:00Z\",\n  \"current_period_start\": \"2014-05-11T12:20:00Z\"\n}",
 				"title": "Subscription",
-				"description": "A base subscription object now with A la carte subscriptions."
+				"description": "A base subscription object now with a la carte subscriptions."
 			},
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"app\": {\n      \"install_id\": null\n    },\n    \"id\": \"506e3185e9c882d175a2d0cb0093d9f2\",\n    \"state\": \"Paid\",\n    \"price\": 20,\n    \"currency\": \"USD\",\n    \"component_values\": [\n      {\n        \"name\": \"page_rules\",\n        \"value\": 20,\n        \"default\": 5,\n        \"price\": 5\n      }\n    ],\n    \"zone\": {\n      \"id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n      \"name\": \"example.com\"\n    },\n    \"frequency\": \"monthly\",\n    \"rate_plan\": {\n      \"id\": \"free\",\n      \"public_name\": \"Business Plan\",\n      \"currency\": \"USD\",\n      \"scope\": \"zone\",\n      \"sets\": [\n        {}\n      ],\n      \"is_contract\": false,\n      \"externally_managed\": false\n    },\n    \"current_period_end\": \"2014-03-31T12:20:00Z\",\n    \"current_period_start\": \"2014-05-11T12:20:00Z\"\n  }\n}"
 		},
 		{
 			"title": "Create Zone Subscription",
-			"description": "Create a Zone subscriptions. Either plan or add-ons.",
+			"description": "Create a zone subscription, either plan or add-ons.",
 			"rel": "self",
 			"href": "zones/{#/definitions/identifier}/subscription",
 			"method": "POST",
@@ -322,7 +322,7 @@
 							"type": "object",
 							"properties": {
 								"name": {
-									"description": "The name of the component_value.",
+									"description": "The name of the component value.",
 									"type": "string",
 									"example": "page_rules"
 								},
@@ -383,7 +383,7 @@
 						"properties": {
 							"id": {
 								"example": "\"free\"",
-								"description": "The ID of the rate_plan."
+								"description": "The ID of the rate plan."
 							},
 							"public_name": {
 								"type": "string",
@@ -393,17 +393,17 @@
 							"currency": {
 								"type": "string",
 								"example": "\"USD\"",
-								"description": "The currency applied to the rate_plan subscription."
+								"description": "The currency applied to the rate plan subscription."
 							},
 							"scope": {
 								"type": "string",
 								"example": "\"zone\"",
-								"description": "The scope that this rate_plan applies to."
+								"description": "The scope that this rate plan applies to."
 							},
 							"sets": {
 								"type": "array",
 								"example": "[\n  {}\n]",
-								"description": "The list of sets this rate_plan applies to.",
+								"description": "The list of sets this rate plan applies to.",
 								"items": {
 									"type": "string"
 								}
@@ -411,12 +411,12 @@
 							"is_contract": {
 								"type": "boolean",
 								"example": "false",
-								"description": "Whether or not a rate_plan is enterprise-based (or newly adopted term contract)."
+								"description": "Whether a rate plan is enterprise-based (or newly adopted term contract)."
 							},
 							"externally_managed": {
 								"type": "boolean",
 								"example": "false",
-								"description": "Whether this rate_plan is managed externally from Cloudflare."
+								"description": "Whether this rate plan is managed externally from Cloudflare."
 							}
 						},
 						"description": "The rate plan applied to the subscription."
@@ -424,14 +424,14 @@
 					"current_period_end": {
 						"type": "string",
 						"example": "\"2014-03-31T12:20:00Z\"",
-						"description": "The end of the current period, and also when the next billing is due.",
+						"description": "The end of the current period and also when the next billing is due.",
 						"format": "date-time",
 						"readOnly": true
 					},
 					"current_period_start": {
 						"type": "string",
 						"example": "\"2014-05-11T12:20:00Z\"",
-						"description": "When the current billing period started, may be the same as InitialPeriodStart if this is the first period.",
+						"description": "When the current billing period started. May match initial_period_start if this is the first period.",
 						"format": "date-time",
 						"readOnly": true
 					}
@@ -453,7 +453,7 @@
 				"objects": [],
 				"example": "{\n  \"app\": {\n    \"install_id\": null\n  },\n  \"id\": \"506e3185e9c882d175a2d0cb0093d9f2\",\n  \"state\": \"Paid\",\n  \"price\": 20,\n  \"currency\": \"USD\",\n  \"component_values\": [\n    {\n      \"name\": \"page_rules\",\n      \"value\": 20,\n      \"default\": 5,\n      \"price\": 5\n    }\n  ],\n  \"zone\": {\n    \"id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n    \"name\": \"example.com\"\n  },\n  \"frequency\": \"monthly\",\n  \"rate_plan\": {\n    \"id\": \"free\",\n    \"public_name\": \"Business Plan\",\n    \"currency\": \"USD\",\n    \"scope\": \"zone\",\n    \"sets\": [\n      {}\n    ],\n    \"is_contract\": false,\n    \"externally_managed\": false\n  },\n  \"current_period_end\": \"2014-03-31T12:20:00Z\",\n  \"current_period_start\": \"2014-05-11T12:20:00Z\"\n}",
 				"title": "Subscription",
-				"description": "A base subscription object now with A la carte subscriptions."
+				"description": "A base subscription object now with a la carte subscriptions."
 			},
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"app\": {\n      \"install_id\": null\n    },\n    \"id\": \"506e3185e9c882d175a2d0cb0093d9f2\",\n    \"state\": \"Paid\",\n    \"price\": 20,\n    \"currency\": \"USD\",\n    \"component_values\": [\n      {\n        \"name\": \"page_rules\",\n        \"value\": 20,\n        \"default\": 5,\n        \"price\": 5\n      }\n    ],\n    \"zone\": {\n      \"id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n      \"name\": \"example.com\"\n    },\n    \"frequency\": \"monthly\",\n    \"rate_plan\": {\n      \"id\": \"free\",\n      \"public_name\": \"Business Plan\",\n      \"currency\": \"USD\",\n      \"scope\": \"zone\",\n      \"sets\": [\n        {}\n      ],\n      \"is_contract\": false,\n      \"externally_managed\": false\n    },\n    \"current_period_end\": \"2014-03-31T12:20:00Z\",\n    \"current_period_start\": \"2014-05-11T12:20:00Z\"\n  }\n}"
 		}
@@ -517,7 +517,7 @@
 					"type": "object",
 					"properties": {
 						"name": {
-							"description": "The name of the component_value.",
+							"description": "The name of the component value.",
 							"type": "string",
 							"example": "page_rules"
 						},
@@ -578,7 +578,7 @@
 				"properties": {
 					"id": {
 						"example": "\"free\"",
-						"description": "The ID of the rate_plan."
+						"description": "The ID of the rate plan."
 					},
 					"public_name": {
 						"type": "string",
@@ -588,17 +588,17 @@
 					"currency": {
 						"type": "string",
 						"example": "\"USD\"",
-						"description": "The currency applied to the rate_plan subscription."
+						"description": "The currency applied to the rate plan subscription."
 					},
 					"scope": {
 						"type": "string",
 						"example": "\"zone\"",
-						"description": "The scope that this rate_plan applies to."
+						"description": "The scope that this rate plan applies to."
 					},
 					"sets": {
 						"type": "array",
 						"example": "[\n  {}\n]",
-						"description": "The list of sets this rate_plan applies to.",
+						"description": "The list of sets this rate plan applies to.",
 						"items": {
 							"type": "string"
 						}
@@ -606,12 +606,12 @@
 					"is_contract": {
 						"type": "boolean",
 						"example": "false",
-						"description": "Whether or not a rate_plan is enterprise-based (or newly adopted term contract)."
+						"description": "Whether a rate plan is enterprise-based (or newly adopted term contract)."
 					},
 					"externally_managed": {
 						"type": "boolean",
 						"example": "false",
-						"description": "Whether this rate_plan is managed externally from Cloudflare."
+						"description": "Whether this rate plan is managed externally from Cloudflare."
 					}
 				},
 				"description": "The rate plan applied to the subscription."
@@ -619,14 +619,14 @@
 			"current_period_end": {
 				"type": "string",
 				"example": "\"2014-03-31T12:20:00Z\"",
-				"description": "The end of the current period, and also when the next billing is due.",
+				"description": "The end of the current period and also when the next billing is due.",
 				"format": "date-time",
 				"readOnly": true
 			},
 			"current_period_start": {
 				"type": "string",
 				"example": "\"2014-05-11T12:20:00Z\"",
-				"description": "When the current billing period started, may be the same as InitialPeriodStart if this is the first period.",
+				"description": "When the current billing period started. May match initial_period_start if this is the first period.",
 				"format": "date-time",
 				"readOnly": true
 			}

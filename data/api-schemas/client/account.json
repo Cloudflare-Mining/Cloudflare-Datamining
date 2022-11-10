@@ -70,7 +70,7 @@
 				"objects": [],
 				"example": "{\n  \"page\": 1,\n  \"per_page\": 20,\n  \"direction\": \"desc\",\n  \"name\": \"example.com\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"01a7362d577a6c3019a474fd6f485823\",\n      \"name\": \"Demo Account\",\n      \"settings\": {\n        \"enforce_twofactor\": false,\n        \"use_account_custom_ns_by_default\": false\n      },\n      \"created_on\": \"2014-03-01T12:21:02.0000Z\"\n    }\n  ]\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"01a7362d577a6c3019a474fd6f485823\",\n      \"name\": \"Demo Account\",\n      \"settings\": {\n        \"enforce_twofactor\": false,\n        \"api_access_enabled\": null,\n        \"use_account_custom_ns_by_default\": false\n      },\n      \"created_on\": \"2014-03-01T12:21:02.0000Z\"\n    }\n  ]\n}"
 		},
 		{
 			"title": "Account Details",
@@ -93,7 +93,7 @@
 			"html_id": "accounts-account-details",
 			"uri": "accounts/:identifier",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"01a7362d577a6c3019a474fd6f485823\",\n    \"name\": \"Demo Account\",\n    \"settings\": {\n      \"enforce_twofactor\": false,\n      \"use_account_custom_ns_by_default\": false\n    },\n    \"created_on\": \"2014-03-01T12:21:02.0000Z\"\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"01a7362d577a6c3019a474fd6f485823\",\n    \"name\": \"Demo Account\",\n    \"settings\": {\n      \"enforce_twofactor\": false,\n      \"api_access_enabled\": null,\n      \"use_account_custom_ns_by_default\": false\n    },\n    \"created_on\": \"2014-03-01T12:21:02.0000Z\"\n  }\n}"
 		},
 		{
 			"title": "Update Account",
@@ -115,7 +115,7 @@
 			},
 			"html_id": "accounts-update-account",
 			"uri": "accounts/:identifier",
-			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"id\":\"01a7362d577a6c3019a474fd6f485823\",\"name\":\"Demo Account\",\"settings\":{\"enforce_twofactor\":false,\"use_account_custom_ns_by_default\":false},\"created_on\":\"2014-03-01T12:21:02.0000Z\"}'",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"id\":\"01a7362d577a6c3019a474fd6f485823\",\"name\":\"Demo Account\",\"settings\":{\"enforce_twofactor\":false,\"api_access_enabled\":null,\"use_account_custom_ns_by_default\":false},\"created_on\":\"2014-03-01T12:21:02.0000Z\"}'",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -136,13 +136,22 @@
 					},
 					"settings": {
 						"type": "object",
-						"example": "{\n  \"enforce_twofactor\": false,\n  \"use_account_custom_ns_by_default\": false\n}",
+						"example": "{\n  \"enforce_twofactor\": false,\n  \"api_access_enabled\": null,\n  \"use_account_custom_ns_by_default\": false\n}",
 						"properties": {
 							"enforce_twofactor": {
 								"type": "boolean",
 								"example": "false",
 								"description": "Indicates whether or not membership in this account requires that Two-Factor Authentication is enabled.",
 								"default": false
+							},
+							"api_access_enabled": {
+								"type": [
+									"boolean",
+									"null"
+								],
+								"example": "null",
+								"description": "Enterprise only. Indicates whether or not API access is enabled for members of this account.",
+								"default": null
 							},
 							"use_account_custom_ns_by_default": {
 								"type": "boolean",
@@ -169,11 +178,11 @@
 					"created_on"
 				],
 				"objects": [],
-				"example": "{\n  \"id\": \"01a7362d577a6c3019a474fd6f485823\",\n  \"name\": \"Demo Account\",\n  \"settings\": {\n    \"enforce_twofactor\": false,\n    \"use_account_custom_ns_by_default\": false\n  },\n  \"created_on\": \"2014-03-01T12:21:02.0000Z\"\n}",
+				"example": "{\n  \"id\": \"01a7362d577a6c3019a474fd6f485823\",\n  \"name\": \"Demo Account\",\n  \"settings\": {\n    \"enforce_twofactor\": false,\n    \"api_access_enabled\": null,\n    \"use_account_custom_ns_by_default\": false\n  },\n  \"created_on\": \"2014-03-01T12:21:02.0000Z\"\n}",
 				"title": "Accounts",
 				"description": "An account is the root object that owns other resources such as zones, load balancers, and billing details."
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"01a7362d577a6c3019a474fd6f485823\",\n    \"name\": \"Demo Account\",\n    \"settings\": {\n      \"enforce_twofactor\": false,\n      \"use_account_custom_ns_by_default\": false\n    },\n    \"created_on\": \"2014-03-01T12:21:02.0000Z\"\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"01a7362d577a6c3019a474fd6f485823\",\n    \"name\": \"Demo Account\",\n    \"settings\": {\n      \"enforce_twofactor\": false,\n      \"api_access_enabled\": null,\n      \"use_account_custom_ns_by_default\": false\n    },\n    \"created_on\": \"2014-03-01T12:21:02.0000Z\"\n  }\n}"
 		}
 	],
 	"cfLinkErrors": {
@@ -203,13 +212,22 @@
 			},
 			"settings": {
 				"type": "object",
-				"example": "{\n  \"enforce_twofactor\": false,\n  \"use_account_custom_ns_by_default\": false\n}",
+				"example": "{\n  \"enforce_twofactor\": false,\n  \"api_access_enabled\": null,\n  \"use_account_custom_ns_by_default\": false\n}",
 				"properties": {
 					"enforce_twofactor": {
 						"type": "boolean",
 						"example": "false",
 						"description": "Indicates whether or not membership in this account requires that Two-Factor Authentication is enabled.",
 						"default": false
+					},
+					"api_access_enabled": {
+						"type": [
+							"boolean",
+							"null"
+						],
+						"example": "null",
+						"description": "Enterprise only. Indicates whether or not API access is enabled for members of this account.",
+						"default": null
 					},
 					"use_account_custom_ns_by_default": {
 						"type": "boolean",
@@ -236,7 +254,7 @@
 			"created_on"
 		],
 		"objects": [],
-		"example": "{\n  \"id\": \"01a7362d577a6c3019a474fd6f485823\",\n  \"name\": \"Demo Account\",\n  \"settings\": {\n    \"enforce_twofactor\": false,\n    \"use_account_custom_ns_by_default\": false\n  },\n  \"created_on\": \"2014-03-01T12:21:02.0000Z\"\n}",
+		"example": "{\n  \"id\": \"01a7362d577a6c3019a474fd6f485823\",\n  \"name\": \"Demo Account\",\n  \"settings\": {\n    \"enforce_twofactor\": false,\n    \"api_access_enabled\": null,\n    \"use_account_custom_ns_by_default\": false\n  },\n  \"created_on\": \"2014-03-01T12:21:02.0000Z\"\n}",
 		"title": "Accounts",
 		"description": "An account is the root object that owns other resources such as zones, load balancers, and billing details."
 	}

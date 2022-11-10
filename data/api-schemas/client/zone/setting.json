@@ -478,7 +478,7 @@
 			"rel": "tag:cloudflare.com,2017:setting-nel",
 			"href": "zones/{#/definitions/zone_identifier}/settings/nel",
 			"method": "GET",
-			"cfOwnership": "www",
+			"cfOwnership": "traffic",
 			"cfPlanAvailability": {
 				"free": true,
 				"pro": true,
@@ -2266,7 +2266,7 @@
 			"rel": "tag:cloudflare.com,2017:setting-nel",
 			"href": "zones/{#/definitions/zone_identifier}/settings/nel",
 			"method": "PATCH",
-			"cfOwnership": "www",
+			"cfOwnership": "traffic",
 			"cfPlanAvailability": {
 				"free": true,
 				"pro": true,
