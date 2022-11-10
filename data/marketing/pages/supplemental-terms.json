@@ -110,7 +110,7 @@
 															"target": null,
 															"uri": null
 														},
-														"value": "Last Updated September 19, 2022",
+														"value": "Last Updated November 10, 2022",
 														"marks": [
 															{
 																"type": "italic"
@@ -626,6 +626,69 @@
 																					"uri": null
 																				},
 																				"value": "China Service",
+																				"marks": [],
+																				"content": null
+																			}
+																		]
+																	},
+																	{
+																		"nodeType": "text",
+																		"data": {
+																			"target": null,
+																			"uri": null
+																		},
+																		"value": "",
+																		"marks": [],
+																		"content": null
+																	}
+																]
+															}
+														]
+													},
+													{
+														"nodeType": "list-item",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": null,
+														"marks": null,
+														"content": [
+															{
+																"nodeType": "paragraph",
+																"data": {
+																	"target": null,
+																	"uri": null
+																},
+																"value": null,
+																"marks": null,
+																"content": [
+																	{
+																		"nodeType": "text",
+																		"data": {
+																			"target": null,
+																			"uri": null
+																		},
+																		"value": "",
+																		"marks": [],
+																		"content": null
+																	},
+																	{
+																		"nodeType": "hyperlink",
+																		"data": {
+																			"target": null,
+																			"uri": "#cloudflare-calls"
+																		},
+																		"value": null,
+																		"marks": null,
+																		"content": [
+																			{
+																				"nodeType": "text",
+																				"data": {
+																					"target": null,
+																					"uri": null
+																				},
+																				"value": "Cloudflare Calls",
 																				"marks": [],
 																				"content": null
 																			}
@@ -1307,7 +1370,7 @@
 																		"nodeType": "hyperlink",
 																		"data": {
 																			"target": null,
-																			"uri": "#magic-transitr"
+																			"uri": "#magic-transit-magic-wan-magic-firewall"
 																		},
 																		"value": null,
 																		"marks": null,
@@ -1318,7 +1381,7 @@
 																					"target": null,
 																					"uri": null
 																				},
-																				"value": "Magic Transit®",
+																				"value": "Magic Transit, Magic WAN, & Magic Firewall",
 																				"marks": [],
 																				"content": null
 																			}
@@ -1963,6 +2026,51 @@
 															"target": null,
 															"uri": null
 														},
+														"value": "95th percentile",
+														"marks": [
+															{
+																"type": "bold"
+															}
+														],
+														"content": null
+													},
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "\" is the 95th percentile of a Customer's usage of a given Service as measured by Cloudflare over five minute intervals. The 95th percentile methodology is used to measure usage of Services billed in Mbps, Gbps, or any other bit per second methodology. ",
+														"marks": [],
+														"content": null
+													}
+												]
+											},
+											{
+												"nodeType": "paragraph",
+												"data": {
+													"target": null,
+													"uri": null
+												},
+												"value": null,
+												"marks": null,
+												"content": [
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "\"",
+														"marks": [],
+														"content": null
+													},
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
 														"value": "Business domain",
 														"marks": [
 															{
@@ -2337,7 +2445,27 @@
 															"target": null,
 															"uri": null
 														},
-														"value": "\" means Images Stored that are delivered to an end user at any time during the applicable billing period. ",
+														"value": "\" means ",
+														"marks": [],
+														"content": null
+													},
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "an image subject to a Transformation or",
+														"marks": [],
+														"content": null
+													},
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": " Images Stored that are delivered to an end user at any time during the applicable billing period. ",
 														"marks": [],
 														"content": null
 													}
@@ -2703,7 +2831,27 @@
 															"target": null,
 															"uri": null
 														},
-														"value": "\" is a single HTTP/S request that is received by Cloudflare's edge. For the Cloudflare Developer Platform, a Request is a single HTTP/S request that is received by Cloudflare's edge and hits a Worker.",
+														"value": "\" is a single HTTP/S request that is received by Cloudflare's edge. For the Cloudflare Developer Platform, a Request is a single HTTP/S request that hits a Worker ",
+														"marks": [],
+														"content": null
+													},
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "on Cloudflare's edge",
+														"marks": [],
+														"content": null
+													},
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": ".",
 														"marks": [],
 														"content": null
 													}
@@ -2863,6 +3011,51 @@
 															"uri": null
 														},
 														"value": "\" is defined for billing purposes as the average hourly amount of data stored in gigabytes (GB) or other units set forth in an Order during a single monthly billing period.",
+														"marks": [],
+														"content": null
+													}
+												]
+											},
+											{
+												"nodeType": "paragraph",
+												"data": {
+													"target": null,
+													"uri": null
+												},
+												"value": null,
+												"marks": null,
+												"content": [
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "\"",
+														"marks": [],
+														"content": null
+													},
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "Transformation",
+														"marks": [
+															{
+																"type": "bold"
+															}
+														],
+														"content": null
+													},
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "\" is an image variant resulting from a resize or other Customer request (e.g., blur, sharpen, crop/trim, etc.) applied to a source image. For billing purposes, the initial Customer request and resulting image counts as a single Transformation that will be available for a 30-day period following generation. ",
 														"marks": [],
 														"content": null
 													}
@@ -3815,7 +4008,7 @@
 												"content": []
 											},
 											{
-												"nodeType": "paragraph",
+												"nodeType": "heading-2",
 												"data": {
 													"target": null,
 													"uri": null
@@ -3829,11 +4022,202 @@
 															"target": null,
 															"uri": null
 														},
-														"value": "\n",
+														"value": "Cloudflare Calls",
 														"marks": [],
 														"content": null
 													}
 												]
+											},
+											{
+												"nodeType": "ordered-list",
+												"data": {
+													"target": null,
+													"uri": null
+												},
+												"value": null,
+												"marks": null,
+												"content": [
+													{
+														"nodeType": "list-item",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": null,
+														"marks": null,
+														"content": [
+															{
+																"nodeType": "paragraph",
+																"data": {
+																	"target": null,
+																	"uri": null
+																},
+																"value": null,
+																"marks": null,
+																"content": [
+																	{
+																		"nodeType": "text",
+																		"data": {
+																			"target": null,
+																			"uri": null
+																		},
+																		"value": "Subject to your and your End Users' compliance with these terms, you may use Cloudflare Calls, including relevant APIs and documentation, to enable video call functionality for your Internet Properties.",
+																		"marks": [],
+																		"content": null
+																	}
+																]
+															}
+														]
+													},
+													{
+														"nodeType": "list-item",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": null,
+														"marks": null,
+														"content": [
+															{
+																"nodeType": "paragraph",
+																"data": {
+																	"target": null,
+																	"uri": null
+																},
+																"value": null,
+																"marks": null,
+																"content": [
+																	{
+																		"nodeType": "text",
+																		"data": {
+																			"target": null,
+																			"uri": null
+																		},
+																		"value": "Cloudflare may, with or without notice to you and without liability of any kind, temporarily limit the number of concurrent video calls that you or your End Users may conduct for any reason (in Cloudflare's sole reasonable discretion), including without limitation, if processing such video calls would put an undue burden on the Cloudflare network, adversely impact the Service, or otherwise threaten the integrity of Cloudflare's networks.",
+																		"marks": [],
+																		"content": null
+																	}
+																]
+															}
+														]
+													},
+													{
+														"nodeType": "list-item",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": null,
+														"marks": null,
+														"content": [
+															{
+																"nodeType": "paragraph",
+																"data": {
+																	"target": null,
+																	"uri": null
+																},
+																"value": null,
+																"marks": null,
+																"content": [
+																	{
+																		"nodeType": "text",
+																		"data": {
+																			"target": null,
+																			"uri": null
+																		},
+																		"value": "You may not use Cloudflare Calls to operate or enable any telecommunications service, including any use that would permit End Users to place or receive calls from any public switched telephone network.",
+																		"marks": [],
+																		"content": null
+																	}
+																]
+															}
+														]
+													},
+													{
+														"nodeType": "list-item",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": null,
+														"marks": null,
+														"content": [
+															{
+																"nodeType": "paragraph",
+																"data": {
+																	"target": null,
+																	"uri": null
+																},
+																"value": null,
+																"marks": null,
+																"content": [
+																	{
+																		"nodeType": "text",
+																		"data": {
+																			"target": null,
+																			"uri": null
+																		},
+																		"value": "Content transmitted using Cloudflare Calls that we determine in our sole judgment to be illegal or harmful may be blocked or removed, and use of Cloudflare Services for transmission of such illegal or harmful content may result in suspension or termination of Cloudflare Services. While we generally try to provide notice of such action, we reserve the right to take action without notice as appropriate. For these purposes, illegal or harmful content includes but is not limited to: (a) content containing, promoting, or facilitating child sexual abuse material (CSAM) or human trafficking; (b) content that infringes on another person's intellectual property rights or is otherwise unlawful; (c) content that discloses sensitive personal information, incites or exploits violence, or is intended to defraud the public; and (d) content that seeks to distribute malware, facilitate phishing, or otherwise constitutes technical abuse. For clarity, Cloudflare has the right, but not the obligation, to block or remove illegal or harmful content. You will remain solely responsible for all content transmitted using Cloudflare Calls.",
+																		"marks": [],
+																		"content": null
+																	}
+																]
+															}
+														]
+													},
+													{
+														"nodeType": "list-item",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": null,
+														"marks": null,
+														"content": [
+															{
+																"nodeType": "paragraph",
+																"data": {
+																	"target": null,
+																	"uri": null
+																},
+																"value": null,
+																"marks": null,
+																"content": [
+																	{
+																		"nodeType": "text",
+																		"data": {
+																			"target": null,
+																			"uri": null
+																		},
+																		"value": "As between you and Cloudflare, you will provide all support of any type requested by Cloudflare, your End Users, or a third party related to your Customer Content, End User content, and Internet Properties, and be responsible for any warranty, liability or obligation to any End User or any third party that arises in connection with End User content and use of your Internet Properties.",
+																		"marks": [],
+																		"content": null
+																	},
+																	{
+																		"nodeType": "text",
+																		"data": {
+																			"target": null,
+																			"uri": null
+																		},
+																		"value": "\n",
+																		"marks": [],
+																		"content": null
+																	}
+																]
+															}
+														]
+													}
+												]
+											},
+											{
+												"nodeType": "hr",
+												"data": {
+													"target": null,
+													"uri": null
+												},
+												"value": null,
+												"marks": null,
+												"content": []
 											},
 											{
 												"nodeType": "paragraph",
@@ -6160,7 +6544,7 @@
 																			"target": null,
 																			"uri": null
 																		},
-																		"value": "By purchasing Cloudflare's Data Localization Suite, you agree to pay Cloudflare an additional fee equal to thirty percent (30%) of the monthly Fees (\"",
+																		"value": "By purchasing Cloudflare's Data Localization Suite, you understand that Cloudflare includes an additional fee equal to thirty percent (30%) of the monthly Fees (\"",
 																		"marks": [],
 																		"content": null
 																	},
@@ -6909,7 +7293,7 @@
 															"target": null,
 															"uri": null
 														},
-														"value": "Magic Transit®",
+														"value": "Magic Transit, Magic WAN, & Magic Firewall",
 														"marks": [],
 														"content": null
 													}
@@ -6962,31 +7346,7 @@
 																			"target": null,
 																			"uri": null
 																		},
-																		"value": "Cloudflare's Magic Transit Service (\"",
-																		"marks": [],
-																		"content": null
-																	},
-																	{
-																		"nodeType": "text",
-																		"data": {
-																			"target": null,
-																			"uri": null
-																		},
-																		"value": "Magic Transit",
-																		"marks": [
-																			{
-																				"type": "bold"
-																			}
-																		],
-																		"content": null
-																	},
-																	{
-																		"nodeType": "text",
-																		"data": {
-																			"target": null,
-																			"uri": null
-																		},
-																		"value": "\") utilizes border gateway protocol to direct traffic from Customer's set of ingress and egress termination points, including, but not limited to, individual IP addresses, protected subnets, IP networks and border routers under Customer's control (the \"",
+																		"value": "Cloudflare's Magic Transit utilizes border gateway protocol to direct traffic from Customer's set of ingress and egress termination points, including, but not limited to, individual IP addresses, protected subnets, IP networks and border routers under Customer's control (the \"",
 																		"marks": [],
 																		"content": null
 																	},
@@ -7010,7 +7370,47 @@
 																			"target": null,
 																			"uri": null
 																		},
-																		"value": "\"). Magic Transit provides layer 3 DDoS mitigation, network firewall and traffic management solutions to the Customer Network traffic directed to the number of Customer's IP Prefixes listed on Customer's Order Form or Insertion Order, as provided by Customer to Cloudflare for the Customer Network.",
+																		"value": "\"). Magic Transit provides layer 3 DDoS mitigation, ",
+																		"marks": [],
+																		"content": null
+																	},
+																	{
+																		"nodeType": "text",
+																		"data": {
+																			"target": null,
+																			"uri": null
+																		},
+																		"value": "Magic Firewall provides a ",
+																		"marks": [],
+																		"content": null
+																	},
+																	{
+																		"nodeType": "text",
+																		"data": {
+																			"target": null,
+																			"uri": null
+																		},
+																		"value": "network firewall, and ",
+																		"marks": [],
+																		"content": null
+																	},
+																	{
+																		"nodeType": "text",
+																		"data": {
+																			"target": null,
+																			"uri": null
+																		},
+																		"value": "Magic WAN provides",
+																		"marks": [],
+																		"content": null
+																	},
+																	{
+																		"nodeType": "text",
+																		"data": {
+																			"target": null,
+																			"uri": null
+																		},
+																		"value": " traffic management solutions to the Customer Network traffic directed to the number of Customer's IP Prefixes listed on Customer's Order Form or Insertion Order, as provided by Customer to Cloudflare for the Customer Network.",
 																		"marks": [],
 																		"content": null
 																	}
@@ -7056,7 +7456,7 @@
 																			"target": null,
 																			"uri": null
 																		},
-																		"value": "Magic Transit will be provided to Customer subject to the Bandwidth Limits listed on Customer's Order Form or Insertion Order, as measured by Cloudflare at the 95th percentile in five (5) minute intervals.\n\nTo establish Customer's bandwidth at the 95th percentile, Cloudflare will measure and record Customer's bandwidth usage at five (5) minute intervals from 00:00 on the first day of each month until 24:00:00 on the same date of the next month (as based on the UTC+8 time zone). Customer's bandwidth usage records (all clean bandwidth valued for all of the Customer's Internet Properties) for the entire month will then be sorted by Cloudflare in descending order and the top 5% of the recorded bandwidth values will be discarded. The highest bandwidth value in the remaining records will be deemed the billable bandwidth for that month.\n\nBy way of example, in a month with 30 days, Cloudflare would measure Customer's bandwidth 8,640 times (i.e. 12 x 24 x 30). After sorting all of the bandwidth measurements from highest to lowest, and discarding the top 5% of such measurements, Customer would be charged at the 433rd highest value (i.e. 8,640 x 5%).",
+																		"value": "Magic Transit and Magic WAN will be provided to Customer subject to the Bandwidth Limits listed on Customer's Order Form or Insertion Order, as measured by Cloudflare at the 95th percentile.\n\nTo establish Customer's bandwidth at the 95th percentile, Cloudflare will measure and record Customer's bandwidth usage at five (5) minute intervals from 00:00 on the first day of each month until 24:00:00 on the same date of the next month (as based on the UTC+8 time zone). Customer's bandwidth usage records (all clean bandwidth valued for all of the Customer's Internet Properties) for the entire month will then be sorted by Cloudflare in descending order and the top 5% of the recorded bandwidth values will be discarded. The highest bandwidth value in the remaining records will be deemed the billable bandwidth for that month.\n\nBy way of example, in a month with 30 days, Cloudflare would measure Customer's bandwidth 8,640 times (i.e. 12 x 24 x 30). After sorting all of the bandwidth measurements from highest to lowest, and discarding the top 5% of such measurements, Customer would be charged at the 433rd highest value (i.e. 8,640 x 5%).",
 																		"marks": [],
 																		"content": null
 																	}
@@ -9027,7 +9427,27 @@
 																			"target": null,
 																			"uri": null
 																		},
-																		"value": "ZARAZ IS PROVIDED ON AN \"AS IS\" AND \"AS AVAILABLE\" BASIS. ZARAZ MAY ADVERSELY AFFECT THE MANNER IN WHICH YOUR INTERNET PROPERTIES ACCESS OR COMMUNICATE WITH THIRD-PARTY PRODUCTS. CLOUDFLARE DOES NOT REPRESENT OR WARRANT THAT ZARAZ OR ANY THIRD-PARTY PRODUCTS CONFIGURED THROUGH THE SERVICE WILL BE RELIABLE, ERROR-FREE, OR UNINTERRUPTED, THAT DEFECTS WILL BE CORRECTED, OR THAT THE SERVICE OR ANY THIRD-PARTY PRODUCTS CONFIGURED THROUGH THE SERVICE WILL OTHERWISE MEET YOUR NEEDS OR EXPECTATIONS.",
+																		"value": "ZARAZ IS PROVIDED ON AN \"AS IS\" AND \"AS AVAILABLE\" BASIS. ZARAZ MAY ADVERSELY AFFECT THE MANNER IN WHICH YOUR INTERNET PROPERTIES ACCESS OR COMMUNICATE WITH THIRD-PARTY PRODUCTS. CLOUDFLARE DOES NOT REPRESENT OR WARRANT THAT ",
+																		"marks": [],
+																		"content": null
+																	},
+																	{
+																		"nodeType": "text",
+																		"data": {
+																			"target": null,
+																			"uri": null
+																		},
+																		"value": "(I) ZARAZ WILL PREVENT YOUR OR YOUR END USERS' DATA FROM REACHING A THIRD PARTY; (II)",
+																		"marks": [],
+																		"content": null
+																	},
+																	{
+																		"nodeType": "text",
+																		"data": {
+																			"target": null,
+																			"uri": null
+																		},
+																		"value": " ZARAZ OR ANY THIRD-PARTY PRODUCTS CONFIGURED THROUGH THE SERVICE WILL BE RELIABLE, ERROR-FREE, OR UNINTERRUPTED, THAT DEFECTS WILL BE CORRECTED, OR (III) THAT THE SERVICE OR ANY THIRD-PARTY PRODUCTS CONFIGURED THROUGH THE SERVICE WILL OTHERWISE MEET YOUR NEEDS OR EXPECTATIONS.",
 																		"marks": [],
 																		"content": null
 																	}
