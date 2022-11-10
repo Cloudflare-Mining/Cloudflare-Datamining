@@ -7,7 +7,7 @@
 	"links": [
 		{
 			"title": "List Organizations",
-			"description": "List organizations the user is associated with.",
+			"description": "Lists organizations the user is associated with.",
 			"rel": "collection",
 			"href": "user/organizations",
 			"method": "GET",
@@ -33,12 +33,12 @@
 							"member",
 							"invited"
 						],
-						"description": "Whether or not the user is a member of the organization or has an inivitation pending."
+						"description": "Whether the user is a member of the organization or has an inivitation pending."
 					},
 					"name": {
 						"type": "string",
 						"example": "\"Cloudflare, Inc.\"",
-						"description": "Organization Name.",
+						"description": "Organization name.",
 						"maxLength": 100
 					},
 					"page": {
@@ -103,7 +103,7 @@
 		},
 		{
 			"title": "Organization Details",
-			"description": "Get a specific organization the user is associated with.",
+			"description": "Gets a specific organization the user is associated with.",
 			"rel": "self",
 			"href": "user/organizations/{#/definitions/identifier}",
 			"method": "GET",
@@ -121,7 +121,7 @@
 		},
 		{
 			"title": "Leave Organization",
-			"description": "Remove association to an organization.",
+			"description": "Removes association to an organization.",
 			"rel": "self",
 			"href": "user/organizations/{#/definitions/identifier}",
 			"method": "DELETE",
@@ -154,7 +154,7 @@
 			"name": {
 				"type": "string",
 				"example": "\"Cloudflare, Inc.\"",
-				"description": "Organization Name.",
+				"description": "Organization name.",
 				"maxLength": 100
 			},
 			"status": {
@@ -164,7 +164,7 @@
 					"member",
 					"invited"
 				],
-				"description": "Whether or not the user is a member of the organization or has an inivitation pending."
+				"description": "Whether the user is a member of the organization or has an inivitation pending."
 			},
 			"permissions": {
 				"type": "array",
@@ -180,7 +180,7 @@
 			"roles": {
 				"type": "array",
 				"example": "[\n  \"All Privileges - Super Administrator\"\n]",
-				"description": "List of role names for the User at the Organization.",
+				"description": "List of roles that a user has within an organization.",
 				"readOnly": true,
 				"items": {
 					"type": "string",

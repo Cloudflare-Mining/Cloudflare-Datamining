@@ -14,7 +14,7 @@
 	"links": [
 		{
 			"title": "List Zones",
-			"description": "List, search, sort, and filter your zones.",
+			"description": "Lists, searches, sorts, and filters your zones.",
 			"rel": "collection",
 			"href": "zones",
 			"method": "GET",
@@ -180,7 +180,7 @@
 								"readOnly": true
 							}
 						},
-						"description": "Account of which the zone is created in."
+						"description": "Account in which the zone was created."
 					},
 					"type": {
 						"type": "string",
@@ -228,7 +228,7 @@
 		},
 		{
 			"title": "Edit Zone",
-			"description": "Only one zone property can be changed at a time.",
+			"description": "Editz a zone. Only one zone property can be changed at a time.",
 			"rel": "self",
 			"href": "zones/{#/definitions/identifier}",
 			"method": "PATCH",
@@ -250,7 +250,7 @@
 					"paused": {
 						"type": "boolean",
 						"example": "false",
-						"description": "Indicates if the zone is only using Cloudflare DNS services. A true value means the zone will not receive security or performance benefits.",
+						"description": "Indicates whether the zone is only using Cloudflare DNS services. A true value means the zone will not receive security or performance benefits.",
 						"readOnly": true,
 						"default": false
 					},
@@ -302,7 +302,7 @@
 		},
 		{
 			"title": "Delete Zone",
-			"description": "Delete an existing zone.",
+			"description": "Deletes an existing zone.",
 			"rel": "self",
 			"href": "zones/{#/definitions/identifier}",
 			"method": "DELETE",
@@ -325,7 +325,7 @@
 		},
 		{
 			"title": "Zone Activation Check",
-			"description": "Initiate another zone activation check.",
+			"description": "Initiates another zone activation check.",
 			"rel": "tag:cloudflare.com,2017:status",
 			"href": "zones/{#/definitions/identifier}/activation_check",
 			"method": "PUT",
@@ -363,7 +363,7 @@
 				"all_props": {
 					"make_pending": {
 						"example": "true",
-						"description": "A flag that indicates that a zone should be in a pending mode.",
+						"description": "A flag that indicates that a zone is in a pending mode.",
 						"enum": [
 							true
 						]
@@ -395,7 +395,7 @@
 				"all_props": {
 					"zone_to_step3": {
 						"example": "true",
-						"description": "A flag that indicates that a zone should be step 3 of the signup process.",
+						"description": "A flag that indicates that a zone is in step 3 of the signup process.",
 						"enum": [
 							true
 						]
@@ -412,7 +412,7 @@
 		},
 		{
 			"title": "Purge All Files",
-			"description": "Remove ALL files from Cloudflare's cache.",
+			"description": "Removes ALL files from Cloudflare's cache.",
 			"rel": "tag:cloudflare.com,2017:cache",
 			"href": "zones/{#/definitions/identifier}/purge_cache",
 			"method": "POST",
@@ -455,7 +455,7 @@
 		},
 		{
 			"title": "Purge Files by URL",
-			"description": "Granularly remove one or more files from Cloudflare's cache either by specifying URLs. All tiers can purge by URL, however, FREE can only purge 1000 URLs per minute.\n\nTo purge files with custom cache keys, include the headers used to compute the cache key as in the example. To purge files with ${geo} or ${devicetype} in their cache keys, include the CF-Device-Type or CF-IPCountry headers.\n\n**NB:** When including the Origin header, be sure to include the **scheme** and **hostname**. The port number can be omitted if it is the default port (80 for http, 443 for https), but must be included otherwise.",
+			"description": "Granularly removes one or more files from Cloudflare's cache by specifying URLs. All tiers can purge by URL, but FREE can only purge 1000 URLs per minute.\n\nTo purge files with custom cache keys, include the headers used to compute the cache key as in the example. To purge files with ${geo} or ${devicetype} in their cache keys, include the CF-Device-Type or CF-IPCountry headers.\n\n**NB:** When including the Origin header, be sure to include the **scheme** and **hostname**. The port number can be omitted if it is the default port (80 for http, 443 for https), but must be included otherwise.",
 			"rel": "tag:cloudflare.com,2017:cache",
 			"href": "zones/{#/definitions/identifier}/purge_cache",
 			"method": "POST",
@@ -500,8 +500,8 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"9a7806061c88ada191ed06f989cc3dac\"\n  }\n}"
 		},
 		{
-			"title": "Purge Files by Cache-Tags, Host or Prefix",
-			"description": "Granularly remove one or more files from Cloudflare's cache either by specifying the host, the associated Cache-Tag, or a Prefix.\n\n**NB:** Cache-Tag, host and prefix purging each have a rate limit of 30,000 purge API calls in every 24 hour period. You may purge up to 30 tags, hosts, or prefixes in one API call. This rate limit can be raised for customers who need to purge at higher volume.",
+			"title": "Purge Files by Cache-Tags, Host, or Prefix",
+			"description": "Granularly removes one or more files from Cloudflare's cache either by specifying the host, the associated Cache-Tag, or a Prefix.\n\n**NB:** Cache-Tag, host, and prefix purging each have a rate limit of 30,000 purge API calls in every 24 hour period. You may purge up to 30 tags, hosts, or prefixes in one API call. This rate limit can be raised for customers who need to purge at higher volume.",
 			"rel": "tag:cloudflare.com,2017:cache",
 			"href": "zones/{#/definitions/identifier}/purge_cache",
 			"method": "POST",
@@ -517,7 +517,7 @@
 					"#cache_purge:edit"
 				]
 			},
-			"html_id": "zone-purge-files-by-cache-tags,-host-or-prefix",
+			"html_id": "zone-purge-files-by-cache-tags,-host,-or-prefix",
 			"uri": "zones/:identifier/purge_cache",
 			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/purge_cache\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"tags\":[\"some-tag\",\"another-tag\"],\"hosts\":[\"www.example.com\",\"images.example.com\"],\"prefixes\":[\"www.example.com/foo\",\"images.example.com/bar/baz\"]}'",
 			"parameters": {
@@ -546,7 +546,7 @@
 					"prefixes": {
 						"type": "array",
 						"example": "[\n  \"www.example.com/foo\",\n  \"images.example.com/bar/baz\"\n]",
-						"description": "Any assets at URLs that match the prefix will be purged from the Cloudflare cache. For instance, a.com/b will purge a.com/b/c/d.png but not a.com/bc.png. The prefixes a.com/b and a.com/b/c are redundant.",
+						"description": "Any assets at URLs that match the prefix will be purged from the Cloudflare cache. For example, a.com/b will purge a.com/b/c/d.png but not a.com/bc.png. The prefixes a.com/b and a.com/b/c are redundant.",
 						"items": {
 							"type": "string"
 						},
@@ -571,13 +571,13 @@
 		"1002": "Invalid domain",
 		"1003": "'jump_start' must be boolean",
 		"1006": "Invalid or missing zone",
-		"1008": "Invalid or missing Zone id",
+		"1008": "Invalid or missing zone ID",
 		"1010": "Bulk deal limit reached",
 		"1012": "Request must contain one of 'purge_everything', 'files', 'tags', 'hosts' or 'prefixes'",
 		"1013": "'purge_everything' must be true",
 		"1014": "'files', 'tags', 'hosts' or 'prefixes' must be an array",
-		"1015": "Unable to purge <url>",
-		"1016": "Unable to purge any urls",
+		"1015": "Unable to purge <URL>",
+		"1016": "Unable to purge any URLs",
 		"1017": "Unable to purge all",
 		"1018": "Invalid zone status",
 		"1019": "Zone is already paused",
@@ -586,7 +586,7 @@
 		"1022": "Zone is already unpaused",
 		"1023": "Invalid or missing zone",
 		"1049": "<domain> is not a registered domain",
-		"1050": "<domain> is currently being tasted. It is not currently a registered domain",
+		"1050": "<domain> is currently being tested. It is not currently a registered domain",
 		"1051": "Cloudflare is already hosting <domain>",
 		"1052": "An error has occurred and it has been logged. We will fix this problem promptly. We apologize for the inconvenience",
 		"1055": "Failed to disable <domain>",
@@ -815,7 +815,7 @@
 						],
 						"objects": [],
 						"example": "{\n  \"id\": {},\n  \"email\": {},\n  \"type\": \"user\"\n}",
-						"description": "A user that owns the zone."
+						"description": "The user that owns the zone."
 					},
 					{
 						"all_props": {
@@ -829,7 +829,7 @@
 							"name": {
 								"type": "string",
 								"example": "\"Cloudflare, Inc.\"",
-								"description": "Organization Name.",
+								"description": "Organization name.",
 								"maxLength": 100
 							},
 							"type": {
@@ -849,7 +849,7 @@
 						],
 						"objects": [],
 						"example": "{\n  \"id\": \"01a7362d577a6c3019a474fd6f485823\",\n  \"name\": \"Cloudflare, Inc.\",\n  \"type\": \"organization\"\n}",
-						"description": "An organization that owns the zone."
+						"description": "The organization that owns the zone."
 					}
 				],
 				"description": "Information about the owner of the zone."
@@ -4578,7 +4578,7 @@
 			"paused": {
 				"type": "boolean",
 				"example": "false",
-				"description": "Indicates if the zone is only using Cloudflare DNS services. A true value means the zone will not receive security or performance benefits.",
+				"description": "Indicates whether the zone is only using Cloudflare DNS services. A true value means the zone will not receive security or performance benefits.",
 				"readOnly": true,
 				"default": false
 			},

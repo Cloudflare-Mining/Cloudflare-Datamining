@@ -1,12 +1,12 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/user/invite.json",
 	"title": "User's Invites",
-	"description": "Your pending invitations to organizations.",
+	"description": "A user's pending invitations to organizations.",
 	"type": "object",
 	"links": [
 		{
 			"title": "List Invitations",
-			"description": "List all invitations associated with my user.",
+			"description": "Lists all invitations associated with my user.",
 			"rel": "collection",
 			"href": "user/invites",
 			"method": "GET",
@@ -24,7 +24,7 @@
 		},
 		{
 			"title": "Invitation Details",
-			"description": "Get the details of an invitation.",
+			"description": "Gets the details of an invitation.",
 			"rel": "self",
 			"href": "user/invites/{#/definitions/identifier}",
 			"method": "GET",
@@ -42,7 +42,7 @@
 		},
 		{
 			"title": "Respond to Invitation",
-			"description": "Respond to an invitation.",
+			"description": "Responds to an invitation.",
 			"rel": "self",
 			"href": "user/invites/{#/definitions/identifier}",
 			"method": "PATCH",
@@ -99,34 +99,34 @@
 					"null"
 				],
 				"example": "\"5a7805061c76ada191ed06f989cc3dac\"",
-				"description": "Id of the user to be added to the Organization.",
+				"description": "ID of the user to add to the organization.",
 				"maxLength": 32,
 				"readOnly": true
 			},
 			"invited_member_email": {
 				"type": "string",
 				"example": "\"user@example.com\"",
-				"description": "Email address of the user to be added to the Organization.",
+				"description": "Email address of the user to add to the organization.",
 				"maxLength": 90
 			},
 			"organization_id": {
 				"type": "string",
 				"example": "\"5a7805061c76ada191ed06f989cc3dac\"",
-				"description": "ID of the Organization the user will be added to.",
+				"description": "ID of the organization the user will be added to.",
 				"maxLength": 32,
 				"readOnly": true
 			},
 			"organization_name": {
 				"type": "string",
 				"example": "\"Cloudflare, Inc.\"",
-				"description": "Organization Name.",
+				"description": "Organization name.",
 				"maxLength": 100,
 				"readOnly": true
 			},
 			"roles": {
 				"type": "array",
 				"example": "[\n  {\n    \"id\": \"3536bcfad5faccb999b47003c79917fb\",\n    \"name\": \"Organization Admin\",\n    \"description\": \"Administrative access to the entire Organization\",\n    \"permissions\": [\n      \"#zones:read\"\n    ]\n  }\n]",
-				"description": "Roles to be assigned to this Member.",
+				"description": "Roles to be assigned to this user.",
 				"items": {
 					"id": "https://api.cloudflare.com/schemas/v4/client/definitions/organization/role.json",
 					"title": "Organization Roles",
@@ -745,6 +745,6 @@
 		"objects": [],
 		"example": "{\n  \"id\": \"4f5f0c14a2a41d5063dd301b2f829f04\",\n  \"invited_member_id\": \"5a7805061c76ada191ed06f989cc3dac\",\n  \"invited_member_email\": \"user@example.com\",\n  \"organization_id\": \"5a7805061c76ada191ed06f989cc3dac\",\n  \"organization_name\": \"Cloudflare, Inc.\",\n  \"roles\": [\n    {\n      \"id\": \"3536bcfad5faccb999b47003c79917fb\",\n      \"name\": \"Organization Admin\",\n      \"description\": \"Administrative access to the entire Organization\",\n      \"permissions\": [\n        \"#zones:read\"\n      ]\n    }\n  ],\n  \"invited_by\": \"user@example.com\",\n  \"invited_on\": \"2014-01-01T05:20:00Z\",\n  \"expires_on\": \"2014-01-01T05:20:00Z\",\n  \"status\": \"accepted\"\n}",
 		"title": "User's Invites",
-		"description": "Your pending invitations to organizations."
+		"description": "A user's pending invitations to organizations."
 	}
 }

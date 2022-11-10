@@ -6,7 +6,7 @@
 	"links": [
 		{
 			"title": "Billing Profile Details",
-			"description": "Access your billing profile object.",
+			"description": "Accesses your billing profile object.",
 			"rel": "self",
 			"href": "user/billing/profile",
 			"method": "GET",
@@ -29,7 +29,7 @@
 		},
 		{
 			"title": "Update Billing Profile",
-			"description": "Update your billing profile object.",
+			"description": "Updates your billing profile object.",
 			"rel": "self",
 			"href": "user/billing/profile",
 			"method": "PUT",
@@ -75,7 +75,7 @@
 					"address2": {
 						"type": "string",
 						"example": "\"Apt 123\"",
-						"description": "Street address continued, apartment/suite, etc (optional).",
+						"description": "Street address continued - apartment/suite, etc (optional).",
 						"maxLength": 100
 					},
 					"city": {
@@ -87,19 +87,19 @@
 					"state": {
 						"type": "string",
 						"example": "\"CA\"",
-						"description": "the state/province on the billing profile.",
+						"description": "The state/province on the billing profile.",
 						"maxLength": 40
 					},
 					"zipcode": {
 						"type": "string",
 						"example": "\"12345\"",
-						"description": "The zipcode on the billing profile.",
+						"description": "The ZIP code on the billing profile.",
 						"maxLength": 25
 					},
 					"country": {
 						"type": "string",
 						"example": "\"US\"",
-						"description": "the country of the address on the billing profile.",
+						"description": "The country of the address on the billing profile.",
 						"maxLength": 50
 					},
 					"card_number": {
@@ -159,7 +159,7 @@
 		},
 		{
 			"title": "Edit Specific Billing Profile Fields",
-			"description": "Edit particular elements of your billing profile. This feature os only available for VAT.",
+			"description": "Edits particular elements of your billing profile. This feature is only available for VAT.",
 			"rel": "self",
 			"href": "user/billing/profile",
 			"method": "PATCH",
@@ -202,7 +202,7 @@
 		},
 		{
 			"title": "Delete Billing Profile",
-			"description": "Delete your billing profile. Note: You must cancel all subscriptions to delete billing information.",
+			"description": "Deletes your billing profile. Note: You must cancel all subscriptions to delete billing information.",
 			"rel": "self",
 			"href": "user/billing/profile",
 			"method": "DELETE",
@@ -226,7 +226,7 @@
 		},
 		{
 			"title": "Create Billing Profile",
-			"description": "Create your billing profile object.",
+			"description": "Creates your billing profile object.",
 			"rel": "self",
 			"href": "user/billing/profile",
 			"method": "POST",
@@ -272,7 +272,7 @@
 					"address2": {
 						"type": "string",
 						"example": "\"Apt 123\"",
-						"description": "Street address continued, apartment/suite, etc (optional).",
+						"description": "Street address continued - apartment/suite, etc (optional).",
 						"maxLength": 100
 					},
 					"city": {
@@ -284,19 +284,19 @@
 					"state": {
 						"type": "string",
 						"example": "\"CA\"",
-						"description": "the state/province on the billing profile.",
+						"description": "The state/province on the billing profile.",
 						"maxLength": 40
 					},
 					"zipcode": {
 						"type": "string",
 						"example": "\"12345\"",
-						"description": "The zipcode on the billing profile.",
+						"description": "The ZIP code on the billing profile.",
 						"maxLength": 25
 					},
 					"country": {
 						"type": "string",
 						"example": "\"US\"",
-						"description": "the country of the address on the billing profile.",
+						"description": "The country of the address on the billing profile.",
 						"maxLength": 50
 					},
 					"card_number": {
@@ -389,7 +389,7 @@
 			"address2": {
 				"type": "string",
 				"example": "\"Apt 123\"",
-				"description": "Street address continued, apartment/suite, etc (optional).",
+				"description": "Street address continued - apartment/suite, etc (optional).",
 				"maxLength": 100
 			},
 			"company": {
@@ -407,19 +407,19 @@
 			"state": {
 				"type": "string",
 				"example": "\"CA\"",
-				"description": "the state/province on the billing profile.",
+				"description": "The state/province on the billing profile.",
 				"maxLength": 40
 			},
 			"zipcode": {
 				"type": "string",
 				"example": "\"12345\"",
-				"description": "The zipcode on the billing profile.",
+				"description": "The ZIP code on the billing profile.",
 				"maxLength": 25
 			},
 			"country": {
 				"type": "string",
 				"example": "\"US\"",
-				"description": "the country of the address on the billing profile.",
+				"description": "The country of the address on the billing profile.",
 				"maxLength": 50
 			},
 			"telephone": {
@@ -478,7 +478,7 @@
 					"braintree",
 					"paypal"
 				],
-				"description": "The gateway which was used to tokenize the payment method."
+				"description": "The gateway that was used to tokenize the payment method."
 			},
 			"payment_email": {
 				"type": "string",

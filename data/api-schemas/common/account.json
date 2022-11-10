@@ -29,6 +29,14 @@
 					"description": "Indicates whether or not membership in this account requires that Two-Factor Authentication is enabled.",
 					"default": false
 				},
+				"api_access_enabled": {
+					"type": [
+						"boolean",
+						"null"
+					],
+					"description": "Enterprise only. Indicates whether or not API access is enabled for members of this account.",
+					"default": null
+				},
 				"use_account_custom_ns_by_default": {
 					"type": "boolean",
 					"description": "Indicates whether new zones should use the account-level custom nameservers by default.",
