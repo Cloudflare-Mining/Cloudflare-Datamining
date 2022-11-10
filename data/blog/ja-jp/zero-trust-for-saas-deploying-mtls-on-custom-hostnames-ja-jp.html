@@ -1,0 +1,29 @@
+<div class="post-content lh-copy gray1">
+	<p>Cloudflareは、SaaS（Software-as-a-Service）の大規模な顧客基盤を持ち、そのSaaSサービスを利用する顧客の数千から数百万のドメインを管理しています。<a href="https://blog.cloudflare.com/cloudflare-for-saas/">Cloudflare for SaaS</a>という製品を通して、私たちのインフラとサービスを顧客のドメインに拡張し、SaaSプロバイダーの成長を支援してきました。本日、私たちはSaaSプロバイダーに新しいツールを提供し、顧客セキュリティのレイヤーを追加できることをうれしく思います。これにより、Access製品を通じて、顧客のドメインで相互のTLS認証を有効にできるようになりました。</p>
+	<h3 id="-tls-">相互TLS入門</h3>
+	<p>Webサイトに接続すると、アドレスバーに鍵のアイコンが表示されます。これはWebサイトに安全に接続しており、そのWebサイトが有効なパブリックTLS証明書を持っていることをブラウザが知らせているものです。TLS証明書はトラフィックの暗号化と復号化に公開鍵と秘密鍵をペアで使用し、インターネットトラフィックの暗号化を維持します。また、クライアントが正しいサーバーに接続していることを証明するための認証も行います。</p>
+	<p>安全な接続を行うには、<a href="https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake/" target="_blank">TLSハンドシェイク</a>を行う必要があります。ハンドシェイク中、クライアントとサーバーは暗号鍵を交換し、クライアントはサーバーの身元を認証し、クライアントとサーバーの両方は、後にトラフィックを暗号化するために使用するセッション鍵を生成します。</p>
+	<p>TLSハンドシェイクとは次のようなものです。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-102.png" class="kg-image"></figure>
+	<p>TLSハンドシェイクでは、クライアントは常にサーバーから提供された証明書を検証し、正しい宛先にリクエストを送信している確認を行います。クライアントがサーバーの身元を認証する必要があるのと同じように、サーバーがクライアントを認証する必要がある場合があります。これは許可されたクライアントのみがサーバーにリクエストを送信していることを確認するためです。</p>
+	<p>例えば、いくつかのサービスを管理する場合、サービスAはデータベースに情報を書き込むとします。このデータベースはかなり重要なデータベースで、サービスAから送信されたエントリのみを持つようにしなければなりません。そこへ、システムにバグがあり、サービスBが誤ってそのデータベースへの書き込み呼び出しを行ってしまったとしたらどうなるでしょう。</p>
+	<p>あるサービスがデータベースへの呼び出しを許可されているかどうかをチェックする、警備員が必要になります。警備員はVIPリストを持っていて、そのリストと身分証明書を照らし合わせて、会場に入れるかどうかを確認することができます。サーバーも同様に、TLS証明書をIDとして使用するモデルを使用することができます。</p>
+	<p>警備員がVIPリストを持つように、サーバーも証明書を発行する認証局（CA）ルートを持つことができます。CAルートから発行された証明書は、その後、クライアントにプロビジョニングされます。これらのクライアント証明書は、クライアントを識別し、承認に使用されます。クライアントが有効な証明書を提示している限り、つまりサーバーがルートCAに対してバリデーション可能な証明書を提示している限り、クライアントはリクエストを行うことを許可されます。クライアントがクライアント証明書を提示しない（VIPリストにない）場合、または未承認のクライアント証明書を提示した場合、サーバーはリクエストを拒否することができます。クライアントとサーバーの証明書のバリデーションを行うこのプロセスは、 <a href="https://www.cloudflare.com/learning/access-management/what-is-mutual-tls/" target="_blank">相互TLS 認証</a> (mTLS) と呼ばれ、TLS ハンドシェイク中に実行されます。</p>
+	<p>mTLSを使用しない場合、サーバーだけが証明書を提示する責任を負い、クライアントはそのバリデーションを行います。mTLSでは、クライアントとサーバーの両方が、下の写真のように互いの証明書を提示してバリデーションを行います。</p>
+	<figure class="kg-card kg-image-card"><img src="https://lh6.googleusercontent.com/-jX-m0--vJzKCpz9UhlbWZNvl8hJDGoACckkNp0bAIdKGWk1Zr_k4R6gQqNBybVqbkkT8X9bopBZFsDa04iHJzkohQ4pMchvaEMV0secN2DR8pB4OX63Ysd-y6swZCzZG2_tjMAc" class="kg-image"></figure>
+	<h3 id="mtls-access-zero-trust">mTLS + Access = Zero Trust</h3>
+	<p>数年前、当社は<a href="https://developers.cloudflare.com/cloudflare-one/" target="_blank">Access</a>という製品にmTLSサポートを追加し、お客様が<a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trust</a>ポリシーをアプリケーションで有効にできるようにしました。Accessをご利用のお客様は、すべてのクライアントがリクエスト時に有効な証明書を提示しなければならない、というポリシーをデプロイすることができます。つまり、有効な証明書を持たないリクエスト（通常、未承認のクライアントからのもの）はブロックされ、追加の保護レイヤーが加えられます。Cloudflareは、顧客がアクセスポリシーを設定することで、CloudflareドメインにmTLSの設定を許可します。唯一の注意点があるとすれば、この機能を使うにはドメインの所有者である必要があるということでした。それでは、ドメインのオーナーではないが、そのドメインのオリジンを管理している場合はどうでしょうか。このようなケースは、私たちの顧客の大きな基盤であるSaaSプロバイダーが、自社で所有していない顧客のドメインにサービスを拡張している場合に多く見受けられます。</p>
+	<h3 id="saas-cloudflare-">SaaSプロバイダーによるCloudflareのメリット拡張</h3>
+	<p><a href="https://blog.cloudflare.com/cloudflare-for-saas/">Cloudflare for SaaS</a>により、SaaSプロバイダーはCloudflareネットワークのメリットを顧客のドメインに拡張できるようになります。これらのドメインはSaaSプロバイダーの所有ではありませんが、SaaSプロバイダーのサービスを利用し、SaaSプロバイダーのオリジンへのトラフィックをルーティングします。</p>
+	<p>これにより、SaaSプロバイダーは、最高のアップタイム、超高速パフォーマンス、比類のないセキュリティを顧客に提供する責任を負うことになります。つまり、Cloudflareを利用することで、簡単に拡張できるのです。</p>
+	<p>実際にはCloudflare for SaaSは、<a href="https://blog.cloudflare.com/introducing-ssl-for-saas/">SSL for SaaS</a>としてスタートしました。当社はSaaSプロバイダーが顧客用TLS証明書を発行し、安全かつセキュアに保つ能力を提供することを目指し、SSL for SaaSを構築しました。</p>
+	<p>その後、SaaSをご利用のお客様から、私たちが直接のお客様のために構築したmTLSサポートを、彼らの顧客にも拡張してほしいという新しい要望をお寄せいただくようになりました。</p>
+	<h3 id="saas-mtls-">SaaSプロバイダーがmTLSの使用を希望するのはなぜでしょうか。</h3>
+	<p>SaaSプロバイダーとして提供できるサービスは多岐にわたります。そうしたサービスの中には、さらに高度なセキュリティ管理が必要なものがあります。</p>
+	<p>たとえば、構築しているSaaSソリューションが、決済処理業者であるとします。各顧客は独自のAPIエンドポイントを取得し、そのユーザーは<em>pay.&lt;business_name&gt;.com</em>のようなリクエストを送信します。決済処理業者として、どのようなクライアントやデバイスもが自社のサービスにリクエストを出すのではなく、許可されたデバイスのみがリクエストを出すようにしたい。そんな場合こそmTLSの出番なのです。</p>
+	<p>SaaSプロバイダとして、顧客のAPIエンドポイントごとにルートCAを設定することができます。次に、各ルートCA が、許可されたデバイスにインストールされるクライアント証明書を発行します。クライアント証明書のインストールが完了したら、あとは有効な証明書のチェックを実施するだけです。</p>
+	<p>要約すると、SaaSプロバイダーとしてこれを行うことで、顧客は決済処理APIエンドポイントへのリクエストが有効なデバイス経由のみであることを保証できるようになるのです。また、顧客ごとに個別のルート認証局を導入することで、ある顧客のAPIエンドポイントへのリクエストを許可されたクライアントが、許可されていない別の顧客のAPIエンドポイントにリクエストを行うことを防止できます。</p>
+	<h3 id="cloudflare-">Cloudflareにおける設定について</h3>
+	<p>SaaSプロバイダーとして、<a href="https://developers.cloudflare.com/ssl/ssl-for-saas/getting-started" target="_blank">Cloudflare for SaaSを設定</a>し、お客様のドメインをカスタムホスト名として追加してください。その後、Cloudflare for Teamsのダッシュボードで数回クリックすれば、<a href="https://developers.cloudflare.com/cloudflare-one/identity/devices/mutual-tls-authentication/#add-mtls-authentication-to-your-access-configuration" target="_blank">mTLS認証を追加</a>できます。</p>
+	<p>この機能は現在ベータ版で、Enterpriseプランのお客様がご使用になれます。ご意見・ご感想がございましたら、担当アカウントまでお寄せください。</p>
+</div>

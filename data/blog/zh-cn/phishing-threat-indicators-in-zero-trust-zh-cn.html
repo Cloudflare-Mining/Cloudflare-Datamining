@@ -1,0 +1,28 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image2-19.png" class="kg-image"></figure>
+	<p>过去几年中，Area 1 和 Cloudflare 都构建了提取威胁指标数据的管道，以便在我们的产品中使用。我们在收购过程中进行了比较，发现我们各自系统之间的指标重合度低于预期。这于我们是一个机会：我们已经开始将 Area 1 的威胁指标数据引入 Cloudflare 产品套件中，这也是两家公司合并的首要任务之一。因此，所有使用 Cloudflare 自有管道的指标数据的产品，现在还可使用 Area 1 的数据。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image1-13.png" class="kg-image"></figure>
+	<p>Area 1 构建的数据管道专注识别新的活跃的网络钓鱼威胁，补充了 Gateway 可识别的网络钓鱼类别。如果您的策略中提到了这一类别，那您已经开始享受这一额外的威胁保障了。</p>
+	<h3 id="cloudflare-">Cloudflare 如何识别潜在的网络钓鱼威胁</h3>
+	<p>Cloudflare 能够结合 Cloudflare 团队和 Area 1 团队在合并前各自独立开发的数据、程序和技术。客户能够通过 Cloudflare 产品套件利用两个团队的研究成果。</p>
+	<p>Cloudflare 从我们自己的网络流量、OSINT 来源和众多合作伙伴那里精选了一系列数据馈送，并应用了自定义误报控制。通过 Cloudflare，客户无需再开发软件，还省却了分发和更新这些馈送的操作工作量。因为 Cloudflare 会自动处理，更新频率高达每分钟一次。</p>
+	<p>除此之外，Cloudflare 还通过多种方式主动识别网络钓鱼基础设施。收购 Area 1 后，Cloudflare 现在能够在我们的网络中应用 Area 1 以对手为中心的威胁研究方法。威胁研究团队致力于追踪政府支持的和有经济动机的威胁行为者、新披露的 CVE 以及当前的网络钓鱼趋势。</p>
+	<p>除 DNS 解析器、<a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trust</a> 套件和网络服务外，Cloudflare 现在还为全球数百家机构运营邮件交换服务器。这些产品全都会产生数据，可用于增强所有 Cloudflare 产品的安全性。例如，在邮件交付过程中，邮件引擎执行域名查询，通过机器学习对潜在的网络钓鱼指标进行评分，并获取 URL。现可通过 Cloudflare 的产品使用这些数据。</p>
+	<h3 id="cloudflare-area-1-">Cloudflare Area 1 如何识别潜在的网络钓鱼威胁</h3>
+	<p>Cloudflare Area 1 团队运营着一套网络爬取工具，旨在识别钓鱼网页，捕获钓鱼工具包，并突出显示攻击者的基础设施。此外，Cloudflare Area 1 威胁模型根据从威胁行为者活动中收集的信号，评估威胁活动；而这些活动消息的相关 IOC 又可进一步丰富 Cloudflare Area 1 威胁数据，以便日后发现威胁活动。通过综合利用这些技术，Cloudflare Area 1 可以在攻击者攻击客户之前，识别攻击者的破坏指标。Cloudflare Area 1 积极主动的策略还包括成立了一支威胁研究团队，负责追踪政府支持的和有经济动机的威胁行为者、新披露的 CVE 以及当前的网络钓鱼趋势。通过这种研究，分析师定期将网络钓鱼指标插入一个庞大的指标管理系统，用于我们的电子邮件产品或任何其他可以查询该系统的产品中。</p>
+	<p>在我们为全球数百家机构正常运营邮件交换服务器的过程中，Cloudflare Area 1 也收集了一些有关网络钓鱼威胁的信息。在邮件交付过程中，邮件引擎执行域名查询，通过机器学习对潜在的网络钓鱼指标进行评分，并提取 URL。如果发现恶意邮件，便会将与该邮件相关的指标插入我们的指标管理系统，组成后续消息评估的反馈回路。</p>
+	<h3 id="-cloudflare-">如何使用 Cloudflare 数据改进网络钓鱼检测</h3>
+	<p>为了支持 Cloudflare 的产品，包括 Gateway 和 Page Shield，Cloudflare 构建了一个数据管道，从合作伙伴、OSINT 来源以及 Cloudflare 内部生成的威胁情报中获取数据。我们一直在努力编排与客户相关、可在 Cloudflare 支持的产品中操作的威胁情报数据集。我们的方向是：我们能提供什么数据来增强客户的安全性，无需客户来管理复杂的数据、关系和配置。我们提供各种安全威胁类别，主要的重点领域包括：</p>
+	<ul>
+		<li>恶意软件分发</li>
+		<li>恶意软件和僵尸网络命令与控制</li>
+		<li>网络钓鱼，</li>
+		<li>新域名和新发现的域名</li>
+	</ul>
+	<p>无论潜在的网络钓鱼链接是如何进入组织的，无论是通过电子邮件、短信、日程邀请或共享文件，还是其他方式，网络钓鱼都是一种威胁。因此，自 Cloudflare 的威胁数据团队成立以来，检测和阻止网络钓鱼域名一直是其积极开发的领域。</p>
+	<p>展望未来，我们将能把这项工作纳入 Cloudflare Area 1 的网络钓鱼邮件检测流程。电子邮件的发件人、标题、正文或链接中包含这些域名时，Cloudflare 的网络钓鱼域名列表可帮助识别恶意电子邮件。</p>
+	<h3 id="1-1-3-cloudflare-area-1-">1+1=3：Cloudflare 与 Area 1 共享更多数据集</h3>
+	<p>长期以来，威胁行为者一直有着不公平的优势——他们了解自己的目标，有时间针对目标准备特定的活动。威胁行为者有时间构建正确的基础设施，侦察，发起活动，试探，观察结果，迭代，改进，然后发起“生产”活动。这一精确的时间要素也让我们有机会在威胁活动达到临界质量之前，发现、评估和主动过滤活动基础设施。但要有效做到这一点，我们必须能看见并了解整个公共 IP 空间的威胁活动。</p>
+	<p>凭借 Cloudflare 庞大的网络和对 DNS 源站、电子邮件或网络流量的全球洞察力，结合 Cloudflare Area 1 的活动战术、技术和程序 (TTP)、种子基础设施和威胁模式数据集，我们现在比以往任何时候都更具优势，帮助企业抵御老练的威胁行为者的活动，夺回长期为坏人所有的优势。</p>
+	<p>若想将 Zero Trust 扩展到电子邮件安全，以阻止高级威胁，请联系您的 Customer Success 经理，或<a href="https://www.cloudflare.com/lp/emailsecurity/" target="_blank">在此</a>请求进行网络钓鱼风险评估。</p>
+</div>

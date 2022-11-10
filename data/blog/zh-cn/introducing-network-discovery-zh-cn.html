@@ -1,0 +1,27 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image4-19.png" class="kg-image" alt="Introducing Private Network Discovery"></figure>
+	<p>使用 Cloudflare One，您可轻松在 Cloudflare 上建立专用网络。难的是，如何始终维护这个专用网络的安全。由于每天都有新用户加入，旧用户离开，资源不断开开停停，长期管理起来非常痛苦。</p>
+	<p>这就是我们今天为新的 Zero Trust 网络发现工具开放封测的原因。有了 Private Network Discovery，我们的 Zero Trust 平台现在将开始被动对正在访问的资源和正在访问的用户进行分类，不需要任何额外的配置。无需任何第三方工具、命令或点击。</p>
+	<p><a href="https://www.cloudflare.com/zero-trust/lp/private-network-discovery" target="_blank">注册</a>即可开始体验，提前访问封测版，立即获得对您的网络的即时可见性。如有兴趣进一步了解其工作原理，以及我们未来还将推出哪些普遍可用的产品，请继续浏览下文。</p>
+	<p>要迁移到 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trust</a>，复制目前网络中的有效安全策略是最费力的工作之一。即使您一时很了解您的环境，网络也在不断演变，动态启动新的资源用于各种操作。这导致不断在发现和保护应用程序间循环，安全团永远有积压的尽职调查工作。</p>
+	<p>这就是我们构建 Private Network Discovery 的原因。通过 Private Network Discovery，组织可以轻松地全面洞察其网络上的用户和应用程序，不需要组织付出任何额外的工作。只需将您的专用网络连接到 Cloudflare，在您的网络上发现的任何独特流量就会显示出来，您便能将它们无缝转化为 Cloudflare Access 应用程序。</p>
+	<h3 id="-cloudflare-">在 Cloudflare 上建立您的专用网络</h3>
+	<p>建立私有网络包含两个主要组成部分：基础设施部分和客户部分。</p>
+	<p>基础设施部分由 Cloudflare Tunnel 提供技术支持，并由其将您的基础设施（无论是单个应用程序、多个应用程序，还是整个网段）连接到 Cloudflare。要实现这一点，可在您的环境中运行一个简单的命令行后台程序，以建立到 Cloudflare 的多个安全、仅出站、负载平衡的链接。简单地说，Tunnel 的作用是将您的网络与 Cloudflare 相连。</p>
+	<p>另一方面，您需要您的终端用户能轻松连接到 Cloudflare，更重要的是连接到您的网络。这个连接由我们强大的设备客代理 Cloudflare WARP 来处理。您的内部 MDM 工具可在几分钟内将该代理部署到您的整个组织，并在用户设备和 Cloudflare 网络之间建立安全连接。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/image2-29.png" class="kg-image" alt="Building a private network on Cloudflare"></figure>
+	<p>我们现已将您的基础设施和用户连接到 Cloudflare，因此很容易对您的应用程序进行标记，并在 Zero Trust 安全控制上分层，以验证您网络上每一个请求的身份和以设备为中心的规则。</p>
+	<h3 id="-">了解详情</h3>
+	<p>如前所述，此功能旨在通过被动对以 RFC 1918 或 RFC 4193 地址空间为目的地的独特流量进行分类，帮助您的团队获得网络可见性。根据设计，该工具在可观察性模式下运行，所有的应用程序均会显示，但其基本状态会标记为“未审查”。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/image3-21.png" class="kg-image" alt="Generating the Private Network Discovery Report"></figure>
+	<p>Network Discovery 工具显示您网络中的所有源站，定义为任何唯一的 IP 地址、端口或协议。您可以查看任何指定源站的详细信息，然后创建一个 Cloudflare Access 应用程序，从而控制对该源站的访问。此外还要注意，Access 应用程序可能由多个源站组成。</p>
+	<p>以私有托管的视频会议服务 Jitsi 为例。使用这个例子是因为，我们的团队其实有在内部使用这项服务，测试我们的新功能，通过后再投入生产。在这种情况下，我们知道 Jitsi 的自托管实例是在 10.0.0.1:443。然而，由于这是一个视频会议应用程序，它同时通过 tcp:10.0.0.1:443 和 udp:10.0.0.1:10000 进行通信。现在我们将选择一个源站，并为其分配一个应用程序名称。</p>
+	<p>请注意，在封测期间，Cloudflare Access 应用程序表中看不到此应用程序。目前，这些应用程序名称将只显示在 Private Network Discovery 报告的已发现源站表中。您将看到它们仅显示在应用程序名称栏中。但等该功能进入普遍使用阶段，在 Zero Trust &gt; 访问 &gt; 应用程序下也可看到您创建的所有应用程序。</p>
+	<p>分配了一个应用程序名称并添加了第一个源站 tcp:10.0.0.1:443 之后，您可以按照相同的方法添加另一个源站 udp:10.0.0.1:10000。这样您便能创建源站逻辑分组，以更准确地显示您网络上的资源。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/image1-29.png" class="kg-image" alt="Access Analytics: Private Network Discovery Report"></figure>
+	<p>通过创建应用程序，我们的 Network Discovery 工具便会自动将这些个人源站的状态从“未评估”更新为“评估中”。您的团队便能轻松跟踪源站的状态。从那里，您可以进一步深入评估访问某一特定源站的唯一用户数量，以及每个用户的请求总数。这将有助于您的团队掌握所需信息创建身份和设备驱动的 Zero Trust 策略。根据您的团队对某一特定应用程序的使用体验评价，您可以将该应用程序的状态手动更新为“已批准”或“未批准”。</p>
+	<h3 id="--1">下一步</h3>
+	<p>封测版还只是开始。虽然封测版支持为您的专用网络应用程序创建友好的名称，但这些名称目前并不会出现在 Cloudflare Zero Trust 策略构建器中。</p>
+	<p>随着我们向大众普遍提供，我们的首要任务将是，根据 Private Network Discovery 工具显示的内容，让您更轻松地保护您的专用网络。使用通用版本，您将能够直接从您的 Private Network Discovery 报告中创建 Access 应用程序，在 Cloudflare Access 中引用您的专用网络应用程序，并为它们创建 Zero Trust 安全策略，所有这些均可在一个单一的工作流程中完成。</p>
+	<p>如上文所述，我们为这个工具制定了激动人心的计划，并将在未来继续投资于 Private Network Discovery。若想获得封测版的访问权限，请<a href="https://www.cloudflare.com/zero-trust/lp/private-network-discovery" target="_blank">在此</a>注册，成为首批试用用户！</p>
+</div>

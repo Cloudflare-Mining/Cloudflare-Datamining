@@ -1,0 +1,56 @@
+<div class="post-content lh-copy gray1">
+	<p>我们建立了 Cloudflare 的 Zero Trust 平台，让企业可以使用我们的网络安全连接其专用网络，同时提高性能，减少运营负担。从此，您可以建立一个单一的虚拟专用网络，但您连接的所有专用网络都必须是唯一可识别的。</p>
+	<p>我们很高兴地宣布，从今天起，您可以开始通过 Cloudflare Zero Trust 构建许多隔离的虚拟专用网络，首先是 Cloudflare WARP 和 Cloudflare Tunnel 连接器的虚拟化连接。</p>
+	<h3 id="-cloudflare-">通过 Cloudflare 连接您的专用网络</h3>
+	<p>考虑一个的团队情况：您在不同的专用网络上托管着各种服务，而员工也在访问这些资源。与以往相比，员工可能是漫游用户，可能远程办公，也可能确实在某间公司办公室。不管怎么样，您需要确保只有他们能访问您的专用服务。然后，您还希望对每个用户可以使用您的网络访问哪些内容进行细化控制。</p>
+	<p>在这方面，Cloudflare 可以助您一臂之力。我们向您提供我们的<a href="https://blog.cloudflare.com/private-networking/">高性能全球网络</a>，作为您的员工和专用服务之间的虚拟桥梁。在员工的设备中运行 <a href="https://blog.cloudflare.com/zh-cn/warp-for-desktop-zh-cn/">Cloudflare WARP</a>，他们的流量通过 Cloudflare 的网络流出。另一方面，您的专用服务在 <a href="https://blog.cloudflare.com/highly-available-and-highly-scalable-cloudflare-tunnels/">Cloudflare Tunnel</a> 后面，只能通过 Cloudflare 的网络访问。这些连接器从端到端共同保护您的虚拟专用网络。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/942-1.png" class="kg-image" alt="Architecture depicting client applications accessing private origins behind cloudflared Tunnel through our Cloudflare Global Network with Zero Trust."></figure>
+	<p>这种设置的优点是，您的流量立即变得更快<strong>且</strong>更安全。但您还可以更进一步，利用 Cloudflare 许多服务中的价值，为您的<a href="https://blog.cloudflare.com/private-networking/">专用网络路由流量</a>，例如：审计、精细过滤、数据丢失防护、恶意软件检测、安全浏览等。</p>
+	<p>我们的客户已经非常喜欢我们的 Zero Trust 专用网络路由解决方案。但和我们喜欢的所有东西一样，它们还可以继续改进。</p>
+	<h3 id="-">重叠网络问题</h3>
+	<p>在上图中，用户可以访问任何专用服务，就像他们确实位于该专用服务的网络中一样。这意味着，例如，在浏览器中输入 <em>jira.intra</em>，或者通过 SSH 连接一个专用 IP <em><code>10.1.2.3</code></em> 时，都可以无缝工作，虽然这些专用服务均未暴露在互联网上。</p>
+	<p>然而，这其中有一个重要的假设：即底层的专用 IP 在客户账户内连接 Cloudflare 的专用网络中是唯一的。</p>
+	<p>假设现在您的团队有两个（或更多）数据中心使用同一 IP 空间（通常被称为 <a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing" target="_blank">CIDR</a>），例如为 <code>10.1.0.0/16</code>。也许一个是当前的主要数据中心，另一个是次要数据中心，它们相互复制。在这种情况下，这两个数据中心将各有一台 IP 为 <em><code>10.1.2.3</code></em> 的机器。</p>
+	<p>但此前，您不能通过 Cloudflare 进行设置。您只能使用负责流向 <code>10.1.0.0/16</code> 的流量的 Cloudflare Tunnel 连接数据中心 1。然后，使用同样的方法连接数据中心 2，但会收到一个错误——禁止创建模糊的 IP 路由：</p>
+	<pre><code>$ cloudflared tunnel route ip add 10.1.0.0/16 dc-2-tunnel
+
+API error: Failed to add route: code: 1014, reason: You already have a route defined for this exact IP subnet</code></pre>
+	<p>在理想情况下，一个团队不会有这个问题，因为每个专用网络都会有唯一的 IP 空间。但在实践中，这并不可行，特别是在大型企业中。考虑两个公司合并的情况：希望他们重新安排专用网络，以保持 IP 地址的唯一性，这几乎是不可能的。</p>
+	<h3 id="--1">开始使用新的虚拟网络</h3>
+	<p>现在您可以通过创建唯一的虚拟网络，从逻辑上隔离您的重叠 IP 路由，从而解决上述问题。您可以把一个虚拟网络看成一组 IP 子空间。这将有效帮助您将整体基础设施组合成独立的（虚拟化）专用网络，您的 Cloudflare Zero Trust 组织可通过 Cloudflare WARP 访问这些专用网络。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/942-2.png" class="kg-image" alt="A user running WARP Zero Trust chooses a specific private network to disambiguate the data center that they wish to access with Zero Trust."></figure>
+	<p>我们来设定一下这个场景。</p>
+	<p>首先，我们创建两个虚拟网络，其中一个是默认的：</p>
+	<pre><code>$ cloudflared tunnel vnet add —-default vnet-frankfurt "For London and Munich employees primarily"
+
+Successfully added virtual network vnet-frankfurt with ID: 8a6ea860-cd41-45eb-b057-bb6e88a71692 (as the new default for this account)
+
+$ cloudflared tunnel vnet add vnet-sydney "For APAC employees primarily"
+
+Successfully added virtual network vnet-sydney with ID: e436a40f-46c4-496e-80a2-b8c9401feac7</code></pre>
+	<p>然后，我们可以创建隧道，并将 CIDR 路由到隧道。</p>
+	<pre><code>$ cloudflared tunnel create tunnel-fra
+
+Created tunnel tunnel-fra with id 79c5ba59-ce90-4e91-8c16-047e07751b42
+
+$ cloudflared tunnel create tunnel-syd
+
+Created tunnel tunnel-syd with id 150ef29f-2fb0-43f8-b56f-de0baa7ab9d8
+
+$ cloudflared tunnel route ip add --vnet vnet-frankfurt 10.1.0.0/16 tunnel-fra
+
+Successfully added route for 10.1.0.0/16 over tunnel 79c5ba59-ce90-4e91-8c16-047e07751b42
+
+$ cloudflared tunnel route ip add --vnet vnet-sydney 10.1.0.0/16 tunnel-syd
+
+Successfully added route for 10.1.0.0/16 over tunnel 150ef29f-2fb0-43f8-b56f-de0baa7ab9d8</code></pre>
+	<p>这样就完成了！现在，您的两个隧道均可运行，它们将您的专用数据中心与 Cloudflare 连接起来，尽管存在重叠的 IP。</p>
+	<p>您的用户现在将默认通过虚拟网络 <em>vnet-frankfurt</em> 路由流量。如有任何用户不想这样，他们可以在 WARP 客户端界面设置中选择，例如选择通过 <em>vnet-sydney</em>。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/942-3.png" class="kg-image" alt="New menu to allow the user to choose the network to send traffic to in the Zero Trust WARP enabled devices."></figure>
+	<p>用户改变虚拟网络选择时，会向 Cloudflare 的网络通知该路由决定。只需几秒钟时间，这个决定便会通过 <a href="https://blog.cloudflare.com/introducing-quicksilver-configuration-distribution-at-internet-scale/">Quicksilver</a> 传播到我们所有的数据中心。然后，WARP 客户端会重新与我们的网络连接，断开现有的 TCP 连接，因为这些连接是路由到之前选择的虚拟网络。就像您断开并重新连接 WARP 客户端一样。</p>
+	<p>目前每个使用专用网络路由的 Cloudflare Zero Trust 组织都有一个默认的虚拟网络，包括流向 Cloudflare Tunnel 的 IP 路由。您可以开始使用上述命令来扩展您的专用网络，让它拥有重叠的 IP，如有需要，还可以重新分配一个默认的虚拟网络。</p>
+	<p>如果您的专用基础设施中没有重叠的 IP，就不需要采取任何措施。</p>
+	<h2 id="--2">下一步</h2>
+	<p>这只是我们在 Cloudflare 支持唯一虚拟网络的第一步。您可能已经知道，上周我们宣布可以直接从 Zero Trust 仪表板创建、部署和管理 Cloudflare Tunnel。但现在还只能通过 cloudflared CLI 支持虚拟网络，我们正在努力将虚拟网络管理也集成到仪表板中。</p>
+	<p>下一步，我们将让 Cloudflare Gateway 了解这些虚拟网络，以便将 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trust 政策</a>应用于这些重叠的 IP 范围。一旦 Gateway 了解了这些虚拟网络，我们还将通过网络日志来呈现这一概念，以便审计和故障排除功能更进一步。</p>
+</div>

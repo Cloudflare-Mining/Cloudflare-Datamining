@@ -1,0 +1,83 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/Decommissioning-VDI-1.png" class="kg-image"></figure>
+	<p>本博客从 Cloudflare 的角度阐述了<a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation/" target="_blank">远程浏览器隔离</a>如何帮助组织淘汰目前由虚拟桌面基础设施 (VDI) 保护的内部 web 应用程序用例。VDI 历来用于保障远程工作安全，特别是在用户依赖桌面应用程序时。然而，随着基于 web 的应用程序变得比桌面应用程序更加流行，我们越来越无法忽视 VDI 的缺点——成本高昂、无响应的用户体验和复杂性问题。为此，我们提供了实用的建议、分阶段从 VDI 过渡的方法，帮助企业通过改善员工体验、减少管理开销来降低成本，提高生产效率。</p>
+	<h2 id="-">现代虚拟桌面的使用情况</h2>
+	<h4 id="-vdi-">虚拟桌面基础设施 (VDI) 背景知识</h4>
+	<p>虚拟桌面基础设施描述了在数据中心托管的虚拟计算机上运行的桌面环境。用户访问 VDI 中的资源时，来自这些虚拟桌面的视频流会通过网络安全地传送到端点设备。如今，<a href="https://www.gartner.com/en/information-technology/glossary/virtual-desktop-infrastructure-vdi#:~:text=Virtual%20desktop%20infrastructure%20(VDI)%20is,users%20to%20their%20desktop%20environments" target="_blank">VDI</a> 主要是在数据中心本地托管，由组织自己直接管理或由第三方<a href="https://www.gartner.com/en/information-technology/glossary/desktop-as-a-service-daas" target="_blank">桌面即服务 (DaaS)</a> 提供商管理。尽管越来越多 web 应用程序的使用支持桌面应用程序，但 DaaS 仍在增长，据 Gartner® 最近的预计，到 <a href="https://www.gartner.com/en/articles/3-cloud-technologies-to-support-hybrid-work-experiences" target="_blank">2024 年，DaaS 支出将翻一番</a>。</p>
+	<p>这两类 VDI 均承诺协助远程工作。在安全方面，VDI 可为许多分散的用户集中进行配置，并确保敏感数据不会传输到设备上。企业高管通常会青睐 VDI，因为与为每位用户购买和分发设备相比，VDI 可能可以节约成本。理论上说，将处理过程转移到中央服务器后，IT 团队可以减少分发受管笔记本电脑，而支持自带设备 (BYOD)，从而节约成本。需要硬件时，他们可以购买价格较低的设备，甚至延长旧设备的使用寿命。</p>
+	<h2 id="vdi-">VDI 存在的挑战</h2>
+	<h4 id="--1">成本高昂</h4>
+	<p>VDI 的实际情况通常截然不同，特别是在资本和运营支出上最终远远超出企业预期。据 <a href="https://www.gartner.com/en/documents/4008018" target="_blank">Gartner</a>® 预计，“到 2024 年，主要为节约成本而部署的桌面虚拟化项目，90% 以上无法实现该目标”。</p>
+	<p>原因是多方面的。本地 VDI 需要部署服务器，前期资本支出 (CapEx) 巨大。DaaS 部署要求组织不能明确决定虚拟机（例如数量、地区、服务水平等）及其规格（例如持久与集中、永远在线与按需服务等）。无论哪种情况，维护方面的运营支出 (OpEx) 和不能适当调整规模都会导致意外费用和超支。对于这两种情况，企业越致力于虚拟化，就越会卡在持续高昂的计算费用上，尤其是远程工作的员工增多时。</p>
+	<h4 id="--2">糟糕的用户体验</h4>
+	<p>VDI 提供的用户体验也不理想。远程工作时，员工对无摩擦的 IT 体验的期望只会更高，用户还是可以感受到直接访问应用程序和从虚拟桌面访问应用程序的区别。VDI 环境如果没有经过合理调整，就会导致应用程序繁重、潜伏或无响应。糟糕的用户体验会对生产效率、安全性（因为用户会寻找办法避开 VDI）和员工留存率（因为用户不满）产生负面影响。</p>
+	<h4 id="--3">复杂性</h4>
+	<p>总体而言，VDI 的复杂性问题可谓臭名昭著。初始设置包括很多方面，而且很费力，需要投资服务器和最终用户许可证，规划虚拟机需求和容量，将应用程序虚拟化，设置网络连接，以及推出 VDI 瘦客户端。制定安全策略往往是最后一步，因此有时会忽视安全策略，导致出现安全漏洞。</p>
+	<p>将 VDI 推向全面生产不仅需要跨职能部门进行协调，例如 IT、安全和基础设施与运营等普通团队，而且通常还需要高度专业化的人才——虚拟桌面管理员。很难找到并留住这样的人才。目前的劳动力市场流动性太高，依靠这类人才可能会有风险。</p>
+	<p>即便如此，管理员通常需要在这些虚拟化环境之上构建自己的日志、审计、检查和基于身份的访问策略。这意味着还需要配置安全 web 网关等独立服务，又会产生额外的费用。</p>
+	<p>有些组织部署 VDI 主要是为了避免向其全球员工分发受管笔记本电脑，省却相关的运输成本、物流麻烦和监管问题。但部署 VDI 看似解决了一个问题，很快又会造成更多的开销和麻烦。与 VDI 的复杂性苦苦挣扎可能是不值得的，特别是在用户只需要访问少数几个内部 web 服务时。</p>
+	<h2 id="--4">用远程浏览器隔离取代虚拟桌面用例</h2>
+	<p>为了避免这些摩擦，组织正在探索如何将用例从 VDI 中转移出来，特别是部署在本地时。如今，员工所用的大多数应用程序均可通过浏览器访问，并托管在公共云或混合云或 SaaS 环境中，有时甚至托管在传统的数据中心。因此，利用远程浏览器隔离 (RBI) 等现代服务作为替代方案，开始将 VDI 工作负载安全转移到云端，这种做法越发有道理。</p>
+	<p>与 VDI 一样，<a href="https://www.cloudflare.com/static/9946ae465a200fc87c0972abc3c3d065/Cloudflare_Browser_Isolation_-_Product_Brief__2022_Q2_.pdf" target="_blank">Cloudflare 浏览器隔离</a>通过在远离端点的地方（即 Cloudflare 的全球网络上）运行所有应用程序和 web 代码，将攻击面降到最低。在此过程中，Cloudflare 可以确保不可信用户和设备无法访问浏览器中的使用数据，保护这些端点免受勒索软件、网络钓鱼甚至是零日攻击等威胁。在隔离的浏览器中，管理员可以像使用 VDI 一样，设定<a href="https://blog.cloudflare.com/data-protection-browser/">策略来保护任何基于 web 的应用程序或 SaaS 应用程序中的敏感数据</a>。控制示例包括对文件上传/下载、复制粘贴、键盘输入和打印功能等方面的限制。</p>
+	<p>这种同等安全性可带来更多可实现的商业利益，首先是帮助员工提高生产效率。</p>
+	<ol>
+		<li><em>终端用户将享受比 VDI 更快速、更透明的体验。</em>我们的浏览器隔离设计在超过 270 个城市运行，让隔离的会话尽可能靠近终端用户。与 VDI 不同的是，浏览器隔离不需要将用户流量回传到集中式数据中心。此外，Cloudflare 的<a href="https://blog.cloudflare.com/zh-cn/browser-isolation-for-teams-of-all-sizes-zh-cn/">网络矢量渲染 (NVR)</a> 技术确保应用程序的使用体验就像原生的本地浏览器一样，没有占用大量带宽的像素推送技术。</li>
+		<li><em>管理员也从中受益，因为不必再承受与 VDI 相关的所有前期规划、持续开销和扩展的痛苦。</em>管理员只需通过一个单一仪表板启用隔离策略，即可让 Cloudflare 来处理用户和设备扩展。此外，由于与 ZTNA、SWG、CASB 等安全服务原生集成，可以轻松开始对 VDI 相邻用例进行现代化改造。</li>
+	</ol>
+	<p>在成本方面，浏览器隔离的相关费用总体上比 VDI 更低廉、更平稳、更可预测。事实上，<a href="https://www.cloudflare.com/lp/gartner-hype-cycle-for-network-security/" target="_blank">Gartner</a>® 最近强调过，“如果仅隔离浏览器这一个应用程序，RBI 比 VDI 隔离成本更低”。</p>
+	<p>不同于本地 VDI，虚拟机容量没有资本支出，也不同于 DaaS 订阅，Cloudflare 提供根据席位的简单定价，没有附加的配置费用。组织还无需购买独立点解决方案，因为 Cloudflare 的 RBI 原生集成了 <a href="https://www.cloudflare.com/products/zero-trust/" target="_blank">Cloudflare Zero Trust 平台</a>的其他服务。最重要的是，我们对云消费不收费，而这是 VDI 常见的一种意外费用。</p>
+	<h4 id="-cloudflare-">向 Cloudflare 浏览器隔离过渡</h4>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/06/Decommissioning-VDI_Diagram.png" class="kg-image">
+		<figcaption><em><em>注：上图包括下表</em></em></figcaption>
+	</figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/Screen-Shot-2022-06-23-at-4.20.45-PM.png" class="kg-image"></figure>
+	<h3 id="-pensionbee">客户故事：PensionBee</h3>
+	<p><a href="https://www.pensionbee.com/" target="_blank">PensionBee</a> 是英国一家领先的在线养老金提供商。他们发现这个机会后，淘汰了虚拟桌面用例，换而使用 RBI。为应对疫情，PensionBee 最初采用了一个 DaaS 解决方案 (Amazon WorkSpaces) 来帮助员工远程访问内部资源。具体而言，首席技术官 Jonathan Lister Parsons 最关注的是确保 Salesforce 的安全，因为那里保存了 PensionBee 客户的敏感养老金数据。</p>
+	<p>该 DaaS 支持类似于 PensionBee 以前在办公室为员工配置的访问控制（例如虚拟桌面的 IP 允许列表）。但是，推出不久后，Lister Parsons 开始为无响应的用户体验而忧心。事实上，在<a href="https://gateway.on24.com/wcc/gateway/eliteCloudflareInc/2153307/3490369?_gl=1*1a9y4bl*_ga*MTkxODk3NTg2MC4xNjMyMTUzNjc4*_gid*MzM3MDkyNzQ3LjE2NTQwMDkxNTg" target="_blank">最近的网络研讨会</a>上，他猜测“用户使用 DaaS 工作时，生产效率总体下降了 10% 左右”。这种负面影响增加了 PensionBee 的 IT 人员的支持工作，他们不得不构建一个自动化工具，在员工的 DaaS 服务出现问题时重新启动服务。</p>
+	<p>Lister Parsons 表示：“从可用性的角度来看，与远程桌面相比，员工早已习惯的原生浏览体验显然更好。这听起来有点像费话。但通常情况下，很难在保持安全、低成本、简化设置的情况下提供这样的体验。”</p>
+	<p>Lister Parsons 知道 Cloudflare 浏览器隔离时，他对该服务的性能和轻量用户体验印象深刻。因为 PensionBee 的员工是通过浏览器来访问绝大部分应用程序（包括 Salesforce），所以 RBI 是一个非常好的选择。Cloudflare 对复制/粘贴和文件下载的控制降低了 Salesforce 中的客户养老金数据传输到本地设备的风险。</p>
+	<p>“我们开始使用带有浏览器隔离功能的 Cloudflare Zero Trust，帮助为我们客户的数据提供最高安全性，并保护员工免受恶意软件侵害。它的效果非常好，我几乎忘记了它的存在。”</p>
+	<p>计划从 VDI 过渡的组织还有很多，PensionBee 只是其中一员。下一节我们将提供 Cloudflare 关于规划和执行过渡的建议。</p>
+	<h2 id="--5">实用建议</h2>
+	<h4 id="--6">实施前的规划</h4>
+	<p>了解从何开始过渡，需要事先计划。具体而言，各职能部门（包括 IT、安全和基础设施与运营 (IO)）应该就 VDI 的使用现状、应该先淘汰哪些用例，以及任何变化对终端用户和管理员的影响达成共识。</p>
+	<p>在咨询过程中，我们首先就会询问<strong>终端用户</strong>的需求和期望，因为他们的统一采纳是计划成功的基础。然后，我们通常会据此帮助企业进行规划，为他们需要保护的<strong>应用程序</strong>和<strong>数据</strong>排列优先顺序。最后但同样重要的是，我们围绕<em>“怎么做”</em>来制定战略：新服务的初始配置及其持续改进需要什么样的<strong>管理员</strong>和专业知识。我们要求客户考虑一些关键方面的问题，以帮助他们顺利从 VDI 过渡。一些精选问题如下。</p>
+	<h4 id="--7">需要考虑的问题</h4>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/Screen-Shot-2022-06-23-at-4.22.38-PM.png" class="kg-image"></figure>
+	<h2 id="-vdi-rbi">从 VDI 迁移到 RBI</h2>
+	<p>组织可以利用 Cloudflare 浏览器隔离和其他 Zero Trust 服务来开始淘汰 VDI 用例，几天内便可节约成本，提高生产效率。我们推荐的三阶段方法侧重于保护最关键的服务，这样对用户体验的影响最小，同时优先考虑快速实现价值。</p>
+	<h4 id="-1-web-web-">第 1 阶段：为基于 web 的应用程序配置无客户端的 web 隔离</h4>
+	<p>使用我们的<a href="https://blog.cloudflare.com/zh-cn/browser-ssh-terminal-with-auditing-zh-cn/">无客户端 web 隔离方法</a>，管理员可以仅给用户发送一个超链接，即可使用其在隔离浏览器环境中提供的私有 web 应用程序，而无需在端点上使用任何软件。然后，管理员可以构建数据保护规则，防止用户在这些基于浏览器的隔离应用程序中进行危险的操作。此外，由于管理员没有推出端点客户端，要向员工、承包商或第三方甚至非受管设备扩展访问，也像发送链接一样简单。</p>
+	<p>这些隔离的链接可以与您现有的 VDI 并存，您可以在较长时间内不慌不忙地过渡到这种新方法。用一段时间来对比这两种不同的体验，可以帮助您的内部利益相关者宣传这种基于 RBI 的方法。在整个分阶段推出过程中，跨职能部门积极交流至关重要：例如，在配置前需要优先考虑隔离哪些 web 应用程序，在配置后需要阐述这些变化对终端用户有何影响。</p>
+	<h4 id="-2-ssh-vnc-vdi-cloudflare">第 2 阶段：将基于 SSH 和 VNC 的应用程序从 VDI 迁移到 Cloudflare</h4>
+	<p>无客户端隔离非常适用于保护 web 应用程序。这一阶段旨在帮助保护 VDI 环境中通常通过 SSH 或 VNC 连接访问的非 web 应用程序。例如，有权限的管理员经常使用 SSH 来控制远程桌面，改造服务请求。其他技术性不强的员工可能需要 VNC 的图形用户界面，才能使用无法通过现代操作系统访问的传统应用程序工作。</p>
+	<p>Cloudflare 支持通过浏览器访问这些 SSH 和 VNC 环境，同样不需要在端点上安装任何软件。<a href="https://developers.cloudflare.com/cloudflare-one/tutorials/ssh/" target="_blank">SSH</a> 和 <a href="https://developers.cloudflare.com/cloudflare-one/tutorials/vnc-client-in-browser/" target="_blank">VNC 设置</a>的相似之处在于，管理员在机器和 Cloudflare 的网络之间创建了一个仅可出站的安全连接，直到终端呈现在浏览器中。通过向我们的网络发送流量，Cloudflare 可以根据身份检查和其他精细策略对应用程序的访问进行身份验证，并可以对每个用户会话进行详细审计。（您可以阅读之前的博客，进一步了解 <a href="https://blog.cloudflare.com/zh-cn/browser-ssh-terminal-with-auditing-zh-cn/">SSH</a> 和 <a href="https://blog.cloudflare.com/browser-vnc-with-zero-trust-rules/">VNC</a> 体验。）</p>
+	<p>我们建议首先确保 SSH 应用程序的安全，支持有权限的管理员，因为他们可以提供有价值的反馈。然后再支持依赖 VNC 的普通用户。管理员将使用<a href="https://www.cloudflare.com/products/zero-trust/access/" target="_blank">我们的 ZTNA 服务</a>，从与使用 RBI 相同的管理面板中设置连接和策略。总而言之，这种基于浏览器的体验应该会减少延迟，让用户感觉比使用虚拟化桌面更自在、更高效。</p>
+	<h4 id="-3-zero-trust-">第 3 阶段：向 Zero Trust 安全态势前进</h4>
+	<p><strong>第 3A 步：为应用程序设置身份验证策略</strong></p>
+	<p>通过第 1 和第 2 阶段，您已一直在使用 Cloudflare 逐步确保安全访问选定 VDI 用例的 web 和非 web 应用程序。第 3 阶段将在此基础上进一步构建，所有应用程序均采用 ZTNA，而不仅仅是通过 VDI 访问的那些应用程序。</p>
+	<p>管理员使用相同的 Cloudflare 策略构建器，根据 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trust</a> 安全最佳实践，添加更精细的条件访问规则，包括检查标识提供程序 (IdP)。Cloudflare 同时与多个 IdP 集成，还可联合同一 IdP 的多个实例，能够灵活支持各类用户。设置 IdP 验证后，我们发现管理员经常通过要求 MFA 来增强安全性。VDI 环境中也可以设置这类身份检查，在完全弃用 VDI 之前树立对采用 Zero Trust 的信心。</p>
+	<p><strong>第 3B 步：通过分层检查设备态势，重新树立对用户设备的信心</strong></p>
+	<p>到目前为止，我们建议的实践步骤不需要在端点上安装任何 Cloudflare 软件，提高了淘汰 VDI 用例的部署速度。但从长远来看，合理部署 Cloudflare 设备客户端将在安全性、可见性和生产效率方面带来益处。</p>
+	<p>Cloudflare 的设备客户端（即 <a href="https://developers.cloudflare.com/cloudflare-one/identity/devices/require-warp/" target="_blank">WARP</a>）适用于所有主要操作系统，并针对灵活部署进行了优化。对于受管设备，可使用任何基于脚本的方法和常用的<a href="https://www.cloudflare.com/partners/mdm/" target="_blank">移动设备管理 (MDM) 软件</a>；对于第三方用户，自助注册是一个有用的方法。部署 WARP 后，管理员可以通过首先检查是否存在特定程序或文件、磁盘加密状态、操作系统版本和其他<a href="https://blog.cloudflare.com/6-new-ways-to-validate-device-posture/">附加属性</a>来完善应用程序访问策略。此外，如果您的组织使用 <a href="https://www.cloudflare.com/partners/technology-partners/crowdstrike/endpoint-partners/" target="_blank">Crowdstrike</a>、<a href="https://developers.cloudflare.com/cloudflare-one/identity/devices/sentinel-one" target="_blank">SentinelOne</a> <a href="https://www.cloudflare.com/endpoint-partners/" target="_blank">等</a>端点保护 (EPP) 提供商，请先检查是否存在该软件或检查设备运行状况来验证访问权限。</p>
+	<p>总而言之，增加设备态势信号既能提高受管设备和自带设备的安全性，又能进一步细化设备可见性。与身份验证一样，管理员可以先为仍在使用虚拟桌面的用户启用设备态势检查。随着管理员对用户设备逐步树立起信心，他们应该开始将受管设备上的用户直接路由到应用程序，而不是通过速度更慢的 VDI 体验。</p>
+	<p><strong>第 3C 步：逐步将安全服务从虚拟化环境转向 Zero Trust。</strong></p>
+	<p>在前几个阶段重新思考应用程序访问用例，减少了对复杂的 VDI 的依赖。现在，管理员应该已经完善了 Cloudflare 支持的 Zero Trust 策略。我们的最后一个建议是，继续从虚拟化转向 <a href="https://www.cloudflare.com/products/zero-trust/zero-trust-network-access/" target="_blank">Zero Trust 网络访问</a>。</p>
+	<p>与其让任何用户使用虚拟化桌面中的虚拟化应用程序，组织完全可以减少这笔开销，拥抱云端提供的 ZTNA，保护所有用户与任何云环境中所有应用程序之间的一对一连接。与 VDI 相比，由 Cloudflare 保护的应用程序越多，控制、可见性和最终用户体验就越一致。</p>
+	<p>虚拟化是一项强大的技术，可以在我们以硬件为中心的传统投资与云优先的 IT 未来之间架起桥梁。然而目前，对虚拟化的依赖给您的管理员带来了不必要的压力，还有可能降低终端用户的生产效率。随着应用程序、用户和数据加速向云端迁移，将安全控制也迁移到云端（而不是虚拟化服务）才是合理的。</p>
+	<p>从更长远来看，组织可以探索利用 Cloudflare 的其他原生集成服务，例如我们的<a href="https://www.cloudflare.com/products/zero-trust/gateway/" target="_blank">安全 web 网关 (SWG)</a>、<a href="https://www.cloudflare.com/products/zero-trust/casb/" target="_blank">云访问安全代理 (CASB)</a> 和<a href="https://www.cloudflare.com/products/zero-trust/email-security/" target="_blank">电子邮件安全</a>。本周的其他博客概述了如何从其他传统技术向这些 Cloudflare 服务过渡。</p>
+	<h3 id="--8">一览表</h3>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/Screen-Shot-2022-06-23-at-4.29.15-PM.png" class="kg-image"></figure>
+	<h3 id="--9">最佳做法和进展指标</h3>
+	<p>为尽可能平稳过渡，我们建议的最佳实践如下文所示，后面的表格是跟踪计划进展情况的指标示例。</p>
+	<ul>
+		<li><strong>适应终端用户的体验：</strong>无论用什么来取代 VDI，都必须比之前的性能要好。尝试改变用户习惯、推动采纳时，管理员必须密切跟踪用户对新服务的感受，喜欢哪些方面，不喜欢哪些方面。</li>
+		<li><strong>跨职能合作优先：</strong>弃用 VDI 不可避免将涉及 IT、安全、基础设施和虚拟桌面管理员等不同团队的协调合作。树立共同的工作方式和信任，全力克服任何障碍至关重要。</li>
+		<li><strong>逐步推广和学习：</strong>在更大范围推广之前，需要选取部分用户和应用程序对每个步骤进行测试，发现哪些步骤可行，哪些不可行。首先要对选定应用程序进行无客户端 web 隔离测试，争取获得用户和高管的支持。</li>
+	</ul>
+	<h3 id="--10">进展指标示例</h3>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/Screen-Shot-2022-06-23-at-4.24.39-PM.png" class="kg-image"></figure>
+	<h2 id="-vdi--1">探索 VDI 过渡</h2>
+	<p>Cloudflare Zero Trust 让您能够轻松开始弃用 VDI，第一步是利用我们的无客户端浏览器隔离来保护 web 应用程序。</p>
+	<p>进一步了解如何转向 Zero Trust，弃用虚拟化桌面，请<a href="https://www.cloudflare.com/products/zero-trust/plans/enterprise/" target="_blank">立即咨询</a>。取代 VDI 是关于调整您的整体 <a href="https://zerotrustroadmap.org/" target="_blank">Zero Trust 路线图</a>的伟大计划。有关 Cloudflare One Week 的完整摘要和新增内容，敬请收看我们的<a href="https://gateway.on24.com/wcc/eh/2153307/lp/3824611/the-evolution-of-cloudflare-one?partnerref=blog" target="_blank">网络研讨会回顾</a>。</p>
+</div>

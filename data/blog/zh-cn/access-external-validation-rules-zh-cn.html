@@ -1,0 +1,41 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image2-24.png" class="kg-image" alt="Infinitely extensible Access policies"></figure>
+	<p>Zero Trust 应用程序安全意味着，对应用程序的每一个请求均需通过一套具体定义的安全策略，否则会遭到拒绝。大多数 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trust</a> 解决方案均支持使用用户的身份、设备和位置作为变量来定义此类安全策略。</p>
+	<p>客户告诉我们，他们希望在定义其 Zero Trust 策略时有更多控制权，更加可定制。</p>
+	<p>我们很高兴地宣布，从今天起，Access 策略可以在允许用户访问应用程序之前，先行考虑任何信息。我们所谓的任何信息，确实是指绝对意义上的<em>任何信息</em>。您现在可以通过 External Evaluation 规则选项构建无限可定制的策略，可以在评估 Access 策略的过程中调用任何 API。</p>
+	<h3 id="-">为何构建外部评估规则</h3>
+	<p>过去几年中，我们在 Access 中添加了检查位置和设备状态信息的功能。但根据组织的应用程序和具体要求，总还可以考虑一些其他信号。我们旨在让客户能够检查他们所需的任何信号，无需在 Access 策略中提供任何直接支持。</p>
+	<p>例如，Cloudflare 安全团队需要能够根据注册表验证用户的 mTLS 证书，确保只有正确的用户通过公司设备访问应用程序。最初，他们考虑在 Access 评估请求后使用 Worker 来检查用户的证书。但这将需要定制软件开发和长期维护。利用 External Evaluation 规则，可以通过 API 调用来验证用户是否为设备出示了正确的证书。对存储了 mTLS 证书和用户设备的映射的 Worker 进行 API 调用。Worker 执行自定义逻辑，然后向 Access 返回真或假。</p>
+	<h3 id="--1">了解详情</h3>
+	<p>Cloudflare Access 是一个反向代理，位于任何 Web 应用程序之前。如果用户尚未通过身份验证，他们将看到一个登录屏幕，用来进行身份验证。用户必须符合您在 Access 策略中定义的标准。典型的策略大致如下：</p>
+	<ul>
+		<li>用户的电子邮箱后缀为 @example.com</li>
+		<li>用户使用基于硬件的令牌进行身份验证</li>
+		<li>用户从美国登录</li>
+	</ul>
+	<p>如果用户通过了该策略，他们将获得一个 cookie，让他们能够访问应用程序，直至会话过期。</p>
+	<p>如需根据其他自定义标准评估用户，您可以在 Access 策略中添加一个外部评估规则。外部评估规则需要两个值：要调用的 API 端点，和验证任何请求响应是来自可信来源的密钥。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image1-25.png" class="kg-image"></figure>
+	<p>您的标识提供程序验证用户身份后，关于用户、设备和位置的所有信息都将传递至您的外部 API。该 API 向 Access 返回响应——通过或失败，然后 Access 将允许或拒绝用户访问。</p>
+	<p>该 API 的逻辑示例大致如下：</p><!--kg-card-begin: markdown-->
+	<pre><code>/**
+ * Where your business logic should go
+ * @param {*} claims
+ * @returns boolean
+ */
+async function externalEvaluation(claims) {
+  return claims.identity.email === 'address@example.com'
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>声明对象包括关于用户、设备和提出请求的网络的所有信息。这个 <code>externalEvaluation</code> 函数可以扩展，用于执行所需的任何业务逻辑。我们提供了一个<a href="https://github.com/cloudflare/workers-access-external-auth-example" target="_blank">开源资源库</a>，其中包含使用 Access 声明和验证 Access 签名密钥的代码示例。</p>
+	<p>这确实非常强大！现在，任何 Access 策略都可以无限扩展，在允许用户访问之前，先行考虑任何信息。潜在的示例包括：</p>
+	<ul>
+		<li>通过构建一个中间件负责检查端点保护工具的 API，与我们尚未集成的端点保护工具集成。</li>
+		<li>根据外部威胁情报源检查 IP 地址</li>
+		<li>调用特定行业的用户注册表</li>
+		<li>等等</li>
+	</ul>
+	<p>关于扩展 Access 政策，我们才刚刚起步。未来，我们希望能更轻松地在允许用户访问应用程序之前，以编程方式决定应该如何对待用户，而不仅仅是允许或拒绝访问。</p>
+	<p>现在，Cloudflare Zero Trust 仪表板上就有这项功能。请按照<a href="https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/" target="_blank">本指南</a>开始使用！</p>
+</div>
