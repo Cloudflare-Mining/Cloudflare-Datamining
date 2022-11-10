@@ -1970,6 +1970,41 @@
 		"subrequests": "Sum of Subrequests",
 		"wallTime": "Sum of Wall Time"
 	},
+	"AccountQueuesMessagesAdaptiveGroups": {
+		"__description": "Beta. Queue message data with adaptive sampling",
+		"avg": "The average value for a metric per dimension",
+		"dimensions": "List of dimensions to group by",
+		"max": "The max of values for a metric per dimension",
+		"sum": "The sum of values for a metric per dimension"
+	},
+	"AccountQueuesMessagesAdaptiveGroupsAvg": {
+		"__description": "",
+		"sampleInterval": "The average value used for sample interval"
+	},
+	"AccountQueuesMessagesAdaptiveGroupsDimensions": {
+		"__description": "",
+		"actionType": "The name of the Queue operation",
+		"datetime": "Message timestamp",
+		"datetimeHour": "Message timestamp, truncated to start of an hour",
+		"datetimeMinute": "Message timestamp, truncated to start of an minute",
+		"queueId": "The ID of the Queue"
+	},
+	"AccountQueuesMessagesAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountQueuesMessagesAdaptiveGroupsMax": {
+		"__description": "",
+		"messageSize": "Max Message Size"
+	},
+	"AccountQueuesMessagesAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountQueuesMessagesAdaptiveGroupsSum": {
+		"__description": "",
+		"billableOperations": "Sum of Billable Operations",
+		"messageSize": "Sum of Message Size",
+		"messages": "Sum of Messages"
+	},
 	"AccountR2OperationsAdaptiveGroups": {
 		"__description": "Beta. R2 operations with adaptive sampling",
 		"dimensions": "List of dimensions to group by",
@@ -2199,9 +2234,12 @@
 	"AccountRumWebVitalsEventsAdaptiveGroupsAvg": {
 		"__description": "",
 		"cumulativeLayoutShift": "Cumulative Layout Shift (Core Web Vitals) (negative value indicates N/A)",
+		"firstContentfulPaint": "First Contentful Paint in microseconds (negative value indicates N/A)",
 		"firstInputDelay": "First Input Delay (Core Web Vitals) in microseconds (negative value indicates N/A)",
+		"interactionToNextPaint": "Interaction to Next Paint in microseconds (negative value indicates N/A)",
 		"largestContentfulPaint": "Largest Contentful Paint (Core Web Vitals) in microseconds (negative value indicates N/A)",
-		"sampleInterval": "Average sample interval"
+		"sampleInterval": "Average sample interval",
+		"timeToFirstByte": "Time to First Byte in microseconds (negative value indicates N/A)"
 	},
 	"AccountRumWebVitalsEventsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -2246,14 +2284,26 @@
 		"cumulativeLayoutShiftP75": "Cumulative Layout Shift (Core Web Vitals) (negative value indicates N/A)",
 		"cumulativeLayoutShiftP90": "Cumulative Layout Shift (Core Web Vitals) (negative value indicates N/A)",
 		"cumulativeLayoutShiftP99": "Cumulative Layout Shift (Core Web Vitals) (negative value indicates N/A)",
+		"firstContentfulPaintP50": "First Contentful Paint in microseconds (negative value indicates N/A)",
+		"firstContentfulPaintP75": "First Contentful Paint in microseconds (negative value indicates N/A)",
+		"firstContentfulPaintP90": "First Contentful Paint in microseconds (negative value indicates N/A)",
+		"firstContentfulPaintP99": "First Contentful Paint in microseconds (negative value indicates N/A)",
 		"firstInputDelayP50": "First Input Delay (Core Web Vitals) in microseconds (negative value indicates N/A)",
 		"firstInputDelayP75": "First Input Delay (Core Web Vitals) in microseconds (negative value indicates N/A)",
 		"firstInputDelayP90": "First Input Delay (Core Web Vitals) in microseconds (negative value indicates N/A)",
 		"firstInputDelayP99": "First Input Delay (Core Web Vitals) in microseconds (negative value indicates N/A)",
+		"interactionToNextPaintP50": "Interaction to Next Paint in microseconds (negative value indicates N/A)",
+		"interactionToNextPaintP75": "Interaction to Next Paint in microseconds (negative value indicates N/A)",
+		"interactionToNextPaintP90": "Interaction to Next Paint in microseconds (negative value indicates N/A)",
+		"interactionToNextPaintP99": "Interaction to Next Paint in microseconds (negative value indicates N/A)",
 		"largestContentfulPaintP50": "Largest Contentful Paint (Core Web Vitals) in microseconds (negative value indicates N/A)",
 		"largestContentfulPaintP75": "Largest Contentful Paint (Core Web Vitals) in microseconds (negative value indicates N/A)",
 		"largestContentfulPaintP90": "Largest Contentful Paint (Core Web Vitals) in microseconds (negative value indicates N/A)",
-		"largestContentfulPaintP99": "Largest Contentful Paint (Core Web Vitals) in microseconds (negative value indicates N/A)"
+		"largestContentfulPaintP99": "Largest Contentful Paint (Core Web Vitals) in microseconds (negative value indicates N/A)",
+		"timeToFirstByteP50": "Time to First Byte in microseconds (negative value indicates N/A)",
+		"timeToFirstByteP75": "Time to First Byte in microseconds (negative value indicates N/A)",
+		"timeToFirstByteP90": "Time to First Byte in microseconds (negative value indicates N/A)",
+		"timeToFirstByteP99": "Time to First Byte in microseconds (negative value indicates N/A)"
 	},
 	"AccountRumWebVitalsEventsAdaptiveGroupsSum": {
 		"__description": "",
@@ -2261,14 +2311,26 @@
 		"clsNeedsImprovement": "Cumulative Layout Shift (Core Web Vitals), count of Needs Improvement occurrences (between 0.1 and 0.25)",
 		"clsPoor": "Cumulative Layout Shift (Core Web Vitals), count of Poor occurrences (over 0.25)",
 		"clsTotal": "Cumulative Layout Shift (Core Web Vitals), total count",
+		"fcpGood": "First Contentful Paint, count of Good occurrences (under 1.8 s)",
+		"fcpNeedsImprovement": "First Contentful Paint, count of Needs Improvement occurrences (between 1.8 s and 3 s)",
+		"fcpPoor": "First Contentful Paint, count of Poor occurrences (over 3 s)",
+		"fcpTotal": "First Contentful Paint, total count",
 		"fidGood": "First Input Delay (Core Web Vitals), count of Good occurrences (under 100 ms)",
 		"fidNeedsImprovement": "First Input Delay (Core Web Vitals), count of Needs Improvement occurrences (between 100 ms and 300ms)",
 		"fidPoor": "First Input Delay (Core Web Vitals), count of Poor occurrences (over 300 ms)",
 		"fidTotal": "First Input Delay (Core Web Vitals), total count",
+		"inpGood": "Interaction to Next Paint, count of Good occurrences (under 200 ms)",
+		"inpNeedsImprovement": "Interaction to Next Paint, count of Needs Improvement occurrences (between 200 ms and 500ms)",
+		"inpPoor": "Interaction to Next Paint, count of Poor occurrences (over 500 ms)",
+		"inpTotal": "Interaction to Next Paint, total count",
 		"lcpGood": "Largest Contentful Paint (Core Web Vitals), count of Good occurrences (under 2.5 sec)",
 		"lcpNeedsImprovement": "Largest Contentful Paint (Core Web Vitals), count of Needs Improvement occurrences (between 2.5 sec and 4.0 sec)",
 		"lcpPoor": "Largest Contentful Paint (Core Web Vitals), count of Poor occurrences (over 4.0 sec)",
 		"lcpTotal": "Largest Contentful Paint (Core Web Vitals), total count",
+		"ttfbGood": "Time to First Byte, count of Good occurrences (under 800 ms)",
+		"ttfbNeedsImprovement": "Time to First Byte, count of Needs Improvement occurrences (between 800 ms and 1800ms)",
+		"ttfbPoor": "Time to First Byte, count of Poor occurrences (over 500 ms)",
+		"ttfbTotal": "Time to First Byte, total count",
 		"visits": "The number of pages viewed by end-users that were initiated from a different website (i.e. where the Document.referrer does not match the hostname)"
 	},
 	"AccountRumWebVitalsEventsAdaptiveOrderBy": {
@@ -2312,6 +2374,7 @@
 		"mnmFlowDataAdaptiveGroups": "",
 		"nelReportsAdaptiveGroups": "",
 		"pagesFunctionsInvocationsAdaptiveGroups": "",
+		"queuesMessagesAdaptiveGroups": "",
 		"r2OperationsAdaptiveGroups": "",
 		"r2StorageAdaptiveGroups": "",
 		"rumPageloadEventsAdaptiveGroups": "",
@@ -3945,6 +4008,8 @@
 		"synAvgPps1mGroups": "",
 		"waitingRoomAnalyticsAdaptive": "",
 		"waitingRoomAnalyticsAdaptiveGroups": "",
+		"workersZoneInvocationsAdaptiveGroups": "",
+		"workersZoneSubrequestsAdaptiveGroups": "",
 		"zarazActionsAdaptiveGroups": "",
 		"zarazTrackAdaptiveGroups": "",
 		"zarazTriggersAdaptiveGroups": ""
@@ -4077,6 +4142,62 @@
 	"ZoneWaitingRoomAnalyticsAdaptiveOrderBy": {
 		"__description": ""
 	},
+	"ZoneWorkersZoneInvocationsAdaptiveGroups": {
+		"__description": "Workers invocations with adaptive sampling",
+		"avg": "The average of values for a metric per dimension",
+		"dimensions": "List of dimensions to group by",
+		"sum": "The sum of values for a metric per dimension"
+	},
+	"ZoneWorkersZoneInvocationsAdaptiveGroupsAvg": {
+		"__description": "",
+		"avgCpuTime": "Average CPU time used per request (in microseconds)"
+	},
+	"ZoneWorkersZoneInvocationsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"constantScriptId": "Worker script Id",
+		"date": "Request datetime, truncated to start of a day",
+		"datetime": "Request datetime",
+		"datetimeHour": "Request datetime, truncated to start of an hour",
+		"datetimeMinute": "Request datetime, truncated to start of an minute",
+		"status": "Status of the worker invocation"
+	},
+	"ZoneWorkersZoneInvocationsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"ZoneWorkersZoneInvocationsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"ZoneWorkersZoneInvocationsAdaptiveGroupsSum": {
+		"__description": "",
+		"requests": "Sum of Requests",
+		"subrequests": "Number of sub-requests issued by the edge worker",
+		"totalCpuTime": "Total CPU time used (in microseconds)"
+	},
+	"ZoneWorkersZoneSubrequestsAdaptiveGroups": {
+		"__description": "Workers subrequests with adaptive sampling",
+		"dimensions": "List of dimensions to group by",
+		"sum": "The sum of values for a metric per dimension"
+	},
+	"ZoneWorkersZoneSubrequestsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"cacheStatus": "Cache status",
+		"date": "Request datetime, truncated to start of a day",
+		"datetime": "Request datetime",
+		"datetimeHour": "Request datetime, truncated to start of an hour",
+		"datetimeMinute": "Request datetime, truncated to start of an minute",
+		"httpResponseStatus": "Origin HTTP response code"
+	},
+	"ZoneWorkersZoneSubrequestsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"ZoneWorkersZoneSubrequestsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"ZoneWorkersZoneSubrequestsAdaptiveGroupsSum": {
+		"__description": "",
+		"responseBodySize": "Bandwidth (in bytes) received via subrequests",
+		"subrequests": "Number of subrequests issued by a worker"
+	},
 	"ZoneZarazActionsAdaptiveGroups": {
 		"__description": "Zaraz Actions Analytics",
 		"count": "Number of processed Zaraz Actions",
@@ -4178,6 +4299,7 @@
 		"mnmFlowDataAdaptiveGroups": "Flow data collected through Magic Network Monitoring",
 		"nelReportsAdaptiveGroups": "Data to visualize network error logs",
 		"pagesFunctionsInvocationsAdaptiveGroups": "Pages Functions invocations with adaptive sampling",
+		"queuesMessagesAdaptiveGroups": "Beta. Queue message data with adaptive sampling",
 		"r2OperationsAdaptiveGroups": "Beta. R2 operations with adaptive sampling",
 		"r2StorageAdaptiveGroups": "Beta. R2 storage with adaptive sampling",
 		"rumPageloadEventsAdaptiveGroups": "Beta. Aggregated RUM pageload event metrics with adaptive sampling",
@@ -4263,6 +4385,8 @@
 		"synAvgPps1mGroups": "Minutely rollups of average packets per second sent in a SYN attack",
 		"waitingRoomAnalyticsAdaptive": "Beta. Raw waiting room analytics logs",
 		"waitingRoomAnalyticsAdaptiveGroups": "Beta. Aggregated waiting room analytics logs with adaptive sampling",
+		"workersZoneInvocationsAdaptiveGroups": "Workers invocations with adaptive sampling",
+		"workersZoneSubrequestsAdaptiveGroups": "Workers subrequests with adaptive sampling",
 		"zarazActionsAdaptiveGroups": "Zaraz Actions Analytics",
 		"zarazTrackAdaptiveGroups": "Zaraz Track Analytics - counts zaraz.track calls",
 		"zarazTriggersAdaptiveGroups": "Zaraz Triggers Analytics (a trigger is a set of rules that can trigger a zaraz action)",
