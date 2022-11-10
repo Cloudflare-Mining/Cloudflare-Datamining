@@ -175,7 +175,20 @@
 			"title": "navigation.account.r2",
 			"url": "/r2",
 			"iconType": "r2",
-			"testId": "sidenav-r2-link"
+			"testId": "sidenav-r2-link",
+			"pages": [
+				{
+					"title": "navigation.account.r2.overview",
+					"url": "/r2/overview"
+				},
+				{
+					"title": "navigation.account.r2_migrator",
+					"url": "/r2/migrator",
+					"labels": [
+						"beta"
+					]
+				}
+			]
 		},
 		{
 			"title": "navigation.account.stream",
