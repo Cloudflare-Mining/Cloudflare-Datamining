@@ -5,17 +5,28 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><span style="font-weight: 400;">About The Role</span></p>
-<p><span style="font-weight: 400;">We announced Cloudflare Workers in 2017&nbsp; —&nbsp;since then it’s played a key role in Cloudflare’s strategy for entering the developer market. As Cloudflare was ramping up its capabilities in the performance and security spaces, it became clear that developers needed more ways to control the edge than the rules engines could support. The Cloudflare Workers platform has empowered developers to add programmability to the edge— through code.&nbsp;</span></p>
-<p><span style="font-weight: 400;">Over the past few years, the Workers platform has grown from a simple functions-as-a-service option into a full blown full-stack platform, with storage options like Workers KV, Durable Objects and R2. The Workers platform also includes a rich suite of tools to support it: the wrangler CLI, the edge development environment (wrangler dev), and observability tools. On top of the foundational compute and storage building blocks, Cloudflare has built out best-in-class developer experience products with specific use cases in mind. Cloudflare Pages is wholly built on top of the foundational building blocks for seamless, opinionated web development with the Cloudflare portfolio.&nbsp;</span></p>
-<p><span style="font-weight: 400;">We are truly just getting started. Our opportunity is both huge and unique. With the combination of owning the hardware and investing heavily in developer experience, we’re positioned as the next big evolution of cloud computing.&nbsp;</span></p>
-<p><span style="font-weight: 400;">In this role, you’ll be helping define what that future looks like.</span></p>
-<p><span style="font-weight: 400;">The most challenging aspect of building against a distributed system is reasoning about the data that lives across it. We need to build powerful storage products with intuitive defaults, enabling developers to build applications without needing to be distributed systems experts. Additionally, We want to provide powerful low-level storage paradigms that allow distributed systems experts to unlock new possibilities. This role will shape our storage strategy across our newest storage product – R2.&nbsp;</span></p>
+<p><span style="font-weight: 400;">About Us</span></p>
 <p>&nbsp;</p>
-<p><strong>What You’ll Do</strong></p>
+<p><span style="font-weight: 400;">At Cloudflare, we have our eyes set on an ambitious goal: to help build a better Internet. Today the company runs one of the world’s largest networks that powers trillions of requests per month. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare have all web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was recognized by the World Economic Forum as a Technology Pioneer and named to Entrepreneur Magazine’s Top Company Cultures list.</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">About The Role</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">We announced Cloudflare Workers in 2017&nbsp; —&nbsp;since then it’s played a key role in Cloudflare’s strategy for entering the developer market. As Cloudflare was ramping up its capabilities in the performance and security spaces, it became clear that developers needed more ways to control the edge than the rules engines could support. The Cloudflare Workers platform has empowered developers to add programmability to the edge— through code.&nbsp;</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">Over the past few years, the Workers platform has grown from a simple functions-as-a-service option into a full blown full-stack platform, with storage options like Workers KV, Durable Objects, R2, and now queues. The Workers platform also includes a rich suite of tools to support it: the wrangler CLI, the edge development environment (wrangler dev), and observability tools. On top of the foundational compute and storage building blocks, Cloudflare has built out best-in-class developer experience products with specific use cases in mind. Cloudflare Pages is wholly built on top of the foundational building blocks for seamless, opinionated web development with the Cloudflare portfolio.&nbsp;</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">We are truly just getting started. Our opportunity is both huge and unique. With the combination of owning the hardware and investing heavily in developer experience, we’re positioned as the next big evolution of cloud computing.&nbsp;</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">In this role, you’ll be helping define what that future looks like.</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">The most challenging aspect of building against a distributed system is reasoning about the data that lives across it. We need to build powerful storage products with intuitive defaults, enabling developers to build applications without needing to be distributed systems experts. Additionally, We want to provide powerful low-level storage paradigms that allow distributed systems experts to unlock new possibilities. This role will shape our storage strategy across our queues and Workers KV product.</span></p>
+<p>&nbsp;</p>
+<p><span style="font-weight: 400;">What You’ll Do</span></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Lead an exceptional team of engineers focused on R2.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Develop a strategy for tackling the object storage market. Where are our biggest opportunities? What are our sustained differentiators and where should we conform?</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Lead an exceptional team of engineers focused on Workers KV and Queues.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Develop a strategy for tackling the K/V and queues markets. Where are our biggest opportunities? What are our sustained differentiators and where should we conform?</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Design an experimental approach to feature development. You know when something is working and you have the feedback loop in place to tell when something isn’t. You have an iterative mindset.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Setup your engineering team to efficiently launch products and features, by removing the things that get in their way. You practice ruthless prioritization.&nbsp;</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Develop and nurture relationships with engineering, product management, marketing, and sales to ensure successful execution of your product vision from idea to execution and all the way to the hands of customers.&nbsp;&nbsp;</span></li>
@@ -24,8 +35,10 @@
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Give direct feedback on your product by being hands-on, using the product, and testing early features. You aren’t QA but you are able to use new features in the way our users would.&nbsp;</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Collaborate on technology analyst engagements, taking an active role to develop strategy or content.&nbsp;</span></li>
 </ul>
-<p><span style="font-weight: 400;"><br></span><strong>Examples Of Desirable Skills, Knowledge And Experience</strong></p>
+<p><span style="font-weight: 400;"><br></span><span style="font-weight: 400;">Examples Of Desirable Skills, Knowledge And Experience</span></p>
+<p>&nbsp;</p>
 <p><span style="font-weight: 400;">The ideal candidate is entrepreneurial-minded and thrives in a fast-paced and goal-driven environment. You have outstanding communication and collaboration skills and are able to work with a diverse group, get alignment, and drive the product forward. You are execution focused and emphasize getting things done while paying attention to important details.&nbsp;</span></p>
+<p>&nbsp;</p>
 <ul>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">BS/MS in a technology field</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience working on developer-facing products</span></li>
@@ -36,7 +49,6 @@
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong technical curiosity – you are familiar with modern software development practices used to build and deploy applications. You are capable of wading into the details &amp; understanding engineering decisions’ impact on the product, but can also drive 30k foot view. You aren’t a professional developer, but you have hobby projects that you wrote and deployed yourself (e.g. a personal website).&nbsp;</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong user and stakeholder empathy –&nbsp; you must be not only the voice of the user, but at various times the voice of product marketing, finance, engineering, support and ops. You must be able to channel many points of view.</span></li>
 </ul>
-<h5><span style="font-weight: 400;">JOB ID #164_ETI_AC</span></h5>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
