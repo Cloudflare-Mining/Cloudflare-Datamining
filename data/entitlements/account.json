@@ -1104,6 +1104,18 @@
 		}
 	},
 	{
+		"id": "logpush.workers_trace_events.max_jobs_allowed",
+		"feature": {
+			"feature_set": "logpush",
+			"id": 1047,
+			"key": "logpush.workers_trace_events.max_jobs_allowed",
+			"name": "Logpush - Workers Trace Events - Max Jobs"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
 		"id": "ltz.allow_add_subdomain",
 		"feature": {
 			"feature_set": "ltz",
