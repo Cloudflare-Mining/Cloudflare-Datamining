@@ -1701,6 +1701,12 @@ components:
             - id
             type: object
       type: object
+    api_access_enabled:
+      description: Enterprise only. Indicates whether or not API access is enabled
+        specifically for this user on a given account.
+      example: true
+      nullable: true
+      type: boolean
     app-types:
       oneOf:
       - $ref: '#/components/schemas/application'
@@ -2445,7 +2451,7 @@ components:
         invited_member_email:
           $ref: '#/components/schemas/invited_member_email'
         invited_member_id:
-          description: Id of the user to be added to the Organization.
+          description: ID of the user to add to the organization.
           example: 5a7805061c76ada191ed06f989cc3dac
           maxLength: 32
           nullable: true
@@ -2454,19 +2460,19 @@ components:
         invited_on:
           $ref: '#/components/schemas/invited_on'
         organization_id:
-          description: ID of the Organization the user will be added to.
+          description: ID of the organization the user will be added to.
           example: 5a7805061c76ada191ed06f989cc3dac
           maxLength: 32
           readOnly: true
           type: string
         organization_name:
-          description: Organization Name.
+          description: Organization name.
           example: Cloudflare, Inc.
           maxLength: 100
           readOnly: true
           type: string
         roles:
-          description: Roles to be assigned to this Member.
+          description: Roles to be assigned to this user.
           items:
             $ref: '#/components/schemas/schemas-role'
           type: array
@@ -2485,6 +2491,9 @@ components:
         updated_at:
           $ref: '#/components/schemas/timestamp'
       type: object
+    batch_size:
+      example: 10
+      type: number
     beta:
       description: Whether the category is in beta and subject to change.
       example: false
@@ -3084,24 +3093,13 @@ components:
         $ref: '#/components/schemas/catchall-matcher'
       type: array
     categories:
-      properties:
-        beta:
-          $ref: '#/components/schemas/beta'
-        class:
-          $ref: '#/components/schemas/class'
-        description:
-          $ref: '#/components/schemas/categories_components-schemas-description'
-        id:
-          $ref: '#/components/schemas/categories_components-schemas-id'
-        name:
-          $ref: '#/components/schemas/categories_components-schemas-name'
-        subcategories:
-          description: All subcategories for this category.
-          items:
-            $ref: '#/components/schemas/subcategory'
-          type: array
-      readOnly: true
-      type: object
+      description: The categories of the rule.
+      example:
+      - directory-traversal
+      - header
+      items:
+        $ref: '#/components/schemas/category'
+      type: array
     categories_components-schemas-description:
       description: A short summary of domains in the category.
       example: Sites related to educational content that are not included in other
@@ -3121,8 +3119,12 @@ components:
       - properties:
           result:
             items:
-              $ref: '#/components/schemas/categories'
+              $ref: '#/components/schemas/schemas-categories'
             type: array
+    category:
+      description: A category of the rule.
+      example: directory-traversal
+      type: string
     categoryAlias:
       description: Special Event Category alias
       example: videos
@@ -3814,7 +3816,7 @@ components:
           example: 5
           type: number
         name:
-          description: The name of the component_value.
+          description: The name of the component value.
           example: page_rules
           type: string
         price:
@@ -4371,8 +4373,8 @@ components:
       - customized
       example: default
     components-schemas-status:
-      description: Whether or not the user is a member of the organization or has
-        an inivitation pending.
+      description: Whether the user is a member of the organization or has an inivitation
+        pending.
       enum:
       - member
       - invited
@@ -4783,6 +4785,74 @@ components:
       description: To be marked healthy the monitored origin must pass this healthcheck
         N consecutive times.
       type: integer
+    consumer:
+      properties:
+        created_on:
+          readOnly: true
+        environment:
+          readOnly: true
+        queue_name:
+          readOnly: true
+        service:
+          readOnly: true
+        settings:
+          properties:
+            batch_size:
+              $ref: '#/components/schemas/batch_size'
+            max_retries:
+              $ref: '#/components/schemas/max_retries'
+            max_wait_time_ms:
+              $ref: '#/components/schemas/max_wait_time_ms'
+          type: object
+      type: object
+    consumer_created:
+      properties:
+        created_on:
+          readOnly: true
+        dead_letter_queue:
+          $ref: '#/components/schemas/dlq_name'
+        environment:
+          readOnly: true
+        queue_name:
+          readOnly: true
+        script_name:
+          readOnly: true
+        settings:
+          properties:
+            batch_size:
+              $ref: '#/components/schemas/batch_size'
+            max_retries:
+              $ref: '#/components/schemas/max_retries'
+            max_wait_time_ms:
+              $ref: '#/components/schemas/max_wait_time_ms'
+          type: object
+      type: object
+    consumer_name:
+      example: example-consumer
+      type: string
+    consumer_updated:
+      properties:
+        created_on:
+          readOnly: true
+        dead_letter_queue:
+          example: updated-example-dlq
+        environment:
+          readOnly: true
+        queue_name:
+          readOnly: true
+        script_name:
+          readOnly: true
+        settings:
+          properties:
+            batch_size:
+              example: 100
+              type: number
+            max_retries:
+              $ref: '#/components/schemas/max_retries'
+            max_wait_time_ms:
+              $ref: '#/components/schemas/max_wait_time_ms'
+          type: object
+      type: object
     contact_identifier:
       description: Contact Identifier.
       example: ea95132c15732412d22c1476fa83f27a
@@ -5326,14 +5396,14 @@ components:
       readOnly: true
       type: number
     current_period_end:
-      description: The end of the current period, and also when the next billing is
+      description: The end of the current period and also when the next billing is
         due.
       example: "2014-03-31T12:20:00Z"
       format: date-time
       readOnly: true
       type: string
     current_period_start:
-      description: When the current billing period started, may be the same as InitialPeriodStart
+      description: When the current billing period started. May match initial_period_start
         if this is the first period.
       example: "2014-05-11T12:20:00Z"
       format: date-time
@@ -6949,6 +7019,9 @@ components:
       description: Alert type name.
       example: Origin Error Rate Alert
       type: string
+    dlq_name:
+      example: example-dlq
+      type: string
     dns:
       description: The name and type of DNS record for the Spectrum application.
       properties:
@@ -8018,7 +8091,7 @@ components:
       type: string
     externally_managed:
       default: false
-      description: Indicates if this plan is managed externally.
+      description: Indicates whether this plan is managed externally.
       example: false
       type: boolean
     fail_closed:
@@ -9676,7 +9749,7 @@ components:
       maxLength: 90
       type: string
     invited_member_email:
-      description: Email address of the user to be added to the Organization.
+      description: Email address of the user to add to the organization.
       example: user@example.com
       maxLength: 90
       type: string
@@ -10580,7 +10653,7 @@ components:
       type: number
     legacy_discount:
       default: false
-      description: Indicates if this plan has a legacy discount applied.
+      description: Indicates whether this plan has a legacy discount applied.
       example: false
       type: boolean
     legacy_id:
@@ -11436,6 +11509,9 @@ components:
       type: number
     max_estimated_time_minutes:
       type: integer
+    max_retries:
+      example: 3
+      type: number
     max_rtt_ms:
       description: Maximum RTT in ms.
       type: number
@@ -11467,6 +11543,9 @@ components:
       - 100
       - 200
       - 500
+      type: number
+    max_wait_time_ms:
+      example: 5000
       type: number
     maxDurationSeconds:
       description: The maximum duration in seconds for a video upload. Can be set
@@ -11593,6 +11672,8 @@ components:
       properties:
         account:
           $ref: '#/components/schemas/schemas-account'
+        api_access_enabled:
+          $ref: '#/components/schemas/api_access_enabled'
         code:
           $ref: '#/components/schemas/code'
         id:
@@ -12585,7 +12666,7 @@ components:
         permissions:
           $ref: '#/components/schemas/schemas-permissions'
         roles:
-          description: List of role names for the User at the Organization.
+          description: List of roles that a user has within an organization.
           items:
             example: All Privileges - Super Administrator
             maxLength: 120
@@ -12607,7 +12688,7 @@ components:
       - properties:
           organization_is_enforcing_twofactor:
             default: false
-            description: Current status of two factor enforcement on the organization.
+            description: Current status of two-factor enforcement on the organization.
             example: true
             type: boolean
           status:
@@ -13276,8 +13357,8 @@ components:
       type: string
     paused:
       default: false
-      description: Indicates if the zone is only using Cloudflare DNS services. A
-        true value means the zone will not receive security or performance benefits.
+      description: Indicates whether the zone is only using Cloudflare DNS services.
+        A true value means the zone will not receive security or performance benefits.
       readOnly: true
       type: boolean
     pcaps_byte_limit:
@@ -14550,7 +14631,7 @@ components:
           type: array
         prefixes:
           description: Any assets at URLs that match the prefix will be purged from
-            the Cloudflare cache. For instance, a.com/b will purge a.com/b/c/d.png
+            the Cloudflare cache. For example, a.com/b will purge a.com/b/c/d.png
             but not a.com/bc.png. The prefixes a.com/b and a.com/b/c are redundant.
           example:
           - www.example.com/foo
@@ -14809,7 +14890,7 @@ components:
         queue_id:
           readOnly: true
         queue_name:
-          $ref: '#/components/schemas/queues_components-schemas-name'
+          $ref: '#/components/schemas/renamed_name'
       type: object
     queueing_method:
       default: fifo
@@ -15017,19 +15098,19 @@ components:
       description: The rate plan applied to the subscription.
       properties:
         currency:
-          description: The currency applied to the rate_plan subscription.
+          description: The currency applied to the rate plan subscription.
           example: USD
           type: string
         externally_managed:
-          description: Whether this rate_plan is managed externally from Cloudflare.
+          description: Whether this rate plan is managed externally from Cloudflare.
           example: false
           type: boolean
         id:
-          description: The ID of the rate_plan.
+          description: The ID of the rate plan.
           example: free
         is_contract:
-          description: Whether or not a rate_plan is enterprise-based (or newly adopted
-            term contract).
+          description: Whether a rate plan is enterprise-based (or newly adopted term
+            contract).
           example: false
           type: boolean
         public_name:
@@ -15037,11 +15118,11 @@ components:
           example: Business Plan
           type: string
         scope:
-          description: The scope that this rate_plan applies to.
+          description: The scope that this rate plan applies to.
           example: zone
           type: string
         sets:
-          description: The list of sets this rate_plan applies to.
+          description: The list of sets this rate plan applies to.
           items:
             type: string
           type: array
@@ -15225,6 +15306,9 @@ components:
         (true) or locally on the origin machine (false).
       example: true
       type: boolean
+    renamed_name:
+      example: renamed-example-queue
+      type: string
     request.ip:
       description: Client IP restrictions.
       example:
@@ -15724,7 +15808,7 @@ components:
         id:
           $ref: '#/components/schemas/role_components-schemas-identifier'
         name:
-          description: Role Name.
+          description: Role name.
           example: Account Administrator
           maxLength: 120
           readOnly: true
@@ -16364,6 +16448,8 @@ components:
           $ref: '#/components/schemas/rules_components-schemas-action'
         action_parameters:
           $ref: '#/components/schemas/action_parameters'
+        categories:
+          $ref: '#/components/schemas/categories'
         description:
           $ref: '#/components/schemas/rules_components-schemas-description'
         enabled:
@@ -16851,6 +16937,25 @@ components:
       description: Controls whether the membership can be deleted via the API or not.
       example: true
       type: boolean
+    schemas-categories:
+      properties:
+        beta:
+          $ref: '#/components/schemas/beta'
+        class:
+          $ref: '#/components/schemas/class'
+        description:
+          $ref: '#/components/schemas/categories_components-schemas-description'
+        id:
+          $ref: '#/components/schemas/categories_components-schemas-id'
+        name:
+          $ref: '#/components/schemas/categories_components-schemas-name'
+        subcategories:
+          description: All subcategories for this category.
+          items:
+            $ref: '#/components/schemas/subcategory'
+          type: array
+      readOnly: true
+      type: object
     schemas-certificate:
       description: The zone's SSL certificate or SSL certificate and intermediate(s).
       example: '-----BEGIN CERTIFICATE----- MIIDtTCCAp2gAwIBAgIJAM15n7fdxhRtMA0GCSqGSIb3DQEBBQUAMEUxCzAJBgNV
@@ -17041,7 +17146,7 @@ components:
     schemas-create:
       properties:
         account:
-          description: Account of which the zone is created in.
+          description: Account in which the zone was created.
           properties:
             id:
               $ref: '#/components/schemas/common_components-schemas-identifier'
@@ -17627,7 +17732,7 @@ components:
         The minimum value is 576.
       type: integer
     schemas-name:
-      description: Organization Name.
+      description: Organization name.
       example: Cloudflare, Inc.
       maxLength: 100
       type: string
@@ -17826,7 +17931,7 @@ components:
                 $ref: '#/components/schemas/preview_url'
             type: object
     schemas-price:
-      description: The amount for which you will be billed for this plan.
+      description: The amount you will be billed for this plan.
       example: 0
       type: number
     schemas-priority:
@@ -22832,7 +22937,7 @@ paths:
         pro: true
     post:
       description: Creates a ruleset at the account level.
-      operationId: account-rulesets-create-account-ruleset
+      operationId: account-rulesets-create-an-account-ruleset
       parameters:
       - in: path
         name: account_id
@@ -22853,18 +22958,18 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/ruleset_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
-          description: Create account ruleset response failure
+          description: Create an account ruleset response failure
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ruleset_response'
-          description: Create account ruleset response
+          description: Create an account ruleset response
       security:
       - api_email: []
         api_key: []
       - api_token: []
-      summary: Create account ruleset
+      summary: Create an account ruleset
       tags:
       - Account Rulesets
       x-cfPlanAvailability:
@@ -23004,7 +23109,7 @@ paths:
     post:
       description: Adds a new rule to an account ruleset. The rule will be added to
         the end of the existing list of rules in the ruleset.
-      operationId: account-rulesets-create-account-ruleset-rule
+      operationId: account-rulesets-create-an-account-ruleset-rule
       parameters:
       - in: path
         name: ruleset_id
@@ -23030,18 +23135,18 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/ruleset_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
-          description: Create account ruleset rule response failure
+          description: Create an account ruleset rule response failure
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ruleset_response'
-          description: Create account ruleset rule response
+          description: Create an account ruleset rule response
       security:
       - api_email: []
         api_key: []
       - api_token: []
-      summary: Create account ruleset rule
+      summary: Create an account ruleset rule
       tags:
       - Account Rulesets
       x-cfPlanAvailability:
@@ -23155,7 +23260,7 @@ paths:
   /accounts/{account_id}/rulesets/{ruleset_id}/versions:
     get:
       description: Fetches the versions of an account ruleset.
-      operationId: account-rulesets-list-account-ruleset-versions
+      operationId: account-rulesets-list-an-account-ruleset'-s-versions
       parameters:
       - in: path
         name: ruleset_id
@@ -23175,18 +23280,18 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/rulesets_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
-          description: List account ruleset versions response failure
+          description: List an account ruleset's versions response failure
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/rulesets_response'
-          description: List account ruleset versions response
+          description: List an account ruleset's versions response
       security:
       - api_email: []
         api_key: []
       - api_token: []
-      summary: List account ruleset versions
+      summary: List an account ruleset's versions
       tags:
       - Account Rulesets
       x-cfPlanAvailability:
@@ -23285,9 +23390,62 @@ paths:
         enterprise: true
         free: true
         pro: true
+  /accounts/{account_id}/rulesets/{ruleset_id}/versions/{ruleset_version}/by_tag/{rule_tag}:
+    get:
+      description: Fetches the rules of a managed account ruleset version for a given
+        tag.
+      operationId: account-rulesets-list-an-account-ruleset-version'-s-rules-by-tag
+      parameters:
+      - in: path
+        name: rule_tag
+        required: true
+        schema:
+          $ref: '#/components/schemas/category'
+      - in: path
+        name: ruleset_version
+        required: true
+        schema:
+          $ref: '#/components/schemas/version'
+      - in: path
+        name: ruleset_id
+        required: true
+        schema:
+          $ref: '#/components/schemas/rulesets_components-schemas-id'
+      - in: path
+        name: account_id
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ruleset_response'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: List an account ruleset version's rules by tag response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ruleset_response'
+          description: List an account ruleset version's rules by tag response
+      security:
+      - api_email: []
+        api_key: []
+      - api_token: []
+      summary: List an account ruleset version's rules by tag
+      tags:
+      - Account Rulesets
+      x-cfPlanAvailability:
+        business: true
+        enterprise: true
+        free: true
+        pro: true
   /accounts/{account_id}/rulesets/phases/{ruleset_phase}/entrypoint:
     get:
-      description: Fetches the latest version of an account entry point ruleset for
+      description: Fetches the latest version of the account entry point ruleset for
         a given phase.
       operationId: account-rulesets-get-an-account-entry-point-ruleset
       parameters:
@@ -23368,6 +23526,95 @@ paths:
         api_key: []
       - api_token: []
       summary: Update an account entry point ruleset
+      tags:
+      - Account Rulesets
+      x-cfPlanAvailability:
+        business: true
+        enterprise: true
+        free: true
+        pro: true
+  /accounts/{account_id}/rulesets/phases/{ruleset_phase}/versions:
+    get:
+      description: Fetches the versions of an account entry point ruleset.
+      operationId: account-rulesets-list-an-account-entry-point-ruleset'-s-versions
+      parameters:
+      - in: path
+        name: ruleset_phase
+        required: true
+        schema:
+          $ref: '#/components/schemas/phase'
+      - in: path
+        name: account_id
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/rulesets_response'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: List an account entry point ruleset's versions response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rulesets_response'
+          description: List an account entry point ruleset's versions response
+      security:
+      - api_email: []
+        api_key: []
+      - api_token: []
+      summary: List an account entry point ruleset's versions
+      tags:
+      - Account Rulesets
+      x-cfPlanAvailability:
+        business: true
+        enterprise: true
+        free: true
+        pro: true
+  /accounts/{account_id}/rulesets/phases/{ruleset_phase}/versions/{ruleset_version}:
+    get:
+      description: Fetches a specific version of an account entry point ruleset.
+      operationId: account-rulesets-get-an-account-entry-point-ruleset-version
+      parameters:
+      - in: path
+        name: ruleset_version
+        required: true
+        schema:
+          $ref: '#/components/schemas/version'
+      - in: path
+        name: ruleset_phase
+        required: true
+        schema:
+          $ref: '#/components/schemas/phase'
+      - in: path
+        name: account_id
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ruleset_response'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Get an account entry point ruleset version response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ruleset_response'
+          description: Get an account entry point ruleset version response
+      security:
+      - api_email: []
+        api_key: []
+      - api_token: []
+      summary: Get an account entry point ruleset version
       tags:
       - Account Rulesets
       x-cfPlanAvailability:
@@ -24291,7 +24538,7 @@ paths:
         pro: true
   /accounts/{account_identifier}/billing/profile:
     get:
-      description: Get the current billing profile for the account.
+      description: Gets the current billing profile for the account.
       operationId: account-billing-profile-billing-profile-details
       parameters:
       - in: path
@@ -34918,7 +35165,7 @@ paths:
       - Stream Webhook
   /accounts/{account_identifier}/subscriptions:
     get:
-      description: List all of an account's subscriptions.
+      description: Lists all of an account's subscriptions.
       operationId: account-subscriptions-list-subscriptions
       parameters:
       - in: path
@@ -34957,7 +35204,7 @@ paths:
         free: true
         pro: true
     post:
-      description: Create an account subscription.
+      description: Creates an account subscription.
       operationId: account-subscriptions-create-subscription
       parameters:
       - in: path
@@ -35061,7 +35308,7 @@ paths:
         enum:
         - '#billing:edit'
     put:
-      description: Update an account subscription.
+      description: Updates an account subscription.
       operationId: account-subscriptions-update-subscription
       parameters:
       - in: path
@@ -36748,7 +36995,7 @@ paths:
           application/json:
             schema:
               example:
-                queue_name: rename-example-queue
+                queue_name: renamed-example-queue
         required: true
       responses:
         4xx:
@@ -36794,6 +37041,327 @@ paths:
         api_key: []
       - api_token: []
       summary: Update Queue
+      tags:
+      - Queue
+      x-cfPermissionsRequired:
+        enum:
+        - com.cloudflare.edge.worker.queue.update
+  /accounts/{account_identifier}/workers/queues/{name}/consumers:
+    get:
+      description: Returns the consumers for a queue.
+      operationId: queue-list-queue-consumers
+      parameters:
+      - in: path
+        name: name
+        required: true
+        schema:
+          $ref: '#/components/schemas/queues_components-schemas-name'
+      - in: path
+        name: account_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - allOf:
+                  - $ref: '#/components/schemas/api-response-collection'
+                  - properties:
+                      errors:
+                        nullable: true
+                  - properties:
+                      messages:
+                        nullable: true
+                  - properties:
+                      result_info:
+                        properties:
+                          count:
+                            example: 1
+                          page:
+                            example: 1
+                          per_page:
+                            example: 100
+                          total_count:
+                            example: 1
+                          total_pages:
+                            example: 1
+                        type: object
+                  - properties:
+                      result:
+                        items:
+                          $ref: '#/components/schemas/consumer'
+                        type: array
+                    required:
+                    - queue_name
+                    - created_on
+                    - settings
+                    type: object
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: List Queue Consumers response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/api-response-collection'
+                - properties:
+                    errors:
+                      nullable: true
+                - properties:
+                    messages:
+                      nullable: true
+                - properties:
+                    result_info:
+                      properties:
+                        count:
+                          example: 1
+                        page:
+                          example: 1
+                        per_page:
+                          example: 100
+                        total_count:
+                          example: 1
+                        total_pages:
+                          example: 1
+                      type: object
+                - properties:
+                    result:
+                      items:
+                        $ref: '#/components/schemas/consumer'
+                      type: array
+                  required:
+                  - queue_name
+                  - created_on
+                  - settings
+                  type: object
+          description: List Queue Consumers response
+      security:
+      - api_email: []
+        api_key: []
+      - api_token: []
+      summary: List Queue Consumers
+      tags:
+      - Queue
+      x-cfPermissionsRequired:
+        enum:
+        - com.cloudflare.edge.worker.queue.list
+    post:
+      description: Creates a new consumer for a queue.
+      operationId: queue-create-queue-consumer
+      parameters:
+      - in: path
+        name: name
+        required: true
+        schema:
+          $ref: '#/components/schemas/queues_components-schemas-name'
+      - in: path
+        name: account_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                dead_letter_queue: example-dlq
+                environment: production
+                script_name: example-consumer
+                settings:
+                  batch_size: 10
+                  max_retries: 3
+                  max_wait_time_ms: 5000
+        required: true
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - allOf:
+                  - $ref: '#/components/schemas/api-response-collection'
+                  - properties:
+                      result:
+                        allOf:
+                        - $ref: '#/components/schemas/consumer_created'
+                        type: object
+                    required:
+                    - queue_name
+                    - script_name
+                    - settings
+                    - dead_letter_queue
+                    - created_on
+                    type: object
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Create Queue Consumer response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/api-response-collection'
+                - properties:
+                    result:
+                      allOf:
+                      - $ref: '#/components/schemas/consumer_created'
+                      type: object
+                  required:
+                  - queue_name
+                  - script_name
+                  - settings
+                  - dead_letter_queue
+                  - created_on
+                  type: object
+          description: Create Queue Consumer response
+      security:
+      - api_email: []
+        api_key: []
+      - api_token: []
+      summary: Create Queue Consumer
+      tags:
+      - Queue
+      x-cfPermissionsRequired:
+        enum:
+        - com.cloudflare.edge.worker.queue.create
+  /accounts/{account_identifier}/workers/queues/{name}/consumers/{consumer_name}:
+    delete:
+      description: Deletes the consumer for a queue.
+      operationId: queue-delete-queue-consumer
+      parameters:
+      - in: path
+        name: consumer_name
+        required: true
+        schema:
+          $ref: '#/components/schemas/consumer_name'
+      - in: path
+        name: name
+        required: true
+        schema:
+          $ref: '#/components/schemas/queues_components-schemas-name'
+      - in: path
+        name: account_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      requestBody:
+        content:
+          application/json: {}
+        required: true
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - allOf:
+                  - $ref: '#/components/schemas/api-response-collection'
+                  - nullable: true
+                    properties:
+                      result:
+                        nullable: true
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Delete Queue Consumer response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/api-response-collection'
+                - nullable: true
+                  properties:
+                    result:
+                      nullable: true
+          description: Delete Queue Consumer response
+      security:
+      - api_email: []
+        api_key: []
+      - api_token: []
+      summary: Delete Queue Consumer
+      tags:
+      - Queue
+      x-cfPermissionsRequired:
+        enum:
+        - com.cloudflare.edge.worker.queue.delete
+    put:
+      description: Updates the consumer for a queue, or creates one if it does not
+        exist.
+      operationId: queue-update-queue-consumer
+      parameters:
+      - in: path
+        name: consumer_name
+        required: true
+        schema:
+          $ref: '#/components/schemas/consumer_name'
+      - in: path
+        name: name
+        required: true
+        schema:
+          $ref: '#/components/schemas/queues_components-schemas-name'
+      - in: path
+        name: account_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                dead_letter_queue: updated-example-dlq
+                environment: production
+                script_name: example-consumer
+                settings:
+                  batch_size: 100
+        required: true
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - allOf:
+                  - $ref: '#/components/schemas/api-response-collection'
+                  - properties:
+                      result:
+                        allOf:
+                        - $ref: '#/components/schemas/consumer_updated'
+                        type: object
+                    required:
+                    - queue_name
+                    - script_name
+                    - settings
+                    - dead_letter_queue
+                    - created_on
+                    type: object
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Update Queue Consumer response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/api-response-collection'
+                - properties:
+                    result:
+                      allOf:
+                      - $ref: '#/components/schemas/consumer_updated'
+                      type: object
+                  required:
+                  - queue_name
+                  - script_name
+                  - settings
+                  - dead_letter_queue
+                  - created_on
+                  type: object
+          description: Update Queue Consumer response
+      security:
+      - api_email: []
+        api_key: []
+      - api_token: []
+      summary: Update Queue Consumer
       tags:
       - Queue
       x-cfPermissionsRequired:
@@ -52938,7 +53506,7 @@ paths:
         pro: true
   /user/billing/history:
     get:
-      description: Access your billing history object.
+      description: Accesses your billing history object.
       operationId: user-billing-history-billing-history-details
       responses:
         4xx:
@@ -52972,7 +53540,7 @@ paths:
         pro: true
   /user/billing/profile:
     get:
-      description: Access your billing profile object.
+      description: Accesses your billing profile object.
       operationId: user-billing-profile-billing-profile-details
       responses:
         4xx:
@@ -53177,7 +53745,7 @@ paths:
         pro: true
   /user/invites:
     get:
-      description: List all invitations associated with my user.
+      description: Lists all invitations associated with my user.
       operationId: user'-s-invites-list-invitations
       responses:
         4xx:
@@ -53208,7 +53776,7 @@ paths:
         pro: false
   /user/invites/{identifier}:
     get:
-      description: Get the details of an invitation.
+      description: Gets the details of an invitation.
       operationId: user'-s-invites-invitation-details
       parameters:
       - in: path
@@ -53244,7 +53812,7 @@ paths:
         free: false
         pro: false
     patch:
-      description: Respond to an invitation.
+      description: Responds to an invitation.
       operationId: user'-s-invites-respond-to-invitation
       parameters:
       - in: path
@@ -54188,7 +54756,7 @@ paths:
       - Load Balancer Healthcheck Events
   /user/organizations:
     get:
-      description: List organizations the user is associated with.
+      description: Lists organizations the user is associated with.
       operationId: user'-s-organizations-list-organizations
       responses:
         4xx:
@@ -54219,7 +54787,7 @@ paths:
         pro: false
   /user/organizations/{identifier}:
     delete:
-      description: Remove association to an organization.
+      description: Removes association to an organization.
       operationId: user'-s-organizations-leave-organization
       parameters:
       - in: path
@@ -54265,7 +54833,7 @@ paths:
         free: false
         pro: false
     get:
-      description: Get a specific organization the user is associated with.
+      description: Gets a specific organization the user is associated with.
       operationId: user'-s-organizations-organization-details
       parameters:
       - in: path
@@ -54302,7 +54870,7 @@ paths:
         pro: false
   /user/subscriptions:
     get:
-      description: Lists all a user's subscriptions.
+      description: Lists all of a user's subscriptions.
       operationId: user-subscription-get-user-subscriptions
       responses:
         4xx:
@@ -54375,7 +54943,7 @@ paths:
         enum:
         - '#billing:edit'
     put:
-      description: Update a user subscriptions.
+      description: Updates a user's subscriptions.
       operationId: user-subscription-update-user-subscription
       parameters:
       - in: path
@@ -54718,7 +55286,7 @@ paths:
         pro: true
   /zones:
     get:
-      description: List, search, sort, and filter your zones.
+      description: Lists, searches, sorts, and filters your zones.
       operationId: zone-list-zones
       responses:
         4xx:
@@ -54790,7 +55358,7 @@ paths:
         pro: true
   /zones/{identifier}:
     delete:
-      description: Delete an existing zone.
+      description: Deletes an existing zone.
       operationId: zone-delete-zone
       parameters:
       - in: path
@@ -54871,7 +55439,7 @@ paths:
         free: true
         pro: true
     patch:
-      description: Only one zone property can be changed at a time.
+      description: Editz a zone. Only one zone property can be changed at a time.
       operationId: zone-edit-zone
       parameters:
       - in: path
@@ -56578,7 +57146,7 @@ paths:
       - Zone-Level Access service tokens
   /zones/{identifier}/activation_check:
     put:
-      description: Initiate another zone activation check.
+      description: Initiates another zone activation check.
       operationId: zone-zone-activation-check
       parameters:
       - in: path
@@ -56821,10 +57389,10 @@ paths:
   /zones/{identifier}/purge_cache:
     post:
       description: |-
-        Granularly remove one or more files from Cloudflare's cache either by specifying the host, the associated Cache-Tag, or a Prefix.
+        Granularly removes one or more files from Cloudflare's cache either by specifying the host, the associated Cache-Tag, or a Prefix.
 
-        **NB:** Cache-Tag, host and prefix purging each have a rate limit of 30,000 purge API calls in every 24 hour period. You may purge up to 30 tags, hosts, or prefixes in one API call. This rate limit can be raised for customers who need to purge at higher volume.
-      operationId: zone-purge-files-by-cache-tags,-host-or-prefix
+        **NB:** Cache-Tag, host, and prefix purging each have a rate limit of 30,000 purge API calls in every 24 hour period. You may purge up to 30 tags, hosts, or prefixes in one API call. This rate limit can be raised for customers who need to purge at higher volume.
+      operationId: zone-purge-files-by-cache-tags,-host,-or-prefix
       parameters:
       - in: path
         name: identifier
@@ -56845,18 +57413,18 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/api-response-single-id'
                 - $ref: '#/components/schemas/api-response-common-failure'
-          description: Purge Files by Cache-Tags, Host or Prefix response failure
+          description: Purge Files by Cache-Tags, Host, or Prefix response failure
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/api-response-single-id'
-          description: Purge Files by Cache-Tags, Host or Prefix response
+          description: Purge Files by Cache-Tags, Host, or Prefix response
       security:
       - api_email: []
         api_key: []
       - api_token: []
-      summary: Purge Files by Cache-Tags, Host or Prefix
+      summary: Purge Files by Cache-Tags, Host, or Prefix
       tags:
       - Zone
       x-cfPermissionsRequired:
@@ -57461,7 +58029,7 @@ paths:
         pro: true
   /zones/{identifier}/subscription:
     get:
-      description: Zone subscription details.
+      description: Lists zone subscription details.
       operationId: zone-subscription-zone-subscription-details
       parameters:
       - in: path
@@ -57500,7 +58068,7 @@ paths:
         free: true
         pro: true
     post:
-      description: Create a Zone subscriptions. Either plan or add-ons.
+      description: Create a zone subscription, either plan or add-ons.
       operationId: zone-subscription-create-zone-subscription
       parameters:
       - in: path
@@ -57546,7 +58114,7 @@ paths:
         free: true
         pro: true
     put:
-      description: Update Zone subscriptions. Either plan and add-ons.
+      description: Updates zone subscriptions, either plan or add-ons.
       operationId: zone-subscription-update-zone-subscription
       parameters:
       - in: path
@@ -58610,7 +59178,7 @@ paths:
         pro: true
     post:
       description: Creates a ruleset at the zone level.
-      operationId: zone-rulesets-create-zone-ruleset
+      operationId: zone-rulesets-create-a-zone-ruleset
       parameters:
       - in: path
         name: zone_id
@@ -58631,18 +59199,18 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/ruleset_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
-          description: Create zone ruleset response failure
+          description: Create a zone ruleset response failure
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ruleset_response'
-          description: Create zone ruleset response
+          description: Create a zone ruleset response
       security:
       - api_email: []
         api_key: []
       - api_token: []
-      summary: Create zone ruleset
+      summary: Create a zone ruleset
       tags:
       - Zone Rulesets
       x-cfPlanAvailability:
@@ -58782,7 +59350,7 @@ paths:
     post:
       description: Adds a new rule to a zone ruleset. The rule will be added to the
         end of the existing list of rules in the ruleset.
-      operationId: zone-rulesets-create-zone-ruleset-rule
+      operationId: zone-rulesets-create-a-zone-ruleset-rule
       parameters:
       - in: path
         name: ruleset_id
@@ -58808,18 +59376,18 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/ruleset_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
-          description: Create zone ruleset rule response failure
+          description: Create a zone ruleset rule response failure
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ruleset_response'
-          description: Create zone ruleset rule response
+          description: Create a zone ruleset rule response
       security:
       - api_email: []
         api_key: []
       - api_token: []
-      summary: Create zone ruleset rule
+      summary: Create a zone ruleset rule
       tags:
       - Zone Rulesets
       x-cfPlanAvailability:
@@ -58933,7 +59501,7 @@ paths:
   /zones/{zone_id}/rulesets/{ruleset_id}/versions:
     get:
       description: Fetches the versions of a zone ruleset.
-      operationId: zone-rulesets-list-zone-ruleset-versions
+      operationId: zone-rulesets-list-a-zone-ruleset'-s-versions
       parameters:
       - in: path
         name: ruleset_id
@@ -58953,18 +59521,18 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/rulesets_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
-          description: List zone ruleset versions response failure
+          description: List a zone ruleset's versions response failure
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/rulesets_response'
-          description: List zone ruleset versions response
+          description: List a zone ruleset's versions response
       security:
       - api_email: []
         api_key: []
       - api_token: []
-      summary: List zone ruleset versions
+      summary: List a zone ruleset's versions
       tags:
       - Zone Rulesets
       x-cfPlanAvailability:
@@ -59154,8 +59722,8 @@ paths:
         pro: true
   /zones/{zone_id}/rulesets/phases/{ruleset_phase}/entrypoint:
     get:
-      description: Fetches the latest version of a zone entry point ruleset for a
-        given phase.
+      description: Fetches the latest version of the zone entry point ruleset for
+        a given phase.
       operationId: zone-rulesets-get-a-zone-entry-point-ruleset
       parameters:
       - in: path
@@ -59197,7 +59765,7 @@ paths:
         pro: true
     put:
       description: Updates a zone entry point ruleset, creating a new version.
-      operationId: zone-rulesets-update-zone-entry-point-ruleset
+      operationId: zone-rulesets-update-a-zone-entry-point-ruleset
       parameters:
       - in: path
         name: ruleset_phase
@@ -59223,18 +59791,107 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/ruleset_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
-          description: Update zone entry point ruleset response failure
+          description: Update a zone entry point ruleset response failure
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ruleset_response'
-          description: Update zone entry point ruleset response
+          description: Update a zone entry point ruleset response
       security:
       - api_email: []
         api_key: []
       - api_token: []
-      summary: Update zone entry point ruleset
+      summary: Update a zone entry point ruleset
+      tags:
+      - Zone Rulesets
+      x-cfPlanAvailability:
+        business: true
+        enterprise: true
+        free: true
+        pro: true
+  /zones/{zone_id}/rulesets/phases/{ruleset_phase}/versions:
+    get:
+      description: Fetches the versions of a zone entry point ruleset.
+      operationId: zone-rulesets-list-a-zone-entry-point-ruleset'-s-versions
+      parameters:
+      - in: path
+        name: ruleset_phase
+        required: true
+        schema:
+          $ref: '#/components/schemas/phase'
+      - in: path
+        name: zone_id
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/rulesets_response'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: List a zone entry point ruleset's versions response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rulesets_response'
+          description: List a zone entry point ruleset's versions response
+      security:
+      - api_email: []
+        api_key: []
+      - api_token: []
+      summary: List a zone entry point ruleset's versions
+      tags:
+      - Zone Rulesets
+      x-cfPlanAvailability:
+        business: true
+        enterprise: true
+        free: true
+        pro: true
+  /zones/{zone_id}/rulesets/phases/{ruleset_phase}/versions/{ruleset_version}:
+    get:
+      description: Fetches a specific version of a zone entry point ruleset.
+      operationId: zone-rulesets-get-a-zone-entry-point-ruleset-version
+      parameters:
+      - in: path
+        name: ruleset_version
+        required: true
+        schema:
+          $ref: '#/components/schemas/version'
+      - in: path
+        name: ruleset_phase
+        required: true
+        schema:
+          $ref: '#/components/schemas/phase'
+      - in: path
+        name: zone_id
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ruleset_response'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Get a zone entry point ruleset version response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ruleset_response'
+          description: Get a zone entry point ruleset version response
+      security:
+      - api_email: []
+        api_key: []
+      - api_token: []
+      summary: Get a zone entry point ruleset version
       tags:
       - Zone Rulesets
       x-cfPlanAvailability:
@@ -60091,7 +60748,7 @@ paths:
         pro: true
   /zones/{zone_identifier}/available_plans:
     get:
-      description: List available plans the zone can subscribe to.
+      description: Lists available plans the zone can subscribe to.
       operationId: zone-rate-plan-list-available-plans
       parameters:
       - in: path
@@ -60143,7 +60800,7 @@ paths:
         pro: true
   /zones/{zone_identifier}/available_plans/{plan_identifier}:
     get:
-      description: Details of an available plan that the zone can subscribe to.
+      description: Details of the available plan that the zone can subscribe to.
       operationId: zone-rate-plan-available-plan-details
       parameters:
       - in: path
@@ -60196,7 +60853,7 @@ paths:
         pro: true
   /zones/{zone_identifier}/available_rate_plans:
     get:
-      description: List all rate plans the zone can subscribe to.
+      description: Lists all rate plans the zone can subscribe to.
       operationId: zone-rate-plan-list-available-rate-plans
       parameters:
       - in: path
