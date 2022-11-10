@@ -1,0 +1,86 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/unnamed-1.png" class="kg-image" alt="Cloudflare Pages gets even faster with Early Hints"></figure>
+	<p>L'année dernière, nous avons démontré ce que nous entendions par « rapide comme l’éclair » lorsque <a href="https://blog.cloudflare.com/cloudflare-pages-is-lightning-fast/">nous avons présenté les performances exceptionnelles de Pages</a> dans toutes les régions du monde, et aujourd'hui, nous sommes ravis d'annoncer une intégration qui confirme encore cet engagement en faveur de la rapidité, avec la prise en charge d'Early Hints pour Pages ! Early Hints vous permet de débloquer le chargement des ressources essentielles d'une page en amont d'une page HTML dont l'affichage est lent. Early Hints peut être utilisé pour améliorer l'expérience de chargement de vos visiteurs en réduisant considérablement des indicateurs de performance essentiels, tels que Largest Contentful Paint (LCP).</p>
+	<h2 id="qu-est-ce-qu-early-hints">Qu'est-ce qu'Early Hints ?</h2>
+	<p><a href="https://blog.cloudflare.com/early-hints/">Early Hints</a> est une nouvelle fonctionnalité d'Internet <a href="https://developer.chrome.com/blog/early-hints/#implementing-early-hints" target="_blank">prise en charge dans Chrome depuis la version 103</a>, que <a href="https://blog.cloudflare.com/early-hints-performance/">Cloudflare a proposée en disponibilité générale</a> pour les sites web utilisant son réseau. Early Hints remplace <a href="https://groups.google.com/a/chromium.org/g/blink-dev/c/K3rYLvmQUBY/m/vOWBKZGoAQAJ" target="_blank">Server Push</a>, et offre un mécanisme permettant de fournir à un navigateur des indications concernant les ressources essentielles de votre page (par exemple, les polices, les fichiers CSS et les images affichées au-dessus de la ligne de flottaison). Le navigateur peut commencer à charger ces ressources immédiatement, avant d'attendre une réponse HTML complète, ce qui permet d'utiliser du temps qui était auparavant perdu. Avant Early Hints, aucune activité ne pouvait être lancée tant que le navigateur n'avait pas reçu le premier octet de la réponse. Désormais, le navigateur peut utiliser ce temps de manière utile, alors qu'auparavant, il ne pouvait qu'attendre. Early Hints peut améliorer considérablement les performances de votre site web, notamment au regard d'indicateurs tels que LCP.</p>
+	<h3 id="comment-fonctionne-early-hints">Comment fonctionne Early Hints</h3>
+	<p>Cloudflare met en cache les en-têtes <code>Link</code> de type <code>preload</code> et <code>preconnect</code> transmis depuis votre réponse 200 OK, et les transmet à l'avance pour toute requête ultérieure sous forme de réponse 103 d'Early Hints.</p>
+	<p>Concrètement, une conversation HTTP se présente maintenant ainsi :</p>
+	<p><strong>Requête</strong></p><!--kg-card-begin: markdown-->
+	<pre><code class="language-txt">GET /
+Host: example.com
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p><strong>Réponse d'Early Hints</strong></p><!--kg-card-begin: markdown-->
+	<pre><code class="language-txt">103 Early Hints
+Link: &lt;/styles.css&gt;; rel=preload; as=style
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p><strong>Réponse</strong></p><!--kg-card-begin: markdown-->
+	<pre><code class="language-txt">200 OK
+Content-Type: text/html; charset=utf-8
+Link: &lt;/styles.css&gt;; rel=preload; as=style
+
+&lt;html&gt;
+&lt;!-- ... --&gt;
+&lt;/html&gt;
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h2 id="early-hints-sur-cloudflare-pages">Early Hints sur Cloudflare Pages</h2>
+	<p>Early Hints peut être particulièrement bénéfique aux sites web hébergés sur Cloudflare Pages. Si vous utilisez <a href="https://blog.cloudflare.com/fr-fr/cloudflare-pages-goes-full-stack-fr-fr/">Pages Functions</a> pour générer des pages dynamiques avec un rendu côté serveur (SSR), il y a de fortes chances qu'Early Hints améliore considérablement votre site web.</p>
+	<h3 id="test-des-performances">Test des performances</h3>
+	<p>Nous avons créé un site web d'e-commerce de démonstration simple afin d'évaluer les performances d'Early Hints.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/image2-7.png" class="kg-image" alt="A screenshot of the landing page of a demo Cloudflare e-commerce website selling a t-shirt, cap and keycap. Each item is branded with the Cloudflare logo, and has a price and &quot;stock remaining&quot; number."></figure>
+	<p>Sur cette page d'accueil figurent le prix de chaque article et un compteur de stock restant. La page elle-même comporte uniquement du code HTML et des fichiers CSS créés à la main, mais les valeurs de prix et d'inventaire sont modélisées en direct pour chaque requête traitée avec <a href="https://developers.cloudflare.com/pages/platform/functions/" target="_blank">Pages Functions</a>. Pour simuler le chargement depuis une source de données externe (pouvant reposer sur <a href="https://developers.cloudflare.com/workers/runtime-apis/kv/" target="_blank">KV</a>, <a href="https://developers.cloudflare.com/workers/runtime-apis/durable-objects/" target="_blank">Durable Objects</a>, <a href="https://blog.cloudflare.com/fr-fr/introducing-d1-fr-fr/">D1</a> ou même une API externe telle que Shopify), nous avons ajouté un délai d'attente fixe avant la résolution de ces données. Nous incluons des liens <code>preload</code> dans notre réponse à certaines ressources essentielles :</p>
+	<ul>
+		<li>une feuille de style CSS externe,</li>
+		<li>l'image du T-shirt,</li>
+		<li>l'image de la casquette,</li>
+		<li>et l'image du dessus de touche.</li>
+	</ul>
+	<p>La toute première requête produit une cascade, comme vous pouvez vous y attendre. La première requête est bloquée pendant un laps de temps considérable, durant lequel nous résolvons ces données de prix et d'inventaire. Une fois chargé, le navigateur analyse le code HTML, extrait les ressources externes et transmet des requêtes ultérieures pour les contenus correspondants. Les fichiers CSS et les images augmentent considérablement le temps de chargement, en raison de leurs dimensions et leur qualité élevées. L'indicateur Largest Contentful Paint (LCP) se produit pendant le chargement de l'image du T-shirt, et le document est finalisé lorsque toutes les requêtes sont satisfaites.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/image1-10.png" class="kg-image" alt="A network diagnostics waterfall for the page without Early Hints, as described above."></figure>
+	<p>C'est lors des requêtes ultérieures que les choses deviennent intéressantes ! Ces liens <code>preload</code> sont mis en cache sur le réseau mondial de Cloudflare, puis sont transmis avant le document dans une réponse 103 d'Early Hints. Maintenant, l'apparence de la cascade est très différente. La requête initiale est transmise de la même manière, mais les requêtes concernant le fichier CSS et les images sont considérablement décalées vers la gauche, car elles peuvent être lancées dès la réception de la réponse 103. Le navigateur commence à récupérer ces ressources en attendant la fin du rendu côté serveur de la requête initiale. L'indicateur LCP se produit à nouveau une fois après le chargement de l'image du T-shirt, mais cette fois-ci, il est avancé de <strong>530 ms</strong>, car son chargement a démarré <strong>752 ms</strong> plus tôt, et le chargement intégral du document se termine <strong>562 ms</strong> plus tôt, toujours parce que le chargement de toutes les ressources externes a pu démarrer plus rapidement.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/image3-3.png" class="kg-image" alt="A network diagnostics waterfall with Early Hints, as described above."></figure>
+	<p>Les quatre dernières requêtes (surlignées en jaune) sont renvoyées sous forme de réponses 304 Not Modified avec un en-tête <code>If-None-Match</code>. Par défaut, Cloudflare Pages demande au navigateur de confirmer que toutes les ressources sont récentes et par conséquent, dans l'éventualité où elles ont été mises à jour entre la réponse d'Early Hints et le moment de leur utilisation, le navigateur vérifie si elles ont été modifiées. Puisque ce n'est pas le cas, il n'y a pas de contenu à télécharger, et la réponse est rapidement finalisée. Ceci peut être évité en définissant un en-tête <code>Cache-Control</code> personnalisé pour ces ressources avec un <a href="https://developers.cloudflare.com/pages/platform/headers/" target="_blank">fichier <code>_headers</code></a>. Par exemple, vous pouvez mettre en cache ces images pendant une minute avec une règle telle que :</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-txt"># _headers
+
+/*.png
+  Cache-Control: max-age=60
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Nous pourrions pousser plus loin cet audit des performances en explorant d'autres fonctionnalités que propose Cloudflare, telles que la <a href="https://support.cloudflare.com/hc/en-us/articles/200168196" target="_blank">minimisation CSS automatique</a>, <a href="https://developers.cloudflare.com/images/" target="_blank">Cloudflare Images</a> et <a href="https://developers.cloudflare.com/images/image-resizing/" target="_blank">Redimensionnement d'image</a>.</p>
+	<p>Nous servons déjà Cloudflare Pages depuis <a href="https://blog.cloudflare.com/cloudflare-pages-is-lightning-fast/">l'un des réseaux les plus rapides du monde</a> ; Early Hints permet simplement aux développeurs de profiter encore davantage de notre réseau mondial.</p>
+	<h2 id="utilisation-d-early-hints-et-de-cloudflare-pages">Utilisation d'Early Hints et de Cloudflare Pages</h2>
+	<p>La fonctionnalité Early Hints de Cloudflare est actuellement limitée à la mise en cache des en-têtes <code>Link</code> dans la réponse d'une page web. Habituellement, cela signifierait que les utilisateurs de Cloudflare Pages devraient utiliser le fichier <code>_headers</code> ou Pages Functions pour appliquer ces en-têtes. Cependant, pour votre confort, nous avons également ajouté la possibilité de transformer tout élément HTML <code>&lt;link&gt;</code> inclus dans le corps de la page dans les en-têtes <code>Link</code>. Ceci vous permet de contrôler directement les données Early Hints que vous envoyez, directement depuis le même document dans lequel vous référencez ces ressources ; plus besoin de sortir du code HTML pour profiter d'Early Hints.</p>
+	<p>Par exemple, pour le document HTML suivant, une réponse Early Hints sera générée :</p>
+	<p><strong>Document HTML</strong></p><!--kg-card-begin: markdown-->
+	<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;link rel="preload" as="style" href="/styles.css" /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;!-- ... --&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p><strong>Réponse d'Early Hints</strong></p><!--kg-card-begin: markdown-->
+	<pre><code class="language-txt">103 Early Hints
+Link: &lt;/styles.css&gt;; rel=preload; as=style
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Comme nous l'avons indiqué plus haut, des en-têtes <code>Link</code> peuvent également être définis avec un fichier <a href="https://blog.cloudflare.com/custom-headers-for-pages/"><code>_headers</code></a>, si vous préférez :</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-txt"># _headers
+
+/
+  Link: &lt;/styles.css&gt;; rel=preload; as=style
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Early Hints (et l'analyse automatique du code HTML <code>&lt;link&gt;</code>) a déjà été activé automatiquement pour tous les domaines <code>pages.dev</code>. Si vous avez configuré des domaines personnalisés pour votre projet Pages, assurez-vous d'activer Early Hints sur ce domaine depuis le tableau de bord Cloudflare, sur l'onglet « Speed » (Vitesse). D'autres informations sont disponibles dans notre <a href="https://developers.cloudflare.com/pages/platform/early-hints/" target="_blank">documentation</a>.</p>
+	<p>Par ailleurs, à l'avenir, nous espérons proposer une prise en charge des fonctionnalités Smart Early Hints. Smart Early Hints permettra à Cloudflare de générer automatiquement des indications Early Hints, même en l'absence d'en-tête <code>Link</code> ou d'éléments <code>&lt;link&gt;</code>, en analysant le trafic du site web et en déduisant quelles ressources sont importantes pour une page donnée. Nous partagerons prochainement d'autres informations sur Smart Early Hints.</p>
+	<p>Entre-temps, vous pouvez tester <a href="https://developers.cloudflare.com/pages/platform/early-hints/" target="_blank">Early Hints sur Pages</a> dès maintenant ! N'hésitez pas à nous faire part de l'amélioration des temps de chargement que vous constatez sur <a href="https://discord.com/invite/cloudflaredev" target="_blank">notre serveur Discord</a>.</p>
+	<h2 id="regarder-sur-cloudflare-tv">Regarder sur Cloudflare TV</h2><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/17f981baa4fb87a0a3f8023e67c57358/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F17f981baa4fb87a0a3f8023e67c57358%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D1s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
+</div>

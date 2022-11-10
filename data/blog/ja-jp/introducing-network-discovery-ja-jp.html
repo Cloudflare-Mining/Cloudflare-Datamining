@@ -1,0 +1,27 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image4-19.png" class="kg-image" alt="Introducing Private Network Discovery"></figure>
+	<p>Cloudflare Oneでは、Cloudflare上にプライベートネットワークを容易に構築することができます。しかし、プライベートネットワークのセキュリティを長期にわたって維持するとなると、事はそれほど容易ではありません。リソースは日々新しいユーザーが追加されたり削除されたりして常に変動しており、長期間の管理は骨が折れる作業です。</p>
+	<p>そんな状況に対応するべく、本日、新しいネットワーク発見ツール「Zero Trust」のクローズドベータを開始します。Private Network Discoveryを使用し、当社のZero Trustプラットフォームは、アクセスを受けるリソースとアクセスするユーザーの両方を、追加の設定なしにパッシブにカタログ化するようになりました。サードパーティのツール、コマンド、クリックの必要がありません。</p>
+	<p>クローズドベータへの早期アクセスに<a href="https://www.cloudflare.com/zero-trust/lp/private-network-discovery" target="_blank">サインアップ</a>すれば、今すぐネットワークを可視化することができます。また、今後一般公開される予定の製品についても、引き続きご覧ください。</p>
+	<p><a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trust</a>への移行で特に手間がかかることの1つは、現在ネットワーク内で有効なセキュリティポリシーを複製する作業です。たとえ環境のポイントインタイムを理解していても、ネットワークは常に進化しており、新しいリソースがさまざまな操作に即して動的に変動していきます。その結果、アプリケーションを発見して保護するサイクルが常に繰り返され、セキュリティチームにとってデューディリジェンスのバックログが無限に増えることになります。</p>
+	<p>そこで、当社はPrivate Network Discoveryを開発しました。Private Network Discoveryを利用することで、企業はネットワーク上に存在するユーザーやアプリケーションの完全な可視性を、さらなる労力をかけることなく容易に得ることができます。お客様のプライベートネットワークをCloudflareに接続するだけで、ネットワーク上で発見したあらゆる固有トラフィックをCloudflare Accessのアプリケーションにシームレスに変換して表示します。</p>
+	<h3 id="cloudflare-">Cloudflareでプライベートネットワークを構築</h3>
+	<p>プライベートネットワークの構築には、インフラストラクチャ側とクライアント側の2つの主要な構成要素があります。</p>
+	<p>インフラストラクチャ側はCloudflareトンネルによって強化されており、お客様のインフラストラクチャ（単一のアプリケーション、多数のアプリケーション、ネットワークセグメント全体など）をCloudflareに接続するだけです。これは、お客様の環境でシンプルなコマンドラインデーモンを実行し、Cloudflareへの複数の安全な、送信専用のリンクを確立することで可能となります。簡単に言うと、トンネルとはお客様のネットワークとCloudflareを接続するものです。</p>
+	<p>この図の反対側では、エンドユーザーがCloudflareに、そしてより重要なことに、お客様のネットワークに簡単に接続できる必要があります。この接続は、当社の堅牢なデバイスエージェントであるCloudflare WARPによって処理されます。このエージェントは、社内のMDMツールを使ってわずか数分で組織全体に展開でき、ユーザーのデバイスからCloudflareネットワークへのセキュアな接続を確立することが可能です。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/image2-29.png" class="kg-image" alt="Building a private network on Cloudflare"></figure>
+	<p>お客様のインフラストラクチャとユーザーがCloudflareに接続すると、アプリケーションとレイヤーをZero Trustセキュリティ制御にタグ付けし、ネットワーク上のリクエストごとにIDとデバイス中心のルールの両方を検証することが容易になります。</p>
+	<h3 id="-">仕組み</h3>
+	<p>先に述べたように、この機能はRFC 1918またはRFC 4193のアドレス空間宛の固有トラフィックをパッシブにカタログ化することで、お客様のチームがネットワークを可視化できるように構築されています。設計上、このツールは可観測モードで動作し、すべてのアプリケーションが表示されますが、基本状態は「未レビュー」の状態であるタグ付けがされています。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/image3-21.png" class="kg-image" alt="Generating the Private Network Discovery Report"></figure>
+	<p>Network Discoveryツールは、ネットワーク内のすべての起点（固有のIPアドレス、ポート、プロトコルとして定義される）を表示します。任意のオリジンの詳細を確認し、そのオリジンへのアクセスを制御するためにCloudflare Accessアプリケーションを作成することができます。また、Accessアプリケーションは複数のオリジンで構成されることがあることも知っていていただけたらと思います。</p>
+	<p>民間のテレビ会議サービス「Jitsi」を例に考えてみましょう。Jistsiを例に挙げたのは、当社のチームが実際にこのサービスを使用して、新機能を本番環境に投入する前にテストしているからです。今回、Jitsiのセルフホスト型のインスタンスが10.0.0.1:443に存在することが分かっているとしましょう。ただし、ビデオ会議アプリケーションなので、tcp:10.0.0.1:443 と udp:10.0.0.1:10000 の両方で通信しています。ここでは1つのオリジンを選択し、アプリケーション名を割り当てることになります。</p>
+	<p>なお、クローズドベータ期間中は、Cloudflare Accessのアプリケーション表でこのアプリケーションを確認することはできません。現段階において、これらのアプリケーション名は、Private Network Discoveryレポートの検出されたオリジンテーブルにのみ反映されます。これらは、Application名の列にのみ反映されます。しかし、この機能が一般に利用可能になると、Zero Trust&gt; Access&gt; Applicationsで作成したすべてのアプリケーションも表示されるようになります。</p>
+	<p>アプリケーション名を割り当て、最初のオリジンである tcp:10.0.0.1:443を追加したら、同じパターンでもう1つのオリジンであるudp:10.0.0.1:10000も追加できます。これにより、オリジンのロジカルなグループ分けを行い、ネットワーク上のリソースをより正確に表現することができます。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/image1-29.png" class="kg-image" alt="Access Analytics: Private Network Discovery Report"></figure>
+	<p>アプリケーションを作成することで、Network Discoveryツールは、これらの個々の起源のステータスを 「未レビュー」から「レビュー中」に自動的に更新します。これにより、チームはオリジンの状態を容易に把握することができます。そこからさらに掘り下げて、特定のオリジンにアクセスした固有ユーザー数や、各ユーザーが行ったリクエストの合計数を確認することができます。これにより、アイデンティティとデバイス主導のZero Trustポリシーの作成に必要な情報をチームに提供することができます。アプリケーションの使用に問題がないとチームが判断したら、アプリケーションのステータスを「承認」または「未承認」のいずれかに手動で更新することができます。</p>
+	<h3 id="--1">次は何を？</h3>
+	<p>クローズドベータの開始は、ほんの始まりに過ぎません。クローズドベータのリリースでは、プライベートネットワーク・アプリケーションにフレンドリ名の作成をサポートしていますが、現在Cloudflare Zero Trustポリシービルダーに表示されません。</p>
+	<p>一般公開に向けて、Private Network Discoveryツールで表示された内容に基づいて、プライベートネットワークのセキュリティをより簡単な確保を最優先に考えています。今回の一般提供開始により、Private Network Discoveryレポートで直接Accessアプリケーションを作成したら、Cloudflare Accessでプライベートネットワーク・アプリケーションを参照し、それらのアプリケーションに対してZero Trustポリシーを作成する、という一連のワークフローが実現できます。</p>
+	<p>以上のように、当社はこのツールについて今後が楽しみになる計画を立てており、今後もPrivate Network Discoveryに注力していきます。クローズドベータの使用にご興味のある方は、<a href="https://www.cloudflare.com/zero-trust/lp/private-network-discovery" target="_blank">こちら</a>からサインアップして、早期のお試しをしていただけたら幸いです。</p>
+</div>

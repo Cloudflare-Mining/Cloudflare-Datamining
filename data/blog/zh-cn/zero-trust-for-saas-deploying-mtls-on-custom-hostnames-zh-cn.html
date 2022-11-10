@@ -1,0 +1,29 @@
+<div class="post-content lh-copy gray1">
+	<p>Cloudflare 拥有一个庞大的软件即服务 (SaaS) 客户群，他们管理着数千到数百万使用其 SaaS 服务的客户域名。我们通过 <a href="https://blog.cloudflare.com/zh-cn/cloudflare-for-saas-zh-cn/">Cloudflare for SaaS</a> 将我们的基础设施和服务扩展到其客户的域，帮助我们的 SaaS 供应商发展壮大。今天，我们隆重宣布将为我们的 SaaS 供应商提供一个新工具，帮他们的客户另外增加一个安全层：他们现可通过我们的 Access 产品在客户的域上启用双向 TLS 身份验证。</p>
+	<h3 id="-tls-">双向 TLS 基础知识</h3>
+	<p>连接到一个网站时，您应该可以在地址栏中看到一个锁的图标—表示您正通过安全连接连接到一个具备有效公共 TLS 证书的网站。TLS 证书使用公钥/私钥来加密并解密流量，以此确保互联网流量已加密。TLS 证书还提供身份验证，向客户证明他们正在连接到正确的服务器。</p>
+	<p>为了实现安全连接，需要发生 <a href="https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake/" target="_blank">TLS 握手</a>。握手过程中，客户和服务器交换加密密钥，客户验证服务器的身份，客户和服务器都会生成会话密钥，在之后用于给流量加密。</p>
+	<p>一次 TLS 握手过程大致如下：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-102.png" class="kg-image"></figure>
+	<p>在 TLS 握手过程中，客户端总是会验证服务器提供的证书，以确保向正确的目的地发送请求。就像客户需要验证服务器的身份，有时服务器也需要验证客户端的身份，以确保只有获得授权的客户端向服务器发送请求。</p>
+	<p>假设您正在管理多个服务：服务 A 将信息写入数据库。这个数据库至关重要，只应包含服务 A 提交的条目。现在，假设您的系统出现了一个错误，导致服务 B 意外对数据库进行了一次写操作，那该怎么办？</p>
+	<p>您需要有一样东西来检查服务是否获得了授权来调用数据库，就像保镖一样。保镖有一份 VIP 名单，可以对照名单检查客人的身份证，看客人是否可以进入。服务器可以使用类似的模式，以 TLS 证书作为身份证。</p>
+	<p>就像保镖有一个 VIP 名单，服务器可以有一个证书颁发机构 (CA) 根，从那里颁发证书。然后，从 CA 根颁发的证书会分配给客户。然后，这些客户证书可以用来识别和授权客户端。只要客户端出示有效的证书（即服务器可以对照根 CA 进行验证的证书），就可以发送请求。如果客户端没有出示客户端证书（不在 VIP 名单中）或出示未经授权的客户端证书，那么服务器可以选择拒绝请求。这个验证客户端和服务器证书的过程即<a href="https://www.cloudflare.com/learning/access-management/what-is-mutual-tls/" target="_blank">双向 TLS 身份验证 (mTLS)</a>，是在 TLS 握手过程中完成的。</p>
+	<p>没有使用 mTLS 时，只有服务器出示证书给客户端验证。使用 mTLS 时，客户端和服务器都要出示证书，并验证彼此的证书，如下图所示。</p>
+	<figure class="kg-card kg-image-card"><img src="https://lh6.googleusercontent.com/-jX-m0--vJzKCpz9UhlbWZNvl8hJDGoACckkNp0bAIdKGWk1Zr_k4R6gQqNBybVqbkkT8X9bopBZFsDa04iHJzkohQ4pMchvaEMV0secN2DR8pB4OX63Ysd-y6swZCzZG2_tjMAc" class="kg-image"></figure>
+	<h3 id="mtls-access-zero-trust">mTLS + Access = Zero Trust</h3>
+	<p>几年前，我们在我们的 <a href="https://developers.cloudflare.com/cloudflare-one/" target="_blank">Access</a> 产品中添加了 mTLS 支持，让客户查以在其应用程序上启用 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trust</a> 策略。Access 客户可以部署一个策略，规定所有客户端在提出请求时均必须出示有效证书。这意味着，如果没有有效证书（通常来自未经授权的客户端），请求将被阻止，相当于另外增加了一层保护。Cloudflare 支持客户通过设置访问策略，在其 Cloudflare 域上配置 mTLS。唯一需要注意的是，要使用此功能，您必须是这个域的所有者。现在，如果您不是这个域的所有者，但要管理这个域的源站，该怎么办？我们有大量客户都是这种情况：SaaS 提供商将其服务扩展到其客户的域——这些域并非 SaaS 提供商所有。</p>
+	<h3 id="-saas-cloudflare-">通过 SaaS 提供商扩展 Cloudflare 的优势</h3>
+	<p><a href="https://blog.cloudflare.com/zh-cn/cloudflare-for-saas-zh-cn/">Cloudflare for SaaS</a> 让 SaaS 提供商能够将 Cloudflare 网络的优势扩展到其客户的域中。这些域并非 SaaS 提供商所有，但它们确实使用了 SaaS 提供商的服务，将流量路由回 SaaS 提供商的源站。</p>
+	<p>通过这种做法，SaaS 提供商可为其客户提供最多的正常运行时间、闪电般的速度性能和无与伦比的安全性——他们可以通过 Cloudflare 轻松为客户提供这些服务。</p>
+	<p>Cloudflare for SaaS 其实一开始是叫 <a href="https://blog.cloudflare.com/introducing-ssl-for-saas/">SSL for SaaS</a>。我们构建了 SSL for SaaS，让 SaaS 提供商有能力为其客户颁发 TLS 证书，从而让 SaaS 提供商的客户安全无虞。</p>
+	<p>从那时起，我们的 SaaS 客户向我们提出了一个新要求：将我们为直接客户构建的 mTLS 支持扩展到他们的客户。</p>
+	<h3 id="saas-mtls-">SaaS 提供商为何要使用 mTLS？</h3>
+	<p>作为一家 SaaS 提供商，您可以提供一系列广泛的服务。其中有些服务的安全控制要求比其他服务要高一些。</p>
+	<p>假设您正在构建的 SaaS 解决方案是一个支付处理器。每位客户都有自己的 API 端点，其用户向他们发送请求，例如：<em>pay.&lt;business_name&gt;.com</em>。作为支付处理器，您不希望任何客户端或设备向您的服务发送请求，而只希望由授权设备来发送——mTLS 正是如此。</p>
+	<p>作为 SaaS 提供商，您可以为每位客户的 API 端点配置一个根 CA。然后，让每个根 CA 颁发客户端证书，将证书安装在授权设备上。安装好客户端证书后，就只需要检查有效证书了。</p>
+	<p>简而言之，作为一家 SaaS 提供商，通过这种做法，您的客户现在可以确保绑定到其支付处理 API 端点的请求只来自有效设备。此外，通过为每位客户部署单独的根 CA，您还可以防止授权向某客户的 API 端点发送请求的客户端未经授权向另一客户的 API 端点发送请求。</p>
+	<h3 id="-cloudflare-">如何使用 Cloudflare 进行设置？</h3>
+	<p>SaaS 提供商的设置如下。<a href="https://developers.cloudflare.com/ssl/ssl-for-saas/getting-started" target="_blank">配置 Cloudflare for SaaS</a>，并将您客户的域添加为自定义主机名。然后，在 Cloudflare for Teams 仪表板中，<a href="https://developers.cloudflare.com/cloudflare-one/identity/devices/mutual-tls-authentication/#add-mtls-authentication-to-your-access-configuration" target="_blank">添加 mTLS 身份验证</a>，只需点击几下即可完成。</p>
+	<p>该功能目前处于测试阶段，可供企业客户使用。如有任何反馈，请告知您的客户团队。</p>
+</div>
