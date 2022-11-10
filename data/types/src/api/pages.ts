@@ -261,3 +261,11 @@ export type FunctionsUsageModel = TypeFromEnumerable<
 export const AccountSettingsResult = eg.object({
   default_usage_model: eg.string
 });
+
+export const PagesTail = eg.object({
+  id: eg.string,
+  url: eg.string,
+  expires_at: eg.string.optional
+});
+
+export type PagesTailResult = TypeFromCodec<typeof PagesTail>;
