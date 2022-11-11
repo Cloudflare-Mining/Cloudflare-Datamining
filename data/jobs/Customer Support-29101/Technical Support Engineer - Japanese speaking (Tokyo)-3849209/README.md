@@ -32,7 +32,7 @@
 <div data-slate-object="block" data-key="14">&nbsp;</div>
 <div data-slate-object="block" data-key="17"><span data-slate-object="text" data-key="15">Term of employment -&nbsp;</span><span data-slate-object="text" data-key="16">Indefinite</span></div>
 <div data-slate-object="block" data-key="20"><span data-slate-object="text" data-key="18">Probation period -</span><span data-slate-object="text" data-key="19">&nbsp; 6 months</span></div>
-<div data-slate-object="block" data-key="22"><span data-slate-object="text" data-key="21">Place of employment - 3-1-6 Motoazabu, Minato-ku, Tokyo, Japan, 106-0046</span></div>
+<div data-slate-object="block" data-key="22"><span data-slate-object="text" data-key="21">Place of employment - 1-6-5 Marunouchi, Chiyoda-ku, Tokyo, Japan, 100-0005</span></div>
 <div data-slate-object="block" data-key="25"><span data-slate-object="text" data-key="23">Working hours -&nbsp;</span><span data-slate-object="text" data-key="24">9am to 6pm</span></div>
 <div data-slate-object="block" data-key="28"><span data-slate-object="text" data-key="26">Rest period -</span><span data-slate-object="text" data-key="27">&nbsp;Noon to 1pm</span></div>
 <div data-slate-object="block" data-key="31"><span data-slate-object="text" data-key="29">Holidays -&nbsp;</span><span data-slate-object="text" data-key="30">Saturday, Sunday and National Holidays</span></div>
