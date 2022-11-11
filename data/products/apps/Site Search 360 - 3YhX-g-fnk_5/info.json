@@ -3566,10 +3566,249 @@
 				},
 				"created": "2017-09-06T13:01:56.609462Z"
 			},
-			"moderationStatus": "pending",
+			"moderationStatus": "canceled",
 			"moderationMetadata": {
 				"requestedByUserId": "2b888bbc0904d1f8de46ae9d86908a44",
 				"requestedAt": "2022-10-10T10:03:44.695299522Z",
+				"canceledByUserId": "2b888bbc0904d1f8de46ae9d86908a44",
+				"canceledAt": "2022-11-11T16:46:58.28266901Z",
+				"reviewedAt": null
+			}
+		},
+		{
+			"tag": "2.0.3",
+			"appId": "3YhX-g-fnk_5",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						},
+						{
+							"type": "script",
+							"src": "./source/postConfig.js"
+						}
+					],
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/config.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"positioning": {
+							"order": 0,
+							"properties": {
+								"location": {
+									"default": {
+										"method": "prepend",
+										"selector": "body"
+									},
+									"description": "Where do you want your search box?",
+									"format": "element",
+									"order": 0,
+									"title": "Search Box Location",
+									"type": "object"
+								}
+							},
+							"title": "Positioning",
+							"type": "object"
+						},
+						"searchBoxStyle": {
+							"order": 1,
+							"properties": {
+								"accentColor": {
+									"default": "#3d8fff",
+									"format": "color",
+									"order": 2,
+									"title": "Accent Color",
+									"type": "string"
+								},
+								"placeholder": {
+									"default": "Search...",
+									"description": "The placeholder to show in the search box.",
+									"title": "Placeholder",
+									"type": "string"
+								},
+								"themeColor": {
+									"default": "#4a4f62",
+									"format": "color",
+									"order": 3,
+									"title": "Theme Color",
+									"type": "string"
+								},
+								"type": {
+									"default": "layover",
+									"enum": [
+										"layover",
+										"fullscreen"
+									],
+									"enumNames": {
+										"fullscreen": "Fullscreen",
+										"layover": "Search Layover"
+									},
+									"format": "radios",
+									"order": 1,
+									"title": "Pick a search style",
+									"type": "string"
+								}
+							},
+							"title": "Style",
+							"type": "object"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://api.sitesearch360.com/users/cloudflarewebhook",
+						"events": [
+							"preview",
+							"before-new-install",
+							"delete-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with Site Search 360."
+						},
+						"authenticate": []
+					},
+					{
+						"action": "reset-schema",
+						"events": [
+							"account-logout"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				]
+			},
+			"releaseNotes": "Updated plan and features information.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/8iDs6J7IorGx",
+			"created": "2022-11-11T16:46:22.727237Z",
+			"proposedApp": {
+				"id": "3YhX-g-fnk_5",
+				"title": "Site Search 360",
+				"shortDescription": "Add a powerful search bar to your site.",
+				"longDescription": "Site Search 360 is an easy-to-integrate but powerful search bar for your website.\n\n1-minute product overview: https://youtu.be/yZoYy-JBIh8\n\nSite Search 360 features:\n\n- Site-wide content indexing with an option to include multiple domains and sub-domains\n- Full control over your search and indexing settings\n- Built-in result manager: re-order and pin the best results, re-write, re-direct, create custom banners\n- Result groups, facets, and filters\n- Popular and recent search suggestions\n- Full dictionary support in 19 languages\n- Unlimited custom synonyms and enrichments\n- Internal search insights and external tracking with Google Analytics and Google Tag Manager\n- Highly customizable look and feel via custom CSS, API, or our interactive Search Designer\n\nThe types of content we can index and make searchable:\n- HTML pages\n- JS-rendered content\n- FAQs\n- full-text document indexing: PDF, DOC, XLS, PPT\n- YouTube videos\n- Password-protected page crawling\n\nTo manage your crawler settings, use the credentials sent to you by email to log in to your control panel:\nhttps://app.sitesearch360.com/login",
+				"instructions": "Add the Site Search 360 search bar by dragging and dropping it to your site template.\n\nYou can also check our getting-started guide: https://www.sitesearch360.com/getting-started/ or reach out to us at cf-support@sitesearch360.com and we'll help you get up and running!",
+				"alias": "site-search-360",
+				"orgId": "09ac602e2c6ecc5eab44297deef44808",
+				"icon": "https://images.cloudflareapps.com/UGsAcJHu3QAX/site-search-360-logo-big-square-new.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/3h6mP7YcRxJp/search-suggestions-structured.png",
+					"https://images.cloudflareapps.com/ajvpq7kuDf3X/image2-ss360-filters-retina.png",
+					"https://images.cloudflareapps.com/S_hemcrkw5jI/ss360-cloudflare-setup.png",
+					"https://images.cloudflareapps.com/sDLhxD1pSpPv/screenshot-4.png",
+					"https://images.cloudflareapps.com/ERQlje2SNxkf/search-box-design.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/hSfgDk34l1u3/cloudflare-title.png",
+				"featuredAppImage": "",
+				"author": "Site Search 360",
+				"tagline": "",
+				"website": "https://www.sitesearch360.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.sitesearch360.com/terms/",
+				"privacyPolicyURL": "https://www.sitesearch360.com/privacy-policy/",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "cf-support@sitesearch360.com",
+				"products": [
+					{
+						"id": "free",
+						"title": "FREE",
+						"shortDescription": "For smaller, low traffic sites.",
+						"longDescription": "* 150 pages indexed\n* 1,000 queries a month\n* One monthly recrawl\n* Sitemap support\n* Full dictionary support\n* Complete result control\n* Site Search 360 branding",
+						"visible": true,
+						"price": 0,
+						"order": 0,
+						"created": null
+					},
+					{
+						"id": "columbo2",
+						"title": "Columbo",
+						"shortDescription": "Fresher indices, PDF indexing, less branding, semantic search",
+						"longDescription": "* 1,500 pages indexed\n* 2,000 queries a month\n* Weekly recrawls\n* PDF indexing (5 pages / PDF)\n* Sitemap support\n* Semantic search\n* Full dictionary support\n* Complete result control\n* Site Search 360 branding only on result pages",
+						"visible": true,
+						"price": 900,
+						"order": 0,
+						"plan": "site_search_360_columbo",
+						"feature": "apps.site_search_360.columbo.enabled",
+						"created": null
+					},
+					{
+						"id": "holmes2",
+						"title": "Holmes",
+						"shortDescription": "API Access, no branding",
+						"longDescription": "* 3,000 pages indexed\n* 5,000 queries a month\n* Weekly recrawls\n* PDF indexing (10 pages / PDF)\n* E-Mail Support\n* Sitemap support\n* Semantic search\n* Full dictionary support\n* Complete result control\n* API Access\n* No Site Search 360 branding",
+						"visible": true,
+						"price": 4900,
+						"order": 0,
+						"plan": "site_search_360_holmes",
+						"feature": "apps.site_search_360.holmes.enabled",
+						"created": null
+					},
+					{
+						"id": "batman2",
+						"title": "Batman",
+						"shortDescription": "All the good stuff + help from our team whenever you need it.",
+						"longDescription": "* 5,000 pages indexed\n* 10,000 queries a month\n* Weekly recrawls\n* PDF indexing (50 pages / PDF)\n* Priority Support\n* Sitemap support\n* Semantic search\n* Full dictionary support\n* Complete result control\n* API Access\n* No Site Search 360 branding",
+						"visible": true,
+						"price": 11900,
+						"order": 0,
+						"plan": "site_search_360_batman",
+						"feature": "apps.site_search_360.batman.enabled",
+						"created": null
+					}
+				],
+				"categoryIds": [
+					"widgets-and-plugins",
+					"recommended-for-blogs",
+					"analytics"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "nVMNk4dKmLiw"
+				},
+				"created": "2017-09-06T13:01:56.609462Z"
+			},
+			"moderationStatus": "pending",
+			"moderationMetadata": {
+				"requestedByUserId": "2b888bbc0904d1f8de46ae9d86908a44",
+				"requestedAt": "2022-11-11T16:46:58.29299948Z",
 				"canceledAt": null,
 				"reviewedAt": null
 			}
