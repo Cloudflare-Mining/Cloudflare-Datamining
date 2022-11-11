@@ -2,7 +2,7 @@
 	<p>我们建立了 Cloudflare 的 Zero Trust 平台，让企业可以使用我们的网络安全连接其专用网络，同时提高性能，减少运营负担。从此，您可以建立一个单一的虚拟专用网络，但您连接的所有专用网络都必须是唯一可识别的。</p>
 	<p>我们很高兴地宣布，从今天起，您可以开始通过 Cloudflare Zero Trust 构建许多隔离的虚拟专用网络，首先是 Cloudflare WARP 和 Cloudflare Tunnel 连接器的虚拟化连接。</p>
 	<h3 id="-cloudflare-">通过 Cloudflare 连接您的专用网络</h3>
-	<p>考虑一个的团队情况：您在不同的专用网络上托管着各种服务，而员工也在访问这些资源。与以往相比，员工可能是漫游用户，可能远程办公，也可能确实在某间公司办公室。不管怎么样，您需要确保只有他们能访问您的专用服务。然后，您还希望对每个用户可以使用您的网络访问哪些内容进行细化控制。</p>
+	<p>考虑一个的团队情况：您在不同的专用网络上托管着各种服务，而员工也在访问这些资源。与以往相比，员工可能是漫游用户，可能远程办公，也可能确实在公司某间办公室。不管怎么样，您需要确保只有他们能访问您的专用服务。然后，您还希望对每个用户可以使用您的网络访问哪些内容进行细化控制。</p>
 	<p>在这方面，Cloudflare 可以助您一臂之力。我们向您提供我们的<a href="https://blog.cloudflare.com/private-networking/">高性能全球网络</a>，作为您的员工和专用服务之间的虚拟桥梁。在员工的设备中运行 <a href="https://blog.cloudflare.com/zh-cn/warp-for-desktop-zh-cn/">Cloudflare WARP</a>，他们的流量通过 Cloudflare 的网络流出。另一方面，您的专用服务在 <a href="https://blog.cloudflare.com/highly-available-and-highly-scalable-cloudflare-tunnels/">Cloudflare Tunnel</a> 后面，只能通过 Cloudflare 的网络访问。这些连接器从端到端共同保护您的虚拟专用网络。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/942-1.png" class="kg-image" alt="Architecture depicting client applications accessing private origins behind cloudflared Tunnel through our Cloudflare Global Network with Zero Trust."></figure>
 	<p>这种设置的优点是，您的流量立即变得更快<strong>且</strong>更安全。但您还可以更进一步，利用 Cloudflare 许多服务中的价值，为您的<a href="https://blog.cloudflare.com/private-networking/">专用网络路由流量</a>，例如：审计、精细过滤、数据丢失防护、恶意软件检测、安全浏览等。</p>
@@ -52,5 +52,5 @@ Successfully added route for 10.1.0.0/16 over tunnel 150ef29f-2fb0-43f8-b56f-de0
 	<p>如果您的专用基础设施中没有重叠的 IP，就不需要采取任何措施。</p>
 	<h2 id="--2">下一步</h2>
 	<p>这只是我们在 Cloudflare 支持唯一虚拟网络的第一步。您可能已经知道，上周我们宣布可以直接从 Zero Trust 仪表板创建、部署和管理 Cloudflare Tunnel。但现在还只能通过 cloudflared CLI 支持虚拟网络，我们正在努力将虚拟网络管理也集成到仪表板中。</p>
-	<p>下一步，我们将让 Cloudflare Gateway 了解这些虚拟网络，以便将 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trust 政策</a>应用于这些重叠的 IP 范围。一旦 Gateway 了解了这些虚拟网络，我们还将通过网络日志来呈现这一概念，以便审计和故障排除功能更进一步。</p>
+	<p>下一步，我们将让 Cloudflare Gateway 了解这些虚拟网络，以便将 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trust 政策</a>应用于这些重叠的 IP 范围。一旦 Gateway 了解了这些虚拟网络，我们还将通过网络日志来呈现这一概念，进一步完善审计和故障排除功能。</p>
 </div>

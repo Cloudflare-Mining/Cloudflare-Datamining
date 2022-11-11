@@ -12,7 +12,7 @@
 	<p>没有使用 mTLS 时，只有服务器出示证书给客户端验证。使用 mTLS 时，客户端和服务器都要出示证书，并验证彼此的证书，如下图所示。</p>
 	<figure class="kg-card kg-image-card"><img src="https://lh6.googleusercontent.com/-jX-m0--vJzKCpz9UhlbWZNvl8hJDGoACckkNp0bAIdKGWk1Zr_k4R6gQqNBybVqbkkT8X9bopBZFsDa04iHJzkohQ4pMchvaEMV0secN2DR8pB4OX63Ysd-y6swZCzZG2_tjMAc" class="kg-image"></figure>
 	<h3 id="mtls-access-zero-trust">mTLS + Access = Zero Trust</h3>
-	<p>几年前，我们在我们的 <a href="https://developers.cloudflare.com/cloudflare-one/" target="_blank">Access</a> 产品中添加了 mTLS 支持，让客户查以在其应用程序上启用 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trust</a> 策略。Access 客户可以部署一个策略，规定所有客户端在提出请求时均必须出示有效证书。这意味着，如果没有有效证书（通常来自未经授权的客户端），请求将被阻止，相当于另外增加了一层保护。Cloudflare 支持客户通过设置访问策略，在其 Cloudflare 域上配置 mTLS。唯一需要注意的是，要使用此功能，您必须是这个域的所有者。现在，如果您不是这个域的所有者，但要管理这个域的源站，该怎么办？我们有大量客户都是这种情况：SaaS 提供商将其服务扩展到其客户的域——这些域并非 SaaS 提供商所有。</p>
+	<p>几年前，我们在我们的 <a href="https://developers.cloudflare.com/cloudflare-one/" target="_blank">Access</a> 产品中添加了 mTLS 支持，让客户可以在其应用程序上启用 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trust</a> 策略。Access 客户可以部署一个策略，规定所有客户端在提出请求时均必须出示有效证书。这意味着，如果没有有效证书（通常来自未经授权的客户端），请求将被阻止，相当于另外增加了一层保护。Cloudflare 支持客户通过设置访问策略，在其 Cloudflare 域上配置 mTLS。唯一需要注意的是，要使用此功能，您必须是这个域的所有者。现在，如果您不是这个域的所有者，但要管理这个域的源站，该怎么办？我们有大量客户都是这种情况：SaaS 提供商将其服务扩展到其客户的域——这些域并非 SaaS 提供商所有。</p>
 	<h3 id="-saas-cloudflare-">通过 SaaS 提供商扩展 Cloudflare 的优势</h3>
 	<p><a href="https://blog.cloudflare.com/zh-cn/cloudflare-for-saas-zh-cn/">Cloudflare for SaaS</a> 让 SaaS 提供商能够将 Cloudflare 网络的优势扩展到其客户的域中。这些域并非 SaaS 提供商所有，但它们确实使用了 SaaS 提供商的服务，将流量路由回 SaaS 提供商的源站。</p>
 	<p>通过这种做法，SaaS 提供商可为其客户提供最多的正常运行时间、闪电般的速度性能和无与伦比的安全性——他们可以通过 Cloudflare 轻松为客户提供这些服务。</p>
