@@ -6,5 +6,8 @@
 	"/[id]/workers/queues/purchase",
 	"/[id]/workers/queues/verify-email",
 	"/accounts/[id]/workers/queues",
-	"/accounts/[id]/workers/queues/[id]/*"
+	"/accounts/[id]/workers/queues/[id]/*",
+	"/accounts/[id]/workers/queues/[id]/consumers",
+	"/accounts/[id]/workers/queues/[id]/consumers/[id]/*",
+	"/accounts/[id]/workers/queues/[id]/consumers/[id]/environments/[id]/*"
 ]
