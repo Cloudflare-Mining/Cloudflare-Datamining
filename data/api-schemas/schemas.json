@@ -47281,7 +47281,13 @@
 					{
 						"api_token": []
 					}
-				]
+				],
+				"deprecated": true,
+				"x-cfDeprecation": {
+					"id": "worker_script_deprecation",
+					"description": "This endpoint and its related APIs are deprecated in favor of the `/accounts` equivalent APIs. These APIs are for use with the previously limited single-script zones.",
+					"display": true
+				}
 			},
 			"delete": {
 				"summary": "Delete Worker",
@@ -47313,6 +47319,10 @@
 						"api_token": []
 					}
 				],
+				"deprecated": true,
+				"x-cfDeprecation": {
+					"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1workers~1script/get/x-cfDeprecation"
+				},
 				"requestBody": {
 					"required": true,
 					"content": {
@@ -47365,6 +47375,10 @@
 						"api_token": []
 					}
 				],
+				"deprecated": true,
+				"x-cfDeprecation": {
+					"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1workers~1script/get/x-cfDeprecation"
+				},
 				"requestBody": {
 					"required": true,
 					"content": {
@@ -47478,7 +47492,13 @@
 					{
 						"api_token": []
 					}
-				]
+				],
+				"deprecated": true,
+				"x-cfDeprecation": {
+					"id": "worker_binding_deprecation",
+					"description": "This endpoint and its related APIs are deprecated in favor of the `/accounts` equivalent APIs. These APIs are for use with the previously limited single-script zones.",
+					"display": true
+				}
 			}
 		},
 		"/zones/{zone_id}/workers/filters": {
@@ -47527,6 +47547,13 @@
 															"pattern",
 															"enabled"
 														],
+														"x-cfDeprecations": {
+															"worker_filter_deprecation": {
+																"id": "worker_filter_deprecation",
+																"description": "This endpoint and its related APIs are deprecated in favor of the `/routes` equivalent APIs. These APIs are for use with the previously limited single-script zones.",
+																"display": true
+															}
+														},
 														"x-cfLinkErrors": {
 															"10001": "Unsupported or unexpected Content Type",
 															"10002": "Unexpected internal server error",
@@ -47558,7 +47585,13 @@
 					{
 						"api_token": []
 					}
-				]
+				],
+				"deprecated": true,
+				"x-cfDeprecation": {
+					"id": "worker_filter_deprecation",
+					"description": "This endpoint and its related APIs are deprecated in favor of the `/routes` equivalent APIs. These APIs are for use with the previously limited single-script zones.",
+					"display": true
+				}
 			},
 			"post": {
 				"summary": "Create Filter",
@@ -47593,6 +47626,10 @@
 						"api_token": []
 					}
 				],
+				"deprecated": true,
+				"x-cfDeprecation": {
+					"$ref": "#/paths/~1zones~1%7Bzone_id%7D~1workers~1filters/get/x-cfDeprecation"
+				},
 				"requestBody": {
 					"required": true,
 					"content": {
@@ -47671,6 +47708,13 @@
 														"pattern",
 														"enabled"
 													],
+													"x-cfDeprecations": {
+														"worker_filter_deprecation": {
+															"id": "worker_filter_deprecation",
+															"description": "This endpoint and its related APIs are deprecated in favor of the `/routes` equivalent APIs. These APIs are for use with the previously limited single-script zones.",
+															"display": true
+														}
+													},
 													"x-cfLinkErrors": {
 														"10001": "Unsupported or unexpected Content Type",
 														"10002": "Unexpected internal server error",
@@ -47702,6 +47746,12 @@
 						"api_token": []
 					}
 				],
+				"deprecated": true,
+				"x-cfDeprecation": {
+					"id": "worker_filter_deprecation",
+					"description": "This endpoint and its related APIs are deprecated in favor of the `/routes` equivalent APIs. These APIs are for use with the previously limited single-script zones.",
+					"display": true
+				},
 				"requestBody": {
 					"required": true,
 					"content": {
@@ -47769,6 +47819,10 @@
 						"api_token": []
 					}
 				],
+				"deprecated": true,
+				"x-cfDeprecation": {
+					"$ref": "#/paths/~1zones~1%7Bzone_id%7D~1workers~1filters~1%7Bfilter_id%7D/put/x-cfDeprecation"
+				},
 				"requestBody": {
 					"required": true,
 					"content": {
