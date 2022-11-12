@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/workerd-darwin-64",
 	"dist-tags": {
-		"latest": "1.20221111.3"
+		"latest": "1.20221111.4"
 	},
 	"versions": {
 		"1.20220926.0": {
@@ -125,6 +125,27 @@
 					}
 				],
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjbu+9ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrsXBAAnGGc/XYCuo4Ui87KqIfif1J78K7bH7oz4/BSNxCyP6fDYGM7\r\nd32XmjEvdbpvrjSaUaH6NNFCGQVxdW2J5tSUIHGof0XRhryRCYw1dt0TYKlk\r\ngcv4MFNeE+Lr3xPe0UdwtdI73MUr0z0WxAoCdrsCgDxOIGKXdbmeRvoqax4u\r\nedR0wmjswOwy5sedg56ZkNqDhIEvOTaH5raScnL6n76yninPRGQbgmolNct6\r\n044nQp5W7A25Kokc8yC47rVOEwUdZDIvMfSv9ii5UukZ5+gqeFohZPTIjLfT\r\ns5YMc9fBCMgPotZJzr2MicAIXLPYxBc1QmB0vv+/aC3oy8F5hT1eWrHPBr1K\r\niRDpRdG36u4ltTCvkcQlvMAVLCQ/f3MUZ0EPPzIdjQDTUTcvBvqa51i9H/jK\r\nw6Z7H+DXOwdKZOgXgloFShdRGvY8cVhjUfdi9B9xG2cO6EF5tMwiX+GahdW0\r\nYGH9oba5oyfMqi6frT6TB2GmE7iuqhq+VkNumm9I3EMWfGQcARDET98uRVWH\r\nhNJkG3KaCj6CHZoyDif1n92KphFwhFX3k4rwouDfqhD4MCOH9daBeT3eQrmV\r\n1Mi+DK4fDmpGrKhSuz3+a//go4y4u9ujB1kGN78yAHWEqfKgYGTolTCchE7C\r\nCYk1Mo4mWcRIYfzab9hoGvJykg2Z/Q4+ZW0=\r\n=pkxz\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=16"
+			}
+		},
+		"1.20221111.4": {
+			"name": "@cloudflare/workerd-darwin-64",
+			"version": "1.20221111.4",
+			"dist": {
+				"integrity": "sha512-Qkkw5B593BDAlsonyGSGHgFb00/MNGPP0yztTZmRs7mp+L1/1Tm+DFgzMUv3orFXomJrUO2PpKfH/GmTd9wcCQ==",
+				"shasum": "b4b9c2cbd0075d6ba87d5fdcd1112600d0b39bb4",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workerd-darwin-64/-/workerd-darwin-64-1.20221111.4.tgz",
+				"fileCount": 3,
+				"unpackedSize": 88135207,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIHe11wfavtZsbSup9Y9/EuDFfoicpCc69CUrkxzTWgU7AiEA7Fq3nfFCMLaKJeY+9YxcsyW0S/mTVP9uigMw+tCyKnc="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjbwLIACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqA+Q/+OWS039C4rhziYKyYxrvzmpoOFnlqC8ioiqv4QlrSdX4X8T4c\r\nj3Q7SgIslhF1CtxcJCmyEwWqmLUeVnMoBmwJz9jJGzKN/hjpM2aL0aKgJ0Hl\r\nCfG5IvD8CKikPLGLm+nikMVWvsfkdDmrFpThR6iEu1YBKbzXK658YghdhVw9\r\nVRtaytpF7n2SW7RTVuaVyZcZ1F1v4dnUIbdQO1z6BO7vcRWMzX5d8TJvgVwY\r\n6c/Rlf9GjUA0OqtMnroAFyznY6rSt4/3x7hT7TsFnI/eXmjO7U4eZOPIpaO3\r\nPNL+SMdDdsQzVWaR5wDZN1Uc37cKEmyjNxInE99FyMI+6y0qScJ8walovqd0\r\nxxxYYCTo7JinRkpOEZswgu4P3klvAw2oHePvMChOPSene4afsiDQ1RzKvzhn\r\n748vfpLv1P/kZniTe4kU3W6267yyrK3cYERr3ILf+IOso0p/ONovvWdAkTnE\r\nwztvEKB7iakKidxOcufz/pyLJzH5XVxHNx+4w0UVeqjnvDhphQCD0fBIJDx3\r\nlOW1y7eAlvAA/rgLLVNklCy6ksueWVAkylaos03i2mHWRAu++xhTOY5cmCIF\r\nGPv8iQyvhWLUGGBL524/nehtdT+qpCPi0iRYC8SVWN0L81rt1vrX/Bkz/QNn\r\ncYwyN+5fOmFOA2V8s9JcmM2ZKNcV4ZUj0k4=\r\n=AWKw\r\n-----END PGP SIGNATURE-----\r\n"
 			},
 			"engines": {
 				"node": ">=16"
