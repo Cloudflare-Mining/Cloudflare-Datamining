@@ -32,6 +32,7 @@
 <p><strong>Requirements</strong></p>
 <ul>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">6+ years of related work experience is required</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with SaaS and subscription products as well as an understanding of best practices for enterprise B2B selling models</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Thrive and excel working within a fast pace, active environment and can handle the ever-changing needs of many internal and external customers globally</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Demonstrated ability to influence stakeholders while navigating complex decision points and driving engagement on multiple projects simultaneously</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Curiosity and desire to learn our business and pricing functions</span></li>
