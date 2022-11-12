@@ -6,12 +6,16 @@ import tailwind from "@astrojs/tailwind";
 import react from "@astrojs/react";
 
 // https://astro.build/config
+import sitemap from "@astrojs/sitemap";
+
+// https://astro.build/config
 export default defineConfig({
 	site: 'https://cfdata.lol',
 	integrations: [
 		tailwind(),
+		sitemap(),
 		robotsTxt({
-			sitemap: false,
+			sitemap: true,
 			policy: [{
 				userAgent: '*',
 				allow: '/',
