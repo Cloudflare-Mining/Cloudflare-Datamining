@@ -12,7 +12,7 @@ import cssProperties from 'known-css-properties';
 import {tryAndPush, beautify, getHttpsAgent, sortObjectByKeys} from './utils.js';
 
 const mainScript = /(main\.bundle\.[\da-z]+\.js)/;
-const staticDashURL = 'https://dash.teams.cloudflare.com/';
+const staticDashURL = 'https://one.dash.cloudflare.com/';
 
 const agent = getHttpsAgent();
 
