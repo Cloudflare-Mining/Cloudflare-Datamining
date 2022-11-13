@@ -8,6 +8,7 @@
 		<li><a href="#error1003">Error 1002: Restricted</a></li>
 		<li><a href="#error1003">Error 1003 Access Denied: Direct IP Access Not Allowed</a></li>
 		<li><a href="#error1004">Error 1004: Host Not Configured to Serve Web Traffic</a></li>
+		<li><a href="#error1005">Errors 1005 Access Denied: Autonomous System Number (ASN) banned</a></li>
 		<li><a href="#error100610071008">Errors 1006, 1007, 1008 or 1106 Access Denied: Your IP address has been banned</a></li>
 		<li><a href="#h_1FIuVf9XCVpeBz8Cn6B0Fj">Errors 1009 Access Denied: Country or region banned</a></li>
 		<li><a href="#error1010">Error 1010: The owner of this website has banned your access based on your browser's signature</a></li>
@@ -135,6 +136,13 @@
 <h3>Resolution</h3>
 <p>If the issue persists beyond 5 minutes, <a href="https://support.cloudflare.com/hc/articles/200172476">contact Cloudflare Support</a>.</p>
 <hr>
+<h2 id="error1005">Errors 1005 Access Denied: Autonomous System Number (ASN) banned</h2>
+<h3>Common causes</h3>
+<p>The owner of the website (e.g. example.com) has banned the autonomous system number (ASN) from accessing the website.</p>
+<h3>Resolution</h3>
+<p>Ensure the ASN is allowed under the <a href="https://support.cloudflare.com/hc/en-us/articles/217074967-Configuring-IP-Access-Rules">IP Access Rules</a> security feature.
+</p>
+<hr>
 <h2 id="error100610071008">Errors 1006, 1007, 1008 or 1106 Access Denied: Your IP address has been banned</h2>
 <h3>Common causes</h3>
 <p>A Cloudflare customer blocked traffic from your client or browser.</p>
@@ -146,7 +154,7 @@
 <hr>
 <h2 id="h_1FIuVf9XCVpeBz8Cn6B0Fj">Errors 1009 Access Denied: Country or region banned</h2>
 <h3>Common causes</h3>
-<p>The owner of the website (e.g. example.com) has banned the country or region your IP address in from accessing the website.</p>
+<p>The owner of the website (e.g. example.com) has banned the country or region your IP address from accessing the website.</p>
 <h3>Resolution</h3>
 <p>Ensure your IP address is allowed under the <a href="https://support.cloudflare.com/hc/en-us/articles/217074967-Configuring-IP-Access-Rules">IP Access Rules</a> security feature.</p>
 <hr>
