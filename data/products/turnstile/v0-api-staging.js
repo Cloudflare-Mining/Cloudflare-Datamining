@@ -378,7 +378,7 @@
 	}
 
 	function ce() {
-		let e = /\/(challenge-api|turnstile)\/v0(\/.*)?\/api\.js/,
+		let e = /\/turnstile\/v0(\/.*)?\/api\.js/,
 			s = document.currentScript;
 		if (e.test(s.src)) return s;
 		let a = document.getElementsByTagName("script");
