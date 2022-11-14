@@ -118,7 +118,7 @@ const navigation = {
 		iconType: "applications",
 		labels: ["beta"],
 		hasPermission: function(w) {
-			return m(w) && (0, E.dU)(w)
+			return m(w) && (0, D.dU)(w)
 		}
 	}, {
 		title: "navigation.account.calls",
@@ -420,7 +420,7 @@ const navigation = {
 			url: "/audit-log",
 			testId: "account-homepage-audit-logs",
 			hasPermission: function(w) {
-				return (0, D.b)(w) ? m(w) : (0, t.getPermission)(w)("auditlogs").read
+				return (0, E.b)(w) ? m(w) : (0, t.getPermission)(w)("auditlogs").read
 			}
 		}, {
 			title: "navigation.account.billing",
