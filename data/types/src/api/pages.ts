@@ -140,6 +140,17 @@ export const BucketBindingValue = eg.object({
   name: eg.string
 });
 
+export const ServiceBindingValue = eg.object({
+  service: eg.string,
+  environment: eg.string
+});
+
+export type ServiceBindingValue = TypeFromCodec<typeof ServiceBindingValue>;
+
+export const ServiceBindingMap = eg.record(eg.string, ServiceBindingValue);
+
+export type ServiceBindingMap = TypeFromCodec<typeof ServiceBindingMap>;
+
 export const DeploymentConfigEnv = eg.object({
   env_vars: EnvironmentVariableBindingMap.optional,
   kv_namespaces: eg.record(eg.string, NamespaceBindingValue).optional,
@@ -147,6 +158,7 @@ export const DeploymentConfigEnv = eg.object({
     .optional,
   d1_databases: eg.record(eg.string, DatabaseBindingValue).optional,
   r2_buckets: eg.record(eg.string, BucketBindingValue).optional,
+  services: ServiceBindingMap.optional,
 
   compatibility_date: eg.string.optional,
   compatibility_flags: eg.array(eg.string).optional,
