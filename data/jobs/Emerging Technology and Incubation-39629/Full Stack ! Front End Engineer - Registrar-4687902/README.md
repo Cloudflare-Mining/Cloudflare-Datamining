@@ -5,32 +5,30 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>What You’ll Do</strong></p>
-<p><span style="font-weight: 400;">You will lead a small, but growing regional team of legal professionals responsible for drafting, reviewing, and negotiating complex commercial contracts with Cloudflare’s customers and partners. In this role you will partner closely with our Sales, Security, Finance, and other business teams on commercial and data protection-related matters, while delivering practical and business-minded legal advice while supporting Sales teams located in EMEA. You will report to the Global Head of Commercial Transactions, who is based in the United States.</span></p>
-<p><span style="font-weight: 400;">This role is for someone who is a proactive self-starter and has a thirst for knowledge and continued growth, all while working as part of a great team. You must be intellectually curious, open-minded, adaptable, comfortable with ambiguity and risk, and excited by dynamic change.&nbsp;&nbsp;</span></p>
-<h4>&nbsp;</h4>
+<p><strong>About the Department</strong></p>
+<p><span style="font-weight: 400;">Cloudflare’s Engineering Team builds and runs the software that handles trillions of requests per month We also build and run the internal tools that builds and runs our software. The Engineering Team is split into two groups: one handles product development and the other handles operations. Product development covers both new features and functionality and scaling our existing software to meet the challenges of a massively growing customer base. The operations team handles one of the world’s largest networks with data centers in 200+ cities worldwide.</span></p>
+<p><strong>About the Team</strong></p>
+<p><span style="font-weight: 400;">Domain management is the foundation for any online presence and Cloudflare Registrar our answer to a simple and straightforward experience.&nbsp; The Registrar product manages the full lifecycle of the domains, including searching/registering for new domains and transferring/renewing existing ones.&nbsp; Onboarding domains on Cloudflare is the gateway to the vast array of Cloudflare services.</span></p>
+<p><strong>What you'll do</strong></p>
+<p><span style="font-weight: 400;">We are looking for a talented full stack engineer to be part of our Lisbon office. Come be part of the team and work with a group of passionate, talented engineers that will be creating innovative products. The amount of requests being processed is massive and we utilize all the latest technology to ensure its scalability and availability.</span></p>
+<p><span style="font-weight: 400;">As an engineer on the Registrar team, you will be responsible for building and maintaining the technologies and systems that comprise Registrar.</span></p>
+<ul>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Build user interfaces in TypeScript and React.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Build Worker UIs in JavaScript and TypeScript.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Review work from your peers throughout all stages of the development lifecycle.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Plan and lead engineering work on large projects.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Mentor team members to help bring out their best work.</span></li>
+</ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">15+ years PQE, with at least 2 years of experience working for an internationally recognized law firm and 2 years working as in-house legal counsel for a technology company (either on secondment or after leaving the law firm)</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">2+ years of experience managing attorneys or other legal professionals</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Admitted to practice law in US, UK, Germany or France</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Excellent written and oral communication skills and the ability to communicate and draft fluently in English</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Empathetic manager who is able to empower team members to achieve at a consistently high level while building trusted relationships</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Substantive experience in drafting and negotiating complex commercial agreements, including SaaS, licensing, consulting, joint development and reseller/distributor agreements&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong knowledge of key legal concepts and levers in negotiations</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to identify and explain non-standard terms and associated risks to relevant business stakeholders and interpret contract requirements, obligations and risk exposure and advise on same</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Solid understanding of local and international privacy and data protection laws</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to manage competing demands and deal with non-standard and often unstructured requests, at short notice</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to work in an international team, with attorneys and non-attorneys, to establish effective solutions efficiently and in an amenable manner</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Strategic thinker with a verifiable history of providing sound and practical advice</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to translate complex technical concepts into easy to grasp terms for non-techies</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to partner with internal stakeholders to deliver continuous improvement of Cloudflare’s legal processes, with an emphasis on efficiency and scalability</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">More than 3 years of experience building and managing high volume software applications with JavaScript and React.&nbsp; Typescript is a plus.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience building, deploying and operating full stack services.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You enjoy getting things done and have a bias for action: you're a builder and a creator and have worked in small teams that deliver results.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience managing or contributing to build systems for large JavaScript projects and have contributed to open-source JavaScript tools and frameworks&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong interpersonal and communication skills. Curiosity and empathy are coveted traits here!</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Deep understanding of the web and technologies such as web browsers, HTTP, JavaScript and WebAssembly.</span></li>
 </ul>
-<p><strong>Bonus Points:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong></p>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Fluency in German or French</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Substantive knowledge in regional privacy regimes</span></li>
-</ul>
+<p><span style="font-weight: 400;">&nbsp;</span></p>
 <p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
