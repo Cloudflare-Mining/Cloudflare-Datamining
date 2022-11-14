@@ -5,29 +5,41 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4>About the Role</h4>
-<p><span style="font-weight: 400;">We are looking for a mandarin speaking Technical Program Manager to focus on our international expansion into China. This role will involve close collaboration with the technical team of our China-based partner, as well as cross-functional collaboration across Cloudflare’s product, engineering, technical operations, and special project teams. This role offers an incredible opportunity to make a meaningful contribution to a high growth company in one of the world’s fastest-growing economies.</span></p>
-<h4>What you'll do</h4>
-<p><span style="font-weight: 400;">In this role, you will build close relationships with key stakeholders both internally and with our partners. You'll understand project priorities and ensure that all technical deliverables are met on a consistent basis. You will also manage the project roadmap and priorities, make tough tactical decisions and build trust with stakeholders by maintaining an understandable, accurate roadmap. You will need to triage bugs and issues that arise with efficacy and expediency and maintain alignment between all teams and stakeholders. A collaborative “can-do” attitude is essential to the job.</span></p>
+<p><strong>About the Department</strong></p>
+<p><span style="font-weight: 400;">Cloudflare’s Engineering Team builds and runs the software that handles trillions of requests per month We also build and run the internal tools that builds and runs our software. The Engineering Team is split into two groups: one handles product development and the other handles operations. Product development covers both new features and functionality and scaling our existing software to meet the challenges of a massively growing customer base. The operations team handles one of the world’s largest networks with data centers in 200+ cities worldwide.</span></p>
+<p><strong>About the Team</strong></p>
+<p><span style="font-weight: 400;">Domain management is the foundation for any online presence and Cloudflare Registrar our answer to a simple and straightforward experience.&nbsp; The Registrar product manages the full lifecycle of the domains, including searching/registering for new domains and transferring/renewing existing ones.&nbsp; Onboarding domains on Cloudflare is the gateway to the vast array of Cloudflare services.</span></p>
+<p><strong>What you'll do</strong></p>
+<p><span style="font-weight: 400;">We are looking for a talented systems engineer to be part of our Lisbon office. Come be part of the team and work with a group of passionate, talented engineers that will be creating innovative products. The amount of requests being processed is massive and we utilize all the latest technology to ensure its scalability and availability.&nbsp;</span></p>
+<p>&nbsp;</p>
+<p><strong>Responsibilities:&nbsp;</strong></p>
+<ul>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Designing, building, running and scaling tools and services that support the full spectrum of domain management.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Analyzing and communicating complex technical requirements and concepts, identifying the highest priority areas, and carving a path to delivery</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Collaborating with product teams to understand goals and develop robust and scalable solutions that align with the customer need</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Improving system design and architecture to ensure stability and performance of the internal and customer-facing compliance concerns</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Working closely with Cloudflare's Trust and Safety team to help make the internet a better place</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Ongoing monitoring and maintenance of production services, including participation in oncall rotations</span></li>
+</ul>
+<p><br><br></p>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">You are intimately familiar with how the Internet works, have experience building Internet-facing applications at scale</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">2+ years of product/program management or equivalent experience with demonstrated ability to drive successful outcomes</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Demonstrated ability to work multidisciplinary. Other stakeholders such as engineering, SRE and executives love working with you, as much as you do with them</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Domain expertise in several of: Security, API integration, application lifecycle management, continuous delivery, web application operations, cloud services</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Demonstrated success in representing the voice of the partner. You must be able to channel many points of view negotiating, cultivating and growing partnerships.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Self-directed and self-motivated; excellent communicator and collaborator</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Fluent in Mandarin (including technical conversation)</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to travel 25% of the time internationally</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience working on, and deploying, large scale systems in Go, Ruby/Rails, Java, or other high performance languages</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Good Linux &amp; scripting experience</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience (and love) for debugging to ensure the system works in all cases</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong systems level programming skills</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Excited by the idea of optimizing complex solutions to general problems that all websites face</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with a continuous integration workflow and using source control (we use git)&nbsp;</span></li>
 </ul>
 <p><strong>Bonus Points</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">B.S. in Computer Science or equivalent</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong technical abilities. You are intimately familiar with modern software development practices used to build and deploy applications. You've preferably been working full time on a software delivery team.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Working knowledge of how the internet works at layer 3 through 7</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Some scripting skills/development experience</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with Ruby or Go&nbsp; (or a strong desire to learn)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with Kibana, Grafana, and/or Prometheus</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with relational databases (e.g. Postgres)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with DNS (and DNSSEC)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience in the registry/registrar industry</span></li>
 </ul>
-<p><span style="font-weight: 400;">#LI-TD2</span></p>
+<p><br><br></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
