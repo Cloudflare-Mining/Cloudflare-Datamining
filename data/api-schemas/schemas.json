@@ -5981,6 +5981,916 @@
 				}
 			}
 		},
+		"/zones/{zone_id}/api_gateway/configuration": {
+			"get": {
+				"summary": "Retrieve information about specific configuration properties",
+				"parameters": [
+					{
+						"name": "zone_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1argo~1smart_routing/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Retrieve information about specific configuration properties response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {}
+												},
+												"messages": {
+													"type": "array",
+													"items": {}
+												},
+												"result": {
+													"type": "object",
+													"properties": {
+														"auth_id_characteristics": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"type": {
+																		"description": "The type of characteristic.",
+																		"type": "string",
+																		"enum": [
+																			"header",
+																			"cookie"
+																		],
+																		"example": "header"
+																	},
+																	"name": {
+																		"description": "The name of the characteristic field, i.e., the header or cookie name.",
+																		"type": "string",
+																		"example": "authorization",
+																		"maxLength": 128
+																	}
+																},
+																"required": [
+																	"type",
+																	"name"
+																]
+															},
+															"uniqueItems": true,
+															"maxItems": 10
+														}
+													}
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					},
+					{
+						"api_token": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.account.zone.api-gateway.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": false,
+					"pro": false,
+					"business": false,
+					"enterprise": true
+				}
+			},
+			"put": {
+				"summary": "Set configuration properties",
+				"parameters": [
+					{
+						"name": "zone_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_id%7D~1api_gateway~1configuration/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Set configuration properties response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {}
+												},
+												"messages": {
+													"type": "array",
+													"items": {}
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					},
+					{
+						"api_token": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.account.zone.api-gateway.update"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": false,
+					"pro": false,
+					"business": false,
+					"enterprise": true
+				},
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/paths/~1zones~1%7Bzone_id%7D~1api_gateway~1configuration/get/responses/200/content/application~1json/schema/allOf/1/properties/result"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/zones/{zone_id}/api_gateway/operations/{operation_id}": {
+			"get": {
+				"summary": "Retrieve information about an operation",
+				"parameters": [
+					{
+						"name": "operation_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"description": "The ID that identifies the API operation."
+						}
+					},
+					{
+						"name": "zone_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1argo~1smart_routing/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Retrieve information about an operation response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {}
+												},
+												"messages": {
+													"type": "array",
+													"items": {}
+												},
+												"result": {
+													"allOf": [
+														{
+															"type": "object",
+															"properties": {
+																"operation_id": {
+																	"description": "The ID that identifies the API operation."
+																},
+																"method": {
+																	"description": "The HTTP method used to access the endpoint.",
+																	"type": "string",
+																	"enum": [
+																		"GET",
+																		"POST",
+																		"HEAD",
+																		"OPTIONS",
+																		"PUT",
+																		"DELETE",
+																		"CONNECT",
+																		"PATCH",
+																		"TRACE"
+																	],
+																	"example": "GET"
+																},
+																"host": {
+																	"description": "RFC3986-compliant host.",
+																	"type": "string",
+																	"format": "hostname",
+																	"example": "www.example.com",
+																	"maxLength": 255
+																},
+																"endpoint": {
+																	"description": "The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.",
+																	"type": "string",
+																	"format": "uri-template",
+																	"pattern": "^/.*$",
+																	"example": "/api/v1/users/{var1}",
+																	"maxLength": 4096
+																},
+																"last_updated": {
+																	"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1ssl~1recommendation/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/modified_on"
+																},
+																"features": {
+																	"type": "object",
+																	"readOnly": true,
+																	"anyOf": [
+																		{
+																			"type": "object",
+																			"readOnly": true,
+																			"properties": {
+																				"thresholds": {
+																					"type": "object",
+																					"properties": {
+																						"period_seconds": {
+																							"description": "The period over which this threshold is suggested.",
+																							"type": "integer",
+																							"readOnly": true
+																						},
+																						"suggested_threshold": {
+																							"description": "The suggested threshold in requests done by the same auth_id or period_seconds.",
+																							"type": "integer",
+																							"readOnly": true
+																						},
+																						"p50": {
+																							"description": "The p50 quantile of requests (in period_seconds).",
+																							"type": "integer",
+																							"readOnly": true
+																						},
+																						"p90": {
+																							"description": "The p90 quantile of requests (in period_seconds).",
+																							"type": "integer",
+																							"readOnly": true
+																						},
+																						"p99": {
+																							"description": "The p99 quantile of requests (in period_seconds).",
+																							"type": "integer",
+																							"readOnly": true
+																						},
+																						"requests": {
+																							"description": "The estimated number of requests covered by these calculations.",
+																							"type": "integer",
+																							"readOnly": true
+																						},
+																						"auth_id_tokens": {
+																							"description": "The total number of auth-ids seen across this calculation.",
+																							"type": "integer",
+																							"readOnly": true
+																						},
+																						"data_points": {
+																							"description": "The number of data points used for the threshold suggestion calculation.",
+																							"type": "integer",
+																							"readOnly": true
+																						},
+																						"last_updated": {
+																							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1ssl~1recommendation/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/modified_on"
+																						}
+																					}
+																				}
+																			},
+																			"required": [
+																				"period_seconds",
+																				"suggested_threshold",
+																				"p50",
+																				"p90",
+																				"p99",
+																				"requests",
+																				"auth_id_tokens",
+																				"data_points",
+																				"last_updated"
+																			]
+																		}
+																	]
+																}
+															},
+															"required": [
+																"operation_id",
+																"method",
+																"host",
+																"endpoint",
+																"last_updated"
+															]
+														}
+													]
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					},
+					{
+						"api_token": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.account.zone.api-gateway.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": false,
+					"pro": false,
+					"business": false,
+					"enterprise": true
+				}
+			},
+			"delete": {
+				"summary": "Delete an operation",
+				"parameters": [
+					{
+						"name": "operation_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_id%7D~1api_gateway~1operations~1%7Boperation_id%7D/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "zone_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_id%7D~1api_gateway~1operations~1%7Boperation_id%7D/get/parameters/1/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Delete an operation response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {}
+												},
+												"messages": {
+													"type": "array",
+													"items": {}
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					},
+					{
+						"api_token": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.account.zone.api-gateway.delete"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": false,
+					"pro": false,
+					"business": false,
+					"enterprise": true
+				},
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {}
+					}
+				}
+			}
+		},
+		"/zones/{zone_id}/api_gateway/operations": {
+			"get": {
+				"summary": "Retrieve information about all operations on a zone",
+				"parameters": [
+					{
+						"name": "zone_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1argo~1smart_routing/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Retrieve information about all operations on a zone response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"anyOf": [
+										{
+											"allOf": [
+												{
+													"$ref": "#/paths/~1zones~1%7Bzone_id%7D~1api_gateway~1operations/post/responses/200/content/application~1json/schema"
+												},
+												{
+													"properties": {
+														"result_info": {
+															"type": "object",
+															"properties": {
+																"page": {
+																	"description": "Current page within paginated list of results.",
+																	"type": "number",
+																	"example": 1
+																},
+																"per_page": {
+																	"description": "Number of results per page of results.",
+																	"type": "number",
+																	"example": 20
+																},
+																"count": {
+																	"description": "Total results returned based on your search parameters.",
+																	"type": "number",
+																	"example": 1
+																},
+																"total_count": {
+																	"description": "Total results available without any search parameters.",
+																	"type": "number",
+																	"example": 500
+																}
+															}
+														}
+													}
+												},
+												{
+													"properties": {
+														"result": {
+															"type": "array",
+															"items": {
+																"allOf": [
+																	{
+																		"$ref": "#/paths/~1zones~1%7Bzone_id%7D~1api_gateway~1operations~1%7Boperation_id%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/result/allOf/0"
+																	}
+																]
+															}
+														}
+													}
+												}
+											]
+										},
+										{
+											"$ref": "#/paths/~1zones~1%7Bzone_id%7D~1api_gateway~1operations/post/responses/200/content/application~1json/schema"
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					},
+					{
+						"api_token": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.account.zone.api-gateway.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": false,
+					"pro": false,
+					"business": false,
+					"enterprise": true
+				}
+			},
+			"post": {
+				"summary": "Add operations to a zone",
+				"description": "Add one or more operations to a zone. Endpoints can contain path variables. Host, method, endpoint will be normalized to a canoncial form when creating an operation and must be unique on the zone. Inserting an operation that matches an existing one will return the record of the already existing operation and update its last_updated date.",
+				"parameters": [
+					{
+						"name": "zone_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_id%7D~1api_gateway~1operations/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Add operations to a zone response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user~1tokens~1permission_groups/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"errors": {
+													"type": "array",
+													"items": {}
+												},
+												"messages": {
+													"type": "array",
+													"items": {}
+												},
+												"result": {
+													"type": "array",
+													"items": {
+														"allOf": [
+															{
+																"$ref": "#/paths/~1zones~1%7Bzone_id%7D~1api_gateway~1operations/get/responses/200/content/application~1json/schema/anyOf/0/allOf/2/properties/result/items"
+															},
+															{
+																"properties": {
+																	"features": {}
+																}
+															}
+														]
+													}
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					},
+					{
+						"api_token": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.account.zone.api-gateway.create"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": false,
+					"pro": false,
+					"business": false,
+					"enterprise": true
+				},
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"required": [
+									"host",
+									"method",
+									"endpoint"
+								],
+								"items": {
+									"type": "object",
+									"properties": {
+										"host": {
+											"description": "RFC3986-compliant host.",
+											"type": "string",
+											"format": "hostname",
+											"example": "www.example.com",
+											"maxLength": 255
+										},
+										"method": {
+											"description": "The HTTP method used to access the endpoint.",
+											"type": "string",
+											"enum": [
+												"GET",
+												"POST",
+												"HEAD",
+												"OPTIONS",
+												"PUT",
+												"DELETE",
+												"CONNECT",
+												"PATCH",
+												"TRACE"
+											],
+											"example": "GET"
+										},
+										"endpoint": {
+											"description": "The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.",
+											"type": "string",
+											"format": "uri-template",
+											"pattern": "^/.*$",
+											"example": "/api/v1/users/{var1}",
+											"maxLength": 4096
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/zones/{zone_id}/api_gateway/schemas": {
+			"get": {
+				"summary": "Retrieve operations and features as OpenAPI schemas",
+				"description": "",
+				"parameters": [
+					{
+						"name": "zone_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1argo~1smart_routing/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Retrieve operations and features as OpenAPI schemas response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+												},
+												{
+													"properties": {
+														"errors": {
+															"type": "array",
+															"items": {}
+														},
+														"messages": {
+															"type": "array",
+															"items": {}
+														}
+													}
+												}
+											]
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object",
+													"properties": {
+														"timestamp": {
+															"type": "string"
+														},
+														"schemas": {
+															"type": "array",
+															"items": {
+																"description": "A OpenAPI 3.0.0 compliant schema.",
+																"type": "object",
+																"example": {
+																	"openapi": "3.0.0",
+																	"servers": [
+																		{
+																			"url": "www.example.com"
+																		}
+																	],
+																	"info": {
+																		"title": "OpenAPI JSON schema for www.example.com",
+																		"version": "1.0"
+																	},
+																	"paths": {
+																		"/api/v1/users/{var1}": {
+																			"get": {
+																				"parameters": [
+																					{
+																						"in": "path",
+																						"name": "var1",
+																						"required": true,
+																						"schema": {
+																							"type": "string"
+																						}
+																					}
+																				],
+																				"x-cf-threshold": {
+																					"period_seconds": 600,
+																					"suggested_threshold": 18,
+																					"p50": 3,
+																					"p90": 7,
+																					"p99": 11,
+																					"requests": 66886,
+																					"auth_id_tokens": 7262,
+																					"data_points": 10189,
+																					"last_udated": "2014-01-01T05:20:00.123450+00:00"
+																				}
+																			}
+																		},
+																		"... Further paths ...": {}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					},
+					{
+						"api_token": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.account.zone.api-gateway.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": false,
+					"pro": false,
+					"business": false,
+					"enterprise": true
+				}
+			}
+		},
+		"/zones/{zone_id}/api_gateway/discovery": {
+			"get": {
+				"summary": "Retrieve API Discovery results for a zone",
+				"description": "Retrieve the most up to date view of API Discovery on a zone.",
+				"parameters": [
+					{
+						"name": "zone_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1argo~1smart_routing/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Retrieve API Discovery results for a zone response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+												},
+												{
+													"properties": {
+														"errors": {
+															"type": "array",
+															"items": {}
+														},
+														"messages": {
+															"type": "array",
+															"items": {}
+														}
+													}
+												}
+											]
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object",
+													"properties": {
+														"timestamp": {
+															"type": "string"
+														},
+														"schemas": {
+															"type": "array",
+															"items": {
+																"description": "A OpenAPI 3.0.0 compliant schema.",
+																"type": "object",
+																"example": {
+																	"openapi": "3.0.0",
+																	"servers": [
+																		{
+																			"url": "www.example.com"
+																		}
+																	],
+																	"info": {
+																		"title": "OpenAPI JSON schema for www.example.com",
+																		"version": "1.0"
+																	},
+																	"paths": {
+																		"/api/v1/users/{var1}": {
+																			"get": {
+																				"parameters": [
+																					{
+																						"in": "path",
+																						"name": "var1",
+																						"required": true,
+																						"schema": {
+																							"type": "string"
+																						}
+																					}
+																				]
+																			}
+																		},
+																		"... Further paths ...": {}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					},
+					{
+						"api_token": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.account.zone.api-gateway.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": false,
+					"pro": false,
+					"business": false,
+					"enterprise": true
+				}
+			}
+		},
 		"/zones": {
 			"get": {
 				"summary": "List Zones",
