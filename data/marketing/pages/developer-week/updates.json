@@ -1,10 +1,10 @@
 {
 	"componentChunkName": "component---src-components-page-page-template-tsx",
-	"path": "/developer-week/",
+	"path": "/developer-week/updates/",
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "Cloudflare Developer Week 2022 ",
+				"pageName": "Cloudflare Developer Week 2022 - Updates and announcements",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
@@ -29,14 +29,14 @@
 					"trTR": "No Page for Locale",
 					"zhHansCN": "Translated for Locale"
 				},
-				"relativePath": "developer-week",
+				"relativePath": "developer-week/updates",
 				"topNavOptions": null,
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
 				"metaTags": {
-					"metaTitle": "Developer Week 2022",
-					"metaDescription": "Join us to learn about how Cloudflare helps Developers during Developer Week 2022",
+					"metaTitle": "Developer Week 2022 - Updates and Annoucements",
+					"metaDescription": "Learn more about announcements and updates for Developer Week 2022",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
@@ -45,7 +45,7 @@
 					},
 					"facebookCustomImage": null
 				},
-				"contentfulId": "2JOLrhfld0JJ3VjouPYH5p",
+				"contentfulId": "2UIkyDr4Nc6ejqAaMRk2Ga",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
 				"psaBanner": null,
@@ -147,20 +147,50 @@
 						}
 					},
 					{
-						"contentfulId": "6yMU2maSjJH4aMPVv8mVpV",
+						"contentfulId": "4kJslwx11yumkMYhvaZTFX",
 						"backgroundColor": "white",
 						"contentTypeId": "bladeFourFeatures",
 						"htmlId": null,
 						"copy": null,
-						"title": null,
+						"title": "Updates and announcements",
 						"subtitle": null,
-						"bladeStyle": "Feature Blocks - 3 columns",
+						"bladeStyle": null,
 						"bladeBorder": "none",
-						"sectionPadding": "tile--no-top-bottom-padding",
+						"sectionPadding": "tile--no-top-padding",
 						"carouselSlidesToShow": null,
 						"carouselSlidesToScroll": null,
 						"locale": "en-US",
 						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5YaQB8syEPwyCbkDqWkJhE",
+								"title": "Welcome to the Supercloud (and Developer Week 2022)",
+								"titleSize": null,
+								"description": "Every developer wants to get code running on one machine and perfect it. It's so much easier to work that way. We just happen to have one machine that scales to the size of the Internet: a global, distributed, supercomputer. It's our Supercloud and we build our own products on it and you can too.",
+								"learnMoreUrl": "https://blog.cloudflare.com/welcome-to-the-supercloud-and-developer-week-2022",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "32cc5988-5550-5c8b-8f30-8f0323a8636b",
+									"altText": "Developer Week 22 Introduction",
+									"title": "Developer Week 22 Introduction",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/2022_Developer_Week_Hero_Dark.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
 							{
 								"contentTypeId": "feature",
 								"contentfulId": "4e0UvhndzWWxlfMAIaTSV",
@@ -250,36 +280,6 @@
 								"streamId": null,
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "5hzJjYl9leC1ykQTbT2bIW",
-								"title": "CFTV - What launched today: future of compute",
-								"titleSize": null,
-								"description": "__Monday, November 14\t9:30 -10:30AM PT__\t\n\nDawn Parzych, James Snell, Kabir Sikan, & Rob Sutter \n",
-								"learnMoreUrl": "https://cloudflare.tv/event/xvm6zdam",
-								"learnMoreText": "Tune In",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": {
-									"id": "196f472e-7a2a-56e8-8a34-adf96a0d51bc",
-									"altText": "Cloudflare TV Header",
-									"title": "Cloudflare TV Header",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "[path]/CFTV.png"
-										}
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
 							}
 						]
 					}
@@ -297,8 +297,8 @@
 		},
 		"pageContext": {
 			"locale": "en-US",
-			"pathname": "/developer-week/",
-			"contentfulId": "2JOLrhfld0JJ3VjouPYH5p",
+			"pathname": "/developer-week/updates/",
+			"contentfulId": "2UIkyDr4Nc6ejqAaMRk2Ga",
 			"allowedHrefLangs": [
 				"en-US",
 				"zh-CN",
