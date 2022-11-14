@@ -39,7 +39,6 @@
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Learn fast and adapt to process/system changes quickly</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong attention to detail and work ethic</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Passion for innovation and process improvements</span></li>
-	<li><span style="font-weight: 400;">Proficient in all applications of Google Suite including Docs and Slides</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with Salesforce.com and SFDC CPQ preferred</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with Google Sheets or Excel preferred</span></li>
 </ul>
