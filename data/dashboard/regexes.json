@@ -854,6 +854,7 @@
 	"/^\\/[a-zA-Z0-9]+\\/domains\\/register\\/checkout$/",
 	"/^\\/a\\/([0-9a-f]{32})/",
 	"/^\\/cdn-cgi($|\\/.*$)/",
+	"/^\\/cdn-cgi\\/(?!zaraz\\/[a-zA-Z])/",
 	"/^\\/email-verification-info(\\/)?/",
 	"/^\\/login\\/apple(\\/)?/",
 	"/^\\/|\\/$/",
