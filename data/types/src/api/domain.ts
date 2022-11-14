@@ -217,10 +217,10 @@ export enum ApproverStatus {
 
 export const DesignatedApprover = eg.object({
   email: eg.string,
+  status: eg.enum(ApproverStatus),
   first_name: eg.union([eg.null, eg.string]).optional,
   last_name: eg.union([eg.null, eg.string]).optional,
-  phone_number: eg.union([eg.null, eg.string]).optional,
-  status: eg.union([eg.null, eg.enum(ApproverStatus)]).optional
+  phone_number: eg.union([eg.null, eg.string]).optional
 });
 
 export type Approver = TypeFromCodec<typeof DesignatedApprover>;
