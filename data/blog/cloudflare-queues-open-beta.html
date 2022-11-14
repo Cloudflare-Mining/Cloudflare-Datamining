@@ -72,7 +72,7 @@ export default {
    return new Response("Success!");
  },
  async queue(batch: MessageBatch&lt;Error&gt;, env: Environment): Promise&lt;void&gt; {
-   const logBatch = await JSON.stringify(batch.messages);
+   const logBatch = JSON.stringify(batch.messages);
    await env.LOG_BUCKET.put(`logs/${Date.now()}.log.json`, logBatch);
  },
 };
