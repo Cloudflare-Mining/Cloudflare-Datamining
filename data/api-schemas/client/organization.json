@@ -1,6 +1,6 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/organization.json",
-	"title": "Organizations",
+	"title": "Organizations (Deprecated)",
 	"description": "An Organization is an entity which holds a set of zones for multiple users to interact with.",
 	"cfExtendedDescription": "Please use equivalent `/accounts` API endpoints. Account APIs provide a broader range of features and are backwards-compatible to organization APIs.",
 	"cfDeprecations": {
@@ -37,7 +37,7 @@
 				"eol": "2020-02-04",
 				"display": true
 			},
-			"html_id": "organizations-organization-details",
+			"html_id": "organizations-deprecated--organization-details",
 			"uri": "organizations/:identifier",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/organizations/01a7362d577a6c3019a474fd6f485823\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"01a7362d577a6c3019a474fd6f485823\",\n    \"name\": \"Cloudflare, Inc.\",\n    \"members\": [\n      {\n        \"id\": \"7c5dae5552338874e5053f2534d2767a\",\n        \"name\": \"John Smith\",\n        \"email\": \"user@example.com\",\n        \"status\": \"accepted\",\n        \"roles\": [\n          {\n            \"id\": \"3536bcfad5faccb999b47003c79917fb\",\n            \"name\": \"Organization Admin\",\n            \"description\": \"Administrative access to the entire Organization\",\n            \"permissions\": [\n              \"#zones:read\"\n            ]\n          }\n        ]\n      }\n    ],\n    \"invites\": [\n      {\n        \"id\": \"4f5f0c14a2a41d5063dd301b2f829f04\",\n        \"invited_member_id\": \"5a7805061c76ada191ed06f989cc3dac\",\n        \"invited_member_email\": \"user@example.com\",\n        \"organization_id\": \"5a7805061c76ada191ed06f989cc3dac\",\n        \"organization_name\": \"Cloudflare, Inc.\",\n        \"roles\": [\n          {\n            \"id\": \"3536bcfad5faccb999b47003c79917fb\",\n            \"name\": \"Organization Admin\",\n            \"description\": \"Administrative access to the entire Organization\",\n            \"permissions\": [\n              \"#zones:read\"\n            ]\n          }\n        ],\n        \"invited_by\": \"user@example.com\",\n        \"invited_on\": \"2014-01-01T05:20:00Z\",\n        \"expires_on\": \"2014-01-01T05:20:00Z\",\n        \"organization_is_enforcing_twofactor\": true,\n        \"status\": \"accepted\"\n      }\n    ],\n    \"roles\": [\n      {\n        \"id\": \"3536bcfad5faccb999b47003c79917fb\",\n        \"name\": \"Organization Admin\",\n        \"description\": \"Administrative access to the entire Organization\",\n        \"permissions\": [\n          \"#zones:read\"\n        ]\n      }\n    ]\n  }\n}"
@@ -66,7 +66,7 @@
 				"eol": "2020-02-04",
 				"display": true
 			},
-			"html_id": "organizations-edit-organization",
+			"html_id": "organizations-deprecated--edit-organization",
 			"uri": "organizations/:identifier",
 			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/organizations/01a7362d577a6c3019a474fd6f485823\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"Cloudflare, Inc.\"}'",
 			"parameters": {
@@ -91,7 +91,7 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"01a7362d577a6c3019a474fd6f485823\",\n    \"name\": \"Cloudflare, Inc.\",\n    \"members\": [\n      {\n        \"id\": \"7c5dae5552338874e5053f2534d2767a\",\n        \"name\": \"John Smith\",\n        \"email\": \"user@example.com\",\n        \"status\": \"accepted\",\n        \"roles\": [\n          {\n            \"id\": \"3536bcfad5faccb999b47003c79917fb\",\n            \"name\": \"Organization Admin\",\n            \"description\": \"Administrative access to the entire Organization\",\n            \"permissions\": [\n              \"#zones:read\"\n            ]\n          }\n        ]\n      }\n    ],\n    \"invites\": [\n      {\n        \"id\": \"4f5f0c14a2a41d5063dd301b2f829f04\",\n        \"invited_member_id\": \"5a7805061c76ada191ed06f989cc3dac\",\n        \"invited_member_email\": \"user@example.com\",\n        \"organization_id\": \"5a7805061c76ada191ed06f989cc3dac\",\n        \"organization_name\": \"Cloudflare, Inc.\",\n        \"roles\": [\n          {\n            \"id\": \"3536bcfad5faccb999b47003c79917fb\",\n            \"name\": \"Organization Admin\",\n            \"description\": \"Administrative access to the entire Organization\",\n            \"permissions\": [\n              \"#zones:read\"\n            ]\n          }\n        ],\n        \"invited_by\": \"user@example.com\",\n        \"invited_on\": \"2014-01-01T05:20:00Z\",\n        \"expires_on\": \"2014-01-01T05:20:00Z\",\n        \"organization_is_enforcing_twofactor\": true,\n        \"status\": \"accepted\"\n      }\n    ],\n    \"roles\": [\n      {\n        \"id\": \"3536bcfad5faccb999b47003c79917fb\",\n        \"name\": \"Organization Admin\",\n        \"description\": \"Administrative access to the entire Organization\",\n        \"permissions\": [\n          \"#zones:read\"\n        ]\n      }\n    ]\n  }\n}"
 		}
 	],
-	"html_id": "organizations",
+	"html_id": "organizations-deprecated-",
 	"object_definition": {
 		"_formatter": {
 			"jsonMediaType": {}
@@ -5183,7 +5183,7 @@
 		],
 		"objects": [],
 		"example": "{\n  \"id\": \"01a7362d577a6c3019a474fd6f485823\",\n  \"name\": \"Cloudflare, Inc.\",\n  \"members\": [\n    {\n      \"id\": \"7c5dae5552338874e5053f2534d2767a\",\n      \"name\": \"John Smith\",\n      \"email\": \"user@example.com\",\n      \"status\": \"accepted\",\n      \"roles\": [\n        {\n          \"id\": \"3536bcfad5faccb999b47003c79917fb\",\n          \"name\": \"Organization Admin\",\n          \"description\": \"Administrative access to the entire Organization\",\n          \"permissions\": [\n            \"#zones:read\"\n          ]\n        }\n      ]\n    }\n  ],\n  \"invites\": [\n    {\n      \"id\": \"4f5f0c14a2a41d5063dd301b2f829f04\",\n      \"invited_member_id\": \"5a7805061c76ada191ed06f989cc3dac\",\n      \"invited_member_email\": \"user@example.com\",\n      \"organization_id\": \"5a7805061c76ada191ed06f989cc3dac\",\n      \"organization_name\": \"Cloudflare, Inc.\",\n      \"roles\": [\n        {\n          \"id\": \"3536bcfad5faccb999b47003c79917fb\",\n          \"name\": \"Organization Admin\",\n          \"description\": \"Administrative access to the entire Organization\",\n          \"permissions\": [\n            \"#zones:read\"\n          ]\n        }\n      ],\n      \"invited_by\": \"user@example.com\",\n      \"invited_on\": \"2014-01-01T05:20:00Z\",\n      \"expires_on\": \"2014-01-01T05:20:00Z\",\n      \"organization_is_enforcing_twofactor\": true,\n      \"status\": \"accepted\"\n    }\n  ],\n  \"roles\": [\n    {\n      \"id\": \"3536bcfad5faccb999b47003c79917fb\",\n      \"name\": \"Organization Admin\",\n      \"description\": \"Administrative access to the entire Organization\",\n      \"permissions\": [\n        \"#zones:read\"\n      ]\n    }\n  ]\n}",
-		"title": "Organizations",
+		"title": "Organizations (Deprecated)",
 		"description": "An Organization is an entity which holds a set of zones for multiple users to interact with."
 	}
 }

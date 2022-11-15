@@ -22,8 +22,6 @@
 				"business": false,
 				"enterprise": true
 			},
-			"trakalIgnore": false,
-			"cfPrivate": false,
 			"html_id": "api-shield-settings-retrieve-information-about-specific-configuration-properties",
 			"uri": "zones/:zone_id/api_gateway/configuration",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/api_gateway/configuration?properties=auth_id_characteristics\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
@@ -72,8 +70,6 @@
 				"business": false,
 				"enterprise": true
 			},
-			"trakalIgnore": false,
-			"cfPrivate": false,
 			"html_id": "api-shield-settings-set-configuration-properties",
 			"uri": "zones/:zone_id/api_gateway/configuration",
 			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/api_gateway/configuration\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"auth_id_characteristics\":[{\"type\":\"header\",\"name\":\"authorization\"}]}'",

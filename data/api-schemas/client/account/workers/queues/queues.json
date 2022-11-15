@@ -425,16 +425,16 @@
 		}
 	],
 	"cfLinkErrors": {
-		"10129": "The user has hit the maximum number of queues for their account.",
-		"10130": "The queue name is already taken.",
-		"100123": "The queue does not exist.",
-		"100124": "The service consumer does not implement a queue handler.",
-		"100125": "The account is not entitled to use Queues.",
-		"100126": "The queue name is invalid.",
-		"100128": "The service consumer for a queue already exists.",
-		"100129": "The queue cannot be deleted while it is referenced by bindings.",
-		"100130": "The service consumer for a queue does not exist.",
-		"100133": "The dead letter queue cannot be deleted."
+		"11000": "The queue does not exist.",
+		"11001": "The service consumer does not implement a queue handler.",
+		"11002": "The account is not entitled to use Queues.",
+		"11003": "The queue name is invalid.",
+		"11004": "The service consumer for a queue already exists.",
+		"11005": "The queue cannot be deleted while it is referenced by bindings.",
+		"11006": "The service consumer for a queue does not exist.",
+		"11007": "The dead letter queue cannot be deleted.",
+		"11008": "The user has hit the maximum number of queues for their account.",
+		"11009": "The queue name is already taken."
 	},
 	"html_id": "queue",
 	"object_definition": {

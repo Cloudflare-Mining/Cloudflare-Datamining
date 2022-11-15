@@ -2,10 +2,22 @@
 	"id": "https://api.cloudflare.com/schemas/v4/client/zone/workers/scripts.json",
 	"title": "Worker Script (Deprecated)",
 	"description": "A Worker script is a single script that is executed on matching filters in the Cloudflare edge.",
-	"cfExtendedDescription": "**NOTE**: This API is **deprecated**, please use equivalent `/accounts` API endpoints where possible. These APIs are for use with the previously limited single-script zones.",
+	"cfExtendedDescription": "This API is **deprecated**, please use equivalent `/accounts` API endpoints where possible. These APIs are for use with the previously limited single-script zones.",
+	"cfDeprecations": {
+		"worker_script_deprecation": {
+			"id": "worker_script_deprecation",
+			"description": "This endpoint and its related APIs are deprecated in favor of the `/accounts` equivalent APIs. These APIs are for use with the previously limited single-script zones.",
+			"display": true
+		}
+	},
 	"type": "object",
 	"links": [
 		{
+			"cfDeprecation": {
+				"id": "worker_script_deprecation",
+				"description": "This endpoint and its related APIs are deprecated in favor of the `/accounts` equivalent APIs. These APIs are for use with the previously limited single-script zones.",
+				"display": true
+			},
 			"title": "Download Worker",
 			"description": "Fetch raw script content for your worker. Note this is the original script content, not JSON encoded.",
 			"rel": "self",
@@ -48,6 +60,11 @@
 			"response": "addEventListener('fetch', event => { event.respondWith(fetch(event.request)) })"
 		},
 		{
+			"cfDeprecation": {
+				"id": "worker_script_deprecation",
+				"description": "This endpoint and its related APIs are deprecated in favor of the `/accounts` equivalent APIs. These APIs are for use with the previously limited single-script zones.",
+				"display": true
+			},
 			"title": "Delete Worker",
 			"description": "Delete your worker. This call has no response body on a successful delete.",
 			"rel": "self",
@@ -80,6 +97,11 @@
 			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/zones/9a7806061c88ada191ed06f989cc3dac/workers/script\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\""
 		},
 		{
+			"cfDeprecation": {
+				"id": "worker_script_deprecation",
+				"description": "This endpoint and its related APIs are deprecated in favor of the `/accounts` equivalent APIs. These APIs are for use with the previously limited single-script zones.",
+				"display": true
+			},
 			"title": "Upload Worker",
 			"description": "Upload a worker, or a new version of a worker.",
 			"rel": "self",
