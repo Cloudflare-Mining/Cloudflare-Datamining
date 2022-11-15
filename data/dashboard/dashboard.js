@@ -2883,7 +2883,7 @@ Commit \u2014 `).concat(f.commit)
 				qi = il,
 				sl = e("../react/pages/home/domain-registration/index.ts"),
 				hi = a().lazy(function() {
-					return Promise.all([e.e(8415), e.e(85474), e.e(53482), e.e(53149), e.e(60590), e.e(97311), e.e(55863), e.e(69419), e.e(11407), e.e(33679), e.e(68588), e.e(27973), e.e(34744), e.e(85223), e.e(90865), e.e(10317), e.e(38104), e.e(59687), e.e(89771), e.e(64318), e.e(30261), e.e(84728), e.e(83121), e.e(33566), e.e(52435), e.e(82256), e.e(77839), e.e(35202), e.e(1001), e.e(17902), e.e(46867), e.e(5866), e.e(61829), e.e(33249)]).then(e.bind(e, "../react/pages/zoneless-workers/Main.tsx"))
+					return Promise.all([e.e(8415), e.e(85474), e.e(53482), e.e(53149), e.e(60590), e.e(97311), e.e(55863), e.e(69419), e.e(11407), e.e(33679), e.e(68588), e.e(27973), e.e(34744), e.e(85223), e.e(90865), e.e(10317), e.e(38104), e.e(78074), e.e(89771), e.e(5335), e.e(30261), e.e(84728), e.e(83121), e.e(33566), e.e(52435), e.e(82256), e.e(77839), e.e(35202), e.e(1001), e.e(17902), e.e(46867), e.e(5866), e.e(61829), e.e(33249)]).then(e.bind(e, "../react/pages/zoneless-workers/Main.tsx"))
 				}),
 				es = function(f) {
 					var Q = !!(0, qn.P)(),
@@ -2899,7 +2899,7 @@ Commit \u2014 `).concat(f.commit)
 					return a().createElement(Js, f)
 				},
 				$s = a().lazy(function() {
-					return Promise.all([e.e(8415), e.e(43561), e.e(87122), e.e(67118), e.e(85474), e.e(53482), e.e(53149), e.e(60590), e.e(97311), e.e(55863), e.e(33679), e.e(68588), e.e(85223), e.e(27605), e.e(90865), e.e(10317), e.e(38104), e.e(59687), e.e(26124), e.e(30261), e.e(84728), e.e(33566), e.e(52435), e.e(91914), e.e(77839), e.e(35202), e.e(1001), e.e(17902), e.e(46867), e.e(5866), e.e(61829), e.e(22979), e.e(22731)]).then(e.bind(e, "../react/pages/r2/Main.tsx"))
+					return Promise.all([e.e(8415), e.e(43561), e.e(87122), e.e(67118), e.e(85474), e.e(53482), e.e(53149), e.e(60590), e.e(97311), e.e(55863), e.e(33679), e.e(68588), e.e(85223), e.e(27605), e.e(90865), e.e(10317), e.e(38104), e.e(78074), e.e(26124), e.e(30261), e.e(84728), e.e(33566), e.e(52435), e.e(91914), e.e(77839), e.e(35202), e.e(1001), e.e(17902), e.e(46867), e.e(5866), e.e(61829), e.e(22979), e.e(22731)]).then(e.bind(e, "../react/pages/r2/Main.tsx"))
 				}),
 				Xs = function(f) {
 					var Q = !!(0, qn.P)(),
@@ -7125,14 +7125,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				e.g.build = ld({}, {
-					branch: "BLOG-1463",
+					branch: "release-1668524699",
 					isReleaseCandidate: "true",
-					commit: "a9e8eddc5d0236f42bae66826b1ea5f4c9b4c66e",
+					commit: "258e27bb342bdc963ad6f9563d255846f4c7c69e",
 					env: "production",
-					builtAt: 1668513438353,
-					dashVersion: "e22f3243fa5955bce3ff260fd7b9ba7f6d86574d",
+					builtAt: 1668525068288,
+					dashVersion: "75f7ebd54ec29b6984e9c90617e48ba8130d2c20",
 					versions: {
-						"@cloudflare/app-dash": "25.108.30",
+						"@cloudflare/app-dash": "25.108.46",
 						node: "14.18.3",
 						yarn: "3.2.2",
 						webpack: "5.74.0"
@@ -76103,14 +76103,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			var n = e("../../../../node_modules/@cloudflare/util-routes/es/index.js");
 
 			function t() {
-				var q = le(["/accounts/", "/workers/versions/by-script/", "/detail/", ""]);
+				var q = le(["/accounts/", "/workers/deployments/by-script/", "/detail/", ""]);
 				return t = function() {
 					return q
 				}, q
 			}
 
 			function g() {
-				var q = le(["/accounts/", "/workers/versions/by-script/", ""]);
+				var q = le(["/accounts/", "/workers/deployments/by-script/", ""]);
 				return g = function() {
 					return q
 				}, q
@@ -82600,10 +82600,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			})(C || (C = {}));
 			var E = n.eg.object({
 					email: n.eg.string,
+					status: n.eg.enum(C),
 					first_name: n.eg.union([n.eg.null, n.eg.string]).optional,
 					last_name: n.eg.union([n.eg.null, n.eg.string]).optional,
-					phone_number: n.eg.union([n.eg.null, n.eg.string]).optional,
-					status: n.eg.union([n.eg.null, n.eg.enum(C)]).optional
+					phone_number: n.eg.union([n.eg.null, n.eg.string]).optional
 				}),
 				a = n.eg.object({
 					designated_approvers: n.eg.array(E)
@@ -82982,4 +82982,4 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 	}
 ]);
 
-//# sourceMappingURL=d410313c8c6985b841d8.js.map
+//# sourceMappingURL=e35712303c8798ded442.js.map
