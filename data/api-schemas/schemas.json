@@ -46002,9 +46002,9 @@
 			}
 		},
 		"/accounts/{account_identifier}/r2/buckets": {
-			"post": {
-				"summary": "Create Bucket",
-				"description": "Creates a new R2 bucket.",
+			"get": {
+				"summary": "List Buckets",
+				"description": "Lists all R2 buckets on your account",
 				"parameters": [
 					{
 						"name": "account_identifier",
@@ -46017,7 +46017,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Create Bucket response",
+						"description": "List Buckets response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -46041,9 +46041,41 @@
 				},
 				"security": [
 					{
-						"api_key": [],
-						"api_email": []
-					},
+						"api_token": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.edge.r2.bucket.list"
+					]
+				}
+			},
+			"post": {
+				"summary": "Create Bucket",
+				"description": "Creates a new R2 bucket.",
+				"parameters": [
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1r2~1buckets/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Create Bucket response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1r2~1buckets/get/responses/200/content/application~1json/schema"
+								}
+							}
+						}
+					}
+				},
+				"security": [
 					{
 						"api_token": []
 					}
@@ -46115,10 +46147,6 @@
 					}
 				},
 				"security": [
-					{
-						"api_key": [],
-						"api_email": []
-					},
 					{
 						"api_token": []
 					}
