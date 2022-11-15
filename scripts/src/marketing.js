@@ -251,7 +251,7 @@ async function run(){
 			'data/marketing/*.json',
 			'data/marketing/**/*.json',
 		],
-		`${prefix} - Marketing Site Data was updated!`,
+		`${prefix} - Marketing Site Data was updated! [skip ci]`,
 		'CFData -Marketing Site Data Update',
 		'Pushed Marketing Site Data: ' + prefix,
 		'DISCORD_WEBHOOK_MARKETING',

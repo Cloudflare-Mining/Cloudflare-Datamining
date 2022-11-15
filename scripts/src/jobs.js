@@ -86,7 +86,7 @@ await tryAndPush(
 		'data/jobs/**/*.json',
 		'data/jobs/**/*.md',
 	],
-	`${prefix} - Jobs Data was updated!`,
+	`${prefix} - Jobs Data was updated! [skip ci]`,
 	'CFData - Jobs Data Update',
 	'Pushed Jobs Data: ' + prefix,
 	'DISCORD_WEBHOOK_JOBS',

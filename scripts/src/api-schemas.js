@@ -80,7 +80,7 @@ async function run(){
 			'data/api-schemas/*.yaml',
 			'data/api-schemas/**/*.json',
 		],
-		`${prefix} - API Schemas were updated!`,
+		`${prefix} - API Schemas were updated! [skip ci]`,
 		'CFData - API Schema Data Update',
 		'Pushed API Schema Data: ' + prefix,
 		'DISCORD_WEBHOOK_API',
