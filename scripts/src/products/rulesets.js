@@ -37,7 +37,7 @@ async function run(){
 		[
 			'data/products/rulesets/*.json',
 		],
-		`${prefix} - Product: Rulesets Data was updated!`,
+		`${prefix} - Product: Rulesets Data was updated! [skip ci]`,
 		'CFData - Product: Rulesets Data Update',
 		'Pushed Product: Rulesets Data: ' + prefix,
 		'DISCORD_WEBHOOK_PRODUCT_RULESETS',

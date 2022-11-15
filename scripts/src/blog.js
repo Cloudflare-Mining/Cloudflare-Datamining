@@ -271,7 +271,7 @@ await tryAndPush(
 		'data/blog/**/*',
 		'data/blog/**/*.html',
 	],
-	`${prefix} - Blog Content was updated!`,
+	`${prefix} - Blog Content was updated! [skip ci]`,
 	'CFData - Blog Content Update',
 	'Pushed Blog Content: ' + prefix,
 	'DISCORD_WEBHOOK_BLOG',

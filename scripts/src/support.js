@@ -59,7 +59,7 @@ async function run(){
 	const prefix = dateFormat(new Date(), 'd mmmm yyyy');
 	await tryAndPush(
 		['data/support/*'],
-		`${prefix} - Support Articles Data was updated!`,
+		`${prefix} - Support Articles Data was updated! [skip ci]`,
 		'CFData - Support Articles Data Update',
 		'Pushed Support Articles Data: ' + prefix,
 		'DISCORD_WEBHOOK_SUPPORT',
