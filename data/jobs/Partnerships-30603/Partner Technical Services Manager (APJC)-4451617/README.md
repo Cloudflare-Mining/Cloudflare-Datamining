@@ -7,29 +7,36 @@
 </div>
 <p><strong>Candidate Requirements:</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Hands-on experience in one of these solutions:</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to perform troubleshooting and solve technical problems</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to prioritize, multi-task, and perform effectively in a fast-paced environment while helping partners drive successful services engagements and outcomes</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience in educating services partners</span><span style="font-weight: 400;"> </span><span style="font-weight: 400;">to build technical competency and practice and deliver quality services to Cloudflare customers</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Excellent communication, documentation, problem-solving, and project management skills</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Hands-on experience with how the internet works and the desire to expand that knowledge. For example:</span>
+		<ul>
+			<li style="font-weight: 400;"><span style="font-weight: 400;">Layers and protocols of the OSI model, such as TCP/IP, TLS, DNS, or HTTP</span></li>
+			<li style="font-weight: 400;"><span style="font-weight: 400;">Reverse and forward proxies and the applications of both</span></li>
+			<li style="font-weight: 400;"><span style="font-weight: 400;">Security aspects of an internet property, such as Firewalls, WAFs, Bot Management, Rate Limiting, (M)TLS, Zero Trust</span></li>
+			<li style="font-weight: 400;"><span style="font-weight: 400;">Performance aspects of an internet property, such as Speed, Latency, Caching, HTTP/2, or TLSv1.3</span></li>
+			<li style="font-weight: 400;"><span style="font-weight: 400;">Enjoy the adventure of troubleshooting technical problems</span></li>
+			<li style="font-weight: 400;"><span style="font-weight: 400;">Understand why Cloudflare plays an important role on today’s internet</span></li>
+		</ul>
+	</li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">5+ years of customer/partner-facing experience, and experience translating business requirements into technological solutions.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Proven experience building deep technical relationships with channel partners, systems integrators, and third-party developers to deliver high-impact Cloudflare solutions.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Previous technical service delivery experience in service organization is preferred, e.g., project management, technical account manager, professional services consultant</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Excellent communication, documentation, problem-solving, and project management skills</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with a scripting language (e.g. Python, JavaScript, Bash) will be an advantage</span></li>
 </ul>
 <p><strong>Bonus points:</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with a scripting language (e.g. Python, JavaScript, Bash, etc.)</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Fluency in Japanese, Korean and/or other languages</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Hands-on experience with similar Cloudflare Solutions (Zscaler, Akamai, Imperva, Cloudfront, etc.) will be preferred</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with, regulatory requirements such a PCI DSS, HIPAA, and SOC-2</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Fluency in Japanese, Korean and/or other languages is preferred</span></li>
 </ul>
 <p><span style="font-weight: 400;">&nbsp;</span></p>
 <p><strong>Job Roles:</strong></p>
 <ul>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Cloudflare Partner Services organization provides services and product implementation advisory expertise to our strategic Services Partners to help them build service management offerings around Cloudflare.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">As a Technical Services Manager (TSM), you will draw on your technical acumen and partner-facing skills to help Services Partner successfully migrate, implement, and manage Cloudflare solutions.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">In this role, you will manage the successful technical delivery of Services Partner engagements to drive customer adoption of Cloudflare, for example, Cloudflare Zero Trust, Application Services, Network Services, and Edge Developer solutions.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">In this role, you will manage the successful technical delivery of Services Partner engagements to drive customer adoption of Cloudflare solutions, for example, Cloudflare Zero Trust, Application Services, Network Services, and Edge Developer solutions.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">You will build deep technical relationships and regularly engage with diverse stakeholder groups within the partner and customer organizations (as needed), including executives of large enterprises and a cross-functional and geographically dispersed team.&nbsp;</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">You'll utilize your relationship management skills and technical credibility to effectively communicate at all levels of the organization.&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to travel (domestically and internationally) approximately 30% of the time, as needed.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to travel (domestically and internationally) approximately 25% of the time, as needed.</span></li>
 </ul>
 <p><span style="font-weight: 400;">&nbsp;</span></p>
 <p><span style="font-weight: 400;">&nbsp;</span><strong>Job Responsibilities</strong></p>
@@ -37,12 +44,13 @@
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Develop strategic relationships with partner organization stakeholders to understand their services business offering and develop strategic roadmaps.&nbsp;</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Provide Services Partners with technical guidance, timelines, milestones, migration goals, and business transformation strategies to address customer technical requirements.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Build up Services Partners' technical competency in delivering Cloudflare services during the incubation period.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Leverage your technical expertise and experience to develop services practices and processes within the organizations and drive cross-functional teamwork to bring these practices to market.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Lead regular technical services reviews to better Services Partners' technical needs.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Run Services Partners workshops partnering with Customer Support, Product Engineering, and Enablement team to ensure Partner Service Delivery success during migration/implementation projects.&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Lead quarterly technical services reviews to better Services Partners' technical needs.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Plan for Services Partners Practice workshops partnering with Customer Support, Technical Marketing Engineering, Product and Enablement team to ensure Partner Service Delivery success during migration/implementation projects.&nbsp;</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Work with Partners and Support to guide issues/escalations to resolution, as needed, with regards to migration/implementation projects.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Develop best practices and assets based on the learnings from project engagements to support initiatives to scale through partners and accelerate Cloudflare adoptions</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Develop best practices and assets based on the learnings from project engagements to support initiatives to scale through partners and accelerate Cloudflare adoption.</span></li>
 </ul>
+<p><strong>&nbsp;</strong></p>
+<p><br><br></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
