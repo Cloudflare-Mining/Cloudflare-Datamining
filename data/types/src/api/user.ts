@@ -82,7 +82,8 @@ export const UserCommunicationPreferences = eg.object({
     feedback: Preference,
     marketing_communication: Preference,
     origin_status: Preference,
-    product_news: Preference
+    product_news: Preference,
+    zone_versioning_warning: Preference
   }),
   'language-locale': eg.enum(SupportedLocales),
   created_on: eg.string,
