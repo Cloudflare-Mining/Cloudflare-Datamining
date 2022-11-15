@@ -1,5 +1,11 @@
 # Change Log
 
+## 9.7.0
+
+### Minor Changes
+
+- f0ba8ef333: Add queues icon
+
 ## 9.6.0
 
 ### Minor Changes

@@ -75,6 +75,7 @@ import Plus from './Plus';
 import Printer from './Printer';
 import ProductSecurityCenter from './ProductSecurityCenter';
 import PubSub from './PubSub';
+import Queues from './Queues';
 import R2 from './R2';
 import Refresh from './Refresh';
 import RegistrarLogo from './RegistrarLogo';
@@ -196,6 +197,7 @@ export default {
   printer: Printer,
   'product-security-center': ProductSecurityCenter,
   'pub-sub': PubSub,
+  queues: Queues,
   r2: R2,
   refresh: Refresh,
   'registrar-logo': RegistrarLogo,
