@@ -2,7 +2,7 @@
 	"id": "3YhX-g-fnk_5",
 	"title": "Site Search 360",
 	"shortDescription": "Add a powerful search bar to your site.",
-	"longDescription": "Site Search 360 is an easy-to-integrate but powerful search bar for your website.\n\n1-minute product overview: https://youtu.be/yZoYy-JBIh8\n\nSite Search 360 features:\n\n*Site-wide content indexing with an option to include multiple domains and sub-domains\n*The types of content we can index and make searchable:\n- HTML pages\n- JS-rendered content\n- FAQs\n- full-text document indexing: PDF, DOC, XLS, PPT\n- YouTube videos\n- Password-protected page crawling\n\n*Full control over your search and indexing settings\n\n*Built-in result manager: re-order and pin the best results, re-write, re-direct, create custom banners\n\n*Result groups, facets, and filters\n\n*Popular and recent search suggestions\n\n*Full dictionary support in 19 languages\n\n*Unlimited custom synonyms and enrichments\n\n*Internal search insights and external tracking with Google Analytics and Google Tag Manager\n\n*Highly customizable look and feel via custom CSS, API, or our interactive Search Designer:\nhttps://www.sitesearch360.com/search-designer/\n\nTo manage your crawler settings, use the credentials sent to you by email to log in to your control panel:\nhttps://control.sitesearch360.com/login",
+	"longDescription": "Site Search 360 is an easy-to-integrate but powerful search bar for your website.\n\n1-minute product overview: https://youtu.be/yZoYy-JBIh8\n\nSite Search 360 features:\n\n- Site-wide content indexing with an option to include multiple domains and sub-domains\n- Full control over your search and indexing settings\n- Built-in result manager: re-order and pin the best results, re-write, re-direct, create custom banners\n- Result groups, facets, and filters\n- Popular and recent search suggestions\n- Full dictionary support in 19 languages\n- Unlimited custom synonyms and enrichments\n- Internal search insights and external tracking with Google Analytics and Google Tag Manager\n- Highly customizable look and feel via custom CSS, API, or our interactive Search Designer\n\nThe types of content we can index and make searchable:\n- HTML pages\n- JS-rendered content\n- FAQs\n- full-text document indexing: PDF, DOC, XLS, PPT\n- YouTube videos\n- Password-protected page crawling\n\nTo manage your crawler settings, use the credentials sent to you by email to log in to your control panel:\nhttps://app.sitesearch360.com/login",
 	"instructions": "Add the Site Search 360 search bar by dragging and dropping it to your site template.\n\nYou can also check our getting-started guide: https://www.sitesearch360.com/getting-started/ or reach out to us at cf-support@sitesearch360.com and we'll help you get up and running!",
 	"alias": "site-search-360",
 	"orgId": "19bfad785040d781160d3e27d4b9a901",
@@ -27,8 +27,8 @@
 	"adminVisible": true,
 	"userVisible": true,
 	"installable": true,
-	"codeVersion": "2.0.1",
-	"infoVersion": "2.0.1",
+	"codeVersion": "2.0.3",
+	"infoVersion": "2.0.3",
 	"points": 850,
 	"supportEmail": "cf-support@sitesearch360.com",
 	"products": [
@@ -43,10 +43,10 @@
 			"created": null
 		},
 		{
-			"id": "columbo",
+			"id": "columbo2",
 			"title": "Columbo",
 			"shortDescription": "Fresher indices, PDF indexing, less branding, semantic search",
-			"longDescription": "* 1,500 pages indexed\n* 5,000 queries a month\n* Weekly recrawls\n* PDF indexing (5 pages / PDF)\n* Sitemap support\n* Semantic search\n* Full dictionary support\n* Complete result control\n* Site Search 360 branding only on result pages",
+			"longDescription": "* 1,500 pages indexed\n* 2,000 queries a month\n* Weekly recrawls\n* PDF indexing (5 pages / PDF)\n* Sitemap support\n* Semantic search\n* Full dictionary support\n* Complete result control\n* Site Search 360 branding only on result pages",
 			"visible": true,
 			"price": 900,
 			"order": 0,
@@ -55,24 +55,24 @@
 			"created": null
 		},
 		{
-			"id": "holmes",
+			"id": "holmes2",
 			"title": "Holmes",
 			"shortDescription": "API Access, no branding",
-			"longDescription": "* 3,000 pages indexed\n* 10,000 queries a month\n* Weekly recrawls\n* PDF indexing (10 pages / PDF)\n* E-Mail Support\n* Sitemap support\n* Semantic search\n* Full dictionary support\n* Complete result control\n* API Access\n* No Site Search 360 branding",
+			"longDescription": "* 3,000 pages indexed\n* 5,000 queries a month\n* Weekly recrawls\n* PDF indexing (10 pages / PDF)\n* E-Mail Support\n* Sitemap support\n* Semantic search\n* Full dictionary support\n* Complete result control\n* API Access\n* No Site Search 360 branding",
 			"visible": true,
-			"price": 3900,
+			"price": 4900,
 			"order": 0,
 			"plan": "site_search_360_holmes",
 			"feature": "apps.site_search_360.holmes.enabled",
 			"created": null
 		},
 		{
-			"id": "batman",
+			"id": "batman2",
 			"title": "Batman",
 			"shortDescription": "All the good stuff + help from our team whenever you need it.",
-			"longDescription": "* 15,000 pages indexed\n* 25,000 queries a month\n* Two weekly recrawls\n* PDF indexing (50 pages / PDF)\n* Priority Support\n* Sitemap support\n* Semantic search\n* Full dictionary support\n* Complete result control\n* API Access\n* No Site Search 360 branding",
+			"longDescription": "* 5,000 pages indexed\n* 10,000 queries a month\n* Weekly recrawls\n* PDF indexing (50 pages / PDF)\n* Priority Support\n* Sitemap support\n* Semantic search\n* Full dictionary support\n* Complete result control\n* API Access\n* No Site Search 360 branding",
 			"visible": true,
-			"price": 9900,
+			"price": 11900,
 			"order": 0,
 			"plan": "site_search_360_batman",
 			"feature": "apps.site_search_360.batman.enabled",
@@ -3708,7 +3708,7 @@
 			"releaseNotes": "Updated plan and features information.",
 			"source": "",
 			"creatorUserId": "",
-			"installable": false,
+			"installable": true,
 			"files": [],
 			"hasCode": true,
 			"fileHandle": "local/8iDs6J7IorGx",
@@ -3805,12 +3805,13 @@
 				},
 				"created": "2017-09-06T13:01:56.609462Z"
 			},
-			"moderationStatus": "pending",
+			"moderationStatus": "approved",
 			"moderationMetadata": {
 				"requestedByUserId": "2b888bbc0904d1f8de46ae9d86908a44",
 				"requestedAt": "2022-11-11T16:46:58.29299948Z",
 				"canceledAt": null,
-				"reviewedAt": null
+				"reviewedByUserId": "003d69515c178849214f81bf10ea8f84",
+				"reviewedAt": "2022-11-15T22:54:11.720587676Z"
 			}
 		}
 	]
