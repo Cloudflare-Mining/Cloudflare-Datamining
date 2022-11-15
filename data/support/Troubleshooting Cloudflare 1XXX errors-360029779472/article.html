@@ -140,8 +140,16 @@
 <h3>Common causes</h3>
 <p>The owner of the website (e.g. example.com) has banned the autonomous system number (ASN) from accessing the website.</p>
 <h3>Resolution</h3>
-<p>Ensure the ASN is allowed under the <a href="https://support.cloudflare.com/hc/en-us/articles/217074967-Configuring-IP-Access-Rules">IP Access Rules</a> security feature.
-</p>
+<p>If you are not the website owner, provide the website owner with a screenshot of the 1005 error message you received.</p>
+<p>If you are the website owner:</p>
+<ol>
+	<li>Retrieve a screenshot of the 1005 error from your customer</li>
+	<li>Search the <a href="https://developers.cloudflare.com/waf/analytics"><b>Firewall Events Log</b></a> within the <b>Overview </b>tab of your Cloudflare <b>Security </b>app for the <b>RayID</b>,<b> </b>or client IP Address from the visitor’s 1005 error message.</li>
+</ol>
+<p></p>
+<div class="cf-sidebar-2 cf-note">Convert the UTC timestamp of the 1005 error to your local timezone when searching in the <strong>Firewall Events Log</strong>.
+</div>
+<p>3. Assess the cause of the block and ensure the ASN is allowed under the <a href="https://support.cloudflare.com/hc/en-us/articles/217074967-Configuring-IP-Access-Rules">IP Access Rules</a> security feature.</p>
 <hr>
 <h2 id="error100610071008">Errors 1006, 1007, 1008 or 1106 Access Denied: Your IP address has been banned</h2>
 <h3>Common causes</h3>
@@ -162,7 +170,7 @@
 <h3>Common cause</h3>
 <p>A website owner blocked your request based on your client's web browser.</p>
 <h3>Resolution</h3>
-<p>Notify the website owner of the blocking. If you cannot determine how to contact the website owner, lookup contact information for the domain via the <a href="https://whois.icann.org/en/lookup">Whois database</a>. Site owners disable <b>Browser</b> <b>Integrity Check</b> via the <b>Settings</b> tab of the <b>Firewall</b> app.</p>
+<p>Notify the website owner of the blocking. If you cannot determine how to contact the website owner, lookup contact information for the domain via the <a href="https://whois.icann.org/en/lookup">Whois database</a>. Site owners disable <b>Browser</b> <b>Integrity Check</b> via the <b>Settings</b> tab of the <b>Security</b> app.</p>
 <p></p>
 <div class="cf-sidebar-2 cf-note">Since the website owner performed the blocking, Cloudflare support cannot override a customer’s security settings.
 </div>
@@ -278,7 +286,7 @@
 <p>If you are the website owner:</p>
 <ol>
 	<li>Retrieve a screenshot of the 1020 error from your customer</li>
-	<li>Search the <a href="https://developers.cloudflare.com/waf/analytics"><b>Firewall Events Log</b></a> within the <b>Overview </b>tab of your Cloudflare <b>Firewall </b>app for the <b>RayID </b>or client IP Address from the visitor’s 1020 error message.</li>
+	<li>Search the <a href="https://developers.cloudflare.com/waf/analytics"><b>Firewall Events Log</b></a> within the <b>Overview </b>tab of your Cloudflare <b>Security </b>app for the <b>RayID </b>or client IP Address from the visitor’s 1020 error message.</li>
 </ol>
 <p></p>
 <div class="cf-sidebar-2 cf-note">Convert the UTC timestamp of the 1020 error to your local timezone when searching in the <strong>Firewall Events Log</strong>.
