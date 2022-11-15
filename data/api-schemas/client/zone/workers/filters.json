@@ -2,10 +2,22 @@
 	"id": "https://api.cloudflare.com/schemas/v4/client/zone/workers/filters.json",
 	"title": "Worker Filters (Deprecated)",
 	"description": "Filters are basic patterns used to enable or disable workers that match requests.",
-	"cfExtendedDescription": "**NOTE**: This API is **deprecated**, please use equivalent `/routes` API endpoints where possible. These APIs are for use with the previously limited single-script zones.",
+	"cfExtendedDescription": "This API is **deprecated**, please use equivalent `/routes` API endpoints where possible. These APIs are for use with the previously limited single-script zones.",
+	"cfDeprecations": {
+		"worker_filter_deprecation": {
+			"id": "worker_filter_deprecation",
+			"description": "This endpoint and its related APIs are deprecated in favor of the `/routes` equivalent APIs. These APIs are for use with the previously limited single-script zones.",
+			"display": true
+		}
+	},
 	"type": "object",
 	"links": [
 		{
+			"cfDeprecation": {
+				"id": "worker_filter_deprecation",
+				"description": "This endpoint and its related APIs are deprecated in favor of the `/routes` equivalent APIs. These APIs are for use with the previously limited single-script zones.",
+				"display": true
+			},
 			"title": "List Filters",
 			"description": "",
 			"rel": "collection",
@@ -39,6 +51,11 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n      \"pattern\": \"example.net/*\",\n      \"enabled\": true\n    }\n  ]\n}"
 		},
 		{
+			"cfDeprecation": {
+				"id": "worker_filter_deprecation",
+				"description": "This endpoint and its related APIs are deprecated in favor of the `/routes` equivalent APIs. These APIs are for use with the previously limited single-script zones.",
+				"display": true
+			},
 			"title": "Update Filter",
 			"rel": "self",
 			"href": "zones/{#/definitions/zone_id}/workers/filters/{#/definitions/filter_id}",
@@ -74,6 +91,11 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n    \"pattern\": \"example.net/*\",\n    \"enabled\": true\n  }\n}"
 		},
 		{
+			"cfDeprecation": {
+				"id": "worker_filter_deprecation",
+				"description": "This endpoint and its related APIs are deprecated in favor of the `/routes` equivalent APIs. These APIs are for use with the previously limited single-script zones.",
+				"display": true
+			},
 			"title": "Delete Filter",
 			"rel": "self",
 			"href": "zones/{#/definitions/zone_id}/workers/filters/{#/definitions/filter_id}",
@@ -106,6 +128,11 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"9a7806061c88ada191ed06f989cc3dac\"\n  }\n}"
 		},
 		{
+			"cfDeprecation": {
+				"id": "worker_filter_deprecation",
+				"description": "This endpoint and its related APIs are deprecated in favor of the `/routes` equivalent APIs. These APIs are for use with the previously limited single-script zones.",
+				"display": true
+			},
 			"title": "Create Filter",
 			"rel": "self",
 			"href": "zones/{#/definitions/zone_id}/workers/filters",

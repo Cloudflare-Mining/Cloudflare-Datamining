@@ -1,6 +1,6 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/account/access/bookmarks.json",
-	"title": "Access Bookmark applications",
+	"title": "Access Bookmark applications (Deprecated)",
 	"description": "Access Bookmark applications are applications displayed in the App Launcher, but are not secured behind Access.",
 	"cfExtendedDescription": "We recommend using the equivalent [Access applications](https://api.cloudflare.com/#access-applications-properties) API.",
 	"cfDeprecations": {
@@ -26,7 +26,7 @@
 				"eol": "2023-03-19",
 				"display": true
 			},
-			"html_id": "access-bookmark-applications-list-bookmark-applications",
+			"html_id": "access-bookmark-applications-deprecated--list-bookmark-applications",
 			"uri": "accounts/:identifier/access/bookmarks",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/access/bookmarks\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n      \"domain\": \"example.com\",\n      \"name\": \"My Website\",\n      \"logo_url\": \"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\n      \"app_launcher_visible\": true,\n      \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n      \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n    }\n  ]\n}"
@@ -44,7 +44,7 @@
 				"eol": "2023-03-19",
 				"display": true
 			},
-			"html_id": "access-bookmark-applications-get-a-bookmark-application",
+			"html_id": "access-bookmark-applications-deprecated--get-a-bookmark-application",
 			"uri": "accounts/:identifier/access/bookmarks/:uuid",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/access/bookmarks/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"domain\": \"example.com\",\n    \"name\": \"My Website\",\n    \"logo_url\": \"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\n    \"app_launcher_visible\": true,\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
@@ -62,7 +62,7 @@
 				"eol": "2023-03-19",
 				"display": true
 			},
-			"html_id": "access-bookmark-applications-create-a-bookmark-application",
+			"html_id": "access-bookmark-applications-deprecated--create-a-bookmark-application",
 			"uri": "accounts/:identifier/access/bookmarks/:uuid",
 			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/access/bookmarks/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"domain\": \"example.com\",\n    \"name\": \"My Website\",\n    \"logo_url\": \"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\n    \"app_launcher_visible\": true,\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
@@ -80,7 +80,7 @@
 				"eol": "2023-03-19",
 				"display": true
 			},
-			"html_id": "access-bookmark-applications-update-a-bookmark-application",
+			"html_id": "access-bookmark-applications-deprecated--update-a-bookmark-application",
 			"uri": "accounts/:identifier/access/bookmarks/:uuid",
 			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/access/bookmarks/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"domain\": \"example.com\",\n    \"name\": \"My Website\",\n    \"logo_url\": \"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\n    \"app_launcher_visible\": true,\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
@@ -98,13 +98,13 @@
 				"eol": "2023-03-19",
 				"display": true
 			},
-			"html_id": "access-bookmark-applications-delete-a-bookmark-application",
+			"html_id": "access-bookmark-applications-deprecated--delete-a-bookmark-application",
 			"uri": "accounts/:identifier/access/bookmarks/:uuid",
 			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/access/bookmarks/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"\n  }\n}"
 		}
 	],
-	"html_id": "access-bookmark-applications",
+	"html_id": "access-bookmark-applications-deprecated-",
 	"object_definition": {
 		"_formatter": {
 			"jsonMediaType": {}
@@ -170,7 +170,7 @@
 		],
 		"objects": [],
 		"example": "{\n  \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n  \"domain\": \"example.com\",\n  \"name\": \"My Website\",\n  \"logo_url\": \"https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg\",\n  \"app_launcher_visible\": true,\n  \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n}",
-		"title": "Access Bookmark applications",
+		"title": "Access Bookmark applications (Deprecated)",
 		"description": "Access Bookmark applications are applications displayed in the App Launcher, but are not secured behind Access."
 	}
 }

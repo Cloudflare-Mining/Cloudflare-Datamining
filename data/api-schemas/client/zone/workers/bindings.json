@@ -2,10 +2,22 @@
 	"id": "https://api.cloudflare.com/schemas/v4/client/zone/workers/bindings.json",
 	"title": "Worker Binding (Deprecated)",
 	"description": "A worker binding is a resource made available to a worker via a JavaScript variable name.",
-	"cfExtendedDescription": "**NOTE**: This API is **deprecated**, please use equivalent `/accounts` API endpoints where possible. These APIs are for use with the previously limited single-script zones.",
+	"cfExtendedDescription": "This API is **deprecated**, please use equivalent `/accounts` API endpoints where possible. These APIs are for use with the previously limited single-script zones.",
+	"cfDeprecations": {
+		"worker_binding_deprecation": {
+			"id": "worker_binding_deprecation",
+			"description": "This endpoint and its related APIs are deprecated in favor of the `/accounts` equivalent APIs. These APIs are for use with the previously limited single-script zones.",
+			"display": true
+		}
+	},
 	"type": "object",
 	"links": [
 		{
+			"cfDeprecation": {
+				"id": "worker_binding_deprecation",
+				"description": "This endpoint and its related APIs are deprecated in favor of the `/accounts` equivalent APIs. These APIs are for use with the previously limited single-script zones.",
+				"display": true
+			},
 			"title": "List Bindings",
 			"description": "List the bindings for a Workers script.",
 			"rel": "self",
