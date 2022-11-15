@@ -1657,6 +1657,20 @@ components:
                   items:
                     ref: '#/components/schemas/acl'
                     value: null
+    acl_components-schemas-single_response:
+      ref: ""
+      value:
+        extensionprops: {}
+        allOf:
+        - ref: '#/components/schemas/api-response-single'
+          value: null
+        - ref: ""
+          value:
+            extensionprops: {}
+            properties:
+              result:
+                ref: '#/components/schemas/acl'
+                value: null
     acns_response_collection:
       ref: ""
       value:
@@ -2864,6 +2878,13 @@ components:
                       ref: '#/components/schemas/common_components-schemas-identifier'
                       value: null
         type: object
+    api-shield:
+      ref: ""
+      value:
+        extensionprops: {}
+        allOf:
+        - ref: '#/components/schemas/operation'
+          value: null
     api_access_enabled:
       ref: ""
       value:
@@ -3782,6 +3803,13 @@ components:
         type: string
         description: The unique subdomain assigned to your Zero Trust organization.
         example: test.cloudflareaccess.com
+    auth_id_tokens:
+      ref: ""
+      value:
+        extensionprops: {}
+        type: integer
+        description: The total number of auth-ids seen across this calculation.
+        readOnly: true
     auto_connect:
       ref: ""
       value:
@@ -4836,7 +4864,7 @@ components:
             type: object
             properties:
               result:
-                ref: '#/components/schemas/operation'
+                ref: '#/components/schemas/schemas-operation'
                 value: null
     bulk_delete:
       ref: ""
@@ -5794,6 +5822,37 @@ components:
         - 2.592e+06
         - 3.1536e+07
         default: 1800
+    characteristics:
+      ref: ""
+      value:
+        extensionprops: {}
+        type: array
+        uniqueItems: true
+        maxItems: 10
+        items:
+          ref: ""
+          value:
+            extensionprops: {}
+            type: object
+            required:
+            - type
+            - name
+            properties:
+              name:
+                ref: '#/components/schemas/characteristics_components-schemas-name'
+                value: null
+              type:
+                ref: '#/components/schemas/schemas-type'
+                value: null
+    characteristics_components-schemas-name:
+      ref: ""
+      value:
+        extensionprops: {}
+        type: string
+        description: The name of the characteristic field, i.e., the header or cookie
+          name.
+        example: authorization
+        maxLength: 128
     check_regions:
       ref: ""
       value:
@@ -6246,6 +6305,24 @@ components:
           value:
             extensionprops: {}
             properties:
+              errors:
+                ref: ""
+                value:
+                  extensionprops: {}
+                  type: array
+                  items:
+                    ref: ""
+                    value:
+                      extensionprops: {}
+              messages:
+                ref: ""
+                value:
+                  extensionprops: {}
+                  type: array
+                  items:
+                    ref: ""
+                    value:
+                      extensionprops: {}
               result:
                 ref: ""
                 value:
@@ -6255,28 +6332,82 @@ components:
                     ref: ""
                     value:
                       extensionprops: {}
+                      allOf:
+                      - ref: '#/components/schemas/api-shield'
+                        value: null
+                      - ref: ""
+                        value:
+                          extensionprops: {}
+                          properties:
+                            features:
+                              ref: ""
+                              value:
+                                extensionprops: {}
+    collection_response_paginated:
+      ref: ""
+      value:
+        extensionprops: {}
+        anyOf:
+        - ref: ""
+          value:
+            extensionprops: {}
+            allOf:
+            - ref: '#/components/schemas/collection_response'
+              value: null
+            - ref: ""
+              value:
+                extensionprops: {}
+                properties:
+                  result_info:
+                    ref: ""
+                    value:
+                      extensionprops: {}
+                      type: object
                       properties:
-                        additional_information:
-                          ref: '#/components/schemas/additional_information'
-                          value: null
-                        application:
-                          ref: '#/components/schemas/schemas-application'
-                          value: null
-                        content_categories:
-                          ref: '#/components/schemas/content_categories'
-                          value: null
-                        domain:
-                          ref: '#/components/schemas/components-schemas-domain_name'
-                          value: null
-                        popularity_rank:
-                          ref: '#/components/schemas/popularity_rank'
-                          value: null
-                        risk_score:
-                          ref: '#/components/schemas/risk_score'
-                          value: null
-                        risk_types:
-                          ref: '#/components/schemas/risk_types'
-                          value: null
+                        count:
+                          ref: ""
+                          value:
+                            extensionprops: {}
+                            type: number
+                            description: Total results returned based on your search
+                              parameters.
+                            example: 1
+                        page:
+                          ref: ""
+                          value:
+                            extensionprops: {}
+                            type: number
+                            description: Current page within paginated list of results.
+                            example: 1
+                        per_page:
+                          ref: ""
+                          value:
+                            extensionprops: {}
+                            type: number
+                            description: Number of results per page of results.
+                            example: 20
+                        total_count:
+                          ref: ""
+                          value:
+                            extensionprops: {}
+                            type: number
+                            description: Total results available without any search
+                              parameters.
+                            example: 500
+            - ref: ""
+              value:
+                extensionprops: {}
+                properties:
+                  result:
+                    ref: ""
+                    value:
+                      extensionprops: {}
+                      type: array
+                      items:
+                        ref: '#/components/schemas/api-shield'
+                        value: null
+        - ref: '#/components/schemas/collection_response'
+          value: null
     collection_role_response:
       ref: ""
       value:
@@ -6669,6 +6800,49 @@ components:
               result:
                 ref: '#/components/schemas/schemas-certificateObject'
                 value: null
+    components-schemas-collection_response:
+      ref: ""
+      value:
+        extensionprops: {}
+        allOf:
+        - ref: '#/components/schemas/api-response-collection'
+          value: null
+        - ref: ""
+          value:
+            extensionprops: {}
+            properties:
+              result:
+                ref: ""
+                value:
+                  extensionprops: {}
+                  type: array
+                  items:
+                    ref: '#/components/schemas/web3-hostname'
+                    value: null
+    components-schemas-configuration:
+      ref: ""
+      value:
+        extensionprops: {}
+        type: object
+        description: The configuration object for the current rule.
+        properties:
+          target:
+            ref: ""
+            value:
+              extensionprops: {}
+              type: string
+              description: The configuration target for this rule. You must set the
+                target to `ua` for User Agent Blocking rules.
+              example: ua
+          value:
+            ref: ""
+            value:
+              extensionprops: {}
+              type: string
+              description: The exact user agent string to match. This value will be
+                compared to the received `User-Agent` HTTP header value.
+              example: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/603.2.4
+                (KHTML, like Gecko) Version/10.1.1 Safari/603.2.4
     components-schemas-connection:
       ref: ""
       value:
@@ -6813,6 +6987,15 @@ components:
         default: high
         example: high
         nullable: true
+    components-schemas-host:
+      ref: ""
+      value:
+        extensionprops: {}
+        type: string
+        description: The host name to which the waiting room will be applied (no wildcards).
+          Please do not include the scheme (http:// or https://). The host and path
+          combination must be unique.
+        example: shop.example.com
     components-schemas-hostname:
       ref: ""
       value:
@@ -7049,7 +7232,7 @@ components:
             ref: '#/components/schemas/interval'
             value: null
           method:
-            ref: '#/components/schemas/method'
+            ref: '#/components/schemas/schemas-method'
             value: null
           modified_on:
             ref: '#/components/schemas/timestamp'
@@ -7431,7 +7614,7 @@ components:
             extensionprops: {}
             properties:
               result:
-                ref: '#/components/schemas/acl'
+                ref: '#/components/schemas/tsig'
                 value: null
     components-schemas-state:
       ref: ""
@@ -7567,28 +7750,12 @@ components:
       value:
         extensionprops: {}
         type: string
-        description: DNS record type.
+        description: A full zone implies that DNS is hosted with Cloudflare. A partial
+          zone is typically a partner-hosted zone or a CNAME setup.
         enum:
-        - A
-        - AAAA
-        - CNAME
-        - HTTPS
-        - TXT
-        - SRV
-        - LOC
-        - MX
-        - NS
-        - CERT
-        - DNSKEY
-        - DS
-        - NAPTR
-        - SMIMEA
-        - SSHFP
-        - SVCB
-        - TLSA
-        - URI
-        example: A
-        readOnly: true
+        - full
+        - partial
+        example: full
     components-schemas-updated_at:
       ref: ""
       value:
@@ -7844,19 +8011,11 @@ components:
       ref: ""
       value:
         extensionprops: {}
-        oneOf:
-        - ref: '#/components/schemas/ip_configuration'
-          value: null
-        - ref: '#/components/schemas/ipv6_configuration'
-          value: null
-        - ref: '#/components/schemas/cidr_configuration'
-          value: null
-        - ref: '#/components/schemas/asn_configuration'
-          value: null
-        - ref: '#/components/schemas/country_configuration'
-          value: null
         type: object
-        description: The rule configuration.
+        properties:
+          auth_id_characteristics:
+            ref: '#/components/schemas/characteristics'
+            value: null
     configurations:
       ref: ""
       value:
@@ -9773,6 +9932,13 @@ components:
               result:
                 ref: '#/components/schemas/dashboard'
                 value: null
+    data_points:
+      ref: ""
+      value:
+        extensionprops: {}
+        type: integer
+        description: The number of data points used for the threshold suggestion calculation.
+        readOnly: true
     datacenters:
       ref: ""
       value:
@@ -9940,6 +10106,35 @@ components:
             extensionprops: {}
             type: string
             description: A pool ID.
+    default_response:
+      ref: ""
+      value:
+        extensionprops: {}
+        allOf:
+        - ref: '#/components/schemas/api-response-single'
+          value: null
+        - ref: ""
+          value:
+            extensionprops: {}
+            properties:
+              errors:
+                ref: ""
+                value:
+                  extensionprops: {}
+                  type: array
+                  items:
+                    ref: ""
+                    value:
+                      extensionprops: {}
+              messages:
+                ref: ""
+                value:
+                  extensionprops: {}
+                  type: array
+                  items:
+                    ref: ""
+                    value:
+                      extensionprops: {}
     default_sni:
       ref: ""
       value:
@@ -12034,7 +12229,7 @@ components:
             ref: '#/components/schemas/ttl'
             value: null
           type:
-            ref: '#/components/schemas/components-schemas-type'
+            ref: '#/components/schemas/dns-record_components-schemas-type'
             value: null
           zone_id:
             ref: '#/components/schemas/common_components-schemas-identifier'
@@ -12065,6 +12260,33 @@ components:
         description: DNS record name (or @ for the zone apex).
         example: example.com
         maxLength: 255
+    dns-record_components-schemas-type:
+      ref: ""
+      value:
+        extensionprops: {}
+        type: string
+        description: DNS record type.
+        enum:
+        - A
+        - AAAA
+        - CNAME
+        - HTTPS
+        - TXT
+        - SRV
+        - LOC
+        - MX
+        - NS
+        - CERT
+        - DNSKEY
+        - DS
+        - NAPTR
+        - SMIMEA
+        - SSHFP
+        - SVCB
+        - TLSA
+        - URI
+        example: A
+        readOnly: true
     dns-secondary-primary-zone_components-schemas-identifier:
       ref: ""
       value:
@@ -13169,6 +13391,19 @@ components:
         type: integer
         description: Specifies the end time for the video clip in seconds.
         readOnly: true
+    endpoint:
+      ref: ""
+      value:
+        extensionprops: {}
+        type: string
+        format: uri-template
+        description: 'The endpoint which can contain path parameter templates in curly
+          braces, each will be replaced from left to right with {varN}, starting with
+          {var1}, during insertion. This will further be Cloudflare-normalized upon
+          insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.'
+        example: /api/v1/users/{var1}
+        maxLength: 4096
+        pattern: ^/.*$
     entities_components-schemas-asn:
       ref: ""
       value:
@@ -13841,14 +14076,11 @@ components:
       ref: ""
       value:
         extensionprops: {}
-        type: array
-        description: Contents of a Cloudflare Tunnel.
-        items:
-          ref: ""
-          value:
-            extensionprops: {}
-            type: string
-            example: ha-origin
+        anyOf:
+        - ref: '#/components/schemas/thresholds'
+          value: null
+        type: object
+        readOnly: true
     fetched_at:
       ref: ""
       value:
@@ -14329,7 +14561,7 @@ components:
         extensionprops: {}
         properties:
           configuration:
-            ref: '#/components/schemas/schemas-configuration'
+            ref: '#/components/schemas/components-schemas-configuration'
             value: null
           description:
             ref: '#/components/schemas/ua-rules_components-schemas-description'
@@ -15550,9 +15782,9 @@ components:
         extensionprops: {}
         type: string
         format: hostname
-        description: The keyless SSL name.
-        example: example.com
-        maxLength: 253
+        description: RFC3986-compliant host.
+        example: www.example.com
+        maxLength: 255
     hostname:
       ref: ""
       value:
@@ -17636,7 +17868,7 @@ components:
             ref: '#/components/schemas/schemas-enabled'
             value: null
           host:
-            ref: '#/components/schemas/host'
+            ref: '#/components/schemas/schemas-host'
             value: null
           id:
             ref: '#/components/schemas/keyless-certificate_components-schemas-identifier'
@@ -18256,7 +18488,7 @@ components:
                   type: object
                   properties:
                     operation_id:
-                      ref: '#/components/schemas/operation_id'
+                      ref: '#/components/schemas/schemas-operation_id'
                       value: null
     lists-response-collection:
       ref: ""
@@ -19827,10 +20059,17 @@ components:
       value:
         extensionprops: {}
         type: string
-        description: The method to use for the health check. This defaults to 'GET'
-          for HTTP/HTTPS based checks and 'connection_established' for TCP based health
-          checks.
-        default: GET
+        description: The HTTP method used to access the endpoint.
+        enum:
+        - GET
+        - POST
+        - HEAD
+        - OPTIONS
+        - PUT
+        - DELETE
+        - CONNECT
+        - PATCH
+        - TRACE
         example: GET
     methods:
       ref: ""
@@ -20465,7 +20704,7 @@ components:
             ref: '#/components/schemas/interval'
             value: null
           method:
-            ref: '#/components/schemas/method'
+            ref: '#/components/schemas/schemas-method'
             value: null
           modified_on:
             ref: '#/components/schemas/timestamp'
@@ -21145,55 +21384,87 @@ components:
         readOnly: true
         minimum: 0
         maximum: 1
+    openapi:
+      ref: ""
+      value:
+        extensionprops: {}
+        type: object
+        description: A OpenAPI 3.0.0 compliant schema.
+        example:
+          info:
+            title: OpenAPI JSON schema for www.example.com
+            version: "1.0"
+          openapi: 3.0.0
+          paths:
+            '... Further paths ...': {}
+            /api/v1/users/{var1}:
+              get:
+                parameters:
+                - in: path
+                  name: var1
+                  required: true
+                  schema:
+                    type: string
+          servers:
+          - url: www.example.com
+    openapiwiththresholds:
+      ref: ""
+      value:
+        extensionprops: {}
+        type: object
+        description: A OpenAPI 3.0.0 compliant schema.
+        example:
+          info:
+            title: OpenAPI JSON schema for www.example.com
+            version: "1.0"
+          openapi: 3.0.0
+          paths:
+            '... Further paths ...': {}
+            /api/v1/users/{var1}:
+              get:
+                parameters:
+                - in: path
+                  name: var1
+                  required: true
+                  schema:
+                    type: string
+          servers:
+          - url: www.example.com
     operation:
       ref: ""
       value:
         extensionprops: {}
         type: object
         required:
-        - id
-        - status
+        - operation_id
+        - method
+        - host
+        - endpoint
+        - last_updated
         properties:
-          completed:
-            ref: ""
-            value:
-              extensionprops: {}
-              type: string
-              description: The RFC 3339 timestamp of when the operation was completed.
-              example: "2020-01-01T08:00:00Z"
-              readOnly: true
-          error:
-            ref: ""
-            value:
-              extensionprops: {}
-              type: string
-              description: A message describing the error when the status is `failed`.
-              example: This list is at the maximum number of items
-              readOnly: true
-          id:
+          endpoint:
+            ref: '#/components/schemas/endpoint'
+            value: null
+          features:
+            ref: '#/components/schemas/features'
+            value: null
+          host:
+            ref: '#/components/schemas/host'
+            value: null
+          last_updated:
+            ref: '#/components/schemas/timestamp'
+            value: null
+          method:
+            ref: '#/components/schemas/method'
+            value: null
+          operation_id:
             ref: '#/components/schemas/operation_id'
             value: null
-          status:
-            ref: ""
-            value:
-              extensionprops: {}
-              type: string
-              description: The current status of the asynchronous operation.
-              enum:
-              - pending
-              - running
-              - completed
-              - failed
-              example: failed
-              readOnly: true
     operation_id:
       ref: ""
       value:
         extensionprops: {}
-        type: string
-        description: The unique operation ID of the asynchronous action.
-        example: 4da8780eeb215e6cb7f48dd981c4ea02
-        readOnly: true
+        description: The ID that identifies the API operation.
     opportunistic_encryption:
       ref: ""
       value:
@@ -22020,6 +22291,27 @@ components:
         type: object
         description: This presents the token to be served by the given http url to
           activate a hostname.
+    p50:
+      ref: ""
+      value:
+        extensionprops: {}
+        type: integer
+        description: The p50 quantile of requests (in period_seconds).
+        readOnly: true
+    p90:
+      ref: ""
+      value:
+        extensionprops: {}
+        type: integer
+        description: The p90 quantile of requests (in period_seconds).
+        readOnly: true
+    p99:
+      ref: ""
+      value:
+        extensionprops: {}
+        type: integer
+        description: The p99 quantile of requests (in period_seconds).
+        readOnly: true
     package:
       ref: ""
       value:
@@ -23062,6 +23354,20 @@ components:
                   items:
                     ref: '#/components/schemas/peer'
                     value: null
+    peer_components-schemas-single_response:
+      ref: ""
+      value:
+        extensionprops: {}
+        allOf:
+        - ref: '#/components/schemas/api-response-single'
+          value: null
+        - ref: ""
+          value:
+            extensionprops: {}
+            properties:
+              result:
+                ref: '#/components/schemas/peer'
+                value: null
     peers:
       ref: ""
       value:
@@ -23101,6 +23407,13 @@ components:
         example: 900
         minimum: 10
         maximum: 86400
+    period_seconds:
+      ref: ""
+      value:
+        extensionprops: {}
+        type: integer
+        description: The period over which this threshold is suggested.
+        readOnly: true
     permission_group:
       ref: ""
       value:
@@ -25003,7 +25316,7 @@ components:
             ref: '#/components/schemas/disable_session_renewal'
             value: null
           host:
-            ref: '#/components/schemas/schemas-host'
+            ref: '#/components/schemas/components-schemas-host'
             value: null
           json_response_enabled:
             ref: '#/components/schemas/json_response_enabled'
@@ -25882,121 +26195,9 @@ components:
       ref: ""
       value:
         extensionprops: {}
-        type: object
-        description: Breakdown of totals for requests.
-        properties:
-          all:
-            ref: ""
-            value:
-              extensionprops: {}
-              type: integer
-              description: Total number of requests served.
-          cached:
-            ref: ""
-            value:
-              extensionprops: {}
-              type: integer
-              description: Total number of cached requests served.
-          content_type:
-            ref: ""
-            value:
-              extensionprops: {}
-              type: object
-              description: A variable list of key/value pairs where the key represents
-                the type of content served, and the value is the number of requests.
-              example:
-                css: 15343
-                gif: 23178
-                html: 1.234213e+06
-                javascript: 318236
-                jpeg: 1.982048e+06
-          country:
-            ref: ""
-            value:
-              extensionprops: {}
-              type: object
-              description: A variable list of key/value pairs where the key is a two-digit
-                country code and the value is the number of requests served to that
-                country.
-              example:
-                AG: 37298
-                GI: 293846
-                US: 4.181364e+06
-          http_status:
-            ref: ""
-            value:
-              extensionprops: {}
-              type: object
-              description: Key/value pairs where the key is a HTTP status code and
-                the value is the number of requests served with that code.
-              example:
-                "200": 1.3496983e+07
-                "301": 283
-                "400": 187936
-                "402": 1828
-                "404": 1293
-          ssl:
-            ref: ""
-            value:
-              extensionprops: {}
-              type: object
-              description: A break down of requests served over HTTPS.
-              properties:
-                encrypted:
-                  ref: ""
-                  value:
-                    extensionprops: {}
-                    type: integer
-                    description: The number of requests served over HTTPS.
-                unencrypted:
-                  ref: ""
-                  value:
-                    extensionprops: {}
-                    type: integer
-                    description: The number of requests served over HTTP.
-          ssl_protocols:
-            ref: ""
-            value:
-              extensionprops: {}
-              type: object
-              description: A breakdown of requests by their SSL protocol.
-              properties:
-                TLSv1:
-                  ref: ""
-                  value:
-                    extensionprops: {}
-                    type: integer
-                    description: The number of requests served over TLS v1.0.
-                TLSv1.1:
-                  ref: ""
-                  value:
-                    extensionprops: {}
-                    type: integer
-                    description: The number of requests served over TLS v1.1.
-                TLSv1.2:
-                  ref: ""
-                  value:
-                    extensionprops: {}
-                    type: integer
-                    description: The number of requests served over TLS v1.2.
-                TLSv1.3:
-                  ref: ""
-                  value:
-                    extensionprops: {}
-                    type: integer
-                    description: The number of requests served over TLS v1.3.
-                none:
-                  ref: ""
-                  value:
-                    extensionprops: {}
-                    type: integer
-                    description: The number of requests served over HTTP.
-          uncached:
-            ref: ""
-            value:
-              extensionprops: {}
-              type: integer
-              description: Total number of requests served from the origin.
+        type: integer
+        description: The estimated number of requests covered by these calculations.
+        readOnly: true
     requests_by_colo:
       ref: ""
       value:
@@ -27085,7 +27286,7 @@ components:
                 ref: '#/components/schemas/schemas-mode'
                 value: null
           configuration:
-            ref: '#/components/schemas/configuration'
+            ref: '#/components/schemas/schemas-configuration'
             value: null
           created_on:
             ref: ""
@@ -28284,6 +28485,66 @@ components:
         type: string
         description: Tells the client when to run the device posture check.
         example: 1h
+    schema_response_discovery:
+      ref: ""
+      value:
+        extensionprops: {}
+        allOf:
+        - ref: '#/components/schemas/default_response'
+          value: null
+        - ref: ""
+          value:
+            extensionprops: {}
+            properties:
+              result:
+                ref: ""
+                value:
+                  extensionprops: {}
+                  type: object
+                  properties:
+                    schemas:
+                      ref: ""
+                      value:
+                        extensionprops: {}
+                        type: array
+                        items:
+                          ref: '#/components/schemas/openapi'
+                          value: null
+                    timestamp:
+                      ref: ""
+                      value:
+                        extensionprops: {}
+                        type: string
+    schema_response_with_thresholds:
+      ref: ""
+      value:
+        extensionprops: {}
+        allOf:
+        - ref: '#/components/schemas/default_response'
+          value: null
+        - ref: ""
+          value:
+            extensionprops: {}
+            properties:
+              result:
+                ref: ""
+                value:
+                  extensionprops: {}
+                  type: object
+                  properties:
+                    schemas:
+                      ref: ""
+                      value:
+                        extensionprops: {}
+                        type: array
+                        items:
+                          ref: '#/components/schemas/openapiwiththresholds'
+                          value: null
+                    timestamp:
+                      ref: ""
+                      value:
+                        extensionprops: {}
+                        type: string
     schemas-access_seat:
       ref: ""
       value:
@@ -28912,8 +29173,31 @@ components:
                   extensionprops: {}
                   type: array
                   items:
-                    ref: '#/components/schemas/web3-hostname'
-                    value: null
+                    ref: ""
+                    value:
+                      extensionprops: {}
+                      properties:
+                        additional_information:
+                          ref: '#/components/schemas/additional_information'
+                          value: null
+                        application:
+                          ref: '#/components/schemas/schemas-application'
+                          value: null
+                        content_categories:
+                          ref: '#/components/schemas/content_categories'
+                          value: null
+                        domain:
+                          ref: '#/components/schemas/components-schemas-domain_name'
+                          value: null
+                        popularity_rank:
+                          ref: '#/components/schemas/popularity_rank'
+                          value: null
+                        risk_score:
+                          ref: '#/components/schemas/risk_score'
+                          value: null
+                        risk_types:
+                          ref: '#/components/schemas/risk_types'
+                          value: null
     schemas-colo_name:
       ref: ""
       value:
@@ -28949,26 +29233,19 @@ components:
       ref: ""
       value:
         extensionprops: {}
+        oneOf:
+        - ref: '#/components/schemas/ip_configuration'
+          value: null
+        - ref: '#/components/schemas/ipv6_configuration'
+          value: null
+        - ref: '#/components/schemas/cidr_configuration'
+          value: null
+        - ref: '#/components/schemas/asn_configuration'
+          value: null
+        - ref: '#/components/schemas/country_configuration'
+          value: null
         type: object
-        description: The configuration object for the current rule.
-        properties:
-          target:
-            ref: ""
-            value:
-              extensionprops: {}
-              type: string
-              description: The configuration target for this rule. You must set the
-                target to `ua` for User Agent Blocking rules.
-              example: ua
-          value:
-            ref: ""
-            value:
-              extensionprops: {}
-              type: string
-              description: The exact user agent string to match. This value will be
-                compared to the received `User-Agent` HTTP header value.
-              example: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/603.2.4
-                (KHTML, like Gecko) Version/10.1.1 Safari/603.2.4
+        description: The rule configuration.
     schemas-connection:
       ref: ""
       value:
@@ -29024,7 +29301,7 @@ components:
             ref: '#/components/schemas/properties-name'
             value: null
           type:
-            ref: '#/components/schemas/schemas-type'
+            ref: '#/components/schemas/components-schemas-type'
             value: null
     schemas-created:
       ref: ""
@@ -29406,6 +29683,18 @@ components:
         type: string
         description: The expression defining which traffic will match the rule.
         example: ip.src ne 1.1.1.1
+    schemas-features:
+      ref: ""
+      value:
+        extensionprops: {}
+        type: array
+        description: Contents of a Cloudflare Tunnel.
+        items:
+          ref: ""
+          value:
+            extensionprops: {}
+            type: string
+            example: ha-origin
     schemas-filter-response-collection:
       ref: ""
       value:
@@ -29663,10 +29952,10 @@ components:
       value:
         extensionprops: {}
         type: string
-        description: The host name to which the waiting room will be applied (no wildcards).
-          Please do not include the scheme (http:// or https://). The host and path
-          combination must be unique.
-        example: shop.example.com
+        format: hostname
+        description: The keyless SSL name.
+        example: example.com
+        maxLength: 253
     schemas-hostname:
       ref: ""
       value:
@@ -29920,6 +30209,16 @@ components:
         - copyright
         - none
         example: none
+    schemas-method:
+      ref: ""
+      value:
+        extensionprops: {}
+        type: string
+        description: The method to use for the health check. This defaults to 'GET'
+          for HTTP/HTTPS based checks and 'connection_established' for TCP based health
+          checks.
+        default: GET
+        example: GET
     schemas-mode:
       ref: ""
       value:
@@ -30040,6 +30339,55 @@ components:
         nullable: true
         minimum: 30
         maximum: 36000
+    schemas-operation:
+      ref: ""
+      value:
+        extensionprops: {}
+        type: object
+        required:
+        - id
+        - status
+        properties:
+          completed:
+            ref: ""
+            value:
+              extensionprops: {}
+              type: string
+              description: The RFC 3339 timestamp of when the operation was completed.
+              example: "2020-01-01T08:00:00Z"
+              readOnly: true
+          error:
+            ref: ""
+            value:
+              extensionprops: {}
+              type: string
+              description: A message describing the error when the status is `failed`.
+              example: This list is at the maximum number of items
+              readOnly: true
+          id:
+            ref: '#/components/schemas/schemas-operation_id'
+            value: null
+          status:
+            ref: ""
+            value:
+              extensionprops: {}
+              type: string
+              description: The current status of the asynchronous operation.
+              enum:
+              - pending
+              - running
+              - completed
+              - failed
+              example: failed
+              readOnly: true
+    schemas-operation_id:
+      ref: ""
+      value:
+        extensionprops: {}
+        type: string
+        description: The unique operation ID of the asynchronous action.
+        example: 4da8780eeb215e6cb7f48dd981c4ea02
+        readOnly: true
     schemas-options:
       ref: ""
       value:
@@ -30589,6 +30937,125 @@ components:
           type:
             ref: '#/components/schemas/url_normalization_components-schemas-type'
             value: null
+    schemas-requests:
+      ref: ""
+      value:
+        extensionprops: {}
+        type: object
+        description: Breakdown of totals for requests.
+        properties:
+          all:
+            ref: ""
+            value:
+              extensionprops: {}
+              type: integer
+              description: Total number of requests served.
+          cached:
+            ref: ""
+            value:
+              extensionprops: {}
+              type: integer
+              description: Total number of cached requests served.
+          content_type:
+            ref: ""
+            value:
+              extensionprops: {}
+              type: object
+              description: A variable list of key/value pairs where the key represents
+                the type of content served, and the value is the number of requests.
+              example:
+                css: 15343
+                gif: 23178
+                html: 1.234213e+06
+                javascript: 318236
+                jpeg: 1.982048e+06
+          country:
+            ref: ""
+            value:
+              extensionprops: {}
+              type: object
+              description: A variable list of key/value pairs where the key is a two-digit
+                country code and the value is the number of requests served to that
+                country.
+              example:
+                AG: 37298
+                GI: 293846
+                US: 4.181364e+06
+          http_status:
+            ref: ""
+            value:
+              extensionprops: {}
+              type: object
+              description: Key/value pairs where the key is a HTTP status code and
+                the value is the number of requests served with that code.
+              example:
+                "200": 1.3496983e+07
+                "301": 283
+                "400": 187936
+                "402": 1828
+                "404": 1293
+          ssl:
+            ref: ""
+            value:
+              extensionprops: {}
+              type: object
+              description: A break down of requests served over HTTPS.
+              properties:
+                encrypted:
+                  ref: ""
+                  value:
+                    extensionprops: {}
+                    type: integer
+                    description: The number of requests served over HTTPS.
+                unencrypted:
+                  ref: ""
+                  value:
+                    extensionprops: {}
+                    type: integer
+                    description: The number of requests served over HTTP.
+          ssl_protocols:
+            ref: ""
+            value:
+              extensionprops: {}
+              type: object
+              description: A breakdown of requests by their SSL protocol.
+              properties:
+                TLSv1:
+                  ref: ""
+                  value:
+                    extensionprops: {}
+                    type: integer
+                    description: The number of requests served over TLS v1.0.
+                TLSv1.1:
+                  ref: ""
+                  value:
+                    extensionprops: {}
+                    type: integer
+                    description: The number of requests served over TLS v1.1.
+                TLSv1.2:
+                  ref: ""
+                  value:
+                    extensionprops: {}
+                    type: integer
+                    description: The number of requests served over TLS v1.2.
+                TLSv1.3:
+                  ref: ""
+                  value:
+                    extensionprops: {}
+                    type: integer
+                    description: The number of requests served over TLS v1.3.
+                none:
+                  ref: ""
+                  value:
+                    extensionprops: {}
+                    type: integer
+                    description: The number of requests served over HTTP.
+          uncached:
+            ref: ""
+            value:
+              extensionprops: {}
+              type: integer
+              description: Total number of requests served from the origin.
     schemas-require:
       ref: ""
       value:
@@ -31029,8 +31496,26 @@ components:
           value:
             extensionprops: {}
             properties:
+              errors:
+                ref: ""
+                value:
+                  extensionprops: {}
+                  type: array
+                  items:
+                    ref: ""
+                    value:
+                      extensionprops: {}
+              messages:
+                ref: ""
+                value:
+                  extensionprops: {}
+                  type: array
+                  items:
+                    ref: ""
+                    value:
+                      extensionprops: {}
               result:
-                ref: '#/components/schemas/peer'
+                ref: '#/components/schemas/api-shield'
                 value: null
     schemas-size:
       ref: ""
@@ -31540,12 +32025,11 @@ components:
       value:
         extensionprops: {}
         type: string
-        description: A full zone implies that DNS is hosted with Cloudflare. A partial
-          zone is typically a partner-hosted zone or a CNAME setup.
+        description: The type of characteristic.
         enum:
-        - full
-        - partial
-        example: full
+        - header
+        - cookie
+        example: header
     schemas-updated_at:
       ref: ""
       value:
@@ -33051,8 +33535,26 @@ components:
           value:
             extensionprops: {}
             properties:
+              errors:
+                ref: ""
+                value:
+                  extensionprops: {}
+                  type: array
+                  items:
+                    ref: ""
+                    value:
+                      extensionprops: {}
+              messages:
+                ref: ""
+                value:
+                  extensionprops: {}
+                  type: array
+                  items:
+                    ref: ""
+                    value:
+                      extensionprops: {}
               result:
-                ref: '#/components/schemas/tsig'
+                ref: '#/components/schemas/configuration'
                 value: null
     single_response_incoming:
       ref: ""
@@ -34034,6 +34536,14 @@ components:
         example: 506e3185e9c882d175a2d0cb0093d9f2
         readOnly: true
         maxLength: 32
+    suggested_threshold:
+      ref: ""
+      value:
+        extensionprops: {}
+        type: integer
+        description: The suggested threshold in requests done by the same auth_id
+          or period_seconds.
+        readOnly: true
     support_url:
       ref: ""
       value:
@@ -34427,6 +34937,56 @@ components:
           per period.
         example: 60
         minimum: 1
+    thresholds:
+      ref: ""
+      value:
+        extensionprops: {}
+        type: object
+        readOnly: true
+        required:
+        - period_seconds
+        - suggested_threshold
+        - p50
+        - p90
+        - p99
+        - requests
+        - auth_id_tokens
+        - data_points
+        - last_updated
+        properties:
+          thresholds:
+            ref: ""
+            value:
+              extensionprops: {}
+              type: object
+              properties:
+                auth_id_tokens:
+                  ref: '#/components/schemas/auth_id_tokens'
+                  value: null
+                data_points:
+                  ref: '#/components/schemas/data_points'
+                  value: null
+                last_updated:
+                  ref: '#/components/schemas/timestamp'
+                  value: null
+                p50:
+                  ref: '#/components/schemas/p50'
+                  value: null
+                p90:
+                  ref: '#/components/schemas/p90'
+                  value: null
+                p99:
+                  ref: '#/components/schemas/p99'
+                  value: null
+                period_seconds:
+                  ref: '#/components/schemas/period_seconds'
+                  value: null
+                requests:
+                  ref: '#/components/schemas/requests'
+                  value: null
+                suggested_threshold:
+                  ref: '#/components/schemas/suggested_threshold'
+                  value: null
     thumbnail_url:
       ref: ""
       value:
@@ -34490,7 +35050,7 @@ components:
                 ref: '#/components/schemas/pageviews'
                 value: null
               requests:
-                ref: '#/components/schemas/requests'
+                ref: '#/components/schemas/schemas-requests'
                 value: null
               since:
                 ref: '#/components/schemas/since'
@@ -34785,7 +35345,7 @@ components:
             ref: '#/components/schemas/pageviews'
             value: null
           requests:
-            ref: '#/components/schemas/requests'
+            ref: '#/components/schemas/schemas-requests'
             value: null
           since:
             ref: '#/components/schemas/since'
@@ -35238,7 +35798,7 @@ components:
             ref: '#/components/schemas/connections'
             value: null
           features:
-            ref: '#/components/schemas/features'
+            ref: '#/components/schemas/schemas-features'
             value: null
           id:
             ref: '#/components/schemas/connection_id'
@@ -37369,7 +37929,7 @@ components:
             ref: '#/components/schemas/disable_session_renewal'
             value: null
           host:
-            ref: '#/components/schemas/schemas-host'
+            ref: '#/components/schemas/components-schemas-host'
             value: null
           id:
             ref: '#/components/schemas/waiting_room_id'
@@ -43626,7 +44186,7 @@ paths:
                   - configuration
                   properties:
                     configuration:
-                      ref: '#/components/schemas/configuration'
+                      ref: '#/components/schemas/schemas-configuration'
                       value: null
                     mode:
                       ref: '#/components/schemas/schemas-mode'
@@ -45225,7 +45785,7 @@ paths:
                   value:
                     extensionprops: {}
                     allOf:
-                    - ref: '#/components/schemas/collection_response'
+                    - ref: '#/components/schemas/schemas-collection_response'
                       value: null
                     - ref: '#/components/schemas/api-response-common-failure'
                       value: null
@@ -45238,7 +45798,7 @@ paths:
               application/json:
                 extensionprops: {}
                 schema:
-                  ref: '#/components/schemas/collection_response'
+                  ref: '#/components/schemas/schemas-collection_response'
                   value: null
       security:
       - api_email: []
@@ -45571,7 +46131,7 @@ paths:
                       ref: '#/components/schemas/interval'
                       value: null
                     method:
-                      ref: '#/components/schemas/method'
+                      ref: '#/components/schemas/schemas-method'
                       value: null
                     path:
                       ref: '#/components/schemas/path'
@@ -45820,7 +46380,7 @@ paths:
                       ref: '#/components/schemas/interval'
                       value: null
                     method:
-                      ref: '#/components/schemas/method'
+                      ref: '#/components/schemas/schemas-method'
                       value: null
                     path:
                       ref: '#/components/schemas/path'
@@ -45942,7 +46502,7 @@ paths:
                       ref: '#/components/schemas/interval'
                       value: null
                     method:
-                      ref: '#/components/schemas/method'
+                      ref: '#/components/schemas/schemas-method'
                       value: null
                     path:
                       ref: '#/components/schemas/path'
@@ -46056,7 +46616,7 @@ paths:
                       ref: '#/components/schemas/header'
                       value: null
                     method:
-                      ref: '#/components/schemas/method'
+                      ref: '#/components/schemas/schemas-method'
                       value: null
                     path:
                       ref: '#/components/schemas/path'
@@ -46873,7 +47433,7 @@ paths:
                       ref: '#/components/schemas/header'
                       value: null
                     method:
-                      ref: '#/components/schemas/method'
+                      ref: '#/components/schemas/schemas-method'
                       value: null
                     path:
                       ref: '#/components/schemas/path'
@@ -53369,7 +53929,7 @@ paths:
           in: path
           required: true
           schema:
-            ref: '#/components/schemas/operation_id'
+            ref: '#/components/schemas/schemas-operation_id'
             value: null
       - ref: ""
         value:
@@ -53511,7 +54071,7 @@ paths:
                   value:
                     extensionprops: {}
                     allOf:
-                    - ref: '#/components/schemas/components-schemas-single_response'
+                    - ref: '#/components/schemas/acl_components-schemas-single_response'
                       value: null
                     - ref: '#/components/schemas/api-response-common-failure'
                       value: null
@@ -53524,7 +54084,7 @@ paths:
               application/json:
                 extensionprops: {}
                 schema:
-                  ref: '#/components/schemas/components-schemas-single_response'
+                  ref: '#/components/schemas/acl_components-schemas-single_response'
                   value: null
       security:
       - api_email: []
@@ -53639,7 +54199,7 @@ paths:
                   value:
                     extensionprops: {}
                     allOf:
-                    - ref: '#/components/schemas/components-schemas-single_response'
+                    - ref: '#/components/schemas/acl_components-schemas-single_response'
                       value: null
                     - ref: '#/components/schemas/api-response-common-failure'
                       value: null
@@ -53652,7 +54212,7 @@ paths:
               application/json:
                 extensionprops: {}
                 schema:
-                  ref: '#/components/schemas/components-schemas-single_response'
+                  ref: '#/components/schemas/acl_components-schemas-single_response'
                   value: null
       security:
       - api_email: []
@@ -53709,7 +54269,7 @@ paths:
                   value:
                     extensionprops: {}
                     allOf:
-                    - ref: '#/components/schemas/components-schemas-single_response'
+                    - ref: '#/components/schemas/acl_components-schemas-single_response'
                       value: null
                     - ref: '#/components/schemas/api-response-common-failure'
                       value: null
@@ -53722,7 +54282,7 @@ paths:
               application/json:
                 extensionprops: {}
                 schema:
-                  ref: '#/components/schemas/components-schemas-single_response'
+                  ref: '#/components/schemas/acl_components-schemas-single_response'
                   value: null
       security:
       - api_email: []
@@ -53825,7 +54385,7 @@ paths:
                   value:
                     extensionprops: {}
                     allOf:
-                    - ref: '#/components/schemas/schemas-single_response'
+                    - ref: '#/components/schemas/peer_components-schemas-single_response'
                       value: null
                     - ref: '#/components/schemas/api-response-common-failure'
                       value: null
@@ -53838,7 +54398,7 @@ paths:
               application/json:
                 extensionprops: {}
                 schema:
-                  ref: '#/components/schemas/schemas-single_response'
+                  ref: '#/components/schemas/peer_components-schemas-single_response'
                   value: null
       security:
       - api_email: []
@@ -53953,7 +54513,7 @@ paths:
                   value:
                     extensionprops: {}
                     allOf:
-                    - ref: '#/components/schemas/schemas-single_response'
+                    - ref: '#/components/schemas/peer_components-schemas-single_response'
                       value: null
                     - ref: '#/components/schemas/api-response-common-failure'
                       value: null
@@ -53966,7 +54526,7 @@ paths:
               application/json:
                 extensionprops: {}
                 schema:
-                  ref: '#/components/schemas/schemas-single_response'
+                  ref: '#/components/schemas/peer_components-schemas-single_response'
                   value: null
       security:
       - api_email: []
@@ -54023,7 +54583,7 @@ paths:
                   value:
                     extensionprops: {}
                     allOf:
-                    - ref: '#/components/schemas/schemas-single_response'
+                    - ref: '#/components/schemas/peer_components-schemas-single_response'
                       value: null
                     - ref: '#/components/schemas/api-response-common-failure'
                       value: null
@@ -54036,7 +54596,7 @@ paths:
               application/json:
                 extensionprops: {}
                 schema:
-                  ref: '#/components/schemas/schemas-single_response'
+                  ref: '#/components/schemas/peer_components-schemas-single_response'
                   value: null
       security:
       - api_email: []
@@ -54140,7 +54700,7 @@ paths:
                   value:
                     extensionprops: {}
                     allOf:
-                    - ref: '#/components/schemas/single_response'
+                    - ref: '#/components/schemas/components-schemas-single_response'
                       value: null
                     - ref: '#/components/schemas/api-response-common-failure'
                       value: null
@@ -54153,7 +54713,7 @@ paths:
               application/json:
                 extensionprops: {}
                 schema:
-                  ref: '#/components/schemas/single_response'
+                  ref: '#/components/schemas/components-schemas-single_response'
                   value: null
       security:
       - api_email: []
@@ -54268,7 +54828,7 @@ paths:
                   value:
                     extensionprops: {}
                     allOf:
-                    - ref: '#/components/schemas/single_response'
+                    - ref: '#/components/schemas/components-schemas-single_response'
                       value: null
                     - ref: '#/components/schemas/api-response-common-failure'
                       value: null
@@ -54281,7 +54841,7 @@ paths:
               application/json:
                 extensionprops: {}
                 schema:
-                  ref: '#/components/schemas/single_response'
+                  ref: '#/components/schemas/components-schemas-single_response'
                   value: null
       security:
       - api_email: []
@@ -54338,7 +54898,7 @@ paths:
                   value:
                     extensionprops: {}
                     allOf:
-                    - ref: '#/components/schemas/single_response'
+                    - ref: '#/components/schemas/components-schemas-single_response'
                       value: null
                     - ref: '#/components/schemas/api-response-common-failure'
                       value: null
@@ -54351,7 +54911,7 @@ paths:
               application/json:
                 extensionprops: {}
                 schema:
-                  ref: '#/components/schemas/single_response'
+                  ref: '#/components/schemas/components-schemas-single_response'
                   value: null
       security:
       - api_email: []
@@ -63627,10 +64187,10 @@ paths:
     get:
       extensionprops: {}
       tags:
-      - Access Bookmark applications
+      - Access Bookmark applications (Deprecated)
       summary: List Bookmark applications
       description: Lists Bookmark applications.
-      operationId: access-bookmark-applications-list-bookmark-applications
+      operationId: access-bookmark-applications-(-deprecated)-list-bookmark-applications
       parameters:
       - ref: ""
         value:
@@ -63680,10 +64240,10 @@ paths:
     delete:
       extensionprops: {}
       tags:
-      - Access Bookmark applications
+      - Access Bookmark applications (Deprecated)
       summary: Delete a Bookmark application
       description: Deletes a Bookmark application.
-      operationId: access-bookmark-applications-delete-a-bookmark-application
+      operationId: access-bookmark-applications-(-deprecated)-delete-a-bookmark-application
       parameters:
       - ref: ""
         value:
@@ -63748,10 +64308,10 @@ paths:
     get:
       extensionprops: {}
       tags:
-      - Access Bookmark applications
+      - Access Bookmark applications (Deprecated)
       summary: Get a Bookmark application
       description: Fetches a single Bookmark application.
-      operationId: access-bookmark-applications-get-a-bookmark-application
+      operationId: access-bookmark-applications-(-deprecated)-get-a-bookmark-application
       parameters:
       - ref: ""
         value:
@@ -63808,10 +64368,10 @@ paths:
     post:
       extensionprops: {}
       tags:
-      - Access Bookmark applications
+      - Access Bookmark applications (Deprecated)
       summary: Create a Bookmark application
       description: Create a new Bookmark application.
-      operationId: access-bookmark-applications-create-a-bookmark-application
+      operationId: access-bookmark-applications-(-deprecated)-create-a-bookmark-application
       parameters:
       - ref: ""
         value:
@@ -63876,10 +64436,10 @@ paths:
     put:
       extensionprops: {}
       tags:
-      - Access Bookmark applications
+      - Access Bookmark applications (Deprecated)
       summary: Update a Bookmark application
       description: Updates a configured Bookmark application.
-      operationId: access-bookmark-applications-update-a-bookmark-application
+      operationId: access-bookmark-applications-(-deprecated)-update-a-bookmark-application
       parameters:
       - ref: ""
         value:
@@ -72219,11 +72779,11 @@ paths:
     get:
       extensionprops: {}
       tags:
-      - Organizations
+      - Organizations (Deprecated)
       summary: Organization Details
       description: Get information about a specific organization that you are a member
         of.
-      operationId: organizations-organization-details
+      operationId: organizations-(-deprecated)-organization-details
       parameters:
       - ref: ""
         value:
@@ -72271,10 +72831,10 @@ paths:
     patch:
       extensionprops: {}
       tags:
-      - Organizations
+      - Organizations (Deprecated)
       summary: Edit Organization
       description: Update an existing Organization.
-      operationId: organizations-edit-organization
+      operationId: organizations-(-deprecated)-edit-organization
       parameters:
       - ref: ""
         value:
@@ -88924,7 +89484,7 @@ paths:
                   - configuration
                   properties:
                     configuration:
-                      ref: '#/components/schemas/configuration'
+                      ref: '#/components/schemas/schemas-configuration'
                       value: null
                     mode:
                       ref: '#/components/schemas/schemas-mode'
@@ -89354,7 +89914,7 @@ paths:
                       ref: '#/components/schemas/interval'
                       value: null
                     method:
-                      ref: '#/components/schemas/method'
+                      ref: '#/components/schemas/schemas-method'
                       value: null
                     path:
                       ref: '#/components/schemas/path'
@@ -89570,7 +90130,7 @@ paths:
                       ref: '#/components/schemas/interval'
                       value: null
                     method:
-                      ref: '#/components/schemas/method'
+                      ref: '#/components/schemas/schemas-method'
                       value: null
                     path:
                       ref: '#/components/schemas/path'
@@ -89677,7 +90237,7 @@ paths:
                       ref: '#/components/schemas/interval'
                       value: null
                     method:
-                      ref: '#/components/schemas/method'
+                      ref: '#/components/schemas/schemas-method'
                       value: null
                     path:
                       ref: '#/components/schemas/path'
@@ -89782,7 +90342,7 @@ paths:
                       ref: '#/components/schemas/header'
                       value: null
                     method:
-                      ref: '#/components/schemas/method'
+                      ref: '#/components/schemas/schemas-method'
                       value: null
                     path:
                       ref: '#/components/schemas/path'
@@ -90506,7 +91066,7 @@ paths:
                       ref: '#/components/schemas/header'
                       value: null
                     method:
-                      ref: '#/components/schemas/method'
+                      ref: '#/components/schemas/schemas-method'
                       value: null
                     path:
                       ref: '#/components/schemas/path'
@@ -96310,6 +96870,487 @@ paths:
       - api_email: []
         api_key: []
       - api_token: []
+  /zones/{zone_id}/api_gateway/configuration:
+    extensionprops: {}
+    get:
+      extensionprops: {}
+      tags:
+      - API Shield Settings
+      summary: Retrieve information about specific configuration properties
+      operationId: api-shield-settings-retrieve-information-about-specific-configuration-properties
+      parameters:
+      - ref: ""
+        value:
+          extensionprops: {}
+          name: zone_id
+          in: path
+          required: true
+          schema:
+            ref: '#/components/schemas/common_components-schemas-identifier'
+            value: null
+      responses:
+        4xx:
+          ref: ""
+          value:
+            extensionprops: {}
+            description: Retrieve information about specific configuration properties
+              response failure
+            content:
+              application/json:
+                extensionprops: {}
+                schema:
+                  ref: ""
+                  value:
+                    extensionprops: {}
+                    allOf:
+                    - ref: '#/components/schemas/single_response'
+                      value: null
+                    - ref: '#/components/schemas/api-response-common-failure'
+                      value: null
+        "200":
+          ref: ""
+          value:
+            extensionprops: {}
+            description: Retrieve information about specific configuration properties
+              response
+            content:
+              application/json:
+                extensionprops: {}
+                schema:
+                  ref: '#/components/schemas/single_response'
+                  value: null
+      security:
+      - api_email: []
+        api_key: []
+      - api_token: []
+    put:
+      extensionprops: {}
+      tags:
+      - API Shield Settings
+      summary: Set configuration properties
+      operationId: api-shield-settings-set-configuration-properties
+      parameters:
+      - ref: ""
+        value:
+          extensionprops: {}
+          name: zone_id
+          in: path
+          required: true
+          schema:
+            ref: '#/components/schemas/common_components-schemas-identifier'
+            value: null
+      requestBody:
+        ref: ""
+        value:
+          extensionprops: {}
+          required: true
+          content:
+            application/json:
+              extensionprops: {}
+              schema:
+                ref: '#/components/schemas/configuration'
+                value: null
+      responses:
+        4xx:
+          ref: ""
+          value:
+            extensionprops: {}
+            description: Set configuration properties response failure
+            content:
+              application/json:
+                extensionprops: {}
+                schema:
+                  ref: ""
+                  value:
+                    extensionprops: {}
+                    allOf:
+                    - ref: '#/components/schemas/default_response'
+                      value: null
+                    - ref: '#/components/schemas/api-response-common-failure'
+                      value: null
+        "200":
+          ref: ""
+          value:
+            extensionprops: {}
+            description: Set configuration properties response
+            content:
+              application/json:
+                extensionprops: {}
+                schema:
+                  ref: '#/components/schemas/default_response'
+                  value: null
+      security:
+      - api_email: []
+        api_key: []
+      - api_token: []
+  /zones/{zone_id}/api_gateway/discovery:
+    extensionprops: {}
+    get:
+      extensionprops: {}
+      tags:
+      - API Shield Endpoint Management
+      summary: Retrieve API Discovery results for a zone
+      description: Retrieve the most up to date view of API Discovery on a zone.
+      operationId: api-shield-endpoint-management-retrieve-api-discovery-results-for-a-zone
+      parameters:
+      - ref: ""
+        value:
+          extensionprops: {}
+          name: zone_id
+          in: path
+          required: true
+          schema:
+            ref: '#/components/schemas/common_components-schemas-identifier'
+            value: null
+      responses:
+        4xx:
+          ref: ""
+          value:
+            extensionprops: {}
+            description: Retrieve API Discovery results for a zone response failure
+            content:
+              application/json:
+                extensionprops: {}
+                schema:
+                  ref: ""
+                  value:
+                    extensionprops: {}
+                    allOf:
+                    - ref: '#/components/schemas/schema_response_discovery'
+                      value: null
+                    - ref: '#/components/schemas/api-response-common-failure'
+                      value: null
+        "200":
+          ref: ""
+          value:
+            extensionprops: {}
+            description: Retrieve API Discovery results for a zone response
+            content:
+              application/json:
+                extensionprops: {}
+                schema:
+                  ref: '#/components/schemas/schema_response_discovery'
+                  value: null
+      security:
+      - api_email: []
+        api_key: []
+      - api_token: []
+  /zones/{zone_id}/api_gateway/operations:
+    extensionprops: {}
+    get:
+      extensionprops: {}
+      tags:
+      - API Shield Endpoint Management
+      summary: Retrieve information about all operations on a zone
+      operationId: api-shield-endpoint-management-retrieve-information-about-all-operations-on-a-zone
+      parameters:
+      - ref: ""
+        value:
+          extensionprops: {}
+          name: zone_id
+          in: path
+          required: true
+          schema:
+            ref: '#/components/schemas/common_components-schemas-identifier'
+            value: null
+      responses:
+        4xx:
+          ref: ""
+          value:
+            extensionprops: {}
+            description: Retrieve information about all operations on a zone response
+              failure
+            content:
+              application/json:
+                extensionprops: {}
+                schema:
+                  ref: ""
+                  value:
+                    extensionprops: {}
+                    allOf:
+                    - ref: '#/components/schemas/collection_response_paginated'
+                      value: null
+                    - ref: '#/components/schemas/api-response-common-failure'
+                      value: null
+        "200":
+          ref: ""
+          value:
+            extensionprops: {}
+            description: Retrieve information about all operations on a zone response
+            content:
+              application/json:
+                extensionprops: {}
+                schema:
+                  ref: '#/components/schemas/collection_response_paginated'
+                  value: null
+      security:
+      - api_email: []
+        api_key: []
+      - api_token: []
+    post:
+      extensionprops: {}
+      tags:
+      - API Shield Endpoint Management
+      summary: Add operations to a zone
+      description: Add one or more operations to a zone. Endpoints can contain path
+        variables. Host, method, endpoint will be normalized to a canoncial form when
+        creating an operation and must be unique on the zone. Inserting an operation
+        that matches an existing one will return the record of the already existing
+        operation and update its last_updated date.
+      operationId: api-shield-endpoint-management-add-operations-to-a-zone
+      parameters:
+      - ref: ""
+        value:
+          extensionprops: {}
+          name: zone_id
+          in: path
+          required: true
+          schema:
+            ref: '#/components/schemas/common_components-schemas-identifier'
+            value: null
+      requestBody:
+        ref: ""
+        value:
+          extensionprops: {}
+          required: true
+          content:
+            application/json:
+              extensionprops: {}
+              schema:
+                ref: ""
+                value:
+                  extensionprops: {}
+                  type: array
+                  items:
+                    ref: ""
+                    value:
+                      extensionprops: {}
+                      type: object
+                      properties:
+                        endpoint:
+                          ref: '#/components/schemas/endpoint'
+                          value: null
+                        host:
+                          ref: '#/components/schemas/host'
+                          value: null
+                        method:
+                          ref: '#/components/schemas/method'
+                          value: null
+                  required:
+                  - host
+                  - method
+                  - endpoint
+      responses:
+        4xx:
+          ref: ""
+          value:
+            extensionprops: {}
+            description: Add operations to a zone response failure
+            content:
+              application/json:
+                extensionprops: {}
+                schema:
+                  ref: ""
+                  value:
+                    extensionprops: {}
+                    allOf:
+                    - ref: '#/components/schemas/collection_response'
+                      value: null
+                    - ref: '#/components/schemas/api-response-common-failure'
+                      value: null
+        "200":
+          ref: ""
+          value:
+            extensionprops: {}
+            description: Add operations to a zone response
+            content:
+              application/json:
+                extensionprops: {}
+                schema:
+                  ref: '#/components/schemas/collection_response'
+                  value: null
+      security:
+      - api_email: []
+        api_key: []
+      - api_token: []
+  /zones/{zone_id}/api_gateway/operations/{operation_id}:
+    extensionprops: {}
+    delete:
+      extensionprops: {}
+      tags:
+      - API Shield Endpoint Management
+      summary: Delete an operation
+      operationId: api-shield-endpoint-management-delete-an-operation
+      parameters:
+      - ref: ""
+        value:
+          extensionprops: {}
+          name: operation_id
+          in: path
+          required: true
+          schema:
+            ref: '#/components/schemas/operation_id'
+            value: null
+      - ref: ""
+        value:
+          extensionprops: {}
+          name: zone_id
+          in: path
+          required: true
+          schema:
+            ref: '#/components/schemas/common_components-schemas-identifier'
+            value: null
+      requestBody:
+        ref: ""
+        value:
+          extensionprops: {}
+          required: true
+          content:
+            application/json:
+              extensionprops: {}
+      responses:
+        4xx:
+          ref: ""
+          value:
+            extensionprops: {}
+            description: Delete an operation response failure
+            content:
+              application/json:
+                extensionprops: {}
+                schema:
+                  ref: ""
+                  value:
+                    extensionprops: {}
+                    allOf:
+                    - ref: '#/components/schemas/default_response'
+                      value: null
+                    - ref: '#/components/schemas/api-response-common-failure'
+                      value: null
+        "200":
+          ref: ""
+          value:
+            extensionprops: {}
+            description: Delete an operation response
+            content:
+              application/json:
+                extensionprops: {}
+                schema:
+                  ref: '#/components/schemas/default_response'
+                  value: null
+      security:
+      - api_email: []
+        api_key: []
+      - api_token: []
+    get:
+      extensionprops: {}
+      tags:
+      - API Shield Endpoint Management
+      summary: Retrieve information about an operation
+      operationId: api-shield-endpoint-management-retrieve-information-about-an-operation
+      parameters:
+      - ref: ""
+        value:
+          extensionprops: {}
+          name: operation_id
+          in: path
+          required: true
+          schema:
+            ref: '#/components/schemas/operation_id'
+            value: null
+      - ref: ""
+        value:
+          extensionprops: {}
+          name: zone_id
+          in: path
+          required: true
+          schema:
+            ref: '#/components/schemas/common_components-schemas-identifier'
+            value: null
+      responses:
+        4xx:
+          ref: ""
+          value:
+            extensionprops: {}
+            description: Retrieve information about an operation response failure
+            content:
+              application/json:
+                extensionprops: {}
+                schema:
+                  ref: ""
+                  value:
+                    extensionprops: {}
+                    allOf:
+                    - ref: '#/components/schemas/schemas-single_response'
+                      value: null
+                    - ref: '#/components/schemas/api-response-common-failure'
+                      value: null
+        "200":
+          ref: ""
+          value:
+            extensionprops: {}
+            description: Retrieve information about an operation response
+            content:
+              application/json:
+                extensionprops: {}
+                schema:
+                  ref: '#/components/schemas/schemas-single_response'
+                  value: null
+      security:
+      - api_email: []
+        api_key: []
+      - api_token: []
+  /zones/{zone_id}/api_gateway/schemas:
+    extensionprops: {}
+    get:
+      extensionprops: {}
+      tags:
+      - API Shield Endpoint Management
+      summary: Retrieve operations and features as OpenAPI schemas
+      operationId: api-shield-endpoint-management-retrieve-operations-and-features-as-open-api-schemas
+      parameters:
+      - ref: ""
+        value:
+          extensionprops: {}
+          name: zone_id
+          in: path
+          required: true
+          schema:
+            ref: '#/components/schemas/common_components-schemas-identifier'
+            value: null
+      responses:
+        4xx:
+          ref: ""
+          value:
+            extensionprops: {}
+            description: Retrieve operations and features as OpenAPI schemas response
+              failure
+            content:
+              application/json:
+                extensionprops: {}
+                schema:
+                  ref: ""
+                  value:
+                    extensionprops: {}
+                    allOf:
+                    - ref: '#/components/schemas/schema_response_with_thresholds'
+                      value: null
+                    - ref: '#/components/schemas/api-response-common-failure'
+                      value: null
+        "200":
+          ref: ""
+          value:
+            extensionprops: {}
+            description: Retrieve operations and features as OpenAPI schemas response
+            content:
+              application/json:
+                extensionprops: {}
+                schema:
+                  ref: '#/components/schemas/schema_response_with_thresholds'
+                  value: null
+      security:
+      - api_email: []
+        api_key: []
+      - api_token: []
   /zones/{zone_id}/firewall/access_rules/rules:
     extensionprops: {}
     get:
@@ -96401,7 +97442,7 @@ paths:
                   - notes
                   properties:
                     configuration:
-                      ref: '#/components/schemas/configuration'
+                      ref: '#/components/schemas/schemas-configuration'
                       value: null
                     mode:
                       ref: '#/components/schemas/schemas-mode'
@@ -98827,6 +99868,7 @@ paths:
                 schema:
                   ref: '#/components/schemas/filter-response-collection'
                   value: null
+      deprecated: true
       security:
       - api_email: []
         api_key: []
@@ -98887,6 +99929,7 @@ paths:
                 schema:
                   ref: '#/components/schemas/api-response-single-id'
                   value: null
+      deprecated: true
       security:
       - api_email: []
         api_key: []
@@ -98955,6 +99998,7 @@ paths:
                 schema:
                   ref: '#/components/schemas/api-response-single-id'
                   value: null
+      deprecated: true
       security:
       - api_email: []
         api_key: []
@@ -99024,6 +100068,7 @@ paths:
                 schema:
                   ref: '#/components/schemas/filter-response-single'
                   value: null
+      deprecated: true
       security:
       - api_email: []
         api_key: []
@@ -99462,11 +100507,11 @@ paths:
     get:
       extensionprops: {}
       tags:
-      - Zone Analytics
+      - Zone Analytics (Deprecated)
       summary: Get analytics by Co-locations
       description: 'This view provides a breakdown of analytics data by datacenter.
         Note: This is available to Enterprise customers only.'
-      operationId: zone-analytics-get-analytics-by-co-locations
+      operationId: zone-analytics-(-deprecated)-get-analytics-by-co-locations
       parameters:
       - ref: ""
         value:
@@ -99516,11 +100561,11 @@ paths:
     get:
       extensionprops: {}
       tags:
-      - Zone Analytics
+      - Zone Analytics (Deprecated)
       summary: Get dashboard
       description: The dashboard view provides both totals and timeseries data for
         the given zone and time period across the entire Cloudflare network.
-      operationId: zone-analytics-get-dashboard
+      operationId: zone-analytics-(-deprecated)-get-dashboard
       parameters:
       - ref: ""
         value:
@@ -101784,7 +102829,7 @@ paths:
                       ref: '#/components/schemas/ttl'
                       value: null
                     type:
-                      ref: '#/components/schemas/components-schemas-type'
+                      ref: '#/components/schemas/dns-record_components-schemas-type'
                       value: null
       responses:
         4xx:
@@ -102019,7 +103064,7 @@ paths:
                       ref: '#/components/schemas/ttl'
                       value: null
                     type:
-                      ref: '#/components/schemas/components-schemas-type'
+                      ref: '#/components/schemas/dns-record_components-schemas-type'
                       value: null
       responses:
         4xx:
@@ -102111,7 +103156,7 @@ paths:
                       ref: '#/components/schemas/ttl'
                       value: null
                     type:
-                      ref: '#/components/schemas/components-schemas-type'
+                      ref: '#/components/schemas/dns-record_components-schemas-type'
                       value: null
       responses:
         4xx:
@@ -106372,7 +107417,7 @@ paths:
                       ref: '#/components/schemas/schemas-certificate'
                       value: null
                     host:
-                      ref: '#/components/schemas/host'
+                      ref: '#/components/schemas/schemas-host'
                       value: null
                     name:
                       ref: '#/components/schemas/keyless-certificate_components-schemas-name'
@@ -106585,7 +107630,7 @@ paths:
                       ref: '#/components/schemas/schemas-enabled'
                       value: null
                     host:
-                      ref: '#/components/schemas/host'
+                      ref: '#/components/schemas/schemas-host'
                       value: null
                     name:
                       ref: '#/components/schemas/keyless-certificate_components-schemas-name'
@@ -120443,7 +121488,7 @@ paths:
                   value:
                     extensionprops: {}
                     allOf:
-                    - ref: '#/components/schemas/schemas-collection_response'
+                    - ref: '#/components/schemas/components-schemas-collection_response'
                       value: null
                     - ref: '#/components/schemas/api-response-common-failure'
                       value: null
@@ -120456,7 +121501,7 @@ paths:
               application/json:
                 extensionprops: {}
                 schema:
-                  ref: '#/components/schemas/schemas-collection_response'
+                  ref: '#/components/schemas/components-schemas-collection_response'
                   value: null
       security:
       - api_email: []
@@ -121249,6 +122294,7 @@ paths:
             content:
               application/json:
                 extensionprops: {}
+      deprecated: true
       security:
       - api_email: []
         api_key: []
@@ -121300,6 +122346,7 @@ paths:
                     extensionprops: {}
                     example: addEventListener('fetch', event => { event.respondWith(fetch(event.request))
                       })
+      deprecated: true
       security:
       - api_email: []
         api_key: []
@@ -121364,6 +122411,7 @@ paths:
                 schema:
                   ref: '#/components/schemas/script-response-single'
                   value: null
+      deprecated: true
       security:
       - api_email: []
         api_key: []
@@ -121450,6 +122498,7 @@ paths:
                               items:
                                 ref: '#/components/schemas/binding'
                                 value: null
+      deprecated: true
       security:
       - api_email: []
         api_key: []
