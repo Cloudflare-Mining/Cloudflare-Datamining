@@ -5,26 +5,27 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4>About the department</h4>
-<p><span style="font-weight: 400;">Cloudflare’s Engineering Team builds and runs the software that handles incredible amounts of requests on the Internet today. We also build and run the internal tools that builds and runs our software. The Engineering Team is split into two groups: one handles product development and the other handles operations. Product development covers both new features and functionality and scaling our existing software to meet the challenges of a massively growing customer base. The operations team handles one of the world’s largest networks with data centers in 102 cities worldwide.</span></p>
-<h4>What you'll do</h4>
-<p><strong><span style="font-weight: 400;">You will be responsible for designing, building, and scaling one of the biggest global data pipelines to overcome network delays and partitions. The pipeline uses Go, Kafka, ClickHouse, Flink and PostgreSQL to store and analyze in excess of 10 million events per second (and growing fast!).</span></strong></p>
+<p><strong>About the Team</strong></p>
+<p>The Workers team makes it possible for Cloudflare customers to run JavaScript and WebAssembly on Cloudflare's edge network. We build and maintain the serverless technology that executes billions of requests per month on behalf of developers and grants them nearly limitless control over how their requests are handled and responded to. The Workers team is split into several groups, this group is focused on how we bring state to the edge.</p>
+<p><strong>About the Role</strong></p>
+<p><span style="font-weight: 400;">You'll help design and build </span><a href="https://blog.cloudflare.com/introducing-workers-durable-objects/"><span style="font-weight: 400;">Durable Objects</span></a><span style="font-weight: 400;">, a new approach to stateful serverless computing.</span></p>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Experience designing, integrating, and optimizing distributed data processing pipelines</li>
-	<li>Experience writing high-quality data processing code in Go, Java, Python, or other high-performance languages</li>
-	<li>Experience building and administering alerting and monitoring systems around data processing pipelines</li>
-	<li>Strong systems-level debugging</li>
-</ul>
-<p><strong>Bonus Points</strong></p>
-<ul>
-	<li>Experience building REST APIs for analytics services</li>
-	<li>Experience with cluster and configuration management systems such as Docker, Mesos, Marathon, Salt</li>
-	<li>Familiarity writing and optimizing advanced SQL queries</li>
-	<li>Good Linux/UNIX systems knowledge</li>
-	<li>Experience productionizing Machine Learning models</li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Deep understanding of C++ and JavaScript, including asynchronous programming in both</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with (and love) for distributed systems</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong systems level programming skills</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with a continuous integration workflow and using source control (we use git)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Good Unix knowledge</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Understanding of security issues and responsibilities</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with monitoring, alerting and debugging high volume production systems</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Fluent in analyses of data sets such as logs</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Designing and building APIs</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Great oral and written communications skills</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Desire to learn and improve</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Willing and eager to share knowledge, and mentor</span></li>
 </ul>
 <p>&nbsp;</p>
+<p><span style="font-weight: 400;">Job ID #CK_109</span></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
