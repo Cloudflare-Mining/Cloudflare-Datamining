@@ -199,8 +199,8 @@ const navigation = {
 				return U(w)
 			}
 		}, {
-			title: "navigation.account.r2_migrator",
-			url: "/r2/migrator",
+			title: "navigation.account.r2_slurper",
+			url: "/r2/slurper",
 			labels: ["beta"],
 			hasPermission: function(w) {
 				return U(w)

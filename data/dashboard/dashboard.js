@@ -7125,12 +7125,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				e.g.build = ld({}, {
-					branch: "ruskin/ZRZ-533/fix_zaraz_tool_category_filter_hotfix",
+					branch: "BLOG-1463",
 					isReleaseCandidate: "true",
-					commit: "3de1439f7ff26b5f0f968280c118d904f59031e6",
+					commit: "a9e8eddc5d0236f42bae66826b1ea5f4c9b4c66e",
 					env: "production",
-					builtAt: 1668464489423,
-					dashVersion: "811c1d2b2f22971d8af70de19c3d6ebdf56a3db3",
+					builtAt: 1668513438353,
+					dashVersion: "e22f3243fa5955bce3ff260fd7b9ba7f6d86574d",
 					versions: {
 						"@cloudflare/app-dash": "25.108.30",
 						node: "14.18.3",
@@ -11732,8 +11732,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 								return U(w)
 							}
 						}, {
-							title: "navigation.account.r2_migrator",
-							url: "/r2/migrator",
+							title: "navigation.account.r2_slurper",
+							url: "/r2/slurper",
 							labels: ["beta"],
 							hasPermission: function(w) {
 								return U(w)
@@ -73621,7 +73621,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			}
 
 			function C() {
-				var B = X(["/", "/r2/migrator"]);
+				var B = X(["/", "/r2/slurper"]);
 				return C = function() {
 					return B
 				}, B
@@ -82982,4 +82982,4 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 	}
 ]);
 
-//# sourceMappingURL=ac2808ad6025bd70e23e.js.map
+//# sourceMappingURL=d410313c8c6985b841d8.js.map
