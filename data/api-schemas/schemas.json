@@ -100423,9 +100423,9 @@
 				]
 			}
 		},
-		"/accounts/{account_identifier}/intel-phishing/predict": {
-			"get": {
-				"summary": "Scan suspicious url",
+		"/accounts/{account_identifier}/brand-protection/submit": {
+			"post": {
+				"summary": "Submit suspicious URL for scanning",
 				"parameters": [
 					{
 						"name": "account_identifier",
@@ -100438,7 +100438,130 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Scan suspicious url response",
+						"description": "Submit suspicious URL for scanning response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"submitted_urls": {
+															"description": "URLs that were successfully submitted for scanning.",
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"url": {
+																		"description": "URL that was submitted.",
+																		"type": "string",
+																		"example": "https://www.cloudflare.com"
+																	},
+																	"url_id": {
+																		"description": "ID assigned to this URL submission. Used to retrieve scanning results.",
+																		"type": "integer",
+																		"example": 1
+																	}
+																}
+															}
+														},
+														"skipped_urls": {
+															"description": "URLs that were skipped because the same URL is currently being scanned",
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"url": {
+																		"description": "URL that was skipped.",
+																		"type": "string",
+																		"example": "https://www.cloudflare.com/developer-week/"
+																	},
+																	"url_id": {
+																		"description": "ID of the submission of that URL that is currently scanning.",
+																		"type": "integer",
+																		"example": 2
+																	}
+																}
+															}
+														},
+														"excluded_urls": {
+															"description": "URLs that were excluded from scanning because their domain is in our no-scan list.",
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"url": {
+																		"description": "URL that was excluded.",
+																		"type": "string",
+																		"example": "https://developers.cloudflare.com"
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					},
+					{
+						"api_token": []
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"allOf": [
+									{
+										"type": "object",
+										"properties": {
+											"url": {
+												"description": "URL(s) to filter submissions results by",
+												"type": "string",
+												"format": "uri",
+												"example": "https://www.cloudflare.com"
+											}
+										}
+									}
+								]
+							}
+						}
+					}
+				}
+			}
+		},
+		"/accounts/{account_identifier}/brand-protection/url-info": {
+			"get": {
+				"summary": "Get results for a URL scan",
+				"parameters": [
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1audit_logs/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Get results for a URL scan response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -100451,29 +100574,105 @@
 												"result": {
 													"properties": {
 														"url": {
-															"description": "URL that was scanned.",
+															"description": "URL that was submitted.",
 															"type": "string",
 															"example": "https://www.cloudflare.com"
 														},
-														"phishing": {
-															"description": "Whether the URL has been classified as phishing.",
-															"type": "boolean",
-															"example": false
+														"model_results": {
+															"description": "List of model results for completed scans.",
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"model_name": {
+																		"description": "Name of the model.",
+																		"type": "string",
+																		"example": "MACHINE_LEARNING_v2"
+																	},
+																	"model_score": {
+																		"description": "Score output by the model for this submission.",
+																		"type": "number",
+																		"example": 0.024
+																	}
+																}
+															}
 														},
-														"verified": {
-															"description": "Whether the URL has been hand verified.",
-															"type": "boolean",
-															"example": false
+														"categorizations": {
+															"description": "List of categorizations applied to this submission.",
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"category": {
+																		"description": "Name of the category applied.",
+																		"type": "string",
+																		"example": "PHISHING"
+																	},
+																	"verification_status": {
+																		"description": "Result of human review for this categorization.",
+																		"type": "string",
+																		"example": "confirmed"
+																	}
+																}
+															}
 														},
-														"score": {
-															"description": "Score reported from the classifer for the given URL.",
-															"type": "number",
-															"example": 0.99
+														"rule_matches": {
+															"description": "List of signatures that matched against site content found when crawling the URL.",
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"name": {
+																		"description": "Name of the signature that matched.",
+																		"type": "string",
+																		"example": "phishkit.social_followers"
+																	},
+																	"description": {
+																		"description": "Description of the signature that matched.",
+																		"type": "string",
+																		"example": "Match frequently used social followers phishing kit"
+																	},
+																	"blocking": {
+																		"description": "For internal use.",
+																		"type": "boolean"
+																	},
+																	"banning": {
+																		"description": "For internal use.",
+																		"type": "boolean"
+																	}
+																}
+															}
 														},
-														"classifier": {
-															"description": "Type of classifier that labelled this URL.",
-															"type": "string",
-															"example": "MACHINE_LEARNING_v2"
+														"scan_status": {
+															"description": "Status of the most recent scan found.",
+															"type": "object",
+															"properties": {
+																"submission_id": {
+																	"description": "ID of the most recent submission.",
+																	"type": "integer"
+																},
+																"status_code": {
+																	"description": "Status code that the crawler received when loading the submitted URL.",
+																	"type": "integer"
+																},
+																"last_processed": {
+																	"description": "Timestamp of when the submission was processed.",
+																	"type": "string",
+																	"example": "Wed, 26 Oct 2022 16:04:51 GMT"
+																},
+																"scan_complete": {
+																	"description": "For internal use.",
+																	"type": "boolean"
+																}
+															}
+														},
+														"screenshot_path": {
+															"description": "For internal use.",
+															"type": "string"
+														},
+														"screenshot_download_signature": {
+															"description": "For internal use.",
+															"type": "string"
 														}
 													}
 												}
