@@ -5,33 +5,28 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3 id="JobDescription:SeniorSystemsEngineerWorkersRuntime(C++)-AbouttheDepartment"><strong>About the Department</strong></h3>
-<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
-<p>The Workers organization makes it possible for Cloudflare customers to run JavaScript and WebAssembly on Cloudflare's edge network. We build and maintain the serverless technology that executes billions of requests per month on behalf of developers and grants them nearly limitless control over how their requests are handled and responded to.</p>
-<h3 id="JobDescription:SeniorSystemsEngineerWorkersRuntime(C++)-AbouttheTeam"><strong>About the Team</strong></h3>
-<p>The Workers Runtime team delivers features and improvements to our Runtime which actually executes customer code at the edge. We care deeply about increasing performance, improving JS API surface area and compiled language support through WebAssembly, and optimizing to meet the next 10x increase in scale. The Runtime is a hostile environment - System resources such as memory, cpu, I/O, etc need to be managed extremely carefully and security must be foundational in everything we do.</p>
-<h3 id="JobDescription:SeniorSystemsEngineerWorkersRuntime(C++)-Whatyouwilldo"><strong>What you will do</strong></h3>
-<p>We are looking for a Runtime Engineer to join our team. You will work with a team of passionate, talented engineers that are building innovative products that bring security and speed to millions of internet users each day. You will play an active part in shaping product strategy based on what’s technically possible. You will make sure our company hits our ambitious goals from an engineering standpoint.</p>
-<p>You bring a passion for meeting business needs with building technically innovative solutions, and excel at shifting between the two—understanding how big-picture goals inform technical details, and vice-versa. You thrive in a fast-paced iterative engineering environment and have experience delivering scalable distributed systems. Most importantly, you will have a track record of having past teams respect you as both a technical leader and manager.</p>
-<h3 id="JobDescription:SeniorSystemsEngineerWorkersRuntime(C++)-Examplesofdesirableskills,knowledgeandexperience"><strong>Examples of desirable skills, knowledge and experience</strong></h3>
+<p><strong>Solutions Product Marketing Manager - Technology Partnerships</strong></p>
+<p>Cloudflare is looking for a product marketer to promote the customer benefits of our technology partner program that covers application performance and security, Zero Trust services, developer tools and network services. We have a large ecosystem of partners covering many use cases, and we also focus on a select number of strategic partners with whom we build integrated solutions and develop joint go-to-market plans. You will help identify, scope and build customer journeys and sales playbooks that cover use cases defined by industries, segments, personas and market trends. Think SASE, Zero Trust, and Security Operations Center (SOC). You will work with colleagues in events, demand generation, sales, business development and more to create compelling content that drives measurable success for our technology partner program. You will develop strategic marketing plans and evangelize solution messages to prospects, customers, sellers and partners.&nbsp;</p>
+<p>You will partner closely with the Special Projects team and work directly with Sales, Product Management, Partners, and all Marketing disciplines to execute against ambitious plans. You will understand customer needs, dig into product details, and elevate our messaging to deliver solution-oriented, breakthrough initiatives. You will enjoy this role if you like working with fast-paced teams and having autonomy to drive your initiatives.&nbsp;</p>
+<p>This product marketing role reports into our Senior Director of Solutions Marketing, and is a highly visible role within the organization, that will have a significant impact on the fast-growing Cloudflare business and our reputation with customers in all geographies, segments and industries.</p>
+<p>Responsibilities</p>
 <ul>
-	<li>10+ years of professional experience building and managing software applications at large scale</li>
-	<li>Deep knowledge of at least one systems programming language such as C/C++, or Rust</li>
-	<li>An operational mindset - we don't just write code, we also own it in production</li>
-	<li>Solid foundation in computer science and software engineering with strong competencies in software design, and building distributed systems</li>
-	<li>Strong understanding of the web and technologies such as web browsers, HTTP, JavaScript and WebAssembly</li>
-	<li>Experience in designing and architecting large-scale distributed systems</li>
-	<li>Experience working with cloud platforms, especially server-less platforms</li>
-	<li>Experience debugging, optimizing and identifying possible failures in a large-scale distributed system</li>
-	<li>Experience being in a Technical lead or Team lead role</li>
+	<li>Provide GTM strategy, content and sales enablement for tech-partnership related campaigns that drive customer acquisition, retention, and expansion.</li>
+	<li>Evangelize partnerships with Cloudflare&nbsp; to sellers, partners, and customers—in meetings, webinars, conferences and tradeshows.</li>
+	<li>Be the voice of the tech partnerships to the entire marketing team. Be the voice of the marketing team to product management</li>
+	<li>Develop messaging that proves Cloudflare’s differentiation.&nbsp;</li>
+	<li>Partner with demand generation and special projects teams to generate awareness, adoption, pipeline and revenue for Cloudflare and partners.</li>
+	<li>Provide support for the field sales teams in the form of sales plays for both mid-market and enterprise</li>
 </ul>
-<h3 id="JobDescription:SeniorSystemsEngineerWorkersRuntime(C++)-BonusPoints"><strong>Bonus Points</strong></h3>
+<p>Requirements</p>
 <ul>
-	<li>Experience with the internals of JS engines such as V8, SpiderMonkey, or JavaScriptCore</li>
-	<li>Experience with standalone WebAssembly runtimes such as Wasmtime, Wasmer, Lucet, etc</li>
-	<li>Deep Linux/UNIX systems, kernel, or networking knowledge</li>
-	<li>Managing contributes to large open-source projects</li>
-	<li>Experience working in low-latency real time environments such as game streaming, game engine architecture, high frequency trading, payment systems</li>
+	<li>4+ years of experience in technology product marketing/product management</li>
+	<li>Experience at one or more application performance/reliability vendors</li>
+	<li>Knowledge of how the Internet works, including web applications, CDN, HTTP, DNS, Load balancing</li>
+	<li>Excellent written and presentation skills. This role demands someone who is gifted in their ability to communicate effectively with all stakeholders, including product management, sales, comms, and marketing</li>
+	<li>Ability to manage ambiguity and navigate unforeseen obstacles gracefully</li>
+	<li>Self-starter who truly enjoys working in a fast-paced, innovative cloud services company.</li>
+	<li>BS/BA degree in Marketing, Business, Engineering, or related field</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
