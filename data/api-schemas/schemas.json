@@ -82174,7 +82174,7 @@
 									"account_id": {
 										"type": "string",
 										"maxLength": 32,
-										"description": "Cloudflare account tag.",
+										"description": "Cloudflare account ID",
 										"example": "699d98642c564d2e855e9661899b7252"
 									}
 								}
@@ -85172,7 +85172,7 @@
 									},
 									"schedule": {
 										"type": "string",
-										"description": "Tells the client when to run the device posture check.",
+										"description": "Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.",
 										"example": "1h"
 									},
 									"match": {
@@ -85209,7 +85209,7 @@
 									},
 									"expiration": {
 										"type": "string",
-										"description": "Expire posture results after the specified amount of time.",
+										"description": "Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.",
 										"example": "1h"
 									}
 								}
@@ -85380,7 +85380,7 @@
 									},
 									"schedule": {
 										"type": "string",
-										"description": "Tells the client when to run the device posture check.",
+										"description": "Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.",
 										"example": "1h"
 									},
 									"match": {
@@ -85406,7 +85406,7 @@
 									},
 									"expiration": {
 										"type": "string",
-										"description": "Expire posture results after the specified amount of time.",
+										"description": "Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.",
 										"example": "1h"
 									}
 								}
@@ -94063,14 +94063,17 @@
 		"/accounts/{account_identifier}/tunnels": {
 			"get": {
 				"summary": "List Argo Tunnels",
-				"description": "List, search and filter an account's Argo Tunnels.",
+				"description": "Lists and filters Argo Tunnels in an account.",
 				"parameters": [
 					{
 						"name": "account_identifier",
 						"in": "path",
 						"required": true,
 						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1subscriptions/get/parameters/0/schema"
+							"type": "string",
+							"maxLength": 32,
+							"description": "Cloudflare account ID",
+							"example": "699d98642c564d2e855e9661899b7252"
 						}
 					}
 				],
@@ -94103,30 +94106,37 @@
 																"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1tunnels/post/requestBody/content/application~1json/schema/properties/name"
 															},
 															"created_at": {
-																"description": "Timestamps when the tunnel was created, formatted in RFC 3339."
+																"type": "string",
+																"format": "date-time",
+																"example": "2021-01-25T18:22:34.317854+00:00",
+																"description": "Timestamp of when the tunnel was created."
 															},
 															"deleted_at": {
-																"description": "If present, indicates tunnel was deleted at the given date (formatted in RFC 3339). If absent, tunnel has not been deleted.",
+																"description": "Timestamp of when the tunnel was deleted. If `null`, the tunnel has not been deleted.",
 																"type": "string",
 																"format": "date-time",
 																"example": "2009-11-10T23:00:00+00:00",
 																"nullable": true
 															},
 															"connections": {
-																"description": "Connections between cloudflared and the Cloudflare edge that are serving this tunnel.",
+																"description": "The tunnel connections between your origin and Cloudflare's edge.",
 																"type": "array",
 																"items": {
 																	"properties": {
 																		"colo_name": {
-																			"description": "Short ID for the colo this connection is connected to.",
+																			"description": "The Cloudflare data center used for this connection.",
 																			"type": "string",
 																			"example": "DFW"
 																		},
 																		"uuid": {
-																			"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1identity_providers/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/id"
+																			"description": "UUID of the Cloudflare Tunnel connection.",
+																			"readOnly": true,
+																			"type": "string",
+																			"maxLength": 36,
+																			"example": "1bedc50d-42b3-473c-b108-ff3d10c0d925"
 																		},
 																		"is_pending_reconnect": {
-																			"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting. If this field is true, the connection has disconnected but is still being tracked for these optimized reconnects. If false, the connection is still actively serving.",
+																			"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
 																			"type": "boolean",
 																			"example": false
 																		}
@@ -94143,7 +94153,7 @@
 														"x-cfDeprecations": {
 															"argo_tunnel_deprecation": {
 																"id": "argo_tunnel_deprecation",
-																"description": "This endpoint and its related APIs are deprecated in favor of the Cloudflare Tunnels equivalent APIs.",
+																"description": "This endpoint and its related APIs are deprecated in favor of the equivalent Cloudflare Tunnel APIs.",
 																"eol": "2024-02-04",
 																"display": true
 															}
@@ -94170,14 +94180,14 @@
 				"deprecated": true,
 				"x-cfDeprecation": {
 					"id": "argo_tunnel_deprecation",
-					"description": "This endpoint and its related APIs are deprecated in favor of the Cloudflare Tunnels equivalent APIs.",
+					"description": "This endpoint and its related APIs are deprecated in favor of the equivalent Cloudflare Tunnel APIs.",
 					"eol": "2024-02-04",
 					"display": true
 				}
 			},
 			"post": {
-				"summary": "Create Argo Tunnel",
-				"description": "Create an Argo Tunnel in an account.",
+				"summary": "Create an Argo Tunnel",
+				"description": "Creates a new Argo Tunnel in an account.",
 				"parameters": [
 					{
 						"name": "account_identifier",
@@ -94190,7 +94200,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Create Argo Tunnel response",
+						"description": "Create an Argo Tunnel response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -94237,14 +94247,12 @@
 								],
 								"properties": {
 									"name": {
-										"description": "A user-friendly name chosen when the tunnel is created. Cannot be empty.",
+										"description": "A user-friendly name for the tunnel.",
 										"type": "string",
 										"example": "blog"
 									},
 									"tunnel_secret": {
-										"type": "string",
-										"description": "32 or more bytes, encoded as a base64 string. The Create Argo Tunnel endpoint sets this as the tunnel's password. Anyone wishing to run the tunnel needs this password.",
-										"example": "AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg="
+										"description": "Sets the password required to run the tunnel. Must be at least 32 bytes and encoded as a base64 string."
 									}
 								}
 							}
@@ -94255,19 +94263,15 @@
 		},
 		"/accounts/{account_identifier}/tunnels/{tunnel_id}": {
 			"get": {
-				"summary": "Get Argo Tunnel",
-				"description": "Get the details of an Argo Tunnel from an account.",
+				"summary": "Get an Argo Tunnel",
+				"description": "Fetches a single Argo Tunnel.",
 				"parameters": [
 					{
 						"name": "tunnel_id",
 						"in": "path",
 						"required": true,
 						"schema": {
-							"description": "UUID of the tunnel.",
-							"readOnly": true,
-							"type": "string",
-							"maxLength": 36,
-							"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1tunnels/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/id"
 						}
 					},
 					{
@@ -94275,13 +94279,13 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1subscriptions/get/parameters/0/schema"
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1tunnels/get/parameters/0/schema"
 						}
 					}
 				],
 				"responses": {
 					"200": {
-						"description": "Get Argo Tunnel response",
+						"description": "Get an Argo Tunnel response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -94315,14 +94319,14 @@
 				"deprecated": true,
 				"x-cfDeprecation": {
 					"id": "argo_tunnel_deprecation",
-					"description": "This endpoint and its related APIs are deprecated in favor of the Cloudflare Tunnels equivalent APIs.",
+					"description": "This endpoint and its related APIs are deprecated in favor of the equivalent Cloudflare Tunnel APIs.",
 					"eol": "2024-02-04",
 					"display": true
 				}
 			},
 			"delete": {
-				"summary": "Delete Argo Tunnel",
-				"description": "Delete an Argo Tunnel from an account.",
+				"summary": "Delete an Argo Tunnel",
+				"description": "Deletes an Argo Tunnel from an account.",
 				"parameters": [
 					{
 						"name": "tunnel_id",
@@ -94343,7 +94347,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Delete Argo Tunnel response",
+						"description": "Delete an Argo Tunnel response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -94381,19 +94385,15 @@
 		},
 		"/accounts/{account_identifier}/tunnels/{tunnel_id}/connections": {
 			"delete": {
-				"summary": "Clean Up Argo Tunnel Connections",
-				"description": "Remove stale connection resources from an Argo Tunnel.",
+				"summary": "Clean up Argo Tunnel connections",
+				"description": "Removes connections that are in a disconnected or pending reconnect state. We recommend running this command after shutting down a tunnel.",
 				"parameters": [
 					{
 						"name": "tunnel_id",
 						"in": "path",
 						"required": true,
 						"schema": {
-							"description": "UUID of the tunnel.",
-							"readOnly": true,
-							"type": "string",
-							"maxLength": 36,
-							"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1tunnels/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/id"
 						}
 					},
 					{
@@ -94401,13 +94401,13 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1subscriptions/get/parameters/0/schema"
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1tunnels/get/parameters/0/schema"
 						}
 					}
 				],
 				"responses": {
 					"200": {
-						"description": "Clean Up Argo Tunnel Connections response",
+						"description": "Clean up Argo Tunnel connections response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -94441,7 +94441,7 @@
 				"deprecated": true,
 				"x-cfDeprecation": {
 					"id": "argo_tunnel_deprecation",
-					"description": "This endpoint and its related APIs are deprecated in favor of the Cloudflare Tunnels equivalent APIs.",
+					"description": "This endpoint and its related APIs are deprecated in favor of the equivalent Cloudflare Tunnel APIs.",
 					"eol": "2024-02-04",
 					"display": true
 				},
@@ -94461,14 +94461,14 @@
 		"/accounts/{account_identifier}/cfd_tunnel": {
 			"get": {
 				"summary": "List Cloudflare Tunnels",
-				"description": "List, search and filter an account's Cloudflare Tunnels.",
+				"description": "Lists and filters Cloudflare Tunnels in an account.",
 				"parameters": [
 					{
 						"name": "account_identifier",
 						"in": "path",
 						"required": true,
 						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1subscriptions/get/parameters/0/schema"
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1tunnels/get/parameters/0/schema"
 						}
 					}
 				],
@@ -94488,7 +94488,7 @@
 												"result": {
 													"type": "array",
 													"items": {
-														"description": "Indicates the cloudflared enabled features for this Cloudflare Tunnel connection.",
+														"description": "A Cloudflare Tunnel that connects your origin to Cloudflare's edge.",
 														"type": "object",
 														"properties": {
 															"id": {
@@ -94505,10 +94505,10 @@
 																"type": "string",
 																"format": "date-time",
 																"example": "2021-01-25T18:22:34.317854+00:00",
-																"description": "Timestamps when the resource was created, formatted in RFC 3339."
+																"description": "Timestamp of when the tunnel was created."
 															},
 															"deleted_at": {
-																"description": "If present, indicates tunnel was deleted at the given date (formatted in RFC 3339). If absent, tunnel has not been deleted.",
+																"description": "Timestamp of when the tunnel was deleted. If `null`, the tunnel has not been deleted.",
 																"type": "string",
 																"format": "date-time",
 																"example": "2009-11-10T23:00:00+00:00",
@@ -94518,70 +94518,86 @@
 																"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1cfd_tunnel/post/requestBody/content/application~1json/schema/properties/name"
 															},
 															"connections": {
-																"description": "Connections between cloudflared and the Cloudflare edge that are serving this tunnel.",
+																"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
 																"type": "array",
 																"items": {
 																	"properties": {
 																		"colo_name": {
-																			"description": "Short ID for the colo this connection is connected to.",
+																			"description": "The Cloudflare data center used for this connection.",
 																			"type": "string",
 																			"example": "DFW"
 																		},
-																		"id": {
-																			"description": "UUID of the tunnel's connection.",
+																		"uuid": {
+																			"description": "UUID of the Cloudflare Tunnel connection.",
 																			"readOnly": true,
 																			"type": "string",
 																			"maxLength": 36,
 																			"example": "1bedc50d-42b3-473c-b108-ff3d10c0d925"
 																		},
+																		"id": {
+																			"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1cfd_tunnel/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/connections/items/properties/uuid"
+																		},
 																		"is_pending_reconnect": {
-																			"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting. If this field is true, the connection has disconnected but is still being tracked for these optimized reconnects. If false, the connection is still actively serving.",
+																			"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
 																			"type": "boolean",
 																			"example": false
 																		},
-																		"client_id": {
-																			"description": "UUID of the cloudflared instance."
-																		},
-																		"client_version": {
-																			"description": "Indicates the cloudflared version used to establish this Cloudflare Tunnel connection.",
+																		"origin_ip": {
+																			"description": "The public IP address of the host running cloudflared.",
 																			"type": "string",
-																			"example": "2022.7.1"
+																			"example": "85.12.78.6"
 																		},
 																		"opened_at": {
 																			"type": "string",
 																			"format": "date-time",
 																			"example": "2021-01-25T18:22:34.317854+00:00",
-																			"description": "Timestamp when the connection was established, formatted in RFC 3339."
+																			"description": "Timestamp of when the connection was established."
 																		},
-																		"origin_ip": {
-																			"description": "The publicly perceived IP of the host running the cloudflared instance.",
+																		"client_id": {
+																			"description": "UUID of the cloudflared instance."
+																		},
+																		"client_version": {
+																			"description": "The cloudflared version used to establish this connection.",
 																			"type": "string",
-																			"example": "85.12.78.6"
+																			"example": "2022.7.1"
 																		}
 																	}
 																}
 															},
 															"conns_active_at": {
-																"description": "If present, indicates the timestamp since the tunnel had at least 1 connection active (formatted in RFC 3339). If absent, tunnel is inactive.",
+																"description": "Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.",
 																"type": "string",
 																"format": "date-time",
 																"example": "2009-11-10T23:00:00+00:00",
 																"nullable": true
 															},
 															"conns_inactive_at": {
-																"description": "If present, indicates since when the tunnel is without any connection established to the edge (formatted in RFC 3339). If absent, tunnel is active.",
+																"description": "Timestamp of when the tunnel became inactive (no connections to Cloudflare's edge). If `null`, the tunnel is active.",
 																"type": "string",
 																"format": "date-time",
 																"example": "2009-11-10T23:00:00+00:00",
 																"nullable": true
 															},
+															"tun_type": {
+																"description": "The type of tunnel.",
+																"type": "string",
+																"enum": [
+																	"cfd_tunnel"
+																],
+																"example": "cfd_tunnel"
+															},
+															"metadata": {
+																"description": "Metadata associated with the tunnel.",
+																"type": "object",
+																"example": {}
+															},
 															"status": {
-																"description": "The status of the tunnel. Could be \"active\", \"inactive\" or \"degraded\" (Active but not all connectors have 4 connections to the edge).",
+																"description": "The status of the tunnel. Valid values are `active`, `inactive` or `degraded` (active but not all cloudflared instances have 4 connections to Cloudflare's edge).",
 																"type": "string",
 																"example": "active"
 															},
 															"remote_config": {
-																"description": "If the Cloudflare Tunnel's configuration is configured remotely (true) or locally on the origin machine (false).",
+																"description": "If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.",
 																"type": "boolean",
 																"example": true
 															}
@@ -94607,8 +94623,8 @@
 				]
 			},
 			"post": {
-				"summary": "Create Cloudflare Tunnel",
-				"description": "Create a Cloudflare Tunnel in an account.",
+				"summary": "Create a Cloudflare Tunnel",
+				"description": "Creates a new Cloudflare Tunnel in an account.",
 				"parameters": [
 					{
 						"name": "account_identifier",
@@ -94621,7 +94637,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Create Cloudflare Tunnel response",
+						"description": "Create a Cloudflare Tunnel response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -94664,14 +94680,24 @@
 								],
 								"properties": {
 									"name": {
-										"description": "A user-friendly name chosen when the tunnel is created. Cannot be empty.",
+										"description": "A user-friendly name for the tunnel.",
 										"type": "string",
 										"example": "blog"
 									},
 									"tunnel_secret": {
 										"type": "string",
-										"description": "A secret encoded as a base64 string. The Create Cloudflare Tunnel endpoint sets this as the tunnel's password. Anyone wishing to run the tunnel needs this password.",
+										"description": "Sets the password required to run a locally-managed tunnel. Must be at least 32 bytes and encoded as a base64 string.",
 										"example": "AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg="
+									},
+									"config_src": {
+										"type": "string",
+										"description": "Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard or using the [Cloudflare Tunnel configuration](https://api.cloudflare.com/#cloudflare-tunnel-configuration-properties) endpoint.",
+										"default": "local",
+										"enum": [
+											"local",
+											"cloudflare"
+										],
+										"example": "cloudflare"
 									}
 								}
 							}
@@ -94682,8 +94708,8 @@
 		},
 		"/accounts/{account_identifier}/cfd_tunnel/{tunnel_id}": {
 			"patch": {
-				"summary": "Update Cloudflare Tunnel",
-				"description": "Updates a Cloudflare Tunnel in an account.",
+				"summary": "Update a Cloudflare Tunnel",
+				"description": "Updates an existing Cloudflare Tunnel.",
 				"parameters": [
 					{
 						"name": "tunnel_id",
@@ -94702,13 +94728,13 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1subscriptions/get/parameters/0/schema"
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1tunnels/get/parameters/0/schema"
 						}
 					}
 				],
 				"responses": {
 					"200": {
-						"description": "Update Cloudflare Tunnel response",
+						"description": "Update a Cloudflare Tunnel response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -94720,7 +94746,7 @@
 											"type": "object",
 											"properties": {
 												"result": {
-													"description": "Indicates the cloudflared enabled features for this Cloudflare Tunnel connection.",
+													"description": "A Cloudflare Tunnel that connects your origin to Cloudflare's edge.",
 													"type": "object",
 													"properties": {
 														"id": {
@@ -94733,10 +94759,10 @@
 															"type": "string",
 															"format": "date-time",
 															"example": "2021-01-25T18:22:34.317854+00:00",
-															"description": "Timestamps when the resource was created, formatted in RFC 3339."
+															"description": "Timestamp of when the tunnel was created."
 														},
 														"deleted_at": {
-															"description": "If present, indicates tunnel was deleted at the given date (formatted in RFC 3339). If absent, tunnel has not been deleted.",
+															"description": "Timestamp of when the tunnel was deleted. If `null`, the tunnel has not been deleted.",
 															"type": "string",
 															"format": "date-time",
 															"example": "2009-11-10T23:00:00+00:00",
@@ -94746,70 +94772,86 @@
 															"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1cfd_tunnel~1%7Btunnel_id%7D/patch/requestBody/content/application~1json/schema/properties/name"
 														},
 														"connections": {
-															"description": "Connections between cloudflared and the Cloudflare edge that are serving this tunnel.",
+															"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
 															"type": "array",
 															"items": {
 																"properties": {
 																	"colo_name": {
-																		"description": "Short ID for the colo this connection is connected to.",
+																		"description": "The Cloudflare data center used for this connection.",
 																		"type": "string",
 																		"example": "DFW"
 																	},
-																	"id": {
-																		"description": "UUID of the tunnel's connection.",
+																	"uuid": {
+																		"description": "UUID of the Cloudflare Tunnel connection.",
 																		"readOnly": true,
 																		"type": "string",
 																		"maxLength": 36,
 																		"example": "1bedc50d-42b3-473c-b108-ff3d10c0d925"
 																	},
+																	"id": {
+																		"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1cfd_tunnel~1%7Btunnel_id%7D/patch/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/connections/items/properties/uuid"
+																	},
 																	"is_pending_reconnect": {
-																		"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting. If this field is true, the connection has disconnected but is still being tracked for these optimized reconnects. If false, the connection is still actively serving.",
+																		"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
 																		"type": "boolean",
 																		"example": false
 																	},
-																	"client_id": {
-																		"description": "UUID of the cloudflared instance."
-																	},
-																	"client_version": {
-																		"description": "Indicates the cloudflared version used to establish this Cloudflare Tunnel connection.",
+																	"origin_ip": {
+																		"description": "The public IP address of the host running cloudflared.",
 																		"type": "string",
-																		"example": "2022.7.1"
+																		"example": "85.12.78.6"
 																	},
 																	"opened_at": {
 																		"type": "string",
 																		"format": "date-time",
 																		"example": "2021-01-25T18:22:34.317854+00:00",
-																		"description": "Timestamp when the connection was established, formatted in RFC 3339."
+																		"description": "Timestamp of when the connection was established."
 																	},
-																	"origin_ip": {
-																		"description": "The publicly perceived IP of the host running the cloudflared instance.",
+																	"client_id": {
+																		"description": "UUID of the cloudflared instance."
+																	},
+																	"client_version": {
+																		"description": "The cloudflared version used to establish this connection.",
 																		"type": "string",
-																		"example": "85.12.78.6"
+																		"example": "2022.7.1"
 																	}
 																}
 															}
 														},
 														"conns_active_at": {
-															"description": "If present, indicates the timestamp since the tunnel had at least 1 connection active (formatted in RFC 3339). If absent, tunnel is inactive.",
+															"description": "Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.",
 															"type": "string",
 															"format": "date-time",
 															"example": "2009-11-10T23:00:00+00:00",
 															"nullable": true
 														},
 														"conns_inactive_at": {
-															"description": "If present, indicates since when the tunnel is without any connection established to the edge (formatted in RFC 3339). If absent, tunnel is active.",
+															"description": "Timestamp of when the tunnel became inactive (no connections to Cloudflare's edge). If `null`, the tunnel is active.",
 															"type": "string",
 															"format": "date-time",
 															"example": "2009-11-10T23:00:00+00:00",
 															"nullable": true
 														},
+														"tun_type": {
+															"description": "The type of tunnel.",
+															"type": "string",
+															"enum": [
+																"cfd_tunnel"
+															],
+															"example": "cfd_tunnel"
+														},
+														"metadata": {
+															"description": "Metadata associated with the tunnel.",
+															"type": "object",
+															"example": {}
+														},
 														"status": {
-															"description": "The status of the tunnel. Could be \"active\", \"inactive\" or \"degraded\" (Active but not all connectors have 4 connections to the edge).",
+															"description": "The status of the tunnel. Valid values are `active`, `inactive` or `degraded` (active but not all cloudflared instances have 4 connections to Cloudflare's edge).",
 															"type": "string",
 															"example": "active"
 														},
 														"remote_config": {
-															"description": "If the Cloudflare Tunnel's configuration is configured remotely (true) or locally on the origin machine (false).",
+															"description": "If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.",
 															"type": "boolean",
 															"example": true
 														}
@@ -94840,13 +94882,13 @@
 								"type": "object",
 								"properties": {
 									"name": {
-										"description": "A user-friendly name chosen when the tunnel is created. Cannot be empty.",
+										"description": "A user-friendly name for the tunnel.",
 										"type": "string",
 										"example": "blog"
 									},
 									"tunnel_secret": {
 										"type": "string",
-										"description": "A secret encoded as a base64 string. The endpoint sets this as the tunnel's password. Anyone wishing to run the tunnel needs this password.",
+										"description": "Sets the password required to run a locally-managed tunnel. Must be at least 32 bytes and encoded as a base64 string.",
 										"example": "AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg="
 									}
 								}
@@ -94856,8 +94898,8 @@
 				}
 			},
 			"get": {
-				"summary": "Get Cloudflare Tunnel",
-				"description": "Get the details of a Cloudflare Tunnel from an account.",
+				"summary": "Get a Cloudflare Tunnel",
+				"description": "Fetches a single Cloudflare Tunnel.",
 				"parameters": [
 					{
 						"name": "tunnel_id",
@@ -94878,7 +94920,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Get Cloudflare Tunnel response",
+						"description": "Get a Cloudflare Tunnel response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -94899,8 +94941,8 @@
 				]
 			},
 			"delete": {
-				"summary": "Delete Cloudflare Tunnel",
-				"description": "Delete a Cloudflare Tunnel from an account.",
+				"summary": "Delete a Cloudflare Tunnel",
+				"description": "Deletes a Cloudflare Tunnel from an account.",
 				"parameters": [
 					{
 						"name": "tunnel_id",
@@ -94921,7 +94963,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Delete Cloudflare Tunnel response",
+						"description": "Delete a Cloudflare Tunnel response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -94955,8 +94997,8 @@
 		},
 		"/accounts/{account_identifier}/cfd_tunnel/{tunnel_id}/connections": {
 			"get": {
-				"summary": "List Cloudflare Tunnel Connections",
-				"description": "List all of the connection resources for a Cloudflare Tunnel.",
+				"summary": "List Cloudflare Tunnel connections",
+				"description": "Fetches connection details for a Cloudflare Tunnel.",
 				"parameters": [
 					{
 						"name": "tunnel_id",
@@ -94975,13 +95017,13 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1subscriptions/get/parameters/0/schema"
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1tunnels/get/parameters/0/schema"
 						}
 					}
 				],
 				"responses": {
 					"200": {
-						"description": "List Cloudflare Tunnel Connections response",
+						"description": "List Cloudflare Tunnel connections response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -94995,18 +95037,18 @@
 												"result": {
 													"type": "array",
 													"items": {
-														"description": "Indicates the cloudflared enabled features for this Cloudflare Tunnel connection.",
+														"description": "A connection between cloudflared and a Cloudflare data center.",
 														"type": "object",
 														"properties": {
 															"id": {
-																"description": "UUID of the tunnel's connection.",
+																"description": "UUID of the Cloudflare Tunnel connection.",
 																"readOnly": true,
 																"type": "string",
 																"maxLength": 36,
 																"example": "1bedc50d-42b3-473c-b108-ff3d10c0d925"
 															},
 															"features": {
-																"description": "Contents of a Cloudflare Tunnel.",
+																"description": "Features enabled for the Cloudflare Tunnel.",
 																"type": "array",
 																"items": {
 																	"type": "string",
@@ -95014,55 +95056,62 @@
 																}
 															},
 															"version": {
-																"description": "Indicates the cloudflared version used to establish this Cloudflare Tunnel connection.",
+																"description": "The cloudflared version used to establish this connection.",
 																"type": "string",
 																"example": "2022.7.1"
 															},
 															"arch": {
-																"description": "Indicates the cloudflared OS architecture used to establish this Cloudflare Tunnel connection.",
+																"description": "The cloudflared OS architecture used to establish this connection.",
 																"type": "string",
 																"example": "linux_amd64"
 															},
+															"config_version": {
+																"description": "The version of the remote tunnel configuration. Used internally to sync cloudflared with the Zero Trust dashboard.",
+																"type": "integer"
+															},
 															"conns": {
-																"description": "Connections between cloudflared and the Cloudflare edge that are serving this tunnel.",
+																"description": "The Cloudflare Tunnel connections between your origin and Cloudflare's edge.",
 																"type": "array",
 																"items": {
 																	"properties": {
 																		"colo_name": {
-																			"description": "Short ID for the colo this connection is connected to.",
+																			"description": "The Cloudflare data center used for this connection.",
 																			"type": "string",
 																			"example": "DFW"
+																		},
+																		"uuid": {
+																			"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1cfd_tunnel~1%7Btunnel_id%7D~1connections/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/id"
 																		},
 																		"id": {
 																			"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1cfd_tunnel~1%7Btunnel_id%7D~1connections/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/id"
 																		},
 																		"is_pending_reconnect": {
-																			"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting. If this field is true, the connection has disconnected but is still being tracked for these optimized reconnects. If false, the connection is still actively serving.",
+																			"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.",
 																			"type": "boolean",
 																			"example": false
+																		},
+																		"origin_ip": {
+																			"description": "The public IP address of the host running cloudflared.",
+																			"type": "string",
+																			"example": "85.12.78.6"
+																		},
+																		"opened_at": {
+																			"type": "string",
+																			"format": "date-time",
+																			"example": "2021-01-25T18:22:34.317854+00:00",
+																			"description": "Timestamp of when the connection was established."
 																		},
 																		"client_id": {
 																			"description": "UUID of the cloudflared instance."
 																		},
 																		"client_version": {
 																			"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1cfd_tunnel~1%7Btunnel_id%7D~1connections/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/version"
-																		},
-																		"opened_at": {
-																			"type": "string",
-																			"format": "date-time",
-																			"example": "2021-01-25T18:22:34.317854+00:00",
-																			"description": "Timestamp when the connection was established, formatted in RFC 3339."
-																		},
-																		"origin_ip": {
-																			"description": "The publicly perceived IP of the host running the cloudflared instance.",
-																			"type": "string",
-																			"example": "85.12.78.6"
 																		}
 																	}
 																}
 															},
 															"run_at": {
-																"description": "Indicates when the tunnel connection was started (formatted in RFC 3339).",
+																"description": "Timestamp of when the tunnel connection was started.",
 																"type": "string",
 																"format": "date-time",
 																"example": "2009-11-10T23:00:00+00:00"
@@ -95089,8 +95138,8 @@
 				]
 			},
 			"delete": {
-				"summary": "Clean Up Cloudflare Tunnel Connections",
-				"description": "Remove stale connection resources from a Cloudflare Tunnel.",
+				"summary": "Clean up Cloudflare Tunnel connections",
+				"description": "Removes connections that are in a disconnected or pending reconnect state. We recommend running this command after shutting down a tunnel.",
 				"parameters": [
 					{
 						"name": "tunnel_id",
@@ -95111,7 +95160,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Clean Up Cloudflare Tunnel Connections response",
+						"description": "Clean up Cloudflare Tunnel connections response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -95157,8 +95206,8 @@
 		},
 		"/accounts/{account_identifier}/cfd_tunnel/{tunnel_id}/token": {
 			"get": {
-				"summary": "Get Cloudflare Tunnel Token",
-				"description": "Gets the Tunnel for a previously created Cloudflare Tunnel.",
+				"summary": "Get a Cloudflare Tunnel token",
+				"description": "Gets the token used to associate cloudflared with a specific tunnel.",
 				"parameters": [
 					{
 						"name": "tunnel_id",
@@ -95177,13 +95226,13 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1subscriptions/get/parameters/0/schema"
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1tunnels/get/parameters/0/schema"
 						}
 					}
 				],
 				"responses": {
 					"200": {
-						"description": "Get Cloudflare Tunnel Token response",
+						"description": "Get a Cloudflare Tunnel token response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -95218,19 +95267,15 @@
 		},
 		"/accounts/{account_identifier}/cfd_tunnel/{tunnel_id}/configurations": {
 			"put": {
-				"summary": "Put Configuration",
-				"description": "Add or update a configuration for a cloudflared tunnel.",
+				"summary": "Put configuration",
+				"description": "Adds or updates the configuration for a remotely-managed tunnel.",
 				"parameters": [
 					{
 						"name": "tunnel_id",
 						"in": "path",
 						"required": true,
 						"schema": {
-							"description": "UUID of the tunnel.",
-							"readOnly": true,
-							"type": "string",
-							"maxLength": 36,
-							"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1tunnels/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/id"
 						}
 					},
 					{
@@ -95244,7 +95289,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Put Configuration response",
+						"description": "Put configuration response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -95283,7 +95328,8 @@
 								"type": "object",
 								"properties": {
 									"config": {
-										"description": "This is a json that conforms to the same syntax rules as the config.yaml."
+										"description": "The tunnel configuration and ingress rules in JSON format. For syntax and parameters, refer to the [configuration file documentation](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/configuration-file/#file-structure).",
+										"type": "object"
 									}
 								}
 							}
@@ -95292,8 +95338,8 @@
 				}
 			},
 			"get": {
-				"summary": "Get Configuration",
-				"description": "Get the configuration of a specific Cloudflare Tunnel.",
+				"summary": "Get configuration",
+				"description": "Gets the configuration for a remotely-managed tunnel",
 				"parameters": [
 					{
 						"name": "tunnel_id",
@@ -95314,7 +95360,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Get Configuration response",
+						"description": "Get configuration response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -95337,21 +95383,21 @@
 		},
 		"/accounts/{account_identifier}/teamnet/routes": {
 			"get": {
-				"summary": "List Tunnel Routes",
-				"description": "List, search and filter an account's tunnel routes.",
+				"summary": "List tunnel routes",
+				"description": "Lists and filters private network routes in an account.",
 				"parameters": [
 					{
 						"name": "account_identifier",
 						"in": "path",
 						"required": true,
 						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1subscriptions/get/parameters/0/schema"
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1tunnels/get/parameters/0/schema"
 						}
 					}
 				],
 				"responses": {
 					"200": {
-						"description": "List Tunnel Routes response",
+						"description": "List tunnel routes response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -95368,24 +95414,26 @@
 														"type": "object",
 														"properties": {
 															"network": {
-																"description": "CIDR notation of the IPv4 or IPv6 range of the network the route connects to."
+																"description": "The private IPv4 or IPv6 range connected by the route, in CIDR notation.",
+																"type": "string",
+																"example": "172.16.0.0/16"
 															},
 															"tunnel_id": {
-																"description": "UUID of the Tunnel the route belongs to."
+																"description": "UUID of the Cloudflare Tunnel serving the route."
 															},
 															"tunnel_name": {
-																"description": "User-friendly name of the Tunnel the route belongs to."
+																"description": "The user-friendly name of the Cloudflare Tunnel serving the route."
 															},
 															"comment": {
-																"description": "Optional remark describing the route. Empty if none.",
+																"description": "Optional remark describing the route.",
 																"type": "string",
-																"example": "Example comment for this route"
+																"example": "Example comment for this route."
 															},
 															"created_at": {
-																"description": "Timestamps when the route was created, formatted in RFC 3339."
+																"description": "Timestamp of when the route was created."
 															},
 															"deleted_at": {
-																"description": "If present, indicates route was deleted at the given date (formatted in RFC 3339). If absent, route has not been deleted.",
+																"description": "Timestamp of when the route was deleted. If `null`, the route has not been deleted.",
 																"type": "string",
 																"format": "date-time",
 																"readOnly": true,
@@ -95393,7 +95441,7 @@
 																"nullable": true
 															},
 															"virtual_network_id": {
-																"description": "UUID of the virtual network this route belongs to."
+																"description": "UUID of the Tunnel Virtual Network this route belongs to. If no virtual networks are configured, the route is assigned to the default virtual network of the account."
 															}
 														},
 														"required": [
@@ -95425,8 +95473,8 @@
 		},
 		"/accounts/{account_identifier}/teamnet/routes/ip/{ip}": {
 			"get": {
-				"summary": "Get Tunnel Route by IP",
-				"description": "Find the Tunnel Route that encompasses the given IP.",
+				"summary": "Get tunnel route by IP",
+				"description": "Fetches routes that contain the given IP address.",
 				"parameters": [
 					{
 						"name": "ip",
@@ -95442,13 +95490,13 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1subscriptions/get/parameters/0/schema"
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1tunnels/get/parameters/0/schema"
 						}
 					}
 				],
 				"responses": {
 					"200": {
-						"description": "Get Tunnel Route by IP response",
+						"description": "Get tunnel route by IP response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -95483,14 +95531,15 @@
 		},
 		"/accounts/{account_identifier}/teamnet/routes/network/{ip_network_encoded}": {
 			"post": {
-				"summary": "Create Route",
-				"description": "Add a new route to the account's routing table for the given tunnel.",
+				"summary": "Create a tunnel route",
+				"description": "Routes a private network through a Cloudflare Tunnel. The CIDR in `ip_network_encoded` must be written in URL-encoded format.",
 				"parameters": [
 					{
 						"name": "ip_network_encoded",
 						"in": "path",
 						"required": true,
 						"schema": {
+							"description": "IP/CIDR range in URL-encoded format",
 							"type": "string",
 							"example": "172.16.0.0%2F16"
 						}
@@ -95500,13 +95549,13 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1subscriptions/get/parameters/0/schema"
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1tunnels/get/parameters/0/schema"
 						}
 					}
 				],
 				"responses": {
 					"200": {
-						"description": "Create Route response",
+						"description": "Create a tunnel route response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -95548,15 +95597,15 @@
 								],
 								"properties": {
 									"tunnel_id": {
-										"description": "UUID of the tunnel for which this route is being added."
+										"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1tunnels/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/id"
 									},
 									"comment": {
-										"description": "Optional remark describing the route. Empty if none.",
+										"description": "Optional remark describing the route.",
 										"type": "string",
-										"example": "Example comment for this route"
+										"example": "Example comment for this route."
 									},
 									"virtual_network_id": {
-										"description": "optional UUID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided."
+										"description": "UUID of the Tunnel Virtual Network this route belongs to. If no virtual networks are configured, the route is assigned to the default virtual network of the account."
 									}
 								}
 							}
@@ -95565,8 +95614,8 @@
 				}
 			},
 			"patch": {
-				"summary": "Update Route",
-				"description": "Update an existing route in the account's routing table for the given tunnel.",
+				"summary": "Update a tunnel route",
+				"description": "Updates an existing private network route in an account. The CIDR in `ip_network_encoded` must be written in URL-encoded format.",
 				"parameters": [
 					{
 						"name": "ip_network_encoded",
@@ -95587,7 +95636,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Update Route response",
+						"description": "Update a tunnel route response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -95620,10 +95669,10 @@
 										"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1teamnet~1routes~1network~1%7Bip_network_encoded%7D/post/requestBody/content/application~1json/schema/properties/comment"
 									},
 									"network": {
-										"description": "New CIDR of this route."
+										"description": "The new IPv4 or IPv6 range of this route, in CIDR notation."
 									},
 									"virtual_network_id": {
-										"description": "UUID of the virtual network to which this route belongs to."
+										"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1teamnet~1routes~1network~1%7Bip_network_encoded%7D/post/requestBody/content/application~1json/schema/properties/virtual_network_id"
 									}
 								}
 							}
@@ -95632,8 +95681,8 @@
 				}
 			},
 			"delete": {
-				"summary": "Delete Route",
-				"description": "Delete an existing route from the account's routing table.",
+				"summary": "Delete a tunnel route",
+				"description": "Deletes a private network route from an account. The CIDR in `ip_network_encoded` must be written in URL-encoded format.",
 				"parameters": [
 					{
 						"name": "ip_network_encoded",
@@ -95654,7 +95703,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Delete Route response",
+						"description": "Delete a tunnel route response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -95681,11 +95730,7 @@
 								"type": "object",
 								"properties": {
 									"virtual_network_id": {
-										"description": "UUID of the virtual network.",
-										"readOnly": true,
-										"type": "string",
-										"maxLength": 36,
-										"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"
+										"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1teamnet~1routes~1network~1%7Bip_network_encoded%7D/post/requestBody/content/application~1json/schema/properties/virtual_network_id"
 									}
 								}
 							}
@@ -95696,21 +95741,21 @@
 		},
 		"/accounts/{account_identifier}/teamnet/virtual_networks": {
 			"get": {
-				"summary": "List Virtual Networks",
-				"description": "List, search and filter an account's virtual networks.",
+				"summary": "List virtual networks",
+				"description": "Lists and filters virtual networks in an account.",
 				"parameters": [
 					{
 						"name": "account_identifier",
 						"in": "path",
 						"required": true,
 						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1subscriptions/get/parameters/0/schema"
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1tunnels/get/parameters/0/schema"
 						}
 					}
 				],
 				"responses": {
 					"200": {
-						"description": "List Virtual Networks response",
+						"description": "List virtual networks response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -95743,15 +95788,10 @@
 																"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1teamnet~1virtual_networks/post/requestBody/content/application~1json/schema/properties/comment"
 															},
 															"created_at": {
-																"description": "Timestamp of when the virtual network was created, formatted in RFC 3339."
+																"description": "Timestamp of when the virtual network was created."
 															},
 															"deleted_at": {
-																"description": "If present, indicates that the virtual network was deleted at the given date (formatted in RFC 3339). If absent, the virtual network has not been deleted.",
-																"type": "string",
-																"format": "date-time",
-																"readOnly": true,
-																"example": "2021-01-25T18:22:34.317854+00:00",
-																"nullable": true
+																"description": "Timestamp of when the virtual network was deleted. If `null`, the virtual network has not been deleted."
 															}
 														},
 														"required": [
@@ -95782,8 +95822,8 @@
 				]
 			},
 			"post": {
-				"summary": "Create Virtual Network",
-				"description": "Add a new virtual network to the account.",
+				"summary": "Create a virtual network",
+				"description": "Adds a new virtual network to an account.",
 				"parameters": [
 					{
 						"name": "account_identifier",
@@ -95796,7 +95836,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Create Virtual Network response",
+						"description": "Create a virtual network response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -95838,17 +95878,17 @@
 								],
 								"properties": {
 									"name": {
-										"description": "A user-friendly name chosen when the virtual network is created. Cannot be empty.",
+										"description": "A user-friendly name for the virtual network.",
 										"type": "string",
 										"example": "us-east-1-vpc"
 									},
 									"comment": {
-										"description": "Optional remark describing the virtual network. Empty if none.",
+										"description": "Optional remark describing the virtual network.",
 										"type": "string",
 										"example": "Staging VPC for data science"
 									},
 									"is_default": {
-										"description": "Whether this virtual network is the default one for the account. This means IP Routes belong to this virtual network and Teams Clients in the account route through this virtual network, unless specified otherwise for each case.",
+										"description": "If `true`, this virtual network is the default for the account.",
 										"type": "boolean",
 										"example": true
 									}
@@ -95861,8 +95901,8 @@
 		},
 		"/accounts/{account_identifier}/teamnet/virtual_networks/{vnet_id}": {
 			"patch": {
-				"summary": "Update Virtual Network",
-				"description": "Update an existing virtual network in the account.",
+				"summary": "Update a virtual network",
+				"description": "Updates an existing virtual network.",
 				"parameters": [
 					{
 						"name": "vnet_id",
@@ -95881,13 +95921,13 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1subscriptions/get/parameters/0/schema"
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1tunnels/get/parameters/0/schema"
 						}
 					}
 				],
 				"responses": {
 					"200": {
-						"description": "Update Virtual Network response",
+						"description": "Update a virtual network response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -95926,17 +95966,17 @@
 								"type": "object",
 								"properties": {
 									"name": {
-										"description": "A user-friendly name chosen when the virtual network is created. Cannot be empty.",
+										"description": "A user-friendly name for the virtual network.",
 										"type": "string",
 										"example": "us-east-1-vpc"
 									},
 									"comment": {
-										"description": "Optional remark describing the virtual network. Empty if none.",
+										"description": "Optional remark describing the virtual network.",
 										"type": "string",
 										"example": "Staging VPC for data science"
 									},
 									"is_default_network": {
-										"description": "Whether this virtual network is the default one for the account. This means IP Routes belong to this virtual network and Teams Clients in the account route through this virtual network, unless specified otherwise for each case.",
+										"description": "If `true`, this virtual network is the default for the account.",
 										"type": "boolean",
 										"example": true
 									}
@@ -95947,8 +95987,8 @@
 				}
 			},
 			"delete": {
-				"summary": "Delete Virtual Network",
-				"description": "Delete an existing virtual network from the account.",
+				"summary": "Delete a virtual network",
+				"description": "Deletes an existing virtual network.",
 				"parameters": [
 					{
 						"name": "vnet_id",
@@ -95969,7 +96009,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Delete Virtual Network response",
+						"description": "Delete a virtual network response",
 						"content": {
 							"application/json": {
 								"schema": {
