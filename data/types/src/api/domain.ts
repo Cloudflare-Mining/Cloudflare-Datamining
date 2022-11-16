@@ -229,9 +229,17 @@ export const DomainProtectionDesignatedApprovers = eg.object({
   designated_approvers: eg.array(DesignatedApprover)
 });
 
+export enum DomainProtectionConfigStatus {
+  PENDING = 'pending',
+  PENDING_UPDATE = 'pending_update',
+  ENABLED = 'enabled',
+  DISABLED = 'disabled'
+}
+
 export const DomainProtectionConfig = eg.object({
   auto_relock_after: eg.number,
-  number_of_designated_approvers: eg.number
+  number_of_designated_approvers: eg.number,
+  status: eg.enum(DomainProtectionConfigStatus)
 });
 
 export type DomainProtectionConfig = TypeFromCodec<
