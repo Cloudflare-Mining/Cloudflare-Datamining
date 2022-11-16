@@ -6,7 +6,7 @@
 	</div>
 </div>
 <p><strong>About the Role</strong></p>
-<p><span style="font-weight: 400;">Cloudflare is looking for a strong B2B Enterprise Marketing Leader, who has a proven track record of driving and building a dedicated and energetic Marketing team, implementing a clear demand generation strategy aligned to the needs of the region for success. The right candidate for this role will have high energy,&nbsp; be a focused and deliberate leader who can partner with sales leadership, cross functional Marketing teams&nbsp; and their own team to achieve the business goal of pipeline growth and closed deals across new logo acquisition, expansion of customers and, supporting and growing our focus partners across EMEA. You will play a key role in driving regional marketing success, managing a diverse range of integrated marketing programs and activities.</span><span style="font-weight: 400;"><br></span></p>
+<p><span style="font-weight: 400;">Cloudflare is looking for a Seasoned B2B Enterprise Marketing Leader, who has a proven track record of driving and building a large, dedicated and energetic Marketing team, implementing a clear demand generation strategy aligned to the needs of the region for success. The right candidate for this role will have high energy, be a focused and deliberate leader who can partner with sales leadership, cross functional Marketing teams&nbsp; and their own team to achieve the business goal of pipeline growth and closed deals across new logo acquisition, expansion of customers and, supporting and growing our focus partners across EMEA. You will play a key role in driving regional marketing success, managing a diverse range of integrated marketing programs and activities.</span></p>
 <p><strong>Key Responsibilities</strong></p>
 <ul>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Collaborate with marketing leadership, sales leadership and other core marketing, sales, and product functions to support the strategy &amp; execution of ABM and Field Marketing campaigns.</span></li>
@@ -21,10 +21,11 @@
 </ul>
 <p><strong>Desirable skills, knowledge and experience</strong></p>
 <ul>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">10+ years proven experience in an EMEA Marketing leadership role</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">10+ years proven experience in B2B marketing (enterprise software, SaaS, regional marketing and/or info security experience a plus)</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">BA/BS in Marketing, Business, or other related field</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">5+ years of experience leading teams, and a strong interest in mentorship and professional development.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience and knowledge of leading campaigns, events and field marketing for a SaaS or technology company.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">10+ years of experience leading teams of 15+, and a strong interest in mentorship and professional development.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience and knowledge of leading ABM, digital campaigns, events and field marketing for a SaaS or technology company.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong analytical skills and high level of comfort with data-based models to plan, forecast, monitor, and optimize performance on an ongoing basis&nbsp;</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Excellent writing and verbal communication skills.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to effectively influence both internal and external stakeholders across all levels of the organization.</span></li>
