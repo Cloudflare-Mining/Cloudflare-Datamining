@@ -482,37 +482,37 @@
 	{
 		"uri": "/zones/:zone_identifier/custom_hostnames/:identifier",
 		"method": "DELETE",
-		"id": "custom-hostname-for-a-zone-delete-custom-hostname-and-any-issued-ssl-certificates-"
+		"id": "custom-hostname-for-a-zone-delete-custom-hostname-(-and-any-issued-ssl-certificates)"
 	},
 	{
 		"uri": "/zones/:zone_identifier/custom_pages",
 		"method": "GET",
-		"id": "custom-pages-for-a-zone-available-custom-pages"
+		"id": "custom-pages-for-a-zone-list-custom-pages"
 	},
 	{
 		"uri": "/zones/:zone_identifier/custom_pages",
 		"method": "GET",
-		"id": "custom-pages-for-a-zone-available-custom-pages"
+		"id": "custom-pages-for-a-zone-list-custom-pages"
 	},
 	{
 		"uri": "/zones/:zone_identifier/custom_pages/:identifier",
 		"method": "GET",
-		"id": "custom-pages-for-a-zone-custom-page-details"
+		"id": "custom-pages-for-a-zone-get-a-custom-page"
 	},
 	{
 		"uri": "/zones/:zone_identifier/custom_pages/:identifier",
 		"method": "PUT",
-		"id": "custom-pages-for-a-zone-update-custom-page-url"
+		"id": "custom-pages-for-a-zone-update-a-custom-page"
 	},
 	{
 		"uri": "/zones/:zone_identifier/custom_pages/:identifier",
 		"method": "GET",
-		"id": "custom-pages-for-a-zone-custom-page-details"
+		"id": "custom-pages-for-a-zone-get-a-custom-page"
 	},
 	{
 		"uri": "/zones/:zone_identifier/custom_pages/:identifier",
 		"method": "PUT",
-		"id": "custom-pages-for-a-zone-update-custom-page-url"
+		"id": "custom-pages-for-a-zone-update-a-custom-page"
 	},
 	{
 		"uri": "/zones/:zone_identifier/dns_records",
@@ -567,52 +567,52 @@
 	{
 		"uri": "/zones/:zone_identifier/firewall/lockdowns",
 		"method": "GET",
-		"id": "zone-lockdown-list-lockdown-rules"
+		"id": "zone-lockdown-list-zone-lockdown-rules"
 	},
 	{
 		"uri": "/zones/:zone_identifier/firewall/lockdowns",
 		"method": "POST",
-		"id": "zone-lockdown-create-a-lockdown-rule"
+		"id": "zone-lockdown-create-a-zone-lockdown-rule"
 	},
 	{
 		"uri": "/zones/:zone_identifier/firewall/lockdowns/:id",
 		"method": "GET",
-		"id": "zone-lockdown-lockdown-rule-details"
+		"id": "zone-lockdown-get-a-zone-lockdown-rule"
 	},
 	{
 		"uri": "/zones/:zone_identifier/firewall/lockdowns/:id",
 		"method": "PUT",
-		"id": "zone-lockdown-update-lockdown-rule"
+		"id": "zone-lockdown-update-a-zone-lockdown-rule"
 	},
 	{
 		"uri": "/zones/:zone_identifier/firewall/lockdowns/:id",
 		"method": "DELETE",
-		"id": "zone-lockdown-delete-lockdown-rule"
+		"id": "zone-lockdown-delete-a-zone-lockdown-rule"
 	},
 	{
 		"uri": "/zones/:zone_identifier/firewall/ua_rules",
 		"method": "GET",
-		"id": "user-agent-blocking-rules-list-useragent-rules"
+		"id": "user-agent-blocking-rules-list-user-agent-blocking-rules"
 	},
 	{
 		"uri": "/zones/:zone_identifier/firewall/ua_rules",
 		"method": "POST",
-		"id": "user-agent-blocking-rules-create-a-useragent-rule"
+		"id": "user-agent-blocking-rules-create-a-user-agent-blocking-rule"
 	},
 	{
 		"uri": "/zones/:zone_identifier/firewall/ua_rules/:id",
 		"method": "GET",
-		"id": "user-agent-blocking-rules-useragent-rule-details"
+		"id": "user-agent-blocking-rules-get-a-user-agent-blocking-rule"
 	},
 	{
 		"uri": "/zones/:zone_identifier/firewall/ua_rules/:id",
 		"method": "PUT",
-		"id": "user-agent-blocking-rules-update-useragent-rule"
+		"id": "user-agent-blocking-rules-update-a-user-agent-blocking-rule"
 	},
 	{
 		"uri": "/zones/:zone_identifier/firewall/ua_rules/:id",
 		"method": "DELETE",
-		"id": "user-agent-blocking-rules-delete-useragent-rule"
+		"id": "user-agent-blocking-rules-delete-a-user-agent-blocking-rule"
 	},
 	{
 		"uri": "/zones/:zone_identifier/keyless_certificates",
@@ -667,32 +667,32 @@
 	{
 		"uri": "/zones/:zone_identifier/pagerules",
 		"method": "GET",
-		"id": "page-rules-for-a-zone-list-page-rules"
+		"id": "page-rules-list-page-rules"
 	},
 	{
 		"uri": "/zones/:zone_identifier/pagerules",
 		"method": "POST",
-		"id": "page-rules-for-a-zone-create-page-rule"
+		"id": "page-rules-create-a-page-rule"
 	},
 	{
 		"uri": "/zones/:zone_identifier/pagerules/:identifier",
 		"method": "GET",
-		"id": "page-rules-for-a-zone-page-rule-details"
+		"id": "page-rules-get-a-page-rule"
 	},
 	{
 		"uri": "/zones/:zone_identifier/pagerules/:identifier",
 		"method": "PUT",
-		"id": "page-rules-for-a-zone-update-page-rule"
+		"id": "page-rules-update-a-page-rule"
 	},
 	{
 		"uri": "/zones/:zone_identifier/pagerules/:identifier",
 		"method": "PATCH",
-		"id": "page-rules-for-a-zone-edit-page-rule"
+		"id": "page-rules-edit-a-page-rule"
 	},
 	{
 		"uri": "/zones/:zone_identifier/pagerules/:identifier",
 		"method": "DELETE",
-		"id": "page-rules-for-a-zone-delete-page-rule"
+		"id": "page-rules-delete-a-page-rule"
 	},
 	{
 		"uri": "/zones/:zone_identifier/rate_limits",
@@ -1032,22 +1032,22 @@
 	{
 		"uri": "/zones/:zone_identifier/settings/ipv6",
 		"method": "GET",
-		"id": "zone-settings-get-ipv6-setting"
+		"id": "zone-settings-get-i-pv6-setting"
 	},
 	{
 		"uri": "/zones/:zone_identifier/settings/ipv6",
 		"method": "PATCH",
-		"id": "zone-settings-change-ipv6-setting"
+		"id": "zone-settings-change-i-pv6-setting"
 	},
 	{
 		"uri": "/zones/:zone_identifier/settings/ipv6",
 		"method": "GET",
-		"id": "zone-settings-get-ipv6-setting"
+		"id": "zone-settings-get-i-pv6-setting"
 	},
 	{
 		"uri": "/zones/:zone_identifier/settings/ipv6",
 		"method": "PATCH",
-		"id": "zone-settings-change-ipv6-setting"
+		"id": "zone-settings-change-i-pv6-setting"
 	},
 	{
 		"uri": "/zones/:zone_identifier/settings/min_tls_version",
@@ -1252,12 +1252,12 @@
 	{
 		"uri": "/zones/:zone_identifier/settings/pseudo_ipv4",
 		"method": "GET",
-		"id": "zone-settings-get-pseudo-ipv4-setting"
+		"id": "zone-settings-get-pseudo-i-pv4-setting"
 	},
 	{
 		"uri": "/zones/:zone_identifier/settings/pseudo_ipv4",
 		"method": "PATCH",
-		"id": "zone-settings-change-pseudo-ipv4-setting"
+		"id": "zone-settings-change-pseudo-i-pv4-setting"
 	},
 	{
 		"uri": "/zones/:zone_identifier/settings/response_buffering",
@@ -1492,42 +1492,42 @@
 	{
 		"uri": "/zones/:zone_identifier/settings/waf",
 		"method": "GET",
-		"id": "zone-settings-get-web-application-firewall-waf-setting"
+		"id": "zone-settings-get-web-application-firewall-(-waf)-setting"
 	},
 	{
 		"uri": "/zones/:zone_identifier/settings/waf",
 		"method": "PATCH",
-		"id": "zone-settings-change-web-application-firewall-waf-setting"
+		"id": "zone-settings-change-web-application-firewall-(-waf)-setting"
 	},
 	{
 		"uri": "/zones/:zone_identifier/settings/waf",
 		"method": "GET",
-		"id": "zone-settings-get-web-application-firewall-waf-setting"
+		"id": "zone-settings-get-web-application-firewall-(-waf)-setting"
 	},
 	{
 		"uri": "/zones/:zone_identifier/settings/waf",
 		"method": "PATCH",
-		"id": "zone-settings-change-web-application-firewall-waf-setting"
+		"id": "zone-settings-change-web-application-firewall-(-waf)-setting"
 	},
 	{
 		"uri": "/zones/:zone_identifier/settings/websockets",
 		"method": "GET",
-		"id": "zone-settings-get-websockets-setting"
+		"id": "zone-settings-get-web-sockets-setting"
 	},
 	{
 		"uri": "/zones/:zone_identifier/settings/websockets",
 		"method": "PATCH",
-		"id": "zone-settings-change-websockets-setting"
+		"id": "zone-settings-change-web-sockets-setting"
 	},
 	{
 		"uri": "/zones/:zone_identifier/settings/websockets",
 		"method": "GET",
-		"id": "zone-settings-get-websockets-setting"
+		"id": "zone-settings-get-web-sockets-setting"
 	},
 	{
 		"uri": "/zones/:zone_identifier/settings/websockets",
 		"method": "PATCH",
-		"id": "zone-settings-change-websockets-setting"
+		"id": "zone-settings-change-web-sockets-setting"
 	},
 	{
 		"uri": "/zones/:zone_identifier/ssl/certificate_packs",
