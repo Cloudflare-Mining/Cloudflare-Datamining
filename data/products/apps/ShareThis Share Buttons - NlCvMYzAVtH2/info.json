@@ -1,9 +1,9 @@
 {
 	"id": "NlCvMYzAVtH2",
 	"title": "ShareThis Share Buttons",
-	"shortDescription": "Enable one-click sharing to start scaling your site traffic.",
-	"longDescription": "ShareThis – the original embeddable share buttons. We’ve rebuilt our buttons from the ground up, and they’re better than ever. Try them today!",
-	"instructions": "",
+	"shortDescription": "Grow your site traffic by enabling one-click sharing",
+	"longDescription": "ShareThis Share Buttons allows you to expand the reach of your content organically and grow your audience. Make it easy for your audience to share your content across 40+ of the most popular social channels including Facebook, WhatsApp, Twitter, and Pinterest. \n\n- Configure your buttons to stay anchored on the sidebar as visitors scroll or inline near your headline or product on the page for ideal visibility\n- Customize the design including the alignment, size, and color to match your brand\n- Increase social shares with our responsive, lightweight, code which loads asynchronously and won’t slow down your site.\n- Select your preferred language from over 15 options (English, German, Spanish, French, Italian, Japanese, Korean, Portuguese, Russian, Chinese, Dutch, Arabic, Bengali, Hindi, Turkish, and Vietnamese).",
+	"instructions": "1. On the left sidebar of your Cloudflare dashboard page, click on “Websites“. A list of your websites will appear and select the domain that you wish to install ShareThis tools.\n2. Once you’ve selected the website, search for “Apps” on your left sidebar and click on it. Then, search for “ShareThis Share Buttons” on the “Search Apps” field.\n3. Click on the ShareThis Share Buttons App and click on “Preview on your site” to start the installation process.\n4. In the first step, you will be required to Login or Create a ShareThis Platform account. Then you can choose which of the following tools you wish to enable on your website, simply check the box and additional customization options will display: Inline Share Buttons, Sticky Share Buttons & Consent Management Platform\n5. Once you’ve finished customizing your ShareThis tools, click on “Finish installing on your site“.",
 	"alias": "sharethis-share-buttons",
 	"orgId": "0531b9b158738c6d207018f2c2af81f8",
 	"icon": "https://images.cloudflareapps.com/AVkNxGBWPbVH/Icon%20-%20288x288.png",
@@ -27,8 +27,8 @@
 	"adminVisible": true,
 	"userVisible": true,
 	"installable": true,
-	"codeVersion": "1.0.4",
-	"infoVersion": "1.0.4",
+	"codeVersion": "1.0.5",
+	"infoVersion": "1.0.5",
 	"points": 0,
 	"supportEmail": "support@sharethis.com",
 	"products": [],
@@ -8647,7 +8647,7 @@
 			"releaseNotes": "",
 			"source": "",
 			"creatorUserId": "",
-			"installable": false,
+			"installable": true,
 			"files": [],
 			"hasCode": true,
 			"fileHandle": "local/-Qzh5Gj1k9k4",
@@ -8693,12 +8693,13 @@
 				},
 				"created": "2021-04-07T05:06:24.628396Z"
 			},
-			"moderationStatus": "pending",
+			"moderationStatus": "approved",
 			"moderationMetadata": {
 				"requestedByUserId": "0531b9b158738c6d207018f2c2af81f8",
 				"requestedAt": "2022-08-23T17:57:43.821402176Z",
 				"canceledAt": null,
-				"reviewedAt": null
+				"reviewedByUserId": "003d69515c178849214f81bf10ea8f84",
+				"reviewedAt": "2022-11-16T16:52:41.334197624Z"
 			}
 		}
 	]
