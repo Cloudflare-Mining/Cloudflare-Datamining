@@ -83,6 +83,13 @@
 								"page": null,
 								"url": "developer-week/cloudflare-tv",
 								"subMenuItems": null
+							},
+							{
+								"contentfulId": "1ZpHWDhrrphMM2aItoTFeZ",
+								"linkText": "Videos",
+								"page": null,
+								"url": "developer-week/videos",
+								"subMenuItems": null
 							}
 						]
 					},
@@ -148,14 +155,14 @@
 						}
 					},
 					{
-						"contentfulId": "53FKCIcfEXmYIxup8eCPsp",
+						"contentfulId": "2vwKFv9UTtYBFfNrZsSRi6",
 						"backgroundColor": "white",
 						"contentTypeId": "bladeFourFeatures",
 						"htmlId": null,
 						"copy": null,
 						"title": null,
 						"subtitle": null,
-						"bladeStyle": "Feature Blocks - 3 columns",
+						"bladeStyle": "Feature Blocks - 4 columns",
 						"bladeBorder": "none",
 						"sectionPadding": "tile--no-top-bottom-padding",
 						"carouselSlidesToShow": null,
@@ -164,42 +171,235 @@
 						"features": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "7LhULaMZEmWLRnK6ZyRsDP",
-								"title": "Developer Week Preview",
+								"contentfulId": "7kssjkIQzvBjJ1KeBC91tZ",
+								"title": "UPDATE Supercloud SET status = 'open alpha' WHERE product = 'D1';",
 								"titleSize": null,
-								"description": null,
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": null,
-								"streamId": "b409bc4dd863a0cdb9f7156c13a02be3",
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "5YaQB8syEPwyCbkDqWkJhE",
-								"title": "Welcome to the Supercloud (and Developer Week 2022)",
-								"titleSize": null,
-								"description": "Every developer wants to get code running on one machine and perfect it. It's so much easier to work that way. We just happen to have one machine that scales to the size of the Internet: a global, distributed, supercomputer. It's our Supercloud and we build our own products on it and you can too.",
-								"learnMoreUrl": "https://blog.cloudflare.com/welcome-to-the-supercloud-and-developer-week-2022",
+								"description": "As we continue down the road to making D1 production ready, it wouldn't be \"the Cloudflare way\" unless we stopped for feedback first. D1 is now in Open Alpha! ",
+								"learnMoreUrl": "https://blog.cloudflare.com/d1-open-alpha",
 								"learnMoreText": "Learn More",
 								"displayBorder": false,
 								"openLinkInNewTab": null,
 								"icon": null,
 								"iconAssetFile": null,
 								"imageAssetFile": {
-									"id": "32cc5988-5550-5c8b-8f30-8f0323a8636b",
-									"altText": "Developer Week 22 Introduction",
-									"title": "Developer Week 22 Introduction",
+									"id": "34c747c6-0a58-59a5-a6e3-125f9035e25c",
+									"altText": "D1 Open Alpha",
+									"title": "D1 Open Alpha",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "[path]/2022_Developer_Week_Hero_Dark.png"
+											"publicURL": "[path]/D1_Open_Alpha.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "70AAtt9jVylml0XFlCrwDI",
+								"title": "Making static sites dynamic with Cloudflare D1",
+								"titleSize": null,
+								"description": "In this blog post, I'll show you how to use D1 to add comments to a static blog site. To do this, we'll construct a new D1 database and build a simple JSON API that allows the creation and retrieval of comments.",
+								"learnMoreUrl": "https://blog.cloudflare.com/making-static-sites-dynamic-with-cloudflare-d1",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "632b5815-e6ac-50d3-b1b0-9a965331cd39",
+									"altText": "D1 Comments API",
+									"title": "D1 Comments API",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/D1_Comments_API.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1at4cWc6ZnVljJsuO7Yg6P",
+								"title": "Automate an isolated browser instance with just a few lines of code",
+								"titleSize": null,
+								"description": "Workers Browser Rendering API is our out of the box solution for simplifying developer workflows, including capturing images or screenshots, by running browser automation in Workers. If you're interested, sign up for the waitlist. ",
+								"learnMoreUrl": "https://blog.cloudflare.com/introducing-workers-browser-rendering-api",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "2d3b0dca-62bd-52f0-a68d-bc2a169cfea1",
+									"altText": "Workers Rendering API",
+									"title": "Workers Rendering API",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Workers_Rendering_API.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5VpVdld1Gfi7K9FBI3P4P",
+								"title": "Iteration isn't just for code: here are our latest API docs",
+								"titleSize": null,
+								"description": "We're excited to share that the next iteration of Cloudflare's API reference documentation is now available. The new docs standardize our API content and improve the overall developer experience for interacting with Cloudflare's API.",
+								"learnMoreUrl": "https://blog.cloudflare.com/building-a-better-developer-experience-through-api-documentation",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "28155268-e88a-5804-b963-138bc7c81d5d",
+									"altText": "New API Docs",
+									"title": "New API Docs",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/New_API_Docs_.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1n3WbnsUHomF9GGK5QaUaE",
+								"title": "The Cloudflare API now uses OpenAPI schemas",
+								"titleSize": null,
+								"description": "Cloudflare now has OpenAPI Schemas available for the API. Users can use these schemas in any open source OpenAPI Tooling.",
+								"learnMoreUrl": "https://blog.cloudflare.com/open-api-transition",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "9c4e7c4a-7f8c-576c-93be-46b2eddfae47",
+									"altText": "OpenAPI (How we built it)",
+									"title": "OpenAPI (How we built it)",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/OpenAPI__How_we_built_it___1_.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2hwL1BJ6ulVy5yZtJFRV11",
+								"title": "Bringing authentication and identification to Workers through Mutual TLS ",
+								"titleSize": null,
+								"description": "We're excited to announce that Workers will soon be able to send outbound requests through a mutually authenticated channel via mutual TLS authentication!",
+								"learnMoreUrl": "https://blog.cloudflare.com/mutual-tls-for-workers",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "8bc25629-16ba-5666-915b-4d6fb0380dad",
+									"altText": "Mutual TLS and Workers",
+									"title": "Mutual TLS and Workers",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Mutual_TLS_and_workers_.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "7hj42mRAF2fRvWWP4Wq9xd",
+								"title": "Xata Workers: client-side database access without client-side secrets",
+								"titleSize": null,
+								"description": "Xata is on a mission to solve the industry's hardest data problems with their Serverless Data Platform. We're excited to have Xata building their serverless functions product – Xata Workers – on top of Workers for Platforms. Here is Xata's story. ",
+								"learnMoreUrl": "https://blog.cloudflare.com/xata-customer-story",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "557f829c-4cc1-5218-8386-1c85349e8d0e",
+									"altText": "Customer Story: Xata",
+									"title": "Customer Story: Xata",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Customer_Story__Xata_light.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1g69mEW8uBrKksV1gcqddW",
+								"title": "CFTV - What launched today: building blocks",
+								"titleSize": null,
+								"description": "__Wednesday, November 16\t9:00 - 9:30AM PT__\t\n\nLeroy Lasenburg, Nevi Shah, Rita Kozlov, Tanushree Sharma, \nTrevor Sundberg, Claire Waters, & Kristian Freeman",
+								"learnMoreUrl": "https://cloudflare.tv/event/AZEwARv6",
+								"learnMoreText": "Tune In",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "196f472e-7a2a-56e8-8a34-adf96a0d51bc",
+									"altText": "Cloudflare TV Header",
+									"title": "Cloudflare TV Header",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/CFTV.png"
 										}
 									},
 									"brandfolderAsset": null,
