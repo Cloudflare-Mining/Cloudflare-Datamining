@@ -28,7 +28,7 @@ const navigation = {
 		url: "/authentication",
 		iconType: "key",
 		hasPermission: function(P) {
-			return !(0, C.n3)() && !(0, n.z1)("oauth-access-management")(P)
+			return !(0, I.n3)() && !(0, n.z1)("oauth-access-management")(P)
 		}
 	}, {
 		title: "navigation.profile.api_tokens",
@@ -72,7 +72,7 @@ const navigation = {
 			title: "navigation.account.registrar.domain_protection",
 			url: "/domains/protection",
 			hasPermission: function(P) {
-				return B(P)
+				return Z(P)
 			}
 		}]
 	}, {
@@ -196,14 +196,14 @@ const navigation = {
 			title: "navigation.account.r2.overview",
 			url: "/r2/overview",
 			hasPermission: function(P) {
-				return Z(P)
+				return B(P)
 			}
 		}, {
 			title: "navigation.account.r2_slurper",
 			url: "/r2/slurper",
 			labels: ["beta"],
 			hasPermission: function(P) {
-				return Z(P)
+				return B(P)
 			}
 		}]
 	}, {
@@ -217,20 +217,20 @@ const navigation = {
 			title: "navigation.account.stream.videos",
 			url: "/stream/videos",
 			hasPermission: function(P) {
-				return Y(P)
+				return Q(P)
 			}
 		}, {
 			title: "navigation.account.stream.live_inputs",
 			url: "/stream/inputs",
 			hasPermission: function(P) {
-				return Y(P)
+				return Q(P)
 			}
 		}, {
 			title: "navigation.common.analytics",
 			url: "/stream/analytics",
 			labels: ["new"],
 			hasPermission: function(P) {
-				return Y(P)
+				return Q(P)
 			}
 		}]
 	}, {
@@ -245,25 +245,25 @@ const navigation = {
 			title: "navigation.account.images",
 			url: "/images/images",
 			hasPermission: function(P) {
-				return I(P)
+				return C(P)
 			}
 		}, {
 			title: "navigation.account.images.variants",
 			url: "/images/variants",
 			hasPermission: function(P) {
-				return I(P)
+				return C(P)
 			}
 		}, {
 			title: "navigation.account.images.keys",
 			url: "/images/keys",
 			hasPermission: function(P) {
-				return I(P)
+				return C(P)
 			}
 		}, {
 			title: "navigation.account.images.sourcing_kit",
 			url: "/images/sourcing-kit",
 			hasPermission: function(P) {
-				return I(P)
+				return C(P)
 			},
 			labels: ["beta"]
 		}]
@@ -579,9 +579,9 @@ const navigation = {
 			var se = (0, z.getZone)(P);
 			if ((0, g.zoneIsDNSOnly)(P) || !A(P, "zone_settings", "spectrum.app") || !se) return !1;
 			var ae = !!((0, i.userHasEntZones)(P) || (0, z.userHasDelegatedEntZones)(P)),
-				ce = !!(0, z.getZoneFlipperFlag)(P, "spectrum", "enabled"),
-				Me = !!(0, z.isFree)(se);
-			return ce || ae || !Me
+				fe = !!(0, z.getZoneFlipperFlag)(P, "spectrum", "enabled"),
+				ye = !!(0, z.isFree)(se);
+			return fe || ae || !ye
 		}
 	}, {
 		title: "navigation.zone.ssl-tls",
@@ -641,7 +641,7 @@ const navigation = {
 			canBeVersioned: !1,
 			url: "/security/events",
 			hasPermission: function(P) {
-				return (0, L.B_)(P)
+				return (0, j.B_)(P)
 			}
 		}, {
 			title: "navigation.zone.security.waf",
@@ -995,7 +995,7 @@ const navigation = {
 			title: "navigation.zone.security.events",
 			url: "/security/events",
 			hasPermission: function(P) {
-				return (0, L.B_)(P)
+				return (0, j.B_)(P)
 			}
 		}, {
 			title: "navigation.zone.security.waf",
