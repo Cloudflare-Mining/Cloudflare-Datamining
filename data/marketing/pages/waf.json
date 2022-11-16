@@ -65,7 +65,7 @@
 						"contentTypeId": "bladeHeroAnimation",
 						"title": "Web Application Firewall",
 						"subtitle": "Modern protections for modern applications",
-						"copy": "Enterprises rely on applications and APIs for growth--and with our world-class web application firewall, expanding attack surfaces and novel attacks never get in the way. \n\nOur powerful web application firewall is integrated with the rest of our leading cloud-delivered application security portfolio. \n\nCloudflare is a leader in the 2022 Gartner® Magic Quadrant™ for Web Application and API Protection (WAAP) and in the Forrester Wave™: Web Application Firewalls, Q3 2022 report.",
+						"copy": "Enterprises rely on applications and APIs for growth--and with our world-class web application firewall, expanding attack surfaces and novel attacks never get in the way. \n\nOur powerful web application firewall is integrated with the rest of our leading cloud-delivered application security portfolio. \n\nCloudflare is a leader in the __2022 Gartner® Magic Quadrant™ for Web Application and API Protection__ (WAAP) and in the __Forrester Wave™: Web Application Firewalls__, Q3 2022 report.",
 						"buttonColor": "orange",
 						"buttonColor2": "orange-outline",
 						"buttonText1": "Sign Up",
@@ -347,36 +347,6 @@
 						"features": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "2ud9gJ6i2qPW0xkvZPdVmA",
-								"title": null,
-								"titleSize": null,
-								"description": "Our global %{NetworkCapacity} network sees tens of millions of requests per second.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "ff8961fa-ef8b-5b0d-b999-e0c79b5bbe93",
-									"altText": "internet globe",
-									"title": "internet globe",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "[path]/internet-globe.png"
-										}
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
 								"contentfulId": "s5cPxorHmmij1CBKdQE6n",
 								"title": null,
 								"titleSize": "small",
@@ -415,59 +385,33 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "4dWJVN2ByjOnvuB0HcPzA3",
+								"contentfulId": "4uM96rBmkx1ftoXpq2fRrC",
 								"title": null,
-								"titleSize": "small",
-								"description": "Faster, easier security deployments for quicker mitigations and time-to-value.",
+								"titleSize": null,
+								"description": "Unparalleled security analytics give attack insights no other WAF provides. ",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
-								"displayBorder": null,
+								"displayBorder": false,
 								"openLinkInNewTab": null,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "672bae7e-7843-5f70-80c8-25b6483c2b51",
-									"altText": null,
-									"title": null,
-									"activeAsset": "Contentful Asset",
+									"id": "bd4d530f-0b5e-53ca-a892-ce14d0d06bde",
+									"altText": "icon-cloudflare-radar",
+									"title": "icon-cloudflare-radar",
+									"activeAsset": "Brandfolder Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "[path]/time.png"
+											"publicURL": "[path]/cloudflare-radar.svg"
 										}
 									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "AU68MwX1xpb0MJAfL5Qme",
-								"title": null,
-								"titleSize": "small",
-								"description": "Machine learning protections, trained by our unparalleled visibility into threats, catch evasions and attacks. ",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "799c866d-69a4-5646-b6bb-5261eae7cb14",
-									"altText": "Network scale blue",
-									"title": "Network scale blue",
-									"activeAsset": "Brandfolder Asset",
-									"locale": "en-US",
-									"contentfulAsset": null,
 									"brandfolderAsset": {
-										"size": 5263,
-										"height": 192,
-										"width": 192,
-										"filename": "network-scale-blue.svg",
+										"size": 2427,
+										"height": 528,
+										"width": 528,
+										"filename": "cloudflare-radar.svg",
 										"file": {
-											"publicURL": "[path]/network-scale-blue.svg"
+											"publicURL": "[path]/cloudflare-radar.svg"
 										}
 									},
 									"brandfolderAssetMobile": null
@@ -513,27 +457,95 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "1OFtwBVXkVzCviUP4D4t48",
+								"contentfulId": "AU68MwX1xpb0MJAfL5Qme",
 								"title": null,
-								"titleSize": null,
-								"description": "Our network's unparalleled visibility into threats yields the sharpest security and most effective machine learning. \n",
+								"titleSize": "small",
+								"description": "Machine learning protections, trained by our unparalleled visibility into threats, catch evasions and attacks. ",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": null,
 								"openLinkInNewTab": null,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "5a8f05ee-8980-50f2-ab6c-8ce0a26eec43",
+									"id": "799c866d-69a4-5646-b6bb-5261eae7cb14",
+									"altText": "Network scale blue",
+									"title": "Network scale blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 5263,
+										"height": 192,
+										"width": 192,
+										"filename": "network-scale-blue.svg",
+										"file": {
+											"publicURL": "[path]/network-scale-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4dWJVN2ByjOnvuB0HcPzA3",
+								"title": null,
+								"titleSize": "small",
+								"description": "Faster, easier security deployments for quicker mitigations and time-to-value.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"openLinkInNewTab": null,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "672bae7e-7843-5f70-80c8-25b6483c2b51",
 									"altText": null,
 									"title": null,
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "[path]/target_scope.png"
+											"publicURL": "[path]/time.png"
 										}
 									},
 									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3s0CYBMzf2mFoEYwV3EeLW",
+								"title": null,
+								"titleSize": null,
+								"description": "We are an application security leader according to leading analysts.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "2332eb6b-5b91-5080-a95c-04d6dfea6ec2",
+									"altText": "Leader crown blue",
+									"title": "Leader crown blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 1823,
+										"height": 192,
+										"width": 192,
+										"filename": "leader-crown-blue.svg",
+										"file": {
+											"publicURL": "[path]/leader-crown-blue.svg"
+										}
+									},
 									"brandfolderAssetMobile": null
 								},
 								"imageAssetFile": null,
