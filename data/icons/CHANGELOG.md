@@ -1,5 +1,11 @@
 # Change Log
 
+## 9.8.0
+
+### Minor Changes
+
+- aedcae7652: Pass props to queues icon
+
 ## 9.7.0
 
 ### Minor Changes

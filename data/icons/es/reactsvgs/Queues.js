@@ -1,9 +1,13 @@
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
 import * as React from 'react';
 
-var SvgQueues = props => /*#__PURE__*/React.createElement("svg", {
+var SvgQueues = props => /*#__PURE__*/React.createElement("svg", _extends({}, props, {
   viewBox: "0 0 16 16",
-  xmlns: "http://www.w3.org/2000/svg"
-}, /*#__PURE__*/React.createElement("path", {
+  xmlns: "http://www.w3.org/2000/svg",
+  "aria-hidden": !props['aria-label'],
+  focusable: "false"
+}), /*#__PURE__*/React.createElement("path", {
   d: "M4.37009 8.28924L1.98155 5.95722L1.32047 6.63432L2.40973 7.6978L0.591436 7.6978C0.264795 7.6978 -9.03979e-07 7.96259 -9.00084e-07 8.28923V8.28923C-8.96189e-07 8.61588 0.264795 8.88067 0.591437 8.88067L2.40973 8.88067L1.32071 9.94391L1.98179 10.621L4.37009 8.28924Z"
 }), /*#__PURE__*/React.createElement("path", {
   d: "M16 8.28924L13.6115 5.95722L12.9504 6.63432L14.0396 7.6978L12.2213 7.6978C11.8947 7.6978 11.6299 7.96259 11.6299 8.28923V8.28923C11.6299 8.61588 11.8947 8.88067 12.2213 8.88067L14.0396 8.88067L12.9506 9.94391L13.6117 10.621L16 8.28924Z"
