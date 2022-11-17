@@ -25,5 +25,18 @@
 	"managed/entrypoint/[id]/*",
 	"managed/entrypoint/[id]/overrides",
 	"managed/entrypoint/[id]/scope",
-	"managed/select-ruleset"
+	"managed/select-ruleset",
+	"rate-limiting",
+	"rate-limiting-rulesets",
+	"rate-limiting-rulesets/[id]/*",
+	"rate-limiting-rulesets/[id]/create/rule",
+	"rate-limiting-rulesets/[id]/rule/[id]/*",
+	"rate-limiting-rulesets/create",
+	"rate-limiting-rulesets/create/rule",
+	"rate-limiting-rulesets/create/rule/[id]/*",
+	"rate-limiting/deploy/[id]/*",
+	"rate-limiting/deploy/[id]/scope",
+	"rate-limiting/entrypoint/[id]/*",
+	"rate-limiting/entrypoint/[id]/scope",
+	"rate-limiting/select-ruleset"
 ]
