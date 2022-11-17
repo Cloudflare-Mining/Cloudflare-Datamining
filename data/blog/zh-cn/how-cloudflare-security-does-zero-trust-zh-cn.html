@@ -1,0 +1,34 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/How-CF-security-approaches-ZT.png" class="kg-image" alt="How Cloudflare Security does Zero Trust"></figure>
+	<p>在整个 Cloudflare One Week 期间，我们提供了大量行动手册，指导您如何使用 Zero Trust 服务取代传统设备。使用我们自己的产品是我们的团队文化，我们希望借此分享我们实施 Zero Trust 的经验。</p>
+	<p>我们的历程与许多客户大同小异。我们也想要更好的安全解决方案，但当时使用的工具给我们的工作带来了不必要的困难。开始时，我们只是寻找一种替代笨拙的 VPN 远程连接的方法，但很快我们就部署了 Zero Trust 解决方案来保护我们员工的 web 浏览活动和电子邮件。接下来，我们希望使用最新的 <a href="https://www.cloudflare.com/products/zero-trust/casb/" target="_blank">CASB</a> 产品来提升 SaaS 安全性。</p>
+	<p>我们知道，开始使用 Zero Trust 似乎困难重重，令人生畏，所以我们分享了自己的历程、我们获得的收益，希望对您有所帮助。</p>
+	<h3 id="-vpn-cloudflare-access">取代 VPN：启动 Cloudflare Access</h3>
+	<p>回首 2015 年，Cloudflare 当时所有内部托管的应用程序都是通过基于硬件的 VPN 访问的。当值工程师在自己的笔记本电脑上启动一个客户端，连接到 VPN，然后登录到 Grafana。整个过程不胜其烦，而且非常缓慢。</p>
+	<p>我们打造的许多产品都直接脱胎于我们自己的团队面临的挑战，Access 便是一个完美例证。2015 年，我们启动了 Access 内部项目，希望员工能够通过我们的标识提供程序访问内部应用程序。我们就从 Access 后面的一个应用程序入手，旨在缩短事件响应时间。工程师在手机上收到通知后，只需点击一个链接，通过浏览器验证身份后，就能立即获得所需的访问权限。大家开始使用新的身份验证流程时，就希望将它推广到全世界。最终，我们的安全团队强制要求我们将所有应用程序转移到 Access 后面，但在很长一段时间内，这完全是有机的：团队渴望使用它。</p>
+	<p>由于身份验证发生在我们的网络边缘，因此我们能支持分布在全球的员工队伍，而没有 VPN 延迟，而且能确保安全。此外，我们的团队致力于使用最安全可行的身份验证机制保护我们的内部应用程序，可以实施的最重要的安全控制措施包括双因素身份验证。凭借 Cloudflare Access，我们能依赖我们的标识提供程序强大的双因素身份验证机制。</p>
+	<p>并非所有的第二因素都能提供相同级别的安全性。有些方法仍然容易受到中间人 (MITM) 的攻击。这些攻击的特点是，不良行为者通常通过网络钓鱼窃取一次性密码，从而得以访问私有资源。为消除这种可能性，我们采用了 <a href="https://fidoalliance.org/specs/fido-v2.0-rd-20161004/fido-client-to-authenticator-protocol-v2.0-rd-20161004.html" target="_blank">FIDO2</a> 支持的安全密钥。FIDO2 是一个旨在防止网络钓鱼的身份验证器协议，我们认为这可以改进我们当时依赖的软令牌体系。</p>
+	<p>虽然实施 FIDO2 会带来兼容性方面的挑战，但我们亟需改善我们的安全态势。Cloudflare Access 让我们能够限制仅 FIDO2 可以访问我们的系统。Cloudflare 的员工现在需要使用他们的硬件密钥才能访问我们的应用程序。Access 的引入不仅大大提高了易用性，安全密钥的实施也让我们的安全态势大为改善。</p>
+	<h3 id="-gateway-">减轻威胁，防止数据泄漏：Gateway 和远程浏览器隔离</h3>
+	<h4 id="-dns">在办公室部署安全的 DNS</h4>
+	<p>几年后，也就是 2020 年，许多客户的安全团队都在挣扎，因为他们希望将办公室启用的控制措施扩展至远程员工。为此，我们推出了 Cloudflare Gateway，保护客户抵御恶意软件、勒索软件、网络钓鱼、命令与控制、影子 IT 以及所有端口和协议上的其他互联网风险。Gateway 根据客户实施的策略引导和过滤流量。</p>
+	<p>我们的安全团队从 Gateway 入手，在所有办公室实施 DNS 过滤。由于 Gateway 构建于与世界上最快的 DNS 解析器 1.1.1.1 相同的网络基础上，因此，任何现有或未来的 Cloudflare 办公室都将拥有 DNS 过滤功能，而且不会产生额外的延迟。每个办公室都会连接到最近的数据中心，并受到保护。</p>
+	<h4 id="-dns-1">为远程用户部署安全的 DNS</h4>
+	<p>Cloudflare 的 WARP 客户端也是构建在我们的 1.1.1.1 DNS 解析器基础上。它将办公室享有的安全和性能扩展至远程企业设备。部署 WARP 客户端后，企业设备会连接到最近的 Cloudflare 数据中心，并路由到 Cloudflare Gateway。位于企业设备和互联网之间，来自设备的所有连接都是安全的，同时也提高了速度和隐私性。</p>
+	<p>我们试图将安全的 DNS 过滤扩展至我们的远程员工，并将 Cloudflare WARP 客户端部署到所有终端设备。我们的安全团队便能通过 DNS over HTTPS (DoH) 给 DNS 流量加密，更好地保护我们的隐私。同时，Cloudflare Gateway 根据我们自己的威胁情报平台 <a href="https://radar.cloudflare.com/" target="_blank">Radar</a> 对域名进行分类，因此，我们能够为世界各地的用户阻止高风险和可疑的域名。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/pasted-image-0.png" class="kg-image"></figure>
+	<h4 id="-https-">添加 HTTPS 过滤和浏览器隔离</h4>
+	<p>DNS 过滤是一个宝贵的安全工具，但它仅限于阻止整个域。我们的团队想要一个更精确的工具，仅阻止恶意的 URL，而不是整个域。由于 Cloudflare One 是一个集成的平台，大部分部署均已完成。我们只需要将 Cloudflare 根 CA 添加到我们的端点，然后在 Zero Trust 仪表板中启用 HTTP 过滤。完成这几个简单的步骤，我们就能实施更细化的阻止控制。</p>
+	<p>除精确阻止外，HTTP 过滤还让我们能够实施<a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/http-policies/tenant-control/" target="_blank">租户控制</a>。通过租户控制，Gateway HTTP 策略可以监管对企业 SaaS 应用程序的访问。策略是通过使用自定义 HTTP 标头来实施的。如果有自定义请求标头，且请求是指向组织账户，则允许访问。如果有请求标头，但请求是指向非组织账户（例如个人账户），则会阻止该请求或在隔离浏览器中打开。</p>
+	<p>在 DNS 和 HTTP 层保护用户流量后，我们实施了浏览器隔离。实施浏览器隔离时，所有浏览器代码都在 Cloudflare 网络的云端执行。这将我们的端点与恶意攻击和常见的数据泄漏方法隔离开来。一些远程浏览器隔离产品会导致延迟，令用户非常沮丧。Cloudflare 的浏览器隔离利用我们强大的网络，为员工提供无缝体验。它迅速改善了我们的安全态势，而不影响用户体验。</p>
+	<h3 id="-area-1-">防止网络钓鱼攻击：引入 Area 1 电子邮件安全</h3>
+	<p>2020 年初，我们发现员工报告的网络钓鱼企图有所增加。我们基于云的电子邮件供应商有强大的垃圾邮件过滤功能，但他们在阻止恶意威胁和其他高级攻击方面有所欠缺。我们的网络钓鱼攻击量和频率均在增长，我们觉得是时候探索更彻底的电子邮件保护方案了。</p>
+	<p>我们的团队寻找供应商时关注四个主要因素：扫描电子邮件附件的能力，分析可疑恶意链接的能力，商业电子邮件入侵保护，以及接入云原生电子邮件提供商的强大 API。在测试了很多供应商后，Area 1 成为保护我们员工的显然选择。我们在 2020 年初实施了 Area 1 的解决方案，结果非常理想。</p>
+	<p>鉴于用户对产品绝对积极的反应，以及打造 Zero Trust 产品组合的愿望，<a href="https://blog.cloudflare.com/zh-cn/why-we-are-acquiring-area-1-zh-cn/">Cloudflare 于 2022 年 4 月收购了 Area 1 电子邮件安全</a>。我们很高兴能向客户提供我们所用的保护措施。</p>
+	<h3 id="-cloudflare-casb">下一步：开始使用 Cloudflare 的 CASB</h3>
+	<p><a href="https://blog.cloudflare.com/zh-cn/cloudflare-acquires-vectrix-to-expand-zero-trust-saas-security-zh-cn/">2022 年 2 月，Cloudflare 收购了 Vectrix</a>。Vectrix 的 CASB 有一些功能我们非常希望能添加到 Cloudflare One 中。SaaS 安全是许多安全团队日益关注的一个问题。SaaS 工具存储了越来越多的敏感企业数据，因此，配置错误和外部访问可能是一个重大威胁。但要确保这些平台的安全却面临巨大的资源挑战。对许多客户来说，手动审查配置错误或外部共享文件非常耗时，但却必不可少。CASB 通过扫描 SaaS 实例，识别漏洞，只需点击几下就能确保安全标准，减轻了团队的负担。</p>
+	<p>我们希望确保维持最佳 SaaS 安全实践，因为我们和许多客户一样，有许多 SaaS 应用程序需要保护。我们一直在寻找机会提高我们的流程效率，很高兴能引入我们最新的 Zero Trust 产品。</p>
+	<h3 id="-">不断改进</h3>
+	<p>积极部署和测试我们自己的产品，Cloudflare 为此颇感自豪。我们的安全团队直接与产品团队合作，率先试用我们自己的产品。帮助构建更好的互联网是我们的使命，意味着吸收我们内部团队的宝贵反馈。作为 Cloudflare 产品的头号消费者，安全团队不仅帮助公司变得更加安全，还在为我们的客户打造更好的产品方面做出贡献。</p>
+	<p>希望您喜欢 Cloudflare One Week。我们很乐意与您分享我们的故事。如需回顾整个系列，请访问我们的 <a href="https://gateway.on24.com/wcc/eh/2153307/lp/3824611/?_gl=1%2a1gzme6u%2a_ga%2aMTkxODk3NTg2MC4xNjMyMTUzNjc4%2a_gid%2aNjI2NDA3OTcxLjE2NTQ1MzM5MjQ" target="_blank">Cloudflare TV 短片</a>。</p>
+</div>

@@ -1,0 +1,41 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-26.png" class="kg-image"></figure>
+	<p>在 Cloudflare 的 S-1 文档中，有一节的开头是这样说的：<em>“互联网并不是为了现在而构建的”</em>。</p>
+	<p>这句话表达了这样一种想法，即互联网开始时只是一项试验，但是现在已经发展成为我们日常生活和工作必不可少的事物。除了互联网的设计目的；还需要确保安全、性能和隐私。</p>
+	<p>关于云，其发展情况和互联网类似：<em>开始设计云时，也没有想到云能够实现目前的功能</em>。</p>
+	<p>亚马逊 EC2 服务的推出大大改进了传统的方式：购买并安装服务器和存储系统机架，然后进行维护。</p>
+	<p>但从本质上讲，云是对旧的现实世界基础设施的虚拟化，而不是对满足互联网规模企业需求的计算的彻底反思。打个比方，就像蒸汽机车已经被高效的电动发动机所取代，但还要在车顶安装一个烟囱，并且每前进两百英里就要停下来加一次水。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image3-17.png" class="kg-image"></figure>
+	<p>云颠覆了购买服务器和安装操作系统的传统，取而代之的是人们现在熟悉的选择地区、配置虚拟机以及人为地保持热代码。</p>
+	<p>但在这一过程中，我们可以看到一丝希望，采用 lambdas、边缘、函数或无服务器等各种形式。所有人都在尝试为一种云计算模型命名，有望使开发人员在从一个规模扩展到互联网规模时提高生产力。这个模型不是虚拟机或磁盘或容器中的内容，而是：“编写代码，我们会运行，不要担心扩展或位置等细节”。</p>
+	<p>我们称之为超级云。 </p>
+	<p>在编程理论中，超粒度的存在已经有一段时间了。C.A.R. Hoare 的 CSP 模型由执行任务和传递数据的微小流程组成（有助于激发 Go 语言）；Actor 模型在改变内部状态的众多参与者之间传递消息；甚至 lambda 演算也是作用于数据的离散函数。</p>
+	<h3 id="-">超级云的基础</h3>
+	<p>几年前，NoSQL 运动开发了不依赖于数据库的存储和处理数据的新方法。键值存储和文档存储蓬勃发展，因为它们在代码和数据之间建立了简单的连接，而不是以数据库、表甚至行的粒度来考虑数据。</p>
+	<p>您可以将 NoSQL 视为一种向超粒度发展的驱动力，而且起到了推动的作用。NoSQL 存储、KV、对象存储（如 R2）比比皆是。用于处理数据的 <a href="https://en.wikipedia.org/wiki/MapReduce" target="_blank">MapReduce</a> 的兴起也与超粒度有关；通过将数据处理分解为易于缩放的部分（地图和缩小），可以有效地处理大量数据，并根据需要进行缩放。</p>
+	<p>云代码也是如此。正如程序员不想考虑数据库规模的块一样，他们也不应该考虑 VM 或容器规模的块。这样会导致效率低下，与编写代码创建服务的实际工作无关。这是不必要的工作，会分散人们对编程真正价值的注意力。</p>
+	<p>在分布式编程理论中，粒度的存在已经有一段时间了。<a href="https://en.wikipedia.org/wiki/Communicating_sequential_processes" target="_blank">CSP 模型</a>由执行任务和传递数据的微小流程组成（有助于激发 Go 语言）；<a href="https://en.wikipedia.org/wiki/Actor_model" target="_blank">Actor 模型</a>在改变内部状态的众多参与者之间传递消息；甚至 <a href="https://en.wikipedia.org/wiki/Lambda_calculus" target="_blank">lambda 演算</a>也是作用于数据的离散函数。</p>
+	<p>面向对象的编程让开发人员对对象（而非虚拟机或磁盘）进行推理。在 <a href="https://en.wikipedia.org/wiki/Common_Object_Request_Broker_Architecture" target="_blank">CORBA</a> 及类似系统中，有一个<a href="https://en.wikipedia.org/wiki/Object_request_broker" target="_blank">对象请求代理</a>的概念，允许用户在分布式系统中远程运行和访问对象，而不必了解对象的执行位置和执行方式等细节。</p>
+	<p>计算理论偏离专用（虚拟或真实）机器，而指向在超级云上运行的代码和数据，从而自动有效地处理代码执行和数据定位的细节。</p>
+	<p>因此，无论是通过将代码分解为函数来编写代码，还是发布大量功能或完整程序，超级云的基础都意味着您的代码将从其效率受益。还有更多的益处。</p>
+	<h3 id="--1">超级云的优势</h3>
+	<p>超级云使扩展变得容易，因为没有人需要考虑要配置多少虚拟机，也没有人需要保持热备用虚拟机，以防出现大量访问者。正如 MapReduce（延续了 lambda 演算）可以上下扩展一样，通用计算也应如此。</p>
+	<p>而且这不仅仅是扩展的问题。超级云允许代码和数据在网络中移动。将数据附加到代码（例如使用 <a href="https://developers.cloudflare.com/workers/learning/using-durable-objects" target="_blank">Durable Objects</a>；hello Actor 模型），您就有基础让应用程序扩展到任何规模并根据需要移动到用户附近，以提供最佳性能。</p>
+	<p>如果您的数据是不可移动的，无论需要访问多少次，我们都可以将您的代码移到更靠近您的数据的位置。</p>
+	<p>不仅如此，在该灵活性层面上工作意味着，执行有关数据处理或存储位置的数据隐私或数据驻留法的代码可以在具体用户或对象的层面上运行。同一代码的执行可能会有所不同，甚至可以在完全不同的国家/地区执行，具体取决于相关数据的存储位置。</p>
+	<p>超级云对运行程序的成本会产生两个有趣的影响。首先，更经济，因为只运行所需要的代码。不再需要随时待命的虚拟机，也不需要部署以防万一而付费的空闲机器。代码只有运行或者不运行两种选择。可以根据需要上下扩展。只需要为自己所需的功能支付费用。</p>
+	<p>其次，它创建了一个让每个人都能更好应用的、更高效的计算平台。让计算平台（例如我们）尽可能高效运行。出于性能和扩展原因，我们必须能够快速启动代码。我们需要高效使用 CPU，因为客户不会付钱让我们的 CPU 无所事事。这对环境也有好处，因为云机器的利用率非常高。正是由于达到了这种效率水平，才能让我们的平台扩展到 Cloudflare Workers 在您读完这句话的时间内处理 1000 万个请求。</p>
+	<p>这个计算平台的规模远远超出了机器、数据中心或国家/地区的规模。借助（我们构建的）合适的软件，可以扩展到互联网规模。软件在全球范围内自动分配资源，从而移动连接、数据和处理，实现最优化的高效最终用户体验。</p>
+	<p>高效的计算和存储，一个无处不在的全球网络，能够借助将全球变成一个云的软件将所有人绑定在一起。Supercloud</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image2-22.png" class="kg-image"></figure>
+	<h3 id="--2">欢迎来到超级云时代</h3>
+	<p>超级云具有性能高、扩展性高、可用性强、私有化、成本效益高等特点。因此，为您的应用程序选择区域、配置虚拟机、研究如何自动扩展容器或担心冷启动等行为似乎变得不可理喻，简直就是浪费时间和金钱。</p>
+	<p>令人高兴的是，Cloudflare 多年来一直在我们的网络和我们的开发人员平台中构建传统云的替代方案。超级云这个词可能是一个新的术语，但并不意味着它不存在。今天，我们有超过 100 万开发人员在超级云上构建自己的代码。 </p>
+	<p>每个开发人员都希望在一台计算机上运行代码并将其优化。如果能这样运作，事情会简单得多。而我们正好有一台可以扩大到互联网规模的计算机：一台全球化的分布式超级计算机。这就是超级云，我们在其上面构建我们自己的产品，您也可以和那 100 万开发人员一样，在其上面构建自己的产品。</p>
+	<p>我们 12 年来一直在构建超级云，并于 5 年前通过 Cloudflare Workers 向开发人员开放了超级云。Cloudflare Workers 从第一天起就在全局网络上运行，因而能够实现相应的规模和性能。 </p>
+	<p>因此，欢迎来到 Supercloud 时代，且欢迎参加 Cloudflare 2022 年开发人员周。</p>
+	<p>和所有的创新周一样，我们很高兴又开始了一周的公告，能够在超级云上构建越来越多的用例。事实上，这是建立在 Workers 开发人员平台上的，让我们能够继续为用户提供新构建块。本周，我们不仅要告诉您可以使用的所有新工具，还要告诉您我们是如何构建这些工具的，以及您如何使用这些工具，还有我们的客户目前在生产中使用这些工具构建的内容。</p>
+	<h3 id="-cloudflare-tv-">在 Cloudflare TV 上观看</h3><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/b409bc4dd863a0cdb9f7156c13a02be3/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Fb409bc4dd863a0cdb9f7156c13a02be3%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D9s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
+	<p>您可以点击此处观看或以音频/播客形式收听我们每周节目<a href="https://cloudflare.tv/shows/this-week-in-net" target="_blank"> <em>This Week in Net</em></a> 的完整部分。</p>
+</div>

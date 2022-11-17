@@ -1,0 +1,167 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/Proxyless-KubeCTL-Support.png" class="kg-image" alt="Kubectl with Cloudflare Zero Trust"></figure>
+	<p>Cloudflare 在工程工作负载方面非常依赖 Kubernetes：用于支持我们的 API 后端，进行批处理，例如分析汇总和自动程序检测，以及 CI/CD 管道等工程工具。但在负载平衡器、API 服务器、etcd、入口和 pod 之间，Kubernetes 暴露的表面区域可能相当之大。</p>
+	<p>本文分享了我们工程团队的一些经验——如何使用 Cloudflare Zero Trust 来保护 Kubernetes 安全，而且无需代理即可启用 kubectl。</p>
+	<h2 id="-kubernetes-">保护 Kubernetes 安全的一般方法</h2>
+	<p>我们的安全措施严格限制了哪些流量可以通过网络访问我们的集群。在网络服务暴露之处，我们还增加了额外的保护措施，例如要求 Cloudflare Access 身份验证或双向 TLS（或两者）才能访问入口资源。</p>
+	<p>这些网络限制包括对集群 API 服务器的访问。没有该访问权限，Cloudflare 的工程师就无法使用 kubectl 等工具从内部观察其团队资源。虽然我们相信持续部署和 GitOps 是最佳实践，但允许开发人员使用 Kubernetes API 有助于排除故障，提高开发人员的速度。没有访问权限会破坏计划。</p>
+	<p>为满足我们的安全要求，我们正在使用 Cloudflare Zero Trust。我们想分享我们的使用方法及调整过程。</p>
+	<h3 id="zero-trust-">Zero Trust 之前</h3>
+	<p>在 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trust</a> 之前，工程师可以通过连接 VPN 设备来访问 Kubernetes API。虽然这是整个行业的常见方法，也确实可以访问 API，但这将工程师作为客户端引入了内部网络：他们的网络访问权限远超所需。</p>
+	<p>我们对这种情况并不满意，但这是近几年来的现状。2020 年初，我们弃用了 VPN，因此 Kubernetes 团队需要寻找其他解决方案。</p>
+	<h3 id="-cloudflare-tunnel-kubernetes">使用 Cloudflare Tunnel 支持 Kubernetes</h3>
+	<p>当时，我们与 Cloudflare Tunnel 的开发团队密切合作，希望增进支持<a href="https://blog.cloudflare.com/releasing-kubectl-support-in-access/">使用 Access</a>和 cloudflared 隧道处理 kubectl 连接。</p>
+	<p>这于我们的工程用户是有效的，但对刚入职的新员工则是一个巨大障碍。每个 Kubernetes 集群都需要从工程师的设备上获得自己的隧道连接，使得集群随机打乱非常烦人。虽然 kubectl 支持通过 SOCKS 代理连接，但这种支持并不适用于 Kubernetes 生态系统的所有工具。</p>
+	<p>我们在内部继续使用这个解决方案，同时努力寻找更好的解决方案。</p>
+	<h2 id="-zero-trust-kubernetes">使用 Zero Trust 支持 Kubernetes</h2>
+	<p>自 Cloudflare One 推出以来，我们一直使用各种配置对 Zero Trust 代理进行内部测试。起初，我们一直用它来实施安全的 DNS 1.1.1.1。后来，我们开始用它来测试其他 Zero Trust 功能。</p>
+	<p>现在，我们利用 Cloudflare Zero Trust 中的专用网络路由来允许工程师访问 Kubernetes API，无需设置 cloudflared 隧道，也无需配置 kubectl 和其他 Kubernetes 生态系统工具来使用隧道。这并不是 Cloudflare 特有的做法，您也可以立即让团队采用这种方法。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/Kubectl-WIth-Warp-Diagram--2-.png" class="kg-image"></figure>
+	<h3 id="-zero-trust">配置 Zero Trust</h3>
+	<p>我们使用了一个<a href="https://github.com/cloudflare/terraform-provider-cloudflare" target="_blank">配置管理工具</a>来完成 Zero Trust 配置，以实现基础设施即代码，并进行了如下调整。不过，使用 Cloudflare Zero Trust 仪表板也可以完成相同的配置。</p>
+	<p>首先，我们需要创建一个新隧道。该隧道将用于连接 Cloudflare 边缘网络和 Kubernetes API。我们使用后文所述配置，在 Kubernetes 内运行隧道端点。</p>
+	<pre><code>resource "cloudflare_argo_tunnel" "k8s_zero_trust_tunnel" {
+  account_id = var.account_id
+  name       = "k8s_zero_trust_tunnel"
+  secret     = var.tunnel_secret
+}
+</code></pre>
+	<p>“tunnel_secret”密钥应该是一个 32 字节的随机数，您应该暂时保存，因为后面我们会在 Kubernetes 设置中再次使用它。</p>
+	<p>创建隧道后，我们需要创建路由，让 Cloudflare 网络知道哪些流量需要通过隧道发送。</p>
+	<pre><code>resource "cloudflare_tunnel_route" "k8s_zero_trust_tunnel_ipv4" {
+  account_id = var.account_id
+  tunnel_id  = cloudflare_argo_tunnel.k8s_zero_trust_tunnel.id
+  network    = "198.51.100.101/32"
+  comment    = "Kubernetes API Server (IPv4)"
+}
+ 
+resource "cloudflare_tunnel_route" "k8s_zero_trust_tunnel_ipv6" {
+  account_id = var.account_id
+  tunnel_id  = cloudflare_argo_tunnel.k8s_zero_trust_tunnel.id
+  network    = "2001:DB8::101/128"
+  comment    = "Kubernetes API Server (IPv6)"
+}
+</code></pre>
+	<p>我们支持通过 IPv4 和 IPv6 地址访问 Kubernetes API，所以两者都要配置路由。如果通过主机名连接 API 服务器，这些 IP 地址应该与通过 DNS 查询返回的内容一致。</p>
+	<p>接下来我们将配置 Cloudflare Gateway 的设置，使其与 API 服务器和客户端兼容。</p>
+	<pre><code>resource "cloudflare_teams_list" "k8s_apiserver_ips" {
+  account_id = var.account_id
+  name       = "Kubernetes API IPs"
+  type       = "IP"
+  items      = ["198.51.100.101/32", "2001:DB8::101/128"]
+}
+ 
+resource "cloudflare_teams_rule" "k8s_apiserver_zero_trust_http" {
+  account_id  = var.account_id
+  name        = "Don't inspect Kubernetes API"
+  description = "Allow connections from kubectl to API"
+  precedence  = 10000
+  action      = "off"
+  enabled     = true
+  filters     = ["http"]
+  traffic     = format("any(http.conn.dst_ip[*] in $%s)", replace(cloudflare_teams_list.k8s_apiserver_ips.id, "-", ""))
+}
+</code></pre>
+	<p>由于我们在客户端和 API 服务器之间使用了双向 TLS，而 kubectl 和 API 服务器之间的流量并不都是 HTTP，所以我们对这些连接禁用了 HTTP 检查。</p>
+	<p>您还可以搭配其他 Zero Trust 规则，例如<a href="https://developers.cloudflare.com/cloudflare-one/identity/devices/" target="_blank">设备证明</a>、<a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/enforce-sessions/" target="_blank">会话生存期</a>以及<a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/identity-selectors/" target="_blank">用户和组</a>访问策略，进一步定制您的安全策略。</p>
+	<h3 id="-">部署隧道</h3>
+	<p>创建并配置隧道后，您便可以将端点部署到网络中。我们选择将隧道部署为 pod，这样便可使用 Kubernetes 的部署策略来推出升级，处理节点故障。</p>
+	<pre><code>apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tunnel-zt
+  namespace: example
+  labels:
+    tunnel: api-zt
+data:
+  config.yaml: |
+    tunnel: 8e343b13-a087-48ea-825f-9783931ff2a5
+    credentials-file: /opt/zt/creds/creds.json
+    metrics: 0.0.0.0:8081
+    warp-routing:
+        enabled: true
+</code></pre>
+	<p>这将创建一个具有基本配置的 Kubernetes ConfigMap，为指定的隧道 ID 启用 WARP 路由。您可从配置管理系统、Cloudflare Zero Trust 仪表板，或在登录同一账户的另一设备上运行以下命令，获得该隧道 ID。</p>
+	<p><code>cloudflared tunnel list</code></p>
+	<p>接下来，我们需要为隧道凭证创建密钥。虽然您应该使用密钥管理系统，但为简单起见，我们现在直接创建一个密钥。</p>
+	<pre><code>jq -cn --arg accountTag $CF_ACCOUNT_TAG \
+       --arg tunnelID $CF_TUNNEL_ID \
+       --arg tunnelName $CF_TUNNEL_NAME \
+       --arg tunnelSecret $CF_TUNNEL_SECRET \
+   '{AccountTag: $accountTag, TunnelID: $tunnelID, TunnelName: $tunnelName, TunnelSecret: $tunnelSecret}' | \
+kubectl create secret generic -n example tunnel-creds --from-file=creds.json=/dev/stdin
+</code></pre>
+	<p>这就在“示例”命名空间中创建了一个新的密钥“tunnel-creds”，其中包含隧道要求的凭证文件。</p>
+	<p>现在我们可以部署隧道本身了。我们部署了多个副本，以确保有些副本即使在节点耗尽时也始终可用。</p>
+	<pre><code>apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    tunnel: api-zt
+  name: tunnel-api-zt
+  namespace: example
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      tunnel: api-zt
+  strategy:
+    rollingUpdate:
+      maxSurge: 0
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        tunnel: api-zt
+    spec:
+      containers:
+        - args:
+            - tunnel
+            - --config
+            - /opt/zt/config/config.yaml
+            - run
+          env:
+            - name: GOMAXPROCS
+              value: "2"
+            - name: TZ
+              value: UTC
+          image: cloudflare/cloudflared:2022.5.3
+          livenessProbe:
+            failureThreshold: 1
+            httpGet:
+              path: /ready
+              port: 8081
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          name: tunnel
+          ports:
+            - containerPort: 8081
+              name: http-metrics
+          resources:
+            limits:
+              cpu: "1"
+              memory: 100Mi
+          volumeMounts:
+            - mountPath: /opt/zt/config
+              name: config
+              readOnly: true
+            - mountPath: /opt/zt/creds
+              name: creds
+              readOnly: true
+      volumes:
+        - secret:
+            name: tunnel-creds
+          name: creds
+        - configMap:
+            name: tunnel-api-zt
+          name: config</code></pre>
+	<h2 id="-cloudflare-zero-trust-kubectl">使用 Cloudflare Zero Trust 支持 Kubectl</h2>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/Screen-Shot-2022-06-23-at-3.43.37-PM.png" class="kg-image" alt="Screenshot of the Cloudflare WARP app showing it connected to Teams"></figure>
+	<p>部署 Cloudflare Zero Trust 代理后，您的团队成员就可以访问 Kubernetes API 了，无需设置任何特殊的 SOCKS 隧道</p>
+	<pre><code>kubectl version --short
+Client Version: v1.24.1
+Server Version: v1.24.1
+</code></pre>
+	<h2 id="--1">下一步是什么？</h2>
+	<p>如果您尝试了该方法，请向我们发送反馈意见。我们正在继续改进非 HTTP 工作流程的 Zero Trust。</p>
+</div>

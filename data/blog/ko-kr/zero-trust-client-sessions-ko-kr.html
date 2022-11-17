@@ -1,0 +1,13 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://lh3.googleusercontent.com/oZl3Hg5Dp68YPi8KEYOnNSQ6UgwbnuXl58deu8Z9ywct0pxGSRUVgvTP5qJl793biujvSfOQ0Kr0yyxWlUyCHqbgHAyBI1OiKQXnQO6BOjvOflNtjrhEw5MX97HXuBszrq9i4Ksh" class="kg-image"></figure>
+	<p>오늘부터 정기적인 인증이 필요한 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trust</a> 규칙을 만들어 네트워크 액세스를 제어할 수 있습니다. 수 년간 웹 기반 애플리케이션에서 이 기능을 사용할 수 있었지만, TCP 연결 및 UDP 흐름에 세분화된 수준으로 적용할 수 있게 되어 기쁩니다.</p>
+	<p>이제 Zero Trust 클라이언트 기반 세션을 누구나 이용할 수 있다는 소식을 전하게 되어 기쁩니다. 이 기능은 2021년 CIO Week 동안 베타 프로그램으로 공개되었습니다. Cloudflare는 일반 사용 가능 버전에 초기 사용자의 피드백을 통합했습니다. 이 게시물에서는 Zero Trust 클라이언트 기반 세션이 중요한 이유, 이 기능이 작동하는 방식, 베타 기간 동안 Cloudflare가 알게 되었던 내용을 다시 살펴보겠습니다.</p>
+	<h3 id="-">세션으로 트래픽 보호</h3>
+	<p>Cloudflare는 ZTNA(Zero Trust 네트워크 액세스) 보안을 강화하기 위해 Zero Trust 클라이언트 기반 세션을 구축했습니다. Zero Trust 클라이언트는 사용자 컴퓨터에서 실행되어 모든 트래픽이 인터넷으로 전송되기 전 사용자의 컴퓨터에서 Cloudflare로 트래픽을 전달하는 소프트웨어입니다. 그 중에는 일반적으로 민감한 비즈니스 애플리케이션을 수용하는 내부 IP 및 호스트 이름으로 향하는 트래픽도 포함됩니다. 기존에는 이와 같이 민감한 애플리케이션에 VPN을 사용해 액세스했습니다. VPN과 달리, 관리자는 Cloudflare의 ZTNA를 통해 특정 리소스에 액세스할 수 있는 사용자에 대해 세부적으로 정책을 설정할 수 있습니다. 유일하게 부족했던 부분은 사용자가 Zero Trust 클라이언트에 컴퓨터를 등록하면, 영구적인 세션이 주어졌다는 점입니다. 이렇게 되면 분실되거나 도난당한 랩톱, 공유 워크스테이션, 개인 장치가 원래보다 더욱 위험해집니다. 이 점을 해결하기 위해 Cloudflare는 Zero Trust 클라이언트 기반 세션을 구축했습니다.</p>
+	<p>Zero Trust 클라이언트 기반 세션을 사용하려면 사용자가 특정 리소스에 액세스하기 전에 ID 공급자를 다시 인증해야 합니다. 인증 팝업은 사용자가 보호된 리소스에 액세스하려고 할 때만 트리거됩니다. 이렇게 하면 세션이 절대 필요하지 않은 사용자에게는 불필요한 팝업이 나타나지 않게 됩니다. 관리자는 리소스마다 사용자의 재인증 빈도를 지정할 수 있습니다. 세션이 구성된 ZTNA 정책에 사용자가 마지막으로 성공했던 인증이 저장되고 평가되므로 이러한 과정이 가능합니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-76.png" class="kg-image"></figure>
+	<h3 id="-cloudflare-">베타 기간 동안 Cloudflare가 알게 되었던 내용</h3>
+	<p>Zero Trust 클라이언트 기반 세션의 베타 기간 동안, Cloudflare는 고객 및 자사 보안 팀과 긴밀히 협력하여 즉각적으로 개선해야 할 부분을 파악했습니다. 모두 이용 가능 제품으로 공개하기 전 두 가지 주요 개선점이 확인되었습니다. 팝업이 거슬릴 수 있다는 점과, 브라우저 기반 인증을 언제나 이용할 수는 없다는 점이었습니다. Cloudflare는 지나치게 방해가 되지 않으면서 사용자에게 적절한 방식으로 인증 팝업을 제공할 새로운 전략을 찾아냈습니다. 향후에는 사용자가 인증 알림을 언제 받을지 제어할 수 있습니다. 또 다른 개선점은, 특정 컴퓨터와 운영 체제에서 언제나 브라우저 기반 인증을 이용할 수는 없다는 점입니다. Zero Trust 클라이언트 자체에서 직접 인증하는 옵션을 추가할 계획입니다.</p>
+	<h3 id="--1">다음 단계</h3>
+	<p>지금은 Zero Trust 클라이언트 기반 인증이 막 시작되었을 뿐입니다. 향후에는 인증서 및 서비스 토큰을 통한 다단계 인증 및 자동 등록 옵션을 선택 사항으로 추가할 계획입니다. 쉽게 시작하실 수 있습니다! Cloudflare Zero Trust 대시보드에서 Zero Trust 클라이언트 기반 세션을 설정하려면 <a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/enforce-sessions/" target="_blank">이 가이드</a>를 참조하세요.</p>
+</div>

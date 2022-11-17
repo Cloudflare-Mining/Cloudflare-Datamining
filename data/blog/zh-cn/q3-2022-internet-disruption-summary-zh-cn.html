@@ -1,0 +1,136 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/unnamed--1--1-1.png" class="kg-image" alt="Internet disruptions overview for Q3 2022"></figure>
+	<p>Cloudflare 在 <a href="https://www.cloudflare.com/network/" target="_blank">100 多个国家/地区的超过 275 个城市</a>运营，与 10,000 多个网络提供商互连，旨在为数以百万计的客户提供广泛的服务。网络和客户群的广度为我们提供了对互联网韧性的独特视角，使我们能够观察到互联网中断的影响。在很多情况下，这些中断可归因于物理事件，但在其他情况下，中断源于政府指示的故意关闭。在这篇文章中，我们将回顾 Cloudflare 在 2022 年第三季度观察到的部分互联网中断事故，以来自 <a href="https://radar.cloudflare.com/" target="_blank">Cloudflare Radar</a> 及其他 Cloudflare 内部工具的流量图表作为佐证，并按照相关原因或相同地理位置对其进行分类。新设的 <a href="https://radar.cloudflare.com/outage-center" target="_blank">Cloudflare Radar Outage Center</a> 提供有关下列中断事故及其他历史中断事故的更多信息。</p>
+	<h2 id="-">政府指示的关闭</h2>
+	<p>不幸的是，在过去十年中，世界各地的政府已将关闭互联网作为控制或限制公民之间以及公民与外部世界沟通的手段。在第三季度所观察到的中断事故皆由这个非常普遍的原因引起，影响了非洲、中东、亚洲和加勒比地区的多个国家和地区。</p>
+	<h3 id="--1">伊拉克</h3>
+	<p>正如我们于 6 月 27 日在<a href="https://blog.cloudflare.com/q2-2022-internet-disruption-summary/">第二季度总结博客文章</a>中提到的，伊拉克库尔德斯坦地区政府开始在接下来的四周内实施每周两次（周一和周四）长达数小时的地区互联网关闭措施，以防止有人在高中期末考试中作弊。如下图所示，除 7 月 21 日外，在此之前的每周一和周四都如期关闭了互联网。此举措影响了伊拉克的三个省，每天从当地时间 06:30–10:30（协调世界时 03:30–07:30）持续关闭互联网。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/map1.png" class="kg-image">
+		<figcaption>伊拉克埃尔比勒省、苏莱曼尼亚省和杜胡克省（来源：<a href="https://www.google.com/maps/d/viewer?mid=19Fmzr_zOLn7J05h1oJR5p3C3qFftYvM&amp;amp;ll=33.770472332283354%2C43.62516341328125&amp;amp;z=7" target="_blank">地图数据 ©2022 Google, Mapa GISrael</a>）</figcaption>
+	</figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/2-1.png" class="kg-image"></figure>
+	<h3 id="--2">古巴</h3>
+	<p><a href="https://crisis24.garda.com/alerts/2022/07/cuba-anti-government-protests-ongoing-in-los-palacios-and-pinar-del-rio-early-july-15" target="_blank">据报道</a>，在洛斯帕拉西奥斯和比那尔德里奥发生了反政府抗议活动，期间古巴于 7 月 15 日当地时间 00:55-01:50（协调世界时 04:55-05:50）<a href="https://twitter.com/CloudflareRadar/status/1547915236669157377" target="_blank">发生了</a>互联网中断事故。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/map2-2.png" class="kg-image">
+		<figcaption>古巴洛斯帕拉西奥斯和比那尔德里奥（来源：<a href="https://www.google.com/maps/d/viewer?mid=1evt2-4lJF7lS-zmJUKlyxmxEs0hkEOs&amp;amp;ll=21.668159876273524%2C-79.47412318242725&amp;amp;z=8" target="_blank">地图数据 ©2022 INEGI</a>）</figcaption>
+	</figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/4-1.png" class="kg-image"></figure>
+	<p>在本季度结束时，古巴又<a href="https://twitter.com/CloudflareRadar/status/1575801423299809282" target="_blank">发生了</a>另一起重大中断事故，据称是为了应对伊恩飓风过后对电力不足的抗议。从下图可以看出，在 9 月 29 日当地时间 20:30 至 9 月 30 日当地时间 03:15（9 月 30 日协调世界时 00:30-07:15）之间发生了互联网完全中断。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/5-1.png" class="kg-image"></figure>
+	<h3 id="--3">阿富汗</h3>
+	<p><a href="https://twitter.com/CloudflareRadar/status/1556630346044678151" target="_blank">据报道</a>，阿富汗喀布尔于 8 月 8 日上午关闭了部分地区的电信服务。如下图所示，流量于当地时间 09:30（协调世界时 05:00）左右开始下降，于 11 小时后即当地时间 20:30（协调世界时 16:00）左右恢复。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/map3.png" class="kg-image">
+		<figcaption>阿富汗喀布尔（来源：<a href="https://www.google.com/maps/d/viewer?hl=en&amp;amp;mid=1-NbLLgM521HWUofYcr7UzfYL-aKtyzQ&amp;amp;ll=37.69388277820212%2C68.94181706826146&amp;amp;z=6" target="_blank">地图数据 ©2022 Google</a>）</figcaption>
+	</figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/7-1.png" class="kg-image"></figure>
+	<h3 id="--4">塞拉利昂</h3>
+	<p>因生活成本上涨而<a href="https://crisis24.garda.com/alerts/2022/08/sierra-leone-further-protests-possible-in-freetown-in-the-coming-days-following-violent-demonstrations-over-cost-of-living-aug-10" target="_blank">在塞拉利昂弗里敦引发的抗议</a>可能对该国 8 月 10 日和 11 日发生的互联网中断事故起到了一定的助推作用。第一次中断发生在 8 月 10 日当地时间 12:00-14:00（协调世界时 12:00-14:00）。虽然此次中断<a href="https://www.thesierraleonetelegraph.com/three-dead-in-freetown-as-sierra-leone-is-shutdown-by-protesters-calling-for-the-resignation-of-president-bio/" target="_blank">据称</a>是政府为了平息抗议活动而指示的，但管理塞拉利昂电缆有限公司的 Zoodlabs <a href="https://twitter.com/CloudflareRadar/status/1557448989607444481" target="_blank">声称</a>，此次中断是由于“我们的一些国际线路需要进行紧急技术维护”所引发的。</p>
+	<p>如下图所示，8 月 11 日当地时间 01:00-07:30（协调世界时 01:00-07:30）发生了第二次更长时间的互联网中断。这些关闭的模式与过去几年的<a href="https://www.africafex.org/digital-rights/sierra-leone-joins-global-trend-shuts-down-internet-and-mobile-services-during-elections__trashed" target="_blank">行为类似</a>，即都是在该国的选举之后关闭互联网连接。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/map4.png" class="kg-image">
+		<figcaption>塞拉利昂弗里敦（来源：<a href="https://www.google.com/maps/d/viewer?hl=en&amp;amp;mid=19VpPkcxZSthOmuuaM2SUGuAQ_6XkHJw&amp;amp;ll=8.9827248933065%2C-11.89999874464882&amp;amp;z=9" target="_blank">地图数据 ©2022 Google, Inst. Geogr. Nacional</a>）</figcaption>
+	</figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/9-1.png" class="kg-image"></figure>
+	<h3 id="--5">索马里兰地区</h3>
+	<p><a href="https://twitter.com/CloudflareRadar/status/1557690457064357889" target="_blank">据报道</a>，索马里兰地方当局在<a href="https://www.radiodalsan.com/en/76403/2022/08/opposition-protests-ongoing-in-somaliland-amid-internet-shutdown/" target="_blank">原定的反对派示威活动</a>之前于 8 月 11 日切断了互联网服务。如下图所示，当地时间 06:45-13:55（协调世界时 03:45-10:55）期间，沃戈伊加勒贝德州发生了一次彻底的互联网中断。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/map5.png" class="kg-image">
+		<figcaption>索马里兰地区沃戈伊加勒贝德州（来源：<a href="https://www.google.com/maps/d/viewer?hl=en&amp;amp;mid=1a50hK6fiTAIORsgyI16_DL4jwqINv6E&amp;amp;ll=7.317165343551967%2C42.2695381549156&amp;amp;z=6" target="_blank">地图数据 ©2022 Google, Mapa GISrael</a>）</figcaption>
+	</figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/11-1.png" class="kg-image"></figure>
+	<p>如下图所示，所发生的网络级中断是由于 <a href="https://radar.cloudflare.com/as37425" target="_blank">AS37425</a> (SomCable) 和 <a href="https://radar.cloudflare.com/as37563" target="_blank">AS37563</a> (Somtel) 的流量丧失引起的。<a href="https://www.somtelsomalia.com/" target="_blank">Somtel</a> 是一家移动服务提供商，而 <a href="https://somcable.com/" target="_blank">SomCable</a> 专注于提供有线互联网接入。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/12-1.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/13-1.png" class="kg-image"></figure>
+	<h3 id="--6">印度</h3>
+	<p>印度对政府指示的互联网关闭<a href="https://www.accessnow.org/internet-shutdowns-india-keepiton-2021/" target="_blank">并不陌生</a>，且在过去十年中采取了<a href="https://www.statista.com/statistics/1095035/india-number-of-internet-shutdowns/" target="_blank">数百次</a>类似行动。然而，这种情况在未来可能会改变，因为该国最高法院<a href="https://www.forbes.com/sites/emmawoollacott/2022/09/13/indias-supreme-court-demands-clarity-on-internet-shutdowns" target="_blank">下令</a>要求电子和信息技术部 (MEITY) 披露其实施或批准关闭互联网的理由。在这个问题得到解决之前，该国仍将继续实施地区性关闭。</p>
+	<p><a href="https://twitter.com/CloudflareRadar/status/1561715417030299654" target="_blank">阿萨姆邦</a>就发生了一个类似实例，当地<a href="https://www.hindustantimes.com/india-news/mobile-internet-shut-down-in-assam-second-time-in-8-days-to-conduct-job-exams-101661676556069.html" target="_blank">为防止考试作弊而关闭了移动互联网连接</a>。如下图所示，8 月 21 日和 8 月 28 日每天实施了两次此类关闭。虽然<a href="https://twitter.com/toramatix/status/1561233561906057217" target="_blank">官方原定</a>于当地时间 10:00-12:00 和 14:00-16:00（协调世界时 04:30-06:30 和 08:30-10:30）进行关闭，但有报道称一些提供商从清晨就开始中断了连接。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/map6.png" class="kg-image">
+		<figcaption>印度阿萨姆邦（来源：<a href="https://www.google.com/maps/d/viewer?hl=en&amp;amp;mid=1kfhwsy8FZVtWmZJ8bwSYqGEP0IxTlts&amp;amp;ll=25.682150208296573%2C77.80555747342626&amp;amp;z=6" target="_blank">地图数据 ©2022 Google, TMap Mobility</a>）</figcaption>
+	</figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/15-1.png" class="kg-image"></figure>
+	<h3 id="--7">伊朗</h3>
+	<p>9 月下旬，因 Mahsa Amini 死亡导致<a href="https://www.cnn.com/2022/09/21/middleeast/iran-mahsa-amini-death-widespread-protests-intl-hnk/index.html" target="_blank">伊朗各地爆发了多项抗议和示威活动</a>。Amini 是一名来自伊朗库尔德斯坦省的 22 岁女性，<a href="https://www.cnn.com/2022/09/16/middleeast/iranian-woman-dies-police-intl/index.html" target="_blank">于 2022 年 9 月 13 日在德黑兰被伊朗的“道德警察部门”逮捕</a>，改部门负责执行严格的女性着装规范。她于 <a href="https://www.aljazeera.com/news/2022/9/16/iranian-woman-dies-after-moral-polices-detention-reports" target="_blank">9 月 16 日</a>在被警察部门拘留期间死亡。为了应对这些抗议和示威活动，该国的互联网连接经历了多波中断。</p>
+	<p>除了某<a href="https://blog.cloudflare.com/protests-internet-disruption-ir/">博客文章</a>中提到的萨南达季和德黑兰省于 9 月 19 日至 21 日发生了长达数小时的中断之外，<a href="https://radar.cloudflare.com/as44244" target="_blank">AS44244</a> (Irancell)、<a href="https://radar.cloudflare.com/as57218" target="_blank">AS57218 </a>(RighTel) 和 <a href="https://radar.cloudflare.com/as197207" target="_blank">AS197207</a> (MCCI) 三家移动网络提供商实施了通常发生在当地时间 16:00 至午夜（协调世界时 12:30-20:30）的每日互联网“宵禁”，尽管有几天的开始时间有所不同。这些定期关闭在下图中清晰可见，一直持续到了 10 月初。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/map7.png" class="kg-image">
+		<figcaption>伊朗萨南达季和德黑兰（来源：<a href="https://www.google.com/maps/d/viewer?hl=en&amp;amp;mid=1og5MJ7WojFdS90pXsTzjQRZYuJ5YPps&amp;amp;ll=34.40745951690451%2C48.25093298359377&amp;amp;z=6" target="_blank">地图数据 ©2022 Google</a>）</figcaption>
+	</figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/17-2.png" class="kg-image"></figure>
+	<p>如所述博客文章中所述，从 9 月 20 日开始，伊朗还阻止访问 <a href="https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/" target="_blank">DNS-over-HTTPS (DoH)</a> 和 <a href="https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-tls/" target="_blank">DNS-over-TLS (DoT)</a> 服务，而且有可能因此从 9 月 22 日开始进一步阻止通过 <a href="https://blog.cloudflare.com/cloudflare-view-http3-usage/">HTTP/3</a> 和 <a href="https://blog.cloudflare.com/quic-version-1-is-live-on-cloudflare/">QUIC</a> 建立连接，如<a href="https://radar.cloudflare.com/adoption-and-usage/ir?range=28d" target="_blank">来自 Cloudflare Radar</a> 的下图所示。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/18-1.png" class="kg-image"></figure>
+	<h2 id="--8">自然灾害</h2>
+	<p>地震和飓风等自然灾害会对受影响地区造成破坏，往往不但会造成人员丧生，而且会对各类建筑造成重大结构性破坏。基础设施受损也极为普遍，电力和电信基础设施通常会遭受大面积的损失。</p>
+	<h3 id="--9">巴布亚新几内亚</h3>
+	<p>9 月 11 日，<a href="https://www.cnn.com/2022/09/10/asia/earthquake-papua-new-guinea" target="_blank">巴布亚新几内亚发生了 7.6 级地震</a>，因此导致了山体滑坡、道路断裂和互联网连接中断。当地时间 11:00（协调世界时 01:00）刚过，该国的流量就<a href="https://twitter.com/CloudflareRadar/status/1569114613874102277" target="_blank">下降了 26%</a>。如下图所示，到第二天流量仍然较低。当地提供商 PNG DataCo 的一则<a href="https://subtelforum.com/png-earthquake-causing-multiple-cable-disruptions/" target="_blank">公告</a>指出，此次地震“<em>影响到了莫尔兹比港和马当之间的 Kumul Submarine Cable Network (KSCN) Express Link 以及马当和悉尼之间的 PPC-1 电缆的运行。</em>”他们表示，这种破坏导致了明显的中断和服务性能降低。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/19-1.png" class="kg-image"></figure>
+	<h3 id="--10">墨西哥</h3>
+	<p>仅仅一个多星期后的当地时间 13:05（协调世界时 18:05），<a href="https://earthquake.usgs.gov/earthquakes/eventpage/us7000i9bw/executive" target="_blank">墨西哥科利马-米乔亚坎边境地区发生了 7.6 级地震</a>。如下图所示，就在地震发生后，受影响各州的<a href="https://twitter.com/CloudflareRadar/status/1571940927131762690" target="_blank">流量立即下降了 50% 以上</a>，但恢复得相当快，于当地时间 16:00（协调世界时 21:00）左右恢复到了正常水平。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/map8.png" class="kg-image">
+		<figcaption>地震震中，位于墨西哥阿吉利亚西南部 35 公里处（来源：<a href="https://www.google.com/maps/d/viewer?hl=en&amp;amp;mid=1bDYl6LXxpYdWT77uTl6mPV8rL82xPlE&amp;amp;ll=24.874121123408106%2C-101.16636131577195&amp;amp;z=6" target="_blank">地图数据 ©2022 INEGI</a>）</figcaption>
+	</figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/21.png" class="kg-image"></figure>
+	<h3 id="--11">菲奥娜飓风</h3>
+	<p>9 月下旬，几场大飓风在北美东海岸横冲直撞，不仅造成了重大破坏，还因此导致了互联网中断。9 月 18 日，因菲奥娜飓风造成的全岛停电中断了<a href="https://twitter.com/CloudflareRadar/status/1571648402206883840" target="_blank">波多黎各</a>的互联网连接。如下图所示，流量在 10 多天后才恢复到预期水平。当地电力公司 <a href="https://lumapr.com/" target="_blank">Luma Energy</a> 通过定期更新其 <a href="https://twitter.com/lumaenergypr" target="_blank">Twitter 信息</a>，让客户了解维修进展。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/22-1.png" class="kg-image"></figure>
+	<p>两天后，菲奥娜飓风猛烈袭击了<a href="https://www.accuweather.com/en/hurricane/hurricane-fionas-destructive-path-continued-through-turks-and-caicos/1250769" target="_blank">特克斯和凯科斯群岛</a>，不仅造成了洪水泛滥和重大损失，还中断了互联网连接。如下图所示，9 月 20 日当地时间 12:45（协调世界时 16:45）左右，流量逐步降至预期水平以下。互联网大约耗时一天才恢复连接，流量于 9 月 21 日当地时间 11:00（协调世界时 15:00）左右恢复到了预期水平。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/23.png" class="kg-image"></figure>
+	<p>菲奥娜飓风继续向北肆虐，最终于 9 月 24 日在加拿大新斯科舍省登陆，不仅造成了<a href="https://www.cbc.ca/news/canada/nova-scotia/hurricane-fiona-power-outages-1.6593360" target="_blank">停电</a>，还中断了互联网连接。如下图所示，受影响最严重的是新斯科舍省。随着新斯科舍省电力公司<a href="https://twitter.com/CloudflareRadar/status/1574376012669935616" target="_blank">竭力恢复面向客户的服务</a>，流量逐渐增加（如下图所示）。到 9 月 29 日，该岛的流量已恢复到正常水平。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/24.png" class="kg-image"></figure>
+	<h3 id="--12">伊恩飓风</h3>
+	<p>9 月 28 日，<a href="https://www.nesdis.noaa.gov/news/hurricane-ians-path-of-destruction" target="_blank">伊恩飓风在佛罗里达州登陆</a>，这是自 2018 年迈克尔飓风以来袭击佛罗里达州的最强飓风。由于风暴的破坏，超过 400 万用户遭遇了停电，大量城市发生了相关的互联网中断。受影响城市的流量<a href="https://twitter.com/CloudflareRadar/status/1575229448353349632" target="_blank">从当地时间 15:00（协调世界时 19:00）左右开始大幅下降</a>。如下图所示，恢复相当缓慢，两周多后流量水平仍未恢复到风暴前的水平。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/map9.png" class="kg-image">
+		<figcaption>佛罗里达州萨拉索塔、那不勒斯、迈尔斯堡、开普科勒尔、北港、夏洛特港、蓬塔戈达和马可岛（来源：<a href="https://www.google.com/maps/d/viewer?hl=en&amp;amp;mid=1e8BqAHV0GPEK06myVf8rV2UQtlh2DPI&amp;amp;ll=28.914560100096736%2C-84.18470328749999&amp;amp;z=7" target="_blank">地图数据 ©2022 Google, INEGI</a>）</figcaption>
+	</figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/26.png" class="kg-image"></figure>
+	<h2 id="--13">停电</h2>
+	<p>除了地震和飓风造成的停电外，还有许多其他原因导致的停电也在第三季度造成了长达数小时的互联网中断。</p>
+	<h3 id="--14">伊朗</h3>
+	<p><a href="https://twitter.com/CloudflareRadar/status/1551520794932641793?cf_target_id=D12BC40D082E7245487871829E3AD502" target="_blank">7 月 25 日</a>，伊朗一栋重要数据中心大楼<a href="https://www-khabaronline-ir.translate.goog/news/1654816/%D9%82%D8%B7%D8%B9%DB%8C-%DA%AF%D8%B3%D8%AA%D8%B1%D8%AF%D9%87-%D8%A7%DB%8C%D9%86%D8%AA%D8%B1%D9%86%D8%AA-%D8%AF%D8%B1-%D8%AA%D9%87%D8%B1%D8%A7%D9%86-%D8%B9%D9%84%D8%AA-%DA%86%DB%8C%D8%B3%D8%AA?_x_tr_sl=auto&amp;amp;_x_tr_tl=en&amp;amp;_x_tr_hl=en&amp;amp;_x_tr_pto=wapp" target="_blank">发生了停电</a>，继而中断了当地 ISP <a href="https://radar.cloudflare.com/as31549" target="_blank">Shatel</a> 客户的互联网连接。如下图所示，大约在当地时间 07:15（协调世界时 03:45），流量大幅下降。互联网随即开始恢复连接，到当地时间 08:30（协调世界时 05:00）时，流量已接近预期水平。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/27.png" class="kg-image"></figure>
+	<h3 id="--15">委内瑞拉</h3>
+	<p>电力问题经常中断委内瑞拉的互联网连接，独立的 <a href="https://twitter.com/vesinfiltro" target="_blank">@vesinfiltro</a> Twitter 帐户密切跟踪这些事件。其中一个实例发生在 <a href="https://twitter.com/CloudflareRadar/status/1557117592397045762" target="_blank">8 月 9 日</a>，当时电力问题中断了多个州的连接，包括梅里达、塔奇拉、巴里纳斯、波图格萨州和特鲁希略州。下图显示了两次中断的证据，第一次发生在当地时间 13:40（协调世界时 17:40）左右，第二次发生在几小时后，即从当地时间 16:15（协调世界时 20:15）左右开始。在这两种情况下，流量似乎都恢复得相当快。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/map10.png" class="kg-image">
+		<figcaption>委内瑞拉梅里达、塔奇拉、巴里纳斯、波图格萨州和特鲁希略州（来源：<a href="https://www.google.com/maps/d/viewer?hl=en&amp;amp;mid=1jv89y4KR_vhBpCIeEQ9CfVNa0zUlbMM&amp;amp;ll=10.168363241441726%2C-67.08172044374999&amp;amp;z=6" target="_blank">地图数据 ©2022 Google, INEGI</a>）</figcaption>
+	</figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/29.png" class="kg-image"></figure>
+	<h3 id="--16">阿曼</h3>
+	<p>9 月 5 日，<a href="https://www.reuters.com/article/oman-power/update-2-omans-muscat-other-areas-hit-by-power-blackout-idINL1N30C0R3" target="_blank">阿曼发生的停电</a>影响了能源、航空和电信服务。相关影响在下图中显而易见，如下图所示，当地时间接近 15:15（协调世界时 09:15）时开始停电，届时该国的流量<a href="https://twitter.com/CloudflareRadar/status/1566762145588695044" target="_blank">下降了约 60%</a>。虽然当局声称“<em>电力网络将在四小时内恢复</em>”，但流量直到第二天即 9 月 6 日当地时间 04:00（9 月 5 日协调世界时 22:00）才完全恢复到正常水平，耗时约 11 小时。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/30.png" class="kg-image"></figure>
+	<h3 id="--17">乌克兰</h3>
+	<p>在过去七个多月的乌克兰战争中，我们观察到，由于因战争引起的基础设施受损与停电导致了多起互联网中断事故。我们已经在<a href="https://blog.cloudflare.com/zh-cn/q2-2022-internet-disruption-summary-zh-cn/">第一</a>季度和<a href="https://blog.cloudflare.com/zh-cn/q2-2022-internet-disruption-summary-zh-cn/">第二</a>季度的总结博客文章中报道了这些中断事故，并将在发生类似中断事故时继续<a href="https://twitter.com/search?q=Ukraine%20(from%3Acloudflareradar)" target="_blank">在我们的 @CloudflareRadar Twitter 帐户上</a>进行报道。9 月 11 日、12 日和 13 日，<a href="https://twitter.com/CloudflareRadar/status/1569055256889147394" target="_blank">哈尔科夫发生了</a>因停电引起的互联网中断事故。</p>
+	<p>如下图所示，第一次中断开始于 9 月 11 日当地时间 20:00（协调世界时 17:00）左右。这种近乎彻底的中断持续了 12 个多小时，流量于 9 月 12 日当地时间 08:30（协调世界时 05:30）左右才恢复到正常水平。然而，当天晚些时候又发生了一次部分中断，流量在当地时间 13:30（协调世界时 10:30）时下降了 50%。这一次中断的持续时间明显短得多，大约一个小时后就开始了恢复。最后，9 月 13 日当地时间 08:00（协调世界时 05:00）发生了一次名义上的中断，此次中断持续了约 5 小时，造成了流量降至预期水平以下。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/31.png" class="kg-image"></figure>
+	<h2 id="--18">电缆损坏</h2>
+	<p>多年来，因地面和海底电缆损坏造成了多次互联网中断。最近，据称北溪海底天然气管道遭到破坏，由此引起了欧洲媒体（包括<a href="https://www.nzz.ch/technologie/nach-anschlag-auf-pipeline-europas-datenkabel-liegen-tief-im-meer-ungeschuetzt-vor-spionage-und-sabotage-ld.1705274?_x_tr_hl=" target="_blank">瑞士</a>和<a href="https://www.solutions-numeriques.com/apres-les-fuites-de-nord-stream-les-cables-internet-sous-marins-sont-ils-a-risques/" target="_blank">法国</a>出版物）日益关注海底电缆对互联网的重要性，同时也引起了<a href="https://www.europarl.europa.eu/RegData/etudes/IDAN/2022/702557/EXPO_IDA(2022)702557_EN.pdf" target="_blank">政策制定者日益关注</a>这些电缆系统的安全性及电缆损坏的潜在影响。然而，下面回顾的三起电缆损坏事故都与地面电缆有关。</p>
+	<h3 id="--19">伊朗</h3>
+	<p><a href="https://twitter.com/CloudflareRadar/status/1554061566059978753" target="_blank">8 月 1 日</a>，因<a href="https://twitter.com/SonitaSarabpour/status/1554045848689991680" target="_blank">电信检修孔起火</a>导致的<a href="https://twitter.com/Iran/status/1554074256127950850" target="_blank">“光纤电缆”问题</a>中断了多个网络提供商的连接，包括 <a href="https://radar.cloudflare.com/as31549" target="_blank">AS31549</a> (Aria Shatel)、<a href="https://radar.cloudflare.com/as58224" target="_blank">AS58224</a> (TIC)、<a href="https://radar.cloudflare.com/as43754" target="_blank">AS43754</a> (Asiatech)、<a href="https://radar.cloudflare.com/as44244" target="_blank">AS44244</a> (Irancell) 和 <a href="https://radar.cloudflare.com/as197207" target="_blank">AS197207</a> (MCCI)。此次中断开始于当地时间 12:15（协调世界时 08:45）左右，持续了约 4 小时。由于此次中断影响了许多大型无线和有线网络，因此国家层面也受到了明显的影响（如下图所示）。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/32.png" class="kg-image"></figure>
+	<h3 id="--20">巴基斯坦</h3>
+	<p>8 月，由于<a href="https://www.reuters.com/world/asia-pacific/key-pakistani-internet-providers-report-outage-2022-08-19/" target="_blank">大雨和洪水</a>导致的电缆损坏在巴基斯坦造成了几次互联网中断。第一次明显的中断开始于 <a href="https://twitter.com/CloudflareRadar/status/1560585712306892800" target="_blank">8 月 19 日</a>当地时间 07:00（协调世界时 02:00）左右，持续时间超过 6.5 小时。<a href="https://twitter.com/CloudflareRadar/status/1561785560317976576" target="_blank">8 月 22 日</a>当地时间 22:50（协调世界时 17:50）又发生了另一次重大中断，流量在 8 月 23 日当地时间 05:30（协调世界时 00:30）<a href="https://twitter.com/CloudflareRadar/status/1561890477892407297" target="_blank">再次下降</a>。第二次更显著的流量下降很短暂，仅持续了 45 分钟，之后流量就开始了恢复。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/33.png" class="kg-image"></figure>
+	<h3 id="--21">海地</h3>
+	<p>在对燃料价格上涨的抗议中，海地实施的光纤切断措施导致多家网络供应商的互联网中断。从 <a href="https://twitter.com/CloudflareRadar/status/1570389349723684865" target="_blank">9 月</a> 14 日当地时间 15:00（协调世界时 19:00）开始，<a href="https://radar.cloudflare.com/as27759" target="_blank">AS27759</a>（通往海地）的流量降至零。据<a href="https://twitter.com/AccessHaiti1/status/1570177309247938562" target="_blank">该供应商的一篇 Twitter 文章</a>（译文）透露，在该国各个地区切断了好几条光纤电缆，由此造成的道路堵塞使得他们的技术人员“很难”抵达问题地区。技术人员最终对光纤电缆进行了维修，流量于 <a href="https://twitter.com/CloudflareRadar/status/1570455180684001280" target="_blank">9 月 15 日</a>当地时间 08:30（协调世界时 12:30）左右再次逐步增加，如下图所示。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/34.png" class="kg-image"></figure>
+	<p>Access Haiti 为 <a href="https://radar.cloudflare.com/as27774" target="_blank">AS27774</a>（海地网络集团）提供互联网连接（作为“上游”提供商），因此光纤切断也影响了后者的连接，继而造成了下图所示的中断。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/35.png" class="kg-image"></figure>
+	<h2 id="--22">技术问题</h2>
+	<p>作为一个标题，“技术问题”可以是一个全称，是指多种类型的问题，包括错误配置和路由问题。然而，它有时也是政府或电信公司对所发生的互联网中断给出的官方解释。</p>
+	<h3 id="rogers">Rogers</h3>
+	<p>毫无争论，今年迄今为止最重大的互联网中断发生在 <a href="https://radar.cloudflare.com/as812" target="_blank">AS812</a> (Rogers)——加拿大最大的互联网服务提供商之一。7 月 8 日协调世界时 08:45 左右，流量几乎完全丧失（如下图所示）。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/36.png" class="kg-image"></figure>
+	<p>如下图所示，中断期间的网络流量很少，而且流量耗时约 24 小时才恢复到正常水平。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/37.png" class="kg-image"></figure>
+	<p>Rogers 首席执行官发布的一则<a href="https://about.rogers.com/news-ideas/a-message-from-rogers-president-and-ceo/" target="_blank">通知</a>解释说：“<em>我们现在认为，我们已经将中断原因缩小到了我们对核心网络进行维护更新后发生的网络系统故障，这些故障导致我们的一些路由器在周五清晨无法正常运行。随后我们断开了特定设备并重新定向了流量，继而随着我们管理的流量恢复到了正常水平，我们的网络和服务经过一段时间后也恢复正常了。</em>”有 Cloudflare <a href="https://blog.cloudflare.com/cloudflares-view-of-the-rogers-communications-outage-in-canada/">博客文章</a>实时报道了此次 Rogers 中断，重点介绍了相关的 BGP 活动和流量的少量增加。</p>
+	<h3 id="--23">乍得</h3>
+	<p><a href="https://twitter.com/CloudflareRadar/status/1558084164389404674" target="_blank">8 月 12 日</a>当地时间 10:45 至 15:00（协调世界时 09:45 至 14:00），乍得发生了一起长达 4 小时几近彻底的互联网中断事故。乍得当局表示，这起中断事故是由于<a href="https://twitter.com/CloudflareRadar/status/1558131821438722048" target="_blank">苏达恰德</a>与喀麦隆和苏丹之间的网络建立连接时出现的<a href="https://www.sudachad.com/" target="_blank">“技术问题”</a>引起的。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/38.png" class="kg-image"></figure>
+	<h2 id="--24">未知</h2>
+	<p>在许多情况下，由于服务提供商、政府官员作出的声明或媒体对相关事件的报道，所发生的互联网中断都有其根本原因。然而，有些中断则无法找到公开解释或相关事件。</p>
+	<p><a href="https://twitter.com/CloudflareRadar/status/1557764761340858373" target="_blank">8 月 11 日</a>，一次长达数小时的中断对美国电信运营商 Centurylink 多个州的客户造成了一定的影响，包括科罗拉多、爱荷华、密苏里、蒙大拿、新墨西哥、犹他和怀俄明（如下图所示）。从相关自主系统 <a href="https://radar.cloudflare.com/as209" target="_blank">AS209</a> 的流量图表中也可以看出此次中断的影响。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/39.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/40.png" class="kg-image"></figure>
+	<h3 id="starlink">Starlink</h3>
+	<p><a href="https://twitter.com/CloudflareRadar/status/1564612633172611072" target="_blank">8 月 30 日</a>，卫星互联网提供商于协调世界时 06:30-10:30 遭遇了全球服务中断，如下图所示。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/41.png" class="kg-image"></figure>
+	<h2 id="--25">总结</h2>
+	<p>在 9 月底举办的 Cloudflare 生日周期间，我们<a href="https://blog.cloudflare.com/announcing-cloudflare-radar-outage-center/">推出了 Cloudflare Radar Outage Center (CROC)</a>。<a href="https://radar.cloudflare.com/outage-center" target="_blank">CROC</a> 是我们新设 <a href="https://radar.cloudflare.com/" target="_blank">Radar 2.0</a> 网站的一个栏目，用于存档所发生的互联网中断的相关信息。为 CROC 提供技术支持的基础数据也可以通过 <a href="https://api.cloudflare.com/#radar-annotations-get-outages-annotations" target="_blank">API</a> 获取，从而使有关各方能够将数据纳入其自有工具、网站和应用程序。有关所发生互联网中断的定期更新和其他互联网趋势，请在 Twitter 上关注 <a href="https://twitter.com/CloudflareRadar" target="_blank">@CloudflareRadar</a>。</p>
+	<h2 id="-cloudflare-tv-"><strong>在 Cloudflare TV 上观看</strong></h2><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/ca2fe012d19384b80f8adaf8228ce781/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Fca2fe012d19384b80f8adaf8228ce781%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D3s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
+</div>

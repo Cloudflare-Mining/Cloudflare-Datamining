@@ -1,0 +1,29 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image1-21.png" class="kg-image" alt="Next generation intrusion detection: an update on Cloudflare’s IDS capabilities"></figure>
+	<p>理想情况下，入侵检测应该应用于您的整个网络中，包括数据中心、云资产和分支机构。它不会影响您的流量性能，也没有容量限制。今天，我们隆重宣布推出 Cloudflare 的入侵检测功能的封测版，离实现这一目标更进一步：实时监测所有网络流量中的威胁，以服务形式提供，没有传统硬件方法的限制。</p>
+	<p>Cloudflare 的网络服务是 Cloudflare One 的组成部分，帮助连接和保护您的整个<a href="https://www.cloudflare.com/learning/network-layer/enterprise-networking/" target="_blank">企业网络</a>，包括数据中心、云或混合网络，抵御 DDoS 攻击和其他恶意流量。您可以应用<a href="https://blog.cloudflare.com/zh-cn/replace-your-hardware-firewalls-with-cloudflare-one-zh-cn/">防火墙规则</a>来阻止有害流量或采用积极的安全模式，也可以将自定义或受管 IP 列表集成到防火墙策略中，以阻止与已知恶意软件、自动程序或匿名程序有关的流量。我们新的入侵检测系统 (IDS) 功能通过主动监测流量中各种已知的威胁特征，完善了这些关键的安全控制。</p>
+	<h2 id="-ids-">什么是 IDS？</h2>
+	<p>入侵检测系统传统上是以独立设备部署，但经常作为功能整合在更现代或更高端的防火墙中。它们扩大了传统防火墙（以阻止<em>已知</em>的有害流量进入您的网络为重点）的安全覆盖范围，根据更大的威胁数据库分析流量，检测各种复杂的攻击，例如勒索软件、数据泄漏和依据网络流量中的特征或“指纹”扫描网络。许多 IDS 还包括异常检测，根据基准来监测活动，以发现可能表明恶意活动的意外流量模式。(如有兴趣了解网络防火墙功能的演变，请点击<a href="https://blog.cloudflare.com/zh-cn/replace-your-hardware-firewalls-with-cloudflare-one-zh-cn/">此处</a>，我们在文中深入探讨了该主题）。</p>
+	<h2 id="-ids--1">用户在使用现有 IDS 解决方案时遇到了哪些问题？</h2>
+	<p>我们采访了大量客户，了解了他们部署 IDS 的经验，及其希望我们解决的痛点。客户介绍了我们常听的其他基于硬件的安全解决方案的全部历史问题，包括容量规划，地点规划和通过中央位置监控的回传流量，安装、维护和升级的停机时间，以及流量较大时容易出现拥堵或故障（例如 DDoS 攻击）。</p>
+	<p>客户也一直表示难以在<a href="https://www.cloudflare.com/learning/network-layer/network-security/" target="_blank">安全性</a>和网络流量性能之间做出取舍。一位网络工程师解释道：</p>
+	<blockquote><em>“我知道，我的安全团队因此讨厌我，但我不能让他们在内部防火墙上启用 IDS 功能——在我的团队测试中，这种做法将吞吐量减少了近三分之一。我知道我们现在的安全性存在缺口，我们正在寻找替代方法来让 IDS 保护我们的流量，但我不可能为了阻止一些理论上的有害流量而减慢大家的网速，这是不合理的。"</em></blockquote>
+	<p>最后，那些选择接受性能下降并投资 IDS 设备的客户表示，启用 IDS 后，他们经常将进入其 SOC 的警报静音或忽略。由于互联网上有大量噪音，还有错过重要信号的潜在风险，IDS 最终会产生大量误报或无法采取行动的通知。这会导致繁忙的 SOC 团队产生警报疲劳，并最终忽略了埋藏在噪音中的潜在重要信号。</p>
+	<h2 id="cloudflare-">Cloudflare 如何解决这些问题？</h2>
+	<p>我们相信有更加优雅、高效且有效的方式来监测所有网络流量中的威胁，且不会导致性能瓶颈，也不会让您的团队为无法采取行动的警报而焦头烂额。过去一年半中，我们从客户反馈中学习，尝试了不同的技术方法，最终开发了一个无需艰难取舍的解决方案。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/unnamed-2.png" class="kg-image"></figure>
+	<h3 id="-">适用于所有流量的统一界面</h3>
+	<p>Cloudflare 的 IDS 功能可在您的所有网络流量（任何 IP 端口或协议）上运行，无论流向<a href="https://developers.cloudflare.com/byoip/" target="_blank">我们代表您宣传的 IP</a>、<a href="https://blog.cloudflare.com/zh-cn/protect-all-network-traffic-zh-cn/">我们租赁给您的 IP</a>，还是<a href="https://www.cloudflare.com/magic-wan/" target="_blank">您的专用网络中</a>的流量（即将可用）。您可以在一个地方对整个网络实施一致的监测和安全控制。</p>
+	<h3 id="--1">不再为硬件发愁</h3>
+	<p>与我们所有的安全功能一样，我们以软件形式从头开始构建 IDS，将它部署在 Cloudflare 全球 Anycast 网络的每台服务器上。这意味着：</p>
+	<ul>
+		<li><strong>不再需要容量规划：</strong>现在，Cloudflare 的整个全球网络容量即是您的 IDS 容量，目前为 142 Tbps，而且还在继续增加。</li>
+		<li><strong>不再需要地点规划：</strong>不再需要选择区域，将流量回传到中央位置，或部署主设备和备份设备，因为每台服务器上都运行了我们的 IDS 软件，流量会自动导入离其源站最近的网络位置，冗余和故障转移也是内置其中。</li>
+		<li><strong>不再有维护停机：</strong>和我们所有产品一样，对 Cloudflare IDS 功能的改进会持续部署在我们的全球网络中。</li>
+	</ul>
+	<h3 id="--2">高度互联的全球网络的威胁情报</h3>
+	<p>攻击环境不断演变，您需要部署领先的 IDS。Cloudflare 的 IDS 是我们从头编写和维护的软件，因此，我们能够将 Cloudflare 上 2000 多万个互联网属性的威胁情报不断反馈到我们的策略中，让您免受已知和未知攻击模式的影响。</p>
+	<p>我们的威胁情报整合了安全社区维护和信任的开源馈送（例如 <a href="https://suricata.io/" target="_blank">Suricata</a> 威胁特征），以及我们从独特的有利角度（作为一个<a href="https://www.cloudflare.com/network/" target="_blank">高度互联</a>、承担着全球相当大比例的互联网流量的网络）收集的信息。我们不仅通过 <a href="https://radar.cloudflare.com/" target="_blank">Cloudflare Radar</a> 等工具公开分享这些见解；我们还将这些见解反馈到我们的安全工具中，包括 IDS，以便尽快保护我们的客户抵御新出现的威胁。Cloudflare 最新宣布成立的<a href="https://blog.cloudflare.com/zh-cn/introducing-cloudforce-one-threat-operations-and-threat-research-zh-cn/">威胁情报团队</a>将进一步强化这些功能，应用额外的专业知识来理解我们的网络数据，提供见解。</p>
+	<h2 id="--3">想立即开始使用？</h2>
+	<p><a href="https://developers.cloudflare.com/magic-firewall/plans/#advanced-features" target="_blank">Advanced Magic Firewall</a> 客户现在即可使用封测版体验这些功能。请联系您的客户团队了解更多信息，或者立即开始使用。我们还将继续开发这些功能，非常期待您的反馈！</p>
+</div>

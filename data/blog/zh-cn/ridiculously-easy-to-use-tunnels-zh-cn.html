@@ -1,0 +1,36 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-106.png" class="kg-image" alt="Ridiculously easy to use Tunnels"></figure>
+	<p>Cloudflare 于十多年前在 <a href="https://youtu.be/XeKWeBw1R5A?t=264" target="_blank">TechCrunch Disrupt</a> 大会上推出。当时，我们提到了 Cloudflare 有别于传统安全供应商的三个核心原则：更安全、更高性能和极其简单易用。简单易用是我们每一个决定的核心原则，对 Cloudflare Tunnel 也不例外。</p>
+	<p>因此，今天我们隆重宣布创建隧道的新方案，以前需要在终端中使用多达 14 条命令，现在可直接通过 Zero Trust 仪表板完成，<strong>仅需三步，非常简单</strong>。</p>
+	<p>如果无需继续了解，请跳转到<a href="https://dash.cloudflare.com/sign-up/teams" target="_blank">注册/团队</a>，断开 VPN，开始使用 Cloudflare 建立专用网络。如果有兴趣进一步了解我们推出该解决方案的动机和下一步构建计划，请继续浏览下文。</p>
+	<h2 id="-">我们的连接器</h2>
+	<p>Cloudflare Tunnel 是将您的基础设施连接到 Cloudflare 最简单的方法，无论是本地 HTTP 服务器、Kubernetes 集群支持的 Web 服务，还是专用网络网段。这种连接是通过我们的轻量级<a href="https://github.com/cloudflare/cloudflared/blob/master/LICENSE" target="_blank">开源连接器</a> <code>cloudflared</code> 实现的。我们的连接器可用率高，因为经过精心设计，在 Cloudflare 的网络中创建了四个长期连接与两个不同的数据中心相连。因此，无论是某个连接、服务器还是数据中心发生故障，您的网络仍可正常运行。用户还可以通过部署多个连接器实例<a href="https://blog.cloudflare.com/highly-available-and-highly-scalable-cloudflare-tunnels/">来保持其网络冗余</a>，以防某个主机因故发生故障。</p>
+	<p>以前，部署我们的连接器的最佳方式是通过 <code>cloudflared</code> CLI。今天我们隆重宣布推出一个新的解决方案，可以直接通过 Zero Trust 仪表板远程创建、部署和管理隧道及其配置。利用这个新方案，我们的客户只需 <strong>15 分钟甚至更短时间</strong>即可为员工提供 <a href="https://www.cloudflare.com/learning/access-management/what-is-ztna/" target="_blank">Zero Trust 网络访问</a>。</p>
+	<h2 id="cli-gui-">CLI 还是 GUI？何不两者兼备</h2>
+	<p>命令行界面 (CLI) 可以出色地执行其任务。用户可以在其控制台或终端传递命令，并直接与操作系统互动。这种精准性让用户可以精确控制其与指定程序或服务之间可能的互动，而这种精确控制必不可少。</p>
+	<p>但它们还有一条比较陡峭的学习曲线，对新用户来说可能不太直观。这意味着，用户需要仔细研究这些工具后才能尝试使用。许多用户没心思去仔细研究，只是测试了一个程序，就觉得这些工具不能完美解决他们的问题。</p>
+	<p>相反，图形用户界面 (GUI)（例如我们的 Zero Trust 仪表板）则非常灵活，可以边用边学。几乎不需要对程序做任何了解即可开始使用。用户可以通过直观的引导，找到想要的结果，只需要在知道此方案可以解决其问题<em>后</em>，研究为何以及如何完成某些步骤。</p>
+	<p>我们第一次发布 Cloudflare Tunnel 时，只有不到十个不同的命令。现在我们拥有的远不止这么多，还有无数的新用例可以调用。对于刚刚发现我们产品的用户来说，过去容易浏览的 CLI 库变得更加麻烦了。</p>
+	<p>简单的打字错误让一些用户产生了巨大的挫败感。想象一下，例如，一个用户需要为其专用网络隧道公布 IP 路由。要记住 <code>cloudflared tunnel ip add &lt;IP/CIDR&gt;</code> 可能非常困难。通过 Zero Trust 仪表板，您可以忘记关于 CLI 库语义的所有内容。只需要知道您的隧道名称和希望通过 Cloudflare 连接的网络范围。只需输入 <code>my-private-net</code>（或您想取的名称），复制安装脚本，然后输入您的网络范围。就这么简单。如果不小心输入了一个无效 IP 或 CIDR 块，仪表板将提供一个可操作、人类可识别的错误，帮助您纠正错误。</p>
+	<p>无论更喜欢 CLI 还是 GUI，最终都是使用不同的方案获得相同的结果。两者各有所长，最好是一个解决方案即可获得两者的最佳效果。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image2-92.png" class="kg-image"></figure>
+	<h2 id="--1">消除摩擦点</h2>
+	<p>隧道通常需要一个本地管理的配置文件将请求路由到合适的目的地。这个配置文件并非默认创建的，但几乎每个用例都需要创建。这意味着用户需要使用<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/configuration/configuration-file/" target="_blank">开发人员文档</a>中的例子，使用命令行来创建和填充配置文件。随着功能不断添加到 <code>cloudflared</code> 中，配置文件变得难以管理。了解需要加入的参数和值及其添加位置已经成为用户的负担。这些问题往往难以用肉眼发现，用户排除故障的过程也很痛苦。</p>
+	<p>我们还想在最新版本中改进隧道权限的概念。以前，用户需要管理<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-permissions/" target="_blank">两种不同的令牌</a>：<code>cert.pem</code> 和 <code>Tunnel_UUID.json</code> 文件。简而言之，<code>cert.pem</code> 是在 <code>cloudflared tunnel login</code> 命令期间颁发的，让用户可以通过 CLI 为 Cloudflare 账户创建、删除和罗列隧道。<code>Tunnel_UUID.json</code> 是在 <code>cloudflared tunnel create &lt;NAME&gt;</code> 命令期间颁发的，让用户可以运行指定隧道。但现在可以直接通过 Cloudflare 账户在 Zero Trust 仪表板中创建隧道，因此，创建隧道之前不再需要验证您的源站。最初登录 Cloudflare 时已经执行了这一操作。</p>
+	<p>利用今天发布的新版本，用户不再需要在本地管理配置文件或令牌。相反，Cloudflare 将根据您在 Zero Trust 仪表板中提供的输入，为您进行管理。如果输错了主机名或服务，用户在尝试运行隧道之前就会发现，从而节省了时间，减少了麻烦。我们还会为您管理令牌，未来如需刷新令牌，我们也会代表您轮换令牌。</p>
+	<h2 id="-zero-trust">客户端或无客户端 Zero Trust</h2>
+	<p>我们通常将 Cloudflare Tunnel 称为连接我们的 Zero Trust 平台的入口。连接之后，您可以将其与 WARP、Gateway 或 Access 无缝配对，利用 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trust</a> 安全策略保护您的资源，根据组织中的设备和基于身份的规则验证每个请求。</p>
+	<h3 id="-zero-trust-1">无客户端 Zero Trust</h3>
+	<p>用户可以通过将 Cloudflare Tunnel 与 Access 配对，实现无客户端 Zero Trust 部署。在这种模式下，用户将遵循 Zero Trust 仪表板中规定的流程。首先，用户给隧道命名。然后，用户将得到一个根据源站的操作系统和系统架构量身定做的单一安装脚本。最后，用户为其隧道创建公共主机名或专用网络路由。如前所述，这一步不再需要配置文件。公共主机名值现将取代远程管理隧道的入口规则。只需添加您同意通过其来访问您的私有资源的公共主机名。然后，将主机名值映射到您的源服务器后面的服务。最后，创建一个 Cloudflare Access 策略，确保只有符合要求的用户可以访问这些资源。</p>
+	<h3 id="-zero-trust-2">基于客户端的 Zero Trust</h3>
+	<p>另外，如果用户更愿意采用基于客户端的 Zero Trust 方法，可以将 Cloudflare Tunnel 与 WARP 和 Gateway 配对。流程与上述步骤大致相同，只是不需要创建一个公共主机名，而是添加一个专用网络。这一步取代了通过 CLI 库公布 <code>cloudflared tunnel route ip add &lt;IP/CIDR&gt;</code> 这一步。然后，用户可以前往 Zero Trust 仪表板的 Cloudflare Gateway 部分，创建两个规则来测试专用网络的连接情况，然后开始使用。</p>
+	<ol>
+		<li>名称：允许 &lt;current user&gt; 访问 &lt;IP/CIDR&gt;<br>策略：目的地 IP 属于 &lt;IP/CIDR&gt; 且用户电子邮件为 &lt;Current User Email&gt;<br>操作：允许</li>
+		<li>名称：默认拒绝访问 &lt;IP/CIDR&gt;<br>策略：目的地 IP 属于 &lt;IP/CIDR&gt;<br>操作：阻止</li>
+	</ol>
+	<p>值得注意的是，无论采用哪种方法，大多数用例都只需要一条单一隧道。一条隧道可以同时公布公共主机名和专用网络，不会发生冲突。这有助于简化编排。事实上，我们建议从尽可能少的隧道开始，使用副本而不是另外添加隧道来处理冗余。当然，这取决于每个用户的环境，但一般而言，明智的做法是先建立一条隧道，仅在需要保持网络或服务在逻辑上分离时才创建更多隧道。</p>
+	<h2 id="--2">下一步</h2>
+	<p>自我们推出 Cloudflare Tunnel 以来，已经创建了数十万条隧道。那是许多需要迁移到我们新的编排方法的隧道。我们希望这个过程流畅顺利，没有摩擦。因此我们目前正在构建相关工具，希望将本地管理的配置无缝迁移到 Cloudflare 管理的配置。这个工具将在几周后推出。</p>
+	<p>刚推出时，我们也不会支持<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/configuration/arguments/" target="_blank">开发人员文档</a>中列出的全局配置选项。这些参数需要逐一支持，我们后续将逐步添加这些命令。最值得注意的是，这意味着，调整 <code>cloudflared</code> 日志级别的最佳方法仍然是修改 Cloudflare Tunnel 服务启动命令，然后在服务运行命令中附加 --<code>loglevel</code> 标志。这将是发布迁移向导后的优先事项。</p>
+	<p>如您所见，我们对远程隧道管理的未来有着宏大的计划，将在前进过程中继续投资。立即了解并通过仪表板<a href="https://dash.cloudflare.com/sign-up/teams" target="_blank">部署第一个 Cloudflare Tunnel</a>，仅需三步，非常简单。</p>
+</div>

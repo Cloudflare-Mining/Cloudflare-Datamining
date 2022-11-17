@@ -1,0 +1,37 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image2-40.png" class="kg-image" alt="Bringing Zero Trust to mobile network operators"></figure>
+	<p>在 Cloudflare，面对迅速到来的 5G 未来，我们备感兴奋。无论身在何处，我们都将可以访问高吞吐量和低延迟的无线网络。互联网将给人即时连接的体验，我们将为这种连接性寻找新的用途，例如传感器，帮助我们提高生产力和能源效率。然而，这种连接性不一定要牺牲安全性——最近出版的<a href="https://www.wired.com/story/5g-api-flaws/" target="_blank">这篇</a>《连线》文章提出了这一问题。今天，我们宣布为移动网络创建一个新的合作计划——Zero Trust for Mobile Operators，共同解决最大的安全和性能挑战。</p>
+	<h3 id="sase-for-mobile-networks">SASE for Mobile Networks</h3>
+	<p>每个网络各不相同。管理企业网络复杂的安全环境，关键是在工具箱中备有大量工具。这些功能大多属于行业流行语 <a href="https://www.cloudflare.com/learning/access-management/what-is-sase/" target="_blank">SASE</a>（安全访问服务边缘）的范畴。Cloudflare 的 SASE 产品是 Cloudflare One，一个面向网络运营商的综合平台，包括：</p>
+	<ul>
+		<li>Magic WAN，为您的数据中心、分支机构和云计算 VPC 提供安全的网络即服务 (NaaS) 连接，并与您的传统 MPLS 网络集成。</li>
+		<li>Cloudflare Access，一项 <a href="https://www.cloudflare.com/learning/access-management/what-is-ztna/" target="_blank">Zero Trust 网络访问</a> (ZTNA) 服务，要求严格验证每个用户和每台设备，然后再授权他们访问内部资源。</li>
+		<li>我们的安全 Web 网关（SWG）在公司网络和互联网之间运行，以执行安全策略并保护公司数据。</li>
+		<li>云访问安全代理，监控网络和外部云服务的安全威胁。</li>
+		<li>Cloudflare Area 1，一个电子邮件威胁检测工具，用于扫描电子邮件中的网络钓鱼、恶意软件和其他威胁。</li>
+	</ul>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image1-44.png" class="kg-image"></figure>
+	<p>很高兴能与移动网络运营商合作，共同提供这些服务，因为我们的网络和服务极具互补性。我们首先思考一下 SD-WAN（软件定义广域网）连接，这是 SASE 框架大部分内容的基础。例如，想象一下，一位居家办公的开发人员使用移动网络运营商 (MNO) 的物联网 API 开发一个解决方案。也许他们正在开发软件来跟踪苏打水机中剩余饮料的数量，或想跟踪货车的路线。</p>
+	<p>居家办公的开发人员及其各种设备均应该安地在同一个广域网上运行，且成本合理。Cloudflare 提供的是可编程的软件层，能够实现这种安全连接。开发人员及其雇主仍然需要在家里连接互联网，各种设备也必须联网。如果没有企业连接，安全连接您的各种设备就毫无用处，而企业连接只有在安全连接的基础上运行才更有价值。他们是绝佳搭档，完美互补。</p>
+	<p>建立连接后，我们就可以在 Zero Trust 平台上分层，确保每个用户均只能访问其获得明确授权的资源。无论何时，如果用户想要访问一个受保护的资源（例如，通过 SSH 访问云服务），就会要求他们使用单点登录凭证验证身份，方可获得访问权限。我们使用的网络在不断发展，并变得更加分散。一个 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trust 架构</a>既可促进这种网络发展，又能防御已知风险。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/9FF77BA6-4FFD-4FE4-9510-BF0831F1EFFC.png" class="kg-image"></figure>
+	<h3 id="-">边缘计算</h3>
+	<p>鉴于低延迟 5G 网络的潜力，消费者和运营商都在期待“杀手级 5G 应用”的诞生。它也许是自动驾驶汽车和虚拟现实，但我们愿赌一场更为安静的革命：将计算（即服务器响应请求所需的“工作”）从大型区域数据中心转移到小型城市级数据中心，将计算能力嵌入无线网络，最终甚至转移到基站。</p>
+	<p>Cloudflare 的边缘计算平台 Workers 正是如此——在边缘执行代码。其设计非常简单。开发人员在建立支持其产品或服务的 API 时，不想操心地区和可用区的问题。利用 Workers，开发人员可以编写他们希望在边缘执行的代码，进行部署，几秒钟内便可在全球每个 Cloudflare 数据中心运行。</p>
+	<p>我们已经见证了一些工作负载，还在期待更多，包括：</p>
+	<ul>
+		<li>IoT（物联网）公司直接在边缘实施复杂的设备逻辑和安全功能，让他们可以在不增加设备成本或延迟的情况下增加尖端功能。</li>
+		<li>电子商务平台将访客的定制资产存储、缓存在离访客较近的数据中心，以改善客户体验，提高转换率。</li>
+		<li>金融数据平台，包括新的 Web3 播放器，为其用户提供近乎实时的信息和交易。</li>
+		<li>A/B 测试和实验在边缘运行，不会增加延迟或导致客户端的依赖性。</li>
+		<li>跟踪用户运动和健康统计数据的健身设备可以卸载计算量大的工作负载，同时保持良好的速度/延迟。</li>
+		<li>零售应用程序为每位客户提供快速服务和定制体验，而无需昂贵的本地解决方案。</li>
+	</ul>
+	<p>Cloudflare 案例研究<a href="https://www.cloudflare.com/case-studies?product=Workers" target="_blank">部分</a>列举了 <a href="https://www.cloudflare.com/case-studies/ncr/" target="_blank">NCR</a>、<a href="https://www.cloudflare.com/case-studies/edgemesh/" target="_blank">Edgemesh</a>、<a href="https://www.cloudflare.com/case-studies/blockfi/" target="_blank">BlockFi</a> 及其他公司的例子，说明他们是如何使用 Workers 平台的。这些示例确实令人兴奋，但我们最兴奋的是为新的创新提供了平台。</p>
+	<p>您可能知道，上周我们<a href="https://blog.cloudflare.com/workers-for-platforms-ga/">宣布了</a> <a href="https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/" target="_blank">Workers for Platforms</a>，现在已经普遍可用。Workers for Platforms 是一个类似于保护伞的结构，让上级组织可以为其客户启用 Workers。作为 MNO，您的重点是让设备可以向客户发送通信。对于物联网用例，发送数据是第一步，但这种连接的巨大潜力在于其促成的各种应用。利用 Workers for Platforms，MNO 可以提供能让客户在边缘获得计算能力的嵌入式产品。</p>
+	<h3 id="--1">网络基础设施</h3>
+	<p>移动网络与 Cloudflare 之间的互补性网络带来了另一个机会。用户与互联网互动时，影响连接速度最重要的因素之一是手机与尝试访问的内容和服务之间的物理距离。如果丹佛的用户的数据请求需要蜿蜒传输到达拉斯、圣何塞或芝加哥等主要互联网中心（然后再原路返回！），速度就会很慢。但是，如果 MNO 能够在丹佛本地连接服务，连接速度就会快很多。</p>
+	<p>新的 5G 网络令人兴奋的进展之一是 MNO 能够做更多“本地突破”。许多 MNO 正在向云原生和分布式无线接入网络 (RAN) 发展，这为移动和扩大分组核心网提供了更多灵活性。这些分组核心网是移动网络的核心，用户的所有数据都会流经其中一个。</p>
+	<p>Cloudflare 在全球超过 275 个城市设有数据中心，用户访问我们的服务时，永远不必等待很长时间。但我们还可以更进一步。有时，我们的服务是嵌入在 MNO 或 ISP 自己的网络中。将用户连接到设备、授权连接和安全传输数据的流量均在 MNO 的网络边界内，永远不需要接触公共互联网，不会产生额外的延迟或以其他方式损害用户性能。</p>
+	<p>我们很高兴能与移动网络合作，因为，我们的客户拥有出色的企业连接时，我们的安全服务效果最好。同样，我们认为，以我们的安全软件为基础，移动网络可以为客户提供更多价值。关于如何将 Cloudflare One 整合到您的产品中，请发送电子邮件至 mobile-operator-program@cloudflare.com，我们将与您联系。</p>
+</div>

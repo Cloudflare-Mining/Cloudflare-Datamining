@@ -1,0 +1,29 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image3-22.png" class="kg-image" alt="The R2 Super Slurper will enable anyone to bring any amount of data into R2 with minimal effort and risk"></figure>
+	<p>R2 是兼容 S3 的全局分布式对象存储，允许开发人员存储大量非结构化数据，无需负担其他提供商通常会带来的高昂的出口带宽费用。</p>
+	<p>要享受这一出口自由，您需要开始计划将您存储在别处的所有这些数据发送到 R2。您可能想一次性全部发送，尽快迁移尽可能多的数据，同时确保数据一致性。或者，您是否更倾向于将数据缓慢迁移至 R2，将您的读取操作逐渐从旧提供商转移到 R2？到时候再决定是弃用旧存储还是留作 R2 中新对象的备份？</p>
+	<p>此迁移操作的架构和实施有多种选项，但将 TB 级数据从一个云存储提供商迁移至另一个提供商总是会带来问题，总是需要进行规划，并可能需要人员配备。</p>
+	<p>而这些在以前是很难实现的，但如今有轻松的解决办法了。</p>
+	<p>今天我们隆重推出 R2 Super Slurper 这项功能，支持您将所有数据通过一个巨大的 slurp 迁移至 R2，或一口一口进行迁移，所有这些都通过友好、直观的 UI 和 API 进行。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image2-29.png" class="kg-image"></figure>
+	<h2 id="-r2-super-slurper-">第一步：R2 Super Slurper 封闭测试</h2>
+	<h3 id="-">一次性批量</h3>
+	<p>在 R2 Super Slurper 的第一次迭代，您就可以针对 S3 存储桶，将您在其中存储的对象导入 R2 存储桶。这是简单的一次性导入过程，涵盖了最常见的场景。指向您的现有 S3 源，授予 R2 Super Slurper 权限以读取您想迁移的对象，然后一个异步作业将负责处理其余操作。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-34.png" class="kg-image" alt="an active migration implies a big-bang of data movement from your old buckets to R2"></figure>
+	<p>您还可以保存用于访问源存储桶的定义和凭证，以便可以在新操作中迁移存储桶内的不同文件夹，而不必反复重新定义 URL 和凭证。单凭此操作，您就不必使用您想验证一致性的许多路径编写各种各样的脚本来遍历存储桶。在测试阶段，我们会利用用户反馈信息来演变 R2 Super Slurper，直至任何人只需点击几个按钮就能实现完全一致的超级 slurp。</p>
+	<h3 id="--1">自动一口一口迁移</h3>
+	<p>其他未来开发工作包括自动一口一口迁移，用于在最终用户请求时递增式将对象复制到 R2。它允许您在对象迁移的同时开始从 R2 提供这些对象，立即节省开支。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image4-16.png" class="kg-image" alt="a passive migration strategy involves always serving through Cloudflare, but getting the file from an external repository on the first time it’s requested"></figure>
+	<p>请求和对象迁移的流程如下所示：</p>
+	<ul>
+		<li><strong>检查对象</strong> — 请求到达 Cloudflare <strong>(1)</strong>，然后我们在 R2 存储桶中检查所请求的对象 <strong>(2)</strong>。如果该对象存在，R2 将提供该对象 <strong>(3)</strong>。</li>
+		<li><strong>复制对象 </strong>— 如果该对象在 R2 中<em>不</em>存在，对象请求将流至源存储桶 <strong>(2a)</strong>。找到对象后，我们会提供它并将其复制到 R2 <strong>(2b)</strong> 中。</li>
+		<li><strong>提供对象 — </strong>R2 为未来针对该对象的所有请求提供服务 <strong>(3)</strong>。</li>
+	</ul>
+	<p>使用该功能，您可以从其他供应商处复制之前通过一个或多个存储桶分散的对象，同时确保从最终用户端请求的所有内容都从 R2 提供。由于您只需在首次请求时使用 R2 Super Slurper 从别处吸取对象，在后续请求时您将开始节省这些出口费用。</p>
+	<p>我们目前针对的是兼容 S3 的存储桶，但预计其他源将在 2023 年可用。</p>
+	<h2 id="-r2-super-slurper--1">加入 R2 Super Slurper 封闭测试的等候名单</h2>
+	<p>要访问 R2 Super Slurper，<a href="https://dash.cloudflare.com/?to=/:account/r2/plans" target="_blank">您必须首先是 R2 用户</a>，并在<a href="https://dash.cloudflare.com/?to=/:account/r2/slurper" target="_blank">此处</a>注册 R2 Super Slurper 等候名单。</p>
+	<p>我们将在封闭测试阶段与许多早期用户密切协作，优化并测试该服务。我们很快会隆重推出开放测试，供用户注册服务。</p>
+	<p>请务必加入我们的<a href="https://discord.com/invite/aTsevRH3pG" target="_blank"> Discord 服务器</a>，并与非凡的用户社区和 Cloudflare 员工一起探讨所有与 R2 相关的话题！</p>
+</div>
