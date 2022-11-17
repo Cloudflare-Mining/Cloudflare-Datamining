@@ -1,0 +1,83 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image1-43.png" class="kg-image" alt="A stronger bridge to Zero Trust"></figure>
+	<p>我们知道，大多数组织无法一夜之间就迁移到 Zero Trust 架构，特别是那些部署了多年传统硬件和通过企业并购整合在一起的网络。可喜的是，Cloudflare One 为公司从传统网络架构迁移到 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trust</a> 搭建了桥梁。</p>
+	<p>我们一直在加倍努力。今天，我们隆重宣布 Cloudflare One 平台的更多改进功能，从传统架构过渡到未来的 Zero Trust 网络将比以往任何时候都更加容易：新设管道支持更多 Cloudflare One 入口，扩展支持更多 IPsec 参数，以及更轻松地以现有 SD-WAN 设备作为入口。</p>
+	<h3 id="-">任何入口或出口：完全可组合，可互操作</h3>
+	<p>宣布 <a href="https://blog.cloudflare.com/zh-cn/cloudflare-one-zh-cn/">Cloudflare One 的愿景时</a>，我们就强调，让客户以其想要的任何方式与我们的网络连接极其重要——使用他们已经部署的硬件设备、已经开展合作的任何运营商以及现有的技术标准，例如 IPsec 隧道或更多 Zero Trust 方法，例如我们的轻量级<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/" target="_blank">应用程序连接器</a>。自推出以来，在数百次客户对话中，客户重申了这种灵活性的重要性。您需要的平台必须符合您的当前状况，<em>并</em>通过一个单控制平面充当全局路由器，以您想要的任何方式连接和管理网络流量，助您顺利向未来的网络架构过渡。</p>
+	<p>我们很高兴地告诉大家，过去几个月中，最后一块拼图已经补齐，客户现可使用任何 Cloudflare One 入口和出口，在设备、办公室、数据中心、云资产和自托管应用程序或 SaaS 应用程序之间无缝路由流量，包括（上次宣布以来开发的新功能，并完成了以下兼容性矩阵）将流量从与 GRE 隧道、IPsec 隧道或 CNI 连接的网络路由到与 <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/" target="_blank">Cloudflare Tunnel</a> 连接的应用程序。</p><!--kg-card-begin: html-->
+	<center><strong>完全可组合的 Cloudflare One 入口</strong></center><!--kg-card-end: html--><!--kg-card-begin: markdown-->
+	<table>
+		<thead>
+			<tr>
+				<th>从 ↓ 到 →</th>
+				<th>BYOIP</th>
+				<th>Warp 客户端</th>
+				<th>CNI</th>
+				<th>GRE 隧道</th>
+				<th>IPSec 隧道</th>
+				<th>Cloudflare Tunnel</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>BYOIP</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+			</tr>
+			<tr>
+				<td>Warp 客户端</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+			</tr>
+			<tr>
+				<td>CNI</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+			</tr>
+			<tr>
+				<td>GRE 隧道</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+			</tr>
+			<tr>
+				<td>IPSec 隧道</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<p>这种互操作性是企业从传统网络架构过渡到 Zero Trust 的关键。您可以从改善性能和增强安全性入手，使用与您常用方法相似的技术，根据组织的实际情况以合理的速度逐步升级为 Zero Trust。</p>
+	<h3 id="anycast-ipsec-">Anycast IPsec 隧道拓展方案，简化管理</h3>
+	<p>自 12 月份推出 <a href="https://blog.cloudflare.com/zh-cn/anycast-ipsec-zh-cn/">Anycast IPsec 作为 Cloudflare One</a> 的入口以来，我们看到了令人振奋的需求。近三十年来，IPsec 一直是加密网络连接的行业标准，有许多实施方案和参数可供选择，我们的客户使用各种网络设备来终止这些隧道。为了简化从任何网络设置和管理 IPsec 隧道的流程，我们在初始版本的基础上，增加了对新参数的支持、新的用户界面和 Terraform 提供商支持，以及常用实施方案分步指南。</p>
+	<ul>
+		<li><strong>扩展支持更多配置参数：</strong>我们从少数基于行业最佳实践的默认参数开始，现已在此基础上进行了扩展——最新列表详见<a href="https://developers.cloudflare.com/magic-wan/tutorials/ipsec/#supported-configuration-parameters" target="_blank">开发人员文档</a>。我们从头编写了自己的 IPsec 实施方案（原因详见我们的<a href="https://blog.cloudflare.com/zh-cn/anycast-ipsec-zh-cn/">公告博客</a>），因此能够在单个（快速！）开发周期内增加对新参数的支持。如果我们的列表中没有您正在寻找的设置，请联系我们，了解我们的支持计划。</li>
+		<li><strong>从 Cloudflare 仪表板配置和管理隧道：</strong>只需从 Cloudflare 仪表板上点击几下，就可以管理 Anycast IPsec 和 GRE 隧道配置。创建隧道后，您可以从全球每个 Cloudflare 地点查看隧道的连接情况，并运行路由跟踪或<a href="https://blog.cloudflare.com/zh-cn/packet-captures-at-edge-zh-cn/">按需包捕获</a>，以更深入地了解您的流量，排除故障。</li>
+		<li><strong>Terraform 提供商以代码形式帮助您管理网络：</strong>忙碌的 IT 团队希望可以通过 <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/3.10.1/docs/resources/ipsec_tunnel" target="_blank">Terraform</a> .单个地点管理所有网络配置。</li>
+		<li><strong>现有设备设置分步指南：</strong>我们已经在<a href="https://developers.cloudflare.com/magic-wan/tutorials/ipsec/" target="_blank">开发人员文档</a>中编制并将继续增加新的指南，帮助您使用 Cloudflare 从各种设备构建 IPsec 隧道。</li>
+	</ul>
+	<h3 id="-sd-wan-">(甚至）更轻松地以现有 SD-WAN 设备作为入口</h3>
+	<p>我们一直听客户说，希望能够使用现有的任何硬件来连接 Cloudflare One。最简单的入口方式包括利用现有 SD-WAN 设备与我们连接，对有许多工作地点的组织尤其适用。此前，我们宣布<a href="https://www.cloudflare.com/network-onramp-partners/" target="_blank">与领先的 SD-WAN 提供商合作</a>，让入口配置更加顺畅；今天，我们在此基础上进行了扩展，为包括 Cisco Viptela 在内的其他设备和隧道机制推出了新的<a href="https://developers.cloudflare.com/magic-wan/tutorials/" target="_blank">集成指南</a>。您的 IT 团队可以按照这些经过验证的步骤说明，轻松完成 Cloudflare 网络连接配置。</p>
+	<h3 id="-zero-trust-">立即踏上 Zero Trust 之旅</h3>
+	<p>我们的团队正在帮助成千上万的组织从传统网络架构过渡到 Zero Trust。我们非常期待听到您对新产品和功能的反馈，帮助我们继续完善产品，让您的过渡之旅更加轻松。<a href="https://www.cloudflare.com/cloudflare-one/#transformation" target="_blank">进一步了解 Cloudflare One</a>，或联系您的客户团队，探讨如何合作，帮助您立即开始变革网络。</p>
+</div>

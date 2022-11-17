@@ -1,0 +1,36 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-106.png" class="kg-image" alt="Ridiculously easy to use Tunnels"></figure>
+	<p>Cloudflareは10年余り前に <a href="https://youtu.be/XeKWeBw1R5A?t=264" target="_blank">TechCrunch Disrupt</a>をローンチしました。その際私たちは、Cloudflareを従来のセキュリティベンダーと差別化するための3つの基本原則について話しました。それはより安全で、より高性能で、そして驚くほど簡単に使えることでした。使いやすさは、当社の判断の軸であり、Cloudflare Tunnelについても変わりありません。</p>
+	<p>この考えから、これまでターミナルで最大14個のコマンドを必要としたトンネルの作成を、<strong>たった3つの簡単なステップ</strong>で、Zero Trustのダッシュボードから直接行えるようになったことを、本日発表いたします。</p>
+	<p><a href="https://dash.cloudflare.com/sign-up/teams" target="_blank">サインアップまたはチームにアクセス</a>して、VPNを解除し、Cloudflareでプライベートネットワークの構築を始めてみてください。このリリースの目的と今後の開発についてもっと知りたい方は、このままスクロールしてください。</p>
+	<h2 id="-">当社のコネクタ</h2>
+	<p>Cloudflare Tunnelは、ローカルHTTPサーバー、Kubernetesクラスターが提供するWebサービス、プライベートネットワークセグメントなど、お客様のインフラをCloudflareに接続する最も簡単な方法です。この接続は、当社の軽量な<a href="https://github.com/cloudflare/cloudflared/blob/master/LICENSE" target="_blank">オープンソースコネクタ</a> 、<code>cloudflared</code>によって実現されます。当社のコネクタは、Cloudflareのネットワーク内の2つの異なるデータセンターへの4つの長寿命な接続を作成し、設計による高可用性を提供します。つまり、個々の接続、サーバー、データセンターがダウンしても、ネットワークは稼働し続けることができます。コネクタの<a href="https://blog.cloudflare.com/highly-available-and-highly-scalable-cloudflare-tunnels/">複数のインスタンス</a>を配置することで、何らかの理由で単一のホストが停止した場合に備えて、ユーザー自身の環境内で冗長性を維持することも可能です。</p>
+	<p>これまで、当社のコネクタをデプロイする最良の方法は、<code>cloudflared</code> CLIを使用することでした。それが本日、Zero Trustのダッシュボードから直接、リモートでトンネルとその設定を作成、デプロイ、管理する新しいソリューションを起ち上げ、発表に至りました。この新しいソリューションにより、当社のお客様は、<a href="https://www.cloudflare.com/learning/access-management/what-is-ztna/" target="_blank">Zero Trustネットワークアクセス</a>をわずか<strong>15分以内</strong>で従業員に提供できます。</p>
+	<h2 id="cli-gui-">CLIとは？GUIとは？両方ではダメなのか</h2>
+	<p>コマンドラインインターフェイスの性能が卓越しています。ユーザーがコンソールやターミナルでコマンドを渡し、オペレーティングシステムと直接インタラクトが可能になります。この正確さにより、ユーザーは精度が求められるプログラムやサービスとのやりとりを正確に制御することができます。</p>
+	<p>ただし、学習曲線が高いため、新しいユーザーにとっては直感的でない場合もあります。そのため、ユーザーは使いたいツールをよく調べてから試してみる必要があります。こうした調べものを行う余裕がなく、とりあえずプログラムをテストしてみてから、自分の問題にはあまり合わないとわかるケースは少なくありません。</p>
+	<p>それとは対照的に、当社のZero TrustダッシュボードのようなGUIは、実際にやってみることで学ぶという柔軟性を持っています。プログラムの知識はほとんど必要ありません。ユーザーは直感的に望む結果へと導かれ、このソリューションが自分の問題に合っていることが<em>分かってから</em>、あるステップがどのように、なぜ完了したのかを調べるだけでよいのです。</p>
+	<p>Cloudflare Tunnelをリリースした当初、開始に用意されたコマンドは10種類以下でした。現在では、これよりはるかに多く、また、それらを呼び出す新しいユースケースも無数にあります。そのため、当社製品を知ったばかりのユーザーにとっては、これまで簡単に操作できたCLIライブラリが煩雑なものに感じられてしまいました。</p>
+	<p>単純な誤字脱字は一部のユーザーに強い苛立ちを与えていました。例えば、あるユーザーがプライベートネットワークトンネルのIPルートをアドバタイズする必要があるとしましょう。<code>cloudflared tunnel route ip add &lt;IP/CIDR&gt;</code>を覚えるのはなかなか面倒です。Zero Trustダッシュボードからならば、CLIライブラリのセマンティクスを覚えておく必要がありません。必要なのはトンネルの名前と、Cloudflareを通じて接続したいネットワーク範囲だけです。<code>my-private-net</code>（または呼び出したいもの）を入力し、インストールスクリプトをコピーし、ネットワーク範囲を入力するだけです。とてもシンプルです。誤って無効なIPやCIDRブロックを入力した場合、ダッシュボードが対処可能な、人が読める形でエラーを表示し、また正しい道筋に戻ることができます。</p>
+	<p>CLIとGUIのどちらを好むかは別として、異なる手段でも最終的には同じ結果を得ることができるのです。それぞれにメリットがあり、ユーザーが1つのソリューションで双方の長所を享受できるのが理想的です。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image2-92.png" class="kg-image"></figure>
+	<h2 id="--1">問題点を解消する</h2>
+	<p>トンネルは通常、リクエストを適切な送信先にルーティングするために、ローカルに管理された設定ファイルが必要でした。この設定ファイルはデフォルトでは作成されませんが、ほとんどすべてのユースケースで不可欠なものだったのです。このため、ユーザーは <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/configuration/configuration-file/" target="_blank">開発者向けドキュメント</a>にある事例を使用して、コマンドラインを使用して設定ファイルを作成し、入力しなければなりませんでした。<code>cloudflared</code>に機能が追加されるにつれて、設定ファイルの管理は扱いにくいものになっていったのです。パラメータや値をどこに含めるかを理解することは、ユーザーにとって負担になっています。これらの問題は、実際に目で確認することが難しく、ユーザーにとってはトラブルシューティングに手間がかかることが多かったのです。</p>
+	<p>また、最新のリリースでは、トンネルパーミッションの概念の改善を目指しました。それまで、ユーザーは<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-permissions/" target="_blank">2つの異なるトークン</a>を管理する必要がありました。それは、<code>cert.pem</code>ファイルと<code>Tunnel_UUID.json</code>ファイルです。つまり、<code>cert.pem</code>は、<code>cloudflared tunnel login</code>コマンドで発行され、CLIを通じてCloudflareアカウントのトンネルを作成、削除、リストする機能を付与しました。<code>Tunnel_UUID.json</code>は、<code>cloudflared tunnel create &lt;NAME&gt;</code>コマンド中に発行され、指定したトンネルを実行する機能を付与しました。しかし、トンネルはZero TrustダッシュボードでCloudflareアカウントから直接作成できるようになったため、作成前にオリジンを認証する必要はなくなりました。このアクションは、最初のCloudflareログインイベントで既に実行されています。</p>
+	<p>本日のリリースにより、ユーザーは設定ファイルやトークンをローカルで管理する必要がなくなりました。これからはお客様がZero Trustダッシュボードで提供した入力に基づいて、Cloudflareがお客様に代わって管理します。ユーザーがホスト名やサービスを間違えても、トンネルの実行を試みる前にはっきりわかるので、時間と手間を省くことができます。また、トークンの管理も代行し、将来的にトークンの更新が必要な場合は、トークンのローテーションも代行します。</p>
+	<h2 id="-zero-trust-zero-trust">クライアントのあるZero TrustとクライアントレスのZero Trust</h2>
+	<p>当社ではCloudflare Tunnelを、Zero Trustプラットフォームへの「オンランプ」と呼んでいます。接続後は、WARP、Gateway、Accessとシームレスにペアリングし、<a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trust</a>セキュリティポリシーでリソースを保護することができ、それぞれのリクエストは組織のデバイスとIDベースのルールに対して検証されます。</p>
+	<h3 id="-zero-trust">クライアントレスのZero Trust</h3>
+	<p>Cloudflare TunnelとAccessを組み合わせることで、クライアントレスでZero Trustを実現できます。このモデルでは、ユーザーはZero Trustダッシュボードで示されたフローに従うことになります。まず、ユーザーは自分のトンネルに名前を付けます。次に、オリジンのオペレーティングシステムとシステムアーキテクチャに合わせた単一のインストールスクリプトがユーザーに提供されます。最後に、トンネルの公開ホスト名またはプライベートネットワークのルーティングを作成します。先に説明したように、この手順により設定ファイルが不要になります。公開ホスト名の値は、リモートで管理されたトンネルのイングレスルールを置き換えるようになります。プライベートリソースにアクセスするためのパブリックホスト名を追加するだけで構いません。次に、ホスト名の値をオリジンサーバーの背後にあるサービスにマッピングします。最後に、要件を満たしたユーザーのみがこのリソースにアクセスできるように、Cloudflareアクセスポリシーを作成します。</p>
+	<h3 id="-zero-trust-1">クライアントベースのZero Trust</h3>
+	<p>また、Cloudflare TunnelとWARP、Gatewayを組み合わせることで、クライアントベースのZero Trustをつくることも可能です。ここでは、上記と同じフローに従いますが、パブリックホスト名を作成する代わりに、プライベートネットワークを追加します。このステップは、CLIライブラリの<code>cloudflared tunnel route ip add &lt;IP/CIDR&gt;</code>のステップを置き換えるものです。その後、Zero TrustダッシュボードのCloudflare Gatewayセクションに移動し、プライベートネットワーク接続をテストするためのルールを2つ作成し、開始することができます。</p>
+	<ol>
+		<li>名前：許可&lt;IP/CIDR&gt;の&lt;current user&gt; <br>ポリシー：&lt;IP/CIDR&gt;内の送信先IP、ユーザーEmail は&lt;Current User Email&gt; <br>アクション：許可</li>
+		<li>名前：&lt;IP/CIDR&gt;のデフォルト拒否 <br>ポリシー：&lt;IP/CIDR&gt;内の送信先IP <br>アクション：ブロック</li>
+	</ol>
+	<p>ここで重要なのは、どちらのアプローチにおいても、ほとんどのユースケースで必要となるトンネルは1つだけであるということです。トンネルは、公開ホスト名とプライベートネットワークの両方を競合することなくアドバタイジングすることができます。これにより、オーケストレーションが簡単にできるようになりました。実際、トンネルの数をできるだけ少なくして、トンネルを追加するのではなく、レプリカを使って冗長性を処理することをお勧めします。もちろん、これは各ユーザーの環境によりますが、一般的には1つのトンネルから始めて、ネットワークやサービスを論理的に分離する必要がある場合にのみトンネルを作成するのがいいでしょう。</p>
+	<h2 id="--2">今後の展開は？</h2>
+	<p>Cloudflare Tunnelのローンチから作成されたトンネルは数十万本におよびます。これは、新しいオーケストレーション手法に移行する必要のある無数のトンネルです。当社はこのプロセスを摩擦のないものにしたいと考えています。そのため、現在、ローカルで管理している設定をCloudflareで管理している設定へ、シームレスに移行するためのツールを構築中です。数週間後にはご利用いただけるかと思います。</p>
+	<p>また、ローンチ当初は<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/configuration/arguments/" target="_blank">開発者向けドキュメント</a>に記載されているグローバル設定オプションはサポート外になる予定です。これらのパラメータは状況に応じたサポートが必要であり、時間をかけて徐々にコマンドを追加していくことになります。<code>cloudflared</code>のロギングレベルを調整する最善の方法は、Cloudflare Tunnel のサービス開始コマンドを修正し、サービス実行コマンドに &nbsp;--<code>loglevel</code>フラグを追加することで実現できることが、何より重要だと考えています。これは、移行ウィザードのリリース後に優先されることになります。</p>
+	<p>以上の通り、当社にはリモートトンネル管理の将来について楽しみなプランがあり、前進しながらこれに投資し続けるつもりです。今すぐそれを確認し、ダッシュボードから3つの簡単なステップで<a href="https://dash.cloudflare.com/sign-up/teams" target="_blank">最初のCloudflare Tunnelをデプロイしてください</a>。</p>
+</div>

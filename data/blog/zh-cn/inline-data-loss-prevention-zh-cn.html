@@ -1,0 +1,34 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image1-15.png" class="kg-image" alt="Launching In-Line Data Loss Prevention"></figure>
+	<p>数据丢失防护 (DLP) 让您能够根据数据的特点或<em>内容</em>来保护数据。今天，我们很高兴地宣布，数据丢失防护已成为 Cloudflare One 平台的原生组成部分。如有兴趣提前体验，请翻至本文底部！</p>
+	<p>在构建 Cloudflare One 的 DLP 解决方案过程中，我们与数十个行业中各种规模的客户进行了交谈。我们认真了解了他们的体验、他们正在使用的产品和他们需要的解决方案。他们的答复揭示了客户面临的重大挑战和挫折。能够提供一种产品消灭所有这些问题，并集成到全面的 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trust</a> 解决方案中，我们备感兴奋。</p>
+	<h2 id="-">客户难以了解其数据流</h2>
+	<p>有些客户多年来一直在组织中使用 DLP 解决方案。他们已经部署了端点代理，制定了自定义规则集，并创建了事件响应管道。有些客户构建了自制工具来追踪公司网络上的信用卡号，或制定了规则集来追踪数十万个精确数据匹配哈希值。</p>
+	<p>同时，也有些客户对该领域一无所知。他们由一支杂而不精的小团队来负责许多 IT 和安全职能。他们没有现成的资源可分配给 DLP，也不想为此而降低其他事情的优先级别。</p>
+	<p>但许多客户都表示：由于 SaaS 工具的迅速崛起，他们不确定自己的数据在哪里移动，存放在何处。数据从公司服务器迁移到云端，公司丧失了对数据的可见性和控制权。拥有成熟的数据保护计划的团队也在努力提高网络可见性。他们都在询问同样的问题：</p>
+	<ul>
+		<li>数据去哪里了？</li>
+		<li>上传和下载是在企业或个人的 SaaS 实例中来回移动吗？</li>
+		<li>哪些应用程序存储了敏感数据？</li>
+		<li>谁可以访问这些应用程序？</li>
+		<li>我们能发现并阻止从文件存储库大量下载吗？</li>
+	</ul>
+	<p>许多客户似乎觉得自己落后了，因为他们没有解决这些问题。而且，许多客户都诉说了同样的情况。然而，这并不意味着任何人落后了，只说明需要一个更好的解决方案。因此，构建 DLP 产品是正确的选择，但为何要把它嵌入 Cloudflare One 中呢？</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image2-20.png" class="kg-image"></figure>
+	<h2 id="-zero-trust-">数据丢失防护与 Zero Trust 有何关系</h2>
+	<p><a href="https://www.cloudflare.com/learning/access-management/what-is-ztna/" target="_blank">Zero Trust 网络架构</a>的基本设计旨在保护您的数据。每次尝试访问受保护的应用程序、机器或远程桌面时，均会进行检查，依据身份和设备态势保护您的数据。利用 DNS 和 HTTP 过滤，依据内容类别和信誉保护您的数据。添加 API 驱动的 CASB，依据应用程序的配置保护您的数据。</p>
+	<p>架构中的每一个结构，都是依据一个新的标识符来保护您的数据。架构上的标识符帮助您了解：谁访问了数据？访问数据的设备属于谁？数据去哪里了？目的地的配置如何？但是，<em>移动的到底是什么数据</em>？</p>
+	<p><a href="https://www.cloudflare.com/learning/access-management/what-is-dlp/" target="_blank">数据丢失防护</a>让您能够根据数据的特点或<em>内容</em>来保护您的数据。例如，敏感或机密数据可以通过多种方式来识别，包括关键词、模式或文件类型。这些指标可以帮助您了解网络上传输或流出的信息。</p>
+	<p>在 Cloudflare One 中嵌入 DLP 后，您可以结合这些标识符来创建适合自己组织的规则。您可以根据自己的需求来指定谁可以在哪里如何访问哪些内容。我们致力于帮助您全面、详细地了解自己的网络和数据，让您轻松地保护数据。</p>
+	<h2 id="--1">工作方式</h2>
+	<h3 id="--2">第一步：识别数据</h3>
+	<p>Zero Trust 仪表板中将添加 DLP Profiles。您可在此定义需要保护的数据。您将能够添加关键词、精心设计正则表达式来识别敏感数据。Cloudflare 将提供常见检测（例如信用卡号）的配置文件。</p>
+	<h3 id="-http-">下一步：创建 HTTP 策略</h3>
+	<p>配置 DLP 配置文件后，您可以创建一个 Cloudflare Gateway HTTP 策略，允许或阻止敏感数据离开您的组织。Gateway 将解析并扫描您的 HTTP 流量，查找与 DLP 配置文件中指定的关键词或正则表达式相匹配的字符串。</p>
+	<h2 id="-cloudflare-">选择 Cloudflare 的原因</h2>
+	<p>我们知道，全面、大规模的 DLP 是一个巨大挑战。这些都是我们擅长的问题类型。我们的网络可在 50 毫秒内向全世界 95% 的联网人口安全地提供流量，帮助我们许多市场领先的产品大规模极速发送和保护客户流量。我们正在利用这个强大的网络和我们解决类似问题的经验来解决数据丢失防护问题，并取得了振奋人心的结果</p>
+	<h2 id="--3">加入等候名单</h2>
+	<p>我们即将推出数据丢失防护产品封测版。如有兴趣提前体验，请填写<a href="https://www.cloudflare.com/teams/lp/dlp/" target="_blank">此表格</a>加入等候名单。</p>
+	<h2 id="--4">接下来？</h2>
+	<p>我们的 DLP 才刚刚起步！我们已经制定了许多发展计划，并将与远程浏览器隔离等其他 Cloudflare One 产品集成。<br></p>
+</div>

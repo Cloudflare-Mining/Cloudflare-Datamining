@@ -1,0 +1,167 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/Proxyless-KubeCTL-Support.png" class="kg-image" alt="Kubectl with Cloudflare Zero Trust"></figure>
+	<p>Cloudflareは、エンジニア作業におけるKubernetesのヘビーユーザーです。当社のAPIのバックエンド、分析集約やボット検出などのバッチ処理、CI/CDパイプラインなどのエンジニアリングツールに使用されています。ただし、ロードバランサー、APIサーバー、etcd、イングレス、ポッドの間では、Kubernetesにより公開される領域がかなり拡大する可能性があります。</p>
+	<p>この投稿では、CloudflareのエンジニアリングチームがCloudflare Zero TrustをドッグフーディングしてKubernetesを保護し、プロキシなしでkubectlを使用できるようにした方法について少しご紹介します。</p>
+	<h2 id="kubernetes-">Kubernetesのセキュリティに対する一般的なアプローチ</h2>
+	<p>Cloudflareでは、セキュリティ対策の一環として、ネットワーク経由で当社のクラスターにアクセスできるものを大幅に制限しています。ネットワークサービスが公開されている場合は、Cloudflare Access認証またはMutual TLS（またはその両方）をイングレスリソースへのアクセスに要求するなど、追加の保護措置を導入しています。</p>
+	<p>これらのネットワーク制限には、クラスターのAPIサーバーへのアクセスも含まれます。アクセスできない場合、Cloudflareのエンジニアはkubectlのようなツールを使ってチームのリソースを省みることができません。ベストプラクティスは継続的デプロイとGitOpsですが、開発者がKubernetes APIを使えるようにすることで、トラブルシューティングと開発者の速度を向上させることができます。アクセスできないことは、契約違反になります。</p>
+	<p>Cloudflareではセキュリティ要件を満たすためにCloudflare Zero Trustを使用していますが、その使用方法と、ここに至るまでの過程を紹介したいと思います。</p>
+	<h3 id="zero-trust-">Zero Trust以前</h3>
+	<p><a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trust</a>以前の世界では、エンジニアはVPNアプライアンスに接続することでKubernetes APIにアクセスできました。これは、業界では一般的な手法であり、APIへのアクセスを許可するものですが、エンジニアをクライアントとして内部ネットワークに落とし込んでしまい、必要以上にネットワークにアクセスすることになっていました。</p>
+	<p>この状況に満足していたわけではありませんが、数年間はこの状態が続いていました。2020年初頭にVPNを廃止したため、Kubernetesチームは別のソリューションを見つける必要がありました。</p>
+	<h3 id="cloudflare-tunnel-kubernetes">Cloudflare Tunnelを利用したKubernetes</h3>
+	<p>当時、私たちはCloudflare Tunnelの開発チームと密接に協力し、<a href="https://blog.cloudflare.com/releasing-kubectl-support-in-access/">Accessを使用したkubectl接続</a>とCloudflareトンネルの処理のサポートを追加しました。</p>
+	<p>これは、当社のエンジニアにとっては機能しましたが、新入社員のオンボーディングの際には大きなハードルとなっていました。Kubernetesのクラスターごとに、エンジニアのデバイスからの独自のトンネル接続が必要で、クラスター間のシャッフルが煩わしかったのです。kubectlはSOCKSプロキシ経由の接続をサポートしていましたが、このサポートはKubernetesエコシステムのすべてのツールに普遍的なものではありませんでした。</p>
+	<p>このソリューションを社内で使い続けながら、より良いソリューションの実現に向けて取り組んできたのです。</p>
+	<h2 id="zero-trust-kubernetes">Zero Trustを使用したKubernetes</h2>
+	<p>Cloudflare Oneのリリース以来、私たちはさまざまな構成でZero Trustエージェントをドッグフーディングしてきました。当初は1.1.1.1でセキュアなDNSを実装するために使われていましたが、じきにZero Trustの追加機能のドッグフーディングに使われるようになりました。</p>
+	<p>今では、Cloudflare Zero Trustのプライベートネットワークルーティングを活用することで、Cloudflareトンネルをセットアップしたり、kubectlなどのKubernetesエコシステムのツールがトンネルを使用するように設定したりしなくても、エンジニアがKubernetes APIにアクセスできるようになりました。これはCloudflareに限ったことではなく、お客様のチームでも今すぐできることです。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/Kubectl-WIth-Warp-Diagram--2-.png" class="kg-image"></figure>
+	<h3 id="zero-trust--1">Zero Trustの設定</h3>
+	<p>私たちは<a href="https://github.com/cloudflare/terraform-provider-cloudflare" target="_blank">構成管理ツール</a>を使って、コードとしてのインフラストラクチャを実現するためのZero Trustの構成を行っており、以下にそれをご紹介します。ただし、Cloudflare Zero Trustダッシュボードを使用しても同じ構成を行うことができます。</p>
+	<p>まず最初に、新しいトンネルを作成する必要があります。このトンネルは、CloudflareのエッジネットワークをKubernetes APIに接続するために使用されます。後述する構成で、Kubernetes内でトンネルエンドポイントを実行します。</p>
+	<pre><code>resource "cloudflare_argo_tunnel" "k8s_zero_trust_tunnel" {
+  account_id = var.account_id
+  name       = "k8s_zero_trust_tunnel"
+  secret     = var.tunnel_secret
+}
+</code></pre>
+	<p>「tunnel_secret」シークレットは32バイトの乱数にする必要があります。後でKubernetesの設定に再利用するので、一時的に保存しておきます。</p>
+	<p>トンネルを作成したら、Cloudflareネットワークがトンネルを通してどのようなトラフィックを送信するかを知るために、ルートを作成する必要があります。</p>
+	<pre><code>resource "cloudflare_tunnel_route" "k8s_zero_trust_tunnel_ipv4" {
+  account_id = var.account_id
+  tunnel_id  = cloudflare_argo_tunnel.k8s_zero_trust_tunnel.id
+  network    = "198.51.100.101/32"
+  comment    = "Kubernetes API Server (IPv4)"
+}
+ 
+resource "cloudflare_tunnel_route" "k8s_zero_trust_tunnel_ipv6" {
+  account_id = var.account_id
+  tunnel_id  = cloudflare_argo_tunnel.k8s_zero_trust_tunnel.id
+  network    = "2001:DB8::101/128"
+  comment    = "Kubernetes API Server (IPv6)"
+}
+</code></pre>
+	<p>IPv4とIPv6の両方のアドレス経由でKubernetes APIにアクセスすることをサポートしているため、両方に対応したルートを設定します。ホスト名でAPIサーバーに接続している場合、これらのIPアドレスはDNSルックアップで返されるものと一致する必要があります。</p>
+	<p>次に、Cloudflare Gatewayの設定を行い、APIサーバーやクライアントと互換性を持たせるようにします。</p>
+	<pre><code>resource "cloudflare_teams_list" "k8s_apiserver_ips" {
+  account_id = var.account_id
+  name       = "Kubernetes API IPs"
+  type       = "IP"
+  items      = ["198.51.100.101/32", "2001:DB8::101/128"]
+}
+ 
+resource "cloudflare_teams_rule" "k8s_apiserver_zero_trust_http" {
+  account_id  = var.account_id
+  name        = "Don't inspect Kubernetes API"
+  description = "Allow connections from kubectl to API"
+  precedence  = 10000
+  action      = "off"
+  enabled     = true
+  filters     = ["http"]
+  traffic     = format("any(http.conn.dst_ip[*] in $%s)", replace(cloudflare_teams_list.k8s_apiserver_ips.id, "-", ""))
+}
+</code></pre>
+	<p>クライアントとAPIサーバー間では相互TLSを使用しており、kubectlとAPIサーバー間のトラフィックはすべてHTTPではないため、これらの接続についてはHTTPインスペクションを無効にしています。</p>
+	<p>これらのルールを、<a href="https://developers.cloudflare.com/cloudflare-one/identity/devices/" target="_blank">デバイスアテステーション</a>、<a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/enforce-sessions/" target="_blank">セッションの存続時間</a>、<a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/identity-selectors/" target="_blank">ユーザーとグループ</a>のアクセスポリシーなどの追加のZero Trustルールと組み合わせることで、さらにセキュリティをカスタマイズできます。</p>
+	<h3 id="-">トンネルのデプロイ</h3>
+	<p>トンネルの作成と設定が完了したら、そのエンドポイントをネットワークにデプロイできます。トンネルをポッドとしてデプロイすることにより、アップグレードのロールアウトやノード障害の処理にKubernetesのデプロイメント戦略を利用できるようになります。</p>
+	<pre><code>apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tunnel-zt
+  namespace: example
+  labels:
+    tunnel: api-zt
+data:
+  config.yaml: |
+    tunnel: 8e343b13-a087-48ea-825f-9783931ff2a5
+    credentials-file: /opt/zt/creds/creds.json
+    metrics: 0.0.0.0:8081
+    warp-routing:
+        enabled: true
+</code></pre>
+	<p>これにより、指定したトンネルIDのWARPルーティングを有効にする基本設定を持つKubernetes ConfigMapが作成されます。このトンネルIDは、設定管理システム、Cloudflare Zero Trustダッシュボード、または同じアカウントにログインした別のデバイスから以下のコマンドを実行することで取得できます。</p>
+	<p><code>cloudflared tunnel list</code></p>
+	<p>次に、トンネルのクレデンシャル用のシークレットを作成する必要があります。本来はシークレット管理システムを使うべきですが、簡単にするためにここでは直接作成することにします。</p>
+	<pre><code>jq -cn --arg accountTag $CF_ACCOUNT_TAG \
+       --arg tunnelID $CF_TUNNEL_ID \
+       --arg tunnelName $CF_TUNNEL_NAME \
+       --arg tunnelSecret $CF_TUNNEL_SECRET \
+   '{AccountTag: $accountTag, TunnelID: $tunnelID, TunnelName: $tunnelName, TunnelSecret: $tunnelSecret}' | \
+kubectl create secret generic -n example tunnel-creds --from-file=creds.json=/dev/stdin
+</code></pre>
+	<p>これにより、新しいシークレット「tunnel-creds」が「example」ネームスペースに、トンネルが想定するクレデンシャルファイルとともに作成されます。</p>
+	<p>これで、トンネル自体をデプロイできるようになりました。複数のレプリカをデプロイすることで、ノードが枯渇している間でも、常にいくつかのレプリカを利用できるようにしています。</p>
+	<pre><code>apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    tunnel: api-zt
+  name: tunnel-api-zt
+  namespace: example
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      tunnel: api-zt
+  strategy:
+    rollingUpdate:
+      maxSurge: 0
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        tunnel: api-zt
+    spec:
+      containers:
+        - args:
+            - tunnel
+            - --config
+            - /opt/zt/config/config.yaml
+            - run
+          env:
+            - name: GOMAXPROCS
+              value: "2"
+            - name: TZ
+              value: UTC
+          image: cloudflare/cloudflared:2022.5.3
+          livenessProbe:
+            failureThreshold: 1
+            httpGet:
+              path: /ready
+              port: 8081
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          name: tunnel
+          ports:
+            - containerPort: 8081
+              name: http-metrics
+          resources:
+            limits:
+              cpu: "1"
+              memory: 100Mi
+          volumeMounts:
+            - mountPath: /opt/zt/config
+              name: config
+              readOnly: true
+            - mountPath: /opt/zt/creds
+              name: creds
+              readOnly: true
+      volumes:
+        - secret:
+            name: tunnel-creds
+          name: creds
+        - configMap:
+            name: tunnel-api-zt
+          name: config</code></pre>
+	<h2 id="cloudflare-zero-trust-kubectl-">Cloudflare Zero TrustとKubectlを使用する</h2>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/Screen-Shot-2022-06-23-at-3.43.37-PM.png" class="kg-image" alt="Screenshot of the Cloudflare WARP app showing it connected to Teams"></figure>
+	<p>Cloudflare Zero Trustエージェントをデプロイすると、チームのメンバーは特別なSOCKSトンネルを設定することなく、Kubernetes APIにアクセスできるようになります。</p>
+	<pre><code>kubectl version --short
+Client Version: v1.24.1
+Server Version: v1.24.1
+</code></pre>
+	<h2 id="--1">今後の展開は？</h2>
+	<p>試された方は、ぜひフィードバックをお寄せください。Cloudflareは、HTTP以外のワークフローに対するZero Trustの改良を続けてまいります。</p>
+</div>

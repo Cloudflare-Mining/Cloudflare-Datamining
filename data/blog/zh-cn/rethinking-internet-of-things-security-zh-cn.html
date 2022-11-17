@@ -1,0 +1,44 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image1-43.png" class="kg-image" alt="Securing the Internet of Things"></figure>
+	<p>很难想象没有智能手机的生活。计算机大多是固定的，通常还是共享的，智能手机则让地球上的每一个人都成为互联网上一个永久的移动节点（现在全世界有约 65 亿部智能手机）。</p>
+	<p>这代表着互联网设备爆增，但还是远不如互联网发展的下一个阶段：连接设备，实现设备智能化。目前，物联网 (IoT) 设备数量大约是连接到互联网的智能手机数量的两倍——IoT 设备数量预计还将继续大幅增长，而智能手机则因每个人持有手机数量有限而受人口数量限制。</p>
+	<p>但是，由于设备数量激增，风险也急剧增加。多年来，我们一直在防御物联网 (IoT) 僵尸网络（例如 <a href="https://blog.cloudflare.com/tag/mirai/">Mirai</a> 和 <a href="https://blog.cloudflare.com/meris-botnet/">Meris</a>）的 DDoS 攻击。这种攻击不断<a href="https://www.securityweek.com/cloudflare-mitigates-2-tbps-ddos-attack-launched-mirai-botnet" target="_blank">增多</a>，因为保护 IoT 设备安全仍然极具挑战性，而且制造商通常没有动力去保护设备。因此，NIST（美国国家标准与技术研究院）<a href="https://csrc.nist.gov/publications/detail/nistir/8349/draft" target="_blank">积极制定相关要求</a>，着力解决 IoT 设备安全性（不足）问题，欧盟也紧随其后。</p>
+	<p>Cloudflare 最擅长解决这类问题。</p>
+	<p>今天，我们很高兴地宣布，我们的物联网平台：旨在为您的 IoT 设备提供一个单一管理视图，为新设备配置连接，更关键的是，让每台设备从开机起就能确保安全。</p>
+	<h3 id="-">不只有灯泡</h3>
+	<p>看到“IoT”时，通常会立即想到灯泡或简单的运动传感器，但这只是因为我们通常没把每天都在互动的许多设备视为 IoT 设备。</p>
+	<p>想一想：</p>
+	<ul>
+		<li>几乎全部支付终端</li>
+		<li>任何配备信息娱乐系统或 GPS 系统的现代汽车</li>
+		<li>支撑着物流服务、工业流程和制造企业的数百万关键工业设备</li>
+	</ul>
+	<p><em>特别是，您可能没有意识到，这些设备中，几乎每一台都有一张 SIM 卡，通过蜂窝网络连接。</em></p>
+	<p>蜂窝网络连接已经越来越普遍，如果设备能够独立连接，不依赖于 Wi-Fi 网络配置（并且开箱即用），您就立即避免了大量操作支持问题。如果阅读了我们之前关于 <a href="https://blog.cloudflare.com/zh-cn/the-first-zero-trust-sim-zh-cn/">Zero Trust SIM</a> 的公告，您可能已经知道我们的方向。</p>
+	<p>目前已有数十万 IoT 设备已经使用双向 TLS 和我们的 <a href="https://developers.cloudflare.com/api-shield/" target="_blank">API Shield </a>产品安全连接到我们的网络。主要设备制造商使用 <a href="https://developers.cloudflare.com/workers/" target="_blank">Workers</a> 和我们的开发人员平台来摆脱身份验证、计算以及（最重要的是）减少设备本身所需的计算。我们基于 MQTT 的可编程消息服务 <a href="https://developers.cloudflare.com/pub-sub/" target="_blank">Cloudflare Pub/Sub</a> 则是另一个组件。</p>
+	<p>但我们发现还有一些遗漏之处：设备管理、分析和异常检测。虽然有<em>许多</em>“IoT SIM”供应商，但显然大多都只专注于大规模运送 SIM 卡（很好！），而不是专注于安全性（不太好）或开发人员（也不太好）。客户一直告诉我们，他们希望有一种方法可以轻松地保护其 IoT 设备，就像用我们的 Zero Trust 平台保护他们的员工一样简单。</p>
+	<p><strong>Cloudflare 的 IoT 平台将构建对大规模配置蜂窝连接的支持</strong>：我们将支持为您的设备订购、配置和管理蜂窝连接。离开每台 IoT 设备的每个数据包在到达互联网、您的云基础设施或其他设备<em>之前</em>，都会经您创建的策略进行检查、批准或拒绝。</p>
+	<p><a href="https://www.gsma.com/iot/iot-safe/" target="_blank">IoT SAFE</a> 等新的标准也将让我们可以使用 SIM 卡作为可信根，将设备秘密（和 API 密钥）安全地存储在设备上，同时提高破坏的标准。</p>
+	<p>这也并不是说我们要把双向 TLS 的世界抛诸脑后：我们明白，不是每台设备都可以只通过蜂窝网络进行连接，无论是由于每台设备的成本、覆盖范围不够，还是因为需要支持现有部署而不能只是重新部署。</p>
+	<h3 id="-zero-trust-iot">将 Zero Trust 安全引入 IoT</h3>
+	<p>与人类不同的是，人类需要能够访问可能无限数量的目的地（网站），而 IoT 设备需要对话的端点通常则少得多。但在实践中，通常很少构建了（或有可用的）控制策略，以确保设备只与您的 API 后端、存储桶和/或您的遥测端点对话。</p>
+	<p>不过，我们的 Zero Trust 平台有一个解决方案：<a href="https://www.cloudflare.com/products/zero-trust/gateway/" target="_blank">Cloudflare Gateway</a>。您可以创建 DNS、网络或 HTTP 策略，以及不仅根据来源或目的地，而且根据更丰富的基于身份和位置的控制策略，允许或拒绝流量。很明显，我们似乎可以把这些同样的功能引入 IoT 设备，让开发人员更好地限制和控制其设备可以与哪些端点对话（因而不会成为僵尸网络的一部分）。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image2-38.png" class="kg-image"></figure>
+	<p>同时，我们还确定了一些扩展 Gateway 的方法，以了解 IoT 设备的具体情况。例如，想象一下，您已经配置了 5000 台 IoT 设备，全部通过蜂窝网络直接连接到 Cloudflare 的网络中。然后您可以选择将这些设备锁定在一个特定的地理位置，如果不需要“移动”的话；确保它们只能与您的 API 后端和/或指标提供商对话；甚至通过将 SIM 卡锁定在 IMEI（调制解调器的序列）上，确保已解除 SIM 卡的设备不再发挥作用。</p>
+	<p>在网络层构建这些控制策略，提高了 IoT 设备的安全标准，降低了您的各种设备被不良行为者利用的风险。</p>
+	<h3 id="--1">不在设备上执行计算</h3>
+	<p>关于安全，我们已经讨论了很多，那么计算和存储呢？如果一台设备不需要做任何事情或在任何地方进行通信，那么它会非常安全，但这显然是不切实际的。</p>
+	<p>同时，在“设备上”执行比较重要的计算也存在许多重大挑战：</p>
+	<ul>
+		<li>这需要更强大（因此也更昂贵）的设备。功能一般（例如基于 ARMv8）、配有几千兆 RAM 的设备可能会越来越便宜，但它们总是比功能更弱的设备要贵，而鉴于整个物联网的庞大规模，这点成本会迅速增加。</li>
+		<li>您不能保证（或指望）您的所有设备都保持同质：您三年前部署的设备很可能比现在部署的设备要慢几倍。您会舍弃这些设备吗？</li>
+		<li>您在设备上考虑的业务逻辑越多，操作和部署的风险就越大。变更管理变得至关重要，而“变砖”（使设备无法正常工作，而且无法远程修复）的风险绝不会是零。部署到世界另一端的设备上时，迭代和添加新功能就变得更加困难。</li>
+		<li>安全性仍然是一个值得关注的问题：如果您的设备需要与外部 API 对话，您必须确保已明确界定了它们使用凭证的范围，以免有人将凭证提取出设备，并以您意想不到的方式使用它们。</li>
+	</ul>
+	<p>我们听过其他平台谈论“边缘计算”，但实际上他们或是“在设备上”，或是“在少数云区域运行计算”（引入延迟）——这两种情况都不能完全解决上述问题。</p>
+	<p>相反，通过支持安全访问 <a href="https://workers.cloudflare.com/" target="_blank">Cloudflare Workers</a>（用于计算）、<a href="https://blog.cloudflare.com/workers-analytics-engine/">Analytics Engine</a>（用于设备遥测）、<a href="https://blog.cloudflare.com/zh-cn/introducing-d1-zh-cn/">D1</a>（作为 SQL 数据库）和 <a href="https://developers.cloudflare.com/pub-sub/" target="_blank">Pub/Sub</a>（用于大规模可扩展的消息传递），IoT 开发人员既可以让计算远离设备，但又仍然可以在<em>设备附近</em>运行计算——得益于我们的<a href="https://www.cloudflare.com/network/" target="_blank">全球网络</a>（超过 275 个城市，数量还在增加）。</p>
+	<p>此外，开发人员还可以使用 <a href="https://developers.cloudflare.com/workers/wrangler/get-started/" target="_blank">Wrangler</a> 等现代工具，既能更快速地迭代，<em>又</em>能更安全地部署软件，避免您的部分 IoT 设备变砖或受到其他损害。</p>
+	<h3 id="--2">如何注册？</h3>
+	<p>如果<a href="https://www.cloudflare.com/register-for-our-iot-platform/" target="_blank">对我们的 IoT 平台感兴趣，您现在就可以注册</a>：我们将在未来几周内与您联系，以更好地了解团队面临的问题，并努力在未来几个月内将我们的封测版交付客户。我们特别关注那些正苦于如何部署一套新的 IoT 设备和/或扩大现有设备规模，无论其用例为何。</p>
+	<p>同时，如需立即开始保护 IoT 设备，您可以开始在 <a href="https://developers.cloudflare.com/api-shield/security/mtls/" target="_blank">API Shield</a> 和 <a href="https://developers.cloudflare.com/pub-sub/" target="_blank">Pub/Sub</a> (MQTT) 上构建。</p>
+</div>
