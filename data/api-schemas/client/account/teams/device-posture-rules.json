@@ -69,7 +69,7 @@
 					"schedule": {
 						"type": "string",
 						"example": "\"1h\"",
-						"description": "Tells the client when to run the device posture check."
+						"description": "Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`."
 					},
 					"match": {
 						"type": "array",
@@ -108,7 +108,7 @@
 					"expiration": {
 						"type": "string",
 						"example": "\"1h\"",
-						"description": "Expire posture results after the specified amount of time."
+						"description": "Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client."
 					}
 				},
 				"required_props": [
@@ -168,7 +168,7 @@
 					"schedule": {
 						"type": "string",
 						"example": "\"1h\"",
-						"description": "Tells the client when to run the device posture check."
+						"description": "Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`."
 					},
 					"match": {
 						"type": "array",
@@ -207,7 +207,7 @@
 					"expiration": {
 						"type": "string",
 						"example": "\"1h\"",
-						"description": "Expire posture results after the specified amount of time."
+						"description": "Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client."
 					}
 				},
 				"required_props": [
@@ -277,7 +277,7 @@
 			"schedule": {
 				"type": "string",
 				"example": "\"1h\"",
-				"description": "Tells the client when to run the device posture check."
+				"description": "Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`."
 			},
 			"match": {
 				"type": "array",
@@ -316,7 +316,7 @@
 			"expiration": {
 				"type": "string",
 				"example": "\"1h\"",
-				"description": "Expire posture results after the specified amount of time."
+				"description": "Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client."
 			}
 		},
 		"required_props": [],

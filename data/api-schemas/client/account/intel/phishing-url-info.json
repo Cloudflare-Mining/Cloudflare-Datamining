@@ -1,0 +1,173 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/intel/phishing-url-info.json",
+	"title": "Phishing URL Information",
+	"description": "Get scan results for a URL or specific submission that has been processed by the Intel Phishing URL Scanner (Beta).",
+	"links": [
+		{
+			"title": "Get results for a URL scan",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/brand-protection/url-info",
+			"method": "GET",
+			"cfOwnership": "intel",
+			"html_id": "phishing-url-information-get-results-for-a-url-scan",
+			"uri": "accounts/:account_identifier/brand-protection/url-info",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/brand-protection/url-info?url=https://www.cloudflare.com&url_id=1\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"url": {
+						"type": "string",
+						"example": "\"https://www.cloudflare.com\"",
+						"description": "URL(s) to filter submissions results by",
+						"format": "url"
+					},
+					"url_id": {
+						"type": "integer",
+						"example": "1",
+						"description": "Submission ID(s) to filter submission results by.",
+						"format": "url_id"
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"url",
+					"url_id"
+				],
+				"objects": [],
+				"example": "{\n  \"url\": \"https://www.cloudflare.com\",\n  \"url_id\": 1\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"url\": \"https://www.cloudflare.com\",\n    \"model_results\": [\n      {\n        \"model_name\": \"MACHINE_LEARNING_v2\",\n        \"model_score\": 0.024\n      }\n    ],\n    \"categorizations\": [\n      {\n        \"category\": \"PHISHING\",\n        \"verification_status\": \"confirmed\"\n      }\n    ],\n    \"rule_matches\": [\n      {\n        \"name\": \"phishkit.social_followers\",\n        \"description\": \"Match frequently used social followers phishing kit\"\n      }\n    ],\n    \"scan_status\": {\n      \"submission_id\": 1,\n      \"status_code\": 200,\n      \"last_processed\": \"Wed, 26 Oct 2022 16:04:51 GMT\"\n    }\n  }\n}"
+		}
+	],
+	"html_id": "phishing-url-information",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"url": {
+				"type": "string",
+				"example": "\"https://www.cloudflare.com\"",
+				"description": "URL that was submitted."
+			},
+			"model_results": {
+				"type": "array",
+				"example": "[\n  {\n    \"model_name\": \"MACHINE_LEARNING_v2\",\n    \"model_score\": 0.024\n  }\n]",
+				"description": "List of model results for completed scans.",
+				"items": {
+					"type": "object",
+					"properties": {
+						"model_name": {
+							"description": "Name of the model.",
+							"type": "string",
+							"example": "MACHINE_LEARNING_v2"
+						},
+						"model_score": {
+							"description": "Score output by the model for this submission.",
+							"type": "number",
+							"example": 0.024
+						}
+					}
+				}
+			},
+			"categorizations": {
+				"type": "array",
+				"example": "[\n  {\n    \"category\": \"PHISHING\",\n    \"verification_status\": \"confirmed\"\n  }\n]",
+				"description": "List of categorizations applied to this submission.",
+				"items": {
+					"type": "object",
+					"properties": {
+						"category": {
+							"description": "Name of the category applied.",
+							"type": "string",
+							"example": "PHISHING"
+						},
+						"verification_status": {
+							"description": "Result of human review for this categorization.",
+							"type": "string",
+							"example": "confirmed"
+						}
+					}
+				}
+			},
+			"rule_matches": {
+				"type": "array",
+				"example": "[\n  {\n    \"name\": \"phishkit.social_followers\",\n    \"description\": \"Match frequently used social followers phishing kit\"\n  }\n]",
+				"description": "List of signatures that matched against site content found when crawling the URL.",
+				"items": {
+					"type": "object",
+					"properties": {
+						"name": {
+							"description": "Name of the signature that matched.",
+							"type": "string",
+							"example": "phishkit.social_followers"
+						},
+						"description": {
+							"description": "Description of the signature that matched.",
+							"type": "string",
+							"example": "Match frequently used social followers phishing kit"
+						},
+						"blocking": {
+							"description": "For internal use.",
+							"type": "boolean"
+						},
+						"banning": {
+							"description": "For internal use.",
+							"type": "boolean"
+						}
+					}
+				}
+			},
+			"scan_status": {
+				"type": "object",
+				"example": "{\n  \"submission_id\": 1,\n  \"status_code\": 200,\n  \"last_processed\": \"Wed, 26 Oct 2022 16:04:51 GMT\"\n}",
+				"properties": {
+					"submission_id": {
+						"type": "integer",
+						"example": "1",
+						"description": "ID of the most recent submission."
+					},
+					"status_code": {
+						"type": "integer",
+						"example": "200",
+						"description": "Status code that the crawler received when loading the submitted URL."
+					},
+					"last_processed": {
+						"type": "string",
+						"example": "\"Wed, 26 Oct 2022 16:04:51 GMT\"",
+						"description": "Timestamp of when the submission was processed."
+					},
+					"scan_complete": {
+						"type": "boolean",
+						"description": "For internal use."
+					}
+				},
+				"description": "Status of the most recent scan found."
+			},
+			"screenshot_path": {
+				"type": "string",
+				"description": "For internal use."
+			},
+			"screenshot_download_signature": {
+				"type": "string",
+				"description": "For internal use."
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"url",
+			"model_results",
+			"categorizations",
+			"rule_matches",
+			"scan_status",
+			"screenshot_path",
+			"screenshot_download_signature"
+		],
+		"objects": [],
+		"example": "{\n  \"url\": \"https://www.cloudflare.com\",\n  \"model_results\": [\n    {\n      \"model_name\": \"MACHINE_LEARNING_v2\",\n      \"model_score\": 0.024\n    }\n  ],\n  \"categorizations\": [\n    {\n      \"category\": \"PHISHING\",\n      \"verification_status\": \"confirmed\"\n    }\n  ],\n  \"rule_matches\": [\n    {\n      \"name\": \"phishkit.social_followers\",\n      \"description\": \"Match frequently used social followers phishing kit\"\n    }\n  ],\n  \"scan_status\": {\n    \"submission_id\": 1,\n    \"status_code\": 200,\n    \"last_processed\": \"Wed, 26 Oct 2022 16:04:51 GMT\"\n  }\n}",
+		"title": "Phishing URL Information",
+		"description": "Get scan results for a URL or specific submission that has been processed by the Intel Phishing URL Scanner (Beta)."
+	}
+}

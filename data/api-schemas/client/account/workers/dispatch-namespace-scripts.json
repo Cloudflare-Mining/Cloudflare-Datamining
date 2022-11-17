@@ -1,0 +1,897 @@
+{
+	"type": "object",
+	"title": "Workers Dispatch Namespace Script",
+	"description": "A script uploaded to a dispatch namespace.",
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/workers/dispatch-namespace-scripts.json",
+	"links": [
+		{
+			"href": "/workers/dispatch/namespaces/{#/definitions/dispatch-namespace-name}/scripts",
+			"rel": "",
+			"title": "List Namespace Scripts",
+			"mediaType": "application/json",
+			"method": "GET",
+			"encType": "application/json",
+			"description": "Lists all scripts in a Workers dispatch namespaces.",
+			"cfPrivate": false,
+			"cfOwnership": "workers",
+			"html_id": "workers-dispatch-namespace-script-list-namespace-scripts",
+			"uri": "/workers/dispatch/namespaces/{#/definitions/dispatch-namespace-name}/scripts",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4//workers/dispatch/namespaces/{#/definitions/dispatch-namespace-name}/scripts?success=true&errors=&messages=&result=undefined\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {},
+				"required_props": [],
+				"optional_props": [],
+				"objects": [
+					{
+						"all_props": {},
+						"required_props": [
+							"success",
+							"errors",
+							"messages",
+							"result"
+						],
+						"optional_props": [],
+						"objects": [
+							{
+								"all_props": {
+									"success": {
+										"type": "boolean",
+										"example": "true",
+										"description": "Whether the API call was successful or not.",
+										"enum": [
+											true
+										]
+									},
+									"errors": {
+										"type": "array",
+										"example": "[]",
+										"items": {
+											"type": "object",
+											"required": [
+												"code",
+												"message"
+											],
+											"properties": {
+												"code": {
+													"type": "integer",
+													"minimum": 1000
+												},
+												"message": {
+													"type": "string"
+												}
+											},
+											"uniqueItems": true
+										}
+									},
+									"messages": {
+										"type": "array",
+										"example": "[]",
+										"items": {
+											"type": "object",
+											"required": [
+												"code",
+												"message"
+											],
+											"properties": {
+												"code": {
+													"type": "integer",
+													"minimum": 1000
+												},
+												"message": {
+													"type": "string"
+												}
+											},
+											"uniqueItems": true
+										}
+									},
+									"result": {
+										"type": [
+											"object",
+											"array",
+											"string"
+										]
+									}
+								},
+								"required_props": [],
+								"optional_props": [
+									"success",
+									"errors",
+									"messages",
+									"result"
+								],
+								"objects": [],
+								"example": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": []\n}"
+							},
+							{
+								"all_props": {
+									"success": {
+										"type": "boolean",
+										"example": "false",
+										"description": "Whether the API call was successful or not.",
+										"enum": [
+											false
+										]
+									},
+									"errors": {
+										"example": "[\n  {}\n]",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"minimum": 1000
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"allOf": [
+											{
+												"type": "array",
+												"items": {
+													"type": "object",
+													"required": [
+														"code",
+														"message"
+													],
+													"properties": {
+														"code": {
+															"type": "integer",
+															"minimum": 1000
+														},
+														"message": {
+															"type": "string"
+														}
+													},
+													"uniqueItems": true
+												},
+												"example": []
+											}
+										],
+										"minLength": 1
+									},
+									"messages": {
+										"example": "[\n  {}\n]",
+										"properties": {
+											"code": {
+												"type": "integer",
+												"minimum": 1000
+											},
+											"message": {
+												"type": "string"
+											}
+										},
+										"allOf": [
+											{
+												"type": "array",
+												"items": {
+													"type": "object",
+													"required": [
+														"code",
+														"message"
+													],
+													"properties": {
+														"code": {
+															"type": "integer",
+															"minimum": 1000
+														},
+														"message": {
+															"type": "string"
+														}
+													},
+													"uniqueItems": true
+												},
+												"example": []
+											}
+										]
+									},
+									"result": {
+										"type": "null",
+										"example": "null",
+										"enum": [
+											null
+										]
+									}
+								},
+								"required_props": [],
+								"optional_props": [
+									"success",
+									"errors",
+									"messages",
+									"result"
+								],
+								"objects": [],
+								"example": "{\n  \"success\": false,\n  \"errors\": [\n    {}\n  ],\n  \"messages\": [\n    {}\n  ],\n  \"result\": null\n}"
+							}
+						],
+						"example": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": []\n}",
+						"which_of": "oneOf",
+						"description": "Common schema for all Cloudflare v4 API responses."
+					},
+					{
+						"all_props": {
+							"result": {
+								"type": "array",
+								"example": "[\n  {\n    \"tags\": [\n      {}\n    ],\n    \"handlers\": [\n      {}\n    ],\n    \"named_handlers\": [\n      {\n        \"handlers\": [\n          {}\n        ]\n      }\n    ],\n    \"compatibility_flags\": [\n      {}\n    ]\n  }\n]",
+								"items": {
+									"properties": {
+										"created_on": {
+											"type": "string",
+											"format": "date-time"
+										},
+										"modified_on": {
+											"type": "string",
+											"format": "date-time"
+										},
+										"id": {
+											"type": "string"
+										},
+										"tag": {
+											"type": "string"
+										},
+										"etag_bypass": {
+											"type": "string"
+										},
+										"pipeline_hash": {
+											"type": "string"
+										},
+										"tags": {
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
+										},
+										"etag": {
+											"type": "string"
+										},
+										"handlers": {
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
+										},
+										"named_handlers": {
+											"items": {
+												"properties": {
+													"name": {
+														"type": "string"
+													},
+													"handlers": {
+														"items": {
+															"type": "string"
+														},
+														"type": "array"
+													}
+												},
+												"additionalProperties": false,
+												"type": "object",
+												"required": [
+													"name",
+													"handlers"
+												]
+											},
+											"type": "array"
+										},
+										"last_deployed_from": {
+											"type": "string"
+										},
+										"migration_tag": {
+											"type": "string"
+										},
+										"compatibility_date": {
+											"type": "string"
+										},
+										"compatibility_flags": {
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
+										},
+										"usage_model": {
+											"type": "string"
+										}
+									},
+									"additionalProperties": false,
+									"type": "object",
+									"required": [
+										"created_on",
+										"modified_on",
+										"id",
+										"tag",
+										"tags",
+										"etag",
+										"handlers",
+										"last_deployed_from"
+									]
+								}
+							},
+							"result_info": {
+								"type": "object",
+								"example": "{}",
+								"properties": {
+									"count": {
+										"type": "number",
+										"description": "Total results returned based on your search parameters",
+										"examples": [
+											10
+										]
+									},
+									"cursor": {
+										"type": "number",
+										"description": "Cursor to use when fetching the next page of results",
+										"examples": [
+											"next-script-name"
+										]
+									}
+								}
+							}
+						},
+						"required_props": [],
+						"optional_props": [
+							"result",
+							"result_info"
+						],
+						"objects": [],
+						"example": "{\n  \"result\": [\n    {\n      \"tags\": [\n        {}\n      ],\n      \"handlers\": [\n        {}\n      ],\n      \"named_handlers\": [\n        {\n          \"handlers\": [\n            {}\n          ]\n        }\n      ],\n      \"compatibility_flags\": [\n        {}\n      ]\n    }\n  ],\n  \"result_info\": {}\n}"
+					}
+				],
+				"example": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": []\n}",
+				"which_of": "anyOf",
+				"description": "Schema for an API response from Cloudflare that contains multiple result objects"
+			}
+		},
+		{
+			"href": "/workers/dispatch/namespaces/{#/definitions/dispatch-namespace-name}/scripts/{#/definitions/dispatch-namespace-script-name}",
+			"rel": "",
+			"title": "Create Namespace Script",
+			"mediaType": "application/json",
+			"method": "POST",
+			"encType": "application/json",
+			"description": "Uploads a script to a Workers dispatch namespace. This API uses the same input as our other script upload APIs.",
+			"cfPrivate": false,
+			"cfOwnership": "workers",
+			"html_id": "workers-dispatch-namespace-script-create-namespace-script",
+			"uri": "/workers/dispatch/namespaces/{#/definitions/dispatch-namespace-name}/scripts/{#/definitions/dispatch-namespace-script-name}",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4//workers/dispatch/namespaces/{#/definitions/dispatch-namespace-name}/scripts/{#/definitions/dispatch-namespace-script-name}\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"success\":true,\"errors\":[],\"messages\":[],\"result\":{}}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"result": {
+						"type": "object",
+						"example": "{}",
+						"properties": {
+							"dispatch_namespace": {
+								"type": "string",
+								"description": "Name of the Workers dispatch namespace, any valid UTF8 string.",
+								"examples": [
+									"my-dispatch-namespace"
+								]
+							},
+							"created_on": {
+								"type": "string",
+								"format": "date-time"
+							},
+							"modified_on": {
+								"type": "string",
+								"format": "date-time"
+							}
+						},
+						"additionalProperties": false
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"result"
+				],
+				"objects": [
+					{
+						"all_props": {
+							"success": {
+								"type": "boolean",
+								"example": "true",
+								"description": "Whether the API call was successful or not.",
+								"enum": [
+									true
+								]
+							},
+							"errors": {
+								"type": "array",
+								"example": "[]",
+								"items": {
+									"type": "object",
+									"required": [
+										"code",
+										"message"
+									],
+									"properties": {
+										"code": {
+											"type": "integer",
+											"minimum": 1000
+										},
+										"message": {
+											"type": "string"
+										}
+									},
+									"uniqueItems": true
+								}
+							},
+							"messages": {
+								"type": "array",
+								"example": "[]",
+								"items": {
+									"type": "object",
+									"required": [
+										"code",
+										"message"
+									],
+									"properties": {
+										"code": {
+											"type": "integer",
+											"minimum": 1000
+										},
+										"message": {
+											"type": "string"
+										}
+									},
+									"uniqueItems": true
+								}
+							},
+							"result": {
+								"type": [
+									"object",
+									"array",
+									"string"
+								]
+							}
+						},
+						"required_props": [],
+						"optional_props": [
+							"success",
+							"errors",
+							"messages",
+							"result"
+						],
+						"objects": [],
+						"example": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": []\n}"
+					},
+					{
+						"all_props": {
+							"success": {
+								"type": "boolean",
+								"example": "false",
+								"description": "Whether the API call was successful or not.",
+								"enum": [
+									false
+								]
+							},
+							"errors": {
+								"example": "[\n  {}\n]",
+								"properties": {
+									"code": {
+										"type": "integer",
+										"minimum": 1000
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"allOf": [
+									{
+										"type": "array",
+										"items": {
+											"type": "object",
+											"required": [
+												"code",
+												"message"
+											],
+											"properties": {
+												"code": {
+													"type": "integer",
+													"minimum": 1000
+												},
+												"message": {
+													"type": "string"
+												}
+											},
+											"uniqueItems": true
+										},
+										"example": []
+									}
+								],
+								"minLength": 1
+							},
+							"messages": {
+								"example": "[\n  {}\n]",
+								"properties": {
+									"code": {
+										"type": "integer",
+										"minimum": 1000
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"allOf": [
+									{
+										"type": "array",
+										"items": {
+											"type": "object",
+											"required": [
+												"code",
+												"message"
+											],
+											"properties": {
+												"code": {
+													"type": "integer",
+													"minimum": 1000
+												},
+												"message": {
+													"type": "string"
+												}
+											},
+											"uniqueItems": true
+										},
+										"example": []
+									}
+								]
+							},
+							"result": {
+								"type": "null",
+								"example": "null",
+								"enum": [
+									null
+								]
+							}
+						},
+						"required_props": [],
+						"optional_props": [
+							"success",
+							"errors",
+							"messages",
+							"result"
+						],
+						"objects": [],
+						"example": "{\n  \"success\": false,\n  \"errors\": [\n    {}\n  ],\n  \"messages\": [\n    {}\n  ],\n  \"result\": null\n}"
+					}
+				],
+				"example": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {}\n}",
+				"which_of": "oneOf"
+			}
+		},
+		{
+			"href": "/workers/dispatch/namespaces/{#/definitions/dispatch-namespace-name}/scripts/{#/definitions/dispatch-namespace-script-name}",
+			"rel": "",
+			"title": "Get Namespace Script",
+			"mediaType": "application/json",
+			"method": "GET",
+			"encType": "application/json",
+			"description": "Returns details about a script in a Workers dispatch namespace.",
+			"cfPrivate": false,
+			"cfOwnership": "workers",
+			"html_id": "workers-dispatch-namespace-script-get-namespace-script",
+			"uri": "/workers/dispatch/namespaces/{#/definitions/dispatch-namespace-name}/scripts/{#/definitions/dispatch-namespace-script-name}",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4//workers/dispatch/namespaces/{#/definitions/dispatch-namespace-name}/scripts/{#/definitions/dispatch-namespace-script-name}?success=true&errors=&messages=&result=[object Object]\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"result": {
+						"type": "object",
+						"example": "{}",
+						"properties": {
+							"dispatch_namespace": {
+								"type": "string",
+								"description": "Name of the Workers dispatch namespace, any valid UTF8 string.",
+								"examples": [
+									"my-dispatch-namespace"
+								]
+							},
+							"created_on": {
+								"type": "string",
+								"format": "date-time"
+							},
+							"modified_on": {
+								"type": "string",
+								"format": "date-time"
+							}
+						},
+						"additionalProperties": false
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"result"
+				],
+				"objects": [
+					{
+						"all_props": {
+							"success": {
+								"type": "boolean",
+								"example": "true",
+								"description": "Whether the API call was successful or not.",
+								"enum": [
+									true
+								]
+							},
+							"errors": {
+								"type": "array",
+								"example": "[]",
+								"items": {
+									"type": "object",
+									"required": [
+										"code",
+										"message"
+									],
+									"properties": {
+										"code": {
+											"type": "integer",
+											"minimum": 1000
+										},
+										"message": {
+											"type": "string"
+										}
+									},
+									"uniqueItems": true
+								}
+							},
+							"messages": {
+								"type": "array",
+								"example": "[]",
+								"items": {
+									"type": "object",
+									"required": [
+										"code",
+										"message"
+									],
+									"properties": {
+										"code": {
+											"type": "integer",
+											"minimum": 1000
+										},
+										"message": {
+											"type": "string"
+										}
+									},
+									"uniqueItems": true
+								}
+							},
+							"result": {
+								"type": [
+									"object",
+									"array",
+									"string"
+								]
+							}
+						},
+						"required_props": [],
+						"optional_props": [
+							"success",
+							"errors",
+							"messages",
+							"result"
+						],
+						"objects": [],
+						"example": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": []\n}"
+					},
+					{
+						"all_props": {
+							"success": {
+								"type": "boolean",
+								"example": "false",
+								"description": "Whether the API call was successful or not.",
+								"enum": [
+									false
+								]
+							},
+							"errors": {
+								"example": "[\n  {}\n]",
+								"properties": {
+									"code": {
+										"type": "integer",
+										"minimum": 1000
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"allOf": [
+									{
+										"type": "array",
+										"items": {
+											"type": "object",
+											"required": [
+												"code",
+												"message"
+											],
+											"properties": {
+												"code": {
+													"type": "integer",
+													"minimum": 1000
+												},
+												"message": {
+													"type": "string"
+												}
+											},
+											"uniqueItems": true
+										},
+										"example": []
+									}
+								],
+								"minLength": 1
+							},
+							"messages": {
+								"example": "[\n  {}\n]",
+								"properties": {
+									"code": {
+										"type": "integer",
+										"minimum": 1000
+									},
+									"message": {
+										"type": "string"
+									}
+								},
+								"allOf": [
+									{
+										"type": "array",
+										"items": {
+											"type": "object",
+											"required": [
+												"code",
+												"message"
+											],
+											"properties": {
+												"code": {
+													"type": "integer",
+													"minimum": 1000
+												},
+												"message": {
+													"type": "string"
+												}
+											},
+											"uniqueItems": true
+										},
+										"example": []
+									}
+								]
+							},
+							"result": {
+								"type": "null",
+								"example": "null",
+								"enum": [
+									null
+								]
+							}
+						},
+						"required_props": [],
+						"optional_props": [
+							"success",
+							"errors",
+							"messages",
+							"result"
+						],
+						"objects": [],
+						"example": "{\n  \"success\": false,\n  \"errors\": [\n    {}\n  ],\n  \"messages\": [\n    {}\n  ],\n  \"result\": null\n}"
+					}
+				],
+				"example": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {}\n}",
+				"which_of": "oneOf"
+			}
+		}
+	],
+	"extraProperties": null,
+	"example": "",
+	"cfExtendedDescription": "**For more detailed documentation on using the API for Workers see the [Workers API](https://workers.cloudflare.com/docs/reference/tooling/api/).**",
+	"html_id": "workers-dispatch-namespace-script",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"created_on": {
+				"type": "string",
+				"format": "date-time"
+			},
+			"modified_on": {
+				"type": "string",
+				"format": "date-time"
+			},
+			"id": {
+				"type": "string"
+			},
+			"tag": {
+				"type": "string"
+			},
+			"etag_bypass": {
+				"type": "string"
+			},
+			"pipeline_hash": {
+				"type": "string"
+			},
+			"tags": {
+				"type": "array",
+				"example": "[\n  {}\n]",
+				"items": {
+					"type": "string"
+				}
+			},
+			"etag": {
+				"type": "string"
+			},
+			"handlers": {
+				"type": "array",
+				"example": "[\n  {}\n]",
+				"items": {
+					"type": "string"
+				}
+			},
+			"named_handlers": {
+				"type": "array",
+				"example": "[\n  {\n    \"handlers\": [\n      {}\n    ]\n  }\n]",
+				"items": {
+					"properties": {
+						"name": {
+							"type": "string"
+						},
+						"handlers": {
+							"items": {
+								"type": "string"
+							},
+							"type": "array"
+						}
+					},
+					"additionalProperties": false,
+					"type": "object",
+					"required": [
+						"name",
+						"handlers"
+					]
+				}
+			},
+			"last_deployed_from": {
+				"type": "string"
+			},
+			"migration_tag": {
+				"type": "string"
+			},
+			"compatibility_date": {
+				"type": "string"
+			},
+			"compatibility_flags": {
+				"type": "array",
+				"example": "[\n  {}\n]",
+				"items": {
+					"type": "string"
+				}
+			},
+			"usage_model": {
+				"type": "string"
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"created_on",
+			"modified_on",
+			"id",
+			"tag",
+			"etag_bypass",
+			"pipeline_hash",
+			"tags",
+			"etag",
+			"handlers",
+			"named_handlers",
+			"last_deployed_from",
+			"migration_tag",
+			"compatibility_date",
+			"compatibility_flags",
+			"usage_model"
+		],
+		"objects": [],
+		"example": "{\n  \"tags\": [\n    {}\n  ],\n  \"handlers\": [\n    {}\n  ],\n  \"named_handlers\": [\n    {\n      \"handlers\": [\n        {}\n      ]\n    }\n  ],\n  \"compatibility_flags\": [\n    {}\n  ]\n}",
+		"title": "Workers Dispatch Namespace Script",
+		"description": "A script uploaded to a dispatch namespace."
+	}
+}
