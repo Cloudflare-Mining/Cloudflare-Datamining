@@ -213,6 +213,14 @@ components:
         - type
         - name
         - content
+    Cloudflare Client API_identifier:
+      ref: ""
+      value:
+        extensionprops: {}
+        type: string
+        description: Policy identifier.
+        example: f267e341f3dd4697bd3b9f71dd96247f
+        readOnly: true
     CustomNS:
       ref: ""
       value:
@@ -16291,9 +16299,10 @@ components:
       value:
         extensionprops: {}
         type: string
-        description: Policy identifier.
-        example: f267e341f3dd4697bd3b9f71dd96247f
+        description: Identifier
+        example: 023e105f4ecef8ad9ca31a8372d0c353
         readOnly: true
+        maxLength: 32
     identity:
       ref: ""
       value:
@@ -23940,7 +23949,7 @@ components:
             ref: '#/components/schemas/effect'
             value: null
           id:
-            ref: '#/components/schemas/identifier'
+            ref: '#/components/schemas/Cloudflare Client API_identifier'
             value: null
           permission_groups:
             ref: '#/components/schemas/permission_groups'
@@ -96870,6 +96879,74 @@ paths:
       - api_email: []
         api_key: []
       - api_token: []
+  /zones/{zone_id}/activation_check:
+    extensionprops: {}
+    put:
+      extensionprops: {}
+      tags:
+      - Client
+      summary: Rerun the Activation Check
+      description: |-
+        Triggeres a new activation check for a PENDING Zone. This can be
+        triggered every 5 min for paygo/ent customers, every hour for FREE
+        Zones.
+      operationId: put-zones-zone_id-activation_check
+      parameters:
+      - ref: ""
+        value:
+          extensionprops: {}
+          name: zone_id
+          in: path
+          description: Zone ID
+          required: true
+          schema:
+            ref: '#/components/schemas/identifier'
+            value: null
+      responses:
+        4xx:
+          ref: ""
+          value:
+            extensionprops: {}
+            description: Client Error
+            content:
+              application/json:
+                extensionprops: {}
+                schema:
+                  ref: ""
+                  value:
+                    extensionprops: {}
+                    allOf:
+                    - ref: '#/components/schemas/api-response-common-failure'
+                      value: null
+        "200":
+          ref: ""
+          value:
+            extensionprops: {}
+            description: Successful Response
+            content:
+              application/json:
+                extensionprops: {}
+                schema:
+                  ref: ""
+                  value:
+                    extensionprops: {}
+                    allOf:
+                    - ref: '#/components/schemas/api-response-single'
+                      value: null
+                    - ref: ""
+                      value:
+                        extensionprops: {}
+                        type: object
+                        properties:
+                          result:
+                            ref: ""
+                            value:
+                              extensionprops: {}
+                              type: object
+                              properties:
+                                id:
+                                  ref: '#/components/schemas/identifier'
+                                  value: null
   /zones/{zone_id}/api_gateway/configuration:
     extensionprops: {}
     get:
