@@ -399,3 +399,165 @@ export const AccountFirewallRulesetHTTPApplication = eg.object({
 export type AccountFirewallRulesetHTTPApplication = TypeFromCodec<
   typeof AccountFirewallRulesetHTTPApplication
 >;
+
+const RuleRateLimit = eg.object({
+  characteristics: eg.array(eg.string),
+  period: eg.number,
+  requests_per_period: eg.number,
+  mitigation_timeout: eg.number,
+  requests_to_origin: eg.boolean,
+  counting_expression: eg.string
+});
+
+// Common properties across all rules.
+const BaseRule = eg.object({
+  description: eg.string,
+  enabled: eg.boolean,
+  id: eg.string.optional,
+  last_updated: eg.string.optional,
+  version: eg.string.optional,
+  expression: eg.string.optional,
+  ratelimit: RuleRateLimit.optional,
+  action: eg.string.optional,
+  action_parameters: eg.object({
+    id: eg.string,
+    version: eg.string
+  }).optional
+});
+
+// Common properties across all rulesets.
+const BaseRuleset = eg.object({
+  id: eg.string,
+  name: eg.string,
+  description: eg.string,
+  version: eg.string,
+  last_updated: eg.string,
+  enabled: eg.boolean
+});
+
+// Properties unique to phase http_request_firewall_custom of kind root.
+const AccountCustomRulesetEntrypoint = eg.intersection([
+  BaseRuleset,
+  eg.object({
+    kind: eg.literal('root'),
+    phase: eg.literal('http_request_firewall_custom'),
+    rules: eg.array(
+      eg.intersection([
+        BaseRule,
+        eg.object({
+          action: eg.literal('execute'),
+          action_parameters: eg.object({
+            id: eg.string,
+            version: eg.string,
+            // TODO: set override type
+            override: eg.any.optional,
+            matched_data: eg.object({
+              public_key: eg.string
+            }).optional
+          }),
+          expression: eg.string
+        })
+      ])
+    ).optional
+  })
+]);
+
+export type AccountCustomRulesetEntrypoint = TypeFromCodec<
+  typeof AccountCustomRulesetEntrypoint
+>;
+
+// Properties unique to phase 'http_request_firewall_managed' of kind root.
+const AccountManagedEntrypoint = eg.intersection([
+  BaseRuleset,
+  eg.object({
+    kind: eg.literal('root'),
+    phase: eg.literal('http_request_firewall_managed'),
+    rules: eg.array(
+      eg.intersection([
+        BaseRule,
+        eg.object({
+          action: eg.literal('execute'),
+          action_parameters: eg.object({
+            id: eg.string,
+            version: eg.string
+          }),
+          expression: eg.string
+        })
+      ])
+    ).optional
+  })
+]);
+
+export type AccountManagedEntrypoint = TypeFromCodec<
+  typeof AccountManagedEntrypoint
+>;
+
+const CustomRuleActions = eg.union([
+  eg.literal('managed_challenge'),
+  eg.literal('log'),
+  eg.literal('block'),
+  eg.literal('js_challenge'),
+  eg.literal('skip'),
+  eg.literal('challenge')
+]);
+
+// Properties unique to phase http_request_firewall_custom of kind custom.
+const AccountCustomRuleset = eg.intersection([
+  BaseRuleset,
+  eg.object({
+    kind: eg.literal('custom'),
+    phase: eg.literal('http_request_firewall_custom'),
+    rules: eg.array(
+      eg.intersection([
+        eg.object({
+          action: CustomRuleActions
+        }),
+        BaseRule
+      ])
+    )
+  })
+]);
+
+export type AccountCustomRuleset = TypeFromCodec<typeof AccountCustomRuleset>;
+
+// Properties unique to phase http_ratelimit of kind custom.
+const AccountRateLimitingRuleset = eg.intersection([
+  BaseRuleset,
+  eg.object({
+    kind: eg.literal('custom'),
+    phase: eg.literal('http_ratelimit'),
+    rules: eg.array(
+      eg.intersection([
+        eg.object({
+          action: CustomRuleActions,
+          ratelimit: RuleRateLimit
+        }),
+        BaseRule
+      ])
+    )
+  })
+]);
+
+export type AccountRateLimitingRuleset = TypeFromCodec<
+  typeof AccountRateLimitingRuleset
+>;
+
+const GenericRuleset = eg.union([
+  AccountRateLimitingRuleset,
+  AccountCustomRulesetEntrypoint,
+  AccountCustomRuleset,
+  AccountManagedEntrypoint
+]);
+
+type ElementType<T> =
+  // is type T an array of elements of type U? If so, return U. Otherwise, return the "never" type (the input is not an array).
+  T extends (infer U)[] ? U : never;
+
+export type GenericRulesetType = TypeFromCodec<typeof GenericRuleset>;
+export type BaseRule = ElementType<
+  GenericRulesetType['rules'] & TypeFromCodec<typeof BaseRule>
+>;
+
+export type GenericRuleset = Omit<GenericRulesetType, 'rules'> & {
+  rules: Array<BaseRule>;
+};
