@@ -26,7 +26,7 @@
 </ul>
 <p><strong>Examples of desirable skills, knowledge, and experience</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">4-6 years of&nbsp;experience in Compliance, External or Internal Audit&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">5-7 years of experience in Compliance, External or Internal Audit&nbsp;</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Considerable knowledge and a proven track record in applying internal controls and accounting principles and practices, specifically as it relates to SOX risk assessment, process documentation and flowcharting, control design assessment, test plan design, testing of operational effectiveness and documenting of deficiencies</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong understanding of the internal controls framework (understand CoBIT and COSO)</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Good knowledge of and skill in applying internal auditing and accounting principles and practices, specifically audit methodologies, risk assessment, sampling techniques, audit documentation and report writing</span></li>
