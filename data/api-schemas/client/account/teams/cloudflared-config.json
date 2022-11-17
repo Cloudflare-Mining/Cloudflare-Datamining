@@ -1,12 +1,12 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/account/teams/cloudflared-config.json",
 	"title": "Cloudflare Tunnel configuration",
-	"description": "Remote Configuration for Cloudflare tunnel.",
+	"description": "Configuration for a remotely-managed Cloudflare Tunnel.",
 	"type": "object",
 	"links": [
 		{
-			"title": "Put Configuration",
-			"description": "Add or update a configuration for a cloudflared tunnel.",
+			"title": "Put configuration",
+			"description": "Adds or updates the configuration for a remotely-managed tunnel.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/cfd_tunnel/{#/definitions/tunnel_id}/configurations",
 			"method": "PUT",
@@ -22,7 +22,7 @@
 					"config": {
 						"type": "object",
 						"example": "\"{\\\"warp-routing\\\": {\\\"enabled\\\": true},  \\\"originRequest\\\" : {\\\"connectTimeout\\\": 10}, \\\"ingress\\\" : [ {\\\"hostname\\\": \\\"test\\\", \\\"service\\\": \\\"https://localhost:8000\\\" } , {\\\"service\\\": \\\"http_status:404\\\"} ]}\"",
-						"description": "This is a json that conforms to the same syntax rules as the config.yaml.",
+						"description": "The tunnel configuration and ingress rules in JSON format. For syntax and parameters, refer to the [configuration file documentation](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/configuration-file/#file-structure).",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#"
 					}
 				},
@@ -33,11 +33,11 @@
 				"objects": [],
 				"example": "{\n  \"config\": \"{\\\"warp-routing\\\": {\\\"enabled\\\": true},  \\\"originRequest\\\" : {\\\"connectTimeout\\\": 10}, \\\"ingress\\\" : [ {\\\"hostname\\\": \\\"test\\\", \\\"service\\\": \\\"https://localhost:8000\\\" } , {\\\"service\\\": \\\"http_status:404\\\"} ]}\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"config\": \"{\\\"warp-routing\\\": {\\\"enabled\\\": true},  \\\"originRequest\\\" : {\\\"connectTimeout\\\": 10}, \\\"ingress\\\" : [ {\\\"hostname\\\": \\\"test\\\", \\\"service\\\": \\\"https://localhost:8000\\\" } , {\\\"service\\\": \\\"http_status:404\\\"} ]}\",\n    \"tunnel_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\n    \"version\": 5,\n    \"created_at\": \"2021-01-25T18:22:34.317854Z\"\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"config\": \"{\\\"warp-routing\\\": {\\\"enabled\\\": true},  \\\"originRequest\\\" : {\\\"connectTimeout\\\": 10}, \\\"ingress\\\" : [ {\\\"hostname\\\": \\\"test\\\", \\\"service\\\": \\\"https://localhost:8000\\\" } , {\\\"service\\\": \\\"http_status:404\\\"} ]}\",\n    \"tunnel_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\n    \"version\": 15,\n    \"created_at\": \"2021-01-25T18:22:34.317854Z\"\n  }\n}"
 		},
 		{
-			"title": "Get Configuration",
-			"description": "Get the configuration of a specific Cloudflare Tunnel.",
+			"title": "Get configuration",
+			"description": "Gets the configuration for a remotely-managed tunnel",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/cfd_tunnel/{#/definitions/tunnel_id}/configurations",
 			"method": "GET",
@@ -45,7 +45,7 @@
 			"html_id": "cloudflare-tunnel-configuration-get-configuration",
 			"uri": "accounts/:account_identifier/cfd_tunnel/:tunnel_id/configurations",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/cfd_tunnel/f70ff985-a4ef-4643-bbbc-4a0ed4fc8415/configurations\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"config\": \"{\\\"warp-routing\\\": {\\\"enabled\\\": true},  \\\"originRequest\\\" : {\\\"connectTimeout\\\": 10}, \\\"ingress\\\" : [ {\\\"hostname\\\": \\\"test\\\", \\\"service\\\": \\\"https://localhost:8000\\\" } , {\\\"service\\\": \\\"http_status:404\\\"} ]}\",\n    \"tunnel_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\n    \"version\": 5,\n    \"created_at\": \"2021-01-25T18:22:34.317854Z\"\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"config\": \"{\\\"warp-routing\\\": {\\\"enabled\\\": true},  \\\"originRequest\\\" : {\\\"connectTimeout\\\": 10}, \\\"ingress\\\" : [ {\\\"hostname\\\": \\\"test\\\", \\\"service\\\": \\\"https://localhost:8000\\\" } , {\\\"service\\\": \\\"http_status:404\\\"} ]}\",\n    \"tunnel_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\n    \"version\": 15,\n    \"created_at\": \"2021-01-25T18:22:34.317854Z\"\n  }\n}"
 		}
 	],
 	"html_id": "cloudflare-tunnel-configuration",
@@ -57,27 +57,26 @@
 			"config": {
 				"type": "object",
 				"example": "\"{\\\"warp-routing\\\": {\\\"enabled\\\": true},  \\\"originRequest\\\" : {\\\"connectTimeout\\\": 10}, \\\"ingress\\\" : [ {\\\"hostname\\\": \\\"test\\\", \\\"service\\\": \\\"https://localhost:8000\\\" } , {\\\"service\\\": \\\"http_status:404\\\"} ]}\"",
-				"description": "JSON format of a cloudflared configuration.",
+				"description": "The tunnel configuration and ingress rules in JSON format. For syntax and parameters, refer to the [configuration file documentation](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/configuration-file/#file-structure).",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#"
 			},
 			"tunnel_id": {
 				"type": "string",
 				"example": "\"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"",
-				"description": "UUID of the Tunnel the route belongs to.",
+				"description": "UUID of the tunnel.",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 				"readOnly": true,
 				"maxLength": 36
 			},
 			"version": {
 				"type": "integer",
-				"example": "5",
-				"description": "version indicating configuration.",
-				"$schema": "http://json-schema.org/draft-04/hyper-schema#"
+				"example": "15",
+				"description": "The version of the remote tunnel configuration. Used internally to sync cloudflared with the Zero Trust dashboard."
 			},
 			"created_at": {
 				"type": "string",
 				"example": "\"2021-01-25T18:22:34.317854Z\"",
-				"description": "Timestamps when the config was created, formatted in RFC 3339.",
+				"description": "Timestamp of when the config was created.",
 				"format": "date-time"
 			}
 		},
@@ -90,8 +89,8 @@
 			"created_at"
 		],
 		"objects": [],
-		"example": "{\n  \"config\": \"{\\\"warp-routing\\\": {\\\"enabled\\\": true},  \\\"originRequest\\\" : {\\\"connectTimeout\\\": 10}, \\\"ingress\\\" : [ {\\\"hostname\\\": \\\"test\\\", \\\"service\\\": \\\"https://localhost:8000\\\" } , {\\\"service\\\": \\\"http_status:404\\\"} ]}\",\n  \"tunnel_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\n  \"version\": 5,\n  \"created_at\": \"2021-01-25T18:22:34.317854Z\"\n}",
+		"example": "{\n  \"config\": \"{\\\"warp-routing\\\": {\\\"enabled\\\": true},  \\\"originRequest\\\" : {\\\"connectTimeout\\\": 10}, \\\"ingress\\\" : [ {\\\"hostname\\\": \\\"test\\\", \\\"service\\\": \\\"https://localhost:8000\\\" } , {\\\"service\\\": \\\"http_status:404\\\"} ]}\",\n  \"tunnel_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\n  \"version\": 15,\n  \"created_at\": \"2021-01-25T18:22:34.317854Z\"\n}",
 		"title": "Cloudflare Tunnel configuration",
-		"description": "Remote Configuration for Cloudflare tunnel."
+		"description": "Configuration for a remotely-managed Cloudflare Tunnel."
 	}
 }

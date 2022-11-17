@@ -276,7 +276,7 @@
 								"readOnly": true
 							}
 						},
-						"description": "The desired plan for the zone. Changing this value will create/cancel associated subscriptions. To view available plans for this zone, see Zone Plans."
+						"description": "(Deprecated) Please use the /zones/:identifier/subscription API to update a zone's plan.\nThe desired plan for the zone. Changing this value will create/cancel associated subscriptions. To view available plans for this zone, see Zone Plans."
 					},
 					"type": {
 						"type": "string",
