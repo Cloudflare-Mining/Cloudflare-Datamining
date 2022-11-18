@@ -165,13 +165,13 @@
 		},
 		{
 			"display_name": "Page Shield New Resource URL Exceeds Max Length Alert",
-			"type": "scriptmonitor_alert_new_max_length_script_url",
+			"type": "scriptmonitor_alert_new_max_length_resource_url",
 			"description": "Receive an alert whenever we detect a resource with a very large URL",
 			"filter_options": []
 		},
 		{
 			"display_name": "Page Shield New Resources Alert",
-			"type": "scriptmonitor_alert_new_scripts",
+			"type": "scriptmonitor_alert_new_resources",
 			"description": "Receive an alert whenever your users load a new resource that has not been previously seen.",
 			"filter_options": []
 		}
