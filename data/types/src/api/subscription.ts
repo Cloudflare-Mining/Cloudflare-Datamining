@@ -68,7 +68,8 @@ export const SubscriptionComponentName = eg.union([
   eg.literal('r2_class_a_operations'),
   eg.literal('r2_class_b_operations'),
   eg.literal('r2_storage'),
-  eg.literal('queues_standard_operations')
+  eg.literal('queues_standard_operations'),
+  eg.literal('queues_enabled')
 ]);
 
 export type SubscriptionComponentName = TypeFromCodec<
