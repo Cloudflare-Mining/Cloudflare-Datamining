@@ -34,7 +34,7 @@
 				"topNavOptions": "default",
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
-				"footerOptions": null,
+				"footerOptions": "default",
 				"metaTags": {
 					"metaTitle": "Our Plans | Pricing",
 					"metaDescription": "Discover which Cloudflare plan is correct for your requirements. Find out more about Cloudflare plan pricing and sign up for Cloudflare here!",
@@ -55,6 +55,15 @@
 				"proactivePopup": null,
 				"template": null,
 				"relatedBlades": [
+					{
+						"contentTypeId": "psaBanner",
+						"contentfulId": "Gvab1lDeKekjdQRazq1I1",
+						"text": "Need a product recommendation?",
+						"learnMoreText": "Click here to answer a few questions",
+						"learnMoreUrl": "https://www.cloudflare.com/about-your-website/",
+						"backgroundColor": "blue1",
+						"hideCloseButton": null
+					},
 					{
 						"contentfulId": "4QqNYqwXYvSIHl1yvqyuqe",
 						"contentTypeId": "bladeHeroAnimation",
@@ -210,46 +219,6 @@
 								"navigationLinks": null
 							}
 						]
-					},
-					{
-						"contentTypeId": "bladeSubNav",
-						"contentfulId": "4Kayb68oHgW7myyfyCGosC",
-						"menuTitle": null,
-						"mobileOnlyMenuTitle": null,
-						"stickyNav": true,
-						"htmlId": null,
-						"menuItems": [
-							{
-								"contentfulId": "156RdZCFeetrIlWkwi3idc",
-								"linkText": "Overview",
-								"page": null,
-								"url": "#overview",
-								"subMenuItems": null
-							},
-							{
-								"contentfulId": "5FrE4PbZjAXhJ4iFLHdywY",
-								"linkText": "Add-ons",
-								"page": null,
-								"url": "#add-ons",
-								"subMenuItems": null
-							},
-							{
-								"contentfulId": "7EAjySOh0wyIqbszwd21Fn",
-								"linkText": "FAQs",
-								"page": null,
-								"url": "#faqs",
-								"subMenuItems": null
-							}
-						]
-					},
-					{
-						"contentTypeId": "psaBanner",
-						"contentfulId": "Gvab1lDeKekjdQRazq1I1",
-						"text": "Need a product recommendation?",
-						"learnMoreText": "Click here to answer a few questions",
-						"learnMoreUrl": "https://www.cloudflare.com/about-your-website/",
-						"backgroundColor": "blue1",
-						"hideCloseButton": null
 					},
 					{
 						"contentfulId": "3gjbNqPWrBSa4572O8KSjJ",
