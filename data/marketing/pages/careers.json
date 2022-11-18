@@ -34,7 +34,7 @@
 				"topNavOptions": "default",
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
-				"footerOptions": null,
+				"footerOptions": "default",
 				"metaTags": {
 					"metaTitle": "Cloudflare Careers",
 					"metaDescription": "Learn more about Cloudflare, the team we are building and how we work. We have opportunities in offices and remote locations around the world!",
@@ -99,7 +99,7 @@
 						"contentTypeId": "bladeHeroAnimation",
 						"title": "Help Build a Better Internet",
 						"subtitle": null,
-						"copy": "<br>\nAt Cloudflare, we want you to have the career of your dreams. We invest in and support curious, mission-minded people who are committed to solving the Internet's toughest challenges.\n\nCloudflare has historically been an in-office, yet globally distributed company. We are now evolving into a hybrid model that is even more distributed, with a commitment to maintaining an equitable and inclusive workplace for all. \n\n__We are now hiring for in-office, remote and hybrid opportunities across North America, Europe and Asia.__\n",
+						"copy": "<br>\nAt Cloudflare, we want you to have the career of your dreams. We invest in and support curious, mission-minded people who are committed to solving the Internet's toughest challenges.\n\nCloudflare has historically been an in-office, yet globally distributed company. We are now evolving into a hybrid model that is even more distributed, with a commitment to maintaining an equitable and inclusive workplace for all. \n\n__We are now hiring for in-office, remote and hybrid opportunities across the Americas, Europe and Asia.__\n",
 						"buttonColor": "orange",
 						"buttonColor2": "orange",
 						"buttonText1": "See Open Positions",
@@ -376,9 +376,9 @@
 						"backgroundColor": "white",
 						"contentTypeId": "bladeFourFeatures",
 						"htmlId": null,
-						"copy": "At Cloudflare we believe that with our talented team, smart technology and engaged users we can solve some of the biggest problems on the Internet.",
-						"title": "Our Values",
-						"subtitle": null,
+						"copy": null,
+						"title": null,
+						"subtitle": "Our Values",
 						"bladeStyle": "Feature Blocks - 3 columns",
 						"bladeBorder": "none",
 						"sectionPadding": "tile--no-top-bottom-padding",
@@ -440,6 +440,70 @@
 						]
 					},
 					{
+						"contentfulId": "5HH8K9UYn3h5edMq2lAIHO",
+						"backgroundColor": "white",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
+						"copy": null,
+						"title": null,
+						"subtitle": "Cloudflare Capabilities",
+						"bladeStyle": null,
+						"bladeBorder": "none",
+						"sectionPadding": "tile--no-top-bottom-padding",
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1NxPcvq6lluhPGFOD8quMU",
+								"title": null,
+								"titleSize": "large",
+								"description": "At Cloudflare, we have strived to create and uphold an inclusive culture and a workplace where employees feel comfortable and empowered to bring their genuine selves to work so they can do their best work. <b>If that's what you're looking for, then you came to the right place! </b>\n\nOur six Cloudflare capabilities serve as our core values and the building blocks of an inclusive culture. They outline the behaviors we consider when measuring success, giving feedback, and rewarding performance.\n\nWhen we evaluate performance, we review \"what\" the outcome is, <b>the results</b>. However, we also consider \"how\" we work and what good looks like, <b>the behaviors</b>. It doesn't just matter what you do, but how you do it.\n<br><br>\n<center><b>Performance = Results + Behaviors\n</center></b>",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "KJJS3R27IqM3AcqLfPpRM",
+								"title": null,
+								"titleSize": null,
+								"description": null,
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "606c2e53-c7a0-5acd-bf5c-75e46c9d3155",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/capabilities-spot-illustration_3x.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						]
+					},
+					{
 						"contentfulId": "mYpEfp2GY9SuDbFKmUdNg",
 						"contentTypeId": "bladePadding",
 						"height": 3,
@@ -480,7 +544,7 @@
 						"sectionTitle": null,
 						"htmlId": null,
 						"titleSize": null,
-						"sectionPadding": "tile--no-bottom-padding",
+						"sectionPadding": "tile--no-top-bottom-padding",
 						"backgroundColor": "light-blue",
 						"bladeBorder": "none",
 						"imagePosition": false,
@@ -489,20 +553,65 @@
 						"togglesTo": null
 					},
 					{
+						"contentfulId": "6VoeYZfmsJ2nXkm6r5Vq3z",
+						"backgroundColor": "white",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
+						"copy": "## Our Hiring Process<br><br> \n\n<center>\n\n![Hiring Process](//cf-assets.www.cloudflare.com/slt3lc6tev37/5oRCTPAcvPAnalq4SzWx4U/abd0015a5d327a2538f1b6900714b761/Mediamodifier-Design-Template__3_.png)\n\n</center>",
+						"title": null,
+						"subtitle": null,
+						"bladeStyle": null,
+						"bladeBorder": "none",
+						"sectionPadding": "tile--no-bottom-padding",
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "58onzTx6qmZgPXwFpjv2yw",
+								"title": null,
+								"titleSize": null,
+								"description": "\n#### Meeting the Team\n\nWe've designed our hiring process so that you have the opportunity to meet a variety of Cloudflare team members that you will work directly with: your prospective manager, peers from the team, and key stakeholders.<br><br> These conversations will help us understand how you think, what you're passionate about, as well as which skills and creative problem-solving abilities you bring to the table. We also want you to get to know us too — our interviewers will be ready to answer all of your questions!",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3NDLcSL64psmmN05naGxOZ",
+								"title": null,
+								"titleSize": null,
+								"description": "#### Orange Cloud Interview\n\nDuring the hiring process you'll have an Orange Cloud Interview which will focus on the Cloudflare Capabilities and the behaviors that we value. The interviewer will ask you to share examples of how you do your work and make an impact, rather than assessing your role-specific skills, knowledge, or experience.\n\nSo, how do you prepare for this interview? Consider how you display these values in your everyday work, reflect on recent situations at work, whether you've learnt from these experiences, and if you'd do anything differently if they were to happen again.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": true,
+								"openLinkInNewTab": null,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						]
+					},
+					{
 						"contentfulId": "1ww77Bo4ill4B6JTL9YIrf",
 						"contentTypeId": "bladePadding",
 						"height": 5,
 						"backgroundColor": "blue5"
 					},
 					{
-						"contentfulId": "7mcxRIxY9sPfTAxfZhM54J",
-						"contentTypeId": "bladePadding",
-						"height": 5,
-						"backgroundColor": "white"
-					},
-					{
 						"contentfulId": "5dwz9v3AFpScoTw4DYyjgz",
-						"backgroundColor": "white",
+						"backgroundColor": "light-blue",
 						"contentTypeId": "bladeFourFeatures",
 						"htmlId": null,
 						"copy": "We want to __empower__ and __inspire__ our team members to do their best work every day - making sure they feel happy, healthy and fulfilled both inside and outside of the workplace.",
@@ -650,49 +759,6 @@
 						"backgroundColor": "blue5"
 					},
 					{
-						"contentfulId": "6xO9Wwtwj7Tl0Fs30SgMiQ",
-						"title": "Our Hiring Process",
-						"copy": "At Cloudflare, we're committed to hiring the best people to join our teams. We designed our interview process* to help us understand how you think, what you're passionate about, and which skills and creative problem-solving abilities you bring to the table. And we want you to get to know us, too.\n\nCurious about our culture? Connect with your recruiter to visit one of our All-Hands meetings, where we share what we're working on each week.\n\n**The hiring process outlined above may differ by department and role.*",
-						"toggleText": null,
-						"button": null,
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": null,
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": [
-							"controls"
-						],
-						"streamCaptions": "en",
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "[path]/careers-hiring-process.svg"
-							}
-						},
-						"imageAssetFile": null,
-						"featureList": null,
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": "tile--no-top-bottom-padding",
-						"backgroundColor": "light-blue",
-						"bladeBorder": "none",
-						"imagePosition": false,
-						"imageSize": "large",
-						"imageTextAlignment": "center",
-						"togglesTo": null
-					},
-					{
 						"contentfulId": "4TdYkDAvSxMEho9D7UbdaF",
 						"contentTypeId": "bladePadding",
 						"height": 2,
@@ -750,7 +816,7 @@
 						"subtitle": null,
 						"bladeStyle": "Feature Blocks - 2 columns",
 						"bladeBorder": "none",
-						"sectionPadding": "tile--no-top-bottom-padding",
+						"sectionPadding": "tile--no-top-padding",
 						"carouselSlidesToShow": null,
 						"carouselSlidesToScroll": null,
 						"locale": "en-US",
