@@ -93,5 +93,10 @@
 	"queues.delete_queue_modal.remove_producer": "Remove your producer(s):",
 	"queues.delete_queue_modal.remove_consumer": "Remove your consumer(s):",
 	"queues.delete_queue_modal.clarification": "Removing your producers and/or consumers will not delete this worker.",
-	"queues.404.back": "Back to Queues"
+	"queues.404.back": "Back to Queues",
+	"queues.enable_queues.error": "API Request failed: We were unable to enable Queues on your account. Please try again.",
+	"queues.enable_queues.error.no_subscription": "A Workers subscription is required to enable Queues.",
+	"queues.enable_queues.enable": "Enable Workers Queues",
+	"queues.enable_queues.title": "Queues",
+	"queues.enable_queues.description": "Once Queues is enabled on the account %{accountName}, your Workers Paid Plan will also include additional usage fees:"
 }
