@@ -338,6 +338,70 @@
 			]
 		},
 		{
+			"name": "workerd/src/workerd/api/r2-api.capnp:R2CreateMultipartUploadRequest",
+			"fields": [
+				{
+					"name": "object",
+					"annotations": []
+				},
+				{
+					"name": "customFields",
+					"annotations": []
+				},
+				{
+					"name": "httpFields",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/api/r2-api.capnp:R2UploadPartRequest",
+			"fields": [
+				{
+					"name": "object",
+					"annotations": []
+				},
+				{
+					"name": "uploadId",
+					"annotations": []
+				},
+				{
+					"name": "partNumber",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/api/r2-api.capnp:R2CompleteMultipartUploadRequest",
+			"fields": [
+				{
+					"name": "object",
+					"annotations": []
+				},
+				{
+					"name": "uploadId",
+					"annotations": []
+				},
+				{
+					"name": "parts",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/api/r2-api.capnp:R2AbortMultipartUploadRequest",
+			"fields": [
+				{
+					"name": "object",
+					"annotations": []
+				},
+				{
+					"name": "uploadId",
+					"annotations": []
+				}
+			]
+		},
+		{
 			"name": "workerd/src/workerd/api/r2-api.capnp:R2BindingRequest",
 			"fields": [
 				{
@@ -383,6 +447,22 @@
 				},
 				{
 					"name": "deleteBucket",
+					"annotations": []
+				},
+				{
+					"name": "createMultipartUpload",
+					"annotations": []
+				},
+				{
+					"name": "uploadPart",
+					"annotations": []
+				},
+				{
+					"name": "completeMultipartUpload",
+					"annotations": []
+				},
+				{
+					"name": "abortMultipartUpload",
 					"annotations": []
 				}
 			]
@@ -489,6 +569,19 @@
 				},
 				{
 					"name": "cacheExpiry",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/api/r2-api.capnp:R2PublishedPart",
+			"fields": [
+				{
+					"name": "etag",
+					"annotations": []
+				},
+				{
+					"name": "part",
 					"annotations": []
 				}
 			]
@@ -605,6 +698,28 @@
 					"annotations": []
 				}
 			]
+		},
+		{
+			"name": "workerd/src/workerd/api/r2-api.capnp:R2CreateMultipartUploadResponse",
+			"fields": [
+				{
+					"name": "uploadId",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/api/r2-api.capnp:R2UploadPartResponse",
+			"fields": [
+				{
+					"name": "etag",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/api/r2-api.capnp:R2AbortMultipartUploadResponse",
+			"fields": []
 		},
 		{
 			"name": "workerd/src/workerd/api/r2-api.capnp:R2ListResponse",
