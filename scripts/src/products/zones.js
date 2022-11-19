@@ -37,6 +37,12 @@ const reqs = [
 		method: 'GET',
 		transform: json => json.result,
 	},
+	{
+		name: 'zones-available-rate-plans',
+		url: `https://api.cloudflare.com/client/v4/zones/{zone_id}/available_rate_plans`,
+		method: 'GET',
+		transform: json => json.result,
+	},
 ];
 const results = {};
 console.log('Making requests...');
