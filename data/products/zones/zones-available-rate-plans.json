@@ -1,0 +1,152 @@
+[
+	{
+		"id": "free",
+		"name": "CF_FREE",
+		"currency": "USD",
+		"frequency": "monthly",
+		"components": [
+			{
+				"name": "automatic_platform_optimization",
+				"default": 0,
+				"unit_price": 5
+			},
+			{
+				"name": "page_rules",
+				"default": 3,
+				"unit_price": 1
+			},
+			{
+				"name": "zones",
+				"default": 1,
+				"unit_price": 0
+			}
+		],
+		"sets": null,
+		"is_contract": false
+	},
+	{
+		"id": "lite",
+		"name": "CF_LITE",
+		"currency": "USD",
+		"frequency": "monthly",
+		"components": [
+			{
+				"name": "automatic_platform_optimization",
+				"default": 0,
+				"unit_price": 5
+			},
+			{
+				"name": "page_rules",
+				"default": 3,
+				"unit_price": 1
+			},
+			{
+				"name": "zones",
+				"default": 1,
+				"unit_price": 12
+			}
+		],
+		"sets": null,
+		"is_contract": false
+	},
+	{
+		"id": "pro_plus",
+		"name": "CF_PRO_PLUS",
+		"currency": "USD",
+		"frequency": "monthly",
+		"components": [
+			{
+				"name": "page_rules",
+				"default": 30,
+				"unit_price": 1
+			},
+			{
+				"name": "spectrum_bytes_transferred",
+				"default": 0,
+				"unit_price": 1
+			},
+			{
+				"name": "zones",
+				"default": 1,
+				"unit_price": 125
+			}
+		],
+		"sets": null,
+		"is_contract": false
+	},
+	{
+		"id": "business",
+		"name": "CF_BIZ",
+		"currency": "USD",
+		"frequency": "monthly",
+		"components": [
+			{
+				"name": "page_rules",
+				"default": 50,
+				"unit_price": 1
+			},
+			{
+				"name": "spectrum_bytes_transferred",
+				"default": 0,
+				"unit_price": 1
+			},
+			{
+				"name": "zones",
+				"default": 1,
+				"unit_price": 200
+			}
+		],
+		"sets": null,
+		"is_contract": false
+	},
+	{
+		"id": "pro",
+		"name": "CF_PRO_20_20",
+		"currency": "USD",
+		"frequency": "monthly",
+		"components": [
+			{
+				"name": "page_rules",
+				"default": 20,
+				"unit_price": 1
+			},
+			{
+				"name": "spectrum_bytes_transferred",
+				"default": 0,
+				"unit_price": 1
+			},
+			{
+				"name": "zones",
+				"default": 1,
+				"unit_price": 20
+			}
+		],
+		"sets": null,
+		"is_contract": false
+	},
+	{
+		"id": "enterprise",
+		"name": "CF_ENT",
+		"currency": "USD",
+		"frequency": "monthly",
+		"components": [
+			{
+				"name": "page_rules",
+				"default": 125,
+				"unit_price": 0
+			},
+			{
+				"name": "spectrum_bytes_transferred",
+				"default": 0,
+				"unit_price": 1
+			},
+			{
+				"name": "zones",
+				"default": 1,
+				"unit_price": 0
+			}
+		],
+		"sets": null,
+		"is_contract": false
+	}
+]
