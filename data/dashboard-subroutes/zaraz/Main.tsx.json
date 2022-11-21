@@ -1,6 +1,7 @@
 [
 	"/[id]/[id]/zaraz",
 	"/[id]/[id]/zaraz/consent",
+	"/[id]/[id]/zaraz/history",
 	"/[id]/[id]/zaraz/monitoring",
 	"/[id]/[id]/zaraz/settings",
 	"/[id]/[id]/zaraz/tool/[id]/*",
@@ -9,7 +10,9 @@
 	"/[id]/[id]/zaraz/triggers/[id]/*",
 	"/[id]/[id]/zaraz/variables",
 	"/[id]/[id]/zaraz/variables/[id]/*",
+	"/accounts/[id]/members",
 	"/graphql",
 	"/zones/[id]/settings/zaraz/config",
+	"/zones/[id]/settings/zaraz/history?limit=&offset=/*",
 	"/zones/[id]/settings/zaraz/workflow"
 ]

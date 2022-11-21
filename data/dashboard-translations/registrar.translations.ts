@@ -192,6 +192,8 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	},
 	domain_page_sidebar_domain_details: "Domain Details",
 	domain_page_sidebar_status: "Status",
+	domain_page_sidebar_domain_protection_status: "Domain Protection Status",
+	domain_page_sidebar_lock_now: "Lock now",
 	domain_page_sidebar_auto_renew: "Auto-renew",
 	domain_page_sidebar_auto_renew_on: "Auto",
 	domain_page_sidebar_auto_renew_off: "Off",
