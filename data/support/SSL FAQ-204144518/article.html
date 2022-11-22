@@ -11,7 +11,6 @@
 		<li><a href="#h_293541339461548959928672">Are Cloudflare SSL certificates shared?</a></li>
 		<li><a href="#h_865954806521548960003696">An SSL certificate is installed at my website, why do I see a Cloudflare certificate?</a></li>
 		<li><a href="#h_406415940571548960012266">I want Cloudflare to use an SSL certificate I've purchased elsewhere</a></li>
-		<li><a href="#h_745887958641548960026645">Does Project Galileo include SSL support?</a></li>
 		<li><a href="#h_100356045661548960034406">Does enabling Cloudflare affect PayPal's TLS 1.2 requirement?</a></li>
 		<li><a href="#h_853db670-78aa-4c98-99d4-3aa3d38f8d59">How can I serve an SSL certificate from Cloudflare's China data centers?</a></li>
 		<li><a href="#h_db0bcd71-24f9-4b0c-8cfc-7a5ed0f27649">Does Cloudflare support TLS client authentication?</a></li>
@@ -56,7 +55,7 @@
 <p>Cloudflare supports double byte / IDN / punycode domains.  Domains with non-Latin characters receive SSL certificates just like any other domain added to Cloudflare.</p>
 <hr>
 <h2 id="h_a61bfdef-08dd-40f8-8888-7edd8e40d156">How do I redirect all visitors to HTTPS/SSL?</h2>
-<p>Refer to <a href="https://developers.cloudflare.com/ssl/edge-certificates/additional-options/always-use-https">Always Use HTTPS</a>.</p>
+<p>Refer to <a href="https://developers.cloudflare.com/ssl/edge-certificates/encrypt-visitor-traffic/">Encrypt all visitor traffic</a>.</p>
 <p></p>
 <hr>
 <h2 id="h_848554486311548959913241">Does SSL work for hosting partners?</h2>
@@ -72,9 +71,6 @@
 <hr>
 <h2 id="h_406415940571548960012266">I want Cloudflare to use an SSL certificate I've purchased elsewhere</h2>
 <p>Domains on Business and Enterprise plans are allowed to upload a <a href="https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates">Custom SSL certificate</a>.</p>
-<hr>
-<h2 id="h_745887958641548960026645">Does Project Galileo include SSL support?</h2>
-<p>Project Galileo customers can use Cloudflare's <a href="https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl">free Universal SSL</a> to secure site traffic.</p>
 <hr>
 <h2 id="h_100356045661548960034406">Does enabling Cloudflare affect PayPal's TLS 1.2 requirement?</h2>
 <p>No. Since Cloudflare does not proxy connections made directly to paypal.com, enabling Cloudflare for your domain does not affect how TLS connections are made.</p>
@@ -96,10 +92,7 @@
 <p>Refer to the Cloudflare blog post about <a href="https://blog.cloudflare.com/secure-and-fast-github-pages-with-cloudflare/">using Cloudflare's Universal SSL with GitHub Pages</a>.</p>
 <hr>
 <h2 id="h_1EOYNdDFPc56u27vceZ3mW">How do I obtain an SSL certificate for customers on partial (CNAME) setup?</h2>
-<p>To receive an SSL certificate, proxy traffic through Cloudflare. The SSL certificate will be automatically issued within a few minutes.</p>
-<p>Pausing Cloudflare or disabling the proxy will prevent SSL certificate provisioning</p>
-<p>Currently, HTTP is the only officially supported domain validation method for SSL certificates for domains on a partial setup activated via a hosting provider. Cloudflare will add DNS as an alternative validation method (DCV) at a later date.</p>
-<p>If you would like to complete validation using HTTP without proxying through Cloudflare, this is accomplished via the Cloudflare API.  Reach out to <a href="mailto:partnersupport@cloudflare.com">partnersupport@cloudflare.com</a> if you need assistance.</p>
+<p>For more details, refer to <a href="https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/">Domain Control Validation</a>.</p>
 <hr>
 <h2 id="h_3k3bHm83HfwEKwYEeKg6v8">Can I use Certificate Pinning?</h2>
 <p>No. Multiple industry leaders — including <a href="https://www.digicert.com/blog/certificate-pinning-what-is-certificate-pinning">Digicert</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Public_Key_Pinning">Mozilla</a> — have discouraged certificate pinning because of security concerns.</p>
