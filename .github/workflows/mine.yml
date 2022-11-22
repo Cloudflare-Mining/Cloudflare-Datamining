@@ -31,6 +31,7 @@ jobs:
           npm run mine
         env:
           DISCORD_URL: ${{ secrets.DISCORD_URL }}
+          DISCORD_WEBHOOK_ACCOUNT: ${{ secrets.DISCORD_WEBHOOK_ACCOUNT }}
           DISCORD_WEBHOOK_API: ${{ secrets.DISCORD_WEBHOOK_API }}
           DISCORD_WEBHOOK_BLOG: ${{ secrets.DISCORD_WEBHOOK_BLOG }}
           DISCORD_WEBHOOK_CDNCGI: ${{ secrets.DISCORD_WEBHOOK_CDNCGI }}

@@ -48,6 +48,7 @@ async function gitPush(){
 		commitMessage,
 		'CFData - Account (Flags, Entitlements, etc.) Update',
 		'Pushed account (Flags, Entitlements, etc.) update: ' + commitMessage,
+		'DISCORD_WEBHOOK_ACCOUNT',
 	);
 }
 
