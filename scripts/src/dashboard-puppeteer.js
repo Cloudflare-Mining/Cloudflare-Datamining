@@ -134,6 +134,7 @@ async function run(){
 			`${prefix} -  Account Dash API Data was updated!`,
 			'CFData - Account Dash API Data Update',
 			'Pushed Account Dash API Data: ' + prefix,
+			'DISCORD_WEBHOOK_ACCOUNT',
 		);
 
 		console.log('Done! :)');
