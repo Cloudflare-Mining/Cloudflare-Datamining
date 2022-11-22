@@ -17,8 +17,8 @@ if(cfIpsv4Res.ok && cfIpsv6Res.ok){
 	const cfIpsv4 = await cfIpsv4Res.text();
 	const cfIpsv6 = await cfIpsv6Res.text();
 
-	await fs.writeFile(path.resolve(dir, 'ips-v4.json'), JSON.stringify([...cfIpsv4.split('\n')].sort(), null, '\t'));
-	await fs.writeFile(path.resolve(dir, 'ips-v6.json'), JSON.stringify([...cfIpsv6.split('\n')].sort(), null, '\t'));
+	await fs.writeFile(path.resolve(dir, 'ips-v4.json'), JSON.stringify(cfIpsv4.split('\n').sort(), null, '\t'));
+	await fs.writeFile(path.resolve(dir, 'ips-v6.json'), JSON.stringify(cfIpsv6.split('\n').sort(), null, '\t'));
 
 }
 
