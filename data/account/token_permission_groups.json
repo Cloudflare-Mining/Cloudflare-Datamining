@@ -1210,6 +1210,14 @@
 	{
 		"id": "cdeb15b336e640a2965df8c65052f1e0",
 		"name": "Zaraz Admin",
+		"description": "Can edit and publish Zaraz settings.",
+		"scopes": [
+			"com.cloudflare.api.account.zone"
+		]
+	},
+	{
+		"id": "89d5bf002389496e9994b8c30608b5d0",
+		"name": "Zaraz Edit",
 		"description": "Can edit Zaraz settings.",
 		"scopes": [
 			"com.cloudflare.api.account.zone"
