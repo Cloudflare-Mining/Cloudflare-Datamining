@@ -1,8 +1,5 @@
 /*
-
-NOT CURRENTLY USED
-It turns out it's easier to just get every chunk and parse it that way - see dashboard.js
-
+This script is used to hit dash APIs, which require a cookie
 */
 
 import 'dotenv/config';
@@ -10,126 +7,139 @@ import path from 'node:path';
 
 import fs from 'fs-extra';
 import dateFormat from 'dateformat';
-import puppeteer from 'puppeteer';
-import {parse} from 'acorn';
-import {fullAncestor} from 'acorn-walk';
-import filenamify from 'filenamify';
+import fetch from 'node-fetch';
+import {executablePath} from 'puppeteer';
+import puppeteer from 'puppeteer-extra';
+import StealthPlugin from 'puppeteer-extra-plugin-stealth';
 
 import {tryAndPush, userAgent} from './utils.js';
 
-const TRANSLATIONS_SNIPPET = 'dash/intl/intl-translations/src/locale/en-US/';
 const ROOT_URL = 'https://dash.cloudflare.com/';
-const STATIC_DASH_ASSETS_URL = 'https://static.dash.cloudflare.com/';
-
-async function writeTranslation(filename, data){
-	const file = path.resolve(`../data/dashboard-translations/${filenamify(filename)}.json`);
-	fs.ensureDir(path.dirname(file));
-	await fs.writeFile(file, data);
-}
-
-const scripts = {};
 async function run(){
 	console.log('Fetching Dashboard...');
+	const dir = path.resolve(`../data`);
+	await fs.ensureDir(dir);
 
-	const browser = await puppeteer.launch({
-		defaultViewport: {
-			width: 1920,
-			height: 1080,
-		},
-	});
-	const page = await browser.newPage();
-	page.on('response', async (response) => {
-		const url = response.url();
-		if(url.includes(STATIC_DASH_ASSETS_URL) && response.headers()['content-type']?.includes('application/javascript')){
-			scripts[response.url()] = await response.text();
-		}
-	});
-	await page.setUserAgent(userAgent);
-	// load cloudflare dash
-	console.log(`Opening ${ROOT_URL}...`);
-	await page.goto(ROOT_URL, {
-		waitUntil: 'networkidle0',
-	});
-	await page.waitForSelector('form[action="/login"]');
-	// login to get more translations for products
-	console.log('Logging in...');
-	await page.type('input[id=email]', process.env.CLOUDFLARE_EMAIL);
-	await page.type('input[id=password]', process.env.CLOUDFLARE_PASSWORD);
-	await page.evaluate(() => {
-		document.querySelector('button[type=submit]').click();
-	});
-	// wait for Pages nav to load - good indication nav is ready
-	await page.waitForSelector('a[href*="/pages"]', {
-		visible: true,
-	});
+	try{
+		puppeteer.use(StealthPlugin());
+		const browser = await puppeteer.launch({
+			defaultViewport: {
+				width: 1920,
+				height: 1080,
+			},
+			executablePath: executablePath(),
+			headless: true,
+		});
+		const page = await browser.newPage();
+		await page.setUserAgent(userAgent);
+		// load cloudflare dash
+		console.log(`Opening ${ROOT_URL}...`);
+		await page.goto(ROOT_URL, {
+			waitUntil: 'networkidle0',
+		});
+		await page.waitForSelector('form[action="/login"]');
+		// login to get more translations for products
+		console.log('Logging in...');
+		await page.type('input[id=email]', process.env.CLOUDFLARE_RBAC_EMAIL);
+		await page.type('input[id=password]', process.env.CLOUDFLARE_RBAC_PASSWORD);
+		await page.evaluate(() => {
+			document.querySelector('button[type=submit]').click();
+		});
+		// wait for Pages nav to load - good indication nav is ready
+		await page.waitForSelector('a[href*="/pages"]', {
+			visible: true,
+		});
 
-	console.log('Navigating around the dashboard...');
-	// get all links in nav and browse to them, so more translations are loaded
-	async function hitAllLinks(index = 1){
-		const rawLinks = await page.$$('nav a');
-		if(rawLinks[index]){
-			const link = rawLinks[index];
-			const href = await (await link.getProperty('href')).jsonValue(); // eslint-disable-line unicorn/no-await-expression-member
-			const target = await (await link.getProperty('target')).jsonValue(); // eslint-disable-line unicorn/no-await-expression-member
-			if(target !== '_blank'){
-				console.log('Browsing to', href);
-				await link.click();
-				try{
-					await page.waitForNavigation({
-						timeout: 5000,
-					});
-				}catch{}
-			}
-			await hitAllLinks(index + 1);
-		}
-	}
-	await hitAllLinks();
-	await browser.close();
+		// extract cookie from page
+		const cookies = await page.cookies();
+		await browser.close();
 
-	console.log('Coalescing translations...');
-	const translations = {};
-	for(const [scriptName, script] of Object.entries(scripts)){
-		if(script.includes(TRANSLATIONS_SNIPPET)){
-			const translationNameParse = /dash\/intl\/intl-translations\/src\/locale\/en-US\/(?<name>\w+)\.json"/.exec(script);
-			console.log(scriptName, translationNameParse.groups);
-			if(!translationNameParse?.groups?.name){
-				continue;
-			}
-			const translationName = translationNameParse.groups.name;
-			const parsedScript = parse(script, {
-				sourceType: 'script',
-				ecmaVersion: 2020,
+		const cookieString = cookies.map(cookie => `${cookie.name}=${cookie.value}`).join('; ');
+
+		// dash APIs we want to hit
+
+		const apis = [
+			{
+				url: `https://api.cloudflare.com/api/v4/accounts/${process.env.CLOUDFLARE_RBAC_ACCOUNT_ID}/iam/permission_groups?depth=2`,
+				file: 'account/permission_groups.json',
+			},
+			{
+				url: `https://api.cloudflare.com/api/v4/user/notifications?scope=account-banner&locale=en-US&accountType=PAYGO`,
+				file: 'account/notifications-account-banner-paygo.json',
+			},
+			{
+				url: `https://api.cloudflare.com/api/v4/user/notifications?scope=account-banner&locale=en-US&accountType=Enterprise`,
+				file: 'account/notifications-account-banner-enterprise.json',
+			},
+			{
+				url: `https://api.cloudflare.com/api/v4/user/notifications?scope=zone-banner&locale=en-US&accountType=PAYGO&zonePlanType=Free`,
+				file: 'account/notifications-zone-banner-paygo-free.json',
+			},
+			{
+				url: `https://api.cloudflare.com/api/v4/user/notifications?scope=zone-banner&locale=en-US&accountType=PAYGO&zonePlanType=Pro`,
+				file: 'account/notifications-zone-banner-paygo-pro.json',
+			},
+			{
+				url: `https://api.cloudflare.com/api/v4/user/notifications?scope=zone-banner&locale=en-US&accountType=PAYGO&zonePlanType=Business`,
+				file: 'account/notifications-zone-banner-paygo-biz.json',
+			},
+			{
+				url: `https://api.cloudflare.com/api/v4/user/notifications?scope=zone-banner&locale=en-US&accountType=PAYGO&zonePlanType=Enterprise`,
+				file: 'account/notifications-zone-banner-paygo-ent.json',
+			},
+			{
+				url: `https://api.cloudflare.com/api/v4/user/notifications?scope=zone-banner&locale=en-US&accountType=Enterprise&zonePlanType=Free`,
+				file: 'account/notifications-zone-banner-ent-free.json',
+			},
+			{
+				url: `https://api.cloudflare.com/api/v4/user/notifications?scope=zone-banner&locale=en-US&accountType=Enterprise&zonePlanType=Pro`,
+				file: 'account/notifications-zone-banner-ent-pro.json',
+			},
+			{
+				url: `https://api.cloudflare.com/api/v4/user/notifications?scope=zone-banner&locale=en-US&accountType=Enterprise&zonePlanType=Business`,
+				file: 'account/notifications-zone-banner-ent-biz.json',
+			},
+			{
+				url: `https://api.cloudflare.com/api/v4/user/notifications?scope=zone-banner&locale=en-US&accountType=Enterprise&zonePlanType=Enterprise`,
+				file: 'account/notifications-zone-banner-ent-ent.json',
+			},
+		];
+
+
+		// hit CF API with cookie for each req
+		for(const api of apis){
+			const response = await fetch(api.url, {
+				headers: {
+					cookie: cookieString,
+				},
 			});
-			fullAncestor(parsedScript, (node, ancestors) => {
-				if(node.type === 'TemplateLiteral'){
-					// probably our translation
-					const maybeParsed = ancestors.at(-2);
-					if(maybeParsed?.callee?.object?.name === 'JSON' && maybeParsed?.callee?.property?.name === 'parse'){
-						const json = node.quasis[0].value.cooked;
-						try{
-							translations[translationName] = JSON.parse(json);
-						}catch{
-							console.error('Error parsing', translationName, node.quasis);
-						}
-					}
-				}
-			});
+			const json = await response.json();
+			let result;
+			if(json.success && json.result){
+				result = json.result;
+			}else{
+				result = json;
+			}
+			if(api.file === 'account/permission_groups.json'){
+				result = result.sort((groupA, groupB) => groupA.name.localeCompare(groupB.name));
+			}
+
+			await fs.writeFile(path.resolve(dir, api.file), JSON.stringify(result, null, '\t'));
 		}
-	}
-	for(const [translationName, translation] of Object.entries(translations)){
-		await writeTranslation(translationName, JSON.stringify(translation, null, '\t'));
-	}
 
-	console.log('Pushing!');
-	const prefix = dateFormat(new Date(), 'd mmmm yyyy');
-	await tryAndPush(
-		['data/dashboard/*'],
-		`${prefix} - Dashboard Data was updated!`,
-		'CFData - Dashboard Data Update',
-		'Pushed Dashboard Data: ' + prefix,
-	);
+		console.log('Pushing!');
+		const prefix = dateFormat(new Date(), 'd mmmm yyyy');
+		await tryAndPush(
+			['data/account/*.json'],
+			`${prefix} -  Account Dash API Data was updated!`,
+			'CFData - Account Dash API Data Update',
+			'Pushed Account Dash API Data: ' + prefix,
+		);
 
-	console.log('Done! :)');
+		console.log('Done! :)');
+	}catch(err){
+		console.error(err);
+	}
 }
 
 run();
