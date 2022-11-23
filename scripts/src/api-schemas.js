@@ -9,7 +9,7 @@ import {selectOne} from 'css-select';
 import {parse} from 'acorn';
 import {fullAncestor} from 'acorn-walk';
 
-import {tryAndPush} from './utils.js';
+import {tryAndPush, sortObjectByKeys} from './utils.js';
 
 const API_DOCS_URL = 'https://api.cloudflare.com/';
 const SCHEMAS_URL = `${API_DOCS_URL}schemas/v4/`;
@@ -59,7 +59,7 @@ async function run(){
 
 	// then query the schemas endpoint
 	const schemasReq = await fetch('https://api.cloudflare.com/schemas.json');
-	const schemasJson = await schemasReq.json();
+	const schemasJson = sortObjectByKeys(await schemasReq.json());
 	if(schemasJson?.info){
 		delete schemasJson.info['x-buildDate']; // changes frequently even without any functional changes. Remove to generate more useful diffs
 		await fs.writeFile(path.resolve(`../data/api-schemas/schemas.json`), JSON.stringify(schemasJson, null, '\t'));
