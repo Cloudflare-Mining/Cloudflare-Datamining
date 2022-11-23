@@ -5,24 +5,33 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>What you'll do</strong></p>
-<p><span style="font-weight: 400;">You will lead the team of attorneys and contract managers responsible for supporting Cloudflare’s global sales and procurement efforts. The Commercial Transactions team is the largest function within Cloudflare’s overall Legal team and is responsible for drafting, reviewing, and negotiating complex commercial contracts with Cloudflare’s customers, business partners, and vendors around the world, while partnering closely with with our Sales, Security, Finance and other business teams and delivering practical and business-minded legal advice that balances market demands and Cloudflare’s interests.</span><strong> </strong><span style="font-weight: 400;">You will manage groups of attorneys and contract managers in the Americas, EMEA and APJC and report to our Vice President, Head of Corporate Legal.</span></p>
-<p><span style="font-weight: 400;">This role is for someone who is a proven and experienced leader in the commercial legal space, with deep expertise in leading complex, strategic transactions as well as a passion for creativity and innovation and leveraging technology to better scale a rapidly growing organization. We are looking for a leader who can support Cloudflare’s push to increase our our annual revenue from $1B to $5B. You must have a thirst for knowledge and continued growth and be intellectually curious, open-minded, adaptable, comfortable with ambiguity and risk, and excited by dynamic change.&nbsp;&nbsp;</span></p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<h3 id="JobDescription:SeniorSystemsEngineerWorkersRuntime(C++)-AbouttheDepartment"><strong>About the Department</strong></h3>
+<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
+<p>The Workers organization makes it possible for Cloudflare customers to run JavaScript and WebAssembly on Cloudflare's edge network. We build and maintain the serverless technology that executes billions of requests per month on behalf of developers and grants them nearly limitless control over how their requests are handled and responded to.</p>
+<h3 id="JobDescription:SeniorSystemsEngineerWorkersRuntime(C++)-AbouttheTeam"><strong>About the Team</strong></h3>
+<p>The Workers Runtime team delivers features and improvements to our Runtime which actually executes customer code at the edge. We care deeply about increasing performance, improving JS API surface area and compiled language support through WebAssembly, and optimizing to meet the next 10x increase in scale. The Runtime is a hostile environment - System resources such as memory, cpu, I/O, etc need to be managed extremely carefully and security must be foundational in everything we do.</p>
+<h3 id="JobDescription:SeniorSystemsEngineerWorkersRuntime(C++)-Whatyouwilldo"><strong>What you will do</strong></h3>
+<p>We are looking for a Runtime Engineer to join our team. You will work with a team of passionate, talented engineers that are building innovative products that bring security and speed to millions of internet users each day. You will play an active part in shaping product strategy based on what’s technically possible. You will make sure our company hits our ambitious goals from an engineering standpoint.</p>
+<p>You bring a passion for meeting business needs with building technically innovative solutions, and excel at shifting between the two—understanding how big-picture goals inform technical details, and vice-versa. You thrive in a fast-paced iterative engineering environment and have experience delivering scalable distributed systems. Most importantly, you will have a track record of having past teams respect you as both a technical leader and manager.</p>
+<h3 id="JobDescription:SeniorSystemsEngineerWorkersRuntime(C++)-Examplesofdesirableskills,knowledgeandexperience"><strong>Examples of desirable skills, knowledge and experience</strong></h3>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">14+ years of experience, including substantial experience handling commercial transactions</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Significant experience managing attorneys or other legal professionals</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">J.D. degree and admitted to practice law in one or more US states</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Empathetic manager who is able to empower team members to achieve at a consistently high level while building trusted relationships</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience growing, scaling, and managing an international team, with attorneys and non-attorneys, to establish effective solutions efficiently and in an amenable manner</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Substantive experience in drafting and negotiating highly complex commercial agreements, including SaaS, licensing, consulting, joint development and reseller/distributor agreements&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong ability to assess risk tolerances by working closely with the business to dynamically balance risk against reward in Cloudflare’s various commercial arrangements</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Practical legal and business judgment, the ability to think critically, a willingness to give and receive constructive feedback, and the ability to manage multiple matters across a large team.&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to manage competing demands and deal with non-standard and often unstructured requests, at short notice</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Solid understanding of local and international privacy and data protection laws</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Strategic thinker with a verifiable history of providing sound and practical advice</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to translate complex technical concepts into easy to grasp terms for non-techies</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to partner with internal stakeholders to deliver continuous improvement of Cloudflare’s legal processes, with an emphasis on efficiency and scalability</span></li>
+	<li>10+ years of professional experience building and managing software applications at large scale</li>
+	<li>Deep knowledge of at least one systems programming language such as C/C++, or Rust</li>
+	<li>An operational mindset - we don't just write code, we also own it in production</li>
+	<li>Solid foundation in computer science and software engineering with strong competencies in software design, and building distributed systems</li>
+	<li>Strong understanding of the web and technologies such as web browsers, HTTP, JavaScript and WebAssembly</li>
+	<li>Experience in designing and architecting large-scale distributed systems</li>
+	<li>Experience working with cloud platforms, especially server-less platforms</li>
+	<li>Experience debugging, optimizing and identifying possible failures in a large-scale distributed system</li>
+	<li>Experience being in a Technical lead or Team lead role</li>
+</ul>
+<h3 id="JobDescription:SeniorSystemsEngineerWorkersRuntime(C++)-BonusPoints"><strong>Bonus Points</strong></h3>
+<ul>
+	<li>Experience with the internals of JS engines such as V8, SpiderMonkey, or JavaScriptCore</li>
+	<li>Experience with standalone WebAssembly runtimes such as Wasmtime, Wasmer, Lucet, etc</li>
+	<li>Deep Linux/UNIX systems, kernel, or networking knowledge</li>
+	<li>Managing contributes to large open-source projects</li>
+	<li>Experience working in low-latency real time environments such as game streaming, game engine architecture, high frequency trading, payment systems</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
