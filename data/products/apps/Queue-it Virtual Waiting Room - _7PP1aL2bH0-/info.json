@@ -27,8 +27,8 @@
 	"adminVisible": true,
 	"userVisible": true,
 	"installable": true,
-	"codeVersion": "1.0.21",
-	"infoVersion": "1.0.21",
+	"codeVersion": "1.0.22",
+	"infoVersion": "1.0.22",
 	"points": -1,
 	"supportEmail": "support@queue-it.com",
 	"products": [],
@@ -2381,7 +2381,7 @@
 			"releaseNotes": "Removed webhook",
 			"source": "",
 			"creatorUserId": "",
-			"installable": false,
+			"installable": true,
 			"files": [],
 			"hasCode": true,
 			"fileHandle": "local/hJNa1zVpANd0",
@@ -2436,12 +2436,13 @@
 				},
 				"created": "2017-05-08T07:06:41.21855Z"
 			},
-			"moderationStatus": "pending",
+			"moderationStatus": "approved",
 			"moderationMetadata": {
 				"requestedByUserId": "5cf8509a6af573f607f78639aa2dbd5e",
 				"requestedAt": "2022-10-20T09:11:11.817233314Z",
 				"canceledAt": null,
-				"reviewedAt": null
+				"reviewedByUserId": "003d69515c178849214f81bf10ea8f84",
+				"reviewedAt": "2022-11-23T20:49:13.211660854Z"
 			}
 		}
 	]
