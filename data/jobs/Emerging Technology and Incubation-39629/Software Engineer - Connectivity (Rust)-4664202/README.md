@@ -15,12 +15,12 @@
 <p><span style="font-weight: 400;">Cloudflare is looking for a systems engineer to help us build and maintain the codebase that powers our Connectivity services at the edge and its APIs. This is a role for engineers that are familiar with </span><strong>distributed systems’ architecture and capable in linux systems design and interaction.&nbsp;</strong></p>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong Linux systems level programming skills</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience developing with Rust and Golang</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong <strong>Linux systems</strong> level programming skills</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum 1 year experience developing with <strong>Rust</strong> and <strong>Golang</strong></span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience in designing and architecting large-scale distributed systems</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Extensive experience with networking at all layers of the protocol stack.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience designing and integrating RESTful APIs</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with eBPF and network tunneling protocols like GRE and Geneve</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with <strong>eBPF</strong> and network tunneling protocols like GRE and Geneve</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">An operational mindset - we don't just write code, we also own it in production</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Knowledge of SQL and common relational database systems such as PostgreSQL</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Excellent debugging and optimization skills</span></li>
