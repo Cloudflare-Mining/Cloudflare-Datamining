@@ -1,0 +1,169 @@
+<div class="post-content lh-copy gray1">
+	<p>为了帮助开发人员构建更好的 Web 应用程序，我们研究并设计了一个片段架构，支持使用 <a href="https://workers.cloudflare.com/" target="_blank">Cloudflare Workers</a> 构建<a href="https://martinfowler.com/articles/micro-frontends.html" target="_blank">微前端</a>。该架构的开发和运行快如闪电，成本效益高，还可以在不影响发布速度或用户体验的情况下进行扩展，以满足最大型企业团队的需求。</p>
+	<p>现在，我们将分享这个架构的技术概况和概念验证。</p>
+	<h2 id="-">为什么是微前端？</h2>
+	<p>现代前端 web 开发面临的一项挑战是，应用程序越来越大，越来越复杂。尤其是那些支持电子商务、银行、保险、旅行等行业的企业 web 应用程序，因为这些行业需要在一个统一的用户界面提供许多功能的访问。这类项目通常是许多团队共同构建一个单一的 web 应用程序。这些单体 web 应用程序通常使用 React、Angular 或 Vue 等 JavaScript 技术构建，需要数千甚至数百万行代码。</p>
+	<p>使用单体 JavaScript 架构构建这种规模的应用程序会导致用户体验缓慢且不稳定，<a href="https://web.dev/measure/" target="_blank">Lighthouse 评分</a>低。此外，合作的开发团队往往难以<a href="https://www.youtube.com/watch?v=pU1gXA0rfwc" target="_blank">维护和改进</a>各自的应用程序部分，因为他们的<a href="https://igor.dev/posts/fate-sharing-and-micro-frontends/" target="_blank">命运与所有其他团队的命运联系在一起</a>，一个团队的错误和技术负债往往会影响所有团队。</p>
+	<p>通过借鉴<a href="https://en.wikipedia.org/wiki/Microservices" target="_blank">微服务</a>的想法，前端社区已经开始提倡<a href="https://micro-frontends.org/" target="_blank">微前端</a>，让团队能够独立开发和部署自己的功能，不受其他团队的影响。每个微前端都是一个完备的小应用程序，可以独立开发和发布，负责渲染页面的一个“片段”。然后将这些片段组合成一个应用程序，从用户的角度来看，它就像一个单一的应用程序。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/image3.jpg" class="kg-image">
+		<figcaption>由多个微前端组成的应用程序</figcaption>
+	</figure>
+	<p>片段可以是应用程序的垂直功能，例如“账户管理”或“结账”，也可以是水平功能，例如“标题”或“导航栏”。</p>
+	<h3 id="--1">客户端微前端</h3>
+	<p>常见的一种微前端方法是，利用客户端代码来延迟加载和拼接片段（例如通过 <a href="https://webpack.js.org/concepts/module-federation/" target="_blank">Module Federation</a>）。客户端的微前端应用存在很多问题。</p>
+	<p>必须复制通用代码或将其作为共享库发布。共享库本身就问题重重。不可能在构建时进行<a href="https://developer.mozilla.org/en-US/docs/Glossary/Tree_shaking" target="_blank">摇树优化</a>，消除未使用的库代码，导致许多不需要的代码下载到浏览器中，当共享库需要更新时，将面临复杂棘手的团队协调工作。</p>
+	<p>此外，必须引导启动顶层的容器应用程序，才可以向微前端发送请求，而且微前端也需要启动后才可交互。如果微前端是嵌套在一起，您最终可能会得到一系列<a href="https://javascript.plainenglish.io/react-official-answer-the-right-way-of-requesting-data-in-react18-other-frameworks-also-apply-50d907c1f6c4" target="_blank">瀑布式请求</a>来获取微前端，从而导致运行时间进一步延迟。</p>
+	<p>这些问题会导致应用程序启动迟缓。</p>
+	<p>服务器端渲染可以与客户端微前端一起使用，以提高浏览器显示应用程序的速度，但这会大大增加开发、部署和操作的复杂性。此外，在用户能够与应用程序完全交互之前，大多数服务器端渲染方法仍然存在<a href="https://dev.to/this-is-learning/why-efficient-hydration-in-javascript-frameworks-is-so-challenging-1ca3" target="_blank">注水延迟</a>问题。</p>
+	<p>探索替代解决方案的主要动机就是要解决这些挑战。本文的解决方案利用的是 Cloudflare Workers 提供的分布式低延迟特性。</p>
+	<h2 id="cloudflare-workers-">Cloudflare Workers 上的微前端</h2>
+	<p><a href="https://workers.cloudflare.com/" target="_blank">Cloudflare Workers</a> 是一个计算平台，提供了一个高度可扩展、低延迟的 JavaScript 执行环境，可在全球<a href="https://www.cloudflare.com/network/" target="_blank">超过 275 个地点</a>执行。在探索过程中，我们使用 Cloudflare Workers 从我们全球网络的任何地方托管和渲染微前端。</p>
+	<h3 id="--2">片段架构</h3>
+	<p>在此架构中，应用程序由一棵“片段”树组成，每个片段都部署到 Cloudflare Workers 中，共同完成服务器端渲染，提供整体响应。浏览器向“根片段”发出请求，根片段将与“子片段”通信，生成最终响应。由于 Cloudflare Workers 可以相互通信，<a href="https://developers.cloudflare.com/workers/platform/bindings/about-service-bindings/" target="_blank">几乎没有开销</a>，因此应用程序可以通过子片段快速完成服务器端渲染，所有子片段同时工作，渲染各自的 HTML，并将结果流式传输给父片段，父片段将这些结果组合成最终响应流传送给浏览器。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/blog-1447.png" class="kg-image">
+		<figcaption>片断架构简要概述</figcaption>
+	</figure>
+	<h2 id="-cloud-gallery">访问 Cloud Gallery</h2>
+	<p>我们构建了 Cloud Gallery 应用程序作为示例，以展示如何在实践中运作。Cloud Gallery 已部署到 Cloudflare Workers 中，网址为 <a href="https://cloud-gallery.web-experiments.workers.dev/" target="_blank">https://cloud-gallery.web-experiments.workers.dev/</a></p>
+	<p>该演示应用程序是使用我们的片段架构构建的一个简单的云端过滤图库。试着在输入提示中选择一个标签来过滤图库中的图像。然后改变云端图像流的延迟效应，看看在页面加载完成之前，输入提示过滤操作可以如何交互。</p>
+	<h3 id="-cloudflare-worker">多个 Cloudflare Worker</h3>
+	<p>该应用程序由六个相互合作但可独立部署的 Cloudflare Worker 组成一棵“树”，每个 Worker 渲染各自的屏幕片段，并提供自己的客户端逻辑，以及 CSS 样式表和图像等资产。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/image6-4.png" class="kg-image">
+		<figcaption>Cloud Gallery 应用程序的架构概述</figcaption>
+	</figure>
+	<p>“主”片段是应用程序的根。“页眉”片段有一个滑块，用于配置图库图像显示的人工延迟。“主体”片段包括“过滤器”片段和“图库”片段。最后，“页脚”片段仅显示一些静态内容。</p>
+	<p>可在 <a href="https://github.com/cloudflare/workers-web-experiments/tree/main/cloud-gallery" target="_blank">GitHub</a> 查阅演示应用程序的完整源代码。</p>
+	<h2 id="--3">优势和特点</h2>
+	<p>这种由多个部署在 Cloudflare Workers 上的服务器端渲染片段共同组成的架构有一些有趣的特点。</p>
+	<h3 id="--4">封装</h3>
+	<p>片段是完全封装的，可以掌控自己拥有的东西和可供其他片段使用的东西。</p>
+	<h4 id="--5"><em>各片段可以独立开发部署</em></h4>
+	<p>更新其中一个片段和重新部署片段一样简单。向主应用程序发出的下一个请求将使用新的片段。此外，各片段可以托管各自的资产（客户端 JavaScript、图像等），资产通过父片段流向浏览器。</p>
+	<h4 id="--6"><em>仅服务器需要的代码不会发送到浏览器上</em></h4>
+	<p>除了减少将不必要的代码下载到浏览器的成本外，仅服务器端渲染片段所需的安全敏感代码绝不会暴露给其他片段，也不会下载到浏览器上。此外，各功能可以安全地隐藏在片段中的功能标志后面，可以更灵活更安全地推出新的行为。</p>
+	<h3 id="--7">可组合</h3>
+	<p>片段完全可组合，任何片断都可以包含其他片断。组合而成的树状结构让您可以更加灵活地构建和部署应用程序。这有助于大型项目扩展开发和部署。还可以精细控制片段组成方式，将服务器端渲染中成本高昂的片段单独缓存。</p>
+	<h3 id="lighthouse-">Lighthouse 评分极高</h3>
+	<p>流式服务器渲染的 HTML 可带来良好的用户体验，提高 <a href="https://developer.chrome.com/docs/lighthouse/overview/" target="_blank">Lighthouse</a> 评分，对您的业务来说，这意味着用户更快乐，转化率更高。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/image7-2.png" class="kg-image">
+		<figcaption>Cloud Gallery 应用程序的 Lighthouse 评分</figcaption>
+	</figure>
+	<p>每个片段都可以并行处理对其子片段的请求，并将产生的 HTML 流引入其自己的单一流式服务器端渲染响应。这不仅可以减少渲染整个页面所需的时间，而且将每个片段流向浏览器还可减少每个片段的首字节时间。</p>
+	<h3 id="--8">热切交互</h3>
+	<p>片段架构的威力之一是，即使在应用程序的其他部分（包括其他片段）仍在流向浏览器时，片段也可以交互。</p>
+	<p>在我们的演示应用程序中，“过滤器”片段一渲染就立即可交互，即使“图库”片段的图像 HTML 仍在加载。</p>
+	<p>为了更容易看到这一点，我们在“页眉”顶部添加了一个滑块，可以模拟网络或数据库延迟，使渲染“图库”图像的 HTML 流变慢。甚至在“图库”片段仍在加载时，“过滤器”片段中的输入提示已经完全可交互。</p>
+	<p>想想就知，这种热切交互可以为 web 应用程序用户避免不可靠的互联网连接带来的所有问题。</p>
+	<h2 id="--9">底层实现</h2>
+	<p>如前所述，这种架构依赖于将该应用程序部署为许多合作的 Cloudflare Worker。我们来看看实际运作中的一些细节。</p>
+	<p>我们试验了各种技术，虽然这种方法可用于许多前端库和框架，但我们发现 <a href="https://qwik.builder.io/" target="_blank">Qwik 框架</a>特别适合，因为它优先使用 HTML，JavaScript 开销低，避免了任何注水问题。</p>
+	<h3 id="--10">实施片段</h3>
+	<p>每个片段都是部署在各自 Cloudflare Worker 上的一个服务器端渲染的 Qwik 应用程序。这意味着，您甚至可以直接浏览这些片段。例如，部署在 <a href="https://cloud-gallery-header.web-experiments.workers.dev/" target="_blank">https://cloud-gallery-header.web-experiments.workers.dev/</a> 的“页眉”片段。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/image8-2.png" class="kg-image">
+		<figcaption>自我托管的“页眉”片段截图</figcaption>
+	</figure>
+	<p>页眉片段的定义为一个使用 Qwik 的 <a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/header/src/root.tsx" target="_blank"><code>Header</code></a> 组件。该组件通过 <code>fetch()</code> 处理程序在 Cloudflare Worker 中渲染。</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-tsx">export default {
+  fetch(request: Request, env: Record&lt;string, unknown&gt;): Promise&lt;Response&gt; {
+    return renderResponse(request, env, &lt;Header /&gt;, manifest, "header");
+  },
+};
+</code></pre>
+	<!--kg-card-end: markdown--><!--kg-card-begin: html-->
+	<center><small><a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/header/src/entry.ssr.tsx" target="_blank"><strong>cloud-gallery/header/src/entry.ssr.tsx</strong></a></small></center><!--kg-card-end: html-->
+	<p><code><a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/helpers/src/renderResponse.ts" target="_blank">renderResponse</a>()</code> 函数是我们编写的一个辅助程序，它在服务器端渲染片段，并让其流向我们从 <code>fetch()</code> 处理程序返回的一个 <code>Response</code>。</p>
+	<p>页眉片段从其 Cloudflare Worker 提供自己的 JavaScript 和图像资产。我们配置 <a href="https://developers.cloudflare.com/workers/wrangler" target="_blank">Wrangler</a>，将这些资产上传到 Cloudflare 并从我们的网络提供服务。</p>
+	<h2 id="--11">实施片段组合</h2>
+	<p>包含子片断的片断还要负责：</p>
+	<ul>
+		<li>在渲染自己的 HTML 时请求并注入子片段。</li>
+		<li>将对子片段资产的请求委托给合适的片段。</li>
+	</ul>
+	<h3 id="--12">注入子片段</h3>
+	<p>子片段在其父片段内的位置可以由我们开发的 <a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/helpers/src/fragmentHelpers.tsx" target="_blank"><code>FragmentPlaceholder</code></a> 帮助程序组件指定。例如，“主体”片段有“过滤器”和“图库”片段。</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-tsx">&lt;div class="content"&gt;
+  &lt;FragmentPlaceholder name="filter" /&gt;
+  &lt;FragmentPlaceholder name="gallery" /&gt;
+&lt;/div&gt;
+</code></pre>
+	<!--kg-card-end: markdown--><!--kg-card-begin: html-->
+	<center><small><a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/body/src/root.tsx" target="_blank"><strong>cloud-gallery/body/src/root.tsx</strong></a></small></center><!--kg-card-end: html-->
+	<p><code>FragmentPlaceholder</code> 组件负责向片段发出请求，并将片段流传送到输出流中。</p>
+	<h3 id="--13">代理资产请求</h3>
+	<p>如前所述，片段可以托管自己的资产，特别是客户端 JavaScript 文件。对资产的请求到达父片段时，它需要知道哪个子片段应该接收该请求。</p>
+	<p>在我们的演示应用程序中，我们使用了一个惯例，即这种资产路径将以 <code>/_fragment/&lt;fragment-name&gt;</code> 为前缀。例如，页眉标志的图像路径是 <code>/_fragment/header/cf-logo.png</code>。我们开发了一个 <code><a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/helpers/src/fragmentHelpers.tsx#L28" target="_blank">tryGetFragmentAsset</a>()</code> 帮助程序，可以添加到父片段的 <code>fetch()</code> 处理程序中来处理这个问题：</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-tsx">export default {
+  async fetch(
+    request: Request,
+    env: Record&lt;string, unknown&gt;
+  ): Promise&lt;Response&gt; {
+    // Proxy requests for assets hosted by a fragment.
+    const asset = await tryGetFragmentAsset(env, request);
+    if (asset !== null) {
+      return asset;
+    }
+    // Otherwise server-side render the template injecting child fragments.
+    return renderResponse(request, env, &lt;Root /&gt;, manifest, "div");
+  },
+};
+</code></pre>
+	<!--kg-card-end: markdown--><!--kg-card-begin: html-->
+	<center><small><a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/body/src/entry.ssr.tsx" target="_blank"><strong>cloud-gallery/body/src/entry.ssr.tsx</strong></a></small></center><!--kg-card-end: html-->
+	<h3 id="--14">片段资产路径</h3>
+	<p>如果一个片段托管了它自己的资产，那么我们需要确保它所渲染的任何 HTML 在引用这些资产时，均使用了上述特殊路径前缀 <code>_fragment/&lt;fragment-name&gt;</code>。在我们开发的帮助程序中，我们为此实施了一个策略。</p>
+	<p><a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/helpers/src/fragmentHelpers.tsx" target="_blank"><code>FragmentPlaceholder</code></a> 组件将一个 <code>base</code> searchParam 添加到片段请求中，告诉它应该使用什么前缀。<code><a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/helpers/src/renderResponse.ts" target="_blank">renderResponse</a>()</code> 帮助程序提取这个前缀，并将前缀提供给 Qwik 服务器端渲染器。这可以确保任何客户端的 JavaScript 请求都有正确的前缀。片段可以应用我们开发的一个钩子，即 <code><a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/helpers/src/base.ts#L22" target="_blank">useFragmentRoot</a>()</code>。这允许组件从 <a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/helpers/src/base.ts#L12" target="_blank"><code>FragmentContext</code></a> 环境中汇总前缀。</p>
+	<p>例如，由于“页眉”片段托管了 Cloudflare 和 GitHub 标志等资产，它必须调用 <code>useFragmentRoot()</code> hook：</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-tsx">export const Header = component$(() =&gt; {
+  useStylesScoped$(HeaderCSS);
+  useFragmentRoot();
+
+  return (...);
+});
+</code></pre>
+	<!--kg-card-end: markdown--><!--kg-card-begin: html-->
+	<center><small><a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/header/src/root.tsx" target="_blank"><strong>cloud-gallery/header/src/root.tsx</strong></a></small></center><!--kg-card-end: html-->
+	<p>然后可以在需要应用前缀的组件中访问 <code>FragmentContext</code> 值。例如，<code>Image</code> 组件：</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-tsx">export const Image = component$((props: Record&lt;string, string | number&gt;) =&gt; {
+  const { base } = useContext(FragmentContext);
+  return &lt;img {...props} src={base + props.src} /&gt;;
+});
+</code></pre>
+	<!--kg-card-end: markdown--><!--kg-card-begin: html-->
+	<center><small><a href="https://github.com/cloudflare/workers-web-experiments/blob/main/cloud-gallery/helpers/src/image/image.tsx" target="_blank"><strong>cloud-gallery/helpers/src/image/image.tsx</strong></a></small></center><!--kg-card-end: html-->
+	<h3 id="--15">服务绑定片段</h3>
+	<p>Cloudflare Workers 提供了一个<a href="https://developers.cloudflare.com/workers/platform/bindings/about-service-bindings/" target="_blank">服务绑定</a>机制，以便 Cloudflare Worker 之间有效提出请求，避免网络请求。在演示应用程序中，我们使用这种机制从父片段向其子片段发出请求，几乎没有性能开销，同时片段仍可独立部署。</p>
+	<h2 id="--16">当前解决方案对比</h2>
+	<p>与当前其他解决方案相比，这个片段架构有三个特性。</p>
+	<p>不同于单体或客户端微前端，我们将片段开发和部署为独立的服务器端渲染应用程序，并组合在服务器端。这大大提升了渲染速度，降低了浏览器中的交互延迟。</p>
+	<p>不同于使用 Node.js 或云功能在服务器端渲染的微前端，Cloudflare Workers 是一个全球分布式计算平台，部署模式与地区无关。延迟极低，而且片段之间的通信开销几乎为零。</p>
+	<p>也不同于基于 <a href="https://webpack.js.org/concepts/module-federation/" target="_blank">module federation</a>的解决方案，一个片段的客户端 JavaScript 仅针对它所支持的片段。这意味着它足够小，不需要共享库代码，消除了更新共享库时的版本偏差和协调问题。</p>
+	<h2 id="--17">未来的可能性</h2>
+	<p>这个演示应用程序只是一次概念验证，有些方面仍有待研究。我们未来希望探索的一些功能如下。</p>
+	<h3 id="--18">缓存</h3>
+	<p>每个微前端片段都可以根据其内容的静态程度独立缓存，而不涉及其他片段。请求完整的页面时，片段只需要为已经改变的微前端运行服务器端渲染。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/image2.jpg" class="kg-image">
+		<figcaption>缓存部分片段输出的应用程序</figcaption>
+	</figure>
+	<p>由于根据片段缓存，您可以将 HTML 响应更快地返回给浏览器，避免因不必要地重新渲染内容而产生计算成本。</p>
+	<h3 id="--19">片段路由和客户端导航</h3>
+	<p>我们的演示应用程序使用微前端片段来组成一个单一页面。不过，我们也可以使用这种方法来实施页面路由。在服务器端渲染时，主片段可以根据访问的 URL 插入适当的“页面”片段。在客户端导航时，应用程序中的主片段将保持不变，但显示的“页面”片段将会改变。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/image5-1.jpg" class="kg-image">
+		<figcaption>将每条路径分别委托给不同片段的应用程序</figcaption>
+	</figure>
+	<p>该方法结合了服务器端和客户端路由的优点以及片段的威力。</p>
+	<h3 id="--20">使用其他前端框架</h3>
+	<p>虽然 Cloud Gallery 应用程序是使用 Qwik 来实施所有片段，但也可以使用其他框架。如果确有必要，也可能混合和匹配框架。</p>
+	<p>为了取得良好的效果，所选框架应该能够进行服务器端渲染，且客户端 JavaScript 的占用空间应该较小。HTML 流式传输功能虽非必需，但可以显著提升大型应用程序的性能。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/image1-15.png" class="kg-image">
+		<figcaption>使用不同前端框架的应用程序</figcaption>
+	</figure>
+	<h3 id="--21">渐进式迁移策略</h3>
+	<p>采用新的架构、计算平台和部署模式，需要瞬间纳入许多东西，对于现有的大型应用程序来说，风险和成本都高到令人望而却步。为了让传统项目也可以使用这种基于片段的架构，关键是实施渐进式采用策略。</p>
+	<p>开发人员可以尝试先将旧版应用程序中单独的用户界面部分迁移到一个片段，对旧版应用程序进行最小的改动。再逐渐迁移应用程序的更多部分，一次迁移一个片段。</p>
+	<h3 id="--22">惯例优化配置</h3>
+	<p>如 Cloud Gallery 演示应用程序所示，设置一个基于片段的微前端需要完成不少配置。许多配置是机械式的，可以通过惯例和优化工具进行抽象处理。按照 Ruby on Rails 中以生产力为中心的先例，以及基于文件系统的路由元框架，我们可以消除很多这样的配置。</p>
+	<h2 id="--23">亲自试试看！</h2>
+	<p>还有许多东西有待挖掘！近年来，web 应用程序取得了长足的发展，增长速度惊人。传统的微前端实施方式在帮助开发人员扩展开发和部署大型应用程序方面有成有败。但 Cloudflare Workers 带来了新的可能性，可以帮助我们解决许多现有挑战，构建更好的 web 应用程序。</p>
+	<p>Cloudflare Workers <a href="https://workers.cloudflare.com/#plans" target="_blank">慷慨推出了免费计划</a>，您可以<a href="https://github.com/cloudflare/workers-web-experiments/tree/main/cloud-gallery" target="_blank">查看 Gallery 演示应用程序的代码</a>，自行部署。</p>
+	<p>如果对上述内容感兴趣，并且愿意与我们共同改善 Cloudflare Workers 的开发人员体验，欢迎加入我们，<a href="https://boards.greenhouse.io/cloudflare/jobs/4619341" target="_blank">我们正在招聘</a>！</p>
+</div>

@@ -1,0 +1,60 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image4-4.png" class="kg-image" alt="A Zero Trust terminal in your web browser"></figure>
+	<p>Cloudflare for Teams는 모든 규모 조직의 리소스와 데이터에 Zero Trust 제어를 추가하는 기능을 제공하며 아울러 Cloudflare 네트워크로 성능을 개선하도록 해줍니다. 오늘부터 귀사의 팀은 동일한 플랫폼을 사용하여 웹 애플리케이션에서 사용할 수 있는 수준과 같은 수준의 감사 제어를 통해 브라우저 내부에서 비 HTTP 리소스에 원활하게 연결할 수 있습니다.</p><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 62.5%;"><iframe src="https://iframe.videodelivery.net/9e62cddf4ac40dc7237f4136f946fa12?preload=true&amp;loop=true&amp;autoplay=true" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<p></p><!--kg-card-end: html-->
+	<p>Cloudflare의 브라우저 기반 터미널은 사용자가 클릭 한 번으로 실행할 수 있는 완전한 기능의 콘솔을 렌더링합니다. 사용자는 조직의 SSO로 인증하고, Cloudflare의 에지에서는 사용자가 액세스하려는 리소스에 대하여 팀의 Zero Trust 규칙을 충족하는지 확인합니다.</p>
+	<p>승인되면, 사용자는 클라이언트 측 구성이나 에이전트 없이 기본 명령줄을 사용하는 것처럼 SSH를 통해 명령을 실행할 수 있습니다. Cloudflare의 네트워크에서는 연결을 가속화하고, 어떤 데이터 전송이 가능한지에 대한 규칙을 적용하며, 필요에 따라 관리자가 감사할 세션을 기록합니다.</p>
+	<p>우리는 브라우저 외부에 존재하는 애플리케이션을 보호하고 제공하기 위해 힘들게 노력하는 고객과의 대화를 기반으로 Cloudflare의 브라우저 기반 터미널을 구축했습니다. 우리는 기존 워크플로를 사용하고 지원해서 SSH를 통해 시스템에 연결하거나 레거시 애플리케이션을 대규모 원격 인력으로까지 확장해야 하는 개발자의 이야기를 들어보았습니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image5-6.png" class="kg-image"></figure>
+	<p>우리는 SSH 사용 사례를 위한 터미널로 시작하지만, Cloudflare의 플랫폼은 귀사의 팀에서 필요로 하는 거의 모든 애플리케이션을 위한 브라우저 기반 인터페이스를 제공하게 됩니다. 귀사의 보안 팀에서는 Zero Trust 규칙을 만들어 누가 해당 리소스에 접근할 수 있고 어떻게 접근할 수 있는지 결정할 수 있으며, 모든 연결을 기록합니다. 귀사에서는 고급 보안 기능을 추가하여 세션을 기록하며 데이터를 검사하고 필터링하여 SSH 및 곧 RDP와 같은 비 HTTP 연결에서 사고가 나는 것을 막을 수 있습니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/04/Tunnel-Diagram.png" class="kg-image"></figure>
+	<p>플랫폼은 또한 귀사의 최종 사용자를 위해 애플리케이션을 더 빠르게 해줍니다. Cloudflare의 네트워크 서비스에서는 모든 지역에 있는 팀으로의 연결이 가속화됩니다. 기존 팀 구성원은 클라이언트 측을 구성할 필요 없이 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trust 모델</a>로 마이그레이션할 수 있습니다. 새로운 직원은 웹 애플리케이션뿐 아니라 필요한 모든 리소스까지 한 곳에서 찾아 클릭 한 번만 하면 실행할 수 있습니다.</p>
+	<h2 id="-">비 웹 애플리케이션의 과제</h2>
+	<h3 id="zero-trust-">Zero Trust 제어</h3>
+	<p>웹 브라우저, 역방향 프록시, 브라우저 쿠키 덕분에 IT 부서에서 웹 애플리케이션에 Zero Trust 제어를 더 쉽게 추가할 수 있게 되었습니다. 사설 네트워크에 존재했던 웹 애플리케이션은 Cloudflare와 같은 역방향 프록시 뒤에 배포될 수 있으며, 사용자는 역방향 프록시가 ID를 확인하는 동안 모든 웹 브라우저에서 공용 DNS 주소를 방문할 수 있습니다. Cloudflare Access는 이러한 도구를 기반으로 귀사의 팀에서 모든 웹 애플리케이션에 10분 이내에 Zero Trust 규칙을 추가하는 기능을 제공합니다.</p>
+	<p>비 웹 애플리케이션은 문제를 초래합니다. 씨크 클라이언트를 필요로 하는 기존 애플리케이션 대부분은 사설 네트워크에 의존합니다. 클라이언트 소프트웨어에서는 특정 프로토콜을 통해 개인 IP에 도달할 것으로 예상하며, 해당 IP를 공개로 설정하는 것은 데이터가 손실될 위험이 있으므로 거의 모든 조직에서 시작하기 어렵습니다. IP가 공개된 경우에도 최종 사용자는 여전히 장치에서 클라이언트 소프트웨어를 실행해야 합니다.</p>
+	<p>이러한 애플리케이션에 대한 인증도 레거시 접근 방식에 의존합니다. 개발자는 컴퓨터에 도달하기 위해 수명이 오래 지속되는 SSH 키를 보유하고, 기업의 사용자는 RDP 세션에 대한 스티커 메모에 사용자 이름과 비밀번호를 보관합니다. 이러한 유형의 리소스로 인해 SSO 공급자 및 장치 상태와 같은 기타 제어 수단과 통합하는 일은 어렵거나 불가능합니다.</p>
+	<h3 id="--1">데이터 보안 및 로깅</h3>
+	<p>또한 Cloudflare를 사용하여 서버 측 코드 변경 없이 모든 인증 이벤트와 HTTP 요청 및 응답을 기록할 수 있습니다. 팀에서는 서버 측 코드 변경 없이 Zero Trust 제어와 함께 모든 웹 애플리케이션에 대한 포괄적인 로깅 계층을 배포할 수 있습니다.</p>
+	<p>우리는 데이터 제어 및 로깅 격차가 브라우저 외부의 "다른 모든 애플리케이션"에 남아 있다는 고객의 이야기를 들었습니다. 팀에서 웹 애플리케이션을 대폭 개선하려고 투자하는 동안, 브라우저 외부의 모든 것은 사각 지대에 놓입니다.</p>
+	<h3 id="--2">사용자 경험</h3>
+	<p>웹 브라우저는 거의 모든 SaaS 애플리케이션을 모든 장치에서 모든 사용자가 액세스할 수 있도록 해줍니다. 사용자는 제조업체의 랩톱을 선택해서 Microsoft 365에서 Excel 스프레드시트를 편집하거나, Salesforce에서 고객 레코드를 업데이트할 수 있습니다.</p>
+	<p>이러한 사용 편의성은 모바일 장치 또는 브라우저에서 실행되지 않는 애플리케이션을 포함한 다른 모든 조합에서는 힘들어지기 시작합니다. 일부 조직에서는 특정 OS가 포함된 전용 하드웨어를 필요로 하는 특정 팀 구성원에게 제공합니다. 더 많은 팀이 사용자 워크플로를 느리게 하는 값비싼 가상화 플랫폼에 의존하고 있습니다.</p>
+	<p>클라이언트 측에서 어떤 방식으로 접근하든, 사용자와 리소스 간의 연결도 기존의 사설 네트워크와 동일한 문제에 직면해 있습니다. 트래픽은 중앙 집중식 장비를 통해 백홀되고, 사용자는 생산 장비 관리, 전사적 리소스 계획 작성 등의 핵심 워크플로를 완료하려고 노력하면서 느린 성능 문제를 겪고 있습니다.</p>
+	<h3 id="--3">클라이언트 측 구성</h3>
+	<p>최종 사용자가 비 웹 애플리케이션에 대한 로컬 구성을 변경해야 하는 경우 Zero Trust 모델로 마이그레이션하는 것이 번거로운 작업이 될 수 있습니다. 우리 팀에서 처음 VPN을 삭제했을 때 가장 인기 있었던 채팅 룸은 엔지니어가 SSH 구성 파일을 공유하고 쿠버네티스 워크로드에 도달하려면 어떤 환경 변수를 설정해야 하는지에 대한 질문에 답변하는 스레드가 되었습니다.</p>
+	<p>애플리케이션 검색도 문제가 됩니다. 조직에서는 일반적으로 사용되는 서비스에 대한 IP 주소 및 포트 목록으로 Wiki 페이지를 업데이트해야 합니다. 최종 사용자는 팀의 다른 구성원에게 특정 리소스에 연결하는 것을 도와달라고 요청해야 합니다.</p>
+	<h3 id="--4">감사 가능한 브라우저 기반 터미널 시작</h3>
+	<p>귀사의 팀에서 이 네 가지 과제를 모두 해결하도록 도와드리게 되었음을 오늘 발표하게 되어 기쁩니다. 웹 애플리케이션 흐름과 마찬가지로 이 솔루션은 배포하는 데 몇 분이 걸리고, 최종 사용자 구성이 필요하지 않으며, 다음 세 가지 구성 요소만으로 구성됩니다.</p>
+	<ol>
+		<li>온프레미스 환경 또는 퍼블릭 클라우드에서 실행되는 서비스</li>
+		<li><code>cloudflared</code>라고 불리는 경량 디먼을 사용하여 해당 서비스에서 Cloudflare 에지로의 보안 연결</li>
+		<li>Cloudflare가 SSH 세션을 렌더링하는 사용자의 브라우저</li>
+	</ol>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/04/Tunnel-Diagram-with-the-Partners.png" class="kg-image"></figure>
+	<h3 id="-zero-trust-">모든 리소스에 Zero Trust 제어 적용</h3>
+	<p>우리는 자체 호스팅 애플리케이션에 2차 인증을 추가해야 하는 규정 준수 요구 사항이 있는 기업들과 이야기를 나눴지만, 해당 기업들은 그러려면 개발하는 데 몇 달의 시간이 필요할 것으로 예상했습니다. Cloudflare Access를 이용하면 귀사의 팀에서 ID 공급자의 두 번째 단계 인증을 요구 사항으로 사용하여 모든 유형의 애플리케이션에 몇 분이면 연결할 수 있습니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image1-21.png" class="kg-image"></figure>
+	<p>Tanium, Carbon Black, Crowdstrike, 기타 공급자와의 통합을 이용하여 사용자가 위치한 국가 또는<a href="https://blog.cloudflare.com/ko-kr/endpoint-partnerships-ko-kr/">장치의 상태</a>와 같은 다른 신호와 함께 이러한 유형의 ID 기반 규칙을 계층화할 수 있습니다. 조직에서는 사용자에게 <a href="https://blog.cloudflare.com/zero-trust-with-managed-devices/">회사 장치에서만 연결</a>하도록 요구하거나 GitHub, Google 등의 공용 인증 옵션과 함께 Okta, Azure AD 등의 기업 공급자를 지원하는 로그인 흐름을 구축하도록 요구할 수 있습니다.</p>
+	<p>Cloudflare의 Zero Trust 플랫폼은 팀이 오래 지속되는 SSH 보안 키와 같은 오래된 인증 프로세스를 제거하는 데에도 도움이 됩니다. 이 솔루션에서는 로그인 중에 발급된 JSON 웹 토큰이 컴퓨터에서 사용자 세션을 인증하는 단기 인증서로 변환됩니다.</p>
+	<h3 id="--5">모든 애플리케이션에서 세션 감사 및 데이터 보호</h3>
+	<p>Cloudflare Zero Trust 앱 플랫폼은 현재 Cloudflare Gateway에 있는 파일, 데이터, 명령에 대하여 동일한 수준의 제어를 귀사의 팀에 제공하고 이를 귀사에서 지원되는 모든 애플리케이션 유형에 적용합니다.</p>
+	<p>먼저, 귀사의 팀에서는 이제 조직에서 SSH 연결을 통해 컴퓨터와 데이터를 주고받거나, RDP를 통해 원격 데스크톱으로 데이터를 전송할 수 있는 사람을 제어하는 규칙을 만들 수 있습니다. 컴퓨터, 사용자, 그룹 ID, 국가 및 장치별로 규칙을 작성합니다. 사용자 환경의 컴퓨터 또는 데스크톱에 데이터를 보관하되, 귀사 조직 외부의 로밍 장치에는 데이터를 보관하지 마십시오.</p>
+	<p>이제 곧 모든 연결 유형에 대해 세션 기록을 활성화하여 적은 노력으로도 가시성이 높은 솔루션을 배포할 수 있습니다. Cloudflare Zero Trust 앱을 사용하면 모든 세션의 화면을 기록하고, 기록을 간격을 두고 일괄 처리하며, 해당 기록을 구성해둔 저장 위치로 보냅니다. 우리는 이 흐름에 구조화된 명령 로깅 및 키보드 입력도 추가할 예정입니다.</p>
+	<h3 id="--6">클릭 한 번으로 모든 앱 실행</h3>
+	<p>오늘 출시된 기능으로 조직의 모든 애플리케이션에 대한 보안이 향상될 뿐만 아니라 모든 사용자가 애플리케이션을 더 쉽게 사용할 수 있습니다.</p>
+	<p>Cloudflare Zero Trust 앱의 브라우저 기반 인터페이스는 최종 사용자의 권한에 맞도록 조정된 단일 대시보드에서 시작할 수 있습니다. 사용자는 귀사의 조직에서 제어하는 홈 페이지에 로그인하고, Cloudflare에는 웹, SSH, RDP 등 사용자가 연결할 수 있는 각 애플리케이션이 표시됩니다.</p>
+	<p>사용자는 보기에서 타일을 클릭하여 브라우저를 종료하지 않고도 지정된 애플리케이션에 대한 인터페이스를 시작할 수 있습니다. Cloudflare의 Zero Trust 로그인 흐름으로 사용자의 세션에 대한 권한이 부여되며, 사용자는 SSH 구성 파일을 수정하거나 RDP 클라이언트를 로컬로 편집하지 않고도 작업을 시작할 수 있습니다.</p><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 62.5%;"><iframe src="https://iframe.videodelivery.net/9e62cddf4ac40dc7237f4136f946fa12?preload=true&amp;loop=true&amp;autoplay=true" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<p></p><!--kg-card-end: html-->
+	<p>모바일도 그냥 작동합니다. Cloudflare는 태블릿과 휴대폰의 모든 일반 브라우저에서 세션을 렌더링할 수 있습니다. 따라서 작업 현장의 기술자나 사무실 밖에 있는 사용자가 웹 애플리케이션에 연결하는 것처럼 모든 서비스에 원활하게 연결할 수 있습니다.</p>
+	<h3 id="--7">사용자 경험 가속화</h3>
+	<p>Cloudflare One의 다른 모든 제품과 마찬가지로 이 솔루션에서도 팀에게 보안과 성능 중 하나를 선택하도록 강요하지 않습니다. Cloudflare Zero Trust 앱을 이용하면 팀이 필요로 하는 애플리케이션이 더 빨라집니다.</p>
+	<p>이 접근 방식은 Cloudflare 브라우저를 구동하는 원격 브라우저 격리 기술을 기반으로 시작됩니다. Cloudflare Zero Trust 앱은 브라우저에서 애플리케이션을 마치 네이티브 애플리케이션인 것처럼 렌더링합니다. 사용자는 강조 표시, 복사하여 붙여넣기, 단축키를 사용할 수 있습니다.</p>
+	<p>다음으로, 이 솔루션을 사용하면 Cloudflare의 네트워크를 통하여 서버로부터 최종 사용자까지의 트래픽이 가속화됩니다. Cloudflare에서는 글로벌 백본에서 가장 빠른 경로를 결정하고, 100여 개의 국가, 200여 개의 도시에 있는 인근 데이터 센터에서 귀사의 팀에 경험을 제공합니다.</p>
+	<h2 id="--8">다음은?</h2>
+	<p>오늘 출시된 기능은 SSH 지원으로 시작됩니다. SSH를 위한 구조화된 명령 로깅 및 필터링 외에도 향후 몇 개월 동안 추가 애플리케이션 유형에 대한 지원을 계속 늘릴 계획입니다. 귀사의 팀에 사용하기 힘든 리소스가 있나요? <a href="https://forms.gle/a9EhhCj9dm2jY8EE8" target="_blank">알려주시면</a> 우리가 우선순위를 확장하면서 고려하겠습니다.</p>
+	<p>귀사의 팀에서 SSH 흐름에 Cloudflare Access를 사용하는 경우 단일 구성 변경으로 즉시 Zero Trust 앱의 사용을 시작할 수 있습니다. 시작하려면 <a href="https://community.cloudflare.com/t/feedback-for-cloudflares-zero-trust-browser-based-ssh-client/260745" target="_blank">여기의 지침을 따르세요</a>.</p>
+	<p>Cloudflare for Teams의 일환으로 조직에서는<a href="https://dash.cloudflare.com/signup/teams" target="_blank">Cloudflare for Teams Free 요금제</a>의 일부로 Cloudflare Zero Trust 앱을 최대 50명의 사용자까지 비용 부담 없이 사용할 수 있습니다. 세션 녹화와 같은 고급 보안 기능은 Cloudflare for Teams Standard 요금제로 이용할 수 있습니다.</p>
+</div>

@@ -1,0 +1,105 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/OHTTPS-1.png" class="kg-image" alt="Stronger than a promise: proving Oblivious HTTP privacy properties"></figure>
+	<p>我们最近宣布将推出 <a href="https://blog.cloudflare.com/building-privacy-into-internet-standards-and-how-to-make-your-app-more-private-today/">Privacy Gateway</a>——一个完全托管、可扩展的高性能 Oblivious HTTP (OHTTP) 中继。从概念上讲，OHTTP 是一个简单的协议：端到端加密请求和响应通过中继在客户端和服务器之间转发，将<em>发送者</em>与<em>发送内容</em>脱钩。这是一种常见的模式，<a href="https://blog.cloudflare.com/oblivious-dns/">Oblivious DoH</a> 和 <a href="https://blog.cloudflare.com/icloud-private-relay/">Apple Private Relay</a> 等已部署的技术便是印证。尽管如此，OHTTP 仍然很新鲜，我们必须仔细分析这种新协议。</p>
+	<p>为此，我们进行了一次正式的计算机辅助安全分析，作为对正在进行的标准化进程和协议部署的补充。本文我们将更深入地介绍这一分析，深入挖掘该协议的密码学细节和我们为分析该协议而开发的模型。如果您已熟悉 OHTTP 协议，您可直接跳到分析部分进行深入了解。否则，我们还是先回顾一下 OHTTP 的目标及其设计思路。</p>
+	<h3 id="-">将发送者与发送内容脱钩</h3>
+	<p>OHTTP 是一个结合了公钥加密和代理的协议，将 HTTP 请求（和响应）的内容与 HTTP 请求的发送者分离开来。在 OHTTP 中，客户端生成加密请求，并将其发送给中继，中继再将其转发给网关服务器，最后由网关将消息解密才能处理该请求。中继只能看到密文以及客户端和网关的身份，而网关只能看到中继的身份和明文。</p>
+	<p>这样一来，OHTTP 就是一个轻量级应用程序层代理协议。这意味着，它代理的是应用程序信息，而非网络层连接。这一区别非常重要，所以我们要确保理解其中的不同。代理连接涉及一整套通常基于 <a href="https://blog.cloudflare.com/a-primer-on-proxies/">HTTP CONNECT</a> 的其他协议。(也可以使用 VPN 和 WireGuard 等技术，包括 Cloudflare WARP，但为方便比较，我们仅关注 HTTP CONNECT)。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/image2-16.png" class="kg-image">
+		<figcaption>面向连接的代理简介</figcaption>
+	</figure>
+	<p>由于整个 TCP 连接本身就是通过代理进行连接，所以面向连接的代理与任何使用 TCP 的应用程序兼容。实际上，它们是通用目的的代理协议，支持任何类型的应用程序流量。相比之下，代理应用程序消息与需要在客户端和服务器之间传输整个对象（消息）的应用程序用例兼容。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/image5-3.png" class="kg-image">
+		<figcaption>面向消息的代理简介</figcaption>
+	</figure>
+	<p>例如，<a href="https://blog.cloudflare.com/oblivious-dns/">DNS 请求和响应</a>，或 HTTP 请求和响应（如果是 OHTTP）。换而言之，OHTTP 不是一个通用目的的代理协议：它有其适用目的，针对客户端和服务器之间的交易互动（例如应用程序级别的 API）。因此，相比之下，OHTTP 要简单得多。</p>
+	<p>应用程序使用 OHTTP 来确保请求与以下任何一项都没有关联：</p>
+	<ol>
+		<li>客户端可识别信息，包括 IP 地址、TLS 指纹等。作为一个代理协议，这是基本要求。</li>
+		<li>来自同一客户端的未来请求。对于那些在请求之间没有任何状态的应用程序来说，这必不可少。</li>
+	</ol>
+	<p>凭借这两个属性，OHTTP 成为那些希望在不影响基本功能的情况下为用户提供隐私的应用程序的完美选择。它作为广泛部署 Oblivious DoH 的基础已有一年多时间，最近还作为 <a href="https://www.theverge.com/2022/9/14/23351957/flo-period-tracker-privacy-anonymous-mode" target="_blank">Flo Health Inc. 的匿名模式功能的基础</a>。</p>
+	<p>值得注意的是，这两种属性都可以通过面向连接的协议来实现，但代价是，客户端想要传输的每条消息都需要一个新的端到端 TLS 连接。这对参与协议的所有实体来说，可能过于昂贵，令人望而却步。</p>
+	<p>那么，OHTTP 究竟是如何实现这些目标的？我们来深入了解 OHTTP，一探究竟。</p>
+	<h3 id="oblivious-http-">Oblivious HTTP 协议设计</h3>
+	<p>OHTTP 中的单个交易包括以下步骤：</p>
+	<ol>
+		<li>客户端使用网关服务器的公钥将 <a href="https://datatracker.ietf.org/doc/html/draft-thomson-http-oblivious-02#section-5.1" target="_blank">HTTP 请求封装</a>，并通过客户端&lt;&gt;中继 HTTPS 连接将其发送给中继。</li>
+		<li>中继通过自己的中继&lt;&gt;网关 HTTPS 连接将请求转发给服务器。</li>
+		<li>网关将请求解封装，将其转发给可以生成资源的目标服务器。</li>
+		<li>网关返回一个<a href="https://datatracker.ietf.org/doc/html/draft-thomson-http-oblivious-02#section-5.2" target="_blank">封装的响应</a>给中继，然后中继将结果转发给客户端。</li>
+	</ol>
+	<p>请注意，在这个交易中，中继始终只看到客户端和网关的身份（分别为客户端 IP 地址和网关 URL），看不到任何应用程序数据。反之，网关只看到应用程序数据和中继的 IP 地址，看不到客户端 IP 地址。<strong>任何一方都看不到完整的信息，除非中继和网关串通起来，否则始终如此。</strong></p>
+	<p>技术上，上述交易中用于转发请求和响应的 HTTP 细节并不有趣，就是使用 POST 通过 HTTPS 将消息从发送者发送给接收者，因此我们将跳过这些。有趣的是请求和响应的封装，该封装是基于<a href="https://blog.cloudflare.com/hybrid-public-key-encryption/">最近批准的混合公钥加密标准 </a><a href="https://www.rfc-editor.org/rfc/rfc9180.html" target="_blank">HPKE</a>。</p>
+	<p>我们从请求封装开始，即<a href="https://blog.cloudflare.com/hybrid-public-key-encryption/">混合公钥加密</a>。客户端先根据 <a href="https://datatracker.ietf.org/doc/rfc9292/" target="_blank">RFC9292</a> 规定，将其 HTTP 请求转化为二进制格式，称为二进制 HTTP。顾名思义，二进制 HTTP 就是二进制格式的编码 HTTP 消息。这种表示方法可以让客户端将 HTTP 请求编码为二进制编码的值，并让网关完成逆向流程，即将二进制编码的值恢复为 HTTP 请求。二进制编码必不可少，因为公钥加密层只接受二进制编码的输入。</p>
+	<p>HTTP 请求一旦编码为二进制格式，就会传送到 HPKE 生成加密信息，然后客户端将其发送到中继，再转发给网关。网关将消息解密，将二进制编码的请求恢复为等效的 HTTP 请求，然后转发给目标服务器进行处理。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/image10-1.png" class="kg-image"></figure>
+	<p>来自网关的响应也以非常类似的方式封装后再传回给客户端。网关首先将响应编码为等效的二进制 HTTP 消息，使用只有客户端和网关知道的对称密钥将其加密，然后将其返回给中继，再转发给客户端。客户端将消息解密并转换，恢复结果。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/image4-10.png" class="kg-image"></figure>
+	<h3 id="--1">简化模型和安全目标</h3>
+	<p>在我们的正式分析中，我们努力确保 OHTTP 通过使用加密和代理，能够实现上述期望的隐私性目标。</p>
+	<p>为激励分析，考虑以下简化模型，其中存在两个客户端 C1 和 C2、一个中继器 R 和一个网关 G。OHTTP 假设攻击者可以观察到所有的网络活动，并可以自适应方式破坏 R 或 G，但不能破坏 C1 或 C2。OHTTP 假设 R 和 G 没有串通，因此我们假设 R 和 G 中只有一个遭到破坏。破坏后，攻击者就可以访问受害方的所有会话信息和私钥资料。攻击者禁止向网关发送客户端的可识别信息，例如 IP 地址。(这将使攻击者能够轻松将查询与相应的客户端联系起来）。</p>
+	<p>在这个模型中，C1 和 C2 都通过 R 分别向 G 发送 OHTTP 请求 Q1 和 Q2，G 提供答案 A1 和 A2。攻击者的目的是分别将 C1 与 (Q1, A1)、C2 与 (Q2, A2) 联系起来。如果不需要任何额外的互动就能联系起来，攻击者就大功告成了。OHTTP 防止了这种联系。通俗地说就是：</p>
+	<ol>
+		<li>只有拥有相应响应密钥和 HPKE 密钥资料的客户端和网关知道请求和响应。</li>
+		<li>没有每个客户端的唯一密钥，网关无法区分来自同一客户端的两个相同请求和来自不同客户端的两个相同请求。</li>
+	</ol>
+	<p>从非正式的角度来看，OHTTP 似乎显然实现了这些特性。但我们想要正式证明，即如果完好实施该设计，就会拥有这些属性。此类正式分析不同于正式验证，正式验证是采用协议设计并证明有些代码正确实施了该设计。虽然两者都很有用，但它们的过程不同，本文我们讨论的是前者。但首先，我们先介绍一下正式分析的背景。</p>
+	<h3 id="--2">正式分析编程模型</h3>
+	<p>在我们的环境中，正式分析包括生成协议的代数描述，然后用数学来证明该代数描述具有我们想要的属性。最终结果是证明我们理想化的代数版本的协议是“安全的”，即具有所需属性来应对我们想要抵御的攻击者。在我们的案例中，我们选择使用 <a href="https://tamarin-prover.github.io/" target="_blank">Tamarin</a> 给我们理想化的代数版本的 OHTTP 建模。Tamarin 是一个以安全为中心的定理证明程序和模型检查器，初次使用这个工具会令人生畏，但一旦熟悉了，就会觉得非常直观。我们将在下面的 OHTTP 模型中详细介绍 Tamarin 模型的各个部分。</p>
+	<h3 id="--3">协议行为建模</h3>
+	<p>Tamarin 使用一种被称为<a href="https://resources.mpi-inf.mpg.de/departments/rg1/conferences/vtsa18/slides/basin-lecture2.pdf" target="_blank">多重集重写</a>技术来描述协议。协议描述由一系列“规则”组成，满足一定条件时，便会“触发”这些规则。每条规则代表协议中一个不连续的步骤，触发规则即意味着已采纳该步骤。例如，我们有一条规则表示网关生成其长期的公共封装密钥，并为协议各方建立安全的 TLS 连接。这些规则几乎可以随时触发，因为它们没有任何要求。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/image9-2.png" class="kg-image">
+		<figcaption>OHTTP 网关密钥生成的基本规则</figcaption>
+	</figure>
+	<p>Tamarin 将这些要求表述为“事实”。有正确的事实时，就会触发相应规则。Tamarin 将所有可用事实存储在一个“袋子”或多重集中。与普通集类似，多重集也是以无序的方式存储一系列对象，但与普通集不同的是，多重集允许有重复的对象。这就是“多重集重写”的“多重集”部分。</p>
+	<p>重写部分指的是规则输出。触发一个规则时，需要从袋中取出一些可用的事实，完成后再向袋中插入一些新的事实。这些新的事实可能满足其他规则的要求，并触发相应规则，产生更多新的事实，以此类推1。通过这种方式，我们可以表示协议的进展情况。使用输入和输出事实，我们可以描述我们生成长期公共封装密钥的规则，它没有要求，并产生一个长期密钥作为输出，如下图所示。</p><!--kg-card-begin: html--><img src="https://blog.cloudflare.com/content/images/2022/10/image7-3.png" width="50%"><!--kg-card-end: html-->
+	<p>如果有输出事实与规则的输入事实相匹配，则满足规则要求。例如，在 OHTTP 中，客户端规则生成请求的一个要求是存在长期的公共封装密钥。这种匹配如下图所示。</p><!--kg-card-begin: html--><img src="https://blog.cloudflare.com/content/images/2022/10/image8-3.png" width="50%"><!--kg-card-end: html-->
+	<p>我们来把这些内容汇总到一起，以 OHTTP 一个极小的具体部分为例：客户端生成封装的请求并将其发送给中继。这一步应该为中继产生一条消息，以及处理中继的最终响应所需的任何相应状态。作为前提条件，客户端需要 (1) 网关的公钥和 (2) 与中继的 TLS 连接。而且如前所述，生成公钥和 TLS 连接不需要任何输入，因此可以在任何时候进行。</p><!--kg-card-begin: html--><img src="https://blog.cloudflare.com/content/images/2022/10/image1-21.png" width="50%">
+	<p></p><!--kg-card-end: html-->
+	<h3 id="--4">事件及时间建模</h3>
+	<p>除消耗和产生新的事实之外，每个 Tamarin 规则还会产生副作用，即“行动事实”。Tamarin 记录了每次触发规则时的行动事实。行动事实示例：“t 时发送了一个包含内容 m 的客户端消息。”有时候，规则只能严格按顺序触发，因此我们可以把行动事实按固定的时间顺序排列。还有时候，可能有多个规则同时满足其前提条件，因此我们不能将行动事实放在一个严格的时间序列中。我们可以把这种部分有序的含义模式表示为一个有向无环图，简称 DAG。</p>
+	<p>总而言之，多重集重写规则描述了协议的步骤，而产生的 DAG 记录了与协议描述相关的行动。我们把行动的 DAG 称为行动图。如果我们做好了这些工作，就有可能遵循这些规则，产生协议所允许的每一种可能的消息或行动组合，及其相应的行动图。</p>
+	<p>为举例说明行动图，我们来考虑一下，客户端成功完成协议之后会发生什么。当符合这个规则的要求时，就会触发该规则，标志着客户端已经完成协议，且响应是有效的。由于此时已经完成协议，所以没有产生任何输出事实。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/image3-8.png" class="kg-image">
+		<figcaption>终端客户端响应处理程序规则的行动图</figcaption>
+	</figure>
+	<h3 id="--5">攻击者建模</h3>
+	<p>行动图是推理协议安全属性的核心。我们可以检查行动图的各种属性，例如“中继采取的第一项行动是否发生在客户端采取的第一项行动之后？”。我们的规则允许同时发生多次协议运行。这非常强大。我们可以看着行动图，然后问“这里是否发生了什么坏事，可能破坏了协议的安全属性？”</p>
+	<p>特别是，我们可以通过查询行动图，或通过声明其各种属性，来证明其属性（安全性和正确性）。例如，我们可以说“对于所有协议运行，如果客户端完成了协议，并能将来自网关的响应解密，那么该响应一定是由一个拥有相应的相同秘密的实体生成并加密。"</p>
+	<p>这是一个有用的声明，但并未说明安全性。例如，如果网关的私钥遭到攻击，会发生什么？为了证明安全属性，我们需要定义我们的威胁模型，其中包括对手及其能力。在 Tamarin 中，我们将威胁模型编码为协议模型的一部分。例如，我们在定义从客户端传递到中继的消息时，可以添加一个特殊的规则，让攻击者在经过中继时可以看到。然后我们便能描述这样的属性：”对于我们语言中的所有协议运行，攻击者永远不会知道密钥。“</p>
+	<p>对于安全协议，我们通常赋予攻击者读取、修改、放弃和重看任何消息的能力。这有时被描述为”攻击者控制网络“或 <a href="https://www.cs.huji.ac.il/~dolev/pubs/dolev-yao-ieee-01056650.pdf" target="_blank">Dolev-Yao</a> 攻击者。然而，攻击者有时也可以破坏协议中的不同实体，知道与该实体相关的状态。这有时被称为扩展的 Dolev-Yao 攻击者，而我们的模型考虑的正是此类攻击者。</p>
+	<p>回到我们的模型，我们通过不同规则让攻击者有能力根据需要破坏长期密钥对和 TLS 会话。这些设定了各种行动事实——标志着发生了破坏的事实。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/image11-2.png" class="kg-image">
+		<figcaption>关键破坏规则的行动图</figcaption>
+	</figure>
+	<p>把所有东西汇总到一起，我们就得到了为协议行为、攻击者能力和安全属性建模的方法。现在我们来深入了解一下，我们如何应用这些来证明 OHTTP 是安全的。</p>
+	<h3 id="ohttp-tamarin-">OHTTP Tamarin 模型</h3>
+	<p>在我们的模型中，我们让攻击者有能力破坏服务器的长期密钥以及客户端和中继之间的密钥。我们可以抵御这个攻击者，旨在证明前述两个通俗说法：</p>
+	<ol>
+		<li>只有拥有相应响应密钥和 HPKE 密钥资料的客户端和网关知道请求和响应。</li>
+		<li>没有每个客户端的唯一密钥，网关无法区分来自同一客户端的两个请求和来自不同客户端的两个请求。</li>
+	</ol>
+	<p>为正式证明它们，我们修改一下表述方式。首先，我们声明，确实完成了该协议。这是一个重要步骤，因为如果模型中有一个错误，甚至导致协议不能按预期运行，那么 Tamarin 很可能也会说它是”安全的“，因为没有任何坏事发生。</p>
+	<p>对于核心安全属性，我们将预期目标转化为我们对模型提出的问题。这样一来，正式分析只提供了我们所提问题的证明（或反证！），而非我们应该提出的问题，因此这种转化依靠的是经验和专业知识。我们来分解下面要问的各个问题的转化过程，首先是网关身份验证。</p>
+	<p><a href="https://github.com/cloudflare/ohttp-analysis/blob/main/ohttp.m4#L273-L283" target="_blank"><strong>网关身份验证</strong></a>除非攻击者破坏了网关的长期密钥，否则只要客户端完成了协议并能够将网关的响应解密，客户端就知道：响应者就是它打算使用的网关，该网关得到了相同的密钥，看到了客户端发送的请求，而且客户端收到的响应就是该网关发送的。</p>
+	<p>这告诉我们，该协议确实有效，发送和接收的消息都是它们应该发送和接收的。身份验证的一个方面可以是参与者在一些数据上达成一致，所以尽管这个协议看起来有点像一个有许多属性的购物袋，但它们都是一个身份验证属性的组成部分。</p>
+	<p>接下来，我们需要证明，请求和响应始终保密。有几种方式可以违反保密性，例如，加密或解密密钥遭到破坏时。我们通过证明以下属性来证明这一点。</p>
+	<p><a href="https://github.com/cloudflare/ohttp-analysis/blob/main/ohttp.m4#L232-L248" target="_blank"><strong>请求和响应的保密性</strong></a></p>
+	<p>请求和响应都是保密的，即攻击者永远不会知道它们，除非攻击者破坏了网关的长期密钥。</p>
+	<p>从某种意义上讲，请求和响应保密涵盖了恶意网关的情况，因为如果网关是恶意的，“攻击者”就知道网关的长期密钥。</p>
+	<p><a href="https://github.com/cloudflare/ohttp-analysis/blob/main/ohttp.m4#L251-L257" target="_blank"><strong>中继连接安全</strong></a></p>
+	<p>客户端和中继之间的连接内容是保密的，除非攻击者破坏了中继。</p>
+	<p>如果客户端遭到破坏，我们不必担心连接的保密性，因为在这种情况下，在发送查询之前攻击者就已经知道了该查询，并可通过自行大方地查询来获知响应。如果您的客户端遭到破坏，那么游戏就结束了。</p>
+	<p><a href="https://github.com/cloudflare/ohttp-analysis/blob/main/ohttp.m4#L285-L292" target="_blank"><strong>防止重复使用 AEAD 随机数</strong></a></p>
+	<p>如果网关向客户端发送了一条消息，而攻击者找到了一条使用相同密钥随机数加密的不同消息，那就要么是攻击者破坏了网关，要么是他们已经知道了该查询。</p>
+	<p>在转化过程中，该属性意味着，响应加密是正确的且不易受到攻击，例如通过重复使用 AEAD 随机数。这对 OHTTP 来说显然是一场灾难，所以我们仔细检查是否绝不会出现这种情况，尤其是我们已经在 <a href="https://blog.cloudflare.com/oblivious-dns/">ODoH</a> 中<a href="https://files.research.cloudflare.com/publication/Singanamalla2021.pdf#subsection.4.5" target="_blank">发现了这一问题</a>。</p>
+	<p>最后，也许也是最重要的，我们想证明攻击者不能将某个特定的查询与客户端联系起来。我们证明了一个稍微不同的属性，它有效地论证了这一点：除非中继和网关串通，否则攻击者不能将加密的查询和解密的查询联系起来。特别是，我们证明了：</p>
+	<p><a href="https://github.com/cloudflare/ohttp-analysis/blob/main/ohttp.m4#L260-L271" target="_blank"><strong>客户端不可关联</strong></a></p>
+	<p>如果攻击者知道查询和发送到中继的连接内容（即加密的查询），那么它一定同时破坏了网关和中继。</p>
+	<p>一般情况下，这并不能证明不可区别。攻击者可以使用两种方法将两个查询联系起来。直接推断和统计分析。由于匿名三难问题，我们知道我们无法抵御统计分析，所以我们必须宣布它不在考虑范围之内，并继续分析另一种方法。为了防止直接推断，我们需要确保攻击者既不破坏客户端，也不破坏中继和网关（否则会将查询直接联系起来）。那么我们可以做些什么防范吗？好在还有一件事可以防范。我们可以确保恶意网关无法识别一个客户端发送了两条消息。我们通过不保留连接之间的任何状态来证明这一点。如果返回的客户端与新客户端的行为方式完全相同，而且请求之间没有任何状态，那么恶意网关就没有什么东西可以分析了。</p>
+	<p>就是这样！如果您想自行证明其中一些属性，可在<a href="https://github.com/cloudflare/ohttp-analysis" target="_blank"> GitHub 上获取</a>我们的模型和证明，以及我们的 <a href="https://github.com/cloudflare/odoh-analysis" target="_blank">ODoH 模型和证明</a>。<a href="https://tamarin-prover.github.io/" target="_blank">Tamarin 证明程序也可免费获取</a>，因此您可以仔细检查我们所有的工作。希望这篇文章能帮助您了解“我们已经证明协议是安全的”是什么意思，并启发您自行尝试。如果您也想参与这种了不起的项目，请查看我们的<a href="https://www.cloudflare.com/careers/" target="_blank">招聘</a>页面。</p><!--kg-card-begin: markdown-->
+	<hr>
+	<p><small><sup>1</sup>根据不同的模型，这个过程可能会导致搜索空间爆炸式增长，使其无法自动证明任何东西。此外，如果新的输出事实不符合任何剩余规则的要求，这个过程就会停止。</small></p>
+	<!--kg-card-end: markdown-->
+</div>

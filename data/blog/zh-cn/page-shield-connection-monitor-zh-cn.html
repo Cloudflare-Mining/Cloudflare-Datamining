@@ -1,0 +1,68 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/image1-20.png" class="kg-image" alt="Page Shield can now watch for malicious outbound connections made by third-party JavaScript code"></figure>
+	<p>Page Shield 现可监测第三方 JavaScript 代码发起的恶意出站连接</p>
+	<p>许多网站使用第三方 JavaScript 库，通过使用预建功能来减少开发时间。常见示例包括结账服务、分析工具，或实时聊天集成。任何 JavaScript 库都可能将网站访问者的数据发送到未知地点。</p>
+	<p>如果您管理着一个网站，曾想知道最终用户的数据可能去了哪里、哪些人可以访问。从今天开始，您可以使用 <a href="https://blog.cloudflare.com/zh-cn/page-shield-generally-available-zh-cn/">Page Shield</a> 的 Connection Monitor 找到答案。</p>
+	<p>Page Shield 是我们的客户端安全解决方案，旨在检测直接影响浏览器环境的恶意行为和破坏行为，例如利用第三方 JavaScript 库中的漏洞。</p>
+	<p>今天上市的 Connection Monitor 是 Page Shield 最新补充的功能，让您可以看到用户浏览器上由您网站上添加的第三方 JavaScript 发起的出站连接。然后，您可以审查这些信息，确保只有合适的第三方收到敏感数据。</p>
+	<p>借助 Connection Monitor，Business 和 Enterprise 计划的客户可以获得对出站连接的可见性。如果您使用了我们的 Page Shield Enterprise 附加组件，每发现一个潜在的恶意连接，您都会收到通知。</p>
+	<h3 id="-connection-monitor-">使用 Connection Monitor 覆盖更多攻击面</h3>
+	<p>Connection Monitor 扩大了捕捉用户浏览器中可能发生的恶意行为的机会网，与此前 Page Shield 的核心功能——<a href="https://developers.cloudflare.com/page-shield/use-dashboard/monitor-scripts/" target="_blank">Script Monitor</a> 所提供的可见性相辅相成。</p>
+	<p>Script Monitor 专注于分析 JavaScript 代码，以发现恶意信号，而 Connection Monitor 则旨在研究数据去向。这两项功能完美结合，相辅相成。</p>
+	<p>事实上，在 Web 应用程序环境中，客户端破坏经常导致数据外泄。最有名的示例是 <a href="https://blog.cloudflare.com/detecting-magecart-style-attacks-for-pageshield/">Magecart 式攻击</a>恶意行为者试图直接从应用程序的结账流程（通常是在电子商务网站上）中泄漏信用卡数据而不改变应用程序的行为。</p>
+	<p>由于这些攻击利用的是不由您直接控制的 JavaScript（例如嵌入式小部件），因此通常很难检测到，而且操作起来对用户体验没有任何明显的影响。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/image2-15.png" class="kg-image" alt="Page Shield Connection Monitor"></figure>
+	<h3 id="-">补充内容安全策略</h3>
+	<p>Page Shield 使用<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP#:~:text=Content%20Security%20Policy%20(CSP)%20is,site%20defacement%2C%20to%20malware%20distribution." target="_blank">内容安全策略</a> (CSP) 来接收浏览器的数据，但通过关注核心问题——检测恶意行为（CSP 开箱时没有的功能）进行补充。</p>
+	<p>内容安全策略使用广泛，让您（作为网站管理员）告诉浏览器可以加载哪些内容，以及从哪里加载。这在原则上是有用的，但在实践中，对于大型应用程序来说，CSP 很难维护，而且最终往往使用太广泛，导致效率低下。更重要的是，CSP 没有提供内置机制来检测恶意行为。这就是 Page Shield 的作用。</p>
+	<p>此前，借助 Script Monitor，Page Shield 通过只关注 JavaScript 文件，运行<a href="https://blog.cloudflare.com/detecting-magecart-style-attacks-for-pageshield/">我们的 JavaScript 代码分类器</a>等工具来检测恶意行为。从今天开始，借助 Connection Monitor，我们还可以对连接的 URL 端点进行威胁情报馈送查询，让我们能够快速发现潜在的可疑数据泄漏。</p>
+	<h3 id="connection-monitor-">Connection Monitor：底层实现</h3>
+	<p>Connection Monitor 使用<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP#:~:text=Content%20Security%20Policy%20(CSP)%20is,site%20defacement%2C%20to%20malware%20distribution." target="_blank">内容安全策略</a> (CSP) 的 <code>connect-src</code> 指令接收来自浏览器的出站连接信息。</p>
+	<p>然后将这些信息存储起来以便访问，并通过连接状态、连接页面来源、域名信息以及威胁馈送信息（如果能访问我们的 Enterprise 附加组件）等额外洞察力进行完善。</p>
+	<p>要使用 Connection Monitor，您需要通过 Cloudflare 代理您的应用程序。开启时，它将仅根据抽样的 HTML 页面加载比例插入以下 HTTP 响应标头，实施用于接收数据的内容安全策略：</p>
+	<p><code>content-security-policy-report-only: script-src 'none'; connect-src 'none'; report-uri &lt;HOSTNAME&gt;/cdn-cgi/script_monitor/report?&lt;QUERY_STRING&gt;</code></p>
+	<p>该 HTTP 响应标头要求浏览器将有关脚本 (<code>script-src</code>) 和连接 (<code>connect-src</code>) 的信息发送到指定端点。默认情况下，端点的主机名为 <code>csp-reporting.cloudflare.com</code>，但如果使用我们的 Enterprise 附加组件，您可将其修改，与您网站的主机名相同。</p>
+	<p>使用上述 CSP，浏览器将报告由以下页面<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/connect-src" target="_blank">发起的任何连接</a>：</p>
+	<ul>
+		<li><code>&lt;a&gt;</code> ping、</li>
+		<li><code>fetch()</code>、</li>
+		<li><code>XMLHttpRequest</code>、</li>
+		<li><code>WebSocket</code>,</li>
+		<li><code>EventSource</code> 和</li>
+		<li><code>Navigator.sendBeacon()</code></li>
+	</ul>
+	<p>连接报告示例如下：</p><!--kg-card-begin: markdown-->
+	<pre><code>"csp-report": {
+    "document-uri": "https://cloudflare.com/",
+    "referrer": "",
+    "violated-directive": "connect-src",
+    "effective-directive": "connect-src",
+    "original-policy": "",
+    "disposition": "report",
+    "blocked-uri": "wss://example.com/",
+    "line-number": 5,
+    "column-number": 16,
+    "source-file": "",
+    "status-code": 200,
+    "script-sample": ""
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>使用上面这种报告，我们可以创建一个出站连接 URL 清单及其发起页面。然后可通过仪表板使用这些数据，并包括以下信息进行完善：</p>
+	<ul>
+		<li><strong>连接状态：</strong>如果最近见到过该连接，则为活动状态</li>
+		<li><strong>时间戳：</strong>第一次见到和最后一次见到的时间</li>
+		<li><strong>元数据：</strong>WHOIS 信息、SSL 证书信息（如有）、域名注册信息</li>
+		<li><strong>恶意信号：</strong>威胁馈送域名和 URL 查询*</li>
+	</ul><!--kg-card-begin: markdown-->
+	<p><small><sup>*</sup> URL 馈送查询只有在存储了完整的连接路径时才可用。</small></p>
+	<!--kg-card-end: markdown-->
+	<h3 id="--1">隐私说明</h3>
+	<p>在 Cloudflare，我们希望同时确保直接客户和终端客户的隐私性。因此，默认情况下，Connection Monitor 只存储和收集连接 URL 的方案和主机部分，例如，如果浏览器向以下端点发送数据：</p>
+	<p><code>https://connection.example.com/session/abc</code></p>
+	<p>Connection Monitor 将只存储 <code>https://connection.example.com</code>，舍弃路径 <code>/session/abc</code>。这确保我们最大程度降低存储会话 ID 或完整 URL 中可能发现的其他敏感数据的风险。</p>
+	<p>不存储路径则确实意味着，在某些特定情况下，我们无法从我们的威胁情报中进行完整的 URL 馈送查询。为此，如果您知道没有在连接路径中插入敏感数据，您可以轻松地从仪表板上开启路径存储。按预期计划，将继续支持域名查询。今后还将进一步支持存储查询字符串。</p>
+	<h3 id="--2">下一步</h3>
+	<p>Script Monitor 和 Connection Monitor 只是 CSP 提供的众多指令中的，我们计划在 Page Shield 中支持的两项功能。下一步，我们已经在开发一些其他功能，包括直接从仪表板建议和实施积极和消极的策略。</p>
+	<p>Connection Monitor 额外提供对应用程序行为的可见性，我们为此备感兴奋，并期待其下一步发展。</p>
+</div>

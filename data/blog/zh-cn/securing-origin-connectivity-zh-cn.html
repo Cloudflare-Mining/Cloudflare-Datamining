@@ -1,0 +1,47 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/image1-4.png" class="kg-image" alt="Automatic (and secure) transmission: taking the pain out of origin connection security"></figure>
+	<p>2014 年，Cloudflare 推出了 <a href="https://blog.cloudflare.com/introducing-universal-ssl/">Universal SSL</a>，开始对互联网进行加密。此举让网站可以轻松地免费获得 SSL/TLS 证书，而当时这既要收费，又不容易。马上，数百万网站便可保证用户浏览器和 Cloudflare 之间的连接安全。</p>
+	<p>但是，将 Cloudflare 与客户的源服务器之间的网络加密曾经更为复杂。由于 Cloudflare 和所有浏览器都支持 SSL/TLS，浏览器和 Cloudflare 之间的连接可以立即获得安全保障。但在 2014 年，为源服务器配置 SSL/TLS 证书非常复杂，成本高昂，有时甚至是不可能的。</p>
+	<p>因此，我们依靠用户为他们的源服务器配置最优安全级别。后来，我们增加了一项服务，可以检测并为 Cloudflare 和源服务器之间的连接<a href="https://blog.cloudflare.com/ssl-tls-recommender/">推荐最高安全级别</a>。我们还推出了免费的<a href="https://blog.cloudflare.com/cloudflare-ca-encryption-origin/">源服务器证书</a>，供那些不想通过其他途径获得证书的客户使用。</p>
+	<p>今天，我们将更进一步。不久之后，Cloudflare 将会寻找与客户的源服务器之间最安全的连接，并自动使用该连接。要大规模地正确实施到位，同时不破坏客户的服务，过程非常复杂。本文解释了我们是如何为那些不想花时间手动配置 SSL/TLS 设置的客户自动获得最高级别的安全。</p>
+	<h3 id="-ssl-">自动配置源站 SSL 为何困难重重</h3>
+	<p>当我们宣布推出 Universal SSL 时，我们知道 Cloudflare 与源站之间的<a href="https://blog.cloudflare.com/universal-ssl-encryption-all-the-way-to-the-origin-for-free/">连接的后端安全</a>是一个更难解决的不同问题。</p>
+	<p>为配置最严密的安全性，客户必须从第三方采购证书，并将其上传到源站。然后，他们必须向 Cloudflare 表明，我们应该使用该证书来验证服务器的身份，同时也表明其源站的连接安全性。这可能是一个成本高昂的繁琐过程。为帮助降低高昂的配置成本，2015 年，Cloudflare <a href="https://blog.cloudflare.com/universal-ssl-encryption-all-the-way-to-the-origin-for-free/">推出了一个测试版源站 CA 服务</a>，向客户源服务器免费提供有限功能的证书。我们还会指导如何正确配置和上传证书，以便在 Cloudflare 和客户的源站之间轻松快捷地建立安全连接。</p>
+	<p>但我们发现，虽然这项服务对客户很有用，但仍然需要大量配置。我们没看到 Universal SSL 带来什么变化，因为客户仍然需要费力处理他们的源站，以便上传证书和测试，确保正确完成了所有配置。如果还加入了负载平衡器，或有映射到不同子域的服务器，处理服务器端的 SSL/TLS 会更加复杂。</p>
+	<p>在该公告发布之时，<a href="https://letsencrypt.org/how-it-works/" target="_blank">Let's Encrypt</a> 和其他服务开始作为公共 CA 免费提供证书，简化 TLS 配置，为其广泛采用奠定基础。Let's Encrypt 和 Cloudflare 得出相同的结论：通过免费提供证书，为用户简化服务器配置，并努力精简证书更新流程，它们可以对网络的整体安全性产生实质性影响。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/10/image3-1.png" class="kg-image"></figure>
+	<p>宣布推出易于配置的免费证书与大家越来越关注面向源站的安全性有关。Cloudflare 的客户开始要求提供更多文件，以配置面向源站的证书和性能良好的直观 SSL/TLS 通信。为此，2016 年，我们<a href="https://blog.cloudflare.com/cloudflare-ca-encryption-origin/">宣布推出源站证书机构的 GA</a>，提供便宜且简单的源站证书，并<a href="https://developers.cloudflare.com/ssl/origin-configuration/origin-ca/" target="_blank">指导如何为各类网站优化后端安全配置</a>。</p>
+	<p>客户需求和关注增加有助于为聚焦 Cloudflare 后端安全的额外功能铺平道路。例如，<a href="https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull" target="_blank">Authenticated Origin Pull</a> 确保只有来自 Cloudflare 的 HTTPS 请求才能收到您的源站发出的响应，防止不是来自 Cloudflare 的请求收到源站响应。另一个方案是 <a href="https://blog.cloudflare.com/tunnel-for-everyone/">Cloudflare Tunnel</a>，可以设置为在源服务器上运行，主动建立连接最近的 Cloudflare 数据中心的安全私有隧道。这种配置让客户能够完全锁定其源服务器，只接收通过我们的网络路由的请求。对于无法使用这种方法锁定源站的客户，我们仍然鼓励他们在配置 Cloudflare 与源服务器的连接方式时，尽可能采用最强大的安全方案。</p>
+	<p>Cloudflare 目前为与源站进行通信时 SSL/TLS 的可配置性提供了五个选项：</p>
+	<ul>
+		<li>在 <strong>Off</strong>（关）模式下，如您所望，从浏览器到 Cloudflare 以及从 Cloudflare 到源站的流量都不会加密，将使用纯文本 HTTP。</li>
+		<li>在 <strong>Flexible</strong>（灵活）模式下，从浏览器到 Cloudflare 的流量可以通过 HTTPS 加密，但从 Cloudflare 到网站源服务器的流量则不加密。对于不能支持 TLS 的源服务器，这是一个常见选择，不过我们建议尽可能升级这种源站配置。<a href="https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/full/#required-setup" target="_blank">此处</a>可查阅升级指南。</li>
+		<li>在 <strong>Full</strong>（完全）模式下，Cloudflare 会跟踪浏览器请求的任何情况，并使用相同的选项来连接源站。例如，如果浏览器使用 HTTP 与 Cloudflare 连接，我们将通过 HTTP 与源站建立连接。如果浏览器使用 HTTPS，我们将使用 HTTPS 与源站通信；但是，我们不会为证明服务器的身份和可信度而验证源站上的证书。</li>
+		<li>在 <strong>Full (strict)</strong>（完全（严格））模式下，Cloudflare 之间的通信模式与 Full（完全）模式相同，但该模式会验证源服务器的证书。源站证书可以由 Let's Encrypt 等公共 CA 颁发，也可以由 <a href="https://developers.cloudflare.com/ssl/origin-configuration/origin-ca" target="_blank">Cloudflare Origin CA 颁发。</a></li>
+		<li>在 <strong>Strict</strong>（严格）模式下，从浏览器到 Cloudflare 的 HTTP 或 HTTPS 流量将始终通过 HTTPS 连接到源站，并验证源服务器的证书。</li>
+	</ul>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/image2-3.png" class="kg-image"></figure>
+	<p>我们发现，在很多情况下，客户最初注册 Cloudflare 时，他们使用的源站不能支持最先进的加密版本，导致面向源站的通信使用未加密的 HTTP。这些默认值一直持续至今，哪怕源站已经变得更强大。我们认为，重新评估整个默认 SSL/TLS 级别概念的时机已经成熟。</p>
+	<p>因此，我们将代表我们的客户<strong>自动</strong>管理面向源站的安全性，从而减少配置负担。Cloudflare 将为我们与源站的通信方式提供一个零配置选项：我们将仅查看源站，并使用最安全的可用连接与之通信。</p>
+	<p>重新评估默认的 SSL/TLS 模式只是一个开始。我们不仅会自动将站点升级到最佳安全设置，<strong>我们还将向所有计划级别开放所有的 SSL/TLS 模式</strong>。以前，Strict（严格）模式仅面向企业客户。因为我们是在 2014 年发布了这种模式，当时很少有人拥有能够通过 SSL/TLS 进行通信的源站，而且我们害怕客户会破坏它们的配置。但现在已经是 2022 年了，我们认为，Strict（严格）模式应该向任何想用的人提供。因此，我们将在推出自动升级功能时，向所有人开放该模式。</p>
+	<h3 id="-">如何实现自动升级？</h3>
+	<p>为了提升网站面向源站的安全性，我们首先需要确定源站可以使用的最高安全级别。我们将使用一年前发布的 <a href="https://blog.cloudflare.com/ssl-tls-recommender/">SSL/TLS 推荐器</a>工具来确定。</p>
+	<p>推荐器执行一系列从 Cloudflare 到客户源站的请求，以确定后端通信是否可以升级到超过当前配置的级别。推荐器通过以下方式实现这一目标：</p>
+	<ul>
+		<li>爬取网站，收集网站不同页面的链接。对于有大量链接的网站，推荐器将只检查一个子集。同样地，对于爬取结果显示链接数量不足的网站，我们将使用最近访客对该区域的请求链接样本来增强我们的结果。所有这些都是为了获得一个有代表性的请求去向样本，从而了解源站是如何提供响应的。</li>
+		<li>该爬网程序使用用户代理 <code>Cloudflare-SSLDetector</code>，并已列入 Cloudflare 的<a href="https://developers.cloudflare.com/firewall/known-issues-and-faq#bots-currently-detected" target="_blank">已知“良性机器人</a>”。</li>
+		<li>接下来，推荐器通过 HTTP 和 HTTPS 下载每个链接的内容。扫描源服务器时，推荐器只发出幂等 GET 请求，以避免修改服务器资源状态。</li>
+		<li>然后，推荐器运行内容相似性算法，以确定通过 HTTP 和 HTTPS 收集的内容是否匹配。</li>
+		<li>如果通过 HTTP 下载的内容与通过 HTTPS 下载的内容相匹配，那就表明我们可以升级网站的安全性，而不会产生负面影响。</li>
+		<li>如果已将网站配置为 Full（完全）模式，我们将执行证书验证（不需要额外爬取网站），以确定是否可以升级为 Full (strict)（完全（严格））或更高的模式。</li>
+	</ul>
+	<p>如果可以确定能够升级而不会破坏客户的源站，我们将自动升级面向源站的安全性。</p>
+	<p>但还不止这些。我们不仅消除了 Cloudflare 上的服务的配置负担，而且还<strong>通过将根据区域的 SSL/TLS 设置更改为根据源站的 SSL/TLS 设置，提供更精确的安全设置</strong>。</p>
+	<p>目前，后端 SSL/TLS 服务的实施与整个网站有关，这很适合那些只有一个源站的网站。但如果拥有更复杂的设置，这可能意味着，面向源站的安全性是由为该服务提供部分流量的源站中能力最低的源站决定的。例如，如果一个网站使用 img.example.com 和 api.example.com。这两个子域由安全能力不同的不同源站提供服务，我们不希望将两个子域的 SSL/TLS 能力限制为最不安全的那个源站。借助我们的新服务，我们将能更精确地设置每个源站的安全性，最大限度地改善每个源站的安全态势。</p>
+	<p>此举旨在最大限度提高 Cloudflare 上所有服务面向源站的安全性。然而，如果我们试图扫描的任何源站阻止使用 SSL 推荐器、源站不起作用，或选择退出该服务，我们将无法完成扫描，也就无法提升安全性。关于如何选择退出的详情，我们即将通过电子邮件通知提供。</p>
+	<h3 id="--1">选择退出</h3>
+	<p>有些人可能想为网站配置并非最佳的安全设置，这有很多原因。客户所说的一个常见原因是，担心更高的安全设置会对网站的性能产生负面影响。有些人可能是想为测试目的或调试某些行为而选择次优的安全设置。无论什么原因，我们均将提供必要工具，继续按您自己的想法配置 SSL/TLS 模式，哪怕并非我们认为的最佳模式。</p>
+	<h3 id="--2">何时上市？</h3>
+	<p>我们将在今年年底之前开始推出此更改。如果您已阅读本文，并希望确保拥有最高级别的后端安全性，我们推荐 <a href="https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/full-strict/" target="_blank">Full (strict)</a>（完全（严格））或 <a href="https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/ssl-only-origin-pull/" target="_blank">Strict</a>（严格）模式。如果您选择等待我们为您自动升级源站的安全性，请密切关注您的收件箱，了解我们开始为您推出此更改的日期。</p>
+	<p>在 Cloudflare，我们相信互联网必需安全无虞，保护隐私。如果想帮助我们实现这一目标，我们整个<a href="https://www.cloudflare.com/careers/jobs/?department=Engineering" target="_blank">工程组织</a>正在招聘。</p>
+</div>

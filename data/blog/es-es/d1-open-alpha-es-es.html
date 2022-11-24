@@ -1,0 +1,128 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-48.png" class="kg-image" alt="Making the D1 alpha available to everyone"></figure>
+	<p>En mayo, <a href="https://blog.cloudflare.com/es-es/introducing-d1-es-es/"> anunciamos</a> nuestro empeño de simplificar las bases de datos: su creación, mantenimiento e integración. Nuestro objetivo es proporcionarte las herramientas necesarias para ejecutar sin problemas una base de datos potente, escalable y con un rendimiento insuperable. Y nos propusimos reinventar la experiencia de desarrollo de bases de datos para cualquier tipo de usuario, no solo para los expertos en bases de datos.</p>
+	<p>Durante los últimos dos meses, hemos<a href="https://blog.cloudflare.com/whats-new-with-d1/"> estado trabajando</a> en ello, mientras aprendíamos importantes lecciones en el proceso. Resulta que desarrollar un producto de bases de datos relacionales sobre Workers lleva a la plataforma para desarrolladores al límite absoluto, y a menudo incluso lo supera. Esto nos parece totalmente sensacional. Significa que aunque nuestros avances puedan parecer lentos vistos desde fuera, cada mejora, arreglo de error o prueba de esfuerzo ayuda a trazar el camino para que <em>todos</em> nuestros clientes desarrollen las<a href="https://blog.cloudflare.com/es-es/welcome-to-the-supercloud-and-developer-week-2022-es-es/"> aplicaciones sin servidor más ambiciosas</a> del mundo.</p>
+	<p>Sin embargo, no seríamos fieles a nuestro estilo si siguiéramos avanzando en la preparación de D1 para producción sin detenernos primero para conocer tu opinión, aunque D1 no esté <em>realmente</em> terminado aún. La Semana del desarrollador <strong>es el marco perfecto para presentar la versión alpha abierta de D1.</strong></p>
+	<p>Una versión “alpha abierta” es un concepto nuevo para nosotros. Probablemente has oído el término "beta abierta" en distintos anuncios en Cloudflare, y aunque resulta adecuado para muchos de nuestros productos, no acababa de encajar para D1. Algunos componentes esenciales aún se encuentran en la fase de desarrollo y pruebas. Así, antes de que lancemos D1 en su forma completa como una versión beta pública para que lo empieces a utilizar para desarrollar tus aplicaciones en el mundo real, queremos asegurarnos de que todo el mundo puede empezar a hacerse una idea del producto en sus aplicaciones creadas como pasatiempo o sus proyectos secundarios.</p>
+	<h2 id="-qu-incluye-la-versi-n-alpha"><strong>¿Qué incluye la versión alpha?</strong></h2>
+	<p>Aunque aún se están realizando internamente muchos cambios en D1, hemos reflexionado mucho acerca de cómo tú, como desarrollador, interactúas con el producto, incluso si las bases de datos son algo nuevo para ti.</p>
+	<h3 id="utilizaci-n-del-panel-de-control-de-d1"><strong>Utilización del panel de control de D1</strong></h3>
+	<p>En solo unos clics tendrás tu base de datos D1 funcionando, directamente desde tu panel de control. &nbsp;En nuestra interfaz de D1, puedes crear, mantener y visualizar tu base de datos como desees. Los cambios realizados en la interfaz de usuario están disponibles al instante en Worker, sin necesidad de una nueva implementación.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image2-30.png" class="kg-image"></figure>
+	<h3 id="utiliza-wrangler"><strong>Utiliza Wrangler</strong></h3>
+	<p>Si deseas ponerte manos a la obra, también puedes trabajar con tu base de datos utilizando nuestra CLI de Wrangler. &nbsp;Crea tu base de datos y empieza a añadir tus datos manualmente o arráncala de una de estas dos formas:</p>
+	<p><strong>1. &nbsp;Ejecuta un archivo SQL</strong></p><!--kg-card-begin: markdown-->
+	<pre><code class="language-sh">$ wrangler d1 execute my-database-name --file ./customers.sql
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>donde tu archivo<code>.sql</code> será similar a:</p>
+	<p>customers.sql</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-sql">DROP TABLE IF EXISTS Customers;
+CREATE TABLE Customers (CustomerID INT, CompanyName TEXT, ContactName TEXT, PRIMARY KEY (`CustomerID`));
+INSERT INTO Customers (CustomerID, CompanyName, ContactName) 
+VALUES (1, 'Alfreds Futterkiste', 'Maria Anders'),(4, 'Around the Horn', 'Thomas Hardy'),(11, 'Bs Beverages', 'Victoria Ashworth'),(13, 'Bs Beverages', 'Random Name');
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p><strong>2. Crea y ejecuta migraciones</strong></p>
+	<p>Las migraciones son una forma de crear versiones de los cambios de tu base de datos. Con D1, puedes<a href="https://developers.cloudflare.com/d1/migrations/" target="_blank"> crear una migración</a> y, a continuación, aplicarla a tu base de datos.</p>
+	<p>Para crear la migración, ejecuta:</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-sh">wrangler d1 migrations create &lt;my-database-name&gt; &lt;short description of migration&gt;
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Esto creará un archivo SQL en una carpeta <code>migrations</code> donde podrás añadir tus consultas. A continuación, aplica las migraciones a tu base de datos ejecutando:</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-sh">wrangler d1 migrations apply &lt;my-database-name&gt;
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="accede-a-d1-desde-worker"><strong>Accede a D1 desde Worker</strong></h3>
+	<p>Puedes conectar D1 a Worker añadiendo el enlace a D1 en tu archivo de configuración <code>wrangler.toml</code>. A continuación, interactúa con D1 ejecutando las consultas desde Worker, de la forma siguiente:</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-js">export default {
+ async fetch(request, env) {
+   const { pathname } = new URL(request.url);
+
+   if (pathname === "/api/beverages") {
+     const { results } = await env.DB.prepare(
+       "SELECT * FROM Customers WHERE CompanyName = ?"
+     )
+       .bind("Bs Beverages")
+       .all();
+     return Response.json(results);
+   }
+
+   return new Response("Call /api/beverages to see Bs Beverages customers");
+ },
+};
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="o-bien-accede-a-d1-desde-pages-function"><strong>O bien accede a D1 desde Pages Function</strong></h3>
+	<p>En esta versión alpha, D1 también admite la integración con<a href="https://pages.cloudflare.com/" target="_blank"> Cloudflare Pages</a>. Puedes añadir un enlace a D1 en el panel de control de Pages y escribir tus consultas en Pages Function para crear una aplicación full-stack. Consulta<a href="https://developers.cloudflare.com/pages/platform/functions/bindings/#d1-database" target="_blank"> toda la documentación</a> para empezar a utilizar Pages y D1.</p>
+	<h2 id="herramientas-creadas-en-la-comunidad"><strong>Herramientas creadas en la comunidad</strong></h2>
+	<p>Durante el periodo de nuestra versión alpha privada, el interés que despertó D1 entre los miembros de la comunidad generó valiosas contribuciones al ecosistema de D1 y a la experiencia de los desarrolladores. A continuación te mostramos algunos de nuestros proyectos favoritos hasta la fecha:</p>
+	<h3 id="d1-orm"><strong>D1-ORM</strong></h3>
+	<p>Un mapeo objeto-relacional (ORM) te permite consultar y manipular datos utilizando JavaScript. Creado por un representante de la comunidad Discord de Cloudflare, el objetivo de <code>d1-orm</code> &nbsp;es proporcionar una experiencia rigurosamente tipificada del uso de D1:</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-ts">const users = new Model(
+    // table name, primary keys, indexes etc
+    tableDefinition,
+    // column types, default values, nullable etc
+    columnDefinitions
+)
+
+// TS helper for typed queries
+type User = Infer&lt;type of users&gt;;
+
+// ORM-style query builder
+const user = await users.First({
+    where: {
+        id: 1,
+    },
+});
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Puedes consultar <a href="https://docs.interactions.rest/d1-orm/" target="_blank"> toda la documentación</a> y proporcionar tu opinión creando un tema en el<a href="https://github.com/Interactions-as-a-Service/d1-orm/issues" target="_blank"> repositorio de GitHub</a>.</p>
+	<h3 id="workers-qb">workers-qb</h3>
+	<p>Se trata de un creador de consultas sin dependencias que proporciona una interfaz sencilla y estandarizada al mismo tiempo que mantiene las ventajas y la rapidez del uso de las consultas sin formato mediante un ORM tradicional. Aunque no está pensado para proporcionar una funcionalidad igual a ORM, <code>workers-qb</code> facilita la interacción con la base de datos desde el código para el acceso directo a SQL:</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-js">const qb = new D1QB(env.DB)
+
+const fetched = await qb.fetchOne({
+  tableName: 'employees',
+  fields: 'count(*) as count',
+  where: {
+    conditions: 'department = ?1',
+    params: ['HQ'],
+  },
+})
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Puedes obtener más información sobre el creador de consultas<a href="https://workers-qb.massadas.com/" target="_blank"> aquí</a>.</p>
+	<h3 id="d1-console"><strong>d1-console</strong></h3>
+	<p>En lugar de ejecutar el comando <code>wrangler d1 execute</code> en tu terminal cada vez que deseas interactuar con la base de datos, puedes interactuar con D1 desde <code>d1-console</code>. Creado por un representante de la comunidad Discord, ofrece la ventaja de ejecutar consultas de varias líneas, obtener el historial de comandos y mostrar el resultado en forma de tabla.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image3-23.png" class="kg-image"></figure>
+	<p>Aunque actualmente es un proyecto de la comunidad, tenemos previsto admitir de forma nativa una “Consola de D1” más adelante. Por ahora, empieza echando un vistazo al paquete <code>d1-console</code> en el siguiente <a href="https://github.com/isaac-mcfadyen/d1-console" target="_blank">enlace</a>.</p>
+	<h3 id="adaptador-de-d1-para-kysely"><strong>Adaptador de D1 para</strong><a href="https://github.com/koskimas/kysely" target="_blank"><strong> Kysely</strong></a></h3>
+	<p>Kysely es un creador de consultas SQL typescript con autocompletado y seguridad de tipos. Con este adaptador, puedes interactuar con D1 con la conocida interfaz de Kysely:</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-ts">// Create Kysely instance with kysely-d1
+const db = new Kysely&lt;Database&gt;({ 
+  dialect: new D1Dialect({ database: env.DB })
+});
+    
+// Read row from D1 table
+const result = await db
+  .selectFrom('kv')
+  .selectAll()
+  .where('key', '=', key)
+  .executeTakeFirst();
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Echa un vistazo al proyecto<a href="https://github.com/aidenwallis/kysely-d1" target="_blank"> aquí</a>.</p>
+	<h2 id="-qu-est-a-n-en-pruebas"><strong>¿Qué está aún en pruebas?</strong></h2>
+	<p>Los componentes más grandes que hemos desactivado para esta versión alpha son la réplica y la compatibilidad con las transacciones JavaScript. Mientras llevamos a cabo la implementación gradual de estos cambios, queremos destacar algunas limitaciones actuales en las que estamos trabajando activamente en las pruebas:</p>
+	<p>● &nbsp; &nbsp; &nbsp;<strong>Ubicación de la base de datos: </strong>cada base de datos D1 ejecuta solo una única instancia. Se crea donde tú, como desarrollador, creas la base de datos, y no cambia de región en función de los patrones de acceso. Como resultado, la latencia para Workers en ejecución en cualquier otra parte del mundo será mayor.</p>
+	<p>● &nbsp; &nbsp; &nbsp;<strong>Limitaciones de simultaneidad:</strong> en condiciones de mucha carga, es posible que las consultas de lectura y escritura se pongan en cola en lugar de activar la creación de nuevas réplicas. Como resultado, las características de rendimiento y ejecución de la versión alfa abierta no serán representativas del producto final.</p>
+	<p>● &nbsp; &nbsp; &nbsp;<strong>Limitaciones de disponibilidad:</strong> cuando haya copias de seguridad en ejecución, estas bloquearán el acceso a la base de datos. En la mayoría de los casos, esto durará apenas uno o dos segundos, durante los que las solicitudes que lleguen se pondrán en cola.</p>
+	<p>También puedes consultar una lista más detallada y actualizada sobre las<a href="https://developers.cloudflare.com/d1/limits-and-pricing/" target="_blank"> Limitaciones de la versión alpha de D1</a>.</p>
+	<h2 id="solicitud-de-comentarios"><strong>Solicitud de comentarios</strong></h2>
+	<p>Podemos hacer todo tipo de conjeturas y apuestas sobre para qué tipo de bases de datos deseas utilizar D1, pero nosotros no somos los usuarios, tú sí. Queremos que desarrolladores con experiencias diversas puedan acceder a una vista previa de la tecnología D1 en su fase inicial, y que nos digan dónde debemos realizar mejoras para que sea adecuado para tus aplicaciones de producción.</p>
+	<p>Para proporcionar comentarios generales sobre tu experiencia e interactuar con otros compañeros que tengan la versión alpha, únete a nuestro canal<a href="https://discord.com/channels/595317990191398933/992060581832032316" target="_blank"> #d1-open-alpha</a> en<a href="https://discord.com/invite/aTsevRH3pG" target="_blank"> Discord para desarrolladores de Cloudflare</a>. Tenemos previsto realizar los anuncios importantes y presentar las novedades en este canal así como en nuestras<a href="https://discord.com/channels/595317990191398933/832698219824807956" target="_blank"> llamadas mensuales de la comunidad</a>.</p>
+	<p>Para realizar solicitudes de funciones más específicas (no importa lo descabelladas que sean) y comunicar errores, crea un hilo aquí en el<a href="https://community.cloudflare.com/c/developers/d1" target="_blank"> foro de la comunidad de Cloudflare</a>, en la categoría de D1. Mantendremos este foro como un método de planificación de los próximos meses.</p>
+	<h2 id="p-s-trabaja-con-nosotros-"><strong>P.S. ¡Trabaja con nosotros!</strong></h2>
+	<p>¿Te interesa? Si te gusta resolver problemas indefinidos y desarrollar potentes productos a escala, ¡trabaja en el equipo de D1! Echa un vistazo a los<a href="https://www.cloudflare.com/careers/jobs/" target="_blank"> puestos disponibles</a>.</p>
+</div>

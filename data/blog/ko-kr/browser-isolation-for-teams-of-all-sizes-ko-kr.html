@@ -1,0 +1,32 @@
+<div class="post-content lh-copy gray1">
+	<p>인터넷에 연결된 모든 조직은 거래 수락, 고객 참여 또는 중요한 데이터 작업과 같은 작업에서 웹 브라우저를 활용합니다. 링크를 클릭하는 바로 그 행동으로 인해 웹 브라우저에서 로컬 장치가 알 수 없는 대규모 코드 번들을 다운로드하고 실행합니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/Browser-Isolation-OG-body-3.png" class="kg-image"></figure>
+	<p>IT 조직은 보안 위협으로부터 스스로 방어하면서도 항상 열세에 처해 있었습니다. 다음 제로 데이 취약성이 웹 브라우저를 손상시키는 것은 '만약'의 문제가 아니라 '시간' 문제일 뿐입니다. IT 조직이 모든 잠재적 위험을 과도하게 차단하지 않고 알려지지 않은 위협으로부터 사용자와 데이터를 보호할 수 있을까요? 해결 방법은 신뢰할 수 없는 코드를 실행하는 부담을 사용자의 장치에서 원격 격리된 브라우저로 옮기는 것입니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image4-27.png" class="kg-image"></figure>
+	<h3 id="-">모든 규모의 팀에 원격 브라우저 격리 기능 제공</h3>
+	<p>오늘 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trust 보안</a> 및 보안 웹 브라우징 서비스를 제공하는 Cloudflare for Teams 제품군 내에서 Cloudflare 브라우저 격리를 추가 기능으로 사용할 수 있다는 소식을 알리게 되어 기쁩니다. 신생 기업에서 대기업에 이르기까지 모든 규모의 팀이 자주 사용하는 웹 브라우저를 변경하거나 복잡한 네트워크 토폴로지를 설정하지 않고도 안정적이고 안전한 브라우징의 이점을 누릴 수 있습니다.</p>
+	<h3 id="--1">원격 브라우저는 신뢰할 수 있어야 합니다</h3>
+	<p>보안 환경에서 민감한 워크로드를 실행하는 것은 새로운 기술이 아니며 원격 브라우저 격리(RBI) 기술은 오래전부터 존재해 왔습니다. 그렇다면 원격 브라우저는 왜 모든 사람이 사용하는 일반적인 기술이 아닐까요?</p>
+	<p>그 이유는 바로 원래부터 원격 브라우저 실행에 결함이 있었기 때문입니다. 모든 사람이 웹 브라우저를 사용해서 대부분의 작업을 실행하는데, 사용자 경험이나 성능에 미치는 영향은 기껏해야 생산성 손실 정도이고 최악의 경우 솔루션을 완전히 거부할 수도 있습니다.</p>
+	<p>레거시 브라우저 격리 솔루션의 불안정한 렌더링과 열악한 성능으로 인해 IT 조직은 고도로 표적화된 사용자 또는 활동에 대해서만 강화된 보안 상태를 유지하게 되었습니다. 성 및 해자 모델을 통해 네트워크를 신뢰하는 것과 마찬가지로, 어떤 사용자나 웹사이트가 피싱 또는 맬웨어 벡터가 아니라고 가정하게 되면 공격의 여지가 생깁니다.</p>
+	<p>Cloudflare 브라우저 격리는 Chromium Google Chrome, Microsoft Edge 및 Brave Browser 등의 인기 있는 웹 브라우저를 구동하는 것과 동일한 엔진)을 기반으로 구축되었습니다. 이는 Cloudflare의 새로운 <a href="https://blog.cloudflare.com/cloudflare-and-remote-browser-isolation/">네트워크 벡터 렌더링</a> 기술과 결합되어 웹 기술이 발전하고 더 복잡해지더라도 웹 페이지가 안전하고 일관되게 렌더링되도록 합니다.</p>
+	<h3 id="--2">원격 브라우저는 빨라야 합니다</h3>
+	<p>레거시 브라우저 격리 솔루션은 기본 기술이나 해당 솔루션이 작동하는 네트워크의 제약을 받습니다. 이러한 오래된 솔루션은 지연 시간이 길고 대역폭이 많이 사용되는 픽셀 푸시나 취약한 콘텐츠 무해화 및 재구성 기술을 사용하여 성능을 저하시키고 웹 사이트를 중단시키며 프로세스에서 악성 페이로드를 놓칠 수 있습니다.</p>
+	<p>네트워크 벡터 렌더링을 사용하면 고대역폭 사용이나 이미지 품질 저하 없이 원격 웹 페이지를 안전하게 볼 수 있지만 이는 솔루션의 일부일 뿐입니다. Cloudflare는 글로벌 네트워크를 활용하여 인터넷에 연결된 모든 사람과 가까운 곳에 원격 브라우저를 배치합니다. 이를 통해 물리적 위치와 관계없이 웹 페이지의 응답성이 높고 대기 시간이 짧은 스트림을 제공할 수 있습니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image1-35.png" class="kg-image"></figure>
+	<p>인터넷 백본에 연결된 강력한 서버에서 웹 브라우저를 실행하면 성능에서 강력한 이점을 얻을 수 있습니다. 라스트 마일 와이어를 통해 최소한의 그리기 명령을 전송하여 대역폭이 낮은 인터넷 연결을 사용하는 사용자가 응답 속도가 더욱 빠른 인터넷을 즐길 수 있습니다.</p>
+	<p>거대하고 스마트한 분산 네트워크와 Cloudflare의 특허받은 초고속 경량 네트워크 벡터 렌더링 기술을 결합하면 레거시의 제약에서 해방된 원격 브라우징 기술이 탄생하며, 이는 전 세계 어디서나 모든 장치에서 모든 사용자에게 선명하고 격리된 페이지를 제공합니다.</p>
+	<p>브라우저 격리를 사용하는 장점 중 하나는 최신 웹 페이지를 다운로드하는 로컬 웹 브라우저의 부담을 줄여준다는 것입니다. FCC에 따르면 거의 3000만 명의 미국인이 광대역 인터넷에 액세스하지 못합니다(<a href="https://www.fcc.gov/about-fcc/fcc-initiatives/bridging-digital-divide-all-americans" target="_blank">출처</a>). 최신 웹사이트는 일반적으로 수백 개의 개체를 다운로드해야 하는 낮은 대역폭 연결에 최적화되어 있지 않습니다. Cloudflare의 원격 브라우저는 인터넷 백본에 연결되어 있으며 광대역 속도로 웹 사이트를 지속적으로 다운로드할 수 있어 저대역폭 인터넷 연결에서 사용자의 영역을 평준화할 수 있습니다.</p>
+	<p>느린 인터넷 연결에서 웹 페이지를 로드할 때 브라우저 격리를 사용하거나 사용하지 않을 때를 비교한 예시입니다. 브라우저 격리가 디지털 격차를 해소하고 서비스가 제대로 제공되지 않는 인터넷 사용자를 위해 더 빠른 인터넷 경험을 제공하는 것을 목도하게 되어 기쁩니다.</p><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 66.66666666666666%;"><iframe src="https://iframe.videodelivery.net/f3b7ffbe1eba370b4ee28d509fef918a?preload=true" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<p><em>참고: 타이밍은 웹 페이지 다운로드를 시작할 때부터 웹 페이지가 로드 시 신호를 트리거할 때까지 측정됩니다.</em></p><!--kg-card-end: html-->
+	<h3 id="--3">원격 브라우저는 사용하기 쉬워야 합니다</h3>
+	<p>브라우저 격리 제품은 일반적으로 추가 네트워크 어플라이언스(예: 가상 머신 또는 방화벽 상자)로 구현되거나 사용자가 선호하는 브라우저를 변경하여 구현됩니다. IT 팀은 추가 네트워크 어플라이언스를 구현하려면 여러 개의 서로 다른 솔루션을 통합해야 합니다(동일한 공급업체에서 제공하는 경우 포함). 그러면 네트워크 내에서 불필요한 복잡성을 초래하고, 정책 구성을 제어하고 위협을 모니터링하는 인터페이스가 이질적으로 됩니다.</p>
+	<p>Cloudflare 브라우저 격리는 기본적으로 Cloudflare for Teams에 통합되어 모든 네트워크 및 격리된 트래픽에 대한 통합 보기를 제공합니다. Gateway를 사용하여 콘텐츠 범주나 보안 위협을 기반으로 트래픽을 허용/차단하는 것과 마찬가지로 ID, 보안 위협이나 콘텐츠를 기반으로 웹사이트를 동적으로 격리하는 격리 정책을 정의할 수도 있습니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image2-29.png" class="kg-image"></figure>
+	<h3 id="--4">인터넷 브라우징의 미래는 원격 브라우징에 있습니다</h3>
+	<p>로컬 웹 페이지 실행은 전 세계의 기업과 조직에 엄청난 위협이 됩니다. 해결 방법은 간단합니다. 신뢰할 수 없는 코드를 실행해야 하는 부담을 사용자의 장치에서 원격으로 격리된 브라우저로 옮기면 됩니다.</p>
+	<p>이제 안전하고 빠르고 간단한 원격 브라우저 격리가 가능하게 되었습니다. 오늘 Cloudflare 브라우저 격리가 Cloudflare for Teams의 추가 기능으로 제공된다는 소식을 전하게 된 것을 기쁘게 생각합니다. 웹 브라우저나 네트워크를 변경하지 않고도 브라우저 기반 보안 위협으로부터 비즈니스를 보호할 수 있습니다. 시작하려면 <a href="https://www.cloudflare.com/teams/browser-isolation/" target="_blank">Cloudflare for Teams 계정에 가입</a>하고 Teams Gateway 또는 Teams 표준 계획에 브라우저 격리를 추가하세요. 계약 고객은 <a href="https://cloudflare.com/teams/plans/enterprise" target="_blank">이 양식에서 액세스를 요청</a>하여 Cloudflare for Teams 계획에 브라우저 격리를 추가할 수 있습니다 .</p>
+	<p>Cloudflare는 창립 이래 더 나은 인터넷을 구축하고 정교한 네트워크, 전담 IT 팀, 팀을 지원하기 위한 예산을 갖춘 대형 회사에서만 접근할 수 있었던 기술을 민주화하도록 지원하는 것을 목표로 해 왔습니다.</p>
+	<p>그다지 멀지 않은 과거에 HTTPS 암호화 기법이 '중요한' 로그인 페이지와 전자 상거래 체크아웃 전용이었던 것처럼, 임의의 웹사이트 코드를 신뢰하는 것이 Zero Trust 브라우징의 새로운 패러다임을 만들어내는 것만큼이나 오래전의 일처럼 보이게 될 것으로 믿습니다. 안정적이고 응답성이 뛰어난 원격 브라우저 격리 기술이 필요한 시점은 지금입니다.<br></p>
+</div>

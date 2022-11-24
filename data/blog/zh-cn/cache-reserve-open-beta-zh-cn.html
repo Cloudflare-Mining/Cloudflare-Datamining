@@ -1,0 +1,57 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/Cache-Reserve-Open-Beta.png" class="kg-image" alt="Reduce origin load, save on cloud egress fees, and maximize cache hits with Cache Reserve"></figure>
+	<p>今年早些时候，我们推出了 Cache Reserve。Cache Reserve 利用 <a href="https://www.cloudflare.com/products/r2/" target="_blank">R2</a> 的持久数据存储，帮助用户更长久地从 Cloudflare 的缓存中提供内容。从 Cloudflare 的缓存中提供内容能够降低从源站获取内容的出口费用账单，从而给网站运营者带来利益，同时还能更快地加载内容，为网站访问者带来好处。</p>
+	<p>Cache Reserve 的<a href="https://blog.cloudflare.com/introducing-cache-reserve/">封闭测试</a>持续了几个月的时间，我们从初始用户处收集到了一些反馈，并持续改进该产品。在对此反馈进行几轮迭代后，今天，我们非常激动地宣布，<strong>Cache Reserve 正式进入公开测试阶段</strong>——用户无需再苦苦等待，现在即可对其进行测试，并将其集成至内容交付策略中。</p>
+	<p>如果您想要了解 Cache Reserve 能够给您带来的好处，并为我们提供一些反馈，可以前往 Cloudflare 仪表板，导航至 Caching 板块，按下<a href="https://dash.cloudflare.com/caching/cache-reserve" target="_blank">一个按钮</a>，从而启用 Cache Reserve。</p>
+	<h2 id="cache-reserve-">Cache Reserve 的整体运作情况</h2>
+	<p>从 Cloudflare 的缓存中提供的内容，其旅程始于源服务器，也就是内容托管的地方。当对内容的请求到达源站时，源站会对响应所需的内容进行编译，并将其返回给访问者。</p>
+	<p>访问者与源站之间的距离会影响资产的性能，因为其可能需要经过一段长长的距离才能完成响应。正因为如此，用户需要支付一定的费用，使内容从源站上的存储位置移动到请求内容的访问者所在的地方。这些费用称为“带宽”或“出口”费用，对于在云提供商处托管内容的用户而言，这是发票上常见的月明细项目。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/Response-Flow.png" class="kg-image"></figure>
+	<p>Cloudflare 的 CDN 位于源站和访问者之间，会评估源站的响应以了解其是否可缓存。如果能够将其添加到 Cloudflare 的缓存中，则当再一次接收到针对该内容的请求时，Cloudflare 可以使用缓存的资产作出响应，这意味着不需要将请求发送到源站，从而减少我们客户的出口费用。我们还会在靠近访问者的数据中心中缓存内容，以改善性能并减少响应的传输时间。</p>
+	<p>为了更长时间地保留缓存的资产，几年前我们引入了<a href="https://blog.cloudflare.com/introducing-smarter-tiered-cache-topology-generation/">分层缓存</a>，将我们所拥有的 250 多个全球数据中心整理成一个包含较低层（通常靠近访问者）与较高层（通常靠近源站）的层次结构。无法从较低层的缓存中提供请求的内容时，会先检查较高层，然后再前往源站获取最新的内容副本。将数据中心分层通过在访问者的请求与源站之间放置多份缓存，帮助我们在正确的位置更长时间地保留缓存内容。</p>
+	<p><strong>为什么会发生缓存未命中？</strong><br>当 Cloudflare 无法从缓存中提供内容，而必须返回源站检索最新副本时，就会发生未命中。当客户将<a href="https://developers.cloudflare.com/cache/about/cache-control/" target="_blank">缓存控制</a>时间设置为内容过时（陈旧）且需要<a href="https://developers.cloudflare.com/cache/about/cache-control/#revalidation" target="_blank">重新验证</a>的时间时，可能会发生此情况。另一个影响因素是网络想要保留缓存内容的时间，这一因素较为复杂，可能因逐出条件而波动。</p>
+	<p>CDN 必须考虑是否需要在缓存空间已满时提前逐出内容，为其他资产腾出存储空间。Cloudflare 会使用“最近最少使用”(<a href="https://en.wikipedia.org/wiki/Cache_replacement_policies#Least_recently_used_(LRU)" target="_blank">LRU</a>) 算法，基于缓存内容的最新请求情况来排列逐出的优先顺序。这意味着，即使缓存控制设置为某一内容片段缓存的天数，我们仍有可能将其提前逐出（如果它是该缓存中请求最少的），以便缓存更常用的内容。</p>
+	<p>这对于大部分客户和网站访问者都运作良好，但时常会让人们产生困惑，为什么有些内容会意外地显示未命中。如果未发生逐出，则内容将需要缓存到离请求该数据的访问者较远的数据中心中，这会损害资产的性能，导致 Cloudflare 的网络运行效率低下。</p>
+	<p>然而，部分客户拥有大型内容库，他们可能长期不会请求其中的内容。如果使用传统缓存，这些资产很有可能被逐出，当被再次请求时，则需要从源站提供。资产需要在互联网上保持常用才能保留在缓存中，这并不容易，因为常用或流行的内容是不断变化的。将不再热门的内容逐出，意味着当需要从源站重复提取该内容时，将对客户收取额外的源站出口费用。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/Cache-Reserve-Response-Flow.png" class="kg-image"></figure>
+	<p><strong>Cache Reserve 正式登场</strong><br>这正是 Cache Reserve 发挥作用的地方。Cache Reserve 作为最终的上层数据中心，保留本应从缓存中逐出的内容。在<a href="https://developers.cloudflare.com/cache/about/cache-reserve/#cache-reserve-asset-eligibility" target="_blank">提交</a>到 Cache Reserve 后，内容可在此处<a href="https://developers.cloudflare.com/cache/about/cache-reserve/" target="_blank">默认</a>储存 30 天。如果在该期间内进来了针对该内容的另一个请求，则会再延长 30 天（以此类推），或者直到缓存控制表示我们不能再从缓存中提供该内容。Cache Reserve 可作为保留所有可缓存内容的安全网，客户无需再担忧不必要的缓存逐出和源站出口费用。</p>
+	<h2 id="cache-reserve--1">Cache Reserve 如何节省出口费用？</h2>
+	<p>Cache Reserve 的承诺是，对于极少被请求且可能从缓存中被逐出的长尾内容，命中率将提高，源站出口费用将减少。</p>
+	<p>然而，该产品还能带来额外的出口节省。例如，当未命中时，对象将写入 Cache Reserve。这意味着，当缓存未命中而从源站提取内容时，我们不仅会使用该内容响应请求，还会将该资产写入 Cache Reserve，这样，客户可以在很长时间内提供该资产而不必支付出口费用。</p>
+	<p>Cache Reserve 设计为与分层缓存搭配使用，以尽可能地避免从源站提供内容。当在较低层和较高层都出现缓存未命中时，会检查 Cache Reserve，如果在其中出现了命中，则在该响应返回至访问者时，将同时在较低层和较高层中缓存，源站无需看到该请求或提供任何额外数据。</p>
+	<p>基于 R2 成本，Cache Reserve 以极低的价格实现了这些源站出口节省。如需有关 Cache Reserve 价格和操作的更多信息，请参见<a href="https://developers.cloudflare.com/cache/about/cache-reserve/#pricing" target="_blank">此处</a>的文档。</p>
+	<h2 id="-cloudflare-cache-reserve">在 Cloudflare 的开发人员平台上扩展 Cache Reserve</h2>
+	<p>当我们首次宣布推出 Cache Reserve 时，反响非常热烈。超过 20,000 名用户想要访问测试版，关于人们想要如何使用 Cache Reserve，我们很快发现了一些有意思的事情。</p>
+	<p>我们发现的第一项重大挑战是，用户和我们一样讨厌出口费用，并且希望确保在 Cache Reserve 中缓存尽可能多的内容。在封闭测试期间，我们所看到的使用情况为每秒实施超过 8,000 个 PUT 操作，以及以每秒超过 3,000 个 GET 的速度提供对象。我们还为部分大客户缓存了约 600Tb 的内容。我们知道，我们希望将该产品开放给所有想要使用它的人，为了进行扩展以满足此需求，我们需要尽快进行一些更改。因此，我们将目光转向了 Cloudflare 开发人员平台。</p>
+	<p>Cache Reserve 使用其 <a href="https://developers.cloudflare.com/r2/data-access/s3-api/api/" target="_blank">S3 兼容 API</a> 在 R2 上存储数据。在后台，R2 利用我们性能极佳且可扩展的开发人员原语（<a href="https://developers.cloudflare.com/workers/" target="_blank">Workers</a> 和 <a href="https://developers.cloudflare.com/workers/runtime-apis/durable-objects/" target="_blank">Durable Objects</a>）处理对象存储系统的所有复杂性。我们决定使用开发人员平台工具，是因为它让我们能够快速实施不同的扩展策略。在 Cloudflare 开发人员平台上进行构建的优势是，我们能够轻松试验 Cache Reserve，看看如何最佳分配我们所看到的高负载，同时对用户屏蔽 Cache Reserve 运作机制的复杂性。</p>
+	<p>只需按一个按钮，Cache Reserve 即可执行以下功能：</p>
+	<ul>
+		<li>当发生缓存未命中时，<a href="https://blog.cloudflare.com/how-we-built-pingora-the-proxy-that-connects-cloudflare-to-the-internet/">Pingora</a>（我们的新 L7 代理）会联络源站获取内容，并将响应写入 R2。这会在内容返回给访问者的过程中进行（从而避免不必要的延迟）。</li>
+		<li>在 R2 内部，一个 Worker 会将内容写入 R2 的持久数据存储，同时使用 Durable Objects 存储跟踪 Pingora 传送的有关该对象的重要元数据（如源站标头、新鲜度值和保留信息）。</li>
+		<li>当下一次请求该内容时，Pingora 会计算缓存键，查找数据在 R2 中的存储位置。缓存键的哈希确定了 R2 中的对象名称以及它所写入的存储桶，因为每个区域的资产都以碎片形式分布在多个存储桶中，以分配负载。</li>
+		<li>在找到该内容后，Pingora 会附加相关元数据并将内容从 R2 发送至最近的较高层以进行缓存，然后发送至较低层，并最终返回给访问者。</li>
+	</ul>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/Screen-Shot-2022-11-14-at-4.31.20-PM.png" class="kg-image"></figure>
+	<p>这就像变魔法一样！上面的所有操作都不需要用户进行管理。将 R2、Workers、Durable Objects、Pingora 和分层缓存结合在一起之后，我们能够快速构建和更改 Cache Reserve，以根据需要扩展...</p>
+	<h2 id="cache-reserve--2">Cache Reserve 的后续计划</h2>
+	<p>除了我们为扩展 Cache Reserve 所做的工作外，开放该产品也意味着开放更多的功能以及 Cloudflare 内部产品的集成。我们计划为 Cache Reserve 用户提供更多的分析和指标，让他们能够清楚知道 Cache Reserve 中的内部活动以及节省了多少出口费用。我们还计划与 R2 构建更复杂的集成，这样，如果客户想要开始管理其存储，他们可以轻松完成过渡。最后，我们将努力为客户提供更多选项，以精准控制哪些内容有资格存入 Cache Reserve 中。对于客户在 Cloudflare 上控制和自定义其缓存的旅途而言，这些功能仅仅只是开始。</p>
+	<h2 id="-">迄今为止我们收到了哪些反馈？</h2>
+	<blockquote>作为 Cloudflare 的长期客户，我们非常想要部署 Cache Reserve 来节省成本，并为最终用户提升性能。确保我们的应用程序始终为我们的全球合作伙伴和配送骑手提供优质性能是 Delivery Hero 的首要关注点。使用 Cache Reserve，我们的缓存命中率提升了 5%，让我们能够相应缩减基础结构的规模，简化运营全球网站所需的设施，同时节省额外支出。<br><strong>Wai Hang Tang</strong>，<a href="https://www.deliveryhero.com/" target="_blank">Delivery Hero</a> 工程部总监</blockquote>
+	<blockquote>Anthology 使用 Cloudflare 的全球缓存为我们在学校和大学的最终用户大幅提升了内容性能。通过按下单个按钮来启用 Cache Reserve，我们能够为师生们带来出色的体验，并将我们的日常出口流量减少三分之二。<br><strong>Paul Pearcy</strong>，<a href="https://www.anthology.com/blackboard" target="_blank">Anthology</a>资深主任工程师</blockquote>
+	<blockquote>在 Enjoei，我们一直想方设法帮助我们的最终用户网站更快速、更高效地运行。通过使用 Cloudflare Cache Reserve，我们能够将缓存命中率大幅提高 10% 以上，从而相应减少了我们的源站出口费用。Cache Reserve 还提升了我们在南美洲的许多商家网站的性能，改善了他们在整个互联网（Google、Criteo、Facebook、Tiktok）上的 SEO 和可发现性，而且设置所需时间极短。<br><strong>Elomar Correia</strong>，DevOps SRE 负责人 | <a href="https://www.enjoei.com.br/" target="_blank">Enjoei</a>企业解决方案架构师</blockquote>
+	<blockquote>在现场活动行业，我们可缓存内容的规模和需求可能变化极大，导致出口费用不可预测的波动。此外，使数据尽可能靠近用户，对于使用我们产品的高流量和低带宽场景（例如集会和音乐节）中的客户体验至关重要。Cache Reserve 可帮助我们缓解这两个问题，同时尽量减少对我们工程团队的影响，为我们带来比现有解决方案更加可预测的费用和更低的延迟。<br><strong>Jarrett Hawrylak</strong>，<a href="https://www.patrontechnology.com/" target="_blank">Patron Technology</a> 工程部 | 企业票据部副总裁</blockquote>
+	<h2 id="--1">我如何立即开始使用？</h2>
+	<p>今天，Cache Reserve 已进入公开测试阶段，这意味着想要使用它的所有人都可以对其进行访问。</p>
+	<p>要使用 Cache Reserve，请执行以下操作：</p>
+	<ul>
+		<li>前往仪表板中的 Caching 板块。</li>
+		<li>导航至<a href="https://dash.cloudflare.com/caching/cache-reserve" target="_blank"> Cache Reserve 页面</a>，按下“启用数据同步”按钮（或“购买”按钮）。</li>
+	</ul>
+	<p>Enterprise 客户可以与其 Cloudflare 客户团队合作以存取 Cache Reserve。</p>
+	<p>客户可以查看关于缓存了多少数据以及仪表板的 Cache Reserve 板块中显示的操作数的基准指标，确保 Cache Reserve 运转正常。可以使用 <a href="https://developers.cloudflare.com/logs/reference/log-fields/zone/http_requests/" target="_blank">Logpush v2</a>并使用字段“CacheReserveUsed”查找 HTTP 请求，查看 Cache Reserve 为其提供响应的具体请求。</p>
+	<p>我们将继续努力，快速分类您向我们提供的反馈，并对产品进行改进，以帮助确保 Cache Reserve 易于使用且好处多多，并使其成为您缓存内容以减少出口费用的首选方案。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/Screen-Shot-2022-11-10-at-12.00.31-PM.png" class="kg-image"></figure>
+	<h2 id="--2">试用一下</h2>
+	<p>能让更多的人使用 Cache Reserve，我们感到非常兴奋。我们将持续投入，对 Cache Reserve 进行更多令人兴奋的开发，为您提供构建完美缓存所需的全部工具。</p>
+	<p>立即试用 Cache Reserve 并<a href="https://discord.com/invite/aTsevRH3pG" target="_blank">告诉我们</a>您的使用体验。</p>
+</div>

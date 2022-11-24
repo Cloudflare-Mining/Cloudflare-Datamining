@@ -1,0 +1,27 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/image1-9.png" class="kg-image" alt="Total TLS: one-click TLS for every hostname you have"></figure>
+	<p>我们今天隆重推出 Total TLS，一键即可为客户域的每一个子域颁发单独的 TLS 证书。</p>
+	<p>默认情况下，所有 Cloudflare 客户都获得一张免费的 TLS 证书，覆盖其域的顶点和通配符（example.com，*.example.com）。现在，使用 Total TLS，客户只需一键点击就可以获得对其所有子域的额外覆盖。启用后，客户将不再需要担心其默认 TLS 证书没有覆盖的子域发生不安全连接错误，因为 Total TLS 将对到子域的所有流量进行加密。</p>
+	<h2 id="cloudflare-tls-">Cloudflare TLS 证书产品入门</h2>
+	<h3 id="-ssl-">通用 SSL — “简易”选项</h3>
+	<p>2014 年，我们推出了<a href="https://blog.cloudflare.com/introducing-universal-ssl/">通用 SSL（Universal SSL）</a> — 为每一位 Cloudflare 客户提供的免费 TLS 证书。通用 SSL 被设计为简单的“通用”解决方案。对于使用 Cloudflare 作为权威 DNS 提供商的客户，该证书覆盖顶点和通配符，例如 example.com 和 *.example.com。虽然通用 SSL 证书为大多数客户提供了足够的覆盖，但一些客户有更深层次的子域，如 a.b.example.com，他们希望 TLS 覆盖这些子域。对于这些客户，我们打造了高级证书管理器（ Advanced Certificate Manager）—一个可定制的证书颁发平台，允许客户使用自己选择的主机名颁发证书。</p>
+	<h3 id="-">高级证书——“可定制”方案</h3>
+	<p>对于那些需要灵活性和选择的客户，我们构建了高级证书，作为<a href="https://blog.cloudflare.com/advanced-certificate-manager/">高级证书管理器</a>的一部分提供。通过高级证书，客户可以指定包含在证书上的具体主机名。</p>
+	<p>那意味着，如果我的通用 SSL 证书不够用，我可以使用高级证书 UI 或 API 来请求一个覆盖 “a.b.example.com” 和 “a.b.c.example.com” 的证书。今天，我们允许客户在一个高级证书上放置最多 50 个主机名。唯一要注意的是：客户必须告诉我们要保护哪些主机名。</p>
+	<p>这可能看起来微不足道，但我们的一些客户有成千上万的子域名需要保护。我们有些客户拥有从 a.b.example.com 到 a.b.c.d.e.f.example.com 的子域名，如果要保护这些子域名，客户必须使用高级证书 <a href="https://api.cloudflare.com/#certificate-packs-order-advanced-certificate-manager-certificate-pack" target="_blank">API</a> 告诉我们想保护的主机名。像这样的过程容易出错，不易扩展，而且我们的一些大客户已经拒绝了这个解决方案。</p>
+	<p>取而代之，客户希望 Cloudflare 为他们颁发证书。如果 Cloudflare 是 DNS 提供商，那么 Cloudflare 应该知道哪些子域需要保护。理想情况下，Cloudflare 应该为通过 Cloudflare 网络代理流量的每个子域颁发一张 TLS 证书，这就是 Total TLS 的作用所在。</p>
+	<h2 id="total-tls-">Total TLS 闪亮登场：简易、可定制、可扩展。</h2>
+	<p>Total TLS 是一键式解决方案，它会向 Cloudflare 发出信号，自动为您域中的每个被代理 DNS 记录颁发 TLS 证书。一旦启用，Cloudflare 将为每个被代理主机名发布单独的证书。通过这种方式，您可以根据需要添加任意数量的 DNS 记录和子域，而不必担心它们是否会被 TLS 证书覆盖。</p>
+	<p>如果您有一个针对 a.b.example.com 的 DNS 记录，我们将使用主机名 a.b.example.com 颁发一张 TLS 证书。如果您有一个针对 *.a.b.example.com 的通配符记录，我们将为 “*.a.b.example.com” 颁发一张 TLS 证书。如下示例展示这在仪表板中边缘证书（Edge Certificates）表中的样子：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/image2-6.png" class="kg-image"></figure>
+	<h2 id="--1">现已可用</h2>
+	<p>Total TLS 现已作为高级证书管理器的一部分可用，适用于以 Cloudflare 作为权威 DNS 提供商的域。将 Cloudflare 用作 DNS 提供商带来的巨大好处之一是，我们将始终代表您添加适当的域控制验证（DCV）记录，以确保证书的成功颁发和更新。</p>
+	<p>启用 Total TLS 非常简单 — 可通过 Cloudflare 仪表板或 <a href="https://api.cloudflare.com/#total-tls-enable-or-disable-total-tls" target="_blank">API</a> 进行。在 Cloudflare 仪表板的 SSL/TLS 选项卡中，导航到 Total TLS。在这里，选择颁发 CA—— Let’s Encrypt，Google Trust Services 或“无偏好（No Preference，如果希望让 Cloudflare 代表您选择 CA）”，然后点击切换按钮以启用该功能。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/image4-1.png" class="kg-image"></figure>
+	<h2 id="--2">但这还不是全部……</h2>
+	<p>我们希望为所有客户解决的一个痛点是可见度。通过查看支持工单和与客户交谈，我们意识到的事情之一是，客户并不总是知道其域名是否被 TLS 证书所覆盖，这样一个简单的疏忽可能导致停机或错误。</p>
+	<p>为了防止这种情况发生，如果我们发现客户正在创建、查看或编辑的代理 DNS 记录没有具备覆盖它的 TLS 证书，我们现在将向其发出警告。通过这种方式，我们的客户可以在主机名公开之前获得 TLS 证书，以防止访问者遇到这个错误：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/image3-2.png" class="kg-image"></figure>
+	<h2 id="--3">参与使命</h2>
+	<p>Cloudflare热爱构建帮助保护所有互联网资产的产品。有兴趣与我们一起实现这个使命吗？<a href="https://www.cloudflare.com/careers/jobs/" target="_blank">欢迎加入</a>！</p>
+</div>
