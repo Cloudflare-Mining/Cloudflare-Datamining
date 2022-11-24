@@ -9,11 +9,11 @@
 	<h2 id="-r2-super-slurper-">最初のステップ：R2 Super Slurperプライベートベータ版</h2>
 	<h3 id="-">一気に吸い上げる</h3>
 	<p>R2 Super Slurperの最初のイテレーションでは、S3バケットを対象に、そこに保存されているオブジェクトをR2バケットにインポートすることができるようになります。最も一般的なシナリオを対象とした、1回限りの単純なインポートです。既存のS3ソースを指し、R2 Super Slurperに移行したいオブジェクトの読み取り権限を与えると、非同期ジョブが残りを処理します。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-34.png" class="kg-image" alt="an active migration implies a big-bang of data movement from your old buckets to R2"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/Blog-1463_Active-migration_JA.png" class="kg-image"></figure>
 	<p>また、移行元のバケットにアクセス定義や認証情報を保存できるため、新たな操作でバケット内の異なるフォルダを移行する際にも、URLや認証情報を改めて定義する必要はありません。この操作だけで、整合性を検証したいパスのあるバケットをスクリプトで処理する手間が省けます。ベータ版では、利用者の皆様からのフィードバックをいただきながら、R2 Super Slurperを進化させ、誰でもいくつかのボタンをクリックするだけで、完全に一貫性を維持した、アクティブな移行を実現できるようにします。</p>
 	<h3 id="--1">一つずつ吸い上げる自動移行</h3>
 	<p>また、将来的には、エンドユーザーからの要求に応じてオブジェクトをR2に徐々にコピーする、自動で一口ずつ吸い上げる移行方式も開発します。移行に合わせてR2からのオブジェクト配信を開始することができるため、すぐにコストを削減することができます。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image4-16.png" class="kg-image" alt="a passive migration strategy involves always serving through Cloudflare, but getting the file from an external repository on the first time it’s requested"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/Blog-1463_Passive-migration_JA.png" class="kg-image"></figure>
 	<p>リクエストとオブジェクトの移行フローは次の通りです：</p>
 	<ul>
 		<li><strong>オブジェクトの確認</strong>：リクエストがCloudflareに届く<strong>(1)</strong>と、リクエストされたオブジェクトがR2バケットにあるかどうかチェック<strong>(2)</strong>します。オブジェクトが存在する場合、R2がそれを提供<strong>(3)</strong>します。</li>
