@@ -1,6 +1,6 @@
 on:
   schedule:
-    - cron:  '30 * * * *'
+    - cron:  '*/30 * * * *'
   workflow_dispatch: {}
 
 name: Mine CF Dashboard
@@ -30,8 +30,4 @@ jobs:
           npm ci
           npm run mine:dashboard -- --no-write
         env:
-          CLOUDFLARE_EMAIL: ${{ secrets.CLOUDFLARE_EMAIL }}
-          CLOUDFLARE_PASSWORD: ${{ secrets.CLOUDFLARE_PASSWORD }}
           DISCORD_WEBHOOK_DASHBOARD: ${{ secrets.DISCORD_WEBHOOK_DASHBOARD }}
-          DISCORD_WEBHOOK_GATES: ${{ secrets.DISCORD_WEBHOOK_GATES }}
-          GATES_API_KEY: ${{ secrets.GATES_API_KEY }}
