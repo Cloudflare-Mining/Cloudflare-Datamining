@@ -282,7 +282,7 @@
 					cbTimeout: y,
 					params: i
 				}), p.style.display = "none", p.style.border = "none", p.style.overflow = "hidden";
-				let Y = "";
+				let Y = "h/b/";
 				if (p.setAttribute("src", `${A}/cdn-cgi/challenge-platform/${Y}turnstile/if/ov2/av0/${_}/${g}/${i.theme}/${i.size}`), p.id = b, p.tabIndex = (D = i.tabindex) != null ? D : 0, p.title = "Widget containing a Cloudflare security challenge", o.appendChild(p), (F = i["response-field"]) != null ? F : !0) {
 					let f = document.createElement("input");
 					if (f.type = "hidden", f.name = (H = i["response-field-name"]) != null ? H : ne, f.id = `${b}_response`, o.appendChild(f), typeof i["response-field-name"] != "string" && se(g)) {
