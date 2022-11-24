@@ -50,6 +50,7 @@ async function run(){
 			visible: true,
 		});
 
+		console.log('Extracting cookies...');
 		// extract cookie from page
 		const cookies = await page.cookies();
 		await browser.close();
@@ -105,7 +106,7 @@ async function run(){
 			},
 		];
 
-
+		console.log('Querying APIs...');
 		// hit CF API with cookie for each req
 		for(const api of apis){
 			const response = await fetch(api.url, {
