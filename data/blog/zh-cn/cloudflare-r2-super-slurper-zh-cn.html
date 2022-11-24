@@ -9,11 +9,11 @@
 	<h2 id="-r2-super-slurper-">第一步：R2 Super Slurper 封闭测试</h2>
 	<h3 id="-">一次性批量</h3>
 	<p>在 R2 Super Slurper 的第一次迭代，您就可以针对 S3 存储桶，将您在其中存储的对象导入 R2 存储桶。这是简单的一次性导入过程，涵盖了最常见的场景。指向您的现有 S3 源，授予 R2 Super Slurper 权限以读取您想迁移的对象，然后一个异步作业将负责处理其余操作。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-34.png" class="kg-image" alt="an active migration implies a big-bang of data movement from your old buckets to R2"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/Blog-1463_Active-migration_CN.png" class="kg-image"></figure>
 	<p>您还可以保存用于访问源存储桶的定义和凭证，以便可以在新操作中迁移存储桶内的不同文件夹，而不必反复重新定义 URL 和凭证。单凭此操作，您就不必使用您想验证一致性的许多路径编写各种各样的脚本来遍历存储桶。在测试阶段，我们会利用用户反馈信息来演变 R2 Super Slurper，直至任何人只需点击几个按钮就能实现完全一致的超级 slurp。</p>
 	<h3 id="--1">自动一口一口迁移</h3>
 	<p>其他未来开发工作包括自动一口一口迁移，用于在最终用户请求时递增式将对象复制到 R2。它允许您在对象迁移的同时开始从 R2 提供这些对象，立即节省开支。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image4-16.png" class="kg-image" alt="a passive migration strategy involves always serving through Cloudflare, but getting the file from an external repository on the first time it’s requested"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/Blog-1463_Passive-migration_CN.png" class="kg-image"></figure>
 	<p>请求和对象迁移的流程如下所示：</p>
 	<ul>
 		<li><strong>检查对象</strong> — 请求到达 Cloudflare <strong>(1)</strong>，然后我们在 R2 存储桶中检查所请求的对象 <strong>(2)</strong>。如果该对象存在，R2 将提供该对象 <strong>(3)</strong>。</li>
