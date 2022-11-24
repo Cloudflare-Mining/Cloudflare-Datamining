@@ -1,0 +1,46 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/image5-2.png" class="kg-image" alt="Making peering easy with the new Cloudflare Peering Portal"></figure>
+	<p>在 2018 年，我们推出了 <a href="https://blog.cloudflare.com/cloudflare-peering-portal-beta/">Cloudflare Peering Portal</a>，允许网络运营商看到您的流量来自哪里，并确定与 Cloudflare 互连的最佳地点。今天，我们很高兴地宣布已经移除了特定于 Cloudflare 的登录，并允许用户在门户网站本身请求会话，使得通过这个门户与 Cloudflare 互连变得更加容易！</p>
+	<p>我们将详细介绍使对等互连更加容易而做出的变化，但在那以前，我们先谈一下对等互连（peering）：它是什么，为什么重要，以及 Cloudflare 如何使对等互连更容易。</p>
+	<h2 id="-">什么是对等互连，它为什么重要？</h2>
+	<p>简单地说，对等互连就是将两个网络连接在一起的行为。如果把网络比作城镇，对等互连就是将网络连接在一起的桥梁、高速公路和街道。有很多不同的方法可以将网络连接在一起，但当网络连接时，它们之间的流量会更快地流向目的地。这样做的原因是对等互连减少了网络之间的边界网关协议（BGP）跳数。</p>
+	<h3 id="-bgp-">什么是 BGP？</h3>
+	<p>简单回顾下，<a href="https://www.cloudflare.com/learning/security/glossary/what-is-bgp/" target="_blank">边界网关协议</a> （Border Gateway Protocol，缩写为 BGP） 传播关于网络应该如何转发数据包的指令，以便流量能够从起点到达目的地。BGP 向数据包提供从一个网络到达另一个网络的指令，指示数据包需要经过哪些网络才能到达目的地，优先选择从起点到目的地之间跳数最小的路径。BGP 将网络视为自治系统（AS），每个 AS 都有自己的编号。例如，Cloudflare 的 ASN 为 13335.4。</p>
+	<p>在下面的例子中，AS 1 试图将数据包发送给 AS 3，但有两种可能的路径可以到达：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/image6-3.png" class="kg-image"></figure>
+	<p>BGP 的决策算法会选择跳数最少的路径，即数据包将选择的路径是 AS 1→AS 2→AS 3。</p>
+	<p>当两个网络对等互连时，连接 AS 1 和 AS 3 所需的网络数量减少到 1 个，因为 AS 1 和 AS 3 之间是直接连接的。但与另一个网络“连接”可能有点含糊，所以让我们说得更具体一些。一般来说，网络可以通过三种方式与其他网络连接：通过专用网络互连（PNI）直连，在互联网交换中心（IX），或通过与许多网络连接的中转网络。</p>
+	<h3 id="--1">专用网络互连</h3>
+	<p>专用网络互连（PNI）听来复杂，但其核心很简单： 就是一根连接两个网络的电缆。如果网络位于相同的数据中心设施中，这两个网络通常很容易连接。通过专用连接，它们可以获得到彼此的专用带宽和可靠的正常运行时间。Cloudflare 有一个名为 <a href="https://blog.cloudflare.com/zh-cn/cloudflare-network-interconnect-zh-cn/">Cloudflare Network Interconnect (CNI)</a> 的产品，允许其他网络将其网络以这种方式直连到 Cloudflare。</p>
+	<h3 id="--2">互联网交换中心</h3>
+	<p><a href="https://www.cloudflare.com/learning/cdn/glossary/internet-exchange-point-ixp/" target="_blank">互联网交换中心</a> (IX) 是在同一地点容纳很多网络的建筑物。每个网络都有一个或多个端口，并接入一个共享交换机，以便每个网络都有具备互连的潜力。这些交换中心非常庞大，可以容纳数百甚至数千个网络。这类似于 PNI ，但不是两个网络直接连接，而是数千个网络连接到同一台设备，并通过该设备建立 BGP 会话。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/image7-1.png" class="kg-image">
+		<figcaption>Fabienne Serriere：荷兰阿姆斯特丹 <a href="https://en.wikipedia.org/wiki/Amsterdam_Internet_Exchange" target="_blank">AMS-IX</a> 互联网交换中心内的一块光纤接线板。<a href="https://creativecommons.org/licenses/by-sa/3.0" target="_blank">CC BY-SA 3.0</a></figcaption>
+	</figure>
+	<p>在互联网交换中心内，流量通常在网络之间免费交换，这是将一个网络与其他网络互连并节省网络之间带宽的一种很好的方法。</p>
+	<h3 id="--3">中转网络</h3>
+	<p>中转网络是专门设计用来在其他网络之间传送数据包的网络。这些网络在互联网交换中心对等互连，并与许多其他网络直连，以便您的网络在没有 PNI 或 IX 条件的情况下提供连接。这种服务是有代价的，可能会影响网络性能，因为中转网络是您的网络和您的流量试图到达的地方之间的中间跳点。中转网络并非对等互连，但它们代表您的网络进行对等互连。</p>
+	<p>无论您决定如何将您的网络连接到 Cloudflare，我们都有<a href="https://www.cloudflare.com/peering-policy/" target="_blank">开放的对等互连政策</a>，并强烈建议您将网络直连到 Cloudflare。如有兴趣，您可以从使用 Cloudflare Peering Portal 开始，它已经变得更加容易。让我们先简单说下为什么对等连接如此重要。</p>
+	<h2 id="--4">为什么对等连接很重要？</h2>
+	<p>对等互连在互联网上很重要，原因有三：它在许多网络中分配流量，减少了互联网的单点故障；它往往能降低互联网上的带宽价格，降低了整体成本；它通过消除网络跳数来提高性能。我们逐一介绍下这些好处。</p>
+	<p>对等互连通过在多个网络上分配流量来改善互联网的整体正常运行时间，这意味着如果一个网络发生故障，来自您的网络的流量仍然能够到达您的用户。与连接到中转网络相比：如果中转网络出现问题，您的网络将无法到达，因为该网络是您的网络连接互联网的其他部分的唯一途径（除非你决定使用多个中转连接提供商）。使用对等连接时，任何个别网络故障都不会完全妨碍用户到达您的网络。</p>
+	<p>对等连接有助于降低网络带宽成本，因为它将您为一个端口支付给IX 的费用分摊到在 IX 与您互连的所有网络上。如果您每月为一个 IX 端口支付 1000 美元，而您在那里与 100 个网络对等互连，那么您实际上是在为每个网络支付 10 美元，而不是每月支付 1000 美元连接到一个中转网络。此外，包括 Cloudflare 在内的许多网络都有开放的对等互连政策和免结算对等互连，这意味着我们不向您收取发送流量给我们或反之的费用，这使得对等互连更加经济。</p>
+	<p>对等互连还通过将网络连接得更近、减少数据包从一个网络到另一个网络所需的时间来提高互联网流量的性能。两个网络之间对等连接点越多，它们可以直接交换流量的物理位置就越多，这意味着所有地方的用户都能获得更佳的性能。</p>
+	<p>下面是一个例子。Janine 正试图从 Acme food Services 订购食品，该网站受到 Cloudflare 的保护。她住在波士顿，通过自己的 ISP 连接到 Cloudflare。Acme Food Services 的源服务器也在波士顿，所以为了让 Janine 获得最快的性能，她的 ISP 应该连接到波士顿的 Cloudflare 数据中心，然后 Cloudflare 应该将她的流量直接路由到波士顿的 Acme 源服务器。不幸的是，Janine 的 ISP 并不与波士顿的 Cloudflare 对等互连，而是与纽约的 Cloudflare 数据中心对等互连，这意味着，当 Janine 连接到Acme 时，她的流量是通过她的 ISP 先到达纽约，然后才到达 Cloudflare，然后一路返回波士顿的 Acme 源服务器！</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/image2-11.png" class="kg-image"></figure>
+	<p>但通过正确的对等互连，我们可以确保流量通过尽可能快的路径路由，以确保 Janine 连接到波士顿的 Cloudflare 数据中心，一切活动都留在本地：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/image3-6.png" class="kg-image"></figure>
+	<p>幸运的是，Cloudflare 与全球超过 275 个地点的上万个网络对等互连，因此网络极少出现高延迟。每增加一个对等互连的新网络，我们都帮助用户流量进一步加速。现在让我们谈一下如何使对等互连更加容易。</p>
+	<h2 id="cloudflare-peering-portal-peeringdb-">Cloudflare Peering Portal 支持 PeeringDB 登录</h2>
+	<p>Cloudflare 以及其他很多网络都依赖于 <a href="https://www.peeringdb.com/" target="_blank">PeeringDB</a> 作为互联网上存在哪些网络的真实信息源。PeeringDB 是社区维护的数据库，包含互联网上存在的所有网络，这些网络位于哪些数据中心设施和 IX，以及在每个公共位置使用什么 IP 地址进行对等互连。包括 Cloudflare 在内的很多网络要求您拥有 PeeringDB 帐户 ，然后才能为其网络启动对等互连会话。</p>
+	<p>您现在可以使用相同的 PeeringDB 帐户直接登录到 Cloudflare Peering Portal，无需创建专门的 Cloudflare Peering Portal 帐户。</p>
+	<p>在登录 Cloudflare Peering Portal 时，只需点击 PeeringDB 登录按钮并输入您的 PeeringDB 凭据。Cloudflare 将使用这些登录信息来确定您负责的网络，并自动为这些网络加载数据。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/image4-5.png" class="kg-image"></figure>
+	<p>在这里，您可以看到自己的网络与 Cloudflare 交换流量的所有位置。您可以看到目前与我们进行直接对等互连的地点，以及潜在的对等互连：即可与我们对等互连但目前尚未这样做的地点。如果在这个视图点击一个按钮，就能直接配置与 Cloudflare 的对等互连会话，岂不是很棒？现在确实可以这样做了！</p>
+	<h2 id="-peering-portal-">在 Peering Portal 中请求会话</h2>
+	<p>从今天开始，您现在可以直接从 Peering Portal 请求在互联网交换中心与 Cloudflare 进行对等会话，使得与 Cloudflare 连接更加容易。对于 Peering Portal 中的潜在对等互连会话，现在有一个按钮让您验证对等互连信息是否正确，以及是否继续发出对等互连请求：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/image1-13.png" class="kg-image"></figure>
+	<p>点击这个按钮后，一张工单将立即发送给我们的网络团队，后者将使用 PeeringDB 已经提供的详细信息来配置与您的网络之间的对等会话。我们的网络团队会查看我们是否已经与您在该地点的网络建立了连接，以及如果我们与您在该地点进行对等连接，会对您的互联网流量产生什么影响。一旦我们评估了这些变量，我们将继续在该位置与您建立 BGP 会话，并通过电子邮件（通过 PeeringDB 获得） 通知您。然后，您只需要接受该 BGP 会话，就能与 Cloudflare 交换流量了。</p>
+	<h2 id="-cloudflare-">立刻与 Cloudflare 建立对等互连吧！</h2>
+	<p>与 Cloudflare 对等互连变得比以往任何时候都更加容易，我们经过简化的 Peering Portal 将使得建立连接甚至更加容易。欢迎访问 <a href="https://www.cloudflare.com/partners/peering-portal/" target="_blank">Peering Portal</a>，并开始与 Cloudflare 建立更快、更便宜的连接！</p>
+</div>

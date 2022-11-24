@@ -1,0 +1,86 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/unnamed-1.png" class="kg-image" alt="Cloudflare Pages gets even faster with Early Hints"></figure>
+	<p>去年，我们<a href="https://blog.cloudflare.com/cloudflare-pages-is-lightning-fast/">展示了 Pages 在全球各地的一流性能</a>，诠释了所谓“快如闪电”的含义。今天，怀着激动的心情，我们宣布推出一项集成，以进一步增强对速度的承诺： Pages 对 Early Hints 的支持。Early Hints 允许您在任何交付缓慢的 HTML 页面之前解除页面关键资源的加载。Early Hints 可以通过显著减少关键性能指标——例如最大内容绘制（LCP）——来改善访问者的加载体验。</p>
+	<h2 id="-early-hints-">什么是 Early Hints？</h2>
+	<p><a href="https://blog.cloudflare.com/early-hints/">Early Hints</a>是互联网的一项新功能，<a href="https://developer.chrome.com/blog/early-hints/#implementing-early-hints" target="_blank">Chrome 从 103 版就开始支持</a>，并由 <a href="https://blog.cloudflare.com/early-hints-performance/">Cloudflare</a> 向使用我们网络的网站<a href="https://blog.cloudflare.com/early-hints-performance/">普遍提供</a>。 Early Hints 取代 <a href="https://groups.google.com/a/chromium.org/g/blink-dev/c/K3rYLvmQUBY/m/vOWBKZGoAQAJ" target="_blank">Server Push</a>，用于向浏览器发送有关页面关键资源的“提示”（例如字体、CSS 和折叠线以上的图像）。浏览器可以在等待完整的 HTML 响应之前立即开始加载这些资源，从而利用了以前浪费的时间。使用 Early Hints 之前，浏览器收到响应的第一个字节之前，不能启动任何工作。现在，浏览器可以在之前等待的时间内进行有效的工作。Early Hints 可以给你的网站带来显著的性能改善，特别是对于 LCP 这样的指标。</p>
+	<h3 id="early-hints-">Early Hints 如何工作</h3>
+	<p>Cloudflare 缓存 200 OK 响应发送的任何 <code>preload</code> 和 <code>preconnect</code> 类型 &nbsp;<code>Link</code> 标头，并将其作为 103 Early Hints 响应针对任何后续请求提前发送。</p>
+	<p>实际使用中，一个 HTTP 对话现在看起来如下：</p>
+	<p><strong>请求</strong></p><!--kg-card-begin: markdown-->
+	<pre><code class="language-txt">GET /
+Host: example.com
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p><strong>Early Hints 响应</strong></p><!--kg-card-begin: markdown-->
+	<pre><code class="language-txt">103 Early Hints
+Link: &lt;/styles.css&gt;; rel=preload; as=style
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p><strong>响应</strong></p><!--kg-card-begin: markdown-->
+	<pre><code class="language-txt">200 OK
+Content-Type: text/html; charset=utf-8
+Link: &lt;/styles.css&gt;; rel=preload; as=style
+
+&lt;html&gt;
+&lt;!-- ... --&gt;
+&lt;/html&gt;
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h2 id="cloudflare-pages-early-hints">Cloudflare Pages 上的 Early Hints</h2>
+	<p>托管在 Cloudflare Pages 上的网站尤其可以从 Early Hints 受益。如果您在使用 <a href="https://blog.cloudflare.com/zh-cn/cloudflare-pages-goes-full-stack-zh-cn/">Pages Functions</a> 来生成动态服务器端渲染（SSR）页面，那么 Early Hints 很有可能显著提升您的网站性能。</p>
+	<h3 id="-">性能测试</h3>
+	<p>我们创建了一个简单的演示电子商务网站，以评估 Early Hints 的性能。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/image2-7.png" class="kg-image" alt="A screenshot of the landing page of a demo Cloudflare e-commerce website selling a t-shirt, cap and keycap. Each item is branded with the Cloudflare logo, and has a price and &quot;stock remaining&quot; number."></figure>
+	<p>这个登陆页面上有每个物品的价格，以及剩余库存计数器。页面本身只是人工编写的 HTML 和 CSS，但这些价格和库存数字是通过 <a href="https://developers.cloudflare.com/pages/platform/functions/" target="_blank">Pages Functions</a> 实时填充到模板的。为了模拟从外部数据源（ 可能由 <a href="https://developers.cloudflare.com/workers/runtime-apis/kv/" target="_blank">KV</a>、 <a href="https://developers.cloudflare.com/workers/runtime-apis/durable-objects/" target="_blank">Durable Objects</a>、 <a href="https://blog.cloudflare.com/zh-cn/introducing-d1-zh-cn/">D1</a> 或甚至 Shopify 这样的 API 支持），我们在这个数据得到解析前增加一个固定的延迟。我们在响应中包含了到某些关键资源的 <code>preload</code> 链接：</p>
+	<ul>
+		<li>一个外部 CSS 样式表，</li>
+		<li>T 恤的图像，</li>
+		<li>帽子图像，</li>
+		<li>以及键帽图像。</li>
+	</ul>
+	<p>第一个请求就像您所期望的那样形成了一个瀑布。在我们解析定价和库存数据时，第一个请求被阻塞了相当长的一段时间。一旦加载，浏览器就会解析 HTML，提取外部资源，并对其内容发出后续请求。CSS 和图像的尺寸和质量较大，显著延长了加载时间。最大内容绘制（LCP）发生在 T 恤图像加载时，一旦所有请求得到满足，文档就完成加载。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/image1-10.png" class="kg-image" alt="A network diagnostics waterfall for the page without Early Hints, as described above."></figure>
+	<p>后续请求就是引人注目之处了。这些 preload 链接缓存在 Cloudflare 的全球网络上，并在文档加载前通过 103 Early Hints 响应发送。现在，瀑布看起来明显不同了。最初的请求是一样的，但是现在，针对 CSS 和图像的请求会往左边大幅偏移，因为 103 响应一发出就可以启动这些请求。浏览器在等待原始请求完成服务器端渲染时开始获取这些资源。LCP 再次发生在 T 恤图像加载后，但这次它被提前了 <strong>530ms</strong>，因为它的加载加快了 <strong>752ms</strong>，文档完全加载加快了 <strong>562ms</strong>，也是因为外部资源能全部更快开始加载。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/image3-3.png" class="kg-image" alt="A network diagnostics waterfall with Early Hints, as described above."></figure>
+	<p>最后的四个请求（黄色突出显示）作为 304 Not Modified 响应返回，使用 <code>If-None-Match</code> 标头。默认情况下，Cloudflare Pages 要求浏览器确认所有资源都是最新的，如果出现一种罕见的情况，即这些资源在 Early Hints 响应和被使用之间被更新，浏览器会检查它们是否已被更改。鉴于它们没有被改变，没有内容正文需要下载，响应很快就完成了。要避免这种情况，可使用 <a href="https://developers.cloudflare.com/pages/platform/headers/" target="_blank">一个<code>_headers</code> 文件</a>在这些资源上设置一个自定义 <code>Cache-Control</code> 标头。例如，可以通过类似如下的规则将这些图像缓存一分钟：</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-txt"># _headers
+
+/*.png
+  Cache-Control: max-age=60
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>我们可以通过探索 Cloudflare 提供的其他功能来开展进一步的性能审计，例如<a href="https://support.cloudflare.com/hc/en-us/articles/200168196" target="_blank">自动 CSS 最小化</a>、<a href="https://developers.cloudflare.com/images/" target="_blank">Cloudflare Images</a> 和 <a href="https://developers.cloudflare.com/images/image-resizing/" target="_blank">Image Resizing</a>。</p>
+	<p>我们已经从<a href="https://blog.cloudflare.com/cloudflare-pages-is-lightning-fast/">世界最快的网络之一</a>支持 Cloudflare Pages —— Early Hints 只不过允许开发人员更充分地利用我们的全球网络。</p>
+	<h2 id="-early-hints-cloudflare-pages">使用 Early Hints 和 Cloudflare Pages</h2>
+	<p>Cloudflare 的 Early Hints 目前仅限于缓存网页响应中的 <code>Link</code> 标头。通常，这意味着 Cloudflare Pages 用户要么使用 <code>_headers</code> 文件，要么使用 Pages Functions 来应用标头。然而， 为方便起见，我们也增加了将正文中的任何 <code>&lt;link&gt;</code> HTML 元素转换为 <code>Link</code> 标头的支持。这允许您从引用这些资源的相同文档中直接控制将发送的 Early Hints，无需离开 HTML 即可利用 Early Hints。</p>
+	<p>例如，对于如下 HTML 文件，将产生一个 Early Hints 响应：</p>
+	<p><strong>HTML 文档</strong></p><!--kg-card-begin: markdown-->
+	<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;link rel="preload" as="style" href="/styles.css" /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;!-- ... --&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p><strong>Early Hints 响应</strong></p><!--kg-card-begin: markdown-->
+	<pre><code class="language-txt">103 Early Hints
+Link: &lt;/styles.css&gt;; rel=preload; as=style
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>如上所述，<code>Link</code> 也可使用一个 <a href="https://blog.cloudflare.com/custom-headers-for-pages/"><code>_headers</code></a><a href="https://blog.cloudflare.com/custom-headers-for-pages/"> 文件</a>设定：</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-txt"># _headers
+
+/
+  Link: &lt;/styles.css&gt;; rel=preload; as=style
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Early Hints（及自动 HTML <code>&lt;link&gt;</code> 解析）已经为所有 &nbsp;<code>pages.dev</code> 域自动启用。如果您在 Pages 项目中配置了任何自定义域，请确保在 Cloudflare 仪表板的 “速度” 选项卡下启用该域的 Early Hints。有关更多信息，请参见我们的<a href="https://developers.cloudflare.com/pages/platform/early-hints/" target="_blank">文档</a>。</p>
+	<p>此外，在未来，我们希望能够支持 Smart Early Hints 功能。 Smart Early Hints 将使 Cloudflare 能自动生成 Early Hints，即使不存在 <code>Link</code> 标头或 <code>&lt;link&gt;</code> 元素。做法是对网站流量进行分析，推断哪些资源对给定页面重要。我们不久后将分享有关 Smart Early Hints 的更多信息。</p>
+	<p>与此同时，欢迎立刻试用 <a href="https://developers.cloudflare.com/pages/platform/early-hints/" target="_blank">Pages 上的 Early Hints 功能</a>。并在<a href="https://discord.com/invite/cloudflaredev" target="_blank">我们的 Discord 服务器</a>上告诉我们您的加载性能得到多大提升吧。</p>
+	<h2 id="-cloudflare-tv-">在 Cloudflare TV 上观看</h2><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/17f981baa4fb87a0a3f8023e67c57358/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F17f981baa4fb87a0a3f8023e67c57358%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D1s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
+</div>

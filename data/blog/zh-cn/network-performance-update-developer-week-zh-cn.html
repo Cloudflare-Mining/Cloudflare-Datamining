@@ -1,0 +1,227 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image6-9.png" class="kg-image" alt="Network Performance Update: Developer Week 2022"></figure>
+	<p>Cloudflare 正在建设世界上最快的网络。但我们不想您只是相信我们所说的话。为演示这一点，我们会持续测试我们相对于别人的表现，确保我们是最快的。因为现在是 Developer Week，我们想提供关于 Workers 产品相对于竞争对手的表现以及我们总体网络性能的更新。</p>
+	<p>今年早些时候，我们比较了自己与 Fastly 的 Compute@Edge，总体来看，我们更快。这次，我们不仅重复了这些测试，还增加了 AWS Lambda@Edge，帮助展示我们相对于越来越多的竞争对手的表现。总结：我们提供了市场上最快的开发人员平台。我们来谈一谈我们是如何构建网络，帮助您提高速度，然后我们会谈到这如何影响到我们的开发人员平台。</p>
+	<h2 id="-">关于网络性能的最新更新</h2>
+	<p>我们有两项数据更新：总体网络性能更新，然后是关于 Workers 相较于 Compute@Edge 和 Lambda@Edge 的表现的数据。</p>
+	<p>为量化全球网络性能，我们必须从世界各地的各种不同网络获取足够的数据，以将我们自己与其他提供商进行比较。我们使用 Real User Measurements (RUM) 来从几家不同提供商提取一个 100kB 的文件。世界各地的用户会报告不同提供商的性能。报告数据的用户越多，信号的保真度就越高。目标是准确地反映出在哪些网络中其他提供商的速度更快，以及更重要的是，Cloudflare 在哪些方面还可以改进。您可以点击<a href="https://blog.cloudflare.com/benchmarking-edge-network-performance/">此处</a>阅读原创 Speed Week 博客文章中有关该方法的更多内容。</p>
+	<p>在 Cloudflare One Week（2022 年 6 月）期间，我们宣布在更多的最常用网络中比我们的竞争对手更快一步。在全世界最热门的 3,000 个网络（按公布的 IPv4 地址数量排名）中，下面详细列出了每个提供商在 p95 TCP 连接时间方面排名第一的网络数量，该时间表示给定网络上的用户连接到该提供商所用时间。该数据来自 Cloudflare One Week（2022 年 6 月）：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image7-5.png" class="kg-image"></figure>
+	<p>Developer Week（2022 年 11 月）最热门的 3,000 个网络的分布情况如下：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image8-3.png" class="kg-image"></figure>
+	<p>Cloudflare 不仅是热门网络中最快的，而且还承诺在每个国家/地区成为最快的提供商。</p>
+	<p>利用 Cloudflare One Week（2022 年 6 月）最热门的 3,000 个网络的相关数据，世界地图如下所示（Cloudflare 为橙色）：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image3-42.png" class="kg-image"></figure>
+	<p>显示 Developer Week（2022 年 11 月）最热门的 3,000 个网络的世界地图如下：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image4-29.png" class="kg-image"></figure>
+	<p>Cloudflare 在欧洲和亚洲更多国家/地区排名第一，尤其是俄罗斯、乌克兰、哈萨克斯坦、印度和中国，从而进一步履行了我们关于成为全世界最快网络的使命。现在我们来介绍一下该网络如何帮助 Supercloud 成为最快的开发人员平台。</p>
+	<h2 id="--1">我们比较各个开发人员平台的方法</h2>
+	<p>自从我们发布初始测试以来，已经有六个月了，下面我们来快速回顾一下。我们做比较的方法是测量连接到网络所用时间、完成请求所用时间以及总体响应时间。我们将这些数字分别称为连接、等待和响应。我们选择这些数字的原因是，它们是请求中的关键组成部分，需要尽可能快速，以便提升用户体验。我们会尽可能靠近用户进行对等互连，从而缩短连接时间。我们竭尽所能优化代码执行，从而缩短等待时间。如果我们优化这两个过程，我们就优化了响应，它表示请求的端到端延迟。</p>
+	<h2 id="--2">测试方法</h2>
+	<p>为了测量连接、等待和响应，我们对每个提供商执行三项测试：简单的无操作 JavaScript 函数、复杂的 JavaScript 函数和复杂的 Rust 函数。我们并不执行简单的 Rust 函数，因为这种函数预计所用时间可以忽略不计，而且我们已经针对无操作 JavaScript 函数中的端到端功能制定了基准，因为许多提供商经常会将两者编译至 WebAssembly。</p>
+	<p>每种情况的函数如下：</p>
+	<p>JavaScript 无操作：</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">async function getErrorResponse(event, message, status) {
+  return new Response(message, {status: status, headers: {'Content-Type': 'text/plain'}});
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>JavaScript 硬函数：</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">function testHardBusyLoop() {
+  let value = 0;
+  let offset = Date.now();
+
+  for (let n = 0; n &lt; 15000; n++) {
+    value += Math.floor(Math.abs(Math.sin(offset + n)) * 10);
+  }
+
+  return value;
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Rust 硬函数：</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-rust">fn test_hard_busy_loop() -&gt; i32 {
+  let mut value = 0;
+  let offset = Date::now().as_millis();
+
+  for n in 0..15000 {
+    value += (((offset + n) as f64).sin().abs() * 10.0) as i32;
+  }
+
+  value
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>我们试图测试每个平台能在多大程度上优化计算，以及评估每个平台有多靠近最终用户。但是，就本测试而言，我们并未对 Lambda@Edge 运行 Rust 测试，因为它并不能原生支持我们的 Rust 函数，而需要上传自行编译的 WASM 二进制文件。由于 Lambda@Edge 没有真正的一流开发人员平台和工具来运行 Rust，我们决定针对 Lambda@Edge 排除 Rust 场景。因此，当我们比较 Lambda@Edge 的数字时，仅适用于 JavaScript 简单测试和 JavaScript 硬测试。</p>
+	<h2 id="-workers-">通过真实用户测量 Workers 性能</h2>
+	<p>为了收集数据，我们使用了两种不同的方法：一种是第三方服务提供的方法，称为 Catchpoint；另一种是我们自己的网络性能基准测试中使用的方法。首先，我们使用 Catchpoint 从合成探针采集一组数据。Catchpoint 是业界标准的“合成”测试工具，测量数据将从全世界的真实用户收集。Catchpoint 是一种监控平台，总共有大约 2,000 个分布在世界各地且可以配置为获取每个测试的特定资源和时间的端点。Catchpoint 很适合像我们这样的网络提供商，因为它提供了一致、可重复的方法来测量工作负载的端到端性能，并尽可能近似表示用户所看到的内容。</p>
+	<p>Catchpoint 在全世界的 ISP 中嵌入了主干网节点。这意味着，这些节点就像用户那样接入 ISP 路由器，并且流量会经过 ISP 网络进入所监控的每个端点。这些可以近似表示真实用户，但并不能真正地复制真实用户。例如，这些节点的带宽 100% 专用于平台监控，而用户的家庭互联网连接则不同，用户的互联网体验会包含不同的用例，其中一些根本不会与 Workers 应用程序通信。</p>
+	<p>就该新测试而言，我们选择了全世界的最后一英里 ISP 中嵌入的 300 个主干网节点。我们过滤掉云提供商中或有多个传输选项的都市地区的节点，力求尽量去除重复路径。</p>
+	<p>我们使用自己的数据集对这些测试进行了核查，该数据集是从连接到免费网站时收到 1xxx 错误页面的用户收集的，就像我们收集全球网络性能的数据那样。用户看到此错误页面时，该页面会在渲染过程中执行这些测试，并将有关这些调用的性能指标上传到 Cloudflare。</p>
+	<p>我们还更改了测试方法，将付费帐户用于 Fastly、Cloudflare 和 AWS。</p>
+	<h2 id="workers-compute-edge-lambda-edge-">Workers、Compute@Edge 与 Lambda@Edge 比较</h2>
+	<p>这次，我们首先来看响应时间，看看我们在端到端方面的表现如何：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/1-6.png" class="kg-image"></figure><!--kg-card-begin: html-->
+	<table>
+		<thead>
+			<tr>
+				<th>测试</th>
+				<th>第 95 个百分位（毫秒）</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Cloudflare JavaScript 无操作</td>
+				<td>479</td>
+			</tr>
+			<tr>
+				<td>Fastly JavaScript 无操作</td>
+				<td>634</td>
+			</tr>
+			<tr>
+				<td>AWS JavaScript 无操作</td>
+				<td>1,400</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Cloudflare JavaScript 硬</td>
+				<td>471</td>
+			</tr>
+			<tr>
+				<td>Fastly JavaScript 硬</td>
+				<td>683</td>
+			</tr>
+			<tr>
+				<td>AWS JavaScript 硬</td>
+				<td>1,411</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Cloudflare Rust 硬</td>
+				<td>472</td>
+			</tr>
+			<tr>
+				<td>Fastly Rust 硬</td>
+				<td>638</td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>我们在所有情况下都是最快的。现在我们来看一下连接时间，即执行任何实际计算之前，用户连接到计算平台的速度：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/2-1.png" class="kg-image"></figure><!--kg-card-begin: html-->
+	<table>
+		<thead>
+			<tr>
+				<th>测试</th>
+				<th>第 95 个百分位等待（毫秒）</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Cloudflare JavaScript 无操作</td>
+				<td>82</td>
+			</tr>
+			<tr>
+				<td>Fastly JavaScript 无操作</td>
+				<td>94</td>
+			</tr>
+			<tr>
+				<td>AWS JavaScript 无操作</td>
+				<td>295</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Cloudflare JavaScript 硬</td>
+				<td>82</td>
+			</tr>
+			<tr>
+				<td>Fastly JavaScript 硬</td>
+				<td>94</td>
+			</tr>
+			<tr>
+				<td>AWS JavaScript 硬</td>
+				<td>297</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Cloudflare Rust 硬</td>
+				<td>79</td>
+			</tr>
+			<tr>
+				<td>Fastly Rust 硬</td>
+				<td>94</td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>请注意，我们预计这些时间并不会根据所运行的代码而出现差异化，但我们是从同一组测试提取的，下面是明细情况。</p>
+	<p>等待时间如何呢？别忘了，等待时间表示<em>计算</em>请求所用的时间，那么谁在优化平台方面做得最好？仍然是 Cloudflare，但 Fastly 仍在硬 Rust 测试方面稍有优势（我们计划进一步优化，争取赶超）：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/3-1.png" class="kg-image"></figure><!--kg-card-begin: html-->
+	<table>
+		<thead>
+			<tr>
+				<th>测试</th>
+				<th>第 95 个百分位等待（毫秒）</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Cloudflare JavaScript 无操作</td>
+				<td>110</td>
+			</tr>
+			<tr>
+				<td>Fastly JavaScript 无操作</td>
+				<td>122</td>
+			</tr>
+			<tr>
+				<td>AWS JavaScript 无操作</td>
+				<td>362</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Cloudflare JavaScript 硬</td>
+				<td>115</td>
+			</tr>
+			<tr>
+				<td>Fastly JavaScript 硬</td>
+				<td>178</td>
+			</tr>
+			<tr>
+				<td>AWS JavaScript 硬</td>
+				<td>367</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Cloudflare Rust 硬</td>
+				<td>125</td>
+			</tr>
+			<tr>
+				<td>Fastly Rust 硬</td>
+				<td>122</td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>为了验证这些结果，我们将 Catchpoint 结果与我们自己的数据集进行了比较。下面是根据我们的数据，Fastly、AWS 和 Cloudflare 的 JavaScript 和 Rust 硬循环的 p95 TTFB：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/4-1.png" class="kg-image"></figure>
+	<p>Cloudflare 在 JavaScript 和 Rust 调用方面都更快。这些数字也佐证了 Fastly 在 Rust 调用方面略强的计算优势。</p>
+	<p>根据以上信息得出的最大结论是，不仅 Cloudflare 在处理几乎每个测试中的请求所用时间方面都更快，而且 Cloudflare 的网络和性能优化总体上让我们脱颖而出，使我们的 Workers 平台对于一切都更快。当然，我们计划再接再厉，保持佳绩。</p>
+	<h2 id="--3">您的应用程序，但运行更快</h2>
+	<p>延迟是用户体验中的重要一环，就开发人员而言，能够确保其用户可以尽可能快速地完成任务，对于应用程序的成功至关重要。无论您是在 Workers、D1 和 R2 中构建应用程序，在 Pages 中托管文档，还是在 SaaS 平台中利用 Workers，让您的代码在我们的全球网络 SuperCloud 中运行，将确保您的用户实现尽可能最佳的体验。</p>
+	<p>我们的网络得到极致优化，能让您的代码尽可能快速地运行。通过使用 Cloudflare 的网络运行您的应用程序，您可以专注于创建尽可能最佳的应用程序，并感到安心，因为 Cloudflare 会为您提供尽可能最佳的用户体验。这是因为，Cloudflare 的开发人员平台基于<a href="https://blog.cloudflare.com/network-performance-update-cloudflare-one-week-june-2022/">全世界最快的网络</a>构建。放心地放飞梦想吧，我们会让您的梦想达到尽可能快的速度。</p>
+</div>

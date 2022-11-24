@@ -1,0 +1,130 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-48.png" class="kg-image" alt="Making the D1 alpha available to everyone"></figure>
+	<p>2022 年 5 月，我们<a href="https://blog.cloudflare.com/introducing-d1/">宣布</a>致力于简化数据库，即对其进行构建、维护和集成。我们的目标是为您提供强大的工具，便于您轻松运行功能强大、可扩展、性能世界一流的数据库。我们首先致力于为每种类型的用户重塑数据库开发体验，而不仅限于数据库专家。</p>
+	<p>过去几个月以来，我们<a href="https://blog.cloudflare.com/whats-new-with-d1/">一直致力于</a>开展这些工作，同时获得了一些非常重要的经验教训。我们发现，在 Workers 之上构建全局关系数据库产品将开发人员平台的边界推向了绝对极限，甚至常常超越了极限，但我们的 Cloudflare 员工对此感到绝对的兴奋。这意味着，虽然我们的进展在外人看来似乎很慢，但每一项改进、错误修复或压力测试都有助于为我们的<em>所有</em>客户构建世界上最<a href="https://blog.cloudflare.com/welcome-to-the-supercloud-and-developer-week-2022/">雄心勃勃的无服务器应用程序</a>铺平道路。</p>
+	<p>但是，随着我们继续致力于使 D1 可投入生产，这并不会是“Cloudflare 模式”，除非我们停下来先看看反馈情况，尽管反馈尚未<em>完全</em>完成。在 Developer Week 的氛围下，<strong>推出 D1 公开 α 测试正当其时</strong>！</p>
+	<p>“公开 α 测试”对我们来说是一种新的概念。您很可能会在 Cloudflare 的各种公告中听到“公测”的说法，虽然这符合我们的许多产品，但对于 D1 却不尽然。仍有一些关键部分尚在积极开发和测试中，因此，在我们将完全成型的 D1 作为公开测试版发布以供您开始构建现实世界应用之前，我们想确保所有人都可以开始在自己喜爱的应用或副项目中尝试体验该产品。</p>
+	<h2 id="-"><strong>α 测试中包含哪些内容？</strong></h2>
+	<p>虽然 D1 仍有许多内容在幕后进行修改，但我们已经对开发人员与之交互的方式做了许多工作，即使您不熟悉数据库也没有关系。</p>
+	<h3 id="-d1-"><strong>使用 D1 仪表板</strong></h3>
+	<p>您只需点击几次，就可直接从仪表板中使 D1 数据库启动并运行。在我们的 D1 界面中，您可以随意创建、维护和查看您的数据库。UI 中做出的更改会立即可用于您的 Worker，无需重新部署！</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image2-30.png" class="kg-image"></figure>
+	<h3 id="-wrangler"><strong>使用 Wrangler</strong></h3>
+	<p>如果您想亲自动手操作，还可以使用我们的 Wrangler CLI 处理您的数据库。创建您的数据库，并开始手动添加数据或引导您的数据库，具体可采用以下两种方式之一：</p>
+	<p><strong>1. 执行 SQL 文件</strong></p><!--kg-card-begin: markdown-->
+	<pre><code class="language-sh">$ wrangler d1 execute my-database-name --file ./customers.sql
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>其中，您的 <code>.sql</code>文件如下所示：</p>
+	<p>customers.sql</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-sql">DROP TABLE IF EXISTS Customers;
+CREATE TABLE Customers (CustomerID INT, CompanyName TEXT, ContactName TEXT, PRIMARY KEY (`CustomerID`));
+INSERT INTO Customers (CustomerID, CompanyName, ContactName) 
+VALUES (1, 'Alfreds Futterkiste', 'Maria Anders'),(4, 'Around the Horn', 'Thomas Hardy'),(11, 'Bs Beverages', 'Victoria Ashworth'),(13, 'Bs Beverages', 'Random Name');
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p><strong>2. 创建并运行迁移</strong></p>
+	<p>迁移是对数据库更改进行版本控制的一种方式。使用 D1，您可以<a href="https://developers.cloudflare.com/d1/migrations/" target="_blank">创建迁移</a>，然后将其应用于您的数据库。</p>
+	<p>要创建迁移，请执行：</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-sh">wrangler d1 migrations create &lt;my-database-name&gt; &lt;short description of migration&gt;
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>届时将在 <code>migrations</code> 文件夹中创建 SQL 文件，您可在其中添加查询。然后将迁移应用于您的数据库，方法是执行：</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-sh">wrangler d1 migrations apply &lt;my-database-name&gt;
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="-worker-d1">从您的Worker 中访问 D1</h3>
+	<p>您可以通过将 D1 绑定添加到您的 <code>wrangler.toml</code> 配置文件，将 D1 附加到 Worker。然后与 D1 交互，方法是在 Worker 中执行查询，具体如下所示：</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-js">export default {
+ async fetch(request, env) {
+   const { pathname } = new URL(request.url);
+
+   if (pathname === "/api/beverages") {
+     const { results } = await env.DB.prepare(
+       "SELECT * FROM Customers WHERE CompanyName = ?"
+     )
+       .bind("Bs Beverages")
+       .all();
+     return Response.json(results);
+   }
+
+   return new Response("Call /api/beverages to see Bs Beverages customers");
+ },
+};
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="-pages-function-d1"><strong>或者从您的</strong><strong> Pages Function </strong><strong>中访问</strong><strong> D1</strong></h3>
+	<p>在此 α 测试发布中，D1 还支持与<a href="https://pages.cloudflare.com/" target="_blank"> Cloudflare Pages</a> 集成！您可以在 Pages 仪表板中添加 D1 绑定，并在 Pages Function 中编写查询以构建全堆栈应用程序！查看<a href="https://developers.cloudflare.com/pages/platform/functions/bindings/#d1-database" target="_blank">完整文档</a>，开始使用 Pages 和 D1。</p>
+	<h2 id="--1"><strong>社区构建的工具</strong></h2>
+	<p>在我们的封闭 α 测试期间，社区成员对 D1 表现出很大的热情，继而对 D1 生态系统和开发人员体验做出了宝贵的贡献。下面是目前为止我们最喜爱的一些项目：</p>
+	<h3 id="d1-orm">d1-orm</h3>
+	<p>对象关系映射 (ORM) 是使用 JavaScript 查询和操控数据的一种方式。d1-orm 由 Cloudflare Discord 社区拥护者创建，旨在提供使用 D1 时的严格类型的体验：</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-ts">const users = new Model(
+    // table name, primary keys, indexes etc
+    tableDefinition,
+    // column types, default values, nullable etc
+    columnDefinitions
+)
+
+// TS helper for typed queries
+type User = Infer&lt;type of users&gt;;
+
+// ORM-style query builder
+const user = await users.First({
+    where: {
+        id: 1,
+    },
+});
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>您可以查看<a href="https://docs.interactions.rest/d1-orm/" target="_blank">完整文档</a>，并通过就<a href="https://github.com/Interactions-as-a-Service/d1-orm/issues" target="_blank"> GitHub 存储库</a>提出问题来提供反馈。</p>
+	<h3 id="workers-qb"><strong>workers-qb</strong></h3>
+	<p>这是一种零依赖性的查询构建器，不仅提供了简单的标准化界面，同时保留了在传统 ORM 上使用原始查询的优势和速度。<code>workers-qb</code>虽然并不旨在提供类似于 ORM 的功能，但可以更方便地通过直接访问 SQL 的代码与数据库交互：</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-js">const qb = new D1QB(env.DB)
+
+const fetched = await qb.fetchOne({
+  tableName: 'employees',
+  fields: 'count(*) as count',
+  where: {
+    conditions: 'department = ?1',
+    params: ['HQ'],
+  },
+})
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>您可以点击<a href="https://workers-qb.massadas.com/" target="_blank">此处</a>阅读关于查询构建器的更多信息。</p>
+	<h3 id="d1-console">d1-console</h3>
+	<p>您不必每次与数据库交互时在终端运行 <code>wrangler d1 execute</code> 命令，而可以从d1-console 中与 D1 交互。<code>d1-console</code>由 Discord 社区拥护者创建，具有执行多行查询、获取命令历史记录和查看整洁格式化表格输出的优势。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image3-23.png" class="kg-image"></figure>
+	<p>虽然“D1 Console”现在是社区项目，但我们计划在未来对其提供原生支持。目前，首先点击<a href="https://github.com/isaac-mcfadyen/d1-console" target="_blank">此处</a>查看 d1-console 程序包。</p>
+	<h3 id="kysely-d1-"><a href="https://github.com/koskimas/kysely" target="_blank"><strong>Kysely</strong></a>的 D1 适配器</h3>
+	<p>Kysely 是一种类型安全、自动补全友好的 TypeScript SQL 查询构建器。利用此适配器，您可以使用熟悉的 Kysely 界面与 D1 交互：</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-ts">// Create Kysely instance with kysely-d1
+const db = new Kysely&lt;Database&gt;({ 
+  dialect: new D1Dialect({ database: env.DB })
+});
+    
+// Read row from D1 table
+const result = await db
+  .selectFrom('kv')
+  .selectAll()
+  .where('key', '=', key)
+  .executeTakeFirst();
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>点击<a href="https://github.com/aidenwallis/kysely-d1" target="_blank">此处</a>查看项目。</p>
+	<h2 id="--2"><strong>哪些内容仍在测试中？</strong></h2>
+	<p>此 α 测试版中禁用的最大部分是复制和 JavaScript 事务支持。虽然我们会逐渐应用这些更改，但我们想着重强调我们正在积极进行测试的一些现存局限性：</p>
+	<p><strong>数据库位置：</strong>每个 D1 数据库仅运行单个实例。该实例靠近开发人员创建数据库的位置创建，并且不会基于访问模式移动区域。因此，在世界其他地方运行的 Workers 将发生更高的延迟。</p>
+	<ul>
+		<li><strong>并发局限性：</strong>在高负载下，读写查询可能会排队，而不是触发创建新副本。因此，公开 α 测试的性能和吞吐量特征不能代表最终产品。</li>
+		<li><strong>可用性局限性：</strong>运行备份时，将阻止对数据库的访问。在大部分情况下，这种情况应该只会持续一两秒钟，备份期间到达的任何请求都将排队。</li>
+	</ul>
+	<p>您还可以查看有关<a href="https://developers.cloudflare.com/d1/limits-and-pricing/" target="_blank"> D1 α 测试局限性</a>的更详细的最新列表。</p>
+	<h2 id="--3">请求反馈</h2>
+	<p>虽然我们可以就您希望将 D1 用于的数据库种类进行各类推测，但毕竟我们不是用户，您才是用户！我们想让所有背景的开发人员都能够预览早期阶段的 D1 技术，并告诉我们，我们需要在哪些方面做出改进，使其适合您的生产应用。</p>
+	<p>要就您的体验提供总体反馈并与参加α 测试的其他人互动，请加入我们的<a href="https://discord.com/channels/595317990191398933/992060581832032316" target="_blank"> #d1-open-alpha</a> 频道（位于<a href="https://discord.com/invite/aTsevRH3pG" target="_blank"> Cloudflare Developers Discord</a> 上）。我们计划在此频道以及我们的<a href="https://discord.com/channels/595317990191398933/832698219824807956" target="_blank">每月社区集会</a>中发布重要公告和变更。</p>
+	<p>要提交更具体的功能请求（无论有多古怪）并报告任何错误，请在<a href="https://community.cloudflare.com/c/developers/d1" target="_blank"> Cloudflare 社区论坛</a>中的 D1 类别下创建话题。我们会维护此论坛，以便规划未来几个月的工作！</p>
+	<h2 id="ps-">PS：我们正在招揽人才！</h2>
+	<p>您是否跃跃欲试？如果您喜欢解决模糊的问题和构建会扩展的强大产品，D1 团队热忱欢迎您的加入！请随时查看我们的<a href="https://www.cloudflare.com/careers/jobs/" target="_blank">空缺岗位</a>。</p>
+</div>

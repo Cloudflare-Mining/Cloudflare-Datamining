@@ -1,0 +1,70 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-67.png" class="kg-image" alt="Send Cloudflare Workers logs to a destination of your choice with Workers Trace Events Logpush"></figure>
+	<p>コードを書くときは、デバッグできる速さでしか進めません。</p>
+	<p>Cloudflareの目標は、開発者がこれまで以上に早くアプリケーションをデプロイできるためのツールを提供することです。これは、Workersプロジェクトの初期化から本番トラフィックを正常に処理するアプリケーションの可視化まで、すべてを行うためのツールを提供することを意味します。</p>
+	<p>昨年私たちは、<a href="https://blog.cloudflare.com/introducing-workers-dashboard-logs/"><code>wrangler tail</code></a>を導入しました。これにより、Workers ログのライブストリームにアクセスして、アプリケーションをデバッグする際のエラーを特定するのに役立てることができます。Workers Trace Events Logpush（略してWorkers Logpush）はこの機能を拡張し、Workersのログを希望のオブジェクトストレージや分析プラットフォームに送信するために使用できます。</p>
+	<p>Workers Logpushは、Workers有料プランの方なら誰でも使えるようになりました！このページでは、開始する方法や価格情報について説明します。</p>
+	<h3 id="-"><strong>早く動かせ、そして壊<em>すな</em></strong></h3>
+	<p>コンテナやVMを超えるCloudflare Workersのようなプラットフォームの台頭により、今ではアプリケーションのデプロイが、わずか数分でできるようになりました。しかし、アプリケーションを構築する際、どのような技術スタックを選択しても、それなりのトレードオフが発生します。</p>
+	<p>開発者としては、Workersを選択することで、基盤となるアーキテクチャについて一切心配する必要がなくなります。コードさえ書けば、（うまくいけば！）動くのです。このスタイルのプラットフォームは、観測が難しくなるという批判がよくあります。</p>
+	<p>それを変えたいと思います。</p>
+	<p>長年にわたり、<a href="https://developers.cloudflare.com/workers/learning/debugging-workers/#local-testing-with-wrangler-dev" target="_blank"><code>wrangler dev</code></a>、<a href="https://miniflare.dev/" target="_blank"><code>Miniflare</code></a>、そして最近ではオープンソースランタイムである<a href="https://blog.cloudflare.com/workerd-open-source-workers-runtime/"><code>workerd</code></a>など、私たちが提供するテストツールやデバッグツールの改良を行ってきました。これらの改善により、ローカルでのデバッグやユニットテストの実行が非常に簡単になりました。しかし、エッジケースや本番環境でのみ再現されるバグは常に存在します。</p>
+	<h3 id="-workers-logpush-">もし何かが壊れたら...Workers Logpushの登場</h3>
+	<p>Wrangler tailではリアルタイムにログを見ることができますが、開発者の方からは、サービスの監視を設定したり、過去の記録を振り返ったりしたいという声が聞かれます。Workers Logpush には、リクエストに関するメタデータ、console.log()メッセージ、キャッチされなかった例外が含まれます。以下は、どのようなものかを知ってもらうためのログサンプルです。</p><!--kg-card-begin: markdown-->
+	<pre><code>{
+   "AccountID":12345678,
+   "Event":{
+      "RayID":"7605d2b69f961000",
+      "Request":{
+         "URL":"https://example.com",
+         "Method":"GET"
+      },
+      "Response":{
+         "status":200
+      },
+      "EventTimestampMs":1666814897697,
+      "EventType":"fetch",
+      "Exceptions":[
+      ],
+      "Logs":[
+         {
+            "Level":"log",
+            "Message":[
+               "please work!"
+            ],
+            "TimestampMs":1666814897697
+         }
+      ],
+      "Outcome":"ok",
+      "ScriptName":"example-script"
+   }
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p><a href="https://developers.cloudflare.com/logs/" target="_blank">Logpush</a>は、最も一般的な観測ツールをサポートしています。Datadog、New Relic、あるいはR2にログを送信し、保存や<a href="https://developers.cloudflare.com/logs/r2-log-retrieval/" target="_blank">アドホックなクエリ</a>を行います。</p>
+	<h3 id="--1">料金設定</h3>
+	<p>Workers Logpushは、Workersの有料プランとEnterpriseプランの両方のお客様がご利用になれます。当社ではこれを、開発者の方にとって非常に手頃な価格にしたかったのです。Workers Logpushは、100万リクエストあたり0.05ドルで、フィルタリングやサンプリングが適用された後、最終目的地へログが配信されるリクエストに対してのみ課金されます。また、毎月10Mリクエストの使用量も含まれています。</p>
+	<h3 id="--2">設定</h3>
+	<p>Logpushは驚くほどシンプルに設定できます。</p>
+	<p>1. Logpushジョブを作成します。以下の例では、WorkersのログをR2に送信しています。</p><!--kg-card-begin: markdown-->
+	<pre><code>curl -X POST 'https://api.cloudflare.com/client/v4/accounts/&lt;ACCOUNT_ID&gt;/logpush/jobs' \
+-H 'X-Auth-Key: &lt;API_KEY&gt;' \
+-H 'X-Auth-Email: &lt;EMAIL&gt;' \
+-H 'Content-Type: application/json' \
+-d '{
+"name": "workers-logpush",
+"logpull_options": "fields=Event,EventTimestampMs,Outcome,Exceptions,Logs,ScriptName",
+"destination_conf": "r2://&lt;BUCKET_PATH&gt;/{DATE}?account-id=&lt;ACCOUNT_ID&gt;&amp;access-key-id=&lt;R2_ACCESS_KEY_ID&gt;&amp;secret-access-key=&lt;R2_SECRET_ACCESS_KEY&gt;",
+"dataset": "workers_trace_events",
+"enabled": true
+}'| jq .
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Logpushでは、<a href="https://developers.cloudflare.com/logs/reference/filters/" target="_blank">フィルター</a>と<a href="https://developers.cloudflare.com/logs/get-started/api-configuration/#sampling-rate" target="_blank">サンプリングレート</a>を設定し、設定済みの宛先に送信されるデータ量をより細かく制御することもできます。たとえば、例外が発生したログのみを受信したい場合は、「<code>logpull_options</code>」の下に以下を追加します。</p><!--kg-card-begin: markdown-->
+	<pre><code>"filter":"{\"where\": {\"key\":\"Outcome\",\"operator\":\"eq\",\"value\":\"exception\"}}"
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>2. Workersスクリプトでロギングを有効にする</p>
+	<p><code>logpush = true</code>という新しいプロパティを<code>wrangler.toml</code>ファイルに追加することでこれを行えます。これは、トップレベルの設定か、環境下のいずれかで追加できます。このプロパティが指定された新しいスクリプトは、自動的にLogpushジョブが取得します。</p>
+	<h3 id="--3">今すぐ始めましょう</h3>
+	<p>Workers有料プランとEnterpriseプランをご利用のお客様は、今すぐWorkers Logpushをご利用いただけます。開始方法に関する完全なガイドは、<a href="https://developers.cloudflare.com/workers/platform/logpush/" target="_blank">こちら</a>をご覧ください。</p>
+</div>

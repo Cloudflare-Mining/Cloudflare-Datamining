@@ -1,0 +1,57 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/Cache-Reserve-Open-Beta.png" class="kg-image" alt="Reduce origin load, save on cloud egress fees, and maximize cache hits with Cache Reserve"></figure>
+	<p>今年初め、当社はCache Reserveを紹介しました。Cache Reserveは、<a href="https://www.cloudflare.com/products/r2/" target="_blank">R2</a>の永続的なデータストレージを使用することにより、ユーザーがCloudflareのキャッシュからコンテンツをより長く提供できるように支援します。Cloudflareのキャッシュからコンテンツを提供することは、オリジンからのエグレス料金の請求を減らすことでWebサイト運営者に利益をもたらし、同時にコンテンツの読み込みを速くすることで、Webサイトの訪問者にも利益をもたらします。</p>
+	<p>Cache Reserveは<a href="https://blog.cloudflare.com/introducing-cache-reserve/">クローズドベータ</a>として数ヶ月間、初期ユーザーからのフィードバックを収集し、製品の開発を続けてきました。このフィードバックを何度も繰り返し、本日、<strong>Cache Reserveがオープンベータへと進むこと</strong>を発表でき、大変嬉しく思っています。これによりユーザーは、Cache Reserveをテストし、追加の待ち時間なしにコンテンツ配信戦略に組み込むことができるようになります。</p>
+	<p>Cache Reserveのメリットをご自身でお確かめいただき、ぜひご意見をお聞かせください。CloudflareダッシュボードにアクセスしてCachingセクションに移動し、<a href="https://dash.cloudflare.com/caching/cache-reserve" target="_blank">ボタン1つ</a>を押すことでCache Reserveを有効にできます。</p>
+	<h2 id="cache-reserve-">Cache Reserveは、全体像の中でどのように位置づけられるのでしょうか？</h2>
+	<p>Cloudflareのキャッシュから提供されるコンテンツは、コンテンツがホストされているオリジンサーバーからその行程を開始します。リクエストがオリジンに届くと、オリジンはレスポンスに必要なコンテンツをコンパイルし、それを訪問者に送り返します。</p>
+	<p>訪問者とオリジンの距離が離れていると、レスポンスのために長距離を移動する可能性があり、アセットのパフォーマンスに影響を与えることがあります。また、コンテンツがオリジンに保存されている場所から、コンテンツをリクエストする訪問者まで移動させるための手数料を、ユーザーに請求していることも挙げられます。この料金は「帯域幅」または「エグレス」料金と呼ばれ、クラウドプロバイダーにコンテンツをホスティングするユーザーへの請求書では、毎月記載される項目として知られています。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/Response-Flow.png" class="kg-image"></figure>
+	<p>CloudflareのCDNは、オリジンと訪問者の間に位置し、オリジンのレスポンスを評価して、キャッシュ可能かどうかを確認します。Cloudflareのキャッシュに追加できれば、次にそのコンテンツに対するリクエストが来たときに、Cloudflareはキャッシュされたアセットで応答できるため、リクエストをオリジンに送信する必要がなくなり、お客様はエグレス料金を低減できます。また、パフォーマンスを向上させレスポンスの送信時間を短縮するために、訪問者に近いデータセンターでコンテンツをキャッシュしています。</p>
+	<p>アセットがより長くキャッシュされるよう、数年前に<a href="https://blog.cloudflare.com/ja-jp/introducing-smarter-tiered-cache-topology-generation-ja-jp/">階層型キャッシュ</a>を導入しました。これは、250以上ある当社のグローバルデータセンターすべてを、下位層（一般的に訪問者に近い）と上位層（一般的にオリジンに近い）の階層に編成するものです。コンテンツに対するリクエストを下位層のキャッシュから提供できない場合、コンテンツの新しいコピーを得るためにオリジンに行く前に、まず上位層をチェックします。データセンターを階層化することで、訪問者のリクエストとオリジンの間に複数のキャッシュを置くことができ、より長い時間、適切な場所にコンテンツをキャッシュできるようになります。</p>
+	<p><strong>キャッシュミスはなぜ発生するのでしょうか？</strong><br>Cloudflareがキャッシュからコンテンツを提供できず、新しいコピーを取得するためにオリジンに戻らなければならないときに、ミス (欠落) が発生します。これは、お客様が<a href="https://developers.cloudflare.com/cache/about/cache-control/" target="_blank">cache-control</a>時間を設定して、コンテンツが古くなり（stale）、 <a href="https://developers.cloudflare.com/cache/about/cache-control/#revalidation" target="_blank">revalidated</a> (再検証) を必要とするときに発生する可能性があります。もうひとつの要素、つまりネットワークがコンテンツをどれだけの期間キャッシュしておきたいかは、もう少し複雑で、破棄基準によって変動する可能性があります。</p>
+	<p>CDNは、キャッシュスペースがいっぱいになったときに他のアセットのストレージを最適化するために、コンテンツを早期に立ち退かせる必要があるかどうかを検討しなければなりません。Cloudflare では、キャッシュされたコンテンツがどれだけ最近リクエストされたかに基づき、「least recently used（使用される頻度が最も低いもの）」（<a href="https://en.wikipedia.org/wiki/Cache_replacement_policies#Least_recently_used_(LRU)" target="_blank">LRU</a>）というアルゴリズムによって、立ち退かせる優先順位を決定しています。つまり、「cache-control」によってコンテンツが何日もキャッシュされるように指定されていても、より人気のあるコンテンツをキャッシュするために、（そのキャッシュ内で最もリクエストされなかった場合）より早くそれを立ち退かせる必要がある場合があるということです。</p>
+	<p>これは、ほとんどのお客様やWebサイトの訪問者にとっては有効ですが、コンテンツが予期せず欠落して表示されることを不思議に思うユーザーにとっては、しばしば混乱の種となります。もし立ち退きが行われなかった場合、コンテンツは、そのデータをリクエストする訪問者から遠く離れたデータセンターにキャッシュされる必要があり、アセットのパフォーマンスが損なわれ、Cloudflareのネットワークの運用に非効率性が生じます。</p>
+	<p>しかし、お客様によっては、長期間にわたってリクエストされない可能性のあるコンテンツの大規模なライブラリを保有しています。従来のキャッシュでは、このようなアセットを退避させ、再度リクエストされた場合はオリジンから提供することになります。アセットをキャッシュしておくには、インターネット上で人気を保つことが必要ですが、何が人気か、何が最新かは常に変化しているため、それは難しいことです。コールドコンテンツを退避させるということは、もしオリジンからコンテンツを何度も引き出す必要が出た場合、お客様にとってオリジンのエグレス料金が増えることを意味します。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/Cache-Reserve-Response-Flow.png" class="kg-image"></figure>
+	<p><strong>Cache Reserveの登場</strong><br>そこで注目したいのが、Cache Reserveです。Cache Reserveは、キャッシュから追い出されるかもしれないコンテンツのための、究極の上位データセンターとして機能します。コンテンツが一度Cache Reserveに<a href="https://developers.cloudflare.com/cache/about/cache-reserve/#cache-reserve-asset-eligibility" target="_blank">入る</a>と、<a href="https://developers.cloudflare.com/cache/about/cache-reserve/" target="_blank">デフォルト</a>で30日間というかなりの長期間そこに保存することができます。この期間中にまた別のリクエストが来た場合、さらに30日間延長することができ（以下同様）、つまり、cache-controlがそのコンテンツをキャッシュから提供すべきでないと示すまで延長できます。Cache Reserveは、キャッシュ可能なすべてのコンテンツをバックアップするセーフティネットとして機能するため、お客様は不要なキャッシュの立ち退きやオリジンのエグレス料金を心配する必要がありません。</p>
+	<h2 id="cache-reserve--1">Cache Reserveは、どのようにエグレス料金を抑えるのでしょうか？</h2>
+	<p>Cache Reserveでは、リクエストの少ないロングテールなコンテンツやキャッシュから追い出される可能性のあるコンテンツに対して、ヒット率を向上させ、オリジンからのエグレス料金の減少が期待されています。</p>
+	<p>しかし、この製品には、さらなるエグレスのコスト削減が組み込まれています。例えば、欠落していた場合、オブジェクトがCache Reserveに書き込まれます。つまり、キャッシュから欠落しオリジンからコンテンツを取得する際、リクエストに応答するためにそれを使うと同時に、Cache Reserveにアセットを書き込むため、お客様はそのアセットをエグレスから長時間提供することがないのです。</p>
+	<p>Cache Reserveは、階層型キャッシュを有効にして使用することで、オリジンシールドを最大化するように設計されています。下位層と上位層の両方でキャッシュミスがあると、Cache Reserve がチェックされ、ヒットした場合、オリジンがリクエストを確認したり追加データを提供する必要がなく、レスポンスは訪問者に返される途中で、下位層と上位層の両方でキャッシュされるのです。</p>
+	<p>Cache Reserveは、R2コストに基づく低価格で、これらのオリジンのエグレス料金の削減を実現します。Cache Reserveの価格と運用の詳細については、<a href="https://developers.cloudflare.com/cache/about/cache-reserve/#pricing" target="_blank">こちら</a>のドキュメントをご覧ください。</p>
+	<h3 id="cloudflare-cache-reserve-">Cloudflareの開発者プラットフォーム上のCache Reserveのスケーリング</h3>
+	<p>Cache Reserveを最初に発表したとき、圧倒的な反響がありました。2万人以上のユーザーがベータ版へのアクセスを希望し、私たちはすぐに、人々がどのようにCache Reserveを使いたいのかについて、いくつかの興味深い発見をしました。</p>
+	<p>私たちが見つけた最初の大きな課題は、ユーザーが私たちと同じようにエグレス料金を嫌い、できるだけ多くのコンテンツをCache Reserveに置くことを望んでいることでした。クローズドベータ期間中は、1秒間に8,000回以上のPUT操作が維持され、オブジェクトを提供する3,000回以上のGET操作が行われました。また、一部の大口のお客様のために、約600TBをキャッシュしていました。私たちは、この製品を使いたい人すべてに開放したいと考え、この需要を満たす拡張を行うために、いくつかの変更を迅速に行う必要があると考えました。そこで私たちは、Cloudflareの開発者プラットフォームを利用することにしました。</p>
+	<p>Cache Reserve は、<a href="https://developers.cloudflare.com/r2/data-access/s3-api/api/" target="_blank">S3互換API</a>を使ってR2にデータを保存します。R2の内部では、高パフォーマンスでスケーラブルな開発者プリミティブ、<a href="https://developers.cloudflare.com/workers/" target="_blank">Workers</a>と<a href="https://developers.cloudflare.com/workers/runtime-apis/durable-objects/" target="_blank">Durable Objects</a>を使用して、オブジェクトストレージシステムのあらゆる複雑性に対応します。私たちは、開発者プラットフォームツールを使用することで、さまざまなスケーリング戦略を迅速に実装することができるため、この決断を下しました。Cloudflare開発者プラットフォームで構築することの利点は、Cache Reserveの仕組みの複雑さをユーザーから隠しつつ、高負荷を最適に分散する方法を簡単に実験できたことです。</p>
+	<p>Cache Reserveは、ボタン一つで以下の機能を実行します。</p>
+	<ul>
+		<li>キャッシュミスがあった場合、<a href="https://blog.cloudflare.com/how-we-built-pingora-the-proxy-that-connects-cloudflare-to-the-internet/">Pingora</a> (新しいL7プロキシ) はコンテンツを求めてオリジンに到達し、R2にレスポンスを書き込みます。これは、コンテンツが訪問者に戻る行程の間に行われます (これにより、不要な遅延を回避できます)。</li>
+		<li>R2内部では、WorkerがコンテンツをR2の永続的なデータストレージに書き込み、同時に、Pingoraがオブジェクトについて送信する重要なメタデータ（オリジンヘッダー、鮮度値、保持情報など）をDurable Objectsストレージを使って追跡します。</li>
+		<li>次にコンテンツが要求されたとき、Pingoraはキャッシュキーを計算してR2のどこにデータが保存されているかを調べます。キャッシュキーのハッシュは、R2のオブジェクト名と、それがどのバケットに書き込まれたかを決定します。これは、各ゾーンのアセットが、負荷を分散するために複数のバケットにシャーディングされるためです。</li>
+		<li>いったん見つかると、Pingoraは関連するメタデータを付加し、R2から最も近い上位層にコンテンツを送りキャッシュさせ、次に下位層に送り、そして最後に訪問者に返します。</li>
+	</ul>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/Screen-Shot-2022-11-14-at-4.31.20-PM.png" class="kg-image"></figure>
+	<p>これはマジックです！上記のいずれもユーザー側で管理する必要ありません。R2、Workers、Durable Objects、Pingora、階層型キャッシュをまとめることで、Cache Reserveの構築と変更を迅速に行い、必要に応じて規模を調整できるようになりました。</p>
+	<h2 id="cache-reserve--2">Cache Reserveの次なる展開</h2>
+	<p>Cache Reserveを拡張するために行ってきた作業に加え、この製品を開放することで、Cloudflare全体でより多くの機能と統合への扉を開くことができています。Cache Reserveのユーザーが、Cache Reserveには何があり、どれだけのエグレス料金が削減されているかを正確に把握できるように、私たちはさらなる分析と指標を提供する予定です。また、お客様がストレージの管理を始めたいと思ったときに、簡単に移行できるように、R2とのより複雑な統合を構築していく予定です。最後に、お客様がCache Reserveの対象を正確に制御できるように、より多くのオプションの提供を検討する予定です。これらの機能は、お客様が、Cloudflare上のキャッシュを制御・カスタマイズする方法の出発点に過ぎません。</p>
+	<h2 id="-">これまでに、どのようなフィードバックがあったのですか？</h2>
+	<blockquote>Cloudflareの長年の顧客として、我々はエンドユーザーにコスト削減とパフォーマンス向上を提供するために、Cache Reserveを導入することを熱望していました。グローバルパートナーやデリバリーライダーのために、アプリケーションが常に最適なパフォーマンスを発揮できるようにすることは、Delivery Heroが最も重視する点です。Cache Reserveの導入によって、当社のキャッシュヒット率が5％向上し、インフラを縮小してグローバルサイトの運用に必要なものを簡素化し、さらなるコスト削減を実現することができました。<br><a href="https://www.deliveryhero.com/" target="_blank">Delivery Hero</a>、エンジニアリングディレクター、<strong>Wai Hang Tang</strong> 氏</blockquote>
+	<blockquote>Anthologyは、Cloudflareのグローバルキャッシュを使用して、学校や大学のエンドユーザー向けコンテンツのパフォーマンスを大幅に向上させています。ボタン1つでCache Reserveが有効になり、教師や学生らに素晴らしい体験を提供し、日々のエグレストラフィックのうち2/3を削減することができました。<br><a href="https://www.anthology.com/blackboard" target="_blank">Anthology</a>、シニアスタッフエンジニア、<strong>Paul Pearcy</strong> 氏</blockquote>
+	<blockquote>Enjoeiでは、エンドユーザー側がより高速かつ効率的になる方法を常に模索しています。Cloudflare Cache Reserveを使用することで、キャッシュヒット率を10%以上大幅に向上させることができ、オリジンのエグレスコストを削減することができました。また、Cache Reserveは南米にある多くのマーチャントサイトのパフォーマンスを向上させ、SEOとインターネット全体（Google、Criteo、Facebook、Tiktok）での見つけやすさを向上させました。そして、その設定に時間はかかりませんでした。<br><a href="https://www.enjoei.com.br/" target="_blank">Enjoei</a>、エンタープライズソリューションアーキテクト | DevOps・SRE責任者、<strong>Elomar Correia </strong>氏</blockquote>
+	<blockquote>ライブイベント業界では、キャッシュ可能なコンテンツの規模や需要は非常に不安定である可能性があり、そのためエグレス料金に予測不可能なブレが生じます。さらに、コンベンションや音楽フェスティバルなど、トラフィックが多く帯域幅の狭い環境で当社の製品が使用されるシナリオでは、データをできるだけユーザーの近くに保持することが顧客体験にとって重要になります。Cache Reserveは、当社のエンジニアリングチームへの影響を最小限に抑えてこれらの問題を軽減し、既存のソリューションと比較してより予測可能なコストと低遅延を実現しています。<br><a href="https://www.patrontechnology.com/" target="_blank">Patron Technology</a>、エンタープライズ発券部門 | エンジニアリング部門バイスプレジデント、<strong>Jarrett Hawrylak 氏</strong></blockquote>
+	<h2 id="--1">今日から使うにはどうすればいいのでしょうか？</h2>
+	<p>いま現在、Cache Reserveはオープンベータ版となっており、希望すれば誰でも利用できます。</p>
+	<p>Cache Reserveを使用するには：</p>
+	<ul>
+		<li>ダッシュボードにあるCachingタイルにアクセスするだけです。</li>
+		<li><a href="https://dash.cloudflare.com/caching/cache-reserve" target="_blank">Cache Reserveページ</a>に移動し、データ同期を有効にするボタン（または購入ボタン）を押します。</li>
+	</ul>
+	<p>企業のお客様は、Cloudflareアカウントチームと連携して、Cache Reserveにアクセスできます。</p>
+	<p>お客様は、ダッシュボードのCache Reserveセクションで、キャッシュされているデータ量と確認された操作数に関するベースライン指標を見ることで、Cache Reserveが機能していることを確認できます。<a href="https://developers.cloudflare.com/logs/reference/log-fields/zone/http_requests/" target="_blank">Logpush v2</a>を使用して、「CacheReserveUsed」フィールドのあるHTTPリクエストを検索すると、Cache Reserveで処理された特定のリクエストを確認できます。</p>
+	<p>Cache Reserveが使いやすく、非常に有益で、キャッシュされたコンテンツのエグレス料金を削減するための選択肢となるよう、当社ではお客様からいただいたフィードバックを迅速に判別して、改善を続けていきます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/Screen-Shot-2022-11-10-at-12.00.31-PM.png" class="kg-image"></figure>
+	<h2 id="--2">ぜひお試しください</h2>
+	<p>Cache Reserveがより多くのユーザーの手に渡ることを、私たちは大変嬉しく思っています。Cache Reserveでは、完璧なキャッシュの構築に必要なすべてのツールをお客様に提供するために投資を続けており、今後もエキサイティングな開発を行う予定です。</p>
+	<p>Cache Reserveを今すぐお試しいただき、<a href="https://discord.com/invite/aTsevRH3pG" target="_blank">ぜひご感想をお聞かせください</a>。</p>
+</div>

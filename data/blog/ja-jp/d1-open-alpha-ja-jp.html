@@ -1,0 +1,128 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-48.png" class="kg-image" alt="Making the D1 alpha available to everyone"></figure>
+	<p>2022年5月、当社はデータベースの簡素化（データベースの構築、保守、統合）を追求することを<a href="https://blog.cloudflare.com/ja-jp/introducing-d1-ja-jp/">発表しました</a>。当社の目標は、最先端のパフォーマンスを備えた強力でスケーラブルなデータベースを、いかなる煩わしさもなく、実行できるようにするツールをお客様に提供することです。そして、当社は最初に、データベースの専門家だけでなく、あらゆるタイプのユーザーのデータベース開発経験を再考することを目指しました。</p>
+	<p>この数カ月間、それだけを作成するために<a href="https://blog.cloudflare.com/whats-new-with-d1/">取り組み</a>、一方その過程でいくつかの非常に重要な教訓を学びました。Workers上でグローバルなリレーショナルデータベース製品を構築することは、開発者プラットフォームの境界を絶対的な限界まで押し上げ、しばしばそれを超えますが、Cloudflare の私たちにとっては非常にスリリングな方法であるということが分かりました。当社の進歩は、外部からは遅いように見えるかもしれません。しかし、すべての改善、バグ修正またはストレステストは、<em>すべての</em>お客様が、世界で最も<a href="https://blog.cloudflare.com/ja-jp/welcome-to-the-supercloud-and-developer-week-2022-ja-jp/">意欲的なサーバーレスアプリケーション</a>を構築するための道筋を築くのに役立つということです。</p>
+	<p>しかし、D1の生産準備をするまでの道のりは続き、まだ<em>完全には</em>完成していませんが、まずフィードバックを求めて立ち止まらなければ、それは「Cloudflare流」とは言えません。Developer Weekの精神において、<strong>D1 Open Alphaを導入するのにこれ以上の好機はありません</strong>！</p>
+	<p>「Open Alpha」は、私たちにとって新しい概念です。Cloudflareの様々な発表で「オープンベータ」という言葉を耳にすると思いますが、ここの多くの製品にも言えることですが、D1には全く適していませんでした。まだアクティブな開発とテストの段階にある極めて重要な部分がまだいくつかあるため、実際のアプリの構築を開始できるように、完全に形成されたD1をパブリックベータ版としてリリースする前に、趣味のアプリやサイドプロジェクトで製品の感触をつかむことができるようにしたいと考えています。</p>
+	<h2 id="alpha-">Alphaには何が含まれているのですか？</h2>
+	<p>D1の舞台裏ではまだ多くのことが変化していますが、開発者としてのあなたがデータベースを初めて使う場合であっても、D1とのかかわり方について多くのことを考慮してきました。</p>
+	<h3 id="d1-">D1ダッシュボードの使用</h3>
+	<p>数回クリックするだけで簡単に、ダッシュボード内からD1データベースを立ち上げ、実行することができます。D1インターフェースでは、自由にデータを作成、維持、表示できます。UIで行われた変更は、すぐにWorkerで利用できますー再デプロイは必要ありません！</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image2-30.png" class="kg-image"></figure>
+	<h3 id="wrangler-">Wranglerを使う</h3>
+	<p>もし少しやってみたいという関心があるのでしたら、Wrangler CLIを使用してデータベースを操作することもできます。データベースを作成し、手動でデータの追加を開始するか、次の2つの方法のいずれかでデータベースをブートストラップします。</p>
+	<p><strong>1. SQLファイルを実行する</strong></p><!--kg-card-begin: markdown-->
+	<pre><code class="language-sh">$ wrangler d1 execute my-database-name --file ./customers.sql
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>あなたの <code>.sql</code> ファイルは次のようになります。</p>
+	<p>customers.sql</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-sql">DROP TABLE IF EXISTS Customers;
+CREATE TABLE Customers (CustomerID INT, CompanyName TEXT, ContactName TEXT, PRIMARY KEY (`CustomerID`));
+INSERT INTO Customers (CustomerID, CompanyName, ContactName) 
+VALUES (1, 'Alfreds Futterkiste', 'Maria Anders'),(4, 'Around the Horn', 'Thomas Hardy'),(11, 'Bs Beverages', 'Victoria Ashworth'),(13, 'Bs Beverages', 'Random Name');
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p><strong>2. マイグレーションの作成と実行</strong></p>
+	<p>マイグレーションは、データベースの変更をバージョン管理するための方法です。D1 では、<a href="https://developers.cloudflare.com/d1/migrations/" target="_blank">マイグレーションを作成</a>し、それをデータベースに適用することができます。</p>
+	<p>マイグレーションを作成するために、以下を実行します。</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-sh">wrangler d1 migrations create &lt;my-database-name&gt; &lt;short description of migration&gt;
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>これで、 <code>migrations</code> フォルダにSQLファイルが作成され、そこにクエリを追加できるようになります。その後、以下を実行することでデータベースにマイグレーションを適用します。</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-sh">wrangler d1 migrations apply &lt;my-database-name&gt;
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="worker-d1-">Worker内からD1へアクセスする</h3>
+	<p> <code>wrangler.toml</code> 設定ファイルにD1バインディングを追加することで、WorkerにD1をアタッチできます。次に、Worker内で以下のようにクエリを実行することで、D1とやりとりできます。</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-js">export default {
+ async fetch(request, env) {
+   const { pathname } = new URL(request.url);
+
+   if (pathname === "/api/beverages") {
+     const { results } = await env.DB.prepare(
+       "SELECT * FROM Customers WHERE CompanyName = ?"
+     )
+       .bind("Bs Beverages")
+       .all();
+     return Response.json(results);
+   }
+
+   return new Response("Call /api/beverages to see Bs Beverages customers");
+ },
+};
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="-pages-function-d1-">または、Pages FunctionからD1へアクセスする</h3>
+	<p>今回のアルファ版では、D1は<a href="https://pages.cloudflare.com/" target="_blank">Cloudflare Pages</a>との統合もサポートしています。Pagesダッシュボード内にD1バインディングを追加し、Pages Function内にクエリを記述して、フルスタックアプリケーションを構築することができます。PagesとD1を始めるには、<a href="https://developers.cloudflare.com/pages/platform/functions/bindings/#d1-database" target="_blank">完全なドキュメント</a>をチェックしてみてください。</p>
+	<h2 id="-">コミュニティが構築したツール</h2>
+	<p>プライベートアルファ版の期間中、D1にある熱狂は、コミュニティのメンバーによるD1エコシステムと開発者エクスペリエンスへの貴重な貢献へとつながりました。これまでのプロジェクトの中から、特にお気に入りのものを以下にご紹介します。</p>
+	<h3 id="d1-orm">d1-orm</h3>
+	<p>ORM（オブジェクトリレーショナルマッピング）とは、JavaScriptを使ってデータを問い合わせ・処理する方法です。Cloudflare Discord Community Championによって作成された<code>d1-orm</code> は、D1使用時に厳密な型付け体験を提供することを目的としています。</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-ts">const users = new Model(
+    // table name, primary keys, indexes etc
+    tableDefinition,
+    // column types, default values, nullable etc
+    columnDefinitions
+)
+
+// TS helper for typed queries
+type User = Infer&lt;type of users&gt;;
+
+// ORM-style query builder
+const user = await users.First({
+    where: {
+        id: 1,
+    },
+});
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p><a href="https://docs.interactions.rest/d1-orm/" target="_blank">完全なドキュメント</a>をご覧いただき、<a href="https://github.com/Interactions-as-a-Service/d1-orm/issues" target="_blank"> GitHubリポジトリ</a>で問題を作成してフィードバックを提供することができます。</p>
+	<h3 id="workers-qb">workers-qb</h3>
+	<p>これはゼロ依存性のクエリビルダで、従来のORMよりも生のクエリを使用する利点と速度を維持しながら、シンプルな標準化されたインタフェースを提供します。ORMのような機能を提供することは意図していませんが、<code>workers-qb</code> により、コードからSQLに直接アクセスすることでデータベースとのやりとりを容易にします。</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-js">const qb = new D1QB(env.DB)
+
+const fetched = await qb.fetchOne({
+  tableName: 'employees',
+  fields: 'count(*) as count',
+  where: {
+    conditions: 'department = ?1',
+    params: ['HQ'],
+  },
+})
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>クエリビルダの詳細については、<a href="https://workers-qb.massadas.com/" target="_blank">こちら</a>をご覧ください。</p>
+	<h3 id="d1-console">d1-console</h3>
+	<p>データベースを操作するたび、ターミナルで <code>wrangler d1 execute</code> コマンドを実行する代わりに、<code>d1-console</code> 内で D1を操作することができます。Discord Community Championによって作成されたもので、複数行のクエリの実行、コマンド履歴の取得、きれいにフォーマットされたテーブル出力の表示などの利点があります。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image3-23.png" class="kg-image"></figure>
+	<p>これは現在コミュニティプロジェクトですが、将来的には「D1 Console」をネイティブにサポートする予定です。今現在は、<a href="https://github.com/isaac-mcfadyen/d1-console" target="_blank">こちらから</a> <code>d1-console</code> パッケージをチェックして始めてみてください。</p>
+	<h3 id="kysely-d1-"><a href="https://github.com/koskimas/kysely" target="_blank">Kysely</a>用D1アダプター</h3>
+	<p>Kyselyは、型安全性があり、自動補完に適したTypeScriptのSQLクエリビルダです。このアダプターを使うと、使い慣れたKyselyのインターフェースでD1とやりとりできます。</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-ts">// Create Kysely instance with kysely-d1
+const db = new Kysely&lt;Database&gt;({ 
+  dialect: new D1Dialect({ database: env.DB })
+});
+    
+// Read row from D1 table
+const result = await db
+  .selectFrom('kv')
+  .selectAll()
+  .where('key', '=', key)
+  .executeTakeFirst();
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p><a href="https://github.com/aidenwallis/kysely-d1" target="_blank">こちら</a>からプロジェクトをチェックしてください。</p>
+	<h2 id="--1">まだテスト段階のものは？</h2>
+	<p>このAlphaリリースで無効にされた最大のものは、レプリケーションとJavaScriptトランザクションのサポートです。これらの変更は徐々に展開していきますが、現在、存在するいくつかの制限（積極的にテストに取り組んでいる）について呼びかけたいと思います：</p>
+	<p>● &nbsp; &nbsp; <strong>データベースの場所：</strong>各D1データベースは、単一のインスタンスのみ実行します。これは、開発者であるあなたがデータベースを作成する場所の近くで作成され、現在アクセスパターンに基づいて地域を移動することはありません。世界各地で実行しているWorkersは、結果として遅延がより高くなります。</p>
+	<p>● &nbsp; &nbsp; <strong>並行処理制限:</strong>高負荷時には、読み取りや書き込みクエリは、新しいレプリカの作成をトリガーするのではなく、キューに入れられることがあります。その結果、Open Alpha のパフォーマンスとスループットの特性は、最終製品を代表するものではなくなります。</p>
+	<p>● &nbsp; &nbsp; <strong>可用性の制限:</strong>バックアップの実行中は、DBへのアクセスをブロックします。ほとんどの場合、これは1〜2秒程度であり、バックアップ中に到着したリクエストはキューに入れられます。</p>
+	<p>また、<a href="https://developers.cloudflare.com/d1/limits-and-pricing/" target="_blank">D1 Alpha Limitations</a>で、より詳細な最新リストを確認することができます。</p>
+	<h2 id="--2"><strong>フィードバックのリクエスト</strong></h2>
+	<p>D1をご利用になりたいデータベースの種類で、当社はあらゆる種類の推測や手だてを行うことができますが、当社はユーザーではないのです–ユーザーはお客様です私たちは、あらゆる立場の開発者に、初期段階のD1技術を試してもらい、あなたの製品アプリに適したものにするために、改善点を教えてもらいたいと考えています。</p>
+	<p>体験に関する一般的なフィードバックや、Alphaの他の人々と交流するには、<a href="https://discord.com/invite/aTsevRH3pG" target="_blank">Cloudflare Developers Discord</a>の<a href="https://discord.com/channels/595317990191398933/992060581832032316" target="_blank">#d1-open-alpha</a>チャンネルに参加してください。重要なお知らせや変更は、このチャンネルや<a href="https://discord.com/channels/595317990191398933/832698219824807956" target="_blank">毎月のコミュニティコール</a>で行う予定です。</p>
+	<p>より具体的な機能要望（どんなに奇抜なものでも）やバグの報告は、<a href="https://community.cloudflare.com/c/developers/d1" target="_blank">Cloudflareコミュニティフォーラム</a>のD1カテゴリーにスレッドを作成してください。このフォーラムは、数ヶ月先のプランを立てるための手段として維持していく予定です。</p>
+	<h2 id="--3">追伸：募集中です。</h2>
+	<p>ご興味を持たれましたか？もしあなたが、未知の問題を解決し、スケールの大きなパワフルな製品を作るのがお好きでしたら、D1チームは採用中です。<a href="https://www.cloudflare.com/careers/jobs/" target="_blank">募集中の職種</a>をぜひご覧ください。</p>
+</div>

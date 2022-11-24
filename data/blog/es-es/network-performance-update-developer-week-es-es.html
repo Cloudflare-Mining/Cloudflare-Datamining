@@ -1,0 +1,227 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image6-9.png" class="kg-image" alt="Network Performance Update: Developer Week 2022"></figure>
+	<p>Cloudflare está creando la red más rápida del mundo. Pero no queremos que simplemente confíes en nuestra palabra. Para demostrarlo, continuamente probamos nuestros productos respecto a los de los demás para asegurarnos de que somos los más rápidos. Puesto que estamos en la Semana del desarrollador 2022, hemos querido proporcionar información actualizada sobre el rendimiento de nuestros productos Workers y de nuestra red global en comparación con la competencia.</p>
+	<p>Este mismo año, llevamos a cabo la comparativa con Compute@Edge de Fastly y globalmente fuimos más rápidos. Esta vez, no solo repetimos las pruebas, sino que también añadimos Lambda@Edge de AWS para mostrar cómo destacamos frente a cada vez más competidores. En resumen, ofrecemos la plataforma para desarrolladores más rápida del mercado. Hablemos primero sobre cómo creamos nuestra red para ayudarte a ser más rápido y, a continuación, veremos cómo esto se traduce en nuestra plataforma para desarrolladores.</p>
+	<h3 id="-ltima-actualizaci-n-sobre-el-rendimiento-de-red">Última actualización sobre el rendimiento de red</h3>
+	<p>Hemos actualizado lo siguiente: la información sobre el rendimiento general de la red y la información sobre la comparación de Workers con Compute@Edge y Lambda@Edge.</p>
+	<p>Para cuantificar el rendimiento de la red global, debemos obtener datos suficientes de todo el mundo, en todo tipo de redes, comparándonos con otros proveedores. Hemos utilizado mediciones de usuarios reales (RUM) para obtener un archivo de 100 kB de distintos proveedores. Usuarios de todo el mundo nos comunican el rendimiento de los distintos proveedores. Cuanto mayor es el número de usuarios que nos facilitan los datos, mayor es la fidelidad de la señal. El objetivo es proporcionar una imagen precisa de dónde los distintos proveedores son más rápidos y, lo que es más importante, dónde Cloudflare puede mejorar. Puedes obtener más información sobre la metodología en la publicación original del blog de Speed Week <a href="https://blog.cloudflare.com/benchmarking-edge-network-performance/">aquí</a>.</p>
+	<p>Durante Cloudflare One Week (junio de 2022), informamos de que éramos más rápidos que nuestra competencia en un número mayor de las redes de las que teníamos más datos. De las principales 3000 redes del mundo (por número de direcciones IPv4 anunciadas), aquí mostramos un desglose del número de redes donde cada proveedor es el número uno en tiempo de conexión TCP p95, que representa el tiempo que requiere un usuario de una red determinada para conectarse al proveedor. Estos datos corresponden a Cloudflare One Week (junio de 2022):</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image7-5.png" class="kg-image"></figure>
+	<p>Esta es la distribución de las principales 3000 redes para la Semana del desarrollador (noviembre de 2022):</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image8-3.png" class="kg-image"></figure>
+	<p>Además de ser los más rápidos entre las redes más populares, Cloudflare también se ha comprometido a ser el proveedor más rápido de cada país.</p>
+	<p>Utilizando los datos de las principales 3000 redes de Cloudflare One Week (junio de 2022), este es el aspecto del mapa mundial (Cloudflare se muestra en naranja):</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image3-42.png" class="kg-image"></figure>
+	<p>Y este es el aspecto cuando consideramos las principales 3000 redes para la Semana del desarrollador (noviembre de 2022):</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image4-29.png" class="kg-image"></figure>
+	<p>Cloudflare pasó a ser el número uno en más países de Europa y Asia, específicamente, en Rusia, Ucrania, Kazajistán, India y China, y seguir así cumpliendo nuestra misión de ser la red más rápida del mundo. Hablemos sobre cómo esta red ayuda a que la supernube pueda ser la plataforma para desarrolladores más rápida del mundo.</p>
+	<h3 id="c-mo-comparamos-las-plataformas-para-desarrolladores">Cómo comparamos las plataformas para desarrolladores</h3>
+	<p>Ya hace seis meses que publicamos nuestras pruebas iniciales, pero aquí las repasamos brevemente. Hacemos las comparaciones midiendo el tiempo necesario para conectarse a la red, el tiempo dedicado a completar las solicitudes y el tiempo global hasta la respuesta. Los denominamos los valores de conexión, espera y respuesta. Los hemos elegido porque son componentes críticos de una solicitud que deben ser lo más rápidos posible para proporcionar una buena experiencia a los usuarios. Podemos reducir los tiempos de conexión con un emparejamiento lo más cercano posible a los usuarios. Podemos reducir los tiempos de espera optimizando la ejecución del código para que sea lo más rápida posible. Si optimizamos estos dos procesos, hemos optimizado la respuesta, que representa la tendencia de un extremo a otro de una solicitud.</p>
+	<h3 id="metodolog-a-de-las-pruebas">Metodología de las pruebas</h3>
+	<p>Para medir la conexión, la espera y la respuesta, realizamos tres pruebas en cada proveedor: una función JavaScript no-op simple, una función JavaScript compleja y una función Rust compleja. &nbsp;No utilizamos una función Rust simple porque esperamos que prácticamente no requiera tiempo, y ya tenemos una línea base para la funcionalidad de un extremo a otro en la función JavaScript no-op, puesto que muchos proveedores con frecuencia compilan ambas hasta WebAssembly.</p>
+	<p>Estas son las funciones para cada una de ellas:</p>
+	<p>JavaScript no-op:</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">async function getErrorResponse(event, message, status) {
+  return new Response(message, {status: status, headers: {'Content-Type': 'text/plain'}});
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Función JavaScript compleja:</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">function testHardBusyLoop() {
+  let value = 0;
+  let offset = Date.now();
+
+  for (let n = 0; n &lt; 15000; n++) {
+    value += Math.floor(Math.abs(Math.sin(offset + n)) * 10);
+  }
+
+  return value;
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Función Rust compleja:</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-rust">fn test_hard_busy_loop() -&gt; i32 {
+  let mut value = 0;
+  let offset = Date::now().as_millis();
+
+  for n in 0..15000 {
+    value += (((offset + n) as f64).sin().abs() * 10.0) as i32;
+  }
+
+  value
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Hemos intentado probar cómo cada plataforma optimiza los procesos, así como evaluar la proximidad de cada plataforma a los usuarios finales. Sin embargo, para esta prueba, no ejecutamos una prueba Rust en Lambda@Edge porque no admitía de forma nativa nuestra función Rust sin cargar un binario WASM compilado manualmente. Puesto que Lambda@Edge no tiene una verdadera plataforma para desarrolladores de primer nivel ni herramientas para ejecutar Rust, decidimos excluir los escenarios de Rust para Lambda@Edge. Por lo tanto, al comparar los valores para Lambda@Edge, solo será para las pruebas de JavaScript simple y de JavaScript complejo.</p>
+	<h3 id="medici-n-del-rendimiento-de-workers-de-usuarios-reales">Medición del rendimiento de Workers de usuarios reales</h3>
+	<p>Para recopilar los datos, utilizamos dos métodos distintos: uno de un servicio de terceros denominado Catchpoint, y un segundo de nuestras propias pruebas de análisis del rendimiento de red. En primer lugar, utilizamos Catchpoint para recopilar un conjunto de datos de pruebas sintéticas. Catchpoint es una herramienta de pruebas "sintéticas" estándar del sector, y proporciona mediciones recopiladas de usuarios reales distribuidos por todo el mundo. Catchpoint es una plataforma de supervisión que cuenta con un total de unos 2000 puntos de conexión distribuidos por todo el mundo que se pueden configurar para obtener recursos específicos y el tiempo de cada prueba. Catchpoint es útil para proveedores de red como nosotros, ya que proporciona una forma coherente y repetible de medir el rendimiento de un extremo a otro de una carga de trabajo, así como la mejor aproximación posible a lo que ve un usuario.</p>
+	<p>Catchpoint tiene nodos de red troncal integrados en proveedores de servicios de Internet (ISP) de todo el mundo. Esto significa que estos nodos están conectados a los enrutadores de los ISP de la misma forma que tú, y el tráfico pasa a través de la red de los ISP a cada punto de conexión que supervisan. Pueden ser similares a un usuario real, pero nunca lo reproducirán exactamente. Por ejemplo, el ancho de banda de estos nodos está dedicado al 100 % a la supervisión de la plataforma, a diferencia de tu conexión de Internet doméstica, donde tu experiencia de Internet será una combinación de distintos casos de uso, algunos de los cuales no serán aplicables de ninguna forma a las aplicaciones Workers.</p>
+	<p>Para esta nueva prueba, elegimos 300 nodos de red troncal integrados en ISP de última milla de todo el mundo. Filtramos los nodos de los proveedores de nube, o de áreas metropolitanas con diversas opciones de tránsito, con el fin de eliminar las rutas duplicadas tanto como fuera posible.</p>
+	<p>Cotejamos estas pruebas con nuestro propio conjunto de datos, recopilado de usuarios que se conectan a sitios web gratuitos cuando obtienen páginas de error 1xxx, exactamente de la misma forma como recopilamos datos sobre el rendimiento de nuestra red global. Cuando un usuario ve esta página de error, esta ejecutará estas pruebas como parte de la representación y cargará las métricas de rendimiento en estas llamadas a Cloudflare.</p>
+	<p>También hemos cambiado nuestra metodología de las pruebas para utilizar cuentas de pago para Fastly, Cloudflare y AWS.</p>
+	<h3 id="workers-vs-compute-edge-vs-lambda-edge">Workers vs Compute@Edge vs Lambda@Edge</h3>
+	<p>Esta vez, empecemos con los tiempos de respuesta para mostrar nuestro rendimiento de un extremo a otro:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/1-6.png" class="kg-image"></figure><!--kg-card-begin: html-->
+	<table>
+		<thead>
+			<tr>
+				<th>Prueba</th>
+				<th>Respuesta del percentil 95 (ms)</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Cloudflare JavaScript no-op</td>
+				<td>479</td>
+			</tr>
+			<tr>
+				<td>Fastly JavaScript no-op</td>
+				<td>634</td>
+			</tr>
+			<tr>
+				<td>AWS JavaScript no-op</td>
+				<td>1,400</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Cloudflare JavaScript complejo</td>
+				<td>471</td>
+			</tr>
+			<tr>
+				<td>Fastly JavaScript complejo</td>
+				<td>683</td>
+			</tr>
+			<tr>
+				<td>AWS JavaScript complejo</td>
+				<td>1,411</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Cloudflare Rust complejo</td>
+				<td>472</td>
+			</tr>
+			<tr>
+				<td>Fastly Rust complejo</td>
+				<td>638</td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Somos los más rápidos en todos los casos. Ahora, veamos los tiempos de conexión, que nos muestran el tiempo que necesitan los usuarios para conectarse a la plataforma de proceso antes de que este se realice realmente:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/2-1.png" class="kg-image"></figure><!--kg-card-begin: html-->
+	<table>
+		<thead>
+			<tr>
+				<th>Prueba</th>
+				<th>Conexión del percentil 95 (ms)</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Cloudflare JavaScript no-op</td>
+				<td>82</td>
+			</tr>
+			<tr>
+				<td>Fastly JavaScript no-op</td>
+				<td>94</td>
+			</tr>
+			<tr>
+				<td>AWS JavaScript no-op</td>
+				<td>295</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Cloudflare JavaScript complejo</td>
+				<td>82</td>
+			</tr>
+			<tr>
+				<td>Fastly JavaScript complejo</td>
+				<td>94</td>
+			</tr>
+			<tr>
+				<td>AWS JavaScript complejo</td>
+				<td>297</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Cloudflare Rust complejo</td>
+				<td>79</td>
+			</tr>
+			<tr>
+				<td>Fastly Rust complejo</td>
+				<td>94</td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Ten en cuenta que no esperamos que estos tiempos varíen en función del código ejecutado, pero puesto que los extraemos de los mismos conjuntos de pruebas, los hemos desglosado aquí.</p>
+	<p>Pero ¿y los tiempos de espera? Recuerda que los tiempos de espera representan el tiempo utilizado <em>procesando </em>la solicitud, así que ¿quién ha optimizado mejor su plataforma? De nuevo, Cloudflare, aunque Fastly aún presenta una pequeña ventaja en la prueba Rust compleja (que esperamos superar con una mayor optimización):</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/3-1.png" class="kg-image"></figure><!--kg-card-begin: html-->
+	<table>
+		<thead>
+			<tr>
+				<th>Prueba</th>
+				<th>Espera del percentil 95 (ms)</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Cloudflare JavaScript no-op</td>
+				<td>110</td>
+			</tr>
+			<tr>
+				<td>Fastly JavaScript no-op</td>
+				<td>122</td>
+			</tr>
+			<tr>
+				<td>AWS JavaScript no-op</td>
+				<td>362</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Cloudflare JavaScript complejo</td>
+				<td>115</td>
+			</tr>
+			<tr>
+				<td>Fastly JavaScript complejo</td>
+				<td>178</td>
+			</tr>
+			<tr>
+				<td>AWS JavaScript complejo</td>
+				<td>367</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Cloudflare Rust complejo</td>
+				<td>125</td>
+			</tr>
+			<tr>
+				<td>Fastly Rust complejo</td>
+				<td>122</td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Para verificar estos resultados, hemos comparado los resultados de Catchpoint con nuestro propio conjunto de datos. Según nuestros datos, este es el TTFB p95 para los bucles JavaScript y Rust complejos para Fastly, AWS y Cloudflare:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/4-1.png" class="kg-image"></figure>
+	<p>Cloudflare es más rápido en las llamadas JavaScript y Rust. Estos valores también confirman la pequeña ventaja competitiva de Fastly en las llamadas Rust.</p>
+	<p>La conclusión a la que llegamos es que, además de que Cloudflare es más rápido en cuanto al tiempo de proceso de las solicitudes en casi todas las pruebas, las optimizaciones de la red y del rendimiento de Cloudflare en conjunto nos diferencian de la competencia y hacen que nuestra plataforma Workers sea aún más rápida para todo. Y, por supuesto, tenemos previsto que así siga siendo.</p>
+	<h3 id="tu-aplicaci-n-pero-m-s-r-pida">Tu aplicación, pero más rápida</h3>
+	<p>La latencia es un componente importante de la experiencia del usuario y, para los desarrolladores, poder garantizar que los usuarios pueden realizar sus tareas lo más rápido posible es esencial para el éxito de una aplicación. Ya sea que estés desarrollando tus aplicaciones en Workers, D1 y R2, alojando tu documentación en Pages, o incluso utilizando Workers como parte de tu plataforma SaaS, ejecutar tu código en la supernube que es nuestra red global garantizará la mejor experiencia posible para tus usuarios.</p>
+	<p>Nuestra red está hiperoptimizada para que tu código sea lo más rápido posible. Utilizando la red de Cloudflare para ejecutar tus aplicaciones, puedes centrarte en crear la mejor aplicación posible y estar tranquilo sabiendo que Cloudflare te proporciona la mejor experiencia de usuario posible. Esto es así porque la plataforma para desarrolladores de Cloudflare se basa en la <a href="https://blog.cloudflare.com/network-performance-update-cloudflare-one-week-june-2022/">red más rápida del mundo</a>. Así que, adelante y desarrolla tus sueños, sabiendo que los haremos realidad lo antes posible.</p>
+</div>

@@ -1,0 +1,57 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/Cache-Reserve-Open-Beta.png" class="kg-image" alt="Reduce origin load, save on cloud egress fees, and maximize cache hits with Cache Reserve"></figure>
+	<p>올해 초 Cloudflare는 Cache Reserve를 소개했습니다. Cache Reserve는 사용자가 <a href="https://www.cloudflare.com/products/r2/" target="_blank">R2</a>의 영구 데이터 스토리지를 사용하여 콘텐츠를 Cloudflare 캐시로 더 오래 제공할 수 있게 해줍니다. Cloudflare 캐시에서 콘텐츠를 제공하면 원본에서 발생하는 송신료가 낮아지므로 웹 사이트 운영자에게 유용하고, 웹 사이트 방문자에게도 콘텐츠 로드가 더 빨라져 이점을 누릴 수 있습니다.</p>
+	<p>Cache Reserve는 초기 사용자의 피드백을 수집하고 제품을 계속해서 개발하며 몇 달간 <a href="https://blog.cloudflare.com/introducing-cache-reserve/">클로즈드 베타</a>로 제공되었습니다. 몇 번씩 피드백을 반복적으로 받은 후, <strong>Cache Reserve를 오픈 베타로 제공함</strong>을 기쁜 마음으로 발표합니다. 이제 사용자가 Cache Reserve를 사용해 볼 수 있고, 기다릴 필요 없이 자신의 콘텐츠 전송 전략에 통합할 수 있습니다.</p>
+	<p>Cache Reserve의 이점을 직접 확인하고 피드백하고 싶으시다면 Cloudflare 대시보드에서 Caching 섹션으로 이동한 다음 <a href="https://dash.cloudflare.com/caching/cache-reserve" target="_blank">버튼 하나만</a> 클릭해 Cache Reserve를 사용할 수 있습니다.</p>
+	<h2 id="-cache-reserve-">거시적으로 Cache Reserve는 어디에 적합할까요?</h2>
+	<p>Cloudflare 캐시에서 제공되는 콘텐츠는 원본 서버에서 호스팅되어 이동하기 시작합니다. 요청이 원본에 도달하면 원본은 응답에 필요한 콘텐츠를 컴파일하고 방문자에게 다시 전송합니다.</p>
+	<p>방문자와 원본 간의 거리는 자산의 성능에 영향을 줄 수 있습니다. 응답하기까지 먼 거리를 이동해야 할 수 있기 때문입니다. 콘텐츠를 요청하는 방문자에게 저장된 원본으로부터 콘텐츠를 전송하는 데 드는 비용도 이 과정을 통해 사용자에게 청구됩니다. 이러한 비용은 ‘대역폭’ 또는 ‘송신’ 요금이라고 하며, 클라우드 공급자를 통해 콘텐츠를 호스팅하는 사용자의 청구서에서 매달 익숙하게 확인할 수 있는 항목입니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/Response-Flow.png" class="kg-image"></figure>
+	<p>Cloudflare CDN은 원본과 방문자 사이에 위치하여 캐시 가능 여부를 확인하기 위해 원본의 응답을 평가합니다. Cloudflare 캐시에 추가할 수 있다면, Cloudflare는 다음에 그 콘텐츠에 대한 요청이 들어올 때 캐시된 자산으로 응답할 수 있습니다. 이렇게 하면 원본에 요청을 전송할 필요가 없어 고객의 송신료가 줄어듭니다. 이와 더불어 Cloudflare는 방문자에게 가까운 데이터 센터에 콘텐츠를 캐시하여, 성능을 개선하고 응답에 필요한 전송 시간을 줄입니다.</p>
+	<p>자산이 더 오래 캐시 상태를 유지할 수 있도록, Cloudflare는 몇 년 전 <a href="https://blog.cloudflare.com/introducing-smarter-tiered-cache-topology-generation/">Tiered Cache</a>를 도입했습니다. 이 서비스는 250개 이상의 모든 글로벌 데이터 센터를 하위 계층(일반적으로 방문자에게 더 가까움)과 상위 계층(일반적으로 원본에 더 가까움)의 계층 구조로 구성합니다. 하위 계층 캐시에서 콘텐츠 요청을 처리할 수 없다면 상위 계층을 확인한 다음에 원본으로 이동해 새로운 콘텐츠 사본을 가져옵니다. Cloudflare 데이터 센터는 계층 구조로 구성되어 있어, 방문자의 요청과 원본 사이에 다양한 캐시를 배치시켜 콘텐츠를 올바른 장소에 더 오래 캐시하기 좋습니다.</p>
+	<p><strong>캐시 누락은 왜 발생할까요?</strong><br>Cloudflare가 캐시에서 콘텐츠를 제공할 수 없어 원본으로 다시 이동하여 새로운 사본을 검색해야 할 때 캐시 누락이 발생합니다. 고객이 <a href="https://developers.cloudflare.com/cache/about/cache-control/" target="_blank">캐시 제어</a> 시간 설정을 통해 콘텐츠가 오래되거나(부실) <a href="https://developers.cloudflare.com/cache/about/cache-control/#revalidation" target="_blank">재검증</a>이 필요한 시점을 지정하는 경우에 이러한 상황이 발생할 수 있습니다. 네트워크에서 콘텐츠가 캐시된 상태로 유지하려는 기간을 나타내는 유휴 상태 요소는 약간 더 복잡하며 만료 기준에 따라 달라질 수 있습니다.</p>
+	<p>CDN에서는 캐시 공간이 꽉 찼을 때 다른 자산의 스토리지를 최적화하기 위해 콘텐츠를 일찍 만료시킬지 여부를 고려해야 합니다. Cloudflare에서는 캐시된 콘텐츠 부분에 요청이 들어온 최근 순위에 따라 만료 우선 순위를 정합니다. 이때 ‘가장 최근에 사용되지 않은 것’, 즉 <a href="https://en.wikipedia.org/wiki/Cache_replacement_policies#Least_recently_used_(LRU)" target="_blank">LRU</a>라는 알고리즘을 사용합니다. 캐시 제어를 통해 콘텐츠 부분을 캐시 상태로 유지할 날짜 수를 지정하더라도, (해당 캐시에서 가장 요청이 들어오지 않은 경우) 더 인기 있는 콘텐츠를 캐시하기 위해 더 일찍 만료될 수도 있음을 의미합니다.</p>
+	<p>이는 대부분의 고객과 웹 사이트 방문자에게 적합한 방식이지만, 캐시가 왜 예상치 못하게 누락되었는지 알지 못해 혼란스러운 문제가 되는 경우도 많습니다. 콘텐츠가 만료되지 않는다면, 데이터를 요청하는 방문자에게서 훨씬 멀리 떨어진 데이터 센터에 콘텐츠를 캐시해야 하므로 자산의 성능이 떨어지고 Cloudflare 네트워크도 비효율적으로 작동하게 됩니다.</p>
+	<p>하지만 아주 오래 요청이 없을 수도 있는 방대한 콘텐츠 라이브러리를 보유한 고객들도 있습니다. 기존 캐시를 사용하면 이러한 자산은 만료되고, 다시 요청을 받았을 때는 아마 원본을 통해 제공될 것입니다. 자산을 캐시에 유지하려면 인터넷에서 자주 찾는 자산이어야 하고, 인기나 현황은 항상 바뀌므로 계속 유지되기는 어렵습니다. 콜드 콘텐츠를 만료시킨다는 건, 이 콘텐츠를 반복적으로 원본에서 가져올 경우 고객이 추가 원본 송신료를 지불해야 함을 의미합니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/Cache-Reserve-Response-Flow.png" class="kg-image"></figure>
+	<p>‌<strong>Cache Reserve 진입</strong><br>이때 Cache Reserve가 등장합니다. Cache Reserve는 캐시가 만료되었을 수 있는 콘텐츠에 궁극적인 상위 계층 데이터 센터가 되어줍니다. Cache Reserve에 <a href="https://developers.cloudflare.com/cache/about/cache-reserve/#cache-reserve-asset-eligibility" target="_blank">진입한</a> 콘텐츠는 <a href="https://developers.cloudflare.com/cache/about/cache-reserve/" target="_blank">기본값</a>인 30일보다 훨씬 더 오래 저장될 수 있습니다. 만약 이 기간 동안 요청이 다시 들어온다면 30일씩 계속 연장되거나, 캐시 제어가 해당 콘텐츠를 캐시로 제공할 필요가 없다고 정할 때까지 기간을 연장할 수 있습니다. Cache Reserve는 캐시 가능한 모든 콘텐츠에 후방에 위치한 안전망의 역할을 수행합니다. 그러므로 고객이 원치 않았는데도 캐시가 만료되는 상황과 원본 송신료를 걱정할 필요가 없습니다.</p>
+	<h2 id="cache-reserve-">Cache Reserve는 송신료를 어떻게 줄이나요?</h2>
+	<p>Cache Reserve는 적중률을 올리고 자주 요청되지 않아 캐시가 만료될 수도 있는 롱테일 콘텐츠로 인한 원본 송신료를 줄이도록 지원합니다.</p>
+	<p>하지만, 이 제품에는 송신료를 절약해주는 다른 기능도 있습니다. 예를 들어, 개체는 누락 시 Cache Reserve에 작성됩니다. 즉, 캐시가 누락되어 원본에서 콘텐츠를 가져올 때, 고객이 송신되는 자산을 오래 기다리지 않도록 둘 모두 이를 사용하여 요청에 응답하면서도 Cache Reserve에 자산을 작성합니다.</p>
+	<p>Cache Reserve는 원본을 최대한 보호할 수 있게 계층 캐시와 함께 사용하도록 설계되었습니다. 하위 및 상위 계층에서 캐시 누락이 모두 발생하면 Cache Reserve를 확인합니다. 적중하는 캐시가 있다면, 응답을 방문자에게 반환할 때 하위 및 상위 계층에 모두 캐시하므로, 요청을 확인하거나 추가 데이터를 제공할 때 원본이 필요하지 않습니다.</p>
+	<p>Cache Reserve는 R2 비용에 따라 원본 송신료를 낮춥니다. Cache Reserve 가격 및 사용에 대한 자세한 내용은 <a href="https://developers.cloudflare.com/cache/about/cache-reserve/#pricing" target="_blank">여기</a>에 있는 문서에서 확인하세요.</p>
+	<h2 id="cloudflare-cache-reserve-">Cloudflare 개발자 플랫폼을 통한 Cache Reserve 규모 조정</h2>
+	<p>Cloudflare에서 Cache Reserve를 처음 발표했을 때 반응은 뜨거웠습니다. 20,000명 이상의 사용자가 베타를 이용하고 싶어했는데, Cache Reserve를 사용하려는 방식 가운데 몇 가지 흥미로운 점을 빠르게 알 수 있었습니다.</p>
+	<p>첫 번째로 발견한 큰 과제는 사용자도 우리처럼 송신료를 싫어한다는 점이었습니다. 사용자는 콘텐츠가 최대한 많이 Cache Reserve에 남기를 원했습니다. 클로즈 베타를 진행하는 동안 작업 사용량은 초당 8,000 PUT 이상이었고, 개체는 초당 3,000 GET 이상의 속도로 제공되었습니다. 몇몇 대형 고객에게 600Tb 상당의 캐시를 수행하기도 했습니다. Cloudflare는 원하는 모두에게 제품을 제공하고 싶었으며, 확장하여 수요를 충족하려면 여러 변경 사항을 빠르게 적용해야 했습니다. 그래서, Cloudflare 개발자 플랫폼을 이용하기 시작했습니다.</p>
+	<p>Cache Reserve는 자체 <a href="https://developers.cloudflare.com/r2/data-access/s3-api/api/" target="_blank">S3 호환 API</a>를 사용하여 R2에 데이터를 저장합니다. 내부적으로 R2는 성능이 뛰어나고 확장성이 있는 개발자 프리미티브인 <a href="https://developers.cloudflare.com/workers/" target="_blank">Workers</a> 및 <a href="https://developers.cloudflare.com/workers/runtime-apis/durable-objects/" target="_blank">Durable Objects</a>를 사용하여 개체 스토리지 시스템의 복잡한 면모를 모두 처리합니다. 개발자 플랫폼 도구를 사용하기로 한 이유는 이러한 도구로 다양한 규모 조정 전략을 빠르게 구현할 수 있기 때문입니다. Cloudflare 개발자 플랫폼에서 구축하면, 높은 부하량을 확인될 때 가장 잘 분산시킬 방법을 확인하기 위해 Cache Reserve에서 실험하기가 쉽고, Cache Reserve가 작동하는 방식이 복잡하지 않게 사용자를 지원할 수도 있다는 점이 장점입니다.</p>
+	<p>Cache Reserve에서 한 번만 버튼을 클릭하면 다음 기능을 수행할 수 있습니다.</p>
+	<ul>
+		<li>캐시가 누락되면 <a href="https://blog.cloudflare.com/how-we-built-pingora-the-proxy-that-connects-cloudflare-to-the-internet/">Pingora</a>(Cloudflare의 새 L7 프록시)는 콘텐츠를가져오기 위해 원본에 접속하여 R2에 응답을 작성합니다. 콘텐츠가 지속적으로 방문자에게 전송되는 동안 이 과정이 진행됩니다(불필요한 &nbsp; &nbsp; &nbsp;대기 시간이 들지 않습니다).</li>
+		<li>Pingora가 Durable Objects 스토리지를사용하여 전송하는 개체(예: 원본 헤더, 신선도 값, 유지 정보) 관련 중요 메타데이터를 지속 추적하는 동안 Worker는 R2 &nbsp; &nbsp; &nbsp;내부에서 R2의 영구 데이터 스토리지에 콘텐츠를 작성합니다.</li>
+		<li>다음에 콘텐츠를 요청하면 Pingora는 캐시 키를계산하여 데이터가 R2에 저장된 장소를 찾습니다. 캐시 키의 해시는 R2에서의 개체 이름과 작성된 버킷을 판단합니다. 각 영역의자산은 로드를 분산시키기 위해 여러 버킷에서 공유됩니다.</li>
+		<li>장소를 찾으면, Pingora는 관련 메타데이터를첨부하여 콘텐츠를 R2에서 가장 가까운 상위 계층으로 전송하여 캐시합니다. 그런 다음 하위 계층으로 전송하고 마지막으로 방문자에게전송합니다.‌</li>
+	</ul>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/Screen-Shot-2022-11-14-at-4.31.20-PM.png" class="kg-image"></figure>
+	<p>‌마법 같은 과정입니다! 사용자가 이러한 모든 과정을 관리하지 않아도 됩니다. R2, Workers, Durable Objects, Pingora, Tiered Cache를 함께 사용하면 필요에 따라 빠르게 구축하고 Cache Reserve 규모를 조정할 수 있게 변경 사항을 적용할 수 있습니다...</p>
+	<h2 id="cache-reserve--1">Cache Reserve의 다음 단계</h2>
+	<p>Cache Reserve의 규모를 조정하기 위해 수행한 작업과 더불어, 제품을 공개했으므로 더 많은 기능을 이용할 수 있고 Cloudflare 전반에 걸쳐 통합할 수 있습니다. Cloudflare는 Cache Reserve 사용자에게 추가 분석 및 메트릭을 제공할 예정입니다. 사용자는 Cache Reserve의 콘텐츠와 절약한 송신료를 정확히 파악할 수 있게 됩니다. R2와 더 복잡한 통합까지 구축하려고 계획하고 있으니, 자신의 스토리지를 관리하려는 고객은 수월하게 전환할 수 있습니다. 마지막으로, 고객이 Cache Reserve에 적합한 콘텐츠를 정확히 제어할 수 있게 다양한 옵션을 제공할 예정입니다. 고객이 Cloudflare를 통해 캐시를 제어하고 사용자 지정할 수 있는 이러한 기능은 이제 시작되었을 뿐입니다.</p>
+	<h2 id="-">지금까지 어떤 피드백을 받았나요?</h2>
+	<blockquote>오랜 기간 Cloudflare를 이용해온 고객으로서, 최종 사용자에게 비용을 절약해주고 개선된 성능을 제공할 수 있도록 Cache Reserve의 배포를 간절히 원하고 있었습니다. Delivery Hero에서 주로 초점을 맞추는 부분은, 글로벌 파트너와 배달 기사들에게 당사 애플리케이션이 항상 최적의 상태로 작동하도록 보장하는 것입니다. 당사의 캐시 적중률은 Cache Reserve를 통해 5% 개선되었습니다. 덕분에 인프라 규모를 줄이고 글로벌 사이트 운영에 필요한 점이 간소화되었으며 추가적인 비용을 절약할 수 있었습니다.<br><strong>Wai Hang Tang</strong>, <a href="https://www.deliveryhero.com/" target="_blank">Delivery Hero</a> 엔지니어링 부문 선임 이사</blockquote>
+	<blockquote>Anthology는 학교 및 대학교의 최종 사용자에게 제공되는 콘텐츠 성능을 큰 폭으로 개선하기 위해 Cloudflare의 글로벌 캐시를 사용합니다. 버튼 하나만 클릭해 Cache Reserve를 활성화하여, 선생님과 학생에게 훌륭한 경험을 제공하고 일일 송신 트래픽의 2/3를 줄일 수 있었습니다.<br><strong>Paul Pearcy</strong>, <a href="https://www.anthology.com/blackboard" target="_blank">Anthology</a>수석 엔지니어</blockquote>
+	<blockquote>Enjoei는 항상 최종 사용자 사이트를 더 빠르고 효율적으로 만들 방법을 찾고 있습니다. Cloudflare Cache Reserve를 사용하여 캐시 적중률을 10% 이상 큰 폭으로 개선할 수 있었습니다. 덕분에 원본 송신료가 낮아졌습니다. Cache Reserve는 남아메리카에 있는 당사 상업 사이트의 성능까지 다수 개선하여 인터넷 전반(Google, Criteo, Facebook, Tiktok)에 걸쳐 SEO와 검색 가능성을 개선했습니다. 설정할 때도 오래 걸리지 않았습니다.<br><strong>Elomar Correia</strong>, <a href="https://www.enjoei.com.br/" target="_blank">Enjoei</a> DevOps SRE 책임자 | 기업 솔루션 아키텍트</blockquote>
+	<blockquote>실시간 이벤트 산업에서, 캐시 가능한 콘텐츠의 규모와 수요는 매우 크게 변화할 수 있고, 이 점 때문에 송신료의 변동도 예측할 수 없습니다. 이와 더불어, 컨벤션 및 음악 페스티벌 등 트래픽은 높고 대역폭은 낮은 상황에서 당사의 제품이 사용될 때, 데이터를 사용자에게 최대한 가깝게 유지하는 것은 고객 경험에 매우 중요합니다. Cache Reserve는 이러한 문제를 모두 완화하도록 도와줍니다. 당사 엔지니어링 팀에게 미치는 영향을 최소화하면서, 비용 예측은 더욱 쉬워졌으며 기존 솔루션보다 대기 시간도 줄었습니다.<br><strong>Jarrett Hawrylak</strong>, <a href="https://www.patrontechnology.com/" target="_blank">Patron Technology</a> 엔지니어링 VP | 기업 티켓팅</blockquote>
+	<h2 id="--1">오늘부터 사용하려면 어떻게 해야 하나요?</h2>
+	<p>오늘부터 Cache Reserve는 오픈 베타이므로, 원하는 누구든 이용할 수 있습니다.</p>
+	<p>Cache Reserve 사용 방법:</p>
+	<ul>
+		<li>간단히, 대시보드에서 Caching으로 이동합니다.</li>
+		<li><a href="https://dash.cloudflare.com/caching/cache-reserve" target="_blank">Cache Reserve 페이지</a>로 이동하고 데이터 동기화 활성화 버튼(또는 구매 &nbsp; &nbsp; &nbsp;버튼)을 클릭합니다.</li>
+	</ul>
+	<p>Enterprise 고객은 Cloudflare 계정 팀과의 협업을 통해 Cache Reserve에 액세스할 수 있습니다.</p>
+	<p>고객은 대시보드의 Cache Reserve 섹션을 통해 캐시된 데이터의 양, 작업량을 나타내는 기본 메트릭을 확인하여 Cache Reserve 작동 여부를 살펴볼 수 있습니다. Cache Reserve를 통한 구체적인 요청은 <a href="https://developers.cloudflare.com/logs/reference/log-fields/zone/http_requests/" target="_blank">Logpush v2</a>를 사용하고 ‘CacheReserveUsed’ 필드가 있는 HTTP 요청을 찾아 확인할 수 있습니다.</p>
+	<p>Cloudflare는 고객이 제공한 피드백을 지속적으로 신속하게 분류하여, 사용하기 쉽고 많은 사람에게 유용하며 캐시된 콘텐츠의 송신료를 줄이기 위해 선택할 수 있는 Cache Reserve가 되도록 개선하겠습니다.‌</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/Screen-Shot-2022-11-10-at-12.00.31-PM.png" class="kg-image"></figure>
+	<h2 id="--2">‌사용해 보세요</h2>
+	<p>더 많은 고객에게 Cache Reserve를 제공할 수 있어 기쁩니다. 완벽한 캐시를 구축하는 데 필요한 모든 도구를 제공하기 위해 계속 투자하고 있으니, Cache Reserve는 더 멋지게 발전할 것입니다.</p>
+	<p>지금 Cache Reserve를 사용하고 <a href="https://discord.com/invite/aTsevRH3pG" target="_blank">의견을 알려주세요</a>.</p>
+</div>

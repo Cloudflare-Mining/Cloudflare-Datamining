@@ -1,0 +1,179 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/2022-Developer-Week-Hero-Dark_b-1.png" class="kg-image"></figure>
+	<p>Developer Week 2022が終了しました。先週は、Cloudflareで何が構築できるのか、そして私たちの今後のビジョンとロードマップについて、31の記事をご紹介しました。製品発表、そしてお客様やパートナーのストーリーを共有し、技術的に深く掘り下げてお伝えしました。この記事を見逃した方のために、便利なまとめ記事をご紹介します。</p>
+	<h2 id="-">製品・機能発表</h2><!--kg-card-begin: html-->
+	<table width="100%">
+		<thead>
+			<tr>
+				<th>通知</th>
+				<th>まとめ</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/ja-jp/welcome-to-the-supercloud-and-developer-week-2022-ja-jp/">Supercloud（および開発者ウィーク2022）へようこそ</a></td>
+				<td>私たちのクラウドのビジョンとは、最も柔軟で効率的、かつ経済的な方法で、開発者の生産性を高め、1からインターネット規模へ拡張できることを約束する、クラウドコンピューティングのモデルです。</td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/cloudflare-queues-open-beta">Queuesのオープンベータ版を使用して、Cloudflare上で任意の規模のアプリケーションを構築する</a></td>
+				<td>Queuesを使用してパフォーマンスと耐障害性の高い分散アプリケーションを構築します。有料のWorkersプランでは、すべての開発者が利用可能です。
+				</td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/ja-jp/cloudflare-r2-super-slurper-ja-jp/">R2 Super Slurperを使用してS3から簡単に移行する</a></td>
+				<td>既存のストレージプロバイダーからR2へ、オブジェクトを簡単かつ効率的に移動するためのツールです。
+				</td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/cloudflare-workers-templates/">すぐに使えるテンプレートでCloudflare Workersを始める</a></td>
+				<td>Workersで何ができるかを確認し、これらのスターターテンプレートを使ってより速く構築しましょう。
+				</td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/ja-jp/cache-reserve-open-beta-ja-jp/">オリジンの負荷を軽減、クラウドのエグレス料金を節約、Cache Reserveでキャッシュヒット率を最大化</a></td>
+				<td>Cache Reserveはオープンベータへと進み、これによりユーザーは追加の待ち時間なしにテストでき、コンテンツ配信戦略に組み込むことができます。
+				</td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/announcing-logs-engine/">Cloudflare Logsを、Cloudflareで保存・処理する</a></td>
+				<td>R2に保存されているCloudflareのログを照会します。
+				</td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/ja-jp/d1-open-alpha-ja-jp/">R2に保存されているCloudflareのログを照会します。 </a></td>
+				<td>最初のグローバルリレーショナルデータベースであるD1は、オープンアルファ版として公開されています。構築を開始し、あなたのフィードバックを私たちに教えてください。
+				</td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/introducing-workers-browser-rendering-api/">独立したブラウザインスタンスをわずか数行のコードで自動化</a></td>
+				<td>ブラウザレンダリングAPIは、WorkersでPuppeteerを使ってブラウザ自動化タスクを実行するための、追加設定なしで利用できるソリューションです。
+				</td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/mutual-tls-for-workers/">相互TLSによるWorkersへの認証と識別を提供</a></td>
+				<td>相互に認証されたチャネルを通じて、Workersでアウトバウンドリクエストを送信します。
+				</td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/pages-function-goes-GA/">Cloudflare Pagesのあなたのサイトを、一般提供されたPages Functionsでより充実させる</a></td>
+				<td>Functionsを使って、Pagesプロジェクトに動的コンテンツを簡単に追加できます。 </td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/ja-jp/launchpad-fall-22-ja-jp/">Workers Launchpadの最初のコホートおよび、プログラムの20億ドルへの成長を発表</a></td>
+				<td>私たちは、Workers Launchpad Funding Programへの関心の高さに圧倒されました。そして、最初のコホートをご紹介できることを誇りに思っています。
+				</td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/snippets-announcement">Cloudflare Snippetsで最もプログラム可能なSupercloudを実現</a></td>
+				<td>Workerを記述することなく、Cloudflare CDNをルーティングするトラフィックを変更できます。
+				</td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/deployments-for-workers">デプロイメントによるWorkersのコードと設定の変更を追跡</a></td>
+				<td>Workerの設定、バインディング、コードへの変更を追跡できます。
+				</td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/ja-jp/workers-logpush-ga-ja-jp/">Workers Trace Events LogpushでCloudflare Workersのログを任意の宛先に送信する</a></td>
+				<td>ログを分析プラットフォームやオブジェクトストレージに送信することで、Workersを可視化できます。Workers有料プランでは全ユーザーが利用可能です。 </td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/improving-workers-types">Workers TypeScriptのサポートを改善</a></td>
+				<td>ユーザーからのフィードバックに基づき、私たちは型を改良し、自動生成スクリプトをオープンソースで公開しています。 </td>
+			</tr>
+
+
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<h3 id="--1">技術的な詳細情報</h3><!--kg-card-begin: html-->
+	<table width="100%">
+		<thead>
+			<tr>
+				<th>通知</th>
+				<th>まとめ</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/standards-compliant-workers-api/">より標準に準拠したWorkers APIへの道</a></td>
+				<td><a href"https:="" github.com="" wintercg"="">WinterCG</a>が行っているJavaScriptランタイムの共通API標準の作成と、Workersがそれをどのように実装しているかについての最新情報です。
+				</td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/r2-rayid-retrieval">Durable Objectsを使用した数百万件のHTTPリクエストのインデックス作成
+					</a></td>
+				<td>Workers、Durable Objects、Streams APIを使用して、R2に保存されている何百万ものログのインデックスを作成し、クエリを実行します。 </td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/building-a-better-developer-experience-through-api-documentation">イテレーションはコードだけのものではありません：当社の最新のAPIドキュメントはこちら</a></td>
+				<td>APIリファレンスドキュメントを刷新して、APIコンテンツを標準化し、Cloudflare APIを使用する際の全体的な開発者体験を向上させました。 </td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/making-static-sites-dynamic-with-cloudflare-d1">D1による静的サイトの動的化</a></td>
+				<td>D1ベースのコメントAPIを構築するためのテンプレートです。 </td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/open-api-transition">Cloudflare APIがOpenAPIスキーマの使用を開始</a></td>
+				<td>Cloudflare APIでOpenAPIスキーマが利用できるようになりました。 </td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/pages-full-stack-frameworks">Pages Functionsでサーバー側でレンダリングするフルスタックアプリケーションを実現</a></td>
+				<td>Qwik、Astro、SolidStartなどさまざまなフレームワークを使って、Functionでサーバーサイドレンダリングを実行します。</td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/fragment-piercing">Cloudflare Workersによるマイクロフロントエンドの段階的な採用</a></td>
+				<td>Workersを使用して、レガシーなクライアントサイドのレンダリングアプリケーションで選択された要素を、サーバーサイドのレンダリングフラグメントに置き換える方法です。 </td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/technology-behind-radar2/">当社の開発方法：Cloudflare Radar 2.0を支える技術</a></td>
+				<td>Pages、Remix、Workers、R2を使ってRadarを再構築する方法の詳細です。 </td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/terraforming-cloudflare-at-cloudflare">CloudflareがTerraformを使用してCloudflareを管理している方法</a></td>
+				<td>Cloudflare Terraformプロバイダーを利用して、開発者が簡単に変更を行えるようにした方法です。 </td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/network-performance-update-developer-week/">ネットワークパフォーマンスの最新情報：開発者ウィーク2022</a></td>
+				<td>Cloudflare Workersが、他のソリューションと比較してどの程度速いのかをご覧ください。</td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/using-analytics-engine-to-improve-analytics-engine">Cloudflareが行うWorkers Analytics Engineを使用した計測サービス</a></td>
+				<td>Analytics Engineによるインスツルメンテーションは、バグの発見や新機能の優先順位付けに役立つデータを提供します。 </td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/miniflare-and-workerd">Workersを使用してローカル開発を倍増：MiniflareとWorkersの出会い</a></td>
+				<td>Miniflare3を使ったローカル開発を改善し、workerdが搭載されるようになりました。</td>
+			</tr>
+
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<h3 id="--2">お客様とパートナーのストーリー</h3><!--kg-card-begin: html-->
+	<table width="100%">
+		<thead>
+			<tr>
+				<th>ストーリー</th>
+				<th>まとめ</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/devcycle-customer-story">Cloudflare Workersは規模が大きすぎることから当社のインフラを破壊してしまったため、Workers上での再構築を進めています</a></td>
+				<td>DevCycle社が、Workersを使用して機能管理ツールを再構築した方法です。 </td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/neon-postgres-database-from-workers">WorkersとNeon.techでPostgresを簡単に統合</a></td>
+				<td>Neon.techは、WorkersからPostgresに接続する際の課題を解決します。</td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/xata-customer-story">Xata Workers：クライアント側で機密情報を必要としないクライアントサイドのデータベースアクセス</a></td>
+				<td>XataはWorkers for Platformを使用して、信頼できないコードを実行することによるセキュリティリスクを軽減します。</td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/twilio-segment-sdk-powered-by-cloudflare-workers">Cloudflare Workersを搭載したTwilioセグメントエッジSDK</a></td>
+				<td>Workers上に構築されたセグメントエッジSDKは、アプリケーションがクライアントからイベントを収集・追跡し、ユーザーの状態をリアルタイムに把握して利用環境をパーソナライズすることを支援します。</td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<h3 id="--3">次へ</h3>
+	<p>2022年の開発者ウィークは以上になります。<a href="https://discord.gg/aTsevRH3pG" target="_blank">Discord Community</a>に参加すれば、コミュニケーションを継続できます。</p>
+</div>

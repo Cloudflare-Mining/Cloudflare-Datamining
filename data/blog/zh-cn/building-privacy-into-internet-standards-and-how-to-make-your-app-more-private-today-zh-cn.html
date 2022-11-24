@@ -1,0 +1,184 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/image2-14.png" class="kg-image" alt="Building privacy into Internet standards and how to make your app more private today"></figure>
+	<p>如果在互联网上运行一个注重隐私的应用程序或服务，用以证明用户隐私受到保护的方法非常有限。您可以尽量减少日志和数据收集，但即使如此，在网络层面，每个 HTTP 请求必有一个<em>来源。</em>HTTP 请求产生的信息（例如用户的 IP 地址和 TLS 指纹）可能是敏感信息，特别是与应用程序数据组合在一起时。</p>
+	<p>要实质性提高用户隐私性，需要改变 HTTP 请求从客户端设备发送到运行您应用程序逻辑的服务器的方式。这就是 Privacy Gateway 的动机：在客户端和应用程序服务器之间转发加密的 HTTP 请求和响应。借助 Privacy Gateway，Cloudflare 知道请求的来源，但不知道其内容，而应用程序可以看到请求的内容，但不知道其来源。<strong>Cloudflare 和应用程序服务器都不了解全部信息</strong>，提高了最终用户的隐私性。</p>
+	<p>我们最近为一流的女性健康应用程序 <a href="https://flo.health/" target="_blank">Flo Health Inc.</a> 部署了 Privacy Gateway，帮助他们推出<a href="https://www.theverge.com/2022/9/14/23351957/flo-period-tracker-privacy-anonymous-mode" target="_blank">匿名模式</a>。部署 Privacy Gateway 后，匿名模式用户的所有请求数据在应用程序用户和 Flo 之间传输时都会加密，Flo 将无法看到用户的 IP 地址，Cloudflare 也无法看到请求数据的内容。</p>
+	<p>借助 Privacy Gateway，其他一些隐私要求很高的应用程序也成为可能：</p>
+	<ul>
+		<li>浏览器开发人员在收集用户的遥测数据时，可以更尊重隐私（安装了哪些扩展程序，用户可能改变了哪些默认值），同时从中删除潜在的个人可识别信息（IP 地址）。</li>
+		<li>用户可以访问医疗保健网站报告 Covid-19 接触情况，不必担心网站会跟踪他们的 IP 地址和/或位置。</li>
+		<li>DNS 解析器可以提供 DNS 查询，无需将请求者与其正在访问的网站联系起来——我们利用 <a href="https://blog.cloudflare.com/oblivious-dns/">Oblivious DNS</a> 来实现这一点。<br>Privacy Gateway 基于<a href="https://datatracker.ietf.org/doc/draft-ietf-ohai-ohttp/" target="_blank">新兴的 IETF 标准 Oblivious HTTP (OHTTP)</a>，根据标准<a href="https://datatracker.ietf.org/doc/html/rfc9180" target="_blank">混合公钥密码学</a>构建。</li>
+	</ul>
+	<h2 id="-">工作原理</h2>
+	<p>除基本的代理服务外，Oblivious HTTP 标准的主要创新是将这些消息<em>对应用程序服务器</em>加密，因此，Privacy Gateway 只知道每条消息的来源和目的地，对应用程序数据一无所知。</p>
+	<p>Privacy Gateway 让应用程序开发人员和平台（特别是那些隐私要求很高的应用程序）能够构建一个类似于“<a href="https://en.wikipedia.org/wiki/Mix_network" target="_blank">Mixnet</a>”（一种混淆网络消息来源和目的地的方法）的网络。因此，Privacy Gateway 主要包括三个组件：</p>
+	<ol>
+		<li><strong>客户端：</strong>用户的设备，或配置为向 Privacy Gateway 转发请求的任何客户端。</li>
+		<li><strong>Privacy Gateway：</strong>Cloudflare 运营的一项服务，可在客户端和网关之间转发请求，而无法看到请求的内容。</li>
+		<li><strong>应用程序服务器：</strong>源站或应用程序 web 服务器，负责将来自客户端的请求解密，并将返回的响应加密。</li>
+	</ol>
+	<p>如果把请求数据想象成信封里面的内容（一封信），把 IP 地址和请求元数据想象成信封外面的地址，利用 Privacy Gateway，Cloudflare 能够看到信封的地址，并把它安全地转发到目的地，而无法看到里面的内容。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/image4-9.png" class="kg-image">
+		<figcaption>使用 Privacy Gateway 的 Oblivious HTTP 交易</figcaption>
+	</figure>
+	<p>稍微详细一点，数据流如下：</p>
+	<ol>
+		<li>客户端<a href="https://datatracker.ietf.org/doc/html/draft-thomson-http-oblivious-02#section-5.1" target="_blank">使用应用程序服务器的公钥将 HTTP 请求</a>封装起来，并通过 HTTPS 连接将其发送给 Privacy Gateway。</li>
+		<li>Privacy Gateway 通过其自身与应用程序服务器的独立 HTTPS 连接将请求转发给服务器。</li>
+		<li>应用程序服务器将请求解封装，将其转发给可以产生响应的目标服务器。</li>
+		<li>应用程序服务器向 Privacy Gateway 返回一个<a href="https://datatracker.ietf.org/doc/html/draft-thomson-http-oblivious-02#section-5.2" target="_blank">封装的响应</a>，然后将结果转发给客户端。<br>按照协议的规定，从客户端到服务器的请求使用最先进的公钥加密标准 HPKE（您可<a href="https://blog.cloudflare.com/hybrid-public-key-encryption/">在此</a>进一步了解）进行加密。我们已经采取了额外的措施来确保 OHTTP 使用 HPKE 是安全的，例如我们对该协议进行了<a href="https://blog.cloudflare.com/zh-cn/stronger-than-a-promise-proving-oblivious-http-privacy-properties-zh-cn/">形式分析</a>，计划在未来几周发表更深入的分析。</li>
+	</ol>
+	<h2 id="privacy-gateway-">Privacy Gateway 如何提高最终用户的隐私性</h2>
+	<p>这种交互存在两类隐私，我们通俗地称之为<em>请求隐私</em>和<em>客户端隐私</em>。</p>
+	<p>请求隐私是指应用程序服务器不了解就会被 HTTP 请求透露的信息，例如 IP 地址、地理位置、TLS 和 HTTPS 指纹等。由于 Privacy Gateway 与应用程序服务器之间使用单独的 HTTPS 连接，透露给应用程序服务器的所有基于请求的信息都是 Privacy Gateway 的，而不是客户端的。然而，开发人员需要注意，切勿在请求的内容中发送个人可识别信息。例如，如果请求中包括用户的电子邮箱、电话号码或信用卡信息等信息，一经解封装，Privacy Gateway 将无法实质性地提高隐私性。</p>
+	<p>客户端隐私性是一个更有力的概念。由于 Cloudflare 和应用程序服务器没有串通分享个人用户的数据，从服务器的角度来看，每个个人交易都是来自 Privacy Gateway 背后的某个未知的客户端。换句话说，正确配置的 Privacy Gateway 部署意味着应用程序不能将任何两个请求与同一个客户端联系起来。特别是，使用 Privacy Gateway，隐私需要结伴。如果只有一个最终用户使用 Privacy Gateway，那么它只提供请求隐私（因为客户端 IP 地址仍对网关不可见）。它不会提供客户端隐私，因为服务器会知道每个请求都对应同一个单一客户端。客户端隐私要求系统有很多用户，所以应用程序服务器无法确定。</p>
+	<p>为了更好地理解请求和客户端隐私，请考虑客户端和服务器之间的以下 HTTP 请求：</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/image3-7.png" class="kg-image">
+		<figcaption>正常的 HTTP 配置，客户端匿名集的大小为 1</figcaption>
+	</figure>
+	<p>如果客户端直接连接到服务器（即 OHTTP 术语中的“网关”），服务器可能会看到客户端的相关信息，包括 IP 地址、使用的 TLS 密码，以及基于该 IP 地址的一定程度的位置数据。</p><!--kg-card-begin: markdown-->
+	<pre><code>- ipAddress: 192.0.2.33 # the client’s real IP address
+- ASN: 7922
+- AS Organization: Comcast Cable
+- tlsCipher: AEAD-CHACHA20-POLY1305-SHA256 # potentially unique
+- tlsVersion: TLSv1.3
+- Country: US
+- Region: California
+- City: Campbell
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>那里有很多敏感信息可能是最终用户特有的。换而言之，该连接既不提供请求，也不提供客户端隐私。</p>
+	<p>使用 Privacy Gateway，客户端并没有直接连接到应用程序服务器本身，而是连接到 Privacy Gateway，后者再连接到服务器。这意味着，服务器只能看到来自 Privacy Gateway 的连接，看不到来自客户端的个人连接，得到不同的视图：</p><!--kg-card-begin: markdown-->
+	<pre><code>- ipAddress: 104.16.5.5 # a Cloudflare IP
+- ASN: 13335
+- AS Organization: Cloudflare
+- tlsCipher: ECDHE-ECDSA-AES128-GCM-SHA256 # shared across several clients
+- tlsVersion: TLSv1.3
+- Country: US
+- Region: California
+- City: Los Angeles
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/image1-18.png" class="kg-image">
+		<figcaption>Privacy Gateway 配置客户端匿名集的大小为 k</figcaption>
+	</figure>
+	<p>这就是请求隐私。关于客户端位置和身份的所有信息都对应用程序服务器不可见。关于应用程序数据的所有细节都对 Privacy Gateway 不可见。对于 DNS 等敏感应用程序和协议，将此类元数据与应用程序数据分开是提高最终用户隐私性的重要步骤。</p>
+	<p>此外，应用程序应注意，切勿在其个人请求中透露每个客户端的敏感信息。Privacy Gateway 不能保证应用程序没有在请求正文中发送可识别信息（例如电子邮件地址、全名等），因为它看不到明文的应用程序数据。应用程序在请求中透露用户的可识别信息可能会侵犯客户端隐私，但不会侵犯请求隐私。因此，不同于我们完整的<a href="https://blog.cloudflare.com/privacy-edge-making-building-privacy-first-apps-easier/">应用程序级别隐私代理</a>产品，Privacy Gateway 并<em>不</em>是用作任意应用程序和流量的基于通用代理的协议，而是要成为敏感应用程序的特殊目的的协议，包括 DNS（证据示例 <a href="https://blog.cloudflare.com/oblivious-dns/">Oblivious DNS-over-HTTPS</a>）、遥测数据或上述通用 API 请求。</p>
+	<h2 id="-privacy-gateway-">将 Privacy Gateway 集成到您的应用程序中</h2>
+	<p>与 Privacy Gateway 集成需要应用程序实施 OHTTP 协议的客户端和服务器端。我们简要了解下需要些什么。</p>
+	<h3 id="--1">服务器集成</h3>
+	<p>协议的服务器端部分负责两项基本任务：</p>
+	<ol>
+		<li>颁发用于封装请求的公钥；以及</li>
+		<li>将封装的客户端请求解密，处理所得请求，并将相应的响应加密。</li>
+	</ol>
+	<p>一个<a href="https://ietf-wg-ohai.github.io/oblivious-http/draft-ietf-ohai-ohttp.html#name-key-configuration" target="_blank">公共封装密钥</a>（即密钥配置）包括一个密钥标识符（以便服务器可以立刻支持多个密钥用于轮换）、用于加密和解密的密码算法标识符以及一个公钥：</p><!--kg-card-begin: markdown-->
+	<pre><code>HPKE Symmetric Algorithms {
+  HPKE KDF ID (16),
+  HPKE AEAD ID (16),
+}
+
+OHTTP Key Config {
+  Key Identifier (8),
+  HPKE KEM ID (16),
+  HPKE Public Key (Npk * 8),
+  HPKE Symmetric Algorithms Length (16),
+  HPKE Symmetric Algorithms (32..262140),
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>客户端需要用这个公钥来创建请求，其方法有很多。服务器可以固定一个公钥，然后把它嵌入其应用程序中，但这需要一个软件更新来轮换密钥。客户端也可以通过其他方法发现公钥。发现机制有很多，因您的威胁模型而而异（请参阅<a href="https://datatracker.ietf.org/doc/html/draft-wood-key-consistency" target="_blank">本文档</a>，了解更多细节。首先，一个简单的方法是让客户端通过一些 API 直接从服务器获取公钥。我们的<a href="https://github.com/cloudflare/app-relay-gateway-go/blob/main/gateway.go#L116-L134" target="_blank">开源 OHTTP 服务器提供的</a>一个 API 片段如下：</p><!--kg-card-begin: markdown-->
+	<pre><code>func (s *GatewayResource) configHandler(w http.ResponseWriter, r *http.Request) {
+	config, err := s.Gateway.Config(s.keyID)
+	if err != nil {
+		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
+		return
+	}
+	w.Write(config.Marshal())
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>解决了公钥的生成和分配问题后，服务器就需要处理来自客户端的封装请求。服务器需要将每个请求解密，将明文转换为可以解析的相应 HTTP 请求，然后将所得响应加密并返回给客户端。</p>
+	<p>开源 OHTTP 库通常提供<a href="https://github.com/chris-wood/ohttp-go/blob/main/ohttp.go#L455" target="_blank">请求解密</a>和<a href="https://github.com/chris-wood/ohttp-go/blob/main/ohttp.go#L502-L541" target="_blank">响应加密</a>功能，但将<a href="https://datatracker.ietf.org/doc/html/rfc9292" target="_blank">二进制 HTTP</a> 明文转换为 HTTP 请求的过程则需另行处理。例如，我们的开源服务器根据 Go HTTP 请求在内存中的呈现方式，将此转换委托给不同的库。特别是，将明文请求转换为 <a href="https://pkg.go.dev/net/http#Request" target="_blank">Go HTTP 请求</a>是使用具有以下签名的函数完成的：</p><!--kg-card-begin: markdown-->
+	<pre><code>func UnmarshalBinaryRequest(data []byte) (*http.Request, error) {
+	...
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>相反，将 <a href="https://pkg.go.dev/net/http#Response" target="_blank">Go HTTP 响应</a>转换成明文的二进制 HTTP 响应消息则是使用具有以下签名的函数完成的：</p><!--kg-card-begin: markdown-->
+	<pre><code>type BinaryResponse http.Response
+
+func (r *BinaryResponse) Marshal() ([]byte, error) {
+	...
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>虽然有几个开源库可以用来实施 OHTTP 服务器支持，但我们已经把所有这些都打包在我们的开源服务器实施<a href="https://github.com/cloudflare/app-relay-gateway-go" target="_blank">（可在此处查阅）</a>中。其中包括构建、测试和部署说明，帮助大家轻松上手。</p>
+	<h3 id="--2">客户端集成</h3>
+	<p>当然，OHTTP 的客户端行为反映了服务器的行为。特别是，客户端必须：</p>
+	<ol>
+		<li>发现或获取服务器公钥；以及</li>
+		<li>对 HTTP 请求进行编码和加密，将其发送给 Privacy Gateway，并将 HTTP 响应解密和解码。</li>
+	</ol>
+	<p>服务器公钥的发现取决于服务器选择的部署模式。例如，如果公钥是通过 API 提供的，客户端可以直接获取公钥：</p><!--kg-card-begin: markdown-->
+	<pre><code>$ curl https://server.example/ohttp-configs &gt; config.bin
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p><a href="https://github.com/chris-wood/ohttp-go/blob/main/bhttp.go#L66" target="_blank">编码</a>、<a href="https://github.com/chris-wood/ohttp-go/blob/main/ohttp.go#L321" target="_blank">加密</a>、<a href="https://github.com/chris-wood/ohttp-go/blob/main/ohttp.go#L373" target="_blank">解密</a>和解码最好也由 OHTTP 库（如有）处理。利用这些函数，构建客户端支持相当简单。使用上述库函数的简单示例 Go 客户端如下：</p><!--kg-card-begin: markdown-->
+	<pre><code>configEnc := ... // encoded public key
+config, err := ohttp.UnmarshalPublicConfig(configEnc)
+if err != nil {
+	return err
+}
+
+request, err := http.NewRequest(http.MethodGet, "https://test.example/index.html", nil)
+if err != nil {
+	return err
+}
+
+binaryRequest := ohttp.BinaryRequest(*request)
+encodedRequest, err := binaryRequest.Marshal()
+if err != nil {
+	return err
+}
+
+ohttpClient := ohttp.NewDefaultClient(config)
+encapsulatedReq, reqContext, err := ohttpClient.EncapsulateRequest(encodedRequest)
+
+relayRequest, err := http.NewRequest(http.MethodPost, "https://relay.example", bytes.NewReader(encapsulatedReq.Marshal()))
+if err != nil {
+	return err
+}
+relayRequest.Header.Set("Content-Type", "message/ohttp-req")
+
+client := http.Client{}
+relayResponse, err := client.Do(relayRequest)
+if err != nil {
+	return err
+}
+bodyBytes, err := ioutil.ReadAll(relayResponse.Body)
+if err != nil {
+	return err
+}
+encapsulatedResp, err := ohttp.UnmarshalEncapsulatedResponse(bodyBytes)
+if err != nil {
+	return err
+}
+
+receivedResp, err := reqContext.DecapsulateResponse(encapsulatedResp)
+if err != nil {
+	return err
+}
+
+response, err := ohttp.UnmarshalBinaryResponse(receivedResp)
+if err != nil {
+	return err
+}
+
+fmt.Println(response)
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>如果您已有现成的应用程序，这类独立客户端对您可能不是很有用。为帮助与您的现有应用程序集成，我们创建了一个 <a href="https://github.com/cloudflare/app-relay-client-library" target="_blank">OHTTP 客户端库示例</a>，可与 iOS 和 macOS 应用程序兼容。此外，如果希望有语言或平台支持来帮助简化客户端或服务器端的集成，请告诉我们！</p>
+	<h2 id="--3">是否感兴趣？</h2>
+	<p>Privacy Gateway 目前处于提前体验阶段，精选注重隐私的公司和合作伙伴参与体验。如有兴趣，<a href="https://www.cloudflare.com/lp/privacy-edge/" target="_blank">请联系我们</a>。</p>
+</div>
