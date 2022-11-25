@@ -6,19 +6,13 @@
 	</div>
 </div>
 <p><strong>What You’ll Do</strong></p>
-<p>&nbsp;</p>
 <p><span style="font-weight: 400;">We are looking for a Software Engineer to join the Traffic team. Our mission is to build software systems that improve the performance and reliability of Cloudflare's network. The scope of our work is significant and has a broad impact across our portfolio of products.</span></p>
-<p>&nbsp;</p>
 <p><span style="font-weight: 400;">As a member of the Traffic team you will build and extend these systems. One such system is a control plane service that ingests a diverse set of data in order to load-balance customer traffic through directly instructing our network infrastructure.</span></p>
-<p>&nbsp;</p>
 <p><span style="font-weight: 400;">You will work closely with Network Engineering, Product Engineering, Network Strategy, and other teams to translate their requirements into new capabilities on our platform.&nbsp;</span></p>
-<p>&nbsp;</p>
 <p><span style="font-weight: 400;">You will participate in all stages of the software development lifecycle, from designing and documenting systems, to writing code and automated tests, to planning, managing, and monitoring production software deployments. You will work with a wide range of technologies and programming languages, including Go, Python, Hashicorp Serf, ClickHouse, Salt, PostgreSQL, Grafana, Kubernetes, NETCONF, and more.</span></p>
-<p>&nbsp;</p>
 <p><span style="font-weight: 400;">Because you’ll be solving problems of massive scale and significance, and shaping the future of security and performance on the Internet, you are a growth-oriented individual who enjoys being outside of your comfort zone. You are comfortable in a fast-paced but sensible work environment. You value curiosity and empathy and lead with these values.</span></p>
-<p><br><br></p>
-<p><strong>Examples of Desirable Skills, Knowledge, and Experience</strong></p>
 <p>&nbsp;</p>
+<p><strong>Examples of Desirable Skills, Knowledge, and Experience</strong></p>
 <ul>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Systems-level programming experience in Go, Python, Rust, C, or C++</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">A solid grasp of networking protocols in Layers 3 and 4 of the OSI Model</span></li>
@@ -27,7 +21,7 @@
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong ability to debug issues in complex systems</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong interpersonal and communication skills</span></li>
 </ul>
-<p><br><br></p>
+<p>&nbsp;</p>
 <p><strong>Bonus Points</strong></p>
 <ul>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Knowledge of TCP/IP and Internet routing</span></li>
@@ -35,7 +29,6 @@
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with monitoring, alerting, and debugging large-scale distributed systems</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with participating in an on-call rotation</span></li>
 </ul>
-<p><br><br></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
