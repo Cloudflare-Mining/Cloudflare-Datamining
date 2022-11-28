@@ -5,30 +5,55 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Senior Product Marketing Manager, Application Security</strong></p>
-<p><span style="font-weight: 400;">Cloudflare is looking for an experienced product marketer to join our application security product marketing team. This is a high-impact, results-oriented role, where you will work directly with Sales, Product Management, and Marketing to take new products to market and develop messaging and campaigns that drive acquisition and expansion.</span></p>
-<p><span style="font-weight: 400;">The application security portfolio consists of the web application firewall, rate limiting, bot management, and DDOS protection. Successful candidates will have a passion for helping to build a better Internet by enabling web properties to improve their security posture. You will have a drive to understand customer needs, dig into product details, and elevate our messaging to deliver solution-oriented, breakthrough initiatives.&nbsp; You will enjoy this role if you like working with fast-paced teams and having autonomy to drive your initiatives.&nbsp;</span></p>
-<p><span style="font-weight: 400;">This role is a part of our Product Marketing team and reports into our Head of Application and Network Services Product Marketing. This will be a highly visible leadership role within the organization, which will have a significant impact on the long-term growth of the fast-growing Cloudflare business.</span></p>
-<p><strong>Responsibilities</strong><span style="font-weight: 400;"><br></span></p>
+<h4><strong>About the department</strong></h4>
+<p><span style="font-weight: 400;">Cloudflare’s Infrastructure department is responsible for growing Cloudflare’s global technological footprint, from designing and shipping next-generation servers to expanding our hundreds of global ISP partnerships. We are seeking a highly organized, versatile person to join our team. The Program Manager Edge Deployments role forms part of the Edge Data Center Engineering team to help accelerate global deployments.&nbsp;</span></p>
+<p><strong>Responsibilities</strong></p>
+<p><span style="font-weight: 400;">Your main role will be to partner with logistics, infrastructure engineering, vendors and capacity teams to plan, track, and manage the execution of various network deployments and initiatives.</span></p>
+<p><span style="font-weight: 400;">Program Management at Cloudflare provides you with a myriad of opportunities to define, scope effectively, and accomplish strategic goals. You will be the driving force to make things happen.</span></p>
+<p><span style="font-weight: 400;">The ideal candidate is process-driven but remains flexible and iterative, someone who loves to tackle new challenges, with pace, and enjoys bringing people together as a team and drives them towards success.&nbsp;</span></p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Own go-to-market activities for application security products.&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Understand and exploit the weaknesses of both box vendors as well as cloud providers in app security.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Evangelize Cloudflare products to analysts, prospects, and customers—in meetings, webinars, conferences and tradeshows.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Be the voice of the product to the entire marketing team. Be the voice of the marketing team to product management and CTO organization.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Develop messaging that proves Cloudflare’s differentiation in app security.&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Develop and execute integrated marketing campaigns to drive demand for application security products and solutions.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Provide support for the field sales teams in the form of sales plays for both mid-market and enterprise</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Partner with our Analyst Relations team to establish Cloudflare as a security leader.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Manage all network build gear and spin up BOMs while working with the logistics team to track and procure all relative equipment&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Work with the logistics team and engineers to plan the delivery of gear to the sites</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Manage project master tasks and help move tasks through the approval process</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Track and analyze project risks, timelines, and resources recommending improvements and implementing new standards where needed and escalating issues appropriate&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Gather and create documentation to help improve our deployment playbook&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Lead meetings with cross-functional teams to align goals and update stakeholders</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Manager multiple deployments simultaneously while ensuring all projects are completed on time, within budget, and to highest standards</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Work with our recycling vendor to schedule picks up of equipment that has been decommissioned and track the destruction of storage media&nbsp;</span></li>
 </ul>
-<p><strong>Requirements</strong></p>
+<p><strong>Compensation</strong></p>
+<p><span style="font-weight: 400;">Compensation may be adjusted depending on work location.</span></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">8+ years of experience in product marketing/product management with at least 5 years in a security-focused role.&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience at one or more cyber security vendors. Knowledge of HTTP, OWASP, Bots&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience positioning technical products to both technical users and economic decision makers</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Excellent written and </span><span style="font-weight: 400;">presentation skills. This role demands someone who is gifted in their ability to communicate effectively with all stakeholders, including product management, sales, comms, and marketing.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to manage ambiguity and navigate unforeseen obstacles gracefully.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Self-starter who truly enjoys working in a fast-paced, innovative cloud services company.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">BS/BA degree in Marketing, Business, Engineering, or related field</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">For Colorado-based hires: Estimated annual salary of $120,000 - $146,000.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">For New York City-based hires: Estimated annual salary of $140,000 - $171,00.</span></li>
+</ul>
+<p><strong>Equity</strong></p>
+<p><span style="font-weight: 400;">This role is eligible to participate in Cloudflare’s equity plan.</span></p>
+<p><strong>Benefits</strong></p>
+<p><span style="font-weight: 400;">Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</span></p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Medical/Rx Insurance</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Dental Insurance</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Vision Insurance</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Flexible Spending Accounts</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Commuter Spending Accounts</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Fertility &amp; Family Forming Benefits</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">On-demand mental health support and Employee Assistance Program</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Global Travel Medical Insurance</span></li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Short and Long Term Disability Insurance</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Life &amp; Accident Insurance</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">401(k) Retirement Savings Plan</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Employee Stock Participation Plan</span></li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Flexible paid time off covering vacation and sick leave</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Leave programs, including parental, pregnancy health, medical, and bereavement leave</span></li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
