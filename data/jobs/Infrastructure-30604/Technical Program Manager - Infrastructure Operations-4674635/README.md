@@ -5,30 +5,29 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>What You’ll Do</strong></p>
-<p><span style="font-weight: 400;">We are looking for a Software Engineer to join the Traffic team. Our mission is to build software systems that improve the performance and reliability of Cloudflare's network. The scope of our work is significant and has a broad impact across our portfolio of products.</span></p>
-<p><span style="font-weight: 400;">As a member of the Traffic team you will build and extend these systems. One such system is a control plane service that ingests a diverse set of data in order to load-balance customer traffic across our global network.</span></p>
-<p><span style="font-weight: 400;">You will work closely with Network Engineering, Product Engineering, Network Strategy, and other teams to translate their requirements into new capabilities on our platform.&nbsp;</span></p>
-<p><span style="font-weight: 400;">You will participate in all stages of the software development lifecycle, from designing and documenting systems, to writing code and automated tests, to planning, managing, and monitoring production software deployments. You will work with a wide range of technologies and programming languages, including Go, Python, Hashicorp Serf, ClickHouse, Salt, PostgreSQL, Grafana, Kubernetes, NETCONF, and more.</span></p>
-<p><span style="font-weight: 400;">Because you’ll be solving problems of massive scale and significance, and shaping the future of security and performance on the Internet, you are a growth-oriented individual who enjoys being outside of your comfort zone. You are comfortable in a fast-paced but sensible work environment. You value curiosity and empathy and lead with these values.</span></p>
+<h4><strong>About the department</strong></h4>
+<p><span style="font-weight: 400;">Cloudflare’s Infrastructure department is responsible for growing Cloudflare’s global technological footprint, from designing and shipping next-generation servers to expanding our hundreds of global ISP partnerships. We are seeking a highly organized, versatile person to join our team. The Program Manager Edge Deployments role forms part of the Edge Data Center Engineering team to help accelerate global deployments.&nbsp;</span></p>
 <p>&nbsp;</p>
-<p><strong>Examples of Desirable Skills, Knowledge, and Experience</strong></p>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Systems-level programming experience in Go, Python, Rust, C, or C++</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">A solid grasp of networking protocols in Layers 3 and 4 of the OSI Model</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Knowledge of HTTP, TLS and CDN networks</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience in implementing secure and highly-available distributed systems</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong ability to debug issues in complex systems</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong interpersonal and communication skills</span></li>
-</ul>
-<p><strong>Bonus Points</strong></p>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Knowledge of TCP/IP and Internet routing</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience building tools and APIs</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with monitoring, alerting, and debugging large-scale distributed systems</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with participating in an on-call rotation</span></li>
-</ul>
+<p><strong>Responsibilities</strong></p>
+<p><span style="font-weight: 400;">Your main role will be to partner with logistics, infrastructure engineering, vendors and capacity teams to plan, track, and manage the execution of various network deployments and initiatives.</span></p>
+<p><span style="font-weight: 400;">Program Management at Cloudflare provides you with a myriad of opportunities to define, scope effectively, and accomplish strategic goals. You will be the driving force to make things happen.</span></p>
+<p><span style="font-weight: 400;">The ideal candidate is process-driven but remains flexible and iterative, someone who loves to tackle new challenges, with pace, and enjoys bringing people together as a team and drives them towards success.&nbsp;</span></p>
 <p>&nbsp;</p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<ul>
+	<li>
+		<ul>
+			<li style="font-weight: 400;"><span style="font-weight: 400;">Manage all network build gear and spin up BOMs while working with the logistics team to track and procure all relative equipment&nbsp;</span></li>
+			<li style="font-weight: 400;"><span style="font-weight: 400;">Work with the logistics team and engineers to plan the delivery of gear to the sites</span></li>
+			<li style="font-weight: 400;"><span style="font-weight: 400;">Manage project master tasks and help move tasks through the approval process</span></li>
+			<li style="font-weight: 400;"><span style="font-weight: 400;">Track and analyze project risks, timelines, and resources recommending improvements and implementing new standards where needed and escalating issues appropriate&nbsp;</span></li>
+			<li style="font-weight: 400;"><span style="font-weight: 400;">Gather and create documentation to help improve our deployment playbook&nbsp;</span></li>
+			<li style="font-weight: 400;"><span style="font-weight: 400;">Lead meetings with cross-functional teams to align goals and update stakeholders</span></li>
+			<li style="font-weight: 400;"><span style="font-weight: 400;">Manager multiple deployments simultaneously while ensuring all projects are completed on time, within budget, and to highest standards</span></li>
+			<li style="font-weight: 400;"><span style="font-weight: 400;">Work with our recycling vendor to schedule picks up of equipment that has been decommissioned and track the destruction of storage media&nbsp;</span></li>
+		</ul>
+	</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
