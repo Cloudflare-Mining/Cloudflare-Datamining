@@ -83,6 +83,15 @@ export const LoadBalancerPool = eg.object({
 
 export type LoadBalancerPool = TypeFromCodec<typeof LoadBalancerPool>;
 
+const SteeringPolicy = eg.union([
+  eg.literal('off'),
+  eg.literal('dynamic_latency'),
+  eg.literal('geo'),
+  eg.literal('random'),
+  eg.literal('gps'),
+  eg.literal('proximity')
+]).optional;
+
 export const LoadBalancerRuleOverrides = eg.object({
   session_affinity: eg.union([
     eg.literal('none'),
@@ -91,14 +100,7 @@ export const LoadBalancerRuleOverrides = eg.object({
   ]).optional,
   session_affinity_ttl: eg.number.optional,
   ttl: eg.number.optional,
-  steering_policy: eg.union([
-    eg.literal('dynamic_latency'),
-    eg.literal('failover'),
-    eg.literal('geo'),
-    eg.literal('random'),
-    eg.literal('off'),
-    eg.literal('weighted')
-  ]).optional,
+  steering_policy: SteeringPolicy,
   fallback_pool: eg.string.optional,
   default_pools: eg.union([eg.null, eg.array(eg.string)]).optional,
   country_pools: eg.record(eg.string, eg.array(eg.string)).optional,
@@ -171,14 +173,7 @@ export const LoadBalancer = eg.object({
     ]).optional
   }),
   session_affinity_ttl: eg.number.optional,
-  steering_policy: eg.union([
-    eg.literal('off'),
-    eg.literal('dynamic_latency'),
-    eg.literal('geo'),
-    eg.literal('random'),
-    eg.literal('gps'),
-    eg.literal('proximity')
-  ]).optional,
+  steering_policy: SteeringPolicy,
   location_strategy: eg.object({
     prefer_ecs: eg.union([
       eg.literal('always'),
