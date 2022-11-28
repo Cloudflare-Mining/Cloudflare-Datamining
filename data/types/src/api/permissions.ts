@@ -25,6 +25,7 @@ export const Permissions = eg.object({
   stream: PermValue,
   subscription: PermValue,
   waf: PermValue,
+  waitingroom: PermValue,
   webhooks: PermValue,
   worker: PermValue,
   zaraz: PermValue,

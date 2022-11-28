@@ -264,7 +264,8 @@ export const AccountFirewallRule = eg.object({
     ruleset: eg.string.optional
   }).optional,
   score_threshold: eg.number.optional,
-  created: eg.string.optional
+  created: eg.string.optional,
+  allowed_override_actions: eg.array(eg.string).optional
 });
 
 export type AccountFirewallRule = TypeFromCodec<typeof AccountFirewallRule>;
