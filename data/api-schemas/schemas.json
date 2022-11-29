@@ -192,6 +192,44 @@
 				],
 				"title": "CNAME Record"
 			},
+			"Cloudflare Client API_domain-response-collection": {
+				"allOf": [
+					{
+						"$ref": "#/components/schemas/api-response-common"
+					},
+					{
+						"properties": {
+							"result": {
+								"items": {
+									"$ref": "#/components/schemas/domain"
+								},
+								"type": "array"
+							}
+						},
+						"type": "object"
+					}
+				]
+			},
+			"Cloudflare Client API_domain-response-single": {
+				"allOf": [
+					{
+						"$ref": "#/components/schemas/api-response-common"
+					},
+					{
+						"properties": {
+							"result": {
+								"$ref": "#/components/schemas/domain"
+							}
+						},
+						"type": "object"
+					}
+				]
+			},
+			"Cloudflare Client API_domain_name": {
+				"description": "Domain name.",
+				"example": "cloudflare.com",
+				"type": "string"
+			},
 			"Cloudflare Client API_identifier": {
 				"description": "Policy identifier.",
 				"example": "f267e341f3dd4697bd3b9f71dd96247f",
@@ -3001,15 +3039,12 @@
 			"asn_components-schemas-response": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/api-response-collection"
+						"$ref": "#/components/schemas/api-response-single"
 					},
 					{
 						"properties": {
 							"result": {
-								"items": {
-									"$ref": "#/components/schemas/asn_components-schemas-asn"
-								},
-								"type": "array"
+								"$ref": "#/components/schemas/asn_components-schemas-asn"
 							}
 						}
 					}
@@ -5747,10 +5782,6 @@
 			"components-schemas-domain": {
 				"description": "The domain of the Bookmark application.",
 				"example": "example.com",
-				"type": "string"
-			},
-			"components-schemas-domain_name": {
-				"example": "cloudflare.com",
 				"type": "string"
 			},
 			"components-schemas-email": {
@@ -9204,6 +9235,12 @@
 				},
 				"type": "object"
 			},
+			"deployment_identifier": {
+				"example": "bcf48806-b317-4351-9ee7-36e7d557d4de",
+				"maxLength": 36,
+				"readOnly": true,
+				"type": "string"
+			},
 			"deployment_stage_name": {
 				"description": "Deployment stage name.",
 				"example": "deploy",
@@ -9381,6 +9418,129 @@
 					}
 				},
 				"type": "object"
+			},
+			"deployments-list-response": {
+				"allOf": [
+					{
+						"$ref": "#/components/schemas/api-response-common"
+					},
+					{
+						"properties": {
+							"items": {
+								"example": [
+									{
+										"id": "bcf48806-b317-4351-9ee7-36e7d557d4de",
+										"metadata": {
+											"author_email": "user@example.com",
+											"author_id": "408cbcdfd4dda4617efef40b04d168a1",
+											"created_on": "2022-11-15T18:25:44.442097Z",
+											"modified_on": "2022-11-15T18:25:44.442097Z",
+											"source": "api"
+										},
+										"number": 2
+									},
+									{
+										"id": "18f97339-c287-4872-9bdd-e2135c07ec12",
+										"metadata": {
+											"author_email": "user@example.com",
+											"author_id": "408cbcdfd4dda4617efef40b04d168a1",
+											"created_on": "2022-11-08T17:30:56.968096Z",
+											"modified_on": "2022-11-08T17:30:56.968096Z",
+											"source": "api"
+										},
+										"number": 1
+									}
+								],
+								"items": {},
+								"type": "array"
+							},
+							"latest": {
+								"example": {
+									"id": "bcf48806-b317-4351-9ee7-36e7d557d4de",
+									"metadata": {
+										"author_email": "user@example.com",
+										"author_id": "408cbcdfd4dda4617efef40b04d168a1",
+										"created_on": "2022-11-15T18:25:44.442097Z",
+										"modified_on": "2022-11-15T18:25:44.442097Z",
+										"source": "api"
+									},
+									"number": 2,
+									"resources": {
+										"bindings": [
+											{
+												"json": "example_binding",
+												"name": "JSON_VAR",
+												"type": "json"
+											}
+										],
+										"script": {
+											"etag": "13a3240e8fb414561b0366813b0b8f42b3e6cfa0d9e70e99835dae83d0d8a794",
+											"handlers": [
+												"fetch"
+											],
+											"last_deployed_from": "api"
+										},
+										"script_runtime": {
+											"usage_model": "bundled"
+										}
+									}
+								},
+								"type": "object"
+							}
+						}
+					}
+				]
+			},
+			"deployments-single-response": {
+				"allOf": [
+					{
+						"$ref": "#/components/schemas/api-response-common"
+					},
+					{
+						"properties": {
+							"id": {
+								"example": "18f97339-c287-4872-9bdd-e2135c07ec12",
+								"type": "string"
+							},
+							"metadata": {
+								"example": {
+									"author_email": "user@example.com",
+									"author_id": "408cbcdfd4dda4617efef40b04d168a1",
+									"created_on": "2022-11-08T17:19:29.176266Z",
+									"modified_on": "2022-11-08T17:19:29.176266Z",
+									"source": "api"
+								},
+								"type": "object"
+							},
+							"number": {
+								"example": 1,
+								"type": "number"
+							},
+							"resources": {
+								"example": {
+									"bindings": [
+										{
+											"json": "example_binding",
+											"name": "JSON_VAR",
+											"type": "json"
+										}
+									],
+									"script": {
+										"etag": "13a3240e8fb414561b0366813b0b8f42b3e6cfa0d9e70e99835dae83d0d8a794",
+										"handlers": [
+											"fetch"
+										],
+										"last_deployed_from": "api"
+									},
+									"script_runtime": {
+										"usage_model": "bundled"
+									}
+								},
+								"type": "object"
+							}
+						}
+					}
+				]
 			},
 			"deprecate_any_requests": {
 				"description": "Deprecate the response to ANY requests.",
@@ -10729,7 +10889,7 @@
 						"type": "array"
 					},
 					"domain": {
-						"$ref": "#/components/schemas/components-schemas-domain_name"
+						"$ref": "#/components/schemas/schemas-domain_name"
 					}
 				}
 			},
@@ -10797,7 +10957,7 @@
 						"$ref": "#/components/schemas/content_categories"
 					},
 					"domain": {
-						"$ref": "#/components/schemas/components-schemas-domain_name"
+						"$ref": "#/components/schemas/schemas-domain_name"
 					},
 					"popularity_rank": {
 						"$ref": "#/components/schemas/popularity_rank"
@@ -24752,7 +24912,7 @@
 											"$ref": "#/components/schemas/content_categories"
 										},
 										"domain": {
-											"$ref": "#/components/schemas/components-schemas-domain_name"
+											"$ref": "#/components/schemas/schemas-domain_name"
 										},
 										"popularity_rank": {
 											"$ref": "#/components/schemas/popularity_rank"
@@ -25055,39 +25215,6 @@
 				"example": "test.example.com/admin",
 				"type": "string"
 			},
-			"schemas-domain-response-collection": {
-				"allOf": [
-					{
-						"$ref": "#/components/schemas/api-response-common"
-					},
-					{
-						"properties": {
-							"result": {
-								"items": {
-									"$ref": "#/components/schemas/domain"
-								},
-								"type": "array"
-							}
-						},
-						"type": "object"
-					}
-				]
-			},
-			"schemas-domain-response-single": {
-				"allOf": [
-					{
-						"$ref": "#/components/schemas/api-response-common"
-					},
-					{
-						"properties": {
-							"result": {
-								"$ref": "#/components/schemas/domain"
-							}
-						},
-						"type": "object"
-					}
-				]
-			},
 			"schemas-domain_identifier": {
 				"description": "Domain identifier.",
 				"example": "ea95132c15732412d22c1476fa83f27a",
@@ -25096,7 +25223,6 @@
 				"type": "string"
 			},
 			"schemas-domain_name": {
-				"description": "Domain name.",
 				"example": "cloudflare.com",
 				"type": "string"
 			},
@@ -27375,6 +27501,12 @@
 						}
 					}
 				]
+			},
+			"script_identifier": {
+				"example": "8ee82b3a2c0f42928b8f14dae4a97121",
+				"maxLength": 32,
+				"readOnly": true,
+				"type": "string"
 			},
 			"script_name": {
 				"description": "Name of the script, used in URLs and route configuration.",
@@ -32768,7 +32900,7 @@
 						"type": "string"
 					},
 					"domain": {
-						"$ref": "#/components/schemas/components-schemas-domain_name"
+						"$ref": "#/components/schemas/schemas-domain_name"
 					},
 					"nameservers": {
 						"example": [
@@ -44626,7 +44758,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/common_components-schemas-identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					}
 				],
@@ -44682,7 +44814,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/common_components-schemas-identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					}
 				],
@@ -44758,7 +44890,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/common_components-schemas-identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					}
 				],
@@ -44838,7 +44970,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/common_components-schemas-identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					}
 				],
@@ -44902,7 +45034,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/common_components-schemas-identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					}
 				],
@@ -44978,7 +45110,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/common_components-schemas-identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					}
 				],
@@ -45042,7 +45174,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/common_components-schemas-identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					}
 				],
@@ -45106,7 +45238,7 @@
 						"name": "deployment_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/common_components-schemas-identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					},
 					{
@@ -45122,7 +45254,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/common_components-schemas-identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					}
 				],
@@ -45194,7 +45326,7 @@
 						"name": "deployment_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/common_components-schemas-identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					},
 					{
@@ -45210,7 +45342,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/common_components-schemas-identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					}
 				],
@@ -45268,7 +45400,7 @@
 						"name": "deployment_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/common_components-schemas-identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					},
 					{
@@ -45284,7 +45416,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/common_components-schemas-identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					}
 				],
@@ -45351,7 +45483,7 @@
 						"name": "deployment_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/common_components-schemas-identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					},
 					{
@@ -45367,7 +45499,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/common_components-schemas-identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					}
 				],
@@ -45428,7 +45560,7 @@
 						"name": "deployment_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/common_components-schemas-identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					},
 					{
@@ -45444,7 +45576,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/common_components-schemas-identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					}
 				],
@@ -45508,7 +45640,7 @@
 						"name": "deployment_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/common_components-schemas-identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					},
 					{
@@ -45524,7 +45656,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/common_components-schemas-identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					}
 				],
@@ -45596,7 +45728,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/common_components-schemas-identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					}
 				],
@@ -45660,7 +45792,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/common_components-schemas-identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					}
 				],
@@ -45744,7 +45876,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/common_components-schemas-identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					}
 				],
@@ -45832,7 +45964,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/common_components-schemas-identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					}
 				],
@@ -45904,7 +46036,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/common_components-schemas-identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					}
 				],
@@ -47599,7 +47731,7 @@
 						"name": "domain_name",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/schemas-domain_name"
+							"$ref": "#/components/schemas/Cloudflare Client API_domain_name"
 						}
 					},
 					{
@@ -47663,7 +47795,7 @@
 						"name": "domain_name",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/schemas-domain_name"
+							"$ref": "#/components/schemas/Cloudflare Client API_domain_name"
 						}
 					},
 					{
@@ -55558,6 +55690,154 @@
 				}
 			}
 		},
+		"/accounts/{account_identifier}/workers/deployments/by-script/{script_identifier}": {
+			"get": {
+				"operationId": "worker-deployments-list-deployments",
+				"parameters": [
+					{
+						"in": "path",
+						"name": "script_identifier",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/script_identifier"
+						}
+					},
+					{
+						"in": "path",
+						"name": "account_identifier",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/common_components-schemas-identifier"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/deployments-list-response"
+								}
+							}
+						},
+						"description": "List Deployments response"
+					},
+					"4xx": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/deployments-list-response"
+										},
+										{
+											"$ref": "#/components/schemas/api-response-common-failure"
+										}
+									]
+								}
+							}
+						},
+						"description": "List Deployments response failure"
+					}
+				},
+				"security": [
+					{
+						"api_email": [],
+						"api_key": []
+					},
+					{
+						"api_token": []
+					}
+				],
+				"summary": "List Deployments",
+				"tags": [
+					"Worker Deployments"
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.edge.worker.deployment.list"
+					]
+				}
+			}
+		},
+		"/accounts/{account_identifier}/workers/deployments/by-script/{script_identifier}/detail/{deployment_identifier}": {
+			"get": {
+				"operationId": "worker-deployments-get-deployment-detail",
+				"parameters": [
+					{
+						"in": "path",
+						"name": "deployment_identifier",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/deployment_identifier"
+						}
+					},
+					{
+						"in": "path",
+						"name": "script_identifier",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/script_identifier"
+						}
+					},
+					{
+						"in": "path",
+						"name": "account_identifier",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/common_components-schemas-identifier"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/deployments-single-response"
+								}
+							}
+						},
+						"description": "Get Deployment Detail response"
+					},
+					"4xx": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/deployments-single-response"
+										},
+										{
+											"$ref": "#/components/schemas/api-response-common-failure"
+										}
+									]
+								}
+							}
+						},
+						"description": "Get Deployment Detail response failure"
+					}
+				},
+				"security": [
+					{
+						"api_email": [],
+						"api_key": []
+					},
+					{
+						"api_token": []
+					}
+				],
+				"summary": "Get Deployment Detail",
+				"tags": [
+					"Worker Deployments"
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.edge.worker.deployment.read"
+					]
+				}
+			}
+		},
 		"/accounts/{account_identifier}/workers/domains": {
 			"get": {
 				"description": "Lists all Worker Domains.",
@@ -55577,7 +55857,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/schemas-domain-response-collection"
+									"$ref": "#/components/schemas/Cloudflare Client API_domain-response-collection"
 								}
 							}
 						},
@@ -55589,7 +55869,7 @@
 								"schema": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/schemas-domain-response-collection"
+											"$ref": "#/components/schemas/Cloudflare Client API_domain-response-collection"
 										},
 										{
 											"$ref": "#/components/schemas/api-response-common-failure"
@@ -55668,7 +55948,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/schemas-domain-response-single"
+									"$ref": "#/components/schemas/Cloudflare Client API_domain-response-single"
 								}
 							}
 						},
@@ -55680,7 +55960,7 @@
 								"schema": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/schemas-domain-response-single"
+											"$ref": "#/components/schemas/Cloudflare Client API_domain-response-single"
 										},
 										{
 											"$ref": "#/components/schemas/api-response-common-failure"
@@ -55799,7 +56079,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/schemas-domain-response-single"
+									"$ref": "#/components/schemas/Cloudflare Client API_domain-response-single"
 								}
 							}
 						},
@@ -55811,7 +56091,7 @@
 								"schema": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/schemas-domain-response-single"
+											"$ref": "#/components/schemas/Cloudflare Client API_domain-response-single"
 										},
 										{
 											"$ref": "#/components/schemas/api-response-common-failure"
@@ -58609,7 +58889,7 @@
 				}
 			}
 		},
-		"/accounts/{account_id}/rulesets/phases/{ruleset_phase}/versions": {
+		"/accounts/{account_id}/rulesets/phases/{ruleset_phase}/entrypoint/versions": {
 			"get": {
 				"description": "Fetches the versions of an account entry point ruleset.",
 				"operationId": "account-rulesets-list-an-account-entry-point-ruleset'-s-versions",
@@ -58681,7 +58961,7 @@
 				}
 			}
 		},
-		"/accounts/{account_id}/rulesets/phases/{ruleset_phase}/versions/{ruleset_version}": {
+		"/accounts/{account_id}/rulesets/phases/{ruleset_phase}/entrypoint/versions/{ruleset_version}": {
 			"get": {
 				"description": "Fetches a specific version of an account entry point ruleset.",
 				"operationId": "account-rulesets-get-an-account-entry-point-ruleset-version",
@@ -124092,7 +124372,7 @@
 				}
 			}
 		},
-		"/zones/{zone_id}/rulesets/phases/{ruleset_phase}/versions": {
+		"/zones/{zone_id}/rulesets/phases/{ruleset_phase}/entrypoint/versions": {
 			"get": {
 				"description": "Fetches the versions of a zone entry point ruleset.",
 				"operationId": "zone-rulesets-list-a-zone-entry-point-ruleset'-s-versions",
@@ -124164,7 +124444,7 @@
 				}
 			}
 		},
-		"/zones/{zone_id}/rulesets/phases/{ruleset_phase}/versions/{ruleset_version}": {
+		"/zones/{zone_id}/rulesets/phases/{ruleset_phase}/entrypoint/versions/{ruleset_version}": {
 			"get": {
 				"description": "Fetches a specific version of a zone entry point ruleset.",
 				"operationId": "zone-rulesets-get-a-zone-entry-point-ruleset-version",

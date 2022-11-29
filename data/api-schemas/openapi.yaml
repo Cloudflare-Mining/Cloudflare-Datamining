@@ -126,6 +126,26 @@ components:
       - type
       - name
       - content
+    Cloudflare Client API_domain-response-collection:
+      allOf:
+      - $ref: '#/components/schemas/api-response-common'
+      - type: object
+        properties:
+          result:
+            type: array
+            items:
+              $ref: '#/components/schemas/domain'
+    Cloudflare Client API_domain-response-single:
+      allOf:
+      - $ref: '#/components/schemas/api-response-common'
+      - type: object
+        properties:
+          result:
+            $ref: '#/components/schemas/domain'
+    Cloudflare Client API_domain_name:
+      type: string
+      description: Domain name.
+      example: cloudflare.com
     Cloudflare Client API_identifier:
       type: string
       description: Policy identifier.
@@ -2033,12 +2053,10 @@ components:
           $ref: '#/components/schemas/asn_type'
     asn_components-schemas-response:
       allOf:
-      - $ref: '#/components/schemas/api-response-collection'
+      - $ref: '#/components/schemas/api-response-single'
       - properties:
           result:
-            type: array
-            items:
-              $ref: '#/components/schemas/asn_components-schemas-asn'
+            $ref: '#/components/schemas/asn_components-schemas-asn'
     asn_configuration:
       title: An ASN configuration.
       properties:
@@ -4008,9 +4026,6 @@ components:
       type: string
       description: The domain of the Bookmark application.
       example: example.com
-    components-schemas-domain_name:
-      type: string
-      example: cloudflare.com
     components-schemas-email:
       type: string
       format: email
@@ -6407,6 +6422,11 @@ components:
                       type: string
                       description: Name of the R2 bucket.
                       example: some-bucket
+    deployment_identifier:
+      type: string
+      example: bcf48806-b317-4351-9ee7-36e7d557d4de
+      readOnly: true
+      maxLength: 36
     deployment_stage_name:
       type: string
       description: Deployment stage name.
@@ -6543,6 +6563,85 @@ components:
           description: The live URL to view this deployment.
           example: https://f64788e9.ninjakittens.pages.dev
           readOnly: true
+    deployments-list-response:
+      allOf:
+      - $ref: '#/components/schemas/api-response-common'
+      - properties:
+          items:
+            type: array
+            example:
+            - id: bcf48806-b317-4351-9ee7-36e7d557d4de
+              metadata:
+                author_email: user@example.com
+                author_id: 408cbcdfd4dda4617efef40b04d168a1
+                created_on: "2022-11-15T18:25:44.442097Z"
+                modified_on: "2022-11-15T18:25:44.442097Z"
+                source: api
+              number: 2
+            - id: 18f97339-c287-4872-9bdd-e2135c07ec12
+              metadata:
+                author_email: user@example.com
+                author_id: 408cbcdfd4dda4617efef40b04d168a1
+                created_on: "2022-11-08T17:30:56.968096Z"
+                modified_on: "2022-11-08T17:30:56.968096Z"
+                source: api
+              number: 1
+            items: {}
+          latest:
+            type: object
+            example:
+              id: bcf48806-b317-4351-9ee7-36e7d557d4de
+              metadata:
+                author_email: user@example.com
+                author_id: 408cbcdfd4dda4617efef40b04d168a1
+                created_on: "2022-11-15T18:25:44.442097Z"
+                modified_on: "2022-11-15T18:25:44.442097Z"
+                source: api
+              number: 2
+              resources:
+                bindings:
+                - json: example_binding
+                  name: JSON_VAR
+                  type: json
+                script:
+                  etag: 13a3240e8fb414561b0366813b0b8f42b3e6cfa0d9e70e99835dae83d0d8a794
+                  handlers:
+                  - fetch
+                  last_deployed_from: api
+                script_runtime:
+                  usage_model: bundled
+    deployments-single-response:
+      allOf:
+      - $ref: '#/components/schemas/api-response-common'
+      - properties:
+          id:
+            type: string
+            example: 18f97339-c287-4872-9bdd-e2135c07ec12
+          metadata:
+            type: object
+            example:
+              author_email: user@example.com
+              author_id: 408cbcdfd4dda4617efef40b04d168a1
+              created_on: "2022-11-08T17:19:29.176266Z"
+              modified_on: "2022-11-08T17:19:29.176266Z"
+              source: api
+          number:
+            type: number
+            example: 1
+          resources:
+            type: object
+            example:
+              bindings:
+              - json: example_binding
+                name: JSON_VAR
+                type: json
+              script:
+                etag: 13a3240e8fb414561b0366813b0b8f42b3e6cfa0d9e70e99835dae83d0d8a794
+                handlers:
+                - fetch
+                last_deployed_from: api
+              script_runtime:
+                usage_model: bundled
     deprecate_any_requests:
       type: boolean
       description: Deprecate the response to ANY requests.
@@ -7443,7 +7542,7 @@ components:
                 format: date
                 example: "2021-04-01"
         domain:
-          $ref: '#/components/schemas/components-schemas-domain_name'
+          $ref: '#/components/schemas/schemas-domain_name'
     domain-response-collection:
       allOf:
       - $ref: '#/components/schemas/api-response-common'
@@ -7479,7 +7578,7 @@ components:
         content_categories:
           $ref: '#/components/schemas/content_categories'
         domain:
-          $ref: '#/components/schemas/components-schemas-domain_name'
+          $ref: '#/components/schemas/schemas-domain_name'
         popularity_rank:
           $ref: '#/components/schemas/popularity_rank'
         resolves_to_refs:
@@ -17277,7 +17376,7 @@ components:
                 content_categories:
                   $ref: '#/components/schemas/content_categories'
                 domain:
-                  $ref: '#/components/schemas/components-schemas-domain_name'
+                  $ref: '#/components/schemas/schemas-domain_name'
                 popularity_rank:
                   $ref: '#/components/schemas/popularity_rank'
                 risk_score:
@@ -17493,22 +17592,6 @@ components:
       type: string
       description: The domain and path that Access will secure.
       example: test.example.com/admin
-    schemas-domain-response-collection:
-      allOf:
-      - $ref: '#/components/schemas/api-response-common'
-      - type: object
-        properties:
-          result:
-            type: array
-            items:
-              $ref: '#/components/schemas/domain'
-    schemas-domain-response-single:
-      allOf:
-      - $ref: '#/components/schemas/api-response-common'
-      - type: object
-        properties:
-          result:
-            $ref: '#/components/schemas/domain'
     schemas-domain_identifier:
       type: string
       description: Domain identifier.
@@ -17517,7 +17600,6 @@ components:
       maxLength: 32
     schemas-domain_name:
       type: string
-      description: Domain name.
       example: cloudflare.com
     schemas-duration:
       type: integer
@@ -19172,6 +19254,11 @@ components:
       - properties:
           result:
             type: object
+    script_identifier:
+      type: string
+      example: 8ee82b3a2c0f42928b8f14dae4a97121
+      readOnly: true
+      maxLength: 32
     script_name:
       type: string
       description: Name of the script, used in URLs and route configuration.
@@ -22900,7 +22987,7 @@ components:
           format: date
           example: "2009-02-17"
         domain:
-          $ref: '#/components/schemas/components-schemas-domain_name'
+          $ref: '#/components/schemas/schemas-domain_name'
         nameservers:
           type: array
           example:
@@ -23818,7 +23905,7 @@ paths:
       - api_email: []
         api_key: []
       - api_token: []
-  /accounts/{account_id}/rulesets/phases/{ruleset_phase}/versions:
+  /accounts/{account_id}/rulesets/phases/{ruleset_phase}/entrypoint/versions:
     get:
       tags:
       - Account Rulesets
@@ -23855,7 +23942,7 @@ paths:
       - api_email: []
         api_key: []
       - api_token: []
-  /accounts/{account_id}/rulesets/phases/{ruleset_phase}/versions/{ruleset_version}:
+  /accounts/{account_id}/rulesets/phases/{ruleset_phase}/entrypoint/versions/{ruleset_version}:
     get:
       tags:
       - Account Rulesets
@@ -30076,7 +30163,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: Get projects response failure
@@ -30107,7 +30194,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -30150,7 +30237,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -30198,7 +30285,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: Get project response failure
@@ -30235,7 +30322,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -30278,7 +30365,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: Get deployments response failure
@@ -30315,7 +30402,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -30351,7 +30438,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
+          $ref: '#/components/schemas/identifier'
       - name: project_name
         in: path
         required: true
@@ -30361,7 +30448,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -30404,7 +30491,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
+          $ref: '#/components/schemas/identifier'
       - name: project_name
         in: path
         required: true
@@ -30414,7 +30501,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: Get deployment info response failure
@@ -30451,7 +30538,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
+          $ref: '#/components/schemas/identifier'
       - name: project_name
         in: path
         required: true
@@ -30461,7 +30548,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: Get deployment stage logs response failure
@@ -30494,7 +30581,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
+          $ref: '#/components/schemas/identifier'
       - name: project_name
         in: path
         required: true
@@ -30504,7 +30591,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: Get deployment logs response failure
@@ -30536,7 +30623,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
+          $ref: '#/components/schemas/identifier'
       - name: project_name
         in: path
         required: true
@@ -30546,7 +30633,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -30583,7 +30670,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
+          $ref: '#/components/schemas/identifier'
       - name: project_name
         in: path
         required: true
@@ -30593,7 +30680,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -30634,7 +30721,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: Get domains response failure
@@ -30670,7 +30757,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -30718,7 +30805,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -30771,7 +30858,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: Get domain response failure
@@ -30812,7 +30899,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -31679,7 +31766,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/schemas-domain_name'
+          $ref: '#/components/schemas/Cloudflare Client API_domain_name'
       - name: account_identifier
         in: path
         required: true
@@ -31715,7 +31802,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/schemas-domain_name'
+          $ref: '#/components/schemas/Cloudflare Client API_domain_name'
       - name: account_identifier
         in: path
         required: true
@@ -35956,6 +36043,83 @@ paths:
       - api_email: []
         api_key: []
       - api_token: []
+  /accounts/{account_identifier}/workers/deployments/by-script/{script_identifier}:
+    get:
+      tags:
+      - Worker Deployments
+      summary: List Deployments
+      operationId: worker-deployments-list-deployments
+      parameters:
+      - name: script_identifier
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/script_identifier'
+      - name: account_identifier
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      responses:
+        4xx:
+          description: List Deployments response failure
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/deployments-list-response'
+                - $ref: '#/components/schemas/api-response-common-failure'
+        "200":
+          description: List Deployments response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/deployments-list-response'
+      security:
+      - api_email: []
+        api_key: []
+      - api_token: []
+  /accounts/{account_identifier}/workers/deployments/by-script/{script_identifier}/detail/{deployment_identifier}:
+    get:
+      tags:
+      - Worker Deployments
+      summary: Get Deployment Detail
+      operationId: worker-deployments-get-deployment-detail
+      parameters:
+      - name: deployment_identifier
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/deployment_identifier'
+      - name: script_identifier
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/script_identifier'
+      - name: account_identifier
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      responses:
+        4xx:
+          description: Get Deployment Detail response failure
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/deployments-single-response'
+                - $ref: '#/components/schemas/api-response-common-failure'
+        "200":
+          description: Get Deployment Detail response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/deployments-single-response'
+      security:
+      - api_email: []
+        api_key: []
+      - api_token: []
   /accounts/{account_identifier}/workers/domains:
     get:
       tags:
@@ -35976,14 +36140,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/schemas-domain-response-collection'
+                - $ref: '#/components/schemas/Cloudflare Client API_domain-response-collection'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: List Domains response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/schemas-domain-response-collection'
+                $ref: '#/components/schemas/Cloudflare Client API_domain-response-collection'
       security:
       - api_email: []
         api_key: []
@@ -36027,14 +36191,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/schemas-domain-response-single'
+                - $ref: '#/components/schemas/Cloudflare Client API_domain-response-single'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Attach to Domain response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/schemas-domain-response-single'
+                $ref: '#/components/schemas/Cloudflare Client API_domain-response-single'
       security:
       - api_email: []
         api_key: []
@@ -36098,14 +36262,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/schemas-domain-response-single'
+                - $ref: '#/components/schemas/Cloudflare Client API_domain-response-single'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Get a Domain response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/schemas-domain-response-single'
+                $ref: '#/components/schemas/Cloudflare Client API_domain-response-single'
       security:
       - api_email: []
         api_key: []
@@ -60879,7 +61043,7 @@ paths:
       - api_email: []
         api_key: []
       - api_token: []
-  /zones/{zone_id}/rulesets/phases/{ruleset_phase}/versions:
+  /zones/{zone_id}/rulesets/phases/{ruleset_phase}/entrypoint/versions:
     get:
       tags:
       - Zone Rulesets
@@ -60916,7 +61080,7 @@ paths:
       - api_email: []
         api_key: []
       - api_token: []
-  /zones/{zone_id}/rulesets/phases/{ruleset_phase}/versions/{ruleset_version}:
+  /zones/{zone_id}/rulesets/phases/{ruleset_phase}/entrypoint/versions/{ruleset_version}:
     get:
       tags:
       - Zone Rulesets
