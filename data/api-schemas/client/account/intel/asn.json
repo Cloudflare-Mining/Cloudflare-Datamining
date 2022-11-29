@@ -12,7 +12,7 @@
 			"html_id": "asn-intelligence-get-asn-overview",
 			"uri": "accounts/:account_identifier/intel/asn/:asn",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/intel/asn/13335\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"asn\": 13335,\n      \"description\": \"CLOUDFLARENET\",\n      \"country\": \"US\",\n      \"type\": \"hosting_provider\",\n      \"domain_count\": 1,\n      \"top_domains\": [\n        \"example.com\"\n      ]\n    }\n  ]\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"asn\": 13335,\n    \"description\": \"CLOUDFLARENET\",\n    \"country\": \"US\",\n    \"type\": \"hosting_provider\",\n    \"domain_count\": 1,\n    \"top_domains\": [\n      \"example.com\"\n    ]\n  }\n}"
 		},
 		{
 			"title": "Get ASN Subnets",
