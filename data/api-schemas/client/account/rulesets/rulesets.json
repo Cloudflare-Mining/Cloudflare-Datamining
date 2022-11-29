@@ -699,7 +699,7 @@
 			"title": "List an account entry point ruleset's versions",
 			"description": "Fetches the versions of an account entry point ruleset.",
 			"rel": "collection",
-			"href": "accounts/{#/definitions/account_id}/rulesets/phases/{#/definitions/ruleset_phase}/versions",
+			"href": "accounts/{#/definitions/account_id}/rulesets/phases/{#/definitions/ruleset_phase}/entrypoint/versions",
 			"method": "GET",
 			"cfOwnership": "rulesets",
 			"cfPlanAvailability": {
@@ -709,15 +709,15 @@
 				"enterprise": true
 			},
 			"html_id": "account-rulesets-list-an-account-entry-point-ruleset-s-versions",
-			"uri": "accounts/:account_id/rulesets/phases/:ruleset_phase/versions",
-			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/rulesets/phases/http_request_firewall_managed/versions\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"uri": "accounts/:account_id/rulesets/phases/:ruleset_phase/entrypoint/versions",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/rulesets/phases/http_request_firewall_managed/entrypoint/versions\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"2f2feab2026849078ba485f918791bdc\",\n      \"name\": \"My ruleset\",\n      \"description\": \"My ruleset to execute managed rulesets\",\n      \"kind\": \"root\",\n      \"phase\": \"http_request_firewall_managed\",\n      \"version\": \"1\",\n      \"last_updated\": \"2000-01-01T00:00:00.000000Z\"\n    }\n  ]\n}"
 		},
 		{
 			"title": "Get an account entry point ruleset version",
 			"description": "Fetches a specific version of an account entry point ruleset.",
 			"rel": "self",
-			"href": "accounts/{#/definitions/account_id}/rulesets/phases/{#/definitions/ruleset_phase}/versions/{#/definitions/ruleset_version}",
+			"href": "accounts/{#/definitions/account_id}/rulesets/phases/{#/definitions/ruleset_phase}/entrypoint/versions/{#/definitions/ruleset_version}",
 			"method": "GET",
 			"cfOwnership": "rulesets",
 			"cfPlanAvailability": {
@@ -727,8 +727,8 @@
 				"enterprise": true
 			},
 			"html_id": "account-rulesets-get-an-account-entry-point-ruleset-version",
-			"uri": "accounts/:account_id/rulesets/phases/:ruleset_phase/versions/:ruleset_version",
-			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/rulesets/phases/http_request_firewall_managed/versions/1\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"uri": "accounts/:account_id/rulesets/phases/:ruleset_phase/entrypoint/versions/:ruleset_version",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/rulesets/phases/http_request_firewall_managed/entrypoint/versions/1\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"2f2feab2026849078ba485f918791bdc\",\n    \"name\": \"My ruleset\",\n    \"description\": \"My ruleset to execute managed rulesets\",\n    \"kind\": \"root\",\n    \"phase\": \"http_request_firewall_managed\",\n    \"version\": \"1\",\n    \"rules\": [\n      {\n        \"id\": \"3a03d665bac047339bb530ecb439a90d\",\n        \"description\": \"Execute the OWASP ruleset when the IP address is not 1.1.1.1\",\n        \"version\": \"1\",\n        \"expression\": \"ip.src ne 1.1.1.1\",\n        \"action\": \"execute\",\n        \"action_parameters\": {\n          \"id\": \"4814384a9e5d4991b9815dcfc25d2f1f\"\n        },\n        \"ref\": \"my_ref\",\n        \"categories\": [\n          \"directory-traversal\",\n          \"header\"\n        ],\n        \"enabled\": \"true\",\n        \"logging\": {\n          \"enabled\": \"true\"\n        },\n        \"last_updated\": \"2000-01-01T00:00:00.000000Z\"\n      }\n    ],\n    \"last_updated\": \"2000-01-01T00:00:00.000000Z\"\n  }\n}"
 		}
 	],

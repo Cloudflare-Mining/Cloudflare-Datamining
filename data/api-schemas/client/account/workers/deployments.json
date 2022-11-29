@@ -1,0 +1,64 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/workers/deployments.json",
+	"title": "Worker Deployments",
+	"description": "Snapshot of Worker state",
+	"cfExtendedDescription": "**For more detailed documentation on using the API for Workers see the [Workers API](https://workers.cloudflare.com/docs/reference/tooling/api/).**",
+	"type": "object",
+	"links": [
+		{
+			"title": "List Deployments",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_identifier}/workers/deployments/by-script/{#/definitions/script_identifier}",
+			"method": "GET",
+			"cfOwnership": "workers",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.edge.worker.deployment.list"
+				]
+			},
+			"html_id": "worker-deployments-list-deployments",
+			"uri": "accounts/:account_identifier/workers/deployments/by-script/:script_identifier",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/workers/deployments/by-script/8ee82b3a2c0f42928b8f14dae4a97121\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"latest\": {\n    \"id\": \"bcf48806-b317-4351-9ee7-36e7d557d4de\",\n    \"number\": 2,\n    \"metadata\": {\n      \"created_on\": \"2022-11-15T18:25:44.442097Z\",\n      \"modified_on\": \"2022-11-15T18:25:44.442097Z\",\n      \"source\": \"api\",\n      \"author_id\": \"408cbcdfd4dda4617efef40b04d168a1\",\n      \"author_email\": \"user@example.com\"\n    },\n    \"resources\": {\n      \"script\": {\n        \"etag\": \"13a3240e8fb414561b0366813b0b8f42b3e6cfa0d9e70e99835dae83d0d8a794\",\n        \"handlers\": [\n          \"fetch\"\n        ],\n        \"last_deployed_from\": \"api\"\n      },\n      \"script_runtime\": {\n        \"usage_model\": \"bundled\"\n      },\n      \"bindings\": [\n        {\n          \"json\": \"example_binding\",\n          \"name\": \"JSON_VAR\",\n          \"type\": \"json\"\n        }\n      ]\n    }\n  },\n  \"items\": [\n    {\n      \"id\": \"bcf48806-b317-4351-9ee7-36e7d557d4de\",\n      \"number\": 2,\n      \"metadata\": {\n        \"created_on\": \"2022-11-15T18:25:44.442097Z\",\n        \"modified_on\": \"2022-11-15T18:25:44.442097Z\",\n        \"source\": \"api\",\n        \"author_id\": \"408cbcdfd4dda4617efef40b04d168a1\",\n        \"author_email\": \"user@example.com\"\n      }\n    },\n    {\n      \"id\": \"18f97339-c287-4872-9bdd-e2135c07ec12\",\n      \"number\": 1,\n      \"metadata\": {\n        \"created_on\": \"2022-11-08T17:30:56.968096Z\",\n        \"modified_on\": \"2022-11-08T17:30:56.968096Z\",\n        \"source\": \"api\",\n        \"author_id\": \"408cbcdfd4dda4617efef40b04d168a1\",\n        \"author_email\": \"user@example.com\"\n      }\n    }\n  ]\n}"
+		},
+		{
+			"title": "Get Deployment Detail",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/workers/deployments/by-script/{#/definitions/script_identifier}/detail/{#/definitions/deployment_identifier}",
+			"method": "GET",
+			"cfOwnership": "workers",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.edge.worker.deployment.read"
+				]
+			},
+			"html_id": "worker-deployments-get-deployment-detail",
+			"uri": "accounts/:account_identifier/workers/deployments/by-script/:script_identifier/detail/:deployment_identifier",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/workers/deployments/by-script/8ee82b3a2c0f42928b8f14dae4a97121/detail/bcf48806-b317-4351-9ee7-36e7d557d4de\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"id\": \"18f97339-c287-4872-9bdd-e2135c07ec12\",\n  \"number\": 1,\n  \"metadata\": {\n    \"created_on\": \"2022-11-08T17:19:29.176266Z\",\n    \"modified_on\": \"2022-11-08T17:19:29.176266Z\",\n    \"source\": \"api\",\n    \"author_id\": \"408cbcdfd4dda4617efef40b04d168a1\",\n    \"author_email\": \"user@example.com\"\n  },\n  \"resources\": {\n    \"script\": {\n      \"etag\": \"13a3240e8fb414561b0366813b0b8f42b3e6cfa0d9e70e99835dae83d0d8a794\",\n      \"handlers\": [\n        \"fetch\"\n      ],\n      \"last_deployed_from\": \"api\"\n    },\n    \"script_runtime\": {\n      \"usage_model\": \"bundled\"\n    },\n    \"bindings\": [\n      {\n        \"json\": \"example_binding\",\n        \"name\": \"JSON_VAR\",\n        \"type\": \"json\"\n      }\n    ]\n  }\n}"
+		}
+	],
+	"cfLinkErrors": {
+		"10002": "Unexpected internal server error",
+		"10003": "Missing required URL parameter",
+		"10004": "Malformed URL parameter",
+		"10005": "Missing Script Name",
+		"10007": "Resource not found (similar to HTTP 404)",
+		"10014": "Internal error while attempting authorization checks",
+		"10015": "The current account is not authorized to use workers",
+		"10023": "Unauthorized access attempt"
+	},
+	"html_id": "worker-deployments",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {},
+		"required_props": [],
+		"optional_props": [],
+		"objects": [],
+		"example": "{}",
+		"title": "Worker Deployments",
+		"description": "Snapshot of Worker state"
+	}
+}
