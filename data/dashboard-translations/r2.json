@@ -46,6 +46,7 @@
 	"r2.buckets.create.access.private.description": "By default buckets are not publicly accessible. You can access objects stored within your bucket by <0>binding the bucket</0> to a Worker or using the API. Bucket access can be changed to Public at any time.",
 	"r2.buckets.modal.access.public.confirmation.title": "Allow Public Access?",
 	"r2.buckets.modal.access.public.confirmation.body": "Data in this bucket will become publicly accessible on the Internet through the Public Bucket URL.",
+	"r2.buckets.modal.access.public.confirmation.ratelimit": "The Public Bucket URL is rate-limited. Connect a custom domain to the bucket to support production workloads.",
 	"r2.buckets.modal.access.private.confirmation.title": "Disallow Public Access?",
 	"r2.buckets.modal.access.private.confirmation.body": "Data in this bucket will no longer be publicly accessible on the Internet through the Public Bucket URL.",
 	"r2.buckets.delete.modal.title": "Delete bucket?",
