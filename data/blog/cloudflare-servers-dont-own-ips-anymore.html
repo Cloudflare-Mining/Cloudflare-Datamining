@@ -15,7 +15,7 @@
 		<li>In our CDN product, before the content is cached, it's fetched from the origin servers. See "<a href="https://blog.cloudflare.com/how-we-built-pingora-the-proxy-that-connects-cloudflare-to-the-internet/">Pingora, the proxy that connects Cloudflare to the Internet (2022)</a>", <a href="https://blog.cloudflare.com/argo-v2/">Argo</a> and <a href="https://blog.cloudflare.com/tiered-cache-smart-topology/">Tiered Cache</a>.</li>
 		<li>For the <a href="https://www.cloudflare.com/products/cloudflare-spectrum/" target="_blank">Spectrum</a> product, each ingress TCP connection results in one egress connection.</li>
 		<li><a href="https://workers.cloudflare.com/" target="_blank">Workers</a> often run multiple subrequests to construct an HTTP response. Some of them might be querying servers to the Internet.</li>
-		<li>We also operate client-facing forward proxy products - like WARP and Teams. These proxies deal with eyeball connections destined to the Internet. Our servers need to establish connections to the Internet on behalf of our users.</li>
+		<li>We also operate client-facing forward proxy products - like WARP and Cloudflare Gateway. These proxies deal with eyeball connections destined to the Internet. Our servers need to establish connections to the Internet on behalf of our users.</li>
 	</ul>
 	<p>And so on.</p>
 	<h3 id="anycast-on-ingress-unicast-on-egress">Anycast on ingress, unicast on egress</h3>
