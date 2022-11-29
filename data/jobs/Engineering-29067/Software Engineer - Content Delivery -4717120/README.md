@@ -6,7 +6,7 @@
 	</div>
 </div>
 <p><strong>About the Department</strong></p>
-<p>Cloudflare’s Engineering Team builds and runs the software that helps power 16 million Internet properties. We also build and run the internal tools that builds and runs our software. The Engineering Team is split into two groups: one handles product development and the other handles operations. Product development covers both new features and functionality and scaling our existing software to meet the challenges of a massively growing customer base. The operations team handles one of the world’s largest networks with data centers in 102 cities worldwide.</p>
+<p><span style="font-weight: 400;">Cloudflare’s Engineering Team builds and runs the software that helps power millions of Internet properties. We also build and run the internal tools that build and run our software. The Engineering Team is split into two groups: one handles product development and the other handles operations. Product development covers both new features and functionality and scaling our existing software to meet the challenges of a massively growing customer base. The operations team handles one of the world’s largest networks with data centers in more than 270 cities in over 100 countries.</span></p>
 <p><strong>What you'll do</strong></p>
 <ul>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Work as part of a team that builds the Cloudflare cache and related functionality</span></li>
@@ -18,14 +18,14 @@
 </ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li><span style="font-weight: 400;">4+ years professional experience as a developer/engineer</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">4+ years professional experience as a developer/engineer</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Solid grasp of how TCP and HTTP work</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with Linux networking</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to work in multiple programming languages (C, Lua or Python)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Programming experience in Go, Rust, C, or similar languages</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Good oral and written communication skills</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong interpersonal and communication skills</span></li>
-	<li><span style="font-weight: 400;">BA/BS in Computer Science or equivalent professional experience</span></li>
-	<li><span style="font-weight: 400;">Experience implementing secure and highly-available distributed systems a plus.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">BA/BS in Computer Science or equivalent professional experience</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience implementing secure and highly-available distributed systems is a plus.</span></li>
 </ul>
 <p><strong>Compensation</strong></p>
 <p><span style="font-weight: 400;">Compensation may be adjusted depending on work location.</span></p>
