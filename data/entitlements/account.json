@@ -396,6 +396,54 @@
 		}
 	},
 	{
+		"id": "challenge_widgets",
+		"feature": {
+			"feature_set": "challenge_widgets",
+			"id": 1023,
+			"key": "challenge_widgets",
+			"name": "Challenge Widgets"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "challenge_widgets.any_hostname",
+		"feature": {
+			"feature_set": "challenge_widgets",
+			"id": 1024,
+			"key": "challenge_widgets.any_hostname",
+			"name": "Challenge widgets with no preconfigured hostnames"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "challenge_widgets.china_region",
+		"feature": {
+			"feature_set": "challenge_widgets",
+			"id": 1025,
+			"key": "challenge_widgets.china_region",
+			"name": "Challenge widgets in JD Cloud"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "challenge_widgets.hostnames",
+		"feature": {
+			"feature_set": "challenge_widgets",
+			"id": 1026,
+			"key": "challenge_widgets.hostnames",
+			"name": "Challenge widgets - Hostnames per widget"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
 		"id": "contract.customer_enabled",
 		"feature": {
 			"feature_set": "contract",
@@ -1308,6 +1356,18 @@
 		}
 	},
 	{
+		"id": "rulesets.adv_geoip_allowed",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 877,
+			"key": "rulesets.adv_geoip_allowed",
+			"name": "Rulesets - Advance GeoIP Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "rulesets.adv_threat_intel_allowed",
 		"feature": {
 			"feature_set": "rulesets",
@@ -1482,6 +1542,18 @@
 			"id": 862,
 			"key": "rulesets.fw_global_rulesets_execute_firewall_managed_cor_allowed",
 			"name": "Rulesets - Execute Global Cloudflare OWASP Rules Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "rulesets.fw_global_rulesets_execute_magic_transit_ids_managed_allowed",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 1157,
+			"key": "rulesets.fw_global_rulesets_execute_magic_transit_ids_managed_allowed",
+			"name": "Rulesets - Execute Magic Transit Intrusion Detection System (IDS) Managed Rules Allowed"
 		},
 		"allocation": {
 			"type": "bool"
