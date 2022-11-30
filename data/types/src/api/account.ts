@@ -335,7 +335,7 @@ export const AccountFirewallRuleHTTPApplication = eg.object({
   }),
   action_parameters: eg.object({
     http_application: eg.string,
-    version: eg.string,
+    version: eg.number,
     lock_by_default: eg.boolean
   })
 });
