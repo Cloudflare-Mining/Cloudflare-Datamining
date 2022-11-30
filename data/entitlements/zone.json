@@ -1800,6 +1800,30 @@
 		}
 	},
 	{
+		"id": "token_validation.allowed",
+		"feature": {
+			"feature_set": "token_validation",
+			"id": 1158,
+			"key": "token_validation.allowed",
+			"name": "Token Validation - Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "token_validation.max_configs_per_zone",
+		"feature": {
+			"feature_set": "token_validation",
+			"id": 1159,
+			"key": "token_validation.max_configs_per_zone",
+			"name": "Token Validation - Max Allowed Configurations per Zone"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
 		"id": "ts.manual_process",
 		"feature": {
 			"feature_set": "abuse",
