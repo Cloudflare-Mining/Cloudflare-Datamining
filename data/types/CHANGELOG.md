@@ -3,9 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [6.18.18](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/types@6.18.16...@cloudflare/types@6.18.18) (2022-11-28)
+## [6.18.19](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/types@6.18.16...@cloudflare/types@6.18.19) (2022-11-30)
 
-**Note:** Version bump only for package @cloudflare/types
+
+### Bug Fixes
+
+* **stratus:** UI-000: Ran `yarn update-packages-with-wrong-version` ([d6872b8](http://stash.cfops.it:7999/fe/stratus/commits/d6872b8))
 
 
 

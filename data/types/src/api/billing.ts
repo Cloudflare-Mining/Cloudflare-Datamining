@@ -140,7 +140,8 @@ export const BillingAccount = eg.object({
   flags: eg.object({
     async_tract: eg.boolean,
     banned: eg.boolean,
-    pdf_invoices: eg.boolean
+    pdf_invoices: eg.boolean,
+    install_base_customer: eg.boolean
   })
 });
 

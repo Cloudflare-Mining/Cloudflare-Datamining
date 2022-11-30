@@ -5,7 +5,9 @@ export const PlanId = eg.union([
   eg.literal('pro'),
   eg.literal('business'),
   eg.literal('enterprise'),
-  eg.literal('enterprise_trial')
+  eg.literal('enterprise_trial'),
+  eg.literal('lite'),
+  eg.literal('pro_plus')
 ]);
 export type PlanId = TypeFromCodec<typeof PlanId>;
 
@@ -31,7 +33,11 @@ export const CfPlanId = eg.union([
   eg.literal('cf_pro_20_5'),
   eg.literal('CF_PRO_20_5'),
   eg.literal('cf_pro_free'),
-  eg.literal('CF_PRO_FREE')
+  eg.literal('CF_PRO_FREE'),
+  eg.literal('cf_lite'),
+  eg.literal('CF_LITE'),
+  eg.literal('cf_pro_plus'),
+  eg.literal('CF_PRO_PLUS')
 ]);
 export type CfPlanId = TypeFromCodec<typeof CfPlanId>;
 
