@@ -219,6 +219,7 @@
 			"labels": [
 				"new"
 			],
+			"testId": "sidenav-images-link",
 			"pages": [
 				{
 					"title": "navigation.account.images",
@@ -235,6 +236,7 @@
 				{
 					"title": "navigation.account.images.sourcing_kit",
 					"url": "/images/sourcing-kit",
+					"testId": "sidenav-sourcingkit-link",
 					"labels": [
 						"beta"
 					]
@@ -544,14 +546,14 @@
 			"canBeVersioned": true,
 			"pages": [
 				{
-					"title": "navigation.common.overview",
-					"url": "/security",
-					"canBeVersioned": true
+					"title": "navigation.zone.security.analytics",
+					"canBeVersioned": false,
+					"url": "/security/analytics"
 				},
 				{
 					"title": "navigation.zone.security.events",
-					"canBeVersioned": false,
-					"url": "/security/events"
+					"url": "/security/events",
+					"canBeVersioned": true
 				},
 				{
 					"title": "navigation.zone.security.waf",
@@ -871,10 +873,6 @@
 			"url": "/security/waf",
 			"iconType": "shield",
 			"pages": [
-				{
-					"title": "navigation.zone.security.events",
-					"url": "/security/events"
-				},
 				{
 					"title": "navigation.zone.security.waf",
 					"url": "/security/waf"
