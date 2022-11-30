@@ -6253,175 +6253,125 @@ components:
       description: Configs for deployments in a project.
       properties:
         preview:
+          anyOf:
+          - $ref: '#/components/schemas/deployment_configs_values'
           type: object
           description: Configs for preview deploys.
-          properties:
-            compatibility_date:
-              type: string
-              description: Compatibility date used for Pages Functions.
-              example: "2022-01-01"
-            compatibility_flags:
-              type: array
-              description: Compatibility flags used for Pages Functions.
-              example:
-              - url_standard
-              items: {}
-            d1_databases:
-              type: object
-              description: D1 databases used for Pages Functions.
-              properties:
-                D1_BINDING:
-                  type: object
-                  description: D1 binding.
-                  example:
-                    id: 445e2955-951a-43f8-a35b-a4d0c8138f63
-                  properties:
-                    id:
-                      type: string
-                      description: UUID of the D1 database.
-                      example: 445e2955-951a-43f8-a35b-a4d0c8138f63
-            durable_object_namespaces:
-              type: object
-              description: Durabble Object namespaces used for Pages Functions.
-              properties:
-                DO_BINDING:
-                  type: object
-                  description: Durabble Object binding.
-                  example:
-                    namespace_id: 5eb63bbbe01eeed093cb22bb8f5acdc3
-                  properties:
-                    namespace_id:
-                      type: string
-                      description: ID of the Durabble Object namespace.
-                      example: 5eb63bbbe01eeed093cb22bb8f5acdc3
-            env_vars:
-              type: object
-              description: Environment variables for build configs.
-              nullable: true
-              properties:
-                BUILD_VERSION:
-                  type: object
-                  description: Environment variable.
-                  example:
-                    value: "3.3"
-                  properties:
-                    value:
-                      type: string
-                      description: Environment variable value.
-                      example: "3.3"
-            kv_namespaces:
-              type: object
-              description: KV namespaces used for Pages Functions.
-              properties:
-                KV_BINDING:
-                  type: object
-                  description: KV binding.
-                  example:
-                    namespace_id: 5eb63bbbe01eeed093cb22bb8f5acdc3
-                  properties:
-                    namespace_id:
-                      type: string
-                      description: ID of the KV namespace.
-                      example: 5eb63bbbe01eeed093cb22bb8f5acdc3
-            r2_buckets:
-              type: object
-              description: R2 buckets used for Pages Functions.
-              properties:
-                R2_BINDING:
-                  type: object
-                  description: R2 binding.
-                  example:
-                    name: some-bucket
-                  properties:
-                    name:
-                      type: string
-                      description: Name of the R2 bucket.
-                      example: some-bucket
         production:
+          anyOf:
+          - $ref: '#/components/schemas/deployment_configs_values'
           type: object
           description: Configs for production deploys.
+    deployment_configs_values:
+      type: object
+      properties:
+        compatibility_date:
+          type: string
+          description: Compatibility date used for Pages Functions.
+          example: "2022-01-01"
+        compatibility_flags:
+          type: array
+          description: Compatibility flags used for Pages Functions.
+          example:
+          - url_standard
+        d1_databases:
+          type: object
+          description: D1 databases used for Pages Functions.
+          nullable: true
           properties:
-            compatibility_date:
-              type: string
-              description: Compatibility date used for Pages Functions.
-              example: "2022-01-01"
-            compatibility_flags:
-              type: array
-              description: Compatibility flags used for Pages Functions.
+            D1_BINDING:
+              type: object
+              description: D1 binding.
               example:
-              - url_standard
-              items: {}
-            d1_databases:
-              type: object
-              description: D1 databases used for Pages Functions.
+                id: 445e2955-951a-43f8-a35b-a4d0c8138f63
               properties:
-                D1_BINDING:
-                  type: object
-                  description: D1 binding.
-                  example:
-                    id: 445e2955-951a-43f8-a35b-a4d0c8138f63
-                  properties:
-                    id:
-                      type: string
-                      description: UUID of the D1 database.
-                      example: 445e2955-951a-43f8-a35b-a4d0c8138f63
-            durable_object_namespaces:
+                id:
+                  type: string
+                  description: UUID of the D1 database.
+                  example: 445e2955-951a-43f8-a35b-a4d0c8138f63
+        durable_object_namespaces:
+          type: object
+          description: Durabble Object namespaces used for Pages Functions.
+          nullable: true
+          properties:
+            DO_BINDING:
               type: object
-              description: Durabble Object namespaces used for Pages Functions.
+              description: Durabble Object binding.
+              example:
+                namespace_id: 5eb63bbbe01eeed093cb22bb8f5acdc3
               properties:
-                DO_BINDING:
-                  type: object
-                  description: Durabble Object binding.
-                  example:
-                    namespace_id: 5eb63bbbe01eeed093cb22bb8f5acdc3
-                  properties:
-                    namespace_id:
-                      type: string
-                      description: ID of the Durabble Object namespace.
-                      example: 5eb63bbbe01eeed093cb22bb8f5acdc3
-            env_vars:
+                namespace_id:
+                  type: string
+                  description: ID of the Durabble Object namespace.
+                  example: 5eb63bbbe01eeed093cb22bb8f5acdc3
+        env_vars:
+          type: object
+          description: Environment variables for build configs.
+          nullable: true
+          properties:
+            ENVIRONMENT_VARIABLE:
               type: object
-              description: Environment variables for build configs.
-              nullable: true
+              description: Environment variable.
+              example:
+                type: plain_text
+                value: hello world
               properties:
-                BUILD_VERSION:
-                  type: object
-                  description: Environment variable.
-                  example:
-                    value: "3.3"
-                  properties:
-                    value:
-                      type: string
-                      description: Environment variable value.
-                      example: "3.3"
-            kv_namespaces:
+                type:
+                  type: string
+                  description: The type of environment variable (plain text or secret)
+                  enum:
+                  - plain_text
+                  - secret_text
+                value:
+                  type: string
+                  description: Environment variable value.
+        kv_namespaces:
+          type: object
+          description: KV namespaces used for Pages Functions.
+          properties:
+            KV_BINDING:
               type: object
-              description: KV namespaces used for Pages Functions.
+              description: KV binding.
+              example:
+                namespace_id: 5eb63bbbe01eeed093cb22bb8f5acdc3
               properties:
-                KV_BINDING:
-                  type: object
-                  description: KV binding.
-                  example:
-                    namespace_id: 5eb63bbbe01eeed093cb22bb8f5acdc3
-                  properties:
-                    namespace_id:
-                      type: string
-                      description: ID of the KV namespace.
-                      example: 5eb63bbbe01eeed093cb22bb8f5acdc3
-            r2_buckets:
+                namespace_id:
+                  type: string
+                  description: ID of the KV namespace.
+                  example: 5eb63bbbe01eeed093cb22bb8f5acdc3
+        r2_buckets:
+          type: object
+          description: R2 buckets used for Pages Functions.
+          nullable: true
+          properties:
+            R2_BINDING:
               type: object
-              description: R2 buckets used for Pages Functions.
+              description: R2 binding.
+              example:
+                name: some-bucket
               properties:
-                R2_BINDING:
-                  type: object
-                  description: R2 binding.
-                  example:
-                    name: some-bucket
-                  properties:
-                    name:
-                      type: string
-                      description: Name of the R2 bucket.
-                      example: some-bucket
+                name:
+                  type: string
+                  description: Name of the R2 bucket.
+                  example: some-bucket
+        service_bindings:
+          type: object
+          description: Services used for Pages Functions.
+          nullable: true
+          properties:
+            SERVICE_BINDING:
+              type: object
+              description: Service binding.
+              example:
+                environment: production
+                service: example-worker
+              properties:
+                environment:
+                  type: string
+                  description: The Service environment.
+                service:
+                  type: string
+                  description: The Service name.
     deployment_identifier:
       type: string
       example: bcf48806-b317-4351-9ee7-36e7d557d4de
@@ -30517,54 +30467,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/deployment-response-details'
-      security:
-      - api_email: []
-        api_key: []
-      - api_token: []
-  ? /accounts/{account_identifier}/pages/projects/{project_name}/deployments/{deployment_identifier}/history/{deployment_stage_name}/logs
-  : get:
-      tags:
-      - Pages Deployment
-      summary: Get deployment stage logs
-      description: Fetch deploy logs.
-      operationId: pages-deployment-get-deployment-stage-logs
-      parameters:
-      - name: deployment_stage_name
-        in: path
-        required: true
-        schema:
-          $ref: '#/components/schemas/deployment_stage_name'
-      - name: deployment_identifier
-        in: path
-        required: true
-        schema:
-          $ref: '#/components/schemas/identifier'
-      - name: project_name
-        in: path
-        required: true
-        schema:
-          $ref: '#/components/schemas/project_name'
-      - name: account_identifier
-        in: path
-        required: true
-        schema:
-          $ref: '#/components/schemas/identifier'
-      responses:
-        4xx:
-          description: Get deployment stage logs response failure
-          content:
-            application/json:
-              schema:
-                allOf:
-                - $ref: '#/components/schemas/deployment-response-stage-logs'
-                - $ref: '#/components/schemas/api-response-common-failure'
-        "200":
-          description: Get deployment stage logs response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/deployment-response-stage-logs'
-      deprecated: true
       security:
       - api_email: []
         api_key: []

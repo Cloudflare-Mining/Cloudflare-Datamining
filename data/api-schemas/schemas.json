@@ -8993,118 +8993,54 @@
 				"description": "Configs for deployments in a project.",
 				"properties": {
 					"preview": {
+						"anyOf": [
+							{
+								"$ref": "#/components/schemas/deployment_configs_values"
+							}
+						],
 						"description": "Configs for preview deploys.",
+						"type": "object"
+					},
+					"production": {
+						"anyOf": [
+							{
+								"$ref": "#/components/schemas/deployment_configs_values"
+							}
+						],
+						"description": "Configs for production deploys.",
+						"type": "object"
+					}
+				},
+				"type": "object"
+			},
+			"deployment_configs_values": {
+				"properties": {
+					"compatibility_date": {
+						"description": "Compatibility date used for Pages Functions.",
+						"example": "2022-01-01",
+						"type": "string"
+					},
+					"compatibility_flags": {
+						"description": "Compatibility flags used for Pages Functions.",
+						"example": [
+							"url_standard"
+						],
+						"type": "array"
+					},
+					"d1_databases": {
+						"description": "D1 databases used for Pages Functions.",
+						"nullable": true,
 						"properties": {
-							"compatibility_date": {
-								"description": "Compatibility date used for Pages Functions.",
-								"example": "2022-01-01",
-								"type": "string"
-							},
-							"compatibility_flags": {
-								"description": "Compatibility flags used for Pages Functions.",
-								"example": [
-									"url_standard"
-								],
-								"items": {},
-								"type": "array"
-							},
-							"d1_databases": {
-								"description": "D1 databases used for Pages Functions.",
-								"properties": {
-									"D1_BINDING": {
-										"description": "D1 binding.",
-										"example": {
-											"id": "445e2955-951a-43f8-a35b-a4d0c8138f63"
-										},
-										"properties": {
-											"id": {
-												"description": "UUID of the D1 database.",
-												"example": "445e2955-951a-43f8-a35b-a4d0c8138f63",
-												"type": "string"
-											}
-										},
-										"type": "object"
-									}
+							"D1_BINDING": {
+								"description": "D1 binding.",
+								"example": {
+									"id": "445e2955-951a-43f8-a35b-a4d0c8138f63"
 								},
-								"type": "object"
-							},
-							"durable_object_namespaces": {
-								"description": "Durabble Object namespaces used for Pages Functions.",
 								"properties": {
-									"DO_BINDING": {
-										"description": "Durabble Object binding.",
-										"example": {
-											"namespace_id": "5eb63bbbe01eeed093cb22bb8f5acdc3"
-										},
-										"properties": {
-											"namespace_id": {
-												"description": "ID of the Durabble Object namespace.",
-												"example": "5eb63bbbe01eeed093cb22bb8f5acdc3",
-												"type": "string"
-											}
-										},
-										"type": "object"
-									}
-								},
-								"type": "object"
-							},
-							"env_vars": {
-								"description": "Environment variables for build configs.",
-								"nullable": true,
-								"properties": {
-									"BUILD_VERSION": {
-										"description": "Environment variable.",
-										"example": {
-											"value": "3.3"
-										},
-										"properties": {
-											"value": {
-												"description": "Environment variable value.",
-												"example": "3.3",
-												"type": "string"
-											}
-										},
-										"type": "object"
-									}
-								},
-								"type": "object"
-							},
-							"kv_namespaces": {
-								"description": "KV namespaces used for Pages Functions.",
-								"properties": {
-									"KV_BINDING": {
-										"description": "KV binding.",
-										"example": {
-											"namespace_id": "5eb63bbbe01eeed093cb22bb8f5acdc3"
-										},
-										"properties": {
-											"namespace_id": {
-												"description": "ID of the KV namespace.",
-												"example": "5eb63bbbe01eeed093cb22bb8f5acdc3",
-												"type": "string"
-											}
-										},
-										"type": "object"
-									}
-								},
-								"type": "object"
-							},
-							"r2_buckets": {
-								"description": "R2 buckets used for Pages Functions.",
-								"properties": {
-									"R2_BINDING": {
-										"description": "R2 binding.",
-										"example": {
-											"name": "some-bucket"
-										},
-										"properties": {
-											"name": {
-												"description": "Name of the R2 bucket.",
-												"example": "some-bucket",
-												"type": "string"
-											}
-										},
-										"type": "object"
+									"id": {
+										"description": "UUID of the D1 database.",
+										"example": "445e2955-951a-43f8-a35b-a4d0c8138f63",
+										"type": "string"
 									}
 								},
 								"type": "object"
@@ -9112,119 +9048,115 @@
 						},
 						"type": "object"
 					},
-					"production": {
-						"description": "Configs for production deploys.",
+					"durable_object_namespaces": {
+						"description": "Durabble Object namespaces used for Pages Functions.",
+						"nullable": true,
 						"properties": {
-							"compatibility_date": {
-								"description": "Compatibility date used for Pages Functions.",
-								"example": "2022-01-01",
-								"type": "string"
-							},
-							"compatibility_flags": {
-								"description": "Compatibility flags used for Pages Functions.",
-								"example": [
-									"url_standard"
-								],
-								"items": {},
-								"type": "array"
-							},
-							"d1_databases": {
-								"description": "D1 databases used for Pages Functions.",
+							"DO_BINDING": {
+								"description": "Durabble Object binding.",
+								"example": {
+									"namespace_id": "5eb63bbbe01eeed093cb22bb8f5acdc3"
+								},
 								"properties": {
-									"D1_BINDING": {
-										"description": "D1 binding.",
-										"example": {
-											"id": "445e2955-951a-43f8-a35b-a4d0c8138f63"
-										},
-										"properties": {
-											"id": {
-												"description": "UUID of the D1 database.",
-												"example": "445e2955-951a-43f8-a35b-a4d0c8138f63",
-												"type": "string"
-											}
-										},
-										"type": "object"
+									"namespace_id": {
+										"description": "ID of the Durabble Object namespace.",
+										"example": "5eb63bbbe01eeed093cb22bb8f5acdc3",
+										"type": "string"
 									}
 								},
 								"type": "object"
-							},
-							"durable_object_namespaces": {
-								"description": "Durabble Object namespaces used for Pages Functions.",
+							}
+						},
+						"type": "object"
+					},
+					"env_vars": {
+						"description": "Environment variables for build configs.",
+						"nullable": true,
+						"properties": {
+							"ENVIRONMENT_VARIABLE": {
+								"description": "Environment variable.",
+								"example": {
+									"type": "plain_text",
+									"value": "hello world"
+								},
 								"properties": {
-									"DO_BINDING": {
-										"description": "Durabble Object binding.",
-										"example": {
-											"namespace_id": "5eb63bbbe01eeed093cb22bb8f5acdc3"
-										},
-										"properties": {
-											"namespace_id": {
-												"description": "ID of the Durabble Object namespace.",
-												"example": "5eb63bbbe01eeed093cb22bb8f5acdc3",
-												"type": "string"
-											}
-										},
-										"type": "object"
+									"type": {
+										"description": "The type of environment variable (plain text or secret)",
+										"enum": [
+											"plain_text",
+											"secret_text"
+										],
+										"type": "string"
+									},
+									"value": {
+										"description": "Environment variable value.",
+										"type": "string"
 									}
 								},
 								"type": "object"
-							},
-							"env_vars": {
-								"description": "Environment variables for build configs.",
-								"nullable": true,
+							}
+						},
+						"type": "object"
+					},
+					"kv_namespaces": {
+						"description": "KV namespaces used for Pages Functions.",
+						"properties": {
+							"KV_BINDING": {
+								"description": "KV binding.",
+								"example": {
+									"namespace_id": "5eb63bbbe01eeed093cb22bb8f5acdc3"
+								},
 								"properties": {
-									"BUILD_VERSION": {
-										"description": "Environment variable.",
-										"example": {
-											"value": "3.3"
-										},
-										"properties": {
-											"value": {
-												"description": "Environment variable value.",
-												"example": "3.3",
-												"type": "string"
-											}
-										},
-										"type": "object"
+									"namespace_id": {
+										"description": "ID of the KV namespace.",
+										"example": "5eb63bbbe01eeed093cb22bb8f5acdc3",
+										"type": "string"
 									}
 								},
 								"type": "object"
-							},
-							"kv_namespaces": {
-								"description": "KV namespaces used for Pages Functions.",
+							}
+						},
+						"type": "object"
+					},
+					"r2_buckets": {
+						"description": "R2 buckets used for Pages Functions.",
+						"nullable": true,
+						"properties": {
+							"R2_BINDING": {
+								"description": "R2 binding.",
+								"example": {
+									"name": "some-bucket"
+								},
 								"properties": {
-									"KV_BINDING": {
-										"description": "KV binding.",
-										"example": {
-											"namespace_id": "5eb63bbbe01eeed093cb22bb8f5acdc3"
-										},
-										"properties": {
-											"namespace_id": {
-												"description": "ID of the KV namespace.",
-												"example": "5eb63bbbe01eeed093cb22bb8f5acdc3",
-												"type": "string"
-											}
-										},
-										"type": "object"
+									"name": {
+										"description": "Name of the R2 bucket.",
+										"example": "some-bucket",
+										"type": "string"
 									}
 								},
 								"type": "object"
-							},
-							"r2_buckets": {
-								"description": "R2 buckets used for Pages Functions.",
+							}
+						},
+						"type": "object"
+					},
+					"service_bindings": {
+						"description": "Services used for Pages Functions.",
+						"nullable": true,
+						"properties": {
+							"SERVICE_BINDING": {
+								"description": "Service binding.",
+								"example": {
+									"environment": "production",
+									"service": "example-worker"
+								},
 								"properties": {
-									"R2_BINDING": {
-										"description": "R2 binding.",
-										"example": {
-											"name": "some-bucket"
-										},
-										"properties": {
-											"name": {
-												"description": "Name of the R2 bucket.",
-												"example": "some-bucket",
-												"type": "string"
-											}
-										},
-										"type": "object"
+									"environment": {
+										"description": "The Service environment.",
+										"type": "string"
+									},
+									"service": {
+										"description": "The Service name.",
+										"type": "string"
 									}
 								},
 								"type": "object"
@@ -45462,92 +45394,6 @@
 				"tags": [
 					"Pages Deployment"
 				]
-			}
-		},
-		"/accounts/{account_identifier}/pages/projects/{project_name}/deployments/{deployment_identifier}/history/{deployment_stage_name}/logs": {
-			"get": {
-				"deprecated": true,
-				"description": "Fetch deploy logs.",
-				"operationId": "pages-deployment-get-deployment-stage-logs",
-				"parameters": [
-					{
-						"in": "path",
-						"name": "deployment_stage_name",
-						"required": true,
-						"schema": {
-							"$ref": "#/components/schemas/deployment_stage_name"
-						}
-					},
-					{
-						"in": "path",
-						"name": "deployment_identifier",
-						"required": true,
-						"schema": {
-							"$ref": "#/components/schemas/identifier"
-						}
-					},
-					{
-						"in": "path",
-						"name": "project_name",
-						"required": true,
-						"schema": {
-							"$ref": "#/components/schemas/project_name"
-						}
-					},
-					{
-						"in": "path",
-						"name": "account_identifier",
-						"required": true,
-						"schema": {
-							"$ref": "#/components/schemas/identifier"
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/deployment-response-stage-logs"
-								}
-							}
-						},
-						"description": "Get deployment stage logs response"
-					},
-					"4xx": {
-						"content": {
-							"application/json": {
-								"schema": {
-									"allOf": [
-										{
-											"$ref": "#/components/schemas/deployment-response-stage-logs"
-										},
-										{
-											"$ref": "#/components/schemas/api-response-common-failure"
-										}
-									]
-								}
-							}
-						},
-						"description": "Get deployment stage logs response failure"
-					}
-				},
-				"security": [
-					{
-						"api_email": [],
-						"api_key": []
-					},
-					{
-						"api_token": []
-					}
-				],
-				"summary": "Get deployment stage logs",
-				"tags": [
-					"Pages Deployment"
-				],
-				"x-cfDeprecation": {
-					"$ref": "#/components/schemas/deployments/x-cfDeprecations/logs_v1_deprecated"
-				}
 			}
 		},
 		"/accounts/{account_identifier}/pages/projects/{project_name}/deployments/{deployment_identifier}/retry": {
