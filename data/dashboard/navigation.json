@@ -104,6 +104,10 @@
 					"labels": [
 						"beta"
 					]
+				},
+				{
+					"title": "navigation.account.logs",
+					"url": "/logs"
 				}
 			]
 		},
@@ -448,7 +452,7 @@
 		{
 			"title": "navigation.zone.http_applications_v2",
 			"url": "/versioning",
-			"canBeVersioned": false,
+			"canBeVersioned": true,
 			"iconType": "git-branch",
 			"testId": "zone-navigation-link-http_applications_v2"
 		},
@@ -548,7 +552,10 @@
 				{
 					"title": "navigation.zone.security.analytics",
 					"canBeVersioned": false,
-					"url": "/security/analytics"
+					"url": "/security/analytics",
+					"labels": [
+						"beta"
+					]
 				},
 				{
 					"title": "navigation.zone.security.events",

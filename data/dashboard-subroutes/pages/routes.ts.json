@@ -50,7 +50,7 @@
 	"/accounts/[id]/pages/projects/[id]/deployment_configs/[id]/*",
 	"/accounts/[id]/pages/projects/[id]/deployment_configs/[id]/envs",
 	"/accounts/[id]/pages/projects/[id]/deployments",
-	"/accounts/[id]/pages/projects/[id]/deployments/[id]/*",
+	"/accounts/[id]/pages/projects/[id]/deployments/[id]/?force=true",
 	"/accounts/[id]/pages/projects/[id]/deployments/[id]/build_metadata",
 	"/accounts/[id]/pages/projects/[id]/deployments/[id]/cancel",
 	"/accounts/[id]/pages/projects/[id]/deployments/[id]/functions",
