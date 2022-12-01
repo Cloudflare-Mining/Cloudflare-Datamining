@@ -1053,6 +1053,36 @@ components:
       description: The parameters configuring the rule action.
       example:
         id: 4814384a9e5d4991b9815dcfc25d2f1f
+    action_parameters_redirect:
+      description: The configuration parameters for the redirect action.
+      properties:
+        from_value:
+          type: object
+          description: The parameters that control the redirect.
+          properties:
+            preserve_query_string:
+              type: boolean
+              description: Whether the query string for the request should be carried
+                to the redirect's target url.
+              example: true
+            status_code:
+              type: integer
+              description: The status code to use for the redirect.
+            target_url:
+              oneOf:
+              - type: object
+                properties:
+                  expression:
+                    type: string
+                    description: An expression defining a dynamic value for the target
+                      url of the redirect.
+                    example: concat(http.request.full_uri, "/latest")
+              - type: object
+                properties:
+                  value:
+                    type: string
+                    description: The value defining the target url of the redirect.
+                    example: https://example.com/blog/latest
     action_parameters_rewrite:
       description: The configuration parameters for the rewrite action.
       properties:
@@ -1065,6 +1095,32 @@ components:
               description: The new URI path sent to the origin.
             query:
               description: The new query string sent to the origin.
+    action_parameters_route:
+      description: The configuration parameters for the route action.
+      properties:
+        host_header:
+          type: string
+          description: The value of the Host header.
+          example: foo.example.com
+        origin:
+          type: object
+          description: The parameters that control where the origin is.
+          properties:
+            host:
+              type: string
+              description: The host to use for origin.
+              example: foo.example.com
+            port:
+              type: integer
+              description: The port to use for origin.
+        sni:
+          type: object
+          description: The parameters that control the SNI.
+          properties:
+            value:
+              type: string
+              description: The SNI used to connect to the origin.
+              example: foo.example.com
     action_parameters_serve_error:
       description: The action parameters for the serve_error action.
       properties:
@@ -2091,6 +2147,20 @@ components:
         type: string
         description: A fully-qualified domain name (FQDN).
         example: admin.example.com
+    association_response_collection:
+      allOf:
+      - $ref: '#/components/schemas/api-response-collection'
+      - properties:
+          result:
+            type: array
+            items:
+              $ref: '#/components/schemas/associationObject'
+    associationObject:
+      properties:
+        service:
+          $ref: '#/components/schemas/service'
+        status:
+          $ref: '#/components/schemas/mtls-management_components-schemas-status'
     attack_mitigation:
       type: object
       description: Attack mitigation settings.
@@ -2913,14 +2983,10 @@ components:
             description: The URL to bypass.
             example: api.example.com/*
     ca:
-      type: object
-      properties:
-        aud:
-          $ref: '#/components/schemas/aud'
-        id:
-          $ref: '#/components/schemas/ca_components-schemas-id'
-        public_key:
-          $ref: '#/components/schemas/public_key'
+      type: boolean
+      description: Indicates whether the certificate is a CA or leaf certificate.
+        Must be set to true.
+      example: true
     ca_components-schemas-id:
       type: string
       description: The ID of the CA.
@@ -2943,7 +3009,7 @@ components:
           result:
             type: array
             items:
-              $ref: '#/components/schemas/ca'
+              $ref: '#/components/schemas/schemas-ca'
     ca_components-schemas-single_response:
       allOf:
       - $ref: '#/components/schemas/api-response-single'
@@ -3272,6 +3338,14 @@ components:
             properties:
               id:
                 $ref: '#/components/schemas/certificates_components-schemas-identifier'
+    certificate_response_single_post:
+      allOf:
+      - $ref: '#/components/schemas/api-response-single'
+      - properties:
+          result:
+            allOf:
+            - $ref: '#/components/schemas/certificateObjectPost'
+            type: object
     certificate_rule:
       type: object
       title: Valid certificate
@@ -3312,6 +3386,28 @@ components:
           $ref: '#/components/schemas/zone-authenticated-origin-pull_components-schemas-status'
         uploaded_on:
           $ref: '#/components/schemas/schemas-uploaded_on'
+    certificateObjectPost:
+      properties:
+        ca:
+          $ref: '#/components/schemas/ca'
+        certificates:
+          $ref: '#/components/schemas/schemas-certificates'
+        expires_on:
+          $ref: '#/components/schemas/mtls-management_components-schemas-expires_on'
+        id:
+          $ref: '#/components/schemas/mtls-management_components-schemas-identifier'
+        issuer:
+          $ref: '#/components/schemas/schemas-issuer'
+        name:
+          $ref: '#/components/schemas/mtls-management_components-schemas-name'
+        serial_number:
+          $ref: '#/components/schemas/schemas-serial_number'
+        signature:
+          $ref: '#/components/schemas/signature'
+        updated_at:
+          $ref: '#/components/schemas/schemas-updated_at'
+        uploaded_on:
+          $ref: '#/components/schemas/mtls-management_components-schemas-uploaded_on'
     certificates:
       type: object
       required:
@@ -3365,13 +3461,13 @@ components:
           result:
             type: array
             items:
-              $ref: '#/components/schemas/schemas-certificates'
+              $ref: '#/components/schemas/components-schemas-certificates'
     certificates_components-schemas-single_response:
       allOf:
       - $ref: '#/components/schemas/api-response-single'
       - properties:
           result:
-            $ref: '#/components/schemas/schemas-certificates'
+            $ref: '#/components/schemas/components-schemas-certificates'
     cf_account_id:
       type: string
       description: Cloudflare account ID
@@ -3904,6 +4000,11 @@ components:
       type: object
       description: The action to perform when the threshold of matched traffic within
         the configured period is exceeded.
+    components-schemas-action_parameters:
+      oneOf:
+      - $ref: '#/components/schemas/action_parameters_redirect'
+      type: object
+      description: The parameters configuring the action.
     components-schemas-address:
       type: string
       description: Address.
@@ -3966,6 +4067,43 @@ components:
       - properties:
           result:
             $ref: '#/components/schemas/schemas-certificateObject'
+    components-schemas-certificateObject:
+      properties:
+        ca:
+          $ref: '#/components/schemas/ca'
+        certificates:
+          $ref: '#/components/schemas/schemas-certificates'
+        expires_on:
+          $ref: '#/components/schemas/mtls-management_components-schemas-expires_on'
+        id:
+          $ref: '#/components/schemas/mtls-management_components-schemas-identifier'
+        issuer:
+          $ref: '#/components/schemas/schemas-issuer'
+        name:
+          $ref: '#/components/schemas/mtls-management_components-schemas-name'
+        serial_number:
+          $ref: '#/components/schemas/schemas-serial_number'
+        signature:
+          $ref: '#/components/schemas/signature'
+        uploaded_on:
+          $ref: '#/components/schemas/mtls-management_components-schemas-uploaded_on'
+    components-schemas-certificates:
+      type: object
+      properties:
+        associated_hostnames:
+          $ref: '#/components/schemas/associated_hostnames'
+        created_at:
+          $ref: '#/components/schemas/timestamp'
+        expires_on:
+          $ref: '#/components/schemas/timestamp'
+        fingerprint:
+          $ref: '#/components/schemas/fingerprint'
+        id:
+          description: The ID of the application that will use this certificate.
+        name:
+          $ref: '#/components/schemas/certificates_components-schemas-name'
+        updated_at:
+          $ref: '#/components/schemas/timestamp'
     components-schemas-collection_response:
       allOf:
       - $ref: '#/components/schemas/api-response-collection'
@@ -4244,7 +4382,7 @@ components:
         probe_zone:
           $ref: '#/components/schemas/probe_zone'
         retries:
-          $ref: '#/components/schemas/retries'
+          $ref: '#/components/schemas/schemas-retries'
         timeout:
           $ref: '#/components/schemas/schemas-timeout'
         type:
@@ -4315,6 +4453,13 @@ components:
       description: Priority of the routing rule.
       default: 0
       minimum: 0
+    components-schemas-private_key:
+      type: string
+      description: The private key for the certificate
+      example: |-
+        -----BEGIN PRIVATE KEY-----
+        MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDEXDkcICRU3XBv9hiiPnBWIjgTQyowmVFxDr11mONgZB/cMYjE/OvQjvnpwNcOaSK16MOpAjNbELKRx2lZiVJaLRDCccqCxXwP/CrdRChcqGzo7mbNksMlcidrErb0LlEBKLFC2QjRmRKqB+YOs4TD8WsZu2S667A2fZmjRlaqOxFi1h62ee0P+TLU628UC/nl41JifSt5Evt7hMDHakemdwZblNYr2p6T3NQjdhjYXTtP4UmOGJBhJ7i7Kicg3d3CIgdTMbggSeGWqjndr4ldVnD96FN3cVT5uDFsn2CJXTFgdeBWoUnMS4VnUZzPWGf4vSBXC8qV7Ls+w46yT7T1AgMBAAECggEAQZnp/oqCeNPOR6l5S2L+1tfx0gWjZ78hJVteUpZ0iHSK7F6kKeOxyOird7vUXV0kmo+cJq+0hp0Ke4eam640FCpwKfYoSQ4/R3vgujGWJnaihCN5tv5sMet0XeJPuz5qE7ALoKCvwI6aXLHs20aAeZIDTQJ9QbGSGnJVzOWn+JDTidIgZpN57RpXfSAwnJPTQK/PN8i5z108hsaDOdEgGmxYZ7kYqMqzX20KXmth58LDfPixs5JGtS60iiKC/wOcGzkB2/AdTSojR76oEU77cANP/3zO25NG//whUdYlW0t0d7PgXxIeJe+xgYnamDQJx3qonVyt4H77ha0ObRAj9QKBgQDicZr+VTwFMnELP3a+FXGnjehRiuS1i7MXGKxNweCD+dFlML0FplSQS8Ro2n+d8lu8BBXGx0qm6VXu8Rhn7TAUL6q+PCgfarzxfIhacb/TZCqfieIHsMlVBfhV5HCXnk+kis0tuC/PRArcWTwDHJUJXkBhvkUsNswvQzavDPI7KwKBgQDd/WgLkj7A3X5fgIHZH/GbDSBiXwzKb+rF4ZCT2XFgG/OAW7vapfcX/w+v+5lBLyrocmOAS3PGGAhM5T3HLnUCQfnK4qgps1Lqibkc9Tmnsn60LanUjuUMsYv/zSw70tozbzhJ0pioEpWfRxRZBztO2Rr8Ntm7h6Fk701EXGNAXwKBgQCD1xsjy2J3sCerIdcz0u5qXLAPkeuZW+34m4/ucdwTWwc0gEz9lhsULFj9p4G351zLuiEnq+7mAWLcDJlmIO3mQt6JhiLiL9Y0T4pgBmxmWqKKYtAsJB0EmMY+1BNN44mBRqMxZFTJu1cLdhT/xstrOeoIPqytknYNanfTMZlzIwKBgHrLXe5oq0XMP8dcMneEcAUwsaU4pr6kQd3L9EmUkl5zl7J9C+DaxWAEuwzBw/iGutlxzRB+rD/7szu14wJ29EqXbDGKRzMp+se5/yfBjm7xEZ1hVPw7PwBShfqt57X/4Ktq7lwHnmH6RcGhc+P7WBc5iO/S94YAdIp8xOT3pf9JAoGAE0QkqJUY+5Mgr+fBO0VNV72ZoPveGpW+De59uhKAOnu1zljQCUtk59m6+DXfm0tNYKtawa5n8iN71Zh+s62xXSt3pYi1Y5CCCmv8Y4BhwIcPwXKk3zEvLgSHVTpC0bayA9aSO4bbZgVXa5w+Z0w/vvfp9DWo1IS3EnQRrz6WMYA=
+        -----END PRIVATE KEY-----
     components-schemas-query:
       allOf:
       - $ref: '#/components/schemas/query'
@@ -4431,12 +4576,16 @@ components:
         name:
           example: default
         phase:
-          example: http_custom_errors
+          example: http_request_dynamic_redirect
         rules:
           type: array
           description: The rules in the ruleset.
           items:
-            $ref: '#/components/schemas/custom-error-responses_components-schemas-rule'
+            $ref: '#/components/schemas/dynamic-redirect-rules_components-schemas-rule'
+    components-schemas-serial_number:
+      type: string
+      description: The device serial number.
+      example: EXAMPLEHMD6R
     components-schemas-single_response:
       allOf:
       - $ref: '#/components/schemas/api-response-single'
@@ -4520,9 +4669,8 @@ components:
       example: full
     components-schemas-updated_at:
       type: string
-      format: date-time
-      description: Last updated.
-      example: "2018-08-28T17:26:26Z"
+      description: The timestamp of when Page Shield was last updated.
+      example: "2022-10-12T17:56:52.083582+01:00"
     components-schemas-uploaded_on:
       type: string
       format: date-time
@@ -5576,6 +5724,23 @@ components:
           example: 3a03d665bac047339bb530ecb439a90d
         version:
           example: "1"
+    custom-error-responses_components-schemas-ruleset:
+      properties:
+        description:
+          example: ""
+        id:
+          example: 2f2feab2026849078ba485f918791bdc
+        kind:
+          example: zone
+        name:
+          example: default
+        phase:
+          example: http_custom_errors
+        rules:
+          type: array
+          description: The rules in the ruleset.
+          items:
+            $ref: '#/components/schemas/custom-error-responses_components-schemas-rule'
     custom-hostname:
       allOf:
       - $ref: '#/components/schemas/customhostname'
@@ -6937,7 +7102,7 @@ components:
         revoked_at:
           $ref: '#/components/schemas/revoked_at'
         serial_number:
-          $ref: '#/components/schemas/schemas-serial_number'
+          $ref: '#/components/schemas/components-schemas-serial_number'
         updated:
           $ref: '#/components/schemas/updated'
         user:
@@ -7033,6 +7198,14 @@ components:
             Now + 2 minutes. Maximum: Now + 6 hours.'
           default: Now + 30 minutes
           example: "2021-01-02T02:20:00Z"
+        id:
+          type: string
+          description: Optional Image Custom ID. Up to 1024 chars. Can include any
+            number of subpaths, and utf8 characters. Cannot start nor end with a /
+            (forward slash). Cannot be a UUID.
+          example: this/is/my-customid
+          readOnly: true
+          maxLength: 1024
         metadata:
           type: object
           description: User modifiable key-value store. Can be used for keeping references
@@ -7180,6 +7353,8 @@ components:
           $ref: '#/components/schemas/origin_ips'
         ratelimit:
           $ref: '#/components/schemas/ratelimit'
+        retries:
+          $ref: '#/components/schemas/retries'
     dns-firewall_components-schemas-name:
       type: string
       description: DNS Firewall Cluster Name.
@@ -7467,7 +7642,7 @@ components:
         id:
           $ref: '#/components/schemas/domain_identifier'
         service:
-          $ref: '#/components/schemas/service'
+          $ref: '#/components/schemas/schemas-service'
         zone_id:
           $ref: '#/components/schemas/zone_identifier'
         zone_name:
@@ -7585,7 +7760,7 @@ components:
         transfer_in:
           $ref: '#/components/schemas/transfer_in'
         updated_at:
-          $ref: '#/components/schemas/components-schemas-updated_at'
+          $ref: '#/components/schemas/domains_components-schemas-updated_at'
     domain_response_collection:
       allOf:
       - $ref: '#/components/schemas/api-response-collection'
@@ -7636,6 +7811,11 @@ components:
         name: example.com
     domains_components-schemas-account_identifier:
       example: 9a7806061c88ada191ed06f989cc3dac
+    domains_components-schemas-updated_at:
+      type: string
+      format: date-time
+      description: Last updated.
+      example: "2018-08-28T17:26:26Z"
     downloadedFrom:
       type: string
       description: The source URL for a downloaded image. If the watermark profile
@@ -7652,6 +7832,20 @@ components:
       type: number
       description: The duration of the plan subscription.
       example: 1
+    dynamic-redirect-rules_components-schemas-rule:
+      properties:
+        action:
+          example: redirect
+        action_parameters:
+          $ref: '#/components/schemas/components-schemas-action_parameters'
+        description:
+          example: Blog redirect
+        expression:
+          example: http.request.uri.path == "/blog"
+        id:
+          example: 3a03d665bac047339bb530ecb439a90d
+        version:
+          example: "1"
     early_hints:
       allOf:
       - $ref: '#/components/schemas/schemas-base'
@@ -8829,7 +9023,7 @@ components:
         enabled:
           $ref: '#/components/schemas/script-monitor_components-schemas-enabled'
         updated_at:
-          $ref: '#/components/schemas/schemas-updated_at'
+          $ref: '#/components/schemas/components-schemas-updated_at'
         use_cloudflare_reporting_endpoint:
           $ref: '#/components/schemas/use_cloudflare_reporting_endpoint'
         use_connection_url_path:
@@ -9160,7 +9354,7 @@ components:
         name:
           $ref: '#/components/schemas/healthchecks_components-schemas-name'
         retries:
-          $ref: '#/components/schemas/retries'
+          $ref: '#/components/schemas/schemas-retries'
         status:
           $ref: '#/components/schemas/healthchecks_components-schemas-status'
         suspended:
@@ -12257,7 +12451,7 @@ components:
         port:
           $ref: '#/components/schemas/components-schemas-port'
         retries:
-          $ref: '#/components/schemas/retries'
+          $ref: '#/components/schemas/schemas-retries'
         timeout:
           $ref: '#/components/schemas/schemas-timeout'
         type:
@@ -12324,6 +12518,61 @@ components:
       - smtp
       default: http
       example: https
+    mtls-management_components-schemas-certificate_response_collection:
+      allOf:
+      - $ref: '#/components/schemas/api-response-collection'
+      - properties:
+          result:
+            type: array
+            items:
+              $ref: '#/components/schemas/components-schemas-certificateObject'
+      - properties:
+          result_info:
+            type: object
+            properties:
+              count:
+                example: 1
+              page:
+                example: 1
+              per_page:
+                example: 50
+              total_count:
+                example: 1
+              total_pages:
+                example: 1
+    mtls-management_components-schemas-certificate_response_single:
+      allOf:
+      - $ref: '#/components/schemas/api-response-single'
+      - properties:
+          result:
+            allOf:
+            - $ref: '#/components/schemas/components-schemas-certificateObject'
+            type: object
+    mtls-management_components-schemas-expires_on:
+      type: string
+      format: date-time
+      description: When the certificate expires.
+      example: "2122-10-29T16:59:47Z"
+      readOnly: true
+    mtls-management_components-schemas-identifier:
+      type: string
+      description: Certificate identifier tag.
+      example: 2458ce5a-0c35-4c7f-82c7-8e9487d3ff60
+      readOnly: true
+      maxLength: 36
+    mtls-management_components-schemas-name:
+      type: string
+      description: Optional unique name for the certificate. Only used for human readability.
+      example: example_ca_cert_5
+    mtls-management_components-schemas-status:
+      type: string
+      description: Certificate deployment status for the given service.
+      example: pending_deployment
+    mtls-management_components-schemas-uploaded_on:
+      type: string
+      format: date-time
+      description: This is the time the certificate was uploaded.
+      example: "2022-11-22T17:32:30.467938Z"
     mtu:
       type: integer
       description: Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The
@@ -12882,6 +13131,20 @@ components:
         be sent to.
       example: fallback.example.com
       maxLength: 255
+    origin-rules_components-schemas-rule:
+      properties:
+        action:
+          example: route
+        action_parameters:
+          $ref: '#/components/schemas/schemas-action_parameters'
+        description:
+          example: change the host header, origin, and SNI
+        expression:
+          example: http.cookie contains "something"
+        id:
+          example: 3a03d665bac047339bb530ecb439a90d
+        version:
+          example: "1"
     origin_components-schemas-enabled:
       type: boolean
       description: Whether to enable (the default) this origin within the pool. Disabled
@@ -15044,7 +15307,7 @@ components:
         name:
           $ref: '#/components/schemas/healthchecks_components-schemas-name'
         retries:
-          $ref: '#/components/schemas/retries'
+          $ref: '#/components/schemas/schemas-retries'
         suspended:
           $ref: '#/components/schemas/suspended'
         tcp_config:
@@ -15932,10 +16195,12 @@ components:
           description: Total results available without any search parameters
           example: 2000
     retries:
-      type: integer
-      description: The number of retries to attempt in case of a timeout before marking
-        the origin as unhealthy. Retries are attempted immediately.
+      type: number
+      description: Number of retries for fetching DNS responses from origin nameservers.
       default: 2
+      example: 2
+      minimum: 0
+      maximum: 2
     revision:
       type: string
       description: The revision of the Railgun receiver.
@@ -16993,7 +17258,7 @@ components:
             maxLength: 90
     schemas-action_parameters:
       oneOf:
-      - $ref: '#/components/schemas/action_parameters_rewrite'
+      - $ref: '#/components/schemas/action_parameters_route'
       type: object
       description: The parameters configuring the action.
     schemas-actions:
@@ -17162,6 +17427,15 @@ components:
           type: string
           description: The application type.
           example: bookmark
+    schemas-ca:
+      type: object
+      properties:
+        aud:
+          $ref: '#/components/schemas/aud'
+        id:
+          $ref: '#/components/schemas/ca_components-schemas-id'
+        public_key:
+          $ref: '#/components/schemas/public_key'
     schemas-can_delete:
       type: boolean
       description: Controls whether the membership can be deleted via the API or not.
@@ -17242,22 +17516,12 @@ components:
         uploaded_on:
           $ref: '#/components/schemas/components-schemas-uploaded_on'
     schemas-certificates:
-      type: object
-      properties:
-        associated_hostnames:
-          $ref: '#/components/schemas/associated_hostnames'
-        created_at:
-          $ref: '#/components/schemas/timestamp'
-        expires_on:
-          $ref: '#/components/schemas/timestamp'
-        fingerprint:
-          $ref: '#/components/schemas/fingerprint'
-        id:
-          description: The ID of the application that will use this certificate.
-        name:
-          $ref: '#/components/schemas/certificates_components-schemas-name'
-        updated_at:
-          $ref: '#/components/schemas/timestamp'
+      type: string
+      description: The uploaded root CA certificate.
+      example: |-
+        -----BEGIN CERTIFICATE-----
+        MIIDmDCCAoCgAwIBAgIUKTOAZNjcXVZRj4oQt0SHsl1c1vMwDQYJKoZIhvcNAQELBQAwUTELMAkGA1UEBhMCVVMxFjAUBgNVBAgMDVNhbiBGcmFuY2lzY28xEzARBgNVBAcMCkNhbGlmb3JuaWExFTATBgNVBAoMDEV4YW1wbGUgSW5jLjAgFw0yMjExMjIxNjU5NDdaGA8yMTIyMTAyOTE2NTk0N1owUTELMAkGA1UEBhMCVVMxFjAUBgNVBAgMDVNhbiBGcmFuY2lzY28xEzARBgNVBAcMCkNhbGlmb3JuaWExFTATBgNVBAoMDEV4YW1wbGUgSW5jLjCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMRcORwgJFTdcG/2GKI+cFYiOBNDKjCZUXEOvXWY42BkH9wxiMT869CO+enA1w5pIrXow6kCM1sQspHHaVmJUlotEMJxyoLFfA/8Kt1EKFyobOjuZs2SwyVyJ2sStvQuUQEosULZCNGZEqoH5g6zhMPxaxm7ZLrrsDZ9maNGVqo7EWLWHrZ57Q/5MtTrbxQL+eXjUmJ9K3kS+3uEwMdqR6Z3BluU1ivanpPc1CN2GNhdO0/hSY4YkGEnuLsqJyDd3cIiB1MxuCBJ4ZaqOd2viV1WcP3oU3dxVPm4MWyfYIldMWB14FahScxLhWdRnM9YZ/i9IFcLypXsuz7DjrJPtPUCAwEAAaNmMGQwHQYDVR0OBBYEFP5JzLUawNF+c3AXsYTEWHh7z2czMB8GA1UdIwQYMBaAFP5JzLUawNF+c3AXsYTEWHh7z2czMA4GA1UdDwEB/wQEAwIBBjASBgNVHRMBAf8ECDAGAQH/AgEBMA0GCSqGSIb3DQEBCwUAA4IBAQBc+Be7NDhpE09y7hLPZGRPl1cSKBw4RI0XIv6rlbSTFs5EebpTGjhx/whNxwEZhB9HZ7111Oa1YlT8xkI9DshB78mjAHCKBAJ76moK8tkG0aqdYpJ4ZcJTVBB7l98Rvgc7zfTii7WemTy72deBbSeiEtXavm4EF0mWjHhQ5Nxpnp00Bqn5g1x8CyTDypgmugnep+xG+iFzNmTdsz7WI9T/7kDMXqB7M/FPWBORyS98OJqNDswCLF8bIZYwUBEe+bRHFomoShMzaC3tvim7WCb16noDkSTMlfKO4pnvKhpcVdSgwcruATV7y+W+Lvmz2OT/Gui4JhqeoTewsxndhDDE
+        -----END CERTIFICATE-----
     schemas-check_regions:
       type: array
       description: A list of regions from which to run health checks. Null means Cloudflare
@@ -17448,29 +17712,6 @@ components:
       example: The billing item description
       readOnly: true
       maxLength: 255
-    schemas-direct_upload_request:
-      type: object
-      properties:
-        expiry:
-          type: string
-          format: date-time
-          description: 'The date after which the upload will not be accepted. Minimum:
-            Now + 2 minutes. Maximum: Now + 6 hours.'
-          default: Now + 30 minutes
-          example: "2021-01-02T02:20:00Z"
-    schemas-direct_upload_response:
-      allOf:
-      - $ref: '#/components/schemas/api-response-single'
-      - properties:
-          result:
-            properties:
-              id:
-                $ref: '#/components/schemas/images_components-schemas-identifier'
-              uploadURL:
-                type: string
-                description: The URL the unauthenticated upload can be performed to
-                  using a single HTTP POST (multipart/form-data) request.
-                example: https://upload.imagedelivery.net/e22e9e6b-c02b-42fd-c405-6c32af5fe623
     schemas-disabled_at:
       type: string
       format: date-time
@@ -17847,6 +18088,11 @@ components:
       type: string
       format: ipv6
       example: '2001:0DB8::'
+    schemas-issuer:
+      type: string
+      description: The certificate authority that issued the certificate.
+      example: O=Example Inc.,L=California,ST=San Francisco,C=US
+      readOnly: true
     schemas-items:
       type: array
       description: The items in the List.
@@ -18551,6 +18797,11 @@ components:
           minimum: 0
         totals:
           description: Total results for metrics across all data.
+    schemas-retries:
+      type: integer
+      description: The number of retries to attempt in case of a timeout before marking
+        the origin as unhealthy. Retries are attempted immediately.
+      default: 2
     schemas-role:
       type: object
       required:
@@ -18650,12 +18901,12 @@ components:
         name:
           example: default
         phase:
-          example: http_request_transform
+          example: http_request_origin
         rules:
           type: array
           description: The rules in the ruleset.
           items:
-            $ref: '#/components/schemas/transform-rules_components-schemas-rule'
+            $ref: '#/components/schemas/origin-rules_components-schemas-rule'
     schemas-scope:
       type: object
       description: Used only for ECMP routes.
@@ -18677,8 +18928,13 @@ components:
         response body.
     schemas-serial_number:
       type: string
-      description: The device serial number.
-      example: EXAMPLEHMD6R
+      description: The certificate serial number.
+      example: "235217144297995885180570755458463043449861756659"
+      readOnly: true
+    schemas-service:
+      type: string
+      description: Worker service associated with the zone and hostname.
+      example: foo
     schemas-session_duration:
       type: integer
       description: Lifetime of a cookie (in minutes) set by Cloudflare for users who
@@ -19022,8 +19278,9 @@ components:
       example: header
     schemas-updated_at:
       type: string
-      description: The timestamp of when Page Shield was last updated.
-      example: "2022-10-12T17:56:52.083582+01:00"
+      format: date-time
+      description: This is the time the certificate was updated.
+      example: "2022-11-22T17:32:30.467938Z"
     schemas-uploaded:
       type: string
       format: date-time
@@ -19429,8 +19686,8 @@ components:
       default: "on"
     service:
       type: string
-      description: Worker service associated with the zone and hostname.
-      example: foo
+      description: The service using the certificate.
+      example: gateway
     service-tokens:
       type: object
       properties:
@@ -21187,12 +21444,17 @@ components:
           example: needed
         unlock_domain:
           description: Domain is unlocked at the foreign registrar.
+    transform-rules_components-schemas-action_parameters:
+      oneOf:
+      - $ref: '#/components/schemas/action_parameters_rewrite'
+      type: object
+      description: The parameters configuring the action.
     transform-rules_components-schemas-rule:
       properties:
         action:
           example: rewrite
         action_parameters:
-          $ref: '#/components/schemas/schemas-action_parameters'
+          $ref: '#/components/schemas/transform-rules_components-schemas-action_parameters'
         description:
           example: change request based on ip location
         expression:
@@ -21201,6 +21463,23 @@ components:
           example: 3a03d665bac047339bb530ecb439a90d
         version:
           example: "1"
+    transform-rules_components-schemas-ruleset:
+      properties:
+        description:
+          example: ""
+        id:
+          example: 2f2feab2026849078ba485f918791bdc
+        kind:
+          example: zone
+        name:
+          example: default
+        phase:
+          example: http_request_transform
+        rules:
+          type: array
+          description: The rules in the ruleset.
+          items:
+            $ref: '#/components/schemas/transform-rules_components-schemas-rule'
     true_client_ip_header:
       allOf:
       - $ref: '#/components/schemas/schemas-base'
@@ -21542,7 +21821,7 @@ components:
         enabled:
           $ref: '#/components/schemas/script-monitor_components-schemas-enabled'
         updated_at:
-          $ref: '#/components/schemas/schemas-updated_at'
+          $ref: '#/components/schemas/components-schemas-updated_at'
         use_cloudflare_reporting_endpoint:
           $ref: '#/components/schemas/use_cloudflare_reporting_endpoint'
         use_connection_url_path:
@@ -25914,6 +26193,8 @@ paths:
               - name
               - origin_ips
               properties:
+                attack_mitigation:
+                  $ref: '#/components/schemas/attack_mitigation'
                 deprecate_any_requests:
                   $ref: '#/components/schemas/deprecate_any_requests'
                 ecs_fallback:
@@ -25930,6 +26211,8 @@ paths:
                   $ref: '#/components/schemas/origin_ips'
                 ratelimit:
                   $ref: '#/components/schemas/ratelimit'
+                retries:
+                  $ref: '#/components/schemas/retries'
       responses:
         4xx:
           description: Create DNS Firewall Cluster response failure
@@ -26761,47 +27044,6 @@ paths:
       - api_email: []
         api_key: []
       - api_token: []
-  /accounts/{account_identifier}/images/v1/direct_upload:
-    post:
-      tags:
-      - Cloudflare Images
-      summary: Create authenticated direct upload URL
-      description: Direct uploads allow users to upload images without API keys. A
-        common use case are web apps, client-side applications, or mobile devices
-        where users upload content directly to Cloudflare Images.
-      operationId: cloudflare-images-create-authenticated-direct-upload-url
-      parameters:
-      - name: account_identifier
-        in: path
-        required: true
-        schema:
-          $ref: '#/components/schemas/images_components-schemas-account_identifier'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/schemas-direct_upload_request'
-      responses:
-        4xx:
-          description: Create authenticated direct upload URL response failure
-          content:
-            application/json:
-              schema:
-                allOf:
-                - $ref: '#/components/schemas/schemas-direct_upload_response'
-                - $ref: '#/components/schemas/api-response-common-failure'
-        "200":
-          description: Create authenticated direct upload URL response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/schemas-direct_upload_response'
-      deprecated: true
-      security:
-      - api_email: []
-        api_key: []
-      - api_token: []
   /accounts/{account_identifier}/images/v1/keys:
     get:
       tags:
@@ -27543,7 +27785,7 @@ paths:
                 probe_zone:
                   $ref: '#/components/schemas/probe_zone'
                 retries:
-                  $ref: '#/components/schemas/retries'
+                  $ref: '#/components/schemas/schemas-retries'
                 timeout:
                   $ref: '#/components/schemas/schemas-timeout'
                 type:
@@ -27695,7 +27937,7 @@ paths:
                 probe_zone:
                   $ref: '#/components/schemas/probe_zone'
                 retries:
-                  $ref: '#/components/schemas/retries'
+                  $ref: '#/components/schemas/schemas-retries'
                 timeout:
                   $ref: '#/components/schemas/schemas-timeout'
                 type:
@@ -27771,7 +28013,7 @@ paths:
                 probe_zone:
                   $ref: '#/components/schemas/probe_zone'
                 retries:
-                  $ref: '#/components/schemas/retries'
+                  $ref: '#/components/schemas/schemas-retries'
                 timeout:
                   $ref: '#/components/schemas/schemas-timeout'
                 type:
@@ -27842,7 +28084,7 @@ paths:
                 probe_zone:
                   $ref: '#/components/schemas/probe_zone'
                 retries:
-                  $ref: '#/components/schemas/retries'
+                  $ref: '#/components/schemas/schemas-retries'
                 timeout:
                   $ref: '#/components/schemas/schemas-timeout'
                 type:
@@ -28344,7 +28586,7 @@ paths:
                 probe_zone:
                   $ref: '#/components/schemas/probe_zone'
                 retries:
-                  $ref: '#/components/schemas/retries'
+                  $ref: '#/components/schemas/schemas-retries'
                 timeout:
                   $ref: '#/components/schemas/schemas-timeout'
                 type:
@@ -30097,6 +30339,205 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/mnm_rule_automatic_advertisement'
+      security:
+      - api_email: []
+        api_key: []
+      - api_token: []
+  /accounts/{account_identifier}/mtls_certificates:
+    get:
+      tags:
+      - mTLS Certificate Management
+      summary: List mTLS certificates
+      description: Lists all mTLS certificates.
+      operationId: m-tls-certificate-management-list-m-tls-certificates
+      parameters:
+      - name: account_identifier
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      responses:
+        4xx:
+          description: List mTLS certificates response failure
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/mtls-management_components-schemas-certificate_response_collection'
+                - $ref: '#/components/schemas/api-response-common-failure'
+        "200":
+          description: List mTLS certificates response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/mtls-management_components-schemas-certificate_response_collection'
+      security:
+      - api_email: []
+        api_key: []
+      - api_token: []
+    post:
+      tags:
+      - mTLS Certificate Management
+      summary: Upload mTLS certificate
+      description: Upload a certificate that you want to use with mTLS-enabled Cloudflare
+        services.
+      operationId: m-tls-certificate-management-upload-m-tls-certificate
+      parameters:
+      - name: account_identifier
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - certificates
+              - private_key
+              - ca
+              properties:
+                ca:
+                  $ref: '#/components/schemas/ca'
+                certificates:
+                  $ref: '#/components/schemas/schemas-certificates'
+                name:
+                  $ref: '#/components/schemas/mtls-management_components-schemas-name'
+                private_key:
+                  $ref: '#/components/schemas/components-schemas-private_key'
+      responses:
+        4xx:
+          description: Upload mTLS certificate response failure
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/certificate_response_single_post'
+                - $ref: '#/components/schemas/api-response-common-failure'
+        "200":
+          description: Upload mTLS certificate response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/certificate_response_single_post'
+      security:
+      - api_email: []
+        api_key: []
+      - api_token: []
+  /accounts/{account_identifier}/mtls_certificates/{identifier}:
+    delete:
+      tags:
+      - mTLS Certificate Management
+      summary: Delete mTLS certificate
+      description: Deletes the mTLS certificate unless the certificate is in use by
+        one or more Cloudflare services.
+      operationId: m-tls-certificate-management-delete-m-tls-certificate
+      parameters:
+      - name: identifier
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/mtls-management_components-schemas-identifier'
+      - name: account_identifier
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      requestBody:
+        required: true
+        content:
+          application/json: {}
+      responses:
+        4xx:
+          description: Delete mTLS certificate response failure
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/mtls-management_components-schemas-certificate_response_single'
+                - $ref: '#/components/schemas/api-response-common-failure'
+        "200":
+          description: Delete mTLS certificate response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/mtls-management_components-schemas-certificate_response_single'
+      security:
+      - api_email: []
+        api_key: []
+      - api_token: []
+    get:
+      tags:
+      - mTLS Certificate Management
+      summary: Get mTLS certificate
+      description: Fetches a single mTLS certificate.
+      operationId: m-tls-certificate-management-get-m-tls-certificate
+      parameters:
+      - name: identifier
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/mtls-management_components-schemas-identifier'
+      - name: account_identifier
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      responses:
+        4xx:
+          description: Get mTLS certificate response failure
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/mtls-management_components-schemas-certificate_response_single'
+                - $ref: '#/components/schemas/api-response-common-failure'
+        "200":
+          description: Get mTLS certificate response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/mtls-management_components-schemas-certificate_response_single'
+      security:
+      - api_email: []
+        api_key: []
+      - api_token: []
+  /accounts/{account_identifier}/mtls_certificates/{identifier}/associations:
+    get:
+      tags:
+      - mTLS Certificate Management
+      summary: List mTLS certificate associations
+      description: Lists all active associations between the certificate and Cloudflare
+        services.
+      operationId: m-tls-certificate-management-list-m-tls-certificate-associations
+      parameters:
+      - name: identifier
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/mtls-management_components-schemas-identifier'
+      - name: account_identifier
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      responses:
+        4xx:
+          description: List mTLS certificate associations response failure
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/association_response_collection'
+                - $ref: '#/components/schemas/api-response-common-failure'
+        "200":
+          description: List mTLS certificate associations response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/association_response_collection'
       security:
       - api_email: []
         api_key: []
@@ -36083,7 +36524,7 @@ paths:
                 hostname:
                   $ref: '#/components/schemas/components-schemas-hostname'
                 service:
-                  $ref: '#/components/schemas/service'
+                  $ref: '#/components/schemas/schemas-service'
                 zone_id:
                   $ref: '#/components/schemas/zone_identifier'
       responses:
@@ -55142,7 +55583,7 @@ paths:
                 probe_zone:
                   $ref: '#/components/schemas/probe_zone'
                 retries:
-                  $ref: '#/components/schemas/retries'
+                  $ref: '#/components/schemas/schemas-retries'
                 timeout:
                   $ref: '#/components/schemas/schemas-timeout'
                 type:
@@ -55275,7 +55716,7 @@ paths:
                 probe_zone:
                   $ref: '#/components/schemas/probe_zone'
                 retries:
-                  $ref: '#/components/schemas/retries'
+                  $ref: '#/components/schemas/schemas-retries'
                 timeout:
                   $ref: '#/components/schemas/schemas-timeout'
                 type:
@@ -55342,7 +55783,7 @@ paths:
                 probe_zone:
                   $ref: '#/components/schemas/probe_zone'
                 retries:
-                  $ref: '#/components/schemas/retries'
+                  $ref: '#/components/schemas/schemas-retries'
                 timeout:
                   $ref: '#/components/schemas/schemas-timeout'
                 type:
@@ -55406,7 +55847,7 @@ paths:
                 port:
                   $ref: '#/components/schemas/components-schemas-port'
                 retries:
-                  $ref: '#/components/schemas/retries'
+                  $ref: '#/components/schemas/schemas-retries'
                 timeout:
                   $ref: '#/components/schemas/schemas-timeout'
                 type:
@@ -55855,7 +56296,7 @@ paths:
                 port:
                   $ref: '#/components/schemas/components-schemas-port'
                 retries:
-                  $ref: '#/components/schemas/retries'
+                  $ref: '#/components/schemas/schemas-retries'
                 timeout:
                   $ref: '#/components/schemas/schemas-timeout'
                 type:
@@ -60811,14 +61252,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/schemas-ruleset'
+                - $ref: '#/components/schemas/transform-rules_components-schemas-ruleset'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: List Transform Rules response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/schemas-ruleset'
+                $ref: '#/components/schemas/transform-rules_components-schemas-ruleset'
       security:
       - api_email: []
         api_key: []
@@ -61044,14 +61485,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/components-schemas-ruleset'
+                - $ref: '#/components/schemas/custom-error-responses_components-schemas-ruleset'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Get Custom Error Responses response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/components-schemas-ruleset'
+                $ref: '#/components/schemas/custom-error-responses_components-schemas-ruleset'
       security:
       - api_email: []
         api_key: []
@@ -61085,6 +61526,144 @@ paths:
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Update Custom Error Responses response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/api-response-single'
+      security:
+      - api_email: []
+        api_key: []
+      - api_token: []
+  /zones/{zone_id}/rulesets/phases/http_request_dynamic_redirect/entrypoint:
+    get:
+      tags:
+      - Single Redirect Rules
+      summary: List Single Redirect Rules
+      description: Fetches all Single Redirect Rules in a zone.
+      operationId: single-redirect-rules-list-single-redirect-rules
+      parameters:
+      - name: zone_id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      responses:
+        4xx:
+          description: List Single Redirect Rules response failure
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/components-schemas-ruleset'
+                - $ref: '#/components/schemas/api-response-common-failure'
+        "200":
+          description: List Single Redirect Rules response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/components-schemas-ruleset'
+      security:
+      - api_email: []
+        api_key: []
+      - api_token: []
+    put:
+      tags:
+      - Single Redirect Rules
+      summary: Update Single Redirect Rules
+      description: Updates the Single Redirect Rules of a zone.
+      operationId: single-redirect-rules-update-single-redirect-rules
+      parameters:
+      - name: zone_id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/update_ruleset'
+      responses:
+        4xx:
+          description: Update Single Redirect Rules response failure
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/api-response-single'
+                - $ref: '#/components/schemas/api-response-common-failure'
+        "200":
+          description: Update Single Redirect Rules response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/api-response-single'
+      security:
+      - api_email: []
+        api_key: []
+      - api_token: []
+  /zones/{zone_id}/rulesets/phases/http_request_origin/entrypoint:
+    get:
+      tags:
+      - Origin Rules
+      summary: List Origin Rules
+      description: Fetches all Origin Rules in a zone.
+      operationId: origin-rules-list-origin-rules
+      parameters:
+      - name: zone_id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      responses:
+        4xx:
+          description: List Origin Rules response failure
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/schemas-ruleset'
+                - $ref: '#/components/schemas/api-response-common-failure'
+        "200":
+          description: List Origin Rules response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas-ruleset'
+      security:
+      - api_email: []
+        api_key: []
+      - api_token: []
+    put:
+      tags:
+      - Origin Rules
+      summary: Update Origin Rules
+      description: Updates the Origin Rules of a zone.
+      operationId: origin-rules-update-origin-rules
+      parameters:
+      - name: zone_id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/update_ruleset'
+      responses:
+        4xx:
+          description: Update Origin Rules response failure
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/api-response-single'
+                - $ref: '#/components/schemas/api-response-common-failure'
+        "200":
+          description: Update Origin Rules response
           content:
             application/json:
               schema:

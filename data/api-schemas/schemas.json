@@ -1529,6 +1529,50 @@
 				},
 				"type": "object"
 			},
+			"action_parameters_redirect": {
+				"description": "The configuration parameters for the redirect action.",
+				"properties": {
+					"from_value": {
+						"description": "The parameters that control the redirect.",
+						"properties": {
+							"preserve_query_string": {
+								"description": "Whether the query string for the request should be carried to the redirect's target url.",
+								"example": true,
+								"type": "boolean"
+							},
+							"status_code": {
+								"description": "The status code to use for the redirect.",
+								"type": "integer"
+							},
+							"target_url": {
+								"oneOf": [
+									{
+										"properties": {
+											"expression": {
+												"description": "An expression defining a dynamic value for the target url of the redirect.",
+												"example": "concat(http.request.full_uri, \"/latest\")",
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									{
+										"properties": {
+											"value": {
+												"description": "The value defining the target url of the redirect.",
+												"example": "https://example.com/blog/latest",
+												"type": "string"
+											}
+										},
+										"type": "object"
+									}
+								]
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
 			"action_parameters_rewrite": {
 				"description": "The configuration parameters for the rewrite action.",
 				"properties": {
@@ -1540,6 +1584,42 @@
 							},
 							"query": {
 								"description": "The new query string sent to the origin."
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"action_parameters_route": {
+				"description": "The configuration parameters for the route action.",
+				"properties": {
+					"host_header": {
+						"description": "The value of the Host header.",
+						"example": "foo.example.com",
+						"type": "string"
+					},
+					"origin": {
+						"description": "The parameters that control where the origin is.",
+						"properties": {
+							"host": {
+								"description": "The host to use for origin.",
+								"example": "foo.example.com",
+								"type": "string"
+							},
+							"port": {
+								"description": "The port to use for origin.",
+								"type": "integer"
+							}
+						},
+						"type": "object"
+					},
+					"sni": {
+						"description": "The parameters that control the SNI.",
+						"properties": {
+							"value": {
+								"description": "The SNI used to connect to the origin.",
+								"example": "foo.example.com",
+								"type": "string"
 							}
 						},
 						"type": "object"
@@ -3094,6 +3174,33 @@
 				},
 				"type": "array"
 			},
+			"associationObject": {
+				"properties": {
+					"service": {
+						"$ref": "#/components/schemas/service"
+					},
+					"status": {
+						"$ref": "#/components/schemas/mtls-management_components-schemas-status"
+					}
+				}
+			},
+			"association_response_collection": {
+				"allOf": [
+					{
+						"$ref": "#/components/schemas/api-response-collection"
+					},
+					{
+						"properties": {
+							"result": {
+								"items": {
+									"$ref": "#/components/schemas/associationObject"
+								},
+								"type": "array"
+							}
+						}
+					}
+				]
+			},
 			"attack_mitigation": {
 				"description": "Attack mitigation settings.",
 				"nullable": true,
@@ -4200,18 +4307,9 @@
 				"type": "array"
 			},
 			"ca": {
-				"properties": {
-					"aud": {
-						"$ref": "#/components/schemas/aud"
-					},
-					"id": {
-						"$ref": "#/components/schemas/ca_components-schemas-id"
-					},
-					"public_key": {
-						"$ref": "#/components/schemas/public_key"
-					}
-				},
-				"type": "object"
+				"description": "Indicates whether the certificate is a CA or leaf certificate. Must be set to true.",
+				"example": true,
+				"type": "boolean"
 			},
 			"ca_components-schemas-id": {
 				"description": "The ID of the CA.",
@@ -4248,7 +4346,7 @@
 						"properties": {
 							"result": {
 								"items": {
-									"$ref": "#/components/schemas/ca"
+									"$ref": "#/components/schemas/schemas-ca"
 								},
 								"type": "array"
 							}
@@ -4600,6 +4698,40 @@
 					}
 				}
 			},
+			"certificateObjectPost": {
+				"properties": {
+					"ca": {
+						"$ref": "#/components/schemas/ca"
+					},
+					"certificates": {
+						"$ref": "#/components/schemas/schemas-certificates"
+					},
+					"expires_on": {
+						"$ref": "#/components/schemas/mtls-management_components-schemas-expires_on"
+					},
+					"id": {
+						"$ref": "#/components/schemas/mtls-management_components-schemas-identifier"
+					},
+					"issuer": {
+						"$ref": "#/components/schemas/schemas-issuer"
+					},
+					"name": {
+						"$ref": "#/components/schemas/mtls-management_components-schemas-name"
+					},
+					"serial_number": {
+						"$ref": "#/components/schemas/schemas-serial_number"
+					},
+					"signature": {
+						"$ref": "#/components/schemas/signature"
+					},
+					"updated_at": {
+						"$ref": "#/components/schemas/schemas-updated_at"
+					},
+					"uploaded_on": {
+						"$ref": "#/components/schemas/mtls-management_components-schemas-uploaded_on"
+					}
+				}
+			},
 			"certificate_analyze_response": {
 				"allOf": [
 					{
@@ -4744,6 +4876,25 @@
 					}
 				]
 			},
+			"certificate_response_single_post": {
+				"allOf": [
+					{
+						"$ref": "#/components/schemas/api-response-single"
+					},
+					{
+						"properties": {
+							"result": {
+								"allOf": [
+									{
+										"$ref": "#/components/schemas/certificateObjectPost"
+									}
+								],
+								"type": "object"
+							}
+						}
+					}
+				]
+			},
 			"certificate_rule": {
 				"description": "Matches any valid client certificate.",
 				"example": {
@@ -4853,7 +5004,7 @@
 						"properties": {
 							"result": {
 								"items": {
-									"$ref": "#/components/schemas/schemas-certificates"
+									"$ref": "#/components/schemas/components-schemas-certificates"
 								},
 								"type": "array"
 							}
@@ -4869,7 +5020,7 @@
 					{
 						"properties": {
 							"result": {
-								"$ref": "#/components/schemas/schemas-certificates"
+								"$ref": "#/components/schemas/components-schemas-certificates"
 							}
 						}
 					}
@@ -5638,6 +5789,15 @@
 				"description": "The action to perform when the threshold of matched traffic within the configured period is exceeded.",
 				"type": "object"
 			},
+			"components-schemas-action_parameters": {
+				"description": "The parameters configuring the action.",
+				"oneOf": [
+					{
+						"$ref": "#/components/schemas/action_parameters_redirect"
+					}
+				],
+				"type": "object"
+			},
 			"components-schemas-address": {
 				"description": "Address.",
 				"example": "123 Sesame St.",
@@ -5677,6 +5837,37 @@
 				"readOnly": true,
 				"type": "string"
 			},
+			"components-schemas-certificateObject": {
+				"properties": {
+					"ca": {
+						"$ref": "#/components/schemas/ca"
+					},
+					"certificates": {
+						"$ref": "#/components/schemas/schemas-certificates"
+					},
+					"expires_on": {
+						"$ref": "#/components/schemas/mtls-management_components-schemas-expires_on"
+					},
+					"id": {
+						"$ref": "#/components/schemas/mtls-management_components-schemas-identifier"
+					},
+					"issuer": {
+						"$ref": "#/components/schemas/schemas-issuer"
+					},
+					"name": {
+						"$ref": "#/components/schemas/mtls-management_components-schemas-name"
+					},
+					"serial_number": {
+						"$ref": "#/components/schemas/schemas-serial_number"
+					},
+					"signature": {
+						"$ref": "#/components/schemas/signature"
+					},
+					"uploaded_on": {
+						"$ref": "#/components/schemas/mtls-management_components-schemas-uploaded_on"
+					}
+				}
+			},
 			"components-schemas-certificate_response_collection": {
 				"allOf": [
 					{
@@ -5707,6 +5898,32 @@
 						}
 					}
 				]
+			},
+			"components-schemas-certificates": {
+				"properties": {
+					"associated_hostnames": {
+						"$ref": "#/components/schemas/associated_hostnames"
+					},
+					"created_at": {
+						"$ref": "#/components/schemas/timestamp"
+					},
+					"expires_on": {
+						"$ref": "#/components/schemas/timestamp"
+					},
+					"fingerprint": {
+						"$ref": "#/components/schemas/fingerprint"
+					},
+					"id": {
+						"description": "The ID of the application that will use this certificate."
+					},
+					"name": {
+						"$ref": "#/components/schemas/certificates_components-schemas-name"
+					},
+					"updated_at": {
+						"$ref": "#/components/schemas/timestamp"
+					}
+				},
+				"type": "object"
 			},
 			"components-schemas-collection_response": {
 				"allOf": [
@@ -6066,7 +6283,7 @@
 						"$ref": "#/components/schemas/probe_zone"
 					},
 					"retries": {
-						"$ref": "#/components/schemas/retries"
+						"$ref": "#/components/schemas/schemas-retries"
 					},
 					"timeout": {
 						"$ref": "#/components/schemas/schemas-timeout"
@@ -6159,6 +6376,11 @@
 				"description": "Priority of the routing rule.",
 				"minimum": 0,
 				"type": "number"
+			},
+			"components-schemas-private_key": {
+				"description": "The private key for the certificate",
+				"example": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDEXDkcICRU3XBv9hiiPnBWIjgTQyowmVFxDr11mONgZB/cMYjE/OvQjvnpwNcOaSK16MOpAjNbELKRx2lZiVJaLRDCccqCxXwP/CrdRChcqGzo7mbNksMlcidrErb0LlEBKLFC2QjRmRKqB+YOs4TD8WsZu2S667A2fZmjRlaqOxFi1h62ee0P+TLU628UC/nl41JifSt5Evt7hMDHakemdwZblNYr2p6T3NQjdhjYXTtP4UmOGJBhJ7i7Kicg3d3CIgdTMbggSeGWqjndr4ldVnD96FN3cVT5uDFsn2CJXTFgdeBWoUnMS4VnUZzPWGf4vSBXC8qV7Ls+w46yT7T1AgMBAAECggEAQZnp/oqCeNPOR6l5S2L+1tfx0gWjZ78hJVteUpZ0iHSK7F6kKeOxyOird7vUXV0kmo+cJq+0hp0Ke4eam640FCpwKfYoSQ4/R3vgujGWJnaihCN5tv5sMet0XeJPuz5qE7ALoKCvwI6aXLHs20aAeZIDTQJ9QbGSGnJVzOWn+JDTidIgZpN57RpXfSAwnJPTQK/PN8i5z108hsaDOdEgGmxYZ7kYqMqzX20KXmth58LDfPixs5JGtS60iiKC/wOcGzkB2/AdTSojR76oEU77cANP/3zO25NG//whUdYlW0t0d7PgXxIeJe+xgYnamDQJx3qonVyt4H77ha0ObRAj9QKBgQDicZr+VTwFMnELP3a+FXGnjehRiuS1i7MXGKxNweCD+dFlML0FplSQS8Ro2n+d8lu8BBXGx0qm6VXu8Rhn7TAUL6q+PCgfarzxfIhacb/TZCqfieIHsMlVBfhV5HCXnk+kis0tuC/PRArcWTwDHJUJXkBhvkUsNswvQzavDPI7KwKBgQDd/WgLkj7A3X5fgIHZH/GbDSBiXwzKb+rF4ZCT2XFgG/OAW7vapfcX/w+v+5lBLyrocmOAS3PGGAhM5T3HLnUCQfnK4qgps1Lqibkc9Tmnsn60LanUjuUMsYv/zSw70tozbzhJ0pioEpWfRxRZBztO2Rr8Ntm7h6Fk701EXGNAXwKBgQCD1xsjy2J3sCerIdcz0u5qXLAPkeuZW+34m4/ucdwTWwc0gEz9lhsULFj9p4G351zLuiEnq+7mAWLcDJlmIO3mQt6JhiLiL9Y0T4pgBmxmWqKKYtAsJB0EmMY+1BNN44mBRqMxZFTJu1cLdhT/xstrOeoIPqytknYNanfTMZlzIwKBgHrLXe5oq0XMP8dcMneEcAUwsaU4pr6kQd3L9EmUkl5zl7J9C+DaxWAEuwzBw/iGutlxzRB+rD/7szu14wJ29EqXbDGKRzMp+se5/yfBjm7xEZ1hVPw7PwBShfqt57X/4Ktq7lwHnmH6RcGhc+P7WBc5iO/S94YAdIp8xOT3pf9JAoGAE0QkqJUY+5Mgr+fBO0VNV72ZoPveGpW+De59uhKAOnu1zljQCUtk59m6+DXfm0tNYKtawa5n8iN71Zh+s62xXSt3pYi1Y5CCCmv8Y4BhwIcPwXKk3zEvLgSHVTpC0bayA9aSO4bbZgVXa5w+Z0w/vvfp9DWo1IS3EnQRrz6WMYA=\n-----END PRIVATE KEY-----",
+				"type": "string"
 			},
 			"components-schemas-query": {
 				"allOf": [
@@ -6368,16 +6590,21 @@
 						"example": "default"
 					},
 					"phase": {
-						"example": "http_custom_errors"
+						"example": "http_request_dynamic_redirect"
 					},
 					"rules": {
 						"description": "The rules in the ruleset.",
 						"items": {
-							"$ref": "#/components/schemas/custom-error-responses_components-schemas-rule"
+							"$ref": "#/components/schemas/dynamic-redirect-rules_components-schemas-rule"
 						},
 						"type": "array"
 					}
 				}
+			},
+			"components-schemas-serial_number": {
+				"description": "The device serial number.",
+				"example": "EXAMPLEHMD6R",
+				"type": "string"
 			},
 			"components-schemas-single_response": {
 				"allOf": [
@@ -6514,9 +6741,8 @@
 				"type": "string"
 			},
 			"components-schemas-updated_at": {
-				"description": "Last updated.",
-				"example": "2018-08-28T17:26:26Z",
-				"format": "date-time",
+				"description": "The timestamp of when Page Shield was last updated.",
+				"example": "2022-10-12T17:56:52.083582+01:00",
 				"type": "string"
 			},
 			"components-schemas-uploaded_on": {
@@ -7975,6 +8201,32 @@
 					},
 					"version": {
 						"example": "1"
+					}
+				}
+			},
+			"custom-error-responses_components-schemas-ruleset": {
+				"properties": {
+					"description": {
+						"example": ""
+					},
+					"id": {
+						"example": "2f2feab2026849078ba485f918791bdc"
+					},
+					"kind": {
+						"example": "zone"
+					},
+					"name": {
+						"example": "default"
+					},
+					"phase": {
+						"example": "http_custom_errors"
+					},
+					"rules": {
+						"description": "The rules in the ruleset.",
+						"items": {
+							"$ref": "#/components/schemas/custom-error-responses_components-schemas-rule"
+						},
+						"type": "array"
 					}
 				}
 			},
@@ -10002,7 +10254,7 @@
 						"$ref": "#/components/schemas/revoked_at"
 					},
 					"serial_number": {
-						"$ref": "#/components/schemas/schemas-serial_number"
+						"$ref": "#/components/schemas/components-schemas-serial_number"
 					},
 					"updated": {
 						"$ref": "#/components/schemas/updated"
@@ -10133,6 +10385,13 @@
 						"description": "The date after which the upload will not be accepted. Minimum: Now + 2 minutes. Maximum: Now + 6 hours.",
 						"example": "2021-01-02T02:20:00Z",
 						"format": "date-time",
+						"type": "string"
+					},
+					"id": {
+						"description": "Optional Image Custom ID. Up to 1024 chars. Can include any number of subpaths, and utf8 characters. Cannot start nor end with a / (forward slash). Cannot be a UUID.",
+						"example": "this/is/my-customid",
+						"maxLength": 1024,
+						"readOnly": true,
 						"type": "string"
 					},
 					"metadata": {
@@ -10325,6 +10584,9 @@
 					},
 					"ratelimit": {
 						"$ref": "#/components/schemas/ratelimit"
+					},
+					"retries": {
+						"$ref": "#/components/schemas/retries"
 					}
 				},
 				"required": [
@@ -10781,7 +11043,7 @@
 						"$ref": "#/components/schemas/domain_identifier"
 					},
 					"service": {
-						"$ref": "#/components/schemas/service"
+						"$ref": "#/components/schemas/schemas-service"
 					},
 					"zone_id": {
 						"$ref": "#/components/schemas/zone_identifier"
@@ -10976,7 +11238,7 @@
 						"$ref": "#/components/schemas/transfer_in"
 					},
 					"updated_at": {
-						"$ref": "#/components/schemas/components-schemas-updated_at"
+						"$ref": "#/components/schemas/domains_components-schemas-updated_at"
 					}
 				},
 				"type": "object"
@@ -11068,6 +11330,12 @@
 			"domains_components-schemas-account_identifier": {
 				"example": "9a7806061c88ada191ed06f989cc3dac"
 			},
+			"domains_components-schemas-updated_at": {
+				"description": "Last updated.",
+				"example": "2018-08-28T17:26:26Z",
+				"format": "date-time",
+				"type": "string"
+			},
 			"downloadedFrom": {
 				"description": "The source URL for a downloaded image. If the watermark profile was created via direct upload, this field is null.",
 				"example": "https://company.com/logo.png",
@@ -11092,6 +11360,28 @@
 				"description": "The duration of the plan subscription.",
 				"example": 1,
 				"type": "number"
+			},
+			"dynamic-redirect-rules_components-schemas-rule": {
+				"properties": {
+					"action": {
+						"example": "redirect"
+					},
+					"action_parameters": {
+						"$ref": "#/components/schemas/components-schemas-action_parameters"
+					},
+					"description": {
+						"example": "Blog redirect"
+					},
+					"expression": {
+						"example": "http.request.uri.path == \"/blog\""
+					},
+					"id": {
+						"example": "3a03d665bac047339bb530ecb439a90d"
+					},
+					"version": {
+						"example": "1"
+					}
+				}
 			},
 			"early_hints": {
 				"allOf": [
@@ -12844,7 +13134,7 @@
 						"$ref": "#/components/schemas/script-monitor_components-schemas-enabled"
 					},
 					"updated_at": {
-						"$ref": "#/components/schemas/schemas-updated_at"
+						"$ref": "#/components/schemas/components-schemas-updated_at"
 					},
 					"use_cloudflare_reporting_endpoint": {
 						"$ref": "#/components/schemas/use_cloudflare_reporting_endpoint"
@@ -13313,7 +13603,7 @@
 						"$ref": "#/components/schemas/healthchecks_components-schemas-name"
 					},
 					"retries": {
-						"$ref": "#/components/schemas/retries"
+						"$ref": "#/components/schemas/schemas-retries"
 					},
 					"status": {
 						"$ref": "#/components/schemas/healthchecks_components-schemas-status"
@@ -17511,7 +17801,7 @@
 						"$ref": "#/components/schemas/components-schemas-port"
 					},
 					"retries": {
-						"$ref": "#/components/schemas/retries"
+						"$ref": "#/components/schemas/schemas-retries"
 					},
 					"timeout": {
 						"$ref": "#/components/schemas/schemas-timeout"
@@ -17628,6 +17918,96 @@
 					"smtp"
 				],
 				"example": "https",
+				"type": "string"
+			},
+			"mtls-management_components-schemas-certificate_response_collection": {
+				"allOf": [
+					{
+						"$ref": "#/components/schemas/api-response-collection"
+					},
+					{
+						"properties": {
+							"result": {
+								"items": {
+									"$ref": "#/components/schemas/components-schemas-certificateObject"
+								},
+								"type": "array"
+							}
+						}
+					},
+					{
+						"properties": {
+							"result_info": {
+								"properties": {
+									"count": {
+										"example": 1
+									},
+									"page": {
+										"example": 1
+									},
+									"per_page": {
+										"example": 50
+									},
+									"total_count": {
+										"example": 1
+									},
+									"total_pages": {
+										"example": 1
+									}
+								},
+								"type": "object"
+							}
+						}
+					}
+				]
+			},
+			"mtls-management_components-schemas-certificate_response_single": {
+				"allOf": [
+					{
+						"$ref": "#/components/schemas/api-response-single"
+					},
+					{
+						"properties": {
+							"result": {
+								"allOf": [
+									{
+										"$ref": "#/components/schemas/components-schemas-certificateObject"
+									}
+								],
+								"type": "object"
+							}
+						}
+					}
+				]
+			},
+			"mtls-management_components-schemas-expires_on": {
+				"description": "When the certificate expires.",
+				"example": "2122-10-29T16:59:47Z",
+				"format": "date-time",
+				"readOnly": true,
+				"type": "string"
+			},
+			"mtls-management_components-schemas-identifier": {
+				"description": "Certificate identifier tag.",
+				"example": "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
+				"maxLength": 36,
+				"readOnly": true,
+				"type": "string"
+			},
+			"mtls-management_components-schemas-name": {
+				"description": "Optional unique name for the certificate. Only used for human readability.",
+				"example": "example_ca_cert_5",
+				"type": "string"
+			},
+			"mtls-management_components-schemas-status": {
+				"description": "Certificate deployment status for the given service.",
+				"example": "pending_deployment",
+				"type": "string"
+			},
+			"mtls-management_components-schemas-uploaded_on": {
+				"description": "This is the time the certificate was uploaded.",
+				"example": "2022-11-22T17:32:30.467938Z",
+				"format": "date-time",
 				"type": "string"
 			},
 			"mtu": {
@@ -18388,6 +18768,28 @@
 				"example": "fallback.example.com",
 				"maxLength": 255,
 				"type": "string"
+			},
+			"origin-rules_components-schemas-rule": {
+				"properties": {
+					"action": {
+						"example": "route"
+					},
+					"action_parameters": {
+						"$ref": "#/components/schemas/schemas-action_parameters"
+					},
+					"description": {
+						"example": "change the host header, origin, and SNI"
+					},
+					"expression": {
+						"example": "http.cookie contains \"something\""
+					},
+					"id": {
+						"example": "3a03d665bac047339bb530ecb439a90d"
+					},
+					"version": {
+						"example": "1"
+					}
+				}
 			},
 			"origin_components-schemas-enabled": {
 				"default": true,
@@ -21468,7 +21870,7 @@
 						"$ref": "#/components/schemas/healthchecks_components-schemas-name"
 					},
 					"retries": {
-						"$ref": "#/components/schemas/retries"
+						"$ref": "#/components/schemas/schemas-retries"
 					},
 					"suspended": {
 						"$ref": "#/components/schemas/suspended"
@@ -22768,8 +23170,11 @@
 			},
 			"retries": {
 				"default": 2,
-				"description": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.",
-				"type": "integer"
+				"description": "Number of retries for fetching DNS responses from origin nameservers.",
+				"example": 2,
+				"maximum": 2,
+				"minimum": 0,
+				"type": "number"
 			},
 			"revision": {
 				"description": "The revision of the Railgun receiver.",
@@ -24349,7 +24754,7 @@
 				"description": "The parameters configuring the action.",
 				"oneOf": [
 					{
-						"$ref": "#/components/schemas/action_parameters_rewrite"
+						"$ref": "#/components/schemas/action_parameters_route"
 					}
 				],
 				"type": "object"
@@ -24626,6 +25031,20 @@
 				"title": "Bookmark Application",
 				"type": "object"
 			},
+			"schemas-ca": {
+				"properties": {
+					"aud": {
+						"$ref": "#/components/schemas/aud"
+					},
+					"id": {
+						"$ref": "#/components/schemas/ca_components-schemas-id"
+					},
+					"public_key": {
+						"$ref": "#/components/schemas/public_key"
+					}
+				},
+				"type": "object"
+			},
 			"schemas-can_delete": {
 				"description": "Controls whether the membership can be deleted via the API or not.",
 				"example": true,
@@ -24735,30 +25154,9 @@
 				]
 			},
 			"schemas-certificates": {
-				"properties": {
-					"associated_hostnames": {
-						"$ref": "#/components/schemas/associated_hostnames"
-					},
-					"created_at": {
-						"$ref": "#/components/schemas/timestamp"
-					},
-					"expires_on": {
-						"$ref": "#/components/schemas/timestamp"
-					},
-					"fingerprint": {
-						"$ref": "#/components/schemas/fingerprint"
-					},
-					"id": {
-						"description": "The ID of the application that will use this certificate."
-					},
-					"name": {
-						"$ref": "#/components/schemas/certificates_components-schemas-name"
-					},
-					"updated_at": {
-						"$ref": "#/components/schemas/timestamp"
-					}
-				},
-				"type": "object"
+				"description": "The uploaded root CA certificate.",
+				"example": "-----BEGIN CERTIFICATE-----\nMIIDmDCCAoCgAwIBAgIUKTOAZNjcXVZRj4oQt0SHsl1c1vMwDQYJKoZIhvcNAQELBQAwUTELMAkGA1UEBhMCVVMxFjAUBgNVBAgMDVNhbiBGcmFuY2lzY28xEzARBgNVBAcMCkNhbGlmb3JuaWExFTATBgNVBAoMDEV4YW1wbGUgSW5jLjAgFw0yMjExMjIxNjU5NDdaGA8yMTIyMTAyOTE2NTk0N1owUTELMAkGA1UEBhMCVVMxFjAUBgNVBAgMDVNhbiBGcmFuY2lzY28xEzARBgNVBAcMCkNhbGlmb3JuaWExFTATBgNVBAoMDEV4YW1wbGUgSW5jLjCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMRcORwgJFTdcG/2GKI+cFYiOBNDKjCZUXEOvXWY42BkH9wxiMT869CO+enA1w5pIrXow6kCM1sQspHHaVmJUlotEMJxyoLFfA/8Kt1EKFyobOjuZs2SwyVyJ2sStvQuUQEosULZCNGZEqoH5g6zhMPxaxm7ZLrrsDZ9maNGVqo7EWLWHrZ57Q/5MtTrbxQL+eXjUmJ9K3kS+3uEwMdqR6Z3BluU1ivanpPc1CN2GNhdO0/hSY4YkGEnuLsqJyDd3cIiB1MxuCBJ4ZaqOd2viV1WcP3oU3dxVPm4MWyfYIldMWB14FahScxLhWdRnM9YZ/i9IFcLypXsuz7DjrJPtPUCAwEAAaNmMGQwHQYDVR0OBBYEFP5JzLUawNF+c3AXsYTEWHh7z2czMB8GA1UdIwQYMBaAFP5JzLUawNF+c3AXsYTEWHh7z2czMA4GA1UdDwEB/wQEAwIBBjASBgNVHRMBAf8ECDAGAQH/AgEBMA0GCSqGSIb3DQEBCwUAA4IBAQBc+Be7NDhpE09y7hLPZGRPl1cSKBw4RI0XIv6rlbSTFs5EebpTGjhx/whNxwEZhB9HZ7111Oa1YlT8xkI9DshB78mjAHCKBAJ76moK8tkG0aqdYpJ4ZcJTVBB7l98Rvgc7zfTii7WemTy72deBbSeiEtXavm4EF0mWjHhQ5Nxpnp00Bqn5g1x8CyTDypgmugnep+xG+iFzNmTdsz7WI9T/7kDMXqB7M/FPWBORyS98OJqNDswCLF8bIZYwUBEe+bRHFomoShMzaC3tvim7WCb16noDkSTMlfKO4pnvKhpcVdSgwcruATV7y+W+Lvmz2OT/Gui4JhqeoTewsxndhDDE\n-----END CERTIFICATE-----",
+				"type": "string"
 			},
 			"schemas-check_regions": {
 				"description": "A list of regions from which to run health checks. Null means Cloudflare will pick a default region.",
@@ -25023,41 +25421,6 @@
 				"maxLength": 255,
 				"readOnly": true,
 				"type": "string"
-			},
-			"schemas-direct_upload_request": {
-				"properties": {
-					"expiry": {
-						"default": "Now + 30 minutes",
-						"description": "The date after which the upload will not be accepted. Minimum: Now + 2 minutes. Maximum: Now + 6 hours.",
-						"example": "2021-01-02T02:20:00Z",
-						"format": "date-time",
-						"type": "string"
-					}
-				},
-				"type": "object"
-			},
-			"schemas-direct_upload_response": {
-				"allOf": [
-					{
-						"$ref": "#/components/schemas/api-response-single"
-					},
-					{
-						"properties": {
-							"result": {
-								"properties": {
-									"id": {
-										"$ref": "#/components/schemas/images_components-schemas-identifier"
-									},
-									"uploadURL": {
-										"description": "The URL the unauthenticated upload can be performed to using a single HTTP POST (multipart/form-data) request.",
-										"example": "https://upload.imagedelivery.net/e22e9e6b-c02b-42fd-c405-6c32af5fe623",
-										"type": "string"
-									}
-								}
-							}
-						}
-					}
-				]
 			},
 			"schemas-disabled_at": {
 				"description": "This field shows up only if the pool is disabled. This field is set with the time the pool was disabled at.",
@@ -25576,6 +25939,12 @@
 			"schemas-ipv6": {
 				"example": "2001:0DB8::",
 				"format": "ipv6",
+				"type": "string"
+			},
+			"schemas-issuer": {
+				"description": "The certificate authority that issued the certificate.",
+				"example": "O=Example Inc.,L=California,ST=San Francisco,C=US",
+				"readOnly": true,
 				"type": "string"
 			},
 			"schemas-items": {
@@ -26536,6 +26905,11 @@
 				],
 				"type": "object"
 			},
+			"schemas-retries": {
+				"default": 2,
+				"description": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.",
+				"type": "integer"
+			},
 			"schemas-role": {
 				"properties": {
 					"description": {
@@ -26687,12 +27061,12 @@
 						"example": "default"
 					},
 					"phase": {
-						"example": "http_request_transform"
+						"example": "http_request_origin"
 					},
 					"rules": {
 						"description": "The rules in the ruleset.",
 						"items": {
-							"$ref": "#/components/schemas/transform-rules_components-schemas-rule"
+							"$ref": "#/components/schemas/origin-rules_components-schemas-rule"
 						},
 						"type": "array"
 					}
@@ -26721,8 +27095,14 @@
 				"type": "string"
 			},
 			"schemas-serial_number": {
-				"description": "The device serial number.",
-				"example": "EXAMPLEHMD6R",
+				"description": "The certificate serial number.",
+				"example": "235217144297995885180570755458463043449861756659",
+				"readOnly": true,
+				"type": "string"
+			},
+			"schemas-service": {
+				"description": "Worker service associated with the zone and hostname.",
+				"example": "foo",
 				"type": "string"
 			},
 			"schemas-session_duration": {
@@ -27170,8 +27550,9 @@
 				"type": "string"
 			},
 			"schemas-updated_at": {
-				"description": "The timestamp of when Page Shield was last updated.",
-				"example": "2022-10-12T17:56:52.083582+01:00",
+				"description": "This is the time the certificate was updated.",
+				"example": "2022-11-22T17:32:30.467938Z",
+				"format": "date-time",
 				"type": "string"
 			},
 			"schemas-uploaded": {
@@ -27745,8 +28126,8 @@
 				"type": "string"
 			},
 			"service": {
-				"description": "Worker service associated with the zone and hostname.",
-				"example": "foo",
+				"description": "The service using the certificate.",
+				"example": "gateway",
 				"type": "string"
 			},
 			"service-tokens": {
@@ -30260,13 +30641,22 @@
 					}
 				}
 			},
+			"transform-rules_components-schemas-action_parameters": {
+				"description": "The parameters configuring the action.",
+				"oneOf": [
+					{
+						"$ref": "#/components/schemas/action_parameters_rewrite"
+					}
+				],
+				"type": "object"
+			},
 			"transform-rules_components-schemas-rule": {
 				"properties": {
 					"action": {
 						"example": "rewrite"
 					},
 					"action_parameters": {
-						"$ref": "#/components/schemas/schemas-action_parameters"
+						"$ref": "#/components/schemas/transform-rules_components-schemas-action_parameters"
 					},
 					"description": {
 						"example": "change request based on ip location"
@@ -30279,6 +30669,32 @@
 					},
 					"version": {
 						"example": "1"
+					}
+				}
+			},
+			"transform-rules_components-schemas-ruleset": {
+				"properties": {
+					"description": {
+						"example": ""
+					},
+					"id": {
+						"example": "2f2feab2026849078ba485f918791bdc"
+					},
+					"kind": {
+						"example": "zone"
+					},
+					"name": {
+						"example": "default"
+					},
+					"phase": {
+						"example": "http_request_transform"
+					},
+					"rules": {
+						"description": "The rules in the ruleset.",
+						"items": {
+							"$ref": "#/components/schemas/transform-rules_components-schemas-rule"
+						},
+						"type": "array"
 					}
 				}
 			},
@@ -30804,7 +31220,7 @@
 						"$ref": "#/components/schemas/script-monitor_components-schemas-enabled"
 					},
 					"updated_at": {
-						"$ref": "#/components/schemas/schemas-updated_at"
+						"$ref": "#/components/schemas/components-schemas-updated_at"
 					},
 					"use_cloudflare_reporting_endpoint": {
 						"$ref": "#/components/schemas/use_cloudflare_reporting_endpoint"
@@ -36987,6 +37403,9 @@
 						"application/json": {
 							"schema": {
 								"properties": {
+									"attack_mitigation": {
+										"$ref": "#/components/schemas/attack_mitigation"
+									},
 									"deprecate_any_requests": {
 										"$ref": "#/components/schemas/deprecate_any_requests"
 									},
@@ -37010,6 +37429,9 @@
 									},
 									"ratelimit": {
 										"$ref": "#/components/schemas/ratelimit"
+									},
+									"retries": {
+										"$ref": "#/components/schemas/retries"
 									}
 								},
 								"required": [
@@ -38368,78 +38790,6 @@
 				"tags": [
 					"Cloudflare Images"
 				]
-			}
-		},
-		"/accounts/{account_identifier}/images/v1/direct_upload": {
-			"post": {
-				"deprecated": true,
-				"description": "Direct uploads allow users to upload images without API keys. A common use case are web apps, client-side applications, or mobile devices where users upload content directly to Cloudflare Images.",
-				"operationId": "cloudflare-images-create-authenticated-direct-upload-url",
-				"parameters": [
-					{
-						"in": "path",
-						"name": "account_identifier",
-						"required": true,
-						"schema": {
-							"$ref": "#/components/schemas/images_components-schemas-account_identifier"
-						}
-					}
-				],
-				"requestBody": {
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/schemas-direct_upload_request"
-							}
-						}
-					},
-					"required": true
-				},
-				"responses": {
-					"200": {
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/schemas-direct_upload_response"
-								}
-							}
-						},
-						"description": "Create authenticated direct upload URL response"
-					},
-					"4xx": {
-						"content": {
-							"application/json": {
-								"schema": {
-									"allOf": [
-										{
-											"$ref": "#/components/schemas/schemas-direct_upload_response"
-										},
-										{
-											"$ref": "#/components/schemas/api-response-common-failure"
-										}
-									]
-								}
-							}
-						},
-						"description": "Create authenticated direct upload URL response failure"
-					}
-				},
-				"security": [
-					{
-						"api_email": [],
-						"api_key": []
-					},
-					{
-						"api_token": []
-					}
-				],
-				"summary": "Create authenticated direct upload URL",
-				"tags": [
-					"Cloudflare Images"
-				],
-				"x-cfDeprecation": {
-					"$ref": "#/components/schemas/images/x-cfDeprecations/direct_upload_v1_deprecation"
-				}
 			}
 		},
 		"/accounts/{account_identifier}/images/v1/keys": {
@@ -40001,7 +40351,7 @@
 										"$ref": "#/components/schemas/probe_zone"
 									},
 									"retries": {
-										"$ref": "#/components/schemas/retries"
+										"$ref": "#/components/schemas/schemas-retries"
 									},
 									"timeout": {
 										"$ref": "#/components/schemas/schemas-timeout"
@@ -40263,7 +40613,7 @@
 										"$ref": "#/components/schemas/probe_zone"
 									},
 									"retries": {
-										"$ref": "#/components/schemas/retries"
+										"$ref": "#/components/schemas/schemas-retries"
 									},
 									"timeout": {
 										"$ref": "#/components/schemas/schemas-timeout"
@@ -40386,7 +40736,7 @@
 										"$ref": "#/components/schemas/probe_zone"
 									},
 									"retries": {
-										"$ref": "#/components/schemas/retries"
+										"$ref": "#/components/schemas/schemas-retries"
 									},
 									"timeout": {
 										"$ref": "#/components/schemas/schemas-timeout"
@@ -40502,7 +40852,7 @@
 										"$ref": "#/components/schemas/probe_zone"
 									},
 									"retries": {
-										"$ref": "#/components/schemas/retries"
+										"$ref": "#/components/schemas/schemas-retries"
 									},
 									"timeout": {
 										"$ref": "#/components/schemas/schemas-timeout"
@@ -41359,7 +41709,7 @@
 										"$ref": "#/components/schemas/probe_zone"
 									},
 									"retries": {
-										"$ref": "#/components/schemas/retries"
+										"$ref": "#/components/schemas/schemas-retries"
 									},
 									"timeout": {
 										"$ref": "#/components/schemas/schemas-timeout"
@@ -44678,6 +45028,406 @@
 				"tags": [
 					"Magic Network Monitoring Rules"
 				]
+			}
+		},
+		"/accounts/{account_identifier}/mtls_certificates": {
+			"get": {
+				"description": "Lists all mTLS certificates.",
+				"operationId": "m-tls-certificate-management-list-m-tls-certificates",
+				"parameters": [
+					{
+						"in": "path",
+						"name": "account_identifier",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/common_components-schemas-identifier"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/mtls-management_components-schemas-certificate_response_collection"
+								}
+							}
+						},
+						"description": "List mTLS certificates response"
+					},
+					"4xx": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/mtls-management_components-schemas-certificate_response_collection"
+										},
+										{
+											"$ref": "#/components/schemas/api-response-common-failure"
+										}
+									]
+								}
+							}
+						},
+						"description": "List mTLS certificates response failure"
+					}
+				},
+				"security": [
+					{
+						"api_email": [],
+						"api_key": []
+					},
+					{
+						"api_token": []
+					}
+				],
+				"summary": "List mTLS certificates",
+				"tags": [
+					"mTLS Certificate Management"
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"#ssl:read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"business": true,
+					"enterprise": true,
+					"free": true,
+					"pro": true
+				}
+			},
+			"post": {
+				"description": "Upload a certificate that you want to use with mTLS-enabled Cloudflare services.",
+				"operationId": "m-tls-certificate-management-upload-m-tls-certificate",
+				"parameters": [
+					{
+						"in": "path",
+						"name": "account_identifier",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/common_components-schemas-identifier"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"ca": {
+										"$ref": "#/components/schemas/ca"
+									},
+									"certificates": {
+										"$ref": "#/components/schemas/schemas-certificates"
+									},
+									"name": {
+										"$ref": "#/components/schemas/mtls-management_components-schemas-name"
+									},
+									"private_key": {
+										"$ref": "#/components/schemas/components-schemas-private_key"
+									}
+								},
+								"required": [
+									"certificates",
+									"private_key",
+									"ca"
+								],
+								"type": "object"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/certificate_response_single_post"
+								}
+							}
+						},
+						"description": "Upload mTLS certificate response"
+					},
+					"4xx": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/certificate_response_single_post"
+										},
+										{
+											"$ref": "#/components/schemas/api-response-common-failure"
+										}
+									]
+								}
+							}
+						},
+						"description": "Upload mTLS certificate response failure"
+					}
+				},
+				"security": [
+					{
+						"api_email": [],
+						"api_key": []
+					},
+					{
+						"api_token": []
+					}
+				],
+				"summary": "Upload mTLS certificate",
+				"tags": [
+					"mTLS Certificate Management"
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"#ssl:edit"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"business": true,
+					"enterprise": true,
+					"free": true,
+					"pro": true
+				}
+			}
+		},
+		"/accounts/{account_identifier}/mtls_certificates/{identifier}": {
+			"delete": {
+				"description": "Deletes the mTLS certificate unless the certificate is in use by one or more Cloudflare services.",
+				"operationId": "m-tls-certificate-management-delete-m-tls-certificate",
+				"parameters": [
+					{
+						"in": "path",
+						"name": "identifier",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/mtls-management_components-schemas-identifier"
+						}
+					},
+					{
+						"in": "path",
+						"name": "account_identifier",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/common_components-schemas-identifier"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/mtls-management_components-schemas-certificate_response_single"
+								}
+							}
+						},
+						"description": "Delete mTLS certificate response"
+					},
+					"4xx": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/mtls-management_components-schemas-certificate_response_single"
+										},
+										{
+											"$ref": "#/components/schemas/api-response-common-failure"
+										}
+									]
+								}
+							}
+						},
+						"description": "Delete mTLS certificate response failure"
+					}
+				},
+				"security": [
+					{
+						"api_email": [],
+						"api_key": []
+					},
+					{
+						"api_token": []
+					}
+				],
+				"summary": "Delete mTLS certificate",
+				"tags": [
+					"mTLS Certificate Management"
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"#ssl:edit"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"business": true,
+					"enterprise": true,
+					"free": true,
+					"pro": true
+				}
+			},
+			"get": {
+				"description": "Fetches a single mTLS certificate.",
+				"operationId": "m-tls-certificate-management-get-m-tls-certificate",
+				"parameters": [
+					{
+						"in": "path",
+						"name": "identifier",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/mtls-management_components-schemas-identifier"
+						}
+					},
+					{
+						"in": "path",
+						"name": "account_identifier",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/common_components-schemas-identifier"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/mtls-management_components-schemas-certificate_response_single"
+								}
+							}
+						},
+						"description": "Get mTLS certificate response"
+					},
+					"4xx": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/mtls-management_components-schemas-certificate_response_single"
+										},
+										{
+											"$ref": "#/components/schemas/api-response-common-failure"
+										}
+									]
+								}
+							}
+						},
+						"description": "Get mTLS certificate response failure"
+					}
+				},
+				"security": [
+					{
+						"api_email": [],
+						"api_key": []
+					},
+					{
+						"api_token": []
+					}
+				],
+				"summary": "Get mTLS certificate",
+				"tags": [
+					"mTLS Certificate Management"
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"#ssl:read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"business": true,
+					"enterprise": true,
+					"free": true,
+					"pro": true
+				}
+			}
+		},
+		"/accounts/{account_identifier}/mtls_certificates/{identifier}/associations": {
+			"get": {
+				"description": "Lists all active associations between the certificate and Cloudflare services.",
+				"operationId": "m-tls-certificate-management-list-m-tls-certificate-associations",
+				"parameters": [
+					{
+						"in": "path",
+						"name": "identifier",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/mtls-management_components-schemas-identifier"
+						}
+					},
+					{
+						"in": "path",
+						"name": "account_identifier",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/common_components-schemas-identifier"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/association_response_collection"
+								}
+							}
+						},
+						"description": "List mTLS certificate associations response"
+					},
+					"4xx": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/association_response_collection"
+										},
+										{
+											"$ref": "#/components/schemas/api-response-common-failure"
+										}
+									]
+								}
+							}
+						},
+						"description": "List mTLS certificate associations response failure"
+					}
+				},
+				"security": [
+					{
+						"api_email": [],
+						"api_key": []
+					},
+					{
+						"api_token": []
+					}
+				],
+				"summary": "List mTLS certificate associations",
+				"tags": [
+					"mTLS Certificate Management"
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"#ssl:read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"business": true,
+					"enterprise": true,
+					"free": true,
+					"pro": true
+				}
 			}
 		},
 		"/accounts/{account_identifier}/pages/projects": {
@@ -55771,7 +56521,7 @@
 										"$ref": "#/components/schemas/components-schemas-hostname"
 									},
 									"service": {
-										"$ref": "#/components/schemas/service"
+										"$ref": "#/components/schemas/schemas-service"
 									},
 									"zone_id": {
 										"$ref": "#/components/schemas/zone_identifier"
@@ -87843,7 +88593,7 @@
 										"$ref": "#/components/schemas/probe_zone"
 									},
 									"retries": {
-										"$ref": "#/components/schemas/retries"
+										"$ref": "#/components/schemas/schemas-retries"
 									},
 									"timeout": {
 										"$ref": "#/components/schemas/schemas-timeout"
@@ -88075,7 +88825,7 @@
 										"$ref": "#/components/schemas/probe_zone"
 									},
 									"retries": {
-										"$ref": "#/components/schemas/retries"
+										"$ref": "#/components/schemas/schemas-retries"
 									},
 									"timeout": {
 										"$ref": "#/components/schemas/schemas-timeout"
@@ -88184,7 +88934,7 @@
 										"$ref": "#/components/schemas/probe_zone"
 									},
 									"retries": {
-										"$ref": "#/components/schemas/retries"
+										"$ref": "#/components/schemas/schemas-retries"
 									},
 									"timeout": {
 										"$ref": "#/components/schemas/schemas-timeout"
@@ -88289,7 +89039,7 @@
 										"$ref": "#/components/schemas/components-schemas-port"
 									},
 									"retries": {
-										"$ref": "#/components/schemas/retries"
+										"$ref": "#/components/schemas/schemas-retries"
 									},
 									"timeout": {
 										"$ref": "#/components/schemas/schemas-timeout"
@@ -89060,7 +89810,7 @@
 										"$ref": "#/components/schemas/components-schemas-port"
 									},
 									"retries": {
-										"$ref": "#/components/schemas/retries"
+										"$ref": "#/components/schemas/schemas-retries"
 									},
 									"timeout": {
 										"$ref": "#/components/schemas/schemas-timeout"
@@ -123797,7 +124547,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/components-schemas-ruleset"
+									"$ref": "#/components/schemas/custom-error-responses_components-schemas-ruleset"
 								}
 							}
 						},
@@ -123809,7 +124559,7 @@
 								"schema": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/components-schemas-ruleset"
+											"$ref": "#/components/schemas/custom-error-responses_components-schemas-ruleset"
 										},
 										{
 											"$ref": "#/components/schemas/api-response-common-failure"
@@ -123914,6 +124664,278 @@
 				}
 			}
 		},
+		"/zones/{zone_id}/rulesets/phases/http_request_dynamic_redirect/entrypoint": {
+			"get": {
+				"description": "Fetches all Single Redirect Rules in a zone.",
+				"operationId": "single-redirect-rules-list-single-redirect-rules",
+				"parameters": [
+					{
+						"in": "path",
+						"name": "zone_id",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/common_components-schemas-identifier"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/components-schemas-ruleset"
+								}
+							}
+						},
+						"description": "List Single Redirect Rules response"
+					},
+					"4xx": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/components-schemas-ruleset"
+										},
+										{
+											"$ref": "#/components/schemas/api-response-common-failure"
+										}
+									]
+								}
+							}
+						},
+						"description": "List Single Redirect Rules response failure"
+					}
+				},
+				"security": [
+					{
+						"api_email": [],
+						"api_key": []
+					},
+					{
+						"api_token": []
+					}
+				],
+				"summary": "List Single Redirect Rules",
+				"tags": [
+					"Single Redirect Rules"
+				],
+				"x-cfPlanAvailability": {
+					"business": true,
+					"enterprise": true,
+					"free": true,
+					"pro": true
+				}
+			},
+			"put": {
+				"description": "Updates the Single Redirect Rules of a zone.",
+				"operationId": "single-redirect-rules-update-single-redirect-rules",
+				"parameters": [
+					{
+						"in": "path",
+						"name": "zone_id",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/common_components-schemas-identifier"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/update_ruleset"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/api-response-single"
+								}
+							}
+						},
+						"description": "Update Single Redirect Rules response"
+					},
+					"4xx": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single"
+										},
+										{
+											"$ref": "#/components/schemas/api-response-common-failure"
+										}
+									]
+								}
+							}
+						},
+						"description": "Update Single Redirect Rules response failure"
+					}
+				},
+				"security": [
+					{
+						"api_email": [],
+						"api_key": []
+					},
+					{
+						"api_token": []
+					}
+				],
+				"summary": "Update Single Redirect Rules",
+				"tags": [
+					"Single Redirect Rules"
+				],
+				"x-cfPlanAvailability": {
+					"business": true,
+					"enterprise": true,
+					"free": true,
+					"pro": true
+				}
+			}
+		},
+		"/zones/{zone_id}/rulesets/phases/http_request_origin/entrypoint": {
+			"get": {
+				"description": "Fetches all Origin Rules in a zone.",
+				"operationId": "origin-rules-list-origin-rules",
+				"parameters": [
+					{
+						"in": "path",
+						"name": "zone_id",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/common_components-schemas-identifier"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/schemas-ruleset"
+								}
+							}
+						},
+						"description": "List Origin Rules response"
+					},
+					"4xx": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/schemas-ruleset"
+										},
+										{
+											"$ref": "#/components/schemas/api-response-common-failure"
+										}
+									]
+								}
+							}
+						},
+						"description": "List Origin Rules response failure"
+					}
+				},
+				"security": [
+					{
+						"api_email": [],
+						"api_key": []
+					},
+					{
+						"api_token": []
+					}
+				],
+				"summary": "List Origin Rules",
+				"tags": [
+					"Origin Rules"
+				],
+				"x-cfPlanAvailability": {
+					"business": true,
+					"enterprise": true,
+					"free": true,
+					"pro": true
+				}
+			},
+			"put": {
+				"description": "Updates the Origin Rules of a zone.",
+				"operationId": "origin-rules-update-origin-rules",
+				"parameters": [
+					{
+						"in": "path",
+						"name": "zone_id",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/common_components-schemas-identifier"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/update_ruleset"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/api-response-single"
+								}
+							}
+						},
+						"description": "Update Origin Rules response"
+					},
+					"4xx": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single"
+										},
+										{
+											"$ref": "#/components/schemas/api-response-common-failure"
+										}
+									]
+								}
+							}
+						},
+						"description": "Update Origin Rules response failure"
+					}
+				},
+				"security": [
+					{
+						"api_email": [],
+						"api_key": []
+					},
+					{
+						"api_token": []
+					}
+				],
+				"summary": "Update Origin Rules",
+				"tags": [
+					"Origin Rules"
+				],
+				"x-cfPlanAvailability": {
+					"business": true,
+					"enterprise": true,
+					"free": true,
+					"pro": true
+				}
+			}
+		},
 		"/zones/{zone_id}/rulesets/phases/{phase}/entrypoint": {
 			"get": {
 				"description": "Fetches all Transform Rules in a zone.",
@@ -123941,7 +124963,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/schemas-ruleset"
+									"$ref": "#/components/schemas/transform-rules_components-schemas-ruleset"
 								}
 							}
 						},
@@ -123953,7 +124975,7 @@
 								"schema": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/schemas-ruleset"
+											"$ref": "#/components/schemas/transform-rules_components-schemas-ruleset"
 										},
 										{
 											"$ref": "#/components/schemas/api-response-common-failure"
