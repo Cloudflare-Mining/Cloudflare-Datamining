@@ -4061,6 +4061,10 @@
 		"totalActiveUsers": "Actual value of total active users",
 		"totalActiveUsersConfig": "Configured value of total active users",
 		"totalQueuedUsers": "Total number of users that are queued",
+		"totalTimeWaitedP50": "50th percentile of the total time (in seconds) spent waiting in queue by users who were queued and then gained access to the origin",
+		"totalTimeWaitedP75": "75th percentile of the total time (in seconds) spent waiting in queue by users who were queued and then gained access to the origin",
+		"totalTimeWaitedP90": "90th percentile of the total time (in seconds) spent waiting in queue by users who were queued and then gained access to the origin",
+		"totalTimeWaitedP95": "95th percentile of the total time (in seconds) spent waiting in queue by users who were queued and then gained access to the origin",
 		"waitingRoomId": "Unique Identifier for the waiting room",
 		"waitingRoomName": "Name of the waiting room"
 	},
@@ -4099,7 +4103,11 @@
 		"timeOnOriginP50": "Weighted average of 50th percentile of time spent on origin in seconds. A negative number means no data",
 		"timeOnOriginP75": "Weighted average of 75th percentile of time spent on origin in seconds. A negative number means no data",
 		"timeOnOriginP90": "Weighted average of 90th percentile of time spent on origin in seconds. A negative number means no data",
-		"timeOnOriginP95": "Weighted average of 95th percentile of time spent on origin in seconds. A negative number means no data"
+		"timeOnOriginP95": "Weighted average of 95th percentile of time spent on origin in seconds. A negative number means no data",
+		"totalTimeWaitedP50": "Weighted average of 50th percentile of the total time spent waiting in queue by users who have gained access to the origin in seconds. A negative number means no data",
+		"totalTimeWaitedP75": "Weighted average of 75th percentile of the total time spent waiting in queue by users who have gained access to the origin in seconds. A negative number means no data",
+		"totalTimeWaitedP90": "Weighted average of 90th percentile of the total time spent waiting in queue by users who have gained access to the origin in seconds. A negative number means no data",
+		"totalTimeWaitedP95": "Weighted average of 95th percentile of the total time spent waiting in queue by users who have gained access to the origin in seconds. A negative number means no data"
 	},
 	"ZoneWaitingRoomAnalyticsAdaptiveGroupsDimensions": {
 		"__description": "",
@@ -4158,6 +4166,7 @@
 		"datetime": "Request datetime",
 		"datetimeHour": "Request datetime, truncated to start of an hour",
 		"datetimeMinute": "Request datetime, truncated to start of an minute",
+		"httpResponseStatus": "Origin HTTP response code",
 		"status": "Status of the worker invocation"
 	},
 	"ZoneWorkersZoneInvocationsAdaptiveGroupsFilter_InputObject": {
@@ -4169,6 +4178,7 @@
 	"ZoneWorkersZoneInvocationsAdaptiveGroupsSum": {
 		"__description": "",
 		"requests": "Sum of Requests",
+		"responseBodySize": "Bandwidth (in bytes) returned to eyeball",
 		"subrequests": "Number of sub-requests issued by the edge worker",
 		"totalCpuTime": "Total CPU time used (in microseconds)"
 	},
