@@ -34,7 +34,7 @@
 				"topNavOptions": "custom",
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
-				"footerOptions": null,
+				"footerOptions": "default",
 				"metaTags": {
 					"metaTitle": "Zero Trust Services Plans & Pricing",
 					"metaDescription": "Explore our Zero Trust offerings and find the plan that's right for your business to secure users, devices, and networks.",
@@ -2049,7 +2049,7 @@
 													"locale": "en-US",
 													"title": "Websites & application services plans",
 													"description": "DDoS, WAF, CDN, DNS, load balancing, & more",
-													"url": "plans",
+													"url": "/plans/application-services",
 													"badges": null,
 													"specialLinkType": null,
 													"openInNewWindow": false,
@@ -4949,7 +4949,7 @@
 														"locale": "en-US",
 														"title": "Websites & application services plans",
 														"description": "DDoS, WAF, CDN, DNS, load balancing, & more",
-														"url": "plans",
+														"url": "/plans/application-services",
 														"badges": null,
 														"specialLinkType": null,
 														"openInNewWindow": false,
@@ -6982,30 +6982,6 @@
 									"isExternalUrl": false
 								},
 								"navigationLinks": null
-							}
-						]
-					},
-					{
-						"contentTypeId": "bladeSubNav",
-						"contentfulId": "1BUkWhpzYYPgu2t3ip55Rg",
-						"menuTitle": null,
-						"mobileOnlyMenuTitle": null,
-						"stickyNav": true,
-						"htmlId": null,
-						"menuItems": [
-							{
-								"contentfulId": "156RdZCFeetrIlWkwi3idc",
-								"linkText": "Overview",
-								"page": null,
-								"url": "#overview",
-								"subMenuItems": null
-							},
-							{
-								"contentfulId": "5FrE4PbZjAXhJ4iFLHdywY",
-								"linkText": "Add-ons",
-								"page": null,
-								"url": "#add-ons",
-								"subMenuItems": null
 							}
 						]
 					},
@@ -11686,7 +11662,7 @@
 				"noindex": false,
 				"enableZendeskChat": null,
 				"formModal": null,
-				"keepHashUrlSyncedWithScrollPosition": true
+				"keepHashUrlSyncedWithScrollPosition": null
 			},
 			"site": {
 				"siteMetadata": {
