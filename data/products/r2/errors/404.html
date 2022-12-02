@@ -21,8 +21,15 @@
 			max-width: 1200px;
 			margin-top: 120px;
 			display: flex;
+			flex-wrap: wrap;
 			align-items: center;
 			justify-content: center;
+		}
+
+		#text {
+			max-width: 60%;
+			margin-left: 1rem;
+			margin-right: 1rem;
 		}
 
 		main>section>div {
@@ -86,8 +93,8 @@
 		}
 
 		h3 {
-			font-size: 32px;
-			font-weight: 300;
+			font-size: 2rem;
+			font-weight: 400;
 			color: #92979b;
 			margin: 0;
 		}
@@ -114,7 +121,7 @@
 
 <body>
 	<main>
-		<section>
+		<section id="text">
 			<div>
 				<h1>Error 404</h1>
 				<h3>This object could not be viewed</h3>
