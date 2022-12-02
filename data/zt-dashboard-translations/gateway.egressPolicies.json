@@ -1,8 +1,16 @@
 {
 	"empty_state_add_new": "Create egress policy",
-	"empty_state_description": "Egress policies are used to apply dedicated egrees IPs to select traffic. If you don’t create a egress policy we will default Cloudfare Proxy.",
+	"empty_state_description": "Egress policies specify which IP is used for egress traffic based on identity, application, network, and geolocation attributes. If you don’t create an egress IP policies will default to Cloudfare Proxy. <br/><br/>Note: Dedicated egress IPs are required to enable traffic egress policies.",
 	"empty_state_more_info": "For more about proxy endpoints see the full Gateway <0>documentation</0>",
 	"empty_state_title": "Create egress policies",
+	"ip_card_add_secondary_address": "+ Add secondary IPv4 address",
+	"ip_card_custom_egress": "Utilize dedicated Cloudflare egress IPs ",
+	"ip_card_default_egress": "Utilize default Cloudflare egress method",
+	"ip_card_description": "Your secondary IPs will only be used if your primary IP is rerouted.",
+	"ip_card_ipv4_dropdown": "Primary IPv4 address",
+	"ip_card_ipv4_secondary_dropdown": "Secondary IPv4 address",
+	"ip_card_ipv6_dropdown": "IPv6 address",
+	"ip_card_title": "Select an egress IP",
 	"no_egress_policy_description": "Use the egress policy builder to define your preferred egress methods.",
 	"product": "Gateway",
 	"title": "Egress Policies"
