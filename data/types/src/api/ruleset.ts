@@ -76,3 +76,10 @@ export type ZoneRulesetHeaderModificationRuleValue = TypeFromCodec<
 export type ZoneRulesetSanitizeRuleValue = TypeFromCodec<
   typeof ZoneRulesetSanitizeRuleValue
 >;
+
+const RulesMigration = eg.object({
+  firewall_rules_ui_enabled: eg.boolean,
+  custom_rules_ui_enabled: eg.boolean
+});
+
+export type RulesMigration = TypeFromCodec<typeof RulesMigration>;
