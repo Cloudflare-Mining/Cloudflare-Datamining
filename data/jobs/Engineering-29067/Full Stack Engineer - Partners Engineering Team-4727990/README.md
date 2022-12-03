@@ -5,28 +5,35 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About the role: Senior Marketing Operations Manager</strong></p>
-<p><span style="font-weight: 400;">The Senior Marketing Operations Manager is responsible for supporting the core demand generation operations and strategy. The primary focus will be operational end-to-end campaign setup, target audience list segmentation based on Ideal Customer Profile, and demand funnel performance tracking &amp; reporting across email creatives, lists, and landing pages.</span></p>
-<p><span style="font-weight: 400;">This individual will collaborate with cross-functional teams, including acquisition &amp; expansion marketing, product marketing, globalization, sales development, and field sales. We’re looking for a detail oriented problem solver, a fast learner, an empathic communicator, and an individual who excels at planning and resource management.</span></p>
-<p><strong>Responsibilities:</strong></p>
+<p><strong>About the Team</strong></p>
+<p><em><span style="font-weight: 400;">Role location: US Remote or Austin, TX Cloudflare Office</span></em></p>
+<p><span style="font-weight: 400;">Cloudflare’s engineers build and operate the software that helps power 25+ million Internet properties and millions of businesses around the world. Across our engineering organizations, we have opportunities for high caliber, curious and empathetic people to take on big challenges and build some of the best skills in the industry. We’re looking for talented team members to help build high-growth products, help scale our expanding network, build tools to improve availability, performance, uptime, and response times, and make systems failure-resistant and ready-to-scale.</span></p>
+<p><span style="font-weight: 400;">A significant aspect of our ongoing mission to build a better internet is building partnerships with other businesses to offer our products and services via managed provider, vendor, or reseller relationships. We already have large scale, high impact deals with companies such as IBM, Apple, and Accenture Federal but are looking to expand our service offerings and capabilities to support partners at scale.</span></p>
+<p><strong>About the Role</strong></p>
+<p><span style="font-weight: 400;">As a Full Stack Engineer at Cloudflare you will work on a range of tools and services - new and existing - with an aim to elegantly and efficiently solve problems and deliver practical, maintainable, and usable solutions.&nbsp;&nbsp;</span></p>
+<p><span style="font-weight: 400;">You’ll work with leaders in Engineering and Product to build APIs, UIs, and tools that will be used by IT/Network/Software professionals for the management of Cloudflare products at scale. You will build application integrations for strategic partnerships to scale and enhance our existing products and be an integral part of securing new business for some of our largest customers.</span></p>
+<p><span style="font-weight: 400;">Our tech stack includes Go (golang), Typescript, React, Python, PostgreSQL, Docker, Kubernetes, Prometheus, and Cloudflare’s own products (Access, Workers, Tunnels, etc)</span></p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Build and maintain strong relationships with all internal stakeholders. Collaborate with them to plan and execute integrated demand generation campaigns.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Work with campaign owners to ensure proper tracking and with analytics teams to deliver end-to-end campaign performance reporting and insights.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Continuously identify areas to drive implementation of operations and automation initiatives to improve demand funnel outcomes that support pipeline growth objectives.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Assist the maintenance of data hygiene within marketing automation systems.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Operate as the primary point of contact for the Americas and Global demand generation teams for marketing automation platform and lead management process related issues and initiatives.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">BA/BS in Computer Science or equivalent experience</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">2+ years professional experience as a Software Developer/Engineer</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Knowledge of two or more mainstream programming languages (Go, Python, JavaScript, Typescript, etc)</span></li>
 </ul>
-<p><strong>Desirable skills, knowledge and experience:</strong></p>
+<p><strong>Bonus</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">8+ years of experience in building and executing high-volume, large scale drip emails as well as personalized trigger campaigns, preferably with both B2B SaaS and B2C ecommerce business models.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Hands-on experience with enterprise CRM platforms (Salesforce preferred), and Marketing Automation (Marketo preferred) to support full campaign &amp; lead lifecycle management.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience in supporting large scale technical projects involving culturally and geographically diverse cross-functional stakeholders with varied technical aptitude.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Solid knowledge of integrated B2B marketing, Account Based Marketing, marketing technology ecosystems, and industry challenges.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong sense of ownership; superb verbal and written communications skills; hyper attention to details.&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">BA/BS degree</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Expertise in TypeScript and Go programming languages</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong interpersonal and communication skills with a bias towards action</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience managing internal and/or external customer requirements and expectations</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Demonstrable experience with high-quality technical writing</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Good Linux systems knowledge</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with CI/CD, containers and/or virtualization, web servers, and databases</span></li>
 </ul>
-<p><strong>Compensation</strong></p>
-<p><span style="font-weight: 400;">Compensation may be adjusted depending on work location. For Colorado-based hires: Estimated annual salary of $<span data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:148000}" data-sheets-userformat="{&quot;2&quot;:515,&quot;3&quot;:{&quot;1&quot;:0},&quot;4&quot;:{&quot;1&quot;:2,&quot;2&quot;:15724527},&quot;12&quot;:0}">148,000</span> - $222,000.</span></p>
+<p><span style="font-weight: 400;"><br></span><strong>Compensation</strong></p>
+<p><span style="font-weight: 400;">Compensation may be adjusted depending on work location.</span></p>
+<ul>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">For Colorado-based hires: Estimated annual salary of $168,000 - $206,000.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">For New York City-based hires: Estimated annual salary of $187,000 - $229,000.</span></li>
+</ul>
 <p><strong>Equity</strong></p>
 <p><span style="font-weight: 400;">This role is eligible to participate in Cloudflare’s equity plan.</span></p>
 <p><strong>Benefits</strong></p>
