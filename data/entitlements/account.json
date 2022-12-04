@@ -2460,6 +2460,30 @@
 		}
 	},
 	{
+		"id": "web3_polygon.enabled",
+		"feature": {
+			"feature_set": "web3",
+			"id": 1150,
+			"key": "web3_polygon.enabled",
+			"name": "web3 Polygon"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "web3_polygon.hostnames",
+		"feature": {
+			"feature_set": "web3",
+			"id": 1151,
+			"key": "web3_polygon.hostnames",
+			"name": "web3 Polygon - Hostnames"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
 		"id": "workers.enabled",
 		"feature": {
 			"feature_set": "workers",
