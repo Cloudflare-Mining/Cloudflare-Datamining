@@ -130,4 +130,4 @@ param  = urllib.urlencode({'verify': '%s-%s' % (time, base64.b64encode(digest.d
 <p>Which you will then need to append to any URL under the domain.com/download/* path. For example:</p>
 <p></p>
 <pre>/download/cat.jpg?verify=1484063787-9JQB8vP1z0yc5DEBnH6JGWM3mBmvIeMrnnxFi3WtJLE%3D</pre>
-<p>Please note that the token parameter needs to be the last parameter in the query string. You can test if URLs are being generated correctly on the server by enabling WAF managed rules on <i>Simulate</i> and monitoring the activity log in <b>Security</b> &gt; <b>Overview</b>.</p>
+<p>Please note that the token parameter needs to be the last parameter in the query string. You can test if URLs are being generated correctly on the server by enabling WAF managed rules on <i>Simulate</i> and monitoring the activity log in <b>Security</b> &gt; <b>Events</b>.</p>

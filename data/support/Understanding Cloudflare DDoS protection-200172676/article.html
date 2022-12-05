@@ -17,12 +17,10 @@
 <ul>
 	<li>For zones on any plan, when the HTTP error rate is above the <i>High</i> (default) sensitivity level of 1,000 errors-per-second rate threshold. You can decrease the sensitivity level by <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/http">configuring the HTTP DDoS Attack Protection Managed Ruleset</a>.
 	</li>
-</ul>
-<ul>
 	<li>For zones on Pro, Business and Enterprise plans, Cloudflare performs an additional check for better detection accuracy: the errors-per-second rate must also be at least five times the normal origin traffic levels.</li>
 </ul>
 <p>Cloudflare determines the error rate based on all HTTP errors in the 52X range (Internal Server Error) and in the 53X range, except for <a href="https://support.cloudflare.com/hc/articles/115003011431#530error">error 530</a>.</p>
-<p>Mitigations of HTTP DDoS attacks are shown in the Firewall analytics dashboard as HTTP DDoS events. These events are also available via <a href="https://developers.cloudflare.com/logs/"><u>Cloudflare Logs</u></a>.</p>
+<p>Mitigations of HTTP DDoS attacks are shown in the Security Events dashboard as HTTP DDoS events. These events are also available via <a href="https://developers.cloudflare.com/logs/"><u>Cloudflare Logs</u></a>.</p>
 <p>Currently, for DDoS mitigations based on HTTP error rate, customers cannot exclude specific HTTP error codes.</p>
 <p>Learn more about <a href="https://www.cloudflare.com/learning/ddos/famous-ddos-attacks/">Famous DDoS Attacks</a> and <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/">DDoS</a> at the Cloudflare Learning Center. You can also review DDoS case studies in the related resources section at the end of this article.</p>
 <hr>
