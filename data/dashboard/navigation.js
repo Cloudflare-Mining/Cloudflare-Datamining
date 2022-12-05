@@ -59,20 +59,20 @@ const navigation = {
 			title: "navigation.account.registrar.transfer_domains",
 			url: "/domains/transfer",
 			hasPermission: function(j) {
-				return G(j)
+				return Q(j)
 			}
 		}, {
 			title: "navigation.account.registrar.register_domains",
 			url: "/domains/register",
 			labels: ["new"],
 			hasPermission: function(j) {
-				return G(j)
+				return Q(j)
 			}
 		}, {
 			title: "navigation.account.registrar.domain_protection",
 			url: "/domains/protection",
 			hasPermission: function(j) {
-				return Y(j)
+				return G(j)
 			}
 		}]
 	}, {
@@ -110,6 +110,12 @@ const navigation = {
 			labels: ["beta"],
 			hasPermission: function(j) {
 				return s(j) && !!(0, t.getAccountFlipperFlag)(j, "account_analytics", "magic_network_monitoring")
+			}
+		}, {
+			title: "navigation.account.logs",
+			url: "/logs",
+			hasPermission: function(j) {
+				return s(j) && (0, b.S6)(j) && !!(0, n.z1)("account-logpush")(j)
 			}
 		}]
 	}, {
@@ -172,8 +178,8 @@ const navigation = {
 			title: "navigation.account.workers.plans",
 			url: "/workers/plans",
 			hasPermission: function(j) {
-				var J = (0, o.getSubscriptions)(j);
-				return !(0, O.ky)(J, [T.uD.UnboundEnterpriseTrial])
+				var $ = (0, o.getSubscriptions)(j);
+				return !(0, O.ky)($, [T.uD.UnboundEnterpriseTrial])
 			}
 		}]
 	}, {
@@ -338,8 +344,8 @@ const navigation = {
 			title: "navigation.account.firewall_rulesets.ddos",
 			url: "/network-security/ddos",
 			hasPermission: function(j) {
-				var J = !!K(j) && !!ce(j);
-				return !!ee(j) || J
+				var $ = !!J(j) && !!se(j);
+				return !!ee(j) || $
 			}
 		}, {
 			title: "navigation.account.firewall_rulesets.magic_firewall",
@@ -362,8 +368,8 @@ const navigation = {
 		title: "navigation.account.teams",
 		url: function() {
 			var j = (0, Z.e1)(),
-				J = "https://one.dash.cloudflare.com";
-			return j ? "".concat(J, "/").concat(j, "/") : J
+				$ = "https://one.dash.cloudflare.com";
+			return j ? "".concat($, "/").concat(j, "/") : $
 		},
 		iconType: "cloudflare-zero-trust",
 		labels: ["external-link"],
@@ -426,7 +432,7 @@ const navigation = {
 			url: "/audit-log",
 			testId: "account-homepage-audit-logs",
 			hasPermission: function(j) {
-				return (0, S.b)(j) ? s(j) : (0, t.getPermission)(j)("auditlogs").read
+				return (0, I.b)(j) ? s(j) : (0, t.getPermission)(j)("auditlogs").read
 			}
 		}, {
 			title: "navigation.account.billing",
@@ -485,16 +491,16 @@ const navigation = {
 			url: "/analytics/originReachability",
 			canBeVersioned: !1,
 			hasPermission: function(j) {
-				var J = (0, R.getZone)(j);
-				return J ? !!(!(0, d.zoneIsDNSOnly)(j) && !!(0, R.getZoneFlipperFlag)(j, "origin_reachability_dash", "dash_view") && (0, R.isPlanAtLeast)(J, "enterprise") && !!(0, a.getZoneGraphQLSettingEnabled)(j, "httpRequestsAdaptiveGroups")) : !1
+				var $ = (0, x.getZone)(j);
+				return $ ? !!(!(0, d.zoneIsDNSOnly)(j) && !!(0, x.getZoneFlipperFlag)(j, "origin_reachability_dash", "dash_view") && (0, x.isPlanAtLeast)($, "enterprise") && !!(0, a.getZoneGraphQLSettingEnabled)(j, "httpRequestsAdaptiveGroups")) : !1
 			}
 		}, {
 			title: "navigation.zone.analytics.edge_reachability",
 			url: "/analytics/edgeReachability",
 			canBeVersioned: !1,
 			hasPermission: function(j) {
-				var J = (0, R.getZone)(j);
-				return J ? !!(!(0, d.zoneIsDNSOnly)(j) && !!(0, R.getZoneFlipperFlag)(j, "edge_reachability_dash", "dash_view") && (0, R.isPlanAtLeast)(J, "enterprise") && !!(0, a.getZoneGraphQLSettingEnabled)(j, "nelReportsAdaptiveGroups")) : !1
+				var $ = (0, x.getZone)(j);
+				return $ ? !!(!(0, d.zoneIsDNSOnly)(j) && !!(0, x.getZoneFlipperFlag)(j, "edge_reachability_dash", "dash_view") && (0, x.isPlanAtLeast)($, "enterprise") && !!(0, a.getZoneGraphQLSettingEnabled)(j, "nelReportsAdaptiveGroups")) : !1
 			}
 		}, {
 			title: "navigation.zone.analytics.dns",
@@ -512,14 +518,14 @@ const navigation = {
 			url: "/analytics/logs",
 			canBeVersioned: !1,
 			hasPermission: function(j) {
-				return Object.values((0, C.H_)(j)).some(Boolean)
+				return Object.values((0, b.H_)(j)).some(Boolean)
 			}
 		}, {
 			title: "navigation.zone.analytics.instant_logs",
 			url: "/analytics/instant-logs",
 			canBeVersioned: !1,
 			hasPermission: function(j) {
-				return !(0, d.zoneIsDNSOnly)(j) && !!(0, R.getZoneFlipperFlag)(j, "logs", "instant_log") && !!(0, d.getZoneEntitlement)(j, "logpush.max_instant_logs_jobs_allowed")
+				return !(0, d.zoneIsDNSOnly)(j) && !!(0, x.getZoneFlipperFlag)(j, "logs", "instant_log") && !!(0, d.getZoneEntitlement)(j, "logpush.max_instant_logs_jobs_allowed")
 			}
 		}]
 	}, {
@@ -582,12 +588,12 @@ const navigation = {
 		iconType: "spectrum",
 		testId: "zone-navigation-link-spectrum",
 		hasPermission: function(j) {
-			var J = (0, R.getZone)(j);
-			if ((0, d.zoneIsDNSOnly)(j) || !u(j, "zone_settings", "spectrum.app") || !J) return !1;
-			var te = !!((0, i.userHasEntZones)(j) || (0, R.userHasDelegatedEntZones)(j)),
-				oe = !!(0, R.getZoneFlipperFlag)(j, "spectrum", "enabled"),
-				ie = !!(0, R.isFree)(J);
-			return oe || te || !ie
+			var $ = (0, x.getZone)(j);
+			if ((0, d.zoneIsDNSOnly)(j) || !u(j, "zone_settings", "spectrum.app") || !$) return !1;
+			var te = !!((0, i.userHasEntZones)(j) || (0, x.userHasDelegatedEntZones)(j)),
+				me = !!(0, x.getZoneFlipperFlag)(j, "spectrum", "enabled"),
+				fe = !!(0, x.isFree)($);
+			return me || te || !fe
 		}
 	}, {
 		title: "navigation.zone.ssl-tls",
@@ -618,7 +624,7 @@ const navigation = {
 			url: "/ssl-tls/client-certificates",
 			canBeVersioned: !1,
 			hasPermission: function(j) {
-				return !!(0, n.z1)("client-certificates")(j) || !!(0, R.getZoneFlipperFlag)(j, "ssl", "client_certificates")
+				return !!(0, n.z1)("client-certificates")(j) || !!(0, x.getZoneFlipperFlag)(j, "ssl", "client_certificates")
 			}
 		}, {
 			title: "navigation.zone.ssl-tls.origin_server",
@@ -644,7 +650,7 @@ const navigation = {
 			url: "/security/analytics",
 			labels: ["beta"],
 			hasPermission: function(j) {
-				return (0, b.B_)(j)
+				return (0, S.B_)(j)
 			}
 		}, {
 			title: "navigation.zone.security.events",
@@ -678,8 +684,8 @@ const navigation = {
 			canBeVersioned: !1,
 			labels: ["new"],
 			hasPermission: function(j) {
-				var J = (0, R.getZone)(j);
-				return J ? !!(0, R.getZoneFlipperFlag)(j, "firewall", "api_shield_tab") && (0, R.isPlanAtLeast)(J, "business") : !1
+				var $ = (0, x.getZone)(j);
+				return $ ? !!(0, x.getZoneFlipperFlag)(j, "firewall", "api_shield_tab") && (0, x.isPlanAtLeast)($, "business") : !1
 			}
 		}, {
 			title: "navigation.zone.security.ddos",
@@ -766,7 +772,7 @@ const navigation = {
 			url: "/caching/cache-reserve",
 			labels: ["beta"],
 			hasPermission: function(j) {
-				return !!x(j)
+				return !!R(j)
 			}
 		}]
 	}, {
@@ -892,7 +898,7 @@ const navigation = {
 			url: "/traffic/waiting-rooms",
 			canBeVersioned: !1,
 			hasPermission: function(j) {
-				return !(0, d.zoneIsDNSOnly)(j) && ((0, d.hasZoneEntitlement)(j, "waiting_rooms.allowed") || !!(0, R.getZoneFlipperFlag)(j, "waitingroomaccessfeatureflipper", "waiting_rooms_ga"))
+				return !(0, d.zoneIsDNSOnly)(j) && ((0, d.hasZoneEntitlement)(j, "waiting_rooms.allowed") || !!(0, x.getZoneFlipperFlag)(j, "waitingroomaccessfeatureflipper", "waiting_rooms_ga"))
 			}
 		}]
 	}, {
@@ -927,9 +933,9 @@ const navigation = {
 		url: "/zaraz",
 		canBeVersioned: !1,
 		labels: function(j) {
-			var J = [],
-				te = (0, R.getZone)(j);
-			return te && !(0, R.isPlanAtLeast)(te, "pro") && J.push("beta"), J
+			var $ = [],
+				te = (0, x.getZone)(j);
+			return te && !(0, x.isPlanAtLeast)(te, "pro") && $.push("beta"), $
 		},
 		iconType: "zaraz",
 		testId: "zone-navigation-link-zaraz",
@@ -937,29 +943,9 @@ const navigation = {
 			return !(0, d.zoneIsDNSOnly)(j) && E(j, "zaraz", "zaraz")
 		},
 		pages: [{
-			title: "navigation.zone.zaraz.tools",
+			title: "navigation.zone.zaraz.tools.configuration",
 			canBeVersioned: !1,
-			url: "/zaraz"
-		}, {
-			title: "navigation.zone.zaraz.triggers",
-			canBeVersioned: !1,
-			url: "/zaraz/triggers"
-		}, {
-			title: "navigation.zone.zaraz.consent",
-			canBeVersioned: !1,
-			url: "/zaraz/consent"
-		}, {
-			title: "navigation.zone.zaraz.variables",
-			canBeVersioned: !1,
-			url: "/zaraz/variables"
-		}, {
-			title: "navigation.zone.zaraz.settings",
-			canBeVersioned: !1,
-			url: "/zaraz/settings"
-		}, {
-			title: "navigation.zone.zaraz.monitoring",
-			canBeVersioned: !1,
-			url: "/zaraz/monitoring"
+			url: "/zaraz/tools-config"
 		}, {
 			title: "navigation.zone.zaraz.history",
 			canBeVersioned: !1,
@@ -967,6 +953,18 @@ const navigation = {
 			hasPermission: function(j) {
 				return j.zaraz.zarazWorkflow.isRequesting ? !1 : j.zaraz.zarazWorkflow.data === "preview"
 			}
+		}, {
+			title: "navigation.zone.zaraz.monitoring",
+			canBeVersioned: !1,
+			url: "/zaraz/monitoring"
+		}, {
+			title: "navigation.zone.zaraz.consent",
+			canBeVersioned: !1,
+			url: "/zaraz/consent"
+		}, {
+			title: "navigation.zone.zaraz.settings",
+			canBeVersioned: !1,
+			url: "/zaraz/settings"
 		}]
 	}, {
 		title: "navigation.zone.web3",
@@ -975,8 +973,8 @@ const navigation = {
 		iconType: "web3",
 		labels: ["new"],
 		hasPermission: function(j) {
-			var J = (0, t.getMembership)(j),
-				te = (J == null ? void 0 : J.roles) || [];
+			var $ = (0, t.getMembership)(j),
+				te = ($ == null ? void 0 : $.roles) || [];
 			return te.includes("Trust and Safety") ? !1 : !(0, d.zoneIsDNSOnly)(j)
 		}
 	}],
