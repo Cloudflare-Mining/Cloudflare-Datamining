@@ -104,6 +104,10 @@
 					"labels": [
 						"beta"
 					]
+				},
+				{
+					"title": "navigation.account.logs",
+					"url": "/logs"
 				}
 			]
 		},
@@ -809,29 +813,14 @@
 			"testId": "zone-navigation-link-zaraz",
 			"pages": [
 				{
-					"title": "navigation.zone.zaraz.tools",
+					"title": "navigation.zone.zaraz.tools.configuration",
 					"canBeVersioned": false,
-					"url": "/zaraz"
+					"url": "/zaraz/tools-config"
 				},
 				{
-					"title": "navigation.zone.zaraz.triggers",
+					"title": "navigation.zone.zaraz.history",
 					"canBeVersioned": false,
-					"url": "/zaraz/triggers"
-				},
-				{
-					"title": "navigation.zone.zaraz.consent",
-					"canBeVersioned": false,
-					"url": "/zaraz/consent"
-				},
-				{
-					"title": "navigation.zone.zaraz.variables",
-					"canBeVersioned": false,
-					"url": "/zaraz/variables"
-				},
-				{
-					"title": "navigation.zone.zaraz.settings",
-					"canBeVersioned": false,
-					"url": "/zaraz/settings"
+					"url": "/zaraz/history"
 				},
 				{
 					"title": "navigation.zone.zaraz.monitoring",
@@ -839,9 +828,14 @@
 					"url": "/zaraz/monitoring"
 				},
 				{
-					"title": "navigation.zone.zaraz.history",
+					"title": "navigation.zone.zaraz.consent",
 					"canBeVersioned": false,
-					"url": "/zaraz/history"
+					"url": "/zaraz/consent"
+				},
+				{
+					"title": "navigation.zone.zaraz.settings",
+					"canBeVersioned": false,
+					"url": "/zaraz/settings"
 				}
 			]
 		},
