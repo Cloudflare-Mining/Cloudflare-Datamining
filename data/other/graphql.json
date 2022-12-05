@@ -1970,6 +1970,42 @@
 		"subrequests": "Sum of Subrequests",
 		"wallTime": "Sum of Wall Time"
 	},
+	"AccountQueueMessageOperationsAdaptiveGroups": {
+		"__description": "Beta. Queue message operation data with adaptive sampling",
+		"avg": "The average value for a metric per dimension",
+		"count": "Number of Message Operations",
+		"dimensions": "List of dimensions to group by",
+		"max": "The max of values for a metric per dimension",
+		"sum": "The sum of values for a metric per dimension"
+	},
+	"AccountQueueMessageOperationsAdaptiveGroupsAvg": {
+		"__description": "",
+		"sampleInterval": "The average value used for sample interval"
+	},
+	"AccountQueueMessageOperationsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"actionType": "The type of the Queue message operation",
+		"date": "Message operation timestamp, truncated to start of a day",
+		"datetime": "Message operation timestamp",
+		"datetimeHour": "Message operation timestamp, truncated to start of an hour",
+		"datetimeMinute": "Message operation timestamp, truncated to start of an minute",
+		"queueId": "The ID of the Queue"
+	},
+	"AccountQueueMessageOperationsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountQueueMessageOperationsAdaptiveGroupsMax": {
+		"__description": "",
+		"messageSize": "Max Message Size"
+	},
+	"AccountQueueMessageOperationsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountQueueMessageOperationsAdaptiveGroupsSum": {
+		"__description": "",
+		"billableOperations": "Number of Billable Operations (some message operations count as multiple billable operations)",
+		"bytes": "Total size (in bytes) of message operations"
+	},
 	"AccountQueuesMessagesAdaptiveGroups": {
 		"__description": "Beta. Queue message data with adaptive sampling",
 		"avg": "The average value for a metric per dimension",
@@ -2374,6 +2410,7 @@
 		"mnmFlowDataAdaptiveGroups": "",
 		"nelReportsAdaptiveGroups": "",
 		"pagesFunctionsInvocationsAdaptiveGroups": "",
+		"queueMessageOperationsAdaptiveGroups": "",
 		"queuesMessagesAdaptiveGroups": "",
 		"r2OperationsAdaptiveGroups": "",
 		"r2StorageAdaptiveGroups": "",
@@ -4308,6 +4345,7 @@
 		"mnmFlowDataAdaptiveGroups": "Flow data collected through Magic Network Monitoring",
 		"nelReportsAdaptiveGroups": "Data to visualize network error logs",
 		"pagesFunctionsInvocationsAdaptiveGroups": "Pages Functions invocations with adaptive sampling",
+		"queueMessageOperationsAdaptiveGroups": "Beta. Queue message operation data with adaptive sampling",
 		"queuesMessagesAdaptiveGroups": "Beta. Queue message data with adaptive sampling",
 		"r2OperationsAdaptiveGroups": "Beta. R2 operations with adaptive sampling",
 		"r2StorageAdaptiveGroups": "Beta. R2 storage with adaptive sampling",
