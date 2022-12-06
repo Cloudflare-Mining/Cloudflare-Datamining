@@ -5,33 +5,35 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About the Role</strong></p>
-<p><span style="font-weight: 400;">As a Technical Writer at Cloudflare, you play an important role in the Product Content Experience (PCX) team. You will partner with engineers, product managers, customer-facing teams, and users to develop and improve content. You will be the first to explain new products and features, impacting and influencing the content experience of a product used by millions of people daily. If you are excited to work with an audience ranging from Wordpress bloggers to development teams at Fortune 100 companies, come help us make the internet better!</span></p>
-<p><span style="font-weight: 400;">Beyond content development, you will have the opportunity to dive in and create code samples and tutorials –– with thousands of new users signing up every day, your content will very likely be part of their first experience with Cloudflare.</span></p>
-<p><strong>Responsibilities</strong></p>
+<p><strong>About the Department</strong></p>
+<p><span style="font-weight: 400;">Cloudflare’s Engineering Team builds and runs the software that handles trillions of requests per month. We also build and run the internal tools that build and run our software. The Engineering Team is split into two groups: one handles product development and the other handles operations. Product development covers both new features and functionality and scaling our existing software to meet the challenges of a massively growing customer base. The operations team handles one of the world’s largest networks with data centers in 200+ cities worldwide.</span></p>
+<p><strong>What you'll do</strong></p>
+<p><span style="font-weight: 400;">The product you will work on will fundamentally change how people interact with the internet. You will be making the internet faster and safer for everyone around the world. You are expected to participate in the developer effort for common high performance networking code that runs across five platforms (Windows, macOS, iOS, Android and Linux). You will work closely with platform-specific app developers who rely on your low-level code to get the job done.</span></p>
+<p><a href="https://www.cloudflare.com/teams/"><span style="font-weight: 400;">Cloudflare for Teams</span></a><span style="font-weight: 400;"> is one of our fastest growing products. Its purpose is to “Stop data loss, malware and phishing with the most performant Zero Trust application access and Internet browsing solution.” Of course, none of that would be possible without a client agent running on devices in an organization.</span></p>
+<p><span style="font-weight: 400;">You should:</span></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Create and edit product documentation according to company guidelines, varying from support content to product and developer documentation.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Collaborate with content experts and project managers to distill complex, broad concepts about products into usable and accurate documentation.&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Work closely with a variety of product development and customer-facing teams to document how to use new product features to both technical and non-technical users.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Work independently and manage multiple simultaneous projects.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Own, create, and help manage all product and support content.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Be comfortable making technical decisions and maintaining a codebase with best practices</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Be willing to take responsibility for ensuring that what you build delights customers and achieves the goals of the team and the organization</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Wish to work with talented peers by submitting and reviewing pull requests, engaging in design discussions, and teaming up to tackle new projects</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Be an advocate for ways the product and the team can work better</span></li>
 </ul>
-<p><strong>Requirements</strong></p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><span style="font-weight: 400;">You are user-focused and thrive in a fast-paced and goal-driven environment. You consider building reliable and capable software to be just the first step in solving user problems. You are confident in building software which works reliably because you’ve made many of the mistakes already. You’d rather ship than overengineer. You have a passion for growing yourself and your teammates and always have your sights set on getting better. You strive to have a positive impact and leave a positive impression on everyone you meet. You want to be a part of building something you can be proud of.</span></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Proven verbal, written, and interpersonal communication skills - </span><strong><em>must provide samples of excellent technical writing skills</em></strong></li>
-	<ul>
-		<li style="font-weight: 400;"><strong><em>Each sample should be 500-1,000 words in length, and at least one sample should be a technical procedure</em></strong></li>
-	</ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">1-3 years of professional technical writing experience for technical and general consumer audiences</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Demonstrated interest in and comfort with technical subject matter</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Familiarity with HTML, Markdown, and CSS</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Bachelor's degree or higher in English, Technical Communication, or other major with writing-intensive component and/or a technology emphasis&nbsp;</span></li>
+	<li><span style="font-weight: 400;">Expert level understanding of Rust or C++ languages, Multi-threading/Asynchronous programming</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">3+ years of experience developing software using Rust or C/C++</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Track record of publishing apps in the various package managers</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">A kind and generous attitude towards customers and coworkers alike</span></li>
+	<li><span style="font-weight: 400;">Great communication skill</span></li>
 </ul>
 <p><strong>Bonus Points</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Familiarity with Git, Mercurial, JavaScript, Python, or other modern programming languages and frameworks</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Knowledge of web servers, networking, HTTP, and DNS</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with multimedia and graphic design</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with security protocols and standards</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with HTTP networking and VPN technologies</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with network performance monitoring and tuning</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Passion for Linux and familiarity with all the popular distros</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">An appreciation and understanding of unit and integration testing</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">A background releasing and maintaining apps which are installed on millions of devices</span></li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
