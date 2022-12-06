@@ -9,7 +9,7 @@
 			"rel": "self",
 			"href": "zones/{#/definitions/zone_id}/api_gateway/operations/{#/definitions/operation_id}",
 			"method": "GET",
-			"cfOwnership": "anode",
+			"cfOwnership": "apishi",
 			"cfPermissionsRequired": {
 				"enum": [
 					"com.cloudflare.api.account.zone.api-gateway.read"
@@ -50,14 +50,14 @@
 				"objects": [],
 				"example": "{\n  \"feature\": [\n    \"thresholds\"\n  ]\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": null,\n  \"messages\": null,\n  \"result\": {\n    \"operation_id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"method\": \"GET\",\n    \"host\": \"www.example.com\",\n    \"endpoint\": \"/api/v1/users/{var1}\",\n    \"last_updated\": \"2014-01-01T05:20:00.12345Z\",\n    \"features\": {\n      \"thresholds\": {\n        \"period_seconds\": 600,\n        \"suggested_threshold\": 18,\n        \"p50\": 3,\n        \"p90\": 7,\n        \"p99\": 11,\n        \"requests\": 65890,\n        \"auth_id_tokens\": 7236,\n        \"data_points\": 10100,\n        \"last_updated\": \"2014-01-01T05:20:00.12345Z\"\n      }\n    }\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"operation_id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"method\": \"GET\",\n    \"host\": \"www.example.com\",\n    \"endpoint\": \"/api/v1/users/{var1}\",\n    \"last_updated\": \"2014-01-01T05:20:00.12345Z\",\n    \"features\": {\n      \"thresholds\": {\n        \"period_seconds\": 600,\n        \"suggested_threshold\": 18,\n        \"p50\": 3,\n        \"p90\": 7,\n        \"p99\": 11,\n        \"requests\": 65890,\n        \"auth_id_tokens\": 7236,\n        \"data_points\": 10100,\n        \"last_updated\": \"2014-01-01T05:20:00.12345Z\"\n      }\n    }\n  }\n}"
 		},
 		{
 			"title": "Retrieve information about all operations on a zone",
 			"rel": "collection",
 			"href": "zones/{#/definitions/zone_id}/api_gateway/operations",
 			"method": "GET",
-			"cfOwnership": "anode",
+			"cfOwnership": "apishi",
 			"cfPermissionsRequired": {
 				"enum": [
 					"com.cloudflare.api.account.zone.api-gateway.read"
@@ -165,14 +165,14 @@
 				"objects": [],
 				"example": "{\n  \"page\": 1,\n  \"per_page\": 20,\n  \"feature\": [\n    \"thresholds\"\n  ],\n  \"order\": \"method\",\n  \"direction\": \"desc\",\n  \"host\": [\n    \"api.cloudflare.com\"\n  ],\n  \"method\": [\n    \"GET\"\n  ],\n  \"endpoint\": \"/api/v1\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": null,\n  \"messages\": null,\n  \"result\": [\n    {\n      \"operation_id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n      \"method\": \"GET\",\n      \"host\": \"www.example.com\",\n      \"endpoint\": \"/api/v1/users/{var1}\",\n      \"last_updated\": \"2014-01-01T05:20:00.12345Z\",\n      \"features\": {\n        \"thresholds\": {\n          \"period_seconds\": 600,\n          \"suggested_threshold\": 18,\n          \"p50\": 3,\n          \"p90\": 7,\n          \"p99\": 11,\n          \"requests\": 65890,\n          \"auth_id_tokens\": 7236,\n          \"data_points\": 10100,\n          \"last_updated\": \"2014-01-01T05:20:00.12345Z\"\n        }\n      }\n    }\n  ],\n  \"result_info\": {\n    \"page\": 1,\n    \"per_page\": 20,\n    \"count\": 1,\n    \"total_count\": 500\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"operation_id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n      \"method\": \"GET\",\n      \"host\": \"www.example.com\",\n      \"endpoint\": \"/api/v1/users/{var1}\",\n      \"last_updated\": \"2014-01-01T05:20:00.12345Z\",\n      \"features\": {\n        \"thresholds\": {\n          \"period_seconds\": 600,\n          \"suggested_threshold\": 18,\n          \"p50\": 3,\n          \"p90\": 7,\n          \"p99\": 11,\n          \"requests\": 65890,\n          \"auth_id_tokens\": 7236,\n          \"data_points\": 10100,\n          \"last_updated\": \"2014-01-01T05:20:00.12345Z\"\n        }\n      }\n    }\n  ],\n  \"result_info\": {\n    \"page\": 1,\n    \"per_page\": 20,\n    \"count\": 1,\n    \"total_count\": 500\n  }\n}"
 		},
 		{
 			"title": "Delete an operation",
 			"rel": "self",
 			"href": "zones/{#/definitions/zone_id}/api_gateway/operations/{#/definitions/operation_id}",
 			"method": "DELETE",
-			"cfOwnership": "anode",
+			"cfOwnership": "apishi",
 			"cfPermissionsRequired": {
 				"enum": [
 					"com.cloudflare.api.account.zone.api-gateway.delete"
@@ -187,7 +187,7 @@
 			"html_id": "api-shield-endpoint-management-delete-an-operation",
 			"uri": "zones/:zone_id/api_gateway/operations/:operation_id",
 			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/api_gateway/operations/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
-			"response": "{\n  \"success\": true,\n  \"errors\": null,\n  \"messages\": null\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": []\n}"
 		},
 		{
 			"title": "Add operations to a zone",
@@ -195,7 +195,7 @@
 			"href": "zones/{#/definitions/zone_id}/api_gateway/operations",
 			"method": "POST",
 			"description": "Add one or more operations to a zone. Endpoints can contain path variables. Host, method, endpoint will be normalized to a canoncial form when creating an operation and must be unique on the zone. Inserting an operation that matches an existing one will return the record of the already existing operation and update its last_updated date.",
-			"cfOwnership": "anode",
+			"cfOwnership": "apishi",
 			"cfPermissionsRequired": {
 				"enum": [
 					"com.cloudflare.api.account.zone.api-gateway.create"
@@ -256,7 +256,7 @@
 				"objects": [],
 				"example": "{\n  \"host\": \"www.example.com\",\n  \"method\": \"GET\",\n  \"endpoint\": \"/api/v1/users/{var1}\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": null,\n  \"messages\": null,\n  \"result\": [\n    {\n      \"operation_id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n      \"method\": \"GET\",\n      \"host\": \"www.example.com\",\n      \"endpoint\": \"/api/v1/users/{var1}\",\n      \"last_updated\": \"2014-01-01T05:20:00.12345Z\"\n    }\n  ]\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"operation_id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n      \"method\": \"GET\",\n      \"host\": \"www.example.com\",\n      \"endpoint\": \"/api/v1/users/{var1}\",\n      \"last_updated\": \"2014-01-01T05:20:00.12345Z\"\n    }\n  ]\n}"
 		},
 		{
 			"title": "Retrieve operations and features as OpenAPI schemas",
@@ -264,7 +264,7 @@
 			"href": "zones/{#/definitions/zone_id}/api_gateway/schemas",
 			"method": "GET",
 			"description": "",
-			"cfOwnership": "anode",
+			"cfOwnership": "apishi",
 			"cfPermissionsRequired": {
 				"enum": [
 					"com.cloudflare.api.account.zone.api-gateway.read"
@@ -316,7 +316,7 @@
 				"objects": [],
 				"example": "{\n  \"feature\": [\n    \"thresholds\"\n  ],\n  \"host\": [\n    \"www.example.com\"\n  ]\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": null,\n  \"messages\": null,\n  \"result\": {\n    \"timestamp\": \"2014-01-01T05:20:00.12345Z\",\n    \"schemas\": [\n      {\n        \"openapi\": \"3.0.0\",\n        \"servers\": [\n          {\n            \"url\": \"www.example.com\"\n          }\n        ],\n        \"info\": {\n          \"title\": \"OpenAPI JSON schema for www.example.com\",\n          \"version\": \"1.0\"\n        },\n        \"paths\": {\n          \"/api/v1/users/{var1}\": {\n            \"get\": {\n              \"parameters\": [\n                {\n                  \"in\": \"path\",\n                  \"name\": \"var1\",\n                  \"required\": true,\n                  \"schema\": {\n                    \"type\": \"string\"\n                  }\n                }\n              ],\n              \"x-cf-threshold\": {\n                \"period_seconds\": 600,\n                \"suggested_threshold\": 18,\n                \"p50\": 3,\n                \"p90\": 7,\n                \"p99\": 11,\n                \"requests\": 66886,\n                \"auth_id_tokens\": 7262,\n                \"data_points\": 10189,\n                \"last_udated\": \"2014-01-01T05:20:00.12345Z\"\n              }\n            }\n          },\n          \"... Further paths ...\": {}\n        }\n      }\n    ]\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"timestamp\": \"2014-01-01T05:20:00.12345Z\",\n    \"schemas\": [\n      {\n        \"openapi\": \"3.0.0\",\n        \"servers\": [\n          {\n            \"url\": \"www.example.com\"\n          }\n        ],\n        \"info\": {\n          \"title\": \"OpenAPI JSON schema for www.example.com\",\n          \"version\": \"1.0\"\n        },\n        \"paths\": {\n          \"/api/v1/users/{var1}\": {\n            \"get\": {\n              \"parameters\": [\n                {\n                  \"in\": \"path\",\n                  \"name\": \"var1\",\n                  \"required\": true,\n                  \"schema\": {\n                    \"type\": \"string\"\n                  }\n                }\n              ],\n              \"x-cf-threshold\": {\n                \"period_seconds\": 600,\n                \"suggested_threshold\": 18,\n                \"p50\": 3,\n                \"p90\": 7,\n                \"p99\": 11,\n                \"requests\": 66886,\n                \"auth_id_tokens\": 7262,\n                \"data_points\": 10189,\n                \"last_udated\": \"2014-01-01T05:20:00.12345Z\"\n              }\n            }\n          },\n          \"... Further paths ...\": {}\n        }\n      }\n    ]\n  }\n}"
 		},
 		{
 			"title": "Retrieve API Discovery results for a zone",
@@ -324,7 +324,7 @@
 			"href": "zones/{#/definitions/zone_id}/api_gateway/discovery",
 			"method": "GET",
 			"description": "Retrieve the most up to date view of API Discovery on a zone.",
-			"cfOwnership": "anode",
+			"cfOwnership": "apishi",
 			"cfPermissionsRequired": {
 				"enum": [
 					"com.cloudflare.api.account.zone.api-gateway.read"
@@ -339,7 +339,7 @@
 			"html_id": "api-shield-endpoint-management-retrieve-api-discovery-results-for-a-zone",
 			"uri": "zones/:zone_id/api_gateway/discovery",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/api_gateway/discovery\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
-			"response": "{\n  \"success\": true,\n  \"errors\": null,\n  \"messages\": null,\n  \"result\": {\n    \"timestamp\": \"2014-01-01T05:20:00.12345Z\",\n    \"schemas\": [\n      {\n        \"openapi\": \"3.0.0\",\n        \"servers\": [\n          {\n            \"url\": \"www.example.com\"\n          }\n        ],\n        \"info\": {\n          \"title\": \"OpenAPI JSON schema for www.example.com\",\n          \"version\": \"1.0\"\n        },\n        \"paths\": {\n          \"/api/v1/users/{var1}\": {\n            \"get\": {\n              \"parameters\": [\n                {\n                  \"in\": \"path\",\n                  \"name\": \"var1\",\n                  \"required\": true,\n                  \"schema\": {\n                    \"type\": \"string\"\n                  }\n                }\n              ]\n            }\n          },\n          \"... Further paths ...\": {}\n        }\n      }\n    ]\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"timestamp\": \"2014-01-01T05:20:00.12345Z\",\n    \"schemas\": [\n      {\n        \"openapi\": \"3.0.0\",\n        \"servers\": [\n          {\n            \"url\": \"www.example.com\"\n          }\n        ],\n        \"info\": {\n          \"title\": \"OpenAPI JSON schema for www.example.com\",\n          \"version\": \"1.0\"\n        },\n        \"paths\": {\n          \"/api/v1/users/{var1}\": {\n            \"get\": {\n              \"parameters\": [\n                {\n                  \"in\": \"path\",\n                  \"name\": \"var1\",\n                  \"required\": true,\n                  \"schema\": {\n                    \"type\": \"string\"\n                  }\n                }\n              ]\n            }\n          },\n          \"... Further paths ...\": {}\n        }\n      }\n    ]\n  }\n}"
 		}
 	],
 	"html_id": "api-shield-endpoint-management",
@@ -351,11 +351,11 @@
 			"operation_id": {
 				"type": "string",
 				"example": "\"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"",
-				"description": "The ID that identifies the API operation.",
 				"id": "https://api.cloudflare.com/schemas/v4/common/uuid.json",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 				"readOnly": true,
-				"maxLength": 36
+				"maxLength": 36,
+				"description": "API uuid tag."
 			},
 			"method": {
 				"type": "string",
