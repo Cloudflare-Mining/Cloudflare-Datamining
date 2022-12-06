@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/pages-plugin-honeycomb",
 	"dist-tags": {
-		"latest": "1.0.0"
+		"latest": "1.0.1"
 	},
 	"versions": {
 		"1.0.0": {
@@ -23,6 +23,27 @@
 					}
 				],
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJifPJJACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpFag//cywAE4cIekVvar8yhxC0+etJbIDWWJC0PGvQO3njYdr2MA2P\r\nx1BmTQwI9Xn4/tREA/iQeXRrjVId6Fv4MPl3wSFta0FVgaNvLyR9AR6+TRzS\r\nUaC8P6dpNP/1gzTAKWP/lH/c0s8/wZGyasuWA5lROC9eYF/f7ZQAtWAWmsqc\r\nyZHTjZD5cf6rafPziVCA/vkEwK7rKthIHJkQk2dnDNV8tCnq5weFp7Cf6AbS\r\n8ixI6U4kJkV2JA5hXcsdt/hdqrd/99bAI8iza37E5vlpO5QP4z5TRjBXDsfY\r\nRp6nNxwoL9lcFP97Zv2cTPdRcAbLXh9mJ1RVLz7UTQs+HO914/etmAHEsYon\r\nYhn9+hHMCJN2C0v7XqiMyVc52B4BVUBlIuxpjb+5DFK7eY3qR2+SAMVL5OCO\r\nZ9UXQwTNKlXRJMFvdSz8P0s6ylqSI+etKaU0sjrj3i/4y0n9HwqSt7h6+GNc\r\neU1Y1Rn9Zn9+Gn6O2DYC1eGajZ5YUQQsp5+amoVdvOo4AcGQ7NC07KdmbZ+c\r\nav+FDRlQE9KzbHteE/g4jUmFl6Z4XOj+FOX20/r6MNxzicujHKsXhtL56ArM\r\n14mK2j65xLGE6qOOGIwmGejQpDKcH14YQ/0U58ot1FD1pz6S4jpd32ty1C1j\r\nIy7Rgq3/da4vZ0sQKaVfnidYu6htiOTndwo=\r\n=eVmn\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"1.0.1": {
+			"name": "@cloudflare/pages-plugin-honeycomb",
+			"version": "1.0.1",
+			"dependencies": {
+				"@cloudflare/workers-honeycomb-logger": "^2.3.3"
+			},
+			"dist": {
+				"integrity": "sha512-VfYYoGb0Rp9Np2XTwl5/evf2L8mRZZCpQEycdikrY1qcRA6truiNxeg7kR6YBfDhbf0Iyzo3+krKgQCBWzEURA==",
+				"shasum": "2044b92a5d3e1959bbb7ef89ec83205edca485a7",
+				"tarball": "https://registry.npmjs.org/@cloudflare/pages-plugin-honeycomb/-/pages-plugin-honeycomb-1.0.1.tgz",
+				"fileCount": 5,
+				"unpackedSize": 42122,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIAM2tZwTkP537TGvLpxN27t0XyGEt1+S9MKT0CYUkjkqAiEAv+4at2OwaFGU7Rft0CnEQYxq7d+eQoAlH80vZqHJxuI="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjj6kjACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmouWBAAiF3rMEukOUKyQ7aiY8SUt8DJlFnsc3YNaQJsUDcFJndaddp5\r\nqgO/uAMJW/tfUar8EEEJCJ2IiN0eO4l2sI6H9q0COp4J+07DhZevjvw6A0Iu\r\n2G3utxeC83Oi63EAu1IaOAWwYd4kEn1kqmDb/YPIdEkhHliXmga6WqvCsQ+M\r\njpeh4shtCGwA2/e9OPX414BD0rGMfCeF6lzB3isrxbJwbHSk9brx8weRkHSP\r\nQbjlr/zTuGnQd7ITuXHt2MxSRLRCGl5wUi2L6hYXKZ5PBr3DYJozMhYnAf3J\r\nCKOAC3OHkkAdaBzx5glpPyBRBOw+/+Ik3GA10D8ACWfLgGQGBxixGpyoWdLD\r\nPCvje5oGUfSzwL/tJnjcf8j+QymcwYbr/TBY0R8gIxIK88icOrVU1PkJ3W2I\r\nxKt31iMcW9mK/WOoVinR/urNmmuXbFS0MiZHSefndaUpl+AA+6tRdpZA3A2k\r\niyzfIZfaDcycLa48fRibJIxal6pBLXPulJn+XsZvFqOGnhfwGZLrcad5UtvO\r\nbD5w8xBpfXa9lw+gh2n/9ZdfnQJQy94pvQA6Q6HyxJlMpuEwbYobl5u976xl\r\n8MTsCjUtMwQ1WkVELVIAZHEvuWeXJdvouuot9C5QKQHZyilOgx2Ty2n5pLqt\r\nnco9OUJbjE27sU6osDVJqtbtmOjrvzcpNYY=\r\n=DJCe\r\n-----END PGP SIGNATURE-----\r\n"
 			}
 		}
 	}
