@@ -10,7 +10,7 @@
 			"rel": "self",
 			"href": "zones/{#/definitions/zone_id}/api_gateway/configuration",
 			"method": "GET",
-			"cfOwnership": "anode",
+			"cfOwnership": "apishi",
 			"cfPermissionsRequired": {
 				"enum": [
 					"com.cloudflare.api.account.zone.api-gateway.read"
@@ -51,14 +51,14 @@
 				"objects": [],
 				"example": "{\n  \"properties\": [\n    \"auth_id_characteristics\"\n  ]\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": null,\n  \"messages\": null,\n  \"result\": {\n    \"auth_id_characteristics\": [\n      {\n        \"type\": \"header\",\n        \"name\": \"authorization\"\n      }\n    ]\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"auth_id_characteristics\": [\n      {\n        \"type\": \"header\",\n        \"name\": \"authorization\"\n      }\n    ]\n  }\n}"
 		},
 		{
 			"title": "Set configuration properties",
 			"rel": "self",
 			"href": "zones/{#/definitions/zone_id}/api_gateway/configuration",
 			"method": "PUT",
-			"cfOwnership": "anode",
+			"cfOwnership": "apishi",
 			"cfPermissionsRequired": {
 				"enum": [
 					"com.cloudflare.api.account.zone.api-gateway.update"
@@ -139,7 +139,7 @@
 				"title": "API Shield Settings",
 				"description": "API Shield-specific configuration options."
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": null,\n  \"messages\": null\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": []\n}"
 		}
 	],
 	"html_id": "api-shield-settings",

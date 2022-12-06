@@ -1,0 +1,386 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/zone/cache-rules.json",
+	"title": "Cache Rules",
+	"description": "Cache Rules.",
+	"cfExtendedDescription": "",
+	"type": "object",
+	"links": [
+		{
+			"title": "List Cache Rules",
+			"description": "Fetches all Cache Rules in a zone.",
+			"rel": "collection",
+			"href": "zones/{#/definitions/zone_id}/rulesets/phases/http_request_cache_settings/entrypoint",
+			"method": "GET",
+			"cfOwnership": "firewall",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "cache-rules-list-cache-rules",
+			"uri": "zones/:zone_id/rulesets/phases/http_request_cache_settings/entrypoint",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/rulesets/phases/http_request_cache_settings/entrypoint\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"id\": \"2f2feab2026849078ba485f918791bdc\",\n  \"name\": \"default\",\n  \"description\": \"\",\n  \"kind\": \"zone\",\n  \"phase\": \"http_request_cache_settings\",\n  \"rules\": [\n    {\n      \"id\": \"3a03d665bac047339bb530ecb439a90d\",\n      \"version\": \"1\",\n      \"action\": \"set_cache_settings\",\n      \"expression\": \"http.cookie contains \\\"something\\\"\",\n      \"description\": \"use the cache settings\",\n      \"action_parameters\": {\n        \"edge_ttl\": {\n          \"mode\": \"respect_origin\",\n          \"status_code_ttl\": {\n            \"status_code\": 404,\n            \"value\": 30\n          }\n        },\n        \"browser_ttl\": {\n          \"mode\": \"override_origin\",\n          \"default\": 30\n        },\n        \"cache_key\": {\n          \"ignore_query_strings_order\": true,\n          \"cache_deception_armor\": true,\n          \"custom_key\": {\n            \"query_string\": {\n              \"include\": \"*\"\n            },\n            \"header\": {\n              \"include\": [\n                \"header1\"\n              ],\n              \"check_presence\": [\n                \"header_1\"\n              ]\n            },\n            \"host\": {\n              \"resolved\": false\n            },\n            \"user\": {\n              \"device_type\": true,\n              \"geo\": false,\n              \"lang\": false\n            },\n            \"cookie\": {\n              \"include\": [\n                \"cookie1\"\n              ],\n              \"check_presence\": [\n                \"cookie_1\"\n              ]\n            }\n          }\n        },\n        \"serve_stale\": {\n          \"disable_stale_while_updating\": true\n        },\n        \"respect_strong_etags\": true,\n        \"origin_error_page_passthru\": true\n      }\n    }\n  ]\n}"
+		},
+		{
+			"title": "Update Cache Rules",
+			"description": "Updates the Cache Rules of a zone.",
+			"rel": "collection",
+			"href": "zones/{#/definitions/zone_id}/rulesets/phases/http_request_cache_settings/entrypoint",
+			"method": "PUT",
+			"cfOwnership": "firewall",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "cache-rules-update-cache-rules",
+			"uri": "zones/:zone_id/rulesets/phases/http_request_cache_settings/entrypoint",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/rulesets/phases/http_request_cache_settings/entrypoint\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"description\":\"My ruleset to execute managed rulesets\",\"rules\":[{\"description\":\"Execute the OWASP ruleset when the IP address is not 1.1.1.1\",\"expression\":\"ip.src ne 1.1.1.1\",\"action\":\"execute\",\"action_parameters\":{\"id\":\"4814384a9e5d4991b9815dcfc25d2f1f\"},\"ref\":\"my_ref\",\"enabled\":\"true\",\"logging\":{\"enabled\":\"true\"}}]}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"description": {
+						"type": "string",
+						"example": "\"My ruleset to execute managed rulesets\"",
+						"description": "An informative description of the ruleset.",
+						"default": ""
+					},
+					"rules": {
+						"type": "array",
+						"example": "[\n  {\n    \"description\": \"Execute the OWASP ruleset when the IP address is not 1.1.1.1\",\n    \"expression\": \"ip.src ne 1.1.1.1\",\n    \"action\": \"execute\",\n    \"action_parameters\": {\n      \"id\": \"4814384a9e5d4991b9815dcfc25d2f1f\"\n    },\n    \"ref\": \"my_ref\",\n    \"enabled\": \"true\",\n    \"logging\": {\n      \"enabled\": \"true\"\n    }\n  }\n]",
+						"description": "The list of rules in the ruleset.",
+						"items": {
+							"anyOf": [
+								{
+									"description": "A rule object.",
+									"type": "object",
+									"required": [
+										"expression",
+										"action"
+									],
+									"properties": {
+										"description": {
+											"description": "An informative description of the rule.",
+											"type": "string",
+											"default": "",
+											"example": "Execute the OWASP ruleset when the IP address is not 1.1.1.1"
+										},
+										"expression": {
+											"description": "The expression defining which traffic will match the rule.",
+											"type": "string",
+											"example": "ip.src ne 1.1.1.1"
+										},
+										"action": {
+											"description": "The action to perform when the rule matches.",
+											"type": "string",
+											"pattern": "^[a-z_]+$",
+											"example": "execute"
+										},
+										"action_parameters": {
+											"description": "The parameters configuring the rule action.",
+											"type": "object",
+											"example": {
+												"id": "4814384a9e5d4991b9815dcfc25d2f1f"
+											}
+										},
+										"ref": {
+											"description": "The reference of the rule (the rule ID by default).",
+											"type": "string",
+											"example": "my_ref"
+										},
+										"enabled": {
+											"description": "Whether the rule should be executed.",
+											"type": "boolean",
+											"default": "true",
+											"example": "true"
+										},
+										"logging": {
+											"description": "An object configuring the rule's logging behavior.",
+											"type": "object",
+											"properties": {
+												"enabled": {
+													"description": "Whether to generate a log when the rule matches.",
+													"type": "boolean",
+													"example": "true"
+												}
+											},
+											"example": {
+												"enabled": true
+											}
+										}
+									}
+								},
+								{
+									"description": "The unique ID of a rule.",
+									"type": "string",
+									"example": "3a03d665bac047339bb530ecb439a90d"
+								}
+							]
+						}
+					}
+				},
+				"required_props": [
+					"rules"
+				],
+				"optional_props": [
+					"description"
+				],
+				"objects": [],
+				"example": "{\n  \"description\": \"My ruleset to execute managed rulesets\",\n  \"rules\": [\n    {\n      \"description\": \"Execute the OWASP ruleset when the IP address is not 1.1.1.1\",\n      \"expression\": \"ip.src ne 1.1.1.1\",\n      \"action\": \"execute\",\n      \"action_parameters\": {\n        \"id\": \"4814384a9e5d4991b9815dcfc25d2f1f\"\n      },\n      \"ref\": \"my_ref\",\n      \"enabled\": \"true\",\n      \"logging\": {\n        \"enabled\": \"true\"\n      }\n    }\n  ]\n}",
+				"description": "A ruleset object."
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": []\n}"
+		}
+	],
+	"html_id": "cache-rules",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"2f2feab2026849078ba485f918791bdc\"",
+				"description": "The ID of the ruleset.",
+				"minLength": 32,
+				"maxLength": 32
+			},
+			"name": {
+				"type": "string",
+				"example": "\"default\"",
+				"description": "The human-readable name of the ruleset."
+			},
+			"description": {
+				"type": "string",
+				"example": "\"\"",
+				"description": "The description of the ruleset."
+			},
+			"kind": {
+				"type": "string",
+				"example": "\"zone\"",
+				"description": "The ruleset kind.",
+				"enum": [
+					"zone"
+				]
+			},
+			"phase": {
+				"type": "string",
+				"example": "\"http_request_cache_settings\"",
+				"description": "The phase where the ruleset is executed.",
+				"enum": [
+					"http_request_cache_settings"
+				]
+			},
+			"rules": {
+				"type": "array",
+				"example": "[\n  {\n    \"id\": \"3a03d665bac047339bb530ecb439a90d\",\n    \"version\": \"1\",\n    \"action\": \"set_cache_settings\",\n    \"expression\": \"http.cookie contains \\\"something\\\"\",\n    \"description\": \"use the cache settings\",\n    \"action_parameters\": {\n      \"edge_ttl\": {\n        \"mode\": \"respect_origin\",\n        \"status_code_ttl\": {\n          \"status_code\": 404,\n          \"value\": 30\n        }\n      },\n      \"browser_ttl\": {\n        \"mode\": \"override_origin\",\n        \"default\": 30\n      },\n      \"cache_key\": {\n        \"ignore_query_strings_order\": true,\n        \"cache_deception_armor\": true,\n        \"custom_key\": {\n          \"query_string\": {\n            \"include\": \"*\"\n          },\n          \"header\": {\n            \"include\": [\n              \"header1\"\n            ],\n            \"check_presence\": [\n              \"header_1\"\n            ]\n          },\n          \"host\": {\n            \"resolved\": false\n          },\n          \"user\": {\n            \"device_type\": true,\n            \"geo\": false,\n            \"lang\": false\n          },\n          \"cookie\": {\n            \"include\": [\n              \"cookie1\"\n            ],\n            \"check_presence\": [\n              \"cookie_1\"\n            ]\n          }\n        }\n      },\n      \"serve_stale\": {\n        \"disable_stale_while_updating\": true\n      },\n      \"respect_strong_etags\": true,\n      \"origin_error_page_passthru\": true\n    }\n  }\n]",
+				"description": "The rules in the ruleset.",
+				"items": {
+					"properties": {
+						"id": {
+							"example": "3a03d665bac047339bb530ecb439a90d",
+							"description": "The ID of the ruleset.",
+							"type": "string",
+							"minLength": 32,
+							"maxLength": 32
+						},
+						"version": {
+							"example": "1",
+							"description": "The version of the rule.",
+							"type": "string"
+						},
+						"action": {
+							"example": "set_cache_settings",
+							"description": "The action to perform when the rule expression matches.",
+							"type": "string",
+							"enum": [
+								"set_cache_settings"
+							]
+						},
+						"expression": {
+							"example": "http.cookie contains \"something\"",
+							"description": "The rule expression.",
+							"type": "string"
+						},
+						"description": {
+							"example": "use the cache settings",
+							"description": "The description of the ruleset.",
+							"type": "string"
+						},
+						"action_parameters": {
+							"description": "The parameters configuring the action.",
+							"type": "object",
+							"oneOf": [
+								{
+									"description": "The configuration parameters for the set_cache_settings action.",
+									"properties": {
+										"edge_ttl": {
+											"description": "Set the Cache TTL.",
+											"type": "object",
+											"properties": {
+												"mode": {
+													"type": "string",
+													"example": "respect_origin"
+												},
+												"status_code_ttl": {
+													"type": "object",
+													"properties": {
+														"status_code": {
+															"type": "integer",
+															"example": 404
+														},
+														"value": {
+															"type": "integer",
+															"example": 30
+														}
+													}
+												}
+											}
+										},
+										"browser_ttl": {
+											"description": "Set the Browser TTL.",
+											"type": "object",
+											"properties": {
+												"mode": {
+													"type": "string",
+													"example": "override_origin"
+												},
+												"default": {
+													"type": "integer",
+													"example": 30
+												}
+											}
+										},
+										"cache_key": {
+											"description": "Set the Cache TTL.",
+											"type": "object",
+											"properties": {
+												"ignore_query_strings_order": {
+													"type": "boolean",
+													"example": true
+												},
+												"cache_deception_armor": {
+													"type": "boolean",
+													"example": true
+												},
+												"custom_key": {
+													"type": "object",
+													"properties": {
+														"query_string": {
+															"type": "object",
+															"properties": {
+																"include": {
+																	"type": "string",
+																	"example": "*"
+																}
+															}
+														},
+														"header": {
+															"type": "object",
+															"properties": {
+																"include": {
+																	"type": "array",
+																	"example": [
+																		"header1"
+																	]
+																},
+																"check_presence": {
+																	"type": "array",
+																	"example": [
+																		"header_1"
+																	]
+																}
+															}
+														},
+														"host": {
+															"type": "object",
+															"properties": {
+																"resolved": {
+																	"type": "boolean",
+																	"example": false
+																}
+															}
+														},
+														"user": {
+															"type": "object",
+															"properties": {
+																"device_type": {
+																	"type": "boolean",
+																	"example": true
+																},
+																"geo": {
+																	"type": "boolean",
+																	"example": false
+																},
+																"lang": {
+																	"type": "boolean",
+																	"example": false
+																}
+															}
+														},
+														"cookie": {
+															"type": "object",
+															"properties": {
+																"include": {
+																	"type": "array",
+																	"example": [
+																		"cookie1"
+																	]
+																},
+																"check_presence": {
+																	"type": "array",
+																	"example": [
+																		"cookie_1"
+																	]
+																}
+															}
+														}
+													}
+												}
+											}
+										},
+										"serve_stale": {
+											"type": "object",
+											"properties": {
+												"disable_stale_while_updating": {
+													"type": "boolean",
+													"example": true
+												}
+											}
+										},
+										"respect_strong_etags": {
+											"type": "boolean",
+											"example": true
+										},
+										"origin_error_page_passthru": {
+											"type": "boolean",
+											"example": true
+										}
+									}
+								}
+							]
+						}
+					}
+				}
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"id",
+			"name",
+			"description",
+			"kind",
+			"phase",
+			"rules"
+		],
+		"objects": [],
+		"example": "{\n  \"id\": \"2f2feab2026849078ba485f918791bdc\",\n  \"name\": \"default\",\n  \"description\": \"\",\n  \"kind\": \"zone\",\n  \"phase\": \"http_request_cache_settings\",\n  \"rules\": [\n    {\n      \"id\": \"3a03d665bac047339bb530ecb439a90d\",\n      \"version\": \"1\",\n      \"action\": \"set_cache_settings\",\n      \"expression\": \"http.cookie contains \\\"something\\\"\",\n      \"description\": \"use the cache settings\",\n      \"action_parameters\": {\n        \"edge_ttl\": {\n          \"mode\": \"respect_origin\",\n          \"status_code_ttl\": {\n            \"status_code\": 404,\n            \"value\": 30\n          }\n        },\n        \"browser_ttl\": {\n          \"mode\": \"override_origin\",\n          \"default\": 30\n        },\n        \"cache_key\": {\n          \"ignore_query_strings_order\": true,\n          \"cache_deception_armor\": true,\n          \"custom_key\": {\n            \"query_string\": {\n              \"include\": \"*\"\n            },\n            \"header\": {\n              \"include\": [\n                \"header1\"\n              ],\n              \"check_presence\": [\n                \"header_1\"\n              ]\n            },\n            \"host\": {\n              \"resolved\": false\n            },\n            \"user\": {\n              \"device_type\": true,\n              \"geo\": false,\n              \"lang\": false\n            },\n            \"cookie\": {\n              \"include\": [\n                \"cookie1\"\n              ],\n              \"check_presence\": [\n                \"cookie_1\"\n              ]\n            }\n          }\n        },\n        \"serve_stale\": {\n          \"disable_stale_while_updating\": true\n        },\n        \"respect_strong_etags\": true,\n        \"origin_error_page_passthru\": true\n      }\n    }\n  ]\n}",
+		"title": "Cache Rules",
+		"description": "Cache Rules."
+	}
+}
