@@ -305,6 +305,8 @@
 	"caching.cache_rules.rules.action_parameter.status_code_ttl.specify_status_code": "Specify a status code",
 	"caching.cache_rules.rules.action_parameter.status_code_ttl.from": "From",
 	"caching.cache_rules.rules.action_parameter.status_code_ttl.to": "to",
+	"caching.cache_rules.rules.action_parameter.status_code_ttl.no-store": "No store",
+	"caching.cache_rules.rules.action_parameter.status_code_ttl.no-cache": "No cache",
 	"caching.cache_rules.rules.form.cache_status": "Cache status",
 	"caching.cache_rules.rules.form.cache_status.description": "Select bypass cache, if matching requests will bypass Cloudflare's cache and fetch the response from your origin server, or select eligible for cache, if you want to control how Cloudflare will cache assets. Cache eligibility also requires cache-control headers set at origin to determine that the asset can be cached.",
 	"caching.cache_rules.rules.form.cache_status.required": "(required)",
