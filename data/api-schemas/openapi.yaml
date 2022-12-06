@@ -1136,6 +1136,183 @@ components:
           type: number
           description: The HTTP status code of the response error.
           example: 530
+    action_parameters_set_cache_settings:
+      description: The configuration parameters for the set_cache_settings action.
+      properties:
+        browser_ttl:
+          type: object
+          description: Set the Browser TTL.
+          properties:
+            default:
+              type: integer
+            mode:
+              type: string
+              example: override_origin
+        cache_key:
+          type: object
+          description: Set the Cache TTL.
+          properties:
+            cache_deception_armor:
+              type: boolean
+              example: true
+            custom_key:
+              type: object
+              properties:
+                cookie:
+                  type: object
+                  properties:
+                    check_presence:
+                      type: array
+                      example:
+                      - cookie_1
+                      items: {}
+                    include:
+                      type: array
+                      example:
+                      - cookie1
+                      items: {}
+                header:
+                  type: object
+                  properties:
+                    check_presence:
+                      type: array
+                      example:
+                      - header_1
+                      items: {}
+                    include:
+                      type: array
+                      example:
+                      - header1
+                      items: {}
+                host:
+                  type: object
+                  properties:
+                    resolved:
+                      type: boolean
+                      example: false
+                query_string:
+                  type: object
+                  properties:
+                    include:
+                      type: string
+                      example: '*'
+                user:
+                  type: object
+                  properties:
+                    device_type:
+                      type: boolean
+                      example: true
+                    geo:
+                      type: boolean
+                      example: false
+                    lang:
+                      type: boolean
+                      example: false
+            ignore_query_strings_order:
+              type: boolean
+              example: true
+        edge_ttl:
+          type: object
+          description: Set the Cache TTL.
+          properties:
+            mode:
+              type: string
+              example: respect_origin
+            status_code_ttl:
+              type: object
+              properties:
+                status_code:
+                  type: integer
+                value:
+                  type: integer
+        origin_error_page_passthru:
+          type: boolean
+          example: true
+        respect_strong_etags:
+          type: boolean
+          example: true
+        serve_stale:
+          type: object
+          properties:
+            disable_stale_while_updating:
+              type: boolean
+              example: true
+    action_parameters_set_config:
+      description: The configuration parameters for the set_config action.
+      properties:
+        automatic_https_rewrites:
+          type: boolean
+          description: Enable or disable Automatic HTTPS Rewrites for matching requests
+          example: true
+        autominify:
+          type: object
+          description: Select which file extensions to minify automatically.
+          properties:
+            css:
+              type: boolean
+              example: true
+            html:
+              type: boolean
+              example: true
+            js:
+              type: boolean
+              example: true
+        bic:
+          type: boolean
+          description: Enable or disable Browser Integrity Check
+          example: true
+        disable_apps:
+          type: boolean
+          description: Disable all active Cloudflare Apps
+          example: true
+        disable_railgun:
+          type: boolean
+          description: Disable Cloudflare Railgun
+          example: true
+        disable_zaraz:
+          type: boolean
+          description: Disable Cloudflare Railgun
+          example: true
+        email_obfuscation:
+          type: boolean
+          description: Enable or disable Email Obfuscation
+          example: false
+        hotlink_protection:
+          type: boolean
+          description: Enable or disable Hotlink Protection
+          example: false
+        mirage:
+          type: boolean
+          description: Enable or disable Mirage
+          example: false
+        opportunistic_encryption:
+          type: boolean
+          description: Enable or disableOpportunistic Encryption
+          example: false
+        polish:
+          type: string
+          description: Set Polish compression options
+          example: lossless
+        rocket_loader:
+          type: boolean
+          description: Enable or disable Rocket Loader
+          example: false
+        security_level:
+          type: string
+          description: Set the Security Level
+          example: low
+        server_side_excludes:
+          type: boolean
+          description: Enable or disable Server Side Excludes
+          example: false
+        ssl:
+          type: string
+          description: Select the SSL encryption mode
+          example: flexible
+        sxg:
+          type: boolean
+          description: Enable or disable Signed Exchangesn(SXG)
+          example: false
     actions:
       type: array
       description: List actions patterns.
@@ -3016,6 +3193,42 @@ components:
       - properties:
           result:
             type: object
+    cache-rules_components-schemas-action_parameters:
+      oneOf:
+      - $ref: '#/components/schemas/action_parameters_set_cache_settings'
+      type: object
+      description: The parameters configuring the action.
+    cache-rules_components-schemas-rule:
+      properties:
+        action:
+          example: set_cache_settings
+        action_parameters:
+          $ref: '#/components/schemas/cache-rules_components-schemas-action_parameters'
+        description:
+          example: use the cache settings
+        expression:
+          example: http.cookie contains "something"
+        id:
+          example: 3a03d665bac047339bb530ecb439a90d
+        version:
+          example: "1"
+    cache-rules_components-schemas-ruleset:
+      properties:
+        description:
+          example: ""
+        id:
+          example: 2f2feab2026849078ba485f918791bdc
+        kind:
+          example: zone
+        name:
+          example: default
+        phase:
+          example: http_request_cache_settings
+        rules:
+          type: array
+          description: The rules in the ruleset.
+          items:
+            $ref: '#/components/schemas/cache-rules_components-schemas-rule'
     cache_level:
       allOf:
       - $ref: '#/components/schemas/schemas-base'
@@ -3790,12 +4003,6 @@ components:
       allOf:
       - $ref: '#/components/schemas/api-response-collection'
       - properties:
-          errors:
-            type: array
-            items: {}
-          messages:
-            type: array
-            items: {}
           result:
             type: array
             items:
@@ -4799,6 +5006,42 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/hostname_certid_input'
+    config-rules_components-schemas-action_parameters:
+      oneOf:
+      - $ref: '#/components/schemas/action_parameters_set_config'
+      type: object
+      description: The parameters configuring the action.
+    config-rules_components-schemas-rule:
+      properties:
+        action:
+          example: set_config
+        action_parameters:
+          $ref: '#/components/schemas/config-rules_components-schemas-action_parameters'
+        description:
+          example: enable Email Obfuscation
+        expression:
+          example: http.cookie contains "something"
+        id:
+          example: 3a03d665bac047339bb530ecb439a90d
+        version:
+          example: "1"
+    config-rules_components-schemas-ruleset:
+      properties:
+        description:
+          example: ""
+        id:
+          example: 2f2feab2026849078ba485f918791bdc
+        kind:
+          example: zone
+        name:
+          example: default
+        phase:
+          example: http_config_settings
+        rules:
+          type: array
+          description: The rules in the ruleset.
+          items:
+            $ref: '#/components/schemas/config-rules_components-schemas-rule'
     config_components-schemas-account_identifier:
       example: 6f91088a406011ed95aed352566e8d4c
     config_request:
@@ -6128,13 +6371,6 @@ components:
     default_response:
       allOf:
       - $ref: '#/components/schemas/api-response-single'
-      - properties:
-          errors:
-            type: array
-            items: {}
-          messages:
-            type: array
-            items: {}
     default_sni:
       type: string
       description: If you have legacy TLS clients which do not send the TLS server
@@ -11100,7 +11336,7 @@ components:
             type: object
             properties:
               operation_id:
-                $ref: '#/components/schemas/schemas-operation_id'
+                $ref: '#/components/schemas/operation_id'
     lists-response-collection:
       allOf:
       - $ref: '#/components/schemas/api-response-collection'
@@ -12966,9 +13202,12 @@ components:
         method:
           $ref: '#/components/schemas/method'
         operation_id:
-          $ref: '#/components/schemas/operation_id'
+          $ref: '#/components/schemas/uuid'
     operation_id:
-      description: The ID that identifies the API operation.
+      type: string
+      description: The unique operation ID of the asynchronous action.
+      example: 4da8780eeb215e6cb7f48dd981c4ea02
+      readOnly: true
     opportunistic_encryption:
       allOf:
       - $ref: '#/components/schemas/schemas-base'
@@ -18253,7 +18492,7 @@ components:
           example: This list is at the maximum number of items
           readOnly: true
         id:
-          $ref: '#/components/schemas/schemas-operation_id'
+          $ref: '#/components/schemas/operation_id'
         status:
           type: string
           description: The current status of the asynchronous operation.
@@ -18264,11 +18503,6 @@ components:
           - failed
           example: failed
           readOnly: true
-    schemas-operation_id:
-      type: string
-      description: The unique operation ID of the asynchronous action.
-      example: 4da8780eeb215e6cb7f48dd981c4ea02
-      readOnly: true
     schemas-options:
       example:
         max_ttl: 15
@@ -18954,12 +19188,6 @@ components:
       allOf:
       - $ref: '#/components/schemas/api-response-single'
       - properties:
-          errors:
-            type: array
-            items: {}
-          messages:
-            type: array
-            items: {}
           result:
             $ref: '#/components/schemas/api-shield'
     schemas-size:
@@ -20225,12 +20453,6 @@ components:
       allOf:
       - $ref: '#/components/schemas/api-response-single'
       - properties:
-          errors:
-            type: array
-            items: {}
-          messages:
-            type: array
-            items: {}
           result:
             $ref: '#/components/schemas/configuration'
     single_response_incoming:
@@ -32684,7 +32906,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/schemas-operation_id'
+          $ref: '#/components/schemas/operation_id'
       - name: account_identifier
         in: path
         required: true
@@ -61872,7 +62094,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/operation_id'
+          $ref: '#/components/schemas/uuid'
       - name: zone_id
         in: path
         required: true
@@ -61911,7 +62133,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/operation_id'
+          $ref: '#/components/schemas/uuid'
       - name: zone_id
         in: path
         required: true
@@ -63310,6 +63532,75 @@ paths:
       - api_email: []
         api_key: []
       - api_token: []
+  /zones/{zone_id}/rulesets/phases/http_config_settings/entrypoint:
+    get:
+      tags:
+      - Config Rules
+      summary: List Config Rules
+      description: Fetches all Config Rules in a zone.
+      operationId: config-rules-list-config-rules
+      parameters:
+      - name: zone_id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      responses:
+        4xx:
+          description: List Config Rules response failure
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/config-rules_components-schemas-ruleset'
+                - $ref: '#/components/schemas/api-response-common-failure'
+        "200":
+          description: List Config Rules response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/config-rules_components-schemas-ruleset'
+      security:
+      - api_email: []
+        api_key: []
+      - api_token: []
+    put:
+      tags:
+      - Config Rules
+      summary: Update Config Rules
+      description: Updates the Config Rules of a zone.
+      operationId: config-rules-update-config-rules
+      parameters:
+      - name: zone_id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/update_ruleset'
+      responses:
+        4xx:
+          description: Update Config Rules response failure
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/api-response-single'
+                - $ref: '#/components/schemas/api-response-common-failure'
+        "200":
+          description: Update Config Rules response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/api-response-single'
+      security:
+      - api_email: []
+        api_key: []
+      - api_token: []
   /zones/{zone_id}/rulesets/phases/http_custom_errors/entrypoint:
     get:
       tags:
@@ -63371,6 +63662,75 @@ paths:
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Update Custom Error Responses response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/api-response-single'
+      security:
+      - api_email: []
+        api_key: []
+      - api_token: []
+  /zones/{zone_id}/rulesets/phases/http_request_cache_settings/entrypoint:
+    get:
+      tags:
+      - Cache Rules
+      summary: List Cache Rules
+      description: Fetches all Cache Rules in a zone.
+      operationId: cache-rules-list-cache-rules
+      parameters:
+      - name: zone_id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      responses:
+        4xx:
+          description: List Cache Rules response failure
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/cache-rules_components-schemas-ruleset'
+                - $ref: '#/components/schemas/api-response-common-failure'
+        "200":
+          description: List Cache Rules response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/cache-rules_components-schemas-ruleset'
+      security:
+      - api_email: []
+        api_key: []
+      - api_token: []
+    put:
+      tags:
+      - Cache Rules
+      summary: Update Cache Rules
+      description: Updates the Cache Rules of a zone.
+      operationId: cache-rules-update-cache-rules
+      parameters:
+      - name: zone_id
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/update_ruleset'
+      responses:
+        4xx:
+          description: Update Cache Rules response failure
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/api-response-single'
+                - $ref: '#/components/schemas/api-response-common-failure'
+        "200":
+          description: Update Cache Rules response
           content:
             application/json:
               schema:

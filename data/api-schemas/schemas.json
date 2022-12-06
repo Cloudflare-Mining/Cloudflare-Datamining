@@ -1646,6 +1646,252 @@
 					}
 				}
 			},
+			"action_parameters_set_cache_settings": {
+				"description": "The configuration parameters for the set_cache_settings action.",
+				"properties": {
+					"browser_ttl": {
+						"description": "Set the Browser TTL.",
+						"properties": {
+							"default": {
+								"type": "integer"
+							},
+							"mode": {
+								"example": "override_origin",
+								"type": "string"
+							}
+						},
+						"type": "object"
+					},
+					"cache_key": {
+						"description": "Set the Cache TTL.",
+						"properties": {
+							"cache_deception_armor": {
+								"example": true,
+								"type": "boolean"
+							},
+							"custom_key": {
+								"properties": {
+									"cookie": {
+										"properties": {
+											"check_presence": {
+												"example": [
+													"cookie_1"
+												],
+												"items": {},
+												"type": "array"
+											},
+											"include": {
+												"example": [
+													"cookie1"
+												],
+												"items": {},
+												"type": "array"
+											}
+										},
+										"type": "object"
+									},
+									"header": {
+										"properties": {
+											"check_presence": {
+												"example": [
+													"header_1"
+												],
+												"items": {},
+												"type": "array"
+											},
+											"include": {
+												"example": [
+													"header1"
+												],
+												"items": {},
+												"type": "array"
+											}
+										},
+										"type": "object"
+									},
+									"host": {
+										"properties": {
+											"resolved": {
+												"example": false,
+												"type": "boolean"
+											}
+										},
+										"type": "object"
+									},
+									"query_string": {
+										"properties": {
+											"include": {
+												"example": "*",
+												"type": "string"
+											}
+										},
+										"type": "object"
+									},
+									"user": {
+										"properties": {
+											"device_type": {
+												"example": true,
+												"type": "boolean"
+											},
+											"geo": {
+												"example": false,
+												"type": "boolean"
+											},
+											"lang": {
+												"example": false,
+												"type": "boolean"
+											}
+										},
+										"type": "object"
+									}
+								},
+								"type": "object"
+							},
+							"ignore_query_strings_order": {
+								"example": true,
+								"type": "boolean"
+							}
+						},
+						"type": "object"
+					},
+					"edge_ttl": {
+						"description": "Set the Cache TTL.",
+						"properties": {
+							"mode": {
+								"example": "respect_origin",
+								"type": "string"
+							},
+							"status_code_ttl": {
+								"properties": {
+									"status_code": {
+										"type": "integer"
+									},
+									"value": {
+										"type": "integer"
+									}
+								},
+								"type": "object"
+							}
+						},
+						"type": "object"
+					},
+					"origin_error_page_passthru": {
+						"example": true,
+						"type": "boolean"
+					},
+					"respect_strong_etags": {
+						"example": true,
+						"type": "boolean"
+					},
+					"serve_stale": {
+						"properties": {
+							"disable_stale_while_updating": {
+								"example": true,
+								"type": "boolean"
+							}
+						},
+						"type": "object"
+					}
+				}
+			},
+			"action_parameters_set_config": {
+				"description": "The configuration parameters for the set_config action.",
+				"properties": {
+					"automatic_https_rewrites": {
+						"description": "Enable or disable Automatic HTTPS Rewrites for matching requests",
+						"example": true,
+						"type": "boolean"
+					},
+					"autominify": {
+						"description": "Select which file extensions to minify automatically.",
+						"properties": {
+							"css": {
+								"example": true,
+								"type": "boolean"
+							},
+							"html": {
+								"example": true,
+								"type": "boolean"
+							},
+							"js": {
+								"example": true,
+								"type": "boolean"
+							}
+						},
+						"type": "object"
+					},
+					"bic": {
+						"description": "Enable or disable Browser Integrity Check",
+						"example": true,
+						"type": "boolean"
+					},
+					"disable_apps": {
+						"description": "Disable all active Cloudflare Apps",
+						"example": true,
+						"type": "boolean"
+					},
+					"disable_railgun": {
+						"description": "Disable Cloudflare Railgun",
+						"example": true,
+						"type": "boolean"
+					},
+					"disable_zaraz": {
+						"description": "Disable Cloudflare Railgun",
+						"example": true,
+						"type": "boolean"
+					},
+					"email_obfuscation": {
+						"description": "Enable or disable Email Obfuscation",
+						"example": false,
+						"type": "boolean"
+					},
+					"hotlink_protection": {
+						"description": "Enable or disable Hotlink Protection",
+						"example": false,
+						"type": "boolean"
+					},
+					"mirage": {
+						"description": "Enable or disable Mirage",
+						"example": false,
+						"type": "boolean"
+					},
+					"opportunistic_encryption": {
+						"description": "Enable or disableOpportunistic Encryption",
+						"example": false,
+						"type": "boolean"
+					},
+					"polish": {
+						"description": "Set Polish compression options",
+						"example": "lossless",
+						"type": "string"
+					},
+					"rocket_loader": {
+						"description": "Enable or disable Rocket Loader",
+						"example": false,
+						"type": "boolean"
+					},
+					"security_level": {
+						"description": "Set the Security Level",
+						"example": "low",
+						"type": "string"
+					},
+					"server_side_excludes": {
+						"description": "Enable or disable Server Side Excludes",
+						"example": false,
+						"type": "boolean"
+					},
+					"ssl": {
+						"description": "Select the SSL encryption mode",
+						"example": "flexible",
+						"type": "string"
+					},
+					"sxg": {
+						"description": "Enable or disable Signed Exchangesn(SXG)",
+						"example": false,
+						"type": "boolean"
+					}
+				}
+			},
 			"actions": {
 				"description": "List actions patterns.",
 				"items": {
@@ -4368,6 +4614,63 @@
 					}
 				]
 			},
+			"cache-rules_components-schemas-action_parameters": {
+				"description": "The parameters configuring the action.",
+				"oneOf": [
+					{
+						"$ref": "#/components/schemas/action_parameters_set_cache_settings"
+					}
+				],
+				"type": "object"
+			},
+			"cache-rules_components-schemas-rule": {
+				"properties": {
+					"action": {
+						"example": "set_cache_settings"
+					},
+					"action_parameters": {
+						"$ref": "#/components/schemas/cache-rules_components-schemas-action_parameters"
+					},
+					"description": {
+						"example": "use the cache settings"
+					},
+					"expression": {
+						"example": "http.cookie contains \"something\""
+					},
+					"id": {
+						"example": "3a03d665bac047339bb530ecb439a90d"
+					},
+					"version": {
+						"example": "1"
+					}
+				}
+			},
+			"cache-rules_components-schemas-ruleset": {
+				"properties": {
+					"description": {
+						"example": ""
+					},
+					"id": {
+						"example": "2f2feab2026849078ba485f918791bdc"
+					},
+					"kind": {
+						"example": "zone"
+					},
+					"name": {
+						"example": "default"
+					},
+					"phase": {
+						"example": "http_request_cache_settings"
+					},
+					"rules": {
+						"description": "The rules in the ruleset.",
+						"items": {
+							"$ref": "#/components/schemas/cache-rules_components-schemas-rule"
+						},
+						"type": "array"
+					}
+				}
+			},
 			"cache_level": {
 				"allOf": [
 					{
@@ -5465,14 +5768,6 @@
 					},
 					{
 						"properties": {
-							"errors": {
-								"items": {},
-								"type": "array"
-							},
-							"messages": {
-								"items": {},
-								"type": "array"
-							},
 							"result": {
 								"items": {
 									"allOf": [
@@ -6898,6 +7193,63 @@
 					"$ref": "#/components/schemas/hostname_certid_input"
 				},
 				"type": "array"
+			},
+			"config-rules_components-schemas-action_parameters": {
+				"description": "The parameters configuring the action.",
+				"oneOf": [
+					{
+						"$ref": "#/components/schemas/action_parameters_set_config"
+					}
+				],
+				"type": "object"
+			},
+			"config-rules_components-schemas-rule": {
+				"properties": {
+					"action": {
+						"example": "set_config"
+					},
+					"action_parameters": {
+						"$ref": "#/components/schemas/config-rules_components-schemas-action_parameters"
+					},
+					"description": {
+						"example": "enable Email Obfuscation"
+					},
+					"expression": {
+						"example": "http.cookie contains \"something\""
+					},
+					"id": {
+						"example": "3a03d665bac047339bb530ecb439a90d"
+					},
+					"version": {
+						"example": "1"
+					}
+				}
+			},
+			"config-rules_components-schemas-ruleset": {
+				"properties": {
+					"description": {
+						"example": ""
+					},
+					"id": {
+						"example": "2f2feab2026849078ba485f918791bdc"
+					},
+					"kind": {
+						"example": "zone"
+					},
+					"name": {
+						"example": "default"
+					},
+					"phase": {
+						"example": "http_config_settings"
+					},
+					"rules": {
+						"description": "The rules in the ruleset.",
+						"items": {
+							"$ref": "#/components/schemas/config-rules_components-schemas-rule"
+						},
+						"type": "array"
+					}
+				}
 			},
 			"config_components-schemas-account_identifier": {
 				"example": "6f91088a406011ed95aed352566e8d4c"
@@ -8761,18 +9113,6 @@
 				"allOf": [
 					{
 						"$ref": "#/components/schemas/api-response-single"
-					},
-					{
-						"properties": {
-							"errors": {
-								"items": {},
-								"type": "array"
-							},
-							"messages": {
-								"items": {},
-								"type": "array"
-							}
-						}
 					}
 				]
 			},
@@ -15968,7 +16308,7 @@
 							"result": {
 								"properties": {
 									"operation_id": {
-										"$ref": "#/components/schemas/schemas-operation_id"
+										"$ref": "#/components/schemas/operation_id"
 									}
 								},
 								"type": "object"
@@ -18518,7 +18858,7 @@
 						"$ref": "#/components/schemas/method"
 					},
 					"operation_id": {
-						"$ref": "#/components/schemas/operation_id"
+						"$ref": "#/components/schemas/uuid"
 					}
 				},
 				"required": [
@@ -18531,7 +18871,10 @@
 				"type": "object"
 			},
 			"operation_id": {
-				"description": "The ID that identifies the API operation."
+				"description": "The unique operation ID of the asynchronous action.",
+				"example": "4da8780eeb215e6cb7f48dd981c4ea02",
+				"readOnly": true,
+				"type": "string"
 			},
 			"opportunistic_encryption": {
 				"allOf": [
@@ -26156,7 +26499,7 @@
 						"type": "string"
 					},
 					"id": {
-						"$ref": "#/components/schemas/schemas-operation_id"
+						"$ref": "#/components/schemas/operation_id"
 					},
 					"status": {
 						"description": "The current status of the asynchronous operation.",
@@ -26176,12 +26519,6 @@
 					"status"
 				],
 				"type": "object"
-			},
-			"schemas-operation_id": {
-				"description": "The unique operation ID of the asynchronous action.",
-				"example": "4da8780eeb215e6cb7f48dd981c4ea02",
-				"readOnly": true,
-				"type": "string"
 			},
 			"schemas-options": {
 				"example": {
@@ -27128,14 +27465,6 @@
 					},
 					{
 						"properties": {
-							"errors": {
-								"items": {},
-								"type": "array"
-							},
-							"messages": {
-								"items": {},
-								"type": "array"
-							},
 							"result": {
 								"$ref": "#/components/schemas/api-shield"
 							}
@@ -28981,14 +29310,6 @@
 					},
 					{
 						"properties": {
-							"errors": {
-								"items": {},
-								"type": "array"
-							},
-							"messages": {
-								"items": {},
-								"type": "array"
-							},
 							"result": {
 								"$ref": "#/components/schemas/configuration"
 							}
@@ -48756,7 +49077,7 @@
 						"name": "operation_id",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/schemas-operation_id"
+							"$ref": "#/components/schemas/operation_id"
 						}
 					},
 					{
@@ -125694,7 +126015,7 @@
 						"name": "operation_id",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/operation_id"
+							"$ref": "#/components/schemas/uuid"
 						}
 					},
 					{
@@ -125774,7 +126095,7 @@
 						"name": "operation_id",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/operation_id"
+							"$ref": "#/components/schemas/uuid"
 						}
 					},
 					{
@@ -127314,6 +127635,142 @@
 				}
 			}
 		},
+		"/zones/{zone_id}/rulesets/phases/http_config_settings/entrypoint": {
+			"get": {
+				"description": "Fetches all Config Rules in a zone.",
+				"operationId": "config-rules-list-config-rules",
+				"parameters": [
+					{
+						"in": "path",
+						"name": "zone_id",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/common_components-schemas-identifier"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/config-rules_components-schemas-ruleset"
+								}
+							}
+						},
+						"description": "List Config Rules response"
+					},
+					"4xx": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/config-rules_components-schemas-ruleset"
+										},
+										{
+											"$ref": "#/components/schemas/api-response-common-failure"
+										}
+									]
+								}
+							}
+						},
+						"description": "List Config Rules response failure"
+					}
+				},
+				"security": [
+					{
+						"api_email": [],
+						"api_key": []
+					},
+					{
+						"api_token": []
+					}
+				],
+				"summary": "List Config Rules",
+				"tags": [
+					"Config Rules"
+				],
+				"x-cfPlanAvailability": {
+					"business": true,
+					"enterprise": true,
+					"free": true,
+					"pro": true
+				}
+			},
+			"put": {
+				"description": "Updates the Config Rules of a zone.",
+				"operationId": "config-rules-update-config-rules",
+				"parameters": [
+					{
+						"in": "path",
+						"name": "zone_id",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/common_components-schemas-identifier"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/update_ruleset"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/api-response-single"
+								}
+							}
+						},
+						"description": "Update Config Rules response"
+					},
+					"4xx": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single"
+										},
+										{
+											"$ref": "#/components/schemas/api-response-common-failure"
+										}
+									]
+								}
+							}
+						},
+						"description": "Update Config Rules response failure"
+					}
+				},
+				"security": [
+					{
+						"api_email": [],
+						"api_key": []
+					},
+					{
+						"api_token": []
+					}
+				],
+				"summary": "Update Config Rules",
+				"tags": [
+					"Config Rules"
+				],
+				"x-cfPlanAvailability": {
+					"business": true,
+					"enterprise": true,
+					"free": true,
+					"pro": true
+				}
+			}
+		},
 		"/zones/{zone_id}/rulesets/phases/http_custom_errors/entrypoint": {
 			"get": {
 				"description": "Fetches all Custom Error Responses in a zone.",
@@ -127441,6 +127898,142 @@
 				"summary": "Update Custom Error Responses",
 				"tags": [
 					"Custom Error Responses"
+				],
+				"x-cfPlanAvailability": {
+					"business": true,
+					"enterprise": true,
+					"free": true,
+					"pro": true
+				}
+			}
+		},
+		"/zones/{zone_id}/rulesets/phases/http_request_cache_settings/entrypoint": {
+			"get": {
+				"description": "Fetches all Cache Rules in a zone.",
+				"operationId": "cache-rules-list-cache-rules",
+				"parameters": [
+					{
+						"in": "path",
+						"name": "zone_id",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/common_components-schemas-identifier"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/cache-rules_components-schemas-ruleset"
+								}
+							}
+						},
+						"description": "List Cache Rules response"
+					},
+					"4xx": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/cache-rules_components-schemas-ruleset"
+										},
+										{
+											"$ref": "#/components/schemas/api-response-common-failure"
+										}
+									]
+								}
+							}
+						},
+						"description": "List Cache Rules response failure"
+					}
+				},
+				"security": [
+					{
+						"api_email": [],
+						"api_key": []
+					},
+					{
+						"api_token": []
+					}
+				],
+				"summary": "List Cache Rules",
+				"tags": [
+					"Cache Rules"
+				],
+				"x-cfPlanAvailability": {
+					"business": true,
+					"enterprise": true,
+					"free": true,
+					"pro": true
+				}
+			},
+			"put": {
+				"description": "Updates the Cache Rules of a zone.",
+				"operationId": "cache-rules-update-cache-rules",
+				"parameters": [
+					{
+						"in": "path",
+						"name": "zone_id",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/common_components-schemas-identifier"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/update_ruleset"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/api-response-single"
+								}
+							}
+						},
+						"description": "Update Cache Rules response"
+					},
+					"4xx": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-single"
+										},
+										{
+											"$ref": "#/components/schemas/api-response-common-failure"
+										}
+									]
+								}
+							}
+						},
+						"description": "Update Cache Rules response failure"
+					}
+				},
+				"security": [
+					{
+						"api_email": [],
+						"api_key": []
+					},
+					{
+						"api_token": []
+					}
+				],
+				"summary": "Update Cache Rules",
+				"tags": [
+					"Cache Rules"
 				],
 				"x-cfPlanAvailability": {
 					"business": true,
