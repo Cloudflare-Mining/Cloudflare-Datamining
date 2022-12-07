@@ -31,10 +31,10 @@
 <p><span style="font-weight: 400;">A rough list of the skills we would love to see you bring:</span></p>
 <ul>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Programming experience in Rust, C++, or similar low level languages</span></li>
-	<li><span style="font-weight: 400;">Basic understanding of software security and encryption</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Programming experience in Go and/or Typescript is a plus, but not required</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">A strong grasp of networking protocols in Layers 3-7 of the OSI Model</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Solid understanding of HTTP protocols - including experience with HTTP/2 and bonus for HTTP/3 experience</span></li>
+	<li><span style="font-weight: 400;">Basic understanding of software security and encryption</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience in designing and implementing secure and highly-available distributed systems</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Willingness, curiosity, and enthusiasm to learn new programming languages, technologies, and systems</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong interpersonal and communication skills. Caring and empathy are coveted traits here</span></li>
