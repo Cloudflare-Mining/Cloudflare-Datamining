@@ -620,6 +620,15 @@
 				"deprecated": false
 			},
 			{
+				"name": "School Cheating",
+				"id": 180,
+				"description": "Sites that offer content or services to enable students to cheat on schoolwork and exams, including test answers, pre-written essays, and essay and homework services.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
 				"name": "Unreliable Information",
 				"id": 162,
 				"description": "Sites that may contain false information.",
@@ -867,6 +876,15 @@
 				"subcategories": null,
 				"beta": false,
 				"deprecated": true
+			},
+			{
+				"name": "Alcohol",
+				"id": 181,
+				"description": "Sites related to alcoholic beverages, including beer, wine, liquor, and cocktails.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
 			},
 			{
 				"name": "Arts & Crafts",
@@ -1223,15 +1241,6 @@
 				"subcategories": null,
 				"beta": false,
 				"deprecated": false
-			},
-			{
-				"name": "Weapons",
-				"id": 166,
-				"description": "Sites related to weapons.",
-				"class": "premium",
-				"subcategories": null,
-				"beta": false,
-				"deprecated": false
 			}
 		],
 		"beta": false,
@@ -1330,6 +1339,34 @@
 				"name": "Unreachable",
 				"id": 161,
 				"description": "Domains that resolve to unreachable IP addresses.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			}
+		],
+		"beta": false,
+		"deprecated": false
+	},
+	{
+		"name": "Military & Weapons",
+		"id": 33,
+		"description": "Sites related to militaries or weapons.",
+		"class": "premium",
+		"subcategories": [
+			{
+				"name": "Military",
+				"id": 179,
+				"description": "Sites sponsored by or related to armed forces. Including both official websites of national armed forces as well as unaffiliated sites about or related to official national armed forces and history of militaries.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Weapons",
+				"id": 166,
+				"description": "Sites related to weapons.",
 				"class": "premium",
 				"subcategories": null,
 				"beta": false,
