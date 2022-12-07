@@ -19,7 +19,7 @@
 						properties: {
 							errorCode: 1020,
 							helpful: a,
-							version: 4
+							version: 5
 						}
 					};
 					b.open("POST", "https://sparrow.cloudflare.com/api/v1/event");
@@ -45,14 +45,19 @@
 
 	<script>
 		(function() {
+			function d(c) {
+				var b = document.getElementById("copy-label"),
+					a = document.getElementById("cf-details-wrapper-expandable");
+				c.target.checked ? a.classList.add("expanded") : (a.classList.remove("expanded"), b.innerText = "Click to copy")
+			}
 			if (document.addEventListener) {
-				var c = function() {
-					var b = document.getElementById("copy-label");
-					document.getElementById("plain-ray-id");
-					if (navigator.clipboard) navigator.clipboard.writeText("[ray id]");
+				var e = function() {
+					var c = document.getElementById("copy-label");
+					var b = document.getElementById("error-details").textContent;
+					if (navigator.clipboard) navigator.clipboard.writeText(b);
 					else {
 						var a = document.createElement("textarea");
-						a.value = "[ray id]";
+						a.value = b;
 						a.style.top = "0";
 						a.style.left = "0";
 						a.style.position = "fixed";
@@ -62,14 +67,15 @@
 						document.execCommand("copy");
 						document.body.removeChild(a)
 					}
-					b.innerText = "Copied"
+					c.innerText = "Copied text to clipboard"
 				};
-				document.addEventListener("DOMContentLoaded",
-					function() {
-						var b = document.getElementById("plain-ray-id"),
-							a = document.getElementById("click-to-copy-btn");
-						"classList" in b && (b.classList.add("hidden"), a.classList.remove("hidden"), a.addEventListener("click", c))
-					})
+				document.addEventListener("DOMContentLoaded", function() {
+					var c = document.getElementById("error-details-checkbox"),
+						b = document.getElementById("click-to-copy-btn");
+					document.getElementById("copy-label").classList.remove("hidden");
+					c.addEventListener("change", d);
+					b.addEventListener("click", e)
+				})
 			}
 		})();
 	</script>
@@ -77,39 +83,50 @@
 </head>
 
 <body>
-	<div class="main-wrapper" role="main">
-		<div class="header section">
-			<h1>
-				<span class="error-description">Access denied</span>
-				<span class="code-label">Error code <span>1020</span></span>
-			</h1>
-			<div class="large-font">
-				<p>You cannot access cloudflare.com. Refresh the page or contact the site owner to request access.</p>
+	<div class="cf-main-wrapper" role="main">
+		<div class="cf-header cf-section">
+			<div class="cf-error-title">
+				<h1>Access denied</h1>
+				<span class="cf-code-label">Error code <span>1020</span></span>
+			</div>
+			<div class="cf-error-description">
+				<p>You do not have access to cloudflare.com.</p>
+				<p>The site owner may have set restrictions that prevent you from accessing the site.</p>
 			</div>
 		</div>
 	</div>
 
-	<div>
-		<div class="section know-more">
-			<h2 class="large-font">Troubleshooting information</h2>
-			<p>Copy and paste the Ray ID when you contact the site owner.</p>
-			<p class="ray-id-wrapper">
-				Ray ID:
-				<span class="plain-ray-id" id="plain-ray-id">
-					[ray id]
-				</span>
-				<button class="click-to-copy-btn hidden" id="click-to-copy-btn" title="Click to copy Ray ID" type="button">
-					<span class="ray-id">[ray id]</span><span class="copy-label" id="copy-label">Copy</span>
-				</button>
-			</p>
-			<p>
-				For help visit <a rel="noopener noreferrer" href="https://support.cloudflare.com/hc/articles/360029779472-Troubleshooting-Cloudflare-1XXX-errors?utm_source=1020_error#error1020" target="_blank">Troubleshooting guide</a>
-				<img class="external-link" title="Opens in new tab" src="/cdn-cgi/images/external.png" alt="External link">
-			</p>
+	<div class="cf-details-wrapper">
+		<div class="cf-section" role="region">
+			<div class="cf-expandable" id="cf-details-wrapper-expandable">
+				<label for="error-details-checkbox" title="Error details" class="cf-expandable-btn">
+					<p class="cf-dropdown-title">Error details</p>
+					<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgBAMAAACBVGfHAAAAElBMVEUAAAAwMDAxMTEyMjIwMDAxMTF+89HTAAAABXRSTlMAf2CAMKS61bwAAABTSURBVCjPzcq7DcAgFENR5zMATfo06TNCViAS+6+CeFi6gglw4eLqaPVtaQpXnkApaQT/k0dw70EAUhCA1AnABGACMAGYAEwAkCOAydv+I5xaZhXWbQrD80TkkQAAAABJRU5ErkJggg==" class="cf-caret-icon" id="caret-icon" alt="Caret icon">
+				</label>
+
+				<input id="error-details-checkbox" class="hidden" type="checkbox">
+
+				<div class="cf-expandable-error-info hidden">
+					<p class="cf-error-copy-description">Provide the site owner this information.</p>
+					<button class="cf-click-to-copy-btn" id="click-to-copy-btn" title="Click to copy" type="button">
+						<div class="cf-error-wrapper" id="error-details">
+							<p class="cf-error-details-endpoint">I got an error when visiting cloudflare.com/cdn-cgi/error/1020.</p>
+
+							<p>Error code: 1020</p>
+							<p>Ray ID: [ray id]</p>
+							<p>Country: US</p>
+							<p>Data center: sjc01</p>
+							<p>IP: [ip]</p>
+							<p>Timestamp: [date]</p>
+						</div>
+						<p class="cf-copy-label hidden" id="copy-label">Click to copy</p>
+					</button>
+				</div>
+			</div>
 		</div>
 
-		<div class="clearfix footer section" role="contentinfo">
-			<div class="column">
+		<div class="clearfix cf-footer cf-section" role="contentinfo">
+			<div class="cf-column">
 				<div class="feedback-hidden py-8 text-center" id="error-feedback">
 					<div id="error-feedback-survey" class="footer-line-wrapper">
 						Was this page helpful?
@@ -122,9 +139,10 @@
 				</div>
 
 			</div>
-			<div class="column footer-line-wrapper text-center">
-				Performance &amp; security by <a rel="noopener noreferrer" href="https://www.cloudflare.com?utm_source=1020_error" target="_blank">Cloudflare</a>
-				<img class="external-link" title="Opens in new tab" src="/cdn-cgi/images/external.png" alt="External link">
+			<div class="cf-column cf-footer-line-wrapper text-center">
+				<p>
+					Performance &amp; security by <a rel="noopener noreferrer" href="https://www.cloudflare.com?utm_source=1020_error" target="_blank">Cloudflare <img class="external-link" title="Opens in new tab" src="/cdn-cgi/images/external.png" alt="External link"></a>
+				</p>
 			</div>
 		</div>
 	</div>
