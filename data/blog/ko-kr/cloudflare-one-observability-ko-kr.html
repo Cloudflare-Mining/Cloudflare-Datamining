@@ -1,0 +1,31 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image1-24.png" class="kg-image" alt="How Cloudflare One solves your observability problems"></figure>
+	<p>오늘, 기쁜 마음으로 Cloudflare One Observability를 발표합니다. Cloudflare One Observability는 <a href="https://www.cloudflare.com/cloudflare-one/#transformation" target="_blank">Cloudflare One</a> 애플리케이션 전체에서 네트워크 연결, 보안 정책, 성능 문제를 다룰 수 있도록 고객을 지원하므로 어디서나 일관된 환경을 직원에게 제공할 수 있습니다. Cloudflare의 종합 <a href="https://www.cloudflare.com/learning/access-management/what-is-sase/" target="_blank">SASE 플랫폼</a>인 Cloudflare One에는 개별 제품에 대한 가시성 기능이 이미 포함되어 있습니다. Cloudflare One Observability는 전체 Cloudflare One 플랫폼 에서 데이터를 통합할 다음 단계입니다.</p>
+	<h2 id="-">네트워크 탭 및 레거시 엔터프라이즈 네트워크</h2>
+	<p>기존의 기업 네트워크는 해자로 보호되는 성처럼 작동했습니다. 실제 사무실에 위치하여 일하는 직원은 세션이 시작될 때 인증을 거쳤고, 광범위한 사무실 방화벽으로 보호되었으며 대부분 온프레미스 애플리케이션에 액세스했습니다.</p>
+	<p>다수의 기업 네트워크는 사무실에 위치한 직원원이 이용할 "입구"의 수를 엄격하게 정해놓았습니다. 네트워크 탭(로컬 네트워크에서 이벤트를 측정하고 보고하는 데 사용되는 장치)이 각 진입점을 모니터링했으며, 네트워크 관리자와 엔지니어는 이 장치로 작업을 완전히 확인할 수 있었습니다.</p>
+	<p>이전의 <a href="https://www.cloudflare.com/en-gb/learning/access-management/castle-and-moat-network-security/" target="_blank">성과 해자 네트워크 보안 모델</a>을 자세히 알아보세요.</p>
+	<h2 id="--1">현대 기업 네트워크의 불완전한 관찰 가능성</h2>
+	<p>오늘날의 기업 네트워크는 기존의 온프레미스 모델을 넘어 확장되었고 크게 나뉘어져 있습니다. 이제, 직원은 어디서나 일할 수 있습니다. 사용자들은 인터넷을 통해 기업 네트워크에 액세스하고 있으며, 온프레미스 및 SaaS 클라우드 인스턴스가 혼합된 애플리케이션을 매일 사용합니다.</p>
+	<p>SaaS 애플리케이션은 기업 네트워크 외부에서 호스팅되기 때문에 사용자가 어떻게 해당 애플리케이션에 액세스하고 안팎으로 데이터를 이동하는지 보안 팀이 관찰하는 데는 한계가 생깁니다. 직원이 사용 중인 애플리케이션을 관찰할 수 없으면 중요한 데이터를 저장, 공유하거나 제3자에게 노출하는 방식을 제어할 수 없습니다.</p>
+	<p>기업 네트워크가 더 세분화된 지금, 다양한 부분이 어떻게 작동하고 있는지 이해하기가 점점 어려워지고 있습니다. 제한적으로라도 관찰하려면, 네트워크 탭, 흐름 데이터, 통합 프로브, 대시보드를 무질서하게 조합하여 구현해야 하며 서로 데이터가 공유되지 않습니다.</p>
+	<h2 id="cloudflare-one-">Cloudflare One에 구축된 전체 기업 및 클라우드 네트워크에 대한 전체 관찰 가능성</h2>
+	<p>Cloudflare One Observability는 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trust</a>라는 환경에서 오늘날의 네트워크 단편화 문제를 해결할 수 있도록 구축되었습니다. Cloudflare One Observability는 데이터를 여러 네트워크 도구에 분산시키는 대신, 다양한 Cloudflare One 기능 데이터를 하나의 환경으로 통합합니다. 고객은 기업 애플리케이션과 네트워크에서 발생하는 모든 문제를 한 곳에서 해결할 수 있습니다.</p>
+	<p>기업 네트워크가 단편화된 오늘날의 환경에는 대답하기 어려운 질문이 몇 가지 있습니다. 몇 가지 고객 사례를 분석하고 Cloudflare One Observability가 문제 해결 프로세스를 단순화하는 방법을 살펴보겠습니다.</p>
+	<h3 id="--2">지점 간 대역폭 문제 해결</h3>
+	<p>고객이 "여러 사무실에서 대부분의 대역폭을 사용하는 애플리케이션이 무엇인지"를 알고 싶어할 수도 있습니다. 일반적인 기업 네트워크일 경우, 네트워크 엔지니어는 네트워크 탭을 설치하거나 각 사무실에서 흐름 데이터를 수집하고 별도의 네트워크에서 정보를 집계한 다음 대역폭 데이터를 시각화하는 맞춤형 도구를 구축해야 합니다.</p>
+	<p>Cloudflare One 고객이라면, Cloudflare가 모든 선행 데이터 수집 및 집계 작업을 자동으로 수행합니다. 고객은 Cloudflare One Observability를 사용해 사무실의 전반적 대역폭 사용량을 시각화하여, 곧바로 대역폭 문제를 조정하고 해결할 수 있습니다.</p>
+	<h3 id="--3">네트워크 취약점 식별</h3>
+	<p>고객은 "자주 수행되는 공격 동향은 무엇인가? 네트워크는 이 공격에 취약한가?"라는 까다로운 문제도 고민합니다. 관리자가 네트워크의 보안 상태를 이해하려면 VPN, 방화벽, 사용자 정책, 엔드포인트에 적용되는 각각의 애플리케이션을 살펴봐야 하므로, 네트워크의 취약성을 평가하는 데는 시간이 많이 걸립니다.</p>
+	<p>Cloudflare One은 처음부터 이 문제를 단순화하기 위해 구축되었습니다. 하나의 플랫폼 내에서 모든 네트워크 온램프, 방화벽, 사용자 정책, 엔드포인트 보호 기능을 관리한다면 관찰하기가 복잡하지 않습니다. Cloudflare One Observability 환경에서는 Cloudflare가 보안 패치를 자동으로 적용하므로 고객은 걱정할 필요가 없습니다. Cloudflare One을 통해 공격의 표적이 되었는지 여부를 알 수 있고, 보호받고 있으니 안심할 수 있습니다.</p>
+	<h3 id="--4">네트워크 성능 저하 문제 해결</h3>
+	<p>느린 기업 네트워크에 로그인하는 경험을 겪어 본 사람은 많습니다. "온프레미스 또는 SaaS 애플리케이션에 액세스할 때 네트워크가 느린" 일반적인 문제는 해결하기 어려울 수 있습니다. 원격 근무 직원일 경우, 네트워크 VPN, 방화벽, 사용자 정책, 엔드포인트를 연결하는 동안의 대기 시간 문제와 지터 문제를 해결하려면 엔지니어가 여러 애플리케이션을 조사해야 합니다.</p>
+	<p>Cloudflare One Observability는 이와 같이 시간이 걸리는 문제를 해결하는 과정을 간소화합니다. 하나의 플랫폼에 온램프, 방화벽, 사용자 정책, 엔드포인트 모니터링을 구성한다면 한 곳으로 이동해 네트워크 기능 문제를 해결할 수 있습니다. Cloudflare One의 아키텍처는 '단일 경로 검사' 개념을 기반으로 합니다. Cloudflare 서버에 요청이 도착하면 이 요청은 동일한 하나의 서버에 있는 Cloudflare One 서비스의 인스턴스를 모두 통과합니다. 이렇게 하면 엔드 투 엔드 네트워크 요청 처리가 쉽게 시각화되므로, 고객은 트래픽을 원활하게 분석하고 네트워크 병목 현상이나 잘못된 구성을 파악할 수 있습니다.</p>
+	<h2 id="cloudflare-">Cloudflare의 네트워크로 구동되는 관찰 가능성</h2>
+	<p>Cloudflare One Observability는 동급 최고의 Cloudflare 네트워크에 구축되었습니다. Cloudflare는 270개 이상의 도시, 100개 이상의 국가에 데이터 센터를 두고 있습니다. 모든 Cloudflare One 제품이 모든 서버에서 실행되므로 고객이 어느 곳에 위치하든 비교할 수 없을 만큼 빠르고 일관된 경험을 제공할 수 있습니다. Cloudflare는 처음부터 같은 인프라에 네트워크와 보안 애플리케이션을 구축했습니다. 경쟁업체에서는 사일로화된 애플리케이션을 구축하거나 인수하여 제로 트러스트 플랫폼을 조합했지만, Cloudflare One 애플리케이션은 서로 데이터를 공유할 수 있도록 처음부터 원활하게 통합되어 설계되었습니다.</p>
+	<p>Cloudflare의 모든 애플리케이션처럼 데이터 파이프라인과 로깅 서비스도 마찬가지로 같은 인프라에 구축되어 있습니다. Cloudflare One을 사용하면 데이터가 도착하는 대로 실시간 네트워크 데이터를 제공하는 <a href="https://blog.cloudflare.com/instant-logs/">Instant Logs</a> 및 대규모 네트워크 데이터를 분석하는 <a href="https://blog.cloudflare.com/explaining-cloudflares-abr-analytics/">ABR</a> 등 고급 데이터 도구의 이점을 최대한 활용할 수 있습니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image2-25.png" class="kg-image"></figure>
+	<h2 id="-zero-trust-">고객에게 현재 필요한 Zero Trust 관찰 가능성 제공</h2>
+	<p>2009년부터 Cloudflare는 세계적으로 빠르고 안정적이며 안전한 네트워크를 구축했습니다. Cloudflare는 네트워크에 Cloudflare One과 Cloudflare One Observability를 구축했으며 모든 회사의 어려움을 해결할 수 있도록 기능을 넓히고 있습니다. Zero Trust로의 전환은 패러다임이 바뀌는 것입니다. Cloudflare는 모든 회사가 이 새로운 패러다임이 제공하는 보안 이점을 필연적으로 누리게 될 거라고 생각합니다. Cloudflare는 기존 고객과 신규 고객이 기업 네트워크를 다시 구축할 수 있도록 지원한 것이 자랑스럽고, 앞으로도 계속 지원할 것입니다.</p>
+	<p>아직 Cloudflare One Observability는 계속 구축되고 있습니다. 이 새 제품이 마음에 드신다면 지금 대기자 명단에 <a href="https://www.cloudflare.com/lp/cloudflare-one-observability/" target="_blank">등록</a>하세요!</p>
+</div>

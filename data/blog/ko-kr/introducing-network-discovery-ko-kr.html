@@ -1,0 +1,27 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image4-19.png" class="kg-image" alt="Introducing Private Network Discovery"></figure>
+	<p>Cloudflare One을 사용하면 Cloudflare에 사설 네트워크를 쉽게 구축할 수 있습니다. 하지만 시간이 지남에 따라 사설 네트워크의 보안을 유지하는 것은 그리 쉬운 일이 아닙니다. 매일 새로운 사용자가 추가 및 제거되면서 리소스가 지속적으로 증가 및 감소하므로 점점 관리에 어려움이 따르게 마련입니다.</p>
+	<p>오늘 새로운 Zero Trust 네트워크 검색 도구의 클로즈 베타를 공개하는 이유도 여기에 있습니다. 사설 네트워크 검색을 통해 이제 당사 Zero Trust 플랫폼은 추가 구성도 필요 없이 현재 액세스 중인 리소스와 이 리소스에 액세스 중인 사용자까지 모두 패시브로 범주화할 수 있습니다. 어떠한 타사 도구, 명령 또는 클릭도 필요하지 않습니다.</p>
+	<p>시작하려면 클로즈 베타 얼리 액세스를 <a href="https://www.cloudflare.com/zero-trust/lp/private-network-discovery" target="_blank">신청</a>하고, 오늘부터 바로 네트워크에 대한 즉각적인 가시성을 확보하십시오. 그 작동 원리와 앞으로 전반적인 가용성을 위해 어떤 준비를 할 것인가에 대해 더 자세히 알아보고 싶으시다면 계속 스크롤해서 살펴보시기 바랍니다.</p>
+	<p><a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trust</a>로 마이그레이션하는 데 있어 가장 큰 어려움 중 하나는 현재 네트워크에서 시행 중인 보안 정책을 복제하는 일입니다. 현재 여러분의 환경을 잘 이해하고 있다고 해도 네트워크는 다양한 작업을 위해 새로운 리소스가 드라마틱하게 증가하면서 쉼없이 진화하고 있습니다. 따라서 애플리케이션을 주기적으로 끊임없이 검색하고 보호해야 할 필요성이 생기고, 이는 보안 팀에게 끝없는 부담을 안겨주고 있습니다.</p>
+	<p>그리고 이것이 당사가 사설 네트워크 검색 솔루션을 개발한 이유입니다. 조직은 사설 네트워크 검색을 이용해 추가적인 작업 없이 네트워크에 상주하는 사용자와 애플리케이션에 대한 완벽한 가시성을 쉽게 확보할 수 있습니다. 사설 네트워크를 Cloudflare에 연결하기만 하면 당사가 여러분의 네트워크에서 검색한 고유 트래픽을 모두 표시할 수 있고, 그러면 여러분은 이를 Cloudflare Access 애플리케이션으로 원활하게 변환할 수 있습니다.</p>
+	<h3 id="cloudflare-">Cloudflare에 사설 네트워크 구축</h3>
+	<p>사설 네트워크 구축에는 인프라 측과 클라이언트 측의 두 가지 기본 구성 요소가 있습니다.</p>
+	<p>이 방정식의 인프라 측면은 인프라(단일 애플리케이션이든 다수의 애플리케이션이든 전체 네트워크 세그먼트든 무관)를 Cloudflare에 간단히 연결시켜 주는 Cloudflare Tunnel에 의해 구동됩니다. 이 과정은 여러분의 환경에서 간단한 명령줄 데몬을 실행하여 Cloudflare에 대한 여러 개의 안전한 아웃바운드 전용 링크를 설정함으로써 이루어집니다. 간단히 말해, Tunnel은 네트워크를 Cloudflare에 연결시켜 주는 기능을 합니다.</p>
+	<p>이 방정식의 다른 측면에서는 최종 사용자가 Cloudflare와, 그리고 더 중요하게는 여러분의 네트워크와 쉽게 연결할 수 있도록 해야 합니다. 이 연결은 당사의 강력한 장치 에이전트인 Cloudflare WARP에서 담당합니다. 이 에이전트는 사내 MDM 도구를 사용하여 단 몇 분 만에 전체 조직에 배포할 수 있으며, 사용자 장치에서 Cloudflare 네트워크로의 보안 연결을 설정해줍니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/image2-29.png" class="kg-image" alt="Building a private network on Cloudflare"></figure>
+	<p>이제 인프라와 사용자가 Cloudflare에 연결되었으므로 Zero Trust 보안 제어에서 쉽게 애플리케이션과 계층에 태그를 지정하여 네트워크의 모든 요청에 대해 ID 중심 규칙과 장치 중심 규칙을 모두 검증할 수 있습니다.</p>
+	<h3 id="-">작동 방식</h3>
+	<p>앞서 언급했듯이 우리는 RFC 1918 또는 RFC 4193 주소 공간으로 향하는 고유 트래픽을 패시브로 범주화함으로써 여러분의 팀이 네트워크에 대한 가시성을 얻을 수 있도록 하기 위해 이 기능을 개발했습니다. 설계상 이 도구는 모든 애플리케이션이 표시는 되지만 기본 상태가 "Unreviewed(미검토)"로 태그가 지정되는 가관측성 모드에서 작동합니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/image3-21.png" class="kg-image" alt="Generating the Private Network Discovery Report"></figure>
+	<p>이 네트워크 검색 도구는 고유한 IP 주소, 포트 또는 프로토콜로 정의된 네트워크 내의 모든 오리진을 표시합니다. 여러분은 지정된 오리진의 세부 정보를 검토한 다음 Cloudflare Access 애플리케이션을 생성하여 해당 오리진에 대한 액세스를 제어할 수 있습니다. Access 애플리케이션은 둘 이상의 오리진으로 구성될 수 있다는 점도 유의할 필요가 있습니다.</p>
+	<p>비공개로 호스팅되는 화상 회의 서비스인 Jitsi를 예로 들어보겠습니다. 우리 팀이 실제로 이 서비스를 내부적으로 사용하여 새로운 기능을 프로덕션으로 푸시하기 전에 테스트하고 있기 때문에 이 예제를 사용하는 것입니다. 이 시나리오에서 우리는 Jitsi의 자체 호스팅 인스턴스가 10.0.0.1:443에 있다는 것을 알고 있습니다. 그러나 이것은 화상 회의 애플리케이션이므로 tcp:10.0.0.1:443과 udp:10.0.0.1:10000 모두에서 통신합니다. 여기에서 우리는 하나의 오리진을 선택하고, 여기에 애플리케이션 이름을 할당할 것입니다.</p>
+	<p>참고로 클로즈 베타 기간에는 Cloudflare Access 애플리케이션 테이블에서 이 애플리케이션을 볼 수 없을 것입니다. 일단 이 애플리케이션 이름들은 사설 네트워크 검색 보고서의 검색된 오리진 테이블에만 반영됩니다. 애플리케이션 이름 열에만 반영된 것을 볼 수 있습니다. 그러나 이 기능이 전반적인 가용성을 갖게 되면 Zero Trust &gt; Access &gt; 애플리케이션 메뉴에서도 여러분이 생성한 애플리케이션을 모두 볼 수 있게 될 것입니다.</p>
+	<p>애플리케이션 이름을 할당하고 첫 번째 오리진인 tcp:10.0.0.1:443을 추가한 후 동일한 패턴에 따라 다른 오리진인 udp:10.0.0.1:10000도 추가할 수 있습니다. 이를 통해 논리적인 오리진 그룹을 생성하여 네트워크의 리소스를 보다 정확하게 표현할 수 있습니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/image1-29.png" class="kg-image" alt="Access Analytics: Private Network Discovery Report"></figure>
+	<p>애플리케이션을 생성하면 네트워크 검색 도구가 각 오리진의 상태를 "Unreviewed(미검토)"에서 "In-Review(검토 중)"로 자동 업데이트합니다. 이를 통해 팀에서 오리진의 상태를 쉽게 추적할 수 있습니다. 여기에서 드릴다운하여 특정 오리진에 액세스하는 고유 사용자 수와 각 사용자가 수행한 총 요청 수까지 검토할 수 있습니다. 이를 통해 ID 및 장치 기반 Zero Trust 정책을 생성하는 데 필요한 정보를 팀에 제공할 수 있습니다. 팀이 특정 애플리케이션의 사용 현황을 파악하고 나면 해당 애플리케이션의 상태를 "Approved(승인됨)" 또는 "Unapproved(미승인)"로 수동으로 업데이트할 수 있습니다.</p>
+	<h3 id="--1">다음 단계</h3>
+	<p>클로즈 베타 출시는 시작에 불과합니다. 클로즈 베타 릴리스에서는 사설 네트워크 애플리케이션의 이름을 친숙하게 지정할 수 있지만 현재는 이 이름이 Cloudflare Zero Trust 정책 빌더에 표시되지 않습니다.</p>
+	<p>전반적인 가용성을 향해 나아가는 과정에서 최우선 목표는 사설 네트워크 검색 도구에 표시되는 내용을 기반으로 사설 네트워크를 보다 쉽게 보호할 수 있도록 하는 것입니다. 전반적인 가용성이 확보되면 사설 네트워크 검색 보고서에서 바로 Access 애플리케이션을 생성하고 Cloudflare Access에서 사설 네트워크 애플리케이션을 참조하고 해당 애플리케이션에 대한 Zero Trust 보안 정책을 생성하는 일까지 모두 단일 워크플로에서 처리할 수 있습니다.</p>
+	<p>보신 것처럼 우리는 이 도구를 위한 흥미로운 계획들을 갖고 있고, 앞으로도 사설 네트워크 검색에 지속적인 투자를 이어갈 계획입니다. 클로즈 베타에 참여를 원하시면 <a href="https://www.cloudflare.com/zero-trust/lp/private-network-discovery" target="_blank">여기</a>에서 신청하고, 누구보다 먼저 체험해보는 특권을 누리시길 바랍니다!<br></p>
+</div>

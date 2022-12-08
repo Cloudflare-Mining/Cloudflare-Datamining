@@ -1,0 +1,470 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/Zero-Trust-Exchange.png" class="kg-image" alt="Cloudflare One vs Zscaler Zero Trust Exchange: who is most feature complete? It’s not who you might expect"></figure>
+	<p>Zscaler lleva 15 años desarrollando su oferta de seguridad. Cloudflare cumple 13 años, y llevamos cuatro ofreciendo Zero Trust. Podría parecer que llegamos tarde, pero en esta publicación vamos a demostrar que, con <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trust</a>, <a href="https://www.cloudflare.com/es-es/learning/access-management/security-service-edge-sse/" target="_blank">SSE</a>, <a href="https://www.cloudflare.com/es-es/learning/access-management/what-is-sase/" target="_blank">SASE</a> y otros, la funcionalidad de Cloudflare One es superior a la de Zscaler Zero Trust Exchange.</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-onfx {
+			background-color: #afe4fd;
+			color: #3663ae;
+			font-size: 18px;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-baqh {
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-c3ow {
+			border-color: inherit;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-cmei {
+			background-color: #afe4fd;
+			border-color: inherit;
+			color: #3663ae;
+			font-size: 18px;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-8d3w {
+			background-color: #FFF;
+			border-color: inherit;
+			color: #222;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-q8v8 {
+			background-color: #afe4fd;
+			border-color: inherit;
+			color: #3663ae;
+			font-size: 18px;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-0pky {
+			border-color: inherit;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-gct1 {
+			background-color: #FFF;
+			border-color: inherit;
+			color: #222;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-4ufn {
+			background-color: #FFF;
+			color: #222;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" style="undefined;table-layout: fixed; width: 592px">
+		<colgroup>
+			<col style="width: 332.003472px">
+			<col style="width: 130.003472px">
+			<col style="width: 130.003472px">
+		</colgroup>
+		<thead>
+			<tr>
+				<th class="tg-cmei"><span style="font-style:normal;text-decoration:none">Grupo de criterios funcionales</span></th>
+				<th class="tg-onfx"><span style="font-style:normal;text-decoration:none">Cloudflare</span></th>
+				<th class="tg-q8v8"><span style="font-style:normal;text-decoration:none">Zscaler</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:600;font-style:normal;text-decoration:none">Plataforma de red nativa en Internet</span></td>
+				<td class="tg-baqh"><span style="font-weight:700;font-style:normal;text-decoration:none">100 % </span>(5 de 5)</td>
+				<td class="tg-gct1"><span style="font-weight:bold">20 %</span> (1 de 5)</td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:600;font-style:normal;text-decoration:none">Plataforma de servicios nativa en la nube</span></td>
+				<td class="tg-baqh"><span style="font-weight:700;font-style:normal;text-decoration:none">100 % </span>(4 de 4)</td>
+				<td class="tg-8d3w"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#222;background-color:transparent">25 % </span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#222;background-color:transparent">(1 de 4)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:600;font-style:normal;text-decoration:none">Servicios para adoptar SASE</span></td>
+				<td class="tg-4ufn"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#222;background-color:transparent">83 %</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#222;background-color:transparent"> (5 de 6)</span></td>
+				<td class="tg-c3ow"><span style="font-weight:bold">66 %</span> (4 de 6)</td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:600;font-style:normal;text-decoration:none">Servicios para ampliar Zero Trust, SSE, SASE y otros</span></td>
+				<td class="tg-4ufn"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#222;background-color:transparent">66 %</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#222;background-color:transparent"> (8 de 12)</span></td>
+				<td class="tg-c3ow"><span style="font-weight:bold">58 %</span> (7 de 12)</td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:600;font-style:normal;text-decoration:none">Accesos directos a redes</span></td>
+				<td class="tg-baqh"><span style="font-weight:bold">90 %</span> (9 de 10)</td>
+				<td class="tg-c3ow"><span style="font-weight:700;font-style:normal;text-decoration:none">50 % </span>(5 de 10)</td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Muchos pueden encontrar esto sorprendente. Cuando lo hemos comentado con los clientes, con frecuencia nos han preguntado: <em>¿Cómo?</em> ¿Cómo ha podido crear Cloudflare tan rápido una oferta competitiva?</p>
+	<p>Haber creado la mayor red Anycast programable del mundo ha sido sin duda una gran ventaja. Esta fue la base del actual negocio de servicios de aplicaciones de Cloudflare, que ofrece experiencias web y de aplicaciones seguras y eficaces a clientes de todo el mundo. Nos ha proporcionado información detallada de la seguridad y el rendimiento en Internet. Pero no solo nuestra infraestructura estaba preparada para abordar los problemas reales de los clientes a escala, sino que nuestra plataforma de desarrollo de informática sin servidor, <a href="https://workers.cloudflare.com/" target="_blank">Workers</a>, se diseñó específicamente para desarrollar aplicaciones distribuidas a nivel global con seguridad, fiabilidad y rendimiento integrados. Hemos podido desarrollar sobre nuestra plataforma para proporcionar servicios Zero Trust a una velocidad incomparable, una velocidad que esperamos que se mantenga.</p>
+	<p>Pero también hemos contado con otra ventaja que esta cronología contradice. En los últimos 15 años, muchas cosas han cambiado en el ámbito de la seguridad empresarial. Por ejemplo, la idea de una red global eficiente como la nuestra era algo impensable en su momento. Cuando empezamos a desarrollar nuestra oferta Zero Trust, teníamos la ventaja de poder empezar totalmente de cero, y la hemos podido desarrollar basándonos en premisas sobre la nube completamente modernas.</p>
+	<p>Pero sabemos que estás aquí porque quieres ver las pruebas. Y aquí te las proporcionamos. Hemos publicado un nuevo análisis detallado funcional en nuestra página pública, <a href="https://www.cloudflare.com/es-es/products/zero-trust/cloudflare-vs-zscaler/" target="_blank">que compara las plataformas de Zscaler y Cloudflare</a>. Echaremos un vistazo a dos de los cinco grupos de criterios: los servicios para adoptar SASE y los accesos directos a la red. Muchos criterios incluyen notas a pie de página en el <a href="https://cfl.re/cloudflare-vs-zscaler-functional" target="_blank">PDF</a> para añadir contexto y claridad (se indica con un *).</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-ucok {
+			background-color: #afe4fd;
+			border-color: #000000;
+			color: #3663ae;
+			font-size: 18px;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-baki {
+			background-color: #fe0000;
+			border-color: #000000;
+			color: #ffffff;
+			text-align: center;
+			vertical-align: middle
+		}
+
+		.tg .tg-ru72 {
+			background-color: #fe0000;
+			border-color: #000000;
+			color: #ffffff;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-ycfl {
+			background-color: #009901;
+			border-color: #000000;
+			color: #ffffff;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-68aq {
+			background-color: #afe4fd;
+			border-color: #000000;
+			color: #3663ae;
+			font-size: 18px;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-73oq {
+			border-color: #000000;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-dp1c {
+			background-color: #009901;
+			border-color: #000000;
+			color: #ffffff;
+			text-align: center;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" style="undefined;table-layout: fixed; width: 610px">
+		<colgroup>
+			<col style="width: 342.003472px">
+			<col style="width: 134.003472px">
+			<col style="width: 134.003472px">
+		</colgroup>
+		<thead>
+			<tr>
+				<th class="tg-68aq"><span style="font-weight:600;font-style:normal;text-decoration:none">Servicios para adoptar SASE</span></th>
+				<th class="tg-ucok"><span style="font-style:normal;text-decoration:none">Cloudflare</span></th>
+				<th class="tg-ucok"><span style="font-style:normal;text-decoration:none">Zscaler</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-73oq"><span style="font-weight:600;font-style:normal;text-decoration:none">Acceso Zero Trust a la red (ZTNA)</span></td>
+				<td class="tg-ycfl">SÍ</td>
+				<td class="tg-dp1c"><span style="font-weight:700;font-style:normal">SÍ</span></td>
+			</tr>
+			<tr>
+				<td class="tg-73oq"><span style="font-weight:600;font-style:normal;text-decoration:none">Agente de seguridad de acceso a la nube (CASB)</span></td>
+				<td class="tg-dp1c"><span style="font-weight:700;font-style:normal">SÍ</span></td>
+				<td class="tg-ycfl"><span style="font-weight:700;font-style:normal">SÍ</span></td>
+			</tr>
+			<tr>
+				<td class="tg-73oq"><span style="font-weight:600;font-style:normal;text-decoration:none">Puerta de enlace web segura (SWG)</span></td>
+				<td class="tg-ycfl"><span style="font-weight:700;font-style:normal">SÍ</span></td>
+				<td class="tg-dp1c"><span style="font-weight:700;font-style:normal">SÍ</span></td>
+			</tr>
+			<tr>
+				<td class="tg-73oq"><span style="font-weight:600;font-style:normal;text-decoration:none">Firewall como servicio (FWaaS)</span></td>
+				<td class="tg-ycfl"><span style="font-weight:700;font-style:normal">SÍ</span></td>
+				<td class="tg-dp1c"><span style="font-weight:700;font-style:normal">SÍ</span></td>
+			</tr>
+			<tr>
+				<td class="tg-73oq"><span style="font-weight:600;font-style:normal;text-decoration:none">WAN como servicio con aceleración de tráfico en las capas 3 y 7*</span></td>
+				<td class="tg-dp1c"><span style="font-weight:700;font-style:normal">SÍ</span></td>
+				<td class="tg-ru72"><span style="font-weight:700;font-style:normal">NO</span></td>
+			</tr>
+			<tr>
+				<td class="tg-73oq"><span style="font-weight:600;font-style:normal;text-decoration:none">SD-WAN local*</span></td>
+				<td class="tg-baki"><span style="font-weight:700;font-style:normal">NO - socio</span></td>
+				<td class="tg-baki"><span style="font-weight:700;font-style:normal">NO - socio</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html--><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-baki {
+			background-color: #fe0000;
+			border-color: #000000;
+			color: #ffffff;
+			text-align: center;
+			vertical-align: middle
+		}
+
+		.tg .tg-ph0s {
+			background-color: #afe4fd;
+			border-color: #000000;
+			color: #3663ae;
+			font-size: 18px;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: middle
+		}
+
+		.tg .tg-tpun {
+			background-color: #009901;
+			color: #ffffff;
+			text-align: center;
+			vertical-align: middle
+		}
+
+		.tg .tg-68aq {
+			background-color: #afe4fd;
+			border-color: #000000;
+			color: #3663ae;
+			font-size: 18px;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-73oq {
+			border-color: #000000;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-kos1 {
+			background-color: #009901;
+			border-color: #000000;
+			color: #ffffff;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: middle
+		}
+
+		.tg .tg-w7s0 {
+			background-color: #009901;
+			border-color: #000000;
+			color: #ffffff;
+			text-align: center;
+			vertical-align: middle
+		}
+
+		.tg .tg-d6fj {
+			background-color: #fe0000;
+			border-color: #000000;
+			color: #ffffff;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: middle
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-ydhf {
+			background-color: #fe0000;
+			color: #ffffff;
+			text-align: center;
+			vertical-align: middle
+		}
+	</style>
+	<table class="tg" style="undefined;table-layout: fixed; width: 748px">
+		<colgroup>
+			<col style="width: 420.003472px">
+			<col style="width: 164.003472px">
+			<col style="width: 164.003472px">
+		</colgroup>
+		<thead>
+			<tr>
+				<th class="tg-68aq"><span style="font-weight:600;font-style:normal;text-decoration:none">Accesos directos a redes</span></th>
+				<th class="tg-ph0s"><span style="font-style:normal;text-decoration:none">Cloudflare</span></th>
+				<th class="tg-ph0s"><span style="font-style:normal;text-decoration:none">Zscaler</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-73oq"><span style="font-weight:600;font-style:normal;text-decoration:none">Acceso sin cliente basado en el navegador</span></td>
+				<td class="tg-kos1">SÍ</td>
+				<td class="tg-w7s0"><span style="font-weight:700;font-style:normal">SÍ</span></td>
+			</tr>
+			<tr>
+				<td class="tg-73oq"><span style="font-weight:600;font-style:normal;text-decoration:none">Software de cliente en dispositivo</span></td>
+				<td class="tg-w7s0"><span style="font-weight:700;font-style:normal">SÍ</span></td>
+				<td class="tg-kos1"><span style="font-weight:700;font-style:normal">SÍ</span></td>
+			</tr>
+			<tr>
+				<td class="tg-73oq"><span style="font-weight:600;font-style:normal;text-decoration:none">Software conector de aplicación*</span></td>
+				<td class="tg-kos1"><span style="font-weight:700;font-style:normal">SÍ</span></td>
+				<td class="tg-w7s0"><span style="font-weight:700;font-style:normal">SÍ</span></td>
+			</tr>
+			<tr>
+				<td class="tg-73oq"><span style="font-weight:600;font-style:normal;text-decoration:none">Software de conectores de filiales*</span></td>
+				<td class="tg-d6fj"><span style="font-weight:700;font-style:normal">NO</span></td>
+				<td class="tg-w7s0"><span style="font-weight:700;font-style:normal">SÍ</span></td>
+			</tr>
+			<tr>
+				<td class="tg-73oq"><span style="font-weight:600;font-style:normal;text-decoration:none">Túneles DNS Anycast, GRE, IPsec, QUIC, Wireguard*</span></td>
+				<td class="tg-w7s0"><span style="font-weight:700;font-style:normal">SÍ</span></td>
+				<td class="tg-baki"><span style="font-weight:bold">NO</span></td>
+			</tr>
+			<tr>
+				<td class="tg-73oq"><span style="font-weight:600;font-style:normal;text-decoration:none">Interconexión de redes privadas para centros de datos y oficinas</span></td>
+				<td class="tg-w7s0"><span style="font-weight:700;font-style:normal">SÍ</span></td>
+				<td class="tg-baki"><span style="font-weight:700;font-style:normal">NO</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:600;font-style:normal;text-decoration:none">Tránsito IP entrante (BYOIP)</span></td>
+				<td class="tg-tpun"><span style="font-weight:700;font-style:normal">SÍ</span></td>
+				<td class="tg-ydhf"><span style="font-weight:700;font-style:normal">NO</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:600;font-style:normal;text-decoration:none">Admite conexiones solo IPv6*</span></td>
+				<td class="tg-tpun"><span style="font-weight:700;font-style:normal">SÍ</span></td>
+				<td class="tg-ydhf"><span style="font-weight:700;font-style:normal">NO</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:600;font-style:normal;text-decoration:none">Solucionadores de DNS recursivo</span></td>
+				<td class="tg-tpun"><span style="font-weight:700;font-style:normal">SÍ</span></td>
+				<td class="tg-tpun"><span style="font-weight:700;font-style:normal">SÍ</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:600;font-style:normal;text-decoration:none">Clientes en dispositivo y solucionadores de DNS abiertos al público*</span></td>
+				<td class="tg-tpun"><span style="font-weight:700;font-style:normal">SÍ</span></td>
+				<td class="tg-ydhf"><span style="font-weight:700;font-style:normal">NO</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Si bien una <a href="https://cfl.re/cloudflare-vs-zscaler-functional" target="_blank">comparación detallada de los 37 criterios funcionales</a> muestra que estamos en cabeza, y <a href="https://www.cloudflare.com/es-es/products/zero-trust/cloudflare-vs-zscaler/" target="_blank">nuestra página</a> explica por qué nuestra arquitectura es más simple, fiable y rápida para la innovación, también sabemos que un producto es mucho más que una lista de funciones. Puesto que Zero Trust se implementa en toda la organización, la experiencia de uso del producto es fundamental. A continuación, tres áreas clave en las que Cloudflare One supera a Zscaler Zero Trust Exchange, tanto para los usuarios finales como para los administradores.</p>
+	<h4 id="1-cada-servicio-se-ha-dise-ado-para-funcionar-en-cualquier-lugar-a-escala-empresarial">1) Cada servicio se ha diseñado para funcionar en cualquier lugar a escala empresarial</h4>
+	<p><strong>Afirmación:</strong> Zscaler afirma que gestiona la "<a href="https://www.zscaler.com/company/about-zscaler" target="_blank">nube de seguridad más grande del mundo</a>", aunque la red de Zscaler está dividida en al menos <a href="https://config.zscaler.com/zscaler.net/cenr" target="_blank">8 nubes distintas</a>, según sus propios recursos de configuración: zscalertwo.net, zscalerthree.net, por ejemplo. Desde el punto de vista de la facilidad de uso, muchas nubes no permiten una experiencia de administrador sencilla, ya que cada una de las principales soluciones de Zscaler tiene su propio portal y su propio inicio de sesión, lo que significa que interactúas con cada una de ellas como si fuera un producto independiente, en lugar de con una única "nube de seguridad".</p>
+	<p><strong>La ventaja de Cloudflare One:</strong> somos transparentes sobre el tamaño de nuestra inmensa red global Anycast e informamos sobre el número de ciudades, no de centros de datos. La ubicación de nuestros clientes es importante, y su capacidad para acceder a cada uno de nuestros servicios, independientemente de dónde estén, también. Tenemos centros de datos es de más de 270 ciudades (todas ellas en la misma red en la nube), mientras que Zscaler tiene centros de datos en 55 ciudades (y recuerda que no todas estas ciudades están en la misma red en la nube). Todos los servicios (y sus actualizaciones y nuevas funciones) de Cloudflare One están diseñados para ejecutarse en todos los servidores de todos los centros de datos de todas las ciudades, que están disponibles para cada uno de nuestros clientes. Y en el frontend, Cloudflare One proporciona un panel de control para toda las soluciones Zero Trust: <a href="https://www.cloudflare.com/learning/access-management/what-is-ztna/" target="_blank">ZTNA</a>, <a href="https://www.cloudflare.com/learning/access-management/what-is-a-casb/" target="_blank">CASB</a>, <a href="https://www.cloudflare.com/es-es/learning/access-management/what-is-a-secure-web-gateway/" target="_blank">SWG</a>, <a href="https://www.cloudflare.com/es-es/learning/access-management/what-is-browser-isolation/" target="_blank">RBI</a>, <a href="https://www.cloudflare.com/es-es/learning/access-management/what-is-dlp/" target="_blank">DLP</a> &nbsp;y muchas otras. Esto soluciona el problema de la silla giratoria, al no perderse tiempo alineando manualmente las políticas y los análisis aislados en pantallas separadas.</p>
+	<h4 id="2-m-s-rendimiento-para-mejorar-la-experiencia-del-usuario-final">2) Más rendimiento para mejorar la experiencia del usuario final</h4>
+	<p>De nada sirve ofrecer una gran seguridad si ralentiza y degrada la experiencia del usuario. Un acceso sencillo, fluido y <strong>rápido</strong> es fundamental para el éxito de las implantaciones Zero Trust. De lo contrario, antes de que te des cuenta tus usuarios estarán buscando soluciones alternativas.</p>
+	<p>Zscaler afirma que son compatibles con "... un ancho de banda máximo de 1 Gb/s para cada túnel [IP] <a href="https://www.cloudflare.com/es-es/learning/network-layer/what-is-gre-tunneling/" target="_blank">GRE</a>, si sus direcciones IP internas no están detrás de NAT". Aunque la mayoría de las aplicaciones y conexiones de Internet se toparían con un cuello de botella de red de 1 Gb/s en algún punto de su recorrido hasta el usuario final, algunas aplicaciones necesitan más ancho de banda y se han diseñado para ello. Por ejemplo, los usuarios esperan que las transmisiones de vídeo o el intercambio de archivos de gran tamaño se lleven a cabo de forma instantánea, como cualquier otra actividad en Internet. La suposición de que habrá un cuello de botella crea un límite artificial en los tipos de rendimiento que se pueden conseguir, lo que limita el rendimiento, incluso cuando se pueden garantizar las velocidades en los enlaces y la conectividad.</p>
+	<p><strong>La ventaja de Cloudflare One:</strong> hemos dedicado mucho tiempo a realizar pruebas, y los resultados son evidentes: desde la perspectiva del usuario final, el rendimiento de Cloudflare One es excepcional, y superior al de Zscaler. Hemos probado el rendimiento entre dos dispositivos que ejecutaban una aplicación con un gran ancho de banda. Estos dispositivos estaban en diferentes VPC dentro de la red de una nube pública, pero también podían estar en diferentes subredes dentro de una red privada local. Se configuró cada VPC para utilizar el túnel IP Anycast de Cloudflare como acceso directo a la red de Cloudflare, lo que permitía que ambos dispositivos se conectaran de forma segura a través de Cloudflare One. Y los resultados de rendimiento registrados en ambos sentidos fueron de 6 Gb/s, lo que supone una capacidad considerablemente mayor que los límites establecidos por Zscaler y otros. Por tanto, tu organización no tiene que preocuparse de que tu nueva aplicación con gran ancho de banda se vea limitada por la plataforma Zero Trust que hayas adoptado.</p>
+	<h4 id="3-mejor-conectividad-con-el-resto-de-internet">3) Mejor conectividad con el resto de Internet</h4>
+	<p>Zscaler afirma ser el "acceso más rápido a Internet". Pero esto es poco que más un juego de prestidigitación: el acceso es solo una parte de la ecuación; tus datos tienen que atravesar la red, y también salir cuando lleguen a su destino. Sin funcionalidades de conectividad rápidas y efectivas más allá del acceso, Zscaler es solo una plataforma SSE y no se extiende a SASE. En otras palabras, Zscaler no se ha centrado en la parte del trabajo en red de la plataforma.</p>
+	<p><strong>La ventaja de Cloudflare One: </strong>contamos con más de 10 500 pares de interconexión, lo que mejora la capacidad. No entregamos a los clientes en el perímetro, como hace Zscaler. Puedes usar la red troncal virtual de Cloudflare para el tránsito. La red de Cloudflare enruta más de 3 billones de solicitudes al día, lo que proporciona a Argo Smart Routing una posición privilegiada para detectar la congestión en tiempo real y <a href="https://blog.cloudflare.com/argo-for-packets-generally-available/">enrutar los paquetes IP</a> a través de las rutas de red más rápidas y fiables.</p>
+	<p>Empezamos este blog escribiendo sobre la importancia de la funcionalidad, así que vamos a terminar aquí. Todas las ventajas de interconexión y de rendimiento demostradas carecen de importancia si no se tienen en cuenta los servicios ofrecidos. Y aunque Zscaler afirma que pueden eliminar la necesidad de los centros de datos regionales al ofrecer servicios como SWG y ZTNA, se olvidan por completo de abordar la necesidad de las organizaciones de proteger sus aplicaciones en la nube o sus servidores locales de un extremo a otro, incluyendo el tráfico entrante cuando están expuestos a Internet, mediante el uso de firewalls de aplicaciones web, equilibrio de carga, DNS autoritativo y protección contra DDoS, exactamente el ámbito donde empezó Cloudflare, y donde sigue siendo líder.</p>
+	<p>En cuatro años, hemos superado a Zscaler en lo relativo a la exhaustividad de la oferta, incluyendo una implementación más sencilla, resiliencia de la red y velocidad en la innovación. <a href="https://www.cloudflare.com/es-es/products/zero-trust/cloudflare-vs-zscaler/" target="_blank">Aquí puedes leer los detalles</a> y unirte a nosotros mientras consideramos los próximos cuatro años y más allá.</p>
+</div>

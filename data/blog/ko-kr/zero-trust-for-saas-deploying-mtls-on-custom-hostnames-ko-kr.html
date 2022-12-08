@@ -1,0 +1,29 @@
+<div class="post-content lh-copy gray1">
+	<p>Cloudflare는 자체 SaaS(Software-as-a-Service) 서비스를 사용하는 수천 또는 수백만 고객 도메인을 관리하고 있는 대규모 SaaS 고객층을 보유하고 있습니다. 우리는 <a href="https://blog.cloudflare.com/cloudflare-for-saas/">Cloudflare for SaaS</a>라고 하는 제품을 통해 당사 인프라와 서비스를 이 고객 도메인까지 확장함으로써 당사 고객층을 구성하는 SaaS 공급자들의 성장을 돕고 있습니다. 그리고 오늘 SaaS 공급자들의 고객이 보안 계층을 한층 더할 수 있도록 도와주는 새로운 도구를 제공할 수 있게 되어 매우 기쁘게 생각합니다. 이제 이 공급자들은 당사의 Access 제품을 통해 고객 도메인에서 상호 TLS 인증을 활성화할 수 있습니다.</p>
+	<h3 id="-tls-">상호 TLS 소개</h3>
+	<p>웹사이트에 접속하려고 하면 주소 표시줄에 자물쇠 아이콘이 표시됩니다. 이는 보안 연결을 통해 웹사이트에 접속하고 있으며 이 웹사이트에 유효한 공용 TLS 인증서가 있다는 것을 브라우저가 알려주는 것입니다. TLS 인증서는 트래픽을 암호화하고 해독하는 데 필요한 공개/개인 키 쌍을 사용하여 인터넷 트래픽을 암호화된 상태로 유지합니다. 또한 인증을 제공하여 클라이언트가 올바른 서버에 접속 중임을 증명합니다.</p>
+	<p>보안 연결을 설정하려면 <a href="https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake/" target="_blank">TLS 핸드셰이크</a>가 이루어져야 합니다. 핸드셰이크 동안 클라이언트와 서버가 암호화 키를 교환하고, 클라이언트가 서버 ID를 인증하고, 클라이언트와 서버 모두가 이후에 트래픽을 암호화하는 데 사용되는 세션 키를 생성합니다.</p>
+	<p>TLS 핸드셰이크는 다음과 같습니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-102.png" class="kg-image"></figure>
+	<p>TLS 핸드셰이크에서 클라이언트는 항상 서버에서 제공하는 인증서의 유효성을 검사하여 올바른 대상으로 요청을 보내고 있는지 확인합니다. 클라이언트가 서버의 ID를 인증해야 하는 것처럼 서버는 승인된 클라이언트만 서버로 요청을 보낼 수 있도록 클라이언트를 인증해야 합니다.</p>
+	<p>여러분이 몇 가지 서비스를 관리하고 있다고 가정해 보겠습니다. 서비스 A는 데이터베이스에 정보를 씁니다. 이 데이터베이스는 절대적으로 중요하며 서비스 A에서 제출한 항목만 포함하고 있어야 합니다. 자, 시스템에 버그가 있고 서비스 B가 실수로 데이터베이스에 대한 쓰기 호출을 실행하면 어떻게 될까요?</p>
+	<p>여러분에게는 서비스가 데이터베이스에 대한 호출을 실행할 수 있는 권한이 있는지 확인해주는 경비원 같은 존재가 필요합니다. 이 경비원에게는 VIP 명단이 있어서 이 명단을 기준으로 사람들의 신원을 확인해 행사장에 입장할 수 있는지를 검토할 수 있습니다. 서버는 TLS 인증서를 ID 형식으로 사용하는 유사한 모델을 사용할 수 있습니다.</p>
+	<p>경비원에게 VIP 명단이 있는 것처럼 서버에는 인증서를 발행해주는 CA(인증 기관) 루트가 있을 수 있습니다. 그리고 CA 루트에서 발행한 인증서는 클라이언트로 프로비저닝됩니다. 이 클라이언트 인증서는 클라이언트를 식별하고 인증하는 데 사용될 수 있습니다. 서버가 루트 CA와 비교하여 검증할 수 있는 유효한 인증서를 제출하는 한, 클라이언트는 요청을 실행할 수 있습니다. 클라이언트가 클라이언트 인증서를 제출하지 않거나(VIP 명단에 없음) 인증되지 않은 클라이언트 인증서를 제출하는 경우에는 서버가 요청을 거부할 수 있습니다. 이렇게 클라이언트 <em>및 </em>서버 인증서를 검증하는 프로세스를 <a href="https://www.cloudflare.com/learning/access-management/what-is-mutual-tls/" target="_blank">상호 TLS 인증</a>(mTLS)이라고 하며, 이는 TLS 핸드셰이크 중에 수행됩니다.</p>
+	<p>mTLS를 사용하지 않는 경우에는 서버만 인증서를 제출하면 되고, 클라이언트가 이 인증서를 검증합니다. mTLS를 사용하면 클라이언트와 서버 모두 아래 그림과 같이 서로의 인증서를 제출하고 검증합니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://lh6.googleusercontent.com/-jX-m0--vJzKCpz9UhlbWZNvl8hJDGoACckkNp0bAIdKGWk1Zr_k4R6gQqNBybVqbkkT8X9bopBZFsDa04iHJzkohQ4pMchvaEMV0secN2DR8pB4OX63Ysd-y6swZCzZG2_tjMAc" class="kg-image"></figure>
+	<h3 id="mtls-access-zero-trust">mTLS + Access = Zero Trust</h3>
+	<p>몇 년 전, 우리는 mTLS 지원 기능을 <a href="https://developers.cloudflare.com/cloudflare-one/" target="_blank">Access</a> 제품에 추가함으로써 고객이 애플리케이션에서 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trust</a> 정책을 활성화할 수 있도록 했습니다. Access 고객은 모든 클라이언트가 요청 시 유효한 인증서를 제출해야 한다는 정책을 배포할 수 있습니다. 이는 보호 계층이 추가되는 효과가 생기면서 유효한 인증서 없이 이루어진 요청(보통 무단 클라이언트가 시도)은 차단된다는 의미입니다. Cloudflare는 고객들이 Access 정책을 설정하여 자신들의 Cloudflare 도메인에 mTLS를 구성할 수 있도록 했습니다. 이 기능을 사용하는 데 필요한 유일한 조건은 여러분이 그 도메인의 소유자여야 한다는 점입니다. 그럼, 여러분이 도메인의 소유자가 아니지만 그 도메인의 오리진을 관리하고 있다면 어떻게 될까요? 소유하고 있지 않은 고객 도메인으로까지 서비스를 확대하려는 SaaS 공급자들인 우리의 많은 고객들이 이 경우에 해당합니다.</p>
+	<h3 id="saas-cloudflare-">SaaS 공급자를 통해 Cloudflare 혜택 확장</h3>
+	<p><a href="https://blog.cloudflare.com/cloudflare-for-saas/">Cloudflare for SaaS</a>를 이용하여 SaaS 공급자는 Cloudflare 네트워크의 장점을 고객 도메인으로까지 확장할 수 있습니다. 이 도메인은 SaaS 공급자의 소유가 아니지만 SaaS 공급자의 서비스를 사용하여 트래픽을 다시 SaaS 공급자의 오리진으로 라우팅하고 있습니다.</p>
+	<p>이 방식으로 SaaS 공급자는 최대한의 가동 시간, 번개처럼 빠른 성능, 비교를 불허하는 보안을 고객들에게 제공할 수 있고, 이러한 고객으로의 확장은 Cloudflare를 통해 쉽게 이루어집니다.</p>
+	<p>Cloudflare for SaaS는 실제로는 <a href="https://blog.cloudflare.com/introducing-ssl-for-saas/">SSL for SaaS</a>로 시작되었습니다. 우리는 SaaS 공급자가 고객을 위한 TLS 인증서를 발행할 있도록 하기 위해 SSL for SaaS를 개발했고, 이를 통해 SaaS 공급자의 고객들을 안전하게 보호할 수 있습니다.</p>
+	<p>그 후 SaaS 고객들은 새로운 요청을 들고 찾아왔습니다. 우리가 클라이언트 고객들을 위해 개발한 mTLS 지원을 자신들의 고객에게까지 확장해달라는 것이었습니다.</p>
+	<h3 id="saas-mtls-">SaaS 공급자가 mTLS를 사용하려는 이유는 무엇일까요?</h3>
+	<p>SaaS 공급자로서 제공할 수 있는 서비스는 매우 다양합니다. 이러한 서비스 중 일부는 다른 서비스보다 더 높은 보안 제어가 필요합니다.</p>
+	<p>여러분이 개발 중인 SaaS 솔루션이 결제 프로세서라고 가정해 보겠습니다. 각 고객마다 사용자가 요청을 보내는 API 엔드포인트, 예를 들면 <em>pay.&lt;business_name&gt;.com</em> 같은 엔드포인트를 소유하고 있을 것입니다.결제 프로세서로서 여러분은 클라이언트나 장치는 여러분의 서비스로 요청을 보낼 수 없고, 대신 인증된 장치만 요청을 보낼 수 있게 되길 바랄 겁니다. 그리고 mTLS가 정확히 그 역할을 합니다.</p>
+	<p>SaaS 공급자는 고객의 각 API 엔드포인트에 대한 루트 CA를 구성할 수 있습니다. 그런 다음 각 루트 CA가 인증된 장치에 설치될 클라이언트 인증서를 발행하도록 하면 됩니다. 클라이언트 인증서가 설치되면 남은 일은 유효한 인증서인지 확인하는 것뿐입니다.</p>
+	<p>요약하자면, 이렇게 함으로써 SaaS 공급자로서 여러분의 고객은 이제 결제 처리 API 엔드포인트에 바인딩된 요청이 유효한 장치에서 생성된 것인지만 확인하면 됩니다. 또한 각 고객마다 개별 루트 CA를 배포함으로써 여러분은 한 고객의 API 엔드포인트에 대해 요청을 생성할 권한이 있는 클라이언트가 다른 고객의 API 엔드포인트에 대해서는 요청을 생성할 권한이 없는 경우 이 요청을 생성하지 못하도록 방지할 수도 있습니다.</p>
+	<h3 id="cloudflare-">Cloudflare를 통해 이를 설정하는 방법은 무엇일까요?</h3>
+	<p>SaaS 공급자는 <a href="https://developers.cloudflare.com/ssl/ssl-for-saas/getting-started" target="_blank">Cloudflare for SaaS를 구성</a>하고 고객의 도메인을 사용자 지정 호스트 이름으로 추가하십시오. 그런 다음, Cloudflare for Teams 대시보드에서 클릭 몇 번으로 <a href="https://developers.cloudflare.com/cloudflare-one/identity/devices/mutual-tls-authentication/#add-mtls-authentication-to-your-access-configuration" target="_blank">mTLS 인증을 추가</a>하면 됩니다.</p>
+	<p>이 기능은 현재 베타 버전이며 Enterprise 고객에게 제공되고 있습니다. 피드백이 있는 경우 담당 계정 팀에게 알려주십시오.<br></p>
+</div>

@@ -1,0 +1,471 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/Zero-Trust-Exchange.png" class="kg-image" alt="Cloudflare One vs Zscaler Zero Trust Exchange: who is most feature complete? It’s not who you might expect"></figure>
+	<p>Zscaler는 15년 동안 보안 솔루션을 개발해 왔습니다. Cloudflare는 13살이 되었고, Zero Trust를 제공해 온 건 4년이 되었죠. 얼핏 들으면 우리가 뒤처진 것 같지만 이번 글에서는 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trust</a>, <a href="https://www.cloudflare.com/learning/access-management/security-service-edge-sse/" target="_blank">SSE</a>, <a href="https://www.cloudflare.com/learning/access-management/what-is-sase/" target="_blank">SASE</a> 등 총체적인 측면에서 Cloudflare One의 기능이 Zscaler Zero Trust Exchange의 기능을 능가한다는 사실을 증명해 보겠습니다.</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-onfx {
+			background-color: #afe4fd;
+			color: #3663ae;
+			font-size: 18px;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-baqh {
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-c3ow {
+			border-color: inherit;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-cmei {
+			background-color: #afe4fd;
+			border-color: inherit;
+			color: #3663ae;
+			font-size: 18px;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-8d3w {
+			background-color: #FFF;
+			border-color: inherit;
+			color: #222;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-q8v8 {
+			background-color: #afe4fd;
+			border-color: inherit;
+			color: #3663ae;
+			font-size: 18px;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-0pky {
+			border-color: inherit;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-gct1 {
+			background-color: #FFF;
+			border-color: inherit;
+			color: #222;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-4ufn {
+			background-color: #FFF;
+			color: #222;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" style="undefined;table-layout: fixed; width: 592px">
+		<colgroup>
+			<col style="width: 332.003472px">
+			<col style="width: 130.003472px">
+			<col style="width: 130.003472px">
+		</colgroup>
+		<thead>
+			<tr>
+				<th class="tg-cmei"><span style="font-style:normal;text-decoration:none">기능 기준 그룹</span></th>
+				<th class="tg-onfx"><span style="font-style:normal;text-decoration:none">Cloudflare</span></th>
+				<th class="tg-q8v8"><span style="font-style:normal;text-decoration:none">Zscaler</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:600;font-style:normal;text-decoration:none">인터넷 네이티브 네트워크 플랫폼</span></td>
+				<td class="tg-baqh"><span style="font-weight:700;font-style:normal;text-decoration:none">100% </span>(5 of 5)</td>
+				<td class="tg-gct1"><span style="font-weight:bold">20%</span> (1 of 5)</td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:600;font-style:normal;text-decoration:none">클라우드 네이티브 서비스 플랫폼</span></td>
+				<td class="tg-baqh"><span style="font-weight:700;font-style:normal;text-decoration:none">100% </span>(4 of 4)</td>
+				<td class="tg-8d3w"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#222;background-color:transparent">25% </span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#222;background-color:transparent">(1 of 4)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:600;font-style:normal;text-decoration:none">SASE 도입 서비스</span></td>
+				<td class="tg-4ufn"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#222;background-color:transparent">83%</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#222;background-color:transparent"> (5 of 6)</span></td>
+				<td class="tg-c3ow"><span style="font-weight:bold">66%</span> (4 of 6)</td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:600;font-style:normal;text-decoration:none">ZT, SSE, SASE 등으로의 확장 서비스</span></td>
+				<td class="tg-4ufn"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#222;background-color:transparent">66%</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#222;background-color:transparent"> (8 of 12)</span></td>
+				<td class="tg-c3ow"><span style="font-weight:bold">58%</span> (7 of 12)</td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:600;font-style:normal;text-decoration:none">네트워크 온램프</span></td>
+				<td class="tg-baqh"><span style="font-weight:bold">90%</span> (9 of 10)</td>
+				<td class="tg-c3ow"><span style="font-weight:700;font-style:normal;text-decoration:none">50% </span>(5 of 10)</td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>이 결과를 보고 많이들 놀랄 수 있는데요. 고객에게 이 결과를 공유했을 때 우리가 받은 질문은 이겁니다. <em>어떻게?</em> 어떻게 Cloudflare는 이렇게 빨리 솔루션에서 경쟁 우위를 가질 수 있었죠?</p>
+	<p>세계에서 가장 규모가 큰 프로그래밍 가능 Anycast 네트워크를 구축한 것은 분명 큰 이점이었습니다. 이 네트워크는 Cloudflare의 기존 애플리케이션 서비스 비즈니스의 토대가 되어 주었죠. 덕분에 전 세계 고객에게 안전하고 성능이 뛰어난 웹 및 애플리케이션 경험을 선사할 수 있었습니다. 이를 통해 우리는 인터넷에서의 보안과 성능에 대한 깊은 통찰을 얻었습니다. 우리의 인프라는 실제 고객의 문제를 규모에 상관없이 해결할 수 있는 준비가 되어 있었을 뿐 아니라, 우리의 서버리스 컴퓨팅 개발 플랫폼인 <a href="https://workers.cloudflare.com/" target="_blank">Workers</a>는 특히 보안, 안정성, 성능이 기본으로 탑재된 글로벌 분산 애플리케이션을 개발할 수 있도록 설계되었죠. 우리는 자체 플랫폼에서 개발을 할 수 있었기 때문에 누구도 따라올 수 없는 속도로 Zero Trust 서비스를 제공할 수 있습니다. 앞으로도 오직 우리만 기대할 수 있는 속도로 말이죠.</p>
+	<p>위에서 말한 타임라인을 무색케 하는 또 다른 우위도 있습니다. 지난 15년 동안 기업 보안 분야에는 정말 많은 변화가 있었습니다. 예를 들어, 우리와 같은 고성능 글로벌 네트워크에 대한 아이디어는 당시에는 가정조차 할 수 없었죠. 우리가 Zero Trust 솔루션을 개발하기 시작했을 때에는 완전한 백지 상태라는 것이 오히려 이점이었고, 우리는 완전히 현대적인 클라우드를 제공하겠다는 가정하에 개발을 진행했습니다.</p>
+	<p>하지만 우리는 여러분이 이곳을 찾은 이유를 알고 있습니다. 증거를 직접 보기 위해서죠. 증거는 이겁니다. 우린 공개 페이지인 <a href="https://www.cloudflare.com/products/zero-trust/cloudflare-vs-zscaler/" target="_blank">Zscaler와 Cloudflare 플랫폼 비교</a>에서 실용적인 측면들을 새롭게 더 깊이 살펴보았습니다. 다섯 가지 기준 중 두 가지를 간단히 살펴보시죠. SASE 도입을 위한 서비스와 네트워크 온램프입니다. 여러 기준에 대한 각주가 <a href="https://cfl.re/cloudflare-vs-zscaler-functional" target="_blank">PDF</a>에 포함되어 보다 자세한 내용과 추가 정보를 담고 있습니다(* 기호로 표시).</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-ucok {
+			background-color: #afe4fd;
+			border-color: #000000;
+			color: #3663ae;
+			font-size: 18px;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-baki {
+			background-color: #fe0000;
+			border-color: #000000;
+			color: #ffffff;
+			text-align: center;
+			vertical-align: middle
+		}
+
+		.tg .tg-ru72 {
+			background-color: #fe0000;
+			border-color: #000000;
+			color: #ffffff;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-ycfl {
+			background-color: #009901;
+			border-color: #000000;
+			color: #ffffff;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-68aq {
+			background-color: #afe4fd;
+			border-color: #000000;
+			color: #3663ae;
+			font-size: 18px;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-73oq {
+			border-color: #000000;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-dp1c {
+			background-color: #009901;
+			border-color: #000000;
+			color: #ffffff;
+			text-align: center;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" style="undefined;table-layout: fixed; width: 610px">
+		<colgroup>
+			<col style="width: 342.003472px">
+			<col style="width: 134.003472px">
+			<col style="width: 134.003472px">
+		</colgroup>
+		<thead>
+			<tr>
+				<th class="tg-68aq"><span style="font-weight:600;font-style:normal;text-decoration:none">SASE 도입 서비스</span></th>
+				<th class="tg-ucok"><span style="font-style:normal;text-decoration:none">Cloudflare</span></th>
+				<th class="tg-ucok"><span style="font-style:normal;text-decoration:none">Zscaler</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-73oq"><span style="font-weight:600;font-style:normal;text-decoration:none">Zero Trust 네트워크 액세스(ZTNA)</span></td>
+				<td class="tg-ycfl">예</td>
+				<td class="tg-dp1c"><span style="font-weight:700;font-style:normal">예</span></td>
+			</tr>
+			<tr>
+				<td class="tg-73oq"><span style="font-weight:600;font-style:normal;text-decoration:none">클라우드 액세스 보안 브로커(CASB)</span></td>
+				<td class="tg-dp1c"><span style="font-weight:700;font-style:normal">예</span></td>
+				<td class="tg-ycfl"><span style="font-weight:700;font-style:normal">예</span></td>
+			</tr>
+			<tr>
+				<td class="tg-73oq"><span style="font-weight:600;font-style:normal;text-decoration:none">안전한 웹 게이트웨이(SWG)</span></td>
+				<td class="tg-ycfl"><span style="font-weight:700;font-style:normal">예</span></td>
+				<td class="tg-dp1c"><span style="font-weight:700;font-style:normal">예</span></td>
+			</tr>
+			<tr>
+				<td class="tg-73oq"><span style="font-weight:600;font-style:normal;text-decoration:none">서비스로서의 방화벽(FWaaS)</span></td>
+				<td class="tg-ycfl"><span style="font-weight:700;font-style:normal">예</span></td>
+				<td class="tg-dp1c"><span style="font-weight:700;font-style:normal">예</span></td>
+			</tr>
+			<tr>
+				<td class="tg-73oq"><span style="font-weight:600;font-style:normal;text-decoration:none">L3-7 트래픽 가속을 지원하는 서비스로서의 WAN(WaaS)*</span></td>
+				<td class="tg-dp1c"><span style="font-weight:700;font-style:normal">예</span></td>
+				<td class="tg-ru72"><span style="font-weight:700;font-style:normal">아니요</span></td>
+			</tr>
+			<tr>
+				<td class="tg-73oq"><span style="font-weight:600;font-style:normal;text-decoration:none">온프레미스 SD-WAN*</span></td>
+				<td class="tg-baki"><span style="font-weight:700;font-style:normal">아니요 - 파트너</span></td>
+				<td class="tg-baki"><span style="font-weight:700;font-style:normal">아니요 - 파트너</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html--><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-baki {
+			background-color: #fe0000;
+			border-color: #000000;
+			color: #ffffff;
+			text-align: center;
+			vertical-align: middle
+		}
+
+		.tg .tg-ph0s {
+			background-color: #afe4fd;
+			border-color: #000000;
+			color: #3663ae;
+			font-size: 18px;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: middle
+		}
+
+		.tg .tg-tpun {
+			background-color: #009901;
+			color: #ffffff;
+			text-align: center;
+			vertical-align: middle
+		}
+
+		.tg .tg-68aq {
+			background-color: #afe4fd;
+			border-color: #000000;
+			color: #3663ae;
+			font-size: 18px;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-73oq {
+			border-color: #000000;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-kos1 {
+			background-color: #009901;
+			border-color: #000000;
+			color: #ffffff;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: middle
+		}
+
+		.tg .tg-w7s0 {
+			background-color: #009901;
+			border-color: #000000;
+			color: #ffffff;
+			text-align: center;
+			vertical-align: middle
+		}
+
+		.tg .tg-d6fj {
+			background-color: #fe0000;
+			border-color: #000000;
+			color: #ffffff;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: middle
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-ydhf {
+			background-color: #fe0000;
+			color: #ffffff;
+			text-align: center;
+			vertical-align: middle
+		}
+	</style>
+	<table class="tg" style="undefined;table-layout: fixed; width: 748px">
+		<colgroup>
+			<col style="width: 420.003472px">
+			<col style="width: 164.003472px">
+			<col style="width: 164.003472px">
+		</colgroup>
+		<thead>
+			<tr>
+				<th class="tg-68aq"><span style="font-weight:600;font-style:normal;text-decoration:none">네트워크 온램프</span></th>
+				<th class="tg-ph0s"><span style="font-style:normal;text-decoration:none">Cloudflare</span></th>
+				<th class="tg-ph0s"><span style="font-style:normal;text-decoration:none">Zscaler</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-73oq"><span style="font-weight:600;font-style:normal;text-decoration:none">클라이언트리스 브라우저 기반 액세스</span></td>
+				<td class="tg-kos1">예</td>
+				<td class="tg-w7s0"><span style="font-weight:700;font-style:normal">예</span></td>
+			</tr>
+			<tr>
+				<td class="tg-73oq"><span style="font-weight:600;font-style:normal;text-decoration:none">장치 클라이언트 소프트웨어</span></td>
+				<td class="tg-w7s0"><span style="font-weight:700;font-style:normal">예</span></td>
+				<td class="tg-kos1"><span style="font-weight:700;font-style:normal">예</span></td>
+			</tr>
+			<tr>
+				<td class="tg-73oq"><span style="font-weight:600;font-style:normal;text-decoration:none">애플리케이션 커넥터 소프트웨어*</span></td>
+				<td class="tg-kos1"><span style="font-weight:700;font-style:normal">예</span></td>
+				<td class="tg-w7s0"><span style="font-weight:700;font-style:normal">예</span></td>
+			</tr>
+			<tr>
+				<td class="tg-73oq"><span style="font-weight:600;font-style:normal;text-decoration:none">분기 커넥터 소프트웨어*</span></td>
+				<td class="tg-d6fj"><span style="font-weight:700;font-style:normal">아니요</span></td>
+				<td class="tg-w7s0"><span style="font-weight:700;font-style:normal">예</span></td>
+			</tr>
+			<tr>
+				<td class="tg-73oq"><span style="font-weight:600;font-style:normal;text-decoration:none">Anycast DNS, GRE, IPsec, QUIC, Wireguard 터널*</span></td>
+				<td class="tg-w7s0"><span style="font-weight:700;font-style:normal">예</span></td>
+				<td class="tg-baki"><span style="font-weight:bold">아니요</span></td>
+			</tr>
+			<tr>
+				<td class="tg-73oq"><span style="font-weight:600;font-style:normal;text-decoration:none">데이터 센터 및 사무실을 위한 사설 네트워크 상호 연결</span></td>
+				<td class="tg-w7s0"><span style="font-weight:700;font-style:normal">예</span></td>
+				<td class="tg-baki"><span style="font-weight:700;font-style:normal">아니요</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:600;font-style:normal;text-decoration:none">인바운드 IP 전송(BYOIP)</span></td>
+				<td class="tg-tpun"><span style="font-weight:700;font-style:normal">예</span></td>
+				<td class="tg-ydhf"><span style="font-weight:700;font-style:normal">아니요</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:600;font-style:normal;text-decoration:none">IPv6 전용 연결 지원*</span></td>
+				<td class="tg-tpun"><span style="font-weight:700;font-style:normal">예</span></td>
+				<td class="tg-ydhf"><span style="font-weight:700;font-style:normal">아니요</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:600;font-style:normal;text-decoration:none">재귀 DNS 확인자
+					</span></td>
+				<td class="tg-tpun"><span style="font-weight:700;font-style:normal">예</span></td>
+				<td class="tg-tpun"><span style="font-weight:700;font-style:normal">예</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:600;font-style:normal;text-decoration:none">장치 클라이언트 및 DNS 확인자 무료 공개*</span></td>
+				<td class="tg-tpun"><span style="font-weight:700;font-style:normal">예</span></td>
+				<td class="tg-ydhf"><span style="font-weight:700;font-style:normal">아니요</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p><a href="https://cfl.re/cloudflare-vs-zscaler-functional" target="_blank">37가지 기능 기준의 깊이 있는 비교</a>는 우리가 경쟁에서 앞서고 있다는 것을 보여주며, <a href="https://www.cloudflare.com/products/zero-trust/cloudflare-vs-zscaler/" target="_blank">이 페이지</a>는 우리의 아키텍처가 더 단순하고 더 믿음이 가고 더 빠르게 혁신할 수 있는 이유를 설명해줍니다. 또한, 우리는 제품이 가진 장점이 단순한 기능 목록보다 더 크다는 것도 알고 있죠. 조직 전체에 제로 트러스트를 도입한다고 가정하면 제품 사용 경험이 가지는 의미는 더욱 크다고 할 수 있습니다. 다음은 Cloudflare One이 최종 사용자와 관리자 모든 면에서 Zscaler Zero Trust Exchange를 능가하는 세 가지 주요 영역을 정리한 것입니다.</p>
+	<h4 id="1-">1) 모든 서비스가 엔터프라이즈 차원의 전 위치에서 실행</h4>
+	<p><strong>주장:</strong> Zscaler는 “<a href="https://www.zscaler.com/company/about-zscaler" target="_blank">지구상 최대 규모의 보안 클라우드</a>”를 운영한다고 주장하지만 Zscaler의 네트워크는 <a href="https://config.zscaler.com/zscaler.net/cenr" target="_blank">최소 8개의 개별 클라우드</a>로 분리되어 있습니다. zscalertwo.net, zscalerthree.net 등의 자체 구성 리소스 때문이죠. 무엇보다 사용 편의성 측면에서 대부분의 클라우드가 각각 자체 포털 및 로그인이 제공되는 Zscaler의 주요 솔루션들처럼 매끄러운 관리자 경험을 제공하지 못합니다. 즉, 하나의 단일 “보안 클라우드”를 사용하는 것이 아니라 개별 제품과 각각 따로 상호작용해야 한다는 의미죠.</p>
+	<p><strong>Cloudflare One의 장점:</strong> 우리는 우리의 방대한 글로벌 Anycast 네트워크 규모를 투명하게 공개하고 있으며, 데이터 센터 수가 아닌 도시 수를 보고하고 있습니다. 중요한 건 고객의 위치, 그리고 고객이 어디에 있든 우리의 모든 서비스에 액세스할 수 있다는 사실입니다. 우리가 데이터 센터를 보유하고 있는 도시 수만 270개 이상(모두 동일한 클라우드 네트워크에 존재)인 반면, Zscaler는 55개 도시에 불과합니다(게다가 모두 동일한 클라우드 네트워크에 존재하는 것도 아니죠). Cloudflare One의 모든 서비스(그리고 그 업데이트와 새 기능)는 어느 도시의 어느 데이터 센터에 있는 어느 서버에서든 아무 문제 없이 실행되고, 모든 고객이 편하게 이용할 수 있습니다. 그리고 무엇보다 Cloudflare One은 모든 Zero Trust — <a href="https://www.cloudflare.com/learning/access-management/what-is-ztna/" target="_blank">ZTNA</a>, <a href="https://www.cloudflare.com/learning/access-management/what-is-a-casb/" target="_blank">CASB</a>, <a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway/" target="_blank">SWG</a>, <a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation/" target="_blank">RBI</a>, <a href="https://www.cloudflare.com/learning/access-management/what-is-dlp/" target="_blank">DLP</a> 등을 위한 단일 대시보드를 제공함으로써 여러 스크린을 돌아가면서 동떨어진 정책과 분석을 일일이 조정하느라 시간을 낭비하는 일이 없도록 소위 '회전의자' 문제를 해결해줍니다.</p>
+	<h4 id="2-">2) 더 많은 처리량으로 최종 사용자 경험 향상</h4>
+	<p>보안이 훌륭하다 해도 속도를 느리게 하고 사용자 경험을 저해한다면 결코 좋은 솔루션이 아닙니다. 원활하고 매끄럽고 <strong>빠른</strong> 액세스는 Zero Trust 배포의 성공에 핵심 요소입니다. 그렇지 않으면 사용자는 여러분이 미처 알기도 전에 대안을 찾아나설 겁니다.</p>
+	<p>Zscaler는 “... 내부 IP 주소가 NAT 뒤에 있지 않다면 각각의 <a href="https://www.cloudflare.com/learning/network-layer/what-is-gre-tunneling/" target="_blank">GRE</a> [IP] 터널당 1Gbps의 최대 대역폭”을 지원한다고 말합니다. 대부분의 인터넷 애플리케이션과 연결이 최종 사용자에게 이어지는 경로 어딘가에서 1Gbps 네트워크 병목현상을 경험하는 반면, 일부 애플리케이션은 더 많은 대역폭을 필요로 하고 이를 지원하도록 설계되어 있습니다. 예를 들어, 사용자들은 인터넷의 다른 경험처럼 동영상 스트리밍이나 대용량 파일 공유도 즉시 이루어지길 기대하는 거죠. 병목현상이 있을 거라는 가정 때문에 도달 가능한 처리량 등에 인위적인 제한을 걸게 되고, 심지어 링크 속도와 연결 성능을 보장할 수 있을 때에도 처리량을 제한하게 됩니다.</p>
+	<p><strong>Cloudflare One의 장점:</strong> 우리는 테스트에 많은 시간을 쓰고 있으며, 결과는 명확합니다. 최종 사용자 관점에서 Cloudflare One의 성능은 비범하며, Zscaler의 성능을 훌쩍 뛰어넘습니다. 우리는 고대역폭 애플리케이션을 실행 중인 두 장치 간 처리량을 비교 테스트했습니다. 두 장치는 퍼블릭 클라우드 네트워크 내에 있는 서로 다른 VPC에 위치해 있었는데, 온프레미스 프라이빗 네트워크 내 서로 다른 서브넷에 존재한다고 할 수도 있었죠. 각각의 VPC는 Cloudflare의 Anycast IP 터널을 Cloudflare 네트워크로의 진입로로 사용하도록 구성되었기 때문에 두 장치 모두 Cloudflare One을 통해 안전하게 네트워크에 연결할 수 있었습니다. 그리고 양방향에서 기록된 처리량 결과는 6Gbps였습니다. Zscaler 등의 경쟁업체들이 제한한 용량보다 월등하게 많은 용량이죠. 결과적으로 여러분의 조직은 새로운 고대역폭 애플리케이션을 들여오더라도 여러분이 도입한 Zero Trust 플랫폼 때문에 그 사용이 제약될 걱정을 할 필요가 없다는 것입니다.</p>
+	<h4 id="3-">3) 인터넷의 나머지 요소에 대한 연결성 강화</h4>
+	<p>Zscaler는 “가장 빠른 인터넷 진입로”라고 주장합니다. 하지만 이 주장은 교묘한 속임수일 뿐이죠. 진입로는 전체 방정식의 일부에 불과합니다. 데이터가 네트워크를 통해 전송될 때에는 목적지에 도달하기 위한 출구도 존재하기 때문입니다. 진입로를 넘어서는 빠르고 효과적인 연결 성능이 없으면 Zscaler는 단순한 SSE 플랫폼일 뿐이며 SASE로 확장되지 않습니다. 이 약어를 통해 해석하자면 Zscaler는 플랫폼의 네트워킹 요소에 집중하고 있지 않다는 의미입니다.</p>
+	<p><strong>Cloudflare One의 장점: </strong>우리가 보유한 상호 연결 피어는 10,500개 이상입니다. 정말 방대하죠. 우리는 Zscaler처럼 에지에서 고객으로부터 손을 떼지 않습니다. 여러분은 전송 시 Cloudflare의 가상 백본을 이용할 수 있죠. Cloudflare 네트워크는 실시간 정체를 감지하여 가장 빠르고 안정적인 네트워크 경로로 <a href="https://blog.cloudflare.com/argo-for-packets-generally-available/">IP 패킷을 라우팅</a>해주는 특별한 강점을 가진 Argo Smart Routing을 통해 하루 3조 이상의 요청을 라우팅합니다.</p>
+	<p>이 블로그는 기능의 중요성에 관한 내용으로 쓰기 시작했으니, 여기에서 마무리를 해야겠네요. 제공되는 서비스를 고려하지 않는다면 이 모든 피어링이나 이미 입증된 처리량의 강점도 그다지 중요하지 않게 됩니다. Zscaler는 SWG 및 ZTNA 같은 서비스를 제공함으로써 지역 DC 허브의 필요성을 없앨 수 있다고 주장하지만 클라우드 애플리케이션이나 온프레미스 서버를 엔드투엔드로 보호해야 하는 조직의 요구를 충족해야 한다는 점은 완벽히 놓치고 있습니다. Cloudflare가 그 시작부터 강조해 왔고 현재 업계를 리드하고 있는 기능인 웹 애플리케이션 방화벽, 부하 분산, 권한 있는 DNS, DDoS 방어 등을 통해 인터넷에 노출되는 인바운드 트래픽을 보호해야 한다는 사실을 말이죠.</p>
+	<p>배포 단순성, 네트워크 복원력, 혁신 속도 등을 포함하는 솔루션의 완벽성에서 우리는 4년만에 Zscaler를 앞질렀습니다. <a href="https://www.cloudflare.com/products/zero-trust/cloudflare-vs-zscaler/" target="_blank">여기에서 자세한 내용을 확인</a>하고 다음 4년 동안 함께 또 다른 혁신을.</p>
+</div>

@@ -1,0 +1,44 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image1-43.png" class="kg-image" alt="Securing the Internet of Things"></figure>
+	<p>스마트폰이 없는 삶은 상상하기 어렵습니다. 컴퓨터는 대부분 고정되어 있었고 공유되는 경우가 많았지만, 스마트폰은 지구상의 모든 사람들이 인터넷에서 영구적인 모바일 노드가 되었음을 의미하게 되었습니다. 오늘날 지구에 있는 스마트폰은 약 65억 개입니다.</p>
+	<p>이는 인터넷에 연결된 장치가 폭발적으로 증가했다는 사실을 나타내지만, 인터넷 진화의 다음 단계에 비하면 초라합니다. 다음 단계란 장치를 연결하여 인텔리전스를 제공하는 것입니다. 이미 사물 인터넷(IoT) 장치는 현재 인터넷에 연결된 스마트폰 수의 두 배 정도입니다. 스마트폰과 달리 사물 인터넷 장치를 가지고 다닐 인구 수의 제약을 받지 않으므로 이 수는 계속해서 엄청나게 늘어날 것으로 예상됩니다.</p>
+	<p>그러나 장치가 기하급수적으로 늘어나면서 위험도 폭발적으로 증가했습니다. 현재 Cloudflare는 수년간 <a href="https://blog.cloudflare.com/tag/mirai/">Mirai</a>, <a href="https://blog.cloudflare.com/meris-botnet/">Meris</a> 등 사물 인터넷(IoT) 기반 봇넷의 DDoS 공격을 막아오고 있습니다. 이 봇넷은 <a href="https://www.securityweek.com/cloudflare-mitigates-2-tbps-ddos-attack-launched-mirai-botnet" target="_blank">계속 늘어나고</a> 있습니다. 아직 IoT 장치를 보호하기가 어렵고 제조업체에서 장치를 보호할 유인이 없는 경우도 많기 때문입니다. 이로 인해 NIST(미국 국립표준기술연구소)는 (부족한) IoT 장치 보안 문제를 해결하기 위해 <a href="https://csrc.nist.gov/publications/detail/nistir/8349/draft" target="_blank">요구 사항을 적극적으로 정의</a>했으며 EU도 이에 못지 않습니다.</p>
+	<p>이 문제는 Cloudflare가 가장 잘 해결하는 유형이기도 합니다.</p>
+	<p>오늘, 사물 인터넷 플랫폼을 발표하게 되어 기쁩니다. 이 플랫폼의 목표는 IoT 장치를 하나의 창으로 확인하고, 새 장치 연결을 프로비저닝하며, 핵심적으로는 전원을 켜는 순간부터 모든 장치를 보호하는 것입니다.</p>
+	<h3 id="-iot-">전구만 IoT는 아닙니다</h3>
+	<p>"IoT"라고 하면 흔히 전구나 단순 모션 센서를 떠올리곤 합니다. 하지만, 이는 일상적으로 상호작용하는 여러 장치를 IoT 장치로 생각하지 않는 경우가 많기 때문입니다.</p>
+	<p>다음을 생각해보세요.</p>
+	<ul>
+		<li>거의 모든 결제 단말기</li>
+		<li>인포테인먼트 또는 GPS 시스템이 있는 모든 최신 자동차</li>
+		<li>물류 서비스, 산업 공정, 제조 산업을 구동하는 수백만 개의 필수 산업 장비</li>
+	</ul>
+	<p><em>특히 이러한 장치에 대부분 SIM 카드가 탑재되어 셀룰러 네트워크로 연결된다는 점을 모르실 수도 있습니다.</em></p>
+	<p>셀룰러 연결은 더욱 보편화되고 있으며, Wi-Fi 네트워크 구성과 독립적으로 연결할 수 있는 장치라면(그리고 바로 사용할 수 있다면) 모든 종류의 운영 지원 문제를 바로 방지한 것입니다. 이전에 발표한 <a href="https://blog.cloudflare.com/the-first-zero-trust-sim/">Zero Trust SIM</a> 내용을 읽어보셨다면 아마 Cloudflare의 목표를 이미 확인하셨을 것입니다.</p>
+	<p>현재, 이미 수십만 개의 IoT 장치가 상호 TLS 및 Cloudflare의 <a href="https://developers.cloudflare.com/api-shield/" target="_blank">API Shield</a> 제품을 사용해 네트워크에 안전하게 연결되어 있습니다. 주요 장치 제조업체는 <a href="https://developers.cloudflare.com/workers/" target="_blank">Workers</a> 및 개발자 플랫폼을 사용하여 인증, 컴퓨팅 부담을 덜고 있으며, 무엇보다 장치 자체에 필요한 컴퓨팅을 줄이고 있습니다. 프로그래밍 가능한 MQTT 기반 메시징 서비스인 <a href="https://developers.cloudflare.com/pub-sub/" target="_blank">Cloudflare Pub/Sub</a>도 이를 구성하는 요소입니다.</p>
+	<p>하지만 Cloudflare는 장치 관리, 분석, 이상 감지 등 아직도 빠진 부분이 있다는 점을 깨달았습니다. "IoT SIM" 공급자는 <em>많지만</em> 대부분 SIM 카드를 대규모로 운송하는 데 중점을 두며(좋습니다!) 보안 측면에는 중점을 그다지 두지 않고(별로 좋지 않습니다) 개발자 측면도 마찬가지입니다(마찬가지로 좋지 않습니다). 고객들은 Cloudflare의 Zero Trust 플랫폼으로 직원을 보호하는 것과 같이 IoT 장치를 쉽게 보호할 방법이 필요하다고 했습니다.</p>
+	<p><strong>Cloudflare의 IoT 플랫폼은 대규모 셀룰러 연결 프로비저닝을 기본 지원할 것입니다.</strong> 사용자 장치에 대한 셀룰러 연결 오더링, 프로비저닝, 관리를 지원할 것입니다. 각 IoT 장치에서 나가는 모든 패킷이 인터넷, 클라우드 인프라 또는 기타 장치에 도달하기 <em>전에</em>, 생성한 정책에 따라 검사, 승인하거나 거부할 수 있습니다.</p>
+	<p><a href="https://www.gsma.com/iot/iot-safe/" target="_blank">IoT SAFE</a>와 같은 새로운 표준을 사용하면 신뢰지점으로 SIM 카드를 사용하여 장치 암호(및 API 키)을 장치에 안전하게 저장하면서 타협의 기준도 높일 수 있습니다.</p>
+	<p>상호 TLS의 세계에서 벗어나겠다는 뜻은 아닙니다. 장치당 비용, 적용 범위 부족, 또는 다시 배포할 수 없는 기존의 배포를 지원해야 할 필요성 등으로 인해, 모든 장치를 셀룰러 네트워크를 통해서만 연결할 수는 없다는 점을 잘 알고 있습니다.</p>
+	<h3 id="iot-zero-trust-">IoT에 Zero Trust 보안 구현</h3>
+	<p>사용자는 잠재적으로 무한한 수의 목적지(웹 사이트)에 액세스할 수 있어야 하지만, 일반적으로 IoT 장치가 통신해야 하는 엔드포인트는 훨씬 제한적입니다. 하지만 실제로는 장치가 사용자의 API 백엔드, 스토리지 버킷 및/또는 원격 측정 엔드포인트와만 통신하도록 하는 제어 기능은 거의 없거나 이용할 수 없는 경우가 많습니다.</p>
+	<p>하지만 Cloudflare의 Zero Trust 플랫폼에는 <a href="https://www.cloudflare.com/products/zero-trust/gateway/" target="_blank">Cloudflare Gateway</a>라는 솔루션이 있습니다. DNS, 네트워크 또는 HTTP 정책을 생성하고, 소스나 목적지 외에 다양한 ID 및 위치 기반 제어에 따라 트래픽을 허용하거나 거부할 수 있습니다. 이와 같은 기능을 IoT 장비에 도입한다면 분명 개발자가 장치와 통신하는 엔드포인트를 더 적절하게(봇넷의 일부가 되지 않도록) 제한하고 제어할 수 있을 것입니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image2-38.png" class="kg-image"></figure>
+	<p>동시에, IoT 장치 세부 정보를 인식하여 Gateway를 확장하는 방법도 파악했습니다. 예를 들어 셀룰러를 통해 Cloudflare 네트워크에 직접 연결된 5,000개의 IoT 장치 모두를 프로비저닝했다고 가정해 보겠습니다. "이동"할 필요가 없다면 장치를 특정한 위치에 고정하도록 선택할 수 있습니다. 사용자의 API 백엔드 및/또는 메트릭 공급자와만 통신할 수 있게 할 수 있습니다. SIM이 장치에서 분리될 경우 IMEI(모뎀 직렬)에 잠궈 더 이상 작동하지 않게 할 수도 있습니다.</p>
+	<p>네트워크 계층에서 이러한 제어를 수행하면 IoT 장치의 보안 수준을 높일 수 있으며 악성 사용자가 장치군을 도구로 이용할 위험을 줄일 수 있습니다.</p>
+	<h3 id="-">장치에서 컴퓨팅 분리하기</h3>
+	<p>보안에 대해 여러 가지를 다뤘지만, 컴퓨팅과 스토리지는 어떨까요? 아무 작업도 수행하지 않거나 어디에서나 통신할 필요가 없는 장치라면 아주 안전하겠지만 분명 현실적인 상황은 아닙니다.</p>
+	<p>이와 더불어, 적지 않은 양의 컴퓨팅을 "장치 내"에서 수행하는 데는 여러 중요한 어려움이 있습니다.</p>
+	<ul>
+		<li>더 강력한(따라서 더 비싼) 장치가 필요합니다. 수 GB의 RAM이 탑재된 성능이 중간 정도인(예: ARMv8기반) 장치 가격은 점점 저렴해지고 있을지도 모르지만, 그래도 항상 저전력 장치보다는 더 비싸고 IoT 규모가 되면 가격은 크게 늘어납니다.</li>
+		<li>장치군의 성능이 균질할 것이라고 보장(또는 기대)할 수 없습니다. 3년 전에 배포한 장치는 지금 배포하는 장치보다 몇 배 느릴 수 있습니다. 이런 장치를 그대로 둘 수 있을까요?</li>
+		<li>장치에 비즈니스 로직이 많을수록 운영 위험과 배포 위험이 커집니다. 변경 관리가 중요해지고 있으며, 장치가 원격으로 고칠 수 없는 방식으로 기능하지 않는 "벽돌"이 될 위험은 사라지지 않습니다. 지구 반대편에 있는 장치에 배포할 경우, 새로운 기능을 반복하고 추가하는 작업은 더 어렵습니다.</li>
+		<li>계속 보안을 우려해야 합니다. 장치가 외부 API와 통신해야 한다면, 자격 증명을 가져와 예상하지 않은 방식으로 사용되는 것을 방지하기 위해 장치에서 사용할 자격 증명의 범위를 명시적으로 지정해야 합니다.</li>
+	</ul>
+	<p>"에지 컴퓨팅"을 다루는 다른 플랫폼도 있지만, 실제로는 "장치에서 컴퓨팅을 실행"하거나 "소수의 클라우드 영역에서 실행"(대기 시간이 생깁니다)한다는 의미입니다. 어느 쪽이든 위에서 강조한 문제를 완전히 해결하지는 못합니다.</p>
+	<p>그 대신, IoT 개발자가 컴퓨팅 목적의 <a href="https://workers.cloudflare.com/" target="_blank">Cloudflare Workers</a>, 장치 원격 측정 목적의 <a href="https://blog.cloudflare.com/workers-analytics-engine/">Analytics Engine</a> SQL 데이터베이스용 <a href="https://blog.cloudflare.com/introducing-d1/">D1</a>, 대용량 확장 메시지 전송 목적의 <a href="https://developers.cloudflare.com/pub-sub/" target="_blank">Pub/Sub</a>에 대해 보안 액세스를 적용하면 장치에서 컴퓨팅하지 않고도 장치와 <em>가까운</em> 위치를 유지할 수 있습니다. Cloudflare의 <a href="https://www.cloudflare.com/network/" target="_blank">전역 네트워크</a>(275개 이상의 도시에 집계됨)의 힘입니다.</p>
+	<p>이와 더불어, 개발자는 <a href="https://developers.cloudflare.com/workers/wrangler/get-started/" target="_blank">Wrangler</a>와 같은 최신 도구를 사용하여 더 빠르게 반복 작업을 수행할 수 있습니다. <em>그리고 </em>소프트웨어를 더 안전하게 배포하여 IoT 장비군 일부가 벽돌화되거나 손상될 위험을 피할 수 있습니다.</p>
+	<h3 id="--1">어디서 등록할 수 있나요?</h3>
+	<p><a href="https://www.cloudflare.com/register-for-our-iot-platform/" target="_blank">IoT 플랫폼에 관심이 있으시면 오늘 등록할 수 있습니다</a>. 향후 몇 주를 통해 연락하여 팀에서 겪고 있는 문제를 더 잘 이해하고, 몇 달 내로 클로즈드 베타를 제공하려고 합니다. Cloudflare는 사용 사례에 관계없이, 새로운 IoT 장치 세트 배포 및/또는 기존 장비 확장 방법을 고민하고 있는 팀에 특히 관심이 많습니다.</p>
+	<p>지금부터 IoT 장치를 보호해야 한다면 그 동안 <a href="https://developers.cloudflare.com/api-shield/security/mtls/" target="_blank">API Shield</a>, <a href="https://developers.cloudflare.com/pub-sub/" target="_blank">Pub/Sub</a>(MQTT)에 기반하여 구축을 시작할 수 있습니다.</p>
+</div>
