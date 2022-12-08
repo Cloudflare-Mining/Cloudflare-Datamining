@@ -46,7 +46,7 @@ for(const req of reqs){
 		url = url.replace('{widget_id}', results['widgets-list'].result[0].sitekey);
 	}
 
-	console.log(`Fetch for ${req.name}...`, url);
+	console.log(`Fetch for ${req.name}...`);
 	const res = await cfRequest(url, {
 		method: req.method,
 	});
@@ -144,6 +144,8 @@ await tryAndPush(
 		'data/products/turnstile/*.json',
 		'data/products/turnstile/*.js',
 		'data/products/turnstile/*.txt',
+		'data/products/turnstile/*.html',
+		'data/products/turnstile/*.css',
 	],
 	`${prefix} - Product: Turnstile Data was updated!`,
 	'CFData - Product: Turnstile Data Update',
