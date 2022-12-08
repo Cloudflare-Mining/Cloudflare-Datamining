@@ -1,0 +1,250 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/teams/device-managed-networks.json",
+	"title": "Device Managed Networks",
+	"description": "Device managed networks allow for building location-aware device settings policies.",
+	"type": "object",
+	"links": [
+		{
+			"title": "List Device Managed Networks",
+			"description": "List Managed Networks for an account.",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/identifier}/devices/networks",
+			"method": "GET",
+			"cfOwnership": "teams",
+			"html_id": "device-managed-networks-list-device-managed-networks",
+			"uri": "accounts/:identifier/devices/networks",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices/networks\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"network_id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n      \"type\": \"tls\",\n      \"name\": \"managed-network-1\",\n      \"config\": {\n        \"tls_sockaddr\": \"foobar:1234\",\n        \"sha256\": \"b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c\"\n      }\n    }\n  ]\n}"
+		},
+		{
+			"title": "Device Managed Network Details",
+			"description": "Fetch a single Managed Network.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/identifier}/devices/networks/{#/definitions/uuid}",
+			"method": "GET",
+			"cfOwnership": "teams",
+			"html_id": "device-managed-networks-device-managed-network-details",
+			"uri": "accounts/:identifier/devices/networks/:uuid",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices/networks/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"network_id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"type\": \"tls\",\n    \"name\": \"managed-network-1\",\n    \"config\": {\n      \"tls_sockaddr\": \"foobar:1234\",\n      \"sha256\": \"b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c\"\n    }\n  }\n}"
+		},
+		{
+			"title": "Create Device Managed Network",
+			"description": "Create a new Device Managed Network.",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/identifier}/devices/networks",
+			"method": "POST",
+			"cfOwnership": "teams",
+			"html_id": "device-managed-networks-create-device-managed-network",
+			"uri": "accounts/:identifier/devices/networks",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices/networks\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"type\":\"tls\",\"name\":\"managed-network-1\",\"config\":{\"tls_sockaddr\":\"foobar:1234\",\"sha256\":\"b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c\"}}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"type": {
+						"type": "string",
+						"example": "\"tls\"",
+						"description": "The type of Device Managed Network.",
+						"enum": [
+							"tls"
+						]
+					},
+					"name": {
+						"type": "string",
+						"example": "\"managed-network-1\"",
+						"description": "The name of the Device Managed Network. Must be unique."
+					},
+					"config": {
+						"type": "object",
+						"example": "{\n  \"tls_sockaddr\": \"foobar:1234\",\n  \"sha256\": \"b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c\"\n}",
+						"oneOf": [
+							{
+								"all_props": {
+									"tls_sockaddr": {
+										"type": "string",
+										"example": "\"foobar:1234\"",
+										"description": "A network address of the form \"host:port\" that the WARP client will use to detect the presence of a TLS host."
+									},
+									"sha256": {
+										"type": "string",
+										"example": "\"b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c\"",
+										"description": "The SHA-256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the certificate."
+									}
+								},
+								"required_props": [
+									"tls_sockaddr"
+								],
+								"optional_props": [
+									"sha256"
+								],
+								"objects": [],
+								"example": "{\n  \"tls_sockaddr\": \"foobar:1234\",\n  \"sha256\": \"b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c\"\n}"
+							}
+						],
+						"description": "The configuration object containing information for the WARP client to detect the managed network."
+					}
+				},
+				"required_props": [
+					"name",
+					"type",
+					"config"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"type\": \"tls\",\n  \"name\": \"managed-network-1\",\n  \"config\": {\n    \"tls_sockaddr\": \"foobar:1234\",\n    \"sha256\": \"b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c\"\n  }\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"network_id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"type\": \"tls\",\n    \"name\": \"managed-network-1\",\n    \"config\": {\n      \"tls_sockaddr\": \"foobar:1234\",\n      \"sha256\": \"b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c\"\n    }\n  }\n}"
+		},
+		{
+			"title": "Update Device Managed Network",
+			"description": "Update a Device Managed Network.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/identifier}/devices/networks/{#/definitions/uuid}",
+			"method": "PUT",
+			"cfOwnership": "teams",
+			"html_id": "device-managed-networks-update-device-managed-network",
+			"uri": "accounts/:identifier/devices/networks/:uuid",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices/networks/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"type\":\"tls\",\"name\":\"managed-network-1\",\"config\":{\"tls_sockaddr\":\"foobar:1234\",\"sha256\":\"b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c\"}}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"type": {
+						"type": "string",
+						"example": "\"tls\"",
+						"description": "The type of Device Managed Network.",
+						"enum": [
+							"tls"
+						]
+					},
+					"name": {
+						"type": "string",
+						"example": "\"managed-network-1\"",
+						"description": "The name of the Device Managed Network. Must be unique."
+					},
+					"config": {
+						"type": "object",
+						"example": "{\n  \"tls_sockaddr\": \"foobar:1234\",\n  \"sha256\": \"b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c\"\n}",
+						"oneOf": [
+							{
+								"all_props": {
+									"tls_sockaddr": {
+										"type": "string",
+										"example": "\"foobar:1234\"",
+										"description": "A network address of the form \"host:port\" that the WARP client will use to detect the presence of a TLS host."
+									},
+									"sha256": {
+										"type": "string",
+										"example": "\"b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c\"",
+										"description": "The SHA-256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the certificate."
+									}
+								},
+								"required_props": [
+									"tls_sockaddr"
+								],
+								"optional_props": [
+									"sha256"
+								],
+								"objects": [],
+								"example": "{\n  \"tls_sockaddr\": \"foobar:1234\",\n  \"sha256\": \"b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c\"\n}"
+							}
+						],
+						"description": "The configuration object containing information for the WARP client to detect the managed network."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"type",
+					"name",
+					"config"
+				],
+				"objects": [],
+				"example": "{\n  \"type\": \"tls\",\n  \"name\": \"managed-network-1\",\n  \"config\": {\n    \"tls_sockaddr\": \"foobar:1234\",\n    \"sha256\": \"b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c\"\n  }\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"network_id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"type\": \"tls\",\n    \"name\": \"managed-network-1\",\n    \"config\": {\n      \"tls_sockaddr\": \"foobar:1234\",\n      \"sha256\": \"b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c\"\n    }\n  }\n}"
+		},
+		{
+			"title": "Delete Device Managed Network",
+			"description": "Delete a Device Managed Network. Returns the remaining device managed networks for the account.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/identifier}/devices/networks/{#/definitions/uuid}",
+			"method": "DELETE",
+			"cfOwnership": "teams",
+			"html_id": "device-managed-networks-delete-device-managed-network",
+			"uri": "accounts/:identifier/devices/networks/:uuid",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices/networks/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"network_id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n      \"type\": \"tls\",\n      \"name\": \"managed-network-1\",\n      \"config\": {\n        \"tls_sockaddr\": \"foobar:1234\",\n        \"sha256\": \"b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c\"\n      }\n    }\n  ]\n}"
+		}
+	],
+	"html_id": "device-managed-networks",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"network_id": {
+				"type": "string",
+				"example": "\"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\"",
+				"maxLength": 36,
+				"description": "API uuid tag."
+			},
+			"type": {
+				"type": "string",
+				"example": "\"tls\"",
+				"description": "The type of Device Managed Network.",
+				"enum": [
+					"tls"
+				]
+			},
+			"name": {
+				"type": "string",
+				"example": "\"managed-network-1\"",
+				"description": "The name of the Device Managed Network. Must be unique."
+			},
+			"config": {
+				"type": "object",
+				"example": "{\n  \"tls_sockaddr\": \"foobar:1234\",\n  \"sha256\": \"b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c\"\n}",
+				"oneOf": [
+					{
+						"all_props": {
+							"tls_sockaddr": {
+								"type": "string",
+								"example": "\"foobar:1234\"",
+								"description": "A network address of the form \"host:port\" that the WARP client will use to detect the presence of a TLS host."
+							},
+							"sha256": {
+								"type": "string",
+								"example": "\"b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c\"",
+								"description": "The SHA-256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the certificate."
+							}
+						},
+						"required_props": [
+							"tls_sockaddr"
+						],
+						"optional_props": [
+							"sha256"
+						],
+						"objects": [],
+						"example": "{\n  \"tls_sockaddr\": \"foobar:1234\",\n  \"sha256\": \"b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c\"\n}",
+						"description": "The Managed Network TLS Config Response."
+					}
+				],
+				"description": "The configuration object containing information for the WARP client to detect the managed network."
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"network_id",
+			"type",
+			"name",
+			"config"
+		],
+		"objects": [],
+		"example": "{\n  \"network_id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n  \"type\": \"tls\",\n  \"name\": \"managed-network-1\",\n  \"config\": {\n    \"tls_sockaddr\": \"foobar:1234\",\n    \"sha256\": \"b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c\"\n  }\n}",
+		"title": "Device Managed Networks",
+		"description": "Device managed networks allow for building location-aware device settings policies."
+	}
+}
