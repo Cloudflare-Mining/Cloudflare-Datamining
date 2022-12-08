@@ -7,7 +7,11 @@ export const PlanId = eg.union([
   eg.literal('enterprise'),
   eg.literal('enterprise_trial'),
   eg.literal('lite'),
-  eg.literal('pro_plus')
+  eg.literal('pro_plus'),
+  eg.literal('partners_free'),
+  eg.literal('partners_pro'),
+  eg.literal('partners_biz'),
+  eg.literal('partners_ent')
 ]);
 export type PlanId = TypeFromCodec<typeof PlanId>;
 
