@@ -226,20 +226,20 @@ const navigation = {
 			title: "navigation.account.stream.videos",
 			url: "/stream/videos",
 			hasPermission: function(j) {
-				return g(j)
+				return p(j)
 			}
 		}, {
 			title: "navigation.account.stream.live_inputs",
 			url: "/stream/inputs",
 			hasPermission: function(j) {
-				return g(j)
+				return p(j)
 			}
 		}, {
 			title: "navigation.common.analytics",
 			url: "/stream/analytics",
 			labels: ["new"],
 			hasPermission: function(j) {
-				return g(j)
+				return p(j)
 			}
 		}]
 	}, {
@@ -594,9 +594,9 @@ const navigation = {
 			var $ = (0, x.getZone)(j);
 			if ((0, d.zoneIsDNSOnly)(j) || !u(j, "zone_settings", "spectrum.app") || !$) return !1;
 			var ce = !!((0, i.userHasEntZones)(j) || (0, x.userHasDelegatedEntZones)(j)),
-				me = !!(0, x.getZoneFlipperFlag)(j, "spectrum", "enabled"),
+				fe = !!(0, x.getZoneFlipperFlag)(j, "spectrum", "enabled"),
 				de = !!(0, x.isFree)($);
-			return me || ce || !de
+			return fe || ce || !de
 		}
 	}, {
 		title: "navigation.zone.ssl-tls",
@@ -772,7 +772,7 @@ const navigation = {
 			url: "/caching/cache-reserve",
 			labels: ["beta"],
 			hasPermission: function(j) {
-				return !!R(j)
+				return !!k(j)
 			}
 		}]
 	}, {
