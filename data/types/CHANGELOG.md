@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.19.0](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/types@6.18.21...@cloudflare/types@6.19.0) (2022-12-08)
+
+
+### Features
+
+* **stratus:** PT-794 hide monthly/annual toggle for partners, fix partn ([ec43170](http://stash.cfops.it:7999/fe/stratus/commits/ec43170))
+
+
+
+
+
 ## [6.18.21](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/types@6.18.20...@cloudflare/types@6.18.21) (2022-12-02)
 
 **Note:** Version bump only for package @cloudflare/types
