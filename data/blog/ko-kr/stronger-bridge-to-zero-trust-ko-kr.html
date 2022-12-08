@@ -1,0 +1,83 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image1-43.png" class="kg-image" alt="A stronger bridge to Zero Trust"></figure>
+	<p>대부분 조직, 특히 수년에 걸쳐 M&amp;A를 통해 기존의 하드웨어 배포와 네트워크를 연결해온 조직은 Zero Trust 아키텍처로의 마이그레이션이 하루아침에 진행되지 않을 것이라는 점은 알고 있습니다. 그러나 Cloudflare One에 거는 기대가 큰 이유는 기존 네트워크 아키텍처에서 마이그레이션하는 회사를 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trust</a>로 연결하는 다리를 제공하기 때문입니다.</p>
+	<p>현재 Cloudflare에서는 이 노력에 더욱 박차를 가하고 있습니다. 오늘은 기존 아키텍처에서 미래의 Zero Trust 네트워크로 그 어느 때보다 쉽게 전환할 수 있도록 Cloudflare One 플랫폼을 더욱 향상한 결과를 발표합니다. Cloudflare One 진입을 확대하기 위한 새로운 통로를 제공하고, 추가적 IPsec 매개변수에 대한 지원을 확장하였으며, 기존 SD-WAN 어플라이언스에서 더욱 쉽게 진입할 수 있도록 했습니다.</p>
+	<h3 id="-">모든 온/오프 램프: 완전히 구성 가능하고 상호 운용 가능</h3>
+	<p><a href="https://blog.cloudflare.com/cloudflare-one/">Cloudflare One에 대한 비전</a>을 발표할 당시, 저희는 고객이 원하는 방식으로, 기존에 배포한 하드웨어와 통신사를 그대로 사용하고, IPsec 터널과 같은 기존의 기술 표준을 활용하거나 Cloudflare의 가벼운 <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/" target="_blank">애플리케이션 커넥터</a>와 같은 Zero Trust 접근 방식을 활용하여 저희 네트워크에 연결할 수 있도록 하는 것의 중요성을 강조했습니다. Cloudflare One 플랫폼을 출시하고 나서 수백 명의 고객과 대화를 나누면서, 이런 유연성이 얼마나 중요한지 거듭 확인했습니다. 여러분께는 현재의 위치에 부합하는 <em>동시에</em> 네트워크 트래픽을 연결하고 관리하는 데 원하는 방식을 활용할 수 있도록 단일 제어 평면으로 글로벌 라우터 역할을 함으로써 미래의 네트워크 아키텍처로 원활하게 이동할 수 있는 플랫폼이 필요합니다.</p>
+	<p>지난 몇 개월 동안 이 퍼즐의 마지막 조각이 드디어 자리를 잡았고, 이제 고객이 모든 Cloudflare One 온/오프 램프를 함께 사용하여 장치, 사무실, 데이터 센터, 클라우드 자산, 자체 호스팅/SaaS 애플리케이션 사이의 트래픽을 원활하게 라우팅할 수 있다는 사실을 공유하게 된 것을 기쁘게 생각합니다. 여기에는 GRE 터널, IPsec 터널 또는 CNI로 연결된 네트워크에서 <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/" target="_blank">Cloudflare Tunnel</a>로 연결된 애플리케이션까지 트래픽을 라우팅하는 기능이 포함됩니다(지난 발표 이후 추가된 새로운 기능이며, 아래의 호환성 매트릭스에서 자세히 설명).</p><!--kg-card-begin: html-->
+	<center><strong>완전 구성 가능한 Cloudflare One 온램프</strong></center><!--kg-card-end: html--><!--kg-card-begin: markdown-->
+	<table>
+		<thead>
+			<tr>
+				<th>에서 ↓ 로 →</th>
+				<th>BYOIP</th>
+				<th>WARP 클라이언트</th>
+				<th>CNI</th>
+				<th>GRE 터널</th>
+				<th>IPSec 터널</th>
+				<th>Cloudflare Tunnel</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>BYOIP</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+			</tr>
+			<tr>
+				<td>WARP 클라이언트</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+			</tr>
+			<tr>
+				<td>CNI</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+			</tr>
+			<tr>
+				<td>GRE 터널</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+			</tr>
+			<tr>
+				<td>IPSec 터널</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<p>이 상호 운용성은 기존 네트워크 아키텍처에서 Zero Trust로 마이그레이션하기 위한 조직 전략의 핵심입니다. 현재의 익숙한 것과 유사한 기술을 사용하여 성능을 개선하고 보안을 강화하는 것에서 시작해서, 조직에 적합한 속도로 Zero Trust까지 점진적으로 업그레이드할 수 있습니다.</p>
+	<h3 id="anycast-ipsec-">Anycast IPsec 터널의 확장된 옵션 및 손쉬운 관리</h3>
+	<p>지난 12월에 <a href="https://blog.cloudflare.com/anycast-ipsec/">Cloudflare One의 온램프로 Anycast IPsec</a>을 출시한 이후, 수요가 엄청나게 늘었습니다. IPsec은 거의 30년 동안 암호화된 네트워크 연결에 제공되는 업계 표준이었기 때문에, 선택 가능한 구현과 매개변수가 많이 있으며 고객은 다양한 네트워크 장치를 사용하여 이러한 터널을 종료하고 있습니다. 어떤 네트워크에서나 IPsec 터널을 더 쉽게 설정하고 관리하는 과정을 손쉽게 처리할 수 있도록 새로운 매개변수, 새로운 UI 및 Terraform 공급자 지원, 일반적으로 사용하는 구현을 위한 단계별 가이드 지원을 포함하여 초기 릴리스를 기반으로 구축했습니다.</p>
+	<ul>
+		<li><strong>추가 구성 매개변수에 대한 지원 확장:</strong> 업계 모범 사례를 기반으로 하는 작은 기본 매개변수 세트부터 시작해서 확장했습니다. 최신 목록은 <a href="https://developers.cloudflare.com/magic-wan/tutorials/ipsec/#supported-configuration-parameters" target="_blank">개발자 문서</a>에서 확인할 수 있습니다. 처음부터 자체 IPsec 구현을 작성했기 때문에(자세한 이유는 <a href="https://blog.cloudflare.com/anycast-ipsec/">공지 블로그</a> 참조), 단 한 번의 (빠른!) 개발 주기로 새 매개변수에 대한 지원을 추가할 수 있습니다. 찾고 있는 설정이 아직 목록에 없는 경우, 지원 계획에 대해 알아보려면 Cloudflare로 문의하세요.</li>
+		<li><strong>Cloudflare Dashboard에서 터널 구성 및 관리:</strong> Cloudflare Dashboard에서 단 몇 번의 클릭으로 Anycast IPsec 및 GRE 터널 구성을 관리할 수 있습니다. 터널을 만든 후에는 전 세계 모든 Cloudflare 위치에서 터널에 대한 연결을 확인하고 필요에 따라 추적 경로 또는 <a href="https://blog.cloudflare.com/packet-captures-at-edge/">패킷 캡처</a>를 실행하여 문제 해결을 위해 트래픽을 더욱 심층적으로 살펴볼 수 있습니다.</li>
+		<li><strong>네트워크를 코드로 관리하기 위한 Terraform 공급자 지원:</strong> 바쁜 IT 팀은 <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/3.10.1/docs/resources/ipsec_tunnel" target="_blank">Terraform</a>을 사용하여 한 곳에서 모든 네트워크 구성을 관리할 수 있다는 점에 만족해합니다.</li>
+		<li><strong>기존 장치 설정을 위한 단계별 가이드:</strong> 다양한 장치에서 Cloudflare를 사용하여 IPsec 터널을 설정하는 과정을 안내하기 위해 새로운 가이드를 개발하였으며 <a href="https://developers.cloudflare.com/magic-wan/tutorials/ipsec/" target="_blank">개발자 문서</a>에 지속적으로 추가해나갈 것입니다.</li>
+	</ul>
+	<h3 id="-sd-wan-">(심지어) 기존 SD-WAN 어플라이언스에서 더 쉽게 진입 가능</h3>
+	<p>현재 보유하고 있는 하드웨어를 사용하여 Cloudflare One에 연결할 수 있기를 원한다는 고객의 의견이 꾸준히 들려왔습니다. 가장 쉬운 진입 방법 중 하나는 기존 SD-WAN 어플라이언스를 활용는 것입니다. 특히, 여러 장소에 위치한 조직의 경우에 이 방법이 유용합니다. 앞서 진입로 구성을 더욱 원활하게 하기 위해 <a href="https://www.cloudflare.com/network-onramp-partners/" target="_blank">선도적인 SD-WAN 제공업체와의 파트너십</a>을 발표했습니다. 오늘은 Cisco Viptela를 포함한 추가 장치 및 터널 메커니즘에 대한 새로운 <a href="https://developers.cloudflare.com/magic-wan/tutorials/" target="_blank">통합 가이드</a>를 도입하여 이를 확장하고자 합니다. IT 팀은 이러한 검증된 단계별 지침에 따라 Cloudflare 네트워크에 대한 연결을 쉽게 구성할 수 있습니다.</p>
+	<h3 id="-zero-trust-">지금 Zero Trust로의 여정을 시작하세요</h3>
+	<p>Cloudflare 팀은 기존 네트워크 아키텍처에서 Zero Trust로 전환하고자 하는 여러분과 같은 조직 수천 개에 도움을 제공하고 있으며, 어떻게 하면 이 여정을 쉽게 만들 수 있을지 알 수 있도록 새로운 제품과 기능에 대한 고객의 의견을 듣고 싶습니다. <a href="https://www.cloudflare.com/cloudflare-one/#transformation" target="_blank">Cloudflare One에 대해 자세히 알아보거나</a>, 고객 담당팀에 연락하여 지금 바로 네트워크 혁신을 위해 파트너가 될 수 있는 방법에 대한 이야기를 나누어 보세요!</p>
+</div>

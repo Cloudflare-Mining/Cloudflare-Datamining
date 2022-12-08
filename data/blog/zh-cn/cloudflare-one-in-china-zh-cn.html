@@ -1,0 +1,29 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image2-57.png" class="kg-image" alt="Cloudflare partners to simplify China connectivity for corporate networks"></figure>
+	<p>在中国大陆，IT 团队在员工和网络资源的性能、安全和可靠性方面一直面临挑战。今天，与我们的战略合作伙伴一起，我们非常高兴地宣布通过扩大 Cloudflare One 产品套件来解决这些难题，为位于中国的用户和组织创造最佳的 <a href="https://www.cloudflare.com/learning/access-management/what-is-sase/" target="_blank">SASE</a> 体验。</p>
+	<p>Cloudflare One 是我们的综合性 SASE 平台，允许组织机构连接任何源或目的地，并从一个统一的控制平面应用单次通过安全策略。Cloudflare One 建立在我们的<a href="https://www.cloudflare.com/network/" target="_blank">全球网络</a>之上，该网络覆盖全球 270 个城市，与全球 95% 的互联网用户距离不超过 50 ms。无论用户在哪里工作——公司办公室、家里还是咖啡店——我们都能够在非常接近的位置提供服务，这是客户从第一天起选择我们平台的一个关键原因。</p>
+	<p>2015 年，我们将<a href="https://www.cloudflare.com/application-services/" target="_blank">应用程序服务</a>组合扩大到中国大陆的城市；2020 年，通过与<a href="https://blog.cloudflare.com/cloudflare-partners-with-jd-cloud/">京东云</a>的战略合作关系，我们扩大了这些能力，以提供更好的性能和安全。今天，我们将公布我们在这一历程中的最新举措：通过更多战略合作关系，将 Cloudflare One 的能力扩展到位于中国大陆的用户和组织。让我们来分析几种使用 Cloudflare One 为您的中国网络和用户实现更佳连接、安全和性能的方法。</p>
+	<h3 id="-">通过中国合作伙伴网络，加速从中国网络到中国境外私有或公共资源的流量</h3>
+	<p>对于跨国公司的 IT 团队而言，跨越中国大陆边境的性能和可靠性是一个持续的挑战。数据包穿越中国国家防火墙，前往中国境外源服务器的途中，经常会遇到可达性、拥塞、丢失和延迟问题（反之亦然）。此外，中国网络在许多方面具有独特的挑战，往往与组织全球网络的其他部分被分别对待，导致安全和 IT 团队难以对这些流量执行一致的策略。</p>
+	<p>Cloudflare 很高兴能够与我们在中国的战略合作伙伴解决这些挑战，结合我们的网络基础设施，为客户提供更好的端到端体验。如下为是一个示例架构，演示了合作伙伴与 Cloudflare 共同优化的数据包流：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/1-7.png" class="kg-image"></figure>
+	<p>Acme Corp 是一家跨国组织，在上海和北京设有办公室。这些办公室的用户需要访问 Acme 在阿仕本和伦敦数据中心托管的资源，以及 Jira 和 Workday 等 SaaS 应用程序。Acme 在中国大陆的每个办公室都通过 Cloudflare 的中国合作伙伴接入互联网。</p>
+	<p>Cloudflare 的合作伙伴将本地流量路由到中国境内的目的地，并通过安全链路将全球流量路由到中国境外最近的可用 Cloudflare 入网点（PoP）。</p>
+	<p>在该数据中心，Cloudflare 对流量执行一整套安全功能，包括网络防火墙即服务和安全 Web 网关策略。然后，Cloudflare 通过一条优化的主干网络路径将流量路由到其目的地，无论是 Acme 私有网络上的另一个连接位置（通过 Anycast GRE或 IPsec 隧道或<a href="https://www.cloudflare.com/network-interconnect/" target="_blank">直接连接</a>），还是公共互联网上的一个资源。Acme 可以选择前往互联网的流量从 Cloudflare 持有的共享或专用 IP 池传出。</p>
+	<p>返回 Acme 中国境内网络位置的流量遵循相反的路径：源 → Cloudflare 网络（此处再次应用安全策略） → 合作伙伴网络 → Acme 本地网络。</p>
+	<p>Cloudflare 及其合作伙伴很高兴能帮助客户解决跨境性能和安全方面的挑战。这个解决方案易于部署，现已可用。请联系您的帐户团队以开始使用。</p>
+	<h3 id="--1">对远程中国用户流量执行一致的安全策略</h3>
+	<p>中国境内网络连接访问全球资源的挑战同样影响着在中国工作的远程用户。通过扩展前述网络连接解决方案，我们期待通过适配我们的设备客户端（WARP），以改善用户到跨境资源的连接。该解决方案还将允许安全团队对连接到企业资源的设备执行一致的策略，而非为中国境内外的用户分别管理独立的安全堆栈。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/2-2.png" class="kg-image"></figure>
+	<p>Acme Corp 有一些用户位于中国或前往中国出差，他们需要访问中国国家防火墙之外托管的企业资源，无需身处 Acme 办公室即可实现。Acme 使用 MDM 提供商在公司管理的设备上安装 WARP 客户端，并在 Acme 的 Cloudflare Zero Trust 组织中注册这些设备。在中国境内，WARP 客户端利用 Cloudflare 的中国合作伙伴网络建立相同的 Wireguard 隧道，连接到中国大陆境外最近的 Cloudflare 入网点。Cloudflare 合作伙伴通过他们的加速服务充当我们 Zero Trust 客户 IP 流量的载体，内容在 WARP 内部保持安全。</p>
+	<p>就像在网络层通过合作伙伴路由到 Cloudflare 的流量一样，WARP 客户端流量到达中国境外的第一站时，会通过 Gateway 和 Access 策略进行过滤。Acme 的 IT 管理员可以选择对来自中国和其他全球位置的设备流量执行相同或额外的策略。这种设置使 Acme 的 IT 和安全团队的工作变得更容易——他们只需要安装和管理单个设备客户端，就可以授予访问权限和控制安全性，而不用考虑员工位于世界的哪个位置。</p>
+	<p>Cloudflare 及合作伙伴正在积极测试这一解决方案的内测版本。如果您有兴趣在其向更大范围公众开放时就立即使用，请联系您的帐户团队。</p>
+	<h3 id="-sase-">将 SASE 过滤延伸到中国数据中心（未来）</h3>
+	<p>上述两个用例专注于为中国境内的网络和用户提供对中国国家防火墙外侧资源的访问，但如何改善本地流量的连接性和安全呢？</p>
+	<p>中国和跨国公司纷纷表示，如果 Cloudflare One 的全套功能可在中国各地使用，从而实现完整的 SASE 架构，与他们位于世界任何地方的用户和应用都距离仅数毫秒，这是非常令人兴奋的事情。我们正与战略合作伙伴积极朝着这个目标努力，以我们分布于中国大陆 38 个城市 45 个数据中心的应用服务平台可用性为基础，进一步扩大。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image4-36.png" class="kg-image"></figure>
+	<p>如果希望通过我们的中国网络获得全套 Cloudflare One 功能，欢迎立即联系帐户团队以加入等候列表，并在测试版可用后立即收到通知。</p>
+	<h3 id="--2">立即开始使用</h3>
+	<p>我们非常高兴能够帮助企业改善中国网络和用户的连接、性能和安全。立即联系您的帐户团队，了解 Cloudflare One 如何帮助您改造在中国大陆境内外的网络并实现 SASE 架构。</p>
+	<p>如果您希望进一步了解，欢迎通过这个<a href="https://gateway.on24.com/wcc/eh/2153307/lp/4010917/navigating-the-challenges-of-connecting-with-your-audience-in-china?partnerref=blog" target="_blank">链接</a>参加我们定于 2022 年 12 月 6 日举行的直播网络研讨会，期间将回答有关中国网络连接的所有问题。<br></p>
+</div>

@@ -1,0 +1,19 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/pasted-image-0--1-.png" class="kg-image" alt="HTTP/3 inspection on Cloudflare Gateway"></figure>
+	<p>오늘, 종합 보안 웹 게이트웨이인 Cloudflare Gateway를 통해 HTTP/3 검사를 곧 지원하게 된다는 소식을 발표하게 되어 기쁩니다. HTTP/3는 현재 인터넷의 25%에서 구동되며 보안 손상 없이 브라우징 경험을 더욱 빠르게 해줍니다. 지금까지는 관리자가 HTTP/3 지원 웹 사이트나 API를 필터링하고 검사하려면 HTTP/2로 폴백하여 성능을 저하시키거나 검사를 우회하여 가시성을 포기해야만 했습니다. Cloudflare Gateway에서 HTTP/3를 지원하면 모든 트래픽에 완전한 가시성을 확보하고 가장 빠른 검색 경험을 누리실 수 있습니다.</p>
+	<h3 id="http-3-">HTTP/3를 이용하는 웹이 늘어나는 이유는 무엇일까요?</h3>
+	<p>HTTP는 인터넷을 구동하는 오래된 기술입니다. 1996년 당시, 보안과 성능은 고려 대상이 아니었고 암호화는 관리 전송 계층의 책임이었습니다. 이 모델은 최신 인터넷의 성능 요구 사항에 적합하지 않으므로 HTTP는 <a href="https://blog.cloudflare.com/ko-kr/http3-the-past-present-and-future-ko-kr/">HTTP/2에 이어 현재는 HTTP/3으로 업그레이드</a>되었습니다.</p>
+	<p>HTTP/3는 기본적으로 항상 암호화되는 최신 전송 프로토콜인 QUIC를 사용해 검색 활동을 빠르게 만들어줍니다. 사용자와 웹 서버 간의 왕복을 줄여 성능이 더 빨라지며 연결이 불안정한 사용자의 성능도 개선됩니다. HTTP/3의 성능 이점에 대한 자세한 내용은 <a href="https://blog.cloudflare.com/http-3-vs-http-2/">여기</a> 이전 블로그를 참조하세요.</p>
+	<h3 id="http-3--1">HTTP/3 개발 및 채택</h3>
+	<p>Cloudflare의 사명은 더 나은 인터넷을 만들도록 돕는 것입니다. Cloudflare는 HTTP/3가 인터넷을 더 빠르고 더 안전하게 만들어 줄 핵심 구성 요소라고 생각합니다. 당사는 IETF와 긴밀히 협업하여 HTTP/3 및 QUIC 표준 문서 작업을 거듭 진행했습니다. 이러한 활동과 더불어 Chrome 및 Firefox 등 많이 사용되는 브라우저가 QUIC를 기본 사용하도록 진행한 결과, 현재 모든 웹 사이트 중 25% 이상이 더욱 철저한 <a href="https://blog.cloudflare.com/cloudflare-view-http3-usage/">분석</a>을 위해 HTTP/3를 사용하고 있습니다.</p>
+	<p>Cloudflare는 지난 몇 년간 HTTP/3를 폭넓게 지지해왔습니다. <a href="https://blog.cloudflare.com/the-quicening/">2018년 9월</a>에 처음으로 기본 전송 계층 QUIC에 대한 지원을 도입했고, 다음 해인 <a href="https://blog.cloudflare.com/ko-kr/http3-the-past-present-and-future-ko-kr/">2019년 9월</a>에는 역방향 프록시 서비스에 HTTP/3 지원을 도입하려고 노력했습니다. 그 이후로도 꾸준히 노력하여 현재는 RFC 9114에서 최종 “h3” 식별자에 해당하는 최신 개정 HTTP/3를 지원하게 되었습니다.</p>
+	<h3 id="http-3--2">HTTP/3 검사 장애물</h3>
+	<p>HTTP/3에 장점이 많긴 하지만, HTTP/3 도입에 따라 관리자가 네트워크에서 HTTP 트래픽을 필터링하고 검사하려면 배포 복잡성과 보안을 절충해야 했습니다. HTTP/3의 HTTP 요청 및 응답 시맨틱은 친숙하지만, QUIC를 사용하면 "연결 시" 모양과 동작이 바뀝니다. QUIC는 UDP로 실행되므로 기존의 TCP 기반 프로토콜과 구조적으로 다르며, 기존 보안 웹 게이트웨이의 지원이 부족합니다. 이 두 가지가 합쳐져, 관리자가 사용자의 기대만큼 성능을 유지하고 인터넷 트래픽에 대한 가시성과 제어 능력을 확보하는 동시에, 진화하는 기술 환경까지 따라가기가 어려워졌습니다.</p>
+	<p>HTTP/3에 적절한 보안 웹 게이트웨이가 지원되지 않으면, 관리자는 사용자의 보안과 성능, 둘 중 하나나 둘 모두를 타협할지 결정해야 합니다. 보안을 절충하는 방법으로는 UDP 트래픽을 검사하지 않거나, 더욱 심각하게는 인라인 바이러스 방지 스캐닝, 데이터 손실 방지, 브라우저 격리 및/또는 트래픽 로깅과 같이 중요한 보안 기능을 포함하지 않는 방법이 있습니다. 물론 보안에 민감한 조직에서 보안과 가시성을 포기하는 방식은 받아들여지지 않습니다. 이 경우 관리자는 최종 사용자 장치에서 미리 HTTP/3를 비활성화해야 했습니다. 사용자 웹 브라우저 내에서 QUIC 지원을 비활성화해야 하므로 배포가 복잡해지고 성능이 저하됩니다.</p>
+	<h3 id="http-3--3">HTTP/3 검사를 활성화하는 방법</h3>
+	<p>올해 후반부터 일부 브라우저에서 HTTP/3 검사가 지원되면 대시보드를 통해 HTTP/3 검사를 활성화할 수 있게 됩니다. Zero Trust 대시보드에 로그인하여 프록시를 켜고 UDP 트래픽 상자를 클릭한 다음, <strong>설정 &gt; 네트워크 &gt; 방화벽</strong>에서 TLS 복호화 기능을 활성화합니다. 설정을 활성화한 다음에는 HTTP 정책을 통해 조직의 모든 프록시 HTTP 트래픽에 AV 스캐닝, 원격 브라우저 격리, DLP, HTTP 필터링을 적용할 수 있습니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/pasted-image-0--2-.png" class="kg-image"></figure>
+	<h3 id="-">다음 단계</h3>
+	<p>기술 환경이 진화하더라도 관리자가 보안을 희생시킬 필요가 없으며, 조직과 팀을 보호하는 데 집중할 수 있습니다. HTTP/3 검사를 이용할 수 있게 되면 모든 Cloudflare One 고객에게 알려드릴 예정입니다. 관리자가 보안 웹 게이트웨이를 단순하게 배포할 수 있게 되어 기쁩니다.</p>
+	<p>HTTP/3 트래픽 검사는 모든 유형의 요금제를 이용하는 관리자 모두가 이용할 수 있습니다. 아직 가입하지 않았다면 <a href="https://dash.cloudflare.com/sign-up/teams" target="_blank">여기를 클릭</a>하여 시작하세요.</p>
+</div>

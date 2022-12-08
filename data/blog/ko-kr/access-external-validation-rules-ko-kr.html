@@ -1,0 +1,41 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image2-24.png" class="kg-image" alt="Infinitely extensible Access policies"></figure>
+	<p>Zero Trust 애플리케이션 보안이란 애플리케이션에 대한 모든 요청이 정의되어 있는 보안 정책을 모두 통과하지 않는 한 거부된다는 것을 의미합니다. 대부분의 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trust</a> 솔루션은 사용자 ID, 장치, 위치를 이러한 보안 정책을 정의하는 변수로 사용할 수 있도록 허용합니다.</p>
+	<p>우리는 고객들이 자체 Zero Trust 정책을 정의할 때 더 많은 통제권과 더 강화된 사용자 지정 기능을 원한다는 얘기를 들었습니다.</p>
+	<p>오늘부터, 사용자가 애플리케이션에 액세스하도록 허용하기 전에 Access 정책으로 모든 사항을 검토할 수 있게 되었다는 사실을 알려드리게 되어 기쁩니다. 말 그대로 <em>모든 사항을</em> 검토합니다. 이제 여러분은 Access 정책 평가 중 어떠한 API든 호출할 수 있도록 해주는 외부 평가 규칙 옵션을 통해 궁극의 사용자 지정 가능성을 갖춘 정책을 생성할 수 있습니다.</p>
+	<h3 id="-">우리가 외부 평가 규칙을 정한 이유</h3>
+	<p>지난 몇 년 동안 우리는 위치 및 장치 상태 정보를 확인하는 기능을 Access에 추가했습니다. 하지만 애플리케이션과 조직의 요구 사항에 따라 추가 요소를 고려해 볼 가능성은 항상 있게 마련입니다. 우리는 고객이 액세스 정책에 대한 직접적인 지원 없이 필요한 신호를 확인할 수 있는 기능을 제공하기 시작했습니다.</p>
+	<p>예를 들어 Cloudflare 보안 팀에게는 레지스트리를 기준으로 사용자의 mTLS 인증서를 검증하여 기업 장치에서 올바른 사용자만 애플리케이션에 액세스할 수 있도록 하는 기능이 필요했습니다. 원래 보안 팀은 Access가 요청을 평가한 후 사용자의 인증서를 검사하는 역할을 Worker에게 맡기려고 했습니다. 그러나 이 방법에는 시간이 지남에 따라 맞춤 소프트웨어 개발 및 유지 관리가 필요했습니다. 외부 평가 규칙을 사용하면 API 호출을 통해 사용자가 장치에 대한 올바른 인증서를 제출하고 있는지 확인할 수 있습니다. API 호출은 mTLS 인증서와 사용자 장치의 매핑을 저장하는 Worker에 대해 이루어집니다. Worker는 사용자 지정 논리를 실행한 다음 Access에 true 또는 false를 반환합니다.</p>
+	<h3 id="--1">작동 방식</h3>
+	<p>Cloudflare Access는 모든 웹 애플리케이션 앞에 존재하는 역방향 프록시입니다. 사용자가 아직 인증되지 않은 경우 인증을 위한 로그인 화면이 표시됩니다. 그러면 사용자는 Access 정책에 정의되어 있는 조건을 충족해야 합니다. 일반적인 정책은 다음과 같습니다.</p>
+	<ul>
+		<li>사용자의 이메일은 @example.com으로 끝남</li>
+		<li>하드웨어 기반 토큰으로 인증된 사용자</li>
+		<li>미국에서 로그인한 사용자</li>
+	</ul>
+	<p>사용자가 정책을 통과하면 세션이 만료될 때까지 애플리케이션에 액세스할 수 있는 쿠키가 주어집니다.</p>
+	<p>다른 사용자 지정 조건에 따라 사용자를 평가하기 위해 외부 평가 규칙을 Access 정책에 추가할 수도 있습니다. 외부 평가 규칙에는 호출할 API 엔드포인트와 모든 요청 응답이 신뢰할 수 있는 출처에서 오는지를 확인하기 위한 키라는 두 가지 값이 필요합니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image1-25.png" class="kg-image"></figure>
+	<p>사용자가 ID 공급자를 통해 인증하면 사용자, 장치 및 위치에 대한 모든 정보가 외부 API로 전달됩니다. 이 API는 Access에 대한 통과 또는 실패 응답을 반환하여 사용자에게 액세스를 허용하거나 거부합니다.</p>
+	<p>API의 예제 로직은 다음과 같습니다.</p><!--kg-card-begin: markdown-->
+	<pre><code>/**
+ * Where your business logic should go
+ * @param {*} claims
+ * @returns boolean
+ */
+async function externalEvaluation(claims) {
+  return claims.identity.email === 'address@example.com'
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>여기에서 클레임 객체에는 요청을 생성한 사용자, 장치 및 네트워크에 관한 모든 정보가 포함됩니다. 이 <code>externalEvaluation</code> 함수는 원하는 비즈니스 로직을 수행하도록 확장할 수 있습니다. Access 클레임을 사용하고 Access에서 가져온 서명 키를 검증하기 위한 예제 코드가 포함되어 있는 <a href="https://github.com/cloudflare/workers-access-external-auth-example" target="_blank">오픈 소스 리포지토리</a>가 올라와 있습니다.</p>
+	<p>이것은 정말 강력합니다! 이제 사용자 액세스를 허용하기 전에 모든 정보를 고려하도록 모든 Access 정책을 무한대로 확장할 수 있습니다. 가능한 예는 다음과 같습니다.</p>
+	<ul>
+		<li>엔드포인트 보호 도구의 API를 검사하는 미들웨어를 개발하여 아직 통합하지 않은 엔드포인트 보호 도구와 통합</li>
+		<li>외부 위협 피드에 대한 IP 주소 확인</li>
+		<li>산업별 사용자 레지스트리 호출</li>
+		<li>기타 다수!</li>
+	</ul>
+	<p>Access 정책의 확장은 이제 막 시작되었습니다. 앞으로는 단순히 액세스를 허용하거나 거부하는 것이 아니라 애플리케이션에 액세스하기 전에 사용자를 어떻게 처리해야 하는지도 프로그래밍 방식으로 쉽게 결정할 수 있도록 할 계획입니다.</p>
+	<p>이 기능은 현재 Cloudflare Zero Trust 대시보드에서 사용할 수 있습니다. 시작하려면 <a href="https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/" target="_blank">이 가이드</a>를 참고하십시오!</p>
+</div>

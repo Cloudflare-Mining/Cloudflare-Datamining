@@ -1,0 +1,56 @@
+<div class="post-content lh-copy gray1">
+	<p>Cloudflare가 구축한 Zero Trust 플랫폼을 통해, 기업은 Cloudflare의 네트워크를 이용하여 사설 네트워크를 안전하게 연결하면서 성능을 개선하고 운영 부담도 줄일 수 있습니다. 사용자는 이 플랫폼으로 하나의 가상 사설 네트워크를 마련할 수 있었습니다. 이 가상 사설 네트워크에서는 연결된 모든 사설 네트워크가 고유하게 식별되어야 했습니다.</p>
+	<p>오늘부터 Cloudflare WARP 및 Cloudflare Tunnel 커넥터의 가상화 연결을 시작으로, Cloudflare Zero Trust를 통해 분리된 가상 사설망을 여러 개 구축할 수 있게 되었음을 발표하게 되어 기쁩니다.</p>
+	<h3 id="cloudflare-">Cloudflare를 통한 사설 네트워크 연결</h3>
+	<p>각각의 사설 네트워크를 통해 다양한 서비스를 호스팅하는 팀과, 이러한 리소스에 액세스하는 직원을 떠올려보세요. 돌아다니거나, 원격으로 일하거나, 실제 회사 사무실에 위치하는 등 그 어느 때보다 직원은 다양한 위치에 있습니다. 이런 상황에서도 직원들은 사설 서비스에 액세스할 수 있어야 합니다. 심지어, 각각의 사용자가 네트워크 내에서 액세스할 수 있는 항목을 세부적으로 제어할 수 있어야 합니다.</p>
+	<p>Cloudflare가 이 부분을 도와드릴 수 있습니다. Cloudflare는 <a href="https://blog.cloudflare.com/private-networking/">고성능 전역 네트워크</a>를 제공하여 직원과 사설 서비스 사이에서 가상 다리가 되어줍니다. 직원의 장치에서 <a href="https://blog.cloudflare.com/warp-for-desktop/">Cloudflare WARP</a>를 실행하면 이 장치의 트래픽은 Cloudflare의 네트워크를 통해 송신됩니다. 한편 사설 서비스는 <a href="https://blog.cloudflare.com/highly-available-and-highly-scalable-cloudflare-tunnels/">Cloudflare Tunnel</a> 뒤에 위치하여 Cloudflare 네트워크를 통해서만 액세스할 수 있게 됩니다. 이러한 커넥터가 가상 사설망을 엔드 투 엔드로 보호해줍니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/942-1.png" class="kg-image" alt="Architecture depicting client applications accessing private origins behind cloudflared Tunnel through our Cloudflare Global Network with Zero Trust."></figure>
+	<p>이 설정은 트래픽이 즉시 더 빨라진다는 점과 <strong>더불어</strong> 더 안전하다는 점이 장점입니다. 한 단계 더 나아가 <a href="https://blog.cloudflare.com/private-networking/">사설 네트워크 라우팅 트래픽</a>에 감사, 세분화된 필터링, 데이터 손실 보호, 맬웨어 감지, 안전한 브라우징, 기타 여러 Cloudflare 서비스를 적용하는 이점을 누릴 수도 있습니다.</p>
+	<p>이미 Cloudflare의 고객들은 Zero Trust 사설 네트워크 라우팅 솔루션을 마음에 들어 하고 있습니다. 하지만, 사랑하는 모든 것이 그렇듯 아직도 더 개선할 수 있습니다.</p>
+	<h3 id="-">네트워크 중복 문제</h3>
+	<p>위의 이미지에서, 사용자는 사설 서비스의 네트워크 내에 물리적으로 위치해있는 것처럼 모든 사설 서비스에 액세스할 수 있습니다. 예를 들어 브라우저에 <em>jira.intra</em>라고 입력하거나 사설 IP <em><code>10.1.2.3</code></em>에 SSH로 연결하면 사설 서비스를 인터넷에 공개하지 않아도 원활하게 작동시킬 수 있습니다.</p>
+	<p>하지만, 여기엔 중요한 가정이 있습니다. 고객 계정에서 Cloudflare에 연결된 사설 네트워크에 기본 사설 IP는 고유해야 한다는 것입니다.</p>
+	<p>이제, 일반적으로 <a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing" target="_blank">CIDR</a>이라고 하는 동일한 IP 공간(예: <code>10.1.0.0/16</code>)을 사용하는 데이터 센터 두 곳(또는 그 이상)을 팀에서 이용하고 있다고 가정해보세요. 하나는 현재 기본 데이터 센터이고, 다른 하나는 보조 역할로 서로 복제됩니다. 이러한 예시 상황에서는 두 데이터 센터 각각에 IP(<em><code>10.1.2.3</code></em>)가 같은 시스템이 있을 것입니다.</p>
+	<p>지금까지는 Cloudflare를 통해 이렇게 설정할 수 없었습니다. 데이터 센터 1을 &nbsp;<code>10.1.0.0/16</code>으로 향하는 트래픽을 처리할 Cloudflare 터널에 연결한 다음 데이터 센터 2에도 같은 작업을 수행하려 했겠지만, 모호한 IP 경로를 생성할 수 없다는 오류가 나타났을 것입니다.</p>
+	<pre><code>$ cloudflared tunnel route ip add 10.1.0.0/16 dc-2-tunnel
+
+API error: Failed to add route: code: 1014, reason: You already have a route defined for this exact IP subnet</code></pre>
+	<p>이상적인 세계라면 팀에 이런 문제가 발생하지 않습니다. 모든 사설 네트워크에는 고유한 IP 공간이 있기 때문입니다. 하지만 실제로는 실현하기 어렵고 특히 대기업에서는 더욱 그렇습니다. 두 회사가 합병하는 상황을 생각해보세요. IP 주소를 고유하게 지정하려고 사설 네트워크를 다시 조정하기란 불가능에 가깝습니다.</p>
+	<h3 id="--1">새 가상 네트워크 시작하기</h3>
+	<p>이제는 중복되는 IP 경로를 논리적으로 분리해 줄 고유한 가상 네트워크를 만들어 이 문제를 해결할 수 있습니다. 가상 네트워크를 IP 하위 공간의 그룹으로 생각해볼 수 있습니다. 실질적으로 이렇게 하면 전체 인프라를 독립적인 (가상화) 사설 네트워크로 구성하여 Cloudflare WARP를 통해 Cloudflare Zero Trust 조직에서 연결할 수 있습니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/942-2.png" class="kg-image" alt="A user running WARP Zero Trust chooses a specific private network to disambiguate the data center that they wish to access with Zero Trust."></figure>
+	<p>이 시나리오를 설정해 보겠습니다.</p>
+	<p>가상 네트워크 두 개를 만드는 것으로 시작합니다. 하나는 기본값입니다.</p>
+	<pre><code>$ cloudflared tunnel vnet add —-default vnet-frankfurt "For London and Munich employees primarily"
+
+Successfully added virtual network vnet-frankfurt with ID: 8a6ea860-cd41-45eb-b057-bb6e88a71692 (as the new default for this account)
+
+$ cloudflared tunnel vnet add vnet-sydney "For APAC employees primarily"
+
+Successfully added virtual network vnet-sydney with ID: e436a40f-46c4-496e-80a2-b8c9401feac7</code></pre>
+	<p>그런 다음 터널을 만들고 CIDR을 라우팅합니다.</p>
+	<pre><code>$ cloudflared tunnel create tunnel-fra
+
+Created tunnel tunnel-fra with id 79c5ba59-ce90-4e91-8c16-047e07751b42
+
+$ cloudflared tunnel create tunnel-syd
+
+Created tunnel tunnel-syd with id 150ef29f-2fb0-43f8-b56f-de0baa7ab9d8
+
+$ cloudflared tunnel route ip add --vnet vnet-frankfurt 10.1.0.0/16 tunnel-fra
+
+Successfully added route for 10.1.0.0/16 over tunnel 79c5ba59-ce90-4e91-8c16-047e07751b42
+
+$ cloudflared tunnel route ip add --vnet vnet-sydney 10.1.0.0/16 tunnel-syd
+
+Successfully added route for 10.1.0.0/16 over tunnel 150ef29f-2fb0-43f8-b56f-de0baa7ab9d8</code></pre>
+	<p>끝났습니다! 이렇게 하면 두 터널을 모두 실행할 수 있으며 IP가 겹치더라도 사설 데이터 센터가 Cloudflare에 연결됩니다.</p>
+	<p>이제 사용자는 기본적으로 가상 네트워크 <em>vnet-frankfurt</em>를 통해 라우팅됩니다. <em>vnet-sydney</em>를 통해 라우팅하는 등, 사용자가 원한다면 WARP 클라이언트 인터페이스 설정을 선택할 수도 있습니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/942-3.png" class="kg-image" alt="New menu to allow the user to choose the network to send traffic to in the Zero Trust WARP enabled devices."></figure>
+	<p>사용자가 선택한 가상 네트워크를 변경하면 Cloudflare의 네트워크에 라우팅 결정이 전달됩니다. 그러면 몇 초 만에 <a href="https://blog.cloudflare.com/introducing-quicksilver-configuration-distribution-at-internet-scale/">Quicksilver</a>를 통해 모든 Cloudflare 데이터 센터에 이 결정이 전파됩니다. 그러면 WARP 클라이언트가 네트워크 연결을 다시 시작하여, 전에 선택한 가상 네트워크로 라우팅되었던 기존 TCP 연결을 끊습니다. 이렇게 하면 WARP 클라이언트의 연결을 끊었다가 다시 연결하는 것처럼 인식될 수 있습니다.</p>
+	<p>현재 사설 네트워크 라우팅을 사용하는 모든 Cloudflare Zero Trust 조직에는 Cloudflare Tunnel에 대한 IP 경로가 포함된 기본 가상 네트워크가 제공될 것입니다. 위의 명령을 사용해 IP가 겹치도록 사설 네트워크를 확장하고 필요하다면 기본 가상 네트워크를 다시 할당할 수 있습니다.</p>
+	<p>사설 인프라에 중복 IP가 없는 경우에는 조치할 필요가 없습니다.</p>
+	<h2 id="--2">다음 단계</h2>
+	<p>Cloudflare의 개별 가상 네트워크 지원은 이제 막 시작되었습니다. 확인하셨을 수도 있지만, 지난 주 Cloudflare는 Zero Trust 대시보드에서 직접 Cloudflare Tunnel을 생성, 배포, 관리하는 기능을 발표했습니다. 현재 가상 네트워크는 cloudflared CLI를 통해서만 지원됩니다. 하지만 가상 네트워크 관리도 대시보드에 통합할 예정입니다.</p>
+	<p>다음 단계는 Cloudflare Gateway가 이러한 가상 네트워크를 인식하여 중복 IP 범위에 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trust 정책</a>을 적용할 수 있게 만드는 것입니다. Gateway가 이러한 가상 네트워크를 인식할 수 있게 되면 네트워크 로깅에도 이 개념을 도입해 감사 가능성을 제공하고 문제 해결을 진행해 나갈 것입니다.</p>
+</div>

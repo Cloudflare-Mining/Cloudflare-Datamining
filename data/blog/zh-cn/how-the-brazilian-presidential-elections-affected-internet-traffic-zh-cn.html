@@ -1,0 +1,59 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://lh5.googleusercontent.com/8bUx4Ez83TdAOmSz_WglK7ccLiFO3cXvj0fYBMx8Vz2frKVzmzL2S3F5fA7AQiZKk52ecxPx8dY1FrDR5xAKbf51Tz4qLwUFq-GpaDG0K3XjAQbQxQ69Gh7UbxGJpNrP_2aUZZRXcxBZB73iXOxZlzv93Hu421LEqAqzT7JhUUPtBxwAbeMEFLQbQMsv9g" class="kg-image"></figure>
+	<blockquote><em>Brasil, sei lá</em><br><em>Ou o meu coração se engana</em><br><em>Ou uma terra igual não há</em><br>— 来自 Tom Jobim 的歌曲：Brasil Nativo</blockquote>
+	<p>巴西最近的总统选举受到了全球和国内媒体的极大关注，这不仅是因为巴西的国土面积，还因为有关选举舞弊的过早指控。巴西 2022 年大选的第一轮投票于 10 月 2 日举行，决选于 10 月 30 日星期日举行。在 1.24 亿张选票中，前总统卢拉·达席尔瓦(Lula da Silva，2003-2010年)以 50.9% 的得票率击败了获得 49.1% 选票的现任总统雅伊尔·博尔索纳罗（Jair Bolsonaro）。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/11/2.png" class="kg-image" alt="官方最高选举法院（Tribunal Superior Eleitoral）发布的最终结果， 统计选票总数超过 1.24 亿张。">
+		<figcaption>官方<a href="https://resultados.tse.jus.br/oficial/app/index.html#/eleicao/resultados" target="_blank">最高选举法院（Tribunal Superior Eleitoral）</a>发布的最终结果， 统计选票总数超过 1.24 亿张。</figcaption>
+	</figure>
+	<p>使用 Cloudflare 的数据，我们可以探索这次选举对巴西互联网流量模式的影响，以及对选举相关网站、新闻机构、社交媒体平台和视频平台内容的兴趣。</p>
+	<p>这里有几个亮点：虽然决选导致与选举有关的网站更受关注(我们能查看 DNS 查询情况），但第一轮投票给新闻机构的流量带来更大增长。</p>
+	<p>就候选人的域而言，卢拉的胜选带来更大影响。</p>
+	<p>此外，官方结果在决选中比第一轮更早公布，当天(10 月 30 日)的流量峰值也出现得更早、更高。</p>
+	<p>(注：本文提到的时间均为当地时间，即 UTC-3，与巴西人口最多的地区相关，尽管某些图表的 X 轴使用 UTC 时间）</p>
+	<p>我们首先看一下巴西的总体互联网流量。</p>
+	<h3 id="-">选举日流量出现下降（日间）</h3>
+	<p>通过 <a href="https://radar.cloudflare.com/br" target="_blank">Cloudflare Radar</a>，我们看到与其他在星期天进行选举的国家类似的现象：大多数人外出投票时，互联网流量出现下降（相比之前的星期天）。在 2022 年 4 月的两轮<a href="https://blog.cloudflare.com/french-elections-2022-runoff/">法国总统选举</a>，2022 年 1 月的葡萄牙议会选举和现在巴西的选举中都看到了这种情况。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/3.png" class="kg-image"></figure>
+	<p>我们也可以对比一下 10 月份的星期天。当月有 5 个周末。其中两个有选举的周末显示日间流量下降的同样模式，如上图所示。对比两个选举日，10 月 30 日的流量降幅(当地时间 18:00 左右下降 21%)，超过 10 月 2 日的流量降幅(20:00 左右下降 10%)。不管是否有关，决选的投票率(1.24 亿票)高于第一轮的投票率(1.23亿票)。这是 10 月 30 日的流量图表：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/4.png" class="kg-image"></figure>
+	<p>这是 10 月 2 日的流量图表：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/5.png" class="kg-image"></figure>
+	<p>下图更清晰地比较了 10 月的周末，其中 10 月 2 日和 30 日这两个星期天的模式相同，不同于当月其余 3 个星期天（请注意 X 轴显示 UTC 时间，比巴西时间早 3 个小时）：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/6.png" class="kg-image"></figure>
+	<p>查看<a href="https://radar.cloudflare.com/br" target="_blank">巴西</a>主要网络提供商 (<a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system/" target="_blank">ASNs</a>) 的数据，可以看到相同的趋势。Claro (<a href="https://radar.cloudflare.com/as28573" target="_blank">AS28573</a>) 也显示 10 月 30 日流量下降，Telefonica (<a href="https://radar.cloudflare.com/as27699" target="_blank">AS27699</a>) 也是如此：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/7.png" class="kg-image"></figure>
+	<p>这是 Telefonica：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/8.png" class="kg-image"></figure>
+	<p>我们观察到，在 10 月 30 日的决选中，巴西各州的流量受到了类似的影响，包括圣保罗、里约热内卢、Rio Grande do Norte、Minas Gerais 和 Bahia。</p>
+	<h3 id="--1">周末(及选举日)移动设备使用率较高</h3>
+	<p>从 10 月份巴西移动设备的互联网流量份额来看，我们发现 10 月2 日(第一轮选举，66.3%)、10 月 9 日(66.4%)和 10 月 30 日(决选，65%)的比例最高。我们在其他选举中也看到了这种情况，即移动设备流量增加，所以这似乎遵循了同样的趋势。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/9.png" class="kg-image"></figure>
+	<p>这张图表还显示了巴西的移动设备使用率在周末如何达到最高水平(所有移动设备百分比的主要峰值都是在周末，更多是在星期天)。</p>
+	<p>现在，看一下来自我们的 <a href="https://1.1.1.1/" target="_blank">1.1.1.1</a> 解析器的匿名化聚合 DNS 流量数据。这些数据从侧面反映了巴西用户在大选前后对不同类别网站的流量和兴趣。</p>
+	<h3 id="--2">选举相关网站：对决选兴趣更高</h3>
+	<p>巴西有与选举相关的政府网站，也有自己的高级选举法庭，包括一个<a href="https://resultados.tse.jus.br/oficial/app/index.html#/eleicao/resultados" target="_blank">网站</a>和<a href="https://www.tse.jus.br/eleicoes/eleicoes-2022/divulgacao-dos-resultados-das-eleicoes-2022" target="_blank"> App</a>，提供选举结果的实时更新，供所有人查看。查看这些相关的域，并使用 9 月份的平均每小时流量作为基线，我们可以看到 10 月 2 日的第一轮选举期间 DNS 查询在当地时间 20:00 激增了 16 倍余。然而，决选期间的 DNS 查询流量在当地时间 10 月 30 日 18:00 达到峰值，与 9 月基线相比，DNS 流量增加了 17.4 倍。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/10.png" class="kg-image"></figure>
+	<p>我们可以更详细地观察下这两个选举日中的每一天。10 月 2 日，当地时间 17 点左右，流量首次大幅增加，与 9 月基线相比，对选举相关域的请求增加了 15 倍。最初的峰值出现在投票站关闭的同一时间。然而，当天的峰值是在当地时间 20:00 达到的，高于基线 16 倍，如下图所示。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/11.png" class="kg-image"></figure>
+	<p>2022 年 10 月 30 日星期日的情况类似，不过峰值提前达到，因为结果第一轮更早开始到达。峰值在当地时间 18:00 左右达到，请求流量比基线高出 17.4 倍。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/12.png" class="kg-image"></figure>
+	<p>如下图所示，卢拉在当地时间 18 点 45 分的官方结果中首次领先，当时已经统计了 67% 投票站选票。20:00 左右，卢拉被认为胜选(此前图表中看到的峰值就是在当时出现的)。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/Screenshot-2022-11-03-at-12.36.52-PM.png" class="kg-image"></figure>
+	<h3 id="--3">候选人网站：最终，赢家通吃？</h3>
+	<p>对于卢拉相关域，10 月 2 日的第一轮选举前后出现明显的流量激增。10 月 1 日当地时间 21:00 左右，出现一次 13 倍于基线的峰值。10 月 2 日录得两次明显的峰值 —— 其一为基线的 16.7 倍，出现在当地时间 09:00，另一次为基线的 10.7 倍，出现在当地时间21:00。10 月 30 日决选日前后，仅录得一次明显的流量峰值。该峰值相当于基线的 16.7 倍，发生在 20:00 左右，与卢拉被宣布胜选的时间一致。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/14.png" class="kg-image"></figure>
+	<p>对于 Bolsonaro 相关域，我们观察到不同的模式。第一轮选举之前的几天内，可见相对基线的明显流量增长，在 9 月 30 日达到 10 倍。10 月 2 日当地时间 18:00，出现一次 8 倍于基线的峰值。然而，10 月期间最显著的两次峰值分别出现在 10 月 16 日卢拉-博尔索纳罗首次电视辩论后的几个小时内，20 倍于基线；以及 10 月 25 日20:00 左右，22 倍于基线。那是 10 月 30 日决选前的最后一周，当时公布了几项民调预测。卢拉-博尔索纳罗的第二次、也是最后一次电视辩论是在 10 月 28 日，22:00 卢拉的网站出现一次峰值，博尔索纳罗的网站在 21:00 左右出现一次较小但也明显的峰值。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/15.png" class="kg-image"></figure>
+	<h3 id="--4">新闻网站：第一轮更受关注</h3>
+	<p>鉴于官方选举结果更快提供，巴西新闻机构的 DNS 流量在晚上达到峰值的时间比其他选举更早，例如<a href="https://blog.cloudflare.com/french-elections-2022-runoff/">法国</a>，后者更明确的选举结果是在选举日晚得多的时间公布的。但另一个值得关注的趋势是，10 月 2 日第一轮的 DNS 流量（相当于 9 月基线的 9.1倍）与 10 月 30 日决选期间的 DNS 流量对比(6.1 倍)。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/16.png" class="kg-image"></figure>
+	<p>结果更快到达的情况也对峰值时间产生了影响，10 月 30 日当地时间 19:00 左右，而 10 月 2 日为 20:00 左右。</p>
+	<p>10 月 30 日当地时间 19:45，卢拉已经胜选，赢得 98% 以上的已清点选票。20:00 之后，新闻机构的 DNS 流量明显下降。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/17.png" class="kg-image"></figure>
+	<p>10 月 2 日，直到 22:00 左右，官方才公布卢拉和博尔索纳罗将参加决选。峰值请求量出现在 20:00 (9倍)，但在 21:00 左右及直到 22:00 ，请求量仍然很高(8倍)，如下图所示:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/18.png" class="kg-image"></figure>
+	<h3 id="--5">结论：真实世界事件影响互联网</h3>
+	<p>Cloudflare Radar 是我们的互联网洞察工具，可为重大的全球或国家事件如何影响互联网提供独特的视角。引人关注的是，我们不仅看到一个真实世界的事件可以影响整个国家的互联网流量(和不同类型的网站)，还看到这种影响在特定时间的表现。这一切都是关于人类在相关时刻的行为，就像选举作为一个集体事件一样。</p>
+	<p>过去的例子包括：重大<a href="https://blog.cloudflare.com/elections-france-2022/">总统选举</a>，<a href="https://blog.cloudflare.com/who-won-super-bowl-lvi-a-look-at-internet-traffic-during-the-big-game/">超级碗</a>，<a href="https://blog.cloudflare.com/oscars-2022-impact/">奥斯卡</a>，<a href="https://blog.cloudflare.com/eurovision-2022-internet-trends/">欧洲电视网</a>， 从<a href="https://blog.cloudflare.com/how-the-james-webb-telescopes-cosmic-pictures-impacted-the-internet/">望远镜</a>拍到的前所未见的宇宙照片，假日购物季，或者<a href="https://blog.cloudflare.com/how-ramadan-shows-up-in-internet-trends/">斋月</a>等宗教活动。</p>
+	<p>您可以使用 <a href="https://radar.cloudflare.com/" target="_blank">Cloudflare Radar</a> 继续关注这些趋势。</p>
+</div>
