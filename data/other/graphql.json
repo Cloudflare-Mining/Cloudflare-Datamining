@@ -2924,6 +2924,36 @@
 	"Time": {
 		"__description": "Scalar type time.Time"
 	},
+	"ZoneApiRequestSequencesGroups": {
+		"__description": "Sequences of API endpoint operations. Sequences are grouped by AuthID and currently ranked by correlation score. Correlation scores are estimated over a 24 hour window and are current to within 10 minutes",
+		"aggArgMax": "",
+		"aggMax": "",
+		"dimensions": "List of dimensions to group by"
+	},
+	"ZoneApiRequestSequencesGroupsAggArgMax": {
+		"__description": "",
+		"correlation": "Correlation score estimated over a 24 hour window (higher scores mean more correlation between requests in the sequence of endpoint operations)",
+		"numOccurrences": "Estimated number of occurrences of this sequence of endpoint operations",
+		"operationsApiEndpoints": "API endpoints comprising the sequence of operations. Individual endpoints are delimited by # symbols",
+		"operationsClientRequestHTTPMethods": "HTTP request methods comprising the sequence of operations. Individual request method names are delimited by # symbols"
+	},
+	"ZoneApiRequestSequencesGroupsAggMax": {
+		"__description": "",
+		"timeLastSeen": "Time of the most recent occurrence of this sequence of endpoint operations (based on the timestamp of the first request in the sequence)",
+		"timeLastUpdated": "The time at which Cloudflare last refreshed this data"
+	},
+	"ZoneApiRequestSequencesGroupsDimensions": {
+		"__description": "",
+		"clientRequestHTTPHost": "The host associated with this sequence of endpoint operations",
+		"datetime": "Sequence generation timeslot, truncated to 10 minutes",
+		"rank": "Sequence rank based on ordering sequences by correlation"
+	},
+	"ZoneApiRequestSequencesGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"ZoneApiRequestSequencesGroupsOrderBy": {
+		"__description": ""
+	},
 	"ZoneCacheReserveOperationsAdaptiveGroups": {
 		"__description": "Beta. Cache Reserve operations with adaptive sampling",
 		"dimensions": "List of dimensions to group by",
@@ -4019,6 +4049,7 @@
 	},
 	"ZoneSettings": {
 		"__description": "Access and limitations for a zone",
+		"apiRequestSequencesGroups": "",
 		"cacheReserveOperationsAdaptiveGroups": "",
 		"cacheReserveStorageAdaptiveGroups": "",
 		"emailRoutingAdaptive": "",
@@ -4406,6 +4437,7 @@
 	},
 	"zone": {
 		"__description": "",
+		"apiRequestSequencesGroups": "Sequences of API endpoint operations. Sequences are grouped by AuthID and currently ranked by correlation score. Correlation scores are estimated over a 24 hour window and are current to within 10 minutes",
 		"cacheReserveOperationsAdaptiveGroups": "Beta. Cache Reserve operations with adaptive sampling",
 		"cacheReserveStorageAdaptiveGroups": "Beta. Cache Reserve storage with adaptive sampling",
 		"emailRoutingAdaptive": "Beta. Raw email routing logs with adaptive sampling",
