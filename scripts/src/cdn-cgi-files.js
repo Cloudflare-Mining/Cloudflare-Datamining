@@ -70,7 +70,8 @@ for(let i = 100; i <= 1500; i++){
 		.replaceAll(isoDate, '[date]')
 		.replaceAll(niceDate, '[date]')
 		.replaceAll(/your IP address is in \((\d+)\)/g, '[asn]')
-		.replaceAll(/your IP address is in \((\w+)\)/g, '[country]');
+		.replaceAll(/your IP address is in \((\w+)\)/g, '[country]')
+		.replaceAll(/Data center: \w+\d/g, 'Data center: [colo]');
 
 	const dom = cheerio.load(fixedData);
 	const cfCloudflareStatus = dom('#cf-cloudflare-status');
