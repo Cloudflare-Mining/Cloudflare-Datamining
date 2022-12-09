@@ -71,6 +71,7 @@ for(let i = 100; i <= 1500; i++){
 		.replaceAll(niceDate, '[date]')
 		.replaceAll(/your IP address is in \((\d+)\)/g, '[asn]')
 		.replaceAll(/your IP address is in \((\w+)\)/g, '[country]')
+		.replaceAll(/Country: [A-Z]+/g, 'Country: [country]')
 		.replaceAll(/Data center: \w+\d/g, 'Data center: [colo]');
 
 	const dom = cheerio.load(fixedData);
