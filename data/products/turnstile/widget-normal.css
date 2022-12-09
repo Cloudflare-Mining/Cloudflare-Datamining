@@ -234,6 +234,27 @@ tr {
 	stroke-linejoin: round
 }
 
+.expired_circle {
+	stroke-width: 3px;
+	stroke-linecap: round;
+	stroke: #e0e0e0;
+	stroke-linejoin: round
+}
+
+#expired-icon {
+	position: absolute;
+	left: 15px;
+	top: 20px;
+	width: 30px;
+	height: 30px;
+	display: block;
+	stroke-width: 6px;
+	stroke: #f8f8f8;
+	stroke-miterlimit: 10;
+	box-shadow: inset 0 0 #e0e0e0;
+	animation: scale .3s ease-in-out .9s both
+}
+
 @keyframes rotate {
 	to {
 		transform: rotate(360deg)
@@ -421,6 +442,7 @@ body.theme-dark {
 }
 
 .size-compact .ctp-checkbox-label .mark,
+.size-compact #expired-icon,
 .size-compact #success-icon,
 .size-compact #spinner-icon,
 .size-compact #fail-icon {
@@ -438,4 +460,14 @@ body.theme-dark {
 .size-compact #challenge-error-title {
 	margin-top: 3px;
 	width: auto
+}
+
+#expired-refresh-link,
+#expired-refresh-link:visited {
+	color: #f6821f
+}
+
+#expired-refresh-link:active,
+#expired-refresh-link:hover {
+	color: #fbad41
 }
