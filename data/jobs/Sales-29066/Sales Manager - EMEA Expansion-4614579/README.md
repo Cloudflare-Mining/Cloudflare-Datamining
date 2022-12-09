@@ -20,6 +20,7 @@
 </ul>
 <p><strong>Examples of desired skills, knowledge and qualifications</strong></p>
 <ul>
+	<li><strong>Fluent French speaker</strong></li>
 	<li>At least 5 years of experience with Cyber Security and/or Enterprise Networking Solutions</li>
 	<li>2 years plus Sales Management experience</li>
 	<li>A proven tracking record of exceeding sales quota in EMEA</li>
