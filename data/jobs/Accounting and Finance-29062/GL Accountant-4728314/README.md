@@ -5,57 +5,47 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Linux Engineer</strong></p>
-<p><span style="font-weight: 400;">An engineering role at Cloudflare provides an opportunity to address some big challenges, at scale. We believe that with our talented team, we can tackle some of the biggest security, reliability and performance problems facing the Internet.</span></p>
-<p><span style="font-weight: 400;">We are searching for Linux engineers to make our flavour of Linux fast, resilient and reliable across the many use cases that a distribution saving the Internet requires.&nbsp;</span></p>
-<p><span style="font-weight: 400;">Our Engineers come from a variety of technical backgrounds and work across a broad range of environments and codebases. Common qualities across all of our performance-focused engineers include a passion for analysis, optimization, scaling, networking, cross-team collaboration and hard problem solving.</span></p>
-<p><strong>What you would be doing</strong></p>
+<p><strong>What you'll do</strong><br>We are seeking a highly skilled and motivated GL Accountant to help support the General ledger team. This position is integral to building a world-class organization to support our growing and complex global business. This role requires a highly skilled and ambitious professional who can support various areas within the Accounting team.</p>
+<p><strong>Examples of desirable skills, knowledge and experience:</strong></p>
+<p><span style="text-decoration: underline;">Close:</span></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Keep Cloudflare Linux platforms secure and up-to-date</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Help with quick and safe deployment and delivery of the Linux kernel and basic operating system to Cloudflare Datacentres in more than 250 cities in over 100 countries</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Continuously monitor and resolve kernel bugs and performance regressions</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Design tools and frameworks for other engineering teams to successfully embrace and enable the latest Linux kernel features and optimizations</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Help porting the Cloudflare software stack to new hardware platforms and architectures</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Research and adopt the latest Linux kernel security features and performance improvements</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Build tools and CI/CD pipelines for safe and automated operating system continuous deployment</span></li>
+	<li>Assists in posting monthly accrual journal entries</li>
+	<li>Assists in recording internally developed software entries</li>
+	<li>Assists in recording and reconciling credit card and accrual activity</li>
+	<li>Prepares various account reconciliations, schedules, exhibits and summaries to support the general ledger balances and investigate variances</li>
 </ul>
-<p><strong>Requisite skills:</strong></p>
+<p><span style="text-decoration: underline;">Audit:</span></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with the Linux kernel and Linux software packaging</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">CS fundamentals and comfortable working in multiple programming languages and codebases</span></li>
-	<li style="font-weight: 400;">Containerization technologies (e.g Docker, containerd, gVisor)</li>
-	<li style="font-weight: 400;">Configuration management (e.g Saltstack, Chef) and CI/CD pipelines</li>
-	<li style="font-weight: 400;">Version control systems (git)</li>
+	<li>Participate in the interim and annual audits for the Company</li>
+	<li>Support audits and external reporting requirements (year-end audit, interim audit, quarterly reviews, SOX, Internal Audit, SEC Reporting, etc.)&nbsp;</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p>&nbsp;</p>
+<p><span style="text-decoration: underline;">Process Improvement:</span></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Performance analysis and debugging</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Load balancing and reverse proxies such as Nginx, Varnish, HAProxy or Apache</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Time series databases such as OpenTSDB, Graphite, Prometheus or Grafana</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Key/Value stores</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Network fundamentals DHCP, ARP, subnetting, routing, firewalls, IPv6, BGP</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience in a DevOps team structure</span></li>
+	<li>Participant in various cross-functional projects and initiatives ranging in size and scope (i.e. system implementations, process changes, etc.)</li>
+	<li>Drive continuous process improvement activities (enhanced process documentation, process enhancements, automation, cross-training, etc.)</li>
 </ul>
-<p><strong>Bonus Points</strong></p>
+<p>&nbsp;</p>
+<p><span style="text-decoration: underline;">Various Responsibilities:</span></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with programming in C, C++ or Go</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with rapid release engineering</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Upstream community contribution</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong tooling and automation development experience</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience working in a 24/7/365 service environment</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">High-bandwidth transit Internetworking and routing experience</span></li>
+	<li>Provides support to all areas of the Accounting Department as needed</li>
+	<li>Performs other analysis and special projects as assigned&nbsp;</li>
 </ul>
-<p><strong>Some tools that we use</strong></p>
+<p>&nbsp;</p>
+<p><strong>Examples of desirable skills, knowledge and experience:</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Consul</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Docker</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Grafana</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Kubernetes</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Nginx</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Nomad</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">PostgreSQL</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Prometheus</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Salt</span></li>
+	<li>Bachelor's degree in Accounting or Finance.</li>
+	<li>Sound knowledge of generally accepted accounting principles</li>
+	<li>Experience in SAAS industry</li>
+	<li>Systems savvy candidate required: should possess a solid understanding and application of finance and accounting systems (NetSuite or other accounting system etc).</li>
+	<li>Advanced analytical and information gathering skills; ability to evaluate and prioritize extensive detailed data.</li>
+	<li>Excellent interpersonal and communication skills (written and verbal) with the ability to interface effectively with all levels of the Company.</li>
+	<li>3+ years of relevant experience</li>
+	<li>Ability to manage multiple priorities to meet established timelines</li>
+	<li>Excel skills including working knowledge of pivot tables, Vlookups, formulas, etc.</li>
+	<li>Must possess excellent written and verbal communication skills and have the ability to interact with peers and senior management.</li>
+	<li>Strong problem-solving and analytical skills</li>
+	<li>Ability to work independently</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

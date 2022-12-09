@@ -6,38 +6,33 @@
 	</div>
 </div>
 <p><strong>To the attention of candidates (Mexico City):&nbsp;</strong></p>
-<p><strong>This role requires full time work over the Weekends. Candidates should be comfortable working with a “Wed-Sun” or “Sat-Wed” 5-day working week schedule. Candidates MUST have right-to-work in Mexico.&nbsp;&nbsp;</strong><strong>Visa sponsorship is NOT provided for this position</strong><strong>.</strong></p>
-<h4><strong>About the Department</strong></h4>
+<p><strong>This role requires full time work over the Weekends. Candidates should be comfortable working with a “Wed-Sun” or “Sat-Wed” 5-day working week schedule. Candidates MUST have right-to-work in Mexico.&nbsp;&nbsp;Visa sponsorship is NOT provided for this position.</strong></p>
+<h4>About the Department</h4>
 <p>The Customer Support Team solves complicated problems and answers technical inquiries via phone, email, chat, and social media. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, our team is always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - to help build a better service and future product development.</p>
-<h4><strong>What You’ll do</strong></h4>
-<p>Do you love solving complex problems and interacting with people? Are you passionate about helping customers and are a standout colleague? Cloudflare is seeking a Technical Customer Support Engineer to join our team. You will work with our customers on a variety of technical support issues as well as the Technical Operations team that is responsible for running our global distributed network. This is a position where you will learn the inner workings of Cloudflare's technology and gain a deeper understanding of internet technologies.</p>
-<p><strong>Examples of required skills, knowledge, and experience</strong></p>
+<h4>What You’ll Do</h4>
+<p><span style="font-weight: 400;">Do you love solving complex problems and interacting with people? Are you passionate about helping customers and a standout colleague? Cloudflare is seeking a Technical Customer Support Engineer to join our team. You will work with customers on a variety of technical support issues as well as the Technical Operations team that is responsible for running our global distributed network. This is a position where you will learn the inner workings of Cloudflare's architecture and gain a deeper understanding of Internet technologies. You will focus on providing support for our Content Delivery products: Workers, Speed, Images, Stream, CDN and others.</span></p>
+<h4>Examples of desirable skills, knowledge and experience</h4>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Fundamental understanding how the Internet works (OSI Model)&nbsp;</span></li>
-	<li><span style="font-weight: 400;">2-4 years experience working within a Technical/Customer Support team</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience troubleshooting DNS, SSL/TLS, HTTP, and network related issues</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Fundamental understanding of what a proxy is, how it works, and configurations involved</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">You possess a web development, hosting and customer support background</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Extensive experience with command line and command line tools including curl, dig, traceroute, openssl, git, tcpdump</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience installing and configuring web servers like Apache, Nginx, and IIS</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Hands-on experience with Linux/Mac/Windows Operating Systems</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">You have strong communication skills, both verbal and written</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">You are self-driven and capable of teaching yourself new technologies/systems/features with little guidance</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">You have experience writing scripts in Bash, Python, JavaScript, or other scripting language</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Passionate about working in Support, helping customers, and being a team player</span></li>
+	<li><span style="font-weight: 400;">You have worked as part of a team in a customer-facing role and want to progress your career as a support professional</span></li>
+	<li><span style="font-weight: 400;">You have solved issues from the network to the application layer</span></li>
+	<li><span style="font-weight: 400;">You have resolved front-end dashboard and API issues</span></li>
+	<li><span style="font-weight: 400;">You have analyzed and tuned website performance issues</span></li>
+	<li><span style="font-weight: 400;">You understand Javascript or other scripting languages&nbsp;</span></li>
+	<li><span style="font-weight: 400;">You have developed or maintained internet applications</span></li>
+	<li><span style="font-weight: 400;">You have experience with video encoding and streaming solutions</span></li>
+	<li><span style="font-weight: 400;">You have worked with SQLite or other database servers</span></li>
+	<li><span style="font-weight: 400;">You are comfortable communicating through various support channels and always put the customer first</span></li>
+	<li><span style="font-weight: 400;">You are a motivated self-starter and always looking to expand your existing skill set</span></li>
 </ul>
-<p><strong>Requirements</strong></p>
+<h4>Bonus Points</h4>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Flexibility to work varying work schedules including; Pacific time, holidays, weekends, more than 5 days in a row, overtime</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Remote work / work from home available in PDT time zone</span></li>
+	<li><span style="font-weight: 400;">You are fluent in German, Japanese, French, Spanish, Portuguese or Mandarin</span></li>
+	<li><span style="font-weight: 400;">You are familiar with Cloudflare and have a site actively using our platform</span></li>
+	<li><span style="font-weight: 400;">You have a solid grasp of problem-solving with command line tools (curl/dig/traceroute/tcpdump) and developer tools (git/wrangler/npm)</span></li>
+	<li><span style="font-weight: 400;">You are familiar with Nginx, Apache, IIS or any other web servers</span></li>
+	<li><span style="font-weight: 400;">You are committed to gaining a deeper understanding of the following technologies: DNS /&nbsp; SSL / CDN - Cache / Cloudflare Workers</span></li>
+	<li><span style="font-weight: 400;">You have experience with Cloudflare Workers&nbsp;&nbsp;</span></li>
 </ul>
-<p><strong>Bonus Points</strong></p>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">You are familiar with Cloudflare and have a site actively using our platform</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">You have the ability to read and write in multiple languages</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">You are comfortable with popular CRM/CMS solutions</span></li>
-</ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
