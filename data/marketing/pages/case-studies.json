@@ -5897,35 +5897,6 @@
 						]
 					},
 					{
-						"id": "f9257eb7-f8a6-5add-8fe9-d130acaf62f5",
-						"contentfulId": "1VOO1o0cS6ENNuviu9mpha",
-						"logo": {
-							"file": {
-								"publicURL": "[path]/bitfly_logo.svg"
-							}
-						},
-						"nameUrlSlug": "bitfly-spectrum-protect-tcp-from-ddos-attacks",
-						"shortDescription": "Bitfly uses Cloudflare Spectrum to protect TCP traffic from DDoS attacks.",
-						"longDescription": "*Protecting your TCP applications on the Internet is a tough job — that's why Bitfly turned to Cloudflare Spectrum.*\n\nBitfly is a blockchain technology firm that makes two core products: the first akin to a web browser for the blockchain, allowing users to easily navigate the data that underlies each cryptocurrency. The second is a proprietary tool for 'mining pools', which allow many users to combine computing resources for the sake of cryptographically generating additional currency, and safeguarding the blockchain itself.\n\nSecurity is vitally important when it comes to cryptocurrency, and Bitfly takes a number of measures to ensure its customers' funds stay safe — like employing Cloudflare's world-class [DDoS protection](https://www.cloudflare.com/ddos/).\n\nBefore switching to Cloudflare, Bitfly was using a conventional hosting provider for security. It worked well enough, until it didn't — taking down Bitfly's service for stretches that were unacceptable. Meanwhile Bitfly was facing the threat of escalating DDoS attacks, prompting its users to ask, \"Why don't you just use Cloudflare and be done with all that?\"\n\nAnd so they did, says Bitfly Founder and CEO Peter Pratscher. Bitfly initially joined Cloudflare as a Free customer several years ago, upgrading to our Professional and now-Enterprise plan as its business scaled.\n\n## The Cloudflare Difference\n\nOne of the key ways Bitfly leverages Cloudflare has to do with the nature of its data. Most security providers focus almost exclusively on the HTTP traffic associated with conventional web apps — but HTTP represents only a fraction of Internet traffic. Bitfly's core mining product operates over TCP, a foundational Internet protocol that handles huge volumes of data, but isn't protected by most Internet security services. \n\nThat's where Cloudflare's unique security service, [Spectrum](https://www.cloudflare.com/products/cloudflare-spectrum/ \"Spectrum\"), comes in.\n\nSpectrum brings Cloudflare's DDoS mitigation — powered by one of the world's largest networks — to vital, woefully underprotected protocols like SMTP (email), SSH, and, more broadly, any service that runs over TCP. \n\nBefore Cloudflare Spectrum, Bitfly would have had a difficult time defending its TCP services against attack, especially because the tool operates on arbitrary TCP ports. But with Cloudflare Spectrum, those concerns have faded to the background. \n\n![peter pratscher bitfly quote image 2](//cf-assets.www.cloudflare.com/slt3lc6tev37/69la8OS0lHpRnm9xKkFYQO/b5ccab79cd98b8c63e04df6602f6dbfe/peter_pratscher_bitfly_quote_image_2.png)\n \n*To learn more about Bitfly, visit their site [here](https://www.bitfly.at/).*\n\n*For more on __Cloudflare Spectrum__ and the protocols it defends, visit our portal [here](https://www.cloudflare.com/products/cloudflare-spectrum/).*",
-						"cloudflareStreamVideoId": null,
-						"orderDate": "2019-01-30",
-						"ref_streamVideoThumbnail": null,
-						"twoCardPreviewImage": null,
-						"industryNew52420": [
-							"High Technology"
-						],
-						"regionNew52520": [
-							"Europe, Middle East & Africa"
-						],
-						"primaryUseCases": [
-							"Secure websites & applications"
-						],
-						"product": [
-							"Spectrum",
-							"DDoS Protection"
-						]
-					},
-					{
 						"id": "1d252760-78dd-52d8-a448-b43a8d6f2367",
 						"contentfulId": "3BZdfIRcD6U8IsW0eMEQ2o",
 						"logo": {
@@ -6222,32 +6193,6 @@
 						"product": [
 							"Argo Smart Routing"
 						]
-					},
-					{
-						"id": "9a70be45-d8d8-54fc-b45b-ef97edec3516",
-						"contentfulId": "1ng1KHwKZWeUIEUiakUiA",
-						"logo": {
-							"file": {
-								"publicURL": "[path]/sofascore.png"
-							}
-						},
-						"nameUrlSlug": "sofascore-hits-big-with-cloudflare",
-						"shortDescription": "SofaScore is particularly interested in Cloudflare's Mobile SDK ability to provide mobile network visibility and measurement for their app.",
-						"longDescription": "__About SofaScore__\n\n[SofaScore](https://www.sofascore.com/) is a sports app that reports on game outcomes and results in 22 sports. It also provides player stats and analytics across several hundreds football leagues to help fans get information on their favorite teams and players. Fans get real-time updated stats to help them make more informed decisions for building their fantasy teams. Their Android and iOS app along with their website at sofascore.com currently supports over 15M monthly active users.\n\nBased in Croatia, co-founders Ivan Beslic, COO and Zlatko Hrkac, CEO have a long standing history that extends beyond them doing business together. They were childhood friends that grew up together on the same street. They each progressed along with their respective careers, but at the same time they aspired to create something \"big\" together, something that unites their mutual personal interests and wider market needs. It wasn't long before they figured out that doing something related to sports would be their ticket to success.\n\n__The Evolution of SofaScore__\n\nSofaScore is the latest rebranding initiative for the company. As their global presence began to expand, they needed a unique name that would translate well across multiple languages. \"SofaScore was selected as our name, because our subscribers want to be connected anywhere to get live score updates - even from their sofa at home\" explained Beslic. \"We were initially focused on providing score updates for football games in Europe. But today we cover expanded countries in South America and Africa - and we've added multiple other sports including American football, motorsports, basketball and many others!\"\n\n\"Our most recent enhancements now provide individual player stats and analytics beyond live scores. We've partnered with Opta Sports and SportRadar; the leading authorities for live data analysis and player statistics.\" SofaScore's subscribers rely on the app to provide up to date score reporting and player analysis. These analytics are vital for real sports fans, while also valuable for individual athletes and coaches\n\n__The challenges of growth__\n\nAs their markets expanded, so did the requirements to meet their users' app experience expectations. They were also faced with increasing competition from other emerging competing products and services.\n\n\"The number of sports leagues we were covering increased by over 10x, which also meant we needed to build a more resilient app architecture to support an increasing number of requests to more services and APIs for live scores.\" explained Josip Stuhli, their CTO.\n\n\"One of the largest markets for us is in South America, where football is a national sport almost in every country. As is common in many developing economies however, best in class cellular network connectivity was not widely available across the region.\" \"Our users were complaining about slow reporting in our app, where the delays in updates didn't accurately reflect the current score. We needed to figure out how to get a better handle on the problem.\"\n\nSuccess of SofaScore is largely dependent on a mobile app that works fast, especially when live games are taking place, increasing the simultaneous user traffic on the app. Despite their best efforts to develop an app that ran flawlessly on the user's device, they were still at the mercy of poor bandwidth and network connectivity in many of the emerging markets where their users were based.\n\n__How Cloudflare helps__\n\nSofaScore started testing Cloudflare in 2015, and has been using it to serve all of their customers ever since. Cloudflare provides a cost effective means to secure their web presence, with fixed predictable pricing. In 2018, Stuhli discovered Cloudflare's Mobile SDK on the Cloudflare blog. They were particularly interested in its ability to provide mobile network visibility and measurement for their app.\n\n\"We downloaded the SDK, and began exploring the process to integrate it into our app. We were interested in using the SDK to understand how our app performs in different countries and how much impact poor network conditions had on the user experience. We were immediately able to identify regions with the highest traffic and requests and able to see the equivalent network error rates in these regions\" explained Beslic.\n\nOnce they identified specific issues, they needed to explore ways to remediate these challenges. \"It was obvious at this point that we had issues in specific regions, and needed to explore how we could go about fixing these issues. The fact that Cloudflare's SDK offered a turnkey acceleration module made that process even easier\" added Beslic. \"We turned on the ASAP module for specific domains and service calls, and began to monitor the metrics in the SDK dashboard. \"Since we integrated the SDK, we've seen increases in in-app session engagement across all of the regions we serve.\"\n\n__What's next for SofaScore?__\n\nSofaScore covers 22 sports with football being the main focus of their current subscribers, and are already gearing up for the 2018/19 season across major upcoming leagues and tournaments. Over the past few years they introduced unique SofaScore statistical live player ratings which have become widely recognized as one of the leading player performance indicators.\n\nThey recently launched a feature called \"AttackMomentum,\" a simple way for fans to follow their games that leverage proprietary algorithms to provide real time game insights. These graphical statistical representations were very well received by their subscribers and they plan on evolving these features even further.\n\n\"We have many ideas and there's a lot of work ahead of us so it is vital that we have the right infrastructure to handle our current subscriber workloads plus the new users we anticipate bringing on board. Some of our ideas are to cover even more sports and to provide the same level of accuracy in our statistical analysis\" states Hrkac. \"Cloudflare is a key partner in success for SofaScore, and our deployment of their SDK is a crucial investment to ensure the growth of our company\" he added.",
-						"cloudflareStreamVideoId": null,
-						"orderDate": "2018-07-05",
-						"ref_streamVideoThumbnail": null,
-						"twoCardPreviewImage": null,
-						"industryNew52420": [
-							"Media & Entertainment"
-						],
-						"regionNew52520": [
-							"Europe, Middle East & Africa"
-						],
-						"primaryUseCases": [
-							"Accelerate digital properties"
-						],
-						"product": null
 					},
 					{
 						"id": "2416db74-edde-59de-ade8-841ee40a0025",
@@ -6625,35 +6570,6 @@
 							"Secure websites & applications"
 						],
 						"product": null
-					},
-					{
-						"id": "013874d3-68f0-5753-997c-c9349ab07660",
-						"contentfulId": "2sGIqK4Yg8IgMo8uusUOK0",
-						"logo": {
-							"file": {
-								"publicURL": "[path]/new-easy.png"
-							}
-						},
-						"nameUrlSlug": "new-easy",
-						"shortDescription": "New Easy enjoys performance, security, and savings without compromise.",
-						"longDescription": "New Easy enjoys performance, security, and savings without compromise.\n\n![new-easy-graphic](//cf-assets.www.cloudflare.com/slt3lc6tev37/2bOToucjVa6y0gIqYSkU0k/858d107fd0a63dd331a7c91832cab677/new-easy-graphic.svg)\n\n[NewEasy.com](https://www.neweasy.com/) is an online store selling innovative new products that make life easy. The New Easy Marketplace gives shoppers a single destination for their favorite As Seen On TV products plus hundreds of other items. \"We work with all of the top direct response manufacturer's,\" explained Ron Rule, President and CEO of As Seen On TV, Inc., \"and directly with inventors to bring new products to the web and consumer retail space.\"\n\n__New Easy's Challenge: Serving Media to Spikes of Millions of Visitors__\n\n\"Initially, our challenge was around serving the media content on our site,\" Rule continued. \"With millions of visitors across thousands of products, all with images and most with video, using a CDN was essential.\" A CDN, or Content Delivery Network, aids New Easy's media delivery by caching static content and serving them from the edge servers nearest to the end user. This caching and serving helps reduce bandwidth loads and also improves performance as visitors get served from the data center closest to them instead of an origin server in a remote location.\n\n\"A second challenge was handling the spikes in traffic that come to our site,\" Rule added. \"At any given time there may be only a few hundred users on the site, but when a product commercial airs on television we get a huge surge in traffic. It was difficult to maintain a configuration that could handle the traffic spikes without being unnecessarily expensive the rest of the time.\"\n\nWithout a CDN these traffic spikes can overload servers, bring sites entirely offline, or make them painfully slow performing. \"Customers don't want to wait for slow pages,\" Rule noted. \"If things aren't loading quickly, they'll hit their back button and shop elsewhere.\"\n\n\"I also had some security concerns,\" Rule related, \"since it seemed as though every week new vulnerabilities were being discovered on every server platform.\n\n__New Easy's Solution: A Powerful, Easy-to-Use CDN with Built-in Security__\n\n\"I evaluated a few players in the market,\" Rule began, \"but they all had the same flaws— namely the modification of on-page code to reroute requests to their specific CDN URLs instead of working with what we already had. The code changes always seemed to interfere with something else the page was supposed to be doing, which would result in a worse user experience, instead of the enhanced one we were looking for.\"\n\n\"However,\" Rule continued, \"Cloudflare worked without making changes to code or image URL's. We still serve content from our own domain, and it didn't mess up any Javascript. Basically it was completely transparent and did it's thing on the back-end without interfering with the front. Having used Cloudflare on other projects in the past, we actually made the decision that it would be an integral part of the New Easy website before we wrote the first line of code. We couldn't do a lot of things as effortlessly as we're doing them now without it.\" Today, New Easy uses Cloudflare's CDN to cache and serve their content from Cloudflare's data centers in %{DataCenterCount} cities around the world. Resulting in a fast, performant site and dramatic savings: \"I would estimate we save about $30,000 per year on our hosting infrastructure costs,\" Rule remarked. \"Cloudflare has massively reduced our bandwidth consumption, and by serving a large percentage of content from the cache, overall server resource requirements have been greatly reduced.\"\n\nAs for the security of the site, New Easy is happy to have Cloudflare's layer of protection. \"Security is critical these days,\" Rule related. \"Even if you're doing everything right from a security perspective, a vulnerability with your web host or even the underlying server platform puts sensitive customer data at risk. One unadvertised benefit of being on Cloudflare is that by having an extra layer between your web server and the user, malicious actors never actually talk directly to your server— a scan of your site doesn't reveal your true server OS or script engine version, so tons of \"automated\" worms that search for vulnerabilities will skip right over you since they can't tell what you're running.\"\n\nRule concluded that \"Honestly, the best thing about Cloudflare is how easy the process is. You don't have to think about it or realize it's even there. It just works the way it's supposed to. And if you do know what you're doing, there are so many benefits that you can really get a lot of out it.\"",
-						"cloudflareStreamVideoId": null,
-						"orderDate": "2018-06-08",
-						"ref_streamVideoThumbnail": null,
-						"twoCardPreviewImage": null,
-						"industryNew52420": [
-							"eCommerce"
-						],
-						"regionNew52520": [
-							"North America"
-						],
-						"primaryUseCases": [
-							"Accelerate digital properties",
-							"Secure websites & applications"
-						],
-						"product": [
-							"CDN"
-						]
 					},
 					{
 						"id": "7e000508-cfe6-595a-a361-f6911d3e7599",
@@ -7247,35 +7163,6 @@
 						]
 					},
 					{
-						"id": "1c9f53bc-ebad-5b34-96c0-266184150bcf",
-						"contentfulId": "6pfbIzcob6U8U0aGIWMo0w",
-						"logo": {
-							"file": {
-								"publicURL": "[path]/forestnation.png"
-							}
-						},
-						"nameUrlSlug": "forestnation",
-						"shortDescription": "ForestNation makes the earth greener with a faster, more secure, and less expensive website.",
-						"longDescription": "[ForestNation](https://forestnation.com/) sells branded, easily plantable tree kits to companies and nonprofits looking to promote themselves and a greener earth. Balancing social and commercial goals equally, ForestNation commits to planting a matching tree in a developing country for every tree kit that they sell.\n\nEach ForestNation tree kit comes with a unique code, which tree planters can use to register and share their tree online for a more in-depth, social experience. \"They can tell us where they will plant their tree, uploads photos, and share growing experiences. Via their tree post they can also see where we plant their matching trees and information about the company or nonprofit that gave them their tree kit,\" explained Andrew Pothecary, CEO and Founder of ForestNation.\n\n\"We're going to plant billions of trees to create a peaceful world rich in resources and beauty for everyone,\" noted Pothecary. \"We believe that if we can make successful business out of doing good then lots more good things will come about.\"\n\n__ForestNation's Challenge: Taking Trees Online with Speed__\n\n\"Our tree kits are a physical offline product with a deeply integrated online element and community,\" explained Pothecary. To ensure the best experience for users in this integrated online community, ForestNation is always looks to optimize and enhance their platform. After noting consumer's vast preference for speed, ForestNation set out to find tools and services that could make their site and online community faster for their users. Notably, they were searching for a CDN (Content Delivery Network) to decrease the load time of their site and help save on bandwidth costs, while also hoping to find a managed DNS (Domain Name System) provider that could bring more reliability to their website.\n\n__ForestNation's Solution: A Greener Environment with a Better Internet__\n\nForestNation found Cloudflare by searching for CDN and DNS providers and immediately tested out the Free plan to see what kind of performance and reliability gains they could enjoy. After a successful run, ForestNation permanently switched their nameservers to Cloudflare. \"Cloudflare is essential to keeping our online community reliable, secure and fast,\" noted Pothecary.\n\nRecently, ForestNation also opted in to Cloudflare's Argo Smart Routing Early Access program and immediately saw their site enjoy a 23% performance boost. Argo Smart Routing is a new service from Cloudflare, where information about the health and speed of the pathways of the Internet from Cloudflare's massive network is used to route traffic only across the most optimal paths available. \"In addition to the performance boost we get with the CDN, being able to make our site over 20% faster just by turning on Argo was pretty magical,\" delighted Pothecary.\n\nYou can learn more about ForestNation and #pledgetoplant by visiting their [website](https://forestnation.com/pledgetoplant/).",
-						"cloudflareStreamVideoId": null,
-						"orderDate": "2018-05-15",
-						"ref_streamVideoThumbnail": null,
-						"twoCardPreviewImage": null,
-						"industryNew52420": [
-							"High Technology"
-						],
-						"regionNew52520": [
-							"North America"
-						],
-						"primaryUseCases": [
-							"Accelerate digital properties"
-						],
-						"product": [
-							"Argo Smart Routing",
-							"CDN"
-						]
-					},
-					{
 						"id": "be441dbc-0966-5181-80ef-f9f72c701970",
 						"contentfulId": "37L7EaK8iQ28gEwma6iKoa",
 						"logo": {
@@ -7786,34 +7673,6 @@
 						]
 					},
 					{
-						"id": "89895581-35ed-5b0b-a30d-eea5fcc0979c",
-						"contentfulId": "1yJ3C1Sq5CaCucgUCoywc8",
-						"logo": {
-							"file": {
-								"publicURL": "[path]/pixowl.png"
-							}
-						},
-						"nameUrlSlug": "pixowl",
-						"shortDescription": "Pixowl is serious about the speed and performance of their mobile games. That's why they chose to work with Cloudflare.",
-						"longDescription": "Pixowl is serious about the speed and performance of their mobile games. That's why they chose to work with Cloudflare.\n\n[Pixowl](http://www.pixowl.com/) is a mobile game studio leading a new generation of User Generated Content (UGC) games through a platform for players to create and share their own games. Pixowl, based in San Francisco with a production office in Buenos Aires, has developed games such as The Sandbox, The Sandbox Evolution, Snoopy's Town Tale, Garfield, and many others.\n\n__Pixowl's Challenge: Affordably Scaling Server Architecture Platform to Deliver the Smoothest Gameplay Possible__\n\nAccording to Sebastien Borget, COO & Co-Founder at Pixowl, \"The mobile gaming industry is extremely competitive. Making a successful game is not just about being creative and having a nice-looking game, it's about excellence in execution.\" Borget continued, \"it's essential to optimise every part of the process to operate our business. Optimising the game's overall performance, such as the speed of loading its contents, the refresh time, etc. helps us keep players both more engaged and playing longer.\" In fact, performance is critical in the mobile gaming industry where there is a player drop-rate in the order of magnitude of 20-40% for games if initial load times are over a minute long. To ensure fast load times and meet the performance needs of the industry Pixowl's game content, which is cloud-hosted by Digital Ocean, needed to be delivered as fast as possible to their players. To deliver these speeds Pixowl needed to develop a technologically advanced way to quickly deliver their content around the world. However, Pixowl is a lean, indie gaming studio, and as Borget puts it, \"Our focus is to make great, fun, compelling games for our target audience of kids and families, not to develop complex backend technical solutions to deliver our content.\" Thus, Pixowl's challenge was to globally scale without distracting their engineers trying to develop games and avoiding internal headaches. They needed a solution that would quickly and dynamically load content from their API to heterogeneous devices and locations across the world to ensure the best gameplay experience possible for every player.\n\n__Pixowl's Challenge: Affordably Scaling Server Architecture Platform to Deliver the Smoothest Gameplay Possible__\n\nThe best way for Pixowl to quickly and globally serve their content was to enlist the services of a Content Delivery Network (CDN). \"Pixowl chose Cloudflare's CDN because it provided a simple, quick and headache-free approach to high performing Content Delivery\" said Borget. \"We wanted to be very lean, test rapidly and see if the solution could work.\" Borget Continued, \"Other providers don't allow that, so it's a huge benefit with Cloudflare.\" After the easy transition to Cloudflare's network, Pixowl's players saw immediate in-game performance benefits. Borget highlighted that \"We've seen in real-time the improvements on how fast the Online Gallery of Players Worlds was loading inside our mobile game. The Gallery features a fluid UI with dynamic loading as the player scrolls through different worlds, and Cloudflare delivered our content with the speed and performance to immediately show the preview and metadata of the worlds without any asynchronous loading time.\" With [Cloudflare's CDN](https://www.cloudflare.com/cdn/), Pixowl's in-game load times have become almost unnoticeable for most players. Borget delighted that \"This is really a plus for the user experience. The user gets put straight into the beginning tutorial of the game, as if there was no loading time at all!\" In an industry where day-one retention ranges from 40 to 60% and every second that the player waits for the game to load increases the likelihood that he or she will stop playing, these speed and performance benefits are a definitive boon to Pixowl's future success.\n\n",
-						"cloudflareStreamVideoId": null,
-						"orderDate": "2018-04-22",
-						"ref_streamVideoThumbnail": null,
-						"twoCardPreviewImage": null,
-						"industryNew52420": [
-							"Gaming"
-						],
-						"regionNew52520": [
-							"North America"
-						],
-						"primaryUseCases": [
-							"Accelerate digital properties"
-						],
-						"product": [
-							"CDN"
-						]
-					},
-					{
 						"id": "15885bdb-2fb0-5eb3-b418-1d6b5e34e7c3",
 						"contentfulId": "5dXPAfdAYoSmSoQIkuQKqS",
 						"logo": {
@@ -7954,36 +7813,6 @@
 						],
 						"product": [
 							"CDN"
-						]
-					},
-					{
-						"id": "649cfe59-bf55-5cad-a55a-f450314aa4e5",
-						"contentfulId": "2scjuhIiQcU2W8cuUkIUc2",
-						"logo": {
-							"file": {
-								"publicURL": "[path]/shoppingcartelite.png"
-							}
-						},
-						"nameUrlSlug": "shoppingcartelite",
-						"shortDescription": "Cloudflare helped Shopping Cart Elite stay secure and increase load speeds by 40%.",
-						"longDescription": "[ShoppingCartElite.com](http://www.shoppingcartelite.com/) is a full business suite for running an online business. We provide our customers with organic traffic through SEO and provide a full solution for their eCommerce needs.\n\n__Business challenge__\nWe offer a full solution eCommerce service to hundreds of websites. As we have grown, so have our web performance and security needs. In addition, we were in search of a solution to support dedicated SSL. The only SSL we offered was shared, which was not a long-term solution for our customers.\n\nWe found Cloudflare in early 2011 and began looking at the service as a possible answer to the web performance, security and SSL needs we were facing. We were intrigued with the service, but were not sure how it would work across hundreds of domains.\n\nDuring our research, we suffered a major DoS attack that affected our entire clientele. We figured it would be a good opportunity to test the service and so, we put all of our client's websites on Cloudflare's network.\n\n# __40%__\n### __INCREASE IN LOAD SPEED__\n### by utilizing Cloudflare's caching\n__Cloudflare's impact__\n\nOnce our sites were on Cloudflare, we saw the effects immediately. Cloudflare blocked every attack that came in and offloaded the traffic from the attack to keep all our customer sites up and running.\n\nGood traffic (green) and attacks (red) during a traffic spike to a ShoppingCartElite customer site.\n\nThe before and after with Cloudflare was just amazing. Cloudflare offloaded server resources by about 30%, saving us a considerable amount of time and money. With the Cloudflare CDN, every image was automatically cached and served, making our sites almost 40% faster across the board. Each byte load was cut by half a second which was impressive.\n\nNot only did Cloudflare help with performance and security, they also allow us to give each customer stand alone SSL. With Cloudflare SSL we don't need to install SSL certificates on our servers because it works at the DNS level. You don't have to install SSL—you simply turn it on and it works.\n\nCloudflare definitely delivers on performance and security. Our business is not IT security, so it's nice to have Cloudflare doing what they do best behind the scenes allowing us to sleep at night.\n\nYou would typically have to pay hundreds of thousands of dollars per year for the service Cloudflare offers. If you're in eCommerce, performance is very critical and imperative for your customers. Cloudflare can definitely help you more than you can ever imagine.",
-						"cloudflareStreamVideoId": null,
-						"orderDate": "2018-04-14",
-						"ref_streamVideoThumbnail": null,
-						"twoCardPreviewImage": null,
-						"industryNew52420": [
-							"eCommerce"
-						],
-						"regionNew52520": [
-							"North America"
-						],
-						"primaryUseCases": [
-							"Accelerate digital properties",
-							"Secure websites & applications"
-						],
-						"product": [
-							"CDN",
-							"DDoS Protection"
 						]
 					},
 					{
@@ -8269,34 +8098,6 @@
 						]
 					},
 					{
-						"id": "e2c507a6-ad51-5683-b359-c55623860b4f",
-						"contentfulId": "1dnhvnpbQYgKq2g2gYkc82",
-						"logo": {
-							"file": {
-								"publicURL": "[path]/learnthat.png"
-							}
-						},
-						"nameUrlSlug": "learnthat",
-						"shortDescription": "LearnThat tripled pageviews thanks to faster speeds means that everyone has the opportunity to learn.",
-						"longDescription": "[LearnThat.org](http://www.learnthat.org/) is a website that delivers customized vocabulary and spelling tutoring based on a proprietary database of about 180,000 words. LearnThat.org is supported by the nonprofit organization, LearnThat Foundation.\n\n__Business challenge__\n\nWe were struggling with keeping our visitors on our site. While we were successful at sending traffic to our site, the amount of time visitors spent on our site was low. I had heard about Cloudflare at a local meetup. I knew we needed additional performance for the site, so I decided to sign up.\n\n# __3X__\n### __PAGE VIEWS HANDLED__\n### by utilizing Cloudflare's cookie-based key caching\n\n__Cloudflare's impact__\n\nOnce we signed up for Cloudflare, the service automatically started to cache static content from our site all over the world. We didn't have to configure anything, which was important, since we didn't have the technical resources to do so.\n\nThe benefit of Cloudflare was immediate. Our website started to load much faster all over the world and our visitors noticed. We saw a drastic jump in page views. People viewed three times more pages on our site. At the same time, the bounce rate (the number of people who leave the site on the first page) dropped to less than a third.\n\nOverall, the number of visitors more than doubled. I was delighted! It's rare to see such a drastic improvement so quickly.\n\nNow that my site is fast and snappy, I can spend time interacting with our visitors and focus on our business. My visitors engage with each other, spend more time reading on the website and no longer leave frustrated by slow load times. Many thanks to Cloudflare for making an outstanding service available and affordable to small organizations like ourselves!",
-						"cloudflareStreamVideoId": null,
-						"orderDate": "2018-03-31",
-						"ref_streamVideoThumbnail": null,
-						"twoCardPreviewImage": null,
-						"industryNew52420": [
-							"Education"
-						],
-						"regionNew52520": [
-							"North America"
-						],
-						"primaryUseCases": [
-							"Accelerate digital properties"
-						],
-						"product": [
-							"CDN"
-						]
-					},
-					{
 						"id": "c3c564b4-15e5-580a-9722-30a39e622b91",
 						"contentfulId": "6B1WTDiUdU0SSSyCMaW2Ss",
 						"logo": {
@@ -8322,36 +8123,6 @@
 						],
 						"product": [
 							"CDN"
-						]
-					},
-					{
-						"id": "9e9c7f9b-88d0-5a7c-a1a6-3531d0789034",
-						"contentfulId": "6VvapWXbfUCw4uu8UOSuik",
-						"logo": {
-							"file": {
-								"publicURL": "[path]/cjs.svg"
-							}
-						},
-						"nameUrlSlug": "cjs",
-						"shortDescription": "Constantly under attack, CJS CD-Keys, an eCommerce site, was quickly losing business.",
-						"longDescription": "DDoS attacks happen, especially if you're an eCommerce site\n\nConstantly under attack, [CJS CD-Keys](http://www.cjs-cdkeys.com/ \"CJS CD-Keys\"), an eCommerce site, was quickly losing business. Faced with being forced offline, they came to Cloudflare for help.\n\nIt's no secret that the easiest way ruin someone's online business is to attack their website and knock it offline. What usually happens is a DDoS attack is launched, flooding a website with illegitimate traffic so that legitimate (customer) traffic cannot access the site. Unfortunately, that's exactly what was happening to CJS CD-Keys - their site was under constant DDoS attack.\n\nCJS CD-Keys is a leader in game key distribution, selling millions of digital downloads for the latest PC games each year. Their entire business relies on digital downloads from customers who access their website from around the world. When their website is offline, they lose money and their business suffers.\n\n__Finding a solution when you're under attack__\n\n\"We are constantly under attack,\" says the Managing Director of CJS CD-Keys. \"Our site is a huge target and we suffer from multiple, large DDoS attacks throughout the year. We were seeing attacks approaching 700,000 packets per second.\" At first, each attack CJS was seeing would knock them completely offline, bringing their website down and making their customers very upset. At a loss on what to do, CJS's team began researching options and found Cloudflare. \"I gave it a try and was amazed to find that even the Free Plan blocked a lot of the DDoS attacks. For us though, we needed a much more robust DDoS protection plan, so we opted for the Business Plan which offers advanced DDoS attack mitigation.\"\n\n# 10x\n### IMPROVEMENT IN PAGE LOAD TIME\n### by utilizing Cloudflare's caching\n\n\n__Cloudflare's impact__\n\nCloudflare didn't just make our site safer and protect it from attacks, they also significantly reduced the load on our servers so they could keep up with visitors' requests. In fact, Cloudflare cut the number of requests that needed to be handled by our server by nearly half a billion, or about 75% of the total load it would have experienced without Cloudflare. They also saved our site more than 23 Terabytes, 93% of the bandwidth that would have otherwise been used serving the site's pages.\n\nCloudflare helped us stay fast and reliable, even under a crushing load, and the effect kept us at the top of the rankings and kept the traffic growing. Cloudflare has done wonders for us this year. It's amazing how fast the site loads.\n\n__318% increase in sales with decrease in DDoS attacks__\n\n\"Within an hour of turning on the Cloudflare Business Plan, our site was running smoothly - despite being under heavy DDoS attack,\" according to CJS. \"We watched as the attackers kept trying to bring the site down, but then quickly give up when they realized their efforts were useless thanks to Cloudflare's protection.\"\n\nNot only did Cloudflare keep cjs-cdkeys.com online, CJS started seeing major improvements in their website's speed. \"Cloudflare's service didn't just stop the attack, it dramatically improved the speed of our website. Within the first few days we saw a 10x improvement in page load time... Our website performance with and without Cloudflare was just incomparable.\"\n\n![cjs-attack-traffic](//cf-assets.www.cloudflare.com/slt3lc6tev37/5WV5iA0en6EuaACSUOI8Sk/85ea2f7ef574ef72335986fec9c4f0f0/cjs-attack-traffic.png)\n\n*Attack traffic aimed at CJS.*\n\nThe improvements didn't stop there. Because CJS wasn't suffering downtime due to the attacks, their business flourished. In just one year they saw a 318 percent increase in sales. In March 2012, before they began using Cloudflare, CJS sold 2,838 game downloads. In March 2013, after they began using Cloudflare, they sold 11,879 game downloads.\n\n\"The company has grown aside from Cloudflare, but I'm confident Cloudflare has played a huge part in our growth. Without Cloudflare, the DDoS attacks would bring our website offline and kill our sales completely. We couldn't exist without Cloudflare.\"\n\nCJS continues to grow. They sell hundreds of games per day and are now a multimillion dollar company. \"We couldn't have grown and been this successful without Cloudflare. Cloudflare's protection allows me to sleep at night without worry.\"",
-						"cloudflareStreamVideoId": null,
-						"orderDate": "2018-03-29",
-						"ref_streamVideoThumbnail": null,
-						"twoCardPreviewImage": null,
-						"industryNew52420": [
-							"eCommerce"
-						],
-						"regionNew52520": [
-							"Europe, Middle East & Africa"
-						],
-						"primaryUseCases": [
-							"Accelerate digital properties",
-							"Secure websites & applications"
-						],
-						"product": [
-							"CDN",
-							"DDoS Protection"
 						]
 					}
 				]
