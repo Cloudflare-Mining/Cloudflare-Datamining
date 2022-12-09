@@ -31,8 +31,8 @@
 <p><span style="font-weight: 400;"><br></span><strong>Compensation</strong></p>
 <p><span style="font-weight: 400;">Compensation may be adjusted depending on work location.</span></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">For Colorado-based hires: Estimated annual salary of $168,000 - $206,000.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">For New York City-based hires: Estimated annual salary of $187,000 - $229,000.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">For Colorado-based hires: Estimated annual salary of $137,000 - $167,000.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">For New York City-based hires: Estimated annual salary of $154,000 - $188,000.</span></li>
 </ul>
 <p><strong>Equity</strong></p>
 <p><span style="font-weight: 400;">This role is eligible to participate in Cloudflare’s equity plan.</span></p>
