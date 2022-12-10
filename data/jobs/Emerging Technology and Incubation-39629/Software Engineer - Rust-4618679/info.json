@@ -13,15 +13,15 @@
 	},
 	"metadata": [
 		{
-			"id": 825338,
-			"name": "Cost Center",
-			"value": "4500 - Emerg Tech & Incubation",
-			"value_type": "single_select"
-		},
-		{
 			"id": 164993,
 			"name": "Cross-post department",
 			"value": null,
+			"value_type": "single_select"
+		},
+		{
+			"id": 825338,
+			"name": "Cost Center",
+			"value": "4500 - Emerg Tech & Incubation",
 			"value_type": "single_select"
 		},
 		{
@@ -44,29 +44,6 @@
 		}
 	],
 	"offices": [
-		{
-			"id": 74843,
-			"name": "EMEA",
-			"location": "Dubai, United Arab Emirates",
-			"child_ids": [
-				86073,
-				84344,
-				84343,
-				82456,
-				82455,
-				82454,
-				82452,
-				82439,
-				78483,
-				77970,
-				48758,
-				48350,
-				19988,
-				63782,
-				69464
-			],
-			"parent_id": null
-		},
 		{
 			"id": 48752,
 			"name": "US",
@@ -112,6 +89,29 @@
 				48753,
 				48754,
 				48761
+			],
+			"parent_id": null
+		},
+		{
+			"id": 74843,
+			"name": "EMEA",
+			"location": "Dubai, United Arab Emirates",
+			"child_ids": [
+				86073,
+				84344,
+				84343,
+				82456,
+				82455,
+				82454,
+				82452,
+				82439,
+				78483,
+				77970,
+				48758,
+				48350,
+				19988,
+				63782,
+				69464
 			],
 			"parent_id": null
 		}

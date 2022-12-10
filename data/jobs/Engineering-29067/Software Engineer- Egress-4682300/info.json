@@ -13,15 +13,15 @@
 	},
 	"metadata": [
 		{
-			"id": 825338,
-			"name": "Cost Center",
-			"value": "4210 - Network Engineering",
-			"value_type": "single_select"
-		},
-		{
 			"id": 164993,
 			"name": "Cross-post department",
 			"value": null,
+			"value_type": "single_select"
+		},
+		{
+			"id": 825338,
+			"name": "Cost Center",
+			"value": "4210 - Network Engineering",
 			"value_type": "single_select"
 		},
 		{
@@ -49,18 +49,18 @@
 	],
 	"offices": [
 		{
-			"id": 82456,
-			"name": "Remote UK",
-			"location": null,
-			"child_ids": [],
-			"parent_id": 74843
-		},
-		{
 			"id": 75375,
 			"name": "Remote US",
 			"location": null,
 			"child_ids": [],
 			"parent_id": 48752
+		},
+		{
+			"id": 82456,
+			"name": "Remote UK",
+			"location": null,
+			"child_ids": [],
+			"parent_id": 74843
 		}
 	]
 }

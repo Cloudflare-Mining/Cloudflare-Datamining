@@ -13,15 +13,15 @@
 	},
 	"metadata": [
 		{
-			"id": 825338,
-			"name": "Cost Center",
-			"value": "4700 - Security",
-			"value_type": "single_select"
-		},
-		{
 			"id": 164993,
 			"name": "Cross-post department",
 			"value": "Engineering",
+			"value_type": "single_select"
+		},
+		{
+			"id": 825338,
+			"name": "Cost Center",
+			"value": "4700 - Security",
 			"value_type": "single_select"
 		},
 		{
@@ -45,6 +45,13 @@
 	],
 	"offices": [
 		{
+			"id": 19991,
+			"name": "San Francisco, CA",
+			"location": "San Francisco, CA, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
 			"id": 74843,
 			"name": "EMEA",
 			"location": "Dubai, United Arab Emirates",
@@ -66,13 +73,6 @@
 				69464
 			],
 			"parent_id": null
-		},
-		{
-			"id": 19991,
-			"name": "San Francisco, CA",
-			"location": "San Francisco, CA, United States",
-			"child_ids": [],
-			"parent_id": 48752
 		}
 	]
 }

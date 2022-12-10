@@ -24,6 +24,13 @@ function sortDepartmentInfo(departmentInfo){
 	return departmentInfo;
 }
 
+function sortJobInfo(jobInfo){
+	jobInfo.metadata = jobInfo.metadata.sort((metaA, metaB) => metaA.id - metaB.id);
+	jobInfo.departments = jobInfo.departments.sort((depA, depB) => depA.id - depB.id);
+	jobInfo.offices = jobInfo.offices.sort((officeA, officeB) => officeA.id - officeB.id);
+	return jobInfo;
+}
+
 console.log('Fetch information for offices...');
 const officesRes = await fetch(`https://boards-api.greenhouse.io/v1/boards/cloudflare/offices/`, {agent});
 if(officesRes.ok){
@@ -44,11 +51,9 @@ if(departmentsRes.ok){
 		const departmentDirName = filenamify(`${department.name}-${department.id}`).trim();
 		const departmentDir = path.resolve(dir, departmentDirName);
 		await fs.ensureDir(departmentDir);
-		const {jobs, ...departmentInfo} = department;
+		const {jobs, ...departmentInfo} = sortDepartmentInfo(department);
 
-		// sort department jobs by date
-		const sortedDepartmentInfo = sortDepartmentInfo(departmentInfo);
-		await fs.writeFile(path.resolve(departmentDir, `_index.json`), JSON.stringify(sortedDepartmentInfo, null, '\t'));
+		await fs.writeFile(path.resolve(departmentDir, `_index.json`), JSON.stringify(departmentInfo, null, '\t'));
 
 
 		for(const job of jobs){
@@ -69,7 +74,8 @@ if(departmentsRes.ok){
 					});
 					await fs.writeFile(path.resolve(jobsDir, `README.md`), beautified);
 				}
-				await fs.writeFile(path.resolve(jobsDir, `info.json`), JSON.stringify(jobInfoDataWithoutContent, null, '\t'));
+				const sortedJob = sortJobInfo(jobInfoDataWithoutContent);
+				await fs.writeFile(path.resolve(jobsDir, `info.json`), JSON.stringify(sortedJob, null, '\t'));
 			}
 		}
 	}
