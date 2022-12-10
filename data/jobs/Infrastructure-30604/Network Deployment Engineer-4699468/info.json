@@ -13,15 +13,15 @@
 	},
 	"metadata": [
 		{
-			"id": 825338,
-			"name": "Cost Center",
-			"value": "4100 - Infrastructure",
-			"value_type": "single_select"
-		},
-		{
 			"id": 164993,
 			"name": "Cross-post department",
 			"value": null,
+			"value_type": "single_select"
+		},
+		{
+			"id": 825338,
+			"name": "Cost Center",
+			"value": "4100 - Infrastructure",
 			"value_type": "single_select"
 		},
 		{
@@ -52,6 +52,20 @@
 			"parent_id": 48752
 		},
 		{
+			"id": 19988,
+			"name": "London, United Kingdom",
+			"location": "London, United Kingdom",
+			"child_ids": [],
+			"parent_id": 74843
+		},
+		{
+			"id": 19992,
+			"name": "Singapore",
+			"location": "Singapore",
+			"child_ids": [],
+			"parent_id": 74844
+		},
+		{
 			"id": 63782,
 			"name": "Lisbon, Portugal",
 			"location": "Lisboa, Lisboa, Portugal",
@@ -59,11 +73,11 @@
 			"parent_id": 74843
 		},
 		{
-			"id": 19988,
-			"name": "London, United Kingdom",
-			"location": "London, United Kingdom",
+			"id": 75375,
+			"name": "Remote US",
+			"location": null,
 			"child_ids": [],
-			"parent_id": 74843
+			"parent_id": 48752
 		},
 		{
 			"id": 82455,
@@ -78,20 +92,6 @@
 			"location": null,
 			"child_ids": [],
 			"parent_id": 74843
-		},
-		{
-			"id": 75375,
-			"name": "Remote US",
-			"location": null,
-			"child_ids": [],
-			"parent_id": 48752
-		},
-		{
-			"id": 19992,
-			"name": "Singapore",
-			"location": "Singapore",
-			"child_ids": [],
-			"parent_id": 74844
 		}
 	]
 }

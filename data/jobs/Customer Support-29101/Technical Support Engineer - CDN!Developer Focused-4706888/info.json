@@ -13,12 +13,6 @@
 	},
 	"metadata": [
 		{
-			"id": 8654220,
-			"name": "Job Posting Location",
-			"value": "[]",
-			"value_type": "multi_select"
-		},
-		{
 			"id": 164993,
 			"name": "Cross-post department",
 			"value": null,
@@ -29,6 +23,12 @@
 			"name": "Cost Center",
 			"value": "5700 - Customer Support",
 			"value_type": "single_select"
+		},
+		{
+			"id": 8654220,
+			"name": "Job Posting Location",
+			"value": "[]",
+			"value_type": "multi_select"
 		}
 	],
 	"id": 4706888,
@@ -45,6 +45,13 @@
 	],
 	"offices": [
 		{
+			"id": 84342,
+			"name": "Remote Mexico",
+			"location": "Mexico City, Mexico City, Mexico",
+			"child_ids": [],
+			"parent_id": 87170
+		},
+		{
 			"id": 87170,
 			"name": "Mexico",
 			"location": null,
@@ -52,13 +59,6 @@
 				84342
 			],
 			"parent_id": null
-		},
-		{
-			"id": 84342,
-			"name": "Remote Mexico",
-			"location": "Mexico City, Mexico City, Mexico",
-			"child_ids": [],
-			"parent_id": 87170
 		}
 	]
 }

@@ -13,15 +13,15 @@
 	},
 	"metadata": [
 		{
-			"id": 825338,
-			"name": "Cost Center",
-			"value": "5800 - Partnership",
-			"value_type": "single_select"
-		},
-		{
 			"id": 164993,
 			"name": "Cross-post department",
 			"value": null,
+			"value_type": "single_select"
+		},
+		{
+			"id": 825338,
+			"name": "Cost Center",
+			"value": "5800 - Partnership",
 			"value_type": "single_select"
 		},
 		{
@@ -45,20 +45,6 @@
 	],
 	"offices": [
 		{
-			"id": 62226,
-			"name": "Los Angeles, CA",
-			"location": null,
-			"child_ids": [],
-			"parent_id": 48752
-		},
-		{
-			"id": 75375,
-			"name": "Remote US",
-			"location": null,
-			"child_ids": [],
-			"parent_id": 48752
-		},
-		{
 			"id": 19991,
 			"name": "San Francisco, CA",
 			"location": "San Francisco, CA, United States",
@@ -66,8 +52,22 @@
 			"parent_id": 48752
 		},
 		{
+			"id": 62226,
+			"name": "Los Angeles, CA",
+			"location": null,
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
 			"id": 72960,
 			"name": "Seattle, WA",
+			"location": null,
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 75375,
+			"name": "Remote US",
 			"location": null,
 			"child_ids": [],
 			"parent_id": 48752
