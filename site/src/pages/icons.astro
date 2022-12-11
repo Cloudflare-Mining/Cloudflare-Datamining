@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 
 import icons from "../../../data/icons/es/reactsvgs/index.js";
 import CFIcon from "../components/CFIcon.astro";
+import Description from "../components/Description.astro";
 
 import MainHeading from "../components/MainHeading.astro";
 ---
@@ -12,6 +13,12 @@ import MainHeading from "../components/MainHeading.astro";
 	description="List of Cloudflare brand icons"
 >
 	<MainHeading title="Icons" />
+	<Description>
+		<p>
+			Cloudflare uses a wide variety of icons throughout their dashboards and for products. This extracts icons from their React components and displays them all below, for easy usage in your own projects.
+			Please refer to Cloudflare's own documentation for branding guidelines.
+		</p>
+	</Description>
 	<div
 		class="grid auto-rows-fr grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4"
 	>
