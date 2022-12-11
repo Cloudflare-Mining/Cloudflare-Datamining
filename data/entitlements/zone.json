@@ -1536,6 +1536,18 @@
 		}
 	},
 	{
+		"id": "rulesets.migration_firewall_custom_phase_allowed",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 1161,
+			"key": "rulesets.migration_firewall_custom_phase_allowed",
+			"name": "Rulesets - Firewall Migration Custom Phase Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "rulesets.origin_rule_host_header_allowed",
 		"feature": {
 			"feature_set": "rulesets",
@@ -1698,6 +1710,18 @@
 			"id": 1052,
 			"key": "rulesets.waf_migration_validation_allowed",
 			"name": "Rulesets - WAF Migration Validation Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "rulesets.wafml_score_allowed",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 1010,
+			"key": "rulesets.wafml_score_allowed",
+			"name": "Rulesets - WAF ML Score Allowed"
 		},
 		"allocation": {
 			"type": "bool"
