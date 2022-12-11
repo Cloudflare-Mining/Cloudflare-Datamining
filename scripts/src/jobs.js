@@ -16,19 +16,26 @@ const dir = path.resolve(`../data/jobs`);
 await fs.ensureDir(dir);
 await fs.emptyDir(dir);
 
+function sortJobInfo(jobInfo){
+	if(jobInfo.metadata){
+		jobInfo.metadata = jobInfo.metadata.sort((metaA, metaB) => metaA.id - metaB.id);
+	}
+	if(jobInfo.departments){
+		jobInfo.departments = jobInfo.departments.sort((depA, depB) => depA.id - depB.id);
+	}
+	if(jobInfo.offices){
+		jobInfo.offices = jobInfo.offices.sort((officeA, officeB) => officeA.id - officeB.id);
+	}
+	return jobInfo;
+}
+
 function sortDepartmentInfo(departmentInfo){
 	departmentInfo.children = departmentInfo.children.sort((childA, childB) => childA.id - childB.id);
 	for(const child of departmentInfo.children){
+		child.jobs = child.jobs.map(job => sortJobInfo(job));
 		child.jobs = child.jobs.sort((jobA, jobB) => jobA.updated_at.localeCompare(jobB.updated_at) || jobA.id - jobB.id);
 	}
 	return departmentInfo;
-}
-
-function sortJobInfo(jobInfo){
-	jobInfo.metadata = jobInfo.metadata.sort((metaA, metaB) => metaA.id - metaB.id);
-	jobInfo.departments = jobInfo.departments.sort((depA, depB) => depA.id - depB.id);
-	jobInfo.offices = jobInfo.offices.sort((officeA, officeB) => officeA.id - officeB.id);
-	return jobInfo;
 }
 
 console.log('Fetch information for offices...');
