@@ -53,9 +53,6 @@ if(departmentsRes.ok){
 		await fs.ensureDir(departmentDir);
 		const {jobs, ...departmentInfo} = sortDepartmentInfo(department);
 
-		await fs.writeFile(path.resolve(departmentDir, `_index.json`), JSON.stringify(departmentInfo, null, '\t'));
-
-
 		for(const job of jobs){
 			const jobDirName = filenamify(job.title + '-' + job.id).trim();
 			console.log(`Fetch information for job ${jobDirName}...`);
@@ -78,6 +75,8 @@ if(departmentsRes.ok){
 				await fs.writeFile(path.resolve(jobsDir, `info.json`), JSON.stringify(sortedJob, null, '\t'));
 			}
 		}
+
+		await fs.writeFile(path.resolve(departmentDir, `_index.json`), JSON.stringify(departmentInfo, null, '\t'));
 	}
 }
 
