@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Table from '../components/Table.astro';
 import MainHeading from '../components/MainHeading.astro';
 import SubHeading from '../components/SubHeading.astro';
+import Description from '../components/Description.astro';
 
 import dashGatesImport from '../../../data/gates/dashboard.json';
 import ztGatesImport from '../../../data/gates/zt-dashboard.json';
@@ -19,6 +20,9 @@ const ztGates = ztGatesImport as Gates;
 ---
 <Layout title="Gates - Cloudflare Datamining" description="List of Cloudflare Gates for feature rollouts, A/B testing, etc.">
 	<MainHeading title="Gates" />
+	<Description>
+		<p>Gates are used throughout Cloudflare's products for new features, A/B tests, UI experiments, and more. This lists all known gates used in their primary Dashboard, and Zero Trust Dashboard.</p>
+	</Description>
 	<SubHeading category="Dashboard" />
 	<Table
 		headers = {["ID", "Enabled", "Branches"]}

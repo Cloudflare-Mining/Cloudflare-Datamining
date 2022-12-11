@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Table from '../components/Table.astro';
 import MainHeading from '../components/MainHeading.astro';
 import SubHeading from '../components/SubHeading.astro';
+import Description from '../components/Description.astro';
 
 const importFiles = await Astro.glob('../../../data/other/graphql.json');
 const sections = importFiles[0].default;
@@ -10,6 +11,9 @@ const sections = importFiles[0].default;
 ---
 <Layout title="GraphQL - Cloudflare Datamining" description="Discover Cloudflare's full GraphQL Schema">
 	<MainHeading title="GraphQL" />
+	<Description>
+		<p>This lists all of the available datasets and fields in Cloudflare's GraphQL API.</p>
+	</Description>
 	<div class="space-y-6">
 		{Object.keys(sections).map((section: string) => (
 			<div>

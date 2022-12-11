@@ -5,6 +5,7 @@ import Table from '../components/Table.astro';
 import {airports} from '../airportsWithLocations.js';
 import {types} from '../coloTypes';
 import MainHeading from '../components/MainHeading.astro';
+import Description from '../components/Description.astro';
 
 const importFiles = await Astro.glob('../../../data/other/colos-id-map.json');
 const colos = importFiles[0].default;
@@ -25,6 +26,9 @@ for(const coloId in colos){
 ---
 <Layout title="Colos - Cloudflare Datamining" description="A lot of Cloudflare locations and types with their current status.">
 	<MainHeading title="Colos" />
+	<Description>
+		<p>Listed below are all known Cloudflare datacenters. At any given time, traffic could be re-routed so they'll appear offline, or they could simply not be a datacenter that serves public traffic. All of the types listed below are estimated, and not sourced from any official information.</p>
+	</Description>
 	<Table
 		headers = {["Status", "Total", "%"]}
 		widths={["w-[80%]", "w-[10%]", "w-[10%]"]}
