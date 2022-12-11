@@ -10,7 +10,7 @@
 	"scripts": {
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix",
-		"mine": "npm run mine:npm && npm run mine:types && npm run mine:github && npm run mine:api-schemas && npm run mine:ips && npm run mine:coveo && npm run mine:gates && npm run mine:products && npm run mine:graphql && npm run mine:account && npm run mine:investors && npm run mine:doh && npm run mine:support && npm run mine:icons",
+		"mine": "npm run mine:npm && npm run mine:types && npm run mine:github && npm run mine:api-schemas && npm run mine:ips && npm run mine:coveo && npm run mine:gates && npm run mine:products && npm run mine:graphql && npm run mine:account && npm run mine:investors && npm run mine:doh && npm run mine:support && npm run mine:icons && npm run mine:marketing-pages",
 		"mine:account": "node src/account.js",
 		"mine:api-schemas": "node src/api-schemas.js",
 		"mine:blog": "node src/blog.js",
@@ -31,6 +31,7 @@
 		"mine:jobs": "node src/jobs.js",
 		"mine:npm": "node src/npm.js",
 		"mine:marketing": "node src/marketing.js",
+		"mine:marketing-pages": "node src/marketing-pages.js",
 		"mine:products": "npm run mine:product:pages && npm run mine:product:workers && npm run mine:product:zones && npm run mine:product:rules && npm run mine:product:alerting && npm run mine:product:rulesets && npm run mine:product:gateway && npm run mine:product:r2 && npm run mine:product:turnstile && npm run mine:product:apps && npm run mine:product:analytics",
 		"mine:product:alerting": "node src/products/alerting.js",
 		"mine:product:analytics": "node src/products/analytics.js",
