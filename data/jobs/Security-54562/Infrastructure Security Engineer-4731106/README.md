@@ -6,30 +6,31 @@
 	</div>
 </div>
 <p><strong>About the Department</strong></p>
-<p><span style="font-weight: 400;">The Partner team works hard to grow the Partner ecosystem around Cloudflare. Channel Account Managers, Partner Development teams, and Partner Solutions Engineers all support partner businesses as they grow and scale with Cloudflare. All working together help our customers adopt Cloudflare and create great Internet-enabled experiences.</span></p>
+<p><span style="font-weight: 400;">The Security team at Cloudflare is focused and committed to helping secure both Cloudflare and our customers. The Infrastructure Security team works closely with the engineering teams responsible for running and maintaining our global infrastructure.&nbsp;</span></p>
+<p><span style="font-weight: 400;">Our mission is to help build security into the hardware and software that run Cloudflare’s products.</span></p>
 <p><strong>About the Role</strong></p>
-<p><span style="font-weight: 400;">You are dedicated to the service delivery and operational success of Cloudflare’s Service Partners. You will be the process and technical application expert that helps our partners build and scale professional and managed service offerings to ensure our end-customers receive an amazing Cloudflare experience. As a service delivery manager, you will drive and manage engagements with the world’s most innovative service companies to help them deploy, support and operationalize partner business models and service delivery around Cloudflare’s global network. You’ll primarily manage continual enablement projects, partner consultations and empower ongoing partner services that drive satisfaction from our partners and their customers. Your technical knowledge of Cloudflare’s solution, industry expertise, familiarity with go to market models and ability to manage large cross-functional projects will allow you to act as a trusted advisor for your partners alongside Cloudflare’s Partner Success Managers, Channel &amp; Alliance Managers and Solutions Engineers.</span></p>
-<p><span style="font-weight: 400;">You are passionate about technology and going above-and-beyond for your customers. You are self-driven, naturally curious, and an avid client advocate. You look forward to joining a growing team and to helping define and develop Service Delivery at Cloudflare.</span></p>
-<p><strong>Requirements</strong></p>
+<p><span style="font-weight: 400;">We are looking for an experienced Security Engineer to help us in our mission to build a better internet. Part engineer, part hacker, you will:&nbsp;</span></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Record of success in navigating and driving engagements with large IT organizations with a focus on managed or professional service delivery&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Previous Consulting,Technical Account Management, or Project Management experience&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to prioritize, multi-task, and perform effectively under pressure while helping partners drive successful customer engagements and outcomes</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Understanding of application, server, and network security and performance concerns</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Understanding of DNS, TCP/IP, HTTP, TLS, and related protocols</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Enablement and training experience a plus</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Some API experience a plus</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Bachelor’s degree in Computer Science, Math or related field</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Travel 25-30%&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Work with our engineering and infrastructure teams to help secure our globally distributed systems.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Build and deploy internal security tools that help address security problems at a global scale</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Collaborate with the full Cloudflare security team to gather system telemetry and improve detections of any potential security events</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Ensure our global infrastructure is secure from all attacks, ranging from “script kiddies” to nation states.</span></li>
 </ul>
-<p><strong>Bonus Points</strong></p>
+<p><strong>Examples of desirable skills, knowledge, and experience</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Direct experience supporting global partnerships</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">MBA or technical graduate degree</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Fluency in additional languages</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Systems and cloud-native software engineering experience</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Linux configuration, security, and administration experience</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Deploying and utilizing security telemetry services (e.g. OSQuery, Falco, etc.)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Automation experience with tools like Salt, Ansible, and/or Terraform</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Authenticated vulnerability scanning of distributed systems</span></li>
 </ul>
-<h4><br><br></h4>
-<p>&nbsp;</p>
+<p><strong>Awesome skills and experience to have, but not required:</strong></p>
+<ul>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Golang, Rust development experience</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Building and managing cloud-native services (e.g. Google Cloud Platform, Azure, etc.)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong Linux system and networking fundamentals such as TCP/IP, kernel operations, memory, and file system management</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Open Compute Project (OCP) experience (OpenBMC, Coreboot, Linuxboot, etc.)</span></li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
