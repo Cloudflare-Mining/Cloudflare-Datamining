@@ -10,8 +10,9 @@
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
 	<li>5-8 years experience working in a fast-growing environment&nbsp;</li>
-	<li>2-5 years managerial experience</li>
-	<li>Public accounting experience preferable</li>
+	<li>2+ years managerial experience</li>
+	<li>Public accounting experience required</li>
+	<li>CPA required</li>
 	<li>Strong problem-solving skills, ability to develop, organize and complete large- scale projects, passion for continuous process improvements</li>
 	<li>Experience in accounting for internally developed software</li>
 	<li>Experience with Accounts Receivable, Accounts Payable and cash management</li>
@@ -21,7 +22,7 @@
 	<li>Ability to deal sensitively with confidential material</li>
 	<li>Ability to communicate with various levels of management</li>
 	<li>Decision-making, problem-solving, and analytical skills</li>
-	<li>CPA preferred</li>
+	<li>&nbsp;</li>
 </ul>
 <p><strong>Compensation</strong></p>
 <p><span style="font-weight: 400;">Compensation may be adjusted depending on work location.</span></p>
