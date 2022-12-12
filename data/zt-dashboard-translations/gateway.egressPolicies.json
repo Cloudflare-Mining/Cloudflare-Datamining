@@ -1,8 +1,8 @@
 {
 	"egress_warp_fallback": "Egress WARP fallback",
 	"empty_state_add_new": "Create egress policy",
-	"empty_state_description": "Egress policies specify which IP is used for egress traffic based on identity, application, network, and geolocation attributes. If you don’t create an egress IP policies will default to Cloudfare Proxy. <br/><br/>Note: Dedicated egress IPs are required to enable traffic egress policies.",
-	"empty_state_more_info": "For more about proxy endpoints see the full Gateway <0>documentation</0>",
+	"empty_state_description": "Egress policies specify the source IP used for egress traffic based on identity, application, network, and geolocation attributes. Egress traffic will use the default Cloudflare proxy method if no polices are matched. <br/><br/>Note: Dedicated egress IPs are required to enable traffic egress policies.",
+	"empty_state_more_info": "For more about Gateway Policies, see the full Gateway <0>documentation</0>.",
 	"empty_state_title": "Create egress policies",
 	"ip_card_add_secondary_address": "+ Add secondary IPv4 address",
 	"ip_card_custom_egress": "Utilize dedicated Cloudflare egress IPs ",
