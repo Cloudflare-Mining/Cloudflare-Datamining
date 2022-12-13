@@ -5024,33 +5024,6 @@
 						]
 					},
 					{
-						"id": "06cdf849-af87-578a-a158-ecd217d2c488",
-						"contentfulId": "5kWRRYH5bq9DPW66OXEPsp",
-						"logo": {
-							"file": {
-								"publicURL": "[path]/icooklogoresized.jpg"
-							}
-						},
-						"nameUrlSlug": "icook",
-						"shortDescription": "Taiwan's hot social network stays secure, fast, and reliable with Cloudflare.",
-						"longDescription": "## __Cloudflare Serves Up Delicious Results for iCook__\n\nFood is a universal language that brings people together. This is especially true in Asia where people often bond over a meal. While eating has always been a communal activity, today's digital world has enabled cooking to go social too. \n\nThanks to the Internet, cooking enthusiasts can now connect across time and space, sharing their recipes and learning from others. In Taiwan, much of this is happening on iCook. Born in 2011 as the brainchild of software development company Polydice Inc., iCook is Taiwan's largest recipe-sharing social networking site. In fact, iCook has determined that one in three women in Taiwan are iCook users, creating an active and vibrant online community of about five million people. \n\n__The price of performance__\n\nAs a social networking site, iCook uses technology as an enabler, and cooking as a shared passion, to connect people. \n\n\"In Taiwan, people think of iCook when they want to share their recipes or when they are looking for cooking inspiration,\" explained Technical Project Manager Paul Lee. \"They often use our platform while they are busily cooking in the kitchen, so the performance of our website and mobile app has a major impact on the user experience. Ideally, we want to achieve content delivery that is so smooth and seamless that it feels like someone is demonstrating the cooking process right before their eyes.\" \n\nThis level of performance is quite a feat considering that iCook hosts over 190,000 recipes — most of which are asset heavy with videos and photos — and enjoys an average monthly click rate of about 63 million. iCook has managed to meet this demand at an eye-watering cost that quickly became unsustainable. That was when Paul and his team embarked on a search for a more affordable cloud service provider that would be capable of handling their highest traffic spikes without issue — and found Cloudflare.  \n\n<center><b>\"With Cloudflare, we are achieving 20% cost savings without any compromise on performance and security. To say that we are pleased would be an understatement.\"</b></center>\n</b></center>\n<center><i>— Paul Lee</center>\n  <center>Technical Project Manager, Polydice Inc.</i></center>\n</br>\n\n__The Cloudflare difference__\n\niCook was ultimately convinced by Cloudflare's ability to serve content with speed and security as well as agility and affordability. Paul points out that while cost was the reason iCook started looking for an alternative, it was not the team's only consideration. \"Performance and security are equally important to us. These are areas that we are unwilling to compromise on even in the face of cost pressures,\" stated Paul. \n\n<center><b>\n\"In order to continue growing the iCook brand and expand our services, we need to optimize the performance of our website and mobile app. Performance is at the heart of the user experience, so we are constantly striving for faster loading time while maintaining high-quality images.</b></center>\n<p></p>\n<center><b>We are also guardians of a vast amount of personal data, which makes security another non-negotiable priority. Cloudflare checked all the boxes for us, so choosing it was a straightforward decision.\"</b></center>\n</b></center>\n<center><i>— Paul Lee</center>\n  <center>Technical Project Manager, Polydice Inc.</i></center>\n</br>\n\nWhile Cloudflare's network takes care of front-end performance, [Cloudflare Workers](https://www.cloudflare.com/products/cloudflare-workers/ \"Cloudflare Workers\") is helping iCook improve back-end efficiency. By using Workers as an API gateway, the team is able to aggregate responses from multiple endpoints into a single response, reducing the resource burden of compiling individual responses. \n\n\"We also use Workers to distribute cookies and tracking codes to gather data on user behaviour,\" added Paul. \"From this data, we develop user insights, which then allow us to make recommendations to improve the overall user experience. Our partnership with Cloudflare, you could say, is a recipe for success.\" ",
-						"cloudflareStreamVideoId": null,
-						"orderDate": "2019-12-26",
-						"ref_streamVideoThumbnail": null,
-						"twoCardPreviewImage": null,
-						"industryNew52420": [
-							"Travel & Leisure"
-						],
-						"regionNew52520": [
-							"Asia-Pacific"
-						],
-						"primaryUseCases": [
-							"Accelerate digital properties",
-							"Deploy custom code at the Edge"
-						],
-						"product": null
-					},
-					{
 						"id": "923c86d3-4515-5180-8907-ba41688a023e",
 						"contentfulId": "5WoYg5OYWF1TOJ838BvfnC",
 						"logo": {
@@ -6192,36 +6165,6 @@
 						],
 						"product": [
 							"Argo Smart Routing"
-						]
-					},
-					{
-						"id": "2416db74-edde-59de-ade8-841ee40a0025",
-						"contentfulId": "4m7xO7poWQcqiAm6KEGea2",
-						"logo": {
-							"file": {
-								"publicURL": "[path]/splitmedialabs.png"
-							}
-						},
-						"nameUrlSlug": "splitmedialabs",
-						"shortDescription": "Cloudflare accelerates SplitmediaLabs' performance with its CDN and secures their servers from DDoS and injection attacks with its WAF, Rate Limiting and TLS",
-						"longDescription": "Cloudflare accelerates SplitmediaLabs' performance with its CDN and secures their servers from DDoS and injection attacks with its WAF, Rate Limiting and TLS.\n\n__About SplitmediaLabs:__\n\n[SplitmediaLabs](https://www.splitmedialabs.com/) is based in Hong Kong and builds tools for live streaming and recording applications for content creators, players, eSports and more\n\nMore than 8 Million people and businesses use SplitmediaLabs products to grow their communities, create innovative content and connect with other players from around the world. Based in Hong Kong and with a development center in Manila, Philippines, SplitmediaLabs has helped usher in the new age of live streaming gameplay since its creation back in 2009.\n\n__SplitmediaLabs challenge:__\n\nKeeping costs in check while meeting performance requirements, bandwidth savings and guarding against DDoS, XSS and injection attacks.\n\nFrequent attacks on XSplit - a live streaming and recording platform- led SplitmediaLabs to search for a WAF that could detect and react to attacks quickly.\n\n\"When XSplit was first attacked we fiddled around with ModSecurity and tested StackPath but didn't quite get the results we were looking for\" explains Michael Bachmann, CIO and Director of SplitmediaLabs. \"Keeping cost in check was a huge challenge. GCP and AWS are great platforms but the ease of adding new resources can lead to unforeseen costs and exposures, especially on development projects. \"\n\n__SplitmediaLabs' Solution:__\n\nPerformance Improvements with CDN and Fast DNS while protecting servers from DDoS, and using the WAF and rate limiting on logins, registering and expensive endpoints.\n\nSplitmedia's research led them to conclude that Cloudflare was the most flexible and feature rich offering for their use case and offered the most transparent pricing. \"We first started using Cloudflare as DNS for private domains and eventually migrated the company DNS from a well known provider to Cloudflare on a business plan.We found Cloudflare's DNS extremely fast and the overall solution was so easy to use and effective that we decided to scale to the enterprise plan.\"\n\nSplitmediaLabs leverages Cloudflare's global network of data centers in %{DataCenterCount} cities to ensure blazing fast performance. It uses Cloudflare's web application firewall to prevent from common attacks such as SQL injection and cross site scripting (XSS) as well as Cloudflare's one-click SSL to secure connections and keep their customer data safe from monitoring and tampering.\n\n\"Keeping up with new technologies while keeping everything secure and fast is a constant challenge\" says Mak Sok, VP of Engineering of SplitmediaLabs. \"With Cloudflare, sleeping is easier when you know you have world class DDOS protection, TLS encryption and rate limiting.\"",
-						"cloudflareStreamVideoId": null,
-						"orderDate": "2018-06-29",
-						"ref_streamVideoThumbnail": null,
-						"twoCardPreviewImage": null,
-						"industryNew52420": [
-							"High Technology"
-						],
-						"regionNew52520": [
-							"Asia-Pacific"
-						],
-						"primaryUseCases": [
-							"Secure websites & applications"
-						],
-						"product": [
-							"WAF",
-							"Rate Limiting",
-							"DNS"
 						]
 					},
 					{
