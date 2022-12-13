@@ -238,26 +238,6 @@
 				"readOnly": true,
 				"type": "number"
 			},
-			"Cloudflare Client API_api-response-collection": {
-				"anyOf": [
-					{
-						"$ref": "#/components/schemas/api-response-common"
-					},
-					{
-						"properties": {
-							"result": {
-								"items": {},
-								"nullable": true,
-								"type": "array"
-							},
-							"result_info": {
-								"$ref": "#/components/schemas/result_info"
-							}
-						}
-					}
-				],
-				"type": "object"
-			},
 			"Cloudflare Client API_api-response-common-failure": {
 				"properties": {
 					"errors": {
@@ -370,7 +350,7 @@
 			"Cloudflare Client API_ca_components-schemas-response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -419,7 +399,7 @@
 			"Cloudflare Client API_certificates_components-schemas-response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -447,12 +427,19 @@
 					}
 				]
 			},
-			"Cloudflare Client API_components-schemas-created": {
-				"description": "The date and a time a watermark profile was created.",
-				"example": "2014-01-02T02:20:00Z",
-				"format": "date-time",
-				"readOnly": true,
-				"type": "string"
+			"Cloudflare Client API_clipResponseSingle": {
+				"allOf": [
+					{
+						"$ref": "#/components/schemas/api-response-collection"
+					},
+					{
+						"properties": {
+							"result": {
+								"$ref": "#/components/schemas/schemas-output"
+							}
+						}
+					}
+				]
 			},
 			"Cloudflare Client API_components-schemas-id_response": {
 				"allOf": [
@@ -473,13 +460,6 @@
 					}
 				]
 			},
-			"Cloudflare Client API_components-schemas-identifier": {
-				"description": "Token identifier tag.",
-				"example": "ed17574386854bf78a67040be0a770b0",
-				"maxLength": 32,
-				"readOnly": true,
-				"type": "string"
-			},
 			"Cloudflare Client API_components-schemas-name": {
 				"description": "Role Name.",
 				"example": "Organization Admin",
@@ -490,7 +470,7 @@
 			"Cloudflare Client API_components-schemas-response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -561,6 +541,42 @@
 				"format": "date-time",
 				"readOnly": true,
 				"type": "string"
+			},
+			"Cloudflare Client API_direct_upload_request": {
+				"properties": {
+					"allowedOrigins": {
+						"$ref": "#/components/schemas/allowedOrigins"
+					},
+					"creator": {
+						"$ref": "#/components/schemas/creator"
+					},
+					"expiry": {
+						"default": "Now + 30 minutes",
+						"description": "The date and time after upload when videos will not be accepted.",
+						"example": "2021-01-02T02:20:00Z",
+						"format": "date-time",
+						"type": "string"
+					},
+					"maxDurationSeconds": {
+						"description": "Calculates the amount of time a video occupies before the video is uploaded. Direct uploads occupy minutes of videos on your Stream account until they are expired. After upload, the upload duration is used instead. If a video longer than the value is uploaded, the video results in an error.",
+						"maximum": 21600,
+						"minimum": 1,
+						"type": "integer"
+					},
+					"requireSignedURLs": {
+						"$ref": "#/components/schemas/requireSignedURLs"
+					},
+					"thumbnailTimestampPct": {
+						"$ref": "#/components/schemas/thumbnailTimestampPct"
+					},
+					"watermark": {
+						"$ref": "#/components/schemas/watermark_at_upload"
+					}
+				},
+				"required": [
+					"maxDurationSeconds"
+				],
+				"type": "object"
 			},
 			"Cloudflare Client API_direct_upload_response": {
 				"allOf": [
@@ -663,7 +679,7 @@
 			"Cloudflare Client API_empty_response": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -777,7 +793,7 @@
 			"Cloudflare Client API_key_response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -832,6 +848,10 @@
 					}
 				}
 			},
+			"Cloudflare Client API_maxDurationSeconds": {
+				"description": "The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.",
+				"type": "integer"
+			},
 			"Cloudflare Client API_modified": {
 				"description": "The date and time the destination address was last modified.",
 				"example": "2014-01-02T02:20:00Z",
@@ -878,7 +898,7 @@
 			"Cloudflare Client API_policies_components-schemas-response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -916,7 +936,7 @@
 			"Cloudflare Client API_response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -982,16 +1002,6 @@
 					"configuration"
 				],
 				"type": "object"
-			},
-			"Cloudflare Client API_schemas-account_identifier": {
-				"example": "01a7362d577a6c3019a474fd6f485823"
-			},
-			"Cloudflare Client API_schemas-created": {
-				"description": "The date and time the media item was created.",
-				"example": "2014-01-02T02:20:00Z",
-				"format": "date-time",
-				"readOnly": true,
-				"type": "string"
 			},
 			"Cloudflare Client API_schemas-domain": {
 				"description": "The domain and path that Access will secure.",
@@ -1060,67 +1070,11 @@
 				]
 			},
 			"Cloudflare Client API_schemas-identifier": {},
-			"Cloudflare Client API_schemas-modified": {
-				"description": "The date and time the media item was last modified.",
-				"example": "2014-01-02T02:20:00Z",
-				"format": "date-time",
-				"readOnly": true,
-				"type": "string"
-			},
 			"Cloudflare Client API_schemas-name": {
 				"description": "Organization name.",
 				"example": "Cloudflare, Inc.",
 				"maxLength": 100,
 				"type": "string"
-			},
-			"Cloudflare Client API_schemas-output": {
-				"properties": {
-					"allowedOrigins": {
-						"$ref": "#/components/schemas/allowedOrigins"
-					},
-					"clippedFromVideoUID": {
-						"$ref": "#/components/schemas/clipped_from_video_uid"
-					},
-					"created": {
-						"$ref": "#/components/schemas/clipping_components-schemas-created"
-					},
-					"creator": {
-						"$ref": "#/components/schemas/creator"
-					},
-					"endTimeSeconds": {
-						"$ref": "#/components/schemas/end_time_seconds"
-					},
-					"maxDurationSeconds": {
-						"$ref": "#/components/schemas/schemas-maxDurationSeconds"
-					},
-					"meta": {
-						"$ref": "#/components/schemas/schemas-media_metadata"
-					},
-					"modified": {
-						"$ref": "#/components/schemas/components-schemas-modified"
-					},
-					"playback": {
-						"$ref": "#/components/schemas/playback"
-					},
-					"preview": {
-						"$ref": "#/components/schemas/preview"
-					},
-					"requireSignedURLs": {
-						"$ref": "#/components/schemas/requireSignedURLs"
-					},
-					"startTimeSeconds": {
-						"$ref": "#/components/schemas/start_time_seconds"
-					},
-					"status": {
-						"$ref": "#/components/schemas/media_state"
-					},
-					"thumbnailTimestampPct": {
-						"$ref": "#/components/schemas/thumbnailTimestampPct"
-					},
-					"watermark": {
-						"$ref": "#/components/schemas/watermarkAtUpload"
-					}
-				}
 			},
 			"Cloudflare Client API_schemas-require": {
 				"description": "Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.",
@@ -1132,7 +1086,7 @@
 			"Cloudflare Client API_schemas-response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -1327,13 +1281,50 @@
 				},
 				"type": "object"
 			},
+			"Cloudflare Client API_videoClipStandard": {
+				"properties": {
+					"allowedOrigins": {
+						"$ref": "#/components/schemas/allowedOrigins"
+					},
+					"clippedFromVideoUID": {
+						"$ref": "#/components/schemas/clipped_from_video_uid"
+					},
+					"creator": {
+						"$ref": "#/components/schemas/creator"
+					},
+					"endTimeSeconds": {
+						"$ref": "#/components/schemas/end_time_seconds"
+					},
+					"maxDurationSeconds": {
+						"$ref": "#/components/schemas/schemas-maxDurationSeconds"
+					},
+					"requireSignedURLs": {
+						"$ref": "#/components/schemas/requireSignedURLs"
+					},
+					"startTimeSeconds": {
+						"$ref": "#/components/schemas/start_time_seconds"
+					},
+					"thumbnailTimestampPct": {
+						"$ref": "#/components/schemas/thumbnailTimestampPct"
+					},
+					"watermark": {
+						"$ref": "#/components/schemas/watermarkAtUpload"
+					}
+				},
+				"required": [
+					"clippedFromVideoUID",
+					"startTimeSeconds",
+					"endTimeSeconds"
+				],
+				"type": "object"
+			},
 			"Cloudflare Client API_videos": {
 				"properties": {
 					"allowedOrigins": {
 						"$ref": "#/components/schemas/allowedOrigins"
 					},
 					"created": {
-						"$ref": "#/components/schemas/Cloudflare Client API_schemas-created"
+						"$ref": "#/components/schemas/schemas-created"
 					},
 					"creator": {
 						"$ref": "#/components/schemas/creator"
@@ -1348,13 +1339,13 @@
 						"$ref": "#/components/schemas/liveInput"
 					},
 					"maxDurationSeconds": {
-						"$ref": "#/components/schemas/maxDurationSeconds"
+						"$ref": "#/components/schemas/Cloudflare Client API_maxDurationSeconds"
 					},
 					"meta": {
 						"$ref": "#/components/schemas/media_metadata"
 					},
 					"modified": {
-						"$ref": "#/components/schemas/Cloudflare Client API_schemas-modified"
+						"$ref": "#/components/schemas/schemas-modified"
 					},
 					"nft": {
 						"$ref": "#/components/schemas/nft"
@@ -1429,7 +1420,7 @@
 			"Cloudflare Client API_watermarks": {
 				"properties": {
 					"created": {
-						"$ref": "#/components/schemas/Cloudflare Client API_components-schemas-created"
+						"$ref": "#/components/schemas/components-schemas-created"
 					},
 					"downloadedFrom": {
 						"$ref": "#/components/schemas/downloadedFrom"
@@ -2386,13 +2377,6 @@
 				],
 				"title": "URI Record"
 			},
-			"Zonekeeper Public API_identifier": {
-				"description": "Identifier",
-				"example": "023e105f4ecef8ad9ca31a8372d0c353",
-				"maxLength": 32,
-				"readOnly": true,
-				"type": "string"
-			},
 			"access-policy": {
 				"oneOf": [
 					{
@@ -2444,7 +2428,7 @@
 			"access-requests_components-schemas-response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -2603,7 +2587,7 @@
 			"account_subscription_response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -2685,7 +2669,7 @@
 			"acl_components-schemas-response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -2716,7 +2700,7 @@
 			"acns_response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -3290,7 +3274,7 @@
 			"address-maps_components-schemas-response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -3465,7 +3449,7 @@
 			"alert-types_components-schemas-response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -3805,7 +3789,7 @@
 			"analytics_components-schemas-response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -4103,7 +4087,7 @@
 			"app-types_components-schemas-response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -4134,7 +4118,7 @@
 			"app_components-schemas-response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -4420,7 +4404,7 @@
 			"apps_components-schemas-response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -4437,7 +4421,7 @@
 			"apps_components-schemas-response_collection-2": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -4668,7 +4652,7 @@
 			"association_response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -4967,7 +4951,7 @@
 			"availability_response": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -5313,7 +5297,7 @@
 			"billing_history_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -5519,7 +5503,7 @@
 			"bookmarks_components-schemas-response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -5736,7 +5720,7 @@
 			"bulk-operation-response-collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -6191,7 +6175,7 @@
 			"categories_components-schemas-response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -6395,7 +6379,7 @@
 			"certificate_pack_response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -6427,7 +6411,7 @@
 			"certificate_response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -6848,12 +6832,12 @@
 			"clipResponseSingle": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
 							"result": {
-								"$ref": "#/components/schemas/Cloudflare Client API_schemas-output"
+								"$ref": "#/components/schemas/clipping"
 							}
 						}
 					}
@@ -6866,8 +6850,64 @@
 				"readOnly": true,
 				"type": "string"
 			},
+			"clipping": {
+				"properties": {
+					"allowedOrigins": {
+						"$ref": "#/components/schemas/allowedOrigins"
+					},
+					"clippedFromVideoUID": {
+						"$ref": "#/components/schemas/clipped_from_video_uid"
+					},
+					"created": {
+						"$ref": "#/components/schemas/clipping_created"
+					},
+					"creator": {
+						"$ref": "#/components/schemas/creator"
+					},
+					"endTimeSeconds": {
+						"$ref": "#/components/schemas/end_time_seconds"
+					},
+					"maxDurationSeconds": {
+						"$ref": "#/components/schemas/maxDurationSeconds"
+					},
+					"meta": {
+						"$ref": "#/components/schemas/media_metadata"
+					},
+					"modified": {
+						"$ref": "#/components/schemas/live_input_modified"
+					},
+					"playback": {
+						"$ref": "#/components/schemas/playback"
+					},
+					"preview": {
+						"$ref": "#/components/schemas/preview"
+					},
+					"requireSignedURLs": {
+						"$ref": "#/components/schemas/requireSignedURLs"
+					},
+					"startTimeSeconds": {
+						"$ref": "#/components/schemas/start_time_seconds"
+					},
+					"status": {
+						"$ref": "#/components/schemas/media_state"
+					},
+					"thumbnailTimestampPct": {
+						"$ref": "#/components/schemas/thumbnailTimestampPct"
+					},
+					"watermark": {
+						"$ref": "#/components/schemas/watermarkAtUpload"
+					}
+				}
+			},
 			"clipping_components-schemas-created": {
 				"description": "The date and time the live input was created.",
+				"example": "2014-01-02T02:20:00Z",
+				"format": "date-time",
+				"readOnly": true,
+				"type": "string"
+			},
+			"clipping_created": {
+				"description": "The date and time the clip was created.",
 				"example": "2014-01-02T02:20:00Z",
 				"format": "date-time",
 				"readOnly": true,
@@ -6999,7 +7039,7 @@
 			"collection_invite_response": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -7017,7 +7057,7 @@
 			"collection_member_response": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -7035,7 +7075,7 @@
 			"collection_membership_response": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -7053,7 +7093,7 @@
 			"collection_organization_response": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -7071,7 +7111,7 @@
 			"collection_response": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -7150,7 +7190,7 @@
 			"collection_role_response": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -7473,7 +7513,7 @@
 			"components-schemas-certificate_response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -7530,7 +7570,7 @@
 			"components-schemas-collection_response": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -7575,7 +7615,7 @@
 				"type": "string"
 			},
 			"components-schemas-created": {
-				"description": "The date and time a signing key was created.",
+				"description": "The date and a time a watermark profile was created.",
 				"example": "2014-01-02T02:20:00Z",
 				"format": "date-time",
 				"readOnly": true,
@@ -7705,8 +7745,8 @@
 				]
 			},
 			"components-schemas-identifier": {
-				"description": "Identifier",
-				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"description": "Token identifier tag.",
+				"example": "ed17574386854bf78a67040be0a770b0",
 				"maxLength": 32,
 				"readOnly": true,
 				"type": "string"
@@ -7741,7 +7781,7 @@
 			},
 			"components-schemas-match": {
 				"description": "The wirefilter expression to match devices.",
-				"example": "identity.email == \"test@cloudflare.com\"",
+				"example": "user.identity == \"test@cloudflare.com\"",
 				"maxLength": 500,
 				"type": "string"
 			},
@@ -8061,7 +8101,7 @@
 			"components-schemas-response": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -8300,6 +8340,9 @@
 					},
 					"gre": {
 						"$ref": "#/components/schemas/gre"
+					},
+					"health_check": {
+						"$ref": "#/components/schemas/schemas-health_check"
 					},
 					"interface_address": {
 						"$ref": "#/components/schemas/interface_address"
@@ -8677,7 +8720,7 @@
 			"connection_collection_response": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -9085,7 +9128,7 @@
 			"content_list_entry_collection_response": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -9305,7 +9348,7 @@
 			"create_custom_profile_response": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -9778,6 +9821,22 @@
 				],
 				"type": "object"
 			},
+			"custom-certificate-settings": {
+				"description": "Custom certificate settings for BYO-PKI.",
+				"properties": {
+					"enabled": {
+						"description": "Enable use of custom certificate authority for signing Gateway traffic",
+						"example": true,
+						"type": "boolean"
+					},
+					"id": {
+						"description": "UUID of certificate (ID from MTLS certificate store)",
+						"example": "d1b364c5-1311-466e-a194-f0e943e0799f",
+						"type": "string"
+					}
+				},
+				"type": "object"
+			},
 			"custom-certificate_components-schemas-identifier": {
 				"description": "Custom certificate identifier tag.",
 				"example": "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
@@ -9991,7 +10050,7 @@
 			"custom_hostname_response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -10054,7 +10113,7 @@
 			"custom_pages_response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -10347,7 +10406,7 @@
 			"default_device_settings_response": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -11415,7 +11474,7 @@
 			"destination_addresses_response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -11550,7 +11609,7 @@
 			"device-managed-networks_components-schemas-response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -11637,7 +11696,7 @@
 			"device-posture-integrations_components-schemas-response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -11746,7 +11805,7 @@
 			"device-posture-rules_components-schemas-response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -11832,6 +11891,9 @@
 					"default": {
 						"$ref": "#/components/schemas/schemas-default"
 					},
+					"description": {
+						"$ref": "#/components/schemas/devices_components-schemas-description"
+					},
 					"disable_auto_fallback": {
 						"$ref": "#/components/schemas/disable_auto_fallback"
 					},
@@ -11882,7 +11944,7 @@
 			"device_settings_response": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -11896,7 +11958,7 @@
 			"device_settings_response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -11978,6 +12040,12 @@
 				"format": "date-time",
 				"type": "string"
 			},
+			"devices_components-schemas-description": {
+				"description": "A description of the policy.",
+				"example": "Policy for test teams.",
+				"maxLength": 500,
+				"type": "string"
+			},
 			"devices_components-schemas-identifier": {
 				"example": "699d98642c564d2e855e9661899b7252"
 			},
@@ -12005,7 +12073,7 @@
 			"devices_response": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -12062,10 +12130,7 @@
 						"type": "string"
 					},
 					"maxDurationSeconds": {
-						"description": "Calculates the amount of time a video occupies before the video is uploaded. Direct uploads occupy minutes of videos on your Stream account until they are expired. After upload, the upload duration is used instead. If a video longer than the value is uploaded, the video results in an error.",
-						"maximum": 21600,
-						"minimum": 1,
-						"type": "integer"
+						"$ref": "#/components/schemas/maxDurationSeconds"
 					},
 					"requireSignedURLs": {
 						"$ref": "#/components/schemas/requireSignedURLs"
@@ -12544,7 +12609,7 @@
 			"dns-settings_response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -12586,7 +12651,7 @@
 			"dns_firewall_response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -12623,7 +12688,7 @@
 			"dns_response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -12932,7 +12997,7 @@
 			"domain_response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -13276,7 +13341,7 @@
 			"eligibility_components-schemas-response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -13702,7 +13767,7 @@
 			"event_response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -13888,7 +13953,7 @@
 			"failed_login_response": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -13951,7 +14016,7 @@
 			"fallback_domain_response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -14070,7 +14135,7 @@
 			"filter-delete-response-collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -14219,7 +14284,7 @@
 			"filter-rules-response-collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -14253,7 +14318,7 @@
 			"filter-rules-response-collection-delete": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -14477,7 +14542,7 @@
 			"firewalluablock_response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -14708,6 +14773,9 @@
 							"browser_isolation": {
 								"$ref": "#/components/schemas/browser-isolation-settings"
 							},
+							"custom_certificate": {
+								"$ref": "#/components/schemas/custom-certificate-settings"
+							},
 							"fips": {
 								"$ref": "#/components/schemas/fips-settings"
 							},
@@ -14900,7 +14968,7 @@
 			"get_response": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"$ref": "#/components/schemas/zone_metadata"
@@ -15020,11 +15088,6 @@
 				"properties": {
 					"cloudflare_endpoint": {
 						"description": "The IP address assigned to the Cloudflare side of the GRE tunnel created as part of the Interconnect.",
-						"example": "203.0.113.1",
-						"type": "string"
-					},
-					"customer_endpoint": {
-						"description": "The IP address assigned to the customer side of the GRE tunnel created as part of the Interconnect.",
 						"example": "203.0.113.1",
 						"type": "string"
 					}
@@ -15181,7 +15244,7 @@
 			"groups_components-schemas-response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -15462,7 +15525,7 @@
 			"healthchecks_components-schemas-response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -15562,7 +15625,7 @@
 			"history_components-schemas-response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -15667,7 +15730,7 @@
 			"hostname-authenticated-origin-pull_components-schemas-certificate_response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -15718,7 +15781,7 @@
 			"hostname_aop_response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -16022,7 +16085,11 @@
 				]
 			},
 			"identifier": {
-				"example": "699d98642c564d2e855e9661899b7252"
+				"description": "Identifier",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"readOnly": true,
+				"type": "string"
 			},
 			"identity": {
 				"description": "The wirefilter expression to be used for identity matching.",
@@ -16105,7 +16172,7 @@
 			"identity-providers_components-schemas-response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -16222,7 +16289,7 @@
 			"image_response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -16677,7 +16744,7 @@
 			"ipam-delegations_components-schemas-response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -16758,7 +16825,7 @@
 			"ipam-prefixes_components-schemas-response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -17006,7 +17073,7 @@
 			"item-response-collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -17086,7 +17153,7 @@
 			"items-list-response-collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -17210,7 +17277,7 @@
 			"key_generation_response": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -17244,10 +17311,10 @@
 								"items": {
 									"properties": {
 										"created": {
-											"$ref": "#/components/schemas/components-schemas-created"
+											"$ref": "#/components/schemas/signing_key_created"
 										},
 										"id": {
-											"$ref": "#/components/schemas/keys_components-schemas-identifier"
+											"$ref": "#/components/schemas/schemas-identifier"
 										}
 									},
 									"type": "object"
@@ -17358,7 +17425,7 @@
 			"keyless_response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -17408,10 +17475,10 @@
 			"keys": {
 				"properties": {
 					"created": {
-						"$ref": "#/components/schemas/components-schemas-created"
+						"$ref": "#/components/schemas/signing_key_created"
 					},
 					"id": {
-						"$ref": "#/components/schemas/keys_components-schemas-identifier"
+						"$ref": "#/components/schemas/schemas-identifier"
 					},
 					"jwk": {
 						"$ref": "#/components/schemas/jwk"
@@ -17528,7 +17595,7 @@
 			"language_response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -17663,7 +17730,7 @@
 			"list-delete-response-collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -17683,7 +17750,7 @@
 			"list-response-collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -17698,7 +17765,7 @@
 			"list-zone-connections-response": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -17719,7 +17786,7 @@
 			"list-zone-scripts-response": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -17748,7 +17815,7 @@
 			"list_item_response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -17827,7 +17894,7 @@
 			"lists-async-response": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -17847,7 +17914,7 @@
 			"lists-response-collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -17925,7 +17992,7 @@
 			"lists_components-schemas-response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -17983,6 +18050,13 @@
 				"readOnly": true,
 				"type": "string"
 			},
+			"live_input_created": {
+				"description": "The date and time the live input was created.",
+				"example": "2014-01-02T02:20:00Z",
+				"format": "date-time",
+				"readOnly": true,
+				"type": "string"
+			},
 			"live_input_default_creator": {
 				"description": "Sets the creator ID asssociated with this live input.",
 				"type": "string"
@@ -18001,16 +18075,23 @@
 				},
 				"type": "object"
 			},
+			"live_input_modified": {
+				"description": "The date and time the live input was last modified.",
+				"example": "2014-01-02T02:20:00Z",
+				"format": "date-time",
+				"readOnly": true,
+				"type": "string"
+			},
 			"live_input_object_without_url": {
 				"properties": {
 					"created": {
-						"$ref": "#/components/schemas/connect_components-schemas-created"
+						"$ref": "#/components/schemas/live_input_created"
 					},
 					"meta": {
 						"$ref": "#/components/schemas/live_input_metadata"
 					},
 					"modified": {
-						"$ref": "#/components/schemas/schemas-modified"
+						"$ref": "#/components/schemas/live_input_modified"
 					},
 					"uid": {
 						"$ref": "#/components/schemas/live_input_identifier"
@@ -18074,7 +18155,7 @@
 			"live_input_response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -18257,7 +18338,7 @@
 			"load-balancer_components-schemas-response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -18522,7 +18603,7 @@
 			"locations_components-schemas-response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -18834,6 +18915,8 @@
 			},
 			"maxDurationSeconds": {
 				"description": "The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.",
+				"maximum": 21600,
+				"minimum": 1,
 				"type": "integer"
 			},
 			"max_age": {
@@ -19713,7 +19796,7 @@
 			"monitor_components-schemas-response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -19730,7 +19813,7 @@
 			"monitor_components-schemas-response_collection-2": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -19789,7 +19872,7 @@
 			"mtls-management_components-schemas-certificate_response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -19907,8 +19990,10 @@
 				]
 			},
 			"name": {
-				"description": "The name of your Zero Trust organization.",
-				"example": "Widget Corps Internal Applications",
+				"default": "",
+				"description": "A short description of the watermark profile.",
+				"example": "Marketing Videos",
+				"readOnly": true,
 				"type": "string"
 			},
 			"name_servers": {
@@ -20713,7 +20798,7 @@
 						"$ref": "#/components/schemas/login_design"
 					},
 					"name": {
-						"$ref": "#/components/schemas/name"
+						"$ref": "#/components/schemas/Cloudflare Client API_name"
 					},
 					"updated_at": {
 						"$ref": "#/components/schemas/timestamp"
@@ -21023,7 +21108,7 @@
 			"output_response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -21094,7 +21179,7 @@
 			"override_codes_response": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -21113,7 +21198,7 @@
 			"override_response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -21326,7 +21411,7 @@
 			"package_response_collection": {
 				"anyOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -21480,7 +21565,7 @@
 			"pagerduty_components-schemas-response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -21686,7 +21771,7 @@
 			"pcaps_collection_response": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -21768,7 +21853,7 @@
 			"pcaps_ownership_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -21842,7 +21927,7 @@
 			"pcaps_ownership_single_response": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -22140,7 +22225,7 @@
 			"peer_components-schemas-response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -22487,7 +22572,7 @@
 			"plan_response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -22657,7 +22742,7 @@
 			"policies_components-schemas-response_collection-2": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -22967,7 +23052,7 @@
 			"pool_components-schemas-response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -23313,7 +23398,7 @@
 			"profiles_components-schemas-response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -23559,7 +23644,7 @@
 			"proxy-endpoints_components-schemas-response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -24221,7 +24306,7 @@
 			"railgun_response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -24394,7 +24479,7 @@
 			"ratelimit_response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -24457,7 +24542,7 @@
 			"references_response": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -24872,7 +24957,7 @@
 			"response": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -25104,7 +25189,7 @@
 										"$ref": "#/components/schemas/expires_on"
 									},
 									"id": {
-										"$ref": "#/components/schemas/Cloudflare Client API_components-schemas-identifier"
+										"$ref": "#/components/schemas/components-schemas-identifier"
 									},
 									"not_before": {
 										"$ref": "#/components/schemas/not_before"
@@ -25225,7 +25310,7 @@
 			},
 			"retries": {
 				"default": 2,
-				"description": "Number of retries for fetching DNS responses from origin nameservers.",
+				"description": "Number of retries for fetching DNS responses from origin nameservers (not counting the initial attempt).",
 				"example": 2,
 				"maximum": 2,
 				"minimum": 0,
@@ -25543,7 +25628,7 @@
 			"route_response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -25840,7 +25925,7 @@
 			"rule_collection_response": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -25976,7 +26061,7 @@
 			"rule_group_response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -26077,7 +26162,7 @@
 			"rule_response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -26273,7 +26358,7 @@
 			"rules_components-schemas-response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -26403,7 +26488,7 @@
 			"rules_response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -26837,11 +26922,7 @@
 				"readOnly": true
 			},
 			"schemas-account_identifier": {
-				"description": "Account identifier tag.",
-				"example": "023e105f4ecef8ad9ca31a8372d0c353",
-				"maxLength": 32,
-				"readOnly": true,
-				"type": "string"
+				"example": "01a7362d577a6c3019a474fd6f485823"
 			},
 			"schemas-action": {
 				"description": "Actions pattern.",
@@ -27244,7 +27325,7 @@
 			"schemas-certificate_response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -27328,7 +27409,7 @@
 			"schemas-collection_invite_response": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -27346,7 +27427,7 @@
 			"schemas-collection_response": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -27505,7 +27586,7 @@
 				"type": "object"
 			},
 			"schemas-created": {
-				"description": "The date and a time a watermark profile was created.",
+				"description": "The date and time the media item was created.",
 				"example": "2014-01-02T02:20:00Z",
 				"format": "date-time",
 				"readOnly": true,
@@ -27746,7 +27827,7 @@
 			"schemas-filter-response-collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -28118,7 +28199,7 @@
 			"schemas-key_response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -28211,7 +28292,7 @@
 				"type": "string"
 			},
 			"schemas-modified": {
-				"description": "The date and time the live input was last modified.",
+				"description": "The date and time the media item was last modified.",
 				"example": "2014-01-02T02:20:00Z",
 				"format": "date-time",
 				"readOnly": true,
@@ -28399,7 +28480,7 @@
 						"$ref": "#/components/schemas/schemas-media_metadata"
 					},
 					"modified": {
-						"$ref": "#/components/schemas/schemas-modified"
+						"$ref": "#/components/schemas/components-schemas-modified"
 					},
 					"playback": {
 						"$ref": "#/components/schemas/playback"
@@ -28679,7 +28760,7 @@
 			"schemas-railgun_response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -28716,7 +28797,7 @@
 			"schemas-references_response": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -28881,7 +28962,7 @@
 			"schemas-response": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -29121,7 +29202,7 @@
 			"schemas-rules_response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -29545,7 +29626,7 @@
 			"schemas-tunnel_response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -29976,7 +30057,7 @@
 			"seats_components-schemas-response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -30239,7 +30320,7 @@
 			"service-tokens_components-schemas-response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -30964,6 +31045,13 @@
 					}
 				]
 			},
+			"signing_key_created": {
+				"description": "The date and time a signing key was created.",
+				"example": "2014-01-02T02:20:00Z",
+				"format": "date-time",
+				"readOnly": true,
+				"type": "string"
+			},
 			"since": {
 				"anyOf": [
 					{
@@ -31314,7 +31402,7 @@
 			"split_tunnel_include_response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -31331,7 +31419,7 @@
 			"split_tunnel_response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -32498,7 +32586,7 @@
 						"$ref": "#/components/schemas/expires_on"
 					},
 					"id": {
-						"$ref": "#/components/schemas/Cloudflare Client API_components-schemas-identifier"
+						"$ref": "#/components/schemas/components-schemas-identifier"
 					},
 					"issued_on": {
 						"$ref": "#/components/schemas/issued_on"
@@ -32628,7 +32716,7 @@
 			"traceroute_response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -32875,7 +32963,7 @@
 			"tsig_components-schemas-response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -33020,7 +33108,7 @@
 			"tunnel_connections_response": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -33120,7 +33208,7 @@
 			"tunnel_response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -33685,7 +33773,7 @@
 			"user_subscription_response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -33768,7 +33856,7 @@
 			"users_components-schemas-response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -33984,7 +34072,7 @@
 			"variant_list_response": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -34319,7 +34407,7 @@
 						"$ref": "#/components/schemas/end_time_seconds"
 					},
 					"maxDurationSeconds": {
-						"$ref": "#/components/schemas/schemas-maxDurationSeconds"
+						"$ref": "#/components/schemas/maxDurationSeconds"
 					},
 					"requireSignedURLs": {
 						"$ref": "#/components/schemas/requireSignedURLs"
@@ -34379,7 +34467,7 @@
 			"video_response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -34614,7 +34702,7 @@
 			"virtual_dns_response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -34676,7 +34764,7 @@
 			"vnet_response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -34866,7 +34954,7 @@
 			"waitingroom_components-schemas-response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -34978,7 +35066,7 @@
 						"type": "string"
 					},
 					"name": {
-						"$ref": "#/components/schemas/Cloudflare Client API_name"
+						"$ref": "#/components/schemas/name"
 					},
 					"opacity": {
 						"$ref": "#/components/schemas/opacity"
@@ -34998,10 +35086,24 @@
 				],
 				"type": "object"
 			},
+			"watermark_created": {
+				"description": "The date and a time a watermark profile was created.",
+				"example": "2014-01-02T02:20:00Z",
+				"format": "date-time",
+				"readOnly": true,
+				"type": "string"
+			},
+			"watermark_identifier": {
+				"description": "The unique identifier for a watermark profile.",
+				"example": "ea95132c15732412d22c1476fa83f27a",
+				"maxLength": 32,
+				"readOnly": true,
+				"type": "string"
+			},
 			"watermark_response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -35029,10 +35131,16 @@
 					}
 				]
 			},
+			"watermark_size": {
+				"description": "The size of the image in bytes.",
+				"example": 29472,
+				"readOnly": true,
+				"type": "number"
+			},
 			"watermarks": {
 				"properties": {
 					"created": {
-						"$ref": "#/components/schemas/schemas-created"
+						"$ref": "#/components/schemas/watermark_created"
 					},
 					"downloadedFrom": {
 						"$ref": "#/components/schemas/downloadedFrom"
@@ -35041,7 +35149,7 @@
 						"$ref": "#/components/schemas/height"
 					},
 					"name": {
-						"$ref": "#/components/schemas/Cloudflare Client API_name"
+						"$ref": "#/components/schemas/name"
 					},
 					"opacity": {
 						"$ref": "#/components/schemas/opacity"
@@ -35056,10 +35164,10 @@
 						"$ref": "#/components/schemas/scale"
 					},
 					"size": {
-						"$ref": "#/components/schemas/schemas-size"
+						"$ref": "#/components/schemas/watermark_size"
 					},
 					"uid": {
-						"$ref": "#/components/schemas/Cloudflare Client API_schemas-identifier"
+						"$ref": "#/components/schemas/watermark_identifier"
 					},
 					"width": {
 						"$ref": "#/components/schemas/width"
@@ -35243,7 +35351,7 @@
 			"webhooks_components-schemas-response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -35623,7 +35731,7 @@
 			"zone_settings_response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -35712,7 +35820,7 @@
 			"zonelockdown_response_collection": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+						"$ref": "#/components/schemas/api-response-collection"
 					},
 					{
 						"properties": {
@@ -35888,7 +35996,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+									"$ref": "#/components/schemas/api-response-collection"
 								}
 							}
 						},
@@ -35900,7 +36008,7 @@
 								"schema": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+											"$ref": "#/components/schemas/api-response-collection"
 										},
 										{
 											"$ref": "#/components/schemas/api-response-common-failure"
@@ -35966,7 +36074,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+									"$ref": "#/components/schemas/api-response-collection"
 								}
 							}
 						},
@@ -35978,7 +36086,7 @@
 								"schema": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+											"$ref": "#/components/schemas/api-response-collection"
 										},
 										{
 											"$ref": "#/components/schemas/api-response-common-failure"
@@ -36166,7 +36274,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+									"$ref": "#/components/schemas/api-response-collection"
 								}
 							}
 						},
@@ -36178,7 +36286,7 @@
 								"schema": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+											"$ref": "#/components/schemas/api-response-collection"
 										},
 										{
 											"$ref": "#/components/schemas/api-response-common-failure"
@@ -36391,7 +36499,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+									"$ref": "#/components/schemas/api-response-collection"
 								}
 							}
 						},
@@ -36403,7 +36511,7 @@
 								"schema": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+											"$ref": "#/components/schemas/api-response-collection"
 										},
 										{
 											"$ref": "#/components/schemas/api-response-common-failure"
@@ -36469,7 +36577,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+									"$ref": "#/components/schemas/api-response-collection"
 								}
 							}
 						},
@@ -36481,7 +36589,7 @@
 								"schema": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+											"$ref": "#/components/schemas/api-response-collection"
 										},
 										{
 											"$ref": "#/components/schemas/api-response-common-failure"
@@ -36549,7 +36657,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+									"$ref": "#/components/schemas/api-response-collection"
 								}
 							}
 						},
@@ -36561,7 +36669,7 @@
 								"schema": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+											"$ref": "#/components/schemas/api-response-collection"
 										},
 										{
 											"$ref": "#/components/schemas/api-response-common-failure"
@@ -36627,7 +36735,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+									"$ref": "#/components/schemas/api-response-collection"
 								}
 							}
 						},
@@ -36639,7 +36747,7 @@
 								"schema": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+											"$ref": "#/components/schemas/api-response-collection"
 										},
 										{
 											"$ref": "#/components/schemas/api-response-common-failure"
@@ -36977,7 +37085,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+									"$ref": "#/components/schemas/api-response-collection"
 								}
 							}
 						},
@@ -36989,7 +37097,7 @@
 								"schema": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+											"$ref": "#/components/schemas/api-response-collection"
 										},
 										{
 											"$ref": "#/components/schemas/api-response-common-failure"
@@ -44182,7 +44290,7 @@
 								"schema": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+											"$ref": "#/components/schemas/api-response-collection"
 										},
 										{
 											"$ref": "#/components/schemas/search_result"
@@ -44201,7 +44309,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+													"$ref": "#/components/schemas/api-response-collection"
 												},
 												{
 													"$ref": "#/components/schemas/search_result"
@@ -47575,7 +47683,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					}
 				],
@@ -47631,7 +47739,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					}
 				],
@@ -47707,7 +47815,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					}
 				],
@@ -47787,7 +47895,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					}
 				],
@@ -47851,7 +47959,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					}
 				],
@@ -47927,7 +48035,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					}
 				],
@@ -47991,7 +48099,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					}
 				],
@@ -48055,7 +48163,7 @@
 						"name": "deployment_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					},
 					{
@@ -48071,7 +48179,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					}
 				],
@@ -48143,7 +48251,7 @@
 						"name": "deployment_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					},
 					{
@@ -48159,7 +48267,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					}
 				],
@@ -48217,7 +48325,7 @@
 						"name": "deployment_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					},
 					{
@@ -48233,7 +48341,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					}
 				],
@@ -48291,7 +48399,7 @@
 						"name": "deployment_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					},
 					{
@@ -48307,7 +48415,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					}
 				],
@@ -48371,7 +48479,7 @@
 						"name": "deployment_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					},
 					{
@@ -48387,7 +48495,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					}
 				],
@@ -48459,7 +48567,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					}
 				],
@@ -48523,7 +48631,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					}
 				],
@@ -48607,7 +48715,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					}
 				],
@@ -48695,7 +48803,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					}
 				],
@@ -48767,7 +48875,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					}
 				],
@@ -51601,7 +51709,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/Cloudflare Client API_schemas-account_identifier"
+							"$ref": "#/components/schemas/schemas-account_identifier"
 						}
 					}
 				],
@@ -51668,7 +51776,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/Cloudflare Client API_schemas-account_identifier"
+							"$ref": "#/components/schemas/schemas-account_identifier"
 						}
 					}
 				],
@@ -51759,7 +51867,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/Cloudflare Client API_schemas-account_identifier"
+							"$ref": "#/components/schemas/schemas-account_identifier"
 						}
 					}
 				],
@@ -51841,7 +51949,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/Cloudflare Client API_schemas-account_identifier"
+							"$ref": "#/components/schemas/schemas-account_identifier"
 						}
 					}
 				],
@@ -51916,7 +52024,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/Cloudflare Client API_schemas-account_identifier"
+							"$ref": "#/components/schemas/schemas-account_identifier"
 						}
 					}
 				],
@@ -51996,7 +52104,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/Cloudflare Client API_schemas-account_identifier"
+							"$ref": "#/components/schemas/schemas-account_identifier"
 						}
 					}
 				],
@@ -52064,7 +52172,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/Cloudflare Client API_schemas-account_identifier"
+							"$ref": "#/components/schemas/schemas-account_identifier"
 						}
 					}
 				],
@@ -52154,7 +52262,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/Cloudflare Client API_schemas-account_identifier"
+							"$ref": "#/components/schemas/schemas-account_identifier"
 						}
 					}
 				],
@@ -52236,7 +52344,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/Cloudflare Client API_schemas-account_identifier"
+							"$ref": "#/components/schemas/schemas-account_identifier"
 						}
 					}
 				],
@@ -52312,7 +52420,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/Cloudflare Client API_schemas-account_identifier"
+							"$ref": "#/components/schemas/schemas-account_identifier"
 						}
 					}
 				],
@@ -52392,7 +52500,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/Cloudflare Client API_schemas-account_identifier"
+							"$ref": "#/components/schemas/schemas-account_identifier"
 						}
 					}
 				],
@@ -52460,7 +52568,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/Cloudflare Client API_schemas-account_identifier"
+							"$ref": "#/components/schemas/schemas-account_identifier"
 						}
 					}
 				],
@@ -52551,7 +52659,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/Cloudflare Client API_schemas-account_identifier"
+							"$ref": "#/components/schemas/schemas-account_identifier"
 						}
 					}
 				],
@@ -52633,7 +52741,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/Cloudflare Client API_schemas-account_identifier"
+							"$ref": "#/components/schemas/schemas-account_identifier"
 						}
 					}
 				],
@@ -52709,7 +52817,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/Cloudflare Client API_schemas-account_identifier"
+							"$ref": "#/components/schemas/schemas-account_identifier"
 						}
 					}
 				],
@@ -52964,7 +53072,7 @@
 								"schema": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+											"$ref": "#/components/schemas/api-response-collection"
 										},
 										{
 											"properties": {
@@ -52991,7 +53099,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+													"$ref": "#/components/schemas/api-response-collection"
 												},
 												{
 													"properties": {
@@ -54079,7 +54187,7 @@
 					"content": {
 						"application/json": {
 							"schema": {
-								"$ref": "#/components/schemas/videoClipStandard"
+								"$ref": "#/components/schemas/Cloudflare Client API_videoClipStandard"
 							}
 						}
 					},
@@ -54090,7 +54198,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/clipResponseSingle"
+									"$ref": "#/components/schemas/Cloudflare Client API_clipResponseSingle"
 								}
 							}
 						},
@@ -54102,7 +54210,7 @@
 								"schema": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/clipResponseSingle"
+											"$ref": "#/components/schemas/Cloudflare Client API_clipResponseSingle"
 										},
 										{
 											"$ref": "#/components/schemas/api-response-common-failure"
@@ -54215,7 +54323,7 @@
 					"content": {
 						"application/json": {
 							"schema": {
-								"$ref": "#/components/schemas/direct_upload_request"
+								"$ref": "#/components/schemas/Cloudflare Client API_direct_upload_request"
 							}
 						}
 					},
@@ -55728,6 +55836,394 @@
 				]
 			}
 		},
+		"/accounts/{account_identifier}/stream/{identifier}/captions": {
+			"get": {
+				"description": "Lists the available captions or subtitles for a specific video.",
+				"operationId": "stream-subtitles/-captions-list-captions-or-subtitles",
+				"parameters": [
+					{
+						"in": "path",
+						"name": "identifier",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
+						}
+					},
+					{
+						"in": "path",
+						"name": "account_identifier",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/schemas-identifier"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/language_response_collection"
+								}
+							}
+						},
+						"description": "List captions or subtitles response"
+					},
+					"4xx": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/language_response_collection"
+										},
+										{
+											"$ref": "#/components/schemas/api-response-common-failure"
+										}
+									]
+								}
+							}
+						},
+						"description": "List captions or subtitles response failure"
+					}
+				},
+				"security": [
+					{
+						"api_email": [],
+						"api_key": []
+					},
+					{
+						"api_token": []
+					}
+				],
+				"summary": "List captions or subtitles",
+				"tags": [
+					"Stream Subtitles/Captions"
+				]
+			}
+		},
+		"/accounts/{account_identifier}/stream/{identifier}/captions/{language}": {
+			"delete": {
+				"description": "Removes the captions or subtitles from a video.",
+				"operationId": "stream-subtitles/-captions-delete-captions-or-subtitles",
+				"parameters": [
+					{
+						"in": "path",
+						"name": "language",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/language"
+						}
+					},
+					{
+						"in": "path",
+						"name": "identifier",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
+						}
+					},
+					{
+						"in": "path",
+						"name": "account_identifier",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/schemas-identifier"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-collection"
+										},
+										{
+											"properties": {
+												"result": {
+													"example": "",
+													"type": "string"
+												}
+											}
+										}
+									]
+								}
+							}
+						},
+						"description": "Delete captions or subtitles response"
+					},
+					"4xx": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-collection"
+												},
+												{
+													"properties": {
+														"result": {
+															"example": "",
+															"type": "string"
+														}
+													}
+												}
+											]
+										},
+										{
+											"$ref": "#/components/schemas/api-response-common-failure"
+										}
+									]
+								}
+							}
+						},
+						"description": "Delete captions or subtitles response failure"
+					}
+				},
+				"security": [
+					{
+						"api_email": [],
+						"api_key": []
+					},
+					{
+						"api_token": []
+					}
+				],
+				"summary": "Delete captions or subtitles",
+				"tags": [
+					"Stream Subtitles/Captions"
+				]
+			},
+			"put": {
+				"description": "Uploads the caption or subtitle file to the endpoint for a specific BCP47 language. One caption or subtitle file per language is allowed.",
+				"operationId": "stream-subtitles/-captions-upload-captions-or-subtitles",
+				"parameters": [
+					{
+						"in": "path",
+						"name": "language",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/language"
+						}
+					},
+					{
+						"in": "path",
+						"name": "identifier",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
+						}
+					},
+					{
+						"in": "path",
+						"name": "account_identifier",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/schemas-identifier"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"multipart/form-data": {
+							"schema": {
+								"$ref": "#/components/schemas/caption_basic_upload"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/language_response_single"
+								}
+							}
+						},
+						"description": "Upload captions or subtitles response"
+					},
+					"4xx": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/language_response_single"
+										},
+										{
+											"$ref": "#/components/schemas/api-response-common-failure"
+										}
+									]
+								}
+							}
+						},
+						"description": "Upload captions or subtitles response failure"
+					}
+				},
+				"security": [
+					{
+						"api_email": [],
+						"api_key": []
+					},
+					{
+						"api_token": []
+					}
+				],
+				"summary": "Upload captions or subtitles",
+				"tags": [
+					"Stream Subtitles/Captions"
+				]
+			}
+		},
+		"/accounts/{account_identifier}/stream/{identifier}/downloads": {
+			"get": {
+				"description": "Lists the downloads created for a video.",
+				"operationId": "stream-m-p-4-downloads-list-downloads",
+				"parameters": [
+					{
+						"in": "path",
+						"name": "identifier",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
+						}
+					},
+					{
+						"in": "path",
+						"name": "account_identifier",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/schemas-identifier"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/downloads_response"
+								}
+							}
+						},
+						"description": "List downloads response"
+					},
+					"4xx": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/downloads_response"
+										},
+										{
+											"$ref": "#/components/schemas/api-response-common-failure"
+										}
+									]
+								}
+							}
+						},
+						"description": "List downloads response failure"
+					}
+				},
+				"security": [
+					{
+						"api_email": [],
+						"api_key": []
+					},
+					{
+						"api_token": []
+					}
+				],
+				"summary": "List downloads",
+				"tags": [
+					"Stream MP4 Downloads"
+				]
+			},
+			"post": {
+				"description": "Creates a download for a video when a video is ready to view.",
+				"operationId": "stream-m-p-4-downloads-create-downloads",
+				"parameters": [
+					{
+						"in": "path",
+						"name": "identifier",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
+						}
+					},
+					{
+						"in": "path",
+						"name": "account_identifier",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/schemas-identifier"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/downloads_response"
+								}
+							}
+						},
+						"description": "Create downloads response"
+					},
+					"4xx": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/downloads_response"
+										},
+										{
+											"$ref": "#/components/schemas/api-response-common-failure"
+										}
+									]
+								}
+							}
+						},
+						"description": "Create downloads response failure"
+					}
+				},
+				"security": [
+					{
+						"api_email": [],
+						"api_key": []
+					},
+					{
+						"api_token": []
+					}
+				],
+				"summary": "Create downloads",
+				"tags": [
+					"Stream MP4 Downloads"
+				]
+			}
+		},
 		"/accounts/{account_identifier}/stream/{identifier}/embed": {
 			"get": {
 				"description": "Fetches an HTML code snippet to embed a video in a web page delivered through Cloudflare. On success, returns an HTML fragment for use on web pages to display a video. On failure, returns a JSON response body.",
@@ -55979,7 +56475,7 @@
 								"schema": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+											"$ref": "#/components/schemas/api-response-collection"
 										},
 										{
 											"properties": {
@@ -56003,7 +56499,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+													"$ref": "#/components/schemas/api-response-collection"
 												},
 												{
 													"properties": {
@@ -58875,7 +59371,7 @@
 								"schema": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+											"$ref": "#/components/schemas/api-response-collection"
 										},
 										{
 											"properties": {
@@ -58902,7 +59398,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+													"$ref": "#/components/schemas/api-response-collection"
 												},
 												{
 													"properties": {
@@ -58976,7 +59472,7 @@
 								"schema": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+											"$ref": "#/components/schemas/api-response-collection"
 										},
 										{
 											"properties": {
@@ -59015,7 +59511,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+													"$ref": "#/components/schemas/api-response-collection"
 												},
 												{
 													"properties": {
@@ -59093,7 +59589,7 @@
 								"schema": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+											"$ref": "#/components/schemas/api-response-collection"
 										},
 										{
 											"properties": {
@@ -59168,7 +59664,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+													"$ref": "#/components/schemas/api-response-collection"
 												},
 												{
 													"properties": {
@@ -59292,7 +59788,7 @@
 								"schema": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+											"$ref": "#/components/schemas/api-response-collection"
 										},
 										{
 											"properties": {
@@ -59327,7 +59823,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+													"$ref": "#/components/schemas/api-response-collection"
 												},
 												{
 													"properties": {
@@ -59415,7 +59911,7 @@
 								"schema": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+											"$ref": "#/components/schemas/api-response-collection"
 										},
 										{
 											"nullable": true,
@@ -59439,7 +59935,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+													"$ref": "#/components/schemas/api-response-collection"
 												},
 												{
 													"nullable": true,
@@ -59508,7 +60004,7 @@
 								"schema": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+											"$ref": "#/components/schemas/api-response-collection"
 										},
 										{
 											"properties": {
@@ -59543,7 +60039,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+													"$ref": "#/components/schemas/api-response-collection"
 												},
 												{
 													"properties": {
@@ -59635,7 +60131,7 @@
 								"schema": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+											"$ref": "#/components/schemas/api-response-collection"
 										},
 										{
 											"properties": {
@@ -59670,7 +60166,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+													"$ref": "#/components/schemas/api-response-collection"
 												},
 												{
 													"properties": {
@@ -59752,7 +60248,7 @@
 								"schema": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+											"$ref": "#/components/schemas/api-response-collection"
 										},
 										{
 											"properties": {
@@ -59822,7 +60318,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+													"$ref": "#/components/schemas/api-response-collection"
 												},
 												{
 													"properties": {
@@ -59956,7 +60452,7 @@
 								"schema": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+											"$ref": "#/components/schemas/api-response-collection"
 										},
 										{
 											"properties": {
@@ -59992,7 +60488,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+													"$ref": "#/components/schemas/api-response-collection"
 												},
 												{
 													"properties": {
@@ -60089,7 +60585,7 @@
 								"schema": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+											"$ref": "#/components/schemas/api-response-collection"
 										},
 										{
 											"nullable": true,
@@ -60113,7 +60609,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+													"$ref": "#/components/schemas/api-response-collection"
 												},
 												{
 													"nullable": true,
@@ -60207,7 +60703,7 @@
 								"schema": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+											"$ref": "#/components/schemas/api-response-collection"
 										},
 										{
 											"properties": {
@@ -60243,7 +60739,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+													"$ref": "#/components/schemas/api-response-collection"
 												},
 												{
 													"properties": {
@@ -66935,7 +67431,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+									"$ref": "#/components/schemas/api-response-collection"
 								}
 							}
 						},
@@ -66947,7 +67443,7 @@
 								"schema": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+											"$ref": "#/components/schemas/api-response-collection"
 										},
 										{
 											"$ref": "#/components/schemas/api-response-common-failure"
@@ -67384,7 +67880,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+									"$ref": "#/components/schemas/api-response-collection"
 								}
 							}
 						},
@@ -67396,7 +67892,7 @@
 								"schema": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+											"$ref": "#/components/schemas/api-response-collection"
 										},
 										{
 											"$ref": "#/components/schemas/api-response-common-failure"
@@ -68608,6 +69104,9 @@
 									"captive_portal": {
 										"$ref": "#/components/schemas/captive_portal"
 									},
+									"description": {
+										"$ref": "#/components/schemas/devices_components-schemas-description"
+									},
 									"disable_auto_fallback": {
 										"$ref": "#/components/schemas/disable_auto_fallback"
 									},
@@ -69248,6 +69747,9 @@
 									},
 									"captive_portal": {
 										"$ref": "#/components/schemas/captive_portal"
+									},
+									"description": {
+										"$ref": "#/components/schemas/devices_components-schemas-description"
 									},
 									"disable_auto_fallback": {
 										"$ref": "#/components/schemas/disable_auto_fallback"
@@ -75056,7 +75558,7 @@
 								"schema": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+											"$ref": "#/components/schemas/api-response-collection"
 										},
 										{
 											"properties": {
@@ -75082,7 +75584,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+													"$ref": "#/components/schemas/api-response-collection"
 												},
 												{
 													"properties": {
@@ -93155,7 +93657,7 @@
 								"schema": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+											"$ref": "#/components/schemas/api-response-collection"
 										},
 										{
 											"properties": {
@@ -93181,7 +93683,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+													"$ref": "#/components/schemas/api-response-collection"
 												},
 												{
 													"properties": {
@@ -102481,7 +102983,7 @@
 								"schema": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+											"$ref": "#/components/schemas/api-response-collection"
 										},
 										{
 											"properties": {
@@ -102507,7 +103009,7 @@
 										{
 											"allOf": [
 												{
-													"$ref": "#/components/schemas/Cloudflare Client API_api-response-collection"
+													"$ref": "#/components/schemas/api-response-collection"
 												},
 												{
 													"properties": {
@@ -127986,7 +128488,7 @@
 						"name": "zone_id",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/Zonekeeper Public API_identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					}
 				],
@@ -128004,7 +128506,7 @@
 												"result": {
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/Zonekeeper Public API_identifier"
+															"$ref": "#/components/schemas/identifier"
 														}
 													},
 													"type": "object"
