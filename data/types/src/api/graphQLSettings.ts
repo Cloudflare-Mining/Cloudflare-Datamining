@@ -8,7 +8,6 @@ export const GraphQLNodeName = eg.union([
   eg.literal('imageResizingRequests1mGroups'),
   eg.literal('loadBalancingRequestsAdaptive'),
   eg.literal('loadBalancingRequestsAdaptiveGroups'),
-  eg.literal('synAvgPps1mGroups'),
   eg.literal('healthCheckEventsAdaptive'),
   eg.literal('healthCheckEventsAdaptiveGroups'),
   eg.literal('nelReportsAdaptiveGroups')
