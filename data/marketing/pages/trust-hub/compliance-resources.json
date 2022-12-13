@@ -387,6 +387,36 @@
 							"features": [
 								{
 									"contentTypeId": "feature",
+									"contentfulId": "4pvnZOCThpX7XDXNmZSvIv",
+									"title": "FedRAMP Moderate",
+									"titleSize": null,
+									"description": "Cloudflare maintains FedRAMP Moderate Agency authorization, allowing federal agencies to adopt Cloudflare's performance, security and Zero Trust solutions. Cloudflare for Government has been FedRAMP Authorized since 2022. For more information on Cloudflare's FedRAMP authorization, visit the FedRAMP marketplace",
+									"learnMoreUrl": "https://marketplace.fedramp.gov/#!/product/cloudflare-for-government?status=In%20Process&sort=productName",
+									"learnMoreText": "Visit FedRAMP marketplace",
+									"displayBorder": false,
+									"openLinkInNewTab": false,
+									"icon": null,
+									"iconAssetFile": null,
+									"imageAssetFile": {
+										"id": "641b864e-0ba5-5394-8d2b-f3f59de26a7a",
+										"altText": "FedRAMP logo",
+										"title": "FedRAMP logo",
+										"activeAsset": "Contentful Asset",
+										"locale": "en-US",
+										"contentfulAsset": {
+											"file": {
+												"publicURL": "[path]/fedramp_in_transparent_box.png"
+											}
+										},
+										"brandfolderAsset": null,
+										"brandfolderAssetMobile": null
+									},
+									"streamId": null,
+									"streamThumbnail": null,
+									"streamThumbnailAssetFile": null
+								},
+								{
+									"contentTypeId": "feature",
 									"contentfulId": "1qDsb7Qg7CzeGJfoKocVkw",
 									"title": "SOC 2 Type II",
 									"titleSize": null,
@@ -436,36 +466,6 @@
 										"contentfulAsset": {
 											"file": {
 												"publicURL": "[path]/credit_card_image_formatted.png"
-											}
-										},
-										"brandfolderAsset": null,
-										"brandfolderAssetMobile": null
-									},
-									"streamId": null,
-									"streamThumbnail": null,
-									"streamThumbnailAssetFile": null
-								},
-								{
-									"contentTypeId": "feature",
-									"contentfulId": "6jutG2RMDpBIUrs9tbWr5",
-									"title": "C5:2020",
-									"titleSize": null,
-									"description": "Cloud Computing Compliance Criteria Catalogue (C5:2020) is an auditing standard created by Germany's Federal Office for Information Security (BSI). The C5 standard ensures cloud service providers adhere to a baseline of information security criteria. The C5 report covers security controls to protect customer data and is available upon request.",
-									"learnMoreUrl": null,
-									"learnMoreText": null,
-									"displayBorder": false,
-									"openLinkInNewTab": null,
-									"icon": null,
-									"iconAssetFile": null,
-									"imageAssetFile": {
-										"id": "69693ae8-c31e-5fc0-8a71-cb7a4f497b31",
-										"altText": null,
-										"title": "C5 certification logo",
-										"activeAsset": "Contentful Asset",
-										"locale": "en-US",
-										"contentfulAsset": {
-											"file": {
-												"publicURL": "[path]/C5_certification-1_cropped.png"
 											}
 										},
 										"brandfolderAsset": null,
@@ -573,6 +573,53 @@
 										"contentfulAsset": {
 											"file": {
 												"publicURL": "[path]/C5_certification-1_cropped.png"
+											}
+										},
+										"brandfolderAsset": null,
+										"brandfolderAssetMobile": null
+									},
+									"streamId": null,
+									"streamThumbnail": null,
+									"streamThumbnailAssetFile": null
+								}
+							]
+						},
+						{
+							"contentfulId": "YlyS0Ww2BxteRrXafgxad",
+							"backgroundColor": "white",
+							"contentTypeId": "bladeFourFeatures",
+							"htmlId": null,
+							"copy": null,
+							"title": null,
+							"subtitle": null,
+							"bladeStyle": "Feature Blocks - 3 columns",
+							"bladeBorder": "none",
+							"sectionPadding": null,
+							"carouselSlidesToShow": null,
+							"carouselSlidesToScroll": null,
+							"locale": "en-US",
+							"features": [
+								{
+									"contentTypeId": "feature",
+									"contentfulId": "KSc0nHjrzenPKPNakaRHz",
+									"title": "1.1.1.1 Public DNS Resolver Privacy Examination",
+									"titleSize": null,
+									"description": "On April 1, 2018, we took a big step toward improving Internet privacy and security with the launch of the 1.1.1.1 public DNS resolver - the Internet's fastest, privacy-first public DNS resolver. Cloudflare conducted a first-of-its-kind privacy examination by a Big Four accounting firm to determine whether the 1.1.1.1 resolver was effectively configured to meet Cloudflare's privacy commitments. See below for more information.",
+									"learnMoreUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5xlHCvvNBrvrIoWbuk1vTy/e1058b0d366adf4e983aef99a6ed2a1f/Cloudflare_1.1.1.1_Public_Resolver_Report_-_03302020__2_.pdf",
+									"learnMoreText": "Read report",
+									"displayBorder": false,
+									"openLinkInNewTab": null,
+									"icon": null,
+									"iconAssetFile": null,
+									"imageAssetFile": {
+										"id": "b02ab390-a95f-5841-8cf1-8c923af45825",
+										"altText": "1.1.1.1 logo",
+										"title": "1.1.1.1 logo",
+										"activeAsset": "Contentful Asset",
+										"locale": "en-US",
+										"contentfulAsset": {
+											"file": {
+												"publicURL": "[path]/1.1.1.1_formatted_logo.png"
 											}
 										},
 										"brandfolderAsset": null,
