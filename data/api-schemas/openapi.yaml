@@ -2759,7 +2759,7 @@ components:
             - id
             properties:
               id:
-                $ref: '#/components/schemas/Cloudflare Client API_schemas-identifier'
+                $ref: '#/components/schemas/schemas-identifier'
       type: object
     api-shield:
       allOf:
@@ -8325,7 +8325,7 @@ components:
           result:
             properties:
               uid:
-                $ref: '#/components/schemas/identifier'
+                $ref: '#/components/schemas/Cloudflare Client API_identifier'
               uploadURL:
                 type: string
                 description: The URL an unauthenticated upload can use for a single
@@ -10956,11 +10956,7 @@ components:
               id:
                 $ref: '#/components/schemas/schemas-uuid'
     identifier:
-      type: string
-      description: A Cloudflare-generated unique identifier for a media item.
-      example: ea95132c15732412d22c1476fa83f27a
-      readOnly: true
-      maxLength: 32
+      example: 699d98642c564d2e855e9661899b7252
     identity:
       type: string
       description: The wirefilter expression to be used for identity matching.
@@ -13780,10 +13776,8 @@ components:
                   $ref: '#/components/schemas/schemas-route'
     name:
       type: string
-      description: A short description of the watermark profile.
-      default: ""
-      example: Marketing Videos
-      readOnly: true
+      description: The name of your Zero Trust organization.
+      example: Widget Corps Internal Applications
     name_servers:
       type: array
       description: List of name servers.
@@ -14364,7 +14358,7 @@ components:
         login_design:
           $ref: '#/components/schemas/login_design'
         name:
-          $ref: '#/components/schemas/Cloudflare Client API_name'
+          $ref: '#/components/schemas/name'
         updated_at:
           $ref: '#/components/schemas/timestamp'
     organizations_components-schemas-identifier:
@@ -19383,8 +19377,8 @@ components:
                 $ref: '#/components/schemas/id'
     schemas-identifier:
       type: string
-      description: The unique identifier for a watermark profile.
-      example: ea95132c15732412d22c1476fa83f27a
+      description: Identifier
+      example: 023e105f4ecef8ad9ca31a8372d0c353
       readOnly: true
       maxLength: 32
     schemas-include:
@@ -23968,7 +23962,7 @@ components:
         thumbnailTimestampPct:
           $ref: '#/components/schemas/thumbnailTimestampPct'
         uid:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/Cloudflare Client API_identifier'
         uploadExpiry:
           $ref: '#/components/schemas/oneTimeUploadExpiry'
         uploaded:
@@ -24294,7 +24288,7 @@ components:
           description: The image file to upload.
           example: '@/Users/rchen/Downloads/watermark.png'
         name:
-          $ref: '#/components/schemas/name'
+          $ref: '#/components/schemas/Cloudflare Client API_name'
         opacity:
           $ref: '#/components/schemas/opacity'
         padding:
@@ -24335,7 +24329,7 @@ components:
         height:
           $ref: '#/components/schemas/height'
         name:
-          $ref: '#/components/schemas/name'
+          $ref: '#/components/schemas/Cloudflare Client API_name'
         opacity:
           $ref: '#/components/schemas/opacity'
         padding:
@@ -24347,7 +24341,7 @@ components:
         size:
           $ref: '#/components/schemas/schemas-size'
         uid:
-          $ref: '#/components/schemas/schemas-identifier'
+          $ref: '#/components/schemas/Cloudflare Client API_schemas-identifier'
         width:
           $ref: '#/components/schemas/width'
     watermarks_components-schemas-identifier:
