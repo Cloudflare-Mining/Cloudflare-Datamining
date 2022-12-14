@@ -12193,7 +12193,7 @@
 							"result": {
 								"properties": {
 									"uid": {
-										"$ref": "#/components/schemas/Cloudflare Client API_identifier"
+										"$ref": "#/components/schemas/identifier"
 									},
 									"uploadURL": {
 										"description": "The URL an unauthenticated upload can use for a single `HTTP POST multipart/form-data` request.",
@@ -16092,7 +16092,11 @@
 				]
 			},
 			"identifier": {
-				"example": "699d98642c564d2e855e9661899b7252"
+				"description": "A Cloudflare-generated unique identifier for a media item.",
+				"example": "ea95132c15732412d22c1476fa83f27a",
+				"maxLength": 32,
+				"readOnly": true,
+				"type": "string"
 			},
 			"identity": {
 				"description": "The wirefilter expression to be used for identity matching.",
@@ -19993,8 +19997,10 @@
 				]
 			},
 			"name": {
-				"description": "The name of your Zero Trust organization.",
-				"example": "Widget Corps Internal Applications",
+				"default": "",
+				"description": "A short description of the watermark profile.",
+				"example": "Marketing Videos",
+				"readOnly": true,
 				"type": "string"
 			},
 			"name_servers": {
@@ -20799,7 +20805,7 @@
 						"$ref": "#/components/schemas/login_design"
 					},
 					"name": {
-						"$ref": "#/components/schemas/name"
+						"$ref": "#/components/schemas/Cloudflare Client API_name"
 					},
 					"updated_at": {
 						"$ref": "#/components/schemas/timestamp"
@@ -34569,7 +34575,7 @@
 						"$ref": "#/components/schemas/thumbnailTimestampPct"
 					},
 					"uid": {
-						"$ref": "#/components/schemas/Cloudflare Client API_identifier"
+						"$ref": "#/components/schemas/identifier"
 					},
 					"uploadExpiry": {
 						"$ref": "#/components/schemas/oneTimeUploadExpiry"
@@ -35067,7 +35073,7 @@
 						"type": "string"
 					},
 					"name": {
-						"$ref": "#/components/schemas/Cloudflare Client API_name"
+						"$ref": "#/components/schemas/name"
 					},
 					"opacity": {
 						"$ref": "#/components/schemas/opacity"
@@ -35150,7 +35156,7 @@
 						"$ref": "#/components/schemas/height"
 					},
 					"name": {
-						"$ref": "#/components/schemas/Cloudflare Client API_name"
+						"$ref": "#/components/schemas/name"
 					},
 					"opacity": {
 						"$ref": "#/components/schemas/opacity"
@@ -55847,7 +55853,7 @@
 						"name": "identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					},
 					{
@@ -55921,7 +55927,7 @@
 						"name": "identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					},
 					{
@@ -56023,7 +56029,7 @@
 						"name": "identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					},
 					{
@@ -56099,7 +56105,7 @@
 						"name": "identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					},
 					{
@@ -56163,7 +56169,7 @@
 						"name": "identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					},
 					{
