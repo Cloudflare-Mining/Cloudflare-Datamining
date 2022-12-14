@@ -2444,6 +2444,94 @@
 				"reviewedByUserId": "003d69515c178849214f81bf10ea8f84",
 				"reviewedAt": "2022-11-23T20:49:13.211660854Z"
 			}
+		},
+		{
+			"tag": "1.0.23",
+			"appId": "_7PP1aL2bH0-",
+			"definition": {
+				"resources": {
+					"head": [
+						{
+							"type": "script",
+							"src": "./source/queueconfigloader.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"customerId": {
+							"description": "You will receive your Customer ID once you create an account with the Queue-it SaaS service. If you already have an account you can find your Customer ID on the <a href=\"https://go.queue-it.net/companyprofile?utm_source=cloudflare&utm_medium=profile&utm_campaign=partners\" target=\"_blank\">Company Profile</a> page in the Queue-it GO Platform.",
+							"maxLength": "20",
+							"order": 1,
+							"placeholder": "e.g. ticketania",
+							"title": "Enter your Queue-it Customer ID",
+							"type": "string"
+						},
+						"help": {
+							"helpvalue": "The queue page design shown here is only an example. You can customize your queue page to incorporate your brand’s identity, promote future sales, upsell additional products, and engage your customers with videos and games while they wait. <br /><br />You create a branded experience while giving your customers a seamless journey from queue to checkout. <br /><br />You can integrate Queue-it client-side with JavaScript here in Cloudflare Apps, or on the edge with Cloudflare Workers. <br /><br />Learn more about Queue-it’s easy, flexible setup with Cloudflare <a href=\"https://queue-it.com/cloudflare-virtual-queue/?utm_source=cloudflare&utm_medium=profile&utm_campaign=partners\" target=\"_blank\">on our website</a>.",
+							"type": "help"
+						}
+					}
+				}
+			},
+			"releaseNotes": "updated logo and images",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/hJNa1zVpANd0",
+			"created": "2022-12-14T10:39:06.316342Z",
+			"proposedApp": {
+				"id": "_7PP1aL2bH0-",
+				"title": "Queue-it Virtual Waiting Room",
+				"shortDescription": "Prevent web traffic peaks from overloading your website/app",
+				"longDescription": "Queue-it is the leading developer of virtual waiting room services to control website and app traffic surges by offloading visitors to an online queue. Its powerful SaaS platform enables online ticket vendors, ecommerce companies, educational institutions, and public-sector services around the globe to keep their systems online and visitors informed, capturing key sales and online activity on their most business-critical days. The use of Queue-it has ensured online fairness during high-demand situations for billions of consumers worldwide. \n\nFor more information, please visit [our website](https://queue-it.com/cloudflare-virtual-queue/?utm_source=cloudflare&utm_medium=profile&utm_campaign=partners).",
+				"instructions": "To use this app, you will need an account with Queue-it. You can get your [free trial here.](https://queue-it.com/free-trial/?utm_source=cloudflare&utm_medium=profile&utm_campaign=partners)",
+				"alias": "queue-it",
+				"orgId": "5cf8509a6af573f607f78639aa2dbd5e",
+				"icon": "https://images.cloudflareapps.com/KlcuNsw3e-Rx/q-it%20profile%20beige%20on%20dark%20green.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/81wal629oxdO/cloudflare%202.jpg",
+					"https://images.cloudflareapps.com/81wal629oxdO/cloudflare%203.jpg",
+					"https://images.cloudflareapps.com/81wal629oxdO/cloudflare%201.jpg",
+					"https://images.cloudflareapps.com/81wal629oxdO/cloudflare%204.jpg"
+				],
+				"tileImage": "https://images.cloudflareapps.com/bu5z-rWGRAvt/q%20beige%20on%20green.png",
+				"featuredAppImage": "",
+				"author": "Queue-it",
+				"tagline": "",
+				"website": "https://queue-it.com/cloudflare-virtual-queue/?utm_source=cloudflare&utm_medium=profile&utm_campaign=partners",
+				"sourceURL": "",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@queue-it.com",
+				"products": [],
+				"categoryIds": [
+					"for-developers",
+					"performance"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "N77_yickhY9r"
+				},
+				"created": "2017-05-08T07:06:41.21855Z"
+			},
+			"moderationStatus": "pending",
+			"moderationMetadata": {
+				"requestedByUserId": "5cf8509a6af573f607f78639aa2dbd5e",
+				"requestedAt": "2022-12-14T10:39:06.767274901Z",
+				"canceledAt": null,
+				"reviewedAt": null
+			}
 		}
 	]
 }
