@@ -875,11 +875,11 @@
 						"contentTypeId": "bladeRichTextColumnGroup",
 						"contentfulId": "75P6u7FPY6xPfWyaJOhmdZ",
 						"htmlId": null,
-						"mainHeadline": "Cloudflare DNS Firewall vs. Cloudflare Authoritative DNS",
+						"mainHeadline": "DNS Firewall vs. Authoritative DNS",
 						"backgroundColor": "light-gray",
 						"bladeBorder": "none",
-						"sectionPadding": null,
-						"columnLayout": "One Column Wide",
+						"sectionPadding": "tile--no-bottom-padding",
+						"columnLayout": "One Third & Two Thirds",
 						"columns": [
 							{
 								"contentTypeId": "elementRichText",
@@ -903,7 +903,77 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "With Cloudflare, you have two options for securing your DNS infrastructure. ",
+													"value": "With Cloudflare, you have two options for securing your DNS infrastructure:",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare DNS Firewall",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " allows you to run your own infrastructure and keep your DNS records on your own nameservers while leveraging Cloudflare's global network and features like DDoS mitigation, rate limiting, caching and more. We recommend DNS Firewall for hosting and cloud providers, ISPs, registrars, and anyone running a large authoritative DNS infrastructure.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare Authoritative DNS",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " is an enterprise-grade, fully managed and hosted DNS service that also offers built-in DDoS protection and DNSSEC. We recommend our authoritative DNS solution for anyone who wants to use Cloudflare as their primary or secondary DNS provider. ",
 													"marks": [],
 													"content": null
 												},
@@ -922,12 +992,8 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "Cloudflare Authoritative DNS",
-															"marks": [
-																{
-																	"type": "underline"
-																}
-															],
+															"value": "Learn more",
+															"marks": [],
 															"content": null
 														}
 													]
@@ -938,7 +1004,38 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " is a fully managed and hosted DNS service. Cloudflare DNS Firewall, on the other hand, allows you to run your own infrastructure and keep your DNS records on your own nameservers. We recommend DNS Firewall for hosting and cloud providers, ISPs, registrars, and anyone running large authoritative DNS infrastructure.",
+													"value": ".",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "4UBY4a4zICB2iB9G3CFA63",
+								"title": null,
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
 													"marks": [],
 													"content": null
 												}
@@ -1024,7 +1121,7 @@
 							"Random prefix attack mitigation",
 							"Rate limiting per data center",
 							"Specify minimum and maximum TTL",
-							"Block any queries"
+							"Block queries of type ANY"
 						],
 						"bladeBorder": "none",
 						"sectionPadding": null,
