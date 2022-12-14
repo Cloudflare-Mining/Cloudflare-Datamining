@@ -5,30 +5,50 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About the Department</strong></p>
-<p><span style="font-weight: 400;">Cloudflare’s Engineering Team builds and runs the software that helps power 20+ million Internet properties. The Engineering Team is split into two groups: one handles product development and the other handles operations. Product development covers both new features and functionality and scaling our existing software to meet the challenges of a massively growing customer base. The operations team handles one of the world’s largest networks with data centers in 102 cities worldwide.</span></p>
-<p><strong>About the team</strong></p>
-<p><span style="font-weight: 400;">The Engineering Programs &amp; Productivity team has a charter to build tools and services that help easily integrate a base set of capabilities into Cloudflare’s products. These services have cross cutting concerns that 100s of fellow engineers use as the building blocks at Cloudflare. The team also writes customer-facing software that is redundant for each product development team to build and that serve high volumes of requests every day.</span></p>
-<p><strong>About the Role</strong></p>
-<p><span style="font-weight: 400;">The Senior Software Engineer, Engineering Programs &amp; Productivity gets the rare opportunity to engage across every major development team at Cloudflare. Whether closing gaps in our event-logging or creating an alerts notification platform, the Senior Software Engineer is critical to Cloudflare’s ability to scale our people organization to match the reach of our products.&nbsp;</span></p>
-<p><strong>What you'll do</strong></p>
-<p><span style="font-weight: 400;">You will be responsible for designing, building, running and scaling application services. You will work in technologies such as Go, Kubernetes, React, Javascript, PHP, Lua, Salt, Kafka and PostgresSQL. We are looking for good engineers regardless of experience with any of these specific technologies.&nbsp;</span></p>
-<p><strong>Desirable skills and experience</strong></p>
+<h3>About the Department</h3>
+<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
+<p>The Workers organization makes it possible for Cloudflare customers to run JavaScript and WebAssembly on Cloudflare's edge network. We build and maintain the technology that executes trillions of requests per month on behalf of developers and grants them nearly limitless control over how their requests are handled and responded to.</p>
+<h3>About the Team</h3>
+<p>The Workers team makes it possible for Cloudflare customers to run JavaScript and WebAssembly on Cloudflare's edge network. We build and maintain the developer platform that executes trillions of requests per month on behalf of developers and grants them nearly limitless control over how their requests are handled and responded to. The Workers team is split into several groups, this group is focused on how we bring state to the edge.</p>
+<h3>What you'll do</h3>
+<p>In this role, you'll help design and build <strong><a href="https://developers.cloudflare.com/workers/learning/how-kv-works/">Workers KV</a></strong>, a global low-latency key-value data store for the <strong><a href="https://blog.cloudflare.com/welcome-to-the-supercloud-and-developer-week-2022/">Supercloud</a></strong>. You'll be part of a top-notch engineering team keeping KV running smoothly at global scale while implementing new features, ensuring reliability, and improving performance.</p>
+<p>You will own your code from inception to release, delivering solutions at all layers of the software stack to empower Cloudflare customers. On any given day, you might write a design document that outlines how you plan to solve a specific problem, modify how KV processes and stores data, or fix a bug in how our user experience renders. You can expect to interact with a variety of languages and technologies including, but not limited to Typescript, Go, Rust, and C++.</p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">More than 3+ years of experience building large-scale software applications</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience designing and integrating RESTful APIs</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience building web applications using modern JavaScript frameworks</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Knowledge of SQL and common relational database systems such as PostgreSQL and MySQL</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Excellent debugging and optimization skills</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Unit/integration testing experience</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Interest in opportunities to be a technical mentor for teammates</span></li>
+	<li>7+ years of experience with (and love for) distributed systems and data</li>
 </ul>
-<p><strong>Bonus</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with Go</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with Kafka</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with PHP, React.js</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with Kubernetes</span></li>
+	<li>Willing and eager to share knowledge, and mentor</li>
+</ul>
+<ul>
+	<li>Great oral and written communications skills, especially concisely documenting complex concepts</li>
+</ul>
+<ul>
+	<li>Deep understanding of Go and JavaScript, including asynchronous programming in both</li>
+</ul>
+<ul>
+	<li>Strong systems level programming skills</li>
+</ul>
+<ul>
+	<li>Understanding of security issues and responsibilities</li>
+</ul>
+<ul>
+	<li>Experience with monitoring, alerting and debugging high volume production systems</li>
+</ul>
+<ul>
+	<li>Experience with a continuous integration workflow and using source control (we use git)</li>
+</ul>
+<ul>
+	<li>Solid Linux experience</li>
+</ul>
+<ul>
+	<li>Fluent in analyses of data sets such as logs</li>
+</ul>
+<ul>
+	<li>Designing and building APIs</li>
+</ul>
+<ul>
+	<li>A desire for continuous learning and improvement</li>
 </ul>
 <p>&nbsp;</p>
 <div class="content-conclusion">
