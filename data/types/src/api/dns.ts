@@ -56,7 +56,9 @@ export const DNSRecord = eg.object({
     eg.literal('URI')
   ]),
   zone_id: Zone.props.id.optional,
-  zone_name: Zone.props.name.optional
+  zone_name: Zone.props.name.optional,
+  comment: eg.union([eg.string.optional, eg.null]).optional,
+  tags: eg.array(eg.string).optional
 });
 
 export type DNSRecord = TypeFromCodec<typeof DNSRecord>;
