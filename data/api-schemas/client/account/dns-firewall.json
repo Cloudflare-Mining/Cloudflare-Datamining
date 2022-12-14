@@ -211,7 +211,7 @@
 					"retries": {
 						"type": "number",
 						"example": "2",
-						"description": "Number of retries for fetching DNS responses from origin nameservers.",
+						"description": "Number of retries for fetching DNS responses from origin nameservers (not counting the initial attempt).",
 						"minimum": 0,
 						"maximum": 2,
 						"default": 2
@@ -394,7 +394,7 @@
 					"retries": {
 						"type": "number",
 						"example": "2",
-						"description": "Number of retries for fetching DNS responses from origin nameservers.",
+						"description": "Number of retries for fetching DNS responses from origin nameservers (not counting the initial attempt).",
 						"minimum": 0,
 						"maximum": 2,
 						"default": 2
@@ -553,7 +553,7 @@
 			"retries": {
 				"type": "number",
 				"example": "2",
-				"description": "Number of retries for fetching DNS responses from origin nameservers.",
+				"description": "Number of retries for fetching DNS responses from origin nameservers (not counting the initial attempt).",
 				"minimum": 0,
 				"maximum": 2,
 				"default": 2
