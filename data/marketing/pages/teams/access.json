@@ -6849,12 +6849,14 @@
 						"bladeBorder": "none",
 						"htmlId": null,
 						"textColor": "black",
-						"includeVideo": false,
-						"streamVideoId": null,
-						"streamOptions": null,
+						"includeVideo": true,
+						"streamVideoId": "c5b9c9d5503dc590825aae10c5127e43",
+						"streamOptions": [
+							"controls"
+						],
 						"streamCaptions": null,
-						"popupStreamId": "c5b9c9d5503dc590825aae10c5127e43",
-						"popupText": "Watch a demo (7 minutes)",
+						"popupStreamId": null,
+						"popupText": null,
 						"button1OpenInNewTab": null,
 						"button2OpenInNewTab": true,
 						"streamThumbnails": null,
@@ -6872,20 +6874,7 @@
 						"backgroundAssetFile": null,
 						"imageLayout": null,
 						"image": null,
-						"imageAssetFile": {
-							"id": "e5e68b70-b150-5a60-be15-cf94394e4f05",
-							"altText": null,
-							"title": "Cloudflare Access - Hero Image",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "[path]/Access_2x.png"
-								}
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						}
+						"imageAssetFile": null
 					},
 					{
 						"contentTypeId": "bladeSubNav",
