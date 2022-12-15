@@ -313,7 +313,9 @@ fallback_action = "fail"
 	<h3 id="testing">Testing</h3>
 	<p>How can we ensure the service we set up does the right thing before we announce it to the public Internet? 1.1.1.1 processes more than 13 billion of these misdirected queries every day, and it has logic in place to directly return NXDOMAIN for them locally, which is a recommended practice per <a href="https://www.rfc-editor.org/rfc/rfc7534" target="_blank">RFC 7534</a>.</p>
 	<p>However, we are able to use a dynamic rule to change how the misdirected queries are handled in Cloudflare testing locations. For example, a rule like following:</p><!--kg-card-begin: markdown-->
-	<p><code>phase = post-cache and qtype in { PTR } and colo in { test1 test2 } and qname-suffix in { 10.in-addr.arpa 16.172.in-addr.arpa 17.172.in-addr.arpa 18.172.in-addr.arpa 19.172.in-addr.arpa 20.172.in-addr.arpa 21.172.in-addr.arpa 22.172.in-addr.arpa 23.172.in-addr.arpa 24.172.in-addr.arpa 25.172.in-addr.arpa 26.172.in-addr.arpa 27.172.in-addr.arpa 28.172.in-addr.arpa 29.172.in-addr.arpa 30.172.in-addr.arpa 31.172.in-addr.arpa 168.192.in-addr.arpa 254.169.in-addr.arpa } forward 192.175.48.6:53</code></p>
+	<blockquote>
+		<p><code>phase = post-cache and qtype in { PTR } and colo in { test1 test2 } and qname-suffix in { 10.in-addr.arpa 16.172.in-addr.arpa 17.172.in-addr.arpa 18.172.in-addr.arpa 19.172.in-addr.arpa 20.172.in-addr.arpa 21.172.in-addr.arpa 22.172.in-addr.arpa 23.172.in-addr.arpa 24.172.in-addr.arpa 25.172.in-addr.arpa 26.172.in-addr.arpa 27.172.in-addr.arpa 28.172.in-addr.arpa 29.172.in-addr.arpa 30.172.in-addr.arpa 31.172.in-addr.arpa 168.192.in-addr.arpa 254.169.in-addr.arpa } forward 192.175.48.6:53</code></p>
+	</blockquote>
 	<!--kg-card-end: markdown-->
 	<p>The rule instructs that in data center test1 and test2, when the DNS query type is PTR, and the query name ends with those in the list, forward the query to server 192.175.48.6 (one of the AS112 service IPs) on port 53.</p>
 	<p>Because we’ve provisioned the AS112 IP prefixes in the same node, the new AS112 service will receive the queries and respond to the resolver.</p>
