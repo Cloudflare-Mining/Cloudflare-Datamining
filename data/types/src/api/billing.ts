@@ -141,7 +141,8 @@ export const BillingAccount = eg.object({
     async_tract: eg.boolean,
     banned: eg.boolean,
     pdf_invoices: eg.boolean,
-    install_base_customer: eg.boolean
+    install_base_customer: eg.boolean,
+    bad_debt: eg.boolean
   })
 });
 
@@ -155,8 +156,10 @@ export const BillingTransaction = eg.object({
   occurred_at: eg.string,
   invoice_id: eg.string,
   receipt_id: eg.string,
+  currency: eg.string,
   external_invoice_id: eg.string,
   amount: eg.number,
+  amount_to_pay: eg.number,
   status: eg.union([
     eg.literal('OPEN'),
     eg.literal('CLOSED'),
@@ -165,7 +168,7 @@ export const BillingTransaction = eg.object({
     eg.literal('CREDIT_FULLY_APPLIED'),
     eg.literal('CREDIT_OPEN')
   ]),
-  amount_to_pay: eg.number
+  source: eg.string
 });
 
 export type BillingTransaction = TypeFromCodec<typeof BillingTransaction>;
@@ -176,7 +179,8 @@ export const BillingPayment = eg.object({
       invoice_id: eg.string,
       amount: eg.number
     })
-  ),
+  ).optional,
+  amount: eg.number.optional,
   payment_method_id: eg.number.optional
 });
 
