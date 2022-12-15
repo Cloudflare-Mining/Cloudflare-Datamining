@@ -1,9 +1,13 @@
 [
+	"/accounts/[id]/billing/accounts",
+	"/accounts/[id]/billing/accounts/invoices",
 	"/accounts/[id]/billing/accounts/quotes",
+	"/accounts/[id]/billing/bad-debt",
 	"/accounts/[id]/billing/history",
 	"/accounts/[id]/billing/profile",
 	"/accounts/[id]/payment-methods",
 	"/accounts/[id]/payment-methods/[id]/*",
 	"/accounts/[id]/payment-methods/[id]/set-as-default",
-	"/accounts/[id]/payments"
+	"/accounts/[id]/payments",
+	"/zones/[id]/available_plans"
 ]
