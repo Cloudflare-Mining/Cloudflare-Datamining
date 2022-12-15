@@ -24,7 +24,7 @@
 			},
 			"html_id": "dns-records-for-a-zone-list-dns-records",
 			"uri": "zones/:zone_identifier/dns_records",
-			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/dns_records?type=A&name=example.com&content=127.0.0.1&proxied=false&page=1&per_page=100&order=type&direction=desc&match=all\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/dns_records?type=A&name=example.com&content=127.0.0.1&proxied=false&page=1&per_page=100&order=type&direction=desc&match=all&comment=Domain verification record&tag.<tag-name>=undefined&tag-match=all\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -116,7 +116,26 @@
 							"all"
 						],
 						"default": "all",
-						"description": "Whether to match all search requirements or at least one (any)."
+						"description": "Whether to match all search requirements or at least one (any). If set to 'all', acts like a logical AND between filters. If set to 'any', acts like a logical OR instead. Note that the interaction between multiple 'tag.*' filters is controlled by the 'tag-match' parameter instead."
+					},
+					"comment": {
+						"type": "string",
+						"example": "\"Domain verification record\"",
+						"description": "DNS record comment. For advanced queries, the following alternative parameters are available: 'comment.present', 'comment.absent', 'comment.exact', 'comment.contains', 'comment.startswith', 'comment.endswith'. Just 'comment' is equivalent to 'comment.exact'."
+					},
+					"tag.<tag-name>": {
+						"type": "string",
+						"description": "DNS record tag value. For advanced queries, the following alternative parameters are available: 'tag.<tag-name>.present', 'tag.<tag-name>.absent', 'tag.<tag-name>.exact', 'tag.<tag-name>.contains', 'tag.<tag-name>.startswith', 'tag.<tag-name>.endswith'. Just 'tag.<tag-name>' is equivalent to 'tag.<tag-name>.exact'. Replace <tag-name> with the name of the tag to query. Example: /dns_records?tag.important.present&tag.team=DNS"
+					},
+					"tag-match": {
+						"type": "string",
+						"example": "\"all\"",
+						"enum": [
+							"any",
+							"all"
+						],
+						"default": "all",
+						"description": "Whether to match all tag search requirements or at least one (any). If set to 'all', acts like a logical AND between 'tag.*' filters. If set to 'any', acts like a logical OR instead. Note that the regular 'match' parameter is still used to combine the resulting condition with other filters that aren't related to tags."
 					}
 				},
 				"required_props": [],
@@ -129,12 +148,15 @@
 					"per_page",
 					"order",
 					"direction",
-					"match"
+					"match",
+					"comment",
+					"tag.<tag-name>",
+					"tag-match"
 				],
 				"objects": [],
-				"example": "{\n  \"type\": \"A\",\n  \"name\": \"example.com\",\n  \"content\": \"127.0.0.1\",\n  \"proxied\": false,\n  \"page\": 1,\n  \"per_page\": 100,\n  \"order\": \"type\",\n  \"direction\": \"desc\",\n  \"match\": \"all\"\n}"
+				"example": "{\n  \"type\": \"A\",\n  \"name\": \"example.com\",\n  \"content\": \"127.0.0.1\",\n  \"proxied\": false,\n  \"page\": 1,\n  \"per_page\": 100,\n  \"order\": \"type\",\n  \"direction\": \"desc\",\n  \"match\": \"all\",\n  \"comment\": \"Domain verification record\",\n  \"tag-match\": \"all\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n      \"type\": \"A\",\n      \"name\": \"example.com\",\n      \"content\": \"198.51.100.4\",\n      \"proxiable\": true,\n      \"proxied\": false,\n      \"ttl\": 3600,\n      \"locked\": false,\n      \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n      \"zone_name\": \"example.com\",\n      \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n      \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n      \"data\": {},\n      \"meta\": {\n        \"auto_added\": true,\n        \"source\": \"primary\"\n      }\n    }\n  ]\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n      \"type\": \"A\",\n      \"name\": \"example.com\",\n      \"content\": \"198.51.100.4\",\n      \"proxiable\": true,\n      \"proxied\": false,\n      \"comment\": \"Domain verification record\",\n      \"tags\": [\n        \"owner:dns-team\"\n      ],\n      \"ttl\": 3600,\n      \"locked\": false,\n      \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n      \"zone_name\": \"example.com\",\n      \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n      \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n      \"data\": {},\n      \"meta\": {\n        \"auto_added\": true,\n        \"source\": \"primary\"\n      }\n    }\n  ]\n}"
 		},
 		{
 			"title": "Create DNS Record",
@@ -156,7 +178,7 @@
 			},
 			"html_id": "dns-records-for-a-zone-create-dns-record",
 			"uri": "zones/:zone_identifier/dns_records",
-			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/dns_records\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"type\":\"A\",\"name\":\"example.com\",\"content\":\"127.0.0.1\",\"ttl\":3600,\"priority\":10,\"proxied\":false}'",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/dns_records\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"type\":\"A\",\"name\":\"example.com\",\"content\":\"127.0.0.1\",\"ttl\":3600,\"priority\":10,\"proxied\":false,\"comment\":\"Domain verification record\",\"tags\":[\"owner:dns-team\"]}'",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -231,6 +253,21 @@
 						"type": "boolean",
 						"example": "false",
 						"description": "Whether the record is receiving the performance and security benefits of Cloudflare."
+					},
+					"comment": {
+						"type": "string",
+						"example": "\"Domain verification record\"",
+						"description": "Comments or notes about the DNS record. This field has no effect on DNS responses."
+					},
+					"tags": {
+						"type": "array",
+						"example": "[\n  \"owner:dns-team\"\n]",
+						"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
+						"items": {
+							"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
+							"type": "string",
+							"example": "owner:dns-team"
+						}
 					}
 				},
 				"required_props": [
@@ -241,12 +278,14 @@
 				],
 				"optional_props": [
 					"priority",
-					"proxied"
+					"proxied",
+					"comment",
+					"tags"
 				],
 				"objects": [],
-				"example": "{\n  \"type\": \"A\",\n  \"name\": \"example.com\",\n  \"content\": \"127.0.0.1\",\n  \"ttl\": 3600,\n  \"priority\": 10,\n  \"proxied\": false\n}"
+				"example": "{\n  \"type\": \"A\",\n  \"name\": \"example.com\",\n  \"content\": \"127.0.0.1\",\n  \"ttl\": 3600,\n  \"priority\": 10,\n  \"proxied\": false,\n  \"comment\": \"Domain verification record\",\n  \"tags\": [\n    \"owner:dns-team\"\n  ]\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n    \"type\": \"A\",\n    \"name\": \"example.com\",\n    \"content\": \"198.51.100.4\",\n    \"proxiable\": true,\n    \"proxied\": false,\n    \"ttl\": 3600,\n    \"locked\": false,\n    \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n    \"zone_name\": \"example.com\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"data\": {},\n    \"meta\": {\n      \"auto_added\": true,\n      \"source\": \"primary\"\n    }\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n    \"type\": \"A\",\n    \"name\": \"example.com\",\n    \"content\": \"198.51.100.4\",\n    \"proxiable\": true,\n    \"proxied\": false,\n    \"comment\": \"Domain verification record\",\n    \"tags\": [\n      \"owner:dns-team\"\n    ],\n    \"ttl\": 3600,\n    \"locked\": false,\n    \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n    \"zone_name\": \"example.com\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"data\": {},\n    \"meta\": {\n      \"auto_added\": true,\n      \"source\": \"primary\"\n    }\n  }\n}"
 		},
 		{
 			"title": "DNS Record Details",
@@ -268,7 +307,7 @@
 			"html_id": "dns-records-for-a-zone-dns-record-details",
 			"uri": "zones/:zone_identifier/dns_records/:identifier",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/dns_records/372e67954025e0ba6aaa6d586b9e0b59\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n    \"type\": \"A\",\n    \"name\": \"example.com\",\n    \"content\": \"198.51.100.4\",\n    \"proxiable\": true,\n    \"proxied\": false,\n    \"ttl\": 3600,\n    \"locked\": false,\n    \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n    \"zone_name\": \"example.com\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"data\": {},\n    \"meta\": {\n      \"auto_added\": true,\n      \"source\": \"primary\"\n    }\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n    \"type\": \"A\",\n    \"name\": \"example.com\",\n    \"content\": \"198.51.100.4\",\n    \"proxiable\": true,\n    \"proxied\": false,\n    \"comment\": \"Domain verification record\",\n    \"tags\": [\n      \"owner:dns-team\"\n    ],\n    \"ttl\": 3600,\n    \"locked\": false,\n    \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n    \"zone_name\": \"example.com\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"data\": {},\n    \"meta\": {\n      \"auto_added\": true,\n      \"source\": \"primary\"\n    }\n  }\n}"
 		},
 		{
 			"title": "Update DNS Record",
@@ -289,7 +328,7 @@
 			},
 			"html_id": "dns-records-for-a-zone-update-dns-record",
 			"uri": "zones/:zone_identifier/dns_records/:identifier",
-			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/dns_records/372e67954025e0ba6aaa6d586b9e0b59\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"type\":\"A\",\"name\":\"example.com\",\"content\":\"127.0.0.1\",\"ttl\":3600,\"proxied\":false}'",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/dns_records/372e67954025e0ba6aaa6d586b9e0b59\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"type\":\"A\",\"name\":\"example.com\",\"content\":\"127.0.0.1\",\"ttl\":3600,\"proxied\":false,\"comment\":\"Domain verification record\",\"tags\":[\"owner:dns-team\"]}'",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -357,6 +396,21 @@
 						"type": "boolean",
 						"example": "false",
 						"description": "Whether the record is receiving the performance and security benefits of Cloudflare."
+					},
+					"comment": {
+						"type": "string",
+						"example": "\"Domain verification record\"",
+						"description": "Comments or notes about the DNS record. This field has no effect on DNS responses."
+					},
+					"tags": {
+						"type": "array",
+						"example": "[\n  \"owner:dns-team\"\n]",
+						"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
+						"items": {
+							"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
+							"type": "string",
+							"example": "owner:dns-team"
+						}
 					}
 				},
 				"required_props": [
@@ -366,12 +420,14 @@
 					"ttl"
 				],
 				"optional_props": [
-					"proxied"
+					"proxied",
+					"comment",
+					"tags"
 				],
 				"objects": [],
-				"example": "{\n  \"type\": \"A\",\n  \"name\": \"example.com\",\n  \"content\": \"127.0.0.1\",\n  \"ttl\": 3600,\n  \"proxied\": false\n}"
+				"example": "{\n  \"type\": \"A\",\n  \"name\": \"example.com\",\n  \"content\": \"127.0.0.1\",\n  \"ttl\": 3600,\n  \"proxied\": false,\n  \"comment\": \"Domain verification record\",\n  \"tags\": [\n    \"owner:dns-team\"\n  ]\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n    \"type\": \"A\",\n    \"name\": \"example.com\",\n    \"content\": \"198.51.100.4\",\n    \"proxiable\": true,\n    \"proxied\": false,\n    \"ttl\": 3600,\n    \"locked\": false,\n    \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n    \"zone_name\": \"example.com\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"data\": {},\n    \"meta\": {\n      \"auto_added\": true,\n      \"source\": \"primary\"\n    }\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n    \"type\": \"A\",\n    \"name\": \"example.com\",\n    \"content\": \"198.51.100.4\",\n    \"proxiable\": true,\n    \"proxied\": false,\n    \"comment\": \"Domain verification record\",\n    \"tags\": [\n      \"owner:dns-team\"\n    ],\n    \"ttl\": 3600,\n    \"locked\": false,\n    \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n    \"zone_name\": \"example.com\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"data\": {},\n    \"meta\": {\n      \"auto_added\": true,\n      \"source\": \"primary\"\n    }\n  }\n}"
 		},
 		{
 			"title": "Patch DNS Record",
@@ -392,7 +448,7 @@
 			},
 			"html_id": "dns-records-for-a-zone-patch-dns-record",
 			"uri": "zones/:zone_identifier/dns_records/:identifier",
-			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/dns_records/372e67954025e0ba6aaa6d586b9e0b59\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"type\":\"A\",\"name\":\"example.com\",\"content\":\"127.0.0.1\",\"ttl\":3600,\"proxied\":false}'",
+			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/dns_records/372e67954025e0ba6aaa6d586b9e0b59\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"type\":\"A\",\"name\":\"example.com\",\"content\":\"127.0.0.1\",\"ttl\":3600,\"proxied\":false,\"comment\":\"Domain verification record\",\"tags\":[\"owner:dns-team\"]}'",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -460,6 +516,21 @@
 						"type": "boolean",
 						"example": "false",
 						"description": "Whether the record is receiving the performance and security benefits of Cloudflare."
+					},
+					"comment": {
+						"type": "string",
+						"example": "\"Domain verification record\"",
+						"description": "Comments or notes about the DNS record. This field has no effect on DNS responses."
+					},
+					"tags": {
+						"type": "array",
+						"example": "[\n  \"owner:dns-team\"\n]",
+						"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
+						"items": {
+							"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
+							"type": "string",
+							"example": "owner:dns-team"
+						}
 					}
 				},
 				"required_props": [],
@@ -468,12 +539,14 @@
 					"name",
 					"content",
 					"ttl",
-					"proxied"
+					"proxied",
+					"comment",
+					"tags"
 				],
 				"objects": [],
-				"example": "{\n  \"type\": \"A\",\n  \"name\": \"example.com\",\n  \"content\": \"127.0.0.1\",\n  \"ttl\": 3600,\n  \"proxied\": false\n}"
+				"example": "{\n  \"type\": \"A\",\n  \"name\": \"example.com\",\n  \"content\": \"127.0.0.1\",\n  \"ttl\": 3600,\n  \"proxied\": false,\n  \"comment\": \"Domain verification record\",\n  \"tags\": [\n    \"owner:dns-team\"\n  ]\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n    \"type\": \"A\",\n    \"name\": \"example.com\",\n    \"content\": \"198.51.100.4\",\n    \"proxiable\": true,\n    \"proxied\": false,\n    \"ttl\": 3600,\n    \"locked\": false,\n    \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n    \"zone_name\": \"example.com\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"data\": {},\n    \"meta\": {\n      \"auto_added\": true,\n      \"source\": \"primary\"\n    }\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n    \"type\": \"A\",\n    \"name\": \"example.com\",\n    \"content\": \"198.51.100.4\",\n    \"proxiable\": true,\n    \"proxied\": false,\n    \"comment\": \"Domain verification record\",\n    \"tags\": [\n      \"owner:dns-team\"\n    ],\n    \"ttl\": 3600,\n    \"locked\": false,\n    \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n    \"zone_name\": \"example.com\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"data\": {},\n    \"meta\": {\n      \"auto_added\": true,\n      \"source\": \"primary\"\n    }\n  }\n}"
 		},
 		{
 			"title": "Delete DNS Record",
@@ -771,6 +844,21 @@
 						"example": "false",
 						"description": "Whether the record is receiving the performance and security benefits of Cloudflare."
 					},
+					"comment": {
+						"type": "string",
+						"example": "\"Domain verification record\"",
+						"description": "Comments or notes about the DNS record. This field has no effect on DNS responses."
+					},
+					"tags": {
+						"type": "array",
+						"example": "[\n  \"owner:dns-team\"\n]",
+						"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
+						"items": {
+							"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
+							"type": "string",
+							"example": "owner:dns-team"
+						}
+					},
 					"ttl": {
 						"type": "number",
 						"example": "3600",
@@ -858,6 +946,8 @@
 					"id",
 					"proxiable",
 					"proxied",
+					"comment",
+					"tags",
 					"ttl",
 					"locked",
 					"zone_id",
@@ -868,7 +958,7 @@
 					"meta"
 				],
 				"objects": [],
-				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"type\": \"A\",\n  \"name\": \"example.com\",\n  \"content\": \"198.51.100.4\",\n  \"proxiable\": true,\n  \"proxied\": false,\n  \"ttl\": 3600,\n  \"locked\": false,\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"zone_name\": \"example.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"data\": {},\n  \"meta\": {\n    \"auto_added\": true,\n    \"source\": \"primary\"\n  }\n}",
+				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"type\": \"A\",\n  \"name\": \"example.com\",\n  \"content\": \"198.51.100.4\",\n  \"proxiable\": true,\n  \"proxied\": false,\n  \"comment\": \"Domain verification record\",\n  \"tags\": [\n    \"owner:dns-team\"\n  ],\n  \"ttl\": 3600,\n  \"locked\": false,\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"zone_name\": \"example.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"data\": {},\n  \"meta\": {\n    \"auto_added\": true,\n    \"source\": \"primary\"\n  }\n}",
 				"title": "A Record"
 			},
 			{
@@ -930,6 +1020,21 @@
 						"example": "false",
 						"description": "Whether the record is receiving the performance and security benefits of Cloudflare."
 					},
+					"comment": {
+						"type": "string",
+						"example": "\"Domain verification record\"",
+						"description": "Comments or notes about the DNS record. This field has no effect on DNS responses."
+					},
+					"tags": {
+						"type": "array",
+						"example": "[\n  \"owner:dns-team\"\n]",
+						"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
+						"items": {
+							"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
+							"type": "string",
+							"example": "owner:dns-team"
+						}
+					},
 					"ttl": {
 						"type": "number",
 						"example": "3600",
@@ -1017,6 +1122,8 @@
 					"id",
 					"proxiable",
 					"proxied",
+					"comment",
+					"tags",
 					"ttl",
 					"locked",
 					"zone_id",
@@ -1027,7 +1134,7 @@
 					"meta"
 				],
 				"objects": [],
-				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"type\": \"AAAA\",\n  \"name\": \"example.com\",\n  \"content\": \"2400:cb00:2049:1::173.245.59.16\",\n  \"proxiable\": true,\n  \"proxied\": false,\n  \"ttl\": 3600,\n  \"locked\": false,\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"zone_name\": \"example.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"data\": {},\n  \"meta\": {\n    \"auto_added\": true,\n    \"source\": \"primary\"\n  }\n}",
+				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"type\": \"AAAA\",\n  \"name\": \"example.com\",\n  \"content\": \"2400:cb00:2049:1::173.245.59.16\",\n  \"proxiable\": true,\n  \"proxied\": false,\n  \"comment\": \"Domain verification record\",\n  \"tags\": [\n    \"owner:dns-team\"\n  ],\n  \"ttl\": 3600,\n  \"locked\": false,\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"zone_name\": \"example.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"data\": {},\n  \"meta\": {\n    \"auto_added\": true,\n    \"source\": \"primary\"\n  }\n}",
 				"title": "AAAA Record"
 			},
 			{
@@ -1089,6 +1196,21 @@
 						"example": "false",
 						"description": "Whether the record is receiving the performance and security benefits of Cloudflare."
 					},
+					"comment": {
+						"type": "string",
+						"example": "\"Domain verification record\"",
+						"description": "Comments or notes about the DNS record. This field has no effect on DNS responses."
+					},
+					"tags": {
+						"type": "array",
+						"example": "[\n  \"owner:dns-team\"\n]",
+						"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
+						"items": {
+							"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
+							"type": "string",
+							"example": "owner:dns-team"
+						}
+					},
 					"ttl": {
 						"type": "number",
 						"example": "3600",
@@ -1176,6 +1298,8 @@
 					"id",
 					"proxiable",
 					"proxied",
+					"comment",
+					"tags",
 					"ttl",
 					"locked",
 					"zone_id",
@@ -1186,7 +1310,7 @@
 					"meta"
 				],
 				"objects": [],
-				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"type\": \"CNAME\",\n  \"name\": \"example.com\",\n  \"content\": \"example.com\",\n  \"proxiable\": true,\n  \"proxied\": false,\n  \"ttl\": 3600,\n  \"locked\": false,\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"zone_name\": \"example.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"data\": {},\n  \"meta\": {\n    \"auto_added\": true,\n    \"source\": \"primary\"\n  }\n}",
+				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"type\": \"CNAME\",\n  \"name\": \"example.com\",\n  \"content\": \"example.com\",\n  \"proxiable\": true,\n  \"proxied\": false,\n  \"comment\": \"Domain verification record\",\n  \"tags\": [\n    \"owner:dns-team\"\n  ],\n  \"ttl\": 3600,\n  \"locked\": false,\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"zone_name\": \"example.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"data\": {},\n  \"meta\": {\n    \"auto_added\": true,\n    \"source\": \"primary\"\n  }\n}",
 				"title": "CNAME Record"
 			},
 			{
@@ -1247,6 +1371,21 @@
 						"type": "boolean",
 						"example": "false",
 						"description": "Whether the record is receiving the performance and security benefits of Cloudflare."
+					},
+					"comment": {
+						"type": "string",
+						"example": "\"Domain verification record\"",
+						"description": "Comments or notes about the DNS record. This field has no effect on DNS responses."
+					},
+					"tags": {
+						"type": "array",
+						"example": "[\n  \"owner:dns-team\"\n]",
+						"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
+						"items": {
+							"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
+							"type": "string",
+							"example": "owner:dns-team"
+						}
 					},
 					"ttl": {
 						"type": "number",
@@ -1355,6 +1494,8 @@
 					"content",
 					"proxiable",
 					"proxied",
+					"comment",
+					"tags",
 					"ttl",
 					"locked",
 					"zone_id",
@@ -1364,7 +1505,7 @@
 					"meta"
 				],
 				"objects": [],
-				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"type\": \"HTTPS\",\n  \"name\": \"example.com\",\n  \"proxiable\": true,\n  \"proxied\": false,\n  \"ttl\": 3600,\n  \"locked\": false,\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"zone_name\": \"example.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"data\": {\n    \"priority\": 1,\n    \"target\": \".\",\n    \"value\": \"alpn=\\\"h3,h2\\\" ipv4hint=\\\"127.0.0.1\\\" ipv6hint=\\\"::1\\\"\"\n  },\n  \"meta\": {\n    \"auto_added\": true,\n    \"source\": \"primary\"\n  }\n}",
+				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"type\": \"HTTPS\",\n  \"name\": \"example.com\",\n  \"proxiable\": true,\n  \"proxied\": false,\n  \"comment\": \"Domain verification record\",\n  \"tags\": [\n    \"owner:dns-team\"\n  ],\n  \"ttl\": 3600,\n  \"locked\": false,\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"zone_name\": \"example.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"data\": {\n    \"priority\": 1,\n    \"target\": \".\",\n    \"value\": \"alpn=\\\"h3,h2\\\" ipv4hint=\\\"127.0.0.1\\\" ipv6hint=\\\"::1\\\"\"\n  },\n  \"meta\": {\n    \"auto_added\": true,\n    \"source\": \"primary\"\n  }\n}",
 				"title": "HTTPS Record"
 			},
 			{
@@ -1425,6 +1566,21 @@
 						"type": "boolean",
 						"example": "false",
 						"description": "Whether the record is receiving the performance and security benefits of Cloudflare."
+					},
+					"comment": {
+						"type": "string",
+						"example": "\"Domain verification record\"",
+						"description": "Comments or notes about the DNS record. This field has no effect on DNS responses."
+					},
+					"tags": {
+						"type": "array",
+						"example": "[\n  \"owner:dns-team\"\n]",
+						"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
+						"items": {
+							"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
+							"type": "string",
+							"example": "owner:dns-team"
+						}
 					},
 					"ttl": {
 						"type": "number",
@@ -1513,6 +1669,8 @@
 					"id",
 					"proxiable",
 					"proxied",
+					"comment",
+					"tags",
 					"ttl",
 					"locked",
 					"zone_id",
@@ -1523,7 +1681,7 @@
 					"meta"
 				],
 				"objects": [],
-				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"type\": \"NS\",\n  \"name\": \"example.com\",\n  \"content\": \"ns1.example.com\",\n  \"proxiable\": true,\n  \"proxied\": false,\n  \"ttl\": 3600,\n  \"locked\": false,\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"zone_name\": \"example.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"data\": {},\n  \"meta\": {\n    \"auto_added\": true,\n    \"source\": \"primary\"\n  }\n}",
+				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"type\": \"NS\",\n  \"name\": \"example.com\",\n  \"content\": \"ns1.example.com\",\n  \"proxiable\": true,\n  \"proxied\": false,\n  \"comment\": \"Domain verification record\",\n  \"tags\": [\n    \"owner:dns-team\"\n  ],\n  \"ttl\": 3600,\n  \"locked\": false,\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"zone_name\": \"example.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"data\": {},\n  \"meta\": {\n    \"auto_added\": true,\n    \"source\": \"primary\"\n  }\n}",
 				"title": "NS Record"
 			},
 			{
@@ -1584,6 +1742,21 @@
 						"type": "boolean",
 						"example": "false",
 						"description": "Whether the record is receiving the performance and security benefits of Cloudflare."
+					},
+					"comment": {
+						"type": "string",
+						"example": "\"Domain verification record\"",
+						"description": "Comments or notes about the DNS record. This field has no effect on DNS responses."
+					},
+					"tags": {
+						"type": "array",
+						"example": "[\n  \"owner:dns-team\"\n]",
+						"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
+						"items": {
+							"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
+							"type": "string",
+							"example": "owner:dns-team"
+						}
 					},
 					"ttl": {
 						"type": "number",
@@ -1680,6 +1853,8 @@
 					"id",
 					"proxiable",
 					"proxied",
+					"comment",
+					"tags",
 					"ttl",
 					"locked",
 					"zone_id",
@@ -1690,7 +1865,7 @@
 					"meta"
 				],
 				"objects": [],
-				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"type\": \"MX\",\n  \"name\": \"example.com\",\n  \"content\": \"mx.example.com\",\n  \"proxiable\": true,\n  \"proxied\": false,\n  \"ttl\": 3600,\n  \"locked\": false,\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"zone_name\": \"example.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"data\": {},\n  \"meta\": {\n    \"auto_added\": true,\n    \"source\": \"primary\"\n  },\n  \"priority\": 10\n}",
+				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"type\": \"MX\",\n  \"name\": \"example.com\",\n  \"content\": \"mx.example.com\",\n  \"proxiable\": true,\n  \"proxied\": false,\n  \"comment\": \"Domain verification record\",\n  \"tags\": [\n    \"owner:dns-team\"\n  ],\n  \"ttl\": 3600,\n  \"locked\": false,\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"zone_name\": \"example.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"data\": {},\n  \"meta\": {\n    \"auto_added\": true,\n    \"source\": \"primary\"\n  },\n  \"priority\": 10\n}",
 				"title": "MX Record"
 			},
 			{
@@ -1750,6 +1925,21 @@
 						"type": "boolean",
 						"example": "false",
 						"description": "Whether the record is receiving the performance and security benefits of Cloudflare."
+					},
+					"comment": {
+						"type": "string",
+						"example": "\"Domain verification record\"",
+						"description": "Comments or notes about the DNS record. This field has no effect on DNS responses."
+					},
+					"tags": {
+						"type": "array",
+						"example": "[\n  \"owner:dns-team\"\n]",
+						"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
+						"items": {
+							"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
+							"type": "string",
+							"example": "owner:dns-team"
+						}
 					},
 					"ttl": {
 						"type": "number",
@@ -1838,6 +2028,8 @@
 					"id",
 					"proxiable",
 					"proxied",
+					"comment",
+					"tags",
 					"ttl",
 					"locked",
 					"zone_id",
@@ -1848,7 +2040,7 @@
 					"meta"
 				],
 				"objects": [],
-				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"type\": \"TXT\",\n  \"name\": \"example.com\",\n  \"content\": \"example text content\",\n  \"proxiable\": true,\n  \"proxied\": false,\n  \"ttl\": 3600,\n  \"locked\": false,\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"zone_name\": \"example.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"data\": {},\n  \"meta\": {\n    \"auto_added\": true,\n    \"source\": \"primary\"\n  }\n}",
+				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"type\": \"TXT\",\n  \"name\": \"example.com\",\n  \"content\": \"example text content\",\n  \"proxiable\": true,\n  \"proxied\": false,\n  \"comment\": \"Domain verification record\",\n  \"tags\": [\n    \"owner:dns-team\"\n  ],\n  \"ttl\": 3600,\n  \"locked\": false,\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"zone_name\": \"example.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"data\": {},\n  \"meta\": {\n    \"auto_added\": true,\n    \"source\": \"primary\"\n  }\n}",
 				"title": "TXT Record"
 			},
 			{
@@ -1909,6 +2101,21 @@
 						"type": "boolean",
 						"example": "false",
 						"description": "Whether the record is receiving the performance and security benefits of Cloudflare."
+					},
+					"comment": {
+						"type": "string",
+						"example": "\"Domain verification record\"",
+						"description": "Comments or notes about the DNS record. This field has no effect on DNS responses."
+					},
+					"tags": {
+						"type": "array",
+						"example": "[\n  \"owner:dns-team\"\n]",
+						"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
+						"items": {
+							"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
+							"type": "string",
+							"example": "owner:dns-team"
+						}
 					},
 					"ttl": {
 						"type": "number",
@@ -2093,6 +2300,8 @@
 					"content",
 					"proxiable",
 					"proxied",
+					"comment",
+					"tags",
 					"ttl",
 					"locked",
 					"zone_id",
@@ -2102,7 +2311,7 @@
 					"meta"
 				],
 				"objects": [],
-				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"type\": \"LOC\",\n  \"name\": \"example.com\",\n  \"content\": \"IN LOC 37 46 46 N 122 23 35 W 0m 100m 0m 0m\",\n  \"proxiable\": true,\n  \"proxied\": false,\n  \"ttl\": 3600,\n  \"locked\": false,\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"zone_name\": \"example.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"data\": {\n    \"lat_degrees\": 37,\n    \"lat_minutes\": 46,\n    \"lat_seconds\": 46,\n    \"lat_direction\": \"N\",\n    \"long_degrees\": 122,\n    \"long_minutes\": 23,\n    \"long_seconds\": 35,\n    \"long_direction\": \"W\",\n    \"altitude\": 0,\n    \"size\": 100,\n    \"precision_horz\": 0,\n    \"precision_vert\": 0\n  },\n  \"meta\": {\n    \"auto_added\": true,\n    \"source\": \"primary\"\n  }\n}",
+				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"type\": \"LOC\",\n  \"name\": \"example.com\",\n  \"content\": \"IN LOC 37 46 46 N 122 23 35 W 0m 100m 0m 0m\",\n  \"proxiable\": true,\n  \"proxied\": false,\n  \"comment\": \"Domain verification record\",\n  \"tags\": [\n    \"owner:dns-team\"\n  ],\n  \"ttl\": 3600,\n  \"locked\": false,\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"zone_name\": \"example.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"data\": {\n    \"lat_degrees\": 37,\n    \"lat_minutes\": 46,\n    \"lat_seconds\": 46,\n    \"lat_direction\": \"N\",\n    \"long_degrees\": 122,\n    \"long_minutes\": 23,\n    \"long_seconds\": 35,\n    \"long_direction\": \"W\",\n    \"altitude\": 0,\n    \"size\": 100,\n    \"precision_horz\": 0,\n    \"precision_vert\": 0\n  },\n  \"meta\": {\n    \"auto_added\": true,\n    \"source\": \"primary\"\n  }\n}",
 				"title": "LOC Record"
 			},
 			{
@@ -2164,6 +2373,21 @@
 						"type": "boolean",
 						"example": "false",
 						"description": "Whether the record is receiving the performance and security benefits of Cloudflare."
+					},
+					"comment": {
+						"type": "string",
+						"example": "\"Domain verification record\"",
+						"description": "Comments or notes about the DNS record. This field has no effect on DNS responses."
+					},
+					"tags": {
+						"type": "array",
+						"example": "[\n  \"owner:dns-team\"\n]",
+						"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
+						"items": {
+							"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
+							"type": "string",
+							"example": "owner:dns-team"
+						}
 					},
 					"ttl": {
 						"type": "number",
@@ -2298,6 +2522,8 @@
 					"content",
 					"proxiable",
 					"proxied",
+					"comment",
+					"tags",
 					"ttl",
 					"locked",
 					"zone_id",
@@ -2307,7 +2533,7 @@
 					"meta"
 				],
 				"objects": [],
-				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"type\": \"SRV\",\n  \"name\": \"_sip._tcp.example.com\",\n  \"content\": \"10 IN SRV 5 8806 example.com.\",\n  \"proxiable\": true,\n  \"proxied\": false,\n  \"ttl\": 3600,\n  \"locked\": false,\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"zone_name\": \"example.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"data\": {\n    \"service\": \"_sip\",\n    \"proto\": \"_tcp\",\n    \"name\": \"example.com\",\n    \"priority\": 10,\n    \"weight\": 5,\n    \"port\": 8806,\n    \"target\": \"example.com\"\n  },\n  \"meta\": {\n    \"auto_added\": true,\n    \"source\": \"primary\"\n  }\n}",
+				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"type\": \"SRV\",\n  \"name\": \"_sip._tcp.example.com\",\n  \"content\": \"10 IN SRV 5 8806 example.com.\",\n  \"proxiable\": true,\n  \"proxied\": false,\n  \"comment\": \"Domain verification record\",\n  \"tags\": [\n    \"owner:dns-team\"\n  ],\n  \"ttl\": 3600,\n  \"locked\": false,\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"zone_name\": \"example.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"data\": {\n    \"service\": \"_sip\",\n    \"proto\": \"_tcp\",\n    \"name\": \"example.com\",\n    \"priority\": 10,\n    \"weight\": 5,\n    \"port\": 8806,\n    \"target\": \"example.com\"\n  },\n  \"meta\": {\n    \"auto_added\": true,\n    \"source\": \"primary\"\n  }\n}",
 				"title": "SRV Record"
 			},
 			{
@@ -2368,6 +2594,21 @@
 						"type": "boolean",
 						"example": "false",
 						"description": "Whether the record is receiving the performance and security benefits of Cloudflare."
+					},
+					"comment": {
+						"type": "string",
+						"example": "\"Domain verification record\"",
+						"description": "Comments or notes about the DNS record. This field has no effect on DNS responses."
+					},
+					"tags": {
+						"type": "array",
+						"example": "[\n  \"owner:dns-team\"\n]",
+						"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
+						"items": {
+							"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
+							"type": "string",
+							"example": "owner:dns-team"
+						}
 					},
 					"ttl": {
 						"type": "number",
@@ -2484,6 +2725,8 @@
 					"content",
 					"proxiable",
 					"proxied",
+					"comment",
+					"tags",
 					"ttl",
 					"locked",
 					"zone_id",
@@ -2493,7 +2736,7 @@
 					"meta"
 				],
 				"objects": [],
-				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"type\": \"CERT\",\n  \"name\": \"example.com\",\n  \"proxiable\": true,\n  \"proxied\": false,\n  \"ttl\": 3600,\n  \"locked\": false,\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"zone_name\": \"example.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"data\": {\n    \"type\": 9,\n    \"key_tag\": 1,\n    \"algorithm\": 8\n  },\n  \"meta\": {\n    \"auto_added\": true,\n    \"source\": \"primary\"\n  }\n}",
+				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"type\": \"CERT\",\n  \"name\": \"example.com\",\n  \"proxiable\": true,\n  \"proxied\": false,\n  \"comment\": \"Domain verification record\",\n  \"tags\": [\n    \"owner:dns-team\"\n  ],\n  \"ttl\": 3600,\n  \"locked\": false,\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"zone_name\": \"example.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"data\": {\n    \"type\": 9,\n    \"key_tag\": 1,\n    \"algorithm\": 8\n  },\n  \"meta\": {\n    \"auto_added\": true,\n    \"source\": \"primary\"\n  }\n}",
 				"title": "CERT Record"
 			},
 			{
@@ -2554,6 +2797,21 @@
 						"type": "boolean",
 						"example": "false",
 						"description": "Whether the record is receiving the performance and security benefits of Cloudflare."
+					},
+					"comment": {
+						"type": "string",
+						"example": "\"Domain verification record\"",
+						"description": "Comments or notes about the DNS record. This field has no effect on DNS responses."
+					},
+					"tags": {
+						"type": "array",
+						"example": "[\n  \"owner:dns-team\"\n]",
+						"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
+						"items": {
+							"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
+							"type": "string",
+							"example": "owner:dns-team"
+						}
 					},
 					"ttl": {
 						"type": "number",
@@ -2670,6 +2928,8 @@
 					"content",
 					"proxiable",
 					"proxied",
+					"comment",
+					"tags",
 					"ttl",
 					"locked",
 					"zone_id",
@@ -2679,7 +2939,7 @@
 					"meta"
 				],
 				"objects": [],
-				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"type\": \"DNSKEY\",\n  \"name\": \"example.com\",\n  \"proxiable\": true,\n  \"proxied\": false,\n  \"ttl\": 3600,\n  \"locked\": false,\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"zone_name\": \"example.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"data\": {\n    \"flags\": 1,\n    \"protocol\": 3,\n    \"algorithm\": 5\n  },\n  \"meta\": {\n    \"auto_added\": true,\n    \"source\": \"primary\"\n  }\n}",
+				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"type\": \"DNSKEY\",\n  \"name\": \"example.com\",\n  \"proxiable\": true,\n  \"proxied\": false,\n  \"comment\": \"Domain verification record\",\n  \"tags\": [\n    \"owner:dns-team\"\n  ],\n  \"ttl\": 3600,\n  \"locked\": false,\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"zone_name\": \"example.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"data\": {\n    \"flags\": 1,\n    \"protocol\": 3,\n    \"algorithm\": 5\n  },\n  \"meta\": {\n    \"auto_added\": true,\n    \"source\": \"primary\"\n  }\n}",
 				"title": "DNSKEY Record"
 			},
 			{
@@ -2740,6 +3000,21 @@
 						"type": "boolean",
 						"example": "false",
 						"description": "Whether the record is receiving the performance and security benefits of Cloudflare."
+					},
+					"comment": {
+						"type": "string",
+						"example": "\"Domain verification record\"",
+						"description": "Comments or notes about the DNS record. This field has no effect on DNS responses."
+					},
+					"tags": {
+						"type": "array",
+						"example": "[\n  \"owner:dns-team\"\n]",
+						"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
+						"items": {
+							"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
+							"type": "string",
+							"example": "owner:dns-team"
+						}
 					},
 					"ttl": {
 						"type": "number",
@@ -2856,6 +3131,8 @@
 					"content",
 					"proxiable",
 					"proxied",
+					"comment",
+					"tags",
 					"ttl",
 					"locked",
 					"zone_id",
@@ -2865,7 +3142,7 @@
 					"meta"
 				],
 				"objects": [],
-				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"type\": \"DS\",\n  \"name\": \"example.com\",\n  \"proxiable\": true,\n  \"proxied\": false,\n  \"ttl\": 3600,\n  \"locked\": false,\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"zone_name\": \"example.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"data\": {\n    \"key_tag\": 1,\n    \"algorithm\": 3,\n    \"digest_type\": 1\n  },\n  \"meta\": {\n    \"auto_added\": true,\n    \"source\": \"primary\"\n  }\n}",
+				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"type\": \"DS\",\n  \"name\": \"example.com\",\n  \"proxiable\": true,\n  \"proxied\": false,\n  \"comment\": \"Domain verification record\",\n  \"tags\": [\n    \"owner:dns-team\"\n  ],\n  \"ttl\": 3600,\n  \"locked\": false,\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"zone_name\": \"example.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"data\": {\n    \"key_tag\": 1,\n    \"algorithm\": 3,\n    \"digest_type\": 1\n  },\n  \"meta\": {\n    \"auto_added\": true,\n    \"source\": \"primary\"\n  }\n}",
 				"title": "DS Record"
 			},
 			{
@@ -2926,6 +3203,21 @@
 						"type": "boolean",
 						"example": "false",
 						"description": "Whether the record is receiving the performance and security benefits of Cloudflare."
+					},
+					"comment": {
+						"type": "string",
+						"example": "\"Domain verification record\"",
+						"description": "Comments or notes about the DNS record. This field has no effect on DNS responses."
+					},
+					"tags": {
+						"type": "array",
+						"example": "[\n  \"owner:dns-team\"\n]",
+						"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
+						"items": {
+							"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
+							"type": "string",
+							"example": "owner:dns-team"
+						}
 					},
 					"ttl": {
 						"type": "number",
@@ -3047,6 +3339,8 @@
 					"content",
 					"proxiable",
 					"proxied",
+					"comment",
+					"tags",
 					"ttl",
 					"locked",
 					"zone_id",
@@ -3056,7 +3350,7 @@
 					"meta"
 				],
 				"objects": [],
-				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"type\": \"NAPTR\",\n  \"name\": \"example.com\",\n  \"proxiable\": true,\n  \"proxied\": false,\n  \"ttl\": 3600,\n  \"locked\": false,\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"zone_name\": \"example.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"data\": {\n    \"order\": 100,\n    \"preference\": 10\n  },\n  \"meta\": {\n    \"auto_added\": true,\n    \"source\": \"primary\"\n  }\n}",
+				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"type\": \"NAPTR\",\n  \"name\": \"example.com\",\n  \"proxiable\": true,\n  \"proxied\": false,\n  \"comment\": \"Domain verification record\",\n  \"tags\": [\n    \"owner:dns-team\"\n  ],\n  \"ttl\": 3600,\n  \"locked\": false,\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"zone_name\": \"example.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"data\": {\n    \"order\": 100,\n    \"preference\": 10\n  },\n  \"meta\": {\n    \"auto_added\": true,\n    \"source\": \"primary\"\n  }\n}",
 				"title": "NAPTR Record"
 			},
 			{
@@ -3117,6 +3411,21 @@
 						"type": "boolean",
 						"example": "false",
 						"description": "Whether the record is receiving the performance and security benefits of Cloudflare."
+					},
+					"comment": {
+						"type": "string",
+						"example": "\"Domain verification record\"",
+						"description": "Comments or notes about the DNS record. This field has no effect on DNS responses."
+					},
+					"tags": {
+						"type": "array",
+						"example": "[\n  \"owner:dns-team\"\n]",
+						"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
+						"items": {
+							"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
+							"type": "string",
+							"example": "owner:dns-team"
+						}
 					},
 					"ttl": {
 						"type": "number",
@@ -3233,6 +3542,8 @@
 					"content",
 					"proxiable",
 					"proxied",
+					"comment",
+					"tags",
 					"ttl",
 					"locked",
 					"zone_id",
@@ -3242,7 +3553,7 @@
 					"meta"
 				],
 				"objects": [],
-				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"type\": \"SMIMEA\",\n  \"name\": \"example.com\",\n  \"proxiable\": true,\n  \"proxied\": false,\n  \"ttl\": 3600,\n  \"locked\": false,\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"zone_name\": \"example.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"data\": {\n    \"usage\": 3,\n    \"selector\": 0,\n    \"matching_type\": 0\n  },\n  \"meta\": {\n    \"auto_added\": true,\n    \"source\": \"primary\"\n  }\n}",
+				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"type\": \"SMIMEA\",\n  \"name\": \"example.com\",\n  \"proxiable\": true,\n  \"proxied\": false,\n  \"comment\": \"Domain verification record\",\n  \"tags\": [\n    \"owner:dns-team\"\n  ],\n  \"ttl\": 3600,\n  \"locked\": false,\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"zone_name\": \"example.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"data\": {\n    \"usage\": 3,\n    \"selector\": 0,\n    \"matching_type\": 0\n  },\n  \"meta\": {\n    \"auto_added\": true,\n    \"source\": \"primary\"\n  }\n}",
 				"title": "SMIMEA Record"
 			},
 			{
@@ -3303,6 +3614,21 @@
 						"type": "boolean",
 						"example": "false",
 						"description": "Whether the record is receiving the performance and security benefits of Cloudflare."
+					},
+					"comment": {
+						"type": "string",
+						"example": "\"Domain verification record\"",
+						"description": "Comments or notes about the DNS record. This field has no effect on DNS responses."
+					},
+					"tags": {
+						"type": "array",
+						"example": "[\n  \"owner:dns-team\"\n]",
+						"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
+						"items": {
+							"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
+							"type": "string",
+							"example": "owner:dns-team"
+						}
 					},
 					"ttl": {
 						"type": "number",
@@ -3412,6 +3738,8 @@
 					"content",
 					"proxiable",
 					"proxied",
+					"comment",
+					"tags",
 					"ttl",
 					"locked",
 					"zone_id",
@@ -3421,7 +3749,7 @@
 					"meta"
 				],
 				"objects": [],
-				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"type\": \"SSHFP\",\n  \"name\": \"example.com\",\n  \"proxiable\": true,\n  \"proxied\": false,\n  \"ttl\": 3600,\n  \"locked\": false,\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"zone_name\": \"example.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"data\": {\n    \"algorithm\": 2,\n    \"type\": 1\n  },\n  \"meta\": {\n    \"auto_added\": true,\n    \"source\": \"primary\"\n  }\n}",
+				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"type\": \"SSHFP\",\n  \"name\": \"example.com\",\n  \"proxiable\": true,\n  \"proxied\": false,\n  \"comment\": \"Domain verification record\",\n  \"tags\": [\n    \"owner:dns-team\"\n  ],\n  \"ttl\": 3600,\n  \"locked\": false,\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"zone_name\": \"example.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"data\": {\n    \"algorithm\": 2,\n    \"type\": 1\n  },\n  \"meta\": {\n    \"auto_added\": true,\n    \"source\": \"primary\"\n  }\n}",
 				"title": "SSHFP Record"
 			},
 			{
@@ -3482,6 +3810,21 @@
 						"type": "boolean",
 						"example": "false",
 						"description": "Whether the record is receiving the performance and security benefits of Cloudflare."
+					},
+					"comment": {
+						"type": "string",
+						"example": "\"Domain verification record\"",
+						"description": "Comments or notes about the DNS record. This field has no effect on DNS responses."
+					},
+					"tags": {
+						"type": "array",
+						"example": "[\n  \"owner:dns-team\"\n]",
+						"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
+						"items": {
+							"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
+							"type": "string",
+							"example": "owner:dns-team"
+						}
 					},
 					"ttl": {
 						"type": "number",
@@ -3590,6 +3933,8 @@
 					"content",
 					"proxiable",
 					"proxied",
+					"comment",
+					"tags",
 					"ttl",
 					"locked",
 					"zone_id",
@@ -3599,7 +3944,7 @@
 					"meta"
 				],
 				"objects": [],
-				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"type\": \"SVCB\",\n  \"name\": \"example.com\",\n  \"proxiable\": true,\n  \"proxied\": false,\n  \"ttl\": 3600,\n  \"locked\": false,\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"zone_name\": \"example.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"data\": {\n    \"priority\": 1,\n    \"target\": \".\",\n    \"value\": \"alpn=\\\"h3,h2\\\" ipv4hint=\\\"127.0.0.1\\\" ipv6hint=\\\"::1\\\"\"\n  },\n  \"meta\": {\n    \"auto_added\": true,\n    \"source\": \"primary\"\n  }\n}",
+				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"type\": \"SVCB\",\n  \"name\": \"example.com\",\n  \"proxiable\": true,\n  \"proxied\": false,\n  \"comment\": \"Domain verification record\",\n  \"tags\": [\n    \"owner:dns-team\"\n  ],\n  \"ttl\": 3600,\n  \"locked\": false,\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"zone_name\": \"example.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"data\": {\n    \"priority\": 1,\n    \"target\": \".\",\n    \"value\": \"alpn=\\\"h3,h2\\\" ipv4hint=\\\"127.0.0.1\\\" ipv6hint=\\\"::1\\\"\"\n  },\n  \"meta\": {\n    \"auto_added\": true,\n    \"source\": \"primary\"\n  }\n}",
 				"title": "SVCB Record"
 			},
 			{
@@ -3660,6 +4005,21 @@
 						"type": "boolean",
 						"example": "false",
 						"description": "Whether the record is receiving the performance and security benefits of Cloudflare."
+					},
+					"comment": {
+						"type": "string",
+						"example": "\"Domain verification record\"",
+						"description": "Comments or notes about the DNS record. This field has no effect on DNS responses."
+					},
+					"tags": {
+						"type": "array",
+						"example": "[\n  \"owner:dns-team\"\n]",
+						"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
+						"items": {
+							"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
+							"type": "string",
+							"example": "owner:dns-team"
+						}
 					},
 					"ttl": {
 						"type": "number",
@@ -3776,6 +4136,8 @@
 					"content",
 					"proxiable",
 					"proxied",
+					"comment",
+					"tags",
 					"ttl",
 					"locked",
 					"zone_id",
@@ -3785,7 +4147,7 @@
 					"meta"
 				],
 				"objects": [],
-				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"type\": \"TLSA\",\n  \"name\": \"example.com\",\n  \"proxiable\": true,\n  \"proxied\": false,\n  \"ttl\": 3600,\n  \"locked\": false,\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"zone_name\": \"example.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"data\": {\n    \"usage\": 0,\n    \"selector\": 0,\n    \"matching_type\": 1\n  },\n  \"meta\": {\n    \"auto_added\": true,\n    \"source\": \"primary\"\n  }\n}",
+				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"type\": \"TLSA\",\n  \"name\": \"example.com\",\n  \"proxiable\": true,\n  \"proxied\": false,\n  \"comment\": \"Domain verification record\",\n  \"tags\": [\n    \"owner:dns-team\"\n  ],\n  \"ttl\": 3600,\n  \"locked\": false,\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"zone_name\": \"example.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"data\": {\n    \"usage\": 0,\n    \"selector\": 0,\n    \"matching_type\": 1\n  },\n  \"meta\": {\n    \"auto_added\": true,\n    \"source\": \"primary\"\n  }\n}",
 				"title": "TLSA Record"
 			},
 			{
@@ -3846,6 +4208,21 @@
 						"type": "boolean",
 						"example": "false",
 						"description": "Whether the record is receiving the performance and security benefits of Cloudflare."
+					},
+					"comment": {
+						"type": "string",
+						"example": "\"Domain verification record\"",
+						"description": "Comments or notes about the DNS record. This field has no effect on DNS responses."
+					},
+					"tags": {
+						"type": "array",
+						"example": "[\n  \"owner:dns-team\"\n]",
+						"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
+						"items": {
+							"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
+							"type": "string",
+							"example": "owner:dns-team"
+						}
 					},
 					"ttl": {
 						"type": "number",
@@ -3957,6 +4334,8 @@
 					"content",
 					"proxiable",
 					"proxied",
+					"comment",
+					"tags",
 					"ttl",
 					"locked",
 					"zone_id",
@@ -3966,11 +4345,11 @@
 					"meta"
 				],
 				"objects": [],
-				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"type\": \"URI\",\n  \"name\": \"example.com\",\n  \"proxiable\": true,\n  \"proxied\": false,\n  \"ttl\": 3600,\n  \"locked\": false,\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"zone_name\": \"example.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"data\": {\n    \"weight\": 20,\n    \"content\": \"http://example.com/example.html\"\n  },\n  \"meta\": {\n    \"auto_added\": true,\n    \"source\": \"primary\"\n  },\n  \"priority\": 10\n}",
+				"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"type\": \"URI\",\n  \"name\": \"example.com\",\n  \"proxiable\": true,\n  \"proxied\": false,\n  \"comment\": \"Domain verification record\",\n  \"tags\": [\n    \"owner:dns-team\"\n  ],\n  \"ttl\": 3600,\n  \"locked\": false,\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"zone_name\": \"example.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"data\": {\n    \"weight\": 20,\n    \"content\": \"http://example.com/example.html\"\n  },\n  \"meta\": {\n    \"auto_added\": true,\n    \"source\": \"primary\"\n  },\n  \"priority\": 10\n}",
 				"title": "URI Record"
 			}
 		],
-		"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"type\": \"A\",\n  \"name\": \"example.com\",\n  \"content\": \"198.51.100.4\",\n  \"proxiable\": true,\n  \"proxied\": false,\n  \"ttl\": 3600,\n  \"locked\": false,\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"zone_name\": \"example.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"data\": {},\n  \"meta\": {\n    \"auto_added\": true,\n    \"source\": \"primary\"\n  }\n}",
+		"example": "{\n  \"id\": \"372e67954025e0ba6aaa6d586b9e0b59\",\n  \"type\": \"A\",\n  \"name\": \"example.com\",\n  \"content\": \"198.51.100.4\",\n  \"proxiable\": true,\n  \"proxied\": false,\n  \"comment\": \"Domain verification record\",\n  \"tags\": [\n    \"owner:dns-team\"\n  ],\n  \"ttl\": 3600,\n  \"locked\": false,\n  \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n  \"zone_name\": \"example.com\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"data\": {},\n  \"meta\": {\n    \"auto_added\": true,\n    \"source\": \"primary\"\n  }\n}",
 		"which_of": "oneOf",
 		"title": "DNS Records for a Zone",
 		"description": "Documentation for Cloudflare DNS records."
