@@ -4980,8 +4980,9 @@ components:
         description: Source colo name.
     comment:
       type: string
-      description: Optional remark describing the route.
-      example: Example comment for this route.
+      description: Comments or notes about the DNS record. This field has no effect
+        on DNS responses.
+      example: Domain verification record
     common_components-schemas-created_on:
       type: string
       format: date-time
@@ -5190,6 +5191,10 @@ components:
       type: string
       description: Scope colo name.
       example: den01
+    components-schemas-comment:
+      type: string
+      description: Optional remark describing the virtual network.
+      example: Staging VPC for data science
     components-schemas-config:
       type: object
       description: The tunnel configuration and ingress rules in JSON format. For
@@ -8376,7 +8381,7 @@ components:
           result:
             properties:
               uid:
-                $ref: '#/components/schemas/Cloudflare Client API_identifier'
+                $ref: '#/components/schemas/identifier'
               uploadURL:
                 type: string
                 description: The URL an unauthenticated upload can use for a single
@@ -8548,6 +8553,8 @@ components:
       - modified_on
     dns-record_components-schemas-base:
       properties:
+        comment:
+          $ref: '#/components/schemas/comment'
         content:
           $ref: '#/components/schemas/content'
         created_on:
@@ -8596,6 +8603,8 @@ components:
           readOnly: true
         proxied:
           $ref: '#/components/schemas/proxied'
+        tags:
+          $ref: '#/components/schemas/tags'
         ttl:
           $ref: '#/components/schemas/ttl'
         type:
@@ -11004,7 +11013,11 @@ components:
               id:
                 $ref: '#/components/schemas/schemas-uuid'
     identifier:
-      example: 699d98642c564d2e855e9661899b7252
+      type: string
+      description: A Cloudflare-generated unique identifier for a media item.
+      example: ea95132c15732412d22c1476fa83f27a
+      readOnly: true
+      maxLength: 32
     identity:
       type: string
       description: The wirefilter expression to be used for identity matching.
@@ -13838,8 +13851,10 @@ components:
                   $ref: '#/components/schemas/schemas-route'
     name:
       type: string
-      description: The name of your Zero Trust organization.
-      example: Widget Corps Internal Applications
+      description: A short description of the watermark profile.
+      default: ""
+      example: Marketing Videos
+      readOnly: true
     name_servers:
       type: array
       description: List of name servers.
@@ -14420,7 +14435,7 @@ components:
         login_design:
           $ref: '#/components/schemas/login_design'
         name:
-          $ref: '#/components/schemas/name'
+          $ref: '#/components/schemas/Cloudflare Client API_name'
         updated_at:
           $ref: '#/components/schemas/timestamp'
     organizations_components-schemas-identifier:
@@ -15217,7 +15232,7 @@ components:
           example: "2020-01-01T08:00:00Z"
     pcaps_ownership_single_response:
       allOf:
-      - $ref: '#/components/schemas/api-response-collection'
+      - $ref: '#/components/schemas/api-response-common'
       - properties:
           result:
             $ref: '#/components/schemas/pcaps_ownership_response'
@@ -18982,8 +18997,8 @@ components:
       example: DFW
     schemas-comment:
       type: string
-      description: Optional remark describing the virtual network.
-      example: Staging VPC for data science
+      description: Optional remark describing the route.
+      example: Example comment for this route.
     schemas-component_values:
       type: array
       description: Array of available components values for the plan.
@@ -22205,6 +22220,15 @@ components:
       description: Whether to allow the user to turn off the WARP switch and disconnect
         the client.
       example: true
+    tags:
+      type: array
+      description: Custom tags for the DNS record. This field has no effect on DNS
+        responses.
+      items:
+        type: string
+        description: Individual tag of the form name:value (the name must consist
+          of only letters, numbers, underscores and hyphens)
+        example: owner:dns-team
     tail-response:
       allOf:
       - $ref: '#/components/schemas/api-response-common'
@@ -22281,7 +22305,7 @@ components:
       - created_at
       properties:
         comment:
-          $ref: '#/components/schemas/comment'
+          $ref: '#/components/schemas/schemas-comment'
         created_at:
           description: Timestamp of when the route was created.
         deleted_at:
@@ -24027,7 +24051,7 @@ components:
         thumbnailTimestampPct:
           $ref: '#/components/schemas/thumbnailTimestampPct'
         uid:
-          $ref: '#/components/schemas/Cloudflare Client API_identifier'
+          $ref: '#/components/schemas/identifier'
         uploadExpiry:
           $ref: '#/components/schemas/oneTimeUploadExpiry'
         uploaded:
@@ -24090,7 +24114,7 @@ components:
       - created_at
       properties:
         comment:
-          $ref: '#/components/schemas/schemas-comment'
+          $ref: '#/components/schemas/components-schemas-comment'
         created_at:
           description: Timestamp of when the virtual network was created.
         deleted_at:
@@ -24353,7 +24377,7 @@ components:
           description: The image file to upload.
           example: '@/Users/rchen/Downloads/watermark.png'
         name:
-          $ref: '#/components/schemas/Cloudflare Client API_name'
+          $ref: '#/components/schemas/name'
         opacity:
           $ref: '#/components/schemas/opacity'
         padding:
@@ -24411,7 +24435,7 @@ components:
         height:
           $ref: '#/components/schemas/height'
         name:
-          $ref: '#/components/schemas/Cloudflare Client API_name'
+          $ref: '#/components/schemas/name'
         opacity:
           $ref: '#/components/schemas/opacity'
         padding:
@@ -35531,7 +35555,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_identifier'
+          $ref: '#/components/schemas/identifier'
       - name: account_identifier
         in: path
         required: true
@@ -35573,7 +35597,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_identifier'
+          $ref: '#/components/schemas/identifier'
       - name: account_identifier
         in: path
         required: true
@@ -35629,7 +35653,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_identifier'
+          $ref: '#/components/schemas/identifier'
       - name: account_identifier
         in: path
         required: true
@@ -35672,7 +35696,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_identifier'
+          $ref: '#/components/schemas/identifier'
       - name: account_identifier
         in: path
         required: true
@@ -35708,7 +35732,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_identifier'
+          $ref: '#/components/schemas/identifier'
       - name: account_identifier
         in: path
         required: true
@@ -37191,7 +37215,7 @@ paths:
               type: object
               properties:
                 comment:
-                  $ref: '#/components/schemas/comment'
+                  $ref: '#/components/schemas/schemas-comment'
                 network:
                   description: The new IPv4 or IPv6 range of this route, in CIDR notation.
                 tunnel_id:
@@ -37245,7 +37269,7 @@ paths:
               - tunnel_id
               properties:
                 comment:
-                  $ref: '#/components/schemas/comment'
+                  $ref: '#/components/schemas/schemas-comment'
                 tunnel_id:
                   $ref: '#/components/schemas/tunnel_id'
                 virtual_network_id:
@@ -37323,7 +37347,7 @@ paths:
               - name
               properties:
                 comment:
-                  $ref: '#/components/schemas/schemas-comment'
+                  $ref: '#/components/schemas/components-schemas-comment'
                 is_default:
                   $ref: '#/components/schemas/is_default_network'
                 name:
@@ -37413,7 +37437,7 @@ paths:
               type: object
               properties:
                 comment:
-                  $ref: '#/components/schemas/schemas-comment'
+                  $ref: '#/components/schemas/components-schemas-comment'
                 is_default_network:
                   $ref: '#/components/schemas/is_default_network'
                 name:
@@ -67538,6 +67562,8 @@ paths:
               - content
               - ttl
               properties:
+                comment:
+                  $ref: '#/components/schemas/comment'
                 content:
                   $ref: '#/components/schemas/content'
                 name:
@@ -67546,6 +67572,8 @@ paths:
                   $ref: '#/components/schemas/priority'
                 proxied:
                   $ref: '#/components/schemas/proxied'
+                tags:
+                  $ref: '#/components/schemas/tags'
                 ttl:
                   $ref: '#/components/schemas/ttl'
                 type:
@@ -67677,12 +67705,16 @@ paths:
             schema:
               type: object
               properties:
+                comment:
+                  $ref: '#/components/schemas/comment'
                 content:
                   $ref: '#/components/schemas/content'
                 name:
                   $ref: '#/components/schemas/dns-record_components-schemas-name'
                 proxied:
                   $ref: '#/components/schemas/proxied'
+                tags:
+                  $ref: '#/components/schemas/tags'
                 ttl:
                   $ref: '#/components/schemas/ttl'
                 type:
@@ -67734,12 +67766,16 @@ paths:
               - content
               - ttl
               properties:
+                comment:
+                  $ref: '#/components/schemas/comment'
                 content:
                   $ref: '#/components/schemas/content'
                 name:
                   $ref: '#/components/schemas/dns-record_components-schemas-name'
                 proxied:
                   $ref: '#/components/schemas/proxied'
+                tags:
+                  $ref: '#/components/schemas/tags'
                 ttl:
                   $ref: '#/components/schemas/ttl'
                 type:

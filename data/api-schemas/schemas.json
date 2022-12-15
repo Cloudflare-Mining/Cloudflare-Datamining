@@ -7305,8 +7305,8 @@
 				"type": "array"
 			},
 			"comment": {
-				"description": "Optional remark describing the route.",
-				"example": "Example comment for this route.",
+				"description": "Comments or notes about the DNS record. This field has no effect on DNS responses.",
+				"example": "Domain verification record",
 				"type": "string"
 			},
 			"common_components-schemas-created_on": {
@@ -7594,6 +7594,11 @@
 			"components-schemas-colo_name": {
 				"description": "Scope colo name.",
 				"example": "den01",
+				"type": "string"
+			},
+			"components-schemas-comment": {
+				"description": "Optional remark describing the virtual network.",
+				"example": "Staging VPC for data science",
 				"type": "string"
 			},
 			"components-schemas-config": {
@@ -12193,7 +12198,7 @@
 							"result": {
 								"properties": {
 									"uid": {
-										"$ref": "#/components/schemas/Cloudflare Client API_identifier"
+										"$ref": "#/components/schemas/identifier"
 									},
 									"uploadURL": {
 										"description": "The URL an unauthenticated upload can use for a single `HTTP POST multipart/form-data` request.",
@@ -12458,6 +12463,9 @@
 			},
 			"dns-record_components-schemas-base": {
 				"properties": {
+					"comment": {
+						"$ref": "#/components/schemas/comment"
+					},
 					"content": {
 						"$ref": "#/components/schemas/content"
 					},
@@ -12516,6 +12524,9 @@
 					},
 					"proxied": {
 						"$ref": "#/components/schemas/proxied"
+					},
+					"tags": {
+						"$ref": "#/components/schemas/tags"
 					},
 					"ttl": {
 						"$ref": "#/components/schemas/ttl"
@@ -16092,7 +16103,11 @@
 				]
 			},
 			"identifier": {
-				"example": "699d98642c564d2e855e9661899b7252"
+				"description": "A Cloudflare-generated unique identifier for a media item.",
+				"example": "ea95132c15732412d22c1476fa83f27a",
+				"maxLength": 32,
+				"readOnly": true,
+				"type": "string"
 			},
 			"identity": {
 				"description": "The wirefilter expression to be used for identity matching.",
@@ -19993,8 +20008,10 @@
 				]
 			},
 			"name": {
-				"description": "The name of your Zero Trust organization.",
-				"example": "Widget Corps Internal Applications",
+				"default": "",
+				"description": "A short description of the watermark profile.",
+				"example": "Marketing Videos",
+				"readOnly": true,
 				"type": "string"
 			},
 			"name_servers": {
@@ -20799,7 +20816,7 @@
 						"$ref": "#/components/schemas/login_design"
 					},
 					"name": {
-						"$ref": "#/components/schemas/name"
+						"$ref": "#/components/schemas/Cloudflare Client API_name"
 					},
 					"updated_at": {
 						"$ref": "#/components/schemas/timestamp"
@@ -21928,7 +21945,7 @@
 			"pcaps_ownership_single_response": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/api-response-collection"
+						"$ref": "#/components/schemas/api-response-common"
 					},
 					{
 						"properties": {
@@ -27470,8 +27487,8 @@
 				"type": "string"
 			},
 			"schemas-comment": {
-				"description": "Optional remark describing the virtual network.",
-				"example": "Staging VPC for data science",
+				"description": "Optional remark describing the route.",
+				"example": "Example comment for this route.",
 				"type": "string"
 			},
 			"schemas-component_values": {
@@ -32000,6 +32017,15 @@
 				"example": true,
 				"type": "boolean"
 			},
+			"tags": {
+				"description": "Custom tags for the DNS record. This field has no effect on DNS responses.",
+				"items": {
+					"description": "Individual tag of the form name:value (the name must consist of only letters, numbers, underscores and hyphens)",
+					"example": "owner:dns-team",
+					"type": "string"
+				},
+				"type": "array"
+			},
 			"tail-response": {
 				"allOf": [
 					{
@@ -32104,7 +32130,7 @@
 			"teamnet": {
 				"properties": {
 					"comment": {
-						"$ref": "#/components/schemas/comment"
+						"$ref": "#/components/schemas/schemas-comment"
 					},
 					"created_at": {
 						"description": "Timestamp of when the route was created."
@@ -34569,7 +34595,7 @@
 						"$ref": "#/components/schemas/thumbnailTimestampPct"
 					},
 					"uid": {
-						"$ref": "#/components/schemas/Cloudflare Client API_identifier"
+						"$ref": "#/components/schemas/identifier"
 					},
 					"uploadExpiry": {
 						"$ref": "#/components/schemas/oneTimeUploadExpiry"
@@ -34648,7 +34674,7 @@
 			"virtual-network": {
 				"properties": {
 					"comment": {
-						"$ref": "#/components/schemas/schemas-comment"
+						"$ref": "#/components/schemas/components-schemas-comment"
 					},
 					"created_at": {
 						"description": "Timestamp of when the virtual network was created."
@@ -35067,7 +35093,7 @@
 						"type": "string"
 					},
 					"name": {
-						"$ref": "#/components/schemas/Cloudflare Client API_name"
+						"$ref": "#/components/schemas/name"
 					},
 					"opacity": {
 						"$ref": "#/components/schemas/opacity"
@@ -35150,7 +35176,7 @@
 						"$ref": "#/components/schemas/height"
 					},
 					"name": {
-						"$ref": "#/components/schemas/Cloudflare Client API_name"
+						"$ref": "#/components/schemas/name"
 					},
 					"opacity": {
 						"$ref": "#/components/schemas/opacity"
@@ -55847,7 +55873,7 @@
 						"name": "identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					},
 					{
@@ -55921,7 +55947,7 @@
 						"name": "identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					},
 					{
@@ -56023,7 +56049,7 @@
 						"name": "identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					},
 					{
@@ -56099,7 +56125,7 @@
 						"name": "identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					},
 					{
@@ -56163,7 +56189,7 @@
 						"name": "identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					},
 					{
@@ -57328,7 +57354,7 @@
 							"schema": {
 								"properties": {
 									"comment": {
-										"$ref": "#/components/schemas/comment"
+										"$ref": "#/components/schemas/schemas-comment"
 									},
 									"network": {
 										"description": "The new IPv4 or IPv6 range of this route, in CIDR notation."
@@ -57416,7 +57442,7 @@
 							"schema": {
 								"properties": {
 									"comment": {
-										"$ref": "#/components/schemas/comment"
+										"$ref": "#/components/schemas/schemas-comment"
 									},
 									"tunnel_id": {
 										"$ref": "#/components/schemas/tunnel_id"
@@ -57554,7 +57580,7 @@
 							"schema": {
 								"properties": {
 									"comment": {
-										"$ref": "#/components/schemas/schemas-comment"
+										"$ref": "#/components/schemas/components-schemas-comment"
 									},
 									"is_default": {
 										"$ref": "#/components/schemas/is_default_network"
@@ -57714,7 +57740,7 @@
 							"schema": {
 								"properties": {
 									"comment": {
-										"$ref": "#/components/schemas/schemas-comment"
+										"$ref": "#/components/schemas/components-schemas-comment"
 									},
 									"is_default_network": {
 										"$ref": "#/components/schemas/is_default_network"
@@ -105341,6 +105367,9 @@
 						"application/json": {
 							"schema": {
 								"properties": {
+									"comment": {
+										"$ref": "#/components/schemas/comment"
+									},
 									"content": {
 										"$ref": "#/components/schemas/content"
 									},
@@ -105352,6 +105381,9 @@
 									},
 									"proxied": {
 										"$ref": "#/components/schemas/proxied"
+									},
+									"tags": {
+										"$ref": "#/components/schemas/tags"
 									},
 									"ttl": {
 										"$ref": "#/components/schemas/ttl"
@@ -105859,6 +105891,9 @@
 						"application/json": {
 							"schema": {
 								"properties": {
+									"comment": {
+										"$ref": "#/components/schemas/comment"
+									},
 									"content": {
 										"$ref": "#/components/schemas/content"
 									},
@@ -105867,6 +105902,9 @@
 									},
 									"proxied": {
 										"$ref": "#/components/schemas/proxied"
+									},
+									"tags": {
+										"$ref": "#/components/schemas/tags"
 									},
 									"ttl": {
 										"$ref": "#/components/schemas/ttl"
@@ -105960,6 +105998,9 @@
 						"application/json": {
 							"schema": {
 								"properties": {
+									"comment": {
+										"$ref": "#/components/schemas/comment"
+									},
 									"content": {
 										"$ref": "#/components/schemas/content"
 									},
@@ -105968,6 +106009,9 @@
 									},
 									"proxied": {
 										"$ref": "#/components/schemas/proxied"
+									},
+									"tags": {
+										"$ref": "#/components/schemas/tags"
 									},
 									"ttl": {
 										"$ref": "#/components/schemas/ttl"
