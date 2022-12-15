@@ -1599,6 +1599,12 @@ components:
       - name
       - data
       - priority
+    Zonekeeper Public API_identifier:
+      type: string
+      description: Identifier
+      example: 023e105f4ecef8ad9ca31a8372d0c353
+      readOnly: true
+      maxLength: 32
     access-policy:
       oneOf:
       - $ref: '#/components/schemas/policy_with_permission_groups'
@@ -10998,11 +11004,7 @@ components:
               id:
                 $ref: '#/components/schemas/schemas-uuid'
     identifier:
-      type: string
-      description: Identifier
-      example: 023e105f4ecef8ad9ca31a8372d0c353
-      readOnly: true
-      maxLength: 32
+      example: 699d98642c564d2e855e9661899b7252
     identity:
       type: string
       description: The wirefilter expression to be used for identity matching.
@@ -13836,10 +13838,8 @@ components:
                   $ref: '#/components/schemas/schemas-route'
     name:
       type: string
-      description: A short description of the watermark profile.
-      default: ""
-      example: Marketing Videos
-      readOnly: true
+      description: The name of your Zero Trust organization.
+      example: Widget Corps Internal Applications
     name_servers:
       type: array
       description: List of name servers.
@@ -14420,7 +14420,7 @@ components:
         login_design:
           $ref: '#/components/schemas/login_design'
         name:
-          $ref: '#/components/schemas/Cloudflare Client API_name'
+          $ref: '#/components/schemas/name'
         updated_at:
           $ref: '#/components/schemas/timestamp'
     organizations_components-schemas-identifier:
@@ -24353,7 +24353,7 @@ components:
           description: The image file to upload.
           example: '@/Users/rchen/Downloads/watermark.png'
         name:
-          $ref: '#/components/schemas/name'
+          $ref: '#/components/schemas/Cloudflare Client API_name'
         opacity:
           $ref: '#/components/schemas/opacity'
         padding:
@@ -24411,7 +24411,7 @@ components:
         height:
           $ref: '#/components/schemas/height'
         name:
-          $ref: '#/components/schemas/name'
+          $ref: '#/components/schemas/Cloudflare Client API_name'
         opacity:
           $ref: '#/components/schemas/opacity'
         padding:
@@ -31977,7 +31977,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/Cloudflare Client API_identifier'
       responses:
         4xx:
           description: Get projects response failure
@@ -32008,7 +32008,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/Cloudflare Client API_identifier'
       requestBody:
         required: true
         content:
@@ -32051,7 +32051,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/Cloudflare Client API_identifier'
       requestBody:
         required: true
         content:
@@ -32099,7 +32099,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/Cloudflare Client API_identifier'
       responses:
         4xx:
           description: Get project response failure
@@ -32136,7 +32136,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/Cloudflare Client API_identifier'
       requestBody:
         required: true
         content:
@@ -32179,7 +32179,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/Cloudflare Client API_identifier'
       responses:
         4xx:
           description: Get deployments response failure
@@ -32216,7 +32216,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/Cloudflare Client API_identifier'
       requestBody:
         required: true
         content:
@@ -32252,7 +32252,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/Cloudflare Client API_identifier'
       - name: project_name
         in: path
         required: true
@@ -32262,7 +32262,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/Cloudflare Client API_identifier'
       requestBody:
         required: true
         content:
@@ -32305,7 +32305,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/Cloudflare Client API_identifier'
       - name: project_name
         in: path
         required: true
@@ -32315,7 +32315,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/Cloudflare Client API_identifier'
       responses:
         4xx:
           description: Get deployment info response failure
@@ -32347,7 +32347,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/Cloudflare Client API_identifier'
       - name: project_name
         in: path
         required: true
@@ -32357,7 +32357,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/Cloudflare Client API_identifier'
       responses:
         4xx:
           description: Get deployment logs response failure
@@ -32389,7 +32389,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/Cloudflare Client API_identifier'
       - name: project_name
         in: path
         required: true
@@ -32399,7 +32399,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/Cloudflare Client API_identifier'
       requestBody:
         required: true
         content:
@@ -32436,7 +32436,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/Cloudflare Client API_identifier'
       - name: project_name
         in: path
         required: true
@@ -32446,7 +32446,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/Cloudflare Client API_identifier'
       requestBody:
         required: true
         content:
@@ -32487,7 +32487,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/Cloudflare Client API_identifier'
       responses:
         4xx:
           description: Get domains response failure
@@ -32523,7 +32523,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/Cloudflare Client API_identifier'
       requestBody:
         required: true
         content:
@@ -32571,7 +32571,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/Cloudflare Client API_identifier'
       requestBody:
         required: true
         content:
@@ -32624,7 +32624,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/Cloudflare Client API_identifier'
       responses:
         4xx:
           description: Get domain response failure
@@ -32665,7 +32665,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/Cloudflare Client API_identifier'
       requestBody:
         required: true
         content:
@@ -63664,7 +63664,7 @@ paths:
         description: Zone ID
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/Zonekeeper Public API_identifier'
       responses:
         4xx:
           description: Client Error
@@ -63686,7 +63686,7 @@ paths:
                       type: object
                       properties:
                         id:
-                          $ref: '#/components/schemas/identifier'
+                          $ref: '#/components/schemas/Zonekeeper Public API_identifier'
   /zones/{zone_id}/api_gateway/configuration:
     get:
       tags:
