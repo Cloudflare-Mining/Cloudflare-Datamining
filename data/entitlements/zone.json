@@ -252,6 +252,18 @@
 		}
 	},
 	{
+		"id": "endpoint_abuse_detection.sequential_allowed",
+		"feature": {
+			"feature_set": "endpoint_abuse_detection",
+			"id": 910,
+			"key": "endpoint_abuse_detection.sequential_allowed",
+			"name": "Endpoint Abuse Detection - Sequential Detection Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "endpoint_abuse_detection.volumetric_allowed",
 		"feature": {
 			"feature_set": "endpoint_abuse_detection",
