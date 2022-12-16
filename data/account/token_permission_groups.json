@@ -136,6 +136,22 @@
 		]
 	},
 	{
+		"id": "eb56a6953c034b9d97dd838155666f06",
+		"name": "Account API Tokens Read",
+		"description": "Grants read access to account API Tokens",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "5bc3f8b21c554832afc660159ab75fa4",
+		"name": "Account API Tokens Write",
+		"description": "Grants write access to account API Tokens",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
 		"id": "c57ea647ef654b47bc8944fa739b570d",
 		"name": "Account Custom Pages Read",
 		"description": "Grants read access to account custom pages",
@@ -1275,6 +1291,22 @@
 		"id": "0ac90a90249747bca6b047d97f0803e9",
 		"name": "Zone Transform Rules Write",
 		"description": "Grants write access to transform rules at zone level",
+		"scopes": [
+			"com.cloudflare.api.account.zone"
+		]
+	},
+	{
+		"id": "1b1ea24cf0904d33903f0cc7e54e280f",
+		"name": "Zone Versioning Read",
+		"description": "Grants read-only access to Zone Versioning",
+		"scopes": [
+			"com.cloudflare.api.account.zone"
+		]
+	},
+	{
+		"id": "c9915d86fbff46af9dd945c0a882294b",
+		"name": "Zone Versioning Write",
+		"description": "Grants full access to Zone Versioning",
 		"scopes": [
 			"com.cloudflare.api.account.zone"
 		]
