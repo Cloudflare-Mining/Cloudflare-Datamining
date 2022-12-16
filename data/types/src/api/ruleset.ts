@@ -17,7 +17,11 @@ const ZoneRulesetHeaderModificationRuleValue = eg.object({
   headers: eg.record(
     eg.string,
     eg.object({
-      operation: eg.union([eg.literal('set'), eg.literal('remove')]),
+      operation: eg.union([
+        eg.literal('add'),
+        eg.literal('set'),
+        eg.literal('remove')
+      ]),
       expression: eg.string.optional,
       value: eg.string.optional
     })
