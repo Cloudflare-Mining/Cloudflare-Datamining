@@ -3158,7 +3158,7 @@ Commit \u2014 `).concat(Ue.commit)
 					return Promise.all([e.e(8415), e.e(43561), e.e(87122), e.e(67118), e.e(85474), e.e(34744), e.e(1267), e.e(17361), e.e(84209), e.e(71326)]).then(e.bind(e, "../react/pages/home/rulesets/account-firewall-rules/components/MagicFirewallRules.tsx"))
 				}),
 				yu = r().lazy(function() {
-					return Promise.all([e.e(8415), e.e(43561), e.e(87122), e.e(67118), e.e(85474), e.e(34744), e.e(47588), e.e(40440), e.e(1267), e.e(17361), e.e(55700), e.e(84209), e.e(99326), e.e(57727), e.e(3380)]).then(e.bind(e, "../react/pages/home/rulesets/ddos/Main.tsx"))
+					return Promise.all([e.e(8415), e.e(43561), e.e(87122), e.e(67118), e.e(85474), e.e(34744), e.e(47588), e.e(12824), e.e(1267), e.e(17361), e.e(55700), e.e(84209), e.e(99326), e.e(57727), e.e(3380)]).then(e.bind(e, "../react/pages/home/rulesets/ddos/Main.tsx"))
 				}),
 				Po = e("../react/pages/home/rulesets/account-firewall-rules/utils.tsx"),
 				Cs = function(d, W) {
@@ -3198,7 +3198,7 @@ Commit \u2014 `).concat(Ue.commit)
 				},
 				Mu = Il,
 				Nl = r().lazy(function() {
-					return Promise.all([e.e(8415), e.e(43561), e.e(87122), e.e(67118), e.e(85474), e.e(34744), e.e(47588), e.e(12824), e.e(1267), e.e(17361), e.e(55700), e.e(84209), e.e(99326), e.e(72439), e.e(57727), e.e(55203)]).then(e.bind(e, "../react/pages/home/rulesets/account-firewall-rules/Main.tsx"))
+					return Promise.all([e.e(8415), e.e(43561), e.e(87122), e.e(67118), e.e(85474), e.e(34744), e.e(47588), e.e(40440), e.e(1267), e.e(17361), e.e(55700), e.e(84209), e.e(99326), e.e(72439), e.e(57727), e.e(55203)]).then(e.bind(e, "../react/pages/home/rulesets/account-firewall-rules/Main.tsx"))
 				}),
 				hu = function(d) {
 					return d ? "waf" : "custom"
@@ -7258,12 +7258,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				e.g.build = yd({}, {
-					branch: "release-1671203011",
+					branch: "sui/BILL-16800-hotfix-hide-error-alert",
 					isReleaseCandidate: "true",
-					commit: "13cda6ea3c489e3b63ce53ae6c0090ceb3e94ba2",
+					commit: "d394f6429a4ae489af8ab34057b31cb7c7487bd8",
 					env: "production",
-					builtAt: 1671203388328,
-					dashVersion: "e929bda8e33b46838d29149822c7754604f7d342",
+					builtAt: 1671213838289,
+					dashVersion: "eb914728198c62fba6de998db56f2237881812bc",
 					versions: {
 						"@cloudflare/app-dash": "25.116.3",
 						node: "16.16.0",
@@ -25849,7 +25849,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 													status: "OPEN"
 												},
 												hideErrorAlert: !0
-											}), this.props.fetchBillingBadDebt(this.props.accountId), this.props.fetchBillingAccount(this.props.accountId)]);
+											}), this.props.fetchBillingBadDebt(this.props.accountId, {
+												hideErrorAlert: !0
+											}), this.props.fetchBillingAccount(this.props.accountId)]);
 										case 5:
 											Le.next = 9;
 											break;
@@ -86374,4 +86376,4 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 	}
 ]);
 
-//# sourceMappingURL=8fc557098e41fae60aaa.js.map
+//# sourceMappingURL=05168e96dde4dd8c8f77.js.map
