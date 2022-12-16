@@ -29,6 +29,7 @@
 </ul>
 <p><strong>Bonus Points</strong></p>
 <ul>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Familiar with traffic generation equipment such as Spirent or Ixia is a plus</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with white-box network switches and open source projects such as </span><a href="https://www.openswitch.net/"><span style="font-weight: 400;">openswitch.net</span></a></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with different network operating systems such as Junos, NX-OS, EOS, SONiC, ArcOS, and Cumulus</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Operational experience as a network engineer in a hyperscale cloud infrastructure</span></li>
