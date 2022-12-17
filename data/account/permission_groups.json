@@ -13,6 +13,20 @@
 		"modified_on": "2020-10-13T12:42:59.660479Z",
 		"permissions": [
 			{
+				"id": "b0ef22d48ef645f9b04d7f86818387c3",
+				"key": "com.cloudflare.api.account.zone.versioning.*",
+				"attributes": {
+					"legacy_name": "#zone_versioning:read,#zone_versioning:edit"
+				}
+			},
+			{
+				"id": "e53f82c8c46a460f9101905e8ae0251a",
+				"key": "com.cloudflare.api.account.zone.ssl.managed-client-certificates.edit",
+				"attributes": {
+					"legacy_name": "#ssl:edit"
+				}
+			},
+			{
 				"id": "0c1bcad524554405bfa2e65416b367fc",
 				"key": "com.cloudflare.api.account.request-tracer.read"
 			},
@@ -3939,6 +3953,20 @@
 		"created_on": "2020-10-13T12:42:59.660479Z",
 		"modified_on": "2020-10-13T12:42:59.660479Z",
 		"permissions": [
+			{
+				"id": "1ed710a15f1a4a3db74eba42d7aef44a",
+				"key": "com.cloudflare.api.account.zone.versioning.list",
+				"attributes": {
+					"legacy_name": "#zone_versioning:read"
+				}
+			},
+			{
+				"id": "508958592b2441348995a4db5c7cd990",
+				"key": "com.cloudflare.api.account.zone.versioning.read",
+				"attributes": {
+					"legacy_name": "#zone_versioning:read"
+				}
+			},
 			{
 				"id": "0c1bcad524554405bfa2e65416b367fc",
 				"key": "com.cloudflare.api.account.request-tracer.read"
@@ -14638,6 +14666,13 @@
 		"modified_on": "2020-10-13T12:42:59.660479Z",
 		"permissions": [
 			{
+				"id": "e53f82c8c46a460f9101905e8ae0251a",
+				"key": "com.cloudflare.api.account.zone.ssl.managed-client-certificates.edit",
+				"attributes": {
+					"legacy_name": "#ssl:edit"
+				}
+			},
+			{
 				"id": "d3b34edcddf34fef8eaf30556b47de14",
 				"key": "com.cloudflare.api.account.ssl.mtls-certificates.read",
 				"attributes": {
@@ -15623,6 +15658,20 @@
 		"created_on": "2020-10-13T12:42:59.660479Z",
 		"modified_on": "2020-10-13T12:42:59.660479Z",
 		"permissions": [
+			{
+				"id": "b0ef22d48ef645f9b04d7f86818387c3",
+				"key": "com.cloudflare.api.account.zone.versioning.*",
+				"attributes": {
+					"legacy_name": "#zone_versioning:read,#zone_versioning:edit"
+				}
+			},
+			{
+				"id": "e53f82c8c46a460f9101905e8ae0251a",
+				"key": "com.cloudflare.api.account.zone.ssl.managed-client-certificates.edit",
+				"attributes": {
+					"legacy_name": "#ssl:edit"
+				}
+			},
 			{
 				"id": "0c1bcad524554405bfa2e65416b367fc",
 				"key": "com.cloudflare.api.account.request-tracer.read"
