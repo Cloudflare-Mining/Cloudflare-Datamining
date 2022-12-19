@@ -27,7 +27,8 @@
 					"svSE": "No Page for Locale",
 					"viVN": "No Page for Locale",
 					"trTR": "No Page for Locale",
-					"zhHansCN": "English for Locale"
+					"zhHansCN": "English for Locale",
+					"plPL": null
 				},
 				"relativePath": "learning/insights-shadow-it",
 				"topNavOptions": "default",
@@ -59,7 +60,39 @@
 				"psaBanner": null,
 				"customTopNav": null,
 				"headerLogo": null,
-				"proactivePopup": null,
+				"proactivePopup": {
+					"contentTypeId": "proactivePopup",
+					"contentfulId": "1CsLKj1fesYJdTYADz0tWP",
+					"headerText": "Subscribe to Trending Stories",
+					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
+					"marketoForm": {
+						"contentTypeId": "marketoEmbeddedForm",
+						"contentfulId": "55VRCxLgGVxT4XfkaKSPQ7",
+						"bladeName": "Trending Stories - Form: Proactive Pop-up - Subscribe",
+						"backgroundColor": "white",
+						"marketoFormId": 2459,
+						"marketoFormLeadSource": "Inbound - Blog Subscriber",
+						"marketoFormLeadSourceDetail": "[BRD] Q1'22 WEB - GBL - Brand Gen Newsletter Subscription",
+						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
+						"marketoFormDefaultComment": null,
+						"showCommentBox": false,
+						"marketoFormThankYouText": null,
+						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
+						"marketoFormPdfDownload": null,
+						"marketoFormPdfDownloadI18n": null,
+						"marketoFormAssetDownloadButtonText": null,
+						"marketoFormSuccessRedirectUrl": null,
+						"sendAdRoll": null,
+						"meta_adRollCustomSegment": null,
+						"enableSandbox": null,
+						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonColor": "orange",
+						"enableEmailVerification": null,
+						"disableEnterpriseEmailNotification": null,
+						"enableRingout": null
+					},
+					"timeDelay": 30000
+				},
 				"template": null,
 				"relatedBlades": [
 					{
@@ -380,6 +413,16 @@
 											]
 										},
 										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
 											"nodeType": "heading-4",
 											"data": {
 												"target": null,
@@ -593,7 +636,7 @@
 													"nodeType": "hyperlink",
 													"data": {
 														"target": null,
-														"uri": "https://www.ncsc.govt.nz/assets/NCSC-Documents/Perception-Gaps-in-Cyber-Resilience.pdf"
+														"uri": "https://www.businesswire.com/news/home/20131204005273/en/McAfee-Finds-Eighty-Percent-of-Employees-Use-Unapproved-Apps-at-Work"
 													},
 													"value": null,
 													"marks": null,
@@ -673,6 +716,16 @@
 													"content": null
 												}
 											]
+										},
+										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
 										},
 										{
 											"nodeType": "heading-4",
@@ -949,6 +1002,16 @@
 											]
 										},
 										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
 											"nodeType": "heading-4",
 											"data": {
 												"target": null,
@@ -1045,7 +1108,7 @@
 																	"nodeType": "hyperlink",
 																	"data": {
 																		"target": null,
-																		"uri": "https://blog.cloudflare.com/introducing-shadow-it-discovery/"
+																		"uri": "https://www.cloudflare.com/learning/access-management/what-is-shadow-it/ "
 																	},
 																	"value": null,
 																	"marks": null,
@@ -1169,6 +1232,16 @@
 													]
 												}
 											]
+										},
+										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
 										},
 										{
 											"nodeType": "heading-4",
@@ -1608,7 +1681,7 @@
 																	"nodeType": "hyperlink",
 																	"data": {
 																		"target": null,
-																		"uri": "https://www.cloudflare.com/lp/zero_trust_for_saas/"
+																		"uri": "https://www.cloudflare.com/lp/zero-trust-for-saas/"
 																	},
 																	"value": null,
 																	"marks": null,
@@ -1917,7 +1990,7 @@
 													"nodeType": "hyperlink",
 													"data": {
 														"target": null,
-														"uri": "https://www.cloudflare.com/lp/zero_trust_for_saas/"
+														"uri": "https://www.cloudflare.com/lp/zero-trust-for-saas/"
 													},
 													"value": null,
 													"marks": null,
@@ -1969,7 +2042,7 @@
 															"elementName": "Insights - The growing cost of shadow IT - Dive Deeper - left - button",
 															"standardText": null,
 															"text": "Get the solution brief!",
-															"url": "https://www.cloudflare.com/lp/zero_trust_for_saas/",
+															"url": "https://www.cloudflare.com/lp/zero-trust-for-saas/",
 															"loggedInUrl": null,
 															"modal": null,
 															"openInNewTab": true,
