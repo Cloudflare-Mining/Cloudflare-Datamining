@@ -1,6 +1,7 @@
 {
 	"name": "cfdata-lol",
 	"version": "0.0.1",
+	"type": "module",
 	"private": true,
 	"scripts": {
 		"astro": "astro",
@@ -12,6 +13,7 @@
 		"start": "astro dev"
 	},
 	"devDependencies": {
+		"@astrojs/cloudflare": "5.0.0",
 		"@astrojs/react": "1.2.2",
 		"@astrojs/sitemap": "1.0.0",
 		"@astrojs/tailwind": "2.1.3",

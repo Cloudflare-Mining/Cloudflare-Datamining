@@ -1,4 +1,4 @@
-import {defineConfig} from 'astro/config';
+import { defineConfig } from "astro/config";
 import robotsTxt from "astro-robots-txt";
 import tailwind from "@astrojs/tailwind";
 
@@ -9,17 +9,22 @@ import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
+import cloudflare from "@astrojs/cloudflare";
+
+// https://astro.build/config
 export default defineConfig({
-	site: 'https://cfdata.lol',
+	site: "https://cfdata.lol",
 	integrations: [
 		tailwind(),
 		sitemap(),
 		robotsTxt({
 			sitemap: true,
-			policy: [{
-				userAgent: '*',
-				allow: '/',
-			}],
+			policy: [
+				{
+					userAgent: "*",
+					allow: "/",
+				},
+			],
 		}),
 		react(),
 	],
@@ -30,8 +35,13 @@ export default defineConfig({
 					entryFileNames: "assets/[name].[hash].js",
 				},
 			},
-			assetsInlineLimit: '0',
+			assetsInlineLimit: "0",
 			cssCodeSplit: false,
 		},
+	},
+	output: "server",
+	adapter: cloudflare(),
+	experimental: {
+		prerender: true,
 	},
 });
