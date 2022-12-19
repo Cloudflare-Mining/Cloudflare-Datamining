@@ -75857,10 +75857,13 @@
 								"7d",
 								"14d",
 								"28d",
+								"90d",
+								"180d",
 								"1dControl",
 								"7dControl",
 								"14dControl",
-								"28dControl"
+								"28dControl",
+								"90dControl"
 							],
 							"type": "string"
 						}
@@ -75891,8 +75894,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -76058,10 +76061,13 @@
 								"7d",
 								"14d",
 								"28d",
+								"90d",
+								"180d",
 								"1dControl",
 								"7dControl",
 								"14dControl",
-								"28dControl"
+								"28dControl",
+								"90dControl"
 							],
 							"type": "string"
 						}
@@ -76092,8 +76098,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -76209,10 +76215,13 @@
 									"7d",
 									"14d",
 									"28d",
+									"90d",
+									"180d",
 									"1dControl",
 									"7dControl",
 									"14dControl",
-									"28dControl"
+									"28dControl",
+									"90dControl"
 								],
 								"type": "string"
 							},
@@ -76277,8 +76286,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -76489,10 +76498,13 @@
 									"7d",
 									"14d",
 									"28d",
+									"90d",
+									"180d",
 									"1dControl",
 									"7dControl",
 									"14dControl",
-									"28dControl"
+									"28dControl",
+									"90dControl"
 								],
 								"type": "string"
 							},
@@ -76532,10 +76544,10 @@
 						"schema": {
 							"items": {
 								"enum": [
-									"udp",
-									"tcp",
-									"icmp",
-									"gre"
+									"UDP",
+									"TCP",
+									"ICMP",
+									"GRE"
 								],
 								"type": "string"
 							},
@@ -76586,8 +76598,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -76778,10 +76790,13 @@
 									"7d",
 									"14d",
 									"28d",
+									"90d",
+									"180d",
 									"1dControl",
 									"7dControl",
 									"14dControl",
-									"28dControl"
+									"28dControl",
+									"90dControl"
 								],
 								"type": "string"
 							},
@@ -76846,8 +76861,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -77075,10 +77090,13 @@
 									"7d",
 									"14d",
 									"28d",
+									"90d",
+									"180d",
 									"1dControl",
 									"7dControl",
 									"14dControl",
-									"28dControl"
+									"28dControl",
+									"90dControl"
 								],
 								"type": "string"
 							},
@@ -77143,8 +77161,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -77355,10 +77373,13 @@
 									"7d",
 									"14d",
 									"28d",
+									"90d",
+									"180d",
 									"1dControl",
 									"7dControl",
 									"14dControl",
-									"28dControl"
+									"28dControl",
+									"90dControl"
 								],
 								"type": "string"
 							},
@@ -77398,13 +77419,13 @@
 						"schema": {
 							"items": {
 								"enum": [
-									"ddos",
-									"waf",
-									"bot_management",
-									"access_rules",
-									"ip_reputation",
-									"api_shield",
-									"data_loss_prevention"
+									"DDOS",
+									"WAF",
+									"BOT_MANAGEMENT",
+									"ACCESS_RULES",
+									"IP_REPUTATION",
+									"API_SHIELD",
+									"DATA_LOSS_PREVENTION"
 								],
 								"type": "string"
 							},
@@ -77455,8 +77476,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -77675,10 +77696,13 @@
 									"7d",
 									"14d",
 									"28d",
+									"90d",
+									"180d",
 									"1dControl",
 									"7dControl",
 									"14dControl",
-									"28dControl"
+									"28dControl",
+									"90dControl"
 								],
 								"type": "string"
 							},
@@ -77743,8 +77767,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -77985,10 +78009,13 @@
 									"7d",
 									"14d",
 									"28d",
+									"90d",
+									"180d",
 									"1dControl",
 									"7dControl",
 									"14dControl",
-									"28dControl"
+									"28dControl",
+									"90dControl"
 								],
 								"type": "string"
 							},
@@ -78040,8 +78067,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -78173,10 +78200,13 @@
 									"7d",
 									"14d",
 									"28d",
+									"90d",
+									"180d",
 									"1dControl",
 									"7dControl",
 									"14dControl",
-									"28dControl"
+									"28dControl",
+									"90dControl"
 								],
 								"type": "string"
 							},
@@ -78239,14 +78269,11 @@
 						"in": "query",
 						"name": "limitDirection",
 						"schema": {
-							"items": {
-								"enum": [
-									"ORIGIN",
-									"TARGET"
-								],
-								"type": "string"
-							},
-							"type": "array"
+							"enum": [
+								"ORIGIN",
+								"TARGET"
+							],
+							"type": "string"
 						}
 					},
 					{
@@ -78254,13 +78281,10 @@
 						"in": "query",
 						"name": "limitPerLocation",
 						"schema": {
-							"items": {
-								"default": 10,
-								"description": "Limit the number of attacks per origin/target (refer to `limitDirection` parameter) location.",
-								"example": 10,
-								"type": "integer"
-							},
-							"type": "array"
+							"default": 10,
+							"description": "Limit the number of attacks per origin/target (refer to `limitDirection` parameter) location.",
+							"example": 10,
+							"type": "integer"
 						}
 					},
 					{
@@ -78269,8 +78293,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -78412,10 +78436,13 @@
 									"7d",
 									"14d",
 									"28d",
+									"90d",
+									"180d",
 									"1dControl",
 									"7dControl",
 									"14dControl",
-									"28dControl"
+									"28dControl",
+									"90dControl"
 								],
 								"type": "string"
 							},
@@ -78467,8 +78494,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -78600,10 +78627,13 @@
 									"7d",
 									"14d",
 									"28d",
+									"90d",
+									"180d",
 									"1dControl",
 									"7dControl",
 									"14dControl",
-									"28dControl"
+									"28dControl",
+									"90dControl"
 								],
 								"type": "string"
 							},
@@ -78642,8 +78672,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -78774,7 +78804,7 @@
 						}
 					},
 					{
-						"description": "For example, use `7d` to get route leak events happened within this week.",
+						"description": "Shorthand date ranges for the last X days - use when you don't need specific start and end dates.",
 						"in": "query",
 						"name": "dateRange",
 						"schema": {
@@ -78782,8 +78812,35 @@
 								"1d",
 								"7d",
 								"14d",
-								"28d"
+								"28d",
+								"90d",
+								"180d",
+								"1dControl",
+								"7dControl",
+								"14dControl",
+								"28dControl",
+								"90dControl"
 							],
+							"type": "string"
+						}
+					},
+					{
+						"description": "Start of the date range (inclusive).",
+						"in": "query",
+						"name": "dateStart",
+						"schema": {
+							"example": "2022-09-15T00:00:00Z",
+							"format": "date-time",
+							"type": "string"
+						}
+					},
+					{
+						"description": "End of the date range (inclusive).",
+						"in": "query",
+						"name": "dateEnd",
+						"schema": {
+							"example": "2022-09-15T00:00:00Z",
+							"format": "date-time",
 							"type": "string"
 						}
 					},
@@ -78793,8 +78850,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -79010,10 +79067,13 @@
 									"7d",
 									"14d",
 									"28d",
+									"90d",
+									"180d",
 									"1dControl",
 									"7dControl",
 									"14dControl",
-									"28dControl"
+									"28dControl",
+									"90dControl"
 								],
 								"type": "string"
 							},
@@ -79090,8 +79150,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -79308,10 +79368,13 @@
 									"7d",
 									"14d",
 									"28d",
+									"90d",
+									"180d",
 									"1dControl",
 									"7dControl",
 									"14dControl",
-									"28dControl"
+									"28dControl",
+									"90dControl"
 								],
 								"type": "string"
 							},
@@ -79391,8 +79454,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -79550,10 +79613,13 @@
 									"7d",
 									"14d",
 									"28d",
+									"90d",
+									"180d",
 									"1dControl",
 									"7dControl",
 									"14dControl",
-									"28dControl"
+									"28dControl",
+									"90dControl"
 								],
 								"type": "string"
 							},
@@ -79620,8 +79686,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -79778,8 +79844,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -79894,8 +79960,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -80083,10 +80149,13 @@
 									"7d",
 									"14d",
 									"28d",
+									"90d",
+									"180d",
 									"1dControl",
 									"7dControl",
 									"14dControl",
-									"28dControl"
+									"28dControl",
+									"90dControl"
 								],
 								"type": "string"
 							},
@@ -80151,8 +80220,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -80387,10 +80456,13 @@
 									"7d",
 									"14d",
 									"28d",
+									"90d",
+									"180d",
 									"1dControl",
 									"7dControl",
 									"14dControl",
-									"28dControl"
+									"28dControl",
+									"90dControl"
 								],
 								"type": "string"
 							},
@@ -80455,8 +80527,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -80680,8 +80752,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -80798,8 +80870,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -81016,8 +81088,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -81263,8 +81335,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -81378,8 +81450,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -81531,10 +81603,13 @@
 									"7d",
 									"14d",
 									"28d",
+									"90d",
+									"180d",
 									"1dControl",
 									"7dControl",
 									"14dControl",
-									"28dControl"
+									"28dControl",
+									"90dControl"
 								],
 								"type": "string"
 							},
@@ -81615,8 +81690,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -81728,10 +81803,13 @@
 									"7d",
 									"14d",
 									"28d",
+									"90d",
+									"180d",
 									"1dControl",
 									"7dControl",
 									"14dControl",
-									"28dControl"
+									"28dControl",
+									"90dControl"
 								],
 								"type": "string"
 							},
@@ -81827,8 +81905,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -81945,10 +82023,13 @@
 									"7d",
 									"14d",
 									"28d",
+									"90d",
+									"180d",
 									"1dControl",
 									"7dControl",
 									"14dControl",
-									"28dControl"
+									"28dControl",
+									"90dControl"
 								],
 								"type": "string"
 							},
@@ -82044,8 +82125,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -82157,10 +82238,13 @@
 									"7d",
 									"14d",
 									"28d",
+									"90d",
+									"180d",
 									"1dControl",
 									"7dControl",
 									"14dControl",
-									"28dControl"
+									"28dControl",
+									"90dControl"
 								],
 								"type": "string"
 							},
@@ -82256,8 +82340,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -82374,10 +82458,13 @@
 									"7d",
 									"14d",
 									"28d",
+									"90d",
+									"180d",
 									"1dControl",
 									"7dControl",
 									"14dControl",
-									"28dControl"
+									"28dControl",
+									"90dControl"
 								],
 								"type": "string"
 							},
@@ -82473,8 +82560,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -82586,10 +82673,13 @@
 									"7d",
 									"14d",
 									"28d",
+									"90d",
+									"180d",
 									"1dControl",
 									"7dControl",
 									"14dControl",
-									"28dControl"
+									"28dControl",
+									"90dControl"
 								],
 								"type": "string"
 							},
@@ -82685,8 +82775,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -82798,10 +82888,13 @@
 									"7d",
 									"14d",
 									"28d",
+									"90d",
+									"180d",
 									"1dControl",
 									"7dControl",
 									"14dControl",
-									"28dControl"
+									"28dControl",
+									"90dControl"
 								],
 								"type": "string"
 							},
@@ -82897,8 +82990,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -83038,10 +83131,13 @@
 									"7d",
 									"14d",
 									"28d",
+									"90d",
+									"180d",
 									"1dControl",
 									"7dControl",
 									"14dControl",
-									"28dControl"
+									"28dControl",
+									"90dControl"
 								],
 								"type": "string"
 							},
@@ -83122,8 +83218,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -83259,10 +83355,13 @@
 									"7d",
 									"14d",
 									"28d",
+									"90d",
+									"180d",
 									"1dControl",
 									"7dControl",
 									"14dControl",
-									"28dControl"
+									"28dControl",
+									"90dControl"
 								],
 								"type": "string"
 							},
@@ -83368,8 +83467,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -83498,10 +83597,13 @@
 									"7d",
 									"14d",
 									"28d",
+									"90d",
+									"180d",
 									"1dControl",
 									"7dControl",
 									"14dControl",
-									"28dControl"
+									"28dControl",
+									"90dControl"
 								],
 								"type": "string"
 							},
@@ -83597,8 +83699,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -83727,10 +83829,13 @@
 									"7d",
 									"14d",
 									"28d",
+									"90d",
+									"180d",
 									"1dControl",
 									"7dControl",
 									"14dControl",
-									"28dControl"
+									"28dControl",
+									"90dControl"
 								],
 								"type": "string"
 							},
@@ -83810,8 +83915,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -83954,10 +84059,13 @@
 									"7d",
 									"14d",
 									"28d",
+									"90d",
+									"180d",
 									"1dControl",
 									"7dControl",
 									"14dControl",
-									"28dControl"
+									"28dControl",
+									"90dControl"
 								],
 								"type": "string"
 							},
@@ -84053,8 +84161,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -84190,10 +84298,13 @@
 									"7d",
 									"14d",
 									"28d",
+									"90d",
+									"180d",
 									"1dControl",
 									"7dControl",
 									"14dControl",
-									"28dControl"
+									"28dControl",
+									"90dControl"
 								],
 								"type": "string"
 							},
@@ -84289,8 +84400,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -84433,10 +84544,13 @@
 									"7d",
 									"14d",
 									"28d",
+									"90d",
+									"180d",
 									"1dControl",
 									"7dControl",
 									"14dControl",
-									"28dControl"
+									"28dControl",
+									"90dControl"
 								],
 								"type": "string"
 							},
@@ -84532,8 +84646,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -84669,10 +84783,13 @@
 									"7d",
 									"14d",
 									"28d",
+									"90d",
+									"180d",
 									"1dControl",
 									"7dControl",
 									"14dControl",
-									"28dControl"
+									"28dControl",
+									"90dControl"
 								],
 								"type": "string"
 							},
@@ -84778,8 +84895,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -84908,10 +85025,13 @@
 									"7d",
 									"14d",
 									"28d",
+									"90d",
+									"180d",
 									"1dControl",
 									"7dControl",
 									"14dControl",
-									"28dControl"
+									"28dControl",
+									"90dControl"
 								],
 								"type": "string"
 							},
@@ -85007,8 +85127,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -85163,10 +85283,13 @@
 									"7d",
 									"14d",
 									"28d",
+									"90d",
+									"180d",
 									"1dControl",
 									"7dControl",
 									"14dControl",
-									"28dControl"
+									"28dControl",
+									"90dControl"
 								],
 								"type": "string"
 							},
@@ -85262,8 +85385,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -85497,10 +85620,13 @@
 									"7d",
 									"14d",
 									"28d",
+									"90d",
+									"180d",
 									"1dControl",
 									"7dControl",
 									"14dControl",
-									"28dControl"
+									"28dControl",
+									"90dControl"
 								],
 								"type": "string"
 							},
@@ -85581,8 +85707,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -85817,10 +85943,13 @@
 									"7d",
 									"14d",
 									"28d",
+									"90d",
+									"180d",
 									"1dControl",
 									"7dControl",
 									"14dControl",
-									"28dControl"
+									"28dControl",
+									"90dControl"
 								],
 								"type": "string"
 							},
@@ -85900,8 +86029,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -86135,10 +86264,13 @@
 									"7d",
 									"14d",
 									"28d",
+									"90d",
+									"180d",
 									"1dControl",
 									"7dControl",
 									"14dControl",
-									"28dControl"
+									"28dControl",
+									"90dControl"
 								],
 								"type": "string"
 							},
@@ -86234,8 +86366,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -86470,10 +86602,13 @@
 									"7d",
 									"14d",
 									"28d",
+									"90d",
+									"180d",
 									"1dControl",
 									"7dControl",
 									"14dControl",
-									"28dControl"
+									"28dControl",
+									"90dControl"
 								],
 								"type": "string"
 							},
@@ -86569,8 +86704,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -86804,10 +86939,13 @@
 									"7d",
 									"14d",
 									"28d",
+									"90d",
+									"180d",
 									"1dControl",
 									"7dControl",
 									"14dControl",
-									"28dControl"
+									"28dControl",
+									"90dControl"
 								],
 								"type": "string"
 							},
@@ -86903,8 +87041,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -87142,10 +87280,13 @@
 									"7d",
 									"14d",
 									"28d",
+									"90d",
+									"180d",
 									"1dControl",
 									"7dControl",
 									"14dControl",
-									"28dControl"
+									"28dControl",
+									"90dControl"
 								],
 								"type": "string"
 							},
@@ -87241,8 +87382,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -87479,10 +87620,13 @@
 									"7d",
 									"14d",
 									"28d",
+									"90d",
+									"180d",
 									"1dControl",
 									"7dControl",
 									"14dControl",
-									"28dControl"
+									"28dControl",
+									"90dControl"
 								],
 								"type": "string"
 							},
@@ -87578,8 +87722,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -87800,10 +87944,13 @@
 									"7d",
 									"14d",
 									"28d",
+									"90d",
+									"180d",
 									"1dControl",
 									"7dControl",
 									"14dControl",
-									"28dControl"
+									"28dControl",
+									"90dControl"
 								],
 								"type": "string"
 							},
@@ -87899,8 +88046,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -88114,10 +88261,13 @@
 									"7d",
 									"14d",
 									"28d",
+									"90d",
+									"180d",
 									"1dControl",
 									"7dControl",
 									"14dControl",
-									"28dControl"
+									"28dControl",
+									"90dControl"
 								],
 								"type": "string"
 							},
@@ -88213,8 +88363,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -88428,10 +88578,13 @@
 									"7d",
 									"14d",
 									"28d",
+									"90d",
+									"180d",
 									"1dControl",
 									"7dControl",
 									"14dControl",
-									"28dControl"
+									"28dControl",
+									"90dControl"
 								],
 								"type": "string"
 							},
@@ -88527,8 +88680,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -88762,10 +88915,13 @@
 									"7d",
 									"14d",
 									"28d",
+									"90d",
+									"180d",
 									"1dControl",
 									"7dControl",
 									"14dControl",
-									"28dControl"
+									"28dControl",
+									"90dControl"
 								],
 								"type": "string"
 							},
@@ -88846,8 +89002,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -89082,10 +89238,13 @@
 									"7d",
 									"14d",
 									"28d",
+									"90d",
+									"180d",
 									"1dControl",
 									"7dControl",
 									"14dControl",
-									"28dControl"
+									"28dControl",
+									"90dControl"
 								],
 								"type": "string"
 							},
@@ -89165,8 +89324,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -89400,10 +89559,13 @@
 									"7d",
 									"14d",
 									"28d",
+									"90d",
+									"180d",
 									"1dControl",
 									"7dControl",
 									"14dControl",
-									"28dControl"
+									"28dControl",
+									"90dControl"
 								],
 								"type": "string"
 							},
@@ -89499,8 +89661,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -89735,10 +89897,13 @@
 									"7d",
 									"14d",
 									"28d",
+									"90d",
+									"180d",
 									"1dControl",
 									"7dControl",
 									"14dControl",
-									"28dControl"
+									"28dControl",
+									"90dControl"
 								],
 								"type": "string"
 							},
@@ -89834,8 +89999,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -90069,10 +90234,13 @@
 									"7d",
 									"14d",
 									"28d",
+									"90d",
+									"180d",
 									"1dControl",
 									"7dControl",
 									"14dControl",
-									"28dControl"
+									"28dControl",
+									"90dControl"
 								],
 								"type": "string"
 							},
@@ -90168,8 +90336,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -90407,10 +90575,13 @@
 									"7d",
 									"14d",
 									"28d",
+									"90d",
+									"180d",
 									"1dControl",
 									"7dControl",
 									"14dControl",
-									"28dControl"
+									"28dControl",
+									"90dControl"
 								],
 								"type": "string"
 							},
@@ -90506,8 +90677,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -90744,10 +90915,13 @@
 									"7d",
 									"14d",
 									"28d",
+									"90d",
+									"180d",
 									"1dControl",
 									"7dControl",
 									"14dControl",
-									"28dControl"
+									"28dControl",
+									"90dControl"
 								],
 								"type": "string"
 							},
@@ -90843,8 +91017,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -91067,10 +91241,13 @@
 									"7d",
 									"14d",
 									"28d",
+									"90d",
+									"180d",
 									"1dControl",
 									"7dControl",
 									"14dControl",
-									"28dControl"
+									"28dControl",
+									"90dControl"
 								],
 								"type": "string"
 							},
@@ -91110,8 +91287,8 @@
 						"schema": {
 							"items": {
 								"enum": [
-									"http",
-									"all"
+									"HTTP",
+									"ALL"
 								],
 								"type": "string"
 							},
@@ -91162,8 +91339,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -91380,10 +91557,13 @@
 									"7d",
 									"14d",
 									"28d",
+									"90d",
+									"180d",
 									"1dControl",
 									"7dControl",
 									"14dControl",
-									"28dControl"
+									"28dControl",
+									"90dControl"
 								],
 								"type": "string"
 							},
@@ -91448,8 +91628,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -91576,10 +91756,13 @@
 									"7d",
 									"14d",
 									"28d",
+									"90d",
+									"180d",
 									"1dControl",
 									"7dControl",
 									"14dControl",
-									"28dControl"
+									"28dControl",
+									"90dControl"
 								],
 								"type": "string"
 							},
@@ -91644,8 +91827,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -91754,8 +91937,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -91773,20 +91956,12 @@
 													"example": "2000",
 													"type": "string"
 												},
-												"categories": {
-													"items": {
-														"example": "Technology",
-														"type": "string"
-													},
-													"type": "array"
-												},
 												"rank": {
 													"example": 3,
 													"type": "integer"
 												}
 											},
 											"required": [
-												"categories",
 												"bucket"
 											],
 											"type": "object"
@@ -91899,10 +92074,13 @@
 									"7d",
 									"14d",
 									"28d",
+									"90d",
+									"180d",
 									"1dControl",
 									"7dControl",
 									"14dControl",
-									"28dControl"
+									"28dControl",
+									"90dControl"
 								],
 								"type": "string"
 							},
@@ -91941,8 +92119,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -92119,8 +92297,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -92264,8 +92442,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -92377,8 +92555,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -92513,8 +92691,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -92709,8 +92887,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -92836,10 +93014,13 @@
 									"7d",
 									"14d",
 									"28d",
+									"90d",
+									"180d",
 									"1dControl",
 									"7dControl",
 									"14dControl",
-									"28dControl"
+									"28dControl",
+									"90dControl"
 								],
 								"type": "string"
 							},
@@ -92904,8 +93085,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
@@ -93112,10 +93293,13 @@
 									"7d",
 									"14d",
 									"28d",
+									"90d",
+									"180d",
 									"1dControl",
 									"7dControl",
 									"14dControl",
-									"28dControl"
+									"28dControl",
+									"90dControl"
 								],
 								"type": "string"
 							},
@@ -93180,8 +93364,8 @@
 						"name": "format",
 						"schema": {
 							"enum": [
-								"json",
-								"csv"
+								"JSON",
+								"CSV"
 							],
 							"type": "string"
 						}
