@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/kv-asset-handler",
 	"dist-tags": {
-		"latest": "0.2.0"
+		"latest": "0.3.0"
 	},
 	"versions": {
 		"0.0.1": {
@@ -456,6 +456,37 @@
 						"sig": "MEQCIANW4kpQZh5sPYWyvisFxhTO0+l6LHELFCpaZ63cUykPAiACUaiv33NalSc//8Qnr50uKZ9InDeQhB9XDqFnRdQAAQ=="
 					}
 				]
+			}
+		},
+		"0.3.0": {
+			"name": "@cloudflare/kv-asset-handler",
+			"version": "0.3.0",
+			"dependencies": {
+				"mime": "^3.0.0"
+			},
+			"devDependencies": {
+				"@ava/typescript": "^3.0.1",
+				"@cloudflare/workers-types": "^4.20221111.1",
+				"@types/mime": "^3.0.1",
+				"@types/node": "^18.11.12",
+				"ava": "^5.1.0",
+				"prettier": "^2.8.1",
+				"service-worker-mock": "^2.0.5",
+				"typescript": "^4.9.4"
+			},
+			"dist": {
+				"integrity": "sha512-9CB/MKf/wdvbfkUdfrj+OkEwZ5b7rws0eogJ4293h+7b6KX5toPwym+VQKmILafNB9YiehqY0DlNrDcDhdWHSQ==",
+				"shasum": "11f0af0749a400ddadcca16dcd6f4696d7036991",
+				"tarball": "https://registry.npmjs.org/@cloudflare/kv-asset-handler/-/kv-asset-handler-0.3.0.tgz",
+				"fileCount": 25,
+				"unpackedSize": 112126,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIQCo71cfgmptkANeQrg7ocIIf1MtvyWBoU40EDBmO1m7cwIgS/4P6o+sMPKb0eihdzGnfl7oLSXvBwct6aHDd77gjTk="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjoMb4ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoJshAAo4orKxFRFxEesOAQYwxwq/rxHsR+aPN7PZGhvihKrid+wAoE\r\nwI3LHSfrQ6mx7bIQw6PiuKuXqbKuP+geI/v+DpKTL5Czky675WPTLOVxoDgf\r\nOpY4womGdZWKO2Eorbr2TmPnNrKCPuShPY6rk/8zvSRrT6E1QcQXHKM64YDd\r\nj18d5SNp8Yqg2EhHfzr/WUu8erDJQRvqtiEL6AYH8qDHfl4gaZR3eYSlXnQ8\r\n6e5WYY7zvET6ZZoWkcSbEa5mepxJ2BSEgCpHXdIQmZF//oduc6IgLR+c4TsR\r\ntCR67twI2kg2URXiLlNjJJ2ReqpGfNiSwxfqjA1wmxjgIwNuN8vFtEOuQP0/\r\nndAfF+gXk4GKLRSep7J+sQ3uNCpamRPODfSC/CrHPH4y4vr5WUwOz5ECSnEr\r\nA7nUsj6r21M8l1rh70uOJd9ArDQD8XZG5dWsOLd7+z260H30Enm+HyvBOdjM\r\nGh2Zf9jORFxdnK5KHXPHnuf72VHM7HQPYPZCWOVty1LvgXVWf5JBVxp1MLlQ\r\nG/8sJP/DFclH4KP9tx4+F0PtPqiXNniUQ9xhUE7Zz+kOi4T15Bv1K5UHSRfw\r\n1G7St+7RyBNl9gl9WhFrOf7mdihU5IgyU4BgdJruOaouV7D8uUlG5na4aj+D\r\n+vqpdKHCHUkhE2Uz7Q1N5Rr/G452Klwagh8=\r\n=dF3W\r\n-----END PGP SIGNATURE-----\r\n"
 			}
 		}
 	}
