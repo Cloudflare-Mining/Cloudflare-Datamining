@@ -55900,14 +55900,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"allOf": [
-										{
-											"$ref": "#/components/schemas/language_response_collection"
-										},
-										{
-											"$ref": "#/components/schemas/api-response-common-failure"
-										}
-									]
+									"$ref": "#/components/schemas/api-response-common-failure"
 								}
 							}
 						},
@@ -55992,26 +55985,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"allOf": [
-										{
-											"allOf": [
-												{
-													"$ref": "#/components/schemas/api-response-collection"
-												},
-												{
-													"properties": {
-														"result": {
-															"example": "",
-															"type": "string"
-														}
-													}
-												}
-											]
-										},
-										{
-											"$ref": "#/components/schemas/api-response-common-failure"
-										}
-									]
+									"$ref": "#/components/schemas/api-response-common-failure"
 								}
 							}
 						},
@@ -56086,14 +56060,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"allOf": [
-										{
-											"$ref": "#/components/schemas/language_response_single"
-										},
-										{
-											"$ref": "#/components/schemas/api-response-common-failure"
-										}
-									]
+									"$ref": "#/components/schemas/api-response-common-failure"
 								}
 							}
 						},
@@ -56152,14 +56119,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"allOf": [
-										{
-											"$ref": "#/components/schemas/downloads_response"
-										},
-										{
-											"$ref": "#/components/schemas/api-response-common-failure"
-										}
-									]
+									"$ref": "#/components/schemas/api-response-common-failure"
 								}
 							}
 						},
@@ -56222,14 +56182,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"allOf": [
-										{
-											"$ref": "#/components/schemas/downloads_response"
-										},
-										{
-											"$ref": "#/components/schemas/api-response-common-failure"
-										}
-									]
+									"$ref": "#/components/schemas/api-response-common-failure"
 								}
 							}
 						},

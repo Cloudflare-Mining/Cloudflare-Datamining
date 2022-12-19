@@ -35567,9 +35567,7 @@ paths:
           content:
             application/json:
               schema:
-                allOf:
-                - $ref: '#/components/schemas/language_response_collection'
-                - $ref: '#/components/schemas/api-response-common-failure'
+                $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: List captions or subtitles response
           content:
@@ -35613,14 +35611,7 @@ paths:
           content:
             application/json:
               schema:
-                allOf:
-                - allOf:
-                  - $ref: '#/components/schemas/api-response-collection'
-                  - properties:
-                      result:
-                        type: string
-                        example: ""
-                - $ref: '#/components/schemas/api-response-common-failure'
+                $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Delete captions or subtitles response
           content:
@@ -35671,9 +35662,7 @@ paths:
           content:
             application/json:
               schema:
-                allOf:
-                - $ref: '#/components/schemas/language_response_single'
-                - $ref: '#/components/schemas/api-response-common-failure'
+                $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Upload captions or subtitles response
           content:
@@ -35708,9 +35697,7 @@ paths:
           content:
             application/json:
               schema:
-                allOf:
-                - $ref: '#/components/schemas/downloads_response'
-                - $ref: '#/components/schemas/api-response-common-failure'
+                $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: List downloads response
           content:
@@ -35748,9 +35735,7 @@ paths:
           content:
             application/json:
               schema:
-                allOf:
-                - $ref: '#/components/schemas/downloads_response'
-                - $ref: '#/components/schemas/api-response-common-failure'
+                $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Create downloads response
           content:
