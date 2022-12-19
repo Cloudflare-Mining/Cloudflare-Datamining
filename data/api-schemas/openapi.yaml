@@ -46752,10 +46752,13 @@ paths:
           - 7d
           - 14d
           - 28d
+          - 90d
+          - 180d
           - 1dControl
           - 7dControl
           - 14dControl
           - 28dControl
+          - 90dControl
       - name: dateStart
         in: query
         description: Start of the date range (inclusive).
@@ -46776,8 +46779,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -46886,10 +46889,13 @@ paths:
           - 7d
           - 14d
           - 28d
+          - 90d
+          - 180d
           - 1dControl
           - 7dControl
           - 14dControl
           - 28dControl
+          - 90dControl
       - name: dateStart
         in: query
         description: Start of the date range (inclusive).
@@ -46910,8 +46916,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -46984,10 +46990,13 @@ paths:
             - 7d
             - 14d
             - 28d
+            - 90d
+            - 180d
             - 1dControl
             - 7dControl
             - 14dControl
             - 28dControl
+            - 90dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -47038,8 +47047,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -47189,10 +47198,13 @@ paths:
             - 7d
             - 14d
             - 28d
+            - 90d
+            - 180d
             - 1dControl
             - 7dControl
             - 14dControl
             - 28dControl
+            - 90dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -47219,10 +47231,10 @@ paths:
           items:
             type: string
             enum:
-            - udp
-            - tcp
-            - icmp
-            - gre
+            - UDP
+            - TCP
+            - ICMP
+            - GRE
       - name: asn
         in: query
         description: Array of comma separated list of ASNs, start with `-` to exclude
@@ -47263,8 +47275,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -47395,10 +47407,13 @@ paths:
             - 7d
             - 14d
             - 28d
+            - 90d
+            - 180d
             - 1dControl
             - 7dControl
             - 14dControl
             - 28dControl
+            - 90dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -47449,8 +47464,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -47606,10 +47621,13 @@ paths:
             - 7d
             - 14d
             - 28d
+            - 90d
+            - 180d
             - 1dControl
             - 7dControl
             - 14dControl
             - 28dControl
+            - 90dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -47660,8 +47678,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -47811,10 +47829,13 @@ paths:
             - 7d
             - 14d
             - 28d
+            - 90d
+            - 180d
             - 1dControl
             - 7dControl
             - 14dControl
             - 28dControl
+            - 90dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -47841,13 +47862,13 @@ paths:
           items:
             type: string
             enum:
-            - ddos
-            - waf
-            - bot_management
-            - access_rules
-            - ip_reputation
-            - api_shield
-            - data_loss_prevention
+            - DDOS
+            - WAF
+            - BOT_MANAGEMENT
+            - ACCESS_RULES
+            - IP_REPUTATION
+            - API_SHIELD
+            - DATA_LOSS_PREVENTION
       - name: asn
         in: query
         description: Array of comma separated list of ASNs, start with `-` to exclude
@@ -47888,8 +47909,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -48040,10 +48061,13 @@ paths:
             - 7d
             - 14d
             - 28d
+            - 90d
+            - 180d
             - 1dControl
             - 7dControl
             - 14dControl
             - 28dControl
+            - 90dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -48094,8 +48118,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -48263,10 +48287,13 @@ paths:
             - 7d
             - 14d
             - 28d
+            - 90d
+            - 180d
             - 1dControl
             - 7dControl
             - 14dControl
             - 28dControl
+            - 90dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -48300,8 +48327,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -48391,10 +48418,13 @@ paths:
             - 7d
             - 14d
             - 28d
+            - 90d
+            - 180d
             - 1dControl
             - 7dControl
             - 14dControl
             - 28dControl
+            - 90dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -48441,32 +48471,28 @@ paths:
           with `limitPerLocation`, limits how many objects will be fetched per origin/target
           location.
         schema:
-          type: array
-          items:
-            type: string
-            enum:
-            - ORIGIN
-            - TARGET
+          type: string
+          enum:
+          - ORIGIN
+          - TARGET
       - name: limitPerLocation
         in: query
         description: Limit the number of attacks per origin/target (refer to `limitDirection`
           parameter) location.
         schema:
-          type: array
-          items:
-            type: integer
-            description: Limit the number of attacks per origin/target (refer to `limitDirection`
-              parameter) location.
-            default: 10
-            example: 10
+          type: integer
+          description: Limit the number of attacks per origin/target (refer to `limitDirection`
+            parameter) location.
+          default: 10
+          example: 10
       - name: format
         in: query
         description: Format results are returned in.
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -48561,10 +48587,13 @@ paths:
             - 7d
             - 14d
             - 28d
+            - 90d
+            - 180d
             - 1dControl
             - 7dControl
             - 14dControl
             - 28dControl
+            - 90dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -48602,8 +48631,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -48690,10 +48719,13 @@ paths:
             - 7d
             - 14d
             - 28d
+            - 90d
+            - 180d
             - 1dControl
             - 7dControl
             - 14dControl
             - 28dControl
+            - 90dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -48718,8 +48750,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -48797,8 +48829,8 @@ paths:
           description: ASN that is causing or affected by a route leak event
       - name: dateRange
         in: query
-        description: For example, use `7d` to get route leak events happened within
-          this week.
+        description: Shorthand date ranges for the last X days - use when you don't
+          need specific start and end dates.
         schema:
           type: string
           enum:
@@ -48806,14 +48838,35 @@ paths:
           - 7d
           - 14d
           - 28d
+          - 90d
+          - 180d
+          - 1dControl
+          - 7dControl
+          - 14dControl
+          - 28dControl
+          - 90dControl
+      - name: dateStart
+        in: query
+        description: Start of the date range (inclusive).
+        schema:
+          type: string
+          format: date-time
+          example: "2022-09-15T00:00:00Z"
+      - name: dateEnd
+        in: query
+        description: End of the date range (inclusive).
+        schema:
+          type: string
+          format: date-time
+          example: "2022-09-15T00:00:00Z"
       - name: format
         in: query
         description: Format results are returned in.
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -48959,10 +49012,13 @@ paths:
             - 7d
             - 14d
             - 28d
+            - 90d
+            - 180d
             - 1dControl
             - 7dControl
             - 14dControl
             - 28dControl
+            - 90dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -49017,8 +49073,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -49167,10 +49223,13 @@ paths:
             - 7d
             - 14d
             - 28d
+            - 90d
+            - 180d
             - 1dControl
             - 7dControl
             - 14dControl
             - 28dControl
+            - 90dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -49227,8 +49286,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -49334,10 +49393,13 @@ paths:
             - 7d
             - 14d
             - 28d
+            - 90d
+            - 180d
             - 1dControl
             - 7dControl
             - 14dControl
             - 28dControl
+            - 90dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -49385,8 +49447,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -49484,8 +49546,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -49582,8 +49644,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       requestBody:
         content:
           application/json:
@@ -49667,10 +49729,13 @@ paths:
             - 7d
             - 14d
             - 28d
+            - 90d
+            - 180d
             - 1dControl
             - 7dControl
             - 14dControl
             - 28dControl
+            - 90dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -49721,8 +49786,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -49880,10 +49945,13 @@ paths:
             - 7d
             - 14d
             - 28d
+            - 90d
+            - 180d
             - 1dControl
             - 7dControl
             - 14dControl
             - 28dControl
+            - 90dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -49934,8 +50002,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -50080,8 +50148,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -50156,8 +50224,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -50306,8 +50374,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -50464,8 +50532,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -50535,8 +50603,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -50635,10 +50703,13 @@ paths:
             - 7d
             - 14d
             - 28d
+            - 90d
+            - 180d
             - 1dControl
             - 7dControl
             - 14dControl
             - 28dControl
+            - 90dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -50700,8 +50771,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -50771,10 +50842,13 @@ paths:
             - 7d
             - 14d
             - 28d
+            - 90d
+            - 180d
             - 1dControl
             - 7dControl
             - 14dControl
             - 28dControl
+            - 90dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -50846,8 +50920,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -50921,10 +50995,13 @@ paths:
             - 7d
             - 14d
             - 28d
+            - 90d
+            - 180d
             - 1dControl
             - 7dControl
             - 14dControl
             - 28dControl
+            - 90dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -50996,8 +51073,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -51067,10 +51144,13 @@ paths:
             - 7d
             - 14d
             - 28d
+            - 90d
+            - 180d
             - 1dControl
             - 7dControl
             - 14dControl
             - 28dControl
+            - 90dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -51142,8 +51222,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -51217,10 +51297,13 @@ paths:
             - 7d
             - 14d
             - 28d
+            - 90d
+            - 180d
             - 1dControl
             - 7dControl
             - 14dControl
             - 28dControl
+            - 90dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -51292,8 +51375,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -51363,10 +51446,13 @@ paths:
             - 7d
             - 14d
             - 28d
+            - 90d
+            - 180d
             - 1dControl
             - 7dControl
             - 14dControl
             - 28dControl
+            - 90dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -51438,8 +51524,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -51509,10 +51595,13 @@ paths:
             - 7d
             - 14d
             - 28d
+            - 90d
+            - 180d
             - 1dControl
             - 7dControl
             - 14dControl
             - 28dControl
+            - 90dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -51584,8 +51673,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -51678,10 +51767,13 @@ paths:
             - 7d
             - 14d
             - 28d
+            - 90d
+            - 180d
             - 1dControl
             - 7dControl
             - 14dControl
             - 28dControl
+            - 90dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -51743,8 +51835,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -51832,10 +51924,13 @@ paths:
             - 7d
             - 14d
             - 28d
+            - 90d
+            - 180d
             - 1dControl
             - 7dControl
             - 14dControl
             - 28dControl
+            - 90dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -51916,8 +52011,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -52000,10 +52095,13 @@ paths:
             - 7d
             - 14d
             - 28d
+            - 90d
+            - 180d
             - 1dControl
             - 7dControl
             - 14dControl
             - 28dControl
+            - 90dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -52075,8 +52173,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -52158,10 +52256,13 @@ paths:
             - 7d
             - 14d
             - 28d
+            - 90d
+            - 180d
             - 1dControl
             - 7dControl
             - 14dControl
             - 28dControl
+            - 90dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -52222,8 +52323,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -52315,10 +52416,13 @@ paths:
             - 7d
             - 14d
             - 28d
+            - 90d
+            - 180d
             - 1dControl
             - 7dControl
             - 14dControl
             - 28dControl
+            - 90dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -52390,8 +52494,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -52479,10 +52583,13 @@ paths:
             - 7d
             - 14d
             - 28d
+            - 90d
+            - 180d
             - 1dControl
             - 7dControl
             - 14dControl
             - 28dControl
+            - 90dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -52554,8 +52661,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -52648,10 +52755,13 @@ paths:
             - 7d
             - 14d
             - 28d
+            - 90d
+            - 180d
             - 1dControl
             - 7dControl
             - 14dControl
             - 28dControl
+            - 90dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -52723,8 +52833,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -52812,10 +52922,13 @@ paths:
             - 7d
             - 14d
             - 28d
+            - 90d
+            - 180d
             - 1dControl
             - 7dControl
             - 14dControl
             - 28dControl
+            - 90dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -52896,8 +53009,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -52980,10 +53093,13 @@ paths:
             - 7d
             - 14d
             - 28d
+            - 90d
+            - 180d
             - 1dControl
             - 7dControl
             - 14dControl
             - 28dControl
+            - 90dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -53055,8 +53171,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -53157,10 +53273,13 @@ paths:
             - 7d
             - 14d
             - 28d
+            - 90d
+            - 180d
             - 1dControl
             - 7dControl
             - 14dControl
             - 28dControl
+            - 90dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -53232,8 +53351,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -53392,10 +53511,13 @@ paths:
             - 7d
             - 14d
             - 28d
+            - 90d
+            - 180d
             - 1dControl
             - 7dControl
             - 14dControl
             - 28dControl
+            - 90dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -53457,8 +53579,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -53616,10 +53738,13 @@ paths:
             - 7d
             - 14d
             - 28d
+            - 90d
+            - 180d
             - 1dControl
             - 7dControl
             - 14dControl
             - 28dControl
+            - 90dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -53680,8 +53805,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -53838,10 +53963,13 @@ paths:
             - 7d
             - 14d
             - 28d
+            - 90d
+            - 180d
             - 1dControl
             - 7dControl
             - 14dControl
             - 28dControl
+            - 90dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -53913,8 +54041,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -54072,10 +54200,13 @@ paths:
             - 7d
             - 14d
             - 28d
+            - 90d
+            - 180d
             - 1dControl
             - 7dControl
             - 14dControl
             - 28dControl
+            - 90dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -54147,8 +54278,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -54305,10 +54436,13 @@ paths:
             - 7d
             - 14d
             - 28d
+            - 90d
+            - 180d
             - 1dControl
             - 7dControl
             - 14dControl
             - 28dControl
+            - 90dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -54380,8 +54514,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -54542,10 +54676,13 @@ paths:
             - 7d
             - 14d
             - 28d
+            - 90d
+            - 180d
             - 1dControl
             - 7dControl
             - 14dControl
             - 28dControl
+            - 90dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -54617,8 +54754,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -54778,10 +54915,13 @@ paths:
             - 7d
             - 14d
             - 28d
+            - 90d
+            - 180d
             - 1dControl
             - 7dControl
             - 14dControl
             - 28dControl
+            - 90dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -54853,8 +54993,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -55002,10 +55142,13 @@ paths:
             - 7d
             - 14d
             - 28d
+            - 90d
+            - 180d
             - 1dControl
             - 7dControl
             - 14dControl
             - 28dControl
+            - 90dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -55077,8 +55220,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -55220,10 +55363,13 @@ paths:
             - 7d
             - 14d
             - 28d
+            - 90d
+            - 180d
             - 1dControl
             - 7dControl
             - 14dControl
             - 28dControl
+            - 90dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -55295,8 +55441,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -55438,10 +55584,13 @@ paths:
             - 7d
             - 14d
             - 28d
+            - 90d
+            - 180d
             - 1dControl
             - 7dControl
             - 14dControl
             - 28dControl
+            - 90dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -55513,8 +55662,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -55672,10 +55821,13 @@ paths:
             - 7d
             - 14d
             - 28d
+            - 90d
+            - 180d
             - 1dControl
             - 7dControl
             - 14dControl
             - 28dControl
+            - 90dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -55737,8 +55889,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -55896,10 +56048,13 @@ paths:
             - 7d
             - 14d
             - 28d
+            - 90d
+            - 180d
             - 1dControl
             - 7dControl
             - 14dControl
             - 28dControl
+            - 90dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -55960,8 +56115,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -56118,10 +56273,13 @@ paths:
             - 7d
             - 14d
             - 28d
+            - 90d
+            - 180d
             - 1dControl
             - 7dControl
             - 14dControl
             - 28dControl
+            - 90dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -56193,8 +56351,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -56352,10 +56510,13 @@ paths:
             - 7d
             - 14d
             - 28d
+            - 90d
+            - 180d
             - 1dControl
             - 7dControl
             - 14dControl
             - 28dControl
+            - 90dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -56427,8 +56588,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -56585,10 +56746,13 @@ paths:
             - 7d
             - 14d
             - 28d
+            - 90d
+            - 180d
             - 1dControl
             - 7dControl
             - 14dControl
             - 28dControl
+            - 90dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -56660,8 +56824,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -56822,10 +56986,13 @@ paths:
             - 7d
             - 14d
             - 28d
+            - 90d
+            - 180d
             - 1dControl
             - 7dControl
             - 14dControl
             - 28dControl
+            - 90dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -56897,8 +57064,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -57058,10 +57225,13 @@ paths:
             - 7d
             - 14d
             - 28d
+            - 90d
+            - 180d
             - 1dControl
             - 7dControl
             - 14dControl
             - 28dControl
+            - 90dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -57133,8 +57303,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -57289,10 +57459,13 @@ paths:
             - 7d
             - 14d
             - 28d
+            - 90d
+            - 180d
             - 1dControl
             - 7dControl
             - 14dControl
             - 28dControl
+            - 90dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -57319,8 +57492,8 @@ paths:
           items:
             type: string
             enum:
-            - http
-            - all
+            - HTTP
+            - ALL
       - name: asn
         in: query
         description: Array of comma separated list of ASNs, start with `-` to exclude
@@ -57361,8 +57534,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -57511,10 +57684,13 @@ paths:
             - 7d
             - 14d
             - 28d
+            - 90d
+            - 180d
             - 1dControl
             - 7dControl
             - 14dControl
             - 28dControl
+            - 90dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -57565,8 +57741,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -57648,10 +57824,13 @@ paths:
             - 7d
             - 14d
             - 28d
+            - 90d
+            - 180d
             - 1dControl
             - 7dControl
             - 14dControl
             - 28dControl
+            - 90dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -57702,8 +57881,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -57767,8 +57946,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -57783,17 +57962,11 @@ paths:
                   result:
                     type: object
                     required:
-                    - categories
                     - bucket
                     properties:
                       bucket:
                         type: string
                         example: "2000"
-                      categories:
-                        type: array
-                        items:
-                          type: string
-                          example: Technology
                       rank:
                         type: integer
                         example: 3
@@ -57861,10 +58034,13 @@ paths:
             - 7d
             - 14d
             - 28d
+            - 90d
+            - 180d
             - 1dControl
             - 7dControl
             - 14dControl
             - 28dControl
+            - 90dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -57889,8 +58065,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -58002,8 +58178,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -58091,8 +58267,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -58159,8 +58335,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -58243,8 +58419,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -58370,8 +58546,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -58451,10 +58627,13 @@ paths:
             - 7d
             - 14d
             - 28d
+            - 90d
+            - 180d
             - 1dControl
             - 7dControl
             - 14dControl
             - 28dControl
+            - 90dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -58505,8 +58684,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
@@ -58646,10 +58825,13 @@ paths:
             - 7d
             - 14d
             - 28d
+            - 90d
+            - 180d
             - 1dControl
             - 7dControl
             - 14dControl
             - 28dControl
+            - 90dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -58700,8 +58882,8 @@ paths:
         schema:
           type: string
           enum:
-          - json
-          - csv
+          - JSON
+          - CSV
       responses:
         "200":
           description: Successful Response
