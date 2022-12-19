@@ -903,12 +903,14 @@
 	},
 	"AccountGatewayResolverQueriesAdaptiveGroupsDimensions": {
 		"__description": "",
+		"categoryIds": "Json array of categories for this query",
 		"datetime": "The date and time the DNS query was resolved",
 		"datetimeHour": "The date and time the event occurred at the edge truncated to hours",
 		"datetimeMinute": "The date and time the event occurred at the edge truncated to minutes",
 		"locationId": "The uuid identifying the customer Location used when resolving",
 		"queryNameReversed": "Name of the query in reverse order, e.g. com.cloudflare.teams.dash",
-		"resolverDecision": "Enum identifier for the decision made by gateway-resolver, one of: (0, unknown) (1, allowedByQueryName) (2, blockedByQueryName) (3, blockedByCategory) (4, allowedOnNoLocation) (5, allowedOnNoPolicyMatch) (6, blockedAlwaysCategory) (7, overrideForSafeSearch) (8, overrideApplied) (9, blockedRule) (10, allowedRule)\n"
+		"resolverDecision": "Enum identifier for the decision made by gateway-resolver, one of: (0, unknown) (1, allowedByQueryName) (2, blockedByQueryName) (3, blockedByCategory) (4, allowedOnNoLocation) (5, allowedOnNoPolicyMatch) (6, blockedAlwaysCategory) (7, overrideForSafeSearch) (8, overrideApplied) (9, blockedRule) (10, allowedRule)\n",
+		"scheduleInfo": "Json object of schedule releated information"
 	},
 	"AccountGatewayResolverQueriesAdaptiveGroupsFilter_InputObject": {
 		"__description": ""
