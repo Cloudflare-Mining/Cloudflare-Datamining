@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.19.6](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/types@6.19.5...@cloudflare/types@6.19.6) (2022-12-20)
+
+**Note:** Version bump only for package @cloudflare/types
+
+
+
+
+
 ## [6.19.5](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/types@6.19.4...@cloudflare/types@6.19.5) (2022-12-19)
 
 **Note:** Version bump only for package @cloudflare/types
