@@ -2377,6 +2377,13 @@
 				],
 				"title": "URI Record"
 			},
+			"Zonekeeper Public API_identifier": {
+				"description": "Identifier",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"readOnly": true,
+				"type": "string"
+			},
 			"access-policy": {
 				"oneOf": [
 					{
@@ -6917,6 +6924,13 @@
 				"description": "A Cloudflare-generated unique identifier for a media item.",
 				"example": "ea95132c15732412d22c1476fa83f27a",
 				"maxLength": 32,
+				"readOnly": true,
+				"type": "string"
+			},
+			"cloudflare-stream-client-api_name": {
+				"default": "",
+				"description": "A short description of the watermark profile.",
+				"example": "Marketing Videos",
 				"readOnly": true,
 				"type": "string"
 			},
@@ -16103,11 +16117,7 @@
 				]
 			},
 			"identifier": {
-				"description": "Identifier",
-				"example": "023e105f4ecef8ad9ca31a8372d0c353",
-				"maxLength": 32,
-				"readOnly": true,
-				"type": "string"
+				"example": "699d98642c564d2e855e9661899b7252"
 			},
 			"identity": {
 				"description": "The wirefilter expression to be used for identity matching.",
@@ -20008,10 +20018,8 @@
 				]
 			},
 			"name": {
-				"default": "",
-				"description": "A short description of the watermark profile.",
-				"example": "Marketing Videos",
-				"readOnly": true,
+				"description": "The name of your Zero Trust organization.",
+				"example": "Widget Corps Internal Applications",
 				"type": "string"
 			},
 			"name_servers": {
@@ -20816,7 +20824,7 @@
 						"$ref": "#/components/schemas/login_design"
 					},
 					"name": {
-						"$ref": "#/components/schemas/Cloudflare Client API_name"
+						"$ref": "#/components/schemas/name"
 					},
 					"updated_at": {
 						"$ref": "#/components/schemas/timestamp"
@@ -35093,7 +35101,7 @@
 						"type": "string"
 					},
 					"name": {
-						"$ref": "#/components/schemas/name"
+						"$ref": "#/components/schemas/cloudflare-stream-client-api_name"
 					},
 					"opacity": {
 						"$ref": "#/components/schemas/opacity"
@@ -35176,7 +35184,7 @@
 						"$ref": "#/components/schemas/height"
 					},
 					"name": {
-						"$ref": "#/components/schemas/name"
+						"$ref": "#/components/schemas/cloudflare-stream-client-api_name"
 					},
 					"opacity": {
 						"$ref": "#/components/schemas/opacity"
@@ -47710,7 +47718,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
 						}
 					}
 				],
@@ -47766,7 +47774,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
 						}
 					}
 				],
@@ -47842,7 +47850,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
 						}
 					}
 				],
@@ -47922,7 +47930,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
 						}
 					}
 				],
@@ -47986,7 +47994,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
 						}
 					}
 				],
@@ -48062,7 +48070,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
 						}
 					}
 				],
@@ -48126,7 +48134,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
 						}
 					}
 				],
@@ -48190,7 +48198,7 @@
 						"name": "deployment_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
 						}
 					},
 					{
@@ -48206,7 +48214,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
 						}
 					}
 				],
@@ -48278,7 +48286,7 @@
 						"name": "deployment_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
 						}
 					},
 					{
@@ -48294,7 +48302,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
 						}
 					}
 				],
@@ -48352,7 +48360,7 @@
 						"name": "deployment_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
 						}
 					},
 					{
@@ -48368,7 +48376,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
 						}
 					}
 				],
@@ -48426,7 +48434,7 @@
 						"name": "deployment_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
 						}
 					},
 					{
@@ -48442,7 +48450,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
 						}
 					}
 				],
@@ -48506,7 +48514,7 @@
 						"name": "deployment_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
 						}
 					},
 					{
@@ -48522,7 +48530,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
 						}
 					}
 				],
@@ -48594,7 +48602,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
 						}
 					}
 				],
@@ -48658,7 +48666,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
 						}
 					}
 				],
@@ -48742,7 +48750,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
 						}
 					}
 				],
@@ -48830,7 +48838,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
 						}
 					}
 				],
@@ -48902,7 +48910,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/Cloudflare Client API_identifier"
 						}
 					}
 				],
@@ -128670,7 +128678,7 @@
 						"name": "zone_id",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/Zonekeeper Public API_identifier"
 						}
 					}
 				],
@@ -128688,7 +128696,7 @@
 												"result": {
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/identifier"
+															"$ref": "#/components/schemas/Zonekeeper Public API_identifier"
 														}
 													},
 													"type": "object"
