@@ -126,7 +126,7 @@ components:
       - type
       - name
       - content
-    Cloudflare Client API_access-requests:
+    CloudflareClientAPI_access-requests:
       type: object
       properties:
         action:
@@ -146,20 +146,20 @@ components:
         ray_id:
           $ref: '#/components/schemas/ray_id'
         user_email:
-          $ref: '#/components/schemas/Cloudflare Client API_schemas-email'
-    Cloudflare Client API_account_identifier: {}
-    Cloudflare Client API_action:
+          $ref: '#/components/schemas/CloudflareClientAPI_schemas-email'
+    CloudflareClientAPI_account_identifier: {}
+    CloudflareClientAPI_action:
       type: string
       description: The billing item action.
       example: subscription
       readOnly: true
       maxLength: 30
-    Cloudflare Client API_allowed:
+    CloudflareClientAPI_allowed:
       type: number
       description: Cloudflare Images allowed usage.
       example: 100000
       readOnly: true
-    Cloudflare Client API_api-response-common-failure:
+    CloudflareClientAPI_api-response-common-failure:
       type: object
       required:
       - success
@@ -188,7 +188,7 @@ components:
           enum:
           - false
           example: false
-    Cloudflare Client API_api-response-single-id:
+    CloudflareClientAPI_api-response-single-id:
       allOf:
       - $ref: '#/components/schemas/api-response-common'
       - properties:
@@ -201,13 +201,13 @@ components:
               id:
                 $ref: '#/components/schemas/common_components-schemas-identifier'
       type: object
-    Cloudflare Client API_app_id:
+    CloudflareClientAPI_app_id:
       type: string
       description: Application identifier.
       example: ea95132c15732412d22c1476fa83f27a
       readOnly: true
       maxLength: 32
-    Cloudflare Client API_bookmarks:
+    CloudflareClientAPI_bookmarks:
       type: object
       properties:
         app_launcher_visible:
@@ -224,12 +224,12 @@ components:
           $ref: '#/components/schemas/bookmarks_components-schemas-name'
         updated_at:
           $ref: '#/components/schemas/timestamp'
-    Cloudflare Client API_ca:
+    CloudflareClientAPI_ca:
       type: boolean
       description: Indicates whether the certificate is a CA or leaf certificate.
         Must be set to true.
       example: true
-    Cloudflare Client API_ca_components-schemas-response_collection:
+    CloudflareClientAPI_ca_components-schemas-response_collection:
       allOf:
       - $ref: '#/components/schemas/api-response-collection'
       - properties:
@@ -237,7 +237,7 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/schemas-ca'
-    Cloudflare Client API_certificates:
+    CloudflareClientAPI_certificates:
       type: object
       required:
       - hostnames
@@ -259,7 +259,7 @@ components:
           $ref: '#/components/schemas/request_type'
         requested_validity:
           $ref: '#/components/schemas/requested_validity'
-    Cloudflare Client API_certificates_components-schemas-response_collection:
+    CloudflareClientAPI_certificates_components-schemas-response_collection:
       allOf:
       - $ref: '#/components/schemas/api-response-collection'
       - properties:
@@ -267,19 +267,19 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/components-schemas-certificates'
-    Cloudflare Client API_certificates_components-schemas-single_response:
+    CloudflareClientAPI_certificates_components-schemas-single_response:
       allOf:
       - $ref: '#/components/schemas/api-response-single'
       - properties:
           result:
             $ref: '#/components/schemas/components-schemas-certificates'
-    Cloudflare Client API_clipResponseSingle:
+    CloudflareClientAPI_clipResponseSingle:
       allOf:
       - $ref: '#/components/schemas/api-response-collection'
       - properties:
           result:
             $ref: '#/components/schemas/schemas-output'
-    Cloudflare Client API_components-schemas-id_response:
+    CloudflareClientAPI_components-schemas-id_response:
       allOf:
       - $ref: '#/components/schemas/api-response-single'
       - properties:
@@ -288,13 +288,13 @@ components:
             properties:
               id:
                 $ref: '#/components/schemas/tsig_components-schemas-identifier'
-    Cloudflare Client API_components-schemas-name:
+    CloudflareClientAPI_components-schemas-name:
       type: string
       description: Role Name.
       example: Organization Admin
       readOnly: true
       maxLength: 120
-    Cloudflare Client API_components-schemas-response_collection:
+    CloudflareClientAPI_components-schemas-response_collection:
       allOf:
       - $ref: '#/components/schemas/api-response-collection'
       - properties:
@@ -302,13 +302,13 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/zone_components-schemas-zone'
-    Cloudflare Client API_components-schemas-single_response:
+    CloudflareClientAPI_components-schemas-single_response:
       allOf:
       - $ref: '#/components/schemas/api-response-single'
       - properties:
           result:
             $ref: '#/components/schemas/tsig'
-    Cloudflare Client API_connection:
+    CloudflareClientAPI_connection:
       properties:
         added_at:
           example: "2021-08-18T10:51:10.09615Z"
@@ -332,13 +332,13 @@ components:
           example: https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js
         url_contains_cdn_cgi_path:
           example: false
-    Cloudflare Client API_created:
+    CloudflareClientAPI_created:
       type: string
       format: date-time
       description: The date and time the destination address has been created.
       example: "2014-01-02T02:20:00Z"
       readOnly: true
-    Cloudflare Client API_direct_upload_request:
+    CloudflareClientAPI_direct_upload_request:
       type: object
       required:
       - maxDurationSeconds
@@ -368,7 +368,7 @@ components:
           $ref: '#/components/schemas/thumbnailTimestampPct'
         watermark:
           $ref: '#/components/schemas/watermark_at_upload'
-    Cloudflare Client API_direct_upload_response:
+    CloudflareClientAPI_direct_upload_response:
       allOf:
       - $ref: '#/components/schemas/api-response-single'
       - properties:
@@ -382,8 +382,8 @@ components:
                   `HTTP POST multipart/form-data` request.
                 example: www.example.com/samplepath
               watermark:
-                $ref: '#/components/schemas/Cloudflare Client API_watermarks'
-    Cloudflare Client API_domain:
+                $ref: '#/components/schemas/CloudflareClientAPI_watermarks'
+    CloudflareClientAPI_domain:
       type: object
       properties:
         environment:
@@ -398,7 +398,7 @@ components:
           $ref: '#/components/schemas/zone_identifier'
         zone_name:
           $ref: '#/components/schemas/zone_name'
-    Cloudflare Client API_domain-response-collection:
+    CloudflareClientAPI_domain-response-collection:
       allOf:
       - $ref: '#/components/schemas/api-response-common'
       - type: object
@@ -406,28 +406,28 @@ components:
           result:
             type: array
             items:
-              $ref: '#/components/schemas/Cloudflare Client API_domain'
-    Cloudflare Client API_domain-response-single:
+              $ref: '#/components/schemas/CloudflareClientAPI_domain'
+    CloudflareClientAPI_domain-response-single:
       allOf:
       - $ref: '#/components/schemas/api-response-common'
       - type: object
         properties:
           result:
-            $ref: '#/components/schemas/Cloudflare Client API_domain'
-    Cloudflare Client API_domain_name:
+            $ref: '#/components/schemas/CloudflareClientAPI_domain'
+    CloudflareClientAPI_domain_name:
       type: string
       description: Domain name.
       example: cloudflare.com
-    Cloudflare Client API_duration:
+    CloudflareClientAPI_duration:
       type: number
       description: The duration of the plan subscription.
       example: 1
-    Cloudflare Client API_email:
+    CloudflareClientAPI_email:
       type: string
       description: The contact email address of the user.
       example: user@example.com
       maxLength: 90
-    Cloudflare Client API_empty_response:
+    CloudflareClientAPI_empty_response:
       allOf:
       - $ref: '#/components/schemas/api-response-collection'
       - type: object
@@ -436,13 +436,13 @@ components:
             type: array
             maxItems: 0
             items: {}
-    Cloudflare Client API_exclude:
+    CloudflareClientAPI_exclude:
       type: array
       description: Rules evaluated with a NOT logical operator. To match a policy,
         a user cannot meet any of the Exclude rules.
       items:
         $ref: '#/components/schemas/rule_components-schemas-rule'
-    Cloudflare Client API_feature_app_props:
+    CloudflareClientAPI_feature_app_props:
       type: object
       properties:
         allowed_idps:
@@ -450,14 +450,14 @@ components:
         auto_redirect_to_identity:
           $ref: '#/components/schemas/auto_redirect_to_identity'
         domain:
-          $ref: '#/components/schemas/Cloudflare Client API_schemas-domain'
+          $ref: '#/components/schemas/CloudflareClientAPI_schemas-domain'
         name:
           $ref: '#/components/schemas/apps_components-schemas-name'
         session_duration:
           $ref: '#/components/schemas/session_duration'
         type:
           $ref: '#/components/schemas/apps_components-schemas-type'
-    Cloudflare Client API_groups:
+    CloudflareClientAPI_groups:
       type: object
       description: An object that allows you to enable or disable WAF rule groups
         for the current WAF override. Each key of this object must be the ID of a
@@ -466,11 +466,11 @@ components:
         a `groups` object or a `rules` object.
       example:
         ea8687e59929c1fd05ba97574ad43f77: default
-    Cloudflare Client API_id:
+    CloudflareClientAPI_id:
       type: integer
       description: Unique id of the job.
       minimum: 1
-    Cloudflare Client API_id_response:
+    CloudflareClientAPI_id_response:
       allOf:
       - $ref: '#/components/schemas/api-response-single'
       - properties:
@@ -479,12 +479,12 @@ components:
             properties:
               id:
                 $ref: '#/components/schemas/dns-secondary-secondary-zone_components-schemas-identifier'
-    Cloudflare Client API_identifier:
+    CloudflareClientAPI_identifier:
       type: string
       description: Policy identifier.
       example: f267e341f3dd4697bd3b9f71dd96247f
       readOnly: true
-    Cloudflare Client API_identity-providers:
+    CloudflareClientAPI_identity-providers:
       type: object
       properties:
         config:
@@ -495,13 +495,13 @@ components:
           $ref: '#/components/schemas/identity-providers_components-schemas-name'
         type:
           $ref: '#/components/schemas/identity-providers_components-schemas-type'
-    Cloudflare Client API_include:
+    CloudflareClientAPI_include:
       type: array
       description: Rules evaluated with an OR logical operator. A user needs to meet
         only one of the Include rules.
       items:
         $ref: '#/components/schemas/rule_components-schemas-rule'
-    Cloudflare Client API_ip:
+    CloudflareClientAPI_ip:
       type: string
       description: IPv4/IPv6 address of primary or secondary nameserver, depending
         on what zone this peer is linked to. For primary zones this IP defines the
@@ -509,7 +509,7 @@ components:
         secondary zones this IP defines the IP of the primary nameserver Cloudflare
         will send AXFR/IXFR requests to.
       example: 192.0.2.53
-    Cloudflare Client API_key_response_collection:
+    CloudflareClientAPI_key_response_collection:
       allOf:
       - $ref: '#/components/schemas/api-response-collection'
       - properties:
@@ -522,7 +522,7 @@ components:
                   $ref: '#/components/schemas/keys_components-schemas-created'
                 id:
                   $ref: '#/components/schemas/keys_components-schemas-identifier'
-    Cloudflare Client API_keys:
+    CloudflareClientAPI_keys:
       type: object
       properties:
         created:
@@ -533,7 +533,7 @@ components:
           $ref: '#/components/schemas/jwk'
         pem:
           $ref: '#/components/schemas/pem'
-    Cloudflare Client API_live_input_object_without_url:
+    CloudflareClientAPI_live_input_object_without_url:
       properties:
         created:
           $ref: '#/components/schemas/connect_components-schemas-created'
@@ -543,24 +543,24 @@ components:
           $ref: '#/components/schemas/components-schemas-modified'
         uid:
           $ref: '#/components/schemas/live_input_identifier'
-    Cloudflare Client API_maxDurationSeconds:
+    CloudflareClientAPI_maxDurationSeconds:
       type: integer
       description: The maximum duration in seconds for a video upload. Can be set
         for a video that is not yet uploaded to limit its duration. Uploads that exceed
         the specified duration will fail during processing. A value of `-1` means
         the value is unknown.
-    Cloudflare Client API_modified:
+    CloudflareClientAPI_modified:
       type: string
       format: date-time
       description: The date and time the destination address was last modified.
       example: "2014-01-02T02:20:00Z"
       readOnly: true
-    Cloudflare Client API_name:
+    CloudflareClientAPI_name:
       type: string
       description: Token name.
       example: readonly token
       maxLength: 120
-    Cloudflare Client API_organizations:
+    CloudflareClientAPI_organizations:
       type: object
       properties:
         auth_domain:
@@ -575,12 +575,12 @@ components:
           $ref: '#/components/schemas/organizations_components-schemas-name'
         updated_at:
           $ref: '#/components/schemas/timestamp'
-    Cloudflare Client API_policies:
+    CloudflareClientAPI_policies:
       type: array
       description: List of access policies assigned to the token.
       items:
         $ref: '#/components/schemas/access-policy'
-    Cloudflare Client API_policies_components-schemas-response_collection:
+    CloudflareClientAPI_policies_components-schemas-response_collection:
       allOf:
       - $ref: '#/components/schemas/api-response-collection'
       - properties:
@@ -588,19 +588,19 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/schemas-policies'
-    Cloudflare Client API_policies_components-schemas-single_response:
+    CloudflareClientAPI_policies_components-schemas-single_response:
       allOf:
       - $ref: '#/components/schemas/api-response-single'
       - properties:
           result:
             $ref: '#/components/schemas/schemas-policies'
-    Cloudflare Client API_require:
+    CloudflareClientAPI_require:
       type: array
       description: Rules evaluated with an AND logical operator. To match a policy,
         a user must meet all of the Require rules.
       items:
         $ref: '#/components/schemas/rule_components-schemas-rule'
-    Cloudflare Client API_response_collection:
+    CloudflareClientAPI_response_collection:
       allOf:
       - $ref: '#/components/schemas/api-response-collection'
       - type: object
@@ -609,7 +609,7 @@ components:
             type: array
             items:
               type: object
-    Cloudflare Client API_rule:
+    CloudflareClientAPI_rule:
       type: object
       required:
       - id
@@ -649,16 +649,16 @@ components:
           readOnly: true
         notes:
           $ref: '#/components/schemas/notes'
-    Cloudflare Client API_schemas-domain:
+    CloudflareClientAPI_schemas-domain:
       type: string
       description: The domain and path that Access will secure.
       example: test.example.com/admin
-    Cloudflare Client API_schemas-email:
+    CloudflareClientAPI_schemas-email:
       type: string
       format: email
       description: The email address of the authenticating user.
       example: user@example.com
-    Cloudflare Client API_schemas-empty_response:
+    CloudflareClientAPI_schemas-empty_response:
       allOf:
       - properties:
           result:
@@ -673,17 +673,17 @@ components:
             - true
             - false
             example: true
-    Cloudflare Client API_schemas-exclude:
+    CloudflareClientAPI_schemas-exclude:
       type: array
       description: Rules evaluated with a NOT logical operator. To match the policy,
         a user cannot meet any of the Exclude rules.
       items:
         $ref: '#/components/schemas/rule_components-schemas-rule'
-    Cloudflare Client API_schemas-id:
+    CloudflareClientAPI_schemas-id:
       type: string
       description: Identifier of a recommedation result.
       example: ssl_recommendation
-    Cloudflare Client API_schemas-id_response:
+    CloudflareClientAPI_schemas-id_response:
       allOf:
       - $ref: '#/components/schemas/api-response-single'
       - properties:
@@ -692,19 +692,19 @@ components:
             properties:
               id:
                 $ref: '#/components/schemas/dns-secondary-primary-zone_components-schemas-identifier'
-    Cloudflare Client API_schemas-identifier: {}
-    Cloudflare Client API_schemas-name:
+    CloudflareClientAPI_schemas-identifier: {}
+    CloudflareClientAPI_schemas-name:
       type: string
       description: Organization name.
       example: Cloudflare, Inc.
       maxLength: 100
-    Cloudflare Client API_schemas-require:
+    CloudflareClientAPI_schemas-require:
       type: array
       description: Rules evaluated with an AND logical operator. To match the policy,
         a user must meet all of the Require rules.
       items:
         $ref: '#/components/schemas/rule_components-schemas-rule'
-    Cloudflare Client API_schemas-response_collection:
+    CloudflareClientAPI_schemas-response_collection:
       allOf:
       - $ref: '#/components/schemas/api-response-collection'
       - type: object
@@ -742,13 +742,13 @@ components:
               - com.cloudflare.api.account
             items:
               type: object
-    Cloudflare Client API_schemas-single_response:
+    CloudflareClientAPI_schemas-single_response:
       allOf:
       - $ref: '#/components/schemas/api-response-single'
       - properties:
           result:
             $ref: '#/components/schemas/api-shield'
-    Cloudflare Client API_self_hosted_props:
+    CloudflareClientAPI_self_hosted_props:
       type: object
       title: Self Hosted Application
       properties:
@@ -765,7 +765,7 @@ components:
         custom_deny_url:
           $ref: '#/components/schemas/custom_deny_url'
         domain:
-          $ref: '#/components/schemas/Cloudflare Client API_schemas-domain'
+          $ref: '#/components/schemas/CloudflareClientAPI_schemas-domain'
         enable_binding_cookie:
           $ref: '#/components/schemas/enable_binding_cookie'
         http_only_cookie_attribute:
@@ -786,19 +786,19 @@ components:
           type: string
           description: The application type.
           example: self_hosted
-    Cloudflare Client API_single_response:
+    CloudflareClientAPI_single_response:
       allOf:
       - $ref: '#/components/schemas/api-response-single'
       - properties:
           result:
             $ref: '#/components/schemas/configuration'
-    Cloudflare Client API_type:
+    CloudflareClientAPI_type:
       type: string
       description: The billing item type.
       example: charge
       readOnly: true
       maxLength: 30
-    Cloudflare Client API_users:
+    CloudflareClientAPI_users:
       type: object
       properties:
         access_seat:
@@ -823,7 +823,7 @@ components:
           $ref: '#/components/schemas/uid'
         updated_at:
           $ref: '#/components/schemas/timestamp'
-    Cloudflare Client API_videoClipStandard:
+    CloudflareClientAPI_videoClipStandard:
       type: object
       required:
       - clippedFromVideoUID
@@ -848,7 +848,7 @@ components:
           $ref: '#/components/schemas/thumbnailTimestampPct'
         watermark:
           $ref: '#/components/schemas/watermarkAtUpload'
-    Cloudflare Client API_videos:
+    CloudflareClientAPI_videos:
       type: object
       properties:
         allowedOrigins:
@@ -864,7 +864,7 @@ components:
         liveInput:
           $ref: '#/components/schemas/liveInput'
         maxDurationSeconds:
-          $ref: '#/components/schemas/Cloudflare Client API_maxDurationSeconds'
+          $ref: '#/components/schemas/CloudflareClientAPI_maxDurationSeconds'
         meta:
           $ref: '#/components/schemas/media_metadata'
         modified:
@@ -894,8 +894,8 @@ components:
         uploaded:
           $ref: '#/components/schemas/uploaded'
         watermark:
-          $ref: '#/components/schemas/Cloudflare Client API_watermarks'
-    Cloudflare Client API_watermark_basic_upload:
+          $ref: '#/components/schemas/CloudflareClientAPI_watermarks'
+    CloudflareClientAPI_watermark_basic_upload:
       type: object
       required:
       - file
@@ -914,7 +914,7 @@ components:
           $ref: '#/components/schemas/position'
         scale:
           $ref: '#/components/schemas/scale'
-    Cloudflare Client API_watermarks:
+    CloudflareClientAPI_watermarks:
       type: object
       properties:
         created:
@@ -1599,12 +1599,6 @@ components:
       - name
       - data
       - priority
-    Zonekeeper Public API_identifier:
-      type: string
-      description: Identifier
-      example: 023e105f4ecef8ad9ca31a8372d0c353
-      readOnly: true
-      maxLength: 32
     access-policy:
       oneOf:
       - $ref: '#/components/schemas/policy_with_permission_groups'
@@ -1643,7 +1637,7 @@ components:
           result:
             type: array
             items:
-              $ref: '#/components/schemas/Cloudflare Client API_access-requests'
+              $ref: '#/components/schemas/CloudflareClientAPI_access-requests'
     access_group_rule:
       type: object
       title: Access groups
@@ -2814,7 +2808,7 @@ components:
       example: 699d98642c564d2e855e9661899b7252
     app_launcher_props:
       allOf:
-      - $ref: '#/components/schemas/Cloudflare Client API_feature_app_props'
+      - $ref: '#/components/schemas/CloudflareClientAPI_feature_app_props'
       - properties:
           domain:
             example: authdomain.cloudflareaccess.com
@@ -2912,7 +2906,7 @@ components:
       anyOf:
       - allOf:
         - $ref: '#/components/schemas/basic_app_response_props'
-        - $ref: '#/components/schemas/Cloudflare Client API_self_hosted_props'
+        - $ref: '#/components/schemas/CloudflareClientAPI_self_hosted_props'
         type: object
         title: Self Hosted Application
       - allOf:
@@ -3588,7 +3582,7 @@ components:
       - zone
       properties:
         action:
-          $ref: '#/components/schemas/Cloudflare Client API_action'
+          $ref: '#/components/schemas/CloudflareClientAPI_action'
         amount:
           $ref: '#/components/schemas/amount'
         currency:
@@ -3600,7 +3594,7 @@ components:
         occurred_at:
           $ref: '#/components/schemas/occurred_at'
         type:
-          $ref: '#/components/schemas/Cloudflare Client API_type'
+          $ref: '#/components/schemas/CloudflareClientAPI_type'
         zone:
           $ref: '#/components/schemas/schemas-zone'
     billing-history_components-schemas-identifier:
@@ -3635,7 +3629,7 @@ components:
       readOnly: true
     biso_props:
       allOf:
-      - $ref: '#/components/schemas/Cloudflare Client API_feature_app_props'
+      - $ref: '#/components/schemas/CloudflareClientAPI_feature_app_props'
       - properties:
           domain:
             example: authdomain.cloudflareaccess.com/browser
@@ -3750,13 +3744,13 @@ components:
           result:
             type: array
             items:
-              $ref: '#/components/schemas/Cloudflare Client API_bookmarks'
+              $ref: '#/components/schemas/CloudflareClientAPI_bookmarks'
     bookmarks_components-schemas-single_response:
       allOf:
       - $ref: '#/components/schemas/api-response-single'
       - properties:
           result:
-            $ref: '#/components/schemas/Cloudflare Client API_bookmarks'
+            $ref: '#/components/schemas/CloudflareClientAPI_bookmarks'
     brand_check:
       type: boolean
       description: Certificate Authority is manually reviewing the order.
@@ -4436,7 +4430,7 @@ components:
     certificateObjectPost:
       properties:
         ca:
-          $ref: '#/components/schemas/Cloudflare Client API_ca'
+          $ref: '#/components/schemas/CloudflareClientAPI_ca'
         certificates:
           $ref: '#/components/schemas/schemas-certificates'
         expires_on:
@@ -4748,12 +4742,6 @@ components:
       example: ea95132c15732412d22c1476fa83f27a
       readOnly: true
       maxLength: 32
-    cloudflare-stream-client-api_name:
-      type: string
-      description: A short description of the watermark profile.
-      default: ""
-      example: Marketing Videos
-      readOnly: true
     cloudflare-tunnel_components-schemas-connection:
       properties:
         client_id:
@@ -5157,7 +5145,7 @@ components:
     components-schemas-certificateObject:
       properties:
         ca:
-          $ref: '#/components/schemas/Cloudflare Client API_ca'
+          $ref: '#/components/schemas/CloudflareClientAPI_ca'
         certificates:
           $ref: '#/components/schemas/schemas-certificates'
         expires_on:
@@ -5384,7 +5372,7 @@ components:
       - roles
       properties:
         email:
-          $ref: '#/components/schemas/Cloudflare Client API_email'
+          $ref: '#/components/schemas/CloudflareClientAPI_email'
         id:
           $ref: '#/components/schemas/common_components-schemas-identifier'
         name:
@@ -6210,7 +6198,7 @@ components:
         country:
           $ref: '#/components/schemas/country'
         email:
-          $ref: '#/components/schemas/Cloudflare Client API_email'
+          $ref: '#/components/schemas/CloudflareClientAPI_email'
         fax:
           $ref: '#/components/schemas/fax'
         first_name:
@@ -6438,7 +6426,7 @@ components:
       - roles
       properties:
         email:
-          $ref: '#/components/schemas/Cloudflare Client API_email'
+          $ref: '#/components/schemas/CloudflareClientAPI_email'
         roles:
           type: array
           description: Array of roles associated with this member.
@@ -6474,7 +6462,7 @@ components:
       - email
       properties:
         email:
-          $ref: '#/components/schemas/Cloudflare Client API_email'
+          $ref: '#/components/schemas/CloudflareClientAPI_email'
     create_input_request:
       properties:
         defaultCreator:
@@ -6505,11 +6493,11 @@ components:
         expires_on:
           $ref: '#/components/schemas/expires_on'
         name:
-          $ref: '#/components/schemas/Cloudflare Client API_name'
+          $ref: '#/components/schemas/CloudflareClientAPI_name'
         not_before:
           $ref: '#/components/schemas/not_before'
         policies:
-          $ref: '#/components/schemas/Cloudflare Client API_policies'
+          $ref: '#/components/schemas/CloudflareClientAPI_policies'
     create_rename_namespace_body:
       type: object
       required:
@@ -7904,11 +7892,11 @@ components:
       type: object
       properties:
         created:
-          $ref: '#/components/schemas/Cloudflare Client API_created'
+          $ref: '#/components/schemas/CloudflareClientAPI_created'
         email:
-          $ref: '#/components/schemas/Cloudflare Client API_email'
+          $ref: '#/components/schemas/CloudflareClientAPI_email'
         modified:
-          $ref: '#/components/schemas/Cloudflare Client API_modified'
+          $ref: '#/components/schemas/CloudflareClientAPI_modified'
         tag:
           $ref: '#/components/schemas/destination_address_identifier'
         verified:
@@ -10196,7 +10184,7 @@ components:
           example: us
     get-zone-connection-response:
       allOf:
-      - $ref: '#/components/schemas/Cloudflare Client API_connection'
+      - $ref: '#/components/schemas/CloudflareClientAPI_connection'
     get-zone-script-response:
       allOf:
       - $ref: '#/components/schemas/script'
@@ -11025,7 +11013,11 @@ components:
               id:
                 $ref: '#/components/schemas/schemas-uuid'
     identifier:
-      example: 699d98642c564d2e855e9661899b7252
+      type: string
+      description: Identifier
+      example: 023e105f4ecef8ad9ca31a8372d0c353
+      readOnly: true
+      maxLength: 32
     identity:
       type: string
       description: The wirefilter expression to be used for identity matching.
@@ -11079,13 +11071,13 @@ components:
           result:
             type: array
             items:
-              $ref: '#/components/schemas/Cloudflare Client API_identity-providers'
+              $ref: '#/components/schemas/CloudflareClientAPI_identity-providers'
     identity-providers_components-schemas-single_response:
       allOf:
       - $ref: '#/components/schemas/api-response-single'
       - properties:
           result:
-            $ref: '#/components/schemas/Cloudflare Client API_identity-providers'
+            $ref: '#/components/schemas/CloudflareClientAPI_identity-providers'
     identity-providers_components-schemas-type:
       type: string
       description: The type of identity provider. To determine the value for a specific
@@ -11198,7 +11190,7 @@ components:
       type: object
       properties:
         allowed:
-          $ref: '#/components/schemas/Cloudflare Client API_allowed'
+          $ref: '#/components/schemas/CloudflareClientAPI_allowed'
         current:
           $ref: '#/components/schemas/current'
     images_stats:
@@ -11940,7 +11932,7 @@ components:
       - $ref: '#/components/schemas/api-response-collection'
       - properties:
           result:
-            $ref: '#/components/schemas/Cloudflare Client API_keys'
+            $ref: '#/components/schemas/CloudflareClientAPI_keys'
     key_name:
       type: string
       description: A key's name. The name may be at most 512 bytes. All printable,
@@ -12272,7 +12264,7 @@ components:
           result:
             type: array
             items:
-              $ref: '#/components/schemas/Cloudflare Client API_connection'
+              $ref: '#/components/schemas/CloudflareClientAPI_connection'
           result_info:
             $ref: '#/components/schemas/result_info'
     list-zone-scripts-response:
@@ -12534,7 +12526,7 @@ components:
               liveInputs:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Cloudflare Client API_live_input_object_without_url'
+                  $ref: '#/components/schemas/CloudflareClientAPI_live_input_object_without_url'
               range:
                 type: integer
                 description: The total number of remaining live inputs based on cursor
@@ -13223,7 +13215,7 @@ components:
           - email
           properties:
             email:
-              $ref: '#/components/schemas/Cloudflare Client API_email'
+              $ref: '#/components/schemas/CloudflareClientAPI_email'
             first_name:
               $ref: '#/components/schemas/first_name'
             id:
@@ -13859,8 +13851,10 @@ components:
                   $ref: '#/components/schemas/schemas-route'
     name:
       type: string
-      description: The name of your Zero Trust organization.
-      example: Widget Corps Internal Applications
+      description: A short description of the watermark profile.
+      default: ""
+      example: Marketing Videos
+      readOnly: true
     name_servers:
       type: array
       description: List of name servers.
@@ -14390,7 +14384,7 @@ components:
         id:
           $ref: '#/components/schemas/common_components-schemas-identifier'
         name:
-          $ref: '#/components/schemas/Cloudflare Client API_schemas-name'
+          $ref: '#/components/schemas/CloudflareClientAPI_schemas-name'
         permissions:
           $ref: '#/components/schemas/schemas-permissions'
         roles:
@@ -14441,7 +14435,7 @@ components:
         login_design:
           $ref: '#/components/schemas/login_design'
         name:
-          $ref: '#/components/schemas/name'
+          $ref: '#/components/schemas/CloudflareClientAPI_name'
         updated_at:
           $ref: '#/components/schemas/timestamp'
     organizations_components-schemas-identifier:
@@ -14455,7 +14449,7 @@ components:
       - $ref: '#/components/schemas/api-response-single'
       - properties:
           result:
-            $ref: '#/components/schemas/Cloudflare Client API_organizations'
+            $ref: '#/components/schemas/CloudflareClientAPI_organizations'
     origin:
       type: string
       description: Your origin hostname that requests to your custom hostnames will
@@ -14698,7 +14692,7 @@ components:
         description:
           $ref: '#/components/schemas/overrides_components-schemas-description'
         groups:
-          $ref: '#/components/schemas/Cloudflare Client API_groups'
+          $ref: '#/components/schemas/CloudflareClientAPI_groups'
         id:
           $ref: '#/components/schemas/overrides_components-schemas-id'
         paused:
@@ -15408,7 +15402,7 @@ components:
         id:
           $ref: '#/components/schemas/peer_components-schemas-identifier'
         ip:
-          $ref: '#/components/schemas/Cloudflare Client API_ip'
+          $ref: '#/components/schemas/CloudflareClientAPI_ip'
         ixfr_enable:
           $ref: '#/components/schemas/ixfr_enable'
         name:
@@ -15894,7 +15888,7 @@ components:
         effect:
           $ref: '#/components/schemas/effect'
         id:
-          $ref: '#/components/schemas/Cloudflare Client API_identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
         permission_groups:
           $ref: '#/components/schemas/permission_groups'
         resources:
@@ -16964,7 +16958,7 @@ components:
         currency:
           $ref: '#/components/schemas/currency'
         duration:
-          $ref: '#/components/schemas/Cloudflare Client API_duration'
+          $ref: '#/components/schemas/CloudflareClientAPI_duration'
         frequency:
           $ref: '#/components/schemas/schemas-frequency'
         id:
@@ -17458,7 +17452,7 @@ components:
               edge_ips:
                 $ref: '#/components/schemas/edge_ips'
               id:
-                $ref: '#/components/schemas/Cloudflare Client API_app_id'
+                $ref: '#/components/schemas/CloudflareClientAPI_app_id'
               ip_firewall:
                 $ref: '#/components/schemas/ip_firewall'
               modified_on:
@@ -17978,7 +17972,7 @@ components:
           result:
             type: array
             items:
-              $ref: '#/components/schemas/Cloudflare Client API_rule'
+              $ref: '#/components/schemas/CloudflareClientAPI_rule'
     rule_components-schemas-base:
       properties:
         description:
@@ -18164,7 +18158,7 @@ components:
       - $ref: '#/components/schemas/api-response-single'
       - properties:
           result:
-            $ref: '#/components/schemas/Cloudflare Client API_rule'
+            $ref: '#/components/schemas/CloudflareClientAPI_rule'
     rule_version:
       type: string
       description: The version of the rule.
@@ -18708,7 +18702,7 @@ components:
       anyOf:
       - allOf:
         - $ref: '#/components/schemas/basic_app_response_props'
-        - $ref: '#/components/schemas/Cloudflare Client API_self_hosted_props'
+        - $ref: '#/components/schemas/CloudflareClientAPI_self_hosted_props'
         type: object
         title: Self Hosted Application
       - allOf:
@@ -18889,7 +18883,7 @@ components:
           result:
             type: array
             items:
-              $ref: '#/components/schemas/Cloudflare Client API_certificates'
+              $ref: '#/components/schemas/CloudflareClientAPI_certificates'
     schemas-certificate_response_single:
       allOf:
       - $ref: '#/components/schemas/api-response-single'
@@ -19376,15 +19370,15 @@ components:
         created_at:
           $ref: '#/components/schemas/timestamp'
         exclude:
-          $ref: '#/components/schemas/Cloudflare Client API_exclude'
+          $ref: '#/components/schemas/CloudflareClientAPI_exclude'
         id:
           $ref: '#/components/schemas/schemas-uuid'
         include:
-          $ref: '#/components/schemas/Cloudflare Client API_include'
+          $ref: '#/components/schemas/CloudflareClientAPI_include'
         name:
           $ref: '#/components/schemas/groups_components-schemas-name'
         require:
-          $ref: '#/components/schemas/Cloudflare Client API_require'
+          $ref: '#/components/schemas/CloudflareClientAPI_require'
         updated_at:
           $ref: '#/components/schemas/timestamp'
     schemas-header:
@@ -19818,11 +19812,11 @@ components:
         decision:
           $ref: '#/components/schemas/decision'
         exclude:
-          $ref: '#/components/schemas/Cloudflare Client API_schemas-exclude'
+          $ref: '#/components/schemas/CloudflareClientAPI_schemas-exclude'
         id:
           $ref: '#/components/schemas/components-schemas-uuid'
         include:
-          $ref: '#/components/schemas/Cloudflare Client API_include'
+          $ref: '#/components/schemas/CloudflareClientAPI_include'
         name:
           $ref: '#/components/schemas/policies_components-schemas-name'
         precedence:
@@ -19832,7 +19826,7 @@ components:
         purpose_justification_required:
           $ref: '#/components/schemas/purpose_justification_required'
         require:
-          $ref: '#/components/schemas/Cloudflare Client API_schemas-require'
+          $ref: '#/components/schemas/CloudflareClientAPI_schemas-require'
         updated_at:
           $ref: '#/components/schemas/timestamp'
     schemas-port:
@@ -20199,7 +20193,7 @@ components:
         id:
           $ref: '#/components/schemas/role_components-schemas-identifier'
         name:
-          $ref: '#/components/schemas/Cloudflare Client API_components-schemas-name'
+          $ref: '#/components/schemas/CloudflareClientAPI_components-schemas-name'
         permissions:
           $ref: '#/components/schemas/schemas-permissions'
     schemas-route:
@@ -20229,7 +20223,7 @@ components:
           $ref: '#/components/schemas/schemas-weight'
     schemas-rule:
       allOf:
-      - $ref: '#/components/schemas/Cloudflare Client API_rule'
+      - $ref: '#/components/schemas/CloudflareClientAPI_rule'
       - properties:
           scope:
             type: object
@@ -20237,7 +20231,7 @@ components:
             readOnly: true
             properties:
               email:
-                $ref: '#/components/schemas/Cloudflare Client API_email'
+                $ref: '#/components/schemas/CloudflareClientAPI_email'
               id:
                 $ref: '#/components/schemas/common_components-schemas-identifier'
               type:
@@ -21787,7 +21781,7 @@ components:
               $ref: '#/components/schemas/split_tunnel'
     ssh_props:
       allOf:
-      - $ref: '#/components/schemas/Cloudflare Client API_self_hosted_props'
+      - $ref: '#/components/schemas/CloudflareClientAPI_self_hosted_props'
       - properties:
           type:
             type: string
@@ -22690,11 +22684,11 @@ components:
         modified_on:
           $ref: '#/components/schemas/modified_on'
         name:
-          $ref: '#/components/schemas/Cloudflare Client API_name'
+          $ref: '#/components/schemas/CloudflareClientAPI_name'
         not_before:
           $ref: '#/components/schemas/not_before'
         policies:
-          $ref: '#/components/schemas/Cloudflare Client API_policies'
+          $ref: '#/components/schemas/CloudflareClientAPI_policies'
         status:
           $ref: '#/components/schemas/status'
     total-tls_components-schemas-enabled:
@@ -23472,7 +23466,7 @@ components:
       type: object
       properties:
         email:
-          $ref: '#/components/schemas/Cloudflare Client API_email'
+          $ref: '#/components/schemas/CloudflareClientAPI_email'
         id:
           $ref: '#/components/schemas/uuid'
         name:
@@ -23560,7 +23554,7 @@ components:
           result:
             type: array
             items:
-              $ref: '#/components/schemas/Cloudflare Client API_users'
+              $ref: '#/components/schemas/CloudflareClientAPI_users'
     uuid:
       type: string
       description: UUID
@@ -23974,7 +23968,7 @@ components:
           result:
             type: array
             items:
-              $ref: '#/components/schemas/Cloudflare Client API_videos'
+              $ref: '#/components/schemas/CloudflareClientAPI_videos'
       - properties:
           range:
             type: integer
@@ -24169,7 +24163,7 @@ components:
         network of the account.
     vnc_props:
       allOf:
-      - $ref: '#/components/schemas/Cloudflare Client API_self_hosted_props'
+      - $ref: '#/components/schemas/CloudflareClientAPI_self_hosted_props'
       - properties:
           type:
             type: string
@@ -24338,7 +24332,7 @@ components:
       example: queueing
     warp_props:
       allOf:
-      - $ref: '#/components/schemas/Cloudflare Client API_feature_app_props'
+      - $ref: '#/components/schemas/CloudflareClientAPI_feature_app_props'
       - properties:
           domain:
             example: authdomain.cloudflareaccess.com/warp
@@ -24383,7 +24377,7 @@ components:
           description: The image file to upload.
           example: '@/Users/rchen/Downloads/watermark.png'
         name:
-          $ref: '#/components/schemas/cloudflare-stream-client-api_name'
+          $ref: '#/components/schemas/name'
         opacity:
           $ref: '#/components/schemas/opacity'
         padding:
@@ -24411,7 +24405,7 @@ components:
           result:
             type: array
             items:
-              $ref: '#/components/schemas/Cloudflare Client API_watermarks'
+              $ref: '#/components/schemas/CloudflareClientAPI_watermarks'
     watermark_response_single:
       allOf:
       - $ref: '#/components/schemas/api-response-single'
@@ -24441,7 +24435,7 @@ components:
         height:
           $ref: '#/components/schemas/height'
         name:
-          $ref: '#/components/schemas/cloudflare-stream-client-api_name'
+          $ref: '#/components/schemas/name'
         opacity:
           $ref: '#/components/schemas/opacity'
         padding:
@@ -24978,14 +24972,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/Cloudflare Client API_response_collection'
+                - $ref: '#/components/schemas/CloudflareClientAPI_response_collection'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: List Accounts response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cloudflare Client API_response_collection'
+                $ref: '#/components/schemas/CloudflareClientAPI_response_collection'
       security:
       - api_email: []
         api_key: []
@@ -26587,7 +26581,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_account_identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_account_identifier'
       responses:
         4xx:
           description: Billing Profile Details response failure
@@ -28072,7 +28066,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_account_identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_account_identifier'
       responses:
         4xx:
           description: List IP Access rules response failure
@@ -28080,14 +28074,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/Cloudflare Client API_response_collection'
+                - $ref: '#/components/schemas/CloudflareClientAPI_response_collection'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: List IP Access rules response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cloudflare Client API_response_collection'
+                $ref: '#/components/schemas/CloudflareClientAPI_response_collection'
       security:
       - api_email: []
         api_key: []
@@ -28106,7 +28100,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_account_identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_account_identifier'
       requestBody:
         required: true
         content:
@@ -28156,12 +28150,12 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_schemas-identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_schemas-identifier'
       - name: account_identifier
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_account_identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_account_identifier'
       requestBody:
         required: true
         content:
@@ -28173,14 +28167,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/Cloudflare Client API_api-response-single-id'
+                - $ref: '#/components/schemas/CloudflareClientAPI_api-response-single-id'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Delete an IP Access rule response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cloudflare Client API_api-response-single-id'
+                $ref: '#/components/schemas/CloudflareClientAPI_api-response-single-id'
       security:
       - api_email: []
         api_key: []
@@ -28197,12 +28191,12 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_schemas-identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_schemas-identifier'
       - name: account_identifier
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_account_identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_account_identifier'
       responses:
         4xx:
           description: Get an IP Access rule response failure
@@ -28236,12 +28230,12 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_schemas-identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_schemas-identifier'
       - name: account_identifier
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_account_identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_account_identifier'
       requestBody:
         required: true
         content:
@@ -31155,7 +31149,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_account_identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_account_identifier'
       responses:
         4xx:
           description: List Members response failure
@@ -31163,14 +31157,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/Cloudflare Client API_response_collection'
+                - $ref: '#/components/schemas/CloudflareClientAPI_response_collection'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: List Members response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cloudflare Client API_response_collection'
+                $ref: '#/components/schemas/CloudflareClientAPI_response_collection'
       security:
       - api_email: []
         api_key: []
@@ -31186,7 +31180,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_account_identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_account_identifier'
       requestBody:
         required: true
         content:
@@ -31224,12 +31218,12 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_schemas-identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_schemas-identifier'
       - name: account_identifier
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_account_identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_account_identifier'
       requestBody:
         required: true
         content:
@@ -31241,14 +31235,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/Cloudflare Client API_api-response-single-id'
+                - $ref: '#/components/schemas/CloudflareClientAPI_api-response-single-id'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Remove Member response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cloudflare Client API_api-response-single-id'
+                $ref: '#/components/schemas/CloudflareClientAPI_api-response-single-id'
       security:
       - api_email: []
         api_key: []
@@ -31264,12 +31258,12 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_schemas-identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_schemas-identifier'
       - name: account_identifier
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_account_identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_account_identifier'
       responses:
         4xx:
           description: Member Details response failure
@@ -31300,12 +31294,12 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_schemas-identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_schemas-identifier'
       - name: account_identifier
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_account_identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_account_identifier'
       requestBody:
         required: true
         content:
@@ -31853,7 +31847,7 @@ paths:
               - ca
               properties:
                 ca:
-                  $ref: '#/components/schemas/Cloudflare Client API_ca'
+                  $ref: '#/components/schemas/CloudflareClientAPI_ca'
                 certificates:
                   $ref: '#/components/schemas/schemas-certificates'
                 name:
@@ -32007,7 +32001,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: Get projects response failure
@@ -32016,7 +32010,7 @@ paths:
               schema:
                 allOf:
                 - $ref: '#/components/schemas/projects-response'
-                - $ref: '#/components/schemas/Cloudflare Client API_api-response-common-failure'
+                - $ref: '#/components/schemas/CloudflareClientAPI_api-response-common-failure'
         "200":
           description: Get projects response
           content:
@@ -32038,7 +32032,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -32053,7 +32047,7 @@ paths:
               schema:
                 allOf:
                 - $ref: '#/components/schemas/new-project-response'
-                - $ref: '#/components/schemas/Cloudflare Client API_api-response-common-failure'
+                - $ref: '#/components/schemas/CloudflareClientAPI_api-response-common-failure'
         "200":
           description: Create project response
           content:
@@ -32081,7 +32075,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -32098,7 +32092,7 @@ paths:
                     messages: []
                     result: null
                     success: true
-                - $ref: '#/components/schemas/Cloudflare Client API_api-response-common-failure'
+                - $ref: '#/components/schemas/CloudflareClientAPI_api-response-common-failure'
         "200":
           description: Delete project response
           content:
@@ -32129,7 +32123,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: Get project response failure
@@ -32138,7 +32132,7 @@ paths:
               schema:
                 allOf:
                 - $ref: '#/components/schemas/project-response'
-                - $ref: '#/components/schemas/Cloudflare Client API_api-response-common-failure'
+                - $ref: '#/components/schemas/CloudflareClientAPI_api-response-common-failure'
         "200":
           description: Get project response
           content:
@@ -32166,7 +32160,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -32181,7 +32175,7 @@ paths:
               schema:
                 allOf:
                 - $ref: '#/components/schemas/new-project-response'
-                - $ref: '#/components/schemas/Cloudflare Client API_api-response-common-failure'
+                - $ref: '#/components/schemas/CloudflareClientAPI_api-response-common-failure'
         "200":
           description: Update project response
           content:
@@ -32209,7 +32203,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: Get deployments response failure
@@ -32218,7 +32212,7 @@ paths:
               schema:
                 allOf:
                 - $ref: '#/components/schemas/deployment-list-response'
-                - $ref: '#/components/schemas/Cloudflare Client API_api-response-common-failure'
+                - $ref: '#/components/schemas/CloudflareClientAPI_api-response-common-failure'
         "200":
           description: Get deployments response
           content:
@@ -32246,7 +32240,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -32259,7 +32253,7 @@ paths:
               schema:
                 allOf:
                 - $ref: '#/components/schemas/deployment-new-deployment'
-                - $ref: '#/components/schemas/Cloudflare Client API_api-response-common-failure'
+                - $ref: '#/components/schemas/CloudflareClientAPI_api-response-common-failure'
         "200":
           description: Create deployment response
           content:
@@ -32282,7 +32276,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_identifier'
+          $ref: '#/components/schemas/identifier'
       - name: project_name
         in: path
         required: true
@@ -32292,7 +32286,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -32309,7 +32303,7 @@ paths:
                     messages: []
                     result: null
                     success: true
-                - $ref: '#/components/schemas/Cloudflare Client API_api-response-common-failure'
+                - $ref: '#/components/schemas/CloudflareClientAPI_api-response-common-failure'
         "200":
           description: Delete deployment response
           content:
@@ -32335,7 +32329,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_identifier'
+          $ref: '#/components/schemas/identifier'
       - name: project_name
         in: path
         required: true
@@ -32345,7 +32339,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: Get deployment info response failure
@@ -32354,7 +32348,7 @@ paths:
               schema:
                 allOf:
                 - $ref: '#/components/schemas/deployment-response-details'
-                - $ref: '#/components/schemas/Cloudflare Client API_api-response-common-failure'
+                - $ref: '#/components/schemas/CloudflareClientAPI_api-response-common-failure'
         "200":
           description: Get deployment info response
           content:
@@ -32377,7 +32371,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_identifier'
+          $ref: '#/components/schemas/identifier'
       - name: project_name
         in: path
         required: true
@@ -32387,7 +32381,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: Get deployment logs response failure
@@ -32396,7 +32390,7 @@ paths:
               schema:
                 allOf:
                 - $ref: '#/components/schemas/deployment-response-logs'
-                - $ref: '#/components/schemas/Cloudflare Client API_api-response-common-failure'
+                - $ref: '#/components/schemas/CloudflareClientAPI_api-response-common-failure'
         "200":
           description: Get deployment logs response
           content:
@@ -32419,7 +32413,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_identifier'
+          $ref: '#/components/schemas/identifier'
       - name: project_name
         in: path
         required: true
@@ -32429,7 +32423,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -32442,7 +32436,7 @@ paths:
               schema:
                 allOf:
                 - $ref: '#/components/schemas/deployment-new-deployment'
-                - $ref: '#/components/schemas/Cloudflare Client API_api-response-common-failure'
+                - $ref: '#/components/schemas/CloudflareClientAPI_api-response-common-failure'
         "200":
           description: Retry deployment response
           content:
@@ -32466,7 +32460,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_identifier'
+          $ref: '#/components/schemas/identifier'
       - name: project_name
         in: path
         required: true
@@ -32476,7 +32470,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -32489,7 +32483,7 @@ paths:
               schema:
                 allOf:
                 - $ref: '#/components/schemas/deployment-response-details'
-                - $ref: '#/components/schemas/Cloudflare Client API_api-response-common-failure'
+                - $ref: '#/components/schemas/CloudflareClientAPI_api-response-common-failure'
         "200":
           description: Rollback deployment response
           content:
@@ -32517,7 +32511,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: Get domains response failure
@@ -32526,7 +32520,7 @@ paths:
               schema:
                 allOf:
                 - $ref: '#/components/schemas/domain-response-collection'
-                - $ref: '#/components/schemas/Cloudflare Client API_api-response-common-failure'
+                - $ref: '#/components/schemas/CloudflareClientAPI_api-response-common-failure'
         "200":
           description: Get domains response
           content:
@@ -32553,7 +32547,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -32568,7 +32562,7 @@ paths:
               schema:
                 allOf:
                 - $ref: '#/components/schemas/domain-response-single'
-                - $ref: '#/components/schemas/Cloudflare Client API_api-response-common-failure'
+                - $ref: '#/components/schemas/CloudflareClientAPI_api-response-common-failure'
         "200":
           description: Add domain response
           content:
@@ -32601,7 +32595,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -32618,7 +32612,7 @@ paths:
                     messages: []
                     result: null
                     success: true
-                - $ref: '#/components/schemas/Cloudflare Client API_api-response-common-failure'
+                - $ref: '#/components/schemas/CloudflareClientAPI_api-response-common-failure'
         "200":
           description: Delete domain response
           content:
@@ -32654,7 +32648,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: Get domain response failure
@@ -32663,7 +32657,7 @@ paths:
               schema:
                 allOf:
                 - $ref: '#/components/schemas/domain-response-single'
-                - $ref: '#/components/schemas/Cloudflare Client API_api-response-common-failure'
+                - $ref: '#/components/schemas/CloudflareClientAPI_api-response-common-failure'
         "200":
           description: Get domain response
           content:
@@ -32695,7 +32689,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -32708,7 +32702,7 @@ paths:
               schema:
                 allOf:
                 - $ref: '#/components/schemas/domain-response-single'
-                - $ref: '#/components/schemas/Cloudflare Client API_api-response-common-failure'
+                - $ref: '#/components/schemas/CloudflareClientAPI_api-response-common-failure'
         "200":
           description: Patch domain response
           content:
@@ -33562,7 +33556,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_domain_name'
+          $ref: '#/components/schemas/CloudflareClientAPI_domain_name'
       - name: account_identifier
         in: path
         required: true
@@ -33598,7 +33592,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_domain_name'
+          $ref: '#/components/schemas/CloudflareClientAPI_domain_name'
       - name: account_identifier
         in: path
         required: true
@@ -33642,7 +33636,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_account_identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_account_identifier'
       responses:
         4xx:
           description: List Roles response failure
@@ -33650,14 +33644,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/Cloudflare Client API_response_collection'
+                - $ref: '#/components/schemas/CloudflareClientAPI_response_collection'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: List Roles response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cloudflare Client API_response_collection'
+                $ref: '#/components/schemas/CloudflareClientAPI_response_collection'
       security:
       - api_email: []
         api_key: []
@@ -33674,12 +33668,12 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_schemas-identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_schemas-identifier'
       - name: account_identifier
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_account_identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_account_identifier'
       responses:
         4xx:
           description: Role Details response failure
@@ -34600,14 +34594,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/Cloudflare Client API_components-schemas-single_response'
+                - $ref: '#/components/schemas/CloudflareClientAPI_components-schemas-single_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Create TSIG response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cloudflare Client API_components-schemas-single_response'
+                $ref: '#/components/schemas/CloudflareClientAPI_components-schemas-single_response'
       security:
       - api_email: []
         api_key: []
@@ -34641,14 +34635,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/Cloudflare Client API_components-schemas-id_response'
+                - $ref: '#/components/schemas/CloudflareClientAPI_components-schemas-id_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Delete TSIG response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cloudflare Client API_components-schemas-id_response'
+                $ref: '#/components/schemas/CloudflareClientAPI_components-schemas-id_response'
       security:
       - api_email: []
         api_key: []
@@ -34677,14 +34671,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/Cloudflare Client API_components-schemas-single_response'
+                - $ref: '#/components/schemas/CloudflareClientAPI_components-schemas-single_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: TSIG Details response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cloudflare Client API_components-schemas-single_response'
+                $ref: '#/components/schemas/CloudflareClientAPI_components-schemas-single_response'
       security:
       - api_email: []
         api_key: []
@@ -34719,14 +34713,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/Cloudflare Client API_components-schemas-single_response'
+                - $ref: '#/components/schemas/CloudflareClientAPI_components-schemas-single_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Update TSIG response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cloudflare Client API_components-schemas-single_response'
+                $ref: '#/components/schemas/CloudflareClientAPI_components-schemas-single_response'
       security:
       - api_email: []
         api_key: []
@@ -36074,7 +36068,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Cloudflare Client API_videoClipStandard'
+              $ref: '#/components/schemas/CloudflareClientAPI_videoClipStandard'
       responses:
         4xx:
           description: Clip videos given a start and end time response failure
@@ -36082,14 +36076,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/Cloudflare Client API_clipResponseSingle'
+                - $ref: '#/components/schemas/CloudflareClientAPI_clipResponseSingle'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Clip videos given a start and end time response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cloudflare Client API_clipResponseSingle'
+                $ref: '#/components/schemas/CloudflareClientAPI_clipResponseSingle'
       security:
       - api_email: []
         api_key: []
@@ -36151,7 +36145,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Cloudflare Client API_direct_upload_request'
+              $ref: '#/components/schemas/CloudflareClientAPI_direct_upload_request'
       responses:
         4xx:
           description: Upload videos via direct upload URLs response failure
@@ -36159,14 +36153,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/Cloudflare Client API_direct_upload_response'
+                - $ref: '#/components/schemas/CloudflareClientAPI_direct_upload_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Upload videos via direct upload URLs response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cloudflare Client API_direct_upload_response'
+                $ref: '#/components/schemas/CloudflareClientAPI_direct_upload_response'
       security:
       - api_email: []
         api_key: []
@@ -36192,14 +36186,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/Cloudflare Client API_key_response_collection'
+                - $ref: '#/components/schemas/CloudflareClientAPI_key_response_collection'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: List signing keys response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cloudflare Client API_key_response_collection'
+                $ref: '#/components/schemas/CloudflareClientAPI_key_response_collection'
       security:
       - api_email: []
         api_key: []
@@ -36687,7 +36681,7 @@ paths:
         content:
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/Cloudflare Client API_watermark_basic_upload'
+              $ref: '#/components/schemas/CloudflareClientAPI_watermark_basic_upload'
       responses:
         4xx:
           description: Create watermark profiles via basic upload response failure
@@ -38139,14 +38133,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/Cloudflare Client API_domain-response-collection'
+                - $ref: '#/components/schemas/CloudflareClientAPI_domain-response-collection'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: List Domains response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cloudflare Client API_domain-response-collection'
+                $ref: '#/components/schemas/CloudflareClientAPI_domain-response-collection'
       security:
       - api_email: []
         api_key: []
@@ -38190,14 +38184,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/Cloudflare Client API_domain-response-single'
+                - $ref: '#/components/schemas/CloudflareClientAPI_domain-response-single'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Attach to Domain response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cloudflare Client API_domain-response-single'
+                $ref: '#/components/schemas/CloudflareClientAPI_domain-response-single'
       security:
       - api_email: []
         api_key: []
@@ -38261,14 +38255,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/Cloudflare Client API_domain-response-single'
+                - $ref: '#/components/schemas/CloudflareClientAPI_domain-response-single'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Get a Domain response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cloudflare Client API_domain-response-single'
+                $ref: '#/components/schemas/CloudflareClientAPI_domain-response-single'
       security:
       - api_email: []
         api_key: []
@@ -39681,7 +39675,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_schemas-identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_schemas-identifier'
       responses:
         4xx:
           description: Account Details response failure
@@ -39712,7 +39706,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_schemas-identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_schemas-identifier'
       requestBody:
         required: true
         content:
@@ -40177,14 +40171,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/Cloudflare Client API_policies_components-schemas-response_collection'
+                - $ref: '#/components/schemas/CloudflareClientAPI_policies_components-schemas-response_collection'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: List Access policies response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cloudflare Client API_policies_components-schemas-response_collection'
+                $ref: '#/components/schemas/CloudflareClientAPI_policies_components-schemas-response_collection'
       security:
       - api_email: []
         api_key: []
@@ -40223,9 +40217,9 @@ paths:
                 decision:
                   $ref: '#/components/schemas/decision'
                 exclude:
-                  $ref: '#/components/schemas/Cloudflare Client API_schemas-exclude'
+                  $ref: '#/components/schemas/CloudflareClientAPI_schemas-exclude'
                 include:
-                  $ref: '#/components/schemas/Cloudflare Client API_include'
+                  $ref: '#/components/schemas/CloudflareClientAPI_include'
                 name:
                   $ref: '#/components/schemas/policies_components-schemas-name'
                 precedence:
@@ -40235,7 +40229,7 @@ paths:
                 purpose_justification_required:
                   $ref: '#/components/schemas/purpose_justification_required'
                 require:
-                  $ref: '#/components/schemas/Cloudflare Client API_schemas-require'
+                  $ref: '#/components/schemas/CloudflareClientAPI_schemas-require'
       responses:
         4xx:
           description: Create an Access policy response failure
@@ -40243,14 +40237,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/Cloudflare Client API_policies_components-schemas-single_response'
+                - $ref: '#/components/schemas/CloudflareClientAPI_policies_components-schemas-single_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Create an Access policy response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cloudflare Client API_policies_components-schemas-single_response'
+                $ref: '#/components/schemas/CloudflareClientAPI_policies_components-schemas-single_response'
       security:
       - api_email: []
         api_key: []
@@ -40330,14 +40324,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/Cloudflare Client API_policies_components-schemas-single_response'
+                - $ref: '#/components/schemas/CloudflareClientAPI_policies_components-schemas-single_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Get an Access policy response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cloudflare Client API_policies_components-schemas-single_response'
+                $ref: '#/components/schemas/CloudflareClientAPI_policies_components-schemas-single_response'
       security:
       - api_email: []
         api_key: []
@@ -40381,9 +40375,9 @@ paths:
                 decision:
                   $ref: '#/components/schemas/decision'
                 exclude:
-                  $ref: '#/components/schemas/Cloudflare Client API_schemas-exclude'
+                  $ref: '#/components/schemas/CloudflareClientAPI_schemas-exclude'
                 include:
-                  $ref: '#/components/schemas/Cloudflare Client API_include'
+                  $ref: '#/components/schemas/CloudflareClientAPI_include'
                 name:
                   $ref: '#/components/schemas/policies_components-schemas-name'
                 precedence:
@@ -40393,7 +40387,7 @@ paths:
                 purpose_justification_required:
                   $ref: '#/components/schemas/purpose_justification_required'
                 require:
-                  $ref: '#/components/schemas/Cloudflare Client API_schemas-require'
+                  $ref: '#/components/schemas/CloudflareClientAPI_schemas-require'
       responses:
         4xx:
           description: Update an Access policy response failure
@@ -40401,14 +40395,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/Cloudflare Client API_policies_components-schemas-single_response'
+                - $ref: '#/components/schemas/CloudflareClientAPI_policies_components-schemas-single_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Update an Access policy response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cloudflare Client API_policies_components-schemas-single_response'
+                $ref: '#/components/schemas/CloudflareClientAPI_policies_components-schemas-single_response'
       security:
       - api_email: []
         api_key: []
@@ -40433,14 +40427,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/Cloudflare Client API_ca_components-schemas-response_collection'
+                - $ref: '#/components/schemas/CloudflareClientAPI_ca_components-schemas-response_collection'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: List short-lived certificate CAs response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cloudflare Client API_ca_components-schemas-response_collection'
+                $ref: '#/components/schemas/CloudflareClientAPI_ca_components-schemas-response_collection'
       security:
       - api_email: []
         api_key: []
@@ -40659,14 +40653,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/Cloudflare Client API_certificates_components-schemas-response_collection'
+                - $ref: '#/components/schemas/CloudflareClientAPI_certificates_components-schemas-response_collection'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: List mTLS certificates response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cloudflare Client API_certificates_components-schemas-response_collection'
+                $ref: '#/components/schemas/CloudflareClientAPI_certificates_components-schemas-response_collection'
       security:
       - api_email: []
         api_key: []
@@ -40711,14 +40705,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/Cloudflare Client API_certificates_components-schemas-single_response'
+                - $ref: '#/components/schemas/CloudflareClientAPI_certificates_components-schemas-single_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Add an mTLS certificate response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cloudflare Client API_certificates_components-schemas-single_response'
+                $ref: '#/components/schemas/CloudflareClientAPI_certificates_components-schemas-single_response'
       security:
       - api_email: []
         api_key: []
@@ -40788,14 +40782,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/Cloudflare Client API_certificates_components-schemas-single_response'
+                - $ref: '#/components/schemas/CloudflareClientAPI_certificates_components-schemas-single_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Get an mTLS certificate response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cloudflare Client API_certificates_components-schemas-single_response'
+                $ref: '#/components/schemas/CloudflareClientAPI_certificates_components-schemas-single_response'
       security:
       - api_email: []
         api_key: []
@@ -40837,14 +40831,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/Cloudflare Client API_certificates_components-schemas-single_response'
+                - $ref: '#/components/schemas/CloudflareClientAPI_certificates_components-schemas-single_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Update an mTLS certificate response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cloudflare Client API_certificates_components-schemas-single_response'
+                $ref: '#/components/schemas/CloudflareClientAPI_certificates_components-schemas-single_response'
       security:
       - api_email: []
         api_key: []
@@ -40903,13 +40897,13 @@ paths:
               - include
               properties:
                 exclude:
-                  $ref: '#/components/schemas/Cloudflare Client API_exclude'
+                  $ref: '#/components/schemas/CloudflareClientAPI_exclude'
                 include:
-                  $ref: '#/components/schemas/Cloudflare Client API_include'
+                  $ref: '#/components/schemas/CloudflareClientAPI_include'
                 name:
                   $ref: '#/components/schemas/groups_components-schemas-name'
                 require:
-                  $ref: '#/components/schemas/Cloudflare Client API_require'
+                  $ref: '#/components/schemas/CloudflareClientAPI_require'
       responses:
         4xx:
           description: Create an Access group response failure
@@ -41033,13 +41027,13 @@ paths:
               - include
               properties:
                 exclude:
-                  $ref: '#/components/schemas/Cloudflare Client API_exclude'
+                  $ref: '#/components/schemas/CloudflareClientAPI_exclude'
                 include:
-                  $ref: '#/components/schemas/Cloudflare Client API_include'
+                  $ref: '#/components/schemas/CloudflareClientAPI_include'
                 name:
                   $ref: '#/components/schemas/groups_components-schemas-name'
                 require:
-                  $ref: '#/components/schemas/Cloudflare Client API_require'
+                  $ref: '#/components/schemas/CloudflareClientAPI_require'
       responses:
         4xx:
           description: Update an Access group response failure
@@ -41565,14 +41559,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/Cloudflare Client API_schemas-empty_response'
+                - $ref: '#/components/schemas/CloudflareClientAPI_schemas-empty_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Revoke all Access tokens for a user response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cloudflare Client API_schemas-empty_response'
+                $ref: '#/components/schemas/CloudflareClientAPI_schemas-empty_response'
       security:
       - api_email: []
         api_key: []
@@ -42578,14 +42572,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/Cloudflare Client API_empty_response'
+                - $ref: '#/components/schemas/CloudflareClientAPI_empty_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Delete Account Custom Nameserver response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cloudflare Client API_empty_response'
+                $ref: '#/components/schemas/CloudflareClientAPI_empty_response'
       security:
       - api_email: []
         api_key: []
@@ -45925,7 +45919,7 @@ paths:
               type: object
               properties:
                 name:
-                  $ref: '#/components/schemas/Cloudflare Client API_schemas-name'
+                  $ref: '#/components/schemas/CloudflareClientAPI_schemas-name'
       responses:
         4xx:
           description: Edit Organization response failure
@@ -46061,7 +46055,7 @@ paths:
                       id:
                         $ref: '#/components/schemas/role_components-schemas-identifier'
                       name:
-                        $ref: '#/components/schemas/Cloudflare Client API_components-schemas-name'
+                        $ref: '#/components/schemas/CloudflareClientAPI_components-schemas-name'
                       permissions:
                         $ref: '#/components/schemas/schemas-permissions'
       responses:
@@ -60684,14 +60678,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/Cloudflare Client API_response_collection'
+                - $ref: '#/components/schemas/CloudflareClientAPI_response_collection'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: List Tokens response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cloudflare Client API_response_collection'
+                $ref: '#/components/schemas/CloudflareClientAPI_response_collection'
       security:
       - api_token: []
     post:
@@ -60735,7 +60729,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_schemas-identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_schemas-identifier'
       requestBody:
         required: true
         content:
@@ -60747,14 +60741,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/Cloudflare Client API_api-response-single-id'
+                - $ref: '#/components/schemas/CloudflareClientAPI_api-response-single-id'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Delete Token response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cloudflare Client API_api-response-single-id'
+                $ref: '#/components/schemas/CloudflareClientAPI_api-response-single-id'
       security:
       - api_token: []
     get:
@@ -60768,7 +60762,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_schemas-identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_schemas-identifier'
       responses:
         4xx:
           description: Token Details response failure
@@ -60797,7 +60791,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_schemas-identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_schemas-identifier'
       requestBody:
         required: true
         content:
@@ -60833,7 +60827,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_schemas-identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_schemas-identifier'
       requestBody:
         required: true
         content:
@@ -60871,14 +60865,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/Cloudflare Client API_schemas-response_collection'
+                - $ref: '#/components/schemas/CloudflareClientAPI_schemas-response_collection'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: List Permission Groups response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cloudflare Client API_schemas-response_collection'
+                $ref: '#/components/schemas/CloudflareClientAPI_schemas-response_collection'
       security:
       - api_token: []
   /user/tokens/verify:
@@ -60919,14 +60913,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/Cloudflare Client API_components-schemas-response_collection'
+                - $ref: '#/components/schemas/CloudflareClientAPI_components-schemas-response_collection'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: List Zones response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cloudflare Client API_components-schemas-response_collection'
+                $ref: '#/components/schemas/CloudflareClientAPI_components-schemas-response_collection'
       security:
       - api_email: []
         api_key: []
@@ -60973,7 +60967,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_schemas-identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_schemas-identifier'
       requestBody:
         required: true
         content:
@@ -60985,14 +60979,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/Cloudflare Client API_api-response-single-id'
+                - $ref: '#/components/schemas/CloudflareClientAPI_api-response-single-id'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Delete Zone response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cloudflare Client API_api-response-single-id'
+                $ref: '#/components/schemas/CloudflareClientAPI_api-response-single-id'
       security:
       - api_email: []
         api_key: []
@@ -61007,7 +61001,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_schemas-identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_schemas-identifier'
       responses:
         4xx:
           description: Zone Details response failure
@@ -61038,7 +61032,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_schemas-identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_schemas-identifier'
       requestBody:
         required: true
         content:
@@ -61503,14 +61497,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/Cloudflare Client API_policies_components-schemas-response_collection'
+                - $ref: '#/components/schemas/CloudflareClientAPI_policies_components-schemas-response_collection'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: List Access policies response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cloudflare Client API_policies_components-schemas-response_collection'
+                $ref: '#/components/schemas/CloudflareClientAPI_policies_components-schemas-response_collection'
       security:
       - api_email: []
         api_key: []
@@ -61549,9 +61543,9 @@ paths:
                 decision:
                   $ref: '#/components/schemas/decision'
                 exclude:
-                  $ref: '#/components/schemas/Cloudflare Client API_schemas-exclude'
+                  $ref: '#/components/schemas/CloudflareClientAPI_schemas-exclude'
                 include:
-                  $ref: '#/components/schemas/Cloudflare Client API_include'
+                  $ref: '#/components/schemas/CloudflareClientAPI_include'
                 name:
                   $ref: '#/components/schemas/policies_components-schemas-name'
                 precedence:
@@ -61561,7 +61555,7 @@ paths:
                 purpose_justification_required:
                   $ref: '#/components/schemas/purpose_justification_required'
                 require:
-                  $ref: '#/components/schemas/Cloudflare Client API_schemas-require'
+                  $ref: '#/components/schemas/CloudflareClientAPI_schemas-require'
       responses:
         4xx:
           description: Create an Access policy response failure
@@ -61569,14 +61563,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/Cloudflare Client API_policies_components-schemas-single_response'
+                - $ref: '#/components/schemas/CloudflareClientAPI_policies_components-schemas-single_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Create an Access policy response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cloudflare Client API_policies_components-schemas-single_response'
+                $ref: '#/components/schemas/CloudflareClientAPI_policies_components-schemas-single_response'
       security:
       - api_email: []
         api_key: []
@@ -61656,14 +61650,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/Cloudflare Client API_policies_components-schemas-single_response'
+                - $ref: '#/components/schemas/CloudflareClientAPI_policies_components-schemas-single_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Get an Access policy response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cloudflare Client API_policies_components-schemas-single_response'
+                $ref: '#/components/schemas/CloudflareClientAPI_policies_components-schemas-single_response'
       security:
       - api_email: []
         api_key: []
@@ -61707,9 +61701,9 @@ paths:
                 decision:
                   $ref: '#/components/schemas/decision'
                 exclude:
-                  $ref: '#/components/schemas/Cloudflare Client API_schemas-exclude'
+                  $ref: '#/components/schemas/CloudflareClientAPI_schemas-exclude'
                 include:
-                  $ref: '#/components/schemas/Cloudflare Client API_include'
+                  $ref: '#/components/schemas/CloudflareClientAPI_include'
                 name:
                   $ref: '#/components/schemas/policies_components-schemas-name'
                 precedence:
@@ -61719,7 +61713,7 @@ paths:
                 purpose_justification_required:
                   $ref: '#/components/schemas/purpose_justification_required'
                 require:
-                  $ref: '#/components/schemas/Cloudflare Client API_schemas-require'
+                  $ref: '#/components/schemas/CloudflareClientAPI_schemas-require'
       responses:
         4xx:
           description: Update an Access policy response failure
@@ -61727,14 +61721,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/Cloudflare Client API_policies_components-schemas-single_response'
+                - $ref: '#/components/schemas/CloudflareClientAPI_policies_components-schemas-single_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Update an Access policy response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cloudflare Client API_policies_components-schemas-single_response'
+                $ref: '#/components/schemas/CloudflareClientAPI_policies_components-schemas-single_response'
       security:
       - api_email: []
         api_key: []
@@ -61759,14 +61753,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/Cloudflare Client API_ca_components-schemas-response_collection'
+                - $ref: '#/components/schemas/CloudflareClientAPI_ca_components-schemas-response_collection'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: List short-lived certificate CAs response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cloudflare Client API_ca_components-schemas-response_collection'
+                $ref: '#/components/schemas/CloudflareClientAPI_ca_components-schemas-response_collection'
       security:
       - api_email: []
         api_key: []
@@ -61791,14 +61785,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/Cloudflare Client API_certificates_components-schemas-response_collection'
+                - $ref: '#/components/schemas/CloudflareClientAPI_certificates_components-schemas-response_collection'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: List mTLS certificates response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cloudflare Client API_certificates_components-schemas-response_collection'
+                $ref: '#/components/schemas/CloudflareClientAPI_certificates_components-schemas-response_collection'
       security:
       - api_email: []
         api_key: []
@@ -61843,14 +61837,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/Cloudflare Client API_certificates_components-schemas-single_response'
+                - $ref: '#/components/schemas/CloudflareClientAPI_certificates_components-schemas-single_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Add an mTLS certificate response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cloudflare Client API_certificates_components-schemas-single_response'
+                $ref: '#/components/schemas/CloudflareClientAPI_certificates_components-schemas-single_response'
       security:
       - api_email: []
         api_key: []
@@ -61920,14 +61914,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/Cloudflare Client API_certificates_components-schemas-single_response'
+                - $ref: '#/components/schemas/CloudflareClientAPI_certificates_components-schemas-single_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Get an mTLS certificate response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cloudflare Client API_certificates_components-schemas-single_response'
+                $ref: '#/components/schemas/CloudflareClientAPI_certificates_components-schemas-single_response'
       security:
       - api_email: []
         api_key: []
@@ -61969,14 +61963,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/Cloudflare Client API_certificates_components-schemas-single_response'
+                - $ref: '#/components/schemas/CloudflareClientAPI_certificates_components-schemas-single_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Update an mTLS certificate response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cloudflare Client API_certificates_components-schemas-single_response'
+                $ref: '#/components/schemas/CloudflareClientAPI_certificates_components-schemas-single_response'
       security:
       - api_email: []
         api_key: []
@@ -62035,13 +62029,13 @@ paths:
               - include
               properties:
                 exclude:
-                  $ref: '#/components/schemas/Cloudflare Client API_exclude'
+                  $ref: '#/components/schemas/CloudflareClientAPI_exclude'
                 include:
-                  $ref: '#/components/schemas/Cloudflare Client API_include'
+                  $ref: '#/components/schemas/CloudflareClientAPI_include'
                 name:
                   $ref: '#/components/schemas/groups_components-schemas-name'
                 require:
-                  $ref: '#/components/schemas/Cloudflare Client API_require'
+                  $ref: '#/components/schemas/CloudflareClientAPI_require'
       responses:
         4xx:
           description: Create an Access group response failure
@@ -62165,13 +62159,13 @@ paths:
               - include
               properties:
                 exclude:
-                  $ref: '#/components/schemas/Cloudflare Client API_exclude'
+                  $ref: '#/components/schemas/CloudflareClientAPI_exclude'
                 include:
-                  $ref: '#/components/schemas/Cloudflare Client API_include'
+                  $ref: '#/components/schemas/CloudflareClientAPI_include'
                 name:
                   $ref: '#/components/schemas/groups_components-schemas-name'
                 require:
-                  $ref: '#/components/schemas/Cloudflare Client API_require'
+                  $ref: '#/components/schemas/CloudflareClientAPI_require'
       responses:
         4xx:
           description: Update an Access group response failure
@@ -62556,14 +62550,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/Cloudflare Client API_schemas-empty_response'
+                - $ref: '#/components/schemas/CloudflareClientAPI_schemas-empty_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Revoke all Access tokens for a user response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cloudflare Client API_schemas-empty_response'
+                $ref: '#/components/schemas/CloudflareClientAPI_schemas-empty_response'
       security:
       - api_email: []
         api_key: []
@@ -62740,7 +62734,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_schemas-identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_schemas-identifier'
       requestBody:
         required: true
         content:
@@ -62752,14 +62746,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/Cloudflare Client API_api-response-single-id'
+                - $ref: '#/components/schemas/CloudflareClientAPI_api-response-single-id'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Zone Activation Check response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cloudflare Client API_api-response-single-id'
+                $ref: '#/components/schemas/CloudflareClientAPI_api-response-single-id'
       security:
       - api_email: []
         api_key: []
@@ -62971,7 +62965,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_schemas-identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_schemas-identifier'
       requestBody:
         required: true
         content:
@@ -62985,14 +62979,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/Cloudflare Client API_api-response-single-id'
+                - $ref: '#/components/schemas/CloudflareClientAPI_api-response-single-id'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Purge Files by Cache-Tags, Host, or Prefix response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cloudflare Client API_api-response-single-id'
+                $ref: '#/components/schemas/CloudflareClientAPI_api-response-single-id'
       security:
       - api_email: []
         api_key: []
@@ -63057,14 +63051,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/Cloudflare Client API_id_response'
+                - $ref: '#/components/schemas/CloudflareClientAPI_id_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Delete Secondary Zone Configuration response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cloudflare Client API_id_response'
+                $ref: '#/components/schemas/CloudflareClientAPI_id_response'
       security:
       - api_email: []
         api_key: []
@@ -63198,14 +63192,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/Cloudflare Client API_schemas-id_response'
+                - $ref: '#/components/schemas/CloudflareClientAPI_schemas-id_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Delete Primary Zone Configuration response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cloudflare Client API_schemas-id_response'
+                $ref: '#/components/schemas/CloudflareClientAPI_schemas-id_response'
       security:
       - api_email: []
         api_key: []
@@ -63861,7 +63855,7 @@ paths:
         description: Zone ID
         required: true
         schema:
-          $ref: '#/components/schemas/Zonekeeper Public API_identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: Client Error
@@ -63883,7 +63877,7 @@ paths:
                       type: object
                       properties:
                         id:
-                          $ref: '#/components/schemas/Zonekeeper Public API_identifier'
+                          $ref: '#/components/schemas/identifier'
   /zones/{zone_id}/api_gateway/configuration:
     get:
       tags:
@@ -63904,7 +63898,7 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/Cloudflare Client API_single_response'
+                - $ref: '#/components/schemas/CloudflareClientAPI_single_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Retrieve information about specific configuration properties
@@ -63912,7 +63906,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cloudflare Client API_single_response'
+                $ref: '#/components/schemas/CloudflareClientAPI_single_response'
       security:
       - api_email: []
         api_key: []
@@ -64134,14 +64128,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/Cloudflare Client API_schemas-single_response'
+                - $ref: '#/components/schemas/CloudflareClientAPI_schemas-single_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Retrieve information about an operation response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cloudflare Client API_schemas-single_response'
+                $ref: '#/components/schemas/CloudflareClientAPI_schemas-single_response'
       security:
       - api_email: []
         api_key: []
@@ -65990,14 +65984,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/Cloudflare Client API_api-response-single-id'
+                - $ref: '#/components/schemas/CloudflareClientAPI_api-response-single-id'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Create Filter response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cloudflare Client API_api-response-single-id'
+                $ref: '#/components/schemas/CloudflareClientAPI_api-response-single-id'
       deprecated: true
       security:
       - api_email: []
@@ -66031,14 +66025,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/Cloudflare Client API_api-response-single-id'
+                - $ref: '#/components/schemas/CloudflareClientAPI_api-response-single-id'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Delete Filter response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cloudflare Client API_api-response-single-id'
+                $ref: '#/components/schemas/CloudflareClientAPI_api-response-single-id'
       deprecated: true
       security:
       - api_email: []
@@ -66141,14 +66135,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/Cloudflare Client API_api-response-single-id'
+                - $ref: '#/components/schemas/CloudflareClientAPI_api-response-single-id'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Create Route response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cloudflare Client API_api-response-single-id'
+                $ref: '#/components/schemas/CloudflareClientAPI_api-response-single-id'
       security:
       - api_email: []
         api_key: []
@@ -66181,14 +66175,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/Cloudflare Client API_api-response-single-id'
+                - $ref: '#/components/schemas/CloudflareClientAPI_api-response-single-id'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Delete Route response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cloudflare Client API_api-response-single-id'
+                $ref: '#/components/schemas/CloudflareClientAPI_api-response-single-id'
       security:
       - api_email: []
         api_key: []
@@ -67548,14 +67542,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/Cloudflare Client API_empty_response'
+                - $ref: '#/components/schemas/CloudflareClientAPI_empty_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Set Account Custom Nameserver Related Zone Metadata response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cloudflare Client API_empty_response'
+                $ref: '#/components/schemas/CloudflareClientAPI_empty_response'
       security:
       - api_email: []
         api_key: []
@@ -70833,7 +70827,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_id'
+          $ref: '#/components/schemas/CloudflareClientAPI_id'
       - name: zone_identifier
         in: path
         required: true
@@ -70885,7 +70879,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_id'
+          $ref: '#/components/schemas/CloudflareClientAPI_id'
       - name: zone_identifier
         in: path
         required: true
@@ -70921,7 +70915,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_id'
+          $ref: '#/components/schemas/CloudflareClientAPI_id'
       - name: zone_identifier
         in: path
         required: true
@@ -71897,14 +71891,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/Cloudflare Client API_api-response-single-id'
+                - $ref: '#/components/schemas/CloudflareClientAPI_api-response-single-id'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Delete a Page Rule response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cloudflare Client API_api-response-single-id'
+                $ref: '#/components/schemas/CloudflareClientAPI_api-response-single-id'
       security:
       - api_email: []
         api_key: []
@@ -77563,7 +77557,7 @@ paths:
                       result:
                         properties:
                           id:
-                            $ref: '#/components/schemas/Cloudflare Client API_schemas-id'
+                            $ref: '#/components/schemas/CloudflareClientAPI_schemas-id'
                           modified_on:
                             $ref: '#/components/schemas/timestamp'
                           value:
@@ -77580,7 +77574,7 @@ paths:
                     result:
                       properties:
                         id:
-                          $ref: '#/components/schemas/Cloudflare Client API_schemas-id'
+                          $ref: '#/components/schemas/CloudflareClientAPI_schemas-id'
                         modified_on:
                           $ref: '#/components/schemas/timestamp'
                         value:
@@ -78695,14 +78689,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/Cloudflare Client API_api-response-single-id'
+                - $ref: '#/components/schemas/CloudflareClientAPI_api-response-single-id'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Delete Web3 Hostname response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cloudflare Client API_api-response-single-id'
+                $ref: '#/components/schemas/CloudflareClientAPI_api-response-single-id'
       security:
       - api_email: []
         api_key: []
@@ -78973,14 +78967,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/Cloudflare Client API_api-response-single-id'
+                - $ref: '#/components/schemas/CloudflareClientAPI_api-response-single-id'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Delete IPFS Universal Path Gateway Content List Entry response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cloudflare Client API_api-response-single-id'
+                $ref: '#/components/schemas/CloudflareClientAPI_api-response-single-id'
       security:
       - api_email: []
         api_key: []
@@ -79432,7 +79426,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_app_id'
+          $ref: '#/components/schemas/CloudflareClientAPI_app_id'
       - name: zone
         in: path
         required: true
@@ -79457,7 +79451,7 @@ paths:
                         type: object
                         properties:
                           id:
-                            $ref: '#/components/schemas/Cloudflare Client API_app_id'
+                            $ref: '#/components/schemas/CloudflareClientAPI_app_id'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Delete Spectrum application response
@@ -79472,7 +79466,7 @@ paths:
                       type: object
                       properties:
                         id:
-                          $ref: '#/components/schemas/Cloudflare Client API_app_id'
+                          $ref: '#/components/schemas/CloudflareClientAPI_app_id'
       security:
       - api_email: []
         api_key: []
@@ -79489,7 +79483,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_app_id'
+          $ref: '#/components/schemas/CloudflareClientAPI_app_id'
       - name: zone
         in: path
         required: true
@@ -79526,7 +79520,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/Cloudflare Client API_app_id'
+          $ref: '#/components/schemas/CloudflareClientAPI_app_id'
       - name: zone
         in: path
         required: true
