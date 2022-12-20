@@ -304,6 +304,8 @@
 	"speed.test.detail.mobile": "Mobile",
 	"speed.test.detail.rerun": "Rerun test",
 	"speed.test.detail.disclaimer": "To run a full Lighthouse report, go <0>here</0>.",
+	"speed.test.detail.failed.headline": "Test failed",
+	"speed.test.detail.failed.description": "We could not run your speed test at this time.<0></0>Try again or contact Cloudflare customer support if the issue persists.",
 	"speed.detail.tabs.recommendation": "Recommendation",
 	"speed.detail.tabs.rum": "Real user measurements",
 	"speed.detail.metric.ttfb.description": "TTFB measures the time between the request for a resource and when the first byte of a response begins to arrive.",
@@ -315,5 +317,12 @@
 	"speed.detail.metric.cls.description": "CLS is a measure of the largest burst of layout shift scores for every unexpected layout shift that occurs during the entire lifespan of a page.",
 	"speed.detail.metric.fid.description": "FID measures the time from when a user first interacts with a page to the time when the browser is actually able to begin processing event handlers in response to that interaction.",
 	"speed.detail.metric.good": "Good",
-	"speed.detail.metric.poor": "Poor"
+	"speed.detail.metric.poor": "Poor",
+	"speed.errors.monthly_test_quota_exceeded": "You have exceeded your monthly quota.",
+	"speed.errors.test_not_found": "Your Speed test could not be found.",
+	"speed.errors.zone_not_created": "Your Zone does not exist. Speed tests require an existing Zone.",
+	"speed.errors.invalid_body_format": "Oops. Something went wrong.",
+	"speed.errors.invalid_headers_format": "Oops. Something went wrong.",
+	"speed.errors.invalid_parameters_format": "Oops. Something went wrong.",
+	"speed.errors.generic": "Oops. Something went wrong."
 }
