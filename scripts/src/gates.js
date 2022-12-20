@@ -63,7 +63,6 @@ async function run(){
 				if(json.success){
 					const assignment = json.result;
 					for(const gate in assignment){
-						// only count if it's a boolean
 						assignments[gate] ??= {};
 						assignments[gate][assignment[gate]] ??= 0;
 						assignments[gate][assignment[gate]]++;
