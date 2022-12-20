@@ -543,11 +543,57 @@ export type AccountRateLimitingRuleset = TypeFromCodec<
   typeof AccountRateLimitingRuleset
 >;
 
+const AccountIDSRuleset = eg.intersection([
+  BaseRuleset,
+  eg.object({
+    kind: eg.literal('managed'),
+    phase: eg.literal('magic_transit_ids_managed'),
+    rules: eg.array(
+      eg.intersection([
+        eg.object({
+          action: eg.literal('execute'),
+          action_parameters: eg.object({
+            id: eg.string,
+            version: eg.string
+          })
+        }),
+        BaseRule
+      ])
+    )
+  })
+]);
+
+const AccountIDSEntrypoint = eg.intersection([
+  BaseRuleset,
+  eg.object({
+    kind: eg.literal('root'),
+    phase: eg.literal('magic_transit_ids_managed'),
+    rules: eg.array(
+      eg.intersection([
+        eg.object({
+          id: eg.string,
+          action: eg.literal('execute'),
+          action_parameters: eg.object({
+            id: eg.string,
+            version: eg.string
+          })
+        }),
+        BaseRule
+      ])
+    )
+  })
+]);
+
+export type AccountIDSRuleset = TypeFromCodec<typeof AccountIDSRuleset>;
+export type AccountIDSEntrypoint = TypeFromCodec<typeof AccountIDSEntrypoint>;
+
 const GenericRuleset = eg.union([
   AccountRateLimitingRuleset,
   AccountCustomRulesetEntrypoint,
   AccountCustomRuleset,
-  AccountManagedEntrypoint
+  AccountIDSRuleset,
+  AccountManagedEntrypoint,
+  AccountIDSEntrypoint
 ]);
 
 type ElementType<T> =
