@@ -347,8 +347,8 @@ const navigation = {
 			title: "navigation.account.firewall_rulesets.ddos",
 			url: "/network-security/ddos",
 			hasPermission: function(y) {
-				var P = !!V(y) && !!pe(y);
-				return !!re(y) || P
+				var P = !!V(y) && !!me(y);
+				return !!ne(y) || P
 			}
 		}, {
 			title: "navigation.account.firewall_rulesets.magic_firewall",
@@ -606,10 +606,10 @@ const navigation = {
 		hasPermission: function(y) {
 			var P = (0, k.getZone)(y);
 			if ((0, c.zoneIsDNSOnly)(y) || !s(y, "zone_settings", "spectrum.app") || !P) return !1;
-			var se = !!((0, i.userHasEntZones)(y) || (0, k.userHasDelegatedEntZones)(y)),
-				le = !!(0, k.getZoneFlipperFlag)(y, "spectrum", "enabled"),
-				de = !!(0, k.isFree)(P);
-			return le || se || !de
+			var ie = !!((0, i.userHasEntZones)(y) || (0, k.userHasDelegatedEntZones)(y)),
+				ue = !!(0, k.getZoneFlipperFlag)(y, "spectrum", "enabled"),
+				ce = !!(0, k.isFree)(P);
+			return ue || ie || !ce
 		}
 	}, {
 		title: "navigation.zone.ssl-tls",
@@ -947,8 +947,8 @@ const navigation = {
 		canBeVersioned: !1,
 		labels: function(y) {
 			var P = [],
-				se = (0, k.getZone)(y);
-			return se && !(0, k.isPlanAtLeast)(se, "pro") && P.push("beta"), P
+				ie = (0, k.getZone)(y);
+			return ie && !(0, k.isPlanAtLeast)(ie, "pro") && P.push("beta"), P
 		},
 		iconType: "zaraz",
 		testId: "zone-navigation-link-zaraz",
@@ -987,8 +987,8 @@ const navigation = {
 		labels: ["new"],
 		hasPermission: function(y) {
 			var P = (0, t.getMembership)(y),
-				se = (P == null ? void 0 : P.roles) || [];
-			return se.includes("Trust and Safety") ? !1 : !(0, c.zoneIsDNSOnly)(y)
+				ie = (P == null ? void 0 : P.roles) || [];
+			return ie.includes("Trust and Safety") ? !1 : !(0, c.zoneIsDNSOnly)(y)
 		}
 	}],
 	application: [{
