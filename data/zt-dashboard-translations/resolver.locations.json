@@ -60,7 +60,7 @@
 	"failed_to_delete_location": "Failed to delete location",
 	"final_setup_inst": "You're all set! Your device now has faster, more private DNS servers.",
 	"gateway_ip_address": "Source IPv4 address",
-	"gateway_ip_address_desc": "Cloudflare Gateway will receive DNS queries from this address. IPv6 and DNS over HTTPS (DoH) DNS endpoints are unique to your location and do not require source IP addresses.",
+	"gateway_ip_address_desc": "Cloudflare Gateway will match DNS queries to the location with the most specific source IPv4 address. IPv6, DNS over TLS (DoT), and DNS over HTTPS (DoH) DNS endpoints are unique to your location and do not require source IP addresses.",
 	"inactive": "Inactive",
 	"instructions_back_button": "Back to Edit a Location",
 	"instructions_back_button_no_loc": "Back to Locations",
