@@ -14,7 +14,7 @@
 			"html_id": "magic-network-monitoring-rules-list-rules",
 			"uri": "accounts/:account_identifier/mnm/rules",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/6f91088a406011ed95aed352566e8d4c/mnm/rules\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
-			"response": "[\n  {\n    \"name\": \"my_rule_1\",\n    \"id\": \"2890e6fa406311ed9b5a23f70f6fb8cf\",\n    \"prefixes\": [\n      \"203.0.113.1/32\"\n    ],\n    \"packet_threshold\": 10000,\n    \"bandwidth_threshold\": 1000,\n    \"duration\": \"1h2m3s\",\n    \"automatic_advertisement\": \"false\"\n  }\n]"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": []\n}"
 		},
 		{
 			"title": "Create rules",
@@ -26,7 +26,7 @@
 			"html_id": "magic-network-monitoring-rules-create-rules",
 			"uri": "accounts/:account_identifier/mnm/rules",
 			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/6f91088a406011ed95aed352566e8d4c/mnm/rules\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
-			"response": "[\n  {\n    \"name\": \"my_rule_1\",\n    \"id\": \"2890e6fa406311ed9b5a23f70f6fb8cf\",\n    \"prefixes\": [\n      \"203.0.113.1/32\"\n    ],\n    \"packet_threshold\": 10000,\n    \"bandwidth_threshold\": 1000,\n    \"duration\": \"1h2m3s\",\n    \"automatic_advertisement\": \"false\"\n  }\n]"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"name\": \"my_rule_1\",\n    \"id\": \"2890e6fa406311ed9b5a23f70f6fb8cf\",\n    \"prefixes\": [\n      \"203.0.113.1/32\"\n    ],\n    \"packet_threshold\": 10000,\n    \"bandwidth_threshold\": 1000,\n    \"duration\": \"1h2m3s\",\n    \"automatic_advertisement\": \"false\"\n  }\n}"
 		},
 		{
 			"title": "Update rules",
@@ -38,7 +38,7 @@
 			"html_id": "magic-network-monitoring-rules-update-rules",
 			"uri": "accounts/:account_identifier/mnm/rules",
 			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/6f91088a406011ed95aed352566e8d4c/mnm/rules\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
-			"response": "[\n  {\n    \"name\": \"my_rule_1\",\n    \"id\": \"2890e6fa406311ed9b5a23f70f6fb8cf\",\n    \"prefixes\": [\n      \"203.0.113.1/32\"\n    ],\n    \"packet_threshold\": 10000,\n    \"bandwidth_threshold\": 1000,\n    \"duration\": \"1h2m3s\",\n    \"automatic_advertisement\": \"false\"\n  }\n]"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"name\": \"my_rule_1\",\n    \"id\": \"2890e6fa406311ed9b5a23f70f6fb8cf\",\n    \"prefixes\": [\n      \"203.0.113.1/32\"\n    ],\n    \"packet_threshold\": 10000,\n    \"bandwidth_threshold\": 1000,\n    \"duration\": \"1h2m3s\",\n    \"automatic_advertisement\": \"false\"\n  }\n}"
 		},
 		{
 			"title": "Get rule",
@@ -50,7 +50,7 @@
 			"html_id": "magic-network-monitoring-rules-get-rule",
 			"uri": "accounts/:account_identifier/mnm/rules/:rule_identifier",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/6f91088a406011ed95aed352566e8d4c/mnm/rules/2890e6fa406311ed9b5a23f70f6fb8cf\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
-			"response": "{\n  \"name\": \"my_rule_1\",\n  \"id\": \"2890e6fa406311ed9b5a23f70f6fb8cf\",\n  \"prefixes\": [\n    \"203.0.113.1/32\"\n  ],\n  \"packet_threshold\": 10000,\n  \"bandwidth_threshold\": 1000,\n  \"duration\": \"1h2m3s\",\n  \"automatic_advertisement\": \"false\"\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"name\": \"my_rule_1\",\n    \"id\": \"2890e6fa406311ed9b5a23f70f6fb8cf\",\n    \"prefixes\": [\n      \"203.0.113.1/32\"\n    ],\n    \"packet_threshold\": 10000,\n    \"bandwidth_threshold\": 1000,\n    \"duration\": \"1h2m3s\",\n    \"automatic_advertisement\": \"false\"\n  }\n}"
 		},
 		{
 			"title": "Update rule",
@@ -62,7 +62,7 @@
 			"html_id": "magic-network-monitoring-rules-update-rule",
 			"uri": "accounts/:account_identifier/mnm/rules/:rule_identifier",
 			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/accounts/6f91088a406011ed95aed352566e8d4c/mnm/rules/2890e6fa406311ed9b5a23f70f6fb8cf\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
-			"response": "{\n  \"name\": \"my_rule_1\",\n  \"id\": \"2890e6fa406311ed9b5a23f70f6fb8cf\",\n  \"prefixes\": [\n    \"203.0.113.1/32\"\n  ],\n  \"packet_threshold\": 10000,\n  \"bandwidth_threshold\": 1000,\n  \"duration\": \"1h2m3s\",\n  \"automatic_advertisement\": \"false\"\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"name\": \"my_rule_1\",\n    \"id\": \"2890e6fa406311ed9b5a23f70f6fb8cf\",\n    \"prefixes\": [\n      \"203.0.113.1/32\"\n    ],\n    \"packet_threshold\": 10000,\n    \"bandwidth_threshold\": 1000,\n    \"duration\": \"1h2m3s\",\n    \"automatic_advertisement\": \"false\"\n  }\n}"
 		},
 		{
 			"title": "Delete rule",
@@ -74,7 +74,7 @@
 			"html_id": "magic-network-monitoring-rules-delete-rule",
 			"uri": "accounts/:account_identifier/mnm/rules/:rule_identifier",
 			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/6f91088a406011ed95aed352566e8d4c/mnm/rules/2890e6fa406311ed9b5a23f70f6fb8cf\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
-			"response": "{\n  \"name\": \"my_rule_1\",\n  \"id\": \"2890e6fa406311ed9b5a23f70f6fb8cf\",\n  \"prefixes\": [\n    \"203.0.113.1/32\"\n  ],\n  \"packet_threshold\": 10000,\n  \"bandwidth_threshold\": 1000,\n  \"duration\": \"1h2m3s\",\n  \"automatic_advertisement\": \"false\"\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"name\": \"my_rule_1\",\n    \"id\": \"2890e6fa406311ed9b5a23f70f6fb8cf\",\n    \"prefixes\": [\n      \"203.0.113.1/32\"\n    ],\n    \"packet_threshold\": 10000,\n    \"bandwidth_threshold\": 1000,\n    \"duration\": \"1h2m3s\",\n    \"automatic_advertisement\": \"false\"\n  }\n}"
 		},
 		{
 			"title": "Update advertisement for rule",
@@ -86,7 +86,7 @@
 			"html_id": "magic-network-monitoring-rules-update-advertisement-for-rule",
 			"uri": "accounts/:account_identifier/mnm/rules/:rule_identifier/advertisement",
 			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/accounts/6f91088a406011ed95aed352566e8d4c/mnm/rules/2890e6fa406311ed9b5a23f70f6fb8cf/advertisement\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
-			"response": "\"false\""
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": \"false\"\n}"
 		}
 	],
 	"html_id": "magic-network-monitoring-rules",
