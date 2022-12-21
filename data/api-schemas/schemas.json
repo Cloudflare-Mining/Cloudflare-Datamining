@@ -542,6 +542,14 @@
 				"readOnly": true,
 				"type": "string"
 			},
+			"CloudflareClientAPI_dataset": {
+				"description": "Dataset to be pulled.",
+				"example": "http_requests",
+				"maxLength": 256,
+				"nullable": true,
+				"pattern": "^[a-zA-Z0-9_\\-]*$",
+				"type": "string"
+			},
 			"CloudflareClientAPI_direct_upload_request": {
 				"properties": {
 					"allowedOrigins": {
@@ -619,7 +627,7 @@
 						"$ref": "#/components/schemas/schemas-service"
 					},
 					"zone_id": {
-						"$ref": "#/components/schemas/zone_identifier"
+						"$ref": "#/components/schemas/CloudflareClientAPI_zone_identifier"
 					},
 					"zone_name": {
 						"$ref": "#/components/schemas/zone_name"
@@ -693,6 +701,11 @@
 					}
 				]
 			},
+			"CloudflareClientAPI_enabled": {
+				"description": "Flag that indicates if the job was enabled.",
+				"example": false,
+				"type": "boolean"
+			},
 			"CloudflareClientAPI_exclude": {
 				"description": "Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.",
 				"items": {
@@ -723,6 +736,17 @@
 				},
 				"type": "object"
 			},
+			"CloudflareClientAPI_frequency": {
+				"description": "How often the subscription is renewed automatically.",
+				"enum": [
+					"weekly",
+					"monthly",
+					"quarterly",
+					"yearly"
+				],
+				"example": "monthly",
+				"type": "string"
+			},
 			"CloudflareClientAPI_groups": {
 				"additionalProperties": true,
 				"description": "An object that allows you to enable or disable WAF rule groups for the current WAF override. Each key of this object must be the ID of a WAF rule group, and each value must be a valid WAF action (usually `default` or `disable`). When creating a new URI-based WAF override, you must provide a `groups` object or a `rules` object.",
@@ -732,9 +756,11 @@
 				"type": "object"
 			},
 			"CloudflareClientAPI_id": {
-				"description": "Unique id of the job.",
-				"minimum": 1,
-				"type": "integer"
+				"description": "The ID of the CA.",
+				"example": "7eddae4619b50ab1361ba8ae9bd72269a432fea041529ed9",
+				"maxLength": 48,
+				"readOnly": true,
+				"type": "string"
 			},
 			"CloudflareClientAPI_id_response": {
 				"allOf": [
@@ -847,6 +873,39 @@
 						"$ref": "#/components/schemas/live_input_identifier"
 					}
 				}
+			},
+			"CloudflareClientAPI_logpush_job_response_collection": {
+				"allOf": [
+					{
+						"$ref": "#/components/schemas/api-response-common"
+					},
+					{
+						"properties": {
+							"result": {
+								"items": {
+									"nullable": true,
+									"type": "object"
+								},
+								"type": "array"
+							}
+						}
+					}
+				]
+			},
+			"CloudflareClientAPI_logpush_job_response_single": {
+				"allOf": [
+					{
+						"$ref": "#/components/schemas/api-response-single"
+					},
+					{
+						"properties": {
+							"result": {
+								"nullable": true,
+								"type": "object"
+							}
+						}
+					}
+				]
 			},
 			"CloudflareClientAPI_maxDurationSeconds": {
 				"description": "The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.",
@@ -1468,6 +1527,10 @@
 					}
 				},
 				"type": "object"
+			},
+			"CloudflareClientAPI_zone_identifier": {
+				"description": "Identifier of the zone.",
+				"example": "593c9c94de529bbbfaac7c53ced0447d"
 			},
 			"CustomNS": {
 				"description": "A single account custom nameserver.",
@@ -2391,13 +2454,6 @@
 				],
 				"title": "URI Record"
 			},
-			"ZonekeeperPublicAPI_identifier": {
-				"description": "Identifier",
-				"example": "023e105f4ecef8ad9ca31a8372d0c353",
-				"maxLength": 32,
-				"readOnly": true,
-				"type": "string"
-			},
 			"access-policy": {
 				"oneOf": [
 					{
@@ -2599,11 +2655,7 @@
 				]
 			},
 			"account_identifier": {
-				"description": "The account identifier tag.",
-				"example": "023e105f4ecef8ad9ca31a8372d0c353",
-				"maxLength": 32,
-				"readOnly": true,
-				"type": "string"
+				"$ref": "#/components/schemas/identifier"
 			},
 			"account_subscription_response_collection": {
 				"allOf": [
@@ -5832,7 +5884,7 @@
 						"$ref": "#/components/schemas/aud"
 					},
 					"id": {
-						"$ref": "#/components/schemas/id"
+						"$ref": "#/components/schemas/CloudflareClientAPI_id"
 					},
 					"public_key": {
 						"$ref": "#/components/schemas/public_key"
@@ -6931,6 +6983,13 @@
 				"description": "The date and time the clip was created.",
 				"example": "2014-01-02T02:20:00Z",
 				"format": "date-time",
+				"readOnly": true,
+				"type": "string"
+			},
+			"cloudflare-stream-client-api_account_identifier": {
+				"description": "The account identifier tag.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
 				"readOnly": true,
 				"type": "string"
 			},
@@ -10360,7 +10419,7 @@
 				"type": "array"
 			},
 			"dataset": {
-				"description": "Dataset to be pulled.",
+				"description": "Name of the dataset.",
 				"example": "http_requests",
 				"maxLength": 256,
 				"nullable": true,
@@ -13551,7 +13610,7 @@
 				"type": "string"
 			},
 			"enabled": {
-				"description": "Flag that indicates if the job was enabled.",
+				"description": "Flag that indicates if the job is enabled.",
 				"example": false,
 				"type": "boolean"
 			},
@@ -13632,6 +13691,12 @@
 				"description": "Specifies why the video failed to encode using a human readable error message in English. This field is empty if the video is not in an `error` state.",
 				"example": "The file was not recognized as a valid video file.",
 				"readOnly": true,
+				"type": "string"
+			},
+			"error_message": {
+				"description": "If not null, the job is currently failing. Failures are usually repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error_message and last_error are set to null.",
+				"format": "date-time",
+				"nullable": true,
 				"type": "string"
 			},
 			"estimated_queued_users": {
@@ -14688,14 +14753,14 @@
 				"type": "string"
 			},
 			"frequency": {
-				"description": "How often the subscription is renewed automatically.",
+				"default": "high",
+				"description": "The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.",
 				"enum": [
-					"weekly",
-					"monthly",
-					"quarterly",
-					"yearly"
+					"high",
+					"low"
 				],
-				"example": "monthly",
+				"example": "high",
+				"nullable": true,
 				"type": "string"
 			},
 			"full_response": {
@@ -16105,11 +16170,9 @@
 				"type": "boolean"
 			},
 			"id": {
-				"description": "The ID of the CA.",
-				"example": "7eddae4619b50ab1361ba8ae9bd72269a432fea041529ed9",
-				"maxLength": 48,
-				"readOnly": true,
-				"type": "string"
+				"description": "Unique id of the job.",
+				"minimum": 1,
+				"type": "integer"
 			},
 			"id_response": {
 				"allOf": [
@@ -16131,7 +16194,11 @@
 				]
 			},
 			"identifier": {
-				"example": "699d98642c564d2e855e9661899b7252"
+				"description": "Identifier",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"readOnly": true,
+				"type": "string"
 			},
 			"identity": {
 				"description": "The wirefilter expression to be used for identity matching.",
@@ -17263,6 +17330,9 @@
 				"example": false,
 				"type": "boolean"
 			},
+			"job_identifier": {
+				"$ref": "#/components/schemas/id"
+			},
 			"js_integrity_score": {
 				"description": "The integrity score of the JavaScript content.",
 				"maximum": 99,
@@ -17664,6 +17734,18 @@
 						}
 					}
 				]
+			},
+			"last_complete": {
+				"description": "Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty.",
+				"format": "date-time",
+				"nullable": true,
+				"type": "string"
+			},
+			"last_error": {
+				"description": "Records the last time the job failed. If not null, the job is currently failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field.",
+				"format": "date-time",
+				"nullable": true,
+				"type": "string"
 			},
 			"last_failure": {
 				"description": "Timestamp of the last time an attempt to dispatch a notification to this webhook failed.",
@@ -18757,6 +18839,42 @@
 				"nullable": true,
 				"type": "string"
 			},
+			"logpush": {
+				"nullable": true,
+				"properties": {
+					"dataset": {
+						"$ref": "#/components/schemas/dataset"
+					},
+					"destination_conf": {
+						"$ref": "#/components/schemas/destination_conf"
+					},
+					"enabled": {
+						"$ref": "#/components/schemas/enabled"
+					},
+					"error_message": {
+						"$ref": "#/components/schemas/error_message"
+					},
+					"frequency": {
+						"$ref": "#/components/schemas/frequency"
+					},
+					"id": {
+						"$ref": "#/components/schemas/id"
+					},
+					"last_complete": {
+						"$ref": "#/components/schemas/last_complete"
+					},
+					"last_error": {
+						"$ref": "#/components/schemas/last_error"
+					},
+					"logpull_options": {
+						"$ref": "#/components/schemas/logpull_options"
+					},
+					"name": {
+						"$ref": "#/components/schemas/name"
+					}
+				},
+				"type": "object"
+			},
 			"logpush_components-schemas-name": {
 				"description": "Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.",
 				"example": "example.com",
@@ -18798,8 +18916,7 @@
 						"properties": {
 							"result": {
 								"items": {
-									"nullable": true,
-									"type": "object"
+									"$ref": "#/components/schemas/logpush"
 								},
 								"type": "array"
 							}
@@ -18815,8 +18932,7 @@
 					{
 						"properties": {
 							"result": {
-								"nullable": true,
-								"type": "object"
+								"$ref": "#/components/schemas/logpush"
 							}
 						}
 					}
@@ -20113,8 +20229,11 @@
 				]
 			},
 			"name": {
-				"description": "The name of your Zero Trust organization.",
-				"example": "Widget Corps Internal Applications",
+				"description": "Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.",
+				"example": "example.com",
+				"maxLength": 512,
+				"nullable": true,
+				"pattern": "^[a-zA-Z0-9\\-\\.]*$",
 				"type": "string"
 			},
 			"name_servers": {
@@ -20919,7 +21038,7 @@
 						"$ref": "#/components/schemas/login_design"
 					},
 					"name": {
-						"$ref": "#/components/schemas/name"
+						"$ref": "#/components/schemas/CloudflareClientAPI_name"
 					},
 					"updated_at": {
 						"$ref": "#/components/schemas/timestamp"
@@ -28241,7 +28360,7 @@
 							"result": {
 								"properties": {
 									"id": {
-										"$ref": "#/components/schemas/id"
+										"$ref": "#/components/schemas/CloudflareClientAPI_id"
 									}
 								},
 								"type": "object"
@@ -32096,7 +32215,7 @@
 						"$ref": "#/components/schemas/current_period_start"
 					},
 					"frequency": {
-						"$ref": "#/components/schemas/frequency"
+						"$ref": "#/components/schemas/CloudflareClientAPI_frequency"
 					},
 					"id": {
 						"$ref": "#/components/schemas/subscription-v2_components-schemas-identifier"
@@ -35891,8 +36010,7 @@
 				"type": "object"
 			},
 			"zone_identifier": {
-				"description": "Identifier of the zone.",
-				"example": "593c9c94de529bbbfaac7c53ced0447d"
+				"$ref": "#/components/schemas/identifier"
 			},
 			"zone_metadata": {
 				"properties": {
@@ -44522,6 +44640,964 @@
 				]
 			}
 		},
+		"/accounts/{account_identifier}/logpush/datasets/{dataset}/fields": {
+			"get": {
+				"description": "Lists all fields available for a dataset. The response result is an object with key-value pairs, where keys are field names, and values are descriptions.",
+				"operationId": "get-accounts-account_identifier-logpush-datasets-dataset-fields",
+				"parameters": [
+					{
+						"in": "path",
+						"name": "dataset",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/dataset"
+						}
+					},
+					{
+						"in": "path",
+						"name": "account_identifier",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/identifier"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/logpush_field_response_collection"
+								}
+							}
+						},
+						"description": "List fields response"
+					},
+					"4xx": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/logpush_field_response_collection"
+										},
+										{
+											"$ref": "#/components/schemas/api-response-common-failure"
+										}
+									]
+								}
+							}
+						},
+						"description": "List fields response failure"
+					}
+				},
+				"security": [
+					{
+						"api_email": [],
+						"api_key": []
+					},
+					{
+						"api_token": []
+					}
+				],
+				"summary": "List fields",
+				"tags": [
+					"Logpush jobs for an account"
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"#logs:edit"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"business": false,
+					"enterprise": true,
+					"free": false,
+					"pro": false
+				}
+			}
+		},
+		"/accounts/{account_identifier}/logpush/datasets/{dataset}/jobs": {
+			"get": {
+				"description": "Lists Logpush jobs for an account for a dataset.",
+				"operationId": "get-accounts-account_identifier-logpush-datasets-dataset-jobs",
+				"parameters": [
+					{
+						"in": "path",
+						"name": "dataset",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/dataset"
+						}
+					},
+					{
+						"in": "path",
+						"name": "account_identifier",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/identifier"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/logpush_job_response_collection"
+								}
+							}
+						},
+						"description": "List Logpush jobs for a dataset response"
+					},
+					"4xx": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/logpush_job_response_collection"
+										},
+										{
+											"$ref": "#/components/schemas/api-response-common-failure"
+										}
+									]
+								}
+							}
+						},
+						"description": "List Logpush jobs for a dataset response failure"
+					}
+				},
+				"security": [
+					{
+						"api_email": [],
+						"api_key": []
+					},
+					{
+						"api_token": []
+					}
+				],
+				"summary": "List Logpush jobs for a dataset",
+				"tags": [
+					"Logpush jobs for an account"
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"#logs:edit"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"business": false,
+					"enterprise": true,
+					"free": false,
+					"pro": false
+				}
+			}
+		},
+		"/accounts/{account_identifier}/logpush/jobs": {
+			"get": {
+				"description": "Lists Logpush jobs for an account.",
+				"operationId": "get-accounts-account_identifier-logpush-jobs",
+				"parameters": [
+					{
+						"in": "path",
+						"name": "account_identifier",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/identifier"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/logpush_job_response_collection"
+								}
+							}
+						},
+						"description": "List Logpush jobs response"
+					},
+					"4xx": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/logpush_job_response_collection"
+										},
+										{
+											"$ref": "#/components/schemas/api-response-common-failure"
+										}
+									]
+								}
+							}
+						},
+						"description": "List Logpush jobs response failure"
+					}
+				},
+				"security": [
+					{
+						"api_email": [],
+						"api_key": []
+					},
+					{
+						"api_token": []
+					}
+				],
+				"summary": "List Logpush jobs",
+				"tags": [
+					"Logpush jobs for an account"
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"#logs:edit"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"business": false,
+					"enterprise": true,
+					"free": false,
+					"pro": false
+				}
+			},
+			"post": {
+				"description": "Creates a new Logpush job for an account.",
+				"operationId": "post-accounts-account_identifier-logpush-jobs",
+				"parameters": [
+					{
+						"in": "path",
+						"name": "account_identifier",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/identifier"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"dataset": {
+										"$ref": "#/components/schemas/dataset"
+									},
+									"destination_conf": {
+										"$ref": "#/components/schemas/destination_conf"
+									},
+									"enabled": {
+										"$ref": "#/components/schemas/enabled"
+									},
+									"frequency": {
+										"$ref": "#/components/schemas/frequency"
+									},
+									"logpull_options": {
+										"$ref": "#/components/schemas/logpull_options"
+									},
+									"name": {
+										"$ref": "#/components/schemas/name"
+									},
+									"ownership_challenge": {
+										"$ref": "#/components/schemas/ownership_challenge"
+									}
+								},
+								"required": [
+									"destination_conf"
+								]
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/logpush_job_response_single"
+								}
+							}
+						},
+						"description": "Create Logpush job response"
+					},
+					"4xx": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/logpush_job_response_single"
+										},
+										{
+											"$ref": "#/components/schemas/api-response-common-failure"
+										}
+									]
+								}
+							}
+						},
+						"description": "Create Logpush job response failure"
+					}
+				},
+				"security": [
+					{
+						"api_email": [],
+						"api_key": []
+					},
+					{
+						"api_token": []
+					}
+				],
+				"summary": "Create Logpush job",
+				"tags": [
+					"Logpush jobs for an account"
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"#logs:edit"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"business": false,
+					"enterprise": true,
+					"free": false,
+					"pro": false
+				}
+			}
+		},
+		"/accounts/{account_identifier}/logpush/jobs/{job_identifier}": {
+			"delete": {
+				"description": "Deletes a Logpush job.",
+				"operationId": "delete-accounts-account_identifier-logpush-jobs-job_identifier",
+				"parameters": [
+					{
+						"in": "path",
+						"name": "job_identifier",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/job_identifier"
+						}
+					},
+					{
+						"in": "path",
+						"name": "account_identifier",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/identifier"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/api-response-common"
+										},
+										{
+											"properties": {
+												"result": {
+													"example": {},
+													"nullable": true,
+													"type": "object"
+												}
+											}
+										}
+									]
+								}
+							}
+						},
+						"description": "Delete Logpush job response"
+					},
+					"4xx": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"$ref": "#/components/schemas/api-response-common"
+												},
+												{
+													"properties": {
+														"result": {
+															"example": {},
+															"nullable": true,
+															"type": "object"
+														}
+													}
+												}
+											]
+										},
+										{
+											"$ref": "#/components/schemas/api-response-common-failure"
+										}
+									]
+								}
+							}
+						},
+						"description": "Delete Logpush job response failure"
+					}
+				},
+				"security": [
+					{
+						"api_email": [],
+						"api_key": []
+					},
+					{
+						"api_token": []
+					}
+				],
+				"summary": "Delete Logpush job",
+				"tags": [
+					"Logpush jobs for an account"
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"#logs:edit"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"business": false,
+					"enterprise": true,
+					"free": false,
+					"pro": false
+				}
+			},
+			"get": {
+				"description": "Gets the details of a Logpush job.",
+				"operationId": "get-accounts-account_identifier-logpush-jobs-job_identifier",
+				"parameters": [
+					{
+						"in": "path",
+						"name": "job_identifier",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/job_identifier"
+						}
+					},
+					{
+						"in": "path",
+						"name": "account_identifier",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/identifier"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/logpush_job_response_single"
+								}
+							}
+						},
+						"description": "Get Logpush job details response"
+					},
+					"4xx": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/logpush_job_response_single"
+										},
+										{
+											"$ref": "#/components/schemas/api-response-common-failure"
+										}
+									]
+								}
+							}
+						},
+						"description": "Get Logpush job details response failure"
+					}
+				},
+				"security": [
+					{
+						"api_email": [],
+						"api_key": []
+					},
+					{
+						"api_token": []
+					}
+				],
+				"summary": "Get Logpush job details",
+				"tags": [
+					"Logpush jobs for an account"
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"#logs:edit"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"business": false,
+					"enterprise": true,
+					"free": false,
+					"pro": false
+				}
+			},
+			"put": {
+				"description": "Updates a Logpush job.",
+				"operationId": "put-accounts-account_identifier-logpush-jobs-job_identifier",
+				"parameters": [
+					{
+						"in": "path",
+						"name": "job_identifier",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/job_identifier"
+						}
+					},
+					{
+						"in": "path",
+						"name": "account_identifier",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/identifier"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"destination_conf": {
+										"$ref": "#/components/schemas/destination_conf"
+									},
+									"enabled": {
+										"$ref": "#/components/schemas/enabled"
+									},
+									"frequency": {
+										"$ref": "#/components/schemas/frequency"
+									},
+									"logpull_options": {
+										"$ref": "#/components/schemas/logpull_options"
+									},
+									"ownership_challenge": {
+										"$ref": "#/components/schemas/ownership_challenge"
+									}
+								}
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/logpush_job_response_single"
+								}
+							}
+						},
+						"description": "Update Logpush job response"
+					},
+					"4xx": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/logpush_job_response_single"
+										},
+										{
+											"$ref": "#/components/schemas/api-response-common-failure"
+										}
+									]
+								}
+							}
+						},
+						"description": "Update Logpush job response failure"
+					}
+				},
+				"security": [
+					{
+						"api_email": [],
+						"api_key": []
+					},
+					{
+						"api_token": []
+					}
+				],
+				"summary": "Update Logpush job",
+				"tags": [
+					"Logpush jobs for an account"
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"#logs:edit"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"business": false,
+					"enterprise": true,
+					"free": false,
+					"pro": false
+				}
+			}
+		},
+		"/accounts/{account_identifier}/logpush/ownership": {
+			"post": {
+				"description": "Gets a new ownership challenge sent to your destination.",
+				"operationId": "post-accounts-account_identifier-logpush-ownership",
+				"parameters": [
+					{
+						"in": "path",
+						"name": "account_identifier",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/identifier"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"destination_conf": {
+										"$ref": "#/components/schemas/destination_conf"
+									}
+								},
+								"required": [
+									"destination_conf"
+								]
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/get_ownership_response"
+								}
+							}
+						},
+						"description": "Get ownership challenge response"
+					},
+					"4xx": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/get_ownership_response"
+										},
+										{
+											"$ref": "#/components/schemas/api-response-common-failure"
+										}
+									]
+								}
+							}
+						},
+						"description": "Get ownership challenge response failure"
+					}
+				},
+				"security": [
+					{
+						"api_email": [],
+						"api_key": []
+					},
+					{
+						"api_token": []
+					}
+				],
+				"summary": "Get ownership challenge",
+				"tags": [
+					"Logpush jobs for an account"
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"#logs:edit"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"business": false,
+					"enterprise": true,
+					"free": false,
+					"pro": false
+				}
+			}
+		},
+		"/accounts/{account_identifier}/logpush/ownership/validate": {
+			"post": {
+				"description": "Validates ownership challenge of the destination.",
+				"operationId": "post-accounts-account_identifier-logpush-ownership-validate",
+				"parameters": [
+					{
+						"in": "path",
+						"name": "account_identifier",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/identifier"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"destination_conf": {
+										"$ref": "#/components/schemas/destination_conf"
+									},
+									"ownership_challenge": {
+										"$ref": "#/components/schemas/ownership_challenge"
+									}
+								},
+								"required": [
+									"destination_conf",
+									"ownership_challenge"
+								]
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/validate_ownership_response"
+								}
+							}
+						},
+						"description": "Validate ownership challenge response"
+					},
+					"4xx": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/validate_ownership_response"
+										},
+										{
+											"$ref": "#/components/schemas/api-response-common-failure"
+										}
+									]
+								}
+							}
+						},
+						"description": "Validate ownership challenge response failure"
+					}
+				},
+				"security": [
+					{
+						"api_email": [],
+						"api_key": []
+					},
+					{
+						"api_token": []
+					}
+				],
+				"summary": "Validate ownership challenge",
+				"tags": [
+					"Logpush jobs for an account"
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"#logs:edit"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"business": false,
+					"enterprise": true,
+					"free": false,
+					"pro": false
+				}
+			}
+		},
+		"/accounts/{account_identifier}/logpush/validate/destination/exists": {
+			"post": {
+				"description": "Checks if there is an existing job with a destination.",
+				"operationId": "delete-accounts-account_identifier-logpush-validate-destination-exists",
+				"parameters": [
+					{
+						"in": "path",
+						"name": "account_identifier",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/identifier"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"destination_conf": {
+										"$ref": "#/components/schemas/destination_conf"
+									}
+								},
+								"required": [
+									"destination_conf"
+								]
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/destination_exists_response"
+								}
+							}
+						},
+						"description": "Check destination exists response"
+					},
+					"4xx": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/destination_exists_response"
+										},
+										{
+											"$ref": "#/components/schemas/api-response-common-failure"
+										}
+									]
+								}
+							}
+						},
+						"description": "Check destination exists response failure"
+					}
+				},
+				"security": [
+					{
+						"api_email": [],
+						"api_key": []
+					},
+					{
+						"api_token": []
+					}
+				],
+				"summary": "Check destination exists",
+				"tags": [
+					"Logpush jobs for an account"
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"#logs:edit"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"business": false,
+					"enterprise": true,
+					"free": false,
+					"pro": false
+				}
+			}
+		},
+		"/accounts/{account_identifier}/logpush/validate/origin": {
+			"post": {
+				"description": "Validates logpull origin with logpull_options.",
+				"operationId": "post-accounts-account_identifier-logpush-validate-origin",
+				"parameters": [
+					{
+						"in": "path",
+						"name": "account_identifier",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/identifier"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"logpull_options": {
+										"$ref": "#/components/schemas/logpull_options"
+									}
+								},
+								"required": [
+									"logpull_options"
+								]
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/validate_response"
+								}
+							}
+						},
+						"description": "Validate origin response"
+					},
+					"4xx": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/validate_response"
+										},
+										{
+											"$ref": "#/components/schemas/api-response-common-failure"
+										}
+									]
+								}
+							}
+						},
+						"description": "Validate origin response failure"
+					}
+				},
+				"security": [
+					{
+						"api_email": [],
+						"api_key": []
+					},
+					{
+						"api_token": []
+					}
+				],
+				"summary": "Validate origin",
+				"tags": [
+					"Logpush jobs for an account"
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"#logs:edit"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"business": false,
+					"enterprise": true,
+					"free": false,
+					"pro": false
+				}
+			}
+		},
 		"/accounts/{account_identifier}/magic/cf_interconnects": {
 			"get": {
 				"description": "Lists interconnects associated with an account.",
@@ -47941,7 +49017,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					}
 				],
@@ -47997,7 +49073,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					}
 				],
@@ -48073,7 +49149,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					}
 				],
@@ -48153,7 +49229,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					}
 				],
@@ -48217,7 +49293,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					}
 				],
@@ -48293,7 +49369,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					}
 				],
@@ -48357,7 +49433,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					}
 				],
@@ -48421,7 +49497,7 @@
 						"name": "deployment_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					},
 					{
@@ -48437,7 +49513,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					}
 				],
@@ -48509,7 +49585,7 @@
 						"name": "deployment_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					},
 					{
@@ -48525,7 +49601,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					}
 				],
@@ -48583,7 +49659,7 @@
 						"name": "deployment_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					},
 					{
@@ -48599,7 +49675,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					}
 				],
@@ -48657,7 +49733,7 @@
 						"name": "deployment_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					},
 					{
@@ -48673,7 +49749,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					}
 				],
@@ -48737,7 +49813,7 @@
 						"name": "deployment_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					},
 					{
@@ -48753,7 +49829,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					}
 				],
@@ -48825,7 +49901,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					}
 				],
@@ -48889,7 +49965,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					}
 				],
@@ -48973,7 +50049,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					}
 				],
@@ -49061,7 +50137,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					}
 				],
@@ -49133,7 +50209,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					}
 				],
@@ -59366,7 +60442,7 @@
 										"$ref": "#/components/schemas/schemas-service"
 									},
 									"zone_id": {
-										"$ref": "#/components/schemas/zone_identifier"
+										"$ref": "#/components/schemas/CloudflareClientAPI_zone_identifier"
 									}
 								},
 								"required": [
@@ -111490,7 +112566,7 @@
 						"name": "dataset",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/dataset"
+							"$ref": "#/components/schemas/CloudflareClientAPI_dataset"
 						}
 					},
 					{
@@ -111567,7 +112643,7 @@
 						"name": "dataset",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/dataset"
+							"$ref": "#/components/schemas/CloudflareClientAPI_dataset"
 						}
 					},
 					{
@@ -111584,7 +112660,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/logpush_job_response_collection"
+									"$ref": "#/components/schemas/CloudflareClientAPI_logpush_job_response_collection"
 								}
 							}
 						},
@@ -111596,7 +112672,7 @@
 								"schema": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/logpush_job_response_collection"
+											"$ref": "#/components/schemas/CloudflareClientAPI_logpush_job_response_collection"
 										},
 										{
 											"$ref": "#/components/schemas/api-response-common-failure"
@@ -111653,7 +112729,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/logpush_job_response_collection"
+									"$ref": "#/components/schemas/CloudflareClientAPI_logpush_job_response_collection"
 								}
 							}
 						},
@@ -111665,7 +112741,7 @@
 								"schema": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/logpush_job_response_collection"
+											"$ref": "#/components/schemas/CloudflareClientAPI_logpush_job_response_collection"
 										},
 										{
 											"$ref": "#/components/schemas/api-response-common-failure"
@@ -111721,13 +112797,13 @@
 							"schema": {
 								"properties": {
 									"dataset": {
-										"$ref": "#/components/schemas/dataset"
+										"$ref": "#/components/schemas/CloudflareClientAPI_dataset"
 									},
 									"destination_conf": {
 										"$ref": "#/components/schemas/destination_conf"
 									},
 									"enabled": {
-										"$ref": "#/components/schemas/enabled"
+										"$ref": "#/components/schemas/CloudflareClientAPI_enabled"
 									},
 									"frequency": {
 										"$ref": "#/components/schemas/components-schemas-frequency"
@@ -111755,7 +112831,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/logpush_job_response_single"
+									"$ref": "#/components/schemas/CloudflareClientAPI_logpush_job_response_single"
 								}
 							}
 						},
@@ -111767,7 +112843,7 @@
 								"schema": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/logpush_job_response_single"
+											"$ref": "#/components/schemas/CloudflareClientAPI_logpush_job_response_single"
 										},
 										{
 											"$ref": "#/components/schemas/api-response-common-failure"
@@ -111815,7 +112891,7 @@
 						"name": "job_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/CloudflareClientAPI_id"
+							"$ref": "#/components/schemas/id"
 						}
 					},
 					{
@@ -111922,7 +112998,7 @@
 						"name": "job_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/CloudflareClientAPI_id"
+							"$ref": "#/components/schemas/id"
 						}
 					},
 					{
@@ -111939,7 +113015,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/logpush_job_response_single"
+									"$ref": "#/components/schemas/CloudflareClientAPI_logpush_job_response_single"
 								}
 							}
 						},
@@ -111951,7 +113027,7 @@
 								"schema": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/logpush_job_response_single"
+											"$ref": "#/components/schemas/CloudflareClientAPI_logpush_job_response_single"
 										},
 										{
 											"$ref": "#/components/schemas/api-response-common-failure"
@@ -111997,7 +113073,7 @@
 						"name": "job_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/CloudflareClientAPI_id"
+							"$ref": "#/components/schemas/id"
 						}
 					},
 					{
@@ -112018,7 +113094,7 @@
 										"$ref": "#/components/schemas/destination_conf"
 									},
 									"enabled": {
-										"$ref": "#/components/schemas/enabled"
+										"$ref": "#/components/schemas/CloudflareClientAPI_enabled"
 									},
 									"frequency": {
 										"$ref": "#/components/schemas/components-schemas-frequency"
@@ -112040,7 +113116,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/logpush_job_response_single"
+									"$ref": "#/components/schemas/CloudflareClientAPI_logpush_job_response_single"
 								}
 							}
 						},
@@ -112052,7 +113128,7 @@
 								"schema": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/logpush_job_response_single"
+											"$ref": "#/components/schemas/CloudflareClientAPI_logpush_job_response_single"
 										},
 										{
 											"$ref": "#/components/schemas/api-response-common-failure"
@@ -128901,7 +129977,7 @@
 						"name": "zone_id",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/ZonekeeperPublicAPI_identifier"
+							"$ref": "#/components/schemas/identifier"
 						}
 					}
 				],
@@ -128919,7 +129995,7 @@
 												"result": {
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/ZonekeeperPublicAPI_identifier"
+															"$ref": "#/components/schemas/identifier"
 														}
 													},
 													"type": "object"
