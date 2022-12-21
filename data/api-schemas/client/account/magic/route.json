@@ -381,6 +381,65 @@
 			"uri": "accounts/:account_identifier/magic/routes/:route_identifier",
 			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/magic/routes/01a7362d577a6c3019a474fd6f485823\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"deleted\": true,\n    \"deleted_route\": {\n      \"id\": \"c4a7362d577a6c3019a474fd6f485821\",\n      \"created_on\": \"2017-06-14T00:00:00Z\",\n      \"modified_on\": \"2017-06-14T05:20:00Z\",\n      \"prefix\": \"192.0.2.0/24\",\n      \"nexthop\": \"203.0.113.1\",\n      \"priority\": 100,\n      \"description\": \"New route for new prefix 203.0.113.1\",\n      \"weight\": 100,\n      \"scope\": {\n        \"colo_regions\": [\n          \"APAC\"\n        ],\n        \"colo_names\": [\n          \"den01\"\n        ]\n      }\n    }\n  }\n}"
+		},
+		{
+			"title": "Delete Many Routes",
+			"description": "Delete multiple Magic static routes.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/magic/routes",
+			"method": "DELETE",
+			"cfOwnership": "magic-on-ramps",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#organization:edit"
+				]
+			},
+			"html_id": "magic-static-routes-delete-many-routes",
+			"uri": "accounts/:account_identifier/magic/routes",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/magic/routes\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"routes\":[{\"id\":\"01a7362d577a6c3019a474fd6f485823\"}]}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"routes": {
+						"type": "array",
+						"example": "[\n  {\n    \"id\": \"01a7362d577a6c3019a474fd6f485823\"\n  }\n]",
+						"items": {
+							"allOf": [
+								{
+									"required": [
+										"id"
+									],
+									"properties": {
+										"id": {
+											"$comment": "Must be present as a definition for URI Templating",
+											"description": "Account identifier tag.",
+											"type": "string",
+											"maxLength": 32,
+											"readOnly": true,
+											"example": "01a7362d577a6c3019a474fd6f485823"
+										}
+									}
+								}
+							]
+						}
+					}
+				},
+				"required_props": [
+					"routes"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"routes\": [\n    {\n      \"id\": \"01a7362d577a6c3019a474fd6f485823\"\n    }\n  ]\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"deleted\": true,\n    \"deleted_routes\": {\n      \"id\": \"c4a7362d577a6c3019a474fd6f485821\",\n      \"created_on\": \"2017-06-14T00:00:00Z\",\n      \"modified_on\": \"2017-06-14T05:20:00Z\",\n      \"prefix\": \"192.0.2.0/24\",\n      \"nexthop\": \"203.0.113.1\",\n      \"priority\": 100,\n      \"description\": \"New route for new prefix 203.0.113.1\",\n      \"weight\": 100,\n      \"scope\": {\n        \"colo_regions\": [\n          \"APAC\"\n        ],\n        \"colo_names\": [\n          \"den01\"\n        ]\n      }\n    }\n  }\n}"
 		}
 	],
 	"cfLinkErrors": {},

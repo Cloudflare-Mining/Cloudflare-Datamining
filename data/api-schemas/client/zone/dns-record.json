@@ -24,7 +24,7 @@
 			},
 			"html_id": "dns-records-for-a-zone-list-dns-records",
 			"uri": "zones/:zone_identifier/dns_records",
-			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/dns_records?type=A&name=example.com&content=127.0.0.1&proxied=false&page=1&per_page=100&order=type&direction=desc&match=all&comment=Domain verification record&tag.<tag-name>=undefined&tag-match=all\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/dns_records?type=A&name=example.com&content=127.0.0.1&proxied=false&page=1&per_page=100&order=type&direction=desc&match=all&comment=Domain verification record&tag.<tag-name>=undefined&tag=undefined&tag-match=all\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -116,7 +116,7 @@
 							"all"
 						],
 						"default": "all",
-						"description": "Whether to match all search requirements or at least one (any). If set to 'all', acts like a logical AND between filters. If set to 'any', acts like a logical OR instead. Note that the interaction between multiple 'tag.*' filters is controlled by the 'tag-match' parameter instead."
+						"description": "Whether to match all search requirements or at least one (any). If set to 'all', acts like a logical AND between filters. If set to 'any', acts like a logical OR instead. Note that the interaction between tag filters is controlled by the 'tag-match' parameter instead."
 					},
 					"comment": {
 						"type": "string",
@@ -125,7 +125,11 @@
 					},
 					"tag.<tag-name>": {
 						"type": "string",
-						"description": "DNS record tag value. For advanced queries, the following alternative parameters are available: 'tag.<tag-name>.present', 'tag.<tag-name>.absent', 'tag.<tag-name>.exact', 'tag.<tag-name>.contains', 'tag.<tag-name>.startswith', 'tag.<tag-name>.endswith'. Just 'tag.<tag-name>' is equivalent to 'tag.<tag-name>.exact'. Replace <tag-name> with the name of the tag to query. Example: /dns_records?tag.important.present&tag.team=DNS"
+						"description": "DNS record tag value. For advanced queries, the following alternative parameters are available: 'tag.<tag-name>.present', 'tag.<tag-name>.absent', 'tag.<tag-name>.exact', 'tag.<tag-name>.contains', 'tag.<tag-name>.startswith', 'tag.<tag-name>.endswith'. Just 'tag.<tag-name>' is equivalent to 'tag.<tag-name>.exact'. Replace <tag-name> with the name of the tag to query. Example: /dns_records?tag.important.present&tag.team=DNS. Note that 'tag.<tag-name>.present' and 'tag.<tag-name>.absent' do not require a value; if one is given anyway it is ignored."
+					},
+					"tag": {
+						"type": "string",
+						"description": "Convenience shorthand for tag searches. Can be either '<tag-name>:<tag-value>' to search for an exact name:value pair, or just '<tag-name>' to search for records with a specific tag regardless of value. Example: /dns_records?tag=important&tag=team:DNS"
 					},
 					"tag-match": {
 						"type": "string",
@@ -135,7 +139,7 @@
 							"all"
 						],
 						"default": "all",
-						"description": "Whether to match all tag search requirements or at least one (any). If set to 'all', acts like a logical AND between 'tag.*' filters. If set to 'any', acts like a logical OR instead. Note that the regular 'match' parameter is still used to combine the resulting condition with other filters that aren't related to tags."
+						"description": "Whether to match all tag search requirements or at least one (any). If set to 'all', acts like a logical AND between tag filters. If set to 'any', acts like a logical OR instead. Note that the regular 'match' parameter is still used to combine the resulting condition with other filters that aren't related to tags."
 					}
 				},
 				"required_props": [],
@@ -151,6 +155,7 @@
 					"match",
 					"comment",
 					"tag.<tag-name>",
+					"tag",
 					"tag-match"
 				],
 				"objects": [],

@@ -14,7 +14,7 @@
 			"html_id": "magic-network-monitoring-configuration-list-account-configuration",
 			"uri": "accounts/:account_identifier/mnm/config",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/6f91088a406011ed95aed352566e8d4c/mnm/config\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
-			"response": "{\n  \"name\": \"cloudflare user's account\",\n  \"default_sampling\": 1,\n  \"router_ips\": [\n    \"203.0.113.1/32\"\n  ]\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"name\": \"cloudflare user's account\",\n    \"default_sampling\": 1,\n    \"router_ips\": [\n      \"203.0.113.1/32\"\n    ]\n  }\n}"
 		},
 		{
 			"title": "List rules and account configuration",
@@ -26,7 +26,7 @@
 			"html_id": "magic-network-monitoring-configuration-list-rules-and-account-configuration",
 			"uri": "accounts/:account_identifier/mnm/config/full",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/6f91088a406011ed95aed352566e8d4c/mnm/config/full\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
-			"response": "{\n  \"name\": \"cloudflare user's account\",\n  \"default_sampling\": 1,\n  \"router_ips\": [\n    \"203.0.113.1/32\"\n  ]\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"name\": \"cloudflare user's account\",\n    \"default_sampling\": 1,\n    \"router_ips\": [\n      \"203.0.113.1/32\"\n    ]\n  }\n}"
 		},
 		{
 			"title": "Create account configuration",
@@ -38,7 +38,7 @@
 			"html_id": "magic-network-monitoring-configuration-create-account-configuration",
 			"uri": "accounts/:account_identifier/mnm/config",
 			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/6f91088a406011ed95aed352566e8d4c/mnm/config\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
-			"response": "{\n  \"name\": \"cloudflare user's account\",\n  \"default_sampling\": 1,\n  \"router_ips\": [\n    \"203.0.113.1/32\"\n  ]\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"name\": \"cloudflare user's account\",\n    \"default_sampling\": 1,\n    \"router_ips\": [\n      \"203.0.113.1/32\"\n    ]\n  }\n}"
 		},
 		{
 			"title": "Update account configuration fields",
@@ -50,7 +50,7 @@
 			"html_id": "magic-network-monitoring-configuration-update-account-configuration-fields",
 			"uri": "accounts/:account_identifier/mnm/config",
 			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/accounts/6f91088a406011ed95aed352566e8d4c/mnm/config\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
-			"response": "{\n  \"name\": \"cloudflare user's account\",\n  \"default_sampling\": 1,\n  \"router_ips\": [\n    \"203.0.113.1/32\"\n  ]\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"name\": \"cloudflare user's account\",\n    \"default_sampling\": 1,\n    \"router_ips\": [\n      \"203.0.113.1/32\"\n    ]\n  }\n}"
 		},
 		{
 			"title": "Update an entire account configuration",
@@ -62,7 +62,7 @@
 			"html_id": "magic-network-monitoring-configuration-update-an-entire-account-configuration",
 			"uri": "accounts/:account_identifier/mnm/config",
 			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/6f91088a406011ed95aed352566e8d4c/mnm/config\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
-			"response": "{\n  \"name\": \"cloudflare user's account\",\n  \"default_sampling\": 1,\n  \"router_ips\": [\n    \"203.0.113.1/32\"\n  ]\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"name\": \"cloudflare user's account\",\n    \"default_sampling\": 1,\n    \"router_ips\": [\n      \"203.0.113.1/32\"\n    ]\n  }\n}"
 		},
 		{
 			"title": "Delete account configuration",
@@ -74,7 +74,7 @@
 			"html_id": "magic-network-monitoring-configuration-delete-account-configuration",
 			"uri": "accounts/:account_identifier/mnm/config",
 			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/6f91088a406011ed95aed352566e8d4c/mnm/config\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
-			"response": "{\n  \"name\": \"cloudflare user's account\",\n  \"default_sampling\": 1,\n  \"router_ips\": [\n    \"203.0.113.1/32\"\n  ]\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"name\": \"cloudflare user's account\",\n    \"default_sampling\": 1,\n    \"router_ips\": [\n      \"203.0.113.1/32\"\n    ]\n  }\n}"
 		}
 	],
 	"html_id": "magic-network-monitoring-configuration",
