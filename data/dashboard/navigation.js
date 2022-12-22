@@ -182,7 +182,7 @@ const navigation = {
 			url: "/workers/plans",
 			hasPermission: function(y) {
 				var P = (0, o.getSubscriptions)(y);
-				return !(0, O.ky)(P, [C.uD.UnboundEnterpriseTrial])
+				return !(0, O.ky)(P, [T.uD.UnboundEnterpriseTrial])
 			}
 		}]
 	}, {
@@ -448,7 +448,7 @@ const navigation = {
 			url: "/audit-log",
 			testId: "account-homepage-audit-logs",
 			hasPermission: function(y) {
-				return (0, T.b)(y) ? j(y) : (0, t.getPermission)(y)("auditlogs").read
+				return (0, S.b)(y) ? j(y) : (0, t.getPermission)(y)("auditlogs").read
 			}
 		}, {
 			title: "navigation.account.billing",
@@ -666,7 +666,7 @@ const navigation = {
 			url: "/security/analytics",
 			labels: ["beta"],
 			hasPermission: function(y) {
-				return (0, S.B_)(y)
+				return (0, N.B_)(y)
 			}
 		}, {
 			title: "navigation.zone.security.events",
