@@ -117,39 +117,57 @@
 						"htmlId": null,
 						"featureLists": [
 							{
+								"contentTypeId": "featureList",
 								"contentfulId": "1BO6011hAlJbjpVuY0VC20",
 								"title": "Application Services",
 								"description": "Secure and accelerate your apps, APIs, and websites in minutes by pointing your DNS to Cloudflare. Instantly turn on performance and security services.",
 								"features": [
 									{
+										"contentTypeId": "feature",
 										"title": "Analytics",
+										"description": "Analyze Cloudflare logs and metrics using your analytics provider of choice.",
 										"displayBorder": false,
 										"learnMoreUrl": "https://www.cloudflare.com/partners/analytics/",
 										"learnMoreText": "Learn More",
+										"streamId": null,
+										"openLinkInNewTab": null,
+										"streamThumbnail": null,
 										"icon": {
 											"file": {
 												"publicURL": "[path]/analytics-data-blue.svg"
 											}
 										},
-										"iconAssetFile": null
+										"iconAssetFile": null,
+										"imageAssetFile": null
 									},
 									{
+										"contentTypeId": "feature",
 										"title": "Bandwidth Alliance",
+										"description": "Cloud and storage providers come together to eliminate egress costs.",
 										"displayBorder": false,
 										"learnMoreUrl": "https://www.cloudflare.com/bandwidth-alliance/",
 										"learnMoreText": "Learn More",
+										"streamId": null,
+										"openLinkInNewTab": null,
+										"streamThumbnail": null,
 										"icon": {
 											"file": {
 												"publicURL": "[path]/_DO_NOT_USE__new-homepage_icon_internet-globe_blue_48px_svg.svg"
 											}
 										},
-										"iconAssetFile": null
+										"iconAssetFile": null,
+										"imageAssetFile": null
 									},
 									{
+										"contentTypeId": "feature",
 										"title": "Cyber Risk",
+										"description": "Cloudflare partners with leading cyber insurers and incident response providers to help customers reduce their cyber risk.",
 										"displayBorder": false,
 										"learnMoreUrl": "https://www.cloudflare.com/partners/cyber-risk/",
 										"learnMoreText": "Learn More",
+										"streamId": null,
+										"openLinkInNewTab": null,
+										"streamThumbnail": null,
 										"icon": null,
 										"iconAssetFile": {
 											"id": "2b733bc9-90ac-5322-bbd5-5889bfed2af7",
@@ -168,7 +186,8 @@
 												}
 											},
 											"brandfolderAssetMobile": null
-										}
+										},
+										"imageAssetFile": null
 									}
 								],
 								"supplementaryCallToAction": {
@@ -184,15 +203,21 @@
 								}
 							},
 							{
+								"contentTypeId": "featureList",
 								"contentfulId": "7AGytVZIw5rCGysGmKCIbX",
 								"title": "Zero Trust Services",
 								"description": "Increase visibility, eliminate complexity, and reduce risks for remote and office users alike. Stop data loss, malware and phishing, and secure users, applications, and devices.",
 								"features": [
 									{
+										"contentTypeId": "feature",
 										"title": "Area 1 Email Security",
+										"description": null,
 										"displayBorder": false,
 										"learnMoreUrl": "https://www.cloudflare.com/products/zero-trust/email-security/",
 										"learnMoreText": "Learn More",
+										"streamId": null,
+										"openLinkInNewTab": null,
+										"streamThumbnail": null,
 										"icon": null,
 										"iconAssetFile": {
 											"id": "8cb02df8-4ee5-51a0-93bd-5d68cd65230d",
@@ -211,37 +236,55 @@
 												}
 											},
 											"brandfolderAssetMobile": null
-										}
+										},
+										"imageAssetFile": null
 									},
 									{
+										"contentTypeId": "feature",
 										"title": "Endpoint Protection",
+										"description": "Integrate device posture signals from endpoint security providers with our Zero Trust access solutions.",
 										"displayBorder": false,
 										"learnMoreUrl": "https://www.cloudflare.com/endpoint-partners/",
 										"learnMoreText": "Learn More",
+										"streamId": null,
+										"openLinkInNewTab": null,
+										"streamThumbnail": null,
 										"icon": {
 											"file": {
 												"publicURL": "[path]/security-shield-ddos-protection.svg"
 											}
 										},
-										"iconAssetFile": null
+										"iconAssetFile": null,
+										"imageAssetFile": null
 									},
 									{
+										"contentTypeId": "feature",
 										"title": "Identity Providers",
+										"description": "Integrate existing identity providers with our Zero Trust access solutions.",
 										"displayBorder": false,
 										"learnMoreUrl": "https://www.cloudflare.com/partners/identity-providers",
 										"learnMoreText": "Learn More",
+										"streamId": null,
+										"openLinkInNewTab": null,
+										"streamThumbnail": null,
 										"icon": {
 											"file": {
 												"publicURL": "[path]/cloudflare-teams-blue.svg"
 											}
 										},
-										"iconAssetFile": null
+										"iconAssetFile": null,
+										"imageAssetFile": null
 									},
 									{
+										"contentTypeId": "feature",
 										"title": "Mobile Device Management",
+										"description": "Deploy our Zero Trust solutions through mobile device management (MDM) partners.",
 										"displayBorder": false,
 										"learnMoreUrl": "https://www.cloudflare.com/partners/mdm/",
 										"learnMoreText": "Learn More",
+										"streamId": null,
+										"openLinkInNewTab": null,
+										"streamThumbnail": null,
 										"icon": null,
 										"iconAssetFile": {
 											"id": "e363b9f0-3f33-5247-afe4-5eebf0367c82",
@@ -260,13 +303,19 @@
 												}
 											},
 											"brandfolderAssetMobile": null
-										}
+										},
+										"imageAssetFile": null
 									},
 									{
+										"contentTypeId": "feature",
 										"title": "Threat Intelligence",
+										"description": "Activate relevant, actionable, and contextual threat intelligence via our partner integrations.",
 										"displayBorder": false,
 										"learnMoreUrl": "https://www.cloudflare.com/partners/threat-intelligence/",
 										"learnMoreText": "Learn More",
+										"streamId": null,
+										"openLinkInNewTab": null,
+										"streamThumbnail": null,
 										"icon": null,
 										"iconAssetFile": {
 											"id": "27d3dc18-7219-53bc-bd53-b9742318bf14",
@@ -285,7 +334,8 @@
 												}
 											},
 											"brandfolderAssetMobile": null
-										}
+										},
+										"imageAssetFile": null
 									}
 								],
 								"supplementaryCallToAction": {
@@ -301,27 +351,39 @@
 								}
 							},
 							{
+								"contentTypeId": "featureList",
 								"contentfulId": "3LGnuGL5J858pHWka2juAo",
 								"title": "Network Services",
 								"description": "Networking services to help enterprises connect, secure, and accelerate their corporate networks — without the cost and complexity of managing legacy network hardware.",
 								"features": [
 									{
+										"contentTypeId": "feature",
 										"title": "Network Interconnect",
+										"description": "Connect to Cloudflare directly over physical or virtual interconnects.",
 										"displayBorder": false,
 										"learnMoreUrl": "https://www.cloudflare.com/network-interconnect-partnerships/",
 										"learnMoreText": "Learn More",
+										"streamId": null,
+										"openLinkInNewTab": null,
+										"streamThumbnail": null,
 										"icon": {
 											"file": {
 												"publicURL": "[path]/network-scale.svg"
 											}
 										},
-										"iconAssetFile": null
+										"iconAssetFile": null,
+										"imageAssetFile": null
 									},
 									{
+										"contentTypeId": "feature",
 										"title": "Network Observability",
+										"description": "Enhance on-demand DDoS protection with network-layer security and observability from Kentik",
 										"displayBorder": false,
 										"learnMoreUrl": "https://cloudflare.com/partners/network-observability",
 										"learnMoreText": "Learn More",
+										"streamId": null,
+										"openLinkInNewTab": null,
+										"streamThumbnail": null,
 										"icon": null,
 										"iconAssetFile": {
 											"id": "9dc92233-8924-5d39-8e0d-972e50ea7311",
@@ -340,19 +402,26 @@
 												}
 											},
 											"brandfolderAssetMobile": null
-										}
+										},
+										"imageAssetFile": null
 									},
 									{
+										"contentTypeId": "feature",
 										"title": "Network On-ramp",
+										"description": "Connect to Cloudflare using your existing WAN or SD-WAN infrastructure.",
 										"displayBorder": false,
 										"learnMoreUrl": "https://www.cloudflare.com/network-onramp-partners/",
 										"learnMoreText": "Learn More",
+										"streamId": null,
+										"openLinkInNewTab": null,
+										"streamThumbnail": null,
 										"icon": {
 											"file": {
 												"publicURL": "[path]/reliability-load-balancer-blue.svg"
 											}
 										},
-										"iconAssetFile": null
+										"iconAssetFile": null,
+										"imageAssetFile": null
 									}
 								],
 								"supplementaryCallToAction": {
@@ -368,15 +437,21 @@
 								}
 							},
 							{
+								"contentTypeId": "featureList",
 								"contentfulId": "Q25jFcwpwop0sbpxfHf4G",
 								"title": "Developer Services",
 								"description": "Deploy serverless code instantly across the globe to give it exceptional performance, reliability, and scale.",
 								"features": [
 									{
+										"contentTypeId": "feature",
 										"title": "Edge Database",
+										"description": "Build full-stack use cases at the edge via integrations with popular databases.",
 										"displayBorder": false,
 										"learnMoreUrl": "https://www.cloudflare.com/partners/edge-database-partners/",
 										"learnMoreText": "Learn More",
+										"streamId": null,
+										"openLinkInNewTab": null,
+										"streamThumbnail": null,
 										"icon": null,
 										"iconAssetFile": {
 											"id": "122122d8-cea5-5bcc-8451-b0810e564bf3",
@@ -395,13 +470,19 @@
 												}
 											},
 											"brandfolderAssetMobile": null
-										}
+										},
+										"imageAssetFile": null
 									},
 									{
+										"contentTypeId": "feature",
 										"title": "Workers Observability",
+										"description": "Monitor and observe application state from development through test and production.",
 										"displayBorder": false,
 										"learnMoreUrl": "https://www.cloudflare.com/partners/workers-observability/",
 										"learnMoreText": "Learn More",
+										"streamId": null,
+										"openLinkInNewTab": null,
+										"streamThumbnail": null,
 										"icon": null,
 										"iconAssetFile": {
 											"id": "94716675-099b-561c-a6b3-d9be2b13ab58",
@@ -420,7 +501,8 @@
 												}
 											},
 											"brandfolderAssetMobile": null
-										}
+										},
+										"imageAssetFile": null
 									}
 								],
 								"supplementaryCallToAction": {
