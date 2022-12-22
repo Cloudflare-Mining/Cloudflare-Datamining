@@ -1224,6 +1224,18 @@
 		}
 	},
 	{
+		"id": "managed_hostname.custom_origin_sni_access",
+		"feature": {
+			"feature_set": "managed_hostname",
+			"id": 934,
+			"key": "managed_hostname.custom_origin_sni_access",
+			"name": "SSL for SaaS Custom origin SNI specification"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "managed_hostname.enabled",
 		"feature": {
 			"feature_set": "managed_hostname",
