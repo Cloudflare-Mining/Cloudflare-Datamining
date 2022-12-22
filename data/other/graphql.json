@@ -1194,7 +1194,7 @@
 		"__description": "A high-level summary of HTTP requests made by end users.",
 		"avg": "The average value for a metric per dimension",
 		"dimensions": "List of dimensions to group by",
-		"ratio": "The ratio of a range of status codes, between 0 and 1",
+		"ratio": "The ratio of a metric in comparison to the rest of the traffic, between 0 and 1",
 		"sum": "The sum of values for a metric per dimension"
 	},
 	"AccountHttpRequestsOverviewAdaptiveGroupsAvg": {
@@ -1227,6 +1227,10 @@
 	},
 	"AccountHttpRequestsOverviewAdaptiveGroupsRatio": {
 		"__description": "",
+		"cachedBytes": "",
+		"cachedRequests": "",
+		"encryptedBytes": "",
+		"encryptedRequests": "",
 		"status4xx": "",
 		"status5xx": ""
 	},
@@ -3809,7 +3813,7 @@
 		"__description": "A high-level summary of HTTP requests made by end users.",
 		"avg": "The average value for a metric per dimension",
 		"dimensions": "List of dimensions to group by",
-		"ratio": "The ratio of a range of status codes, between 0 and 1",
+		"ratio": "The ratio of a metric in comparison to the rest of the traffic, between 0 and 1",
 		"sum": "The sum of values for a metric per dimension"
 	},
 	"ZoneHttpRequestsOverviewAdaptiveGroupsAvg": {
@@ -3842,6 +3846,10 @@
 	},
 	"ZoneHttpRequestsOverviewAdaptiveGroupsRatio": {
 		"__description": "",
+		"cachedBytes": "",
+		"cachedRequests": "",
+		"encryptedBytes": "",
+		"encryptedRequests": "",
 		"status4xx": "",
 		"status5xx": ""
 	},
