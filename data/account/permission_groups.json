@@ -10183,6 +10183,13 @@
 				"key": "com.cloudflare.api.account.zone.api-gateway.*"
 			},
 			{
+				"id": "9d92ae15474b4f79b44297670c3da988",
+				"key": "com.cloudflare.api.account.zone.ruleset-phase.request-dynamic-redirect.*",
+				"attributes": {
+					"legacy_name": "#waf:read,#waf:edit"
+				}
+			},
+			{
 				"id": "bb0175478fce4634b802dfcbc42b18f6",
 				"key": "com.cloudflare.api.account.zone.ruleset-phase.request-cache-settings.*",
 				"attributes": {
@@ -10276,6 +10283,20 @@
 			{
 				"id": "739436fc309145de95d46610a3a16730",
 				"key": "com.cloudflare.api.account.zone.ruleset-phase.request-trust-and-safety.list",
+				"attributes": {
+					"legacy_name": "#waf:read"
+				}
+			},
+			{
+				"id": "ca1b6c4cf1d645ffab8230b191d9d091",
+				"key": "com.cloudflare.api.account.ruleset-phase.request-redirect.read",
+				"attributes": {
+					"legacy_name": "#waf:read"
+				}
+			},
+			{
+				"id": "16d41baf97b34180aa1e5dfaae19a478",
+				"key": "com.cloudflare.api.account.ruleset-phase.request-redirect.list",
 				"attributes": {
 					"legacy_name": "#waf:read"
 				}
