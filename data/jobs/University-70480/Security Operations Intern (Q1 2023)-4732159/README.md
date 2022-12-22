@@ -41,6 +41,7 @@
 <ul>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Once you submit your application, you will receive an email with instructions. Please check your spam and email from Cloudflare Hiring &lt;hiring@notify.cloudflare.com&gt;.&nbsp;</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Our internship will preferably be located in our office in Lisbon.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Expected to start in Q1 (January to March of 2023).</span></li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
