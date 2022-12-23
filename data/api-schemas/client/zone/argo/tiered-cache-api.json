@@ -1,0 +1,126 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/zone/argo/tiered-cache-api.json",
+	"title": "Tiered Cache",
+	"description": "Query, enable, and disable Tiered Caching for a zone.",
+	"type": "object",
+	"links": [
+		{
+			"title": "Get Tiered Cache setting",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/argo/tiered_cache",
+			"method": "GET",
+			"cfOwnership": "cache",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#zone_settings:read"
+				]
+			},
+			"html_id": "tiered-cache-get-tiered-cache-setting",
+			"uri": "zones/:zone_identifier/argo/tiered_cache",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/argo/tiered_cache\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"tiered_caching\",\n    \"value\": \"on\",\n    \"editable\": true,\n    \"modified_on\": \"2019-02-20T22:37:07.107449Z\"\n  }\n}"
+		},
+		{
+			"title": "Patch Tiered Cache setting",
+			"description": "Updates enablement of Tiered Cache",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/argo/tiered_cache",
+			"method": "PATCH",
+			"cfOwnership": "cache",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#zone_settings:read",
+					"#zone_settings:edit"
+				]
+			},
+			"html_id": "tiered-cache-patch-tiered-cache-setting",
+			"uri": "zones/:zone_identifier/argo/tiered_cache",
+			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/argo/tiered_cache\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"value\":\"on\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"value": {
+						"type": "string",
+						"example": "\"on\"",
+						"description": "Enables Tiered Cache.",
+						"enum": [
+							"on",
+							"off"
+						]
+					}
+				},
+				"required_props": [
+					"value"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"value\": \"on\"\n}",
+				"description": "Update enablement of Tiered Cache"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"tiered_caching\",\n    \"value\": \"on\",\n    \"editable\": true,\n    \"modified_on\": \"2019-02-20T22:37:07.107449Z\"\n  }\n}"
+		}
+	],
+	"html_id": "tiered-cache",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"tiered_caching\"",
+				"description": "Identifies endpoint tiered_cache.",
+				"enum": [
+					"tiered_caching"
+				],
+				"readOnly": true
+			},
+			"value": {
+				"type": "string",
+				"example": "\"on\"",
+				"description": "Enables Tiered Cache.",
+				"enum": [
+					"on",
+					"off"
+				]
+			},
+			"editable": {
+				"type": "boolean",
+				"example": "true",
+				"description": "Determines whether Tiered Cache setting can be edited."
+			},
+			"modified_on": {
+				"type": "string",
+				"example": "\"2019-02-20T22:37:07.107449Z\"",
+				"description": "Timestamp of last modified date.",
+				"format": "date-time",
+				"readOnly": true
+			}
+		},
+		"required_props": [
+			"id",
+			"value",
+			"editable",
+			"modified_on"
+		],
+		"optional_props": [],
+		"objects": [],
+		"example": "{\n  \"id\": \"tiered_caching\",\n  \"value\": \"on\",\n  \"editable\": true,\n  \"modified_on\": \"2019-02-20T22:37:07.107449Z\"\n}",
+		"title": "Tiered Cache",
+		"description": "Query, enable, and disable Tiered Caching for a zone."
+	}
+}
