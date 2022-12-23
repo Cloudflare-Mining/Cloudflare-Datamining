@@ -5,37 +5,51 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About the role</strong></p>
-<p><span style="font-weight: 400;">We are looking for a talented Software Engineer to join our Protocols team. You will work closely with system engineers to work on transport and application protocols, design server-side network cognizant software, and implement novel solutions for networking performance. You get excited about working on tough problems and love the satisfaction when you find a solution.</span></p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><strong>Responsibilities</strong></p>
+<p><span style="font-weight: 400;">The EMEA Customer Advocacy Manager will be responsible for building, managing and growing customer marketing programs in Europe, Middle East &amp; Africa. Reporting to the Head of Customer Advocacy in the U.S, the ideal candidate should have previous experience in scaling customer programs in high growth SaaS companies.&nbsp;</span></p>
+<p><span style="font-weight: 400;">You will work cross functionally to build customer participation in EMEA and support requests from stakeholders in Sales, Marketing and PR. </span><span style="font-weight: 400;">This is a fantastic opportunity to join a high growth company and bring your previous experience to start this Customer Advocacy function in EMEA.</span></p>
+<p><span style="font-weight: 400;">The candidate will work closely with the Customer Advocacy team in the U.S. who are driving Customer Reference, Evidence and Advisory programs and adapt them for local execution. You will partner with Sales and Customer Success to develop mutually beneficial customer engagement programs.&nbsp;</span></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Solid competencies in practical computer science, applying the right algorithms, data structures, concurrency control systems to software design, and building large, distributed systems</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Proven experience in running high performance and enterprise scale services at pace and at scale whilst maintaining operational stability</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience of working with Product teams to balance technical agenda, operation of existing systems and new product development</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience of analyzing and communicating complex technical requirements and concepts, identify the highest priority areas, and carve a path to deliver</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Driving communication and consensus across teams</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience implementing tools, process, internal instrumentation, methodologies and resolving blockages</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">A drive for continuous improvement when it comes to both operations and new product development</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with systems/networking level C programming</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong Unix/ Linux systems level programming and troubleshooting skills</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">knowledge of web servers (we are currently using NGINX)</span></li>
+	<li><strong>Customer References</strong>
+		<ul>
+			<li>Manage high-touch customer reference relationships and develop an integrated customer reference engagement plan with our top strategic customers.</li>
+			<li>Fulfill Sales and RFP requests for references and match with relevant customers.</li>
+			<li>Support marketing reference requests from event and campaign managers, Analyst and Public Relations teams.&nbsp;</li>
+		</ul>
+	</li>
 </ul>
-<h4><strong>Bonus Points</strong></h4>
-<p><span style="font-weight: 400;">These are things which the role is likely to require; we’re happy to help you learn on the job, but prior experience is beneficial.</span></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience of languages: Lua, Python, Rust, Go</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience of userland networking stack</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience in any of&nbsp; Layer 4-7 protocols:</span></li>
-	<ul>
-		<li style="font-weight: 400;"><span style="font-weight: 400;">http</span></li>
-		<li style="font-weight: 400;"><span style="font-weight: 400;">tcp, udp</span></li>
-		<li style="font-weight: 400;"><span style="font-weight: 400;">quic</span></li>
-		<li style="font-weight: 400;"><span style="font-weight: 400;">grpc</span></li>
-		<li style="font-weight: 400;"><span style="font-weight: 400;">Webrtc</span></li>
-		<li style="font-weight: 400;"><span style="font-weight: 400;">TLS</span></li>
-	</ul>
+	<li><strong>Customer Evidence</strong>
+		<ul>
+			<li><span style="font-weight: 400;">Recruit and manage a pool of case study writers who are bi-lingual and fluent in French, Spanish, Portuguese and other local languages.</span></li>
+			<li><span style="font-weight: 400;">Work closely with the Customer Evidence team in the U.S. to create high quality case study and customer video content.</span></li>
+		</ul>
+	</li>
+	<li><strong>Customer Advisory</strong>
+		<ul>
+			<li>Execute customer advisory and user group events in EMEA.</li>
+		</ul>
+	</li>
 </ul>
-<p><br><br></p>
+<p><strong>Requirements</strong></p>
+<ul>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Proven success in building and running successful customer advocacy/marketing programs.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Professional and self-motivated leader and team member, who can organize and manage projects across functions (especially with Marketing and Sales) and with multiple stakeholders and contributors.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with Reference Management and/or Customer Advocacy/Marketing tools.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Outgoing with dynamic interpersonal and top-notch verbal and written communication skills.</span></li>
+</ul>
+<p><strong>Skills, knowledge and experience</strong></p>
+<ul>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Bachelor’s Degree in Business/Marketing or Communications related field&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">3+ years of customer marketing/reference experience</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to speak other local languages is a plus</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Significant experience in B2B technology marketing with a keen understanding of the Internet ecosystem and technical audiences&nbsp;&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Highly customer empathetic&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Collaborative, team-oriented attitude</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to effectively influence both internal and external stakeholders across all levels of the organization.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Have a bias to action and the ability to not only manage but thrive in a fast-paced environment</span></li>
+	<li style="font-weight: 400;">A passion for Cloudflare’s mission and the success of our customers, partners, and community.</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
