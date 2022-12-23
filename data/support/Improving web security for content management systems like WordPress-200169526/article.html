@@ -1,0 +1,107 @@
+<p><i></i></p>
+<div class="cf-toc">
+	<ul>
+		<li><a href="#h_45Mlvbhm7tv3plksfGqrrM">Overview</a></li>
+		<li><a href="#improve-site-security">Stage One: Improve Site Security</a></li>
+		<li><a href="#restore-admin-functions">Stage Two: Restore Administrative Functions</a></li>
+		<li><a href="#restrict-access">Stage Three: Restrict Access</a></li>
+		<li><a href="#resources">Resources</a></li>
+	</ul>
+</div>
+<hr>
+<h2 id="h_45Mlvbhm7tv3plksfGqrrM">Overview</h2>
+<p>Content Management Systems make it easy to create, update, and manage content. However, they can also introduce vulnerabilities that may lead to server compromise and data theft.</p>
+<p>There are many Cloudflare features that can be used for preventing such attacks, but they can also disrupt normal administrative processes such as logging in or uploading images. With proper configuration, you can protect your site from attacks without losing important functionality.</p>
+<hr>
+<h2 id="improve-site-security">Stage One: Improve Site Security</h2>
+<p>In this stage, you are reinforcing the zone’s security features, which may cause additional disruption to admin features until exceptions can be applied. For that reason, it’s recommended to make these changes with expected administrative downtime. </p>
+<p>The following should be considered an overview of some recommended security actions, and not a comprehensive guide. See the developer documentation for specific products or features for more information.</p>
+<p></p>
+<h3 id="cloudflare-managed-rulesets">Cloudflare Managed Rulesets</h3>
+<p>The <a href="https://developers.cloudflare.com/waf/managed-rulesets/"><u>WAF Managed Rulesets</u></a> are pre-configured rulesets that provide immediate protection against a variety of attacks, and are regularly updated. Many rules are turned on by default, but not all. It is recommended that you browse the Cloudflare Managed Ruleset to find any additional rules tagged for your content management system not enabled, and enable them:</p><img src="https://images.ctfassets.net/slt3lc6tev37/5QxExDzRFyWZbC5LAe337S/9ad3147adbb4db62c6690340e3c866d9/Wordpress-configure-deployment.png" alt="Dashboard screenshot filtering for WordPress">
+<p></p>
+<p></p>
+<h3 id="managed-rulesets-free-plan">Managed Rulesets on the Free Plan</h3>
+<p>While the feature to customize these managed rulesets required a paid plan, the<a href="https://blog.cloudflare.com/waf-for-everyone/#the-free-cloudflare-managed-ruleset"><u> Free Cloudflare Managed Ruleset</u></a> is automatically deployed on any new Cloudflare zone. This ruleset is specially designed to reduce false positives to a minimum across a very broad range of traffic types. As of today, the ruleset contains the following rules:</p>
+<ul>
+	<li>Log4J rules matching payloads in the URI and HTTP headers;</li>
+	<li>Shellshock rules;</li>
+	<li>Rules matching very common WordPress exploits;</li>
+</ul>
+<p>Additionally, you can configure many aspects of the <a href="https://developers.cloudflare.com/waf/managed-rulesets/reference/owasp-core-ruleset/"><u>OWASP Core Ruleset</u></a>, including the anomaly threshold, paranoia level, and individual rules. One good practice is to ensure any rules related to XSS and SQL injection are enabled.</p>
+<p></p>
+<hr>
+<h2 id="restore-admin-functions">Stage Two: Restore Administrative Functions</h2>
+<p>Using the principle of least privilege, you can run some test actions from the admin panel to audit what is blocked and what is allowed. With this information, you can create precise exceptions. If the behavior doesn’t match your expectations, make sure to check that:</p>
+<ol>
+	<li>The DNS record is proxied</li>
+	<li>You don’t have any Rules that would interfere with the WAF (like a Page Rule that is set to Disable Security)</li>
+</ol>
+<p>After generating enough requests to have a good sample logged in your Firewall Events, observe the actions that were taken in the Managed rules section:</p><img src="https://images.ctfassets.net/slt3lc6tev37/583ZAKfHktKV9N605vly0i/95f102115290a8c71bf3b31c5d924e37/Screenshot_2022-12-23_at_16.40.29.png" alt="">
+<p>Next, you can use this information to create a Skip Rule that excludes only the rules that prevent administrative actions:
+</p><img src="https://images.ctfassets.net/slt3lc6tev37/5Sbwqv6fkftpHU7jvR7G09/4da969cc0f2a5cd2bbd8a37ce7dffac5/Screenshot_2022-12-22_at_13.49.18.png" alt="">
+<p></p>
+<h3 id="incoming-requests-match">When incoming requests match…</h3>
+<p>It is recommended to make this rule as tightly defined as possible, particularly without the additional protections listed below. While the exact content will be site-specific, some possible fields to use are:</p>
+<ul>
+	<li>IP Source Address</li>
+	<li>AS Num</li>
+	<li>Cookie</li>
+	<li>User Agent</li>
+</ul>
+<p>Make sure to apply the rule <i>only </i>to the admin portion of your CMS. With WordPress for example, you can set a condition like '<i>URI Path contains /wp-admin/</i>'.</p>
+<p>Any of these fields can be spoofed, so this is not a security measure on its own. The purpose is to restore administrative functions only to conditions that may need them, while using other tools and features (including strong passwords on your CMS logins!) to secure access.</p>
+<p>
+</p>
+<p></p>
+<h3 id="undefined">Skip specific rules from a Managed Ruleset</h3>
+<p>Next, you want to use the information from your Firewall logs to select which rules to skip by <a href="https://developers.cloudflare.com/waf/custom-rules/skip/"><u>adding an exception</u></a>. For WordPress, I’ve chosen the following:</p><img src="https://images.ctfassets.net/slt3lc6tev37/62grDLDuA1ZcGGBNL9qEQN/e97fd71c6677ac6233003c91e817a34f/Screenshot_2022-12-23_at_17.08.37.png" alt="">
+<p>After this is complete, you will want to create a similar rule for any rulesets that prevent you from logging in. In my use case, I only needed to skip “OWASP Core Ruleset 949110.”</p>
+<p><b>Note:</b> You may also want to consider adding a rule to skip the CMS-specific rules you enabled for non-CMS sections of your site if they cause any issues. Just follow the steps above, and set it to skip any of the Cloudflare Managed Ruleset rules that were enabled above. You can set this based on hostname, URI, or cookie, using the operators <b>does not equal, does not match, </b>or <b>does not contain</b>.</p>
+<p>Make sure to set your Skip rules to be at a higher priority than the Execute rules.</p>
+<p>
+</p>
+<p></p>
+<hr>
+<h2 id="restrict-access">Stage Three: Restrict Access</h2>
+<p>Now that you’ve elevated your security to protect the publicly accessible parts of your site against attacks and restored necessary administrative capabilities, you can further restrict who can access your admin panel in case of weak or exposed login credentials.
+</p>
+<h3 id="zero-trust">Zero Trust</h3>
+<p><a href="https://www.cloudflare.com/plans/zero-trust-services/"><u>Zero Trust</u></a> Web Applications is the best way to limit access to your admin panel. You can restrict access based on user instead of device, and it allows for very granular control. Setup of a Self-hosted web application is very easy, for more information see the <a href="https://developers.cloudflare.com/cloudflare-one/applications/configure-apps/self-hosted-apps/"><u>Self-hosted applications</u></a> section of the Zero Trust developer documentation.</p>
+<p>After configuring a web application, users will be required to authenticate in some way before they can access the restricted content. The default method is through email multifactor authentication:</p><img src="https://images.ctfassets.net/slt3lc6tev37/5VjXWJ5KTdkyy5DE16eLJf/e5c9af1aeb0eba851370aee03e36b9fa/Screenshot_2022-12-22_at_14.39.21.png" alt="">
+<p></p>
+<p></p>
+<h3 id="advanced-firewal-rules-mTLS">Advanced Firewall Rules with mTLS</h3>
+<p>While designed for authenticating appliances that can’t perform a log in, you can use mTLS as another method of multifactor authentication (what you know and what you have) to authenticate based on device certificate. To do this, you need to:</p>
+<ol>
+	<li>
+		<a href="https://developers.cloudflare.com/ssl/client-certificates/create-a-client-certificate/"><u>Create a Client Certificate</u></a> and save both the certificate and key to your device
+	</li>
+	<li>Import the certificate to your computer’s key storage. With macOS Keychain, you can use the steps listed here: <a href="https://developers.cloudflare.com/cloudflare-one/identity/devices/access-integrations/mutual-tls-authentication/#test-in-the-browser"><u>mTLS - Test in the Browser</u></a>.</li>
+	<li>
+		<a href="https://developers.cloudflare.com/ssl/client-certificates/enable-mtls/"><u>Enable mTLS</u></a> by adding the correct host
+	</li>
+	<li>Under Firewall rules, Create mTLS Rule
+	</li>
+	<li>Select<b> Use firewall rule builder</b> to narrow the scope of this rule to the admin section, otherwise you will block your visitors from accessing the public content.</li>
+	<li>Set the rule to Block any requests made to your admin panel if the Client Certificate is not verified.</li>
+</ol>
+<p><b>Note:</b> if you have issues getting your certificate to verify, try accessing the page in a private window. If it works, the previous successful TLS state may be cached in your browser.</p>
+<p></p>
+<h3 id="rate-limiting">Rate Limiting</h3>
+<p>Rate limiting rules can help protect your login page from an attacker trying to guess your account password with a <a href="https://www.cloudflare.com/learning/bots/brute-force-attack/">brute force attack</a>. You can define rate limits for requests matching an expression, as well as the action to perform when those rate limits are reached. </p>
+<p>
+	Rate Limiting Rules are now available unmetered, on all plans. For more information, see the <a href="https://developers.cloudflare.com/waf/rate-limiting-rules/"><u>developer documentation</u></a>.</p>
+<hr>
+<h2 id="resources">Resources</h2>
+<ul>
+	<li><a href="https://developers.cloudflare.com/waf/managed-rulesets/"><u>WAF Managed Rules</u></a></li>
+	<li><a href="https://developers.cloudflare.com/waf/managed-rulesets/reference/owasp-core-ruleset/"><u>Cloudflare OWASP Core Ruleset</u></a></li>
+	<li><a href="https://developers.cloudflare.com/waf/custom-rules/skip/"><u>Configure a custom rule with the Skip action</u></a></li>
+	<li><a href="https://www.cloudflare.com/plans/zero-trust-services/"><u>Zero Trust Services</u></a></li>
+	<li><a href="https://developers.cloudflare.com/ssl/client-certificates/"><u>Client certificates</u></a></li>
+	<li>
+		<a href="https://developers.cloudflare.com/waf/rate-limiting-rules/"><u>Rate limiting rules</u></a>
+	</li>
+</ul>
+<p></p>
