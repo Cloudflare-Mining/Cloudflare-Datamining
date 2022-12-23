@@ -1,0 +1,149 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/zone/cache/tiered-cache-smart-topology-api.json",
+	"title": "Smart Tiered Cache",
+	"description": "Query, enable, and disable Smart Tiered Caching for a zone.",
+	"type": "object",
+	"links": [
+		{
+			"title": "Get Smart Tiered Cache setting",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/cache/tiered_cache_smart_topology_enable",
+			"method": "GET",
+			"cfOwnership": "cache",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#zone_settings:read"
+				]
+			},
+			"html_id": "smart-tiered-cache-get-smart-tiered-cache-setting",
+			"uri": "zones/:zone_identifier/cache/tiered_cache_smart_topology_enable",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/cache/tiered_cache_smart_topology_enable\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"tiered_cache_smart_topology_enable\",\n    \"value\": \"on\",\n    \"editable\": true,\n    \"modified_on\": \"2019-02-20T22:37:07.107449Z\"\n  }\n}"
+		},
+		{
+			"title": "Patch Smart Tiered Cache setting",
+			"description": "Updates enablement of Tiered Cache",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/cache/tiered_cache_smart_topology_enable",
+			"method": "PATCH",
+			"cfOwnership": "cache",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#zone_settings:read",
+					"#zone_settings:edit"
+				]
+			},
+			"html_id": "smart-tiered-cache-patch-smart-tiered-cache-setting",
+			"uri": "zones/:zone_identifier/cache/tiered_cache_smart_topology_enable",
+			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/cache/tiered_cache_smart_topology_enable\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"value\":\"on\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"value": {
+						"type": "string",
+						"example": "\"on\"",
+						"description": "Enables Tiered Cache.",
+						"enum": [
+							"on",
+							"off"
+						]
+					}
+				},
+				"required_props": [
+					"value"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"value\": \"on\"\n}",
+				"description": "Update enablement of Smart Tiered Cache"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"tiered_cache_smart_topology_enable\",\n    \"value\": \"on\",\n    \"editable\": true,\n    \"modified_on\": \"2019-02-20T22:37:07.107449Z\"\n  }\n}"
+		},
+		{
+			"title": "Delete Smart Tiered Cache setting",
+			"description": "Remvoves enablement of Smart Tiered Cache",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/cache/tiered_cache_smart_topology_enable",
+			"method": "DELETE",
+			"cfOwnership": "cache",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#zone_settings:edit"
+				]
+			},
+			"html_id": "smart-tiered-cache-delete-smart-tiered-cache-setting",
+			"uri": "zones/:zone_identifier/cache/tiered_cache_smart_topology_enable",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/cache/tiered_cache_smart_topology_enable\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"tiered_cache_smart_topology_enable\",\n    \"value\": \"on\",\n    \"editable\": true,\n    \"modified_on\": \"2019-02-20T22:37:07.107449Z\"\n  }\n}"
+		}
+	],
+	"html_id": "smart-tiered-cache",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"tiered_cache_smart_topology_enable\"",
+				"description": "Identifies endpoint tiered_cache_smart_topology_enable.",
+				"enum": [
+					"tiered_cache_smart_topology_enable"
+				],
+				"readOnly": true
+			},
+			"value": {
+				"type": "string",
+				"example": "\"on\"",
+				"description": "Enables Tiered Cache.",
+				"enum": [
+					"on",
+					"off"
+				]
+			},
+			"editable": {
+				"type": "boolean",
+				"example": "true",
+				"description": "Determines whether Smart Tiered Cache setting can be edited."
+			},
+			"modified_on": {
+				"type": "string",
+				"example": "\"2019-02-20T22:37:07.107449Z\"",
+				"description": "Timestamp of last modified date.",
+				"format": "date-time",
+				"readOnly": true
+			}
+		},
+		"required_props": [
+			"id",
+			"value",
+			"editable",
+			"modified_on"
+		],
+		"optional_props": [],
+		"objects": [],
+		"example": "{\n  \"id\": \"tiered_cache_smart_topology_enable\",\n  \"value\": \"on\",\n  \"editable\": true,\n  \"modified_on\": \"2019-02-20T22:37:07.107449Z\"\n}",
+		"title": "Smart Tiered Cache",
+		"description": "Query, enable, and disable Smart Tiered Caching for a zone."
+	}
+}

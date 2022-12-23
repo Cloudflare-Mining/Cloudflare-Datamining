@@ -36,7 +36,8 @@
 						"items": {
 							"type": "string",
 							"enum": [
-								"thresholds"
+								"thresholds",
+								"parameter_schemas"
 							],
 							"example": "thresholds"
 						},
@@ -99,7 +100,8 @@
 						"items": {
 							"type": "string",
 							"enum": [
-								"thresholds"
+								"thresholds",
+								"parameter_schemas"
 							],
 							"example": "thresholds"
 						},
@@ -291,7 +293,8 @@
 						"items": {
 							"type": "string",
 							"enum": [
-								"thresholds"
+								"thresholds",
+								"parameter_schemas"
 							],
 							"example": "thresholds"
 						},
@@ -485,6 +488,54 @@
 						"example": "{\n  \"thresholds\": {\n    \"period_seconds\": 600,\n    \"suggested_threshold\": 18,\n    \"p50\": 3,\n    \"p90\": 7,\n    \"p99\": 11,\n    \"requests\": 65890,\n    \"auth_id_tokens\": 7236,\n    \"data_points\": 10100,\n    \"last_updated\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}",
 						"title": "Thresholds",
 						"description": "Suggested thresholding information."
+					},
+					{
+						"all_props": {
+							"parameter_schemas": {
+								"type": "object",
+								"example": "{\n  \"parameter_schemas\": {\n    \"responses\": null,\n    \"parameters\": [\n      {\n        \"in\": \"path\",\n        \"name\": \"var1\",\n        \"schema\": {\n          \"type\": \"integer\",\n          \"minimum\": 1,\n          \"maximum\": 10\n        },\n        \"required\": true,\n        \"description\": \"Sufficient requests have been observed for this parameter to provide high confidence in this parameter schema.\"\n      }\n    ]\n  },\n  \"last_updated\": \"2014-01-01T05:20:00.12345Z\"\n}",
+								"properties": {
+									"parameter_schemas": {
+										"type": "object",
+										"example": "{\n  \"responses\": null,\n  \"parameters\": [\n    {\n      \"in\": \"path\",\n      \"name\": \"var1\",\n      \"schema\": {\n        \"type\": \"integer\",\n        \"minimum\": 1,\n        \"maximum\": 10\n      },\n      \"required\": true,\n      \"description\": \"Sufficient requests have been observed for this parameter to provide high confidence in this parameter schema.\"\n    }\n  ]\n}",
+										"properties": {
+											"responses": {
+												"type": "object",
+												"example": "null",
+												"description": "An empty response object. This field is required to yield a valid operation schema.",
+												"readOnly": true
+											},
+											"parameters": {
+												"type": "array",
+												"example": "[\n  {\n    \"in\": \"path\",\n    \"name\": \"var1\",\n    \"schema\": {\n      \"type\": \"integer\",\n      \"minimum\": 1,\n      \"maximum\": 10\n    },\n    \"required\": true,\n    \"description\": \"Sufficient requests have been observed for this parameter to provide high confidence in this parameter schema.\"\n  }\n]",
+												"description": "An array containing the learned parameter schemas.",
+												"readOnly": true
+											}
+										},
+										"description": "An operation schema object containing a response.",
+										"readOnly": true
+									},
+									"last_updated": {
+										"type": "string",
+										"example": "\"2014-01-01T05:20:00.12345Z\"",
+										"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
+										"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+										"description": "Last modification time.",
+										"format": "date-time",
+										"readOnly": true
+									}
+								}
+							}
+						},
+						"required_props": [
+							"parameter_schemas",
+							"last_updated"
+						],
+						"optional_props": [],
+						"objects": [],
+						"example": "{\n  \"parameter_schemas\": {\n    \"parameter_schemas\": {\n      \"responses\": null,\n      \"parameters\": [\n        {\n          \"in\": \"path\",\n          \"name\": \"var1\",\n          \"schema\": {\n            \"type\": \"integer\",\n            \"minimum\": 1,\n            \"maximum\": 10\n          },\n          \"required\": true,\n          \"description\": \"Sufficient requests have been observed for this parameter to provide high confidence in this parameter schema.\"\n        }\n      ]\n    },\n    \"last_updated\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}",
+						"title": "Parameter Schemas",
+						"description": "Learned OpenAPI parameter schemas."
 					}
 				],
 				"id": "https://api.cloudflare.com/schemas/v4/client/zone/api-gateway/features.json",
@@ -623,6 +674,139 @@
 								"type": "integer",
 								"example": 10100,
 								"readOnly": true
+							},
+							"last_updated": {
+								"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
+								"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+								"description": "Last modification time.",
+								"type": "string",
+								"format": "date-time",
+								"readOnly": true,
+								"example": "2014-01-01T05:20:00.12345Z"
+							}
+						}
+					},
+					"parameter_schemas": {
+						"id": "https://api.cloudflare.com/schemas/v4/client/zone/api-gateway/parameter_schemas.json",
+						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+						"title": "Parameter Schemas",
+						"description": "Learned OpenAPI parameter schemas.",
+						"type": "object",
+						"readOnly": true,
+						"properties": {
+							"parameter_schemas": {
+								"type": "object",
+								"properties": {
+									"parameter_schemas": {
+										"description": "An operation schema object containing a response.",
+										"type": "object",
+										"example": {
+											"responses": null,
+											"parameters": [
+												{
+													"in": "path",
+													"name": "var1",
+													"schema": {
+														"type": "integer",
+														"minimum": 1,
+														"maximum": 10
+													},
+													"required": true,
+													"description": "Sufficient requests have been observed for this parameter to provide high confidence in this parameter schema."
+												}
+											]
+										},
+										"readOnly": true,
+										"properties": {
+											"responses": {
+												"description": "An empty response object. This field is required to yield a valid operation schema.",
+												"type": "object",
+												"example": null,
+												"readOnly": true
+											},
+											"parameters": {
+												"description": "An array containing the learned parameter schemas.",
+												"type": "array",
+												"example": [
+													{
+														"in": "path",
+														"name": "var1",
+														"schema": {
+															"type": "integer",
+															"minimum": 1,
+															"maximum": 10
+														},
+														"required": true,
+														"description": "Sufficient requests have been observed for this parameter to provide high confidence in this parameter schema."
+													}
+												],
+												"readOnly": true
+											}
+										}
+									},
+									"last_updated": {
+										"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
+										"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+										"description": "Last modification time.",
+										"type": "string",
+										"format": "date-time",
+										"readOnly": true,
+										"example": "2014-01-01T05:20:00.12345Z"
+									}
+								}
+							}
+						},
+						"required": [
+							"parameter_schemas",
+							"last_updated"
+						],
+						"definitions": {
+							"parameter_schemas": {
+								"description": "An operation schema object containing a response.",
+								"type": "object",
+								"example": {
+									"responses": null,
+									"parameters": [
+										{
+											"in": "path",
+											"name": "var1",
+											"schema": {
+												"type": "integer",
+												"minimum": 1,
+												"maximum": 10
+											},
+											"required": true,
+											"description": "Sufficient requests have been observed for this parameter to provide high confidence in this parameter schema."
+										}
+									]
+								},
+								"readOnly": true,
+								"properties": {
+									"responses": {
+										"description": "An empty response object. This field is required to yield a valid operation schema.",
+										"type": "object",
+										"example": null,
+										"readOnly": true
+									},
+									"parameters": {
+										"description": "An array containing the learned parameter schemas.",
+										"type": "array",
+										"example": [
+											{
+												"in": "path",
+												"name": "var1",
+												"schema": {
+													"type": "integer",
+													"minimum": 1,
+													"maximum": 10
+												},
+												"required": true,
+												"description": "Sufficient requests have been observed for this parameter to provide high confidence in this parameter schema."
+											}
+										],
+										"readOnly": true
+									}
+								}
 							},
 							"last_updated": {
 								"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",

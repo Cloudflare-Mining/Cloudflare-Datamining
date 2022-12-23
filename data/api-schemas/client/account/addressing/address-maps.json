@@ -14,7 +14,7 @@
 			"html_id": "ip-address-management-address-maps-list-address-maps",
 			"uri": "accounts/:account_identifier/addressing/address_maps",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/addressing/address_maps\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n      \"description\": \"My Ecommerce zones\",\n      \"can_delete\": true,\n      \"can_modify_ips\": true,\n      \"default_sni\": \"*.example.com\",\n      \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n      \"modified_at\": \"2014-01-01T05:20:00.12345Z\"\n    }\n  ]\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n      \"description\": \"My Ecommerce zones\",\n      \"can_delete\": true,\n      \"can_modify_ips\": true,\n      \"default_sni\": \"*.example.com\",\n      \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n      \"modified_at\": \"2014-01-01T05:20:00.12345Z\",\n      \"enabled\": true\n    }\n  ]\n}"
 		},
 		{
 			"title": "Create Address Map",
@@ -25,52 +25,7 @@
 			"cfOwnership": "addressing",
 			"html_id": "ip-address-management-address-maps-create-address-map",
 			"uri": "accounts/:account_identifier/addressing/address_maps",
-			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/addressing/address_maps\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"description\":\"My Ecommerce zones\"}'",
-			"parameters": {
-				"_formatter": {
-					"jsonMediaType": {}
-				},
-				"all_props": {
-					"description": {
-						"type": [
-							"string",
-							"null"
-						],
-						"example": "\"My Ecommerce zones\"",
-						"description": "An optional description field which may be used to describe the types of IPs or zones on the map."
-					}
-				},
-				"required_props": [],
-				"optional_props": [
-					"description"
-				],
-				"objects": [],
-				"example": "{\n  \"description\": \"My Ecommerce zones\"\n}"
-			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n    \"description\": \"My Ecommerce zones\",\n    \"can_delete\": true,\n    \"can_modify_ips\": true,\n    \"default_sni\": \"*.example.com\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"ips\": [\n      {\n        \"ip\": \"192.0.2.1\",\n        \"created_at\": \"2014-01-01T05:20:00.12345Z\"\n      }\n    ],\n    \"memberships\": [\n      {\n        \"kind\": \"zone\",\n        \"identifier\": \"01a7362d577a6c3019a474fd6f485823\",\n        \"can_delete\": true,\n        \"created_at\": \"2014-01-01T05:20:00.12345Z\"\n      }\n    ]\n  }\n}"
-		},
-		{
-			"title": "Address Map Details",
-			"description": "Show a particular address map owned by the account.",
-			"rel": "self",
-			"href": "accounts/{#/definitions/account_identifier}/addressing/address_maps/{#/definitions/address_map_identifier}",
-			"method": "GET",
-			"cfOwnership": "addressing",
-			"html_id": "ip-address-management-address-maps-address-map-details",
-			"uri": "accounts/:account_identifier/addressing/address_maps/:address_map_identifier",
-			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/addressing/address_maps/9a7806061c88ada191ed06f989cc3dac\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n    \"description\": \"My Ecommerce zones\",\n    \"can_delete\": true,\n    \"can_modify_ips\": true,\n    \"default_sni\": \"*.example.com\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"ips\": [\n      {\n        \"ip\": \"192.0.2.1\",\n        \"created_at\": \"2014-01-01T05:20:00.12345Z\"\n      }\n    ],\n    \"memberships\": [\n      {\n        \"kind\": \"zone\",\n        \"identifier\": \"01a7362d577a6c3019a474fd6f485823\",\n        \"can_delete\": true,\n        \"created_at\": \"2014-01-01T05:20:00.12345Z\"\n      }\n    ]\n  }\n}"
-		},
-		{
-			"title": "Update Address Map",
-			"description": "Modify the description or default SNI for an address map owned by the account.",
-			"rel": "self",
-			"href": "accounts/{#/definitions/account_identifier}/addressing/address_maps/{#/definitions/address_map_identifier}",
-			"method": "PATCH",
-			"cfOwnership": "addressing",
-			"html_id": "ip-address-management-address-maps-update-address-map",
-			"uri": "accounts/:account_identifier/addressing/address_maps/:address_map_identifier",
-			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/addressing/address_maps/9a7806061c88ada191ed06f989cc3dac\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"description\":\"My Ecommerce zones\",\"default_sni\":\"*.example.com\"}'",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/addressing/address_maps\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"description\":\"My Ecommerce zones\",\"enabled\":true}'",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -84,6 +39,70 @@
 						"example": "\"My Ecommerce zones\"",
 						"description": "An optional description field which may be used to describe the types of IPs or zones on the map."
 					},
+					"enabled": {
+						"type": [
+							"boolean",
+							"null"
+						],
+						"example": "true",
+						"description": "Whether the Address Map is enabled or not. Cloudflare's DNS will not respond with IP addresses on an Address Map until the map is enabled.",
+						"default": false
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"description",
+					"enabled"
+				],
+				"objects": [],
+				"example": "{\n  \"description\": \"My Ecommerce zones\",\n  \"enabled\": true\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n    \"description\": \"My Ecommerce zones\",\n    \"can_delete\": true,\n    \"can_modify_ips\": true,\n    \"default_sni\": \"*.example.com\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"enabled\": true,\n    \"ips\": [\n      {\n        \"ip\": \"192.0.2.1\",\n        \"created_at\": \"2014-01-01T05:20:00.12345Z\"\n      }\n    ],\n    \"memberships\": [\n      {\n        \"kind\": \"zone\",\n        \"identifier\": \"01a7362d577a6c3019a474fd6f485823\",\n        \"can_delete\": true,\n        \"created_at\": \"2014-01-01T05:20:00.12345Z\"\n      }\n    ]\n  }\n}"
+		},
+		{
+			"title": "Address Map Details",
+			"description": "Show a particular address map owned by the account.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/addressing/address_maps/{#/definitions/address_map_identifier}",
+			"method": "GET",
+			"cfOwnership": "addressing",
+			"html_id": "ip-address-management-address-maps-address-map-details",
+			"uri": "accounts/:account_identifier/addressing/address_maps/:address_map_identifier",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/addressing/address_maps/9a7806061c88ada191ed06f989cc3dac\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n    \"description\": \"My Ecommerce zones\",\n    \"can_delete\": true,\n    \"can_modify_ips\": true,\n    \"default_sni\": \"*.example.com\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"enabled\": true,\n    \"ips\": [\n      {\n        \"ip\": \"192.0.2.1\",\n        \"created_at\": \"2014-01-01T05:20:00.12345Z\"\n      }\n    ],\n    \"memberships\": [\n      {\n        \"kind\": \"zone\",\n        \"identifier\": \"01a7362d577a6c3019a474fd6f485823\",\n        \"can_delete\": true,\n        \"created_at\": \"2014-01-01T05:20:00.12345Z\"\n      }\n    ]\n  }\n}"
+		},
+		{
+			"title": "Update Address Map",
+			"description": "Modify properties of an address map owned by the account.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/addressing/address_maps/{#/definitions/address_map_identifier}",
+			"method": "PATCH",
+			"cfOwnership": "addressing",
+			"html_id": "ip-address-management-address-maps-update-address-map",
+			"uri": "accounts/:account_identifier/addressing/address_maps/:address_map_identifier",
+			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/addressing/address_maps/9a7806061c88ada191ed06f989cc3dac\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"description\":\"My Ecommerce zones\",\"enabled\":true,\"default_sni\":\"*.example.com\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"description": {
+						"type": [
+							"string",
+							"null"
+						],
+						"example": "\"My Ecommerce zones\"",
+						"description": "An optional description field which may be used to describe the types of IPs or zones on the map."
+					},
+					"enabled": {
+						"type": [
+							"boolean",
+							"null"
+						],
+						"example": "true",
+						"description": "Whether the Address Map is enabled or not. Cloudflare's DNS will not respond with IP addresses on an Address Map until the map is enabled.",
+						"default": false
+					},
 					"default_sni": {
 						"type": [
 							"string",
@@ -96,16 +115,17 @@
 				"required_props": [],
 				"optional_props": [
 					"description",
+					"enabled",
 					"default_sni"
 				],
 				"objects": [],
-				"example": "{\n  \"description\": \"My Ecommerce zones\",\n  \"default_sni\": \"*.example.com\"\n}"
+				"example": "{\n  \"description\": \"My Ecommerce zones\",\n  \"enabled\": true,\n  \"default_sni\": \"*.example.com\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n    \"description\": \"My Ecommerce zones\",\n    \"can_delete\": true,\n    \"can_modify_ips\": true,\n    \"default_sni\": \"*.example.com\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_at\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n    \"description\": \"My Ecommerce zones\",\n    \"can_delete\": true,\n    \"can_modify_ips\": true,\n    \"default_sni\": \"*.example.com\",\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"enabled\": true\n  }\n}"
 		},
 		{
 			"title": "Delete Address Map",
-			"description": "Delete a particular address map owned by the account.",
+			"description": "Delete a particular address map owned by the account. An Address Map must be disabled before it can be deleted.",
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/addressing/address_maps/{#/definitions/address_map_identifier}",
 			"method": "DELETE",
@@ -248,6 +268,15 @@
 				"description": "Last modification time.",
 				"format": "date-time",
 				"readOnly": true
+			},
+			"enabled": {
+				"type": [
+					"boolean",
+					"null"
+				],
+				"example": "true",
+				"description": "Whether the Address Map is enabled or not. Cloudflare's DNS will not respond with IP addresses on an Address Map until the map is enabled.",
+				"default": false
 			}
 		},
 		"required_props": [],
@@ -258,10 +287,11 @@
 			"can_modify_ips",
 			"default_sni",
 			"created_at",
-			"modified_at"
+			"modified_at",
+			"enabled"
 		],
 		"objects": [],
-		"example": "{\n  \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n  \"description\": \"My Ecommerce zones\",\n  \"can_delete\": true,\n  \"can_modify_ips\": true,\n  \"default_sni\": \"*.example.com\",\n  \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_at\": \"2014-01-01T05:20:00.12345Z\"\n}",
+		"example": "{\n  \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n  \"description\": \"My Ecommerce zones\",\n  \"can_delete\": true,\n  \"can_modify_ips\": true,\n  \"default_sni\": \"*.example.com\",\n  \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"enabled\": true\n}",
 		"title": "IP Address Management Address Maps",
 		"description": "(Beta) Address Maps allow you to specify which BYOIP (Bring your own IP) addresses are assigned to your proxied zones."
 	}
