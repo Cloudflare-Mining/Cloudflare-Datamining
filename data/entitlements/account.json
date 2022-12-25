@@ -768,6 +768,18 @@
 		}
 	},
 	{
+		"id": "filters.adv_threat_intel_allowed",
+		"feature": {
+			"feature_set": "filters",
+			"id": 1003,
+			"key": "filters.adv_threat_intel_allowed",
+			"name": "Firewall Filters - Advanced Threat Intel Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "filters.mass_redirects_max_list_items",
 		"feature": {
 			"feature_set": "filters",
@@ -1257,6 +1269,42 @@
 		},
 		"allocation": {
 			"type": "bool"
+		}
+	},
+	{
+		"id": "notifications.webhooks_enabled",
+		"feature": {
+			"feature_set": "notifications",
+			"id": 1153,
+			"key": "notifications.webhooks_enabled",
+			"name": "Notifications - Webhooks Enabled"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "pages.concurrent_builds",
+		"feature": {
+			"feature_set": "pages",
+			"id": 1163,
+			"key": "pages.concurrent_builds",
+			"name": "Cloudflare Pages - Concurrent Builds"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "pages.custom_domains_per_project",
+		"feature": {
+			"feature_set": "pages",
+			"id": 1164,
+			"key": "pages.custom_domains_per_project",
+			"name": "Cloudflare Pages - Custom Domains per Project"
+		},
+		"allocation": {
+			"type": "max_count"
 		}
 	},
 	{
