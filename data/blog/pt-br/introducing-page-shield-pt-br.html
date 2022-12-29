@@ -18,11 +18,11 @@
 	<p>Devido à posição exclusiva da Cloudflare entre os servidores de origem do aplicativo e os usuários finais, podemos modificar as respostas antes que cheguem aos usuários finais. Nesse caso, estamos adicionando um cabeçalho Content-Security-Policy-Report-Only às páginas conforme elas passam por nossa borda. Quando os arquivos JavaScript tentam ser executados na página, os navegadores enviam um relatório à Cloudflare. Como usamos um cabeçalho report-only, não é necessário que os proprietários de aplicativos mantenham listas de permissões para insights relevantes.</p>
 	<p>Para cada relatório que vemos, comparamos o arquivo JavaScript com as dependências históricas dessa zona e verificamos se o arquivo é novo. Se for, disparamos um alerta, para que os clientes possam investigar e determinar se a mudança era esperada.</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/03/image1-40.png" class="kg-image" alt="The Script Monitor UI located under Firewall -> Page Shield">
-		<figcaption>The Script Monitor UI located under Firewall -&gt; Page Shield</figcaption>
+		<figcaption>A IU do monitor de scripts localizada em Firewall -&gt; Page Shield</figcaption>
 	</figure>
 	<p>Como participante beta, você verá a guia Proteção de página na seção Firewall do painel de sua zona. Lá, você encontra a tabela Script Monitor rastreando as dependências JavaScript da sua zona. Para cada dependência, você pode visualizar a primeira data e a última data de visualização e o domínio do host em que foi detectada.</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/03/image2-34.png" class="kg-image" alt="Email notification example for new JavaScript dependencies found">
-		<figcaption>Email notification example for new JavaScript dependencies found</figcaption>
+		<figcaption>Exemplo de notificação por e-mail para novas dependências de JavaScript encontradas</figcaption>
 	</figure>
 	<p>Você também pode configurar as notificações do Script Monitor no painel. Essas notificações enviam alertas para o e-mail ou PagerDuty sempre que um novo arquivo JavaScript é solicitado pelo seu site.</p>
 	<h3 id="pensando-no-futuro">Pensando no futuro</h3>
