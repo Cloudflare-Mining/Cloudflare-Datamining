@@ -285,7 +285,7 @@ To read the full docs, [click here](https://developers.cloudflare.com/images).`,
 	sources_description: "Creating a source allows you to import images easily from other platforms.",
 	sources_quota_info: (0, r.d)(P(), "consumed", "allowed"),
 	sourcing_kit_info: {
-		image_size: (0, r.d)(D(), "maxImageSize"),
+		image_size: (0, r.d)(w(), "maxImageSize"),
 		image_type: (0, r.d)(O())
 	},
 	images_description: "Store, resize and deliver images",
@@ -388,7 +388,7 @@ To read the full docs, [click here](https://developers.cloudflare.com/images).`,
 		migrated_images: "Imported images",
 		error_log: "Error log",
 		start_date_hint: (0, r.d)(m(), "date", "time"),
-		end_date_hint: (0, r.d)(w(), "date", "time"),
+		end_date_hint: (0, r.d)(I(), "date", "time"),
 		storage_exhaused_error: "The import was aborted due to a lack of storage space. To use the service, <0>upgrade your Images plan</0>.",
 		active_import_alert: "Your images are now being imported. You can check the progress below or come back later from the <0>Sourcing Kit main page</0>."
 	},
