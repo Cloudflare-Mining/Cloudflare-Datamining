@@ -63,6 +63,45 @@ components:
       - type
       - name
       - content
+    CAARecord:
+      allOf:
+      - $ref: '#/components/schemas/dns-record_components-schemas-base'
+      - properties:
+          content:
+            type: string
+            description: Formatted CAA content. See 'data' to set CAA properties.
+            readOnly: true
+          data:
+            type: object
+            description: Components of a CAA record.
+            properties:
+              flags:
+                type: number
+                description: Flags for the CAA record.
+                example: 1
+                minimum: 0
+                maximum: 255
+              tag:
+                type: string
+                description: 'Name of the property controlled by this record (e.g.:
+                  issue, issuewild, iodef).'
+                example: issue
+              value:
+                type: string
+                description: Value of the record. This field's semantics depend on
+                  the chosen tag.
+          name:
+            $ref: '#/components/schemas/dns-record_components-schemas-name'
+          type:
+            description: Record type.
+            enum:
+            - CAA
+            example: CAA
+      title: CAA Record
+      required:
+      - type
+      - name
+      - data
     CERTRecord:
       allOf:
       - $ref: '#/components/schemas/dns-record_components-schemas-base'
@@ -1347,6 +1386,26 @@ components:
             - NS
             example: NS
       title: NS Record
+      required:
+      - type
+      - name
+      - content
+    PTRRecord:
+      allOf:
+      - $ref: '#/components/schemas/dns-record_components-schemas-base'
+      - properties:
+          content:
+            type: string
+            description: Domain name pointing to the address.
+            example: example.com
+          name:
+            $ref: '#/components/schemas/dns-record_components-schemas-name'
+          type:
+            description: Record type.
+            enum:
+            - PTR
+            example: PTR
+      title: PTR Record
       required:
       - type
       - name
@@ -8151,7 +8210,7 @@ components:
         name:
           $ref: '#/components/schemas/device-posture-rules_components-schemas-name'
         schedule:
-          $ref: '#/components/schemas/schedule'
+          $ref: '#/components/schemas/schemas-schedule'
         type:
           $ref: '#/components/schemas/device-posture-rules_components-schemas-type'
     device-posture-rules_components-schemas-description:
@@ -8569,21 +8628,23 @@ components:
       oneOf:
       - $ref: '#/components/schemas/ARecord'
       - $ref: '#/components/schemas/AAAARecord'
-      - $ref: '#/components/schemas/CNAMERecord'
-      - $ref: '#/components/schemas/HTTPSRecord'
-      - $ref: '#/components/schemas/NSRecord'
-      - $ref: '#/components/schemas/MXRecord'
-      - $ref: '#/components/schemas/TXTRecord'
-      - $ref: '#/components/schemas/LOCRecord'
-      - $ref: '#/components/schemas/SRVRecord'
+      - $ref: '#/components/schemas/CAARecord'
       - $ref: '#/components/schemas/CERTRecord'
+      - $ref: '#/components/schemas/CNAMERecord'
       - $ref: '#/components/schemas/DNSKEYRecord'
       - $ref: '#/components/schemas/DSRecord'
+      - $ref: '#/components/schemas/HTTPSRecord'
+      - $ref: '#/components/schemas/LOCRecord'
+      - $ref: '#/components/schemas/MXRecord'
       - $ref: '#/components/schemas/NAPTRRecord'
+      - $ref: '#/components/schemas/NSRecord'
+      - $ref: '#/components/schemas/PTRRecord'
       - $ref: '#/components/schemas/SMIMEARecord'
+      - $ref: '#/components/schemas/SRVRecord'
       - $ref: '#/components/schemas/SSHFPRecord'
       - $ref: '#/components/schemas/SVCBRecord'
       - $ref: '#/components/schemas/TLSARecord'
+      - $ref: '#/components/schemas/TXTRecord'
       - $ref: '#/components/schemas/URIRecord'
       type: object
       required:
@@ -8681,21 +8742,23 @@ components:
       enum:
       - A
       - AAAA
-      - CNAME
-      - HTTPS
-      - TXT
-      - SRV
-      - LOC
-      - MX
-      - NS
+      - CAA
       - CERT
+      - CNAME
       - DNSKEY
       - DS
+      - HTTPS
+      - LOC
+      - MX
       - NAPTR
+      - NS
+      - PTR
       - SMIMEA
+      - SRV
       - SSHFP
       - SVCB
       - TLSA
+      - TXT
       - URI
       example: A
       readOnly: true
@@ -18642,6 +18705,8 @@ components:
           $ref: '#/components/schemas/schemas-precedence'
         rule_settings:
           $ref: '#/components/schemas/rule-settings'
+        schedule:
+          $ref: '#/components/schemas/schedule'
         traffic:
           $ref: '#/components/schemas/traffic'
         updated_at:
@@ -18931,10 +18996,62 @@ components:
       minimum: 0
       maximum: 1
     schedule:
-      type: string
-      description: 'Polling frequency for the WARP client posture check. Default:
-        `5m` (poll every five minutes). Minimum: `1m`.'
-      example: 1h
+      type: object
+      description: Schedule for activating DNS policies. Does not apply to HTTP or
+        network policies.
+      properties:
+        fri:
+          type: string
+          description: The time intervals when the rule will be active on Fridays,
+            in increasing order from 00:00-24:00.  If this parameter is omitted, the
+            rule will be deactivated on Fridays.
+          example: 08:00-12:30,13:30-17:00
+        mon:
+          type: string
+          description: The time intervals when the rule will be active on Mondays,
+            in increasing order from 00:00-24:00. If this parameter is omitted, the
+            rule will be deactivated on Mondays.
+          example: 08:00-12:30,13:30-17:00
+        sat:
+          type: string
+          description: The time intervals when the rule will be active on Saturdays,
+            in increasing order from 00:00-24:00.  If this parameter is omitted, the
+            rule will be deactivated on Saturdays.
+          example: 08:00-12:30,13:30-17:00
+        sun:
+          type: string
+          description: The time intervals when the rule will be active on Sundays,
+            in increasing order from 00:00-24:00. If this parameter is omitted, the
+            rule will be deactivated on Sundays.
+          example: 08:00-12:30,13:30-17:00
+        thu:
+          type: string
+          description: The time intervals when the rule will be active on Thursdays,
+            in increasing order from 00:00-24:00. If this parameter is omitted, the
+            rule will be deactivated on Thursdays.
+          example: 08:00-12:30,13:30-17:00
+        time_zone:
+          type: string
+          description: The time zone the rule will be evaluated against. If a [valid
+            time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)
+            is provided, Gateway will always use the current time at that time zone.
+            If this parameter is omitted, then the time zone inferred from the user's
+            source IP is used to evaluate the rule. If Gateway cannot determine the
+            time zone from the IP, we will fall back to the time zone of the user's
+            connected data center.
+          example: America/New York
+        tue:
+          type: string
+          description: The time intervals when the rule will be active on Tuesdays,
+            in increasing order from 00:00-24:00. If this parameter is omitted, the
+            rule will be deactivated on Tuesdays.
+          example: 08:00-12:30,13:30-17:00
+        wed:
+          type: string
+          description: The time intervals when the rule will be active on Wednesdays,
+            in increasing order from 00:00-24:00. If this parameter is omitted, the
+            rule will be deactivated on Wednesdays.
+          example: 08:00-12:30,13:30-17:00
     schema_response_discovery:
       allOf:
       - $ref: '#/components/schemas/default_response'
@@ -20620,6 +20737,11 @@ components:
           description: The rules in the ruleset.
           items:
             $ref: '#/components/schemas/origin-rules_components-schemas-rule'
+    schemas-schedule:
+      type: string
+      description: 'Polling frequency for the WARP client posture check. Default:
+        `5m` (poll every five minutes). Minimum: `1m`.'
+      example: 1h
     schemas-scope:
       type: object
       description: Used only for ECMP routes.
@@ -44741,7 +44863,7 @@ paths:
                 name:
                   $ref: '#/components/schemas/device-posture-rules_components-schemas-name'
                 schedule:
-                  $ref: '#/components/schemas/schedule'
+                  $ref: '#/components/schemas/schemas-schedule'
                 type:
                   $ref: '#/components/schemas/device-posture-rules_components-schemas-type'
       responses:
@@ -44877,7 +44999,7 @@ paths:
                 name:
                   $ref: '#/components/schemas/device-posture-rules_components-schemas-name'
                 schedule:
-                  $ref: '#/components/schemas/schedule'
+                  $ref: '#/components/schemas/schemas-schedule'
                 type:
                   $ref: '#/components/schemas/device-posture-rules_components-schemas-type'
       responses:
@@ -46271,6 +46393,8 @@ paths:
                   $ref: '#/components/schemas/schemas-precedence'
                 rule_settings:
                   $ref: '#/components/schemas/rule-settings'
+                schedule:
+                  $ref: '#/components/schemas/schedule'
                 traffic:
                   $ref: '#/components/schemas/traffic'
       responses:
@@ -46413,6 +46537,8 @@ paths:
                   $ref: '#/components/schemas/schemas-precedence'
                 rule_settings:
                   $ref: '#/components/schemas/rule-settings'
+                schedule:
+                  $ref: '#/components/schemas/schedule'
                 traffic:
                   $ref: '#/components/schemas/traffic'
       responses:
