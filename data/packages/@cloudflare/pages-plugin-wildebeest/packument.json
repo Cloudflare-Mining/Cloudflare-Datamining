@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/pages-plugin-wildebeest",
 	"dist-tags": {
-		"latest": "0.0.2"
+		"latest": "0.0.3"
 	},
 	"versions": {
 		"0.0.1": {
@@ -38,6 +38,27 @@
 					}
 				],
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjqXokACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmrt2hAAjXav28DdXv8351eOuCPBJPGNf0jmYKCPPcZm1vLmGp6Am4Y7\r\nnmQnCHEUheIR0E09ViYlNYRkelJpr1wRmOj/Swg2MnEq7+T87R7eXB00L02W\r\nOGizATX8kioGeXHbHNV3p3IjlWJ5lUsShAP2PkOSZp4Ra1z9wMPUPKCwGnU6\r\n38IfAya4MgqXHE7A3pBOu672RIe/DYiSSNg0uEE9AHZjbL7cMKe5ybWqkmWu\r\nHbv8TC+IXxw7poiE7NcT3P+Zo/DrfpYs9mJ3oW9NeUmIe/ytYSnZVGOM9+YC\r\n61djeo+PNIu1J55jagD96CWqe8EZA2WWiLRlPqJK9g7nqhUbNglocnSGNNpf\r\ndLPZho4NTxzdEs0kI73z8k+qLc+Hs47RlUA8UwgjAFfsWn51yUaEzay2cPtS\r\nHEnQ/MQuUagj9/ebtKLHzztju7dRS79k8/HI/ZzTx8HJE+uLotmJzxoEsGyf\r\n4kpWOLN7+2BK72cpGnghhM/NO6nNkwHLf9EnqNfAeZvbQ7ucN2hYJgVYYnt0\r\nPefGs4Vo14l+91KVR4YjvENK6RMvuroZSbvvL0hGVvcXvZwa6DVFsg9u61SE\r\nZEMJrMoVgA1Vvk2cqQreFDbjDxFFPiqfRHR2WyjIZUhGToACKHeNqsZp5Mix\r\nUc6LfI8V2taCkw6htuxlvDWNDYOQU+061F4=\r\n=UVaw\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.3": {
+			"name": "@cloudflare/pages-plugin-wildebeest",
+			"version": "0.0.3",
+			"devDependencies": {
+				"wrangler": "https://prerelease-registry.devprod.cloudflare.dev/runs/3830356220/npm-package-wrangler-2485"
+			},
+			"dist": {
+				"integrity": "sha512-VdiEG0iCbdjWh9vawdF76aecv7sR0EQgk08qLBRydl8WNCqZTftNWD+fANWc9foXN6QDEijpbe0ExO+s/bMFAQ==",
+				"shasum": "a6325eb7a9d8094351e754ab7cd8381c771c9276",
+				"tarball": "https://registry.npmjs.org/@cloudflare/pages-plugin-wildebeest/-/pages-plugin-wildebeest-0.0.3.tgz",
+				"fileCount": 3,
+				"unpackedSize": 612828,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIG2jyVlHGTSHShTjIo9WOzItaAn3nsjDrVxfO3dAmY8AAiEAo0Fg15gusXya6NlmTRDGzelkx3aznaFWdRE0D2qAJIg="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjtEH6ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqdQQ/9EZdjsw33G1snf7WzRuuaTb2NzdpTDpy6jm+iid84BQcLlcF8\r\ng8kuuCL0a/38ekoUzcGEF1zRvWtQeK0WSSh+I38/3eWopAqOgYR0JvgvWBaG\r\nIdw771+PXrT8wlmwQtV88U+GmJKbHXNvPHHxNJ9Nnsaj+oI3Cvh1A9YFZ+z6\r\nkzmvIePtghqahJECCbBC002ahuXDZr8aAA/OQcT57v5a/U6uTBlpJ6+peSp2\r\n6uCMGvw/eO3zYXuF0jdvPpScTP6OgEhoXwkhncuB0mwa9RXXEyqcbI4BKnor\r\nxD5KZqpWLndR+pbqa/hcGjTzCAqMbrQt7Us9aChjbMVfGQUoIyHTV2FCE1/f\r\nPV20Mv2s2twuEfJNWSVTzVAFAESu8IbUrrpP9FSFnTli4+GZ5/IiE8tY9jPO\r\nI2BbfEZ2celAlXPbpBtL2HdT2b78Rm5GM60wok0y7IHOV8UTVy05BQG46nIF\r\nnJcXGF7DCtjg28TmTMrPLYjK1m9jHKG5Vb7w+slDjndGjCKYB5z4ea3rXRfe\r\ng7yACcFjMsxEjRk7e1CUCCRpGZmslByxbrwfCUwVjT2wg2CyZCcdnCZcqZqr\r\nR0J1md7LJ9l/Jm+ejOAirZGd1JQNchOXhwSB8G1fs/Zu0uG7O2d1q5+5+/WE\r\nzZoqXa16VIv+TK6CeW/4kJPajDDlsLkveEc=\r\n=1erT\r\n-----END PGP SIGNATURE-----\r\n"
 			}
 		}
 	}
