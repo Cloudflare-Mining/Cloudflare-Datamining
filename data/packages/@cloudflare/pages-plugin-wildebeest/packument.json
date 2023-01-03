@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/pages-plugin-wildebeest",
 	"dist-tags": {
-		"latest": "0.0.5"
+		"latest": "0.0.6"
 	},
 	"versions": {
 		"0.0.1": {
@@ -101,6 +101,27 @@
 					}
 				],
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjtFIkACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoTxQ//axwAFcoqjeL7mlhJl0GGvq8l03JssSx93KOD09vztoOcqklC\r\ntsZEKAwGLFMUR0i4SEjQb7eChGDDk5U9uqrYt9ULSW6J6RursLq2In+sFVJZ\r\nKf2CTztIqF7z564SPuntxc6noESjXmHUM0Tofm3dn1Oy49/5pxayb8fsPsfk\r\nXPOydGY2Vxq86rtMn9/6yZKCc7DLtwn4jxBLQOagMwo4uAohhG1hHFN75vat\r\nqONka6wVAuhw21AqqnNtIzkFaqdhgviq7rCio1vbHRdY+TkagnPktMvGbH2u\r\nBwy3icDEtPG+OFCNuQfzuWf+aLT6RJVueqgm2Uhuf0qdbVrCnLMFGL5GUme5\r\nz2Nf7rxInxkaAb7PtB5Wle5GkPhGSRVJ2o869A54+MAkgVP21YhkhweU1H78\r\nHdLw3/0B9lCfQkSWssk2TQMkSuc4AtfoVLwwrDCxUuCA23dwFy7pJQZ1Gp0B\r\n9GkpPDHKNlzeFMUM0EdzF57T1436u402sSbiJJL5oOV2J7FZZ2w1L9NU2p4S\r\njszDRIAGKlLNHnphjR+Wp1GGJpAoOouulnLN58pUBe3uBpNE+zqBN/Hzhn8B\r\nRpzis/RZ5GL4plkmQ/nUqiATQCozyr77PKprXc+H92ZX1IaYY8hG8UBVplG3\r\nt50W9sGa7mDmNUBSROVZIKhEOkGr3TP1j0I=\r\n=yvMy\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.6": {
+			"name": "@cloudflare/pages-plugin-wildebeest",
+			"version": "0.0.6",
+			"devDependencies": {
+				"wrangler": "https://prerelease-registry.devprod.cloudflare.dev/runs/3830356220/npm-package-wrangler-2485"
+			},
+			"dist": {
+				"shasum": "65c4169f5070ffeffdec6c2f0153f6735263256b",
+				"integrity": "sha512-uGXSn3JNbEUhsbOMIcdSywekWz/qWx6EEGGhuFXS+JtszfBEAblDNjXLzGl20MGs+ucrfmymAda/uCb46Tu/8g==",
+				"tarball": "https://registry.npmjs.org/@cloudflare/pages-plugin-wildebeest/-/pages-plugin-wildebeest-0.0.6.tgz",
+				"fileCount": 113,
+				"unpackedSize": 1540959,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIE+YYGsrNMPh8BulxYhW5GbhDqVBRITwH49SykFW1PjBAiEAo3qf4y2HtQeHYELbiRPTjuXPVd/LWj3n3QN2mAt5U94="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjtFc1ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmpt3xAAg8HAT65LVkpwFCD9/yqUK8CJ5h5RxgjQCtt03InrANxqDz9f\r\nFT3DwSxEvo8DmmIQcyDLYIf8MaTxLC70rIJXPt9sHYtnfoOhId3spLPWj8MS\r\n6VHyhOfSuRXd2LrKoSGqQqF72kOTR/0PAja/vJtBH/SL/uCV+DMvjxJnucMD\r\n7QLAnhmtvRggZSFkqZxi0UiQ3kXMEhz/KLiP2pqq2IKEZFa4KjZk4Wd9sBg4\r\ni+xJIYr2O5Ud9klfX8UTWfXbvmija24Y3Mi+KUZstcchVckXFG1XtPPQ1uZy\r\nx21gFkW4LG5/z/Wv0exfu2zLW9EAxszR0mEAxPXjOk62g9+JzLZjWEYXqr5X\r\np/r1mtTRQ+Xz3p+xYCUtdFQOnWMSK7C7ShhFLIgKgaZWEjYvtO2lq3bmmQJn\r\nRrD7vHypI4Z3DisOwwUXX7ZJSZSToRrH3RUWBYwJ8RCsqDu5gRWVWyDAWd95\r\nblpH8t6VQ2hbVBtybIqcNp2Iw8/uv8khbfOOLGjKhZch0dzkD5LLSOKre/kK\r\nDDb+P4KsaPYrTQVGaKGbI4h4SwtEQm44r6HV6lRaY3NN3oeFKEEhlcAn7T/z\r\nKBe3Vk9OrZfusdyWwzOYnolLOLhAHTmV0GRxdhh23Ex/ccRe80QeRT3lsOA0\r\n1/h76P6S5jrge9Jt8ncR2pvSKQeAWj1LPCo=\r\n=3GLm\r\n-----END PGP SIGNATURE-----\r\n"
 			}
 		}
 	}
