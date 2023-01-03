@@ -5,33 +5,36 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>What You’ll Do</strong><span style="font-weight: 400;"> </span><span style="font-weight: 400;"> </span><span style="font-weight: 400;"> </span><span style="font-weight: 400;"> </span><span style="font-weight: 400;">&nbsp;</span></p>
-<p><span style="font-weight: 400;">Ensuring the privacy of personal information is core to Cloudflare’s mission to help build a better Internet, and we’re looking for a privacy specialist to help Cloudflare navigate the complicated challenges of processing personal data amid an ever-changing regulatory landscape. Our legal team helps the company deal with complex matters by anticipating complications and distractions, and guiding the company around those obstacles. Our new&nbsp; privacy specialist team member will help foster our unique corporate philosophy and approach, in which the security and privacy of our customers’ data are paramount. We are looking for an exceptionally talented, energetic and friendly specialist to join our legal team in Lisbon, Portugal. This is a junior-level role ideal for someone who is a proactive self-starter with exceptional organizational abilities and who has experience working cross functionally with a variety of business teams and roles. We are open to relocation within EU for the right candidate.</span></p>
-<p><span style="font-weight: 400;">As part of the job, you will:&nbsp;</span></p>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Oversee </span><span style="font-weight: 400;">keeping accurate, privacy law-compliant documentation, including</span><span style="font-weight: 400;"> supporting privacy counsel and product teams in ongoing documentation of records of processing activity and data protection impact assessments as systems, products and services evolve and new ones are introduced.&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Work cross functionally with other teams across the company to inventory data and document and assess risk of data processing activities.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Help manage project ticketing systems (e.g., Jira) to triage work among privacy team members.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Develop sales enablement materials, including responses to FAQs from customers and sales team members.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Create privacy project plans, gather requirements, and define milestones. Manage status and reporting to provide project clarity to team members and leadership</span><span style="font-weight: 400;">.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Assist the Data Protection Officer and partner with internal teams in developing and maintaining Cloudflare’s data governance program, including maintaining existing privacy program policies and updating or drafting new policies as needed.</span></li>
-</ul>
-<p>&nbsp;</p>
+<h4 id="EmailSecurityDetectionsEngineer-AbouttheDepartment"><strong>About the Department</strong></h4>
+<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare.&nbsp; Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers.&nbsp; Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency, which would be impossible for almost any other organization.</p>
+<p><strong>About the Role</strong></p>
+<p>Cloudflare is a system spanning the globe, on a mission to make the internet better, safer, and more powerful everyday.&nbsp; To help fulfill this mission, we are seeking a talented Security Detections Engineer to identify, track, and defeat sophisticated email-borne cyber threats.&nbsp; In this position, you will examine and mitigate threats in realtime, leveraging emerging technologies to build detections that protect millions of people from phishing attacks.&nbsp; Your efforts will help us in our constant pursuit of reaching far beyond today’s email security market.</p>
+<p>As a Security Detections Engineer, your analytical thinking and quick action will be the key to our success. You will identify Tactics, Techniques, and Procedures (TTPs) of ongoing and ever-evolving cyber attacks to protect our global customer base. &nbsp;You will work in close collaboration with team members to develop new and innovative ways to present and interact with our unique insights. &nbsp;You will stop the adversary.&nbsp;</p>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Bachelor’s degree and 3+ years of program or project management experience, preferably including professional experience in technology privacy and data protection.&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong interpersonal skills and experience in working cross-functionally with a variety of teams, including engineering teams, sales teams, and product teams.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Exceptional verbal and written communication, organization, and project management skills, including a strong desire and ability to make complex topics understandable for various audiences.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Self-starter with the ability to learn in a fast-paced environment with minimal supervision</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Professional experience managing&nbsp; small to medium programs from start to finish.</span></li>
+	<li>Experience in one of the following: Email and/or Metadata analysis</li>
+	<li>A passion for analyzing attacker TTPs at varying levels&nbsp;</li>
+	<li>Ability to understand the latest security trends as they relate to email-borne threats</li>
+	<li>Experience using a comprehensive data analysis platform and rule configuration</li>
+	<li>Understanding of the cyber threat landscape, cyber intelligence, and working knowledge of threat actors and their techniques</li>
+	<li>Experience tracking and analyzing cyber campaigns utilizing technical Indicators of Compromise (IOCs)</li>
+	<li>Ability to synthesize technical information and document it in a non-technical manner through both graphical and verbal representation</li>
+	<li>Capable and comfortable communicating actionable threat intelligence to both technical and executive-level stakeholders</li>
+	<li>Great oral and written communications skills</li>
+	<li>Desire to learn and improve</li>
+	<li>Willing and eager to share knowledge, and mentor</li>
 </ul>
+<p><strong>Bonus Points</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with GDPR, CCPA/CPRA and other privacy laws and regulations.&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">CIPP/US/E/CIPM or CIPT or other privacy or risk and compliance related certifications a plus (i.e. CISA or CISSP).</span></li>
-</ul>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Technical expertise and an understanding of the way that the Internet, and companies like Cloudflare, operate is a plus.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with OneTrust is a plus.</span></li>
+	<li>Working knowledge of email authentication protocols, and experience in email header analysis</li>
+	<li>Experience analyzing, tracking and defending against phishing attacks</li>
+	<li>Strong understanding of the cyber threat landscape, with expertise in advanced persistent threat (APT) groups&nbsp;</li>
+	<li>Working knowledge of OSI Layers</li>
+	<li>Working knowledge of TCP/UDP/ICMP, DNS, HTTP/HTTPS, SMTP/SMTPS, SSH/SFTP/SCP, FTP</li>
+	<li>Familiarity with regular expressions and their practical application in tracking malicious activity</li>
+	<li>Working knowledge of SQL and devising SQL queries</li>
+	<li>Experience with detection development using YARA</li>
+	<li>BS in Computer Science, Information Technology, Information Security, Computer Security or Information Systems</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
