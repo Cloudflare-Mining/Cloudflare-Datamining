@@ -5,183 +5,183 @@
 			"fields": [
 				{
 					"name": "accountId",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "dataset",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "schemaVersion",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "index1",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "timestamp",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "double1",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "double2",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "double3",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "double4",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "double5",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "double6",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "double7",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "double8",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "double9",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "double10",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "double11",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "double12",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "double13",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "double14",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "double15",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "double16",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "double17",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "double18",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "double19",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "double20",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "blob1",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "blob2",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "blob3",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "blob4",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "blob5",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "blob6",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "blob7",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "blob8",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "blob9",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "blob10",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "blob11",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "blob12",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "blob13",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "blob14",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "blob15",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "blob16",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "blob17",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "blob18",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "blob19",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "blob20",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -190,7 +190,7 @@
 			"fields": [
 				{
 					"name": "object",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -199,19 +199,19 @@
 			"fields": [
 				{
 					"name": "object",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "range",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "onlyIf",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "rangeHeader",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -220,39 +220,49 @@
 			"fields": [
 				{
 					"name": "object",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "customFields",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "httpFields",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "onlyIf",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "md5",
-					"annotations": []
+					"annotations": {
+						"base64": "true"
+					}
 				},
 				{
 					"name": "sha1",
-					"annotations": []
+					"annotations": {
+						"hex": "true"
+					}
 				},
 				{
 					"name": "sha256",
-					"annotations": []
+					"annotations": {
+						"hex": "true"
+					}
 				},
 				{
 					"name": "sha384",
-					"annotations": []
+					"annotations": {
+						"hex": "true"
+					}
 				},
 				{
 					"name": "sha512",
-					"annotations": []
+					"annotations": {
+						"hex": "true"
+					}
 				}
 			]
 		},
@@ -261,31 +271,31 @@
 			"fields": [
 				{
 					"name": "limit",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "prefix",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "cursor",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "delimiter",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "startAfter",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "include",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "newRuntime",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -294,11 +304,11 @@
 			"fields": [
 				{
 					"name": "object",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "objects",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -307,7 +317,7 @@
 			"fields": [
 				{
 					"name": "bucket",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -316,15 +326,15 @@
 			"fields": [
 				{
 					"name": "limit",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "prefix",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "cursor",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -333,7 +343,7 @@
 			"fields": [
 				{
 					"name": "bucket",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -342,15 +352,15 @@
 			"fields": [
 				{
 					"name": "object",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "customFields",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "httpFields",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -359,15 +369,15 @@
 			"fields": [
 				{
 					"name": "object",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "uploadId",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "partNumber",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -376,15 +386,15 @@
 			"fields": [
 				{
 					"name": "object",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "uploadId",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "parts",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -393,11 +403,11 @@
 			"fields": [
 				{
 					"name": "object",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "uploadId",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -406,11 +416,14 @@
 			"fields": [
 				{
 					"name": "version",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "payload",
-					"annotations": []
+					"annotations": {
+						"discriminator": "unhandled type",
+						"flatten": "unhandled type"
+					}
 				}
 			]
 		},
@@ -419,51 +432,75 @@
 			"fields": [
 				{
 					"name": "head",
-					"annotations": []
+					"annotations": {
+						"flatten": "unhandled type"
+					}
 				},
 				{
 					"name": "get",
-					"annotations": []
+					"annotations": {
+						"flatten": "unhandled type"
+					}
 				},
 				{
 					"name": "put",
-					"annotations": []
+					"annotations": {
+						"flatten": "unhandled type"
+					}
 				},
 				{
 					"name": "list",
-					"annotations": []
+					"annotations": {
+						"flatten": "unhandled type"
+					}
 				},
 				{
 					"name": "delete",
-					"annotations": []
+					"annotations": {
+						"flatten": "unhandled type"
+					}
 				},
 				{
 					"name": "createBucket",
-					"annotations": []
+					"annotations": {
+						"flatten": "unhandled type"
+					}
 				},
 				{
 					"name": "listBucket",
-					"annotations": []
+					"annotations": {
+						"flatten": "unhandled type"
+					}
 				},
 				{
 					"name": "deleteBucket",
-					"annotations": []
+					"annotations": {
+						"flatten": "unhandled type"
+					}
 				},
 				{
 					"name": "createMultipartUpload",
-					"annotations": []
+					"annotations": {
+						"flatten": "unhandled type"
+					}
 				},
 				{
 					"name": "uploadPart",
-					"annotations": []
+					"annotations": {
+						"flatten": "unhandled type"
+					}
 				},
 				{
 					"name": "completeMultipartUpload",
-					"annotations": []
+					"annotations": {
+						"flatten": "unhandled type"
+					}
 				},
 				{
 					"name": "abortMultipartUpload",
-					"annotations": []
+					"annotations": {
+						"flatten": "unhandled type"
+					}
 				}
 			]
 		},
@@ -472,7 +509,7 @@
 			"fields": [
 				{
 					"name": "prefix",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -481,11 +518,11 @@
 			"fields": [
 				{
 					"name": "name",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "valueName",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -494,15 +531,15 @@
 			"fields": [
 				{
 					"name": "offset",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "length",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "suffix",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -511,23 +548,23 @@
 			"fields": [
 				{
 					"name": "etagMatches",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "etagDoesNotMatch",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "uploadedBefore",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "uploadedAfter",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "secondsGranularity",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -536,11 +573,11 @@
 			"fields": [
 				{
 					"name": "k",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "v",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -549,27 +586,27 @@
 			"fields": [
 				{
 					"name": "contentType",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "contentLanguage",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "contentDisposition",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "contentEncoding",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "cacheControl",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "cacheExpiry",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -578,11 +615,11 @@
 			"fields": [
 				{
 					"name": "etag",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "part",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -591,48 +628,38 @@
 			"fields": [
 				{
 					"name": "md5",
-					"annotations": [
-						[
-							"name",
-							"0"
-						]
-					]
+					"annotations": {
+						"hex": "true",
+						"name": "0"
+					}
 				},
 				{
 					"name": "sha1",
-					"annotations": [
-						[
-							"name",
-							"1"
-						]
-					]
+					"annotations": {
+						"hex": "true",
+						"name": "1"
+					}
 				},
 				{
 					"name": "sha256",
-					"annotations": [
-						[
-							"name",
-							"2"
-						]
-					]
+					"annotations": {
+						"hex": "true",
+						"name": "2"
+					}
 				},
 				{
 					"name": "sha384",
-					"annotations": [
-						[
-							"name",
-							"3"
-						]
-					]
+					"annotations": {
+						"hex": "true",
+						"name": "3"
+					}
 				},
 				{
 					"name": "sha512",
-					"annotations": [
-						[
-							"name",
-							"4"
-						]
-					]
+					"annotations": {
+						"hex": "true",
+						"name": "4"
+					}
 				}
 			]
 		},
@@ -641,15 +668,15 @@
 			"fields": [
 				{
 					"name": "version",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "v4code",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "message",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -658,44 +685,41 @@
 			"fields": [
 				{
 					"name": "name",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "version",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "size",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "etag",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "uploadedMillisecondsSinceEpoch",
-					"annotations": [
-						[
-							"name",
-							"uploaded"
-						]
-					]
+					"annotations": {
+						"name": "uploaded"
+					}
 				},
 				{
 					"name": "httpFields",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "customFields",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "range",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "checksums",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -704,7 +728,7 @@
 			"fields": [
 				{
 					"name": "uploadId",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -713,7 +737,7 @@
 			"fields": [
 				{
 					"name": "etag",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -726,19 +750,19 @@
 			"fields": [
 				{
 					"name": "objects",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "truncated",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "cursor",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "delimitedPrefixes",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -755,16 +779,13 @@
 			"fields": [
 				{
 					"name": "name",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "createdMillisecondsSinceEpoch",
-					"annotations": [
-						[
-							"name",
-							"created"
-						]
-					]
+					"annotations": {
+						"name": "created"
+					}
 				}
 			]
 		},
@@ -773,15 +794,15 @@
 			"fields": [
 				{
 					"name": "buckets",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "truncated",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "cursor",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -794,7 +815,7 @@
 			"fields": [
 				{
 					"name": "stableId",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -803,7 +824,7 @@
 			"fields": [
 				{
 					"name": "stage",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -812,11 +833,11 @@
 			"fields": [
 				{
 					"name": "priority",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "asOfTimeMs",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -825,7 +846,7 @@
 			"fields": [
 				{
 					"name": "settings",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -834,7 +855,7 @@
 			"fields": [
 				{
 					"name": "transaction",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -843,7 +864,7 @@
 			"fields": [
 				{
 					"name": "key",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -852,7 +873,7 @@
 			"fields": [
 				{
 					"name": "value",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -861,11 +882,11 @@
 			"fields": [
 				{
 					"name": "key",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "value",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -874,7 +895,7 @@
 			"fields": [
 				{
 					"name": "entries",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -887,7 +908,7 @@
 			"fields": [
 				{
 					"name": "keys",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -896,7 +917,7 @@
 			"fields": [
 				{
 					"name": "numDeleted",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -905,27 +926,27 @@
 			"fields": [
 				{
 					"name": "start",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "end",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "limit",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "reverse",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "stream",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "prefix",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -938,11 +959,11 @@
 			"fields": [
 				{
 					"name": "keys",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "stream",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -959,7 +980,7 @@
 			"fields": [
 				{
 					"name": "numDeleted",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -972,7 +993,7 @@
 			"fields": [
 				{
 					"name": "scheduledTimeMs",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -981,7 +1002,7 @@
 			"fields": [
 				{
 					"name": "scheduledTimeMs",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -994,7 +1015,7 @@
 			"fields": [
 				{
 					"name": "timeToDeleteMs",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -1003,7 +1024,7 @@
 			"fields": [
 				{
 					"name": "deleted",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -1012,11 +1033,11 @@
 			"fields": [
 				{
 					"name": "oldKey",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "newKey",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -1025,7 +1046,7 @@
 			"fields": [
 				{
 					"name": "entries",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -1034,7 +1055,7 @@
 			"fields": [
 				{
 					"name": "renamed",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -1043,7 +1064,7 @@
 			"fields": [
 				{
 					"name": "list",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -1084,23 +1105,23 @@
 			"fields": [
 				{
 					"name": "functionName",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "scriptId",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "url",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "lineNumber",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "columnNumber",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -1109,19 +1130,19 @@
 			"fields": [
 				{
 					"name": "description",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "callFrames",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "parent",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "parentId",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -1130,11 +1151,11 @@
 			"fields": [
 				{
 					"name": "id",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "debuggerId",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -1147,11 +1168,13 @@
 			"fields": [
 				{
 					"name": "undefined",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "string",
-					"annotations": []
+					"annotations": {
+						"flatten": "unhandled type"
+					}
 				}
 			]
 		},
@@ -1160,23 +1183,23 @@
 			"fields": [
 				{
 					"name": "type",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "args",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "executionContextId",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "timestamp",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "stackTrace",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -1185,7 +1208,7 @@
 			"fields": [
 				{
 					"name": "value",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -1206,67 +1229,67 @@
 			"fields": [
 				{
 					"name": "requestTime",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "proxyStart",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "proxyEnd",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "dnsStart",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "dnsEnd",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "connectStart",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "connectEnd",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "sslStart",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "sslEnd",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "workerStart",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "workerReady",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "sendStart",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "sendEnd",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "pushStart",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "pushEnd",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "receiveHeadersEnd",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -1275,35 +1298,35 @@
 			"fields": [
 				{
 					"name": "null",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "boolean",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "number",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "string",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "array",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "object",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "call",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "raw",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -1312,35 +1335,35 @@
 			"fields": [
 				{
 					"name": "url",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "method",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "headers",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "postData",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "mixedContentType",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "initialPriority",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "referrerPolicy",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "isLinkPreload",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -1349,11 +1372,11 @@
 			"fields": [
 				{
 					"name": "name",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "value",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -1362,11 +1385,11 @@
 			"fields": [
 				{
 					"name": "function",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "params",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -1375,35 +1398,35 @@
 			"fields": [
 				{
 					"name": "status",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "origin",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "logDescription",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "logId",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "timestamp",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "hashAlgorithm",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "signatureAlgorithm",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "signatureData",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -1412,51 +1435,51 @@
 			"fields": [
 				{
 					"name": "protocol",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "keyExchange",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "keyExchangeGroup",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "cipher",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "mac",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "certificateId",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "subjectName",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "sanList",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "issuer",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "validFrom",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "validTo",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "signedCertificateTimestampList",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -1465,79 +1488,79 @@
 			"fields": [
 				{
 					"name": "url",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "status",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "statusText",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "headers",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "headersText",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "mimeType",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "requestHeaders",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "requestHeadersText",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "connectionReused",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "connectionId",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "remoteIPAddress",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "remotePort",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "fromDiskCache",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "fromServiceWorker",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "encodedDataLength",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "timing",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "protocol",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "securityState",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "securityDetails",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -1546,19 +1569,19 @@
 			"fields": [
 				{
 					"name": "type",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "stack",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "url",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "lineNumber",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -1575,11 +1598,11 @@
 			"fields": [
 				{
 					"name": "maxTotalBufferSize",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "maxResourceBufferSize",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -1608,7 +1631,7 @@
 			"fields": [
 				{
 					"name": "requestId",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -1617,11 +1640,11 @@
 			"fields": [
 				{
 					"name": "body",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "base64Encoded",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -1634,43 +1657,43 @@
 			"fields": [
 				{
 					"name": "requestId",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "loaderId",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "documentURL",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "request",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "timestamp",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "wallTime",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "initiator",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "redirectResponse",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "type",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "frameId",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -1679,27 +1702,27 @@
 			"fields": [
 				{
 					"name": "requestId",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "loaderId",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "timestamp",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "type",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "response",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "frameId",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -1708,19 +1731,19 @@
 			"fields": [
 				{
 					"name": "requestId",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "timestamp",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "dataLength",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "encodedDataLength",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -1729,19 +1752,19 @@
 			"fields": [
 				{
 					"name": "requestId",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "timestamp",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "encodedDataLength",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "cfResponse",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -1754,11 +1777,11 @@
 			"fields": [
 				{
 					"name": "line",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "ticks",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -1767,27 +1790,27 @@
 			"fields": [
 				{
 					"name": "id",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "callFrame",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "hitCount",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "children",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "deoptReason",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "positionTicks",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -1796,23 +1819,23 @@
 			"fields": [
 				{
 					"name": "nodes",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "startTime",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "endTime",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "samples",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "timeDeltas",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -1841,7 +1864,7 @@
 			"fields": [
 				{
 					"name": "interval",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -1874,7 +1897,7 @@
 			"fields": [
 				{
 					"name": "profile",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -1919,15 +1942,15 @@
 			"fields": [
 				{
 					"name": "reportProgress",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "captureNumericValue",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "exposeInternals",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -1944,7 +1967,7 @@
 			"fields": [
 				{
 					"name": "chunk",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -1953,15 +1976,15 @@
 			"fields": [
 				{
 					"name": "done",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "total",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "finished",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -1970,11 +1993,11 @@
 			"fields": [
 				{
 					"name": "code",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "message",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -1983,15 +2006,15 @@
 			"fields": [
 				{
 					"name": "params",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "result",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "error",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -2000,101 +2023,81 @@
 			"fields": [
 				{
 					"name": "id",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "unknown",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "networkEnable",
-					"annotations": [
-						[
-							"name",
-							"Network.enable"
-						]
-					]
+					"annotations": {
+						"flatten": "unhandled type",
+						"name": "Network.enable"
+					}
 				},
 				{
 					"name": "networkDisable",
-					"annotations": [
-						[
-							"name",
-							"Network.disable"
-						]
-					]
+					"annotations": {
+						"flatten": "unhandled type",
+						"name": "Network.disable"
+					}
 				},
 				{
 					"name": "networkGetResponseBody",
-					"annotations": [
-						[
-							"name",
-							"Network.getResponseBody"
-						]
-					]
+					"annotations": {
+						"flatten": "unhandled type",
+						"name": "Network.getResponseBody"
+					}
 				},
 				{
 					"name": "profilerSetSamplingInterval",
-					"annotations": [
-						[
-							"name",
-							"Profiler.setSamplingInterval"
-						]
-					]
+					"annotations": {
+						"flatten": "unhandled type",
+						"name": "Profiler.setSamplingInterval"
+					}
 				},
 				{
 					"name": "profilerEnable",
-					"annotations": [
-						[
-							"name",
-							"Profiler.enable"
-						]
-					]
+					"annotations": {
+						"flatten": "unhandled type",
+						"name": "Profiler.enable"
+					}
 				},
 				{
 					"name": "profilerStart",
-					"annotations": [
-						[
-							"name",
-							"Profiler.start"
-						]
-					]
+					"annotations": {
+						"flatten": "unhandled type",
+						"name": "Profiler.start"
+					}
 				},
 				{
 					"name": "profilerStop",
-					"annotations": [
-						[
-							"name",
-							"Profiler.stop"
-						]
-					]
+					"annotations": {
+						"flatten": "unhandled type",
+						"name": "Profiler.stop"
+					}
 				},
 				{
 					"name": "heapProfilerEnable",
-					"annotations": [
-						[
-							"name",
-							"HeapProfiler.enable"
-						]
-					]
+					"annotations": {
+						"flatten": "unhandled type",
+						"name": "HeapProfiler.enable"
+					}
 				},
 				{
 					"name": "heapProfilerDisable",
-					"annotations": [
-						[
-							"name",
-							"HeapProfiler.disable"
-						]
-					]
+					"annotations": {
+						"flatten": "unhandled type",
+						"name": "HeapProfiler.disable"
+					}
 				},
 				{
 					"name": "takeHeapSnapshot",
-					"annotations": [
-						[
-							"name",
-							"HeapProfiler.takeHeapSnapshot"
-						]
-					]
+					"annotations": {
+						"flatten": "unhandled type",
+						"name": "HeapProfiler.takeHeapSnapshot"
+					}
 				}
 			]
 		},
@@ -2103,66 +2106,45 @@
 			"fields": [
 				{
 					"name": "networkRequestWillBeSent",
-					"annotations": [
-						[
-							"name",
-							"Network.requestWillBeSent"
-						]
-					]
+					"annotations": {
+						"name": "Network.requestWillBeSent"
+					}
 				},
 				{
 					"name": "networkResponseReceived",
-					"annotations": [
-						[
-							"name",
-							"Network.responseReceived"
-						]
-					]
+					"annotations": {
+						"name": "Network.responseReceived"
+					}
 				},
 				{
 					"name": "networkDataReceived",
-					"annotations": [
-						[
-							"name",
-							"Network.dataReceived"
-						]
-					]
+					"annotations": {
+						"name": "Network.dataReceived"
+					}
 				},
 				{
 					"name": "networkLoadingFinished",
-					"annotations": [
-						[
-							"name",
-							"Network.loadingFinished"
-						]
-					]
+					"annotations": {
+						"name": "Network.loadingFinished"
+					}
 				},
 				{
 					"name": "runtimeConsoleApiCalled",
-					"annotations": [
-						[
-							"name",
-							"Runtime.consoleAPICalled"
-						]
-					]
+					"annotations": {
+						"name": "Runtime.consoleAPICalled"
+					}
 				},
 				{
 					"name": "addHeapSnapshotChunk",
-					"annotations": [
-						[
-							"name",
-							"HeapProfiler.addHeapSnapshotChunk"
-						]
-					]
+					"annotations": {
+						"name": "HeapProfiler.addHeapSnapshotChunk"
+					}
 				},
 				{
 					"name": "reportHeapSnapshotProgress",
-					"annotations": [
-						[
-							"name",
-							"HeapProfiler.reportHeapSnapshotProgress"
-						]
-					]
+					"annotations": {
+						"name": "HeapProfiler.reportHeapSnapshotProgress"
+					}
 				}
 			]
 		},
@@ -2171,325 +2153,175 @@
 			"fields": [
 				{
 					"name": "formDataParserSupportsFiles",
-					"annotations": [
-						[
-							"compatEnableFlag",
-							"formdata_parser_supports_files"
-						],
-						[
-							"compatEnableDate",
-							"2021-11-03"
-						],
-						[
-							"compatDisableFlag",
-							"formdata_parser_converts_files_to_strings"
-						]
-					]
+					"annotations": {
+						"compatDisableFlag": "formdata_parser_converts_files_to_strings",
+						"compatEnableDate": "2021-11-03",
+						"compatEnableFlag": "formdata_parser_supports_files"
+					}
 				},
 				{
 					"name": "fetchRefusesUnknownProtocols",
-					"annotations": [
-						[
-							"compatEnableFlag",
-							"fetch_refuses_unknown_protocols"
-						],
-						[
-							"compatEnableDate",
-							"2021-11-10"
-						],
-						[
-							"compatDisableFlag",
-							"fetch_treats_unknown_protocols_as_http"
-						]
-					]
+					"annotations": {
+						"compatDisableFlag": "fetch_treats_unknown_protocols_as_http",
+						"compatEnableDate": "2021-11-10",
+						"compatEnableFlag": "fetch_refuses_unknown_protocols"
+					}
 				},
 				{
 					"name": "esiIncludeIsVoidTag",
-					"annotations": [
-						[
-							"compatEnableFlag",
-							"html_rewriter_treats_esi_include_as_void_tag"
-						]
-					]
+					"annotations": {
+						"compatEnableFlag": "html_rewriter_treats_esi_include_as_void_tag"
+					}
 				},
 				{
 					"name": "obsolete3",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "durableObjectFetchRequiresSchemeAuthority",
-					"annotations": [
-						[
-							"compatEnableFlag",
-							"durable_object_fetch_requires_full_url"
-						],
-						[
-							"compatEnableDate",
-							"2021-11-10"
-						],
-						[
-							"compatDisableFlag",
-							"durable_object_fetch_allows_relative_url"
-						]
-					]
+					"annotations": {
+						"compatDisableFlag": "durable_object_fetch_allows_relative_url",
+						"compatEnableDate": "2021-11-10",
+						"compatEnableFlag": "durable_object_fetch_requires_full_url"
+					}
 				},
 				{
 					"name": "streamsByobReaderDetachesBuffer",
-					"annotations": [
-						[
-							"compatEnableFlag",
-							"streams_byob_reader_detaches_buffer"
-						],
-						[
-							"compatEnableDate",
-							"2021-11-10"
-						],
-						[
-							"compatDisableFlag",
-							"streams_byob_reader_does_not_detach_buffer"
-						]
-					]
+					"annotations": {
+						"compatDisableFlag": "streams_byob_reader_does_not_detach_buffer",
+						"compatEnableDate": "2021-11-10",
+						"compatEnableFlag": "streams_byob_reader_detaches_buffer"
+					}
 				},
 				{
 					"name": "streamsJavaScriptControllers",
-					"annotations": [
-						[
-							"compatEnableFlag",
-							"streams_enable_constructors"
-						],
-						[
-							"compatEnableDate",
-							"2022-11-30"
-						],
-						[
-							"compatDisableFlag",
-							"streams_disable_constructors"
-						]
-					]
+					"annotations": {
+						"compatDisableFlag": "streams_disable_constructors",
+						"compatEnableDate": "2022-11-30",
+						"compatEnableFlag": "streams_enable_constructors"
+					}
 				},
 				{
 					"name": "jsgPropertyOnPrototypeTemplate",
-					"annotations": [
-						[
-							"compatEnableFlag",
-							"workers_api_getters_setters_on_prototype"
-						],
-						[
-							"compatEnableDate",
-							"2022-01-31"
-						],
-						[
-							"compatDisableFlag",
-							"workers_api_getters_setters_on_instance"
-						]
-					]
+					"annotations": {
+						"compatDisableFlag": "workers_api_getters_setters_on_instance",
+						"compatEnableDate": "2022-01-31",
+						"compatEnableFlag": "workers_api_getters_setters_on_prototype"
+					}
 				},
 				{
 					"name": "minimalSubrequests",
-					"annotations": [
-						[
-							"compatEnableFlag",
-							"minimal_subrequests"
-						],
-						[
-							"compatEnableDate",
-							"2022-04-05"
-						],
-						[
-							"compatDisableFlag",
-							"no_minimal_subrequests"
-						]
-					]
+					"annotations": {
+						"compatDisableFlag": "no_minimal_subrequests",
+						"compatEnableDate": "2022-04-05",
+						"compatEnableFlag": "minimal_subrequests",
+						"neededByFl": "true"
+					}
 				},
 				{
 					"name": "noCotsOnExternalFetch",
-					"annotations": [
-						[
-							"compatEnableFlag",
-							"no_cots_on_external_fetch"
-						],
-						[
-							"compatEnableDate",
-							"2022-03-08"
-						],
-						[
-							"compatDisableFlag",
-							"cots_on_external_fetch"
-						]
-					]
+					"annotations": {
+						"compatDisableFlag": "cots_on_external_fetch",
+						"compatEnableDate": "2022-03-08",
+						"compatEnableFlag": "no_cots_on_external_fetch",
+						"neededByFl": "true"
+					}
 				},
 				{
 					"name": "specCompliantUrl",
-					"annotations": [
-						[
-							"compatEnableFlag",
-							"url_standard"
-						],
-						[
-							"compatEnableDate",
-							"2022-10-31"
-						],
-						[
-							"compatDisableFlag",
-							"url_original"
-						]
-					]
+					"annotations": {
+						"compatDisableFlag": "url_original",
+						"compatEnableDate": "2022-10-31",
+						"compatEnableFlag": "url_standard"
+					}
 				},
 				{
 					"name": "globalNavigator",
-					"annotations": [
-						[
-							"compatEnableFlag",
-							"global_navigator"
-						],
-						[
-							"compatEnableDate",
-							"2022-03-21"
-						],
-						[
-							"compatDisableFlag",
-							"no_global_navigator"
-						]
-					]
+					"annotations": {
+						"compatDisableFlag": "no_global_navigator",
+						"compatEnableDate": "2022-03-21",
+						"compatEnableFlag": "global_navigator"
+					}
 				},
 				{
 					"name": "captureThrowsAsRejections",
-					"annotations": [
-						[
-							"compatEnableFlag",
-							"capture_async_api_throws"
-						],
-						[
-							"compatEnableDate",
-							"2022-10-31"
-						],
-						[
-							"compatDisableFlag",
-							"do_not_capture_async_api_throws"
-						]
-					]
+					"annotations": {
+						"compatDisableFlag": "do_not_capture_async_api_throws",
+						"compatEnableDate": "2022-10-31",
+						"compatEnableFlag": "capture_async_api_throws"
+					}
 				},
 				{
 					"name": "r2PublicBetaApi",
-					"annotations": [
-						[
-							"compatEnableFlag",
-							"r2_public_beta_bindings"
-						],
-						[
-							"compatDisableFlag",
-							"r2_internal_beta_bindings"
-						]
-					]
+					"annotations": {
+						"compatDisableFlag": "r2_internal_beta_bindings",
+						"compatEnableAllDates": "true",
+						"compatEnableFlag": "r2_public_beta_bindings"
+					}
 				},
 				{
 					"name": "obsolete14",
-					"annotations": [
-						[
-							"compatEnableFlag",
-							"durable_object_alarms"
-						]
-					]
+					"annotations": {
+						"compatEnableFlag": "durable_object_alarms"
+					}
 				},
 				{
 					"name": "noSubstituteNull",
-					"annotations": [
-						[
-							"compatEnableFlag",
-							"dont_substitute_null_on_type_error"
-						],
-						[
-							"compatEnableDate",
-							"2022-06-01"
-						],
-						[
-							"compatDisableFlag",
-							"substitute_null_on_type_error"
-						]
-					]
+					"annotations": {
+						"compatDisableFlag": "substitute_null_on_type_error",
+						"compatEnableDate": "2022-06-01",
+						"compatEnableFlag": "dont_substitute_null_on_type_error"
+					}
 				},
 				{
 					"name": "transformStreamJavaScriptControllers",
-					"annotations": [
-						[
-							"compatEnableFlag",
-							"transformstream_enable_standard_constructor"
-						],
-						[
-							"compatEnableDate",
-							"2022-11-30"
-						],
-						[
-							"compatDisableFlag",
-							"transformstream_disable_standard_constructor"
-						]
-					]
+					"annotations": {
+						"compatDisableFlag": "transformstream_disable_standard_constructor",
+						"compatEnableDate": "2022-11-30",
+						"compatEnableFlag": "transformstream_enable_standard_constructor"
+					}
 				},
 				{
 					"name": "r2ListHonorIncludeFields",
-					"annotations": [
-						[
-							"compatEnableFlag",
-							"r2_list_honor_include"
-						],
-						[
-							"compatEnableDate",
-							"2022-08-04"
-						]
-					]
+					"annotations": {
+						"compatEnableDate": "2022-08-04",
+						"compatEnableFlag": "r2_list_honor_include"
+					}
 				},
 				{
 					"name": "exportCommonJsDefaultNamespace",
-					"annotations": [
-						[
-							"compatEnableFlag",
-							"export_commonjs_default"
-						],
-						[
-							"compatEnableDate",
-							"2022-10-31"
-						],
-						[
-							"compatDisableFlag",
-							"export_commonjs_namespace"
-						]
-					]
+					"annotations": {
+						"compatDisableFlag": "export_commonjs_namespace",
+						"compatEnableDate": "2022-10-31",
+						"compatEnableFlag": "export_commonjs_default"
+					}
 				},
 				{
 					"name": "obsolete19",
-					"annotations": [
-						[
-							"compatEnableFlag",
-							"durable_object_rename"
-						]
-					]
+					"annotations": {
+						"compatEnableFlag": "durable_object_rename",
+						"experimental": "true"
+					}
 				},
 				{
 					"name": "webSocketCompression",
-					"annotations": [
-						[
-							"compatEnableFlag",
-							"web_socket_compression"
-						]
-					]
+					"annotations": {
+						"compatEnableFlag": "web_socket_compression"
+					}
 				},
 				{
 					"name": "nodeJs18CompatExperimental",
-					"annotations": [
-						[
-							"compatEnableFlag",
-							"nodejs_18_compat_experimental"
-						]
-					]
+					"annotations": {
+						"compatEnableFlag": "nodejs_18_compat_experimental",
+						"experimental": "true"
+					}
 				},
 				{
 					"name": "tcpSocketsSupport",
-					"annotations": [
-						[
-							"compatEnableFlag",
-							"tcp_sockets_support"
-						]
-					]
+					"annotations": {
+						"compatEnableFlag": "tcp_sockets_support",
+						"experimental": "true"
+					}
 				}
 			]
 		},
@@ -2498,23 +2330,23 @@
 			"fields": [
 				{
 					"name": "traceIdHigh",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "traceIdLow",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "spanId",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "parentSpanId",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "flags",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -2523,7 +2355,7 @@
 			"fields": [
 				{
 					"name": "name",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -2532,7 +2364,7 @@
 			"fields": [
 				{
 					"name": "value",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -2541,11 +2373,11 @@
 			"fields": [
 				{
 					"name": "name",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "fullyQualifiedName",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -2554,7 +2386,7 @@
 			"fields": [
 				{
 					"name": "name",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -2563,11 +2395,11 @@
 			"fields": [
 				{
 					"name": "element",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "name",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -2576,11 +2408,11 @@
 			"fields": [
 				{
 					"name": "value",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "name",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -2589,11 +2421,11 @@
 			"fields": [
 				{
 					"name": "key",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "value",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -2602,7 +2434,7 @@
 			"fields": [
 				{
 					"name": "variants",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -2611,7 +2443,7 @@
 			"fields": [
 				{
 					"name": "type",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -2620,7 +2452,7 @@
 			"fields": [
 				{
 					"name": "name",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -2629,11 +2461,11 @@
 			"fields": [
 				{
 					"name": "returnType",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "args",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -2642,7 +2474,7 @@
 			"fields": [
 				{
 					"name": "type",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -2651,67 +2483,67 @@
 			"fields": [
 				{
 					"name": "unknown",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "voidt",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "boolt",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "number",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "promise",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "structure",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "string",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "object",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "array",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "maybe",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "dict",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "oneOf",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "builtin",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "intrinsic",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "function",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "jsgImpl",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -2720,23 +2552,23 @@
 			"fields": [
 				{
 					"name": "method",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "property",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "nested",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "constant",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "constructor",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -2745,19 +2577,19 @@
 			"fields": [
 				{
 					"name": "name",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "returnType",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "args",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "static",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -2766,47 +2598,47 @@
 			"fields": [
 				{
 					"name": "name",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "members",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "extends",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "iterable",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "asyncIterable",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "fullyQualifiedName",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "iterator",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "asyncIterator",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "tsRoot",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "tsOverride",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "tsDefine",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -2815,11 +2647,11 @@
 			"fields": [
 				{
 					"name": "structure",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "name",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -2828,23 +2660,23 @@
 			"fields": [
 				{
 					"name": "name",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "type",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "readonly",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "lazy",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "prototype",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -2853,11 +2685,11 @@
 			"fields": [
 				{
 					"name": "name",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "value",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -2866,7 +2698,7 @@
 			"fields": [
 				{
 					"name": "args",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -2875,11 +2707,11 @@
 			"fields": [
 				{
 					"name": "name",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "structures",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -2888,7 +2720,7 @@
 			"fields": [
 				{
 					"name": "groups",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -2897,27 +2729,27 @@
 			"fields": [
 				{
 					"name": "name",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "unspecified",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "worker",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "network",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "external",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "disk",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -2926,23 +2758,23 @@
 			"fields": [
 				{
 					"name": "name",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "address",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "http",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "https",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "service",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -2951,15 +2783,15 @@
 			"fields": [
 				{
 					"name": "services",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "sockets",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "v8Flags",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -2968,47 +2800,47 @@
 			"fields": [
 				{
 					"name": "modules",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "serviceWorkerScript",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "inherit",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "compatibilityDate",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "compatibilityFlags",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "bindings",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "globalOutbound",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "durableObjectNamespaces",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "durableObjectUniqueKeyModifier",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "durableObjectStorage",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "cacheApiOutbound",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -3017,15 +2849,15 @@
 			"fields": [
 				{
 					"name": "allow",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "deny",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "tlsOptions",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -3034,15 +2866,15 @@
 			"fields": [
 				{
 					"name": "address",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "http",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "https",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -3051,15 +2883,15 @@
 			"fields": [
 				{
 					"name": "path",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "writable",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "allowDotfiles",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -3068,11 +2900,11 @@
 			"fields": [
 				{
 					"name": "none",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "inMemory",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -3081,31 +2913,31 @@
 			"fields": [
 				{
 					"name": "name",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "esModule",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "commonJsModule",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "text",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "data",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "wasm",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "json",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -3114,55 +2946,55 @@
 			"fields": [
 				{
 					"name": "name",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "unspecified",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "parameter",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "text",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "data",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "json",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "wasmModule",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "cryptoKey",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "service",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "durableObjectNamespace",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "kvNamespace",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "r2Bucket",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "r2Admin",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -3171,11 +3003,11 @@
 			"fields": [
 				{
 					"name": "name",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "entrypoint",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -3184,15 +3016,15 @@
 			"fields": [
 				{
 					"name": "className",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "uniqueKey",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "ephemeralLocal",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -3201,47 +3033,47 @@
 			"fields": [
 				{
 					"name": "unspecified",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "text",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "data",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "json",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "wasm",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "cryptoKey",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "service",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "durableObjectNamespace",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "kvNamespace",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "r2Bucket",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "r2Admin",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -3250,11 +3082,11 @@
 			"fields": [
 				{
 					"name": "type",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "optional",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -3263,39 +3095,39 @@
 			"fields": [
 				{
 					"name": "raw",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "hex",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "base64",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "pkcs8",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "spki",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "jwk",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "algorithm",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "extractable",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "usages",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -3304,11 +3136,11 @@
 			"fields": [
 				{
 					"name": "className",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "serviceName",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -3317,11 +3149,11 @@
 			"fields": [
 				{
 					"name": "name",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "json",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -3330,27 +3162,27 @@
 			"fields": [
 				{
 					"name": "keypair",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "requireClientCerts",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "trustBrowserCas",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "trustedCertificates",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "minVersion",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "cipherList",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -3359,11 +3191,11 @@
 			"fields": [
 				{
 					"name": "privateKey",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "certificateChain",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -3372,23 +3204,23 @@
 			"fields": [
 				{
 					"name": "style",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "forwardedProtoHeader",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "cfBlobHeader",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "injectRequestHeaders",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "injectResponseHeaders",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -3397,15 +3229,15 @@
 			"fields": [
 				{
 					"name": "options",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "tlsOptions",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "certificateHost",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -3414,11 +3246,11 @@
 			"fields": [
 				{
 					"name": "name",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "value",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -3427,11 +3259,11 @@
 			"fields": [
 				{
 					"name": "options",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "tlsOptions",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		}
@@ -3442,11 +3274,11 @@
 			"enumerants": [
 				{
 					"name": "http",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "custom",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -3455,11 +3287,11 @@
 			"enumerants": [
 				{
 					"name": "default",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "low",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -3468,28 +3300,25 @@
 			"enumerants": [
 				{
 					"name": "log",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "debug",
-					"annotations": [
-						[
-							"name",
-							"debug_"
-						]
-					]
+					"annotations": {
+						"name": "debug_"
+					}
 				},
 				{
 					"name": "info",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "error",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "warning",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -3498,120 +3327,81 @@
 			"enumerants": [
 				{
 					"name": "document",
-					"annotations": [
-						[
-							"name",
-							"Document"
-						]
-					]
+					"annotations": {
+						"name": "Document"
+					}
 				},
 				{
 					"name": "stylesheet",
-					"annotations": [
-						[
-							"name",
-							"Stylesheet"
-						]
-					]
+					"annotations": {
+						"name": "Stylesheet"
+					}
 				},
 				{
 					"name": "image",
-					"annotations": [
-						[
-							"name",
-							"Image"
-						]
-					]
+					"annotations": {
+						"name": "Image"
+					}
 				},
 				{
 					"name": "media",
-					"annotations": [
-						[
-							"name",
-							"Media"
-						]
-					]
+					"annotations": {
+						"name": "Media"
+					}
 				},
 				{
 					"name": "font",
-					"annotations": [
-						[
-							"name",
-							"Font"
-						]
-					]
+					"annotations": {
+						"name": "Font"
+					}
 				},
 				{
 					"name": "script",
-					"annotations": [
-						[
-							"name",
-							"Script"
-						]
-					]
+					"annotations": {
+						"name": "Script"
+					}
 				},
 				{
 					"name": "textTrack",
-					"annotations": [
-						[
-							"name",
-							"TextTrack"
-						]
-					]
+					"annotations": {
+						"name": "TextTrack"
+					}
 				},
 				{
 					"name": "xhr",
-					"annotations": [
-						[
-							"name",
-							"XHR"
-						]
-					]
+					"annotations": {
+						"name": "XHR"
+					}
 				},
 				{
 					"name": "fetch",
-					"annotations": [
-						[
-							"name",
-							"Fetch"
-						]
-					]
+					"annotations": {
+						"name": "Fetch"
+					}
 				},
 				{
 					"name": "eventSource",
-					"annotations": [
-						[
-							"name",
-							"EventSource"
-						]
-					]
+					"annotations": {
+						"name": "EventSource"
+					}
 				},
 				{
 					"name": "webSocket",
-					"annotations": [
-						[
-							"name",
-							"WebSocket"
-						]
-					]
+					"annotations": {
+						"name": "WebSocket"
+					}
 				},
 				{
 					"name": "manifest",
-					"annotations": [
-						[
-							"name",
-							"Manifest"
-						]
-					]
+					"annotations": {
+						"name": "Manifest"
+					}
 				},
 				{
 					"name": "other",
-					"annotations": [
-						[
-							"name",
-							"Other"
-						]
-					]
+					"annotations": {
+						"name": "Other"
+					}
 				}
 			]
 		},
@@ -3620,20 +3410,17 @@
 			"enumerants": [
 				{
 					"name": "blockable",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "optionallyBlockable",
-					"annotations": [
-						[
-							"name",
-							"optionally-blockable"
-						]
-					]
+					"annotations": {
+						"name": "optionally-blockable"
+					}
 				},
 				{
 					"name": "none",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -3642,23 +3429,23 @@
 			"enumerants": [
 				{
 					"name": "unknown",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "neutral",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "insecure",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "secure",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "info",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -3667,48 +3454,33 @@
 			"enumerants": [
 				{
 					"name": "veryLow",
-					"annotations": [
-						[
-							"name",
-							"VeryLow"
-						]
-					]
+					"annotations": {
+						"name": "VeryLow"
+					}
 				},
 				{
 					"name": "low",
-					"annotations": [
-						[
-							"name",
-							"Low"
-						]
-					]
+					"annotations": {
+						"name": "Low"
+					}
 				},
 				{
 					"name": "medium",
-					"annotations": [
-						[
-							"name",
-							"Medium"
-						]
-					]
+					"annotations": {
+						"name": "Medium"
+					}
 				},
 				{
 					"name": "high",
-					"annotations": [
-						[
-							"name",
-							"High"
-						]
-					]
+					"annotations": {
+						"name": "High"
+					}
 				},
 				{
 					"name": "veryHigh",
-					"annotations": [
-						[
-							"name",
-							"VeryHigh"
-						]
-					]
+					"annotations": {
+						"name": "VeryHigh"
+					}
 				}
 			]
 		},
@@ -3717,70 +3489,49 @@
 			"enumerants": [
 				{
 					"name": "unsafeUrl",
-					"annotations": [
-						[
-							"name",
-							"unsafe-url"
-						]
-					]
+					"annotations": {
+						"name": "unsafe-url"
+					}
 				},
 				{
 					"name": "noReferrerWhenDowngrade",
-					"annotations": [
-						[
-							"name",
-							"no-referrer-when-downgrade"
-						]
-					]
+					"annotations": {
+						"name": "no-referrer-when-downgrade"
+					}
 				},
 				{
 					"name": "noReferrer",
-					"annotations": [
-						[
-							"name",
-							"no-referrer"
-						]
-					]
+					"annotations": {
+						"name": "no-referrer"
+					}
 				},
 				{
 					"name": "origin",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "originWhenCrossOrigin",
-					"annotations": [
-						[
-							"name",
-							"origin-when-cross-origin"
-						]
-					]
+					"annotations": {
+						"name": "origin-when-cross-origin"
+					}
 				},
 				{
 					"name": "sameOrigin",
-					"annotations": [
-						[
-							"name",
-							"same-origin"
-						]
-					]
+					"annotations": {
+						"name": "same-origin"
+					}
 				},
 				{
 					"name": "strictOrigin",
-					"annotations": [
-						[
-							"name",
-							"strict-origin"
-						]
-					]
+					"annotations": {
+						"name": "strict-origin"
+					}
 				},
 				{
 					"name": "strictOriginWhenCrossOrigin",
-					"annotations": [
-						[
-							"name",
-							"strict-origin-when-cross-origin"
-						]
-					]
+					"annotations": {
+						"name": "strict-origin-when-cross-origin"
+					}
 				}
 			]
 		},
@@ -3789,19 +3540,19 @@
 			"enumerants": [
 				{
 					"name": "parser",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "script",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "preload",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "other",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -3810,39 +3561,39 @@
 			"enumerants": [
 				{
 					"name": "unknown",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "ok",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "exception",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "exceededCpu",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "killSwitch",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "daemonDown",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "scriptNotFound",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "canceled",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "exceededMemory",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -3851,23 +3602,23 @@
 			"enumerants": [
 				{
 					"name": "v8Uint8Array",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "v8ArrayBufferView",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "jsgBufferSource",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "kjDate",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "v8Function",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -3876,39 +3627,39 @@
 			"enumerants": [
 				{
 					"name": "configuration",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "v8Isolate",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "jsgLock",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "jsgTypeHandler",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "jsgUnimplemented",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "jsgVarargs",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "jsgSelfRef",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "v8FunctionCallbackInfo",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "v8PropertyCallbackInfo",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -3917,35 +3668,35 @@
 			"enumerants": [
 				{
 					"name": "encrypt",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "decrypt",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "sign",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "verify",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "deriveKey",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "deriveBits",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "wrapKey",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "unwrapKey",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -3954,27 +3705,27 @@
 			"enumerants": [
 				{
 					"name": "goodDefault",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "ssl3",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "tls1Dot0",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "tls1Dot1",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "tls1Dot2",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "tls1Dot3",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -3983,11 +3734,11 @@
 			"enumerants": [
 				{
 					"name": "host",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "proxy",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		}
@@ -3998,7 +3749,7 @@
 			"methods": [
 				{
 					"name": "txn",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -4007,7 +3758,7 @@
 			"methods": [
 				{
 					"name": "getStage",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -4016,11 +3767,11 @@
 			"methods": [
 				{
 					"name": "commit",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "rollback",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -4029,43 +3780,43 @@
 			"methods": [
 				{
 					"name": "get",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "put",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "delete",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "list",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "getMultiple",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "deleteAll",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "getAlarm",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "setAlarm",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "deleteAlarm",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "rename",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		},
@@ -4074,11 +3825,11 @@
 			"methods": [
 				{
 					"name": "values",
-					"annotations": []
+					"annotations": {}
 				},
 				{
 					"name": "end",
-					"annotations": []
+					"annotations": {}
 				}
 			]
 		}
