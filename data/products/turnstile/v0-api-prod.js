@@ -14,20 +14,20 @@
 	function P(e) {
 		return e > 0 && e < 9e5
 	}
-	var ae = /^[0-9A-Za-z_-]{3,100}$/;
+	var oe = /^[0-9A-Za-z_-]{3,100}$/;
 
-	function X(e) {
-		return ae.test(e)
-	}
-	var oe = /^[a-z0-9_-]{0,32}$/i;
-
-	function J(e) {
+	function Y(e) {
 		return oe.test(e)
 	}
-	var se = /^[a-z0-9_-]{0,255}$/i;
+	var se = /^[a-z0-9_-]{0,32}$/i;
 
-	function K(e) {
+	function X(e) {
 		return se.test(e)
+	}
+	var le = /^[a-z0-9_-]{0,255}$/i;
+
+	function J(e) {
+		return le.test(e)
 	}
 
 	function O(e) {
@@ -37,15 +37,15 @@
 	function W(e) {
 		return E(["auto", "manual", "never"], e)
 	}
-	var le = ".cf-turnstile",
-		de = ".cf-challenge",
-		ce = ".g-recaptcha",
-		ue = "cf_challenge_response",
-		fe = "cf-turnstile-response",
-		pe = "g-recaptcha-response",
-		ge = 8e3,
-		k = !1,
-		ee = !1;
+	var de = ".cf-turnstile",
+		ce = ".cf-challenge",
+		ue = ".g-recaptcha",
+		fe = "cf_challenge_response",
+		pe = "cf-turnstile-response",
+		ge = "g-recaptcha-response",
+		me = 8e3,
+		_ = !1,
+		Q = !1;
 
 	function d(e) {
 		let l = `[Cloudflare Turnstile] ${e}.`;
@@ -56,54 +56,57 @@
 		console.warn(`[Cloudflare Turnstile] ${e}.`)
 	}
 
-	function me(e) {
+	function he(e) {
 		d(`Failed with code: ${e}`)
 	}
 
 	function D(e) {
-		re(e, "")
+		ne(e, "")
 	}
 
-	function te() {
-		let e = [le, de];
-		k && e.push(ce);
+	function ee() {
+		let e = [de, ce];
+		_ && e.push(ue);
 		let l = document.querySelectorAll(e.join(", "));
 		for (let o = 0; o < l.length; o++) T.render(l[o])
 	}
-	var F;
+	var te = [],
+		re = !1;
 
-	function Z() {
-		F && F(), te()
+	function K() {
+		re = !0;
+		for (let e of te) e();
+		ee()
 	}
 	var A = "cf-chl-widget-";
 
-	function Q(e) {
+	function Z(e) {
 		return e.startsWith(A) ? e.substring(A.length) : null
 	}
 
-	function _(e) {
+	function k(e) {
 		return `${A}${e}`
 	}
 
-	function re(e, l) {
+	function ne(e, l) {
 		let o = document.getElementById(`${e}_response`);
 		o !== null && (o.value = l);
 		let u = document.getElementById(`${e}_legacy_response`);
-		if (u !== null && (u.value = l), k) {
+		if (u !== null && (u.value = l), _) {
 			let f = document.getElementById(`${e}_g_response`);
 			f !== null && (f.value = l)
 		}
 	}
 
-	function he(e) {
+	function ye(e) {
 		return e.origin ? e.origin === "https://challenges.cloudflare.com" || e.origin === "https://challenges-staging.cloudflare.com" : !0
 	}
 
-	function ye(e) {
+	function Ee(e) {
 		return e.startsWith("0x4AAAAAAAAAA") || e.startsWith("0x4AAAAAAAAj")
 	}
 
-	function Ee() {
+	function Ie() {
 		let e = window;
 		for (; e && e.top !== e && !e.location.href.startsWith("http");) e = e.top;
 		return e.location.href
@@ -111,87 +114,87 @@
 	var T = function() {
 		let e = new Map,
 			l = 0,
-			o = function(i) {
+			o = function(r) {
 				var t;
-				let r = i.data;
-				if (r.source !== "cloudflare-challenge") return;
-				if (!he(i)) {
-					d("Ignored message from wrong origin: " + i.origin);
+				let n = r.data;
+				if (n.source !== "cloudflare-challenge") return;
+				if (!ye(r)) {
+					d("Ignored message from wrong origin: " + r.origin);
 					return
 				}
-				if (!r.widgetId || !e.has(r.widgetId)) return;
-				let a = _(r.widgetId),
-					s = e.get(r.widgetId);
-				switch (r.event) {
+				if (!n.widgetId || !e.has(n.widgetId)) return;
+				let a = k(n.widgetId),
+					s = e.get(n.widgetId);
+				switch (n.event) {
 					case "init": {
-						let n = document.getElementById(a);
-						if (!n) {
+						let i = document.getElementById(a);
+						if (!i) {
 							d(`Cannot initialize Widget, Element not found (#${a}).`);
 							return
 						}
-						let c = r.mode,
+						let c = n.mode,
 							g = (t = s.params.size) != null ? t : "normal";
 						switch (c) {
 							case "non-interactive":
 							case "managed":
 								switch (g) {
 									case "compact":
-										n.style.width = "130px", n.style.height = "120px";
+										i.style.width = "130px", i.style.height = "120px";
 										break;
 									case "invisible":
 										d(`Invalid value for parameter "size", expected "${"compact"}" or "${"normal"}", got "${g}"`);
 									case "normal":
-										n.style.width = "300px", n.style.height = "65px";
+										i.style.width = "300px", i.style.height = "65px";
 										break
 								}
 								break;
 							case "invisible":
-								n.style.width = "0", n.style.height = "0", n.style.position = "absolute";
+								i.style.width = "0", i.style.height = "0", i.style.position = "absolute";
 								break;
 							default:
 								d(`Invalid value for parameter "mode", expected "${"non-interactive"}", "${"managed"}" or "${"invisible"}", got "${c}"`);
 								return
 						}
-						n.style.display = "";
+						i.style.display = "";
 						break
 					}
 					case "complete": {
-						e.get(r.widgetId).response = r.token, re(a, r.token);
-						let n = s.cbSuccess;
-						n && n(r.token);
+						e.get(n.widgetId).response = n.token, ne(a, n.token);
+						let i = s.cbSuccess;
+						i && i(n.token);
 						break
 					}
 					case "fail": {
-						r.code && me(r.code), D(a);
-						let n = s.cbError;
-						n && n();
+						n.code && he(n.code), D(a);
+						let i = s.cbError;
+						i && i();
 						break
 					}
 					case "tokenExpired": {
-						let n = r.token,
+						let i = n.token,
 							c = s.cbExpired;
-						c && c(n), s.params["refresh-expired"] === "auto" && !s.isResetting && h(a);
+						c && c(i), s.params["refresh-expired"] === "auto" && !s.isResetting && h(a);
 						break
 					}
 					case "timeout": {
 						D(a);
-						let n = s.cbTimeout;
-						n && n();
+						let i = s.cbTimeout;
+						i && i();
 						break
 					}
 					case "refreshRequest": {
-						h(r.widgetId);
+						h(n.widgetId);
 						break
 					}
 					case "requestExtraParams": {
-						let n = document.querySelector(`#${a}`);
-						s.isResetting = !1, n.contentWindow.postMessage({
+						let i = document.querySelector(`#${a}`);
+						s.isResetting = !1, i.contentWindow.postMessage({
 							source: "cloudflare-challenge",
-							widgetId: r.widgetId,
+							widgetId: n.widgetId,
 							event: "extraParams",
 							action: s.action,
 							cData: s.cData,
-							url: Ee(),
+							url: Ie(),
 							retry: s.params.retry,
 							"retry-interval": s.params["retry-interval"],
 							"refresh-expired": s.params["refresh-expired"]
@@ -203,87 +206,91 @@
 		window.addEventListener("message", o);
 
 		function u() {
-			let i;
+			let r;
 			do {
-				i = "";
-				let r = "abcdefghijklmnopqrstuvwxyz0123456789",
-					a = r.length;
-				for (let s = 0; s < 5; s++) i += r.charAt(Math.floor(Math.random() * a))
-			} while (e.has(i));
-			return i
+				r = "";
+				let n = "abcdefghijklmnopqrstuvwxyz0123456789",
+					a = n.length;
+				for (let s = 0; s < 5; s++) r += n.charAt(Math.floor(Math.random() * a))
+			} while (e.has(r));
+			return r
 		}
 
-		function f(i) {
-			if (typeof i == "string") {
-				if (i.startsWith(A) && (i = Q(i)), e.has(i)) return i;
+		function f(r) {
+			if (typeof r == "string") {
+				if (r.startsWith(A) && (r = Z(r)), e.has(r)) return r;
 				try {
-					let r = document.querySelector(i);
-					return r ? f(r) : null
-				} catch (r) {
+					let n = document.querySelector(r);
+					return n ? f(n) : null
+				} catch (n) {
 					return null
 				}
 			}
-			if (i instanceof HTMLElement) {
-				let r = i.querySelector("iframe");
-				return r ? Q(r.id) : null
+			if (r instanceof HTMLElement) {
+				let n = r.querySelector("iframe");
+				return n ? Z(n.id) : null
 			}
-			return i || e.size === 0 ? null : e.keys().next().value
+			return r || e.size === 0 ? null : e.keys().next().value
 		}
 
-		function h(i) {
-			let r = f(i);
-			if (!r) {
-				d(`Nothing to reset found for ${i}`);
+		function h(r) {
+			let n = f(r);
+			if (!n) {
+				d(`Nothing to reset found for ${r}`);
 				return
 			}
-			let a = e.get(r);
+			let a = e.get(n);
 			a && (a.isResetting = !0);
-			let s = _(r),
+			let s = k(n),
 				t = document.querySelector(`#${s}`);
 			t.src += "", D(s)
 		}
 
-		function I(i) {
-			let r = f(i);
-			if (!r || !e.has(r)) {
-				p(`Nothing to remove found for ${i}`);
+		function I(r) {
+			let n = f(r);
+			if (!n || !e.has(n)) {
+				p(`Nothing to remove found for ${r}`);
 				return
 			}
-			let a = _(r),
+			let a = k(n),
 				s = [`iframe#${a}`, `input#${a}_response`, `input#${a}_legacy_response`, `input#${a}_g_response`],
 				t = document.querySelectorAll(s.join(", "));
-			for (let n = 0; n < t.length; ++n) t[n].remove();
-			e.delete(r)
+			for (let i = 0; i < t.length; ++i) t[i].remove();
+			e.delete(n)
 		}
 		return {
-			implicitRender: te,
-			ready(i) {
-				if (ee) throw p("turnstile.ready() would break if called *before* the Turnstile api.js script is loaded by visitors"), new Error("Remove async/defer from the Turnstile api.js script tag before using turnstile.ready().");
-				typeof i != "function" && d(`turnstile.ready() expected a "function" argument, got "${typeof onloadCb}"`), F = i
+			implicitRender: ee,
+			ready(r) {
+				if (Q) throw p("turnstile.ready() would break if called *before* the Turnstile api.js script is loaded by visitors"), new Error("Remove async/defer from the Turnstile api.js script tag before using turnstile.ready().");
+				if (typeof r != "function" && d(`turnstile.ready() expected a "function" argument, got "${typeof r}"`), re) {
+					r();
+					return
+				}
+				te.push(r)
 			},
-			render(i, r) {
-				var z, U, V, B, j, G, q, Y;
+			render(r, n) {
+				var H, z, U, V, B, j, G, q;
 				let a;
-				if (typeof i == "string") try {
-						if (a = document.querySelector(i), !a) {
-							d(`Unable to find a container for "${i}"`);
+				if (typeof r == "string") try {
+						if (a = document.querySelector(r), !a) {
+							d(`Unable to find a container for "${r}"`);
 							return
 						}
 					} catch (m) {
-						d(`Invalid type for  "container", expected "selector" or an implementation of "HTMLElement", got "${i}"`);
+						d(`Invalid type for  "container", expected "selector" or an implementation of "HTMLElement", got "${r}"`);
 						return
-					} else if (i instanceof HTMLElement) a = i;
+					} else if (r instanceof HTMLElement) a = r;
 					else {
 						d('Invalid type for parameter "container", expected "string" or an implementation of "HTMLElement"');
 						return
-					} let s = Ie(a),
-					t = Object.assign(s, r),
+					} let s = ve(a),
+					t = Object.assign(s, n),
 					{
-						action: n,
+						action: i,
 						cData: c
 					} = t,
 					g = t.sitekey;
-				t.theme = (z = t.theme) != null ? z : "auto", t.retry = (U = t.retry) != null ? U : "auto", t["retry-interval"] = (V = t["retry-interval"]) != null ? V : ge, t.size = (B = t.size) != null ? B : "normal";
+				t.theme = (H = t.theme) != null ? H : "auto", t.retry = (z = t.retry) != null ? z : "auto", t["retry-interval"] = (U = t["retry-interval"]) != null ? U : me, t.size = (V = t.size) != null ? V : "normal";
 				let v = t.callback,
 					L = t["expired-callback"],
 					x = t["timeout-callback"],
@@ -292,7 +299,7 @@
 					d(`Invalid or missing type for parameter "sitekey", expected "string", got "${typeof g}"`);
 					return
 				}
-				if (!X(g)) {
+				if (!Y(g)) {
 					d(`Invalid input for parameter "sitekey", got "${g}"`);
 					return
 				}
@@ -312,38 +319,38 @@
 					p(`Invalid data-retry-interval value: "${t["retry-interval"]}, expected an integer value > 0 and < 900000"`);
 					return
 				}
-				let $ = (j = t["refresh-expired"]) != null ? j : "auto";
+				let $ = (B = t["refresh-expired"]) != null ? B : "auto";
 				if (W($)) t["refresh-expired"] = $;
 				else {
 					d(`Invalid type for parameter "refressh-expired", expected never|manual|auto, got "${$}" ${typeof $}`);
 					return
 				}
-				let H = a.getElementsByTagName("iframe")[0];
-				H && H.id.startsWith(A) && I(a);
+				let F = a.getElementsByTagName("iframe")[0];
+				F && F.id.startsWith(A) && I(a);
 				let y = document.createElement("iframe");
-				if (n !== void 0 && typeof n != "string") {
-					d(`Invalid type for parameter "action", expected "string", got "${typeof n}"`);
+				if (i !== void 0 && typeof i != "string") {
+					d(`Invalid type for parameter "action", expected "string", got "${typeof i}"`);
 					return
 				}
-				if (n = n === void 0 ? null : n, !J(n)) {
-					d(`Invalid input for parameter "action", got "${n}"`);
+				if (i = i === void 0 ? null : i, !X(i)) {
+					d(`Invalid input for parameter "action", got "${i}"`);
 					return
 				}
 				if (c !== void 0 && typeof c != "string") {
 					d(`Invalid type for parameter "cData", expected "string", got "${typeof c}"`);
 					return
 				}
-				if (!K(c)) {
+				if (!J(c)) {
 					d(`Invalid input for parameter "cData", got "${c}"`);
 					return
 				}
 				c = c === void 0 ? null : c;
-				let ne = "https://challenges.cloudflare.com",
+				let ie = "https://challenges.cloudflare.com",
 					M = u(),
-					b = _(M);
+					b = k(M);
 				l++, e.set(M, {
 					idx: l,
-					action: n,
+					action: i,
 					cData: c,
 					cbSuccess: v,
 					cbError: R,
@@ -352,43 +359,43 @@
 					params: t,
 					isResetting: !1
 				}), y.style.display = "none", y.style.border = "none", y.style.overflow = "hidden";
-				let ie = "h/g/";
-				if (y.setAttribute("src", `${ne}/cdn-cgi/challenge-platform/${ie}turnstile/if/ov2/av0/${M}/${g}/${t.theme}/${t.size}`), y.id = b, y.tabIndex = (G = t.tabindex) != null ? G : 0, y.title = "Widget containing a Cloudflare security challenge", a.appendChild(y), (q = t["response-field"]) != null ? q : !0) {
+				let ae = "h/b/";
+				if (y.setAttribute("src", `${ie}/cdn-cgi/challenge-platform/${ae}turnstile/if/ov2/av0/${M}/${g}/${t.theme}/${t.size}`), y.id = b, y.tabIndex = (j = t.tabindex) != null ? j : 0, y.title = "Widget containing a Cloudflare security challenge", a.appendChild(y), (G = t["response-field"]) != null ? G : !0) {
 					let m = document.createElement("input");
-					if (m.type = "hidden", m.name = (Y = t["response-field-name"]) != null ? Y : fe, m.id = `${b}_response`, a.appendChild(m), typeof t["response-field-name"] != "string" && ye(g)) {
+					if (m.type = "hidden", m.name = (q = t["response-field-name"]) != null ? q : pe, m.id = `${b}_response`, a.appendChild(m), typeof t["response-field-name"] != "string" && Ee(g)) {
 						let C = document.createElement("input");
-						C.type = "hidden", C.name = ue, C.id = `${b}_legacy_response`, a.appendChild(C)
+						C.type = "hidden", C.name = fe, C.id = `${b}_legacy_response`, a.appendChild(C)
 					}
 				}
-				if (k) {
+				if (_) {
 					let m = document.createElement("input");
-					m.type = "hidden", m.name = pe, m.id = `${b}_g_response`, a.appendChild(m)
+					m.type = "hidden", m.name = ge, m.id = `${b}_g_response`, a.appendChild(m)
 				}
 				return b
 			},
 			reset: h,
 			remove: I,
-			getResponse(i) {
-				if (typeof i == "undefined") {
+			getResponse(r) {
+				if (typeof r == "undefined") {
 					let a, s = -1;
-					for (let [t, n] of e) s < n.idx && (a = t, s = n.idx);
+					for (let [t, i] of e) s < i.idx && (a = t, s = i.idx);
 					if (s === -1) {
 						d("No widget found!");
 						return
 					}
 					return e.get(a).response
 				}
-				let r = f(i);
-				if (!r) {
-					d(`Could not find widget for getResponse(${i})`);
+				let n = f(r);
+				if (!n) {
+					d(`Could not find widget for getResponse(${r})`);
 					return
 				}
-				return e.get(r).response
+				return e.get(n).response
 			}
 		}
 	}();
 
-	function Ie(e) {
+	function ve(e) {
 		var R;
 		let o = {
 				sitekey: e.getAttribute("data-sitekey")
@@ -401,18 +408,18 @@
 		h && (O(h) ? o.size = h : p(`Unknown data-size value: "${h}"`));
 		let I = e.getAttribute("data-base-url");
 		typeof I == "string" && (o["base-url"] = I);
-		let i = e.getAttribute("data-action");
-		typeof i == "string" && (o.action = i);
-		let r = e.getAttribute("data-cdata");
-		typeof r == "string" && (o.cData = r);
+		let r = e.getAttribute("data-action");
+		typeof r == "string" && (o.action = r);
+		let n = e.getAttribute("data-cdata");
+		typeof n == "string" && (o.cData = n);
 		let a = e.getAttribute("data-retry");
 		a && (N(a) ? o.retry = a : p(`Unknown data-retry value: "${a}"`));
 		let s = +e.getAttribute("data-retry-interval");
 		s && (P(s) ? o["retry-interval"] = s : p(`Invalid data-retry-interval value: "${s}, expected an integer value > 0 and < 900000"`));
 		let t = e.getAttribute("data-refresh-expired");
 		t && (W(t) ? o["refresh-expired"] = t : p(`Unknown data-refresh-expired value: "${t}, expected either: never, auto or manual.`));
-		let n = e.getAttribute("data-error-callback");
-		n && window[n] && (o["error-callback"] = window[n]);
+		let i = e.getAttribute("data-error-callback");
+		i && window[i] && (o["error-callback"] = window[i]);
 		let c = e.getAttribute("data-callback");
 		c && window[c] && (o.callback = window[c]);
 		let g = e.getAttribute("data-expired-callback");
@@ -425,7 +432,7 @@
 		return x && (o["response-field-name"] = x), o
 	}
 
-	function ve() {
+	function be() {
 		let e = /\/turnstile\/v0(\/.*)?\/api\.js/,
 			l = document.currentScript;
 		if (e.test(l.src)) return l;
@@ -436,17 +443,17 @@
 		}
 	}
 
-	function be() {
-		let e = ve();
+	function we() {
+		let e = be();
 		if (!e) return d("Could not find Turnstile script tag, some features may not be available"), null;
-		(e.async || e.defer) && (ee = !0);
+		(e.async || e.defer) && (Q = !0);
 		let o = e.src.split("?");
 		return o.length > 1 ? new URLSearchParams(o[1]) : new URLSearchParams
 	}
-	var w = be();
+	var w = we();
 	if (w) {
 		let e = w.get("compat");
-		(e == null ? void 0 : e.toLowerCase()) === "recaptcha" ? window.grecaptcha ? p("grecaptcha is already defined. The compatibility layer will not be enabled") : (p("Compatibility layer enabled"), k = !0, window.grecaptcha = T): e !== null && p(`Unknown value for api.js?compat: "${e}", ignoring`), w.forEach(function(o, u) {
+		(e == null ? void 0 : e.toLowerCase()) === "recaptcha" ? window.grecaptcha ? p("grecaptcha is already defined. The compatibility layer will not be enabled") : (p("Compatibility layer enabled"), _ = !0, window.grecaptcha = T): e !== null && p(`Unknown value for api.js?compat: "${e}", ignoring`), w.forEach(function(o, u) {
 			E(["onload", "compat", "render"], u) || p(`Unknown parameter passed to api.js: "?${u}=...", ignoring`)
 		});
 		let l = w.get("onload");
@@ -454,10 +461,10 @@
 			typeof window[l] == "function" && window[l]()
 		}, 0)
 	}
-	var we = "turnstile" in window;
-	we ? p("Turnstile already has been loaded. Is Turnstile imported multiple times?") : ("Proxy" in window ? window.cfChallengeAPI = new Proxy(T, {
+	var Te = "turnstile" in window;
+	Te ? p("Turnstile already has been loaded. Is Turnstile imported multiple times?") : ("Proxy" in window ? window.cfChallengeAPI = new Proxy(T, {
 		get(e, l) {
 			return p("window.cfChallengeAPI is deprecated, please move to window.turnstile"), e[l]
 		}
-	}) : window.cfChallengeAPI = T, window.turnstile = T, w.get("render") !== "explicit" && (document.readyState === "complete" || document.readyState === "interactive" ? setTimeout(Z, 0) : window.addEventListener("DOMContentLoaded", Z)));
+	}) : window.cfChallengeAPI = T, window.turnstile = T, w.get("render") !== "explicit" && (document.readyState === "complete" || document.readyState === "interactive" ? setTimeout(K, 0) : window.addEventListener("DOMContentLoaded", K)));
 })();
