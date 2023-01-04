@@ -1,0 +1,137 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Description from "../components/Description.astro";
+import MainHeading from "../components/MainHeading.astro";
+import SubHeading from "../components/SubHeading.astro";
+import workerdData from "../../../data/workerd/parsed.json";
+import Table from "../components/Table.astro";
+
+import {marked} from 'marked';
+
+
+interface FlagInfo {
+	name: string;
+	annotations: {
+		compatEnableFlag?: string | null;
+		compatDisableFlag?: string | null;
+		compatEnableDate?: string | null;
+		experimental?: string | null;
+
+	}
+}
+
+let flagsInfo = null;
+for(const struct of workerdData.structs){
+	if(struct.name.endsWith('compatibility-date.capnp:CompatibilityFlags')){
+		flagsInfo = struct.fields;
+		break;
+	}
+}
+if(!flagsInfo){ throw new Error('Could not find flags info!'); }
+
+const remoteFlagInfoRes = await fetch('https://developers.cloudflare.com/workers/platform/compatibility-dates.json');
+const remoteFlagInfo = await remoteFlagInfoRes.json();
+
+const flags = [];
+for(const flag of flagsInfo as FlagInfo[]){
+	const enableFlag = flag.annotations?.compatEnableFlag;
+	if(!enableFlag){ continue; }
+	const remoteFlag = remoteFlagInfo.find(rf => rf.enable_flag === enableFlag);
+
+	const flagInfo = {
+		name: flag.name,
+		friendly_name: null,
+		description: null,
+		disable_flag: flag.annotations?.compatDisableFlag ?? null,
+		enable_date: flag.annotations?.compatEnableDate ?? null,
+		enable_flag: flag.annotations?.compatEnableFlag ?? null,
+		experimental: flag.annotations?.experimental === "true",
+		publicly_documented: false,
+	};
+	if(remoteFlag){
+		flagInfo.description = marked.parse(remoteFlag.description);
+		flagInfo.experimental = remoteFlag.experimental;
+		flagInfo.friendly_name = remoteFlag.name;
+		flagInfo.publicly_documented = true;
+	}
+	flags.push(flagInfo);
+}
+
+console.log(flags);
+
+---
+
+<Layout
+	title="workerd - Cloudflare Datamining"
+	description="Automated datamining from workerd, the Cloudflare Workers runtime. Including compatibility flags."
+>
+	<MainHeading title="workerd" />
+	<SubHeading category="Compatibility Flags" />
+	<Description>
+		<p>
+			Compability Flags allow you opt into changes to the Workers runtime. See the <a href="https://developers.cloudflare.com/workers/platform/compatibility-dates/" target="_blank" rel="noopener">official Cloudflare documentation</a> for more information.
+		</p>
+		<p>
+			These flags are automatically sourced from the workerd sourcecode, so may list flags that are not yet available.
+		</p>
+	</Description>
+	<Table
+		headers = {["Name", "Default Date", "Enable Flag", "Disable Flag", "Experimental"]}
+		data = {flags.reverse().map(flag => [
+			flag.friendly_name ?? flag.name,
+			flag.enable_date ?? 'N/A',
+			flag.enable_flag ?? 'N/A',
+			flag.disable_flag ?? 'N/A',
+			flag.experimental ? 'Experimental' : 'Stable',
+		])}
+	></Table>
+
+	{flags.map(flag => (
+		<>
+			<h3 class="mt-4 break-all text-lg font-semibold">{flag.friendly_name ?? flag.name}</h3>
+			<div class="prose dark:prose-invert mt-2 max-w-full">
+				<dl>
+					{
+						flag.enable_date &&
+					<div class="px-6 sm:grid sm:grid-cols-3 sm:gap-4">
+						<dt>Default as of</dt>
+						<dd class="sm:col-span-2"><code>{flag.enable_date}</code></dd>
+					</div>
+					}
+					{
+						flag.enable_flag &&
+					<div class="px-6 sm:grid sm:grid-cols-3 sm:gap-4">
+						<dt>Enable flag</dt>
+						<dd class="sm:col-span-2"><code>{flag.enable_flag}</code></dd>
+					</div>
+					}
+					{
+						flag.disable_flag &&
+					<div class="px-6 sm:grid sm:grid-cols-3 sm:gap-4">
+						<dt>Disable flag</dt>
+						<dd class="sm:col-span-2"><code>{flag.disable_flag}</code></dd>
+					</div>
+					}
+					{
+						flag.experimental &&
+					<div class="px-6 sm:grid sm:grid-cols-3 sm:gap-4">
+						<dt>Experimental</dt>
+						<dd class="sm:col-span-2">Yes</dd>
+					</div>
+					}
+					{
+
+						<div class="px-6 sm:grid sm:grid-cols-3 sm:gap-4">
+							<dt>Publicly Documented</dt>
+							<dd class="sm:col-span-2">{flag.publicly_documented && 'Yes' || 'No'}</dd>
+						</div>
+					}
+				</dl>
+				{flag.description && <p set:html={flag.description}></p>}
+			</div>
+
+		</>
+	))}
+
+</Layout>
+
