@@ -1,0 +1,119 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-44.png" class="kg-image" alt="The Cloudflare API now uses OpenAPI schemas"></figure>
+	<p>今天，我们宣布 <a href="https://github.com/cloudflare/api-schemas" target="_blank">Cloudflare API 的 OpenAPI 模式</a>全面上市。这些模式通过 GitHub 发布，并将定期更新 Cloudflare 添加和更新的 API。OpenAPI 是广泛采用的标准，用于以机器可读的格式定义 API。OpenAPI 模式让我们的 API 能够插入各种工具中，为我们自己、也为客户加速开发流程。对内部而言，我们将可以更轻松地维护和更新 API。在讨论这些好处之前，我们先介绍一些基础知识。</p>
+	<h2 id="-openapi-">什么是 OpenAPI？</h2>
+	<p>互联网大部分内容构建在 API（应用程序编程接口）基础之上，或将 API 作为服务提供给世界各地的客户。计算机因此能够以一种标准化的方式相互对话。OpenAPI 是一个广泛采用的关于如何定义 API 的标准，让其他机器能够可靠地解析并以有趣的方式使用这些定义。Cloudflare 自己的 <a href="https://developers.cloudflare.com/api-shield/security/schema-validation/" target="_blank">API Shield 产品</a>使用 OpenAPI 模式来提供模式验证，以确保只有符合语法规则的 API 请求会发送到您的源站。</p>
+	<p>Cloudflare 本身有一个 API，客户可以利用它从互联网的其他地方连接我们的安全和性能产品。我们如何定义我们自己的 API？过去我们使用的标准为 <a href="https://github.com/json-schema-org/json-hyperschema-spec" target="_blank">JSON Hyper-Schema</a>。该标准为我们提供了很好的服务，但随着时间的推移，我们希望采用更多既能使我们内部受益、又能减化客户工作的工具。过去几年中，OpenAPI 社区蓬勃发展，提供了许多 JSON Hyper-Schema 无法提供的功能，我们将在后面一一讨论。现在我们使用的是 OpenAPI。</p>
+	<p>您可<a href="https://oai.github.io/Documentation/start-here.html" target="_blank">在此</a>进一步了解 OpenAPI 本身。有一个充分理解的开放标准来定义我们的 API，因此可以使用共享工具和基础设施来读取这些标准定义。我们来看几个示例。</p>
+	<h2 id="-cloudflare-openapi-">使用 Cloudflare 的 OpenAPI 模式</h2>
+	<p>大多数客户并不需要自己使用模式来了解其价值。第一个利用 OpenAPI 模式的系统是我们<a href="https://blog.cloudflare.com/building-a-better-developer-experience-through-api-documentation/">今天宣布的</a><a href="https://developers.cloudflare.com/api/" target="_blank">新 API 文档</a>。因为我们现在有 OpenAPI 模式，所以我们利用开源工具 <a href="https://stoplight.io/open-source/elements" target="_blank">Stoplight Elements</a> 来帮助生成这个新的文档站点。我们因此可以淘汰以前那个难以维护的定制站点。此外，Cloudflare 的许多工程师都熟悉 OpenAPI，因此团队可以更快地编写新模式，而且在定义新 API 时使用团队理解的标准，出错可能性降低。</p>
+	<p>不过，有一些方法可以直接利用这些模式。OpenAPI 社区有大量工具，只需要一套模式就可以使用。模拟 API 和库的生成便是两个示例。</p>
+	<h3 id="-cloudflare-api">模拟 Cloudflare 的 API</h3>
+	<p>假设您有调用 Cloudflare 的 API 代码，您希望能够在本地轻松运行单元测试或在您的 CI/CD 管道中运行集成测试。虽然您可以在每次运行时直接调用 Cloudflare 的 API，但由于以下原因，您可能并不希望这样做。首先，您可能想频繁运行测试，管理资源的创建和拆除成为一件痛苦的事。此外，在许多此类测试中，您不一定是要验证 Cloudflare 的逻辑，而是验证您自己的系统的行为。在这种情况下，模拟 Cloudflare 的 API 将是理想的选择，因为您可以确信您没有违反 Cloudflare 的 API 合约，但不需要担心管理真实资源的细节问题。此外，您可以模拟不同的场景，例如限制速率或接收 500 次错误。让您能够针对通常很罕见、但最终会产生严重影响的情况测试您的代码。</p>
+	<p>例如，可以使用 <a href="https://docs.stoplight.io/docs/prism/83dbbd75532cf-http-mocking" target="_blank">Stoplight Prism</a> 模拟 Cloudflare 的 API，以达到测试目的。利用 Cloudflare 的 API 模式的本地副本，您可以运行以下命令来启动一个本地模拟服务器：</p><!--kg-card-begin: markdown-->
+	<pre><code>$ docker run --init --rm \
+  -v /home/user/git/api-schemas/openapi.yaml:/tmp/openapi.yaml \
+  -p 4010:4010 stoplight/prism:4 \
+  mock -h 0.0.0.0 /tmp/openapi.yaml
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>然后，您可以向模拟服务器发送请求，以验证使用 Cloudflare 的 API 没有违反本地的 API 合约。</p><!--kg-card-begin: markdown-->
+	<pre><code>$ curl -sX PUT localhost:4010/zones/f00/activation_check \
+  -Hx-auth-email:foo@bar.com -Hx-auth-key:foobarbaz | jq
+{
+  "success": true,
+  "errors": [],
+  "messages": [],
+  "result": {
+    "id": "023e105f4ecef8ad9ca31a8372d0c353"
+  }
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>这意味着开发速度更快，测试运行时间更短，同时还能在合并或部署之前及早发现 API 合约问题。</p>
+	<h3 id="-">库的生成</h3>
+	<p>Cloudflare 拥有许多编程语言的库，例如 <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest" target="_blank">Terraform</a> 和 <a href="https://github.com/cloudflare/cloudflare-go" target="_blank">Go</a>，但我们并不支持所有可能的编程语言。幸运的是，使用 <a href="https://github.com/OpenAPITools/openapi-generator" target="_blank">OpenAPI 生成器</a>等工具，您可以输入 Cloudflare 的 API 模式并生成各种语言的库，然后在您的代码中使用这些库与 Cloudflare 的 API 对话。例如，您可以使用以下命令生成一个 Java 库：</p><!--kg-card-begin: markdown-->
+	<pre><code>git clone https://github.com/openapitools/openapi-generator
+cd openapi-generator
+mvn clean package
+java -jar modules/openapi-generator-cli/target/openapi-generator-cli.jar generate \
+   -i https://raw.githubusercontent.com/cloudflare/api-schemas/main/openapi.yaml \
+   -g java \
+   -o /var/tmp/java_api_client
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>然后开始在您的 Java 代码中使用该客户端与 Cloudflare 的 API 对话。</p>
+	<h2 id="cloudflare-openapi">Cloudflare 如何过渡到 OpenAPI</h2>
+	<p>如前所述，我们之前使用 JSON Hyper-Chema 来定义我们的 API。我们在这些模式中定义了约 600 个端点。这是使用 JSON Hyper-Chema 标准的端点片段。</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-json">{
+      "title": "List Zones",
+      "description": "List, search, sort, and filter your zones.",
+      "rel": "collection",
+      "href": "zones",
+      "method": "GET",
+      "schema": {
+        "$ref": "definitions/zone.json#/definitions/collection_query"
+      },
+      "targetSchema": {
+        "$ref": "#/definitions/response_collection"
+      },
+      "cfOwnership": "www",
+      "cfPlanAvailability": {
+        "free": true,
+        "pro": true,
+        "business": true,
+        "enterprise": true
+      },
+      "cfPermissionsRequired": {
+        "enum": [
+          "#zone:read"
+        ]
+      }
+    }
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>我们来看看使用 OpenAPI 标准的同一端点。</p><!--kg-card-begin: markdown-->
+	<pre><code>/zones:
+    get:
+      description: List, search, sort, and filter your zones.
+      operationId: zone-list-zones
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/components-schemas-response_collection'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: List Zones response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/components-schemas-response_collection'
+          description: List Zones response
+      security:
+      - api_email: []
+        api_key: []
+      summary: List Zones
+      tags:
+      - Zone
+      x-cfPermissionsRequired:
+        enum:
+        - '#zone:read'
+      x-cfPlanAvailability:
+        business: true
+        enterprise: true
+        free: true
+        pro: true
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>可以看到，两者看起来十分相似，而且大部分信息都相同，包括方法类型、描述以及请求和响应定义（虽然使用的是 $refs 链接）。从一个模式迁移到另一个模式的价值不在于我们对模式本身的定义的更改，而在于这些模式的用途。许多工具可以解析后者（即 OpenAPI），而能够解析前者（即 JSON Hyper-Schema）的工具则少得多。</p>
+	<p>如果这个 API 是构成 Cloudflare API 的全部内容，那么只需手动将 JSON Hyper-Schema 转换为 OpenAPI 模式，即可完成任务。然而，手动转换 600 次将是一项浩大的工程。鉴于团队会不断增加新的端点，不可能长期维持手动转换。还有一种情况是，我们现有的 API 文档使用的是现有的 JSON Hyper-Schema，这意味着我们需要在任何过渡期间始终将两种模式都保持最新。因此必须寻找更好的方法。</p>
+	<h3 id="--1">自动转换</h3>
+	<p>既然 JSON Hyper-Schema 和 OpenAPI 都是标准，那应该可以将一种格式的文件转换为另一种格式，对吧？幸运的是，答案是肯定的！我们构建了一个工具来抓取所有现有的 JSON Hyper-Schema，并输出完全符合要求的 OpenAPI 模式。这当然不是一蹴而就的，但由于现有的 OpenAPI 工具，我们可以反复改进自动转换器，并对输出模式运行 OpenAPI 验证工具，以了解转换工具仍然存在哪些问题。</p>
+	<p>转换工具经过多次迭代和改进后，终于从我们现有的 JSON Hyper-Schema 中自动生成了完全符合 OpenAPI 规范的模式。在我们构建这个工具时，各团队不断添加和更新现有模式，我们的产品内容团队也在更新模式中的文本，让我们的 API 文档更易使用。该流程的优势是，我们不必放慢任何工作，因为旧模式中的任何更改都会自动体现在新模式中！</p>
+	<p>准备好工具后，剩下的步骤就是决定我们何时以及如何停止更新 JSON Hyper-Schemas，并将所有团队转移到 OpenAPI 模式。（现已过时的）API 文档是最大的担忧，因为它们只理解 JSON Hyper-Schema。感谢开发人员体验和产品内容团队的帮助，我们才能在今天推出新的 API 文档，并可以正式切换到 OpenAPI！</p>
+	<h2 id="--2">接下来？</h2>
+	<p>现在我们已经完全转移到 OpenAPI，面临着更多的机会。对内部而言，我们将调查可以采用哪些工具来帮助减少各个团队的工作量，并加速 API 开发。我们正在探索自动从代码表示中创建 openAPI 模式。对外部而言，我们现已拥有必要的基础工具，开始探索如何自动生成和支持更多的编程语言库供客户使用。我们也很希望了解您会使用这些模式做哪些工作，如果您做了很酷的工作或有好的想法，请不要犹豫，欢迎与我们分享！</p>
+</div>

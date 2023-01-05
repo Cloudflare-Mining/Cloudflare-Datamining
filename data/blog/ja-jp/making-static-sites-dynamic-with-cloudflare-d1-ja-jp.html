@@ -1,0 +1,122 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-40.png" class="kg-image" alt="Making static sites dynamic with Cloudflare D1"></figure>
+	<h3 id="-">はじめに</h3>
+	<p>アプリケーションでデータを保存する方法はたくさんあります。例えば、Cloudflare Workersアプリケーションでは、キーバリューストレージとしてWorkers KVを、一貫性を損なわずにリアルタイムで連携したストレージとしてDurable Objectsを用意しています。Cloudflareのエコシステムの外側では、NoSQLやグラフデータベースなどの他のツールもプラグインできます。</p>
+	<p>それでも、SQLが欲しくなることがあります。インデックスを使えば、データを素早く取り出せるようになりますし、Joinにより、異なるテーブル間の複雑な関係を記述することができます。SQLは、アプリケーションのデータがどのように検証され、作成され、パフォーマンスよくクエリーが行われるかを宣言的に記述します。</p>
+	<p><a href="https://blog.cloudflare.com/d1-open-alpha">D1は本日、オープンアルファ版</a>がリリースされました。これを記念して、D1を使ってアプリを構築した体験を共有したいと思います。具体的には、構築の始め方と、D1がCloudflareでアプリを構築するためのツールの仲間入りを果たしたことに私がワクワクしている理由です。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image3-24.png" class="kg-image"></figure>
+	<p>D1は、新しいツールを必要とすることなく、Cloudflareのエコシステム内でアプリケーションに即座に付加価値を与えることができる点で注目に値します。Wranglerを使えばWorkersアプリケーションをローカルで開発できますし、WranglerにD1が追加されたことで、きちんとしたステートフルなアプリケーションもローカルで開発できるようになりました。そして、アプリケーションをデプロイするとき、WranglerによりD1データベースとAPI自体にアクセスしてコマンドを実行することができるようになるのです。</p>
+	<h3 id="cloudflare-">Cloudflareが構築しているもの</h3>
+	<p>こののブログ記事では、D1を使って静的なブログサイトにコメントを追加する方法を紹介します。説明用に、新しいD1データベースを構築し、コメントの作成と取得を可能にする単純なJSON APIを構築します。</p>
+	<p>先ほど述べたように、D1をアプリ本体から分離することで、静的なサイトとは別にAPIとデータベースを残し、Webサイトの静的な部分と動的な部分を互いに抽象化することができるのです。また、アプリケーションのデプロイも簡単になります。フロントエンドはCloudflare Pagesに、D1のAPIはCloudflare Workersにデプロイされます。</p>
+	<h3 id="--1">新規アプリケーションの構築</h3>
+	<p>まず、Workersで基本的なAPIを追加します。新しいディレクトリを作成し、その中に新しいWranglerプロジェクトを作成します。</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-sh">$ mkdir d1-example &amp;&amp; d1-example
+$ wrangler init
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>この例では、APIを迅速に構築するために、Express.jsスタイルフレームワークのHonoを使用します。このプロジェクトでHonoを使用するには、NPMを使用してインストールします。</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-sh">$ npm install hono
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>次に、<code>src/index.ts</code>で新しいHonoアプリを初期化し、GET /API/posts/:slug/commentsとPOST /get/api/:slug/commentsといういくつかのエンドポイントを定義します。</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-js">import { Hono } from 'hono'
+import { cors } from 'hono/cors'
+
+const app = new Hono()
+
+app.get('/api/posts/:slug/comments', async c =&gt; {
+  // do something
+})
+
+app.post('/api/posts/:slug/comments', async c =&gt; {
+  // do something
+})
+
+export default app
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>それでは、D1データベースを作成します。Wrangler 2では、<code>wrangler d1</code>サブコマンドがサポートされており、コマンドラインから直接D1データベースを作成し、クエリーを行うことができます。これにより、例えば、1つのコマンドで新しいデータベースを作成できます。</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-sh">$ wrangler d1 create d1-example
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>作成したデータベースで、データベース名IDを取得し、wranglerの設定ファイルである wrangler.toml内で<strong>バインディング</strong>と関連付けることができます。バインディングを使うと、D1データベース、KVネームスペース、R2バケットなどのCloudflareリソースに、コード内の簡単な変数名でアクセスできるようになります。以下では、バインディング<code>DB</code>を作成し、新しいデータベースを表すために使用します。</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-toml">[[ d1_databases ]]
+binding = "DB" # i.e. available in your Worker on env.DB
+database_name = "d1-example"
+database_id = "4e1c28a9-90e4-41da-8b4b-6cf36e5abb29"
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>このディレクティブ、<code>[[d1_databases]]</code>フィールドは、現在wranglerのベータ版を必要とすることに注意してください。これをプロジェクトにインストールするには、<code>npm install -D wrangler/beta</code>コマンドを実行します。</p>
+	<p>wrangler.tomlでデータベースが設定された状態になり、コマンドラインおよびWorkers関数の内部で対話できます。</p>
+	<p>まず、<code>wrangler d1 execute</code>を使って、直接SQLコマンドを発行できます。</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-sh">$ wrangler d1 execute d1-example --command "SELECT name FROM sqlite_schema WHERE type ='table'"
+Executing on d1-example:
+┌─────────────────┐
+│ name │
+├─────────────────┤
+│ sqlite_sequence │
+└─────────────────┘
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>また、SQLファイルを渡すこともでき、1つのコマンドで最初のデータシードを作成するのに最適です。<code>src/schema.sql</code>を作成すると、プロジェクト用に新しい<code>comments</code>テーブルが作成されます。</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-SQL">drop table if exists comments;
+create table comments (
+  id integer primary key autoincrement,
+  author text not null,
+  body text not null,
+  post_slug text not null
+);
+create index idx_comments_post_id on comments (post_slug);
+
+-- Optionally, uncomment the below query to create data
+
+-- insert into comments (author, body, post_slug)
+-- values ("Kristian", "Great post!", "hello-world");
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>作成したファイルにフラグ<code>--file</code>を付けて渡し、D1データベースに対してスキーマファイルを実行します。</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-sh">$ wrangler d1 execute d1-example --file src/schema.sql
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>いくつかのコマンドを実行するだけで、SQLデータベースを作成し、初期データをシードできました。次に、Workers関数にルートを追加して、そのデータベースからデータを取得できます。wrangler.tomlの設定に基づき、D1データベースは<code>DB</code>のバインディングでアクセスできるようになっています。このコードでは、バインディングを使ってSQLステートメントを用意して実行することで、コメントの取得などを行実行できます。</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-js">app.get('/api/posts/:slug/comments', async c =&gt; {
+  const { slug } = c.req.param()
+  const { results } = await c.env.DB.prepare(`
+    select * from comments where post_slug = ?
+  `).bind(slug).all()
+  return c.json(results)
+})
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>この関数では、<code>slug</code> URLクエリーパラメータを受け取り、新しいSQLステートメントを設定して、クエリーパラメータに<code>post_slug</code>の値が一致するコメントをすべて選択します。そして、それをシンプルなJSON応答として返します。</p>
+	<p>これまでは、データへの読み取り専用のアクセスを構築してきました。しかし、もちろん値をSQLに「挿入」することも可能です。そこで、エンドポイントにPOSTして新しいコメントを作成する別の関数を定義してみましょう。</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-js">app.post('/API/posts/:slug/comments', async c =&gt; {
+  const { slug } = c.req.param()
+  const { author, body } = await c.req.json&lt;Comment&gt;()
+
+  if (!author) return c.text("Missing author value for new comment")
+  if (!body) return c.text("Missing body value for new comment")
+
+  const { success } = await c.env.DB.prepare(`
+    insert into comments (author, body, post_slug) values (?, ?, ?)
+  `).bind(author, body, slug).run()
+
+  if (success) {
+    c.status(201)
+    return c.text("Created")
+  } else {
+    c.status(500)
+    return c.text("Something went wrong")
+  }
+})
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>この例では、ブログのためのコメントAPIを構築しています。このD1のコメントAPIのソースについては、<a href="https://github.com/cloudflare/templates/tree/main/worker-d1-api" target="_blank">cloudflare/templates/worker-d1-api</a>をご覧ください。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image2-31.png" class="kg-image"></figure>
+	<h3 id="--2">まとめ</h3>
+	<p>D1で最もエキサイティングなことの1つは、既存のアプリケーションやWebサイトをダイナミックなリレーショナルデータで強化できることです。Ruby on Railsの元開発者として、JavaScriptやサーバーレス開発ツールの世界において、このフレームワークが最も恋しくなるのは、データベースインフラストラクチャの管理の専門家でなくても、データ駆動型アプリケーションを迅速にフル回転させることができる点です。D1とSQLベースのデータへの容易なアクセスにより、パフォーマンスや開発者の体験を犠牲にすることなく、真のデータ駆動型アプリケーションを構築できます。</p>
+	<p>この変化は、ここ数年のHugoやGatsbyといったツールを使った静的サイトの出現にうまく対応しています。Hugoのような静的サイトジェネレータで構築されたブログは非常にパフォーマンスが高く、アセットサイズを小さくしつつ、ほんの数秒で構築できます。</p>
+	<p>しかし、WordPressのようなツールを静的サイトジェネレータと組み合わせると、サイトに動的な情報を追加する機会を失ってしまうのです。多くの開発者は、この問題に対して、データをフェッチして取得し、そのデータをビルドの一部としてページを生成するという複雑なビルドプロセスで対応してきました。</p>
+	<p>このように複雑なビルドプロセスを経ることで、アプリケーションのダイナミズムの欠如を解決しようとしていますが、それでも純粋に動的とは言えません。新しいデータが作成されるたびに取得して表示するのではなく、データが変更されるたびにアプリケーションを再構築して再デプロイするため、ライブで動的にデータが表示されるようになります。アプリケーションは静的なままで、動的なデータがサイトのユーザーに地理的に近い場所に存在し、クエリーと表現が可能なAPIを介してアクセスできます。</p>
+</div>
