@@ -5,41 +5,28 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p>We're seeking a highly skilled and motivated Fixed Assets Accountant to help support the fixed assets group. The Fixed Assets Accountants’ main responsibilities include the processing of fixed asset transaction from acquire through retirement, consolidated reporting for fixed assets globally, supporting audits and account reconciliations.</p>
-<p>This position is integral to building a world-class organization to support our growing and complex global business. This role requires a highly skilled and ambitious professional that can work independently, while adhering to internal controls.</p>
-<p><strong>What You’ll Do:</strong></p>
+<p><strong>About the Role</strong></p>
+<p>We are looking for a software engineer to join our DevTools team; an energetic team focused on improving developer velocity and productivity through tooling and automation.</p>
+<p>You will work on a range of tools, infrastructure, and services - new and existing - with an aim to elegantly and efficiently solve problems and deliver practical, maintainable, and scalable solutions.</p>
+<p>Reliability, performance, and developer experience (DX) are critical factors to our CI/CD pipeline which you will help monitor, operate, and improve/optimize.&nbsp;</p>
+<p>Our tech stack includes modern DevOps tooling like Docker, Kubernetes, Salt, Go (golang), Python, PostgreSQL, Kafka, and the usual Unix/Linux tools and workflows.</p>
+<p><strong>Requirements</strong></p>
 <ul>
-	<li>Update the fixed assets management system for fixed asset transactions</li>
-	<li>Coordinate and record transfers and disposals of fixed assets</li>
-	<li>Develop fixed asset reports, as needed</li>
-	<li>Investigate discrepancies between account and sub-leger</li>
-	<li>May assist with the development of written processes and procedures for identifying, tracking, transferring, reporting, and disposing of fixed assets</li>
-	<li>May assist with the training of staff in relation to fixed asset systems, processes, and procedures</li>
-	<li>Monitor and maintain Fixed Assets controls.</li>
-	<li>Record fixed assets acquisitions, transfers and dispositions.</li>
-	<li>Prepare audit schedules.</li>
-	<li>Conduct fixed assets inventories, as needed</li>
-	<li>Assist in the reconciliation of the fixed assets tracking database with related fixed assets general ledger and coordinate any variances with relevant fixed assets accounting staff</li>
-	<li>Perform other duties as assigned</li>
+	<li>BA/BS in Computer Science or equivalent experience</li>
+	<li>2+ years professional experience as a Software Developer/Engineer</li>
+	<li>Knowledge of two or more mainstream programming languages (Go, C/C++, Python, PHP)</li>
+	<li>Proficiency with modern Unix/Linux operating systems/distributions</li>
+	<li>Experience with CI/CD, containers and/or virtualization, web servers, and databases</li>
+</ul>
+<p><strong>Bonus</strong></p>
+<ul>
+	<li>Strong interpersonal and communication skills with a bias towards action</li>
+	<li>Professional experience as a Site Reliability Engineer (SRE)</li>
+	<li>Demonstrable experience with high-quality technical writing</li>
+	<li>Experience managing internal and/or external customer requirements and expectations</li>
+	<li>Experience defining SLOs/SLIs and implementing monitoring, alerting, and runbooks</li>
 </ul>
 <p>&nbsp;</p>
-<p><strong>Requirements:</strong></p>
-<ul>
-	<li>3+ years of relevant experience</li>
-	<li>Bachelor’s degree in accounting</li>
-	<li>Effective communication skills</li>
-	<li>Have extensive knowledge of excel (e.g. pivot tables, vlookups, etc.)</li>
-	<li>Experience using NetSuite’s Fixed Asset Management tool preferred</li>
-	<li>Be able to work an augmented schedule</li>
-	<li>Required Knowledge, Skills and Abilities</li>
-	<li>Strong problem solving and analytical skills</li>
-	<li>Ability to build relationships and influence others in order to achieve successful outcome in cross-functional projects and activities</li>
-	<li>Ability to multi-task and manage priorities effectively in a fast-paced environment, while exhibiting exceptional attention to detail and continuously driving process improvements.</li>
-	<li>Excellent written and verbal communication skills including the ability to communicate effectively accounting results to both accounting and non-accounting customers at various levels of the organization.</li>
-	<li>Advanced skills in Microsoft Excel, Power Point, and Word.</li>
-	<li>Ability to work independently.</li>
-	<li>Displays initiative and has the ability to improve processes and document work performed.</li>
-</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
