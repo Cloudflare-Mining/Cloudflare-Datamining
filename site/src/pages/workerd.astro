@@ -9,15 +9,34 @@ import Table from "../components/Table.astro";
 import {marked} from 'marked';
 
 
-interface FlagInfo {
+interface workerdFlagInfo {
 	name: string;
 	annotations: {
 		compatEnableFlag?: string | null;
 		compatDisableFlag?: string | null;
 		compatEnableDate?: string | null;
 		experimental?: string | null;
-
 	}
+}
+
+interface flagInfo {
+	name: string;
+	friendly_name: string | null;
+	description: string | null;
+	disable_flag: string | null;
+	enable_date: string | null;
+	enable_flag: string | null;
+	experimental: boolean;
+	publicly_documented: boolean;
+}
+
+interface remoteFlagInfo {
+	name: string;
+	description: string;
+	disable_flag: string | null;
+	enable_date: string | null;
+	enable_flag: string | null;
+	experimental: boolean;
 }
 
 let flagsInfo = null;
@@ -30,15 +49,15 @@ for(const struct of workerdData.structs){
 if(!flagsInfo){ throw new Error('Could not find flags info!'); }
 
 const remoteFlagInfoRes = await fetch('https://developers.cloudflare.com/workers/platform/compatibility-dates.json');
-const remoteFlagInfo = await remoteFlagInfoRes.json();
+const remoteFlagInfo: remoteFlagInfo[] = await remoteFlagInfoRes.json();
 
 const flags = [];
-for(const flag of flagsInfo as FlagInfo[]){
+for(const flag of flagsInfo as workerdFlagInfo[]){
 	const enableFlag = flag.annotations?.compatEnableFlag;
 	if(!enableFlag){ continue; }
 	const remoteFlag = remoteFlagInfo.find(rf => rf.enable_flag === enableFlag);
 
-	const flagInfo = {
+	const flagInfo: flagInfo = {
 		name: flag.name,
 		friendly_name: null,
 		description: null,
@@ -56,8 +75,6 @@ for(const flag of flagsInfo as FlagInfo[]){
 	}
 	flags.push(flagInfo);
 }
-
-console.log(flags);
 
 ---
 
@@ -129,9 +146,9 @@ console.log(flags);
 				</dl>
 				{flag.description && <p set:html={flag.description}></p>}
 			</div>
-
 		</>
 	))}
+	<p>Flag descriptions are <a href="https://github.com/cloudflare/cloudflare-docs/blob/production/LICENSE">licensed under CC BY 4.0</a> and sourced from the <a href="https://github.com/cloudflare/cloudflare-docs">cloudflare-docs</a>repository.</p>
 
 </Layout>
 
