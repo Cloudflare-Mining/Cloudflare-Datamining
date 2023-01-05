@@ -1,0 +1,119 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-44.png" class="kg-image" alt="The Cloudflare API now uses OpenAPI schemas"></figure>
+	<p>Hoje, anunciamos a disponibilidade geral dos <a href="https://github.com/cloudflare/api-schemas" target="_blank">esquemas de OpenAPI para a API da Cloudflare</a>. Eles estão publicados no GitHub e serão atualizados regularmente à medida que a Cloudflare adiciona e atualiza APIs. OpenAPI é o padrão amplamente adotado para definir APIs em um formato legível por máquina. Os esquemas de OpenAPI permitem a capacidade de conectar nossa API a uma ampla variedade de ferramentas para acelerar o desenvolvimento, para nós mesmos e para os clientes. Internamente, será mais fácil para nós manter e atualizar nossas APIs. Antes de abordarmos esses benefícios, vamos começar com o básico.</p>
+	<h2 id="o-que-openapi">O que é OpenAPI?</h2>
+	<p>Grande parte da internet é construída sobre APIs (Interfaces de Programação de Aplicativos) ou as fornece como serviços para clientes em todo o mundo. Isso permite que os computadores conversem entre si de maneira padronizada. OpenAPI é um padrão amplamente adotado para definir APIs. Ele permite que outras máquinas analisem essas definições de maneira confiável e as usem de maneiras interessantes. O próprio <a href="https://developers.cloudflare.com/api-shield/security/schema-validation/" target="_blank">produto API Shield</a> da Cloudflare usa esquemas de OpenAPI para fornecer validação de esquema para garantir que apenas solicitações de API bem formadas sejam enviadas para sua origem.</p>
+	<p>A própria Cloudflare possui uma API que os clientes podem usar para interagir com nossos produtos de segurança e desempenho a partir de outros lugares na internet. Como definimos nossas próprias APIs? Antigamente usávamos um padrão chamado <a href="https://github.com/json-schema-org/json-hyperschema-spec" target="_blank">JSON Hyper-Schema</a>. Isso nos serviu bem, mas com o passar do tempo queríamos adotar mais ferramentas que pudessem nos beneficiar internamente e facilitar a vida de nossos clientes. A comunidade OpenAPI se desenvolveu nos últimos anos, fornecendo muitos recursos, conforme discutiremos, que não estavam disponíveis enquanto usávamos o JSON Hyper-Schema. A partir de hoje usamos o OpenAPI.</p>
+	<p>Você pode aprender mais sobre OpenAPI <a href="https://oai.github.io/Documentation/start-here.html" target="_blank">aqui</a>. Ter um padrão aberto e bem compreendido para definir nossas APIs permite o uso de ferramentas e infraestrutura compartilhadas que podem ler essas definições padrão. Vejamos alguns exemplos.</p>
+	<h2 id="usos-dos-esquemas-de-openapi-da-cloudflare">Usos dos esquemas de OpenAPI da Cloudflare</h2>
+	<p>A maioria dos clientes não precisa usar os próprios esquemas para ver o valor. O primeiro sistema que utiliza os esquemas de OpenAPI é a nossa <a href="https://developers.cloudflare.com/api/" target="_blank">nova documentação de API</a> que foi <a href="https://blog.cloudflare.com/building-a-better-developer-experience-through-api-documentation/">anunciada hoje</a>. Como agora temos esquemas de OpenAPI, aproveitamos a ferramenta de software livre <a href="https://stoplight.io/open-source/elements" target="_blank">Stoplight Elements</a> para ajudar na geração desse novo site da documentação. Isso nos permitiu aposentar nosso site personalizado anterior, que era difícil de manter. Além disso, muitos engenheiros da Cloudflare estão familiarizados com o OpenAPI, portanto, conseguimos que as equipes escrevam novos esquemas mais rapidamente e tenham menos probabilidade de cometer erros usando um padrão que as equipes entendam ao definir novas APIs.</p>
+	<p>No entanto, existem maneiras de aproveitar os esquemas diretamente. A comunidade OpenAPI possui um grande número de ferramentas que requerem apenas um conjunto de esquemas para serem usadas. Dois desses exemplos são APIs simuladas e geração de bibliotecas.</p>
+	<h3 id="simular-a-api-da-cloudflare">Simular a API da Cloudflare</h3>
+	<p>Digamos que você tenha um código que chame a API da Cloudflare e queira executar facilmente testes de unidade localmente ou testes de integração em seu pipeline de CI/CD. Embora você possa simplesmente chamar a API da Cloudflare em cada execução, talvez não queira por alguns motivos. Primeiro, você pode querer executar testes com muita frequência, e assim gerenciar a criação e a destruição de recursos se torna um problema. Além disso, em muitos desses testes, você não está necessariamente tentando validar a lógica na Cloudflare, mas o comportamento do seu próprio sistema. Nesse caso, simular a API da Cloudflare seria ideal, já que você pode ter certeza de que não está violando o contrato da API da Cloudflare e não precisa se preocupar com detalhes de gerenciamento de recursos reais. Além disso, a simulação permite reproduzir diferentes cenários, como limitação de taxa ou recebimento de erros 500. Isso permite que você teste seu código para circunstâncias normalmente raras que podem acabar tendo um impacto sério.</p>
+	<p>Por exemplo, o <a href="https://docs.stoplight.io/docs/prism/83dbbd75532cf-http-mocking" target="_blank">Stoplight Prism</a> pode ser usado para simular a API da Cloudflare para fins de teste. Com uma cópia local dos esquemas de API da Cloudflare, você pode executar o seguinte comando para ativar um servidor fictício local:</p><!--kg-card-begin: markdown-->
+	<pre><code>$ docker run --init --rm \
+  -v /home/user/git/api-schemas/openapi.yaml:/tmp/openapi.yaml \
+  -p 4010:4010 stoplight/prism:4 \
+  mock -h 0.0.0.0 /tmp/openapi.yaml
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Em seguida, você pode enviar solicitações ao servidor fictício para validar que seu uso da API da Cloudflare não viola o contrato da API localmente:</p><!--kg-card-begin: markdown-->
+	<pre><code>$ curl -sX PUT localhost:4010/zones/f00/activation_check \
+  -Hx-auth-email:foo@bar.com -Hx-auth-key:foobarbaz | jq
+{
+  "success": true,
+  "errors": [],
+  "messages": [],
+  "result": {
+    "id": "023e105f4ecef8ad9ca31a8372d0c353"
+  }
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Isso significa desenvolvimento mais rápido e execuções de teste mais curtas, ao mesmo tempo em que detecta problemas de contrato de API antes de serem fundidos ou implantados.</p>
+	<h3 id="gera-o-de-bibliotecas">Geração de bibliotecas</h3>
+	<p>A Cloudflare possui bibliotecas em várias linguagens de programação, como <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest" target="_blank">Terraform</a> e <a href="https://github.com/cloudflare/cloudflare-go" target="_blank">Go</a>, mas não oferecemos suporte a todas as linguagens de programação possíveis. Felizmente, usando uma ferramenta como o <a href="https://github.com/OpenAPITools/openapi-generator" target="_blank">openapi generator</a>, você pode alimentar os esquemas da API da Cloudflare e gerar uma biblioteca em uma ampla variedade de linguagens para usar em seu código para conversar com a API da Cloudflare. Por exemplo, você pode gerar uma biblioteca Java usando os seguintes comandos:</p><!--kg-card-begin: markdown-->
+	<pre><code>git clone https://github.com/openapitools/openapi-generator
+cd openapi-generator
+mvn clean package
+java -jar modules/openapi-generator-cli/target/openapi-generator-cli.jar generate \
+   -i https://raw.githubusercontent.com/cloudflare/api-schemas/main/openapi.yaml \
+   -g java \
+   -o /var/tmp/java_api_client
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>E então começar a usar esse cliente em seu código Java para conversar com a API da Cloudflare.</p>
+	<h2 id="como-a-cloudflare-fez-a-transi-o-para-openapi">Como a Cloudflare fez a transição para OpenAPI</h2>
+	<p>Conforme mencionado anteriormente, usávamos o JSON Hyper-Schema para definir nossas APIs. Temos cerca de 600 endpoints que já foram definidos nos esquemas. Aqui está um trecho de como é um endpoint no JSON Hyper-Schema:</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-json">{
+      "title": "List Zones",
+      "description": "List, search, sort, and filter your zones.",
+      "rel": "collection",
+      "href": "zones",
+      "method": "GET",
+      "schema": {
+        "$ref": "definitions/zone.json#/definitions/collection_query"
+      },
+      "targetSchema": {
+        "$ref": "#/definitions/response_collection"
+      },
+      "cfOwnership": "www",
+      "cfPlanAvailability": {
+        "free": true,
+        "pro": true,
+        "business": true,
+        "enterprise": true
+      },
+      "cfPermissionsRequired": {
+        "enum": [
+          "#zone:read"
+        ]
+      }
+    }
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Vejamos o mesmo endpoint no OpenAPI:</p><!--kg-card-begin: markdown-->
+	<pre><code>/zones:
+    get:
+      description: List, search, sort, and filter your zones.
+      operationId: zone-list-zones
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/components-schemas-response_collection'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: List Zones response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/components-schemas-response_collection'
+          description: List Zones response
+      security:
+      - api_email: []
+        api_key: []
+      summary: List Zones
+      tags:
+      - Zone
+      x-cfPermissionsRequired:
+        enum:
+        - '#zone:read'
+      x-cfPlanAvailability:
+        business: true
+        enterprise: true
+        free: true
+        pro: true
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Você pode ver que os dois são bastante semelhantes e, na maioria das vezes, as mesmas informações estão contidas em cada um, incluindo tipo de método, descrição e definições de solicitação e resposta (embora estejam vinculados em $refs). O valor de migrar de um para o outro não é a mudança em como definimos os próprios esquemas, mas no que podemos fazer com esses esquemas. Várias ferramentas podem analisar o último, o OpenAPI, enquanto muito menos podem analisar o primeiro, o JSON Hyper-Schema.</p>
+	<p>Se essa única API fosse tudo o que compunha a API da Cloudflare, seria fácil simplesmente converter o JSON Hyper-Schema no esquema de OpenAPI manualmente e encerrar o assunto. Fazer isso 600 vezes, no entanto, seria um grande empreendimento. Se pensarmos que as equipes estão constantemente adicionando novos endpoints, seria impossível acompanhar. Também foi o caso de a nossa documentação de API existente usar o JSON Hyper-Schema, o que significa que precisaríamos manter ambos os esquemas atualizados durante qualquer período de transição. Tinha que haver uma maneira melhor.</p>
+	<h3 id="convers-o-autom-tica">Conversão automática</h3>
+	<p>Uma vez que o JSON Hyper-Schema e o OpenAPI são padrões, é possível converter um arquivo de um formato em outro, certo? Felizmente a resposta é sim. Criamos uma ferramenta que pegou todo o JSON Hyper-Schema existente e gerou esquemas de OpenAPI totalmente compatíveis. É claro que isso não aconteceu da noite para o dia, mas devido às ferramentas de OpenAPI existentes, pudemos melhorar iterativamente o conversor automático e executar as ferramentas de validação de OpenAPI nos esquemas de saída para ver quais problemas a ferramenta de conversão ainda apresentava.</p>
+	<p>Depois de muitas iterações e melhorias na ferramenta de conversão, finalmente tínhamos esquemas de OpenAPI Spec totalmente compatíveis sendo gerados automaticamente a partir de nosso JSON Hyper-Schema existente. Enquanto criávamos essa ferramenta, as equipes continuavam adicionando e atualizando os esquemas existentes e nossa equipe de conteúdo de produto também atualizava o texto nos esquemas para facilitar o uso de nossa documentação de API. O benefício desse processo é que não precisamos desacelerar nenhum desses trabalhos, pois tudo o que mudou nos esquemas antigos foi refletido automaticamente nos novos esquemas.</p>
+	<p>Com a ferramenta pronta, o passo que faltava era decidir quando e como pararíamos de fazer atualizações nos JSON Hyper-Schemas e passaríamos todas as equipes para os esquemas de OpenAPI. A (agora antiga) documentação de API era a maior preocupação, já que ela só entendia o JSON Hyper-Schema. Graças à ajuda de nossas equipes de experiência do desenvolvedor e conteúdo de produto, podemos lançar a nova documentação de API e mudar oficialmente para o OpenAPI hoje.</p>
+	<h2 id="o-que-vem-a-seguir">O que vem a seguir?</h2>
+	<p>Agora que mudamos totalmente para o OpenAPI, mais oportunidades estão disponíveis. Internamente, vamos investigar quais ferramentas podemos adotar para ajudar a reduzir o esforço de equipes individuais e acelerar o desenvolvimento da API. Uma ideia que estamos explorando é a criação automática de esquemas de OpenAPI a partir de notações de código. Externamente, agora temos as ferramentas básicas necessárias para começar a explorar como gerar automaticamente e dar suporte a mais bibliotecas de linguagem de programação para uso dos clientes. Também estamos ansiosos para ver o que você mesmo pode fazer com os esquemas, então, se você fizer algo legal ou tiver mais ideias, não hesite em compartilhar conosco.</p>
+</div>
