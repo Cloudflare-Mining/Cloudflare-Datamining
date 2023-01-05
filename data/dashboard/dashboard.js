@@ -3070,7 +3070,7 @@ Commit \u2014 `).concat(Be.commit)
 				cu = yl,
 				du = e("../react/pages/home/domain-registration/index.ts"),
 				Oi = r().lazy(function() {
-					return Promise.all([e.e(8415), e.e(85474), e.e(53482), e.e(53149), e.e(60590), e.e(97311), e.e(69419), e.e(55863), e.e(11407), e.e(33679), e.e(27973), e.e(68588), e.e(34744), e.e(85223), e.e(90865), e.e(23762), e.e(85258), e.e(10317), e.e(89771), e.e(79079), e.e(66616), e.e(46360), e.e(62187), e.e(30261), e.e(84728), e.e(83121), e.e(33566), e.e(52435), e.e(82256), e.e(77839), e.e(61751), e.e(5208), e.e(45721), e.e(46867), e.e(97943), e.e(33249)]).then(e.bind(e, "../react/pages/zoneless-workers/Main.tsx"))
+					return Promise.all([e.e(8415), e.e(85474), e.e(53482), e.e(53149), e.e(60590), e.e(97311), e.e(69419), e.e(55863), e.e(11407), e.e(33679), e.e(27973), e.e(68588), e.e(34744), e.e(85223), e.e(90865), e.e(23762), e.e(85258), e.e(10317), e.e(89771), e.e(79079), e.e(66616), e.e(46360), e.e(62187), e.e(30261), e.e(84728), e.e(83121), e.e(33566), e.e(52435), e.e(82256), e.e(77839), e.e(61751), e.e(73602), e.e(45721), e.e(46867), e.e(97943), e.e(33249)]).then(e.bind(e, "../react/pages/zoneless-workers/Main.tsx"))
 				}),
 				Ts = function(f) {
 					var Q = !!(0, Go.P)(),
@@ -3086,7 +3086,7 @@ Commit \u2014 `).concat(Be.commit)
 					return r().createElement(Ml, f)
 				},
 				fu = r().lazy(function() {
-					return Promise.all([e.e(8415), e.e(43561), e.e(87122), e.e(67118), e.e(85474), e.e(53482), e.e(53149), e.e(60590), e.e(97311), e.e(55863), e.e(33679), e.e(68588), e.e(85223), e.e(27605), e.e(90865), e.e(78297), e.e(23762), e.e(85258), e.e(10317), e.e(79079), e.e(46360), e.e(43087), e.e(30261), e.e(84728), e.e(86277), e.e(33566), e.e(52435), e.e(91914), e.e(77839), e.e(61751), e.e(5208), e.e(46867), e.e(97943), e.e(22979), e.e(78450), e.e(22731)]).then(e.bind(e, "../react/pages/r2/Main.tsx"))
+					return Promise.all([e.e(8415), e.e(43561), e.e(87122), e.e(67118), e.e(85474), e.e(53482), e.e(53149), e.e(60590), e.e(97311), e.e(55863), e.e(33679), e.e(68588), e.e(85223), e.e(27605), e.e(90865), e.e(78297), e.e(23762), e.e(85258), e.e(10317), e.e(79079), e.e(46360), e.e(43087), e.e(30261), e.e(84728), e.e(86277), e.e(33566), e.e(52435), e.e(91914), e.e(77839), e.e(61751), e.e(73602), e.e(46867), e.e(97943), e.e(22979), e.e(78450), e.e(22731)]).then(e.bind(e, "../react/pages/r2/Main.tsx"))
 				}),
 				Fi = function(f) {
 					var Q = !!(0, Go.P)(),
@@ -3772,7 +3772,7 @@ Commit \u2014 `).concat(Be.commit)
 				ku = e("../react/pages/home/members/utils.ts"),
 				zs = e("../react/pages/analytics/logpush/selectors.ts"),
 				Rs = r().lazy(function() {
-					return Promise.all([e.e(85474), e.e(53482), e.e(53149), e.e(60590), e.e(97311), e.e(55863), e.e(33679), e.e(68588), e.e(85223), e.e(27605), e.e(90865), e.e(23762), e.e(10317), e.e(89771), e.e(79079), e.e(82330), e.e(99546), e.e(7645), e.e(30261), e.e(84728), e.e(33566), e.e(52435), e.e(91914), e.e(77839), e.e(5208), e.e(22979), e.e(73107)]).then(e.bind(e, "../react/pages/pages/Main.tsx"))
+					return Promise.all([e.e(85474), e.e(53482), e.e(53149), e.e(60590), e.e(97311), e.e(55863), e.e(33679), e.e(68588), e.e(85223), e.e(27605), e.e(90865), e.e(23762), e.e(10317), e.e(89771), e.e(79079), e.e(82330), e.e(99546), e.e(7645), e.e(30261), e.e(84728), e.e(33566), e.e(52435), e.e(91914), e.e(77839), e.e(73602), e.e(22979), e.e(73107)]).then(e.bind(e, "../react/pages/pages/Main.tsx"))
 				}),
 				Kl = function(f) {
 					var Q = f.hasAccountAccess,
@@ -7108,14 +7108,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				e.g.build = cd({}, {
-					branch: "nick/CUSTESC-24688",
+					branch: "release-1672931107",
 					isReleaseCandidate: "true",
-					commit: "e7224a2398471046386f0212b0e6dd1122621dc2",
+					commit: "b6881dc8617008f2442819319f47222639dde36d",
 					env: "production",
-					builtAt: 1672917894908,
-					dashVersion: "39ef89be8ac8203aab15e4284a367a695b818193",
+					builtAt: 1672931357186,
+					dashVersion: "e34db2012c2d1896672162b83ecdc7485ad6c755",
 					versions: {
-						"@cloudflare/app-dash": "25.123.7",
+						"@cloudflare/app-dash": "25.123.14",
 						node: "16.16.0",
 						yarn: "3.2.2",
 						webpack: "5.74.0"
@@ -74630,6 +74630,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						functionsR2: "https://developers.cloudflare.com/pages/platform/functions/bindings/#r2-buckets",
 						functionsD1: "https://developers.cloudflare.com/pages/platform/functions/bindings/#d1-databases",
 						functionsServiceBindings: "https://developers.cloudflare.com/pages/platform/functions/bindings/#service-bindings",
+						functionsQueueProducers: "https://developers.cloudflare.com/pages/platform/functions/bindings/#queue-producers",
 						functionsLimits: "https://developers.cloudflare.com/workers/platform/limits/#worker-limits",
 						functionsGABilling: "https://developers.cloudflare.com/pages/platform/functions/pricing/",
 						headers: "https://developers.cloudflare.com/pages/platform/headers",
@@ -74864,6 +74865,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					setPagesR2Bindings: "set pages r2 bindings",
 					setPagesD1Bindings: "set pages d1 bindings",
 					setPagesServiceBindings: "set pages service bindings",
+					setPagesQueueProducerBindings: "set pages queue producer bindings",
 					enablePagesAccessPolicy: "enable pages access policy",
 					managePagesPolicies: "manage pages policies",
 					enablePagesWebAnalytics: "enable pages web analytics",
@@ -86322,4 +86324,4 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 	}
 ]);
 
-//# sourceMappingURL=7e303f3e7409a92f58ba.js.map
+//# sourceMappingURL=a5ef85272d138f909a95.js.map
