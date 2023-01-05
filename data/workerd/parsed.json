@@ -2326,31 +2326,6 @@
 			]
 		},
 		{
-			"name": "workerd/src/workerd/io/jaeger.capnp:JaegerSpan",
-			"fields": [
-				{
-					"name": "traceIdHigh",
-					"annotations": {}
-				},
-				{
-					"name": "traceIdLow",
-					"annotations": {}
-				},
-				{
-					"name": "spanId",
-					"annotations": {}
-				},
-				{
-					"name": "parentSpanId",
-					"annotations": {}
-				},
-				{
-					"name": "flags",
-					"annotations": {}
-				}
-			]
-		},
-		{
 			"name": "workerd/src/workerd/jsg/rtti.capnp:NumberType",
 			"fields": [
 				{
@@ -3861,7 +3836,6 @@
 		"workerd/src/workerd/io/compatibility-date.capnp:CompatibilityFlags.neededByFl",
 		"workerd/src/workerd/io/compatibility-date.capnp:CompatibilityFlags.compatEnableAllDates",
 		"workerd/src/workerd/io/compatibility-date.capnp:CompatibilityFlags.experimental",
-		"workerd/src/workerd/io/jaeger.capnp",
 		"workerd/src/workerd/io/outcome.capnp",
 		"workerd/src/workerd/jsg/rtti.capnp",
 		"workerd/src/workerd/server/workerd-meta.capnp",
