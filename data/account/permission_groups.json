@@ -13,6 +13,13 @@
 		"modified_on": "2020-10-13T12:42:59.660479Z",
 		"permissions": [
 			{
+				"id": "d38e3908219c42eaa75ab12463d71572",
+				"key": "com.cloudflare.edge.worker.certificate-association.create",
+				"attributes": {
+					"legacy_name": "#worker:edit"
+				}
+			},
+			{
 				"id": "b0ef22d48ef645f9b04d7f86818387c3",
 				"key": "com.cloudflare.api.account.zone.versioning.*",
 				"attributes": {
@@ -8544,6 +8551,13 @@
 		"modified_on": "2022-03-23T23:47:46.228595Z",
 		"permissions": [
 			{
+				"id": "d38e3908219c42eaa75ab12463d71572",
+				"key": "com.cloudflare.edge.worker.certificate-association.create",
+				"attributes": {
+					"legacy_name": "#worker:edit"
+				}
+			},
+			{
 				"id": "a142951ab200410981128978a543c3f8",
 				"key": "com.cloudflare.edge.worker.deployment.read",
 				"attributes": {
@@ -15709,6 +15723,13 @@
 		"modified_on": "2020-10-13T12:42:59.660479Z",
 		"permissions": [
 			{
+				"id": "d38e3908219c42eaa75ab12463d71572",
+				"key": "com.cloudflare.edge.worker.certificate-association.create",
+				"attributes": {
+					"legacy_name": "#worker:edit"
+				}
+			},
+			{
 				"id": "b0ef22d48ef645f9b04d7f86818387c3",
 				"key": "com.cloudflare.api.account.zone.versioning.*",
 				"attributes": {
@@ -20071,11 +20092,11 @@
 		"meta": {
 			"description": "Can edit Zaraz configuration.",
 			"editable": "false",
-			"label": "zaraz_editor",
+			"label": "zaraz_edit",
 			"scopes": "com.cloudflare.api.account"
 		},
 		"created_on": "2022-11-21T23:30:24.024779Z",
-		"modified_on": "2022-11-21T23:30:24.024779Z",
+		"modified_on": "2023-01-05T19:43:47.006079Z",
 		"permissions": [
 			{
 				"id": "58a035adc5db40738034c57be3dbe8f3",
