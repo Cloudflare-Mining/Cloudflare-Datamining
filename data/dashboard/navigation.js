@@ -182,7 +182,7 @@ const navigation = {
 			url: "/workers/plans",
 			hasPermission: function(y) {
 				var z = (0, o.getSubscriptions)(y);
-				return !(0, L.ky)(z, [N.uD.UnboundEnterpriseTrial])
+				return !(0, L.ky)(z, [I.uD.UnboundEnterpriseTrial])
 			}
 		}]
 	}, {
@@ -448,7 +448,7 @@ const navigation = {
 			url: "/audit-log",
 			testId: "account-homepage-audit-logs",
 			hasPermission: function(y) {
-				return (0, I.b)(y) ? O(y) : (0, t.getPermission)(y)("auditlogs").read
+				return (0, A.b)(y) ? O(y) : (0, t.getPermission)(y)("auditlogs").read
 			}
 		}, {
 			title: "navigation.account.billing",
@@ -605,7 +605,7 @@ const navigation = {
 		testId: "zone-navigation-link-spectrum",
 		hasPermission: function(y) {
 			var z = (0, U.getZone)(y);
-			if ((0, c.zoneIsDNSOnly)(y) || !s(y, "zone_settings", "spectrum.app") || !z) return !1;
+			if ((0, c.zoneIsDNSOnly)(y) || !u(y, "zone_settings", "spectrum.app") || !z) return !1;
 			var se = !!((0, i.userHasEntZones)(y) || (0, U.userHasDelegatedEntZones)(y)),
 				ue = !!(0, U.getZoneFlipperFlag)(y, "spectrum", "enabled"),
 				ce = !!(0, U.isFree)(z);
@@ -666,7 +666,7 @@ const navigation = {
 			url: "/security/analytics",
 			labels: ["beta"],
 			hasPermission: function(y) {
-				return (0, A.B_)(y)
+				return (0, C.B_)(y)
 			}
 		}, {
 			title: "navigation.zone.security.events",
@@ -716,7 +716,7 @@ const navigation = {
 		iconType: "cloudflare-access",
 		testId: "zone-navigation-link-access",
 		hasPermission: function(y) {
-			return !(0, c.zoneIsDNSOnly)(y) && (s(y, "access", "access.app") || s(y, "access", "access.zone.app"))
+			return !(0, c.zoneIsDNSOnly)(y) && (u(y, "access", "access.app") || u(y, "access", "access.zone.app"))
 		}
 	}, {
 		title: "navigation.zone.speed",
@@ -795,7 +795,7 @@ const navigation = {
 		testId: "zone-navigation-link-workers",
 		canBeVersioned: !0,
 		hasPermission: function(y) {
-			return !(0, c.zoneIsDNSOnly)(y) && s(y, "worker", "worker.route")
+			return !(0, c.zoneIsDNSOnly)(y) && u(y, "worker", "worker.route")
 		}
 	}, {
 		title: "navigation.zone.rules",

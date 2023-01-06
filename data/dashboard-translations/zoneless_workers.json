@@ -168,6 +168,7 @@
 	"zoneless_workers.worker_details.routes.editor.failure_mode.option.open.description": "Additional requests will bypass your Worker and proceed to your origin.",
 	"zoneless_workers.worker_details.routes.editor.description.unlocked": "Run your Service by assigning it to one or many routes.",
 	"zoneless_workers.worker_details.routes.editor.description.locked": "Run your Service by assigning it to one or many routes. Only routes of hostnames configured on Cloudflare can be specified.",
+	"zoneless_workers.worker_details.routes.editor.dns_check_warning": "The entered route does not have an active DNS record. To add this route, manually add a new <0>DNS</0> record or use the Worker's Custom Domain to create it automatically. <1>Learn more</1>.",
 	"zoneless_workers.worker_details.routes.editor.route_help_text": "Use an asterisk (*) character to create dynamic patterns that match multiple URLs. <a href='https://developers.cloudflare.com/workers/about/routes/#matching-behavior' target='_blank' rel='noopener noreferrer'>Learn more</a>",
 	"zoneless_workers.worker_details.routes.editor.remove_confirmation_prompt": "Are you sure you want to remove this route? Your Worker will no longer run on this route.",
 	"zoneless_workers.worker_details.routes.editor.remove_bypass_confirmation_prompt": "Are you sure you want to remove this route?",
