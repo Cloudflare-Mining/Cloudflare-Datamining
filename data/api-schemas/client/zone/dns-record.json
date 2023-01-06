@@ -24,7 +24,7 @@
 			},
 			"html_id": "dns-records-for-a-zone-list-dns-records",
 			"uri": "zones/:zone_identifier/dns_records",
-			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/dns_records?type=A&name=example.com&content=127.0.0.1&proxied=false&page=1&per_page=100&order=type&direction=desc&match=all&comment=Domain verification record&tag.<tag-name>=undefined&tag=undefined&tag-match=all\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/dns_records?type=A&name=example.com&content=127.0.0.1&proxied=false&page=1&per_page=100&order=type&direction=desc&match=all&comment=Domain verification record&tag=undefined&tag.<predicate>=undefined&tag-match=all\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -125,13 +125,13 @@
 						"example": "\"Domain verification record\"",
 						"description": "DNS record comment. For advanced queries, the following alternative parameters are available: 'comment.present', 'comment.absent', 'comment.exact', 'comment.contains', 'comment.startswith', 'comment.endswith'. Just 'comment' is equivalent to 'comment.exact'."
 					},
-					"tag.<tag-name>": {
-						"type": "string",
-						"description": "DNS record tag value. For advanced queries, the following alternative parameters are available: 'tag.<tag-name>.present', 'tag.<tag-name>.absent', 'tag.<tag-name>.exact', 'tag.<tag-name>.contains', 'tag.<tag-name>.startswith', 'tag.<tag-name>.endswith'. Just 'tag.<tag-name>' is equivalent to 'tag.<tag-name>.exact'. Replace <tag-name> with the name of the tag to query. Example: /dns_records?tag.important.present&tag.team=DNS. Note that 'tag.<tag-name>.present' and 'tag.<tag-name>.absent' do not require a value; if one is given anyway it is ignored."
-					},
 					"tag": {
 						"type": "string",
-						"description": "Convenience shorthand for tag searches. Can be either '<tag-name>:<tag-value>' to search for an exact name:value pair, or just '<tag-name>' to search for records with a specific tag regardless of value. Example: /dns_records?tag=important&tag=team:DNS"
+						"description": "DNS record tag. Parameter values can be of the form '<tag-name>:<tag-value>' to search for an exact name:value pair, or just '<tag-name>' to search for records with a specific tag regardless of its value. This is a convenience shorthand for the more powerful 'tag.<predicate>' parameters. Example: /dns_records?tag=important&tag=team:DNS is equivalent to /dns_records?tag.present=important&tag.exact=team:DNS"
+					},
+					"tag.<predicate>": {
+						"type": "string",
+						"description": "DNS record tag. The '<predicate>' can be one of 'present', 'absent', 'exact', 'contains', 'startswith', 'endswith'. The value should be of the form '<tag-name>:<tag-value>', or just '<tag-name>' when the predicate is 'present' or 'absent'. Example: /dns_records?tag.present=important&tag.exact=team:DNS."
 					},
 					"tag-match": {
 						"type": "string",
@@ -156,8 +156,8 @@
 					"direction",
 					"match",
 					"comment",
-					"tag.<tag-name>",
 					"tag",
+					"tag.<predicate>",
 					"tag-match"
 				],
 				"objects": [],
