@@ -4076,7 +4076,7 @@ components:
         aud:
           $ref: '#/components/schemas/aud'
         id:
-          $ref: '#/components/schemas/id'
+          $ref: '#/components/schemas/CloudflareClientAPI_id'
         public_key:
           $ref: '#/components/schemas/public_key'
     ca_components-schemas-id:
@@ -7286,6 +7286,8 @@ components:
           example: true
         exclude:
           $ref: '#/components/schemas/components-schemas-exclude'
+        exclude_office_ips:
+          $ref: '#/components/schemas/exclude_office_ips'
         fallback_domains:
           $ref: '#/components/schemas/fallback_domains'
         gateway_unique_id:
@@ -8283,6 +8285,8 @@ components:
           example: true
         exclude:
           $ref: '#/components/schemas/components-schemas-exclude'
+        exclude_office_ips:
+          $ref: '#/components/schemas/exclude_office_ips'
         fallback_domains:
           $ref: '#/components/schemas/fallback_domains'
         gateway_unique_id:
@@ -9644,6 +9648,10 @@ components:
         a user cannot meet any of the Exclude rules.
       items:
         $ref: '#/components/schemas/rule'
+    exclude_office_ips:
+      type: boolean
+      description: Whether to add Microsoft IPs to split tunnel exclusions.
+      example: true
     expected_body:
       type: string
       description: A case-insensitive sub-string to look for in the response body.
@@ -11106,11 +11114,9 @@ components:
       - "off"
       default: "off"
     id:
-      type: string
-      description: The ID of the CA.
-      example: 7eddae4619b50ab1361ba8ae9bd72269a432fea041529ed9
-      readOnly: true
-      maxLength: 48
+      type: integer
+      description: Unique id of the job.
+      minimum: 1
     id_response:
       allOf:
       - $ref: '#/components/schemas/api-response-single'
@@ -11963,7 +11969,7 @@ components:
         to secondary zones.
       example: false
     job_identifier:
-      $ref: '#/components/schemas/CloudflareClientAPI_id'
+      $ref: '#/components/schemas/id'
     js_integrity_score:
       type: integer
       description: The integrity score of the JavaScript content.
@@ -13176,7 +13182,7 @@ components:
         frequency:
           $ref: '#/components/schemas/frequency'
         id:
-          $ref: '#/components/schemas/CloudflareClientAPI_id'
+          $ref: '#/components/schemas/id'
         last_complete:
           $ref: '#/components/schemas/last_complete'
         last_error:
@@ -18356,6 +18362,14 @@ components:
             type: string
             description: IPv4 or IPv6 address.
             example: 1.1.1.1
+        payload_log:
+          type: object
+          description: Configure DLP payload logging.
+          properties:
+            enabled:
+              type: boolean
+              description: Enable DLP payload logging for this rule.
+              example: true
     rule_action:
       type: string
       description: The action to take when the expression matches.
@@ -19911,7 +19925,7 @@ components:
             type: object
             properties:
               id:
-                $ref: '#/components/schemas/id'
+                $ref: '#/components/schemas/CloudflareClientAPI_id'
     schemas-identifier:
       type: string
       description: Identifier
@@ -44062,6 +44076,8 @@ paths:
                   $ref: '#/components/schemas/captive_portal'
                 disable_auto_fallback:
                   $ref: '#/components/schemas/disable_auto_fallback'
+                exclude_office_ips:
+                  $ref: '#/components/schemas/exclude_office_ips'
                 service_mode_v2:
                   $ref: '#/components/schemas/service_mode_v2'
                 support_url:
@@ -44128,6 +44144,8 @@ paths:
                   type: boolean
                   description: Whether the policy will be applied to matching devices.
                   example: true
+                exclude_office_ips:
+                  $ref: '#/components/schemas/exclude_office_ips'
                 match:
                   $ref: '#/components/schemas/components-schemas-match'
                 name:
@@ -44281,6 +44299,8 @@ paths:
                   type: boolean
                   description: Whether the policy will be applied to matching devices.
                   example: true
+                exclude_office_ips:
+                  $ref: '#/components/schemas/exclude_office_ips'
                 match:
                   $ref: '#/components/schemas/components-schemas-match'
                 name:

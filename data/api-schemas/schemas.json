@@ -5975,7 +5975,7 @@
 						"$ref": "#/components/schemas/aud"
 					},
 					"id": {
-						"$ref": "#/components/schemas/id"
+						"$ref": "#/components/schemas/CloudflareClientAPI_id"
 					},
 					"public_key": {
 						"$ref": "#/components/schemas/public_key"
@@ -10559,6 +10559,9 @@
 					"exclude": {
 						"$ref": "#/components/schemas/components-schemas-exclude"
 					},
+					"exclude_office_ips": {
+						"$ref": "#/components/schemas/exclude_office_ips"
+					},
 					"fallback_domains": {
 						"$ref": "#/components/schemas/fallback_domains"
 					},
@@ -12081,6 +12084,9 @@
 					},
 					"exclude": {
 						"$ref": "#/components/schemas/components-schemas-exclude"
+					},
+					"exclude_office_ips": {
+						"$ref": "#/components/schemas/exclude_office_ips"
 					},
 					"fallback_domains": {
 						"$ref": "#/components/schemas/fallback_domains"
@@ -14081,6 +14087,11 @@
 					"$ref": "#/components/schemas/rule"
 				},
 				"type": "array"
+			},
+			"exclude_office_ips": {
+				"description": "Whether to add Microsoft IPs to split tunnel exclusions.",
+				"example": true,
+				"type": "boolean"
 			},
 			"expected_body": {
 				"description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors.",
@@ -16259,11 +16270,9 @@
 				"type": "boolean"
 			},
 			"id": {
-				"description": "The ID of the CA.",
-				"example": "7eddae4619b50ab1361ba8ae9bd72269a432fea041529ed9",
-				"maxLength": 48,
-				"readOnly": true,
-				"type": "string"
+				"description": "Unique id of the job.",
+				"minimum": 1,
+				"type": "integer"
 			},
 			"id_response": {
 				"allOf": [
@@ -17494,7 +17503,7 @@
 				"type": "boolean"
 			},
 			"job_identifier": {
-				"$ref": "#/components/schemas/CloudflareClientAPI_id"
+				"$ref": "#/components/schemas/id"
 			},
 			"js_integrity_score": {
 				"description": "The integrity score of the JavaScript content.",
@@ -19080,7 +19089,7 @@
 						"$ref": "#/components/schemas/frequency"
 					},
 					"id": {
-						"$ref": "#/components/schemas/CloudflareClientAPI_id"
+						"$ref": "#/components/schemas/id"
 					},
 					"last_complete": {
 						"$ref": "#/components/schemas/last_complete"
@@ -26529,6 +26538,17 @@
 							"type": "string"
 						},
 						"type": "array"
+					},
+					"payload_log": {
+						"description": "Configure DLP payload logging.",
+						"properties": {
+							"enabled": {
+								"description": "Enable DLP payload logging for this rule.",
+								"example": true,
+								"type": "boolean"
+							}
+						},
+						"type": "object"
 					}
 				},
 				"type": "object"
@@ -28754,7 +28774,7 @@
 							"result": {
 								"properties": {
 									"id": {
-										"$ref": "#/components/schemas/id"
+										"$ref": "#/components/schemas/CloudflareClientAPI_id"
 									}
 								},
 								"type": "object"
@@ -70737,6 +70757,9 @@
 									"disable_auto_fallback": {
 										"$ref": "#/components/schemas/disable_auto_fallback"
 									},
+									"exclude_office_ips": {
+										"$ref": "#/components/schemas/exclude_office_ips"
+									},
 									"service_mode_v2": {
 										"$ref": "#/components/schemas/service_mode_v2"
 									},
@@ -70838,6 +70861,9 @@
 										"description": "Whether the policy will be applied to matching devices.",
 										"example": true,
 										"type": "boolean"
+									},
+									"exclude_office_ips": {
+										"$ref": "#/components/schemas/exclude_office_ips"
 									},
 									"match": {
 										"$ref": "#/components/schemas/components-schemas-match"
@@ -71482,6 +71508,9 @@
 										"description": "Whether the policy will be applied to matching devices.",
 										"example": true,
 										"type": "boolean"
+									},
+									"exclude_office_ips": {
+										"$ref": "#/components/schemas/exclude_office_ips"
 									},
 									"match": {
 										"$ref": "#/components/schemas/components-schemas-match"
