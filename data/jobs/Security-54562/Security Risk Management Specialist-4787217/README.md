@@ -5,32 +5,38 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4>About the job</h4>
-<p><span style="font-weight: 400;">Cloudflare is looking for a Product &amp; Intellectual Property Counsel to join the Legal team. The role is based out of our Austin office.&nbsp;</span></p>
-<p><span style="font-weight: 400;">The ideal candidate has enthusiasm for innovative technology and partnering with product and engineering teams throughout the software development life cycle and product commercialization. </span><span style="font-weight: 400;">You'll evaluate and provide guidance on novel legal situations and create new precedents. Cloudflare’s innovative services raise challenging questions that demand creative and practical solutions at the intersections of the law and new technology. </span></p>
-<h4>What you'll do</h4>
-<p><span style="font-weight: 400;">As a legal generalist, you will be asked to advise on a wide range of legal issues related to the products you support. For example, in this role you will:</span></p>
+<p><strong>The Team</strong></p>
+<p><span style="font-weight: 400;">We are looking to hire an experienced Security Risk Management Specialist on our Governance, Risk, and Compliance team. This role will be responsible for identifying and managing security risk across Cloudflare’s production environment and critical business functions.</span></p>
+<p><span style="font-weight: 400;">At Cloudflare, risk management lays the foundation for protecting Cloudflare and our customers. The Risk team identifies risk throughout the company and prioritizes mitigation efforts to drive Security team priorities. We do not believe in tick-box security, so for us risk management is a pathway to doing things right.&nbsp;</span></p>
+<p><span style="font-weight: 400;">This is an opportunity to join a rapidly scaling and world class security organization within a billion dollar business. We guarantee that you won’t get bored.&nbsp;</span></p>
+<p><strong>What you'll do</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Proactively assess legal risks and advise our product and engineering teams on products that not only revolutionize how information is exchanged on this planet, but also move information and Internet law into the future.&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Translate legal advice into actionable guidance for cutting-edge product and engineering teams, often under tight deadlines.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Draft terms of service, disclosures, and policies, and help implement related processes.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Practice the principles of privacy-by-design and assist the privacy team in analyzing data flows and performing privacy impact assessments and other privacy-focused deliverables.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Review open source licenses and inbound intellectual property licensing arrangements.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Solicit invention disclosure forms and protect Cloudflare’s trade secrets.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Work closely with our product and marketing teams on product marketing collateral and product claim substantiation.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Build new and improve upon existing processes for providing legal services to help us pave the way for continued expansion.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Implement Cloudflare’s risk management methodology&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Lead enterprise and targeted risk assessments across the organization&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Identify risk findings through vulnerabilities, security incidents, audits, and other security programs and determine how to integrate these into Cloudflare’s risk register&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Implement Cloudflare’s new risk calculation formula across the risk register and enterprise risks&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Drive risk treatment by determining risk ownership, recommending mitigation plans, and ensuring risks are included in technical organizations’ roadmaps&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Partner with security managers and technical program managers to develop risk-based roadmaps and support Security Team planning discussions</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Implement and manage new Risk Governance processes with Security and technical organization leadership</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Support risk updates to Executive leadership and Cloudflare’s Risk and Compliance Committee</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Ensure alignment between security risk and the internal audit and privacy teams</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Maintain our Security Risk Management Policy, supporting process documentation, and Cloudflare’s risk register</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Support internal and external audits related to Cloudflare’s risk management processes</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Some travel may be required to engage teammates and stakeholders in San Francisco, Austin, or other global Cloudflare locations.&nbsp;&nbsp;</span></li>
 </ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">JD degree with strong academic credentials and admitted to practice law in at least one U.S. jurisdiction.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">3+ years of law firm and/or in-house experience, preferably with technology companies. Prior experience with Internet security and infrastructure companies is desired.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Technical background / expertise is highly desired. While a science or technical degree is not a prerequisite for this job, a passion for technologies is.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with copyright law and Internet law is desired (e.g., net neutrality, DMCA, CFAA).</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong communication skills and cooperative team player. Lead with empathy and understanding while embracing diverse points of view. Flexibility to adapt and thrive in a fast paced environment.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to work cross-functionally, with lawyers and non-lawyers, to establish effective solutions efficiently and in an amenable manner.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to organize, prioritize, and manage many tasks on complex projects. Experience with Jira or other project management solutions is desired.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Senior level Security Risk Management experience typically gained in 4-7 years experience working in GRC&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience communicating, conducting, and managing security risk assessments; recommending mitigating controls; and reporting findings to leadership</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience driving risk remediation and partnering with cross functional teams&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience implementing a security risk methodology including processes for risk identification, prioritization, mitigation, reporting, and monitoring</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience reporting on risks and program operations to management</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Solid understanding of security risk and control frameworks such as ISO 27001, NIST SP 800-37, NIST SP 800-30, and NIST SP 800-53</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Familiarity with Common Vulnerability Scoring System (CVSS), OWASP Risk Rating Methodology, and the MITRE ATT&amp;CK Matrix&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Solid understanding cloud security architectures, technologies, and security controls&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong analytical and interpersonal skills</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Self-starter with the ability to work independently with a sense of curiosity</span></li>
 </ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
