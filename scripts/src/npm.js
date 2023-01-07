@@ -125,6 +125,19 @@ async function run(){
 				path.resolve(`${dir}/packument.json`),
 				JSON.stringify(trimmedPackument, null, '\t'),
 			);
+
+			// get various files if they exist
+			const getFiles = ['README.md', 'CHANGELOG.md', 'changelog.md', 'readme.md'];
+			for(const file of getFiles){
+				const filePath = path.resolve(`${extractDir}/${file}`);
+				if(await fs.pathExists(filePath)){
+					const fileContents = await fs.readFile(filePath, 'utf8');
+					fs.writeFile(
+						path.resolve(`${dir}/${file}`),
+						fileContents,
+					);
+				}
+			}
 		});
 	}
 	await Promise.all(getDataAndWriteFiles.map(fn => fn()));
@@ -244,6 +257,7 @@ async function run(){
 		[
 			'data/packages/*',
 			'data/packages/**/*.json',
+			'data/packages/**/*.md',
 		],
 		`${prefix} - NPM Package Data was updated!`,
 		'CFData - NPM Package Data Update',
