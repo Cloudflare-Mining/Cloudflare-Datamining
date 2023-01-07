@@ -5,27 +5,58 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About the Department</strong></p>
-<p><span style="font-weight: 400;">Cloudflare’s Product Management team is responsible for building products that improve the way the Internet works. Product Management sits at the intersection of software development, design, and business strategy. We shape high-level product goals but are also hands on. On an average day, Product Managers might pitch a concept to senior leadership, create a launch plan with marketing, work with designers to conduct user research, prototype a new feature, iterate on a spec, analyze usage data, or pair with an engineer on implementation. We have ultimate responsibility for understanding our client needs, influencing business strategy, feature specification, and working with engineering to develop our software.</span></p>
-<p><strong>About the Role</strong></p>
-<p><span style="font-weight: 400;">As part of Cloudflare’s Product Operations team, the Product Operations Manager - Application Security and Performance - you will play a pivotal role in developing and executing go-to-market activities that drive business performance, product adoption, and customer satisfaction. The ideal candidate puts the customer first, can anticipate their needs before they arise, and guides both roadmap and go-to-market outcomes. You work well under pressure and can manage multiple priorities simultaneously. You are self motivated, have a bias for action, embrace change, and can adapt quickly while staying detail-oriented.&nbsp;</span></p>
-<p><strong>What you’ll do</strong></p>
+<h4><strong>About the Role</strong></h4>
+<p><span style="font-weight: 400;">Cloudflare helps build the future of the Internet. We started Cloudflare to solve one of the largest challenges facing any organization: how do you keep your websites, APIs, services, and infrastructure safe from attack without compromising on performance or reliability? Our customers relied on legacy, painful hardware to solve this challenge. They wanted a scalable service that would work around the world.</span></p>
+<p><span style="font-weight: 400;">To deliver that, we built one of the world's largest networks. Today our network spans more than 250 cities worldwide and is within milliseconds of nearly everyone connected to the Internet. We have built the capacity to stand up to nation-state scale cyberattacks and a threat intelligence system powered by the immense amount of Internet traffic that we see.</span></p>
+<p><span style="font-weight: 400;">In the last five years, Cloudflare has built the next phase of our product journey on top of that network to solve another challenge facing every small team and enterprise on the planet: ensuring the people and teams within an organization can access the tools they need to do their jobs and are safe from data loss and threats.</span></p>
+<p><span style="font-weight: 400;">To do that, we released</span><strong> </strong><a href="https://www.cloudflare.com/products/zero-trust/"><strong>Cloudflare Zero Trust</strong></a><strong>, </strong><span style="font-weight: 400;">a platform built on Cloudflare’s network to secure users, devices, and data in organizations of any size. Cloudflare Zero Trust consists of multiple products that deliver a comprehensive solution. Those products include:</span></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Gather customer insights and feedback on Cloudflare’s Application Security and Performance product suites. Be the voice of the customer, infusing the learnings back into the organization and product roadmap and ensuring effective launches of differentiated features.&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Work closely with Product Managers and their teams to formulate and communicate our product vision, strategy, framing, and positioning.&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Maintain responsibility for all go-to-market coordination including, but not limited to, new product/feature introduction, definition of market opportunity, targeting and segmentation of markets, and opportunities and facilitate time-to-value improvements.&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Collaborate with Product Marketing to develop programs and GTM content across cross-functional teams including content creation for product launches, website content, social media, product videos, webinars, tradeshows, case studies, blog posts, and more.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Maintain a firm grasp of the competitive landscape and identify areas of competitive differentiation for internal consumption and competitive programs.&nbsp;</span></li>
+	<li style="font-weight: 400;"><a href="https://www.cloudflare.com/teams/access/"><strong>Cloudflare Access</strong></a><span style="font-weight: 400;">, built to replace VPNs and protect internally-managed applications.</span></li>
+	<li style="font-weight: 400;"><a href="https://www.cloudflare.com/teams/gateway/"><strong>Cloudflare Gateway</strong></a><span style="font-weight: 400;">, a tool that keeps team members protected from malware and other threats on the Internet.</span></li>
+	<li style="font-weight: 400;"><a href="https://www.cloudflare.com/products/tunnel/"><strong>Cloudflare Tunnel</strong></a><span style="font-weight: 400;">, the best way to connect your infrastructure to Cloudflare.</span></li>
+	<li style="font-weight: 400;"><a href="https://1.1.1.1/"><strong>Cloudflare WARP</strong></a><span style="font-weight: 400;">, the best way to connect your users to Cloudflare.</span></li>
+	<li style="font-weight: 400;"><a href="https://www.cloudflare.com/teams/browser-isolation/"><strong>Cloudflare Browser Isolation</strong></a><span style="font-weight: 400;">, the Internet’s </span><a href="https://blog.cloudflare.com/the-zero-trust-platform-built-for-speed/"><span style="font-weight: 400;">fastest</span></a><span style="font-weight: 400;"> browser isolation technology that also keeps users and data safe.</span></li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><span style="font-weight: 400;">Each of those products use Cloudflare’s network to secure and accelerate connections, to deliver services closer to the user than other approaches on the market. We have been thrilled with the </span><a href="https://blog.cloudflare.com/cloudflare-one-one-year-later/"><span style="font-weight: 400;">customer response</span></a><span style="font-weight: 400;"> as their teams start this journey with us, but we need your help to keep building.</span></p>
+<p><span style="font-weight: 400;">To deliver a best in class experience, Cloudflare Zero Trust also focuses heavily on ease of use and will be launching a net-new product to help customers achieve unparalleled visibility into their environments. This product will help organizations better understand what the day-to-day experiences of their users, applications, and networks look like.&nbsp;</span></p>
+<p><span style="font-weight: 400;">This product will be supported by developing cohesive, data-driven narratives across each of our Zero Trust products surfacing and highlighting valuable trends and insights for our users.&nbsp; The goal of this team is to help teams easily identify and resolve any issues which may be impacting end-user connectivity and productivity.&nbsp;</span></p>
+<h4><strong>What you'll do</strong></h4>
+<p><span style="font-weight: 400;">You will be the Product Manager for our Zero Trust Digital Experience, owning user, application, and network performance monitoring for all Cloudflare One and Cloudflare Zero Trust users. You will take this product from 0 to 1 by leading all efforts related to experience monitoring, directly supporting engineering, design, sales and support.</span></p>
+<p><span style="font-weight: 400;">In this role you will shape the product, working closely with the development team and other functions across Cloudflare, to listen to customer problems and devise solutions that solve them.&nbsp;</span></p>
+<p><span style="font-weight: 400;">You will work to ensure that users are able to answer any questions about their deployment directly from our analytics dashboard. You will work to ensure the user experience is inclusive and accessible to all. You will solve problems that have wide impact and significance, shaping the future of security on the Internet.&nbsp;</span></p>
+<p><span style="font-weight: 400;">We operate with small teams of highly motivated and experienced engineers and product professionals. You will need a baseline understanding of networking or be highly motivated to learn in these areas. A suitable candidate will have an exceptional understanding of what it takes to build and ship software at scale, customer management, or product, and a deep desire to learn each and every day.&nbsp;</span></p>
+<h4><strong>Responsibilities</strong></h4>
+<p><span style="font-weight: 400;">This is a self-directed role where you will be expected to own a product vision, direction, and day-to-day growth including:&nbsp;</span></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">7+ years of relevant experience in product management</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience and comfort in building and influencing cross-functional relationships in a highly collaborative environment.&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Proven creative thinker with excellent communication skills, both verbal and written.&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience creating engaging and educating content.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">The ability to learn new technical concepts quickly.&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Be comfortable and thrive presenting to large audiences as well as be able to go-deep 1:1 with customers.&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with Content Delivery Networks (CDNs), Web Application Firewalls (WAF), API security, Bot Management, client side security or load balancing and is a bonus but not required.&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Help contribute to crafting Cloudflare’s vision for the future of the Internet</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Define the product, learn from customer usage, iterate and improve</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Contribute to the Cloudflare Zero Trust vision and product strategy all up</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Work with customer-facing teams during and after sales cycles</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Communicate with peers, leadership, and customers</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Organize and triage features and issues</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Manage a product roadmap and its translation to revenue</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Make decisions and own outcomes</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Work alongside an engineering team to execute on the product vision</span></li>
+</ul>
+<p><strong>Examples of desirable skills, knowledge and experience:</strong></p>
+<ul>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">3+ years of experience in product management, solutions engineering, or management consulting working alongside engineering, design and sales</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">3+ years of experience working in data science, data analysis, or with large data sets translating business insights into creative and engaging outputs&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Demonstrated ability to lead, drive consensus and deliver in an organization with multiple stakeholders</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to to support customers in all phases: pre-sales, piloting and post sales support</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Working knowledge of VPNs, Routing, DNS, Firewalls, Client/Server architectures is required</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Exceptional empathy, curiosity, attention to detail, and problem solving abilities</span></li>
+</ul>
+<p><strong>Bonus Points if you also have:&nbsp;</strong></p>
+<ul>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Working knowledge of how the Internet works at network layers 3 through 7.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">A solid understanding of RESTful API design &amp; documentation.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Familiarity with data warehousing concepts</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience validating early ideas through quantitative and qualitative methods (A/B and multivariate testing, user testing, etc). Experience in user experience (UX) design is a plus.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Hands-on experience with command-line tools used for interacting with APIs, debugging and testing (e.g. curl, dig, etc.)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Domain expertise (e.g. as a practitioner or technology provider) in several of: HTTP content delivery, network performance, browser technologies and Internet security.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Pricing strategy and revenue forecasting experience.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">BS/MS in a technology- or business-related field</span></li>
 </ul>
 <p><strong>Compensation</strong></p>
 <p><span style="font-weight: 400;">Compensation may be adjusted depending on work location.</span></p>
@@ -60,6 +91,7 @@
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Flexible paid time off covering vacation and sick leave</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Leave programs, including parental, pregnancy health, medical, and bereavement leave</span></li>
 </ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
