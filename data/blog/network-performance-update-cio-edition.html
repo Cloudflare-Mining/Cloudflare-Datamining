@@ -132,7 +132,7 @@
 				<td>101.9</td>
 			</tr>
 			<tr>
-				<td>Tubes Test</td>
+				<td>Azure Site</td>
 				<td>6.2</td>
 				<td>7.7</td>
 				<td>12.3</td>
@@ -156,7 +156,7 @@
 				<td>12.8</td>
 			</tr>
 			<tr>
-				<td>Workers</td>
+				<td>Workers Site</td>
 				<td>5.1</td>
 				<td>6.1</td>
 				<td>9.4</td>
@@ -205,32 +205,7 @@
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<p>When we drill into the data, we see that Cloudflare is consistently faster everywhere around the world. For example, take Tokyo, where Cloudflare’s 95th percentile time to first byte times are 22% faster than Zscaler:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/5.png" class="kg-image"></figure><!--kg-card-begin: html-->
-	<table width="100%">
-		<thead>
-			<tr>
-				<th></th>
-				<th colspan="2">ZT Access - 95th Percentile Time to First Byte <br>(Chicago)</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td></td>
-				<td>New Sessions (ms) </td>
-				<td>Existing Sessions (ms)</td>
-			</tr>
-			<tr>
-				<td>Cloudflare</td>
-				<td>1,032</td>
-				<td>293</td>
-			</tr>
-			<tr>
-				<td>Zscaler</td>
-				<td>1,373</td>
-				<td>338</td>
-			</tr>
-		</tbody>
-	</table><!--kg-card-end: html-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/5.png" class="kg-image"></figure>
 	<p>When we evaluate Cloudflare against Zscaler for application access scenarios, we are looking at two distinct scenarios that need to be measured individually. The first scenario is when a user logs into their application and has to authenticate. In this case, the Zero Trust Access service will direct the user to a login page, the user will authenticate, and then be redirected to their application.</p>
 	<p>This is called a new session, because no authentication information is cached or exists on the Access network. The second scenario is called an existing session, when a user has already been authenticated and that authentication information can be cached. This scenario is usually much faster, because it doesn’t require an extra call to an identity provider to complete.</p>
 	<p>We like to measure these scenarios separately, because when we look at 95th percentile values, we would almost always be looking at new sessions if we combined new and existing sessions together. But across both scenarios, Cloudflare is consistently faster in every region. Here’s how this data looks when you take a location Zscaler is more likely to have good peering in: users in Chicago, IL connecting to an application hosted in US-Central.</p>
@@ -274,7 +249,7 @@
 		<li>User refreshes the browser page and tries to access the same resource but with credentials already present - existing session</li>
 	</ul>
 	<p>This allows us to look at Cloudflare versus Zscaler for application performance for both new and existing sessions, and we’ve shown that we’re faster. We’re faster in secure web gateway scenarios too.</p>
-	<p>But what if you want to access resources on the public Internet and you don’t have a ZT client on your device? To do that, you’ll need remote browser isolation.</p>
+	<p>Both secure web gateway and Zero Trust access scenarios can be further secured using remote browser isolation. RBI offers a clientless method of both securing access to data within an application and threat defense when browsing resources on the public Internet.</p>
 	<h3 id="cloudflare-browser-isolation-your-friendly-neighborhood-web-browser">Cloudflare Browser Isolation: your friendly neighborhood web browser</h3>
 	<p>Remote browser isolation products have a very strong dependency on the public Internet: if your connection to your browser isolation product isn’t good, then your browser experience will feel weird and slow. Remote browser isolation is extraordinarily dependent on performance to feel smooth and seamless to the users: if everything is fast as it should be, then users shouldn’t even notice that they’re using browser isolation. For this test, we’re pitting Cloudflare Browser Isolation against Zscaler Cloud Browser Isolation.</p>
 	<p>Cloudflare once again is faster than Zscaler for remote browser isolation performance. Comparing 95th percentile time to first byte, Cloudflare is 45% faster than Zscaler across all regions:</p>
