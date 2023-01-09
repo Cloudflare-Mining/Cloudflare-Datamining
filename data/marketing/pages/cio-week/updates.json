@@ -1,10 +1,10 @@
 {
 	"componentChunkName": "component---src-components-page-page-template-tsx",
-	"path": "/cio-week/",
+	"path": "/cio-week/updates/",
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "CIO Week 2023 - Latest - Hub",
+				"pageName": "CIO Week 2023 - Updates and Announcements ",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
@@ -30,14 +30,14 @@
 					"zhHansCN": "Translated for Locale",
 					"plPL": "No Page for Locale"
 				},
-				"relativePath": "cio-week",
+				"relativePath": "cio-week/updates",
 				"topNavOptions": null,
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
 				"metaTags": {
 					"metaTitle": "CIO Week 2023",
-					"metaDescription": "Join us for announcements, product updates, press releases and Cloudflare TV for CIOs!",
+					"metaDescription": "See all announcements and press releases for CIOs during CIO Week 2023!",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
@@ -46,7 +46,7 @@
 					},
 					"facebookCustomImage": null
 				},
-				"contentfulId": "86Xw7qPmJe2KZ9Bs5AX5i",
+				"contentfulId": "6XiTgVKcekt809V1wvHWJI",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
 				"psaBanner": null,
@@ -55,6 +55,37 @@
 				"proactivePopup": null,
 				"template": null,
 				"relatedBlades": [
+					{
+						"contentTypeId": "bladeSubNav",
+						"contentfulId": "61uZ9fQ9x3E7zlTfrDttgb",
+						"menuTitle": "CIO Week",
+						"mobileOnlyMenuTitle": null,
+						"stickyNav": true,
+						"htmlId": null,
+						"menuItems": [
+							{
+								"contentfulId": "2jqUASeSYF38EkzInDxEoB",
+								"linkText": "Latest",
+								"page": null,
+								"url": null,
+								"subMenuItems": null
+							},
+							{
+								"contentfulId": "7BJZnDZ4d0bYNssGpiObGg",
+								"linkText": "Updates & Announcements",
+								"page": null,
+								"url": "cio-week/updates",
+								"subMenuItems": null
+							},
+							{
+								"contentfulId": "3EwLlSMKu0PXVpStCE0NrO",
+								"linkText": "Cloudflare TV",
+								"page": null,
+								"url": "cio-week/cloudflare-tv",
+								"subMenuItems": null
+							}
+						]
+					},
 					{
 						"contentfulId": "4znIamZoDUAtVa9sSO4Ozp",
 						"contentTypeId": "bladeHeroAnimation",
@@ -447,8 +478,8 @@
 		},
 		"pageContext": {
 			"locale": "en-US",
-			"pathname": "/cio-week/",
-			"contentfulId": "86Xw7qPmJe2KZ9Bs5AX5i",
+			"pathname": "/cio-week/updates/",
+			"contentfulId": "6XiTgVKcekt809V1wvHWJI",
 			"allowedHrefLangs": [
 				"en-US",
 				"zh-CN",

@@ -1,10 +1,10 @@
 {
 	"componentChunkName": "component---src-components-page-page-template-tsx",
-	"path": "/cio-week/",
+	"path": "/cio-week/cloudflare-tv/",
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "CIO Week 2023 - Latest - Hub",
+				"pageName": "CIO Week 2023 - CFTV - Hub ",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
@@ -30,14 +30,14 @@
 					"zhHansCN": "Translated for Locale",
 					"plPL": "No Page for Locale"
 				},
-				"relativePath": "cio-week",
+				"relativePath": "cio-week/cloudflare-tv",
 				"topNavOptions": null,
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
 				"metaTags": {
 					"metaTitle": "CIO Week 2023",
-					"metaDescription": "Join us for announcements, product updates, press releases and Cloudflare TV for CIOs!",
+					"metaDescription": "See all Cloudflare TV sessions for CIOs during CIO Week 2023!",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
@@ -46,7 +46,7 @@
 					},
 					"facebookCustomImage": null
 				},
-				"contentfulId": "86Xw7qPmJe2KZ9Bs5AX5i",
+				"contentfulId": "5SmBbtxUWFD4vz4Au347Iy",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
 				"psaBanner": null,
@@ -55,6 +55,37 @@
 				"proactivePopup": null,
 				"template": null,
 				"relatedBlades": [
+					{
+						"contentTypeId": "bladeSubNav",
+						"contentfulId": "61uZ9fQ9x3E7zlTfrDttgb",
+						"menuTitle": "CIO Week",
+						"mobileOnlyMenuTitle": null,
+						"stickyNav": true,
+						"htmlId": null,
+						"menuItems": [
+							{
+								"contentfulId": "2jqUASeSYF38EkzInDxEoB",
+								"linkText": "Latest",
+								"page": null,
+								"url": null,
+								"subMenuItems": null
+							},
+							{
+								"contentfulId": "7BJZnDZ4d0bYNssGpiObGg",
+								"linkText": "Updates & Announcements",
+								"page": null,
+								"url": "cio-week/updates",
+								"subMenuItems": null
+							},
+							{
+								"contentfulId": "3EwLlSMKu0PXVpStCE0NrO",
+								"linkText": "Cloudflare TV",
+								"page": null,
+								"url": "cio-week/cloudflare-tv",
+								"subMenuItems": null
+							}
+						]
+					},
 					{
 						"contentfulId": "4znIamZoDUAtVa9sSO4Ozp",
 						"contentTypeId": "bladeHeroAnimation",
@@ -117,12 +148,12 @@
 						}
 					},
 					{
-						"contentfulId": "2vSyvNrTOgBUCxf0yb2w2C",
+						"contentfulId": "7fpMMcAKuv7H6WOFC1S7kW",
 						"backgroundColor": "white",
 						"contentTypeId": "bladeFourFeatures",
 						"htmlId": null,
 						"copy": null,
-						"title": null,
+						"title": "Cloudflare TV",
 						"subtitle": null,
 						"bladeStyle": "Feature Blocks - 3 columns",
 						"bladeBorder": "none",
@@ -131,186 +162,6 @@
 						"carouselSlidesToScroll": null,
 						"locale": "en-US",
 						"features": [
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "2rPG3931hyNW6ipFwZwrzW",
-								"title": "Welcome to CIO Week 2023",
-								"titleSize": null,
-								"description": "This CIO Week we'll demonstrate how Cloudflare is helping CIOs keep data, devices and employees both safe and fast across hybrid and remote environments.  We'll show how Cloudflare accelerates digital transformation and modernizes networking and security towards a Zero Trust model.",
-								"learnMoreUrl": "https://blog.cloudflare.com/welcome-to-cio-week-2023",
-								"learnMoreText": "Learn more",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": {
-									"id": "9ed9f1ee-972b-54a0-a9bb-d51f3e352d65",
-									"altText": "Welcome to CIO Week",
-									"title": "Welcome to CIO Week",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "[path]/CIO_Week_Theme.png"
-										}
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "6SHcVG5kvmUHPM2RQaSBhv",
-								"title": "Introducing Digital Experience Monitoring",
-								"titleSize": null,
-								"description": "With Digital Experience Monitoring, we've set out to build the tools you need to quickly find the needle in the haystack and resolve issues related to performance and connectivity.",
-								"learnMoreUrl": "https://blog.cloudflare.com/introducing-digital-experience-monitoring",
-								"learnMoreText": "Learn more",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": {
-									"id": "f13aa488-7964-5544-ba8c-c19bf53ab8cc",
-									"altText": null,
-									"title": null,
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "[path]/Cloudflare_Experience_Monitoring.png"
-										}
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "2T3i9ciuM2tl1lcKJ5ukuL",
-								"title": "Cloudflare is faster than Zscaler",
-								"titleSize": null,
-								"description": "Cloudflare is 38-55% faster at delivering Zero Trust experiences than Zscaler. Let's talk about why that is and how we found that out",
-								"learnMoreUrl": "https://blog.cloudflare.com/network-performance-update-cio-edition/",
-								"learnMoreText": "Learn more",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": {
-									"id": "e2ccdedf-3ce1-592b-b9c0-b81759339700",
-									"altText": null,
-									"title": null,
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "[path]/Network_Performance_update_-_How_CF1_is_the_fastest_Zero_Trust_solution.png"
-										}
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "4QbN0yQW8tSW7L3lWPTMZy",
-								"title": "Weave your own global, private, virtual Zero Trust network on Cloudflare with WARP-to-WARP",
-								"titleSize": null,
-								"description": "Today, we're excited to announce a new way to use Cloudflare WARP to securely connect to and from any device in your Zero Trust deployment simply running WARP.",
-								"learnMoreUrl": "https://blog.cloudflare.com/warp-to-warp/",
-								"learnMoreText": "Learn more",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": {
-									"id": "15719b49-9eb7-57b9-9933-fde852e50efb",
-									"altText": null,
-									"title": null,
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "[path]/WARP_to_WARP__connect_to_any_other_device.png"
-										}
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "4OZGwQloZu9piRnNLD6k90",
-								"title": "Bring your own certificates to Cloudflare Gateway",
-								"titleSize": null,
-								"description": "Security and IT administrators can now bring their own custom certificates to encrypt user side connections for Zero Trust.",
-								"learnMoreUrl": "https://blog.cloudflare.com/bring-your-certificates-cloudflare-gateway/",
-								"learnMoreText": "Learn more",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": {
-									"id": "764267bf-dbc4-54d0-b191-f927b750edb7",
-									"altText": null,
-									"title": null,
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "[path]/Use_your_own_cert_for_SSL_inspection_in_Gateway.png"
-										}
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "3vdGrYLWCG3FzlRIdjMKMq",
-								"title": "Cloudflare Announces New Solutions to Help CIOs Maximize Employee Collaboration and Productivity",
-								"titleSize": null,
-								"description": "Cloudflare, Inc. (NYSE: NET), the security, performance, and reliability company helping to build a better Internet, today announced Cloudflare Digital Experience Monitoring, an all in one dashboard that helps CIOs understand how critical applications and Internet services are performing across their entire corporate network. Cloudflare Digital Experience Monitoring, part of Cloudflare's Zero Trust platform, will provide IT leaders with predictive, historical, and real time intelligence around application outages, network issues, and performance slow-downs to keep employees productive wherever they are working. \n",
-								"learnMoreUrl": "/press-releases/2023/digital-experience-monitoring-cios/",
-								"learnMoreText": "Learn more",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": {
-									"id": "c8992654-1850-5cbf-81c6-33b389fb98c1",
-									"altText": "Press Release Header",
-									"title": "Press Release Header",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "[path]/press-releases.png"
-										}
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
 							{
 								"contentTypeId": "feature",
 								"contentfulId": "1GAd4fNnwUrUsTzgnoEkWg",
@@ -447,8 +298,8 @@
 		},
 		"pageContext": {
 			"locale": "en-US",
-			"pathname": "/cio-week/",
-			"contentfulId": "86Xw7qPmJe2KZ9Bs5AX5i",
+			"pathname": "/cio-week/cloudflare-tv/",
+			"contentfulId": "5SmBbtxUWFD4vz4Au347Iy",
 			"allowedHrefLangs": [
 				"en-US",
 				"zh-CN",
