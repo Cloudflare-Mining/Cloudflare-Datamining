@@ -1706,6 +1706,12 @@ components:
       - name
       - data
       - priority
+    ZonekeeperPublicAPI_identifier:
+      type: string
+      description: Identifier
+      example: 023e105f4ecef8ad9ca31a8372d0c353
+      readOnly: true
+      maxLength: 32
     access-policy:
       oneOf:
       - $ref: '#/components/schemas/policy_with_permission_groups'
@@ -1853,7 +1859,11 @@ components:
               green_compute:
                 readOnly: true
     account_identifier:
-      $ref: '#/components/schemas/identifier'
+      type: string
+      description: The account identifier tag.
+      example: 023e105f4ecef8ad9ca31a8372d0c353
+      readOnly: true
+      maxLength: 32
     account_subscription_response_collection:
       allOf:
       - $ref: '#/components/schemas/api-response-collection'
@@ -4848,12 +4858,6 @@ components:
       description: The date and time the clip was created.
       example: "2014-01-02T02:20:00Z"
       readOnly: true
-    cloudflare-stream-client-api_account_identifier:
-      type: string
-      description: The account identifier tag.
-      example: 023e105f4ecef8ad9ca31a8372d0c353
-      readOnly: true
-      maxLength: 32
     cloudflare-stream-client-api_identifier:
       type: string
       description: A Cloudflare-generated unique identifier for a media item.
@@ -11154,11 +11158,7 @@ components:
               id:
                 $ref: '#/components/schemas/schemas-uuid'
     identifier:
-      type: string
-      description: Identifier
-      example: 023e105f4ecef8ad9ca31a8372d0c353
-      readOnly: true
-      maxLength: 32
+      example: 699d98642c564d2e855e9661899b7252
     identity:
       type: string
       description: The wirefilter expression to be used for identity matching.
@@ -30839,7 +30839,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       responses:
         4xx:
           description: List fields response failure
@@ -30876,7 +30876,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       responses:
         4xx:
           description: List Logpush jobs for a dataset response failure
@@ -30908,7 +30908,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       responses:
         4xx:
           description: List Logpush jobs response failure
@@ -30939,7 +30939,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       requestBody:
         required: true
         content:
@@ -30998,7 +30998,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       requestBody:
         required: true
         content:
@@ -31050,7 +31050,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       responses:
         4xx:
           description: Get Logpush job details response failure
@@ -31086,7 +31086,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       requestBody:
         required: true
         content:
@@ -31134,7 +31134,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       requestBody:
         required: true
         content:
@@ -31176,7 +31176,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       requestBody:
         required: true
         content:
@@ -31221,7 +31221,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       requestBody:
         required: true
         content:
@@ -31263,7 +31263,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       requestBody:
         required: true
         content:
@@ -31305,7 +31305,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       requestBody:
         required: true
         content:
@@ -31352,7 +31352,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       responses:
         4xx:
           description: Get CMB config response failure
@@ -31382,7 +31382,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       requestBody:
         required: true
         content:
@@ -33208,7 +33208,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       responses:
         4xx:
           description: Get projects response failure
@@ -33239,7 +33239,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       requestBody:
         required: true
         content:
@@ -33282,7 +33282,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       requestBody:
         required: true
         content:
@@ -33330,7 +33330,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       responses:
         4xx:
           description: Get project response failure
@@ -33367,7 +33367,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       requestBody:
         required: true
         content:
@@ -33410,7 +33410,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       responses:
         4xx:
           description: Get deployments response failure
@@ -33447,7 +33447,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       requestBody:
         required: true
         content:
@@ -33483,7 +33483,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       - name: project_name
         in: path
         required: true
@@ -33493,7 +33493,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       requestBody:
         required: true
         content:
@@ -33536,7 +33536,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       - name: project_name
         in: path
         required: true
@@ -33546,7 +33546,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       responses:
         4xx:
           description: Get deployment info response failure
@@ -33578,7 +33578,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       - name: project_name
         in: path
         required: true
@@ -33588,7 +33588,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       responses:
         4xx:
           description: Get deployment logs response failure
@@ -33620,7 +33620,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       - name: project_name
         in: path
         required: true
@@ -33630,7 +33630,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       requestBody:
         required: true
         content:
@@ -33667,7 +33667,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       - name: project_name
         in: path
         required: true
@@ -33677,7 +33677,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       requestBody:
         required: true
         content:
@@ -33718,7 +33718,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       responses:
         4xx:
           description: Get domains response failure
@@ -33754,7 +33754,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       requestBody:
         required: true
         content:
@@ -33802,7 +33802,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       requestBody:
         required: true
         content:
@@ -33855,7 +33855,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       responses:
         4xx:
           description: Get domain response failure
@@ -33896,7 +33896,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       requestBody:
         required: true
         content:
@@ -47955,6 +47955,7 @@ paths:
           - 14dControl
           - 28dControl
           - 90dControl
+          - 180dControl
       - name: dateStart
         in: query
         description: Start of the date range (inclusive).
@@ -48004,7 +48005,9 @@ paths:
                           - startDate
                           - endDate
                           - asns
+                          - asns_details
                           - locations
+                          - locations_details
                           - eventType
                           - linkedUrl
                           - outage
@@ -48014,6 +48017,33 @@ paths:
                               items:
                                 type: integer
                                 example: 189
+                            asns_details:
+                              type: array
+                              items:
+                                type: object
+                                required:
+                                - asn
+                                - name
+                                - locations
+                                properties:
+                                  asn:
+                                    type: integer
+                                    example: 189
+                                  locations:
+                                    type: object
+                                    required:
+                                    - asn
+                                    - name
+                                    properties:
+                                      asn:
+                                        type: string
+                                        example: US
+                                      name:
+                                        type: string
+                                        example: United States
+                                  name:
+                                    type: string
+                                    example: LUMEN-LEGACY-L3-PARTITION
                             dataSource:
                               type: string
                               example: ALL
@@ -48033,7 +48063,21 @@ paths:
                               type: array
                               items:
                                 type: string
-                                example: MX
+                                example: US
+                            locations_details:
+                              type: array
+                              items:
+                                type: object
+                                required:
+                                - asn
+                                - name
+                                properties:
+                                  asn:
+                                    type: string
+                                    example: US
+                                  name:
+                                    type: string
+                                    example: United States
                             outage:
                               type: object
                               required:
@@ -48092,6 +48136,7 @@ paths:
           - 14dControl
           - 28dControl
           - 90dControl
+          - 180dControl
       - name: dateStart
         in: query
         description: Start of the date range (inclusive).
@@ -48193,6 +48238,7 @@ paths:
             - 14dControl
             - 28dControl
             - 90dControl
+            - 180dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -48284,6 +48330,7 @@ paths:
                                   - description
                                   - startTime
                                   - endTime
+                                  - linkedUrl
                                   properties:
                                     dataSource:
                                       type: string
@@ -48298,6 +48345,8 @@ paths:
                                     eventType:
                                       type: string
                                       example: OUTAGE
+                                    linkedUrl:
+                                      type: string
                                     startTime:
                                       type: string
                                       format: date-time
@@ -48401,6 +48450,7 @@ paths:
             - 14dControl
             - 28dControl
             - 90dControl
+            - 180dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -48610,6 +48660,7 @@ paths:
             - 14dControl
             - 28dControl
             - 90dControl
+            - 180dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -48706,6 +48757,7 @@ paths:
                                   - description
                                   - startTime
                                   - endTime
+                                  - linkedUrl
                                   properties:
                                     dataSource:
                                       type: string
@@ -48720,6 +48772,8 @@ paths:
                                     eventType:
                                       type: string
                                       example: OUTAGE
+                                    linkedUrl:
+                                      type: string
                                     startTime:
                                       type: string
                                       format: date-time
@@ -48824,6 +48878,7 @@ paths:
             - 14dControl
             - 28dControl
             - 90dControl
+            - 180dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -48915,6 +48970,7 @@ paths:
                                   - description
                                   - startTime
                                   - endTime
+                                  - linkedUrl
                                   properties:
                                     dataSource:
                                       type: string
@@ -48929,6 +48985,8 @@ paths:
                                     eventType:
                                       type: string
                                       example: OUTAGE
+                                    linkedUrl:
+                                      type: string
                                     startTime:
                                       type: string
                                       format: date-time
@@ -49032,6 +49090,7 @@ paths:
             - 14dControl
             - 28dControl
             - 90dControl
+            - 180dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -49151,6 +49210,7 @@ paths:
                                   - description
                                   - startTime
                                   - endTime
+                                  - linkedUrl
                                   properties:
                                     dataSource:
                                       type: string
@@ -49165,6 +49225,8 @@ paths:
                                     eventType:
                                       type: string
                                       example: OUTAGE
+                                    linkedUrl:
+                                      type: string
                                     startTime:
                                       type: string
                                       format: date-time
@@ -49264,6 +49326,7 @@ paths:
             - 14dControl
             - 28dControl
             - 90dControl
+            - 180dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -49360,6 +49423,7 @@ paths:
                                   - description
                                   - startTime
                                   - endTime
+                                  - linkedUrl
                                   properties:
                                     dataSource:
                                       type: string
@@ -49374,6 +49438,8 @@ paths:
                                     eventType:
                                       type: string
                                       example: OUTAGE
+                                    linkedUrl:
+                                      type: string
                                     startTime:
                                       type: string
                                       format: date-time
@@ -49490,6 +49556,7 @@ paths:
             - 14dControl
             - 28dControl
             - 90dControl
+            - 180dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -49621,6 +49688,7 @@ paths:
             - 14dControl
             - 28dControl
             - 90dControl
+            - 180dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -49790,6 +49858,7 @@ paths:
             - 14dControl
             - 28dControl
             - 90dControl
+            - 180dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -49922,6 +49991,7 @@ paths:
             - 14dControl
             - 28dControl
             - 90dControl
+            - 180dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -50041,6 +50111,7 @@ paths:
           - 14dControl
           - 28dControl
           - 90dControl
+          - 180dControl
       - name: dateStart
         in: query
         description: Start of the date range (inclusive).
@@ -50215,6 +50286,7 @@ paths:
             - 14dControl
             - 28dControl
             - 90dControl
+            - 180dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -50315,6 +50387,7 @@ paths:
                                   - description
                                   - startTime
                                   - endTime
+                                  - linkedUrl
                                   properties:
                                     dataSource:
                                       type: string
@@ -50329,6 +50402,8 @@ paths:
                                     eventType:
                                       type: string
                                       example: OUTAGE
+                                    linkedUrl:
+                                      type: string
                                     startTime:
                                       type: string
                                       format: date-time
@@ -50426,6 +50501,7 @@ paths:
             - 14dControl
             - 28dControl
             - 90dControl
+            - 180dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -50596,6 +50672,7 @@ paths:
             - 14dControl
             - 28dControl
             - 90dControl
+            - 180dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -50804,7 +50881,9 @@ paths:
       tags:
       - Radar Datasets
       summary: Get Dataset csv Stream
-      description: Get the content of a dataset.
+      description: Get the csv content of a given dataset by alias or id. When getting
+        the content by alias the latest dataset is returned, optionally filtered by
+        the latest available at a given date.
       operationId: radar_get_DatasetStream
       parameters:
       - name: alias
@@ -50814,7 +50893,15 @@ paths:
         schema:
           type: string
           description: Dataset alias or id
-          example: year-in-review
+          example: ranking_top_1000
+      - name: date
+        in: query
+        description: Filter dataset alias by date
+        schema:
+          type: string
+          format: date
+          description: Filter dataset alias by date
+          example: "2022-09-15"
       responses:
         "200":
           description: Successful Response
@@ -50932,6 +51019,7 @@ paths:
             - 14dControl
             - 28dControl
             - 90dControl
+            - 180dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -51148,6 +51236,7 @@ paths:
             - 14dControl
             - 28dControl
             - 90dControl
+            - 180dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -51906,6 +51995,7 @@ paths:
             - 14dControl
             - 28dControl
             - 90dControl
+            - 180dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -52045,6 +52135,7 @@ paths:
             - 14dControl
             - 28dControl
             - 90dControl
+            - 180dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -52199,6 +52290,7 @@ paths:
             - 14dControl
             - 28dControl
             - 90dControl
+            - 180dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -52349,6 +52441,7 @@ paths:
             - 14dControl
             - 28dControl
             - 90dControl
+            - 180dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -52503,6 +52596,7 @@ paths:
             - 14dControl
             - 28dControl
             - 90dControl
+            - 180dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -52653,6 +52747,7 @@ paths:
             - 14dControl
             - 28dControl
             - 90dControl
+            - 180dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -52803,6 +52898,7 @@ paths:
             - 14dControl
             - 28dControl
             - 90dControl
+            - 180dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -52976,6 +53072,7 @@ paths:
             - 14dControl
             - 28dControl
             - 90dControl
+            - 180dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -53133,6 +53230,7 @@ paths:
             - 14dControl
             - 28dControl
             - 90dControl
+            - 180dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -53305,6 +53403,7 @@ paths:
             - 14dControl
             - 28dControl
             - 90dControl
+            - 180dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -53467,6 +53566,7 @@ paths:
             - 14dControl
             - 28dControl
             - 90dControl
+            - 180dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -53628,6 +53728,7 @@ paths:
             - 14dControl
             - 28dControl
             - 90dControl
+            - 180dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -53796,6 +53897,7 @@ paths:
             - 14dControl
             - 28dControl
             - 90dControl
+            - 180dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -53969,6 +54071,7 @@ paths:
             - 14dControl
             - 28dControl
             - 90dControl
+            - 180dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -54137,6 +54240,7 @@ paths:
             - 14dControl
             - 28dControl
             - 90dControl
+            - 180dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -54309,6 +54413,7 @@ paths:
             - 14dControl
             - 28dControl
             - 90dControl
+            - 180dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -54490,6 +54595,7 @@ paths:
             - 14dControl
             - 28dControl
             - 90dControl
+            - 180dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -54730,6 +54836,7 @@ paths:
             - 14dControl
             - 28dControl
             - 90dControl
+            - 180dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -54957,6 +55064,7 @@ paths:
             - 14dControl
             - 28dControl
             - 90dControl
+            - 180dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -55183,6 +55291,7 @@ paths:
             - 14dControl
             - 28dControl
             - 90dControl
+            - 180dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -55421,6 +55530,7 @@ paths:
             - 14dControl
             - 28dControl
             - 90dControl
+            - 180dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -55658,6 +55768,7 @@ paths:
             - 14dControl
             - 28dControl
             - 90dControl
+            - 180dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -55899,6 +56010,7 @@ paths:
             - 14dControl
             - 28dControl
             - 90dControl
+            - 180dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -56139,6 +56251,7 @@ paths:
             - 14dControl
             - 28dControl
             - 90dControl
+            - 180dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -56367,6 +56480,7 @@ paths:
             - 14dControl
             - 28dControl
             - 90dControl
+            - 180dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -56589,6 +56703,7 @@ paths:
             - 14dControl
             - 28dControl
             - 90dControl
+            - 180dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -56811,6 +56926,7 @@ paths:
             - 14dControl
             - 28dControl
             - 90dControl
+            - 180dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -57050,6 +57166,7 @@ paths:
             - 14dControl
             - 28dControl
             - 90dControl
+            - 180dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -57277,6 +57394,7 @@ paths:
             - 14dControl
             - 28dControl
             - 90dControl
+            - 180dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -57503,6 +57621,7 @@ paths:
             - 14dControl
             - 28dControl
             - 90dControl
+            - 180dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -57741,6 +57860,7 @@ paths:
             - 14dControl
             - 28dControl
             - 90dControl
+            - 180dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -57978,6 +58098,7 @@ paths:
             - 14dControl
             - 28dControl
             - 90dControl
+            - 180dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -58219,6 +58340,7 @@ paths:
             - 14dControl
             - 28dControl
             - 90dControl
+            - 180dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -58459,6 +58581,7 @@ paths:
             - 14dControl
             - 28dControl
             - 90dControl
+            - 180dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -58694,6 +58817,7 @@ paths:
             - 14dControl
             - 28dControl
             - 90dControl
+            - 180dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -58808,6 +58932,7 @@ paths:
                                   - description
                                   - startTime
                                   - endTime
+                                  - linkedUrl
                                   properties:
                                     dataSource:
                                       type: string
@@ -58822,6 +58947,8 @@ paths:
                                     eventType:
                                       type: string
                                       example: OUTAGE
+                                    linkedUrl:
+                                      type: string
                                     startTime:
                                       type: string
                                       format: date-time
@@ -58919,6 +59046,7 @@ paths:
             - 14dControl
             - 28dControl
             - 90dControl
+            - 180dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -59059,6 +59187,7 @@ paths:
             - 14dControl
             - 28dControl
             - 90dControl
+            - 180dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -59269,6 +59398,7 @@ paths:
             - 14dControl
             - 28dControl
             - 90dControl
+            - 180dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -59897,6 +60027,7 @@ paths:
             - 14dControl
             - 28dControl
             - 90dControl
+            - 180dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -60095,6 +60226,7 @@ paths:
             - 14dControl
             - 28dControl
             - 90dControl
+            - 180dControl
       - name: dateStart
         in: query
         description: Array of datetimes to filter the start of a series.
@@ -65139,7 +65271,7 @@ paths:
         description: Zone ID
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/ZonekeeperPublicAPI_identifier'
       responses:
         4xx:
           description: Client Error
@@ -65161,7 +65293,7 @@ paths:
                       type: object
                       properties:
                         id:
-                          $ref: '#/components/schemas/identifier'
+                          $ref: '#/components/schemas/ZonekeeperPublicAPI_identifier'
   /zones/{zone_id}/api_gateway/configuration:
     get:
       tags:
@@ -72128,7 +72260,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       responses:
         4xx:
           description: List fields response failure
@@ -72165,7 +72297,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       responses:
         4xx:
           description: List Logpush jobs for a dataset response failure
@@ -72197,7 +72329,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       responses:
         4xx:
           description: List Instant Logs jobs response failure
@@ -72228,7 +72360,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       requestBody:
         required: true
         content:
@@ -72272,7 +72404,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       responses:
         4xx:
           description: List Logpush jobs response failure
@@ -72303,7 +72435,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       requestBody:
         required: true
         content:
@@ -72362,7 +72494,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       requestBody:
         required: true
         content:
@@ -72414,7 +72546,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       responses:
         4xx:
           description: Get Logpush job details response failure
@@ -72450,7 +72582,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       requestBody:
         required: true
         content:
@@ -72498,7 +72630,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       requestBody:
         required: true
         content:
@@ -72540,7 +72672,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       requestBody:
         required: true
         content:
@@ -72585,7 +72717,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       requestBody:
         required: true
         content:
@@ -72627,7 +72759,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       requestBody:
         required: true
         content:
