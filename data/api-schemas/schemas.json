@@ -2548,6 +2548,13 @@
 				],
 				"title": "URI Record"
 			},
+			"ZonekeeperPublicAPI_identifier": {
+				"description": "Identifier",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"readOnly": true,
+				"type": "string"
+			},
 			"access-policy": {
 				"oneOf": [
 					{
@@ -2749,7 +2756,11 @@
 				]
 			},
 			"account_identifier": {
-				"$ref": "#/components/schemas/identifier"
+				"description": "The account identifier tag.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"readOnly": true,
+				"type": "string"
 			},
 			"account_subscription_response_collection": {
 				"allOf": [
@@ -7087,13 +7098,6 @@
 				"description": "The date and time the clip was created.",
 				"example": "2014-01-02T02:20:00Z",
 				"format": "date-time",
-				"readOnly": true,
-				"type": "string"
-			},
-			"cloudflare-stream-client-api_account_identifier": {
-				"description": "The account identifier tag.",
-				"example": "023e105f4ecef8ad9ca31a8372d0c353",
-				"maxLength": 32,
 				"readOnly": true,
 				"type": "string"
 			},
@@ -16335,11 +16339,7 @@
 				]
 			},
 			"identifier": {
-				"description": "Identifier",
-				"example": "023e105f4ecef8ad9ca31a8372d0c353",
-				"maxLength": 32,
-				"readOnly": true,
-				"type": "string"
+				"example": "699d98642c564d2e855e9661899b7252"
 			},
 			"identity": {
 				"description": "The wirefilter expression to be used for identity matching.",
@@ -45198,7 +45198,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
 						}
 					}
 				],
@@ -45275,7 +45275,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
 						}
 					}
 				],
@@ -45344,7 +45344,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
 						}
 					}
 				],
@@ -45411,7 +45411,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
 						}
 					}
 				],
@@ -45523,7 +45523,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
 						}
 					}
 				],
@@ -45630,7 +45630,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
 						}
 					}
 				],
@@ -45705,7 +45705,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
 						}
 					}
 				],
@@ -45800,7 +45800,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
 						}
 					}
 				],
@@ -45886,7 +45886,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
 						}
 					}
 				],
@@ -45976,7 +45976,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
 						}
 					}
 				],
@@ -46062,7 +46062,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
 						}
 					}
 				],
@@ -46148,7 +46148,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
 						}
 					}
 				],
@@ -46241,7 +46241,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
 						}
 					}
 				],
@@ -46299,7 +46299,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
 						}
 					}
 				],
@@ -49778,7 +49778,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
 						}
 					}
 				],
@@ -49834,7 +49834,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
 						}
 					}
 				],
@@ -49910,7 +49910,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
 						}
 					}
 				],
@@ -49990,7 +49990,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
 						}
 					}
 				],
@@ -50054,7 +50054,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
 						}
 					}
 				],
@@ -50130,7 +50130,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
 						}
 					}
 				],
@@ -50194,7 +50194,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
 						}
 					}
 				],
@@ -50258,7 +50258,7 @@
 						"name": "deployment_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
 						}
 					},
 					{
@@ -50274,7 +50274,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
 						}
 					}
 				],
@@ -50346,7 +50346,7 @@
 						"name": "deployment_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
 						}
 					},
 					{
@@ -50362,7 +50362,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
 						}
 					}
 				],
@@ -50420,7 +50420,7 @@
 						"name": "deployment_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
 						}
 					},
 					{
@@ -50436,7 +50436,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
 						}
 					}
 				],
@@ -50494,7 +50494,7 @@
 						"name": "deployment_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
 						}
 					},
 					{
@@ -50510,7 +50510,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
 						}
 					}
 				],
@@ -50574,7 +50574,7 @@
 						"name": "deployment_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
 						}
 					},
 					{
@@ -50590,7 +50590,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
 						}
 					}
 				],
@@ -50662,7 +50662,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
 						}
 					}
 				],
@@ -50726,7 +50726,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
 						}
 					}
 				],
@@ -50810,7 +50810,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
 						}
 					}
 				],
@@ -50898,7 +50898,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
 						}
 					}
 				],
@@ -50970,7 +50970,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
 						}
 					}
 				],
@@ -77981,7 +77981,8 @@
 								"7dControl",
 								"14dControl",
 								"28dControl",
-								"90dControl"
+								"90dControl",
+								"180dControl"
 							],
 							"type": "string"
 						}
@@ -78037,6 +78038,44 @@
 																},
 																"type": "array"
 															},
+															"asns_details": {
+																"items": {
+																	"properties": {
+																		"asn": {
+																			"example": 189,
+																			"type": "integer"
+																		},
+																		"locations": {
+																			"properties": {
+																				"asn": {
+																					"example": "US",
+																					"type": "string"
+																				},
+																				"name": {
+																					"example": "United States",
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"asn",
+																				"name"
+																			],
+																			"type": "object"
+																		},
+																		"name": {
+																			"example": "LUMEN-LEGACY-L3-PARTITION",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"asn",
+																		"name",
+																		"locations"
+																	],
+																	"type": "object"
+																},
+																"type": "array"
+															},
 															"dataSource": {
 																"example": "ALL",
 																"type": "string"
@@ -78059,8 +78098,28 @@
 															},
 															"locations": {
 																"items": {
-																	"example": "MX",
+																	"example": "US",
 																	"type": "string"
+																},
+																"type": "array"
+															},
+															"locations_details": {
+																"items": {
+																	"properties": {
+																		"asn": {
+																			"example": "US",
+																			"type": "string"
+																		},
+																		"name": {
+																			"example": "United States",
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"asn",
+																		"name"
+																	],
+																	"type": "object"
 																},
 																"type": "array"
 															},
@@ -78097,7 +78156,9 @@
 															"startDate",
 															"endDate",
 															"asns",
+															"asns_details",
 															"locations",
+															"locations_details",
 															"eventType",
 															"linkedUrl",
 															"outage"
@@ -78185,7 +78246,8 @@
 								"7dControl",
 								"14dControl",
 								"28dControl",
-								"90dControl"
+								"90dControl",
+								"180dControl"
 							],
 							"type": "string"
 						}
@@ -78339,7 +78401,8 @@
 									"7dControl",
 									"14dControl",
 									"28dControl",
-									"90dControl"
+									"90dControl",
+									"180dControl"
 								],
 								"type": "string"
 							},
@@ -78443,6 +78506,9 @@
 																				"example": "OUTAGE",
 																				"type": "string"
 																			},
+																			"linkedUrl": {
+																				"type": "string"
+																			},
 																			"startTime": {
 																				"example": "2022-09-15T00:00:00Z",
 																				"format": "date-time",
@@ -78454,7 +78520,8 @@
 																			"eventType",
 																			"description",
 																			"startTime",
-																			"endTime"
+																			"endTime",
+																			"linkedUrl"
 																		],
 																		"type": "object"
 																	},
@@ -78622,7 +78689,8 @@
 									"7dControl",
 									"14dControl",
 									"28dControl",
-									"90dControl"
+									"90dControl",
+									"180dControl"
 								],
 								"type": "string"
 							},
@@ -78914,7 +78982,8 @@
 									"7dControl",
 									"14dControl",
 									"28dControl",
-									"90dControl"
+									"90dControl",
+									"180dControl"
 								],
 								"type": "string"
 							},
@@ -79022,6 +79091,9 @@
 																				"example": "OUTAGE",
 																				"type": "string"
 																			},
+																			"linkedUrl": {
+																				"type": "string"
+																			},
 																			"startTime": {
 																				"example": "2022-09-15T00:00:00Z",
 																				"format": "date-time",
@@ -79033,7 +79105,8 @@
 																			"eventType",
 																			"description",
 																			"startTime",
-																			"endTime"
+																			"endTime",
+																			"linkedUrl"
 																		],
 																		"type": "object"
 																	},
@@ -79214,7 +79287,8 @@
 									"7dControl",
 									"14dControl",
 									"28dControl",
-									"90dControl"
+									"90dControl",
+									"180dControl"
 								],
 								"type": "string"
 							},
@@ -79318,6 +79392,9 @@
 																				"example": "OUTAGE",
 																				"type": "string"
 																			},
+																			"linkedUrl": {
+																				"type": "string"
+																			},
 																			"startTime": {
 																				"example": "2022-09-15T00:00:00Z",
 																				"format": "date-time",
@@ -79329,7 +79406,8 @@
 																			"eventType",
 																			"description",
 																			"startTime",
-																			"endTime"
+																			"endTime",
+																			"linkedUrl"
 																		],
 																		"type": "object"
 																	},
@@ -79497,7 +79575,8 @@
 									"7dControl",
 									"14dControl",
 									"28dControl",
-									"90dControl"
+									"90dControl",
+									"180dControl"
 								],
 								"type": "string"
 							},
@@ -79637,6 +79716,9 @@
 																				"example": "OUTAGE",
 																				"type": "string"
 																			},
+																			"linkedUrl": {
+																				"type": "string"
+																			},
 																			"startTime": {
 																				"example": "2022-09-15T00:00:00Z",
 																				"format": "date-time",
@@ -79648,7 +79730,8 @@
 																			"eventType",
 																			"description",
 																			"startTime",
-																			"endTime"
+																			"endTime",
+																			"linkedUrl"
 																		],
 																		"type": "object"
 																	},
@@ -79820,7 +79903,8 @@
 									"7dControl",
 									"14dControl",
 									"28dControl",
-									"90dControl"
+									"90dControl",
+									"180dControl"
 								],
 								"type": "string"
 							},
@@ -79928,6 +80012,9 @@
 																				"example": "OUTAGE",
 																				"type": "string"
 																			},
+																			"linkedUrl": {
+																				"type": "string"
+																			},
 																			"startTime": {
 																				"example": "2022-09-15T00:00:00Z",
 																				"format": "date-time",
@@ -79939,7 +80026,8 @@
 																			"eventType",
 																			"description",
 																			"startTime",
-																			"endTime"
+																			"endTime",
+																			"linkedUrl"
 																		],
 																		"type": "object"
 																	},
@@ -80133,7 +80221,8 @@
 									"7dControl",
 									"14dControl",
 									"28dControl",
-									"90dControl"
+									"90dControl",
+									"180dControl"
 								],
 								"type": "string"
 							},
@@ -80324,7 +80413,8 @@
 									"7dControl",
 									"14dControl",
 									"28dControl",
-									"90dControl"
+									"90dControl",
+									"180dControl"
 								],
 								"type": "string"
 							},
@@ -80560,7 +80650,8 @@
 									"7dControl",
 									"14dControl",
 									"28dControl",
-									"90dControl"
+									"90dControl",
+									"180dControl"
 								],
 								"type": "string"
 							},
@@ -80751,7 +80842,8 @@
 									"7dControl",
 									"14dControl",
 									"28dControl",
-									"90dControl"
+									"90dControl",
+									"180dControl"
 								],
 								"type": "string"
 							},
@@ -80937,7 +81029,8 @@
 								"7dControl",
 								"14dControl",
 								"28dControl",
-								"90dControl"
+								"90dControl",
+								"180dControl"
 							],
 							"type": "string"
 						}
@@ -81191,7 +81284,8 @@
 									"7dControl",
 									"14dControl",
 									"28dControl",
-									"90dControl"
+									"90dControl",
+									"180dControl"
 								],
 								"type": "string"
 							},
@@ -81311,6 +81405,9 @@
 																				"example": "OUTAGE",
 																				"type": "string"
 																			},
+																			"linkedUrl": {
+																				"type": "string"
+																			},
 																			"startTime": {
 																				"example": "2022-09-15T00:00:00Z",
 																				"format": "date-time",
@@ -81322,7 +81419,8 @@
 																			"eventType",
 																			"description",
 																			"startTime",
-																			"endTime"
+																			"endTime",
+																			"linkedUrl"
 																		],
 																		"type": "object"
 																	},
@@ -81492,7 +81590,8 @@
 									"7dControl",
 									"14dControl",
 									"28dControl",
-									"90dControl"
+									"90dControl",
+									"180dControl"
 								],
 								"type": "string"
 							},
@@ -81737,7 +81836,8 @@
 									"7dControl",
 									"14dControl",
 									"28dControl",
-									"90dControl"
+									"90dControl",
+									"180dControl"
 								],
 								"type": "string"
 							},
@@ -82160,7 +82260,7 @@
 		},
 		"/radar/datasets/{alias}": {
 			"get": {
-				"description": "Get the content of a dataset.",
+				"description": "Get the csv content of a given dataset by alias or id. When getting the content by alias the latest dataset is returned, optionally filtered by the latest available at a given date.",
 				"operationId": "radar_get_DatasetStream",
 				"parameters": [
 					{
@@ -82170,7 +82270,18 @@
 						"required": true,
 						"schema": {
 							"description": "Dataset alias or id",
-							"example": "year-in-review",
+							"example": "ranking_top_1000",
+							"type": "string"
+						}
+					},
+					{
+						"description": "Filter dataset alias by date",
+						"in": "query",
+						"name": "date",
+						"schema": {
+							"description": "Filter dataset alias by date",
+							"example": "2022-09-15",
+							"format": "date",
 							"type": "string"
 						}
 					}
@@ -82273,7 +82384,8 @@
 									"7dControl",
 									"14dControl",
 									"28dControl",
-									"90dControl"
+									"90dControl",
+									"180dControl"
 								],
 								"type": "string"
 							},
@@ -82580,7 +82692,8 @@
 									"7dControl",
 									"14dControl",
 									"28dControl",
-									"90dControl"
+									"90dControl",
+									"180dControl"
 								],
 								"type": "string"
 							},
@@ -83727,7 +83840,8 @@
 									"7dControl",
 									"14dControl",
 									"28dControl",
-									"90dControl"
+									"90dControl",
+									"180dControl"
 								],
 								"type": "string"
 							},
@@ -83927,7 +84041,8 @@
 									"7dControl",
 									"14dControl",
 									"28dControl",
-									"90dControl"
+									"90dControl",
+									"180dControl"
 								],
 								"type": "string"
 							},
@@ -84148,7 +84263,8 @@
 									"7dControl",
 									"14dControl",
 									"28dControl",
-									"90dControl"
+									"90dControl",
+									"180dControl"
 								],
 								"type": "string"
 							},
@@ -84364,7 +84480,8 @@
 									"7dControl",
 									"14dControl",
 									"28dControl",
-									"90dControl"
+									"90dControl",
+									"180dControl"
 								],
 								"type": "string"
 							},
@@ -84585,7 +84702,8 @@
 									"7dControl",
 									"14dControl",
 									"28dControl",
-									"90dControl"
+									"90dControl",
+									"180dControl"
 								],
 								"type": "string"
 							},
@@ -84801,7 +84919,8 @@
 									"7dControl",
 									"14dControl",
 									"28dControl",
-									"90dControl"
+									"90dControl",
+									"180dControl"
 								],
 								"type": "string"
 							},
@@ -85017,7 +85136,8 @@
 									"7dControl",
 									"14dControl",
 									"28dControl",
-									"90dControl"
+									"90dControl",
+									"180dControl"
 								],
 								"type": "string"
 							},
@@ -85261,7 +85381,8 @@
 									"7dControl",
 									"14dControl",
 									"28dControl",
-									"90dControl"
+									"90dControl",
+									"180dControl"
 								],
 								"type": "string"
 							},
@@ -85485,7 +85606,8 @@
 									"7dControl",
 									"14dControl",
 									"28dControl",
-									"90dControl"
+									"90dControl",
+									"180dControl"
 								],
 								"type": "string"
 							},
@@ -85728,7 +85850,8 @@
 									"7dControl",
 									"14dControl",
 									"28dControl",
-									"90dControl"
+									"90dControl",
+									"180dControl"
 								],
 								"type": "string"
 							},
@@ -85961,7 +86084,8 @@
 									"7dControl",
 									"14dControl",
 									"28dControl",
-									"90dControl"
+									"90dControl",
+									"180dControl"
 								],
 								"type": "string"
 							},
@@ -86192,7 +86316,8 @@
 									"7dControl",
 									"14dControl",
 									"28dControl",
-									"90dControl"
+									"90dControl",
+									"180dControl"
 								],
 								"type": "string"
 							},
@@ -86432,7 +86557,8 @@
 									"7dControl",
 									"14dControl",
 									"28dControl",
-									"90dControl"
+									"90dControl",
+									"180dControl"
 								],
 								"type": "string"
 							},
@@ -86679,7 +86805,8 @@
 									"7dControl",
 									"14dControl",
 									"28dControl",
-									"90dControl"
+									"90dControl",
+									"180dControl"
 								],
 								"type": "string"
 							},
@@ -86919,7 +87046,8 @@
 									"7dControl",
 									"14dControl",
 									"28dControl",
-									"90dControl"
+									"90dControl",
+									"180dControl"
 								],
 								"type": "string"
 							},
@@ -87162,7 +87290,8 @@
 									"7dControl",
 									"14dControl",
 									"28dControl",
-									"90dControl"
+									"90dControl",
+									"180dControl"
 								],
 								"type": "string"
 							},
@@ -87421,7 +87550,8 @@
 									"7dControl",
 									"14dControl",
 									"28dControl",
-									"90dControl"
+									"90dControl",
+									"180dControl"
 								],
 								"type": "string"
 							},
@@ -87760,7 +87890,8 @@
 									"7dControl",
 									"14dControl",
 									"28dControl",
-									"90dControl"
+									"90dControl",
+									"180dControl"
 								],
 								"type": "string"
 							},
@@ -88083,7 +88214,8 @@
 									"7dControl",
 									"14dControl",
 									"28dControl",
-									"90dControl"
+									"90dControl",
+									"180dControl"
 								],
 								"type": "string"
 							},
@@ -88405,7 +88537,8 @@
 									"7dControl",
 									"14dControl",
 									"28dControl",
-									"90dControl"
+									"90dControl",
+									"180dControl"
 								],
 								"type": "string"
 							},
@@ -88744,7 +88877,8 @@
 									"7dControl",
 									"14dControl",
 									"28dControl",
-									"90dControl"
+									"90dControl",
+									"180dControl"
 								],
 								"type": "string"
 							},
@@ -89082,7 +89216,8 @@
 									"7dControl",
 									"14dControl",
 									"28dControl",
-									"90dControl"
+									"90dControl",
+									"180dControl"
 								],
 								"type": "string"
 							},
@@ -89424,7 +89559,8 @@
 									"7dControl",
 									"14dControl",
 									"28dControl",
-									"90dControl"
+									"90dControl",
+									"180dControl"
 								],
 								"type": "string"
 							},
@@ -89765,7 +89901,8 @@
 									"7dControl",
 									"14dControl",
 									"28dControl",
-									"90dControl"
+									"90dControl",
+									"180dControl"
 								],
 								"type": "string"
 							},
@@ -90090,7 +90227,8 @@
 									"7dControl",
 									"14dControl",
 									"28dControl",
-									"90dControl"
+									"90dControl",
+									"180dControl"
 								],
 								"type": "string"
 							},
@@ -90408,7 +90546,8 @@
 									"7dControl",
 									"14dControl",
 									"28dControl",
-									"90dControl"
+									"90dControl",
+									"180dControl"
 								],
 								"type": "string"
 							},
@@ -90726,7 +90865,8 @@
 									"7dControl",
 									"14dControl",
 									"28dControl",
-									"90dControl"
+									"90dControl",
+									"180dControl"
 								],
 								"type": "string"
 							},
@@ -91065,7 +91205,8 @@
 									"7dControl",
 									"14dControl",
 									"28dControl",
-									"90dControl"
+									"90dControl",
+									"180dControl"
 								],
 								"type": "string"
 							},
@@ -91388,7 +91529,8 @@
 									"7dControl",
 									"14dControl",
 									"28dControl",
-									"90dControl"
+									"90dControl",
+									"180dControl"
 								],
 								"type": "string"
 							},
@@ -91710,7 +91852,8 @@
 									"7dControl",
 									"14dControl",
 									"28dControl",
-									"90dControl"
+									"90dControl",
+									"180dControl"
 								],
 								"type": "string"
 							},
@@ -92049,7 +92192,8 @@
 									"7dControl",
 									"14dControl",
 									"28dControl",
-									"90dControl"
+									"90dControl",
+									"180dControl"
 								],
 								"type": "string"
 							},
@@ -92387,7 +92531,8 @@
 									"7dControl",
 									"14dControl",
 									"28dControl",
-									"90dControl"
+									"90dControl",
+									"180dControl"
 								],
 								"type": "string"
 							},
@@ -92729,7 +92874,8 @@
 									"7dControl",
 									"14dControl",
 									"28dControl",
-									"90dControl"
+									"90dControl",
+									"180dControl"
 								],
 								"type": "string"
 							},
@@ -93070,7 +93216,8 @@
 									"7dControl",
 									"14dControl",
 									"28dControl",
-									"90dControl"
+									"90dControl",
+									"180dControl"
 								],
 								"type": "string"
 							},
@@ -93397,7 +93544,8 @@
 									"7dControl",
 									"14dControl",
 									"28dControl",
-									"90dControl"
+									"90dControl",
+									"180dControl"
 								],
 								"type": "string"
 							},
@@ -93532,6 +93680,9 @@
 																				"example": "OUTAGE",
 																				"type": "string"
 																			},
+																			"linkedUrl": {
+																				"type": "string"
+																			},
 																			"startTime": {
 																				"example": "2022-09-15T00:00:00Z",
 																				"format": "date-time",
@@ -93543,7 +93694,8 @@
 																			"eventType",
 																			"description",
 																			"startTime",
-																			"endTime"
+																			"endTime",
+																			"linkedUrl"
 																		],
 																		"type": "object"
 																	},
@@ -93713,7 +93865,8 @@
 									"7dControl",
 									"14dControl",
 									"28dControl",
-									"90dControl"
+									"90dControl",
+									"180dControl"
 								],
 								"type": "string"
 							},
@@ -93912,7 +94065,8 @@
 									"7dControl",
 									"14dControl",
 									"28dControl",
-									"90dControl"
+									"90dControl",
+									"180dControl"
 								],
 								"type": "string"
 							},
@@ -94230,7 +94384,8 @@
 									"7dControl",
 									"14dControl",
 									"28dControl",
-									"90dControl"
+									"90dControl",
+									"180dControl"
 								],
 								"type": "string"
 							},
@@ -95221,7 +95376,8 @@
 									"7dControl",
 									"14dControl",
 									"28dControl",
-									"90dControl"
+									"90dControl",
+									"180dControl"
 								],
 								"type": "string"
 							},
@@ -95500,7 +95656,8 @@
 									"7dControl",
 									"14dControl",
 									"28dControl",
-									"90dControl"
+									"90dControl",
+									"180dControl"
 								],
 								"type": "string"
 							},
@@ -113894,7 +114051,7 @@
 						"name": "zone_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
 						}
 					}
 				],
@@ -113971,7 +114128,7 @@
 						"name": "zone_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
 						}
 					}
 				],
@@ -114040,7 +114197,7 @@
 						"name": "zone_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
 						}
 					}
 				],
@@ -114107,7 +114264,7 @@
 						"name": "zone_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
 						}
 					}
 				],
@@ -114196,7 +114353,7 @@
 						"name": "zone_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
 						}
 					}
 				],
@@ -114263,7 +114420,7 @@
 						"name": "zone_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
 						}
 					}
 				],
@@ -114375,7 +114532,7 @@
 						"name": "zone_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
 						}
 					}
 				],
@@ -114482,7 +114639,7 @@
 						"name": "zone_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
 						}
 					}
 				],
@@ -114557,7 +114714,7 @@
 						"name": "zone_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
 						}
 					}
 				],
@@ -114652,7 +114809,7 @@
 						"name": "zone_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
 						}
 					}
 				],
@@ -114738,7 +114895,7 @@
 						"name": "zone_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
 						}
 					}
 				],
@@ -114828,7 +114985,7 @@
 						"name": "zone_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
 						}
 					}
 				],
@@ -114914,7 +115071,7 @@
 						"name": "zone_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
 						}
 					}
 				],
@@ -131461,7 +131618,7 @@
 						"name": "zone_id",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/identifier"
+							"$ref": "#/components/schemas/ZonekeeperPublicAPI_identifier"
 						}
 					}
 				],
@@ -131479,7 +131636,7 @@
 												"result": {
 													"properties": {
 														"id": {
-															"$ref": "#/components/schemas/identifier"
+															"$ref": "#/components/schemas/ZonekeeperPublicAPI_identifier"
 														}
 													},
 													"type": "object"
