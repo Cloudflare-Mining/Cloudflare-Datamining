@@ -2756,11 +2756,7 @@
 				]
 			},
 			"account_identifier": {
-				"description": "The account identifier tag.",
-				"example": "023e105f4ecef8ad9ca31a8372d0c353",
-				"maxLength": 32,
-				"readOnly": true,
-				"type": "string"
+				"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
 			},
 			"account_subscription_response_collection": {
 				"allOf": [
@@ -7098,6 +7094,13 @@
 				"description": "The date and time the clip was created.",
 				"example": "2014-01-02T02:20:00Z",
 				"format": "date-time",
+				"readOnly": true,
+				"type": "string"
+			},
+			"cloudflare-stream-client-api_account_identifier": {
+				"description": "The account identifier tag.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
 				"readOnly": true,
 				"type": "string"
 			},
