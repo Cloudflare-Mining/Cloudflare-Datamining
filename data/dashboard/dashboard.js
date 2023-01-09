@@ -3070,7 +3070,7 @@ Commit \u2014 `).concat(Ue.commit)
 				pu = vl,
 				gu = e("../react/pages/home/domain-registration/index.ts"),
 				Cs = r().lazy(function() {
-					return Promise.all([e.e(8415), e.e(85474), e.e(53482), e.e(53149), e.e(60590), e.e(97311), e.e(69419), e.e(55863), e.e(11407), e.e(33679), e.e(27973), e.e(68588), e.e(34744), e.e(85223), e.e(90865), e.e(23762), e.e(85258), e.e(10317), e.e(89771), e.e(79079), e.e(66616), e.e(46360), e.e(62187), e.e(30261), e.e(84728), e.e(83121), e.e(33566), e.e(52435), e.e(82256), e.e(77839), e.e(61751), e.e(73602), e.e(45721), e.e(46867), e.e(18650), e.e(33249)]).then(e.bind(e, "../react/pages/zoneless-workers/Main.tsx"))
+					return Promise.all([e.e(8415), e.e(85474), e.e(53482), e.e(53149), e.e(60590), e.e(97311), e.e(69419), e.e(55863), e.e(11407), e.e(33679), e.e(27973), e.e(68588), e.e(34744), e.e(85223), e.e(90865), e.e(23762), e.e(85258), e.e(10317), e.e(89771), e.e(79079), e.e(66616), e.e(46360), e.e(62187), e.e(30261), e.e(84728), e.e(83121), e.e(33566), e.e(52435), e.e(82256), e.e(77839), e.e(61751), e.e(73602), e.e(45721), e.e(46867), e.e(97943), e.e(33249)]).then(e.bind(e, "../react/pages/zoneless-workers/Main.tsx"))
 				}),
 				As = function(f) {
 					var Q = !!(0, Qo.P)(),
@@ -3086,7 +3086,7 @@ Commit \u2014 `).concat(Ue.commit)
 					return r().createElement(Is, f)
 				},
 				vu = r().lazy(function() {
-					return Promise.all([e.e(8415), e.e(43561), e.e(87122), e.e(67118), e.e(85474), e.e(53482), e.e(53149), e.e(60590), e.e(97311), e.e(55863), e.e(33679), e.e(68588), e.e(85223), e.e(27605), e.e(90865), e.e(78297), e.e(23762), e.e(85258), e.e(10317), e.e(79079), e.e(46360), e.e(37285), e.e(30261), e.e(84728), e.e(86277), e.e(33566), e.e(52435), e.e(91914), e.e(77839), e.e(61751), e.e(73602), e.e(46867), e.e(18650), e.e(22979), e.e(29549), e.e(22731)]).then(e.bind(e, "../react/pages/r2/Main.tsx"))
+					return Promise.all([e.e(8415), e.e(43561), e.e(87122), e.e(67118), e.e(85474), e.e(53482), e.e(53149), e.e(60590), e.e(97311), e.e(55863), e.e(33679), e.e(68588), e.e(85223), e.e(27605), e.e(90865), e.e(78297), e.e(23762), e.e(85258), e.e(10317), e.e(79079), e.e(46360), e.e(37285), e.e(30261), e.e(84728), e.e(86277), e.e(33566), e.e(52435), e.e(91914), e.e(77839), e.e(61751), e.e(73602), e.e(46867), e.e(97943), e.e(22979), e.e(29549), e.e(22731)]).then(e.bind(e, "../react/pages/r2/Main.tsx"))
 				}),
 				Ml = function(f) {
 					var Q = !!(0, Qo.P)(),
@@ -7108,12 +7108,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				e.g.build = dd({}, {
-					branch: "release-1673017442",
+					branch: "hotfix/WC-998",
 					isReleaseCandidate: "true",
-					commit: "76da7582b155fc783c78cbfad452786391964fef",
+					commit: "5a255228f49402258ef17effed2b73547e1cdad2",
 					env: "production",
-					builtAt: 1673017746097,
-					dashVersion: "8c215e07cc87539d8950f1554b3a2b2f8e7261fc",
+					builtAt: 1673282923251,
+					dashVersion: "becafcf761ea9aed6c56761db93c05f70bb3bcc7",
 					versions: {
 						"@cloudflare/app-dash": "25.125.1",
 						node: "16.16.0",
@@ -86337,4 +86337,4 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 	}
 ]);
 
-//# sourceMappingURL=2359f21238ce1a210ad4.js.map
+//# sourceMappingURL=04933d0fd8d34dd55a31.js.map
