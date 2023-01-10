@@ -186,7 +186,8 @@ components:
           $ref: '#/components/schemas/ray_id'
         user_email:
           $ref: '#/components/schemas/CloudflareClientAPI_schemas-email'
-    CloudflareClientAPI_account_identifier: {}
+    CloudflareClientAPI_account_identifier:
+      $ref: '#/components/schemas/CloudflareClientAPI_identifier'
     CloudflareClientAPI_action:
       type: string
       description: The billing item action.
@@ -312,12 +313,6 @@ components:
       - properties:
           result:
             $ref: '#/components/schemas/components-schemas-certificates'
-    CloudflareClientAPI_clipResponseSingle:
-      allOf:
-      - $ref: '#/components/schemas/api-response-collection'
-      - properties:
-          result:
-            $ref: '#/components/schemas/schemas-output'
     CloudflareClientAPI_components-schemas-id_response:
       allOf:
       - $ref: '#/components/schemas/api-response-single'
@@ -371,57 +366,6 @@ components:
           example: https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js
         url_contains_cdn_cgi_path:
           example: false
-    CloudflareClientAPI_created:
-      type: string
-      format: date-time
-      description: The date and time the destination address has been created.
-      example: "2014-01-02T02:20:00Z"
-      readOnly: true
-    CloudflareClientAPI_direct_upload_request:
-      type: object
-      required:
-      - maxDurationSeconds
-      properties:
-        allowedOrigins:
-          $ref: '#/components/schemas/allowedOrigins'
-        creator:
-          $ref: '#/components/schemas/creator'
-        expiry:
-          type: string
-          format: date-time
-          description: The date and time after upload when videos will not be accepted.
-          default: Now + 30 minutes
-          example: "2021-01-02T02:20:00Z"
-        maxDurationSeconds:
-          type: integer
-          description: Calculates the amount of time a video occupies before the video
-            is uploaded. Direct uploads occupy minutes of videos on your Stream account
-            until they are expired. After upload, the upload duration is used instead.
-            If a video longer than the value is uploaded, the video results in an
-            error.
-          minimum: 1
-          maximum: 21600
-        requireSignedURLs:
-          $ref: '#/components/schemas/requireSignedURLs'
-        thumbnailTimestampPct:
-          $ref: '#/components/schemas/thumbnailTimestampPct'
-        watermark:
-          $ref: '#/components/schemas/watermark_at_upload'
-    CloudflareClientAPI_direct_upload_response:
-      allOf:
-      - $ref: '#/components/schemas/api-response-single'
-      - properties:
-          result:
-            properties:
-              uid:
-                $ref: '#/components/schemas/videos_components-schemas-identifier'
-              uploadURL:
-                type: string
-                description: The URL an unauthenticated upload can use for a single
-                  `HTTP POST multipart/form-data` request.
-                example: www.example.com/samplepath
-              watermark:
-                $ref: '#/components/schemas/CloudflareClientAPI_watermarks'
     CloudflareClientAPI_domain:
       type: object
       properties:
@@ -440,27 +384,34 @@ components:
     CloudflareClientAPI_domain-response-collection:
       allOf:
       - $ref: '#/components/schemas/api-response-common'
-      - type: object
-        properties:
+      - properties:
+          result_info:
+            type: object
+            properties:
+              count:
+                example: 1
+              page:
+                example: 1
+              per_page:
+                example: 100
+              total_count:
+                example: 1
+      - properties:
           result:
             type: array
             items:
-              $ref: '#/components/schemas/CloudflareClientAPI_domain'
+              type: object
     CloudflareClientAPI_domain-response-single:
       allOf:
-      - $ref: '#/components/schemas/api-response-common'
-      - type: object
-        properties:
+      - $ref: '#/components/schemas/api-response-single'
+      - properties:
           result:
-            $ref: '#/components/schemas/CloudflareClientAPI_domain'
+            type: object
     CloudflareClientAPI_domain_name:
       type: string
-      description: Domain name.
-      example: cloudflare.com
-    CloudflareClientAPI_duration:
-      type: number
-      description: The duration of the plan subscription.
-      example: 1
+      description: Name of the domain.
+      example: this-is-my-domain-01.com
+      pattern: ^[a-z0-9][a-z0-9-]*$
     CloudflareClientAPI_email:
       type: string
       description: The contact email address of the user.
@@ -477,9 +428,8 @@ components:
             items: {}
     CloudflareClientAPI_enabled:
       type: boolean
-      description: Whether or not the Keyless SSL is on or off.
+      description: Flag that indicates if the job is enabled.
       example: false
-      readOnly: true
     CloudflareClientAPI_exclude:
       type: array
       description: Rules evaluated with a NOT logical operator. To match a policy,
@@ -502,27 +452,21 @@ components:
         type:
           $ref: '#/components/schemas/apps_components-schemas-type'
     CloudflareClientAPI_filter:
-      type: object
-      properties:
-        description:
-          $ref: '#/components/schemas/filters_components-schemas-description'
-        expression:
-          $ref: '#/components/schemas/expression'
-        id:
-          $ref: '#/components/schemas/filters_components-schemas-id'
-        paused:
-          $ref: '#/components/schemas/filters_components-schemas-paused'
-        ref:
-          $ref: '#/components/schemas/schemas-ref'
+      type: string
+      description: Filters to drill down into specific events.
+      example: '{"where":{"and":[{"key":"ClientCountry","operator":"neq","value":"ca"}]}}'
     CloudflareClientAPI_frequency:
       type: string
-      description: How often the subscription is renewed automatically.
+      description: The frequency at which Cloudflare sends batches of logs to your
+        destination. Setting frequency to high sends your logs in larger quantities
+        of smaller files. Setting frequency to low sends logs in smaller quantities
+        of larger files.
       enum:
-      - weekly
-      - monthly
-      - quarterly
-      - yearly
-      example: monthly
+      - high
+      - low
+      default: high
+      example: high
+      nullable: true
     CloudflareClientAPI_groups:
       type: object
       description: An object that allows you to enable or disable WAF rule groups
@@ -533,9 +477,9 @@ components:
       example:
         ea8687e59929c1fd05ba97574ad43f77: default
     CloudflareClientAPI_id:
-      type: string
-      description: Identifier of a recommedation result.
-      example: ssl_recommendation
+      type: integer
+      description: Unique id of the job.
+      minimum: 1
     CloudflareClientAPI_id_response:
       allOf:
       - $ref: '#/components/schemas/api-response-single'
@@ -547,9 +491,10 @@ components:
                 $ref: '#/components/schemas/dns-secondary-secondary-zone_components-schemas-identifier'
     CloudflareClientAPI_identifier:
       type: string
-      description: Policy identifier.
-      example: f267e341f3dd4697bd3b9f71dd96247f
+      description: Identifier
+      example: 023e105f4ecef8ad9ca31a8372d0c353
       readOnly: true
+      maxLength: 32
     CloudflareClientAPI_identity-providers:
       type: object
       properties:
@@ -575,63 +520,15 @@ components:
         secondary zones this IP defines the IP of the primary nameserver Cloudflare
         will send AXFR/IXFR requests to.
       example: 192.0.2.53
-    CloudflareClientAPI_key_response_collection:
-      allOf:
-      - $ref: '#/components/schemas/api-response-collection'
-      - properties:
-          result:
-            type: array
-            items:
-              type: object
-              properties:
-                created:
-                  $ref: '#/components/schemas/keys_components-schemas-created'
-                id:
-                  $ref: '#/components/schemas/keys_components-schemas-identifier'
-    CloudflareClientAPI_keys:
-      type: object
-      properties:
-        created:
-          $ref: '#/components/schemas/keys_components-schemas-created'
-        id:
-          $ref: '#/components/schemas/keys_components-schemas-identifier'
-        jwk:
-          $ref: '#/components/schemas/jwk'
-        pem:
-          $ref: '#/components/schemas/pem'
-    CloudflareClientAPI_live_input_object_without_url:
-      properties:
-        created:
-          $ref: '#/components/schemas/connect_components-schemas-created'
-        meta:
-          $ref: '#/components/schemas/live_input_metadata'
-        modified:
-          $ref: '#/components/schemas/components-schemas-modified'
-        uid:
-          $ref: '#/components/schemas/live_input_identifier'
-    CloudflareClientAPI_live_input_response_single:
-      allOf:
-      - $ref: '#/components/schemas/api-response-single'
-      - properties:
-          result:
-            type: object
-    CloudflareClientAPI_maxDurationSeconds:
-      type: integer
-      description: The maximum duration in seconds for a video upload. Can be set
-        for a video that is not yet uploaded to limit its duration. Uploads that exceed
-        the specified duration will fail during processing. A value of `-1` means
-        the value is unknown.
-    CloudflareClientAPI_modified:
-      type: string
-      format: date-time
-      description: The date and time the destination address was last modified.
-      example: "2014-01-02T02:20:00Z"
-      readOnly: true
     CloudflareClientAPI_name:
       type: string
-      description: Token name.
-      example: readonly token
-      maxLength: 120
+      description: Optional human readable job name. Not unique. Cloudflare suggests
+        that you set this to a meaningful string, like the domain name, to make it
+        easier to identify your job.
+      example: example.com
+      nullable: true
+      maxLength: 512
+      pattern: ^[a-zA-Z0-9\-\.]*$
     CloudflareClientAPI_organizations:
       type: object
       properties:
@@ -897,135 +794,18 @@ components:
           $ref: '#/components/schemas/timestamp'
     CloudflareClientAPI_validate_response:
       allOf:
-      - $ref: '#/components/schemas/api-response-single'
-      - properties:
-          result:
-            properties:
-              valid:
-                type: boolean
-                example: true
-    CloudflareClientAPI_video_response_single:
-      allOf:
-      - $ref: '#/components/schemas/api-response-single'
+      - $ref: '#/components/schemas/api-response-common'
       - properties:
           result:
             type: object
-    CloudflareClientAPI_videoClipStandard:
-      type: object
-      required:
-      - clippedFromVideoUID
-      - startTimeSeconds
-      - endTimeSeconds
-      properties:
-        allowedOrigins:
-          $ref: '#/components/schemas/allowedOrigins'
-        clippedFromVideoUID:
-          $ref: '#/components/schemas/clipped_from_video_uid'
-        creator:
-          $ref: '#/components/schemas/creator'
-        endTimeSeconds:
-          $ref: '#/components/schemas/end_time_seconds'
-        maxDurationSeconds:
-          $ref: '#/components/schemas/schemas-maxDurationSeconds'
-        requireSignedURLs:
-          $ref: '#/components/schemas/requireSignedURLs'
-        startTimeSeconds:
-          $ref: '#/components/schemas/start_time_seconds'
-        thumbnailTimestampPct:
-          $ref: '#/components/schemas/thumbnailTimestampPct'
-        watermark:
-          $ref: '#/components/schemas/watermarkAtUpload'
-    CloudflareClientAPI_videos:
-      type: object
-      properties:
-        allowedOrigins:
-          $ref: '#/components/schemas/allowedOrigins'
-        created:
-          $ref: '#/components/schemas/schemas-created'
-        creator:
-          $ref: '#/components/schemas/creator'
-        duration:
-          $ref: '#/components/schemas/schemas-duration'
-        input:
-          $ref: '#/components/schemas/input'
-        liveInput:
-          $ref: '#/components/schemas/liveInput'
-        maxDurationSeconds:
-          $ref: '#/components/schemas/CloudflareClientAPI_maxDurationSeconds'
-        meta:
-          $ref: '#/components/schemas/media_metadata'
-        modified:
-          $ref: '#/components/schemas/schemas-modified'
-        nft:
-          $ref: '#/components/schemas/nft'
-        playback:
-          $ref: '#/components/schemas/playback'
-        preview:
-          $ref: '#/components/schemas/preview'
-        readyToStream:
-          $ref: '#/components/schemas/readyToStream'
-        requireSignedURLs:
-          $ref: '#/components/schemas/requireSignedURLs'
-        size:
-          $ref: '#/components/schemas/size'
-        status:
-          $ref: '#/components/schemas/media_status'
-        thumbnail:
-          $ref: '#/components/schemas/thumbnail_url'
-        thumbnailTimestampPct:
-          $ref: '#/components/schemas/thumbnailTimestampPct'
-        uid:
-          $ref: '#/components/schemas/videos_components-schemas-identifier'
-        uploadExpiry:
-          $ref: '#/components/schemas/oneTimeUploadExpiry'
-        uploaded:
-          $ref: '#/components/schemas/uploaded'
-        watermark:
-          $ref: '#/components/schemas/CloudflareClientAPI_watermarks'
-    CloudflareClientAPI_watermark_basic_upload:
-      type: object
-      required:
-      - file
-      properties:
-        file:
-          type: string
-          description: The image file to upload.
-          example: '@/Users/rchen/Downloads/watermark.png'
-        name:
-          $ref: '#/components/schemas/watermarks_components-schemas-name'
-        opacity:
-          $ref: '#/components/schemas/opacity'
-        padding:
-          $ref: '#/components/schemas/padding'
-        position:
-          $ref: '#/components/schemas/position'
-        scale:
-          $ref: '#/components/schemas/scale'
-    CloudflareClientAPI_watermarks:
-      type: object
-      properties:
-        created:
-          $ref: '#/components/schemas/components-schemas-created'
-        downloadedFrom:
-          $ref: '#/components/schemas/downloadedFrom'
-        height:
-          $ref: '#/components/schemas/height'
-        name:
-          $ref: '#/components/schemas/watermarks_components-schemas-name'
-        opacity:
-          $ref: '#/components/schemas/opacity'
-        padding:
-          $ref: '#/components/schemas/padding'
-        position:
-          $ref: '#/components/schemas/position'
-        scale:
-          $ref: '#/components/schemas/scale'
-        size:
-          $ref: '#/components/schemas/schemas-size'
-        uid:
-          $ref: '#/components/schemas/watermarks_components-schemas-identifier'
-        width:
-          $ref: '#/components/schemas/width'
+            nullable: true
+            properties:
+              message:
+                type: string
+                example: ""
+              valid:
+                type: boolean
+                example: true
     CustomNS:
       title: Custom NS
       description: A single account custom nameserver.
@@ -1858,12 +1638,7 @@ components:
                 readOnly: true
               green_compute:
                 readOnly: true
-    account_identifier:
-      type: string
-      description: The account identifier tag.
-      example: 023e105f4ecef8ad9ca31a8372d0c353
-      readOnly: true
-      maxLength: 32
+    account_identifier: {}
     account_subscription_response_collection:
       allOf:
       - $ref: '#/components/schemas/api-response-collection'
@@ -4807,7 +4582,7 @@ components:
       - $ref: '#/components/schemas/api-response-collection'
       - properties:
           result:
-            $ref: '#/components/schemas/clipping'
+            $ref: '#/components/schemas/schemas-output'
     clipped_from_video_uid:
       type: string
       description: The unique video identifier (UID).
@@ -4827,7 +4602,7 @@ components:
         endTimeSeconds:
           $ref: '#/components/schemas/end_time_seconds'
         maxDurationSeconds:
-          $ref: '#/components/schemas/maxDurationSeconds'
+          $ref: '#/components/schemas/cloudflare-stream-client-api_maxDurationSeconds'
         meta:
           $ref: '#/components/schemas/media_metadata'
         modified:
@@ -4858,6 +4633,254 @@ components:
       description: The date and time the clip was created.
       example: "2014-01-02T02:20:00Z"
       readOnly: true
+    cloudflare-stream-client-api_account_identifier:
+      type: string
+      description: The account identifier tag.
+      example: 023e105f4ecef8ad9ca31a8372d0c353
+      readOnly: true
+      maxLength: 32
+    cloudflare-stream-client-api_clipResponseSingle:
+      allOf:
+      - $ref: '#/components/schemas/api-response-collection'
+      - properties:
+          result:
+            $ref: '#/components/schemas/clipping'
+    cloudflare-stream-client-api_created:
+      type: string
+      format: date-time
+      description: The date and time the media item was created.
+      example: "2014-01-02T02:20:00Z"
+      readOnly: true
+    cloudflare-stream-client-api_direct_upload_request:
+      type: object
+      required:
+      - maxDurationSeconds
+      properties:
+        allowedOrigins:
+          $ref: '#/components/schemas/allowedOrigins'
+        creator:
+          $ref: '#/components/schemas/creator'
+        expiry:
+          type: string
+          format: date-time
+          description: The date and time after upload when videos will not be accepted.
+          default: Now + 30 minutes
+          example: "2021-01-02T02:20:00Z"
+        maxDurationSeconds:
+          $ref: '#/components/schemas/cloudflare-stream-client-api_maxDurationSeconds'
+        requireSignedURLs:
+          $ref: '#/components/schemas/requireSignedURLs'
+        thumbnailTimestampPct:
+          $ref: '#/components/schemas/thumbnailTimestampPct'
+        watermark:
+          $ref: '#/components/schemas/watermark_at_upload'
+    cloudflare-stream-client-api_direct_upload_response:
+      allOf:
+      - $ref: '#/components/schemas/api-response-single'
+      - properties:
+          result:
+            properties:
+              uid:
+                $ref: '#/components/schemas/cloudflare-stream-client-api_identifier'
+              uploadURL:
+                type: string
+                description: The URL an unauthenticated upload can use for a single
+                  `HTTP POST multipart/form-data` request.
+                example: www.example.com/samplepath
+              watermark:
+                $ref: '#/components/schemas/cloudflare-stream-client-api_watermarks'
+    cloudflare-stream-client-api_duration:
+      type: integer
+      description: The duration of the video in seconds. A value of `-1` means the
+        duration is unknown. The duration becomes available after the upload and before
+        the video is ready.
+      readOnly: true
+    cloudflare-stream-client-api_identifier:
+      type: string
+      description: A Cloudflare-generated unique identifier for a media item.
+      example: ea95132c15732412d22c1476fa83f27a
+      readOnly: true
+      maxLength: 32
+    cloudflare-stream-client-api_key_response_collection:
+      allOf:
+      - $ref: '#/components/schemas/api-response-collection'
+      - properties:
+          result:
+            type: array
+            items:
+              type: object
+              properties:
+                created:
+                  $ref: '#/components/schemas/signing_key_created'
+                id:
+                  $ref: '#/components/schemas/schemas-identifier'
+    cloudflare-stream-client-api_keys:
+      type: object
+      properties:
+        created:
+          $ref: '#/components/schemas/signing_key_created'
+        id:
+          $ref: '#/components/schemas/schemas-identifier'
+        jwk:
+          $ref: '#/components/schemas/jwk'
+        pem:
+          $ref: '#/components/schemas/pem'
+    cloudflare-stream-client-api_live_input_object_without_url:
+      properties:
+        created:
+          $ref: '#/components/schemas/live_input_created'
+        meta:
+          $ref: '#/components/schemas/live_input_metadata'
+        modified:
+          $ref: '#/components/schemas/live_input_modified'
+        uid:
+          $ref: '#/components/schemas/live_input_identifier'
+    cloudflare-stream-client-api_live_input_response_single:
+      allOf:
+      - $ref: '#/components/schemas/api-response-single'
+      - properties:
+          result:
+            $ref: '#/components/schemas/live_input'
+    cloudflare-stream-client-api_maxDurationSeconds:
+      type: integer
+      description: The maximum duration in seconds for a video upload. Can be set
+        for a video that is not yet uploaded to limit its duration. Uploads that exceed
+        the specified duration will fail during processing. A value of `-1` means
+        the value is unknown.
+      minimum: 1
+      maximum: 21600
+    cloudflare-stream-client-api_modified:
+      type: string
+      format: date-time
+      description: The date and time the media item was last modified.
+      example: "2014-01-02T02:20:00Z"
+      readOnly: true
+    cloudflare-stream-client-api_name:
+      type: string
+      description: A short description of the watermark profile.
+      default: ""
+      example: Marketing Videos
+      readOnly: true
+    cloudflare-stream-client-api_video_response_single:
+      allOf:
+      - $ref: '#/components/schemas/api-response-single'
+      - properties:
+          result:
+            $ref: '#/components/schemas/cloudflare-stream-client-api_videos'
+    cloudflare-stream-client-api_videoClipStandard:
+      type: object
+      required:
+      - clippedFromVideoUID
+      - startTimeSeconds
+      - endTimeSeconds
+      properties:
+        allowedOrigins:
+          $ref: '#/components/schemas/allowedOrigins'
+        clippedFromVideoUID:
+          $ref: '#/components/schemas/clipped_from_video_uid'
+        creator:
+          $ref: '#/components/schemas/creator'
+        endTimeSeconds:
+          $ref: '#/components/schemas/end_time_seconds'
+        maxDurationSeconds:
+          $ref: '#/components/schemas/cloudflare-stream-client-api_maxDurationSeconds'
+        requireSignedURLs:
+          $ref: '#/components/schemas/requireSignedURLs'
+        startTimeSeconds:
+          $ref: '#/components/schemas/start_time_seconds'
+        thumbnailTimestampPct:
+          $ref: '#/components/schemas/thumbnailTimestampPct'
+        watermark:
+          $ref: '#/components/schemas/watermarkAtUpload'
+    cloudflare-stream-client-api_videos:
+      type: object
+      properties:
+        allowedOrigins:
+          $ref: '#/components/schemas/allowedOrigins'
+        created:
+          $ref: '#/components/schemas/cloudflare-stream-client-api_created'
+        creator:
+          $ref: '#/components/schemas/creator'
+        duration:
+          $ref: '#/components/schemas/cloudflare-stream-client-api_duration'
+        input:
+          $ref: '#/components/schemas/input'
+        liveInput:
+          $ref: '#/components/schemas/liveInput'
+        maxDurationSeconds:
+          $ref: '#/components/schemas/cloudflare-stream-client-api_maxDurationSeconds'
+        meta:
+          $ref: '#/components/schemas/media_metadata'
+        modified:
+          $ref: '#/components/schemas/cloudflare-stream-client-api_modified'
+        playback:
+          $ref: '#/components/schemas/playback'
+        preview:
+          $ref: '#/components/schemas/preview'
+        readyToStream:
+          $ref: '#/components/schemas/readyToStream'
+        requireSignedURLs:
+          $ref: '#/components/schemas/requireSignedURLs'
+        size:
+          $ref: '#/components/schemas/size'
+        status:
+          $ref: '#/components/schemas/media_status'
+        thumbnail:
+          $ref: '#/components/schemas/thumbnail_url'
+        thumbnailTimestampPct:
+          $ref: '#/components/schemas/thumbnailTimestampPct'
+        uid:
+          $ref: '#/components/schemas/cloudflare-stream-client-api_identifier'
+        uploadExpiry:
+          $ref: '#/components/schemas/oneTimeUploadExpiry'
+        uploaded:
+          $ref: '#/components/schemas/uploaded'
+        watermark:
+          $ref: '#/components/schemas/cloudflare-stream-client-api_watermarks'
+    cloudflare-stream-client-api_watermark_basic_upload:
+      type: object
+      required:
+      - file
+      properties:
+        file:
+          type: string
+          description: The image file to upload.
+          example: '@/Users/rchen/Downloads/watermark.png'
+        name:
+          $ref: '#/components/schemas/cloudflare-stream-client-api_name'
+        opacity:
+          $ref: '#/components/schemas/opacity'
+        padding:
+          $ref: '#/components/schemas/padding'
+        position:
+          $ref: '#/components/schemas/position'
+        scale:
+          $ref: '#/components/schemas/scale'
+    cloudflare-stream-client-api_watermarks:
+      type: object
+      properties:
+        created:
+          $ref: '#/components/schemas/watermark_created'
+        downloadedFrom:
+          $ref: '#/components/schemas/downloadedFrom'
+        height:
+          $ref: '#/components/schemas/height'
+        name:
+          $ref: '#/components/schemas/cloudflare-stream-client-api_name'
+        opacity:
+          $ref: '#/components/schemas/opacity'
+        padding:
+          $ref: '#/components/schemas/padding'
+        position:
+          $ref: '#/components/schemas/position'
+        scale:
+          $ref: '#/components/schemas/scale'
+        size:
+          $ref: '#/components/schemas/watermark_size'
+        uid:
+          $ref: '#/components/schemas/watermark_identifier'
+        width:
+          $ref: '#/components/schemas/width'
     cloudflare-tunnel_components-schemas-connection:
       properties:
         client_id:
@@ -6730,7 +6753,7 @@ components:
     created:
       type: string
       format: date-time
-      description: The date and time the media item was created.
+      description: The date and time the destination address has been created.
       example: "2014-01-02T02:20:00Z"
       readOnly: true
     created-on:
@@ -8008,11 +8031,11 @@ components:
       type: object
       properties:
         created:
-          $ref: '#/components/schemas/CloudflareClientAPI_created'
+          $ref: '#/components/schemas/created'
         email:
           $ref: '#/components/schemas/CloudflareClientAPI_email'
         modified:
-          $ref: '#/components/schemas/CloudflareClientAPI_modified'
+          $ref: '#/components/schemas/modified'
         tag:
           $ref: '#/components/schemas/destination_address_identifier'
         verified:
@@ -8457,7 +8480,14 @@ components:
           default: Now + 30 minutes
           example: "2021-01-02T02:20:00Z"
         maxDurationSeconds:
-          $ref: '#/components/schemas/maxDurationSeconds'
+          type: integer
+          description: Calculates the amount of time a video occupies before the video
+            is uploaded. Direct uploads occupy minutes of videos on your Stream account
+            until they are expired. After upload, the upload duration is used instead.
+            If a video longer than the value is uploaded, the video results in an
+            error.
+          minimum: 1
+          maximum: 21600
         requireSignedURLs:
           $ref: '#/components/schemas/requireSignedURLs'
         thumbnailTimestampPct:
@@ -8499,7 +8529,7 @@ components:
           result:
             properties:
               uid:
-                $ref: '#/components/schemas/identifier'
+                $ref: '#/components/schemas/videos_components-schemas-identifier'
               uploadURL:
                 type: string
                 description: The URL an unauthenticated upload can use for a single
@@ -8944,29 +8974,19 @@ components:
     domain-response-collection:
       allOf:
       - $ref: '#/components/schemas/api-response-common'
-      - properties:
-          result_info:
-            type: object
-            properties:
-              count:
-                example: 1
-              page:
-                example: 1
-              per_page:
-                example: 100
-              total_count:
-                example: 1
-      - properties:
+      - type: object
+        properties:
           result:
             type: array
             items:
-              type: object
+              $ref: '#/components/schemas/CloudflareClientAPI_domain'
     domain-response-single:
       allOf:
-      - $ref: '#/components/schemas/api-response-single'
-      - properties:
+      - $ref: '#/components/schemas/api-response-common'
+      - type: object
+        properties:
           result:
-            type: object
+            $ref: '#/components/schemas/CloudflareClientAPI_domain'
     domain_components-schemas-domain:
       properties:
         additional_information:
@@ -8996,9 +9016,8 @@ components:
       example: dbe10b4bc17c295377eabd600e1787fd
     domain_name:
       type: string
-      description: Name of the domain.
-      example: this-is-my-domain-01.com
-      pattern: ^[a-z0-9][a-z0-9-]*$
+      description: Domain name.
+      example: cloudflare.com
     domain_names:
       type: array
       description: List of domain names.
@@ -9102,11 +9121,9 @@ components:
           result:
             type: object
     duration:
-      type: integer
-      description: The duration of the video in seconds. A value of `-1` means the
-        duration is unknown. The duration becomes available after the upload and before
-        the video is ready.
-      readOnly: true
+      type: number
+      description: The duration of the plan subscription.
+      example: 1
     dynamic-redirect-rules_components-schemas-rule:
       properties:
         action:
@@ -9378,8 +9395,9 @@ components:
       example: Enabled
     enabled:
       type: boolean
-      description: Flag that indicates if the job is enabled.
+      description: Whether or not the Keyless SSL is on or off.
       example: false
+      readOnly: true
     enabled_download_phase:
       type: boolean
       description: Set to enable antivirus scan on downloads.
@@ -9839,9 +9857,18 @@ components:
       readOnly: true
       maxLength: 32
     filter:
-      type: string
-      description: Filters to drill down into specific events.
-      example: '{"where":{"and":[{"key":"ClientCountry","operator":"neq","value":"ca"}]}}'
+      type: object
+      properties:
+        description:
+          $ref: '#/components/schemas/filters_components-schemas-description'
+        expression:
+          $ref: '#/components/schemas/expression'
+        id:
+          $ref: '#/components/schemas/filters_components-schemas-id'
+        paused:
+          $ref: '#/components/schemas/filters_components-schemas-paused'
+        ref:
+          $ref: '#/components/schemas/schemas-ref'
     filter-delete-response-collection:
       allOf:
       - $ref: '#/components/schemas/api-response-collection'
@@ -9851,7 +9878,7 @@ components:
             type: array
             items:
               allOf:
-              - $ref: '#/components/schemas/CloudflareClientAPI_filter'
+              - $ref: '#/components/schemas/filter'
               - type: object
                 required:
                 - id
@@ -9864,7 +9891,7 @@ components:
         properties:
           result:
             allOf:
-            - $ref: '#/components/schemas/CloudflareClientAPI_filter'
+            - $ref: '#/components/schemas/filter'
             - type: object
               required:
               - id
@@ -9914,7 +9941,7 @@ components:
       - properties:
           filter:
             oneOf:
-            - $ref: '#/components/schemas/CloudflareClientAPI_filter'
+            - $ref: '#/components/schemas/filter'
             - $ref: '#/components/schemas/deleted-filter'
       type: object
     filter-rules-response-collection:
@@ -10155,16 +10182,13 @@ components:
       example: OK
     frequency:
       type: string
-      description: The frequency at which Cloudflare sends batches of logs to your
-        destination. Setting frequency to high sends your logs in larger quantities
-        of smaller files. Setting frequency to low sends logs in smaller quantities
-        of larger files.
+      description: How often the subscription is renewed automatically.
       enum:
-      - high
-      - low
-      default: high
-      example: high
-      nullable: true
+      - weekly
+      - monthly
+      - quarterly
+      - yearly
+      example: monthly
     full_response:
       allOf:
       - $ref: '#/components/schemas/api-response-single'
@@ -11146,11 +11170,7 @@ components:
               id:
                 $ref: '#/components/schemas/schemas-uuid'
     identifier:
-      type: string
-      description: A Cloudflare-generated unique identifier for a media item.
-      example: ea95132c15732412d22c1476fa83f27a
-      readOnly: true
-      maxLength: 32
+      example: 699d98642c564d2e855e9661899b7252
     identity:
       type: string
       description: The wirefilter expression to be used for identity matching.
@@ -11422,7 +11442,7 @@ components:
         fields:
           $ref: '#/components/schemas/fields'
         filter:
-          $ref: '#/components/schemas/filter'
+          $ref: '#/components/schemas/CloudflareClientAPI_filter'
         sample:
           $ref: '#/components/schemas/sample'
         session_id:
@@ -12150,7 +12170,7 @@ components:
       - $ref: '#/components/schemas/api-response-collection'
       - properties:
           result:
-            $ref: '#/components/schemas/CloudflareClientAPI_keys'
+            $ref: '#/components/schemas/cloudflare-stream-client-api_keys'
     key_name:
       type: string
       description: A key's name. The name may be at most 512 bytes. All printable,
@@ -12174,9 +12194,9 @@ components:
               type: object
               properties:
                 created:
-                  $ref: '#/components/schemas/signing_key_created'
+                  $ref: '#/components/schemas/keys_components-schemas-created'
                 id:
-                  $ref: '#/components/schemas/schemas-identifier'
+                  $ref: '#/components/schemas/keys_components-schemas-identifier'
     key_rotation_interval_days:
       type: number
       description: The number of days between key rotations.
@@ -12207,7 +12227,7 @@ components:
           example: "2014-01-01T05:20:00Z"
           readOnly: true
         enabled:
-          $ref: '#/components/schemas/CloudflareClientAPI_enabled'
+          $ref: '#/components/schemas/enabled'
         host:
           $ref: '#/components/schemas/schemas-host'
         id:
@@ -12280,9 +12300,9 @@ components:
       type: object
       properties:
         created:
-          $ref: '#/components/schemas/signing_key_created'
+          $ref: '#/components/schemas/keys_components-schemas-created'
         id:
-          $ref: '#/components/schemas/schemas-identifier'
+          $ref: '#/components/schemas/keys_components-schemas-identifier'
         jwk:
           $ref: '#/components/schemas/jwk'
         pem:
@@ -12720,11 +12740,11 @@ components:
     live_input_object_without_url:
       properties:
         created:
-          $ref: '#/components/schemas/live_input_created'
+          $ref: '#/components/schemas/connect_components-schemas-created'
         meta:
           $ref: '#/components/schemas/live_input_metadata'
         modified:
-          $ref: '#/components/schemas/live_input_modified'
+          $ref: '#/components/schemas/components-schemas-modified'
         uid:
           $ref: '#/components/schemas/live_input_identifier'
     live_input_recording_allowedOrigins:
@@ -12788,7 +12808,7 @@ components:
               liveInputs:
                 type: array
                 items:
-                  $ref: '#/components/schemas/CloudflareClientAPI_live_input_object_without_url'
+                  $ref: '#/components/schemas/cloudflare-stream-client-api_live_input_object_without_url'
               range:
                 type: integer
                 description: The total number of remaining live inputs based on cursor
@@ -12806,7 +12826,7 @@ components:
       - $ref: '#/components/schemas/api-response-single'
       - properties:
           result:
-            $ref: '#/components/schemas/live_input'
+            type: object
     live_input_status:
       type: string
       description: The connection status of a live input.
@@ -13234,11 +13254,11 @@ components:
         destination_conf:
           $ref: '#/components/schemas/destination_conf'
         enabled:
-          $ref: '#/components/schemas/enabled'
+          $ref: '#/components/schemas/CloudflareClientAPI_enabled'
         error_message:
           $ref: '#/components/schemas/error_message'
         frequency:
-          $ref: '#/components/schemas/frequency'
+          $ref: '#/components/schemas/CloudflareClientAPI_frequency'
         id:
           $ref: '#/components/schemas/CloudflareClientAPI_id'
         last_complete:
@@ -13410,8 +13430,6 @@ components:
         for a video that is not yet uploaded to limit its duration. Uploads that exceed
         the specified duration will fail during processing. A value of `-1` means
         the value is unknown.
-      minimum: 1
-      maximum: 21600
     maximum_cache_ttl:
       type: number
       description: Maximum DNS Cache TTL.
@@ -13954,7 +13972,7 @@ components:
     modified:
       type: string
       format: date-time
-      description: The date and time the media item was last modified.
+      description: The date and time the destination address was last modified.
       example: "2014-01-02T02:20:00Z"
       readOnly: true
     modified_at_nullable:
@@ -14180,10 +14198,8 @@ components:
                   $ref: '#/components/schemas/schemas-route'
     name:
       type: string
-      description: A short description of the watermark profile.
-      default: ""
-      example: Marketing Videos
-      readOnly: true
+      description: The name of your Zero Trust organization.
+      example: Widget Corps Internal Applications
     name_servers:
       type: array
       description: List of name servers.
@@ -14760,7 +14776,7 @@ components:
         login_design:
           $ref: '#/components/schemas/login_design'
         name:
-          $ref: '#/components/schemas/CloudflareClientAPI_name'
+          $ref: '#/components/schemas/name'
         updated_at:
           $ref: '#/components/schemas/timestamp'
         user_seat_expiration_inactive_time:
@@ -17390,7 +17406,7 @@ components:
         currency:
           $ref: '#/components/schemas/currency'
         duration:
-          $ref: '#/components/schemas/CloudflareClientAPI_duration'
+          $ref: '#/components/schemas/duration'
         frequency:
           $ref: '#/components/schemas/schemas-frequency'
         id:
@@ -18378,6 +18394,26 @@ components:
               type: boolean
               description: Enable session enforcement for this fule.
               example: true
+        egress:
+          type: object
+          description: Configure how Proxy traffic egresses. Can be set for rules
+            with Egress action and Egress filter. Can be omitted to indicate local
+            egress via Warp IPs
+          properties:
+            ipv4:
+              type: string
+              description: The IPv4 address to be used for egress.
+              example: 192.0.2.2
+            ipv4_fallback:
+              type: string
+              description: The IPv4 address to be used for egress in the event of
+                an error egressing with the primary IPv4. Can be '0.0.0.0' to indicate
+                local egreass via Warp IPs.
+              example: 192.0.2.3
+            ipv6:
+              type: string
+              description: The IPv6 range to be used for egress.
+              example: 2001:DB8::/64
         insecure_disable_dnssec_validation:
           type: boolean
           description: INSECURE - disable DNSSEC validation (for allow actions).
@@ -18653,6 +18689,7 @@ components:
       - noisolate
       - override
       - l4_override
+      - egress
       example: allow
     rules_components-schemas-description:
       type: string
@@ -19815,7 +19852,7 @@ components:
             type: array
             items:
               allOf:
-              - $ref: '#/components/schemas/CloudflareClientAPI_filter'
+              - $ref: '#/components/schemas/filter'
               - type: object
                 required:
                 - id
@@ -19831,7 +19868,7 @@ components:
           result:
             oneOf:
             - allOf:
-              - $ref: '#/components/schemas/CloudflareClientAPI_filter'
+              - $ref: '#/components/schemas/filter'
               - type: object
                 required:
                 - id
@@ -19863,6 +19900,7 @@ components:
         - http
         - dns
         - l4
+        - egress
         example: http
     schemas-force_response:
       allOf:
@@ -22707,7 +22745,7 @@ components:
         current_period_start:
           $ref: '#/components/schemas/current_period_start'
         frequency:
-          $ref: '#/components/schemas/CloudflareClientAPI_frequency'
+          $ref: '#/components/schemas/frequency'
         id:
           $ref: '#/components/schemas/subscription-v2_components-schemas-identifier'
         price:
@@ -24116,15 +24154,10 @@ components:
           example: ^4[0-9]{6,}$
     validate_response:
       allOf:
-      - $ref: '#/components/schemas/api-response-common'
+      - $ref: '#/components/schemas/api-response-single'
       - properties:
           result:
-            type: object
-            nullable: true
             properties:
-              message:
-                type: string
-                example: ""
               valid:
                 type: boolean
                 example: true
@@ -24499,7 +24532,7 @@ components:
           result:
             type: array
             items:
-              $ref: '#/components/schemas/CloudflareClientAPI_videos'
+              $ref: '#/components/schemas/cloudflare-stream-client-api_videos'
       - properties:
           range:
             type: integer
@@ -24516,7 +24549,7 @@ components:
       - $ref: '#/components/schemas/api-response-single'
       - properties:
           result:
-            $ref: '#/components/schemas/videos'
+            type: object
     video_update:
       type: object
       properties:
@@ -24525,7 +24558,7 @@ components:
         creator:
           $ref: '#/components/schemas/creator'
         maxDurationSeconds:
-          $ref: '#/components/schemas/maxDurationSeconds'
+          $ref: '#/components/schemas/cloudflare-stream-client-api_maxDurationSeconds'
         meta:
           $ref: '#/components/schemas/media_metadata'
         requireSignedURLs:
@@ -24550,7 +24583,7 @@ components:
         endTimeSeconds:
           $ref: '#/components/schemas/end_time_seconds'
         maxDurationSeconds:
-          $ref: '#/components/schemas/maxDurationSeconds'
+          $ref: '#/components/schemas/schemas-maxDurationSeconds'
         requireSignedURLs:
           $ref: '#/components/schemas/requireSignedURLs'
         startTimeSeconds:
@@ -24565,11 +24598,11 @@ components:
         allowedOrigins:
           $ref: '#/components/schemas/allowedOrigins'
         created:
-          $ref: '#/components/schemas/created'
+          $ref: '#/components/schemas/schemas-created'
         creator:
           $ref: '#/components/schemas/creator'
         duration:
-          $ref: '#/components/schemas/duration'
+          $ref: '#/components/schemas/schemas-duration'
         input:
           $ref: '#/components/schemas/input'
         liveInput:
@@ -24579,7 +24612,9 @@ components:
         meta:
           $ref: '#/components/schemas/media_metadata'
         modified:
-          $ref: '#/components/schemas/modified'
+          $ref: '#/components/schemas/schemas-modified'
+        nft:
+          $ref: '#/components/schemas/nft'
         playback:
           $ref: '#/components/schemas/playback'
         preview:
@@ -24597,7 +24632,7 @@ components:
         thumbnailTimestampPct:
           $ref: '#/components/schemas/thumbnailTimestampPct'
         uid:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/videos_components-schemas-identifier'
         uploadExpiry:
           $ref: '#/components/schemas/oneTimeUploadExpiry'
         uploaded:
@@ -24923,7 +24958,7 @@ components:
           description: The image file to upload.
           example: '@/Users/rchen/Downloads/watermark.png'
         name:
-          $ref: '#/components/schemas/name'
+          $ref: '#/components/schemas/watermarks_components-schemas-name'
         opacity:
           $ref: '#/components/schemas/opacity'
         padding:
@@ -24951,7 +24986,7 @@ components:
           result:
             type: array
             items:
-              $ref: '#/components/schemas/CloudflareClientAPI_watermarks'
+              $ref: '#/components/schemas/cloudflare-stream-client-api_watermarks'
     watermark_response_single:
       allOf:
       - $ref: '#/components/schemas/api-response-single'
@@ -24975,13 +25010,13 @@ components:
       type: object
       properties:
         created:
-          $ref: '#/components/schemas/watermark_created'
+          $ref: '#/components/schemas/components-schemas-created'
         downloadedFrom:
           $ref: '#/components/schemas/downloadedFrom'
         height:
           $ref: '#/components/schemas/height'
         name:
-          $ref: '#/components/schemas/name'
+          $ref: '#/components/schemas/watermarks_components-schemas-name'
         opacity:
           $ref: '#/components/schemas/opacity'
         padding:
@@ -24991,9 +25026,9 @@ components:
         scale:
           $ref: '#/components/schemas/scale'
         size:
-          $ref: '#/components/schemas/watermark_size'
+          $ref: '#/components/schemas/schemas-size'
         uid:
-          $ref: '#/components/schemas/watermark_identifier'
+          $ref: '#/components/schemas/watermarks_components-schemas-identifier'
         width:
           $ref: '#/components/schemas/width'
     watermarks_components-schemas-identifier:
@@ -27158,7 +27193,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_account_identifier'
+          $ref: '#/components/schemas/account_identifier'
       responses:
         4xx:
           description: Billing Profile Details response failure
@@ -27845,14 +27880,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/CloudflareClientAPI_validate_response'
+                - $ref: '#/components/schemas/validate_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Validate pattern response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CloudflareClientAPI_validate_response'
+                $ref: '#/components/schemas/validate_response'
       security:
       - api_email: []
         api_key: []
@@ -28643,7 +28678,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_account_identifier'
+          $ref: '#/components/schemas/account_identifier'
       responses:
         4xx:
           description: List IP Access rules response failure
@@ -28677,7 +28712,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_account_identifier'
+          $ref: '#/components/schemas/account_identifier'
       requestBody:
         required: true
         content:
@@ -28732,7 +28767,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_account_identifier'
+          $ref: '#/components/schemas/account_identifier'
       requestBody:
         required: true
         content:
@@ -28773,7 +28808,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_account_identifier'
+          $ref: '#/components/schemas/account_identifier'
       responses:
         4xx:
           description: Get an IP Access rule response failure
@@ -28812,7 +28847,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_account_identifier'
+          $ref: '#/components/schemas/account_identifier'
       requestBody:
         required: true
         content:
@@ -30947,9 +30982,9 @@ paths:
                 destination_conf:
                   $ref: '#/components/schemas/destination_conf'
                 enabled:
-                  $ref: '#/components/schemas/enabled'
+                  $ref: '#/components/schemas/CloudflareClientAPI_enabled'
                 frequency:
-                  $ref: '#/components/schemas/frequency'
+                  $ref: '#/components/schemas/CloudflareClientAPI_frequency'
                 logpull_options:
                   $ref: '#/components/schemas/logpull_options'
                 name:
@@ -31090,9 +31125,9 @@ paths:
                 destination_conf:
                   $ref: '#/components/schemas/destination_conf'
                 enabled:
-                  $ref: '#/components/schemas/enabled'
+                  $ref: '#/components/schemas/CloudflareClientAPI_enabled'
                 frequency:
-                  $ref: '#/components/schemas/frequency'
+                  $ref: '#/components/schemas/CloudflareClientAPI_frequency'
                 logpull_options:
                   $ref: '#/components/schemas/logpull_options'
                 ownership_challenge:
@@ -31275,14 +31310,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/validate_response'
+                - $ref: '#/components/schemas/CloudflareClientAPI_validate_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Validate origin response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/validate_response'
+                $ref: '#/components/schemas/CloudflareClientAPI_validate_response'
       security:
       - api_email: []
         api_key: []
@@ -32350,7 +32385,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_account_identifier'
+          $ref: '#/components/schemas/account_identifier'
       responses:
         4xx:
           description: List Members response failure
@@ -32381,7 +32416,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_account_identifier'
+          $ref: '#/components/schemas/account_identifier'
       requestBody:
         required: true
         content:
@@ -32424,7 +32459,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_account_identifier'
+          $ref: '#/components/schemas/account_identifier'
       requestBody:
         required: true
         content:
@@ -32464,7 +32499,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_account_identifier'
+          $ref: '#/components/schemas/account_identifier'
       responses:
         4xx:
           description: Member Details response failure
@@ -32500,7 +32535,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_account_identifier'
+          $ref: '#/components/schemas/account_identifier'
       requestBody:
         required: true
         content:
@@ -33720,14 +33755,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/domain-response-collection'
+                - $ref: '#/components/schemas/CloudflareClientAPI_domain-response-collection'
                 - $ref: '#/components/schemas/CloudflareClientAPI_api-response-common-failure'
         "200":
           description: Get domains response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/domain-response-collection'
+                $ref: '#/components/schemas/CloudflareClientAPI_domain-response-collection'
       security:
       - api_email: []
         api_key: []
@@ -33762,14 +33797,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/domain-response-single'
+                - $ref: '#/components/schemas/CloudflareClientAPI_domain-response-single'
                 - $ref: '#/components/schemas/CloudflareClientAPI_api-response-common-failure'
         "200":
           description: Add domain response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/domain-response-single'
+                $ref: '#/components/schemas/CloudflareClientAPI_domain-response-single'
       security:
       - api_email: []
         api_key: []
@@ -33786,7 +33821,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/domain_name'
+          $ref: '#/components/schemas/CloudflareClientAPI_domain_name'
       - name: project_name
         in: path
         required: true
@@ -33839,7 +33874,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/domain_name'
+          $ref: '#/components/schemas/CloudflareClientAPI_domain_name'
       - name: project_name
         in: path
         required: true
@@ -33857,14 +33892,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/domain-response-single'
+                - $ref: '#/components/schemas/CloudflareClientAPI_domain-response-single'
                 - $ref: '#/components/schemas/CloudflareClientAPI_api-response-common-failure'
         "200":
           description: Get domain response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/domain-response-single'
+                $ref: '#/components/schemas/CloudflareClientAPI_domain-response-single'
       security:
       - api_email: []
         api_key: []
@@ -33880,7 +33915,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/domain_name'
+          $ref: '#/components/schemas/CloudflareClientAPI_domain_name'
       - name: project_name
         in: path
         required: true
@@ -33902,14 +33937,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/domain-response-single'
+                - $ref: '#/components/schemas/CloudflareClientAPI_domain-response-single'
                 - $ref: '#/components/schemas/CloudflareClientAPI_api-response-common-failure'
         "200":
           description: Patch domain response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/domain-response-single'
+                $ref: '#/components/schemas/CloudflareClientAPI_domain-response-single'
       security:
       - api_email: []
         api_key: []
@@ -34757,7 +34792,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_domain_name'
+          $ref: '#/components/schemas/domain_name'
       - name: account_identifier
         in: path
         required: true
@@ -34793,7 +34828,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_domain_name'
+          $ref: '#/components/schemas/domain_name'
       - name: account_identifier
         in: path
         required: true
@@ -34837,7 +34872,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_account_identifier'
+          $ref: '#/components/schemas/account_identifier'
       responses:
         4xx:
           description: List Roles response failure
@@ -34874,7 +34909,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_account_identifier'
+          $ref: '#/components/schemas/account_identifier'
       responses:
         4xx:
           description: Role Details response failure
@@ -36562,16 +36597,14 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/components-schemas-account_identifier'
+          $ref: '#/components/schemas/cloudflare-stream-client-api_account_identifier'
       responses:
         4xx:
           description: List videos response failure
           content:
             application/json:
               schema:
-                allOf:
-                - $ref: '#/components/schemas/video_response_collection'
-                - $ref: '#/components/schemas/api-response-common-failure'
+                $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: List videos response
           content:
@@ -36611,7 +36644,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/components-schemas-account_identifier'
+          $ref: '#/components/schemas/cloudflare-stream-client-api_account_identifier'
       requestBody:
         required: true
         content:
@@ -36641,12 +36674,12 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/videos_components-schemas-identifier'
+          $ref: '#/components/schemas/cloudflare-stream-client-api_identifier'
       - name: account_identifier
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/components-schemas-account_identifier'
+          $ref: '#/components/schemas/cloudflare-stream-client-api_account_identifier'
       requestBody:
         required: true
         content:
@@ -36675,27 +36708,25 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/videos_components-schemas-identifier'
+          $ref: '#/components/schemas/cloudflare-stream-client-api_identifier'
       - name: account_identifier
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/components-schemas-account_identifier'
+          $ref: '#/components/schemas/cloudflare-stream-client-api_account_identifier'
       responses:
         4xx:
           description: Retrieve video details response failure
           content:
             application/json:
               schema:
-                allOf:
-                - $ref: '#/components/schemas/CloudflareClientAPI_video_response_single'
-                - $ref: '#/components/schemas/api-response-common-failure'
+                $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Retrieve video details response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CloudflareClientAPI_video_response_single'
+                $ref: '#/components/schemas/cloudflare-stream-client-api_video_response_single'
       security:
       - api_email: []
         api_key: []
@@ -36703,43 +36734,39 @@ paths:
     post:
       tags:
       - Stream Videos
-      summary: Associate videos to NFTs
-      description: Asssociates videos with a token ID and contract address to transfer
-        admin rights on a video. If a change in ownership of the ERC-721 token happens
-        on the Ethereum blockchain, the new token owner can claim control of the video.
-      operationId: stream-videos-associate-videos-to-nf-ts
+      summary: Update video details
+      description: Update details for a single video.
+      operationId: stream-videos-update-video-details
       parameters:
       - name: identifier
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/videos_components-schemas-identifier'
+          $ref: '#/components/schemas/cloudflare-stream-client-api_identifier'
       - name: account_identifier
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/components-schemas-account_identifier'
+          $ref: '#/components/schemas/cloudflare-stream-client-api_account_identifier'
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/nft'
+              $ref: '#/components/schemas/video_update'
       responses:
         4xx:
-          description: Associate videos to NFTs response failure
+          description: Update video details response failure
           content:
             application/json:
               schema:
-                allOf:
-                - $ref: '#/components/schemas/video_response_collection'
-                - $ref: '#/components/schemas/api-response-common-failure'
+                $ref: '#/components/schemas/api-response-common-failure'
         "200":
-          description: Associate videos to NFTs response
+          description: Update video details response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/video_response_collection'
+                $ref: '#/components/schemas/cloudflare-stream-client-api_video_response_single'
       security:
       - api_email: []
         api_key: []
@@ -36756,7 +36783,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/cloudflare-stream-client-api_identifier'
       - name: account_identifier
         in: path
         required: true
@@ -36796,7 +36823,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/cloudflare-stream-client-api_identifier'
       - name: account_identifier
         in: path
         required: true
@@ -36845,7 +36872,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/cloudflare-stream-client-api_identifier'
       - name: account_identifier
         in: path
         required: true
@@ -36886,7 +36913,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/cloudflare-stream-client-api_identifier'
       - name: account_identifier
         in: path
         required: true
@@ -36920,7 +36947,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/cloudflare-stream-client-api_identifier'
       - name: account_identifier
         in: path
         required: true
@@ -36961,22 +36988,19 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/videos_components-schemas-identifier'
+          $ref: '#/components/schemas/cloudflare-stream-client-api_identifier'
       - name: account_identifier
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/components-schemas-account_identifier'
+          $ref: '#/components/schemas/cloudflare-stream-client-api_account_identifier'
       responses:
         4xx:
           description: Retreieve embed Code HTML response failure
           content:
             application/json:
               schema:
-                allOf:
-                - example: <stream id="ea95132c15732412d22c1476fa83f27a"></stream><script
-                    data-cfasync="false" defer type="text/javascript" src="https://embed.cloudflarestream.com/embed/we4g.fla9.latest.js"></script>
-                - $ref: '#/components/schemas/api-response-common-failure'
+                $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Retreieve embed Code HTML response
           content:
@@ -37001,12 +37025,12 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/videos_components-schemas-identifier'
+          $ref: '#/components/schemas/cloudflare-stream-client-api_identifier'
       - name: account_identifier
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/components-schemas-account_identifier'
+          $ref: '#/components/schemas/cloudflare-stream-client-api_account_identifier'
       requestBody:
         required: true
         content:
@@ -37019,9 +37043,7 @@ paths:
           content:
             application/json:
               schema:
-                allOf:
-                - $ref: '#/components/schemas/signed_token_response'
-                - $ref: '#/components/schemas/api-response-common-failure'
+                $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Create signed URL tokens for videso response
           content:
@@ -37263,28 +37285,26 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/components-schemas-account_identifier'
+          $ref: '#/components/schemas/cloudflare-stream-client-api_account_identifier'
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CloudflareClientAPI_videoClipStandard'
+              $ref: '#/components/schemas/cloudflare-stream-client-api_videoClipStandard'
       responses:
         4xx:
           description: Clip videos given a start and end time response failure
           content:
             application/json:
               schema:
-                allOf:
-                - $ref: '#/components/schemas/CloudflareClientAPI_clipResponseSingle'
-                - $ref: '#/components/schemas/api-response-common-failure'
+                $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Clip videos given a start and end time response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CloudflareClientAPI_clipResponseSingle'
+                $ref: '#/components/schemas/cloudflare-stream-client-api_clipResponseSingle'
       security:
       - api_email: []
         api_key: []
@@ -37301,7 +37321,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/components-schemas-account_identifier'
+          $ref: '#/components/schemas/cloudflare-stream-client-api_account_identifier'
       requestBody:
         required: true
         content:
@@ -37314,15 +37334,13 @@ paths:
           content:
             application/json:
               schema:
-                allOf:
-                - $ref: '#/components/schemas/CloudflareClientAPI_video_response_single'
-                - $ref: '#/components/schemas/api-response-common-failure'
+                $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Upload videos from a URL response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CloudflareClientAPI_video_response_single'
+                $ref: '#/components/schemas/cloudflare-stream-client-api_video_response_single'
       security:
       - api_email: []
         api_key: []
@@ -37340,28 +37358,26 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/components-schemas-account_identifier'
+          $ref: '#/components/schemas/cloudflare-stream-client-api_account_identifier'
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CloudflareClientAPI_direct_upload_request'
+              $ref: '#/components/schemas/cloudflare-stream-client-api_direct_upload_request'
       responses:
         4xx:
           description: Upload videos via direct upload URLs response failure
           content:
             application/json:
               schema:
-                allOf:
-                - $ref: '#/components/schemas/CloudflareClientAPI_direct_upload_response'
-                - $ref: '#/components/schemas/api-response-common-failure'
+                $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Upload videos via direct upload URLs response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CloudflareClientAPI_direct_upload_response'
+                $ref: '#/components/schemas/cloudflare-stream-client-api_direct_upload_response'
       security:
       - api_email: []
         api_key: []
@@ -37379,22 +37395,20 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
+          $ref: '#/components/schemas/schemas-identifier'
       responses:
         4xx:
           description: List signing keys response failure
           content:
             application/json:
               schema:
-                allOf:
-                - $ref: '#/components/schemas/CloudflareClientAPI_key_response_collection'
-                - $ref: '#/components/schemas/api-response-common-failure'
+                $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: List signing keys response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CloudflareClientAPI_key_response_collection'
+                $ref: '#/components/schemas/cloudflare-stream-client-api_key_response_collection'
       security:
       - api_email: []
         api_key: []
@@ -37412,7 +37426,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
+          $ref: '#/components/schemas/schemas-identifier'
       requestBody:
         required: true
         content:
@@ -37423,9 +37437,7 @@ paths:
           content:
             application/json:
               schema:
-                allOf:
-                - $ref: '#/components/schemas/key_generation_response'
-                - $ref: '#/components/schemas/api-response-common-failure'
+                $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Create signing keys response
           content:
@@ -37449,12 +37461,12 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/keys_components-schemas-identifier'
+          $ref: '#/components/schemas/schemas-identifier'
       - name: account_identifier
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
+          $ref: '#/components/schemas/schemas-identifier'
       requestBody:
         required: true
         content:
@@ -37465,9 +37477,7 @@ paths:
           content:
             application/json:
               schema:
-                allOf:
-                - $ref: '#/components/schemas/deleted_response'
-                - $ref: '#/components/schemas/api-response-common-failure'
+                $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Delete signing keys response
           content:
@@ -37491,16 +37501,14 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
+          $ref: '#/components/schemas/schemas-identifier'
       responses:
         4xx:
           description: List live inputs response failure
           content:
             application/json:
               schema:
-                allOf:
-                - $ref: '#/components/schemas/live_input_response_collection'
-                - $ref: '#/components/schemas/api-response-common-failure'
+                $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: List live inputs response
           content:
@@ -37523,7 +37531,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
+          $ref: '#/components/schemas/schemas-identifier'
       requestBody:
         required: true
         content:
@@ -37536,15 +37544,13 @@ paths:
           content:
             application/json:
               schema:
-                allOf:
-                - $ref: '#/components/schemas/CloudflareClientAPI_live_input_response_single'
-                - $ref: '#/components/schemas/api-response-common-failure'
+                $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Create a live input response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CloudflareClientAPI_live_input_response_single'
+                $ref: '#/components/schemas/cloudflare-stream-client-api_live_input_response_single'
       security:
       - api_email: []
         api_key: []
@@ -37567,7 +37573,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
+          $ref: '#/components/schemas/schemas-identifier'
       requestBody:
         required: true
         content:
@@ -37601,22 +37607,20 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
+          $ref: '#/components/schemas/schemas-identifier'
       responses:
         4xx:
           description: Retrieve a live input response failure
           content:
             application/json:
               schema:
-                allOf:
-                - $ref: '#/components/schemas/CloudflareClientAPI_live_input_response_single'
-                - $ref: '#/components/schemas/api-response-common-failure'
+                $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Retrieve a live input response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CloudflareClientAPI_live_input_response_single'
+                $ref: '#/components/schemas/cloudflare-stream-client-api_live_input_response_single'
       security:
       - api_email: []
         api_key: []
@@ -37637,7 +37641,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
+          $ref: '#/components/schemas/schemas-identifier'
       requestBody:
         required: true
         content:
@@ -37650,15 +37654,13 @@ paths:
           content:
             application/json:
               schema:
-                allOf:
-                - $ref: '#/components/schemas/CloudflareClientAPI_live_input_response_single'
-                - $ref: '#/components/schemas/api-response-common-failure'
+                $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Update a live input response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CloudflareClientAPI_live_input_response_single'
+                $ref: '#/components/schemas/cloudflare-stream-client-api_live_input_response_single'
       security:
       - api_email: []
         api_key: []
@@ -37680,7 +37682,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
+          $ref: '#/components/schemas/schemas-identifier'
       responses:
         4xx:
           description: List all outputs associated with a specified live input response
@@ -37688,9 +37690,7 @@ paths:
           content:
             application/json:
               schema:
-                allOf:
-                - $ref: '#/components/schemas/output_response_collection'
-                - $ref: '#/components/schemas/api-response-common-failure'
+                $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: List all outputs associated with a specified live input response
           content:
@@ -37719,7 +37719,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
+          $ref: '#/components/schemas/schemas-identifier'
       requestBody:
         required: true
         content:
@@ -37732,9 +37732,7 @@ paths:
           content:
             application/json:
               schema:
-                allOf:
-                - $ref: '#/components/schemas/output_response_single'
-                - $ref: '#/components/schemas/api-response-common-failure'
+                $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Create a new output, connected to a live input response
           content:
@@ -37767,7 +37765,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
+          $ref: '#/components/schemas/schemas-identifier'
       requestBody:
         required: true
         content:
@@ -37806,7 +37804,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
+          $ref: '#/components/schemas/schemas-identifier'
       requestBody:
         required: true
         content:
@@ -37819,9 +37817,7 @@ paths:
           content:
             application/json:
               schema:
-                allOf:
-                - $ref: '#/components/schemas/output_response_single'
-                - $ref: '#/components/schemas/api-response-common-failure'
+                $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Update an output response
           content:
@@ -37844,16 +37840,14 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/components-schemas-account_identifier'
+          $ref: '#/components/schemas/cloudflare-stream-client-api_account_identifier'
       responses:
         4xx:
           description: List watermark profiles response failure
           content:
             application/json:
               schema:
-                allOf:
-                - $ref: '#/components/schemas/watermark_response_collection'
-                - $ref: '#/components/schemas/api-response-common-failure'
+                $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: List watermark profiles response
           content:
@@ -37876,22 +37870,20 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/components-schemas-account_identifier'
+          $ref: '#/components/schemas/cloudflare-stream-client-api_account_identifier'
       requestBody:
         required: true
         content:
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/CloudflareClientAPI_watermark_basic_upload'
+              $ref: '#/components/schemas/cloudflare-stream-client-api_watermark_basic_upload'
       responses:
         4xx:
           description: Create watermark profiles via basic upload response failure
           content:
             application/json:
               schema:
-                allOf:
-                - $ref: '#/components/schemas/watermark_response_single'
-                - $ref: '#/components/schemas/api-response-common-failure'
+                $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Create watermark profiles via basic upload response
           content:
@@ -37914,12 +37906,12 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/watermarks_components-schemas-identifier'
+          $ref: '#/components/schemas/watermark_identifier'
       - name: account_identifier
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/components-schemas-account_identifier'
+          $ref: '#/components/schemas/cloudflare-stream-client-api_account_identifier'
       requestBody:
         required: true
         content:
@@ -37930,14 +37922,7 @@ paths:
           content:
             application/json:
               schema:
-                allOf:
-                - allOf:
-                  - $ref: '#/components/schemas/api-response-single'
-                  - properties:
-                      result:
-                        type: string
-                        example: ""
-                - $ref: '#/components/schemas/api-response-common-failure'
+                $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Delete watermark profiles response
           content:
@@ -37964,21 +37949,19 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/watermarks_components-schemas-identifier'
+          $ref: '#/components/schemas/watermark_identifier'
       - name: account_identifier
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/components-schemas-account_identifier'
+          $ref: '#/components/schemas/cloudflare-stream-client-api_account_identifier'
       responses:
         4xx:
           description: Watermark profile details response failure
           content:
             application/json:
               schema:
-                allOf:
-                - $ref: '#/components/schemas/watermark_response_single'
-                - $ref: '#/components/schemas/api-response-common-failure'
+                $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Watermark profile details response
           content:
@@ -38001,7 +37984,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/webhook_components-schemas-account_identifier'
+          $ref: '#/components/schemas/cloudflare-stream-client-api_account_identifier'
       requestBody:
         required: true
         content:
@@ -38012,9 +37995,7 @@ paths:
           content:
             application/json:
               schema:
-                allOf:
-                - $ref: '#/components/schemas/deleted_response'
-                - $ref: '#/components/schemas/api-response-common-failure'
+                $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Delete webhooks response
           content:
@@ -38036,16 +38017,14 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/webhook_components-schemas-account_identifier'
+          $ref: '#/components/schemas/cloudflare-stream-client-api_account_identifier'
       responses:
         4xx:
           description: View webhooks response failure
           content:
             application/json:
               schema:
-                allOf:
-                - $ref: '#/components/schemas/webhook_response_single'
-                - $ref: '#/components/schemas/api-response-common-failure'
+                $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: View webhooks response
           content:
@@ -38067,7 +38046,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/webhook_components-schemas-account_identifier'
+          $ref: '#/components/schemas/cloudflare-stream-client-api_account_identifier'
       requestBody:
         required: true
         content:
@@ -38080,9 +38059,7 @@ paths:
           content:
             application/json:
               schema:
-                allOf:
-                - $ref: '#/components/schemas/webhook_response_single'
-                - $ref: '#/components/schemas/api-response-common-failure'
+                $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Create webhooks response
           content:
@@ -39334,14 +39311,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/CloudflareClientAPI_domain-response-collection'
+                - $ref: '#/components/schemas/domain-response-collection'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: List Domains response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CloudflareClientAPI_domain-response-collection'
+                $ref: '#/components/schemas/domain-response-collection'
       security:
       - api_email: []
         api_key: []
@@ -39385,14 +39362,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/CloudflareClientAPI_domain-response-single'
+                - $ref: '#/components/schemas/domain-response-single'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Attach to Domain response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CloudflareClientAPI_domain-response-single'
+                $ref: '#/components/schemas/domain-response-single'
       security:
       - api_email: []
         api_key: []
@@ -39456,14 +39433,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/CloudflareClientAPI_domain-response-single'
+                - $ref: '#/components/schemas/domain-response-single'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Get a Domain response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CloudflareClientAPI_domain-response-single'
+                $ref: '#/components/schemas/domain-response-single'
       security:
       - api_email: []
         api_key: []
@@ -72177,7 +72154,7 @@ paths:
               type: object
               properties:
                 enabled:
-                  $ref: '#/components/schemas/CloudflareClientAPI_enabled'
+                  $ref: '#/components/schemas/enabled'
                 host:
                   $ref: '#/components/schemas/schemas-host'
                 name:
@@ -72332,7 +72309,7 @@ paths:
                 fields:
                   $ref: '#/components/schemas/fields'
                 filter:
-                  $ref: '#/components/schemas/filter'
+                  $ref: '#/components/schemas/CloudflareClientAPI_filter'
                 sample:
                   $ref: '#/components/schemas/sample'
       responses:
@@ -72411,9 +72388,9 @@ paths:
                 destination_conf:
                   $ref: '#/components/schemas/destination_conf'
                 enabled:
-                  $ref: '#/components/schemas/enabled'
+                  $ref: '#/components/schemas/CloudflareClientAPI_enabled'
                 frequency:
-                  $ref: '#/components/schemas/frequency'
+                  $ref: '#/components/schemas/CloudflareClientAPI_frequency'
                 logpull_options:
                   $ref: '#/components/schemas/logpull_options'
                 name:
@@ -72554,9 +72531,9 @@ paths:
                 destination_conf:
                   $ref: '#/components/schemas/destination_conf'
                 enabled:
-                  $ref: '#/components/schemas/enabled'
+                  $ref: '#/components/schemas/CloudflareClientAPI_enabled'
                 frequency:
-                  $ref: '#/components/schemas/frequency'
+                  $ref: '#/components/schemas/CloudflareClientAPI_frequency'
                 logpull_options:
                   $ref: '#/components/schemas/logpull_options'
                 ownership_challenge:
@@ -72739,14 +72716,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/validate_response'
+                - $ref: '#/components/schemas/CloudflareClientAPI_validate_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Validate origin response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/validate_response'
+                $ref: '#/components/schemas/CloudflareClientAPI_validate_response'
       security:
       - api_email: []
         api_key: []
