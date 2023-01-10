@@ -1706,12 +1706,6 @@ components:
       - name
       - data
       - priority
-    ZonekeeperPublicAPI_identifier:
-      type: string
-      description: Identifier
-      example: 023e105f4ecef8ad9ca31a8372d0c353
-      readOnly: true
-      maxLength: 32
     access-policy:
       oneOf:
       - $ref: '#/components/schemas/policy_with_permission_groups'
@@ -1859,7 +1853,11 @@ components:
               green_compute:
                 readOnly: true
     account_identifier:
-      $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+      type: string
+      description: The account identifier tag.
+      example: 023e105f4ecef8ad9ca31a8372d0c353
+      readOnly: true
+      maxLength: 32
     account_subscription_response_collection:
       allOf:
       - $ref: '#/components/schemas/api-response-collection'
@@ -4854,24 +4852,12 @@ components:
       description: The date and time the clip was created.
       example: "2014-01-02T02:20:00Z"
       readOnly: true
-    cloudflare-stream-client-api_account_identifier:
-      type: string
-      description: The account identifier tag.
-      example: 023e105f4ecef8ad9ca31a8372d0c353
-      readOnly: true
-      maxLength: 32
     cloudflare-stream-client-api_identifier:
       type: string
       description: A Cloudflare-generated unique identifier for a media item.
       example: ea95132c15732412d22c1476fa83f27a
       readOnly: true
       maxLength: 32
-    cloudflare-stream-client-api_name:
-      type: string
-      description: A short description of the watermark profile.
-      default: ""
-      example: Marketing Videos
-      readOnly: true
     cloudflare-tunnel_components-schemas-connection:
       properties:
         client_id:
@@ -11160,7 +11146,11 @@ components:
               id:
                 $ref: '#/components/schemas/schemas-uuid'
     identifier:
-      example: 699d98642c564d2e855e9661899b7252
+      type: string
+      description: Identifier
+      example: 023e105f4ecef8ad9ca31a8372d0c353
+      readOnly: true
+      maxLength: 32
     identity:
       type: string
       description: The wirefilter expression to be used for identity matching.
@@ -14190,8 +14180,10 @@ components:
                   $ref: '#/components/schemas/schemas-route'
     name:
       type: string
-      description: The name of your Zero Trust organization.
-      example: Widget Corps Internal Applications
+      description: A short description of the watermark profile.
+      default: ""
+      example: Marketing Videos
+      readOnly: true
     name_servers:
       type: array
       description: List of name servers.
@@ -14768,7 +14760,7 @@ components:
         login_design:
           $ref: '#/components/schemas/login_design'
         name:
-          $ref: '#/components/schemas/name'
+          $ref: '#/components/schemas/CloudflareClientAPI_name'
         updated_at:
           $ref: '#/components/schemas/timestamp'
         user_seat_expiration_inactive_time:
@@ -24931,7 +24923,7 @@ components:
           description: The image file to upload.
           example: '@/Users/rchen/Downloads/watermark.png'
         name:
-          $ref: '#/components/schemas/cloudflare-stream-client-api_name'
+          $ref: '#/components/schemas/name'
         opacity:
           $ref: '#/components/schemas/opacity'
         padding:
@@ -24989,7 +24981,7 @@ components:
         height:
           $ref: '#/components/schemas/height'
         name:
-          $ref: '#/components/schemas/cloudflare-stream-client-api_name'
+          $ref: '#/components/schemas/name'
         opacity:
           $ref: '#/components/schemas/opacity'
         padding:
@@ -30841,7 +30833,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: List fields response failure
@@ -30878,7 +30870,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: List Logpush jobs for a dataset response failure
@@ -30910,7 +30902,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: List Logpush jobs response failure
@@ -30941,7 +30933,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -31000,7 +30992,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -31052,7 +31044,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: Get Logpush job details response failure
@@ -31088,7 +31080,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -31136,7 +31128,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -31178,7 +31170,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -31223,7 +31215,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -31265,7 +31257,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -31307,7 +31299,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -31354,7 +31346,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: Get CMB config response failure
@@ -31384,7 +31376,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -33210,7 +33202,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: Get projects response failure
@@ -33241,7 +33233,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -33284,7 +33276,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -33332,7 +33324,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: Get project response failure
@@ -33369,7 +33361,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -33412,7 +33404,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: Get deployments response failure
@@ -33449,7 +33441,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -33485,7 +33477,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       - name: project_name
         in: path
         required: true
@@ -33495,7 +33487,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -33538,7 +33530,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       - name: project_name
         in: path
         required: true
@@ -33548,7 +33540,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: Get deployment info response failure
@@ -33580,7 +33572,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       - name: project_name
         in: path
         required: true
@@ -33590,7 +33582,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: Get deployment logs response failure
@@ -33622,7 +33614,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       - name: project_name
         in: path
         required: true
@@ -33632,7 +33624,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -33669,7 +33661,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       - name: project_name
         in: path
         required: true
@@ -33679,7 +33671,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -33720,7 +33712,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: Get domains response failure
@@ -33756,7 +33748,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -33804,7 +33796,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -33857,7 +33849,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: Get domain response failure
@@ -33898,7 +33890,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -52192,7 +52184,6 @@ paths:
             enum:
             - LIKELY_AUTOMATED
             - LIKELY_HUMAN
-            - ""
       - name: deviceType
         in: query
         description: Filter for device type.
@@ -52347,7 +52338,6 @@ paths:
             enum:
             - LIKELY_AUTOMATED
             - LIKELY_HUMAN
-            - ""
       - name: deviceType
         in: query
         description: Filter for device type.
@@ -52498,7 +52488,6 @@ paths:
             enum:
             - LIKELY_AUTOMATED
             - LIKELY_HUMAN
-            - ""
       - name: deviceType
         in: query
         description: Filter for device type.
@@ -52653,7 +52642,6 @@ paths:
             enum:
             - LIKELY_AUTOMATED
             - LIKELY_HUMAN
-            - ""
       - name: deviceType
         in: query
         description: Filter for device type.
@@ -52804,7 +52792,6 @@ paths:
             enum:
             - LIKELY_AUTOMATED
             - LIKELY_HUMAN
-            - ""
       - name: deviceType
         in: query
         description: Filter for device type.
@@ -52955,7 +52942,6 @@ paths:
             enum:
             - LIKELY_AUTOMATED
             - LIKELY_HUMAN
-            - ""
       - name: deviceType
         in: query
         description: Filter for device type.
@@ -53287,7 +53273,6 @@ paths:
             enum:
             - LIKELY_AUTOMATED
             - LIKELY_HUMAN
-            - ""
       - name: limitPerGroup
         in: query
         description: Limit the number of objects (eg browsers) to the top items over
@@ -53460,7 +53445,6 @@ paths:
             enum:
             - LIKELY_AUTOMATED
             - LIKELY_HUMAN
-            - ""
       - name: deviceType
         in: query
         description: Filter for device type.
@@ -53623,7 +53607,6 @@ paths:
             enum:
             - LIKELY_AUTOMATED
             - LIKELY_HUMAN
-            - ""
       - name: format
         in: query
         description: Format results are returned in.
@@ -53785,7 +53768,6 @@ paths:
             enum:
             - LIKELY_AUTOMATED
             - LIKELY_HUMAN
-            - ""
       - name: deviceType
         in: query
         description: Filter for device type.
@@ -53954,7 +53936,6 @@ paths:
             enum:
             - LIKELY_AUTOMATED
             - LIKELY_HUMAN
-            - ""
       - name: deviceType
         in: query
         description: Filter for device type.
@@ -54128,7 +54109,6 @@ paths:
             enum:
             - LIKELY_AUTOMATED
             - LIKELY_HUMAN
-            - ""
       - name: deviceType
         in: query
         description: Filter for device type.
@@ -54297,7 +54277,6 @@ paths:
             enum:
             - LIKELY_AUTOMATED
             - LIKELY_HUMAN
-            - ""
       - name: limitPerGroup
         in: query
         description: Limit the number of objects (eg browsers) to the top items over
@@ -54470,7 +54449,6 @@ paths:
             enum:
             - LIKELY_AUTOMATED
             - LIKELY_HUMAN
-            - ""
       - name: deviceType
         in: query
         description: Filter for device type.
@@ -54652,7 +54630,6 @@ paths:
             enum:
             - LIKELY_AUTOMATED
             - LIKELY_HUMAN
-            - ""
       - name: deviceType
         in: query
         description: Filter for device type.
@@ -54799,7 +54776,6 @@ paths:
           enum:
           - LIKELY_AUTOMATED
           - LIKELY_HUMAN
-          - ""
       - name: limit
         in: query
         description: Limit the number of objects in the response.
@@ -55121,7 +55097,6 @@ paths:
             enum:
             - LIKELY_AUTOMATED
             - LIKELY_HUMAN
-            - ""
       - name: format
         in: query
         description: Format results are returned in.
@@ -55348,7 +55323,6 @@ paths:
             enum:
             - LIKELY_AUTOMATED
             - LIKELY_HUMAN
-            - ""
       - name: deviceType
         in: query
         description: Filter for device type.
@@ -55587,7 +55561,6 @@ paths:
             enum:
             - LIKELY_AUTOMATED
             - LIKELY_HUMAN
-            - ""
       - name: deviceType
         in: query
         description: Filter for device type.
@@ -55825,7 +55798,6 @@ paths:
             enum:
             - LIKELY_AUTOMATED
             - LIKELY_HUMAN
-            - ""
       - name: deviceType
         in: query
         description: Filter for device type.
@@ -56067,7 +56039,6 @@ paths:
             enum:
             - LIKELY_AUTOMATED
             - LIKELY_HUMAN
-            - ""
       - name: deviceType
         in: query
         description: Filter for device type.
@@ -56308,7 +56279,6 @@ paths:
             enum:
             - LIKELY_AUTOMATED
             - LIKELY_HUMAN
-            - ""
       - name: deviceType
         in: query
         description: Filter for device type.
@@ -56537,7 +56507,6 @@ paths:
             enum:
             - LIKELY_AUTOMATED
             - LIKELY_HUMAN
-            - ""
       - name: deviceType
         in: query
         description: Filter for device type.
@@ -56760,7 +56729,6 @@ paths:
             enum:
             - LIKELY_AUTOMATED
             - LIKELY_HUMAN
-            - ""
       - name: deviceType
         in: query
         description: Filter for device type.
@@ -56983,7 +56951,6 @@ paths:
             enum:
             - LIKELY_AUTOMATED
             - LIKELY_HUMAN
-            - ""
       - name: deviceType
         in: query
         description: Filter for device type.
@@ -57129,7 +57096,6 @@ paths:
           enum:
           - LIKELY_AUTOMATED
           - LIKELY_HUMAN
-          - ""
       - name: limit
         in: query
         description: Limit the number of objects in the response.
@@ -57451,7 +57417,6 @@ paths:
             enum:
             - LIKELY_AUTOMATED
             - LIKELY_HUMAN
-            - ""
       - name: format
         in: query
         description: Format results are returned in.
@@ -57678,7 +57643,6 @@ paths:
             enum:
             - LIKELY_AUTOMATED
             - LIKELY_HUMAN
-            - ""
       - name: deviceType
         in: query
         description: Filter for device type.
@@ -57917,7 +57881,6 @@ paths:
             enum:
             - LIKELY_AUTOMATED
             - LIKELY_HUMAN
-            - ""
       - name: deviceType
         in: query
         description: Filter for device type.
@@ -58155,7 +58118,6 @@ paths:
             enum:
             - LIKELY_AUTOMATED
             - LIKELY_HUMAN
-            - ""
       - name: deviceType
         in: query
         description: Filter for device type.
@@ -58397,7 +58359,6 @@ paths:
             enum:
             - LIKELY_AUTOMATED
             - LIKELY_HUMAN
-            - ""
       - name: deviceType
         in: query
         description: Filter for device type.
@@ -58638,7 +58599,6 @@ paths:
             enum:
             - LIKELY_AUTOMATED
             - LIKELY_HUMAN
-            - ""
       - name: deviceType
         in: query
         description: Filter for device type.
@@ -65273,7 +65233,7 @@ paths:
         description: Zone ID
         required: true
         schema:
-          $ref: '#/components/schemas/ZonekeeperPublicAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: Client Error
@@ -65295,7 +65255,7 @@ paths:
                       type: object
                       properties:
                         id:
-                          $ref: '#/components/schemas/ZonekeeperPublicAPI_identifier'
+                          $ref: '#/components/schemas/identifier'
   /zones/{zone_id}/api_gateway/configuration:
     get:
       tags:
@@ -72262,7 +72222,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: List fields response failure
@@ -72299,7 +72259,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: List Logpush jobs for a dataset response failure
@@ -72331,7 +72291,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: List Instant Logs jobs response failure
@@ -72362,7 +72322,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -72406,7 +72366,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: List Logpush jobs response failure
@@ -72437,7 +72397,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -72496,7 +72456,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -72548,7 +72508,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: Get Logpush job details response failure
@@ -72584,7 +72544,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -72632,7 +72592,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -72674,7 +72634,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -72719,7 +72679,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -72761,7 +72721,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
