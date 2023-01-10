@@ -110,7 +110,7 @@ echo($message . $separator . $token);
 <pre>&lt;?php
 // Generate valid URL token<br>$secret = "thisisasharedsecret";
 $time   = time();
-$token  = $time . "-" . urlencode(base64_encode(hash_hmac("sha256", "/download/private.jpg$time", $secret, true)));<br>param   = "verify=" . $token;
+$token  = $time . "-" . urlencode(base64_encode(hash_hmac("sha256", "/download/private.jpg$time", $secret, true)));<br>$param  = "verify=" . $token;
 ?&gt;</pre>
 <h3>Python Version</h3>
 <p></p>
