@@ -18,7 +18,7 @@
 <p>The following should be considered an overview of some recommended security actions, and not a comprehensive guide. See the developer documentation for specific products or features for more information.</p>
 <p></p>
 <h3 id="cloudflare-managed-rulesets">Cloudflare Managed Rulesets</h3>
-<p>The <a href="https://developers.cloudflare.com/waf/managed-rulesets/"><u>WAF Managed Rulesets</u></a> are pre-configured rulesets that provide immediate protection against a variety of attacks, and are regularly updated. Many rules are turned on by default, but not all. It is recommended that you browse the Cloudflare Managed Ruleset to find any additional rules tagged for your content management system not enabled, and enable them:</p><img src="https://images.ctfassets.net/slt3lc6tev37/5QxExDzRFyWZbC5LAe337S/9ad3147adbb4db62c6690340e3c866d9/Wordpress-configure-deployment.png" alt="Dashboard screenshot filtering for WordPress">
+<p><a href="https://developers.cloudflare.com/waf/managed-rules/"><u>WAF Managed Rules</u></a> are pre-configured rulesets that provide immediate protection against a variety of attacks, and are regularly updated. Many rules are turned on by default, but not all. It is recommended that you browse the Cloudflare Managed Ruleset to find any additional rules tagged for your content management system not enabled, and enable them:</p><img src="https://images.ctfassets.net/slt3lc6tev37/5QxExDzRFyWZbC5LAe337S/9ad3147adbb4db62c6690340e3c866d9/Wordpress-configure-deployment.png" alt="Dashboard screenshot filtering for WordPress">
 <p></p>
 <p></p>
 <h3 id="managed-rulesets-free-plan">Managed Rulesets on the Free Plan</h3>
@@ -28,7 +28,7 @@
 	<li>Shellshock rules;</li>
 	<li>Rules matching very common WordPress exploits;</li>
 </ul>
-<p>Additionally, you can configure many aspects of the <a href="https://developers.cloudflare.com/waf/managed-rulesets/reference/owasp-core-ruleset/"><u>OWASP Core Ruleset</u></a>, including the anomaly threshold, paranoia level, and individual rules. One good practice is to ensure any rules related to XSS and SQL injection are enabled.</p>
+<p>Additionally, you can configure many aspects of the <a href="https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/"><u>OWASP Core Ruleset</u></a>, including the anomaly threshold, paranoia level, and individual rules. One good practice is to ensure any rules related to XSS and SQL injection are enabled.</p>
 <p></p>
 <hr>
 <h2 id="restore-admin-functions">Stage Two: Restore Administrative Functions</h2>
@@ -95,8 +95,8 @@
 <hr>
 <h2 id="resources">Resources</h2>
 <ul>
-	<li><a href="https://developers.cloudflare.com/waf/managed-rulesets/"><u>WAF Managed Rules</u></a></li>
-	<li><a href="https://developers.cloudflare.com/waf/managed-rulesets/reference/owasp-core-ruleset/"><u>Cloudflare OWASP Core Ruleset</u></a></li>
+	<li><a href="https://developers.cloudflare.com/waf/managed-rules/"><u>WAF Managed Rules</u></a></li>
+	<li><a href="https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/"><u>Cloudflare OWASP Core Ruleset</u></a></li>
 	<li><a href="https://developers.cloudflare.com/waf/custom-rules/skip/"><u>Configure a custom rule with the Skip action</u></a></li>
 	<li><a href="https://www.cloudflare.com/plans/zero-trust-services/"><u>Zero Trust Services</u></a></li>
 	<li><a href="https://developers.cloudflare.com/ssl/client-certificates/"><u>Client certificates</u></a></li>
