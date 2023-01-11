@@ -203,6 +203,16 @@ a:hover {
 	transform: rotate(180deg)
 }
 
+.fact {
+	border: .063rem solid #d9d9d9;
+	border-radius: .313rem;
+	padding: 1rem
+}
+
+.fact .fact-title {
+	font-weight: 500
+}
+
 .big-button {
 	transition-duration: .2s;
 	transition-property: background-color, border-color, color;
