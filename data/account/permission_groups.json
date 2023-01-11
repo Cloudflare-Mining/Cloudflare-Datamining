@@ -7392,13 +7392,13 @@
 		"name": "Cloudflare Access",
 		"status": "V",
 		"meta": {
-			"description": "Can edit Cloudflare Access policies.",
+			"description": "Can edit Cloudflare Access.",
 			"editable": "false",
 			"label": "access_admin",
 			"scopes": "com.cloudflare.api.account"
 		},
 		"created_on": "2020-10-13T12:42:59.660479Z",
-		"modified_on": "2020-10-13T12:42:59.660479Z",
+		"modified_on": "2023-01-10T21:01:54.564675Z",
 		"permissions": [
 			{
 				"id": "efdd744ab05b4705875cbd1efd4ae4c4",
@@ -12175,6 +12175,148 @@
 		]
 	},
 	{
+		"id": "799e2611cdbe47da8ec3a5c880f301cf",
+		"name": "Domain Waiting Room Admin",
+		"status": "V",
+		"meta": {
+			"description": "Can edit waiting rooms configuration.",
+			"editable": "false",
+			"label": "zone_waiting_room_admin",
+			"scopes": "com.cloudflare.api.account.zone"
+		},
+		"created_on": "2023-01-10T21:01:54.564675Z",
+		"modified_on": "2023-01-10T21:01:54.564675Z",
+		"permissions": [
+			{
+				"id": "60b8b312df9a45f9bad3c3c99811e390",
+				"key": "com.cloudflare.api.account.zone.waiting-room.*",
+				"attributes": {
+					"legacy_name": "#waitingroom:read,#waitingroom:edit"
+				}
+			},
+			{
+				"id": "b4eb99db59d6457e90d17e13800180fb",
+				"key": "com.cloudflare.api.account.rule.list.read",
+				"attributes": {
+					"legacy_name": "#waf:read"
+				}
+			},
+			{
+				"id": "b11f4100c336423f922c488821512720",
+				"key": "com.cloudflare.api.account.rule.list.list",
+				"attributes": {
+					"legacy_name": "#waf:read"
+				}
+			},
+			{
+				"id": "b9a7e3793a40469a924d4cb5bd6f07a6",
+				"key": "com.cloudflare.api.account.zone.setting.read",
+				"attributes": {
+					"legacy_name": "#zone_settings:read"
+				}
+			},
+			{
+				"id": "548df97de595407f84af3f77ae8afd0c",
+				"key": "com.cloudflare.api.account.zone.setting.list",
+				"attributes": {
+					"legacy_name": "#zone_settings:read"
+				}
+			},
+			{
+				"id": "70c5e70ecf904e9dbeb2c2ffbe908cef",
+				"key": "com.cloudflare.api.account.zone.custom-hostname.list",
+				"attributes": {
+					"legacy_name": "#ssl:read"
+				}
+			},
+			{
+				"id": "f3e4b5fd0627411aaca8b78cbf1f1805",
+				"key": "com.cloudflare.api.account.zone.subscription.read",
+				"attributes": {
+					"legacy_name": "#subscription:read"
+				}
+			},
+			{
+				"id": "325e96ea0e494d2ebeaf5e97c7fe3c45",
+				"key": "com.cloudflare.api.account.zone.read",
+				"attributes": {
+					"legacy_name": "#zone:read"
+				}
+			},
+			{
+				"id": "737959b9c1fa445b98db16d99c75cde0",
+				"key": "com.cloudflare.api.account.zone.list",
+				"attributes": {
+					"legacy_name": "#zone:read"
+				}
+			}
+		]
+	},
+	{
+		"id": "2c9401002e4c48d4a1eb1240c5fc5ba7",
+		"name": "Domain Waiting Room Read",
+		"status": "V",
+		"meta": {
+			"description": "Can read waiting rooms configuration.",
+			"editable": "false",
+			"label": "zone_waiting_room_readonly",
+			"scopes": "com.cloudflare.api.account.zone"
+		},
+		"created_on": "2023-01-10T21:01:54.564675Z",
+		"modified_on": "2023-01-10T21:01:54.564675Z",
+		"permissions": [
+			{
+				"id": "4e491a71a58043e6bd3902445418afd9",
+				"key": "com.cloudflare.api.account.zone.waiting-room.list",
+				"attributes": {
+					"legacy_name": "#waitingroom:read"
+				}
+			},
+			{
+				"id": "8ccdc9d1439243ca852d61a8bee48ff5",
+				"key": "com.cloudflare.api.account.zone.waiting-room.read",
+				"attributes": {
+					"legacy_name": "#waitingroom:read"
+				}
+			},
+			{
+				"id": "b9a7e3793a40469a924d4cb5bd6f07a6",
+				"key": "com.cloudflare.api.account.zone.setting.read",
+				"attributes": {
+					"legacy_name": "#zone_settings:read"
+				}
+			},
+			{
+				"id": "548df97de595407f84af3f77ae8afd0c",
+				"key": "com.cloudflare.api.account.zone.setting.list",
+				"attributes": {
+					"legacy_name": "#zone_settings:read"
+				}
+			},
+			{
+				"id": "f3e4b5fd0627411aaca8b78cbf1f1805",
+				"key": "com.cloudflare.api.account.zone.subscription.read",
+				"attributes": {
+					"legacy_name": "#subscription:read"
+				}
+			},
+			{
+				"id": "325e96ea0e494d2ebeaf5e97c7fe3c45",
+				"key": "com.cloudflare.api.account.zone.read",
+				"attributes": {
+					"legacy_name": "#zone:read"
+				}
+			},
+			{
+				"id": "737959b9c1fa445b98db16d99c75cde0",
+				"key": "com.cloudflare.api.account.zone.list",
+				"attributes": {
+					"legacy_name": "#zone:read"
+				}
+			}
+		]
+	},
+	{
 		"id": "10515a9267294c2e8dd974332556a33b",
 		"name": "Firewall",
 		"status": "V",
@@ -14405,6 +14547,14 @@
 		"created_on": "2023-01-03T20:23:01.853822Z",
 		"modified_on": "2023-01-03T20:23:01.853822Z",
 		"permissions": [
+			{
+				"id": "d90ead6fe9f644b498e24cc896003aab",
+				"key": "com.cloudflare.api.iam.permission-group.read"
+			},
+			{
+				"id": "e55def90f14d450f926009bfe8e637df",
+				"key": "com.cloudflare.api.iam.permission-group.list"
+			},
 			{
 				"id": "325e96ea0e494d2ebeaf5e97c7fe3c45",
 				"key": "com.cloudflare.api.account.zone.read",
