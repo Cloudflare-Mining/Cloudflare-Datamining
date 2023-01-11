@@ -1,4 +1,4 @@
-<p><i>WAF managed rules monitor web requests to your domain and filters out undesired traffic based on rulesets that you enable.</i></p>
+<p><i>WAF managed rules (previous version) monitor web requests to your domain and filters out undesired traffic based on rulesets that you enable.</i></p>
 <div class="cf-toc">
 	<ul>
 		<li><a href="#cAy9P8jRAD5eJw0QrL4VJ">Overview</a></li>
@@ -10,11 +10,18 @@
 </div>
 <hr>
 <h2 id="cAy9P8jRAD5eJw0QrL4VJ">Overview</h2>
-<p>Managed rules, a feature of Cloudflare WAF (Web Application Firewall), identifies and removes suspicious activity for HTTP GET and POST requests.</p>
+<p>Managed rules, a feature of Cloudflare WAF (Web Application Firewall), identifies and removes suspicious activity for HTTP GET and POST requests. </p>
 <p></p>
-<p class="cf-video-container">
-	<iframe style="border:none" src="https://iframe.cloudflarestream.com/1ae6de818670d8459252368c600981af" width="736" height="414" allowfullscreen=""></iframe>
-</p>
+<div class="cf-sidebar-2 cf-note">
+	<ul>
+		<li>This page contains documentation about the previous implementation of WAF managed rules. For more information on the new version, refer to <a href="https://developers.cloudflare.com/waf/managed-rules/">WAF Managed Rules</a> in the developer documentation.
+		</li>
+		<li>All customers with access to the previous version of WAF managed rules (described in this page) can now <a href="https://support.cloudflare.com/hc/articles/5995821690637">migrate to the new version of WAF Managed Rules</a>.
+		</li>
+		<li>The new WAF Managed Rules provide the <a href="https://developers.cloudflare.com/waf/managed-rulesets/">Cloudflare Free Managed Ruleset</a> to all customers, including customers on a Free plan. Refer to the <a href="https://blog.cloudflare.com/waf-for-everyone/">announcement blog post</a> for details.
+		</li>
+	</ul>
+</div>
 <p>Examples of <a href="https://www.cloudflare.com/learning/security/what-is-web-application-security/">malicious content</a> that managed rules identify include: </p>
 <ul>
 	<li>Common keywords used in comment spam (<i>XX</i>, <i>Rolex</i>, <i>Viagra</i>, etc.), </li>
@@ -31,15 +38,6 @@
 		<b>Customer Requested Rules</b> 
 	</li>
 </ul>
-<p></p>
-<div class="cf-sidebar-2 cf-note">
-	<ul>
-		<li>The new WAF, announced in March 2021, provides the <a href="https://developers.cloudflare.com/waf/managed-rulesets/">Cloudflare Free Managed Ruleset</a> to all customers, including customers on a Free plan. Refer to the <a href="https://blog.cloudflare.com/waf-for-everyone/">announcement blog post</a> for details.
-		</li>
-		<li>Starting on January 10, 2023, all customers with the previous version of WAF managed rules can <a href="https://support.cloudflare.com/hc/articles/5995821690637">migrate to the new version of WAF Managed Rules</a>.
-		</li>
-	</ul>
-</div>
 <p>Review threats blocked via the <a href="https://developers.cloudflare.com/waf/analytics/">Security Events</a>' <b>Activity log</b> available in <b>Security</b> &gt; <b>Events</b>.</p>
 <h3>Important considerations</h3>
 <ul>
@@ -211,7 +209,8 @@
 <h2 id="6Tp6cDY8h4RtLwa7EdUoh3">Related resources</h2>
 <ul>
 	<li><a href="https://developers.cloudflare.com/waf/analytics/">Security Events</a></li>
+	<li><a href="https://developers.cloudflare.com/waf/managed-rules/">WAF Managed Rules (new version)</a></li>
+	<li><a href="https://developers.cloudflare.com/waf/change-log/scheduled-changes/">WAF changelog</a></li>
 	<li><a href="https://developers.cloudflare.com/firewall/cf-firewall-rules/">Cloudflare Firewall Rules</a></li>
-	<li><a href="https://developers.cloudflare.com/waf/change-log/scheduled-changes/">Cloudflare’s WAF changelog</a></li>
 </ul>
 <p></p>
