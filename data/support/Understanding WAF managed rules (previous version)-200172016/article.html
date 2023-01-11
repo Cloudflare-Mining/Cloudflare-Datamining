@@ -38,7 +38,7 @@
 		<b>Customer Requested Rules</b> 
 	</li>
 </ul>
-<p>Review threats blocked via the <a href="https://developers.cloudflare.com/waf/analytics/">Security Events</a>' <b>Activity log</b> available in <b>Security</b> &gt; <b>Events</b>.</p>
+<p>Review threats blocked via the <a href="https://developers.cloudflare.com/waf/security-events/">Security Events</a>' <b>Activity log</b> available in <b>Security</b> &gt; <b>Events</b>.</p>
 <h3>Important considerations</h3>
 <ul>
 	<li>Managed rules introduce a limited amount of latency. </li>
@@ -72,8 +72,8 @@
 </ul>
 <h3>Troubleshoot WAF managed rules false positives</h3>
 <p>The definition of suspicious content is subjective for each website.  For example, PHP code posted to your website is suspicious unless your website teaches how to code and requires PHP code submissions from visitors.  Therefore, such a website must disable related managed rules that interfere with normal operation. </p>
-<p>To test for false positives, set WAF managed rules to <b>Simulate</b> mode, to record the response to possible attacks without challenging or blocking. Also, use the Firewall Analytics <a href="https://developers.cloudflare.com/waf/analytics/paid-plans#activity-log"><b>Activity log</b></a> to determine which managed rules caused false positives.</p>
-<p>If you encounter a false positive due to the <a href="https://support.cloudflare.com/hc/en-us/articles/200172016-Understanding-the-Cloudflare-Web-Application-Firewall-WAF-">legacy WAF</a>, there are several potential resolutions:</p>
+<p>To test for false positives, set WAF managed rules to <b>Simulate</b> mode, to record the response to possible attacks without challenging or blocking. Also, use the Security Events <a href="https://developers.cloudflare.com/waf/security-events/paid-plans/#activity-log"><b>Activity log</b></a> to determine which managed rules caused false positives.</p>
+<p>If you encounter a false positive due to the previous version of WAF managed rules (described in this page), there are several potential resolutions:</p>
 <ul>
 	<li>
 		<b>Add the client’s IP addresses to the </b><a href="https://support.cloudflare.com/hc/articles/217074967"><u><b>IP Access Rules</b></u></a><b> allowlist:
@@ -81,7 +81,7 @@
 	</li>
 	<li>
 		<b>Disable the corresponding </b><a href="https://support.cloudflare.com/hc/articles/200172016"><u><b>managed rule(s</b></u></a>):<b>
-		</b>Stops blocking or challenging false positives, but reduces overall site security. A request blocked by Rule ID <i>981176</i> refers to OWASP rules. Decrease OWASP sensitivity to resolve the issue.
+		</b>Stops blocking or challenging false positives, but reduces overall site security. A request blocked by Rule ID <i>981176</i> refers to OWASP rules in the previous version of WAF managed rules. Decrease OWASP sensitivity to resolve the issue.
 	</li>
 	<li>
 		<b>Bypass WAF managed rules with a firewall rule:
@@ -92,15 +92,15 @@
 		</b>Lowers security on the particular URL endpoint.  Configured via <a href="https://support.cloudflare.com/hc/en-us/articles/218411427-Understanding-and-Configuring-Cloudflare-Page-Rules-Page-Rules-Tutorial-"><u>Page Rules</u></a>.
 	</li>
 </ul>
-<p>If you encounter a false positive due to the <a href="https://blog.cloudflare.com/new-cloudflare-waf/">new WAF</a>, there are several potential resolutions:</p>
+<p>If you encounter a false positive due to the <a href="https://blog.cloudflare.com/new-cloudflare-waf/">new version of WAF Managed Rules</a>, there are several potential resolutions:</p>
 <ol>
 	<li>
-		<b>Add WAF Exception:</b>
+		<b>Add a WAF exception:</b>
 		You can define WAF exceptions in the <a href="https://developers.cloudflare.com/waf/managed-rulesets/waf-exceptions/define-dashboard">Cloudflare dashboard</a> or using the <a href="https://developers.cloudflare.com/waf/managed-rulesets/waf-exceptions/define-api">Rulesets API</a>.
 	</li>
 	<li>
-		<b>Disable the corresponding </b><a href="https://support.cloudflare.com/hc/articles/200172016"><u><b>managed rule(s</b></u></a>):<b>
-		</b>Stops blocking or challenging false positives, but reduces overall site security. A request blocked by Rule ID <i>949110</i> refers to the <a href="https://blog.cloudflare.com/new-cloudflare-waf/">new OWASP rules</a>. Decrease OWASP sensitivity to resolve the issue.
+		<b>Disable the corresponding </b><a href="https://developers.cloudflare.com/waf/managed-rules/deploy-account-dashboard/#configure-a-managed-ruleset"><u><b>managed rule(s</b></u></a>):<b>
+		</b>Stops blocking or challenging false positives, but reduces overall site security. A request blocked by Rule ID <i>949110</i> refers to the <a href="https://blog.cloudflare.com/new-cloudflare-waf/">new OWASP rules</a>. You can <a href="https://developers.cloudflare.com/waf/managed-rules/deploy-zone-dashboard/#configure-a-single-rule-in-a-managed-ruleset">disable a specific managed rule</a> or <a href="https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/">change the score threshold</a> to resolve the issue.
 	</li>
 </ol>
 <p><b>Note:</b> If <a href="https://support.cloudflare.com/hc/articles/200172476"><u>contacting Cloudflare Support</u></a> to verify whether a WAF managed rule triggers as expected, <a href="https://support.cloudflare.com/hc/articles/203118044#h_8c9c815c-0933-49c0-ac00-b700700efce7"><u>provide a HAR file</u></a> captured while sending the specific request of concern.</p>
@@ -163,7 +163,7 @@
 		<i>Challenge</i> - the visitor receives a CAPTCHA challenge page.
 	</li>
 	<li>
-		<i>Simulate</i> - the request is allowed through but is logged in the <a href="https://developers.cloudflare.com/waf/analytics/paid-plans#activity-log"><b>Activity log</b></a>.
+		<i>Simulate</i> - the request is allowed through but is logged in the <a href="https://developers.cloudflare.com/waf/security-events/paid-plans/#activity-log"><b>Activity log</b></a>.
 	</li>
 </ul>
 <p>The sensitivity score required to trigger the WAF for a specific <b>Sensitivity</b> is as follows:</p>
@@ -190,7 +190,7 @@
 		<i>High</i> - 65 and higher
 	</li>
 </ul>
-<p>Review the <a href="https://developers.cloudflare.com/waf/analytics/paid-plans#activity-log">Activity log</a> to see the final score as well as the individual triggered rules.</p>
+<p>Review the <a href="https://developers.cloudflare.com/waf/security-events/paid-plans/#activity-log">Activity log</a> to see the final score as well as the individual triggered rules.</p>
 <h3>Control Cloudflare’s OWASP package</h3>
 <p><b>Package: OWASP ModSecurity Core Rule Set</b> contains several rules from the <a href="https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project">OWASP project</a>. Cloudflare does not write or curate OWASP rules.  Click on a ruleset name under <b>Group</b> to reveal the rule descriptions.  Unlike the <b>Cloudflare Managed Ruleset</b>, specific OWASP rules are either turned <i>On</i> or <i>Off.</i></p>
 <p>To manage OWASP thresholds, set the <b>Sensitivity</b> to <i>Low</i>, <i>Medium</i>, or <i>High</i> under <b>Package: OWASP ModSecurity Core Rule Set</b>. Setting the <b>Sensitivity </b>to <i>Off </i>will disable the entire OWASP package including all its rules. Determining the appropriate <b>Sensitivity</b> depends on your business industry and operations. For instance, a <i>Low</i> setting is appropriate for:</p>
