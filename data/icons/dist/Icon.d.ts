@@ -5,8 +5,9 @@ declare const _default: React.ComponentType<{
     className: string;
     ariaLabel?: string | undefined;
     testId?: string | undefined;
-    p?: import("csstype").PaddingProperty<string | number> | [import("csstype").PaddingProperty<string | number> | undefined, import("csstype").PaddingProperty<string | number> | undefined] | [import("csstype").PaddingProperty<string | number> | undefined, import("csstype").PaddingProperty<string | number> | undefined, import("csstype").PaddingProperty<string | number> | undefined] | undefined;
     color?: ((string | [string | undefined, string | undefined] | [string | undefined, string | undefined, string | undefined]) & string) | undefined;
+    borderColor?: string | [string | undefined, string | undefined] | [string | undefined, string | undefined, string | undefined] | undefined;
+    p?: import("csstype").PaddingProperty<string | number> | [import("csstype").PaddingProperty<string | number> | undefined, import("csstype").PaddingProperty<string | number> | undefined] | [import("csstype").PaddingProperty<string | number> | undefined, import("csstype").PaddingProperty<string | number> | undefined, import("csstype").PaddingProperty<string | number> | undefined] | undefined;
     height?: import("csstype").HeightProperty<string | number> | [import("csstype").HeightProperty<string | number> | undefined, import("csstype").HeightProperty<string | number> | undefined] | [import("csstype").HeightProperty<string | number> | undefined, import("csstype").HeightProperty<string | number> | undefined, import("csstype").HeightProperty<string | number> | undefined] | undefined;
     width?: import("csstype").WidthProperty<string | number> | [import("csstype").WidthProperty<string | number> | undefined, import("csstype").WidthProperty<string | number> | undefined] | [import("csstype").WidthProperty<string | number> | undefined, import("csstype").WidthProperty<string | number> | undefined, import("csstype").WidthProperty<string | number> | undefined] | undefined;
     cursor?: string | [string | undefined, string | undefined] | [string | undefined, string | undefined, string | undefined] | undefined;
@@ -14,7 +15,6 @@ declare const _default: React.ComponentType<{
     fontSize?: import("csstype").FontSizeProperty<string | number> | [import("csstype").FontSizeProperty<string | number> | undefined, import("csstype").FontSizeProperty<string | number> | undefined] | [import("csstype").FontSizeProperty<string | number> | undefined, import("csstype").FontSizeProperty<string | number> | undefined, import("csstype").FontSizeProperty<string | number> | undefined] | undefined;
     fontWeight?: import("csstype").FontWeightProperty | [import("csstype").FontWeightProperty | undefined, import("csstype").FontWeightProperty | undefined] | [import("csstype").FontWeightProperty | undefined, import("csstype").FontWeightProperty | undefined, import("csstype").FontWeightProperty | undefined] | undefined;
     textDecoration?: string | [string | undefined, string | undefined] | [string | undefined, string | undefined, string | undefined] | undefined;
-    borderColor?: string | [string | undefined, string | undefined] | [string | undefined, string | undefined, string | undefined] | undefined;
     margin?: import("csstype").MarginProperty<string | number> | [import("csstype").MarginProperty<string | number> | undefined, import("csstype").MarginProperty<string | number> | undefined] | [import("csstype").MarginProperty<string | number> | undefined, import("csstype").MarginProperty<string | number> | undefined, import("csstype").MarginProperty<string | number> | undefined] | undefined;
     marginLeft?: import("csstype").MarginLeftProperty<string | number> | [import("csstype").MarginLeftProperty<string | number> | undefined, import("csstype").MarginLeftProperty<string | number> | undefined] | [import("csstype").MarginLeftProperty<string | number> | undefined, import("csstype").MarginLeftProperty<string | number> | undefined, import("csstype").MarginLeftProperty<string | number> | undefined] | undefined;
     marginRight?: import("csstype").MarginRightProperty<string | number> | [import("csstype").MarginRightProperty<string | number> | undefined, import("csstype").MarginRightProperty<string | number> | undefined] | [import("csstype").MarginRightProperty<string | number> | undefined, import("csstype").MarginRightProperty<string | number> | undefined, import("csstype").MarginRightProperty<string | number> | undefined] | undefined;
@@ -80,7 +80,7 @@ declare const _default: React.ComponentType<{
     gridColumnPad?: number | number[] | undefined;
     gridRowSpan?: number | number[] | undefined;
     gridRowPad?: number | number[] | undefined;
-    gridAlign?: ("end" | "start" | "center" | "stretch") | undefined;
-    gridJustify?: ("end" | "start" | "center" | "stretch") | undefined;
+    gridAlign?: ("start" | "end" | "center" | "stretch") | undefined;
+    gridJustify?: ("start" | "end" | "center" | "stretch") | undefined;
 }>;
 export default _default;
