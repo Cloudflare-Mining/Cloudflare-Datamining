@@ -10,7 +10,9 @@ export const ZoneMeta = eg.object({
   page_rule_quota: eg.number,
   phishing_detected: eg.boolean,
   multiple_railguns_allowed: eg.boolean,
-  secondary_overrides: eg.boolean
+  secondary_overrides: eg.boolean,
+  cdn_only: eg.boolean.optional,
+  dns_only: eg.boolean.optional
 });
 
 export type ZoneMeta = TypeFromCodec<typeof ZoneMeta>;
