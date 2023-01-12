@@ -348,7 +348,7 @@ const navigation = {
 			title: "navigation.account.firewall_rulesets.ddos",
 			url: "/network-security/ddos",
 			hasPermission: function(v) {
-				var P = !!$(v) && !!pe(v);
+				var P = !!$(v) && !!me(v);
 				return !!te(v) || P
 			}
 		}, {
@@ -607,10 +607,10 @@ const navigation = {
 		hasPermission: function(v) {
 			var P = (0, U.getZone)(v);
 			if ((0, d.zoneIsDNSOnly)(v) || !s(v, "zone_settings", "spectrum.app") || !P) return !1;
-			var le = !!((0, i.userHasEntZones)(v) || (0, U.userHasDelegatedEntZones)(v)),
-				ce = !!(0, U.getZoneFlipperFlag)(v, "spectrum", "enabled"),
-				fe = !!(0, U.isFree)(P);
-			return ce || le || !fe
+			var ue = !!((0, i.userHasEntZones)(v) || (0, U.userHasDelegatedEntZones)(v)),
+				le = !!(0, U.getZoneFlipperFlag)(v, "spectrum", "enabled"),
+				de = !!(0, U.isFree)(P);
+			return le || ue || !de
 		}
 	}, {
 		title: "navigation.zone.ssl-tls",
@@ -731,11 +731,15 @@ const navigation = {
 		pages: [{
 			title: "navigation.common.overview",
 			url: "/speed",
-			canBeVersioned: !0
+			canBeVersioned: !0,
+			hasPermission: function(v) {
+				return (0, n.z1)("speed-test-result")(v) !== !0
+			}
 		}, {
 			title: "navigation.zone.speed.test",
 			url: "/speed/test",
-			canBeVersioned: !1,
+			canBeVersioned: !0,
+			labels: ["beta"],
 			hasPermission: function(v) {
 				return (0, n.z1)("speed-test-result")(v) === !0
 			}
@@ -948,8 +952,8 @@ const navigation = {
 		canBeVersioned: !1,
 		labels: function(v) {
 			var P = [],
-				le = (0, U.getZone)(v);
-			return le && !(0, U.isPlanAtLeast)(le, "pro") && P.push("beta"), P
+				ue = (0, U.getZone)(v);
+			return ue && !(0, U.isPlanAtLeast)(ue, "pro") && P.push("beta"), P
 		},
 		iconType: "zaraz",
 		testId: "zone-navigation-link-zaraz",
@@ -988,8 +992,8 @@ const navigation = {
 		labels: ["new"],
 		hasPermission: function(v) {
 			var P = (0, t.getMembership)(v),
-				le = (P == null ? void 0 : P.roles) || [];
-			return le.includes("Trust and Safety") ? !1 : !(0, d.zoneIsDNSOnly)(v)
+				ue = (P == null ? void 0 : P.roles) || [];
+			return ue.includes("Trust and Safety") ? !1 : !(0, d.zoneIsDNSOnly)(v)
 		}
 	}],
 	application: [{
