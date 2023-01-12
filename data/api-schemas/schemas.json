@@ -278,7 +278,9 @@
 				},
 				"type": "object"
 			},
-			"CloudflareClientAPI_account_identifier": {},
+			"CloudflareClientAPI_account_identifier": {
+				"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
+			},
 			"CloudflareClientAPI_action": {
 				"description": "The billing item action.",
 				"example": "subscription",
@@ -848,8 +850,9 @@
 				]
 			},
 			"CloudflareClientAPI_identifier": {
-				"description": "Policy identifier.",
-				"example": "f267e341f3dd4697bd3b9f71dd96247f",
+				"description": "Identifier",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
 				"readOnly": true,
 				"type": "string"
 			},
@@ -2756,7 +2759,11 @@
 				]
 			},
 			"account_identifier": {
-				"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
+				"description": "The account identifier tag.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"readOnly": true,
+				"type": "string"
 			},
 			"account_subscription_response_collection": {
 				"allOf": [
@@ -7094,13 +7101,6 @@
 				"description": "The date and time the clip was created.",
 				"example": "2014-01-02T02:20:00Z",
 				"format": "date-time",
-				"readOnly": true,
-				"type": "string"
-			},
-			"cloudflare-stream-client-api_account_identifier": {
-				"description": "The account identifier tag.",
-				"example": "023e105f4ecef8ad9ca31a8372d0c353",
-				"maxLength": 32,
 				"readOnly": true,
 				"type": "string"
 			},
