@@ -1,5 +1,11 @@
 # Change Log
 
+## 9.9.0
+
+### Minor Changes
+
+- a95e4e0da6: Adding funnel icon.
+
 ## 9.8.0
 
 ### Minor Changes
