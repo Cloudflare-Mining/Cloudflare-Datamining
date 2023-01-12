@@ -234,6 +234,31 @@
 			"filter_options": []
 		}
 	],
+	"Tunnel": [
+		{
+			"display_name": "Tunnel Created and Deleted Alert",
+			"type": "tunnel_update_event",
+			"description": "Cloudflare Tunnel Created and Deleted Alerts",
+			"filter_options": []
+		},
+		{
+			"display_name": "Tunnel Health Alert",
+			"type": "tunnel_health_event",
+			"description": "Cloudflare Tunnel Connection Status Change Alerts",
+			"filter_options": [
+				{
+					"Key": "tunnel_id",
+					"ComparisonOperator": "==",
+					"Optional": true
+				},
+				{
+					"Key": "new_status",
+					"ComparisonOperator": "==",
+					"Optional": true
+				}
+			]
+		}
+	],
 	"Web Analytics": [
 		{
 			"display_name": "Web Analytics Metrics Update",
