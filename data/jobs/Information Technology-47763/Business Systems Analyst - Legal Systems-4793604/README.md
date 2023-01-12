@@ -12,35 +12,16 @@
 <h4><span style="font-weight: 400;">Cloudflare is looking for Business Analyst - Legal Systems to help with Ironclad and maintain the system, as well as peripheral legal systems. In this role you will be supporting the Legal, Procurement and Sales team with new features integrations, new workflows creation, configuring Workflows in Ironclad, work on with the integrations to Salesforce etc. The ideal candidate should have a solid analytical mindset, excellent interpersonal communications, diligent time management skills, be team-oriented and have a strong work ethic. This role will assist other core business systems analysts/architects across IT for strategic and business as usual projects.</span></h4>
 <h4>What you'll do</h4>
 <ul>
-	<li style="font-weight: 400;">
-		<h4><span style="font-weight: 400;">You will contribute to all aspects of an agile software development life cycle including design, architecture, development, documentation, testing and operations</span></h4>
-	</li>
-	<li style="font-weight: 400;">
-		<h4><span style="font-weight: 400;">You will push your design and architecture limits by owning all aspects of solutions end-to-end</span></h4>
-	</li>
-	<li style="font-weight: 400;">
-		<h4><span style="font-weight: 400;">Support/build integrations with select enterprise systems - Ironclad workflows.</span></h4>
-	</li>
-	<li style="font-weight: 400;">
-		<h4><span style="font-weight: 400;">Ensure all configurations and integrations are thoroughly tested and ready for deployment</span></h4>
-	</li>
-	<li style="font-weight: 400;">
-		<h4><span style="font-weight: 400;">Identify gaps and opportunities for automation and work on Proof of Concepts for new requirements as appropriate</span></h4>
-	</li>
-	<li style="font-weight: 400;">
-		<h4><span style="font-weight: 400;">Perform day-to-day maintenance of the Legal application in operation, including tasks related to identifying issue root cause(s), troubleshooting issues, and issue resolution, dispatch to partner teams, and/or escalation</span></h4>
-	</li>
-	<li style="font-weight: 400;">
-		<h4><span style="font-weight: 400;">Serve as the primary point of contact for designated business system(s), as well as the liaison between teams internally and at external application(s)&nbsp;</span></h4>
-	</li>
-	<li style="font-weight: 400;">
-		<h4><span style="font-weight: 400;">Build and streamline solution configuration processes with focus on reusability via a no-code designer leveraging JSON, XML, and selected system’s configuration engine</span></h4>
-	</li>
-	<li style="font-weight: 400;">
-		<h4><span style="font-weight: 400;">Respond promptly to application alerts, production issues and follow through to resolution per established SLA</span></h4>
-	</li>
-</ul>
-<ul>
+	<li><span style="font-weight: 400;">You will contribute to all aspects of an agile software development life cycle including design, architecture, development, documentation, testing and operations</span></li>
+	<li><span style="font-weight: 400;">You will push your design and architecture limits by owning all aspects of </span><span style="font-weight: 400;">products currently assigned </span><span style="font-weight: 400;">solutions </span><span style="font-weight: 400;">end-to-end</span></li>
+	<li><span style="font-weight: 400;">Support/build integrations with select enterprise systems - Ironclad workflows.</span></li>
+	<li><span style="font-weight: 400;">Ensure all configurations and integrations are thoroughly tested and ready for deployment</span></li>
+	<li><span style="font-weight: 400;">Identify gaps and opportunities for automation and work on Proof of Concepts for new requirements as appropriate</span></li>
+	<li><span style="font-weight: 400;">Perform day-to-day maintenance of the Legal application in operation, including tasks related to identifying issue root cause(s), troubleshooting issues, and issue resolution, dispatch to partner teams, and/or escalation</span></li>
+	<li><span style="font-weight: 400;">Serve as the primary point of contact for designated business system(s), as well as the liaison between teams internally and at external application(s)</span><span style="font-weight: 400;">&nbsp;</span></li>
+	<li><span style="font-weight: 400;">Build and streamline solution configuration processes with focus on reusability via a no-code designer leveraging JSON, XML, and selected system’s configuration engine</span></li>
+	<li><span style="font-weight: 400;">Respond promptly to application alerts, production issues and follow through to resolution per established SLA\</span></li>
+	<li><span style="font-weight: 400;">Acts as a liaison between corporate IT, consultants, vendor, managers, and Legal business areas</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Works directly with clients to apply IT and business knowledge with experience to formulate IT solutions for business problems</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Work with Legal Operations leaders to identify opportunities for improvement in all aspects of legal applications including configuration and customization of tools, management of data, workflows, country rules, and possible integration recommendations with other systems</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Create/provide tools for data intake administration support during acquisitions, collaborations and divestiture activity involving conversion of acquired portfolios and associated databases/data exports into or out of the test/production databases.</span></li>
@@ -85,7 +66,9 @@
 	<li style="font-weight: 400;">
 		<h4><span style="font-weight: 400;">Domain Knowledge: Beginner/Intermediate Legal/Procurement Agreements (Nice to have)</span></h4>
 	</li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Quick learner, asks questions, good communication skills, energetic.Modern programming languages (e.g., Java, Javascript, Python)</span></li>
+	<li style="font-weight: 400;">
+		<h4><span style="font-weight: 400;">Quick learner, asks questions, good communication skills, energetic.Modern programming languages (e.g., Java, Javascript, Python)</span></h4>
+	</li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Process documentation and data visualization</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Business intelligence and reporting software</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Development &amp; management methodologies including Scrum, Agile, Kanban, and Jira</span></li>
