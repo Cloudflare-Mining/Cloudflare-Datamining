@@ -1,0 +1,495 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/unnamed-5.png" class="kg-image" alt="The Linux Kernel Key Retention Service and why you should use it in your next application"></figure>
+	<p>我们希望确保数字数据的安全。我们需要访问网站，发送银行详细信息，输入密码，在线签署文件，登录远程计算机，将数据加密后再存储到数据库，并确保无人可以篡改。密码学可以高度确保数据安全，但我们需要保护加密密钥。</p>
+	<p>同时，我们不能安全地把密钥写在某处，并非只是偶尔使用一下。恰恰相反，密钥涉及我们进行加密操作的每个请求。如果一个网站支持 TLS，就会使用私钥建立每个连接。</p>
+	<p>不幸的是，加密密钥有时会泄漏，一旦发生泄漏，就会导致严重的后果。许多泄漏事件的发生是源于软件缺陷和安全漏洞。本文我们将学习 Linux 内核如何帮助保护加密密钥抵御这类潜在安全漏洞：内存访问违规。</p>
+	<h3 id="-">内存访问违规</h3>
+	<p>根据 <a href="https://www.nsa.gov/Press-Room/News-Highlights/Article/Article/3215760/nsa-releases-guidance-on-how-to-protect-against-software-memory-safety-issues/" target="_blank">NSA</a> 的研究，Microsoft 和 Google 的代码中，约 70% 的漏洞都与内存安全问题有关。内存访问错误的后果很多，包括泄露安全数据（包括加密密钥）。加密密钥只是内存中存储的一些（大部分为随机）数据，因此可能和其他内存数据一样遭遇内存泄漏。以下示例展示了加密密钥如何通过重用栈内存发生意外泄漏。</p>
+	<p>broken.c</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-cpp">#include &lt;stdio.h&gt;
+#include &lt;stdint.h&gt;
+
+static void encrypt(void)
+{
+    uint8_t key[] = "hunter2";
+    printf("encrypting with super secret key: %s\n", key);
+}
+
+static void log_completion(void)
+{
+    /* oh no, we forgot to init the msg */
+    char msg[8];
+    printf("not important, just fyi: %s\n", msg);
+}
+
+int main(void)
+{
+    encrypt();
+    /* notify that we're done */
+    log_completion();
+    return 0;
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>编译并运行我们的程序：</p><!--kg-card-begin: markdown-->
+	<pre><code>$ gcc -o broken broken.c
+$ ./broken 
+encrypting with super secret key: hunter2
+not important, just fyi: hunter2
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>糟糕，我们在“fyi”记录器中而非预定日志消息中输出了密钥！上述代码存在两个问题：</p>
+	<ul>
+		<li>我们没有安全地销毁伪加密函数中的密钥（例如，使用零来覆盖密钥数据），使用完毕后，</li>
+		<li>存在缺陷的日志函数可以访问我们进程中的任何内存</li>
+	</ul>
+	<p>我们可能可以利用其他代码轻松解决第一个问题，但第二个问题是软件在操作系统内运行的内在结果。</p>
+	<p>操作系统为每个进程分配了一块连续的虚拟内存，让内核在几个同时运行的进程之间共享有限的计算机资源。这种方法称为<a href="https://en.wikipedia.org/wiki/Virtual_memory" target="_blank">虚拟内存管理</a>。在虚拟内存中，每个进程都有自己的地址空间，无法访问其他进程的内存，但可以访问其地址空间内的任何内存。我们的示例中讨论的是称为“栈”的一块进程内存。</p>
+	<p>栈由栈帧组成。栈帧是为当前运行的函数动态分配的空间。它包含函数的局部变量、参数和返回地址。编译一个函数时，编译器会计算需要分配多少内存，并请求一个相应大小的栈帧。函数执行完毕后，就会将栈帧标记为自由，可以再次使用。栈帧是一个逻辑块，不提供任何边界检查，不会被删除，而只是标记为自由。此外，虚拟内存是一块连续的地址。这两种陈述都让恶意软件/存在缺陷的代码有可能从虚拟内存的任何位置访问数据。</p>
+	<p>我们的程序 <code>broken.c</code> 的栈如图所示：</p><!--kg-card-begin: html-->
+	<center><img src="https://imagedelivery.net/52R3oh4H-57qkVChwuo3Ag/3526edee-ce7e-4f98-a2bf-ff1efd2fc800/public"></center><!--kg-card-end: html-->
+	<p>开始时，我们有一个主函数的栈帧。然后，<code>main()</code> 函数调用 <code>encrypt()</code>，将它放在栈中，紧挨在 <code>main()</code> 下方（代码栈向下增长）。在 <code>encrypt()</code> 内，编译器为<code>key</code>变量请求 8 个字节（7 个字节的数据和 C-空字符）。<code>encrypt()</code> 执行完毕后，同样的内存地址被 <code>log_completion()</code> 占用。在 <code>log_completion()</code> 中，编译器为 <code>msg</code> 变量分配了八个字节。意外的是，它竟然放在了栈中我们之前存放私钥的位置。只是为 <code>msg</code> 分配了内存，但没有初始化，前一个函数的数据保持原样。</p>
+	<p>除代码错误，编程语言还提供因内存安全漏洞而闻名的不安全函数。例如，对于 C 语言来说，此类函数有 <code>printf()</code>、<code>strcpy()</code>、<code>gets()</code>。函数 <code>printf()</code> 没有检查必须传递多少参数来替换格式字符串中的所有占位符。函数参数放在函数栈帧之上，<code>printf()</code> 根据占位符的数量和类型来获取参数，可轻松放弃其参数，从前一个函数的栈帧中获取数据。</p>
+	<p>NSA 建议我们使用内存安全语言，例如 Python、Go、Rust。但它们能完全保护我们吗？</p>
+	<p>在很多情况下，Python 编译器肯定会检查边界，并通知错误：</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-python">&gt;&gt;&gt; print("x: {}, y: {}, {}".format(1, 2))
+Traceback (most recent call last):
+  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+IndexError: Replacement index 2 out of range for positional args tuple
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>然而，这只是引述了其中一个<a href="https://www.cvedetails.com/vulnerability-list/vendor_id-10210/opov-1/Python.html" target="_blank">漏洞</a>（目前有 36 个）：</p>
+	<blockquote><em>Python 2.7.14 容易受 Heap-Buffer-Overflow 和 Heap-Use-After-Free 的影响。</em></blockquote>
+	<p>Golang 有其自己的<a href="https://www.cvedetails.com/vulnerability-list/vendor_id-14185/opov-1/Golang.html" target="_blank">溢出漏洞</a>列表，并有一个<a href="https://pkg.go.dev/unsafe" target="_blank">非安全包</a>。从包的名称可知，常见规则和检查在这个包中是不起作用的。</p>
+	<h3 id="heartbleed">Heartbleed</h3>
+	<p>2014 年发现了心脏出血漏洞。（当时）最常用的密码学库 OpenSSL 泄露了私钥。我们<a href="https://blog.cloudflare.com/answering-the-critical-question-can-you-get-private-ssl-keys-using-heartbleed/">也</a>遭遇了这个漏洞攻击。</p>
+	<h3 id="--1">缓解</h3>
+	<p>因此，内存缺陷是必须面对的事实，我们无法真正完全保护自己免受其害。但是，加密密钥比其他数据更具价值，我们是否至少可以更好地保护密钥？</p>
+	<p>如前所述，内存地址空间通常与进程相关。在默认情况下，两个不同的进程不会共用内存，它们的内存地址天然相互隔离。因此，其中一个进程的潜在内存缺陷不会意外泄露另一个进程的加密密钥。ssh-agent 安全协议便是基于这个原理。总是涉及两个进程：客户端/请求者和<a href="https://linux.die.net/man/1/ssh-agent" target="_blank">代理</a>。</p>
+	<blockquote><em>代理绝不会通过其请求通道发送私钥。而需要私钥的操作将由代理执行，结果则会返回给请求者。因此，私钥不会泄露给使用代理的客户端。</em></blockquote>
+	<p>请求者通常是一个面向网络的进程和/或处理不可信的输入。因此，请求者更可能受到内存相关漏洞的影响，但在这个模式中，它永远无法访问加密密钥（因为密钥存储在一个单独的进程地址空间中），因此绝不会泄露。</p>
+	<p>在 Cloudflare，我们在<a href="https://blog.cloudflare.com/heartbleed-revisited/">无密钥 SSL</a> 中采用同样的原则。客户的私钥安全存储在一个隔离的环境中，不受面向互联网的连接影响。</p>
+	<h3 id="linux-">Linux 内核密钥保留服务</h3>
+	<p>客户端/请求者和代理的模式为私密或加密密钥提供了更好的保护，但它也存在一些缺点：</p>
+	<ul>
+		<li>我们需要开发和维护两个不同的程序，而非一个程序</li>
+		<li>我们还需要设计一个定义明确的接口，在两个进程之间通信</li>
+		<li>我们需要在两个进程之间实施通信支持（Unix 套接字、共享内存等）</li>
+		<li>我们可能需要在进程之间进行身份验证并支持访问控制列表 (ACL)，因为我们不希望系统中的任何请求者能够使用我们存储在代理中的加密密钥</li>
+		<li>与客户端/请求者程序共同工作时，我们需要确保启动并运行代理进程</li>
+	</ul>
+	<p>用 Linux 内核本身替换代理进程会怎样？</p>
+	<ul>
+		<li>代理进程已经在我们的系统上运行（否则我们的软件将无法工作）</li>
+		<li>有一个定义明确的通信接口（系统调用）</li>
+		<li>可以在内核对象上执行各种 ACL</li>
+		<li>而且是在一个独立的地址空间中运行！</li>
+	</ul>
+	<p>幸运的是，<a href="https://www.kernel.org/doc/html/v6.0/security/keys/core.html" target="_blank">Linux 内核密钥保留服务</a>可以执行典型代理进程的所有功能，甚至可能功能更多！</p>
+	<p>最初，其设计旨在用于内核服务，例如 dm-crypt/ecryptfs，但后来又开放给用户空间程序使用。这赋予了我们一些优势：</p>
+	<ul>
+		<li>密钥未存储在进程地址空间中</li>
+		<li>定义明确的接口和通信层通过系统调用实现</li>
+		<li>密钥是内核对象，所以关联了权限和 ACL</li>
+		<li>密钥的生命周期可以与进程的生命周期隐式绑定</li>
+	</ul>
+	<p>Linux 内核密钥保留服务使用两类实体进行操作：密钥和密钥环，其中密钥环是一种特殊类型的密钥。如果与文件和目录类比，我们可以说密钥是文件，密钥环是目录。此外，它们的密钥层次结构与文件系统的树状层次结构相似：密钥环引用密钥和其他密钥环，但只有密钥持有实际的加密资料，就像只有文件持有实际数据。</p>
+	<p>密钥有多种类型。密钥的类型决定了可以在密钥上执行哪些操作。例如，用户和注册类的密钥可以持有任意数据块，但注册类密钥永远无法再被用户空间读取，只有内核内服务可以使用。</p>
+	<p>使用内核取代代理进程时，最有趣的密钥类型是<a href="https://man7.org/linux/man-pages/man7/asymmetric.7.html" target="_blank">非对称类</a>。它们可以在内核内保留私钥，让获得许可的应用程序有能力解密或使用密钥签署一些数据。目前仅支持 RSA 密钥，但正在努力增加对 <a href="https://lore.kernel.org/lkml/20221014100737.94742-2-ignat@cloudflare.com/" target="_blank">ECDSA 密钥的支持</a>。</p>
+	<p>虽然密钥负责保护内核内的加密资料，但密钥环决定了密钥的生存期和共享访问权限。举个最简单的例子，特定密钥环被销毁时，仅与该密钥环关联的所有密钥也被安全销毁。我们可以手动创建自定义密钥环，但该服务最强大的功能之一可能是“特殊密钥环”。</p>
+	<p>这些密钥环由内核隐式创建，其生存期与不同内核对象（例如进程或用户）的生存期相关。(目前有四类“隐式”<a href="https://man7.org/linux/man-pages/man7/keyrings.7.html" target="_blank">密钥环</a>），但本文我们仅讨论使用最广泛的两类密钥环：进程密钥环和用户密钥环。</p>
+	<p>用户密钥环的生存期与特定用户的存在绑定在一起，同一 UID 的所有进程共用该密钥环。例如，进程可以在用户密钥环中存储密钥，以同一用户身份运行的另一个进程也可以检索/使用该密钥。从系统中删除 UID 时，内核会将相关用户密钥环下的所有密钥（和其他密钥环）安全销毁。</p>
+	<p>进程密钥环绑定了一些进程，从语义上可能有三种不同类型：进程、线程和会话。进程密钥环与某个特定进程绑定，为该进程私有。因此，进程中的任何代码都可以存储/使用密钥环中的密钥，但其他进程（即使拥有相同的用户 ID 或子进程）无法访问。当该进程终止时，密钥环和相关密钥就会被安全销毁。除了将我们的秘密/密钥存储在一个隔离的地址空间外，进程密钥环还给我们提供了安全保障：无论进程为何终止，密钥都会被销毁——哪怕我们的应用程序严重崩溃，没有获得机会执行任何清理代码，内核仍然会将我们的密钥安全销毁。</p>
+	<p>线程密钥环与进程密钥环相似，但它是私有密钥环，与某个特定线程绑定。例如，我们可以构建一个多线程的 Web 服务器，它可以使用多个私钥为 TLS 连接提供服务，我们可以确保一个线程中的连接/代码绝不会使用与另一个线程关联的私钥（例如，为不同域名提供服务）。</p>
+	<p>会话密钥环让当前进程及其所有子进程可以使用其密钥。当最上面的进程终止时，它就会被销毁，只要最上面的进程存在，子进程就可以存储/访问密钥。当我们使用 <a href="https://man7.org/linux/man-pages/man1/keyctl.1.html" target="_blank">keyctl 工具</a>访问 Linux 内核密钥保留服务，而不是使用内核系统调用接口时，会话密钥在外壳和交互式环境中非常有用。在外壳中，我们一般不能使用进程密钥环，因为执行的每个命令都会创建一个新的进程。因此，如果我们从命令行向进程密钥环添加一个密钥，该密钥会立即被销毁，因为命令执行完毕后，“添加”进程就会终止。我们可以在 <code><a href="https://github.com/iovisor/bpftrace" target="_blank">bpftrace</a></code> 中实际确认一下。</p>
+	<p>我们在一个终端中追踪 <code><a href="https://elixir.bootlin.com/linux/v5.19.17/source/security/keys/user_defined.c#L146" target="_blank">user_destroy</a></code> 函数，该函数负责删除用户密钥。</p><!--kg-card-begin: markdown-->
+	<pre><code>$ sudo bpftrace -e 'kprobe:user_destroy { printf("destroying key %d\n", ((struct key *)arg0)-&gt;serial) }'
+Att
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>而在另一个终端中，我们尝试给进程密钥环添加一个密钥：</p><!--kg-card-begin: markdown-->
+	<pre><code>$ keyctl add user mykey hunter2 @p
+742524855
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>返回第一个终端，我们立即就可以看到：</p><!--kg-card-begin: markdown-->
+	<pre><code>…
+Attaching 1 probe...
+destroying key 742524855
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>我们可以尝试访问该密钥，确认其不可用：</p><!--kg-card-begin: markdown-->
+	<pre><code>$ keyctl print 742524855
+keyctl_read_alloc: Required key not available
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>所以在上面的示例中，向执行 <code>keyctl add user mykey hunter2 @p</code> 的子壳的进程密钥环中添加了密钥“mykey”。但由于子壳进程在执行命令的那一刻就终止了，其进程密钥环和添加的密钥均被销毁。</p>
+	<p>而会话密钥环则允许交互式命令向我们当前的外壳环境添加密钥，并允许后续命令使用这些密钥。当我们的主外壳进程终止时（登出系统时很可能终止），这些密钥仍将被安全销毁。</p>
+	<p>因此，通过选择合适的密钥环类型，我们可以确保密钥在不需要时被安全销毁。哪怕应用程序崩溃了！这个介绍非常简短，但您可以按照我们的示例玩一下，如需了解整个背景，请访问<a href="https://www.kernel.org/doc/html/v5.8/security/keys/core.html" target="_blank">官方文档</a>。</p>
+	<h3 id="-linux-ssh-agent">使用 Linux 内核密钥保留服务取代 ssh-agent</h3>
+	<p>我们详细介绍了如何使用 Linux 内核保留服务取代两个孤立的进程。现在该介绍我们的代码了。我们也谈到了 ssh-agent，所以，使用内核密钥取代存储在 agent 内存中的私钥将是一个不错的练习。我们选择将最流行的 SSH 实施方式 <a href="https://github.com/openssh/openssh-portable.git" target="_blank">OpenSSH</a> 作为我们的目标。</p>
+	<p>需要对代码进行一些小修改，以增加从内核检索密钥的功能。</p><!--kg-card-begin: markdown-->
+	<p>openssh.patch</p>
+	<pre><code>diff --git a/ssh-rsa.c b/ssh-rsa.c
+index 6516ddc1..797739bb 100644
+--- a/ssh-rsa.c
++++ b/ssh-rsa.c
+@@ -26,6 +26,7 @@
+ 
+ #include &lt;stdarg.h&gt;
+ #include &lt;string.h&gt;
++#include &lt;stdbool.h&gt;
+ 
+ #include "sshbuf.h"
+ #include "compat.h"
+@@ -63,6 +64,7 @@ ssh_rsa_cleanup(struct sshkey *k)
+ {
+ 	RSA_free(k-&gt;rsa);
+ 	k-&gt;rsa = NULL;
++	k-&gt;serial = 0;
+ }
+ 
+ static int
+@@ -220,9 +222,14 @@ ssh_rsa_deserialize_private(const char *ktype, struct sshbuf *b,
+ 	int r;
+ 	BIGNUM *rsa_n = NULL, *rsa_e = NULL, *rsa_d = NULL;
+ 	BIGNUM *rsa_iqmp = NULL, *rsa_p = NULL, *rsa_q = NULL;
++	bool is_keyring = (strncmp(ktype, "ssh-rsa-keyring", strlen("ssh-rsa-keyring")) == 0);
+ 
++	if (is_keyring) {
++		if ((r = ssh_rsa_deserialize_public(ktype, b, key)) != 0)
++			goto out;
++	}
+ 	/* Note: can't reuse ssh_rsa_deserialize_public: e, n vs. n, e */
+-	if (!sshkey_is_cert(key)) {
++	else if (!sshkey_is_cert(key)) {
+ 		if ((r = sshbuf_get_bignum2(b, &amp;rsa_n)) != 0 ||
+ 		    (r = sshbuf_get_bignum2(b, &amp;rsa_e)) != 0)
+ 			goto out;
+@@ -232,28 +239,46 @@ ssh_rsa_deserialize_private(const char *ktype, struct sshbuf *b,
+ 		}
+ 		rsa_n = rsa_e = NULL; /* transferred */
+ 	}
+-	if ((r = sshbuf_get_bignum2(b, &amp;rsa_d)) != 0 ||
+-	    (r = sshbuf_get_bignum2(b, &amp;rsa_iqmp)) != 0 ||
+-	    (r = sshbuf_get_bignum2(b, &amp;rsa_p)) != 0 ||
+-	    (r = sshbuf_get_bignum2(b, &amp;rsa_q)) != 0)
+-		goto out;
+-	if (!RSA_set0_key(key-&gt;rsa, NULL, NULL, rsa_d)) {
+-		r = SSH_ERR_LIBCRYPTO_ERROR;
+-		goto out;
+-	}
+-	rsa_d = NULL; /* transferred */
+-	if (!RSA_set0_factors(key-&gt;rsa, rsa_p, rsa_q)) {
+-		r = SSH_ERR_LIBCRYPTO_ERROR;
+-		goto out;
+-	}
+-	rsa_p = rsa_q = NULL; /* transferred */
+ 	if ((r = sshkey_check_rsa_length(key, 0)) != 0)
+ 		goto out;
+-	if ((r = ssh_rsa_complete_crt_parameters(key, rsa_iqmp)) != 0)
+-		goto out;
+-	if (RSA_blinding_on(key-&gt;rsa, NULL) != 1) {
+-		r = SSH_ERR_LIBCRYPTO_ERROR;
+-		goto out;
++
++	if (is_keyring) {
++		char *name;
++		size_t len;
++
++		if ((r = sshbuf_get_cstring(b, &amp;name, &amp;len)) != 0)
++			goto out;
++
++		key-&gt;serial = request_key("asymmetric", name, NULL, KEY_SPEC_PROCESS_KEYRING);
++		free(name);
++
++		if (key-&gt;serial == -1) {
++			key-&gt;serial = 0;
++			r = SSH_ERR_KEY_NOT_FOUND;
++			goto out;
++		}
++	} else {
++		if ((r = sshbuf_get_bignum2(b, &amp;rsa_d)) != 0 ||
++			(r = sshbuf_get_bignum2(b, &amp;rsa_iqmp)) != 0 ||
++			(r = sshbuf_get_bignum2(b, &amp;rsa_p)) != 0 ||
++			(r = sshbuf_get_bignum2(b, &amp;rsa_q)) != 0)
++			goto out;
++		if (!RSA_set0_key(key-&gt;rsa, NULL, NULL, rsa_d)) {
++			r = SSH_ERR_LIBCRYPTO_ERROR;
++			goto out;
++		}
++		rsa_d = NULL; /* transferred */
++		if (!RSA_set0_factors(key-&gt;rsa, rsa_p, rsa_q)) {
++			r = SSH_ERR_LIBCRYPTO_ERROR;
++			goto out;
++		}
++		rsa_p = rsa_q = NULL; /* transferred */
++		if ((r = ssh_rsa_complete_crt_parameters(key, rsa_iqmp)) != 0)
++			goto out;
++		if (RSA_blinding_on(key-&gt;rsa, NULL) != 1) {
++			r = SSH_ERR_LIBCRYPTO_ERROR;
++			goto out;
++		}
+ 	}
+ 	/* success */
+ 	r = 0;
+@@ -333,6 +358,21 @@ rsa_hash_alg_nid(int type)
+ 	}
+ }
+ 
++static const char *
++rsa_hash_alg_keyctl_info(int type)
++{
++	switch (type) {
++	case SSH_DIGEST_SHA1:
++		return "enc=pkcs1 hash=sha1";
++	case SSH_DIGEST_SHA256:
++		return "enc=pkcs1 hash=sha256";
++	case SSH_DIGEST_SHA512:
++		return "enc=pkcs1 hash=sha512";
++	default:
++		return NULL;
++	}
++}
++
+ int
+ ssh_rsa_complete_crt_parameters(struct sshkey *key, const BIGNUM *iqmp)
+ {
+@@ -433,7 +473,14 @@ ssh_rsa_sign(struct sshkey *key,
+ 		goto out;
+ 	}
+ 
+-	if (RSA_sign(nid, digest, hlen, sig, &amp;len, key-&gt;rsa) != 1) {
++	if (key-&gt;serial &gt; 0) {
++		len = keyctl_pkey_sign(key-&gt;serial, rsa_hash_alg_keyctl_info(hash_alg), digest, hlen, sig, slen);
++		if ((long)len == -1) {
++			ret = SSH_ERR_LIBCRYPTO_ERROR;
++			goto out;
++		}
++	}
++	else if (RSA_sign(nid, digest, hlen, sig, &amp;len, key-&gt;rsa) != 1) {
+ 		ret = SSH_ERR_LIBCRYPTO_ERROR;
+ 		goto out;
+ 	}
+@@ -705,6 +752,18 @@ const struct sshkey_impl sshkey_rsa_impl = {
+ 	/* .funcs = */		&amp;sshkey_rsa_funcs,
+ };
+ 
++const struct sshkey_impl sshkey_rsa_keyring_impl = {
++	/* .name = */		"ssh-rsa-keyring",
++	/* .shortname = */	"RSA",
++	/* .sigalg = */		NULL,
++	/* .type = */		KEY_RSA,
++	/* .nid = */		0,
++	/* .cert = */		0,
++	/* .sigonly = */	0,
++	/* .keybits = */	0,
++	/* .funcs = */		&amp;sshkey_rsa_funcs,
++};
++
+ const struct sshkey_impl sshkey_rsa_cert_impl = {
+ 	/* .name = */		"ssh-rsa-cert-v01@openssh.com",
+ 	/* .shortname = */	"RSA-CERT",
+diff --git a/sshkey.c b/sshkey.c
+index 43712253..3524ad37 100644
+--- a/sshkey.c
++++ b/sshkey.c
+@@ -115,6 +115,7 @@ extern const struct sshkey_impl sshkey_ecdsa_nistp521_cert_impl;
+ #  endif /* OPENSSL_HAS_NISTP521 */
+ # endif /* OPENSSL_HAS_ECC */
+ extern const struct sshkey_impl sshkey_rsa_impl;
++extern const struct sshkey_impl sshkey_rsa_keyring_impl;
+ extern const struct sshkey_impl sshkey_rsa_cert_impl;
+ extern const struct sshkey_impl sshkey_rsa_sha256_impl;
+ extern const struct sshkey_impl sshkey_rsa_sha256_cert_impl;
+@@ -154,6 +155,7 @@ const struct sshkey_impl * const keyimpls[] = {
+ 	&amp;sshkey_dss_impl,
+ 	&amp;sshkey_dsa_cert_impl,
+ 	&amp;sshkey_rsa_impl,
++	&amp;sshkey_rsa_keyring_impl,
+ 	&amp;sshkey_rsa_cert_impl,
+ 	&amp;sshkey_rsa_sha256_impl,
+ 	&amp;sshkey_rsa_sha256_cert_impl,
+diff --git a/sshkey.h b/sshkey.h
+index 771c4bce..a7ae45f6 100644
+--- a/sshkey.h
++++ b/sshkey.h
+@@ -29,6 +29,7 @@
+ #include &lt;sys/types.h&gt;
+ 
+ #ifdef WITH_OPENSSL
++#include &lt;keyutils.h&gt;
+ #include &lt;openssl/rsa.h&gt;
+ #include &lt;openssl/dsa.h&gt;
+ # ifdef OPENSSL_HAS_ECC
+@@ -153,6 +154,7 @@ struct sshkey {
+ 	size_t	shielded_len;
+ 	u_char	*shield_prekey;
+ 	size_t	shield_prekey_len;
++	key_serial_t serial;
+ };
+ 
+ #define	ED25519_SK_SZ	crypto_sign_ed25519_SECRETKEYBYTES
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>我们需要从最新的 git 上下载 OpenSSH 并安装补丁，因为上述补丁在最新版本 <code>V_9_1_P1</code> 上无法使用（在撰写本文时）：</p><!--kg-card-begin: markdown-->
+	<pre><code>$ git clone https://github.com/openssh/openssh-portable.git
+…
+$ cd openssl-portable
+$ $ patch -p1 &lt; ../openssh.patch
+patching file ssh-rsa.c
+patching file sshkey.c
+patching file sshkey.h
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>现在编译和构建已安装补丁的 OpenSSH</p><!--kg-card-begin: markdown-->
+	<pre><code>$ autoreconf
+$ ./configure --with-libs=-lkeyutils --disable-pkcs11
+…
+$ make
+…
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>请注意，我们指示构建系统另外链接 <code><a href="https://man7.org/linux/man-pages/man3/keyctl.3.html" target="_blank">libkeyutils</a></code>，它提供了方便的包装来访问 Linux 内核密钥保留服务。此外，我们不得不禁用 PKCS11 支持，因为在“libkeyutils”中，该代码有一个相同名称的函数，所以存在命名冲突。对此可能有更好的解决办法，但超出了本文的讨论范围。</p>
+	<p>现在我们得到了已安装补丁的 OpenSSH，我们来测试一下。首先，我们需要生成一个新的 SSH RSA 密钥，我们将用它来访问系统。由于 Linux 内核只支持 PKCS8 格式的私钥，所以我们从一开始就使用这种格式（而不使用默认的 OpenSSH 格式）。</p><!--kg-card-begin: markdown-->
+	<pre><code>$ ./ssh-keygen -b 4096 -m PKCS8
+Generating public/private rsa key pair.
+…
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>通常情况下，我们会使用“ssh-add”将这个密钥添加到我们的 ssh 代理。在我们的案例中，我们需要使用一个替换脚本将密钥添加到我们当前的会话密钥环。</p><!--kg-card-begin: markdown-->
+	<p>ssh-add-keyring.sh</p>
+	<pre><code>#/bin/bash -e
+
+in=$1
+key_desc=$2
+keyring=$3
+
+in_pub=$in.pub
+key=$(mktemp)
+out="${in}_keyring"
+
+function finish {
+    rm -rf $key
+}
+trap finish EXIT
+
+# https://github.com/openssh/openssh-portable/blob/master/PROTOCOL.key
+# null-terminanted openssh-key-v1
+printf 'openssh-key-v1\0' &gt; $key
+# cipher: none
+echo '00000004' | xxd -r -p &gt;&gt; $key
+echo -n 'none' &gt;&gt; $key
+# kdf: none
+echo '00000004' | xxd -r -p &gt;&gt; $key
+echo -n 'none' &gt;&gt; $key
+# no kdf options
+echo '00000000' | xxd -r -p &gt;&gt; $key
+# one key in the blob
+echo '00000001' | xxd -r -p &gt;&gt; $key
+
+# grab the hex public key without the (00000007 || ssh-rsa) preamble
+pub_key=$(awk '{ print $2 }' $in_pub | base64 -d | xxd -s 11 -p | tr -d '\n')
+# size of the following public key with the (0000000f || ssh-rsa-keyring) preamble
+printf '%08x' $(( ${#pub_key} / 2 + 19 )) | xxd -r -p &gt;&gt; $key
+# preamble for the public key
+# ssh-rsa-keyring in prepended with length of the string
+echo '0000000f' | xxd -r -p &gt;&gt; $key
+echo -n 'ssh-rsa-keyring' &gt;&gt; $key
+# the public key itself
+echo $pub_key | xxd -r -p &gt;&gt; $key
+
+# the private key is just a key description in the Linux keyring
+# ssh will use it to actually find the corresponding key serial
+# grab the comment from the public key
+comment=$(awk '{ print $3 }' $in_pub)
+# so the total size of the private key is
+# two times the same 4 byte int +
+# (0000000f || ssh-rsa-keyring) preamble +
+# a copy of the public key (without preamble) +
+# (size || key_desc) +
+# (size || comment )
+priv_sz=$(( 8 + 19 + ${#pub_key} / 2 + 4 + ${#key_desc} + 4 + ${#comment} ))
+# we need to pad the size to 8 bytes
+pad=$(( 8 - $(( priv_sz % 8 )) ))
+# so, total private key size
+printf '%08x' $(( $priv_sz + $pad )) | xxd -r -p &gt;&gt; $key
+# repeated 4-byte int
+echo '0102030401020304' | xxd -r -p &gt;&gt; $key
+# preamble for the private key
+echo '0000000f' | xxd -r -p &gt;&gt; $key
+echo -n 'ssh-rsa-keyring' &gt;&gt; $key
+# public key
+echo $pub_key | xxd -r -p &gt;&gt; $key
+# private key description in the keyring
+printf '%08x' ${#key_desc} | xxd -r -p &gt;&gt; $key
+echo -n $key_desc &gt;&gt; $key
+# comment
+printf '%08x' ${#comment} | xxd -r -p &gt;&gt; $key
+echo -n $comment &gt;&gt; $key
+# padding
+for (( i = 1; i &lt;= $pad; i++ )); do
+    echo 0$i | xxd -r -p &gt;&gt; $key
+done
+
+echo '-----BEGIN OPENSSH PRIVATE KEY-----' &gt; $out
+base64 $key &gt;&gt; $out
+echo '-----END OPENSSH PRIVATE KEY-----' &gt;&gt; $out
+chmod 600 $out
+
+# load the PKCS8 private key into the designated keyring
+openssl pkcs8 -in $in -topk8 -outform DER -nocrypt | keyctl padd asymmetric $key_desc $keyring
+
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>根据内核的编译方式，我们可能还需要加载一些内核模块来支持非对称私钥：</p><!--kg-card-begin: markdown-->
+	<pre><code>$ sudo modprobe pkcs8_key_parser
+$ ./ssh-add-keyring.sh ~/.ssh/id_rsa myssh @s
+Enter pass phrase for ~/.ssh/id_rsa:
+723263309
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>最后，我们的 ssh 私钥会添加到当前会话的密钥环中，名称为“myssh”。此外，<code>ssh-add-keyring.sh</code> 将在 <code>~/.ssh/id_rsa_keyring</code> 中创建一个需要传递给主 <code>ssh</code> 进程的伪私钥文件。它是一个伪私钥，因为它没有任何敏感的加密资料。相反，它只有一种本地 OpenSSH 格式的“myssh”标识符。如果我们使用多个 SSH 密钥，我们必须以某种方式告诉主 <code>ssh</code> 进程应该从系统中请求哪个内核密钥名称。</p>
+	<p>开始测试之前，请确保我们的 SSH 服务器（在本地运行）将接受新生成的密钥作为有效身份验证：</p><!--kg-card-begin: markdown-->
+	<pre><code>$ cat ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>现在我们可以尝试使用 SSH 登录系统：</p><!--kg-card-begin: markdown-->
+	<pre><code>$ SSH_AUTH_SOCK="" ./ssh -i ~/.ssh/id_rsa_keyring localhost
+The authenticity of host 'localhost (::1)' can't be established.
+ED25519 key fingerprint is SHA256:3zk7Z3i9qZZrSdHvBp2aUYtxHACmZNeLLEqsXltynAY.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'localhost' (ED25519) to the list of known hosts.
+Linux dev 5.15.79-cloudflare-2022.11.6 #1 SMP Mon Sep 27 00:00:00 UTC 2010 x86_64
+…
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>成功了！请注意，我们正在重设“SSH_AUTH_SOCK”环境变量，以确保我们不会使用系统上运行的 ssh-agent 中的任何密钥。但登录流程并不需要使用任何私钥密码，密钥本身常驻于内核地址空间中，进行签名操作时，我们通过使用其序列来引用密钥。</p>
+	<h3 id="--2">用户密钥环或会话密钥环？</h3>
+	<p>在上面的示例中，我们把 SSH 私钥设置在会话密钥环中。我们可以检查它是否在那里：</p><!--kg-card-begin: markdown-->
+	<pre><code>$ keyctl show
+Session Keyring
+ 577779279 --alswrv   1000  1000  keyring: _ses
+ 846694921 --alswrv   1000 65534   \_ keyring: _uid.1000
+ 723263309 --als--v   1000  1000   \_ asymmetric: myssh
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>我们可能也使用过用户密钥环。它们有什么不同呢？目前，“myssh ”密钥的生存期只限于当前的登录会话。也就是说，如果我们登出并再次登录，该密钥就不存在了，我们必须再次运行 <code>ssh-add-keyring.sh</code> 脚本。同样地，如果我们登录另一个终端，我们也看不到该密钥：</p><!--kg-card-begin: markdown-->
+	<pre><code>$ keyctl show
+Session Keyring
+ 333158329 --alswrv   1000  1000  keyring: _ses
+ 846694921 --alswrv   1000 65534   \_ keyring: _uid.1000
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>请注意，第二个终端中的会话密钥环 <code>_ses</code> 的序列号是不同的。而是创建了一个新的密钥环，“myssh”密钥和之前的会话密钥环已不存在：</p><!--kg-card-begin: markdown-->
+	<pre><code>$ SSH_AUTH_SOCK="" ./ssh -i ~/.ssh/id_rsa_keyring localhost
+Load key "/home/ignat/.ssh/id_rsa_keyring": key not found
+…
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>相反，如果我们告诉 <code>ssh-add-keyring.sh</code> 将私钥加载到用户密钥环中（将命令行参数中的 <code>@s</code> 替换为 <code>@u</code>），则两个登录会话均可使用和访问。在这种情况下，登出并重新登录时，将显示相同的密钥。不过，这存在安全隐患——以我们的用户 ID 运行的任何进程都能访问和使用该密钥。</p>
+	<h3 id="--3">摘要</h3>
+	<p>本文我们了解了数据（包括极具价值的加密密钥）最常见的一种泄漏方式。我们列举了一些真实的示例。在这些示例中，全世界的许多用户（包括 Cloudflare）均受到了影响。最后，我们学习了 Linux 内核保留服务如何帮助我们保护加密密钥和秘密。</p>
+	<p>我们还介绍了 OpenSSH 的一个工作补丁，帮助使用 Linux 内核这一炫酷的功能。因此，您可以轻松地自行尝试。Linux 内核密钥保留服务还有许多其他功能，可能需要另写一篇博客来具体介绍。敬请关注！</p>
+</div>
