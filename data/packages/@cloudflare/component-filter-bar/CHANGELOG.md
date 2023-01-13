@@ -1,5 +1,11 @@
 # Change Log
 
+## 4.5.0
+
+### Minor Changes
+
+- 35c343e470: Adding filterIconType and buttonStyle props to FilterBuilder component
+
 ## 4.4.0
 
 ### Minor Changes
