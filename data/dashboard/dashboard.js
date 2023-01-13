@@ -7198,12 +7198,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				e.g.build = md({}, {
-					branch: "release-1673535826",
+					branch: "marina/DOS-4699-fix-issue-ddos-ruleset",
 					isReleaseCandidate: "true",
-					commit: "878f8e9e603692180142efeea4fb125e107e4870",
+					commit: "a9fafe8deda66a2aedd7e5bc7d68b447841dc882",
 					env: "production",
-					builtAt: 1673536149535,
-					dashVersion: "3c5e8ceb0844dbe820f7963418ae0cb6fe85fab1",
+					builtAt: 1673605420861,
+					dashVersion: "8549d481036c1ea5ec7fff84e400df838aee5bbf",
 					versions: {
 						"@cloudflare/app-dash": "25.128.10",
 						node: "16.16.0",
@@ -86821,4 +86821,4 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 	}
 ]);
 
-//# sourceMappingURL=9188d8b5ada906b81e62.js.map
+//# sourceMappingURL=f28d2afa320388bb8b23.js.map
