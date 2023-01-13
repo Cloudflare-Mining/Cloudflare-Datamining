@@ -4,7 +4,7 @@
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "China Network (2021 JD Cloud updates) - Product Page",
+				"pageName": "China Network (2022 China Express updates) - Product Page",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
@@ -48,7 +48,12 @@
 				},
 				"contentfulId": "3OVjIpVKgqJdyEAiVTZVgP",
 				"contentTypeId": "page",
-				"promotionalBanner": null,
+				"promotionalBanner": {
+					"pillText": "Learn More",
+					"linkText": "Read the blog post",
+					"linkUrl": "https://blog.cloudflare.com/china-express/",
+					"desktopText": "Introducing China Express, in partnership with CMI and CBC Tech"
+				},
 				"psaBanner": null,
 				"customTopNav": null,
 				"headerLogo": null,
@@ -508,13 +513,109 @@
 						]
 					},
 					{
-						"contentfulId": "24VWg3OpYKoTNG0j6Aqa3R",
+						"contentTypeId": "bladeTrustedBy",
+						"contentfulId": "5yZvcUz1iWJEIbxk6TReVF",
+						"bladeBorder": "none",
+						"textColor": "black",
+						"linkText": null,
+						"linkUrl": null,
+						"sectionPadding": null,
+						"backgroundColor": "white",
 						"title": "China Network partner",
 						"copy": "The Cloudflare China Network is run in partnership with JD Cloud, the cloud computing arm of the Chinese eCommerce giant JD.com. JD Cloud was named a 'Strong Performer' in Forrester's Wave for public cloud platforms in China.",
+						"logoList": [
+							{
+								"file": {
+									"publicURL": "[path]/JD_Cloud_horizontal_logo_small.jpg"
+								}
+							}
+						],
+						"logoListAssetFile": null,
+						"logoUrlList": null
+					},
+					{
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "4cNbP5SfO8YMukC6kkU0ok",
+						"buttonExtraClass": "network-china-contact-us",
+						"buttonColor": "orange",
+						"buttonColor2": null,
+						"title": "Get started with the Cloudflare China Network",
+						"backgroundColor": "blue",
+						"buttonText": "Contact Us",
+						"buttonUrl": "#",
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
+						"htmlId": null,
+						"textColor": "white",
+						"bladeBorder": "none",
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonWidth": "auto",
+							"buttonColor": "orange",
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "1882BcLypufgHNoMGm8nR7",
+							"elementName": "China Network Modal Button",
+							"standardText": null,
+							"text": "Contact Us",
+							"url": "#",
+							"loggedInUrl": null,
+							"modal": {
+								"contentTypeId": "formModal",
+								"contentfulId": "p9t7Mz9N21YFdrCEurUoE",
+								"modalName": "Network China - Product Page",
+								"modalId": "network-china-contact-us",
+								"modalType": "single-form",
+								"marketoForm": {
+									"contentTypeId": "marketoEmbeddedForm",
+									"contentfulId": "4vDytdvn0hY7klFiCXRAzc",
+									"bladeName": "Network China - Product Page: Marketo Form (1341)",
+									"backgroundColor": "white",
+									"marketoFormId": 1341,
+									"marketoFormLeadSource": "Inbound - Web Form",
+									"marketoFormLeadSourceDetail": "[ACQ] Q1'21 WEB - GBL - China Network Landing Page",
+									"marketoFormHeaderText": null,
+									"marketoFormDefaultComment": null,
+									"showCommentBox": true,
+									"marketoFormThankYouText": null,
+									"marketoFormCustomSuccessMessage": null,
+									"marketoFormPdfDownload": null,
+									"marketoFormPdfDownloadI18n": null,
+									"marketoFormAssetDownloadButtonText": null,
+									"marketoFormSuccessRedirectUrl": null,
+									"sendAdRoll": true,
+									"meta_adRollCustomSegment": "d93ca3c6",
+									"enableSandbox": null,
+									"marketoFormSubmitButtonText": null,
+									"marketoFormSubmitButtonColor": null,
+									"enableEmailVerification": null,
+									"disableEnterpriseEmailNotification": null,
+									"enableRingout": null
+								},
+								"title": "Contact Sales",
+								"regularCopy": "Enable the China Service Today!",
+								"splitFormDefaultTab": null,
+								"selfServeTabText": null,
+								"selfServeCopy": null,
+								"enterpriseTabText": null,
+								"enterpriseCopy": null
+							},
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
+						"buttonTwo": null,
+						"sectionPadding": null
+					},
+					{
+						"contentfulId": "7G19YtE0dyDyStG3Zu4OHZ",
+						"title": "China Express",
+						"copy": "China Express is a suite of connectivity and performance offerings that accelerate application access for users in China, offered in partnership with China Mobile International (CMI) and CBC Tech.",
 						"toggleText": null,
 						"button": null,
-						"learnMoreUrl": null,
-						"learnMoreText": null,
+						"learnMoreUrl": "https://blog.cloudflare.com/china-express/",
+						"learnMoreText": "Learn more",
 						"link": null,
 						"subheadline": null,
 						"button1Text": null,
@@ -523,26 +624,24 @@
 						"button2Text": null,
 						"button2Url": null,
 						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
 						"streamVideoId": null,
 						"streamThumbnails": null,
 						"streamPoster": null,
 						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "[path]/JD_Cloud_horizontal_logo.jpg"
-							}
-						},
+						"image": null,
 						"imageAssetFile": {
-							"id": "0dc2a73d-d094-538d-bcdf-f350ef51ec1b",
-							"altText": "JD Cloud horizontal logo",
-							"title": "JD Cloud horizontal logo",
+							"id": "bd59e666-1ee6-5f82-b623-0c0992c72513",
+							"altText": "Cloudflare One in China - CMI and China Express updates",
+							"title": "Cloudflare One in China - CMI and China Express updates",
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "[path]/JD_Cloud_horizontal_logo.jpg"
+									"publicURL": "[path]/Cloudflare_One_in_China.png"
 								}
 							},
 							"brandfolderAsset": null,
@@ -554,20 +653,20 @@
 						"htmlId": null,
 						"titleSize": null,
 						"sectionPadding": null,
-						"backgroundColor": "white",
+						"backgroundColor": "light-blue",
 						"bladeBorder": "none",
 						"imagePosition": false,
-						"imageSize": null,
-						"imageTextAlignment": null,
+						"imageSize": "small",
+						"imageTextAlignment": "top",
 						"togglesTo": null
 					},
 					{
-						"contentfulId": "2kv9nhvQm5DQj5O9M6V2oq",
+						"contentfulId": "6HOSbzpEwHIdFCvnXGSGTa",
 						"backgroundColor": "light-blue",
 						"contentTypeId": "bladeFourFeatures",
 						"htmlId": null,
 						"copy": null,
-						"title": "The Cloudflare difference",
+						"title": null,
 						"subtitle": null,
 						"bladeStyle": null,
 						"bladeBorder": "none",
@@ -578,37 +677,20 @@
 						"features": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "5pqtmYMmsdXT6t0dTVhmuK",
-								"title": "Resilient and reliable",
+								"contentfulId": "2CNFuywtqypNe9CZd5Gkxr",
+								"title": "Premium DIA",
 								"titleSize": null,
-								"description": "Every security and performance service runs in each data center in the Cloudflare China Network, giving it the capacity to withstand the largest attacks and function as normal in the event of isolated outages.\n",
+								"description": "Premium Dedicated Internet Access, is an optimized, high-quality public Internet circuit for cross-border connectivity provided by our local partners CMI and CBC Tech. Customers can use Premium DIA to improve origin performance for their Cloudflare service in mainland China by up to 60%.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
-								"displayBorder": null,
+								"displayBorder": false,
 								"openLinkInNewTab": null,
 								"icon": {
 									"file": {
-										"publicURL": "[path]/network-scale.svg"
+										"publicURL": "[path]/cloudflare-pages.svg"
 									}
 								},
-								"iconAssetFile": {
-									"id": "799c866d-69a4-5646-b6bb-5261eae7cb14",
-									"altText": "Network scale blue",
-									"title": "Network scale blue",
-									"activeAsset": "Brandfolder Asset",
-									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 5263,
-										"height": 192,
-										"width": 192,
-										"filename": "network-scale-blue.svg",
-										"file": {
-											"publicURL": "[path]/network-scale-blue.svg"
-										}
-									},
-									"brandfolderAssetMobile": null
-								},
+								"iconAssetFile": null,
 								"imageAssetFile": null,
 								"streamId": null,
 								"streamThumbnail": null,
@@ -616,37 +698,20 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "6dYKcKGeaSAkP7BaMkaHrt",
-								"title": "Threat intelligence",
+								"contentfulId": "3iv8U1H5K5CxzDicqP4Tbj",
+								"title": "Private Link",
 								"titleSize": null,
-								"description": "Cloudflare continually analyzes incoming attacks and automatically applies this threat intelligence across the entire network, including data centers in China. Stopping an attack on one customer makes all customers safer. \n",
+								"description": "Private link offers a dedicated private tunnel between your locations in China and data centers outside of China. Private Link can also be used to establish dedicated private connectivity to SaaS data centers like Salesforce. Private link is available through our partners and there may be additional requirements to implement it.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
-								"displayBorder": null,
+								"displayBorder": false,
 								"openLinkInNewTab": null,
 								"icon": {
 									"file": {
-										"publicURL": "[path]/analytics-bots.svg"
+										"publicURL": "[path]/performance-routing.png"
 									}
 								},
-								"iconAssetFile": {
-									"id": "f1cefe1e-0ba3-5ad8-b7f9-16dc63d1d2ed",
-									"altText": "Analytics bots blue",
-									"title": "Analytics bots blue",
-									"activeAsset": "Brandfolder Asset",
-									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 1564,
-										"height": 192,
-										"width": 192,
-										"filename": "analytics-bots-blue.svg",
-										"file": {
-											"publicURL": "[path]/analytics-bots-blue.svg"
-										}
-									},
-									"brandfolderAssetMobile": null
-								},
+								"iconAssetFile": null,
 								"imageAssetFile": null,
 								"streamId": null,
 								"streamThumbnail": null,
@@ -654,43 +719,148 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "48CzoTOQLXbhZTQrniK1ka",
-								"title": "Easy to manage",
+								"contentfulId": "1NxtM3O92XcfZpumZ6gEqc",
+								"title": "Travel SIM",
 								"titleSize": null,
-								"description": "Manage your traffic and security posture inside and outside of China from a unified control plane — no separate dashboards, support, or billing. Changes propagate across the entire network within minutes.",
+								"description": "Provided by Cloudflare's partner CMI, the Travel SIM automatically provides network connectivity and can be used together with the Cloudflare WARP Client on mobile devices to provide Cloudflare's suite of Zero Trust security services. With the Travel SIM, users can enjoy the same Cloudflare global service as the rest of the world when traveling to China.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
-								"displayBorder": null,
+								"displayBorder": false,
 								"openLinkInNewTab": null,
 								"icon": {
 									"file": {
-										"publicURL": "[path]/device-desktop.svg"
+										"publicURL": "[path]/TOTP_SVG.svg"
 									}
 								},
-								"iconAssetFile": {
-									"id": "6adac8a4-d9f8-513b-a21c-e71e03205ae3",
-									"altText": "Device desktop blue",
-									"title": "Device desktop blue",
-									"activeAsset": "Brandfolder Asset",
-									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 284,
-										"height": 192,
-										"width": 192,
-										"filename": "device-desktop-blue.svg",
-										"file": {
-											"publicURL": "[path]/device-desktop-blue.svg"
-										}
-									},
-									"brandfolderAssetMobile": null
+								"iconAssetFile": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "eLUmKOoO2BA7gQ8x8V4nf",
+								"title": "Cloudflare One in China",
+								"titleSize": null,
+								"description": "Cloudflare One, our zero trust network-as-a-service product, is available in mainland China through our strategic partnerships. Global organizations will now be able to ensure their employees both inside and outside China get secure, performant access to apps from their offices using Magic WAN and from remote sites using the Cloudflare WARP device client.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"icon": {
+									"file": {
+										"publicURL": "[path]/_DO_NOT_USE__new-homepage_icon_network-scale_blue_48px_svg.svg"
+									}
 								},
+								"iconAssetFile": null,
 								"imageAssetFile": null,
 								"streamId": null,
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
 							}
 						]
+					},
+					{
+						"contentTypeId": "bladeTrustedBy",
+						"contentfulId": "2Gm8T4JErsG7TFrTn3nOl0",
+						"bladeBorder": "none",
+						"textColor": "black",
+						"linkText": null,
+						"linkUrl": null,
+						"sectionPadding": null,
+						"backgroundColor": "white",
+						"title": "China Express partners",
+						"copy": "Cloudflare partners with leading network providers in China including China Mobile International (CMI) and CBC Tech.",
+						"logoList": [
+							{
+								"file": {
+									"publicURL": "[path]/cmi-logo.png"
+								}
+							},
+							{
+								"file": {
+									"publicURL": "[path]/cbc-tech-transparent.png"
+								}
+							}
+						],
+						"logoListAssetFile": null,
+						"logoUrlList": null
+					},
+					{
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "6ubb0cRganqMXCKN5Ii1Pv",
+						"buttonExtraClass": "network-china-contact-us",
+						"buttonColor": "orange",
+						"buttonColor2": "orange",
+						"title": "Get started with China Express",
+						"backgroundColor": "blue",
+						"buttonText": "Contact Us",
+						"buttonUrl": "#",
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
+						"htmlId": null,
+						"textColor": "white",
+						"bladeBorder": "none",
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonWidth": "auto",
+							"buttonColor": "orange",
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "1882BcLypufgHNoMGm8nR7",
+							"elementName": "China Network Modal Button",
+							"standardText": null,
+							"text": "Contact Us",
+							"url": "#",
+							"loggedInUrl": null,
+							"modal": {
+								"contentTypeId": "formModal",
+								"contentfulId": "p9t7Mz9N21YFdrCEurUoE",
+								"modalName": "Network China - Product Page",
+								"modalId": "network-china-contact-us",
+								"modalType": "single-form",
+								"marketoForm": {
+									"contentTypeId": "marketoEmbeddedForm",
+									"contentfulId": "4vDytdvn0hY7klFiCXRAzc",
+									"bladeName": "Network China - Product Page: Marketo Form (1341)",
+									"backgroundColor": "white",
+									"marketoFormId": 1341,
+									"marketoFormLeadSource": "Inbound - Web Form",
+									"marketoFormLeadSourceDetail": "[ACQ] Q1'21 WEB - GBL - China Network Landing Page",
+									"marketoFormHeaderText": null,
+									"marketoFormDefaultComment": null,
+									"showCommentBox": true,
+									"marketoFormThankYouText": null,
+									"marketoFormCustomSuccessMessage": null,
+									"marketoFormPdfDownload": null,
+									"marketoFormPdfDownloadI18n": null,
+									"marketoFormAssetDownloadButtonText": null,
+									"marketoFormSuccessRedirectUrl": null,
+									"sendAdRoll": true,
+									"meta_adRollCustomSegment": "d93ca3c6",
+									"enableSandbox": null,
+									"marketoFormSubmitButtonText": null,
+									"marketoFormSubmitButtonColor": null,
+									"enableEmailVerification": null,
+									"disableEnterpriseEmailNotification": null,
+									"enableRingout": null
+								},
+								"title": "Contact Sales",
+								"regularCopy": "Enable the China Service Today!",
+								"splitFormDefaultTab": null,
+								"selfServeTabText": null,
+								"selfServeCopy": null,
+								"enterpriseTabText": null,
+								"enterpriseCopy": null
+							},
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
+						"buttonTwo": null,
+						"sectionPadding": null
 					},
 					{
 						"contentTypeId": "bladeAccordion",
@@ -862,79 +1032,135 @@
 						"textColor": "black"
 					},
 					{
-						"contentTypeId": "bladeEnablement",
-						"contentfulId": "4cNbP5SfO8YMukC6kkU0ok",
-						"buttonExtraClass": "network-china-contact-us",
-						"buttonColor": "orange",
-						"buttonColor2": null,
-						"title": "Get started with the Cloudflare China Network",
-						"backgroundColor": "blue",
-						"buttonText": "Contact Us",
-						"buttonUrl": "#",
-						"buttonText2": null,
-						"buttonModalId2": null,
-						"buttonUrl2": null,
-						"bladeSizeType": "small",
+						"contentfulId": "2kv9nhvQm5DQj5O9M6V2oq",
+						"backgroundColor": "light-blue",
+						"contentTypeId": "bladeFourFeatures",
 						"htmlId": null,
-						"textColor": "white",
+						"copy": null,
+						"title": "The Cloudflare difference",
+						"subtitle": null,
+						"bladeStyle": null,
 						"bladeBorder": "none",
-						"buttonOne": {
-							"buttonAssetFile": null,
-							"buttonWidth": "auto",
-							"buttonColor": "orange",
-							"buttonTextLoggedIn": null,
-							"contentTypeId": "button",
-							"contentfulId": "1882BcLypufgHNoMGm8nR7",
-							"elementName": "China Network Modal Button",
-							"standardText": null,
-							"text": "Contact Us",
-							"url": "#",
-							"loggedInUrl": null,
-							"modal": {
-								"contentTypeId": "formModal",
-								"contentfulId": "p9t7Mz9N21YFdrCEurUoE",
-								"modalName": "Network China - Product Page",
-								"modalId": "network-china-contact-us",
-								"modalType": "single-form",
-								"marketoForm": {
-									"contentTypeId": "marketoEmbeddedForm",
-									"contentfulId": "4vDytdvn0hY7klFiCXRAzc",
-									"bladeName": "Network China - Product Page: Marketo Form (1341)",
-									"backgroundColor": "white",
-									"marketoFormId": 1341,
-									"marketoFormLeadSource": "Inbound - Web Form",
-									"marketoFormLeadSourceDetail": "[ACQ] Q1'21 WEB - GBL - China Network Landing Page",
-									"marketoFormHeaderText": null,
-									"marketoFormDefaultComment": null,
-									"showCommentBox": true,
-									"marketoFormThankYouText": null,
-									"marketoFormCustomSuccessMessage": null,
-									"marketoFormPdfDownload": null,
-									"marketoFormPdfDownloadI18n": null,
-									"marketoFormAssetDownloadButtonText": null,
-									"marketoFormSuccessRedirectUrl": null,
-									"sendAdRoll": true,
-									"meta_adRollCustomSegment": "d93ca3c6",
-									"enableSandbox": null,
-									"marketoFormSubmitButtonText": null,
-									"marketoFormSubmitButtonColor": null,
-									"enableEmailVerification": null,
-									"disableEnterpriseEmailNotification": null,
-									"enableRingout": null
+						"sectionPadding": null,
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5pqtmYMmsdXT6t0dTVhmuK",
+								"title": "Resilient and reliable",
+								"titleSize": null,
+								"description": "Every security and performance service runs in each data center in the Cloudflare China Network, giving it the capacity to withstand the largest attacks and function as normal in the event of isolated outages.\n",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"openLinkInNewTab": null,
+								"icon": {
+									"file": {
+										"publicURL": "[path]/network-scale.svg"
+									}
 								},
-								"title": "Contact Sales",
-								"regularCopy": "Enable the China Service Today!",
-								"splitFormDefaultTab": null,
-								"selfServeTabText": null,
-								"selfServeCopy": null,
-								"enterpriseTabText": null,
-								"enterpriseCopy": null
+								"iconAssetFile": {
+									"id": "799c866d-69a4-5646-b6bb-5261eae7cb14",
+									"altText": "Network scale blue",
+									"title": "Network scale blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 5263,
+										"height": 192,
+										"width": 192,
+										"filename": "network-scale-blue.svg",
+										"file": {
+											"publicURL": "[path]/network-scale-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
 							},
-							"openInNewTab": false,
-							"locale": "en-US"
-						},
-						"buttonTwo": null,
-						"sectionPadding": null
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6dYKcKGeaSAkP7BaMkaHrt",
+								"title": "Threat intelligence",
+								"titleSize": null,
+								"description": "Cloudflare continually analyzes incoming attacks and automatically applies this threat intelligence across the entire network, including data centers in China. Stopping an attack on one customer makes all customers safer. \n",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"openLinkInNewTab": null,
+								"icon": {
+									"file": {
+										"publicURL": "[path]/analytics-bots.svg"
+									}
+								},
+								"iconAssetFile": {
+									"id": "f1cefe1e-0ba3-5ad8-b7f9-16dc63d1d2ed",
+									"altText": "Analytics bots blue",
+									"title": "Analytics bots blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 1564,
+										"height": 192,
+										"width": 192,
+										"filename": "analytics-bots-blue.svg",
+										"file": {
+											"publicURL": "[path]/analytics-bots-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "48CzoTOQLXbhZTQrniK1ka",
+								"title": "Easy to manage",
+								"titleSize": null,
+								"description": "Manage your traffic and security posture inside and outside of China from a unified control plane — no separate dashboards, support, or billing. Changes propagate across the entire network within minutes.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"openLinkInNewTab": null,
+								"icon": {
+									"file": {
+										"publicURL": "[path]/device-desktop.svg"
+									}
+								},
+								"iconAssetFile": {
+									"id": "6adac8a4-d9f8-513b-a21c-e71e03205ae3",
+									"altText": "Device desktop blue",
+									"title": "Device desktop blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 284,
+										"height": 192,
+										"width": 192,
+										"filename": "device-desktop-blue.svg",
+										"file": {
+											"publicURL": "[path]/device-desktop-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						]
 					},
 					{
 						"contentfulId": "3tYgeRy7IK9JpKoJlZM0Vi",
