@@ -1,22 +1,25 @@
 [
 	{
-		"id": "05784afa30c1afe1440e79d9351c7430",
-		"name": "Administrator",
-		"description": "Can access the full account, except for membership management and billing.",
+		"id": "5c35d2bf3a545e6b7560b826c0d23c39",
+		"name": "Minimal Account Access",
+		"description": "Can view account, and nothing else",
 		"permissions": {
-			"organization": {
-				"read": true,
-				"edit": true
-			},
 			"zone": {
 				"read": true,
-				"edit": true
+				"edit": false
 			},
-			"ssl": {
+			"organization": {
 				"read": true,
-				"edit": true
-			},
-			"dns_records": {
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "63186624523694e09983769ce03f4e2b",
+		"name": "Zone Versioning",
+		"description": "Grants full access to Zone Versioning",
+		"permissions": {
+			"zone_versioning": {
 				"read": true,
 				"edit": true
 			},
@@ -24,63 +27,304 @@
 				"read": true,
 				"edit": true
 			},
-			"analytics": {
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "92d2bdc71a6e58c9f339156ab73be970",
+		"name": "Zone Versioning Read",
+		"description": "Grants read-only access to Zone Versioning",
+		"permissions": {
+			"zone_versioning": {
+				"read": true,
+				"edit": false
+			},
+			"waf": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "4b48b09177b06a45f6224af13e7afaf3",
+		"name": "Zaraz Edit",
+		"description": "Can edit Zaraz configuration.",
+		"permissions": {
+			"zaraz": {
+				"read": true,
+				"edit": true
+			}
+		}
+	},
+	{
+		"id": "87ce9ccd4a479a91edbf90747fd08c53",
+		"name": "Waiting Room Admin",
+		"description": "Can edit Waiting Room configuration.",
+		"permissions": {
+			"waitingroom": {
+				"read": true,
+				"edit": true
+			},
+			"waf": {
 				"read": true,
 				"edit": false
 			},
 			"zone_settings": {
 				"read": true,
-				"edit": true
+				"edit": false
 			},
-			"cache_purge": {
-				"read": false,
-				"edit": true
+			"ssl": {
+				"read": true,
+				"edit": false
 			},
-			"logs": {
+			"subscription": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "629ae7e9cd43b305474cdecb23427234",
+		"name": "Waiting Room Read",
+		"description": "Can read waiting rooms configuration.",
+		"permissions": {
+			"waitingroom": {
+				"read": true,
+				"edit": false
+			},
+			"zone_settings": {
+				"read": true,
+				"edit": false
+			},
+			"subscription": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "37a46bc5222ebb5577b2efc7fc467fb4",
+		"name": "Magic Network Monitoring Admin",
+		"description": "Can view, edit, create, and delete MNM configuration",
+		"permissions": {
+			"fbm": {
 				"read": true,
 				"edit": true
 			},
-			"lb": {
+			"fbm_acc": {
+				"read": false,
+				"edit": true
+			}
+		}
+	},
+	{
+		"id": "6d7861f7d7d85b03272fd2b964190391",
+		"name": "Magic Network Monitoring",
+		"description": "Can view and edit MNM configuration",
+		"permissions": {
+			"fbm": {
+				"read": true,
+				"edit": true
+			}
+		}
+	},
+	{
+		"id": "5c2cdbd23a00e169752f335bffc5988a",
+		"name": "Magic Network Monitoring Read-Only",
+		"description": "Can view MNM configuration",
+		"permissions": {
+			"fbm": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "e8307f861fd552343e8a582620da412e",
+		"name": "Network Services (Magic)",
+		"description": "Grants write access to network configurations for Magic services.",
+		"permissions": {
+			"waf": {
 				"read": true,
 				"edit": true
 			},
-			"app": {
-				"read": false,
+			"magic": {
+				"read": true,
 				"edit": true
 			},
-			"access": {
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "6fd8c99c8a080a3a8f2b292c1515fb25",
+		"name": "Network Services (Magic, Read-Only)",
+		"description": "Grants read access to network configurations for Magic services.",
+		"permissions": {
+			"waf": {
+				"read": true,
+				"edit": false
+			},
+			"magic": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "08abaa5235c2196d5f3daf457190161b",
+		"name": "HTTP Applications",
+		"description": "Can view and edit HTTP Applications",
+		"permissions": {
+			"http_applications": {
+				"read": true,
+				"edit": true
+			},
+			"waf": {
+				"read": true,
+				"edit": true
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "ecd163368eb6c45b880362b0c098f5e1",
+		"name": "HTTP Applications Read",
+		"description": "Can view HTTP Applications",
+		"permissions": {
+			"http_applications": {
+				"read": true,
+				"edit": false
+			},
+			"waf": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "051312130d7384b97d7c4fa122eb7519",
+		"name": "Trust And Safety",
+		"description": "Can view and request reviews for blocks",
+		"permissions": {
+			"blocks": {
+				"read": true,
+				"edit": true
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "fc67f46f32917cf9f0bdc082198cd747",
+		"name": "Zaraz Admin",
+		"description": "Can edit and publish Zaraz configuration.",
+		"permissions": {
+			"zaraz": {
+				"read": true,
+				"edit": true,
+				"publish": true
+			}
+		}
+	},
+	{
+		"id": "69abc03715c77ae49be5e407f03d0650",
+		"name": "Zaraz Read",
+		"description": "Can read Zaraz configuration.",
+		"permissions": {
+			"zaraz": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "94bedef1a0bdd311891188867727e42d",
+		"name": "Cloudflare Images",
+		"description": "Can edit Cloudflare Images assets",
+		"permissions": {
+			"image": {
 				"read": true,
 				"edit": true
 			},
 			"subscription": {
 				"read": true,
-				"edit": true
+				"edit": false
 			},
-			"worker": {
+			"organization": {
 				"read": true,
-				"edit": true
-			},
-			"member": {
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "10e95af809390ce236cbdcf03935e215",
+		"name": "Cloudflare Gateway",
+		"description": "Can edit Cloudflare Gateway and read Access.",
+		"permissions": {
+			"access": {
 				"read": true,
 				"edit": false
 			},
-			"billing": {
-				"read": true,
-				"edit": false
-			},
-			"webhooks": {
-				"read": true,
-				"edit": true
-			},
-			"legal": {
-				"read": true,
-				"edit": false
-			},
-			"stream": {
-				"read": true,
-				"edit": true
-			},
-			"auditlogs": {
+			"ssl": {
 				"read": true,
 				"edit": false
 			},
@@ -89,11 +333,126 @@
 				"edit": true,
 				"report": true
 			},
-			"healthchecks": {
+			"organization": {
+				"read": true,
+				"edit": false
+			},
+			"subscription": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "b525e80fc64a4323a9ea666467d1865c",
+		"name": "Cloudflare Zero Trust Reporting",
+		"description": "Can access Cloudflare for Zero Trust reporting data.",
+		"permissions": {
+			"access": {
+				"read": true,
+				"edit": false
+			},
+			"teams": {
+				"read": false,
+				"edit": false,
+				"report": true
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			},
+			"subscription": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "156a872fa6df06e0e9b85d32afce6990",
+		"name": "Cloudflare Zero Trust Read Only",
+		"description": "Can access Cloudflare for Zero Trust read only mode.",
+		"permissions": {
+			"teams": {
+				"read": true,
+				"edit": false,
+				"report": true
+			},
+			"access": {
+				"read": true,
+				"edit": false
+			},
+			"ssl": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			},
+			"subscription": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "ef13f042efdd58f592148c035f291bfa",
+		"name": "Cloudflare Zero Trust",
+		"description": "Can edit Cloudflare Zero Trust.",
+		"permissions": {
+			"teams": {
+				"read": true,
+				"edit": true,
+				"report": true
+			},
+			"access": {
 				"read": true,
 				"edit": true
 			},
-			"waitingroom": {
+			"ssl": {
+				"read": true,
+				"edit": true
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			},
+			"subscription": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "f43d556e0699e47c9188ea1973a48e24",
+		"name": "Cloudflare Zero Trust PII",
+		"description": "Can access Cloudflare Zero Trust PII.",
+		"permissions": {
+			"teams": {
+				"read": false,
+				"edit": false,
+				"pii": true
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "33666b9c79b9a5273fc7344ff42f953d",
+		"name": "Super Administrator - All Privileges",
+		"description": "Can edit any Cloudflare setting, make purchases, update billing, and manage memberships. Super Administrators can revoke the access of other Super Administrators.",
+		"permissions": {
+			"worker": {
+				"read": true,
+				"edit": true
+			},
+			"zone_versioning": {
+				"read": true,
+				"edit": true
+			},
+			"ssl": {
 				"read": true,
 				"edit": true
 			},
@@ -102,19 +461,19 @@
 				"edit": true,
 				"publish": true
 			},
-			"blocks": {
+			"waf": {
 				"read": true,
 				"edit": true
 			},
-			"http_applications": {
+			"logs": {
 				"read": true,
 				"edit": true
 			},
-			"magic": {
+			"billing": {
 				"read": true,
 				"edit": true
 			},
-			"image": {
+			"organization": {
 				"read": true,
 				"edit": true
 			},
@@ -126,9 +485,760 @@
 				"read": false,
 				"edit": true
 			},
+			"magic": {
+				"read": true,
+				"edit": true
+			},
+			"http_applications": {
+				"read": true,
+				"edit": true
+			},
+			"lb": {
+				"read": true,
+				"edit": true
+			},
+			"blocks": {
+				"read": true,
+				"edit": true
+			},
+			"dns_records": {
+				"read": true,
+				"edit": true
+			},
+			"stream": {
+				"read": true,
+				"edit": true
+			},
+			"zone_settings": {
+				"read": true,
+				"edit": true
+			},
+			"teams": {
+				"read": true,
+				"edit": true,
+				"pii": true,
+				"report": true
+			},
+			"healthchecks": {
+				"read": true,
+				"edit": true
+			},
+			"web3": {
+				"read": true,
+				"edit": true
+			},
+			"analytics": {
+				"read": true,
+				"edit": false
+			},
+			"access": {
+				"read": true,
+				"edit": true
+			},
+			"image": {
+				"read": true,
+				"edit": true
+			},
+			"dash_sso": {
+				"read": true,
+				"edit": true
+			},
+			"waitingroom": {
+				"read": true,
+				"edit": true
+			},
+			"zone": {
+				"read": true,
+				"edit": true
+			},
+			"subscription": {
+				"read": true,
+				"edit": true
+			},
+			"app": {
+				"read": false,
+				"edit": true
+			},
+			"cache_purge": {
+				"read": false,
+				"edit": true
+			},
+			"auditlogs": {
+				"read": true,
+				"edit": false
+			},
+			"member": {
+				"read": true,
+				"edit": true
+			},
+			"legal": {
+				"read": true,
+				"edit": true
+			}
+		}
+	},
+	{
+		"id": "75f36071fa06ebfac6da0c3f8ddbc4df",
+		"name": "SSL/TLS, Caching, Performance, Page Rules, and Customization",
+		"description": "Can edit most Cloudflare settings except for DNS and Firewall.",
+		"permissions": {
+			"ssl": {
+				"read": true,
+				"edit": true
+			},
+			"waf": {
+				"read": true,
+				"edit": true
+			},
+			"zone": {
+				"read": true,
+				"edit": true
+			},
+			"zone_settings": {
+				"read": true,
+				"edit": true
+			},
+			"subscription": {
+				"read": true,
+				"edit": false
+			},
+			"cache_purge": {
+				"read": false,
+				"edit": true
+			},
+			"auditlogs": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			},
+			"legal": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "340113a819900e1b4beebccc2ddb32e7",
+		"name": "Log Share Reader",
+		"description": "Can read Enterprise Log Share.",
+		"permissions": {
+			"logs": {
+				"read": true,
+				"edit": false
+			},
+			"waf": {
+				"read": true,
+				"edit": false
+			},
+			"subscription": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "3a170f9cfd62f321d6d835dc44bfe6dc",
+		"name": "Log Share",
+		"description": "Can edit Log Share configuration.",
+		"permissions": {
+			"logs": {
+				"read": true,
+				"edit": true
+			},
+			"waf": {
+				"read": true,
+				"edit": true
+			},
+			"zone_settings": {
+				"read": true,
+				"edit": false
+			},
+			"subscription": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"auditlogs": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			},
+			"legal": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "c61d4237ab1c08a3d11feb6bd5e91c5a",
+		"name": "Load Balancer",
+		"description": "Can edit Load Balancers, Pools, Origins, and Health Checks.",
+		"permissions": {
+			"lb": {
+				"read": true,
+				"edit": true
+			},
+			"zone_settings": {
+				"read": true,
+				"edit": false
+			},
+			"subscription": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"auditlogs": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			},
+			"legal": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "1963e6e3aca5ac9a7a91609a0040ab02",
+		"name": "Firewall",
+		"description": "Can edit WAF, IP Firewall, and Zone Lockdown settings.",
+		"permissions": {
+			"waf": {
+				"read": true,
+				"edit": true
+			},
+			"zone_settings": {
+				"read": true,
+				"edit": true
+			},
+			"subscription": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"auditlogs": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			},
+			"legal": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "069fe803647ed3609e93d041d5df6050",
+		"name": "DNS",
+		"description": "Can edit DNS records.",
+		"permissions": {
+			"dns_records": {
+				"read": true,
+				"edit": true
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			},
+			"zone_settings": {
+				"read": true,
+				"edit": false
+			},
+			"subscription": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"auditlogs": {
+				"read": true,
+				"edit": false
+			},
+			"legal": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "57280df9f1a5806e04f065b07bbdd17a",
+		"name": "Cloudflare Workers Admin",
+		"description": "Can edit Cloudflare Workers.",
+		"permissions": {
+			"worker": {
+				"read": true,
+				"edit": true
+			},
+			"organization": {
+				"read": true,
+				"edit": true
+			},
+			"zone_settings": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"auditlogs": {
+				"read": true,
+				"edit": false
+			},
+			"legal": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "8b081b06f8ffef0522957fc6929cdcca",
+		"name": "Cloudflare Stream",
+		"description": "Can edit Cloudflare Stream media.",
+		"permissions": {
+			"stream": {
+				"read": true,
+				"edit": true
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "951e083054cc4f172986fc9be0aa17af",
+		"name": "Cloudflare Access",
+		"description": "Can edit Cloudflare Access.",
+		"permissions": {
+			"access": {
+				"read": true,
+				"edit": true
+			},
+			"ssl": {
+				"read": true,
+				"edit": true
+			},
+			"teams": {
+				"read": true,
+				"edit": false,
+				"report": true
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"auditlogs": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			},
+			"legal": {
+				"read": true,
+				"edit": false
+			},
+			"subscription": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "d1c17a97abf0aa371338074955877ba0",
+		"name": "Cache Purge",
+		"description": "Can purge the edge cache.",
+		"permissions": {
+			"zone_settings": {
+				"read": true,
+				"edit": false
+			},
+			"subscription": {
+				"read": true,
+				"edit": false
+			},
+			"cache_purge": {
+				"read": false,
+				"edit": true
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"auditlogs": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			},
+			"legal": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "298ce8e7a2ba08b9d18ce0a32bb458ee",
+		"name": "Billing",
+		"description": "Can edit the account’s billing profile and subscriptions.",
+		"permissions": {
+			"billing": {
+				"read": true,
+				"edit": true
+			},
+			"subscription": {
+				"read": true,
+				"edit": true
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"auditlogs": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			},
+			"legal": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "9dfa4d1b73034f70ad896bf1c26d78f3",
+		"name": "Audit Logs Viewer",
+		"description": "Can view Audit Logs.",
+		"permissions": {
+			"access": {
+				"read": true,
+				"edit": false
+			},
+			"auditlogs": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "6ddc5f80969d01105b5a0931e0079365",
+		"name": "Analytics",
+		"description": "Can read Analytics.",
+		"permissions": {
+			"analytics": {
+				"read": true,
+				"edit": false
+			},
+			"zone_settings": {
+				"read": true,
+				"edit": false
+			},
+			"subscription": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"auditlogs": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			},
+			"legal": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "f2b20eaa1a5d4af42b53ac16238c99c7",
+		"name": "Administrator Read Only",
+		"description": "Can access the full account in read-only mode.",
+		"permissions": {
+			"zone_versioning": {
+				"read": true,
+				"edit": false
+			},
+			"waf": {
+				"read": true,
+				"edit": false
+			},
+			"ssl": {
+				"read": true,
+				"edit": false
+			},
+			"worker": {
+				"read": true,
+				"edit": false
+			},
+			"billing": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			},
+			"fbm": {
+				"read": true,
+				"edit": false
+			},
+			"magic": {
+				"read": true,
+				"edit": false
+			},
+			"zone_settings": {
+				"read": true,
+				"edit": false
+			},
+			"logs": {
+				"read": true,
+				"edit": false
+			},
+			"http_applications": {
+				"read": true,
+				"edit": false
+			},
+			"blocks": {
+				"read": true,
+				"edit": false
+			},
+			"zaraz": {
+				"read": true,
+				"edit": false
+			},
+			"stream": {
+				"read": true,
+				"edit": false
+			},
+			"teams": {
+				"read": true,
+				"edit": false,
+				"report": true
+			},
+			"healthchecks": {
+				"read": true,
+				"edit": false
+			},
+			"lb": {
+				"read": true,
+				"edit": false
+			},
+			"web3": {
+				"read": true,
+				"edit": false
+			},
+			"analytics": {
+				"read": true,
+				"edit": false
+			},
+			"access": {
+				"read": true,
+				"edit": false
+			},
+			"image": {
+				"read": true,
+				"edit": false
+			},
+			"dns_records": {
+				"read": true,
+				"edit": false
+			},
+			"waitingroom": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"subscription": {
+				"read": true,
+				"edit": false
+			},
+			"auditlogs": {
+				"read": true,
+				"edit": false
+			},
+			"member": {
+				"read": true,
+				"edit": false
+			},
+			"legal": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "05784afa30c1afe1440e79d9351c7430",
+		"name": "Administrator",
+		"description": "Can access the full account, except for membership management and billing.",
+		"permissions": {
+			"worker": {
+				"read": true,
+				"edit": true
+			},
 			"zone_versioning": {
 				"read": true,
 				"edit": true
+			},
+			"ssl": {
+				"read": true,
+				"edit": true
+			},
+			"zaraz": {
+				"read": true,
+				"edit": true,
+				"publish": true
+			},
+			"waf": {
+				"read": true,
+				"edit": true
+			},
+			"logs": {
+				"read": true,
+				"edit": true
+			},
+			"billing": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": true
+			},
+			"fbm": {
+				"read": true,
+				"edit": true
+			},
+			"magic": {
+				"read": true,
+				"edit": true
+			},
+			"http_applications": {
+				"read": true,
+				"edit": true
+			},
+			"lb": {
+				"read": true,
+				"edit": true
+			},
+			"blocks": {
+				"read": true,
+				"edit": true
+			},
+			"dns_records": {
+				"read": true,
+				"edit": true
+			},
+			"stream": {
+				"read": true,
+				"edit": true
+			},
+			"zone_settings": {
+				"read": true,
+				"edit": true
+			},
+			"teams": {
+				"read": true,
+				"edit": true,
+				"report": true
+			},
+			"healthchecks": {
+				"read": true,
+				"edit": true
+			},
+			"web3": {
+				"read": true,
+				"edit": true
+			},
+			"analytics": {
+				"read": true,
+				"edit": false
+			},
+			"access": {
+				"read": true,
+				"edit": true
+			},
+			"image": {
+				"read": true,
+				"edit": true
+			},
+			"waitingroom": {
+				"read": true,
+				"edit": true
+			},
+			"zone": {
+				"read": true,
+				"edit": true
+			},
+			"subscription": {
+				"read": true,
+				"edit": true
+			},
+			"app": {
+				"read": false,
+				"edit": true
+			},
+			"cache_purge": {
+				"read": false,
+				"edit": true
+			},
+			"auditlogs": {
+				"read": true,
+				"edit": false
+			},
+			"member": {
+				"read": true,
+				"edit": false
+			},
+			"legal": {
+				"read": true,
+				"edit": false
 			}
 		}
 	}
