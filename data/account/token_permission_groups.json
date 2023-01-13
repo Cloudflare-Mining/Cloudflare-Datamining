@@ -248,6 +248,22 @@
 		]
 	},
 	{
+		"id": "a7a233f9604845c787d4c8c39ac09c21",
+		"name": "Account: SSL and Certificates Read",
+		"description": "Grants read access to SSL MTLS certificates or Certificate Store",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "db37e5f1cb1a4e1aabaef8deaea43575",
+		"name": "Account: SSL and Certificates Write",
+		"description": "Grants read and write access to SSL MTLS certificates or Certificate Store",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
 		"id": "f3604047d46144d2a3e9cf4ac99d7f16",
 		"name": "Allow Request Tracer Read",
 		"description": "Allows read access to request tracer API",
