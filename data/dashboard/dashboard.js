@@ -7207,12 +7207,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				e.g.build = pd({}, {
-					branch: "release-1673622220",
+					branch: "zac/DX-666-fix-email-verification-bug",
 					isReleaseCandidate: "true",
-					commit: "94e34f2ec34957e4bfc93eabfa2c7b424ffb8128",
+					commit: "e8bfe20e4122e618deee10755664f93866e89f39",
 					env: "production",
-					builtAt: 1673638775260,
-					dashVersion: "81e107cd2bbaffb3237441f9821baea7c83abae5",
+					builtAt: 1673650581619,
+					dashVersion: "e089712f9bb0bef0dc5cfd952842b0a990264652",
 					versions: {
 						"@cloudflare/app-dash": "25.129.6",
 						node: "16.16.0",
@@ -87289,4 +87289,4 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 	}
 ]);
 
-//# sourceMappingURL=30c253d9473ae4073a3f.js.map
+//# sourceMappingURL=e5273ba6990d59f7efe5.js.map
