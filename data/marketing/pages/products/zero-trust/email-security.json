@@ -72,8 +72,8 @@
 						"contentfulId": "5konEkyV2tOYCBmrJUdLiL",
 						"contentTypeId": "bladeHeroAnimation",
 						"title": "Cloudflare Area 1 Email Security",
-						"subtitle": "Stop phishing and secure your cloud email",
-						"copy": "Don't trust your inbox: protect your organization from modern attacks against your #1 business application —  email. Defend against evolving threats and gain insights into bad actors' next moves, with Cloudflare Area 1.\n\nPreemptively block phishing, Business Email Compromise attacks, malware-less fraud, and other targeted email threats. And enhance your cloud suite protection with our seamless Microsoft 365 and Google integrations.\n",
+						"subtitle": "Stop phishing attacks and secure your cloud email",
+						"copy": "Don't trust your inbox: protect your organization from attacks against your #1 business application: email. Cloudflare Area 1 comprehensively defends against sophisticated threats by stopping phish at the earliest stages of the attack cycle.\n\nGet Zero Trust protection against a broad spectrum of threats: malware-less Business Email Compromise, multichannel phishing, credential harvesting, and other targeted phishing. All in a cloud-native service that can be deployed in minutes to secure your Microsoft 365 and Gmail users.",
 						"buttonColor": "orange",
 						"buttonColor2": "orange-outline",
 						"buttonText1": "Assess Your Phishing Risk",
@@ -471,7 +471,7 @@
 								"contentfulId": "5QoXy25S7d4xtfviirupTU",
 								"title": "Stop attacks days before launch",
 								"titleSize": null,
-								"description": "Area 1 preemptively hunts for phishing infrastructure, sources, and delivery mechanisms to block campaigns at the onset. ",
+								"description": "Area 1 preemptively hunts for phishing infrastructure, sources, and delivery mechanisms to block campaigns at the onset - no more waiting for signature updates. ",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -503,9 +503,9 @@
 							{
 								"contentTypeId": "feature",
 								"contentfulId": "3XgjR3NehRvHFE3nrq90pr",
-								"title": "Extend Zero Trust to email security",
+								"title": "Remove implicit trust from your inbox",
 								"titleSize": null,
-								"description": "Comprehensively block campaigns across different attack vectors, even when messages are from \"trusted\" senders or domains.",
+								"description": "Comprehensively block campaigns across different attack vectors (email, web browser, SMS, and others), even when messages are from \"trusted\" senders or domains.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -532,44 +532,10 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "6a3QoCCPeRYjRaQ00Fo1pr",
-								"title": "Save IT time and resources",
-								"titleSize": null,
-								"description": "Replace ineffective SEGs with cloud-native, API-first email security, with nothing to install or endlessly \"tune.\"",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "da7be7ce-7adf-5a42-89c2-02ec388c838d",
-									"altText": "Time blue",
-									"title": "Time blue",
-									"activeAsset": "Brandfolder Asset",
-									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 1138,
-										"height": 192,
-										"width": 192,
-										"filename": "time-blue.svg",
-										"file": {
-											"publicURL": "[path]/time-blue.svg"
-										}
-									},
-									"brandfolderAssetMobile": null
-								},
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
 								"contentfulId": "5CV7qzPhiSZqVM9OxA8QA6",
 								"title": "Simplify threat defense ",
 								"titleSize": null,
-								"description": "Get end-to-end phishing triage and response, plus seamless integration with SIEMs and other security tools. ",
+								"description": "Get end-to-end phishing triage and response, plus seamless integration with SIEMs and other security tools. PhishGuard customers gain additional protection from insider threats and active fraud.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -597,13 +563,113 @@
 								"streamId": null,
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6a3QoCCPeRYjRaQ00Fo1pr",
+								"title": "Save IT time and resources",
+								"titleSize": null,
+								"description": "Replace ineffective SEGs and stop more phish with cloud-native, API-first email security, with nothing to install or endlessly \"tune.\"",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "da7be7ce-7adf-5a42-89c2-02ec388c838d",
+									"altText": "Time blue",
+									"title": "Time blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 1138,
+										"height": 192,
+										"width": 192,
+										"filename": "time-blue.svg",
+										"file": {
+											"publicURL": "[path]/time-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						]
+					},
+					{
+						"contentTypeId": "bladeQuote",
+						"contentfulId": "2SUS6QhwKz5La67PSwHgd4",
+						"quote": "Since we implemented Area 1 we have seen a 50% reduction in the number of malicious or suspicious emails our users receive every day. That frees up multiple hours we can reinvest into other goals.",
+						"quoteAuthor": "Michael Perdunn",
+						"quoteTitle": "Director of Cyber Security ",
+						"learnMoreText": "Read the full case study",
+						"sectionPadding": "tile--no-bottom-padding",
+						"backgroundColor": "light-blue",
+						"bladeBorder": "none",
+						"learnMoreUrl": "https://www.cloudflare.com/case-studies/werner-enterprises/",
+						"htmlId": null,
+						"image": {
+							"file": {
+								"publicURL": "[path]/werner_logo.png"
+							}
+						},
+						"imageAssetFile": null,
+						"imageLinkUrl": null,
+						"logoList": null,
+						"logoListAssetFile": null,
+						"quoteCarousel": [
+							{
+								"contentTypeId": "bladeQuote",
+								"quote": "\"This allows us to better secure inboxes without having the employees needing to know anything about Cloudflare Area 1 or change their email habits in any way. As a result, our user-reported phishing investigations were cut by at least half.\"",
+								"quoteAuthor": "Rob Hooper",
+								"quoteTitle": "Sr. Manager of IT & Security",
+								"learnMoreText": "Read the full case study",
+								"learnMoreUrl": "https://www.cloudflare.com/case-studies/namely/",
+								"imageAssetFile": null,
+								"image": {
+									"file": {
+										"publicURL": "[path]/Namely_logo-v2.svg"
+									}
+								}
+							},
+							{
+								"contentTypeId": "bladeQuote",
+								"quote": "\"I'm happy to say that Cloudflare Area 1 exceeded all of our expectations … It took less than half an hour to get the service up and running.\"",
+								"quoteAuthor": "Donovan Bray",
+								"quoteTitle": "Director of DevOps & IT",
+								"learnMoreText": "Read the full case study",
+								"learnMoreUrl": "https://www.cloudflare.com/case-studies/kiavi/",
+								"imageAssetFile": null,
+								"image": {
+									"file": {
+										"publicURL": "[path]/kiavi_transparent.svg"
+									}
+								}
+							},
+							{
+								"contentTypeId": "bladeQuote",
+								"quote": "\"Area 1 was the only solution that fit into our tech stack and that also demonstrated a compelling case around security.\"",
+								"quoteAuthor": "Nick Laferriere",
+								"quoteTitle": "Lead Cloud Architect",
+								"learnMoreText": "Read the full case study",
+								"learnMoreUrl": "https://www.cloudflare.com/case-studies/tamr/",
+								"imageAssetFile": null,
+								"image": {
+									"file": {
+										"publicURL": "[path]/tamr_logo.svg"
+									}
+								}
 							}
 						]
 					},
 					{
 						"contentfulId": "6oe3nI1sMAecv79b11EC6J",
 						"title": "Preemptively block phishing attacks",
-						"copy": "- Uncover new tactics used by malicious actors to block phishing in real-time, versus waiting days or weeks for signature updates.\n- Neutralize multi-channel phishing attacks that span email and web delivery, by turning on Area 1's integration with [Cloudflare Browser Isolation](https://www.cloudflare.com/products/zero-trust/browser-isolation/).\n- Accurately detect and contain low-volume targeted phish without requiring large attack sample volumes.\n- Get visibility into compromised accounts and domains, as well as new, lookalike, and proximity domains impersonating your brand.\n",
+						"copy": "- Neutralize suspicious/unknown web links and multichannel phishing attacks, by turning on the Area 1 integration with [Cloudflare Browser Isolation](https://www.cloudflare.com/products/zero-trust/browser-isolation/).\n- Uncover new tactics used by malicious actors to block phishing in real-time, versus waiting days or weeks for signature updates.\n- Accurately detect and contain low-volume targeted phish without requiring large attack sample volumes.\n- Get visibility into compromised accounts and domains, as well as new, lookalike, and proximity domains impersonating your brand.\n",
 						"toggleText": null,
 						"button": null,
 						"learnMoreUrl": null,
@@ -629,7 +695,20 @@
 								"publicURL": "[path]/Preemptive_Option_-10__1_.png"
 							}
 						},
-						"imageAssetFile": null,
+						"imageAssetFile": {
+							"id": "0546d018-adfc-592d-9c9f-dec75d627d23",
+							"altText": "Email Link Isolation from Cloudflare Area 1 stops multichannel phishing attacks that exploit email and web browser links. Cloud email security plus Cloudflare remote browser isolation.",
+							"title": null,
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "[path]/Email_Link_Isolation_1x_-_449x255__1_.png"
+								}
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
 						"featureList": null,
 						"contentTypeId": "bladeImageText",
 						"sectionTitle": "KEY USE CASE",
@@ -709,7 +788,7 @@
 					},
 					{
 						"contentfulId": "5XDrIE5p6yFukqUBo6f65t",
-						"title": "Secure your cloud email",
+						"title": "Enhance Microsoft 365 & Google email security",
 						"copy": "- Replace redundant SEGs — which we often see miss over 30% of phishing emails — with best-in-class cloud-native email security.\n- Proactively discover and block socially-engineered phish that bypass [Google Workspace](https://www.cloudflare.com/partners/technology-partners/google/email-security/) and [Microsoft 365](https://www.cloudflare.com/partners/technology-partners/microsoft-365/) with ATP. \n- Eliminate the need for hardware and \"tuning\" to keep up with new threats.",
 						"toggleText": null,
 						"button": null,
