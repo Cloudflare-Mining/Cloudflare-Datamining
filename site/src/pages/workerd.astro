@@ -30,7 +30,7 @@ interface flagInfo {
 	publicly_documented: boolean;
 }
 
-interface remoteFlagInfo {
+interface remoteFlagInfoType {
 	name: string;
 	description: string;
 	disable_flag: string | null;
@@ -49,7 +49,7 @@ for(const struct of workerdData.structs){
 if(!flagsInfo){ throw new Error('Could not find flags info!'); }
 
 const remoteFlagInfoRes = await fetch('https://developers.cloudflare.com/workers/platform/compatibility-dates.json');
-const remoteFlagInfo: remoteFlagInfo[] = await remoteFlagInfoRes.json();
+const remoteFlagInfo: remoteFlagInfoType[] = await remoteFlagInfoRes.json();
 
 const flags = [];
 for(const flag of flagsInfo as workerdFlagInfo[]){

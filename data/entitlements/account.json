@@ -1092,6 +1092,18 @@
 		}
 	},
 	{
+		"id": "logpush.casb_findings.max_jobs_allowed",
+		"feature": {
+			"feature_set": "logpush",
+			"id": 1160,
+			"key": "logpush.casb_findings.max_jobs_allowed",
+			"name": "Logpush - CASB Findings - Max Jobs"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
 		"id": "logpush.dns_firewall_logs.max_jobs_allowed",
 		"feature": {
 			"feature_set": "logpush",
