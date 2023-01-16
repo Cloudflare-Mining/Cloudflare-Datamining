@@ -6040,7 +6040,7 @@
 						"$ref": "#/components/schemas/aud"
 					},
 					"id": {
-						"$ref": "#/components/schemas/CloudflareClientAPI_id"
+						"$ref": "#/components/schemas/id"
 					},
 					"public_key": {
 						"$ref": "#/components/schemas/public_key"
@@ -16395,9 +16395,11 @@
 				"type": "boolean"
 			},
 			"id": {
-				"description": "Unique id of the job.",
-				"minimum": 1,
-				"type": "integer"
+				"description": "The ID of the CA.",
+				"example": "7eddae4619b50ab1361ba8ae9bd72269a432fea041529ed9",
+				"maxLength": 48,
+				"readOnly": true,
+				"type": "string"
 			},
 			"id_response": {
 				"allOf": [
@@ -19287,7 +19289,7 @@
 						"$ref": "#/components/schemas/frequency"
 					},
 					"id": {
-						"$ref": "#/components/schemas/id"
+						"$ref": "#/components/schemas/CloudflareClientAPI_id"
 					},
 					"last_complete": {
 						"$ref": "#/components/schemas/last_complete"
@@ -28990,7 +28992,7 @@
 							"result": {
 								"properties": {
 									"id": {
-										"$ref": "#/components/schemas/CloudflareClientAPI_id"
+										"$ref": "#/components/schemas/id"
 									}
 								},
 								"type": "object"
@@ -45624,7 +45626,7 @@
 						"name": "job_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/id"
+							"$ref": "#/components/schemas/CloudflareClientAPI_id"
 						}
 					},
 					{
@@ -45731,7 +45733,7 @@
 						"name": "job_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/id"
+							"$ref": "#/components/schemas/CloudflareClientAPI_id"
 						}
 					},
 					{
@@ -45806,7 +45808,7 @@
 						"name": "job_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/id"
+							"$ref": "#/components/schemas/CloudflareClientAPI_id"
 						}
 					},
 					{
@@ -114612,7 +114614,7 @@
 						"name": "job_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/id"
+							"$ref": "#/components/schemas/CloudflareClientAPI_id"
 						}
 					},
 					{
@@ -114719,7 +114721,7 @@
 						"name": "job_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/id"
+							"$ref": "#/components/schemas/CloudflareClientAPI_id"
 						}
 					},
 					{
@@ -114794,7 +114796,7 @@
 						"name": "job_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/id"
+							"$ref": "#/components/schemas/CloudflareClientAPI_id"
 						}
 					},
 					{
