@@ -1,0 +1,16 @@
+{
+	"author": {
+		"name": "Shawn Bohrer",
+		"url": "https://blog.cloudflare.com/404/",
+		"sameAs": [
+			"https://twitter.com/bohrers"
+		]
+	},
+	"headline": "A debugging story: corrupt packets in AF_XDP; a kernel bug or user error?",
+	"url": "https://blog.cloudflare.com/a-debugging-story-corrupt-packets-in-af_xdp-kernel-bug-or-user-error/",
+	"datePublished": "2023-01-16T13:46:45.000Z",
+	"dateModified": "2023-01-16T14:17:52.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2023/01/image2-30.png",
+	"keywords": "Deep Dive, Linux, Networking, Debugging",
+	"description": "A race condition in the virtual ethernet driver of the Linux kernel led to occasional packet content corruptions, which resulted in unwanted packet drops by one of our DDoS mitigation systems. This blogpost describes the thought process and technique we used to debug this complex issue."
+}
