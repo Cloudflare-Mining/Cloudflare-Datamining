@@ -79,6 +79,18 @@ export const ApiTokensTemplate = eg.object({
   zoneId: eg.string.optional
 });
 
+export const ApiTokensAdhocTemplate = eg.object({
+  permissionGroupKeys: eg.array(
+    eg.object({
+      key: eg.string,
+      type: eg.string
+    })
+  ),
+  accountId: eg.string.optional,
+  mode: eg.string.optional,
+  zoneId: eg.string.optional
+});
+
 export const PermissionGroup = eg.object({
   id: eg.string,
   name: eg.string,
@@ -105,6 +117,9 @@ export type ApiToken = TypeFromCodec<typeof ApiToken>;
 export type CreateToken = TypeFromCodec<typeof CreateToken>;
 export type ApiTokenFormValue = TypeFromCodec<typeof ApiTokenFormValue>;
 export type ApiTokensTemplate = TypeFromCodec<typeof ApiTokensTemplate>;
+export type ApiTokensAdhocTemplate = TypeFromCodec<
+  typeof ApiTokensAdhocTemplate
+>;
 export type PermissionGroup = TypeFromCodec<typeof PermissionGroup>;
 export type PermissionGroupReq = TypeFromCodec<typeof PermissionGroupReq>;
 export type PermissionGroups = TypeFromCodec<typeof PermissionGroups>;
