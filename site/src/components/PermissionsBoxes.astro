@@ -10,24 +10,25 @@ export interface Props {
 
 const {permissions} = Astro.props;
 ---
-<div class="grid grid-cols-2">
+<div class="grid grid-cols-3 gap-x-6">
 	{permissions.map(permission => (
-		<div class="py-1">
+		<div class="py-1 flex items-center space-x-2 col-span-2">
 			<input
 				type="checkbox"
 				name={`permission_${permission.name}`}
 				id={permission.name}
 				checked={false}
-				class="h-4 w-4 rounded border-gray-300 bg-gray-100 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600"
+				class="rounded border-gray-300 bg-gray-100 text-gray-600 focus:ring-2 focus:ring-gray-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-gray-600"
 				>
 			<label
 				for={permission.name}
-			>
-				{permission.description} <small>({permission.name})</small>
+				class="leading-4"
+				>
+				{permission.description} <br><span class="italic text-xs text-gray-700 dark:text-gray-400 font-mono">{permission.name}</span>
 			</label>
 		</div>
 		<div class="py-1">
-			<select name={`type_${permission.name}`}>
+			<select name={`type_${permission.name}`} class="bg-transparent border-gray-300 dark:border-gray-700 block w-full rounded-md py-2 pl-3 pr-10 text-base sm:text-sm">
 				<option value="read">Read</option>
 				<option value="edit">Edit</option>
 			</select>
