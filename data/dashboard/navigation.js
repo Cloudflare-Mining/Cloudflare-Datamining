@@ -255,7 +255,6 @@ const navigation = {
 		title: "navigation.account.images",
 		url: "/images",
 		iconType: "image",
-		labels: ["new"],
 		testId: "sidenav-images-link",
 		hasPermission: function(l) {
 			return O(l) && !!(0, t.getAccountFlipperFlag)(l, "cloudflare_images", "early_release_access")
