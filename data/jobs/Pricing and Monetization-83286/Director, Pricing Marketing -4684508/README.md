@@ -6,7 +6,7 @@
 	</div>
 </div>
 <p><strong>About The Role</strong></p>
-<p><span style="font-weight: 400;">Cloudflare is seeking a Sr. Director of Pricing Marketing to bring our packaging and pricing to life through compelling and differentiated marketing communication.</span></p>
+<p><span style="font-weight: 400;">Cloudflare is seeking a Sr.Director of Pricing Marketing to bring our packaging and pricing to life through compelling and differentiated marketing communication.</span></p>
 <p><span style="font-weight: 400;">You will be responsible for our growing suite of offerings.&nbsp; You will collaborate cross-functionally with Pricing, Product Marketing, Product, and Sales to bring our strategies to life through sales and customer facing assets that highlight how we solve customer pain points. &nbsp; A successful candidate will have a proven track record creating compelling customer communication, strong sales enablement assets, and differentiated messaging to successfully deliver results in a fast-paced and dynamic business environment.&nbsp; This role, reporting to the Vice President of Monetization.</span></p>
 <p><strong>Job Responsibilities</strong></p>
 <ul>
@@ -30,8 +30,8 @@
 <p><strong>Compensation</strong></p>
 <p><span style="font-weight: 400;">Compensation may be adjusted depending on work location.</span></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">For Colorado-based hires: Estimated annual salary of $221,000 - $270,000</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">For New York City-based hires: Estimated annual salary of $248,000 - $303,000.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">For Colorado-based hires: Estimated annual salary of $187,000 - $229</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">For New York City-based hires: Estimated annual salary of $210,000 - $256,000.</span></li>
 </ul>
 <p><strong>Equity</strong></p>
 <p><span style="font-weight: 400;">This role is eligible to participate in Cloudflare’s equity plan.</span></p>
