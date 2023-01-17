@@ -2326,6 +2326,32 @@
 			]
 		},
 		{
+			"name": "workerd/src/workerd/jsg/modules.capnp:Module",
+			"fields": [
+				{
+					"name": "name",
+					"annotations": {}
+				},
+				{
+					"name": "src",
+					"annotations": {}
+				},
+				{
+					"name": "internal",
+					"annotations": {}
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/jsg/modules.capnp:Bundle",
+			"fields": [
+				{
+					"name": "modules",
+					"annotations": {}
+				}
+			]
+		},
+		{
 			"name": "workerd/src/workerd/jsg/rtti.capnp:NumberType",
 			"fields": [
 				{
@@ -3837,6 +3863,7 @@
 		"workerd/src/workerd/io/compatibility-date.capnp:CompatibilityFlags.compatEnableAllDates",
 		"workerd/src/workerd/io/compatibility-date.capnp:CompatibilityFlags.experimental",
 		"workerd/src/workerd/io/outcome.capnp",
+		"workerd/src/workerd/jsg/modules.capnp",
 		"workerd/src/workerd/jsg/rtti.capnp",
 		"workerd/src/workerd/server/workerd-meta.capnp",
 		"workerd/src/workerd/server/workerd-meta.capnp:cppCapnpSchema",
