@@ -3219,7 +3219,7 @@ Commit \u2014 `).concat(Ue.commit)
 					return Promise.all([e.e(8415), e.e(43561), e.e(87122), e.e(67118), e.e(46433), e.e(34744), e.e(1267), e.e(17361), e.e(84209), e.e(71326)]).then(e.bind(e, "../react/pages/home/rulesets/magic-firewall/MagicFirewallMain.tsx"))
 				}),
 				Ru = r().lazy(function() {
-					return Promise.all([e.e(8415), e.e(43561), e.e(87122), e.e(67118), e.e(46433), e.e(34744), e.e(47588), e.e(40440), e.e(1267), e.e(17361), e.e(55700), e.e(84209), e.e(99326), e.e(57727), e.e(3380)]).then(e.bind(e, "../react/pages/home/rulesets/ddos/Main.tsx"))
+					return Promise.all([e.e(8415), e.e(43561), e.e(87122), e.e(67118), e.e(46433), e.e(34744), e.e(47588), e.e(12824), e.e(1267), e.e(17361), e.e(55700), e.e(84209), e.e(99326), e.e(57727), e.e(3380)]).then(e.bind(e, "../react/pages/home/rulesets/ddos/Main.tsx"))
 				}),
 				rs = e("../react/pages/home/rulesets/account-firewall-rules/utils.tsx"),
 				xu = function(g, Y) {
@@ -3264,7 +3264,7 @@ Commit \u2014 `).concat(Ue.commit)
 				},
 				Ws = ku,
 				Uu = r().lazy(function() {
-					return Promise.all([e.e(8415), e.e(43561), e.e(87122), e.e(67118), e.e(46433), e.e(34744), e.e(47588), e.e(12824), e.e(1267), e.e(17361), e.e(55700), e.e(84209), e.e(99326), e.e(72439), e.e(57727), e.e(55203)]).then(e.bind(e, "../react/pages/home/rulesets/account-firewall-rules/Main.tsx"))
+					return Promise.all([e.e(8415), e.e(43561), e.e(87122), e.e(67118), e.e(46433), e.e(34744), e.e(47588), e.e(40440), e.e(1267), e.e(17361), e.e(55700), e.e(84209), e.e(99326), e.e(72439), e.e(57727), e.e(55203)]).then(e.bind(e, "../react/pages/home/rulesets/account-firewall-rules/Main.tsx"))
 				}),
 				Bu = function(g) {
 					return g ? "waf" : "custom"
@@ -7207,14 +7207,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				e.g.build = pd({}, {
-					branch: "zac/DX-666-fix-email-verification-bug",
+					branch: "release-1673967801",
 					isReleaseCandidate: "true",
-					commit: "e8bfe20e4122e618deee10755664f93866e89f39",
+					commit: "fd16febcb6aee8355cbd246ef8adec5b6daa1bcd",
 					env: "production",
-					builtAt: 1673650581619,
-					dashVersion: "e089712f9bb0bef0dc5cfd952842b0a990264652",
+					builtAt: 1673968112353,
+					dashVersion: "19de8b711d07280774c8d19e2ace29ccef61802e",
 					versions: {
-						"@cloudflare/app-dash": "25.129.6",
+						"@cloudflare/app-dash": "25.130.12",
 						node: "16.16.0",
 						yarn: "3.2.2",
 						webpack: "5.74.0"
@@ -12133,7 +12133,6 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						title: "navigation.account.images",
 						url: "/images",
 						iconType: "image",
-						labels: ["new"],
 						testId: "sidenav-images-link",
 						hasPermission: function(l) {
 							return O(l) && !!(0, t.getAccountFlipperFlag)(l, "cloudflare_images", "early_release_access")
@@ -68763,6 +68762,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				bS: function() {
 					return ee
 				},
+				bb: function() {
+					return c
+				},
 				cI: function() {
 					return F
 				},
@@ -87289,4 +87291,4 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 	}
 ]);
 
-//# sourceMappingURL=e5273ba6990d59f7efe5.js.map
+//# sourceMappingURL=a6e8ded51126d9b738e2.js.map
