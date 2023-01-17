@@ -1,0 +1,96 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import MainHeading from '../../components/MainHeading.astro';
+import Description from '../../components/Description.astro';
+import PermissionsBoxes from '../../components/PermissionsBoxes.astro';
+import commonTranslations from '../../../../data/dashboard-translations/common.json';
+
+
+let permissions = [];
+for(const [key, value] of Object.entries(commonTranslations)){
+	if(key.startsWith('api_tokens.permission_')){
+		permissions.push({
+			name: key.replace('api_tokens.permission_', ''),
+			description: value,
+		});
+	}
+}
+
+permissions = permissions.sort((permA, permB) => permA.name.localeCompare(permB.name));
+---
+<Layout title="API Token URL Generation - Cloudflare Datamining" description="Generate an API token URL to share for usage on the Cloudflare Dashboard">
+	<MainHeading title="API Token URL Generator" />
+	<Description>
+		<p>The Cloudflare dashboard supports an undocumented URL format to pre-fill information on the API token generation page. This can be very helpful for sharing with projects that require an API token, instead of having to manually list all needed permissions.</p>
+		<p>Select the permissions you need, give the token a name, and scroll down to get the full URL for sharing.</p>
+	</Description>
+
+	<form id="apiTokenUrlGenerator" method="post">
+		<h3>Token Name</h3>
+		<input type="text" name="name" placeholder="Token Name" class="mb-4">
+		<noscript>This form requires JavaScript to function today, sorry.</noscript>
+
+		<h3>Token Permissions</h3>
+		<PermissionsBoxes permissions={permissions} />
+		<output
+			name="result"
+			for="apiTokenUrlGenerator"
+			class="min-h-8 my-8 block whitespace-pre-wrap break-all"
+		></output>
+	</form>
+</Layout>
+
+<script>
+	type PermissionTypes = {
+		[key: string]: 'read' | 'edit';
+	}
+	function setupForm(){
+		const form = document.querySelector('#apiTokenUrlGenerator') as HTMLFormElement;
+		const output = form.querySelector('output[name="result"]');
+		if(!form || !output){ return; }
+
+		function triggerChange(){
+			const formData = new FormData(form);
+			const permissions = {};
+			const types:PermissionTypes = {};
+			for(const [key, value] of formData.entries()){
+				console.log(key, value);
+				if(key.startsWith('permission_')){
+					permissions[key.replace('permission_', '')] = value;
+				}
+				if(key.startsWith('type_')){
+					types[key.replace('type_', '')] = value;
+				}
+			}
+			console.log({permissions, types});
+
+			// example: https://dash.cloudflare.com/profile/api-tokens?permissionGroupKeys=[%7B%22key%22:%22d1%22,%22type%22:%22edit%22%7D,%7B%22key%22:%22page%22,%22type%22:%22edit%22%7D,%7B%22key%22:%22images%22,%22type%22:%22edit%22%7D,%7B%22key%22:%22access%22,%22type%22:%22edit%22%7D,%7B%22key%22:%22workers_kv_storage%22,%22type%22:%22edit%22%7D,%7B%22key%22:%22access_acct%22,%22type%22:%22read%22%7D,%7B%22key%22:%22dns%22,%22type%22:%22edit%22%7D,%7B%22key%22:%22workers_script%22,%22type%22:%22edit%22%7D]&name=Wildebeest
+			const url = new URL('https://dash.cloudflare.com/profile/api-tokens');
+			const permissionGroupKeys = [];
+
+			for(const [key, value] of Object.entries(permissions)){
+				if(value === 'on'){
+					permissionGroupKeys.push({
+						key,
+						type: types[key] ?? 'read',
+					});
+				}
+			}
+			url.searchParams.set('permissionGroupKeys', JSON.stringify(permissionGroupKeys));
+			if(formData.has('name')){
+				url.searchParams.set('name', formData.get('name') as string);
+			}
+			output.textContent = url.toString();
+		}
+		form.addEventListener('change', (event) => {
+			event.preventDefault();
+			triggerChange();
+		});
+
+		form.addEventListener('submit', (event) => {
+			event.preventDefault();
+		});
+		triggerChange();
+	}
+	setupForm();
+</script>
