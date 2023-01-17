@@ -1,0 +1,67 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/dlp/payload_log.json",
+	"title": "DLP Payload Log Settings",
+	"description": "Data Loss Prevention payload logging stores a portion of the request/response body matching a DLP profile alongside Gateway HTTP logs.",
+	"links": [
+		{
+			"title": "Update settings",
+			"description": "Updates the DLP payload log settings for this account.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/dlp/payload_log",
+			"method": "PUT",
+			"cfOwnership": "dlp",
+			"html_id": "dlp-payload-log-settings-update-settings",
+			"uri": "accounts/:account_identifier/dlp/payload_log",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/dlp/payload_log\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"public_key\":\"EmpOvSXw8BfbrGCi0fhGiD/3yXk2SiV1Nzg2lru3oj0=\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"public_key": {
+						"type": [
+							"string",
+							"null"
+						],
+						"example": "\"EmpOvSXw8BfbrGCi0fhGiD/3yXk2SiV1Nzg2lru3oj0=\"",
+						"description": "The public key to use when encrypting extracted payloads, as a base64 string"
+					}
+				},
+				"required_props": [
+					"public_key"
+				],
+				"optional_props": [],
+				"objects": [],
+				"example": "{\n  \"public_key\": \"EmpOvSXw8BfbrGCi0fhGiD/3yXk2SiV1Nzg2lru3oj0=\"\n}",
+				"title": "Settings",
+				"description": "Payload log settings"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"public_key\": \"EmpOvSXw8BfbrGCi0fhGiD/3yXk2SiV1Nzg2lru3oj0=\"\n  }\n}"
+		},
+		{
+			"title": "Get settings",
+			"description": "Gets the current DLP payload log settings for this account.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/dlp/payload_log",
+			"method": "GET",
+			"cfOwnership": "dlp",
+			"html_id": "dlp-payload-log-settings-get-settings",
+			"uri": "accounts/:account_identifier/dlp/payload_log",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/dlp/payload_log\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"public_key\": \"EmpOvSXw8BfbrGCi0fhGiD/3yXk2SiV1Nzg2lru3oj0=\"\n  }\n}"
+		}
+	],
+	"html_id": "dlp-payload-log-settings",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {},
+		"required_props": [],
+		"optional_props": [],
+		"objects": [],
+		"example": "{}",
+		"title": "DLP Payload Log Settings",
+		"description": "Data Loss Prevention payload logging stores a portion of the request/response body matching a DLP profile alongside Gateway HTTP logs."
+	}
+}

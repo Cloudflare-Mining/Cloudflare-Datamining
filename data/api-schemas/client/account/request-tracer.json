@@ -1,0 +1,128 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/request-tracer.json",
+	"title": "Account Request Tracer",
+	"description": "Cloudflare Request Tracer available to accounts.",
+	"type": "object",
+	"links": [
+		{
+			"title": "Request Trace",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_identifier}/trace",
+			"method": "POST",
+			"cfOwnership": "flprod",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": true,
+				"enterprise": true
+			},
+			"trakalIgnore": false,
+			"html_id": "account-request-tracer-request-trace",
+			"uri": "accounts/:account_identifier/trace",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/trace\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"url\":\"https://some.zone/some_path\",\"method\":\"GET\",\"protocol\":\"HTTP/1.1\",\"skip_response\":true,\"headers\":{\"header_name_1\":\"header_value_1\",\"header_name_2\":\"header_value_2\"},\"cookies\":{\"cookie_name_1\":\"cookie_value_1\",\"cookie_name_2\":\"cookie_value_2\"},\"body\":\"some_request_body\",\"context\":{\"skip_challenge\":true,\"threat_score\":20,\"bot_score\":20,\"geoloc\":\"{\\\"city\\\":\\\"London\\\"}\"}}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"url": {
+						"type": "string",
+						"example": "\"https://some.zone/some_path\"",
+						"description": "URL to which perform tracing request"
+					},
+					"method": {
+						"type": "string",
+						"example": "\"GET\"",
+						"description": "HTTP Method of tracing request"
+					},
+					"protocol": {
+						"type": "string",
+						"example": "\"HTTP/1.1\"",
+						"description": "HTTP Protocol of tracing request"
+					},
+					"skip_response": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Whether to skip returning response from origin"
+					},
+					"headers": {
+						"type": "object",
+						"example": "{\n  \"header_name_1\": \"header_value_1\",\n  \"header_name_2\": \"header_value_2\"\n}",
+						"additionalProperties": {
+							"type": "string"
+						},
+						"description": "Headers added to tracing request"
+					},
+					"cookies": {
+						"type": "object",
+						"example": "{\n  \"cookie_name_1\": \"cookie_value_1\",\n  \"cookie_name_2\": \"cookie_value_2\"\n}",
+						"additionalProperties": {
+							"type": "string"
+						},
+						"description": "Cookies added to tracing request"
+					},
+					"body": {
+						"type": "string",
+						"example": "\"some_request_body\"",
+						"description": "Tracing request body"
+					},
+					"context": {
+						"type": "object",
+						"example": "{\n  \"skip_challenge\": true,\n  \"threat_score\": 20,\n  \"bot_score\": 20,\n  \"geoloc\": \"{\\\"city\\\":\\\"London\\\"}\"\n}",
+						"properties": {
+							"skip_challenge": {
+								"type": "boolean",
+								"example": "true",
+								"description": "Whether to skip any challenges for tracing request (e.g.: captcha)"
+							},
+							"threat_score": {
+								"type": "integer",
+								"example": "20",
+								"description": "Threat score used for evaluating tracing request processing"
+							},
+							"bot_score": {
+								"type": "integer",
+								"example": "20",
+								"description": "Bot score used for evaluating tracing request processing"
+							},
+							"geoloc": {
+								"type": "string",
+								"example": "\"{\\\"city\\\":\\\"London\\\"}\"",
+								"description": "Geodata for tracing request as JSON string"
+							}
+						},
+						"description": "Additional request parameters"
+					}
+				},
+				"required_props": [
+					"url",
+					"method"
+				],
+				"optional_props": [
+					"protocol",
+					"skip_response",
+					"headers",
+					"cookies",
+					"body",
+					"context"
+				],
+				"objects": [],
+				"example": "{\n  \"url\": \"https://some.zone/some_path\",\n  \"method\": \"GET\",\n  \"protocol\": \"HTTP/1.1\",\n  \"skip_response\": true,\n  \"headers\": {\n    \"header_name_1\": \"header_value_1\",\n    \"header_name_2\": \"header_value_2\"\n  },\n  \"cookies\": {\n    \"cookie_name_1\": \"cookie_value_1\",\n    \"cookie_name_2\": \"cookie_value_2\"\n  },\n  \"body\": \"some_request_body\",\n  \"context\": {\n    \"skip_challenge\": true,\n    \"threat_score\": 20,\n    \"bot_score\": 20,\n    \"geoloc\": \"{\\\"city\\\":\\\"London\\\"}\"\n  }\n}"
+			},
+			"response": "{\n  \"trace\": [\n    {\n      \"step_name\": \"ruleset_id01\",\n      \"type\": \"ruleset\",\n      \"matched\": true,\n      \"action_parameters\": \"{\\\"uri\\\":{\\\"path\\\":\\\"some_path\\\", \\\"query\\\":\\\"some_query\\\"}}\",\n      \"expression\": \"concat(\\\"/new/\\\", http.request.uri)\",\n      \"description\": \"some ruleset\",\n      \"name\": \"some ruleset name\",\n      \"kind\": \"zone\",\n      \"action\": \"rewrite\"\n    }\n  ],\n  \"status_code\": 200\n}"
+		}
+	],
+	"html_id": "account-request-tracer",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {},
+		"required_props": [],
+		"optional_props": [],
+		"objects": [],
+		"example": "{}",
+		"title": "Account Request Tracer",
+		"description": "Cloudflare Request Tracer available to accounts."
+	}
+}
