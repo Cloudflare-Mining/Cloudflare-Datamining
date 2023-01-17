@@ -1,4 +1,5 @@
 {
+	"description": "Egress policies specify which IP is used for egress traffic based on identity, application, network, and geolocation attributes. If no policies are matched, packets will route to the dedicated egress IP closest to the user. Note: Dedicated egress IPs are required to enable traffic egress policies.",
 	"egress_warp_fallback": "Default Cloudflare egress",
 	"empty_state_add_new": "Create egress policy",
 	"empty_state_description": "Egress policies specify the source IP used for egress traffic based on identity, application, network, and geolocation attributes. Egress traffic will use the default Cloudflare proxy method if no polices are matched. <br/><br/>Note: Dedicated egress IPs are required to enable traffic egress policies.",
