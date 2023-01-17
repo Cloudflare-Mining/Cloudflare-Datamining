@@ -25,22 +25,26 @@ permissions = permissions.sort((permA, permB) => permA.name.localeCompare(permB.
 		<p>Select the permissions you need, give the token a name, and scroll down to get the full URL for sharing.</p>
 	</Description>
 
-	<form id="apiTokenUrlGenerator" method="post">
-		<h3 class="text-lg font-semibold">Token Name</h3>
-		<input type="text" name="name" placeholder="Token Name" class="mb-4">
+	<form id="apiTokenUrlGenerator" method="post" class="space-y-5">
+		<div class="space-y-2">
+			<h3 class="text-lg font-semibold">Token Name</h3>
+			<input type="text" name="name" placeholder="Token Name" class="block w-full rounded-md border-gray-300 dark:border-gray-700 bg-gray-200 dark:bg-gray-800 shadow-sm focus:border-gray-500 focus:ring-gray-500 sm:text-sm">
+		</div>
 		<noscript>This form requires JavaScript to function today, sorry.</noscript>
 
-		<h3 class="text-lg font-semibold">Token Permissions</h3>
-		<PermissionsBoxes permissions={permissions} />
+		<div class="space-y-2">
+			<h3 class="text-lg font-semibold">Token Permissions</h3>
+			<PermissionsBoxes permissions={permissions} />
+		</div>
 
-		<div class="mt-6">
-			<h3 class="mb-4 text-lg font-semibold">Token URL</h3>
-			<button type="button" id="copyToClipboard">Copy Token URL</button>
+		<div class="space-y-2">
+			<h3 class="text-lg font-semibold">Token URL</h3>
 			<output
-				name="result"
-				for="apiTokenUrlGenerator"
-				class="min-h-8 mb-8 block whitespace-pre-wrap break-all"
+			name="result"
+			for="apiTokenUrlGenerator"
+			class="bg-gray-200 dark:bg-gray-800 p-2 rounded font-mono text-sm min-h-8 block whitespace-pre-wrap break-all"
 			></output>
+			<button type="button" id="copyToClipboard" class="inline-flex items-center rounded-md border border-transparent bg-gray-600 px-3 py-2 text-sm font-medium leading-4 text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">Copy Token URL</button>
 		</div>
 	</form>
 </Layout>
