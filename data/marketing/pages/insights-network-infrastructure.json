@@ -4,7 +4,7 @@
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "Insights - Network Infrastructure",
+				"pageName": "theNET - The challenges of network infrastructure - Page",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "English for Locale",
@@ -32,27 +32,19 @@
 				},
 				"relativePath": "insights-network-infrastructure",
 				"topNavOptions": "default",
-				"topNavButtonText": "Get in Touch",
-				"topNavButtonUrl": "/lp/overview-x/",
+				"topNavButtonText": null,
+				"topNavButtonUrl": null,
 				"footerOptions": "default",
 				"metaTags": {
-					"metaTitle": "Challenges of Network Infrastructure",
+					"metaTitle": "The challenges of network infrastructure",
 					"metaDescription": "Networking functions need to work together, address the challenges of complex cloud environments as you migrate to the cloud.",
-					"twitterCustomImage": {
-						"file": {
-							"publicURL": "[path]/Network-Architecture-Banner.png"
-						}
-					},
+					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
 							"publicURL": "[path]/Network-Architecture-Banner.png"
 						}
 					},
-					"facebookCustomImage": {
-						"file": {
-							"publicURL": "[path]/Network-Architecture-Banner.png"
-						}
-					}
+					"facebookCustomImage": null
 				},
 				"contentfulId": "6RVuk0PxhoIfhQsrmK8VTC",
 				"contentTypeId": "page",
@@ -96,11 +88,55 @@
 				"template": null,
 				"relatedBlades": [
 					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "3PfSgR6RxFckxj30JU8UNT",
+						"htmlContent": "<div style=\"background-image: url('https://cf-assets.www.cloudflare.com/slt3lc6tev37/3XUF2wHzJgUoVCRmPoDRS2/056c62625e56243389310498165d121a/BDES-4015_WebBanner-4.jpg'); width: 1440px; height: 160px; background-repeat:no-repeat; border: none;\"></div>",
+						"htmlId": "theNET - Banner"
+					},
+					{
+						"contentTypeId": "bladeSubNav",
+						"contentfulId": "5fUM79oSsUQ1cUMWH8P7Tk",
+						"menuTitle": null,
+						"mobileOnlyMenuTitle": null,
+						"stickyNav": true,
+						"htmlId": null,
+						"menuItems": [
+							{
+								"contentfulId": "47EwwmWt0CCFcuqAZUftaG",
+								"linkText": "Home",
+								"page": null,
+								"url": null,
+								"subMenuItems": null
+							},
+							{
+								"contentfulId": "7LNNODSrYzwQwTpSlaZApk",
+								"linkText": "Security Innovation",
+								"page": null,
+								"url": "the-net/security-innovation",
+								"subMenuItems": null
+							},
+							{
+								"contentfulId": "2nQtjONwi1cwO4A4T23UUu",
+								"linkText": "Threat Landscape",
+								"page": null,
+								"url": "the-net/threat-landscape",
+								"subMenuItems": null
+							},
+							{
+								"contentfulId": "34jem3vrtHbaxaRx8tZZqC",
+								"linkText": "Future Internet",
+								"page": null,
+								"url": "the-net/future-internet",
+								"subMenuItems": null
+							}
+						]
+					},
+					{
 						"contentTypeId": "bladeRichTextColumnGroup",
 						"contentfulId": "343uaQw7z5DLD8az6CDfG1",
 						"htmlId": null,
 						"mainHeadline": null,
-						"backgroundColor": "white",
+						"backgroundColor": "light-blue",
 						"bladeBorder": "none",
 						"sectionPadding": "tile--no-bottom-padding",
 						"columnLayout": "Two Thirds & One Third",
@@ -127,7 +163,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "The Challenges of Network Infrastructure",
+													"value": "The challenges of network infrastructure",
 													"marks": [],
 													"content": null
 												}
@@ -146,7 +182,7 @@
 														{
 															"contentfulId": "3chtWcZo7jmaBAy4le5WcU",
 															"locale": "en-US",
-															"title": "Insights Network Architecture Banner",
+															"title": "theNET - The challenges of network infrastructure - Meta - Image",
 															"file": {
 																"name": "Network-Architecture-Banner",
 																"publicURL": "[path]/Network-Architecture-Banner.png",
@@ -391,6 +427,27 @@
 											"content": []
 										},
 										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
 											"nodeType": "heading-3",
 											"data": {
 												"target": null,
@@ -539,6 +596,27 @@
 											"content": []
 										},
 										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
 											"nodeType": "heading-3",
 											"data": {
 												"target": null,
@@ -685,6 +763,27 @@
 											"content": []
 										},
 										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
 											"nodeType": "heading-3",
 											"data": {
 												"target": null,
@@ -798,6 +897,27 @@
 											"value": null,
 											"marks": null,
 											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
 										},
 										{
 											"nodeType": "heading-3",
@@ -1349,6 +1469,9 @@
 													"marks": [
 														{
 															"type": "italic"
+														},
+														{
+															"type": "bold"
 														}
 													],
 													"content": null
@@ -1387,7 +1510,38 @@
 									"nodeType": "document",
 									"content": [
 										{
-											"nodeType": "heading-4",
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-5",
 											"data": {
 												"target": null,
 												"uri": null
@@ -1461,7 +1615,21 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "Pros and cons to heterogeneous infrastructure",
+																	"value": "Pros and cons",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " to heterogeneous infrastructure",
 																	"marks": [],
 																	"content": null
 																}
@@ -1493,7 +1661,55 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "The challenges with on-premise hardware and multiple point solutions delivered in the cloud",
+																	"value": "The challenges with ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "on-premise hardware",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " and ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "multiple point solutions",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " delivered in the cloud",
 																	"marks": [],
 																	"content": null
 																}
@@ -1525,7 +1741,31 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "How a distributed cloud network eliminates these challenges",
+																	"value": "How a ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "distributed cloud network",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " eliminates these challenges",
 																	"marks": [],
 																	"content": null
 																}
@@ -1534,6 +1774,16 @@
 													]
 												}
 											]
+										},
+										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
 										},
 										{
 											"nodeType": "paragraph",
@@ -1557,7 +1807,7 @@
 											]
 										},
 										{
-											"nodeType": "heading-6",
+											"nodeType": "heading-5",
 											"data": {
 												"target": null,
 												"uri": null
@@ -1571,7 +1821,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "RELATED RESOURCES",
+													"value": "Related resources",
 													"marks": [
 														{
 															"type": "bold"
@@ -1580,16 +1830,6 @@
 													"content": null
 												}
 											]
-										},
-										{
-											"nodeType": "hr",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": []
 										},
 										{
 											"nodeType": "unordered-list",
@@ -1792,6 +2032,16 @@
 											]
 										},
 										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
 											"nodeType": "paragraph",
 											"data": {
 												"target": null,
@@ -1824,7 +2074,7 @@
 						"mainHeadline": null,
 						"backgroundColor": "light-blue",
 						"bladeBorder": "none",
-						"sectionPadding": null,
+						"sectionPadding": "tile--no-top-padding",
 						"columnLayout": "Two Thirds & One Third",
 						"columns": [
 							{
@@ -1834,6 +2084,37 @@
 								"column": {
 									"nodeType": "document",
 									"content": [
+										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
 										{
 											"nodeType": "heading-2",
 											"data": {
@@ -1849,7 +2130,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Dive deeper on this topic",
+													"value": "Dive deeper on this topic.",
 													"marks": [],
 													"content": null
 												}
