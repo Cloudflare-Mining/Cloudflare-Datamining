@@ -4,7 +4,7 @@
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "Insights Current State of Zero Trust",
+				"pageName": "theNET - Current state of Zero Trust - Page",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
@@ -32,28 +32,10 @@
 				},
 				"relativePath": "insights-zero-trust-network-security",
 				"topNavOptions": "default",
-				"topNavButtonText": "Get in Touch",
-				"topNavButtonUrl": "/lp/overview-x/",
+				"topNavButtonText": null,
+				"topNavButtonUrl": null,
 				"footerOptions": "default",
-				"metaTags": {
-					"metaTitle": "Current state of Zero Trust security",
-					"metaDescription": "Zero Trust security is hardly new, but it has taken center stage — and security leaders agree it will improve security and simplify security processes for distributed teams and hybrid networks.",
-					"twitterCustomImage": {
-						"file": {
-							"publicURL": "[path]/Fingerprint-1_Full.jpg"
-						}
-					},
-					"metaImage": {
-						"file": {
-							"publicURL": "[path]/Fingerprint-1_Full.jpg"
-						}
-					},
-					"facebookCustomImage": {
-						"file": {
-							"publicURL": "[path]/Fingerprint-1_Full.jpg"
-						}
-					}
-				},
+				"metaTags": null,
 				"contentfulId": "2ZQ5IRAa8mDeYPVDfmDLU5",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
@@ -96,11 +78,55 @@
 				"template": null,
 				"relatedBlades": [
 					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "3PfSgR6RxFckxj30JU8UNT",
+						"htmlContent": "<div style=\"background-image: url('https://cf-assets.www.cloudflare.com/slt3lc6tev37/3XUF2wHzJgUoVCRmPoDRS2/056c62625e56243389310498165d121a/BDES-4015_WebBanner-4.jpg'); width: 1440px; height: 160px; background-repeat:no-repeat; border: none;\"></div>",
+						"htmlId": "theNET - Banner"
+					},
+					{
+						"contentTypeId": "bladeSubNav",
+						"contentfulId": "5fUM79oSsUQ1cUMWH8P7Tk",
+						"menuTitle": null,
+						"mobileOnlyMenuTitle": null,
+						"stickyNav": true,
+						"htmlId": null,
+						"menuItems": [
+							{
+								"contentfulId": "47EwwmWt0CCFcuqAZUftaG",
+								"linkText": "Home",
+								"page": null,
+								"url": null,
+								"subMenuItems": null
+							},
+							{
+								"contentfulId": "7LNNODSrYzwQwTpSlaZApk",
+								"linkText": "Security Innovation",
+								"page": null,
+								"url": "the-net/security-innovation",
+								"subMenuItems": null
+							},
+							{
+								"contentfulId": "2nQtjONwi1cwO4A4T23UUu",
+								"linkText": "Threat Landscape",
+								"page": null,
+								"url": "the-net/threat-landscape",
+								"subMenuItems": null
+							},
+							{
+								"contentfulId": "34jem3vrtHbaxaRx8tZZqC",
+								"linkText": "Future Internet",
+								"page": null,
+								"url": "the-net/future-internet",
+								"subMenuItems": null
+							}
+						]
+					},
+					{
 						"contentTypeId": "bladeRichTextColumnGroup",
 						"contentfulId": "7wyraxzqvzrAXh0YiEjoCV",
 						"htmlId": null,
 						"mainHeadline": null,
-						"backgroundColor": "white",
+						"backgroundColor": "light-blue",
 						"bladeBorder": "none",
 						"sectionPadding": "tile--no-bottom-padding",
 						"columnLayout": "Two Thirds & One Third",
@@ -142,20 +168,7 @@
 														"type": "Link",
 														"linkType": "Asset"
 													},
-													"related_asset": [
-														{
-															"contentfulId": "4x2usKUodFKdamSzjwrk2f",
-															"locale": "en-US",
-															"title": "Fingerprint-1 Full",
-															"file": {
-																"name": "Fingerprint-1_Full",
-																"publicURL": "[path]/Fingerprint-1_Full.jpg",
-																"internal": {
-																	"mediaType": "image/jpeg"
-																}
-															}
-														}
-													],
+													"related_asset": [],
 													"entry_elementMarkdown": [],
 													"entry_assetFile": [],
 													"entry_button": [],
@@ -520,6 +533,27 @@
 											"content": []
 										},
 										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
 											"nodeType": "heading-3",
 											"data": {
 												"target": null,
@@ -576,7 +610,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Amidst the pandemic, the survey also identified a rise in security incidents related to corporate networks and confidential data. Fifty-five percent of security leaders reported that their organisation experienced an increase in phishing attacks this year. Additionally, 58% of security leaders said their organisation experienced a data breach of some kind.",
+													"value": "Amidst the pandemic, the survey also identified a rise in security incidents related to corporate networks and confidential data. Fifty-five percent of security leaders reported that their organization experienced an increase in phishing attacks this year. Additionally, 58% of security leaders said their organization experienced a data breach of some kind.",
 													"marks": [],
 													"content": null
 												}
@@ -742,6 +776,27 @@
 											"content": []
 										},
 										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
 											"nodeType": "heading-3",
 											"data": {
 												"target": null,
@@ -798,7 +853,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Our survey findings reflect this variety. When we asked security leaders about their high-priority Zero Trust use cases, a wide-ranging use case came out on top: gaining visibility into cloud workloads, which was selected by 87% of respondents. It's not hard to imagine why — understanding how employees use the cloud helps the organisation make smarter cloud investments, in addition to giving the ability to monitor and secure data wherever it sits.",
+													"value": "Our survey findings reflect this variety. When we asked security leaders about their high-priority Zero Trust use cases, a wide-ranging use case came out on top: gaining visibility into cloud workloads, which was selected by 87% of respondents. It's not hard to imagine why — understanding how employees use the cloud helps the organization make smarter cloud investments, in addition to giving the ability to monitor and secure data wherever it sits.",
 													"marks": [],
 													"content": null
 												}
@@ -985,6 +1040,27 @@
 											"content": []
 										},
 										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
 											"nodeType": "heading-3",
 											"data": {
 												"target": null,
@@ -1020,7 +1096,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "All of these external pressures and use cases have created widespread interest in Zero Trust security. The survey found that 80% of security leaders say their organisation is committed to Zero Trust adoption. Additionally, half of all organisations recently elevated their chief information security officer to board-level visibility because of the importance the organisation places in Zero Trust and reducing cyber risk.",
+													"value": "All of these external pressures and use cases have created widespread interest in Zero Trust security. The survey found that 80% of security leaders say their organization is committed to Zero Trust adoption. Additionally, half of all organizations recently elevated their chief information security officer to board-level visibility because of the importance the organization places in Zero Trust and reducing cyber risk.",
 													"marks": [],
 													"content": null
 												}
@@ -1041,7 +1117,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "However, this interest has not yet led to concrete adoption. Only 39% of organisations surveyed reported having completed at least one Zero Trust pilot this year.",
+													"value": "However, this interest has not yet led to concrete adoption. Only 39% of organizations surveyed reported having completed at least one Zero Trust pilot this year.",
 													"marks": [],
 													"content": null
 												}
@@ -1083,7 +1159,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "One culprit could be challenges with overall cloud transformation. Eighty percent of organisations accelerated their cloud adoption plans in 2020, but were unprepared. When large chunks of data have not yet moved to the cloud from isolated data centers, it can become harder to secure using a single security tool.",
+													"value": "One culprit could be challenges with overall cloud transformation. Eighty percent of organizations accelerated their cloud adoption plans in 2020, but were unprepared. When large chunks of data have not yet moved to the cloud from isolated data centers, it can become harder to secure using a single security tool.",
 													"marks": [],
 													"content": null
 												}
@@ -1104,7 +1180,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Another obstacle proved equally challenging for Zero Trust adoption: identity and access management (IAM) complexity. Seventy-six percent of security leaders surveyed said they struggled to shift to a Zero Trust approach due to the complexities of user access needs in their organisation. Zero Trust relies on a single source of truth for identity management, yet larger organisations in particular have often accumulated multiple incompatible identity providers over the years. They must also understand access patterns across a huge number of applications — most of which cannot be shut down even for a moment in order to be migrated to a new identity platform.",
+													"value": "Another obstacle proved equally challenging for Zero Trust adoption: identity and access management (IAM) complexity. Seventy-six percent of security leaders surveyed said they struggled to shift to a Zero Trust approach due to the complexities of user access needs in their organization. Zero Trust relies on a single source of truth for identity management, yet larger organizations in particular have often accumulated multiple incompatible identity providers over the years. They must also understand access patterns across a huge number of applications — most of which cannot be shut down even for a moment in order to be migrated to a new identity platform.",
 													"marks": [],
 													"content": null
 												}
@@ -1408,6 +1484,27 @@
 											"content": []
 										},
 										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
 											"nodeType": "heading-3",
 											"data": {
 												"target": null,
@@ -1499,6 +1596,9 @@
 													"marks": [
 														{
 															"type": "italic"
+														},
+														{
+															"type": "bold"
 														}
 													],
 													"content": null
@@ -1516,7 +1616,38 @@
 									"nodeType": "document",
 									"content": [
 										{
-											"nodeType": "heading-4",
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-5",
 											"data": {
 												"target": null,
 												"uri": null
@@ -1590,7 +1721,31 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "The trends impacting corporate IT",
+																	"value": "The ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "trends",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " impacting corporate IT",
 																	"marks": [],
 																	"content": null
 																}
@@ -1622,7 +1777,21 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "Survey results from over 300 global security leaders",
+																	"value": "Survey results",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " from over 300 global security leaders",
 																	"marks": [],
 																	"content": null
 																}
@@ -1654,8 +1823,22 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "The most popular Zero Trust use case",
+																	"value": "The most popular ",
 																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Zero Trust use case",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
 																	"content": null
 																}
 															]
@@ -1686,7 +1869,31 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "How to overcome key obstacles in the adoption of Zero Trust",
+																	"value": "How to ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "overcome key obstacles",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " in the adoption of Zero Trust",
 																	"marks": [],
 																	"content": null
 																}
@@ -1695,6 +1902,16 @@
 													]
 												}
 											]
+										},
+										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
 										},
 										{
 											"nodeType": "paragraph",
@@ -1718,7 +1935,7 @@
 											]
 										},
 										{
-											"nodeType": "heading-6",
+											"nodeType": "heading-5",
 											"data": {
 												"target": null,
 												"uri": null
@@ -1732,7 +1949,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "RELATED RESOURCES",
+													"value": "Related resources",
 													"marks": [
 														{
 															"type": "bold"
@@ -1741,16 +1958,6 @@
 													"content": null
 												}
 											]
-										},
-										{
-											"nodeType": "hr",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": []
 										},
 										{
 											"nodeType": "unordered-list",
@@ -2016,6 +2223,16 @@
 											]
 										},
 										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
 											"nodeType": "paragraph",
 											"data": {
 												"target": null,
@@ -2048,7 +2265,7 @@
 						"mainHeadline": null,
 						"backgroundColor": "light-blue",
 						"bladeBorder": "none",
-						"sectionPadding": null,
+						"sectionPadding": "tile--no-top-padding",
 						"columnLayout": "Two Thirds & One Third",
 						"columns": [
 							{
@@ -2058,6 +2275,37 @@
 								"column": {
 									"nodeType": "document",
 									"content": [
+										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
 										{
 											"nodeType": "heading-2",
 											"data": {
@@ -2073,7 +2321,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Dive deeper into this topic",
+													"value": "Dive deeper into this topic.",
 													"marks": [],
 													"content": null
 												}
