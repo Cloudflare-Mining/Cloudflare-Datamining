@@ -104,6 +104,10 @@ async function run(){
 				url: `https://api.cloudflare.com/api/v4/user/notifications?scope=zone-banner&locale=en-US&accountType=Enterprise&zonePlanType=Enterprise`,
 				file: 'account/notifications-zone-banner-ent-ent.json',
 			},
+			{
+				url: `https://api.cloudflare.com/api/v4/user/tokens/permission_groups`,
+				file: 'account/token_permission_groups_dash.json',
+			},
 		];
 
 		console.log('Querying APIs...');
