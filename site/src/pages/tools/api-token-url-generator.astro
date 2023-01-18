@@ -129,6 +129,20 @@ permissions = permissions.sort((permA, permB) => permA.name.localeCompare(permB.
 		});
 		triggerChange();
 
+		// handle checkboxes triggering dropdowns to stop being disabled
+		const checkboxes = form.querySelectorAll('input[type="checkbox"]');
+		for(const checkbox of checkboxes){
+			checkbox.addEventListener('change', (event) => {
+				const checkbox = event.target as HTMLInputElement;
+				const dropdown = form.querySelector(`select[name="type_${checkbox.name.replace('permission_', '')}"]`) as HTMLSelectElement;
+				if(checkbox.checked){
+					dropdown.disabled = false;
+				}else{
+					dropdown.disabled = true;
+				}
+			});
+		}
+
 		const copyToClipboard = document.querySelector('#copyToClipboard') as HTMLButtonElement;
 		if(copyToClipboard){
 			copyToClipboard.addEventListener('click', (event) => {
