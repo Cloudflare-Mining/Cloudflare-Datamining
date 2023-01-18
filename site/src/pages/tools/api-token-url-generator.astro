@@ -17,6 +17,9 @@ for(const scope of tokenPermissionGroups){
 		value = 'edit_publish';
 	}
 	const existing = permissions.find(perm => perm.name === key);
+	if(value === 'write'){
+		value = 'edit';
+	}
 	if(existing){
 		existing.types.push(value);
 		continue;
@@ -43,7 +46,7 @@ for(const scope of tokenPermissionGroups){
 	permissions.push({
 		name: key,
 		description: description,
-		types: [value === 'write' ? 'edit' : value],
+		types: [value],
 	});
 }
 permissions = permissions.sort((permA, permB) => permA.name.localeCompare(permB.name));
