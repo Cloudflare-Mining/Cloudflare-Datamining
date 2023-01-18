@@ -561,6 +561,20 @@ components:
           $ref: '#/components/schemas/identity-providers_components-schemas-name'
         type:
           $ref: '#/components/schemas/identity-providers_components-schemas-type'
+    CloudflareClientAPI_identity-providers_components-schemas-response_collection:
+      allOf:
+      - $ref: '#/components/schemas/api-response-collection'
+      - properties:
+          result:
+            type: array
+            items:
+              $ref: '#/components/schemas/CloudflareClientAPI_identity-providers'
+    CloudflareClientAPI_identity-providers_components-schemas-single_response:
+      allOf:
+      - $ref: '#/components/schemas/api-response-single'
+      - properties:
+          result:
+            $ref: '#/components/schemas/CloudflareClientAPI_identity-providers'
     CloudflareClientAPI_include:
       type: array
       description: Rules evaluated with an OR logical operator. A user needs to meet
@@ -1706,6 +1720,12 @@ components:
       - name
       - data
       - priority
+    ZonekeeperPublicAPI_identifier:
+      type: string
+      description: Identifier
+      example: 023e105f4ecef8ad9ca31a8372d0c353
+      readOnly: true
+      maxLength: 32
     access-policy:
       oneOf:
       - $ref: '#/components/schemas/policy_with_permission_groups'
@@ -1853,7 +1873,7 @@ components:
               green_compute:
                 readOnly: true
     account_identifier:
-      $ref: '#/components/schemas/identifier'
+      $ref: '#/components/schemas/CloudflareClientAPI_identifier'
     account_subscription_response_collection:
       allOf:
       - $ref: '#/components/schemas/api-response-collection'
@@ -11166,11 +11186,7 @@ components:
               id:
                 $ref: '#/components/schemas/schemas-uuid'
     identifier:
-      type: string
-      description: Identifier
-      example: 023e105f4ecef8ad9ca31a8372d0c353
-      readOnly: true
-      maxLength: 32
+      example: 699d98642c564d2e855e9661899b7252
     identity:
       type: string
       description: The wirefilter expression to be used for identity matching.
@@ -11191,6 +11207,33 @@ components:
           $ref: '#/components/schemas/uuid'
         name:
           $ref: '#/components/schemas/schemas-name'
+        scim_config:
+          type: object
+          description: The configuration settings for enabling a System for Cross-Domain
+            Identity Management (SCIM) with the identity provider.
+          properties:
+            enabled:
+              type: boolean
+              description: A flag to enable or disable SCIM for the identity provider.
+            group_member_deprovision:
+              type: boolean
+              description: A flag to revoke a user's session in Access and force a
+                reauthentication on the user's Gateway session when they have been
+                added or removed from a group in the Identity Provider.
+            seat_deprovision:
+              type: boolean
+              description: A flag to remove a user's seat in Zero Trust when they
+                have been deprovisioned in the Identity Provider.  This cannot be
+                enabled unless user_deprovision is also enabled.
+            secret:
+              type: string
+              description: A read-only token generated when the SCIM integration is
+                enabled for the first time.  It is redacted on subsequent requests.  If
+                you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.
+            user_deprovision:
+              type: boolean
+              description: A flag to enable revoking a user's session in Access and
+                Gateway when they have been deprovisioned in the Identity Provider.
         type:
           type: string
           description: The type of identity provider. To determine the value for a
@@ -11220,17 +11263,31 @@ components:
     identity-providers_components-schemas-response_collection:
       allOf:
       - $ref: '#/components/schemas/api-response-collection'
-      - properties:
+      - type: object
+        properties:
           result:
             type: array
             items:
-              $ref: '#/components/schemas/CloudflareClientAPI_identity-providers'
+              anyOf:
+              - $ref: '#/components/schemas/schemas-azureAD'
+              - $ref: '#/components/schemas/schemas-centrify'
+              - $ref: '#/components/schemas/schemas-facebook'
+              - $ref: '#/components/schemas/schemas-github'
+              - $ref: '#/components/schemas/schemas-google'
+              - $ref: '#/components/schemas/schemas-google-apps'
+              - $ref: '#/components/schemas/schemas-linkedin'
+              - $ref: '#/components/schemas/schemas-oidc'
+              - $ref: '#/components/schemas/schemas-okta'
+              - $ref: '#/components/schemas/schemas-onelogin'
+              - $ref: '#/components/schemas/schemas-saml'
+              - $ref: '#/components/schemas/schemas-yandex'
+      type: object
     identity-providers_components-schemas-single_response:
       allOf:
       - $ref: '#/components/schemas/api-response-single'
       - properties:
           result:
-            $ref: '#/components/schemas/CloudflareClientAPI_identity-providers'
+            $ref: '#/components/schemas/schemas-identity-providers'
     identity-providers_components-schemas-type:
       type: string
       description: The type of identity provider. To determine the value for a specific
@@ -19330,6 +19387,24 @@ components:
       description: Shows if a domain is available for transferring into Cloudflare
         Registrar.
       example: false
+    schemas-azureAD:
+      allOf:
+      - $ref: '#/components/schemas/schemas-identity-provider'
+      - type: object
+        properties:
+          config:
+            allOf:
+            - $ref: '#/components/schemas/generic-oauth-config'
+            - type: object
+              properties:
+                directory_id:
+                  type: string
+                  description: Your Azure directory uuid
+                  example: <your azure directory uuid>
+                support_groups:
+                  type: boolean
+                  description: Should Cloudflare try to load groups from your account
+      type: object
     schemas-base:
       required:
       - id
@@ -19413,6 +19488,25 @@ components:
           description: All subcategories for this category.
           items:
             $ref: '#/components/schemas/subcategory'
+    schemas-centrify:
+      allOf:
+      - $ref: '#/components/schemas/schemas-identity-provider'
+      - type: object
+        properties:
+          config:
+            allOf:
+            - $ref: '#/components/schemas/generic-oauth-config'
+            - type: object
+              properties:
+                centrify_account:
+                  type: string
+                  description: Your centrify account url
+                  example: https://abc123.my.centrify.com/
+                centrify_app_id:
+                  type: string
+                  description: Your centrify app id
+                  example: exampleapp
+      type: object
     schemas-certificate:
       type: string
       description: The zone's SSL certificate or SSL certificate and intermediate(s).
@@ -19839,6 +19933,14 @@ components:
       type: string
       description: The expression defining which traffic will match the rule.
       example: ip.src ne 1.1.1.1
+    schemas-facebook:
+      allOf:
+      - $ref: '#/components/schemas/schemas-identity-provider'
+      - type: object
+        properties:
+          config:
+            $ref: '#/components/schemas/generic-oauth-config'
+      type: object
     schemas-features:
       type: array
       description: Features enabled for the Cloudflare Tunnel.
@@ -19929,6 +20031,37 @@ components:
       type: boolean
       description: True if the user has logged into the WARP client.
       example: false
+    schemas-github:
+      allOf:
+      - $ref: '#/components/schemas/schemas-identity-provider'
+      - type: object
+        properties:
+          config:
+            $ref: '#/components/schemas/generic-oauth-config'
+      type: object
+    schemas-google:
+      allOf:
+      - $ref: '#/components/schemas/schemas-identity-provider'
+      - type: object
+        properties:
+          config:
+            $ref: '#/components/schemas/generic-oauth-config'
+      type: object
+    schemas-google-apps:
+      allOf:
+      - $ref: '#/components/schemas/schemas-identity-provider'
+      - type: object
+        properties:
+          config:
+            allOf:
+            - $ref: '#/components/schemas/generic-oauth-config'
+            - type: object
+              properties:
+                apps_domain:
+                  type: string
+                  description: Your companies TLD
+                  example: mycompany.com
+      type: object
     schemas-group:
       allOf:
       - $ref: '#/components/schemas/group'
@@ -20035,6 +20168,68 @@ components:
       example: 023e105f4ecef8ad9ca31a8372d0c353
       readOnly: true
       maxLength: 32
+    schemas-identity-provider:
+      type: object
+      required:
+      - name
+      - type
+      - config
+      properties:
+        config:
+          type: object
+          description: The configuration parameters for the identity provider. To
+            view the required parameters for a specific provider, refer to our [developer
+            documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
+        id:
+          $ref: '#/components/schemas/uuid'
+        name:
+          $ref: '#/components/schemas/schemas-name'
+        scim_config:
+          type: object
+          description: The configuration settings for enabling a System for Cross-Domain
+            Identity Management (SCIM) with the identity provider.
+          properties:
+            enabled:
+              type: boolean
+              description: A flag to enable or disable SCIM for the identity provider.
+            group_member_deprovision:
+              type: boolean
+              description: A flag to revoke a user's session in Access and force a
+                reauthentication on the user's Gateway session when they have been
+                added or removed from a group in the Identity Provider.
+            seat_deprovision:
+              type: boolean
+              description: A flag to remove a user's seat in Zero Trust when they
+                have been deprovisioned in the Identity Provider.  This cannot be
+                enabled unless user_deprovision is also enabled.
+            secret:
+              type: string
+              description: A read-only token generated when the SCIM integration is
+                enabled for the first time.  It is redacted on subsequent requests.
+                If you lose this you will need to refresh it token at /access/identity_providers/:idpID/refresh_scim_secret.
+            user_deprovision:
+              type: boolean
+              description: A flag to enable revoking a user's session in Access and
+                Gateway when they have been deprovisioned in the Identity Provider.
+        type:
+          type: string
+          description: The type of identity provider. To determine the value for a
+            specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
+          example: onetimepin
+    schemas-identity-providers:
+      oneOf:
+      - $ref: '#/components/schemas/schemas-azureAD'
+      - $ref: '#/components/schemas/schemas-centrify'
+      - $ref: '#/components/schemas/schemas-facebook'
+      - $ref: '#/components/schemas/schemas-github'
+      - $ref: '#/components/schemas/schemas-google'
+      - $ref: '#/components/schemas/schemas-google-apps'
+      - $ref: '#/components/schemas/schemas-linkedin'
+      - $ref: '#/components/schemas/schemas-oidc'
+      - $ref: '#/components/schemas/schemas-okta'
+      - $ref: '#/components/schemas/schemas-onelogin'
+      - $ref: '#/components/schemas/schemas-saml'
+      - $ref: '#/components/schemas/schemas-yandex'
     schemas-include:
       type: array
       items:
@@ -20125,6 +20320,14 @@ components:
       type: string
       description: The timestamp of when the rule was last modified.
       example: "2000-01-01T00:00:00.000000Z"
+    schemas-linkedin:
+      allOf:
+      - $ref: '#/components/schemas/schemas-identity-provider'
+      - type: object
+        properties:
+          config:
+            $ref: '#/components/schemas/generic-oauth-config'
+      type: object
     schemas-match:
       type: array
       description: The conditions that the client must match to run the rule.
@@ -20229,6 +20432,69 @@ components:
       nullable: true
       minimum: 30
       maximum: 36000
+    schemas-oidc:
+      allOf:
+      - $ref: '#/components/schemas/schemas-identity-provider'
+      - type: object
+        properties:
+          config:
+            allOf:
+            - $ref: '#/components/schemas/generic-oauth-config'
+            - type: object
+              properties:
+                auth_url:
+                  type: string
+                  description: The authorization_endpoint URL of your IdP
+                  example: https://accounts.google.com/o/oauth2/auth
+                certs_url:
+                  type: string
+                  description: The jwks_uri endpoint of your IdP to allow the IdP
+                    keys to sign the tokens
+                  example: https://www.googleapis.com/oauth2/v3/certs
+                scopes:
+                  type: array
+                  description: OAuth scopes
+                  example:
+                  - openid
+                  - email
+                  - profile
+                  items:
+                    type: string
+                token_url:
+                  type: string
+                  description: The token_endpoint URL of your IdP
+                  example: https://accounts.google.com/o/oauth2/token
+      type: object
+    schemas-okta:
+      allOf:
+      - $ref: '#/components/schemas/schemas-identity-provider'
+      - type: object
+        properties:
+          config:
+            allOf:
+            - $ref: '#/components/schemas/generic-oauth-config'
+            - type: object
+              properties:
+                okta_account:
+                  type: string
+                  description: Your okta account url
+                  example: https://dev-abc123.oktapreview.com
+      type: object
+    schemas-onelogin:
+      allOf:
+      - $ref: '#/components/schemas/schemas-identity-provider'
+      - type: object
+        properties:
+          config:
+            allOf:
+            - $ref: '#/components/schemas/generic-oauth-config'
+            - type: object
+              properties:
+                onelogin_account:
+                  type: string
+                  description: Your OneLogin account url
+                  example: https://mycompany.onelogin.com
+      type: object
     schemas-operation:
       type: object
       required:
@@ -20846,6 +21112,62 @@ components:
           description: The rules in the ruleset.
           items:
             $ref: '#/components/schemas/origin-rules_components-schemas-rule'
+    schemas-saml:
+      allOf:
+      - $ref: '#/components/schemas/schemas-identity-provider'
+      - type: object
+        properties:
+          config:
+            type: object
+            properties:
+              attributes:
+                type: array
+                description: A list of SAML attribute names that will be added to
+                  your signed JWT token and can be used in SAML policy rules.
+                example:
+                - group
+                - department_code
+                - divison
+                items:
+                  type: string
+              email_attribute_name:
+                type: string
+                description: The attribute name for email in the SAML response.
+                example: Email
+              header_attributes:
+                type: array
+                description: Add a list of attribute names that will be returned in
+                  the response header from the Access callback.
+                items:
+                  type: object
+                  properties:
+                    attribute_name:
+                      type: string
+                      description: attribute name from the IDP
+                    header_name:
+                      type: string
+                      description: header that will be added on the request to the
+                        origin
+              idp_public_certs:
+                type: array
+                description: X509 certificate to verify the signature in the SAML
+                  authentication response
+                items:
+                  type: string
+              issuer_url:
+                type: string
+                description: IdP Entity ID or Issuer URL
+                example: https://whoami.com
+              sign_request:
+                type: boolean
+                description: Sign the SAML authentication request with Access credentials.
+                  To verify the signature, use the public key from the Access certs
+                  endpoints.
+              sso_target_url:
+                type: string
+                description: URL to send the SAML authentication requests to
+                example: https://edgeaccess.org/idp/saml/login
+      type: object
     schemas-schedule:
       type: string
       description: 'Polling frequency for the WARP client posture check. Default:
@@ -21305,6 +21627,14 @@ components:
       description: Maximum width in image pixels.
       example: 1366
       minimum: 1
+    schemas-yandex:
+      allOf:
+      - $ref: '#/components/schemas/schemas-identity-provider'
+      - type: object
+        properties:
+          config:
+            $ref: '#/components/schemas/generic-oauth-config'
+      type: object
     schemas-zone:
       type: object
       properties:
@@ -31016,7 +31346,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       responses:
         4xx:
           description: List fields response failure
@@ -31053,7 +31383,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       responses:
         4xx:
           description: List Logpush jobs for a dataset response failure
@@ -31085,7 +31415,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       responses:
         4xx:
           description: List Logpush jobs response failure
@@ -31116,7 +31446,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       requestBody:
         required: true
         content:
@@ -31175,7 +31505,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       requestBody:
         required: true
         content:
@@ -31227,7 +31557,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       responses:
         4xx:
           description: Get Logpush job details response failure
@@ -31263,7 +31593,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       requestBody:
         required: true
         content:
@@ -31311,7 +31641,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       requestBody:
         required: true
         content:
@@ -31353,7 +31683,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       requestBody:
         required: true
         content:
@@ -31398,7 +31728,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       requestBody:
         required: true
         content:
@@ -31440,7 +31770,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       requestBody:
         required: true
         content:
@@ -31482,7 +31812,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       requestBody:
         required: true
         content:
@@ -31529,7 +31859,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       responses:
         4xx:
           description: Get CMB config response failure
@@ -31559,7 +31889,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       requestBody:
         required: true
         content:
@@ -33385,7 +33715,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       responses:
         4xx:
           description: Get projects response failure
@@ -33416,7 +33746,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       requestBody:
         required: true
         content:
@@ -33459,7 +33789,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       requestBody:
         required: true
         content:
@@ -33507,7 +33837,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       responses:
         4xx:
           description: Get project response failure
@@ -33544,7 +33874,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       requestBody:
         required: true
         content:
@@ -33587,7 +33917,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       responses:
         4xx:
           description: Get deployments response failure
@@ -33624,7 +33954,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       requestBody:
         required: true
         content:
@@ -33669,7 +33999,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       - name: project_name
         in: path
         required: true
@@ -33679,7 +34009,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       requestBody:
         required: true
         content:
@@ -33722,7 +34052,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       - name: project_name
         in: path
         required: true
@@ -33732,7 +34062,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       responses:
         4xx:
           description: Get deployment info response failure
@@ -33764,7 +34094,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       - name: project_name
         in: path
         required: true
@@ -33774,7 +34104,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       responses:
         4xx:
           description: Get deployment logs response failure
@@ -33806,7 +34136,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       - name: project_name
         in: path
         required: true
@@ -33816,7 +34146,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       requestBody:
         required: true
         content:
@@ -33853,7 +34183,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       - name: project_name
         in: path
         required: true
@@ -33863,7 +34193,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       requestBody:
         required: true
         content:
@@ -33904,7 +34234,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       responses:
         4xx:
           description: Get domains response failure
@@ -33940,7 +34270,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       requestBody:
         required: true
         content:
@@ -33988,7 +34318,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       requestBody:
         required: true
         content:
@@ -34041,7 +34371,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       responses:
         4xx:
           description: Get domain response failure
@@ -34082,7 +34412,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       requestBody:
         required: true
         content:
@@ -42571,14 +42901,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/identity-providers_components-schemas-response_collection'
+                - $ref: '#/components/schemas/CloudflareClientAPI_identity-providers_components-schemas-response_collection'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: List Access identity providers response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/identity-providers_components-schemas-response_collection'
+                $ref: '#/components/schemas/CloudflareClientAPI_identity-providers_components-schemas-response_collection'
       security:
       - api_email: []
         api_key: []
@@ -42618,14 +42948,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/identity-providers_components-schemas-single_response'
+                - $ref: '#/components/schemas/CloudflareClientAPI_identity-providers_components-schemas-single_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Add an Access identity provider response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/identity-providers_components-schemas-single_response'
+                $ref: '#/components/schemas/CloudflareClientAPI_identity-providers_components-schemas-single_response'
       security:
       - api_email: []
         api_key: []
@@ -42659,14 +42989,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/identity-providers_components-schemas-single_response'
+                - $ref: '#/components/schemas/CloudflareClientAPI_identity-providers_components-schemas-single_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Delete an Access identity provider response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/identity-providers_components-schemas-single_response'
+                $ref: '#/components/schemas/CloudflareClientAPI_identity-providers_components-schemas-single_response'
       security:
       - api_email: []
         api_key: []
@@ -42695,14 +43025,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/identity-providers_components-schemas-single_response'
+                - $ref: '#/components/schemas/CloudflareClientAPI_identity-providers_components-schemas-single_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Get an Access identity provider response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/identity-providers_components-schemas-single_response'
+                $ref: '#/components/schemas/CloudflareClientAPI_identity-providers_components-schemas-single_response'
       security:
       - api_email: []
         api_key: []
@@ -42747,14 +43077,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/identity-providers_components-schemas-single_response'
+                - $ref: '#/components/schemas/CloudflareClientAPI_identity-providers_components-schemas-single_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Update an Access identity provider response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/identity-providers_components-schemas-single_response'
+                $ref: '#/components/schemas/CloudflareClientAPI_identity-providers_components-schemas-single_response'
       security:
       - api_email: []
         api_key: []
@@ -63880,14 +64210,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/identity-providers_components-schemas-response_collection'
+                - $ref: '#/components/schemas/CloudflareClientAPI_identity-providers_components-schemas-response_collection'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: List Access identity providers response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/identity-providers_components-schemas-response_collection'
+                $ref: '#/components/schemas/CloudflareClientAPI_identity-providers_components-schemas-response_collection'
       security:
       - api_email: []
         api_key: []
@@ -63927,14 +64257,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/identity-providers_components-schemas-single_response'
+                - $ref: '#/components/schemas/CloudflareClientAPI_identity-providers_components-schemas-single_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Add an Access identity provider response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/identity-providers_components-schemas-single_response'
+                $ref: '#/components/schemas/CloudflareClientAPI_identity-providers_components-schemas-single_response'
       security:
       - api_email: []
         api_key: []
@@ -63968,14 +64298,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/identity-providers_components-schemas-single_response'
+                - $ref: '#/components/schemas/CloudflareClientAPI_identity-providers_components-schemas-single_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Delete an Access identity provider response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/identity-providers_components-schemas-single_response'
+                $ref: '#/components/schemas/CloudflareClientAPI_identity-providers_components-schemas-single_response'
       security:
       - api_email: []
         api_key: []
@@ -64004,14 +64334,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/identity-providers_components-schemas-single_response'
+                - $ref: '#/components/schemas/CloudflareClientAPI_identity-providers_components-schemas-single_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Get an Access identity provider response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/identity-providers_components-schemas-single_response'
+                $ref: '#/components/schemas/CloudflareClientAPI_identity-providers_components-schemas-single_response'
       security:
       - api_email: []
         api_key: []
@@ -64056,14 +64386,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/identity-providers_components-schemas-single_response'
+                - $ref: '#/components/schemas/CloudflareClientAPI_identity-providers_components-schemas-single_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Update an Access identity provider response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/identity-providers_components-schemas-single_response'
+                $ref: '#/components/schemas/CloudflareClientAPI_identity-providers_components-schemas-single_response'
       security:
       - api_email: []
         api_key: []
@@ -65530,7 +65860,7 @@ paths:
         description: Zone ID
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/ZonekeeperPublicAPI_identifier'
       responses:
         4xx:
           description: Client Error
@@ -65552,7 +65882,7 @@ paths:
                       type: object
                       properties:
                         id:
-                          $ref: '#/components/schemas/identifier'
+                          $ref: '#/components/schemas/ZonekeeperPublicAPI_identifier'
   /zones/{zone_id}/api_gateway/configuration:
     get:
       tags:
@@ -72521,7 +72851,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       responses:
         4xx:
           description: List fields response failure
@@ -72558,7 +72888,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       responses:
         4xx:
           description: List Logpush jobs for a dataset response failure
@@ -72590,7 +72920,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       responses:
         4xx:
           description: List Instant Logs jobs response failure
@@ -72621,7 +72951,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       requestBody:
         required: true
         content:
@@ -72665,7 +72995,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       responses:
         4xx:
           description: List Logpush jobs response failure
@@ -72696,7 +73026,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       requestBody:
         required: true
         content:
@@ -72755,7 +73085,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       requestBody:
         required: true
         content:
@@ -72807,7 +73137,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       responses:
         4xx:
           description: Get Logpush job details response failure
@@ -72843,7 +73173,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       requestBody:
         required: true
         content:
@@ -72891,7 +73221,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       requestBody:
         required: true
         content:
@@ -72933,7 +73263,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       requestBody:
         required: true
         content:
@@ -72978,7 +73308,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       requestBody:
         required: true
         content:
@@ -73020,7 +73350,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       requestBody:
         required: true
         content:
