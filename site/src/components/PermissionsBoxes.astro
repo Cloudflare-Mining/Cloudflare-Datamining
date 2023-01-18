@@ -30,7 +30,11 @@ const {permissions} = Astro.props;
 			</label>
 		</div>
 		<div class="py-1">
-			<select name={`type_${permission.name}`} class="block w-full rounded-md border-gray-300 bg-gray-200 py-2 pl-3 pr-10 text-base dark:border-gray-700 dark:bg-gray-800 sm:text-sm">
+			<select
+				name={`type_${permission.name}`}
+				class="block w-full rounded-md border-gray-300 bg-gray-200 py-2 pl-3 pr-10 text-base dark:border-gray-700 dark:bg-gray-800 sm:text-sm"
+				disabled
+			>
 				{permission.types.map(type => (
 					<option value={type}>{commonTranslations[`common.${type}`]}</option>
 				))}
