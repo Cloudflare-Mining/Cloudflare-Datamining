@@ -6,7 +6,7 @@
 	</div>
 </div>
 <p><strong>About The Role</strong></p>
-<p><span style="font-weight: 400;">Cloudflare is seeking a Sr.Director of Pricing Marketing to bring our packaging and pricing to life through compelling and differentiated marketing communication.</span></p>
+<p><span style="font-weight: 400;">Cloudflare is seeking a Director of Pricing Marketing to bring our packaging and pricing to life through compelling and differentiated marketing communication.</span></p>
 <p><span style="font-weight: 400;">You will be responsible for our growing suite of offerings.&nbsp; You will collaborate cross-functionally with Pricing, Product Marketing, Product, and Sales to bring our strategies to life through sales and customer facing assets that highlight how we solve customer pain points. &nbsp; A successful candidate will have a proven track record creating compelling customer communication, strong sales enablement assets, and differentiated messaging to successfully deliver results in a fast-paced and dynamic business environment.&nbsp; This role, reporting to the Vice President of Monetization.</span></p>
 <p><strong>Job Responsibilities</strong></p>
 <ul>
