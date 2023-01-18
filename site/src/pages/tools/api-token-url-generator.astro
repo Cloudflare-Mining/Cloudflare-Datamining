@@ -43,7 +43,7 @@ for(const scope of tokenPermissionGroups){
 	permissions.push({
 		name: key,
 		description: description,
-		types: [value],
+		types: [value === 'write' ? 'edit' : value],
 	});
 }
 permissions = permissions.sort((permA, permB) => permA.name.localeCompare(permB.name));
