@@ -1,8 +1,10 @@
 ---
+import commonTranslations from '../../../data/dashboard-translations/common.json';
 
 type Permission = {
 	name: string
 	description: string
+	types: string[]
 }
 export interface Props {
 	permissions: Permission[]
@@ -12,7 +14,7 @@ const {permissions} = Astro.props;
 ---
 <div class="grid grid-cols-3 gap-x-6">
 	{permissions.map(permission => (
-		<div class="py-1 flex items-center space-x-2 col-span-2">
+		<div class="col-span-2 flex items-center space-x-2 py-1">
 			<input
 				type="checkbox"
 				name={`permission_${permission.name}`}
@@ -23,14 +25,15 @@ const {permissions} = Astro.props;
 			<label
 				for={permission.name}
 				class="leading-4"
-				>
-				{permission.description} <br><span class="italic text-xs text-gray-700 dark:text-gray-400 font-mono">{permission.name}</span>
+			>
+				{permission.description} <br><span class="font-mono text-xs italic text-gray-700 dark:text-gray-400">{permission.name}</span>
 			</label>
 		</div>
 		<div class="py-1">
-			<select name={`type_${permission.name}`} class="bg-gray-200 dark:bg-gray-800 border-gray-300 dark:border-gray-700 block w-full rounded-md py-2 pl-3 pr-10 text-base sm:text-sm">
-				<option value="read">Read</option>
-				<option value="edit">Edit</option>
+			<select name={`type_${permission.name}`} class="block w-full rounded-md border-gray-300 bg-gray-200 py-2 pl-3 pr-10 text-base dark:border-gray-700 dark:bg-gray-800 sm:text-sm">
+				{permission.types.map(type => (
+					<option value={type}>{commonTranslations[`common.${type}`]}</option>
+				))}
 			</select>
 		</div>
 	))}

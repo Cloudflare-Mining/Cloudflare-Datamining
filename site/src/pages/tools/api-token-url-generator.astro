@@ -4,18 +4,48 @@ import MainHeading from '../../components/MainHeading.astro';
 import Description from '../../components/Description.astro';
 import PermissionsBoxes from '../../components/PermissionsBoxes.astro';
 import commonTranslations from '../../../../data/dashboard-translations/common.json';
+import tokenPermissionGroups from '../../../../data/account/token_permission_groups_dash.json';
 
 
 let permissions = [];
-for(const [key, value] of Object.entries(commonTranslations)){
-	if(key.startsWith('api_tokens.permission_')){
-		permissions.push({
-			name: key.replace('api_tokens.permission_', ''),
-			description: value,
-		});
+for(const scope of tokenPermissionGroups){
+	const lastUnderscore = scope.label.lastIndexOf('_');
+	const key = scope.label.slice(0, Math.max(0, lastUnderscore));
+	let value = scope.label.slice(Math.max(0, lastUnderscore + 1));
+	// handle zaraz
+	if(key === 'zaraz' && value === 'write'){
+		value = 'edit_publish';
 	}
+	const existing = permissions.find(perm => perm.name === key);
+	if(existing){
+		existing.types.push(value);
+		continue;
+	}
+	let description = null;
+	const translationKeysToTry = [
+		`api_tokens.permission_${key}`,
+		`api_tokens.permission_${key.replace('account_', '')}`,
+		`api_tokens.permission_${key.replace('zone_', '')}`,
+	];
+	for(const translationKey of translationKeysToTry){
+		if(commonTranslations[translationKey]){
+			description = commonTranslations[translationKey];
+			break;
+		}
+	}
+	if(!description){
+		description = scope.name;
+		console.log(`Missing translation for api_tokens.permission_${key}`);
+	}
+	if(description.endsWith(' Read') || description.endsWith(' Write')){
+		description = description.slice(0, Math.max(0, description.length - 5));
+	}
+	permissions.push({
+		name: key,
+		description: description,
+		types: [value],
+	});
 }
-
 permissions = permissions.sort((permA, permB) => permA.name.localeCompare(permB.name));
 ---
 <Layout title="API Token URL Generator - Cloudflare Datamining" description="Generate an API token URL to share for usage on the Cloudflare Dashboard">
@@ -28,7 +58,7 @@ permissions = permissions.sort((permA, permB) => permA.name.localeCompare(permB.
 	<form id="apiTokenUrlGenerator" method="post" class="space-y-5">
 		<div class="space-y-2">
 			<h3 class="text-lg font-semibold">Token Name</h3>
-			<input type="text" name="name" placeholder="Token Name" class="block w-full rounded-md border-gray-300 dark:border-gray-700 bg-gray-200 dark:bg-gray-800 shadow-sm focus:border-gray-500 focus:ring-gray-500 sm:text-sm">
+			<input type="text" name="name" placeholder="Token Name" class="block w-full rounded-md border-gray-300 bg-gray-200 shadow-sm focus:border-gray-500 focus:ring-gray-500 dark:border-gray-700 dark:bg-gray-800 sm:text-sm">
 		</div>
 		<noscript>This form requires JavaScript to function today, sorry.</noscript>
 
@@ -40,9 +70,9 @@ permissions = permissions.sort((permA, permB) => permA.name.localeCompare(permB.
 		<div class="space-y-2">
 			<h3 class="text-lg font-semibold">Token URL</h3>
 			<output
-			name="result"
-			for="apiTokenUrlGenerator"
-			class="bg-gray-200 dark:bg-gray-800 p-2 rounded font-mono text-sm min-h-8 block whitespace-pre-wrap break-all"
+				name="result"
+				for="apiTokenUrlGenerator"
+				class="min-h-8 block whitespace-pre-wrap break-all rounded bg-gray-200 p-2 font-mono text-sm dark:bg-gray-800"
 			></output>
 			<button type="button" id="copyToClipboard" class="inline-flex items-center rounded-md border border-transparent bg-gray-600 px-3 py-2 text-sm font-medium leading-4 text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">Copy Token URL</button>
 		</div>
