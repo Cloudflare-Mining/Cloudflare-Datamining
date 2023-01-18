@@ -110,6 +110,12 @@
 			"filter_options": []
 		},
 		{
+			"display_name": "Magic Network Monitoring: DDoS Attack",
+			"type": "fbm_dosd_attack",
+			"description": "Fine grained Magic Network Monitoring DDoS Attacks based on your sflow data",
+			"filter_options": []
+		},
+		{
 			"display_name": "Magic Network Monitoring: Volumetric Attack",
 			"type": "fbm_volumetric_attack",
 			"description": "Volumetric DDoS attacks to your infrastructure based on flow data you export to Cloudflare",
