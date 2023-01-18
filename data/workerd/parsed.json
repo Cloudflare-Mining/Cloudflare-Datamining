@@ -2322,6 +2322,14 @@
 						"compatEnableFlag": "tcp_sockets_support",
 						"experimental": "true"
 					}
+				},
+				{
+					"name": "specCompliantResponseRedirect",
+					"annotations": {
+						"compatDisableFlag": "response_redirect_url_original",
+						"compatEnableDate": "2023-03-14",
+						"compatEnableFlag": "response_redirect_url_standard"
+					}
 				}
 			]
 		},
