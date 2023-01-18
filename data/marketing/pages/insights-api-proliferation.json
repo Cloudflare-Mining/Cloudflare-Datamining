@@ -4,7 +4,7 @@
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "Insights - API Proliferation",
+				"pageName": "theNET - Attack surface grows with the proliferation of APIs - Page",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "English for Locale",
@@ -36,23 +36,15 @@
 				"topNavButtonUrl": "/lp/overview-x/",
 				"footerOptions": "default",
 				"metaTags": {
-					"metaTitle": "Rapid growth of APIs has led to security risks for the enterprise",
+					"metaTitle": "Attack surface grows with the proliferation of APIs",
 					"metaDescription": "APIs predicted to be biggest security vulnerability ever. API security is best served with an integrated edge network.",
-					"twitterCustomImage": {
-						"file": {
-							"publicURL": "[path]/Insights-Proliferation-of-APIs-Attacks_1200x627.jpeg"
-						}
-					},
+					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
 							"publicURL": "[path]/Insights-Proliferation-of-APIs-Attacks_1200x627.jpeg"
 						}
 					},
-					"facebookCustomImage": {
-						"file": {
-							"publicURL": "[path]/Insights-Proliferation-of-APIs-Attacks_1200x627.jpeg"
-						}
-					}
+					"facebookCustomImage": null
 				},
 				"contentfulId": "6nxL1wmVGt5JhAdFjbLdhq",
 				"contentTypeId": "page",
@@ -96,11 +88,55 @@
 				"template": null,
 				"relatedBlades": [
 					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "3PfSgR6RxFckxj30JU8UNT",
+						"htmlContent": "<div style=\"background-image: url('https://cf-assets.www.cloudflare.com/slt3lc6tev37/1xVWaU0z4UWtUwTJbifZD6/dccd28d0caf1c430bda8f0f1bdc05874/BDES-4015_WebBanner-3.jpg'); width: 1440px; height: 160px; background-repeat:no-repeat; border: none;\"></div>",
+						"htmlId": "theNET - Banner"
+					},
+					{
+						"contentTypeId": "bladeSubNav",
+						"contentfulId": "5fUM79oSsUQ1cUMWH8P7Tk",
+						"menuTitle": null,
+						"mobileOnlyMenuTitle": null,
+						"stickyNav": true,
+						"htmlId": null,
+						"menuItems": [
+							{
+								"contentfulId": "47EwwmWt0CCFcuqAZUftaG",
+								"linkText": "Home",
+								"page": null,
+								"url": null,
+								"subMenuItems": null
+							},
+							{
+								"contentfulId": "7LNNODSrYzwQwTpSlaZApk",
+								"linkText": "Security Innovation",
+								"page": null,
+								"url": "the-net/security-innovation",
+								"subMenuItems": null
+							},
+							{
+								"contentfulId": "2nQtjONwi1cwO4A4T23UUu",
+								"linkText": "Threat Landscape",
+								"page": null,
+								"url": "the-net/threat-landscape",
+								"subMenuItems": null
+							},
+							{
+								"contentfulId": "34jem3vrtHbaxaRx8tZZqC",
+								"linkText": "Future Internet",
+								"page": null,
+								"url": "the-net/future-internet",
+								"subMenuItems": null
+							}
+						]
+					},
+					{
 						"contentTypeId": "bladeRichTextColumnGroup",
 						"contentfulId": "6B9xpPAxeFYsqlemjIyPZh",
 						"htmlId": null,
 						"mainHeadline": null,
-						"backgroundColor": "white",
+						"backgroundColor": "light-blue",
 						"bladeBorder": "none",
 						"sectionPadding": "tile--no-bottom-padding",
 						"columnLayout": "Two Thirds & One Third",
@@ -208,7 +244,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "The rapid growth of APIs has led to significant security risks for the enterprise",
+													"value": "Rapid growth of APIs has led to security risks",
 													"marks": [],
 													"content": null
 												}
@@ -350,6 +386,27 @@
 											"content": []
 										},
 										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
 											"nodeType": "heading-2",
 											"data": {
 												"target": null,
@@ -364,7 +421,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "The rise of APIs led to API-first development",
+													"value": "The rise of API-first development",
 													"marks": [],
 													"content": null
 												}
@@ -525,6 +582,27 @@
 											"value": null,
 											"marks": null,
 											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
 										},
 										{
 											"nodeType": "heading-2",
@@ -891,6 +969,27 @@
 											"content": []
 										},
 										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
 											"nodeType": "heading-2",
 											"data": {
 												"target": null,
@@ -941,6 +1040,27 @@
 											"value": null,
 											"marks": null,
 											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
 										},
 										{
 											"nodeType": "heading-2",
@@ -1087,6 +1207,27 @@
 											"value": null,
 											"marks": null,
 											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
 										},
 										{
 											"nodeType": "heading-2",
@@ -1438,6 +1579,9 @@
 													"marks": [
 														{
 															"type": "italic"
+														},
+														{
+															"type": "bold"
 														}
 													],
 													"content": null
@@ -1455,7 +1599,38 @@
 									"nodeType": "document",
 									"content": [
 										{
-											"nodeType": "heading-4",
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-5",
 											"data": {
 												"target": null,
 												"uri": null
@@ -1529,7 +1704,31 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "The rate of growth in API use",
+																	"value": "The ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "rate of growth",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " in API use",
 																	"marks": [],
 																	"content": null
 																}
@@ -1561,8 +1760,22 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "How the attack surface area expands with APIs",
+																	"value": "How the attack surface area ",
 																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "expands with APIs",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
 																	"content": null
 																}
 															]
@@ -1593,8 +1806,22 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "Strategies to thwart this risk",
+																	"value": "Strategies to ",
 																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "thwart this risk",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
 																	"content": null
 																}
 															]
@@ -1625,8 +1852,22 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "The benefits of an integrated platform",
+																	"value": "The benefits of an ",
 																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "integrated platform",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
 																	"content": null
 																}
 															]
@@ -1634,6 +1875,16 @@
 													]
 												}
 											]
+										},
+										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
 										},
 										{
 											"nodeType": "paragraph",
@@ -1657,7 +1908,7 @@
 											]
 										},
 										{
-											"nodeType": "heading-6",
+											"nodeType": "heading-5",
 											"data": {
 												"target": null,
 												"uri": null
@@ -1671,7 +1922,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "RELATED RESOURCES",
+													"value": "Related resources",
 													"marks": [
 														{
 															"type": "bold"
@@ -1680,16 +1931,6 @@
 													"content": null
 												}
 											]
-										},
-										{
-											"nodeType": "hr",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": []
 										},
 										{
 											"nodeType": "unordered-list",
@@ -1955,6 +2196,16 @@
 											]
 										},
 										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
 											"nodeType": "paragraph",
 											"data": {
 												"target": null,
@@ -1987,7 +2238,7 @@
 						"mainHeadline": null,
 						"backgroundColor": "light-blue",
 						"bladeBorder": "none",
-						"sectionPadding": null,
+						"sectionPadding": "tile--no-top-padding",
 						"columnLayout": "Two Thirds & One Third",
 						"columns": [
 							{
@@ -1997,6 +2248,37 @@
 								"column": {
 									"nodeType": "document",
 									"content": [
+										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
 										{
 											"nodeType": "heading-2",
 											"data": {
@@ -2012,7 +2294,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Dive deeper into this topic",
+													"value": "Dive deeper into this topic.",
 													"marks": [],
 													"content": null
 												}

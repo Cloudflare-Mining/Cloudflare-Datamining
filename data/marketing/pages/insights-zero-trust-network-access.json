@@ -4,7 +4,7 @@
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "Insights - Zero Trust Network Access",
+				"pageName": "theNET - The rise of Zero Trust Network Access - Page",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "English for Locale",
@@ -32,27 +32,19 @@
 				},
 				"relativePath": "insights-zero-trust-network-access",
 				"topNavOptions": "default",
-				"topNavButtonText": "Get in Touch",
-				"topNavButtonUrl": "https://www.cloudflare.com/lp/overview-x/",
+				"topNavButtonText": null,
+				"topNavButtonUrl": null,
 				"footerOptions": "default",
 				"metaTags": {
-					"metaTitle": "Zero Trust Network Access",
+					"metaTitle": "The rise of Zero Trust Network Access",
 					"metaDescription": "In this article, we discuss the pitfalls of corporate VPN and how Zero Trust has taken its place.",
-					"twitterCustomImage": {
-						"file": {
-							"publicURL": "[path]/Work-From-Home-2_1920x1080__1_.png"
-						}
-					},
+					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
 							"publicURL": "[path]/Work-From-Home-2_1920x1080__1_.png"
 						}
 					},
-					"facebookCustomImage": {
-						"file": {
-							"publicURL": "[path]/Work-From-Home-2_1920x1080__1_.png"
-						}
-					}
+					"facebookCustomImage": null
 				},
 				"contentfulId": "48jhNLrKK8sxkChO76mFKr",
 				"contentTypeId": "page",
@@ -100,7 +92,7 @@
 						"contentfulId": "7j2iOhksntEK0OrfA4G5H",
 						"htmlId": null,
 						"mainHeadline": null,
-						"backgroundColor": "white",
+						"backgroundColor": "light-blue",
 						"bladeBorder": "none",
 						"sectionPadding": "tile--no-bottom-padding",
 						"columnLayout": "Two Thirds & One Third",
@@ -134,7 +126,7 @@
 											]
 										},
 										{
-											"nodeType": "heading-2",
+											"nodeType": "heading-5",
 											"data": {
 												"target": null,
 												"uri": null
@@ -188,7 +180,7 @@
 														{
 															"contentfulId": "2btnTNrvcescXIg51NjdjB",
 															"locale": "en-US",
-															"title": "Work From Home Image - 1920x1080",
+															"title": "theNET - The rise of Zero Trust Network Access - Meta - Image",
 															"file": {
 																"name": "Work-From-Home-2_1920x1080__1_",
 																"publicURL": "[path]/Work-From-Home-2_1920x1080__1_.png",
@@ -424,6 +416,27 @@
 											"content": []
 										},
 										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
 											"nodeType": "heading-3",
 											"data": {
 												"target": null,
@@ -438,7 +451,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Zero Trust Approach",
+													"value": "Zero Trust approach",
 													"marks": [],
 													"content": null
 												}
@@ -588,6 +601,9 @@
 													"marks": [
 														{
 															"type": "italic"
+														},
+														{
+															"type": "bold"
 														}
 													],
 													"content": null
@@ -605,7 +621,17 @@
 									"nodeType": "document",
 									"content": [
 										{
-											"nodeType": "heading-4",
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "heading-5",
 											"data": {
 												"target": null,
 												"uri": null
@@ -679,7 +705,31 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "The pitfalls of traditional VPN technology",
+																	"value": "The ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "pitfalls of traditional VPN",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " technology",
 																	"marks": [],
 																	"content": null
 																}
@@ -711,8 +761,22 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "How Zero Trust has changed the security standard",
+																	"value": "How Zero Trust has ",
 																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "changed the security standard",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
 																	"content": null
 																}
 															]
@@ -743,8 +807,22 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "The benefits of implementing a global cloud network",
+																	"value": "The benefits of implementing a ",
 																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "global cloud network",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
 																	"content": null
 																}
 															]
@@ -752,6 +830,16 @@
 													]
 												}
 											]
+										},
+										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
 										},
 										{
 											"nodeType": "paragraph",
@@ -775,7 +863,7 @@
 											]
 										},
 										{
-											"nodeType": "heading-6",
+											"nodeType": "heading-5",
 											"data": {
 												"target": null,
 												"uri": null
@@ -789,7 +877,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "RELATED RESOURCES",
+													"value": "Related resources",
 													"marks": [
 														{
 															"type": "bold"
@@ -798,16 +886,6 @@
 													"content": null
 												}
 											]
-										},
-										{
-											"nodeType": "hr",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": []
 										},
 										{
 											"nodeType": "unordered-list",
@@ -1073,6 +1151,16 @@
 											]
 										},
 										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
 											"nodeType": "paragraph",
 											"data": {
 												"target": null,
@@ -1105,7 +1193,7 @@
 						"mainHeadline": null,
 						"backgroundColor": "light-blue",
 						"bladeBorder": "none",
-						"sectionPadding": null,
+						"sectionPadding": "tile--no-top-padding",
 						"columnLayout": "Two Thirds & One Third",
 						"columns": [
 							{
@@ -1115,6 +1203,37 @@
 								"column": {
 									"nodeType": "document",
 									"content": [
+										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
 										{
 											"nodeType": "heading-2",
 											"data": {
@@ -1130,7 +1249,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Dive deeper into this topic",
+													"value": "Dive deeper into this topic.",
 													"marks": [],
 													"content": null
 												}
