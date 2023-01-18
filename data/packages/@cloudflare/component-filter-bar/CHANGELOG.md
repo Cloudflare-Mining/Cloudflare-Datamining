@@ -1,5 +1,11 @@
 # Change Log
 
+## 4.6.0
+
+### Minor Changes
+
+- 84ef942478: Bump cf.datasets version to include PKX colo
+
 ## 4.5.0
 
 ### Minor Changes
