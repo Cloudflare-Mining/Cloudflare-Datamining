@@ -4,7 +4,7 @@
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "Insights - Future of Web Application Security",
+				"pageName": "theNET - The future of web application security - Page",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "English for Locale",
@@ -32,27 +32,19 @@
 				},
 				"relativePath": "insights-future-web-security",
 				"topNavOptions": "default",
-				"topNavButtonText": "Get in touch",
-				"topNavButtonUrl": "/lp/overview-x/",
+				"topNavButtonText": null,
+				"topNavButtonUrl": null,
 				"footerOptions": "default",
 				"metaTags": {
 					"metaTitle": "The future of web application security",
 					"metaDescription": "As new vectors emerge and attacks increase in frequency and sophistication, organizations need a robust, integrated web application security platform.",
-					"twitterCustomImage": {
-						"file": {
-							"publicURL": "[path]/Insights-Future-Web-Application-Security.png"
-						}
-					},
+					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
 							"publicURL": "[path]/Insights-Future-Web-Application-Security.png"
 						}
 					},
-					"facebookCustomImage": {
-						"file": {
-							"publicURL": "[path]/Insights-Future-Web-Application-Security.png"
-						}
-					}
+					"facebookCustomImage": null
 				},
 				"contentfulId": "KkIbk4zcRs10lH3o0sMx2",
 				"contentTypeId": "page",
@@ -96,11 +88,55 @@
 				"template": null,
 				"relatedBlades": [
 					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "3PfSgR6RxFckxj30JU8UNT",
+						"htmlContent": "<div style=\"background-image: url('https://cf-assets.www.cloudflare.com/slt3lc6tev37/3XUF2wHzJgUoVCRmPoDRS2/056c62625e56243389310498165d121a/BDES-4015_WebBanner-4.jpg'); width: 1440px; height: 160px; background-repeat:no-repeat; border: none;\"></div>",
+						"htmlId": "theNET - Banner"
+					},
+					{
+						"contentTypeId": "bladeSubNav",
+						"contentfulId": "5fUM79oSsUQ1cUMWH8P7Tk",
+						"menuTitle": null,
+						"mobileOnlyMenuTitle": null,
+						"stickyNav": true,
+						"htmlId": null,
+						"menuItems": [
+							{
+								"contentfulId": "47EwwmWt0CCFcuqAZUftaG",
+								"linkText": "Home",
+								"page": null,
+								"url": null,
+								"subMenuItems": null
+							},
+							{
+								"contentfulId": "7LNNODSrYzwQwTpSlaZApk",
+								"linkText": "Security Innovation",
+								"page": null,
+								"url": "the-net/security-innovation",
+								"subMenuItems": null
+							},
+							{
+								"contentfulId": "2nQtjONwi1cwO4A4T23UUu",
+								"linkText": "Threat Landscape",
+								"page": null,
+								"url": "the-net/threat-landscape",
+								"subMenuItems": null
+							},
+							{
+								"contentfulId": "34jem3vrtHbaxaRx8tZZqC",
+								"linkText": "Future Internet",
+								"page": null,
+								"url": "the-net/future-internet",
+								"subMenuItems": null
+							}
+						]
+					},
+					{
 						"contentTypeId": "bladeRichTextColumnGroup",
 						"contentfulId": "DWypGQfgiwT0sRxffvMxj",
 						"htmlId": null,
 						"mainHeadline": null,
-						"backgroundColor": "white",
+						"backgroundColor": "light-blue",
 						"bladeBorder": "none",
 						"sectionPadding": "tile--no-bottom-padding",
 						"columnLayout": "Two Thirds & One Third",
@@ -134,7 +170,7 @@
 											]
 										},
 										{
-											"nodeType": "heading-4",
+											"nodeType": "heading-5",
 											"data": {
 												"target": null,
 												"uri": null
@@ -167,7 +203,7 @@
 														{
 															"contentfulId": "5OaJRyZ56T4eyNP7tbRtsy",
 															"locale": "en-US",
-															"title": "Asset - Insights - Future of Web Application Security - Image",
+															"title": "theNET - The future of web application security - Meta - Image",
 															"file": {
 																"name": "Insights-Future-Web-Application-Security",
 																"publicURL": "[path]/Insights-Future-Web-Application-Security.png",
@@ -731,6 +767,27 @@
 											"content": []
 										},
 										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
 											"nodeType": "heading-3",
 											"data": {
 												"target": null,
@@ -967,6 +1024,27 @@
 											"value": null,
 											"marks": null,
 											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
 										},
 										{
 											"nodeType": "heading-3",
@@ -1264,6 +1342,27 @@
 											"content": []
 										},
 										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
 											"nodeType": "heading-3",
 											"data": {
 												"target": null,
@@ -1376,6 +1475,9 @@
 													"marks": [
 														{
 															"type": "italic"
+														},
+														{
+															"type": "bold"
 														}
 													],
 													"content": null
@@ -1393,7 +1495,38 @@
 									"nodeType": "document",
 									"content": [
 										{
-											"nodeType": "heading-4",
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-5",
 											"data": {
 												"target": null,
 												"uri": null
@@ -1467,7 +1600,21 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "Factors leading to surges in cyber attacks",
+																	"value": "Factors leading to surges",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " in cyber attacks",
 																	"marks": [],
 																	"content": null
 																}
@@ -1499,7 +1646,31 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "The 2 attack trends taking form",
+																	"value": "The ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "2 attack trends",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " taking form",
 																	"marks": [],
 																	"content": null
 																}
@@ -1531,7 +1702,31 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "Challenges of the traditional approach to web application security",
+																	"value": "Challenges of the ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "traditional approach",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " to web application security",
 																	"marks": [],
 																	"content": null
 																}
@@ -1563,8 +1758,22 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "Why Holistic Web Protection is the new standard",
+																	"value": "Why Holistic Web Protection is ",
 																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "the new standard",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
 																	"content": null
 																}
 															]
@@ -1572,6 +1781,16 @@
 													]
 												}
 											]
+										},
+										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
 										},
 										{
 											"nodeType": "paragraph",
@@ -1595,7 +1814,7 @@
 											]
 										},
 										{
-											"nodeType": "heading-6",
+											"nodeType": "heading-5",
 											"data": {
 												"target": null,
 												"uri": null
@@ -1609,7 +1828,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "RELATED RESOURCES",
+													"value": "Related resources",
 													"marks": [
 														{
 															"type": "bold"
@@ -1618,16 +1837,6 @@
 													"content": null
 												}
 											]
-										},
-										{
-											"nodeType": "hr",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": []
 										},
 										{
 											"nodeType": "unordered-list",
@@ -1893,6 +2102,16 @@
 											]
 										},
 										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
 											"nodeType": "paragraph",
 											"data": {
 												"target": null,
@@ -1925,7 +2144,7 @@
 						"mainHeadline": null,
 						"backgroundColor": "light-blue",
 						"bladeBorder": "none",
-						"sectionPadding": null,
+						"sectionPadding": "tile--no-top-padding",
 						"columnLayout": "Two Thirds & One Third",
 						"columns": [
 							{
@@ -1935,6 +2154,37 @@
 								"column": {
 									"nodeType": "document",
 									"content": [
+										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
 										{
 											"nodeType": "heading-2",
 											"data": {
@@ -1950,7 +2200,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Dive deeper into this topic",
+													"value": "Dive deeper into this topic.",
 													"marks": [],
 													"content": null
 												}
@@ -1979,7 +2229,7 @@
 													"nodeType": "hyperlink",
 													"data": {
 														"target": null,
-														"uri": "/lp/frost-radar-holistic-web/"
+														"uri": "https://www.cloudflare.com/lp/frost-radar-holistic-web/"
 													},
 													"value": null,
 													"marks": null,
@@ -1990,7 +2240,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "Frost Radar: Global Holistic Web Protection Market Report",
+															"value": "Frost Radar: Global Holistic Web Protection Market",
 															"marks": [],
 															"content": null
 														}
@@ -2002,7 +2252,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": ".",
+													"value": "-web/ Report.",
 													"marks": [],
 													"content": null
 												}

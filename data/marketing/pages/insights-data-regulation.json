@@ -4,7 +4,7 @@
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "Insights - Addressing the challenges of data regulation",
+				"pageName": "theNET - Addressing the challenges of data regulation - Page",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "English for Locale",
@@ -32,27 +32,15 @@
 				},
 				"relativePath": "insights-data-regulation",
 				"topNavOptions": "default",
-				"topNavButtonText": "Get in touch",
-				"topNavButtonUrl": "/lp/overview-x/",
+				"topNavButtonText": null,
+				"topNavButtonUrl": null,
 				"footerOptions": "default",
 				"metaTags": {
 					"metaTitle": "Addressing the challenges of data regulation",
 					"metaDescription": "Well over 100 countries have passed a unique set of data regulation laws, each implementing their own framework for how data can cross their borders.",
-					"twitterCustomImage": {
-						"file": {
-							"publicURL": "[path]/1810_1200x627_Photo2.png"
-						}
-					},
-					"metaImage": {
-						"file": {
-							"publicURL": "[path]/1810_1200x627_Photo2.png"
-						}
-					},
-					"facebookCustomImage": {
-						"file": {
-							"publicURL": "[path]/1810_1200x627_Photo2.png"
-						}
-					}
+					"twitterCustomImage": null,
+					"metaImage": null,
+					"facebookCustomImage": null
 				},
 				"contentfulId": "67LsiqPl4E76Oa6x5tKc0H",
 				"contentTypeId": "page",
@@ -96,11 +84,55 @@
 				"template": null,
 				"relatedBlades": [
 					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "3PfSgR6RxFckxj30JU8UNT",
+						"htmlContent": "<div style=\"background-image: url('https://cf-assets.www.cloudflare.com/slt3lc6tev37/3XUF2wHzJgUoVCRmPoDRS2/056c62625e56243389310498165d121a/BDES-4015_WebBanner-4.jpg'); width: 1440px; height: 160px; background-repeat:no-repeat; border: none;\"></div>",
+						"htmlId": "theNET - Banner"
+					},
+					{
+						"contentTypeId": "bladeSubNav",
+						"contentfulId": "5fUM79oSsUQ1cUMWH8P7Tk",
+						"menuTitle": null,
+						"mobileOnlyMenuTitle": null,
+						"stickyNav": true,
+						"htmlId": null,
+						"menuItems": [
+							{
+								"contentfulId": "47EwwmWt0CCFcuqAZUftaG",
+								"linkText": "Home",
+								"page": null,
+								"url": null,
+								"subMenuItems": null
+							},
+							{
+								"contentfulId": "7LNNODSrYzwQwTpSlaZApk",
+								"linkText": "Security Innovation",
+								"page": null,
+								"url": "the-net/security-innovation",
+								"subMenuItems": null
+							},
+							{
+								"contentfulId": "2nQtjONwi1cwO4A4T23UUu",
+								"linkText": "Threat Landscape",
+								"page": null,
+								"url": "the-net/threat-landscape",
+								"subMenuItems": null
+							},
+							{
+								"contentfulId": "34jem3vrtHbaxaRx8tZZqC",
+								"linkText": "Future Internet",
+								"page": null,
+								"url": "the-net/future-internet",
+								"subMenuItems": null
+							}
+						]
+					},
+					{
 						"contentTypeId": "bladeRichTextColumnGroup",
 						"contentfulId": "7zIfxJUUFcZ3yNxKkjy9yM",
 						"htmlId": null,
 						"mainHeadline": null,
-						"backgroundColor": "white",
+						"backgroundColor": "light-blue",
 						"bladeBorder": "none",
 						"sectionPadding": "tile--no-bottom-padding",
 						"columnLayout": "Two Thirds & One Third",
@@ -142,20 +174,7 @@
 														"type": "Link",
 														"linkType": "Asset"
 													},
-													"related_asset": [
-														{
-															"contentfulId": "6Y6QWwtzR37z8y1JXSZyx4",
-															"locale": "en-US",
-															"title": "Insights - Addressing the challenges of data regulation - Asset Image",
-															"file": {
-																"name": "1810_1200x627_Photo2",
-																"publicURL": "[path]/1810_1200x627_Photo2.png",
-																"internal": {
-																	"mediaType": "image/png"
-																}
-															}
-														}
-													],
+													"related_asset": [],
 													"entry_elementMarkdown": [],
 													"entry_assetFile": [],
 													"entry_button": [],
@@ -421,6 +440,27 @@
 											"value": null,
 											"marks": null,
 											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
 										},
 										{
 											"nodeType": "heading-3",
@@ -900,16 +940,6 @@
 											]
 										},
 										{
-											"nodeType": "hr",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": []
-										},
-										{
 											"nodeType": "heading-4",
 											"data": {
 												"target": null,
@@ -1014,6 +1044,27 @@
 											"content": []
 										},
 										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
 											"nodeType": "heading-3",
 											"data": {
 												"target": null,
@@ -1054,16 +1105,6 @@
 													"content": null
 												}
 											]
-										},
-										{
-											"nodeType": "hr",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": []
 										},
 										{
 											"nodeType": "heading-4",
@@ -1147,6 +1188,27 @@
 											"value": null,
 											"marks": null,
 											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
 										},
 										{
 											"nodeType": "heading-3",
@@ -1241,16 +1303,6 @@
 													"content": null
 												}
 											]
-										},
-										{
-											"nodeType": "hr",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": []
 										},
 										{
 											"nodeType": "heading-4",
@@ -1470,6 +1522,27 @@
 											"content": []
 										},
 										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
 											"nodeType": "heading-3",
 											"data": {
 												"target": null,
@@ -1562,16 +1635,6 @@
 													"content": null
 												}
 											]
-										},
-										{
-											"nodeType": "hr",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": []
 										},
 										{
 											"nodeType": "heading-4",
@@ -1678,6 +1741,27 @@
 											"content": []
 										},
 										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
 											"nodeType": "heading-3",
 											"data": {
 												"target": null,
@@ -1780,6 +1864,27 @@
 											"value": null,
 											"marks": null,
 											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
 										},
 										{
 											"nodeType": "heading-3",
@@ -1946,6 +2051,9 @@
 													"marks": [
 														{
 															"type": "italic"
+														},
+														{
+															"type": "bold"
 														}
 													],
 													"content": null
@@ -1963,7 +2071,38 @@
 									"nodeType": "document",
 									"content": [
 										{
-											"nodeType": "heading-4",
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-5",
 											"data": {
 												"target": null,
 												"uri": null
@@ -2037,7 +2176,31 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "The complexities of data regulation",
+																	"value": "The ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "complexities",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " of data regulation",
 																	"marks": [],
 																	"content": null
 																}
@@ -2069,7 +2232,31 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "The 4 challenges data localization introduces",
+																	"value": "The ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "4 challenges data localization",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " introduces",
 																	"marks": [],
 																	"content": null
 																}
@@ -2101,7 +2288,21 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "How to solve for each of these challenges",
+																	"value": "How to solve",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " for each of these challenges",
 																	"marks": [],
 																	"content": null
 																}
@@ -2133,7 +2334,31 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "The benefits that edge computing can offer ",
+																	"value": "The benefits that ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "edge computing",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " can offer ",
 																	"marks": [],
 																	"content": null
 																}
@@ -2165,7 +2390,17 @@
 											]
 										},
 										{
-											"nodeType": "heading-6",
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
 											"data": {
 												"target": null,
 												"uri": null
@@ -2179,7 +2414,28 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "RELATED RESOURCES",
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-5",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Related resources",
 													"marks": [
 														{
 															"type": "bold"
@@ -2188,16 +2444,6 @@
 													"content": null
 												}
 											]
-										},
-										{
-											"nodeType": "hr",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": []
 										},
 										{
 											"nodeType": "unordered-list",
@@ -2463,6 +2709,16 @@
 											]
 										},
 										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
 											"nodeType": "paragraph",
 											"data": {
 												"target": null,
@@ -2495,7 +2751,7 @@
 						"mainHeadline": null,
 						"backgroundColor": "light-blue",
 						"bladeBorder": "none",
-						"sectionPadding": null,
+						"sectionPadding": "tile--no-top-padding",
 						"columnLayout": "Two Thirds & One Third",
 						"columns": [
 							{
@@ -2505,6 +2761,37 @@
 								"column": {
 									"nodeType": "document",
 									"content": [
+										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
 										{
 											"nodeType": "heading-2",
 											"data": {
@@ -2520,7 +2807,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Dive deeper into this topic",
+													"value": "Dive deeper into this topic.",
 													"marks": [],
 													"content": null
 												}
