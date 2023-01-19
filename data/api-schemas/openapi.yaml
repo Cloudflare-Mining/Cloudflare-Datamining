@@ -186,8 +186,7 @@ components:
           $ref: '#/components/schemas/ray_id'
         user_email:
           $ref: '#/components/schemas/CloudflareClientAPI_schemas-email'
-    CloudflareClientAPI_account_identifier:
-      $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+    CloudflareClientAPI_account_identifier: {}
     CloudflareClientAPI_action:
       type: string
       description: The billing item action.
@@ -548,10 +547,9 @@ components:
                 $ref: '#/components/schemas/dns-secondary-secondary-zone_components-schemas-identifier'
     CloudflareClientAPI_identifier:
       type: string
-      description: Identifier
-      example: 023e105f4ecef8ad9ca31a8372d0c353
+      description: Policy identifier.
+      example: f267e341f3dd4697bd3b9f71dd96247f
       readOnly: true
-      maxLength: 32
     CloudflareClientAPI_identity-providers:
       type: object
       properties:
