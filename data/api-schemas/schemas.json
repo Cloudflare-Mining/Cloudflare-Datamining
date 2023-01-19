@@ -278,7 +278,9 @@
 				},
 				"type": "object"
 			},
-			"CloudflareClientAPI_account_identifier": {},
+			"CloudflareClientAPI_account_identifier": {
+				"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
+			},
 			"CloudflareClientAPI_action": {
 				"description": "The billing item action.",
 				"example": "subscription",
@@ -848,8 +850,9 @@
 				]
 			},
 			"CloudflareClientAPI_identifier": {
-				"description": "Policy identifier.",
-				"example": "f267e341f3dd4697bd3b9f71dd96247f",
+				"description": "Identifier",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
 				"readOnly": true,
 				"type": "string"
 			},
@@ -2787,7 +2790,11 @@
 				]
 			},
 			"account_identifier": {
-				"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
+				"description": "The account identifier tag.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"readOnly": true,
+				"type": "string"
 			},
 			"account_subscription_response_collection": {
 				"allOf": [
@@ -7125,13 +7132,6 @@
 				"description": "The date and time the clip was created.",
 				"example": "2014-01-02T02:20:00Z",
 				"format": "date-time",
-				"readOnly": true,
-				"type": "string"
-			},
-			"cloudflare-stream-client-api_account_identifier": {
-				"description": "The account identifier tag.",
-				"example": "023e105f4ecef8ad9ca31a8372d0c353",
-				"maxLength": 32,
 				"readOnly": true,
 				"type": "string"
 			},
@@ -79039,7 +79039,7 @@
 																},
 																"type": "array"
 															},
-															"asns_details": {
+															"asnsDetails": {
 																"items": {
 																	"properties": {
 																		"asn": {
@@ -79104,10 +79104,10 @@
 																},
 																"type": "array"
 															},
-															"locations_details": {
+															"locationsDetails": {
 																"items": {
 																	"properties": {
-																		"asn": {
+																		"code": {
 																			"example": "US",
 																			"type": "string"
 																		},
@@ -79117,7 +79117,7 @@
 																		}
 																	},
 																	"required": [
-																		"asn",
+																		"code",
 																		"name"
 																	],
 																	"type": "object"
@@ -79152,16 +79152,12 @@
 														},
 														"required": [
 															"dataSource",
-															"description",
-															"scope",
 															"startDate",
-															"endDate",
 															"asns",
-															"asns_details",
+															"asnsDetails",
 															"locations",
-															"locations_details",
+															"locationsDetails",
 															"eventType",
-															"linkedUrl",
 															"outage"
 														],
 														"type": "object"
@@ -79862,7 +79858,7 @@
 													],
 													"type": "object"
 												},
-												"series": {
+												"serie_0": {
 													"properties": {
 														"timestamps": {
 															"items": {
@@ -79889,7 +79885,7 @@
 											},
 											"required": [
 												"meta",
-												"series"
+												"serie_0"
 											],
 											"type": "object"
 										},
@@ -80181,7 +80177,7 @@
 															},
 															"type": "array"
 														},
-														"timeseries": {
+														"timestamps": {
 															"items": {
 																"type": "string"
 															},
@@ -80196,7 +80192,7 @@
 														}
 													},
 													"required": [
-														"timeseries",
+														"timestamps",
 														"udp",
 														"tcp",
 														"gre",
@@ -80454,28 +80450,43 @@
 												},
 												"summary_0": {
 													"properties": {
-														"gre": {
-															"example": "0.1",
-															"type": "string"
-														},
-														"icmp": {
+														"access_rules": {
 															"example": "0.9",
 															"type": "string"
 														},
-														"tcp": {
-															"example": "65",
+														"api_shield": {
+															"example": "0.9",
 															"type": "string"
 														},
-														"udp": {
+														"bot_management": {
+															"example": "0.9",
+															"type": "string"
+														},
+														"data_loss_prevention": {
+															"example": "0.9",
+															"type": "string"
+														},
+														"ddos": {
 															"example": "34",
+															"type": "string"
+														},
+														"ip_reputation": {
+															"example": "0.1",
+															"type": "string"
+														},
+														"waf": {
+															"example": "65",
 															"type": "string"
 														}
 													},
 													"required": [
-														"tcp",
-														"udp",
-														"gre",
-														"icmp"
+														"waf",
+														"ddos",
+														"ip_reputation",
+														"access_rules",
+														"bot_management",
+														"api_shield",
+														"data_loss_prevention"
 													],
 													"type": "object"
 												}
@@ -80783,7 +80794,7 @@
 													],
 													"type": "object"
 												},
-												"series": {
+												"serie_0": {
 													"properties": {
 														"timestamps": {
 															"items": {
@@ -80810,7 +80821,7 @@
 											},
 											"required": [
 												"meta",
-												"series"
+												"serie_0"
 											],
 											"type": "object"
 										},
@@ -81081,28 +81092,49 @@
 												},
 												"serie_0": {
 													"properties": {
-														"gre": {
+														"access_rules": {
 															"items": {
 																"example": "5",
 																"type": "string"
 															},
 															"type": "array"
 														},
-														"icmp": {
+														"api_shield": {
 															"items": {
 																"example": "5",
 																"type": "string"
 															},
 															"type": "array"
 														},
-														"tcp": {
+														"bot_management": {
+															"items": {
+																"example": "5",
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"data_loss_prevention": {
+															"items": {
+																"example": "5",
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"ddos": {
 															"items": {
 																"example": "60",
 																"type": "string"
 															},
 															"type": "array"
 														},
-														"timeseries": {
+														"ip_reputation": {
+															"items": {
+																"example": "5",
+																"type": "string"
+															},
+															"type": "array"
+														},
+														"timestamps": {
 															"items": {
 																"example": "2022-09-15T00:00:00Z",
 																"format": "date-time",
@@ -81110,7 +81142,7 @@
 															},
 															"type": "array"
 														},
-														"udp": {
+														"waf": {
 															"items": {
 																"example": "30",
 																"type": "string"
@@ -81119,11 +81151,14 @@
 														}
 													},
 													"required": [
-														"timeseries",
-														"udp",
-														"tcp",
-														"gre",
-														"icmp"
+														"timestamps",
+														"waf",
+														"ddos",
+														"ip_reputation",
+														"access_rules",
+														"bot_management",
+														"api_shield",
+														"data_loss_prevention"
 													],
 													"type": "object"
 												}
@@ -81302,8 +81337,8 @@
 																"type": "string"
 															},
 															"rank": {
-																"example": "1",
-																"type": "string"
+																"example": 1,
+																"type": "integer"
 															},
 															"value": {
 																"example": "0.73996",
@@ -81529,8 +81564,8 @@
 																"type": "string"
 															},
 															"rank": {
-																"example": "1",
-																"type": "string"
+																"example": 1,
+																"type": "integer"
 															},
 															"targetCountryAlpha2": {
 																"example": "PT",
@@ -81731,8 +81766,8 @@
 																"type": "string"
 															},
 															"rank": {
-																"example": "1",
-																"type": "string"
+																"example": 1,
+																"type": "integer"
 															},
 															"value": {
 																"example": "0.73996",
@@ -81896,14 +81931,14 @@
 							"application/json": {
 								"schema": {
 									"properties": {
-										"data": {
+										"result": {
 											"properties": {
 												"top_0": {
 													"items": {
 														"properties": {
 															"rank": {
-																"example": "1",
-																"type": "string"
+																"example": 1,
+																"type": "integer"
 															},
 															"targetCountryAlpha2": {
 																"example": "US",
@@ -81933,10 +81968,15 @@
 												"top_0"
 											],
 											"type": "object"
+										},
+										"success": {
+											"example": true,
+											"type": "boolean"
 										}
 									},
 									"required": [
-										"data"
+										"result",
+										"success"
 									],
 									"type": "object"
 								}
@@ -82077,97 +82117,89 @@
 									"properties": {
 										"result": {
 											"properties": {
-												"data": {
-													"properties": {
-														"asn_info": {
-															"items": {
-																"properties": {
-																	"asn": {
-																		"type": "integer"
-																	},
-																	"org_name": {
-																		"type": "string"
-																	}
-																},
-																"required": [
-																	"asn",
-																	"org_name"
-																],
-																"type": "object"
+												"asn_info": {
+													"items": {
+														"properties": {
+															"asn": {
+																"type": "integer"
 															},
-															"type": "array"
+															"org_name": {
+																"type": "string"
+															}
 														},
-														"events": {
-															"items": {
-																"properties": {
-																	"detected_ts": {
-																		"type": "string"
-																	},
-																	"finished": {
-																		"type": "boolean"
-																	},
-																	"id": {
-																		"type": "integer"
-																	},
-																	"leak_asn": {
-																		"type": "integer"
-																	},
-																	"leak_count": {
-																		"type": "integer"
-																	},
-																	"leak_seg": {
-																		"items": {
-																			"type": "integer"
-																		},
-																		"type": "array"
-																	},
-																	"leak_type": {
-																		"type": "integer"
-																	},
-																	"max_ts": {
-																		"type": "string"
-																	},
-																	"min_ts": {
-																		"type": "string"
-																	},
-																	"origin_count": {
-																		"type": "integer"
-																	},
-																	"peer_count": {
-																		"type": "integer"
-																	},
-																	"prefix_count": {
-																		"type": "integer"
-																	}
-																},
-																"required": [
-																	"detected_ts",
-																	"finished",
-																	"id",
-																	"leak_asn",
-																	"leak_count",
-																	"leak_seg",
-																	"leak_type",
-																	"max_ts",
-																	"min_ts",
-																	"origin_count",
-																	"peer_count",
-																	"prefix_count"
-																],
-																"type": "object"
-															},
-															"type": "array"
-														}
+														"required": [
+															"asn",
+															"org_name"
+														],
+														"type": "object"
 													},
-													"required": [
-														"asn_info",
-														"events"
-													],
-													"type": "object"
+													"type": "array"
+												},
+												"events": {
+													"items": {
+														"properties": {
+															"detected_ts": {
+																"type": "string"
+															},
+															"finished": {
+																"type": "boolean"
+															},
+															"id": {
+																"type": "integer"
+															},
+															"leak_asn": {
+																"type": "integer"
+															},
+															"leak_count": {
+																"type": "integer"
+															},
+															"leak_seg": {
+																"items": {
+																	"type": "integer"
+																},
+																"type": "array"
+															},
+															"leak_type": {
+																"type": "integer"
+															},
+															"max_ts": {
+																"type": "string"
+															},
+															"min_ts": {
+																"type": "string"
+															},
+															"origin_count": {
+																"type": "integer"
+															},
+															"peer_count": {
+																"type": "integer"
+															},
+															"prefix_count": {
+																"type": "integer"
+															}
+														},
+														"required": [
+															"detected_ts",
+															"finished",
+															"id",
+															"leak_asn",
+															"leak_count",
+															"leak_seg",
+															"leak_type",
+															"max_ts",
+															"min_ts",
+															"origin_count",
+															"peer_count",
+															"prefix_count"
+														],
+														"type": "object"
+													},
+													"type": "array"
 												}
 											},
 											"required": [
-												"data"
+												"asn_info",
+												"events"
 											],
 											"type": "object"
 										},
@@ -82472,7 +82504,7 @@
 													],
 													"type": "object"
 												},
-												"series": {
+												"serie_0": {
 													"properties": {
 														"timestamps": {
 															"items": {
@@ -82499,7 +82531,7 @@
 											},
 											"required": [
 												"meta",
-												"series"
+												"serie_0"
 											],
 											"type": "object"
 										},
@@ -82724,8 +82756,8 @@
 																"type": "string"
 															},
 															"asn": {
-																"example": "714",
-																"type": "string"
+																"example": 714,
+																"type": "integer"
 															},
 															"value": {
 																"description": "Percentage of updates by this AS out of the total updates by all autonomous systems.",
@@ -83544,8 +83576,8 @@
 													"items": {
 														"properties": {
 															"clientASN": {
-																"example": "174",
-																"type": "string"
+																"example": 174,
+																"type": "integer"
 															},
 															"clientASName": {
 																"example": "Cogent-174",
@@ -83997,56 +84029,69 @@
 							"application/json": {
 								"schema": {
 									"properties": {
-										"ases": {
-											"items": {
-												"properties": {
-													"aka": {
-														"type": "string"
+										"result": {
+											"properties": {
+												"asns": {
+													"items": {
+														"properties": {
+															"aka": {
+																"type": "string"
+															},
+															"asn": {
+																"example": 714,
+																"type": "integer"
+															},
+															"country": {
+																"example": "GB",
+																"type": "string"
+															},
+															"countryName": {
+																"example": "United Kingdom",
+																"type": "string"
+															},
+															"name": {
+																"example": "Apple Inc.",
+																"type": "string"
+															},
+															"nameLong": {
+																"type": "string"
+															},
+															"orgName": {
+																"type": "string"
+															},
+															"website": {
+																"example": "https://www.apple.com/support/systemstatus/",
+																"type": "string"
+															}
+														},
+														"required": [
+															"name",
+															"nameLong",
+															"aka",
+															"asn",
+															"website",
+															"country",
+															"countryName",
+															"orgName"
+														],
+														"type": "object"
 													},
-													"asn": {
-														"example": 714,
-														"type": "integer"
-													},
-													"country": {
-														"example": "GB",
-														"type": "string"
-													},
-													"countryName": {
-														"example": "United Kingdom",
-														"type": "string"
-													},
-													"name": {
-														"example": "Apple Inc.",
-														"type": "string"
-													},
-													"nameLong": {
-														"type": "string"
-													},
-													"orgName": {
-														"type": "string"
-													},
-													"website": {
-														"example": "https://www.apple.com/support/systemstatus/",
-														"type": "string"
-													}
-												},
-												"required": [
-													"name",
-													"nameLong",
-													"aka",
-													"asn",
-													"website",
-													"country",
-													"countryName",
-													"orgName"
-												],
-												"type": "object"
+													"type": "array"
+												}
 											},
-											"type": "array"
+											"required": [
+												"asns"
+											],
+											"type": "object"
+										},
+										"success": {
+											"example": true,
+											"type": "boolean"
 										}
 									},
 									"required": [
-										"ases"
+										"result",
+										"success"
 									],
 									"type": "object"
 								}
@@ -84169,7 +84214,6 @@
 																}
 															},
 															"required": [
-																"estimatedUsers",
 																"locations"
 															],
 															"type": "object"
@@ -84205,8 +84249,7 @@
 																"required": [
 																	"name",
 																	"aka",
-																	"asn",
-																	"estimatedUsers"
+																	"asn"
 																],
 																"type": "object"
 															},
@@ -84391,7 +84434,6 @@
 																}
 															},
 															"required": [
-																"estimatedUsers",
 																"locations"
 															],
 															"type": "object"
@@ -84430,8 +84472,7 @@
 																"required": [
 																	"name",
 																	"aka",
-																	"asn",
-																	"estimatedUsers"
+																	"asn"
 																],
 																"type": "object"
 															},
@@ -84703,7 +84744,7 @@
 															"example": "AF",
 															"type": "string"
 														},
-														"confidenceLvel": {
+														"confidenceLevel": {
 															"example": 5,
 															"type": "integer"
 														},
@@ -84735,7 +84776,7 @@
 														"latitude",
 														"longitude",
 														"alpha2",
-														"confidenceLvel"
+														"confidenceLevel"
 													],
 													"type": "object"
 												}
@@ -88727,8 +88768,8 @@
 													"items": {
 														"properties": {
 															"clientASN": {
-																"example": "3243",
-																"type": "string"
+																"example": 3243,
+																"type": "integer"
 															},
 															"clientASName": {
 																"example": "MEO",
@@ -89050,8 +89091,8 @@
 													"items": {
 														"properties": {
 															"clientASN": {
-																"example": "3243",
-																"type": "string"
+																"example": 3243,
+																"type": "integer"
 															},
 															"clientASName": {
 																"example": "MEO",
@@ -89373,8 +89414,8 @@
 													"items": {
 														"properties": {
 															"clientASN": {
-																"example": "3243",
-																"type": "string"
+																"example": 3243,
+																"type": "integer"
 															},
 															"clientASName": {
 																"example": "MEO",
@@ -89711,8 +89752,8 @@
 													"items": {
 														"properties": {
 															"clientASN": {
-																"example": "3243",
-																"type": "string"
+																"example": 3243,
+																"type": "integer"
 															},
 															"clientASName": {
 																"example": "MEO",
@@ -90050,8 +90091,8 @@
 													"items": {
 														"properties": {
 															"clientASN": {
-																"example": "3243",
-																"type": "string"
+																"example": 3243,
+																"type": "integer"
 															},
 															"clientASName": {
 																"example": "MEO",
@@ -90388,8 +90429,8 @@
 													"items": {
 														"properties": {
 															"clientASN": {
-																"example": "3243",
-																"type": "string"
+																"example": 3243,
+																"type": "integer"
 															},
 															"clientASName": {
 																"example": "MEO",
@@ -90730,8 +90771,8 @@
 													"items": {
 														"properties": {
 															"clientASN": {
-																"example": "3243",
-																"type": "string"
+																"example": 3243,
+																"type": "integer"
 															},
 															"clientASName": {
 																"example": "MEO",
@@ -91071,8 +91112,8 @@
 													"items": {
 														"properties": {
 															"clientASN": {
-																"example": "3243",
-																"type": "string"
+																"example": 3243,
+																"type": "integer"
 															},
 															"clientASName": {
 																"example": "MEO",
@@ -94715,7 +94756,7 @@
 													],
 													"type": "object"
 												},
-												"series": {
+												"serie_0": {
 													"properties": {
 														"timestamps": {
 															"items": {
@@ -94742,7 +94783,7 @@
 											},
 											"required": [
 												"meta",
-												"series"
+												"serie_0"
 											],
 											"type": "object"
 										},
