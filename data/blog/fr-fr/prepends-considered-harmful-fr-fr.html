@@ -1,0 +1,169 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image7-9.png" class="kg-image"></figure>
+	<p>Internet, dans sa forme la plus littérale est un schéma de réseaux indépendants souplement connectés (également appelés <a href="https://www.cloudflare.com/en-gb/learning/network-layer/what-is-an-autonomous-system/" target="_blank">Systèmes autonomes</a> (AS)). Ces réseaux utilisent un protocole de signalisation appelé <a href="https://www.cloudflare.com/fr-fr/learning/security/glossary/what-is-bgp/" target="_blank">BGP</a> (Border Gateway Protocol) pour informer leurs voisins (également connus comme les pairs) de l'accessibilité de préfixes IP (correspondant à un groupe d'adresses IP) à destination et au sein de leur réseau. Une partie de cet échange contient des métadonnées utiles concernant le préfixe IP qui est utilisé pour informer les décisions de routage du réseau. Ces métadonnées peuvent être par exemple l'attribut AS-path complet qui correspond aux différents systèmes autonomes qu'un paquet IP doit traverser pour atteindre sa destination.</p>
+	<p>Tout le monde souhaite que ses paquets arrivent à destination le plus rapidement possible, le plus judicieux est donc de sélectionner un attribut AS-path le plus cours possible pour un préfixe donné. C'est là que l'ajout de préfixe entre en jeu.</p>
+	<h2 id="le-routage-sur-internet-c-est-la-base">Le routage sur Internet, c'est la base</h2>
+	<p>Évoquons rapidement le fonctionnement d'Internet à son niveau le plus fondamental avant d'entrer dans les détails techniques.</p>
+	<p>Internet est essentiellement un gigantesque réseau interconnecté de milliers de réseaux. Chaque réseau étant caractérisé par deux éléments essentiels :</p>
+	<p>1. Un numéro de système autonome (ASN) : un nombre entier de 32 bits qui identifie de manière unique un réseau. Par exemple, 13335 est un ASN de Cloudflare (nous en avons beaucoup).</p>
+	<p>2. Des préfixes IP : un préfixe IP correspond à une plage d'adresses IP, réunies en puissance de deux : dans un espace IPv4, deux adresses forment un préfixe /31, quatre forment un préfixe /30, et ainsi de suite jusqu'à /0, qui est un raccourci pour indiquer « tous les préfixes IPv4 ». IPv6 fonctionne de la même manière mais au lieu d'être limité à des regroupements de 32 bits, il permet d'aller jusqu'à 128 bits. La figure ci-dessous illustre les relations entre les préfixes IP, dans le sens inverse : un /24 contient deux /25 qui contient deux /26, etc.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image9-6.png" class="kg-image"></figure>
+	<p>Pour communiquer sur Internet, vous devez être en mesure d'atteindre votre destination, et c'est là qu'interviennent les protocoles de routage. Ils permettent à chaque nœud sur Internet de savoir où envoyer votre message (et au destinataire de renvoyer un message).</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image5-21.png" class="kg-image"></figure><!--kg-card-begin: markdown-->
+	<p>Comme nous l'avons mentionné précédemment, ces destinations sont identifiées par des adresses IP, et les plages contiguës d'adresses IP sont exprimées sous forme de préfixes IP. Nous utilisons les préfixes IP pour le routage par souci d'efficacité : il serait incroyablement complexe de garder une trace de la destination de quatre milliards (2<sup>32</sup>) d'adresses IP dans IPv4 et cela nécessiterait beaucoup de ressources. S'en tenir aux préfixes permet de limiter ce nombre à environ un million.</p>
+	<!--kg-card-end: markdown-->
+	<p>Maintenant, souvenez-vous que l'exécution et le contrôle des systèmes autonomes se font de manière indépendante. Dans le réseau de réseaux d'Internet, comment puis-je indiquer à la Source A d'un autre réseau qu'un chemin conduisant à la Destination (ou au travers) est disponible dans mon réseau ? Et voilà BGP ! Le protocole BGP (Border Gateway Protocol) est utilisé pour communiquer les signaux, à savoir les informations d'accessibilité. Les messages de transmission des signaux générés par l'ASN source sont considérés comme des « annonces » car ils déclarent dans Internet que des adresses IP du préfixe sont en ligne et accessibles.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image4-33.png" class="kg-image"></figure>
+	<p>Observez la figure ci-dessous. La source A doit désormais savoir comment accéder à la destination B au travers de 2 réseaux différents !</p>
+	<p>Voilà à quoi doit ressembler un véritable message BGP :</p><!--kg-card-begin: markdown-->
+	<pre><code>BGP Message
+    Type: UPDATE Message
+    Path Attributes:
+        Path Attribute - Origin: IGP
+        Path Attribute - AS_PATH: 64500 64496
+        Path Attribute - NEXT_HOP: 198.51.100.1
+        Path Attribute - COMMUNITIES: 64500:13335
+        Path Attribute - Multi Exit Discriminator (MED): 100
+    Network Layer Reachability Information (NLRI):
+        192.0.2.0/24
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Comme vous pouvez le constater, les messages BGP contiennent plus que le simple préfixe IP (le bit NLRI pour Network Layer Reachability Information) et le chemin ; ils contiennent également un ensemble d'autres métadonnées qui fournissent des informations supplémentaires concernant le chemin. D'autres champs comportent les communautés (nous détaillerons ce point ensuite) et l'attribut MED, notre code d'origine. L'attribut MED suggère aux autres réseaux directement connectés le chemin à emprunter si plusieurs options sont disponibles et la valeur la plus faible l'emporte. Le code d'origine peut présenter l'une des trois valeurs suivantes : IGP, EGP ou Incomplete. Si le préfixe a pour origine BGP, le code est défini comme IGP. ECP n'est plus utilisé (il s'agit d'un ancien protocole de routage) et si vous distribuez un préfixe dans BGP à partir d'un autre protocole de routage (IS-IS ou OSPF par exemple), la valeur est Incomplete.</p>
+	<p>Une fois que la source sait comment accéder à la destination B via deux réseaux différents, intéressons-nous à l'ingénierie du trafic.</p>
+	<h2 id="ing-nierie-du-trafic">Ingénierie du trafic</h2>
+	<p>L'ingénierie du trafic est un aspect essentiel de la gestion au quotidien de n'importe quel réseau. Comme dans le monde physique, des détours peuvent être mis en place par les opérateurs pour optimiser le flux du trafic entrant et sortant de leur réseau. L'ingénierie du trafic sortant est considérablement plus aisée que celle du trafic entrant car les opérateurs peuvent faire leur choix dans les réseaux voisins et donner la priorité à certains trafics plutôt qu'à d'autres. L'ingénierie de trafic entrant quant à elle implique d'influencer un réseau opéré intégralement par quelqu'un d'autre. L'autonomie et l'autogestion d'un réseau sont primordiales, par conséquent les opérateurs utilisent les outils disponibles pour informer ou former les flux de paquets entrant en provenance d'autres réseaux. C'est outils sont difficiles à comprendre et à utiliser, ce qui peut représenter une gageure.</p>
+	<p>Les ensembles d'outils disponibles pour l'ingénierie du trafic, en entrée ou en sortie, reposent sur la manipulation des attributs (métadonnées) d'un itinéraire donné. Pendant cette évocation de l'ingénierie du trafic entre réseaux indépendants, nous manipulerons les attributs d'un itinéraire enseigné par un BGP externe (EBGP). BGP peut être divisé en 2 catégories :</p>
+	<ol>
+		<li>EBGP : communication BGP entre deux ASN différents</li>
+		<li>IBGP : communication BGP au sein d'un même ASN</li>
+	</ol>
+	<p>Si le protocole est le même, certains attributs peuvent être échangés sur une session IBGP tandis qu'ils ne le sont pas sur une session EBGP. L'un des deux relève d'une préférence locale. Nous y reviendrons plus précisément.</p>
+	<h3 id="s-lection-du-meilleur-chemin-bgp">Sélection du meilleur chemin BGP</h3>
+	<p>Lorsqu'un réseau est connecté à plusieurs autres réseaux et fournisseurs de services, il peut recevoir des informations de chemin sur le même préfixe IP depuis un grand nombre de ces réseaux, chacun avec des attributs légèrement différents. Il revient ensuite au réseau récepteur de ces informations d'utiliser un algorithme de sélection du meilleur chemin BGP pour choisir le « meilleur » préfixe (et itinéraire), et de l'utiliser pour transmettre le trafic IP. J'écris « meilleur » entre guillemets car il s'agit d'un jugement subjectif. Le « meilleur » est souvent le plus court, mais ce qui est le mieux pour mon réseau ne le sera pas forcément pour un autre réseau.</p>
+	<p>BGP envisagera de nombreux attributs de préfixe lors du filtrage des options reçues. Toutefois, plutôt que de combiner tous ces attributs en un seul critère de sélection, la sélection du meilleur chemin de BGP utilise les attributs par niveaux : à n'importe quel niveau, si les attributs disponibles sont suffisants pour choisir le meilleur chemin, l'algorithme s'arrête sur ce choix.</p>
+	<p>L'algorithme de sélection du meilleur chemin de BGP est long, il compte 15 étapes discrètes pour sélectionner le meilleur chemin disponible pour un préfixe donné. Étant donné le grand nombre d'étapes, il est dans l'intérêt du réseau de décider du meilleur chemin le plus tôt possible. Les quatre premières étapes sont les plus utilisées et celles qui exercent la plus grande influence ; elles sont illustrées dans la figure ci-dessous sous la forme de tamis.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image2-55.png" class="kg-image"></figure>
+	<p>Choisir le chemin le plus court possible est généralement une bonne idée, c'est pourquoi l'étape « AS-path length (Longueur du chemin AS) » est exécutée au début de l'algorithme. Cependant, dans la figure ci-dessous, « As-path length » apparaît en second, alors qu'il s'agit de l'attribut permettant de trouver le chemin le plus court. Commençons donc par la première étape : préférence locale.</p>
+	<p><strong>Préférence</strong><br>La préférence locale est choisie par un opérateur car elle lui permet de sélectionner manuellement la combinaison itinéraire+chemin qu'il préfère. C'est le premier attribut de l'algorithme parce qu'il est unique pour toute combinaison itinéraire+voisin+AS-path donnée.</p>
+	<p>Un réseau définit la préférence locale à l'importation d'un itinéraire (qu'il a appris d'un réseau voisin). Cette propriété est intransitive, c'est-à-dire qu'il s'agit d'un attribut qui n'est jamais envoyé dans un message EBGP vers d'autres réseaux. Cela signifie concrètement que, par exemple, l'opérateur de l'AS 64496 ne peut pas définir de préférence locale pour les itinéraires de ses préfixes IP propres (ou en transit) à l'intérieur de l'AS 64511 voisin. Cette impossibilité explique en partie la complexité de l'ingénierie du trafic entrant au travers d'EBGP.</p>
+	<p><strong>L'ajout artificiel de préfixe allonge l'AS-path</strong><br>Puisqu'aucun réseau n'est en mesure de définir directement la préférence locale sur un préfixe au sein d'un autre réseau, la première possibilité d'influencer les choix des autres réseaux est de modifier l'AS-path. Si les sauts suivants sont valides et que la préférence locale pour tous les différents chemins d'un itinéraire donné est la même, l'option qui s'impose est la modification de l'AS-path afin de modifier le chemin que le trafic empruntera vers votre réseau. Dans un message BGP, le préfixe se présente comme suit :</p>
+	<p>Avant :</p><!--kg-card-begin: markdown-->
+	<pre><code>BGP Message
+    Type: UPDATE Message
+    Path Attributes:
+        Path Attribute - Origin: IGP
+        Path Attribute - AS_PATH: 64500 64496
+        Path Attribute - NEXT_HOP: 198.51.100.1
+        Path Attribute - COMMUNITIES: 64500:13335
+        Path Attribute - Multi Exit Discriminator (MED): 100
+    Network Layer Reachability Information (NLRI):
+        192.0.2.0/24
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Après :</p><!--kg-card-begin: markdown-->
+	<pre><code>BGP Message
+    Type: UPDATE Message
+    Path Attributes:
+        Path Attribute - Origin: IGP
+        Path Attribute - AS_PATH: 64500 64496 64496
+        Path Attribute - NEXT_HOP: 198.51.100.1
+        Path Attribute - COMMUNITIES: 64500:13335
+        Path Attribute - Multi Exit Discriminator (MED): 100
+    Network Layer Reachability Information (NLRI):
+        192.0.2.0/24
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Concrètement les opérateurs peuvent ajouter un préfixe AS-path, ce qui revient à ajouter des systèmes autonomes supplémentaires au chemin (généralement l'opérateur utilise son propre AS, mais le protocole ne l'y oblige en rien). Ainsi, la longueur d'un attribut AS-path peut aller de 1 à 255. La longueur ayant spectaculairement augmenté, le chemin spécifique pour cet itinéraire ne sera pas choisi. En changeant l'attribut AS-path affiché aux différents pairs, un opérateur peut contrôler les flux de trafic entrant dans son réseau.</p>
+	<p>Malheureusement, l'ajout de préfixe présente un piège : pour qu'un facteur soit déterminant, il faut que tous les autres attributs soient équivalents. C'est rarement le cas, en particulier dans les réseaux de grande envergure qui ont le choix entre un grand nombre d'itinéraires possibles vers une destination.</p>
+	<h2 id="moteur-de-r-gles-m-tier">Moteur de règles métier</h2>
+	<p>BGP est aussi appelé familièrement Moteur de règles métier : il ne sélectionne <strong>pas</strong> le meilleur chemin du point de vue des performances ; le plus souvent, il sélectionnera plutôt le meilleur chemin du point de vue <em>métier</em>. Les critères métier vont de l'efficacité de l'investissement (port) à l'augmentation des revenus, entre autres. Cela peut sembler étrange mais, croyez-le ou non, c'est pour ça que BGP a été conçu ! La puissance (et la complexité) de BGP réside dans le fait qu'il permet à un opérateur réseau de faire des choix en fonction de ses besoins, contrats et politiques, qui pour la plupart ne sont pas mesurables par les notions conventionnelles de performances techniques.</p>
+	<h3 id="diff-rentes-pr-f-rences-locales">Différentes préférences locales</h3>
+	<p>Beaucoup de réseaux (y compris Cloudflare) attribuent une préférence locale en fonction du type de connexion utilisée pour nous envoyer les itinéraires. Une valeur supérieure correspond à une préférence plus importante. Par exemple, pour les itinéraires tirés des connexions réseau de transit la préférence locale sera inférieure, à savoir 100 car ce sont ceux qui représentent le coût d'utilisation le plus important ; pour les itinéraires tirés du backbone elle sera de 150, pour les itinéraires IX (Internet exchange) 200 et enfin pour les itinéraires d'interconnexion de réseau privé (PNI) 250. Cela signifie que pour le trafic sortant, par défaut, le réseau Cloudflare préfèrera un itinéraire présenté par un PNI, quand bien même il existerait un attribut AS-path plus court via un IX ou un voisin de transit.</p>
+	<p>C'est la fiabilité qui explique en partie que la préférence accordée à PNI par rapport à IX. En effet, aucune plateforme de commutation tierce n'est impliquée sans être sous notre contrôle et il s'agit là d'un détail important dans la mesure où nous fonctionnons en ayant à l'esprit la possibilité que tout matériel peut connaître une défaillance et finira par le faire. Cela tient également à des raisons de performance des ports. Ici, l'efficacité se définit au coût par mégabit transféré sur chaque port. Dans les grandes lignes, le coût est calculé ainsi :</p>
+	<p><code>((coût_de_commutateur / nombre_port) + coût_émetteur-récepteur)</code></p>
+	<p>combiné au coût des interconnexions (ils peuvent être pris en compte sur une base mensuelle ou individuellement). Les itinéraires PNI sont également préférables car ils permettent d'optimiser la valeur en réduisant le coût global par mégabit transféré, en effet le prix unitaire diminue à mesure que l'utilisation du port augmente.</p>
+	<p>Le raisonnement est semblable pour un grand nombre d'autres réseaux et prévaut largement dans les réseaux de transit. BGP intéresse au moins autant pour des raisons de coût et de règle métier que pour les performances.</p>
+	<h3 id="pr-f-rence-locale-de-transit">Préférence locale de transit</h3>
+	<p>Par souci de simplicité, lorsque je mentionne les transits, il s'agit des <a href="https://en.wikipedia.org/wiki/Tier_1_network" target="_blank">réseaux de transit de niveau 1 traditionnels</a>. Compte tenu de la nature de ces réseaux, il existe deux ensembles distincts de pairs réseau :</p>
+	<p>1. Clients (tels que Cloudflare)<br>2. Pairs sans contrepartie financière (tels que les autres réseaux de niveau 1)</p>
+	<p>Dans des circonstances normales, les clients de transit se verront attribuer une préférence locale plus élevée que la préférence locale utilisée pour leurs pairs sans contrepartie financière. Cela signifie que, quel que soit le nombre de préfixes que vous ajoutez, si le trafic entre dans ce réseau de transit, il atterrira <strong>toujours</strong> sur votre interconnexion avec ce réseau de transit, il ne sera pas déchargé vers un autre pair.</p>
+	<p>Un ajout de préfixe peut toujours être utilisé si vous voulez commuter/décharger le trafic depuis un lien unique avec un transit si plusieurs liens distincts l'accompagnent, ou si la source du trafic est multi-hébergée derrière plusieurs transits (et que leur guide de préférence locale ne préfère aucun transit à un autre). Mais l'ingénierie du trafic entrant qui conduit d'un port de transit vers un autre en utilisant l'ajout de préfixe AS-path donne lieu à des rendements décroissants significatifs : une fois que vous avez dépassé trois ajouts de préfixe, il est peu probable, voire improbable, que cela change beaucoup à ce stade.</p>
+	<p><strong>Exemple</strong></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/11/image8-6.png" class="kg-image"></figure>
+	<p>Dans le scénario ci-dessus, quel que soit l'ajustement effectué par Cloudflare dans son AS-path vers l'AS 64496, le trafic continuera de circuler par l'interconnexion Transit B &lt;&gt; Cloudflare, même si le chemin Origine A → Transit B → Transit A → Cloudflare est plus court du point de vue de l'AS-path.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/11/image6-12.png" class="kg-image"></figure>
+	<p>Dans ce scénario, peu de choses ont changé, mais l'Origine A est désormais multi-hébergée derrière les deux fournisseurs de transit. Dans ce cas, l'ajout de préfixe AS-path est effectif dans la mesure ou les chemins observés du côté Origine A sont les deux chemins, avec et sans préfixe. Tant que l'origine A ne fait pas d'ingénierie de trafic de sortie, et qu'elle traite les deux réseaux de transit de manière égale, le chemin choisi sera Origine A → Transit A → Cloudflare.</p>
+	<h3 id="ing-nierie-de-trafic-reposant-sur-la-communaut-">Ingénierie de trafic reposant sur la communauté</h3>
+	<p>Nous avons donc maintenant identifié un problème assez grave pour les opérateurs au sein de l'écosystème Internet : avec les outils mentionnés ci-dessus, il n'est pas toujours possible (d'aucuns diraient même tout bonnement impossible) de dicter avec précision les chemins par lesquels le trafic peut pénétrer dans votre propre réseau, ce qui limite le contrôle d'un système autonome sur son propre réseau. Heureusement, il existe une solution à ce problème : la préférence locale basée sur la communauté.</p>
+	<p>Certains fournisseurs de transit permettent à leurs clients d'influencer les préférences locales dans le réseau de transit en utilisant des communautés BGP. Les communautés BGP sont un attribut transitif optionnel pour l'affichage d'un itinéraire. Les communautés peuvent informatives (« j'ai appris ce préfixe à Rome »), mais elles peuvent également être utilisées pour déclencher des actions du côté du récepteur. Par exemple, Cogent publie les communautés d'action suivantes :</p><!--kg-card-begin: html-->
+	<table width="100%">
+		<thead>
+			<tr>
+				<th>Communauté</th>
+				<th>Préférence locale</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>174:10</td>
+				<td>10</td>
+			</tr>
+			<tr>
+				<td>174:70</td>
+				<td>70</td>
+			</tr>
+			<tr>
+				<td>174:120</td>
+				<td>120</td>
+			</tr>
+			<tr>
+				<td>174:125</td>
+				<td>125</td>
+			</tr>
+			<tr>
+				<td>174:135</td>
+				<td>135</td>
+			</tr>
+			<tr>
+				<td>174:140</td>
+				<td>140</td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Lorsque vous savez que Cogent utilise les préférences locales par défaut suivantes dans son réseau :</p>
+	<p>Pairs → Préférence locale 100<br>Clients → Préférence locale 130</p>
+	<p>Il est facile de comprendre comment utiliser les communautés proposées pour modifier l'itinéraire emprunté. Il convient de remarquer que puisque nous ne pouvons pas définir la préférence locale d'un itinéraire sur 100 (ou 130), l'ajout d'un préfixe AS-path manque largement de pertinence dans la mesure où la préférence ne sera jamais la même.</p>
+	<p>Prenons l'exemple de la configuration suivante :</p><!--kg-card-begin: markdown-->
+	<pre><code>term ADV-SITELOCAL {
+    from {
+        prefix-list SITE-LOCAL;
+        route-type internal;
+    }
+    then {
+        as-path-prepend "13335 13335";
+        accept;
+    }
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-71.png" class="kg-image"></figure>
+	<p>Nous ajoutons en préfixe l'ASN de Cloudflare deux fois, ce qui donne un attribut AS-path de trois, toutefois, nous continuons d'observer beaucoup (trop) de trafic dans notre lien Cogent. À ce stade, un ingénieur peut ajouter un autre préfixe, mais pour un réseau bien connecté comme celui de Cloudflare, si deux ou trois ajouts de préfixe n'ont pas eu grand effet, en ajouter quatre ou cinq ne changera pas grand-chose. Au lieu de cela, nous pouvons profiter des communautés Cogent présentées précédemment pour modifier le routage au sein de Cogent :</p><!--kg-card-begin: markdown-->
+	<pre><code>term ADV-SITELOCAL {
+    from {
+        prefix-list SITE-LOCAL;
+        route-type internal;
+    }
+    then {
+        community add COGENT_LPREF70;
+        accept;
+    }
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>La configuration précédente change le flux de trafic comme suit :</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/11/image3-47.png" class="kg-image"></figure>
+	<p>Et c'est exactement ce que nous voulions !</p>
+	<h2 id="conclusion">Conclusion</h2>
+	<p>L'ajout de préfixe AS-path reste utile, et se justifie dans le cadre de la chaîne d'outils permettant aux opérateurs d'assurer l'ingénierie de trafic, mais il doit être utilisé avec parcimonie. <a href="https://ripe79.ripe.net/presentations/64-prepending_madory2.pdf" target="_blank">Le recours excessif à l'ajout de préfixe AS-path ouvre un réseau à des détournements d'itinéraire plus vastes</a>, ce qui doit être évité à tout prix. À ce titre, l'utilisation de l'ingénierie du trafic d'entrée basée sur la communauté est hautement préférable (et recommandée). Dans les cas où aucune communauté n'est disponible (ou si elles ne sont pas disponibles pour diriger le trafic client), les ajouts de préfixe peuvent être appliqués, mais j'encourage les opérateurs à en surveiller activement les effets, et à annuler l'opération si elle s'avère inefficace.</p>
+	<p>À titre d'information, P Marcos et al. ont publié un article intéressant sur l'ajout de préfixe AS-path dans lequel ils étudient certaines tendances observées à ce sujet, je vous en recommande vivement la lecture : <a href="https://www.caida.org/catalog/papers/2020_aspath_prepending/aspath_prepending.pdf" target="_blank">https://www.caida.org/catalog/papers/2020_aspath_prepending/aspath_prepending.pdf</a></p>
+</div>

@@ -1,0 +1,586 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/CIO-Week-2023-Recap.png" class="kg-image" alt="CIO Week 2023 recap"></figure>
+	<p>我们在<a href="https://blog.cloudflare.com/welcome-to-cio-week-2023/">欢迎来到 CIO Week 2023 </a>一文中谈到，希望通过庆祝首席信息官（CIO）们为保证其组织安全和高效所做的工作来开始新的一年。</p>
+	<p>过去一周内，我们发布了 30 多个公告，包括全新服务、测试版、战略合作伙伴关系、第三方集成等，涉及组织技术堆栈的所有方面。本文概述了每一个公告，并标注哪些功能已经普遍可用(GA)，哪些处于测试阶段，哪些在我们的路线图上。</p>
+	<p>我们交付了客户要求的关键功能 —— 例如<a href="https://www.cloudflare.com/press-releases/2023/cloudflare-announces-comprehensive-email-security-and-data-protection-tools/" target="_blank">更全面的网络钓鱼保护</a>和<a href="https://www.cloudflare.com/press-releases/2023/cloudflare-expands-relationship-with-microsoft-zero-trust/" target="_blank">与 Microsoft 生态系统的更深层次集成</a>。展望未来，我们还描述了针对新兴技术领域的路线图，例如 <a href="https://www.cloudflare.com/press-releases/2023/digital-experience-monitoring-cios/" target="_blank">Digital Experience Monitoring</a>，以及我们的一个愿景：使<a href="https://www.cloudflare.com/press-releases/2023/magic-wan-connector-corporate-network/" target="_blank">通过 Cloudflare 网络从任何来源到任何目的地路由流量</a>变得无比简单。</p>
+	<p>我们推出的这一切都是为了帮助 CIO 们加速数字化转型。本文组织了有关公告的概要，基于我们希望 CIO 们考虑与 Cloudflare 时拥有的三种感受：</p>
+	<ol>
+		<li><strong><strong><strong>CIO 现在拥有一个更简单的 Zero Trust 和 SASE 路线图 : </strong></strong></strong>我们宣布了全新功能和更紧密的集成，使组织更容易采用<a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank"> Zero Trust 安全性</a>最佳实践，并迈向类似<a href="https://www.cloudflare.com/learning/access-management/what-is-sase/" target="_blank">安全访问服务边缘(SASE)</a>的理想架构。</li>
+		<li><strong><strong><strong>CIO 们现在能够利用正确的技术和渠道合作伙伴： </strong></strong></strong>我们宣布了多项集成和计划，旨在帮助组织利用正确的专业技能，按照自己的步伐实现 IT 和安全现代化。</li>
+		<li><strong><strong><strong>CIO 们现在可轻松简化多云战略： </strong></strong></strong>我们宣布了在不同的云环境中连接、保护和加速流量的新方法。</li>
+	</ol>
+	<p>感谢您关注 <a href="https://www.cloudflare.com/cio-week/" target="_blank">CIO Week</a> —— 这是 Cloudflare 2023 年多个创新周中的第一个。有时不容易跟上我们的创新步伐，但我们希望阅读本文并<a href="https://gateway.on24.com/wcc/eh/2153307/lp/4063103/" target="_blank">参加我们的回顾网络研讨会</a>能有帮助。</p>
+	<p>如果您想与我们讨论如何实现您的 IT 和安全现代化，并使贵组织的 CIO 日子更轻松，请<a href="https://www.cloudflare.com/lp/cio-week-2023-cloudflare-one-contact-us/" target="_blank">填写此处的表格。</a></p>
+	<h3 id="-zero-trust-sase-">简化您的 Zero Trust 和 SASE 旅程</h3>
+	<p><strong>保护访问</strong><br>这些博客文章重点使任何用户与任何应用程序的连接更快、更容易、更安全，并提供实现 Zero Trust 所需的精细化控制和全面可见性。</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-ycd2 {
+			background-color: #F63;
+			color: #FFF;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<tbody>
+			<tr>
+				<td class="tg-ycd2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">博客</span></td>
+				<td class="tg-ycd2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">摘要</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">测试版： </span><a href="https://blog.cloudflare.com/introducing-digital-experience-monitoring/"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">推出 Digital Experience Monitoring</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare Digital Experience Monitoring 将是一个一体化的仪表板，帮助 CIO 了解关键应用程序和互联网服务在整个企业网络中的性能情况。 </span><a href="https://cloudflare.com/lp/digital-experience-monitoring/" target="_blank"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">在此注册测试版</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">测试版：</span><a href="https://blog.cloudflare.com/warp-to-warp/"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">利用 WARP-to-WARP 连接在 Cloudflare 网络上打造自己的全球、专用、虚拟 Zero Trust 网络</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">只需单击一下，组织中运行 Cloudflare 设备客户端 WARP 的任何设备都可以通过一个专用网络连接到运行 WARP 的任何其他设备。 </span><a href="https://www.cloudflare.com/lp/warp-peering/" target="_blank"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">注册测试版</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GA： </span><a href="https://blog.cloudflare.com/403-logs-cloudflare-access/"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">排查 Cloudflare Access “阻止”消息问题的新方法</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">调查基于连接建立方式的“允许”或“阻止”决定，就像在 Cloudflare Zero Trust 平台上排查用户身份问题一样轻松。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">测试版：</span><a href="https://blog.cloudflare.com/one-click-zerotrust-isolation/"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">针对内部和 SaaS 应用程序的一键式数据安全</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">在一个隔离的浏览器中运行应用程序会话，并控制用户如何与敏感数据交互，以便保护敏感数据——现在一键即可启用。</span><a href="https://www.cloudflare.com/lp/application-isolation-beta/" target="_blank"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">注册测试版</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GA： </span><a href="https://blog.cloudflare.com/access-and-gateway-with-scim/"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">推出对 Cloudflare Access 和 Gateway 的 SCIM 支持</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare 的 ZTNA(Access)和 SWG (Gateway)服务现在支持跨域身份管理系统(SCIM)协议，使管理员更容易管理跨系统的身份记录。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GA：</span><a href="https://blog.cloudflare.com/the-most-exciting-ping-release"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Cloudflare Zero Trust：1983 年以来最令人兴奋的 Ping 版本</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare Zero Trust 管理员可以使用熟悉的 ICMP 协议调试工具(例如 Ping、Traceroute 和 MTR)来测试到专用网络目的地的连接性。</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p><strong>威胁防御</strong><br>这些博客文章专注于帮助组织过滤、检查和隔离流量，以保护用户免受钓鱼、勒索软件和其他互联网威胁。</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #aaa;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #aaa;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #ff6633;
+			border-color: #aaa;
+			border-style: solid;
+			border-width: 1px;
+			color: #fff;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-ycd2 {
+			background-color: #F63;
+			color: #FFF;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-ycd2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">博客</span></th>
+				<th class="tg-ycd2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">摘要</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GA：</span><a href="https://blog.cloudflare.com/area1-eli-ga"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Email Link Isolation: 应对最新网络钓鱼攻击的安全网</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Email Link Isolation（电子邮件链接隔离）是一张安全网，用于拦截那些最终出现在收件箱中且可能被用户点击的可疑链接。这层额外保护使 </span><a href="https://www.cloudflare.com/products/zero-trust/email-security/" target="_blank"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Cloudflare Area 1</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> 成为防范网络钓鱼攻击领域最全面的电子邮件安全解决方案。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GA：</span><a href="https://blog.cloudflare.com/bring-your-certificates-cloudflare-gateway/"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">将自有证书带到 Cloudflare Gateway</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">管理员可以使用自己的自定义证书来应用 HTTP、DNS、CASB、DLP、RBI 和其他过滤策略。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GA：</span><a href="https://blog.cloudflare.com/custom-dlp-profiles/"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">推出自定义 DLP 配置文件</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">现在，Cloudflare 的数据丢失防护 (DLP) 服务提供创建自定义检测的功能，以便组织可以检查流量中最敏感的数据。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GA：</span><a href="https://blog.cloudflare.com/gateway-managed-service-provider"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">适用于托管服务提供商的 Cloudflare Zero Trust</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">了解美国联邦政府和其他大型托管服务提供商(MSP)如何使用 Cloudflare 的租户 API 对其管理的组织应用 DNS 过滤等安全策略。</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p><strong>保护 SaaS 环境</strong><br>这些博客文章的重点是在 SaaS 应用程序环境中维护一致的安全性和可见性，特别是防止敏感数据泄露。</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #aaa;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #aaa;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f38630;
+			border-color: #aaa;
+			border-style: solid;
+			border-width: 1px;
+			color: #fff;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-ycd2 {
+			background-color: #F63;
+			color: #FFF;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-ycd2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">博客</span></th>
+				<th class="tg-ycd2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">摘要</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">路线图：</span><a href="https://blog.cloudflare.com/casb-dlp/"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Cloudflare CASB 和 DLP 如何协作以保护您的数据</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare Zero Trust 将在我们的 CASB 和 DLP 服务之间引入功能，使管理员能够查看存储在 SaaS 应用程序中的文件，并识别其中的敏感数据。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">路线图：</span><a href="https://blog.cloudflare.com/dlp-area1-to-protect-data-in-email/"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Cloudflare Area 1 和 DLP 如何协作保护电子邮件中的数据</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare 会将 Area 1 Email Security 与数据丢失防护 (DLP) 中的功能进行整合，为企业电子邮件提供全方位数据保护。 </span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GA：</span><a href="https://blog.cloudflare.com/casb-adds-salesforce-and-box-integrations"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Cloudflare CASB：扫描 Salesforce 和 Box 以检测安全问题</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare CASB 现在与 Salesforce 和 Box 集成，使 IT 和安全团队能够扫描这些 SaaS 环境的安全风险。</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p><strong>加速并保护连接</strong><br>除了产品功能，这个部分博客文章还强调了速度以及组织通过 Cloudflare 实现的其他战略优势。</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #aaa;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #aaa;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f38630;
+			border-color: #aaa;
+			border-style: solid;
+			border-width: 1px;
+			color: #fff;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-ycd2 {
+			background-color: #F63;
+			color: #FFF;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-zb5k {
+			color: #15C;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-ycd2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">博客</span></th>
+				<th class="tg-ycd2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">摘要</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-8fnt"><a href="https://blog.cloudflare.com/why-cios-select-cloudflare-one/"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">为什么 CIO 选择 Cloudflare One？</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">在 CIO Week 期间，我们与部分最大企业客户的领导者展开交流对话，以便更好地了解他们为什么选择了 Cloudflare One。了解六个主题原因。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-8fnt"><a href="https://blog.cloudflare.com/network-performance-update-cio-edition/"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Cloudflare 比 Zscaler 更快</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> </span><a href="https://www.cloudflare.com/lp/miercom-report-cloudflare-vs-zscaler/?cf_target_id=1C6571CB318780CED4741A383010B000" target="_blank"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">第三方测试表明</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">，Cloudflare 在提供 Zero Trust 体验方面比 Zscaler 快 38-55%。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GA：</span><a href="https://blog.cloudflare.com/location-aware-warp/"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Cloudflare One 代理的网络检测和设置配置文件</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">现在，Cloudflare 的设备客户端 (WARP) 可以安全地检测预先配置的位置，并根据组织对该位置的需求路由流量。</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p><strong>使 Cloudflare 更易于使用</strong><br>这些博客文章重点介绍 Cloudflare 产品组合中的创新，以及 Zero Trust 和 SASE 领域之外的创新，以帮助组织轻松地保护和加速流量。</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #aaa;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #aaa;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f38630;
+			border-color: #aaa;
+			border-style: solid;
+			border-width: 1px;
+			color: #fff;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-ycd2 {
+			background-color: #F63;
+			color: #FFF;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-zb5k {
+			color: #15C;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-ycd2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">博客</span></th>
+				<th class="tg-ycd2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">摘要</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/preview-today/"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">立即预览 Cloudflare 产品</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">现在，企业客户只需在仪表板中一键单击，即可开始预览非合同服务。 </span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GA：</span><a href="https://blog.cloudflare.com/improved-api-access-control/"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">改进访问控制：API 访问现可选择性禁用</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare 让帐户所有者能够限制对帐户名下的 API 访问，通过这种方式让他们可以更轻松地查看和管理其用户对帐户的访问权限。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GA：</span><a href="https://blog.cloudflare.com/zone-versioning-ga"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Zone Versioning 现已普遍可用</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Zone Versioning(区域版本化)允许客户通过对更改进行版本化，并选择如何以及何时将这些更改部署到已定义的流量环境，从而安全地管理区域配置。 </span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">路线图：</span><a href="https://blog.cloudflare.com/app-services-private-networks"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">使用专用网络的 Cloudflare 应用程序服务：用你已经喜欢的工具做更多的事情</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">通过整合我们的应用服务(保护面向互联网的网站)和我们的Cloudflare One平台(保护企业网络)，Cloudflare 正在提高运营效率。 </span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<h3 id="-">找到适当的合作伙伴</h3>
+	<p>除了针对渠道合作伙伴的新计划，这些博客文章还描述了更深入的技术集成，以帮助企业更有效地使用他们已经使用的 IT 和安全工具。</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #aaa;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #aaa;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f38630;
+			border-color: #aaa;
+			border-style: solid;
+			border-width: 1px;
+			color: #fff;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-ycd2 {
+			background-color: #F63;
+			color: #FFF;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-ycd2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">博客</span></th>
+				<th class="tg-ycd2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">摘要</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-8fnt"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GA：</span><a href="https://blog.cloudflare.com/expanding-our-microsoft-partnership-proactive-and-automated-zero-trust-security"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">扩大我们与 Microsoft 的合作：为客户提供主动、自动化的Zero Trust 安全</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare 已推出 Microsoft Azure Active Directory (Azure AD)和 Cloudflare Zero Trust 之间的四项新集成，旨在主动降低风险。这些集成提高了自动化程度，使安全团队能够专注于威胁，无需顾及实施和维护。 </span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">测试版：</span><a href="https://blog.cloudflare.com/api-based-email-scanning"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">基于 API 的电子邮件扫描</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">现在，Microsoft Office 365 客户可以通过 Microsoft Graph API 部署 Area 1 云电子邮件安全。这一功能使 O365 客户能够通过 API 快速部署 Area 1 产品，并将在不久后登陆 Microsoft Marketplace。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GA：</span><a href="https://blog.cloudflare.com/china-express"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">China Express：Cloudflare 合作伙伴提升企业网络在中国境内的性能</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">China Express 是一套与中国移动国际和中国宽带通信合作开发的产品，旨在简化中国用户的连接并提高性能。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">测试版：</span><a href="https://blog.cloudflare.com/cloudflare-one-authorized-services-delivery-partner-track/"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">推出 Cloudflare One 授权服务交付合作伙伴认证计划</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare 推出针对渠道和实施合作伙伴的全新专业认证计划，旨在帮助他们发展交付 Cloudflare One 服务的专业技能。 </span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<h3 id="--1">简化您的多云策略</h3>
+	<p>这些博客文章重点介绍了一些创新，使组织机构更容易“接入” Cloudflare 网络，并将流量从任何来源发送到任何目的地。</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #aaa;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #aaa;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f38630;
+			border-color: #aaa;
+			border-style: solid;
+			border-width: 1px;
+			color: #fff;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-ycd2 {
+			background-color: #F63;
+			color: #FFF;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-zb5k {
+			color: #15C;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-ycd2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">博客</span></th>
+				<th class="tg-ycd2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">摘要</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">测试版</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">：</span><a href="https://blog.cloudflare.com/magic-wan-connector/"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">隆重推出 Magic WAN Connector：到达企业下一代网络的最简便入口</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">凭借 Magic WAN Connector，Cloudflare 让网络连接更简便。这个轻量级软件包可安装到任何物理网络或云网络，自动连接、引导和整形 IP 流量。 </span><a href="https://www.cloudflare.com/lp/magic-wan-connector/" target="_blank"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">注册测试版</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GA</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">：</span><a href="https://blog.cloudflare.com/cloud-cni"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Cloud CNI 在您的云和 Cloudflare 之间建立专用连接</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">使用 Google Cloud Platform、Azure、Oracle Cloud、IBM Cloud 和 Amazon Web Services 的客户现在可以从他们的私有云实例直接连接到 Cloudflare。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/cardinal-directions-and-network-traffic/"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">Cloudflare 为所有主要方向的流量提供保护</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">这篇博客文章概述了企业网络流量的定义如何改变，以及 Cloudflare One 如何为所有流量提供保护，无论其来源或目的地为何。</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<h3 id="-cloudflare-tv-">在 Cloudflare TV 上观看</h3><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/fca09f14d448f33d3a2e8d4ab8505325/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2Ffca09f14d448f33d3a2e8d4ab8505325%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D10s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
+</div>
