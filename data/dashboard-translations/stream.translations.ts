@@ -55,7 +55,7 @@ You will only be billed each month based on how many minutes you stream. If you 
 		bundle_advanced_short_description: "Includes 10,000 minutes of video and 500,000 images",
 		bundle_advanced_description: "Store up to 500,000 images and 10,000 minutes of video content. Deliver up to 1,000,000 images and 50,000 minutes of video content each month.",
 		bundle_advanced_additional_stream_description: "The Creator Bundle includes 10,000 minutes of video.",
-		bundle_save_up_to: (0, t.d)(j(), "amount"),
+		bundle_save_up_to: (0, t.d)(q(), "amount"),
 		single_product_feature_1: "Live streaming, simulcasting and on-demand streaming",
 		single_product_feature_2: "Video Player with support for VAST Ad Tags",
 		single_product_feature_3: "Multi-bitrate Encoding",
@@ -125,6 +125,7 @@ You will only be billed each month based on how many minutes you stream. If you 
 	video_link: "Video Link",
 	storage: {
 		usage: (0, t.d)(M(), "currentMins"),
+		video_count: (0, t.d)(j()),
 		inadequateProposedPlan: (0, t.d)(U(), "minumumRequired", "currentMinutes"),
 		inputGreaterThanZero: "Please enter a number greater than zero",
 		inputWholeNumber: "Please enter a whole number",
