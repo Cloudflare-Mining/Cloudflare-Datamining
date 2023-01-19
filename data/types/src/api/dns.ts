@@ -123,3 +123,23 @@ export const DNSOutgoingZoneTransfers = eg.union([
 export type DNSOutgoingZoneTransfers = TypeFromCodec<
   typeof DNSOutgoingZoneTransfers
 >;
+
+export const HostnameRegions = eg.array(
+  eg.object({
+    key: eg.string,
+    label: eg.string
+  })
+);
+
+export type HostnameRegions = TypeFromCodec<typeof HostnameRegions>;
+
+export const RegionalHostname = eg.object({
+  hostname: eg.string,
+  region_key: eg.string
+});
+
+export type RegionalHostname = TypeFromCodec<typeof RegionalHostname>;
+
+export const RegionalHostnames = eg.array(RegionalHostname);
+
+export type RegionalHostnames = TypeFromCodec<typeof RegionalHostnames>;
