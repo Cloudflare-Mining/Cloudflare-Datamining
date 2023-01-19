@@ -16,7 +16,8 @@ const getGates = [
 	{
 		key: process.env.GATES_API_KEY,
 		zone: true,
-		name: 'dashboard',
+		config: false,
+		name: 'dashboard-zone',
 	},
 	{
 		key: process.env.GATES_ZT_API_KEY,
@@ -88,6 +89,9 @@ async function getAssignments(gate, includeZone = false){
 async function run(){
 	await fs.ensureDir(path.resolve(`../data/gates`));
 	for(const gate of getGates){
+		if(gate.config === false){
+			continue;
+		}
 		const file = path.resolve(`../data/gates/${gate.name}.json`);
 
 		const config = await fetch("https://gates.cloudflare.com/api/v1/runtime/configuration", {
