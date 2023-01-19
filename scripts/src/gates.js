@@ -14,10 +14,77 @@ const getGates = [
 		name: 'dashboard',
 	},
 	{
+		key: process.env.GATES_API_KEY,
+		zone: true,
+		name: 'dashboard',
+	},
+	{
 		key: process.env.GATES_ZT_API_KEY,
 		name: 'zt-dashboard',
 	},
 ];
+
+const fetchCount = 1000;
+async function getAssignments(gate, includeZone = false){
+	// get assignment percentage (rough)
+	const assignments = {};
+	for(let i = 0; i < fetchCount; i++){
+		console.log('Check assignments', gate.name, i, includeZone ? 'with zone' : 'without zone');
+		const body = {
+			userId: String(i),
+			accountId: String(i),
+			is_ent: false,
+		};
+		if(includeZone){
+			body.zone_id = String(i);
+		}
+		const assignment = await fetch("https://gates.cloudflare.com/api/v1/runtime/assignments", {
+			agent,
+			headers: {
+				Authorization: `Bearer ${gate.key}`,
+				Referer: "https://dash.cloudflare.com/",
+			},
+			method: 'POST',
+			body: JSON.stringify(body),
+		});
+		if(assignment.status === 200){
+			const json = await assignment.json();
+			if(json.success){
+				const assignment = json.result;
+				for(const gate in assignment){
+					assignments[gate] ??= {};
+					assignments[gate][assignment[gate]] ??= 0;
+					assignments[gate][assignment[gate]]++;
+				}
+			}
+		}
+	}
+	// try and normalize the percentages
+	for(const gate in assignments){
+		// normalise 30%, 50%, etc.
+		const values = Object.values(assignments[gate]);
+		const min = Math.min(...values);
+		const max = Math.max(...values);
+		if(Object.keys(assignments[gate]).length === 2 && min >= 480 && max <= 520){
+			assignments[gate] = {
+				[Object.keys(assignments[gate])[0]]: Math.round(fetchCount / 2),
+				[Object.keys(assignments[gate])[1]]: Math.round(fetchCount / 2),
+			};
+		}else if(Object.keys(assignments[gate]).length === 3 && min >= 310 && max <= 350){
+			assignments[gate] = {
+				[Object.keys(assignments[gate])[0]]: Math.round(fetchCount / 3),
+				[Object.keys(assignments[gate])[1]]: Math.round(fetchCount / 3),
+				[Object.keys(assignments[gate])[2]]: Math.round(fetchCount / 3),
+			};
+		}
+		// normalise to 100%
+		const total = Object.values(assignments[gate]).reduce((itemA, itemB) => itemA + itemB, 0);
+		for(const key in assignments[gate]){
+			assignments[gate][key] = Math.round((assignments[gate][key] / total) * 100);
+		}
+	}
+	return assignments;
+}
 async function run(){
 	await fs.ensureDir(path.resolve(`../data/gates`));
 	for(const gate of getGates){
@@ -41,59 +108,7 @@ async function run(){
 		}
 
 		// get assignment percentage (rough)
-		const assignments = {};
-		const fetchCount = 1000;
-		for(let i = 0; i < fetchCount; i++){
-			console.log('Check assignments', gate.name, i);
-			const assignment = await fetch("https://gates.cloudflare.com/api/v1/runtime/assignments", {
-				agent,
-				headers: {
-					Authorization: `Bearer ${gate.key}`,
-					Referer: "https://dash.cloudflare.com/",
-				},
-				method: 'POST',
-				body: JSON.stringify({
-					userId: String(i),
-					accountId: String(i),
-					is_ent: false,
-				}),
-			});
-			if(assignment.status === 200){
-				const json = await assignment.json();
-				if(json.success){
-					const assignment = json.result;
-					for(const gate in assignment){
-						assignments[gate] ??= {};
-						assignments[gate][assignment[gate]] ??= 0;
-						assignments[gate][assignment[gate]]++;
-					}
-				}
-			}
-		}
-		// try and normalize the percentages
-		for(const gate in assignments){
-			// normalise 30%, 50%, etc.
-			const values = Object.values(assignments[gate]);
-			const min = Math.min(...values);
-			const max = Math.max(...values);
-			if(Object.keys(assignments[gate]).length === 2 && min >= 480 && max <= 520){
-				assignments[gate] = {
-					[Object.keys(assignments[gate])[0]]: Math.round(fetchCount / 2),
-					[Object.keys(assignments[gate])[1]]: Math.round(fetchCount / 2),
-				};
-			}else if(Object.keys(assignments[gate]).length === 3 && min >= 310 && max <= 350){
-				assignments[gate] = {
-					[Object.keys(assignments[gate])[0]]: Math.round(fetchCount / 3),
-					[Object.keys(assignments[gate])[1]]: Math.round(fetchCount / 3),
-					[Object.keys(assignments[gate])[2]]: Math.round(fetchCount / 3),
-				};
-			}
-			// normalise to 100%
-			const total = Object.values(assignments[gate]).reduce((itemA, itemB) => itemA + itemB, 0);
-			for(const key in assignments[gate]){
-				assignments[gate][key] = Math.round((assignments[gate][key] / total) * 100);
-			}
-		}
+		const assignments = await getAssignments(gate, gate.zone ?? false);
 		const assignmentsFile = path.resolve(`../data/gates/${gate.name}-assignments.json`);
 		await fs.writeFile(assignmentsFile, JSON.stringify(assignments, null, '\t'));
 
