@@ -283,6 +283,8 @@
 	"bot_javascript_detections.confirm_disable.title": "Disable JavaScript Detections?",
 	"bot_javascript_detections.confirm_disable.description": "Disabling JavaScript Detections can reduce the accuracy of bot detections.",
 	"bot_javascript_detections.confirm_disable.warning": "Disabling JavaScript Detections while using WAF rules with a JavaScript detection field will result in failed challenges and blocked user.",
+	"bot_optimize_wordpress.title": "Optimize For WordPress",
+	"bot_optimize_wordpress.description": "Enable if your website relies on features of WordPress that conflict with Super Bot Fight Mode. \n**Note**: Requires that Verified Bots are allowed.",
 	"challenge_ttl.description": "Specify the length of time that a visitor, who has successfully completed a Captcha or JavaScript Challenge, can access your website. When the configured timeout expires, the visitor will be issued a new challenge. _Challenge Passage does not apply to Rate Limiting._",
 	"challenge_ttl.help": "#### Why doesn't the TTL apply to the WAF?\nChallenge passage does not apply to challenges issued by the WAF (Web Application Firewall) as these challenges are not based on the visitor's IP address reputation.",
 	"challenge_ttl.title": "Challenge Passage",

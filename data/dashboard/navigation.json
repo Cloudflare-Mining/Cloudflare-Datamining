@@ -69,10 +69,7 @@
 				},
 				{
 					"title": "navigation.account.registrar.register_domains",
-					"url": "/domains/register",
-					"labels": [
-						"new"
-					]
+					"url": "/domains/register"
 				},
 				{
 					"title": "navigation.account.registrar.domain_protection",
@@ -261,6 +258,13 @@
 				{
 					"title": "navigation.account.security_center.security_insights",
 					"url": "/security-center"
+				},
+				{
+					"title": "navigation.account.security_center.security_analytics",
+					"url": "/security-center/analytics",
+					"labels": [
+						"beta"
+					]
 				},
 				{
 					"title": "navigation.account.security_center.infrastructure",
