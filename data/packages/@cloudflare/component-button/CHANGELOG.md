@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.3.1
+
+### Patch Changes
+
+- a6575cebcd: Update peer dependency
+
 ## 5.3.0
 
 ### Minor Changes

@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.0.4
+
+### Patch Changes
+
+- dd09fa6764: Package update
+
 ## 5.0.3
 
 ### Patch Changes

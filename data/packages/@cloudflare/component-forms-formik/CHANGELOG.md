@@ -1,5 +1,11 @@
 # Change Log
 
+## 6.2.1
+
+### Patch Changes
+
+- dd09fa6764: Package update
+
 ## 6.2.0
 
 ### Minor Changes
