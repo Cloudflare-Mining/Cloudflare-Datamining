@@ -542,7 +542,7 @@ const IndexPage = () => {
             <div className="PlansSection--plan">
               <div className="PlansSection--plan-header">
                 <h2 className="PlansSection--plan-title">Pro</h2>
-                <div className="PlansSection--plan-price"><span className="Number"><span className="Number--dollars">$</span><span className="Number--number">20</span><span className="Number--per">/</span><span className="Number--per-unit">mo</span></span></div>
+                <div className="PlansSection--plan-price"><span className="Number"><span className="Number--dollars">$</span><span className="Number--number">25</span><span className="Number--per">/</span><span className="Number--per-unit">mo</span></span></div>
               </div>
               <div className="PlansSection--plan-details">
                 <ul className="UnorderedListPagesThemed">
@@ -562,7 +562,7 @@ const IndexPage = () => {
             <div className="PlansSection--plan">
               <div className="PlansSection--plan-header">
                 <h2 className="PlansSection--plan-title">Business</h2>
-                <div className="PlansSection--plan-price"><span className="Number"><span className="Number--dollars">$</span><span className="Number--number">200</span><span className="Number--per">/</span><span className="Number--per-unit">mo</span></span></div>
+                <div className="PlansSection--plan-price"><span className="Number"><span className="Number--dollars">$</span><span className="Number--number">250</span><span className="Number--per">/</span><span className="Number--per-unit">mo</span></span></div>
               </div>
               <div className="PlansSection--plan-details">
                 <ul className="UnorderedListPagesThemed">
