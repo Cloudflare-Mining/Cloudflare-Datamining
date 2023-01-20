@@ -2,7 +2,7 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image5-11.png" class="kg-image" alt="Announcing SCIM support for Cloudflare Access &amp; Gateway"></figure>
 	<p>今天，我们很高兴地宣布，Cloudflare Access 和 Gateway 现在支持跨域身份管理系统 (SCIM) 协议。在深入分析之前，我们先来回顾一下 SCIM、Access 和 Gateway 分别是什么。</p>
 	<p><a href="https://www.rfc-editor.org/rfc/rfc7642.txt" target="_blank">SCIM</a> 是一种协议，允许组织在多个系统和域之间管理用户身份和资源访问权限。它常用于自动执行创建、更新和删除用户帐户与权限的过程，并使这些帐户和权限在不同系统之间保持同步。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/Access-SCIM-integration.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/Access-SCIM-integration_CN-1.png" class="kg-image"></figure>
 	<p>例如，大部分组织都有标识提供程序，如 Okta 或 Azure Active Directory，标识提供程序会存储有关其员工的信息，如姓名、地址和职位。组织还可能使用基于云的应用程序进行协作。为了访问基于云的应用程序，员工需要创建帐户并使用用户名和密码登录。无需手动创建和管理这些帐户，组织可以使用 SCIM 自动执行该过程。本地系统和基于云的应用程序都配置为支持 SCIM。 </p>
 	<p>向标识提供程序添加新员工或从中移除员工时，SCIM 会使用本地系统中的信息，在基于云的应用程序中自动创建该员工的帐户。如果标识提供程序更新了员工信息，例如职位变更，SCIM 会在基于云的应用程序中自动更新对应信息。如果员工离开组织，可以使用 SCIM 从两个系统中删除其帐户。 </p>
 	<p>SCIM 帮助组织高效管理多个系统中的用户身份和访问权限，减少手动干预的需要，并确保用户信息是准确、最新的。</p>
