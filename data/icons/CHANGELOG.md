@@ -1,5 +1,11 @@
 # Change Log
 
+## 9.10.1
+
+### Patch Changes
+
+- d318c421c8: remove magic firewall icon fill#000
+
 ## 9.10.0
 
 ### Minor Changes
