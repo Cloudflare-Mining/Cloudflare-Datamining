@@ -1,5 +1,11 @@
 # Change Log
 
+## 9.10.0
+
+### Minor Changes
+
+- f37058b3b7: adding magic firewall cion
+
 ## 9.9.0
 
 ### Minor Changes

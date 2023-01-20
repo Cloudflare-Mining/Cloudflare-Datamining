@@ -1,17 +1,7 @@
 # Cloudflare Workers Types
 
-:stop_sign: This repository was for `@cloudflare/workers-types` versions ≤ 3 and is no longer maintained.
-
-Since version 4, types are automatically generated from and in the [`workerd`](https://github.com/cloudflare/workerd) repository.
-
-Find the [new `README` here](https://github.com/cloudflare/workerd/tree/main/npm/workers-types) and the [new auto-generation scripts here](https://github.com/cloudflare/workerd/tree/main/types).
-
-Please raise issues with type definitions [in the `workerd` repository](https://github.com/cloudflare/workerd/issues/new/choose), tagging `@cloudflare/workers-types` in your report.
-
----
-
-<details>
-<summary>Legacy Documentation</summary>
+> :warning: If you're upgrading from version 2, make sure to remove `webworker` from the `lib` array in your
+> `tsconfig.json`. These types are now included in `@cloudflare/workers-types`.
 
 ## Install
 
@@ -23,9 +13,6 @@ yarn add -D @cloudflare/workers-types
 
 ## Usage
 
-> :warning: If you're upgrading from version 2, make sure to remove `webworker` from the `lib` array in your
-> `tsconfig.json`. These types are now included in `@cloudflare/workers-types`.
-
 The following is a minimal `tsconfig.json` for use alongside this package:
 
 **`tsconfig.json`**
@@ -33,59 +20,94 @@ The following is a minimal `tsconfig.json` for use alongside this package:
 ```json
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "module": "CommonJS",
-    "lib": ["ES2020"],
+    "target": "esnext",
+    "module": "esnext",
+    "lib": ["esnext"],
     "types": ["@cloudflare/workers-types"]
   }
 }
 ```
 
+### Compatibility dates
+
+The Cloudflare Workers runtime manages backwards compatibility through the use of [Compatibility Dates](https://developers.cloudflare.com/workers/platform/compatibility-dates/). Using different compatibility dates affects the runtime types available to your Worker, and so it's important you specify the correct entrypoint to the `workers-types` package to match your compatibility date (which is usually set in your `wrangler.toml` configuration file). `workers-types` currently exposes 7 entrypoints to choose from:
+
+- `@cloudflare/workers-types`
+
+  The default entrypoint exposes the runtime types for a compatibility date of `2021-01-01` or before.
+
+- `@cloudflare/workers-types/2021-11-03`
+
+  This entrypoint exposes the runtime types for a compatibility date between `2021-01-01` and `2021-11-03`.
+
+- `@cloudflare/workers-types/2022-01-31`
+
+  This entrypoint exposes the runtime types for a compatibility date between `2021-11-03` and `2022-01-31`.
+
+- `@cloudflare/workers-types/2022-03-21`
+
+  This entrypoint exposes the runtime types for a compatibility date between `2022-01-31` and `2022-03-21`.
+
+- `@cloudflare/workers-types/2022-08-04`
+
+  This entrypoint exposes the runtime types for a compatibility date between `2022-03-21` and `2022-08-04`.
+
+- `@cloudflare/workers-types/experimental`
+
+  This entrypoint exposes the runtime types for the latest compatibility date. The types exposed by this entrypoint will change over time to always reflect the latest version of the Workers runtime.
+
+To use one of these entrypoints, you need to specify them in your `tsconfig.json`. For example, this is a sample `tsconfig.json` for using the `experimental` entrypoint.
+
+```json
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "lib": ["esnext"],
+    "types": ["@cloudflare/workers-types/experimental"]
+  }
+}
+```
+
+### Importable Types
+
+It's not always possible (or desirable) to modify the `tsconfig.json` settings for a project to include all the Cloudflare Workers types. For use cases like that, this package provides importable versions of it's types, which are usable with no additional `tsconfig.json` setup. For example:
+
+```ts
+import type { Request as WorkerRequest, ExecutionContext } from "@cloudflare/workers-types/experimental"
+
+export default {
+  fetch(request: WorkerRequest, env: unknown, ctx: ExecutionContext) {
+    return new Response("OK")
+  }
+}
+```
+
+
 ### Using bindings
 
-It's recommended that you create an ambient type file for any bindings your Worker uses. Create a file named
-`bindings.d.ts` in your src directory:
+It's recommended that you create a type file for any bindings your Worker uses. Create a file named
+`worker-configuration.d.ts` in your src directory.
 
-**`bindings.d.ts`**
-
+If you're using Module Workers, it should look like this:
 ```typescript
-export {};
-
+// worker-configuration.d.ts
+interface Env {
+  MY_ENV_VAR: string;
+  MY_SECRET: string;
+  myKVNamespace: KVNamespace;
+}
+```
+For Service Workers, it should augment the global scope:
+```typescript
+// worker-configuration.d.ts
 declare global {
   const MY_ENV_VAR: string;
   const MY_SECRET: string;
   const myKVNamespace: KVNamespace;
 }
+export {}
 ```
 
-## Auto-Generation
+Wrangler can also generate this for you automatically from your `wrangler.toml` configuration file, using the `wrangler types` command.
 
-Types are automatically generated from the Workers runtime's source code on every release. However, these generated
-types don't include any generics or overloads, so to improve ergonomics, some of them are overridden.
-
-The [`overrides`](./overrides) directory contains partial TypeScript declarations. If an override has a different type
-classification than its generated counterpart – for example, an `interface` is declared to override a generated `class`
-definition – then the override is used instead of the generated output. However, if they're the same type classification
-(e.g. both the override and the generated output are using `class`), then their member properties are merged:
-
-- Members in the override but not in the generated type are included in the output
-- If a member in the override has the same name as one in the generated type, the generated one is removed from the
-  output, and the override is included instead
-- If the member is declared type `never` in the override, it is removed from the output
-
-If a named type override is declared as a type alias to `never`, that named type is removed from the output.
-
-JSDoc comments from overrides will also be copied over to the output.
-
-Comment overrides can also be written in Markdown. The [`docs`](./docs) directory contains these overrides.
-2<sup>nd</sup> level headings are the names of top level declarations (e.g. <code>## \`KVNamespace\`</code>),
-3<sup>rd</sup> level headings are for member names (e.g. <code>### \`KVNamespace#put\`</code>), and 4<sup>th</sup> level
-headings correspond to JSDoc sections for members:
-
-- `#### Parameters`: a list with parameters of the form <code>- \`param\`: param description</code>, these will be
-  formatted as `@param` tags
-- `#### Returns`: contents will be copied as-is to the `@returns` tag
-- `#### Examples`: fenced code blocks with the language set to `js`, `ts`, `javascript` or `typescript` will be copied
-  to `@example` tags
-
-</details>
