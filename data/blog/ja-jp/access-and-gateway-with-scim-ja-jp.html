@@ -2,7 +2,7 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image5-11.png" class="kg-image" alt="Announcing SCIM support for Cloudflare Access &amp; Gateway"></figure>
 	<p>本日、Cloudflare Access and Gatewayが、System for Cross-domain Identity Management（SCIM）プロトコルのサポートを開始したことを発表できることを嬉しく思います。これが何を意味するのかを掘り下げる前に、SCIM、Access、Gatewayがそれぞれ何であるかを一度戻っておさらいしておきましょう。</p>
 	<p><a href="https://www.rfc-editor.org/rfc/rfc7642.txt" target="_blank">SCIM</a>は、組織が複数のシステムとドメインをまたいでユーザーIDとリソースへのアクセス権を管理するためのプロトコルです。多くの場合、ユーザーアカウントと権限の作成、更新、削除のプロセスを自動化し、これらのアカウントと権限を異なるシステム間で同期させるために使用されます。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/Access-SCIM-integration.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/Access-SCIM-integration_JA-1.png" class="kg-image"></figure>
 	<p>たとえば、ほとんどの組織は、名前、住所、役職などの従業員に関する情報を保存するOktaやAzure Active DirectoryなどのIDプロバイダーを保有しています。また、組織は高い確率で共同作業にクラウドベースのアプリケーションを使用しています。クラウドベースのアプリケーションにアクセスするには、従業員がアカウントを作成し、ユーザー名とパスワードでログインする必要があります。これらのアカウントを手動で作成・管理する代わりに、組織はSCIMを使用してプロセスを自動化することができます。オンプレミスのシステムとクラウドベースのアプリケーションの両方がSCIMに対応するように構成されています。 </p>
 	<p>新しい従業員がIDプロバイダーに追加または削除されると、SCIMはオンプレミスのシステムの情報を使用して、クラウドベースのアプリケーションにその従業員のアカウントを自動的に作成します。役職の変更など、IDプロバイダーで従業員の情報が更新されると、SCIMはクラウドベースのアプリケーションの対応する情報を自動的に更新します。従業員が退職する場合、SCIMを使用して両方のシステムからアカウントを削除することができます。 </p>
 	<p>SCIMによって、組織は複数のシステムをまたいでユーザーのIDとアクセス権を効率的に管理することができ、手動による介入の必要性を減らし、ユーザー情報が正確かつ最新のものであることを保証することができます。</p>
