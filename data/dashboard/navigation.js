@@ -189,7 +189,7 @@ const navigation = {
 			url: "/workers/plans",
 			hasPermission: function(i) {
 				var X = (0, o.getSubscriptions)(i);
-				return !(0, j.ky)(X, [T.uD.UnboundEnterpriseTrial])
+				return !(0, j.ky)(X, [I.uD.UnboundEnterpriseTrial])
 			}
 		}]
 	}, {
