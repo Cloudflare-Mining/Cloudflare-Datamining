@@ -1,5 +1,51 @@
 [
 	{
+		"id": "ccf93de592091ce5e210c816337a37d4",
+		"name": "Zone Versioning Read (Account-Wide)",
+		"description": "Can view Zone Versioning for all domains in account",
+		"permissions": {
+			"zone_versioning": {
+				"read": true,
+				"edit": false
+			},
+			"waf": {
+				"read": true,
+				"edit": false
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
+		"id": "973118f5c129494d4b7df026e598dce6",
+		"name": "Zone Versioning (Account-Wide)",
+		"description": "Can view and edit Zone Versioning for all domains in account'",
+		"permissions": {
+			"zone_versioning": {
+				"read": true,
+				"edit": true
+			},
+			"waf": {
+				"read": true,
+				"edit": true
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
 		"id": "5c35d2bf3a545e6b7560b826c0d23c39",
 		"name": "Minimal Account Access",
 		"description": "Can view account, and nothing else",
@@ -516,6 +562,10 @@
 		"name": "Super Administrator - All Privileges",
 		"description": "Can edit any Cloudflare setting, make purchases, update billing, and manage memberships. Super Administrators can revoke the access of other Super Administrators.",
 		"permissions": {
+			"zone_settings": {
+				"read": true,
+				"edit": true
+			},
 			"worker": {
 				"read": true,
 				"edit": true
@@ -578,10 +628,6 @@
 				"edit": true
 			},
 			"stream": {
-				"read": true,
-				"edit": true
-			},
-			"zone_settings": {
 				"read": true,
 				"edit": true
 			},
@@ -1202,6 +1248,10 @@
 		"name": "Administrator",
 		"description": "Can access the full account, except for membership management and billing.",
 		"permissions": {
+			"zone_settings": {
+				"read": true,
+				"edit": true
+			},
 			"worker": {
 				"read": true,
 				"edit": true
@@ -1260,10 +1310,6 @@
 				"edit": true
 			},
 			"stream": {
-				"read": true,
-				"edit": true
-			},
-			"zone_settings": {
 				"read": true,
 				"edit": true
 			},
