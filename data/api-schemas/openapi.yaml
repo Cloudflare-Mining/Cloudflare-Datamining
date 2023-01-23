@@ -477,8 +477,9 @@ components:
             items: {}
     CloudflareClientAPI_enabled:
       type: boolean
-      description: Flag that indicates if the job is enabled.
+      description: Whether or not the Keyless SSL is on or off.
       example: false
+      readOnly: true
     CloudflareClientAPI_exclude:
       type: array
       description: Rules evaluated with a NOT logical operator. To match a policy,
@@ -501,21 +502,27 @@ components:
         type:
           $ref: '#/components/schemas/apps_components-schemas-type'
     CloudflareClientAPI_filter:
-      type: string
-      description: Filters to drill down into specific events.
-      example: '{"where":{"and":[{"key":"ClientCountry","operator":"neq","value":"ca"}]}}'
+      type: object
+      properties:
+        description:
+          $ref: '#/components/schemas/filters_components-schemas-description'
+        expression:
+          $ref: '#/components/schemas/expression'
+        id:
+          $ref: '#/components/schemas/filters_components-schemas-id'
+        paused:
+          $ref: '#/components/schemas/filters_components-schemas-paused'
+        ref:
+          $ref: '#/components/schemas/schemas-ref'
     CloudflareClientAPI_frequency:
       type: string
-      description: The frequency at which Cloudflare sends batches of logs to your
-        destination. Setting frequency to high sends your logs in larger quantities
-        of smaller files. Setting frequency to low sends logs in smaller quantities
-        of larger files.
+      description: How often the subscription is renewed automatically.
       enum:
-      - high
-      - low
-      default: high
-      example: high
-      nullable: true
+      - weekly
+      - monthly
+      - quarterly
+      - yearly
+      example: monthly
     CloudflareClientAPI_groups:
       type: object
       description: An object that allows you to enable or disable WAF rule groups
@@ -526,9 +533,9 @@ components:
       example:
         ea8687e59929c1fd05ba97574ad43f77: default
     CloudflareClientAPI_id:
-      type: integer
-      description: Unique id of the job.
-      minimum: 1
+      type: string
+      description: Identifier of a recommedation result.
+      example: ssl_recommendation
     CloudflareClientAPI_id_response:
       allOf:
       - $ref: '#/components/schemas/api-response-single'
@@ -540,10 +547,9 @@ components:
                 $ref: '#/components/schemas/dns-secondary-secondary-zone_components-schemas-identifier'
     CloudflareClientAPI_identifier:
       type: string
-      description: Identifier
-      example: 023e105f4ecef8ad9ca31a8372d0c353
+      description: Policy identifier.
+      example: f267e341f3dd4697bd3b9f71dd96247f
       readOnly: true
-      maxLength: 32
     CloudflareClientAPI_identity-providers:
       type: object
       properties:
@@ -637,13 +643,9 @@ components:
       readOnly: true
     CloudflareClientAPI_name:
       type: string
-      description: Optional human readable job name. Not unique. Cloudflare suggests
-        that you set this to a meaningful string, like the domain name, to make it
-        easier to identify your job.
-      example: example.com
-      nullable: true
-      maxLength: 512
-      pattern: ^[a-zA-Z0-9\-\.]*$
+      description: Token name.
+      example: readonly token
+      maxLength: 120
     CloudflareClientAPI_organizations:
       type: object
       properties:
@@ -909,15 +911,10 @@ components:
           $ref: '#/components/schemas/timestamp'
     CloudflareClientAPI_validate_response:
       allOf:
-      - $ref: '#/components/schemas/api-response-common'
+      - $ref: '#/components/schemas/api-response-single'
       - properties:
           result:
-            type: object
-            nullable: true
             properties:
-              message:
-                type: string
-                example: ""
               valid:
                 type: boolean
                 example: true
@@ -9409,9 +9406,8 @@ components:
       example: Enabled
     enabled:
       type: boolean
-      description: Whether or not the Keyless SSL is on or off.
+      description: Flag that indicates if the job is enabled.
       example: false
-      readOnly: true
     enabled_download_phase:
       type: boolean
       description: Set to enable antivirus scan on downloads.
@@ -9871,18 +9867,9 @@ components:
       readOnly: true
       maxLength: 32
     filter:
-      type: object
-      properties:
-        description:
-          $ref: '#/components/schemas/filters_components-schemas-description'
-        expression:
-          $ref: '#/components/schemas/expression'
-        id:
-          $ref: '#/components/schemas/filters_components-schemas-id'
-        paused:
-          $ref: '#/components/schemas/filters_components-schemas-paused'
-        ref:
-          $ref: '#/components/schemas/schemas-ref'
+      type: string
+      description: Filters to drill down into specific events.
+      example: '{"where":{"and":[{"key":"ClientCountry","operator":"neq","value":"ca"}]}}'
     filter-delete-response-collection:
       allOf:
       - $ref: '#/components/schemas/api-response-collection'
@@ -9892,7 +9879,7 @@ components:
             type: array
             items:
               allOf:
-              - $ref: '#/components/schemas/filter'
+              - $ref: '#/components/schemas/CloudflareClientAPI_filter'
               - type: object
                 required:
                 - id
@@ -9905,7 +9892,7 @@ components:
         properties:
           result:
             allOf:
-            - $ref: '#/components/schemas/filter'
+            - $ref: '#/components/schemas/CloudflareClientAPI_filter'
             - type: object
               required:
               - id
@@ -9955,7 +9942,7 @@ components:
       - properties:
           filter:
             oneOf:
-            - $ref: '#/components/schemas/filter'
+            - $ref: '#/components/schemas/CloudflareClientAPI_filter'
             - $ref: '#/components/schemas/deleted-filter'
       type: object
     filter-rules-response-collection:
@@ -10196,13 +10183,16 @@ components:
       example: OK
     frequency:
       type: string
-      description: How often the subscription is renewed automatically.
+      description: The frequency at which Cloudflare sends batches of logs to your
+        destination. Setting frequency to high sends your logs in larger quantities
+        of smaller files. Setting frequency to low sends logs in smaller quantities
+        of larger files.
       enum:
-      - weekly
-      - monthly
-      - quarterly
-      - yearly
-      example: monthly
+      - high
+      - low
+      default: high
+      example: high
+      nullable: true
     full_response:
       allOf:
       - $ref: '#/components/schemas/api-response-single'
@@ -11509,7 +11499,7 @@ components:
         fields:
           $ref: '#/components/schemas/fields'
         filter:
-          $ref: '#/components/schemas/CloudflareClientAPI_filter'
+          $ref: '#/components/schemas/filter'
         sample:
           $ref: '#/components/schemas/sample'
         session_id:
@@ -12294,7 +12284,7 @@ components:
           example: "2014-01-01T05:20:00Z"
           readOnly: true
         enabled:
-          $ref: '#/components/schemas/enabled'
+          $ref: '#/components/schemas/CloudflareClientAPI_enabled'
         host:
           $ref: '#/components/schemas/schemas-host'
         id:
@@ -13321,11 +13311,11 @@ components:
         destination_conf:
           $ref: '#/components/schemas/destination_conf'
         enabled:
-          $ref: '#/components/schemas/CloudflareClientAPI_enabled'
+          $ref: '#/components/schemas/enabled'
         error_message:
           $ref: '#/components/schemas/error_message'
         frequency:
-          $ref: '#/components/schemas/CloudflareClientAPI_frequency'
+          $ref: '#/components/schemas/frequency'
         id:
           $ref: '#/components/schemas/CloudflareClientAPI_id'
         last_complete:
@@ -19966,7 +19956,7 @@ components:
             type: array
             items:
               allOf:
-              - $ref: '#/components/schemas/filter'
+              - $ref: '#/components/schemas/CloudflareClientAPI_filter'
               - type: object
                 required:
                 - id
@@ -19982,7 +19972,7 @@ components:
           result:
             oneOf:
             - allOf:
-              - $ref: '#/components/schemas/filter'
+              - $ref: '#/components/schemas/CloudflareClientAPI_filter'
               - type: object
                 required:
                 - id
@@ -23087,7 +23077,7 @@ components:
         current_period_start:
           $ref: '#/components/schemas/current_period_start'
         frequency:
-          $ref: '#/components/schemas/frequency'
+          $ref: '#/components/schemas/CloudflareClientAPI_frequency'
         id:
           $ref: '#/components/schemas/subscription-v2_components-schemas-identifier'
         price:
@@ -24570,10 +24560,15 @@ components:
           example: ^4[0-9]{6,}$
     validate_response:
       allOf:
-      - $ref: '#/components/schemas/api-response-single'
+      - $ref: '#/components/schemas/api-response-common'
       - properties:
           result:
+            type: object
+            nullable: true
             properties:
+              message:
+                type: string
+                example: ""
               valid:
                 type: boolean
                 example: true
@@ -28294,14 +28289,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/validate_response'
+                - $ref: '#/components/schemas/CloudflareClientAPI_validate_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Validate pattern response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/validate_response'
+                $ref: '#/components/schemas/CloudflareClientAPI_validate_response'
       security:
       - api_email: []
         api_key: []
@@ -31465,9 +31460,9 @@ paths:
                 destination_conf:
                   $ref: '#/components/schemas/destination_conf'
                 enabled:
-                  $ref: '#/components/schemas/CloudflareClientAPI_enabled'
+                  $ref: '#/components/schemas/enabled'
                 frequency:
-                  $ref: '#/components/schemas/CloudflareClientAPI_frequency'
+                  $ref: '#/components/schemas/frequency'
                 logpull_options:
                   $ref: '#/components/schemas/logpull_options'
                 name:
@@ -31608,9 +31603,9 @@ paths:
                 destination_conf:
                   $ref: '#/components/schemas/destination_conf'
                 enabled:
-                  $ref: '#/components/schemas/CloudflareClientAPI_enabled'
+                  $ref: '#/components/schemas/enabled'
                 frequency:
-                  $ref: '#/components/schemas/CloudflareClientAPI_frequency'
+                  $ref: '#/components/schemas/frequency'
                 logpull_options:
                   $ref: '#/components/schemas/logpull_options'
                 ownership_challenge:
@@ -31793,14 +31788,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/CloudflareClientAPI_validate_response'
+                - $ref: '#/components/schemas/validate_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Validate origin response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CloudflareClientAPI_validate_response'
+                $ref: '#/components/schemas/validate_response'
       security:
       - api_email: []
         api_key: []
@@ -72841,7 +72836,7 @@ paths:
               type: object
               properties:
                 enabled:
-                  $ref: '#/components/schemas/enabled'
+                  $ref: '#/components/schemas/CloudflareClientAPI_enabled'
                 host:
                   $ref: '#/components/schemas/schemas-host'
                 name:
@@ -72996,7 +72991,7 @@ paths:
                 fields:
                   $ref: '#/components/schemas/fields'
                 filter:
-                  $ref: '#/components/schemas/CloudflareClientAPI_filter'
+                  $ref: '#/components/schemas/filter'
                 sample:
                   $ref: '#/components/schemas/sample'
       responses:
@@ -73075,9 +73070,9 @@ paths:
                 destination_conf:
                   $ref: '#/components/schemas/destination_conf'
                 enabled:
-                  $ref: '#/components/schemas/CloudflareClientAPI_enabled'
+                  $ref: '#/components/schemas/enabled'
                 frequency:
-                  $ref: '#/components/schemas/CloudflareClientAPI_frequency'
+                  $ref: '#/components/schemas/frequency'
                 logpull_options:
                   $ref: '#/components/schemas/logpull_options'
                 name:
@@ -73218,9 +73213,9 @@ paths:
                 destination_conf:
                   $ref: '#/components/schemas/destination_conf'
                 enabled:
-                  $ref: '#/components/schemas/CloudflareClientAPI_enabled'
+                  $ref: '#/components/schemas/enabled'
                 frequency:
-                  $ref: '#/components/schemas/CloudflareClientAPI_frequency'
+                  $ref: '#/components/schemas/frequency'
                 logpull_options:
                   $ref: '#/components/schemas/logpull_options'
                 ownership_challenge:
@@ -73403,14 +73398,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/CloudflareClientAPI_validate_response'
+                - $ref: '#/components/schemas/validate_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Validate origin response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CloudflareClientAPI_validate_response'
+                $ref: '#/components/schemas/validate_response'
       security:
       - api_email: []
         api_key: []
