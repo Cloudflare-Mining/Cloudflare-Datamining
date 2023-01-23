@@ -36,7 +36,7 @@ const navigation = {
 		url: "/authentication",
 		iconType: "key",
 		hasPermission: function(s) {
-			return !(0, u.n3)() && !(0, n.z1)("oauth-access-management")(s)
+			return !(0, l.n3)() && !(0, n.z1)("oauth-access-management")(s)
 		}
 	}, {
 		title: "navigation.profile.api_tokens",
@@ -91,7 +91,7 @@ const navigation = {
 			url: "/analytics",
 			labels: ["beta"],
 			hasPermission: function(s) {
-				return O(s)
+				return j(s)
 			}
 		}, {
 			title: "navigation.account.network_analytics",
@@ -99,33 +99,33 @@ const navigation = {
 				return (0, t.getAccountFlipperFlag)(s, "account_analytics", "dos_analytics_v2") ? "/network-analytics/all-traffic" : "/network-analytics"
 			},
 			hasPermission: function(s) {
-				return O(s) && !!(0, t.getAccountFlipperFlag)(s, "account_analytics", "dos_analytics")
+				return j(s) && !!(0, t.getAccountFlipperFlag)(s, "account_analytics", "dos_analytics")
 			}
 		}, {
 			title: "navigation.account.web_analytics",
 			url: "/web-analytics",
 			hasPermission: function(s) {
-				return O(s)
+				return j(s)
 			}
 		}, {
 			title: "navigation.account.carbon",
 			url: "/carbon",
 			hasPermission: function(s) {
-				return O(s) && !!(0, t.getAccountFlipperFlag)(s, "account_analytics", "carbon_dashboard")
+				return j(s) && !!(0, t.getAccountFlipperFlag)(s, "account_analytics", "carbon_dashboard")
 			}
 		}, {
 			title: "account.magic.network_monitoring.navigation",
 			url: "/network-monitoring",
 			labels: ["beta"],
 			hasPermission: function(s) {
-				return O(s) && !!(0, t.getAccountFlipperFlag)(s, "account_analytics", "magic_network_monitoring")
+				return j(s) && !!(0, t.getAccountFlipperFlag)(s, "account_analytics", "magic_network_monitoring")
 			}
 		}, {
 			title: "navigation.account.logs",
 			url: "/logs",
 			labels: ["new"],
 			hasPermission: function(s) {
-				return O(s) && (0, h.S6)(s) && !!(0, n.z1)("account-logpush")(s)
+				return j(s) && (0, h.S6)(s) && !!(0, n.z1)("account-logpush")(s)
 			}
 		}]
 	}, {
@@ -134,7 +134,7 @@ const navigation = {
 		iconType: "applications",
 		labels: ["beta"],
 		hasPermission: function(s) {
-			return O(s) && (0, E.dU)(s)
+			return j(s) && (0, D.dU)(s)
 		}
 	}, {
 		title: "navigation.account.calls",
@@ -142,21 +142,21 @@ const navigation = {
 		labels: ["beta"],
 		iconType: "user-multi",
 		hasPermission: function(s) {
-			return O(s) && (!!(0, t.getAccountFlipperFlag)(s, "calls", "enabled") || !!(0, t.getAccountFlipperFlag)(s, "Calls", "enabled"))
+			return j(s) && (!!(0, t.getAccountFlipperFlag)(s, "calls", "enabled") || !!(0, t.getAccountFlipperFlag)(s, "Calls", "enabled"))
 		}
 	}, {
 		title: "navigation.account.pages",
 		url: "/pages",
 		iconType: "pages-logo",
 		hasPermission: function(s) {
-			return O(s)
+			return j(s)
 		}
 	}, {
 		title: "navigation.account.workers",
 		url: "/workers",
 		iconType: "edgeworker",
 		hasPermission: function(s) {
-			return O(s)
+			return j(s)
 		},
 		pages: [{
 			title: "navigation.common.overview",
@@ -189,7 +189,7 @@ const navigation = {
 			url: "/workers/plans",
 			hasPermission: function(s) {
 				var oe = (0, o.getSubscriptions)(s);
-				return !(0, j.ky)(oe, [I.uD.UnboundEnterpriseTrial])
+				return !(0, L.ky)(oe, [I.uD.UnboundEnterpriseTrial])
 			}
 		}]
 	}, {
@@ -198,7 +198,7 @@ const navigation = {
 		iconType: "workers-for-platforms",
 		testId: "workers-for-platforms",
 		hasPermission: function(s) {
-			return !!(0, n.z1)("workers-for-platforms")(s) && O(s) && ((0, f.hasEnterpriseAccountEntitlement)(s) || !!(0, t.getAccountFlipperFlag)(s, "workers", "workers_for_saas"))
+			return !!(0, n.z1)("workers-for-platforms")(s) && j(s) && ((0, f.hasEnterpriseAccountEntitlement)(s) || !!(0, t.getAccountFlipperFlag)(s, "workers", "workers_for_saas"))
 		}
 	}, {
 		title: "navigation.account.r2",
@@ -206,13 +206,13 @@ const navigation = {
 		iconType: "r2",
 		testId: "sidenav-r2-link",
 		hasPermission: function(s) {
-			return O(s)
+			return j(s)
 		},
 		pages: [{
 			title: "navigation.account.r2.overview",
 			url: "/r2/overview",
 			hasPermission: function(s) {
-				return _(s)
+				return N(s)
 			}
 		}, {
 			title: "navigation.account.r2_slurper",
@@ -220,7 +220,7 @@ const navigation = {
 			testId: "sidenav-r2Migrator-link",
 			labels: ["beta"],
 			hasPermission: function(s) {
-				return _(s)
+				return N(s)
 			}
 		}]
 	}, {
@@ -228,7 +228,7 @@ const navigation = {
 		url: "/stream",
 		iconType: "stream",
 		hasPermission: function(s) {
-			return O(s)
+			return j(s)
 		},
 		pages: [{
 			title: "navigation.account.stream.videos",
@@ -256,7 +256,7 @@ const navigation = {
 		iconType: "image",
 		testId: "sidenav-images-link",
 		hasPermission: function(s) {
-			return O(s) && !!(0, t.getAccountFlipperFlag)(s, "cloudflare_images", "early_release_access")
+			return j(s) && !!(0, t.getAccountFlipperFlag)(s, "cloudflare_images", "early_release_access")
 		},
 		pages: [{
 			title: "navigation.account.images",
@@ -290,50 +290,50 @@ const navigation = {
 		url: "/security-center",
 		iconType: "product-security-center",
 		hasPermission: function(s) {
-			return O(s) && (0, M.xU)(s)
+			return j(s) && (0, M.xU)(s)
 		},
 		pages: [{
 			title: "navigation.account.security_center.security_insights",
 			url: "/security-center",
 			hasPermission: function(s) {
-				return O(s) && (0, M.sL)(s)
+				return j(s) && (0, M.sL)(s)
 			}
 		}, {
 			title: "navigation.account.security_center.security_analytics",
 			url: "/security-center/analytics",
 			labels: ["beta"],
 			hasPermission: function(s) {
-				return O(s) && (0, M.sL)(s) && !!(0, n.z1)("account-level-security-analytics")(s)
+				return j(s) && (0, M.sL)(s) && !!(0, n.z1)("account-level-security-analytics")(s)
 			}
 		}, {
 			title: "navigation.account.security_center.infrastructure",
 			url: "/security-center/inventory",
 			hasPermission: function(s) {
-				return O(s) && (0, M.sL)(s)
+				return j(s) && (0, M.sL)(s)
 			}
 		}, {
 			title: "navigation.account.security_center.investigate",
 			url: "/security-center/investigate",
 			hasPermission: function(s) {
-				return O(s) && (0, M.TT)(s)
+				return j(s) && (0, M.TT)(s)
 			}
 		}, {
 			title: "navigation.account.security_center.reports",
 			url: "/security-center/reports",
 			hasPermission: function(s) {
-				return O(s) && (0, M.jD)(s)
+				return j(s) && (0, M.jD)(s)
 			}
 		}, {
 			title: "navigation.account.security_center.brand_protection",
 			url: "/security-center/brand-protection",
 			hasPermission: function(s) {
-				return O(s) && (0, M.BU)(s)
+				return j(s) && (0, M.BU)(s)
 			}
 		}, {
 			title: "navigation.account.security_center.cfone",
 			url: "/security-center/cloudforce-one",
 			hasPermission: function(s) {
-				return O(s) && (0, M.sK)(s)
+				return j(s) && (0, M.sK)(s)
 			}
 		}]
 	}, {
@@ -341,7 +341,7 @@ const navigation = {
 		url: "/application-security",
 		iconType: "cloudflare-security-application",
 		hasPermission: function(s) {
-			return O(s) && !!X(s)
+			return j(s) && !!X(s)
 		},
 		pages: [{
 			title: "navigation.account.firewall_rulesets.application_firewall",
@@ -355,14 +355,14 @@ const navigation = {
 		url: "/network-security",
 		iconType: "cloudflare-security-network",
 		hasPermission: function(s) {
-			return O(s) && !!F(s)
+			return j(s) && !!F(s)
 		},
 		pages: [{
 			title: "navigation.account.firewall_rulesets.ddos",
 			url: "/network-security/ddos",
 			hasPermission: function(s) {
-				var oe = !!$(s) && !!de(s);
-				return !!ne(s) || oe
+				var oe = !!$(s) && !!me(s);
+				return !!te(s) || oe
 			}
 		}, {
 			title: "navigation.account.firewall_rulesets.magic_firewall",
@@ -379,7 +379,7 @@ const navigation = {
 		testId: "sidenav-turnstile-link",
 		labels: ["beta"],
 		hasPermission: function(s) {
-			return O(s) && !!(0, n.z1)("managed-challenge-ui")(s)
+			return j(s) && !!(0, n.z1)("managed-challenge-ui")(s)
 		}
 	}, {
 		title: "navigation.account.teams",
@@ -391,7 +391,7 @@ const navigation = {
 		iconType: "cloudflare-zero-trust",
 		labels: ["external-link"],
 		hasPermission: function(s) {
-			return O(s)
+			return j(s)
 		}
 	}, {
 		title: "navigation.account.ip_addresses",
@@ -402,24 +402,24 @@ const navigation = {
 			title: "navigation.account.ip_addresses.ip_prefixes",
 			url: "/ip-addresses/ip-prefixes",
 			hasPermission: function(s) {
-				return O(s) && !!(0, t.getAccountFlipperFlag)(s, "addressing", "ip_prefixes")
+				return j(s) && !!(0, t.getAccountFlipperFlag)(s, "addressing", "ip_prefixes")
 			}
 		}, {
 			title: "navigation.account.ip_addresses.proxy-ips",
 			url: "/ip-addresses/proxy-ips",
 			hasPermission: function(s) {
-				return O(s) && !!(0, n.z1)("proxy-ips-ui")(s)
+				return j(s) && !!(0, n.z1)("proxy-ips-ui")(s)
 			}
 		}],
 		hasPermission: function(s) {
-			return O(s) && !!(0, t.getAccountFlipperFlag)(s, "addressing", "ip_prefixes")
+			return j(s) && !!(0, t.getAccountFlipperFlag)(s, "addressing", "ip_prefixes")
 		}
 	}, {
 		title: "navigation.account.magic_transit",
 		url: "/magic-transit",
 		iconType: "magic-transit-logo",
 		hasPermission: function(s) {
-			return O(s) && !!(0, t.getAccountFlipperFlag)(s, "magic_transit", "mt_home")
+			return j(s) && !!(0, t.getAccountFlipperFlag)(s, "magic_transit", "mt_home")
 		}
 	}, {
 		title: "navigation.account.magic_wan",
@@ -427,7 +427,7 @@ const navigation = {
 		iconType: "cloudflare-magic-wan",
 		labels: ["new"],
 		hasPermission: function(s) {
-			return O(s) && !!(0, t.getAccountFlipperFlag)(s, "magic_wan", "mw_home")
+			return j(s) && !!(0, t.getAccountFlipperFlag)(s, "magic_wan", "mw_home")
 		}
 	}, {
 		title: "account.bulk_redirects.title",
@@ -435,14 +435,14 @@ const navigation = {
 		iconType: "filter",
 		labels: ["beta"],
 		hasPermission: function(s) {
-			return O(s)
+			return j(s)
 		}
 	}, {
 		title: "navigation.account.notifications",
 		url: "/notifications",
 		iconType: "notifications",
 		hasPermission: function(s) {
-			return O(s)
+			return j(s)
 		}
 	}, {
 		title: "navigation.account.manage_account",
@@ -455,28 +455,28 @@ const navigation = {
 			url: "/members",
 			testId: "account-homepage-members",
 			hasPermission: function(s) {
-				return O(s)
+				return j(s)
 			}
 		}, {
 			title: "navigation.account.audit_log",
 			url: "/audit-log",
 			testId: "account-homepage-audit-logs",
 			hasPermission: function(s) {
-				return (0, A.b)(s) ? O(s) : (0, t.getPermission)(s)("auditlogs").read
+				return (0, A.b)(s) ? j(s) : (0, t.getPermission)(s)("auditlogs").read
 			}
 		}, {
 			title: "navigation.account.billing",
 			url: "/billing",
 			testId: "account-homepage-billing",
 			hasPermission: function(s) {
-				return O(s)
+				return j(s)
 			}
 		}, {
 			title: "navigation.account.configurations",
 			url: "/configurations",
 			testId: "account-homepage-configurations",
 			hasPermission: function(s) {
-				return O(s)
+				return j(s)
 			}
 		}]
 	}],
@@ -493,7 +493,7 @@ const navigation = {
 		testId: "zone-navigation-link-analytics",
 		canBeVersioned: !0,
 		hasPermission: function(s) {
-			return g(s, "analytics", "analytics")
+			return p(s, "analytics", "analytics")
 		},
 		pages: [{
 			title: "navigation.zone.analytics.traffic",
@@ -565,7 +565,7 @@ const navigation = {
 		iconType: "git-branch",
 		testId: "zone-navigation-link-http_applications_v2",
 		hasPermission: function(s) {
-			return !!(0, n.z1)("versioning-enablement")(s) && g(s, "zone_versioning", "versioning")
+			return !!(0, n.z1)("versioning-enablement")(s) && p(s, "zone_versioning", "versioning")
 		}
 	}, {
 		title: "navigation.zone.dns",
@@ -574,7 +574,7 @@ const navigation = {
 		iconType: "reliability-dns",
 		testId: "zone-navigation-link-dns",
 		hasPermission: function(s) {
-			return g(s, "dns_records", "dns-record")
+			return p(s, "dns_records", "dns-record")
 		},
 		pages: [{
 			title: "navigation.zone.dns.records",
@@ -600,7 +600,7 @@ const navigation = {
 		iconType: "email-forwarding",
 		testId: "zone-navigation-link-email",
 		hasPermission: function(s) {
-			return !(0, f.zoneIsDNSOnly)(s) && g(s, "dns_records", "dns-record")
+			return !(0, f.zoneIsDNSOnly)(s) && p(s, "dns_records", "dns-record")
 		},
 		pages: [{
 			title: "navigation.zone.email.routing",
@@ -619,11 +619,11 @@ const navigation = {
 		testId: "zone-navigation-link-spectrum",
 		hasPermission: function(s) {
 			var oe = (0, B.getZone)(s);
-			if ((0, f.zoneIsDNSOnly)(s) || !l(s, "zone_settings", "spectrum.app") || !oe) return !1;
+			if ((0, f.zoneIsDNSOnly)(s) || !u(s, "zone_settings", "spectrum.app") || !oe) return !1;
 			var se = !!((0, i.userHasEntZones)(s) || (0, B.userHasDelegatedEntZones)(s)),
-				ce = !!(0, B.getZoneFlipperFlag)(s, "spectrum", "enabled"),
-				Te = !!(0, B.isFree)(oe);
-			return ce || se || !Te
+				ye = !!(0, B.getZoneFlipperFlag)(s, "spectrum", "enabled"),
+				Ue = !!(0, B.isFree)(oe);
+			return ye || se || !Ue
 		}
 	}, {
 		title: "navigation.zone.ssl-tls",
@@ -632,7 +632,7 @@ const navigation = {
 		testId: "zone-navigation-link-ssl-tls",
 		canBeVersioned: !0,
 		hasPermission: function(s) {
-			return !(0, f.zoneIsDNSOnly)(s) && g(s, "ssl", "ssl.cert")
+			return !(0, f.zoneIsDNSOnly)(s) && p(s, "ssl", "ssl.cert")
 		},
 		pages: [{
 			title: "navigation.common.overview",
@@ -672,7 +672,7 @@ const navigation = {
 		testId: "zone-navigation-link-security",
 		canBeVersioned: !0,
 		hasPermission: function(s) {
-			return !(0, f.zoneIsDNSOnly)(s) && g(s, "waf", "firewall.rule")
+			return !(0, f.zoneIsDNSOnly)(s) && p(s, "waf", "firewall.rule")
 		},
 		pages: [{
 			title: "navigation.zone.security.analytics",
@@ -730,7 +730,7 @@ const navigation = {
 		iconType: "cloudflare-access",
 		testId: "zone-navigation-link-access",
 		hasPermission: function(s) {
-			return !(0, f.zoneIsDNSOnly)(s) && (l(s, "access", "access.app") || l(s, "access", "access.zone.app"))
+			return !(0, f.zoneIsDNSOnly)(s) && (u(s, "access", "access.app") || u(s, "access", "access.zone.app"))
 		}
 	}, {
 		title: "navigation.zone.speed",
@@ -739,7 +739,7 @@ const navigation = {
 		testId: "zone-navigation-link-speed",
 		canBeVersioned: !0,
 		hasPermission: function(s) {
-			return !(0, f.zoneIsDNSOnly)(s) && g(s, "zone_settings", "setting")
+			return !(0, f.zoneIsDNSOnly)(s) && p(s, "zone_settings", "setting")
 		},
 		pages: [{
 			title: "navigation.common.overview",
@@ -772,7 +772,7 @@ const navigation = {
 		testId: "zone-navigation-link-caching",
 		canBeVersioned: !0,
 		hasPermission: function(s) {
-			return !(0, f.zoneIsDNSOnly)(s) && g(s, "zone_settings", "setting")
+			return !(0, f.zoneIsDNSOnly)(s) && p(s, "zone_settings", "setting")
 		},
 		pages: [{
 			title: "navigation.common.overview",
@@ -788,14 +788,14 @@ const navigation = {
 			canBeVersioned: !0,
 			labels: ["beta"],
 			hasPermission: function(s) {
-				return g(s, "waf", "firewall.rule") || g(s, "zone_settings", "page-rule")
+				return p(s, "waf", "firewall.rule") || p(s, "zone_settings", "page-rule")
 			}
 		}, {
 			title: "navigation.zone.caching.tiered_cache",
 			url: "/caching/tiered-cache",
 			canBeVersioned: !0,
 			hasPermission: function(s) {
-				return O(s)
+				return j(s)
 			}
 		}, {
 			title: "navigation.zone.caching.cache_reserve",
@@ -813,7 +813,7 @@ const navigation = {
 		testId: "zone-navigation-link-workers",
 		canBeVersioned: !0,
 		hasPermission: function(s) {
-			return !(0, f.zoneIsDNSOnly)(s) && l(s, "worker", "worker.route")
+			return !(0, f.zoneIsDNSOnly)(s) && u(s, "worker", "worker.route")
 		}
 	}, {
 		title: "navigation.zone.rules",
@@ -822,7 +822,7 @@ const navigation = {
 		testId: "zone-navigation-link-page-rules",
 		canBeVersioned: !0,
 		hasPermission: function(s) {
-			return !(0, f.zoneIsDNSOnly)(s) && g(s, "zone_settings", "page-rule")
+			return !(0, f.zoneIsDNSOnly)(s) && p(s, "zone_settings", "page-rule")
 		},
 		pages: [{
 			title: "navigation.zone.rules.page_rules",
@@ -834,7 +834,7 @@ const navigation = {
 			url: "/rules/configuration-rules",
 			canBeVersioned: !0,
 			hasPermission: function(s) {
-				return g(s, "waf", "firewall.rule") || g(s, "zone_settings", "page-rule")
+				return p(s, "waf", "firewall.rule") || p(s, "zone_settings", "page-rule")
 			}
 		}, {
 			title: "navigation.zone.rules.transform_rules",
@@ -846,7 +846,7 @@ const navigation = {
 			url: "/rules/redirect-rules",
 			canBeVersioned: !0,
 			hasPermission: function(s) {
-				return g(s, "zone_settings", "page-rule")
+				return p(s, "zone_settings", "page-rule")
 			}
 		}, {
 			title: "navigation.zone.rules.origin_rules",
@@ -854,14 +854,14 @@ const navigation = {
 			labels: ["beta"],
 			canBeVersioned: !0,
 			hasPermission: function(s) {
-				return g(s, "waf", "page-rule", "read")
+				return p(s, "waf", "page-rule", "read")
 			}
 		}, {
 			title: "navigation.zone.rules.settings",
 			url: "/rules/settings",
 			canBeVersioned: !0,
 			hasPermission: function(s) {
-				return g(s, "waf", "page-rule", "read")
+				return p(s, "waf", "page-rule", "read")
 			}
 		}]
 	}, {
@@ -871,7 +871,7 @@ const navigation = {
 		testId: "zone-navigation-link-network",
 		canBeVersioned: !0,
 		hasPermission: function(s) {
-			return !(0, f.zoneIsDNSOnly)(s) && g(s, "zone_settings", "setting")
+			return !(0, f.zoneIsDNSOnly)(s) && p(s, "zone_settings", "setting")
 		}
 	}, {
 		title: "navigation.zone.traffic",
@@ -880,7 +880,7 @@ const navigation = {
 		testId: "zone-navigation-link-traffic",
 		canBeVersioned: !0,
 		hasPermission: function(s) {
-			return g(s, "lb", "load-balancer") || g(s, "waitingroom", "waiting-room")
+			return p(s, "lb", "load-balancer") || p(s, "waitingroom", "waiting-room")
 		},
 		pages: [{
 			title: "navigation.zone.traffic.argo",
@@ -901,14 +901,14 @@ const navigation = {
 			url: "/traffic/load-balancing",
 			canBeVersioned: !1,
 			hasPermission: function(s) {
-				return O(s)
+				return j(s)
 			}
 		}, {
 			title: "navigation.zone.traffic.load_balancing_analytics",
 			url: "/traffic/load-balancing-analytics",
 			canBeVersioned: !1,
 			hasPermission: function(s) {
-				return O(s)
+				return j(s)
 			}
 		}, {
 			title: "navigation.zone.traffic.health_checks",
@@ -939,7 +939,7 @@ const navigation = {
 		testId: "zone-navigation-link-custom-pages",
 		canBeVersioned: !0,
 		hasPermission: function(s) {
-			return !(0, f.zoneIsDNSOnly)(s) && g(s, "zone_settings", "custom-page")
+			return !(0, f.zoneIsDNSOnly)(s) && p(s, "zone_settings", "custom-page")
 		}
 	}, {
 		title: "navigation.zone.apps",
@@ -948,7 +948,7 @@ const navigation = {
 		iconType: "platform-apps",
 		testId: "zone-navigation-link-apps",
 		hasPermission: function(s) {
-			return !(0, f.zoneIsDNSOnly)(s) && g(s, "app", "com.cloudflare.api.app.manage", "edit")
+			return !(0, f.zoneIsDNSOnly)(s) && p(s, "app", "com.cloudflare.api.app.manage", "edit")
 		}
 	}, {
 		title: "navigation.zone.scrape_shield",
@@ -957,7 +957,7 @@ const navigation = {
 		testId: "zone-navigation-link-content-protection",
 		canBeVersioned: !0,
 		hasPermission: function(s) {
-			return !(0, f.zoneIsDNSOnly)(s) && g(s, "zone_settings", "setting")
+			return !(0, f.zoneIsDNSOnly)(s) && p(s, "zone_settings", "setting")
 		}
 	}, {
 		title: "navigation.zone.zaraz",
@@ -971,7 +971,7 @@ const navigation = {
 		iconType: "zaraz",
 		testId: "zone-navigation-link-zaraz",
 		hasPermission: function(s) {
-			return !(0, f.zoneIsDNSOnly)(s) && g(s, "zaraz", "zaraz")
+			return !(0, f.zoneIsDNSOnly)(s) && p(s, "zaraz", "zaraz")
 		},
 		pages: [{
 			title: "navigation.zone.zaraz.tools.configuration",
@@ -1014,7 +1014,7 @@ const navigation = {
 		url: "/ssl-tls",
 		iconType: "lock",
 		hasPermission: function(s) {
-			return !(0, f.zoneIsDNSOnly)(s) && g(s, "ssl", "ssl.cert")
+			return !(0, f.zoneIsDNSOnly)(s) && p(s, "ssl", "ssl.cert")
 		},
 		pages: [{
 			title: "navigation.common.overview",
@@ -1028,7 +1028,7 @@ const navigation = {
 		url: "/security/waf",
 		iconType: "shield",
 		hasPermission: function(s) {
-			return !(0, f.zoneIsDNSOnly)(s) && g(s, "waf", "firewall.rule")
+			return !(0, f.zoneIsDNSOnly)(s) && p(s, "waf", "firewall.rule")
 		},
 		pages: [{
 			title: "navigation.zone.security.waf",
@@ -1048,7 +1048,7 @@ const navigation = {
 		url: "/speed/optimization",
 		iconType: "bolt",
 		hasPermission: function(s) {
-			return !(0, f.zoneIsDNSOnly)(s) && g(s, "zone_settings", "setting")
+			return !(0, f.zoneIsDNSOnly)(s) && p(s, "zone_settings", "setting")
 		},
 		pages: [{
 			title: "navigation.zone.speed.optimization",
@@ -1059,13 +1059,13 @@ const navigation = {
 		url: "/caching/tiered-cache",
 		iconType: "drive",
 		hasPermission: function(s) {
-			return !(0, f.zoneIsDNSOnly)(s) && g(s, "zone_settings", "setting")
+			return !(0, f.zoneIsDNSOnly)(s) && p(s, "zone_settings", "setting")
 		},
 		pages: [{
 			title: "navigation.zone.caching.tiered_cache",
 			url: "/caching/tiered-cache",
 			hasPermission: function(s) {
-				return O(s)
+				return j(s)
 			}
 		}, {
 			title: "navigation.zone.caching.configuration",
@@ -1076,14 +1076,14 @@ const navigation = {
 		url: "/workers",
 		iconType: "edgeworker",
 		hasPermission: function(s) {
-			return !(0, f.zoneIsDNSOnly)(s) && g(s, "worker", "worker.route")
+			return !(0, f.zoneIsDNSOnly)(s) && p(s, "worker", "worker.route")
 		}
 	}, {
 		title: "navigation.zone.rules",
 		url: "/rules",
 		iconType: "filter",
 		hasPermission: function(s) {
-			return !(0, f.zoneIsDNSOnly)(s) && g(s, "zone_settings", "page-rule")
+			return !(0, f.zoneIsDNSOnly)(s) && p(s, "zone_settings", "page-rule")
 		},
 		pages: [{
 			title: "navigation.zone.rules.page_rules",
@@ -1092,20 +1092,20 @@ const navigation = {
 			title: "navigation.zone.rules.transform_rules",
 			url: "/rules/transform-rules",
 			hasPermission: function(s) {
-				return g(s, "waf", "page-rule", "update")
+				return p(s, "waf", "page-rule", "update")
 			}
 		}, {
 			title: "navigation.zone.rules.origin_rules",
 			url: "/rules/origin-rules",
 			labels: ["beta"],
 			hasPermission: function(s) {
-				return g(s, "waf", "page-rule", "read")
+				return p(s, "waf", "page-rule", "read")
 			}
 		}, {
 			title: "navigation.zone.rules.settings",
 			url: "/rules/settings",
 			hasPermission: function(s) {
-				return g(s, "waf", "page-rule", "read")
+				return p(s, "waf", "page-rule", "read")
 			}
 		}]
 	}, {
@@ -1113,14 +1113,14 @@ const navigation = {
 		url: "/network",
 		iconType: "network",
 		hasPermission: function(s) {
-			return !(0, f.zoneIsDNSOnly)(s) && g(s, "zone_settings", "setting")
+			return !(0, f.zoneIsDNSOnly)(s) && p(s, "zone_settings", "setting")
 		}
 	}, {
 		title: "navigation.zone.traffic",
 		url: "/traffic",
 		iconType: "reliability-load-balancer",
 		hasPermission: function(s) {
-			return g(s, "lb", "load-balancer")
+			return p(s, "lb", "load-balancer")
 		},
 		pages: [{
 			title: "navigation.zone.traffic.argo",
@@ -1134,14 +1134,14 @@ const navigation = {
 		url: "/custom-pages",
 		iconType: "wrench",
 		hasPermission: function(s) {
-			return !(0, f.zoneIsDNSOnly)(s) && g(s, "zone_settings", "custom-page")
+			return !(0, f.zoneIsDNSOnly)(s) && p(s, "zone_settings", "custom-page")
 		}
 	}, {
 		title: "navigation.zone.scrape_shield",
 		url: "/content-protection",
 		iconType: "file",
 		hasPermission: function(s) {
-			return !(0, f.zoneIsDNSOnly)(s) && g(s, "zone_settings", "setting")
+			return !(0, f.zoneIsDNSOnly)(s) && p(s, "zone_settings", "setting")
 		}
 	}]
 }
