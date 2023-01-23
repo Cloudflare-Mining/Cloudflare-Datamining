@@ -748,8 +748,9 @@
 				]
 			},
 			"CloudflareClientAPI_enabled": {
-				"description": "Flag that indicates if the job is enabled.",
+				"description": "Whether or not the Keyless SSL is on or off.",
 				"example": false,
+				"readOnly": true,
 				"type": "boolean"
 			},
 			"CloudflareClientAPI_exclude": {
@@ -783,19 +784,35 @@
 				"type": "object"
 			},
 			"CloudflareClientAPI_filter": {
-				"description": "Filters to drill down into specific events.",
-				"example": "{\"where\":{\"and\":[{\"key\":\"ClientCountry\",\"operator\":\"neq\",\"value\":\"ca\"}]}}",
-				"type": "string"
+				"additionalProperties": false,
+				"properties": {
+					"description": {
+						"$ref": "#/components/schemas/filters_components-schemas-description"
+					},
+					"expression": {
+						"$ref": "#/components/schemas/expression"
+					},
+					"id": {
+						"$ref": "#/components/schemas/filters_components-schemas-id"
+					},
+					"paused": {
+						"$ref": "#/components/schemas/filters_components-schemas-paused"
+					},
+					"ref": {
+						"$ref": "#/components/schemas/schemas-ref"
+					}
+				},
+				"type": "object"
 			},
 			"CloudflareClientAPI_frequency": {
-				"default": "high",
-				"description": "The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.",
+				"description": "How often the subscription is renewed automatically.",
 				"enum": [
-					"high",
-					"low"
+					"weekly",
+					"monthly",
+					"quarterly",
+					"yearly"
 				],
-				"example": "high",
-				"nullable": true,
+				"example": "monthly",
 				"type": "string"
 			},
 			"CloudflareClientAPI_groups": {
@@ -807,9 +824,9 @@
 				"type": "object"
 			},
 			"CloudflareClientAPI_id": {
-				"description": "Unique id of the job.",
-				"minimum": 1,
-				"type": "integer"
+				"description": "Identifier of a recommedation result.",
+				"example": "ssl_recommendation",
+				"type": "string"
 			},
 			"CloudflareClientAPI_id_response": {
 				"allOf": [
@@ -831,9 +848,8 @@
 				]
 			},
 			"CloudflareClientAPI_identifier": {
-				"description": "Identifier",
-				"example": "023e105f4ecef8ad9ca31a8372d0c353",
-				"maxLength": 32,
+				"description": "Policy identifier.",
+				"example": "f267e341f3dd4697bd3b9f71dd96247f",
 				"readOnly": true,
 				"type": "string"
 			},
@@ -981,11 +997,9 @@
 				"type": "string"
 			},
 			"CloudflareClientAPI_name": {
-				"description": "Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.",
-				"example": "example.com",
-				"maxLength": 512,
-				"nullable": true,
-				"pattern": "^[a-zA-Z0-9\\-\\.]*$",
+				"description": "Token name.",
+				"example": "readonly token",
+				"maxLength": 120,
 				"type": "string"
 			},
 			"CloudflareClientAPI_organizations": {
@@ -1407,23 +1421,17 @@
 			"CloudflareClientAPI_validate_response": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/api-response-common"
+						"$ref": "#/components/schemas/api-response-single"
 					},
 					{
 						"properties": {
 							"result": {
-								"nullable": true,
 								"properties": {
-									"message": {
-										"example": "",
-										"type": "string"
-									},
 									"valid": {
 										"example": true,
 										"type": "boolean"
 									}
-								},
-								"type": "object"
+								}
 							}
 						}
 					}
@@ -13782,9 +13790,8 @@
 				"type": "string"
 			},
 			"enabled": {
-				"description": "Whether or not the Keyless SSL is on or off.",
+				"description": "Flag that indicates if the job is enabled.",
 				"example": false,
-				"readOnly": true,
 				"type": "boolean"
 			},
 			"enabled_download_phase": {
@@ -14409,25 +14416,9 @@
 				"type": "string"
 			},
 			"filter": {
-				"additionalProperties": false,
-				"properties": {
-					"description": {
-						"$ref": "#/components/schemas/filters_components-schemas-description"
-					},
-					"expression": {
-						"$ref": "#/components/schemas/expression"
-					},
-					"id": {
-						"$ref": "#/components/schemas/filters_components-schemas-id"
-					},
-					"paused": {
-						"$ref": "#/components/schemas/filters_components-schemas-paused"
-					},
-					"ref": {
-						"$ref": "#/components/schemas/schemas-ref"
-					}
-				},
-				"type": "object"
+				"description": "Filters to drill down into specific events.",
+				"example": "{\"where\":{\"and\":[{\"key\":\"ClientCountry\",\"operator\":\"neq\",\"value\":\"ca\"}]}}",
+				"type": "string"
 			},
 			"filter-delete-response-collection": {
 				"allOf": [
@@ -14440,7 +14431,7 @@
 								"items": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/filter"
+											"$ref": "#/components/schemas/CloudflareClientAPI_filter"
 										},
 										{
 											"required": [
@@ -14467,7 +14458,7 @@
 							"result": {
 								"allOf": [
 									{
-										"$ref": "#/components/schemas/filter"
+										"$ref": "#/components/schemas/CloudflareClientAPI_filter"
 									},
 									{
 										"required": [
@@ -14566,7 +14557,7 @@
 							"filter": {
 								"oneOf": [
 									{
-										"$ref": "#/components/schemas/filter"
+										"$ref": "#/components/schemas/CloudflareClientAPI_filter"
 									},
 									{
 										"$ref": "#/components/schemas/deleted-filter"
@@ -14939,14 +14930,14 @@
 				"type": "string"
 			},
 			"frequency": {
-				"description": "How often the subscription is renewed automatically.",
+				"default": "high",
+				"description": "The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.",
 				"enum": [
-					"weekly",
-					"monthly",
-					"quarterly",
-					"yearly"
+					"high",
+					"low"
 				],
-				"example": "monthly",
+				"example": "high",
+				"nullable": true,
 				"type": "string"
 			},
 			"full_response": {
@@ -16863,7 +16854,7 @@
 						"$ref": "#/components/schemas/fields"
 					},
 					"filter": {
-						"$ref": "#/components/schemas/CloudflareClientAPI_filter"
+						"$ref": "#/components/schemas/filter"
 					},
 					"sample": {
 						"$ref": "#/components/schemas/sample"
@@ -17855,7 +17846,7 @@
 						"type": "string"
 					},
 					"enabled": {
-						"$ref": "#/components/schemas/enabled"
+						"$ref": "#/components/schemas/CloudflareClientAPI_enabled"
 					},
 					"host": {
 						"$ref": "#/components/schemas/schemas-host"
@@ -19325,13 +19316,13 @@
 						"$ref": "#/components/schemas/destination_conf"
 					},
 					"enabled": {
-						"$ref": "#/components/schemas/CloudflareClientAPI_enabled"
+						"$ref": "#/components/schemas/enabled"
 					},
 					"error_message": {
 						"$ref": "#/components/schemas/error_message"
 					},
 					"frequency": {
-						"$ref": "#/components/schemas/CloudflareClientAPI_frequency"
+						"$ref": "#/components/schemas/frequency"
 					},
 					"id": {
 						"$ref": "#/components/schemas/CloudflareClientAPI_id"
@@ -28862,7 +28853,7 @@
 								"items": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/filter"
+											"$ref": "#/components/schemas/CloudflareClientAPI_filter"
 										},
 										{
 											"required": [
@@ -28893,7 +28884,7 @@
 									{
 										"allOf": [
 											{
-												"$ref": "#/components/schemas/filter"
+												"$ref": "#/components/schemas/CloudflareClientAPI_filter"
 											},
 											{
 												"required": [
@@ -33325,7 +33316,7 @@
 						"$ref": "#/components/schemas/current_period_start"
 					},
 					"frequency": {
-						"$ref": "#/components/schemas/frequency"
+						"$ref": "#/components/schemas/CloudflareClientAPI_frequency"
 					},
 					"id": {
 						"$ref": "#/components/schemas/subscription-v2_components-schemas-identifier"
@@ -35422,17 +35413,23 @@
 			"validate_response": {
 				"allOf": [
 					{
-						"$ref": "#/components/schemas/api-response-single"
+						"$ref": "#/components/schemas/api-response-common"
 					},
 					{
 						"properties": {
 							"result": {
+								"nullable": true,
 								"properties": {
+									"message": {
+										"example": "",
+										"type": "string"
+									},
 									"valid": {
 										"example": true,
 										"type": "boolean"
 									}
-								}
+								},
+								"type": "object"
 							}
 						}
 					}
@@ -40519,7 +40516,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/validate_response"
+									"$ref": "#/components/schemas/CloudflareClientAPI_validate_response"
 								}
 							}
 						},
@@ -40531,7 +40528,7 @@
 								"schema": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/validate_response"
+											"$ref": "#/components/schemas/CloudflareClientAPI_validate_response"
 										},
 										{
 											"$ref": "#/components/schemas/api-response-common-failure"
@@ -46252,10 +46249,10 @@
 										"$ref": "#/components/schemas/destination_conf"
 									},
 									"enabled": {
-										"$ref": "#/components/schemas/CloudflareClientAPI_enabled"
+										"$ref": "#/components/schemas/enabled"
 									},
 									"frequency": {
-										"$ref": "#/components/schemas/CloudflareClientAPI_frequency"
+										"$ref": "#/components/schemas/frequency"
 									},
 									"logpull_options": {
 										"$ref": "#/components/schemas/logpull_options"
@@ -46543,10 +46540,10 @@
 										"$ref": "#/components/schemas/destination_conf"
 									},
 									"enabled": {
-										"$ref": "#/components/schemas/CloudflareClientAPI_enabled"
+										"$ref": "#/components/schemas/enabled"
 									},
 									"frequency": {
-										"$ref": "#/components/schemas/CloudflareClientAPI_frequency"
+										"$ref": "#/components/schemas/frequency"
 									},
 									"logpull_options": {
 										"$ref": "#/components/schemas/logpull_options"
@@ -46913,7 +46910,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/CloudflareClientAPI_validate_response"
+									"$ref": "#/components/schemas/validate_response"
 								}
 							}
 						},
@@ -46925,7 +46922,7 @@
 								"schema": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/CloudflareClientAPI_validate_response"
+											"$ref": "#/components/schemas/validate_response"
 										},
 										{
 											"$ref": "#/components/schemas/api-response-common-failure"
@@ -114976,7 +114973,7 @@
 							"schema": {
 								"properties": {
 									"enabled": {
-										"$ref": "#/components/schemas/enabled"
+										"$ref": "#/components/schemas/CloudflareClientAPI_enabled"
 									},
 									"host": {
 										"$ref": "#/components/schemas/schemas-host"
@@ -115293,7 +115290,7 @@
 										"$ref": "#/components/schemas/fields"
 									},
 									"filter": {
-										"$ref": "#/components/schemas/CloudflareClientAPI_filter"
+										"$ref": "#/components/schemas/filter"
 									},
 									"sample": {
 										"$ref": "#/components/schemas/sample"
@@ -115452,10 +115449,10 @@
 										"$ref": "#/components/schemas/destination_conf"
 									},
 									"enabled": {
-										"$ref": "#/components/schemas/CloudflareClientAPI_enabled"
+										"$ref": "#/components/schemas/enabled"
 									},
 									"frequency": {
-										"$ref": "#/components/schemas/CloudflareClientAPI_frequency"
+										"$ref": "#/components/schemas/frequency"
 									},
 									"logpull_options": {
 										"$ref": "#/components/schemas/logpull_options"
@@ -115743,10 +115740,10 @@
 										"$ref": "#/components/schemas/destination_conf"
 									},
 									"enabled": {
-										"$ref": "#/components/schemas/CloudflareClientAPI_enabled"
+										"$ref": "#/components/schemas/enabled"
 									},
 									"frequency": {
-										"$ref": "#/components/schemas/CloudflareClientAPI_frequency"
+										"$ref": "#/components/schemas/frequency"
 									},
 									"logpull_options": {
 										"$ref": "#/components/schemas/logpull_options"
@@ -116113,7 +116110,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/CloudflareClientAPI_validate_response"
+									"$ref": "#/components/schemas/validate_response"
 								}
 							}
 						},
@@ -116125,7 +116122,7 @@
 								"schema": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/CloudflareClientAPI_validate_response"
+											"$ref": "#/components/schemas/validate_response"
 										},
 										{
 											"$ref": "#/components/schemas/api-response-common-failure"
