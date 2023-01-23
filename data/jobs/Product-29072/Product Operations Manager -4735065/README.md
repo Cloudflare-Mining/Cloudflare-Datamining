@@ -19,7 +19,7 @@
 </ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">7+ years of relevant experience in product management</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">7+ years of relevant experience in product management, product marketing, pre- and post-sales engineering, customer success or sales.&nbsp;</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience and comfort in building and influencing cross-functional relationships in a highly collaborative environment.&nbsp;</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Proven creative thinker with excellent communication skills, both verbal and written.&nbsp;</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience creating engaging and educating content.</span></li>
