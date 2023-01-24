@@ -48,6 +48,7 @@
 	"error_deleting_mtls_cert": "There was an error deleting this mTLS certificate.",
 	"error_deleting_mtls_cert_active_associations": "There was an error deleting this mTLS certificate. Please remove all attached hostnames and try again.",
 	"error_deleting_service_token": "There was an error deleting this service token.",
+	"error_deleting_service_token_in_use": "There was an error deleting this service token. Please remove all references to it and try again, or rotate the service token to invalidate existing clients",
 	"error_deleting_short_lived_cert": "There was an error deleting this short-lived certificate.",
 	"error_invalid_mtls_cert": "Invalid mTLS certificate",
 	"error_invalid_mtls_permission": "Authentication failed for MTLS features. Check if you have MTLS/SSL permissions.",
