@@ -2330,6 +2330,14 @@
 						"compatEnableDate": "2023-03-14",
 						"compatEnableFlag": "response_redirect_url_standard"
 					}
+				},
+				{
+					"name": "detachArrayBufferOnPut",
+					"annotations": {
+						"compatDisableFlag": "copy_arraybuffer_on_kv_r2_put",
+						"compatEnableDate": "2023-03-01",
+						"compatEnableFlag": "detach_arraybuffer_on_kv_r2_put"
+					}
 				}
 			]
 		},
