@@ -10,55 +10,29 @@
 <p><span style="font-weight: 400;">Based on a deep understanding of the business, best practices in Salesforce CPQ you will be responsible for designing, developing, and managing our Salesforce CPQ processes and configuration.</span></p>
 <h4>What you'll do</h4>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Design, prototype, build, document, and support solutions for the Salesforce CPQ application. Collaborating with business partners to help shape functional requirements of the CPQ</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Hands on experience to create and manage Price Rules, Product Rules, Discounting, Product Setup and Configuration, Product Options, Quote Templates, and Advanced Approval Rules with ability to design for complex business use cases</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Administrator of Salesforce CPQ declarative configuration,settings,configurations to onboard new products/bundles/SKU and ownership of NPI in Salesforce CPQ</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Make recommendations for improvements to systems and processes to make processes and workflows more efficient and automated</span></li>
-</ul>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Demonstrate leadership and technical expertise by presenting custom solutions based on the Salesforce platform and ecosystem</span></li>
-</ul>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Performing hands-on technical design, solution architecture, prototyping, proof-of-concepts, and CPQ configuration tasks</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Work closely with business partners in the Sales Ops and Commissions teams to define requirements and ensure that solutions deliver best-in-class results and efficient business processes&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Manage Sales technology projects and related CPQ impacts: developing requirements, designing functional solutions and prototypes, &amp; testing. Ensure projects are completed with agreed upon scope, on time, within budget</span></li>
-</ul>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Create and maintain detailed technical documentation based on design specifications.</span></li>
-</ul>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Own functional tasks and deliverables, including: testing, training, reporting, support, and continuous improvement for the Salesforce CPQ application</span></li>
-</ul>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Use and recommend best practices while delivering scalable high quality solutions</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Lead meetings with decision makers, system owners and end-users to gather, define and document business requirements.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Be a trusted advisor of Cloudflare’s Salesforce instance and integrated business platforms to ensure architectural integrity.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Evaluate implementation options for end-user requirements and provide recommendations on the scope as well as level of efforts required to develop a solution.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Provide solutions within the realm of Salesforce best practices and demonstrate functionality to end users as needed.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Perform impact analysis of declarative Vs Code customization for systems enhancements.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong experience managing Salesforce Opportunities to Quote processes.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Participate in execution of declarative system configurations when needed.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Facilitate discussions among decision makers to determine the best solution for critical business challenges through working sessions, new process definitions.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Provides an estimate of implementing system solutions and plans out the phases of SDLC including post-production support for project deliverables.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Own functional tasks and deliverables including User training, testing, documentation and support continuous enhancements of Cloudflare Salesforce instance.&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Produce techno-functional proposals to project teams and Information technology planning group (ITPG) and have a strong sense of business acumen.</span></li>
 </ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Bachelor's degree (technical degree preferred)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">7+ years of experience designing and supporting Implementation of large scale, technically complex solutions on a heavily integrated Salesforce platform instance.&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong ability to discuss and demonstrate the benefits and value of technical solutions.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Excellent communication skills - Listening, Verbal and Written.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Understand Enterprise IT architecture landscape, systems and integrations</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Salesforce.com Certification (Preferred)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Understanding of Enterprise Applications &amp; Technologies - Knowledge &amp; Collaboration platforms for documentation, Partner Ecosystem (PRM) / Community Portal, GTM Sales &amp; Data Management tools.&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Set development processes and expectations that reinforce the commitment to platform audit, maintenance and platform security.</span></li>
 </ul>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">7+ years of experience implementing, configuring and administering SaaS business systems for a software company, with at least 2&nbsp; years of Salesforce CPQ experience(Steelbrick)</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Proficient in the use of Salesforce Data Loader, Workbench and Excel to support data analysis &amp; quality initiatives</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Outstanding testing skills with ability to identify &amp; execute appropriate depth of testing, including negative tests and integrated test scenarios</span></li>
-</ul>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">&nbsp;Detail-oriented, organized, self-motivated, hard working, and a great team player with excellent interpersonal skills</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Excellent written and verbal communication skills required, including experience meeting with and presenting information to senior leadership</span></li>
-</ul>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Salesforce.com certifications (Administrator, Advanced Administrator, Salesforce CPQ Specialist)</span></li>
-</ul>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Passion for creating a frictionless end user experience</span></li>
-</ul>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Proven ability to work creatively and analytically in a problem-solving scenario</span></li>
-</ul>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong knowledge and understanding of the Salesforce.com platform, ecosystem and best-practices</span></li>
-</ul>
-<p>&nbsp;</p>
-<p><strong>Compensation</strong></p>
+<p><br><br><br><strong>Compensation</strong></p>
 <p><span style="font-weight: 400;">Compensation may be adjusted depending on work location.</span></p>
 <ul>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">For Colorado-based hires: Estimated annual salary of $<span data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:126000}" data-sheets-userformat="{&quot;2&quot;:14845,&quot;3&quot;:{&quot;1&quot;:2,&quot;2&quot;:&quot;#,##0&quot;,&quot;3&quot;:1},&quot;5&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;6&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;7&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;8&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;9&quot;:1,&quot;10&quot;:1,&quot;11&quot;:4,&quot;14&quot;:{&quot;1&quot;:3,&quot;3&quot;:1},&quot;15&quot;:&quot;Open Sans&quot;,&quot;16&quot;:11}" data-sheets-formula="=if(if(R[-10]C[0]=&quot;Hire&quot;,iferror(round(R[0]C[1]*0.9,-3),&quot;&quot;),iferror(round(R[0]C[1]*0.8,-3),&quot;&quot;))=0,&quot;&quot;,if(R[-10]C[0]=&quot;Hire&quot;,iferror(round(R[0]C[1]*0.9,-3),&quot;&quot;),iferror(round(R[0]C[1]*0.8,-3),&quot;&quot;)))">126,000</span> - $<span data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:154000}" data-sheets-userformat="{&quot;2&quot;:14589,&quot;3&quot;:{&quot;1&quot;:2,&quot;2&quot;:&quot;#,##0&quot;,&quot;3&quot;:1},&quot;5&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;6&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;7&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;8&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;9&quot;:1,&quot;10&quot;:1,&quot;14&quot;:{&quot;1&quot;:3,&quot;3&quot;:1},&quot;15&quot;:&quot;Open Sans&quot;,&quot;16&quot;:11}" data-sheets-formula="=if(if(R[-10]C[-2]=&quot;Hire&quot;,iferror(round(R[0]C[-1]*1.1,-3),&quot;&quot;),iferror(round(R[0]C[-1]*1.2,-3),&quot;&quot;))=0,&quot;&quot;,if(R[-10]C[-2]=&quot;Hire&quot;,iferror(round(R[0]C[-1]*1.1,-3),&quot;&quot;),iferror(round(R[0]C[-1]*1.2,-3),&quot;&quot;)))">154,000</span>.</span></li>
