@@ -13,7 +13,6 @@
 		<li><a href="#h_5itGQRBabQ51RwT5cNJX8u">I run a good bot and want for it to be added to the allowlist (cf.bot_management.verified_bot). What should I do?</a></li>
 		<li><a href="#h_2Ffw8AKdwQySoI8rnO02pc">What information do I need to troubleshoot my bot issues?</a></li>
 		<li><a href="#5KX8t3C6SObnoWs5F6YOlU"> What should I do if I am getting False positives caused by Bot Fight Mode (BFM) or Super Bot Fight Mode (SBFM)?</a></li>
-		<li><a href="#h_6Q8mNs9Ur9mvXhjcH1KBcn">Super Bot Fight Mode feature (SBFM) is still blocking requests even though the feature is turned off, why?</a></li>
 		<li><a href="#3zR4ro73zaHshu5OldQIuB">Related resources</a></li>
 	</ul>
 </div>
@@ -113,25 +112,6 @@
 	</li>
 </ul>
 <p></p>
-<hr>
-<h2 id="h_6Q8mNs9Ur9mvXhjcH1KBcn">Super Bot Fight Mode feature (SBFM) is still blocking requests even though the feature is turned off, why?</h2>
-<p>This is a known issue the Bots team is working to resolve in the near future. In the meantime, there is a workaround to resolve such issue.
-
-	You will need to run the following API command to check and remove the SBFM ruleset:</p>
-<p>1. List the existing Rulesets at the zone level</p>
-<p></p>
-<pre>curl -X GET "https://api.cloudflare.com/client/v4/zones/zone_id/rulesets" \
-     -H "X-Auth-Email: email" \
-     -H "X-Auth-Key: key" \
-     -H "Content-Type: application/json"</pre>
-<p>2. From the output in step 1, find the ruleset ID that is associated with the zone's SBFM configuration. You should be able to see <code>"kind": "zone"</code> and <code>"phase": "http_request_sbfm"</code> for that ruleset.</p>
-<p>3. Use the ruleset ID you found to delete the SBFM ruleset</p>
-<p></p>
-<pre>curl -X DELETE "https://api.cloudflare.com/client/v4/zones/zone_id/rulesets/rulesets_id" \
-     -H "X-Auth-Email: email" \
-     -H "X-Auth-Key: key" \
-     -H "Content-Type: application/json"</pre>
-<p>Note that you need to replace &lt;key&gt; with your own API key, which can be obtained from <a href="https://dash.cloudflare.com/profile/api-tokens">API tokens</a>.</p>
 <hr>
 <h2 id="3zR4ro73zaHshu5OldQIuB">Related resources</h2>
 <ul>
