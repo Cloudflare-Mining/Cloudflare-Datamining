@@ -3220,7 +3220,7 @@ Commit \u2014 `).concat(Ye.commit)
 					return Promise.all([e.e(8415), e.e(43561), e.e(87122), e.e(67118), e.e(46433), e.e(34744), e.e(1267), e.e(17361), e.e(41530), e.e(71326)]).then(e.bind(e, "../react/pages/home/rulesets/magic-firewall/MagicFirewallMain.tsx"))
 				}),
 				zl = r().lazy(function() {
-					return Promise.all([e.e(8415), e.e(43561), e.e(87122), e.e(67118), e.e(46433), e.e(34744), e.e(47588), e.e(12824), e.e(1267), e.e(17361), e.e(41530), e.e(55700), e.e(55713), e.e(57727), e.e(3380)]).then(e.bind(e, "../react/pages/home/rulesets/ddos/Main.tsx"))
+					return Promise.all([e.e(8415), e.e(43561), e.e(87122), e.e(67118), e.e(46433), e.e(34744), e.e(47588), e.e(40440), e.e(1267), e.e(17361), e.e(41530), e.e(55700), e.e(55713), e.e(57727), e.e(3380)]).then(e.bind(e, "../react/pages/home/rulesets/ddos/Main.tsx"))
 				}),
 				rs = e("../react/pages/home/rulesets/account-firewall-rules/utils.tsx"),
 				Rl = function(m, G) {
@@ -3265,7 +3265,7 @@ Commit \u2014 `).concat(Ye.commit)
 				},
 				xl = Zs,
 				kl = r().lazy(function() {
-					return Promise.all([e.e(8415), e.e(43561), e.e(87122), e.e(67118), e.e(46433), e.e(34744), e.e(47588), e.e(40440), e.e(1267), e.e(17361), e.e(41530), e.e(55700), e.e(55713), e.e(72439), e.e(57727), e.e(55203)]).then(e.bind(e, "../react/pages/home/rulesets/account-firewall-rules/Main.tsx"))
+					return Promise.all([e.e(8415), e.e(43561), e.e(87122), e.e(67118), e.e(46433), e.e(34744), e.e(47588), e.e(12824), e.e(1267), e.e(17361), e.e(41530), e.e(55700), e.e(55713), e.e(72439), e.e(57727), e.e(55203)]).then(e.bind(e, "../react/pages/home/rulesets/account-firewall-rules/Main.tsx"))
 				}),
 				Ri = function(m) {
 					return m ? "waf" : "custom"
@@ -7231,12 +7231,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				e.g.build = gd({}, {
-					branch: "nick/CUSTESC-25136-hotfix",
+					branch: "catia/LOUI-4082-magic-firewall-IDS-routing-hotfix",
 					isReleaseCandidate: "true",
-					commit: "21facbd07acb820a17c671b22443ca413da81ff2",
+					commit: "bb23959179d3172498f24dbd18fc3e3668d5b0ee",
 					env: "production",
-					builtAt: 1674559604364,
-					dashVersion: "900fb4fc1ce453bd6ded81bdcddeab471b250ca0",
+					builtAt: 1674563699715,
+					dashVersion: "32395b71e5f00d0b955f5115e2083e53100ebb9b",
 					versions: {
 						"@cloudflare/app-dash": "25.132.3",
 						node: "16.16.0",
@@ -87381,4 +87381,4 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 	}
 ]);
 
-//# sourceMappingURL=1cb675a69d52c3c571f9.js.map
+//# sourceMappingURL=e6e30d81e96e6f1e2bc0.js.map
