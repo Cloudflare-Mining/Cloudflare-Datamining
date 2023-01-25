@@ -141,7 +141,7 @@
 	"zaraz.event.details.error.duplicate_name": "This Action Name already exists. Choose a new Action Name",
 	"zaraz.event.details.error.event_name_too_long": "Exceeds maximum length of 128 characters",
 	"zaraz.accessibility.gear_icon": "Settings",
-	"zaraz.settings.debugKey.title": "Debug Key",
+	"zaraz.settings.debugKey.title": "Debug key",
 	"zaraz.settings.debugKey.description": "Use <code>zaraz.debug(DEBUG_KEY)</code> with this key to enable Debug Mode",
 	"zaraz.settings.title": "Settings",
 	"zaraz.settings.subtitle": "These settings will affect all your Zaraz tools.",
@@ -151,6 +151,7 @@
 	"zaraz.settings.sections.injection": "Injection",
 	"zaraz.settings.sections.endpoints": "Endpoints",
 	"zaraz.settings.sections.workflow": "Workflow",
+	"zaraz.settings.invalidWorkflow": "Please select a valid workflow",
 	"zaraz.settings.workflow.title": "Workflow type",
 	"zaraz.settings.workflow.disabled.tooltip": "This feature is available for users with Workers Paid plan",
 	"zaraz.settings.workflow.options.realtime": "Real-time",
@@ -213,7 +214,7 @@
 	"zaraz.consent.purpose": "Purpose",
 	"zaraz.consent.modalWillReappear": "Note: Adding a purpose will make the consent modal re-appear for users who already made their choices",
 	"zaraz.consent.purpose.built-in": "System purpose",
-	"zaraz.consent.missingIntro": "Please fill in the Consent Modal text below in order for Consent Management to be enabled.",
+	"zaraz.consent.missingIntro": "Please fill in the Consent Modal text in order for Consent Management to be enabled.",
 	"zaraz.purposes.explain": "Reasons for using third-party tools in your website.",
 	"zaraz.assignPurposes.explain": "Tools that require consent needs to be assigned to a purpose. Tools that are not assigned will be enabled regardless of the consent status.",
 	"zaraz.purpose.skipConsent": "Skip Consent",
@@ -400,5 +401,6 @@
 	"zaraz.toast.publish.error": "There was a problem publishing your Zaraz configuration",
 	"zaraz.monitoring.actions.table.unknown.tool": "Unknown",
 	"zaraz.banner.httpapi": "**New!** Use the [HTTP Events API](https://developers.cloudflare.com/zaraz/http-events-api/) to send events to Zaraz directly from your server, mobile app, or anywhere else!",
-	"zaraz.banner.previewpublish": "**New!** [Preview & Publish Workflow](https://developers.cloudflare.com/zaraz/advanced/preview-mode/) lets you test your changes before applying them, access change history and rollback whenever you need!"
+	"zaraz.banner.previewpublish": "**New!** [Preview & Publish Workflow](https://developers.cloudflare.com/zaraz/advanced/preview-mode/) lets you test your changes before applying them, access change history and rollback whenever you need!",
+	"zaraz.prompt.unsaved.changes": "You have some unsaved changes. Are you sure you want to leave the page?"
 }
