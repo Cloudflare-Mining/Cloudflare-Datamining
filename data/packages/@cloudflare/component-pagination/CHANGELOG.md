@@ -1,5 +1,11 @@
 # Change Log
 
+## 7.0.1
+
+### Patch Changes
+
+- 476080e55b: Next page button will no longer be disabled when total and end are both undefined
+
 ## 7.0.0
 
 ### Patch Changes
