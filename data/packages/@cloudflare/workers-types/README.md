@@ -30,33 +30,43 @@ The following is a minimal `tsconfig.json` for use alongside this package:
 
 ### Compatibility dates
 
-The Cloudflare Workers runtime manages backwards compatibility through the use of [Compatibility Dates](https://developers.cloudflare.com/workers/platform/compatibility-dates/). Using different compatibility dates affects the runtime types available to your Worker, and so it's important you specify the correct entrypoint to the `workers-types` package to match your compatibility date (which is usually set in your `wrangler.toml` configuration file). `workers-types` currently exposes 7 entrypoints to choose from:
+![Entrypoints for compatibility dates](./entrypoints.svg)
+
+The Cloudflare Workers runtime manages backwards compatibility through the use of [Compatibility Dates](https://developers.cloudflare.com/workers/platform/compatibility-dates/). Using different compatibility dates affects the runtime types available to your Worker, and so it's important you specify the correct entrypoint to the `workers-types` package to match your compatibility date (which is usually set in your `wrangler.toml` configuration file). `workers-types` currently exposes the following entrypoints to choose from:
 
 - `@cloudflare/workers-types`
 
-  The default entrypoint exposes the runtime types for a compatibility date of `2021-01-01` or before.
+  The default entrypoint exposes the runtime types for a compatibility date before `2021-11-03`.
 
 - `@cloudflare/workers-types/2021-11-03`
 
-  This entrypoint exposes the runtime types for a compatibility date between `2021-01-01` and `2021-11-03`.
+  This entrypoint exposes the runtime types for a compatibility date between `2021-11-03` and `2022-01-31`.
 
 - `@cloudflare/workers-types/2022-01-31`
 
-  This entrypoint exposes the runtime types for a compatibility date between `2021-11-03` and `2022-01-31`.
+  This entrypoint exposes the runtime types for a compatibility date between `2022-01-31` and `2022-03-21`.
 
 - `@cloudflare/workers-types/2022-03-21`
 
-  This entrypoint exposes the runtime types for a compatibility date between `2022-01-31` and `2022-03-21`.
+  This entrypoint exposes the runtime types for a compatibility date between `2022-03-21` and `2022-08-04`.
 
 - `@cloudflare/workers-types/2022-08-04`
 
-  This entrypoint exposes the runtime types for a compatibility date between `2022-03-21` and `2022-08-04`.
+  This entrypoint exposes the runtime types for a compatibility date between `2022-08-04` and `2022-10-31`.
+
+- `@cloudflare/workers-types/2022-10-31`
+
+  This entrypoint exposes the runtime types for a compatibility date between `2022-10-31` and `2022-11-30`.
+
+- `@cloudflare/workers-types/2022-11-30`
+
+  This entrypoint exposes the runtime types for a compatibility date after `2022-11-30`.
 
 - `@cloudflare/workers-types/experimental`
 
   This entrypoint exposes the runtime types for the latest compatibility date. The types exposed by this entrypoint will change over time to always reflect the latest version of the Workers runtime.
 
-To use one of these entrypoints, you need to specify them in your `tsconfig.json`. For example, this is a sample `tsconfig.json` for using the `experimental` entrypoint.
+To use one of these entrypoints, you need to specify them in your `tsconfig.json`. For example, this is a sample `tsconfig.json` for using the `2022-08-04` entrypoint.
 
 ```json
 {
@@ -64,7 +74,7 @@ To use one of these entrypoints, you need to specify them in your `tsconfig.json
     "target": "esnext",
     "module": "esnext",
     "lib": ["esnext"],
-    "types": ["@cloudflare/workers-types/experimental"]
+    "types": ["@cloudflare/workers-types/2022-08-04"]
   }
 }
 ```
