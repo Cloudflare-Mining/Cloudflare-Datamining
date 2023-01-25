@@ -5,7 +5,31 @@
 		"data": {
 			"page": {
 				"pageName": "Cloudflare for Government Product Page",
-				"localeList": null,
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "English for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "English for Locale",
+					"deDE": "English for Locale",
+					"itIT": "English for Locale",
+					"jaJP": "English for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "English for Locale",
+					"esES": "Translated for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "No Page for Locale",
+					"idID": "No Page for Locale",
+					"thTH": "No Page for Locale",
+					"ruRU": "No Page for Locale",
+					"svSE": "No Page for Locale",
+					"viVN": "No Page for Locale",
+					"trTR": "No Page for Locale",
+					"zhHansCN": "English for Locale",
+					"plPL": "No Page for Locale"
+				},
 				"relativePath": "cloudflare-for-government",
 				"topNavOptions": "default",
 				"topNavButtonText": null,
@@ -561,7 +585,10 @@
 			"locale": "en-US",
 			"pathname": "/cloudflare-for-government/",
 			"contentfulId": "7GYn2DJMy00Roe50JhSFKw",
-			"allowedHrefLangs": null,
+			"allowedHrefLangs": [
+				"en-US",
+				"es-ES"
+			],
 			"hasPsaBanner": true,
 			"baseURL": "https://www.cloudflare.com"
 		}
