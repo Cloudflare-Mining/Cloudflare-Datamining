@@ -377,6 +377,13 @@ components:
       description: The date and time the destination address has been created.
       example: "2014-01-02T02:20:00Z"
       readOnly: true
+    CloudflareClientAPI_deleted_response:
+      allOf:
+      - $ref: '#/components/schemas/api-response-single'
+      - properties:
+          result:
+            type: string
+            example: ""
     CloudflareClientAPI_direct_upload_request:
       type: object
       required:
@@ -4106,7 +4113,7 @@ components:
         aud:
           $ref: '#/components/schemas/aud'
         id:
-          $ref: '#/components/schemas/id'
+          $ref: '#/components/schemas/CloudflareClientAPI_id'
         public_key:
           $ref: '#/components/schemas/public_key'
     ca_components-schemas-id:
@@ -7455,7 +7462,7 @@ components:
       - properties:
           result:
             type: string
-            example: ""
+            example: ok
     deployment-list-response:
       allOf:
       - $ref: '#/components/schemas/api-response-common'
@@ -11157,11 +11164,9 @@ components:
       - "off"
       default: "off"
     id:
-      type: string
-      description: The ID of the CA.
-      example: 7eddae4619b50ab1361ba8ae9bd72269a432fea041529ed9
-      readOnly: true
-      maxLength: 48
+      type: integer
+      description: Unique id of the job.
+      minimum: 1
     id_response:
       allOf:
       - $ref: '#/components/schemas/api-response-single'
@@ -13307,7 +13312,7 @@ components:
         frequency:
           $ref: '#/components/schemas/frequency'
         id:
-          $ref: '#/components/schemas/CloudflareClientAPI_id'
+          $ref: '#/components/schemas/id'
         last_complete:
           $ref: '#/components/schemas/last_complete'
         last_error:
@@ -20153,7 +20158,7 @@ components:
             type: object
             properties:
               id:
-                $ref: '#/components/schemas/id'
+                $ref: '#/components/schemas/CloudflareClientAPI_id'
     schemas-identifier:
       type: string
       description: Identifier
@@ -31492,7 +31497,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_id'
+          $ref: '#/components/schemas/id'
       - name: account_identifier
         in: path
         required: true
@@ -31544,7 +31549,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_id'
+          $ref: '#/components/schemas/id'
       - name: account_identifier
         in: path
         required: true
@@ -31580,7 +31585,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_id'
+          $ref: '#/components/schemas/id'
       - name: account_identifier
         in: path
         required: true
@@ -37389,6 +37394,40 @@ paths:
         api_key: []
       - api_token: []
   /accounts/{account_identifier}/stream/{identifier}/downloads:
+    delete:
+      tags:
+      - Stream MP4 Downloads
+      summary: Delete downloads
+      description: Delete the downloads for a video.
+      operationId: stream-m-p-4-downloads-delete-downloads
+      parameters:
+      - name: identifier
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/identifier'
+      - name: account_identifier
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/schemas-identifier'
+      responses:
+        4xx:
+          description: Delete downloads response failure
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/api-response-common-failure'
+        "200":
+          description: Delete downloads response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/deleted_response'
+      security:
+      - api_email: []
+        api_key: []
+      - api_token: []
     get:
       tags:
       - Stream MP4 Downloads
@@ -37980,14 +38019,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/deleted_response'
+                - $ref: '#/components/schemas/CloudflareClientAPI_deleted_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Delete signing keys response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/deleted_response'
+                $ref: '#/components/schemas/CloudflareClientAPI_deleted_response'
       security:
       - api_email: []
         api_key: []
@@ -38527,14 +38566,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/deleted_response'
+                - $ref: '#/components/schemas/CloudflareClientAPI_deleted_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Delete webhooks response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/deleted_response'
+                $ref: '#/components/schemas/CloudflareClientAPI_deleted_response'
       security:
       - api_email: []
         api_key: []
@@ -73102,7 +73141,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_id'
+          $ref: '#/components/schemas/id'
       - name: zone_identifier
         in: path
         required: true
@@ -73154,7 +73193,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_id'
+          $ref: '#/components/schemas/id'
       - name: zone_identifier
         in: path
         required: true
@@ -73190,7 +73229,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_id'
+          $ref: '#/components/schemas/id'
       - name: zone_identifier
         in: path
         required: true

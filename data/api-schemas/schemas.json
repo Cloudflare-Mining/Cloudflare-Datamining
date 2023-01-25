@@ -596,6 +596,21 @@
 				"readOnly": true,
 				"type": "string"
 			},
+			"CloudflareClientAPI_deleted_response": {
+				"allOf": [
+					{
+						"$ref": "#/components/schemas/api-response-single"
+					},
+					{
+						"properties": {
+							"result": {
+								"example": "",
+								"type": "string"
+							}
+						}
+					}
+				]
+			},
 			"CloudflareClientAPI_direct_upload_request": {
 				"properties": {
 					"allowedOrigins": {
@@ -6030,7 +6045,7 @@
 						"$ref": "#/components/schemas/aud"
 					},
 					"id": {
-						"$ref": "#/components/schemas/id"
+						"$ref": "#/components/schemas/CloudflareClientAPI_id"
 					},
 					"public_key": {
 						"$ref": "#/components/schemas/public_key"
@@ -10816,7 +10831,7 @@
 					{
 						"properties": {
 							"result": {
-								"example": "",
+								"example": "ok",
 								"type": "string"
 							}
 						}
@@ -16353,11 +16368,9 @@
 				"type": "boolean"
 			},
 			"id": {
-				"description": "The ID of the CA.",
-				"example": "7eddae4619b50ab1361ba8ae9bd72269a432fea041529ed9",
-				"maxLength": 48,
-				"readOnly": true,
-				"type": "string"
+				"description": "Unique id of the job.",
+				"minimum": 1,
+				"type": "integer"
 			},
 			"id_response": {
 				"allOf": [
@@ -19312,7 +19325,7 @@
 						"$ref": "#/components/schemas/frequency"
 					},
 					"id": {
-						"$ref": "#/components/schemas/CloudflareClientAPI_id"
+						"$ref": "#/components/schemas/id"
 					},
 					"last_complete": {
 						"$ref": "#/components/schemas/last_complete"
@@ -29162,7 +29175,7 @@
 							"result": {
 								"properties": {
 									"id": {
-										"$ref": "#/components/schemas/id"
+										"$ref": "#/components/schemas/CloudflareClientAPI_id"
 									}
 								},
 								"type": "object"
@@ -46326,7 +46339,7 @@
 						"name": "job_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/CloudflareClientAPI_id"
+							"$ref": "#/components/schemas/id"
 						}
 					},
 					{
@@ -46433,7 +46446,7 @@
 						"name": "job_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/CloudflareClientAPI_id"
+							"$ref": "#/components/schemas/id"
 						}
 					},
 					{
@@ -46508,7 +46521,7 @@
 						"name": "job_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/CloudflareClientAPI_id"
+							"$ref": "#/components/schemas/id"
 						}
 					},
 					{
@@ -57443,7 +57456,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/deleted_response"
+									"$ref": "#/components/schemas/CloudflareClientAPI_deleted_response"
 								}
 							}
 						},
@@ -57455,7 +57468,7 @@
 								"schema": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/deleted_response"
+											"$ref": "#/components/schemas/CloudflareClientAPI_deleted_response"
 										},
 										{
 											"$ref": "#/components/schemas/api-response-common-failure"
@@ -58397,7 +58410,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/deleted_response"
+									"$ref": "#/components/schemas/CloudflareClientAPI_deleted_response"
 								}
 							}
 						},
@@ -58409,7 +58422,7 @@
 								"schema": {
 									"allOf": [
 										{
-											"$ref": "#/components/schemas/deleted_response"
+											"$ref": "#/components/schemas/CloudflareClientAPI_deleted_response"
 										},
 										{
 											"$ref": "#/components/schemas/api-response-common-failure"
@@ -58973,6 +58986,63 @@
 			}
 		},
 		"/accounts/{account_identifier}/stream/{identifier}/downloads": {
+			"delete": {
+				"description": "Delete the downloads for a video.",
+				"operationId": "stream-m-p-4-downloads-delete-downloads",
+				"parameters": [
+					{
+						"in": "path",
+						"name": "identifier",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/identifier"
+						}
+					},
+					{
+						"in": "path",
+						"name": "account_identifier",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/schemas-identifier"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/deleted_response"
+								}
+							}
+						},
+						"description": "Delete downloads response"
+					},
+					"4xx": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/api-response-common-failure"
+								}
+							}
+						},
+						"description": "Delete downloads response failure"
+					}
+				},
+				"security": [
+					{
+						"api_email": [],
+						"api_key": []
+					},
+					{
+						"api_token": []
+					}
+				],
+				"summary": "Delete downloads",
+				"tags": [
+					"Stream MP4 Downloads"
+				]
+			},
 			"get": {
 				"description": "Lists the downloads created for a video.",
 				"operationId": "stream-m-p-4-downloads-list-downloads",
@@ -115526,7 +115596,7 @@
 						"name": "job_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/CloudflareClientAPI_id"
+							"$ref": "#/components/schemas/id"
 						}
 					},
 					{
@@ -115633,7 +115703,7 @@
 						"name": "job_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/CloudflareClientAPI_id"
+							"$ref": "#/components/schemas/id"
 						}
 					},
 					{
@@ -115708,7 +115778,7 @@
 						"name": "job_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/CloudflareClientAPI_id"
+							"$ref": "#/components/schemas/id"
 						}
 					},
 					{
