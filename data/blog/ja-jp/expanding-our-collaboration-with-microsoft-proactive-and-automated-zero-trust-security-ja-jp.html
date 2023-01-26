@@ -36,7 +36,7 @@
 	</ul>
 	<!--kg-card-end: markdown-->
 	<p><strong>3. <a href="https://developers.cloudflare.com/cloudflare-one/tutorials/azuread-risky-users/" target="_blank">リスクの高いユーザーの分離</a>：</strong>共通のお客様に対し、CloudflareのRBI製品を介して、請負業者などのリスクの高いユーザーを（ADシグナルに基づいて）ブラウザ分離セッションに分離することで、セキュリティレイヤーの追加を支援します。 </p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/Cloudflare-Remote-Browser-Isolation---AzureAD-Risky-Users-API-integration_JA.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/Cloudflare-Remote-Browser-Isolation---AzureAD-Risky-Users-API-integration_JA-1.png" class="kg-image"></figure>
 	<p>Azure ADは、分析した多くのデータポイントに基づき、ユーザーを低リスク、中リスク、高リスクに分類しています。ユーザーの活動に基づいて、あるリスクグループから別のリスクグループに移動することがあります。ユーザーは、請負業者などの雇用形態、危険なサインイン行動、資格情報の漏えいなど、多くの要因に基づいて危険と判断される可能性があります。このようなユーザーは高リスクですが、そのユーザーがさらに深く評価される間に、低リスクな方法でリソースやアプリケーションへのアクセスを提供することができます。</p>
 	<p>現在、<a href="https://developers.cloudflare.com/cloudflare-one/tutorials/azuread-risky-users/" target="_blank">Azure ADグループとCloudflareブラウザの分離</a>の統合をサポートしています。Azure AD上でユーザーが高リスクに分類された場合、このシグナルを利用して、Azure AD統合により自動的にそのユーザーのトラフィックを分離します。これは、リスクの高いユーザーが、安全で分離されたブラウザを通じてリソースにアクセスできることを意味します。もし、ユーザーが高リスクから低リスクに移行した場合、高リスクのユーザーに適用される分離ポリシーは適用されなくなります。</p>
 	<p><strong>4. ガバメントクラウドの共同のお客様へのセキュリティ：</strong>ガバメントクラウド（「GCC」）のお客様に対して、Azure ADによる集中型アイデンティティおよびアクセス管理でより優れたセキュリティを実現します。また、インターネット全体に公開することなく、ガバメントクラウドのお客様をCloudflareのグローバルネットワークに接続し、追加のセキュリティレイヤーを確保できるよう支援します。</p>

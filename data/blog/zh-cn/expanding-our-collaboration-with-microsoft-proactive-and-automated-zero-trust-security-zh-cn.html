@@ -7,7 +7,7 @@
 	<p>Cloudflare 的 Zero Trust 平台为内部和 SaaS 应用程序提供了一种现代化的身份验证方法。大多数公司可能都拥有各种企业应用程序——一些是 SaaS，一些托管在本地部或 Azure 上。Cloudflare 的 Zero Trust 网络访问(ZTNA)产品是我们 Zero Trust 平台的一部分，使这些应用程序感觉像 SaaS 应用程序，允许员工通过简单和一致的流程进行访问。Cloudflare Access 充当一个统一的反向代理，通过确保每个请求都经过身份验证、授权和加密来实施访问控制。</p>
 	<h3 id="cloudflare-zero-trust-microsoft-azure-active-directory">Cloudflare Zero Trust 与 Microsoft Azure Active Directory</h3>
 	<p>我们有成千上万的客户使用 Microsoft Azure Active Directory 和 Cloudflare Access 作为他们 Zero Trust 架构的一部分。我们去年宣布的<a href="https://blog.cloudflare.com/cloudflare-partners-with-microsoft-to-protect-joint-customers-with-global-zero-trust-network/">Microsoft 的集成</a>可在不影响我们共同客户性能的前提下加强安全。Cloudflare 的 Zero Trust 平台与 Azure AD 集成，为组织的混合办公人员提供无缝的应用程序访问体验。</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/AzureAD-__-Access-Overview_CN.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/AzureAD-__-Access-Overview_CN-1.png" class="kg-image"></figure>
 	<p>回顾一下，我们推出的集成解决了<a href="https://blog.cloudflare.com/cloudflare-partners-with-microsoft-to-protect-joint-customers-with-global-zero-trust-network/">两个关键问题</a>：</p>
 	<ol>
 		<li><em>对于本地传统应用程序</em>，Cloudflare 作为 Azure AD <a href="https://azure.microsoft.com/en-us/services/active-directory/sso/secure-hybrid-access/#overview" target="_blank">安全混合访问</a>合作伙伴的参与，使客户能够使用 SSO 身份验证集中管理对其本地传统应用程序的访问，而无需额外开发。共同<a href="https://learn.microsoft.com/en-us/azure/active-directory/manage-apps/cloudflare-azure-ad-integration" target="_blank">客户现可轻松使用</a> Cloudflare Access 作为其传统应用程序前的高性能额外安全层。</li>
@@ -18,7 +18,7 @@
 	<h3 id="-microsoft-">今天推出的 Microsoft 集成</h3>
 	<p>今天宣布的四项全新集成是—— </p>
 	<p><strong>1. <strong><strong>针对每个应用程序的条件访问：</strong></strong></strong>Azure AD 客户可在 Cloudflare Zero Trust &nbsp;<a href="https://developers.cloudflare.com/cloudflare-one/tutorials/azuread-conditional-access/" target="_blank">中使用其现有的条件访问策略</a>。</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/Group-92986_CN.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/Conditional-Access_CN.png" class="kg-image"></figure>
 	<p>Azure AD 允许管理员就应用程序和用户创建和执行使用条件访问的策略。它提供了广泛参数，可用于控制用户对应用程序的访问（例如，用户风险等级、登录风险等级、设备平台、位置、客户端应用等）。Cloudflare Access 现在支持每个应用程序的 Azure AD 条件访问策略。这允许安全团队在 Azure AD 或 Cloudflare Access 中定义安全条件，并在两个产品中执行，而无需更改一行代码。</p>
 	<p>例如，客户可能对内部工资单应用程序有更严格的控制级别，因此在 Azure AD 上有特定的条件访问策略。但是，对于一般的信息类应用程序(例如内部 wiki)，客户可能会通过 Azure AD 条件访问策略执行不那么严格的规则。在这种情况下，两个应用程序组和相关 Azure AD 条件访问策略都可以直接无缝地插入 Cloudflare Zero Trust，而无需任何代码更改。 </p>
 	<p><strong>2. <strong><strong><a href="https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/azuread/#synchronize-users-and-groups" target="_blank">SCIM</a>：</strong></strong></strong>在 Cloudflare Zero Trust 和 Azure Active Directory 之间自动同步 Azure AD 组，为 CIO 节省大量时间。</p>
