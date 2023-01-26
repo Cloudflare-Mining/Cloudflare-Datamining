@@ -1,0 +1,495 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/unnamed-5.png" class="kg-image" alt="The Linux Kernel Key Retention Service and why you should use it in your next application"></figure>
+	<p>Nous voulons que nos données numériques soient en sécurité. Nous voulons consulter des sites web, transmettre des coordonnées bancaires, saisir des mots de passe, signer des documents en ligne, nous connecter à des ordinateurs distants, chiffrer des données avant qu'elles ne soient stockées dans des bases de données et être certains que personne ne peut les altérer. La cryptographie peut offrir un niveau élevé de sécurité des données, mais nous devons protéger les clés cryptographiques.</p>
+	<p>Cependant, nous ne pouvons pas noter notre clé de manière sécurisée quelque part et y accéder seulement de temps en temps ; au contraire, est impliquée dans chaque requête de traitement d'opérations de chiffrement. Si un site prend en charge le protocole TLS, la clé privée est utilisée pour établir chaque connexion.</p>
+	<p>Malheureusement, il arrive que des clés cryptographiques fuitent, et lorsque cela se produit, c'est très problématique. De nombreuses fuites sont dues à des bugs logiciels et des vulnérabilités en matière de sécurité. Dans cet article, nous allons découvrir comment le kernel Linux peut aider à protéger les clés cryptographiques contre une classe entière de vulnérabilités potentielles en matière de sécurité : les violations d'accès mémoire.</p>
+	<h3 id="violations-d-acc-s-m-moire">Violations d'accès mémoire</h3>
+	<p>Selon la <a href="https://www.nsa.gov/Press-Room/News-Highlights/Article/Article/3215760/nsa-releases-guidance-on-how-to-protect-against-software-memory-safety-issues/" target="_blank">NSA</a>, environ 70 % des vulnérabilités dans le code de Microsoft et de Google étaient liées à des problèmes de sécurité de la mémoire. L'une des conséquences d'accès incorrects à la mémoire est la fuite de données de sécurité (notamment les clés cryptographiques). Les clés cryptographiques ne sont que des données (le plus souvent aléatoires) stockées en mémoire ; elles peuvent donc être concernées par des fuites de mémoire, à l'instar de toute autre donnée en mémoire. L'exemple ci-dessous explique comment la réutilisation de la mémoire de pile peut entraîner la fuite accidentelle d'une clé cryptographique :</p>
+	<p>broken.c</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-cpp">#include &lt;stdio.h&gt;
+#include &lt;stdint.h&gt;
+
+static void encrypt(void)
+{
+    uint8_t key[] = "hunter2";
+    printf("encrypting with super secret key: %s\n", key);
+}
+
+static void log_completion(void)
+{
+    /* oh no, we forgot to init the msg */
+    char msg[8];
+    printf("not important, just fyi: %s\n", msg);
+}
+
+int main(void)
+{
+    encrypt();
+    /* notify that we're done */
+    log_completion();
+    return 0;
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Compilez et exécutez notre programme :</p><!--kg-card-begin: markdown-->
+	<pre><code>$ gcc -o broken broken.c
+$ ./broken 
+encrypting with super secret key: hunter2
+not important, just fyi: hunter2
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Oups, nous avons imprimé la clé secrète dans l'enregistreur de données « fyi » (pour information), à la place du message de journal prévu ! Le code ci-dessus comporte deux problèmes :</p>
+	<ul>
+		<li>Dans notre fonction de pseudo-chiffrement, nous n'avons pas veillé à la destruction sécurisée de la clé (en remplaçant les données de la clé par des zéros, par exemple) lorsque nous avons fini de l'utiliser</li>
+		<li>Notre fonction de journalisation comporte un bug qui lui permet d'accéder à l'ensemble de la mémoire de notre processus</li>
+	</ul>
+	<p>Et si nous pouvons probablement résoudre facilement le premier problème avec du code supplémentaire, le second est le résultat intrinsèque de l'exécution d'un logiciel dans le système d'exploitation.</p>
+	<p>Le système d'exploitation attribue à chaque processus un bloc de mémoire virtuelle contiguë. Ceci permet au kernel de partager des ressources informatiques limitées entre plusieurs processus simultanément en cours d'exécution. Cette approche est appelée « <a href="https://fr.wikipedia.org/wiki/M%C3%A9moire_virtuelle" target="_blank">gestion de la mémoire virtuelle</a> ». Dans la mémoire virtuelle, un processus possède son propre espace d'adressage et n'a pas accès à la mémoire des autres processus ; toutefois, il peut accéder à toute mémoire située dans son espace d'adressage. Dans notre exemple, nous nous intéressons à une partie de la mémoire du processus appelée « pile ».</p>
+	<p>La pile est constituée de cadres de pile. Un cadre de pile est un espace alloué dynamiquement pour la fonction en cours d'exécution. Il contient les variables locales, les arguments et l'adresse de retour de la fonction. Lors de la compilation d'une fonction, le compilateur calcule la quantité de mémoire devant être allouée et demande un cadre de pile de la taille correspondante. Lorsque l'exécution d'une fonction prend fin, le cadre de pile est marqué comme libre et peut être utilisé à nouveau. Un cadre de pile est un bloc logique, et n'offre aucun contrôle de limite ; il n'est pas effacé, mais simplement marqué comme libre. Par ailleurs, la mémoire virtuelle est un bloc d'adresses contiguës. Ces deux postulats permettent à du code malveillant/contenant un bug d'accéder aux données depuis n'importe quel emplacement de la mémoire virtuelle.</p>
+	<p>La pile de notre programme <code>broken.c</code> se présente comme ceci :</p><!--kg-card-begin: html-->
+	<center><img src="https://imagedelivery.net/52R3oh4H-57qkVChwuo3Ag/3526edee-ce7e-4f98-a2bf-ff1efd2fc800/public"></center><!--kg-card-end: html-->
+	<p>Au début, nous avons un cadre de pile de la fonction principale. Plus loin, la fonction <code>main()</code> appelle <code>encrypt()</code>, qui sera placée sur la pile, immédiatement sous <code>main()</code> (la pile de code s'étend vers le bas). À l'intérieur d'<code>encrypt()</code>, le compilateur demande 8 octets pour la variable <code>key</code> (7 octets de données + caractère C-null). Lorsque l'exécution d'<code>encrypt()</code> se termine, les mêmes adresses mémoire sont occupées par <code>log_completion()</code>. À l'intérieur de <code>log_completion()</code>, le compilateur alloue 8 octets pour la variable <code>msg</code>. Cette variable a accidentellement été placée sur la pile au même endroit où était auparavant stockée notre clé privée. La mémoire correspondant à la variable <code>msg</code> est uniquement allouée, et non initialisée, et les données de la fonction précédente sont laissées « en l'état ».</p>
+	<p>Outre les bugs que peut contenir le code, les langages de programmation comportent des fonctions non sécurisées, connues pour leurs vulnérabilités en matière de mémoire sécurisée. En langage C, par exemple, ces fonctions sont <code>printf()</code>, <code>strcpy()</code> et <code>gets()</code>. La fonction <code>printf()</code> ne vérifie pas combien d'arguments doivent être transmis pour remplacer tous les opérateurs dans la chaîne de format. Les arguments de la fonction sont placés sur la pile, au-dessus du cadre de pile de la fonction ; lorsque <code>printf()</code> récupère les arguments en fonction du nombre et du type des opérateurs, elle dépasse facilement la portée de ses arguments et accède aux données du cadre de pile de la fonction précédente.</p>
+	<p>La NSA recommande d'utiliser des langages à sûreté mémoire tels que Python, Go et Rust. Mais cela suffit-il à nous protéger complètement ?</p>
+	<p>Dans de nombreux cas, le compilateur Python vérifiera sans aucun doute les limites à votre place et vous informera par une erreur :</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-python">&gt;&gt;&gt; print("x: {}, y: {}, {}".format(1, 2))
+Traceback (most recent call last):
+  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+IndexError: Replacement index 2 out of range for positional args tuple
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Cependant, voici un extrait de l'une des 36 (pour l'instant) <a href="https://www.cvedetails.com/vulnerability-list/vendor_id-10210/opov-1/Python.html" target="_blank">vulnérabilités</a> :</p>
+	<blockquote><em>Python 2.7.14 présente des vulnérabilités à Heap-Buffer-Overflow, ainsi qu'à Heap-Use-After-Free.</em></blockquote>
+	<p>Golang présente sa propre liste de <a href="https://www.cvedetails.com/vulnerability-list/vendor_id-14185/opov-1/Golang.html" target="_blank">vulnérabilités aux dépassements de mémoire</a>, ainsi qu'un <a href="https://pkg.go.dev/unsafe" target="_blank">package non sécurisé</a>. La dénomination de ce package est éloquente, et les règles et contrôles habituels ne fonctionnent pas dans ce package.</p>
+	<h3 id="heartbleed">Heartbleed</h3>
+	<p>En 2014, le bug Heartbleed a été découvert. La bibliothèque de cryptographie OpenSSL, la plus utilisée (à l'époque), a laissé fuiter des clés privées. Nous en avons fait les frais, <a href="https://blog.cloudflare.com/answering-the-critical-question-can-you-get-private-ssl-keys-using-heartbleed/">nous aussi</a>.</p>
+	<h3 id="att-nuation">Atténuation</h3>
+	<p>Les bugs de mémoire sont donc une réalité, et nous ne pouvons pas vraiment nous en protéger complètement. Toutefois, dans la mesure où les clés cryptographiques sont beaucoup plus précieuses que les autres données, pouvons-nous faire mieux pour au moins protéger les clés ?</p>
+	<p>Comme nous l'avons déjà dit, un espace d'adressage mémoire est normalement associé à un processus. Par défaut, deux processus différents ne partagent pas de mémoire, et ils sont donc naturellement isolés l'un de l'autre. Par conséquent, un éventuel bug de mémoire affectant l'un des processus ne peut provoquer de fuite accidentelle d'une clé cryptographique depuis un autre processus. La sécurité de ssh-agent repose sur ce principe. Deux processus sont toujours impliqués : un client/demandeur et l'<a href="https://linux.die.net/man/1/ssh-agent" target="_blank">agent</a>.</p>
+	<blockquote><em>L'agent ne transmet jamais de clé privée sur son canal de demande. Au lieu de cela, les opérations nécessitant une clé privée sont exécutées par l'agent, et le résultat est renvoyé au demandeur. De cette façon, les clés privées ne sont pas exposées aux clients utilisant l'agent.</em></blockquote>
+	<p>Un demandeur est généralement un processus ayant accès au réseau et/ou traitant des données entrantes non fiables. Par conséquent, il est beaucoup plus probable que le demandeur soit exposé aux vulnérabilités liées à la mémoire ; dans ce schéma, toutefois, il n'a jamais accès aux clés cryptographiques (puisque les clés résident dans un espace d'adressage de processus distinct), et ne peut donc jamais provoquer leur fuite.</p>
+	<p>Chez Cloudflare, nous appliquons le même principe dans la fonctionnalité <a href="https://blog.cloudflare.com/heartbleed-revisited/">SSL sans clé</a>. Les clés privées des clients sont stockées dans un environnement isolé et sont protégées des connexions exposées à Internet.</p>
+	<h3 id="linux-kernel-key-retention-service">Linux Kernel Key Retention Service</h3>
+	<p>L'approche client/demandeur et agent offre une meilleure protection des secrets ou des clés cryptographiques, mais elle présente certains inconvénients :</p>
+	<ul>
+		<li>Il est nécessaire de développer et gérer deux programmes différents, au lieu d'un seul</li>
+		<li>Il est également nécessaire de concevoir une interface bien définie pour la communication entre les deux processus</li>
+		<li>Il est nécessaire de déployer le support de communication entre les deux processus (sockets Unix, mémoire partagée, etc.)</li>
+		<li>Il peut être nécessaire d'authentifier et de prendre en charge des listes de contrôle d'accès entre les processus, car un demandeur sur notre système ne doit pas pouvoir utiliser nos clés cryptographiques stockées dans l'agent</li>
+		<li>En cas d'utilisation du processus du client/demandeur, il est nécessaire de s'assurer que le processus de l'agent est opérationnel</li>
+	</ul>
+	<p>Et si nous remplacions le processus de l'agent par le kernel Linux lui-même ?</p>
+	<ul>
+		<li>Il est déjà en cours d'exécution sur notre système (dans le cas contraire, notre logiciel ne fonctionnerait pas)</li>
+		<li>Il dispose d'une interface bien définie pour les communications (appels système)</li>
+		<li>Il peut appliquer différentes listes de contrôle d'accès aux objets du kernel</li>
+		<li>Et il s'exécute dans un espace d'adressage distinct !</li>
+	</ul>
+	<p>Heureusement, <a href="https://www.kernel.org/doc/html/v6.0/security/keys/core.html" target="_blank">Linux Kernel Key Retention Service</a> permet d'exécuter toutes les fonctions d'un processus d'agent habituel, et sans doute bien davantage !</p>
+	<p>À l'origine, il était conçu pour les services de kernel tels que dm-crypt/ecryptfs, mais il a ensuite été rendu compatible avec l'utilisation par des programmes dans l'espace utilisateur. If offre un certain nombre d'avantages :</p>
+	<ul>
+		<li>Les clés sont stockées hors de l'espace d'adressage du processus</li>
+		<li>L'interface bien définie et la couche de communication sont mises en œuvre par le biais d'appels système</li>
+		<li>Les clés sont des objets du kernel et disposent donc des permissions et des listes de contrôle d'accès associées</li>
+		<li>Le cycle de vie des clés peut être implicitement lié au cycle de vie du processus</li>
+	</ul>
+	<p>Linux Kernel Key Retention Service fonctionne avec deux types d'entités : les clés et les trousseaux de clés, un trousseau de clés étant une clé d'un type particulier. Pour faire une analogie avec les fichiers et les répertoires, nous pourrions dire qu'une clé est un fichier et un trousseau de clés, un répertoire. Par ailleurs, les clés et trousseaux de clés représentent une hiérarchie de clés similaire à celle d'une arborescence de système de fichiers : les trousseaux de clés contiennent des références à des clés et à d'autres trousseaux de clés, mais seules les clés peuvent contenir les données cryptographiques réelles, comme les fichiers contiennent les données.</p>
+	<p>Il existe différents types de clés. Le type de clé détermine les opérations pouvant être effectuées sur la clé. Par exemple, les clés de type user et logon peuvent contenir des blobs de données arbitraires, mais les clés logon ne peuvent jamais être relues dans l'espace utilisateur ; elles sont exclusivement utilisées par les services du kernel.</p>
+	<p>Pour les besoins de l'utilisation du kernel à la place d'un processus agent, le type de clé le plus intéressant est le <a href="https://man7.org/linux/man-pages/man7/asymmetric.7.html" target="_blank">type asymétrique</a>. Il permet de conserver une clé privée à l'intérieur du kernel, et permet aux applications autorisées de déchiffrer ou signer certaines données à l'aide de la clé. Actuellement, seules les clés RSA sont prises en charge, mais des travaux sont en cours afin d'ajouter la <a href="https://lore.kernel.org/lkml/20221014100737.94742-2-ignat@cloudflare.com/" target="_blank">prise en charge des clés ECDSA</a>.</p>
+	<p>Si les clés sont responsables de la protection des informations cryptographiques dans le kernel, les trousseaux de clés déterminent la durée de vie des clés et l'accès partagé à celles-ci. Dans sa forme la plus simple, lorsqu'un trousseau de clés particulier est détruit, toutes les clés liées uniquement à ce trousseau de clés sont également détruites de manière sécurisée. Nous pouvons créer manuellement des trousseaux de clés personnalisés, mais les « trousseaux de clés spéciaux » constituent probablement l'une des fonctionnalités les plus puissantes du service.</p>
+	<p>Ces trousseaux de clés sont créés implicitement par le kernel, et leur durée de vie est liée à celle d'un objet du kernel de nature différente, tel qu'un processus ou un utilisateur. (Il existe actuellement quatre catégories de <a href="https://man7.org/linux/man-pages/man7/keyrings.7.html" target="_blank">trousseaux de clés</a> « implicites »), mais pour les besoins de cet article, nous nous intéressons aux deux trousseaux de clés les plus fréquemment utilisés : les trousseaux de clés de processus et les trousseaux de clés d'utilisateur.</p>
+	<p>La durée de vie d'un trousseau de clés d'utilisateur est liée à l'existence d'un utilisateur particulier, et ce trousseau de clés est partagé entre l'ensemble des processus comportant le même UID. Un processus peut donc, par exemple, stocker une clé dans un trousseau de clés d'utilisateur, et un autre processus s'exécutant sous le même nom d'utilisateur peut récupérer/utiliser cette clé. Lorsque l'UID est supprimé du système, le kernel détruit de manière sécurisée toutes les clés (et tous les autres trousseaux de clés) sous le trousseau de clés d'utilisateur associé.</p>
+	<p>Les trousseaux de clés de processus sont liés à certains processus et peuvent être de trois types différents, sur le plan sémantique : processus, thread et session. Un trousseau de processus est privé et lié à un processus particulier. Ainsi, tout code dans le processus peut stocker/utiliser les clés contenues dans le trousseau de clés, mais d'autres processus ne peuvent pas y accéder (même s'ils possèdent le même identifiant utilisateur ou les mêmes processus enfants). Et lorsque le processus prend fin, le trousseau de clés et les clés associées sont détruits de manière sécurisée. Outre l'avantage qu'offre la capacité de stocker nos secrets/clés dans un espace d'adressage isolé, le trousseau de clés de processus garantit que les clés seront détruites, quelle que soit la raison pour laquelle le processus se termine : même en cas de blocage de l'application sans possibilité d'exécuter le code de nettoyage, le kernel veillera à la destruction sécurisée des clés.</p>
+	<p>Un trousseau de clés de thread est semblable à un trousseau de clés de processus, mais il est privé et lié à un thread particulier. Par exemple, nous pouvons configurer un serveur web multithread pouvant servir des connexions TLS à l'aide de plusieurs clés privées, et nous pouvons nous assurer que les connexions/le code d'un thread ne puissent jamais utiliser une clé privée associée à un autre thread (servant un nom de domaine différent, par exemple).</p>
+	<p>Un trousseau de clés de session met ses clés à la disposition du processus actuel et de tous ses processus enfants. Il est détruit lorsque le processus de rang supérieur prend fin, et les processus enfants peuvent stocker les clés/accéder aux clés tant que le processus de rang supérieur existe. Il est surtout utile dans les environnements de shell et interactifs, lorsque nous utilisons l'outil <a href="https://man7.org/linux/man-pages/man3/keyctl.3.html" target="_blank">keyctl</a> pour accéder à Linux Kernel Key Retention Service, au lieu d'utiliser l'interface d'appel système du kernel. En règle générale, le trousseau de clés de processus ne peut généralement pas être utilisé dans le shell, car chaque commande exécutée crée un nouveau processus. Par conséquent, si une clé est ajoutée au trousseau de clés de processus depuis la ligne de commande, cette clé est immédiatement détruite, car le processus « d'ajout » prend fin lorsque l'exécution de la commande se termine. Confirmons cela avec <code><a href="https://github.com/iovisor/bpftrace" target="_blank">bpftrace</a></code>.</p>
+	<p>Sur un terminal, nous allons tracer la fonction <code><a href="https://elixir.bootlin.com/linux/v5.19.17/source/security/keys/user_defined.c#L146" target="_blank">user_destroy</a></code>, qui est responsable de la suppression d'une clé d'utilisateur :</p><!--kg-card-begin: markdown-->
+	<pre><code>$ sudo bpftrace -e 'kprobe:user_destroy { printf("destroying key %d\n", ((struct key *)arg0)-&gt;serial) }'
+Att
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Et sur un autre terminal, essayons d'ajouter une clé au trousseau de clés de processus :</p><!--kg-card-begin: markdown-->
+	<pre><code>$ keyctl add user mykey hunter2 @p
+742524855
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Lorsque nous revenons sur le premier terminal, nous voyons immédiatement ce message :</p><!--kg-card-begin: markdown-->
+	<pre><code>…
+Attaching 1 probe...
+destroying key 742524855
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Et nous pouvons confirmer que la clé n'est pas disponible en essayant d'y accéder :</p><!--kg-card-begin: markdown-->
+	<pre><code>$ keyctl print 742524855
+keyctl_read_alloc: Required key not available
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Ainsi, dans l'exemple ci-dessus, la clé « mykey » a été ajoutée au trousseau de clés de processus du sous-shell exécutant la commande <code>keyctl add user mykey hunter2 @p</code>. Mais puisque le processus de sous-shell a pris fin à l'instant où la commande a été exécutée, le trousseau de clés de processus correspondant et la clé ajoutée ont tous deux été détruits.</p>
+	<p>Au lieu de cela, le trousseau de clés de session permet à ces commandes interactives d'ajouter des clés à l'environnement de shell actuel, et permet aux commandes suivantes de les consommer. Les clés seront toujours détruites de manière sécurisée lorsque le processus de shell principal prendra fin (c'est-à-dire, probablement, lors de la déconnexion de l'utilisateur du système).</p>
+	<p>Ainsi, en sélectionnant le type de trousseau de clés approprié, nous pouvons assurer que les clés sont détruites de manière sécurisée lorsqu'elles ne sont plus nécessaires – même en cas de blocage de l'application. Cet article n'offre qu'une introduction très brève, mais il vous permettra d'expérimenter avec nos exemples. Pour le contexte intégral, veuillez consulter la <a href="https://www.kernel.org/doc/html/v5.8/security/keys/core.html" target="_blank">documentation officielle</a>.</p>
+	<h3 id="remplacer-ssh-agent-par-linux-kernel-key-retention-service">Remplacer ssh-agent par Linux Kernel Key Retention Service</h3>
+	<p>Nous avons fourni une longue description de la façon dont nous pouvons remplacer deux processus isolés par Linux Kernel Retention Service, et l'heure est venue de convertir nos paroles en code. Nous avons également parlé de ssh-agent ; cet exercice va donc consister à remplacer une clé privée stockée dans la mémoire de l'agent par une clé du kernel. Nous avons choisi <a href="https://github.com/openssh/openssh-portable.git" target="_blank">OpenSSH</a>, la mise en œuvre la plus répandue de SSH, comme cible.</p>
+	<p>Des modifications mineures doivent être apportées au code, afin d'ajouter une fonctionnalité permettant de récupérer une clé depuis le kernel :</p><!--kg-card-begin: markdown-->
+	<p>openssh.patch</p>
+	<pre><code>diff --git a/ssh-rsa.c b/ssh-rsa.c
+index 6516ddc1..797739bb 100644
+--- a/ssh-rsa.c
++++ b/ssh-rsa.c
+@@ -26,6 +26,7 @@
+ 
+ #include &lt;stdarg.h&gt;
+ #include &lt;string.h&gt;
++#include &lt;stdbool.h&gt;
+ 
+ #include "sshbuf.h"
+ #include "compat.h"
+@@ -63,6 +64,7 @@ ssh_rsa_cleanup(struct sshkey *k)
+ {
+ 	RSA_free(k-&gt;rsa);
+ 	k-&gt;rsa = NULL;
++	k-&gt;serial = 0;
+ }
+ 
+ static int
+@@ -220,9 +222,14 @@ ssh_rsa_deserialize_private(const char *ktype, struct sshbuf *b,
+ 	int r;
+ 	BIGNUM *rsa_n = NULL, *rsa_e = NULL, *rsa_d = NULL;
+ 	BIGNUM *rsa_iqmp = NULL, *rsa_p = NULL, *rsa_q = NULL;
++	bool is_keyring = (strncmp(ktype, "ssh-rsa-keyring", strlen("ssh-rsa-keyring")) == 0);
+ 
++	if (is_keyring) {
++		if ((r = ssh_rsa_deserialize_public(ktype, b, key)) != 0)
++			goto out;
++	}
+ 	/* Note: can't reuse ssh_rsa_deserialize_public: e, n vs. n, e */
+-	if (!sshkey_is_cert(key)) {
++	else if (!sshkey_is_cert(key)) {
+ 		if ((r = sshbuf_get_bignum2(b, &amp;rsa_n)) != 0 ||
+ 		    (r = sshbuf_get_bignum2(b, &amp;rsa_e)) != 0)
+ 			goto out;
+@@ -232,28 +239,46 @@ ssh_rsa_deserialize_private(const char *ktype, struct sshbuf *b,
+ 		}
+ 		rsa_n = rsa_e = NULL; /* transferred */
+ 	}
+-	if ((r = sshbuf_get_bignum2(b, &amp;rsa_d)) != 0 ||
+-	    (r = sshbuf_get_bignum2(b, &amp;rsa_iqmp)) != 0 ||
+-	    (r = sshbuf_get_bignum2(b, &amp;rsa_p)) != 0 ||
+-	    (r = sshbuf_get_bignum2(b, &amp;rsa_q)) != 0)
+-		goto out;
+-	if (!RSA_set0_key(key-&gt;rsa, NULL, NULL, rsa_d)) {
+-		r = SSH_ERR_LIBCRYPTO_ERROR;
+-		goto out;
+-	}
+-	rsa_d = NULL; /* transferred */
+-	if (!RSA_set0_factors(key-&gt;rsa, rsa_p, rsa_q)) {
+-		r = SSH_ERR_LIBCRYPTO_ERROR;
+-		goto out;
+-	}
+-	rsa_p = rsa_q = NULL; /* transferred */
+ 	if ((r = sshkey_check_rsa_length(key, 0)) != 0)
+ 		goto out;
+-	if ((r = ssh_rsa_complete_crt_parameters(key, rsa_iqmp)) != 0)
+-		goto out;
+-	if (RSA_blinding_on(key-&gt;rsa, NULL) != 1) {
+-		r = SSH_ERR_LIBCRYPTO_ERROR;
+-		goto out;
++
++	if (is_keyring) {
++		char *name;
++		size_t len;
++
++		if ((r = sshbuf_get_cstring(b, &amp;name, &amp;len)) != 0)
++			goto out;
++
++		key-&gt;serial = request_key("asymmetric", name, NULL, KEY_SPEC_PROCESS_KEYRING);
++		free(name);
++
++		if (key-&gt;serial == -1) {
++			key-&gt;serial = 0;
++			r = SSH_ERR_KEY_NOT_FOUND;
++			goto out;
++		}
++	} else {
++		if ((r = sshbuf_get_bignum2(b, &amp;rsa_d)) != 0 ||
++			(r = sshbuf_get_bignum2(b, &amp;rsa_iqmp)) != 0 ||
++			(r = sshbuf_get_bignum2(b, &amp;rsa_p)) != 0 ||
++			(r = sshbuf_get_bignum2(b, &amp;rsa_q)) != 0)
++			goto out;
++		if (!RSA_set0_key(key-&gt;rsa, NULL, NULL, rsa_d)) {
++			r = SSH_ERR_LIBCRYPTO_ERROR;
++			goto out;
++		}
++		rsa_d = NULL; /* transferred */
++		if (!RSA_set0_factors(key-&gt;rsa, rsa_p, rsa_q)) {
++			r = SSH_ERR_LIBCRYPTO_ERROR;
++			goto out;
++		}
++		rsa_p = rsa_q = NULL; /* transferred */
++		if ((r = ssh_rsa_complete_crt_parameters(key, rsa_iqmp)) != 0)
++			goto out;
++		if (RSA_blinding_on(key-&gt;rsa, NULL) != 1) {
++			r = SSH_ERR_LIBCRYPTO_ERROR;
++			goto out;
++		}
+ 	}
+ 	/* success */
+ 	r = 0;
+@@ -333,6 +358,21 @@ rsa_hash_alg_nid(int type)
+ 	}
+ }
+ 
++static const char *
++rsa_hash_alg_keyctl_info(int type)
++{
++	switch (type) {
++	case SSH_DIGEST_SHA1:
++		return "enc=pkcs1 hash=sha1";
++	case SSH_DIGEST_SHA256:
++		return "enc=pkcs1 hash=sha256";
++	case SSH_DIGEST_SHA512:
++		return "enc=pkcs1 hash=sha512";
++	default:
++		return NULL;
++	}
++}
++
+ int
+ ssh_rsa_complete_crt_parameters(struct sshkey *key, const BIGNUM *iqmp)
+ {
+@@ -433,7 +473,14 @@ ssh_rsa_sign(struct sshkey *key,
+ 		goto out;
+ 	}
+ 
+-	if (RSA_sign(nid, digest, hlen, sig, &amp;len, key-&gt;rsa) != 1) {
++	if (key-&gt;serial &gt; 0) {
++		len = keyctl_pkey_sign(key-&gt;serial, rsa_hash_alg_keyctl_info(hash_alg), digest, hlen, sig, slen);
++		if ((long)len == -1) {
++			ret = SSH_ERR_LIBCRYPTO_ERROR;
++			goto out;
++		}
++	}
++	else if (RSA_sign(nid, digest, hlen, sig, &amp;len, key-&gt;rsa) != 1) {
+ 		ret = SSH_ERR_LIBCRYPTO_ERROR;
+ 		goto out;
+ 	}
+@@ -705,6 +752,18 @@ const struct sshkey_impl sshkey_rsa_impl = {
+ 	/* .funcs = */		&amp;sshkey_rsa_funcs,
+ };
+ 
++const struct sshkey_impl sshkey_rsa_keyring_impl = {
++	/* .name = */		"ssh-rsa-keyring",
++	/* .shortname = */	"RSA",
++	/* .sigalg = */		NULL,
++	/* .type = */		KEY_RSA,
++	/* .nid = */		0,
++	/* .cert = */		0,
++	/* .sigonly = */	0,
++	/* .keybits = */	0,
++	/* .funcs = */		&amp;sshkey_rsa_funcs,
++};
++
+ const struct sshkey_impl sshkey_rsa_cert_impl = {
+ 	/* .name = */		"ssh-rsa-cert-v01@openssh.com",
+ 	/* .shortname = */	"RSA-CERT",
+diff --git a/sshkey.c b/sshkey.c
+index 43712253..3524ad37 100644
+--- a/sshkey.c
++++ b/sshkey.c
+@@ -115,6 +115,7 @@ extern const struct sshkey_impl sshkey_ecdsa_nistp521_cert_impl;
+ #  endif /* OPENSSL_HAS_NISTP521 */
+ # endif /* OPENSSL_HAS_ECC */
+ extern const struct sshkey_impl sshkey_rsa_impl;
++extern const struct sshkey_impl sshkey_rsa_keyring_impl;
+ extern const struct sshkey_impl sshkey_rsa_cert_impl;
+ extern const struct sshkey_impl sshkey_rsa_sha256_impl;
+ extern const struct sshkey_impl sshkey_rsa_sha256_cert_impl;
+@@ -154,6 +155,7 @@ const struct sshkey_impl * const keyimpls[] = {
+ 	&amp;sshkey_dss_impl,
+ 	&amp;sshkey_dsa_cert_impl,
+ 	&amp;sshkey_rsa_impl,
++	&amp;sshkey_rsa_keyring_impl,
+ 	&amp;sshkey_rsa_cert_impl,
+ 	&amp;sshkey_rsa_sha256_impl,
+ 	&amp;sshkey_rsa_sha256_cert_impl,
+diff --git a/sshkey.h b/sshkey.h
+index 771c4bce..a7ae45f6 100644
+--- a/sshkey.h
++++ b/sshkey.h
+@@ -29,6 +29,7 @@
+ #include &lt;sys/types.h&gt;
+ 
+ #ifdef WITH_OPENSSL
++#include &lt;keyutils.h&gt;
+ #include &lt;openssl/rsa.h&gt;
+ #include &lt;openssl/dsa.h&gt;
+ # ifdef OPENSSL_HAS_ECC
+@@ -153,6 +154,7 @@ struct sshkey {
+ 	size_t	shielded_len;
+ 	u_char	*shield_prekey;
+ 	size_t	shield_prekey_len;
++	key_serial_t serial;
+ };
+ 
+ #define	ED25519_SK_SZ	crypto_sign_ed25519_SECRETKEYBYTES
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Nous devons télécharger OpenSSH et appliquer les correctifs à partir de la dernière version git, car le correctif ci-dessus n'est pas compatible avec la dernière version (<code>V_9_1_P1</code>, au moment où nous écrivons ces lignes) :</p><!--kg-card-begin: markdown-->
+	<pre><code>$ git clone https://github.com/openssh/openssh-portable.git
+…
+$ cd openssl-portable
+$ $ patch -p1 &lt; ../openssh.patch
+patching file ssh-rsa.c
+patching file sshkey.c
+patching file sshkey.h
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Maintenant, compilons et générons la version corrigée d'OpenSSH :</p><!--kg-card-begin: markdown-->
+	<pre><code>$ autoreconf
+$ ./configure --with-libs=-lkeyutils --disable-pkcs11
+…
+$ make
+…
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Notez que nous ordonnons par ailleurs au système de gestion de version d'établir un lien avec <code><a href="https://man7.org/linux/man-pages/man3/keyctl.3.html" target="_blank">libkeyutils</a></code>, qui fournit des adaptateurs (ou wrappers) pratiques permettant d'accéder à Linux Kernel Key Retention Service. Par ailleurs, nous avons dû désactiver la prise en charge de PKCS11, car le code comporte une fonction avec le même nom qu'une fonction dans « libkeyutils », ce qui provoque un conflit de nom. Il existe peut-être une meilleure solution à ce problème, mais elle n'est pas pertinente dans le cadre de cet article.</p>
+	<p>Maintenant que nous avons appliqué le correctif à OpenSSH, testons-le. Tout d'abord, nous devons générer une nouvelle clé SSH RSA, que nous utiliserons pour accéder au système. Puisque le kernel Linux prend uniquement en charge les clés privées au format PKCS8, nous l'utiliserons dès le début (au lieu du format OpenSSH par défaut) :</p><!--kg-card-begin: markdown-->
+	<pre><code>$ ./ssh-keygen -b 4096 -m PKCS8
+Generating public/private rsa key pair.
+…
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Normalement, nous devrions utiliser « ssh-add » pour ajouter cette clé à notre agent ssh. Dans ce cas, toutefois, nous devons utiliser un script de remplacement, qui ajoutera la clé à notre trousseau de clés de session actuel :</p><!--kg-card-begin: markdown-->
+	<p>ssh-add-keyring.sh</p>
+	<pre><code>#/bin/bash -e
+
+in=$1
+key_desc=$2
+keyring=$3
+
+in_pub=$in.pub
+key=$(mktemp)
+out="${in}_keyring"
+
+function finish {
+    rm -rf $key
+}
+trap finish EXIT
+
+# https://github.com/openssh/openssh-portable/blob/master/PROTOCOL.key
+# null-terminanted openssh-key-v1
+printf 'openssh-key-v1\0' &gt; $key
+# cipher: none
+echo '00000004' | xxd -r -p &gt;&gt; $key
+echo -n 'none' &gt;&gt; $key
+# kdf: none
+echo '00000004' | xxd -r -p &gt;&gt; $key
+echo -n 'none' &gt;&gt; $key
+# no kdf options
+echo '00000000' | xxd -r -p &gt;&gt; $key
+# one key in the blob
+echo '00000001' | xxd -r -p &gt;&gt; $key
+
+# grab the hex public key without the (00000007 || ssh-rsa) preamble
+pub_key=$(awk '{ print $2 }' $in_pub | base64 -d | xxd -s 11 -p | tr -d '\n')
+# size of the following public key with the (0000000f || ssh-rsa-keyring) preamble
+printf '%08x' $(( ${#pub_key} / 2 + 19 )) | xxd -r -p &gt;&gt; $key
+# preamble for the public key
+# ssh-rsa-keyring in prepended with length of the string
+echo '0000000f' | xxd -r -p &gt;&gt; $key
+echo -n 'ssh-rsa-keyring' &gt;&gt; $key
+# the public key itself
+echo $pub_key | xxd -r -p &gt;&gt; $key
+
+# the private key is just a key description in the Linux keyring
+# ssh will use it to actually find the corresponding key serial
+# grab the comment from the public key
+comment=$(awk '{ print $3 }' $in_pub)
+# so the total size of the private key is
+# two times the same 4 byte int +
+# (0000000f || ssh-rsa-keyring) preamble +
+# a copy of the public key (without preamble) +
+# (size || key_desc) +
+# (size || comment )
+priv_sz=$(( 8 + 19 + ${#pub_key} / 2 + 4 + ${#key_desc} + 4 + ${#comment} ))
+# we need to pad the size to 8 bytes
+pad=$(( 8 - $(( priv_sz % 8 )) ))
+# so, total private key size
+printf '%08x' $(( $priv_sz + $pad )) | xxd -r -p &gt;&gt; $key
+# repeated 4-byte int
+echo '0102030401020304' | xxd -r -p &gt;&gt; $key
+# preamble for the private key
+echo '0000000f' | xxd -r -p &gt;&gt; $key
+echo -n 'ssh-rsa-keyring' &gt;&gt; $key
+# public key
+echo $pub_key | xxd -r -p &gt;&gt; $key
+# private key description in the keyring
+printf '%08x' ${#key_desc} | xxd -r -p &gt;&gt; $key
+echo -n $key_desc &gt;&gt; $key
+# comment
+printf '%08x' ${#comment} | xxd -r -p &gt;&gt; $key
+echo -n $comment &gt;&gt; $key
+# padding
+for (( i = 1; i &lt;= $pad; i++ )); do
+    echo 0$i | xxd -r -p &gt;&gt; $key
+done
+
+echo '-----BEGIN OPENSSH PRIVATE KEY-----' &gt; $out
+base64 $key &gt;&gt; $out
+echo '-----END OPENSSH PRIVATE KEY-----' &gt;&gt; $out
+chmod 600 $out
+
+# load the PKCS8 private key into the designated keyring
+openssl pkcs8 -in $in -topk8 -outform DER -nocrypt | keyctl padd asymmetric $key_desc $keyring
+
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Selon la façon dont notre kernel a été compilé, il est possible que nous devions également charger des modules du kernel aux fins de la prise en charge des clés privées asymétriques :</p><!--kg-card-begin: markdown-->
+	<pre><code>$ sudo modprobe pkcs8_key_parser
+$ ./ssh-add-keyring.sh ~/.ssh/id_rsa myssh @s
+Enter pass phrase for ~/.ssh/id_rsa:
+723263309
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Enfin, notre clé privée ssh est ajoutée au trousseau de clés de session actuel avec le nom « myssh ». Par ailleurs, le script <code>ssh-add-keyring.sh</code> crée dans <code>~/.ssh/id_rsa_keyring</code> un fichier de clé pseudo-privée, qui doit être transmis au processus ssh principal. Cette clé est pseudo-privée, car elle ne contient aucun élément cryptographique sensible. Au lieu de cela, elle contient uniquement l'identifiant « myssh » dans un format OpenSSH natif. Si nous utilisons plusieurs clés SSH, nous devons, d'une manière ou d'une autre, indiquer au processus <code>ssh</code> principal le nom de clé de kernel devant être demandé au système.</p>
+	<p>Avant de lancer le test, assurons-nous que notre serveur SSH (exécuté localement) acceptera la clé nouvellement générée en tant qu'authentification valide :</p><!--kg-card-begin: markdown-->
+	<pre><code>$ cat ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Maintenant nous pouvons essayer de nous connecter au système via SSH :</p><!--kg-card-begin: markdown-->
+	<pre><code>$ SSH_AUTH_SOCK="" ./ssh -i ~/.ssh/id_rsa_keyring localhost
+The authenticity of host 'localhost (::1)' can't be established.
+ED25519 key fingerprint is SHA256:3zk7Z3i9qZZrSdHvBp2aUYtxHACmZNeLLEqsXltynAY.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'localhost' (ED25519) to the list of known hosts.
+Linux dev 5.15.79-cloudflare-2022.11.6 #1 SMP Mon Sep 27 00:00:00 UTC 2010 x86_64
+…
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Ça fonctionne ! Remarquez que nous réinitialisons la variable d'environnement « SSH_AUTH_SOCK », afin de nous assurer que nous n'utilisons pas les clés d'un agent ssh en cours d'exécution sur le système. Néanmoins, le flux de connexion ne demande aucun mot de passe pour notre clé privée, la clé elle-même réside dans l'espace d'adressage du kernel et nous faisons référence à elle en utilisant son numéro de série aux fins des opérations de signature.</p>
+	<h3 id="trousseau-de-cl-s-d-utilisateur-ou-de-session">Trousseau de clés d'utilisateur ou de session ?</h3>
+	<p>Dans l'exemple ci-dessus, nous avons configuré notre clé privée SSH dans le trousseau de clés de session. Nous pouvons vérifier si elle s'y trouve :</p><!--kg-card-begin: markdown-->
+	<pre><code>$ keyctl show
+Session Keyring
+ 577779279 --alswrv   1000  1000  keyring: _ses
+ 846694921 --alswrv   1000 65534   \_ keyring: _uid.1000
+ 723263309 --als--v   1000  1000   \_ asymmetric: myssh
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Nous avons peut-être également utilisé le trousseau de clés d'utilisateur. Quelle différence cela fait-il ? Actuellement, la durée de vie de la clé « myssh » est limitée à la session de connexion en cours. Cela signifie que si nous nous déconnectons, puis nous reconnectons, la clé aura disparu et nous devrons à nouveau exécuter le script <code>ssh-add-keyring.sh</code> De même, si nous nous connectons à un deuxième terminal, nous ne verrons pas cette clé :</p><!--kg-card-begin: markdown-->
+	<pre><code>$ keyctl show
+Session Keyring
+ 333158329 --alswrv   1000  1000  keyring: _ses
+ 846694921 --alswrv   1000 65534   \_ keyring: _uid.1000
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Notez que le numéro de série du trousseau de clés de session <code>_ses</code> sur le deuxième terminal est différent. Un nouveau trousseau de clés a été créé, et la clé « myssh », ainsi que le porte-clés de session précédent, n'existent plus :</p><!--kg-card-begin: markdown-->
+	<pre><code>$ SSH_AUTH_SOCK="" ./ssh -i ~/.ssh/id_rsa_keyring localhost
+Load key "/home/ignat/.ssh/id_rsa_keyring": key not found
+…
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Si, au lieu de cela, nous demandons à <code>ssh-add-keyring.sh</code> de charger la clé privée dans le trousseau de clés d'utilisateur (remplacez <code>@s</code> par <code>@u</code> dans les paramètres de la ligne de commande), la clé sera disponible et accessible depuis les deux sessions de connexion. Dans ce cas, lors de la déconnexion et de la reconnexion, la même clé sera présentée. Toutefois, cela comporte un inconvénient en termes de sécurité : tout processus en cours d'exécution avec notre identifiant d'utilisateur pourra accéder à la clé et l'utiliser.</p>
+	<h3 id="r-capitulatif">Récapitulatif</h3>
+	<p>Dans cet article, nous vous avons présenté l'une des causes de fuites de données les plus courantes, qui concerne également les précieuses clés cryptographiques. Nous avons évoqué des exemples réels qui ont affecté de nombreux utilisateurs à travers le monde, parmi lesquels Cloudflare. Enfin, nous avons découvert comment Linux Kernel Retention Service peut nous aider à protéger nos clés cryptographiques et nos secrets.</p>
+	<p>Nous avons également présenté un correctif fonctionnel pour OpenSSH, permettant d'utiliser cette chouette fonctionnalité du kernel Linux, afin que vous puissiez facilement l'essayer vous-même. Il reste encore beaucoup de fonctionnalités de Linux Kernel Key Retention Service à découvrir, ce qui pourrait être le sujet d'un autre article de blog. Restez à l'écoute !<br></p>
+</div>
