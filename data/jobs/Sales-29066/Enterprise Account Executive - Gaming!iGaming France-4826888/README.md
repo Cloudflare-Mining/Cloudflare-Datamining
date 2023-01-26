@@ -5,31 +5,34 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4>About the Department</h4>
-<p>The Customer Support Team solves complicated problems and answers technical inquiries via phone, email, chat, and social media. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, our team is always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - to help build a better service and future product development.</p>
-<h4>What You’ll Do</h4>
-<p><span style="font-weight: 400;">Do you love solving complex problems and interacting with people? Are you passionate about helping customers and a standout colleague? Cloudflare is seeking a Technical Customer Support Engineer to join our team. You will work with customers on a variety of technical support issues as well as the Technical Operations team that is responsible for running our global distributed network. This is a position where you will learn the inner workings of Cloudflare's architecture and gain a deeper understanding of Internet technologies. You will focus on providing support for our Content Delivery products: Workers, Speed, Images, Stream, CDN and others.</span></p>
-<h4>Examples of desirable skills, knowledge and experience</h4>
+<p><strong>About the Department</strong></p>
+<p>Account Executives, Business Development Representatives, Solution Engineers, and Customer Success - all working together to help our customers adopt Cloudflare and build great Internet-enabled experiences. The sales team at Cloudflare helps customers take on real, technical problems while building the revenue streams that help the company provide free service to millions in our community.</p>
+<p><strong>About the Role</strong></p>
+<p>Based in one of our EMEA locations, you will drive sales into gaming &amp; igaming accounts headquartered in France. You will employ both a ‘hunter’ and a ‘farmer’ mindset i.e. proactively penetrate target gaming/igaming prospect accounts, whilst leveraging relationships with existing customers and working cross-functionally with customer success to identify and execute on upsell opportunities within these accounts. You will build strong relationships internally (finance, compliance, legal, product, marketing, partners, etc.) and champion the ever-adapting requirements of customers in this segment to all internal stakeholders involved - so as to help deliver a best-of-breed solution to gaming &amp; igaming customers in your target regions.</p>
+<h4>Additional responsibilities will include</h4>
 <ul>
-	<li><span style="font-weight: 400;">You have worked as part of a team in a customer-facing role and want to progress your career as a support professional</span></li>
-	<li><span style="font-weight: 400;">You have solved issues from the network to the application layer</span></li>
-	<li><span style="font-weight: 400;">You have resolved front-end dashboard and API issues</span></li>
-	<li><span style="font-weight: 400;">You have analyzed and tuned website performance issues</span></li>
-	<li><span style="font-weight: 400;">You understand Javascript or other scripting languages&nbsp;</span></li>
-	<li><span style="font-weight: 400;">You have developed or maintained internet applications</span></li>
-	<li><span style="font-weight: 400;">You have experience with video encoding and streaming solutions</span></li>
-	<li><span style="font-weight: 400;">You have worked with SQLite or other database servers</span></li>
-	<li><span style="font-weight: 400;">You are comfortable communicating through various support channels and always put the customer first</span></li>
-	<li><span style="font-weight: 400;">You are a motivated self-starter and always looking to expand your existing skill set</span></li>
+	<li>Carry &amp; exceed individual quarterly quotas</li>
+	<li>Leads contract negotiations</li>
+	<li>Build a robust sales pipeline</li>
+	<li>Develop long-term strategic relationships with key accounts</li>
+	<li>&lt; 50% travel</li>
 </ul>
-<h4>Bonus Points</h4>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li><span style="font-weight: 400;">You are fluent in Portuguese, Spanish, German, Japanese, French or Mandarin</span></li>
-	<li><span style="font-weight: 400;">You are familiar with Cloudflare and have a site actively using our platform</span></li>
-	<li><span style="font-weight: 400;">You have a solid grasp of problem-solving with command line tools (curl/dig/traceroute/tcpdump) and developer tools (git/wrangler/npm)</span></li>
-	<li><span style="font-weight: 400;">You are familiar with Nginx, Apache, IIS or any other web servers</span></li>
-	<li><span style="font-weight: 400;">You are committed to gaining a deeper understanding of the following technologies: DNS /&nbsp; SSL / CDN - Cache / Cloudflare Workers</span></li>
-	<li><span style="font-weight: 400;">You have experience with Cloudflare Workers&nbsp;&nbsp;</span></li>
+	<li><strong>7+ years of direct B2B selling experience, 3+ years selling to gaming &amp; igaming customers in EMEA</strong></li>
+	<li>Bachelor's degree required</li>
+	<li><strong>English &amp; French language required</strong></li>
+	<li>Closing experience and track-record of exceeding quota</li>
+	<li>Deep understanding of the sales process as it relates to Enterprise, Mid-Market, &amp; SMB companies</li>
+	<li>Relevant direct experience, track record, and relationships within gaming &amp; igaming accounts in Israel&nbsp;</li>
+	<li>Exemplary communication skills, both written and verbal, with confidence to develop and present ideas to varying levels of audiences</li>
+	<li>Experience directly managing a pipeline of complex, large deals</li>
+	<li>Direct experience selling network security and/or CDN solutions and services preferred</li>
+	<li>Basic understanding of computer networking and “how the internet works”</li>
+	<li>Aptitude for learning technical concepts/terms (Technical background in engineering, computer science, or MIS a plus)</li>
+	<li>Strong interpersonal communication (verbal and written) and organisational skills.</li>
+	<li>Self-motivated; entrepreneurial spirit</li>
+	<li>Comfortable working in a fast paced dynamic environment</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
