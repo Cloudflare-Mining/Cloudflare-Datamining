@@ -68,7 +68,7 @@ export const LoadBalancerPool = eg.object({
   origin_steering: eg.object({
     policy: eg.union([eg.literal('random'), eg.literal('hash')])
   }).optional,
-  notification_email: eg.union([eg.string, eg.array(eg.string)]),
+  notification_email: eg.union([eg.string, eg.array(eg.string)]).optional,
   notification_filter: eg.object({
     pool: eg.object({
       disable: eg.boolean.optional,
