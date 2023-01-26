@@ -33,35 +33,6 @@
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Multilingual and/or experience living/working/conducting business in another country a plus</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Bachelor's degree or equivalent experience required</span></li>
 </ul>
-<p><strong>Compensation</strong></p>
-<p><span style="font-weight: 400;">Compensation may be adjusted depending on work location. For Colorado-based hires: Estimated annual salary of $<span data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:96000}" data-sheets-userformat="{&quot;2&quot;:14845,&quot;3&quot;:{&quot;1&quot;:2,&quot;2&quot;:&quot;#,##0&quot;,&quot;3&quot;:1},&quot;5&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;6&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;7&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;8&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;9&quot;:1,&quot;10&quot;:1,&quot;11&quot;:4,&quot;14&quot;:{&quot;1&quot;:3,&quot;3&quot;:1},&quot;15&quot;:&quot;Open Sans&quot;,&quot;16&quot;:11}" data-sheets-formula="=if(if(R[-10]C[0]=&quot;Hire&quot;,iferror(round(R[0]C[1]*0.9,-3),&quot;&quot;),iferror(round(R[0]C[1]*0.8,-3),&quot;&quot;))=0,&quot;&quot;,if(R[-10]C[0]=&quot;Hire&quot;,iferror(round(R[0]C[1]*0.9,-3),&quot;&quot;),iferror(round(R[0]C[1]*0.8,-3),&quot;&quot;)))">96,000</span> - $<span data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:118000}" data-sheets-userformat="{&quot;2&quot;:14589,&quot;3&quot;:{&quot;1&quot;:2,&quot;2&quot;:&quot;#,##0&quot;,&quot;3&quot;:1},&quot;5&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;6&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;7&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;8&quot;:{&quot;1&quot;:[{&quot;1&quot;:2,&quot;2&quot;:0,&quot;5&quot;:{&quot;1&quot;:2,&quot;2&quot;:0}},{&quot;1&quot;:0,&quot;2&quot;:0,&quot;3&quot;:3},{&quot;1&quot;:1,&quot;2&quot;:0,&quot;4&quot;:1}]},&quot;9&quot;:1,&quot;10&quot;:1,&quot;14&quot;:{&quot;1&quot;:3,&quot;3&quot;:1},&quot;15&quot;:&quot;Open Sans&quot;,&quot;16&quot;:11}" data-sheets-formula="=if(if(R[-10]C[-2]=&quot;Hire&quot;,iferror(round(R[0]C[-1]*1.1,-3),&quot;&quot;),iferror(round(R[0]C[-1]*1.2,-3),&quot;&quot;))=0,&quot;&quot;,if(R[-10]C[-2]=&quot;Hire&quot;,iferror(round(R[0]C[-1]*1.1,-3),&quot;&quot;),iferror(round(R[0]C[-1]*1.2,-3),&quot;&quot;)))">118,000</span>.</span></p>
-<p><strong>Equity</strong></p>
-<p><span style="font-weight: 400;">This role is eligible to participate in Cloudflare’s equity plan.</span></p>
-<p><strong>Benefits</strong></p>
-<p><span style="font-weight: 400;">Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</span></p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Medical/Rx Insurance</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Dental Insurance</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Vision Insurance</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Flexible Spending Accounts</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Commuter Spending Accounts</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Fertility &amp; Family Forming Benefits</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">On-demand mental health support and Employee Assistance Program</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Global Travel Medical Insurance</span></li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Short and Long Term Disability Insurance</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Life &amp; Accident Insurance</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">401(k) Retirement Savings Plan</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Employee Stock Participation Plan</span></li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Flexible paid time off covering vacation and sick leave</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Leave programs, including parental, pregnancy health, medical, and bereavement leave</span></li>
-</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
