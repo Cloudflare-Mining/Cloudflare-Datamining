@@ -6,7 +6,7 @@
 	</div>
 </div>
 <p><strong>What we’re looking for</strong></p>
-<p><span style="font-weight: 400;">As the Head of Head of MarTech and Marketing Analytics, you will run the Analytics and Technology group for Cloudflare.&nbsp; You will lead a cross functional team of internal stakeholders and work with external agencies/partners.&nbsp;&nbsp;</span></p>
+<p><span style="font-weight: 400;">As the Head of Marketing Technology, you will run the Technology group for Cloudflare.&nbsp; You will lead a cross functional team of internal stakeholders and work with external agencies/partners.&nbsp;&nbsp;</span></p>
 <p><strong>Primary responsibilities&nbsp;</strong></p>
 <ul>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Define and deliver Cloudflare’s marketing technology architecture and roadmap&nbsp;</span></li>
@@ -28,7 +28,7 @@
 </ul>
 <p><strong>Team building&nbsp;</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Hire, manage, develop, motivate, and retail&nbsp; a high-performing team across MarTech and marketing analytics&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Hire, manage, develop, motivate, and retain a high-performing team across MarTech.&nbsp;</span></li>
 </ul>
 <p><strong>The ideal candidate&nbsp;</strong></p>
 <ul>
@@ -37,7 +37,7 @@
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Can operate both strategically as well as operationally and tactically as needed&nbsp;</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Is a terrific leader who can articulate a coherent and compelling vision AND a very effective manager who gets things done quickly, thoughtfully, and with great attention to detail&nbsp;</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Thrives in a collaborative, team-based environment&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Has passion for the cutting edge and for continuous striving for best-in-class in MarTech and in marketing analytics</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Has passion for the cutting edge and for continuous striving for best-in-class in MarTech.&nbsp;&nbsp;</span></li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

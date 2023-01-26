@@ -5,28 +5,42 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><strong>Special Projects: Solutions Engineer, Technology Partnerships</strong></h3>
-<p><span style="font-weight: 400;">As a Solutions Engineer for our technology partnerships team (part of Special Projects), you will focus on two primary tasks: explore and lead new partner integrations with our product teams and external partners, and help to develop novel distribution partnerships with large external organizations that have significant impact on Cloudflare’s overall business.</span></p>
-<p><span style="font-weight: 400;">Past projects include integrations with endpoint security providers, prototyping and testing GRE/ IPsec integrations with popular SD-WAN providers, leading and managing new partnerships, and architecting and implementing future Zero Trust OEM partnerships.</span></p>
-<p><span style="font-weight: 400;">The Special Projects SE is a unique opportunity that requires a solid understanding of all of Cloudflare’s products - with the ability to develop an even deeper understanding, should it be required for a particular project. In this role, you’ll interact with many partners and counterparts at senior technical and business levels. Presentation skills, a professional maturity, and the ability to engage others and represent Cloudflare is vital to this position.</span></p>
-<p><span style="font-weight: 400;">In short, if you are a technology explorer looking to impact Cloudflare’s business - let’s talk.</span></p>
-<h3><strong>Goals/Responsibilities</strong></h3>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Discover, validate and architect new integrations with our product and engineering teams</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Lead all technical aspects including project management for novel strategic partnerships</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Coordinate technical dependencies across other Cloudflare teams</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Describe new integrations and novel partnerships via blog posts, CFTV sessions, and technical trainings with customer facing and SE teams</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Generate awareness about Cloudflare’s partnership efforts internally and externally</span></li>
-</ul>
-<h3><span style="font-weight: 400;"><strong>Personal Goals/Capabilities</strong>&nbsp;</span></h3>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Grow a strong understanding of all of Cloudflare products and internal systems</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Develop industry expertise on technical trends e.g., in enterprise networking</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Develop strong relationships across Cloudflare’s product, engineering, and customer facing teams</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Help prioritize our group’s efforts to ensure the team is focused on the highest impact projects that are technically feasible</span></li>
-</ul>
+<h4>About the department</h4>
+<p><span style="font-weight: 400;">We are looking for a strategic, analytics-focused Procurement Specialist to join our team as part of the Finance Organization. As a key team member of a high-visibility organization, this role will provide operational and project management support to Cloudflare’s Procurement Team.</span></p>
+<div>
+	<h4>What you'll do</h4>
+	<p>Cloudflare’s Procurement Specialist will support procurement activities across all business segments within Cloudflare. Because we are growing, applicants should anticipate that this role may evolve over time. This person will be the internal point of contact for key business functions such as requisitions/POs, invoices, and projects. The Procurement Specialist will play a key role in Procurement process administration and report request(s) fulfillment. This position requires dedicated problem-solving and customer relations.&nbsp;</p>
+	<p>In this role, you will coordinate internal stakeholder meetings and lead projects. You will provide qualitative and quantitative analysis to aid in metrics-driven negotiations and vendor selection. Additionally, you will develop and manage reporting tools and excel models, tracking and reporting key metrics while leading procurement administration efforts. Assist with the preparation and review of vendor contracts, quotes, and proposals, ensuring bilateral commercial terms &amp; conditions. You will partner with Legal and Security teams during new vendor on-boarding to ensure business requirements are met at engagement onset.&nbsp;</p>
+</div>
+<div>
+	<p><strong>Responsibilities</strong></p>
+</div>
+<div>
+	<ul>
+		<li>Manager of Purchasing and Vendor Relations, the Purchasing Specialist is responsible for training and development, data integrity and analysis, procurement, requisition, vendor relations, and new account coordination.&nbsp;</li>
+		<li>Participate in FY 2023 selection and implementation of systems.</li>
+		<li>Responsible for the timely and accurate entry, proofing, maintenance, distribution, and electronic retention of Agency purchase orders.&nbsp;</li>
+		<li>Ensure high standards of customer service for system users and partners, including providing system support and end user training.&nbsp;</li>
+		<li>Develop training tools and resources for purchasing, host ongoing training and development sessions, and provide technical assistance as needed to internal stakeholders.&nbsp;</li>
+		<li>Collect and analyze data from multiple purchasing and vendor systems to identify cost savings opportunities and to mitigate procurement risk.&nbsp;</li>
+		<li>Partner with Accounts Payable to ensure payments are sent in a timely manner.</li>
+		<li>Streamline, document and align internal processes.</li>
+		<li>On an ongoing basis, attempt to identify opportunities to improve operational quality, efficiency, and accuracy within Global Procurement and for stakeholders who utilize its services.</li>
+	</ul>
+	<div>
+		<p><strong>Examples of desirable skills, knowledge, and experience</strong></p>
+		<ul>
+			<li>5 plus years’ Procurement, Operations, Project Management or relevant experience.</li>
+			<li>Proficiency in Coupa or Procurement system.</li>
+			<li>Ability to run reports in Excel / Google sheets.</li>
+			<li>Solid written and verbal communication skills, with experience engaging with and presenting to small- to medium-sized audiences.&nbsp;<br>Strong work ethic and ability to work in a fast-paced environment.</li>
+			<li>Ability to prioritize requests and communicate effectively in a deadline driven environment.</li>
+			<li>Proven track record in developing and executing project plans to accomplish defined objectives in a collaborative, cross-functional team environment involving both internal and external members.&nbsp;</li>
+		</ul>
+	</div>
+</div>
 <p><strong>Compensation</strong></p>
-<p><span style="font-weight: 400;">Compensation may be adjusted depending on work location. For Colorado-based hires: Estimated annual salary of $<span data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:152000}" data-sheets-userformat="{&quot;2&quot;:515,&quot;3&quot;:{&quot;1&quot;:0},&quot;4&quot;:{&quot;1&quot;:2,&quot;2&quot;:15724527},&quot;12&quot;:0}">152,000</span> - $<span data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:186000}" data-sheets-userformat="{&quot;2&quot;:515,&quot;3&quot;:{&quot;1&quot;:0},&quot;4&quot;:{&quot;1&quot;:2,&quot;2&quot;:15724527},&quot;12&quot;:0}">186,000</span>.</span></p>
+<p><span style="font-weight: 400;">Compensation may be adjusted depending on work location. For Colorado-based hires: Estimated annual salary of $95,000- $116,000.</span></p>
 <p><strong>Equity</strong></p>
 <p><span style="font-weight: 400;">This role is eligible to participate in Cloudflare’s equity plan.</span></p>
 <p><strong>Benefits</strong></p>
