@@ -134,7 +134,7 @@ const navigation = {
 		iconType: "applications",
 		labels: ["beta"],
 		hasPermission: function(s) {
-			return S(s) && (0, E.dU)(s)
+			return S(s) && (0, b.dU)(s)
 		}
 	}, {
 		title: "navigation.account.calls",
@@ -212,7 +212,7 @@ const navigation = {
 			title: "navigation.account.r2.overview",
 			url: "/r2/overview",
 			hasPermission: function(s) {
-				return N(s)
+				return _(s)
 			}
 		}, {
 			title: "navigation.account.r2_slurper",
@@ -220,7 +220,7 @@ const navigation = {
 			testId: "sidenav-r2Migrator-link",
 			labels: ["beta"],
 			hasPermission: function(s) {
-				return N(s)
+				return _(s)
 			}
 		}]
 	}, {
@@ -341,13 +341,13 @@ const navigation = {
 		url: "/application-security",
 		iconType: "cloudflare-security-application",
 		hasPermission: function(s) {
-			return S(s) && !!X(s)
+			return S(s) && !!q(s)
 		},
 		pages: [{
 			title: "navigation.account.firewall_rulesets.application_firewall",
 			url: "/application-security/waf",
 			hasPermission: function(s) {
-				return !!X(s)
+				return !!q(s)
 			}
 		}]
 	}, {
@@ -361,8 +361,8 @@ const navigation = {
 			title: "navigation.account.firewall_rulesets.ddos",
 			url: "/network-security/ddos",
 			hasPermission: function(s) {
-				var de = !!J(s) && !!fe(s);
-				return !!$(s) || de
+				var de = !!$(s) && !!fe(s);
+				return !!X(s) || de
 			}
 		}, {
 			title: "navigation.account.firewall_rulesets.magic_firewall",
@@ -621,9 +621,9 @@ const navigation = {
 			var de = (0, k.getZone)(s);
 			if ((0, d.zoneIsDNSOnly)(s) || !u(s, "zone_settings", "spectrum.app") || !de) return !1;
 			var ge = !!((0, i.userHasEntZones)(s) || (0, k.userHasDelegatedEntZones)(s)),
-				he = !!(0, k.getZoneFlipperFlag)(s, "spectrum", "enabled"),
-				Ae = !!(0, k.isFree)(de);
-			return he || ge || !Ae
+				Se = !!(0, k.getZoneFlipperFlag)(s, "spectrum", "enabled"),
+				Pe = !!(0, k.isFree)(de);
+			return Se || ge || !Pe
 		}
 	}, {
 		title: "navigation.zone.ssl-tls",
@@ -885,14 +885,14 @@ const navigation = {
 		pages: [{
 			title: "navigation.zone.traffic.argo",
 			url: "/traffic",
-			canBeVersioned: !1,
+			canBeVersioned: !0,
 			hasPermission: function(s) {
 				return !(0, d.zoneIsDNSOnly)(s)
 			}
 		}, {
 			title: "navigation.zone.traffic.argo_tunnel",
 			url: "/traffic/argo-tunnel",
-			canBeVersioned: !0,
+			canBeVersioned: !1,
 			hasPermission: function(s) {
 				return !(0, d.zoneIsDNSOnly)(s)
 			}
