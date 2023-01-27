@@ -1,5 +1,21 @@
 # Change Log
 
+## 5.1.0
+
+### Minor Changes
+
+- 8fe46c6d2d: Make formik properties available through Form innerRef prop, multi support for Listbox
+
+### Patch Changes
+
+- Updated dependencies [8fe46c6d2d]
+- Updated dependencies [8fe46c6d2d]
+- Updated dependencies [d2a8664dc8]
+- Updated dependencies [d2a8664dc8]
+  - @cloudflare/component-search@5.1.0
+  - @cloudflare/component-listbox@1.9.0
+  - @cloudflare/component-checkbox@5.3.0
+
 ## 5.0.4
 
 ### Patch Changes

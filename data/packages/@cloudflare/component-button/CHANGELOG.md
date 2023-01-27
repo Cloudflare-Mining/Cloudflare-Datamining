@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.3.2
+
+### Patch Changes
+
+- 8fe46c6d2d: Make normal plain button backgrounds transparent
+
 ## 5.3.1
 
 ### Patch Changes
