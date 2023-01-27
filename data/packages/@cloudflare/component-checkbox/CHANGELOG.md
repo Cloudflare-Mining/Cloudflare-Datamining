@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.3.0
+
+### Minor Changes
+
+- d2a8664dc8: Add tabIndex prop
+
 ## 5.2.1
 
 ### Patch Changes

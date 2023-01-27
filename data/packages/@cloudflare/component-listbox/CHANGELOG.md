@@ -1,5 +1,15 @@
 # Change Log
 
+## 1.9.0
+
+### Minor Changes
+
+- 8fe46c6d2d: Add multi support to Listbox, add compact prop to Combobox
+
+### Patch Changes
+
+- d2a8664dc8: Improve keyboard handling and accessibility of multi select listbox
+
 ## 1.8.0
 
 ### Minor Changes

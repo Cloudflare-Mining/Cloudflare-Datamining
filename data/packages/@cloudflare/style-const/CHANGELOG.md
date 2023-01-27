@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.6.1
+
+### Patch Changes
+
+- 8fe46c6d2d: Change focus outline spacing
+
 ## 5.6.0
 
 ### Minor Changes
