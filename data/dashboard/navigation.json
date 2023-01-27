@@ -247,6 +247,14 @@
 					"labels": [
 						"beta"
 					]
+				},
+				{
+					"title": "navigation.account.images.delivery_zones",
+					"url": "/images/delivery-zones",
+					"testId": "sidenav-delivery-zones-link",
+					"labels": [
+						"new"
+					]
 				}
 			]
 		},
@@ -404,6 +412,389 @@
 					"url": "/configurations",
 					"testId": "account-homepage-configurations"
 				}
+			]
+		}
+	],
+	"groupingAccount": [
+		{
+			"title": "navigation.root.websites",
+			"url": "/",
+			"iconType": "internet-browser"
+		},
+		{
+			"url": "",
+			"iconType": "registrar-logo",
+			"pages": [
+				{
+					"title": "navigation.account.registrar.manage_domains",
+					"url": "/domains"
+				},
+				{
+					"title": "navigation.account.registrar.transfer_domains",
+					"url": "/domains/transfer"
+				},
+				{
+					"title": "navigation.account.registrar.register_domains",
+					"url": "/domains/register"
+				},
+				{
+					"title": "navigation.account.registrar.domain_protection",
+					"url": "/domains/protection"
+				}
+			]
+		},
+		{
+			"title": "navigation.account.analytics",
+			"url": "",
+			"iconType": "chart",
+			"pages": [
+				{
+					"title": "navigation.account.account_analytics",
+					"url": "/analytics",
+					"labels": [
+						"beta"
+					]
+				},
+				{
+					"title": "navigation.account.network_analytics"
+				},
+				{
+					"title": "navigation.account.web_analytics",
+					"url": "/web-analytics"
+				},
+				{
+					"title": "navigation.account.logs",
+					"url": "/logs",
+					"labels": [
+						"new"
+					]
+				},
+				{
+					"title": "navigation.account.carbon",
+					"url": "/carbon"
+				},
+				{
+					"title": "navigation.account.magic.network_monitoring",
+					"url": "/network-monitoring",
+					"labels": [
+						"beta"
+					]
+				}
+			]
+		},
+		{
+			"title": "navigation.account.security_center",
+			"url": "/security-center",
+			"iconType": "product-security-center",
+			"pages": [
+				{
+					"title": "navigation.account.security_center.security_insights",
+					"url": "/security-center"
+				},
+				{
+					"title": "navigation.account.security_center.security_analytics",
+					"url": "/security-center/analytics",
+					"labels": [
+						"beta"
+					]
+				},
+				{
+					"title": "navigation.account.security_center.infrastructure",
+					"url": "/security-center/inventory"
+				},
+				{
+					"title": "navigation.account.security_center.investigate",
+					"url": "/security-center/investigate"
+				},
+				{
+					"title": "navigation.account.security_center.reports",
+					"url": "/security-center/reports"
+				},
+				{
+					"title": "navigation.account.security_center.brand_protection",
+					"url": "/security-center/brand-protection"
+				},
+				{
+					"title": "navigation.account.security_center.cfone",
+					"url": "/security-center/cloudforce-one"
+				}
+			]
+		},
+		{
+			"title": "navigation.account.group_title.application_services",
+			"url": "/",
+			"labels": [
+				"separator"
+			],
+			"iconType": "internet-browser"
+		},
+		{
+			"title": "navigation.account.waf",
+			"url": "/application-security/waf",
+			"iconType": "cloudflare-security-application"
+		},
+		{
+			"title": "navigation.account.turnstile",
+			"url": "/turnstile",
+			"iconType": "turnstile",
+			"testId": "sidenav-turnstile-link",
+			"labels": [
+				"beta"
+			]
+		},
+		{
+			"title": "navigation.account.group_title.network_services",
+			"url": "/",
+			"labels": [
+				"separator"
+			],
+			"iconType": "internet-browser"
+		},
+		{
+			"title": "navigation.account.magic_transit",
+			"url": "/magic-transit",
+			"iconType": "magic-transit-logo"
+		},
+		{
+			"title": "navigation.account.magic_firewall",
+			"url": "/network-security/magic_firewall",
+			"iconType": "magic-firewall"
+		},
+		{
+			"title": "navigation.account.l3l4.ddos",
+			"url": "/network-security/ddos",
+			"iconType": "cloudflare-security-network"
+		},
+		{
+			"title": "navigation.account.ip_addresses",
+			"url": "/ip-addresses/ip-prefixes",
+			"iconType": "network",
+			"labels": [
+				"new"
+			],
+			"pages": [
+				{
+					"title": "navigation.account.ip_addresses.ip_prefixes",
+					"url": "/ip-addresses/ip-prefixes"
+				},
+				{
+					"title": "navigation.account.ip_addresses.proxy-ips",
+					"url": "/ip-addresses/proxy-ips"
+				}
+			]
+		},
+		{
+			"title": "navigation.account.group_title.cloudflare_one",
+			"url": "/",
+			"labels": [
+				"separator"
+			],
+			"iconType": "internet-browser"
+		},
+		{
+			"title": "navigation.account.zero_trust",
+			"iconType": "cloudflare-zero-trust",
+			"labels": [
+				"external-link"
+			]
+		},
+		{
+			"title": "navigation.account.magic_wan",
+			"url": "/magic-wan",
+			"iconType": "cloudflare-magic-wan",
+			"labels": [
+				"new"
+			]
+		},
+		{
+			"title": "navigation.account.group_title.developer_platform",
+			"url": "/",
+			"labels": [
+				"separator"
+			],
+			"iconType": "internet-browser"
+		},
+		{
+			"title": "navigation.account.workers",
+			"url": "/workers",
+			"iconType": "edgeworker",
+			"pages": [
+				{
+					"title": "navigation.common.overview",
+					"url": "/workers/overview"
+				},
+				{
+					"title": "navigation.account.workers.custom_domains",
+					"url": "/workers/custom-domains"
+				},
+				{
+					"title": "navigation.account.workers.kv",
+					"url": "/workers/kv/namespaces"
+				},
+				{
+					"title": "navigation.account.workers.queues",
+					"url": "/workers/queues",
+					"labels": [
+						"beta"
+					]
+				},
+				{
+					"title": "navigation.account.workers.d1",
+					"url": "/workers/d1",
+					"labels": [
+						"alpha"
+					]
+				},
+				{
+					"title": "navigation.account.workers.plans",
+					"url": "/workers/plans"
+				}
+			]
+		},
+		{
+			"title": "navigation.account.workers_for_platforms",
+			"url": "/workers-for-platforms",
+			"iconType": "workers-for-platforms",
+			"testId": "workers-for-platforms"
+		},
+		{
+			"title": "navigation.account.pages",
+			"url": "/pages",
+			"iconType": "pages-logo"
+		},
+		{
+			"title": "navigation.account.r2",
+			"url": "/r2",
+			"iconType": "r2",
+			"testId": "sidenav-r2-link",
+			"pages": [
+				{
+					"title": "navigation.account.r2.overview",
+					"url": "/r2/overview"
+				},
+				{
+					"title": "navigation.account.r2_slurper",
+					"url": "/r2/slurper",
+					"testId": "sidenav-r2Migrator-link",
+					"labels": [
+						"beta"
+					]
+				}
+			]
+		},
+		{
+			"title": "navigation.account.stream",
+			"url": "/stream",
+			"iconType": "stream",
+			"pages": [
+				{
+					"title": "navigation.account.stream.videos",
+					"url": "/stream/videos"
+				},
+				{
+					"title": "navigation.account.stream.live_inputs",
+					"url": "/stream/inputs"
+				},
+				{
+					"title": "navigation.common.analytics",
+					"url": "/stream/analytics",
+					"labels": [
+						"new"
+					]
+				}
+			]
+		},
+		{
+			"title": "navigation.account.images",
+			"url": "/images",
+			"iconType": "image",
+			"testId": "sidenav-images-link",
+			"pages": [
+				{
+					"title": "navigation.account.images",
+					"url": "/images/images"
+				},
+				{
+					"title": "navigation.account.images.variants",
+					"url": "/images/variants"
+				},
+				{
+					"title": "navigation.account.images.keys",
+					"url": "/images/keys"
+				},
+				{
+					"title": "navigation.account.images.sourcing_kit",
+					"url": "/images/sourcing-kit",
+					"testId": "sidenav-sourcingkit-link",
+					"labels": [
+						"beta"
+					]
+				}
+			]
+		},
+		{
+			"title": "navigation.account.calls",
+			"url": "/calls",
+			"labels": [
+				"beta"
+			],
+			"iconType": "user-multi"
+		},
+		{
+			"title": "navigation.account.group_title.account_management",
+			"url": "/",
+			"labels": [
+				"separator"
+			],
+			"iconType": "internet-browser"
+		},
+		{
+			"title": "navigation.account.manage_account",
+			"url": "",
+			"iconType": "gear",
+			"testId": "manage-account-link",
+			"pages": [
+				{
+					"title": "navigation.account.members",
+					"url": "/members",
+					"testId": "account-homepage-members"
+				},
+				{
+					"title": "navigation.account.audit_log",
+					"url": "/audit-log",
+					"testId": "account-homepage-audit-logs"
+				},
+				{
+					"title": "navigation.account.billing",
+					"url": "/billing",
+					"testId": "account-homepage-billing"
+				},
+				{
+					"title": "navigation.account.configurations",
+					"url": "/configurations",
+					"testId": "account-homepage-configurations"
+				}
+			]
+		},
+		{
+			"title": "navigation.account.notifications",
+			"url": "/notifications",
+			"iconType": "notifications"
+		},
+		{
+			"title": "account.bulk_redirects.title",
+			"url": "/bulk-redirects",
+			"iconType": "filter",
+			"labels": [
+				"beta"
+			]
+		},
+		{
+			"title": "navigation.account.http_applications",
+			"url": "/http-applications",
+			"iconType": "applications",
+			"labels": [
+				"beta"
 			]
 		}
 	],
