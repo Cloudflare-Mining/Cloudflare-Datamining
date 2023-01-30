@@ -191,3 +191,11 @@ export const ZoneBlock = eg.object({
 });
 
 export type ZoneBlock = TypeFromCodec<typeof ZoneBlock>;
+
+export const ZoneHold = eg.object({
+  hold: eg.boolean,
+  hold_after: eg.string,
+  include_subdomains: eg.boolean
+});
+
+export type ZoneHold = TypeFromCodec<typeof ZoneHold>;
