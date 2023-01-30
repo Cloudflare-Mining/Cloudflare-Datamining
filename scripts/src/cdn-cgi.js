@@ -11,37 +11,6 @@ const agent = getHttpsAgent();
 const dir = path.resolve(`../data/cdn-cgi`);
 await fs.ensureDir(dir);
 
-// get keys for request.cf
-const cfJsonRes = await fetch(`https://jross.me/cf.json`);
-const cfJson = await cfJsonRes.json();
-
-const cfKeys = new Set(propertiesToArray(cfJson));
-// add keys that are optional, and assume they're set. This creates more stable diffs
-cfKeys.add('clientTcpRtt');
-cfKeys.add('isEUCountry');
-cfKeys.add('country');
-cfKeys.add('city');
-cfKeys.add('continent');
-cfKeys.add('latitude');
-cfKeys.add('longitude');
-cfKeys.add('postalCode');
-cfKeys.add('metroCode');
-cfKeys.add('region');
-cfKeys.add('regionCode');
-cfKeys.add('timezone');
-if(cfKeys.size >= 0){
-	await fs.writeFile(path.resolve(dir, 'cf.json'), JSON.stringify([...cfKeys].sort(), null, '\t'));
-}
-
-// get keys for trace
-const traceRes = await fetch(`https://colo.quest/cdn-cgi/trace`);
-const trace = await traceRes.text();
-const data = trace.split('\n').map(line => line.split('='));
-const traceKeys = data.map(arr => arr[0]).filter(key => key !== '').sort();
-if(traceKeys.length >= 0){
-	await fs.writeFile(path.resolve(dir, 'trace.json'), JSON.stringify([...traceKeys].sort(), null, '\t'));
-}
-
 // colos with mostly stable versions across metals
 const colos = {
 	'canary': 'lis01',

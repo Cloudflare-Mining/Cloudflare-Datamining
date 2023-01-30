@@ -3,7 +3,7 @@ on:
     - cron:  '*/15 * * * *'
   workflow_dispatch: {}
 
-name: Mine CF CDN CGI
+name: Mine CF CDN CGI Other
 jobs:
   runner:
     runs-on: ubuntu-latest
@@ -28,10 +28,11 @@ jobs:
           git config user.email "<>"
           cd scripts
           npm ci
-          npm run mine:cdn-cgi && npm run mine:cdn-cgi-dev && npm run mine:cdn-cgi-files
+          npm run mine:cdn-cgi && npm run mine:cdn-cgi-dev && npm run mine:cdn-cgi-files && npm run mine:cdn-cgi-other
         env:
           DISCORD_URL: ${{ secrets.DISCORD_URL }}
           DISCORD_WEBHOOK_CDNCGI: ${{ secrets.DISCORD_WEBHOOK_CDNCGI }}
           DISCORD_WEBHOOK_CDNCGI_DEV: ${{ secrets.DISCORD_WEBHOOK_CDNCGI_DEV }}
+          DISCORD_WEBHOOK_CDNCGI_OTHER: ${{ secrets.DISCORD_WEBHOOK_CDNCGI_OTHER }}
           FETCH_FROM_COLO_URL: ${{ secrets.FETCH_FROM_COLO_URL }}
           FETCH_FROM_COLO_MULTI_URL: ${{ secrets.FETCH_FROM_COLO_MULTI_URL }}
