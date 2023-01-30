@@ -48,7 +48,6 @@ if(cfKeys.size >= 0){
 const cfFunctionsJsonRes = await fetch(`https://cfjson.pages.dev/cf.json`);
 const cfFunctionsJson = await cfFunctionsJsonRes.json();
 const cfFunctionsKeys = new Set(propertiesToArray(cfFunctionsJson));
-
 fixSet(cfFunctionsKeys);
 if(cfFunctionsKeys.size >= 0){
 	await fs.writeFile(path.resolve(dir, 'cf.functions.json'), JSON.stringify([...cfFunctionsKeys].sort(), null, '\t'));
