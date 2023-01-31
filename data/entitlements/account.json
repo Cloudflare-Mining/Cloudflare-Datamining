@@ -324,6 +324,18 @@
 		}
 	},
 	{
+		"id": "bot_management.enabled",
+		"feature": {
+			"feature_set": "bot_management",
+			"id": 593,
+			"key": "bot_management.enabled",
+			"name": "Bot Management"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "bulk_biz_zones",
 		"feature": {
 			"feature_set": "bulk",
@@ -756,6 +768,18 @@
 		}
 	},
 	{
+		"id": "dns_records_api.bypass_anti_abuse_logic",
+		"feature": {
+			"feature_set": "dns",
+			"id": 727,
+			"key": "dns_records_api.bypass_anti_abuse_logic",
+			"name": "DNS API - Bypass Anti-Abuse Logic"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "enterprise.ecp_allowed",
 		"feature": {
 			"feature_set": "enterprise",
@@ -774,6 +798,18 @@
 			"id": 1003,
 			"key": "filters.adv_threat_intel_allowed",
 			"name": "Firewall Filters - Advanced Threat Intel Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "filters.bot_management_enabled",
+		"feature": {
+			"feature_set": "filters",
+			"id": 589,
+			"key": "filters.bot_management_enabled",
+			"name": "Filters - Bot Management Firewall Fields Enabled"
 		},
 		"allocation": {
 			"type": "bool"
@@ -834,6 +870,18 @@
 			"id": 955,
 			"key": "flowtrackd.magic_custom_config_allowed",
 			"name": "Flowtrackd Magic Transit Custom Config Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "graphql_api_v2.enabled_bot_management",
+		"feature": {
+			"feature_set": "graphqlv2",
+			"id": 625,
+			"key": "graphql_api_v2.enabled_bot_management",
+			"name": "graphql_api_v2.enabled_bot_management"
 		},
 		"allocation": {
 			"type": "bool"
@@ -1092,6 +1140,18 @@
 		}
 	},
 	{
+		"id": "logpush.bot_management.enabled",
+		"feature": {
+			"feature_set": "logpush",
+			"id": 592,
+			"key": "logpush.bot_management.enabled",
+			"name": "Logpush - Bot Management Fields"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "logpush.casb_findings.max_jobs_allowed",
 		"feature": {
 			"feature_set": "logpush",
@@ -1185,6 +1245,18 @@
 		},
 		"allocation": {
 			"type": "max_count"
+		}
+	},
+	{
+		"id": "logshare.bot_management.enabled",
+		"feature": {
+			"feature_set": "logshare",
+			"id": 591,
+			"key": "logshare.bot_management.enabled",
+			"name": "Log Share - Bot Management Fields"
+		},
+		"allocation": {
+			"type": "bool"
 		}
 	},
 	{
@@ -1470,6 +1542,18 @@
 			"id": 882,
 			"key": "rulesets.body_inspection_allowed",
 			"name": "Rulesets - Body Inspection Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "rulesets.bots_management_allowed",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 878,
+			"key": "rulesets.bots_management_allowed",
+			"name": "Rulesets - Bots Management Allowed"
 		},
 		"allocation": {
 			"type": "bool"
