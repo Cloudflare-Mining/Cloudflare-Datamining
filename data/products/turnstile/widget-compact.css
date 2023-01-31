@@ -471,3 +471,25 @@ body.theme-dark {
 #expired-refresh-link:hover {
 	color: #fbad41
 }
+
+html.rtl {
+	direction: rtl
+}
+
+.rtl #cf-stage {
+	text-align: right;
+	padding-left: 0;
+	padding-right: 52px
+}
+
+.rtl #success-icon,
+.rtl #fail-icon,
+.rtl #spinner-icon,
+.rtl .ctp-checkbox-label .mark {
+	left: 255px
+}
+
+.rtl #branding {
+	padding-right: 0;
+	padding-left: 13px
+}
