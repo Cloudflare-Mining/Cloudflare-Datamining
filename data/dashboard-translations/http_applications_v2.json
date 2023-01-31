@@ -97,6 +97,7 @@
 	"http_applications_v2.environments.form.error.filter": "Your filter must start with \"cf.zone.name eq \"%{zoneName}\" and\"",
 	"http_applications_v2.environments.form.error.prod_filter": "Editing Production filter is not allowed",
 	"http_applications_v2.environments.form.error.position": "Initial position must be defined",
+	"http_applications_v2.environments.form.error.deprecated-cookie-filter": "http.cookie field is no longer supported, please replace it with any(http.request.cookies[\"cookieName\"][*] eq \"cookieValue\")",
 	"http_applications_v2.environments.modal.delete.title": "Delete Environment",
 	"http_applications_v2.environments.modal.delete.description": "Are you sure you want to delete %{environment}?",
 	"http_applications_v2.environments.modal.edit.title": "Modify expression",
