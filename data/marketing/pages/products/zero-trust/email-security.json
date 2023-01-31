@@ -54,15 +54,7 @@
 					"linkUrl": "https://www.cloudflare.com/lp/email-security-self-guided-demo-request/",
 					"desktopText": "Try the self-guided Area 1 email security product demo at your own pace. See for yourself why customers call Area 1 a 'game changer.' "
 				},
-				"psaBanner": {
-					"contentTypeId": "psaBanner",
-					"contentfulId": "5REcDbuViIGBw7Avc0es5D",
-					"text": "New email security capabilities - such as integration with Cloudflare Browser Isolation - help businesses stop multichannel phishing, malware, and other cyberattacks.",
-					"learnMoreText": "Read the press release",
-					"learnMoreUrl": "/press-releases/2023/cloudflare-announces-comprehensive-email-security-and-data-protection-tools/",
-					"backgroundColor": "blue0",
-					"hideCloseButton": true
-				},
+				"psaBanner": null,
 				"customTopNav": null,
 				"headerLogo": null,
 				"proactivePopup": null,
@@ -1157,31 +1149,6 @@
 								"hideFromResourceHub": false
 							},
 							{
-								"resourceMedia": {
-									"file": {
-										"publicURL": "[path]/Email_Link_Isolation_Solution_Brief__CES_RBI__UPDATED_-_Jan_2023.pdf"
-									}
-								},
-								"resourceMediaAssetFile": null,
-								"image": null,
-								"resourceStreamId": null,
-								"title": "Area 1 Product Page - Resources - Email Link Isolation",
-								"callToAction": "Download PDF",
-								"id": "0de57639-cd52-5d67-84e8-7647fd50de61",
-								"resourceTitle": "Email Link Isolation Product Brief",
-								"resourceType": "Solution & Product Guides",
-								"topic": [
-									"Enable Zero Trust Security for Workforce",
-									"Stop Phishing & BEC Attacks",
-									"Enhance Cloud Email Security"
-								],
-								"orderDate": "2022-06-20",
-								"industry": null,
-								"description": "Isolate email links and apply 'never trust, always verify' scrutiny to reduce attack surface and simplify operations. Soon, Cloudflare Area 1 customers will be able to turn on Cloudflare Browser Isolation to neutralize sophisticated multi-channel phishing threats.",
-								"externalLinkUrl": null,
-								"hideFromResourceHub": true
-							},
-							{
 								"resourceMedia": null,
 								"resourceMediaAssetFile": null,
 								"image": null,
@@ -1256,7 +1223,7 @@
 				"es-ES",
 				"zh-Hans-CN"
 			],
-			"hasPsaBanner": true,
+			"hasPsaBanner": false,
 			"baseURL": "https://www.cloudflare.com"
 		}
 	}
