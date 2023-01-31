@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.20.0](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/types@6.19.12...@cloudflare/types@6.20.0) (2023-01-31)
+
+
+### Features
+
+* **app-dash:** VULN-19086: Verify PagerDuty connection requests ([6366ec8](http://stash.cfops.it:7999/fe/stratus/commits/6366ec8))
+
+
+
+
+
 ## [6.19.12](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/types@6.19.11...@cloudflare/types@6.19.12) (2023-01-30)
 
 **Note:** Version bump only for package @cloudflare/types
