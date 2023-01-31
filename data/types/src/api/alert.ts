@@ -9,6 +9,18 @@ export const AlertIntegration = eg.object({
   createdAt: eg.string
 });
 
+/**
+ * A connection request to Pager Duty that is created before we attempt to link
+ * PagerDuty to this account
+ */
+export type PagerDutyIntegrationRequest = TypeFromCodec<
+  typeof PagerDutyIntegrationRequest
+>;
+
+const PagerDutyIntegrationRequest = eg.object({
+  id: eg.string
+});
+
 export type AlertIntegration = TypeFromCodec<typeof AlertIntegration>;
 
 const AlertWebhookType = eg.union([
