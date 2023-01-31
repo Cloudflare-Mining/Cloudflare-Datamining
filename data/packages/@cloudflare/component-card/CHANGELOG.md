@@ -1,5 +1,11 @@
 # Change Log
 
+## 7.2.1
+
+### Patch Changes
+
+- 37260fea22: remove propType `key` from CardDrawer ("key is not a prop. Trying to access it will result in undefined being returned")
+
 ## 7.2.0
 
 ### Minor Changes
