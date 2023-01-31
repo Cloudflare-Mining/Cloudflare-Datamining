@@ -45,7 +45,7 @@ if(cfKeys.size >= 0){
 }
 
 // get keys for request.cf in functions
-const cfFunctionsJsonRes = await fetch(`https://cfjson.pages.dev/cf.json`);
+const cfFunctionsJsonRes = await fetch(`https://cfjson.jross.dev/cf.json`);
 const cfFunctionsJson = await cfFunctionsJsonRes.json();
 const cfFunctionsKeys = new Set(propertiesToArray(cfFunctionsJson));
 fixSet(cfFunctionsKeys);
