@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.6.2
+
+### Patch Changes
+
+- e18bc1060d: Restore link colors to blue.4
+
 ## 5.6.1
 
 ### Patch Changes
