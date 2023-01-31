@@ -8,5 +8,8 @@
 	"/zones/[id]/blocks",
 	"/zones/[id]/blocks/review/request",
 	"/zones/[id]/blocks?type=phishing_interstitial&type=malware_interstitial&review_states=requested",
+	"/zones/[id]/hold",
+	"/zones/[id]/hold?hold_after=/*",
+	"/zones/[id]/hold?include_subdomains=/*",
 	"/zones/[id]/pending"
 ]
