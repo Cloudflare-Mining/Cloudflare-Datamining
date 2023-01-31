@@ -16,7 +16,7 @@
 </div>
 <hr>
 <h2 id="4TBnjI1OqjroF6MLXB3Wmr">Overview</h2>
-<p>Cloudflare Rate Limiting automatically identifies and mitigates excessive request rates for specific URLs or for an entire domain.  Request rates are calculated locally for individual Cloudflare data centers.  The most common uses for <b>Rate Limiting</b> are <a href="https://www.cloudflare.com/learning/ddos/glossary/denial-of-service/">DDoS</a> protection, <a href="https://www.cloudflare.com/learning/bots/brute-force-attack/">Brute-force attack</a> protection, and to limit access to forum searches, API calls, or resources that involve database-intensive operations at your origin. </p>
+<p>Cloudflare Rate Limiting (previous version) automatically identifies and mitigates excessive request rates for specific URLs or for an entire domain.  Request rates are calculated locally for individual Cloudflare data centers.  The most common uses for <b>Rate Limiting</b> are <a href="https://www.cloudflare.com/learning/ddos/glossary/denial-of-service/">DDoS</a> protection, <a href="https://www.cloudflare.com/learning/bots/brute-force-attack/">Brute-force attack</a> protection, and to limit access to forum searches, API calls, or resources that involve database-intensive operations at your origin. </p>
 <p>Once an individual IPv4 address or IPv6 /64 IP range exceeds a rule threshold, further requests to the origin web server are blocked with an HTTP 429 response that includes a <b>Retry-After</b> header to indicate when the client can resume sending requests.</p>
 <p></p>
 <div class="cf-sidebar-2 cf-note">Are you trying to enable on Rate Limiting? <a href="https://dash.cloudflare.com/?to=/:account/:zone/firewall/tools">Enable Rate Limiting</a>.
@@ -26,7 +26,7 @@
 	To benefit from <strong>unmetered rate limiting</strong> (new version), rewrite your current rules in the new version of the feature. For more information, refer to <a href="https://developers.cloudflare.com/waf/rate-limiting-rules/">Rate limiting rules</a> in the developer documentation.
 </div>
 <h3>Rate limiting and SEO</h3>
-<p>For customers using the previous version of rate limiting rules (documented in Cloudflare's Support KB), cached resources and known Search Engine crawlers are exempted from your rate limiting rules. Therefore, they do not affect your website's <a href="https://developers.cloudflare.com/fundamentals/get-started/basic-tasks/improve-seo/">SEO ranking</a>.
+<p>For customers using the previous version of rate limiting rules (documented here in Cloudflare's Support KB), cached resources and known Search Engine crawlers are exempted from your rate limiting rules. Therefore, they do not affect your website's <a href="https://developers.cloudflare.com/fundamentals/get-started/basic-tasks/improve-seo/">SEO ranking</a>.
 </p>
 <p>However, if you are using the <a href="https://developers.cloudflare.com/waf/rate-limiting-rules/">new version of rate limiting rules</a> (documented in the developer documentation), you must ensure that your rate limiting rules are not affecting known good bots, so that the SEO ranking of your website is not affected. For more information, refer to <a href="https://developers.cloudflare.com/fundamentals/get-started/basic-tasks/improve-seo/">Improve SEO</a>.</p>
 <p><b></b></p>
