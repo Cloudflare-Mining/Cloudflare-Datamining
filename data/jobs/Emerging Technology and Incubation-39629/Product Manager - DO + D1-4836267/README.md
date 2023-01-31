@@ -6,27 +6,28 @@
 	</div>
 </div>
 <p><strong>About The Role</strong></p>
-<p><span style="font-weight: 400;">Our core mission for Cloudflare Workers is to enable developers to do what they do best —&nbsp;build powerful applications, without having to think or worry about infrastructure, scaling, or performance. While running code at the edge enables us to handle the infrastructure part, there’s so much more that goes into enabling developers to do their jobs. We want to build a platform that’s accessible to as many developers as possible, easy to use, and importantly, is fun and delightful to use! Developer experience plays a critical role in the success of our platform and our developers.&nbsp;</span></p>
-<p><span style="font-weight: 400;">In this role, you will put yourself in the shoes of a developer to understand what pains exist in the experience today, and how we can smooth and alleviate them. You will obsess about removing friction, and anticipating developer needs, from sign up, through authoring code, to debugging and observing it.&nbsp;</span></p>
-<p><strong>What You’ll Do</strong></p>
+<p><span style="font-weight: 400;">We announced Cloudflare Workers in 2017&nbsp; —&nbsp;since then it’s played a key role in Cloudflare’s strategy for entering the compute market. Until the launch of Workers, as Cloudflare was ramping up its capabilities in the performance and security spaces, it became clear that developers needed more ways to control the edge than rules engines could support. Workers has allowed Cloudflare to add programmability to the edge such that developers could have access to writing logic on the edge in their preferred way — through code.&nbsp;</span></p>
+<p><span style="font-weight: 400;">Over the past few years, Workers has grown from a simple functions-as-a-service option into a fully blown full-stack platform. With any application, however, in addition to serverless compute, you need to be able to manage state. =</span></p>
+<p><span style="font-weight: 400;">In 2020, Cloudflare released Durable Objects, providing a new primitive to customers to be able to store state alongside a Worker. In 2022, Cloudflare also released D1 — built on Durable Objects, D1 is Cloudflare’s first foray into providing a managed database solution.&nbsp;</span></p>
+<p><span style="font-weight: 400;">In this role, you’ll be helping define the future of D1 and Durable Objects, making sure we’re focused on the highest priority projects to enable developers to build full stack applications.&nbsp;</span></p>
+<p><span style="font-weight: 400;">What You’ll Do</span></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Guide the development of product strategy and roadmap for the Developer Experience team</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Help drive prioritization of projects Durable Objects and D1, balancing shipping useful features to customers and engineering priorities</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Lead projects from ideation through launch, and continuing through ongoing maintenance and support</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Work closely with our developer community to understand current developer experience pain points</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Develop and nurture relationships with engineering and coordinate closely to ensure successful delivery of product</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Partner with other departments such as Product Marketing, Marketing, Community &amp; developer advocacy, Sales, and Customer Support to drive adoption with and gather feedback from customers and prospects</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Ruthlessly prioritize across a complex environment of diverse customers, stakeholders and objectives</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Build the external and internal relationships required to realize execution in new markets</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Represent the company externally as needed, including meetings with customers and prospects</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Represent the company externally as needed, including meetings with customers and prospects and analysis</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Delve into market research to drive new investments opportunities</span></li>
 </ul>
-<p><span style="font-weight: 400;"><br></span><strong>Examples Of Desirable Skills, Knowledge And Experience</strong></p>
+<p><strong>Examples Of Desirable Skills, Knowledge And Experience</strong></p>
 <p><span style="font-weight: 400;">The ideal candidate is entrepreneurial-minded and thrives in a fast-paced and goal-driven environment. You have outstanding communication and collaboration skills and are able to work with a diverse group, get alignment, and drive the product forward. You are execution focused and emphasize getting things done while paying attention to important details.&nbsp;</span></p>
 <ul>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">BS/MS in a technology field.&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Professional product management experience, preferably on a developer product</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Professional product management experience</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Proven track record of shipping products from ideation to launch</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to articulate a vision and strategy in a way that inspires and motivates a team and focuses their energy on achieving business goals</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Proven ability to articulate a vision and strategy in a way that inspires and motivates a team and focuses their energy on achieving business goals</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Customer focus — you’ll be working directly, and often be a part of the customers team in helping them get their initial implementation off the ground</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong technical abilities. You are intimately familiar with modern software development practices used to build and deploy applications. You are capable of wading into the details &amp; understanding engineering decisions’ impact on the product, but can also drive 30k foot view</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience building great user, and especially developer experiences; drives elegant, simple interactions</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience using developer tools (such as source-control management tools, CLIs, etc), and empathy for developers and challenges they face today</span></li>
