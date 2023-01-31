@@ -1132,6 +1132,10 @@
 		"name": "Administrator Read Only",
 		"description": "Can access the full account in read-only mode.",
 		"permissions": {
+			"analytics": {
+				"read": true,
+				"edit": false
+			},
 			"zone_versioning": {
 				"read": true,
 				"edit": false
@@ -1205,10 +1209,6 @@
 				"read": true,
 				"edit": false
 			},
-			"analytics": {
-				"read": true,
-				"edit": false
-			},
 			"access": {
 				"read": true,
 				"edit": false
@@ -1252,6 +1252,10 @@
 		"name": "Administrator",
 		"description": "Can access the full account, except for membership management and billing.",
 		"permissions": {
+			"analytics": {
+				"read": true,
+				"edit": false
+			},
 			"zone_settings": {
 				"read": true,
 				"edit": true
@@ -1329,10 +1333,6 @@
 			"web3": {
 				"read": true,
 				"edit": true
-			},
-			"analytics": {
-				"read": true,
-				"edit": false
 			},
 			"access": {
 				"read": true,
