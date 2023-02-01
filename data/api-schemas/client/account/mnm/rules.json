@@ -86,7 +86,7 @@
 			"html_id": "magic-network-monitoring-rules-update-advertisement-for-rule",
 			"uri": "accounts/:account_identifier/mnm/rules/:rule_identifier/advertisement",
 			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/accounts/6f91088a406011ed95aed352566e8d4c/mnm/rules/2890e6fa406311ed9b5a23f70f6fb8cf/advertisement\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": \"false\"\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"automatic_advertisement\": \"false\"\n  }\n}"
 		}
 	],
 	"html_id": "magic-network-monitoring-rules",

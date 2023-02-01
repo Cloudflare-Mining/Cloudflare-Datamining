@@ -8,6 +8,12 @@
 			"description": "In mid 2020, we introduced cf-request-id, an experimental HTTP header. This header was present on requests sent to origins and returned in responses to eyeballs (users). After careful evaluation, we decided to remove the cf-request-id header.\n\nEffective today, cf-request-id is deprecated but will remain in place until July 1, 2021. After this date, the header will no longer be present on requests and responses. If you require an identifier for requests, we recommend using the CF-RAY header.\n\nIn preparation of the header’s removal, we will perform a test-run on June 15, 2021. The cf-request-id header will not be present from 15:00 UTC to 23:00 UTC. After this time, it will be present until its full removal on July 1.",
 			"eol": "2021-07-01",
 			"display": true
+		},
+		"zone_te_cl_deprecation": {
+			"id": "zone_te_cl_deprecation",
+			"description": "Previously, RFC2616 allowed the use of Transfer-Encoding and Content-Length in request headers at the same time. RFC7230 supersedes RFC2616 and prohibits the use of Transfer-Encoding and Content-Length in request headers at the same time because they can cause HTTP request smuggling vulnerabilities.\n\nStarting on March 31 2023, Cloudflare will decline requests with both Transfer-Encoding and Content-Length in request headers.",
+			"eol": "2023-03-31",
+			"display": true
 		}
 	},
 	"type": "object",
