@@ -35,10 +35,6 @@
 				"keyResults": null,
 				"relatedCaseStudies": [
 					{
-						"name": "Quizlet",
-						"nameUrlSlug": "quizlet"
-					},
-					{
 						"name": "Zendesk",
 						"nameUrlSlug": "zendesk"
 					},
@@ -89,7 +85,14 @@
 			"contentfulId": "4FPJNV9nIk0AeM8s0UiI2k",
 			"pathname": "/case-studies/ivanti/",
 			"baseURL": "https://www.cloudflare.com",
-			"allowedHrefLangs": null
+			"allowedHrefLangs": [
+				"en-US",
+				"zh-CN",
+				"fr-FR",
+				"de-DE",
+				"ja-JP",
+				"zh-Hans-CN"
+			]
 		}
 	}
 }
