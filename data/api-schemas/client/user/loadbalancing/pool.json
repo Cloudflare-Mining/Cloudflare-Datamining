@@ -36,7 +36,7 @@
 				"objects": [],
 				"example": "{\n  \"monitor\": \"f1aba936b94213e5b8dca0c0dbf1f9cc\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"17b5962d775c646f3f9725cbc7a53df4\",\n      \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n      \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n      \"description\": \"Primary data center - Provider XYZ\",\n      \"name\": \"primary-dc-1\",\n      \"enabled\": false,\n      \"load_shedding\": {\n        \"default_percent\": 0,\n        \"default_policy\": \"random\",\n        \"session_percent\": 0,\n        \"session_policy\": \"hash\"\n      },\n      \"minimum_origins\": 2,\n      \"monitor\": \"f1aba936b94213e5b8dca0c0dbf1f9cc\",\n      \"check_regions\": [\n        \"WEU\",\n        \"ENAM\"\n      ],\n      \"origins\": [\n        {\n          \"name\": \"app-server-1\",\n          \"address\": \"0.0.0.0\",\n          \"enabled\": true,\n          \"weight\": 0.56,\n          \"header\": {\n            \"Host\": [\n              \"example.com\"\n            ]\n          }\n        }\n      ],\n      \"origin_steering\": {\n        \"policy\": \"random\"\n      },\n      \"notification_email\": \"someone@example.com,sometwo@example.com\",\n      \"notification_filter\": {\n        \"origin\": {\n          \"disable\": false,\n          \"healthy\": null\n        },\n        \"pool\": {\n          \"disable\": false,\n          \"healthy\": null\n        }\n      }\n    }\n  ]\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"17b5962d775c646f3f9725cbc7a53df4\",\n      \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n      \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n      \"description\": \"Primary data center - Provider XYZ\",\n      \"name\": \"primary-dc-1\",\n      \"enabled\": false,\n      \"load_shedding\": {\n        \"default_percent\": 0,\n        \"default_policy\": \"random\",\n        \"session_percent\": 0,\n        \"session_policy\": \"hash\"\n      },\n      \"minimum_origins\": 2,\n      \"monitor\": \"f1aba936b94213e5b8dca0c0dbf1f9cc\",\n      \"check_regions\": [\n        \"WEU\",\n        \"ENAM\"\n      ],\n      \"origins\": [\n        {\n          \"name\": \"app-server-1\",\n          \"address\": \"0.0.0.0\",\n          \"enabled\": true,\n          \"weight\": 0.56,\n          \"header\": {\n            \"Host\": [\n              \"example.com\"\n            ]\n          },\n          \"virtual_network_id\": \"a5624d4e-044a-4ff0-b3e1-e2465353d4b4\"\n        }\n      ],\n      \"origin_steering\": {\n        \"policy\": \"random\"\n      },\n      \"notification_email\": \"someone@example.com,sometwo@example.com\",\n      \"notification_filter\": {\n        \"origin\": {\n          \"disable\": false,\n          \"healthy\": null\n        },\n        \"pool\": {\n          \"disable\": false,\n          \"healthy\": null\n        }\n      }\n    }\n  ]\n}"
 		},
 		{
 			"title": "Create Pool",
@@ -47,7 +47,7 @@
 			"cfOwnership": "load_balancer",
 			"html_id": "load-balancer-pools-create-pool",
 			"uri": "user/load_balancers/pools",
-			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/user/load_balancers/pools\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"description\":\"Primary data center - Provider XYZ\",\"name\":\"primary-dc-1\",\"enabled\":false,\"check_regions\":[\"WEU\",\"ENAM\"],\"load_shedding\":{\"default_percent\":0,\"default_policy\":\"random\",\"session_percent\":0,\"session_policy\":\"hash\"},\"minimum_origins\":2,\"monitor\":\"f1aba936b94213e5b8dca0c0dbf1f9cc\",\"origins\":[{\"name\":\"app-server-1\",\"address\":\"0.0.0.0\",\"enabled\":true,\"weight\":0.56,\"header\":{\"Host\":[\"example.com\"]}}],\"origin_steering\":{\"policy\":\"random\"},\"notification_email\":\"someone@example.com,sometwo@example.com\",\"notification_filter\":{\"origin\":{\"disable\":false,\"healthy\":null},\"pool\":{\"disable\":false,\"healthy\":null}}}'",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/user/load_balancers/pools\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"description\":\"Primary data center - Provider XYZ\",\"name\":\"primary-dc-1\",\"enabled\":false,\"check_regions\":[\"WEU\",\"ENAM\"],\"load_shedding\":{\"default_percent\":0,\"default_policy\":\"random\",\"session_percent\":0,\"session_policy\":\"hash\"},\"minimum_origins\":2,\"monitor\":\"f1aba936b94213e5b8dca0c0dbf1f9cc\",\"origins\":[{\"name\":\"app-server-1\",\"address\":\"0.0.0.0\",\"enabled\":true,\"weight\":0.56,\"header\":{\"Host\":[\"example.com\"]},\"virtual_network_id\":\"a5624d4e-044a-4ff0-b3e1-e2465353d4b4\"}],\"origin_steering\":{\"policy\":\"random\"},\"notification_email\":\"someone@example.com,sometwo@example.com\",\"notification_filter\":{\"origin\":{\"disable\":false,\"healthy\":null},\"pool\":{\"disable\":false,\"healthy\":null}}}'",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -165,7 +165,7 @@
 					},
 					"origins": {
 						"type": "array",
-						"example": "[\n  {\n    \"name\": \"app-server-1\",\n    \"address\": \"0.0.0.0\",\n    \"enabled\": true,\n    \"weight\": 0.56,\n    \"header\": {\n      \"Host\": [\n        \"example.com\"\n      ]\n    }\n  }\n]",
+						"example": "[\n  {\n    \"name\": \"app-server-1\",\n    \"address\": \"0.0.0.0\",\n    \"enabled\": true,\n    \"weight\": 0.56,\n    \"header\": {\n      \"Host\": [\n        \"example.com\"\n      ]\n    },\n    \"virtual_network_id\": \"a5624d4e-044a-4ff0-b3e1-e2465353d4b4\"\n  }\n]",
 						"description": "The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.",
 						"items": {
 							"id": "https://api.cloudflare.com/schemas/v4/client/definitions/loadbalancing/origin.json",
@@ -181,7 +181,7 @@
 								},
 								"address": {
 									"type": "string",
-									"description": "The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare.",
+									"description": "The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual_network_id must also be set.",
 									"example": "0.0.0.0"
 								},
 								"enabled": {
@@ -226,6 +226,11 @@
 											}
 										}
 									}
+								},
+								"virtual_network_id": {
+									"type": "string",
+									"description": "The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.",
+									"example": "a5624d4e-044a-4ff0-b3e1-e2465353d4b4"
 								}
 							},
 							"properties": {
@@ -236,7 +241,7 @@
 								},
 								"address": {
 									"type": "string",
-									"description": "The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare.",
+									"description": "The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual_network_id must also be set.",
 									"example": "0.0.0.0"
 								},
 								"enabled": {
@@ -273,6 +278,11 @@
 											}
 										}
 									}
+								},
+								"virtual_network_id": {
+									"type": "string",
+									"description": "The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.",
+									"example": "a5624d4e-044a-4ff0-b3e1-e2465353d4b4"
 								}
 							}
 						}
@@ -378,9 +388,9 @@
 					"notification_filter"
 				],
 				"objects": [],
-				"example": "{\n  \"description\": \"Primary data center - Provider XYZ\",\n  \"name\": \"primary-dc-1\",\n  \"enabled\": false,\n  \"check_regions\": [\n    \"WEU\",\n    \"ENAM\"\n  ],\n  \"load_shedding\": {\n    \"default_percent\": 0,\n    \"default_policy\": \"random\",\n    \"session_percent\": 0,\n    \"session_policy\": \"hash\"\n  },\n  \"minimum_origins\": 2,\n  \"monitor\": \"f1aba936b94213e5b8dca0c0dbf1f9cc\",\n  \"origins\": [\n    {\n      \"name\": \"app-server-1\",\n      \"address\": \"0.0.0.0\",\n      \"enabled\": true,\n      \"weight\": 0.56,\n      \"header\": {\n        \"Host\": [\n          \"example.com\"\n        ]\n      }\n    }\n  ],\n  \"origin_steering\": {\n    \"policy\": \"random\"\n  },\n  \"notification_email\": \"someone@example.com,sometwo@example.com\",\n  \"notification_filter\": {\n    \"origin\": {\n      \"disable\": false,\n      \"healthy\": null\n    },\n    \"pool\": {\n      \"disable\": false,\n      \"healthy\": null\n    }\n  }\n}"
+				"example": "{\n  \"description\": \"Primary data center - Provider XYZ\",\n  \"name\": \"primary-dc-1\",\n  \"enabled\": false,\n  \"check_regions\": [\n    \"WEU\",\n    \"ENAM\"\n  ],\n  \"load_shedding\": {\n    \"default_percent\": 0,\n    \"default_policy\": \"random\",\n    \"session_percent\": 0,\n    \"session_policy\": \"hash\"\n  },\n  \"minimum_origins\": 2,\n  \"monitor\": \"f1aba936b94213e5b8dca0c0dbf1f9cc\",\n  \"origins\": [\n    {\n      \"name\": \"app-server-1\",\n      \"address\": \"0.0.0.0\",\n      \"enabled\": true,\n      \"weight\": 0.56,\n      \"header\": {\n        \"Host\": [\n          \"example.com\"\n        ]\n      },\n      \"virtual_network_id\": \"a5624d4e-044a-4ff0-b3e1-e2465353d4b4\"\n    }\n  ],\n  \"origin_steering\": {\n    \"policy\": \"random\"\n  },\n  \"notification_email\": \"someone@example.com,sometwo@example.com\",\n  \"notification_filter\": {\n    \"origin\": {\n      \"disable\": false,\n      \"healthy\": null\n    },\n    \"pool\": {\n      \"disable\": false,\n      \"healthy\": null\n    }\n  }\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"17b5962d775c646f3f9725cbc7a53df4\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"description\": \"Primary data center - Provider XYZ\",\n    \"name\": \"primary-dc-1\",\n    \"enabled\": false,\n    \"load_shedding\": {\n      \"default_percent\": 0,\n      \"default_policy\": \"random\",\n      \"session_percent\": 0,\n      \"session_policy\": \"hash\"\n    },\n    \"minimum_origins\": 2,\n    \"monitor\": \"f1aba936b94213e5b8dca0c0dbf1f9cc\",\n    \"check_regions\": [\n      \"WEU\",\n      \"ENAM\"\n    ],\n    \"origins\": [\n      {\n        \"name\": \"app-server-1\",\n        \"address\": \"0.0.0.0\",\n        \"enabled\": true,\n        \"weight\": 0.56,\n        \"header\": {\n          \"Host\": [\n            \"example.com\"\n          ]\n        }\n      }\n    ],\n    \"origin_steering\": {\n      \"policy\": \"random\"\n    },\n    \"notification_email\": \"someone@example.com,sometwo@example.com\",\n    \"notification_filter\": {\n      \"origin\": {\n        \"disable\": false,\n        \"healthy\": null\n      },\n      \"pool\": {\n        \"disable\": false,\n        \"healthy\": null\n      }\n    }\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"17b5962d775c646f3f9725cbc7a53df4\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"description\": \"Primary data center - Provider XYZ\",\n    \"name\": \"primary-dc-1\",\n    \"enabled\": false,\n    \"load_shedding\": {\n      \"default_percent\": 0,\n      \"default_policy\": \"random\",\n      \"session_percent\": 0,\n      \"session_policy\": \"hash\"\n    },\n    \"minimum_origins\": 2,\n    \"monitor\": \"f1aba936b94213e5b8dca0c0dbf1f9cc\",\n    \"check_regions\": [\n      \"WEU\",\n      \"ENAM\"\n    ],\n    \"origins\": [\n      {\n        \"name\": \"app-server-1\",\n        \"address\": \"0.0.0.0\",\n        \"enabled\": true,\n        \"weight\": 0.56,\n        \"header\": {\n          \"Host\": [\n            \"example.com\"\n          ]\n        },\n        \"virtual_network_id\": \"a5624d4e-044a-4ff0-b3e1-e2465353d4b4\"\n      }\n    ],\n    \"origin_steering\": {\n      \"policy\": \"random\"\n    },\n    \"notification_email\": \"someone@example.com,sometwo@example.com\",\n    \"notification_filter\": {\n      \"origin\": {\n        \"disable\": false,\n        \"healthy\": null\n      },\n      \"pool\": {\n        \"disable\": false,\n        \"healthy\": null\n      }\n    }\n  }\n}"
 		},
 		{
 			"title": "Pool Details",
@@ -392,7 +402,7 @@
 			"html_id": "load-balancer-pools-pool-details",
 			"uri": "user/load_balancers/pools/:identifier",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/user/load_balancers/pools/17b5962d775c646f3f9725cbc7a53df4\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"17b5962d775c646f3f9725cbc7a53df4\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"description\": \"Primary data center - Provider XYZ\",\n    \"name\": \"primary-dc-1\",\n    \"enabled\": false,\n    \"load_shedding\": {\n      \"default_percent\": 0,\n      \"default_policy\": \"random\",\n      \"session_percent\": 0,\n      \"session_policy\": \"hash\"\n    },\n    \"minimum_origins\": 2,\n    \"monitor\": \"f1aba936b94213e5b8dca0c0dbf1f9cc\",\n    \"check_regions\": [\n      \"WEU\",\n      \"ENAM\"\n    ],\n    \"origins\": [\n      {\n        \"name\": \"app-server-1\",\n        \"address\": \"0.0.0.0\",\n        \"enabled\": true,\n        \"weight\": 0.56,\n        \"header\": {\n          \"Host\": [\n            \"example.com\"\n          ]\n        }\n      }\n    ],\n    \"origin_steering\": {\n      \"policy\": \"random\"\n    },\n    \"notification_email\": \"someone@example.com,sometwo@example.com\",\n    \"notification_filter\": {\n      \"origin\": {\n        \"disable\": false,\n        \"healthy\": null\n      },\n      \"pool\": {\n        \"disable\": false,\n        \"healthy\": null\n      }\n    }\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"17b5962d775c646f3f9725cbc7a53df4\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"description\": \"Primary data center - Provider XYZ\",\n    \"name\": \"primary-dc-1\",\n    \"enabled\": false,\n    \"load_shedding\": {\n      \"default_percent\": 0,\n      \"default_policy\": \"random\",\n      \"session_percent\": 0,\n      \"session_policy\": \"hash\"\n    },\n    \"minimum_origins\": 2,\n    \"monitor\": \"f1aba936b94213e5b8dca0c0dbf1f9cc\",\n    \"check_regions\": [\n      \"WEU\",\n      \"ENAM\"\n    ],\n    \"origins\": [\n      {\n        \"name\": \"app-server-1\",\n        \"address\": \"0.0.0.0\",\n        \"enabled\": true,\n        \"weight\": 0.56,\n        \"header\": {\n          \"Host\": [\n            \"example.com\"\n          ]\n        },\n        \"virtual_network_id\": \"a5624d4e-044a-4ff0-b3e1-e2465353d4b4\"\n      }\n    ],\n    \"origin_steering\": {\n      \"policy\": \"random\"\n    },\n    \"notification_email\": \"someone@example.com,sometwo@example.com\",\n    \"notification_filter\": {\n      \"origin\": {\n        \"disable\": false,\n        \"healthy\": null\n      },\n      \"pool\": {\n        \"disable\": false,\n        \"healthy\": null\n      }\n    }\n  }\n}"
 		},
 		{
 			"title": "Pool Health Details",
@@ -415,7 +425,7 @@
 			"cfOwnership": "load_balancer",
 			"html_id": "load-balancer-pools-update-pool",
 			"uri": "user/load_balancers/pools/:identifier",
-			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/user/load_balancers/pools/17b5962d775c646f3f9725cbc7a53df4\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"description\":\"Primary data center - Provider XYZ\",\"name\":\"primary-dc-1\",\"enabled\":false,\"check_regions\":[\"WEU\",\"ENAM\"],\"load_shedding\":{\"default_percent\":0,\"default_policy\":\"random\",\"session_percent\":0,\"session_policy\":\"hash\"},\"minimum_origins\":2,\"monitor\":\"f1aba936b94213e5b8dca0c0dbf1f9cc\",\"origins\":[{\"name\":\"app-server-1\",\"address\":\"0.0.0.0\",\"enabled\":true,\"weight\":0.56,\"header\":{\"Host\":[\"example.com\"]}}],\"origin_steering\":{\"policy\":\"random\"},\"notification_email\":\"someone@example.com,sometwo@example.com\",\"notification_filter\":{\"origin\":{\"disable\":false,\"healthy\":null},\"pool\":{\"disable\":false,\"healthy\":null}}}'",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/user/load_balancers/pools/17b5962d775c646f3f9725cbc7a53df4\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"description\":\"Primary data center - Provider XYZ\",\"name\":\"primary-dc-1\",\"enabled\":false,\"check_regions\":[\"WEU\",\"ENAM\"],\"load_shedding\":{\"default_percent\":0,\"default_policy\":\"random\",\"session_percent\":0,\"session_policy\":\"hash\"},\"minimum_origins\":2,\"monitor\":\"f1aba936b94213e5b8dca0c0dbf1f9cc\",\"origins\":[{\"name\":\"app-server-1\",\"address\":\"0.0.0.0\",\"enabled\":true,\"weight\":0.56,\"header\":{\"Host\":[\"example.com\"]},\"virtual_network_id\":\"a5624d4e-044a-4ff0-b3e1-e2465353d4b4\"}],\"origin_steering\":{\"policy\":\"random\"},\"notification_email\":\"someone@example.com,sometwo@example.com\",\"notification_filter\":{\"origin\":{\"disable\":false,\"healthy\":null},\"pool\":{\"disable\":false,\"healthy\":null}}}'",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -533,7 +543,7 @@
 					},
 					"origins": {
 						"type": "array",
-						"example": "[\n  {\n    \"name\": \"app-server-1\",\n    \"address\": \"0.0.0.0\",\n    \"enabled\": true,\n    \"weight\": 0.56,\n    \"header\": {\n      \"Host\": [\n        \"example.com\"\n      ]\n    }\n  }\n]",
+						"example": "[\n  {\n    \"name\": \"app-server-1\",\n    \"address\": \"0.0.0.0\",\n    \"enabled\": true,\n    \"weight\": 0.56,\n    \"header\": {\n      \"Host\": [\n        \"example.com\"\n      ]\n    },\n    \"virtual_network_id\": \"a5624d4e-044a-4ff0-b3e1-e2465353d4b4\"\n  }\n]",
 						"description": "The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.",
 						"items": {
 							"id": "https://api.cloudflare.com/schemas/v4/client/definitions/loadbalancing/origin.json",
@@ -549,7 +559,7 @@
 								},
 								"address": {
 									"type": "string",
-									"description": "The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare.",
+									"description": "The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual_network_id must also be set.",
 									"example": "0.0.0.0"
 								},
 								"enabled": {
@@ -594,6 +604,11 @@
 											}
 										}
 									}
+								},
+								"virtual_network_id": {
+									"type": "string",
+									"description": "The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.",
+									"example": "a5624d4e-044a-4ff0-b3e1-e2465353d4b4"
 								}
 							},
 							"properties": {
@@ -604,7 +619,7 @@
 								},
 								"address": {
 									"type": "string",
-									"description": "The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare.",
+									"description": "The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual_network_id must also be set.",
 									"example": "0.0.0.0"
 								},
 								"enabled": {
@@ -641,6 +656,11 @@
 											}
 										}
 									}
+								},
+								"virtual_network_id": {
+									"type": "string",
+									"description": "The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.",
+									"example": "a5624d4e-044a-4ff0-b3e1-e2465353d4b4"
 								}
 							}
 						}
@@ -753,9 +773,9 @@
 					"notification_filter"
 				],
 				"objects": [],
-				"example": "{\n  \"description\": \"Primary data center - Provider XYZ\",\n  \"name\": \"primary-dc-1\",\n  \"enabled\": false,\n  \"check_regions\": [\n    \"WEU\",\n    \"ENAM\"\n  ],\n  \"load_shedding\": {\n    \"default_percent\": 0,\n    \"default_policy\": \"random\",\n    \"session_percent\": 0,\n    \"session_policy\": \"hash\"\n  },\n  \"minimum_origins\": 2,\n  \"monitor\": \"f1aba936b94213e5b8dca0c0dbf1f9cc\",\n  \"origins\": [\n    {\n      \"name\": \"app-server-1\",\n      \"address\": \"0.0.0.0\",\n      \"enabled\": true,\n      \"weight\": 0.56,\n      \"header\": {\n        \"Host\": [\n          \"example.com\"\n        ]\n      }\n    }\n  ],\n  \"origin_steering\": {\n    \"policy\": \"random\"\n  },\n  \"notification_email\": \"someone@example.com,sometwo@example.com\",\n  \"notification_filter\": {\n    \"origin\": {\n      \"disable\": false,\n      \"healthy\": null\n    },\n    \"pool\": {\n      \"disable\": false,\n      \"healthy\": null\n    }\n  }\n}"
+				"example": "{\n  \"description\": \"Primary data center - Provider XYZ\",\n  \"name\": \"primary-dc-1\",\n  \"enabled\": false,\n  \"check_regions\": [\n    \"WEU\",\n    \"ENAM\"\n  ],\n  \"load_shedding\": {\n    \"default_percent\": 0,\n    \"default_policy\": \"random\",\n    \"session_percent\": 0,\n    \"session_policy\": \"hash\"\n  },\n  \"minimum_origins\": 2,\n  \"monitor\": \"f1aba936b94213e5b8dca0c0dbf1f9cc\",\n  \"origins\": [\n    {\n      \"name\": \"app-server-1\",\n      \"address\": \"0.0.0.0\",\n      \"enabled\": true,\n      \"weight\": 0.56,\n      \"header\": {\n        \"Host\": [\n          \"example.com\"\n        ]\n      },\n      \"virtual_network_id\": \"a5624d4e-044a-4ff0-b3e1-e2465353d4b4\"\n    }\n  ],\n  \"origin_steering\": {\n    \"policy\": \"random\"\n  },\n  \"notification_email\": \"someone@example.com,sometwo@example.com\",\n  \"notification_filter\": {\n    \"origin\": {\n      \"disable\": false,\n      \"healthy\": null\n    },\n    \"pool\": {\n      \"disable\": false,\n      \"healthy\": null\n    }\n  }\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"17b5962d775c646f3f9725cbc7a53df4\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"description\": \"Primary data center - Provider XYZ\",\n    \"name\": \"primary-dc-1\",\n    \"enabled\": false,\n    \"load_shedding\": {\n      \"default_percent\": 0,\n      \"default_policy\": \"random\",\n      \"session_percent\": 0,\n      \"session_policy\": \"hash\"\n    },\n    \"minimum_origins\": 2,\n    \"monitor\": \"f1aba936b94213e5b8dca0c0dbf1f9cc\",\n    \"check_regions\": [\n      \"WEU\",\n      \"ENAM\"\n    ],\n    \"origins\": [\n      {\n        \"name\": \"app-server-1\",\n        \"address\": \"0.0.0.0\",\n        \"enabled\": true,\n        \"weight\": 0.56,\n        \"header\": {\n          \"Host\": [\n            \"example.com\"\n          ]\n        }\n      }\n    ],\n    \"origin_steering\": {\n      \"policy\": \"random\"\n    },\n    \"notification_email\": \"someone@example.com,sometwo@example.com\",\n    \"notification_filter\": {\n      \"origin\": {\n        \"disable\": false,\n        \"healthy\": null\n      },\n      \"pool\": {\n        \"disable\": false,\n        \"healthy\": null\n      }\n    }\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"17b5962d775c646f3f9725cbc7a53df4\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"description\": \"Primary data center - Provider XYZ\",\n    \"name\": \"primary-dc-1\",\n    \"enabled\": false,\n    \"load_shedding\": {\n      \"default_percent\": 0,\n      \"default_policy\": \"random\",\n      \"session_percent\": 0,\n      \"session_policy\": \"hash\"\n    },\n    \"minimum_origins\": 2,\n    \"monitor\": \"f1aba936b94213e5b8dca0c0dbf1f9cc\",\n    \"check_regions\": [\n      \"WEU\",\n      \"ENAM\"\n    ],\n    \"origins\": [\n      {\n        \"name\": \"app-server-1\",\n        \"address\": \"0.0.0.0\",\n        \"enabled\": true,\n        \"weight\": 0.56,\n        \"header\": {\n          \"Host\": [\n            \"example.com\"\n          ]\n        },\n        \"virtual_network_id\": \"a5624d4e-044a-4ff0-b3e1-e2465353d4b4\"\n      }\n    ],\n    \"origin_steering\": {\n      \"policy\": \"random\"\n    },\n    \"notification_email\": \"someone@example.com,sometwo@example.com\",\n    \"notification_filter\": {\n      \"origin\": {\n        \"disable\": false,\n        \"healthy\": null\n      },\n      \"pool\": {\n        \"disable\": false,\n        \"healthy\": null\n      }\n    }\n  }\n}"
 		},
 		{
 			"title": "Patch Pool",
@@ -766,7 +786,7 @@
 			"cfOwnership": "load_balancer",
 			"html_id": "load-balancer-pools-patch-pool",
 			"uri": "user/load_balancers/pools/:identifier",
-			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/user/load_balancers/pools/17b5962d775c646f3f9725cbc7a53df4\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"description\":\"Primary data center - Provider XYZ\",\"name\":\"primary-dc-1\",\"enabled\":false,\"check_regions\":[\"WEU\",\"ENAM\"],\"load_shedding\":{\"default_percent\":0,\"default_policy\":\"random\",\"session_percent\":0,\"session_policy\":\"hash\"},\"minimum_origins\":2,\"monitor\":\"f1aba936b94213e5b8dca0c0dbf1f9cc\",\"origins\":[{\"name\":\"app-server-1\",\"address\":\"0.0.0.0\",\"enabled\":true,\"weight\":0.56,\"header\":{\"Host\":[\"example.com\"]}}],\"origin_steering\":{\"policy\":\"random\"},\"notification_email\":\"someone@example.com,sometwo@example.com\",\"notification_filter\":{\"origin\":{\"disable\":false,\"healthy\":null},\"pool\":{\"disable\":false,\"healthy\":null}}}'",
+			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/user/load_balancers/pools/17b5962d775c646f3f9725cbc7a53df4\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"description\":\"Primary data center - Provider XYZ\",\"name\":\"primary-dc-1\",\"enabled\":false,\"check_regions\":[\"WEU\",\"ENAM\"],\"load_shedding\":{\"default_percent\":0,\"default_policy\":\"random\",\"session_percent\":0,\"session_policy\":\"hash\"},\"minimum_origins\":2,\"monitor\":\"f1aba936b94213e5b8dca0c0dbf1f9cc\",\"origins\":[{\"name\":\"app-server-1\",\"address\":\"0.0.0.0\",\"enabled\":true,\"weight\":0.56,\"header\":{\"Host\":[\"example.com\"]},\"virtual_network_id\":\"a5624d4e-044a-4ff0-b3e1-e2465353d4b4\"}],\"origin_steering\":{\"policy\":\"random\"},\"notification_email\":\"someone@example.com,sometwo@example.com\",\"notification_filter\":{\"origin\":{\"disable\":false,\"healthy\":null},\"pool\":{\"disable\":false,\"healthy\":null}}}'",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -884,7 +904,7 @@
 					},
 					"origins": {
 						"type": "array",
-						"example": "[\n  {\n    \"name\": \"app-server-1\",\n    \"address\": \"0.0.0.0\",\n    \"enabled\": true,\n    \"weight\": 0.56,\n    \"header\": {\n      \"Host\": [\n        \"example.com\"\n      ]\n    }\n  }\n]",
+						"example": "[\n  {\n    \"name\": \"app-server-1\",\n    \"address\": \"0.0.0.0\",\n    \"enabled\": true,\n    \"weight\": 0.56,\n    \"header\": {\n      \"Host\": [\n        \"example.com\"\n      ]\n    },\n    \"virtual_network_id\": \"a5624d4e-044a-4ff0-b3e1-e2465353d4b4\"\n  }\n]",
 						"description": "The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.",
 						"items": {
 							"id": "https://api.cloudflare.com/schemas/v4/client/definitions/loadbalancing/origin.json",
@@ -900,7 +920,7 @@
 								},
 								"address": {
 									"type": "string",
-									"description": "The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare.",
+									"description": "The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual_network_id must also be set.",
 									"example": "0.0.0.0"
 								},
 								"enabled": {
@@ -945,6 +965,11 @@
 											}
 										}
 									}
+								},
+								"virtual_network_id": {
+									"type": "string",
+									"description": "The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.",
+									"example": "a5624d4e-044a-4ff0-b3e1-e2465353d4b4"
 								}
 							},
 							"properties": {
@@ -955,7 +980,7 @@
 								},
 								"address": {
 									"type": "string",
-									"description": "The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare.",
+									"description": "The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual_network_id must also be set.",
 									"example": "0.0.0.0"
 								},
 								"enabled": {
@@ -992,6 +1017,11 @@
 											}
 										}
 									}
+								},
+								"virtual_network_id": {
+									"type": "string",
+									"description": "The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.",
+									"example": "a5624d4e-044a-4ff0-b3e1-e2465353d4b4"
 								}
 							}
 						}
@@ -1103,9 +1133,9 @@
 					"notification_filter"
 				],
 				"objects": [],
-				"example": "{\n  \"description\": \"Primary data center - Provider XYZ\",\n  \"name\": \"primary-dc-1\",\n  \"enabled\": false,\n  \"check_regions\": [\n    \"WEU\",\n    \"ENAM\"\n  ],\n  \"load_shedding\": {\n    \"default_percent\": 0,\n    \"default_policy\": \"random\",\n    \"session_percent\": 0,\n    \"session_policy\": \"hash\"\n  },\n  \"minimum_origins\": 2,\n  \"monitor\": \"f1aba936b94213e5b8dca0c0dbf1f9cc\",\n  \"origins\": [\n    {\n      \"name\": \"app-server-1\",\n      \"address\": \"0.0.0.0\",\n      \"enabled\": true,\n      \"weight\": 0.56,\n      \"header\": {\n        \"Host\": [\n          \"example.com\"\n        ]\n      }\n    }\n  ],\n  \"origin_steering\": {\n    \"policy\": \"random\"\n  },\n  \"notification_email\": \"someone@example.com,sometwo@example.com\",\n  \"notification_filter\": {\n    \"origin\": {\n      \"disable\": false,\n      \"healthy\": null\n    },\n    \"pool\": {\n      \"disable\": false,\n      \"healthy\": null\n    }\n  }\n}"
+				"example": "{\n  \"description\": \"Primary data center - Provider XYZ\",\n  \"name\": \"primary-dc-1\",\n  \"enabled\": false,\n  \"check_regions\": [\n    \"WEU\",\n    \"ENAM\"\n  ],\n  \"load_shedding\": {\n    \"default_percent\": 0,\n    \"default_policy\": \"random\",\n    \"session_percent\": 0,\n    \"session_policy\": \"hash\"\n  },\n  \"minimum_origins\": 2,\n  \"monitor\": \"f1aba936b94213e5b8dca0c0dbf1f9cc\",\n  \"origins\": [\n    {\n      \"name\": \"app-server-1\",\n      \"address\": \"0.0.0.0\",\n      \"enabled\": true,\n      \"weight\": 0.56,\n      \"header\": {\n        \"Host\": [\n          \"example.com\"\n        ]\n      },\n      \"virtual_network_id\": \"a5624d4e-044a-4ff0-b3e1-e2465353d4b4\"\n    }\n  ],\n  \"origin_steering\": {\n    \"policy\": \"random\"\n  },\n  \"notification_email\": \"someone@example.com,sometwo@example.com\",\n  \"notification_filter\": {\n    \"origin\": {\n      \"disable\": false,\n      \"healthy\": null\n    },\n    \"pool\": {\n      \"disable\": false,\n      \"healthy\": null\n    }\n  }\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"17b5962d775c646f3f9725cbc7a53df4\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"description\": \"Primary data center - Provider XYZ\",\n    \"name\": \"primary-dc-1\",\n    \"enabled\": false,\n    \"load_shedding\": {\n      \"default_percent\": 0,\n      \"default_policy\": \"random\",\n      \"session_percent\": 0,\n      \"session_policy\": \"hash\"\n    },\n    \"minimum_origins\": 2,\n    \"monitor\": \"f1aba936b94213e5b8dca0c0dbf1f9cc\",\n    \"check_regions\": [\n      \"WEU\",\n      \"ENAM\"\n    ],\n    \"origins\": [\n      {\n        \"name\": \"app-server-1\",\n        \"address\": \"0.0.0.0\",\n        \"enabled\": true,\n        \"weight\": 0.56,\n        \"header\": {\n          \"Host\": [\n            \"example.com\"\n          ]\n        }\n      }\n    ],\n    \"origin_steering\": {\n      \"policy\": \"random\"\n    },\n    \"notification_email\": \"someone@example.com,sometwo@example.com\",\n    \"notification_filter\": {\n      \"origin\": {\n        \"disable\": false,\n        \"healthy\": null\n      },\n      \"pool\": {\n        \"disable\": false,\n        \"healthy\": null\n      }\n    }\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"17b5962d775c646f3f9725cbc7a53df4\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"description\": \"Primary data center - Provider XYZ\",\n    \"name\": \"primary-dc-1\",\n    \"enabled\": false,\n    \"load_shedding\": {\n      \"default_percent\": 0,\n      \"default_policy\": \"random\",\n      \"session_percent\": 0,\n      \"session_policy\": \"hash\"\n    },\n    \"minimum_origins\": 2,\n    \"monitor\": \"f1aba936b94213e5b8dca0c0dbf1f9cc\",\n    \"check_regions\": [\n      \"WEU\",\n      \"ENAM\"\n    ],\n    \"origins\": [\n      {\n        \"name\": \"app-server-1\",\n        \"address\": \"0.0.0.0\",\n        \"enabled\": true,\n        \"weight\": 0.56,\n        \"header\": {\n          \"Host\": [\n            \"example.com\"\n          ]\n        },\n        \"virtual_network_id\": \"a5624d4e-044a-4ff0-b3e1-e2465353d4b4\"\n      }\n    ],\n    \"origin_steering\": {\n      \"policy\": \"random\"\n    },\n    \"notification_email\": \"someone@example.com,sometwo@example.com\",\n    \"notification_filter\": {\n      \"origin\": {\n        \"disable\": false,\n        \"healthy\": null\n      },\n      \"pool\": {\n        \"disable\": false,\n        \"healthy\": null\n      }\n    }\n  }\n}"
 		},
 		{
 			"title": "Patch Pools",
@@ -1138,7 +1168,7 @@
 				"objects": [],
 				"example": "{\n  \"notification_email\": \"\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"17b5962d775c646f3f9725cbc7a53df4\",\n      \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n      \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n      \"description\": \"Primary data center - Provider XYZ\",\n      \"name\": \"primary-dc-1\",\n      \"enabled\": false,\n      \"load_shedding\": {\n        \"default_percent\": 0,\n        \"default_policy\": \"random\",\n        \"session_percent\": 0,\n        \"session_policy\": \"hash\"\n      },\n      \"minimum_origins\": 2,\n      \"monitor\": \"f1aba936b94213e5b8dca0c0dbf1f9cc\",\n      \"check_regions\": [\n        \"WEU\",\n        \"ENAM\"\n      ],\n      \"origins\": [\n        {\n          \"name\": \"app-server-1\",\n          \"address\": \"0.0.0.0\",\n          \"enabled\": true,\n          \"weight\": 0.56,\n          \"header\": {\n            \"Host\": [\n              \"example.com\"\n            ]\n          }\n        }\n      ],\n      \"origin_steering\": {\n        \"policy\": \"random\"\n      },\n      \"notification_email\": \"someone@example.com,sometwo@example.com\",\n      \"notification_filter\": {\n        \"origin\": {\n          \"disable\": false,\n          \"healthy\": null\n        },\n        \"pool\": {\n          \"disable\": false,\n          \"healthy\": null\n        }\n      }\n    }\n  ]\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"17b5962d775c646f3f9725cbc7a53df4\",\n      \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n      \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n      \"description\": \"Primary data center - Provider XYZ\",\n      \"name\": \"primary-dc-1\",\n      \"enabled\": false,\n      \"load_shedding\": {\n        \"default_percent\": 0,\n        \"default_policy\": \"random\",\n        \"session_percent\": 0,\n        \"session_policy\": \"hash\"\n      },\n      \"minimum_origins\": 2,\n      \"monitor\": \"f1aba936b94213e5b8dca0c0dbf1f9cc\",\n      \"check_regions\": [\n        \"WEU\",\n        \"ENAM\"\n      ],\n      \"origins\": [\n        {\n          \"name\": \"app-server-1\",\n          \"address\": \"0.0.0.0\",\n          \"enabled\": true,\n          \"weight\": 0.56,\n          \"header\": {\n            \"Host\": [\n              \"example.com\"\n            ]\n          },\n          \"virtual_network_id\": \"a5624d4e-044a-4ff0-b3e1-e2465353d4b4\"\n        }\n      ],\n      \"origin_steering\": {\n        \"policy\": \"random\"\n      },\n      \"notification_email\": \"someone@example.com,sometwo@example.com\",\n      \"notification_filter\": {\n        \"origin\": {\n          \"disable\": false,\n          \"healthy\": null\n        },\n        \"pool\": {\n          \"disable\": false,\n          \"healthy\": null\n        }\n      }\n    }\n  ]\n}"
 		},
 		{
 			"title": "Delete Pool",
@@ -1418,7 +1448,7 @@
 			},
 			"origins": {
 				"type": "array",
-				"example": "[\n  {\n    \"name\": \"app-server-1\",\n    \"address\": \"0.0.0.0\",\n    \"enabled\": true,\n    \"weight\": 0.56,\n    \"header\": {\n      \"Host\": [\n        \"example.com\"\n      ]\n    }\n  }\n]",
+				"example": "[\n  {\n    \"name\": \"app-server-1\",\n    \"address\": \"0.0.0.0\",\n    \"enabled\": true,\n    \"weight\": 0.56,\n    \"header\": {\n      \"Host\": [\n        \"example.com\"\n      ]\n    },\n    \"virtual_network_id\": \"a5624d4e-044a-4ff0-b3e1-e2465353d4b4\"\n  }\n]",
 				"description": "The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.",
 				"items": {
 					"id": "https://api.cloudflare.com/schemas/v4/client/definitions/loadbalancing/origin.json",
@@ -1434,7 +1464,7 @@
 						},
 						"address": {
 							"type": "string",
-							"description": "The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare.",
+							"description": "The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual_network_id must also be set.",
 							"example": "0.0.0.0"
 						},
 						"enabled": {
@@ -1479,6 +1509,11 @@
 									}
 								}
 							}
+						},
+						"virtual_network_id": {
+							"type": "string",
+							"description": "The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.",
+							"example": "a5624d4e-044a-4ff0-b3e1-e2465353d4b4"
 						}
 					},
 					"properties": {
@@ -1489,7 +1524,7 @@
 						},
 						"address": {
 							"type": "string",
-							"description": "The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare.",
+							"description": "The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual_network_id must also be set.",
 							"example": "0.0.0.0"
 						},
 						"enabled": {
@@ -1526,6 +1561,11 @@
 									}
 								}
 							}
+						},
+						"virtual_network_id": {
+							"type": "string",
+							"description": "The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.",
+							"example": "a5624d4e-044a-4ff0-b3e1-e2465353d4b4"
 						}
 					}
 				}
@@ -1640,7 +1680,7 @@
 			"disabled_at"
 		],
 		"objects": [],
-		"example": "{\n  \"id\": \"17b5962d775c646f3f9725cbc7a53df4\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"description\": \"Primary data center - Provider XYZ\",\n  \"name\": \"primary-dc-1\",\n  \"enabled\": false,\n  \"load_shedding\": {\n    \"default_percent\": 0,\n    \"default_policy\": \"random\",\n    \"session_percent\": 0,\n    \"session_policy\": \"hash\"\n  },\n  \"minimum_origins\": 2,\n  \"monitor\": \"f1aba936b94213e5b8dca0c0dbf1f9cc\",\n  \"check_regions\": [\n    \"WEU\",\n    \"ENAM\"\n  ],\n  \"origins\": [\n    {\n      \"name\": \"app-server-1\",\n      \"address\": \"0.0.0.0\",\n      \"enabled\": true,\n      \"weight\": 0.56,\n      \"header\": {\n        \"Host\": [\n          \"example.com\"\n        ]\n      }\n    }\n  ],\n  \"origin_steering\": {\n    \"policy\": \"random\"\n  },\n  \"notification_email\": \"someone@example.com,sometwo@example.com\",\n  \"notification_filter\": {\n    \"origin\": {\n      \"disable\": false,\n      \"healthy\": null\n    },\n    \"pool\": {\n      \"disable\": false,\n      \"healthy\": null\n    }\n  }\n}",
+		"example": "{\n  \"id\": \"17b5962d775c646f3f9725cbc7a53df4\",\n  \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n  \"description\": \"Primary data center - Provider XYZ\",\n  \"name\": \"primary-dc-1\",\n  \"enabled\": false,\n  \"load_shedding\": {\n    \"default_percent\": 0,\n    \"default_policy\": \"random\",\n    \"session_percent\": 0,\n    \"session_policy\": \"hash\"\n  },\n  \"minimum_origins\": 2,\n  \"monitor\": \"f1aba936b94213e5b8dca0c0dbf1f9cc\",\n  \"check_regions\": [\n    \"WEU\",\n    \"ENAM\"\n  ],\n  \"origins\": [\n    {\n      \"name\": \"app-server-1\",\n      \"address\": \"0.0.0.0\",\n      \"enabled\": true,\n      \"weight\": 0.56,\n      \"header\": {\n        \"Host\": [\n          \"example.com\"\n        ]\n      },\n      \"virtual_network_id\": \"a5624d4e-044a-4ff0-b3e1-e2465353d4b4\"\n    }\n  ],\n  \"origin_steering\": {\n    \"policy\": \"random\"\n  },\n  \"notification_email\": \"someone@example.com,sometwo@example.com\",\n  \"notification_filter\": {\n    \"origin\": {\n      \"disable\": false,\n      \"healthy\": null\n    },\n    \"pool\": {\n      \"disable\": false,\n      \"healthy\": null\n    }\n  }\n}",
 		"title": "Load Balancer Pools",
 		"description": "User-level Load Balancer Pools."
 	}

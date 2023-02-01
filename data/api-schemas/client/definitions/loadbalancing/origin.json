@@ -12,7 +12,7 @@
 		},
 		"address": {
 			"type": "string",
-			"description": "The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare.",
+			"description": "The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual_network_id must also be set.",
 			"example": "0.0.0.0"
 		},
 		"enabled": {
@@ -57,6 +57,11 @@
 					}
 				}
 			}
+		},
+		"virtual_network_id": {
+			"type": "string",
+			"description": "The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.",
+			"example": "a5624d4e-044a-4ff0-b3e1-e2465353d4b4"
 		}
 	},
 	"properties": {
@@ -67,7 +72,7 @@
 		},
 		"address": {
 			"type": "string",
-			"description": "The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare.",
+			"description": "The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual_network_id must also be set.",
 			"example": "0.0.0.0"
 		},
 		"enabled": {
@@ -104,6 +109,11 @@
 					}
 				}
 			}
+		},
+		"virtual_network_id": {
+			"type": "string",
+			"description": "The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.",
+			"example": "a5624d4e-044a-4ff0-b3e1-e2465353d4b4"
 		}
 	}
 }

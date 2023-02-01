@@ -7,19 +7,19 @@
 		{
 			"title": "Request Trace",
 			"rel": "collection",
-			"href": "accounts/{#/definitions/account_identifier}/trace",
+			"href": "accounts/{#/definitions/account_identifier}/request-tracer/trace",
 			"method": "POST",
 			"cfOwnership": "flprod",
 			"cfPlanAvailability": {
-				"free": false,
-				"pro": false,
+				"free": true,
+				"pro": true,
 				"business": true,
 				"enterprise": true
 			},
 			"trakalIgnore": false,
 			"html_id": "account-request-tracer-request-trace",
-			"uri": "accounts/:account_identifier/trace",
-			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/trace\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"url\":\"https://some.zone/some_path\",\"method\":\"GET\",\"protocol\":\"HTTP/1.1\",\"skip_response\":true,\"headers\":{\"header_name_1\":\"header_value_1\",\"header_name_2\":\"header_value_2\"},\"cookies\":{\"cookie_name_1\":\"cookie_value_1\",\"cookie_name_2\":\"cookie_value_2\"},\"body\":\"some_request_body\",\"context\":{\"skip_challenge\":true,\"threat_score\":20,\"bot_score\":20,\"geoloc\":\"{\\\"city\\\":\\\"London\\\"}\"}}'",
+			"uri": "accounts/:account_identifier/request-tracer/trace",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/request-tracer/trace\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"url\":\"https://some.zone/some_path\",\"method\":\"PUT\",\"protocol\":\"HTTP/1.1\",\"headers\":{\"header_name_1\":\"header_value_1\",\"header_name_2\":\"header_value_2\"},\"cookies\":{\"cookie_name_1\":\"cookie_value_1\",\"cookie_name_2\":\"cookie_value_2\"},\"body\":{\"base64\":\"c29tZV9yZXF1ZXN0X2JvZHk=\"},\"context\":{\"skip_challenge\":true,\"bot_score\":99,\"geoloc\":{\"city\":\"London\"}}}'",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -32,7 +32,7 @@
 					},
 					"method": {
 						"type": "string",
-						"example": "\"GET\"",
+						"example": "\"PUT\"",
 						"description": "HTTP Method of tracing request"
 					},
 					"protocol": {
@@ -42,8 +42,7 @@
 					},
 					"skip_response": {
 						"type": "boolean",
-						"example": "true",
-						"description": "Whether to skip returning response from origin"
+						"description": "Skip sending the request to the Origin server after all rules evaluation"
 					},
 					"headers": {
 						"type": "object",
@@ -62,13 +61,27 @@
 						"description": "Cookies added to tracing request"
 					},
 					"body": {
-						"type": "string",
-						"example": "\"some_request_body\"",
-						"description": "Tracing request body"
+						"type": "object",
+						"example": "{\n  \"base64\": \"c29tZV9yZXF1ZXN0X2JvZHk=\"\n}",
+						"properties": {
+							"plain_text": {
+								"type": "string",
+								"description": "Request body as plain text"
+							},
+							"base64": {
+								"type": "string",
+								"example": "\"c29tZV9yZXF1ZXN0X2JvZHk=\"",
+								"description": "Base64 encoded request body"
+							},
+							"json": {
+								"type": "object",
+								"description": "Arbitrary json as request body"
+							}
+						}
 					},
 					"context": {
 						"type": "object",
-						"example": "{\n  \"skip_challenge\": true,\n  \"threat_score\": 20,\n  \"bot_score\": 20,\n  \"geoloc\": \"{\\\"city\\\":\\\"London\\\"}\"\n}",
+						"example": "{\n  \"skip_challenge\": true,\n  \"bot_score\": 99,\n  \"geoloc\": {\n    \"city\": \"London\"\n  }\n}",
 						"properties": {
 							"skip_challenge": {
 								"type": "boolean",
@@ -77,18 +90,50 @@
 							},
 							"threat_score": {
 								"type": "integer",
-								"example": "20",
 								"description": "Threat score used for evaluating tracing request processing"
 							},
 							"bot_score": {
 								"type": "integer",
-								"example": "20",
+								"example": "99",
 								"description": "Bot score used for evaluating tracing request processing"
 							},
 							"geoloc": {
-								"type": "string",
-								"example": "\"{\\\"city\\\":\\\"London\\\"}\"",
-								"description": "Geodata for tracing request as JSON string"
+								"type": "object",
+								"example": "{\n  \"city\": \"London\"\n}",
+								"properties": {
+									"city": {
+										"type": "string",
+										"example": "\"London\""
+									},
+									"continent": {
+										"type": "string"
+									},
+									"iso_code": {
+										"type": "string"
+									},
+									"is_eu_country": {
+										"type": "boolean"
+									},
+									"region_code": {
+										"type": "string"
+									},
+									"subdivision_2_iso_code": {
+										"type": "string"
+									},
+									"latitude": {
+										"type": "number"
+									},
+									"longitude": {
+										"type": "number"
+									},
+									"postal_code": {
+										"type": "string"
+									},
+									"timezone": {
+										"type": "string"
+									}
+								},
+								"description": "Geodata for tracing request"
 							}
 						},
 						"description": "Additional request parameters"
@@ -107,9 +152,9 @@
 					"context"
 				],
 				"objects": [],
-				"example": "{\n  \"url\": \"https://some.zone/some_path\",\n  \"method\": \"GET\",\n  \"protocol\": \"HTTP/1.1\",\n  \"skip_response\": true,\n  \"headers\": {\n    \"header_name_1\": \"header_value_1\",\n    \"header_name_2\": \"header_value_2\"\n  },\n  \"cookies\": {\n    \"cookie_name_1\": \"cookie_value_1\",\n    \"cookie_name_2\": \"cookie_value_2\"\n  },\n  \"body\": \"some_request_body\",\n  \"context\": {\n    \"skip_challenge\": true,\n    \"threat_score\": 20,\n    \"bot_score\": 20,\n    \"geoloc\": \"{\\\"city\\\":\\\"London\\\"}\"\n  }\n}"
+				"example": "{\n  \"url\": \"https://some.zone/some_path\",\n  \"method\": \"PUT\",\n  \"protocol\": \"HTTP/1.1\",\n  \"headers\": {\n    \"header_name_1\": \"header_value_1\",\n    \"header_name_2\": \"header_value_2\"\n  },\n  \"cookies\": {\n    \"cookie_name_1\": \"cookie_value_1\",\n    \"cookie_name_2\": \"cookie_value_2\"\n  },\n  \"body\": {\n    \"base64\": \"c29tZV9yZXF1ZXN0X2JvZHk=\"\n  },\n  \"context\": {\n    \"skip_challenge\": true,\n    \"bot_score\": 99,\n    \"geoloc\": {\n      \"city\": \"London\"\n    }\n  }\n}"
 			},
-			"response": "{\n  \"trace\": [\n    {\n      \"step_name\": \"ruleset_id01\",\n      \"type\": \"ruleset\",\n      \"matched\": true,\n      \"action_parameters\": \"{\\\"uri\\\":{\\\"path\\\":\\\"some_path\\\", \\\"query\\\":\\\"some_query\\\"}}\",\n      \"expression\": \"concat(\\\"/new/\\\", http.request.uri)\",\n      \"description\": \"some ruleset\",\n      \"name\": \"some ruleset name\",\n      \"kind\": \"zone\",\n      \"action\": \"rewrite\"\n    }\n  ],\n  \"status_code\": 200\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"trace\": [\n      {\n        \"step_name\": \"rule_id01\",\n        \"type\": \"rule\",\n        \"matched\": true,\n        \"expression\": \"ip.src ne 1.1.1.1\",\n        \"description\": \"some rule\",\n        \"name\": \"some ruleset name\",\n        \"kind\": \"zone\",\n        \"action\": \"execute\",\n        \"action_parameters\": {\n          \"id\": \"4814384a9e5d4991b9815dcfc25d2f1f\"\n        }\n      }\n    ],\n    \"status_code\": 200\n  }\n}"
 		}
 	],
 	"html_id": "account-request-tracer",

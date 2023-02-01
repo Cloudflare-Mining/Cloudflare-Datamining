@@ -2,7 +2,7 @@
 	"id": "https://api.cloudflare.com/schemas/v4/client/account/rulesets/lists.json",
 	"title": "Lists",
 	"description": "Lists you can use in filter and rule expressions.",
-	"cfExtendedDescription": "There are two types of lists: IP address lists and redirect lists.",
+	"cfExtendedDescription": "There are three types of lists: IP address lists, redirect lists, and hostname lists.",
 	"type": "object",
 	"links": [
 		{
@@ -60,10 +60,11 @@
 					"kind": {
 						"type": "string",
 						"example": "\"ip\"",
-						"description": "The type of the list. Each type supports specific list items (IP addresses or redirects).",
+						"description": "The type of the list. Each type supports specific list items (IP addresses, hostnames or redirects).",
 						"enum": [
 							"ip",
-							"redirect"
+							"redirect",
+							"hostname"
 						]
 					}
 				},
@@ -229,6 +230,15 @@
 						"optional_props": [],
 						"objects": [],
 						"example": "{}"
+					},
+					{
+						"all_props": {},
+						"required_props": [
+							"hostname"
+						],
+						"optional_props": [],
+						"objects": [],
+						"example": "{}"
 					}
 				],
 				"example": "{}",
@@ -273,6 +283,15 @@
 						"all_props": {},
 						"required_props": [
 							"redirect"
+						],
+						"optional_props": [],
+						"objects": [],
+						"example": "{}"
+					},
+					{
+						"all_props": {},
+						"required_props": [
+							"hostname"
 						],
 						"optional_props": [],
 						"objects": [],
@@ -345,7 +364,7 @@
 			"html_id": "lists-get-a-list-item",
 			"uri": "accounts/:account_identifier/rules/lists/:list_id/items/:item_id",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/rules/lists/2c0fc9fa937b11eaa1b71c4d701ab86e/items/34b12448945f11eaa1b71c4d701ab86e\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"2c0fc9fa937b11eaa1b71c4d701ab86e\",\n    \"ip\": \"10.0.0.1\",\n    \"redirect\": {\n      \"source_url\": \"example.com/arch\",\n      \"target_url\": \"https://archlinux.org/\",\n      \"status_code\": 301,\n      \"include_subdomains\": false,\n      \"subpath_matching\": false,\n      \"preserve_query_string\": false,\n      \"preserve_path_suffix\": true\n    },\n    \"comment\": \"Private IP address\",\n    \"created_on\": \"2020-01-01T08:00:00Z\",\n    \"modified_on\": \"2020-01-10T14:00:00Z\"\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"2c0fc9fa937b11eaa1b71c4d701ab86e\",\n    \"ip\": \"10.0.0.1\",\n    \"redirect\": {\n      \"source_url\": \"example.com/arch\",\n      \"target_url\": \"https://archlinux.org/\",\n      \"status_code\": 301,\n      \"include_subdomains\": false,\n      \"subpath_matching\": false,\n      \"preserve_query_string\": false,\n      \"preserve_path_suffix\": true\n    },\n    \"hostname\": {\n      \"url_hostname\": \"example.com\"\n    },\n    \"comment\": \"Private IP address\",\n    \"created_on\": \"2020-01-01T08:00:00Z\",\n    \"modified_on\": \"2020-01-10T14:00:00Z\"\n  }\n}"
 		},
 		{
 			"title": "Get bulk operation status",
@@ -399,10 +418,11 @@
 			"kind": {
 				"type": "string",
 				"example": "\"ip\"",
-				"description": "The type of the list. Each type supports specific list items (IP addresses or redirects).",
+				"description": "The type of the list. Each type supports specific list items (IP addresses, hostnames or redirects).",
 				"enum": [
 					"ip",
-					"redirect"
+					"redirect",
+					"hostname"
 				]
 			},
 			"num_items": {

@@ -249,7 +249,7 @@
 								"example": "{}"
 							}
 						],
-						"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'."
+						"description": "Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones."
 					},
 					"priority": {
 						"type": "number",
@@ -401,7 +401,7 @@
 								"example": "{}"
 							}
 						],
-						"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'."
+						"description": "Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones."
 					},
 					"proxied": {
 						"type": "boolean",
@@ -523,7 +523,7 @@
 								"example": "{}"
 							}
 						],
-						"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'."
+						"description": "Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones."
 					},
 					"proxied": {
 						"type": "boolean",
@@ -893,7 +893,7 @@
 								"example": "{}"
 							}
 						],
-						"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'."
+						"description": "Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones."
 					},
 					"locked": {
 						"type": "boolean",
@@ -1071,7 +1071,7 @@
 								"example": "{}"
 							}
 						],
-						"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'."
+						"description": "Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones."
 					},
 					"locked": {
 						"type": "boolean",
@@ -1249,7 +1249,7 @@
 								"example": "{}"
 							}
 						],
-						"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'."
+						"description": "Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones."
 					},
 					"locked": {
 						"type": "boolean",
@@ -1445,7 +1445,7 @@
 								"example": "{}"
 							}
 						],
-						"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'."
+						"description": "Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones."
 					},
 					"locked": {
 						"type": "boolean",
@@ -1650,7 +1650,7 @@
 								"example": "{}"
 							}
 						],
-						"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'."
+						"description": "Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones."
 					},
 					"locked": {
 						"type": "boolean",
@@ -1828,7 +1828,7 @@
 								"example": "{}"
 							}
 						],
-						"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'."
+						"description": "Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones."
 					},
 					"locked": {
 						"type": "boolean",
@@ -2033,7 +2033,7 @@
 								"example": "{}"
 							}
 						],
-						"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'."
+						"description": "Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones."
 					},
 					"locked": {
 						"type": "boolean",
@@ -2238,7 +2238,7 @@
 								"example": "{}"
 							}
 						],
-						"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'."
+						"description": "Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones."
 					},
 					"locked": {
 						"type": "boolean",
@@ -2435,7 +2435,7 @@
 								"example": "{}"
 							}
 						],
-						"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'."
+						"description": "Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones."
 					},
 					"locked": {
 						"type": "boolean",
@@ -2708,7 +2708,7 @@
 								"example": "{}"
 							}
 						],
-						"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'."
+						"description": "Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones."
 					},
 					"locked": {
 						"type": "boolean",
@@ -2894,7 +2894,7 @@
 								"example": "{}"
 							}
 						],
-						"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'."
+						"description": "Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones."
 					},
 					"locked": {
 						"type": "boolean",
@@ -3104,7 +3104,7 @@
 								"example": "{}"
 							}
 						],
-						"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'."
+						"description": "Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones."
 					},
 					"locked": {
 						"type": "boolean",
@@ -3281,7 +3281,7 @@
 								"example": "{}"
 							}
 						],
-						"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'."
+						"description": "Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones."
 					},
 					"locked": {
 						"type": "boolean",
@@ -3459,7 +3459,7 @@
 								"example": "{}"
 							}
 						],
-						"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'."
+						"description": "Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones."
 					},
 					"locked": {
 						"type": "boolean",
@@ -3665,7 +3665,7 @@
 								"example": "{}"
 							}
 						],
-						"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'."
+						"description": "Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones."
 					},
 					"locked": {
 						"type": "boolean",
@@ -3888,7 +3888,7 @@
 								"example": "{}"
 							}
 						],
-						"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'."
+						"description": "Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones."
 					},
 					"locked": {
 						"type": "boolean",
@@ -4086,7 +4086,7 @@
 								"example": "{}"
 							}
 						],
-						"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'."
+						"description": "Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones."
 					},
 					"locked": {
 						"type": "boolean",
@@ -4283,7 +4283,7 @@
 								"example": "{}"
 							}
 						],
-						"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'."
+						"description": "Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones."
 					},
 					"locked": {
 						"type": "boolean",
@@ -4487,7 +4487,7 @@
 								"example": "{}"
 							}
 						],
-						"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'."
+						"description": "Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones."
 					},
 					"locked": {
 						"type": "boolean",
@@ -4665,7 +4665,7 @@
 								"example": "{}"
 							}
 						],
-						"description": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'."
+						"description": "Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones."
 					},
 					"locked": {
 						"type": "boolean",
