@@ -5,34 +5,31 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Sr. Product Marketing - Value Creation</strong></p>
-<p><strong>What we’re looking for</strong></p>
-<p><span style="font-weight: 400;">Provable ROI in the form of extraordinary value to customers is in our DNA; whether it’s giving away our service for free, adding new capabilities at no extra charge or removing egress fees, Cloudflare is famous for demonstrating the outsized value of our customers’ investments in us. We want a senior PMM leader to join us and build a team to promote our dedication to customer business value.</span></p>
-<p><span style="font-weight: 400;">The Value Selling PMM role is high impact, and requires a results-oriented, experienced product marketing leader to be successful. You will hire and grow a team, working directly with Sales and Pricing Leaders, Product Management, and all Marketing disciplines to demonstrate the quantifiable value of choosing Cloudflare solutions over the competition. You will develop tools, systems, messaging and campaigns that drive greater awareness of the ROI and TCO of investing in Cloudflare. You will support new customer acquisition and account expansion by mapping</span><span style="font-weight: 400;"> Cloudflare’s product and service offerings to measurable business outcomes for customers buying centers.&nbsp;</span></p>
-<p><span style="font-weight: 400;">You will bring a consultative approach to&nbsp; the role and </span><span style="font-weight: 400;">develop TCO and ROI value models based on customer business outcomes. You will develop a complete understanding of Cloudflare’s advantages over the competition to develop customer-centric value messaging. You will display a deep understanding of the differences between cloud vs. on-premises solutions, CapEx vs. OpEx, and you will be comfortable presenting to customers and sellers</span></p>
-<p><span style="font-weight: 400;">Data-driven approach with a bias towards action, </span><span style="font-weight: 400;">you will enjoy this role if you like working with fast-paced teams and having autonomy to drive your initiatives. This role is a part of our Solutions Team in Product Marketing team and reports into our Senior Director of Solutions Product Marketing. This will be a highly visible role within the organization, which will have a significant impact on the long-term growth of the fast-growing Cloudflare business.</span></p>
+<p><strong>What You'll Do</strong></p>
+<p><span style="font-weight: 400;">We are looking for a Sales Compensation Analyst to join our team within Global Sales Operations. As a key team member of a high-visibility organization, the Sales Compensation Analyst will provide data analysis, reporting and operational assistance in support of Cloudflare’s Global Sales Compensation Program. Working closely with the existing Sales Compensation team and partnering with Sales Finance, the Sales Compensation Analyst will play an active role in compensation plan administration, including data management within the Anaplan ICM platform, compensation plan distribution, commissions calculations and auditing, performance reporting, and data validation.&nbsp;</span></p>
+<p><span style="font-weight: 400;">This position also offers tremendous growth opportunity, with the successful candidate eventually playing a much larger role in Incentive Compensation Management (ICM) platform administration, process development/refinement,&nbsp; and the ongoing operational execution of Cloudflare’s Sales Compensation Program.&nbsp;</span></p>
 <p><strong>Responsibilities</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Provide leadership for all value messaging, competitive analysis and positioning, product launch management, GTM strategy, sales enablement, and customer insights to inform sales and marketing campaigns that drive customer acquisition, retention, and expansion.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Understand and exploit the weaknesses of both box vendors as well as cloud providers and their competitive weaknesses in the buying process.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Evangelize Cloudflare products and value to analysts, prospects, and customers—in meetings, webinars, conferences and tradeshows.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Be the voice of value selling to the sales and&nbsp; marketing team.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Develop messaging that proves Cloudflare’s differentiation.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Build competitive intelligence and PMM as a practice within the marketing organization&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Partner with demand generation and expansion marketing teams to generate awareness, adoption, pipeline and revenue around the topic of value creation</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Provide support for the field sales teams in the form of sales plays for both mid-market and enterprise</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Partner with our Analyst Relations team to establish Cloudflare as a leader in this space.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Data management (data entry, administration, ownership) within Cloudflare’s Incentive Compensation management platform</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Employee onboarding/off-boarding and change management</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Compensation Plan document distribution and tracking</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Commission and incentive compensation calculations</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Sales performance reporting and visualization</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Data validation and auditing</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">General data analysis</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">General Sales Compensation Program support</span></li>
 </ul>
-<p><strong>Requirements</strong></p>
+<p><strong>About You</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">8+ years of experience in technology product marketing/product management.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience at one or more application performance/reliability vendors.&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Knowledge of how the Internet works, including web applications, CDN, HTTP, DNS, Load balancing.&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Excellent written and presentation skills. This role demands someone who is gifted in their ability to communicate effectively with all stakeholders, including product management, sales, comms, and marketing.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to manage ambiguity and navigate unforeseen obstacles gracefully.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Self-starter who truly enjoys working in a fast-paced, innovative cloud services company.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">BS/BA degree in Marketing, Business, Engineering, or related field</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">3-5 years of Sales Compensation or Commissions experience in the High-Tech sector, with emphasis on program administration and tactical execution. Familiarity/experience with Sales Compensation ICM tools a very strong plus (i.e. Anaplan, Xactly, Callidus, Varicent, etc.)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Firm grasp of the Sales Comp administrative process flow, including plan document distribution and tracking; transaction crediting; incentive calculations; payment file preparation; and issue resolution</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Highly proficient in complex Excel / GoogleSheet files</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Proficient in additional analytics, reporting and data visualization tools/platforms</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Exceptionally motivated and driven self-starter, with the desire to learn and build a career</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Demonstrated ability to multitask in a highly deadline-driven environment</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong verbal and written communication skills&nbsp;</span></li>
 </ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
