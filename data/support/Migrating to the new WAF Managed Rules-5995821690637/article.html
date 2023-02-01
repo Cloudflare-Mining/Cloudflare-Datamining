@@ -160,6 +160,9 @@
 <p>1. Use the current validation mode to check the behavior of the new WAF configuration in Security Events (<b>Security</b> &gt; <b>Events</b>). For more information, refer to <a href="#analyze-security-events">Analyzing the new WAF behavior in Security Events</a>.</p>
 <p>2. When you are done reviewing your configuration with both WAFs enabled, select <b>Ready to update</b> in the update banner, and then select <b>Turn off previous version</b>. This operation will complete the migration and disable the previous WAF version.</p>
 <p>When the migration finishes, the dashboard will only display the new WAF Managed Rules interface in <b>Security </b>&gt; <b>WAF</b> &gt; <b>Managed rules</b>. To check if the migration has finished, refresh the dashboard.</p>
+<p></p>
+<div class="cf-sidebar-2 cf-note">The update process can take up to an hour. During this period you may observe security events from both versions of WAF managed rules.
+</div>
 <h3>Using the API</h3>
 <p>1. Use the <a href="#api-operations">Check WAF update compatibility</a> API operation to determine if the zone can update to the new WAF, given its current configuration:</p>
 <p></p>
