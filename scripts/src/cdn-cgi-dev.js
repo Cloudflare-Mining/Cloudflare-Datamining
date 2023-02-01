@@ -32,7 +32,7 @@ for(const [name, colo] of Object.entries(aggregateColos)){
 }
 
 for(const [file, url] of Object.entries(buildVersions)){
-	const filePath = path.resolve(dir, file);
+	let filePath = path.resolve(dir, file);
 	console.log('Fetching', file);
 	try{
 		const controller = new AbortController();
@@ -41,6 +41,11 @@ for(const [file, url] of Object.entries(buildVersions)){
 		}, 30000);
 		const dataReq = await fetch(url, {agent, signal: controller.signal});
 		if(dataReq.ok){
+			const headers = dataReq.headers;
+			// if sliver, append that to the file name
+			if(headers?.get('x-cdn-cgi-sliver')){
+				filePath = path.resolve(dir, `${file}_sliver-${headers.get('x-cdn-cgi-sliver')}`);
+			}
 			const data = await dataReq.text();
 			await fs.ensureFile(filePath);
 			await fs.writeFile(filePath, data);
