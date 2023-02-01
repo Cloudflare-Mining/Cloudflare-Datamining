@@ -33,10 +33,6 @@
 					{
 						"name": "Buycraft",
 						"nameUrlSlug": "buycraft"
-					},
-					{
-						"name": "Quizlet",
-						"nameUrlSlug": "quizlet"
 					}
 				],
 				"inPartnershipWith": null,
@@ -81,7 +77,14 @@
 			"contentfulId": "3AVeFngZGM2EaS0KGiGiWg",
 			"pathname": "/case-studies/ultius/",
 			"baseURL": "https://www.cloudflare.com",
-			"allowedHrefLangs": null
+			"allowedHrefLangs": [
+				"en-US",
+				"zh-CN",
+				"fr-FR",
+				"de-DE",
+				"ja-JP",
+				"zh-Hans-CN"
+			]
 		}
 	}
 }

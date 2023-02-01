@@ -27,10 +27,6 @@
 				"keyResults": "Business growth made easy with simple infrastructure scaling\n\nPerformance enhancements yield increased page views and time on site\n\nHTTPS and SSL Certification set up in minutes",
 				"relatedCaseStudies": [
 					{
-						"name": "Quizlet",
-						"nameUrlSlug": "quizlet"
-					},
-					{
 						"name": "Udacity",
 						"nameUrlSlug": "udacity"
 					},
@@ -85,7 +81,14 @@
 			"contentfulId": "47HGbNcuXSkqs6UAy0u8Ae",
 			"pathname": "/case-studies/scotch/",
 			"baseURL": "https://www.cloudflare.com",
-			"allowedHrefLangs": null
+			"allowedHrefLangs": [
+				"en-US",
+				"zh-CN",
+				"fr-FR",
+				"de-DE",
+				"ja-JP",
+				"zh-Hans-CN"
+			]
 		}
 	}
 }
