@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.1.1
+
+### Patch Changes
+
+- 9f19fbd148: Fix controlled component warning in Checkboxes
+
 ## 5.1.0
 
 ### Minor Changes
