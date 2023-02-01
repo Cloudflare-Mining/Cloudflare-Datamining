@@ -23,16 +23,54 @@ const colos = {
 	'main': 'dfw01',
 };
 
-const buildVersions = {};
+const buildVersions = [];
 for(const [name, colo] of Object.entries(colos)){
-	buildVersions[`build-info/fl-${name}`] = `${process.env.FETCH_FROM_COLO_URL}colo=${colo}&url=https://trace.colo.quest/info?type=fl`;
-	buildVersions[`build-info/cache-${name}`] = `${process.env.FETCH_FROM_COLO_URL}colo=${colo}&url=https://trace.colo.quest/info?type=cache`;
-	buildVersions[`build-info/challenge-platform-${name}`] = `${process.env.FETCH_FROM_COLO_URL}colo=${colo}&url=https://trace.colo.quest/info?type=challenge-platform`;
+	buildVersions.push({
+		file: `build-info/fl-${name}`,
+		url: `${process.env.FETCH_FROM_COLO_URL}colo=${colo}&url=https://trace.colo.quest/info?type=fl`,
+		info: colo,
+	});
+	buildVersions.push({
+		file: `build-info/cache-${name}`,
+		url: `${process.env.FETCH_FROM_COLO_URL}colo=${colo}&url=https://trace.colo.quest/info?type=cache`,
+		info: colo,
+	});
+	buildVersions.push({
+		file: `build-info/challenge-platform-${name}`,
+		url: `${process.env.FETCH_FROM_COLO_URL}colo=${colo}&url=https://trace.colo.quest/info?type=challenge-platform`,
+		info: colo,
+	});
 }
 
-for(const [file, url] of Object.entries(buildVersions)){
+// some known metals in colos with slivers
+const metals = {
+	canary: ['107m35', '107m47', '107m55', '107m72', '107m73'],
+	mcp: ['21m421', '21m424', '21m509', '21m515'],
+};
+
+for(const [name, metalIds] of Object.entries(metals)){
+	for(const metalId of metalIds){
+		buildVersions.push({
+			file: `build-info/fl-${name}`,
+			url: `${process.env.FETCH_FROM_COLO_URL}metal=${metalId}&url=https://trace.colo.quest/info?type=fl`,
+			info: metalId,
+		});
+		buildVersions.push({
+			file: `build-info/cache-${name}`,
+			url: `${process.env.FETCH_FROM_COLO_URL}metal=${metalId}&url=https://trace.colo.quest/info?type=cache`,
+			info: metalId,
+		});
+		buildVersions.push({
+			file: `build-info/challenge-platform-${name}`,
+			url: `${process.env.FETCH_FROM_COLO_URL}metal=${metalId}&url=https://trace.colo.quest/info?type=challenge-platform`,
+			info: metalId,
+		});
+	}
+}
+
+for(const {file, url, info} of buildVersions){
 	let filePath = path.resolve(dir, file);
-	console.log('Fetching', file);
+	console.log('Fetching', file, info);
 	try{
 		const controller = new AbortController();
 		const timeout = setTimeout(() => {
