@@ -6,26 +6,28 @@
 	</div>
 </div>
 <p><strong>About the Department</strong></p>
-<p><span style="font-weight: 400;">The Security team at Cloudflare is focused and committed to helping secure both Cloudflare and our customers. The Application Security team at Cloudflare is focused on and committed to securing both Cloudflare and our customers. The Application Security team is responsible for keeping our products, and platforms secure.</span></p>
-<p><strong>What you’ll do</strong></p>
-<p><span style="font-weight: 400;">We are looking for a Security Engineer to help us in our mission to build a better internet. Part engineer, part hacker, you will work with our engineering and security teams to build solutions for .</span></p>
+<p><span style="font-weight: 400;">The Customer Support Team solves complicated problems and answers technical inquiries via phone, email, chat, and social media. Whether it is a WordPress blogger using our services for free or a global Enterprise business with petabytes of web traffic, our team is always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - to help build a better service and future product development.</span></p>
+<p><strong>What You’ll do</strong></p>
+<p><span style="font-weight: 400;">Do you love solving complex problems and interacting with people? Are you passionate about helping customers and are a standout colleague? Cloudflare is seeking a Technical Support Engineer to join our team. You will work with our customers on a variety of technical support issues as well as the Technical Operations team that is responsible for running our global distributed network. This is a position where you will learn the inner workings of Cloudflare’s technology and gain a deeper understanding of internet technologies.</span></p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Work with engineering teams to help secure Cloudflare products and platforms</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Assess products through threat modeling, code review and security testing. Also provide guidance on effective countermeasures</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Contribute to security architecture and assist in building and rolling out processes for secure code development and deployment</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Build secure frameworks &amp; libraries that engineering teams can use at scale</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Build internal security tools and automate processes that help fix security problems at a massive scale.&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Managing and prioritizing multiple tasks in accordance with high level objectives</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You are comfortable communicating in writing and always put the customer first</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You are a motivated self-starter who always looking to expand your skill sets</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You take initiatives and capable of learning new technologies / systems / features with little guidance</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You enjoy troubleshooting and solving unknown technical problems and issues</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You are inquisitive and able to communicate to different kind of audiences</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You have a solid grasp of problem solving with command line tools (dig/traceroute/curl/tcpdump)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You understand how the Internet works</span></li>
 </ul>
-<p><strong>Key skill sets and Knowledge</strong></p>
-<p><span style="font-weight: 400;">Security engineers take part in a wide variety of tasks and projects on the team. One individual is not expected to know everything, but a working knowledge in several of the following areas is required:&nbsp;</span></p>
+<p><strong>Bonus Points</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience in securing large scale distributed systems</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience in designing, building and implementing systems</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong engineering background and programming experience (Python, Golang, Rust, Bash, etc.)</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong communication skills and ability to work with remote teams</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Results and goal-oriented</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You have experience writing scripts in Bash, Python, JavaScript, or other scripting language</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You have experience installing and configuring web servers like Apache, Nginx, and IIS</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You are familiar with Cloudflare and have a site actively using our platform</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You have web development, hosting, or customer support experience</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You have the ability to read and write in multiple languages</span></li>
 </ul>
+<h4>&nbsp;</h4>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
