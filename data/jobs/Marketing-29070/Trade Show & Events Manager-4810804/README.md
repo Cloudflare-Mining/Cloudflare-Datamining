@@ -5,75 +5,29 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><span style="font-weight: 400;"><strong>About the role:</strong></span></p>
-<p><span style="font-weight: 400;">The Corporate Marketing Events Team is searching for an Event Manager with experience in B2B SaaS/software marketing--to help us manage all things event technology for our global conference that&nbsp; brings together our customers and prospects in a hybrid event world.&nbsp; </span><span style="font-weight: 400;">You will partner closely with the rest of the Strategic Programs Team, Demand Generation, Sales, Customer Success, Product Marketing, and Marketing Operations to deliver a global roadshow plan that will change as the hybrid world we live in evolves.</span></p>
-<p><strong>Summary of Responsibilities&nbsp;</strong></p>
-<p><span style="font-weight: 400;">Successful candidates are organized, detail-oriented, great communicators, and are able to think strategically while also executing tactically and quickly.&nbsp; In addition, this role requires a deep passion for events and building programs that fit the needs of many parts of the organization.&nbsp;</span></p>
+<p><span style="font-weight: 400;"><strong>About the Role:</strong></span></p>
+<p><span style="font-weight: 400;">The Corporate Marketing Events Team is searching for a Trade Show &amp; Events Manager with experience in B2B SaaS/software marketing to help us develop and execute our global trade show plan.&nbsp;</span></p>
+<p><span style="font-weight: 400;">You will partner closely with the rest of the corporate events team, demand generation, brand, product marketing, marketing operations, and developer team to increase our brand awareness and sales pipeline at our largest trade shows throughout the world.&nbsp;</span></p>
+<p><span style="font-weight: 400;">Successful candidates are organized, detail-oriented, great communicators, and are able to think strategically while also executing tactically and quickly.</span></p>
 <p><strong>About the role:</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Event platform point of contact and management</span></li>
-	<ul>
-		<li style="font-weight: 400;"><span style="font-weight: 400;">Registration page build &amp; maintenance&nbsp;</span></li>
-		<li style="font-weight: 400;"><span style="font-weight: 400;">Code management&nbsp;</span></li>
-		<li style="font-weight: 400;"><span style="font-weight: 400;">Site creation, publishing, and management&nbsp;</span></li>
-		<li style="font-weight: 400;"><span style="font-weight: 400;">Own weekly meetings with registration platform project manager and handle address the feedback from issues&nbsp;</span></li>
-		<li style="font-weight: 400;"><span style="font-weight: 400;">Response to any incident regarding the registration platform</span></li>
-		<li style="font-weight: 400;"><span style="font-weight: 400;">Work with Marketing Operations and finance on integrations for Marketo and Stripe&nbsp;</span></li>
-		<li style="font-weight: 400;"><span style="font-weight: 400;">Work with brand design on any new asset development needed for registration</span></li>
-		<li style="font-weight: 400;"><span style="font-weight: 400;">Own the digital experience using selected platform </span></li>
-		<li style="font-weight: 400;">Monitor and respond to requests of event alias</li>
-		<li style="font-weight: 400;">On-Site Registration:</li>
-	</ul>
-</ul>
-<ul>
-	<li>
-		<ul>
-			<li>
-				<ul>
-					<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to travel to 3-4 programs per year</span></li>
-					<li style="font-weight: 400;"><span style="font-weight: 400;">Manage the on-site registration experience in its entirety including management of badging and scanning partner</span></li>
-					<li style="font-weight: 400;"><span style="font-weight: 400;">Manage post event data export, upload of attendance and session information</span></li>
-					<li style="font-weight: 400;"><span style="font-weight: 400;">Work closely with marketing operations on API functionality.&nbsp;</span></li>
-				</ul>
-			</li>
-		</ul>
-	</li>
-</ul>
-<ul>
-	<li><span style="font-weight: 400;">Measure campaign impact through Salesforce, evaluating campaign and program level ROI, and present recommendations for improvement / impact.</span></li>
-</ul>
-<ul>
-	<ul>
-		<li style="font-weight: 400;"><span style="font-weight: 400;">Update &amp; present registration numbers every week</span></li>
-		<li style="font-weight: 400;"><span style="font-weight: 400;">Request and maintain reports for Connect related activities (leaderboards in SFDC, reports on Rainfocus, live reports, etc)&nbsp;</span></li>
-		<li style="font-weight: 400;"><span style="font-weight: 400;">Attribution &amp;&nbsp; pipeline conversion monitoring &amp; reporting with marketing operations</span></li>
-	</ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Social&nbsp;</span></li>
-	<ul>
-		<li style="font-weight: 400;"><span style="font-weight: 400;">Social post creation using Brand Design’s templates</span></li>
-		<li style="font-weight: 400;"><span style="font-weight: 400;">Work with Content team for copy&nbsp;</span></li>
-		<li style="font-weight: 400;"><span style="font-weight: 400;">Coordinate with Community team for social media post queues&nbsp;</span></li>
-		<li style="font-weight: 400;"><span style="font-weight: 400;">Enable the paid ads owner with all materials (as needed)</span></li>
-	</ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Email marketing&nbsp;</span></li>
-	<ul>
-		<li style="font-weight: 400;"><span style="font-weight: 400;">Email content creation and feedback with Content Marketing &amp; relevant stakeholders</span></li>
-		<li style="font-weight: 400;"><span style="font-weight: 400;">Email build and email testing to relevant stakeholders</span></li>
-		<li style="font-weight: 400;"><span style="font-weight: 400;">List build management in conjunction with marketing operations&nbsp;&nbsp;</span></li>
-		<li style="font-weight: 400;"><span style="font-weight: 400;">Schedule email sends</span></li>
-	</ul>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You will own end-to-end project management and execution of our large-scale trade shows including logistics, staff management, booth production, budget tracking, marketing campaigns and content/presentations</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You will help execute the trade shows in our developer community</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You can design engaging and memorable experiences throughout the trade show (on the show floor, around the exhibition area) that also ties back to our event strategy.&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Work closely with field marketing, the sales team, and other key stakeholders to align on tradeshow and event objectives and report post event on success and leanings.&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Manage trade show budgets and contracts. Responsible for accurately accounting for all trade show expenses and managing payment of vendors. Also responsible for contract management of all vendors and sponsorships.&nbsp;</span></li>
 </ul>
 <p><strong>About you:&nbsp;</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">BS/BA degree and 5 years of direct event technology experience</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience working with Swoogo is a plus!</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Previous experience in B2B Marketing (enterprise SaaS or software) targeting technical buyers and executives. Past experience in Field Marketing and partnering with sales teams.&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience managing vendors</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">You have a passion for delivering high caliber conferences and experience with growing them from the ground up</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">BS/BA degree and 7 - 10 years of experience in planning and managing trade shows.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience onboarding and managing multiple vendors</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Exceptional project management/organizational skills with ability to successfully manage multiple initiatives simultaneously. Attention to detail and accuracy is a must.&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Excellent communication and interpersonal skills to coordinate with and influence internal stakeholders, including executives, product marketing leaders, and the sales team. Able to advocate persuasively for program strategy and results.&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Excellent communication and interpersonal skills to coordinate with</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Familiarity with top security and developer conferences a plus</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Comfortable using Salesforce.com / Tableau reporting</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Self motivated and able to work autonomously.&nbsp; Able to manage competing priorities and adapt quickly to rapidly changing environments. You can marry high-level creativity and out-of-the-box-thinking with a very detail oriented, hands-on project management style.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Self motivated and able to work autonomously.&nbsp; Able to manage competing priorities and adapt quickly to rapidly changing environments. You can marry high-level creativity and out-of-the-box-thinking with a very detail oriented, hands-on project management style.&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Travel 10%-15% of the time.&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Agency experience or B2B technology experience.</span></li>
 </ul>
 <p><strong>Compensation</strong></p>
 <p><span style="font-weight: 400;">Compensation may be adjusted depending on work location.</span></p>
