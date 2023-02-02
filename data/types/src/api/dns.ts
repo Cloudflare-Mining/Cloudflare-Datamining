@@ -14,7 +14,8 @@ export const DNSRecordMeta = eg.object({
   read_only: eg.boolean.optional,
   shopify: eg.boolean.optional,
   source: eg.string.optional,
-  origin_worker_id: eg.string.optional
+  origin_worker_id: eg.string.optional,
+  r2_bucket: eg.string.optional
 });
 
 export type DNSRecordMeta = TypeFromCodec<typeof DNSRecordMeta>;
