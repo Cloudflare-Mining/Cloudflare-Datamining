@@ -93,51 +93,6 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"advanced\": {\n      \"allocated\": 100,\n      \"used\": 5\n    }\n  }\n}"
 		},
 		{
-			"title": "Order Certificate Pack",
-			"description": "For a given zone, order a certificate pack with a list of hostnames.",
-			"rel": "collection",
-			"href": "zones/{#/definitions/zone_identifier}/ssl/certificate_packs",
-			"method": "POST",
-			"cfOwnership": "ssl",
-			"cfPlanAvailability": {
-				"free": true,
-				"pro": true,
-				"business": true,
-				"enterprise": true
-			},
-			"cfPermissionsRequired": {
-				"enum": [
-					"#ssl:read",
-					"#ssl:edit"
-				]
-			},
-			"html_id": "certificate-packs-order-certificate-pack",
-			"uri": "zones/:zone_identifier/ssl/certificate_packs",
-			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/ssl/certificate_packs\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"hosts\":[\"example.com\",\"*.example.com\",\"www.example.com\"]}'",
-			"parameters": {
-				"_formatter": {
-					"jsonMediaType": {}
-				},
-				"all_props": {
-					"hosts": {
-						"type": "array",
-						"example": "[\n  \"example.com\",\n  \"*.example.com\",\n  \"www.example.com\"\n]",
-						"items": {
-							"type": "string"
-						},
-						"description": "Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty."
-					}
-				},
-				"required_props": [],
-				"optional_props": [
-					"hosts"
-				],
-				"objects": [],
-				"example": "{\n  \"hosts\": [\n    \"example.com\",\n    \"*.example.com\",\n    \"www.example.com\"\n  ]\n}"
-			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"3822ff90-ea29-44df-9e55-21300bb9419b\",\n    \"type\": \"custom\",\n    \"hosts\": [\n      \"example.com\",\n      \"*.example.com\",\n      \"www.example.com\"\n    ],\n    \"certificates\": [\n      {\n        \"id\": \"2458ce5a-0c35-4c7f-82c7-8e9487d3ff60\",\n        \"hosts\": [\n          \"example.com\"\n        ],\n        \"issuer\": \"GlobalSign\",\n        \"signature\": \"SHA256WithRSA\",\n        \"status\": \"active\",\n        \"bundle_method\": \"ubiquitous\",\n        \"geo_restrictions\": {\n          \"label\": \"us\"\n        },\n        \"policy\": \"(country: US) or (region: EU)\",\n        \"zone_id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n        \"uploaded_on\": \"2014-01-01T05:20:00Z\",\n        \"modified_on\": \"2014-01-01T05:20:00Z\",\n        \"expires_on\": \"2016-01-01T05:20:00Z\",\n        \"priority\": 1\n      }\n    ],\n    \"primary_certificate\": \"7e7b8deba8538af625850b7b2530034c\"\n  }\n}"
-		},
-		{
 			"title": "Order Advanced Certificate Manager Certificate Pack",
 			"description": "For a given zone, order an advanced certificate pack.",
 			"rel": "collection",
@@ -294,9 +249,7 @@
 		"1409": "Error while requesting from certificate service",
 		"1410": "Bad response certificate service",
 		"1411": "ID is not a dedicated or advanced certificate.",
-		"1412": "Missing required property in request",
-		"1413": "You do not have sufficient entitlements to order the Dedicated Certificate. If you recently deleted a Dedicated Certificate it may still be pending removal. Please try again and contact your Customer Success Manager or Cloudflare Support for assistance if the issue persists.",
-		"1414": "You must complete domain control validation (DCV) for all hostnames on the Dedicated Certificate before placing an order."
+		"1412": "Missing required property in request"
 	},
 	"html_id": "certificate-packs",
 	"object_definition": {
