@@ -1910,30 +1910,6 @@
 			"fields": []
 		},
 		{
-			"name": "workerd/src/workerd/io/cdp.capnp:HeapProfiler.Command.Enable",
-			"fields": []
-		},
-		{
-			"name": "workerd/src/workerd/io/cdp.capnp:HeapProfiler.Command.Enable.Params",
-			"fields": []
-		},
-		{
-			"name": "workerd/src/workerd/io/cdp.capnp:HeapProfiler.Command.Enable.Result",
-			"fields": []
-		},
-		{
-			"name": "workerd/src/workerd/io/cdp.capnp:HeapProfiler.Command.Disable",
-			"fields": []
-		},
-		{
-			"name": "workerd/src/workerd/io/cdp.capnp:HeapProfiler.Command.Disable.Params",
-			"fields": []
-		},
-		{
-			"name": "workerd/src/workerd/io/cdp.capnp:HeapProfiler.Command.Disable.Result",
-			"fields": []
-		},
-		{
 			"name": "workerd/src/workerd/io/cdp.capnp:HeapProfiler.Command.TakeHeapSnapshot",
 			"fields": []
 		},
@@ -2076,20 +2052,6 @@
 					"annotations": {
 						"flatten": "unhandled type",
 						"name": "Profiler.stop"
-					}
-				},
-				{
-					"name": "heapProfilerEnable",
-					"annotations": {
-						"flatten": "unhandled type",
-						"name": "HeapProfiler.enable"
-					}
-				},
-				{
-					"name": "heapProfilerDisable",
-					"annotations": {
-						"flatten": "unhandled type",
-						"name": "HeapProfiler.disable"
 					}
 				},
 				{
