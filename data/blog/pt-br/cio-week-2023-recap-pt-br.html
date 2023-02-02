@@ -1,0 +1,593 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/CIO-Week-2023-Recap.png" class="kg-image" alt="CIO Week 2023 recap"></figure>
+	<p>Em nosso post <a href="https://blog.cloudflare.com/welcome-to-cio-week-2023/">Boas-vindas à CIO Week 2023</a>, falamos sobre começar o ano reconhecendo o trabalho que os CIOs fazem para manter suas organizações seguras e produtivas.</p>
+	<p>Na semana passada, você viu mais de 30 comunicados abordando todas as facetas de sua pilha de tecnologia, incluindo novos serviços, betas, parcerias estratégicas, integrações de terceiros e muito mais. Este blog de recapitulação resume cada comunicado e identifica quais recursos estão em disponibilidade geral (GA), em versão beta ou em nosso roteiro.</p>
+	<p>Fornecemos recursos críticos solicitados por nossos clientes, como <a href="https://www.cloudflare.com/press-releases/2023/cloudflare-announces-comprehensive-email-security-and-data-protection-tools/" target="_blank">proteção contra phishing ainda mais abrangente</a> e <a href="https://www.cloudflare.com/press-releases/2023/cloudflare-expands-relationship-with-microsoft-zero-trust/" target="_blank">integrações mais profundas com o ecossistema da Microsoft</a>. Pensando no futuro, também descrevemos nosso roteiro para categorias de tecnologia emergentes, como<a href="https://www.cloudflare.com/press-releases/2023/digital-experience-monitoring-cios/" target="_blank"> Digital Experience Monitoring</a> e nossa visão para tornar extremamente simples <a href="https://www.cloudflare.com/press-releases/2023/magic-wan-connector-corporate-network/" target="_blank">o roteamento do tráfego de qualquer origem para qualquer destino por meio da rede da Cloudflare</a>.</p>
+	<p>Tudo o que lançamos foi projetado para ajudar os CIOs a acelerar sua busca pela transformação digital. Neste post do blog, organizamos nossos resumos dos comunicados com base em três percepções que queremos que os CIOs tenham ao considerar a parceria com a Cloudflare:</p>
+	<ol>
+		<li><strong>Os CIOs agora têm um roteiro mais simples para Zero Trust e SASE: </strong>anunciamos novos recursos e integrações mais firmes que tornam mais fácil para as organizações adotar as melhores práticas de<a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank"> segurança Zero Trust</a> e avançar para arquiteturas aspiracionais como o <a href="https://www.cloudflare.com/learning/access-management/what-is-sase/" target="_blank">Serviço de Acesso Seguro de Borda (SASE)</a>.</li>
+		<li><strong>Os CIOs têm acesso à tecnologia e aos parceiros de canal certos: </strong>anunciamos integrações e programação para ajudar as organizações a acessar o conhecimento certo para modernizar a TI e a segurança em seu próprio ritmo com as tecnologias que já usam.</li>
+		<li><strong>Os CIOs podem simplificar uma estratégia multinuvem com facilidade: </strong>anunciamos novas maneiras de conectar, proteger e acelerar o tráfego em diversos ambientes de nuvem.</li>
+	</ol>
+	<p>Agradecemos por acompanhar a <a href="https://www.cloudflare.com/cio-week/" target="_blank">CIO Week</a>, a primeira de muitas semanas de inovação da Cloudflare em 2023. Às vezes, pode ser difícil acompanhar nosso ritmo de inovação, mas esperamos que a leitura deste post do blog e a <a href="https://gateway.on24.com/wcc/eh/2153307/lp/4063103/" target="_blank">inscrição em nosso webinar de recapitulação</a> ajudem.</p>
+	<p>Se você quer conversar conosco sobre como modernizar sua TI e segurança e facilitar a vida do CIO de sua organização, <a href="https://www.cloudflare.com/lp/cio-week-2023-cloudflare-one-contact-us/" target="_blank">preencha o formulário aqui.</a></p>
+	<h2 id="simplificar-sua-jornada-para-zero-trust-e-sase">Simplificar sua jornada para Zero Trust e SASE</h2>
+	<p><strong><em>Acesso seguro</em></strong><br>Esses posts do blog se concentram em tornar mais rápido, fácil e seguro conectar qualquer usuário a qualquer aplicativo com os controles granulares e a visibilidade abrangente necessários para atingir o Zero Trust.</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #aaa;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #aaa;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f38630;
+			border-color: #aaa;
+			border-style: solid;
+			border-width: 1px;
+			color: #fff;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-ycd2 {
+			background-color: #F63;
+			color: #FFF;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-ycd2"><span style="font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">Comunicado</span></th>
+				<th class="tg-ycd2"><span style="font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">Resumo</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Beta: </span><a href="https://blog.cloudflare.com/introducing-digital-experience-monitoring/"><span style="font-weight:400;font-style:normal;background-color:transparent">Apresentamos o Digital Experience Monitoring</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">O Cloudflare Digital Experience Monitoring é um painel completo que ajuda os CIOs a entender o desempenho de aplicativos críticos e serviços de internet em toda a sua rede corporativa. </span><a href="https://cloudflare.com/lp/digital-experience-monitoring/" target="_blank"><span style="font-weight:400;font-style:normal;background-color:transparent">Inscreva-se para o acesso beta. </span></a></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Beta: </span><a href="https://blog.cloudflare.com/warp-to-warp/"><span style="font-weight:400;font-style:normal;background-color:transparent">Crie sua própria rede Zero Trust virtual, privada e global na Cloudflare com o WARP-to-WARP</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Com um único clique, qualquer dispositivo executando o cliente de dispositivo da Cloudflare, WARP, em sua organização pode acessar qualquer outro dispositivo executando o WARP em uma rede privada. </span><a href="https://www.cloudflare.com/lp/warp-peering/" target="_blank"><span style="font-weight:400;font-style:normal;background-color:transparent">Inscreva-se para o acesso beta.</span></a></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GA:</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> </span><a href="https://blog.cloudflare.com/403-logs-cloudflare-access/"><span style="font-weight:400;font-style:normal;background-color:transparent">Novas maneiras de solucionar problemas de mensagens "bloqueadas" do Cloudflare Access</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Investigue as decisões de "permitir" ou "bloquear" com base em como uma conexão foi feita com o mesmo nível de facilidade que você pode solucionar problemas de identidade do usuário na plataforma Zero Trust da Cloudflare.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Beta: </span><a href="https://blog.cloudflare.com/one-click-zerotrust-isolation/"><span style="font-weight:400;font-style:normal;background-color:transparent">segurança de dados com um clique para seus aplicativos internos e SaaS</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Proteja dados confidenciais executando sessões de aplicativos em um navegador isolado e controle como os usuários interagem com os dados confidenciais, agora com apenas um clique.</span><a href="https://www.cloudflare.com/lp/application-isolation-beta/" target="_blank"><span style="font-weight:400;font-style:normal;background-color:transparent">Inscreva-se para o acesso beta.</span></a></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GA: </span><a href="https://blog.cloudflare.com/access-and-gateway-with-scim/"><span style="font-weight:400;font-style:normal;background-color:transparent">Anunciamos a compatibilidade com o SCIM para o Cloudflare Access e o Gateway</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Os serviços ZTNA (Access) e SWG (Gateway) da Cloudflare agora são compatíveis com o protocolo System for Cross-domain Identity Management (SCIM), tornando mais fácil para os administradores gerenciar registros de identidade nos sistemas.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GA: </span><a href="https://blog.cloudflare.com/the-most-exciting-ping-release"><span style="font-weight:400;font-style:normal;background-color:transparent">Zero Trust da Cloudflare: a versão de ping mais empolgante desde 1983</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Os administradores de Zero Trust da Cloudflare podem usar ferramentas de depuração familiares que usam o protocolo ICMP (como Ping, Traceroute e MTR) para testar a conectividade com destinos de rede privada.</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p><em><strong>Defesa contra ameaças</strong></em><br>Esses posts do blog se concentram em ajudar as organizações a filtrar, inspecionar e isolar o tráfego para proteger os usuários contra phishing, ransomware e outras ameaças da internet.</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #aaa;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #aaa;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #ff6633;
+			border-color: #aaa;
+			border-style: solid;
+			border-width: 1px;
+			color: #fff;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-ycd2 {
+			background-color: #F63;
+			color: #FFF;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-ycd2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">Comunicado</span></th>
+				<th class="tg-ycd2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">Resumo</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GA:</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> </span><a href="https://blog.cloudflare.com/area1-eli-ga"><span style="font-weight:400;font-style:normal;background-color:transparent">Isolamento de links de e-mail: sua rede de segurança para os ataques de phishing mais recentes</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">O Isolamento de links de e-mail é sua rede de segurança para os links suspeitos que acabam nas caixas de entrada e nos quais os usuários podem clicar. Essa proteção adicional transforma o </span><a href="https://www.cloudflare.com/products/zero-trust/email-security/" target="_blank"><span style="font-weight:400;font-style:normal;background-color:transparent">Cloudflare Area 1</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> na solução de segurança de e-mail mais abrangente quando se trata de proteção contra ataques de phishing.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GA:</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> </span><a href="https://blog.cloudflare.com/bring-your-certificates-cloudflare-gateway/"><span style="font-weight:400;font-style:normal;background-color:transparent">Traga seus próprios certificados para o Cloudflare Gateway</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Os administradores podem usar seus próprios certificados personalizados para aplicar HTTP, DNS, CASB, DLP, RBI e outras políticas de filtragem.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GA:</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> </span><a href="https://blog.cloudflare.com/custom-dlp-profiles/"><span style="font-weight:400;font-style:normal;background-color:transparent">Anunciamos perfis DLP personalizados</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">O serviço Prevenção de perda de dados (DLP) da Cloudflare agora oferece a capacidade de criar detecções personalizadas, para que as organizações possam inspecionar o tráfego em busca de seus dados mais confidenciais.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GA: </span><a href="https://blog.cloudflare.com/gateway-managed-service-provider"><span style="font-weight:400;font-style:normal;background-color:transparent">Zero Trust da Cloudflare para provedores de serviços gerenciados</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Saiba como o governo federal dos EUA e outros grandes provedores de serviços gerenciados (MSPs) estão usando a API do locatário da Cloudflare para aplicar políticas de segurança, como filtragem de DNS, nas organizações que gerenciam.</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p><em><strong>Ambientes SaaS seguros</strong></em><br>Esses posts do blog se concentram em manter a segurança e a visibilidade consistentes em ambientes de aplicativos SaaS, em particular para proteger vazamentos de dados confidenciais.</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #aaa;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #aaa;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f38630;
+			border-color: #aaa;
+			border-style: solid;
+			border-width: 1px;
+			color: #fff;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-ycd2 {
+			background-color: #F63;
+			color: #FFF;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-ycd2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">Comunicado</span></th>
+				<th class="tg-ycd2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">Resumo</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Roteiro: </span><a href="https://blog.cloudflare.com/casb-dlp/"><span style="font-weight:400;font-style:normal;background-color:transparent">como o CASB e o DLP da Cloudflare trabalham juntos para proteger seus dados</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">O Zero Trust da Cloudflare introduz recursos entre nossos serviços CASB e DLP que permitem aos administradores examinar os arquivos armazenados em seus aplicativos SaaS e identificar dados confidenciais dentro deles.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Roteiro: </span><a href="https://blog.cloudflare.com/dlp-area1-to-protect-data-in-email/"><span style="font-weight:400;font-style:normal;background-color:transparent">Como o Cloudflare Area 1 e o DLP trabalham juntos para proteger dados nos e-mails</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">A Cloudflare combina os recursos do Area 1 Email Security e da Prevenção de perda de dados (DLP) para fornecer proteção completa de dados para os e-mails corporativos. </span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GA: </span><a href="https://blog.cloudflare.com/casb-adds-salesforce-and-box-integrations"><span style="font-weight:400;font-style:normal;background-color:transparent">CASB da Cloudflare: examine o Salesforce e o Box em busca de problemas de segurança</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">O CASB da Cloudflare agora se integra ao Salesforce e ao Box, permitindo que as equipes de TI e segurança examinem esses ambientes SaaS em busca de riscos de segurança.</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p><em><strong>Acelerar e proteger a conectividade</strong></em><br>Além dos recursos do produto, os posts do blog nesta seção destacam a velocidade e outros benefícios estratégicos que as organizações obtêm com a Cloudflare.</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #aaa;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #aaa;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f38630;
+			border-color: #aaa;
+			border-style: solid;
+			border-width: 1px;
+			color: #fff;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-ycd2 {
+			background-color: #F63;
+			color: #FFF;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-zb5k {
+			color: #15C;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-ycd2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">Comunicado</span></th>
+				<th class="tg-ycd2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">Resumo</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/why-cios-select-cloudflare-one/"><span style="font-weight:400;font-style:normal;background-color:transparent">Por que os CIOs escolhem o Cloudflare One?</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Como parte da CIO Week, conversamos com os líderes de alguns de nossos maiores clientes para entender melhor por que eles escolheram o Cloudflare One. Saiba os seis motivos temáticos.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/network-performance-update-cio-edition/"><span style="font-weight:400;font-style:normal;background-color:transparent">A Cloudflare é mais rápida que a Zscaler</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">A Cloudflare é de 38 a 55% mais rápida na entrega de experiências Zero Trust do que a Zscaler, de acordo com </span><a href="https://www.cloudflare.com/lp/miercom-report-cloudflare-vs-zscaler/?cf_target_id=1C6571CB318780CED4741A383010B000" target="_blank"><span style="font-weight:400;font-style:normal;background-color:transparent">testes de validação de terceiros</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GA: </span><a href="https://blog.cloudflare.com/location-aware-warp/"><span style="font-weight:400;font-style:normal;background-color:transparent">Perfis de configuração e detecção de rede para o agente Cloudflare One</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">O cliente de dispositivo da Cloudflare (WARP) agora pode detectar com segurança locais pré-configurados e rotear o tráfego com base nas necessidades da organização para esse local.</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p><em><strong>Tornar a Cloudflare mais fácil de usar</strong></em><br>Esses posts do blog destacam inovações em todo o portfólio da Cloudflare e fora das categorias Zero Trust e SASE, para ajudar as organizações a proteger e acelerar o tráfego com facilidade.</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #aaa;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #aaa;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f38630;
+			border-color: #aaa;
+			border-style: solid;
+			border-width: 1px;
+			color: #fff;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-ycd2 {
+			background-color: #F63;
+			color: #FFF;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-zb5k {
+			color: #15C;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-ycd2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">Comunicado</span></th>
+				<th class="tg-ycd2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">Resumo</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/preview-today/"><span style="font-weight:400;font-style:normal;background-color:transparent">Experimente qualquer produto Cloudflare hoje</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Os clientes Enterprise já podem começar a experimentar serviços não contratados com um único clique no painel. </span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GA: </span><a href="https://blog.cloudflare.com/improved-api-access-control/"><span style="font-weight:400;font-style:normal;background-color:transparent">Controles de acesso aprimorados: o acesso à API agora pode ser desabilitado seletivamente</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">A Cloudflare torna mais fácil para os proprietários de contas visualizar e gerenciar o acesso que seus usuários têm a uma conta, permitindo que eles restrinjam o acesso à API na conta.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GA: </span><a href="https://blog.cloudflare.com/zone-versioning-ga"><span style="font-weight:400;font-style:normal;background-color:transparent">Zone Versioning agora em disponibilidade geral</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">O Zone Versioning permite que os clientes gerenciem com segurança a configuração de zona por meio de alterações de versão e escolham como e quando implantar essas alterações em ambientes de tráfego definidos. </span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Roteiro: </span><a href="https://blog.cloudflare.com/app-services-private-networks"><span style="font-weight:400;font-style:normal;background-color:transparent">Cloudflare Application Services para redes privadas: faça mais com as ferramentas que você tanto gosta</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">A Cloudflare está desbloqueando eficiências operacionais, trabalhando em integrações entre nossos Application Services, para proteger sites voltados para a internet, e nossa plataforma Cloudflare One para proteger redes corporativas. </span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<h3 id="colabora-o-com-os-parceiros-certos">Colaboração com os parceiros certos</h3>
+	<p>Além da nova programação para nossos parceiros de canal, esses posts do blog descrevem integrações técnicas mais profundas que ajudam as organizações a trabalhar com mais eficiência com as ferramentas de TI e segurança que já usam.</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #aaa;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #aaa;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f38630;
+			border-color: #aaa;
+			border-style: solid;
+			border-width: 1px;
+			color: #fff;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-ycd2 {
+			background-color: #F63;
+			color: #FFF;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-ycd2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">Comunicado</span></th>
+				<th class="tg-ycd2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">Resumo</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GA: </span><a href="https://blog.cloudflare.com/expanding-our-collaboration-with-microsoft-proactive-and-automated-zero-trust-security/"><span style="font-weight:400;font-style:normal;background-color:transparent">Expandir nossa colaboração com a Microsoft: segurança Zero Trust proativa e automatizada para os clientes</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">A Cloudflare anunciou quatro novas integrações entre o Microsoft Azure Active Directory (Azure AD) e o Zero Trust da Cloudflare que reduzem o risco de forma proativa. Essas ofertas integradas aumentam a automação, permitindo que as equipes de segurança se concentrem em ameaças ao invés de implementação e manutenção. </span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Beta: </span><a href="https://blog.cloudflare.com/api-based-email-scanning"><span style="font-weight:400;font-style:normal;background-color:transparent">Varredura de e-mail baseada em API</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Agora, os clientes do Microsoft Office 365 podem implantar a segurança de e-mail em nuvem do Area 1 por meio da API do Microsoft Graph. Esse recurso permite que os clientes do O365 implantem rapidamente o produto Area 1 por meio de API, com a integração através do Microsoft Marketplace que vai chegar em breve.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GA: </span><a href="https://blog.cloudflare.com/china-express"><span style="font-weight:400;font-style:normal;background-color:transparent">China Express: parceiros da Cloudflare aumentam o desempenho na China para redes corporativas</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">O China Express é um conjunto de ofertas projetado para simplificar a conectividade e melhorar o desempenho dos usuários na China e desenvolvido em parceria com a China Mobile International e a China Broadband Communications.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Beta: </span><a href="https://blog.cloudflare.com/cloudflare-one-authorized-services-delivery-partner-track/"><span style="font-weight:400;font-style:normal;background-color:transparent">Anunciamos o Authorized Partner Service Delivery Track do Cloudflare One</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">A Cloudflare anunciou a disponibilidade limitada de uma nova faixa de especialização para nossos parceiros de canal e implementação, projetada para ajudar a desenvolver sua experiência na prestação de serviços do Cloudflare One. </span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<h3 id="simplificar-sua-estrat-gia-multinuvem">Simplificar sua estratégia multinuvem</h3>
+	<p>Esses posts do blog destacam as inovações que tornam mais fácil para as organizações simplesmente "conectar-se" à rede da Cloudflare e enviar tráfego de qualquer origem para qualquer destino.</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #aaa;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #aaa;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f38630;
+			border-color: #aaa;
+			border-style: solid;
+			border-width: 1px;
+			color: #fff;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-ycd2 {
+			background-color: #F63;
+			color: #FFF;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-zb5k {
+			color: #15C;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-ycd2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">Comunicado</span></th>
+				<th class="tg-ycd2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">Resumo</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Beta</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">: </span><a href="https://blog.cloudflare.com/magic-wan-connector/"><span style="font-weight:400;font-style:normal;background-color:transparent">Anunciamos o Magic WAN Connector: a via de acesso mais fácil para sua rede de próxima geração</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">A Cloudflare está facilitando ainda mais a conexão com o Magic WAN Connector: um pacote de software leve que você pode instalar em qualquer rede física ou em nuvem para conectar, direcionar e moldar automaticamente qualquer tráfego IP. </span><a href="https://www.cloudflare.com/lp/magic-wan-connector/" target="_blank"><span style="font-weight:400;font-style:normal;background-color:transparent">Inscreva-se para acesso antecipado.</span></a></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GA</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">: </span><a href="https://blog.cloudflare.com/cloud-cni"><span style="font-weight:400;font-style:normal;background-color:transparent">O Cloud CNI conecta de forma privada suas nuvens à Cloudflare</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Os clientes que usam Google Cloud Platform, Azure, Oracle Cloud, IBM Cloud e Amazon Web Services agora podem abrir conexões diretas de suas instâncias de nuvem privada para a Cloudflare.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="https://blog.cloudflare.com/cardinal-directions-and-network-traffic/"><span style="font-weight:400;font-style:normal;background-color:transparent">Proteção Cloudflare para todas as suas direções cardeais</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Neste post do blog, recapitulamos como as definições de tráfego de rede corporativa mudaram e como o Cloudflare One fornece proteção para todos os fluxos de tráfego, independentemente da origem ou destino.</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<h3 id="assistir-na-cloudflare-tv">Assistir na Cloudflare TV</h3><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/3fe5fcb2d55ff3a775e6e46178a9d424/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2Ffca09f14d448f33d3a2e8d4ab8505325%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D10s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
+</div>
