@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.21.0](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/types@6.20.1...@cloudflare/types@6.21.0) (2023-02-03)
+
+
+### Features
+
+* **stratus:** DX-689 ZT entitlement/flag checks for ZT tiles ([ca5f48b](http://stash.cfops.it:7999/fe/stratus/commits/ca5f48b))
+
+
+
+
+
 ## [6.20.1](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/types@6.20.0...@cloudflare/types@6.20.1) (2023-02-02)
 
 **Note:** Version bump only for package @cloudflare/types
