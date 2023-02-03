@@ -6,7 +6,7 @@
 	</div>
 </div>
 <h4>About the department</h4>
-<p><span style="font-weight: 400;">We are looking for a strategic, analytics-focused Business Operations Manager to join our team as part of the Finance &amp; Business Operations Organization. As a key team member of a high-visibility organization, this role will provide analytical and decision-making support to Cloudflare’s GTM Leadership Team. </span></p>
+<p><span style="font-weight: 400;">We are looking for a strategic, analytics-focused GTM Finance- Analytics to join our team as part of the Finance &amp; Business Operations Organization. As a key team member of a high-visibility organization, this role will provide analytical and decision-making support to Cloudflare’s GTM Leadership Team. </span></p>
 <h4>What you'll do</h4>
 <ul>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Support strategic decision making with data and analytics, surfacing findings to GTM Leadership</span></li>
