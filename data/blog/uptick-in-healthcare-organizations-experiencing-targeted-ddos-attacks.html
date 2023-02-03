@@ -20,7 +20,7 @@
 		<li>Deploy <a href="https://developers.cloudflare.com/firewall/cf-firewall-rules/" target="_blank">firewall rules</a> and <a href="https://developers.cloudflare.com/waf/rate-limiting-rules/" target="_blank">rate-limiting rules</a> to enforce a combined positive and negative security model. Reduce the traffic allowed to your website based on your known usage.</li>
 		<li>Ensure your origin is not exposed to the public Internet (i.e. only enable access to Cloudflare IP addresses)</li>
 		<li>Customers with access to Managed IP Lists should consider leveraging those lists in firewall rules</li>
-		<li>Enable <a href="https://developers.cloudflare.com/cache/" target="_blank">caching</a> as much as possible to reduce the strain on your origin servers</li>
+		<li>Enable <a href="https://developers.cloudflare.com/cache/" target="_blank">caching</a> as much as possible to reduce the strain on your origin servers, and when using Workers, avoid overwhelming your origin server with more subrequests than necessary</li>
 		<li>Enable <a href="https://developers.cloudflare.com/ddos-protection/reference/alerts/" target="_blank">DDoS alerting</a> to improve your response time</li>
 	</ol>
 	<p>Though attacks are launched by humans, they are carried out by bots. Defenders who do not leverage automated defenses are at a disadvantage. Cloudflare has helped, and will continue to help, our customers in the healthcare industry prepare for and respond to these attacks.</p>
