@@ -7,7 +7,9 @@ export const AccountFlags = eg.object({
     disable_login_lockdown: eg.boolean.optional,
     tls_client_auth: eg.boolean.optional,
     use_workers_kv: eg.boolean.optional,
-    wildcard_subdomains: eg.boolean.optional
+    wildcard_subdomains: eg.boolean.optional,
+    teams_casb_beta: eg.boolean.optional,
+    teams_casb_alpha: eg.boolean.optional
   }).optional,
   billing: eg.object({
     no_cf_free_zero_cost: eg.boolean.optional,
