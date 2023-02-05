@@ -892,6 +892,22 @@
 		"deleted_date": ""
 	},
 	{
+		"id": "rulesets.firewall_custom_phase_allowed",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 864,
+			"key": "rulesets.firewall_custom_phase_allowed",
+			"name": "Rulesets - Firewall Custom Phase Allowed"
+		},
+		"allocation": {
+			"value": true,
+			"type": "bool"
+		},
+		"created_date": "2023-02-05T19:15:45.000000",
+		"edited_date": "2023-02-05T19:15:45.000000",
+		"deleted_date": ""
+	},
+	{
 		"id": "rulesets.fw_global_rulesets_execute_firewall_managed_bot_management_definite_bots",
 		"feature": {
 			"feature_set": "rulesets",
@@ -953,6 +969,22 @@
 		},
 		"created_date": "2022-11-09T00:29:44.000000",
 		"edited_date": "2022-11-09T00:29:44.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "rulesets.firewall_custom_max_rules_per_ruleset",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 884,
+			"key": "rulesets.firewall_custom_max_rules_per_ruleset",
+			"name": "Rulesets - Firewall Custom Max Rules Per Ruleset"
+		},
+		"allocation": {
+			"value": 5,
+			"type": "max_count"
+		},
+		"created_date": "2023-02-05T19:15:45.000000",
+		"edited_date": "2023-02-05T19:15:45.000000",
 		"deleted_date": ""
 	},
 	{
