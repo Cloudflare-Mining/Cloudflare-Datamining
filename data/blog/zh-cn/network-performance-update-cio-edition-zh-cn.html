@@ -241,7 +241,7 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/8.png" class="kg-image"></figure>
 	<p>在较低延迟范围，Zscaler 和 Cloudflare 的差距确实更加均匀，但 Cloudflare 的响应时间一致程度要高得多，而且可以看到，Zscaler 有接近一半的响应需要接近 1 秒的加载时间。这进一步突显了我们的互连程度有多高：由于覆盖更多地方，我们能提供更佳的应用体验，而且我们在边缘上高延迟和应用性能欠佳的情况也没有那么多。</p>
 	<p>我们希望将这些新会话和现有会话分开，因为查看相似的请求路径以进行适当的比较非常重要。例如，如果我们比较一个现有会话上通过 Zscaler 的请求和一个新会话上通过 Cloudflare 的请求，我们会看到 Cloudflare 比 Zscaler 慢得多，因为需要进行身份验证。所以当我们与第三方签约设计这些测试时，我们确保他们考虑到这一点。</p>
-	<p>对于这些测试，Cloudflare 与第三方 Miercom 签订了合同。Miercom 执行了一组测试，旨在复制终端用户连接到 Cloudflare 或 Zscaler 保护的资源。Miercom 在世界各地的 12 个地方建立了应用实例，并设计了一个测试，可以通过各种 Zero Trust 提供商登录到应用中以访问特定内容。测试方法如下所示，但可以<a href="https://cloudflare.com/lp/miercom-report-cloudflare-vs-zscaler/" target="_blank">在此</a>查看 Miercom 详细说明其测试方法的完整报告。</p>
+	<p>对于这些测试，Cloudflare 与第三方 Miercom 签订了合同。Miercom 执行了一组测试，旨在复制终端用户连接到 Cloudflare 或 Zscaler 保护的资源。Miercom 在世界各地的 14 个地方建立了应用实例，并设计了一个测试，可以通过各种 Zero Trust 提供商登录到应用中以访问特定内容。测试方法如下所示，但可以<a href="https://cloudflare.com/lp/miercom-report-cloudflare-vs-zscaler/" target="_blank">在此</a>查看 Miercom 详细说明其测试方法的完整报告。</p>
 	<ul>
 		<li>用户从一个由 Catchpoint 实例模拟的浏览器连接到应用 —— 新会话</li>
 		<li>用户通过其身份提供商进行身份验证</li>
