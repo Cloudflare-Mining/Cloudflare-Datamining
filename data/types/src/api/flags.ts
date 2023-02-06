@@ -46,8 +46,6 @@ export const AccountFlags = eg.object({
   workers: eg.object({
     appworker_develop: eg.boolean.optional,
     enabled: eg.boolean.optional,
-    origin_workers: eg.boolean.optional,
-    triggers_ui: eg.boolean.optional,
     same_zone_worker_on_subrequest: eg.boolean.optional,
     scripts: eg.number.optional,
     use_pipeline: eg.boolean.optional,
