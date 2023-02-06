@@ -17752,6 +17752,8 @@ components:
     renamed_name:
       type: string
       example: renamed-example-queue
+    request-tracer:
+      type: object
     request.ip:
       type: object
       description: Client IP restrictions.
