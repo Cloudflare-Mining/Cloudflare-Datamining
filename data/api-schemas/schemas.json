@@ -93034,6 +93034,7 @@
 		},
 		"/radar/entities/asns/ip": {
 			"get": {
+				"description": "Get the requested autonomous system information based on IP address. Population estimates come from APNIC (refer to https://labs.apnic.net/?p=526).",
 				"operationId": "radar_get_ASNIp",
 				"parameters": [
 					{
@@ -93230,7 +93231,7 @@
 						"api_token": []
 					}
 				],
-				"summary": "Get autonomous system information by IP address. Population estimates come from APNIC (refer to https://labs.apnic.net/?p=526).",
+				"summary": "Get autonomous system information by IP address",
 				"tags": [
 					"Radar Entities"
 				],
@@ -93454,7 +93455,7 @@
 						"api_token": []
 					}
 				],
-				"summary": "Get autonomous system (AS) by ID",
+				"summary": "Get autonomous system information by AS number",
 				"tags": [
 					"Radar Entities"
 				],

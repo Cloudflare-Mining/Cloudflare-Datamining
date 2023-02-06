@@ -58381,7 +58381,7 @@ paths:
     get:
       tags:
       - Radar Entities
-      summary: Get autonomous system (AS) by ID
+      summary: Get autonomous system information by AS number
       description: Get the requested autonomous system information. A confidence level
         below `5` indicates a low level of confidence in the traffic data - normally
         this happens because Cloudflare has a small amount of traffic from/to this
@@ -58532,8 +58532,9 @@ paths:
     get:
       tags:
       - Radar Entities
-      summary: Get autonomous system information by IP address. Population estimates
-        come from APNIC (refer to https://labs.apnic.net/?p=526).
+      summary: Get autonomous system information by IP address
+      description: Get the requested autonomous system information based on IP address.
+        Population estimates come from APNIC (refer to https://labs.apnic.net/?p=526).
       operationId: radar_get_ASNIp
       parameters:
       - name: ip
