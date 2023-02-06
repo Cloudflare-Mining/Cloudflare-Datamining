@@ -241,7 +241,7 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/8.png" class="kg-image"></figure>
 	<p>Zscaler와 Cloudflare는 좀 더 낮은 대기 시간 버킷에서는 보다 대등한 모습을 보이지만, Cloudflare의 응답 시간이 훨씬 더 일관된 수치를 보여주고 있고, Zscaler는 절반 정도의 응답이 로드되기까지 거의 1초가 걸리는 모습을 볼 수 있습니다. 이는 Cloudflare가 얼마나 잘 연결되어 있는지를 다시 한 번 여실히 보여줍니다. 당사는 더 많은 위치에 배치되어 있고, 더 나은 애플리케이션 경험을 제공하며, 높은 대기 시간 및 열악한 애플리케이션 성능을 보여주는 에지 사례가 많지 않기 때문입니다.</p>
 	<p>비교를 제대로 하려면 유사한 요청 경로를 검토하는 것이 중요하므로 새 세션과 기존 세션을 구별해야 합니다. 예를 들어, 기존 세션에서의 Zscaler를 통한 요청을 새 세션에서의 Cloudflare를 통한 요청과 비교한다면 인증 필요성으로 인해 Cloudflare가 Zscaler보다 훨씬 느리게 나올 것입니다. 그래서 이 테스트를 설계해 줄 제삼자와 계약할 때에는 이 점을 고려하도록 했습니다.</p>
-	<p>Cloudflare는 제삼자인 Miercom과 계약을 맺고 Cloudflare 또는 Zscaler가 보호하는 리소스에 접속하는 최종 사용자의 시나리오를 재현하기 위한 일련의 테스트를 진행했습니다. Miercom은 전 세계 12개 위치에 애플리케이션 인스턴스를 설정하고, 다양한 Zero Trust 공급자를 통해 애플리케이션에 로그인하여 특정 콘텐츠에 액세스하는 테스트를 준비했습니다. 이 테스트 방식은 다음과 같이 묘사할 수 있으며, <a href="https://cloudflare.com/lp/miercom-report-cloudflare-vs-zscaler/" target="_blank">여기</a>에 있는 Miercom 전체 보고서에서 자세한 테스트 방법을 참고할 수도 있습니다.</p>
+	<p>Cloudflare는 제삼자인 Miercom과 계약을 맺고 Cloudflare 또는 Zscaler가 보호하는 리소스에 접속하는 최종 사용자의 시나리오를 재현하기 위한 일련의 테스트를 진행했습니다. Miercom은 전 세계 14개 위치에 애플리케이션 인스턴스를 설정하고, 다양한 Zero Trust 공급자를 통해 애플리케이션에 로그인하여 특정 콘텐츠에 액세스하는 테스트를 준비했습니다. 이 테스트 방식은 다음과 같이 묘사할 수 있으며, <a href="https://cloudflare.com/lp/miercom-report-cloudflare-vs-zscaler/" target="_blank">여기</a>에 있는 Miercom 전체 보고서에서 자세한 테스트 방법을 참고할 수도 있습니다.</p>
 	<ul>
 		<li>사용자가 Catchpoint 인스턴스를 본뜬 브라우저에서 애플리케이션에 접속합니다 - 새 세션</li>
 		<li>사용자가 ID 공급자를 통해 인증받습니다</li>

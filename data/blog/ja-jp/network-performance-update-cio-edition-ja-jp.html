@@ -241,7 +241,7 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/8.png" class="kg-image"></figure>
 	<p>ZscalerとCloudflareは、低遅延バケットでより均一に一致していますが、Cloudflareの応答時間ははるかに安定しており、Zscalerはロードにほぼ1秒かかる応答が半分あることが分かります。このことは、私たちが良好に接続されたことを示すものでもあります。より多くの場所に設置されているため、より優れたアプリケーション体験を提供でき、高遅延でアプリケーションのパフォーマンスが低下するようなエッジケースもそれほど多くありません。</p>
 	<p>このように新規セッションと既存セッションを分けて考えるのは、適切な比較を行うために類似のリクエストパスを見ることが重要だからです。例えば、既存のセッションでZscaler経由のリクエストと、新しいセッションでCloudflare経由のリクエストを比較した場合、認証が必要なため、CloudflareはZscalerよりはるかに遅いことがわかります。そこで、このテストの設計を第三者に委託する際、その点を考慮するようにしました。</p>
-	<p>Cloudflareはこれらのテストのために、CloudflareまたはZscalerによって保護されたリソースに接続するエンドユーザーを再現することを目的とした一連のテストを実施するサードパーティであるMiercomと契約しました。Miercomは、世界12か所にアプリケーションインスタンスを設置し、さまざまなZero Trustプロバイダーを通じてアプリケーションにログインし、特定のコンテンツにアクセスするテストを考案しました。テスト方法は以下の通りですが、テスト方法の詳細についてはMiercomのレポート全文を<a href="https://cloudflare.com/lp/miercom-report-cloudflare-vs-zscaler/" target="_blank">こちら</a>よりご覧ください。</p>
+	<p>Cloudflareはこれらのテストのために、CloudflareまたはZscalerによって保護されたリソースに接続するエンドユーザーを再現することを目的とした一連のテストを実施するサードパーティであるMiercomと契約しました。Miercomは、世界14か所にアプリケーションインスタンスを設置し、さまざまなZero Trustプロバイダーを通じてアプリケーションにログインし、特定のコンテンツにアクセスするテストを考案しました。テスト方法は以下の通りですが、テスト方法の詳細についてはMiercomのレポート全文を<a href="https://cloudflare.com/lp/miercom-report-cloudflare-vs-zscaler/" target="_blank">こちら</a>よりご覧ください。</p>
 	<ul>
 		<li>ユーザーは、Catchpointインスタンスによって模倣されたブラウザからアプリケーションに接続する - 新規セッション</li>
 		<li>ユーザーが自分のIDプロバイダに対して認証を行う</li>
