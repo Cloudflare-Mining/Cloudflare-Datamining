@@ -161,7 +161,7 @@
 					{
 						"contentfulId": "4Q43JVwiYKN4Yhx8a16OvF",
 						"title": "Scale projects with built-in security",
-						"copy": "Get the security and reliability you need with out-of-the-box tools from Cloudflare's secure ecosystem. Workers offers robust security built in including: \n\n- WAF\n- SSL/TLS\n- DDoS protection\n- Highly reliable DNS & CDN network\n- Latest web standards (HTTP3/QUIC)\n",
+						"copy": "Get the security and reliability you need with out-of-the-box tools from Cloudflare's secure ecosystem. Workers offers robust security built in including: \n\n- WAF\n- SSL/TLS\n- DDoS protection\n- Highly reliable DNS & CDN network\n- Latest web standards (HTTP3/QUIC)\n- Mutual TLS Authentication for Workers\n",
 						"toggleText": null,
 						"button": null,
 						"learnMoreUrl": null,
@@ -238,7 +238,8 @@
 							"Debug and troubleshoot with tracing & logging",
 							"Improve visibility and debugging with events collected via Workers Logpush",
 							"Wrangler, a command-line tool for building Workers",
-							"Ecosystem of developer tools "
+							"Ecosystem of developer tools ",
+							"Mutual TLS Authentication for Workers"
 						],
 						"bladeBorder": "none",
 						"sectionPadding": null,
