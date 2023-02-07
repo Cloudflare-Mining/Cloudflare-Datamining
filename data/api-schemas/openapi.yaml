@@ -63,6 +63,8 @@ components:
       - type
       - name
       - content
+    AccountRequestTracer_account_identifier:
+      $ref: '#/components/schemas/AccountRequestTracer_identifier'
     AccountRequestTracer_identifier:
       type: string
       description: Identifier
@@ -1928,7 +1930,7 @@ components:
               green_compute:
                 readOnly: true
     account_identifier:
-      $ref: '#/components/schemas/AccountRequestTracer_identifier'
+      $ref: '#/components/schemas/CloudflareClientAPI_identifier'
     account_subscription_response_collection:
       allOf:
       - $ref: '#/components/schemas/api-response-collection'
