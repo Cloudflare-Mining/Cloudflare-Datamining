@@ -61,52 +61,6 @@
 		}
 	},
 	{
-		"id": "63186624523694e09983769ce03f4e2b",
-		"name": "Zone Versioning",
-		"description": "Grants full access to Zone Versioning",
-		"permissions": {
-			"zone_versioning": {
-				"read": true,
-				"edit": true
-			},
-			"waf": {
-				"read": true,
-				"edit": true
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
-		"id": "92d2bdc71a6e58c9f339156ab73be970",
-		"name": "Zone Versioning Read",
-		"description": "Grants read-only access to Zone Versioning",
-		"permissions": {
-			"zone_versioning": {
-				"read": true,
-				"edit": false
-			},
-			"waf": {
-				"read": true,
-				"edit": false
-			},
-			"zone": {
-				"read": true,
-				"edit": false
-			},
-			"organization": {
-				"read": true,
-				"edit": false
-			}
-		}
-	},
-	{
 		"id": "4b48b09177b06a45f6224af13e7afaf3",
 		"name": "Zaraz Edit",
 		"description": "Can edit Zaraz configuration.",
