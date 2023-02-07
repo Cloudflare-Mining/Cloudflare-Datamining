@@ -6,7 +6,7 @@
 	</div>
 </div>
 <p><strong>About the Role</strong></p>
-<p><span style="font-weight: 400;">Cloudflare is looking for a Demand Generation Campaigns Specialist who is dynamic, creative, and analytical. You will work alongside the Demand Generation team to conceive, launch, and manage a series of campaigns that span a variety of channels – email, social, webinars, content syndication, direct mail to name a few. You have a natural inclination to measure the effectiveness of marketing activities, work cross-functionally with counterparts in Sales and Product Marketing, strong project management skills, and the ability to think strategically and orchestrate many moving parts.</span></p>
+<p><span style="font-weight: 400;">Cloudflare is looking for a Global Campaigns Specialist who is dynamic, creative, and analytical. You will work alongside the Demand Generation team to conceive, launch, and manage a series of campaigns that span a variety of channels – email, social, webinars, content syndication, direct mail to name a few. You have a natural inclination to measure the effectiveness of marketing activities, work cross-functionally with counterparts in Sales and Product Marketing, strong project management skills, and the ability to think strategically and orchestrate many moving parts.</span></p>
 <p><strong>Responsibilities</strong></p>
 <ul>
 	<li><span style="font-weight: 400;">Assist in launching, optimizing and reporting on integrated online campaigns through multiple channels to drive pipeline and revenue targets for Cloudflare’s Zero Trust solutions.</span></li>
