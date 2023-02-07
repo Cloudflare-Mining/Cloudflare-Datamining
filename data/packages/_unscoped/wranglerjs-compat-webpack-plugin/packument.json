@@ -1,7 +1,7 @@
 {
 	"name": "wranglerjs-compat-webpack-plugin",
 	"dist-tags": {
-		"latest": "0.0.6"
+		"latest": "0.0.7"
 	},
 	"versions": {
 		"0.0.1": {
@@ -215,6 +215,45 @@
 					}
 				],
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjDM9/ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmovow//cm3ty5mLZstPBhs0e3ZhjtISRWkswkMt0bo3xuLuQDKxST9s\r\nYfJNQbYCcYv+UDeMJsHmZhHPZ8wc6O1TWnKViSw0g/MGuhg/TtB704bqvxaL\r\noHAtwp3UJmnRHmlRhqV3nwH8BPHn7TDePCvK91fhvOa6/oZuFl7uGos9NSQO\r\nhycS/6quuBnlGS1vzkObaKSajMqJcArNJ5rGPxFaxDjfYr3DfqzJeJBsQbUr\r\nfPKzA4sl1bjiHJ2hD1gy+bg4GlCERbhvgDHhMs6Co54hs/2vR3tprigQREtA\r\niSgsQQGe3SQ22rRtURbgxnrevub8VQKZWhvqSubSMjXHzIjJuu/GsC1jJwK4\r\nkSSJn3A+m/42dw1rm4COsB309DmFPuNBiiR1YLLyObRQbCIDQbhJGduEm0tG\r\nZyYY/pHOfMoOFyqQrHRkZUNlag+oXK3bQzJLfB7wnwdhs03V25U2Ky+41rPY\r\nxfpWyvqdyMKNrnl5VsQFUi15KOCQG9z33EtyYdlU15i+N8sMCKoncOajbwsH\r\nTr/OVWCWZOhogGGllJD13fPh/P4UYm/fSrmoAiGmmOasd6x5ypim5ZDpmc9y\r\nnHaLkZ/6YyTXsptd1T8fmxy2zzY4C2ztliaCUG84NsGPH0VBuo7Oc6HRBYzL\r\nXOr2JQxU6BMV7zkm6x1Zm6DoyRWIuR8iUOM=\r\n=phDa\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.7": {
+			"name": "wranglerjs-compat-webpack-plugin",
+			"version": "0.0.7",
+			"dependencies": {
+				"rimraf": "^3.0.2"
+			},
+			"devDependencies": {
+				"@octokit/core": "^3.6.0",
+				"@schemastore/package": "^0.0.6",
+				"@types/jest": "^27.4.1",
+				"@types/rimraf": "^3.0.2",
+				"@types/tar": "^6.1.1",
+				"@types/webpack": "^4.41.32",
+				"esbuild": "0.16.3",
+				"execa": "^6.1.0",
+				"jest": "^27.5.1",
+				"jest-fetch-mock": "^3.0.3",
+				"npm-run-all": "^4.1.5",
+				"tar": "^6.1.11",
+				"tosource": "^2.0.0-alpha.3",
+				"typescript": "^4.6.3",
+				"undici": "^5.9.1",
+				"webpack": "^4.46.0"
+			},
+			"dist": {
+				"integrity": "sha512-VjsdQZY5WusIjnXquX4W6YL0FEwjg/9nWtETV6vaebZzTJpanXb7Yo6yugYYAGtJFLGJh8hJ+HY/I6JHmGomgw==",
+				"shasum": "6f2484322c7f8168b71a57f6f53e0a1abc4f223d",
+				"tarball": "https://registry.npmjs.org/wranglerjs-compat-webpack-plugin/-/wranglerjs-compat-webpack-plugin-0.0.7.tgz",
+				"fileCount": 23,
+				"unpackedSize": 846675,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQC0h21MBrOb9zlOXjJoaedmPtGIhO80vLkSHsrBLgjVZAIhANTRjf9yY8TsTLmyTG3n0Q6zFCuJw4kmCsxcPYQwLqvs"
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJj4kDsACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmqN7A//VrBSA9nKCtFQTkW8HlzuqsdbwXdVS1QhDfW06EBElAhsx9Up\r\nCJpTLtgBFQhifzqVPXa/Lje5DUXbaUGYxKqgkHXGb7Es1gQ0T6eGg1Vv072/\r\n6uTtxGTwtzvQ4hFJfWyQ742unIQ0oQUtLPqB/KAgckErMXuOUDWSsgE9rtbT\r\n3WkJUYzpLr1CEr9CQ4mCaKFIa1+sqsVmSd8MgQ7EhsUpqtzRPg9czpbNFIgX\r\nklglhg+yOGoorefpEsqxKNBkkhAB+bZn0uEsPMyVd/3GxtvDD+VyNPlLxaS+\r\nAqo+S+8uJTDC6z3G33lIjQPsbdRZJPgOoGYWGQnPKYatKkRpSdO30zzUqgcO\r\n0xeVkQWqQb/hxFEwb1ew3UiWyi+dlIrewUZfcRkJefumG/kzffxUxPUAAQNK\r\nJBwiJdMQTzWVp4enH0CWm6DxnR+b4nvu9bT9Wi13EIiNPrWmyOXAMe6eIM/L\r\nqBGcb+KbaMilDOnLqscsmJkJ4UzIoDLkEMeOelsqvHfB8gkoJf1nBld73RvQ\r\nzv5mlWS6Z6yTfDrnzNH8z9wCSaFINU/o/udBi1J95YGqDfxAiNgm5dTajq2U\r\niweMqazFH7P16USafFiySQY/vk8KCmJt4izO+WuTVpvAj1xaz5smDUETc5M0\r\n1g4zl0CfZ6jl2taYXmpmL40Av/SuX91XYyQ=\r\n=jXwB\r\n-----END PGP SIGNATURE-----\r\n"
 			}
 		}
 	}
