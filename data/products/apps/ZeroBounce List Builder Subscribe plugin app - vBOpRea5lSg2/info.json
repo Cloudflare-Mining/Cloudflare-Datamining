@@ -1812,6 +1812,199 @@
 				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
 				"reviewedAt": "2019-08-13T20:04:09.501647207Z"
 			}
+		},
+		{
+			"tag": "1.1.0",
+			"appId": "vBOpRea5lSg2",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./source/app.css"
+						},
+						{
+							"type": "script",
+							"src": "./source/app.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"account": {
+							"format": "account",
+							"required": true,
+							"services": [
+								"zerobounce-subscription"
+							],
+							"title": "ZeroBounce Login",
+							"type": "object"
+						},
+						"backgroundColor": {
+							"default": "#2F3034",
+							"format": "color",
+							"order": 2,
+							"title": "Background color",
+							"type": "string"
+						},
+						"side": {
+							"default": "right",
+							"enum": [
+								"left",
+								"right"
+							],
+							"enumNames": {
+								"left": "Left",
+								"right": "Right"
+							},
+							"format": "radios",
+							"order": 1,
+							"title": "Side choice",
+							"type": "string"
+						},
+						"subscribeButtonBackground": {
+							"default": "#f1c40f",
+							"format": "color",
+							"order": 4,
+							"title": "Subscribe button background color",
+							"type": "string"
+						},
+						"subscribeButtonTextColor": {
+							"default": "#FFFFFF",
+							"format": "color",
+							"order": 5,
+							"title": "Subscribe button text color",
+							"type": "string"
+						},
+						"textColor": {
+							"default": "#ffffff",
+							"format": "color",
+							"order": 3,
+							"title": "Text color",
+							"type": "string"
+						},
+						"verticalOffset": {
+							"default": 100,
+							"description": "How high/low should the icon appear?",
+							"format": "slider",
+							"maximum": 200,
+							"minimum": 0,
+							"order": 0,
+							"title": "Vertical position",
+							"type": "number"
+						},
+						"zbEnvironment": {
+							"description": "To which ZeroBounce environment (website) should emails be submitted to. Currently, there is a separate environment (website) for India. The test environment is used for internal testing purposes.",
+							"enum": [
+								"NET",
+								"INDIA",
+								"TEST"
+							],
+							"enumNames": {
+								"INDIA": "INDIA: zerobounce.in",
+								"NET": "NET: zerobounce.net",
+								"TEST": "TEST"
+							},
+							"format": "radios",
+							"order": 0,
+							"title": "ZeroBounce environment (website)",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"*"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				},
+				"hooks": [
+					{
+						"endpoint": "https://cf.zerobounce.net/cloudflare",
+						"events": [
+							"new-install",
+							"delete-install",
+							"before-new-install",
+							"before-update-install",
+							"option-change:account"
+						],
+						"block": true,
+						"failure": {
+							"action": "notify",
+							"message": "There was an error communicating with the server..."
+						},
+						"authenticate": [
+							"account"
+						]
+					}
+				]
+			},
+			"releaseNotes": "Added ability for the user to specify to which ZeroBounce environment (website) should emails be submitted to.",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/6sYviI7RMBj_",
+			"metadata": {
+				"code": {
+					"sourceTag": "6sYviI7RMBj_",
+					"uploadedOn": "2023-02-07T13:37:40.848705566Z"
+				}
+			},
+			"created": "2023-02-07T13:37:40.43883Z",
+			"proposedApp": {
+				"id": "vBOpRea5lSg2",
+				"title": "ZeroBounce List Builder Subscribe plugin app",
+				"shortDescription": "Subscription gathering and management tool",
+				"longDescription": "Zerobounce Subscribe plugin app is an email subscriber gathering tool that verifies emails in real time and helps you build the highest quality email lists. It integrates directly with your ZeroBounce account and validates subscribers instantly. You will be able to view and download your subscribers’ email addresses directly from your ZeroBounce dashboard.\n\nThe ZeroBounce Subscribe widget appears as a non-intrusive hovering icon at a customizable position on the edge of your website. When your visitors hover over the icon, they are presented with a simple form within which they can subscribe to your content.\n\nUnlike most opt-in forms or List builder subscription plugin widgets, our Zerobounce Subscribe plugin app comes with a smart real-time email verification feature. The plugin app will do much more for your email hygiene, so you don't have to worry about your email marketing messages, promotions or newsletters going to Spam folders.  \n\nClick on the easy to install Zerobounce Subscribe plugin app for a Free Trial and start marketing to your email list with ease!\n\nFeatures;\n- 98%+ Email Verification accuracy \n- Customize your own call-to-action \n- Drag and drop editor makes for easy customization\n- Non-intrusive hovering icon\n- Easily position on the edge of your website \n- Fully encrypted \n- Spam Trap removal \n- Greylist Checking\n- Catch-all account detection\n- Bad domain verification\n- Email duplication removal \n- Collect IP Addresses for future re-targeting campaigns\n- Email Data Append - know more about your customers\n- Extract verified emails from your Zerobounce account\n- GDPR  Compliant, EU-U.S. and Swiss-U.S. Privacy Shield Certified\n- Free 100 email validations by setting up your Zerobounce account",
+				"instructions": "Choose the aesthetics (color, positioning) of the widget and login to your ZeroBounce account.",
+				"alias": "zerobounce-subscriptions",
+				"orgId": "7707798967603f8420c18c9e9b5fee5f",
+				"icon": "https://images.cloudflareapps.com/mWiyTZG-pfsV/2000x2000_white_bg.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/hNfjucC6XG6S/zb2.png",
+					"https://images.cloudflareapps.com/hNfjucC6XG6S/zb1.png"
+				],
+				"tileImage": "",
+				"featuredAppImage": "https://images.cloudflareapps.com/9DMcTEEje6jf/zb1.png",
+				"author": "ZeroBounce",
+				"tagline": "",
+				"website": "https://zerobounce.net",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.zerobounce.net/privacy-policy.html#website-terms-section",
+				"privacyPolicyURL": "https://www.zerobounce.net/privacy-policy.html#privacy-policy-section",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@zerobounce.net",
+				"products": [],
+				"categoryIds": [
+					"social-and-communication"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "DxV576ph2ILC"
+				},
+				"created": "2018-08-26T21:02:54.092674Z"
+			},
+			"moderationStatus": "pending",
+			"moderationMetadata": {
+				"requestedByUserId": "000dfa419de234a12ba699f0e5be45ae",
+				"requestedAt": "2023-02-07T13:37:41.778214079Z",
+				"canceledAt": null,
+				"reviewedAt": null
+			}
 		}
 	]
 }
