@@ -1,5 +1,11 @@
 # Change Log
 
+## 3.0.1
+
+### Patch Changes
+
+- b78e24059f: Fix dark mode bug
+
 ## 3.0.0
 
 ### Patch Changes
