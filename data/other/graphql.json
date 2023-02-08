@@ -2567,6 +2567,7 @@
 		"videoBufferEventsAdaptiveGroups": "",
 		"videoPlaybackEventsAdaptiveGroups": "",
 		"videoQualityEventsAdaptiveGroups": "",
+		"warpDeviceAdaptiveGroups": "",
 		"workersAnalyticsEngineAdaptiveGroups": "",
 		"workersInvocationsAdaptive": "",
 		"workersInvocationsScheduled": "",
@@ -2859,6 +2860,36 @@
 	},
 	"AccountVideoQualityEventsAdaptiveGroupsOrderBy": {
 		"__description": ""
+	},
+	"AccountWarpDeviceAdaptiveGroups": {
+		"__description": "Beta. Warp device health events with adaptive sampling",
+		"count": "Number of device health events, which usually occur at 2m intervals per device",
+		"dimensions": "List of dimensions to group by",
+		"uniq": ""
+	},
+	"AccountWarpDeviceAdaptiveGroupsDimensions": {
+		"__description": "",
+		"colo": "Device's connected colo",
+		"date": "The date of the device log",
+		"datetime": "The date and time of the device log",
+		"datetimeFiveMinute": "The date and time of the device log truncated to every five minutes",
+		"datetimeHour": "The date and time of the device log truncated to the hour",
+		"datetimeTenMinute": "The date and time of the device log truncated to every ten minutes",
+		"deviceId": "Device ID",
+		"mode": "Device's Warp mode",
+		"platform": "Device's OS",
+		"status": "Device connection status",
+		"version": "Device's Warp version"
+	},
+	"AccountWarpDeviceAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountWarpDeviceAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"AccountWarpDeviceAdaptiveGroupsUniq": {
+		"__description": "",
+		"deviceIds": "Approximate count of unique deviceIds"
 	},
 	"AccountWorkersAnalyticsEngineAdaptiveGroups": {
 		"__description": "Beta. Custom Events with adaptive sampling",
@@ -4545,6 +4576,7 @@
 		"videoBufferEventsAdaptiveGroups": "Beta. Aggregated video streaming buffer event metrics with adaptive sampling",
 		"videoPlaybackEventsAdaptiveGroups": "Beta. Aggregated video streaming playback event metrics with adaptive sampling",
 		"videoQualityEventsAdaptiveGroups": "Beta. Aggregated video streaming quality change event metrics with adaptive sampling",
+		"warpDeviceAdaptiveGroups": "Beta. Warp device health events with adaptive sampling",
 		"workersAnalyticsEngineAdaptiveGroups": "Beta. Custom Events with adaptive sampling",
 		"workersInvocationsAdaptive": "Beta. Workers invocations with adaptive sampling",
 		"workersInvocationsScheduled": "Workers scheduled invocations",
