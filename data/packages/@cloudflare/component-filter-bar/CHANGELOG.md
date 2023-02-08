@@ -1,5 +1,11 @@
 # Change Log
 
+## 4.6.1
+
+### Patch Changes
+
+- 0becdf529d: fix dark mode bug
+
 ## 4.6.0
 
 ### Minor Changes
