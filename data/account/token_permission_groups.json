@@ -696,6 +696,22 @@
 		]
 	},
 	{
+		"id": "212c9ff247b9406d990c017482afb3a5",
+		"name": "IOT Read",
+		"description": "Grants read access to IOT devices",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "865ebd55bc6d4b109de6813eccfefd13",
+		"name": "IOT Write",
+		"description": "Grants full access to IOT devices",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
 		"id": "e763fae6ee95443b8f56f19213c5f2a5",
 		"name": "IP Prefixes: BGP On Demand Read",
 		"description": "Grants access to read ip prefix bgp configuration",
@@ -955,6 +971,22 @@
 		"id": "ed07f6c337da4195b4e72a1fb2c6bcae",
 		"name": "Page Rules Write",
 		"description": "Grants write access to Page Rules",
+		"scopes": [
+			"com.cloudflare.api.account.zone"
+		]
+	},
+	{
+		"id": "050531528b044d58bbb71666fef7c07c",
+		"name": "Page Shield Read",
+		"description": "Grants read access to Page Shield",
+		"scopes": [
+			"com.cloudflare.api.account.zone"
+		]
+	},
+	{
+		"id": "87065285ab38463481e72815eefd18c3",
+		"name": "Page Shield Write",
+		"description": "Grants write access to Page Shield",
 		"scopes": [
 			"com.cloudflare.api.account.zone"
 		]
