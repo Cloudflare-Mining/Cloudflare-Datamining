@@ -1,5 +1,19 @@
 # Change Log
 
+## 6.3.0
+
+### Minor Changes
+
+- 28979c96a3: Add TimePeriodPicker component
+
+### Patch Changes
+
+- Updated dependencies [c464928e05]
+- Updated dependencies [28979c96a3]
+- Updated dependencies [c464928e05]
+  - @cloudflare/component-button@5.4.0
+  - @cloudflare/component-forms@5.2.0
+
 ## 6.2.1
 
 ### Patch Changes

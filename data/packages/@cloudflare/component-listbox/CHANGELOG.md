@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.9.1
+
+### Patch Changes
+
+- c464928e05: Adjust font size and padding when compact prop is used
+
 ## 1.9.0
 
 ### Minor Changes
