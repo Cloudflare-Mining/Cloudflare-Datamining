@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.4.0
+
+### Minor Changes
+
+- c464928e05: Add compact prop
+
 ## 5.3.2
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # Change Log
 
+## 3.1.0
+
+### Minor Changes
+
+- 28979c96a3: Add compact prop, switch to Listbox
+
 ## 3.0.1
 
 ### Patch Changes

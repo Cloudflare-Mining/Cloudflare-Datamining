@@ -1,5 +1,26 @@
 # Change Log
 
+## 5.2.0
+
+### Minor Changes
+
+- 28979c96a3: Add TimePeriodPicker component, add default value for Input
+- c464928e05: Add compact prop to display smaller labels, errors and descriptions
+
+### Patch Changes
+
+- Updated dependencies [28979c96a3]
+- Updated dependencies [c464928e05]
+- Updated dependencies [28979c96a3]
+- Updated dependencies [28979c96a3]
+- Updated dependencies [c464928e05]
+- Updated dependencies [28979c96a3]
+  - @cloudflare/component-input@8.1.0
+  - @cloudflare/component-button@5.4.0
+  - @cloudflare/component-search@5.2.0
+  - @cloudflare/component-textarea@4.1.0
+  - @cloudflare/component-time-period-picker@3.1.0
+
 ## 5.1.1
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # Change Log
 
+## 8.1.0
+
+### Minor Changes
+
+- 28979c96a3: Add compact prop
+
 ## 8.0.0
 
 ### Major Changes

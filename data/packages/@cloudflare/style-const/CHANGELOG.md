@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.7.0
+
+### Minor Changes
+
+- c464928e05: Add compact support to input and error mixins
+
 ## 5.6.2
 
 ### Patch Changes
