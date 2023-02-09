@@ -5,36 +5,30 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Your Career</strong></p>
-<p><span style="font-weight: 400;">As the Protective Intelligence Analyst you will work to proactively identify risk to executives, employees, and business operations. You possess the ability to extract the most pertinent information from multi-source intelligence and distill it into easily digestible work products. You are able to leverage critical thinking and analytic skills to assess threat levels and prioritize risks. You will collaborate across business units to develop holistic risk assessments and clearly communicate risk to stakeholders.&nbsp;</span></p>
-<p><strong>What You’ll Do</strong></p>
+<p><strong>About the role:</strong></p>
+<p><br>We are looking for Data Engineers to come join Cloudflare and help us build a scalable petabyte scale data lake<br>and EDW using modern tech stack. Success in this role comes from marrying a strong data engineering<br>background with product and business acumen to deliver scalable data pipelines. You’ll develop solutions to<br>support the cross-functional needs for integrating data from a central data warehouse to operational systems<br>including but not limited to SaaS tools used for growth, marketing, sales and support. We need strategic thinkers<br>and problem solvers who can help us reach our North Star goals.<br>&nbsp;</p>
+<p><strong>Your Responsibilities:</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Work with the Head of Corporate Security to build our intelligence and exec protection function</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Monitor multi-source intelligence, travel, and events to identify and triage risks</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Develop written intelligence products and conduct briefings for stakeholders</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Conduct risk assessments and suggest mitigation strategies</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Develop and maintain relationships across business units (legal, HR, Travel, Exec Admin, Infosec etc.) to identify and mitigate risks</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Work with the physical security team to ensure the safety and security of executives – including residential, travel, transportation, special events.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Provide limited-notice Executive Protection support (including travel) to all locations in a dynamic and rapidly changing environment. And provide administrative/logistic support as requested to ensure smooth and efficient operations</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Safeguarding and maintaining highly sensitive and confidential information</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Develop and deliver Security-related training material and effective tabletops/drills that keep stakeholders sharp and able to respond to common or rare incidents or disasters</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Identify risk trends and forecast future risks</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Identify gaps in intelligence and suggest new resources as necessary</span></li>
+	<li>Develop technical tools and programming that leverage big-data techniques to cleanse, organize and transform<br>data and to maintain and update data structures and integrity on an automated basis</li>
+	<li>Ability to design application components and evolve architecture including API/Services, Data Access,<br>Integration, Application components</li>
+	<li>Capable of working closely with business and product teams to influence technical strategy conversations and<br>ensure data solutions are aligned with business initiatives and are of high quality.</li>
+	<li>Build tools to automate the monitoring or workload and take proactive measure to scale the platform or to fix the<br>problem</li>
+	<li>Build integration pipelines based on principles of reusability, security, scalability and quality</li>
+	<li style="text-align: left;">Embrace new technologies and work with various tools and technologies to achieve desired functionality.</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><strong>Basic Qualifications:</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">3+ years of experience in intelligence, executive protection or similar field. 5+ years of experience may be acceptable in lieu of a degree</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Familiarity with OSINT tools such as Liferaft, AlertMedia, Flashpoint, Dataminr etc.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience briefing executives</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience developing written intelligence reports</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Understanding of corporate physical security risks</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Understanding of global geopolitics and the impact to corporate risk</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Excellent verbal and written communication skills</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Excellent analytical skills - ability to break down a complex problem into its primitives</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to manage multiple projects and work assignments and ensure that projects are tracking to deliverable dates</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Comfortable with ambiguity and handling confidential information</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Proficiency in Google Workspace tools (Gmail, Docs, Sheets, Slides, etc.)</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to analyze and compare data to make impactful recommendations</span></li>
+	<li>Bachelor’s or Master’s Degree in Computer Science or Engineering or related experience required.</li>
+	<li>5+ years of developing ETL solutions in Big data space working with Petabytes of data and building large scale<br>data solutions using Google Cloud Platform, Apache Spark - Scala, Airflow, Python</li>
+	<li>3+ years of experience with API design and development of RESTful web services</li>
+	<li>Experience with integrating Salesforce, Snowflake, NetSuite, and other SaaS applications</li>
+	<li>Experience with automation tools and frameworks(CI/CD pipelines)</li>
+	<li>Strong understanding of development best practices, continuous integration, source control, code reviews</li>
+</ul>
+<p><strong>Preferred Qualifications:</strong></p>
+<ul>
+	<li>Working experience in Kubernetes, Docker, is a plus</li>
+	<li>Always on the lookout for improving the product using data-driven decisions.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
