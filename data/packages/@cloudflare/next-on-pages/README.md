@@ -93,7 +93,7 @@ Reference:
 
 **Local testing**
 
-In one terminal, run `npx @cloudflare/next-on-pages --watch`, and in another `npx wrangler pages dev .vercel/output/static --compatibility-flags=streams_enable_constructors`. We hope to soon make improvements to the refersh speed.
+In one terminal, run `npx @cloudflare/next-on-pages --watch`, and in another `npx wrangler pages dev .vercel/output/static --compatibility-flags=streams_enable_constructors`. We hope to soon make improvements to the refresh speed.
 
 ### Build Output Configuration
 
@@ -117,6 +117,10 @@ In one terminal, run `npx @cloudflare/next-on-pages --watch`, and in another `np
 | overrides               | 🔄                                                                                                                                                |
 | cache                   | ❌                                                                                                                                                |
 
+- ✅: Supported
+- 🔄: Not currently supported, but it's probably possible and we may add support in the future
+- ❌: Not supported and unlikely we ever will support this
+
 ## Examples
 
 ### [Next.js 13's `app` Directory](https://beta.nextjs.org/docs/routing/fundamentals#the-app-directory)
@@ -128,7 +132,7 @@ Add the following to `next.config.js`:
 const nextConfig = {
   experimental: {
     runtime: "experimental-edge",
-  + appDir: true,
++   appDir: true,
   },
   reactStrictMode: true,
   swcMinify: true,
