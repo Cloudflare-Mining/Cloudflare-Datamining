@@ -362,6 +362,7 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	domain_registration_status_cancelling: "Pending Cancellation",
 	domain_registration_status_active: "Activated",
 	domain_registration_status_disabled: "Disabled",
+	transfer_domains_title: "Transfer Domains",
 	domain_management_new_tld_banner_1: "**.TV** and **.CC** domains now available!",
 	domain_management_new_tld_banner_2: "**.US** domains now available!",
 	domain_management_auto_renew_disabled: "No payment method in billing profile. Add one to enable automatic renewal.",
