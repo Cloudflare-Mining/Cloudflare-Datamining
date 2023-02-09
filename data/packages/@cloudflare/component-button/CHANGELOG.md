@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.4.1
+
+### Patch Changes
+
+- 4396bfb286: Fix dark mode focus state
+
 ## 5.4.0
 
 ### Minor Changes
