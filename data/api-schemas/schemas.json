@@ -4808,7 +4808,7 @@
 								"nullable": true,
 								"properties": {
 									"id": {
-										"$ref": "#/components/schemas/CloudflareClientAPI_schemas-identifier"
+										"$ref": "#/components/schemas/schemas-identifier"
 									}
 								},
 								"required": [
@@ -7701,13 +7701,6 @@
 				"readOnly": true,
 				"type": "string"
 			},
-			"cloudflare-stream-client-api_schemas-identifier": {
-				"description": "Identifier",
-				"example": "023e105f4ecef8ad9ca31a8372d0c353",
-				"maxLength": 32,
-				"readOnly": true,
-				"type": "string"
-			},
 			"cloudflare-tunnel_components-schemas-connection": {
 				"properties": {
 					"client_id": {
@@ -8748,8 +8741,8 @@
 				"type": "object"
 			},
 			"components-schemas-name": {
-				"description": "The name of the interconnect. The name cannot share a name with other tunnels.",
-				"example": "pni_ord",
+				"description": "The name of the Access group.",
+				"example": "Allow devs",
 				"type": "string"
 			},
 			"components-schemas-patch": {
@@ -15983,7 +15976,7 @@
 						"$ref": "#/components/schemas/health_check"
 					},
 					"id": {
-						"$ref": "#/components/schemas/schemas-identifier"
+						"$ref": "#/components/schemas/CloudflareClientAPI_schemas-identifier"
 					},
 					"interface_address": {
 						"$ref": "#/components/schemas/interface_address"
@@ -16077,7 +16070,7 @@
 						"$ref": "#/components/schemas/include"
 					},
 					"name": {
-						"$ref": "#/components/schemas/CloudflareClientAPI_components-schemas-name"
+						"$ref": "#/components/schemas/components-schemas-name"
 					},
 					"require": {
 						"$ref": "#/components/schemas/require"
@@ -16986,7 +16979,7 @@
 						"$ref": "#/components/schemas/uuid"
 					},
 					"name": {
-						"$ref": "#/components/schemas/CloudflareClientAPI_schemas-name"
+						"$ref": "#/components/schemas/schemas-name"
 					},
 					"scim_config": {
 						"description": "The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.",
@@ -17472,7 +17465,7 @@
 			"interconnect": {
 				"properties": {
 					"colo_name": {
-						"$ref": "#/components/schemas/components-schemas-name"
+						"$ref": "#/components/schemas/CloudflareClientAPI_components-schemas-name"
 					},
 					"created_on": {
 						"$ref": "#/components/schemas/schemas-created_on"
@@ -17487,7 +17480,7 @@
 						"$ref": "#/components/schemas/schemas-health_check"
 					},
 					"id": {
-						"$ref": "#/components/schemas/schemas-identifier"
+						"$ref": "#/components/schemas/CloudflareClientAPI_schemas-identifier"
 					},
 					"interface_address": {
 						"$ref": "#/components/schemas/interface_address"
@@ -17499,7 +17492,7 @@
 						"$ref": "#/components/schemas/schemas-mtu"
 					},
 					"name": {
-						"$ref": "#/components/schemas/components-schemas-name"
+						"$ref": "#/components/schemas/CloudflareClientAPI_components-schemas-name"
 					}
 				},
 				"type": "object"
@@ -17968,7 +17961,7 @@
 						"$ref": "#/components/schemas/components-schemas-description"
 					},
 					"id": {
-						"$ref": "#/components/schemas/schemas-identifier"
+						"$ref": "#/components/schemas/CloudflareClientAPI_schemas-identifier"
 					},
 					"interface_address": {
 						"$ref": "#/components/schemas/interface_address"
@@ -17977,7 +17970,7 @@
 						"$ref": "#/components/schemas/schemas-modified_on"
 					},
 					"name": {
-						"$ref": "#/components/schemas/schemas-name"
+						"$ref": "#/components/schemas/CloudflareClientAPI_schemas-name"
 					},
 					"psk_metadata": {
 						"$ref": "#/components/schemas/psk_metadata"
@@ -18409,7 +18402,7 @@
 											"$ref": "#/components/schemas/signing_key_created"
 										},
 										"id": {
-											"$ref": "#/components/schemas/cloudflare-stream-client-api_schemas-identifier"
+											"$ref": "#/components/schemas/schemas-identifier"
 										}
 									},
 									"type": "object"
@@ -18573,7 +18566,7 @@
 						"$ref": "#/components/schemas/signing_key_created"
 					},
 					"id": {
-						"$ref": "#/components/schemas/cloudflare-stream-client-api_schemas-identifier"
+						"$ref": "#/components/schemas/schemas-identifier"
 					},
 					"jwk": {
 						"$ref": "#/components/schemas/jwk"
@@ -29817,8 +29810,8 @@
 				]
 			},
 			"schemas-identifier": {
-				"description": "Tunnel identifier tag.",
-				"example": "c4a7362d577a6c3019a474fd6f485821",
+				"description": "Identifier",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
 				"maxLength": 32,
 				"readOnly": true,
 				"type": "string"
@@ -29833,7 +29826,7 @@
 						"$ref": "#/components/schemas/uuid"
 					},
 					"name": {
-						"$ref": "#/components/schemas/CloudflareClientAPI_schemas-name"
+						"$ref": "#/components/schemas/schemas-name"
 					},
 					"scim_config": {
 						"description": "The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.",
@@ -30161,8 +30154,8 @@
 				"type": "integer"
 			},
 			"schemas-name": {
-				"description": "The name of the IPsec tunnel. The name cannot share a name with other tunnels.",
-				"example": "IPsec_1",
+				"description": "The name of the identity provider, shown to users on the login page.",
+				"example": "Widget Corps IDP",
 				"type": "string"
 			},
 			"schemas-namespace": {
@@ -31555,7 +31548,7 @@
 						"$ref": "#/components/schemas/interface_address"
 					},
 					"name": {
-						"$ref": "#/components/schemas/schemas-name"
+						"$ref": "#/components/schemas/CloudflareClientAPI_schemas-name"
 					},
 					"psk": {
 						"$ref": "#/components/schemas/psk"
@@ -59680,7 +59673,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/cloudflare-stream-client-api_schemas-identifier"
+							"$ref": "#/components/schemas/schemas-identifier"
 						}
 					}
 				],
@@ -59747,7 +59740,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/cloudflare-stream-client-api_schemas-identifier"
+							"$ref": "#/components/schemas/schemas-identifier"
 						}
 					}
 				],
@@ -59830,7 +59823,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/cloudflare-stream-client-api_schemas-identifier"
+							"$ref": "#/components/schemas/schemas-identifier"
 						}
 					}
 				],
@@ -59899,7 +59892,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/cloudflare-stream-client-api_schemas-identifier"
+							"$ref": "#/components/schemas/schemas-identifier"
 						}
 					}
 				],
@@ -59956,7 +59949,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/cloudflare-stream-client-api_schemas-identifier"
+							"$ref": "#/components/schemas/schemas-identifier"
 						}
 					}
 				],
@@ -60013,7 +60006,7 @@
 						"name": "account_identifier",
 						"required": true,
 						"schema": {
-							"$ref": "#/components/schemas/cloudflare-stream-client-api_schemas-identifier"
+							"$ref": "#/components/schemas/schemas-identifier"
 						}
 					}
 				],
