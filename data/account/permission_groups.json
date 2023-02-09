@@ -13,6 +13,10 @@
 		"modified_on": "2020-10-13T12:42:59.660479Z",
 		"permissions": [
 			{
+				"id": "b20b2bc6eb924a2bad14090b1893b52b",
+				"key": "com.cloudflare.api.account.iot.device.*"
+			},
+			{
 				"id": "67eb51db46c14957b08ba9db1ce56ee6",
 				"key": "com.cloudflare.edge.worker.analytics.read",
 				"attributes": {
@@ -3994,6 +3998,10 @@
 		"created_on": "2020-10-13T12:42:59.660479Z",
 		"modified_on": "2020-10-13T12:42:59.660479Z",
 		"permissions": [
+			{
+				"id": "f62cd1f8ee164f1b8aef6430b856f17e",
+				"key": "com.cloudflare.api.account.iot.device.read"
+			},
 			{
 				"id": "67eb51db46c14957b08ba9db1ce56ee6",
 				"key": "com.cloudflare.edge.worker.analytics.read",
@@ -13732,6 +13740,13 @@
 				}
 			},
 			{
+				"id": "0a37ef63d4d749139fa11f15357bc508",
+				"key": "com.cloudflare.api.account.healthcheck.list",
+				"attributes": {
+					"legacy_name": "#healthchecks:read"
+				}
+			},
+			{
 				"id": "304fd8e5c0484101ba51ffa39908c15c",
 				"key": "com.cloudflare.api.account.load-balancer.country.list",
 				"attributes": {
@@ -13757,6 +13772,20 @@
 			{
 				"id": "4f35e96a18bb4fd694b830d944f5996e",
 				"key": "com.cloudflare.api.account.load-balancer.analytics.read"
+			},
+			{
+				"id": "2bd63995e27247479caa00550854eb1a",
+				"key": "com.cloudflare.api.account.zone.healthcheck-preview.*",
+				"attributes": {
+					"legacy_name": "#healthchecks:read,#healthchecks:edit"
+				}
+			},
+			{
+				"id": "b14bb3ff6b8d49baa03f0ccc030a69ab",
+				"key": "com.cloudflare.api.account.zone.healthcheck.*",
+				"attributes": {
+					"legacy_name": "#healthchecks:read,#healthchecks:edit"
+				}
 			},
 			{
 				"id": "760c3250c1c046be90f4b595ddfd0696",
@@ -16276,6 +16305,10 @@
 		"created_on": "2020-10-13T12:42:59.660479Z",
 		"modified_on": "2020-10-13T12:42:59.660479Z",
 		"permissions": [
+			{
+				"id": "b20b2bc6eb924a2bad14090b1893b52b",
+				"key": "com.cloudflare.api.account.iot.device.*"
+			},
 			{
 				"id": "67eb51db46c14957b08ba9db1ce56ee6",
 				"key": "com.cloudflare.edge.worker.analytics.read",
