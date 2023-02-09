@@ -54,15 +54,6 @@
 		"label": "zone_access_read"
 	},
 	{
-		"id": "6db4e222e21248ac96a3f4c2a81e3b41",
-		"name": "Access: Apps and Policies Revoke",
-		"description": "Grants ability to revoke all tokens to Cloudflare Access zone resources",
-		"scopes": [
-			"com.cloudflare.api.account.zone"
-		],
-		"label": "zone_access_revoke"
-	},
-	{
 		"id": "6c9d1cfcfc6840a987d1b5bfb880a841",
 		"name": "Access: Apps and Policies Revoke",
 		"description": "Grants ability to revoke all tokens to Cloudflare Access account resources",
@@ -70,6 +61,15 @@
 			"com.cloudflare.api.account"
 		],
 		"label": "access_revoke"
+	},
+	{
+		"id": "6db4e222e21248ac96a3f4c2a81e3b41",
+		"name": "Access: Apps and Policies Revoke",
+		"description": "Grants ability to revoke all tokens to Cloudflare Access zone resources",
+		"scopes": [
+			"com.cloudflare.api.account.zone"
+		],
+		"label": "zone_access_revoke"
 	},
 	{
 		"id": "1e13c5124ca64b72b1969a67e8829049",
@@ -585,15 +585,6 @@
 		"label": "dns_write"
 	},
 	{
-		"id": "29eefa0805f94fdfae2b058b5b52f319",
-		"name": "Disable ESC Read",
-		"description": "Grants read access to Cloudflare Disable ESC",
-		"scopes": [
-			"com.cloudflare.api.account"
-		],
-		"label": "account_disable_esc_read"
-	},
-	{
 		"id": "e199d584e69344eba202452019deafe3",
 		"name": "Disable ESC Read",
 		"description": "Grants read access to Cloudflare Disable ESC",
@@ -603,13 +594,13 @@
 		"label": "zone_disable_esc_read"
 	},
 	{
-		"id": "18555e39c5ba40d284dde87eda845a90",
-		"name": "Disable ESC Write",
-		"description": "Grants write access to Cloudflare Disable ESC",
+		"id": "29eefa0805f94fdfae2b058b5b52f319",
+		"name": "Disable ESC Read",
+		"description": "Grants read access to Cloudflare Disable ESC",
 		"scopes": [
 			"com.cloudflare.api.account"
 		],
-		"label": "account_disable_esc_write"
+		"label": "account_disable_esc_read"
 	},
 	{
 		"id": "9110d9dd749e464fb9f3961a2064efc5",
@@ -619,6 +610,15 @@
 			"com.cloudflare.api.account.zone"
 		],
 		"label": "zone_disable_esc_write"
+	},
+	{
+		"id": "18555e39c5ba40d284dde87eda845a90",
+		"name": "Disable ESC Write",
+		"description": "Grants write access to Cloudflare Disable ESC",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"label": "account_disable_esc_write"
 	},
 	{
 		"id": "d8e12db741544d1586ec1d6f5d3c7786",
@@ -747,6 +747,24 @@
 		"label": "healthcheck_write"
 	},
 	{
+		"id": "212c9ff247b9406d990c017482afb3a5",
+		"name": "IOT Read",
+		"description": "Grants read access to IOT devices",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"label": "iot_read"
+	},
+	{
+		"id": "865ebd55bc6d4b109de6813eccfefd13",
+		"name": "IOT Write",
+		"description": "Grants full access to IOT devices",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"label": "iot_write"
+	},
+	{
 		"id": "e763fae6ee95443b8f56f19213c5f2a5",
 		"name": "IP Prefixes: BGP On Demand Read",
 		"description": "Grants access to read ip prefix bgp configuration",
@@ -873,15 +891,6 @@
 		"label": "load_balancing_monitors_and_pools_write"
 	},
 	{
-		"id": "c4a30cd58c5d42619c86a3c36c441e2d",
-		"name": "Logs Read",
-		"description": "Grants read access to logs and logpush jobs",
-		"scopes": [
-			"com.cloudflare.api.account.zone"
-		],
-		"label": "logs_read"
-	},
-	{
 		"id": "6a315a56f18441e59ed03352369ae956",
 		"name": "Logs Read",
 		"description": "Grants read access to logs and logpush jobs",
@@ -891,13 +900,13 @@
 		"label": "account_logs_read"
 	},
 	{
-		"id": "96163bd1b0784f62b3e44ed8c2ab1eb6",
-		"name": "Logs Write",
-		"description": "Grants write access to logpush jobs",
+		"id": "c4a30cd58c5d42619c86a3c36c441e2d",
+		"name": "Logs Read",
+		"description": "Grants read access to logs and logpush jobs",
 		"scopes": [
-			"com.cloudflare.api.account"
+			"com.cloudflare.api.account.zone"
 		],
-		"label": "account_logs_write"
+		"label": "logs_read"
 	},
 	{
 		"id": "3e0b5820118e47f3922f7c989e673882",
@@ -907,6 +916,15 @@
 			"com.cloudflare.api.account.zone"
 		],
 		"label": "logs_write"
+	},
+	{
+		"id": "96163bd1b0784f62b3e44ed8c2ab1eb6",
+		"name": "Logs Write",
+		"description": "Grants write access to logpush jobs",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"label": "account_logs_write"
 	},
 	{
 		"id": "3a46c728a0a040d5a65cd8e2f3bc6935",
@@ -1078,6 +1096,24 @@
 			"com.cloudflare.api.account.zone"
 		],
 		"label": "page_rules_write"
+	},
+	{
+		"id": "050531528b044d58bbb71666fef7c07c",
+		"name": "Page Shield Read",
+		"description": "Grants read access to Page Shield",
+		"scopes": [
+			"com.cloudflare.api.account.zone"
+		],
+		"label": "page_shield_read"
+	},
+	{
+		"id": "87065285ab38463481e72815eefd18c3",
+		"name": "Page Shield Write",
+		"description": "Grants write access to Page Shield",
+		"scopes": [
+			"com.cloudflare.api.account.zone"
+		],
+		"label": "page_shield_write"
 	},
 	{
 		"id": "e247aedd66bd41cc9193af0213416666",
