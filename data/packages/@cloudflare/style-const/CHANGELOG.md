@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.7.1
+
+### Patch Changes
+
+- 4396bfb286: Update button dark mode focus colors
+
 ## 5.7.0
 
 ### Minor Changes
