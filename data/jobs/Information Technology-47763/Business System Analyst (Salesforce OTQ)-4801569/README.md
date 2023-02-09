@@ -6,8 +6,7 @@
 	</div>
 </div>
 <h4>About the department</h4>
-<p><span style="font-weight: 400;">Cloudflare is looking for a Senior Business System Analyst (Salesforce CPQ Specialist) to join our fast growing GTM Applications team. In this role, you will work closely with our Business stakeholders in Sales,Pricing,Packaging &amp; Finance to deliver a world class Configure,Price &amp; quote management experience for our internal users. T</span><span style="font-weight: 400;">his role works closely with other Business SMEs, Developers, and Production Support through each stage of the software development lifecycle and also demonstrates both existing and new functionality to the customer stakeholders.</span></p>
-<p><span style="font-weight: 400;">Based on a deep understanding of the business, best practices in Salesforce CPQ you will be responsible for designing, developing, and managing our Salesforce CPQ processes and configuration.</span></p>
+<p><span style="font-weight: 400;">Cloudflare is looking for a Salesforce Business Analyst to join our GTM Enterprise Applications team. In this role, you will work closely with our internal Business stakeholders to deliver best in-class salesforce application experience for Cloudflare’s sales organization. The Ideal candidate for this position will have a deep understanding of Salesforce Sales Opportunity management, Service Cloud, as well as various integrated enterprise applications. This is a highly visible role where you will get to own key business processes to propose, develop, and manage the implementation of Salesforce solutions to meet the growing needs of the business.</span></p>
 <h4>What you'll do</h4>
 <ul>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Lead meetings with decision makers, system owners and end-users to gather, define and document business requirements.</span></li>
