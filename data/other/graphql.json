@@ -2869,6 +2869,8 @@
 	},
 	"AccountWarpDeviceAdaptiveGroupsDimensions": {
 		"__description": "",
+		"clientPlatform": "Device's OS",
+		"clientVersion": "Device's Warp version",
 		"colo": "Device's connected colo",
 		"date": "The date of the device log",
 		"datetime": "The date and time of the device log",
@@ -2877,9 +2879,7 @@
 		"datetimeTenMinute": "The date and time of the device log truncated to every ten minutes",
 		"deviceId": "Device ID",
 		"mode": "Device's Warp mode",
-		"platform": "Device's OS",
-		"status": "Device connection status",
-		"version": "Device's Warp version"
+		"status": "Device connection status"
 	},
 	"AccountWarpDeviceAdaptiveGroupsFilter_InputObject": {
 		"__description": ""
