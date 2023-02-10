@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.2.1
+
+### Patch Changes
+
+- 807d2ae96e: Update package versions
+
 ## 5.2.0
 
 ### Minor Changes
