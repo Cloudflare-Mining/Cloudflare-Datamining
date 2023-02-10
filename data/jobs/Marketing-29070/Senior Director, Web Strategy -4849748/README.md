@@ -5,50 +5,44 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About the Role</strong></p>
-<p><span style="font-weight: 400;">Cloudflare is seeking a Pricing Operations Sr. Manager to bring our packaging and pricing to life through our systems and processes.</span></p>
-<p><span style="font-weight: 400;">You will be responsible for our growing suite of offerings.&nbsp; You will collaborate cross-functionally with Pricing, Product, and Sales Operations to bring our strategies to life through our systems (SFDC, SFDC CPQ, Stripe, Netsuite). &nbsp; A successful candidate will have a proven track record partnering with IT and Finance to create streamlined processes and an effective collection of SKUs.&nbsp; This is an individual contributor role, reporting to the Sr Director or Vice President of Monetization.</span></p>
-<p><strong>Job Responsibilities</strong></p>
+<h4><strong>About the Role&nbsp;</strong></h4>
+<p><span style="font-weight: 400;">The essence of the role is ownership (in partnership with Web Dev and Design leaders) of our primary marketing websites (cloudflare.com and related sites) as a product, delivering a website that is the centerpiece of our brand, hits our demand targets and is built on a scalable, operational web infrastructure. You will lead the strategy and roadmap for how Cloudflare evolves and scales its web presence across segments, product offerings, industries, partners, and regions.&nbsp;</span></p>
+<p><strong>You will have accountability for:&nbsp;</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Manage pricing models of product line(s) to ensure SKUs, list prices and discount matrices are updated accurately and in a timely manner.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Ensure high quality delivery of our pricing activities (configurations, refunds, audit etc...) to support the global Pricing, Sales, IT, Finance, and Product organizations</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Execute, document and support all pricing related work for price changes. Support Finance in maintaining SOX compliant processes and documentation.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Maintain strong controls in our procedures, support compliance requests, identify challenges and propose remediation plans.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Assist Product Teams with requirements gathering and testing to ensure our products are instrumented and provisioned correctly through our systems and processes.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Partner with Finance, Sales Ops, and Product to ensure accurate revenue allocation and recognition of our offerings.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Optimize and elevate pricing processes, decisions, and infrastructure through automation and embedded intelligence</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Support strategic Pricing initiatives and roadmap</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Effectively collaborate with business partners to set objectives and timelines to executing price updates and to remediate processes that cause update errors</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Communicate project status, milestones, and dependencies to cross functional stakeholders, including executive staff and management</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Perform analytics and report on performance</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Maintain the security and confidentiality of pertinent information</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Provide effective and collaborative leadership across teams through communication, problem solving, innovation, strategy, execution and results</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Work effectively with others to meet goals and objectives by developing and maintaining strong relationships with both internal and external partners</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Drive improvement, simplification and automation across the team by building scalable work processes and eliminating inefficiencies</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Translate ideas and concepts into practical applications and generate new ideas that add value</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Drive team engagement and accountability</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Other projects and responsibilities as assigned by manager</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Developing and implementing a comprehensive web marketing strategy to drive traffic and conversions</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">KPIs across SEO/discoverability, awareness, acquisition, engagement, and pipeline</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Web analytics tools implementation and integrations</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Constantly optimizing and personalizing web experiences to increase lead conversions, pipeline, and decrease time to sale</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Managing the leaders of our web experience and web production teams</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Establishing a web content process to own key content pages and ensure editorial consistency across the site. Over time, growing a writing team to support.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Defining and refining our web technology stack and key integrations, and establishing business requirements for the product manager and engineering team that implements it</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Partnering with Creative Director to bring to life our brand on our web properties</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Leading the overall web experience, information architecture and key page templates to ensure a consistent, high quality experience for users</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Using data-driven testing and refinement methods and tools to continually improve web experience outcomes</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Ensuring consistency with Cloudflare web properties not owned by marketing</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Building strong relationships with stakeholders across the business, including product marketing, demand generation, sales, and product to make sure that all functions are properly represented on our sites</span></li>
 </ul>
-<p><strong>Requirements</strong></p>
+<h4><strong>About You</strong></h4>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">6+ years of related work experience is required</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with SaaS and subscription products as well as an understanding of best practices for enterprise B2B selling models</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Thrive and excel working within a fast pace, active environment and can handle the ever-changing needs of many internal and external customers globally</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Demonstrated ability to influence stakeholders while navigating complex decision points and driving engagement on multiple projects simultaneously</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Curiosity and desire to learn our business and pricing functions</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Learn fast and adapt to process/system changes quickly</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong attention to detail and work ethic</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Passion for innovation and process improvements</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with Salesforce.com and SFDC CPQ preferred</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with Google Sheets or Excel preferred</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">10+ years experience with web marketing, user acquisition, and demand gen to analyze and produce marketing sourced leads and pipeline on a high volume website</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience supporting both traditional enterprise and self-serve SaaS marketing pipeline and con, preferably for an organization with a complex portfolio</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience incorporating self serve/freemium consumption apparatus embedded within enterprise B2B web platform</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong ability to prioritize and make good trade-off decisions between multiple projects and competing priorities within the organization</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to analyze data and translate web findings clearly for both technical and non-technical audiences</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong relationship building and stakeholder management across different organizations and departments. Ability to earn stakeholder confidence and exert influence.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Data-driven approach with strong quantitative and analytical skills</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Proven experience managing high performance teams and individuals to KPIs</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Familiarity with best of breed marketing technology, including a strong understanding of analytics tools, content management systems (preferably Contentful), Marketo, Salesforce, and testing tools</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience working with design and delivering visual assets that adhere to brand standards</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience managing web engineering teams, in-house or agency</span></li>
 </ul>
 <p><strong>Compensation</strong></p>
 <p><span style="font-weight: 400;">Compensation may be adjusted depending on work location.</span></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">For Colorado-based hires: Estimated annual salary of $158,000-$194,000.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">For New York City-based hires: Estimated annual salary of $178,000-$218,000.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">For Bay Area-based hires: Estimated annual salary of $288,000 - $352,000.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">For Colorado-based hires: Estimated annual salary of $275,000 - $336,000.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">For New York City-based hires: Estimated annual salary of&nbsp;</span></li>
 </ul>
-<p><span style="font-weight: 400;">[Commissions: If applicable include this line:]</span><span style="font-weight: 400;"> This role is eligible to earn incentive compensation under Cloudflare’s Sales Compensation Plan. The estimated annual salary range in Colorado includes the on-target incentive compensation that may be attained in this role under the Sales Compensation Plan.</span></p>
 <p><strong>Equity</strong></p>
 <p><span style="font-weight: 400;">This role is eligible to participate in Cloudflare’s equity plan.</span></p>
 <p><strong>Benefits</strong></p>
@@ -76,6 +70,7 @@
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Flexible paid time off covering vacation and sick leave</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Leave programs, including parental, pregnancy health, medical, and bereavement leave</span></li>
 </ul>
+<p><span style="font-weight: 400;">&nbsp;</span></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

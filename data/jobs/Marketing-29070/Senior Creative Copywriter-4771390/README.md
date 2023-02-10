@@ -21,11 +21,11 @@
 </ul>
 <p><strong>About You </strong><span style="font-weight: 400;">&nbsp;</span></p>
 <ul>
-	<li><span style="font-weight: 400;"> </span><span style="font-weight: 400;">7+ years of experience in copywriting on an in-house team or at an agency with B2B technology clients; advertising experience preferred&nbsp;</span></li>
+	<li><span style="font-weight: 400;"> </span><span style="font-weight: 400;">7+ years of experience in copywriting either in-house or at an agency with B2B technology clients, in the security space strongly preferred</span></li>
 	<li><span style="font-weight: 400;"> </span><span style="font-weight: 400;">Thorough understanding of current trends in marketing and technology; strategic and analytical thinking plus the ability to execute&nbsp;&nbsp;</span></li>
-	<li><span style="font-weight: 400;"> </span><span style="font-weight: 400;">A diverse portfolio demonstrating a proven record of B2B storytelling that resonates with both technical and executive audiences </span></li>
+	<li><span style="font-weight: 400;"> </span><span style="font-weight: 400;">A diverse portfolio demonstrating a proven record of B2B storytelling that resonates with both technical and executive audiences; advertising experience preferred&nbsp;</span></li>
 	<li>Experience in managing relationships, influencing, and collaborating across organizations at all levels; strong presentation skills</li>
-	<li>&nbsp;Ability to collaborate and thrive as part of a team in a fast-paced, dynamic environment while managing multiple priorities and tight deadlines</li>
+	<li>Ability to collaborate and thrive as part of a team in a fast-paced, dynamic environment while managing multiple priorities and tight deadlines</li>
 	<li>Cool under pressure, resourceful, reliable, attentive to detail</li>
 	<li>Independent judgment and initiative to resolve problems and recommend solutions</li>
 	<li>Curiosity and a learning mindset. Cloudflare is always innovating and technology is always advancing. The ideal candidate will be a lifelong learner who keeps pace with the company’s growing business and portfolio</li>
