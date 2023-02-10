@@ -87,7 +87,7 @@
 						"sectionPadding": null,
 						"streamPosterAssetFile": null,
 						"streamPoster": null,
-						"imageSize": "Regular",
+						"imageSize": "Large",
 						"imagePosition": null,
 						"leftLinkUrl": null,
 						"leftLink": null,
@@ -102,7 +102,20 @@
 								"publicURL": "[path]/Cloudflare-Welcome-to-Impact-Week.svg"
 							}
 						},
-						"imageAssetFile": null
+						"imageAssetFile": {
+							"id": "69676bfe-3a65-5626-8ad4-5f4dd8486b83",
+							"altText": "Welcome to Impact Week 22",
+							"title": "Welcome to Impact Week 22",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "[path]/2022_Impact_Week_Hero.png"
+								}
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						}
 					},
 					{
 						"contentfulId": "5oiqNLya3MZpjYYwbTnIHS",
@@ -187,7 +200,7 @@
 								"contentfulId": "4xdkRCBtdZGVWJxqSvUok2",
 								"title": "Building together",
 								"titleSize": null,
-								"description": "Cloudflare is part of a community that is striving to make the Internet a force for good.\n\n- Learn how Cloudflare works with civil society to monitor trends, threats, and Internet shutdowns with [Cloudflare Radar](https://radar.cloudflare.com/ \"Cloudflare Radar\").\n- Cloudflare works with the National Center for Missing and Exploited Children (NCMEC), Interpol, and nearly 60 other public and [private agencies](https://www.inhope.org/EN \"INHOPE Home\"), and has developed [free tools](https://blog.cloudflare.com/the-csam-scanning-tool/ \"Introducing the CSAM Scanning Tool\") to fight child sexual abuse material online. Learn about our guiding principles in [handling abuse reports](https://www.cloudflare.com/trust-hub/abuse-approach/).\n- We collaborate with partner organizations to develop new Internet [standards and protocols](https://blog.cloudflare.com/tag/ietf/ \"IETF\") and address [Internet policy and governance](https://www.internetjurisdiction.net/ \"Internet and Jurisdiction Policy Network\") challenges.  \n",
+								"description": "Cloudflare is part of a community that is striving to make the Internet a force for good.\n\n- Learn how Cloudflare works with civil society to monitor trends, threats, and Internet shutdowns with [Cloudflare Radar](https://radar.cloudflare.com/ \"Cloudflare Radar\").\n- Cloudflare works with the National Center for Missing and Exploited Children (NCMEC), Interpol, and nearly 60 other public and [private agencies](https://www.inhope.org/EN \"INHOPE Home\"), and has developed [free tools](https://blog.cloudflare.com/the-csam-scanning-tool/ \"Introducing the CSAM Scanning Tool\") to fight child sexual abuse material online. Learn about our guiding principles in [handling abuse reports](https://www.cloudflare.com/trust-hub/abuse-approach/).\n- We collaborate with partner organizations to develop new Internet [standards and protocols](https://blog.cloudflare.com/tag/ietf/ \"IETF\") and address [Internet policy and governance](https://www.internetjurisdiction.net/ \"Internet and Jurisdiction Policy Network\") challenges.  \n- Through [Project Fair Shot](https://www.cloudflare.com/fair-shot/), we provide our Waiting Room service for free for organizations responsible for distributing COVID-19 vaccines. \n",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": null,
@@ -206,76 +219,163 @@
 						]
 					},
 					{
-						"contentfulId": "1k752A5sp9T7DEVIdaw1Py",
-						"contentTypeId": "bladeHeroAnimation",
-						"title": "Impact Spotlight: Project Fair Shot",
-						"subtitle": null,
-						"copy": "[Project Fair Shot](https://www.cloudflare.com/fair-shot/ \"Project Fair Shot\") provides our new Waiting Room service for free for any government, municipality, hospital, pharmacy, or other organization responsible for distributing COVID-19 vaccines. It is open to eligible organizations around the world and will remain free until at least July 1, 2023, or longer if there is still more demand for appointments for the vaccine than there is supply.\n\nIn 2022, Project Fair Shot received a [Webby Award](https://winners.webbyawards.com/2022/apps-and-software/software-services-platforms/event-management/220961/cloudflares-project-fair-shot) in the category of People's Voice Winner.",
-						"buttonColor": null,
-						"buttonColor2": null,
-						"buttonText1": null,
-						"buttonText1LoggedIn": null,
-						"buttonUrl1": null,
-						"buttonUrl1LoggedIn": null,
-						"button1ExtraClass": null,
-						"buttonText2": null,
-						"buttonText2LoggedIn": null,
-						"buttonUrl2": null,
-						"button2ExtraClass": null,
-						"bladeBorder": "none",
-						"htmlId": null,
-						"textColor": "black",
-						"includeVideo": false,
-						"streamVideoId": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"popupStreamId": null,
-						"popupText": null,
-						"button1OpenInNewTab": null,
-						"button2OpenInNewTab": null,
-						"streamThumbnails": null,
-						"sectionPadding": "tile--no-bottom-padding",
-						"streamPosterAssetFile": null,
-						"streamPoster": null,
-						"imageSize": null,
-						"imagePosition": null,
-						"leftLinkUrl": null,
-						"leftLink": null,
-						"leftLinkLoggedIn": null,
-						"leftLinkOptions": "hide",
+						"contentfulId": "3WPdESCpdyONytKMsdM6OB",
 						"backgroundColor": "light-blue",
-						"textlayoutMode": null,
-						"backgroundAssetFile": null,
-						"imageLayout": null,
-						"image": {
-							"file": {
-								"publicURL": "[path]/project-fair-shot.svg"
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
+						"copy": null,
+						"title": "ESG resources",
+						"subtitle": null,
+						"bladeStyle": null,
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3lhRhmU5fT2Q5dNiJshPnx",
+								"title": "Reports",
+								"titleSize": null,
+								"description": "Impact Report: [2022](https://cf-assets.www.cloudflare.com/slt3lc6tev37/fBTOgkechN3IcaoT3kbA3/c9b74ee483d28c795d3c7891d8d36034/2022_Cloudflare_Impact_Report.pdf), [2021](https://www.cloudflare.com/resources/assets/slt3lc6tev37/1vmmNMaaktXDk5iHxxDdCj/ebe40635588eaafa15ab89944ff9a36b/Cloudflare_Impact_Report_2021.pdf)\n\nEmissions Inventory: [2021](https://cf-assets.www.cloudflare.com/slt3lc6tev37/cyKi7QPKmmWoSnnKl7ogp/0b3a4438da311ce2315afa52013e5cee/Cloudflare_Emissions_Inventory_2021.pdf), [2020](https://cf-assets.www.cloudflare.com/slt3lc6tev37/2YzIeTtzSbyKkM4GsryP5S/62ce0dff98e92a142281a0b462ce4408/Cloudflare_Emissions_Inventory_-_2020.pdf)\n\n[Transparency Report](https://www.cloudflare.com/transparency/updates/)\n\n[Diversity, Equity, and Inclusion at Cloudflare \n](https://www.cloudflare.com/diversity-equity-and-inclusion/)\n",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "85c4fbc4-0db5-571b-8e57-5e56edf68d42",
+									"altText": "Cloudflare Logs",
+									"title": "Logs Icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/logicon.svg"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "aPhiyF7wry3iyc9hkF0LP",
+								"title": "Policies and processes",
+								"titleSize": null,
+								"description": "[Trust Hub \n](https://www.cloudflare.com/trust-hub/)\n\n[Governance Documents](https://cloudflare.net/governance/governance-documents/default.aspx?_ga=2.185101225.1049581164.1674762103-592938610.1657052745) \n\n[Privacy Policy ](https://www.cloudflare.com/privacypolicy/)\n\n[Code of Business Conduct and Ethics ](https://cloudflare.net/files/doc_downloads/governance/Lindsey-Cochran-Holloway-Code-of-Business-Conduct-and-Ethics_(9.9.19).pdf)\n\n[Third Party Code of Conduct](https://www.cloudflare.com/static/c36310da7314d803b14aef6e2bd9b808/Third_Party_Code_of_Conduct.pdf)\n\n[Modern Slavery Act Statement\n](https://www.cloudflare.com/modern-slavery-act-statement/)\n\n[Human Rights Policy](https://www.cloudflare.com/resources/images/slt3lc6tev37/fdLHB1OGp8ZWwzCTVlM0n/e0a42a032592ded778bda8c31c6747b1/BDES-2133_Impact-Week-Human-Rights-Policy.pdf)\n",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "81936886-7ce4-51c1-8472-58f3698d44a0",
+									"altText": "Cloudflare Firewall as a Service - Magic Firewall",
+									"title": "Firewall as a service icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/security-waf-blue.svg"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "19mao8Us00QnATdEEZ0ZRa",
+								"title": "Impact at Cloudflare",
+								"titleSize": null,
+								"description": "[Project Galileo \n](https://www.cloudflare.com/galileo/)\n\n[Athenian Project\n](https://www.cloudflare.com/athenian/)\n\n[Cloudflare for Campaigns\n](https://www.cloudflare.com/campaigns/)\n\n[Project Pangea](https://www.cloudflare.com/pangea/)\n\n[Project Fair Shot](https://www.cloudflare.com/fair-shot/)",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "32001ca5-5e70-541d-8457-1a1e01ef15b6",
+									"altText": "speed performance blue rocket - icon",
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/performance-acceleration-rocket-blue-192x192-4798970.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
 							}
-						},
-						"imageAssetFile": null
+						]
 					},
 					{
-						"contentTypeId": "bladeQuote",
-						"contentfulId": "1oboM2tahrjaDmiP3Dm7lf",
-						"quote": "Bottom line is Cloudflare saved lives today. Our county will forever be grateful for your participation in getting the vaccine to those that need it most in an elegant, efficient, and ethical manner.",
-						"quoteAuthor": "Tyler Penney",
-						"quoteTitle": "Web Services Administrator, County of San Luis Obispo",
-						"learnMoreText": null,
-						"sectionPadding": null,
-						"backgroundColor": "light-blue",
-						"bladeBorder": "none",
+						"contentfulId": "2r744ai4CfHUX56kzCAu17",
+						"title": "Impact spotlight ",
+						"copy": "As part of [Impact Week 2022](https://blog.cloudflare.com/tag/impact-week/), we announced that we are adding the Cloudflare One Zero Trust suite to our Project Galileo and Athenian Project programs. This will help participants deflect phishing attacks, securely connect employees and partners, and secure their path to the Internet.   \n\n- Learn more about what [Zero Trust](https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/) entails and check out our [roadmap](https://zerotrustroadmap.org/) \n- Read the [full announcement](https://blog.cloudflare.com/cloudflare-zero-trust-for-galileo-and-athenian/) \n- See what's included in [Cloudflare One Zero Trust](https://www.cloudflare.com/products/zero-trust/zero-trust-network-access/)\n- Apply to [Project Galileo](https://www.cloudflare.com/galileo/) or [Athenian Project](https://www.cloudflare.com/athenian/) \n",
+						"toggleText": null,
+						"button": null,
 						"learnMoreUrl": null,
-						"htmlId": null,
-						"image": {
-							"file": {
-								"publicURL": "[path]/county-of-san-luis-obispo.png"
-							}
+						"learnMoreText": null,
+						"link": null,
+						"subheadline": "Zero Trust for Project Galileo and Athenian Project ",
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": null,
+						"imageAssetFile": {
+							"id": "80ecd538-6704-56a5-b23d-bcfdef3004f2",
+							"altText": "Customer story: Zero Trust for Project Galileo Participants",
+							"title": "Customer story: Zero Trust for Project Galileo Participants",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "[path]/Customer_story__Zero_Trust_for_Project_Galileo_Participants.png"
+								}
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
 						},
-						"imageAssetFile": null,
-						"imageLinkUrl": null,
-						"logoList": null,
-						"logoListAssetFile": null,
-						"quoteCarousel": null
+						"featureList": null,
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": null,
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"imagePosition": false,
+						"imageSize": "large",
+						"imageTextAlignment": null,
+						"togglesTo": null
 					},
 					{
 						"contentfulId": "PGtppcUoSWFIJMzkNdHhw",
@@ -383,7 +483,7 @@
 								"titleSize": null,
 								"description": "Project Galileo provides free security services to thousands of organizations working in the arts, human rights, civil society, journalism, and democracy.",
 								"learnMoreUrl": "https://www.cloudflare.com/galileo/",
-								"learnMoreText": "Learn More",
+								"learnMoreText": "Learn more",
 								"displayBorder": false,
 								"openLinkInNewTab": null,
 								"icon": null,
@@ -417,7 +517,7 @@
 								"titleSize": null,
 								"description": "Election websites need to be fast, reliable, and secure — Athenian Project provides resources to help with all three goals.",
 								"learnMoreUrl": "https://www.cloudflare.com/athenian/",
-								"learnMoreText": "Learn More",
+								"learnMoreText": "Learn more",
 								"displayBorder": false,
 								"openLinkInNewTab": null,
 								"icon": null,
@@ -451,7 +551,7 @@
 								"titleSize": null,
 								"description": "Cloudflare for Campaigns meets the essential needs of political campaigns, including securing candidates' web presence and safeguarding internal network and data.\n",
 								"learnMoreUrl": "https://www.cloudflare.com/campaigns/",
-								"learnMoreText": "Learn More",
+								"learnMoreText": "Learn more",
 								"displayBorder": false,
 								"openLinkInNewTab": null,
 								"icon": null,
@@ -485,7 +585,7 @@
 								"titleSize": null,
 								"description": "With Project Pangea, we can help communities solve the network challenges of routing traffic to and from the Internet.",
 								"learnMoreUrl": "https://www.cloudflare.com/pangea/",
-								"learnMoreText": "Learn More",
+								"learnMoreText": "Learn more",
 								"displayBorder": false,
 								"openLinkInNewTab": null,
 								"icon": null,
@@ -552,6 +652,42 @@
 						"togglesTo": null
 					},
 					{
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "1wsMmRMaF1wM9FFd9QyAUa",
+						"buttonExtraClass": null,
+						"buttonColor": "orange",
+						"buttonColor2": "orange",
+						"title": "Cloudflare named one of the Most Loved Workplaces in 2022 by Newsweek and BPI",
+						"backgroundColor": "blue",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
+						"htmlId": null,
+						"textColor": "white",
+						"bladeBorder": "none",
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonWidth": "narrow",
+							"buttonColor": "orange",
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "13KuyX6YFx7whSFQ31egOb",
+							"elementName": "most loved workplaces button",
+							"standardText": null,
+							"text": "Read blog post",
+							"url": "https://blog.cloudflare.com/cloudflare-top-100-most-loved-workplaces-in-2022/",
+							"loggedInUrl": null,
+							"modal": null,
+							"openInNewTab": false,
+							"locale": "en-US"
+						},
+						"buttonTwo": null,
+						"sectionPadding": null
+					},
+					{
 						"contentfulId": "70B4fGHM6x2o1mNFMv4npm",
 						"title": null,
 						"copy": "### \"Having a workplace that allows our team to feel a sense of belonging and empowerment to do their best work is essential. That is why we have built corporate practices, policies, benefits, and an overall culture that is inclusive of everyone, including LGBTQIA+ folks. Achieving a perfect 100 score on the Human Rights Campaign's Corporate Equality Index, and being recognized alongside all of the other companies that have acted to create inclusive workplaces, is something we are proud of.\" \n\n__Jennifer (Jen) Taylor__ Cloudflare SVP, Chief Product Officer",
@@ -584,7 +720,7 @@
 						"sectionTitle": null,
 						"htmlId": null,
 						"titleSize": null,
-						"sectionPadding": "tile--no-top-padding",
+						"sectionPadding": null,
 						"backgroundColor": "white",
 						"bladeBorder": "none",
 						"imagePosition": false,
@@ -595,7 +731,7 @@
 					{
 						"contentfulId": "3UmgakJgVPre75gDZRbHqa",
 						"title": "The United Nations Global Compact",
-						"copy": "Cloudflare is a signatory of the [UN Global Compact](https://www.unglobalcompact.org/what-is-gc/participants/141148-Cloudflare-Inc- \"UN Global Compact - Cloudflare\"). We are committed to the [UN Ten Principles](https://www.unglobalcompact.org/what-is-gc/mission/principles \"United Nations Ten Principles\") and to helping build a better Internet that supports global [sustainable development goals](https://sdgs.un.org/goals \"The 17 Goals\").  \n- Read our [2021 Communication on Progress](https://cf-assets.www.cloudflare.com/slt3lc6tev37/75Cj2XIGNbeO76Nzr3kTKV/adce49ba22c6c9c23a2e47effcf50205/2021-09-27._Cloudflare.COP.Final.pdf). \n\n![Sustainable Development Goals - 17 Icons](//cf-assets.www.cloudflare.com/slt3lc6tev37/15Jc0Qk0pMouXhnkmIxMS7/ab92742afd0963bb7f236ae90847e530/SDG_17-Icons.svg)",
+						"copy": "Cloudflare is a signatory of the [UN Global Compact](https://www.unglobalcompact.org/what-is-gc/participants/141148-Cloudflare-Inc- \"UN Global Compact - Cloudflare\"). We are committed to the [UN Ten Principles](https://www.unglobalcompact.org/what-is-gc/mission/principles \"United Nations Ten Principles\") and to helping build a better Internet that supports global [sustainable development goals](https://sdgs.un.org/goals \"The 17 Goals\").  \n- See our latest Impact Report for our [2022 Communication on Progress](https://cf-assets.www.cloudflare.com/slt3lc6tev37/fBTOgkechN3IcaoT3kbA3/c9b74ee483d28c795d3c7891d8d36034/2022_Cloudflare_Impact_Report.pdf). \n\n![Sustainable Development Goals - 17 Icons](//cf-assets.www.cloudflare.com/slt3lc6tev37/15Jc0Qk0pMouXhnkmIxMS7/ab92742afd0963bb7f236ae90847e530/SDG_17-Icons.svg)",
 						"toggleText": null,
 						"button": null,
 						"learnMoreUrl": null,
