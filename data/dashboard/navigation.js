@@ -67,20 +67,20 @@ const navigation = {
 			title: "navigation.account.registrar.transfer_domains",
 			url: "/domains/transfer",
 			hasPermission: function(v) {
-				return H(v)
+				return Y(v)
 			}
 		}, {
 			title: "navigation.account.registrar.register_domains",
 			url: "/domains/register",
 			hasPermission: function(v) {
-				return H(v)
+				return Y(v)
 			}
 		}, {
 			title: "navigation.account.registrar.domain_protection",
 			url: "/domains/protection",
 			labels: ["beta"],
 			hasPermission: function(v) {
-				return oe(v)
+				return $(v)
 			}
 		}]
 	}, {
@@ -257,26 +257,26 @@ const navigation = {
 			title: "navigation.account.images",
 			url: "/images/images",
 			hasPermission: function(v) {
-				return N(v)
+				return P(v)
 			}
 		}, {
 			title: "navigation.account.images.variants",
 			url: "/images/variants",
 			hasPermission: function(v) {
-				return N(v)
+				return P(v)
 			}
 		}, {
 			title: "navigation.account.images.keys",
 			url: "/images/keys",
 			hasPermission: function(v) {
-				return N(v)
+				return P(v)
 			}
 		}, {
 			title: "navigation.account.images.sourcing_kit",
 			url: "/images/sourcing-kit",
 			testId: "sidenav-sourcingkit-link",
 			hasPermission: function(v) {
-				return N(v)
+				return P(v)
 			},
 			labels: ["beta"]
 		}, {
@@ -284,7 +284,7 @@ const navigation = {
 			url: "/images/delivery-zones",
 			testId: "sidenav-delivery-zones-link",
 			hasPermission: function(v) {
-				return N(v) && (0, y.b8)(v)
+				return P(v) && (0, y.b8)(v)
 			},
 			labels: ["new"]
 		}]
@@ -344,13 +344,13 @@ const navigation = {
 		url: "/application-security",
 		iconType: "cloudflare-security-application",
 		hasPermission: function(v) {
-			return i(v) && !!Q(v)
+			return i(v) && !!te(v)
 		},
 		pages: [{
 			title: "navigation.account.firewall_rulesets.application_firewall",
 			url: "/application-security/waf",
 			hasPermission: function(v) {
-				return !!Q(v)
+				return !!te(v)
 			}
 		}]
 	}, {
@@ -358,21 +358,21 @@ const navigation = {
 		url: "/network-security",
 		iconType: "cloudflare-security-network",
 		hasPermission: function(v) {
-			return i(v) && !!te(v)
+			return i(v) && !!ne(v)
 		},
 		pages: [{
 			title: "navigation.account.firewall_rulesets.ddos",
 			url: "/network-security/ddos",
 			hasPermission: function(v) {
-				var ve = !!X(v) && !!U(v);
-				return !!ae(v) || ve
+				var ve = !!J(v) && !!U(v);
+				return !!oe(v) || ve
 			}
 		}, {
 			title: "navigation.account.firewall_rulesets.magic_firewall",
 			url: "/network-security/magic_firewall",
 			testId: "account-magic-firewall-rules",
 			hasPermission: function(v) {
-				return !!te(v)
+				return !!ne(v)
 			}
 		}]
 	}, {
@@ -500,20 +500,20 @@ const navigation = {
 			title: "navigation.account.registrar.transfer_domains",
 			url: "/domains/transfer",
 			hasPermission: function(v) {
-				return H(v)
+				return Y(v)
 			}
 		}, {
 			title: "navigation.account.registrar.register_domains",
 			url: "/domains/register",
 			hasPermission: function(v) {
-				return H(v)
+				return Y(v)
 			}
 		}, {
 			title: "navigation.account.registrar.domain_protection",
 			url: "/domains/protection",
 			labels: ["beta"],
 			hasPermission: function(v) {
-				return oe(v)
+				return $(v)
 			}
 		}]
 	}, {
@@ -623,7 +623,7 @@ const navigation = {
 		url: "/application-security/waf",
 		iconType: "cloudflare-security-application",
 		hasPermission: function(v) {
-			return !!Q(v)
+			return !!te(v)
 		}
 	}, {
 		title: "navigation.account.turnstile",
@@ -651,15 +651,15 @@ const navigation = {
 		url: "/network-security/magic_firewall",
 		iconType: "magic-firewall",
 		hasPermission: function(v) {
-			return !!te(v)
+			return !!ne(v)
 		}
 	}, {
 		title: "navigation.account.l3l4.ddos",
 		url: "/network-security/ddos",
 		iconType: "cloudflare-security-network",
 		hasPermission: function(v) {
-			var ve = !!X(v) && !!U(v);
-			return !!ae(v) || ve
+			var ve = !!J(v) && !!U(v);
+			return !!oe(v) || ve
 		}
 	}, {
 		title: "navigation.account.ip_addresses",
@@ -837,26 +837,26 @@ const navigation = {
 			title: "navigation.account.images",
 			url: "/images/images",
 			hasPermission: function(v) {
-				return N(v)
+				return P(v)
 			}
 		}, {
 			title: "navigation.account.images.variants",
 			url: "/images/variants",
 			hasPermission: function(v) {
-				return N(v)
+				return P(v)
 			}
 		}, {
 			title: "navigation.account.images.keys",
 			url: "/images/keys",
 			hasPermission: function(v) {
-				return N(v)
+				return P(v)
 			}
 		}, {
 			title: "navigation.account.images.sourcing_kit",
 			url: "/images/sourcing-kit",
 			testId: "sidenav-sourcingkit-link",
 			hasPermission: function(v) {
-				return N(v)
+				return P(v)
 			},
 			labels: ["beta"]
 		}, {
@@ -864,7 +864,7 @@ const navigation = {
 			url: "/images/delivery-zones",
 			testId: "sidenav-delivery-zones-link",
 			hasPermission: function(v) {
-				return N(v) && (0, y.b8)(v)
+				return P(v) && (0, y.b8)(v)
 			},
 			labels: ["new"]
 		}]
@@ -1262,7 +1262,7 @@ const navigation = {
 			url: "/caching/cache-reserve",
 			labels: ["beta"],
 			hasPermission: function(v) {
-				return !!K(v)
+				return !!q(v)
 			}
 		}]
 	}, {
