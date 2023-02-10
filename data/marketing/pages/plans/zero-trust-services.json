@@ -6039,7 +6039,7 @@
 									"features": [
 										{
 											"contentTypeId": "feature",
-											"title": "Remote Browser Isolation add-on available for $10 per user",
+											"title": "Remote Browser Isolation (available as add-on for $10 per user)",
 											"description": null,
 											"displayBorder": false,
 											"learnMoreUrl": null,
@@ -6167,56 +6167,14 @@
 								"featureList2": {
 									"contentTypeId": "featureList",
 									"contentfulId": "2NNREfEXTiT5ehcTIupJ7p",
-									"title": "ALL FEATURES IN PAY-AS-YOU-GO, PLUS THE FOLLOWING AVAILABLE AS ADD-ONS",
+									"title": "ALL FEATURES IN PAY-AS-YOU-GO, PLUS",
 									"description": null,
 									"features": [
 										{
 											"contentTypeId": "feature",
-											"title": "Multi-mode Cloud Access Security Broker",
+											"title": "Logpush to SIEM/cloud storage",
 											"description": null,
-											"displayBorder": false,
-											"learnMoreUrl": null,
-											"learnMoreText": null,
-											"streamId": null,
-											"openLinkInNewTab": null,
-											"streamThumbnail": null,
-											"icon": null,
-											"iconAssetFile": null,
-											"imageAssetFile": null
-										},
-										{
-											"contentTypeId": "feature",
-											"title": "Cloud Email Security (Area 1)",
-											"description": null,
-											"displayBorder": false,
-											"learnMoreUrl": null,
-											"learnMoreText": null,
-											"streamId": null,
-											"openLinkInNewTab": null,
-											"streamThumbnail": null,
-											"icon": null,
-											"iconAssetFile": null,
-											"imageAssetFile": null
-										},
-										{
-											"contentTypeId": "feature",
-											"title": "Remote Browser Isolation",
-											"description": null,
-											"displayBorder": false,
-											"learnMoreUrl": null,
-											"learnMoreText": null,
-											"streamId": null,
-											"openLinkInNewTab": null,
-											"streamThumbnail": null,
-											"icon": null,
-											"iconAssetFile": null,
-											"imageAssetFile": null
-										},
-										{
-											"contentTypeId": "feature",
-											"title": "Data Loss Prevention",
-											"description": null,
-											"displayBorder": false,
+											"displayBorder": null,
 											"learnMoreUrl": null,
 											"learnMoreText": null,
 											"streamId": null,
@@ -6242,9 +6200,51 @@
 										},
 										{
 											"contentTypeId": "feature",
-											"title": "Logpush to SIEM/cloud storage",
+											"title": "Multi-mode Cloud Access Security Broker (available as add-on)",
 											"description": null,
-											"displayBorder": null,
+											"displayBorder": false,
+											"learnMoreUrl": null,
+											"learnMoreText": null,
+											"streamId": null,
+											"openLinkInNewTab": null,
+											"streamThumbnail": null,
+											"icon": null,
+											"iconAssetFile": null,
+											"imageAssetFile": null
+										},
+										{
+											"contentTypeId": "feature",
+											"title": "Cloud Email Security (available as add-on)",
+											"description": null,
+											"displayBorder": false,
+											"learnMoreUrl": null,
+											"learnMoreText": null,
+											"streamId": null,
+											"openLinkInNewTab": null,
+											"streamThumbnail": null,
+											"icon": null,
+											"iconAssetFile": null,
+											"imageAssetFile": null
+										},
+										{
+											"contentTypeId": "feature",
+											"title": "Remote Browser Isolation (available as add-on)",
+											"description": null,
+											"displayBorder": false,
+											"learnMoreUrl": null,
+											"learnMoreText": null,
+											"streamId": null,
+											"openLinkInNewTab": null,
+											"streamThumbnail": null,
+											"icon": null,
+											"iconAssetFile": null,
+											"imageAssetFile": null
+										},
+										{
+											"contentTypeId": "feature",
+											"title": "Data Loss Prevention (available as add-on)",
+											"description": null,
+											"displayBorder": false,
 											"learnMoreUrl": null,
 											"learnMoreText": null,
 											"streamId": null,
@@ -6842,7 +6842,7 @@
 											{
 												"contentTypeId": "planElementFeatureValueText",
 												"contentfulId": "LkwZZRA0p7WJvR49miyTY",
-												"textValue": "✔️ multi-mode",
+												"textValue": "✔️ multi-mode (add-on)",
 												"plan": {
 													"contentfulId": "2tlpulcOHKX0CYjflULEIH",
 													"contentTypeId": "planElementPlan",
@@ -6867,7 +6867,7 @@
 											{
 												"contentTypeId": "planElementFeatureValueText",
 												"contentfulId": "1GGj9qHgx3mfdxWOXlys4v",
-												"textValue": "add-on",
+												"textValue": "(add-on)",
 												"plan": {
 													"contentfulId": "3C1bIOtMfHrC9NVKhAmiYw",
 													"contentTypeId": "planElementPlan",
@@ -6881,6 +6881,31 @@
 													"billingCycle": "monthly"
 												}
 											},
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "4eOmJj4Uq4LtGWHln0zwdN",
+												"textValue": "(add-on)",
+												"plan": {
+													"contentfulId": "2tlpulcOHKX0CYjflULEIH",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Zero Trust Q4 - Contract",
+													"name": "Contract Plan",
+													"description": "Best for organizations that want security transformation backed by maximum support, visibility, connectivity and interoperability.",
+													"pricingDescription": "Billed annually",
+													"price": null,
+													"currency": null,
+													"customPricingText": "annual custom price per user",
+													"billingCycle": null
+												}
+											}
+										]
+									},
+									{
+										"contentfulId": "2mZgNXKlJQpuyHK8ba2Bd2",
+										"contentTypeId": "planElementFeatures",
+										"name": "Logpush to SIEM/cloud storage",
+										"description": null,
+										"planValues": [
 											{
 												"contentTypeId": "planElementFeatureValueBoolean",
 												"contentfulId": "3p7RszoXcXC9o7gXlEjc5b",
@@ -6926,40 +6951,15 @@
 										]
 									},
 									{
-										"contentfulId": "2mZgNXKlJQpuyHK8ba2Bd2",
-										"contentTypeId": "planElementFeatures",
-										"name": "Logpush to SIEM/cloud storage",
-										"description": null,
-										"planValues": [
-											{
-												"contentTypeId": "planElementFeatureValueBoolean",
-												"contentfulId": "3p7RszoXcXC9o7gXlEjc5b",
-												"value": true,
-												"plan": {
-													"contentfulId": "2tlpulcOHKX0CYjflULEIH",
-													"contentTypeId": "planElementPlan",
-													"entryTitle": "Zero Trust Q4 - Contract",
-													"name": "Contract Plan",
-													"description": "Best for organizations that want security transformation backed by maximum support, visibility, connectivity and interoperability.",
-													"pricingDescription": "Billed annually",
-													"price": null,
-													"currency": null,
-													"customPricingText": "annual custom price per user",
-													"billingCycle": null
-												}
-											}
-										]
-									},
-									{
 										"contentfulId": "2JnpLkTeqyIDbL96dWvCfB",
 										"contentTypeId": "planElementFeatures",
 										"name": "Cloud Email Security (CES, Area 1)",
 										"description": null,
 										"planValues": [
 											{
-												"contentTypeId": "planElementFeatureValueBoolean",
-												"contentfulId": "3p7RszoXcXC9o7gXlEjc5b",
-												"value": true,
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "5aHwIQZkXUoM0qeyOIPepP",
+												"textValue": "(add-on)",
 												"plan": {
 													"contentfulId": "2tlpulcOHKX0CYjflULEIH",
 													"contentTypeId": "planElementPlan",
@@ -6982,9 +6982,9 @@
 										"description": null,
 										"planValues": [
 											{
-												"contentTypeId": "planElementFeatureValueBoolean",
-												"contentfulId": "3p7RszoXcXC9o7gXlEjc5b",
-												"value": true,
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "7lc9r3JwVVojIs3b6iUR27",
+												"textValue": "(add-on)",
 												"plan": {
 													"contentfulId": "2tlpulcOHKX0CYjflULEIH",
 													"contentTypeId": "planElementPlan",
