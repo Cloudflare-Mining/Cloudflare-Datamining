@@ -2306,6 +2306,14 @@
 						"compatEnableFlag": "durable_object_get_existing",
 						"experimental": "true"
 					}
+				},
+				{
+					"name": "httpHeadersGetSetCookie",
+					"annotations": {
+						"compatDisableFlag": "no_http_headers_getsetcookie",
+						"compatEnableDate": "2023-03-01",
+						"compatEnableFlag": "http_headers_getsetcookie"
+					}
 				}
 			]
 		},
