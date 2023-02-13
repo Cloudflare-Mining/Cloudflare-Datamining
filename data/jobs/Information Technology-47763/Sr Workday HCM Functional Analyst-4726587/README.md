@@ -5,34 +5,34 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About The Role</strong></p>
-<p><span style="font-weight: 400;">We announced Cloudflare Workers in 2017&nbsp; —&nbsp;since then it’s played a key role in Cloudflare’s strategy for entering the compute market. Until the launch of Workers, as Cloudflare was ramping up its capabilities in the performance and security spaces, it became clear that developers needed more ways to control the edge than rules engines could support. Workers has allowed Cloudflare to add programmability to the edge such that developers could have access to writing logic on the edge in their preferred way — through code.&nbsp;</span></p>
-<p><span style="font-weight: 400;">Over the past few years, Workers has grown from a simple functions-as-a-service option into a fully blown full-stack platform. With any application, however, in addition to serverless compute, you need to be able to manage state. =</span></p>
-<p><span style="font-weight: 400;">In 2020, Cloudflare released Durable Objects, providing a new primitive to customers to be able to store state alongside a Worker. In 2022, Cloudflare also released D1 — built on Durable Objects, D1 is Cloudflare’s first foray into providing a managed database solution.&nbsp;</span></p>
-<p><span style="font-weight: 400;">In this role, you’ll be helping define the future of D1 and Durable Objects, making sure we’re focused on the highest priority projects to enable developers to build full stack applications.&nbsp;</span></p>
-<p><span style="font-weight: 400;">What You’ll Do</span></p>
+<p><strong>About the department</strong></p>
+<p>Cloudflare is growing our IT Enterprise Applications Team. Our focus is getting the best people to work at Cloudflare and then allowing them to do their best work. As we continue to build out our IT team, we are looking for a trusted partner to help drive large scale HR system solutions that make the People team and our Finance partners more efficient, effective, and productive.&nbsp; We are in the early stages of building out system infrastructure that will help Cloudflare scale thoughtfully and this is a great opportunity to shape the strategic direction of our tools roadmap and see a tremendous amount of impact from your work.&nbsp;&nbsp;</p>
+<p>We are looking for an experienced Workday Functional Analyst to join a new IT applications team at Cloudflare. This person will be primarily responsible for driving the People tech stack strategy and overseeing the operation process of HR process deployment while driving towards the identified business goals and metrics. The successful candidate&nbsp;will provide technical solutions for our Workday platform and ensuring internal stakeholder satisfaction. This job requires an experienced consultant who can partner effectively with all levels of the organization, lead others, drive results, proactively identify, and resolve problems, and make challenging decisions.&nbsp; You will also be responsible for recommending and instituting business analysis best practices, tools and methodology towards standardization.&nbsp;</p>
+<p><strong>What you'll do</strong></p>
+<p>As a Workday Senior Consultant in HCM Optimization, you should expect to be involved in the following:</p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Help drive prioritization of projects Durable Objects and D1, balancing shipping useful features to customers and engineering priorities</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Lead projects from ideation through launch, and continuing through ongoing maintenance and support</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Develop and nurture relationships with engineering and coordinate closely to ensure successful delivery of product</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Partner with other departments such as Product Marketing, Marketing, Community &amp; developer advocacy, Sales, and Customer Support to drive adoption with and gather feedback from customers and prospects</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Ruthlessly prioritize across a complex environment of diverse customers, stakeholders and objectives</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Represent the company externally as needed, including meetings with customers and prospects and analysis</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Delve into market research to drive new investments opportunities</span></li>
+	<li>Lead workstreams for single module deployments in Workday HCM (such as Benefits, Absence, Time Tracking, Recruiting, Talent and Performance, Advanced Comp, Payroll)</li>
+	<li>Lead and or participate in optimization projects to help business users realize the full potential of Workday</li>
+	<li>Serve as an advisor to other Workday post-production engagements in accordance with your areas of expertise</li>
+	<li>Build consensus around business processes and design</li>
+	<li>Communication of Workday capabilities and limitations</li>
+	<li>Configuration of Workday application in multiple modules</li>
+	<li>Consistent and ongoing interaction with client subject matter experts</li>
+	<li>Collaborate/ Consult with on and offshore resources</li>
 </ul>
-<p><strong>Examples Of Desirable Skills, Knowledge And Experience</strong></p>
-<p><span style="font-weight: 400;">The ideal candidate is entrepreneurial-minded and thrives in a fast-paced and goal-driven environment. You have outstanding communication and collaboration skills and are able to work with a diverse group, get alignment, and drive the product forward. You are execution focused and emphasize getting things done while paying attention to important details.&nbsp;</span></p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">BS/MS in a technology field.&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Professional product management experience</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Proven track record of shipping products from ideation to launch</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Proven ability to articulate a vision and strategy in a way that inspires and motivates a team and focuses their energy on achieving business goals</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Customer focus — you’ll be working directly, and often be a part of the customers team in helping them get their initial implementation off the ground</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong technical abilities. You are intimately familiar with modern software development practices used to build and deploy applications. You are capable of wading into the details &amp; understanding engineering decisions’ impact on the product, but can also drive 30k foot view</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience building great user, and especially developer experiences; drives elegant, simple interactions</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience using developer tools (such as source-control management tools, CLIs, etc), and empathy for developers and challenges they face today</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong customer and stakeholder empathy. You must be not only the voice of the customer, but at various times the voice of marketing, finance, engineering, support and ops. You must be able to channel many points of view.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Some scripting/programming experience (Javascript, Rust, Go, etc.) and/or experience with query languages.</span></li>
+	<li>6 years of Project or Production Support experience with Human Resource Information System&nbsp;</li>
+	<li>4 years of <strong>Workday HCM configuration</strong> and business process experience in two or more of the following: <strong>Recruiting, Core HCM, Security, Reporting, Benefits Administration, Payroll, Time Tracking, or Absence or Learning</strong></li>
+	<li>2 years of <strong>Workday Configurable Security and Custom Report Design and Development</strong></li>
+	<li>Experience serving as a workstream lead on HCM implementations or optimization engagements, from design to deployment</li>
+	<li>Superior communication skills, both written and verbal</li>
+	<li>Experience with Excel, Word, Visio and Power point</li>
+</ul>
+<p><strong>Preferred qualifications</strong></p>
+<ul>
+	<li>Workday PRO certified in HCM Core, Security, Advance Compensation, Benefits Administration, Time Tracking or Payroll</li>
+	<li>Consulting experience within the Human Resources Information Systems space</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

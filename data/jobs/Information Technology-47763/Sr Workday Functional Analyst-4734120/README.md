@@ -23,8 +23,8 @@
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
 	<li>6 years of Project or Production Support experience with Human Resource Information System&nbsp;</li>
-	<li>4 years of Workday HCM configuration and business process experience in two or more of the following: Recruiting, Core HCM, Security, Reporting, Benefits Administration, Payroll, Time Tracking, Absence or Learning</li>
-	<li>2 years of Workday Configurable Security and Custom Report Design and Development</li>
+	<li>4 years of Workday <strong>HCM configuration</strong> and business process experience in <strong>two or more</strong> of the following: <strong>Recruiting, Core HCM, Security, Reporting, Benefits Administration, Payroll, Time Tracking, or Absence or Learning</strong></li>
+	<li>2 years of <strong>Workday Configurable Security and Custom Report Design and Development</strong></li>
 	<li>Experience serving as a workstream lead on HCM implementations or optimization engagements, from design to deployment</li>
 	<li>Superior communication skills, both written and verbal</li>
 	<li>Experience with Excel, Word, Visio and Power point</li>
