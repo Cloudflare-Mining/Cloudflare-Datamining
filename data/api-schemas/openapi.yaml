@@ -818,20 +818,10 @@ components:
         $ref: '#/components/schemas/rule_components-schemas-rule'
     CloudflareClientAPI_input:
       type: object
-      readOnly: true
+      description: The value to be checked against.
       properties:
-        height:
-          type: integer
-          description: The video height in pixels. A value of `-1` means the height
-            is unknown. The value becomes available after the upload and before the
-            video is ready.
-          readOnly: true
-        width:
-          type: integer
-          description: The video width in pixels. A value of `-1` means the width
-            is unknown. The value becomes available after the upload and before the
-            video is ready.
-          readOnly: true
+        id:
+          $ref: '#/components/schemas/CloudflareClientAPI_uuid'
     CloudflareClientAPI_interval:
       type: integer
       description: The interval between each health check. Shorter intervals may improve
@@ -1149,6 +1139,23 @@ components:
             in increasing order from 00:00-24:00. If this parameter is omitted, the
             rule will be deactivated on Wednesdays.
           example: 08:00-12:30,13:30-17:00
+    CloudflareClientAPI_schemas-bookmark_props:
+      type: object
+      title: Bookmark Application
+      properties:
+        app_launcher_visible:
+          default: true
+        domain:
+          description: The URL or domain of the bookmark.
+          example: https://mybookmark.com
+        logo_url:
+          $ref: '#/components/schemas/logo_url'
+        name:
+          $ref: '#/components/schemas/apps_components-schemas-name'
+        type:
+          type: string
+          description: The application type.
+          example: bookmark
     CloudflareClientAPI_schemas-created_on:
       type: string
       format: date-time
@@ -1459,7 +1466,7 @@ components:
         duration:
           $ref: '#/components/schemas/schemas-duration'
         input:
-          $ref: '#/components/schemas/CloudflareClientAPI_input'
+          $ref: '#/components/schemas/input'
         liveInput:
           $ref: '#/components/schemas/liveInput'
         maxDurationSeconds:
@@ -2381,7 +2388,11 @@ components:
               green_compute:
                 readOnly: true
     account_identifier:
-      $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+      type: string
+      description: The account identifier tag.
+      example: 023e105f4ecef8ad9ca31a8372d0c353
+      readOnly: true
+      maxLength: 32
     account_subscription_response_collection:
       allOf:
       - $ref: '#/components/schemas/api-response-collection'
@@ -5394,40 +5405,12 @@ components:
       description: The date and time the clip was created.
       example: "2014-01-02T02:20:00Z"
       readOnly: true
-    cloudflare-stream-client-api_account_identifier:
-      type: string
-      description: The account identifier tag.
-      example: 023e105f4ecef8ad9ca31a8372d0c353
-      readOnly: true
-      maxLength: 32
-    cloudflare-stream-client-api_created:
-      type: string
-      format: date-time
-      description: The date and time the media item was created.
-      example: "2014-01-02T02:20:00Z"
-      readOnly: true
     cloudflare-stream-client-api_identifier:
       type: string
       description: A Cloudflare-generated unique identifier for a media item.
       example: ea95132c15732412d22c1476fa83f27a
       readOnly: true
       maxLength: 32
-    cloudflare-stream-client-api_input:
-      type: object
-      readOnly: true
-      properties:
-        height:
-          type: integer
-          description: The video height in pixels. A value of `-1` means the height
-            is unknown. The value becomes available after the upload and before the
-            video is ready.
-          readOnly: true
-        width:
-          type: integer
-          description: The video width in pixels. A value of `-1` means the width
-            is unknown. The value becomes available after the upload and before the
-            video is ready.
-          readOnly: true
     cloudflare-stream-client-api_name:
       type: string
       description: A short description of the watermark profile.
@@ -7276,8 +7259,9 @@ components:
     created:
       type: string
       format: date-time
-      description: When the device was created.
-      example: "2017-06-14T00:00:00Z"
+      description: The date and time the media item was created.
+      example: "2014-01-02T02:20:00Z"
+      readOnly: true
     created-on:
       type: string
       format: date-time
@@ -8542,8 +8526,8 @@ components:
       example: true
     description:
       type: string
-      description: The description of the Device Posture Rule.
-      example: The rule for admin serial numbers
+      description: An optional human provided description of the static route.
+      example: New route for new prefix 203.0.113.1
     destination_address_identifier:
       type: string
       description: Destination address identifier.
@@ -8809,13 +8793,13 @@ components:
       type: object
       properties:
         description:
-          $ref: '#/components/schemas/description'
+          $ref: '#/components/schemas/CloudflareClientAPI_description'
         expiration:
           $ref: '#/components/schemas/expiration'
         id:
           $ref: '#/components/schemas/CloudflareClientAPI_uuid'
         input:
-          $ref: '#/components/schemas/input'
+          $ref: '#/components/schemas/CloudflareClientAPI_input'
         match:
           $ref: '#/components/schemas/match'
         name:
@@ -8899,7 +8883,7 @@ components:
         default:
           $ref: '#/components/schemas/default'
         description:
-          $ref: '#/components/schemas/schemas-description'
+          $ref: '#/components/schemas/CloudflareClientAPI_schemas-description'
         disable_auto_fallback:
           $ref: '#/components/schemas/disable_auto_fallback'
         enabled:
@@ -8951,7 +8935,7 @@ components:
       type: object
       properties:
         created:
-          $ref: '#/components/schemas/created'
+          $ref: '#/components/schemas/CloudflareClientAPI_created'
         deleted:
           $ref: '#/components/schemas/deleted'
         device_type:
@@ -10415,6 +10399,8 @@ components:
       example: 123-867-5309
     feature_app_props:
       type: object
+      required:
+      - type
       properties:
         allowed_idps:
           $ref: '#/components/schemas/allowed_idps'
@@ -11080,7 +11066,7 @@ components:
         customer_gre_endpoint:
           $ref: '#/components/schemas/customer_gre_endpoint'
         description:
-          $ref: '#/components/schemas/CloudflareClientAPI_schemas-description'
+          $ref: '#/components/schemas/schemas-description'
         health_check:
           $ref: '#/components/schemas/health_check'
         id:
@@ -12004,10 +11990,20 @@ components:
         $ref: '#/components/schemas/rule'
     input:
       type: object
-      description: The value to be checked against.
+      readOnly: true
       properties:
-        id:
-          $ref: '#/components/schemas/CloudflareClientAPI_uuid'
+        height:
+          type: integer
+          description: The video height in pixels. A value of `-1` means the height
+            is unknown. The value becomes available after the upload and before the
+            video is ready.
+          readOnly: true
+        width:
+          type: integer
+          description: The video width in pixels. A value of `-1` means the width
+            is unknown. The value becomes available after the upload and before the
+            video is ready.
+          readOnly: true
     input_rtmps:
       type: object
       description: Details for streaming to an live input using RTMPS.
@@ -18742,7 +18738,7 @@ components:
         created_on:
           $ref: '#/components/schemas/created_on'
         description:
-          $ref: '#/components/schemas/CloudflareClientAPI_description'
+          $ref: '#/components/schemas/description'
         id:
           $ref: '#/components/schemas/CloudflareClientAPI_identifier'
         modified_on:
@@ -18787,7 +18783,7 @@ components:
       - priority
       properties:
         description:
-          $ref: '#/components/schemas/CloudflareClientAPI_description'
+          $ref: '#/components/schemas/description'
         nexthop:
           $ref: '#/components/schemas/nexthop'
         prefix:
@@ -19827,7 +19823,7 @@ components:
         title: Browser Isolation Permissions Application
       - allOf:
         - $ref: '#/components/schemas/basic_app_response_props'
-        - $ref: '#/components/schemas/schemas-bookmark_props'
+        - $ref: '#/components/schemas/CloudflareClientAPI_schemas-bookmark_props'
         type: object
         title: Bookmark application
       type: object
@@ -19915,6 +19911,9 @@ components:
     schemas-bookmark_props:
       type: object
       title: Bookmark Application
+      required:
+      - type
+      - domain
       properties:
         app_launcher_visible:
           default: true
@@ -20247,9 +20246,8 @@ components:
             example: {}
     schemas-description:
       type: string
-      description: A description of the policy.
-      example: Policy for test teams.
-      maxLength: 500
+      description: An optional description of the GRE tunnel.
+      example: Tunnel for ISP X
     schemas-destination_conf:
       type: string
       format: uri
@@ -22318,6 +22316,9 @@ components:
     self_hosted_props:
       type: object
       title: Self Hosted Application
+      required:
+      - type
+      - domain
       properties:
         allowed_idps:
           $ref: '#/components/schemas/allowed_idps'
@@ -24402,7 +24403,7 @@ components:
         customer_gre_endpoint:
           $ref: '#/components/schemas/customer_gre_endpoint'
         description:
-          $ref: '#/components/schemas/CloudflareClientAPI_schemas-description'
+          $ref: '#/components/schemas/schemas-description'
         health_check:
           $ref: '#/components/schemas/health_check'
         interface_address:
@@ -25484,13 +25485,13 @@ components:
         allowedOrigins:
           $ref: '#/components/schemas/allowedOrigins'
         created:
-          $ref: '#/components/schemas/cloudflare-stream-client-api_created'
+          $ref: '#/components/schemas/created'
         creator:
           $ref: '#/components/schemas/creator'
         duration:
           $ref: '#/components/schemas/duration'
         input:
-          $ref: '#/components/schemas/cloudflare-stream-client-api_input'
+          $ref: '#/components/schemas/input'
         liveInput:
           $ref: '#/components/schemas/liveInput'
         maxDurationSeconds:
@@ -71797,7 +71798,7 @@ paths:
                       result:
                         allOf:
                         - $ref: '#/components/schemas/basic_app_response_props'
-                        - $ref: '#/components/schemas/schemas-bookmark_props'
+                        - $ref: '#/components/schemas/CloudflareClientAPI_schemas-bookmark_props'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Add a Bookmark application response
@@ -71810,7 +71811,7 @@ paths:
                     result:
                       allOf:
                       - $ref: '#/components/schemas/basic_app_response_props'
-                      - $ref: '#/components/schemas/schemas-bookmark_props'
+                      - $ref: '#/components/schemas/CloudflareClientAPI_schemas-bookmark_props'
       security:
       - api_email: []
         api_key: []
@@ -71931,7 +71932,7 @@ paths:
                       result:
                         allOf:
                         - $ref: '#/components/schemas/basic_app_response_props'
-                        - $ref: '#/components/schemas/schemas-bookmark_props'
+                        - $ref: '#/components/schemas/CloudflareClientAPI_schemas-bookmark_props'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Update a Bookmark application response
@@ -71944,7 +71945,7 @@ paths:
                     result:
                       allOf:
                       - $ref: '#/components/schemas/basic_app_response_props'
-                      - $ref: '#/components/schemas/schemas-bookmark_props'
+                      - $ref: '#/components/schemas/CloudflareClientAPI_schemas-bookmark_props'
       security:
       - api_email: []
         api_key: []

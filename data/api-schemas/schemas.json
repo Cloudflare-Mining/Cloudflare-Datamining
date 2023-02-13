@@ -1247,19 +1247,12 @@
 				"type": "array"
 			},
 			"CloudflareClientAPI_input": {
+				"description": "The value to be checked against.",
 				"properties": {
-					"height": {
-						"description": "The video height in pixels. A value of `-1` means the height is unknown. The value becomes available after the upload and before the video is ready.",
-						"readOnly": true,
-						"type": "integer"
-					},
-					"width": {
-						"description": "The video width in pixels. A value of `-1` means the width is unknown. The value becomes available after the upload and before the video is ready.",
-						"readOnly": true,
-						"type": "integer"
+					"id": {
+						"$ref": "#/components/schemas/CloudflareClientAPI_uuid"
 					}
 				},
-				"readOnly": true,
 				"type": "object"
 			},
 			"CloudflareClientAPI_interval": {
@@ -1676,6 +1669,30 @@
 						"type": "string"
 					}
 				},
+				"type": "object"
+			},
+			"CloudflareClientAPI_schemas-bookmark_props": {
+				"properties": {
+					"app_launcher_visible": {
+						"default": true
+					},
+					"domain": {
+						"description": "The URL or domain of the bookmark.",
+						"example": "https://mybookmark.com"
+					},
+					"logo_url": {
+						"$ref": "#/components/schemas/logo_url"
+					},
+					"name": {
+						"$ref": "#/components/schemas/apps_components-schemas-name"
+					},
+					"type": {
+						"description": "The application type.",
+						"example": "bookmark",
+						"type": "string"
+					}
+				},
+				"title": "Bookmark Application",
 				"type": "object"
 			},
 			"CloudflareClientAPI_schemas-created_on": {
@@ -2149,7 +2166,7 @@
 						"$ref": "#/components/schemas/schemas-duration"
 					},
 					"input": {
-						"$ref": "#/components/schemas/CloudflareClientAPI_input"
+						"$ref": "#/components/schemas/input"
 					},
 					"liveInput": {
 						"$ref": "#/components/schemas/liveInput"
@@ -3442,7 +3459,11 @@
 				]
 			},
 			"account_identifier": {
-				"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
+				"description": "The account identifier tag.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"readOnly": true,
+				"type": "string"
 			},
 			"account_subscription_response_collection": {
 				"allOf": [
@@ -7808,42 +7829,12 @@
 				"readOnly": true,
 				"type": "string"
 			},
-			"cloudflare-stream-client-api_account_identifier": {
-				"description": "The account identifier tag.",
-				"example": "023e105f4ecef8ad9ca31a8372d0c353",
-				"maxLength": 32,
-				"readOnly": true,
-				"type": "string"
-			},
-			"cloudflare-stream-client-api_created": {
-				"description": "The date and time the media item was created.",
-				"example": "2014-01-02T02:20:00Z",
-				"format": "date-time",
-				"readOnly": true,
-				"type": "string"
-			},
 			"cloudflare-stream-client-api_identifier": {
 				"description": "A Cloudflare-generated unique identifier for a media item.",
 				"example": "ea95132c15732412d22c1476fa83f27a",
 				"maxLength": 32,
 				"readOnly": true,
 				"type": "string"
-			},
-			"cloudflare-stream-client-api_input": {
-				"properties": {
-					"height": {
-						"description": "The video height in pixels. A value of `-1` means the height is unknown. The value becomes available after the upload and before the video is ready.",
-						"readOnly": true,
-						"type": "integer"
-					},
-					"width": {
-						"description": "The video width in pixels. A value of `-1` means the width is unknown. The value becomes available after the upload and before the video is ready.",
-						"readOnly": true,
-						"type": "integer"
-					}
-				},
-				"readOnly": true,
-				"type": "object"
 			},
 			"cloudflare-stream-client-api_name": {
 				"default": "",
@@ -10561,9 +10552,10 @@
 				"type": "array"
 			},
 			"created": {
-				"description": "When the device was created.",
-				"example": "2017-06-14T00:00:00Z",
+				"description": "The date and time the media item was created.",
+				"example": "2014-01-02T02:20:00Z",
 				"format": "date-time",
+				"readOnly": true,
 				"type": "string"
 			},
 			"created-on": {
@@ -12365,8 +12357,8 @@
 				"type": "boolean"
 			},
 			"description": {
-				"description": "The description of the Device Posture Rule.",
-				"example": "The rule for admin serial numbers",
+				"description": "An optional human provided description of the static route.",
+				"example": "New route for new prefix 203.0.113.1",
 				"type": "string"
 			},
 			"destination_address_identifier": {
@@ -12755,7 +12747,7 @@
 			"device-posture-rules": {
 				"properties": {
 					"description": {
-						"$ref": "#/components/schemas/description"
+						"$ref": "#/components/schemas/CloudflareClientAPI_description"
 					},
 					"expiration": {
 						"$ref": "#/components/schemas/expiration"
@@ -12764,7 +12756,7 @@
 						"$ref": "#/components/schemas/CloudflareClientAPI_uuid"
 					},
 					"input": {
-						"$ref": "#/components/schemas/input"
+						"$ref": "#/components/schemas/CloudflareClientAPI_input"
 					},
 					"match": {
 						"$ref": "#/components/schemas/match"
@@ -12903,7 +12895,7 @@
 						"$ref": "#/components/schemas/default"
 					},
 					"description": {
-						"$ref": "#/components/schemas/schemas-description"
+						"$ref": "#/components/schemas/CloudflareClientAPI_schemas-description"
 					},
 					"disable_auto_fallback": {
 						"$ref": "#/components/schemas/disable_auto_fallback"
@@ -12989,7 +12981,7 @@
 			"devices": {
 				"properties": {
 					"created": {
-						"$ref": "#/components/schemas/created"
+						"$ref": "#/components/schemas/CloudflareClientAPI_created"
 					},
 					"deleted": {
 						"$ref": "#/components/schemas/deleted"
@@ -15149,6 +15141,9 @@
 						"$ref": "#/components/schemas/type"
 					}
 				},
+				"required": [
+					"type"
+				],
 				"type": "object"
 			},
 			"features": {
@@ -16191,7 +16186,7 @@
 						"$ref": "#/components/schemas/customer_gre_endpoint"
 					},
 					"description": {
-						"$ref": "#/components/schemas/CloudflareClientAPI_schemas-description"
+						"$ref": "#/components/schemas/schemas-description"
 					},
 					"health_check": {
 						"$ref": "#/components/schemas/health_check"
@@ -17528,12 +17523,19 @@
 				"type": "array"
 			},
 			"input": {
-				"description": "The value to be checked against.",
 				"properties": {
-					"id": {
-						"$ref": "#/components/schemas/CloudflareClientAPI_uuid"
+					"height": {
+						"description": "The video height in pixels. A value of `-1` means the height is unknown. The value becomes available after the upload and before the video is ready.",
+						"readOnly": true,
+						"type": "integer"
+					},
+					"width": {
+						"description": "The video width in pixels. A value of `-1` means the width is unknown. The value becomes available after the upload and before the video is ready.",
+						"readOnly": true,
+						"type": "integer"
 					}
 				},
+				"readOnly": true,
 				"type": "object"
 			},
 			"input_rtmps": {
@@ -27009,7 +27011,7 @@
 						"$ref": "#/components/schemas/created_on"
 					},
 					"description": {
-						"$ref": "#/components/schemas/CloudflareClientAPI_description"
+						"$ref": "#/components/schemas/description"
 					},
 					"id": {
 						"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
@@ -27087,7 +27089,7 @@
 			"route_add_single_request": {
 				"properties": {
 					"description": {
-						"$ref": "#/components/schemas/CloudflareClientAPI_description"
+						"$ref": "#/components/schemas/description"
 					},
 					"nexthop": {
 						"$ref": "#/components/schemas/nexthop"
@@ -28711,7 +28713,7 @@
 								"$ref": "#/components/schemas/basic_app_response_props"
 							},
 							{
-								"$ref": "#/components/schemas/schemas-bookmark_props"
+								"$ref": "#/components/schemas/CloudflareClientAPI_schemas-bookmark_props"
 							}
 						],
 						"title": "Bookmark application",
@@ -28864,6 +28866,10 @@
 						"type": "string"
 					}
 				},
+				"required": [
+					"type",
+					"domain"
+				],
 				"title": "Bookmark Application",
 				"type": "object"
 			},
@@ -29313,9 +29319,8 @@
 				]
 			},
 			"schemas-description": {
-				"description": "A description of the policy.",
-				"example": "Policy for test teams.",
-				"maxLength": 500,
+				"description": "An optional description of the GRE tunnel.",
+				"example": "Tunnel for ISP X",
 				"type": "string"
 			},
 			"schemas-destination_conf": {
@@ -32229,6 +32234,10 @@
 						"type": "string"
 					}
 				},
+				"required": [
+					"type",
+					"domain"
+				],
 				"title": "Self Hosted Application",
 				"type": "object"
 			},
@@ -35124,7 +35133,7 @@
 						"$ref": "#/components/schemas/customer_gre_endpoint"
 					},
 					"description": {
-						"$ref": "#/components/schemas/CloudflareClientAPI_schemas-description"
+						"$ref": "#/components/schemas/schemas-description"
 					},
 					"health_check": {
 						"$ref": "#/components/schemas/health_check"
@@ -36680,7 +36689,7 @@
 						"$ref": "#/components/schemas/allowedOrigins"
 					},
 					"created": {
-						"$ref": "#/components/schemas/cloudflare-stream-client-api_created"
+						"$ref": "#/components/schemas/created"
 					},
 					"creator": {
 						"$ref": "#/components/schemas/creator"
@@ -36689,7 +36698,7 @@
 						"$ref": "#/components/schemas/duration"
 					},
 					"input": {
-						"$ref": "#/components/schemas/cloudflare-stream-client-api_input"
+						"$ref": "#/components/schemas/input"
 					},
 					"liveInput": {
 						"$ref": "#/components/schemas/liveInput"
@@ -113753,7 +113762,7 @@
 															"$ref": "#/components/schemas/basic_app_response_props"
 														},
 														{
-															"$ref": "#/components/schemas/schemas-bookmark_props"
+															"$ref": "#/components/schemas/CloudflareClientAPI_schemas-bookmark_props"
 														}
 													]
 												}
@@ -113783,7 +113792,7 @@
 																	"$ref": "#/components/schemas/basic_app_response_props"
 																},
 																{
-																	"$ref": "#/components/schemas/schemas-bookmark_props"
+																	"$ref": "#/components/schemas/CloudflareClientAPI_schemas-bookmark_props"
 																}
 															]
 														}
@@ -114061,7 +114070,7 @@
 															"$ref": "#/components/schemas/basic_app_response_props"
 														},
 														{
-															"$ref": "#/components/schemas/schemas-bookmark_props"
+															"$ref": "#/components/schemas/CloudflareClientAPI_schemas-bookmark_props"
 														}
 													]
 												}
@@ -114091,7 +114100,7 @@
 																	"$ref": "#/components/schemas/basic_app_response_props"
 																},
 																{
-																	"$ref": "#/components/schemas/schemas-bookmark_props"
+																	"$ref": "#/components/schemas/CloudflareClientAPI_schemas-bookmark_props"
 																}
 															]
 														}
