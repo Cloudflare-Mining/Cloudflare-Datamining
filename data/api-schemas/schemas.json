@@ -12389,8 +12389,8 @@
 				"type": "boolean"
 			},
 			"description": {
-				"description": "The description of the Device Posture Rule.",
-				"example": "The rule for admin serial numbers",
+				"description": "An optional human provided description of the static route.",
+				"example": "New route for new prefix 203.0.113.1",
 				"type": "string"
 			},
 			"destination_address_identifier": {
@@ -12779,7 +12779,7 @@
 			"device-posture-rules": {
 				"properties": {
 					"description": {
-						"$ref": "#/components/schemas/description"
+						"$ref": "#/components/schemas/CloudflareClientAPI_description"
 					},
 					"expiration": {
 						"$ref": "#/components/schemas/expiration"
@@ -12927,7 +12927,7 @@
 						"$ref": "#/components/schemas/default"
 					},
 					"description": {
-						"$ref": "#/components/schemas/schemas-description"
+						"$ref": "#/components/schemas/CloudflareClientAPI_schemas-description"
 					},
 					"disable_auto_fallback": {
 						"$ref": "#/components/schemas/disable_auto_fallback"
@@ -16218,7 +16218,7 @@
 						"$ref": "#/components/schemas/customer_gre_endpoint"
 					},
 					"description": {
-						"$ref": "#/components/schemas/CloudflareClientAPI_schemas-description"
+						"$ref": "#/components/schemas/schemas-description"
 					},
 					"health_check": {
 						"$ref": "#/components/schemas/health_check"
@@ -27036,7 +27036,7 @@
 						"$ref": "#/components/schemas/created_on"
 					},
 					"description": {
-						"$ref": "#/components/schemas/CloudflareClientAPI_description"
+						"$ref": "#/components/schemas/description"
 					},
 					"id": {
 						"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
@@ -27114,7 +27114,7 @@
 			"route_add_single_request": {
 				"properties": {
 					"description": {
-						"$ref": "#/components/schemas/CloudflareClientAPI_description"
+						"$ref": "#/components/schemas/description"
 					},
 					"nexthop": {
 						"$ref": "#/components/schemas/nexthop"
@@ -29344,9 +29344,8 @@
 				]
 			},
 			"schemas-description": {
-				"description": "A description of the policy.",
-				"example": "Policy for test teams.",
-				"maxLength": 500,
+				"description": "An optional description of the GRE tunnel.",
+				"example": "Tunnel for ISP X",
 				"type": "string"
 			},
 			"schemas-destination_conf": {
@@ -35159,7 +35158,7 @@
 						"$ref": "#/components/schemas/customer_gre_endpoint"
 					},
 					"description": {
-						"$ref": "#/components/schemas/CloudflareClientAPI_schemas-description"
+						"$ref": "#/components/schemas/schemas-description"
 					},
 					"health_check": {
 						"$ref": "#/components/schemas/health_check"
