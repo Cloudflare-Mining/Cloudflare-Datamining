@@ -18,7 +18,7 @@
 	<li>Review accounting conventions to ensure Cloudflare's non-GAAP policies would not have a significant effect to any one period on a quantitative basis</li>
 	<li>Prepare segment analysis to ensure compliance with requirements regarding consistency between internal and external reporting of reportable operating segments</li>
 	<li>Prepare/review timely, high quality technical accounting memos on all key technical accounting matters for submission to the independent auditor</li>
-	<li>Manage and act as liaison in Company-wide initiatives and cross-functional projects that directly impact accounting area to ensure U.S. GAAP compliance. Examples include implementation of new accounting policies, due diligence and PPA entries on acquisitions and other significant business transactions such as divestitures, Company spin-offs, restructuring, debt offerings, complex capitalization projects, and other significant complex transactions</li>
+	<li>Manage and act as liaison in Company-wide initiatives and cross-functional projects that directly impact accounting area to ensure U.S. GAAP compliance. Examples include implementation of new accounting policies, due diligence and PPA entries on acquisitions (ASC 805) and other significant business transactions such as divestitures, Company spin-offs, restructuring, debt offerings, complex capitalization projects, and other significant complex transactions</li>
 	<li>Assist external reporting team with complex regulatory reporting matters.</li>
 	<li>Providing detail support to the outside auditors and other consultants</li>
 	<li>Manage multiple tasks under tight deadlines with strong attention to detail and accuracy</li>
