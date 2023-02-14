@@ -48,8 +48,21 @@
 				},
 				"contentfulId": "4nvosA9owqSSriYZgPe19D",
 				"contentTypeId": "page",
-				"promotionalBanner": null,
-				"psaBanner": null,
+				"promotionalBanner": {
+					"pillText": "NEWS",
+					"linkText": "READ",
+					"linkUrl": "https://blog.cloudflare.com",
+					"desktopText": "Bolster your security when building on Cloudflare by using mutual TLS."
+				},
+				"psaBanner": {
+					"contentTypeId": "psaBanner",
+					"contentfulId": "5ntLdLfTipdwWmI7o0fvU6",
+					"text": "__SSL database maintenance is scheduled on March 2, 2023 08:00 - 10:00 UTC may result in delays in certificate issuance. We expect the impact to only last 3 minutes.__ ",
+					"learnMoreText": null,
+					"learnMoreUrl": "https://cloudflare.com",
+					"backgroundColor": null,
+					"hideCloseButton": null
+				},
 				"customTopNav": null,
 				"headerLogo": null,
 				"proactivePopup": null,
@@ -773,7 +786,7 @@
 				"es-ES",
 				"zh-Hans-CN"
 			],
-			"hasPsaBanner": false,
+			"hasPsaBanner": true,
 			"baseURL": "https://www.cloudflare.com"
 		}
 	}
