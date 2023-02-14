@@ -215,6 +215,7 @@ export const RatePlanComponentTier = eg.object({
   upperThreshold: eg.number,
   pricingType: eg.string,
   price: eg.number,
+  annual_price: eg.number.optional,
   bucketSize: eg.number
 });
 
