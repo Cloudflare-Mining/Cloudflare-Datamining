@@ -2274,8 +2274,8 @@
 				{
 					"name": "nodeJsCompat",
 					"annotations": {
-						"compatEnableFlag": "nodejs_compat",
-						"experimental": "true"
+						"compatDisableFlag": "no_nodejs_compat",
+						"compatEnableFlag": "nodejs_compat"
 					}
 				},
 				{
