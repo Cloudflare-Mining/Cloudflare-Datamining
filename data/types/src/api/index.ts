@@ -8,7 +8,7 @@ export * from './billing';
 export * from './dns';
 export * from './domain';
 export * from './domainResourceGroup';
-export * from './httpApplications';
+export * from './zoneVersioning';
 export * from './captcha';
 export * from './entitlement';
 export * from './flags';
