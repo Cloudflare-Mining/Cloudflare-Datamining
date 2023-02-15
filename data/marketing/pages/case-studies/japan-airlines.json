@@ -10,11 +10,23 @@
 				"metaTags": {
 					"metaTitle": "Japan Airlines & Cloudflare | Case Study",
 					"metaDescription": "Cloudflare Area 1 detects and preemptively blocks malicious emails with great accuracy at Japan Airlines",
-					"twitterCustomImage": null,
-					"metaImage": null,
-					"facebookCustomImage": null
+					"twitterCustomImage": {
+						"file": {
+							"publicURL": "[path]/JAL_SocialImage_Customer.jpg"
+						}
+					},
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/JAL_SocialImage_Customer.jpg"
+						}
+					},
+					"facebookCustomImage": {
+						"file": {
+							"publicURL": "[path]/JAL_SocialImage_Customer.jpg"
+						}
+					}
 				},
-				"orderDate": "2023-02-06",
+				"orderDate": "2023-02-10",
 				"homepageUrl": "https://www.jal.co.jp/jp/en/",
 				"hideFromCaseStudiesPage": true,
 				"shortDescription": "Cloudflare Area 1 detects and preemptively blocks malicious emails with great accuracy at Japan Airlines",
@@ -53,7 +65,7 @@
 				"ref_streamVideoThumbnail": null,
 				"logo": {
 					"file": {
-						"publicURL": "[path]/Japan_Airlines.png"
+						"publicURL": "[path]/Japan-Airlines-logo-suggested.png"
 					}
 				},
 				"customCanonicalTag": null
@@ -70,7 +82,8 @@
 			"pathname": "/case-studies/japan-airlines/",
 			"baseURL": "https://www.cloudflare.com",
 			"allowedHrefLangs": [
-				"en-US"
+				"en-US",
+				"ja-JP"
 			]
 		}
 	}
