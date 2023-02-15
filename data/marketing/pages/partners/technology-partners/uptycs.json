@@ -313,7 +313,52 @@
 				],
 				"noindex": false,
 				"enableZendeskChat": false,
-				"formModal": [],
+				"formModal": [
+					{
+						"contentTypeId": "formModal",
+						"contentfulId": "5C0pOxgJKwEzQGyjcKMrnw",
+						"modalName": "[PAR] Q1'23 WEB - GBL - Tech Partner Uptycs Landing Page - Modal",
+						"modalId": "par-q123-web-gbl-tech-partner-uptycs-landing-page-modal",
+						"modalType": "split-form",
+						"marketoForm": {
+							"contentTypeId": "marketoEmbeddedForm",
+							"contentfulId": "5HXPvqxFI2SRBif1rPSEKF",
+							"bladeName": "[PAR] Q1'23 WEB - GBL - Tech Partner Uptycs Landing Page - Marketo Form",
+							"backgroundColor": "white",
+							"marketoFormId": 1341,
+							"marketoFormLeadSource": "Partner - Marketing",
+							"marketoFormLeadSourceDetail": "[PAR] Q1'23 WEB - GBL - Tech Partner Uptycs Landing Page",
+							"marketoFormHeaderText": null,
+							"marketoFormDefaultComment": null,
+							"showCommentBox": false,
+							"marketoFormThankYouText": null,
+							"marketoFormCustomSuccessMessage": null,
+							"marketoFormPdfDownload": {
+								"file": {
+									"publicURL": "[path]/Cloudflare___Uptycs_Partner_Brief.pdf"
+								}
+							},
+							"marketoFormPdfDownloadI18n": null,
+							"marketoFormAssetDownloadButtonText": null,
+							"marketoFormSuccessRedirectUrl": null,
+							"sendAdRoll": null,
+							"meta_adRollCustomSegment": null,
+							"enableSandbox": null,
+							"marketoFormSubmitButtonText": null,
+							"marketoFormSubmitButtonColor": null,
+							"enableEmailVerification": null,
+							"disableEnterpriseEmailNotification": null,
+							"enableRingout": null
+						},
+						"title": "Download Now",
+						"regularCopy": null,
+						"splitFormDefaultTab": null,
+						"selfServeTabText": null,
+						"selfServeCopy": null,
+						"enterpriseTabText": null,
+						"enterpriseCopy": null
+					}
+				],
 				"keepHashUrlSyncedWithScrollPosition": false
 			},
 			"site": {
