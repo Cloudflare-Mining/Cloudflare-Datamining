@@ -3,7 +3,7 @@
 	<p>维基百科将Time To First Byte <a href="https://en.wikipedia.org/wiki/Time_To_First_Byte" target="_blank">定义</a>为“从虚拟用户发出HTTP请求到浏览器接收到页面的第一个字节的持续时间”。但是，流行的网页测试网站实际报告的究竟是什么的结果呢？为了找到答案，我们创建了一个测试服务器，在HTTP响应中插入延迟，用以找出实际测量的内容。令人吃惊的是，TTFB并不是一个有效的衡量指标。</p>
 	<p>当Web浏览器向Web服务器请求页面时，它会发送请求本身以及一些请求头，这些请求头指定了响应的可接收格式之类的内容。服务器响应以更多的请求头（包含有关页面的信息），后附带有状态行（通常是HTTP / 1.1 200 OK表示页面可用），最后才是页面内容。</p>
 	<p>CloudFlare的TTFB测试服务器的行为略有不同。当它收到请求时，它会发送HTTP / 1.1 200 OK（H）的第一个字母，然后等待10秒钟，然后再发送其余的请求头和页面本身。（你可以在<a href="https://github.com/jgrahamc/ttfb" target="_blank">这里</a>获取TTFB服务器的代码;它是用Go编写的）。</p>
-	<p>如果你用<a href="http://www.webpagetest.org/" target="_blank">WebPageTest</a>从CloudFlare TTFB服务器下载页面，你就会发现 WebPageTest报告的TTFB为接收到H的时间（而不是页面本身实际发送的时间），从十秒的等待时间你就很容易可以看出这一点。</p>
+	<p>如果你用<a href="https://www.webpagetest.org/" target="_blank">WebPageTest</a>从CloudFlare TTFB服务器下载页面，你就会发现 WebPageTest报告的TTFB为接收到H的时间（而不是页面本身实际发送的时间），从十秒的等待时间你就很容易可以看出这一点。</p>
 	<p></p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/07/Screen_Shot_2012-07-02_at_9.49.22_AM.png.scaled500.png" class="kg-image"></figure>
 	<p></p>
