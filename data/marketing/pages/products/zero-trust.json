@@ -4,7 +4,7 @@
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "Cloudflare Zero Trust Home - [ZT PMM] - /products/zero-trust - archive",
+				"pageName": "[ZT PMM] Zero Trust - Homepage (Dec '22 Test)",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
@@ -20,17 +20,17 @@
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
 					"enGB": "English for Locale",
-					"nlNL": "Translated for Locale",
+					"nlNL": "No Page for Locale",
 					"idID": "No Page for Locale",
-					"thTH": "Translated for Locale",
+					"thTH": "No Page for Locale",
 					"ruRU": "No Page for Locale",
 					"svSE": "No Page for Locale",
-					"viVN": "Translated for Locale",
+					"viVN": "No Page for Locale",
 					"trTR": "No Page for Locale",
 					"zhHansCN": "Translated for Locale",
 					"plPL": "No Page for Locale"
 				},
-				"relativePath": "products/zero-trust",
+				"relativePath": "/products/zero-trust/",
 				"topNavOptions": "custom",
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
@@ -46,13 +46,13 @@
 					},
 					"facebookCustomImage": null
 				},
-				"contentfulId": "58nzFbmrbTUS2H5Y3Em1G8",
+				"contentfulId": "3hmQ36UrnKF3tBmQkWjxKe",
 				"contentTypeId": "page",
 				"promotionalBanner": {
-					"pillText": "Live Demo",
-					"linkText": "Register now",
-					"linkUrl": "https://cloudflare.zoom.us/webinar/register/9816649161476/WN_4BrLguavRYyiEnBjINcO4w",
-					"desktopText": "Join Cloudflare experts live as we demo the latest in Zero Trust innovation and discuss how to leverage Cloudflare on your Zero Trust journey."
+					"pillText": "Learn",
+					"linkText": "What is Zero Trust?",
+					"linkUrl": "https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/",
+					"desktopText": "What is Zero Trust security and what does it do for organizations? Read more in our Learning Center."
 				},
 				"psaBanner": null,
 				"customTopNav": [
@@ -5535,62 +5535,9 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"contentfulId": "5mPps0zeKZPClwchk8qGCu",
-						"contentTypeId": "bladeHeroAnimation",
-						"title": "Cloudflare Zero Trust",
-						"subtitle": "The fastest Zero Trust application access and Internet browsing platform",
-						"copy": "Increase visibility, eliminate complexity, and reduce risks for remote and office users alike. Stop data loss, malware and phishing, and secure users, applications, and devices.\n",
-						"buttonColor": "orange",
-						"buttonColor2": "orange",
-						"buttonText1": "Get started",
-						"buttonText1LoggedIn": null,
-						"buttonUrl1": "https://dash.cloudflare.com/sign-up/teams",
-						"buttonUrl1LoggedIn": null,
-						"button1ExtraClass": null,
-						"buttonText2": "Contact us",
-						"buttonText2LoggedIn": null,
-						"buttonUrl2": "#",
-						"button2ExtraClass": "teams-ent-plan-contact-us",
-						"bladeBorder": "none",
-						"htmlId": null,
-						"textColor": "black",
-						"includeVideo": true,
-						"streamVideoId": "cc3923312b9a7e1513bfaa6c9390970b",
-						"streamOptions": [
-							"autoplay",
-							"muted",
-							"controls"
-						],
-						"streamCaptions": null,
-						"popupStreamId": null,
-						"popupText": null,
-						"button1OpenInNewTab": null,
-						"button2OpenInNewTab": null,
-						"streamThumbnails": "1m51s",
-						"sectionPadding": null,
-						"streamPosterAssetFile": null,
-						"streamPoster": null,
-						"imageSize": "Medium",
-						"imagePosition": null,
-						"leftLinkUrl": null,
-						"leftLink": null,
-						"leftLinkLoggedIn": null,
-						"leftLinkOptions": "hide",
-						"backgroundColor": "light-blue",
-						"textlayoutMode": null,
-						"backgroundAssetFile": null,
-						"imageLayout": null,
-						"image": {
-							"file": {
-								"publicURL": "[path]/SaaS-remote-work-hero__1_.svg"
-							}
-						},
-						"imageAssetFile": null
-					},
-					{
 						"contentTypeId": "bladeSubNav",
-						"contentfulId": "4J4S9Fa1BJVjubRNnWwKdU",
-						"menuTitle": null,
+						"contentfulId": "70Il4X62A37cPxf97qmEgo",
+						"menuTitle": "Zero Trust & SASE",
 						"mobileOnlyMenuTitle": null,
 						"stickyNav": true,
 						"htmlId": null,
@@ -5600,6 +5547,13 @@
 								"linkText": "Overview",
 								"page": null,
 								"url": "/products/zero-trust",
+								"subMenuItems": null
+							},
+							{
+								"contentfulId": "5yQ7qOG5YMtgCKBnS1dEDF",
+								"linkText": "Pricing",
+								"page": null,
+								"url": "/plans/zero-trust-services/",
 								"subMenuItems": null
 							},
 							{
@@ -5647,152 +5601,11 @@
 								]
 							},
 							{
-								"contentfulId": "38FbNwxqUkURwrP9nrDmLO",
-								"linkText": "Use cases",
+								"contentfulId": "7etJU93erWBUQPdDbjYBWX",
+								"linkText": "Solutions",
 								"page": null,
-								"url": null,
-								"subMenuItems": [
-									{
-										"contentfulId": "5pQAHKnPsdrvangSCPVhFe",
-										"linkText": "Secure remote workforces",
-										"page": null,
-										"url": "/products/zero-trust/remote-workforces"
-									},
-									{
-										"contentfulId": "50ejqxATjSnJJwONzi0ZdQ",
-										"linkText": "Deliver Zero Trust Network Access (ZTNA)",
-										"page": null,
-										"url": "/products/zero-trust/zero-trust-network-access"
-									},
-									{
-										"contentfulId": "735DlHh4jBTX1Gvw8N4Jka",
-										"linkText": "VPN replacement",
-										"page": null,
-										"url": "/products/zero-trust/vpn-replacement"
-									},
-									{
-										"contentfulId": "3yOKdydNn3bEYzoKYJHz5L",
-										"linkText": "Manage third party access ",
-										"page": null,
-										"url": "/products/zero-trust/third-party-access"
-									},
-									{
-										"contentfulId": "1uRGU9TRvPtJIhCHEPYFaz",
-										"linkText": "Phishing-resistant MFA",
-										"page": null,
-										"url": "/products/zero-trust/phishing-resistant-mfa/"
-									},
-									{
-										"contentfulId": "1lkdHmCQkrQHCZ5L4YIq0e",
-										"linkText": "Secure SaaS access (CASB)",
-										"page": null,
-										"url": "/products/zero-trust/secure-saas-access"
-									},
-									{
-										"contentfulId": "kVT4h8chqkRIIuzAJ2Xqf",
-										"linkText": "Threat protection",
-										"page": null,
-										"url": "/products/zero-trust/threat-defense"
-									}
-								]
-							},
-							{
-								"contentfulId": "1pq3pR21pthqlTqX3GrVm8",
-								"linkText": "Demos",
-								"page": null,
-								"url": null,
-								"subMenuItems": [
-									{
-										"contentfulId": "01FpIoGj85kxmR7udTx60B",
-										"linkText": "Zero Trust interactive demo",
-										"page": null,
-										"url": "/products/zero-trust/interactive-demo"
-									},
-									{
-										"contentfulId": "1gA7cCpxWVP25In2onzmBX",
-										"linkText": "Remote Browser Isolation (RBI) demo",
-										"page": null,
-										"url": "/products/zero-trust/browser-isolation/experience"
-									},
-									{
-										"contentfulId": "X5QnBKjAjIeZUBeVKAQfV",
-										"linkText": "Email security (Area 1) demo",
-										"page": null,
-										"url": "/lp/email-security-self-guided-demo-request/"
-									}
-								]
-							},
-							{
-								"contentfulId": "4yKQBz3PsUuDaYppgB8DYQ",
-								"linkText": "Integrations",
-								"page": null,
-								"url": null,
-								"subMenuItems": [
-									{
-										"contentfulId": "1w8r7NiYjDJPtNDraIkvhP",
-										"linkText": "Zero Trust integrations",
-										"page": null,
-										"url": "/products/zero-trust/integrations"
-									},
-									{
-										"contentfulId": "7Le9ElINmW5GxE6PRSFpGJ",
-										"linkText": "Endpoint security",
-										"page": null,
-										"url": "/endpoint-partners/"
-									}
-								]
-							},
-							{
-								"contentfulId": "du9YMt45hsO6gdCHzvjaN",
-								"linkText": "Comparisons",
-								"page": null,
-								"url": null,
-								"subMenuItems": [
-									{
-										"contentfulId": "2CayMirFJdk9oIs4Fyj2t9",
-										"linkText": "Cloudflare vs. Zscaler",
-										"page": null,
-										"url": "https://www.cloudflare.com/products/zero-trust/cloudflare-vs-zscaler/"
-									},
-									{
-										"contentfulId": "36zMHkNTG4LsYrzZgE2RuN",
-										"linkText": "Cloudflare vs. Cisco",
-										"page": null,
-										"url": "products/zero-trust/cloudflare-vs-cisco-umbrella"
-									}
-								]
-							},
-							{
-								"contentfulId": "6IyJLCs3YY1MTniTWVCGfZ",
-								"linkText": "Case studies",
-								"page": null,
-								"url": null,
-								"subMenuItems": [
-									{
-										"contentfulId": "6ek9uKLsxHWRCy6FFlFoPK",
-										"linkText": "All Zero Trust case studies",
-										"page": null,
-										"url": "/case-studies/?usecase=Enable+zero+trust+security+for+workforce"
-									},
-									{
-										"contentfulId": "5296MAHd8OFpaieW2MXdyu",
-										"linkText": "Technology",
-										"page": null,
-										"url": "/case-studies?industry=High+Technology&usecase=Enable+zero+trust+security+for+workforce"
-									},
-									{
-										"contentfulId": "7ia2I0uTM5JelkOklLq7Jv",
-										"linkText": "Financial services",
-										"page": null,
-										"url": "/case-studies?industry=Financial+Services&usecase=Enable+zero+trust+security+for+workforce"
-									},
-									{
-										"contentfulId": "1F6lQEkWk6MkXgnM7ssDFt",
-										"linkText": "Ecommerce",
-										"page": null,
-										"url": "/case-studies?industry=eCommerce&usecase=Enable+zero+trust+security+for+workforce"
-									}
-								]
+								"url": "/solutions/secure-hybrid-work/",
+								"subMenuItems": null
 							},
 							{
 								"contentfulId": "7oqf8k1Rn0L1np5ZuVuPDA",
@@ -5839,84 +5652,95 @@
 								]
 							},
 							{
-								"contentfulId": "5yQ7qOG5YMtgCKBnS1dEDF",
-								"linkText": "Pricing",
-								"page": null,
-								"url": "/plans/zero-trust-services/",
-								"subMenuItems": null
-							},
-							{
-								"contentfulId": "2wSyxBP4Xy8CZXhKznsEb",
-								"linkText": "Documentation",
+								"contentfulId": "1MPnz4oklmxIn6d5MfI1x0",
+								"linkText": "Resources",
 								"page": null,
 								"url": null,
 								"subMenuItems": [
 									{
-										"contentfulId": "OuYtcubh7PdGY5PpQV7tm",
-										"linkText": "Overview: Zero Trust platform",
+										"contentfulId": "3Ko7yh630HKRG9uuKTmq59",
+										"linkText": "Case Studies",
+										"page": null,
+										"url": "/case-studies/?usecase=Enable+zero+trust+security+for+workforce"
+									},
+									{
+										"contentfulId": "1w8r7NiYjDJPtNDraIkvhP",
+										"linkText": "Zero Trust integrations",
+										"page": null,
+										"url": "/products/zero-trust/integrations"
+									},
+									{
+										"contentfulId": "KxYYsyoMmFhVrH8ESEj7c",
+										"linkText": "White Papers & Product Guides",
+										"page": null,
+										"url": "/resource-hub/?topic=Enable+Zero+Trust+Security+for+Workforce"
+									},
+									{
+										"contentfulId": "1awgo4XNStilPgkAKZNekC",
+										"linkText": "Documentation",
 										"page": null,
 										"url": "https://developers.cloudflare.com/cloudflare-one/"
-									},
-									{
-										"contentfulId": "2zUkExquORhESVyts1GbuV",
-										"linkText": "Tutorials",
-										"page": null,
-										"url": "https://developers.cloudflare.com/cloudflare-one/tutorials"
-									},
-									{
-										"contentfulId": "7K7BEG8NZfWbQ1ESwDXSWu",
-										"linkText": "Zero Trust policies",
-										"page": null,
-										"url": "https://developers.cloudflare.com/cloudflare-one/policies/#zero-trust-policies"
-									},
-									{
-										"contentfulId": "8b5knSylXY8azagwdjV1E",
-										"linkText": "SWG policies",
-										"page": null,
-										"url": "https://developers.cloudflare.com/cloudflare-one/policies/filtering"
-									},
-									{
-										"contentfulId": "4MuBZ3yVF7m9N8O3Q58app",
-										"linkText": "Browser Isolation",
-										"page": null,
-										"url": "https://developers.cloudflare.com/cloudflare-one/policies/browser-isolation"
-									},
-									{
-										"contentfulId": "3RITypODHYx9rDzD5yQknD",
-										"linkText": "Connect everything",
-										"page": null,
-										"url": "https://developers.cloudflare.com/cloudflare-one/connections"
-									},
-									{
-										"contentfulId": "4xh6yIL3cR7avyicx6u4bX",
-										"linkText": "Identity and device posture",
-										"page": null,
-										"url": "https://developers.cloudflare.com/cloudflare-one/identity"
-									},
-									{
-										"contentfulId": "2LU4xpKXRB93wWNreyfQEi",
-										"linkText": "API and Terraform",
-										"page": null,
-										"url": "https://developers.cloudflare.com/cloudflare-one/api-terraform"
-									},
-									{
-										"contentfulId": "1bh3GXSY8sgbqhQptWsPLr",
-										"linkText": "Secure email",
-										"page": null,
-										"url": "https://developers.cloudflare.com/email-security/"
 									}
 								]
 							}
 						]
 					},
 					{
-						"contentfulId": "3gYshaT3AgizZYflMrMyXm",
+						"contentfulId": "2ZlVaKkdnz8CbyOwu5FGlp",
+						"contentTypeId": "bladeHeroAnimation",
+						"title": "Cloudflare Zero Trust Platform",
+						"subtitle": "Secure hybrid work with Internet-native Zero Trust",
+						"copy": "- Eliminate implicit trust while providing consistent experiences for remote and office users alike\n- Secure access, defend against threats, and secure with Microsoft and other SaaS tools\n- Tackle your Zero Trust journey one step at a time with composable, in-line security services\n",
+						"buttonColor": "blue",
+						"buttonColor2": "blue-outline",
+						"buttonText1": "View services",
+						"buttonText1LoggedIn": null,
+						"buttonUrl1": "#ztfeatures",
+						"buttonUrl1LoggedIn": null,
+						"button1ExtraClass": null,
+						"buttonText2": "Compare plans and pricing",
+						"buttonText2LoggedIn": null,
+						"buttonUrl2": "/plans/zero-trust-services/",
+						"button2ExtraClass": null,
+						"bladeBorder": "none",
+						"htmlId": null,
+						"textColor": "black",
+						"includeVideo": true,
+						"streamVideoId": "cc3923312b9a7e1513bfaa6c9390970b",
+						"streamOptions": [
+							"controls",
+							"captions"
+						],
+						"streamCaptions": "en",
+						"popupStreamId": null,
+						"popupText": null,
+						"button1OpenInNewTab": null,
+						"button2OpenInNewTab": null,
+						"streamThumbnails": "1m51s",
+						"sectionPadding": "tile--no-top-padding",
+						"streamPosterAssetFile": null,
+						"streamPoster": null,
+						"imageSize": "Medium",
+						"imagePosition": null,
+						"leftLinkUrl": null,
+						"leftLink": "[Ready to talk to an expert? Click here to get in touch.](https://www.cloudflare.com/products/zero-trust/plans/enterprise/)",
+						"leftLinkLoggedIn": null,
+						"leftLinkOptions": "show",
 						"backgroundColor": "white",
+						"textlayoutMode": null,
+						"backgroundAssetFile": null,
+						"imageLayout": null,
+						"image": null,
+						"imageAssetFile": null
+					},
+					{
+						"contentfulId": "5UHpLF1Me5IqQv5ueQdTwS",
+						"backgroundColor": "light-blue",
 						"contentTypeId": "bladeFourFeatures",
 						"htmlId": null,
 						"copy": null,
 						"title": null,
-						"subtitle": null,
+						"subtitle": "Benefits of Cloudflare Zero Trust",
 						"bladeStyle": null,
 						"bladeBorder": "none",
 						"sectionPadding": null,
@@ -5926,106 +5750,102 @@
 						"features": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "2Y48HTLgEaXMeBZz7x1f8g",
-								"title": "Excessive trust.",
+								"contentfulId": "10E1DC9QNcfSvHOBdJSRGP",
+								"title": "Improve team productivity",
 								"titleSize": null,
-								"description": "The traditional tools used to connect employees to corporate apps grant excessive trust, exposing you to potential data loss.",
+								"description": "Simplify policy management, troubleshoot issues faster, and improve the end user experience with a unified, low-latency Zero Trust platform.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
 								"openLinkInNewTab": null,
 								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": {
-									"id": "8fcdb598-240a-576e-b21e-2834f80f0a19",
-									"altText": "Open door blue",
-									"title": "Open door blue",
+								"iconAssetFile": {
+									"id": "b3ff4344-a324-59a0-b8e4-414adc95e7d3",
+									"altText": "User multi blue",
+									"title": "User multi blue",
 									"activeAsset": "Brandfolder Asset",
 									"locale": "en-US",
 									"contentfulAsset": null,
 									"brandfolderAsset": {
-										"size": 644,
+										"size": 4519,
 										"height": 192,
 										"width": 192,
-										"filename": "open-door-blue.svg",
+										"filename": "user-multi-blue.svg",
 										"file": {
-											"publicURL": "[path]/open-door-blue.svg"
+											"publicURL": "[path]/user-multi-blue.svg"
 										}
 									},
 									"brandfolderAssetMobile": null
 								},
+								"imageAssetFile": null,
 								"streamId": null,
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "1BTVMZSbIuurpqpv8BQeFi",
-								"title": "Way too complex.",
+								"contentfulId": "xtmKqQoXft8MVVTBRqGeR",
+								"title": "Reduce cyber risk",
 								"titleSize": null,
-								"description": "The corporate perimeter has become more difficult to control with complex, conflicting configurations across your VPNs, firewalls, proxies, and identity providers.",
+								"description": "Protect against multi-channel phishing and ransomware and reduce your attack surface by leveraging Cloudflare's broad threat intelligence.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
 								"openLinkInNewTab": null,
 								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": {
-									"id": "799c866d-69a4-5646-b6bb-5261eae7cb14",
-									"altText": "Network scale blue",
-									"title": "Network scale blue",
+								"iconAssetFile": {
+									"id": "ec5d8d8d-965a-5b62-bf55-06735e1b4780",
+									"altText": "Security shield zero trust blue",
+									"title": "Security shield zero trust blue",
 									"activeAsset": "Brandfolder Asset",
 									"locale": "en-US",
 									"contentfulAsset": null,
 									"brandfolderAsset": {
-										"size": 5263,
+										"size": 831,
 										"height": 192,
 										"width": 192,
-										"filename": "network-scale-blue.svg",
+										"filename": "security-shield-zero-trust-blue.svg",
 										"file": {
-											"publicURL": "[path]/network-scale-blue.svg"
+											"publicURL": "[path]/security-shield-zero-trust-blue.svg"
 										}
 									},
 									"brandfolderAssetMobile": null
 								},
+								"imageAssetFile": null,
 								"streamId": null,
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "6Hd94tHv8HiOWxvB42aKTY",
-								"title": "Blind too often.",
+								"contentfulId": "3yWiYTVZ8rCL6HhWqqLrPt",
+								"title": "Improve tech efficiency",
 								"titleSize": null,
-								"description": "It's never been harder to parse out logs, and make sense of how users access sensitive data.",
+								"description": "Accelerate digital maturity and consolidate point products with composable, in-line security services that provide holistic visibility into your network traffic.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
 								"openLinkInNewTab": null,
 								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": {
-									"id": "bd4d530f-0b5e-53ca-a892-ce14d0d06bde",
-									"altText": "icon-cloudflare-radar",
-									"title": "icon-cloudflare-radar",
+								"iconAssetFile": {
+									"id": "0cfe36ab-abe1-5f77-965c-c24fe0837bdf",
+									"altText": "Cloud multi blue",
+									"title": "Cloud multi blue",
 									"activeAsset": "Brandfolder Asset",
 									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "[path]/cloudflare-radar.svg"
-										}
-									},
+									"contentfulAsset": null,
 									"brandfolderAsset": {
-										"size": 2427,
-										"height": 528,
-										"width": 528,
-										"filename": "cloudflare-radar.svg",
+										"size": 2641,
+										"height": 192,
+										"width": 192,
+										"filename": "cloud-multi-blue.svg",
 										"file": {
-											"publicURL": "[path]/cloudflare-radar.svg"
+											"publicURL": "[path]/cloud-multi-blue.svg"
 										}
 									},
 									"brandfolderAssetMobile": null
 								},
+								"imageAssetFile": null,
 								"streamId": null,
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
@@ -6033,25 +5853,56 @@
 						]
 					},
 					{
-						"contentTypeId": "bladeEnablement",
-						"contentfulId": "doE3usFkvjxvjEMp8DGug",
-						"buttonExtraClass": null,
-						"buttonColor": "orange",
-						"buttonColor2": "orange",
-						"title": "Modernizing security with our step-by-step guidance.",
-						"backgroundColor": "blue",
-						"buttonText": "Read our Zero Trust roadmap",
-						"buttonUrl": "https://zerotrustroadmap.org/",
-						"buttonText2": null,
-						"buttonModalId2": null,
-						"buttonUrl2": null,
-						"bladeSizeType": "small",
+						"contentfulId": "6jcRrKhi3kJP1U4gluQ8Dg",
+						"title": "Cloudflare named a Strong Performer",
+						"copy": "See why Cloudflare was named a Strong Performer in the 2022 Gartner Peer Insights \"Voice of the Customer\" report for Security Service Edge (SSE).",
+						"toggleText": null,
+						"button": null,
+						"learnMoreUrl": "https://www.gartner.com/reviews/market/security-service-edge/vendor/cloudflare/product/cloudflare-one",
+						"learnMoreText": "Read the reviews",
+						"link": null,
+						"subheadline": "Reviewed by customers on Gartner Peer Insights",
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": null,
+						"imageAssetFile": {
+							"id": "d4c6e855-e2d4-53d1-bdb0-8c39fc8cc174",
+							"altText": null,
+							"title": "Gartner Peer Insights Logo",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "[path]/GPI_Logo.png"
+								}
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
+						"featureList": null,
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": "Customer recognition",
 						"htmlId": null,
-						"textColor": "white",
+						"titleSize": null,
+						"sectionPadding": null,
+						"backgroundColor": "white",
 						"bladeBorder": "none",
-						"buttonOne": null,
-						"buttonTwo": null,
-						"sectionPadding": null
+						"imagePosition": false,
+						"imageSize": "small",
+						"imageTextAlignment": "center",
+						"togglesTo": null
 					},
 					{
 						"contentfulId": "GxoUMT5xSz2tQv0XvNrZq",
@@ -6104,100 +5955,18 @@
 						"togglesTo": null
 					},
 					{
-						"contentfulId": "46DfwUfLooNvdFVCRyuNwa",
-						"title": "Replace or augment your VPN",
-						"copy": "- Protect applications with identity, posture, and context-driven rules\n- Enforce consistent default-deny, least privilege access controls across cloud, on-premise and SaaS applications\n- Integrate flexibly your preferred identity and endpoint security provider",
+						"contentfulId": "1jVODUDCgmqf91dpwFdCJB",
+						"title": "Top use cases",
+						"copy": "- __Secure access__ - Simultaneously improve user experience and accelerate IT integration while securing access between any user and app, on any device, in any location, without a VPN.\n- __Threat defense__ - Defend against multi-channel phishing and ransomware threats across distributed workplaces and remote workers.\n- __Secure with Microsoft__ - Simply eliminate implicit trust within cloud email and productivity suites while bolstering them — like Microsoft and other SaaS security.\n",
 						"toggleText": null,
 						"button": null,
-						"learnMoreUrl": null,
-						"learnMoreText": null,
+						"learnMoreUrl": "/solutions/secure-hybrid-work/",
+						"learnMoreText": "Explore hybrid work use cases",
 						"link": null,
-						"subheadline": "Zero Trust access for any user to any application",
-						"button1Text": "Learn how with our ZTNA service",
-						"button1Url": "/products/zero-trust/access",
-						"button1Color": "blue",
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "[path]/Zero_Trust_application_access_-_CF1_Week_2022.svg"
-							}
-						},
-						"imageAssetFile": null,
-						"featureList": null,
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": "Key Use Case",
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "light-blue",
-						"bladeBorder": "none",
-						"imagePosition": true,
-						"imageSize": null,
-						"imageTextAlignment": null,
-						"togglesTo": null
-					},
-					{
-						"contentfulId": "6NoS9sEyxYiYyEKApJtbzD",
-						"title": "Protect users and data from Internet threats",
-						"copy": "- Block phishing and malware before they strike\n- Isolate browsing activity from corporate endpoints\n- Start with DNS filtering to achieve quick time-to-value for remote or office users. Deliver more comprehensive security with HTTP inspection and isolation for all Internet activity.",
-						"toggleText": null,
-						"button": null,
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": null,
-						"subheadline": "Filter, inspect, and isolate Internet-bound traffic.",
-						"button1Text": "Learn how with our Secure Web Gateway",
-						"button1Url": "/products/zero-trust/gateway",
-						"button1Color": "blue",
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "[path]/cloudflare-dns-filtering-spot-illustration.svg"
-							}
-						},
-						"imageAssetFile": null,
-						"featureList": null,
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": "Key Use Case",
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "light-blue",
-						"bladeBorder": "border-top",
-						"imagePosition": false,
-						"imageSize": null,
-						"imageTextAlignment": null,
-						"togglesTo": null
-					},
-					{
-						"contentfulId": "WfzMpKiWsA6vw1jRaTGbd",
-						"title": "Streamline SaaS security",
-						"copy": "- Mitigate the risks of Shadow IT with controls for unsanctioned SaaS apps and logs for every HTTP request\n- Apply tenant and data protection controls for SaaS apps\n- Scan SaaS apps via API integration for misconfigurations, improper access, and other risks to protect data at rest.",
-						"toggleText": null,
-						"button": null,
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": null,
-						"subheadline": "More visibility and control, with less overhead",
-						"button1Text": "Learn how with our CASB",
-						"button1Url": "/products/zero-trust/casb",
-						"button1Color": "blue",
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
 						"button2Text": null,
 						"button2Url": null,
 						"button2Color": null,
@@ -6209,24 +5978,382 @@
 						"streamThumbnails": null,
 						"streamPoster": null,
 						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "[path]/SaaS-Whitepaper-CASB.svg"
-							}
+						"image": null,
+						"imageAssetFile": {
+							"id": "f68a4f3e-8d25-52d6-af0d-47f4d140cfc3",
+							"altText": "Cloudflare Zero Trust",
+							"title": "Cloudflare Zero Trust",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "[path]/SaaS-remote-work-hero__1_.svg"
+								}
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
 						},
-						"imageAssetFile": null,
 						"featureList": null,
 						"contentTypeId": "bladeImageText",
-						"sectionTitle": "Key Use Case",
+						"sectionTitle": "Secure hybrid work ",
 						"htmlId": null,
 						"titleSize": null,
 						"sectionPadding": null,
-						"backgroundColor": "light-blue",
+						"backgroundColor": "white",
 						"bladeBorder": "none",
 						"imagePosition": true,
-						"imageSize": null,
+						"imageSize": "medium",
 						"imageTextAlignment": null,
 						"togglesTo": null
+					},
+					{
+						"contentfulId": "3OXUaVkH7Lc4mwUrrAJL1V",
+						"backgroundColor": "light-blue",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": "ztfeatures",
+						"copy": "Ensure all traffic in and out of your business is verified and authorized. Check dynamic context to \"never trust and always verify\" every request.",
+						"title": "Modernize security on your journey to Zero Trust",
+						"subtitle": "Cloudflare Zero Trust Platform",
+						"bladeStyle": null,
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "FPtUs0zA9VFc2JLpRH4vb",
+								"title": "Zero Trust Network Access (ZTNA)",
+								"titleSize": "small",
+								"description": "Enforce default-deny, Zero Trust rules for users accessing all your applications, faster and safer than a VPN.",
+								"learnMoreUrl": "/products/zero-trust/access/",
+								"learnMoreText": "Learn more",
+								"displayBorder": null,
+								"openLinkInNewTab": null,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "87f9101d-857c-5202-9a77-f2f35ff7e4a9",
+									"altText": "Cloudflare access blue",
+									"title": "Cloudflare access blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 1409,
+										"height": 192,
+										"width": 192,
+										"filename": "cloudflare-access-blue.svg",
+										"file": {
+											"publicURL": "[path]/cloudflare-access-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1F64MGRdLakpG8UTBFBVx4",
+								"title": "Secure Web Gateway (SWG)",
+								"titleSize": "small",
+								"description": "Secure and inspect corporate Internet traffic to help prevent phishing, ransomware, and other Internet risks.",
+								"learnMoreUrl": "/products/zero-trust/gateway/",
+								"learnMoreText": "Learn more",
+								"displayBorder": null,
+								"openLinkInNewTab": null,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "128fa0bd-6d49-5037-8a08-fa22ab772b83",
+									"altText": "Cloudflare gateway blue",
+									"title": "Cloudflare gateway blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 487,
+										"height": 192,
+										"width": 192,
+										"filename": "cloudflare-gateway-blue.svg",
+										"file": {
+											"publicURL": "[path]/cloudflare-gateway-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2jcXTY5iYuRaBlVvgeGgyc",
+								"title": "Remote Browser Isolation (RBI)",
+								"titleSize": null,
+								"description": "Provide Internet threat and data protection by running code away from endpoints, without sacrificing performance. ",
+								"learnMoreUrl": "/products/zero-trust/browser-isolation/",
+								"learnMoreText": "Learn more",
+								"displayBorder": null,
+								"openLinkInNewTab": null,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "953cbaaa-193d-59ff-9633-351fbea8ef99",
+									"altText": "Cloudflare browser blue",
+									"title": "Cloudflare browser blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 1201,
+										"height": 192,
+										"width": 192,
+										"filename": "cloudflare-browser-blue.svg",
+										"file": {
+											"publicURL": "[path]/cloudflare-browser-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "57TjC4i13hulVu3OXV9LUd",
+								"title": "Cloud Access Security Broker (CASB)",
+								"titleSize": null,
+								"description": "Easily secure SaaS tools, granularly control user access, and protect sensitive data.",
+								"learnMoreUrl": "/products/zero-trust/casb/",
+								"learnMoreText": "Learn more",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "c3584ce8-4945-5445-b102-95fd01ba0d50",
+									"altText": "Cloudflare Cloud Access Security Broker (CASB)",
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/icon_cloudflare-gateway_blue.svg"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3Z5qJo4EFzMKkKUPWXayDV",
+								"title": "Cloud Email Security",
+								"titleSize": "small",
+								"description": "Preemptively protect your users from phishing, business email compromise (BEC), and email supply chain attacks.",
+								"learnMoreUrl": "/products/zero-trust/email-security/",
+								"learnMoreText": "Learn more",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "01febf6d-9b4b-5599-be2c-ea57390b4094",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/spam-email-48px.svg"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "41Tdsj4CvN9z280wnyJrAw",
+								"title": "Data Loss Prevention (DLP)",
+								"titleSize": "small",
+								"description": "Inspect HTTP/S traffic for sensitive data like PII and prevent exfiltration with allow or block policies.",
+								"learnMoreUrl": "/products/zero-trust/dlp/",
+								"learnMoreText": "Learn more",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "a2e13743-df8f-5dc4-b0d0-7886c680972f",
+									"altText": null,
+									"title": "Security Safe",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/security-safe-48px.svg"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						]
+					},
+					{
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "6fWSMw3ba5tqQ9txwiOuS6",
+						"buttonExtraClass": null,
+						"buttonColor": "orange",
+						"buttonColor2": "orange",
+						"title": "Tackle Zero Trust one step at a time",
+						"backgroundColor": "blue",
+						"buttonText": "Talk to an Expert",
+						"buttonUrl": "https://www.cloudflare.com/products/zero-trust/plans/enterprise/",
+						"buttonText2": "Compare All Plans",
+						"buttonModalId2": null,
+						"buttonUrl2": "https://www.cloudflare.com/plans/zero-trust-services/",
+						"bladeSizeType": "small",
+						"htmlId": null,
+						"textColor": "white",
+						"bladeBorder": "border",
+						"buttonOne": null,
+						"buttonTwo": null,
+						"sectionPadding": null
+					},
+					{
+						"contentfulId": "12W5cZrVjDtciKv0uPuIXw",
+						"backgroundColor": "white",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
+						"copy": null,
+						"title": null,
+						"subtitle": "THE CLOUDFLARE DIFFERENCE",
+						"bladeStyle": null,
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3hcWA3pe5D6mDLhjRmePCi",
+								"title": "Simple, flexible architecture",
+								"titleSize": "small",
+								"description": "Fast-track your journey to secure any-to-any connectivity. Cloudflare uniformly connects and secures end-to-end using one network and control plane.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "11e03783-c55c-582e-b490-3eab11cac88b",
+									"altText": "Ease of use blue",
+									"title": "Ease of use blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 1444,
+										"height": 192,
+										"width": 192,
+										"filename": "ease-of-use-blue.svg",
+										"file": {
+											"publicURL": "[path]/ease-of-use-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4DBeWwHL8btOaeAinTV6Fy",
+								"title": "Trusted, secure connectivity",
+								"titleSize": "small",
+								"description": "Ensure reliable and scalable network connectivity with consistent protection from any location. Deliver Zero Trust for your business using the same Cloudflare proxies that route ~20% of all websites.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "799c866d-69a4-5646-b6bb-5261eae7cb14",
+									"altText": "Network scale blue",
+									"title": "Network scale blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 5263,
+										"height": 192,
+										"width": 192,
+										"filename": "network-scale-blue.svg",
+										"file": {
+											"publicURL": "[path]/network-scale-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1NhBKQJaGEdXfS7EDOw8bT",
+								"title": "Faster, future-proof innovation",
+								"titleSize": "small",
+								"description": "Stay ahead of modern business needs to secure your future. Cloudflare is known to build and ship quickly, achieving rapid, native adoption of new Internet and security standards.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "b1b7275d-3503-5173-a651-9cfd70157c3c",
+									"altText": "Performance acceleration rocket blue",
+									"title": "Performance acceleration rocket blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 1970,
+										"height": 192,
+										"width": 192,
+										"filename": "performance-acceleration-rocket-blue.svg",
+										"file": {
+											"publicURL": "[path]/performance-acceleration-rocket-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						]
 					},
 					{
 						"contentfulId": "OqtNu5OeDvqqmPWlZNhmB",
@@ -6268,163 +6395,6 @@
 						"imageSize": "medium",
 						"imageTextAlignment": null,
 						"togglesTo": null
-					},
-					{
-						"contentTypeId": "bladeRichTextColumnGroup",
-						"contentfulId": "2u9eKOChYwT2BxvnNeehQA",
-						"htmlId": null,
-						"mainHeadline": "Deployment outcomes: Save time and money with Zero Trust",
-						"backgroundColor": "light-blue",
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"columnLayout": "One Column Wide",
-						"columns": [
-							{
-								"contentTypeId": "elementRichText",
-								"contentfulId": "6gJ8d52H0dNlA4m7W57v3Q",
-								"title": null,
-								"column": {
-									"nodeType": "document",
-									"content": [
-										{
-											"nodeType": "embedded-asset-block",
-											"data": {
-												"target": {
-													"sys": {
-														"id": "1TR8p1tymPJ92LliWzphJj",
-														"type": "Link",
-														"linkType": "Asset"
-													},
-													"related_asset": [
-														{
-															"contentfulId": "1TR8p1tymPJ92LliWzphJj",
-															"locale": "en-US",
-															"title": "Deployment Outcomes ROI of Zero Trust - Web SGV (Q2 2022)",
-															"file": {
-																"name": "Deployment_Outcomes_ROI_of_Zero_Trust_-_Web_SGV__Q2_2022_",
-																"publicURL": "[path]/Deployment_Outcomes_ROI_of_Zero_Trust_-_Web_SGV__Q2_2022_.svg",
-																"internal": {
-																	"mediaType": "image/svg+xml"
-																}
-															}
-														}
-													],
-													"entry_elementMarkdown": [],
-													"entry_assetFile": [],
-													"entry_button": [],
-													"entry_elementLink": [],
-													"entry_page": [],
-													"entry_elementIcon": [],
-													"entry_bladeTable": [],
-													"entry_bladeThreeFeatures": [],
-													"entry_bladeFourFeatures": []
-												},
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": []
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "",
-													"marks": [],
-													"content": null
-												}
-											]
-										}
-									]
-								}
-							}
-						]
-					},
-					{
-						"contentTypeId": "bladeEnablement",
-						"contentfulId": "51GHbH6MerQgXszZcoSnma",
-						"buttonExtraClass": null,
-						"buttonColor": "orange",
-						"buttonColor2": "orange",
-						"title": "Ready to tackle a Zero Trust use case?",
-						"backgroundColor": "blue",
-						"buttonText": null,
-						"buttonUrl": null,
-						"buttonText2": null,
-						"buttonModalId2": null,
-						"buttonUrl2": null,
-						"bladeSizeType": "small",
-						"htmlId": null,
-						"textColor": "white",
-						"bladeBorder": "none",
-						"buttonOne": {
-							"buttonAssetFile": null,
-							"buttonWidth": "narrow",
-							"buttonColor": "orange",
-							"buttonTextLoggedIn": null,
-							"contentTypeId": "button",
-							"contentfulId": "3xdFhj9Cyw7GZCAKCabZVa",
-							"elementName": "Zero Trust / Teams- Contact Us",
-							"standardText": null,
-							"text": "Talk to an expert",
-							"url": null,
-							"loggedInUrl": null,
-							"modal": {
-								"contentTypeId": "formModal",
-								"contentfulId": "32lRbGoNPloHxSaXZJnGh6",
-								"modalName": "Teams Ent Plan - Contact Us ",
-								"modalId": "teams-ent-plan-contact-us",
-								"modalType": "single-form",
-								"marketoForm": {
-									"contentTypeId": "marketoEmbeddedForm",
-									"contentfulId": "1ujDGExdXSfyindmg265xQ",
-									"bladeName": "Teams Ent Plan - Contact us",
-									"backgroundColor": "white",
-									"marketoFormId": 1341,
-									"marketoFormLeadSource": "Inbound - Web Form",
-									"marketoFormLeadSourceDetail": "[ACQ] Q3'20 WEB - Teams Contact Us - Ent Plan",
-									"marketoFormHeaderText": "Cloudflare Zero Trust",
-									"marketoFormDefaultComment": "Cloudflare Zero Trust demo request",
-									"showCommentBox": true,
-									"marketoFormThankYouText": null,
-									"marketoFormCustomSuccessMessage": null,
-									"marketoFormPdfDownload": null,
-									"marketoFormPdfDownloadI18n": null,
-									"marketoFormAssetDownloadButtonText": null,
-									"marketoFormSuccessRedirectUrl": null,
-									"sendAdRoll": null,
-									"meta_adRollCustomSegment": null,
-									"enableSandbox": null,
-									"marketoFormSubmitButtonText": "Contact us",
-									"marketoFormSubmitButtonColor": "blue",
-									"enableEmailVerification": null,
-									"disableEnterpriseEmailNotification": null,
-									"enableRingout": null
-								},
-								"title": "Request a Zero Trust discussion",
-								"regularCopy": "Fill out the form below, and an expert from our team will get in touch to schedule a customized discussion of your Zero Trust journey and how Cloudflare may be able to help.",
-								"splitFormDefaultTab": null,
-								"selfServeTabText": null,
-								"selfServeCopy": null,
-								"enterpriseTabText": null,
-								"enterpriseCopy": null
-							},
-							"openInNewTab": false,
-							"locale": "en-US"
-						},
-						"buttonTwo": null,
-						"sectionPadding": null
 					},
 					{
 						"contentfulId": "58IqLasOeSF6qn8q52LbXT",
@@ -6759,12 +6729,33 @@
 						"logoUrlList": null
 					},
 					{
-						"contentfulId": "1rtOUHu3QkpDQTVS4kZR2t",
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "6fWSMw3ba5tqQ9txwiOuS6",
+						"buttonExtraClass": null,
+						"buttonColor": "orange",
+						"buttonColor2": "orange",
+						"title": "Tackle Zero Trust one step at a time",
+						"backgroundColor": "blue",
+						"buttonText": "Talk to an Expert",
+						"buttonUrl": "https://www.cloudflare.com/products/zero-trust/plans/enterprise/",
+						"buttonText2": "Compare All Plans",
+						"buttonModalId2": null,
+						"buttonUrl2": "https://www.cloudflare.com/plans/zero-trust-services/",
+						"bladeSizeType": "small",
+						"htmlId": null,
+						"textColor": "white",
+						"bladeBorder": "border",
+						"buttonOne": null,
+						"buttonTwo": null,
+						"sectionPadding": null
+					},
+					{
+						"contentfulId": "7GOX1iHByt4ajyQwbZHd9J",
 						"backgroundColor": "light-blue",
 						"contentTypeId": "bladeFourFeatures",
 						"htmlId": null,
 						"copy": null,
-						"title": "Resources",
+						"title": "Additional resources",
 						"subtitle": null,
 						"bladeStyle": "Feature Blocks - 4 columns",
 						"bladeBorder": "none",
@@ -6775,175 +6766,25 @@
 						"features": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "77IyOZ6d1h7EZo8B3o2gHf",
-								"title": "Cloudflare Zero Trust overview",
-								"titleSize": null,
-								"description": "Learn more about the benefits, features, and deployment outcomes of Cloudflare's Zero Trust platform.",
-								"learnMoreUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7oicnCVm9er8tbGgIR3JTV/292a4d7ef97ce11f82d343fd1a1413e8/Product_Brief__Cloudflare_Zero_Trust__2022_Q2_.pdf",
-								"learnMoreText": "Download brief",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": {
-									"id": "0dd221e8-78f7-5cfa-b0cb-f1c98d71180c",
-									"altText": "A Bridge to Zero Trust",
-									"title": "A Bridge to Zero Trust",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "[path]/Bridge_to_Zero_Trust_.png"
-										}
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "3AtMTJYDOfCaT0ThRMjAwn",
-								"title": "Zero Trust Roadmap",
-								"titleSize": null,
-								"description": "Learn how to transform your security with Zero Trust with practical steps and implementation timelines in this vendor agnostic roadmap.",
-								"learnMoreUrl": "https://zerotrustroadmap.org/",
-								"learnMoreText": "Start your Zero Trust journey",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": {
-									"id": "d0740fb7-ea9f-5bd1-9abc-5b95fc4ff080",
-									"altText": "Cloudflare Zero Trust, SASE and SSE",
-									"title": "Zero Trust, SASE and SSE Image",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "[path]/sse-image.png"
-										}
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "l2AwffYVImarew0V8pMhl",
-								"title": "ROI of Zero Trust",
-								"titleSize": null,
-								"description": "Learn 5 ways that Zero Trust security saves your business time and money, while reducing your attack surface.",
-								"learnMoreUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4Ed2Thwhap1IPJyLozcVBU/1334f9657a2564c7b4e194fdaa263811/Cloudflare_Infographic_ROI_Zero_Trust.pdf",
-								"learnMoreText": "Download infographic",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": {
-									"id": "9c866dd3-3ac2-5339-a3d8-1820901045f0",
-									"altText": null,
-									"title": null,
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "[path]/ROI_of_Zero_Trust_Thumbnail.jpg"
-										}
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "1NuKp21aucaDvbk0lS2ZiK",
-								"title": "Simpler, more effective threat defense",
-								"titleSize": null,
-								"description": "Learn how Cloudflare Zero Trust provides simpler and more effective threat defense than legacy approaches.",
-								"learnMoreUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/40ax6iG81TShxqv86e832F/a2dc7480c1612ef4af534b068d9a2a7f/Threat_Defense_with_Cloudflare_Zero_Trust_Solution_Brief.pdf",
-								"learnMoreText": "Download solution brief",
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": {
-									"id": "fd32676c-c3e7-5e16-aff2-d212225fb463",
-									"altText": null,
-									"title": null,
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "[path]/illustration-threat-defense-solution-brief_3x.png"
-										}
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "5jajdMEEU35sikwrN0dL12",
-								"title": "Forrester's best practices for implementing Zero Trust",
+								"contentfulId": "EZZlcP6Knv4h9OTTEjXbF",
+								"title": "Vendor-agnostic roadmap to Zero Trust architecture",
 								"titleSize": "small",
-								"description": "Our CEO and Forrester discusses Zero Trust security, common roadblocks, and what the most successful deployments have in common",
-								"learnMoreUrl": "https://cloudflare.tv/event/7wgQxrk5v3EyxaGAvF2FzV",
-								"learnMoreText": "Tune In",
-								"displayBorder": true,
-								"openLinkInNewTab": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": {
-									"id": "196f472e-7a2a-56e8-8a34-adf96a0d51bc",
-									"altText": "Cloudflare TV Header",
-									"title": "Cloudflare TV Header",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "[path]/CFTV.png"
-										}
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "2yEeLZmT9hkZaFtW8H9DCF",
-								"title": "Updates from Cloudflare One Week 2022 (June 19-24)",
-								"titleSize": null,
-								"description": "Learn about best practices and new Zero Trust capabilities to accelerate your security modernization. ",
-								"learnMoreUrl": "https://www.cloudflare.com/cloudflare-one-week/",
-								"learnMoreText": "Learn more",
+								"description": "Navigate your Zero Trust journey with this vendor-agnostic roadmap and example implementation timeline.",
+								"learnMoreUrl": "https://cfl.re/architecture-roadmap",
+								"learnMoreText": "Read the roadmap guide",
 								"displayBorder": false,
 								"openLinkInNewTab": null,
 								"icon": null,
 								"iconAssetFile": null,
 								"imageAssetFile": {
-									"id": "587830ad-1e69-532b-9d20-789203fa2b4d",
-									"altText": "Cloudflare One Week 2022",
-									"title": "Cloudflare One Week 2022",
+									"id": "9da32834-5eb5-5873-9cfe-d7fafcca865e",
+									"altText": null,
+									"title": "Zero Trust architecture roadmap - image",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "[path]/CF1-Week-OG.png"
+											"publicURL": "[path]/Zero_Trust_roadmap_-_image.png"
 										}
 									},
 									"brandfolderAsset": null,
@@ -6955,25 +6796,25 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "c2QZekdFCFpHvxjzdOzEQ",
-								"title": "Security Services Edge (SSE)",
-								"titleSize": null,
-								"description": "For organizations exploring SSE, a conceptual model to consolidate point solutions and deliver unified security in the cloud.",
-								"learnMoreUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4G2dUW2P440pOE6hAQB8g6/465513a68423e280fb12adb583d3bdc4/SSE_Brief_-_Cloudflare_One_Week_2022.pdf",
-								"learnMoreText": "Download solution brief",
+								"contentfulId": "4XyWRey2c7Df6SIANZOWjj",
+								"title": "Top 10 productivity improvements of Zero Trust",
+								"titleSize": "small",
+								"description": "Learn how Zero Trust unlocks productivity across the organization for IT / security admins and end users.",
+								"learnMoreUrl": "https://cfl.re/zero-trust-productivity-improvements",
+								"learnMoreText": "Read solution brief",
 								"displayBorder": false,
 								"openLinkInNewTab": null,
 								"icon": null,
 								"iconAssetFile": null,
 								"imageAssetFile": {
-									"id": "3e80dfad-075e-50a8-8814-0f1f279e9fb7",
-									"altText": "Cloudflare one week 2022 - PDF 1",
-									"title": "Cloudflare one week 2022 - PDF 1",
+									"id": "4af12f87-387b-5a8d-885f-d52af8086d76",
+									"altText": null,
+									"title": "Zero Trust - Team Productivity - Image",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "[path]/Welcome_to_Security_Week.png"
+											"publicURL": "[path]/Team_Productivity_-_Zero_Trust_image.png"
 										}
 									},
 									"brandfolderAsset": null,
@@ -6985,12 +6826,42 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "3tJ5CsbhqxQsiJ81tQ5run",
-								"title": "Foundational concepts: Zero Trust, SASE and SSE",
-								"titleSize": null,
-								"description": "Understand the Zero Trust, SASE and SSE capabilities included in the Cloudflare One platform.",
-								"learnMoreUrl": "https://blog.cloudflare.com/zero-trust-sase-and-sse-foundational-concepts-for-your-next-generation-network/",
-								"learnMoreText": "Read blog post",
+								"contentfulId": "u3lB5OYtESxXuf5d0AdK4",
+								"title": "How Zero Trust reduces risk and improves tech efficiency",
+								"titleSize": "small",
+								"description": "See how Zero Trust reduces risk and improves tech efficiency, so you can secure more with less overhead.",
+								"learnMoreUrl": "https://cfl.re/zero-trust-reduce-risk-improve-efficiency",
+								"learnMoreText": "Read solution brief",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "724a706d-ce29-544b-b41f-ebbff7e1c839",
+									"altText": null,
+									"title": "Zero Trust - VPN Replacement - Image",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Tech_efficiency_-_Zero_Trust_image.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1JwbqzSbKhMAM0dWowxksc",
+								"title": "Secure hybrid work for any user, device, or location",
+								"titleSize": "small",
+								"description": "Read how both digital natives and mature enterprises have secured hybrid work across industries.",
+								"learnMoreUrl": "https://cfl.re/secure-hybrid-work-solution-brief",
+								"learnMoreText": "Read solution brief",
 								"displayBorder": false,
 								"openLinkInNewTab": null,
 								"icon": null,
@@ -7015,12 +6886,102 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "4ZbgYJMKx2CpPAqEhpXg97",
-								"title": "How to augment or replace your VPN with Cloudflare",
+								"contentfulId": "5zhU4kXqeU9B8NWFxmzKdW",
+								"title": "Overview of Internet-native architecture",
 								"titleSize": null,
-								"description": "Offloading key applications from your traditional VPN to a cloud-native ZTNA service like Cloudflare Access is a great place to start with Zero Trust",
-								"learnMoreUrl": "https://blog.cloudflare.com/how-to-augment-or-replace-your-vpn/",
-								"learnMoreText": "Read blog post",
+								"description": "Learn how interconnectivity, composability, and interwoven security and networking boost your business.",
+								"learnMoreUrl": "http://cfl.re/internet-native",
+								"learnMoreText": "Read the solution brief",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "0d703e12-e234-598d-8bfa-45b982470d7a",
+									"altText": "CIO Week 2023 Recap",
+									"title": "CIO Week 2023 Recap",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/CIO_Week_2023_Recap.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5EF3bxfGKaqCId3f8APZK5",
+								"title": "Reference architecture for Internet-native transformation",
+								"titleSize": null,
+								"description": "Read how Cloudflare on-ramps and services all work together to future-proof your architecture.",
+								"learnMoreUrl": "https://cfl.re/architecture-reference",
+								"learnMoreText": "Read the whitepaper",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "09b841b7-226a-5770-9e95-0e4453161097",
+									"altText": "Securing Cloudflare with Cloudflare",
+									"title": "Securing Cloudflare with Cloudflare",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Securing_Cloudflare_with_Cloudflare.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1tRyb3mK3tQ36fGgU6mMV9",
+								"title": "Comparing Cloudflare vs. Zscaler",
+								"titleSize": null,
+								"description": "See why simple deployment, network resiliency, and quick innovation provide a stronger foundation.",
+								"learnMoreUrl": "https://www.cloudflare.com/products/zero-trust/cloudflare-vs-zscaler/",
+								"learnMoreText": "Read the comparison",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "b1f59501-cf17-5837-969c-8b01c44c05f2",
+									"altText": "Cloudflare One Week 2022 - Blog 1227 - CF1 vs Zscaler Image",
+									"title": "Cloudflare One Week 2022 - Blog 1227 - CF1 vs Zscaler Image",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/scales.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1nM0UO5Tvd6XUTr0odrhrX",
+								"title": "Overview of Cloudflare's Zero Trust platform",
+								"titleSize": null,
+								"description": "Learn how Cloudflare Zero Trust increases visibility, eliminates complexity, and reduces risk.",
+								"learnMoreUrl": "https://cfl.re/zero-trust-product-brief",
+								"learnMoreText": "Read the product brief",
 								"displayBorder": false,
 								"openLinkInNewTab": null,
 								"icon": null,
@@ -7042,89 +7003,14 @@
 								"streamId": null,
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "3mD2ehFDAs6sIgYKZ7B3mv",
-								"title": "100% year over year customer growth",
-								"titleSize": null,
-								"description": "Continued innovation in our Zero Trust platform to secure a company's applications, devices, and networks",
-								"learnMoreUrl": "https://www.cloudflare.com/press-releases/2022/cloudflare-expands-its-zero-trust-platform/",
-								"learnMoreText": "Read press release",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": {
-									"id": "c8992654-1850-5cbf-81c6-33b389fb98c1",
-									"altText": "Press Release Header",
-									"title": "Press Release Header",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "[path]/press-releases.png"
-										}
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "QDBRonaHoqVv2b74lzuwk",
-								"title": "What is Zero Trust?",
-								"titleSize": null,
-								"description": "Learn more about the technologies and principles behind the Zero Trust security model.",
-								"learnMoreUrl": "https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/",
-								"learnMoreText": "Learn More",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": {
-									"id": "b9b9098e-0f0f-529f-95d6-bd7f1d909ab6",
-									"altText": "What is Zero Trust?",
-									"title": "Zero Trust image",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "[path]/Tech_efficiency_-_Zero_Trust_image.png"
-										}
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
 							}
 						]
 					},
 					{
-						"contentTypeId": "bladeEnablement",
-						"contentfulId": "6JO2wFqN6AWXitR2Bx3Dc4",
-						"buttonExtraClass": null,
-						"buttonColor": "orange",
-						"buttonColor2": "orange",
-						"title": "Start your Zero Trust journey now. With Cloudflare's free plan, your first 50 seats are free.",
-						"backgroundColor": "blue",
-						"buttonText": "Sign Up Now",
-						"buttonUrl": "https://dash.cloudflare.com/sign-up/teams",
-						"buttonText2": "Contact us",
-						"buttonModalId2": "teams-ent-plan-contact-us",
-						"buttonUrl2": "#",
-						"bladeSizeType": "large",
-						"htmlId": null,
-						"textColor": "white",
-						"bladeBorder": "none",
-						"buttonOne": null,
-						"buttonTwo": null,
-						"sectionPadding": null
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "cppoL9hrQDDGfC8WAknzw",
+						"htmlContent": "<p class=\"body-3 gray1 pt3\">Gartner Peer Insights Customers' Choice constitute the subjective opinions of individual end-user reviews, ratings, and data applied against a documented methodology; they neither represent the views of, nor constitute an endorsement by, Gartner or its affiliates. </p>",
+						"htmlId": null
 					}
 				],
 				"noindex": false,
@@ -7182,7 +7068,7 @@
 		"pageContext": {
 			"locale": "en-US",
 			"pathname": "/products/zero-trust/",
-			"contentfulId": "58nzFbmrbTUS2H5Y3Em1G8",
+			"contentfulId": "3hmQ36UrnKF3tBmQkWjxKe",
 			"allowedHrefLangs": [
 				"en-US",
 				"zh-CN",
@@ -7194,9 +7080,6 @@
 				"ko-KR",
 				"pt-BR",
 				"es-ES",
-				"nl-NL",
-				"th-TH",
-				"vi-VN",
 				"zh-Hans-CN"
 			],
 			"hasPsaBanner": false,
