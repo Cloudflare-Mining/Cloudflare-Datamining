@@ -27,7 +27,7 @@
 	<p>It's not <em>always</em> possible to perfectly distinguish an attack from valid packets, but very often it is. This realization led us to develop an attack mitigation tool based on p0f SYN signatures. With this we can ask <code>iptables</code> to rate limit only the selected attack signatures.</p>
 	<p>But before we discuss the mitigations, let's explain the signature format.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2016/08/640px-12-8_equals_4-4_drum_pattern.png" alt=""><br>
-		<small><a href="https://creativecommons.org/licenses/by-sa/3.0/" title="Creative Commons Attribution-Share Alike 3.0" target="_blank">CC BY-SA 3.0</a> <a href="https://commons.wikimedia.org/w/index.php?curid=17871154" target="_blank">image</a> by <a href="//en.wikipedia.org/wiki/User:Hyacinth" class="extiw" title="en:User:Hyacinth" target="_blank">Hyacinth</a> at the <a href="//en.wikipedia.org/wiki/" class="extiw" title="w:" target="_blank">English language Wikipedia</a></small>
+		<small><a href="http://creativecommons.org/licenses/by-sa/3.0/" title="Creative Commons Attribution-Share Alike 3.0" target="_blank">CC BY-SA 3.0</a> <a href="https://commons.wikimedia.org/w/index.php?curid=17871154" target="_blank">image</a> by <a href="//en.wikipedia.org/wiki/User:Hyacinth" class="extiw" title="en:User:Hyacinth" target="_blank">Hyacinth</a> at the <a href="//en.wikipedia.org/wiki/" class="extiw" title="w:" target="_blank">English language Wikipedia</a></small>
 	</p>
 	<h2 id="signature">Signature</h2>
 	<p>As mentioned, the p0f SYN signature is a colon-separated string with the following parts:</p>

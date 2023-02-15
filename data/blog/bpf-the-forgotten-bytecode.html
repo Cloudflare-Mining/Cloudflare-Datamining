@@ -12,7 +12,7 @@
 		basic debugging.</p>
 	<p>For this reason operating systems developed APIs for packet sniffing. But, as there wasn't any real standard for it every OS had to invent <a href="http://www.cs.columbia.edu/~nahum/w6998/lectures/vpk-columbia-nsdi-pf.pdf" target="_blank">a different API</a>: Sun’s STREAMS NIT, DEC's Ultrix Packet Filter, SGI’s Snoop and Xerox Alto had CMU/Stanford Packet Filter. This led to many complications. The simpler APIs just copied all the packets to the user space sniffer, which on a busy system resulted in a flood of useless work. The more complex APIs were able to filter packets before<br>
 		passing them to userspace, but it was often cumbersome and slow.</p>
-	<p>All this changed in 1993 when Steven McCanne and <a href="https://en.wikipedia.org/wiki/Van_Jacobson" target="_blank">Van Jacobson</a> published the paper introducing a better way of filtering packets in the kernel, they called it <a href="http://www.tcpdump.org/papers/bpf-usenix93.pdf" target="_blank">"The BSD Packet Filter" (BPF)</a>.</p>
+	<p>All this changed in 1993 when Steven McCanne and <a href="https://en.wikipedia.org/wiki/Van_Jacobson" target="_blank">Van Jacobson</a> published the paper introducing a better way of filtering packets in the kernel, they called it <a href="https://www.tcpdump.org/papers/bpf-usenix93.pdf" target="_blank">"The BSD Packet Filter" (BPF)</a>.</p>
 	<p>Since then <a href="https://en.wikipedia.org/wiki/Berkeley_Packet_Filter" target="_blank">the BPF</a> has taken the world by a storm and along with <code>libpcap</code> and <code>tcpdump</code> become the de-facto standard in network debugging.</p>
 	<h3 id="tcpdumpdissected">Tcpdump dissected</h3>
 	<p>Tcpdump is composed of three logical parts:</p>
@@ -68,7 +68,7 @@ setsockopt(sock, SOL_SOCKET, SO_ATTACH_FILTER, ...)
 		file. For the best performance one can use<br>
 		<a href="https://www.kernel.org/doc/Documentation/networking/packet_mmap.txt" target="_blank">a zero-copy <code>PACKET_MMAP</code> / <code>PACKET_RX_RING</code> interface</a>,<br>
 		though most people should probably stick to the<br>
-		<a href="http://www.tcpdump.org/manpages/pcap.3pcap.html" target="_blank">high level <code>libpcap</code> API</a>.
+		<a href="https://www.tcpdump.org/manpages/pcap.3pcap.html" target="_blank">high level <code>libpcap</code> API</a>.
 	</p>
 	<h3 id="thebpfbytecode">The BPF bytecode</h3>
 	<p>In essence Tcpdump asks the kernel to execute a BPF program within the<br>
