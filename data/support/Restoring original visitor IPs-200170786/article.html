@@ -11,13 +11,12 @@
 </div>
 <hr>
 <h2 id="cF7JFXws2pZ4bgu">Overview</h2>
-<p></p>
-<div class="cf-sidebar-2 cf-warning">Cloudflare no longer updates and supports <em>mod_cloudflare</em>, starting with versions <strong>Debian 9</strong> and <strong>Ubuntu 18.04 LTS</strong> of the Linux operating system. We now recommend <a href="https://support.cloudflare.com/hc/articles/200170786#C5XWe97z77b3XZV"><em>mod_remoteip</em></a> for customers using Apache web servers. Customers who are interested in building the <em>mod_cloudflare</em> package can <a href="https://github.com/cloudflare/mod_cloudflare">download the codebase</a> from GitHub.
-</div>
 <p>When your <a href="https://support.cloudflare.com/hc/articles/205177068">website traffic is routed through the Cloudflare network</a>, we act as a reverse proxy. This allows Cloudflare to speed up page load time by routing packets more efficiently and caching static resources (images, JavaScript, CSS, etc.). As a result, when responding to requests and logging them, your origin server returns a <a href="https://www.cloudflare.com/ips/">Cloudflare IP address</a>.</p>
 <p>For example, if you install applications that depend on the incoming IP address of the original visitor, a Cloudflare IP address is logged by default. The original visitor IP address appears in an appended HTTP header called <a href="https://support.cloudflare.com/hc/articles/200170986"><i>CF-Connecting-IP</i></a>. By following our <a href="https://support.cloudflare.com/hc/articles/200170786#JUxJSMn3Ht5c5yq">web server instructions</a>, you can log the original visitor IP address at your origin server. If this HTTP header is not available when requests reach your origin server, check your <a href="https://developers.cloudflare.com/rules/transform/">Transform Rules</a> and <a href="https://developers.cloudflare.com/rules/transform/managed-transforms/">Managed Transforms</a> configuration. </p>
 <p>The diagram below illustrates the different ways that IP addresses are handled with and without Cloudflare.</p><img src="https://images.ctfassets.net/slt3lc6tev37/1FajQF4usCDDGjiSWGPG5f/1e4f63012ad4b89a20fb4c917cab5b9e/Restoring_IPs__1_.png" alt="The diagram illustrates the different ways that IP addresses are handled with and without Cloudflare.">
 <p></p>
+<div class="cf-sidebar-2 cf-warning">Cloudflare no longer updates and supports <em>mod_cloudflare</em>, starting with versions <strong>Debian 9</strong> and <strong>Ubuntu 18.04 LTS</strong> of the Linux operating system. We now recommend <a href="https://support.cloudflare.com/hc/articles/200170786#C5XWe97z77b3XZV"><em>mod_remoteip</em></a> for customers using Apache web servers. Customers who are interested in building the <em>mod_cloudflare</em> package can <a href="https://github.com/cloudflare/mod_cloudflare">download the codebase</a> from GitHub.
+</div>
 <p></p>
 <hr>
 <h2 id="C5XWe97z77b3XZV">mod_remoteip</h2>
