@@ -63,8 +63,6 @@ components:
       - type
       - name
       - content
-    AccountRequestTracer_account_identifier:
-      $ref: '#/components/schemas/identifier'
     CAARecord:
       allOf:
       - $ref: '#/components/schemas/dns-record_components-schemas-base'
@@ -2548,11 +2546,7 @@ components:
               green_compute:
                 readOnly: true
     account_identifier:
-      type: string
-      description: The account identifier tag.
-      example: 023e105f4ecef8ad9ca31a8372d0c353
-      readOnly: true
-      maxLength: 32
+      $ref: '#/components/schemas/identifier'
     account_subscription_response_collection:
       allOf:
       - $ref: '#/components/schemas/api-response-collection'
@@ -5565,6 +5559,12 @@ components:
       description: The date and time the clip was created.
       example: "2014-01-02T02:20:00Z"
       readOnly: true
+    cloudflare-stream-client-api_account_identifier:
+      type: string
+      description: The account identifier tag.
+      example: 023e105f4ecef8ad9ca31a8372d0c353
+      readOnly: true
+      maxLength: 32
     cloudflare-stream-client-api_created:
       type: string
       format: date-time
@@ -9408,9 +9408,9 @@ components:
         minimum_cache_ttl:
           $ref: '#/components/schemas/minimum_cache_ttl'
         modified_on:
-          $ref: '#/components/schemas/modified_on'
+          $ref: '#/components/schemas/CloudflareClientAPI_modified_on'
         name:
-          $ref: '#/components/schemas/name'
+          $ref: '#/components/schemas/CloudflareClientAPI_name'
         negative_cache_ttl:
           $ref: '#/components/schemas/negative_cache_ttl'
         origin_ips:
@@ -11265,7 +11265,7 @@ components:
         mtu:
           $ref: '#/components/schemas/mtu'
         name:
-          $ref: '#/components/schemas/CloudflareClientAPI_name'
+          $ref: '#/components/schemas/name'
         ttl:
           $ref: '#/components/schemas/ttl'
     group:
@@ -14768,8 +14768,8 @@ components:
     modified_on:
       type: string
       format: date-time
-      description: Last modification of DNS Firewall cluster.
-      example: "2014-01-01T05:20:00.12345Z"
+      description: When the route was last modified.
+      example: "2017-06-14T05:20:00Z"
       readOnly: true
     modified_rules_count:
       type: number
@@ -14981,9 +14981,10 @@ components:
                   $ref: '#/components/schemas/route'
     name:
       type: string
-      description: DNS Firewall Cluster Name.
-      example: My Awesome DNS Firewall cluster
-      maxLength: 160
+      description: The name of the tunnel. The name cannot contain spaces or special
+        characters, must be 15 characters or less, and cannot share a name with another
+        GRE tunnel.
+      example: GRE_1
     name_servers:
       type: array
       description: List of name servers.
@@ -18909,7 +18910,7 @@ components:
         id:
           $ref: '#/components/schemas/identifier'
         modified_on:
-          $ref: '#/components/schemas/CloudflareClientAPI_modified_on'
+          $ref: '#/components/schemas/modified_on'
         nexthop:
           $ref: '#/components/schemas/nexthop'
         prefix:
@@ -24581,7 +24582,7 @@ components:
         mtu:
           $ref: '#/components/schemas/mtu'
         name:
-          $ref: '#/components/schemas/CloudflareClientAPI_name'
+          $ref: '#/components/schemas/name'
         ttl:
           $ref: '#/components/schemas/ttl'
     tunnel_connection:
@@ -25722,9 +25723,9 @@ components:
         minimum_cache_ttl:
           $ref: '#/components/schemas/minimum_cache_ttl'
         modified_on:
-          $ref: '#/components/schemas/modified_on'
+          $ref: '#/components/schemas/CloudflareClientAPI_modified_on'
         name:
-          $ref: '#/components/schemas/name'
+          $ref: '#/components/schemas/CloudflareClientAPI_name'
         negative_cache_ttl:
           $ref: '#/components/schemas/schemas-negative_cache_ttl'
         origin_ips:
