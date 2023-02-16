@@ -5,28 +5,37 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About the Role</strong></p>
-<p>We are looking for a software engineer to join our DevTools team; an energetic team focused on improving developer velocity and productivity through tooling and automation.</p>
-<p>You will work on a range of tools, infrastructure, and services - new and existing - with an aim to elegantly and efficiently solve problems and deliver practical, maintainable, and scalable solutions.</p>
-<p>Reliability, performance, and developer experience (DX) are critical factors to our CI/CD pipeline which you will help monitor, operate, and improve/optimize.&nbsp;</p>
-<p>Our tech stack includes modern DevOps tooling like Docker, Kubernetes, Salt, Go (golang), Python, PostgreSQL, Kafka, and the usual Unix/Linux tools and workflows.</p>
-<p><strong>Requirements</strong></p>
+<h4>About the department</h4>
+<p><span style="font-weight: 400;">Do you like working with and helping people? Are you interested in learning, development, and training? Are you excited about helping to develop a versatile technical team, and helping others to grow?&nbsp;&nbsp;</span></p>
+<p><span style="font-weight: 400;">We are seeking a Technical Trainer to join our support training team based in the US. You will work with our technical support engineers to help them develop new and expand existing skill sets. This is a position where you will be working directly with internal teams including, support, product, engineering, success, solutions, security and more.&nbsp;</span></p>
+<h4>What you'll do</h4>
 <ul>
-	<li>BA/BS in Computer Science or equivalent experience</li>
-	<li>2+ years professional experience as a Software Developer/Engineer</li>
-	<li>Knowledge of two or more mainstream programming languages (Go, C/C++, Python, PHP)</li>
-	<li>Proficiency with modern Unix/Linux operating systems/distributions</li>
-	<li>Experience with CI/CD, containers and/or virtualization, web servers, and databases</li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Deliver live, hands-on training</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Help to develop &amp; design training courses and labs</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Help to create training content</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Help to develop online trainings and e-learnings</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Build training lab environments</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Help to develop and deliver technical training for external audiences, such as customers and partners</span></li>
 </ul>
-<p><strong>Bonus</strong></p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Strong interpersonal and communication skills with a bias towards action</li>
-	<li>Professional experience as a Site Reliability Engineer (SRE)</li>
-	<li>Demonstrable experience with high-quality technical writing</li>
-	<li>Experience managing internal and/or external customer requirements and expectations</li>
-	<li>Experience defining SLOs/SLIs and implementing monitoring, alerting, and runbooks</li>
+	<li><span style="font-weight: 400;">Experience training other people</span></li>
+	<li><span style="font-weight: 400;">Innovative delivery of training</span></li>
+	<li><span style="font-weight: 400;">Technical support experience</span></li>
+	<li><span style="font-weight: 400;">Familiarity with most Cloudflare products, features, and services</span></li>
+	<li><span style="font-weight: 400;">Understanding of Cloudflare internal services and operations</span></li>
+	<li><span style="font-weight: 400;">Experience supporting web application and network infrastructure</span></li>
+	<li><span style="font-weight: 400;">Expert with Linux command line tools (cURL, dig, git, SQL)</span></li>
+	<li><span style="font-weight: 400;">Setting up virtual environments, web servers, and basic web development</span></li>
+	<li><span style="font-weight: 400;">Self-motivated, can positively influence the actions of others, team player</span></li>
 </ul>
-<p>&nbsp;</p>
+<p><strong>Bonus Points</strong></p>
+<ul>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You have studied education, or learning &amp; development</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You have been on a training team before</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You are fluent in another language</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You have an interest in web application security</span></li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
