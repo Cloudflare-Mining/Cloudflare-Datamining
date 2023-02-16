@@ -5,26 +5,34 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About the Department</strong></p>
-<p><span style="font-weight: 400;">The Security team at Cloudflare is focused and committed to helping secure both Cloudflare and our customers. The Application Security team at Cloudflare is focused on and committed to securing both Cloudflare and our customers. The Application Security team is responsible for keeping our products, and platforms secure.</span></p>
+<p><strong>About the team</strong></p>
+<p><span style="font-weight: 400;">The Support Operations Group is a small team of engineers and data scientists responsible for improving the efficiency of the Global Cloudflare Customer Support Team. Our team is responsible for a diverse mix of systems and network tooling that leverage machine learning to provide intelligent responses to Cloudflare customers' and diagnostics across the Cloudflare edge network</span><span style="font-weight: 400;">.</span></p>
+<p><span style="font-weight: 400;">This internship is targeting students with experience and interest in Software Engineering, Data Science (Machine Learning), or Data Analytics&nbsp;</span></p>
 <p><strong>What you’ll do</strong></p>
-<p><span style="font-weight: 400;">We are looking for a Security Engineer to help us in our mission to build a better internet. Part engineer, part hacker, you will work with our engineering and security teams to build solutions for .</span></p>
+<p><span style="font-weight: 400;">The wide variety in Cloudflare products and the broad technical focus of the team means you will have an opportunity to develop your skills in a number of ways. Every sprint will award you an opportunity to build technically innovative solutions while balancing big-picture goals. You will play an active part in shaping and designing systems, then execute the plan with talented engineers and data scientists. Together, you will create innovative and ambitious projects focused on helping Cloudflare customers and the global technical support team. These applications are composed of microservices, machine learning automations, and 3rd party integrations. The ideal candidate will participate in all stages of the software development lifecycle and be exposed to a wide range of technologies and programming languages, including Go, Python, Javascript, Cloudflare, Google Cloud Platform, PostgreSQL, Grafana, and Kubernetes.</span></p>
+<p><strong>Skills, Knowledge, and Experience</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Work with engineering teams to help secure Cloudflare products and platforms</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Assess products through threat modeling, code review and security testing. Also provide guidance on effective countermeasures</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Contribute to security architecture and assist in building and rolling out processes for secure code development and deployment</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Build secure frameworks &amp; libraries that engineering teams can use at scale</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Build internal security tools and automate processes that help fix security problems at a massive scale.&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Managing and prioritizing multiple tasks in accordance with high level objectives</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Pursuing degree in B.S. or M.S in Computer Science, Systems Engineering, or a related field</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Knowledge of modern enterprise data architectures, design patterns, and data toolsets and the ability to apply them</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Proficiency in data modeling techniques and understanding of normalization</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Excellent debugging and optimization skills</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Unit/integration testing experience</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong data visualization skills</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Creative problem solving skills and proactive learning</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with Go, Python, or Javascript.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Comfortable solving complex problems with relative independence.&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Familiar with distributed system design and implementation.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Exposure to containerization, Kubernetes and CI/CD systems.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">A good understanding of how the Internet works (DNS, HTTP(S), etc).</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience building infrastructure on Google Cloud Platform.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Effective communication of describing technical situations to a non-technical audience</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to manage deliverables and expectations across multiple key stakeholders</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Keen interest in customer support/customer experience</span></li>
 </ul>
-<p><strong>Key skill sets and Knowledge</strong></p>
-<p><span style="font-weight: 400;">Security engineers take part in a wide variety of tasks and projects on the team. One individual is not expected to know everything, but a working knowledge in several of the following areas is required:&nbsp;</span></p>
+<p><strong>Bonus Points</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience in securing large scale distributed systems</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience in designing, building and implementing systems</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong engineering background and programming experience (Python, Golang, Rust, Bash, etc.)</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong communication skills and ability to work with remote teams</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Results and goal-oriented</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience using Cloudflare’s products.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with Salesforce Service Cloud</span></li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>

@@ -5,26 +5,36 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About the Department</strong></p>
-<p><span style="font-weight: 400;">The Security team at Cloudflare is focused and committed to helping secure both Cloudflare and our customers. The Application Security team at Cloudflare is focused on and committed to securing both Cloudflare and our customers. The Application Security team is responsible for keeping our products, and platforms secure.</span></p>
-<p><strong>What you’ll do</strong></p>
-<p><span style="font-weight: 400;">We are looking for a Security Engineer to help us in our mission to build a better internet. Part engineer, part hacker, you will work with our engineering and security teams to build solutions for .</span></p>
+<p><strong>About the department</strong></p>
+<p><span style="font-weight: 400;">The Support team is composed of technical support engineers who are on the front lines helping customers manage billions of web requests each day, software engineers, data scientists, product specialists, data analysts, and program managers who help keep our organization running as smoothly and efficiently as possible. You will be part of our Program Management Office that drives Support’s biggest projects, process changes, and improvements.</span></p>
+<p><span style="font-weight: 400;">This internship is targeting students with experience and interest in Project Management, Program Management, Operations, or Marketing.</span></p>
+<h4><strong>What you'll do</strong></h4>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Work with engineering teams to help secure Cloudflare products and platforms</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Assess products through threat modeling, code review and security testing. Also provide guidance on effective countermeasures</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Contribute to security architecture and assist in building and rolling out processes for secure code development and deployment</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Build secure frameworks &amp; libraries that engineering teams can use at scale</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Build internal security tools and automate processes that help fix security problems at a massive scale.&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Managing and prioritizing multiple tasks in accordance with high level objectives</span></li>
+	<ul>
+		<li style="font-weight: 400;"><span style="font-weight: 400;">Create, define, project manage, execute, track, and report on major Support Team initiatives to successful completion; example projects include -&nbsp;</span></li>
+		<ul>
+			<li style="font-weight: 400;"><span style="font-weight: 400;">Building content for a public facing Support specific site on </span><a href="http://www.cloudflare.com"><span style="font-weight: 400;">www.cloudflare.com</span></a></li>
+			<li style="font-weight: 400;"><span style="font-weight: 400;">Defining new, paid support service offerings and bringing them to market</span></li>
+			<li style="font-weight: 400;"><span style="font-weight: 400;">Rolling out a content-driven Support workflow to improve agent efficiency and customer self-service</span></li>
+			<li style="font-weight: 400;"><span style="font-weight: 400;">Working cross-functionally with marketing, IT, and content teams to implement a new search tool across public-facing sites</span></li>
+		</ul>
+		<li style="font-weight: 400;"><span style="font-weight: 400;">Identify and document project risks, issues, and dependencies</span></li>
+		<li style="font-weight: 400;"><span style="font-weight: 400;">Ensure buy-in from project contributors, provide regular status updates to stakeholders and senior management, and develop messaging documents</span></li>
+		<li style="font-weight: 400;"><span style="font-weight: 400;">Communicate key findings to various stakeholders to facilitate decision-making</span></li>
+	</ul>
 </ul>
-<p><strong>Key skill sets and Knowledge</strong></p>
-<p><span style="font-weight: 400;">Security engineers take part in a wide variety of tasks and projects on the team. One individual is not expected to know everything, but a working knowledge in several of the following areas is required:&nbsp;</span></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience in securing large scale distributed systems</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience in designing, building and implementing systems</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong engineering background and programming experience (Python, Golang, Rust, Bash, etc.)</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong communication skills and ability to work with remote teams</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Results and goal-oriented</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Work closely across teams within Support including global leadership teams, developers, and teams outside of Support like Marketing, Product, and Sales</span></li>
+</ul>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<ul>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Pursuing B.S. degree in Business, Communications, or a related field</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong organization and oral and written communication skills</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Self-starter, ability to take a problem, break it down into tasks, and proactively work to complete it with minimal assistance</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience or interest in project management, planning projects with dependencies and tight deadlines, overseeing execution to meet commitments</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Excellent scheduling and meeting coordination skills</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with business requirements and acceptance criteria a plus</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with Data Analytics tools (Tableau, Google Studio) a plus</span></li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
