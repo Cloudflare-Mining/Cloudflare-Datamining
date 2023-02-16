@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.0.0
+
+### Major Changes
+
+- 5c3349a909: dash: BILL-17389: Support frequency in billing calculator
+
 ## 1.2.102
 
 ### Patch Changes
