@@ -63,6 +63,8 @@ components:
       - type
       - name
       - content
+    AccountRequestTracer_account_identifier:
+      $ref: '#/components/schemas/identifier'
     CAARecord:
       allOf:
       - $ref: '#/components/schemas/dns-record_components-schemas-base'
@@ -2546,7 +2548,11 @@ components:
               green_compute:
                 readOnly: true
     account_identifier:
-      $ref: '#/components/schemas/identifier'
+      type: string
+      description: The account identifier tag.
+      example: 023e105f4ecef8ad9ca31a8372d0c353
+      readOnly: true
+      maxLength: 32
     account_subscription_response_collection:
       allOf:
       - $ref: '#/components/schemas/api-response-collection'
@@ -3574,7 +3580,7 @@ components:
             - id
             properties:
               id:
-                $ref: '#/components/schemas/schemas-identifier'
+                $ref: '#/components/schemas/CloudflareClientAPI_schemas-identifier'
       type: object
     api-shield:
       allOf:
@@ -5559,12 +5565,6 @@ components:
       description: The date and time the clip was created.
       example: "2014-01-02T02:20:00Z"
       readOnly: true
-    cloudflare-stream-client-api_account_identifier:
-      type: string
-      description: The account identifier tag.
-      example: 023e105f4ecef8ad9ca31a8372d0c353
-      readOnly: true
-      maxLength: 32
     cloudflare-stream-client-api_created:
       type: string
       format: date-time
@@ -5599,6 +5599,12 @@ components:
       default: ""
       example: Marketing Videos
       readOnly: true
+    cloudflare-stream-client-api_schemas-identifier:
+      type: string
+      description: Identifier
+      example: 023e105f4ecef8ad9ca31a8372d0c353
+      readOnly: true
+      maxLength: 32
     cloudflare-tunnel_components-schemas-connection:
       properties:
         client_id:
@@ -6291,8 +6297,9 @@ components:
           $ref: '#/components/schemas/monitor_components-schemas-type'
     components-schemas-name:
       type: string
-      description: The name of the Device Posture Integration.
-      example: My Workspace One Integration
+      description: The name of the interconnect. The name cannot share a name with
+        other tunnels.
+      example: pni_ord
     components-schemas-patch:
       type: object
       description: Update enablement of Smart Tiered Cache
@@ -8708,8 +8715,8 @@ components:
       example: true
     description:
       type: string
-      description: The description of the Device Posture Rule.
-      example: The rule for admin serial numbers
+      description: An optional human provided description of the static route.
+      example: New route for new prefix 203.0.113.1
     destination_address_identifier:
       type: string
       description: Destination address identifier.
@@ -8928,7 +8935,7 @@ components:
         interval:
           $ref: '#/components/schemas/interval'
         name:
-          $ref: '#/components/schemas/components-schemas-name'
+          $ref: '#/components/schemas/CloudflareClientAPI_components-schemas-name'
         type:
           $ref: '#/components/schemas/schemas-type'
     device-posture-integrations_components-schemas-id_response:
@@ -8975,7 +8982,7 @@ components:
       type: object
       properties:
         description:
-          $ref: '#/components/schemas/description'
+          $ref: '#/components/schemas/CloudflareClientAPI_description'
         expiration:
           $ref: '#/components/schemas/expiration'
         id:
@@ -9065,7 +9072,7 @@ components:
         default:
           $ref: '#/components/schemas/default'
         description:
-          $ref: '#/components/schemas/schemas-description'
+          $ref: '#/components/schemas/CloudflareClientAPI_schemas-description'
         disable_auto_fallback:
           $ref: '#/components/schemas/disable_auto_fallback'
         enabled:
@@ -9137,7 +9144,7 @@ components:
         model:
           $ref: '#/components/schemas/model'
         name:
-          $ref: '#/components/schemas/schemas-name'
+          $ref: '#/components/schemas/CloudflareClientAPI_schemas-name'
         os_distro_name:
           $ref: '#/components/schemas/os_distro_name'
         os_distro_revision:
@@ -11246,11 +11253,11 @@ components:
         customer_gre_endpoint:
           $ref: '#/components/schemas/customer_gre_endpoint'
         description:
-          $ref: '#/components/schemas/CloudflareClientAPI_schemas-description'
+          $ref: '#/components/schemas/schemas-description'
         health_check:
           $ref: '#/components/schemas/health_check'
         id:
-          $ref: '#/components/schemas/CloudflareClientAPI_schemas-identifier'
+          $ref: '#/components/schemas/schemas-identifier'
         interface_address:
           $ref: '#/components/schemas/interface_address'
         modified_on:
@@ -12268,7 +12275,7 @@ components:
       type: object
       properties:
         colo_name:
-          $ref: '#/components/schemas/CloudflareClientAPI_components-schemas-name'
+          $ref: '#/components/schemas/components-schemas-name'
         created_on:
           $ref: '#/components/schemas/schemas-created_on'
         description:
@@ -12278,7 +12285,7 @@ components:
         health_check:
           $ref: '#/components/schemas/schemas-health_check'
         id:
-          $ref: '#/components/schemas/CloudflareClientAPI_schemas-identifier'
+          $ref: '#/components/schemas/schemas-identifier'
         interface_address:
           $ref: '#/components/schemas/interface_address'
         modified_on:
@@ -12286,7 +12293,7 @@ components:
         mtu:
           $ref: '#/components/schemas/schemas-mtu'
         name:
-          $ref: '#/components/schemas/CloudflareClientAPI_components-schemas-name'
+          $ref: '#/components/schemas/components-schemas-name'
     interconnect_components-schemas-description:
       type: string
       description: An optional description of the interconnect.
@@ -12612,13 +12619,13 @@ components:
         description:
           $ref: '#/components/schemas/components-schemas-description'
         id:
-          $ref: '#/components/schemas/CloudflareClientAPI_schemas-identifier'
+          $ref: '#/components/schemas/schemas-identifier'
         interface_address:
           $ref: '#/components/schemas/interface_address'
         modified_on:
           $ref: '#/components/schemas/schemas-modified_on'
         name:
-          $ref: '#/components/schemas/CloudflareClientAPI_schemas-name'
+          $ref: '#/components/schemas/schemas-name'
         psk_metadata:
           $ref: '#/components/schemas/psk_metadata'
         tunnel_health_check:
@@ -12987,7 +12994,7 @@ components:
                 created:
                   $ref: '#/components/schemas/signing_key_created'
                 id:
-                  $ref: '#/components/schemas/schemas-identifier'
+                  $ref: '#/components/schemas/cloudflare-stream-client-api_schemas-identifier'
     key_rotation_interval_days:
       type: number
       description: The number of days between key rotations.
@@ -13093,7 +13100,7 @@ components:
         created:
           $ref: '#/components/schemas/signing_key_created'
         id:
-          $ref: '#/components/schemas/schemas-identifier'
+          $ref: '#/components/schemas/cloudflare-stream-client-api_schemas-identifier'
         jwk:
           $ref: '#/components/schemas/jwk'
         pem:
@@ -18898,7 +18905,7 @@ components:
         created_on:
           $ref: '#/components/schemas/created_on'
         description:
-          $ref: '#/components/schemas/CloudflareClientAPI_description'
+          $ref: '#/components/schemas/description'
         id:
           $ref: '#/components/schemas/identifier'
         modified_on:
@@ -18943,7 +18950,7 @@ components:
       - priority
       properties:
         description:
-          $ref: '#/components/schemas/CloudflareClientAPI_description'
+          $ref: '#/components/schemas/description'
         nexthop:
           $ref: '#/components/schemas/nexthop'
         prefix:
@@ -20406,9 +20413,8 @@ components:
             example: {}
     schemas-description:
       type: string
-      description: A description of the policy.
-      example: Policy for test teams.
-      maxLength: 500
+      description: An optional description of the GRE tunnel.
+      example: Tunnel for ISP X
     schemas-destination_conf:
       type: string
       format: uri
@@ -20805,8 +20811,8 @@ components:
             nullable: true
     schemas-identifier:
       type: string
-      description: Identifier
-      example: 023e105f4ecef8ad9ca31a8372d0c353
+      description: Tunnel identifier tag.
+      example: c4a7362d577a6c3019a474fd6f485821
       readOnly: true
       maxLength: 32
     schemas-identity-provider:
@@ -21051,8 +21057,9 @@ components:
       default: 1476
     schemas-name:
       type: string
-      description: The device name.
-      example: My mobile device
+      description: The name of the IPsec tunnel. The name cannot share a name with
+        other tunnels.
+      example: IPsec_1
     schemas-namespace:
       type: object
       properties:
@@ -22072,7 +22079,7 @@ components:
         interface_address:
           $ref: '#/components/schemas/interface_address'
         name:
-          $ref: '#/components/schemas/CloudflareClientAPI_schemas-name'
+          $ref: '#/components/schemas/schemas-name'
         psk:
           $ref: '#/components/schemas/psk'
     schemas-tunnel_deleted_response:
@@ -24566,7 +24573,7 @@ components:
         customer_gre_endpoint:
           $ref: '#/components/schemas/customer_gre_endpoint'
         description:
-          $ref: '#/components/schemas/CloudflareClientAPI_schemas-description'
+          $ref: '#/components/schemas/schemas-description'
         health_check:
           $ref: '#/components/schemas/health_check'
         interface_address:
@@ -38065,7 +38072,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/schemas-identifier'
+          $ref: '#/components/schemas/cloudflare-stream-client-api_schemas-identifier'
       responses:
         4xx:
           description: List captions or subtitles response failure
@@ -38105,7 +38112,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/schemas-identifier'
+          $ref: '#/components/schemas/cloudflare-stream-client-api_schemas-identifier'
       requestBody:
         required: true
         content:
@@ -38154,7 +38161,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/schemas-identifier'
+          $ref: '#/components/schemas/cloudflare-stream-client-api_schemas-identifier'
       requestBody:
         required: true
         content:
@@ -38195,7 +38202,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/schemas-identifier'
+          $ref: '#/components/schemas/cloudflare-stream-client-api_schemas-identifier'
       responses:
         4xx:
           description: Delete downloads response failure
@@ -38229,7 +38236,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/schemas-identifier'
+          $ref: '#/components/schemas/cloudflare-stream-client-api_schemas-identifier'
       responses:
         4xx:
           description: List downloads response failure
@@ -38263,7 +38270,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/schemas-identifier'
+          $ref: '#/components/schemas/cloudflare-stream-client-api_schemas-identifier'
       requestBody:
         required: true
         content:
