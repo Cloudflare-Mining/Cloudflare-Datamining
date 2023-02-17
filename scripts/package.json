@@ -10,7 +10,7 @@
 	"scripts": {
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix",
-		"mine": "npm run mine:npm && npm run mine:types && npm run mine:github && npm run mine:api-schemas && npm run mine:ips && npm run mine:coveo && npm run mine:gates && npm run mine:products && npm run mine:graphql && npm run mine:account && npm run mine:investors && npm run mine:doh && npm run mine:support && npm run mine:icons && npm run mine:marketing-pages",
+		"mine": "npm run mine:npm && npm run mine:types && npm run mine:github && npm run mine:api-schemas && npm run mine:ips && npm run mine:coveo && npm run mine:gates && npm run mine:products && npm run mine:graphql && npm run mine:account && npm run mine:investors && npm run mine:doh && npm run mine:support && npm run mine:icons && npm run mine:marketing-pages && npm run mine:workers-types",
 		"mine:account": "node src/account.js",
 		"mine:api-schemas": "node src/api-schemas.js",
 		"mine:blog": "node src/blog.js",
@@ -49,6 +49,7 @@
 		"mine:support": "node src/support.js",
 		"mine:types": "node src/types.js",
 		"mine:workerd": "node src/workerd.js",
+		"mine:workers-types": "node src/workers-types.js",
 		"mine:zt-dashboard": "node src/zt-dashboard.js"
 	},
 	"devDependencies": {
