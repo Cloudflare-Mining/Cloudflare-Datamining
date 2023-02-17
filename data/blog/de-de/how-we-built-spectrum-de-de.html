@@ -37,7 +37,7 @@
 #define INET_LHTABLE_SIZE       32</code></pre>
 	<p>Hätten wir 65000 Ports geöffnet, würde sich die Suche in dieser Tabelle drastisch verlangsamen: Jeder Bucket der Hashtabelle würde zweitausend Elemente enthalten.</p>
 	<p>Eine andere Möglichkeit, unser Problem zu lösen, wäre die Verwendung der umfangreichen NAT-Funktionen von iptables: Wir könnten das Ziel eingehender Pakete auf eine bestimmte Adresse/Port umschreiben und unsere Anwendung würde sich daran binden.</p>
-	<p>Wir wollten dies jedoch nicht tun, da es die Aktivierung des conntrack-Moduls von iptables erfordert. In der Vergangenheit gab es einige <a href="https://patchwork.ozlabs.org/cover/810566/" target="_blank">Performance-Grenzfälle</a> und conntrack kann einige der großen DDoS-Angriffe, denen wir begegnen, nicht bewältigen..</p>
+	<p>Wir wollten dies jedoch nicht tun, da es die Aktivierung des conntrack-Moduls von iptables erfordert. In der Vergangenheit gab es einige <a href="http://patchwork.ozlabs.org/cover/810566/" target="_blank">Performance-Grenzfälle</a> und conntrack kann einige der großen DDoS-Angriffe, denen wir begegnen, nicht bewältigen..</p>
 	<p>Darüber hinaus würden wir mit dem NAT-Ansatz Informationen über die Ziel-IP-Adresse verlieren. Um dies zu beheben, gibt es die wenig bekannte Socket-Option SO_ORIGINAL_DST, aber <a href="https://github.com/torvalds/linux/blob/b5dbc28762fd3fd40ba76303be0c7f707826f982/net/ipv4/netfilter/nf_conntrack_l3proto_ipv4.c" target="_blank">der Code sieht nicht ermutigend aus</a>.</p>
 	<p>Glücklicherweise gibt es einen Weg, unsere Ziele zu erreichen, der nicht darin besteht, an alle 65000 Ports zu binden oder conntrack zu verwenden.</p>
 	<h3 id="firewall-als-rettung"><strong>Firewall als Rettung</strong></h3>

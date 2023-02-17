@@ -9,7 +9,7 @@
 	<p>这是一个漫长的旅程，我们可以承诺为我们的数百万用户提供这项服务。要从技术和政策的角度理解我们在做什么，以及为什么它具有挑战性，您需要对跟踪CSAM的最新技术有所了解。</p>
 	<h2 id="--1">寻找相似图片</h2>
 	<p>Cloudflare于2009年首次构想这一技术，与此同时，达特茅斯大学的一位名叫Hany Farid的教授正在研究一种可以将图像与NCMEC维护的哈希表进行比较的软件。微软率先开发了一个名为PhotoDNA的工具，该工具利用Farid教授的研究成果来自动识别CSAM。</p>
-	<p>早期，微软在内部将PhotoDNA用于其服务，并在2009年底<a href="https://blogs.msdn.com/b/microsoftuseducation/archive/2009/12/17/microsoft-donates-photodna-technology-to-make-the-internet-safer-for-kids.aspx" target="_blank">将这一技术捐赠给了NCMEC</a>，以帮助管理其他组织对它的使用。社交网络中有一些最早的采用者。2011年，<a href="http://www.huffingtonpost.com/2011/05/20/facebook-photodna-microsoft-child-pornography_n_864695.html" target="_blank">Facebook推出了一项技术实施</a>，作为滥用程序的一部分。<a href="https://www.theguardian.com/technology/2013/jul/22/twitter-photodna-child-abuse" target="_blank">Twitter在2014年将其合并</a>。</p>
+	<p>早期，微软在内部将PhotoDNA用于其服务，并在2009年底<a href="http://blogs.msdn.com/b/microsoftuseducation/archive/2009/12/17/microsoft-donates-photodna-technology-to-make-the-internet-safer-for-kids.aspx" target="_blank">将这一技术捐赠给了NCMEC</a>，以帮助管理其他组织对它的使用。社交网络中有一些最早的采用者。2011年，<a href="http://www.huffingtonpost.com/2011/05/20/facebook-photodna-microsoft-child-pornography_n_864695.html" target="_blank">Facebook推出了一项技术实施</a>，作为滥用程序的一部分。<a href="https://www.theguardian.com/technology/2013/jul/22/twitter-photodna-child-abuse" target="_blank">Twitter在2014年将其合并</a>。</p>
 	<p>这个过程称为模糊哈希。传统的哈希算法（如MD5、SHA1和SHA256）采用任意长度的文件（如图像或文档），并输出一个固定长度的数字，该数字实际上就是文件的数字指纹。例如，如果您对此图片采用MD5算法，则生成的指纹为<strong>605c83bf1bba62e85f4f5fccc56bc128</strong>。</p>
 	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/02/base-image.jpg" class="kg-image">
 		<figcaption>基本图像</figcaption>

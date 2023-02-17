@@ -12,7 +12,7 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/11/VGltZSBoYW5kc2hha2UgLnBuZw--.png" class="kg-image"></figure>
 	<p></p>
 	<p>令人惊讶的是，当时人们对NTP及其安全性的研究并不活跃。在此之前，在2013年末和2014年初，攻击者通过放大NTP服务器的流量进行了备受瞩目的分布式拒绝服务（DDoS）攻击。攻击者若可以欺骗受害者的IP地址，就可以引导大量流量淹没目标域。这引起了一些研究人员的注意。然而，这些攻击并没有利用基本协议设计中的缺陷。攻击者仅仅使用NTP作为无聊的带宽倍增器。Cloudflare撰写了大量有关这些攻击的文章，您可以<a href="https://blog.cloudflare.com/understanding-and-mitigating-ntp-based-ddos-attacks/">在这里</a>，<a href="https://blog.cloudflare.com/technical-details-behind-a-400gbps-ntp-amplification-ddos-attack/">这里</a>和<a href="https://blog.cloudflare.com/good-news-vulnerable-ntp-servers-closing-down/">这里</a>阅读有关内容。</p>
-	<p>我发现核心NTP协议设计及其实现过程存在一些缺陷，网络攻击者可以利用这些缺陷通过改变时间或拒绝向NTP客户端提供服务来发起更具破坏性的攻击。更令人担忧的是，这些攻击者<em>不必是中间人（MITM）——需要</em>在其中修改客户端和服务器之间的流量以发起这些攻击。我们中的一员撰写的一组最新<a href="https://www.cs.bu.edu/~goldbe/papers/NTPattack.pdf" target="_blank">论文</a>表明，网络上任何地方的远程攻击者都可以转变时间或拒绝向NTP客户端提供服务。完成此操作的方法之一是滥用IP分片。</p>
+	<p>我发现核心NTP协议设计及其实现过程存在一些缺陷，网络攻击者可以利用这些缺陷通过改变时间或拒绝向NTP客户端提供服务来发起更具破坏性的攻击。更令人担忧的是，这些攻击者<em>不必是中间人（MITM）——需要</em>在其中修改客户端和服务器之间的流量以发起这些攻击。我们中的一员撰写的一组最新<a href="http://www.cs.bu.edu/~goldbe/papers/NTPattack.pdf" target="_blank">论文</a>表明，网络上任何地方的远程攻击者都可以转变时间或拒绝向NTP客户端提供服务。完成此操作的方法之一是滥用IP分片。</p>
 	<p>分片是IP层的功能，其中的大数据包会被分割成几个小的碎片，以便它们通过不支持大数据包的网络。基本上，客户端和服务器之间路径上的任何随机网络元素都可以向服务器发送一个特殊的“<a href="https://en.wikipedia.org/wiki/Path_MTU_Discovery" target="_blank">需要ICMP分段</a>”数据包，告诉他们将数据包分段为X个字节。由于服务器不需要知道其路径上所有网络元素的IP地址，因此任何源IP都可以发送此包。</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/11/time-fragmentation-attack-@2x.png" class="kg-image">
 		<figcaption>针对NTP的碎片攻击</figcaption>

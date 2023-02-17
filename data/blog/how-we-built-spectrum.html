@@ -43,7 +43,7 @@
 </code></pre>
 	<p>Had we opened 65k ports, lookups to this table would slow drastically: each hash table bucket would contain two thousand items.</p>
 	<p>Another way to solve our problem would be to use iptables’ rich NAT features: we could rewrite the destination of inbound packets to some specific address/port, and our application would bind to that.</p>
-	<p>We didn't want to do this though, since it requires enabling the iptables <code>conntrack</code> module. Historically we found some <a href="https://patchwork.ozlabs.org/cover/810566/" target="_blank">performance edge cases</a>, and conntrack cannot cope with some of the large DDoS attacks that we encounter.</p>
+	<p>We didn't want to do this though, since it requires enabling the iptables <code>conntrack</code> module. Historically we found some <a href="http://patchwork.ozlabs.org/cover/810566/" target="_blank">performance edge cases</a>, and conntrack cannot cope with some of the large DDoS attacks that we encounter.</p>
 	<p>Additionally, with the NAT approach we would lose destination IP address information. To remediate this, there exists a poorly known <code>SO_ORIGINAL_DST</code> socket option, but <a href="https://github.com/torvalds/linux/blob/b5dbc28762fd3fd40ba76303be0c7f707826f982/net/ipv4/netfilter/nf_conntrack_l3proto_ipv4.c" target="_blank">the code doesn't look encouraging</a>.</p>
 	<p>Fortunately, there is a way to achieve our goals that does not involve binding to all 65k ports, or use <code>conntrack</code>.</p>
 	<h3 id="firewalltotherescue">Firewall to the rescue</h3>

@@ -2,7 +2,7 @@
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/08/image08.jpg" class="kg-image">
 		<figcaption>CC BY 2.0由<a href="https://www.flickr.com/photos/wheresmysocks/" target="_blank">Kendrick Erickson</a>提供</figcaption>
 	</figure>
-	<p>在过去的几个月里，人们越来越关注网络以及<a href="https://www.tomshardware.com/news/netflix-twc-interconnect-agreement,27498.html" target="_blank">相互连接的方式</a>。CloudFlare运营着一个<a href="https://bgp.he.net/AS13335#_graph4" target="_blank">与世界各地的许多其他公司相互连接的巨大的网络</a>。我们的优势在于，我们对全球网络运营有着不可思议的洞察力。考虑到我们独特的情况，我们认为我们有必要解释网络是如何运作的，以及世界不同地区互联网连接的相对成本。</p>
+	<p>在过去的几个月里，人们越来越关注网络以及<a href="http://www.tomshardware.com/news/netflix-twc-interconnect-agreement,27498.html" target="_blank">相互连接的方式</a>。CloudFlare运营着一个<a href="http://bgp.he.net/AS13335#_graph4" target="_blank">与世界各地的许多其他公司相互连接的巨大的网络</a>。我们的优势在于，我们对全球网络运营有着不可思议的洞察力。考虑到我们独特的情况，我们认为我们有必要解释网络是如何运作的，以及世界不同地区互联网连接的相对成本。</p>
 	<h2 id="-">一个相互连接的网络</h2>
 	<p>互联网是由一个个较小的网络组成的一个巨大的网络。构成互联网的网络主要有两种连接方式。网络可以彼此直接连接，在这种情况下，它们被称为“对等网络”。网络也可以通过名为“传输提供商”的中介网络连接。</p>
 	<p>互联网的核心是几个非常大的运输供应商，它们彼此之间相互对等。这组大约有12家公司被称为<a href="https://en.wikipedia.org/wiki/Tier_1_network" target="_blank">一级网络供应商</a>。无论是直接还是间接，世界上的每个ISP (Internet服务提供商)都与这些一级提供商的其中一家连接。而且，由于第1层提供者都是相互连接的，所以您应该能够从网络上的任何点到达任何其他点。这就是互联网能够被称为“互联网”的原因:它是一个巨大的网络群体，所有的网络都是相互连接的。</p>
@@ -28,7 +28,7 @@
 	<p>另一个微妙之处在于，当你批发购买传输流量时，你通常只需要为网络的入口流量(“入口”)或出口流量(“出口”)付费，而不是同时付费。一般来说，你需要为流量更大的那一个付费。</p>
 	<p>CloudFlare是一个缓存代理，因此（流量）出口(out)通常超过入口(in)，通常约为4-5倍。因此，我们的带宽账单是根据出口计算的，所以我们不用支付入口的费用。这就是当我们的网络上的一个站点受到DDoS攻击时，我们不额外收费的部分原因。攻击会增加我们的入口流量，但是，除非攻击非常大，否则我们的入口流量仍然不会超过出口，因此我们的带宽开销不会增加。</p>
 	<h2 id="--2">对等</h2>
-	<p>虽然我们为传输流量付费，但与其他提供商对等连接通常是免费的——<a href="https://arstechnica.com/tech-policy/2014/06/fcc-gets-comcast-verizon-to-reveal-netflixs-paid-peering-deals/" target="_blank">Netflix最近强调了一些值得注意的例外</a>。在CloudFlare的案例中，与Netflix不同的是，目前我们所有的对等连接都是“免费结算”的，这意味着我们不需要为此付费。因此，我们的对等网点越多，我们为带宽支付的费用就越少。对等连接通常还通过删去可能增加延迟的中介来提高性能。一般来说，对等连接是一件好事。</p>
+	<p>虽然我们为传输流量付费，但与其他提供商对等连接通常是免费的——<a href="http://arstechnica.com/tech-policy/2014/06/fcc-gets-comcast-verizon-to-reveal-netflixs-paid-peering-deals/" target="_blank">Netflix最近强调了一些值得注意的例外</a>。在CloudFlare的案例中，与Netflix不同的是，目前我们所有的对等连接都是“免费结算”的，这意味着我们不需要为此付费。因此，我们的对等网点越多，我们为带宽支付的费用就越少。对等连接通常还通过删去可能增加延迟的中介来提高性能。一般来说，对等连接是一件好事。</p>
 	<p></p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/08/pngbase64c18656e84e17071c.png" class="kg-image"></figure>
 	<p></p>
@@ -50,7 +50,7 @@
 	<p>对等网络传输流量比例的提高，部分原因在于该地区存在“对等网络交换”的组织。对等交换(peer exchange)是一种服务，在这种服务中，网络商可以付费加入，然后轻松地在彼此之间交换流量，而无需在彼此的路由器之间运行单独的线缆。网络连接到对等交换机，通过一条线缆，然后就可以连接到许多其他网络。由于使用路由器上的端口需要成本(路由器成本在于端口数有限以及不同网络不能共用同一端口)，并且数据中心通常每月为运行两个不同客户之间的线缆(称为“交叉连接”) 收取费用，因此连接到一个服务,使用一个端口和一条线缆以连接到许多网络的做法是非常划算的。</p>
 	<p>交换的价值取决于作为交换一部分的网络的数量。阿姆斯特丹互联网交换组织<a href="https://www.peeringdb.com/login.php?ret_link=%2Fprivate%2Fexchange_view.php%3Fid%3D26&amp;type=notLogged" target="_blank">（AMS-IX）</a>、法兰克福互联网交换组织<a href="https://www.peeringdb.com/login.php?ret_link=%2Fprivate%2Fexchange_view.php%3Fid%3D26&amp;type=notLogged" target="_blank">（DE-CIX）</a>和伦敦互联网交换组织<a href="https://www.peeringdb.com/login.php?ret_link=%2Fprivate%2Fexchange_view.php%3Fid%3D26&amp;type=notLogged" target="_blank">（LINX）</a>是世界上最大的三家交换组织。(注:这些链接指向PeeringDB.com，该网站提供网络间对等的信息。您需要使用用户名/密码guest/guest才能登录。)</p>
 	<p>在欧洲和北美以外的大多数地区，这些交换组织和其他交换组织通常以非盈利团体的形式运营，目的是为其成员网络带来好处。在北美，虽然有互联网交换组织，但它们通常由营利性公司运营。北美最大的盈利性交换组织由Equinix运营，Equinix是一家数据中心公司，利用其设施中的交换组织来增加定点设备的价值。由于这些交换组织的运营动机是盈利，因此加入北美交换组织的定价通常较世界其它地区的要高。</p>
-	<p>CloudFlare是<a href="https://www.equinix.com/company/news-and-events/press-releases/cloudflare-selects-equinix-for-global-expansion-of-content-delivery-network/" target="_blank">Equinix交换组织内许多成员中的一员</a>，但总体而言，与欧洲交换组织相比，我们与Equinix连接的网络相对较少（对比一下，例如，我们与<a href="https://www.peeringdb.com/login.php?ret_link=%2Fprivate%2Fexchange_view.php%3Fid%3D1&amp;type=notLogged" target="_blank">Equinix Ashburn</a>仅有大约400个网络连接，而这是最受欢迎的交换组织，我们与AMS-IX有 1,200个网络连接）。在北美，相对便宜的传输价格和相对昂贵的交换价格的组合降低了加入交换组织的价值。随着加入交换的网络越来越少，网络能轻松对等连接的机会就越来越少。结果是，在欧洲，网络传输很便宜，对等网络也很容易，这使得该地区拥有世界上最低的有效带宽价格。</p>
+	<p>CloudFlare是<a href="http://www.equinix.com/company/news-and-events/press-releases/cloudflare-selects-equinix-for-global-expansion-of-content-delivery-network/" target="_blank">Equinix交换组织内许多成员中的一员</a>，但总体而言，与欧洲交换组织相比，我们与Equinix连接的网络相对较少（对比一下，例如，我们与<a href="https://www.peeringdb.com/login.php?ret_link=%2Fprivate%2Fexchange_view.php%3Fid%3D1&amp;type=notLogged" target="_blank">Equinix Ashburn</a>仅有大约400个网络连接，而这是最受欢迎的交换组织，我们与AMS-IX有 1,200个网络连接）。在北美，相对便宜的传输价格和相对昂贵的交换价格的组合降低了加入交换组织的价值。随着加入交换的网络越来越少，网络能轻松对等连接的机会就越来越少。结果是，在欧洲，网络传输很便宜，对等网络也很容易，这使得该地区拥有世界上最低的有效带宽价格。</p>
 	<h2 id="--5">亚洲</h2>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/08/---2.png" class="kg-image"></figure>
 	<p></p>

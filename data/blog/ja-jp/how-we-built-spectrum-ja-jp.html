@@ -39,7 +39,7 @@
 	<p><code>#define INET_LHTABLE_SIZE &nbsp; &nbsp; &nbsp; 32</code></p>
 	<p>65,000のポートを開いていたら、このテーブルのルックアップには長い長い時間がかかったでしょう。ハッシュテーブルの各バケットには2,000のアイテムが入っているからです。</p>
 	<p>問題を解決するもう1つの方法は、iptablesの豊富なNAT機能の使用です。一部の特定のアドレス／ポートへの着信パケットの宛先を書き換えて、アプリケーションをそれにバインドさせることができます。</p>
-	<p>しかし、これにはiptablesのconntrackモジュールを有効にする必要があるため、この方法は採りませんでした。過去には<a href="https://patchwork.ozlabs.org/cover/810566/" target="_blank">パフォーマンスエッジケース</a>があり、conntrackは当社が被った大規模なDDoS攻撃の一部には対処できませんでした。</p>
+	<p>しかし、これにはiptablesのconntrackモジュールを有効にする必要があるため、この方法は採りませんでした。過去には<a href="http://patchwork.ozlabs.org/cover/810566/" target="_blank">パフォーマンスエッジケース</a>があり、conntrackは当社が被った大規模なDDoS攻撃の一部には対処できませんでした。</p>
 	<p>さらに、NATアプローチでは、宛先IPアドレス情報が失われる可能性があります。これを緩和するためにあまり知られていないSO_ORIGINAL_DSTソケットオプションもありますが、<a href="https://github.com/torvalds/linux/blob/b5dbc28762fd3fd40ba76303be0c7f707826f982/net/ipv4/netfilter/nf_conntrack_l3proto_ipv4.c" target="_blank">あまり使いたくなるようなコードではありません</a>。</p>
 	<p>幸い、65000のポートすべてをバインドするもしくは <code>conntrack</code>を使用する以外の方法で、目標を達成する方法があります。</p>
 	<h3 id="--1"><strong>ファイアウォールで対応</strong></h3>

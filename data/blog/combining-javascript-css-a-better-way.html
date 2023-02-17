@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
-	<p>The conventional wisdom in web performance circles is that you want to <a href="https://developer.yahoo.com/performance/rules.html#num_http" target="_blank">combine multiple javascript and CSS files</a>. The reason for this is that there is significant overhead every time you setup a new HTTP request. More requests, more wasted overhead.</p>
+	<p>The conventional wisdom in web performance circles is that you want to <a href="http://developer.yahoo.com/performance/rules.html#num_http" target="_blank">combine multiple javascript and CSS files</a>. The reason for this is that there is significant overhead every time you setup a new HTTP request. More requests, more wasted overhead.</p>
 	<h3 id="whyminimizehttprequests">Why Minimize HTTP Requests?</h3>
 	<p>This problem is magnified on mobile devices. Your smart phone can stream video from YouTube without stuttering, because it is a single HTTP connection, but it often falters on seemingly simple web pages, because they are made up of a number of separate objects that need to all be loaded through their own HTTP requests. Mobile networks have reasonable bandwidth once a connection is established, but each new connection has a probability of failing that can block page loading.</p>
 	<p>Combining Javascript and CSS seems like a sensible solution, but it runs into multiple problems:</p>

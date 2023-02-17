@@ -100,7 +100,7 @@ cpsc.gov.		18894	IN	MX	5 hormel.cpsc.gov.
 	<pre><code>cpsc.gov.		18894	IN	RRSIG	SOA 7 2 21600 20160824030507 20160817020507 53799 cpsc.gov. I7umZbpbUnh24bvphYP9K70imTyDFxc5QgOEDVVCSkmtVMhRaOU0eiSO 6b/O3ExcMhL0xn+D+/Xs1R7z9zPsKrzvGCfqotkxu8L1mRpAmjgr21WH mEzXftcx+IbSrOCwOa7YuPyBGqJW3f8kb/UHcI7ykqk08xvglD2I77PV TgI59oYsZyufRhfChcFxEyhBY2LZ4o/UO5Tw8Lg5HH/9OGtA0FHum1To v/CeLBOaATrZNygZINKmHlsP6Mm8j83jM4bRNxLGPs8VjpDbKVAHtROq aXR0Zy81zNs0eWfs4vThdOf56nCUnA/HiwlVNgmbO219CCMKQxoBBuY+ FYcWfA==
 </code></pre>
 	<p>Let's walk through this RRSIG record. Just like with the previous records "18894" is the TTL in seconds, "IN" stands for "Internet Class", and RRSIG is the type of DNS record. "SOA" here specifies the type of record this signature applies to. That's easy. However, after that, things get cryptic (both literally and metaphorically).</p>
-	<p>The "7" here specifies the signature algorithm being used. By the <a href="https://www.iana.org/assignments/dns-sec-alg-numbers/dns-sec-alg-numbers.xhtml" target="_blank">DNSSEC specification</a>, the 7th zone signing algorithm is: RSASHA1-NSEC3-SHA1.</p>
+	<p>The "7" here specifies the signature algorithm being used. By the <a href="http://www.iana.org/assignments/dns-sec-alg-numbers/dns-sec-alg-numbers.xhtml" target="_blank">DNSSEC specification</a>, the 7th zone signing algorithm is: RSASHA1-NSEC3-SHA1.</p>
 	<p>Here's a list of the 10 current algorithms (represented by 14 numbers, just to be confusing) that can be used for signing public DNS records along with the number — or range of numbers if the signatures can be of variable lengths — of bytes each signature generates:</p>
 	<ol>
 		<li>RSA/MD5 / 128–512 bytes (deprecated)</li>

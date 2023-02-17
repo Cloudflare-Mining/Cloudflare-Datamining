@@ -18,12 +18,12 @@
 	<h3 id="nginx-">NGINX가 요청 본문 버퍼를 다루는 법</h3>
 	<p>처음에는 NGINX 업로드 버퍼링 관련 설정값을 찾아 보고 이 값을 변경하는 것이 좋은 결과를 나타내는지 보려 했습니다. 요청 본문 업로드에 관련된 설정값은 다음과 같습니다.</p>
 	<ul>
-		<li><a href="https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_buffering" target="_blank"><code>proxy_buffering</code></a></li>
-		<li><a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#client_body_buffer_size" target="_blank"><code>client_body_buffer_size</code></a></li>
+		<li><a href="http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_buffering" target="_blank"><code>proxy_buffering</code></a></li>
+		<li><a href="http://nginx.org/en/docs/http/ngx_http_core_module.html#client_body_buffer_size" target="_blank"><code>client_body_buffer_size</code></a></li>
 	</ul>
 	<p>HTTP/2 관련으로는 다음이 있습니다.</p>
 	<ul>
-		<li><a href="https://nginx.org/en/docs/http/ngx_http_v2_module.html#http2_body_preread_size" target="_blank"><code>http2_body_preread_size</code></a></li>
+		<li><a href="http://nginx.org/en/docs/http/ngx_http_v2_module.html#http2_body_preread_size" target="_blank"><code>http2_body_preread_size</code></a></li>
 	</ul>
 	<p>Cloudflare는 <code>proxy_request_buffering</code> 을 사용하지 않으므로 이 상황은 고려하지 않도록 하겠습니다. <code>client_body_buffer_size</code> 는 프로토콜에 공통으로 사용되는 요청 본문 버퍼의 크기이며 HTTP/1.1 과 HTTP/2 에 모두 적용 됩니다.</p>
 	<p>코드를 살펴보게 되면 다음과 같이 동작 합니다:</p>
@@ -78,5 +78,5 @@
 	<h3 id="--7">요약</h3>
 	<p>HTTP/2 업로드 버퍼 자동 조정 기능은 현재 Cloudflare 엣지 서버에 기본 적용되어 있습니다. <a href="https://speed.cloudflare.com" target="_blank">speed.cloudflare.com</a> 을 포함하여 고객은 HTTP/2 연결을 통한 업로드 속도의 향상을 기대할 수 있습니다. 업로드 버퍼 크기를 자동 조정하는 것은 대부분의 경우에 잘 동작 하며 이제 HTTP/2 업로드는 예전보다 더 빠릅니다! 성능이라고 하면 다운로드 속도나 지연 시간의 개선을 생각하기 쉽습니다만, 대량의 데이터 업로드가 필요한 재택 근무자에게 빠른 업로드도 도움을 줄 수 있습니다. 가령 사진/비디오 공유, 콘텐츠 제작, 비디오 회의나 라이브 방송과 같은 경우입니다.</p>
 	<p>이 글 작성에 많은 도움을 준 <a href="https://blog.cloudflare.com/author/lucas/">Lucas Pardue</a>와 <a href="https://blog.cloudflare.com/author/rustam-lalkaka/">Rustam Lalkaka</a>에게 감사드립니다. </p>
-	<p>추신: 패치를 공개하고 NGINX 개발자에게 보냈습니다. <a href="https://mailman.nginx.org/pipermail/nginx-devel/2020-August/013436.html" target="_blank">다음 링크</a>에서 찾아 볼 수 있습니다.</p>
+	<p>추신: 패치를 공개하고 NGINX 개발자에게 보냈습니다. <a href="http://mailman.nginx.org/pipermail/nginx-devel/2020-August/013436.html" target="_blank">다음 링크</a>에서 찾아 볼 수 있습니다.</p>
 </div>

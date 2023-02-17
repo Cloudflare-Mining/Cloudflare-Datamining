@@ -74,7 +74,7 @@ rtmp {
 		<li>pushing the final (“on air feed”) to NGINX <em>every second of the day</em></li>
 	</ol>
 	<h3 id="contentful">Contentful</h3>
-	<p><a href="https://contentful.com/" target="_blank">Contentful</a> is a headless content management platform designed to be API-first; it eliminated the need for a database and helped us build our scheduling feature rapidly. </p>
+	<p><a href="http://contentful.com/" target="_blank">Contentful</a> is a headless content management platform designed to be API-first; it eliminated the need for a database and helped us build our scheduling feature rapidly. </p>
 	<p>Most of the necessary fields are pretty straightforward for a CMS: title, presenters, and, of course, the time slot. Each of these is automatically synced with the publicly-facing schedule at <a href="https://cloudflare.tv/schedule" target="_blank">cloudflare.tv/schedule</a>.</p>
 	<p>We are able to use Workers to fetch events from Contentful:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-json">export async function fetchEventRaw(id: string) {

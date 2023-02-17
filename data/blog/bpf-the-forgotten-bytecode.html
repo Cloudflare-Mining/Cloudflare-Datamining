@@ -12,7 +12,7 @@
 		basic debugging.</p>
 	<p>For this reason operating systems developed APIs for packet sniffing. But, as there wasn't any real standard for it every OS had to invent <a href="http://www.cs.columbia.edu/~nahum/w6998/lectures/vpk-columbia-nsdi-pf.pdf" target="_blank">a different API</a>: Sun’s STREAMS NIT, DEC's Ultrix Packet Filter, SGI’s Snoop and Xerox Alto had CMU/Stanford Packet Filter. This led to many complications. The simpler APIs just copied all the packets to the user space sniffer, which on a busy system resulted in a flood of useless work. The more complex APIs were able to filter packets before<br>
 		passing them to userspace, but it was often cumbersome and slow.</p>
-	<p>All this changed in 1993 when Steven McCanne and <a href="https://en.wikipedia.org/wiki/Van_Jacobson" target="_blank">Van Jacobson</a> published the paper introducing a better way of filtering packets in the kernel, they called it <a href="https://www.tcpdump.org/papers/bpf-usenix93.pdf" target="_blank">"The BSD Packet Filter" (BPF)</a>.</p>
+	<p>All this changed in 1993 when Steven McCanne and <a href="https://en.wikipedia.org/wiki/Van_Jacobson" target="_blank">Van Jacobson</a> published the paper introducing a better way of filtering packets in the kernel, they called it <a href="http://www.tcpdump.org/papers/bpf-usenix93.pdf" target="_blank">"The BSD Packet Filter" (BPF)</a>.</p>
 	<p>Since then <a href="https://en.wikipedia.org/wiki/Berkeley_Packet_Filter" target="_blank">the BPF</a> has taken the world by a storm and along with <code>libpcap</code> and <code>tcpdump</code> become the de-facto standard in network debugging.</p>
 	<h3 id="tcpdumpdissected">Tcpdump dissected</h3>
 	<p>Tcpdump is composed of three logical parts:</p>
@@ -68,7 +68,7 @@ setsockopt(sock, SOL_SOCKET, SO_ATTACH_FILTER, ...)
 		file. For the best performance one can use<br>
 		<a href="https://www.kernel.org/doc/Documentation/networking/packet_mmap.txt" target="_blank">a zero-copy <code>PACKET_MMAP</code> / <code>PACKET_RX_RING</code> interface</a>,<br>
 		though most people should probably stick to the<br>
-		<a href="https://www.tcpdump.org/manpages/pcap.3pcap.html" target="_blank">high level <code>libpcap</code> API</a>.
+		<a href="http://www.tcpdump.org/manpages/pcap.3pcap.html" target="_blank">high level <code>libpcap</code> API</a>.
 	</p>
 	<h3 id="thebpfbytecode">The BPF bytecode</h3>
 	<p>In essence Tcpdump asks the kernel to execute a BPF program within the<br>
@@ -81,7 +81,7 @@ setsockopt(sock, SOL_SOCKET, SO_ATTACH_FILTER, ...)
 		<li>The single BPF program has less than 4096 instructions.</li>
 	</ul>
 	<p>All this guarantees that the BPF programs executed within kernel context will run fast and will never infinitely loop. That means the BPF programs are not Turing complete, but in practice they are expressive enough for the job and deal with packet filtering very well.</p>
-	<p>The original concepts underlying the BPF were described in a 1993 and didn't require updates for many years. The Linux implementation on the other hand is steadily evolving: recently a <a href="https://lwn.net/Articles/437981/" target="_blank">new and shiny just-in-time BPF compiler</a> was introduced, and a few months ago an attempt was made to upgrade the <a href="https://lwn.net/Articles/584377/" target="_blank">BPF assembly to a 64-bit form</a>.</p>
+	<p>The original concepts underlying the BPF were described in a 1993 and didn't require updates for many years. The Linux implementation on the other hand is steadily evolving: recently a <a href="http://lwn.net/Articles/437981/" target="_blank">new and shiny just-in-time BPF compiler</a> was introduced, and a few months ago an attempt was made to upgrade the <a href="https://lwn.net/Articles/584377/" target="_blank">BPF assembly to a 64-bit form</a>.</p>
 	<h3 id="notonlytcpdump">Not only tcpdump</h3>
 	<p>BPF is an absolutely marvelous and flexible way of filtering packets. For years it got reused in more places and now Linux uses BPF filters for:</p>
 	<ul>
