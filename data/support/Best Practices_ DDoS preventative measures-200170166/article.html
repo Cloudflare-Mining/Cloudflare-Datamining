@@ -13,11 +13,10 @@
 	<li><a href="https://support.cloudflare.com/hc/articles/200169626">Enable the Cloudflare proxy (orange-cloud)</a></li>
 	<li>Remove DNS records used for FTP or SSH and instead use your origin IP to directly perform FTP or SSH requests. Alternatively, proxy FTP and SSH via <a href="https://developers.cloudflare.com/spectrum/get-started">Cloudflare Spectrum</a>.</li>
 	<li><a href="https://support.cloudflare.com/hc/articles/200168876">Grey-cloud A, AAAA, or CNAME records corresponding to your mail server</a></li>
-	<li>Remove wildcard records within Free, Pro, or Business domains because they expose your origin IP address. <a href="https://support.cloudflare.com/hc/articles/360017421192#CloudflareDNSFAQ-DoesCloudflaresupportwildcardDNSentries">Cloudflare only protects wildcard records for domains on Enterprise plans</a>.</li>
 </ol>
 <h3>Managing attacks bypassing Cloudflare and do not limit or throttle requests from Cloudflare IPs</h3>
 <ol>
-	<li>It is important that your origin web server <a href="https://support.cloudflare.com/hc/articles/201897700">allowlist Cloudflare IPs</a><a href="https://support.cloudflare.com/hc/articles/201897700"></a> and explicitly blocks traffic not from Cloudflare or your trusted partner, vendor, or application IP addresses.</li>
+	<li>It is important that your origin web server <a href="https://support.cloudflare.com/hc/articles/201897700">allowlist Cloudflare IPs</a> and explicitly blocks traffic not from Cloudflare or your trusted partner, vendor, or application IP addresses.</li>
 	<li>Block port 80 at your origin and enforce using HTTPS traffic by enabling the "Always use HTTPS" feature within the <b>Edge Certificates</b> tab of the Cloudflare <b>SSL/TLS</b> app or <a href="https://support.cloudflare.com/hc/en-us/articles/200172336-Creating-Page-Rules">via the <b>Page Rules</b> app</a>.</li>
 	<li>Enable the feature <a href="https://support.cloudflare.com/hc/en-us/articles/204899617-Authenticated-Origin-Pulls">Authenticated Origin Pull </a>as this will only accept requests from Cloudflare.</li>
 </ol>
