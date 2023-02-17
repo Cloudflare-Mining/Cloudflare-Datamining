@@ -66,7 +66,7 @@ udp   524288  0 173.245.2.3:53  0.0.0.0:*   0
 			<p>For TCP connections our DNS server now binds to ANY_IP address (aka: 0.0.0.0:53, *:53). We call this "bind to star". While binding to specific IP addresses is still necessary for UDP, there is little benefit in doing that for the TCP traffic. For TCP we can bind to star safely, without compromising our DDoS defenses.</p>
 		</li>
 		<li>
-			<p>We increased the <code>LHTABLE</code> size in our kernels. We are not the first to do that: Bill Sommerfeld from Google <a href="https://patchwork.ozlabs.org/patch/79014/" target="_blank">suggested that back in 2011</a>.</p>
+			<p>We increased the <code>LHTABLE</code> size in our kernels. We are not the first to do that: Bill Sommerfeld from Google <a href="http://patchwork.ozlabs.org/patch/79014/" target="_blank">suggested that back in 2011</a>.</p>
 		</li>
 	</ul>
 	<p>With these changes deployed the <code>ping</code> times within our datacenter are finally flat, as they should always have been:</p>

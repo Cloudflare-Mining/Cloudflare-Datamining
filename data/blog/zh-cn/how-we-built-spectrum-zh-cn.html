@@ -38,7 +38,7 @@
 #define INET_LHTABLE_SIZE       32</code></pre>
 	<p>如果我们打开65k个端口，那么对该表的查找将大大减慢：每个哈希表存储桶将包含2000个项目。</p>
 	<p>解决这个问题的另一种方法是使用iptables丰富的NAT特性：我们可以将入站数据包的目的地重写为某个特定的地址/端口，我们的应用程序将绑定到这个地址/端口。</p>
-	<p>但我们不想这样做，因为这需要启用iptables conntrack模块。从历史上看，我们发现了一些<a href="https://patchwork.ozlabs.org/cover/810566/" target="_blank">性能边缘情况</a>，conntrack无法应对我们遇到的一些大型DDoS攻击。</p>
+	<p>但我们不想这样做，因为这需要启用iptables conntrack模块。从历史上看，我们发现了一些<a href="http://patchwork.ozlabs.org/cover/810566/" target="_blank">性能边缘情况</a>，conntrack无法应对我们遇到的一些大型DDoS攻击。</p>
 	<p>另外，使用NAT方法，我们会丢失目标IP地址信息。为了解决这个问题，还有一个鲜为人知的SO_ORIGINAL_DST套接字选项，但是<a href="https://github.com/torvalds/linux/blob/b5dbc28762fd3fd40ba76303be0c7f707826f982/net/ipv4/netfilter/nf_conntrack_l3proto_ipv4.c" target="_blank">代码看起来并不令人鼓舞</a>。</p>
 	<p>幸运的是，有一种方法可以实现我们的目标，而不涉及绑定到所有65k个端口或使用conntrack。</p>
 	<h2 id="--1">防火墙援助</h2>

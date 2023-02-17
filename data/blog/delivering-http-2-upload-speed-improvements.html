@@ -18,12 +18,12 @@
 	<h3 id="how-nginx-handles-the-request-body-buffer">How NGINX handles the request body buffer</h3>
 	<p>Initially I tried to find a parameter which controls NGINX upload buffering and tried to see if tuning the values improved the result. There are a couple of parameters which are related to uploading a request body.</p>
 	<ul>
-		<li><code><a href="https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_buffering" target="_blank">proxy_buffering</a></code></li>
-		<li><code><a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#client_body_buffer_size" target="_blank">client_body_buffer_size</a></code></li>
+		<li><code><a href="http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_buffering" target="_blank">proxy_buffering</a></code></li>
+		<li><code><a href="http://nginx.org/en/docs/http/ngx_http_core_module.html#client_body_buffer_size" target="_blank">client_body_buffer_size</a></code></li>
 	</ul>
 	<p>And this is HTTP/2 specific:</p>
 	<ul>
-		<li><code><a href="https://nginx.org/en/docs/http/ngx_http_v2_module.html#http2_body_preread_size" target="_blank">http2_body_preread_size</a></code></li>
+		<li><code><a href="http://nginx.org/en/docs/http/ngx_http_v2_module.html#http2_body_preread_size" target="_blank">http2_body_preread_size</a></code></li>
 	</ul>
 	<p>Cloudflare does not use the <code>proxy_request_buffering</code> directive, so it can be immediately discounted. &nbsp;<code>client_body_buffer_size</code> is the size of the request body buffer which is used regardless of the protocol, so this one applies to HTTP/1.1 and HTTP/2 as well.</p>
 	<p>When looking into the code, here is how it works:</p>
@@ -78,5 +78,5 @@
 	<h2 id="summary">Summary</h2>
 	<p>HTTP/2 upload buffer autotuning is now fully deployed in the Cloudflare edge. Customers should now benefit from improved upload performance for all HTTP/2 connections, including speed tests on speed.cloudflare.com. Autotuning upload buffer size logic works well for most cases, and now HTTP/2 upload is much faster than before! When we think about the performance we usually tend to think about download speed or latency reduction, but faster uploading can also help users working from home when they need a large amount of upload, such as photo/video sharing apps, content creation, video conferencing or self broadcasting.</p>
 	<p>Many thanks to <a href="https://blog.cloudflare.com/author/lucas/">Lucas Pardue</a> and <a href="https://blog.cloudflare.com/author/rustam-lalkaka/">Rustam Lalkaka</a> for great feedback and suggestions on the article.</p>
-	<p>Update: we made this patch available to public and sent to NGINX upstream. You can find it <a href="https://mailman.nginx.org/pipermail/nginx-devel/2020-August/013436.html" target="_blank">here</a>.</p>
+	<p>Update: we made this patch available to public and sent to NGINX upstream. You can find it <a href="http://mailman.nginx.org/pipermail/nginx-devel/2020-August/013436.html" target="_blank">here</a>.</p>
 </div>

@@ -72,7 +72,7 @@
 	<hr>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/image-29.png" class="kg-image"></figure>
 	<p></p>
-	<p>In order to fix this, we developed a custom kernel patch which adds <a href="https://patchwork.ozlabs.org/patch/602916/" target="_blank">a <code>SO_BINDTOPREFIX</code> socket option</a>. As the name suggests - it allows us to call <code>bind()</code> on a selected IP prefix. This solves the problem of multiple applications sharing popular ports like 53 or 80.</p>
+	<p>In order to fix this, we developed a custom kernel patch which adds <a href="http://patchwork.ozlabs.org/patch/602916/" target="_blank">a <code>SO_BINDTOPREFIX</code> socket option</a>. As the name suggests - it allows us to call <code>bind()</code> on a selected IP prefix. This solves the problem of multiple applications sharing popular ports like 53 or 80.</p>
 	<p>Then we run into another problem. For our Spectrum product we need to listen on all 65535 ports. Running so many listen sockets is not a good idea (see <a href="https://blog.cloudflare.com/revenge-listening-sockets/">our old war story blog</a>), so we had to find another way. After some experiments we learned to utilize an obscure iptables module - TPROXY - for this purpose. Read about it here:</p>
 	<ul>
 		<li><a href="https://blog.cloudflare.com/how-we-built-spectrum/">Abusing Linux's firewall: the hack that allowed us to build Spectrum</a></li>

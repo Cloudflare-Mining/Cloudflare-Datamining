@@ -20,7 +20,7 @@
 	<h3 id="addendumnittygrittydetails">Addendum: Nitty Gritty Details</h3>
 	<p>For the technical in the audience, here are some of the nitty gritty details on how we implemented Pseudo IPv4.</p>
 	<p>We chose to use the MD5 hashing algorithm. While MD5 has risks when it's used in cryptography, it is faster than many alternatives and has a acceptable uniformity over the hash space. Note that there is some risk of a collision (i.e., where two IPv6 addresses map to the same IPv4 pseudo address), however most abuse/fraud systems take this into account already in order to deal with NATs and other instances where multiple people may share a single IP.</p>
-	<p>At CloudFlare, we use a modified version of NGINX and wrote most of our request processing code in Lua, relying on the <a href="https://openresty.org/" target="_blank">ngx_openresty</a> app server. Here's the Lua code for the proof-of-concept prototype of the hashing algorithm:</p>
+	<p>At CloudFlare, we use a modified version of NGINX and wrote most of our request processing code in Lua, relying on the <a href="http://openresty.org/" target="_blank">ngx_openresty</a> app server. Here's the Lua code for the proof-of-concept prototype of the hashing algorithm:</p>
 	<pre>function pseudo_ipv4(ipv6_top64)
    -- Grab bottom 32 bits from MD5 hash
    -- ngx.md5 does not suppress leading zeros so regexp will always match.       

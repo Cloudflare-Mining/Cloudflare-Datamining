@@ -148,7 +148,7 @@ sub32:
 	<!--kg-card-end: markdown--><!--kg-card-begin: markdown-->
 	<h3 id="surelyabitofirwilldo">Surely a bit of IR will do?</h3>
 	<p>The problem was in Clang frontend - compiling C to IR. We know that BPF "assembly" backend for LLVM can generate bytecode that uses ALU32 instructions. Maybe if we tweak the Clang compiler's output just a little we can achieve what we want. This means we have to get our hands dirty with the LLVM Intermediate Representation (IR).</p>
-	<p>If you haven't heard of LLVM IR before, now is a good time to do some <a href="https://www.aosabook.org/en/llvm.html" target="_blank">reading</a><a href="#f2"><sup>2</sup></a>. In short the LLVM IR is what Clang produces and LLVM BPF backend consumes.</p>
+	<p>If you haven't heard of LLVM IR before, now is a good time to do some <a href="http://www.aosabook.org/en/llvm.html" target="_blank">reading</a><a href="#f2"><sup>2</sup></a>. In short the LLVM IR is what Clang produces and LLVM BPF backend consumes.</p>
 	<p>Time to write IR by hand! Here's a hand-tweaked <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-04-ebpf-alu32/bpf/sub64_ir.ll#L7" target="_blank">IR variant</a> of our <code>sub64()</code> function:</p>
 	<pre><code>define dso_local i64 @sub64_ir(i64, i64) local_unnamed_addr #0 {
   %3 = trunc i64 %0 to i32      ; xl = (u32) x;

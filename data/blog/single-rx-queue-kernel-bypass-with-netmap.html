@@ -119,7 +119,7 @@ $ ethtool -N eth3 flow-type udp4 dst-port 53 action 4
 	<p>For completeness, here's an <code>htop</code> showing only a single core being busy with Netmap:</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2015/10/htop2-1.png" alt=""></p>
 	<h4 id="thanks">Thanks</h4>
-	<p>We would like to thank Pavel Odintsov who suggested the possibility of using Netmap this way. He even prepared <a href="https://www.stableit.ru/2015/06/how-to-run-netmap-on-single-queue-and.html" target="_blank">the initial hack</a> we based our work on.</p>
+	<p>We would like to thank Pavel Odintsov who suggested the possibility of using Netmap this way. He even prepared <a href="http://www.stableit.ru/2015/06/how-to-run-netmap-on-single-queue-and.html" target="_blank">the initial hack</a> we based our work on.</p>
 	<p>We would also like to thank Luigi Rizzo, for his Netmap work and great feedback on our patches.</p>
 	<h4 id="finalwords">Final words</h4>
 	<p>At CloudFlare our application stack is based on open source software. We’re grateful to so many open source programmers for their awesome work. Whenever we can we try to contribute back to the community - we hope "the single RX Netmap mode" will be useful to others.</p>

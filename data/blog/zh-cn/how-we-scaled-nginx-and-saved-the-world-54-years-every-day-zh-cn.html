@@ -98,7 +98,7 @@ read(fd, buf, 32*1024);</code></pre>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/07/Screenshot-from-2018-07-17-12-16-27.png" class="kg-image"></figure>
 	<p></p>
 	<p>6月26日，我们对我们的5个最繁忙的数据中心进行了更改，紧接着，第二天在全球范围内推出。总体峰值p99 TTFB提高了6倍。实际上，将我们每天处理800万个请求的总时间累加，每天我们能为互联网省去相当于54年的等待时间。</p>
-	<p>我们已将工作提交给<a href="https://mailman.nginx.org/pipermail/nginx-devel/2018-August/011354.html" target="_blank">上行</a>。有兴趣的人可以跟进。</p>
+	<p>我们已将工作提交给<a href="http://mailman.nginx.org/pipermail/nginx-devel/2018-August/011354.html" target="_blank">上行</a>。有兴趣的人可以跟进。</p>
 	<p>我们的事件循环处理仍然不是完全非阻塞的。特别是，当我们第一次缓存文件（包括 <code>open(O_CREAT)</code>和 <code>rename()</code>）或执行重新验证更新时，我们仍会遇到阻塞。但是，与缓存命中相比，这些是很少见的。在未来，我们会考虑将这些移出事件循环以进一步改善我们的p99延迟。</p>
 	<p><strong>结论</strong></p>
 	<p>NGINX是一个功能强大的平台，但在Linux上扩展极高的I / O负载仍然很难。上行NGINX可以在单独的线程中卸载读取，但从我们的规模来看，我们要做的还有更多。</p>

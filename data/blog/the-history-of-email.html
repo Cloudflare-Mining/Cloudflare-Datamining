@@ -10,7 +10,7 @@
 			— Text of the first email ever sent, 1971
 		</p>
 	</blockquote>
-	<p>The ARPANET (a precursor to the Internet) was created “to help maintain U.S. technological superiority and guard against unforeseen technological advances by potential adversaries,” in other words, to avert the next Sputnik. Its purpose was to allow scientists to share the products of their work and to make it more likely that the work of any one team could potentially be somewhat usable by others. One thing which was not considered particularly valuable was allowing these scientists to communicate using this network. People were already perfectly capable of communicating by phone, letter, and in-person meeting. The purpose of a computer was to do <a href="http://www.kurzweilai.net/memorandum-for-members-and-affiliates-of-the-intergalactic-computer-network" target="_blank">massive computation</a>, to <a href="https://groups.csail.mit.edu/medg/people/psz/Licklider.html" target="_blank">augment our memories</a> and <a href="https://www.theatlantic.com/magazine/archive/1945/07/as-we-may-think/303881/" target="_blank">empower our minds</a>.</p>
+	<p>The ARPANET (a precursor to the Internet) was created “to help maintain U.S. technological superiority and guard against unforeseen technological advances by potential adversaries,” in other words, to avert the next Sputnik. Its purpose was to allow scientists to share the products of their work and to make it more likely that the work of any one team could potentially be somewhat usable by others. One thing which was not considered particularly valuable was allowing these scientists to communicate using this network. People were already perfectly capable of communicating by phone, letter, and in-person meeting. The purpose of a computer was to do <a href="http://www.kurzweilai.net/memorandum-for-members-and-affiliates-of-the-intergalactic-computer-network" target="_blank">massive computation</a>, to <a href="http://groups.csail.mit.edu/medg/people/psz/Licklider.html" target="_blank">augment our memories</a> and <a href="http://www.theatlantic.com/magazine/archive/1945/07/as-we-may-think/303881/" target="_blank">empower our minds</a>.</p>
 	<p>Surely we didn’t need a computer, this behemoth of technology and innovation, just to talk to each other.</p>
 	<figure class="standard">
 		<div class="figcontent">
@@ -67,7 +67,7 @@ chmod 0442 ~/messages
 		<p>Would append to the <code>/Users/zack/messages</code> file on the host <code>cloudflare</code>. And email was born!</p>
 		<h3 id="ftp">FTP</h3>
 		<p>The CPYNET format did not have much of a life outside of Tenex unfortunately. It was necessary to create a standard method of communication which every system could understand. Fortunately, this was also the goal of another similar protocol, FTP. FTP (the File Transfer Protocol) sought to create a single way by which different machines could transfer files over the ARPANET.</p>
-		<p>FTP <a href="https://tools.ietf.org/html/rfc114" target="_blank">originally</a> didn’t include support for email. Around the time it was <a href="https://www.rfc-editor.org/rfc/rfc385.txt" target="_blank">updated</a> to use TCP (rather than the NCP protocol which ARPANET historically used) the <code>MAIL</code> command was added.</p>
+		<p>FTP <a href="https://tools.ietf.org/html/rfc114" target="_blank">originally</a> didn’t include support for email. Around the time it was <a href="http://www.rfc-editor.org/rfc/rfc385.txt" target="_blank">updated</a> to use TCP (rather than the NCP protocol which ARPANET historically used) the <code>MAIL</code> command was added.</p>
 		<pre><code>$ ftp
 &lt; open bbn
 
@@ -122,7 +122,7 @@ This is the body.
 &gt;From (should be escaped).
 There are 3 lines.
 </code></pre>
-		<p>It was technically possible to interact with your email by simply editing your mailbox file, but it was much more common to use an email client. As you might expect there was a <a href="https://www.rfc-editor.org/rfc/rfc808.txt" target="_blank">diversity</a> of clients available, but a few are of historical note.</p>
+		<p>It was technically possible to interact with your email by simply editing your mailbox file, but it was much more common to use an email client. As you might expect there was a <a href="http://www.rfc-editor.org/rfc/rfc808.txt" target="_blank">diversity</a> of clients available, but a few are of historical note.</p>
 		<p>RD was an editor which was created by <a href="http://www.livinginternet.com/i/ii_roberts.htm" target="_blank">Lawrence Roberts</a> who was actually the program manager for the ARPANET itself at the time. It was a set of macros on top of the Tenex text editor (TECO), which itself would later become Emacs.</p>
 		<p>RD was the first client to give us the ability to sort messages, save messages, and delete them. There was one key thing missing though: any integration between receiving a message and sending one. RD was strictly for consuming emails you had received, to reply to a message it was necessary to compose an entirely new message in SNDMSG or another tool.</p>
 		<p>That innovation came from MSG, which itself was an improvement on a client with the hilarious name BANANARD. MSG added the ability to reply to a message, in the words of Dave Crocker:</p>
@@ -191,7 +191,7 @@ In-reply-to: Your message of "Mon, 09 Jan 1995 16:56:37 -0600."
 			</figcaption>
 		</figure>
 		<p>This was followed by more graphical <a href="https://en.wikipedia.org/wiki/Text-based_user_interface" target="_blank">TUI</a> clients like <a href="https://web.archive.org/web/19970126101209/http://www.cs.hmc.edu/~me/mutt/index.html" target="_blank">Mutt</a> and <a href="https://groups.google.com/forum/#!msg/comp.mail.misc/kqKQojTDVBM/kvYgyYbwfKoJ" target="_blank">Pine</a>.</p>
-		<p>In the words of the University of Washington’s <a href="https://www.washington.edu/pine/overview/project-history.html" target="_blank">Pine team</a>:</p>
+		<p>In the words of the University of Washington’s <a href="http://www.washington.edu/pine/overview/project-history.html" target="_blank">Pine team</a>:</p>
 		<blockquote>
 			<p>
 				Our goal was to provide a mailer that naive users could use without fear of making mistakes. We wanted to cater to users who were less interested in learning the mechanics of using electronic mail than in doing their jobs; users who perhaps had some computer anxiety. We felt the way to do this was to have a system that didn’t do surprising things and provided immediate feedback on each operation; a mailer that had a limited set of carefully-selected functions.
@@ -223,7 +223,7 @@ In-reply-to: Your message of "Mon, 09 Jan 1995 16:56:37 -0600."
 		</blockquote>
 		<p>The first webmail client was created by Phillip Hallam-Baker at CERN in <a href="https://groups.google.com/forum/#!topic/comp.archives/vpWqUAmg8xU" target="_blank">1994</a>. Its creation was early enough in the history of the web that it led to the identification of the need for the <code>Content-Length</code> header in POST requests.</p>
 		<p>Hotmail was released in 1996. The name was chosen because it included the letters HTML to emphasize it being ‘on the web’ (it was original stylized as ‘HoTMaiL’). When it was launched users were limited to 2MB of storage (at the time a 1.6GB hard drive was $399).</p>
-		<p>Hotmail was originally implemented using FreeBSD, but in a decision I’m sure every engineer regretted, it was moved to Windows 2000 after the service was bought by Microsoft. In 1999, hackers revealed a security flaw in Hotmail that permitted anybody to log in to any Hotmail account using the password ‘<a href="https://archive.wired.com/science/discoveries/news/1999/08/21503" target="_blank">eh</a>’. It took until 2001 for ‘hackers’ to realize you could access other people’s messages by swap usernames in the URL and guessing at a valid message number.</p>
+		<p>Hotmail was originally implemented using FreeBSD, but in a decision I’m sure every engineer regretted, it was moved to Windows 2000 after the service was bought by Microsoft. In 1999, hackers revealed a security flaw in Hotmail that permitted anybody to log in to any Hotmail account using the password ‘<a href="http://archive.wired.com/science/discoveries/news/1999/08/21503" target="_blank">eh</a>’. It took until 2001 for ‘hackers’ to realize you could access other people’s messages by swap usernames in the URL and guessing at a valid message number.</p>
 		<p><img src="https://blog.cloudflare.com/content/images/2017/08/posts-history-of-email-images-gmail.jpg" alt="Gmail"></p>
 		<p>Gmail was famously created in 2004 as a ‘20% project’ of Paul Buchheit. Originally it wasn’t particularly believed in as a product within Google. They had to launch using a few hundred Pentium III computers no one else wanted, and it took three years before they had the resources to accept users without an invitation. It was notable both for being much closer to a desktop application (using AJAX) and for the unprecedented offer of 1GB of mail storage.</p>
 		<h3 id="thefuture">The Future</h3>
@@ -231,7 +231,7 @@ In-reply-to: Your message of "Mon, 09 Jan 1995 16:56:37 -0600."
 			<img src="https://blog.cloudflare.com/content/images/2017/08/posts-history-of-email-images-mail.gif" alt="Volume of Postal Mail">
 			<figcaption>
 				<div class="figcaption">
-					US Postal Mail Volume, <a href="https://www.slideshare.net/jesserobbins/devops-change/14-US_Postal_Service_Mail_Volume" target="_blank"><small>KPCB</small></a>
+					US Postal Mail Volume, <a href="http://www.slideshare.net/jesserobbins/devops-change/14-US_Postal_Service_Mail_Volume" target="_blank"><small>KPCB</small></a>
 				</div>
 			</figcaption>
 		</figure>

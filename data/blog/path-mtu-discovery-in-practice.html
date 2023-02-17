@@ -43,13 +43,13 @@ $ sudo tcpdump -s0 -p -ni eth0 '(ip and ip[20+13] &amp; tcp-syn != 0)'
 10:25:48.791956 IP 192.168.97.138.55992 &gt; 212.77.100.83.23: Flags [S], seq 389206299, win 28000, options [mss 1400,sackOK,TS val 6302758 ecr 0,nop,wscale 7], length 0
 </code></pre>
 	<p><em>2) Reduce the MTU of all connections to the minimal value on the server side.</em></p>
-	<p>It's a much harder problem to solve on the server side. A server can encounter clients with many different MTUs, and if you can't rely on Path MTU Discovery, you have a real problem. One commonly used workaround is to reduce the MTU for all of the outgoing packets. The minimal required <a href="https://www.ietf.org/rfc/rfc2460.txt" target="_blank">MTU for all IPv6 hosts is 1,280</a>, which is fair. Unfortunately for IPv4 the <a href="https://www.ietf.org/rfc/rfc791.txt" target="_blank">value is 576 bytes</a>. On the other hand <a href="https://www.ietf.org/rfc/rfc4821.txt" target="_blank">RFC4821</a> suggests that it's "probably safe enough" to assume minimal MTU of 1,024. To change the MTU setting you can type:</p>
+	<p>It's a much harder problem to solve on the server side. A server can encounter clients with many different MTUs, and if you can't rely on Path MTU Discovery, you have a real problem. One commonly used workaround is to reduce the MTU for all of the outgoing packets. The minimal required <a href="https://www.ietf.org/rfc/rfc2460.txt" target="_blank">MTU for all IPv6 hosts is 1,280</a>, which is fair. Unfortunately for IPv4 the <a href="http://www.ietf.org/rfc/rfc791.txt" target="_blank">value is 576 bytes</a>. On the other hand <a href="http://www.ietf.org/rfc/rfc4821.txt" target="_blank">RFC4821</a> suggests that it's "probably safe enough" to assume minimal MTU of 1,024. To change the MTU setting you can type:</p>
 	<pre><code>ip -f inet6 route replace &lt;&gt; mtu 1280
 </code></pre>
 	<p>(As a side note you could use <code>advmss</code> instead. The <code>mtu</code> setting is stronger, applying to all the packets, not only TCP. While <code>advmss</code> affects only the Path MTU hints given on TCP layer.)</p>
 	<p>Forcing a reduced packet size is not an optimal solution though.</p>
 	<p><em>3) Enable smart MTU black hole detection.</em></p>
-	<p><a href="https://www.ietf.org/rfc/rfc4821.txt" target="_blank">RFC4821</a> proposes a mechanism to detect ICMP black holes and tries to adjust the path MTU in a smart way. To enable this on Linux type:</p>
+	<p><a href="http://www.ietf.org/rfc/rfc4821.txt" target="_blank">RFC4821</a> proposes a mechanism to detect ICMP black holes and tries to adjust the path MTU in a smart way. To enable this on Linux type:</p>
 	<pre><code>echo 1 &gt; /proc/sys/net/ipv4/tcp_mtu_probing
 echo 1024 &gt; /proc/sys/net/ipv4/tcp_base_mss
 </code></pre>
@@ -58,7 +58,7 @@ echo 1024 &gt; /proc/sys/net/ipv4/tcp_base_mss
 	<p>To understand what happened last week, first we need to make a detour and discuss our architecture. At CloudFlare <a href="https://blog.cloudflare.com/cloudflares-architecture-eliminating-single-p/">we use BGP in two ways</a>. We use it externally, the BGP that organizes the Internet, and internally between servers.</p>
 	<p>The internal use of BGP allows us to get high availability across servers. If a machine goes down the BGP router will notice and will push the traffic to another server automatically.</p>
 	<p>We've used this for a long time but last week increased its use in our network as we increased internal BGP load balancing. The load balancing mechanism is known as <a href="https://en.wikipedia.org/wiki/Equal-cost_multi-path_routing" target="_blank">ECMP: Equal Cost Multi Path routing</a>. From the configuration point of view the change was minimal, it only required adjusting the BGP metrics to equal values, the ECMP-enabled router does the rest of the work.</p>
-	<p>But with ECMP the router must be somewhat smart. It can't do true load balancing, as packets from one TCP connections could end up on a wrong server. Instead in ECMP the router <a href="https://www.slideshare.net/SkillFactory/02-34638420" target="_blank">counts a hash from the usual tuple</a> extracted from every packet:</p>
+	<p>But with ECMP the router must be somewhat smart. It can't do true load balancing, as packets from one TCP connections could end up on a wrong server. Instead in ECMP the router <a href="http://www.slideshare.net/SkillFactory/02-34638420" target="_blank">counts a hash from the usual tuple</a> extracted from every packet:</p>
 	<ul>
 		<li>For TCP it hashes a tuple (src ip, src port, dst ip, dst port)</li>
 	</ul>

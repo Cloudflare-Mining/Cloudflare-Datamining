@@ -29,12 +29,12 @@ curl: (56) Recv failure: Connection reset by peer
 curl: (56) Recv failure: Connection reset by peer
 </code></pre>
 	<p>This proved the problem was not specific to our setup—it was a broader NGINX issue!</p>
-	<p>After some further poking we found two culprits. First, we were using the <a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#reset_timedout_connection" target="_blank"><code>reset_timedout_connection</code></a> setting. This causes NGINX to close connections abruptly. When NGINX wants to time out a connection it sets <code>SO_LINGER</code> without a timeout on a socket, followed by a <code>close()</code>. This triggers the RST packet, instead of a usual graceful TCP finalization. Here's an <code>strace</code> log from NGINX:</p>
+	<p>After some further poking we found two culprits. First, we were using the <a href="http://nginx.org/en/docs/http/ngx_http_core_module.html#reset_timedout_connection" target="_blank"><code>reset_timedout_connection</code></a> setting. This causes NGINX to close connections abruptly. When NGINX wants to time out a connection it sets <code>SO_LINGER</code> without a timeout on a socket, followed by a <code>close()</code>. This triggers the RST packet, instead of a usual graceful TCP finalization. Here's an <code>strace</code> log from NGINX:</p>
 	<pre><code>04:20:22 setsockopt(5, SOL_SOCKET, SO_LINGER, {onoff=1, linger=0}, 8) = 0
 04:20:22 close(5) = 0
 </code></pre>
 	<p>We could just have disabled the <code>reset_timedout_connection</code> setting, but that wouldn't have solved the underlying problem. Why was NGINX closing the connection in the first place?</p>
-	<p>After further investigation we looked at the <a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#send_timeout" target="_blank"><code>send_timeout</code></a> configuration option. The default value is 60 seconds, exactly the timeout we were seeing.</p>
+	<p>After further investigation we looked at the <a href="http://nginx.org/en/docs/http/ngx_http_core_module.html#send_timeout" target="_blank"><code>send_timeout</code></a> configuration option. The default value is 60 seconds, exactly the timeout we were seeing.</p>
 	<pre><code>http {
      send_timeout 60s;
      ...

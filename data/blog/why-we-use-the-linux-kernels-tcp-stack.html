@@ -41,7 +41,7 @@
 	</p>
 	<p>Next, using kernel bypass for NGINX would interfere with our usual debugging tools. <a href="https://github.com/openresty/nginx-systemtap-toolkit" target="_blank">Our systemtap scripts</a> would become useless. Linux netstat statistics will stop recording critical events and tcpdump won't work anymore.</p>
 	<p>Then there is the issue of our DDoS mitigation stack. We are heavy users of iptables, as I documented in <a href="https://www.youtube.com/watch?v=pCVTEx1ouyk" target="_blank">this BlackHat presentation</a>. Custom TCP stacks just don't have things like "hashlimits" and "ipsets".</p>
-	<p>But not only firewall features. The Linux TCP stack has some extremely useful non-trivial support for things like <a href="https://www.ietf.org/rfc/rfc4821.txt" target="_blank">RFC4821</a> with the <code>sys.net.ipv4.tcp_mtu_probing</code> sysctl. Support for this is critical when a user is behind an ICMP black hole. Read more <a href="https://blog.cloudflare.com/path-mtu-discovery-in-practice/">in this blog posts about PMTU</a>.</p>
+	<p>But not only firewall features. The Linux TCP stack has some extremely useful non-trivial support for things like <a href="http://www.ietf.org/rfc/rfc4821.txt" target="_blank">RFC4821</a> with the <code>sys.net.ipv4.tcp_mtu_probing</code> sysctl. Support for this is critical when a user is behind an ICMP black hole. Read more <a href="https://blog.cloudflare.com/path-mtu-discovery-in-practice/">in this blog posts about PMTU</a>.</p>
 	<p>Finally, each TCP stack comes with its own set of bugs and quirks. We've documented three non-obvious quirks in the Linux TCP stack:</p>
 	<ul>
 		<li><a href="https://blog.cloudflare.com/the-story-of-one-latency-spike/">Garbage collector kicking in on a read buffer</a>;</li>

@@ -24,7 +24,7 @@
 	</ul>
 	<h4 id="3usetheproxyprotocol">(3) Use the PROXY protocol</h4>
 	<p><img src="https://blog.cloudflare.com/content/images/2018/04/Screen-Shot-2018-04-15-at-12.26.04-PM.png" alt="Screen-Shot-2018-04-15-at-12.26.04-PM"></p>
-	<p>Finally, there is the last method. HAProxy developers, faced with this problem developed <a href="https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt" target="_blank">the "PROXY protocol"</a>. The premise of this protocol is to prepend client metadata in front of the original data stream. For example, this string could be sent to the origin server in front of proxied data:</p>
+	<p>Finally, there is the last method. HAProxy developers, faced with this problem developed <a href="http://www.haproxy.org/download/1.8/doc/proxy-protocol.txt" target="_blank">the "PROXY protocol"</a>. The premise of this protocol is to prepend client metadata in front of the original data stream. For example, this string could be sent to the origin server in front of proxied data:</p>
 	<pre><code>PROXY TCP4 192.0.2.123 104.16.112.25 19235 80\r\n
 </code></pre>
 	<p>As you can see, the PROXY protocol is rather trivial to implement, and is generally sufficient for most use cases. However, it requires application support. The PROXY protocol (v1) is supported by Cloudflare Spectrum, and we highly encourage using it over other methods of keeping client source IP addresses.</p>

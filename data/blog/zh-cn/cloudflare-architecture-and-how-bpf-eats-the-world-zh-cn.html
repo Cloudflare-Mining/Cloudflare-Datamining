@@ -81,7 +81,7 @@
 	<hr>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/12/image-29.png" class="kg-image"></figure>
 	<p></p>
-	<p>为了解决这个问题，我们开发了一个自定义内核补丁，其中添加了<a href="https://patchwork.ozlabs.org/patch/602916/" target="_blank">一个<code>SO_BINDTOPREFIX</code>socket选项</a>。顾名思义——它允许我们在选定的IP前缀上调用bind()。这解决了多个应用程序共享流行端口（如53或80）的问题。</p>
+	<p>为了解决这个问题，我们开发了一个自定义内核补丁，其中添加了<a href="http://patchwork.ozlabs.org/patch/602916/" target="_blank">一个<code>SO_BINDTOPREFIX</code>socket选项</a>。顾名思义——它允许我们在选定的IP前缀上调用bind()。这解决了多个应用程序共享流行端口（如53或80）的问题。</p>
 	<p>然后我们遇到另一个问题。对于我们的Spectrum产品，我们需要监听所有总共65535个端口。运行这么多监听套接字不是一个好主意（请参阅<a href="https://blog.cloudflare.com/revenge-listening-sockets/">我们过去的战争故事博客</a>），因此我们不得不寻找另一种方法。经过一些实验，我们学会了使用一个鲜有人知的iptables模块——TPROXY——来达到这个目的。点击这里进行阅读：</p>
 	<ul>
 		<li><a href="https://blog.cloudflare.com/how-we-built-spectrum/">滥用Linux防火墙：允许我们构建Spectrum的黑客行为</a></li>
