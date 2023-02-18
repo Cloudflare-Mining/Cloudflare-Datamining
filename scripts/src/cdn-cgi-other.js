@@ -56,7 +56,7 @@ if(cfFunctionsKeys.size >= 0){
 const prefix = dateFormat(new Date(), 'd mmmm yyyy');
 await tryAndPush(
 	[
-		'data/cdn-cgi/**/*.json',
+		'data/cdn-cgi/*.json',
 	],
 	`${prefix} - request.cf/trace Data was updated! [skip ci]`,
 	'CFData - Request.cf/trace Update',
