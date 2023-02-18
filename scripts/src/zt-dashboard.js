@@ -79,7 +79,7 @@ async function getChunks(){
 	const translations = {};
 	const rawTranslations = new Set();
 	let version = null;
-	const ast = parse(appJs, {ecmaVersion: 2020});
+	const ast = parse(appJs, {ecmaVersion: 2022});
 	full(ast, (node) => {
 		if(
 			node.type === 'AssignmentExpression' &&
@@ -267,7 +267,7 @@ async function generateDashboardStructure(wantedChunks, translations){
 		try{
 			const ast = parseLoose(chunk.code, {
 				sourceType: 'script',
-				ecmaVersion: 2020,
+				ecmaVersion: 2022,
 			});
 			full(ast, (node) => {
 				if(node.type === 'StringLiteral' || node.type === 'Literal'){
@@ -366,7 +366,7 @@ async function run(){
 	if(wantedChunks.navigation){
 		const ast = parse(wantedChunks.navigation.code, {
 			sourceType: 'script',
-			ecmaVersion: 2020,
+			ecmaVersion: 2022,
 		});
 		full(ast, (node) => {
 			if(node.type === 'ObjectExpression'){
