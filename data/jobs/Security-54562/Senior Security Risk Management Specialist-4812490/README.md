@@ -26,7 +26,7 @@
 </ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Senior level Security Risk Management experience typically gained in 4-7 years experience working in GRC&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Senior level Security Risk Management experience typically gained in 8+ years experience working in GRC&nbsp;</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience communicating, conducting, and managing security risk assessments; recommending mitigating controls; and reporting findings to leadership</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience driving risk remediation and partnering with cross functional teams&nbsp;</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience implementing a security risk methodology including processes for risk identification, prioritization, mitigation, reporting, and monitoring</span></li>
