@@ -107,6 +107,12 @@ for(const req of reqs){
 	}
 }
 
+// fetch globalThis dump
+const res = await fetch('https://dump.jross.dev/');
+if(res.ok){
+	const json = await res.json();
+	await fs.writeJson(path.resolve(dir, 'globalThis.json'), json, {spaces: '\t'});
+}
 const prefix = dateFormat(new Date(), 'd mmmm yyyy');
 await tryAndPush(
 	[
