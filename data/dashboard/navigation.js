@@ -226,7 +226,7 @@ const navigation = {
 		iconType: "cloudflare-security-network",
 		hasPermission: function(b) {
 			var he = !!V(b) && !!R(b);
-			return !!ie(b) || he
+			return !!se(b) || he
 		}
 	}, {
 		title: "navigation.account.ip_addresses",
