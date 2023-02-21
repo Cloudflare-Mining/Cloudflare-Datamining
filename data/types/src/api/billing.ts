@@ -40,7 +40,7 @@ export const PaymentMethodType = eg.union([
 export type PaymentMethodType = TypeFromCodec<typeof PaymentMethodType>;
 
 export const PaymentMethod = eg.object({
-  id: eg.number,
+  id: eg.string,
   type: PaymentMethodType.optional,
   last_four: eg.string,
   expiration_date: eg.string,
@@ -181,7 +181,7 @@ export const BillingPayment = eg.object({
     })
   ).optional,
   amount: eg.number.optional,
-  payment_method_id: eg.number.optional
+  payment_method_id: eg.union([eg.number, eg.string]).optional
 });
 
 export type BillingPayment = TypeFromCodec<typeof BillingPayment>;
