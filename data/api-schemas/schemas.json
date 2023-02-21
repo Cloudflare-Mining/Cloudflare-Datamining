@@ -1386,7 +1386,9 @@
 				},
 				"type": "object"
 			},
-			"CloudflareClientAPI_account_identifier": {},
+			"CloudflareClientAPI_account_identifier": {
+				"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
+			},
 			"CloudflareClientAPI_acl": {
 				"properties": {
 					"id": {
@@ -2441,8 +2443,9 @@
 				]
 			},
 			"CloudflareClientAPI_identifier": {
-				"description": "Policy identifier.",
-				"example": "f267e341f3dd4697bd3b9f71dd96247f",
+				"description": "Identifier",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
 				"readOnly": true,
 				"type": "string"
 			},
@@ -4891,7 +4894,11 @@
 				]
 			},
 			"account_identifier": {
-				"example": "01a7362d577a6c3019a474fd6f485823"
+				"description": "The account identifier tag.",
+				"example": "023e105f4ecef8ad9ca31a8372d0c353",
+				"maxLength": 32,
+				"readOnly": true,
+				"type": "string"
 			},
 			"account_subscription_response_collection": {
 				"allOf": [
@@ -9286,13 +9293,6 @@
 				"description": "The date and time the clip was created.",
 				"example": "2014-01-02T02:20:00Z",
 				"format": "date-time",
-				"readOnly": true,
-				"type": "string"
-			},
-			"cloudflare-stream-client-api_account_identifier": {
-				"description": "The account identifier tag.",
-				"example": "023e105f4ecef8ad9ca31a8372d0c353",
-				"maxLength": 32,
 				"readOnly": true,
 				"type": "string"
 			},
@@ -13820,8 +13820,8 @@
 				"type": "boolean"
 			},
 			"description": {
-				"description": "The description of the Device Posture Rule.",
-				"example": "The rule for admin serial numbers",
+				"description": "An optional human provided description of the static route.",
+				"example": "New route for new prefix 203.0.113.1",
 				"type": "string"
 			},
 			"destination_address_identifier": {
@@ -14210,7 +14210,7 @@
 			"device-posture-rules": {
 				"properties": {
 					"description": {
-						"$ref": "#/components/schemas/description"
+						"$ref": "#/components/schemas/CloudflareClientAPI_description"
 					},
 					"expiration": {
 						"$ref": "#/components/schemas/expiration"
@@ -14358,7 +14358,7 @@
 						"$ref": "#/components/schemas/default"
 					},
 					"description": {
-						"$ref": "#/components/schemas/schemas-description"
+						"$ref": "#/components/schemas/CloudflareClientAPI_schemas-description"
 					},
 					"disable_auto_fallback": {
 						"$ref": "#/components/schemas/disable_auto_fallback"
@@ -17649,7 +17649,7 @@
 						"$ref": "#/components/schemas/customer_gre_endpoint"
 					},
 					"description": {
-						"$ref": "#/components/schemas/CloudflareClientAPI_schemas-description"
+						"$ref": "#/components/schemas/schemas-description"
 					},
 					"health_check": {
 						"$ref": "#/components/schemas/health_check"
@@ -28477,7 +28477,7 @@
 						"$ref": "#/components/schemas/created_on"
 					},
 					"description": {
-						"$ref": "#/components/schemas/CloudflareClientAPI_description"
+						"$ref": "#/components/schemas/description"
 					},
 					"id": {
 						"$ref": "#/components/schemas/CloudflareClientAPI_identifier"
@@ -28555,7 +28555,7 @@
 			"route_add_single_request": {
 				"properties": {
 					"description": {
-						"$ref": "#/components/schemas/CloudflareClientAPI_description"
+						"$ref": "#/components/schemas/description"
 					},
 					"nexthop": {
 						"$ref": "#/components/schemas/nexthop"
@@ -30785,9 +30785,8 @@
 				]
 			},
 			"schemas-description": {
-				"description": "A description of the policy.",
-				"example": "Policy for test teams.",
-				"maxLength": 500,
+				"description": "An optional description of the GRE tunnel.",
+				"example": "Tunnel for ISP X",
 				"type": "string"
 			},
 			"schemas-destination_conf": {
@@ -36614,7 +36613,7 @@
 						"$ref": "#/components/schemas/customer_gre_endpoint"
 					},
 					"description": {
-						"$ref": "#/components/schemas/CloudflareClientAPI_schemas-description"
+						"$ref": "#/components/schemas/schemas-description"
 					},
 					"health_check": {
 						"$ref": "#/components/schemas/health_check"
