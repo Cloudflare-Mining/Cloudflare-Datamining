@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/workers-types",
 	"dist-tags": {
-		"latest": "4.20230215.0",
+		"latest": "4.20230221.0",
 		"beta": "3.3.1",
 		"alpha": "0.20230215.0"
 	},
@@ -1146,6 +1146,24 @@
 					}
 				],
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJj76NCACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmrYew/9H9WMmSL7NFndkr92asaVWGucF0OmaIIgYEzi5ruJVAaDrLP2\r\nc6OLmpiMmy4jMprMioL1MaCpV7+hGQ5H+jLGusU3t+MpGGipd5icfPwodkFz\r\n6cHAlqozfqbuhevT/yn299r30F54FugYlVBL32o1W2m77Sv77NU2Y3CWRKuu\r\nd1GoW6WMGkNKr+8anYujggcMa/fC38YXuntQddIf098vkPOyLfK4PdvAAd9P\r\nOk4psdibaAEsDHn2x6LfjB9iYE/P2vYbPecQNcyyApRicETGPmDjAIGHA6mI\r\ngY/o8Sz26EBmHmBVXJw+kAyIsRlHSv7cAWigZlv9iNPupKmxcIDZ52THWxZv\r\nhTb3S1M55DLG7WmaFTRncl8joOeuB0wHEFaRWdDovnGfecPqt6XBJSmnXvPm\r\nU0bX+LflKsU4id+xaM+AB67gKt/pYK41/DTEh9q3Kj5Rnt53yhOlKerG3//6\r\nJlRbTGtFv2qjiiEvlfgiokJSowup4b0z53gnjDL0xoaMcA3q3blHnRjONFFJ\r\nKC7/WiJfu+l30TTAX2+xqvubs+emFJrAzCbX5lx3DBjqsOUqpgCVXG5L6cxh\r\nQOC/1ne/E+lvpsO9B4IV+YfcF7i4TPh+V077ZvBTraniZGpdo3B4kXc+KN3h\r\nqPGEewsm8M7pwTlrtBfgGNb+7Tl87MB9HZ0=\r\n=D+Vu\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"4.20230221.0": {
+			"name": "@cloudflare/workers-types",
+			"version": "4.20230221.0",
+			"dist": {
+				"integrity": "sha512-Ge8csuFQMNv3hd8r85PFWv4KV6bHAtKoBaanTkjbbeJS+mizoiBn4OBva0CFQiGfRJklFSGd4OxuCuiK05kogg==",
+				"shasum": "d0cca6d1100f5aaf4550db23011a5dc9687a2ef3",
+				"tarball": "https://registry.npmjs.org/@cloudflare/workers-types/-/workers-types-4.20230221.0.tgz",
+				"fileCount": 21,
+				"unpackedSize": 1664821,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEYCIQCmjm0qaFr7jvyq06zmeAsckjkvFiJWLXni6Iy8owTjIAIhAMGWzMQMWG6OvsMoeeUrVHSPFK37fIulagivX7bBpueB"
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJj9L7vACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmomjg//Q51vTCNCZL5WELnljpIBkvhqLwDT+0YakHeItrVDn4OxXpkT\r\nkb+DwNZYrW1yw1FyT61m3h0ZDCBgvCNlIzSigV3M/zy7QsFkksXGqozxlmUM\r\nprvtamNg6Y525C6ciYUeHPyqpSQ4c6FWREi3MeP9Q1JX73sQo4Tk1Ms232lG\r\nGz7mNQQ/rJePPielwuR/zCcBE7gRXQhW0tXEqdukRzQ6PHdb8ZaNdjwkJjcJ\r\nr2bzGqyAIcEDpluhOuXn56XEClRIDgc5KCLUwNXEt9fAemz2o+Dhg9kjFPxZ\r\noVEI4chJRaiuT07wuAJgRxr9FUtgo1pw3d5/BwjLYJJPj/ZZhQnOgYO+DiOJ\r\nO3qIIpz55H+3bAu0nSwOVKTDTJiP901RJMcmDzPPRn1kRW664PZtH/lzfV3B\r\n4HPCvh8FHhskKFXDYdkFTnzH9cDYHsJ6Ffjh2nEREjJrlsZKmSks6dGgu8M9\r\nN2JQba9OPyyvk5u9ZgLpAuC03dR9iG/r7/bSbLy388Z79KF9pyVZwRzhkC1S\r\ngFB3JcYl309/4YAnqA7PWmOYei7ulBotESEILdzKLp76kXkqahFM4bSyB9go\r\nr9MrF7Mw3aoUCod61zMlXavb/D2Krv19dyRBO0Nn/OuujdPbzel4q999PmJa\r\ntYbNiW2xb8FMrFG10fTlFvljP5rnERfwQb0=\r\n=Wxhg\r\n-----END PGP SIGNATURE-----\r\n"
 			}
 		}
 	}
