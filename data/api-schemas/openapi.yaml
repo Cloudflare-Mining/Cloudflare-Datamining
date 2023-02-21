@@ -967,8 +967,7 @@ components:
           $ref: '#/components/schemas/ray_id'
         user_email:
           $ref: '#/components/schemas/CloudflareClientAPI_schemas-email'
-    CloudflareClientAPI_account_identifier:
-      $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+    CloudflareClientAPI_account_identifier: {}
     CloudflareClientAPI_acl:
       type: object
       required:
@@ -1290,6 +1289,28 @@ components:
           $ref: '#/components/schemas/support_url'
         switch_locked:
           $ref: '#/components/schemas/switch_locked'
+    CloudflareClientAPI_default_template_language:
+      type: string
+      description: The language of the default page template. If no default_template_language
+        is provided, then `en-US` (English) will be used.
+      enum:
+      - en-US
+      - es-ES
+      - de-DE
+      - fr-FR
+      - it-IT
+      - ja-JP
+      - ko-KR
+      - pt-BR
+      - zh-CN
+      - zh-TW
+      - nl-NL
+      - pl-PL
+      - id-ID
+      - tr-TR
+      - ar-EG
+      default: en-US
+      example: es-ES
     CloudflareClientAPI_deleted:
       type: boolean
       description: When true, indicates that the firewall rule was deleted.
@@ -1655,6 +1676,12 @@ components:
         a `groups` object or a `rules` object.
       example:
         ea8687e59929c1fd05ba97574ad43f77: default
+    CloudflareClientAPI_host:
+      type: string
+      format: hostname
+      description: RFC3986-compliant host.
+      example: www.example.com
+      maxLength: 255
     CloudflareClientAPI_id:
       type: string
       description: Identifier of a recommedation result.
@@ -1670,10 +1697,9 @@ components:
                 $ref: '#/components/schemas/dns-secondary-secondary-zone_components-schemas-identifier'
     CloudflareClientAPI_identifier:
       type: string
-      description: Identifier
-      example: 023e105f4ecef8ad9ca31a8372d0c353
+      description: Policy identifier.
+      example: f267e341f3dd4697bd3b9f71dd96247f
       readOnly: true
-      maxLength: 32
     CloudflareClientAPI_identity-providers:
       type: object
       properties:
@@ -1851,6 +1877,12 @@ components:
           $ref: '#/components/schemas/organizations_components-schemas-name'
         updated_at:
           $ref: '#/components/schemas/timestamp'
+    CloudflareClientAPI_path:
+      type: string
+      description: The endpoint path you want to conduct a health check against. This
+        parameter is only valid for HTTP and HTTPS monitors.
+      default: /
+      example: /health
     CloudflareClientAPI_peer:
       type: object
       required:
@@ -1893,9 +1925,61 @@ components:
       description: The precedence of the policy. Lower values indicate higher precedence.
         Policies will be evaluated in ascending order of this field.
       example: 100
+    CloudflareClientAPI_preview_response:
+      allOf:
+      - $ref: '#/components/schemas/api-response-single'
+      - properties:
+          result:
+            type: object
+            properties:
+              pools:
+                type: object
+                example:
+                  abwlnp5jbqn45ecgxd03erbgtxtqai0d: WNAM Datacenter
+                  ve8h9lrcip5n5bbga9yqmdws28ay5d0l: EEU Datacenter
+              preview_id:
+                $ref: '#/components/schemas/monitor_components-schemas-identifier'
     CloudflareClientAPI_priority:
       type: integer
       description: Priority of the static route.
+    CloudflareClientAPI_query_waitingroom:
+      type: object
+      required:
+      - name
+      - host
+      - new_users_per_minute
+      - total_active_users
+      properties:
+        cookie_attributes:
+          $ref: '#/components/schemas/cookie_attributes'
+        custom_page_html:
+          $ref: '#/components/schemas/custom_page_html'
+        default_template_language:
+          $ref: '#/components/schemas/CloudflareClientAPI_default_template_language'
+        description:
+          $ref: '#/components/schemas/waitingroom_components-schemas-description'
+        disable_session_renewal:
+          $ref: '#/components/schemas/disable_session_renewal'
+        host:
+          $ref: '#/components/schemas/components-schemas-host'
+        json_response_enabled:
+          $ref: '#/components/schemas/json_response_enabled'
+        name:
+          $ref: '#/components/schemas/waitingroom_components-schemas-name'
+        new_users_per_minute:
+          $ref: '#/components/schemas/new_users_per_minute'
+        path:
+          $ref: '#/components/schemas/schemas-path'
+        queue_all:
+          $ref: '#/components/schemas/queue_all'
+        queueing_method:
+          $ref: '#/components/schemas/queueing_method'
+        session_duration:
+          $ref: '#/components/schemas/schemas-session_duration'
+        suspended:
+          $ref: '#/components/schemas/schemas-suspended'
+        total_active_users:
+          $ref: '#/components/schemas/total_active_users'
     CloudflareClientAPI_require:
       type: array
       description: Rules evaluated with an AND logical operator. To match a policy,
@@ -1985,6 +2069,25 @@ components:
           readOnly: true
         notes:
           $ref: '#/components/schemas/notes'
+    CloudflareClientAPI_rules_response_collection:
+      allOf:
+      - $ref: '#/components/schemas/api-response-collection'
+      - properties:
+          result:
+            type: array
+            items:
+              $ref: '#/components/schemas/rules'
+          result_info:
+            type: object
+            properties:
+              count:
+                example: 1
+              page:
+                example: 1
+              per_page:
+                example: 20
+              total_count:
+                example: 1
     CloudflareClientAPI_schedule:
       type: object
       description: Schedule for activating DNS policies. Does not apply to HTTP or
@@ -2239,6 +2342,14 @@ components:
       type: string
       description: The serial number on the uploaded certificate.
       example: "6743787633689793699141714808227354901"
+    CloudflareClientAPI_session_duration:
+      type: integer
+      description: Lifetime of a cookie (in minutes) set by Cloudflare for users who
+        get access to the route. If a user is not seen by Cloudflare again in that
+        time period, they will be treated as a new user that visits the route.
+      default: 5
+      minimum: 1
+      maximum: 30
     CloudflareClientAPI_single_request_outgoing:
       required:
       - id
@@ -2301,6 +2412,35 @@ components:
                 $ref: '#/components/schemas/peers'
               soa_serial:
                 $ref: '#/components/schemas/soa_serial'
+    CloudflareClientAPI_status:
+      type: string
+      description: Status of the token.
+      enum:
+      - active
+      - disabled
+      - expired
+      example: active
+    CloudflareClientAPI_status_response:
+      allOf:
+      - $ref: '#/components/schemas/api-response-single'
+      - properties:
+          result:
+            type: object
+            properties:
+              estimated_queued_users:
+                $ref: '#/components/schemas/estimated_queued_users'
+              estimated_total_active_users:
+                $ref: '#/components/schemas/estimated_total_active_users'
+              event_id:
+                $ref: '#/components/schemas/status_event_id'
+              max_estimated_time_minutes:
+                $ref: '#/components/schemas/max_estimated_time_minutes'
+              status:
+                $ref: '#/components/schemas/waitingroom_components-schemas-status'
+    CloudflareClientAPI_suspended:
+      type: boolean
+      description: If suspended, no health checks are sent to the origin.
+      default: false
     CloudflareClientAPI_tsig:
       type: object
       required:
@@ -2501,6 +2641,49 @@ components:
           $ref: '#/components/schemas/schemas-ratelimit'
         virtual_dns_ips:
           $ref: '#/components/schemas/virtual_dns_ips'
+    CloudflareClientAPI_waitingroom:
+      type: object
+      properties:
+        cookie_attributes:
+          $ref: '#/components/schemas/cookie_attributes'
+        created_on:
+          $ref: '#/components/schemas/timestamp'
+        custom_page_html:
+          $ref: '#/components/schemas/custom_page_html'
+        default_template_language:
+          $ref: '#/components/schemas/CloudflareClientAPI_default_template_language'
+        description:
+          $ref: '#/components/schemas/waitingroom_components-schemas-description'
+        disable_session_renewal:
+          $ref: '#/components/schemas/disable_session_renewal'
+        host:
+          $ref: '#/components/schemas/components-schemas-host'
+        id:
+          $ref: '#/components/schemas/waiting_room_id'
+        json_response_enabled:
+          $ref: '#/components/schemas/json_response_enabled'
+        modified_on:
+          $ref: '#/components/schemas/timestamp'
+        name:
+          $ref: '#/components/schemas/waitingroom_components-schemas-name'
+        new_users_per_minute:
+          $ref: '#/components/schemas/new_users_per_minute'
+        next_event_prequeue_start_time:
+          $ref: '#/components/schemas/next_event_prequeue_start_time'
+        next_event_start_time:
+          $ref: '#/components/schemas/next_event_start_time'
+        path:
+          $ref: '#/components/schemas/schemas-path'
+        queue_all:
+          $ref: '#/components/schemas/queue_all'
+        queueing_method:
+          $ref: '#/components/schemas/queueing_method'
+        session_duration:
+          $ref: '#/components/schemas/schemas-session_duration'
+        suspended:
+          $ref: '#/components/schemas/schemas-suspended'
+        total_active_users:
+          $ref: '#/components/schemas/total_active_users'
     CloudflareClientAPI_watermark_basic_upload:
       type: object
       required:
@@ -7118,7 +7301,7 @@ components:
         modified_on:
           $ref: '#/components/schemas/timestamp'
         path:
-          $ref: '#/components/schemas/path'
+          $ref: '#/components/schemas/CloudflareClientAPI_path'
         port:
           $ref: '#/components/schemas/monitor_components-schemas-port'
         probe_zone:
@@ -8934,6 +9117,8 @@ components:
       - id-ID
       - tr-TR
       - ar-EG
+      - ru-RU
+      - fa-IR
       default: en-US
       example: es-ES
     delegated_account_identifier:
@@ -9548,8 +9733,9 @@ components:
       example: true
     description:
       type: string
-      description: An optional human provided description of the static route.
-      example: New route for new prefix 203.0.113.1
+      description: A note that you can use to add more details about the waiting room.
+      default: ""
+      example: Production - DO NOT MODIFY
     destination_address_identifier:
       type: string
       description: Destination address identifier.
@@ -12343,7 +12529,7 @@ components:
         status:
           $ref: '#/components/schemas/healthchecks_components-schemas-status'
         suspended:
-          $ref: '#/components/schemas/suspended'
+          $ref: '#/components/schemas/CloudflareClientAPI_suspended'
         tcp_config:
           $ref: '#/components/schemas/tcp_config'
         timeout:
@@ -12479,10 +12665,10 @@ components:
           $ref: '#/components/schemas/packets_ttl'
     host:
       type: string
-      format: hostname
-      description: RFC3986-compliant host.
-      example: www.example.com
-      maxLength: 255
+      description: The host name to which the waiting room will be applied (no wildcards).
+        Please do not include the scheme (http:// or https://). The host and path
+        combination must be unique.
+      example: shop.example.com
     hostname:
       type: string
       description: The custom hostname that will point to your hostname via CNAME.
@@ -15669,7 +15855,7 @@ components:
         modified_on:
           $ref: '#/components/schemas/timestamp'
         path:
-          $ref: '#/components/schemas/path'
+          $ref: '#/components/schemas/CloudflareClientAPI_path'
         port:
           $ref: '#/components/schemas/components-schemas-port'
         retries:
@@ -16253,7 +16439,7 @@ components:
         features:
           $ref: '#/components/schemas/features'
         host:
-          $ref: '#/components/schemas/host'
+          $ref: '#/components/schemas/CloudflareClientAPI_host'
         last_updated:
           $ref: '#/components/schemas/timestamp'
         method:
@@ -17120,10 +17306,12 @@ components:
           $ref: '#/components/schemas/rule_position'
     path:
       type: string
-      description: The endpoint path you want to conduct a health check against. This
-        parameter is only valid for HTTP and HTTPS monitors.
+      description: Sets the path within the host to enable the waiting room on. The
+        waiting room will be enabled for all subpaths as well. If there are two waiting
+        rooms on the same subpath, the waiting room for the most specific path will
+        be chosen. Wildcards and query parameters are not supported.
       default: /
-      example: /health
+      example: /shop/checkout
     pattern:
       type: string
       title: Route pattern
@@ -18204,13 +18392,8 @@ components:
           result:
             type: object
             properties:
-              pools:
-                type: object
-                example:
-                  abwlnp5jbqn45ecgxd03erbgtxtqai0d: WNAM Datacenter
-                  ve8h9lrcip5n5bbga9yqmdws28ay5d0l: EEU Datacenter
-              preview_id:
-                $ref: '#/components/schemas/monitor_components-schemas-identifier'
+              preview_url:
+                $ref: '#/components/schemas/preview_url'
     preview_result:
       type: object
       description: Resulting health data from a preview operation.
@@ -18740,7 +18923,7 @@ components:
         retries:
           $ref: '#/components/schemas/schemas-retries'
         suspended:
-          $ref: '#/components/schemas/suspended'
+          $ref: '#/components/schemas/CloudflareClientAPI_suspended'
         tcp_config:
           $ref: '#/components/schemas/tcp_config'
         timeout:
@@ -18785,27 +18968,27 @@ components:
         default_template_language:
           $ref: '#/components/schemas/default_template_language'
         description:
-          $ref: '#/components/schemas/waitingroom_components-schemas-description'
+          $ref: '#/components/schemas/description'
         disable_session_renewal:
           $ref: '#/components/schemas/disable_session_renewal'
         host:
-          $ref: '#/components/schemas/components-schemas-host'
+          $ref: '#/components/schemas/host'
         json_response_enabled:
           $ref: '#/components/schemas/json_response_enabled'
         name:
-          $ref: '#/components/schemas/waitingroom_components-schemas-name'
+          $ref: '#/components/schemas/CloudflareClientAPI_name'
         new_users_per_minute:
           $ref: '#/components/schemas/new_users_per_minute'
         path:
-          $ref: '#/components/schemas/schemas-path'
+          $ref: '#/components/schemas/path'
         queue_all:
           $ref: '#/components/schemas/queue_all'
         queueing_method:
           $ref: '#/components/schemas/queueing_method'
         session_duration:
-          $ref: '#/components/schemas/schemas-session_duration'
+          $ref: '#/components/schemas/CloudflareClientAPI_session_duration'
         suspended:
-          $ref: '#/components/schemas/schemas-suspended'
+          $ref: '#/components/schemas/suspended'
         total_active_users:
           $ref: '#/components/schemas/total_active_users'
     queue:
@@ -19576,7 +19759,7 @@ components:
               not_before:
                 $ref: '#/components/schemas/not_before'
               status:
-                $ref: '#/components/schemas/status'
+                $ref: '#/components/schemas/CloudflareClientAPI_status'
     response_single_value:
       allOf:
       - $ref: '#/components/schemas/api-response-single'
@@ -19766,7 +19949,7 @@ components:
         created_on:
           $ref: '#/components/schemas/created_on'
         description:
-          $ref: '#/components/schemas/description'
+          $ref: '#/components/schemas/CloudflareClientAPI_description'
         id:
           $ref: '#/components/schemas/CloudflareClientAPI_identifier'
         modified_on:
@@ -19811,7 +19994,7 @@ components:
       - priority
       properties:
         description:
-          $ref: '#/components/schemas/description'
+          $ref: '#/components/schemas/CloudflareClientAPI_description'
         nexthop:
           $ref: '#/components/schemas/nexthop'
         prefix:
@@ -20437,18 +20620,7 @@ components:
           result:
             type: array
             items:
-              $ref: '#/components/schemas/rules'
-          result_info:
-            type: object
-            properties:
-              count:
-                example: 1
-              page:
-                example: 1
-              per_page:
-                example: 20
-              total_count:
-                example: 1
+              $ref: '#/components/schemas/rule_result'
     ruleset:
       type: object
       description: A ruleset object.
@@ -24424,12 +24596,11 @@ components:
       readOnly: true
     status:
       type: string
-      description: Status of the token.
       enum:
-      - active
-      - disabled
-      - expired
-      example: active
+      - event_prequeueing
+      - not_queueing
+      - queueing
+      example: queueing
     status_event_id:
       type: string
       example: 25756b2dfe6e378a06b033b670413757
@@ -24449,7 +24620,7 @@ components:
               max_estimated_time_minutes:
                 $ref: '#/components/schemas/max_estimated_time_minutes'
               status:
-                $ref: '#/components/schemas/waitingroom_components-schemas-status'
+                $ref: '#/components/schemas/status'
     std_dev_rtt_ms:
       type: number
       description: Standard deviation of the RTTs in ms.
@@ -24601,7 +24772,8 @@ components:
       example: true
     suspended:
       type: boolean
-      description: If suspended, no health checks are sent to the origin.
+      description: Suspends or allows traffic going to the waiting room. If set to
+        `true`, the traffic will not go to the waiting room.
       default: false
     switch_locked:
       type: boolean
@@ -25085,7 +25257,7 @@ components:
         policies:
           $ref: '#/components/schemas/CloudflareClientAPI_policies'
         status:
-          $ref: '#/components/schemas/status'
+          $ref: '#/components/schemas/CloudflareClientAPI_status'
     total_active_users:
       type: integer
       description: Sets the total number of active user sessions on the route at a
@@ -26778,11 +26950,11 @@ components:
         default_template_language:
           $ref: '#/components/schemas/default_template_language'
         description:
-          $ref: '#/components/schemas/waitingroom_components-schemas-description'
+          $ref: '#/components/schemas/description'
         disable_session_renewal:
           $ref: '#/components/schemas/disable_session_renewal'
         host:
-          $ref: '#/components/schemas/components-schemas-host'
+          $ref: '#/components/schemas/host'
         id:
           $ref: '#/components/schemas/waiting_room_id'
         json_response_enabled:
@@ -26790,7 +26962,7 @@ components:
         modified_on:
           $ref: '#/components/schemas/timestamp'
         name:
-          $ref: '#/components/schemas/waitingroom_components-schemas-name'
+          $ref: '#/components/schemas/CloudflareClientAPI_name'
         new_users_per_minute:
           $ref: '#/components/schemas/new_users_per_minute'
         next_event_prequeue_start_time:
@@ -26798,15 +26970,15 @@ components:
         next_event_start_time:
           $ref: '#/components/schemas/next_event_start_time'
         path:
-          $ref: '#/components/schemas/schemas-path'
+          $ref: '#/components/schemas/path'
         queue_all:
           $ref: '#/components/schemas/queue_all'
         queueing_method:
           $ref: '#/components/schemas/queueing_method'
         session_duration:
-          $ref: '#/components/schemas/schemas-session_duration'
+          $ref: '#/components/schemas/CloudflareClientAPI_session_duration'
         suspended:
-          $ref: '#/components/schemas/schemas-suspended'
+          $ref: '#/components/schemas/suspended'
         total_active_users:
           $ref: '#/components/schemas/total_active_users'
     waitingroom_components-schemas-description:
@@ -26826,13 +26998,13 @@ components:
           result:
             type: array
             items:
-              $ref: '#/components/schemas/waitingroom'
+              $ref: '#/components/schemas/CloudflareClientAPI_waitingroom'
     waitingroom_components-schemas-single_response:
       allOf:
       - $ref: '#/components/schemas/api-response-single'
       - properties:
           result:
-            $ref: '#/components/schemas/waitingroom'
+            $ref: '#/components/schemas/CloudflareClientAPI_waitingroom'
     waitingroom_components-schemas-status:
       type: string
       enum:
@@ -31829,7 +32001,7 @@ paths:
                 method:
                   $ref: '#/components/schemas/schemas-method'
                 path:
-                  $ref: '#/components/schemas/path'
+                  $ref: '#/components/schemas/CloudflareClientAPI_path'
                 port:
                   $ref: '#/components/schemas/monitor_components-schemas-port'
                 probe_zone:
@@ -31981,7 +32153,7 @@ paths:
                 method:
                   $ref: '#/components/schemas/schemas-method'
                 path:
-                  $ref: '#/components/schemas/path'
+                  $ref: '#/components/schemas/CloudflareClientAPI_path'
                 port:
                   $ref: '#/components/schemas/monitor_components-schemas-port'
                 probe_zone:
@@ -32057,7 +32229,7 @@ paths:
                 method:
                   $ref: '#/components/schemas/schemas-method'
                 path:
-                  $ref: '#/components/schemas/path'
+                  $ref: '#/components/schemas/CloudflareClientAPI_path'
                 port:
                   $ref: '#/components/schemas/monitor_components-schemas-port'
                 probe_zone:
@@ -32128,7 +32300,7 @@ paths:
                 method:
                   $ref: '#/components/schemas/schemas-method'
                 path:
-                  $ref: '#/components/schemas/path'
+                  $ref: '#/components/schemas/CloudflareClientAPI_path'
                 port:
                   $ref: '#/components/schemas/monitor_components-schemas-port'
                 probe_zone:
@@ -32146,14 +32318,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/preview_response'
+                - $ref: '#/components/schemas/CloudflareClientAPI_preview_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Preview Monitor response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/preview_response'
+                $ref: '#/components/schemas/CloudflareClientAPI_preview_response'
       security:
       - api_email: []
         api_key: []
@@ -32630,7 +32802,7 @@ paths:
                 method:
                   $ref: '#/components/schemas/schemas-method'
                 path:
-                  $ref: '#/components/schemas/path'
+                  $ref: '#/components/schemas/CloudflareClientAPI_path'
                 port:
                   $ref: '#/components/schemas/monitor_components-schemas-port'
                 probe_zone:
@@ -32648,14 +32820,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/preview_response'
+                - $ref: '#/components/schemas/CloudflareClientAPI_preview_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Preview Pool response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/preview_response'
+                $ref: '#/components/schemas/CloudflareClientAPI_preview_response'
       security:
       - api_email: []
         api_key: []
@@ -74122,7 +74294,7 @@ paths:
                 method:
                   $ref: '#/components/schemas/schemas-method'
                 path:
-                  $ref: '#/components/schemas/path'
+                  $ref: '#/components/schemas/CloudflareClientAPI_path'
                 port:
                   $ref: '#/components/schemas/components-schemas-port'
                 probe_zone:
@@ -74255,7 +74427,7 @@ paths:
                 method:
                   $ref: '#/components/schemas/schemas-method'
                 path:
-                  $ref: '#/components/schemas/path'
+                  $ref: '#/components/schemas/CloudflareClientAPI_path'
                 port:
                   $ref: '#/components/schemas/components-schemas-port'
                 probe_zone:
@@ -74322,7 +74494,7 @@ paths:
                 method:
                   $ref: '#/components/schemas/schemas-method'
                 path:
-                  $ref: '#/components/schemas/path'
+                  $ref: '#/components/schemas/CloudflareClientAPI_path'
                 port:
                   $ref: '#/components/schemas/components-schemas-port'
                 probe_zone:
@@ -74388,7 +74560,7 @@ paths:
                 method:
                   $ref: '#/components/schemas/schemas-method'
                 path:
-                  $ref: '#/components/schemas/path'
+                  $ref: '#/components/schemas/CloudflareClientAPI_path'
                 port:
                   $ref: '#/components/schemas/components-schemas-port'
                 retries:
@@ -74404,14 +74576,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/preview_response'
+                - $ref: '#/components/schemas/CloudflareClientAPI_preview_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Preview Monitor response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/preview_response'
+                $ref: '#/components/schemas/CloudflareClientAPI_preview_response'
       security:
       - api_email: []
         api_key: []
@@ -74837,7 +75009,7 @@ paths:
                 method:
                   $ref: '#/components/schemas/schemas-method'
                 path:
-                  $ref: '#/components/schemas/path'
+                  $ref: '#/components/schemas/CloudflareClientAPI_path'
                 port:
                   $ref: '#/components/schemas/components-schemas-port'
                 retries:
@@ -74853,14 +75025,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/preview_response'
+                - $ref: '#/components/schemas/CloudflareClientAPI_preview_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Preview Pool response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/preview_response'
+                $ref: '#/components/schemas/CloudflareClientAPI_preview_response'
       security:
       - api_email: []
         api_key: []
@@ -78535,7 +78707,7 @@ paths:
                   endpoint:
                     $ref: '#/components/schemas/endpoint'
                   host:
-                    $ref: '#/components/schemas/host'
+                    $ref: '#/components/schemas/CloudflareClientAPI_host'
                   method:
                     $ref: '#/components/schemas/method'
               required:
@@ -83027,14 +83199,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/rules_response_collection'
+                - $ref: '#/components/schemas/CloudflareClientAPI_rules_response_collection'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: List routing rules response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/rules_response_collection'
+                $ref: '#/components/schemas/CloudflareClientAPI_rules_response_collection'
       security:
       - api_email: []
         api_key: []
@@ -92483,7 +92655,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/query_waitingroom'
+              $ref: '#/components/schemas/CloudflareClientAPI_query_waitingroom'
       responses:
         4xx:
           description: Create waiting room response failure
@@ -92602,7 +92774,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/query_waitingroom'
+              $ref: '#/components/schemas/CloudflareClientAPI_query_waitingroom'
       responses:
         4xx:
           description: Patch waiting room response failure
@@ -92644,7 +92816,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/query_waitingroom'
+              $ref: '#/components/schemas/CloudflareClientAPI_query_waitingroom'
       responses:
         4xx:
           description: Update waiting room response failure
@@ -93224,14 +93396,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/status_response'
+                - $ref: '#/components/schemas/CloudflareClientAPI_status_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Get waiting room status response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/status_response'
+                $ref: '#/components/schemas/CloudflareClientAPI_status_response'
       security:
       - api_email: []
         api_key: []
