@@ -1212,7 +1212,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				}),
 				an = Ut,
 				gn = a().lazy(function() {
-					return Promise.all([e.e(8415), e.e(39053), e.e(87122), e.e(67118), e.e(91914), e.e(70474), e.e(95458)]).then(e.bind(e, "../react/pages/domainconnect/Main.tsx"))
+					return Promise.all([e.e(8415), e.e(39053), e.e(87122), e.e(67118), e.e(91914), e.e(70474), e.e(85411)]).then(e.bind(e, "../react/pages/domainconnect/Main.tsx"))
 				}),
 				sn = function() {
 					return a().createElement(gn, null)
@@ -3301,7 +3301,7 @@ Commit \u2014 `).concat(we.commit)
 					return Promise.all([e.e(8415), e.e(39053), e.e(87122), e.e(67118), e.e(46433), e.e(34744), e.e(10048), e.e(17361), e.e(41530), e.e(71326)]).then(e.bind(e, "../react/pages/home/rulesets/magic-firewall/MagicFirewallMain.tsx"))
 				}),
 				Bu = a().lazy(function() {
-					return Promise.all([e.e(8415), e.e(39053), e.e(87122), e.e(67118), e.e(46433), e.e(34744), e.e(47588), e.e(12824), e.e(10048), e.e(17361), e.e(41530), e.e(55700), e.e(55713), e.e(14312), e.e(3380)]).then(e.bind(e, "../react/pages/home/rulesets/ddos/Main.tsx"))
+					return Promise.all([e.e(8415), e.e(39053), e.e(87122), e.e(67118), e.e(46433), e.e(34744), e.e(47588), e.e(40440), e.e(10048), e.e(17361), e.e(41530), e.e(55700), e.e(55713), e.e(14312), e.e(3380)]).then(e.bind(e, "../react/pages/home/rulesets/ddos/Main.tsx"))
 				}),
 				ps = e("../react/pages/home/rulesets/account-firewall-rules/utils.tsx"),
 				ws = function(c, H) {
@@ -3346,7 +3346,7 @@ Commit \u2014 `).concat(we.commit)
 				},
 				Wu = Zu,
 				xi = a().lazy(function() {
-					return Promise.all([e.e(8415), e.e(39053), e.e(87122), e.e(67118), e.e(46433), e.e(34744), e.e(47588), e.e(40440), e.e(10048), e.e(17361), e.e(41530), e.e(55700), e.e(55713), e.e(72439), e.e(14312), e.e(55203)]).then(e.bind(e, "../react/pages/home/rulesets/account-firewall-rules/Main.tsx"))
+					return Promise.all([e.e(8415), e.e(39053), e.e(87122), e.e(67118), e.e(46433), e.e(34744), e.e(47588), e.e(12824), e.e(10048), e.e(17361), e.e(41530), e.e(55700), e.e(55713), e.e(72439), e.e(14312), e.e(55203)]).then(e.bind(e, "../react/pages/home/rulesets/account-firewall-rules/Main.tsx"))
 				}),
 				gs = function(c) {
 					return c ? "waf" : "custom"
@@ -7390,14 +7390,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				e.g.build = Ed({}, {
-					branch: "release-1676905493",
+					branch: "release-1676991906",
 					isReleaseCandidate: "true",
-					commit: "0a97f89906f32024d69a7dcc673b649784ee9444",
+					commit: "2ac74e646e4b145257aabb8fca80f18c5109e376",
 					env: "production",
-					builtAt: 1676905749396,
-					dashVersion: "066ef76b2ba62704bb2fda590408d48f4924b94d",
+					builtAt: 1676992177191,
+					dashVersion: "be55e0a698a72c2e88a073056e5fd7b503aa9fab",
 					versions: {
-						"@cloudflare/app-dash": "25.147.5",
+						"@cloudflare/app-dash": "25.147.11",
 						node: "16.16.0",
 						yarn: "3.2.2",
 						webpack: "5.74.0"
@@ -87225,7 +87225,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						current_period_end: n.eg.string.optional,
 						current_period_start: n.eg.string.optional
 					}).optional,
-					payment_method_id: n.eg.number.optional,
+					payment_method_id: n.eg.union([n.eg.number, n.eg.string]).optional,
 					created_date: n.eg.string.optional
 				}),
 				a = n.eg.object({
@@ -87359,4 +87359,4 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 	}
 ]);
 
-//# sourceMappingURL=64f20d826ff067127172.js.map
+//# sourceMappingURL=046a2bbff29e2f3c97c4.js.map
