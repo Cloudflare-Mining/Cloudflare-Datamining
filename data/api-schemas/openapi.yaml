@@ -967,7 +967,8 @@ components:
           $ref: '#/components/schemas/ray_id'
         user_email:
           $ref: '#/components/schemas/CloudflareClientAPI_schemas-email'
-    CloudflareClientAPI_account_identifier: {}
+    CloudflareClientAPI_account_identifier:
+      $ref: '#/components/schemas/CloudflareClientAPI_identifier'
     CloudflareClientAPI_acl:
       type: object
       required:
@@ -1669,9 +1670,10 @@ components:
                 $ref: '#/components/schemas/dns-secondary-secondary-zone_components-schemas-identifier'
     CloudflareClientAPI_identifier:
       type: string
-      description: Policy identifier.
-      example: f267e341f3dd4697bd3b9f71dd96247f
+      description: Identifier
+      example: 023e105f4ecef8ad9ca31a8372d0c353
       readOnly: true
+      maxLength: 32
     CloudflareClientAPI_identity-providers:
       type: object
       properties:
@@ -3386,7 +3388,11 @@ components:
               green_compute:
                 readOnly: true
     account_identifier:
-      example: 01a7362d577a6c3019a474fd6f485823
+      type: string
+      description: The account identifier tag.
+      example: 023e105f4ecef8ad9ca31a8372d0c353
+      readOnly: true
+      maxLength: 32
     account_subscription_response_collection:
       allOf:
       - $ref: '#/components/schemas/api-response-collection'
@@ -6425,12 +6431,6 @@ components:
       description: The date and time the clip was created.
       example: "2014-01-02T02:20:00Z"
       readOnly: true
-    cloudflare-stream-client-api_account_identifier:
-      type: string
-      description: The account identifier tag.
-      example: 023e105f4ecef8ad9ca31a8372d0c353
-      readOnly: true
-      maxLength: 32
     cloudflare-stream-client-api_identifier:
       type: string
       description: A Cloudflare-generated unique identifier for a media item.
@@ -9548,8 +9548,8 @@ components:
       example: true
     description:
       type: string
-      description: The description of the Device Posture Rule.
-      example: The rule for admin serial numbers
+      description: An optional human provided description of the static route.
+      example: New route for new prefix 203.0.113.1
     destination_address_identifier:
       type: string
       description: Destination address identifier.
@@ -9815,7 +9815,7 @@ components:
       type: object
       properties:
         description:
-          $ref: '#/components/schemas/description'
+          $ref: '#/components/schemas/CloudflareClientAPI_description'
         expiration:
           $ref: '#/components/schemas/expiration'
         id:
@@ -9905,7 +9905,7 @@ components:
         default:
           $ref: '#/components/schemas/default'
         description:
-          $ref: '#/components/schemas/schemas-description'
+          $ref: '#/components/schemas/CloudflareClientAPI_schemas-description'
         disable_auto_fallback:
           $ref: '#/components/schemas/disable_auto_fallback'
         enabled:
@@ -12088,7 +12088,7 @@ components:
         customer_gre_endpoint:
           $ref: '#/components/schemas/customer_gre_endpoint'
         description:
-          $ref: '#/components/schemas/CloudflareClientAPI_schemas-description'
+          $ref: '#/components/schemas/schemas-description'
         health_check:
           $ref: '#/components/schemas/health_check'
         id:
@@ -19766,7 +19766,7 @@ components:
         created_on:
           $ref: '#/components/schemas/created_on'
         description:
-          $ref: '#/components/schemas/CloudflareClientAPI_description'
+          $ref: '#/components/schemas/description'
         id:
           $ref: '#/components/schemas/CloudflareClientAPI_identifier'
         modified_on:
@@ -19811,7 +19811,7 @@ components:
       - priority
       properties:
         description:
-          $ref: '#/components/schemas/CloudflareClientAPI_description'
+          $ref: '#/components/schemas/description'
         nexthop:
           $ref: '#/components/schemas/nexthop'
         prefix:
@@ -21274,9 +21274,8 @@ components:
             example: {}
     schemas-description:
       type: string
-      description: A description of the policy.
-      example: Policy for test teams.
-      maxLength: 500
+      description: An optional description of the GRE tunnel.
+      example: Tunnel for ISP X
     schemas-destination_conf:
       type: string
       format: uri
@@ -25445,7 +25444,7 @@ components:
         customer_gre_endpoint:
           $ref: '#/components/schemas/customer_gre_endpoint'
         description:
-          $ref: '#/components/schemas/CloudflareClientAPI_schemas-description'
+          $ref: '#/components/schemas/schemas-description'
         health_check:
           $ref: '#/components/schemas/health_check'
         interface_address:
