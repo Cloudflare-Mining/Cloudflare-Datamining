@@ -123,5 +123,5 @@ console.log(output); // interface KVNamespace { get(key: string): Promise&lt;str
 	</ul>
 	<p>以前，这些覆盖是在单独的 TypeScript 文件中定义的，而非它们所覆盖的 C++ 声明文件。因此，它们经常与原始声明不同步。在新的系统中，覆盖与含 C++ 宏的原始文件一同定义，这意味着它们可以与运行时实施变更一同接受审查。请参阅 <a href="https://github.com/cloudflare/workerd/blob/aad867dfbaf6293fce9af70e08f82e1aa07dbdd5/src/workerd/jsg/README.md#typescript" target="_blank">README，了解 <code>workerd</code> 的 JavaScript 粘合代码</a>的更多细节和示例。</p>
 	<h3 id="-workers-">立即尝试使用 Workers 生成类型！</h3>
-	<p>我们鼓励您使用 <code>npm install --save-dev @cloudflare/workers-types@latest</code> 升级到 <code>@cloudflare/workers-types</code> 的最新版本，并试用新的 <code>wrangler types</code> 命令。我们将随每个 <code>workerd</code> 版本发布一个新的类型版本。如果您对 <a href="https://discord.gg/aTsevRH3pG" target="_blank">Cloudflare Developers Discord</a> 有任何看法，请告知我们；如果您认为有任何类型可以改进，请<a href="https://github.com/cloudflare/workerd/issues/new" target="_blank">在 GitHub 发起讨论</a>。</p>
+	<p>我们鼓励您使用 <code>npm install --save-dev @cloudflare/workers-types@latest</code> 升级到 <code>@cloudflare/workers-types</code> 的最新版本，并试用新的 <code>wrangler types</code> 命令。我们将随每个 <code>workerd</code> 版本发布一个新的类型版本。如果您对 <a href="https://discord.gg/cloudflaredev" target="_blank">Cloudflare Developers Discord</a> 有任何看法，请告知我们；如果您认为有任何类型可以改进，请<a href="https://github.com/cloudflare/workerd/issues/new" target="_blank">在 GitHub 发起讨论</a>。</p>
 </div>
