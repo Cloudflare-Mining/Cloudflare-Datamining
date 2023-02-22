@@ -1979,6 +1979,42 @@
 	"AccountMagicTransitTunnelTrafficAdaptiveGroupsOrderBy": {
 		"__description": ""
 	},
+	"AccountMagicWANConnectorMetricsAdaptiveGroups": {
+		"__description": "Beta. Magic WAN Connector Metrics",
+		"avg": "",
+		"dimensions": "List of dimensions to group by",
+		"max": ""
+	},
+	"AccountMagicWANConnectorMetricsAdaptiveGroupsAvg": {
+		"__description": "",
+		"rxBitrateFiveMinute": "Rx Bitrate over 5 minutes",
+		"rxBitrateMinute": "Rx Bitrate over 1 minute",
+		"rxPacketrateFiveMinute": "Rx Packet rate over 5 minutes",
+		"rxPacketrateMinute": "Rx Packet rate over 1 minute",
+		"txBitrateFiveMinute": "Tx Bitrate over 5 minutes",
+		"txBitrateMinute": "Tx Bitrate over 1 minute",
+		"txPacketrateFiveMinute": "Tx Packet rate over 5 minutes",
+		"txPacketrateMinute": "Tx Packet rate over 1 minute"
+	},
+	"AccountMagicWANConnectorMetricsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"datetime": "",
+		"datetimeFiveMinutes": "The date and time the event occurred at the edge truncated to a multiple of 5 minutes",
+		"datetimeMinute": "The date and time the event occurred at the edge truncated to the minute",
+		"mconnInterfaceName": "Name of connector interface",
+		"mconnInterfaceType": "Interface type LAN, WAN or IPSEC",
+		"mconnSiteID": "Customer site identifier"
+	},
+	"AccountMagicWANConnectorMetricsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountMagicWANConnectorMetricsAdaptiveGroupsMax": {
+		"__description": "",
+		"interfaceCount": "Number of interfaces of a given Type"
+	},
+	"AccountMagicWANConnectorMetricsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountMnmFlowDataAdaptiveGroups": {
 		"__description": "Flow data collected through Magic Network Monitoring",
 		"avg": "The average of values for a metric per dimension",
@@ -2514,6 +2550,7 @@
 	},
 	"AccountSettings": {
 		"__description": "Access and limitations for an account",
+		"MagicWANConnectorMetricsAdaptiveGroups": "",
 		"accessLoginRequestsAdaptiveGroups": "",
 		"cdnNetworkAnalyticsAdaptiveGroups": "",
 		"dosdAttackAnalyticsGroups": "",
@@ -3096,6 +3133,35 @@
 	},
 	"Time": {
 		"__description": "Scalar type time.Time"
+	},
+	"ZoneApiGatewayMatchedSessionIDsAdaptiveGroups": {
+		"__description": "Beta. Aggregated count of Session Identifier matches",
+		"avg": "",
+		"count": "Number of events with Session Identifiers",
+		"dimensions": "List of dimensions to group by"
+	},
+	"ZoneApiGatewayMatchedSessionIDsAdaptiveGroupsAvg": {
+		"__description": "",
+		"sampleInterval": "Average sample interval"
+	},
+	"ZoneApiGatewayMatchedSessionIDsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"apiGatewayMatchedSessionIdentifierName": "Name of session identifier",
+		"apiGatewayMatchedSessionIdentifierType": "Type of session identifier. Possible values are header | cookie",
+		"date": "",
+		"datetime": "",
+		"datetimeDay": "",
+		"datetimeFifteenMinutes": "",
+		"datetimeFiveMinutes": "",
+		"datetimeHalfOfHour": "",
+		"datetimeHour": "",
+		"datetimeMinute": ""
+	},
+	"ZoneApiGatewayMatchedSessionIDsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"ZoneApiGatewayMatchedSessionIDsAdaptiveGroupsOrderBy": {
+		"__description": ""
 	},
 	"ZoneApiRequestSequencesGroups": {
 		"__description": "Sequences of API endpoint operations. Sequences are grouped by AuthID and currently ranked by correlation score. Correlation scores are estimated over a 24 hour window and are current to within 10 minutes",
@@ -4226,6 +4292,7 @@
 	},
 	"ZoneSettings": {
 		"__description": "Access and limitations for a zone",
+		"apiGatewayMatchedSessionIDsAdaptiveGroups": "",
 		"apiRequestSequencesGroups": "",
 		"cacheReserveOperationsAdaptiveGroups": "",
 		"cacheReserveStorageAdaptiveGroups": "",
@@ -4521,6 +4588,7 @@
 	},
 	"account": {
 		"__description": "",
+		"MagicWANConnectorMetricsAdaptiveGroups": "Beta. Magic WAN Connector Metrics",
 		"accessLoginRequestsAdaptiveGroups": "Access login requests",
 		"accountTag": "",
 		"cdnNetworkAnalyticsAdaptiveGroups": "Network analytics data for Cloudflare CDN traffic",
@@ -4622,6 +4690,7 @@
 	},
 	"zone": {
 		"__description": "",
+		"apiGatewayMatchedSessionIDsAdaptiveGroups": "Beta. Aggregated count of Session Identifier matches",
 		"apiRequestSequencesGroups": "Sequences of API endpoint operations. Sequences are grouped by AuthID and currently ranked by correlation score. Correlation scores are estimated over a 24 hour window and are current to within 10 minutes",
 		"cacheReserveOperationsAdaptiveGroups": "Beta. Cache Reserve operations with adaptive sampling",
 		"cacheReserveStorageAdaptiveGroups": "Beta. Cache Reserve storage with adaptive sampling",
