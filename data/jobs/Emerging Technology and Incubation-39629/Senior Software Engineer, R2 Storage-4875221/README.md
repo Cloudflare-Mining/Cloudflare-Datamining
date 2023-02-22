@@ -5,33 +5,16 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><strong>About the Department</strong></h3>
-<p>Customer Success Managers, Account Executives, Business Development Representatives, Solution Engineers, and Sales Operations - all working together help our customers adopt Cloudflare and create great Internet-enabled experiences.</p>
-<p>The sales team at Cloudflare helps customers solve real, technical problems while creating the revenue streams that help the company provide free service to millions in our community.</p>
-<h3><strong>What you'll do</strong></h3>
-<p>You will be responsible for ensuring the success of Cloudflare’s Enterprise customers and managing all of their post-sale experiences, with your key objective being to ensure account renewals and growth. You’ll bring strategic relationship-building and account planning expertise, a strong background in managing and exceeding sales quotas, product knowledge, organizational skills, poise and experience in presenting to and meeting with customers — both in person and via web-meeting technologies — as well as a high degree of empathy to ensure the customer’s satisfaction with Cloudflare’s services. You’ll utilize your extensive project management and decision-making skills, allowing you to balance the needs and requirements of your portfolio of customers with the commercial realities of supplying Cloudflare’s services.&nbsp;</p>
-<p>You will maintain a deep understanding of our solutions and present to customers about the most relevant features/functionality for their specific business needs. You are ultimately responsible for the retention of your book of business; this is driven through demonstrating the value the products and services provide to the customer’s business via regular formal reviews.</p>
-<p><strong>Additional responsibilities will include:</strong></p>
+<h3 id="SeniorSoftwareEngineerR2StorageRemote(America/Europe)-AbouttheDepartment"><strong>About the Department</strong></h3>
+<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</p>
+<h3 id="SeniorSoftwareEngineerR2StorageRemote(America/Europe)-Whatyou'lldo"><strong>What you'll do</strong></h3>
+<p>In this role, you will collaborate with Customers, Designers, and Product Managers to design and build systems that push the boundaries of what is possible at the Cloudflare edge. You will own your code from inception to release, delivering solutions at all layers of the software stack to empower Cloudflare customers. On any given day, you might write a design document that outlines how you plan to solve a specific problem or implement a new feature, modify how R2 Storage processes requests, or fix a bug that's impacting our users. You can expect to interact with a variety of languages and technologies including. We primarily use Typescript and Go.</p>
+<h3 id="SeniorSoftwareEngineerR2StorageRemote(America/Europe)-Examplesofdesirableskills,knowledgeandexperience"><strong>Examples of desirable skills, knowledge and experience</strong></h3>
 <ul>
-	<li>Manage the customer life cycle including contract renewal</li>
-	<li>Work with your account teams to plan and execute long term account plans to facilitate retention and growth via product and new business unit expansion</li>
-	<li>Develop and maintain long-term relationships with stakeholders in your account portfolio.</li>
-	<li>Work cross-functionally with Product, Engineering, SRE, Marketing and other teams to resolve customer business issues and work towards their stated goals.</li>
-	<li>Manage customer feedback and product needs by providing feature requests to internal partner teams.</li>
-	<li>&lt; 25% travel within ASEAN regions</li>
-</ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
-<ul>
-	<li>Bachelor's degree required. Masters is a plus.</li>
-	<li>To work with regional customers, proficiency in Bahasa is a plus</li>
-	<li>5+ years of experience in a Customer Success/Account Management or Solution Engineering role, servicing enterprise accounts.</li>
-	<li>Strong understanding of computer networking and “how the internet works.”</li>
-	<li>Experience in cloud security industries and/or with public sector customers is a significant plus.</li>
-	<li>Experience with project management, account portfolio planning and prioritization.</li>
-	<li>Ability to prioritize, multi-task, and perform effectively under pressure.</li>
-	<li>Strong phone and interpersonal communication skills (verbal and written) as well as organizational skills.</li>
-	<li>Track record of successful planning and execution of Executive Business Reviews.</li>
-	<li>Understanding of application, server, and network security is a plus.</li>
+	<li>Experience building and managing a large scale object storage platform.&nbsp;</li>
+	<li>Deep knowledge of at least one modern strongly-typed programming language such as Typescript, Go, Java, or C#.</li>
+	<li>Experience debugging, optimizing and identifying failure modes in&nbsp;<span class="inline-comment-marker" data-ref="54d10e3b-73c1-4af9-8da4-e619f015c3b0">a large-scale Linux-based distributed system</span>.</li>
+	<li>Experience working in low-latency, real-time processing environments such as game streaming, game engine architecture, high frequency trading, or payment systems.</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
