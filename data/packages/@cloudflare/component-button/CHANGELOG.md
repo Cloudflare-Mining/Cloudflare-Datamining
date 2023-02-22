@@ -1,5 +1,17 @@
 # Change Log
 
+## 5.4.3
+
+### Patch Changes
+
+- 03d9b64e82: Add optional name attribute to Button.
+
+## 5.4.2
+
+### Patch Changes
+
+- 65f3dbc58e: Add optional name attribute to Button.
+
 ## 5.4.1
 
 ### Patch Changes
