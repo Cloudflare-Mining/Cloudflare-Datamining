@@ -9,7 +9,7 @@
 <p>Anytime we push code, it automatically affects the millions of Internet properties (powering websites, remote teams, APIs, mobile apps, etc.) running on our global network. Cloudflare's network is one of the largest in the world and spans over 275 cities in more than 100 countries. What's more, Cloudflare operates within 50 milliseconds of 95% of the Internet-connected population globally (for context, the blink of an eye is 300-400 milliseconds!). We are passionate about making the Internet more secure, reliable, and faster for everyone.</p>
 <p><span style="font-weight: 400;">Cloudflare’s Engineering teams build and run the software that handles the massive amount of traffic that flows through our network. We also have teams that build the UI and control plane for our software, using modern patterns and libraries in a microservices-based architecture. Technologies include: C/C++, Rust, Go, Lua, Nginx, Go, Python, Typescript, JavaScript and ReactJS.</span></p>
 <p><strong>About the Internship Program</strong></p>
-<p><span style="font-weight: 400;">The ideal summer intern is passionate about making the internet a better place. You will work with strong engineers. You will push code this summer that touches hundreds of millions of web surfers. We like to get things done, so we are looking for interns who are curious and can take on and complete projects. This is a great opportunity for engineers that want to learn to develop at Internet scale.</span></p>
+<p><span style="font-weight: 400;">The ideal summer intern is passionate about making the Internet a better place. You will work with strong engineers. You will push code this summer that touches hundreds of millions of web surfers. We like to get things done, so we are looking for interns who are curious and can take on and complete projects. This is a great opportunity for engineers that want to learn to develop at Internet scale.</span></p>
 <p>What would you do as a Cloudflare intern?</p>
 <ul>
 	<li>Ship and deliver projects over 12 weeks with autonomy and support.</li>
@@ -31,7 +31,7 @@
 </ul>
 <p><strong>Please note</strong></p>
 <ul>
-	<li><span style="font-weight: 400;">We will be hiring interns through the fall and early spring on a rolling basis until all roles are complete. Due to the volume of applicants, we may not get back to every candidate until December 1, 2022.&nbsp;</span></li>
+	<li><span style="font-weight: 400;">We will be hiring interns through the fall and early spring on a rolling basis until all roles are complete.&nbsp;</span></li>
 	<li><span style="font-weight: 400;">Depending on the COVID-19 situation in 2023, our internship will be remote or located in our San Francisco, Austin, Champaign, Kirkland, or New York offices.</span></li>
 </ul>
 <p>&nbsp;</p>
