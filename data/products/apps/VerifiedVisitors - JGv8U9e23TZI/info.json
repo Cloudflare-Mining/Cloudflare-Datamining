@@ -2,7 +2,7 @@
 	"id": "JGv8U9e23TZI",
 	"title": "VerifiedVisitors",
 	"shortDescription": "Bot Management Simplified",
-	"longDescription": "**What is it?**\n\nVerifiedVisitors is a bank grade AI/ML bot mitigation platform built from the ground up to support the CloudFlare community with a true edge of network architecture.\n\nA **free tier** is available so you can experience all the benefits for yourself.\n\n**How does it work?**\n\nDeploying intelligent Service Workers at the edge of network helps protect your web estate from unwanted and malicious bot traffic before they hit your website. Our intelligent detectors examine thousands of diverse security signals, separate out the legitimate bots and users from the malicious ones by learning from your traffic. \n\nOur customers receive security protection for malicious bot activity such as account takeover, credit cards attacks, and content scraping, and we can help save you valuable energy resources on web hosting, bandwidth, and CPU. \n\nAll the bot detection and mitigation happens at the edge of network - there is nothing to install on your servers, taking all the heavy lifting away from your web estate.\nSetup is simple, typically our customers are up and running in minutes, not days or weeks.\n\nWith VerifiedVisitors you will be able to manage all the bots visiting your site, set your bot access list, and automate mitigation\n\n**What does it cost?**\n\n.We charge on a monthly subscription basis based on total web request volume.\n\nWe have a simple free tier for accounts with less than 100k web requests per month, for accounts with higher volumes, upgrades are available via the VerifiedVisitors portal starting from as little as $199 per month.\n\nBilling is available in both $USD and £GBP",
+	"longDescription": "**What is it?**\n\nVerifiedVisitors is a bank grade AI/ML bot mitigation platform built from the ground up to support the CloudFlare community with a true edge of network architecture.\n\nA **free tier** is available so you can experience all the benefits for yourself.\n\n**How does it work?**\n\nDeploying intelligent Service Workers at the edge of network helps protect your web estate from unwanted and malicious bot traffic before they hit your website. Our intelligent detectors examine thousands of diverse security signals, separate out the legitimate bots and users from the malicious ones by learning from your traffic. \n\nOur customers receive security protection for malicious bot activity such as account takeover, credit cards attacks, and content scraping, and we can help save you valuable energy resources on web hosting, bandwidth, and CPU. \n\nAll the bot detection and mitigation happens at the edge of network - there is nothing to install on your servers, taking all the heavy lifting away from your web estate.\nSetup is simple, typically our customers are up and running in minutes, not days or weeks.\n\nWith VerifiedVisitors you will be able to manage all the bots visiting your site, set your bot access list, and automate mitigation\n\n**What does it cost?**\n\nAll new accounts automatically get access to our Standard Tier FREE for 30 days so you can experience the product for yourselves!\n\nWe charge on a monthly subscription basis based on total web request volume for your account, with overages available on all subscriptions except our Basic tier for ad-hoc burst usage.\n\nWe have a low cost basic tier for accounts with less than 100k web requests per month, for accounts with higher volumes, upgrades are available via the VerifiedVisitors portal starting from as little as $199 per month.\n\nBilling is available in both $USD and £GBP",
 	"instructions": "Once you have registered with VerifiedVisitors, setup take minutes.\nSimply, you provide us with an API token for the zones you wish VerifiedVisitors to monitor and then review our log analysis to decide on your VerifiedWatchList.\nThese instructions are embedded in our portal, if you wish to read them in advance, please check out our resources page here: https://www.verifiedvisitors.com/resources/cloudflare",
 	"alias": "verifiedvisitors",
 	"orgId": "4e2f65beaa230c3ccebc35a4e93f4b7c",
@@ -26,8 +26,8 @@
 	"adminVisible": true,
 	"userVisible": true,
 	"installable": true,
-	"codeVersion": "1.1.1",
-	"infoVersion": "1.1.1",
+	"codeVersion": "1.1.2",
+	"infoVersion": "1.1.2",
 	"points": 0,
 	"supportEmail": "support@verifiedvisitors.com",
 	"products": [
@@ -41,17 +41,17 @@
 			"order": 0,
 			"plan": "APPS_VERIFIED_VISITORS_BUSINESS",
 			"feature": "apps.verified_visitors_business.enabled",
-			"created": null
+			"created": "2023-02-23T08:44:15.855218567Z"
 		},
 		{
 			"id": "freetier",
 			"title": "VerifiedVisitors",
-			"shortDescription": "Free tier available to all Cloudflare tiers",
-			"longDescription": "VerifiedVisitors helps you to address the challenge of managing automated traffic on your site as well as maintaining a bot access list and manually analysing logs by using our machine learning powered API to automate the entire process.\n\n“A simple, affordable and effective way of protecting your business online.”\n\nOur free tier protects you for up to 100k web requests per month.  For higher volume users, paid for upgrades are available via our Management Portal.",
+			"shortDescription": "30d Free Trial available to all Cloudflare tiers",
+			"longDescription": "VerifiedVisitors helps you to address the challenge of managing automated traffic on your site as well as maintaining a bot access list and manually analysing logs by using our machine learning powered API to automate the entire process.\n\n“A simple, affordable and effective way of protecting your business online.”\n\nOur free trial gives you access to our Standard tier for 30 days to experience the product for yourself.  You can subscribe to any of our paid tiers via our via our Management Portal.",
 			"visible": true,
 			"price": 0,
 			"order": 0,
-			"created": null
+			"created": "2023-02-23T08:44:15.855218823Z"
 		}
 	],
 	"categoryIds": [],
