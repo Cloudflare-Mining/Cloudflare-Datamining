@@ -63,14 +63,6 @@ components:
       - type
       - name
       - content
-    AccountRequestTracer_account_identifier:
-      $ref: '#/components/schemas/AccountRequestTracer_identifier'
-    AccountRequestTracer_identifier:
-      type: string
-      description: Identifier
-      example: 023e105f4ecef8ad9ca31a8372d0c353
-      readOnly: true
-      maxLength: 32
     CAARecord:
       allOf:
       - $ref: '#/components/schemas/base'
@@ -1275,8 +1267,9 @@ components:
       example: full
     CloudflareClientAPI_components-schemas-uuid:
       type: string
-      description: The policy ID.
+      description: UUID
       example: f174e90a-fafe-4643-bbbc-4a0ed4fc8415
+      readOnly: true
       maxLength: 36
     CloudflareClientAPI_connection:
       properties:
@@ -1567,7 +1560,7 @@ components:
         ratelimit:
           $ref: '#/components/schemas/ratelimit'
         retries:
-          $ref: '#/components/schemas/retries'
+          $ref: '#/components/schemas/CloudflareClientAPI_retries'
     CloudflareClientAPI_dns-secondary-secondary-zone:
       type: object
       required:
@@ -1625,9 +1618,9 @@ components:
       example: 1
     CloudflareClientAPI_email:
       type: string
-      format: email
-      description: The email address of the authenticating user.
+      description: The contact email address of the user.
       example: user@example.com
+      maxLength: 90
     CloudflareClientAPI_empty_response:
       allOf:
       - $ref: '#/components/schemas/api-response-collection'
@@ -1744,7 +1737,7 @@ components:
         status:
           $ref: '#/components/schemas/healthchecks_components-schemas-status'
         suspended:
-          $ref: '#/components/schemas/suspended'
+          $ref: '#/components/schemas/CloudflareClientAPI_suspended'
         tcp_config:
           $ref: '#/components/schemas/tcp_config'
         timeout:
@@ -2045,15 +2038,6 @@ components:
       description: List of access policies assigned to the token.
       items:
         $ref: '#/components/schemas/access-policy'
-    CloudflareClientAPI_policies_components-schemas-id_response:
-      allOf:
-      - $ref: '#/components/schemas/api-response-single'
-      - properties:
-          result:
-            type: object
-            properties:
-              id:
-                $ref: '#/components/schemas/CloudflareClientAPI_components-schemas-uuid'
     CloudflareClientAPI_policies_components-schemas-response_collection:
       allOf:
       - $ref: '#/components/schemas/api-response-collection'
@@ -2201,7 +2185,7 @@ components:
         retries:
           $ref: '#/components/schemas/schemas-retries'
         suspended:
-          $ref: '#/components/schemas/suspended'
+          $ref: '#/components/schemas/CloudflareClientAPI_suspended'
         tcp_config:
           $ref: '#/components/schemas/tcp_config'
         timeout:
@@ -2269,10 +2253,13 @@ components:
             items:
               type: object
     CloudflareClientAPI_retries:
-      type: integer
-      description: The number of retries to attempt in case of a timeout before marking
-        the origin as unhealthy. Retries are attempted immediately.
+      type: number
+      description: Number of retries for fetching DNS responses from origin nameservers
+        (not counting the initial attempt).
       default: 2
+      example: 2
+      minimum: 0
+      maximum: 2
     CloudflareClientAPI_revoke_devices_request:
       type: array
       description: A list of device ids to revoke.
@@ -2722,8 +2709,7 @@ components:
           $ref: '#/components/schemas/categories_components-schemas-name'
     CloudflareClientAPI_suspended:
       type: boolean
-      description: Suspends or allows traffic going to the waiting room. If set to
-        `true`, the traffic will not go to the waiting room.
+      description: If suspended, no health checks are sent to the origin.
       default: false
     CloudflareClientAPI_thumbnail_url:
       type: string
@@ -2781,7 +2767,7 @@ components:
       type: object
       properties:
         email:
-          $ref: '#/components/schemas/email'
+          $ref: '#/components/schemas/CloudflareClientAPI_email'
         id:
           $ref: '#/components/schemas/CloudflareClientAPI_uuid'
         name:
@@ -2933,12 +2919,12 @@ components:
       description: Maximum width in image pixels.
       example: 1366
       minimum: 1
-    CloudflareWorkers_identifier:
+    CloudflareWorkers_created_on:
       type: string
-      description: Identifier
-      example: 023e105f4ecef8ad9ca31a8372d0c353
+      format: date-time
+      description: When the script was created.
+      example: "2017-01-01T00:00:00Z"
       readOnly: true
-      maxLength: 32
     CloudflareWorkers_modified_on:
       type: string
       format: date-time
@@ -3693,12 +3679,6 @@ components:
           example: http://www.example.com/cat_picture.jpg
     Zone_identifier:
       type: string
-    ZonekeeperPublicAPI_identifier:
-      type: string
-      description: Identifier
-      example: 023e105f4ecef8ad9ca31a8372d0c353
-      readOnly: true
-      maxLength: 32
     access-policy:
       oneOf:
       - $ref: '#/components/schemas/policy_with_permission_groups'
@@ -3723,7 +3703,7 @@ components:
         ray_id:
           $ref: '#/components/schemas/ray_id'
         user_email:
-          $ref: '#/components/schemas/CloudflareClientAPI_email'
+          $ref: '#/components/schemas/email'
     access-requests_components-schemas-action:
       type: string
       description: The event that occurred, such as a login attempt.
@@ -3846,7 +3826,7 @@ components:
               green_compute:
                 readOnly: true
     account_identifier:
-      $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+      $ref: '#/components/schemas/identifier'
     account_subscription_response_collection:
       allOf:
       - $ref: '#/components/schemas/api-response-collection'
@@ -5654,7 +5634,7 @@ components:
           description: Metadata about the record.
           example: {}
         id:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
         locked:
           type: boolean
           description: Whether this record can be modified/deleted (true means it's
@@ -5696,7 +5676,7 @@ components:
         type:
           $ref: '#/components/schemas/CloudflareClientAPI_type'
         zone_id:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
         zone_name:
           type: string
           format: hostname
@@ -6906,12 +6886,34 @@ components:
       example: 023e105f4ecef8ad9ca31a8372d0c353
       readOnly: true
       maxLength: 32
+    cloudflare-stream-client-api_created:
+      type: string
+      format: date-time
+      description: The date and time the media item was created.
+      example: "2014-01-02T02:20:00Z"
+      readOnly: true
     cloudflare-stream-client-api_identifier:
       type: string
       description: A Cloudflare-generated unique identifier for a media item.
       example: ea95132c15732412d22c1476fa83f27a
       readOnly: true
       maxLength: 32
+    cloudflare-stream-client-api_input:
+      type: object
+      readOnly: true
+      properties:
+        height:
+          type: integer
+          description: The video height in pixels. A value of `-1` means the height
+            is unknown. The value becomes available after the upload and before the
+            video is ready.
+          readOnly: true
+        width:
+          type: integer
+          description: The video width in pixels. A value of `-1` means the width
+            is unknown. The value becomes available after the upload and before the
+            video is ready.
+          readOnly: true
     cloudflare-stream-client-api_name:
       type: string
       description: A short description of the watermark profile.
@@ -7467,7 +7469,7 @@ components:
             type: object
             properties:
               id:
-                $ref: '#/components/schemas/CloudflareClientAPI_uuid'
+                $ref: '#/components/schemas/components-schemas-identifier'
     components-schemas-identifier:
       example: 23ff594956f20c2a721606e94745a8aa
     components-schemas-interval:
@@ -7510,7 +7512,7 @@ components:
       - roles
       properties:
         email:
-          $ref: '#/components/schemas/email'
+          $ref: '#/components/schemas/CloudflareClientAPI_email'
         id:
           $ref: '#/components/schemas/common_components-schemas-identifier'
         name:
@@ -7896,9 +7898,8 @@ components:
       example: https://www.cloudflare.com
     components-schemas-uuid:
       type: string
-      description: UUID
+      description: The policy ID.
       example: f174e90a-fafe-4643-bbbc-4a0ed4fc8415
-      readOnly: true
       maxLength: 36
     components-schemas-validation_method:
       type: object
@@ -8327,7 +8328,7 @@ components:
         country:
           $ref: '#/components/schemas/country'
         email:
-          $ref: '#/components/schemas/email'
+          $ref: '#/components/schemas/CloudflareClientAPI_email'
         fax:
           $ref: '#/components/schemas/fax'
         first_name:
@@ -8555,7 +8556,7 @@ components:
       - roles
       properties:
         email:
-          $ref: '#/components/schemas/email'
+          $ref: '#/components/schemas/CloudflareClientAPI_email'
         roles:
           type: array
           description: Array of roles associated with this member.
@@ -8591,7 +8592,7 @@ components:
       - email
       properties:
         email:
-          $ref: '#/components/schemas/email'
+          $ref: '#/components/schemas/CloudflareClientAPI_email'
     create_input_request:
       properties:
         defaultCreator:
@@ -8745,9 +8746,8 @@ components:
     created:
       type: string
       format: date-time
-      description: The date and time the media item was created.
-      example: "2014-01-02T02:20:00Z"
-      readOnly: true
+      description: When the device was created.
+      example: "2017-06-14T00:00:00Z"
     created-on:
       type: string
       format: date-time
@@ -8761,8 +8761,8 @@ components:
     created_on:
       type: string
       format: date-time
-      description: When the script was created.
-      example: "2017-01-01T00:00:00Z"
+      description: When the route was created.
+      example: "2017-06-14T00:00:00Z"
       readOnly: true
     creator:
       type: string
@@ -9324,7 +9324,7 @@ components:
           description: Whether the policy will be applied to matching devices.
           example: true
         exclude:
-          $ref: '#/components/schemas/exclude'
+          $ref: '#/components/schemas/CloudflareClientAPI_exclude'
         exclude_office_ips:
           $ref: '#/components/schemas/exclude_office_ips'
         fallback_domains:
@@ -9332,7 +9332,7 @@ components:
         gateway_unique_id:
           $ref: '#/components/schemas/gateway_unique_id'
         include:
-          $ref: '#/components/schemas/include'
+          $ref: '#/components/schemas/CloudflareClientAPI_include'
         service_mode_v2:
           $ref: '#/components/schemas/service_mode_v2'
         support_url:
@@ -10014,8 +10014,9 @@ components:
       example: true
     description:
       type: string
-      description: The description of the List.
-      example: The serial numbers for administrators
+      description: A note that you can use to add more details about the waiting room.
+      default: ""
+      example: Production - DO NOT MODIFY
     destination_address_identifier:
       type: string
       description: Destination address identifier.
@@ -10028,7 +10029,7 @@ components:
         created:
           $ref: '#/components/schemas/CloudflareClientAPI_created'
         email:
-          $ref: '#/components/schemas/email'
+          $ref: '#/components/schemas/CloudflareClientAPI_email'
         modified:
           $ref: '#/components/schemas/CloudflareClientAPI_modified'
         tag:
@@ -10287,7 +10288,7 @@ components:
         id:
           $ref: '#/components/schemas/CloudflareClientAPI_uuid'
         input:
-          $ref: '#/components/schemas/CloudflareClientAPI_input'
+          $ref: '#/components/schemas/input'
         match:
           $ref: '#/components/schemas/match'
         name:
@@ -10379,7 +10380,7 @@ components:
           description: Whether the policy will be applied to matching devices.
           example: true
         exclude:
-          $ref: '#/components/schemas/exclude'
+          $ref: '#/components/schemas/CloudflareClientAPI_exclude'
         exclude_office_ips:
           $ref: '#/components/schemas/exclude_office_ips'
         fallback_domains:
@@ -10387,7 +10388,7 @@ components:
         gateway_unique_id:
           $ref: '#/components/schemas/gateway_unique_id'
         include:
-          $ref: '#/components/schemas/include'
+          $ref: '#/components/schemas/CloudflareClientAPI_include'
         match:
           $ref: '#/components/schemas/schemas-match'
         name:
@@ -10423,7 +10424,7 @@ components:
       type: object
       properties:
         created:
-          $ref: '#/components/schemas/CloudflareClientAPI_created'
+          $ref: '#/components/schemas/created'
         deleted:
           $ref: '#/components/schemas/deleted'
         device_type:
@@ -10696,7 +10697,7 @@ components:
         ecs_fallback:
           $ref: '#/components/schemas/ecs_fallback'
         id:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
         maximum_cache_ttl:
           $ref: '#/components/schemas/maximum_cache_ttl'
         minimum_cache_ttl:
@@ -10712,7 +10713,7 @@ components:
         ratelimit:
           $ref: '#/components/schemas/ratelimit'
         retries:
-          $ref: '#/components/schemas/retries'
+          $ref: '#/components/schemas/CloudflareClientAPI_retries'
     dns-firewall_components-schemas-name:
       type: string
       description: DNS Firewall Cluster Name.
@@ -11381,9 +11382,9 @@ components:
       example: true
     email:
       type: string
-      description: The contact email address of the user.
+      format: email
+      description: The email address of the authenticating user.
       example: user@example.com
-      maxLength: 90
     email-settings_response_single:
       allOf:
       - $ref: '#/components/schemas/api-response-single'
@@ -11745,8 +11746,10 @@ components:
           example: {}
     exclude:
       type: array
+      description: Rules evaluated with a NOT logical operator. To match a policy,
+        a user cannot meet any of the Exclude rules.
       items:
-        $ref: '#/components/schemas/split_tunnel'
+        $ref: '#/components/schemas/rule'
     exclude_office_ips:
       type: boolean
       description: Whether to add Microsoft IPs to split tunnel exclusions.
@@ -12600,11 +12603,11 @@ components:
         created_at:
           $ref: '#/components/schemas/timestamp'
         exclude:
-          $ref: '#/components/schemas/CloudflareClientAPI_exclude'
+          $ref: '#/components/schemas/exclude'
         id:
           $ref: '#/components/schemas/CloudflareClientAPI_schemas-uuid'
         include:
-          $ref: '#/components/schemas/CloudflareClientAPI_include'
+          $ref: '#/components/schemas/include'
         name:
           $ref: '#/components/schemas/CloudflareClientAPI_components-schemas-name'
         require:
@@ -12789,7 +12792,7 @@ components:
         http_config:
           $ref: '#/components/schemas/http_config'
         id:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
         interval:
           $ref: '#/components/schemas/interval'
         modified_on:
@@ -12797,11 +12800,11 @@ components:
         name:
           $ref: '#/components/schemas/CloudflareClientAPI_name'
         retries:
-          $ref: '#/components/schemas/CloudflareClientAPI_retries'
+          $ref: '#/components/schemas/retries'
         status:
-          $ref: '#/components/schemas/status'
+          $ref: '#/components/schemas/CloudflareClientAPI_status'
         suspended:
-          $ref: '#/components/schemas/suspended'
+          $ref: '#/components/schemas/CloudflareClientAPI_suspended'
         tcp_config:
           $ref: '#/components/schemas/tcp_config'
         timeout:
@@ -13240,7 +13243,11 @@ components:
               id:
                 $ref: '#/components/schemas/CloudflareClientAPI_identifier'
     identifier:
-      example: 699d98642c564d2e855e9661899b7252
+      type: string
+      description: Identifier
+      example: 023e105f4ecef8ad9ca31a8372d0c353
+      readOnly: true
+      maxLength: 32
     identity:
       type: string
       description: The wirefilter expression to be used for identity matching.
@@ -13458,24 +13465,20 @@ components:
           $ref: '#/components/schemas/images_count'
     include:
       type: array
+      description: Rules evaluated with an OR logical operator. A user needs to meet
+        only one of the Include rules.
       items:
-        $ref: '#/components/schemas/split_tunnel_include'
+        $ref: '#/components/schemas/rule'
     input:
       type: object
-      readOnly: true
+      description: The value to be checked against.
       properties:
-        height:
-          type: integer
-          description: The video height in pixels. A value of `-1` means the height
-            is unknown. The value becomes available after the upload and before the
-            video is ready.
-          readOnly: true
-        width:
-          type: integer
-          description: The video width in pixels. A value of `-1` means the width
-            is unknown. The value becomes available after the upload and before the
-            video is ready.
-          readOnly: true
+        checkDisks:
+          $ref: '#/components/schemas/checkDisks'
+        id:
+          $ref: '#/components/schemas/CloudflareClientAPI_uuid'
+        requireAll:
+          $ref: '#/components/schemas/requireAll'
     input_rtmps:
       type: object
       description: Details for streaming to an live input using RTMPS.
@@ -14658,11 +14661,11 @@ components:
         created_at:
           $ref: '#/components/schemas/timestamp'
         description:
-          $ref: '#/components/schemas/description'
+          $ref: '#/components/schemas/CloudflareClientAPI_description'
         id:
           $ref: '#/components/schemas/uuid'
         name:
-          $ref: '#/components/schemas/name'
+          $ref: '#/components/schemas/CloudflareClientAPI_name'
         type:
           $ref: '#/components/schemas/type'
         updated_at:
@@ -15581,7 +15584,7 @@ components:
           - email
           properties:
             email:
-              $ref: '#/components/schemas/email'
+              $ref: '#/components/schemas/CloudflareClientAPI_email'
             first_name:
               $ref: '#/components/schemas/first_name'
             id:
@@ -16264,8 +16267,9 @@ components:
                   $ref: '#/components/schemas/route'
     name:
       type: string
-      description: The name of the List.
-      example: Admin Serial Numbers
+      description: A unique name to identify the waiting room. Only alphanumeric characters,
+        hyphens and underscores are allowed.
+      example: production_webinar
     name_servers:
       type: array
       description: List of name servers.
@@ -18219,9 +18223,9 @@ components:
         exclude:
           $ref: '#/components/schemas/schemas-exclude'
         id:
-          $ref: '#/components/schemas/CloudflareClientAPI_components-schemas-uuid'
+          $ref: '#/components/schemas/components-schemas-uuid'
         include:
-          $ref: '#/components/schemas/CloudflareClientAPI_include'
+          $ref: '#/components/schemas/include'
         name:
           $ref: '#/components/schemas/policies_components-schemas-name'
         precedence:
@@ -18251,7 +18255,7 @@ components:
             type: object
             properties:
               id:
-                $ref: '#/components/schemas/CloudflareClientAPI_components-schemas-uuid'
+                $ref: '#/components/schemas/components-schemas-uuid'
     policies_components-schemas-id_response-2:
       allOf:
       - $ref: '#/components/schemas/api-response-single'
@@ -18985,7 +18989,7 @@ components:
           result:
             properties:
               ipsec_tunnel_id:
-                $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+                $ref: '#/components/schemas/identifier'
               psk:
                 $ref: '#/components/schemas/psk'
               psk_metadata:
@@ -19159,9 +19163,9 @@ components:
         name:
           $ref: '#/components/schemas/CloudflareClientAPI_name'
         retries:
-          $ref: '#/components/schemas/CloudflareClientAPI_retries'
+          $ref: '#/components/schemas/retries'
         suspended:
-          $ref: '#/components/schemas/suspended'
+          $ref: '#/components/schemas/CloudflareClientAPI_suspended'
         tcp_config:
           $ref: '#/components/schemas/tcp_config'
         timeout:
@@ -19206,7 +19210,7 @@ components:
         default_template_language:
           $ref: '#/components/schemas/default_template_language'
         description:
-          $ref: '#/components/schemas/CloudflareClientAPI_description'
+          $ref: '#/components/schemas/description'
         disable_session_renewal:
           $ref: '#/components/schemas/disable_session_renewal'
         host:
@@ -19214,7 +19218,7 @@ components:
         json_response_enabled:
           $ref: '#/components/schemas/json_response_enabled'
         name:
-          $ref: '#/components/schemas/CloudflareClientAPI_name'
+          $ref: '#/components/schemas/name'
         new_users_per_minute:
           $ref: '#/components/schemas/new_users_per_minute'
         path:
@@ -19226,7 +19230,7 @@ components:
         session_duration:
           $ref: '#/components/schemas/session_duration'
         suspended:
-          $ref: '#/components/schemas/CloudflareClientAPI_suspended'
+          $ref: '#/components/schemas/suspended'
         total_active_users:
           $ref: '#/components/schemas/total_active_users'
     queue:
@@ -19905,7 +19909,7 @@ components:
           result:
             type: array
             items:
-              $ref: '#/components/schemas/lists'
+              $ref: '#/components/schemas/waitingroom'
     response_create:
       allOf:
       - $ref: '#/components/schemas/api-response-single'
@@ -20058,13 +20062,10 @@ components:
           description: Total results available without any search parameters
           example: 2000
     retries:
-      type: number
-      description: Number of retries for fetching DNS responses from origin nameservers
-        (not counting the initial attempt).
+      type: integer
+      description: The number of retries to attempt in case of a timeout before marking
+        the origin as unhealthy. Retries are attempted immediately.
       default: 2
-      example: 2
-      minimum: 0
-      maximum: 2
     revision:
       type: string
       description: The revision of the Railgun receiver.
@@ -20175,11 +20176,11 @@ components:
       - priority
       properties:
         created_on:
-          $ref: '#/components/schemas/CloudflareClientAPI_created_on'
+          $ref: '#/components/schemas/created_on'
         description:
           $ref: '#/components/schemas/CloudflareClientAPI_description'
         id:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
         modified_on:
           $ref: '#/components/schemas/CloudflareClientAPI_modified_on'
         nexthop:
@@ -20239,7 +20240,7 @@ components:
         - id
         properties:
           id:
-            $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+            $ref: '#/components/schemas/identifier'
     route_delete_many_request:
       type: object
       required:
@@ -20313,7 +20314,7 @@ components:
         - id
         properties:
           id:
-            $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+            $ref: '#/components/schemas/identifier'
       - $ref: '#/components/schemas/route_add_single_request'
     routes:
       type: object
@@ -22132,7 +22133,10 @@ components:
       - $ref: '#/components/schemas/api-response-single'
       - properties:
           result:
-            nullable: true
+            type: object
+            properties:
+              id:
+                $ref: '#/components/schemas/CloudflareClientAPI_schemas-identifier'
     schemas-identifier:
       type: string
       description: Identifier
@@ -22548,7 +22552,7 @@ components:
         exclude:
           $ref: '#/components/schemas/CloudflareClientAPI_schemas-exclude'
         id:
-          $ref: '#/components/schemas/CloudflareClientAPI_components-schemas-uuid'
+          $ref: '#/components/schemas/components-schemas-uuid'
         include:
           $ref: '#/components/schemas/CloudflareClientAPI_include'
         name:
@@ -22933,7 +22937,7 @@ components:
             readOnly: true
             properties:
               email:
-                $ref: '#/components/schemas/email'
+                $ref: '#/components/schemas/CloudflareClientAPI_email'
               id:
                 $ref: '#/components/schemas/common_components-schemas-identifier'
               type:
@@ -23545,7 +23549,7 @@ components:
     script-response:
       properties:
         created_on:
-          $ref: '#/components/schemas/created_on'
+          $ref: '#/components/schemas/CloudflareWorkers_created_on'
         etag:
           $ref: '#/components/schemas/etag'
         id:
@@ -24353,7 +24357,7 @@ components:
       - $ref: '#/components/schemas/api-response-single'
       - properties:
           result:
-            $ref: '#/components/schemas/lists'
+            $ref: '#/components/schemas/waitingroom'
     single_response_incoming:
       allOf:
       - $ref: '#/components/schemas/api-response-single'
@@ -24407,13 +24411,13 @@ components:
               created_at:
                 $ref: '#/components/schemas/timestamp'
               description:
-                $ref: '#/components/schemas/description'
+                $ref: '#/components/schemas/CloudflareClientAPI_description'
               id:
                 $ref: '#/components/schemas/uuid'
               items:
                 $ref: '#/components/schemas/items'
               name:
-                $ref: '#/components/schemas/name'
+                $ref: '#/components/schemas/CloudflareClientAPI_name'
               type:
                 $ref: '#/components/schemas/type'
               updated_at:
@@ -24792,15 +24796,11 @@ components:
       readOnly: true
     status:
       type: string
-      description: The current status of the origin server according to the health
-        check.
       enum:
-      - unknown
-      - healthy
-      - unhealthy
-      - suspended
-      example: healthy
-      readOnly: true
+      - event_prequeueing
+      - not_queueing
+      - queueing
+      example: queueing
     status_event_id:
       type: string
       example: 25756b2dfe6e378a06b033b670413757
@@ -24820,7 +24820,7 @@ components:
               max_estimated_time_minutes:
                 $ref: '#/components/schemas/max_estimated_time_minutes'
               status:
-                $ref: '#/components/schemas/CloudflareClientAPI_status'
+                $ref: '#/components/schemas/status'
     std_dev_rtt_ms:
       type: number
       description: Standard deviation of the RTTs in ms.
@@ -24972,7 +24972,8 @@ components:
       example: true
     suspended:
       type: boolean
-      description: If suspended, no health checks are sent to the origin.
+      description: Suspends or allows traffic going to the waiting room. If set to
+        `true`, the traffic will not go to the waiting room.
       default: false
     switch_locked:
       type: boolean
@@ -26321,9 +26322,9 @@ components:
       type: object
       properties:
         email:
-          $ref: '#/components/schemas/email'
+          $ref: '#/components/schemas/CloudflareClientAPI_email'
         id:
-          $ref: '#/components/schemas/components-schemas-uuid'
+          $ref: '#/components/schemas/CloudflareClientAPI_components-schemas-uuid'
         name:
           type: string
           description: The enrolled device user's name.
@@ -26886,13 +26887,13 @@ components:
         allowedOrigins:
           $ref: '#/components/schemas/allowedOrigins'
         created:
-          $ref: '#/components/schemas/created'
+          $ref: '#/components/schemas/cloudflare-stream-client-api_created'
         creator:
           $ref: '#/components/schemas/creator'
         duration:
           $ref: '#/components/schemas/duration'
         input:
-          $ref: '#/components/schemas/input'
+          $ref: '#/components/schemas/cloudflare-stream-client-api_input'
         liveInput:
           $ref: '#/components/schemas/liveInput'
         maxDurationSeconds:
@@ -26943,7 +26944,7 @@ components:
         ecs_fallback:
           $ref: '#/components/schemas/ecs_fallback'
         id:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
         maximum_cache_ttl:
           $ref: '#/components/schemas/maximum_cache_ttl'
         minimum_cache_ttl:
@@ -27130,7 +27131,7 @@ components:
         default_template_language:
           $ref: '#/components/schemas/default_template_language'
         description:
-          $ref: '#/components/schemas/CloudflareClientAPI_description'
+          $ref: '#/components/schemas/description'
         disable_session_renewal:
           $ref: '#/components/schemas/disable_session_renewal'
         host:
@@ -27142,7 +27143,7 @@ components:
         modified_on:
           $ref: '#/components/schemas/timestamp'
         name:
-          $ref: '#/components/schemas/CloudflareClientAPI_name'
+          $ref: '#/components/schemas/name'
         new_users_per_minute:
           $ref: '#/components/schemas/new_users_per_minute'
         next_event_prequeue_start_time:
@@ -27158,7 +27159,7 @@ components:
         session_duration:
           $ref: '#/components/schemas/session_duration'
         suspended:
-          $ref: '#/components/schemas/CloudflareClientAPI_suspended'
+          $ref: '#/components/schemas/suspended'
         total_active_users:
           $ref: '#/components/schemas/total_active_users'
     waitingroom_components-schemas-description:
@@ -30596,7 +30597,7 @@ paths:
                 ratelimit:
                   $ref: '#/components/schemas/ratelimit'
                 retries:
-                  $ref: '#/components/schemas/retries'
+                  $ref: '#/components/schemas/CloudflareClientAPI_retries'
       responses:
         4xx:
           description: Create DNS Firewall Cluster response failure
@@ -33193,7 +33194,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: List fields response failure
@@ -33230,7 +33231,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: List Logpush jobs for a dataset response failure
@@ -33262,7 +33263,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: List Logpush jobs response failure
@@ -33293,7 +33294,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -33352,7 +33353,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -33404,7 +33405,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: Get Logpush job details response failure
@@ -33440,7 +33441,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -33488,7 +33489,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -33530,7 +33531,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -33575,7 +33576,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -33617,7 +33618,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -33659,7 +33660,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -33706,7 +33707,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: Get CMB config response failure
@@ -33736,7 +33737,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -33773,7 +33774,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: List interconnects response failure
@@ -33806,7 +33807,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -33845,12 +33846,12 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       - name: account_identifier
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: List interconnect Details response failure
@@ -33883,12 +33884,12 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       - name: account_identifier
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -33926,7 +33927,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: List GRE tunnels response failure
@@ -33958,7 +33959,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -34000,7 +34001,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -34040,12 +34041,12 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       - name: account_identifier
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -34080,12 +34081,12 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       - name: account_identifier
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: List GRE Tunnel Details response failure
@@ -34117,12 +34118,12 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       - name: account_identifier
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -34160,7 +34161,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: List IPsec tunnels response failure
@@ -34192,7 +34193,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -34234,7 +34235,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -34275,12 +34276,12 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       - name: account_identifier
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -34315,12 +34316,12 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       - name: account_identifier
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: List IPsec tunnel details response failure
@@ -34353,12 +34354,12 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       - name: account_identifier
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -34400,12 +34401,12 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       - name: account_identifier
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -34441,7 +34442,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -34478,7 +34479,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: List Routes response failure
@@ -34510,7 +34511,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -34552,7 +34553,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -34590,12 +34591,12 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       - name: account_identifier
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -34630,12 +34631,12 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       - name: account_identifier
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: Route Details response failure
@@ -34667,12 +34668,12 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       - name: account_identifier
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -35562,7 +35563,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: Get projects response failure
@@ -35593,7 +35594,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -35636,7 +35637,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -35684,7 +35685,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: Get project response failure
@@ -35721,7 +35722,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -35764,7 +35765,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: Get deployments response failure
@@ -35801,7 +35802,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -35846,7 +35847,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       - name: project_name
         in: path
         required: true
@@ -35856,7 +35857,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -35899,7 +35900,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       - name: project_name
         in: path
         required: true
@@ -35909,7 +35910,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: Get deployment info response failure
@@ -35941,7 +35942,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       - name: project_name
         in: path
         required: true
@@ -35951,7 +35952,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: Get deployment logs response failure
@@ -35983,7 +35984,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       - name: project_name
         in: path
         required: true
@@ -35993,7 +35994,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -36030,7 +36031,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       - name: project_name
         in: path
         required: true
@@ -36040,7 +36041,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -36081,7 +36082,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: Get domains response failure
@@ -36117,7 +36118,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -36165,7 +36166,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -36218,7 +36219,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: Get domain response failure
@@ -36259,7 +36260,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -37205,7 +37206,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/AccountRequestTracer_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -43637,7 +43638,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_components-schemas-uuid'
+          $ref: '#/components/schemas/components-schemas-uuid'
       - name: identifier
         in: path
         required: true
@@ -43673,7 +43674,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_components-schemas-uuid'
+          $ref: '#/components/schemas/components-schemas-uuid'
       - name: identifier
         in: path
         required: true
@@ -43740,12 +43741,12 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_components-schemas-uuid'
+          $ref: '#/components/schemas/components-schemas-uuid'
       - name: uuid1
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_components-schemas-uuid'
+          $ref: '#/components/schemas/components-schemas-uuid'
       - name: identifier
         in: path
         required: true
@@ -43762,14 +43763,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/CloudflareClientAPI_policies_components-schemas-id_response'
+                - $ref: '#/components/schemas/policies_components-schemas-id_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Delete an Access policy response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CloudflareClientAPI_policies_components-schemas-id_response'
+                $ref: '#/components/schemas/policies_components-schemas-id_response'
       security:
       - api_email: []
         api_key: []
@@ -43785,12 +43786,12 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_components-schemas-uuid'
+          $ref: '#/components/schemas/components-schemas-uuid'
       - name: uuid1
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_components-schemas-uuid'
+          $ref: '#/components/schemas/components-schemas-uuid'
       - name: identifier
         in: path
         required: true
@@ -43826,12 +43827,12 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_components-schemas-uuid'
+          $ref: '#/components/schemas/components-schemas-uuid'
       - name: uuid1
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_components-schemas-uuid'
+          $ref: '#/components/schemas/components-schemas-uuid'
       - name: identifier
         in: path
         required: true
@@ -46249,7 +46250,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       responses:
         4xx:
           description: Device DEX test response failure
@@ -46280,7 +46281,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       requestBody:
         required: true
         content:
@@ -46319,7 +46320,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       - name: uuid
         in: path
         required: true
@@ -46355,7 +46356,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       - name: uuid
         in: path
         required: true
@@ -46391,7 +46392,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
       - name: uuid
         in: path
         required: true
@@ -76038,7 +76039,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_components-schemas-uuid'
+          $ref: '#/components/schemas/components-schemas-uuid'
       - name: identifier
         in: path
         required: true
@@ -76074,7 +76075,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_components-schemas-uuid'
+          $ref: '#/components/schemas/components-schemas-uuid'
       - name: identifier
         in: path
         required: true
@@ -76141,12 +76142,12 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_components-schemas-uuid'
+          $ref: '#/components/schemas/components-schemas-uuid'
       - name: uuid1
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_components-schemas-uuid'
+          $ref: '#/components/schemas/components-schemas-uuid'
       - name: identifier
         in: path
         required: true
@@ -76163,14 +76164,14 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/CloudflareClientAPI_policies_components-schemas-id_response'
+                - $ref: '#/components/schemas/policies_components-schemas-id_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
           description: Delete an Access policy response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CloudflareClientAPI_policies_components-schemas-id_response'
+                $ref: '#/components/schemas/policies_components-schemas-id_response'
       security:
       - api_email: []
         api_key: []
@@ -76186,12 +76187,12 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_components-schemas-uuid'
+          $ref: '#/components/schemas/components-schemas-uuid'
       - name: uuid1
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_components-schemas-uuid'
+          $ref: '#/components/schemas/components-schemas-uuid'
       - name: identifier
         in: path
         required: true
@@ -76227,12 +76228,12 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_components-schemas-uuid'
+          $ref: '#/components/schemas/components-schemas-uuid'
       - name: uuid1
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_components-schemas-uuid'
+          $ref: '#/components/schemas/components-schemas-uuid'
       - name: identifier
         in: path
         required: true
@@ -77508,39 +77509,53 @@ paths:
     post:
       tags:
       - Zone
-      summary: Purge Files by Cache-Tags, Host, or Prefix
-      description: |-
-        Granularly removes one or more files from Cloudflare's cache either by specifying the host, the associated Cache-Tag, or a Prefix.
+      summary: Purge Cached Content
+      description: |
+        ### Purge All Cached Content
+        Removes ALL files from Cloudflare's cache. All tiers can purge everything.
+
+        ### Purge Cached Content by URL
+        Granularly removes one or more files from Cloudflare's cache by specifying URLs. All tiers can purge by URL.
+
+        To purge files with custom cache keys, include the headers used to compute the cache key as in the example. If you have a device type or geo in your cache key, you will need to include the CF-Device-Type or CF-IPCountry headers.
+
+        **NB:** When including the Origin header, be sure to include the **scheme** and **hostname**. The port number can be omitted if it is the default port (80 for http, 443 for https), but must be included otherwise.
+
+        ### Purge Cached Content by Tag, Host or Prefix
+        Granularly removes one or more files from Cloudflare's cache either by specifying the host, the associated Cache-Tag, or a Prefix. Only Enterprise customers are permitted to purge by Tag, Host or Prefix.
 
         **NB:** Cache-Tag, host, and prefix purging each have a rate limit of 30,000 purge API calls in every 24 hour period. You may purge up to 30 tags, hosts, or prefixes in one API call. This rate limit can be raised for customers who need to purge at higher volume.
-      operationId: zone-purge-files-by-cache-tags,-host,-or-prefix
+      operationId: zone-purge
       parameters:
       - name: identifier
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_schemas-identifier'
+          $ref: '#/components/schemas/Zone_identifier'
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/purge_by_cache_tags_or_hosts_or_prefixes'
+              anyOf:
+              - $ref: '#/components/schemas/Flex'
+              - $ref: '#/components/schemas/Everything'
+              - $ref: '#/components/schemas/Files'
       responses:
         4xx:
-          description: Purge Files by Cache-Tags, Host, or Prefix response failure
+          description: Purge Cached Content failure
           content:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/CloudflareClientAPI_api-response-single-id'
+                - $ref: '#/components/schemas/api-response-single-id'
                 - $ref: '#/components/schemas/api-response-common-failure'
         "200":
-          description: Purge Files by Cache-Tags, Host, or Prefix response
+          description: Purge Cached Content
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CloudflareClientAPI_api-response-single-id'
+                $ref: '#/components/schemas/api-response-single-id'
       security:
       - api_email: []
         api_key: []
@@ -78409,7 +78424,7 @@ paths:
         description: Zone ID
         required: true
         schema:
-          $ref: '#/components/schemas/ZonekeeperPublicAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: Client Error
@@ -78431,7 +78446,7 @@ paths:
                       type: object
                       properties:
                         id:
-                          $ref: '#/components/schemas/ZonekeeperPublicAPI_identifier'
+                          $ref: '#/components/schemas/identifier'
   /zones/{zone_id}/api_gateway/configuration:
     get:
       tags:
@@ -85400,7 +85415,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: List fields response failure
@@ -85437,7 +85452,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: List Logpush jobs for a dataset response failure
@@ -85469,7 +85484,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: List Instant Logs jobs response failure
@@ -85500,7 +85515,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -85544,7 +85559,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: List Logpush jobs response failure
@@ -85575,7 +85590,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -85634,7 +85649,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -85686,7 +85701,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       responses:
         4xx:
           description: Get Logpush job details response failure
@@ -85722,7 +85737,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -85770,7 +85785,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -85812,7 +85827,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -85857,7 +85872,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
@@ -85899,7 +85914,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/CloudflareClientAPI_identifier'
+          $ref: '#/components/schemas/identifier'
       requestBody:
         required: true
         content:
