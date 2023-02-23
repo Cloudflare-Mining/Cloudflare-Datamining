@@ -2,6 +2,8 @@ import 'dotenv/config';
 import path from 'node:path';
 import fs from 'fs-extra';
 import dateFormat from 'dateformat';
+import jsBeautify from 'js-beautify';
+import ipRegex from 'ip-regex';
 
 import {tryAndPush, propertiesToArray, cfRequest, sleep, sortObjectByKeys} from '../utils.js';
 
@@ -251,10 +253,46 @@ for(const deployment of results['deployments-list'].result){
 	}
 }
 
+const ip = ipRegex();
+const isoDate = /(\d{4}-[01]\d-[0-3]\dT[0-2](?:\d:[0-5]){2}\d\.\d+([+-][0-2]\d:[0-5]\d|Z))|(\d{4}-[01]\d-[0-3]\dT[0-2](?:\d:[0-5]){2}\d([+-][0-2]\d:[0-5]\d|Z))|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d([+-][0-2]\d:[0-5]\d|Z))/g;
+const niceDate = /\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2} [+A-Za-z-]+/g;
+
+// fetch errors
+const getErrors = {
+	'internal-error': `${process.env.PAGES_DISPATCH_WORKER}/errors/internal-error`,
+	'not-found': `${process.env.PAGES_DISPATCH_WORKER}/errors/not-found`,
+};
+
+for(const [code, url] of Object.entries(getErrors)){
+	console.log(`Fetch error for ${code}...`);
+	const res = await fetch(url);
+	const rayID = res.headers.get('cf-ray');
+	if(!rayID){
+		console.log(`Error page ${code} has no Ray ID`);
+		continue;
+	}
+	const text = await res.text();
+	const fixedData = text
+		.replace(ip, '[ip]')
+		.replaceAll(rayID, '[ray id]')
+		.replaceAll(rayID.slice(0, -4), '[ray id]')
+		.replaceAll(isoDate, '[date]')
+		.replaceAll(niceDate, '[date]');
+
+	const filePath = path.resolve(dir, `errors/${code}.html`);
+	await fs.ensureFile(filePath);
+	await fs.writeFile(filePath, jsBeautify.html(fixedData, {
+		indent_size: 4,
+		indent_char: '\t',
+		indent_with_tabs: true,
+	}));
+}
+
 const prefix = dateFormat(new Date(), 'd mmmm yyyy');
 await tryAndPush(
 	[
 		'data/products/pages/*.json',
+		'data/products/pages/errors/*.html',
 	],
 	`${prefix} - Product: Pages Data was updated!`,
 	'CFData - Product: Pages Data Update',
