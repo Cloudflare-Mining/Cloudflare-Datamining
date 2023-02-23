@@ -3315,7 +3315,7 @@ Commit \u2014 `).concat(Ne.commit)
 					return Promise.all([e.e(8415), e.e(39053), e.e(87122), e.e(67118), e.e(46433), e.e(34744), e.e(10048), e.e(17361), e.e(41530), e.e(71326)]).then(e.bind(e, "../react/pages/home/rulesets/magic-firewall/MagicFirewallMain.tsx"))
 				}),
 				Uu = a().lazy(function() {
-					return Promise.all([e.e(8415), e.e(39053), e.e(87122), e.e(67118), e.e(46433), e.e(34744), e.e(47588), e.e(12824), e.e(10048), e.e(17361), e.e(41530), e.e(55700), e.e(55713), e.e(14312), e.e(3380)]).then(e.bind(e, "../react/pages/home/rulesets/ddos/Main.tsx"))
+					return Promise.all([e.e(8415), e.e(39053), e.e(87122), e.e(67118), e.e(46433), e.e(34744), e.e(47588), e.e(40440), e.e(10048), e.e(17361), e.e(41530), e.e(55700), e.e(55713), e.e(14312), e.e(3380)]).then(e.bind(e, "../react/pages/home/rulesets/ddos/Main.tsx"))
 				}),
 				vi = e("../react/pages/home/rulesets/account-firewall-rules/utils.tsx"),
 				Bu = function(c, Y) {
@@ -3360,7 +3360,7 @@ Commit \u2014 `).concat(Ne.commit)
 				},
 				Gi = Zu,
 				cs = a().lazy(function() {
-					return Promise.all([e.e(8415), e.e(39053), e.e(87122), e.e(67118), e.e(46433), e.e(34744), e.e(47588), e.e(40440), e.e(10048), e.e(17361), e.e(41530), e.e(55700), e.e(55713), e.e(48571), e.e(72439), e.e(14312), e.e(55203)]).then(e.bind(e, "../react/pages/home/rulesets/account-firewall-rules/Main.tsx"))
+					return Promise.all([e.e(8415), e.e(39053), e.e(87122), e.e(67118), e.e(46433), e.e(34744), e.e(47588), e.e(12824), e.e(10048), e.e(17361), e.e(41530), e.e(55700), e.e(55713), e.e(48571), e.e(72439), e.e(14312), e.e(55203)]).then(e.bind(e, "../react/pages/home/rulesets/account-firewall-rules/Main.tsx"))
 				}),
 				Pl = function(c) {
 					return c ? "waf" : "custom"
@@ -7429,12 +7429,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				e.g.build = Od({}, {
-					branch: "release-1677164744",
+					branch: "sui/BILL-17649-hotfix",
 					isReleaseCandidate: "true",
-					commit: "f38718a2595cf851932ac3d063d7804235a03141",
+					commit: "898e036e284f89bd9ad1f53fd19b48c752f3865d",
 					env: "production",
-					builtAt: 1677165039768,
-					dashVersion: "8c63ce7ce6bcae8e64e69ed0fd603f343b0f95c2",
+					builtAt: 1677182836257,
+					dashVersion: "385d1de4a40ddbb1c4561eaffba1079e3c26a88a",
 					versions: {
 						"@cloudflare/app-dash": "25.147.31",
 						node: "16.16.0",
@@ -29985,7 +29985,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					["plan.feature.dns_analytics_36hrs_history", [D]],
 					["plan.feature.dns_analytics_24hrs_history", [p]],
 					["plan.feature.dns_analytics_6hrs_history", [b, v]],
-					["plan.feature.firewall_analytics", [v, p, D, T, E]],
+					["plan.feature.firewall_analytics", [p, D, T, E]],
 					["plan.feature.load_balancing_analytics", [p, D, T, E]],
 					["plan.feature.min_cache_ttl_expiry_1sec", [E]],
 					["plan.feature.min_cache_ttl_expiry_30min", [T]],
@@ -30011,8 +30011,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					["plan.feature.user_agent_blocking_rules", (t = {}, S(t, E, 1e3), S(t, T, 250), S(t, D, 250), S(t, p, 50), S(t, v, 50), S(t, b, 10), t)],
 					["plan.feature.zone_lockdown_rules", (s = {}, S(s, E, 200), S(s, T, 10), S(s, D, 10), S(s, p, 3), S(s, v, 3), S(s, b, 0), s)],
 					["plan.feature.rate_limiting_header_rules", (o = {}, S(o, E, 10), S(o, T, 10), S(o, D, 10), S(o, p, 1), S(o, v, 1), S(o, b, 1), o)],
-					["plan.feature.super_bot_fight_mode", [v, p, D, T, E]],
-					["plan.feature.waf_paid_managed_ruleset", [v, p, D, T, E]],
+					["plan.feature.super_bot_fight_mode", [p, D, T, E]],
+					["plan.feature.waf_paid_managed_ruleset", [p, D, T, E]],
 					["plan.feature.regex_support_for_waf_custom_rules", [T, E]],
 					["plan.feature.rate_limiting_rules", (A = {}, S(A, E, 100), S(A, T, 15), S(A, D, 15), S(A, p, 10), S(A, v, 10), S(A, b, 1), A)],
 					["plan.feature.waf_custom_rules", (r = {}, S(r, E, 1e3), S(r, T, 100), S(r, D, 40), S(r, p, 20), S(r, v, 20), S(r, b, 5), r)],
@@ -87067,4 +87067,4 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 	}
 ]);
 
-//# sourceMappingURL=0288655f19c571e26165.js.map
+//# sourceMappingURL=1b915b8a8b5fbc34a965.js.map
