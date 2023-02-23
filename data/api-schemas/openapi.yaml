@@ -555,7 +555,7 @@ components:
           name:
             $ref: '#/components/schemas/dns-record_components-schemas-name'
           priority:
-            $ref: '#/components/schemas/CloudflareClientAPI_priority'
+            $ref: '#/components/schemas/priority'
           type:
             description: Record type.
             enum:
@@ -725,7 +725,7 @@ components:
                 minimum: 0
                 maximum: 65535
               priority:
-                $ref: '#/components/schemas/CloudflareClientAPI_priority'
+                $ref: '#/components/schemas/priority'
               proto:
                 type: string
                 description: A valid protocol.
@@ -928,7 +928,7 @@ components:
           name:
             $ref: '#/components/schemas/dns-record_components-schemas-name'
           priority:
-            $ref: '#/components/schemas/CloudflareClientAPI_priority'
+            $ref: '#/components/schemas/priority'
           type:
             description: Record type.
             enum:
@@ -1779,12 +1779,8 @@ components:
       default: 60
     CloudflareClientAPI_ip:
       type: string
-      description: IPv4/IPv6 address of primary or secondary nameserver, depending
-        on what zone this peer is linked to. For primary zones this IP defines the
-        IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For
-        secondary zones this IP defines the IP of the primary nameserver Cloudflare
-        will send AXFR/IXFR requests to.
-      example: 192.0.2.53
+      description: The IP address of the authenticating user.
+      example: 198.41.129.166
     CloudflareClientAPI_key:
       type: object
       description: A name for a value. A value stored under a given key may be retrieved
@@ -1893,7 +1889,7 @@ components:
         id:
           $ref: '#/components/schemas/peer_components-schemas-identifier'
         ip:
-          $ref: '#/components/schemas/CloudflareClientAPI_ip'
+          $ref: '#/components/schemas/ip'
         ixfr_enable:
           $ref: '#/components/schemas/ixfr_enable'
         name:
@@ -2021,12 +2017,8 @@ components:
               preview_id:
                 $ref: '#/components/schemas/monitor_components-schemas-identifier'
     CloudflareClientAPI_priority:
-      type: number
-      description: Required for MX, SRV and URI records; unused by other record types.
-        Records with lower priorities are preferred.
-      example: 10
-      minimum: 0
-      maximum: 65535
+      type: integer
+      description: Priority of the static route.
     CloudflareClientAPI_query_healthcheck:
       type: object
       required:
@@ -2600,19 +2592,9 @@ components:
         secret:
           $ref: '#/components/schemas/secret'
     CloudflareClientAPI_ttl:
-      anyOf:
-      - type: number
-        example: 3600
-        minimum: 30
-        maximum: 86400
-      - type: number
-        enum:
-        - 1
-      type: number
-      description: Time To Live (TTL) of the DNS record in seconds. Setting to 1 means
-        'automatic'. Value must be between 60 and 86400, with the minimum reduced
-        to 30 for Enterprise zones.
-      example: 3600
+      type: integer
+      description: Time To Live (TTL) in number of hops of the GRE tunnel.
+      default: 64
     CloudflareClientAPI_type:
       type: string
       description: The billing item type.
@@ -3107,7 +3089,7 @@ components:
           name:
             $ref: '#/components/schemas/CloudflareClientAPI_name'
           priority:
-            $ref: '#/components/schemas/CloudflareClientAPI_priority'
+            $ref: '#/components/schemas/priority'
           type:
             description: Record type.
             enum:
@@ -3287,7 +3269,7 @@ components:
                 minimum: 0
                 maximum: 65535
               priority:
-                $ref: '#/components/schemas/CloudflareClientAPI_priority'
+                $ref: '#/components/schemas/priority'
               proto:
                 type: string
                 description: A valid protocol.
@@ -3500,7 +3482,7 @@ components:
           name:
             $ref: '#/components/schemas/CloudflareClientAPI_name'
           priority:
-            $ref: '#/components/schemas/CloudflareClientAPI_priority'
+            $ref: '#/components/schemas/priority'
           type:
             description: Record type.
             enum:
@@ -3681,11 +3663,7 @@ components:
               green_compute:
                 readOnly: true
     account_identifier:
-      type: string
-      description: The account identifier tag.
-      example: 023e105f4ecef8ad9ca31a8372d0c353
-      readOnly: true
-      maxLength: 32
+      example: 01a7362d577a6c3019a474fd6f485823
     account_subscription_response_collection:
       allOf:
       - $ref: '#/components/schemas/api-response-collection'
@@ -5514,7 +5492,7 @@ components:
         tags:
           $ref: '#/components/schemas/tags'
         ttl:
-          $ref: '#/components/schemas/CloudflareClientAPI_ttl'
+          $ref: '#/components/schemas/ttl'
         type:
           $ref: '#/components/schemas/CloudflareClientAPI_type'
         zone_id:
@@ -6704,6 +6682,12 @@ components:
       description: The date and time the clip was created.
       example: "2014-01-02T02:20:00Z"
       readOnly: true
+    cloudflare-stream-client-api_account_identifier:
+      type: string
+      description: The account identifier tag.
+      example: 023e105f4ecef8ad9ca31a8372d0c353
+      readOnly: true
+      maxLength: 32
     cloudflare-stream-client-api_created:
       type: string
       format: date-time
@@ -7425,8 +7409,8 @@ components:
           $ref: '#/components/schemas/monitor_components-schemas-type'
     components-schemas-name:
       type: string
-      description: The name of the Device Posture Integration.
-      example: My Workspace One Integration
+      description: The name of the peer.
+      example: my-peer-1
     components-schemas-patch:
       type: object
       description: Update enablement of Smart Tiered Cache
@@ -7564,7 +7548,7 @@ components:
           result:
             type: array
             items:
-              $ref: '#/components/schemas/device-managed-networks'
+              $ref: '#/components/schemas/acl'
     components-schemas-response_single:
       allOf:
       - $ref: '#/components/schemas/api-response-single'
@@ -7633,7 +7617,7 @@ components:
       - $ref: '#/components/schemas/api-response-single'
       - properties:
           result:
-            $ref: '#/components/schemas/device-managed-networks'
+            $ref: '#/components/schemas/acl'
     components-schemas-state:
       description: The custom page state.
       enum:
@@ -10059,7 +10043,7 @@ components:
         interval:
           $ref: '#/components/schemas/CloudflareClientAPI_interval'
         name:
-          $ref: '#/components/schemas/components-schemas-name'
+          $ref: '#/components/schemas/CloudflareClientAPI_components-schemas-name'
         type:
           $ref: '#/components/schemas/schemas-type'
     device-posture-integrations_components-schemas-id_response:
@@ -10256,7 +10240,7 @@ components:
         id:
           $ref: '#/components/schemas/schemas-uuid'
         ip:
-          $ref: '#/components/schemas/ip'
+          $ref: '#/components/schemas/CloudflareClientAPI_ip'
         key:
           $ref: '#/components/schemas/key'
         last_seen:
@@ -10268,7 +10252,7 @@ components:
         model:
           $ref: '#/components/schemas/model'
         name:
-          $ref: '#/components/schemas/schemas-name'
+          $ref: '#/components/schemas/CloudflareClientAPI_schemas-name'
         os_distro_name:
           $ref: '#/components/schemas/os_distro_name'
         os_distro_revision:
@@ -10633,7 +10617,7 @@ components:
         tags:
           $ref: '#/components/schemas/tags'
         ttl:
-          $ref: '#/components/schemas/CloudflareClientAPI_ttl'
+          $ref: '#/components/schemas/ttl'
         type:
           $ref: '#/components/schemas/dns-record_components-schemas-type'
         zone_id:
@@ -12376,7 +12360,7 @@ components:
         health_check:
           $ref: '#/components/schemas/health_check'
         id:
-          $ref: '#/components/schemas/schemas-identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_schemas-identifier'
         interface_address:
           $ref: '#/components/schemas/interface_address'
         modified_on:
@@ -12386,7 +12370,7 @@ components:
         name:
           $ref: '#/components/schemas/CloudflareClientAPI_name'
         ttl:
-          $ref: '#/components/schemas/ttl'
+          $ref: '#/components/schemas/CloudflareClientAPI_ttl'
     group:
       type: object
       properties:
@@ -13398,7 +13382,7 @@ components:
         health_check:
           $ref: '#/components/schemas/schemas-health_check'
         id:
-          $ref: '#/components/schemas/schemas-identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_schemas-identifier'
         interface_address:
           $ref: '#/components/schemas/interface_address'
         modified_on:
@@ -13470,8 +13454,12 @@ components:
       readOnly: true
     ip:
       type: string
-      description: IPv4 or IPv6 address.
-      example: 1.1.1.1
+      description: IPv4/IPv6 address of primary or secondary nameserver, depending
+        on what zone this peer is linked to. For primary zones this IP defines the
+        IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For
+        secondary zones this IP defines the IP of the primary nameserver Cloudflare
+        will send AXFR/IXFR requests to.
+      example: 192.0.2.53
     ip-list:
       properties:
         description:
@@ -13733,7 +13721,7 @@ components:
         description:
           $ref: '#/components/schemas/components-schemas-description'
         id:
-          $ref: '#/components/schemas/schemas-identifier'
+          $ref: '#/components/schemas/CloudflareClientAPI_schemas-identifier'
         interface_address:
           $ref: '#/components/schemas/interface_address'
         modified_on:
@@ -17677,11 +17665,11 @@ components:
         id:
           $ref: '#/components/schemas/components-schemas-identifier'
         ip:
-          $ref: '#/components/schemas/CloudflareClientAPI_ip'
+          $ref: '#/components/schemas/ip'
         ixfr_enable:
           $ref: '#/components/schemas/ixfr_enable'
         name:
-          $ref: '#/components/schemas/CloudflareClientAPI_components-schemas-name'
+          $ref: '#/components/schemas/components-schemas-name'
         port:
           $ref: '#/components/schemas/port'
         tsig_id:
@@ -18479,8 +18467,12 @@ components:
       example: 20
       readOnly: true
     priority:
-      type: integer
-      description: Priority of the static route.
+      type: number
+      description: Required for MX, SRV and URI records; unused by other record types.
+        Records with lower priorities are preferred.
+      example: 10
+      minimum: 0
+      maximum: 65535
     privacy:
       type: boolean
       description: Privacy option controls redacting WHOIS information.
@@ -20000,7 +19992,7 @@ components:
         prefix:
           $ref: '#/components/schemas/prefix'
         priority:
-          $ref: '#/components/schemas/priority'
+          $ref: '#/components/schemas/CloudflareClientAPI_priority'
         scope:
           $ref: '#/components/schemas/scope'
         weight:
@@ -20041,7 +20033,7 @@ components:
         prefix:
           $ref: '#/components/schemas/prefix'
         priority:
-          $ref: '#/components/schemas/priority'
+          $ref: '#/components/schemas/CloudflareClientAPI_priority'
         scope:
           $ref: '#/components/schemas/scope'
         weight:
@@ -21865,13 +21857,12 @@ components:
       - $ref: '#/components/schemas/api-response-single'
       - properties:
           result:
-            nullable: true
+            type: object
+            properties:
+              id:
+                $ref: '#/components/schemas/schemas-identifier'
     schemas-identifier:
-      type: string
-      description: Tunnel identifier tag.
-      example: c4a7362d577a6c3019a474fd6f485821
-      readOnly: true
-      maxLength: 32
+      example: 69cd1e104af3e6ed3cb344f263fd0d5a
     schemas-identity-provider:
       type: object
       required:
@@ -22081,8 +22072,8 @@ components:
       default: 1476
     schemas-name:
       type: string
-      description: The device name.
-      example: My mobile device
+      description: TSIG key name.
+      example: tsig.customer.cf.
     schemas-namespace:
       type: object
       properties:
@@ -22577,7 +22568,7 @@ components:
           result:
             type: array
             items:
-              $ref: '#/components/schemas/device-posture-integrations'
+              $ref: '#/components/schemas/peer'
     schemas-response_model:
       type: object
       properties:
@@ -22821,7 +22812,7 @@ components:
       - $ref: '#/components/schemas/api-response-single'
       - properties:
           result:
-            $ref: '#/components/schemas/device-posture-integrations'
+            $ref: '#/components/schemas/peer'
     schemas-ssl:
       oneOf:
       - type: object
@@ -25458,9 +25449,9 @@ components:
         algo:
           $ref: '#/components/schemas/algo'
         id:
-          $ref: '#/components/schemas/CloudflareClientAPI_schemas-identifier'
+          $ref: '#/components/schemas/schemas-identifier'
         name:
-          $ref: '#/components/schemas/CloudflareClientAPI_schemas-name'
+          $ref: '#/components/schemas/schemas-name'
         secret:
           $ref: '#/components/schemas/secret'
     tsig_components-schemas-identifier:
@@ -25482,9 +25473,19 @@ components:
       description: TSIG authentication will be used for zone transfer if configured.
       example: 69cd1e104af3e6ed3cb344f263fd0d5a
     ttl:
-      type: integer
-      description: Time To Live (TTL) in number of hops of the GRE tunnel.
-      default: 64
+      anyOf:
+      - type: number
+        example: 3600
+        minimum: 30
+        maximum: 86400
+      - type: number
+        enum:
+        - 1
+      type: number
+      description: Time To Live (TTL) of the DNS record in seconds. Setting to 1 means
+        'automatic'. Value must be between 60 and 86400, with the minimum reduced
+        to 30 for Enterprise zones.
+      example: 3600
     tunnel:
       type: object
       description: A Cloudflare Tunnel that connects your origin to Cloudflare's edge.
@@ -25536,7 +25537,7 @@ components:
         name:
           $ref: '#/components/schemas/CloudflareClientAPI_name'
         ttl:
-          $ref: '#/components/schemas/ttl'
+          $ref: '#/components/schemas/CloudflareClientAPI_ttl'
     tunnel_connection:
       type: object
       description: A connection between cloudflared and a Cloudflare data center.
@@ -38791,7 +38792,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/account_identifier'
+          $ref: '#/components/schemas/cloudflare-stream-client-api_account_identifier'
       responses:
         4xx:
           description: List videos response failure
@@ -38838,7 +38839,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/account_identifier'
+          $ref: '#/components/schemas/cloudflare-stream-client-api_account_identifier'
       requestBody:
         required: true
         content:
@@ -38873,7 +38874,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/account_identifier'
+          $ref: '#/components/schemas/cloudflare-stream-client-api_account_identifier'
       requestBody:
         required: true
         content:
@@ -38907,7 +38908,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/account_identifier'
+          $ref: '#/components/schemas/cloudflare-stream-client-api_account_identifier'
       responses:
         4xx:
           description: Retrieve video details response failure
@@ -38941,7 +38942,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/account_identifier'
+          $ref: '#/components/schemas/cloudflare-stream-client-api_account_identifier'
       requestBody:
         required: true
         content:
@@ -39221,7 +39222,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/account_identifier'
+          $ref: '#/components/schemas/cloudflare-stream-client-api_account_identifier'
       responses:
         4xx:
           description: Retreieve embed Code HTML response failure
@@ -39258,7 +39259,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/account_identifier'
+          $ref: '#/components/schemas/cloudflare-stream-client-api_account_identifier'
       requestBody:
         required: true
         content:
@@ -39295,7 +39296,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/account_identifier'
+          $ref: '#/components/schemas/cloudflare-stream-client-api_account_identifier'
       requestBody:
         required: true
         content:
@@ -39331,7 +39332,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/account_identifier'
+          $ref: '#/components/schemas/cloudflare-stream-client-api_account_identifier'
       requestBody:
         required: true
         content:
@@ -39368,7 +39369,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/account_identifier'
+          $ref: '#/components/schemas/cloudflare-stream-client-api_account_identifier'
       requestBody:
         required: true
         content:
@@ -39850,7 +39851,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/account_identifier'
+          $ref: '#/components/schemas/cloudflare-stream-client-api_account_identifier'
       responses:
         4xx:
           description: List watermark profiles response failure
@@ -39880,7 +39881,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/account_identifier'
+          $ref: '#/components/schemas/cloudflare-stream-client-api_account_identifier'
       requestBody:
         required: true
         content:
@@ -39921,7 +39922,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/account_identifier'
+          $ref: '#/components/schemas/cloudflare-stream-client-api_account_identifier'
       requestBody:
         required: true
         content:
@@ -39964,7 +39965,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/account_identifier'
+          $ref: '#/components/schemas/cloudflare-stream-client-api_account_identifier'
       responses:
         4xx:
           description: Watermark profile details response failure
@@ -39994,7 +39995,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/account_identifier'
+          $ref: '#/components/schemas/cloudflare-stream-client-api_account_identifier'
       requestBody:
         required: true
         content:
@@ -40027,7 +40028,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/account_identifier'
+          $ref: '#/components/schemas/cloudflare-stream-client-api_account_identifier'
       responses:
         4xx:
           description: View webhooks response failure
@@ -40056,7 +40057,7 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/account_identifier'
+          $ref: '#/components/schemas/cloudflare-stream-client-api_account_identifier'
       requestBody:
         required: true
         content:
@@ -82172,13 +82173,13 @@ paths:
                 name:
                   $ref: '#/components/schemas/dns-record_components-schemas-name'
                 priority:
-                  $ref: '#/components/schemas/CloudflareClientAPI_priority'
+                  $ref: '#/components/schemas/priority'
                 proxied:
                   $ref: '#/components/schemas/proxied'
                 tags:
                   $ref: '#/components/schemas/tags'
                 ttl:
-                  $ref: '#/components/schemas/CloudflareClientAPI_ttl'
+                  $ref: '#/components/schemas/ttl'
                 type:
                   $ref: '#/components/schemas/dns-record_components-schemas-type'
       responses:
@@ -82319,7 +82320,7 @@ paths:
                 tags:
                   $ref: '#/components/schemas/tags'
                 ttl:
-                  $ref: '#/components/schemas/CloudflareClientAPI_ttl'
+                  $ref: '#/components/schemas/ttl'
                 type:
                   $ref: '#/components/schemas/dns-record_components-schemas-type'
       responses:
@@ -82380,7 +82381,7 @@ paths:
                 tags:
                   $ref: '#/components/schemas/tags'
                 ttl:
-                  $ref: '#/components/schemas/CloudflareClientAPI_ttl'
+                  $ref: '#/components/schemas/ttl'
                 type:
                   $ref: '#/components/schemas/dns-record_components-schemas-type'
       responses:
