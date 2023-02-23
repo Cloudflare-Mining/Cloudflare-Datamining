@@ -7,15 +7,15 @@
 				"pageName": "theNET - Securing the distributed enterprise for the long-term - Page",
 				"localeList": {
 					"enUS": "English for Locale",
-					"zhCN": "English for Locale",
-					"zhTW": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "Translated for Locale",
 					"frFR": "Translated for Locale",
 					"deDE": "Translated for Locale",
-					"itIT": "English for Locale",
+					"itIT": "Translated for Locale",
 					"jaJP": "Translated for Locale",
-					"koKR": "English for Locale",
-					"ptBR": "English for Locale",
-					"esES": "English for Locale",
+					"koKR": "Translated for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -27,8 +27,8 @@
 					"svSE": "No Page for Locale",
 					"viVN": "No Page for Locale",
 					"trTR": "No Page for Locale",
-					"zhHansCN": null,
-					"plPL": null
+					"zhHansCN": "Translated for Locale",
+					"plPL": "No Page for Locale"
 				},
 				"relativePath": "insights-securing-distributed-enterprise",
 				"topNavOptions": "custom",
@@ -314,7 +314,7 @@
 					{
 						"contentTypeId": "bladeHtml",
 						"contentfulId": "3PfSgR6RxFckxj30JU8UNT",
-						"htmlContent": "<img src='https://cf-assets.www.cloudflare.com/slt3lc6tev37/7zJugm2NKzRQIcUaiFPmrM/e986db09336aaa7846d56c5c201efc4a/BDES-4015_theNET_Website_TopBanner1440x176_v1.jpg'; style=\"  width: 100%;\" />",
+						"htmlContent": "<img src='https://cf-assets.www.cloudflare.com/slt3lc6tev37/7zJugm2NKzRQIcUaiFPmrM/e986db09336aaa7846d56c5c201efc4a/BDES-4015_theNET_Website_TopBanner1440x176_v1.jpg'; style=\"width: 100%;\" />",
 						"htmlId": "theNET - Banner"
 					},
 					{
@@ -2903,9 +2903,16 @@
 			"contentfulId": "3erBqX202hPvHUILLBazIl",
 			"allowedHrefLangs": [
 				"en-US",
+				"zh-CN",
+				"zh-TW",
 				"fr-FR",
 				"de-DE",
-				"ja-JP"
+				"it-IT",
+				"ja-JP",
+				"ko-KR",
+				"pt-BR",
+				"es-ES",
+				"zh-Hans-CN"
 			],
 			"hasPsaBanner": false,
 			"baseURL": "https://www.cloudflare.com"
