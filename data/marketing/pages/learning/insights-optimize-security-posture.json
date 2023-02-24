@@ -4,18 +4,18 @@
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "Insights - Optimizing your security posture during economic uncertainty",
+				"pageName": "theNET - Optimize your security posture during economic uncertainty - Page",
 				"localeList": {
 					"enUS": "English for Locale",
-					"zhCN": "English for Locale",
-					"zhTW": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "Translated for Locale",
 					"frFR": "Translated for Locale",
 					"deDE": "Translated for Locale",
-					"itIT": "English for Locale",
+					"itIT": "Translated for Locale",
 					"jaJP": "Translated for Locale",
-					"koKR": "English for Locale",
-					"ptBR": "English for Locale",
-					"esES": "English for Locale",
+					"koKR": "Translated for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -27,48 +27,263 @@
 					"svSE": "No Page for Locale",
 					"viVN": "No Page for Locale",
 					"trTR": "No Page for Locale",
-					"zhHansCN": "English for Locale",
+					"zhHansCN": "Translated for Locale",
 					"plPL": "No Page for Locale"
 				},
 				"relativePath": "/learning/insights-optimize-security-posture",
-				"topNavOptions": "default",
-				"topNavButtonText": "Get in touch",
-				"topNavButtonUrl": "/lp/overview-x/",
+				"topNavOptions": "custom",
+				"topNavButtonText": null,
+				"topNavButtonUrl": null,
 				"footerOptions": "default",
 				"metaTags": {
-					"metaTitle": "Optimizing your security posture during economic uncertainty",
+					"metaTitle": "Optimize your security posture during economic uncertainty",
 					"metaDescription": "How to find efficiencies in your security strategy",
-					"twitterCustomImage": {
-						"file": {
-							"publicURL": "[path]/Insights-optimize-security-posture.jpg"
-						}
-					},
+					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
 							"publicURL": "[path]/Insights-optimize-security-posture.jpg"
 						}
 					},
-					"facebookCustomImage": {
-						"file": {
-							"publicURL": "[path]/Insights-optimize-security-posture.jpg"
-						}
-					}
+					"facebookCustomImage": null
 				},
 				"contentfulId": "7Mjz4If3n12dP6uz5M8Vyk",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
 				"psaBanner": null,
-				"customTopNav": null,
-				"headerLogo": null,
+				"customTopNav": [
+					{
+						"contentTypeId": "navNavigationGroup",
+						"contentfulId": "7vtXhMutS3hr5urm12KUGs",
+						"locale": "en-US",
+						"mainNav": {
+							"contentTypeId": "navNavigation",
+							"contentfulId": "43PdHIHIsgmVJp1nN48Njc",
+							"locale": "en-US",
+							"navigationType": "Header",
+							"isDefaultNav": false,
+							"backgroundColor": "white",
+							"sectionPadding": null,
+							"navigationItems": [
+								{
+									"contentTypeId": "navNavigationItem",
+									"contentfulId": "1ll1oUb6JdF7xzHFrL5BtI",
+									"locale": "en-US",
+									"name": "Home",
+									"description": null,
+									"navIcon": null,
+									"contentfulButton": null,
+									"showIconOnly": false,
+									"hideOnChinaSite": false,
+									"navigationItems": null,
+									"mainLink": {
+										"contentTypeId": "elementNavLink",
+										"contentfulId": "1CFvERWkgaLU62M1N1pxQD",
+										"locale": "en-US",
+										"title": "Home",
+										"description": null,
+										"url": "the-net",
+										"badges": null,
+										"specialLinkType": null,
+										"openInNewWindow": false,
+										"isExternalUrl": null
+									},
+									"navigationLinks": null
+								},
+								{
+									"contentTypeId": "navNavigationItem",
+									"contentfulId": "6GKXXIm70KXYwj2jnsBrR7",
+									"locale": "en-US",
+									"name": "Security Innovation",
+									"description": null,
+									"navIcon": null,
+									"contentfulButton": null,
+									"showIconOnly": false,
+									"hideOnChinaSite": false,
+									"navigationItems": null,
+									"mainLink": {
+										"contentTypeId": "elementNavLink",
+										"contentfulId": "2c0im4m95oZ8rlwS8ePtbO",
+										"locale": "en-US",
+										"title": "Security Innovation",
+										"description": null,
+										"url": "/the-net/security-innovation/",
+										"badges": null,
+										"specialLinkType": null,
+										"openInNewWindow": false,
+										"isExternalUrl": null
+									},
+									"navigationLinks": null
+								},
+								{
+									"contentTypeId": "navNavigationItem",
+									"contentfulId": "13DnpsI1G49Zk7wJbppRnd",
+									"locale": "en-US",
+									"name": "Threat Landscape",
+									"description": null,
+									"navIcon": null,
+									"contentfulButton": null,
+									"showIconOnly": false,
+									"hideOnChinaSite": false,
+									"navigationItems": null,
+									"mainLink": {
+										"contentTypeId": "elementNavLink",
+										"contentfulId": "18vMkNil63nAJw79ZSR4UJ",
+										"locale": "en-US",
+										"title": "Threat Landscape",
+										"description": null,
+										"url": "/the-net/threat-landscape/",
+										"badges": null,
+										"specialLinkType": null,
+										"openInNewWindow": false,
+										"isExternalUrl": null
+									},
+									"navigationLinks": null
+								},
+								{
+									"contentTypeId": "navNavigationItem",
+									"contentfulId": "RanCdjDWzy8KI9Ha33Qal",
+									"locale": "en-US",
+									"name": "Future Internet",
+									"description": null,
+									"navIcon": null,
+									"contentfulButton": null,
+									"showIconOnly": false,
+									"hideOnChinaSite": false,
+									"navigationItems": null,
+									"mainLink": {
+										"contentTypeId": "elementNavLink",
+										"contentfulId": "0xC7JehkyUdfAgWDStXHa",
+										"locale": "en-US",
+										"title": "Future Internet",
+										"description": null,
+										"url": "/the-net/future-internet",
+										"badges": null,
+										"specialLinkType": null,
+										"openInNewWindow": false,
+										"isExternalUrl": null
+									},
+									"navigationLinks": null
+								}
+							]
+						},
+						"utilityNav": {
+							"contentTypeId": "navNavigation",
+							"contentfulId": "52CjZzRgYo8tC0nwT23Fc",
+							"locale": "en-US",
+							"navigationType": "Custom Navigation",
+							"isDefaultNav": true,
+							"backgroundColor": null,
+							"sectionPadding": "default",
+							"navigationItems": [
+								{
+									"contentTypeId": "navNavigationItem",
+									"contentfulId": "5XqIIHouIN3SqoeS8eIQL8",
+									"locale": "en-US",
+									"name": "Support",
+									"description": null,
+									"navIcon": null,
+									"contentfulButton": null,
+									"showIconOnly": false,
+									"hideOnChinaSite": null,
+									"navigationItems": null,
+									"mainLink": null,
+									"navigationLinks": [
+										{
+											"contentTypeId": "elementNavLink",
+											"contentfulId": "39ahAfcnTcrePwvvA1l0MW",
+											"locale": "en-US",
+											"title": "Contact Support",
+											"description": null,
+											"url": "https://dash.cloudflare.com/?to=/:account/support",
+											"badges": null,
+											"specialLinkType": null,
+											"openInNewWindow": true,
+											"isExternalUrl": null
+										},
+										{
+											"contentTypeId": "elementNavLink",
+											"contentfulId": "7eEo2tTS8nkTUH01h4y5BN",
+											"locale": "en-US",
+											"title": "Help Center",
+											"description": null,
+											"url": "https://support.cloudflare.com/",
+											"badges": null,
+											"specialLinkType": null,
+											"openInNewWindow": true,
+											"isExternalUrl": null
+										},
+										{
+											"contentTypeId": "elementNavLink",
+											"contentfulId": "4qMTa5oo6WQknsTOzFsrQ",
+											"locale": "en-US",
+											"title": "Cloudflare Community",
+											"description": null,
+											"url": "https://community.cloudflare.com/",
+											"badges": null,
+											"specialLinkType": null,
+											"openInNewWindow": true,
+											"isExternalUrl": null
+										},
+										{
+											"contentTypeId": "elementNavLink",
+											"contentfulId": "52WmBFB2P512JhW6jzATzc",
+											"locale": "en-US",
+											"title": "Lost account access?",
+											"description": null,
+											"url": "https://support.cloudflare.com/hc/en-us/articles/203471284-Login-and-account-issues",
+											"badges": null,
+											"specialLinkType": null,
+											"openInNewWindow": false,
+											"isExternalUrl": null
+										}
+									]
+								}
+							]
+						},
+						"rightNav": {
+							"contentTypeId": "navNavigation",
+							"contentfulId": "2lJyDCIXKA3ggOeKrNSCMQ",
+							"locale": "en-US",
+							"navigationType": "Footer",
+							"isDefaultNav": false,
+							"backgroundColor": null,
+							"sectionPadding": "default",
+							"navigationItems": [
+								{
+									"contentTypeId": "navNavigationItem",
+									"contentfulId": "2yvvSmtqM5YECHou5SqrhX",
+									"locale": "en-US",
+									"name": " ",
+									"description": null,
+									"navIcon": null,
+									"contentfulButton": null,
+									"showIconOnly": false,
+									"hideOnChinaSite": null,
+									"navigationItems": null,
+									"mainLink": null,
+									"navigationLinks": null
+								}
+							]
+						},
+						"experimentId": null,
+						"variant": null
+					}
+				],
+				"headerLogo": {
+					"file": {
+						"publicURL": "[path]/theNET_Cloudflare_Logo.png"
+					}
+				},
 				"proactivePopup": {
 					"contentTypeId": "proactivePopup",
 					"contentfulId": "1CsLKj1fesYJdTYADz0tWP",
 					"headerText": "Subscribe to Trending Stories",
 					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
+					"hasMarketoForm": true,
 					"marketoForm": {
 						"contentTypeId": "marketoEmbeddedForm",
 						"contentfulId": "55VRCxLgGVxT4XfkaKSPQ7",
-						"bladeName": "Trending Stories - Form: Proactive Pop-up - Subscribe",
+						"bladeName": "TheNET - Trending Stories - Form: Proactive Pop-up - Subscribe",
 						"backgroundColor": "white",
 						"marketoFormId": 2459,
 						"marketoFormLeadSource": "Inbound - Blog Subscriber",
@@ -91,16 +306,23 @@
 						"disableEnterpriseEmailNotification": null,
 						"enableRingout": null
 					},
-					"timeDelay": 30000
+					"timeDelay": 30000,
+					"ctaButton": null
 				},
 				"template": null,
 				"relatedBlades": [
+					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "3PfSgR6RxFckxj30JU8UNT",
+						"htmlContent": "<div style=\"background-image: url('https://cf-assets.www.cloudflare.com/slt3lc6tev37/7zJugm2NKzRQIcUaiFPmrM/e986db09336aaa7846d56c5c201efc4a/BDES-4015_theNET_Website_TopBanner1440x176_v1.jpg'); width: 1440px; height: 168px; background-repeat:no-repeat; border: none;\"></div>",
+						"htmlId": "theNET - Banner"
+					},
 					{
 						"contentTypeId": "bladeRichTextColumnGroup",
 						"contentfulId": "2Uq0xGcV3a4sGGP9Up0GTk",
 						"htmlId": null,
 						"mainHeadline": null,
-						"backgroundColor": "white",
+						"backgroundColor": "light-blue",
 						"bladeBorder": "none",
 						"sectionPadding": "tile--no-bottom-padding",
 						"columnLayout": "Two Thirds & One Third",
@@ -127,7 +349,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Optimizing your security posture during economic uncertainty",
+													"value": "Optimize your security posture during economic uncertainty",
 													"marks": [
 														{
 															"type": "bold"
@@ -138,7 +360,7 @@
 											]
 										},
 										{
-											"nodeType": "heading-4",
+											"nodeType": "heading-5",
 											"data": {
 												"target": null,
 												"uri": null
@@ -152,7 +374,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "How to find efficiencies in your security strategy",
+													"value": "Find efficiencies in your security strategy",
 													"marks": [
 														{
 															"type": "bold"
@@ -175,7 +397,7 @@
 														{
 															"contentfulId": "NUohQDfV3UgrS3MK8br6v",
 															"locale": "en-US",
-															"title": "Insights-optimize-security-posture",
+															"title": "theNET - Optimizing your security posture during economic uncertainty - Meta - Image",
 															"file": {
 																"name": "Insights-optimize-security-posture",
 																"publicURL": "[path]/Insights-optimize-security-posture.jpg",
@@ -223,7 +445,7 @@
 											]
 										},
 										{
-											"nodeType": "paragraph",
+											"nodeType": "heading-3",
 											"data": {
 												"target": null,
 												"uri": null
@@ -416,7 +638,42 @@
 											]
 										},
 										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
 											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-3",
 											"data": {
 												"target": null,
 												"uri": null
@@ -752,7 +1009,42 @@
 											]
 										},
 										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
 											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-3",
 											"data": {
 												"target": null,
 												"uri": null
@@ -1431,7 +1723,42 @@
 											]
 										},
 										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
 											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-3",
 											"data": {
 												"target": null,
 												"uri": null
@@ -1498,7 +1825,42 @@
 											]
 										},
 										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
 											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-3",
 											"data": {
 												"target": null,
 												"uri": null
@@ -1725,6 +2087,9 @@
 													"marks": [
 														{
 															"type": "italic"
+														},
+														{
+															"type": "bold"
 														}
 													],
 													"content": null
@@ -1742,7 +2107,38 @@
 									"nodeType": "document",
 									"content": [
 										{
-											"nodeType": "heading-4",
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-5",
 											"data": {
 												"target": null,
 												"uri": null
@@ -1816,7 +2212,31 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "How to find efficiencies in security tools",
+																	"value": "How to ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "find efficiencies",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " in security tools",
 																	"marks": [],
 																	"content": null
 																}
@@ -1848,7 +2268,31 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "The benefits of a consolidated platform over point solutions",
+																	"value": "The benefits of a ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "consolidated platform",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " over point solutions",
 																	"marks": [],
 																	"content": null
 																}
@@ -1880,8 +2324,22 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "Reasons for adding security capacity in the cloud\n",
+																	"value": "Reasons for adding ",
 																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "security capacity in the cloud",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
 																	"content": null
 																}
 															]
@@ -1889,6 +2347,16 @@
 													]
 												}
 											]
+										},
+										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
 										},
 										{
 											"nodeType": "paragraph",
@@ -1912,7 +2380,7 @@
 											]
 										},
 										{
-											"nodeType": "heading-6",
+											"nodeType": "paragraph",
 											"data": {
 												"target": null,
 												"uri": null
@@ -1926,7 +2394,28 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "RELATED RESOURCES",
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-5",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Related resources",
 													"marks": [
 														{
 															"type": "bold"
@@ -1935,16 +2424,6 @@
 													"content": null
 												}
 											]
-										},
-										{
-											"nodeType": "hr",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": []
 										},
 										{
 											"nodeType": "unordered-list",
@@ -2147,6 +2626,16 @@
 											]
 										},
 										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
 											"nodeType": "paragraph",
 											"data": {
 												"target": null,
@@ -2179,7 +2668,7 @@
 						"mainHeadline": null,
 						"backgroundColor": "light-blue",
 						"bladeBorder": "none",
-						"sectionPadding": null,
+						"sectionPadding": "tile--no-top-padding",
 						"columnLayout": "Two Thirds & One Third",
 						"columns": [
 							{
@@ -2189,6 +2678,37 @@
 								"column": {
 									"nodeType": "document",
 									"content": [
+										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
 										{
 											"nodeType": "heading-2",
 											"data": {
@@ -2204,7 +2724,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Dive deeper into this topic",
+													"value": "Dive deeper into this topic.",
 													"marks": [],
 													"content": null
 												}
@@ -2263,17 +2783,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " ",
-													"marks": [],
-													"content": null
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "whitepaper.",
+													"value": " whitepaper.",
 													"marks": [],
 													"content": null
 												}
@@ -2366,10 +2876,18 @@
 			"contentfulId": "7Mjz4If3n12dP6uz5M8Vyk",
 			"allowedHrefLangs": [
 				"en-US",
+				"zh-CN",
+				"zh-TW",
 				"fr-FR",
 				"de-DE",
-				"ja-JP"
+				"it-IT",
+				"ja-JP",
+				"ko-KR",
+				"pt-BR",
+				"es-ES",
+				"zh-Hans-CN"
 			],
+			"hasPsaBanner": false,
 			"baseURL": "https://www.cloudflare.com"
 		}
 	}

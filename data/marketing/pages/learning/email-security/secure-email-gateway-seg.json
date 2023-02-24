@@ -126,6 +126,18 @@
 									"contentfulId": "56i3gfoV1dUYcYGK5bpltK",
 									"displayText": "Email spoofing",
 									"url": "/learning/email-security/what-is-email-spoofing/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "HpaNW5ufqJNVinYT6OFvW",
+									"displayText": "What is a mail server?",
+									"url": "/learning/email-security/what-is-a-mail-server/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "eXTfZ3BafDnbQwvOKehXU",
+									"displayText": "What is vendor email compromise (VEC)?",
+									"url": "/learning/email-security/what-is-vendor-email-compromise"
 								}
 							]
 						},
@@ -140,6 +152,12 @@
 									"contentfulId": "3l0WquSKGK9A2e3Q2Gw0ph",
 									"displayText": "BEC attacks are becoming more costly",
 									"url": "https://www.cloudflare.com/learning/insights-bec-proactive-security/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4MTBhfGd8FrzrXCPUQfycg",
+									"displayText": "The anatomy of vendor email compromise",
+									"url": "https://www.cloudflare.com/learning/insights-anatomy-vec/"
 								}
 							]
 						}
@@ -167,6 +185,12 @@
 								"contentfulId": "1V68nslIsHJxWwDTY9YdOe",
 								"displayText": "What is email?",
 								"url": "/learning/email-security/what-is-email/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "HpaNW5ufqJNVinYT6OFvW",
+								"displayText": "What is a mail server?",
+								"url": "/learning/email-security/what-is-a-mail-server/"
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
@@ -266,6 +290,12 @@
 								"contentfulId": "4diu4WZYJy08cSy5mXzFED",
 								"displayText": "What is vishing?",
 								"url": "/learning/email-security/what-is-vishing/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "eXTfZ3BafDnbQwvOKehXU",
+								"displayText": "What is vendor email compromise (VEC)?",
+								"url": "/learning/email-security/what-is-vendor-email-compromise"
 							}
 						]
 					},
@@ -409,27 +439,27 @@
 				"localized": null,
 				"localeList": {
 					"enUS": "English for Locale",
-					"zhCN": "English for Locale",
+					"zhCN": "Translated for Locale",
 					"zhTW": "English for Locale",
-					"frFR": "English for Locale",
-					"deDE": "English for Locale",
+					"frFR": "Translated for Locale",
+					"deDE": "Translated for Locale",
 					"itIT": "English for Locale",
-					"jaJP": "English for Locale",
+					"jaJP": "Translated for Locale",
 					"koKR": "English for Locale",
-					"ptBR": "English for Locale",
-					"esES": "English for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
 					"enGB": "English for Locale",
-					"nlNL": "English for Locale",
+					"nlNL": "No Page for Locale",
 					"idID": "No Page for Locale",
 					"thTH": "No Page for Locale",
 					"ruRU": "No Page for Locale",
 					"svSE": "No Page for Locale",
 					"viVN": "No Page for Locale",
 					"trTR": "No Page for Locale",
-					"zhHansCN": "English for Locale"
+					"zhHansCN": "Translated for Locale"
 				},
 				"proactivePopup": null,
 				"sidebarForm": null
@@ -441,7 +471,14 @@
 			"pathname": "/learning/email-security/secure-email-gateway-seg/",
 			"baseURL": "https://www.cloudflare.com",
 			"allowedHrefLangs": [
-				"en-US"
+				"en-US",
+				"zh-CN",
+				"fr-FR",
+				"de-DE",
+				"ja-JP",
+				"pt-BR",
+				"es-ES",
+				"zh-Hans-CN"
 			]
 		}
 	}

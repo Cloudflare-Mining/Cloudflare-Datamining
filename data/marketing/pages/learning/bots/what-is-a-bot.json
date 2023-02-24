@@ -97,7 +97,7 @@
 									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "6zUsw3wyoBqtsDX8JNwzWM",
 									"displayText": "What is Robots.txt?",
-									"url": "/learning/bots/what-is-robots.txt/"
+									"url": "/learning/bots/what-is-robots-txt/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
@@ -299,7 +299,7 @@
 								"contentTypeId": "learningCenterArticleLink",
 								"contentfulId": "6zUsw3wyoBqtsDX8JNwzWM",
 								"displayText": "What is Robots.txt?",
-								"url": "/learning/bots/what-is-robots.txt/"
+								"url": "/learning/bots/what-is-robots-txt/"
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
@@ -490,6 +490,7 @@
 					"contentfulId": "3e078HhDjGwh728YjwsGqd",
 					"headerText": "Want to keep learning?",
 					"subHeadingText": "Sign up to receive security learning articles from Cloudflare.",
+					"hasMarketoForm": true,
 					"marketoForm": {
 						"contentTypeId": "marketoEmbeddedForm",
 						"contentfulId": "4N6NOUDQwA5AAjxuGTnCMu",
@@ -516,7 +517,8 @@
 						"disableEnterpriseEmailNotification": null,
 						"enableRingout": null
 					},
-					"timeDelay": 20000
+					"timeDelay": 20000,
+					"ctaButton": null
 				},
 				"sidebarForm": {
 					"contentTypeId": "learningCenterArticleSidebarForm",

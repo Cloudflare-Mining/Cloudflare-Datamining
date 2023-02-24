@@ -537,13 +537,14 @@
 					"svSE": "No Page for Locale",
 					"viVN": "No Page for Locale",
 					"trTR": "No Page for Locale",
-					"zhHansCN": null
+					"zhHansCN": "Translated for Locale"
 				},
 				"proactivePopup": {
 					"contentTypeId": "proactivePopup",
 					"contentfulId": "3e078HhDjGwh728YjwsGqd",
 					"headerText": "Want to keep learning?",
 					"subHeadingText": "Sign up to receive security learning articles from Cloudflare.",
+					"hasMarketoForm": true,
 					"marketoForm": {
 						"contentTypeId": "marketoEmbeddedForm",
 						"contentfulId": "4N6NOUDQwA5AAjxuGTnCMu",
@@ -570,7 +571,8 @@
 						"disableEnterpriseEmailNotification": null,
 						"enableRingout": null
 					},
-					"timeDelay": 20000
+					"timeDelay": 20000,
+					"ctaButton": null
 				},
 				"sidebarForm": {
 					"contentTypeId": "learningCenterArticleSidebarForm",
@@ -620,7 +622,8 @@
 				"de-DE",
 				"ja-JP",
 				"pt-BR",
-				"es-ES"
+				"es-ES",
+				"zh-Hans-CN"
 			]
 		}
 	}
