@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.2.2
+
+### Patch Changes
+
+- 9f1b916751: Update component-search version
+
 ## 5.2.1
 
 ### Patch Changes
