@@ -1,5 +1,11 @@
 # Change Log
 
+## 6.3.1
+
+### Patch Changes
+
+- 65b8a93ea3: Update component-forms version number
+
 ## 6.3.0
 
 ### Minor Changes
