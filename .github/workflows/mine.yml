@@ -65,3 +65,4 @@ jobs:
           CLOUDFLARE_GLOBAL_KEY: ${{ secrets.CLOUDFLARE_GLOBAL_KEY }}
           CLOUDFLARE_EMAIL: ${{ secrets.CLOUDFLARE_EMAIL }}
           CLOUDFLARE_ZONE_ID: ${{ secrets.CLOUDFLARE_ZONE_ID }}
+          PAGES_DISPATCH_WORKER: ${{ secrets.PAGES_DISPATCH_WORKER }}
