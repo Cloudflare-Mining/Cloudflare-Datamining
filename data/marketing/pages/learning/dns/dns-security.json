@@ -692,12 +692,12 @@
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
-					"zhTW": "English for Locale",
+					"zhTW": "Translated for Locale",
 					"frFR": "Translated for Locale",
 					"deDE": "Translated for Locale",
 					"itIT": "English for Locale",
 					"jaJP": "Translated for Locale",
-					"koKR": "English for Locale",
+					"koKR": "Translated for Locale",
 					"ptBR": "Translated for Locale",
 					"esES": "Translated for Locale",
 					"enAU": "English for Locale",
@@ -718,6 +718,7 @@
 					"contentfulId": "3e078HhDjGwh728YjwsGqd",
 					"headerText": "Want to keep learning?",
 					"subHeadingText": "Sign up to receive security learning articles from Cloudflare.",
+					"hasMarketoForm": true,
 					"marketoForm": {
 						"contentTypeId": "marketoEmbeddedForm",
 						"contentfulId": "4N6NOUDQwA5AAjxuGTnCMu",
@@ -744,7 +745,8 @@
 						"disableEnterpriseEmailNotification": null,
 						"enableRingout": null
 					},
-					"timeDelay": 20000
+					"timeDelay": 20000,
+					"ctaButton": null
 				},
 				"sidebarForm": {
 					"contentTypeId": "learningCenterArticleSidebarForm",
@@ -790,9 +792,11 @@
 			"allowedHrefLangs": [
 				"en-US",
 				"zh-CN",
+				"zh-TW",
 				"fr-FR",
 				"de-DE",
 				"ja-JP",
+				"ko-KR",
 				"pt-BR",
 				"es-ES",
 				"zh-Hans-CN"

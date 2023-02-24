@@ -4,18 +4,18 @@
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "Brand Thought Leadership - Roadmap to Zero Trust",
+				"pageName": "theNET - Roadmap to Zero Trust - Page",
 				"localeList": {
 					"enUS": "English for Locale",
-					"zhCN": "English for Locale",
-					"zhTW": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "Translated for Locale",
 					"frFR": "Translated for Locale",
 					"deDE": "Translated for Locale",
-					"itIT": "English for Locale",
+					"itIT": "Translated for Locale",
 					"jaJP": "Translated for Locale",
-					"koKR": "English for Locale",
-					"ptBR": "English for Locale",
-					"esES": "English for Locale",
+					"koKR": "Translated for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -27,7 +27,7 @@
 					"svSE": "No Page for Locale",
 					"viVN": "No Page for Locale",
 					"trTR": "No Page for Locale",
-					"zhHansCN": "English for Locale",
+					"zhHansCN": "Translated for Locale",
 					"plPL": "No Page for Locale"
 				},
 				"relativePath": "learning/insights-roadmap-zerotrust",
@@ -57,10 +57,11 @@
 					"contentfulId": "1CsLKj1fesYJdTYADz0tWP",
 					"headerText": "Subscribe to Trending Stories",
 					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
+					"hasMarketoForm": true,
 					"marketoForm": {
 						"contentTypeId": "marketoEmbeddedForm",
 						"contentfulId": "55VRCxLgGVxT4XfkaKSPQ7",
-						"bladeName": "Trending Stories - Form: Proactive Pop-up - Subscribe",
+						"bladeName": "TheNET - Trending Stories - Form: Proactive Pop-up - Subscribe",
 						"backgroundColor": "white",
 						"marketoFormId": 2459,
 						"marketoFormLeadSource": "Inbound - Blog Subscriber",
@@ -83,16 +84,11 @@
 						"disableEnterpriseEmailNotification": null,
 						"enableRingout": null
 					},
-					"timeDelay": 30000
+					"timeDelay": 30000,
+					"ctaButton": null
 				},
 				"template": null,
 				"relatedBlades": [
-					{
-						"contentfulId": "576O92JxT8RxnSLXT3Pk59",
-						"contentTypeId": "bladePadding",
-						"height": 6,
-						"backgroundColor": "blue5"
-					},
 					{
 						"contentTypeId": "bladeRichTextColumnGroup",
 						"contentfulId": "13pum8ysAQ9LCuRnw9xufe",
@@ -100,7 +96,7 @@
 						"mainHeadline": null,
 						"backgroundColor": "light-blue",
 						"bladeBorder": "none",
-						"sectionPadding": "tile--no-top-bottom-padding",
+						"sectionPadding": "tile--no-bottom-padding",
 						"columnLayout": "Two Thirds & One Third",
 						"columns": [
 							{
@@ -2887,10 +2883,10 @@
 						"contentTypeId": "bladeEnablement",
 						"contentfulId": "6a0AK8klnguk8T7mRLYvRt",
 						"buttonExtraClass": null,
-						"buttonColor": "orange",
+						"buttonColor": "blue",
 						"buttonColor2": "orange",
 						"title": "Receive a monthly recap of the most popular Internet insights!",
-						"backgroundColor": "blue",
+						"backgroundColor": "image-background",
 						"buttonText": null,
 						"buttonUrl": null,
 						"buttonText2": null,
@@ -2898,12 +2894,12 @@
 						"buttonUrl2": null,
 						"bladeSizeType": "small",
 						"htmlId": null,
-						"textColor": "white",
+						"textColor": "black",
 						"bladeBorder": "none",
 						"buttonOne": {
 							"buttonAssetFile": null,
 							"buttonWidth": "auto",
-							"buttonColor": "orange",
+							"buttonColor": "blue",
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
 							"contentfulId": "42YK7xPyI7ogEbiDthlJRL",
@@ -2976,10 +2972,18 @@
 			"contentfulId": "TJgkCIHH4dEPCsH0qNpaO",
 			"allowedHrefLangs": [
 				"en-US",
+				"zh-CN",
+				"zh-TW",
 				"fr-FR",
 				"de-DE",
-				"ja-JP"
+				"it-IT",
+				"ja-JP",
+				"ko-KR",
+				"pt-BR",
+				"es-ES",
+				"zh-Hans-CN"
 			],
+			"hasPsaBanner": false,
 			"baseURL": "https://www.cloudflare.com"
 		}
 	}

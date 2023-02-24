@@ -4,18 +4,18 @@
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "Brand Thought Leadership - Holiday Readiness - Page",
+				"pageName": "theNET - Security for the holidays - Page",
 				"localeList": {
 					"enUS": "English for Locale",
-					"zhCN": "No Page for Locale",
-					"zhTW": "No Page for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "Translated for Locale",
 					"frFR": "Translated for Locale",
 					"deDE": "Translated for Locale",
-					"itIT": "No Page for Locale",
+					"itIT": "Translated for Locale",
 					"jaJP": "Translated for Locale",
-					"koKR": "No Page for Locale",
-					"ptBR": "No Page for Locale",
-					"esES": "No Page for Locale",
+					"koKR": "Translated for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -27,7 +27,7 @@
 					"svSE": "No Page for Locale",
 					"viVN": "No Page for Locale",
 					"trTR": "No Page for Locale",
-					"zhHansCN": "No Page for Locale",
+					"zhHansCN": "Translated for Locale",
 					"plPL": "No Page for Locale"
 				},
 				"relativePath": "learning/insights-holiday-security",
@@ -57,10 +57,11 @@
 					"contentfulId": "1CsLKj1fesYJdTYADz0tWP",
 					"headerText": "Subscribe to Trending Stories",
 					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
+					"hasMarketoForm": true,
 					"marketoForm": {
 						"contentTypeId": "marketoEmbeddedForm",
 						"contentfulId": "55VRCxLgGVxT4XfkaKSPQ7",
-						"bladeName": "Trending Stories - Form: Proactive Pop-up - Subscribe",
+						"bladeName": "TheNET - Trending Stories - Form: Proactive Pop-up - Subscribe",
 						"backgroundColor": "white",
 						"marketoFormId": 2459,
 						"marketoFormLeadSource": "Inbound - Blog Subscriber",
@@ -83,16 +84,11 @@
 						"disableEnterpriseEmailNotification": null,
 						"enableRingout": null
 					},
-					"timeDelay": 30000
+					"timeDelay": 30000,
+					"ctaButton": null
 				},
 				"template": null,
 				"relatedBlades": [
-					{
-						"contentfulId": "5SWrZKdY03tMBhKLL6xHgb",
-						"contentTypeId": "bladePadding",
-						"height": 6,
-						"backgroundColor": "blue5"
-					},
 					{
 						"contentTypeId": "bladeRichTextColumnGroup",
 						"contentfulId": "X3o4LNRtsF2egoHckFXH9",
@@ -100,7 +96,7 @@
 						"mainHeadline": null,
 						"backgroundColor": "light-blue",
 						"bladeBorder": "none",
-						"sectionPadding": "tile--no-top-bottom-padding",
+						"sectionPadding": "tile--no-bottom-padding",
 						"columnLayout": "Two Thirds & One Third",
 						"columns": [
 							{
@@ -194,7 +190,7 @@
 														{
 															"contentfulId": "286tQeNqQNg2IMFxYWEeEs",
 															"locale": "en-US",
-															"title": "Brand Thought Leadership - Holiday Readiness",
+															"title": "theNET - Security for the holidays - Image",
 															"file": {
 																"name": "Thought_Leadership_Hero_Imzge",
 																"publicURL": "[path]/Thought_Leadership_Hero_Imzge.jpg",
@@ -256,38 +252,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "To no surprise, the holiday season brings with it increased opportunity for cyber attacks; with the e-commerce industry being the primary target. No matter what an organization sells online — be it clothing, electronics, travel experiences, or what have you — holiday-themed promotions are ",
-													"marks": [],
-													"content": null
-												},
-												{
-													"nodeType": "hyperlink",
-													"data": {
-														"target": null,
-														"uri": "https://www.insiderintelligence.com/content/uk-holiday-2021-spending-forecast-look-more-like-2019-than-2020?cf_history_state=%7B%22guid%22%3A%22C255D9FF78CD46CDA4F76812EA68C350%22%2C%22historyId%22%3A12%2C%22targetId%22%3A%220E86EF45B2F21E20F7A58326E6E07A64%22%7D"
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "text",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": "an unfortunately popular target",
-															"marks": [],
-															"content": null
-														}
-													]
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": " for attackers as Security and IT are often overburdened during this time and more likely to be caught off guard.",
+													"value": "To no surprise, the holiday season brings with it increased opportunity for cyber attacks; with the e-commerce industry being the primary target. No matter what an organization sells online — be it clothing, electronics, travel experiences, or what have you — holiday-themed promotions are an unfortunately popular target for attackers as Security and IT are often overburdened during this time and more likely to be caught off guard.",
 													"marks": [],
 													"content": null
 												}
@@ -2743,6 +2708,16 @@
 											]
 										},
 										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
 											"nodeType": "paragraph",
 											"data": {
 												"target": null,
@@ -2964,12 +2939,12 @@
 					},
 					{
 						"contentTypeId": "bladeEnablement",
-						"contentfulId": "Inya9djmlUrqaydHNAqD1",
+						"contentfulId": "6a0AK8klnguk8T7mRLYvRt",
 						"buttonExtraClass": null,
-						"buttonColor": "orange",
+						"buttonColor": "blue",
 						"buttonColor2": "orange",
 						"title": "Receive a monthly recap of the most popular Internet insights!",
-						"backgroundColor": "blue",
+						"backgroundColor": "image-background",
 						"buttonText": null,
 						"buttonUrl": null,
 						"buttonText2": null,
@@ -2977,12 +2952,12 @@
 						"buttonUrl2": null,
 						"bladeSizeType": "small",
 						"htmlId": null,
-						"textColor": "white",
+						"textColor": "black",
 						"bladeBorder": "none",
 						"buttonOne": {
 							"buttonAssetFile": null,
 							"buttonWidth": "auto",
-							"buttonColor": "orange",
+							"buttonColor": "blue",
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
 							"contentfulId": "42YK7xPyI7ogEbiDthlJRL",
@@ -3055,10 +3030,18 @@
 			"contentfulId": "6O8TNGaJGivNdZxtATAGI0",
 			"allowedHrefLangs": [
 				"en-US",
+				"zh-CN",
+				"zh-TW",
 				"fr-FR",
 				"de-DE",
-				"ja-JP"
+				"it-IT",
+				"ja-JP",
+				"ko-KR",
+				"pt-BR",
+				"es-ES",
+				"zh-Hans-CN"
 			],
+			"hasPsaBanner": false,
 			"baseURL": "https://www.cloudflare.com"
 		}
 	}

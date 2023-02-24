@@ -4,18 +4,18 @@
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "Insights - How Blockchain Web 3.0",
+				"pageName": "theNET - How blockchain carries us to Web3 - Page",
 				"localeList": {
 					"enUS": "English for Locale",
-					"zhCN": "English for Locale",
-					"zhTW": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "Translated for Locale",
 					"frFR": "Translated for Locale",
 					"deDE": "Translated for Locale",
-					"itIT": "English for Locale",
+					"itIT": "Translated for Locale",
 					"jaJP": "Translated for Locale",
-					"koKR": "English for Locale",
-					"ptBR": "English for Locale",
-					"esES": "English for Locale",
+					"koKR": "Translated for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -27,48 +27,263 @@
 					"svSE": "No Page for Locale",
 					"viVN": "No Page for Locale",
 					"trTR": "No Page for Locale",
-					"zhHansCN": "English for Locale",
-					"plPL": null
+					"zhHansCN": "Translated for Locale",
+					"plPL": "No Page for Locale"
 				},
 				"relativePath": "learning/insights-how-blockchain-web3",
-				"topNavOptions": "default",
-				"topNavButtonText": "Get in touch",
-				"topNavButtonUrl": "/lp/overview-x/",
+				"topNavOptions": "custom",
+				"topNavButtonText": null,
+				"topNavButtonUrl": null,
 				"footerOptions": "default",
 				"metaTags": {
-					"metaTitle": "How Blockchain carries us to Web 3.0",
+					"metaTitle": "How blockchain carries us to Web3",
 					"metaDescription": "A new intelligent Internet capable of processing information with human-like intelligence",
-					"twitterCustomImage": {
-						"file": {
-							"publicURL": "[path]/Insights-BlockchainCarriesTo3.0-native_stock_1200x627_1.png"
-						}
-					},
+					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
 							"publicURL": "[path]/Insights-BlockchainCarriesTo3.0-native_stock_1200x627_1.png"
 						}
 					},
-					"facebookCustomImage": {
-						"file": {
-							"publicURL": "[path]/Insights-BlockchainCarriesTo3.0-native_stock_1200x627_1.png"
-						}
-					}
+					"facebookCustomImage": null
 				},
 				"contentfulId": "5d7rIN47zJVIfnWVc8XHU0",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
 				"psaBanner": null,
-				"customTopNav": null,
-				"headerLogo": null,
+				"customTopNav": [
+					{
+						"contentTypeId": "navNavigationGroup",
+						"contentfulId": "7vtXhMutS3hr5urm12KUGs",
+						"locale": "en-US",
+						"mainNav": {
+							"contentTypeId": "navNavigation",
+							"contentfulId": "43PdHIHIsgmVJp1nN48Njc",
+							"locale": "en-US",
+							"navigationType": "Header",
+							"isDefaultNav": false,
+							"backgroundColor": "white",
+							"sectionPadding": null,
+							"navigationItems": [
+								{
+									"contentTypeId": "navNavigationItem",
+									"contentfulId": "1ll1oUb6JdF7xzHFrL5BtI",
+									"locale": "en-US",
+									"name": "Home",
+									"description": null,
+									"navIcon": null,
+									"contentfulButton": null,
+									"showIconOnly": false,
+									"hideOnChinaSite": false,
+									"navigationItems": null,
+									"mainLink": {
+										"contentTypeId": "elementNavLink",
+										"contentfulId": "1CFvERWkgaLU62M1N1pxQD",
+										"locale": "en-US",
+										"title": "Home",
+										"description": null,
+										"url": "the-net",
+										"badges": null,
+										"specialLinkType": null,
+										"openInNewWindow": false,
+										"isExternalUrl": null
+									},
+									"navigationLinks": null
+								},
+								{
+									"contentTypeId": "navNavigationItem",
+									"contentfulId": "6GKXXIm70KXYwj2jnsBrR7",
+									"locale": "en-US",
+									"name": "Security Innovation",
+									"description": null,
+									"navIcon": null,
+									"contentfulButton": null,
+									"showIconOnly": false,
+									"hideOnChinaSite": false,
+									"navigationItems": null,
+									"mainLink": {
+										"contentTypeId": "elementNavLink",
+										"contentfulId": "2c0im4m95oZ8rlwS8ePtbO",
+										"locale": "en-US",
+										"title": "Security Innovation",
+										"description": null,
+										"url": "/the-net/security-innovation/",
+										"badges": null,
+										"specialLinkType": null,
+										"openInNewWindow": false,
+										"isExternalUrl": null
+									},
+									"navigationLinks": null
+								},
+								{
+									"contentTypeId": "navNavigationItem",
+									"contentfulId": "13DnpsI1G49Zk7wJbppRnd",
+									"locale": "en-US",
+									"name": "Threat Landscape",
+									"description": null,
+									"navIcon": null,
+									"contentfulButton": null,
+									"showIconOnly": false,
+									"hideOnChinaSite": false,
+									"navigationItems": null,
+									"mainLink": {
+										"contentTypeId": "elementNavLink",
+										"contentfulId": "18vMkNil63nAJw79ZSR4UJ",
+										"locale": "en-US",
+										"title": "Threat Landscape",
+										"description": null,
+										"url": "/the-net/threat-landscape/",
+										"badges": null,
+										"specialLinkType": null,
+										"openInNewWindow": false,
+										"isExternalUrl": null
+									},
+									"navigationLinks": null
+								},
+								{
+									"contentTypeId": "navNavigationItem",
+									"contentfulId": "RanCdjDWzy8KI9Ha33Qal",
+									"locale": "en-US",
+									"name": "Future Internet",
+									"description": null,
+									"navIcon": null,
+									"contentfulButton": null,
+									"showIconOnly": false,
+									"hideOnChinaSite": false,
+									"navigationItems": null,
+									"mainLink": {
+										"contentTypeId": "elementNavLink",
+										"contentfulId": "0xC7JehkyUdfAgWDStXHa",
+										"locale": "en-US",
+										"title": "Future Internet",
+										"description": null,
+										"url": "/the-net/future-internet",
+										"badges": null,
+										"specialLinkType": null,
+										"openInNewWindow": false,
+										"isExternalUrl": null
+									},
+									"navigationLinks": null
+								}
+							]
+						},
+						"utilityNav": {
+							"contentTypeId": "navNavigation",
+							"contentfulId": "52CjZzRgYo8tC0nwT23Fc",
+							"locale": "en-US",
+							"navigationType": "Custom Navigation",
+							"isDefaultNav": true,
+							"backgroundColor": null,
+							"sectionPadding": "default",
+							"navigationItems": [
+								{
+									"contentTypeId": "navNavigationItem",
+									"contentfulId": "5XqIIHouIN3SqoeS8eIQL8",
+									"locale": "en-US",
+									"name": "Support",
+									"description": null,
+									"navIcon": null,
+									"contentfulButton": null,
+									"showIconOnly": false,
+									"hideOnChinaSite": null,
+									"navigationItems": null,
+									"mainLink": null,
+									"navigationLinks": [
+										{
+											"contentTypeId": "elementNavLink",
+											"contentfulId": "39ahAfcnTcrePwvvA1l0MW",
+											"locale": "en-US",
+											"title": "Contact Support",
+											"description": null,
+											"url": "https://dash.cloudflare.com/?to=/:account/support",
+											"badges": null,
+											"specialLinkType": null,
+											"openInNewWindow": true,
+											"isExternalUrl": null
+										},
+										{
+											"contentTypeId": "elementNavLink",
+											"contentfulId": "7eEo2tTS8nkTUH01h4y5BN",
+											"locale": "en-US",
+											"title": "Help Center",
+											"description": null,
+											"url": "https://support.cloudflare.com/",
+											"badges": null,
+											"specialLinkType": null,
+											"openInNewWindow": true,
+											"isExternalUrl": null
+										},
+										{
+											"contentTypeId": "elementNavLink",
+											"contentfulId": "4qMTa5oo6WQknsTOzFsrQ",
+											"locale": "en-US",
+											"title": "Cloudflare Community",
+											"description": null,
+											"url": "https://community.cloudflare.com/",
+											"badges": null,
+											"specialLinkType": null,
+											"openInNewWindow": true,
+											"isExternalUrl": null
+										},
+										{
+											"contentTypeId": "elementNavLink",
+											"contentfulId": "52WmBFB2P512JhW6jzATzc",
+											"locale": "en-US",
+											"title": "Lost account access?",
+											"description": null,
+											"url": "https://support.cloudflare.com/hc/en-us/articles/203471284-Login-and-account-issues",
+											"badges": null,
+											"specialLinkType": null,
+											"openInNewWindow": false,
+											"isExternalUrl": null
+										}
+									]
+								}
+							]
+						},
+						"rightNav": {
+							"contentTypeId": "navNavigation",
+							"contentfulId": "2lJyDCIXKA3ggOeKrNSCMQ",
+							"locale": "en-US",
+							"navigationType": "Footer",
+							"isDefaultNav": false,
+							"backgroundColor": null,
+							"sectionPadding": "default",
+							"navigationItems": [
+								{
+									"contentTypeId": "navNavigationItem",
+									"contentfulId": "2yvvSmtqM5YECHou5SqrhX",
+									"locale": "en-US",
+									"name": " ",
+									"description": null,
+									"navIcon": null,
+									"contentfulButton": null,
+									"showIconOnly": false,
+									"hideOnChinaSite": null,
+									"navigationItems": null,
+									"mainLink": null,
+									"navigationLinks": null
+								}
+							]
+						},
+						"experimentId": null,
+						"variant": null
+					}
+				],
+				"headerLogo": {
+					"file": {
+						"publicURL": "[path]/theNET_Cloudflare_Logo.png"
+					}
+				},
 				"proactivePopup": {
 					"contentTypeId": "proactivePopup",
 					"contentfulId": "1CsLKj1fesYJdTYADz0tWP",
 					"headerText": "Subscribe to Trending Stories",
 					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
+					"hasMarketoForm": true,
 					"marketoForm": {
 						"contentTypeId": "marketoEmbeddedForm",
 						"contentfulId": "55VRCxLgGVxT4XfkaKSPQ7",
-						"bladeName": "Trending Stories - Form: Proactive Pop-up - Subscribe",
+						"bladeName": "TheNET - Trending Stories - Form: Proactive Pop-up - Subscribe",
 						"backgroundColor": "white",
 						"marketoFormId": 2459,
 						"marketoFormLeadSource": "Inbound - Blog Subscriber",
@@ -91,16 +306,23 @@
 						"disableEnterpriseEmailNotification": null,
 						"enableRingout": null
 					},
-					"timeDelay": 30000
+					"timeDelay": 30000,
+					"ctaButton": null
 				},
 				"template": null,
 				"relatedBlades": [
+					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "3PfSgR6RxFckxj30JU8UNT",
+						"htmlContent": "<div style=\"background-image: url('https://cf-assets.www.cloudflare.com/slt3lc6tev37/7zJugm2NKzRQIcUaiFPmrM/e986db09336aaa7846d56c5c201efc4a/BDES-4015_theNET_Website_TopBanner1440x176_v1.jpg'); width: 1440px; height: 168px; background-repeat:no-repeat; border: none;\"></div>",
+						"htmlId": "theNET - Banner"
+					},
 					{
 						"contentTypeId": "bladeRichTextColumnGroup",
 						"contentfulId": "4JWZkKv60VA1gJI3Ej8GRQ",
 						"htmlId": null,
 						"mainHeadline": null,
-						"backgroundColor": "white",
+						"backgroundColor": "light-blue",
 						"bladeBorder": "none",
 						"sectionPadding": "tile--no-bottom-padding",
 						"columnLayout": "Two Thirds & One Third",
@@ -127,7 +349,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "How Blockchain carries us into Web 3.0",
+													"value": "How blockchain carries us into Web3",
 													"marks": [
 														{
 															"type": "bold"
@@ -150,7 +372,7 @@
 														{
 															"contentfulId": "7EJ81jq3IKg9RG3RFXN9Sa",
 															"locale": "en-US",
-															"title": "Insights - How Blockchain 3.0 - Asset",
+															"title": "theNET - How blockchain carries us into Web3 - Meta - Image",
 															"file": {
 																"name": "Insights-BlockchainCarriesTo3.0-native_stock_1200x627_1",
 																"publicURL": "[path]/Insights-BlockchainCarriesTo3.0-native_stock_1200x627_1.png",
@@ -298,6 +520,27 @@
 											"value": null,
 											"marks": null,
 											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
 										},
 										{
 											"nodeType": "heading-3",
@@ -656,7 +899,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Again, these challenges are not reasons to abandon the cloud. But they may explain a recent, fascinating trend — the conception, and slow emergence, of a model for a decentralized Internet, driven by technologies like the blockchain. This model is often referred to as \"Web 3.0\"",
+													"value": "Again, these challenges are not reasons to abandon the cloud. But they may explain a recent, fascinating trend — the conception, and slow emergence, of a model for a decentralized Internet, driven by technologies like the blockchain. This model is often referred to as \"Web3\".",
 													"marks": [],
 													"content": null
 												}
@@ -673,6 +916,27 @@
 											"content": []
 										},
 										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
 											"nodeType": "heading-3",
 											"data": {
 												"target": null,
@@ -687,7 +951,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Web 3.0: What and how?",
+													"value": "Web3: What and how?",
 													"marks": [
 														{
 															"type": "bold"
@@ -712,7 +976,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Web 3.0 is expected to more closely align with the original vision of one of the Internet's architects, ",
+													"value": "Web3 is expected to more closely align with the original vision of one of the Internet's architects, ",
 													"marks": [],
 													"content": null
 												},
@@ -747,7 +1011,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": ", who envisioned a distributed network with no central authorities or single point of failure. Originally called the \"Semantic Web\", Web 3.0 will be an intelligent Internet that understands everything a user conveys in both content and context, processing information with human-like intelligence. This will be achieved through the interconnection and decentralization of data across networks that operate through decentralized protocols.",
+													"value": ", who envisioned a distributed network with no central authorities or single point of failure. Originally called the \"Semantic Web\", Web3 will be an intelligent Internet that understands everything a user conveys in both content and context, processing information with human-like intelligence. This will be achieved through the interconnection and decentralization of data across networks that operate through decentralized protocols.",
 													"marks": [],
 													"content": null
 												}
@@ -789,7 +1053,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Blockchain in particular is presumed to be one of the most pivotal technologies necessary for the infrastructure of Web 3.0. Blockchain emerged in 2009 with the creation of Bitcoin. Bitcoin was created by ",
+													"value": "Blockchain in particular is presumed to be one of the most pivotal technologies necessary for the infrastructure of Web3. Blockchain emerged in 2009 with the creation of Bitcoin. Bitcoin was created by ",
 													"marks": [],
 													"content": null
 												},
@@ -880,7 +1144,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "While Bitcoin was the originator of blockchain technology, it is but one of many blockchains that stand to disrupt nearly every vertical and industry, offering the range of impactful applications described by Forbes. The most prominent blockchain after Bitcoin, and the one most likely to further the advancement of Web 3.0, is ",
+													"value": "While Bitcoin was the originator of blockchain technology, it is but one of many blockchains that stand to disrupt nearly every vertical and industry, offering the range of impactful applications described by Forbes. The most prominent blockchain after Bitcoin, and the one most likely to further the advancement of Web3, is ",
 													"marks": [],
 													"content": null
 												},
@@ -1121,7 +1385,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " to serve as the infrastructure of a decentralized Internet. With the likes of Ethereum driving the onset of Web 3.0, the world could see a new, intelligent Internet that builds upon the trends of Web 2.0 but is powered by blockchain and InterPlanetary File System (IPFS) technology. This will result in an online experience that is infinitely more powerful and tailored to the user and will revolutionize the interconnection of the Internet, applications, and the physical world. Through this, there will be huge improvements in terms of privacy and security thanks to the decentralization of data and ",
+													"value": " to serve as the infrastructure of a decentralized Internet. With the likes of Ethereum driving the onset of Web3, the world could see a new, intelligent Internet that builds upon the trends of Web 2.0 but is powered by blockchain and InterPlanetary File System (IPFS) technology. This will result in an online experience that is infinitely more powerful and tailored to the user and will revolutionize the interconnection of the Internet, applications, and the physical world. Through this, there will be huge improvements in terms of privacy and security thanks to the decentralization of data and ",
 													"marks": [],
 													"content": null
 												},
@@ -1173,6 +1437,27 @@
 											"content": []
 										},
 										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
 											"nodeType": "heading-3",
 											"data": {
 												"target": null,
@@ -1187,7 +1472,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Challenges to Web 3.0",
+													"value": "Challenges to Web3",
 													"marks": [
 														{
 															"type": "bold"
@@ -1212,7 +1497,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "While Web 3.0 promises to radically change the Internet and its ability to provide value to users around the world, key hurdles must be overcome before it can be adopted en masse. Today, there are several issues with decentralized networks that are impeding the rise of Web 3.0, ",
+													"value": "While Web3 promises to radically change the Internet and its ability to provide value to users around the world, key hurdles must be overcome before it can be adopted en masse. Today, there are several issues with decentralized networks that are impeding the rise of Web3, ",
 													"marks": [],
 													"content": null
 												},
@@ -1411,6 +1696,27 @@
 											"content": []
 										},
 										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
 											"nodeType": "heading-3",
 											"data": {
 												"target": null,
@@ -1425,7 +1731,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "The benefits of Web 3.0",
+													"value": "The benefits of Web3",
 													"marks": [
 														{
 															"type": "bold"
@@ -1450,7 +1756,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Once the challenges that currently stand in the way of Web 3.0 are solved, it will provide impactful solutions to some of the Internet's most persistent problems. For example, while the centralized apps of today can experience downtime for any number of reasons, DApps and Web 3.0 servers promise to be more resilient with a much-reduced risk of downtime as they will be run on Ethereum's decentralized network of tens of thousands of computers. And with greater adoption and increasing network effects, the reliability of the Web 3.0 Internet will continue to improve. ",
+													"value": "Once the challenges that currently stand in the way of Web3 are solved, it will provide impactful solutions to some of the Internet's most persistent problems. For example, while the centralized apps of today can experience downtime for any number of reasons, DApps and Web3 servers promise to be more resilient with a much-reduced risk of downtime as they will be run on Ethereum's decentralized network of tens of thousands of computers. And with greater adoption and increasing network effects, the reliability of the Web3 Internet will continue to improve. ",
 													"marks": [],
 													"content": null
 												}
@@ -1471,7 +1777,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Similarly, Web 3.0 will eradicate the ",
+													"value": "Similarly, Web3 will eradicate the ",
 													"marks": [],
 													"content": null
 												},
@@ -1523,6 +1829,27 @@
 											"content": []
 										},
 										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
 											"nodeType": "heading-3",
 											"data": {
 												"target": null,
@@ -1562,7 +1889,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "While the issues of latency, scale, and reliability are still challenges in the transition to Web 3.0, ",
+													"value": "While the issues of latency, scale, and reliability are still challenges in the transition to Web3, ",
 													"marks": [],
 													"content": null
 												},
@@ -1597,7 +1924,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " will help address these problems and spark greater adoption of DApps and the decentralized web. As adoption rises, the network effect will continue to amplify the benefits of Web 3.0, driving further adoption in turn.",
+													"value": " will help address these problems and spark greater adoption of DApps and the decentralized web. As adoption rises, the network effect will continue to amplify the benefits of Web3, driving further adoption in turn.",
 													"marks": [],
 													"content": null
 												}
@@ -1618,7 +1945,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Currently, interacting with the Ethereum Network is difficult and requires running complex software, including downloading and cryptographically verifying massive amounts of data, which creates technical barriers and can preclude those with low-power devices. As Web 3.0 gains further adoption, Cloudflare will continue to help lower the accessibility barriers of users who want to participate.",
+													"value": "Currently, interacting with the Ethereum Network is difficult and requires running complex software, including downloading and cryptographically verifying massive amounts of data, which creates technical barriers and can preclude those with low-power devices. As Web3 gains further adoption, Cloudflare will continue to help lower the accessibility barriers of users who want to participate.",
 													"marks": [],
 													"content": null
 												}
@@ -1723,6 +2050,9 @@
 													"marks": [
 														{
 															"type": "italic"
+														},
+														{
+															"type": "bold"
 														}
 													],
 													"content": null
@@ -1740,7 +2070,38 @@
 									"nodeType": "document",
 									"content": [
 										{
-											"nodeType": "heading-4",
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-5",
 											"data": {
 												"target": null,
 												"uri": null
@@ -1814,7 +2175,31 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "Ways in which the modern Internet remains relatively centralized",
+																	"value": "Ways in which ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "the modern Internet",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " remains relatively centralized",
 																	"marks": [],
 																	"content": null
 																}
@@ -1846,7 +2231,31 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "What a decentralized Internet might look like",
+																	"value": "What a ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "decentralized Internet",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " might look like",
 																	"marks": [],
 																	"content": null
 																}
@@ -1878,7 +2287,31 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "The blockchain's role in a decentralized Internet",
+																	"value": "The ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "blockchain's role",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " in a decentralized Internet",
 																	"marks": [],
 																	"content": null
 																}
@@ -1910,8 +2343,22 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "How to interact with the Ethereum network",
+																	"value": "How to interact with the ",
 																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Ethereum network",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
 																	"content": null
 																}
 															]
@@ -1919,6 +2366,16 @@
 													]
 												}
 											]
+										},
+										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
 										},
 										{
 											"nodeType": "paragraph",
@@ -1942,7 +2399,7 @@
 											]
 										},
 										{
-											"nodeType": "heading-6",
+											"nodeType": "heading-5",
 											"data": {
 												"target": null,
 												"uri": null
@@ -1956,7 +2413,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "RELATED RESOURCES",
+													"value": "Related resources",
 													"marks": [
 														{
 															"type": "bold"
@@ -1965,16 +2422,6 @@
 													"content": null
 												}
 											]
-										},
-										{
-											"nodeType": "hr",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": []
 										},
 										{
 											"nodeType": "unordered-list",
@@ -2169,72 +2616,41 @@
 																	"value": "",
 																	"marks": [],
 																	"content": null
-																},
-																{
-																	"nodeType": "hyperlink",
-																	"data": {
-																		"target": null,
-																		"uri": "cloudflare.com"
-																	},
-																	"value": null,
-																	"marks": null,
-																	"content": [
-																		{
-																			"nodeType": "text",
-																			"data": {
-																				"target": null,
-																				"uri": null
-																			},
-																			"value": "",
-																			"marks": [],
-																			"content": null
-																		}
-																	]
-																},
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "",
-																	"marks": [],
-																	"content": null
-																},
-																{
-																	"nodeType": "hyperlink",
-																	"data": {
-																		"target": null,
-																		"uri": "cloudflare.com"
-																	},
-																	"value": null,
-																	"marks": null,
-																	"content": [
-																		{
-																			"nodeType": "text",
-																			"data": {
-																				"target": null,
-																				"uri": null
-																			},
-																			"value": "",
-																			"marks": [],
-																			"content": null
-																		}
-																	]
-																},
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "",
-																	"marks": [],
-																	"content": null
 																}
 															]
 														}
 													]
+												}
+											]
+										},
+										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
 												}
 											]
 										},
@@ -2271,7 +2687,7 @@
 						"mainHeadline": null,
 						"backgroundColor": "light-blue",
 						"bladeBorder": "none",
-						"sectionPadding": null,
+						"sectionPadding": "tile--no-top-padding",
 						"columnLayout": "Two Thirds & One Third",
 						"columns": [
 							{
@@ -2281,6 +2697,37 @@
 								"column": {
 									"nodeType": "document",
 									"content": [
+										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
 										{
 											"nodeType": "heading-2",
 											"data": {
@@ -2317,38 +2764,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Learn more about ",
-													"marks": [],
-													"content": null
-												},
-												{
-													"nodeType": "hyperlink",
-													"data": {
-														"target": null,
-														"uri": "https://www.cloudflare.com/distributed-web-gateway/#ethereum-gateway"
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "text",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": "",
-															"marks": [],
-															"content": null
-														}
-													]
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Cloudflare's Ethereum and IPFS Gateways by exploring our ",
+													"value": "Learn more about Cloudflare's Ethereum and IPFS Gateways by exploring our ",
 													"marks": [],
 													"content": null
 												},
@@ -2405,7 +2821,7 @@
 															"buttonTextLoggedIn": null,
 															"contentTypeId": "button",
 															"contentfulId": "2R6LIxb4HZuAsHEVzWsPaf",
-															"elementName": "Insights - How Blockchain 3.0 - Dive Deeper - left - button",
+															"elementName": "theNET - How blockchain carries us into Web3 - Dive Deeper - Button",
 															"standardText": null,
 															"text": "Explore the widget",
 															"url": "https://www.cloudflare.com/distributed-web-gateway/#ethereum-gateway",
@@ -2479,10 +2895,10 @@
 						"contentTypeId": "bladeEnablement",
 						"contentfulId": "6a0AK8klnguk8T7mRLYvRt",
 						"buttonExtraClass": null,
-						"buttonColor": "orange",
+						"buttonColor": "blue",
 						"buttonColor2": "orange",
 						"title": "Receive a monthly recap of the most popular Internet insights!",
-						"backgroundColor": "blue",
+						"backgroundColor": "image-background",
 						"buttonText": null,
 						"buttonUrl": null,
 						"buttonText2": null,
@@ -2490,12 +2906,12 @@
 						"buttonUrl2": null,
 						"bladeSizeType": "small",
 						"htmlId": null,
-						"textColor": "white",
+						"textColor": "black",
 						"bladeBorder": "none",
 						"buttonOne": {
 							"buttonAssetFile": null,
 							"buttonWidth": "auto",
-							"buttonColor": "orange",
+							"buttonColor": "blue",
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
 							"contentfulId": "42YK7xPyI7ogEbiDthlJRL",
@@ -2568,10 +2984,18 @@
 			"contentfulId": "5d7rIN47zJVIfnWVc8XHU0",
 			"allowedHrefLangs": [
 				"en-US",
+				"zh-CN",
+				"zh-TW",
 				"fr-FR",
 				"de-DE",
-				"ja-JP"
+				"it-IT",
+				"ja-JP",
+				"ko-KR",
+				"pt-BR",
+				"es-ES",
+				"zh-Hans-CN"
 			],
+			"hasPsaBanner": false,
 			"baseURL": "https://www.cloudflare.com"
 		}
 	}

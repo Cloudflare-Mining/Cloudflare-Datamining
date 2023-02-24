@@ -112,7 +112,7 @@
 					{
 						"contentfulId": "6oe3nI1sMAecv79b11EC6J",
 						"title": "Preemptively block phishing attacks",
-						"copy": "- Uncover new tactics used by malicious actors to block phishing in real-time, versus waiting days or weeks for signature updates.\n- Neutralize multi-channel phishing attacks that span email and web delivery, by turning on Area 1's integration with [Cloudflare Browser Isolation](https://www.cloudflare.com/products/zero-trust/browser-isolation/).\n- Accurately detect and contain low-volume targeted phish without requiring large attack sample volumes.\n- Get visibility into compromised accounts and domains, as well as new, lookalike, and proximity domains impersonating your brand.\n",
+						"copy": "- Neutralize suspicious/unknown web links and multichannel phishing attacks, by turning on the Area 1 integration with [Cloudflare Browser Isolation](https://www.cloudflare.com/products/zero-trust/browser-isolation/).\n- Uncover new tactics used by malicious actors to block phishing in real-time, versus waiting days or weeks for signature updates.\n- Accurately detect and contain low-volume targeted phish without requiring large attack sample volumes.\n- Get visibility into compromised accounts and domains, as well as new, lookalike, and proximity domains impersonating your brand.\n",
 						"toggleText": null,
 						"button": null,
 						"learnMoreUrl": null,
@@ -138,7 +138,20 @@
 								"publicURL": "[path]/Preemptive_Option_-10__1_.png"
 							}
 						},
-						"imageAssetFile": null,
+						"imageAssetFile": {
+							"id": "0546d018-adfc-592d-9c9f-dec75d627d23",
+							"altText": "Email Link Isolation from Cloudflare Area 1 stops multichannel phishing attacks that exploit email and web browser links. Cloud email security plus Cloudflare remote browser isolation.",
+							"title": null,
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "[path]/Email_Link_Isolation_1x_-_449x255__1_.png"
+								}
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
 						"featureList": null,
 						"contentTypeId": "bladeImageText",
 						"sectionTitle": "KEY USE CASE",
@@ -324,6 +337,7 @@
 			"allowedHrefLangs": [
 				"en-US"
 			],
+			"hasPsaBanner": false,
 			"baseURL": "https://www.cloudflare.com"
 		}
 	}

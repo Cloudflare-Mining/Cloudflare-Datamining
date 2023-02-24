@@ -4,18 +4,18 @@
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "Brand TL - Mitigating the risk of malicious insiders in the hybrid era",
+				"pageName": "theNET - Mitigating the risk of malicious insiders - Page",
 				"localeList": {
 					"enUS": "English for Locale",
-					"zhCN": "English for Locale",
-					"zhTW": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "Translated for Locale",
 					"frFR": "Translated for Locale",
 					"deDE": "Translated for Locale",
-					"itIT": "English for Locale",
+					"itIT": "Translated for Locale",
 					"jaJP": "Translated for Locale",
-					"koKR": "English for Locale",
-					"ptBR": "English for Locale",
-					"esES": "English for Locale",
+					"koKR": "Translated for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -27,7 +27,7 @@
 					"svSE": "No Page for Locale",
 					"viVN": "No Page for Locale",
 					"trTR": "No Page for Locale",
-					"zhHansCN": "English for Locale",
+					"zhHansCN": "Translated for Locale",
 					"plPL": "No Page for Locale"
 				},
 				"relativePath": "learning/insights-malicious-insiders",
@@ -36,7 +36,7 @@
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
 				"metaTags": {
-					"metaTitle": "Mitigating the risk of malicious insiders in the hybrid era",
+					"metaTitle": "Mitigating the risk of malicious insiders",
 					"metaDescription": "Malicious insiders use advanced techniques to exfiltrate data. Malicious insiders cost companies $648K on average. Learn the contributing factors and 6 ways to reduce the risk with immediate safeguards.",
 					"twitterCustomImage": null,
 					"metaImage": {
@@ -57,10 +57,11 @@
 					"contentfulId": "1CsLKj1fesYJdTYADz0tWP",
 					"headerText": "Subscribe to Trending Stories",
 					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
+					"hasMarketoForm": true,
 					"marketoForm": {
 						"contentTypeId": "marketoEmbeddedForm",
 						"contentfulId": "55VRCxLgGVxT4XfkaKSPQ7",
-						"bladeName": "Trending Stories - Form: Proactive Pop-up - Subscribe",
+						"bladeName": "TheNET - Trending Stories - Form: Proactive Pop-up - Subscribe",
 						"backgroundColor": "white",
 						"marketoFormId": 2459,
 						"marketoFormLeadSource": "Inbound - Blog Subscriber",
@@ -83,7 +84,8 @@
 						"disableEnterpriseEmailNotification": null,
 						"enableRingout": null
 					},
-					"timeDelay": 30000
+					"timeDelay": 30000,
+					"ctaButton": null
 				},
 				"template": null,
 				"relatedBlades": [
@@ -125,7 +127,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Mitigating the risk of malicious insiders in the hybrid era\n",
+													"value": "Mitigating the risk of malicious insiders\n",
 													"marks": [
 														{
 															"type": "bold"
@@ -148,7 +150,7 @@
 														{
 															"contentfulId": "4QQCuAGqEJJKYZIfTe04Bh",
 															"locale": "en-US",
-															"title": "Mitigating risk in the hybrid era Image",
+															"title": "theNET - Mitigating the risk of malicious insiders - Image",
 															"file": {
 																"name": "BDES-3396_Native_stock-1200_x_627-Assets_for_Article_Mitigating_risk_in_the_hybrid_era_A",
 																"publicURL": "[path]/BDES-3396_Native_stock-1200_x_627-Assets_for_Article_Mitigating_risk_in_the_hybrid_era_A.png",
@@ -2061,7 +2063,31 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "How remote work makes spotting insider threats more challenging",
+																	"value": "How remote work makes ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "spotting insider threats",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " more challenging",
 																	"marks": [],
 																	"content": null
 																}
@@ -2093,7 +2119,31 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "Contributing factors that make it easier for malicious insiders to act",
+																	"value": "Contributing factors that make it ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "easier for malicious insiders",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " to act",
 																	"marks": [],
 																	"content": null
 																}
@@ -2125,8 +2175,22 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "Advanced techniques that insiders are using to exfiltrate data",
+																	"value": "Advanced techniques that insiders are using to ",
 																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "exfiltrate data",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
 																	"content": null
 																}
 															]
@@ -2157,7 +2221,31 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "How Zero Trust security can prevent lateral movement",
+																	"value": "How ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Zero Trust security",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " can prevent lateral movement",
 																	"marks": [],
 																	"content": null
 																}
@@ -2293,11 +2381,7 @@
 																				"uri": null
 																			},
 																			"value": "7 ways to work from anywhere",
-																			"marks": [
-																				{
-																					"type": "underline"
-																				}
-																			],
+																			"marks": [],
 																			"content": null
 																		}
 																	]
@@ -2360,11 +2444,7 @@
 																				"uri": null
 																			},
 																			"value": "The rise of Zero Trust Network Access",
-																			"marks": [
-																				{
-																					"type": "underline"
-																				}
-																			],
+																			"marks": [],
 																			"content": null
 																		}
 																	]
@@ -2427,11 +2507,7 @@
 																				"uri": null
 																			},
 																			"value": "Extending Zero Trust to the Internet browser",
-																			"marks": [
-																				{
-																					"type": "underline"
-																				}
-																			],
+																			"marks": [],
 																			"content": null
 																		}
 																	]
@@ -2494,11 +2570,7 @@
 																				"uri": null
 																			},
 																			"value": "The future of networking",
-																			"marks": [
-																				{
-																					"type": "underline"
-																				}
-																			],
+																			"marks": [],
 																			"content": null
 																		}
 																	]
@@ -2608,7 +2680,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Dive deeper into this topic",
+													"value": "Dive deeper into this topic.",
 													"marks": [
 														{
 															"type": "bold"
@@ -2743,10 +2815,10 @@
 						"contentTypeId": "bladeEnablement",
 						"contentfulId": "6a0AK8klnguk8T7mRLYvRt",
 						"buttonExtraClass": null,
-						"buttonColor": "orange",
+						"buttonColor": "blue",
 						"buttonColor2": "orange",
 						"title": "Receive a monthly recap of the most popular Internet insights!",
-						"backgroundColor": "blue",
+						"backgroundColor": "image-background",
 						"buttonText": null,
 						"buttonUrl": null,
 						"buttonText2": null,
@@ -2754,12 +2826,12 @@
 						"buttonUrl2": null,
 						"bladeSizeType": "small",
 						"htmlId": null,
-						"textColor": "white",
+						"textColor": "black",
 						"bladeBorder": "none",
 						"buttonOne": {
 							"buttonAssetFile": null,
 							"buttonWidth": "auto",
-							"buttonColor": "orange",
+							"buttonColor": "blue",
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
 							"contentfulId": "42YK7xPyI7ogEbiDthlJRL",
@@ -2832,10 +2904,18 @@
 			"contentfulId": "19jasJ94lr2d7LAZH4wGE0",
 			"allowedHrefLangs": [
 				"en-US",
+				"zh-CN",
+				"zh-TW",
 				"fr-FR",
 				"de-DE",
-				"ja-JP"
+				"it-IT",
+				"ja-JP",
+				"ko-KR",
+				"pt-BR",
+				"es-ES",
+				"zh-Hans-CN"
 			],
+			"hasPsaBanner": false,
 			"baseURL": "https://www.cloudflare.com"
 		}
 	}
