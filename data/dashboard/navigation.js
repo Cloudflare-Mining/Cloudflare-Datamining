@@ -113,7 +113,7 @@ const navigation = {
 			url: "/logs",
 			labels: ["new"],
 			hasPermission: function(h) {
-				return i(h) && (0, S.S6)(h) && !!(0, n.z1)("account-logpush")(h)
+				return i(h) && (0, _.S6)(h) && !!(0, n.z1)("account-logpush")(h)
 			}
 		}, {
 			title: "navigation.account.carbon",
@@ -145,6 +145,13 @@ const navigation = {
 		}, {
 			title: "navigation.account.security_center.security_analytics",
 			url: "/security-center/analytics",
+			labels: ["beta"],
+			hasPermission: function(h) {
+				return i(h) && (0, E.sL)(h) && !!(0, n.z1)("account-level-security-analytics")(h)
+			}
+		}, {
+			title: "navigation.account.security_center.security_events",
+			url: "/security-center/events",
 			labels: ["beta"],
 			hasPermission: function(h) {
 				return i(h) && (0, E.sL)(h) && !!(0, n.z1)("account-level-security-analytics")(h)
@@ -574,7 +581,7 @@ const navigation = {
 			url: "/analytics/logs",
 			canBeVersioned: !1,
 			hasPermission: function(h) {
-				return Object.values((0, S.H_)(h)).some(Boolean)
+				return Object.values((0, _.H_)(h)).some(Boolean)
 			}
 		}, {
 			title: "navigation.zone.analytics.instant_logs",
