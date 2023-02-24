@@ -548,6 +548,139 @@
 		"length": "number",
 		"name": "string"
 	},
+	"Intl": {
+		"Collator": {
+			"__proto": "function",
+			"__type": "function",
+			"_prototype": {
+				"length": "undefined",
+				"name": "undefined",
+				"prototype": "undefined",
+				"supportedLocalesOf": "undefined"
+			},
+			"length": "number",
+			"name": "string",
+			"supportedLocalesOf": "function"
+		},
+		"DateTimeFormat": {
+			"__proto": "function",
+			"__type": "function",
+			"_prototype": {
+				"length": "undefined",
+				"name": "undefined",
+				"prototype": "undefined",
+				"supportedLocalesOf": "undefined"
+			},
+			"length": "number",
+			"name": "string",
+			"supportedLocalesOf": "function"
+		},
+		"DisplayNames": {
+			"__proto": "function",
+			"__type": "function",
+			"_prototype": {},
+			"length": "number",
+			"name": "string",
+			"supportedLocalesOf": "function"
+		},
+		"ListFormat": {
+			"__proto": "function",
+			"__type": "function",
+			"_prototype": {
+				"length": "undefined",
+				"name": "undefined",
+				"prototype": "undefined",
+				"supportedLocalesOf": "undefined"
+			},
+			"length": "number",
+			"name": "string",
+			"supportedLocalesOf": "function"
+		},
+		"Locale": {
+			"__proto": "function",
+			"__type": "function",
+			"_prototype": {},
+			"length": "number",
+			"name": "string"
+		},
+		"NumberFormat": {
+			"__proto": "function",
+			"__type": "function",
+			"_prototype": {
+				"length": "undefined",
+				"name": "undefined",
+				"prototype": "undefined",
+				"supportedLocalesOf": "undefined"
+			},
+			"length": "number",
+			"name": "string",
+			"supportedLocalesOf": "function"
+		},
+		"PluralRules": {
+			"__proto": "function",
+			"__type": "function",
+			"_prototype": {
+				"length": "undefined",
+				"name": "undefined",
+				"prototype": "undefined",
+				"supportedLocalesOf": "undefined"
+			},
+			"length": "number",
+			"name": "string",
+			"supportedLocalesOf": "function"
+		},
+		"RelativeTimeFormat": {
+			"__proto": "function",
+			"__type": "function",
+			"_prototype": {
+				"length": "undefined",
+				"name": "undefined",
+				"prototype": "undefined",
+				"supportedLocalesOf": "undefined"
+			},
+			"length": "number",
+			"name": "string",
+			"supportedLocalesOf": "function"
+		},
+		"Segmenter": {
+			"__proto": "function",
+			"__type": "function",
+			"_prototype": {
+				"length": "undefined",
+				"name": "undefined",
+				"prototype": "undefined",
+				"supportedLocalesOf": "undefined"
+			},
+			"length": "number",
+			"name": "string",
+			"supportedLocalesOf": "function"
+		},
+		"getCanonicalLocales": {
+			"__proto": "function",
+			"__type": "function",
+			"length": "number",
+			"name": "string"
+		},
+		"supportedValuesOf": {
+			"__proto": "function",
+			"__type": "function",
+			"length": "number",
+			"name": "string"
+		},
+		"v8BreakIterator": {
+			"__proto": "function",
+			"__type": "function",
+			"_prototype": {
+				"length": "undefined",
+				"name": "undefined",
+				"prototype": "undefined",
+				"supportedLocalesOf": "undefined"
+			},
+			"length": "number",
+			"name": "string",
+			"supportedLocalesOf": "function"
+		}
+	},
 	"MessageEvent": {
 		"__proto": "function",
 		"__type": "function",
@@ -1265,6 +1398,151 @@
 		"length": "number",
 		"name": "string"
 	},
+	"console": {
+		"assert": {
+			"__proto": "function",
+			"__type": "function",
+			"length": "number",
+			"name": "string"
+		},
+		"clear": {
+			"__proto": "function",
+			"__type": "function",
+			"length": "number",
+			"name": "string"
+		},
+		"context": {
+			"__proto": "function",
+			"__type": "function",
+			"length": "number",
+			"name": "string"
+		},
+		"count": {
+			"__proto": "function",
+			"__type": "function",
+			"length": "number",
+			"name": "string"
+		},
+		"countReset": {
+			"__proto": "function",
+			"__type": "function",
+			"length": "number",
+			"name": "string"
+		},
+		"debug": {
+			"__proto": "function",
+			"__type": "function",
+			"_prototype": {},
+			"length": "number",
+			"name": "string"
+		},
+		"dir": {
+			"__proto": "function",
+			"__type": "function",
+			"length": "number",
+			"name": "string"
+		},
+		"dirxml": {
+			"__proto": "function",
+			"__type": "function",
+			"length": "number",
+			"name": "string"
+		},
+		"error": {
+			"__proto": "function",
+			"__type": "function",
+			"_prototype": {},
+			"length": "number",
+			"name": "string"
+		},
+		"group": {
+			"__proto": "function",
+			"__type": "function",
+			"length": "number",
+			"name": "string"
+		},
+		"groupCollapsed": {
+			"__proto": "function",
+			"__type": "function",
+			"length": "number",
+			"name": "string"
+		},
+		"groupEnd": {
+			"__proto": "function",
+			"__type": "function",
+			"length": "number",
+			"name": "string"
+		},
+		"info": {
+			"__proto": "function",
+			"__type": "function",
+			"_prototype": {},
+			"length": "number",
+			"name": "string"
+		},
+		"log": {
+			"__proto": "function",
+			"__type": "function",
+			"_prototype": {},
+			"length": "number",
+			"name": "string"
+		},
+		"profile": {
+			"__proto": "function",
+			"__type": "function",
+			"length": "number",
+			"name": "string"
+		},
+		"profileEnd": {
+			"__proto": "function",
+			"__type": "function",
+			"length": "number",
+			"name": "string"
+		},
+		"table": {
+			"__proto": "function",
+			"__type": "function",
+			"length": "number",
+			"name": "string"
+		},
+		"time": {
+			"__proto": "function",
+			"__type": "function",
+			"length": "number",
+			"name": "string"
+		},
+		"timeEnd": {
+			"__proto": "function",
+			"__type": "function",
+			"length": "number",
+			"name": "string"
+		},
+		"timeLog": {
+			"__proto": "function",
+			"__type": "function",
+			"length": "number",
+			"name": "string"
+		},
+		"timeStamp": {
+			"__proto": "function",
+			"__type": "function",
+			"length": "number",
+			"name": "string"
+		},
+		"trace": {
+			"__proto": "function",
+			"__type": "function",
+			"length": "number",
+			"name": "string"
+		},
+		"warn": {
+			"__proto": "function",
+			"__type": "function",
+			"_prototype": {},
+			"length": "number",
+			"name": "string"
+		}
+	},
 	"crypto": {
 		"DigestStream": {
 			"__proto": "function",
@@ -1664,5 +1942,208 @@
 				"name": "string"
 			}
 		}
-	}
+	},
+	"_keys": [
+		"AbortController",
+		"AbortSignal",
+		"AggregateError",
+		"Array",
+		"ArrayBuffer",
+		"Atomics",
+		"BigInt",
+		"BigInt64Array",
+		"BigUint64Array",
+		"Blob",
+		"Body",
+		"Boolean",
+		"ByteLengthQueuingStrategy",
+		"Cache",
+		"CacheStorage",
+		"CloseEvent",
+		"CompressionStream",
+		"CountQueuingStrategy",
+		"Crypto",
+		"CryptoKey",
+		"DOMException",
+		"DataView",
+		"Date",
+		"DecompressionStream",
+		"Error",
+		"EvalError",
+		"Event",
+		"EventTarget",
+		"ExtendableEvent",
+		"FetchEvent",
+		"File",
+		"FixedLengthStream",
+		"Float32Array",
+		"Float64Array",
+		"FormData",
+		"Function",
+		"HTMLRewriter",
+		"Headers",
+		"IdentityTransformStream",
+		"Infinity",
+		"Int16Array",
+		"Int32Array",
+		"Int8Array",
+		"Intl",
+		"JSON",
+		"Map",
+		"Math",
+		"MessageEvent",
+		"NaN",
+		"Navigator",
+		"Number",
+		"Object",
+		"Promise",
+		"PromiseRejectionEvent",
+		"Proxy",
+		"RangeError",
+		"ReadableByteStreamController",
+		"ReadableStream",
+		"ReadableStreamBYOBReader",
+		"ReadableStreamBYOBRequest",
+		"ReadableStreamDefaultController",
+		"ReadableStreamDefaultReader",
+		"ReferenceError",
+		"Reflect",
+		"RegExp",
+		"Request",
+		"Response",
+		"ScheduledEvent",
+		"ServiceWorkerGlobalScope",
+		"Set",
+		"SharedArrayBuffer",
+		"String",
+		"SubtleCrypto",
+		"Symbol",
+		"SyntaxError",
+		"TextDecoder",
+		"TextDecoderStream",
+		"TextEncoder",
+		"TextEncoderStream",
+		"TraceEvent",
+		"TransformStream",
+		"TypeError",
+		"URIError",
+		"URL",
+		"URLPattern",
+		"URLSearchParams",
+		"Uint16Array",
+		"Uint32Array",
+		"Uint8Array",
+		"Uint8ClampedArray",
+		"WeakMap",
+		"WeakSet",
+		"WebAssembly",
+		"WebSocket",
+		"WebSocketPair",
+		"WorkerGlobalScope",
+		"WritableStream",
+		"WritableStreamDefaultController",
+		"WritableStreamDefaultWriter",
+		"addEventListener",
+		"atob",
+		"btoa",
+		"caches",
+		"clearInterval",
+		"clearTimeout",
+		"console",
+		"crypto",
+		"decodeURI",
+		"decodeURIComponent",
+		"dispatchEvent",
+		"encodeURI",
+		"encodeURIComponent",
+		"escape",
+		"eval",
+		"fetch",
+		"globalThis",
+		"importScripts",
+		"isFinite",
+		"isNaN",
+		"navigator",
+		"origin",
+		"parseFloat",
+		"parseInt",
+		"queueMicrotask",
+		"removeEventListener",
+		"scheduler",
+		"self",
+		"setInterval",
+		"setTimeout",
+		"structuredClone",
+		"undefined",
+		"unescape"
+	],
+	"_names": [
+		"AggregateError",
+		"Array",
+		"ArrayBuffer",
+		"Atomics",
+		"BigInt",
+		"BigInt64Array",
+		"BigUint64Array",
+		"Boolean",
+		"DataView",
+		"Date",
+		"Error",
+		"EvalError",
+		"Float32Array",
+		"Float64Array",
+		"Function",
+		"Infinity",
+		"Int16Array",
+		"Int32Array",
+		"Int8Array",
+		"Intl",
+		"JSON",
+		"Map",
+		"Math",
+		"NaN",
+		"Number",
+		"Object",
+		"Promise",
+		"Proxy",
+		"RangeError",
+		"ReferenceError",
+		"Reflect",
+		"RegExp",
+		"ServiceWorkerGlobalScope",
+		"Set",
+		"SharedArrayBuffer",
+		"String",
+		"Symbol",
+		"SyntaxError",
+		"TypeError",
+		"URIError",
+		"Uint16Array",
+		"Uint32Array",
+		"Uint8Array",
+		"Uint8ClampedArray",
+		"WeakMap",
+		"WeakSet",
+		"WebAssembly",
+		"caches",
+		"console",
+		"crypto",
+		"decodeURI",
+		"decodeURIComponent",
+		"encodeURI",
+		"encodeURIComponent",
+		"escape",
+		"eval",
+		"globalThis",
+		"isFinite",
+		"isNaN",
+		"navigator",
+		"origin",
+		"parseFloat",
+		"parseInt",
+		"scheduler",
+		"self",
+		"undefined",
+		"unescape"
+	]
 }
