@@ -147,14 +147,14 @@ const navigation = {
 			url: "/security-center/analytics",
 			labels: ["beta"],
 			hasPermission: function(h) {
-				return i(h) && (0, E.sL)(h) && !!(0, n.z1)("account-level-security-analytics")(h)
+				return i(h) && (0, E.sL)(h) && !!(0, n.z1)("account-level-security-analytics")(h) && (0, s.p1)(h)
 			}
 		}, {
 			title: "navigation.account.security_center.security_events",
 			url: "/security-center/events",
 			labels: ["beta"],
 			hasPermission: function(h) {
-				return i(h) && (0, E.sL)(h) && !!(0, n.z1)("account-level-security-analytics")(h)
+				return i(h) && (0, E.sL)(h) && !!(0, n.z1)("account-level-security-analytics")(h) && (0, s.p1)(h)
 			}
 		}, {
 			title: "navigation.account.security_center.infrastructure",
