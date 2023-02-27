@@ -221,6 +221,13 @@ export const RatePlanComponentTier = eg.object({
 
 export type RatePlanComponentTier = TypeFromCodec<typeof RatePlanComponentTier>;
 
+// BILL-17675 -- Support GRANDFATHER discount if hasInstallBaseCustomerFlag
+//               This discount is available until May 15, 2023.
+export const RatePlanDiscounts = eg.object({
+  GRANDFATHER: eg.array(RatePlanComponentTier)
+});
+export type RatePlanDiscounts = TypeFromCodec<typeof RatePlanDiscounts>;
+
 export const RatePlanComponent = eg.object({
   name: eg.string,
   publicName: eg.string,
@@ -232,7 +239,8 @@ export const RatePlanComponent = eg.object({
   defaultQuantity: eg.number,
   cfStartOfFirstUnit: eg.number,
   cfUsageDivisor: eg.number,
-  tiers: eg.array(RatePlanComponentTier)
+  tiers: eg.array(RatePlanComponentTier),
+  discounts: RatePlanDiscounts
 });
 
 export type RatePlanComponent = TypeFromCodec<typeof RatePlanComponent>;
