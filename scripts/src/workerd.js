@@ -6,7 +6,7 @@ import dateFormat from 'dateformat';
 
 import {tryAndPush} from './utils.js';
 
-async function run(){
+async function run() {
 	console.log('Parsing workerd capnp-parse output');
 	const dir = path.resolve('../data/workerd');
 	await fs.ensureDir(dir);

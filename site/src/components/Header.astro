@@ -33,20 +33,20 @@ const updated = new Date().toISOString();
 </header>
 
 <script>
-	document.querySelector("#toggle")?.addEventListener("click", function(){
-		document.querySelector("#open")?.classList.toggle("hidden");
-		document.querySelector("#close")?.classList.toggle("hidden");
-		document.querySelector("#menu")?.classList.toggle("hidden");
-		document.querySelectorAll('body')[0]?.classList.toggle("overflow-hidden");
-		const header = document.querySelector("#header");
-		header?.classList.toggle("fixed");
-		header?.classList.toggle("inset-0");
-		header?.classList.toggle("z-40");
-		header?.classList.toggle("overflow-y-auto");
+	document.querySelector('#toggle')?.addEventListener('click', function() {
+		document.querySelector('#open')?.classList.toggle('hidden');
+		document.querySelector('#close')?.classList.toggle('hidden');
+		document.querySelector('#menu')?.classList.toggle('hidden');
+		document.querySelectorAll('body')[0]?.classList.toggle('overflow-hidden');
+		const header = document.querySelector('#header');
+		header?.classList.toggle('fixed');
+		header?.classList.toggle('inset-0');
+		header?.classList.toggle('z-40');
+		header?.classList.toggle('overflow-y-auto');
 	});
 
-	const updated = document.querySelector("#updated");
-	if(updated){
+	const updated = document.querySelector('#updated');
+	if(updated) {
 		const time = updated.textContent as string;
 		const diff = new Date(time).getTime() - Date.now();
 		const formatter = new Intl.RelativeTimeFormat('en-GB', {numeric: 'auto'});

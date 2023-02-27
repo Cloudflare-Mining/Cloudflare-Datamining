@@ -5,7 +5,7 @@ import fs from 'fs-extra';
 import dateFormat from 'dateformat';
 import {markdownTable} from 'markdown-table';
 import pLimit from 'p-limit';
-import {createRequire} from "node:module";
+import {createRequire} from 'node:module';
 
 const require = createRequire(import.meta.url);
 const tlds = require('tlds');
@@ -29,7 +29,7 @@ const randomDomain = randomUUID();
 
 import {tryAndPush, cfRequest, sortObjectByKeys} from './utils.js';
 
-const dir = path.resolve(`../data/registrar`);
+const dir = path.resolve('../data/registrar');
 await fs.ensureDir(dir);
 
 const results = {};
@@ -39,10 +39,10 @@ const limit = pLimit(4);
 const promises = [];
 
 console.log(`Fetching domains. Total: ${fullList.length}`);
-for(const tld of fullList){
+for(const tld of fullList) {
 	promises.push(limit(async () => {
 		const lookupDomain = `${randomDomain}.${tld}`;
-		if(results[tld]){
+		if(results[tld]) {
 			console.log(`Skipping ${tld} as it's already been fetched`);
 			return;
 		}
@@ -53,20 +53,20 @@ for(const tld of fullList){
 				query: lookupDomain,
 			}),
 		});
-		if(!res.ok){
+		if(!res.ok) {
 			console.warn(`Failed to fetch domains for ${lookupDomain}. Response code: ${res.status}`);
 			return;
 		}
 		const json = await res.json();
-		if(!json.result || !json.success){
+		if(!json.result || !json.success) {
 			return;
 		}
-		if(json.result?.check_result?.supported_tld === false){
+		if(json.result?.check_result?.supported_tld === false) {
 			return;
 		}
-		for(const domain of json.result?.domains ?? []){
+		for(const domain of json.result?.domains ?? []) {
 			const otherTld = domain.name.slice(Math.max(0, domain.name.indexOf('.') + 1));
-			if(results[otherTld]){
+			if(results[otherTld]) {
 				continue;
 			}
 			console.log(`Found supported TLD: ${otherTld}`);
@@ -88,8 +88,8 @@ const files = await fs.readdir(dir);
 const rows = [
 	['TLD', 'ICANN fee', 'Price', 'Renewal'],
 ];
-for(const file of files){
-	if(!file.endsWith('.json') || file === '_list.json'){
+for(const file of files) {
+	if(!file.endsWith('.json') || file === '_list.json') {
 		continue;
 	}
 	const data = await fs.readJson(path.resolve(`${dir}/${file}`));

@@ -7,7 +7,7 @@ import dateFormat from 'dateformat';
 
 import {tryAndPush} from './utils.js';
 
-async function run(){
+async function run() {
 	const result = {};
 
 	const typesRes = await fetch('https://api.cloudflare.com/client/v4/graphql', {
@@ -30,24 +30,24 @@ async function run(){
 	});
 
 	const types = await typesRes.json();
-	if(!types?.data?.__schema?.types){
+	if(!types?.data?.__schema?.types) {
 		throw new Error('Failed to get GraphQL types');
 	}
-	let query = `query {\n`;
-	for(const type of types.data.__schema.types){
+	let query = 'query {\n';
+	for(const type of types.data.__schema.types) {
 		query += `  ${type.name}: __type(name:"${type.name}") {\n`
-          + `    fields {\n`
-          + `      name\n`
-          + `      description\n`
-          + `    }\n`
-          + `  }\n`;
+          + '    fields {\n'
+          + '      name\n'
+          + '      description\n'
+          + '    }\n'
+          + '  }\n';
 
 		result[type.name] = {
 			__description: type.description,
 		};
 	}
 
-	query += `}`;
+	query += '}';
 
 	const fieldsRes = await fetch('https://api.cloudflare.com/client/v4/graphql', {
 		method: 'POST',
@@ -63,10 +63,10 @@ async function run(){
 
 	const fields = await fieldsRes.json();
 
-	for(const type of Object.keys(result)){
+	for(const type of Object.keys(result)) {
 		const typeFields = fields.data[type].fields;
 
-		for(const field of typeFields){
+		for(const field of typeFields) {
 			result[type][field.name] = field.description;
 		}
 	}
@@ -182,7 +182,7 @@ async function run(){
 			query: rawQuery,
 		}),
 	});
-	if(rawGraphQLRes.ok){
+	if(rawGraphQLRes.ok) {
 		const rawGraphQL = await rawGraphQLRes.json();
 		await fs.writeFile(path.resolve('../data/other/graphql-raw.json'), JSON.stringify(rawGraphQL, null, '\t'));
 	}

@@ -4,32 +4,32 @@ import path from 'node:path';
 import fs from 'fs-extra';
 import dateFormat from 'dateformat';
 import filenamify from 'filenamify';
-import {Octokit} from "@octokit/rest";
+import {Octokit} from '@octokit/rest';
 import pick from 'object.pick';
 
 import {tryAndPush} from './utils.js';
 
 const wantedKeys = [
-	"id",
-	"name",
-	"full_name",
-	"html_url",
-	"description",
-	"fork",
-	"url",
-	"created_at",
+	'id',
+	'name',
+	'full_name',
+	'html_url',
+	'description',
+	'fork',
+	'url',
+	'created_at',
 	// "updated_at", // This gets updated a lot, when _anything_ in the repo changes, so doesn't yield very useful information
 	// "pushed_at", // Also not that useful and creates a lot of noise
-	"homepage",
-	"archived",
-	"disabled",
-	"license",
-	"allow_forking",
-	"is_template",
-	"default_branch",
+	'homepage',
+	'archived',
+	'disabled',
+	'license',
+	'allow_forking',
+	'is_template',
+	'default_branch',
 ];
 
-async function run(){
+async function run() {
 	const octokit = new Octokit();
 	console.log('Fetching GitHub Data...');
 
@@ -38,7 +38,7 @@ async function run(){
 			org: 'cloudflare',
 		});
 		const getDataAndWriteFiles = [];
-		for(const repo of repos){
+		for(const repo of repos) {
 			const filename = filenamify(repo.name, {replacement: '__'});
 			getDataAndWriteFiles.push(async () => {
 				await fs.ensureDir(path.resolve('../data/github-repos/' + filename));
@@ -65,7 +65,7 @@ async function run(){
 		);
 
 		console.log('Done! :)');
-	}catch(err){
+	}catch(err) {
 		console.error('Failed to fetch GitHub data');
 		console.error(err);
 	}

@@ -25,7 +25,7 @@ const ztGates = ztGatesImport as Gates;
 	</Description>
 	<SubHeading category="Dashboard" />
 	<Table
-		headers = {["ID", "Enabled", "Branches"]}
+		headers = {['ID', 'Enabled', 'Branches']}
 		data = {Object.keys(dashGates).map((id:string) => [
 			id,
 			String(dashGates[id].enabled),
@@ -35,7 +35,7 @@ const ztGates = ztGatesImport as Gates;
 
 	<SubHeading category="ZT Dashboard" />
 	<Table
-		headers = {["ID", "Enabled", "Branches"]}
+		headers = {['ID', 'Enabled', 'Branches']}
 		data = {Object.keys(ztGates).map((id:string) => [
 			id,
 			String(ztGates[id].enabled),

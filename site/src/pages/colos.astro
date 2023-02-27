@@ -12,13 +12,13 @@ const colos = importFiles[0].default;
 
 
 
-for(const coloId in colos){
+for(const coloId in colos) {
 	const colo = colos[coloId];
 	const airport = airports.find(air => colo.toUpperCase().startsWith(air.code));
-	if(!airport){
+	if(!airport) {
 		continue;
 	}
-	if(airport?.name.includes('China')){
+	if(airport?.name.includes('China')) {
 		types[colo] = 'JDC';
 	}
 }
@@ -30,18 +30,18 @@ for(const coloId in colos){
 		<p>Listed below are all known Cloudflare datacenters. At any given time, traffic could be re-routed so they'll appear offline, or they could simply not be a datacenter that serves public traffic. All of the types listed below are estimated, and not sourced from any official information.</p>
 	</Description>
 	<Table
-		headers = {["Status", "Total", "%"]}
-		widths={["w-[80%]", "w-[10%]", "w-[10%]"]}
+		headers = {['Status', 'Total', '%']}
+		widths={['w-[80%]', 'w-[10%]', 'w-[10%]']}
 		id="status"
-		data = {["Online", "Offline", "China"].map((name:string) => [
+		data = {['Online', 'Offline', 'China'].map((name:string) => [
 			name,
 			'loading...',
 			'loading...',
 		])}
 	></Table>
 	<Table
-		headers = {["ID", "Colo", "Type", "Status"]}
-		widths={["w-[30%]", "w-[30%]", "w-[30%]", "w-[10%]"]}
+		headers = {['ID', 'Colo', 'Type', 'Status']}
+		widths={['w-[30%]', 'w-[30%]', 'w-[30%]', 'w-[10%]']}
 		id="colos"
 		data = {Object.keys(colos).map((id:string) => [
 			id,
@@ -54,24 +54,24 @@ for(const coloId in colos){
 
 <script>
 
-async function getColosStatus(){
+async function getColosStatus() {
 	const coloTable = document.querySelector('table#colos');
-	if(!coloTable){
+	if(!coloTable) {
 		return;
 	}
 	const headers = coloTable.querySelectorAll('thead tr th');
-	if(!headers){
+	if(!headers) {
 		return;
 	}
 	let statusIndex = null;
-	for(const [index, header] of headers.entries()){
-		if(header.textContent === 'Status'){
+	for(const [index, header] of headers.entries()) {
+		if(header.textContent === 'Status') {
 			statusIndex = index + 1;
 			break;
 		}
 	}
 	let tableRows = coloTable.querySelectorAll('tbody tr');
-	if(!tableRows){
+	if(!tableRows) {
 		return;
 	}
 
@@ -80,25 +80,25 @@ async function getColosStatus(){
 	const colosStatuses = {Online: 0, China: 0, Offline: 0};
 	let totalColos = 0;
 
-	for(const row of tableRows){
+	for(const row of tableRows) {
 		const coloName = row.querySelector('td:nth-child(2)')?.textContent;
 		const status = row.querySelector(`td:nth-child(${statusIndex})`);
 		const type = row.querySelector('td:nth-child(3)')?.textContent;
-		if(!coloName || !status){
+		if(!coloName || !status) {
 			continue;
 		}
 		status.textContent = '';
 		let spanElement = status.querySelector('span');
-		if(!spanElement){
+		if(!spanElement) {
 			spanElement = document.createElement('span');
 			status.append(spanElement);
 		}
 		spanElement.classList.add('font-sans', 'inline-flex', 'items-center', 'rounded-full', 'px-2.5', 'py-0.5', 'text-xs', 'font-medium');
 		const online = coloStatus[coloName] === true;
-		if(online){
+		if(online) {
 			spanElement.classList.add('bg-green-100', 'dark:bg-green-800', 'text-green-800', 'dark:text-green-100');
 			spanElement.textContent = 'Online';
-		}else if(type === 'JDC'){
+		}else if(type === 'JDC') {
 			spanElement.classList.add('bg-gray-100', 'dark:bg-gray-800', 'text-gray-800', 'dark:text-gray-100');
 			spanElement.textContent = 'China';
 		}else{
@@ -111,22 +111,22 @@ async function getColosStatus(){
 	}
 
 	const statusTable = document.querySelector('table#status');
-	if(!statusTable){
+	if(!statusTable) {
 		return;
 	}
 	tableRows = statusTable.querySelectorAll('tbody tr');
-	if(!tableRows){
+	if(!tableRows) {
 		return;
 	}
-	for(const row of tableRows){
+	for(const row of tableRows) {
 		const status = row.querySelector('td:nth-child(1)')?.textContent as 'Online' | 'Offline' | 'China';
 		const total = row.querySelector('td:nth-child(2)');
 		const percent = row.querySelector('td:nth-child(3)');
-		if(!status || !total || !percent || colosStatuses[status] === undefined){
+		if(!status || !total || !percent || colosStatuses[status] === undefined) {
 			continue;
 		}
 		total.textContent = colosStatuses[status] as unknown as string;
-		percent.textContent = (colosStatuses[status] / totalColos * 100).toFixed(2) + "%";
+		percent.textContent = (colosStatuses[status] / totalColos * 100).toFixed(2) + '%';
 	}
 }
 

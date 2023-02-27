@@ -14,7 +14,7 @@ import {tryAndPush, sortObjectByKeys} from './utils.js';
 const API_DOCS_URL = 'https://api.cloudflare.com/';
 const SCHEMAS_URL = `${API_DOCS_URL}schemas/v4/`;
 
-async function run(){
+async function run() {
 	console.log('Fetching API Schemas...');
 
 	// first do it the hacky way
@@ -22,7 +22,7 @@ async function run(){
 	const html = await docs.text();
 	const parsed = new parseDocument(html);
 	const docsScriptAttr = selectOne('script[src*=apidocs-static]', parsed);
-	if(!docsScriptAttr){
+	if(!docsScriptAttr) {
 		return console.log('No docs script found, exiting');
 	}
 
@@ -34,20 +34,20 @@ async function run(){
 	});
 	const schemas = {};
 	fullAncestor(docsScriptParsed, (node, ancestors) => {
-		if(node.type === 'Literal' && node.value?.includes?.(SCHEMAS_URL)){
+		if(node.type === 'Literal' && node.value?.includes?.(SCHEMAS_URL)) {
 			// assume that 3 from the last ancestor is the schema
 			const schema = ancestors.at(-3);
-			if(!schema || schema.type !== 'ObjectExpression'){ return; }
+			if(!schema || schema.type !== 'ObjectExpression') { return; }
 			// this is a massive hack. TODO: find a better way to do this
 			// eslint-disable-next-line no-eval
 			const realschema = eval('(function run(){return ' + docsScript.slice(schema.start, schema.end) + '})()');
 			schemas[node.value] = realschema;
 		}
 	});
-	for(const [url, schema] of Object.entries(schemas)){
+	for(const [url, schema] of Object.entries(schemas)) {
 		let schemaname = url.replace(SCHEMAS_URL, '');
-		if(!schemaname){ continue; }
-		if(!schemaname.endsWith('.json')){
+		if(!schemaname) { continue; }
+		if(!schemaname.endsWith('.json')) {
 			schemaname = `${schemaname}.json`;
 		}
 		const filename = path.resolve(`../data/api-schemas/${schemaname}`);
@@ -60,16 +60,16 @@ async function run(){
 	// then query the schemas endpoint
 	const schemasReq = await fetch('https://api.cloudflare.com/schemas.json');
 	const schemasJson = sortObjectByKeys(await schemasReq.json());
-	if(schemasJson?.info){
+	if(schemasJson?.info) {
 		delete schemasJson.info['x-buildDate']; // changes frequently even without any functional changes. Remove to generate more useful diffs
-		await fs.writeFile(path.resolve(`../data/api-schemas/schemas.json`), JSON.stringify(schemasJson, null, '\t'));
+		await fs.writeFile(path.resolve('../data/api-schemas/schemas.json'), JSON.stringify(schemasJson, null, '\t'));
 	}
 
 	// and then query the schemas.yml from git
 	const schemasReqYml = await fetch('https://raw.githubusercontent.com/cloudflare/api-schemas/main/openapi.yaml');
 	const schemasYml = await schemasReqYml.text();
-	if(schemasReqYml.ok && schemasYml){
-		await fs.writeFile(path.resolve(`../data/api-schemas/openapi.yaml`), schemasYml);
+	if(schemasReqYml.ok && schemasYml) {
+		await fs.writeFile(path.resolve('../data/api-schemas/openapi.yaml'), schemasYml);
 	}
 
 	console.log('Pushing!');

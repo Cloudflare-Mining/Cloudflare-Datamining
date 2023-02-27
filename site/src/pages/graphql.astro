@@ -19,8 +19,8 @@ const sections = importFiles[0].default;
 			<div>
 				<SubHeading category={section} subcategory={sections[section].__description} />
 				<Table
-					headers = {["Field", "Description"]}
-					widths={["w-1/4", "w-3/4"]}
+					headers = {['Field', 'Description']}
+					widths={['w-1/4', 'w-3/4']}
 					data = {Object.keys(sections[section]).map((field:string) => field !== '__description' && [field, sections[section][field]] || [])}
 				></Table>
 			</div>

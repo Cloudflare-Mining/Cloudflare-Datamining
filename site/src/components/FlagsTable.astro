@@ -9,10 +9,10 @@ export interface Props {
 }
 
 const {data, title, headers}: {data: any, title: string, headers?: string[]} = Astro.props;
-const tableHeaders = headers ?? ["Entitlement", "Default Value"];
+const tableHeaders = headers ?? ['Entitlement', 'Default Value'];
 
-function getValue(data:string|object){
-	if(typeof data === 'string'){
+function getValue(data:string|object) {
+	if(typeof data === 'string') {
 		return data;
 	}
 	return JSON.stringify(data);
@@ -26,7 +26,7 @@ function getValue(data:string|object){
 			<SubHeading category={category} />
 			<Table
 				headers = {tableHeaders}
-				widths={["w-2/3", "w-1/3"]}
+				widths={['w-2/3', 'w-1/3']}
 				data = {Object.keys(data[category]).map((item:string) => [item, getValue(data[category][item])])}
 			></Table>
 		</div>

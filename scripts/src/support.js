@@ -8,17 +8,17 @@ import fs from 'fs-extra';
 import {tryAndPush} from './utils.js';
 import jsBeautify from 'js-beautify';
 
-async function run(){
+async function run() {
 	console.log('Fetching Support Articles...');
 
-	const dir = path.resolve(`../data/support`);
+	const dir = path.resolve('../data/support');
 	await fs.emptyDir(dir);
 
 	// get categories
 	const categoriesReq = await fetch('https://cloudflare.zendesk.com/api/v2/help_center/en-us/categories.json');
 	const rawCategories = await categoriesReq.json();
 	const categories = [];
-	for(const category of rawCategories?.categories ?? []){
+	for(const category of rawCategories?.categories ?? []) {
 		const {updated_at, ...rest} = category;
 		categories.push(rest);
 	}
@@ -28,7 +28,7 @@ async function run(){
 	// get articles
 	const articles = [];
 	let next_url = 'https://cloudflare.zendesk.com/api/v2/help_center/en-us/articles.json?per_page=100';
-	while(next_url){
+	while(next_url) {
 		console.log('Fetch', next_url);
 		const response = await fetch(next_url);
 		const json = await response.json();
@@ -36,7 +36,7 @@ async function run(){
 		next_url = json.next_page;
 	}
 
-	for(const article of articles){
+	for(const article of articles) {
 		const folderName = filenamify(`${article.name}-${article.id}`, {replacement: '_'});
 		const articleDir = path.resolve(dir, folderName);
 		await fs.ensureDir(articleDir);

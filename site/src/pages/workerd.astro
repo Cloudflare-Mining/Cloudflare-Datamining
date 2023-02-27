@@ -1,10 +1,10 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Description from "../components/Description.astro";
-import MainHeading from "../components/MainHeading.astro";
-import SubHeading from "../components/SubHeading.astro";
-import workerdData from "../../../data/workerd/parsed.json";
-import Table from "../components/Table.astro";
+import Layout from '../layouts/Layout.astro';
+import Description from '../components/Description.astro';
+import MainHeading from '../components/MainHeading.astro';
+import SubHeading from '../components/SubHeading.astro';
+import workerdData from '../../../data/workerd/parsed.json';
+import Table from '../components/Table.astro';
 
 import {marked} from 'marked';
 
@@ -40,21 +40,21 @@ interface remoteFlagInfoType {
 }
 
 let flagsInfo = null;
-for(const struct of workerdData.structs){
-	if(struct.name.endsWith('compatibility-date.capnp:CompatibilityFlags')){
+for(const struct of workerdData.structs) {
+	if(struct.name.endsWith('compatibility-date.capnp:CompatibilityFlags')) {
 		flagsInfo = struct.fields;
 		break;
 	}
 }
-if(!flagsInfo){ throw new Error('Could not find flags info!'); }
+if(!flagsInfo) { throw new Error('Could not find flags info!'); }
 
 const remoteFlagInfoRes = await fetch('https://developers.cloudflare.com/workers/platform/compatibility-dates.json');
 const remoteFlagInfo: remoteFlagInfoType[] = await remoteFlagInfoRes.json();
 
 const flags = [];
-for(const flag of flagsInfo as workerdFlagInfo[]){
+for(const flag of flagsInfo as workerdFlagInfo[]) {
 	const enableFlag = flag.annotations?.compatEnableFlag;
-	if(!enableFlag){ continue; }
+	if(!enableFlag) { continue; }
 	const remoteFlag = remoteFlagInfo.find(rf => rf.enable_flag === enableFlag);
 
 	const flagInfo: flagInfo = {
@@ -64,10 +64,10 @@ for(const flag of flagsInfo as workerdFlagInfo[]){
 		disable_flag: flag.annotations?.compatDisableFlag ?? null,
 		enable_date: flag.annotations?.compatEnableDate ?? null,
 		enable_flag: flag.annotations?.compatEnableFlag ?? null,
-		experimental: flag.annotations?.experimental === "true",
+		experimental: flag.annotations?.experimental === 'true',
 		publicly_documented: false,
 	};
-	if(remoteFlag){
+	if(remoteFlag) {
 		flagInfo.description = marked.parse(remoteFlag.description);
 		flagInfo.experimental = remoteFlag.experimental;
 		flagInfo.friendly_name = remoteFlag.name;
@@ -93,7 +93,7 @@ for(const flag of flagsInfo as workerdFlagInfo[]){
 		</p>
 	</Description>
 	<Table
-		headers = {["Name", "Default Date", "Enable Flag", "Disable Flag", "Experimental"]}
+		headers = {['Name', 'Default Date', 'Enable Flag', 'Disable Flag', 'Experimental']}
 		data = {flags.reverse().map(flag => [
 			flag.friendly_name ?? flag.name,
 			flag.enable_date ?? 'N/A',

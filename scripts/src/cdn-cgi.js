@@ -8,7 +8,7 @@ import {tryAndPush, getHttpsAgent} from './utils.js';
 
 const agent = getHttpsAgent();
 
-const dir = path.resolve(`../data/cdn-cgi`);
+const dir = path.resolve('../data/cdn-cgi');
 await fs.ensureDir(dir);
 
 // colos with mostly stable versions across metals
@@ -24,7 +24,7 @@ const colos = {
 };
 
 const buildVersions = [];
-for(const [name, colo] of Object.entries(colos)){
+for(const [name, colo] of Object.entries(colos)) {
 	buildVersions.push({
 		file: `build-info/fl-${name}`,
 		url: `${process.env.FETCH_FROM_COLO_URL}colo=${colo}&url=https://trace.colo.quest/info?type=fl`,
@@ -48,8 +48,8 @@ const metals = {
 	mcp: ['21m421', '21m424', '21m509', '21m515'],
 };
 
-for(const [name, metalIds] of Object.entries(metals)){
-	for(const metalId of metalIds){
+for(const [name, metalIds] of Object.entries(metals)) {
+	for(const metalId of metalIds) {
 		buildVersions.push({
 			file: `build-info/fl-${name}`,
 			url: `${process.env.FETCH_FROM_COLO_URL}metal=${metalId}&url=https://trace.colo.quest/info?type=fl`,
@@ -68,7 +68,7 @@ for(const [name, metalIds] of Object.entries(metals)){
 	}
 }
 
-for(const {file, url, info} of buildVersions){
+for(const {file, url, info} of buildVersions) {
 	let filePath = path.resolve(dir, file);
 	console.log('Fetching', file, info);
 	try{
@@ -77,10 +77,10 @@ for(const {file, url, info} of buildVersions){
 			controller.abort();
 		}, 30000);
 		const dataReq = await fetch(url, {agent, signal: controller.signal});
-		if(dataReq.ok){
+		if(dataReq.ok) {
 			const headers = dataReq.headers;
 			// if sliver, append that to the file name
-			if(headers?.get('x-cdn-cgi-sliver')){
+			if(headers?.get('x-cdn-cgi-sliver')) {
 				filePath = path.resolve(dir, `${file}_sliver-${headers.get('x-cdn-cgi-sliver')}`);
 			}
 			const data = await dataReq.text();
@@ -88,7 +88,7 @@ for(const {file, url, info} of buildVersions){
 			await fs.writeFile(filePath, data);
 		}
 		clearTimeout(timeout);
-	}catch(err){
+	}catch(err) {
 		console.error(err);
 	}
 }

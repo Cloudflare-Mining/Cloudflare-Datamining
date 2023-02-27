@@ -10,7 +10,7 @@ import puppeteer from 'puppeteer';
 
 // enablle keepalives for faster fetching
 import https from 'node:https';
-export function getHttpsAgent(){
+export function getHttpsAgent() {
 	const agent = new https.Agent({
 		keepAlive: true,
 	});
@@ -21,12 +21,12 @@ https.globalAgent = getHttpsAgent();
 // We want it to be ran from root not scripts
 const git = simpleGit({baseDir: path.resolve('..')});
 
-export async function sendToDiscord(name, msg, type){
+export async function sendToDiscord(name, msg, type) {
 	let url = process.env.DISCORD_URL;
-	if(type?.startsWith?.('DISCORD_WEBHOOK') && process.env[type]){
+	if(type?.startsWith?.('DISCORD_WEBHOOK') && process.env[type]) {
 		url = process.env[type];
 	}
-	if(!url){
+	if(!url) {
 		console.warn('Can not send Discord webhook as no URL is set', name, msg);
 		return;
 	}
@@ -42,8 +42,8 @@ export async function sendToDiscord(name, msg, type){
 	});
 }
 
-export async function tryAndPush(files, commitMessage, webhookUsername, webhookMessage, type = 'default'){
-	if(!process.env.CI){
+export async function tryAndPush(files, commitMessage, webhookUsername, webhookMessage, type = 'default') {
+	if(!process.env.CI) {
 		console.log('Not pushing changes as not in CI environment.');
 		return;
 	}
@@ -51,7 +51,7 @@ export async function tryAndPush(files, commitMessage, webhookUsername, webhookM
 		await git.pull();
 		const prevCommit = (await git.log({maxCount: 1})).latest;
 		const result = await git.status();
-		if(result.files.length === 0){
+		if(result.files.length === 0) {
 			console.log('No changes to commit');
 			return;
 		}
@@ -60,20 +60,20 @@ export async function tryAndPush(files, commitMessage, webhookUsername, webhookM
 		await git.commit(commitMessage);
 		await git.push('origin', 'main');
 		const commit = (await git.log({maxCount: 1})).latest;
-		if(commit.hash !== prevCommit.hash){
+		if(commit.hash !== prevCommit.hash) {
 			const commitUrl = `https://github.com/Cloudflare-Mining/Cloudflare-Datamining/commit/${commit.hash}`;
 			await sendToDiscord(webhookUsername, `[${webhookMessage}](${commitUrl})`, type);
 		}
-	}catch(err){
+	}catch(err) {
 		console.error(err);
 	}
 }
 
 const getUnescapedAny = (sequence, code) => {
-	if(code !== null){
+	if(code !== null) {
 		return String.fromCodePoint(code);
 	}
-	switch(sequence){
+	switch(sequence) {
 		case '\\b': {
 			return '\b';
 		}
@@ -96,29 +96,29 @@ const getUnescapedAny = (sequence, code) => {
 	return false;
 };
 
-export function removeSlashes(source){
+export function removeSlashes(source) {
 	const rx = /(?:(\\(u([0-9a-f]{4})|u\{([0-9a-f]+)\}|x([0-9a-f]{2})|(\d{1,3})|([\s\S]|$)))|([\s\S]))/giu;
 	let match;
 	let result = '';
-	while((match = rx.exec(source)) !== null){
+	while((match = rx.exec(source)) !== null) {
 		const [, sequence, fallback, unicode, unicodePoint, hex, octal, char, literal] = match;
-		if(literal){
+		if(literal) {
 			result += literal;
 			continue;
 		}
 		let code;
-		if(char !== null){
+		if(char !== null) {
 			code = null;
-		}else if(octal){
+		}else if(octal) {
 			code = Number.parseInt(octal, 8);
 		}else{
 			code = Number.parseInt(unicodePoint || unicode || hex, 16);
 		}
 		try{
 			const unescaped = getUnescapedAny(sequence, code);
-			if(!unescaped){
+			if(!unescaped) {
 				result += fallback;
-			}else if(unescaped === true){
+			}else if(unescaped === true) {
 				result += getUnescapedAny(sequence, code) || fallback;
 			}else{
 				result += unescaped;
@@ -130,7 +130,7 @@ export function removeSlashes(source){
 	return result;
 }
 
-export function beautify(data){
+export function beautify(data) {
 	return jsBeautify.js(data,
 		{
 			indent_size: 4,
@@ -140,18 +140,18 @@ export function beautify(data){
 	);
 }
 
-export function sleep(ms){
+export function sleep(ms) {
 	console.log('Sleeping for', ms, 'ms');
 	// eslint-disable-next-line no-promise-executor-return
 	return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-export function propertiesToArray(obj){
+export function propertiesToArray(obj) {
 	return Object.keys(flat(obj));
 }
 
 const agent = getHttpsAgent();
-export function cfRequest(url, options = {}){
+export function cfRequest(url, options = {}) {
 	return fetch(url, {
 		...options,
 		headers: {
@@ -165,7 +165,7 @@ export function cfRequest(url, options = {}){
 }
 export const userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36';
 
-export async function getBMCookie(url){
+export async function getBMCookie(url) {
 	// launch a browser, get a bot management token. Helps to work around bot management restrictions
 	const browser = await puppeteer.launch({
 		defaultViewport: {
@@ -185,6 +185,6 @@ export async function getBMCookie(url){
 	return bmCookie;
 }
 
-export function sortObjectByKeys(obj){
+export function sortObjectByKeys(obj) {
 	return Object.fromEntries(Object.entries(obj).sort((keyA, keyB) => keyA[0].localeCompare(keyB[0])));
 }

@@ -9,7 +9,7 @@ import {tryAndPush} from './utils.js';
 
 const BASE = 'https://api.cloudflare.com/client/v4';
 
-async function callApi(path){
+async function callApi(path) {
 	const res = await fetch(`${BASE}${path}`, {
 		headers: {
 			'X-Auth-Email': process.env.CLOUDFLARE_EMAIL,
@@ -17,31 +17,31 @@ async function callApi(path){
 		},
 	});
 
-	if(res.status === 200){
+	if(res.status === 200) {
 		const json = await res.json();
-		if(json.success){
+		if(json.success) {
 			return json.result;
 		}
 	}
 	return null;
 }
 
-async function fetchAndWrite(apiPath, filePath, sortFunc = null){
+async function fetchAndWrite(apiPath, filePath, sortFunc = null) {
 	const json = await callApi(apiPath);
 
-	if(json !== null){
+	if(json !== null) {
 		await fs.ensureDir(path.dirname(filePath));
 		let data = json;
-		if(sortFunc !== null){
+		if(sortFunc !== null) {
 			data = json.sort(sortFunc);
 		}
 		await fs.writeFile(path.resolve(filePath), JSON.stringify(data, null, '\t'));
 	}
 }
 
-async function gitPush(){
+async function gitPush() {
 	const date = new Date();
-	const commitMessage = dateFormat(date, 'd mmmm yyyy') + ` - Updated account (flags, entitlements, etc.)`;
+	const commitMessage = dateFormat(date, 'd mmmm yyyy') + ' - Updated account (flags, entitlements, etc.)';
 
 	await tryAndPush(
 		['data/account/*.json'],
@@ -52,7 +52,7 @@ async function gitPush(){
 	);
 }
 
-async function run(){
+async function run() {
 	console.log('Fetching...');
 	// Flags
 	await fetchAndWrite(`/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/flags`, '../data/account/account_flags.json');
@@ -66,7 +66,7 @@ async function run(){
 	await fetchAndWrite(`/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/roles?per_page=100`, '../data/account/account_roles.json');
 
 	// API tokens permission groups
-	await fetchAndWrite(`/user/tokens/permission_groups`, '../data/account/token_permission_groups.json', (itemA, itemB) => (itemA.name + itemA.id).localeCompare(itemB.name + itemB.id));
+	await fetchAndWrite('/user/tokens/permission_groups', '../data/account/token_permission_groups.json', (itemA, itemB) => (itemA.name + itemA.id).localeCompare(itemB.name + itemB.id));
 
 	console.log('Pushing!');
 	await gitPush();
