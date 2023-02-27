@@ -15,9 +15,9 @@ import StealthPlugin from 'puppeteer-extra-plugin-stealth';
 import {tryAndPush, userAgent} from './utils.js';
 
 const ROOT_URL = 'https://dash.cloudflare.com/';
-async function run(){
+async function run() {
 	console.log('Fetching Dashboard...');
-	const dir = path.resolve(`../data`);
+	const dir = path.resolve('../data');
 	await fs.ensureDir(dir);
 
 	try{
@@ -65,54 +65,54 @@ async function run(){
 				file: 'account/permission_groups.json',
 			},
 			{
-				url: `https://api.cloudflare.com/api/v4/user/notifications?scope=account-banner&locale=en-US&accountType=PAYGO`,
+				url: 'https://api.cloudflare.com/api/v4/user/notifications?scope=account-banner&locale=en-US&accountType=PAYGO',
 				file: 'account/notifications-account-banner-paygo.json',
 			},
 			{
-				url: `https://api.cloudflare.com/api/v4/user/notifications?scope=account-banner&locale=en-US&accountType=Enterprise`,
+				url: 'https://api.cloudflare.com/api/v4/user/notifications?scope=account-banner&locale=en-US&accountType=Enterprise',
 				file: 'account/notifications-account-banner-enterprise.json',
 			},
 			{
-				url: `https://api.cloudflare.com/api/v4/user/notifications?scope=zone-banner&locale=en-US&accountType=PAYGO&zonePlanType=Free`,
+				url: 'https://api.cloudflare.com/api/v4/user/notifications?scope=zone-banner&locale=en-US&accountType=PAYGO&zonePlanType=Free',
 				file: 'account/notifications-zone-banner-paygo-free.json',
 			},
 			{
-				url: `https://api.cloudflare.com/api/v4/user/notifications?scope=zone-banner&locale=en-US&accountType=PAYGO&zonePlanType=Pro`,
+				url: 'https://api.cloudflare.com/api/v4/user/notifications?scope=zone-banner&locale=en-US&accountType=PAYGO&zonePlanType=Pro',
 				file: 'account/notifications-zone-banner-paygo-pro.json',
 			},
 			{
-				url: `https://api.cloudflare.com/api/v4/user/notifications?scope=zone-banner&locale=en-US&accountType=PAYGO&zonePlanType=Business`,
+				url: 'https://api.cloudflare.com/api/v4/user/notifications?scope=zone-banner&locale=en-US&accountType=PAYGO&zonePlanType=Business',
 				file: 'account/notifications-zone-banner-paygo-biz.json',
 			},
 			{
-				url: `https://api.cloudflare.com/api/v4/user/notifications?scope=zone-banner&locale=en-US&accountType=PAYGO&zonePlanType=Enterprise`,
+				url: 'https://api.cloudflare.com/api/v4/user/notifications?scope=zone-banner&locale=en-US&accountType=PAYGO&zonePlanType=Enterprise',
 				file: 'account/notifications-zone-banner-paygo-ent.json',
 			},
 			{
-				url: `https://api.cloudflare.com/api/v4/user/notifications?scope=zone-banner&locale=en-US&accountType=Enterprise&zonePlanType=Free`,
+				url: 'https://api.cloudflare.com/api/v4/user/notifications?scope=zone-banner&locale=en-US&accountType=Enterprise&zonePlanType=Free',
 				file: 'account/notifications-zone-banner-ent-free.json',
 			},
 			{
-				url: `https://api.cloudflare.com/api/v4/user/notifications?scope=zone-banner&locale=en-US&accountType=Enterprise&zonePlanType=Pro`,
+				url: 'https://api.cloudflare.com/api/v4/user/notifications?scope=zone-banner&locale=en-US&accountType=Enterprise&zonePlanType=Pro',
 				file: 'account/notifications-zone-banner-ent-pro.json',
 			},
 			{
-				url: `https://api.cloudflare.com/api/v4/user/notifications?scope=zone-banner&locale=en-US&accountType=Enterprise&zonePlanType=Business`,
+				url: 'https://api.cloudflare.com/api/v4/user/notifications?scope=zone-banner&locale=en-US&accountType=Enterprise&zonePlanType=Business',
 				file: 'account/notifications-zone-banner-ent-biz.json',
 			},
 			{
-				url: `https://api.cloudflare.com/api/v4/user/notifications?scope=zone-banner&locale=en-US&accountType=Enterprise&zonePlanType=Enterprise`,
+				url: 'https://api.cloudflare.com/api/v4/user/notifications?scope=zone-banner&locale=en-US&accountType=Enterprise&zonePlanType=Enterprise',
 				file: 'account/notifications-zone-banner-ent-ent.json',
 			},
 			{
-				url: `https://api.cloudflare.com/api/v4/user/tokens/permission_groups`,
+				url: 'https://api.cloudflare.com/api/v4/user/tokens/permission_groups',
 				file: 'account/token_permission_groups_dash.json',
 			},
 		];
 
 		console.log('Querying APIs...');
 		// hit CF API with cookie for each req
-		for(const api of apis){
+		for(const api of apis) {
 			const response = await fetch(api.url, {
 				headers: {
 					cookie: cookieString,
@@ -120,12 +120,12 @@ async function run(){
 			});
 			const json = await response.json();
 			let result;
-			if(json.success && json.result){
+			if(json.success && json.result) {
 				result = json.result;
 			}else{
 				result = json;
 			}
-			if(api.file === 'account/permission_groups.json'){
+			if(api.file === 'account/permission_groups.json') {
 				result = result.sort((groupA, groupB) => groupA.name.localeCompare(groupB.name));
 			}
 
@@ -143,7 +143,7 @@ async function run(){
 		);
 
 		console.log('Done! :)');
-	}catch(err){
+	}catch(err) {
 		console.error(err);
 	}
 }

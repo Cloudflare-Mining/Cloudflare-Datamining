@@ -4,93 +4,93 @@ export interface Props {
 }
 const navItems = [
 	{
-		label: "Home",
-		path: "",
+		label: 'Home',
+		path: '',
 	},
 	{
-		label: "Account",
-		path: "/account",
+		label: 'Account',
+		path: '/account',
 		submenu: [
 			{
-				label: "Flags",
-				path: "/flags",
+				label: 'Flags',
+				path: '/flags',
 			},
 			{
-				label: "Entitlements",
-				path: "/entitlements",
+				label: 'Entitlements',
+				path: '/entitlements',
 			},
 			{
-				label: "Known Entitlements",
-				path: "/known-entitlements",
+				label: 'Known Entitlements',
+				path: '/known-entitlements',
 			},
 		],
 	},
 	{
-		label: "Zone",
-		path: "/zone",
+		label: 'Zone',
+		path: '/zone',
 		submenu: [
 			{
-				label: "Flags",
-				path: "/flags",
+				label: 'Flags',
+				path: '/flags',
 			},
 			{
-				label: "Entitlements",
-				path: "/entitlements",
+				label: 'Entitlements',
+				path: '/entitlements',
 			},
 			{
-				label: "Known Entitlements",
-				path: "/known-entitlements",
+				label: 'Known Entitlements',
+				path: '/known-entitlements',
 			},
 		],
 	},
 	{
-		label: "Gates",
-		path: "/gates",
+		label: 'Gates',
+		path: '/gates',
 	},
 	{
-		label: "GraphQL",
-		path: "/graphql",
+		label: 'GraphQL',
+		path: '/graphql',
 	},
 	{
-		label: "Colos",
-		path: "/colos",
+		label: 'Colos',
+		path: '/colos',
 	},
 	{
-		label: "NPM",
-		path: "/npm",
+		label: 'NPM',
+		path: '/npm',
 	},
 	{
-		label: "Icons",
-		path: "/icons",
+		label: 'Icons',
+		path: '/icons',
 	},
 	{
-		label: "workerd",
-		path: "/workerd",
+		label: 'workerd',
+		path: '/workerd',
 	},
 	{
-		label: "Products",
-		path: "/products",
+		label: 'Products',
+		path: '/products',
 		submenu: [
 			{
-				label: "Pages",
-				path: "/pages",
+				label: 'Pages',
+				path: '/pages',
 			},
 		],
 	},
 	{
-		label: "Tools",
-		path: "/tools",
+		label: 'Tools',
+		path: '/tools',
 		submenu: [
 			{
-				label: "API Token URL",
-				path: "/api-token-url-generator",
+				label: 'API Token URL',
+				path: '/api-token-url-generator',
 			},
 		],
 	},
 ];
 
 let currentPath = Astro.url.pathname;
-if(currentPath.charAt(-1) === "/"){
+if(currentPath.charAt(-1) === '/') {
 	currentPath = currentPath.slice(-1);
 }
 const {usage} = Astro.props;
@@ -101,7 +101,7 @@ const {usage} = Astro.props;
 		<div class="space-y-1">
 			{
 				navItems.map((item, index) => {
-					if(item.submenu){
+					if(item.submenu) {
 						return (
 							<div class="space-y-1">
 								<button
@@ -115,11 +115,11 @@ const {usage} = Astro.props;
 										id={`${usage}-submenu-${index}-icon`}
 										class={[
 											currentPath.startsWith(item.path)
-												? "text-gray-300 dark:text-gray-500 rotate-90"
-												: "text-gray-300 dark:text-gray-500",
-											"mr-2 h-5 w-5 flex-shrink-0 transform transition-colors duration-150 ease-in-out",
+												? 'text-gray-300 dark:text-gray-500 rotate-90'
+												: 'text-gray-300 dark:text-gray-500',
+											'mr-2 h-5 w-5 flex-shrink-0 transform transition-colors duration-150 ease-in-out',
 										]
-											.join(" ")
+											.join(' ')
 											.trim()}
 										viewBox="0 0 20 20"
 										aria-hidden="true"
@@ -135,8 +135,8 @@ const {usage} = Astro.props;
 									id={`${usage}-submenu-${index}-menu`}
 									class={
 										currentPath.startsWith(item.path)
-											? ""
-											: "hidden"
+											? ''
+											: 'hidden'
 									}
 								>
 									{item.submenu.map(submenu => (
@@ -145,11 +145,11 @@ const {usage} = Astro.props;
 											class={[
 												currentPath ===
 												`${item.path}${submenu.path}/`
-													? "bg-gray-200 text-gray-900 dark:text-gray-200 dark:bg-gray-700"
-													: "text-gray-700 hover:bg-gray-50 dark:text-gray-200 dark:hover:bg-gray-700",
-												"group flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md",
+													? 'bg-gray-200 text-gray-900 dark:text-gray-200 dark:bg-gray-700'
+													: 'text-gray-700 hover:bg-gray-50 dark:text-gray-200 dark:hover:bg-gray-700',
+												'group flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md',
 											]
-												.join(" ")
+												.join(' ')
 												.trim()}
 										>
 											<span class="truncate">
@@ -166,11 +166,11 @@ const {usage} = Astro.props;
 							href={`${item.path}/`}
 							class={[
 								currentPath === `${item.path}/`
-									? "bg-gray-200 text-gray-900 dark:bg-gray-700 dark:text-gray-200"
-									: "text-gray-700 hover:bg-gray-50 dark:text-gray-100 dark:hover:bg-gray-700",
-								"group flex items-center pl-7 pr-2 py-2 text-sm font-medium rounded-md",
+									? 'bg-gray-200 text-gray-900 dark:bg-gray-700 dark:text-gray-200'
+									: 'text-gray-700 hover:bg-gray-50 dark:text-gray-100 dark:hover:bg-gray-700',
+								'group flex items-center pl-7 pr-2 py-2 text-sm font-medium rounded-md',
 							]
-								.join(" ")
+								.join(' ')
 								.trim()}
 						>
 							<span class="truncate">{item.label}</span>
@@ -249,22 +249,22 @@ const {usage} = Astro.props;
 </nav>
 
 <script>
-	for(const button of document.querySelectorAll("button")){
-		button.addEventListener("click", function(){
+	for(const button of document.querySelectorAll('button')) {
+		button.addEventListener('click', function() {
 			document
 				.querySelector(`#${button.id}-menu`)
-				?.classList.toggle("hidden");
+				?.classList.toggle('hidden');
 			const icon = document.querySelector(`#${button.id}-icon`)!;
-			if(!icon){
+			if(!icon) {
 				return;
 			}
-			icon.classList.toggle("text-gray-300");
-			icon.classList.toggle("text-gray-400");
-			icon.classList.toggle("rotate-90");
-			if(button.ariaExpanded === "true"){
-				button.ariaExpanded = "false";
+			icon.classList.toggle('text-gray-300');
+			icon.classList.toggle('text-gray-400');
+			icon.classList.toggle('rotate-90');
+			if(button.ariaExpanded === 'true') {
+				button.ariaExpanded = 'false';
 			}else{
-				button.ariaExpanded = "true";
+				button.ariaExpanded = 'true';
 			}
 		});
 	}

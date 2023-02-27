@@ -6,7 +6,7 @@ import {deleteAsync} from 'del';
 
 import {tryAndPush} from './utils.js';
 
-async function run(){
+async function run() {
 	console.log('Fetching Cloudflare types...');
 
 	await pacote.extract('@cloudflare/types', path.resolve('../data/types'));

@@ -6,23 +6,23 @@ import dateFormat from 'dateformat';
 
 import {tryAndPush, cfRequest} from '../utils.js';
 
-const dir = path.resolve(`../data/products/rulesets`);
+const dir = path.resolve('../data/products/rulesets');
 await fs.ensureDir(dir);
 
-async function run(){
+async function run() {
 	const rulesets = await cfRequest(`https://api.cloudflare.com/client/v4/zones/${process.env.CLOUDFLARE_ZONE_ID}/rulesets`);
 	const rulesetsJson = await rulesets.json();
-	if(!rulesets.ok){
+	if(!rulesets.ok) {
 		console.error(`rulesets failed: ${rulesets.status} ${rulesets.statusText}`);
 		return;
 	}
 	await fs.writeJson(path.resolve(dir, 'rulesets.json'), rulesetsJson.result, {spaces: '\t'});
 
 	// get more info about each ruleset
-	for(const ruleset of rulesetsJson.result){
+	for(const ruleset of rulesetsJson.result) {
 		const rulesetDetails = await cfRequest(`https://api.cloudflare.com/client/v4/zones/${process.env.CLOUDFLARE_ZONE_ID}/rulesets/${ruleset.id}`);
 		const rulesetDetailsJson = await rulesetDetails.json();
-		if(!rulesetDetails.ok){
+		if(!rulesetDetails.ok) {
 			console.error(`ruleset ${ruleset.id} failed: ${rulesetDetails.status} ${rulesetDetails.statusText}`);
 			continue;
 		}

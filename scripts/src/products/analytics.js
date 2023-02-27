@@ -9,12 +9,12 @@ import {full} from 'acorn-walk';
 
 import {tryAndPush} from '../utils.js';
 
-async function run(){
-	const dir = path.resolve(`../data/products/analytics`);
+async function run() {
+	const dir = path.resolve('../data/products/analytics');
 	await fs.ensureDir(dir);
 
 	const res = await fetch('https://static.cloudflareinsights.com/beacon.min.js');
-	if(!res.ok){
+	if(!res.ok) {
 		console.log(`beacon.min.js failed: ${res.status} ${res.statusText}`);
 		return;
 	}
@@ -40,10 +40,10 @@ async function run(){
 		if(
 			node.type === 'ObjectExpression' &&
 			node.properties?.find(prop => prop.key?.name === 'versions')
-		){
+		) {
 			const version = node.properties?.find(prop => prop.key?.name === 'versions');
-			for(const prop of version?.value?.properties || []){
-				if(prop?.value?.type === 'Literal'){
+			for(const prop of version?.value?.properties || []) {
+				if(prop?.value?.type === 'Literal') {
 					versions[prop.key.name] = prop.value.value;
 				}
 			}

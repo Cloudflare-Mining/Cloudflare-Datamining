@@ -15,7 +15,7 @@ import {tryAndPush, getHttpsAgent} from './utils.js';
 
 const agent = getHttpsAgent();
 
-const dir = path.resolve(`../data/cdn-cgi`);
+const dir = path.resolve('../data/cdn-cgi');
 try{
 	await fs.rm(path.resolve(dir, './error'), {
 		recursive: true,
@@ -25,7 +25,7 @@ await fs.ensureDir(dir);
 
 // iterate for error pages between 100 and 1500 - wide range
 const errors = {};
-for(let i = 100; i <= 1500; i++){
+for(let i = 100; i <= 1500; i++) {
 	const controller = new AbortController();
 	const timeout = setTimeout(() => {
 		controller.abort();
@@ -36,28 +36,28 @@ for(let i = 100; i <= 1500; i++){
 			agent,
 			signal: controller.signal,
 		});
-	}catch(err){
+	}catch(err) {
 		console.log(`Error fetching error page ${i}: ${err?.code ?? err}`);
 		continue;
 	}finally{
 		clearTimeout(timeout);
 	}
 	const data = await dataReq.text();
-	if(!dataReq.headers.get('content-type')?.includes?.('text/html') || data === ''){
+	if(!dataReq.headers.get('content-type')?.includes?.('text/html') || data === '') {
 		console.log('Not an HTML error page, or empty contents', i);
 		continue;
 	}
 	// if the page is a 500 and we're not asking for a 500, it's probably not a real error page
-	if(dataReq.status === 500 && i !== 500 && data.includes(': Internal server error')){
+	if(dataReq.status === 500 && i !== 500 && data.includes(': Internal server error')) {
 		console.log(`Error page ${i} not found (500 error)`);
 		continue;
 	}
-	if(dataReq.status === i && data.includes(': Internal server error')){
+	if(dataReq.status === i && data.includes(': Internal server error')) {
 		console.log(`Error page ${i} not found (matching status, but internal server error)`);
 		continue;
 	}
 	const rayID = dataReq.headers.get('cf-ray');
-	if(!rayID){
+	if(!rayID) {
 		console.log(`Error page ${i} has no Ray ID`);
 		continue;
 	}
@@ -76,7 +76,7 @@ for(let i = 100; i <= 1500; i++){
 
 	const dom = cheerio.load(fixedData);
 	const cfCloudflareStatus = dom('#cf-cloudflare-status');
-	if(cfCloudflareStatus){
+	if(cfCloudflareStatus) {
 		cfCloudflareStatus.find('span.w-full.truncate').text('[location]');
 	}
 
@@ -109,9 +109,9 @@ const styles = [
 	'main.css',
 ];
 // get errors styles
-for(const styleName of styles){
+for(const styleName of styles) {
 	const styleRes = await fetch(`https://cloudflare.com/cdn-cgi/styles/${styleName}`, {agent});
-	if(styleRes.ok){
+	if(styleRes.ok) {
 		const style = await styleRes.text();
 		const stylePath = path.resolve(dir, `styles/${styleName}`);
 		await fs.ensureFile(stylePath);

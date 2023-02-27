@@ -8,12 +8,12 @@ import {tryAndPush, getHttpsAgent} from './utils.js';
 
 const agent = getHttpsAgent();
 
-const dir = path.resolve(`../data/other`);
+const dir = path.resolve('../data/other');
 await fs.ensureDir(dir);
 
-const cfIpsv4Res = await fetch(`https://www.cloudflare.com/ips-v4`, {agent});
-const cfIpsv6Res = await fetch(`https://www.cloudflare.com/ips-v6`, {agent});
-if(cfIpsv4Res.ok && cfIpsv6Res.ok){
+const cfIpsv4Res = await fetch('https://www.cloudflare.com/ips-v4', {agent});
+const cfIpsv6Res = await fetch('https://www.cloudflare.com/ips-v6', {agent});
+if(cfIpsv4Res.ok && cfIpsv6Res.ok) {
 	const cfIpsv4 = await cfIpsv4Res.text();
 	const cfIpsv6 = await cfIpsv6Res.text();
 

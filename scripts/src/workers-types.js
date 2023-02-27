@@ -5,7 +5,7 @@ import dateFormat from 'dateformat';
 
 import {tryAndPush} from './utils.js';
 
-async function run(){
+async function run() {
 	console.log('Fetching Cloudflare Workers Types...');
 
 	await pacote.extract('@cloudflare/workers-types', path.resolve('../data/workers-types'));

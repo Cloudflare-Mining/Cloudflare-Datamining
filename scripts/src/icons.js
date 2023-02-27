@@ -6,7 +6,7 @@ import {deleteAsync} from 'del';
 
 import {tryAndPush} from './utils.js';
 
-async function run(){
+async function run() {
 	console.log('Fetching Cloudflare icons...');
 
 	await pacote.extract('@cloudflare/component-icon', path.resolve('../data/icons'));

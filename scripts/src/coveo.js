@@ -8,25 +8,25 @@ import {tryAndPush, getHttpsAgent} from './utils.js';
 
 const agent = getHttpsAgent();
 
-const dir = path.resolve(`../data/coveo`);
+const dir = path.resolve('../data/coveo');
 await fs.ensureDir(dir);
 
-async function getCoveoResults(source, filterNoLanguage){
+async function getCoveoResults(source, filterNoLanguage) {
 	console.log('Initializing Coveo search for source', source);
 	const body = new URLSearchParams({
 		actionsHistory: JSON.stringify([]),
 		analytics: JSON.stringify({}),
 		isGuestUser: false,
 		aq: `(@customer_facing_source=="${source}") @language==English`,
-		cq: `$qre(expression:'@customer_facing_source=="Blog"', modifier:'200')$qre(expression:'@language=="English"', modifier:'200')`,
+		cq: '$qre(expression:\'@customer_facing_source=="Blog"\', modifier:\'200\')$qre(expression:\'@language=="English"\', modifier:\'200\')',
 		locale: 'en',
 		pipeline: 'Blog - Production',
 		firstResult: 0,
 		numberOfResults: 100,
-		sortCriteria: `date descending`,
+		sortCriteria: 'date descending',
 		timezone: 'Europe/London',
 	});
-	if(filterNoLanguage){
+	if(filterNoLanguage) {
 		body.set('aq', `(@customer_facing_source=="${source}")`);
 	}
 
@@ -34,49 +34,49 @@ async function getCoveoResults(source, filterNoLanguage){
 		organizationId: process.env.COVEO_ORGID,
 	});
 	const response = await fetch(`https://cloudplatform.coveo.com/rest/search/v2?${query.toString()}`, {
-		"headers": {
+		'headers': {
 			authorization: `Bearer ${process.env.COVEO_KEY}`,
 		},
 		body: body,
-		method: "POST",
+		method: 'POST',
 		agent,
 	});
-	if(!response.ok){
+	if(!response.ok) {
 		throw new Error(`Failed to get initial results: ${response.status}`);
 	}
 	const results = await response.json();
 
 	const URLs = new Set([]);
 	let queried = 0;
-	for(const result of results.results){
+	for(const result of results.results) {
 		queried++;
-		if(filterNoLanguage && result?.raw?.language?.length > 0){
+		if(filterNoLanguage && result?.raw?.language?.length > 0) {
 			continue;
 		}
 		URLs.add(result.clickUri);
 	}
-	while(results.totalCount > queried){
+	while(results.totalCount > queried) {
 		console.log('Fetching more results for source', source, queried);
 		const nextBody = new URLSearchParams(body.toString());
 		nextBody.set('firstResult', queried);
 		const nextResponse = await fetch(`https://cloudplatform.coveo.com/rest/search/v2?${query.toString()}`, {
-			"headers": {
+			'headers': {
 				authorization: `Bearer ${process.env.COVEO_KEY}`,
 			},
 			body: nextBody,
-			method: "POST",
+			method: 'POST',
 			agent,
 		});
-		if(!nextResponse.ok){
+		if(!nextResponse.ok) {
 			throw new Error(`Failed to get more results after ${queried}: ${nextResponse.status}`);
 		}
 		const nextResults = await nextResponse.json();
-		if(nextResults.results.length === 0){
+		if(nextResults.results.length === 0) {
 			throw new Error(`No more results after ${URLs.size}: ${nextResponse.status}`);
 		}
-		for(const result of nextResults.results){
+		for(const result of nextResults.results) {
 			queried++;
-			if(filterNoLanguage && result?.raw?.language?.length > 0){
+			if(filterNoLanguage && result?.raw?.language?.length > 0) {
 				continue;
 			}
 			URLs.add(result.clickUri);
@@ -111,7 +111,7 @@ const data = [
 		filename: 'support-knowledgebase.json',
 	},
 ];
-for(const {source, filename, filterNoLanguage} of data){
+for(const {source, filename, filterNoLanguage} of data) {
 	const results = await getCoveoResults(source, filterNoLanguage);
 	await fs.writeFile(path.resolve(dir, filename), JSON.stringify(results, null, '\t'));
 }

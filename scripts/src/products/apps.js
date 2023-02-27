@@ -7,7 +7,7 @@ import filenamify from 'filenamify';
 
 import {tryAndPush} from '../utils.js';
 
-const dir = path.resolve(`../data/products/apps`);
+const dir = path.resolve('../data/products/apps');
 await fs.ensureDir(dir);
 await fs.emptyDir(dir);
 
@@ -16,7 +16,7 @@ const appsJson = await apps.json();
 
 const ratePlans = new Set([]);
 
-for(const app of appsJson){
+for(const app of appsJson) {
 	const filename = filenamify(`${app.title} - ${app.id}`);
 	const appDir = path.resolve(dir, filename);
 	await fs.ensureDir(appDir);
@@ -27,21 +27,21 @@ for(const app of appsJson){
 	const file = path.resolve(appDir, 'info.json');
 	// delete some fields we don't care for
 	const json = appsJson;
-	for(const product of json.products || []){
-		if(product.plan){
+	for(const product of json.products || []) {
+		if(product.plan) {
 			ratePlans.add(product.plan.toLowerCase());
 		}
-		if(product.feature && !product.feature.includes('.')){
+		if(product.feature && !product.feature.includes('.')) {
 			ratePlans.add(product.feature.toLowerCase());
 		}
 	}
-	for(const version of json.versions){
+	for(const version of json.versions) {
 		delete version.ratingSummary;
-		for(const product of version?.definition?.products || []){
-			if(product.plan){
+		for(const product of version?.definition?.products || []) {
+			if(product.plan) {
 				ratePlans.add(product.plan.toLowerCase());
 			}
-			if(product.feature && !product.feature.includes('.')){
+			if(product.feature && !product.feature.includes('.')) {
 				ratePlans.add(product.feature.toLowerCase());
 			}
 		}

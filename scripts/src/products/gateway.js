@@ -5,7 +5,7 @@ import dateFormat from 'dateformat';
 
 import {tryAndPush, propertiesToArray, cfRequest} from '../utils.js';
 
-const dir = path.resolve(`../data/products/gateway`);
+const dir = path.resolve('../data/products/gateway');
 await fs.ensureDir(dir);
 
 const reqs = [
@@ -24,7 +24,7 @@ const reqs = [
 ];
 
 console.log('Making requests...');
-for(const req of reqs){
+for(const req of reqs) {
 	const file = path.resolve(dir, `${req.name}.json`);
 	const url = req.url;
 
@@ -32,13 +32,13 @@ for(const req of reqs){
 	const res = await cfRequest(url, {
 		method: req.method,
 	});
-	if(!res.ok){
+	if(!res.ok) {
 		console.log(`${req.name} failed: ${res.status} ${res.statusText}`);
 		continue;
 	}
 	const json = await res.json();
-	if(req.write !== false){
-		if(req.transform){
+	if(req.write !== false) {
+		if(req.transform) {
 			await fs.writeJson(file, req.transform(json), {spaces: '\t'});
 		}else{
 			await fs.writeJson(file, propertiesToArray(json).sort(), {spaces: '\t'});

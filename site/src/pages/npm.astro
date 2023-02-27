@@ -10,7 +10,7 @@ const packages: any = {
 	'_unscoped': {},
 	'@cfpreview': {},
 };
-for(const [path, module] of Object.entries(importFiles)){
+for(const [path, module] of Object.entries(importFiles)) {
 	const index = path.indexOf('data/packages/');
 	const packageName = path.slice(index + 14, -('info.json'.length + 1));
 
@@ -24,7 +24,7 @@ for(const [path, module] of Object.entries(importFiles)){
 }
 
 // sort by most recently updated
-for(const scope in packages){
+for(const scope in packages) {
 	packages[scope] = Object.fromEntries(
 		Object.entries(packages[scope]).sort(
 			(packageA, packageB) => packages[scope][packageB[0]].date.localeCompare(packages[scope][packageA[0]].date),
@@ -33,7 +33,7 @@ for(const scope in packages){
 }
 
 // const headers = ["Name", "Description", "Version", "Last Updated", "Tags"];
-const headers = ["Name", "Description"];
+const headers = ['Name', 'Description'];
 ---
 <Layout title="NPM Packages - Cloudflare Datamining" description="List of Cloudflare NPM packages">
 	<NpmTable title="NPM Packages" headers={headers} data={packages} />
