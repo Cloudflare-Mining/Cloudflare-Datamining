@@ -205,6 +205,7 @@
 	"AccountDosdNetworkAnalyticsAdaptiveGroupsDimensions": {
 		"__description": "",
 		"attackId": "Unique identifier of the mitigation that matched the packet, if any",
+		"attackVector": "Attack vector of the rule that matched the packet, if any",
 		"coloCity": "City where the Cloudflare datacenter that received the packet is located",
 		"coloCode": "Cloudflare datacenter that received the packet (nearest IATA airport code)",
 		"coloCountry": "Country where the Cloudflare datacenter that received the packet is located (ISO 3166-1 alpha-2)",
@@ -262,6 +263,7 @@
 		"outcome": "The action that was taken on the packet (possible values: pass, drop)",
 		"protocolState": "State of the packet in the context of the protocol, if available",
 		"ruleId": "Unique identifier of the rule that matched the packet, if any",
+		"ruleName": "Human-readable name of the rule that matched the packet, if any",
 		"rulesetId": "Unique identifier of the ruleset containing the rule that matched the packet, if any",
 		"rulesetOverrideId": "Unique identifier of the ruleset override containing the rule that matched the packet, if any",
 		"sampleInterval": "ABR sample interval",
@@ -535,7 +537,8 @@
 		"wafMlXssAttackScore": "Beta. WAF ML score for an XSS attack",
 		"wafRceAttackScore": "Beta. WAF score for a RCE attack",
 		"wafSqliAttackScore": "Beta. WAF score for a SQLi attack",
-		"wafXssAttackScore": "Beta. WAF score for a XSS attack"
+		"wafXssAttackScore": "Beta. WAF score for a XSS attack",
+		"zoneTag": "Associated zone"
 	},
 	"AccountFirewallEventsAdaptiveFilter_InputObject": {
 		"__description": ""
@@ -600,7 +603,8 @@
 		"wafMlXssAttackScore": "Beta. WAF ML score for an XSS attack",
 		"wafRceAttackScore": "Beta. WAF score for a RCE attack",
 		"wafSqliAttackScore": "Beta. WAF score for a SQLi attack",
-		"wafXssAttackScore": "Beta. WAF score for a XSS attack"
+		"wafXssAttackScore": "Beta. WAF score for a XSS attack",
+		"zoneTag": "Associated zone"
 	},
 	"AccountFirewallEventsAdaptiveGroupsFilter_InputObject": {
 		"__description": ""
@@ -1244,7 +1248,8 @@
 		"wafRceAttackScore": "Beta. WAF score for a RCE attack",
 		"wafSqliAttackScore": "Beta. WAF score for a SQLi attack",
 		"wafXssAttackScore": "Beta. WAF score for a XSS attack",
-		"xRequestedWith": "The X-Requested-With header of the client request"
+		"xRequestedWith": "The X-Requested-With header of the client request",
+		"zoneTag": "Associated zone"
 	},
 	"AccountHttpRequestsAdaptiveFilter_InputObject": {
 		"__description": ""
@@ -1314,7 +1319,8 @@
 		"wafRceAttackScore": "Beta. WAF score for a RCE attack",
 		"wafSqliAttackScore": "Beta. WAF score for a SQLi attack",
 		"wafXssAttackScore": "Beta. WAF score for a XSS attack",
-		"xRequestedWith": "The X-Requested-With header of the client request"
+		"xRequestedWith": "The X-Requested-With header of the client request",
+		"zoneTag": "Associated zone"
 	},
 	"AccountHttpRequestsAdaptiveGroupsFilter_InputObject": {
 		"__description": ""
@@ -3246,6 +3252,38 @@
 	"ZoneCacheReserveStorageAdaptiveGroupsOrderBy": {
 		"__description": ""
 	},
+	"ZoneDmarcReportsAdaptive": {
+		"__description": "Dmarc report records with adaptive sampling",
+		"datetime": "The date and time the source email was received",
+		"disposition": "DMARC policy disposition",
+		"dkim": "DKIM result",
+		"domain": "Domain to which this report refers to",
+		"envelopeTo": "Envelope To of emails",
+		"evaluatedReason": "Reason (if any) why the record was evaluated",
+		"headerFrom": "Header From of emails",
+		"matchingMessages": "Number of messages that matched",
+		"orgName": "Organization that generated report",
+		"policyDKIMAlignmentMode": "DKIM alignment mode specified in the policy",
+		"policyDomain": "DMARC policy of the domain",
+		"policyPercentage": "Percentage of emails that should be checked",
+		"policySPFAlignmentMode": "SPF alignment mode specified in the policy",
+		"policySubDomain": "DMARC policy of subdomains",
+		"recordId": "Unique identifier of this record",
+		"recordIndex": "Index of this record within the report",
+		"reportBegin": "Start of the reporting period",
+		"reportEnd": "End of the reporting period",
+		"reportError": "Error message (if any)",
+		"reportId": "Unique identifier of the report to which this record belongs",
+		"sampleInterval": "ABR sample interval",
+		"sourceIP": "Source IP address of the email",
+		"spf": "SPF result"
+	},
+	"ZoneDmarcReportsAdaptiveFilter_InputObject": {
+		"__description": ""
+	},
+	"ZoneDmarcReportsAdaptiveOrderBy": {
+		"__description": ""
+	},
 	"ZoneEmailRoutingAdaptive": {
 		"__description": "Beta. Raw email routing logs with adaptive sampling",
 		"datetime": "The date and time the source email was received",
@@ -4305,6 +4343,7 @@
 		"apiRequestSequencesGroups": "",
 		"cacheReserveOperationsAdaptiveGroups": "",
 		"cacheReserveStorageAdaptiveGroups": "",
+		"dmarcReportsAdaptive": "",
 		"emailRoutingAdaptive": "",
 		"emailRoutingAdaptiveGroups": "",
 		"firewallEventsAdaptive": "",
@@ -4703,6 +4742,7 @@
 		"apiRequestSequencesGroups": "Sequences of API endpoint operations. Sequences are grouped by AuthID and currently ranked by correlation score. Correlation scores are estimated over a 24 hour window and are current to within 10 minutes",
 		"cacheReserveOperationsAdaptiveGroups": "Beta. Cache Reserve operations with adaptive sampling",
 		"cacheReserveStorageAdaptiveGroups": "Beta. Cache Reserve storage with adaptive sampling",
+		"dmarcReportsAdaptive": "Dmarc report records with adaptive sampling",
 		"emailRoutingAdaptive": "Beta. Raw email routing logs with adaptive sampling",
 		"emailRoutingAdaptiveGroups": "Beta. Aggregated email routing logs with adaptive sampling",
 		"firewallEventsAdaptive": "Raw Firewall events with adaptive sampling",
