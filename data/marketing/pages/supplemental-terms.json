@@ -111,7 +111,7 @@
 															"target": null,
 															"uri": null
 														},
-														"value": "Last Updated November 10, 2022",
+														"value": "Last Updated February 28, 2023",
 														"marks": [
 															{
 																"type": "italic"
@@ -804,6 +804,69 @@
 																		"nodeType": "hyperlink",
 																		"data": {
 																			"target": null,
+																			"uri": "#cloudflare-for-government"
+																		},
+																		"value": null,
+																		"marks": null,
+																		"content": [
+																			{
+																				"nodeType": "text",
+																				"data": {
+																					"target": null,
+																					"uri": null
+																				},
+																				"value": "Cloudflare for Government",
+																				"marks": [],
+																				"content": null
+																			}
+																		]
+																	},
+																	{
+																		"nodeType": "text",
+																		"data": {
+																			"target": null,
+																			"uri": null
+																		},
+																		"value": "",
+																		"marks": [],
+																		"content": null
+																	}
+																]
+															}
+														]
+													},
+													{
+														"nodeType": "list-item",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": null,
+														"marks": null,
+														"content": [
+															{
+																"nodeType": "paragraph",
+																"data": {
+																	"target": null,
+																	"uri": null
+																},
+																"value": null,
+																"marks": null,
+																"content": [
+																	{
+																		"nodeType": "text",
+																		"data": {
+																			"target": null,
+																			"uri": null
+																		},
+																		"value": "",
+																		"marks": [],
+																		"content": null
+																	},
+																	{
+																		"nodeType": "hyperlink",
+																		"data": {
+																			"target": null,
 																			"uri": "#cloudflare-network-interconnect"
 																		},
 																		"value": null,
@@ -1182,7 +1245,7 @@
 																		"nodeType": "hyperlink",
 																		"data": {
 																			"target": null,
-																			"uri": "#data-localization-suite-cloudflares-regional-services-geo-key-manager-and-keyless-ssl"
+																			"uri": "#data-localization-suite-cloudflares-regional-services-geo-key-manager-customer-metadata-boundary-and-keyless-ssl"
 																		},
 																		"value": null,
 																		"marks": null,
@@ -1193,7 +1256,7 @@
 																					"target": null,
 																					"uri": null
 																				},
-																				"value": "Data Localization Suite (Cloudflare's Regional Services, Geo Key Manager, and Keyless SSL)",
+																				"value": "Data Localization Suite (Cloudflare's Regional Services, Geo Key Manager, Customer Metadata Boundary, and Keyless SSL)",
 																				"marks": [],
 																				"content": null
 																			}
@@ -2446,27 +2509,7 @@
 															"target": null,
 															"uri": null
 														},
-														"value": "\" means ",
-														"marks": [],
-														"content": null
-													},
-													{
-														"nodeType": "text",
-														"data": {
-															"target": null,
-															"uri": null
-														},
-														"value": "an image subject to a Transformation or",
-														"marks": [],
-														"content": null
-													},
-													{
-														"nodeType": "text",
-														"data": {
-															"target": null,
-															"uri": null
-														},
-														"value": " Images Stored that are delivered to an end user at any time during the applicable billing period. ",
+														"value": "\" means an image subject to a Transformation or Images Stored that are delivered to an end user at any time during the applicable billing period. ",
 														"marks": [],
 														"content": null
 													}
@@ -2832,27 +2875,7 @@
 															"target": null,
 															"uri": null
 														},
-														"value": "\" is a single HTTP/S request that is received by Cloudflare's edge. For the Cloudflare Developer Platform, a Request is a single HTTP/S request that hits a Worker ",
-														"marks": [],
-														"content": null
-													},
-													{
-														"nodeType": "text",
-														"data": {
-															"target": null,
-															"uri": null
-														},
-														"value": "on Cloudflare's edge",
-														"marks": [],
-														"content": null
-													},
-													{
-														"nodeType": "text",
-														"data": {
-															"target": null,
-															"uri": null
-														},
-														"value": ".",
+														"value": "\" is a single HTTP/S request that is received by Cloudflare's edge. For the Cloudflare Developer Platform, a Request is a single HTTP/S request that hits a Worker on Cloudflare's edge.",
 														"marks": [],
 														"content": null
 													}
@@ -4190,17 +4213,7 @@
 																			"target": null,
 																			"uri": null
 																		},
-																		"value": "As between you and Cloudflare, you will provide all support of any type requested by Cloudflare, your End Users, or a third party related to your Customer Content, End User content, and Internet Properties, and be responsible for any warranty, liability or obligation to any End User or any third party that arises in connection with End User content and use of your Internet Properties.",
-																		"marks": [],
-																		"content": null
-																	},
-																	{
-																		"nodeType": "text",
-																		"data": {
-																			"target": null,
-																			"uri": null
-																		},
-																		"value": "\n",
+																		"value": "As between you and Cloudflare, you will provide all support of any type requested by Cloudflare, your End Users, or a third party related to your Customer Content, End User content, and Internet Properties, and be responsible for any warranty, liability or obligation to any End User or any third party that arises in connection with End User content and use of your Internet Properties.\n",
 																		"marks": [],
 																		"content": null
 																	}
@@ -4649,6 +4662,31 @@
 												"content": []
 											},
 											{
+												"nodeType": "heading-2",
+												"data": {
+													"target": null,
+													"uri": null
+												},
+												"value": null,
+												"marks": null,
+												"content": [
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "Cloudflare for Government",
+														"marks": [
+															{
+																"type": "bold"
+															}
+														],
+														"content": null
+													}
+												]
+											},
+											{
 												"nodeType": "paragraph",
 												"data": {
 													"target": null,
@@ -4663,7 +4701,111 @@
 															"target": null,
 															"uri": null
 														},
-														"value": "\n\n",
+														"value": "The Cloudflare for Government Service is available for the Services identified on the ",
+														"marks": [],
+														"content": null
+													},
+													{
+														"nodeType": "hyperlink",
+														"data": {
+															"target": null,
+															"uri": "https://www.cloudflare.com/cloudflare-for-government/"
+														},
+														"value": null,
+														"marks": null,
+														"content": [
+															{
+																"nodeType": "text",
+																"data": {
+																	"target": null,
+																	"uri": null
+																},
+																"value": "Cloudflare for Government Page",
+																"marks": [],
+																"content": null
+															}
+														]
+													},
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": " (each such Service, a \"Covered Service\") that have been purchased by Customer. Purchase of the Cloudflare for Government Service alone does not provide Customer with an entitlement to any Covered Services, unless such Covered Services are purchased separately by Customer. ",
+														"marks": [],
+														"content": null
+													}
+												]
+											},
+											{
+												"nodeType": "paragraph",
+												"data": {
+													"target": null,
+													"uri": null
+												},
+												"value": null,
+												"marks": null,
+												"content": [
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "Customer is responsible for configuring the Cloudflare for Government Service in accordance with the Customer Responsibilities provided by Cloudflare to Customer and for verifying that its use of the Cloudflare for Government Service will comply with laws or other obligations that may apply to Customer or Customer Content. ",
+														"marks": [],
+														"content": null
+													}
+												]
+											},
+											{
+												"nodeType": "paragraph",
+												"data": {
+													"target": null,
+													"uri": null
+												},
+												"value": null,
+												"marks": null,
+												"content": [
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "",
+														"marks": [],
+														"content": null
+													}
+												]
+											},
+											{
+												"nodeType": "hr",
+												"data": {
+													"target": null,
+													"uri": null
+												},
+												"value": null,
+												"marks": null,
+												"content": []
+											},
+											{
+												"nodeType": "paragraph",
+												"data": {
+													"target": null,
+													"uri": null
+												},
+												"value": null,
+												"marks": null,
+												"content": [
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "\n",
 														"marks": [],
 														"content": null
 													}
@@ -5392,7 +5534,38 @@
 															"target": null,
 															"uri": null
 														},
-														"value": "\"). You may only use the Cloudflare Gateway Content in connection with the Service. You agree not to provide the Cloudflare Gateway Content to any third parties. If you feel that a website has been incorrectly categorized, you may submit a report here.",
+														"value": "\"). You may only use the Cloudflare Gateway Content in connection with the Service. You agree not to provide the Cloudflare Gateway Content to any third parties. If you feel that a website has been incorrectly categorized, you may submit a report ",
+														"marks": [],
+														"content": null
+													},
+													{
+														"nodeType": "hyperlink",
+														"data": {
+															"target": null,
+															"uri": "https://radar.cloudflare.com/domains/feedback"
+														},
+														"value": null,
+														"marks": null,
+														"content": [
+															{
+																"nodeType": "text",
+																"data": {
+																	"target": null,
+																	"uri": null
+																},
+																"value": "here",
+																"marks": [],
+																"content": null
+															}
+														]
+													},
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": ".",
 														"marks": [],
 														"content": null
 													}
@@ -6446,7 +6619,31 @@
 															"target": null,
 															"uri": null
 														},
-														"value": "Data Localization Suite (Cloudflare's Regional Services, Geo Key Manager, and Keyless SSL)",
+														"value": "Data Localization Suite (Cloudflare's Regional Services, Geo Key Manager, Customer Metadata Boundary,",
+														"marks": [],
+														"content": null
+													},
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": " ",
+														"marks": [
+															{
+																"type": "bold"
+															}
+														],
+														"content": null
+													},
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "and Keyless SSL)",
 														"marks": [],
 														"content": null
 													}
@@ -6499,7 +6696,84 @@
 																			"target": null,
 																			"uri": null
 																		},
-																		"value": "Cloudflare Customers that purchase the Data Localization Suite will be entitled to Cloudflare's Regional Services, Geo Key Manager, and Keyless SSL Services for Customer Zones that are on Cloudflare's Enterprise plan for the sole use of Data Localization suite.",
+																		"value": "Cloudflare Customers that purchase the Data Localization Suite will be entitled to Cloudflare's Regional Services, Geo Key Manager, Customer Metadata Boundary, and Keyless SSL Services for Customer Zones that are on Cloudflare's Enterprise plan for the sole use of Data Localization suite. Customers are responsible for configurations related to the Data Localization Suite. ",
+																		"marks": [],
+																		"content": null
+																	}
+																]
+															},
+															{
+																"nodeType": "paragraph",
+																"data": {
+																	"target": null,
+																	"uri": null
+																},
+																"value": null,
+																"marks": null,
+																"content": [
+																	{
+																		"nodeType": "text",
+																		"data": {
+																			"target": null,
+																			"uri": null
+																		},
+																		"value": "",
+																		"marks": [],
+																		"content": null
+																	}
+																]
+															},
+															{
+																"nodeType": "paragraph",
+																"data": {
+																	"target": null,
+																	"uri": null
+																},
+																"value": null,
+																"marks": null,
+																"content": [
+																	{
+																		"nodeType": "text",
+																		"data": {
+																			"target": null,
+																			"uri": null
+																		},
+																		"value": "The compatible Cloudflare Services, available geographic regions, and other limitations for the Data Localization Suite are indicated on Cloudflare's developer documentation available at ",
+																		"marks": [],
+																		"content": null
+																	},
+																	{
+																		"nodeType": "hyperlink",
+																		"data": {
+																			"target": null,
+																			"uri": "https://developers.cloudflare.com/data-localization/"
+																		},
+																		"value": null,
+																		"marks": null,
+																		"content": [
+																			{
+																				"nodeType": "text",
+																				"data": {
+																					"target": null,
+																					"uri": null
+																				},
+																				"value": "https://developers.cloudflare.com/data-localization/",
+																				"marks": [
+																					{
+																						"type": "underline"
+																					}
+																				],
+																				"content": null
+																			}
+																		]
+																	},
+																	{
+																		"nodeType": "text",
+																		"data": {
+																			"target": null,
+																			"uri": null
+																		},
+																		"value": " (\"Data Localization Suite Page\").\n",
 																		"marks": [],
 																		"content": null
 																	}
@@ -6569,38 +6843,7 @@
 																			"target": null,
 																			"uri": null
 																		},
-																		"value": "\") for any Services identified on the ",
-																		"marks": [],
-																		"content": null
-																	},
-																	{
-																		"nodeType": "hyperlink",
-																		"data": {
-																			"target": null,
-																			"uri": "https://www.cloudflare.com/data-localization/"
-																		},
-																		"value": null,
-																		"marks": null,
-																		"content": [
-																			{
-																				"nodeType": "text",
-																				"data": {
-																					"target": null,
-																					"uri": null
-																				},
-																				"value": "Data Localization Suite",
-																				"marks": [],
-																				"content": null
-																			}
-																		]
-																	},
-																	{
-																		"nodeType": "text",
-																		"data": {
-																			"target": null,
-																			"uri": null
-																		},
-																		"value": " list (each such Service, a \"",
+																		"value": "\") for any Services identified on the Data Localization Suite Page (each such Service, a \"",
 																		"marks": [],
 																		"content": null
 																	},
@@ -6670,38 +6913,85 @@
 																			"target": null,
 																			"uri": null
 																		},
-																		"value": "As a Data Localization Suite customer, you may configure Regional Services for your Enterprise primary domain and your Enterprise secondary domain(s). If you have enabled Regional Services for your Domain(s), Cloudflare will terminate TLS and apply application layer services to Customer Content for HTTPS traffic transmitted between End Users and the origin web server(s) for such a Domain only in Cloudflare data centers located in the geographic region you have selected. The geographic regions available for the Regional Service are listed on the ",
+																		"value": "As a Data Localization Suite customer, you may configure Regional Services for Covered Services on your Enterprise subscription that support Regional Services as described on the Data Localization Suite Page. If you have enabled Regional Services for your Domain(s), Cloudflare will terminate TLS and apply application layer services to Customer Content for HTTPS traffic transmitted between End Users and the origin web server(s) for such a Domain only in Cloudflare data centers located in the geographic region you have selected. The geographic regions available for the Regional Service are listed on the Data Localization Suite Page.",
 																		"marks": [],
 																		"content": null
-																	},
-																	{
-																		"nodeType": "hyperlink",
-																		"data": {
-																			"target": null,
-																			"uri": "https://www.cloudflare.com/data-localization/"
-																		},
-																		"value": null,
-																		"marks": null,
-																		"content": [
-																			{
-																				"nodeType": "text",
-																				"data": {
-																					"target": null,
-																					"uri": null
-																				},
-																				"value": "Data Localization Suite support page",
-																				"marks": [],
-																				"content": null
-																			}
-																		]
-																	},
+																	}
+																]
+															}
+														]
+													},
+													{
+														"nodeType": "list-item",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": null,
+														"marks": null,
+														"content": [
+															{
+																"nodeType": "paragraph",
+																"data": {
+																	"target": null,
+																	"uri": null
+																},
+																"value": null,
+																"marks": null,
+																"content": [
 																	{
 																		"nodeType": "text",
 																		"data": {
 																			"target": null,
 																			"uri": null
 																		},
-																		"value": ".",
+																		"value": "Customer Metadata Boundary",
+																		"marks": [
+																			{
+																				"type": "bold"
+																			}
+																		],
+																		"content": null
+																	}
+																]
+															},
+															{
+																"nodeType": "paragraph",
+																"data": {
+																	"target": null,
+																	"uri": null
+																},
+																"value": null,
+																"marks": null,
+																"content": [
+																	{
+																		"nodeType": "text",
+																		"data": {
+																			"target": null,
+																			"uri": null
+																		},
+																		"value": "As a Data Localization Suite customer, you may configure the Customer Metadata Boundary (CMB) for Covered Services on your Enterprise account(s). The geographic regions available and compatible Services for CMB are listed on the Data Localization Suite Page. Customer understands that not all Services will be available when CMB is enabled and that some Services will have reduced functionality. ",
+																		"marks": [],
+																		"content": null
+																	}
+																]
+															},
+															{
+																"nodeType": "paragraph",
+																"data": {
+																	"target": null,
+																	"uri": null
+																},
+																"value": null,
+																"marks": null,
+																"content": [
+																	{
+																		"nodeType": "text",
+																		"data": {
+																			"target": null,
+																			"uri": null
+																		},
+																		"value": "Cloudflare will not transfer outside the configured region(s) any Customer Logs arising from Covered Services.  Customer is responsible for all configurations related to CMB. ",
 																		"marks": [],
 																		"content": null
 																	}
@@ -7371,47 +7661,7 @@
 																			"target": null,
 																			"uri": null
 																		},
-																		"value": "\"). Magic Transit provides layer 3 DDoS mitigation, ",
-																		"marks": [],
-																		"content": null
-																	},
-																	{
-																		"nodeType": "text",
-																		"data": {
-																			"target": null,
-																			"uri": null
-																		},
-																		"value": "Magic Firewall provides a ",
-																		"marks": [],
-																		"content": null
-																	},
-																	{
-																		"nodeType": "text",
-																		"data": {
-																			"target": null,
-																			"uri": null
-																		},
-																		"value": "network firewall, and ",
-																		"marks": [],
-																		"content": null
-																	},
-																	{
-																		"nodeType": "text",
-																		"data": {
-																			"target": null,
-																			"uri": null
-																		},
-																		"value": "Magic WAN provides",
-																		"marks": [],
-																		"content": null
-																	},
-																	{
-																		"nodeType": "text",
-																		"data": {
-																			"target": null,
-																			"uri": null
-																		},
-																		"value": " traffic management solutions to the Customer Network traffic directed to the number of Customer's IP Prefixes listed on Customer's Order Form or Insertion Order, as provided by Customer to Cloudflare for the Customer Network.",
+																		"value": "\"). Magic Transit provides layer 3 DDoS mitigation, Magic Firewall provides a network firewall, and Magic WAN provides traffic management solutions to the Customer Network traffic directed to the number of Customer's IP Prefixes listed on Customer's Order Form or Insertion Order, as provided by Customer to Cloudflare for the Customer Network.",
 																		"marks": [],
 																		"content": null
 																	}
@@ -9428,27 +9678,7 @@
 																			"target": null,
 																			"uri": null
 																		},
-																		"value": "ZARAZ IS PROVIDED ON AN \"AS IS\" AND \"AS AVAILABLE\" BASIS. ZARAZ MAY ADVERSELY AFFECT THE MANNER IN WHICH YOUR INTERNET PROPERTIES ACCESS OR COMMUNICATE WITH THIRD-PARTY PRODUCTS. CLOUDFLARE DOES NOT REPRESENT OR WARRANT THAT ",
-																		"marks": [],
-																		"content": null
-																	},
-																	{
-																		"nodeType": "text",
-																		"data": {
-																			"target": null,
-																			"uri": null
-																		},
-																		"value": "(I) ZARAZ WILL PREVENT YOUR OR YOUR END USERS' DATA FROM REACHING A THIRD PARTY; (II)",
-																		"marks": [],
-																		"content": null
-																	},
-																	{
-																		"nodeType": "text",
-																		"data": {
-																			"target": null,
-																			"uri": null
-																		},
-																		"value": " ZARAZ OR ANY THIRD-PARTY PRODUCTS CONFIGURED THROUGH THE SERVICE WILL BE RELIABLE, ERROR-FREE, OR UNINTERRUPTED, THAT DEFECTS WILL BE CORRECTED, OR (III) THAT THE SERVICE OR ANY THIRD-PARTY PRODUCTS CONFIGURED THROUGH THE SERVICE WILL OTHERWISE MEET YOUR NEEDS OR EXPECTATIONS.",
+																		"value": "ZARAZ IS PROVIDED ON AN \"AS IS\" AND \"AS AVAILABLE\" BASIS. ZARAZ MAY ADVERSELY AFFECT THE MANNER IN WHICH YOUR INTERNET PROPERTIES ACCESS OR COMMUNICATE WITH THIRD-PARTY PRODUCTS. CLOUDFLARE DOES NOT REPRESENT OR WARRANT THAT (I) ZARAZ WILL PREVENT YOUR OR YOUR END USERS' DATA FROM REACHING A THIRD PARTY; (II) ZARAZ OR ANY THIRD-PARTY PRODUCTS CONFIGURED THROUGH THE SERVICE WILL BE RELIABLE, ERROR-FREE, OR UNINTERRUPTED, THAT DEFECTS WILL BE CORRECTED, OR (III) THAT THE SERVICE OR ANY THIRD-PARTY PRODUCTS CONFIGURED THROUGH THE SERVICE WILL OTHERWISE MEET YOUR NEEDS OR EXPECTATIONS.",
 																		"marks": [],
 																		"content": null
 																	}
