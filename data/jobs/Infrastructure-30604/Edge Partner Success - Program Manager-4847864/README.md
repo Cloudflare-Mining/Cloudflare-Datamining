@@ -23,7 +23,6 @@
 	<li><span style="font-weight: 400;">Persistence, hustle, and strong interest in building an organized machine</span></li>
 	<li><span style="font-weight: 400;">Strong bias toward self-starting organizers, curiosity, and a keen interest in the foundational layers of the internet</span></li>
 	<li><span style="font-weight: 400;">Desirable, not required: familiarity with network routing / engineering &amp; operations (can be learned, curiosity more important than extensive existing knowledge)</span></li>
-	<li><span style="font-weight: 400;">Title and location flexible for exceptional candidates</span></li>
 </ul>
 <p>&nbsp;</p>
 <div class="content-conclusion">
