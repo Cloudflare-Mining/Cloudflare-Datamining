@@ -1,5 +1,5 @@
 {
-	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/4894557?gh_jid=4894557",
+	"absolute_url": "https://boards.greenhouse.io/cloudflare/jobs/4898772?gh_jid=4898772",
 	"data_compliance": [
 		{
 			"type": "gdpr",
@@ -7,7 +7,7 @@
 			"retention_period": null
 		}
 	],
-	"internal_job_id": 2488679,
+	"internal_job_id": 2490738,
 	"location": {
 		"name": "San Francisco or Austin"
 	},
@@ -21,26 +21,28 @@
 		{
 			"id": 825338,
 			"name": "Cost Center",
-			"value": "4100 - Infrastructure",
+			"value": "6320 - Corporate Finance",
 			"value_type": "single_select"
 		},
 		{
 			"id": 8654220,
 			"name": "Job Posting Location",
 			"value": [
-				"Austin, US"
+				"Austin, US",
+				"San Francisco, US",
+				"Remote, US"
 			],
 			"value_type": "multi_select"
 		}
 	],
-	"id": 4894557,
-	"updated_at": "2023-02-28T15:23:38-05:00",
+	"id": 4898772,
+	"updated_at": "2023-02-28T17:01:11-05:00",
 	"requisition_id": null,
-	"title": "Global Commodity Sourcing Manager",
+	"title": "Internal Audit Intern, Business Process",
 	"departments": [
 		{
-			"id": 30604,
-			"name": "Infrastructure",
+			"id": 70480,
+			"name": "University",
 			"child_ids": [],
 			"parent_id": null
 		}
@@ -50,6 +52,20 @@
 			"id": 19983,
 			"name": "Austin, TX",
 			"location": "Austin, TX, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 19991,
+			"name": "San Francisco, CA",
+			"location": "San Francisco, CA, United States",
+			"child_ids": [],
+			"parent_id": 48752
+		},
+		{
+			"id": 75375,
+			"name": "Remote US",
+			"location": null,
 			"child_ids": [],
 			"parent_id": 48752
 		}
