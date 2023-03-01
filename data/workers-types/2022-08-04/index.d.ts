@@ -1519,13 +1519,13 @@ declare class CompressionStream extends TransformStream<
   ArrayBuffer | ArrayBufferView,
   Uint8Array
 > {
-  constructor(format: "gzip" | "deflate");
+  constructor(format: "gzip" | "deflate" | "deflate-raw");
 }
 declare class DecompressionStream extends TransformStream<
   ArrayBuffer | ArrayBufferView,
   Uint8Array
 > {
-  constructor(format: "gzip" | "deflate");
+  constructor(format: "gzip" | "deflate" | "deflate-raw");
 }
 declare class TextEncoderStream extends TransformStream<string, Uint8Array> {
   constructor();
@@ -1664,6 +1664,7 @@ declare class URLSearchParams {
       | Record<string, string>
       | [key: string, value: string][]
   );
+  get size(): number;
   append(name: string, value: string): void;
   delete(name: string): void;
   get(name: string): string | null;
@@ -2148,6 +2149,10 @@ declare interface IncomingRequestCfPropertiesBotManagementBase {
    * A boolean value that's true if the request matches [file extensions](https://developers.cloudflare.com/bots/reference/static-resources/) for many types of static resources.
    */
   staticResource: boolean;
+  /**
+   * List of IDs that correlate to the Bot Management heuristic detections made on a request (you can have multiple heuristic detections on the same request).
+   */
+  detectionIds: number[];
 }
 declare interface IncomingRequestCfPropertiesBotManagement {
   /**
