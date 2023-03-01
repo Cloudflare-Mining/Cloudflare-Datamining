@@ -78,8 +78,8 @@ export default {
     const body = await request.text()
     const sig = request.headers.get('stripe-signature')
     
-    const event = await stripe.webhooks.constructEventAsync(
-      await request.text(), // raw request body
+const event = await stripe.webhooks.constructEventAsync(
+      body
       sig,
       env.STRIPE_ENDPOINT_SECRET,
       undefined,
