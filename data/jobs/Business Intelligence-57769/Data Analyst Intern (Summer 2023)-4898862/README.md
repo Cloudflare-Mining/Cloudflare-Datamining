@@ -5,29 +5,27 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4>About the department</h4>
-<p>We build and run the internal tools that builds and runs our software. The Engineering Team is split into two groups: one handles product development and the other handles operations. Product development covers both new features and functionality and scaling our existing software to meet the challenges of a massively growing customer base. The operations team handles one of the world’s largest networks with data centers in 102 cities worldwide.</p>
-<h4>What you'll do</h4>
-<p>We are looking for experienced front-end engineers to join our team. The ideal candidates will have experience working with&nbsp;<span class="gmail-inline-comment-marker">large-scale applications</span>&nbsp;and a track record of producing great output. You must care deeply not only about the quality of your and the team's code, but also the customer experience. We have growing&nbsp;front-end needs, so we’re looking for highly motivated individuals that are excited to join a team and work with product and content owners, designers, and other software engineers to build and scale services at Cloudflare.</p>
-<p>We believe that a great design is at the heart of any successful product and you will work closely with our design/UX team and must be comfortable seeking feedback from non-technical sources. We work iteratively and deploy often (sometimes several times per day).&nbsp;We are also strong believers in dog-fooding our own products. From cache configuration to Cloudflare Access to Cloudflare Workers, these are all tools in our frontend engineer's tool belt.&nbsp;</p>
-<p>Technologies we use include Node, React, Redux, TypeScript, ES6, Webpack, Fela, Jest, Enzyme, Puppeteer, D3, and more.</p>
+<p><strong>About the department</strong></p>
+<p><span style="font-weight: 400;">This internship is targeting students with experience and interest in Data Analytics.</span></p>
+<p><span style="font-weight: 400;">We are looking for a candidate that loves data and is intrigued about growing in the world of analytics.&nbsp; If that’s you, come join Cloudflare and help us drive actionable insights for the business as well as champion the benefits of data driven insights. Success in this role comes from curiosity, asking lots of questions, learning the business, building trust with the business, and partnering these skills that accelerate our business growth and influence our product decisions, cost savings, and customer growth for Cloudflare.</span></p>
+<h4><strong>What you'll do</strong></h4>
+<ul>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Work to understand the data landscape (i.e tooling, tech stack, source systems etc.) and work closely with the Data Engineering team to improve the data collection and quality.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Work to understand business in order to build analysis that aligns with business goals</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Storytelling skills focused on key takeaways and recommendations in a crisp and concise manner.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to define and spot macro and micro levels trends using advanced analytics techniques.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Work cross functionally with Finance, Product, Pricing, Marketing to enable data informed decisions</span></li>
+</ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>BA/BS in Computer Science or equivalent</li>
-	<li>Minimum of 4+ years experience building web applications</li>
-	<li>Strong knowledge of HTML, CSS, and JavaScript</li>
-	<li>Understanding of responsive design and its implementation</li>
-	<li>Experience building and shipping production React.js applications</li>
-	<li>Extensive knowledge of the J<em>a</em>vaScript ecosystem</li>
-	<li>Ability to work in cross-functional teams</li>
-	<li>Good analytical and debugging skills</li>
-	<li>Unit/integration testing experience</li>
-	<li>Experience working with and/or designing RESTful APIs</li>
-	<li>Working knowledge of internationalization, localization, and/or accessibility</li>
-	<li>Expertise with TypeScript</li>
-	<li>Knowledge of Golang is a big plus</li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Bachelor’s or Master’s Degree in Computer Science or Engineering or related experience required.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Results oriented analysis that helped support positive change in the business strategy.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Some experience with a fast-growing SaaS business based company is preferred.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience in SQL, Tableau, Python, R, Google BigQuery (or any other Big data/Cloud equivalent) etc.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Capable of working in a highly collaborative environment across different functions of the business (e.g. Data Engineering, Data Science, Product, Marketing, Sales, etc…)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to thrive in ambiguity</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Role will be based in Austin, TX, San Francisco, CA, or Remote</span></li>
 </ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
