@@ -5,34 +5,40 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4>About the department</h4>
-<p><span style="font-weight: 400;">Providing cutting edge services on a global network to a significant portion of the Internet sometimes makes Cloudflare a target for litigation. We’re looking for a Litigation Paralegal to join our team responsible for responding to the diverse array of global litigation matters and legal requests Cloudflare encounters. As Litigation Paralegal, you will help organize and manage our global litigation docket, work closely with all parts of the business to develop facts and respond to discovery requests, build and manage systems to scale with our growing business, and collaborate closely with internal and external counsel on all litigation-related matters. The ideal candidate has the passion to keep pace with a fast moving docket, the curiosity to dive deep into evolving technology and law, the organizational skills to manage a steady flow of documents and deadlines, and the initiative to build new systems and processes to make our team better.&nbsp;</span></p>
-<h4>What you'll do</h4>
+<p><strong>Salesforce QA Engineer</strong></p>
+<h4><strong>About the department</strong></h4>
+<p><span style="font-weight: 400;">Cloudflare’s IT Business Systems Team is a crucial pillar of the CIO Organization.&nbsp; It operates our enterprise systems end-to-end, providing process cohesiveness across the functional business areas.&nbsp;</span></p>
+<p><strong>About the role</strong></p>
+<p><span style="font-weight: 400;">Cloudflare is expanding its IT Enterprise Application group and searching for a dynamic, forward thinking Salesforce QA Engineer&nbsp; to join our team.&nbsp; The QA engineer will </span><span style="font-weight: 400;">provide quality assurance on all of our Salesforce apps solutions and implementations; </span><span style="font-weight: 400;">including Salesforce CPQ and Quote-to-Cash system.</span><span style="font-weight: 400;"> In addition, partner with the Salesforce Dev team to grow and scale our processes while keeping up to date on AppExchange solutions and industry practices for QA testing &amp; automation. </span><span style="font-weight: 400;"><br></span><span style="font-weight: 400;">This role will be a valued member of the IT Go To Market team within Enterprise Applications and as such help the team expand into testing automation through the expertise of trends and best practices within QA and a deep understanding of our testing processes. </span><span style="font-weight: 400;"><br></span></p>
+<h4><strong>What you'll do</strong></h4>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Help respond to subpoenas, threatened disputes, litigation, and government inquiries;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Manage the litigation hold and document collection process;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Help conduct factual investigations and collect relevant records;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Manage internal trackers for litigation, pre-litigation, and government enforcement matters;&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Create, manage, and improve processes to scale our litigation function within the company;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Work closely with our legal operations team to support outside counsel onboarding and billing review, and to onboard and utilize litigation-related tools;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Collaborate with outside counsel on all aspects of ongoing litigation;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Collaborate with legal team members to improve processes, provide training, and ensure business needs are met.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Design test processes and procedures&nbsp; to ensure the Salesforce solutions and implementations operate within the defined requirements.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Create detailed, comprehensive and well-structured test plans and test cases.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Implement test plans, automation, and validation strategies.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Help develop and maintain automated test scripts to reduce repetitive manual testing.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">In depth functional testing – Must be able to evaluate functional stability to ensure business requirements are being met and are “fit-for-purpose” through end to end functional and automation testing.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Work closely with software developers and business analysts to resolve issues.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Clearly communicate any obstacles to raise awareness and avoid project impediments and overall project timeline disruption.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Collaborate with Business Analysts and Developers on tasks related to the planning, testing and coordination of release activities.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Participate in the solution design/user story creation process through dissection of high-level requirements during team review sessions.</span></li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><strong>Required skills, knowledge and experience</strong></p>
 <ul>
-	<li><span style="font-weight: 400;">BS/BA Degree</span></li>
-	<li><span style="font-weight: 400;">3+ years of litigation paralegal experience either at a law firm or in a company required</span></li>
-	<li><span style="font-weight: 400;">Analytical, process oriented, and strong communication and organizational skills</span></li>
-	<li><span style="font-weight: 400;">Ability to work cross-functionally, with lawyers and non-lawyers, to establish effective solutions efficiently and in an amenable manner</span></li>
-	<li><span style="font-weight: 400;">Ability to operate autonomously while being a team player who brings a positive attitude to the workplace. Lead with empathy and understanding while embracing diverse points of view. Flexibility to adapt and thrive in a fast paced environment</span></li>
-	<li><span style="font-weight: 400;">Understanding of law firm and vendor services as it relates to process development</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">3+ years of work experience in Quality Assurance roles with automation testing experience.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">QA Expert in the Salesforce.com platform.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">QA experience in Salesforce CPQ or any Quote to Cash system a plus</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with automation testing.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience in writing clear, concise and comprehensive test plans and test cases.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Knowledge of testing integrations, end-to-end system processes.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Excellent analytical and problem-solving abilities.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Demonstrated ability to think outside the box.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience working in an Agile/Scrum development process.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Interest in taking ownership on products and projects.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Flexibility to meet continuously changing priorities and challenges.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Needs to possess excellent communication and people skills.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to multi-task, meet deadlines and stay calm under pressure.</span></li>
 </ul>
-<p><span style="font-weight: 400;">Bonus:&nbsp;</span></p>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">5+ years prior experience at an in-house litigation department is highly desired</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Prior experience with e-billing, discovery, and workflow management tools</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with Google drive and related products</span></li>
-</ul>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
