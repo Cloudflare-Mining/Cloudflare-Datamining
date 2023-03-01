@@ -47,7 +47,7 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image4-5.png" class="kg-image"></figure>
 	<p>Creating a named Tunnel also generates a credentials file that is distinct from the cert.pem issued during the login. You only need the credentials file to run the Tunnel. If you do not want to create additional named Tunnels or DNS records from <code>cloudflared</code>, you can delete the cert.pem file to avoid leaving API tokens and certificates in your environment.</p>
 	<h3 id="3-configure-tunnel-details"><strong>3. Configure Tunnel details</strong></h3>
-	<p>Configure your instance of cloudflared, including the URL that cloudflared will proxy traffic to in the <a href="https://developers.cloudflare.com/argo-tunnel/reference/config/" target="_blank">configuration file</a>. Alternatively, you can run the Tunnel in an ad hoc mode from the command line using the steps below.</p>
+	<p>Configure your instance of cloudflared, including the URL that cloudflared will proxy traffic to in the configuration file. Alternatively, you can run the Tunnel in an ad hoc mode from the command line using the steps below.</p>
 	<h3 id="4-run-your-tunnel">4. Run your Tunnel</h3>
 	<p>You can begin running the Tunnel with the command, <code>cloudflared tunnel run &lt;name&gt;</code> or <code>cloudflared tunnel run &lt;UUID&gt;</code> and it will start proxying traffic. If you are running the Tunnel without the cert.pem file and only the credentials file, you must use <code>cloudflared tunnel run &lt;UUID&gt;</code>.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image5-5.png" class="kg-image"></figure>
