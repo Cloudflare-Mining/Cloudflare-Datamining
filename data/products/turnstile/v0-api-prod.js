@@ -1,14 +1,14 @@
 (() => {
-	function E(e, l) {
+	function y(e, l) {
 		return e.indexOf(l) !== -1
 	}
 
 	function S(e) {
-		return E(["auto", "dark", "light"], e)
+		return y(["auto", "dark", "light"], e)
 	}
 
 	function W(e) {
-		return E(["auto", "never"], e)
+		return y(["auto", "never"], e)
 	}
 
 	function O(e) {
@@ -31,11 +31,11 @@
 	}
 
 	function D(e) {
-		return E(["normal", "compact", "invisible"], e)
+		return y(["normal", "compact", "invisible"], e)
 	}
 
 	function P(e) {
-		return E(["auto", "manual", "never"], e)
+		return y(["auto", "manual", "never"], e)
 	}
 	var Ie = /^[a-z]{2}(-[A-Z]{2})?$/;
 
@@ -44,11 +44,11 @@
 	}
 
 	function z(e) {
-		return E(["always", "execute", "interaction-only"], e)
+		return y(["always", "execute", "interaction-only"], e)
 	}
 
 	function U(e) {
-		return E(["render", "execute"], e)
+		return y(["render", "execute"], e)
 	}
 	var ve = ".cf-turnstile",
 		xe = ".cf-challenge",
@@ -395,7 +395,7 @@
 			}
 			let q = r.getElementsByTagName("iframe")[0];
 			q && q.id.startsWith(C) && w(r);
-			let y = document.createElement("iframe");
+			let E = document.createElement("iframe");
 			if (d !== void 0 && typeof d != "string") {
 				s(`Invalid type for parameter "action", expected "string", got "${typeof d}"`);
 				return
@@ -429,9 +429,9 @@
 				isResetting: !1,
 				isInitialized: !1,
 				msgQueue: G
-			}), y.style.display = "none", y.style.border = "none", y.style.overflow = "hidden";
-			let me = "h/g/";
-			if (y.setAttribute("src", `${fe}/cdn-cgi/challenge-platform/${me}turnstile/if/ov2/av0/${N}/${f}/${t.theme}/${t.size}`), y.id = A, y.tabIndex = (te = t.tabindex) != null ? te : 0, y.title = "Widget containing a Cloudflare security challenge", r.appendChild(y), (ne = t["response-field"]) != null ? ne : !0) {
+			}), E.style.display = "none", E.style.border = "none", E.style.overflow = "hidden";
+			let me = "h/b/";
+			if (E.setAttribute("src", `${fe}/cdn-cgi/challenge-platform/${me}turnstile/if/ov2/av0/${N}/${f}/${t.theme}/${t.size}`), E.setAttribute("allow", "cross-origin-isolated"), E.id = A, E.tabIndex = (te = t.tabindex) != null ? te : 0, E.title = "Widget containing a Cloudflare security challenge", r.appendChild(E), (ne = t["response-field"]) != null ? ne : !0) {
 				let m = document.createElement("input");
 				if (m.type = "hidden", m.name = (re = t["response-field-name"]) != null ? re : Te, m.id = `${A}_response`, r.appendChild(m), typeof t["response-field-name"] != "string" && Me(f)) {
 					let k = document.createElement("input");
@@ -567,7 +567,7 @@
 	if ($) {
 		let e = $.get("compat");
 		(e == null ? void 0 : e.toLowerCase()) === "recaptcha" ? window.grecaptcha ? p("grecaptcha is already defined. The compatibility layer will not be enabled") : (p("Compatibility layer enabled"), L = !0, window.grecaptcha = Y): e !== null && p(`Unknown value for api.js?compat: "${e}", ignoring`), $.forEach(function(o, u) {
-			E(["onload", "compat", "render"], u) || p(`Unknown parameter passed to api.js: "?${u}=...", ignoring`)
+			y(["onload", "compat", "render"], u) || p(`Unknown parameter passed to api.js: "?${u}=...", ignoring`)
 		});
 		let l = $.get("onload");
 		l && setTimeout(function() {
