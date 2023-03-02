@@ -1,5 +1,12 @@
 # Change Log
 
+## 3.3.1
+
+### Patch Changes
+
+- Updated dependencies [1b7c5ab296]
+  - @cloudflare/component-button@6.0.0
+
 ## 3.3.0
 
 ### Minor Changes

@@ -1,5 +1,17 @@
 # Change Log
 
+## 4.0.0
+
+### Major Changes
+
+- 1b7c5ab296: Move @cloudflare/component-icon to peerDeps for all consuming packages
+
+### Patch Changes
+
+- Updated dependencies [1b7c5ab296]
+  - @cloudflare/component-calendar@5.0.0
+  - @cloudflare/component-icon@10.0.0
+
 ## 3.1.0
 
 ### Minor Changes
