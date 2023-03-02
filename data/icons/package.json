@@ -1,7 +1,7 @@
 {
   "name": "@cloudflare/component-icon",
   "description": "Cloudflare Icon Component",
-  "version": "9.10.1",
+  "version": "10.0.0",
   "main": "lib/index.js",
   "module": "es/index.js",
   "author": "Frontend Team <frontend@cloudflare.com>",
@@ -11,14 +11,12 @@
     "main": "lib/index.js",
     "module": "es/index.js"
   },
-  "dependencies": {
-    "@cloudflare/types": "^6.15.15"
-  },
   "peerDependencies": {
     "@cloudflare/style-container": "^7.10.0",
     "react": "^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0"
   },
   "devDependencies": {
+    "@cloudflare/types": "^6.15.15",
     "@svgr/cli": "6.2.1",
     "eslint": "^4.18.2"
   },
