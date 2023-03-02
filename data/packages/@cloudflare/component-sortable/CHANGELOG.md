@@ -1,5 +1,13 @@
 # Change Log
 
+## 4.1.1
+
+### Patch Changes
+
+- Updated dependencies [1b7c5ab296]
+  - @cloudflare/component-arrow-swivel@6.0.0
+  - @cloudflare/component-button@6.0.0
+
 ## 4.1.0
 
 ### Minor Changes

@@ -1,5 +1,15 @@
 # Change Log
 
+## 5.2.3
+
+### Patch Changes
+
+- Updated dependencies [1b7c5ab296]
+  - @cloudflare/component-button@6.0.0
+  - @cloudflare/component-search@6.0.0
+  - @cloudflare/component-select-2@5.0.0
+  - @cloudflare/component-time-period-picker@4.0.0
+
 ## 5.2.2
 
 ### Patch Changes
