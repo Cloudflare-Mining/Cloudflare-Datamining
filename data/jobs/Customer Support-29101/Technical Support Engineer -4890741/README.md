@@ -5,38 +5,37 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Salesforce QA Engineer</strong></p>
-<h4><strong>About the department</strong></h4>
-<p><span style="font-weight: 400;">Cloudflare’s IT Business Systems Team is a crucial pillar of the CIO Organization.&nbsp; It operates our enterprise systems end-to-end, providing process cohesiveness across the functional business areas.&nbsp;</span></p>
-<p><strong>About the role</strong></p>
-<p><span style="font-weight: 400;">Cloudflare is expanding its IT Enterprise Application group and searching for a dynamic, forward thinking Salesforce QA Engineer&nbsp; to join our team.&nbsp; The QA engineer will </span><span style="font-weight: 400;">provide quality assurance on all of our Salesforce apps solutions and implementations; </span><span style="font-weight: 400;">including Salesforce CPQ and Quote-to-Cash system.</span><span style="font-weight: 400;"> In addition, partner with the Salesforce Dev team to grow and scale our processes while keeping up to date on AppExchange solutions and industry practices for QA testing &amp; automation. </span><span style="font-weight: 400;"><br></span><span style="font-weight: 400;">This role will be a valued member of the IT Go To Market team within Enterprise Applications and as such help the team expand into testing automation through the expertise of trends and best practices within QA and a deep understanding of our testing processes. </span><span style="font-weight: 400;"><br></span></p>
-<h4><strong>What you'll do</strong></h4>
+<p><strong>To the attention of candidates (Mexico City):&nbsp;</strong></p>
+<p><strong>This role requires full time work over the Weekends. Candidates should be comfortable working with a “Wed-Sun” or “Sat-Wed” 5-day working week schedule. Candidates MUST have right-to-work in Mexico.&nbsp;&nbsp;</strong><strong>Visa sponsorship is NOT provided for this position</strong><strong>.</strong></p>
+<h4><strong>About the Department</strong></h4>
+<p>The Customer Support Team solves complicated problems and answers technical inquiries via phone, email, chat, and social media. Whether it is a Wordpress blogger using our services for free or a global Enterprise business with petabytes of web traffic, our team is always eager to assist. We are the eyes and ears of Cloudflare, acting as the real-time voice of the customer to help communicate their needs and real-world use cases back to the rest of the company - to help build a better service and future product development.</p>
+<h4><strong>What You’ll do</strong></h4>
+<p>Do you love solving complex problems and interacting with people? Are you passionate about helping customers and are a standout colleague? Cloudflare is seeking a Technical Customer Support Engineer to join our team. You will work with our customers on a variety of technical support issues as well as the Technical Operations team that is responsible for running our global distributed network. This is a position where you will learn the inner workings of Cloudflare's technology and gain a deeper understanding of internet technologies.</p>
+<p><strong>Examples of required skills, knowledge, and experience</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Design test processes and procedures&nbsp; to ensure the Salesforce solutions and implementations operate within the defined requirements.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Create detailed, comprehensive and well-structured test plans and test cases.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Implement test plans, automation, and validation strategies.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Help develop and maintain automated test scripts to reduce repetitive manual testing.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">In depth functional testing – Must be able to evaluate functional stability to ensure business requirements are being met and are “fit-for-purpose” through end to end functional and automation testing.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Work closely with software developers and business analysts to resolve issues.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Clearly communicate any obstacles to raise awareness and avoid project impediments and overall project timeline disruption.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Collaborate with Business Analysts and Developers on tasks related to the planning, testing and coordination of release activities.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Participate in the solution design/user story creation process through dissection of high-level requirements during team review sessions.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Fundamental understanding how the Internet works (OSI Model)&nbsp;</span></li>
+	<li><span style="font-weight: 400;">2-4 years experience working within a Technical/Customer Support team</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience troubleshooting DNS, SSL/TLS, HTTP, and network related issues</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Fundamental understanding of what a proxy is, how it works, and configurations involved</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You possess a web development, hosting and customer support background</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Extensive experience with command line and command line tools including curl, dig, traceroute, openssl, git, tcpdump</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience installing and configuring web servers like Apache, Nginx, and IIS</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Hands-on experience with Linux/Mac/Windows Operating Systems</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You have strong communication skills, both verbal and written</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You are self-driven and capable of teaching yourself new technologies/systems/features with little guidance</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You have experience writing scripts in Bash, Python, JavaScript, or other scripting language</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Passionate about working in Support, helping customers, and being a team player</span></li>
 </ul>
-<p><strong>Required skills, knowledge and experience</strong></p>
+<p><strong>Requirements</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">3+ years of work experience in Quality Assurance roles with automation testing experience.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">QA Expert in the Salesforce.com platform.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">QA experience in Salesforce CPQ or any Quote to Cash system a plus</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with automation testing.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience in writing clear, concise and comprehensive test plans and test cases.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Knowledge of testing integrations, end-to-end system processes.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Excellent analytical and problem-solving abilities.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Demonstrated ability to think outside the box.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience working in an Agile/Scrum development process.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Interest in taking ownership on products and projects.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Flexibility to meet continuously changing priorities and challenges.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Needs to possess excellent communication and people skills.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to multi-task, meet deadlines and stay calm under pressure.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Flexibility to work varying work schedules including; Pacific time, holidays, weekends, more than 5 days in a row, overtime</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Remote work / work from home available in PDT time zone</span></li>
+</ul>
+<p><strong>Bonus Points</strong></p>
+<ul>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You are familiar with Cloudflare and have a site actively using our platform</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You have the ability to read and write in multiple languages</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You are comfortable with popular CRM/CMS solutions</span></li>
 </ul>
 <p>&nbsp;</p>
 <div class="content-conclusion">
