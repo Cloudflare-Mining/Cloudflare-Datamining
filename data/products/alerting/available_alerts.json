@@ -26,6 +26,34 @@
 			]
 		}
 	],
+	"Brand Protection Alert": [
+		{
+			"display_name": "Brand Protection Domain Match Alert",
+			"type": "brand_protection_alert",
+			"description": "Get alerts when saved queries match a new domain",
+			"filter_options": [
+				{
+					"Key": "query_tag",
+					"ComparisonOperator": "==",
+					"Optional": true
+				}
+			]
+		}
+	],
+	"Brand Protection Digest": [
+		{
+			"display_name": "Brand Protection Domain Match Digest",
+			"type": "brand_protection_digest",
+			"description": "Get regular digest of all domains matching your saved queries",
+			"filter_options": [
+				{
+					"Key": "query_tag",
+					"ComparisonOperator": "==",
+					"Optional": true
+				}
+			]
+		}
+	],
 	"DoS Protection": [
 		{
 			"display_name": "HTTP DDoS Attack Alert",
