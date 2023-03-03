@@ -7469,12 +7469,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				e.g.build = Cd({}, {
-					branch: "marina/LOUI-4195",
+					branch: "kkipp/STREAM-4849",
 					isReleaseCandidate: "true",
-					commit: "d10e29dd733c70c5a26ccdb761184fecb14a8c5d",
+					commit: "782049790faf2f85ec70a561313f4bf76dd8d344",
 					env: "production",
-					builtAt: 1677840788306,
-					dashVersion: "d2dc724675f2ffd494eed682f1cd6dd8d3b78b80",
+					builtAt: 1677869581449,
+					dashVersion: "35c2269cb73cab963ee8817a8b9d37757d548857",
 					versions: {
 						"@cloudflare/app-dash": "25.148.28",
 						node: "16.16.0",
@@ -78346,7 +78346,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					return i(d).storage
 				},
 				h = function(d) {
-					return (0, n.BF)(d, "stream.enabled")
+					return (0, n.BF)(d, "stream.enabled") || (0, t.bC)(d)
 				},
 				D = function(d) {
 					return (0, t.Le)(d, "stream", "connect")
@@ -87274,4 +87274,4 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 	}
 ]);
 
-//# sourceMappingURL=eaa7b798d1df5c385685.js.map
+//# sourceMappingURL=30dd84296a17354c67c3.js.map
