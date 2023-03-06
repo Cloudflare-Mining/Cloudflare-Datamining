@@ -21,7 +21,7 @@
 <ul>
 	<li><strong>7+ years of direct B2B selling experience, 3+ years selling to gaming &amp; igaming customers in EMEA</strong></li>
 	<li>Bachelor's degree required</li>
-	<li><strong>English &amp; French language required</strong></li>
+	<li><strong>English plus a language required: French, Spanish or Italian</strong></li>
 	<li>Closing experience and track-record of exceeding quota</li>
 	<li>Deep understanding of the sales process as it relates to Enterprise, Mid-Market, &amp; SMB companies</li>
 	<li>Relevant direct experience, track record, and relationships within gaming &amp; igaming accounts in Israel&nbsp;</li>
