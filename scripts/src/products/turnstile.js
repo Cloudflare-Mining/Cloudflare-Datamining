@@ -106,11 +106,11 @@ for(const js of javascripts) {
 const htmlCssUrls = [
 	{
 		name: 'normal',
-		url: `https://challenges.cloudflare.com/cdn-cgi/challenge-platform/h/b/turnstile/if/ov2/av0/00000/${results['widgets-list'].result[0].sitekey}/auto/normal`,
+		url: `https://challenges.cloudflare.com/cdn-cgi/challenge-platform/h/g/turnstile/if/ov2/av0/00000/${results['widgets-list'].result[0].sitekey}/auto/normal`,
 	},
 	{
 		name: 'compact',
-		url: `https://challenges.cloudflare.com/cdn-cgi/challenge-platform/h/b/turnstile/if/ov2/av0/00000/${results['widgets-list'].result[0].sitekey}/auto/compact`,
+		url: `https://challenges.cloudflare.com/cdn-cgi/challenge-platform/h/g/turnstile/if/ov2/av0/00000/${results['widgets-list'].result[0].sitekey}/auto/compact`,
 	},
 ];
 for(const htmlCss of htmlCssUrls) {
