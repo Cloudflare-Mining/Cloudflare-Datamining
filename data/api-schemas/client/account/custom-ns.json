@@ -10,7 +10,7 @@
 			"rel": "collection",
 			"href": "accounts/{#/definitions/identifier}/custom_ns",
 			"method": "GET",
-			"cfOwnership": "dns",
+			"cfOwnership": "www",
 			"cfPlanAvailability": {
 				"free": false,
 				"pro": false,
@@ -32,7 +32,7 @@
 			"rel": "self",
 			"href": "accounts/{#/definitions/identifier}/custom_ns",
 			"method": "POST",
-			"cfOwnership": "dns",
+			"cfOwnership": "www",
 			"cfPlanAvailability": {
 				"free": false,
 				"pro": false,
@@ -74,7 +74,7 @@
 			"rel": "self",
 			"href": "accounts/{#/definitions/identifier}/custom_ns/verify",
 			"method": "POST",
-			"cfOwnership": "dns",
+			"cfOwnership": "www",
 			"cfPlanAvailability": {
 				"free": false,
 				"pro": false,
@@ -96,7 +96,7 @@
 			"rel": "self",
 			"href": "accounts/{#/definitions/identifier}/custom_ns/{#/definitions/ns_name}",
 			"method": "DELETE",
-			"cfOwnership": "dns",
+			"cfOwnership": "www",
 			"cfPlanAvailability": {
 				"free": false,
 				"pro": false,
@@ -118,7 +118,7 @@
 			"rel": "self",
 			"href": "accounts/{#/definitions/identifier}/custom_ns/availability",
 			"method": "GET",
-			"cfOwnership": "dns",
+			"cfOwnership": "www",
 			"cfPlanAvailability": {
 				"free": false,
 				"pro": false,
