@@ -415,7 +415,7 @@ To read the full docs, [click here](https://developers.cloudflare.com/images).`,
 	select_source: "Select a source",
 	review_import: "Review and import",
 	variants_description: "Variants can be configured to deliver the most optimal image for your use-cases.",
-	variants_detail_count_hint: (0, r.d)(D(), "count"),
+	variants_detail_count_hint: (0, r.d)(w(), "count"),
 	variants_filter_select_options: {
 		by_name: "By name",
 		large_width: "From small to large (W)",

@@ -10,7 +10,7 @@
 		delete: "Delete",
 		addCard: "Add card",
 		invalid_email: "Invalid email",
-		back_to_zone: (0, a.d)(S(), "zoneName"),
+		back_to_zone: (0, a.d)(D(), "zoneName"),
 		email_notification: "Please <0>verify your account email address</0> to access all Registrar features such as Registration and Transfer.",
 		invalid_auth_code: "The registry has indicated that the authorization code is not correct. Please re-enter the code again. If you continue to receive an authorization code error, please request a new code from your current registrar.",
 		registrar_managed: "As this is a Cloudflare Registrar managed account, no payment is needed."
@@ -57,8 +57,8 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 		},
 		complete_purchase: "Complete purchase",
 		purchase_security: "All transactions are secure and encrypted.",
-		purchase_agreement: (0, a.d)(C()),
-		purchase_agreement_with_icloud: (0, a.d)(k()),
+		purchase_agreement: (0, a.d)(S()),
+		purchase_agreement_with_icloud: (0, a.d)(C()),
 		automatic_renewal_agreement: "Automatic renewals may be cancelled at any time via the Domain Management page in your account. Automatic renewals will be billed to the payment method on file, until cancelled.",
 		automatic_renewal_agreement_enabled: "You are consenting to the automatic renewal of your domain names(s)."
 	},
@@ -68,7 +68,7 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 		part_2: "for more info."
 	},
 	domain_page: {
-		title: (0, a.d)(v(), "domainName"),
+		title: (0, a.d)(k(), "domainName"),
 		back: "Back to Manage Domains",
 		unverified_contacts: "You have unverified Contacts.",
 		view_contacts: "View Contacts",
@@ -89,7 +89,7 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 		overview: {
 			transfer_in: {
 				title: "Complete your transfer",
-				subtitle: (0, a.d)(b(), "domainName"),
+				subtitle: (0, a.d)(v(), "domainName"),
 				body: "Complete the following tasks to finish your domain transfer and activate on Cloudflare.",
 				refresh: "Refresh transfer status"
 			},
@@ -106,29 +106,29 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 		pending_foa: "Transfer is pending FOA. Please check your email.",
 		invalid_auth_code: "Invalid auth code",
 		auth_code: "Enter auth code",
-		payment: (0, a.d)(w(), "amount"),
-		approve: (0, a.d)(y(), "registrar"),
+		payment: (0, a.d)(b(), "amount"),
+		approve: (0, a.d)(w(), "registrar"),
 		success: "Transfer successful"
 	},
 	registration_card: {
 		title: "Registration",
-		pending_deletion: (0, a.d)(g(), "expired_on", "purchaseable_on"),
+		pending_deletion: (0, a.d)(y(), "expired_on", "purchaseable_on"),
 		renew_btn: "Renew your domain",
 		auto_renew_on: "Auto Renew is on",
 		auto_renew_off: "Auto Renew is off",
 		domain_protection: "Domain is under Domain Protection",
 		auto_renew_description: "Your domain will automatically renew every year.",
-		expires_on: (0, a.d)(h(), "expires_on"),
+		expires_on: (0, a.d)(g(), "expires_on"),
 		deleted_description: "This domain was deleted",
 		check_availability: "Check availability",
 		grace_period: {
 			title: "Domain expired",
-			details: (0, a.d)(f(), "grace_period_start", "grace_period_end")
+			details: (0, a.d)(h(), "grace_period_start", "grace_period_end")
 		},
 		not_on_cloudflare: {
-			expiration: (0, a.d)(p(), "expiration"),
+			expiration: (0, a.d)(f(), "expiration"),
 			transfer_cta: "Transfer to Cloudflare",
-			transfer_cta_subext: (0, a.d)(m(), "price")
+			transfer_cta_subext: (0, a.d)(p(), "price")
 		},
 		transfer_in_progress: {
 			title: "Transfer Progress",
@@ -146,7 +146,7 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	add_years: {
 		toggle_view: "Renew/Extend Domain",
 		renew: "Renew for",
-		due: (0, a.d)(u(), "amount"),
+		due: (0, a.d)(m(), "amount"),
 		disabled_tooltip: "Domain state does not permit renewal. Please contact support for assistance."
 	},
 	domainPageNotifications: {
@@ -184,11 +184,12 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	cor_resent_email: "Email sent",
 	cor_resend_email: "Resend email",
 	renewal_info: {
-		expires_on: (0, a.d)(c(), "expiresOn"),
-		renews_on: (0, a.d)(_(), "renewsOn"),
+		expires_on: (0, a.d)(u(), "expiresOn"),
+		renews_on: (0, a.d)(c(), "renewsOn"),
 		price: "Price",
 		per_year: "/ year",
-		billing: (0, a.d)(l(), "last4"),
+		billing: (0, a.d)(_(), "last4"),
+		billing_paypal: (0, a.d)(l(), "email"),
 		billing_cloud: (0, a.d)(d(), "last4")
 	},
 	domain_page_sidebar_domain_details: "Domain Details",
@@ -323,14 +324,14 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	eligibility_unknown_domains_show: "Show %{smart_count} domain with unknown transfer eligibility* |||| Show %{smart_count} domains with unknown transfer eligibility*",
 	eligibility_unknown_domains_hide: "Hide %{smart_count} domain with unknown transfer eligibility* |||| Hide %{smart_count} domains with unknown transfer eligibility*",
 	unknown_eligibility_domains_description: "*These domains MAY be available for transfer, however we don't have enough information to make a determination at this moment.  Don't worry, we're attempting to determine the current state of each  domain.  This process may take some time so please try back in 5 minutes.  If we are still unable to make a determination please contact support for assistance.",
-	instructions_enom: A,
-	instructions_godaddy: R,
-	instructions_namecheap: P,
-	instructions_network_solutions: I,
-	instructions_one_and_one: O,
-	instructions_unknown: T,
-	instructions_uk: N,
-	instructions_restrictions: z,
+	instructions_enom: T,
+	instructions_godaddy: P,
+	instructions_namecheap: I,
+	instructions_network_solutions: O,
+	instructions_one_and_one: N,
+	instructions_unknown: R,
+	instructions_uk: q,
+	instructions_restrictions: A,
 	instructions_restrictions_title: "Show restrictions",
 	instructions_known_title: "Transfer your domain from %{registrar}",
 	instructions_unknown_title: "Follow these instructions to transfer your domain",
