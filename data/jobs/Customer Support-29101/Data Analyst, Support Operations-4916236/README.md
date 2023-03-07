@@ -5,22 +5,40 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>About the department</strong></h4>
-<p><span style="font-weight: 400;">Cloudflare’s Infrastructure department is responsible for growing Cloudflare’s global technological footprint, from designing and shipping next-generation servers to expanding our hundreds of global ISP partnerships. We are seeking a highly organized, versatile person to join our team. The Program Manager Edge Deployments role forms part of the Edge Data Center Engineering team to help accelerate global deployments.&nbsp;</span></p>
+<p><strong>About the Team</strong></p>
+<p><span style="font-weight: 400;">The Support Operations Group is a high-impact, team of software engineers, program managers, data analysts and product specialists. We are responsible for building intelligent automation systems that allow our customers to get maximum value out of the Cloudflare product. We provide tooling that enhances business efficiency for our internal customer facing teams while ensuring that our customers have a great experience at the forefront of all our efforts.&nbsp;</span></p>
+<p><span style="font-weight: 400;">We work in an environment with short iterations, clear success metrics and a sustainable pace. We are a small team meaning you will have the opportunity to make a substantial impact from day one.</span></p>
+<p><strong>What you’ll do</strong></p>
+<p><span style="font-weight: 400;">Our applications generate a lot of data and it's the Data Analysts responsibility to detect patterns, extract significance, and communicate results. You will be responsible for creating reports and dashboards used at the org, team, and IC level that identify business opportunities to deliver the maximum impact to our top level objectives. Data driven decision making is one of our core principals, and as a Data Analyst your efforts will directly help shape the direction of work for all teams in our organization.&nbsp;</span></p>
 <p><strong>Responsibilities</strong></p>
-<p><span style="font-weight: 400;">Your main role will be to partner with logistics, infrastructure engineering, vendors and capacity teams to plan, track, and manage the execution of various network deployments and initiatives.</span></p>
-<p><span style="font-weight: 400;">Program Management at Cloudflare provides you with a myriad of opportunities to define, scope effectively, and accomplish strategic goals. You will be the driving force to make things happen.</span></p>
-<p><span style="font-weight: 400;">The ideal candidate is process-driven but remains flexible and iterative, someone who loves to tackle new challenges, with pace, and enjoys bringing people together as a team and drives them towards success.&nbsp;</span></p>
+<p><span style="font-weight: 400;">As a member of a rapidly growing and evolving team, your responsibilities will include:</span></p>
+<ul>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Develop compelling dashboards and automated reporting of key performance insights that can be used by the Support team</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Work closely with Support leadership to report on key business metrics to spot trends and answer important questions&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Help the product team to prioritize work by leveraging available data to identify high impact opportunities</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Coordinate with cross-functional stakeholders including finance, HR, finance, and others to deliver data required for monthly business reviews&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Participate in the early stages of projects to ensure that we always have success metrics defined</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Continue building a culture that is data driven and measurable decision making</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Develop and maintain processes to organize and compare disparate data sets</span></li>
+</ul>
 <p><strong>Requirements</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Manage all network build gear and spin up BOMs while working with the logistics team to track and procure all relative equipment&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Work with the logistics team and engineers to plan the delivery of gear to the sites</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Manage project master tasks and help move tasks through the approval process</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Track and analyze project risks, timelines, and resources recommending improvements and implementing new standards where needed and escalating issues appropriate&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Gather and create documentation to help improve our deployment playbook&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Lead meetings with cross-functional teams to align goals and update stakeholders</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Manager multiple deployments simultaneously while ensuring all projects are completed on time, within budget, and to highest standards</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Work with our recycling vendor to schedule picks up of equipment that has been decommissioned and track the destruction of storage media&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Highly skilled at writing SQL to query relational databases; knowledge of R or Python is a plus</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Previous experience with Big Query, Data Studio (Looker), Amplitude, Google Analytics and Tableau</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to handle multiple high priority initiatives with a keen focus on data accuracy, quality, and consistency&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">7+ years experience in a business/data analyst role supporting customer-facing teams</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Extensive experience creating compelling dashboards visualizations&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Critical thinking and the ability to deliver insights and recommendations based on the reports you will create</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong communication and presentation skills</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Self-starter with the ability to work independently</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Stakeholder management and being able to work cross functionally</span></li>
+</ul>
+<p><strong>Bonus Points&nbsp;</strong></p>
+<ul>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Computer Science background or equivalent technical skills</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Previous experience in a technical support organization&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Expertise is creating effective visualizations in Data Studio for a stakeholders across multiple functional areas and levels</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">A knack for managing internal stakeholders across cross-functional teams, timezones and level</span></li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
