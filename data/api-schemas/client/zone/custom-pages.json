@@ -10,7 +10,7 @@
 			"rel": "collection",
 			"href": "zones/{#/definitions/zone_identifier}/custom_pages",
 			"method": "GET",
-			"cfOwnership": "www",
+			"cfOwnership": "flprod",
 			"cfPlanAvailability": {
 				"free": false,
 				"pro": true,
@@ -33,7 +33,7 @@
 			"rel": "self",
 			"href": "zones/{#/definitions/zone_identifier}/custom_pages/{#/definitions/identifier}",
 			"method": "GET",
-			"cfOwnership": "www",
+			"cfOwnership": "flprod",
 			"cfPlanAvailability": {
 				"free": false,
 				"pro": true,
@@ -56,7 +56,7 @@
 			"rel": "self",
 			"href": "zones/{#/definitions/zone_identifier}/custom_pages/{#/definitions/identifier}",
 			"method": "PUT",
-			"cfOwnership": "www",
+			"cfOwnership": "flprod",
 			"cfPlanAvailability": {
 				"free": false,
 				"pro": true,

@@ -9,7 +9,7 @@
 			"rel": "self",
 			"href": "zones/{#/definitions/zone_identifier}/custom_ns",
 			"method": "GET",
-			"cfOwnership": "www",
+			"cfOwnership": "dns",
 			"cfPlanAvailability": {
 				"free": false,
 				"pro": false,
@@ -31,7 +31,7 @@
 			"rel": "self",
 			"href": "zones/{#/definitions/zone_identifier}/custom_ns",
 			"method": "PUT",
-			"cfOwnership": "www",
+			"cfOwnership": "dns",
 			"cfPlanAvailability": {
 				"free": false,
 				"pro": false,
