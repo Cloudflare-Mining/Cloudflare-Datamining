@@ -146,12 +146,18 @@ tr {
 }
 
 .ctp-checkbox-label {
-	cursor: pointer
+	cursor: pointer;
+	text-align: left
 }
 
 .ctp-checkbox-label input {
+	top: 20px;
+	left: 18px;
 	position: absolute;
+	height: 24px;
+	width: 24px;
 	opacity: 0;
+	z-index: 9999;
 	cursor: pointer
 }
 
@@ -161,6 +167,7 @@ tr {
 	position: absolute;
 	height: 24px;
 	width: 24px;
+	z-index: 9998;
 	transition: all .1s ease-in;
 	background: #fff;
 	border: 2px solid #e0e0e0;
@@ -429,11 +436,12 @@ body.theme-dark {
 }
 
 .size-compact #branding {
-	padding-right: 0
+	padding-right: 0;
+	text-align: right
 }
 
 .size-compact #terms {
-	text-align: center
+	text-align: right
 }
 
 .size-compact #cf-stage {
@@ -484,12 +492,139 @@ html.rtl {
 
 .rtl #success-icon,
 .rtl #fail-icon,
-.rtl #spinner-icon,
-.rtl .ctp-checkbox-label .mark {
+.rtl #spinner-icon {
 	left: 255px
 }
 
 .rtl #branding {
 	padding-right: 0;
-	padding-left: 13px
+	padding-left: 13px;
+	text-align: left;
+	width: 90px
+}
+
+.rtl .size-compact #branding,
+.rtl .size-compact #terms {
+	text-align: left
+}
+
+.rtl .size-compact #cf-stage {
+	padding-right: 48px
+}
+
+.rtl .size-compact #success-icon,
+.rtl .size-compact #fail-icon,
+.rtl .size-compact #spinner-icon {
+	left: 86px
+}
+
+.rtl ctp-checkbox-label input {
+	right: 18px
+}
+
+.rtl .ctp-checkbox-label .mark {
+	right: 18px
+}
+
+.rtl .ctp-checkbox-label input:checked~.mark:after {
+	right: 8px
+}
+
+.rtl .ctp-checkbox-label {
+	text-align: right
+}
+
+.lang-de #branding,
+.lang-ru #branding {
+	width: 110px;
+	text-align: right;
+	padding-right: 5px
+}
+
+.lang-de .cf-link,
+.lang-ru .cf-link {
+	position: absolute;
+	left: 149px;
+	top: 9px;
+	width: 143px
+}
+
+.lang-de #terms,
+.lang-ru #terms {
+	position: absolute;
+	left: 205px;
+	top: 39px
+}
+
+.lang-de .link-spacer,
+.lang-ru .link-spacer {
+	display: none
+}
+
+.lang-de #privacy-link,
+.lang-de #terms-link,
+.lang-ru #privacy-link,
+.lang-ru #terms-link {
+	display: block
+}
+
+.lang-de #cf-stage,
+.lang-ru #cf-stage {
+	width: 169px;
+	padding-left: 48px
+}
+
+.lang-es #branding,
+.lang-fr #branding,
+.lang-it #branding,
+.lang-ja #branding,
+.lang-nl #branding,
+.lang-ru #branding {
+	text-align: right;
+	width: 100px;
+	padding-right: 5px
+}
+
+.lang-pl #branding,
+.lang-pt #branding {
+	text-align: right;
+	width: 100px
+}
+
+.lang-fr #branding,
+.lang-ja #branding {
+	width: 134px
+}
+
+.lang-tr .size-compact #verifying-text,
+.lang-de .size-compact .ctp-checkbox-label,
+.lang-ru .size-compact .ctp-checkbox-label {
+	font-size: 10px
+}
+
+.lang-zh .size-compact .ctp-checkbox-label,
+.lang-zh-cn .size-compact .ctp-checkbox-label,
+.lang-zh-tw .size-compact .ctp-checkbox-label {
+	font-size: 11px
+}
+
+.lang-de .size-compact .link-spacer,
+.lang-ru .size-compact .link-spacer {
+	display: none
+}
+
+.lang-de .size-compact #terms-link,
+.lang-ru .size-compact #terms-link,
+.lang-de .size-compact #privacy-link,
+.lang-ru .size-compact #privacy-link {
+	display: block
+}
+
+.lang-de .size-compact .cf-link,
+.lang-ru .size-compact .cf-link,
+.lang-de .size-compact #terms,
+.lang-ru .size-compact #terms {
+	position: relative;
+	top: -5px;
+	left: 0
 }
