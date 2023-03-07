@@ -9,7 +9,7 @@
 			"rel": "collection",
 			"href": "accounts/{#/definitions/account_identifier}/roles",
 			"method": "GET",
-			"cfOwnership": "iam",
+			"cfOwnership": "www",
 			"cfPermissionsRequired": {
 				"enum": [
 					"#organization:read"
@@ -26,7 +26,7 @@
 			"rel": "self",
 			"href": "accounts/{#/definitions/account_identifier}/roles/{#/definitions/identifier}",
 			"method": "GET",
-			"cfOwnership": "iam",
+			"cfOwnership": "www",
 			"cfPermissionsRequired": {
 				"enum": [
 					"#organization:read"
