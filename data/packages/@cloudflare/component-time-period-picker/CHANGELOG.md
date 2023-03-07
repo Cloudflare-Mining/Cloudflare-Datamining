@@ -1,5 +1,11 @@
 # Change Log
 
+## 4.1.0
+
+### Minor Changes
+
+- bfd781a26b: Add disabled prop
+
 ## 4.0.0
 
 ### Major Changes
