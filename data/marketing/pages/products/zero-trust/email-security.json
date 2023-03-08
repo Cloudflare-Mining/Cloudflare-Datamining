@@ -54,7 +54,15 @@
 					"linkUrl": "https://www.cloudflare.com/lp/email-security-self-guided-demo-request/",
 					"desktopText": "Try the self-guided Area 1 email security product demo at your own pace. See for yourself why customers call Area 1 a 'game changer.' "
 				},
-				"psaBanner": null,
+				"psaBanner": {
+					"contentTypeId": "psaBanner",
+					"contentfulId": "46x0vYYSWMPHVeV1TKj25Q",
+					"text": "See why Cloudflare is named a Representative Vendor in the new 2023 Gartner Market Guide for Email Security.",
+					"learnMoreText": "Get the Report",
+					"learnMoreUrl": "/lp/gartner-email-security-guide-2023/",
+					"backgroundColor": "blue0",
+					"hideCloseButton": true
+				},
 				"customTopNav": null,
 				"headerLogo": null,
 				"proactivePopup": null,
@@ -1082,7 +1090,7 @@
 				"es-ES",
 				"zh-Hans-CN"
 			],
-			"hasPsaBanner": false,
+			"hasPsaBanner": true,
 			"baseURL": "https://www.cloudflare.com"
 		}
 	}
