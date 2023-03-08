@@ -1,5 +1,11 @@
 # Change Log
 
+## 5.1.0
+
+### Minor Changes
+
+- de8a574202: Upgrading cf.datasets from version 2.10.0 to 2.14.0. Modifying data-locations colos.tsx to use latest dataset from cf.datasets instead of pops.ts and airportCodes.
+
 ## 5.0.0
 
 ### Major Changes
