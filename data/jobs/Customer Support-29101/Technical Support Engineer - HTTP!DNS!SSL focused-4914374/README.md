@@ -5,63 +5,54 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<div>We are looking for an Operations Analyst to support our Infrastructure engagement with strategic commercial and settlement-free partners, focused on network bandwidth services. You will be part of the Infrastructure team that specializes in Network Strategy and building both external and internal relationships that allow Cloudflare to scale and reach user populations around the world. Our group takes a long term and technical approach to forging mutually beneficial and sustainable relationships with all of our network partners.&nbsp;</div>
-<p>What you'll do</p>
+<p>Do you love solving complex problems and interacting with people? Are you passionate about helping customers and are a standout colleague? Cloudflare is seeking a Technical Customer Support Engineer to join our team. You will work with our customers on a variety of technical support issues as well as the Technical Operations team that is responsible for running our global distributed network. This is a position where you will learn the inner workings of Cloudflare's technology and gain a deeper understanding of internet technologies. You will focus on providing support on our Core products: DNS, SSL, CDN, Load Balancing, etc..</p>
+<h3>Examples of desirable skills, knowledge and experience</h3>
 <ul>
-	<li>
-		<p>Manage the team’s general workflow and assist in the implementation of Network Strategy</p>
-	</li>
-	<li>
-		<p>Assist in the creation and maintenance of operational trackers</p>
-	</li>
-	<li>
-		<p>Prioritize resource assignments for deployment and build projects</p>
-	</li>
-	<li>
-		<p>Invoice review in Coupa and reconciliation with tracking data</p>
-	</li>
-	<li>
-		<p>Monitor and report on Legal contract processing to ensure timely execution</p>
-	</li>
-	<li>
-		<p>Ensure all Jira projects have owners and are tracked for completion</p>
-	</li>
-	<li>
-		<p>Help with Purchase Requisitions and Orders processing</p>
-	</li>
-	<li>
-		<p>Partner onboarding, updating of contact information, LOA coordination on tickets for Datacenter Engineering</p>
-	</li>
-	<li>
-		<p>Maintain the team Wiki and weekly meeting minutes</p>
-	</li>
+	<li>You have previous experience working as part of a team in a customer-facing role</li>
 </ul>
-<p>Examples of desirable skills, knowledge and experience</p>
-<p><span id="m_1147808153564845611m_-8303145210542635614gmail-docs-internal-guid-eea3e64a-7fff-b050-676d-e169d149c0aa"></span></p>
 <ul>
-	<li>
-		<p>1-3+ years experience in a sales or business operations, high traffic coordination role&nbsp;</p>
-	</li>
-	<li>
-		<p>Bachelor's degree (B.A.) from four-year college or university; 5 years related experience and/or training; or equivalent combination of education and experience</p>
-	</li>
-	<li>
-		<p>Excellent communication skills, conversing with both technical and non-technical stakeholders</p>
-	</li>
-	<li>
-		<p>Comfortable supporting teams/projects with tight deadlines in an ambiguous environment</p>
-	</li>
-	<li>
-		<p>Highly organized and able to juggle many tasks without losing sight of the highest priority items</p>
-	</li>
-	<li>
-		<p>Very comfortable managing spreadsheets (Sheets, Excel) with pivot tables</p>
-	</li>
-	<li>
-		<p>Experience working in an ISP or Telecom environment is desirable but not essential</p>
-	</li>
+	<li>You have experience solving HTTP, DNS and other networking-related problems</li>
 </ul>
-<p>&nbsp;</p>
+<ul>
+	<li>You understand how the Internet works</li>
+</ul>
+<ul>
+	<li>You have experience working in a support role where you thrived every time you resolved a ticket</li>
+</ul>
+<ul>
+	<li>You are comfortable communicating through various support channels and always put the customer first</li>
+</ul>
+<ul>
+	<li>You are a motivated self-starter and always looking to expand your existing skillset</li>
+</ul>
+<h3>Bonus Points</h3>
+<ul>
+	<li>You are fluent in German, Japanese, French, Spanish, Portuguese or Mandarin</li>
+</ul>
+<ul>
+	<li>You are familiar with Cloudflare and have a site actively using our platform</li>
+</ul>
+<ul>
+	<li>You have a solid grasp of problem-solving with command line tools (curl/dig/traceroute/tcpdump)</li>
+</ul>
+<ul>
+	<li>You are familiar with Nginx, Apache, IIS or any other web servers</li>
+</ul>
+<ul>
+	<li>You are committed to gaining a deeper understanding of the following technologies: DNS /&nbsp; CDN - Cache / SSL / Cloudflare Workers</li>
+</ul>
+<ul>
+	<li>You are familiar with Cloudflare and have a site actively using our platform</li>
+</ul>
+<ul>
+	<li>You have worked with PostgreSQL, MySQL, MS SQL or other database servers</li>
+</ul>
+<ul>
+	<li>You have experience with Cloudflare Workers or JavaScript&nbsp;</li>
+</ul>
+<ul>
+	<li>You have experience with Video encoding and streaming solutions</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>

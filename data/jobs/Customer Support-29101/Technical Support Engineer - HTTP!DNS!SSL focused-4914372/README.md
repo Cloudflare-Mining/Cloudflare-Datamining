@@ -5,29 +5,54 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About the role</strong></p>
-<p><span style="font-weight: 400;">Cloudflare is a rapidly growing global company and there is nothing more important to us than delivering to our users an exceptional native experience across all languages, cultures and platforms. We are looking for an Jr Localization Producer based in Lisbon who has 2+ years of experience managing localization projects. You will be a key contributor to our worldwide marketing and our brand globally.</span></p>
-<p><span style="font-weight: 400;">A successful candidate is a highly motivated individual who works comfortably and autonomously in a fast-paced environment. You have a demonstrated ability to manage priorities and projects, with the right mix of organizational and communication skills. You will use your localization experience and education to manage localization projects and requirements across internal and external vendors and linguists. You will also work cross-functionally with Cloudflare stakeholders to implement globalization-related solutions for the business.</span></p>
-<h4><strong>What you'll do</strong></h4>
+<p>Do you love solving complex problems and interacting with people? Are you passionate about helping customers and are a standout colleague? Cloudflare is seeking a Technical Customer Support Engineer to join our team. You will work with our customers on a variety of technical support issues as well as the Technical Operations team that is responsible for running our global distributed network. This is a position where you will learn the inner workings of Cloudflare's technology and gain a deeper understanding of internet technologies. You will focus on providing support on our Core products: DNS, SSL, CDN, Load Balancing, etc..</p>
+<h3>Examples of desirable skills, knowledge and experience</h3>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Support and assist in managing localization projects during their lifecycle, working with other project managers, external vendors, internal business partners and other departments</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Supervise project status and assist in communication to secure timely deliveries</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Execute project QA checks to deliver high-quality localised content and products</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Assist in removing blockers in EMEA daily localization-related operations</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Assist APAC localization project overflows and hand off overflows to NAMER</span></li>
+	<li>You have previous experience working as part of a team in a customer-facing role</li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Bachelor’s degree or equivalent experience in Localization or Project Management required. Master’s degree preferred</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Native fluency in at least one foreign language and culture required</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum 2+ years of localization project management experience</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Ideally, experience with web/multimedia localization, common CMS platforms and localization file types required (Smartling, Marketo, Contentful, etc.)</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Familiar with the localization industry and vendor management</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to work on their own, following project’s brief and other PM’s instructions</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Culturally aware and effective in engaging and working with a diverse team</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Passionate about Cloudflare and our mission</span></li>
+	<li>You have experience solving HTTP, DNS and other networking-related problems</li>
 </ul>
-<p>&nbsp;</p>
+<ul>
+	<li>You understand how the Internet works</li>
+</ul>
+<ul>
+	<li>You have experience working in a support role where you thrived every time you resolved a ticket</li>
+</ul>
+<ul>
+	<li>You are comfortable communicating through various support channels and always put the customer first</li>
+</ul>
+<ul>
+	<li>You are a motivated self-starter and always looking to expand your existing skillset</li>
+</ul>
+<h3>Bonus Points</h3>
+<ul>
+	<li>You are fluent in German, Japanese, French, Spanish, Portuguese or Mandarin</li>
+</ul>
+<ul>
+	<li>You are familiar with Cloudflare and have a site actively using our platform</li>
+</ul>
+<ul>
+	<li>You have a solid grasp of problem-solving with command line tools (curl/dig/traceroute/tcpdump)</li>
+</ul>
+<ul>
+	<li>You are familiar with Nginx, Apache, IIS or any other web servers</li>
+</ul>
+<ul>
+	<li>You are committed to gaining a deeper understanding of the following technologies: DNS /&nbsp; CDN - Cache / SSL / Cloudflare Workers</li>
+</ul>
+<ul>
+	<li>You are familiar with Cloudflare and have a site actively using our platform</li>
+</ul>
+<ul>
+	<li>You have worked with PostgreSQL, MySQL, MS SQL or other database servers</li>
+</ul>
+<ul>
+	<li>You have experience with Cloudflare Workers or JavaScript&nbsp;</li>
+</ul>
+<ul>
+	<li>You have experience with Video encoding and streaming solutions</li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
