@@ -5,7 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h2><span style="font-weight: 400;">Distributed Systems Engineer - Analytical Database Platform</span></h2>
+<h3><span style="font-weight: 400;">About Role</span></h3>
 <p><span style="font-weight: 400;">We are looking for an experienced and highly motivated engineer to join our team and contribute to the enhancement of our analytical database platform. The platform is a critical component of Cloudflare Analytics and provides real-time visibility into the health and performance of Cloudflare customers' online properties.</span></p>
 <p><span style="font-weight: 400;">Our team’s focus is on building and maintaining a high-performance, scalable database platform powered by ClickHouse optimized for analytical workloads. We help our customers, both internal and external, to gain a deeper understanding of their online properties, identify trends and patterns, and make informed decisions about how to optimize their web performance, security, and other key metrics. Our mission is to empower customers to leverage their data to drive better outcomes for their business.</span></p>
 <p><span style="font-weight: 400;">As a Distributed systems engineer - Analytical Database Platform, you will:</span></p>
