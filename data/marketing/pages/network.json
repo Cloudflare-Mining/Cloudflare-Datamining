@@ -80,10 +80,6 @@
 								"description": "cities in %{CountryCount}+ countries, including mainland China"
 							},
 							{
-								"title": "%{NetworkInterconnects}",
-								"description": "networks directly connect to Cloudflare, including every major ISP, cloud provider, and enterprise"
-							},
-							{
 								"title": "%{NetworkCapacityV2}",
 								"description": "global network edge capacity, consisting of transit connections, peering and private network interconnects\n"
 							},
@@ -98,10 +94,6 @@
 							"contentfulId": "2O04nulSdNrRpJR9fs9OKv",
 							"contentTypeId": "dataCollection",
 							"items": [
-								{
-									"cityName": "Honolulu, US",
-									"region": "North America"
-								},
 								{
 									"cityName": "Bogota, CO",
 									"region": "Latin America & the Caribbean"
@@ -121,10 +113,6 @@
 								{
 									"cityName": "Dar Es Salaam, TZ",
 									"region": "Africa"
-								},
-								{
-									"cityName": "Bangkok, TH",
-									"region": "Asia"
 								},
 								{
 									"cityName": "Jinan, CN",
@@ -153,10 +141,6 @@
 								{
 									"cityName": "Nairobi, KE",
 									"region": "Africa"
-								},
-								{
-									"cityName": "Jashore, BD",
-									"region": "Asia"
 								},
 								{
 									"cityName": "Yangon, MM",
@@ -356,10 +340,6 @@
 								},
 								{
 									"cityName": "Quito, EC",
-									"region": "Latin America & the Caribbean"
-								},
-								{
-									"cityName": "Panama City, PA",
 									"region": "Latin America & the Caribbean"
 								},
 								{
@@ -599,10 +579,6 @@
 									"region": "North America"
 								},
 								{
-									"cityName": "Nashville, US",
-									"region": "North America"
-								},
-								{
 									"cityName": "Vienna, AT",
 									"region": "Europe"
 								},
@@ -716,10 +692,6 @@
 								},
 								{
 									"cityName": "Montréal, CA",
-									"region": "North America"
-								},
-								{
-									"cityName": "Vancouver, CA",
 									"region": "North America"
 								},
 								{
@@ -1264,10 +1236,6 @@
 							"type": "Cloudflare PoP",
 							"items": [
 								{
-									"cityName": "Honolulu, US",
-									"region": "North America"
-								},
-								{
 									"cityName": "Bogota, CO",
 									"region": "Latin America & the Caribbean"
 								},
@@ -1286,10 +1254,6 @@
 								{
 									"cityName": "Dar Es Salaam, TZ",
 									"region": "Africa"
-								},
-								{
-									"cityName": "Bangkok, TH",
-									"region": "Asia"
 								},
 								{
 									"cityName": "Jinan, CN",
@@ -1318,10 +1282,6 @@
 								{
 									"cityName": "Nairobi, KE",
 									"region": "Africa"
-								},
-								{
-									"cityName": "Jashore, BD",
-									"region": "Asia"
 								},
 								{
 									"cityName": "Yangon, MM",
@@ -1521,10 +1481,6 @@
 								},
 								{
 									"cityName": "Quito, EC",
-									"region": "Latin America & the Caribbean"
-								},
-								{
-									"cityName": "Panama City, PA",
 									"region": "Latin America & the Caribbean"
 								},
 								{
@@ -1764,10 +1720,6 @@
 									"region": "North America"
 								},
 								{
-									"cityName": "Nashville, US",
-									"region": "North America"
-								},
-								{
 									"cityName": "Vienna, AT",
 									"region": "Europe"
 								},
@@ -1881,10 +1833,6 @@
 								},
 								{
 									"cityName": "Montréal, CA",
-									"region": "North America"
-								},
-								{
-									"cityName": "Vancouver, CA",
 									"region": "North America"
 								},
 								{
@@ -2913,227 +2861,6 @@
 						"imageSize": null,
 						"imageTextAlignment": null,
 						"togglesTo": null
-					},
-					{
-						"contentfulId": "1Q9afKypg1zdzeVg25xuoD",
-						"backgroundColor": "white",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": null,
-						"copy": null,
-						"title": "The Cloudflare difference",
-						"subtitle": null,
-						"bladeStyle": "Feature Blocks - 3 columns",
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "2GyExq20SVINt0fVH2pUXk",
-								"title": "Anycast network",
-								"titleSize": null,
-								"description": "Minimize latency and increase resiliency with a global Anycast network that can effortlessly stop even the largest DDoS attacks.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "76a11ba2-f049-5af8-803e-8d933358063b",
-									"altText": "Internet globe blue",
-									"title": "Internet globe blue",
-									"activeAsset": "Brandfolder Asset",
-									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 2017,
-										"height": 192,
-										"width": 192,
-										"filename": "internet-globe-blue.svg",
-										"file": {
-											"publicURL": "[path]/internet-globe-blue.svg"
-										}
-									},
-									"brandfolderAssetMobile": null
-								},
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "1YxzlpXD1v105wzZH6rOI",
-								"title": "Smart routing",
-								"titleSize": null,
-								"description": "Connect any user to any application up to 30% faster, with a rich application and performance data set that intelligently routes around congestion.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "30718739-82ff-5bc7-9c5d-e161248e8da9",
-									"altText": "Performance routing blue",
-									"title": "Performance routing blue",
-									"activeAsset": "Brandfolder Asset",
-									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 2534,
-										"height": 192,
-										"width": 192,
-										"filename": "performance-routing-blue.svg",
-										"file": {
-											"publicURL": "[path]/performance-routing-blue.svg"
-										}
-									},
-									"brandfolderAssetMobile": null
-								},
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "6aVWvrJ6xIVAA6Pm0W3xyd",
-								"title": "100% renewable",
-								"titleSize": null,
-								"description": "Reduce your carbon footprint by using a network that is 100% powered by renewable energy with net zero emissions.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "6a5c5870-7d66-5fbc-9511-c53d717129b8",
-									"altText": "Cloudflare Carbon Impact Icon",
-									"title": "Cloudflare Carbon Impact Icon",
-									"activeAsset": "Brandfolder Asset",
-									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 13770,
-										"height": 192,
-										"width": 196,
-										"filename": "cloudflare-carbon-impact-blue.svg",
-										"file": {
-											"publicURL": "[path]/cloudflare-carbon-impact-blue.svg"
-										}
-									},
-									"brandfolderAssetMobile": null
-								},
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "7CdsX4CG4xg7r8oqzROFqX",
-								"title": "China network",
-								"titleSize": null,
-								"description": "Ensure a fast and consistent experience for users inside and outside mainland China with our growing presence in the region.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "e29e0a6c-57e1-5296-b7fe-a4bb365da279",
-									"altText": "Location pin blue",
-									"title": "Location pin blue",
-									"activeAsset": "Brandfolder Asset",
-									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 1773,
-										"height": 192,
-										"width": 192,
-										"filename": "location-pin-blue.svg",
-										"file": {
-											"publicURL": "[path]/location-pin-blue.svg"
-										}
-									},
-									"brandfolderAssetMobile": null
-								},
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "1FkigvqVDraeKSDL3vAo5S",
-								"title": "Fastest DNS",
-								"titleSize": null,
-								"description": "Keep your Internet browsing safe and private with [1.1.1.1](https://1.1.1.1/), the world's fastest DNS resolver — powered by the Cloudflare global network.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "4bab6144-527d-51ff-a4c0-be3260243bee",
-									"altText": "Cloudflare warp blue",
-									"title": "Cloudflare warp blue",
-									"activeAsset": "Brandfolder Asset",
-									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 3027,
-										"height": 192,
-										"width": 196,
-										"filename": "cloudflare-warp-blue.svg",
-										"file": {
-											"publicURL": "[path]/cloudflare-warp-blue.svg"
-										}
-									},
-									"brandfolderAssetMobile": null
-								},
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "36YalPsZPHiioq4M0YfjPH",
-								"title": "Serverless edge compute",
-								"titleSize": null,
-								"description": "Build and deploy serverless apps instantly across the globe with exceptional reliability, performance, and scale using Cloudflare Workers.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "e9338336-ce81-5938-a534-b60611eb0d00",
-									"altText": "Cloudflare workers blue",
-									"title": "Cloudflare workers blue",
-									"activeAsset": "Brandfolder Asset",
-									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 493,
-										"height": 192,
-										"width": 192,
-										"filename": "cloudflare-workers-blue.svg",
-										"file": {
-											"publicURL": "[path]/cloudflare-workers-blue.svg"
-										}
-									},
-									"brandfolderAssetMobile": null
-								},
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							}
-						]
 					},
 					{
 						"contentTypeId": "bladeTrustedBy",
