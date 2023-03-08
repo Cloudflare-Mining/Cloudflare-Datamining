@@ -576,6 +576,18 @@
 		}
 	},
 	{
+		"id": "graphql_query_analytics.allowed",
+		"feature": {
+			"feature_set": "graphql_query_analytics",
+			"id": 1178,
+			"key": "graphql_query_analytics.allowed",
+			"name": "API Shield GraphQL Query Analytics - allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "health_checks.count",
 		"feature": {
 			"feature_set": "health_checks",
@@ -858,6 +870,18 @@
 			"id": 1055,
 			"key": "page_shield.connection_monitor_allowed",
 			"name": "Page Shield - Connection Monitor usage allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "page_shield.resource_inventory_export_allowed",
+		"feature": {
+			"feature_set": "page_shield",
+			"id": 1170,
+			"key": "page_shield.resource_inventory_export_allowed",
+			"name": "Page Shield - Resource inventory export allowed"
 		},
 		"allocation": {
 			"type": "bool"
@@ -1542,6 +1566,18 @@
 			"id": 1058,
 			"key": "rulesets.max_endpoints_per_shield",
 			"name": "Rulesets - Max Allowed Endpoints per API Shield"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "rulesets.max_page_shield_rules_per_ruleset",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 1162,
+			"key": "rulesets.max_page_shield_rules_per_ruleset",
+			"name": "Rulesets - Page Shield Max Rules Per Rulesets"
 		},
 		"allocation": {
 			"type": "max_count"

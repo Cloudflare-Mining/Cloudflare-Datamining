@@ -276,6 +276,18 @@
 		}
 	},
 	{
+		"id": "analytics_engine.max_writes",
+		"feature": {
+			"feature_set": "analytics_engine",
+			"id": 1173,
+			"key": "analytics_engine.max_writes",
+			"name": "Analytics Engine API - Maximum number of calls to WriteDataPoint per request"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
 		"id": "analytics_engine.not_older_than",
 		"feature": {
 			"feature_set": "analytics_engine",
@@ -840,6 +852,30 @@
 		}
 	},
 	{
+		"id": "filters.max_custom_list_items",
+		"feature": {
+			"feature_set": "filters",
+			"id": 1172,
+			"key": "filters.max_custom_list_items",
+			"name": "Filters - Max Custom List Items"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "filters.max_custom_lists",
+		"feature": {
+			"feature_set": "filters",
+			"id": 1171,
+			"key": "filters.max_custom_lists",
+			"name": "Filters - Max Custom Lists"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
 		"id": "filters.max_list_items",
 		"feature": {
 			"feature_set": "filters",
@@ -882,6 +918,18 @@
 			"id": 625,
 			"key": "graphql_api_v2.enabled_bot_management",
 			"name": "graphql_api_v2.enabled_bot_management"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "graphql_api_v2.enabled_cache_reserve",
+		"feature": {
+			"feature_set": "graphqlv2",
+			"id": 1179,
+			"key": "graphql_api_v2.enabled_cache_reserve",
+			"name": "GraphQL API Access - Cache Reserve"
 		},
 		"allocation": {
 			"type": "bool"
@@ -1116,6 +1164,18 @@
 		}
 	},
 	{
+		"id": "logpull.rayid_lookup.enabled",
+		"feature": {
+			"feature_set": "logpull",
+			"id": 1061,
+			"key": "logpull.rayid_lookup.enabled",
+			"name": "Logpull - RayID Lookup"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "logpush.access_requests.max_jobs_allowed",
 		"feature": {
 			"feature_set": "logpush",
@@ -1158,6 +1218,18 @@
 			"id": 1160,
 			"key": "logpush.casb_findings.max_jobs_allowed",
 			"name": "Logpush - CASB Findings - Max Jobs"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "logpush.device_posture_results.max_jobs_allowed",
+		"feature": {
+			"feature_set": "logpush",
+			"id": 1176,
+			"key": "logpush.device_posture_results.max_jobs_allowed",
+			"name": "Logpush - Device Posture Results - Max Jobs"
 		},
 		"allocation": {
 			"type": "max_count"
