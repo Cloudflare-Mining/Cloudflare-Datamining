@@ -332,7 +332,7 @@
 		]
 	},
 	"skip-sbfm": {
-		"enabled": false
+		"enabled": true
 	},
 	"speed-test-region": {
 		"enabled": false
@@ -407,6 +407,9 @@
 		"enabled": false
 	},
 	"waf-attack-score-class": {
+		"enabled": false
+	},
+	"waf-attack-score-class-waf-filter": {
 		"enabled": false
 	},
 	"waiting-room-rules": {
