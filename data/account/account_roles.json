@@ -516,13 +516,17 @@
 		"name": "Super Administrator - All Privileges",
 		"description": "Can edit any Cloudflare setting, make purchases, update billing, and manage memberships. Super Administrators can revoke the access of other Super Administrators.",
 		"permissions": {
-			"analytics": {
-				"read": true,
-				"edit": false
-			},
 			"zone_settings": {
 				"read": true,
 				"edit": true
+			},
+			"dns_records": {
+				"read": true,
+				"edit": true
+			},
+			"analytics": {
+				"read": true,
+				"edit": false
 			},
 			"worker": {
 				"read": true,
@@ -578,10 +582,6 @@
 				"edit": true
 			},
 			"blocks": {
-				"read": true,
-				"edit": true
-			},
-			"dns_records": {
 				"read": true,
 				"edit": true
 			},
@@ -1090,6 +1090,14 @@
 		"name": "Administrator Read Only",
 		"description": "Can access the full account in read-only mode.",
 		"permissions": {
+			"zone_settings": {
+				"read": true,
+				"edit": false
+			},
+			"dns_records": {
+				"read": true,
+				"edit": false
+			},
 			"analytics": {
 				"read": true,
 				"edit": false
@@ -1123,10 +1131,6 @@
 				"edit": false
 			},
 			"magic": {
-				"read": true,
-				"edit": false
-			},
-			"zone_settings": {
 				"read": true,
 				"edit": false
 			},
@@ -1175,10 +1179,6 @@
 				"read": true,
 				"edit": false
 			},
-			"dns_records": {
-				"read": true,
-				"edit": false
-			},
 			"waitingroom": {
 				"read": true,
 				"edit": false
@@ -1210,13 +1210,17 @@
 		"name": "Administrator",
 		"description": "Can access the full account, except for membership management and billing.",
 		"permissions": {
-			"analytics": {
-				"read": true,
-				"edit": false
-			},
 			"zone_settings": {
 				"read": true,
 				"edit": true
+			},
+			"dns_records": {
+				"read": true,
+				"edit": true
+			},
+			"analytics": {
+				"read": true,
+				"edit": false
 			},
 			"worker": {
 				"read": true,
@@ -1268,10 +1272,6 @@
 				"edit": true
 			},
 			"blocks": {
-				"read": true,
-				"edit": true
-			},
-			"dns_records": {
 				"read": true,
 				"edit": true
 			},

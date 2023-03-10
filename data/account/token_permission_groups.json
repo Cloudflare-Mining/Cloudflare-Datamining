@@ -600,6 +600,22 @@
 		]
 	},
 	{
+		"id": "1047880d37b649b49db4a504a245896f",
+		"name": "Email Security DMARC Reports Read",
+		"description": "Grants read access to Email Security dmarc reports\n",
+		"scopes": [
+			"com.cloudflare.api.account.zone"
+		]
+	},
+	{
+		"id": "2eee71c9364c4cacaf469e8370f09056",
+		"name": "Email Security DMARC Reports Write",
+		"description": "Grants full access to Email Security dmarc reports\n",
+		"scopes": [
+			"com.cloudflare.api.account.zone"
+		]
+	},
+	{
 		"id": "4ec32dfcb35641c5bb32d5ef1ab963b4",
 		"name": "Firewall Services Read",
 		"description": "Grants read access to Firewall resources",
