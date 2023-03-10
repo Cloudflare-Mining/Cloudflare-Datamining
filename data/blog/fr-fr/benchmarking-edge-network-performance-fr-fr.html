@@ -1,0 +1,167 @@
+<div class="post-content lh-copy gray1">
+	<p><em>Cet article de blog a été publié le 17 septembre 2021. Tout comme nous continuons à optimiser notre réseau, nous publions des mises à jour régulières, disponibles </em><a href="https://blog.cloudflare.com/tag/network-performance-update/"><em>ici</em></a><em>.</em></p>
+	<figure class="kg-card kg-image-card"><img src="https://lh3.googleusercontent.com/kX8fy-8Cyk2Lzpix-2jwRCDVZojzhlXamNkNMfu8c4GP0aMfIs3wdzm5RSuMAuWk94snw30hyU2uuL60y10OW6kZNWyVdTgDWo39kFeA5SCPJ18QTRMeSL7RKV4REPGBx7db2_gM" class="kg-image"></figure>
+	<p>Pendant la Speed Week, nous avons beaucoup parlé des services qui rendent le web plus rapide : <a href="https://blog.cloudflare.com/argo-v2/">Argo 2.0</a> pour un meilleur routage en cas de perturbations sur le réseau Internet, <a href="https://blog.cloudflare.com/orpheus/">Orpheus</a> pour assurer la disponibilité des serveurs d'origine depuis n'importe quel site, la fonctionnalité d'<a href="https://blog.cloudflare.com/announcing-cloudflare-images/">optimisation des images</a>, qui permet d'envoyer au client les visuels précisément requis, la fonction <a href="https://blog.cloudflare.com/orpheus/">Tiered Cache</a> (mise en cache par niveau) pour maximiser les taux d'accès au cache et tirer le meilleur parti du nouveau réseau Cloudflare (désormais 25 % plus vaste), sans oublier notre <a href="https://blog.cloudflare.com/cloudflare-backbone-internet-fast-lane/">infrastructure fibre</a> plus étendue, parmi <a href="https://blog.cloudflare.com/tag/speed-week/">bien d'autres services</a>.</p>
+	<p>Ces services sont tous fantastiques.</p>
+	<p>Cependant, il est essentiel pour nous de mesurer également les performances de notre réseau et de nous comparer aux acteurs du secteur, grands et petits, afin de nous assurer que le service que nous fournissons est le meilleur et le plus rapide.</p>
+	<p>Nous avons récemment réalisé une expérience de mesure lors de laquelle nous avons utilisé les données RUM (Real User Measurement) issues de l'API d'un navigateur standard pour évaluer les performances de Cloudflare et d'autres fournisseurs en conditions réelles, et ce dans le monde entier. Nous souhaitions utiliser des tests tiers à cette fin, mais ces derniers n'offraient pas le degré de précision que nous recherchions. Notre objectif consiste à approfondir l'évaluation de manière à inclure chaque FAI disponible sur le marché, afin de nous permettre d'optimiser nos services partout dans le monde. Nous savions que, dans certains endroits, les réponses que nous obtiendrions ne seraient pas optimales et que l'amélioration de nos performances nécessiterait quelques efforts. Toutefois, en l'absence d'une analyse détaillée à l'échelle du monde entier, nous ne pouvions pas savoir si nous étions vraiment les plus rapides ni quels aspects nous devions améliorer.</p>
+	<p>Dans cet article de blog, je décrirai de quelle manière cette mesure s'est déroulée, ainsi que les résultats obtenus. En résumé, Cloudflare décroche la première place dans pratiquement tous les cas, que l'on considère l'ensemble des réseaux du monde, les 1 000 plus grands ou les 1 000 plus actifs, que l'on examine les délais moyens ou le 95e centile ou que l'on mesure la rapidité d'établissement d'une connexion, le temps nécessaire pour que le premier octet atteigne le navigateur web d'un utilisateur ou la durée totale d'un téléchargement. Nous ne comptons cependant pas nous arrêter là : nous nous engageons à poursuivre nos efforts d'interconnexion dans le monde entier, afin de nous assurer de toujours rester nº 1.</p>
+	<h3 id="les-raisons-pour-lesquelles-nous-avons-r-alis-ces-mesures">Les raisons pour lesquelles nous avons réalisé ces mesures</h3>
+	<p>Certains services commerciaux de mesure des performances d'Internet (comme Cedexis, Catchpoint, Pingdom et ThousandEyes) existent déjà et réalisent justement les mesures RUM utilisées par Cloudflare aux fins de ce test. Nous souhaitions en outre nous assurer que notre test resterait aussi équitable que possible et qu'il permettait à chaque réseau de se présenter sous son meilleur jour.</p>
+	<p>Nous sommes déjà abonnés à des services de surveillance tiers, mais lorsque nous avons examiné leurs données, nous n'en étions pas satisfaits.</p>
+	<p>Premièrement, nous craignions que la méthode d'échantillonnage utilisée ne soit pas totalement représentative et que les mesures se retrouvent souvent faussées par le fait qu'elles soient réalisées du côté serveur du réseau, plutôt que du côté utilisateur. Nous appréhendions également que même si ces mesures étaient réalisées côté utilisateur, elles puissent être considérées comme artificielles ou perturbées par des bots et d'autres formes de trafic automatisé.</p>
+	<p>Deuxièmement, les mesures ne se montraient pas suffisamment précises. Elles présentaient nos performances par pays ou par région, mais manquaient d'approfondissement (elles ne s'intéressaient pas aux réseaux individuels, par exemple). Les informations détaillées et les observations aberrantes se retrouvaient ainsi occultées derrière des moyennes. Nous obtenions des résultats satisfaisants dans les tests tiers, mais nous n'accordions pas une confiance totale à ces derniers, car nous ne les considérions pas comme aussi complets et précis que nous le souhaitions. La finalité de l'exercice n'était pas de sélectionner un test qui nous présenterait sous un jour favorable. L'objectif était de faire preuve de précision et de révéler les secteurs dans lesquels nos services ne se montraient pas encore suffisamment performants, afin de pouvoir nous concentrer sur ces aspects et d'améliorer notre offre. Voilà pourquoi nous avons dû concevoir ce test nous-mêmes.</p>
+	<p>Nous nous mesurons à d'autres prestataires, car il est utile de savoir ce qui est possible. Si un autre prestataire se montre plus rapide dans un domaine, l'observation prouve que ce résultat est possible. Nous ne serons pas satisfaits tant que nous ne serons pas au moins aussi performants que tous les autres prestataires, dans tous les domaines. Nous disposons désormais de données précises pour nous assurer d'atteindre ce but. Notre prochaine mise à jour est prévue à l'occasion de la Semaine anniversaire, l'objectif étant de travailler au niveau des 10 % de réseaux sur lesquels nous ne présentons pas une rapidité optimale et de devenir les plus rapides.</p>
+	<h3 id="comment-nous-avons-r-alis-ces-mesures">Comment nous avons réalisé ces mesures</h3>
+	<p>Le développement du protocole visant à mesurer nos performances s'est déroulé en deux étapes. Nous avons créé une petite équipe interne chargée d'effectuer des mesures séparées de l'équipe qui gère et optimise notre réseau. L'objectif ici était de montrer à l'équipe quels aspects devaient être améliorés.</p>
+	<p>En outre, afin de nous assurer que les autres réseaux CDN seraient testés en fonction de leurs ressources les plus représentatives, nous avons utilisé les mêmes points de terminaison que ceux des services de mesure commerciaux, en partant du principe que nos concurrents se seraient déjà assurés de l'optimisation de ces points de terminaison, afin de présenter les performances de leurs réseaux sous leur meilleur jour.</p>
+	<p>Les mesures présentées dans cet article de blog ont été réalisées sur une période de quatre jours, juste avant le début de la Speed Week (du 10/09/2021 à 12:25:02 UTC au 13/09/2021 à 16:21:10 UTC). Nous avons réalisé ces mesures en téléchargeant exactement le même fichier PNG de 100 Ko. Nous les avons classées en fonction du réseau sur lequel la mesure a été réalisée. Ce réseau est identifié par son ASN et un nom. Nous n'en avons pas fini avec ces mesures. Nous comptons les poursuivre et continuer à optimiser le processus.</p>
+	<p>Le téléchargement d'un fichier de 100 Ko constitue une mesure de test couramment utilisée dans notre secteur. Il permet de mesurer diverses caractéristiques du réseau, comme le temps de connexion, mais aussi le temps total de téléchargement.</p>
+	<p>Avant d'examiner les résultats, évoquons brièvement la manière dont Internet se comporte comme un tout cohérent. Internet est un réseau de réseaux, qui coopèrent pour former le réseau mondial que nous utilisons tous. Ces réseaux sont identifiés par une dénomination étrange : le « numéro de système autonome » ou ASN (Autonomous System Number). L'idée est que les grands réseaux (comme ceux des fournisseurs d'accès à Internet, des fournisseurs de cloud, des universités ou des opérateurs de téléphonie mobile) fonctionnent de manière autonome, puis rejoignent ensuite le réseau Internet mondial par le biais d'un protocole appelé BGP (auquel nous avons déjà consacré <a href="https://blog.cloudflare.com/tag/bgp/">cet article</a>).</p>
+	<p>D'une certaine manière, Internet se compose littéralement de ces ASN. Nous souhaitons donc mesurer nos performances sur chacun d'eux. Pourquoi ? Parce qu'un aspect de l'amélioration des performances consiste à développer notre connectivité à chaque ASN, mais aussi parce qu'évaluer nos performances sur chaque réseau nous aide considérablement.</p>
+	<p>Le réseau Internet mondial compte près de 70 000 ASN, et nous avons observé le trafic d'environ 21 000 (nombre exact : 20 728) d'entre eux pendant la période de mesure. Ces chiffres se montrent cohérents, car tous les réseaux ne sont pas « externes » (c'est-à-dire, ils ne constituent pas nécessairement la source du trafic vers les sites web). De nombreux ASN sont en réalité des intermédiaires qui acheminent le trafic sur Internet.</p>
+	<p>Dans la suite de cet article, nous privilégierons l'utilisation du terme « réseau », plutôt que celle du terme « ASN ».</p>
+	<h3 id="ce-que-nous-avons-mesur-">Ce que nous avons mesuré</h3>
+	<p>L'obtention de données de mesure concernant des utilisateurs réels se révélait autrefois un exercice difficile. Toutefois, grâce à l'<a href="https://developer.mozilla.org/en-US/docs/Web/API/Resource_Timing_API/Using_the_Resource_Timing_API" target="_blank">API Resource Timing</a>, prise en charge par la plupart des navigateurs modernes, cette procédure est devenue nettement plus simple pour les points de terminaison HTTP. L'API permet à une page de mesurer les données temporelles des ressources récupérées sur le réseau à l'aide d'informations d'horodatage à haute définition, avec une précision de 5 µs (microsecondes).</p>
+	<p>L'objectif de cette API consiste à obtenir des informations temporelles capables de montrer un aperçu réel de la manière dont un utilisateur final agit sur Internet, plutôt qu'un test synthétique qui mesurerait une composante unique de l'ensemble des événements qui se déroulent lorsqu'un utilisateur navigue sur le web.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/09/image16.png" class="kg-image"></figure>
+	<p>L'API Resource Timing est prise en charge par <a href="https://caniuse.com/resource-timing" target="_blank">pratiquement tous les navigateurs</a>. Elle permet d'effectuer des mesures dans chacun d'eux, des anciennes versions d'Internet Explorer aux navigateurs mobiles sur iOS et Android, jusqu'à la toute dernière version de Chrome. L'utilisation de cette API nous donne un aperçu des cas d'utilisation réelle sur de véritables navigateurs.</p>
+	<p>En outre, nous ne demandons pas uniquement au navigateur de télécharger une image. Afin de nous assurer d'être équitables et de reproduire l'expérience réelle de l'utilisateur final, nous veillons à ce qu'aucune mise en cache locale ne soit impliquée dans la requête et vérifions si l'objet a été compressé ou non par le serveur. Nous tenons également compte de la taille des en-têtes HTTP, et enregistrons-le fait que la connexion a fait l'objet d'une initialisation préalable ou non, pour ne citer que quelques détails techniques.</p>
+	<p>Vous trouverez ci-dessous un exemple de haut niveau de la manière dont se déroule la procédure :</p><!--kg-card-begin: markdown-->
+	<pre><code class="language-js">await fetch("https://example.com/100KB.png?r=7562574954", {
+              mode: "cors",
+              cache: "no-cache",
+              credentials: "omit",
+              method: "GET",
+})
+
+performance.getEntriesByType("resource");
+
+{
+   connectEnd: 1400.3999999761581
+   connectStart: 1400.3999999761581
+   decodedBodySize: 102400
+   domainLookupEnd: 1400.3999999761581
+   domainLookupStart: 1400.3999999761581
+   duration: 51.60000002384186
+   encodedBodySize: 102400
+   entryType: "resource"
+   fetchStart: 1400.3999999761581
+   initiatorType: "fetch"
+   name: "https://example.com/100KB.png"
+   nextHopProtocol: "h2"
+   redirectEnd: 0
+   redirectStart: 0
+   requestStart: 1406
+   responseEnd: 1452
+   responseStart: 1428.5
+   secureConnectionStart: 1400.3999999761581
+   startTime: 1400.3999999761581
+   transferSize: 102700
+   workerStart: 0
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Pour mesurer les performances de chaque réseau CDN, nous avons téléchargé une image depuis chacun d'eux, lorsqu'un navigateur a consulté l'une de nos pages spéciales. Une fois chaque image téléchargée, nous avons enregistré les mesures à l'aide d'une API basée sur <a href="https://workers.cloudflare.com/" target="_blank">Cloudflare Workers</a>.</p>
+	<h3 id="les-trois-mesures-temps-de-connexion-tcp-ttfb-et-ttlb">Les trois mesures : temps de connexion TCP, TTFB et TTLB</h3>
+	<p>Nous nous sommes concentrés sur trois mesures pour illustrer la rapidité de notre réseau : le temps de connexion TCP, le TTFB et le TTLB. Les lignes qui suivent montrent pourquoi ces trois valeurs se révèlent importantes.</p>
+	<p>Le temps de connexion TCP sert à démontrer la qualité de notre connexion au réseau Internet mondial, car il ne comptabilise que le temps d'établissement d'une connexion entre une machine et un hôte distant (avant l'utilisation de tout protocole de niveau supérieur). Le temps de connexion TCP se calcule de la manière suivante : connectEnd – connectStart (voir le diagramme ci-dessus).</p>
+	<p>Le TTFB (« Time To First Byte », temps jusqu'au premier octet) désigne le temps mis par le serveur à renvoyer le premier octet de données, après l'envoi d'une requête HTTP. Il s'agit d'une mesure courante, utilisée pour caractériser la réactivité d'un serveur. Le TTFB se calcule ainsi : responseStart – connectStart (requestStart – connectEnd).</p>
+	<p>Le TTLB (« Time To Last Byte », temps jusqu'au dernier octet) désigne le temps nécessaire à l'envoi de la réponse complète au navigateur web. Cette valeur constitue un bon indicateur de la durée d'un téléchargement complet et permet d'évaluer l'efficacité de l'envoi des données par le serveur (ou le réseau CDN). Le TTLB se calcule ainsi : responseEnd – connectStart – (requestStart – connectEnd).</p>
+	<p>Nous avons ensuite produit deux ensembles de données : la moyenne et le p95. La moyenne est un indicateur bien compris par les profanes et représente l'expérience moyenne de l'utilisateur. Toutefois, elle ne rend pas particulièrement bien compte de la diversité des vitesses constatées par les utilisateurs. Dans la mesure où elle définit une moyenne, cette valeur peut ne pas tenir compte de certaines distributions asymétriques des données (les moments où de nombreux utilisateurs signalent de bonnes performances, tandis que de nombreux autres constatent de mauvaises performances, par exemple).</p>
+	<p>Pour résoudre les problèmes liés à la moyenne, nous avons également utilisé la valeur p95, c'est-à-dire au 95e centile. Cette valeur définit un niveau de performances englobant 95 % des mesures (c'est-à-dire un niveau sous lequel se situent 95 % des résultats). Elle peut être difficile à comprendre, mais on peut la considérer comme le « cas raisonnable le plus défavorable » de performances constatées par un utilisateur. Seules 5 % des mesures affichaient des performances pires que ce nombre.</p>
+	<h3 id="un-exemple-de-graphique">Un exemple de graphique</h3>
+	<p>Comme cet article de blog comporte beaucoup de données, commençons par l'examen détaillé d'un graphique montrant les résultats. Nous avons comparé nos performances à celles des géants du secteur, comme Google et Amazon CloudFront, à celles du pionnier en la matière, Akamai, ainsi qu'à celles de la jeune entreprise Fastly.</p>
+	<p>Pour chaque réseau (représenté par un ASN) et chaque réseau CDN, nous avons calculé quel réseau CDN présentait les meilleures performances. Vous trouverez ci-dessous, par exemple, un décompte du nombre de réseaux sur lesquels chaque réseau CDN affichait les meilleures performances au regard du TTFB. Ce graphique particulier présente la valeur p95 et inclut les données des 1 000 premiers réseaux (par nombre d'adresses IPv4 annoncées).</p>
+	<p>Sur ces graphiques, plus les barres sont longues, meilleurs sont les résultats. Les barres indiquent le nombre de réseaux sur lesquels ce réseau CDN affichait le TTFB le plus bas à la valeur p95.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image6-12.png" class="kg-image"></figure>
+	<p>Il en ressort que Cloudflare présente le plus court temps jusqu'au premier octet (TTFB, soit le temps mis par le premier octet de contenu pour atteindre le navigateur) au 95e centile sur le plus grand nombre de réseaux parmi les 1 000 premiers (sur la base du nombre d'adresses IPv4 annoncées). Google arrive ensuite, suivi de Fastly, d'Amazon CloudFront et d'Akamai.</p>
+	<p>Les trois mesures (temps de connexion TCP, temps jusqu'au premier octet et temps jusqu'au dernier octet) sont importantes pour l'expérience utilisateur. Dans cet exemple, je me suis concentré sur le temps jusqu'au premier octet (TTFB), car il constitue une mesure courante de la réactivité du web. Il représente littéralement le temps mis par un serveur web pour commencer à répondre à une requête de page web provenant d'un navigateur.</p>
+	<p>Pour comprendre les données que nous avons recueillies, prenons le cas de deux grands fournisseurs d'accès Internet basés aux États-Unis : Cox et Comcast. Cox s'occupe d'environ <a href="https://newsroom.cox.com/company-overview" target="_blank">6,5 millions de clients</a> et Comcast en compte environ <a href="https://www.cmcsa.com/news-releases/news-release-details/comcast-reports-4th-quarter-and-full-year-2020-results" target="_blank">30 millions</a>. Nous avons réalisé près de 22 000 mesures sur le réseau de Cox et 100 000 sur celui de Comcast. Nous utiliserons ces mesures ci-dessous, afin de classer les réseaux en fonction de leur taille. Nous constatons ici que nos mesures, de même que le nombre de clients de Cox et de Comcast, se suivent de près.</p>
+	<p>Cox Communications possède l'ASN 22773. Nos données indiquent les valeurs suivantes en matière de TTFB au p95 pour les cinq réseaux CDN : Cloudflare 332,6 ms, Fastly 357,6 ms, Google 380,3 ms, Amazon CloudFront 404,4 ms et Akamai 441,5 ms. Dans ce cas précis, Cloudflare s'est révélé le plus rapide, environ 7 % plus que le réseau CDN suivant (Fastly), qui se montrait lui-même plus rapide que celui de Google, et ainsi de suite.</p>
+	<p>Dans le cas de Comcast (qui détient l'ASN 7922), nous constatons que le TTFB au p95 était de 323,7 ms (Fastly), 324,2 ms (Cloudflare), 353,7 ms (Google), 384,6 ms (Akamai) et 418,8 ms (Amazon CloudFront). Fastly (323,7 ms) devance ici Cloudflare (324,2 ms) de 0,2 %.</p>
+	<p>Ces chiffres contribuent à déterminer quel réseau CDN se montre le plus rapide pour chaque réseau dans le cadre de cette analyse et des graphiques présentés. À un niveau plus précis, ces valeurs se révèlent importantes pour Cloudflare, car elles nous permettent de cibler les réseaux et la connectivité en vue de les optimiser.</p>
+	<h3 id="les-r-sultats">Les résultats</h3>
+	<p>Les résultats ci-dessous correspondent à trois types de mesure différents (temps de connexion TCP, TTFB et TTLB) avec deux agrégations différentes (moyenne et p95), pour trois groupes de réseaux différents.</p>
+	<p>Le premier groupe est le plus simple : il s'agit de l'ensemble des réseaux pour lesquels nous disposons de données. Le deuxième groupe reprend l'ensemble utilisé ci-dessus, c'est-à-dire les 1 000 premiers réseaux par nombre d'adresses IP. Nous présentons cependant un troisième groupe : les 1 000 premiers réseaux par nombre d'observations. Ce dernier groupe revêt une importance particulière.</p>
+	<p>Le groupe des 1 000 premiers réseaux par nombre d'adresses IP est intéressant. Il inclut les principaux fournisseurs d'accès à Internet, mais également certains réseaux disposant d'un grand nombre d'adresses IP qui ne sont pas nécessairement utilisées. Celles-ci résultent de l'attribution historique d'adresses IP à diverses organisations, comme le département de la Défense des États-Unis.</p>
+	<p>Les tests de Cloudflare révèlent quels réseaux sont les plus utilisés. Nous rapportons donc également les résultats des 1 000 premiers réseaux par nombre d'observations pour évaluer nos performances sur les réseaux fortement sollicités.</p>
+	<p>Nous disposons donc de 18 graphiques couvrant toutes les combinaisons de valeurs suivantes : (temps de connexion TCP, TTFB, TTLB), (moyenne, p95) et (tous les réseaux, 1 000 premiers réseaux par nombre d'adresses IP, 1 000 premiers réseaux par nombre d'observations).</p>
+	<p>Vous constaterez que Cloudflare n'arrive pas en première place dans deux graphiques (sur 18, nous ne sommes qu'en seconde place). Au cours des prochaines semaines, nous allons nous efforcer de nous hisser à la première place pour chaque mesure. Il s'agit, dans les deux cas, de temps moyens. Les mesures au p95 nous intéressent davantage, cependant, car elles présentent le « cas raisonnable le plus défavorable » pour un utilisateur d'Internet. Toutefois, l'objectif avoué de l'optimisation de nos performances consiste à occuper la première place sur l'ensemble des graphiques, quelle que soit la façon dont les performances sont mesurées.</p>
+	<h3 id="temps-de-connexion-tcp">Temps de connexion TCP</h3>
+	<p>Commençons par le temps de connexion TCP, afin de nous faire une idée de la qualité de la connexion des cinq entreprises que nous avons évaluées. Souvenez-vous qu'ici, plus les barres sont longues, meilleurs sont les résultats. Les valeurs indiquent que le réseau CDN concerné a obtenu les meilleures performances sur un nombre de réseaux donné : plus ce nombre de réseaux est élevé, mieux c'est.</p><!--kg-card-begin: markdown-->
+	<table>
+		<thead>
+			<tr>
+				<th><img src="https://blog.cloudflare.com/content/images/2021/09/image1-21.png" alt="image1-18"></th>
+				<th><img src="https://blog.cloudflare.com/content/images/2021/09/image21-3.png" alt="image4-17"></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image7-6.png" alt="image7-3"></td>
+				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image14-3.png" alt="image11"></td>
+			</tr>
+			<tr>
+				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image11-3.png" alt="image14"></td>
+				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image4-20.png" alt="image21"></td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<h3 id="temps-jusqu-au-premier-octet-ttfb-"><strong>Temps jusqu'au premier octet (TTFB)</strong></h3>
+	<p>Intéressons-nous ensuite au TTFB pour les cinq entreprises. Ici encore, plus les barres sont longues, mieux c'est. Les valeurs indiquent que le réseau CDN concerné a obtenu le TTFB le plus bas sur un plus grand nombre de réseaux.</p><!--kg-card-begin: markdown-->
+	<table>
+		<thead>
+			<tr>
+				<th><img src="https://blog.cloudflare.com/content/images/2021/09/image2-26.png" alt="image2-23"></th>
+				<th><img src="https://blog.cloudflare.com/content/images/2021/09/image6-11.png" alt="image6-7"></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image5-18.png" alt="image5-15"></td>
+				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image9-3.png" alt="image15-1"></td>
+			</tr>
+			<tr>
+				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image10-3.png" alt="image12-1"></td>
+				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image12-4.png" alt="image10"></td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<h3 id="temps-jusqu-au-dernier-octet-ttlb-"><strong>Temps jusqu'au dernier octet (TTLB)</strong></h3>
+	<p>Enfin vient le moment d'examiner le TTLB. Là encore, plus les barres sont longues, mieux c'est. Les valeurs indiquent que le réseau CDN concerné a obtenu le TTLB le plus bas sur un plus grand nombre de réseaux.</p><!--kg-card-begin: markdown-->
+	<table>
+		<thead>
+			<tr>
+				<th><img src="https://blog.cloudflare.com/content/images/2021/09/image18-3.png" alt="image18"></th>
+				<th><img src="https://blog.cloudflare.com/content/images/2021/09/image8-5.png" alt="image3-21"></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image3-24.png" alt="image8-2"></td>
+				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image9-3.png" alt="image13"></td>
+			</tr>
+			<tr>
+				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image17-3.png" alt="image17"></td>
+				<td><img src="https://blog.cloudflare.com/content/images/2021/09/image13-3.png" alt="image9"></td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<h3 id="objectifs-d-optimisation">Objectifs d'optimisation</h3>
+	<p>En considérant non seulement les aspects dans lesquels nous détenons la première place, mais également ceux dans lesquels nous obtenons la première ou la deuxième, nous pouvons déterminer à quelle vitesse nous pouvons optimiser notre réseau pour atteindre la première place dans un plus grand nombre de secteurs. Si nous prenons en compte les 1 000 premiers réseaux par nombre d'observations, nous constatons que nous détenons actuellement la première ou la deuxième place sur 69,9 % des réseaux en matière de TTFB, sur 65,0 % des réseaux en matière de TTLB et sur 70,5 % des réseaux concernant le temps de connexion TCP.</p>
+	<p>Afin de déterminer la quantité d'optimisation nécessaire pour nous hisser de la deuxième à la première place, nous avons examiné les trois mesures et avons constaté que le TTFB médian du réseau nº 1 est de 92,3 %, le TTLB médian de 94,0 % et le temps de connexion TCP de 91,5 %.</p>
+	<p>Ce dernier nombre se révèle très intéressant, car il montre que nous pouvons réaliser d'importants progrès en optimisant le routage au niveau du réseau.</p>
+	<h3 id="o-est-la-carte-du-monde">Où est la carte du monde ?</h3>
+	<p>Il est très courant de présenter des données relatives aux performances d'Internet à l'aide de cartes. Les cartes du monde sont flatteuses, mais elles masquent certaines informations. La raison en est très simple : les cartes du monde constituent une représentation géographique (et, selon la projection, une version très déformée des pays et des masses terrestres du monde, par rapport à la réalité).</p>
+	<p>Vous trouverez ci-dessous un exemple de carte du monde, sur laquelle les pays sont colorés en fonction du TTLB le plus bas au p95. Cloudflare est en orange, Amazon CloudFront en jaune, Google en violet, Akamai en rouge et Fastly en bleu.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image19.png" class="kg-image"></figure>
+	<p>Toutefois, que cette carte ne montre pas, c'est la population. Or, Cloudflare s'intéresse à ses performances pour ses utilisateurs. Prenons l'exemple de la Russie et de l'Indonésie. L'Indonésie est deux fois plus peuplée que la Russie et mesure environ un dixième de sa superficie.</p>
+	<p>En nous concentrant sur les réseaux, nous pouvons optimiser ces derniers pour les utilisateurs d'Internet. Titulaire de l'ASN 17451, Biznet constitue, par exemple, un important fournisseur d'accès Internet en Indonésie. Si nous examinons le TTFB au p95 (les mêmes statistiques que nous avons étudiées précédemment pour les FAI américains Cox et Comcast), nous constatons que pour les utilisateurs de Biznet, Cloudflare affiche le TTFB le plus bas au p95, avec 677,7 ms, contre 744,0 ms pour Fastly, 872,8 ms pour Google, 1 239,9 ms pour Amazon CloudFront et 1 248,9 ms pour Akamai.</p>
+	<h3 id="et-maintenant">Et maintenant ?</h3>
+	<p>Les données que nous avons recueillies nous offrent une vision détaillée de chaque réseau connecté à Cloudflare. Elles nous permettront d'optimiser les itinéraires et nous nous en servirons pour améliorer encore les performances de Cloudflare dans les jours et les semaines à venir.</p>
+	<p>La Semaine anniversaire de Cloudflare aura lieu dans un peu plus d'une semaine et notre objectif consiste à améliorer nos performances sur 10 % des réseaux dans lesquels nous ne sommes pas nº 1 aujourd'hui. Restez à l'écoute !</p>
+</div>

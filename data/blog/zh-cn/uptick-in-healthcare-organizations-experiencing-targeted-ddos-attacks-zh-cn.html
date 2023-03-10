@@ -1,0 +1,28 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/02/DDoS-attacks-against-Healthcare.png" class="kg-image" alt="Uptick in healthcare organizations experiencing targeted DDoS attacks"></figure>
+	<h3 id="-">医疗保健行业成为目标</h3>
+	<p>在过去的几天里，Cloudflare 及<a href="https://www.infosecurity-magazine.com/news/killnet-suspected-ddos-us-dutch/" target="_blank">消息来源</a>观察到，部分医疗保健行业组织被一个自称为 Killnet 的亲俄黑客组织盯上了。联系我们以帮助摆脱这类攻击的医疗保健组织有所增加。受 Cloudflare 保护的多个医疗保健组织也曾成为 HTTP DDoS 攻击的目标，Cloudflare 已帮助他们成功地缓解了攻击。美国卫生与公众服务部发布了一份分析报告，详细说明了与 Killnet 相关的网络攻击对医疗保健行业的威胁。</p>
+	<p>政治紧张局势的加剧和乌克兰冲突的升级都是造成当前网络安全威胁形势的因素。与传统战争不同的是，互联网使个人群体都能够进行有针对性的攻击，无论他们身在何处或是否参与其中。不幸的是，分布式拒绝服务 (DDoS) 攻击具有不需要入侵或启动立足点的优势，而且比以往任何时候都更容易利用。</p>
+	<p>Cloudflare 全球网络观察到的攻击并没有明确显示它们来自单一的僵尸网络，而且攻击方法和来源似乎各不相同。这可能表明有多个威胁行为者代表 Killnet 参与其中，也可能表明这是一次更复杂的协同攻击。</p>
+	<p>Cloudflare 应用程序服务客户受到保护，没有受到这些攻击的影响。Cloudflare 系统一直代表我们的客户自动检测和缓解攻击。我们的团队继续密切关注形势发展，并准备在必要时部署应对措施。</p>
+	<p>作为额外的预防措施，建议医疗保健行业的客户遵循下面“如何准备”部分中的缓解建议。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/image.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/image3.png" class="kg-image"></figure>
+	<h3 id="-killnet-">什么是 Killnet？</h3>
+	<p>Killnet 是一群通过 Telegram 频道聚集和交流的亲俄人士。该频道为亲俄同情者提供了一个空间，以便他们自愿贡献自己的专业知识，参与针对西方利益的网络攻击。2022 年第四季度，Killnet 曾呼吁攻击美国机场网站。</p>
+	<h3 id="-ddos-">为什么发起 DDoS 攻击？</h3>
+	<p>与勒索软件不同，DDoS 攻击不需要在入侵或在目标网络中取得立足点即可发动。就像物理地址可以通过目录或邮件传递等服务公开使用一样，IP 地址和域名也是公开提供的。不幸的是，这意味着每个域名(第 7 层)和每个连接到互联网的网络(第 3 层和第 4 层)都必须主动准备防御 DDoS 攻击。DDoS 攻击并不是新的威胁，但近年来此类攻击变得更大规模、更复杂、更频繁。</p>
+	<h3 id="--1">如何准备</h3>
+	<p>虽然 Cloudflare 的系统一直在自动检测和缓解这些 DDoS 攻击，但我们建议采取额外的预防措施来改善您的安全态势：</p>
+	<ol>
+		<li>确保所有其他 <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/" target="_blank">DDoS 托管规则</a>为默认设置 (高灵敏度级别和缓解操作)，以获得最佳的 DDoS 防御效果</li>
+		<li>订阅了高级 DDoS 保护服务的 Cloudflare 企业客户应考虑启用<a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/adaptive-protection/" target="_blank">自适应 DDoS 防护</a>，其根据客户的流量模式缓解异常流量</li>
+		<li>部署<a href="https://developers.cloudflare.com/firewall/cf-firewall-rules/" target="_blank">防火墙规则</a>和<a href="https://developers.cloudflare.com/waf/rate-limiting-rules/" target="_blank">速率限制规则</a>，以执行积极和消极相结合的安全模式。根据客户的已知使用情况，减少允许进入网站的流量。</li>
+		<li>确保您的源服务器没有暴露在公共互联网上（即仅启用对 Cloudflare IP 地址的访问权限）。</li>
+		<li>能够访问托管 IP 列表的客户应该考虑在防火墙规则中利用这些列表</li>
+		<li>尽可能启用<a href="https://developers.cloudflare.com/cache/" target="_blank">缓存</a>以减少源服务器的压力，且在使用 Workers 时，避免使用超过必要数量的子请求并导致源服务器不堪重负。</li>
+		<li>启用 <a href="https://developers.cloudflare.com/ddos-protection/reference/alerts/" target="_blank">DDoS 警报</a>以缩短您的响应时间。</li>
+	</ol>
+	<p>虽然攻击是由人类发起的，但执行的是机器人。不利用自动化防御手段的防守方将处于不利地位。Cloudflare 已经并将继续帮助我们医疗保健行业的客户准备和应对这些攻击。</p>
+	<p><strong>受到攻击？我们可提供协助。请访问<a href="https://www.cloudflare.com/under-attack-hotline/" target="_blank">本网页</a>或致电 010 8524 1783</strong></p>
+</div>
