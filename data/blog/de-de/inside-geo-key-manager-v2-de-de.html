@@ -1,0 +1,528 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image1-49.png" class="kg-image" alt="Inside Geo Key Manager v2: re-imagining access control for distributed systems"></figure>
+	<p>Im Dezember 2022 haben wir das Closed Beta der neuen Version des <a href="https://blog.cloudflare.com/de-de/configurable-and-scalable-geo-key-manager-closed-beta-de-de/">Geo Key Managers</a> angekündigt. Der Geo Key Manager v2 (GeoV2) ist der nächste Schritt in unserem Bemühen, unseren Kunden eine sichere und flexible Kontrolle der Verteilung ihrer privaten Schlüssel nach geografischem Standort zu bieten. Unser ursprüngliches System, der <a href="https://blog.cloudflare.com/introducing-cloudflare-geo-key-manager/">Geo Key Manager v1</a>, begann 2017 als Forschungsprojekt. Doch mit Weiterentwicklung der Kundenbedürfnisse und unserem eigenen Wachstum erkannten wir, dass wir zur Bereitstellung einer besseren Nutzererfahrung erhebliche Verbesserungen vornehmen mussten.</p>
+	<p>Zu den größten Herausforderungen, mit denen wir beim Geo Key Manager v1 (GeoV1) konfrontiert waren, gehörte die Starrheit unserer Zugriffskontrollrichtlinien. Die Kunden forderten eine umfassendere Datenlokalisierung, was oft durch gesetzliche Bestimmungen gefördert wurde. Intern verstärkten Ereignisse wie der Konflikt in der Ukraine die Notwendigkeit, den Zugriff auf sensibles Schlüsselmaterial schnell einschränken zu können. Die zugrundeliegende Kryptografie des Geo Key Managers v1 war eine Kombination aus identitätsbasierter Broadcast-Verschlüsselung und identitätsbasiertem Widerruf, die eine Teilmenge der von der attributbasierten Verschlüsselung (Attribute-Based Encryption – ABE) angebotenen Funktionen simulierte. Die Ersetzung durch ein etabliertes ABE-Schema behebt die Inflexibilität unserer Zugriffskontrollrichtlinien und bietet eine sicherere Grundlage für unser System. </p>
+	<p>Während unser vorheriges Schema die künftige Flexibilität durch das Einfrieren der Menge der teilnehmenden Rechenzentren und Richtlinien eingeschränkt hatte, lässt sich das System nun durch die Verwendung von ABE leicht an künftige Anforderungen anpassen. So konnten wir von Performance-Steigerungen profitieren, die sich aus zusätzlichen, nach der Instanziierung hinzugefügten Rechenzentren ergaben, und das Verfahren zur Bearbeitung von Änderungen an Attributen und Richtlinien erheblich vereinfachen. Darüber hinaus hatten den GeoV1 einige verwirrende Performance-Probleme geplagt, die eine hohe Latenz und einen mühsamen manuellen Schlüsselrotationsprozess mit sich brachten. Der GeoV2 ist unsere Antwort auf diese Herausforderungen und Einschränkungen des GeoV1.</p>
+	<p>Dieser Blogbeitrag konzentriert sich zwar auf unsere Lösung für die geografische Schlüsselverwaltung, aber die hier gewonnenen Erkenntnisse lassen sich auch auf andere Anforderungen an die Zugriffskontrolle anwenden. Lösungen für die Zugriffskontrolle werden traditionell mit einer hochverfügbaren zentralen Autorität implementiert, um den Zugriff auf Ressourcen zu kontrollieren. Wie wir sehen werden, lässt sich dieser Single Point of Failure mit ABE vermeiden. Da uns keine groß angelegten ABE-basierten Zugriffskontrollsysteme bekannt sind, hoffen wir, dass unsere Diskussion Ingenieuren dabei helfen kann, die Verwendung von ABE als Alternative zur Zugriffskontrolle mit minimaler Abhängigkeit von einer zentralen Autorität in Betracht zu ziehen. Um dies zu erleichtern, haben wir unsere ABE-Implementierung in unsere Open Source-Kryptobibliothek <a href="https://pkg.go.dev/github.com/cloudflare/circl@v1.3.0/abe/cpabe/tkn20" target="_blank">CIRCL</a> aufgenommen.</p>
+	<h2 id="unbefriedigende-l-sungsversuche">Unbefriedigende Lösungsversuche</h2>
+	<p>Bevor wir auf den GeoV2 zurückkommen, wollen wir einen kleinen Umweg einschlagen und uns das Problem näher anschauen, das es zu lösen gilt. </p>
+	<p>Nehmen wir folgendes Beispiel: Ein großes europäisches Geldinstitut möchte seine privaten TLS-Schlüssel nur innerhalb der Europäischen Union speichern. Die Bank ist Kundin von Cloudflare, weshalb wir TLS-Handshakes für sie durchführen. Unter anderem, um den besten Schutz vor DDoS-Angriffen bieten, die Performance durch Caching verbessern und Web Application Firewalls unterstützen zu können, müssen wir TLS-Verbindungen für die Bank beenden. </p><!--kg-card-begin: markdown-->
+	<p>Um dies zu tun, benötigen wir Zugriff auf ihre privaten TLS-Schlüssel<sup>1</sup>. Die Steuerungsebene, über die der API-Traffic abgewickelt wird, verschlüsselt den hochgeladenen privaten Schlüssel des Kunden mit einem öffentlichen Master-Schlüssel, der von allen Rechnern weltweit gemeinsam genutzt wird. Anschließend wird der Schlüssel in einer weltweit verteilten Schlüssel-Werte-Datenbank, <a href="https://blog.cloudflare.com/introducing-quicksilver-configuration-distribution-at-internet-scale/">Quicksilver</a>, abgelegt. Somit verfügt jeder Rechner in jedem Rechenzentrum der Welt über eine lokale Kopie des privaten TLS-Schlüssels des Kunden.</p>
+	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/01/Customer-uploading-their-TLS-certificate-and-private-key-to-be-stored-in-all-datacenters.png" class="kg-image" alt="Der Kunde lädt sein TLS-Zertifikat und seinen privaten Schlüssel hoch, damit beide in allen Rechenzentren gespeichert werden">
+		<figcaption>Der Kunde lädt sein TLS-Zertifikat und seinen privaten Schlüssel hoch, damit beide in allen Rechenzentren gespeichert werden</figcaption>
+	</figure>
+	<p>In unserem Beispiel möchte die Bank jedoch, dass ihr Schlüssel nur in Rechenzentren innerhalb der Europäischen Union gespeichert wird. Um dies zu ermöglichen, haben wir drei Möglichkeiten. </p>
+	<p>Die erste Option besteht darin, sicherzustellen, dass nur Rechenzentren in der EU diesen Schlüssel erhalten und den Handshake beenden können. Alle anderen Rechner leiten TLS-Anfragen zur Verarbeitung an einen Server in der EU weiter. Dies würde voraussetzen, dass jeder Rechner nur einen Teil des gesamten in Quicksilver gespeicherten Schlüsselsatzes erhält. Das stellt zentrale Designentscheidungen in Frage, die Cloudflare im Lauf der Jahre getroffen hat und die davon ausgehen, dass der gesamte Datensatz auf jedem Rechner repliziert wird.</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/01/Restricting-customer-keys-to-EU-datacenters.png" class="kg-image" alt="Beschränkung der Kundenschlüssel auf Rechenzentren in der EU">
+		<figcaption>Beschränkung der Kundenschlüssel auf Rechenzentren in der EU</figcaption>
+	</figure>
+	<p>Eine weitere Option besteht darin, die Speicherung nicht in Quicksilver, sondern im zentralen Rechenzentrum abzulegen. So könnten wir jedes Mal die richtige Zugriffskontrollrichtlinie durchsetzen und sicherstellen, dass nur bestimmte Rechner auf bestimmte Schlüssel zugreifen können. Dies würde jedoch dem Zweck eines globalen Netzwerks von vornherein zuwiderlaufen: die Verringerung der Latenz und die Vermeidung eines Single Point of Failure im Zentrum.</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/01/Storing-keys-in-core-datacenter-where-complicated-business-logic-runs-to-enforce-policies.png" class="kg-image" alt="Speicherung von Schlüsseln im zentralen Rechenzentrum, wo eine komplizierte Anwendungslogik zur Durchsetzung von Richtlinien angewandt wird">
+		<figcaption>Speicherung von Schlüsseln im zentralen Rechenzentrum, wo eine komplizierte Anwendungslogik zur Durchsetzung von Richtlinien angewandt wird</figcaption>
+	</figure>
+	<p>Eine dritte Option ist die Verwendung der Public-Key-Verschlüsselung. Statt eines Master-Schlüsselpaars erhält jedes Rechenzentrum sein eigenes Schlüsselpaar. Im Hauptrechenzentrum wird der private Schlüssel des Kunden mit den Schlüsseln aller Rechenzentren, die ihn nutzen dürfen, verschlüsselt. In diesem Beispiel können nur Rechner in der EU auf den Schlüssel zugreifen. Nehmen wir an, es gibt 500 Rechenzentren mit jeweils 50 Rechnern. Von diesen 500 Rechenzentren befinden sich 200 in der EU. Während 100 Schlüssel mit 1 kB insgesamt 100 x 500 x 50 x 1 kB (weltweit) verbrauchten, werden sie jetzt das 200-fache und im schlimmsten Fall bis zu 500-fache verbrauchen. Dadurch erhöht sich der Speicherplatz, der für die Schlüssel auf jedem Rechner benötigt wird, um einen ganz neuen Faktor – vorher war der Speicherplatz lediglich eine Funktion der Anzahl der registrierten Kundenschlüssel; jetzt ist er zwar immer noch eine Funktion der Anzahl der Kundenschlüssel, aber zusätzlich multipliziert mit der Anzahl der Rechenzentren.</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/01/Assigning-unique-keys-to-each-data-center.png" class="kg-image" alt="Zuweisung eindeutiger Schlüssel an jedes Rechenzentrum und Ummantelung von Kundenschlüsseln mit EU-Rechenzentrumsschlüsseln">
+		<figcaption>Zuweisung eindeutiger Schlüssel an jedes Rechenzentrum und Ummantelung von Kundenschlüsseln mit EU-Rechenzentrumsschlüsseln</figcaption>
+	</figure>
+	<p>Leider sind alle drei Optionen aus jeweils anderen Gründen nicht erstrebenswert. Sie würden entweder eine Änderung der grundlegenden Annahmen erfordern, die wir hinsichtlich der Architektur von Cloudflare getroffen haben, die Aufgabe der Vorteile der Verwendung eines hochgradig dezentralen Netzwerks oder eine quadratische Erhöhung des von dieser Funktion verwendeten Speichers bedeuten.</p>
+	<p>Bei näherer Betrachtung der dritten Option stellt sich die Frage, warum nicht zwei Schlüsselpaare anstelle eines einzigen für jedes Rechenzentrum erstellt werden. Ein Paar würde für alle EU-Rechenzentren gelten und eines für alle Nicht-EU-Rechenzentren. Auf diese Weise muss das zentrale Hauptrechenzentrum den Schlüssel des Kunden nicht für jedes EU-Rechenzentrum einzeln, sondern insgeamt nur zweimal verschlüsseln. Dies ist eine gute Lösung für die Bank in der EU. Doch sie lässt sich nicht skalieren, wenn wir anfangen, weitere Richtlinien hinzuzufügen. Nehmen wir ein Beispiel: Ein Rechenzentrum in New York City könnte über einen Schlüssel für die Richtlinie „<code>country: US</code>“, einen anderen für „<code>country: US or region: EU</code>“, einen weiteren für „<code>not country: RU</code>“ und so weiter … verfügen. Das wird recht unübersichtlich. Und jedes Mal, wenn ein neues Rechenzentrum bereitgestellt wird, müssen alle Richtlinien auf den Prüfstand gestellt und die entsprechenden Schlüssel zugewiesen werden. </p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/01/A-key-for-a-each-policy-and-its-negation.png" class="kg-image" alt="Ein Schlüssel für jede Richtlinie und ihre Negation">
+		<figcaption>Ein Schlüssel für jede Richtlinie und ihre Negation</figcaption>
+	</figure>
+	<h2 id="geo-key-manager-v1-identit-tsbasierte-verschl-sselung-und-broadcast-verschl-sselung">Geo Key Manager v1: identitätsbasierte Verschlüsselung und Broadcast-Verschlüsselung</h2>
+	<p>Die Erfindung von RSA im Jahr 1978 leitete die Ära der modernen Public-Key-Verschlüsselung ein. Doch jeder, der schon GPG verwendet oder mit Zertifizierungsstellen zu tun gehabt hat, kennt die Schwierigkeiten bei der Verwaltung einer Public-Key-Infrastruktur, die Schlüssel mit Nutzeridentitäten verbindet. 1984 stellte Shamir die Frage, ob es möglich ist, ein Verschlüsselungssystem mit öffentlichem Schlüssel zu schaffen, bei dem dieser Public Key eine beliebige Zeichenfolge sein kann. Seine Motivation für diese Frage war die Vereinfachung der E-Mail-Verwaltung. Anstatt eine E-Mail an Olaf mit Olafs öffentlichem Schlüssel zu verschlüsseln, könnte Anna sie mit Olafs Identität <a href="mailto:bob@institution.org" target="_blank"><code>bob@institution.org</code></a> verschlüsseln. Im Jahr 2001 fanden <a href="https://crypto.stanford.edu/~dabo/papers/bfibe.pdf" target="_blank">Boneh und Franklin</a> schließlich heraus, wie das funktionieren kann.</p>
+	<p>Die Broadcast-Verschlüsselung wurde erstmals 1993 von <a href="https://www.wisdom.weizmann.ac.il/~naor/PAPERS/broad.pdf" target="_blank">Fiat und Naor</a> vorgeschlagen. Sie ermöglicht es, die gleiche verschlüsselte Nachricht an alle zu senden, die aber nur von Personen mit dem richtigen Schlüssel entschlüsselt werden kann. Um auf unsere dritte Option zurückzukommen: Anstatt den Schlüssel des Kunden mit dem Schlüssel jedes EU-Rechenzentrums zu verschlüsseln, könnten wir die Broadcast-Verschlüsselung verwenden, um eine einzigartige Verschlüsselung des Kundenschlüssels zu erstellen, die nur von EU-Rechenzentren entschlüsselt werden kann. Damit würde das Speicherproblem gelöst.</p>
+	<p>Der Geo Key Manager v1 verwendete eine Kombination aus identitätsbasierter Broadcast-Verschlüsselung und identitätsbasiertem Widerruf zur Implementierung der Zugriffskontrolle. Kurz gesagt wird für jede Region und jeden Rechenzentrumsstandort ein Satz von Identitäten festgelegt. Dann wird jedem Rechner ein identitätsbasierter privater Schlüssel für seine Region und seinen Standort zugewiesen. Auf diese Weise kann der Zugriff auf den Schlüssel des Kunden über drei Gruppen gesteuert werden: die Gruppe der Regionen, die verschlüsselt werden sollen, die Gruppe der Standorte innerhalb der Region, die ausgeschlossen werden sollen, und die Gruppe der Standorte außerhalb der Region, die einbezogen werden sollen. Der Schlüssel des Kunden könnte nach diesem Prinzip beispielsweise so verschlüsselt werden, dass er in allen Regionen mit Ausnahme einiger weniger spezifischer Standorte verfügbar ist, und auch an einigen Standorten außerhalb dieser Regionen. In diesem Blogbeitrag beschäftigen wir uns <a href="https://blog.cloudflare.com/de-de/geo-key-manager-how-it-works-de-de/">ausführlich</a> mit diesem Ansatz.</p>
+	<p>Leider ging dieses Schema nicht ausreichend auf die Bedürfnisse der Kunden ein. Die beim ersten kryptografischen Setup verwendeten Parameter, z. B. die Liste der Regionen, Rechenzentren und deren Attribute, waren fest im System verankert und konnten nicht ohne Weiteres geändert werden. Wer etwa nach dem Brexit das Vereinigte Königreich aus der EU-Region ausschließen oder eine neue Region auf Grundlage eines neuen Compliance-Standards unterstützten möchte, den die Kunden benötigen, hat dann einfach Pech gehabt. Die Verwendung einer vorgegebenen statischen Standortliste erschwerte auch den schnellen Widerruf des Rechnerzugangs. Darüber hinaus konnten Entschlüsselungsschlüssel nicht an neue Rechenzentren zugewiesen werden, die nach dem Setup eingerichtet wurden, was eine Beschleunigung der Anfragen verhinderte. Diese Einschränkungen gaben den Anstoß für die Integration der attributbasierten Verschlüsselung (Attribute-Based Encryption – ABE) im Geo Key Manager.</p>
+	<h2 id="attributbasierte-verschl-sselung">Attributbasierte Verschlüsselung</h2>
+	<p>Im Jahr 2004 schlugen Amit Sahai und Brent Waters ein neues Kryptosystem vor, das auf Zugriffsrichtlinien beruht und als attributbasierte Verschlüsselung (Attribute-Based Encryption – ABE) bekannt ist. Im Wesentlichen wird eine Nachricht mit einer Zugriffsrichtlinie und nicht mit einer Identität verschlüsselt. Die Nutzer erhalten einen privaten Schlüssel, der auf ihren Attributen basiert, und können die Nachricht nur dann entschlüsseln, wenn ihre Attribute den Richtlinien entsprechen. Dies ermöglicht eine flexiblere und detailliertere Zugriffskontrolle als herkömmliche Verschlüsselungsmethoden.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/01/Group-4899-1.png" class="kg-image" alt="Kurze Geschichte der Public-Key-Verschlüsselung">
+		<figcaption>Kurze Geschichte der Public-Key-Verschlüsselung</figcaption>
+	</figure>
+	<p>Die Richtlinie kann entweder an den Schlüssel oder an den Chiffretext gebunden werden, was zu zwei Varianten von ABE führt: die auf Schlüsselrichtlinien und Attributen basierende Verschlüsselung (Key-Policy Attribute-Based Encryption – KP-ABE) und die auf Chiffretextrichtlinien und Attributen basierende Verschlüsselung (Ciphertext-Policy Attribute-Based Encryption – CP-ABE). Es gibt Kompromisse zwischen diesen beiden Varianten, aber sie sind funktional äquivalent, da sie Duale voneinander sind. Konzentrieren wir uns auf CP-ABE, da dieses Modell der realen Welt der Zugriffskontrolle näherkommt. Stellen Sie sich ein Krankenhaus vor, in dem ein Arzt die Attribute „<code>role: doctor</code>“ (Rolle: Arzt) und „<code>region: US</code>“ (Region: USA) hat, während eine Krankenschwester die Attribute „<code>role: nurse</code>“ (Rolle: Krankenschwester) und „<code>region: EU</code>“ (Region: EU) hat. Ein Dokument, das gemäß der Richtlinie „<code>role: doctor or region: EU</code>“ verschlüsselt ist, kann sowohl vom Arzt als auch von der Krankenschwester entschlüsselt werden. Mit anderen Worten: ABE ist wie ein Zauberschloss, das sich nur für Personen öffnet, die über die richtigen Attribute verfügen.</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-amwm {
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-amwm"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Richtlinie</span></th>
+				<th class="tg-amwm"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Semantik</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">country: US or region: EU</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Die Entschlüsselung kann entweder in den USA oder in der Europäischen Union erfolgen</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">not (country: RU or country: US)</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Die Entschlüsselung kann nicht in Russland und den USA erfolgen</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">country: US and security: high</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Die Entschlüsselung kann nur in Rechenzentren innerhalb der USA erfolgen, die ein hohes Sicherheitsniveau aufweisen (für einen zuvor festgelegten Sicherheitsstandard)</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Es gibt viele verschiedene ABE-Schemata mit unterschiedlichen Merkmalen. Das von uns gewählte Schema muss ein paar Anforderungen erfüllen:<br></p>
+	<ol>
+		<li><strong>Negation</strong> Wir wollen in der Lage sein, boolesche Funktionen zu unterstützen, die aus <strong>AND</strong>, <strong>OR</strong> und <strong>NOT</strong> bestehen, auch bekannt als nicht monotone boolesche Funktionen. Während praktisch jedes Schema <strong>AND</strong> und <strong>OR</strong> beherrscht, ist <strong>NOT</strong> seltener zu finden. Die Negation macht es einfacher, bestimmte Länder oder Rechner auf die Sperrliste zu setzen.</li>
+		<li><strong>Wiederholte Attribute</strong> Schauen wir uns die Richtlinie „<code>organization: executive or (organization: weapons and clearance: top-secret)</code>“ an. Das Attribut „organization“ wird in der Richtlinie wiederholt. Schemata mit Unterstützung für Wiederholungen erhöhen die Ausdrucksfähigkeit und Flexibilität bei der Erstellung von Richtlinien erheblich.</li>
+		<li><strong>Schutz vor Angriffen mit ausgewähltem Chiffretext</strong> Die meisten Schemata werden in einer Form präsentiert, die nur dann sicher ist, wenn der Angreifer die zu entschlüsselnden Nachrichten nicht auswählt (<a href="https://en.wikipedia.org/wiki/Chosen-plaintext_attack" target="_blank">CPA</a>). Es gibt zwar <a href="https://www.cs.umd.edu/~jkatz/papers/id-cca-mac.pdf" target="_blank">Standardverfahren</a>, um ein solches Schema in eines umzuwandeln, das auch dann sicher ist, wenn der Angreifer die Chiffretexte manipuliert (<a href="https://en.wikipedia.org/wiki/Ciphertext_indistinguishability#Indistinguishability_under_chosen_ciphertext_attack/adaptive_chosen_ciphertext_attack_(IND-CCA1,_IND-CCA2)" target="_blank">CCA</a>), dies geschieht aber nicht automatisch. Wir wenden die bekannte <a href="https://www.iacr.org/archive/pkc2011/65710074/65710074.pdf" target="_blank">Boneh-Katz-Transformation</a> auf das von uns gewählte Schema an, um es gegen diese Klasse von Angriffen zu immunisieren. In unserem nächsten Blogbeitrag werden wir einen Sicherheitsbeweis für das Ende-zu-Ende-Schema vorlegen.</li>
+	</ol>
+	<p>Insbesondere auf die Negation sollte noch etwas näher eingegangen werden. Damit ein Attribut erfüllt ist, wenn es negiert wird, muss der Name gleich bleiben, aber der Wert muss sich ändern. Es ist in etwa so, als würde das Rechenzentrum „Ich habe ein Land, aber es ist definitiv nicht Japan“ anstelle von „Ich habe kein Land“ sagen. Das mag kontraintuitiv erscheinen, aber es ermöglicht die Entschlüsselung, ohne dass jeder Attributwert untersucht werden muss. Außerdem lassen sich so die Attribute sicher schrittweise einführen. Auf Grundlage dieser Kriterien haben wir uns für das Schema von <a href="https://eprint.iacr.org/2019/966" target="_blank">Tomida et al. (2021)</a> entschieden.</p>
+	<p>Die Implementierung eines solchen komplexen kryptografischen Schemas kann eine beträchtliche Herausforderung darstellen. Die Annahme eines diskreten Logarithmus, die der traditionellen Public-Key-Kryptografie zugrunde liegt, reicht nicht aus, um die Sicherheitsanforderungen von ABE zu erfüllen. ABE-Schemata müssen sowohl die Chiffretexte als auch die attributbasierten geheimen Schlüssel schützen. Demgegenüber legt die herkömmliche Public-Key-Kryptografie nur Sicherheitsbeschränkungen für die Chiffretexte fest, während es sich bei dem geheimen Schlüssel lediglich um eine ganze Zahl handelt. Um dies zu erreichen, werden die meisten ABE-Verfahren mit Hilfe einer mathematischen Operation konstruiert, die als bilineare Paarbildung bekannt ist.</p>
+	<p>Die Geschwindigkeit, mit der wir Paarbildungsoperationen durchführen können, bestimmt die grundlegende Performance unserer Implementierung. Effizienz ist vor allem bei der Entschlüsselung wünschenswert, wo sie verwendet werden, um den attributbasierten geheimen Schlüssel mit dem Chiffretext zu kombinieren, um den Klartext wiederherzustellen. Zu diesem Zweck verlassen wir uns auf unsere hoch optimierten Pairing-Implementierungen in unserer Open-Source-Bibliothek für kryptografische Suiten, CIRCL, die wir in einem <a href="https://blog.cloudflare.com/circl-pairings-update/">früheren Blogbeitrag</a> ausführlich besprochen haben. Außerdem werden die verschiedenen Schlüssel, Attribute und der Chiffretext, der die Zugriffsstruktur einbettet, als Matrizen und Vektoren ausgedrückt. Wir haben lineare Algebra-Routinen verfasst, um Matrizen-Operationen wie Multiplikation, Transponierung und Umkehrung zu handhaben. Diese sind notwendig, um die Strukturen nach Bedarf zu handhaben. Wir haben auch Serialisierung, umfangreiche Tests und Benchmarking hinzugefügt. Schließlich haben wir unsere Konvertierung in ein <a href="https://en.wikipedia.org/wiki/Adaptive_chosen-ciphertext_attack" target="_blank">CCA2 resistentes</a> Schema implementiert.</p>
+	<p>Zusätzlich zur Kernkryptografie mussten wir entscheiden, wie wir Richtlinien ausdrücken und darstellen wollten. Letztendlich entschieden wir uns für die Verwendung von Zeichenketten für unsere API. Das ist zwar für Programme vielleicht weniger praktisch als Strukturen, aber die Nutzer unseres Schemas müssten ohnehin einen Parser implementieren. Wenn wir das für sie tun, scheint uns das ein Weg zu sein, für eine stabilere Schnittstelle zu sorgen. Das bedeutet, dass das Frontend unserer Richtliniensprache aus booleschen Ausdrücken in Form von Zeichenketten besteht, z. B. „<code>country: JP or (not region: EU)</code>“, während das Backend ein <em>monotoner</em> boolescher Schaltkreis ist, der aus Drähten und Gattern besteht. Monotone boolesche Schaltkreise umfassen nur AND- und OR-Gatter. Um NOT-Gatter zu behandeln, haben wir den Drähten positive oder negative Werte zugewiesen. Jedes NOT-Gatter kann aufgrund des <a href="https://en.wikipedia.org/wiki/De_Morgan%27s_laws" target="_blank">De-morganschen Gesetzes</a>, das die Umwandlung einer Formel wie „<code>not (X and Y)</code>“ in „<code>not X or not Y</code>“ ermöglicht, direkt auf einem Draht platziert werden, und das Gleiche gilt für die Disjunktion. </p>
+	<p>Es folgt eine Demonstration der API. Die zentrale Stelle führt Setup aus, um den öffentlichen und den geheimen Master-Schlüssel zu erzeugen. Der öffentliche Master-Schlüssel kann von jedem verwendet werden, um eine Nachricht mittels einer Zugriffsrichtlinie zu verschlüsseln. Mit dem geheimen Master-Schlüssel, der sich im Besitz der zentralen Stelle befindet, werden geheime Schlüssel für Nutzer auf Grundlage ihrer Attribute generiert. Die Attribute selbst können Out-of-Band geliefert werden. In unserem Fall stützen wir uns bei der Bereitstellung und Validierung von Attributen auf die Datenbank für die Rechnerbereitstellung. Diese attributbasierten geheimen Schlüssel werden sicher an die Nutzer verteilt, z. B. über TLS, und zur Entschlüsselung von Chiffretexten verwendet. Die API enthält auch Hilfsfunktionen zur Überprüfung der Entschlüsselungsfähigkeiten und zur Extraktion von Richtlinien aus Chiffretexten, um die Benutzerfreundlichkeit zu verbessern. </p><!--kg-card-begin: markdown-->
+	<pre><code>publicKey, masterSecretKey := cpabe.Setup()
+
+policy := cpabe.Policy{}
+policy.FromString("country: US or region: EU")
+
+ciphertext := publicKey.Encrypt(policy, []byte("secret message"))
+
+attrsParisDC := cpabe.Attributes{}
+attrsParisDC.FromMap(map[string]string{"country": "FR", "region": "EU"}
+
+secretKeyParisDC := masterSecretKey.KeyGen(attrsParisDC)
+
+plaintext := secretKeyParisDC.Decrypt(ciphertext)
+
+assertEquals(plaintext, "secret message")
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Wir kehren nun zu unserem ursprünglichen Beispiel zurück. Diesmal ist die zentrale Stelle im Besitz des geheimen Master-Schlüssels. Jeder Rechner in jedem Rechenzentrum legt seine Attribute der zentralen Stelle vor, die nach einer Überprüfung einen eindeutigen attributbasierten geheimen Schlüssel für diesen bestimmten Rechner generiert. Die Schlüsselausgabe erfolgt bei der ersten Inbetriebnahme eines Rechners, wenn Schlüssel rotiert werden müssen oder wenn sich ein Attribut geändert hat, jedoch nie innerhalb des kritischen Pfads eines TLS-Handshakes. Diese Lösung ist auch vor Absprachen sicher, d. h. zwei Rechner ohne die entsprechenden Attribute können ihre Schlüssel nicht kombinieren, um ein Geheimnis zu entschlüsseln, das sie einzeln nicht entschlüsseln könnten. Beispielsweise können sich ein Rechner mit dem Attribut „<code>country: US</code>“ und ein anderer mit „<code>security: high</code>“ nicht zusammentun, um eine Ressource mit der Richtlinie „<code>country: US and security: high</code>“ zu entschlüsseln. </p>
+	<p>Entscheidend ist, dass diese Lösung reibungslos skaliert werden und auf Änderungen bei den Rechnern reagieren kann. Wenn ein neuer Rechner hinzukommt, kann die zentrale Stelle ihm einfach einen geheimen Schlüssel ausstellen, da die Teilnehmer des Schemas im Gegensatz zu unserem früheren Identitätsübermittlungsschema bei der Einrichtung nicht im Voraus festgelegt werden müssen.</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/01/Key-Distribution.png" class="kg-image" alt="Schlüsselverteilung">
+		<figcaption>Schlüsselverteilung</figcaption>
+	</figure>
+	<p>Wenn ein Kunde sein TLS-Zertifikat hochlädt, kann er eine Richtlinie angeben. Dann verschlüsselt die zentrale Stelle seinen privaten Schlüssel gemäß der festgelegten Richtlinie mit dem öffentlichen Master-Schlüssel. Der verschlüsselte Kundenschlüssel wird dann in Quicksilver gespeichert und an alle Rechenzentren verteilt. In der Praxis gibt es hier eine indirekte Ebene, auf die wir in einem späteren Abschnitt eingehen werden.</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/01/Encryption-using-Master-Public-Key.png" class="kg-image" alt="Verschlüsselung mit öffentlichem Master-Schlüssel">
+		<figcaption>Verschlüsselung mit öffentlichem Master-Schlüssel</figcaption>
+	</figure>
+	<p>Wenn ein Nutzer die Website des Kunden besucht, holt sich der TLS-Terminierungsdienst in dem Rechenzentrum, das die Anfrage zuerst erhält, den verschlüsselten privaten Schlüssel des Kunden bei Quicksilver. Wenn die Attribute des Dienstes nicht den Richtlinien entsprechen, schlägt die Entschlüsselung fehl und die Anfrage wird an das nächstgelegene Rechenzentrum weitergeleitet, das die Richtlinie erfüllt. Das Rechenzentrum, das den Schlüssel erfolgreich entschlüsseln kann, führt die Signatur durch, um den TLS-Handshake abzuschließen.</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/01/Decryption-using-Attribute-based-Secret-Key.png" class="kg-image" alt="Entschlüsselung mit attributbasiertem geheimen Schlüssel (vereinfacht)">
+		<figcaption>Entschlüsselung mit attributbasiertem geheimen Schlüssel (vereinfacht)</figcaption>
+	</figure>
+	<p>Die folgende Tabelle fasst die besprochenen Vor- und Nachteile der verschiedenen Lösungen zusammen:</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Lösung</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Flexible Richtlinien</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Fehlertolerant</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Effiziente Speicherplatznutzung</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Geringe Latenz</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Sicher vor Absprachen</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Änderungen an Rechnern möglich</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Verschiedene Quicksilver-Kopien in Rechenzentren</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Komplizierte Geschäftslogik im Zentrum</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Verschlüsselung von Kunden-Schlüsseln mit dem einmaligen Schlüsselpaar jedes Rechenzentrums</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-0lax"></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Verschlüsselung von Kunden-Schlüsseln mit einem Richtlinien-basierten Schlüsselpaar, wobei jedes Rechenzentrum über mehrere Richtlinien-basierte Schlüsselpaare verfügt</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-0lax"></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Idenntitätsbasierte Broadcast-Verschlüsselung + identitätsbasierte negative Broadcast-Verschlüsselung</span><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">(Geo Key Manager v1)</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Attributsbasierte Verschlüsselung</span><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">(Geo Key Manager v2)</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<h3 id="performance-merkmale">Performance-Merkmale</h3>
+	<p>Wir charakterisieren die Performance unseres Schemas anhand von Messwerten, die an <a href="https://bench.cr.yp.to/results-encrypt.html" target="_blank">ECRYPT</a> angelehnt sind. Wir setzen die <strong>Attributgröße auf 50</strong>, was deutlich höher ist als für die meisten Anwendungennötig, aber für Benchmarking-Zwecke als Worst-Case-Szenario dient. Wir führen unsere Messungen auf einem Laptop mit Intel Core i7-10610U CPU @ 1,80GHz durch und vergleichen die Ergebnisse mit RSA mit 2048-Bit-Sicherheit, X25519 und unserem vorherigen Schema. </p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Schema</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Geheimer Schlüssel (Bytes)</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Public key(bytes)</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Overhead der Verschlüsselung von 23 Bytes</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">(Chiffretext-Länge – Nachrichtenlänge)</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Overhead der Verschlüsselung von 10.000 Bytes</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">(Chiffretext-Länge – Nachrichtenlänge)</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">RSA-2048</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1190 (PKCS#1)</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">256</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">233</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3568</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">X25519</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">32</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">32</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">48</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">48</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GeoV1 scheme</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">4838</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">4742</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">169</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">169</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GeoV2 ABE scheme</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">33416</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3282</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">19419</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">19419</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Verschiedene attributbasierte Verschlüsselungsschemata sind für unterschiedliche Performance-Profile optimiert. Einige können eine schnelle Schlüsselgenerierung aufweisen, während andere einer schnellen Entschlüsselung den Vorzug geben. In unserem Fall ist uns nur die schnelle Entschlüsselung wichtig, da dies der einzige Teil des Prozesses ist, der im kritischen Pfad einer Anfrage liegt. Alles andere geschieht Out-of-Band, wo der zusätzliche Overhead akzeptabel ist.</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Schema</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Erzeugung des Schlüsselpaars</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Verschlüsselung von 23 Bytes</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Entschlüsselung von 23 Bytes</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">RSA-2048</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">117 ms</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.043 ms</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1.26 ms</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">X25519</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.045 ms</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.093 ms</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.046 ms</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GeoV1 scheme</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">75 ms</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">10.7 ms</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">13.9 ms</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GeoV2 ABE scheme</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1796 ms</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">704 ms</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">62.4 ms</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<h3 id="eine-kurze-anmerkung-zur-attributbasierten-zugriffskontrolle">Eine kurze Anmerkung zur attributbasierten Zugriffskontrolle</h3>
+	<p>Wir haben die attributbasierte Verschlüsselung verwendet, um das zu implementieren, was allgemein als <a href="https://csrc.nist.gov/Projects/Attribute-Based-Access-Control" target="_blank">attributbasierte Zugriffskontrolle (Attribute-Based Access Control – ABAC)</a> bekannt ist. </p>
+	<p>ABAC ist eine Erweiterung der bekannteren <a href="https://csrc.nist.gov/Projects/Role-Based-Access-Control" target="_blank">rollenbasierten Zugriffskontrolle (Role-Based Access Control – RBAC)</a>. Um zu verstehen, warum ABAC relevant ist, lassen Sie uns kurz auf die Ursprünge dieses Modells eingehen. Im Jahr 1970 führte das US-Verteidigungsministerium die benutzerbestimmbare Zugriffskontrolle (Discretionary Access Control – DAC) ein. DAC ist die Art und Weise, wie Unix-Dateisysteme implementiert sind. DAC reicht jedoch nicht aus, wenn man die gemeinsame Nutzung einschränken will, da der Eigentümer der Ressource anderen Nutzern die Erlaubnis erteilen kann, auf die Ressource in einer Weise zuzugreifen, mit der der zentrale Administrator nicht einverstanden ist. Um dieses Problem zu lösen, führte das Verteidigungsministerium die obligatorische Zugriffskontrolle (Mandatory Access Control – MAC) ein. DRM ist ein gutes Beispiel für MAC. Auch wenn Sie die Datei besitzen, haben Sie nicht das Recht, sie an andere weiterzugeben. </p>
+	<p>Bei RBAC handelt es sich um eine Implementierung bestimmter Aspekte von MAC. ABAC ist eine Erweiterung von RBAC, die 2017 vom NIST definiert wurde, um die zunehmenden Eigenschaften von Nutzern zu berücksichtigen, die nicht auf ihre Rollen beschränkt sind, z. B. Tageszeit, Nutzeragent usw. </p>
+	<p>RBAC/ABAC sind jedoch lediglich eine Spezifikationen. Traditionell werden sie mit einer zentralen Stelle implementiert, um den Zugriff auf eine Ressource zu kontrollieren, doch das ist nicht zwangsläufig der Fall. Die attributbasierte Verschlüsselung ist ein hervorragender Mechanismus zur Implementierung von ABAC in dezentralen Systemen.</p>
+	<h2 id="schl-sselrotation">Schlüsselrotation</h2>
+	<p>Es mag zwar verlockend sein, alle Fehler dem DNS zuzuschreiben, aber die Schlüsselrotation ist ein weiterer starker Anwärter. Die Erfahrung mit dem eher manuellen und fehleranfälligen Schlüsselrotationsverfahren des Geo Key Managers v1 hat uns gelehrt, eine robuste und einfache Schlüsselrotation ohne Auswirkungen auf die Verfügbarkeit zu einem ausdrücklichen Designziel für den Geo Key Manager v2 zu machen.</p>
+	<p>Um die Schlüsselrotation zu vereinfachen und die Performance zu verbessern, führen wir eine indirekte Ebene in den Prozess der Verschlüsselung des Kundenschlüssels ein. Wenn ein Kunde seinen privaten TLS-Schlüssel hochlädt, verschlüsseln wir ihn nicht mit dem öffentlichen Master-Schlüssel, sondern erzeugen ein X25519-Schlüsselpaar, den so genannten <em>Richtlinienschlüssel (Policy Key)</em>. Die zentrale Stelle fügt dann den öffentlichen Teil dieses neu erzeugten Schlüsselpaares und die zugehörige Kennzeichnung der Richtlinie in eine Datenbank ein. Anschließend verschlüsselt sie die private Hälfte des Richtlinien-Schlüsselpaars gemäß der zugehörigen Zugriffsrichtlinie mit dem öffentlichen Master-Schlüssel. Der private Schlüssel des Kunden wird mit dem öffentlichen Schlüssel der Richtlinie verschlüsselt und in Quicksilver gespeichert. </p>
+	<p>Wenn ein Nutzer auf die Website des Kunden zugreift, ruft der TLS-Beendigungsdienst in dem Rechenzentrum, das die Anfrage erhält, den verschlüsselten Richtlinienschlüssel ab, der mit der Zugriffsrichtlinie des Kunden verknüpft ist. Entsprechen die Attribute des Rechners nicht der Richtlinie, schlägt die Entschlüsselung fehl und die Anfrage wird an das nächstgelegene Rechenzentrum weitergeleitet, das die Richtlinie erfüllt. Ist die Entschlüsselung erfolgreich, wird der Richtlinienschlüssel verwendet, um den privaten Schlüssel des Kunden zu entschlüsseln und den Handshake abzuschließen.</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Schlüssel</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Ziel</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">CA im Hauptrechenzentrum</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Hauptrechenzentrum</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Netzwerk</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Öffentlicher Master-Schlüssel</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Verschlüsselt private Richtlinienschlüssel mittels einer Zugriffsrichtlinie</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Generieren</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Lesen</span></td>
+				<td class="tg-0lax"></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Geheimer Master-Schlüssel</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Erzeugt geheime Schlüssel für Rechner auf Grundlage ihrer Attribute</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Generieren,Lesen</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Geheimer Rechner-Schlüssel / attributbasierter geheimer Schlüssel</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Entschlüsselt private Richtlinien-Schlüssel, die in der globalen Schlüssel-Werte-Datenbank Quicksilver abgelegt sind</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Generieren</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Lesen</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Privater Kunden-TLS-Schlüssel</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Vollzieht die zum Abschluss des TLS Handshake mit der Website des Kunden erforderliche digitale Signatur</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Lesen (vorübergehend beim Upload)</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Lesen</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Öffentlicher Richtlinienschlüssel</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Verschlüsselt private TLS-Schlüssel des Kunden</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Generieren,</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Lesen</span></td>
+				<td class="tg-0lax"></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Privater Richtlinienschlüssel</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Entschlüsselt die privaten TLS-Schlüssel des Kunden</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Lesen (vorübergehend während der Schlüsselrotation)</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Generieren</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Lesen</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Richtlinienschlüssel werden jedoch nicht für jeden Zertifikats-Upload eines Kunden generiert. Wie in der Abbildung unten dargestellt, wird der Richtlinienschlüssel wiederverwendet, wenn ein Kunde eine Richtlinie anfordert, die bereits im System vorhanden ist und somit über einen zugehörigen Richtlinienschlüssel verfügt. Da die meisten Kunden dieselben wenigen Richtlinien verwenden, z. B. die Beschränkung auf ein Land oder auf die EU, ist die Zahl der Richtlinienschlüssel um ein Vielfaches geringer als die der Kundenschlüssel. </p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/01/Policy-Keys.png" class="kg-image" alt="Richtlinienschlüssel">
+		<figcaption>Richtlinienschlüssel</figcaption>
+	</figure>
+	<p>Diese gemeinsame Nutzung von Richtlinienschlüsseln ist für die Schlüsselrotation äußerst nützlich. Bei der Rotation der Master-Schlüssel (und damit der geheimen Rechnerschlüssel) müssen nur die wenigen Richtlinienschlüssel, mit denen der Zugriff auf die Kundenschlüssel kontrolliert wird, neu verschlüsselt werden, nicht aber die Schlüssel jedes einzelnen Kunden. Das reduziert die Anforderungen an Rechenleistung und Bandbreite. Darüber hinaus verbessert sich durch das Zwischenspeichern von Richtlinienschlüsseln beim TLS-Terminierungsdienst die Performance, weil seltener Entschlüsselungen innerhalb des kritischen Pfads erforderlich sind.</p>
+	<p>Dies ist vergleichbar mit der hybriden Verschlüsselung, bei der mit Hilfe der Public-Key-Kryptographie ein gemeinsamer symmetrischer Schlüssel erstellt wird, der dann zur Verschlüsselung von Daten verwendet wird. Der Unterschied besteht darin, dass es sich nicht um symmetrische Schlüssel handelt, sondern um X25519-Schlüsselpaare – ein asymmetrisches Schema, das auf elliptischen Kurven basiert. Dieses arbeitet zwar nicht so schnell wie symmetrische Schemata wie AES, aber die traditionelle Elliptische-Kurven-Kryptografie funktioniert wesentlich schneller als die attributbasierte Verschlüsselung. Der Vorteil besteht darin, dass die zentrale Stelle keinen Zugriff auf geheimes Schlüsselmaterial benötigt, um Kundenschlüssel zu verschlüsseln.</p>
+	<p>Die andere Komponente der robusten Schlüsselrotation besteht darin, dass mehrere Schlüsselversionen verwaltet werden: Die neueste Schlüsselgeneration wird für die Verschlüsselung verwendet, aber die letzte und die vorherige Version können für die Entschlüsselung genutzt werden. Wir verwenden ein System von Zuständen, um Schlüsselübergänge und die sichere Löschung älterer Schlüssel zu verwalten. Außerdem verfügen wir über ein umfassendes Überwachungssystem, das uns alarmiert, wenn ein Rechner nicht die richtige Schlüsselgeneration verwendet.</p>
+	<h2 id="-the-tail-at-scale-">„The Tail At Scale“</h2>
+	<p>Der Geo Key Manager litt unter einer hohen Tail-Latenz, die gelegentlich die Verfügbarkeit beeinträchtigte. Jeff Deans Artikel <a href="https://research.google/pubs/pub40801/" target="_blank">„The Tail at Scale“</a> bietet eine aufschlussreiche Lektüre darüber, wie selbst eine im hohen Latenzbereich p99 im Cloudflare-Maßstab Schaden anrichten kann. Obwohl wir die Server- und Client-Komponenten unseres Dienstes überarbeitet haben, hat sich die p99-Latenz nicht verändert. Diese Anpassungen, z. B. die Umstellung von Worker-Pools auf eine Goroutine pro Anfrage, vereinfachten den Dienst, da sie Tausende von Codezeilen entfernten. Durch verteiltes Tracing konnten wir die Verzögerungen eingrenzen: Sie traten zwischen dem Senden einer Anfrage durch den Client und dem Empfangen der Anfrage durch den Server auf. Aber wir konnten nicht weiter nachforschen. Letztes Jahr verfassten wir sogar einen Blogbeitrag, in dem wir unsere <a href="https://blog.cloudflare.com/scaling-geo-key-manager/">Debugging-Bemühungen</a> beschrieben, ohne jedoch eine konkrete Lösung zu finden.</p>
+	<p>Schließlich wurde uns klar, dass es eine indirekte Ebene zwischen dem Client und dem Server gibt. Unsere Rechenzentren auf der ganzen Welt sind sehr unterschiedlich groß. Um zu vermeiden, dass kleinere Rechenzentren mit einer Flut von Verbindungen konfrontiert werden, beauftragten größere Rechenzentren einzelne Zwischenrechner mit der Weiterleitung von Anfragen an andere Rechenzentren unter Verwendung der Go-net/rpc-Bibliothek.</p>
+	<p>Nachdem wir die Weiterleitungsfunktion auf dem Zwischenserver in die Nachverfolgung einbezogen hatten, wurde das Problem sichtbar. Es gab eine lange Verzögerung zwischen der Ausgabe der Anfrage und ihrer Verarbeitung. Dabei war der Code lediglich ein Aufruf einer integrierten Bibliotheksfunktion. Warum verzögerte er also die Anfrage?</p>
+	<p>Letztendlich fanden wir heraus, dass während der Serialisierung der Anfrage eine Sperre aufrechterhalten wurde. Das net/rpc-Paket unterstützt kein Streaming, unser paketorientiertes benutzerdefiniertes Anwendungsprotokoll, das wir vor der Einführung von gRPC geschrieben haben, hingegen schon. Um diese Lücke zu schließen, haben wir eine Anfrage ausgeführt und in der Serialisierungsfunktion auf die Antwort gewartet. Das war zwar eine zweckmäßige Methode, um den Code zu schreiben, führte aber zu einem Performance-Engpass, da immer nur eine Anfrage gleichzeitig weitergeleitet werden konnte.</p>
+	<p>Unsere Lösung bestand darin, Kanäle für die Koordination zu verwenden, sodass mehrere Anfragen ausgeführt werden konnten, während wir auf die Antworten warteten. Als wir diese Lösung einführten, konnten wir eine drastische Verringerung der Latenz feststellen.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/01/Untitled-4.png" class="kg-image" alt="Die Ergebnisse der Behebung von RPC-Fehlern in einem Remote-Colocatiion-Standort in Australien">
+		<figcaption>Die Ergebnisse der Behebung von RPC-Fehlern in einem Remote-Colocatiion-Standort in Australien</figcaption>
+	</figure>
+	<p>Leider können wir die Lichtgeschwindigkeit (noch) nicht noch weiter erhöhen. Kunden, die möchten, dass ihre Schlüssel nur in den USA aufbewahrt werden, während ihre Website-Nutzer in Australien sind, müssen bei der Reise über den Pazifik einige Verzögerungen in Kauf nehmen. Aber dank der Sitzungs-Tickets betreffen diese Verzögerungen nur neue Verbindungen.</p><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 49.86830553116769%;"><iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/a2ff6e606d424150264223bc7635ca25/iframe?preload=true&amp;loop=true&amp;autoplay=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2Fa2ff6e606d424150264223bc7635ca25%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
+	<p>Auch die Betriebszeit wurde erheblich gesteigert. Rechenzentren, die nach der kryptografischen Initiierung eingerichtet wurden, konnten nun am System teilnehmen. Das bedeutete auch, dass Rechenzentren, die eine bestimmte Richtlinie nicht erfüllten, über eine größere Auswahl an zufriedenstellenden Nachbarn verfügten, an die sie die Signierungsanfrage weiterleiten konnten. Dies erhöhte die Redundanz im System und kam vor allem Rechenzentren in Regionen ohne ausgezeichnete Internetanbindung zugute. Das nachstehende Diagramm zeigt die erfolgreichen Untersuchungen, die über einen Zeitraum von zwei Tagen auf allen Rechnern weltweit durchgeführt wurden. Beim GeoV1 sehen wir, dass Websites mit Richtlinien für die Regionen USA und EU an einem Punkt auf unter 98 % fallen, während beim GeoV2 die Betriebszeit selten unter 4,9 Sekunden Verfügbarkeit sinkt.</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/01/ss.png" class="kg-image" alt="Betriebszeit nach Schlüsselprofil in den USA und der EU für den GeoV1 und den GeoV2 sowie IN für den GeoV2">
+		<figcaption>Betriebszeit nach Schlüsselprofil in den USA und der EU für den GeoV1 und den GeoV2 sowie IN für den GeoV2</figcaption>
+	</figure>
+	<h2 id="fazit">Fazit</h2>
+	<p>Herzlichen Glückwunsch, dass Sie es bis hierher geschafft haben. Genau wie Sie hat auch die angewandte Kryptografie einen langen Weg hinter sich. Doch nur ein Bruchteil davon schafft es, die Barriere zwischen Forschung und praktischer Anwendung zu überwinden. Die Überbrückung dieser Kluft kann dazu beitragen, neue Möglichkeiten zum Schutz sensibler Daten zu schaffen. Die attributbasierte Verschlüsselung selbst ist in den letzten Jahren sehr viel effizienter und mit mehr Funktionen ausgestattet worden. Wir hoffen, dass dieser Beitrag Sie ermutigt, ABE für Ihre eigenen Anforderungen an die Zugriffskontrolle in Betracht zu ziehen – insbesondere, wenn Sie mit dezentralen Systemen arbeiten und nicht von einer hochverfügbaren zentralen Stelle abhängig sein wollen. Wir haben unsere Implementierung von CP-ABE in <a href="https://github.com/cloudflare/circl/tree/main/abe/cpabe/tkn20" target="_blank">CIRC</a> quelloffen zur Verfügung gestellt und planen die Veröffentlichung eines Berichts mit weiteren Einzelheiten.</p>
+	<p>Wir freuen uns auf die zahlreichen Produktverbesserungen für den Geo Key Manager, die durch diese neue kryptographische Grundlage ermöglicht werden. Wir planen, diesen ABE-basierten Mechanismus nicht nur für die Speicherung privater Schlüssel, sondern auch für andere Arten von Daten zu verwenden. Wir arbeiten daran, ihn benutzerfreundlicher zu gestalten und für die Nutzung durch interne Dienste zu verallgemeinern.</p>
+	<h2 id="danksagungen">Danksagungen</h2>
+	<p>Wir möchten Watson Ladd für seine Beiträge zu diesem Projekt während seiner Zeit bei Cloudflare danken.</p><!--kg-card-begin: markdown-->
+	<p><small>......<br>
+			<sup>1</sup>Zwar trifft dies für die meisten Kunden zu, aber wir bieten <a href="https://www.cloudflare.com/ssl/keyless-ssl/" target="_blank">Keyless SSL</a> an, womit Kunden, die ihre eigenen Schlüsselserver betreiben können, die Möglichkeit erhalten, ihre privaten Schlüssel lokal zu speichern.<br>
+		</small></p>
+	<!--kg-card-end: markdown-->
+</div>
