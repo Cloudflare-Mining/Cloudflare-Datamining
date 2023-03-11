@@ -34,7 +34,16 @@
 	<p>Next, the Cloudflare agent running on the device needs to be able to reach that certificate to validate that it is connected to a network you manage. We recommend running a simple HTTP server inside your network which the device can reach to validate the certificate.</p>
 	<p>3. Create a python3 script and save as <code>myserver.py</code> as part of setting up a simple<a href="https://gist.github.com/dergachev/7028596" target="_blank"> HTTP server</a>.</p><!--kg-card-begin: markdown-->
 	<pre><code>import ssl, http.server
-server = http.server.HTTPServer(('0.0.0.0', 4443), http.server.SimpleHTTPRequestHandler)
+
+class BasicHandler(http.server.BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.send_header('Content-type', 'text/html')
+        self.end_headers()
+        self.wfile.write(b'OK')
+        return
+
+server = http.server.HTTPServer(('0.0.0.0', 4443), BasicHandler)
 sslcontext = ssl.create_default_context(ssl.Purpose.CLIENT_AUTH)
 sslcontext.load_cert_chain(certfile='./example.pem', keyfile='./example.key')
 server.socket = sslcontext.wrap_socket(server.socket, server_side=True)
