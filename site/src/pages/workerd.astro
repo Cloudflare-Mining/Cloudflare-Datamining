@@ -19,6 +19,14 @@ interface workerdFlagInfo {
 	}
 }
 
+interface flagStatus {
+	[flag: string]: {
+		success: boolean;
+		already_default: boolean;
+		error?: string;
+		error_message?: string;
+	}
+}
 interface flagInfo {
 	name: string;
 	friendly_name: string | null;
@@ -28,6 +36,7 @@ interface flagInfo {
 	enable_flag: string | null;
 	experimental: boolean;
 	publicly_documented: boolean;
+	usable: boolean;
 }
 
 interface remoteFlagInfoType {
@@ -48,6 +57,9 @@ for(const struct of workerdData.structs) {
 }
 if(!flagsInfo) { throw new Error('Could not find flags info!'); }
 
+const flagStatusRes = await fetch('https://compat-date-testing-dump.jross.workers.dev/status');
+const flagStatus: flagStatus = await flagStatusRes.json();
+
 const remoteFlagInfoRes = await fetch('https://developers.cloudflare.com/workers/platform/compatibility-dates.json');
 const remoteFlagInfo: remoteFlagInfoType[] = await remoteFlagInfoRes.json();
 
@@ -66,12 +78,17 @@ for(const flag of flagsInfo as workerdFlagInfo[]) {
 		enable_flag: flag.annotations?.compatEnableFlag ?? null,
 		experimental: flag.annotations?.experimental === 'true',
 		publicly_documented: false,
+		usable: false
 	};
 	if(remoteFlag) {
 		flagInfo.description = marked.parse(remoteFlag.description);
 		flagInfo.experimental = remoteFlag.experimental;
 		flagInfo.friendly_name = remoteFlag.name;
 		flagInfo.publicly_documented = true;
+	}
+
+	if(flagStatus[enableFlag]?.success) {
+		flagInfo.usable = true;
 	}
 	flags.push(flagInfo);
 }
@@ -89,17 +106,18 @@ for(const flag of flagsInfo as workerdFlagInfo[]) {
 			Compability Flags allow you opt into changes to the Workers runtime. See the <a href="https://developers.cloudflare.com/workers/platform/compatibility-dates/" target="_blank" rel="noopener">official Cloudflare documentation</a> for more information.
 		</p>
 		<p>
-			These flags are automatically sourced from the workerd sourcecode, so may list flags that are not yet available.
+			These flags are automatically sourced from the workerd sourcecode, so may list flags that are not yet available. Usability of each flag is determined automatically every hour against the live Workers runtime, and can be noted below. If a flag is marked as usable, you can use it in <code>wrangler.toml</code> today.
 		</p>
 	</Description>
 	<Table
-		headers = {['Name', 'Default Date', 'Enable Flag', 'Disable Flag', 'Experimental']}
+		headers = {['Name', 'Default Date', 'Enable Flag', 'Disable Flag', 'Experimental', 'Usable']}
 		data = {flags.reverse().map(flag => [
 			flag.friendly_name ?? flag.name,
 			flag.enable_date ?? 'N/A',
 			flag.enable_flag ?? 'N/A',
 			flag.disable_flag ?? 'N/A',
 			flag.experimental ? 'Experimental' : 'Stable',
+			flag.usable ? '✅' : '❌',
 		])}
 	></Table>
 
@@ -141,6 +159,13 @@ for(const flag of flagsInfo as workerdFlagInfo[]) {
 						<div class="px-6 sm:grid sm:grid-cols-3 sm:gap-4">
 							<dt>Publicly Documented</dt>
 							<dd class="sm:col-span-2">{flag.publicly_documented && 'Yes' || 'No'}</dd>
+						</div>
+					}
+					{
+
+						<div class="px-6 sm:grid sm:grid-cols-3 sm:gap-4">
+							<dt>Usable</dt>
+							<dd class="sm:col-span-2">{flag.usable && 'Yes' || 'No'}</dd>
 						</div>
 					}
 				</dl>
