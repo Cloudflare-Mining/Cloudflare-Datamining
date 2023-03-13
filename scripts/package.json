@@ -33,7 +33,7 @@
 		"mine:npm": "node src/npm.js",
 		"mine:marketing": "node src/marketing.js",
 		"mine:marketing-pages": "node src/marketing-pages.js",
-		"mine:products": "npm run mine:product:pages && npm run mine:product:workers && npm run mine:product:zones && npm run mine:product:rules && npm run mine:product:alerting && npm run mine:product:rulesets && npm run mine:product:gateway && npm run mine:product:r2 && npm run mine:product:turnstile && npm run mine:product:apps && npm run mine:product:analytics && npm run mine product:registrar",
+		"mine:products": "npm run mine:product:pages && npm run mine:product:workers && npm run mine:product:zones && npm run mine:product:rules && npm run mine:product:alerting && npm run mine:product:rulesets && npm run mine:product:gateway && npm run mine:product:r2 && npm run mine:product:turnstile && npm run mine:product:apps && npm run mine:product:analytics && npm run mine:product:registrar",
 		"mine:product:alerting": "node src/products/alerting.js",
 		"mine:product:analytics": "node src/products/analytics.js",
 		"mine:product:apps": "node src/products/apps.js",
