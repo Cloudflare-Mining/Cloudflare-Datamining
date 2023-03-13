@@ -49,7 +49,15 @@
 				"contentfulId": "2rFsqrsfx3dbpiu6dQPw1P",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
-				"psaBanner": null,
+				"psaBanner": {
+					"contentTypeId": "psaBanner",
+					"contentfulId": "6VHUtOc3tnrJOFU1G5OP8B",
+					"text": "__Welcome to Security Week__ Join us for updates on more accessible Zero Trust, better brands protections, streamlined security management, dynamic machine learning protections and more.\n",
+					"learnMoreText": "Dive in",
+					"learnMoreUrl": "/security-week",
+					"backgroundColor": null,
+					"hideCloseButton": true
+				},
 				"customTopNav": null,
 				"headerLogo": null,
 				"proactivePopup": null,
@@ -8073,7 +8081,7 @@
 				"tr-TR",
 				"zh-Hans-CN"
 			],
-			"hasPsaBanner": false,
+			"hasPsaBanner": true,
 			"baseURL": "https://www.cloudflare.com",
 			"staticStrings": {
 				"MB": "MB",
