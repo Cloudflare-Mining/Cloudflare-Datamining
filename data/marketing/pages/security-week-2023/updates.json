@@ -1,10 +1,10 @@
 {
 	"componentChunkName": "component---src-components-page-page-template-tsx",
-	"path": "/security-week/",
+	"path": "/security-week-2023/updates/",
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "SecWeek23 - Security Week 2023 - Production ",
+				"pageName": "Security Week 2023 - Updates and Announcements",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
@@ -30,14 +30,14 @@
 					"zhHansCN": "Translated for Locale",
 					"plPL": "No Page for Locale"
 				},
-				"relativePath": "security-week",
+				"relativePath": "security-week-2023/updates",
 				"topNavOptions": "default",
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
 				"metaTags": {
-					"metaTitle": "Security Week 2023",
-					"metaDescription": "Join us for exciting updates during Security Week on how we'll make Zero Trust even more accessible and enterprise-ready, better protect brands from phishing and fraud, streamline security management, deliver dynamic machine learning protections and more.",
+					"metaTitle": "Security Week 2023 - Updates and Annoucements",
+					"metaDescription": "Join us here for our updates and announcements for exciting updates during Security Week.",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
@@ -46,7 +46,7 @@
 					},
 					"facebookCustomImage": null
 				},
-				"contentfulId": "3ogqUkwLAf9z6qWhZFRUyl",
+				"contentfulId": "4q1QkWPBh40hMzU5L1Z2hj",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
 				"psaBanner": null,
@@ -117,14 +117,72 @@
 						}
 					},
 					{
-						"contentfulId": "509NuKw0WyK0oCZ7HZDykj",
+						"contentTypeId": "bladeSubNav",
+						"contentfulId": "6hpBcDQ2w7o9PLJOCTaekD",
+						"menuTitle": "Security Week",
+						"mobileOnlyMenuTitle": null,
+						"stickyNav": true,
+						"htmlId": null,
+						"menuItems": [
+							{
+								"contentfulId": "5LWXzWSQQs2ZEZqx2LrQSW",
+								"linkText": "Today",
+								"page": null,
+								"url": "security-week",
+								"subMenuItems": null
+							},
+							{
+								"contentfulId": "2YbpoPnt4Gy4oVtrwKK6Fh",
+								"linkText": "Updates and Annoucements",
+								"page": null,
+								"url": "security-week-2023/updates",
+								"subMenuItems": null
+							},
+							{
+								"contentfulId": "4yOttMwQevaG54qbrI5SEa",
+								"linkText": "Cloudflare TV",
+								"page": null,
+								"url": "security-week-2023/cloudflare-tv",
+								"subMenuItems": null
+							},
+							{
+								"contentfulId": "5QBLn6ggwysdmqPfgzGT7v",
+								"linkText": "Press Releases",
+								"page": null,
+								"url": "security-week-2023/press-releases",
+								"subMenuItems": null
+							},
+							{
+								"contentfulId": "428ZE77EN8DRSCWPvF2CXk",
+								"linkText": "Past Security Weeks",
+								"page": null,
+								"url": null,
+								"subMenuItems": [
+									{
+										"contentfulId": "7oi6gAISZ8wkp7Vef23mQz",
+										"linkText": "Security Week 2022",
+										"page": null,
+										"url": "security-week-2022"
+									},
+									{
+										"contentfulId": "1sDp7gjkXMOc3RIwgv4hct",
+										"linkText": "Security Week 2021",
+										"page": null,
+										"url": "security-week-2021"
+									}
+								]
+							}
+						]
+					},
+					{
+						"contentfulId": "4WEpGksAmcW2yYnZUtikV2",
 						"backgroundColor": "white",
 						"contentTypeId": "bladeFourFeatures",
 						"htmlId": null,
 						"copy": null,
-						"title": null,
+						"title": "Updates and Annoucements",
 						"subtitle": null,
-						"bladeStyle": "Feature Blocks - 3 columns",
+						"bladeStyle": null,
 						"bladeBorder": "none",
 						"sectionPadding": "tile--no-top-padding",
 						"carouselSlidesToShow": null,
@@ -182,36 +240,6 @@
 									"contentfulAsset": {
 										"file": {
 											"publicURL": "[path]/Most_phished_brands_and_new_tools_you_can_use_to_protect_your_employees_against_phishing.png"
-										}
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "1IJdjB73aCgPWMDnXO7NoA",
-								"title": "Press Release- Cloudflare Uses the Power of its Global Network to Identify the Top 50 Most Impersonated Brands and Protect Zero Trust Customers From Phishing Scams",
-								"titleSize": null,
-								"description": "Cloudflare, Inc. (NYSE: NET), the security, performance, and reliability company helping to build a better Internet, today published a global report on the Top 50 Brands Used in Phishing Attacks. ",
-								"learnMoreUrl": "https://www.cloudflare.com/2023/top-50-impersonated-brands-phishing",
-								"learnMoreText": "Learn more",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": {
-									"id": "c8992654-1850-5cbf-81c6-33b389fb98c1",
-									"altText": "Press Release Header",
-									"title": "Press Release Header",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "[path]/press-releases.png"
 										}
 									},
 									"brandfolderAsset": null,
@@ -370,96 +398,6 @@
 								"streamId": null,
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "35rOSXPe4gr4Eg7N5ryfMv",
-								"title": "CFTV: Welcome to Security Week",
-								"titleSize": null,
-								"description": "__Monday, 3/13 9:00 AM PT__\n\nReid Tatoris &\nDan Gould",
-								"learnMoreUrl": "https://cloudflare.tv/event/cloudflare-tv-segment/9ZdzDqvj",
-								"learnMoreText": "Tune in",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": {
-									"id": "196f472e-7a2a-56e8-8a34-adf96a0d51bc",
-									"altText": "Cloudflare TV Header",
-									"title": "Cloudflare TV Header",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "[path]/CFTV.png"
-										}
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "3OvHcQUA0sHykKUkr6c4kj",
-								"title": "CFTV: Evolving protections against browser supply chain attacks",
-								"titleSize": null,
-								"description": "__Monday, 3/13\t9:30 AM PT__\n\nMichael Tremante,\nDan Gould, &\nApoorva Ravikrishnan",
-								"learnMoreUrl": "https://cloudflare.tv/event/cloudflare-tv-segment/BZOpqJgw",
-								"learnMoreText": "Tune in",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": {
-									"id": "196f472e-7a2a-56e8-8a34-adf96a0d51bc",
-									"altText": "Cloudflare TV Header",
-									"title": "Cloudflare TV Header",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "[path]/CFTV.png"
-										}
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "5oRS1W53EqC6FWPohYEcuG",
-								"title": "Staying ahead of phishing and brand impersonation",
-								"titleSize": null,
-								"description": "__Monday, 3/13\t10:00 AM PT__\n\nPatrick Donahue &\nAlexandra Moraru ",
-								"learnMoreUrl": "https://cloudflare.tv/event/cloudflare-tv-segment/zaGPE0Z2",
-								"learnMoreText": "Tune in",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": {
-									"id": "196f472e-7a2a-56e8-8a34-adf96a0d51bc",
-									"altText": "Cloudflare TV Header",
-									"title": "Cloudflare TV Header",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "[path]/CFTV.png"
-										}
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
 							}
 						]
 					}
@@ -476,8 +414,8 @@
 		},
 		"pageContext": {
 			"locale": "en-US",
-			"pathname": "/security-week/",
-			"contentfulId": "3ogqUkwLAf9z6qWhZFRUyl",
+			"pathname": "/security-week-2023/updates/",
+			"contentfulId": "4q1QkWPBh40hMzU5L1Z2hj",
 			"allowedHrefLangs": [
 				"en-US",
 				"zh-CN",
