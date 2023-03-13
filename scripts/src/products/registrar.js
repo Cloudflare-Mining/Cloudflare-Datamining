@@ -54,7 +54,7 @@ for(const item of html) {
 
 for(const item of css) {
 	const filename = path.resolve(dir, `${item.name}.css`);
-	console.log(`Fetch for HTML ${item.name}...`);
+	console.log(`Fetch for CSS ${item.name}...`);
 	const res = await fetch(item.url);
 	if(!res.ok) {
 		console.log(`${item.name} failed: ${res.status} ${res.statusText}`);
