@@ -1,0 +1,301 @@
+body {
+	--dark-blue: #163d57;
+	--blue: #7cb7de;
+	--light-blue: #c3e7ff;
+	--white: #fff;
+	--dark-gray: #92979b;
+	--gray: #72777b;
+	--light-gray: #f7f7f8;
+
+	margin: 0;
+	padding: 100px 0 0 0;
+
+	font-family: sans-serif;
+	background: var(--dark-blue);
+}
+
+body * {
+	box-sizing: border-box;
+}
+
+h1 {
+	color: var(--white);
+	font-weight: bold;
+	font-size: 48px;
+	line-height: 56px;
+	margin-bottom: 0;
+}
+
+h2 {
+	font-weight: 500;
+	font-size: 42px;
+	line-height: 49px;
+	text-decoration-line: underline;
+	color: var(--dark-blue);
+}
+
+h3 {
+	text-align: left;
+	font-size: 23px;
+	margin-top: 40px;
+}
+
+p {
+	color: var(--white);
+	font-size: 20px;
+	line-height: 23px;
+}
+
+.background--white {
+	background: var(--white);
+}
+
+.text-align--left {
+	text-align: left;
+}
+
+.top-nav {
+	background: var(--dark-blue);
+	margin: 0;
+	padding: 0;
+	top: 0;
+	position: fixed;
+	line-height: 18px;
+	width: 100%;
+	height: 80px;
+}
+
+.top-nav__items {
+	display: flex;
+	align-items: stretch;
+	margin-left: auto;
+	margin-right: auto;
+	justify-content: center;
+}
+
+.top-nav__logo {
+	position: absolute;
+	left: 0;
+	width: 130px;
+	display: block;
+	margin: 15px;
+}
+
+.top-nav__input-container {
+	width: 100%;
+}
+
+.container {
+	margin: 0 auto;
+	padding: 10px auto;
+
+	text-align: center;
+}
+
+.container--max-width {
+	max-width: 770px;
+}
+
+.sub-container {
+	margin: 20px auto;
+	padding: 32px;
+	max-width: 770px;
+
+	background: var(--light-gray);
+	border: 1px solid var(--dark-gray);
+	border-radius: 4px;
+	color: black;
+	font-size: 16px;
+	line-height: 26px;
+	text-align: left;
+
+	font-family: monospace;
+}
+
+.sub-container p {
+	margin: 0;
+	color: var(--black);
+}
+
+.sub-container ul {
+	margin: 0;
+	list-style-type: none;
+}
+
+.domain-card__header {
+	font-weight: bold;
+	font-size: 16px;
+	line-height: 26px;
+	font-family: sans-serif;
+	margin-top: 0;
+	margin-bottom: 10px;
+}
+
+.domain-card__list {
+	padding: 0;
+}
+
+.input__container {
+	width: 65%;
+	border-radius: 5px;
+	display: inline-flex;
+	align-items: center;
+	margin-top: 10px;
+}
+
+.input__label {
+	width: 30%;
+	margin-right: 15px;
+}
+
+.input__label.small {
+	font-size: 20px;
+}
+
+.top-nav .input__search-icon {
+	left: 145px;
+	height: 30px;
+	width: 30px;
+	min-width: 20px;
+}
+
+.input__search-icon {
+	position: relative;
+	left: 170px;
+	height: 40px;
+	width: 40px;
+	min-width: 20px;
+}
+
+.input__field {
+	width: 100%;
+	border: none;
+	font-size: 24px;
+	line-height: 26px;
+	padding-left: 65px;
+	padding: 23px 5px 23px 49px;
+}
+
+.input__wrapper {
+	background: white;
+	border-right: 1px solid black;
+	width: 200px;
+	padding-right: 10px;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+
+select.input__field {
+	border: none;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	font-size: 24px;
+	line-height: 26px;
+	padding: 22px 0px;
+	color: var(--gray);
+	text-align-last: center;
+	height: 72px;
+}
+
+select.input__field.small {
+	padding: 10px 0px;
+	height: 45px;
+}
+
+select.input__field option {
+	text-align: center;
+}
+
+.input__field.small {
+	font-size: 18px;
+	line-height: 21px;
+	padding: 12px 5px 12px 39px;
+}
+
+.input__field::placeholder {
+	color: var(--gray);
+}
+
+.input__field:focus {
+	outline: none;
+}
+
+.input__button {
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	background: var(--blue);
+	border: none;
+	padding: 23px 49px;
+	color: var(--dark-blue);
+	font-weight: bold;
+	font-size: 22px;
+	line-height: 26px;
+}
+
+.input__button:hover {
+	cursor: pointer;
+	background: var(--light-blue);
+}
+
+.input__button.small {
+	padding: 12px 25px;
+	line-height: 21px;
+}
+
+.input__button.small.round {
+	padding: 12px 25px;
+	line-height: 21px;
+	border-radius: 5px;
+}
+
+.contact input,
+.contact label {
+	display: block;
+}
+
+.contact .container {
+	display: table;
+	text-align: left;
+}
+
+.contact input {
+	border-radius: 5px;
+	border: none;
+	line-height: 26px;
+	width: 100%;
+	padding: 5px;
+}
+
+.contact label {
+	font-size: 18px;
+	margin-top: 25px;
+	margin-bottom: 5px;
+	color: var(--white);
+}
+
+.contact textarea {
+	border-radius: 5px;
+	border: none;
+	width: 100%;
+	height: 200px;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+
+.aligned_inputs {
+	display: inline-flex;
+	width: 100%;
+}
+
+.aligned_input {
+	width: 50%;
+}
+
+.aligned_input:last-of-type {
+	justify-content: end;
+	display: inline-grid;
+}
+
+.aligned_inputs input {
+	width: 90%;
+}
