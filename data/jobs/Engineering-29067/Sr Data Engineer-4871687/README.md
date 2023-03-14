@@ -19,10 +19,10 @@
 <p><strong>Basic Qualifications:</strong></p>
 <ul>
 	<li>Bachelor’s or Master’s Degree in Computer Science or Engineering or related experience required.</li>
-	<li>5+ years of developing ETL solutions in Big data space working with Petabytes of data and building large scale<br>data solutions using Google Cloud Platform, Apache Spark - Scala, Airflow, Python</li>
-	<li>3+ years of experience with API design and development of RESTful web services</li>
-	<li>Experience with integrating Salesforce, Snowflake, NetSuite, and other SaaS applications</li>
-	<li>Experience with automation tools and frameworks(CI/CD pipelines)</li>
+	<li>5+ years of developing<strong> ETL</strong> solutions in Big data space working with Petabytes of data and building large scale<br>data solutions using <strong>Google Cloud Platform, Apache Spark - Scala, Airflow, Python, SQL</strong></li>
+	<li>3+ years of experience with <strong>API design</strong> and development of <strong>RESTful</strong> web services</li>
+	<li>Experience with integrating <strong>Salesforce, Snowflake, NetSuite</strong>, and other SaaS applications</li>
+	<li>Experience with automation tools and frameworks (CI/CD pipelines)</li>
 	<li>Strong understanding of development best practices, continuous integration, source control, code reviews</li>
 </ul>
 <p><strong>Preferred Qualifications:</strong></p>
