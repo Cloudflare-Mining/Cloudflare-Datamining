@@ -5,42 +5,28 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Responsibilities&nbsp;</strong></p>
+<h4><strong>About the department</strong></h4>
+<p><span style="font-weight: 400;">We are looking for a Global Supply Manager to support our commercial hardware engagement with strategic partners&nbsp; (focused on server and network equipment). You will be part of a team focused on sourcing key hardware technologies and executing on the commercial strategy for Cloudflare’s 275+ data centers.&nbsp; Cloudflare takes a long term and technical approach to hardware sourcing, comparing ourselves to the best in class cloud companies.&nbsp; You will lead the team on ambitious goals for our hardware sourcing around technology cost, quality, and supply.&nbsp;</span></p>
+<h4><strong>What you'll do</strong></h4>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Can clearly communicate the Incident Response Lifecycle and the Kill Chain (Attack) Life Cycle to internal and external stakeholders</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Serve as point of contact throughout the incident lifecycle, interacting directly with executives, and legal.&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Extend Security Incident Response framework, capabilities responsibilities</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Assist in broadening Security Incident Response scope into Product Security, Legal and Insider Threat.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Effectively communicate investigative findings and impact to wide array of stakeholders including executive leadership</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Partner with the team members across two regions to drive response and investigations globally.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Produce concise yet detailed case reports for internal and external partners.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Assist in planning and strategizing program initiatives and milestones to mature incident response capabilities&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Participate in the creation, and maintenance Incident Response Standards, Policies, Procedures, Guidelines, and Checklists</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Empathize, reassure, and respond to sensitive incidents with compassion, professionalism, and clarity&nbsp;&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Train less experienced members of the team on best practices, processes, and technologies</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Own relationships with server, network and sub-component companies (CPU, storage, networking technologies).</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Manage and support key hardware sourcing and procurement efforts across compute, storage and network hardware in support of Cloudflare’s rapid global infrastructure expansion.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Understand the commercial and technical benefits of hardware technologies and convey strategic value of Cloudflare in order to develop long-lasting partnerships with key industry players.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Develop long term Total Cost of Ownership targets and lead complex, multi-party negotiations to achieve key Technology, Quality, Cost and Supply targets.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Introduce cross-functional processes (e.g, RFX, QBR) to ensure improved evaluation of new and existing hardware vendors.&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Partner with Hardware engineering on new technology and existing products.&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Partner with key internal stakeholders across infrastructure and engineering teams to support the growth of Cloudflare’s hardware fleet.</span></li>
 </ul>
-<p>&nbsp;</p>
-<p><strong>Requirements</strong></p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">5+ years of demonstrated experience in digital forensics incident response investigations, litigation support investigations, security engineering, log aggregation, and/or penetration testing</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Minimum of 2 years leading incident response engagements or efforts in enterprise and production environments</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Broad understanding of data loss prevention and insider threat prevention concepts, technical expertise, and analytical capabilities to detect patterns and anomalies across data sets of technical and non-technical indicators.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Litigation discovery experience, including data preservation, collection, scoping and review of data from a broad array of repositories and systems, including proprietary systems</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Deep knowledge of malicious insider threat indicators, such as those associated with fraud, theft of intellectual property, sabotage, and espionage.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Solid understanding of network and system intrusion and detection methods; examples of related technologies include, Splunk, Kibana, Timesketch, GRR Rapid Response, Velociraptor, OSQuery, Next Generation Endpoint Protection Platforms (EPP), Security information and event management (SIEM),&nbsp; hacking tools techniques and procedures</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with coding and analytics, malware analysis, endpoint lateral movement detection methodologies and host forensic tools</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Understanding of network protocol analysis, public key infrastructure, SSL, Microsoft Windows, MacOS, Linux, open-source software, scripting, SQL and software programming</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong troubleshooting, organizational skills, and capacity to work on multiple activities simultaneously</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Great verbal/written communication, problem solving, analytical and independent judgment skills to support an environment driven by teamwork; must be able to positively influence, mentor and be a credible source of knowledge to less experienced team members</span></li>
-</ul>
-<p><strong>Preferred Qualifications</strong></p>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Forensic tool development and automation&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Malware Reverse Engineering</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">SALT, Ansible, Puppet, Chef, and/or Terraform experience.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with industry security baselines such as CIS and NIST 800-53+</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Python, SQL, GoLang</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">GCFA, GCFR, GNFA Certifications</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">3+ years experience working with server technology manufacturers (must have direct experience with server ODMs and network equipment manufacturers)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Intellectual curiosity, particularly around technology&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Master’s Degree in Business, Supply Chain or engineering field or an equivalent amount of professional experience&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Excellent communication skills; ability to communicate to both technical and non-technical stakeholders&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Comfortable managing teams/projects with tight deadlines in an ambiguous environment&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Highly organized and able to juggle many tasks without losing sight of the highest priority items</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Prior experience managing programs across multiple, large cross- functional teams.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Engineering or analytical background preferred</span></li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
