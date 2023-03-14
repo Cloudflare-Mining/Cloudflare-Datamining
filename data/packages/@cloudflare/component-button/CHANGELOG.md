@@ -1,5 +1,11 @@
 # Change Log
 
+## 6.0.1
+
+### Patch Changes
+
+- 3466699ea5: Fix loading state not clearing properly on Safari
+
 ## 6.0.0
 
 ### Major Changes
