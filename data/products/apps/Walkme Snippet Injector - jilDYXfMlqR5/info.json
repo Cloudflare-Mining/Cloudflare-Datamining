@@ -143,6 +143,95 @@
 				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
 				"reviewedAt": "2019-09-26T15:35:34.057205554Z"
 			}
+		},
+		{
+			"tag": "0.0.2",
+			"appId": "jilDYXfMlqR5",
+			"definition": {
+				"resources": {
+					"body": [
+						{
+							"type": "style",
+							"src": "./build/styles.css"
+						},
+						{
+							"type": "script",
+							"src": "./build/index.js"
+						}
+					]
+				},
+				"options": {
+					"properties": {
+						"walkmeUserGuid": {
+							"description": "The User ID associated with your WalkMe account.",
+							"placeholder": "Insert your WalkMe User ID here",
+							"title": "WalkMe User ID",
+							"type": "string"
+						}
+					}
+				},
+				"preview": {
+					"handlers": [
+						{
+							"options": [
+								"_default"
+							],
+							"execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)",
+							"reload": null
+						}
+					]
+				}
+			},
+			"releaseNotes": "Updated email / github account",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/b1O_IV1-nnnn",
+			"created": "2023-03-15T13:57:13.318426Z",
+			"proposedApp": {
+				"id": "jilDYXfMlqR5",
+				"title": "Walkme Snippet Injector",
+				"shortDescription": "Inject Walkme snippet to your site - the easy way!",
+				"longDescription": "",
+				"instructions": "",
+				"alias": "walkme-snippet-injector",
+				"orgId": "6fc7c1ccb65e3bd2fbbcf2b2cd2d2b7a",
+				"icon": "https://images.cloudflareapps.com/eDkTFx2f4SDH/needle-surgical.png",
+				"screenshots": [],
+				"tileImage": "",
+				"featuredAppImage": "",
+				"author": "Pavel Shklovsky",
+				"tagline": "",
+				"website": "https://github.com/pab1it0/walkme-snippet-injector",
+				"sourceURL": "https://github.com/pasha1986/walkme-snippet-injector",
+				"termsOfServiceURL": "",
+				"privacyPolicyURL": "",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "pavel@cloudefined.com",
+				"products": [],
+				"categoryIds": [],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "b1O_IV1-nnnn"
+				},
+				"created": "2019-09-23T14:16:35.939802Z"
+			},
+			"moderationStatus": "pending",
+			"moderationMetadata": {
+				"requestedByUserId": "6fc7c1ccb65e3bd2fbbcf2b2cd2d2b7a",
+				"requestedAt": "2023-03-15T13:57:23.93397487Z",
+				"canceledAt": null,
+				"reviewedAt": null
+			}
 		}
 	]
 }
