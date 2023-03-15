@@ -5,32 +5,39 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About the Department</strong></p>
-<p><span style="font-weight: 400;">The Security team at Cloudflare is focused and committed to helping secure both Cloudflare and our customers. The Infrastructure Security team works closely with the engineering teams responsible for running and maintaining our global infrastructure.&nbsp;</span></p>
-<p><span style="font-weight: 400;">Our mission is to help build security into the hardware and software that run Cloudflare’s products.</span></p>
-<p><strong>About the Role</strong></p>
-<p><span style="font-weight: 400;">We are looking for an experienced Security Engineer to help us in our mission to build a better internet. Part engineer, part hacker, you will:&nbsp;</span></p>
+<p><span style="font-weight: 400;">Cloudflare Area 1 Security builds advanced technology focused on the source of 95% of data breaches on the internet: phishing.</span></p>
+<p><span style="font-weight: 400;">Hunting for bad actors on the internet is an intellectual and technical challenge. We hunt at scale with web crawling, machine learning, computer vision, petabytes of data, and a global network of sensors.</span></p>
+<p><span style="font-weight: 400;">All of this technology delivers a comprehensive email, network and web protection layer around each of our customers. Customers know that with Cloudflare Area 1 Security’s solution deployed, their users won’t enable a hacker to gain a foothold that results in a breach of their systems.</span></p>
+<p><span style="font-weight: 400;">Come and join an engineering team that builds extensible, reliable, scalable web-based, and data processing applications that our customers count on every second of the day.</span></p>
+<p><strong>RESPONSIBILITIES:</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Work with our engineering and infrastructure teams to help secure our globally distributed systems.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Build and deploy internal security tools that help address security problems at a global scale</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Collaborate with the full Cloudflare security team to gather system telemetry and improve detections of any potential security events</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Ensure our global infrastructure is secure from all attacks, ranging from “script kiddies” to nation states.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Create the product’s subsystems and key components by applying up-to-date expertise in Software Engineering to define, design and create world-class implementations.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Collaborate with other senior engineers to improve the overall system at the architectural, design, and implementation levels.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Design and implement new features for our cloud-based email gateway solution that empowers Fortune 1000 customers.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Design and implement forward-looking portions of the system to execute a long-term product vision.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Work with large scale data systems in both online/streaming and offline/batch fashions</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Design and implement revisions to areas of the system to enhance key features such as performance, reliability, scalability, or add new functionality</span></li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge, and experience</strong></p>
+<p><strong>MIN REQUIREMENTS:</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Systems and cloud-native software engineering experience</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Linux configuration, security, and administration experience</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Deploying and utilizing security telemetry services (e.g. OSQuery, Falco, etc.)</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Automation experience with tools like Salt, Ansible, and/or Terraform</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Authenticated vulnerability scanning of distributed systems</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">5 years of experience designing and implementing software systems</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Advanced ability to design and implement software systems in Java.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Someone who enjoys security work focused on email detections that identify and protect our users.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Distributed systems experience in a Unix environment&nbsp;</span></li>
 </ul>
-<p><strong>Awesome skills and experience to have, but not required:</strong></p>
+<p><strong>PREFERRED:</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Golang, Rust development experience</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Building and managing cloud-native services (e.g. Google Cloud Platform, Azure, etc.)</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong Linux system and networking fundamentals such as TCP/IP, kernel operations, memory, and file system management</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Open Compute Project (OCP) experience (OpenBMC, Coreboot, Linuxboot, etc.)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">BS/MS in Computer Science or similar engineering discipline</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong software engineering skills and substantial expertise in additional programming and scripting languages: Rust, Python, and shell scripting</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with SMTP</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Significant experience in networking, security, cryptography, malware analysis, data analysis, high-reliability clusters, statistics</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Detailed understanding of object-oriented design practices.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Expert who specializes in big data analysis and design and construction of large-scale multi-tier systems using open-source technologies</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Recent development or architectural leadership experience with large-scale data systems, streaming analytics.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with continuous integration and delivery environments and agile methodologies.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience developing, deploying, maintaining applications using public cloud providers (AWS/GCP/Azure)</span></li>
 </ul>
+<h6><strong>JOB ID#JE_A1_157</strong></h6>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
