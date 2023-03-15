@@ -3285,13 +3285,69 @@
 		"reportId": "Unique identifier of the report to which this record belongs",
 		"sampleInterval": "ABR sample interval",
 		"sourceIP": "Source IP address of the email",
-		"spf": "SPF result"
+		"sourceLocationName": "Country name from source IP",
+		"sourceOrgName": "Source IP address organisation name",
+		"sourceOrgSlug": "Source IP address organisation slug",
+		"sourcePTR": "Source Domain from IP address",
+		"spf": "SPF result",
+		"spfMFromDomain": "Checked domain from scope mfrom"
 	},
 	"ZoneDmarcReportsAdaptiveFilter_InputObject": {
 		"__description": ""
 	},
 	"ZoneDmarcReportsAdaptiveOrderBy": {
 		"__description": ""
+	},
+	"ZoneDmarcReportsSourcesAdaptiveGroups": {
+		"__description": "Aggregated dmarc reports by sources logs with adaptive sampling",
+		"avg": "Beta. The avg of values for a metric per dimension",
+		"dimensions": "List of dimensions to group by",
+		"sum": "",
+		"uniq": ""
+	},
+	"ZoneDmarcReportsSourcesAdaptiveGroupsAvg": {
+		"__description": "",
+		"dkimPass": "Percentage of dkim messages pass",
+		"dmarc": "Percentage of dmarc messages pass",
+		"spfPass": "Percentage of spf messages pass"
+	},
+	"ZoneDmarcReportsSourcesAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "The date the source email was received",
+		"datetimeDay": "The date and time the source email was received truncated to the day",
+		"datetimeHour": "The date and time the source email was received truncated to the hour",
+		"datetimeLast31Days": "The date and time the source email was received truncated to the last 31 days",
+		"datetimeMonth": "The date and time the source email was received truncated to the month",
+		"datetimeWeek": "The date and time the source email was received truncated to the week",
+		"disposition": "DMARC policy disposition",
+		"dkim": "DKIM result",
+		"domain": "Domain to which this report refers to",
+		"envelopeTo": "Envelope To of emails",
+		"evaluatedReason": "Reason (if any) why the record was evaluated",
+		"headerFrom": "Header From of emails",
+		"orgName": "Organization that generated report",
+		"sampleInterval": "ABR sample interval",
+		"sourceIP": "Source IP address of the email",
+		"sourceLocationName": "Country name from source IP",
+		"sourceOrgName": "Source IP address organisation name",
+		"sourceOrgSlug": "Source IP address organisation slug",
+		"sourcePTR": "Source Domain from IP address",
+		"spf": "SPF result",
+		"spfMFromDomain": "Checked domain from scope mfrom"
+	},
+	"ZoneDmarcReportsSourcesAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"ZoneDmarcReportsSourcesAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"ZoneDmarcReportsSourcesAdaptiveGroupsSum": {
+		"__description": "",
+		"totalMatchingMessages": "Total matching messages"
+	},
+	"ZoneDmarcReportsSourcesAdaptiveGroupsUniq": {
+		"__description": "",
+		"ipCount": "Number of distinct IPs"
 	},
 	"ZoneEmailRoutingAdaptive": {
 		"__description": "Beta. Raw email routing logs with adaptive sampling",
@@ -4357,6 +4413,7 @@
 		"cacheReserveOperationsAdaptiveGroups": "",
 		"cacheReserveStorageAdaptiveGroups": "",
 		"dmarcReportsAdaptive": "",
+		"dmarcReportsSourcesAdaptiveGroups": "",
 		"emailRoutingAdaptive": "",
 		"emailRoutingAdaptiveGroups": "",
 		"firewallEventsAdaptive": "",
@@ -4756,6 +4813,7 @@
 		"cacheReserveOperationsAdaptiveGroups": "Beta. Cache Reserve operations with adaptive sampling",
 		"cacheReserveStorageAdaptiveGroups": "Beta. Cache Reserve storage with adaptive sampling",
 		"dmarcReportsAdaptive": "Dmarc report records with adaptive sampling",
+		"dmarcReportsSourcesAdaptiveGroups": "Aggregated dmarc reports by sources logs with adaptive sampling",
 		"emailRoutingAdaptive": "Beta. Raw email routing logs with adaptive sampling",
 		"emailRoutingAdaptiveGroups": "Beta. Aggregated email routing logs with adaptive sampling",
 		"firewallEventsAdaptive": "Raw Firewall events with adaptive sampling",
