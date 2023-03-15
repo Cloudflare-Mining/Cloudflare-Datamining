@@ -908,6 +908,58 @@
 							},
 							{
 								"contentTypeId": "elementRichText",
+								"contentfulId": "1L8JQu0H8mbqIapMhpOisD",
+								"title": "Does the U.S. Clarifying Lawful Overseas Use of Data (\"CLOUD\") Act affect how Cloudflare views its obligation to turn over data in response to U.S. government legal process?",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "We believe that U.S. government requests for the personal data of a non-U.S. person that conflict with the privacy laws of that person's country of residence (such as the GDPR in the EU) should be legally challenged.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The CLOUD Act does not expand U.S. investigative authority. Tough requirements for law enforcement to obtain a valid warrant remain unchanged. The CLOUD Act also applies to access to content, which we generally do not store, as described above. Furthermore, the CLOUD Act does not change existing practices when U.S. law enforcement seeks access to corporate data. It is important to note that law enforcement would typically seek to obtain data from the entity which has effective control of the data (i.e., our customers) rather than cloud providers.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
 								"contentfulId": "6Mw3XUQefIW2uyHEZllcXd",
 								"title": "Impact of the CJEU Decision on our approach to GDPR compliance",
 								"column": {
@@ -928,7 +980,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Cloudflare will continue to make the SCCs available to our customers whose data is subject to the GDPR. We are closely following developments in this space as well as around alternative transfer mechanisms.",
+													"value": "Cloudflare will continue to make the SCCs plus supplementary measures available to our customers whose data is subject to the GDPR. We are closely following developments in this space as well as around alternative transfer mechanisms.",
 													"marks": [],
 													"content": null
 												}
@@ -970,21 +1022,10 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Because the CJEU considered a number of U.S. national security authorities in its analysis in the Schrems II case, we've seen some questions about the application of those authorities to U.S. data processors. Explaining whether, or how, these authorities are relevant to a transfer of data requires some additional explanation of the authorities referenced by the CJEU.",
+													"value": "Because the CJEU considered a number of U.S. national security authorities in its analysis in the Schrems II case, we've seen some questions about the application of those authorities to U.S. data processors. Explaining whether, or how, these authorities are relevant to a transfer of data requires some additional explanation of the authorities referenced by the CJEU.\n\n",
 													"marks": [],
 													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
+												},
 												{
 													"nodeType": "text",
 													"data": {
@@ -1005,7 +1046,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " Section 702 of the Foreign Intelligence Surveillance Act (FISA) is an authority that allows the U.S. government to request the communications of non-U.S. persons located outside of the United States for foreign intelligence purposes. The U.S. government uses section 702 to collect the content of communications through specifical \"selectors\", such as email addresses, that are associated with specific foreign intelligence targets. Because the authority is typically used to collect the content of communications, the \"electronic communications service providers\" asked to comply with section 702 are typically email providers or other providers with access to the content of communications.",
+													"value": " Section 702 of the Foreign Intelligence Surveillance Act (\"FISA\") is an authority that allows the U.S. government to request the communications of non-U.S. persons located outside of the United States for foreign intelligence purposes. The U.S. government uses section 702 to collect the content of communications through specifical \"selectors\", such as email addresses, that are associated with specific foreign intelligence targets. Because the authority is typically used to collect the content of communications, the \"electronic communications service providers\" asked to comply with section 702 are typically email providers or other providers with access to the content of communications.",
 													"marks": [],
 													"content": null
 												}
@@ -1026,7 +1067,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "As noted in our transparency report, Cloudflare does not generally have access to this type of traditional customer content. In addition, Cloudflare has had a ",
+													"value": "As noted in our transparency report, Cloudflare does not have access to this type of traditional customer content for Cloudflare's core services In addition, Cloudflare has had a ",
 													"marks": [],
 													"content": null
 												},
@@ -1057,28 +1098,17 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " that we have never provided any government a feed of our customers' content transiting our network and that we would exhaust all legal remedies if we were asked to do so in order to protect our customers from what we believe are illegal or unconstitutional requests.",
+													"value": " that we have never provided any government a feed of our customers' content transiting our network and that we would exhaust all legal remedies if we were asked to do so in order to protect our customers from what we believe are illegal or unconstitutional requests\n\n",
 													"marks": [],
 													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
+												},
 												{
 													"nodeType": "text",
 													"data": {
 														"target": null,
 														"uri": null
 													},
-													"value": "Executive Order 12333.",
+													"value": "Executive Order 12333",
 													"marks": [
 														{
 															"type": "bold"
@@ -1092,7 +1122,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " Executive Order 12333 governs U.S. intelligence agencies' foreign intelligence collection targeting non-U.S. persons outside the United States. Executive Order 12333 does not have provisions to compel the assistance of U.S. companies.",
+													"value": ". Executive Order 12333 governs U.S. intelligence agencies' foreign intelligence collection targeting non-U.S. persons outside the United States. Executive Order 12333 does not have provisions to compel the assistance of U.S. companies.",
 													"marks": [],
 													"content": null
 												}
@@ -1113,7 +1143,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Cloudflare has a longstanding commitment to require legal process before providing any government entity with access to any customer data outside of an emergency. We therefore would not comply with voluntary requests for data under Executive Order 12333. In addition, Cloudflare has been a leader in encouraging additional security for data in transit, for both content and metadata, to prevent personal data from any type of prying eyes. In 2014, for example, we launched ",
+													"value": "Cloudflare has a longstanding commitment to require legal process before providing any government entity with access to any customer data outside of an emergency. We therefore would not comply with voluntary requests for data under Executive Order 12333. In addition, Cloudflare has been a leader in encouraging additional security for data in transit, for both content and metadata, to prevent personal data from any type of prying eyes. In 2014, for example, we launched ",
 													"marks": [],
 													"content": null
 												},
@@ -1144,7 +1174,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": ", making encryption — something that had been expensive and difficult — free for all Cloudflare customers. The week we launched it, we doubled the size of the encrypted web. Because of an increasing number of laws attempting to target encryption, we have even ",
+													"value": ", making encryption — something that had been expensive and difficult — free for all Cloudflare customers. The week we launched it, we doubled the size of the encrypted web. Because of an increasing number of laws attempting to target encryption, we have even ",
 													"marks": [],
 													"content": null
 												},
@@ -1175,7 +1205,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " that we have never weakened, compromised, or subverted any of our encryption at the request of a government or other third party.",
+													"value": " that we have never weakened, compromised, or subverted any of our encryption at the request of a government or other third party.\n",
 													"marks": [],
 													"content": null
 												}
@@ -1206,28 +1236,42 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Cloudflare already has in place many of the additional safeguards recommended by the European Data Protection Board (EDPB) in its draft guidance (Recommendations 01/2020 on measures that supplement transfer tools to ensure compliance with the EU level of protection of personal data adopted on 10 Nov 2020), which are still under consultation until the 21st December 2020.",
+													"value": "Cloudflare already has in place many of the additional safeguards recommended by the EDPB in its guidance (Recommendations 01/2020 on measures that supplement transfer tools to ensure compliance with the EU level of protection of personal data adopted on 18 June 2021). Cloudflare has a strong commitment to transparency and accountability regarding processing of personal data as described above, and we have already updated our DPA to make a number of our commitments contractually binding. We also continue to publish our ",
 													"marks": [],
 													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/transparency"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "Transparency Report",
+															"marks": [
+																{
+																	"type": "underline"
+																}
+															],
+															"content": null
+														}
+													]
+												},
 												{
 													"nodeType": "text",
 													"data": {
 														"target": null,
 														"uri": null
 													},
-													"value": "Cloudflare has a strong commitment to transparency and accountability regarding processing of personal data as described above, and we have already updated our DPA to make a number of our commitments contractually binding. We also continue to publish our transparency report, which can be viewed here: https://www.cloudflare.com/en-gb/transparency/. And last but not least, we have in place robust security measures and encryption protocols, which can be viewed in Annex 2 of our updated DPA. Cloudflare is committed to our European customers, and we look forward to receiving final guidance from the EDPB following the consultation period.",
+													"value": ". Last but not least, we have in place robust security measures and encryption protocols, which can be viewed in Annex 2 of our DPA.",
 													"marks": [],
 													"content": null
 												}
@@ -1249,27 +1293,6 @@
 														"uri": null
 													},
 													"value": "As always, we are continuing to monitor ongoing developments in this space and will ensure our ongoing compliance with the EU GDPR Articles 44 and 46. During this time, we will continue to follow our commitments under existing DPAs and our commitments under the current SCCs.",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "",
 													"marks": [],
 													"content": null
 												}
@@ -1300,7 +1323,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "On October 5, 2020, we updated our ",
+													"value": "Our ",
 													"marks": [],
 													"content": null
 												},
@@ -1331,7 +1354,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " to incorporate our ",
+													"value": " incorporates our ",
 													"marks": [],
 													"content": null
 												},
@@ -1339,7 +1362,7 @@
 													"nodeType": "hyperlink",
 													"data": {
 														"target": null,
-														"uri": "https://www.cloudflare.com/resources/assets/slt3lc6tev37/1M1j5uuFDuLTYiZJJDPBag/bda8d591447971b3df2bccf5aa4e0916/Customer_DPA_v.3_1_-_en_1_Oct_2020.pdf"
+														"uri": "https://www.cloudflare.com/cloudflare-customer-dpa"
 													},
 													"value": null,
 													"marks": null,
@@ -1350,7 +1373,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "updated standard DPA",
+															"value": "standard DPA",
 															"marks": [],
 															"content": null
 														}
@@ -1362,7 +1385,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " by reference. And to the extent the personal data we process on behalf of a self-serve customer is governed by the GDPR, then our DPA incorporates the EU standard contractual clauses for this data. So no action is required to ensure that the standard contractual clauses are in place. Our updated DPA also incorporates the additional safeguards described above.",
+													"value": " by reference. And to the extent the personal data we process on behalf of a self-serve customer is governed by the GDPR, then our DPA incorporates the EU standard contractual clauses for this data. Therefore, no action is required to ensure that the standard contractual clauses are in place. Our DPA also incorporates the additional safeguards described above.",
 													"marks": [],
 													"content": null
 												}
@@ -1383,28 +1406,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "While the DPA is incorporated by reference, we have also made our updated DPA available in the customer dashboard. When you are in your Dashboard, please go to the Configurations tab, and then Preferences.",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "",
+													"value": "While the DPA is incorporated by reference, we have also made our standard DPA available in the customer dashboard. When you are in your Dashboard, please go to the Configurations tab, and then Preferences to view and accept the DPA.",
 													"marks": [],
 													"content": null
 												}
@@ -1435,7 +1437,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "On October 1, 2020, we updated our standard ",
+													"value": "Our standard ",
 													"marks": [],
 													"content": null
 												},
@@ -1466,7 +1468,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " (ESA) to incorporate our ",
+													"value": " (\"ESA\")  incorporates our ",
 													"marks": [],
 													"content": null
 												},
@@ -1474,7 +1476,7 @@
 													"nodeType": "hyperlink",
 													"data": {
 														"target": null,
-														"uri": "https://www.cloudflare.com/resources/assets/slt3lc6tev37/1M1j5uuFDuLTYiZJJDPBag/bda8d591447971b3df2bccf5aa4e0916/Customer_DPA_v.3_1_-_en_1_Oct_2020.pdf"
+														"uri": "https://www.cloudflare.com/cloudflare-customer-dpa"
 													},
 													"value": null,
 													"marks": null,
@@ -1485,7 +1487,7 @@
 																"target": null,
 																"uri": null
 															},
-															"value": "updated standard DPA",
+															"value": "standard DPA",
 															"marks": [],
 															"content": null
 														}
@@ -1497,38 +1499,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " by reference. Enterprise customers are subject to our standard ESA if they entered into the ESA with Cloudflare on or after August 8, 2019 and do not have a custom agreement. No Action is required for these customers as the updated DPA is incorporated by reference into our ESA, and to the extent the personal data we process on behalf of the customer is governed by the GDPR, then our DPA incorporates the EU standard contractual clauses. Our updated DPA also incorporates the additional safeguards described above. Our updated standard DPA is available ",
-													"marks": [],
-													"content": null
-												},
-												{
-													"nodeType": "hyperlink",
-													"data": {
-														"target": null,
-														"uri": "https://www.cloudflare.com/resources/assets/slt3lc6tev37/1M1j5uuFDuLTYiZJJDPBag/bda8d591447971b3df2bccf5aa4e0916/Customer_DPA_v.3_1_-_en_1_Oct_2020.pdf"
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "text",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": "here",
-															"marks": [],
-															"content": null
-														}
-													]
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": ".",
+													"value": " by reference. Therefore, no action is required for these customers. To the extent the personal data we process on behalf of the customer is governed by the GDPR, our DPA incorporates the EU standard contractual clauses. Our standard DPA also incorporates the additional safeguards described above.",
 													"marks": [],
 													"content": null
 												}
@@ -1549,7 +1520,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Enterprise customers on older versions of our ESA may already have the EU standard contractual clauses in place with Cloudflare. If they do, then no action is needed but they can also agree to our updated DPA available in the customer dashboard, as it includes our additional safeguard language. Customers who were previously relying on Cloudflare's EU-U.S. and Swiss-US Privacy Shield certifications should agree to our updated DPA available in the customer dashboard. When you are in your Dashboard, please go to the Configurations tab, and then Preferences. Please review and accept the DPA there.",
+													"value": "Enterprise customers are subject to our standard ESA if they entered into the ESA with Cloudflare on or after August 8, 2019 and do not have a custom agreement. Enterprise customers on older versions of our ESA or on custom ESAs or custom DPAs may not have the 2021 EU standard contractual clauses in place, however. We are reaching out to these customers to ensure they have the most up-to-date contract language in place. These Customers may agree to our standard DPA available in the customer dashboard, as it includes the 2021 EU standard contractual clauses and our additional safeguard language. Customers who were previously relying on Cloudflare's EU-U.S. and Swiss-US Privacy Shield certifications should agree to our updated DPA available in the customer dashboard as well. When you are in your Dashboard, please go to the Configurations tab, and then Preferences. Please review and accept the DPA there.",
 													"marks": [],
 													"content": null
 												}
@@ -1570,7 +1541,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Enterprise customers who have a custom agreement with Cloudflare should contact their Customer Success Manager if they have questions about their DPA.",
+													"value": "Enterprise customers may contact their Customer Success Manager with any questions about their DPA.",
 													"marks": [],
 													"content": null
 												}
@@ -1601,28 +1572,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "We are carefully reviewing the European Commission's new draft new Standard Contractual Clauses (SCCs), and we look forward to an approved set of SCCs following the consultation period. Once approved, the new SCCs contain a sunsetting provision of one year to allow for implementation, and we will move to implement the new SCCs for our customers during that timeframe.",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "",
+													"value": "We have incorporated the European Commission's new SCCs released on 4th June 2021 into all new customer contracts subject to the GDPR. The new SCCs contain a sunsetting provision of 18 months to allow for implementation, and we will move to implement the new SCCs for our current customers during that time frame.",
 													"marks": [],
 													"content": null
 												}
@@ -1727,30 +1677,45 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": " Cloudflare has data centers in over 200 cities across 100+ countries. Regional Services together with our Geo Key Manager solution allows Customers to pick the data center locations where TLS keys are stored and TLS termination takes place. Traffic is ingested globally, applying L3/L4 DDoS mitigations, while security, performance, and reliability functions (such as, WAF, CDN, DDoS mitigation, etc.) are serviced at designated Cloudflare data centers only. With Regional Services, some ",
+																	"value": " Cloudflare has data centers in over 200 cities across 100+ countries. Regional Services together with our Geo Key Manager solution allows Customers to pick the data center locations where TLS keys are stored and TLS termination takes place. Traffic is ingested globally, applying L3/L4 DDoS mitigations, while security, performance, and reliability functions (such as, WAF, CDN, DDoS mitigation, etc.) are serviced at designated Cloudflare data centers only.",
 																	"marks": [],
 																	"content": null
-																},
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
 																{
-																	"nodeType": "hyperlink",
+																	"nodeType": "text",
 																	"data": {
 																		"target": null,
-																		"uri": "https://developers.cloudflare.com/logs/log-fields"
+																		"uri": null
 																	},
-																	"value": null,
-																	"marks": null,
-																	"content": [
+																	"value": "Metadata Boundary",
+																	"marks": [
 																		{
-																			"nodeType": "text",
-																			"data": {
-																				"target": null,
-																				"uri": null
-																			},
-																			"value": "metadata",
-																			"marks": [],
-																			"content": null
+																			"type": "bold"
 																		}
-																	]
+																	],
+																	"content": null
 																},
 																{
 																	"nodeType": "text",
@@ -1758,7 +1723,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": " will still be transmitted to our core data center in Portland, Oregon. However, the only Personal Data we collect in these logs are IP addresses.",
+																	"value": ". The Customer Metadata Boundary ensures that the end user traffic metadata that can identify a customer stays in the European Union. This includes all the logs and analytics that a customer can see. This is done by ensuring that the end user metadata that can identify a customer flows through a single service at our edge, before being forwarded to one of our core data centers. When the Metadata Boundary is enabled for a customer, our Edge ensures that any log message that identifies that customer (that is, contains that customer's Account ID) is not sent outside the EU. It will only be sent to our core data center in the EU.",
 																	"marks": [],
 																	"content": null
 																}
@@ -1857,119 +1822,6 @@
 															]
 														}
 													]
-												},
-												{
-													"nodeType": "list-item",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "paragraph",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "Edge Log Delivery. ",
-																	"marks": [
-																		{
-																			"type": "bold"
-																		}
-																	],
-																	"content": null
-																},
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "Customers can send logs directly from the edge to their partner of choice—for example, an Azure storage bucket in their preferred region, or an instance of Splunk that runs in an on-premise data center. With this option, customers can still get their complete logs in their preferred region, without these logs first flowing through either of our US or EU core data centers.",
-																	"marks": [],
-																	"content": null
-																}
-															]
-														}
-													]
-												},
-												{
-													"nodeType": "list-item",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "paragraph",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "Jurisdiction Restrictions for Workers Durable Objects. ",
-																	"marks": [
-																		{
-																			"type": "bold"
-																		}
-																	],
-																	"content": null
-																},
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "Durable Objects are a serverless storage and coordination technology that let developers manage state without infrastructure overhead. Jurisdiction Restrictions ensure processing and storage of that data complies with local regulations - while still avoiding any infrastructure configuration by developers. This feature helps development teams to easily build their own compliant, global applications.",
-																	"marks": [],
-																	"content": null
-																}
-															]
-														}
-													]
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "",
-													"marks": [],
-													"content": null
 												}
 											]
 										},
@@ -2019,7 +1871,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "As outlined in our ",
+													"value": "As outlined in our ",
 													"marks": [],
 													"content": null
 												},
@@ -2071,7 +1923,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "To ensure that our customers have the opportunity to enforce their rights, it is Cloudflare's policy to notify our customers of a subpoena or other legal process requesting their information before disclosure of that information, whether the legal process comes from the government or private parties involved in civil litigation, unless legally prohibited. Specifically, our ",
+													"value": "To ensure that our customers have the opportunity to enforce their rights, it is Cloudflare's policy to notify our customers of a subpoena or other legal process requesting their information before disclosure of that information, whether the legal process comes from the government or private parties involved in civil litigation, unless legally prohibited. Specifically, our ",
 													"marks": [],
 													"content": null
 												},
@@ -2079,7 +1931,7 @@
 													"nodeType": "hyperlink",
 													"data": {
 														"target": null,
-														"uri": "https://www.cloudflare.com/resources/assets/slt3lc6tev37/1M1j5uuFDuLTYiZJJDPBag/bda8d591447971b3df2bccf5aa4e0916/Customer_DPA_v.3_1_-_en_1_Oct_2020.pdf"
+														"uri": "https://www.cloudflare.com/cloudflare-customer-dpa"
 													},
 													"value": null,
 													"marks": null,
@@ -2102,7 +1954,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " commits that unless legally prohibited, we will notify Customers if we are able to identify that third-party legal process requesting personal data we process on behalf of that Customer raises a conflict of law — such as where the personal data is governed by the GDPR. Customers notified of a pending legal request for their personal data can seek to intervene to prevent the disclosure of personal data.",
+													"value": " commits that unless legally prohibited, we will notify Customers if we are able to identify that third-party legal process requesting personal data we process on behalf of that Customer raises a conflict of law — such as where the personal data is governed by the GDPR. Customers notified of a pending legal request for their personal data can seek to intervene to prevent the disclosure of personal data.",
 													"marks": [],
 													"content": null
 												}
@@ -2123,7 +1975,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "In addition, U.S. law provided mechanisms for companies to challenge orders that pose potential conflicts of law, such as a legal request for data subject to GDPR. The Clarifying Lawful Overseas Use of Data (CLOUD) Act, for example, provides mechanisms for a provider to petition a court to quash or modify a legal request that poses such a conflict of law. That process also allows a provider to disclose the existence of the request to a foreign government whose citizen is affected, if that government has signed a CLOUD Act agreement with the United States. Cloudflare has committed to legally challenge any orders that pose such a conflict of law. To date, we have received no orders that we have identified as posing such a conflict.",
+													"value": "In addition, U.S. law provides mechanisms for companies to challenge orders that pose potential conflicts of law, such as a legal request for data subject to GDPR. The CLOUD Act, for example, provides mechanisms for a provider to petition a court to quash or modify a legal request that poses such a conflict of law. That process also allows a provider to disclose the existence of the request to a foreign government whose citizen is affected, if that government has signed a CLOUD Act agreement with the United States. Cloudflare has committed to legally challenge any orders that pose such a conflict of law. To date, we have received no orders that we have identified as posing such a conflict.",
 													"marks": [],
 													"content": null
 												}
@@ -2135,7 +1987,7 @@
 							{
 								"contentTypeId": "elementRichText",
 								"contentfulId": "2ooKhRVlsVtO9BWdeaisoG",
-								"title": "What has Cloudflare done to prepare for handling EU personal data prior to Brexit?",
+								"title": "How is Cloudflare dealing with cross -border transfers to and from the UK? ",
 								"column": {
 									"nodeType": "document",
 									"content": [
@@ -2154,7 +2006,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "We have been paying close attention to the data protection discussions surrounding Brexit and the UK leaving the European Union effective from 1 January 2021, and we have taken steps to ensure we are prepared for the UK adoption of the GDPR into local legislation. Cloudflare will continue to utilize the SCCs mechanism, which are included in our standard DPA to transfer personal data outside the UK and EEA. Please see our instructions above for ensuring you have the appropriate DPA in place. We are continuing to monitor ongoing developments in this space and will ensure our ongoing compliance with UK and global data protection regulations.",
+													"value": "We have been paying close attention to the changes the UK is making in the data protection area since it left the European Union. Cloudflare will continue to utilize the EU SCCs mechanism coupled with the UK data transfer addendum, which are included in our standard DPA to transfer personal data outside the UK and EEA. Please see our instructions above for ensuring you have the appropriate DPA in place. We are continuing to monitor ongoing developments in this space and will ensure our ongoing compliance with UK and global data protection regulations.",
 													"marks": [],
 													"content": null
 												}
