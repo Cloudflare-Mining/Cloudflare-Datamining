@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.9.2
+
+### Patch Changes
+
+- 092101d86f: Fix for Select component compatibility
+
 ## 1.9.1
 
 ### Patch Changes
