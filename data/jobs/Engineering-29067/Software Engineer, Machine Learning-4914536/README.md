@@ -5,29 +5,33 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>What You’ll Do</strong></p>
-<p>Ensuring the privacy of personal information is core to Cloudflare’s mission to help build a better Internet, and we’re looking for an experienced privacy attorney to Cloudflare navigate the complicated challenges of processing personal data amid an ever-changing regulatory landscape. Our legal team helps the company deal with complex matters by anticipating complications and distractions, and guiding the company around those obstacles. Our new privacy counsel team member will help foster our unique corporate philosophy and approach, in which the security and privacy of our customers’ data are paramount. We are looking for an exceptionally talented, energetic and friendly privacy attorney to join our legal team based in Lisbon, Portugal. This position is not available for remote work. You must be based in, or willing to relocate to one of these locations. This role is ideal for someone who is a proactive self-starter and strategic thinker, who has a thirst for knowledge and continued growth, all while working as part of a great team. This position reports to Cloudflare’s Chief Privacy Officer. As part of the job, you will:&nbsp;</p>
+<p><strong>About The Team</strong></p>
+<p><span style="font-weight: 400;">We build security products for our customers and work mostly in Go and Rust. One of our challenges is developing and deploying machine learning models that can withstand a huge scale of 50 million peak requests per second. Our flagship Machine Learning products are </span><a href="https://blog.cloudflare.com/data-generation-and-sampling-strategies/"><span style="font-weight: 400;">WAF Attack Score</span></a><span style="font-weight: 400;"> and </span><a href="https://blog.cloudflare.com/detecting-magecart-style-attacks-for-pageshield/"><span style="font-weight: 400;">Page Shield ML</span></a><span style="font-weight: 400;">.&nbsp;</span></p>
+<p><span style="font-weight: 400;">Our Software Engineers with a focus on Machine Learning work with Data Scientists, Product Managers and Security Analysts to develop and deploy ML algorithms which aim to protect customers against application and network vulnerabilities (at L3 and L7), by analyzing data passing through our network. We also build systems to help customers understand this data themselves.</span><br><br></p>
+<p><strong>What you'll do</strong></p>
+<p><span style="font-weight: 400;">We are seeking an experienced Software Engineer with a focus on Machine Learning to join our team. The successful candidate will work on designing, developing, and implementing Machine Learning algorithms and models to deploy scalable Machine Learning models. This is a hands-on position where the candidate will have the opportunity to work in our security portfolio that includes the Web Application Firewall (WAF) Machine Learning products to build industry leading unique solutions. The candidate should be experienced in developing high-performance and enterprise-scale services and have a proven track record of delivering performance and maintaining operational stability.</span></p>
 <ul>
-	<li>Serve as a subject matter expert on global data protection laws, with an emphasis on the EU General Data Protection Regulation, and work collaboratively across multiple functions to advise on the impact of data protection laws or changes to such laws on Cloudflare’s business</li>
-	<li>Conduct privacy impact assessments, help maintain records of processing activities, and help manage other internal privacy compliance programs and processes to ensure we meet our obligations under those programs</li>
-	<li>Maintain playbooks and FAQ libraries for various teams to ensure they have the most current privacy guidance for communications with prospective and current customers</li>
-	<li>Conduct privacy assessments of new and existing vendors and negotiate data processing addendums and similar contractual language under GDPR, CCPA, and other global privacy laws for vendor contracts.</li>
-	<li>Respond to Data Subject Rights Requests and maintain playbooks and guidance for the Privacy and Trust &amp; Safety teams to use in responding to such requests</li>
-	<li>Support the marketing and sales teams in their outreach to customers and prospective customers and advise on obligations under the ePrivacy Directive, US CAN-SPAM, and similar national anti-spam laws</li>
-	<li>Assist product lawyers in evaluating the impact of privacy laws, regulatory guidance and enforcement actions, and other related guidelines on product features.&nbsp;</li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Collaborate with our Data Scientists to integrate and deploy scalable Machine Learning models at Cloudflare’s&nbsp; EDGE&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Collaborate with cross-functional teams to understand business requirements and identify opportunities for ML deployment</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Implement Machine Learning models in production systems and monitor their performance in real-time.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Continuously improve the performance and scalability of existing Machine Learning models.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Identify, diagnose and resolve issues in production environments</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Contribute to our MLOps Platform to ensure the platform's evolution</span></li>
 </ul>
-<p>Examples of desirable skills, knowledge and experience</p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>Qualified lawyer with 3 to 5 years of PQE and relevant legal experience counseling a global company on international privacy and data protection issues, preferably with time in-house at a technology company with established privacy compliance protocols</li>
-	<li>Expert knowledge of global privacy and data protection laws, regulations and compliance regimes at all levels, including familiarity with industry-specific regimes&nbsp;</li>
-	<li>Solution-oriented business and legal counselor with a growth mindset and strong sense of humor</li>
-	<li>Exceptional verbal and written communication, organization, leadership, and project management skills, including a strong desire and ability to make complex topics understandable for various audiences</li>
-	<li>Demonstrated ability and strong desire to effectively advise, develop relationships, and work collaboratively with stakeholders across teams to establish effective solutions efficiently and in an amenable manner</li>
-	<li>Experience prioritizing work and providing advice under deadlines</li>
-	<li>Ability to draft documents, policies, messages and anything else in a very precise manner, while still being concise and digestible for non-lawyers</li>
-	<li>Ability to interface easily with internal staff at all levels&nbsp;&nbsp;</li>
-	<li>Technical expertise and an understanding of the way that the Internet, and companies like Cloudflare, operate is a plus</li>
-	<li>Experience developing and presenting training to employees and managers is a plus</li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Demonstrable commercial software development experience in highly performant languages like Rust, Go or C++ and dynamic languages such as Python</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Proven experience in running high performance and enterprise scale services at pace and at scale whilst maintaining operational stability</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Proven ability in sustainable collaboration across cross-functional teams to define, drive and scope solutions, communicate trade offs, execute and deliver.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Demonstrated ability to deliver and listen to feedback.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Proven ability to deliver performance (what) with the right behaviors (how)</span></li>
+</ul>
+<p><strong>Bonus Points</strong></p>
+<p><span style="font-weight: 400;">These are things which the role is likely to require; we’re happy to help you learn on the job, but prior experience is beneficial</span></p>
+<ul>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Software Engineering and/or Machine Learning experience in Rust&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with deploying Deep Learning models in production systems</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with development and deployment of Natural Language Processing (NLP) applications</span></li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
