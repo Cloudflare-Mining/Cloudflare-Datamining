@@ -1,10 +1,10 @@
 {
 	"componentChunkName": "component---src-components-page-page-template-tsx",
-	"path": "/products/zero-trust/gateway/",
+	"path": "/products/zero-trust/browser-isolation/",
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "[ZT PMM] Zero Trust - Gateway Product Page (Dec '22 Test)",
+				"pageName": "[ZT PMM] Zero Trust - Browser Isolation Product Page (Dec '22 Test)",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
@@ -32,33 +32,37 @@
 					"elGR": null,
 					"nbNO": null
 				},
-				"relativePath": "products/zero-trust/gateway",
+				"relativePath": "products/zero-trust/browser-isolation",
 				"topNavOptions": "custom",
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
 				"metaTags": {
-					"metaTitle": "Secure Web Gateway | Threat Protection",
-					"metaDescription": "Filter, inspect, and isolate Internet traffic with Cloudflare's Secure Web Gateway (SWG). Block ransomware, phishing, and other malware. Discover how.",
+					"metaTitle": "Browser Isolation | Protect Users and Data",
+					"metaDescription": "Learn how Cloudflare's Remote Browser Isolation (RBI) secures data and users. Protect against zero-day threats. Deploy with or without a device client.",
 					"twitterCustomImage": {
 						"file": {
-							"publicURL": "[path]/teams-gateway_1.svg"
+							"publicURL": "[path]/twitter-shared-link.png"
 						}
 					},
 					"metaImage": {
 						"file": {
-							"publicURL": "[path]/teams-gateway_1.svg"
+							"publicURL": "[path]/twitter-shared-link.png"
 						}
 					},
-					"facebookCustomImage": null
+					"facebookCustomImage": {
+						"file": {
+							"publicURL": "[path]/facebook-link-image.png"
+						}
+					}
 				},
-				"contentfulId": "40NoKI3sukuJI1rmfqN3tT",
+				"contentfulId": "yIEpGRuNKpdJxw7SP6Iky",
 				"contentTypeId": "page",
 				"promotionalBanner": {
 					"pillText": "Learn",
-					"linkText": "What is a SWG?",
-					"linkUrl": "https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway/",
-					"desktopText": "What is a Secure Web Gateway (SWG) and what does it do? Read more in our Learning Center."
+					"linkText": "What is RBI?",
+					"linkUrl": "https://www.cloudflare.com/learning/access-management/what-is-browser-isolation/",
+					"desktopText": "What is Remote Browser Isolation (RBI) and what does it do? Read more in our Learning Center."
 				},
 				"psaBanner": null,
 				"customTopNav": [
@@ -5782,11 +5786,11 @@
 						]
 					},
 					{
-						"contentfulId": "6g4tBNrADMTlD15XIbk2kZ",
+						"contentfulId": "2XdXQAwMyA1QNO0LZtJ1GO",
 						"contentTypeId": "bladeHeroAnimation",
-						"title": "Cloudflare Gateway",
-						"subtitle": "Internet-native Secure Web Gateway (SWG)",
-						"copy": "- Defend against ransomware, phishing, and other threats for faster, safer Internet browsing\n- Reduce cyber risk by tapping into Cloudflare's massive Internet traffic visibility and threat intelligence pool\n- Build custom HTTP, DNS, and network filtering policies across remote and office users\n",
+						"title": "Cloudflare Browser Isolation",
+						"subtitle": "Internet-native Remote Browser Isolation (RBI)",
+						"copy": "- Layer additional threat defense and data protection controls across browsing activities\n- Insulate local devices from malware by running all browser code on Cloudflare's global network\n- Deliver a lightning-fast browsing experience for end users \n",
 						"buttonColor": "orange",
 						"buttonColor2": "orange-outline",
 						"buttonText1": "Talk to an Expert",
@@ -5801,8 +5805,8 @@
 						"bladeBorder": "none",
 						"htmlId": null,
 						"textColor": "black",
-						"includeVideo": false,
-						"streamVideoId": null,
+						"includeVideo": true,
+						"streamVideoId": "d027438723a2330b8808deda37686cb4",
 						"streamOptions": [
 							"controls",
 							"captions"
@@ -5816,10 +5820,10 @@
 						"sectionPadding": "tile--no-top-padding",
 						"streamPosterAssetFile": null,
 						"streamPoster": null,
-						"imageSize": "Regular",
-						"imagePosition": false,
+						"imageSize": "Large",
+						"imagePosition": null,
 						"leftLinkUrl": null,
-						"leftLink": "[Try it out today and get started with our Free plan!](https://dash.cloudflare.com/sign-up/teams)",
+						"leftLink": "[Try it out today! Experience a remote browser for yourself.](https://www.cloudflare.com/products/zero-trust/browser-isolation/experience/)",
 						"leftLinkLoggedIn": null,
 						"leftLinkOptions": "hide",
 						"backgroundColor": "white",
@@ -5827,29 +5831,16 @@
 						"backgroundAssetFile": null,
 						"imageLayout": null,
 						"image": null,
-						"imageAssetFile": {
-							"id": "77a5a8c0-ce55-5ccc-9822-b635e040d4c8",
-							"altText": null,
-							"title": "DNS filtering hero image",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "[path]/cloudflare-dns-filtering-spot-illustration.svg"
-								}
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						}
+						"imageAssetFile": null
 					},
 					{
-						"contentfulId": "3TN9m8xHrXfF8p9hgMXJY8",
+						"contentfulId": "6uQpZZlYu3WLWSQXbYgbjg",
 						"backgroundColor": "light-blue",
 						"contentTypeId": "bladeFourFeatures",
 						"htmlId": null,
 						"copy": null,
 						"title": null,
-						"subtitle": "Benefits of Cloudflare Gateway",
+						"subtitle": "Benefits of Cloudflare Browser Isolation",
 						"bladeStyle": null,
 						"bladeBorder": "none",
 						"sectionPadding": null,
@@ -5859,10 +5850,10 @@
 						"features": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "2isNhMY6GjZCXGNgLMBJPh",
-								"title": "Accelerate Internet access",
+								"contentfulId": "2RnQkUiMFoJnKeGJlDmlAu",
+								"title": "No performance sacrifice",
 								"titleSize": null,
-								"description": "Improve team productivity by enforcing security closer to end users. No more backhauling user requests to centralized scrubbing centers for inspections.",
+								"description": "Improve team productivity by delivering a fast, secure, and responsive user experience that feels just like local browsing.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -5893,10 +5884,10 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "23fmYOLHvHxlCQPUfQdxLm",
-								"title": "Block threats, known and unknown",
+								"contentfulId": "45Fad7QmD8gM12WD60r1Wb",
+								"title": "Proactively mitigate threats",
 								"titleSize": null,
-								"description": "Reduce cyber risk by blocking access to known bad, risky, or unwanted destinations identified via Cloudflare's unique visibility across Internet traffic.",
+								"description": "Reduce cyber risk by running browser code far away from local devices, preventing infection across known malicious, risky, and unknown sites.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -5927,29 +5918,29 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "2hMUyL9K1GGMvdQ1zkDTIt",
-								"title": "Monitor traffic across your network",
+								"contentfulId": "2UJCbTfEdt5EHUp22GjlrN",
+								"title": "Isolate within context",
 								"titleSize": null,
-								"description": "Improve tech efficiency by stacking in-line Zero Trust services and providing holistic visiblity into your Internet traffic across users, devices, and locations.",
+								"description": "Improve tech efficiency by isolating resources conditionally - per app, per policy, for suspicious sites only, or with additional data loss controls.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
 								"openLinkInNewTab": null,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "f21a895b-0eae-52ee-8be4-07c61337b5e5",
-									"altText": "Eyeball blue",
-									"title": "Eyeball blue",
+									"id": "953cbaaa-193d-59ff-9633-351fbea8ef99",
+									"altText": "Cloudflare browser blue",
+									"title": "Cloudflare browser blue",
 									"activeAsset": "Brandfolder Asset",
 									"locale": "en-US",
 									"contentfulAsset": null,
 									"brandfolderAsset": {
-										"size": 2050,
+										"size": 1201,
 										"height": 192,
 										"width": 192,
-										"filename": "eyeball-blue.svg",
+										"filename": "cloudflare-browser-blue.svg",
 										"file": {
-											"publicURL": "[path]/eyeball-blue.svg"
+											"publicURL": "[path]/cloudflare-browser-blue.svg"
 										}
 									},
 									"brandfolderAssetMobile": null
@@ -6014,9 +6005,9 @@
 						"togglesTo": null
 					},
 					{
-						"contentfulId": "3INum3NIMQCUZI6xqJfL6z",
-						"title": "Top use cases for Gateway",
-						"copy": "- __Protect against phishing and ransomware__ - Thwart attacks with proactive filtering and inspection policies across comprehensive security categories.\n- __Secure distributed remote offices__ - Protect office users first with DNS filtering and later, more comprehensive inspections across all locations.\n- __Upgrade struggling SWG hardware__ - Send L4-L7 traffic through Cloudflare's global network and replace legacy appliances that fail to scale.\n",
+						"contentfulId": "2w49KXMVrHaRjHcqsmbPes",
+						"title": "Top use cases for RBI",
+						"copy": "- __Protect against ransomware__ - Isolate browsing to halt ransomware attempts before they can spread or infect an internal network.\n- __Thwart phishing attacks__ - Accidents happen, and people click. Help mitigate phishing impact by opening suspicious email links in an isolated browser.\n- __Secure contractor access__ - Protect data that third-party users access on unmanaged devices. Isolate apps via a hyperlink without requiring software for end users. ",
 						"toggleText": null,
 						"button": null,
 						"learnMoreUrl": "/solutions/secure-hybrid-work/",
@@ -6039,25 +6030,17 @@
 						"streamPosterAssetFile": null,
 						"image": null,
 						"imageAssetFile": {
-							"id": "09273f95-b4b2-55de-b768-4f65bc4b388a",
-							"altText": "teams-gateway-safe-harbor",
-							"title": "teams-gateway-safe-harbor",
-							"activeAsset": "Brandfolder Asset",
+							"id": "8ab1a5b8-1042-5f34-9609-75ce9ff40ba1",
+							"altText": null,
+							"title": "Browser isolation - hero image",
+							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "[path]/teams-gateway-safe-harbor.svg"
+									"publicURL": "[path]/Browser_Isolation_-_hero_image.png"
 								}
 							},
-							"brandfolderAsset": {
-								"size": 11925,
-								"height": 3564,
-								"width": 3564,
-								"filename": "teams-gateway-safe-harbor-spot-illustration.svg",
-								"file": {
-									"publicURL": "[path]/teams-gateway-safe-harbor-spot-illustration.svg"
-								}
-							},
+							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
 						},
 						"featureList": null,
@@ -6074,13 +6057,13 @@
 						"togglesTo": null
 					},
 					{
-						"contentfulId": "1ua7APf4hVz1UDfD85ukVn",
+						"contentfulId": "1Mwo7Uj3zvH0h9o7D3shrG",
 						"contentTypeId": "bladePlansMatrix",
 						"hasFilter": false,
 						"htmlId": null,
 						"filterLabel": null,
 						"showInModal": false,
-						"title": "Threat protection features across full Zero Trust platform",
+						"title": "Threat and data protection features across full Zero Trust platform",
 						"modalButtonText": null,
 						"mobileMode": "Tabbed",
 						"sectionPadding": null,
@@ -7003,6 +6986,347 @@
 												"contentTypeId": "planElementFeatureValueText",
 												"contentfulId": "4owulEI9CFj6amYdoEa4xT",
 												"textValue": "Add-on",
+												"plan": {
+													"contentfulId": "2tlpulcOHKX0CYjflULEIH",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Zero Trust Q4 - Contract",
+													"name": "Contract Plan",
+													"description": "Best for organizations that want security transformation backed by maximum support, visibility, connectivity and interoperability.",
+													"pricingDescription": "Billed annually",
+													"price": null,
+													"currency": null,
+													"customPricingText": "annual custom price per user",
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									}
+								]
+							},
+							{
+								"contentfulId": "4UBvVLVEn0iXOxxkNjYnMJ",
+								"contentTypeId": "planElementFeaturesGroup",
+								"name": "Data Protection",
+								"features": [
+									{
+										"contentfulId": "TNSZm9L3RkAfaF5mYGeEu",
+										"contentTypeId": "planElementFeatures",
+										"name": "Zero Trust access to mitigate data leakage (via ZTNA)",
+										"description": "Set least-privilege policies per application to ensure users only access data they need. ",
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "5IsYTlNZoyZXe9fLjOlVP2",
+												"value": true,
+												"plan": {
+													"contentfulId": "kFF1UZHLyJ67qlqJFQPqr",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Zero Trust Q4 - Free Plan",
+													"name": "Free Plan",
+													"description": "Essential security controls to keep employees and apps protected online. Best for teams under 50 users, or proof-of-concept tests.",
+													"pricingDescription": "Add-ons billed monthly",
+													"price": 0,
+													"currency": "$",
+													"customPricingText": "$0 forever",
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": "monthly",
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "4jx090thS6z7YJ0aeVaa5K",
+												"value": true,
+												"plan": {
+													"contentfulId": "3C1bIOtMfHrC9NVKhAmiYw",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Zero Trust Q4 - Pay as you go",
+													"name": "Pay-as-you-go",
+													"description": "Protects access to anything on your network and the Internet. Best for teams over 50 users that do not require enterprise support services.",
+													"pricingDescription": "Billed monthly",
+													"price": 7,
+													"currency": "$",
+													"customPricingText": "$7/user/month",
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": "monthly",
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "3p7RszoXcXC9o7gXlEjc5b",
+												"value": true,
+												"plan": {
+													"contentfulId": "2tlpulcOHKX0CYjflULEIH",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Zero Trust Q4 - Contract",
+													"name": "Contract Plan",
+													"description": "Best for organizations that want security transformation backed by maximum support, visibility, connectivity and interoperability.",
+													"pricingDescription": "Billed annually",
+													"price": null,
+													"currency": null,
+													"customPricingText": "annual custom price per user",
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
+									{
+										"contentfulId": "6rt9W9zm8oesMCT9HWk05S",
+										"contentTypeId": "planElementFeatures",
+										"name": "File upload / download controls based on Mime type (via SWG)",
+										"description": "Allow or block uploads / downloads of files based on Mime type.",
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "5IsYTlNZoyZXe9fLjOlVP2",
+												"value": true,
+												"plan": {
+													"contentfulId": "kFF1UZHLyJ67qlqJFQPqr",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Zero Trust Q4 - Free Plan",
+													"name": "Free Plan",
+													"description": "Essential security controls to keep employees and apps protected online. Best for teams under 50 users, or proof-of-concept tests.",
+													"pricingDescription": "Add-ons billed monthly",
+													"price": 0,
+													"currency": "$",
+													"customPricingText": "$0 forever",
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": "monthly",
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "4jx090thS6z7YJ0aeVaa5K",
+												"value": true,
+												"plan": {
+													"contentfulId": "3C1bIOtMfHrC9NVKhAmiYw",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Zero Trust Q4 - Pay as you go",
+													"name": "Pay-as-you-go",
+													"description": "Protects access to anything on your network and the Internet. Best for teams over 50 users that do not require enterprise support services.",
+													"pricingDescription": "Billed monthly",
+													"price": 7,
+													"currency": "$",
+													"customPricingText": "$7/user/month",
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": "monthly",
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "3p7RszoXcXC9o7gXlEjc5b",
+												"value": true,
+												"plan": {
+													"contentfulId": "2tlpulcOHKX0CYjflULEIH",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Zero Trust Q4 - Contract",
+													"name": "Contract Plan",
+													"description": "Best for organizations that want security transformation backed by maximum support, visibility, connectivity and interoperability.",
+													"pricingDescription": "Billed annually",
+													"price": null,
+													"currency": null,
+													"customPricingText": "annual custom price per user",
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
+									{
+										"contentfulId": "4JwnwSctNgKZNDy4W9z1tv",
+										"contentTypeId": "planElementFeatures",
+										"name": "Application and application type controls (via SWG)",
+										"description": "Allow or block traffic to specific apps or app types.",
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "5IsYTlNZoyZXe9fLjOlVP2",
+												"value": true,
+												"plan": {
+													"contentfulId": "kFF1UZHLyJ67qlqJFQPqr",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Zero Trust Q4 - Free Plan",
+													"name": "Free Plan",
+													"description": "Essential security controls to keep employees and apps protected online. Best for teams under 50 users, or proof-of-concept tests.",
+													"pricingDescription": "Add-ons billed monthly",
+													"price": 0,
+													"currency": "$",
+													"customPricingText": "$0 forever",
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": "monthly",
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "4jx090thS6z7YJ0aeVaa5K",
+												"value": true,
+												"plan": {
+													"contentfulId": "3C1bIOtMfHrC9NVKhAmiYw",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Zero Trust Q4 - Pay as you go",
+													"name": "Pay-as-you-go",
+													"description": "Protects access to anything on your network and the Internet. Best for teams over 50 users that do not require enterprise support services.",
+													"pricingDescription": "Billed monthly",
+													"price": 7,
+													"currency": "$",
+													"customPricingText": "$7/user/month",
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": "monthly",
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "3p7RszoXcXC9o7gXlEjc5b",
+												"value": true,
+												"plan": {
+													"contentfulId": "2tlpulcOHKX0CYjflULEIH",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Zero Trust Q4 - Contract",
+													"name": "Contract Plan",
+													"description": "Best for organizations that want security transformation backed by maximum support, visibility, connectivity and interoperability.",
+													"pricingDescription": "Billed annually",
+													"price": null,
+													"currency": null,
+													"customPricingText": "annual custom price per user",
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
+									{
+										"contentfulId": "4pOXf9kDL1zCi4vzqjmjBZ",
+										"contentTypeId": "planElementFeatures",
+										"name": "Controls over data interactions within a browser (via RBI)",
+										"description": "Restrict download, upload, copy/paste, keyboard input, and printing actions within isolated web pages and applications. Prevent data leakage onto local devices, and control user inputs on suspicious websites. Deploy with or without a device client.",
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "5QEAt2ESOeqT5L4gNzU0kL",
+												"textValue": "Add-on",
+												"plan": {
+													"contentfulId": "3C1bIOtMfHrC9NVKhAmiYw",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Zero Trust Q4 - Pay as you go",
+													"name": "Pay-as-you-go",
+													"description": "Protects access to anything on your network and the Internet. Best for teams over 50 users that do not require enterprise support services.",
+													"pricingDescription": "Billed monthly",
+													"price": 7,
+													"currency": "$",
+													"customPricingText": "$7/user/month",
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": "monthly",
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "3p7RszoXcXC9o7gXlEjc5b",
+												"value": true,
+												"plan": {
+													"contentfulId": "2tlpulcOHKX0CYjflULEIH",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Zero Trust Q4 - Contract",
+													"name": "Contract Plan",
+													"description": "Best for organizations that want security transformation backed by maximum support, visibility, connectivity and interoperability.",
+													"pricingDescription": "Billed annually",
+													"price": null,
+													"currency": null,
+													"customPricingText": "annual custom price per user",
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
+									{
+										"contentfulId": "7jhgtuFFSiboxD6545YPF2",
+										"contentTypeId": "planElementFeatures",
+										"name": "API-driven CASB to detect risk of data leakage from SaaS apps",
+										"description": "Add Cloudflare CASB to detect if misconfigurations in SaaS applications leak sensitive data.",
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "3p7RszoXcXC9o7gXlEjc5b",
+												"value": true,
+												"plan": {
+													"contentfulId": "2tlpulcOHKX0CYjflULEIH",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Zero Trust Q4 - Contract",
+													"name": "Contract Plan",
+													"description": "Best for organizations that want security transformation backed by maximum support, visibility, connectivity and interoperability.",
+													"pricingDescription": "Billed annually",
+													"price": null,
+													"currency": null,
+													"customPricingText": "annual custom price per user",
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": null,
+													"customPricingCta": null,
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											}
+										]
+									},
+									{
+										"contentfulId": "XtMWnY75iABtSs58LtTrB",
+										"contentTypeId": "planElementFeatures",
+										"name": "Data Loss Prevention (DLP)",
+										"description": "Inspect HTTP(S) traffic and files for the presence of sensitive data, and configure allow or block policies for the data patterns, such as Credit Card Numbers and U.S. Social Security Numbers.",
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueBoolean",
+												"contentfulId": "3p7RszoXcXC9o7gXlEjc5b",
+												"value": true,
 												"plan": {
 													"contentfulId": "2tlpulcOHKX0CYjflULEIH",
 													"contentTypeId": "planElementPlan",
@@ -11811,14 +12135,14 @@
 						"sectionPadding": null
 					},
 					{
-						"contentfulId": "ECG32KDnyqp4k0XIHQA8D",
+						"contentfulId": "sFZzRtpZe3g7aNO4h6GO2",
 						"backgroundColor": "light-blue",
 						"contentTypeId": "bladeFourFeatures",
 						"htmlId": null,
 						"copy": null,
 						"title": null,
 						"subtitle": "Why choose Cloudflare?",
-						"bladeStyle": null,
+						"bladeStyle": "Feature Blocks - 3 columns",
 						"bladeBorder": "none",
 						"sectionPadding": null,
 						"carouselSlidesToShow": null,
@@ -11827,10 +12151,10 @@
 						"features": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "6VHpBPeKoYI9he9ttlxYIY",
-								"title": "Easy setup and management",
+								"contentfulId": "4dWd5nEt64YHou2IXhBcey",
+								"title": "Easy to deploy",
 								"titleSize": null,
-								"description": "Streamline policy building and auditing security or compliance incidents with predefined security, content, and application-based categories.",
+								"description": "Set browser isolation policies with a simple drop-down action in Cloudflare's unified dashboard to reduce administrative burden.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -11861,29 +12185,29 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "7hZJRmvY0DTvbY8rjPqrXV",
-								"title": "Massive threat intelligence",
+								"contentfulId": "7fONKqvTgHwvoL1flI2Gbs",
+								"title": "Thoughtful, native integrations",
 								"titleSize": null,
-								"description": "Leverage the power of Cloudflare's DNS and HTTP telemetry and threat detection models to help stay protected from even emerging threats.",
+								"description": "Unlike other providers, Cloudflare's RBI is natively integrated with all in-line Zero Trust services to make it easier to layer and extend security controls.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
 								"openLinkInNewTab": null,
 								"icon": null,
 								"iconAssetFile": {
-									"id": "ff31bfda-5ac0-5e67-bf9e-bd602f3d81ce",
-									"altText": "Innovation intelligence blue",
-									"title": "Innovation intelligence blue",
+									"id": "af141425-00b0-562b-a8d3-5e7727ecc395",
+									"altText": "Innovation thinking blue",
+									"title": "Innovation thinking blue",
 									"activeAsset": "Brandfolder Asset",
 									"locale": "en-US",
 									"contentfulAsset": null,
 									"brandfolderAsset": {
-										"size": 4716,
+										"size": 1542,
 										"height": 192,
 										"width": 192,
-										"filename": "innovation-intelligence-blue.svg",
+										"filename": "innovation-thinking-blue.svg",
 										"file": {
-											"publicURL": "[path]/innovation-intelligence-blue.svg"
+											"publicURL": "[path]/innovation-thinking-blue.svg"
 										}
 									},
 									"brandfolderAssetMobile": null
@@ -11895,10 +12219,10 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "LQ11eXBPKWrsGn8r3sbyp",
-								"title": "Faster, better end user experience",
+								"contentfulId": "5YQfVxXvNwqr46xhOXtzhI",
+								"title": "RBI that's actually fast",
 								"titleSize": null,
-								"description": "Cloudflare's single-pass inspection is [>50% faster](https://blog.cloudflare.com/network-performance-update-cio-edition/) than other SWG alternatives. Faster, unintrusive protection without any performance tradeoffs.",
+								"description": "Delight end users by keeping security invisible with Cloudflare's innovative Network Vector Rendering technology and hyper-low latency.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
@@ -11930,10 +12254,10 @@
 						]
 					},
 					{
-						"contentfulId": "5bIBsALoL4TS8NPCgAcyNl",
+						"contentfulId": "1kpRdZfkbI2JZcpib8nxqD",
 						"title": "How it works",
-						"copy": "- Securely route traffic from individual devices or branch routers to Cloudflare\n- Inspect traffic against massive threat intelligence and customized filtering\n- Apply other in-line services like [data loss prevention](https://www.cloudflare.com/products/zero-trust/dlp/) or [remote browser isolation](https://www.cloudflare.com/products/zero-trust/browser-isolation/) for additional controls to protect your organization's exposure to the open Internet\n",
-						"toggleText": null,
+						"copy": "- A headless version of the Chromium browser runs all browser code on Cloudflare's global network, instead of on your endpoints.\n- Unlike pixel pushing or DOM rendering, Cloudflare streams draw commands, which use less bandwidth and create a seamless user experience.\n- Security patches for zero-day vulnerabilities are automatically deployed to remote browsers on Cloudflare's network.\n",
+						"toggleText": "Threat protection",
 						"button": null,
 						"learnMoreUrl": null,
 						"learnMoreText": null,
@@ -11955,14 +12279,14 @@
 						"streamPosterAssetFile": null,
 						"image": null,
 						"imageAssetFile": {
-							"id": "11b7ecb6-a79f-5f54-8d0b-a961afc03291",
-							"altText": "Cloudflare Zero Trust - Secure Web Gateway",
-							"title": "Cloudflare Zero Trust - Secure Web Gateway",
+							"id": "f0df0ce5-e9d5-5266-b892-32f080710f79",
+							"altText": null,
+							"title": "Cloudflare Browser Isolation Threat Protection SVG",
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "[path]/CF_SWG_Illustration_2022_Q1.png"
+									"publicURL": "[path]/RBI_--_Threat_Protection_SVG__1_.svg"
 								}
 							},
 							"brandfolderAsset": null,
@@ -11970,7 +12294,7 @@
 						},
 						"featureList": null,
 						"contentTypeId": "bladeImageText",
-						"sectionTitle": "Defend against Internet threats",
+						"sectionTitle": "Add an additional layer of security",
 						"htmlId": null,
 						"titleSize": null,
 						"sectionPadding": null,
@@ -11979,34 +12303,76 @@
 						"imagePosition": false,
 						"imageSize": "large",
 						"imageTextAlignment": "center",
-						"togglesTo": null
+						"togglesTo": [
+							{
+								"contentfulId": "15KsprF0PbwlU0tDXN91lh",
+								"title": "How it works",
+								"copy": "- A headless version of the Chromium browser runs all browser code on Cloudflare's global network, instead of on your endpoints.\n- Unlike pixel pushing or DOM rendering, Cloudflare streams draw commands, which use less bandwidth and create a seamless user experience.\n- Across any isolated page, build rules to prevent risky user actions within the browser, including restricting download, upload, copy-paste, keyboard input, and printing functionalities.\n",
+								"toggleText": "Data protection",
+								"button": null,
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"link": null,
+								"subheadline": null,
+								"button1Text": null,
+								"button1Url": null,
+								"button1Color": null,
+								"button2Text": null,
+								"button2Url": null,
+								"button2Color": null,
+								"streamOptions": [
+									"controls"
+								],
+								"streamCaptions": "en",
+								"streamVideoId": null,
+								"streamThumbnails": null,
+								"streamPoster": null,
+								"streamPosterAssetFile": null,
+								"image": null,
+								"imageAssetFile": {
+									"id": "fc8425aa-8aa9-58a0-9b18-d8f5b341f3d4",
+									"altText": null,
+									"title": "Cloudflare Browser Isolation Data Protection SVG",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/RBI_Data_Protection_SVG__1_.svg"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"featureList": null
+							}
+						]
 					},
 					{
 						"contentTypeId": "bladeQuote",
-						"contentfulId": "4ZBYNTBZ1ZvWj7Pp57XLLH",
-						"quote": "\"Algolia is growing pretty fast. We needed a way to have visibility across our corporate network without slowing things down for our employees. Gateway gave us a simple way to do that.\"",
-						"quoteAuthor": "Adam Surak",
-						"quoteTitle": "Director of Infrastructure & Security",
+						"contentfulId": "4YFOFK9irAIA0JHhDGE5ty",
+						"quote": "\"We started using Cloudflare Zero Trust Services with Browser Isolation to help provide the best security for our customers' data and protect employees from malware. It worked so well I forgot it was on.\"",
+						"quoteAuthor": "Jonathan Lister Parsons",
+						"quoteTitle": "CTO",
 						"learnMoreText": null,
 						"sectionPadding": null,
-						"backgroundColor": "light-blue",
+						"backgroundColor": "white",
 						"bladeBorder": "none",
 						"learnMoreUrl": null,
 						"htmlId": null,
 						"image": {
 							"file": {
-								"publicURL": "[path]/logo-algolia.svg"
+								"publicURL": "[path]/pensionbee-border.svg"
 							}
 						},
 						"imageAssetFile": {
-							"id": "9fd020a5-f350-5334-8c33-c1734a655ca7",
-							"altText": "logo-algolia",
-							"title": "logo-algolia",
+							"id": "e79b1a3d-3bf5-5040-a6ee-8230e8b274d6",
+							"altText": "Pensionbee logo",
+							"title": "Pensionbee logo",
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "[path]/logo-algolia.svg"
+									"publicURL": "[path]/pensionbee-border.svg"
 								}
 							},
 							"brandfolderAsset": null,
@@ -12018,20 +12384,20 @@
 						"quoteCarousel": [
 							{
 								"contentTypeId": "bladeQuote",
-								"quote": "\"Our whole team is remote, working from home offices. We don't have a server room with hardware firewall appliances, and it wouldn't really make sense to have one. So I'm always looking for ways to keep our team more secure and harden their connections, wherever they are.\"",
-								"quoteAuthor": "Stephen Webb",
-								"quoteTitle": "Director of IT, Holtmeyer & Monson",
+								"quote": "\"Phishing is the fastest growing attack vector against DroneDeploy, and we're targeted daily. Remote Browser provides an invisible protective layer to prevent entire classes of exploits and data exfiltration, with zero impact to business productivity.\"",
+								"quoteAuthor": "Joseph Mente",
+								"quoteTitle": "Engineering Manager, DevOps",
 								"learnMoreText": null,
 								"learnMoreUrl": null,
 								"imageAssetFile": {
-									"id": "a4828ac2-fce3-5b47-a66e-9940e804facf",
-									"altText": "Holtmeyer Transparent",
-									"title": "Holtmeyer Transparent",
+									"id": "ed5e0605-f7b5-5491-b7f9-245e2e2371a9",
+									"altText": "DroneDeploy Logo",
+									"title": "DroneDeploy Logo",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "[path]/output-onlinepngtools__1_.png"
+											"publicURL": "[path]/dd-blk-logo.svg"
 										}
 									},
 									"brandfolderAsset": null,
@@ -12039,34 +12405,7 @@
 								},
 								"image": {
 									"file": {
-										"publicURL": "[path]/output-onlinepngtools__1_.png"
-									}
-								}
-							},
-							{
-								"contentTypeId": "bladeQuote",
-								"quote": "\"We were an early customer of Cloudflare Gateway. At Storytel we needed an easy way to protect our network and devices from security threats and anomalies. With Gateway, we were able to do just that in less than five minutes.\"",
-								"quoteAuthor": "Christian Hekmati",
-								"quoteTitle": "CIO",
-								"learnMoreText": null,
-								"learnMoreUrl": null,
-								"imageAssetFile": {
-									"id": "5b71aa9d-6662-5d1b-8b71-716bd90fdb3e",
-									"altText": "Storytel",
-									"title": "Storytel",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "[path]/logo_storytel_color_svg.svg"
-										}
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"image": {
-									"file": {
-										"publicURL": "[path]/logo_storytel_color_svg.svg"
+										"publicURL": "[path]/dd-blk-logo.svg"
 									}
 								}
 							}
@@ -12170,7 +12509,7 @@
 						"sectionPadding": null
 					},
 					{
-						"contentfulId": "naLFQWOs7Rl5xCE3yPmtH",
+						"contentfulId": "3ECSA84SzXwUCzzsyqO30U",
 						"backgroundColor": "light-blue",
 						"contentTypeId": "bladeFourFeatures",
 						"htmlId": null,
@@ -12186,25 +12525,25 @@
 						"features": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "7BaNvxtGJqBebtHEeFtrp8",
-								"title": "Securing distributed workplaces",
-								"titleSize": "small",
-								"description": "Modernize branch office security with approachable initial steps like location-based DNS filtering.",
-								"learnMoreUrl": "https://cfl.re/distributed-workplaces-solution-brief",
+								"contentfulId": "7AO3zfGv2mJvPYELkiNzMh",
+								"title": "Neutralize phishing with email link isolation",
+								"titleSize": null,
+								"description": "Integrate cloud email security and RBI to apply adaptive isolation and insulate users from malicious content.",
+								"learnMoreUrl": "https://cfl.re/email-link-isolation-solution-brief",
 								"learnMoreText": "Read the solution brief",
 								"displayBorder": false,
 								"openLinkInNewTab": null,
 								"icon": null,
 								"iconAssetFile": null,
 								"imageAssetFile": {
-									"id": "d0740fb7-ea9f-5bd1-9abc-5b95fc4ff080",
-									"altText": "Cloudflare Zero Trust, SASE and SSE",
-									"title": "Zero Trust, SASE and SSE Image",
+									"id": "6fcceb68-1869-57a3-9be5-fe4a3f648ceb",
+									"altText": "Area 1 + Browser Isolation to secure links in email ",
+									"title": "Area 1 + Browser Isolation to secure links in email ",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "[path]/sse-image.png"
+											"publicURL": "[path]/Area_1___Browser_Isolation_to_secure_links_in_emai.png"
 										}
 									},
 									"brandfolderAsset": null,
@@ -12216,25 +12555,25 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "21G3zepkWJUrypz6zqi0qa",
-								"title": "Simpler, more effective threat defense",
-								"titleSize": "small",
-								"description": "Learn about Cloudflare's broad threat intelligence from our network data and ecosystem.",
-								"learnMoreUrl": "https://cfl.re/threat-defense-solution-brief",
-								"learnMoreText": "Read the solution brief",
+								"contentfulId": "6jRWIUlMGOawVIv4VsuXG7",
+								"title": "Common RBI challenges, and how to overcome them",
+								"titleSize": null,
+								"description": "Read why alternative RBI approaches create high costs, poor experiences, logistical hurdles, and security gaps.",
+								"learnMoreUrl": "https://cfl.re/browser-isolation-whitepaper",
+								"learnMoreText": "Read the whitepaper",
 								"displayBorder": false,
 								"openLinkInNewTab": null,
 								"icon": null,
 								"iconAssetFile": null,
 								"imageAssetFile": {
-									"id": "e54d0609-e596-5ea4-bf87-c2fff675ba7e",
-									"altText": "Cloudflare One Week 2022 - Area 1 threat intelligence integration",
-									"title": "Cloudflare One Week 2022 - Area 1 threat intelligence integration",
+									"id": "0d06ca91-34d1-5a1e-99b6-1899c7505444",
+									"altText": "Cloudflare One Week 2022 - Connect to private networks with Browser Isolation",
+									"title": "Cloudflare One Week 2022 - Connect to private networks with Browser Isolation",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "[path]/Area_1_threat_intelligence_integration__1_.png"
+											"publicURL": "[path]/biso.png"
 										}
 									},
 									"brandfolderAsset": null,
@@ -12246,55 +12585,55 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "50zOC8iheQULxsmnSpxIna",
-								"title": "Fortune 500 telco secures 100,000 hybrid workers",
-								"titleSize": "small",
-								"description": "Read how this company massively scaled their secure access and DNS filtering implementation.",
-								"learnMoreUrl": "https://www.cloudflare.com/case-studies/fortune-500-telecommunications-provider/",
-								"learnMoreText": "Read the case study",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": {
-									"id": "4af12f87-387b-5a8d-885f-d52af8086d76",
-									"altText": null,
-									"title": "Zero Trust - Team Productivity - Image",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "[path]/Team_Productivity_-_Zero_Trust_image.png"
-										}
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "6A8i7hdPZApkr1ocIelacu",
-								"title": "Cloudflare Zero Trust for managed service providers",
-								"titleSize": "small",
-								"description": "See how our tenant platform supports parent-child policy requirements for Managed Service Providers (MSPs).",
-								"learnMoreUrl": "https://blog.cloudflare.com/gateway-managed-service-provider/",
+								"contentfulId": "3c1MF6uoHAFzDmacqhg8vO",
+								"title": "Decommissioning Virtual Desktop Infrastructure",
+								"titleSize": null,
+								"description": "Learn a phased approach to transition away from slow, clunky VDI and toward Zero Trust with RBI.",
+								"learnMoreUrl": "https://blog.cloudflare.com/decommissioning-virtual-desktop/",
 								"learnMoreText": "Read the blog",
 								"displayBorder": false,
 								"openLinkInNewTab": null,
 								"icon": null,
 								"iconAssetFile": null,
 								"imageAssetFile": {
-									"id": "28ed3bb7-0e19-50a0-a7e4-55eceb575f7f",
-									"altText": "Gateway DNS-only Manage Service Provider",
-									"title": "Gateway DNS-only Manage Service Provider",
+									"id": "c87ef782-c0b1-5167-ab17-18b250de1ee3",
+									"altText": "Cloudflare One Week 2022 - Decommissioning VDI",
+									"title": "Cloudflare One Week 2022 - Decommissioning VDI",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "[path]/Gateway_DNS-only_Manage_Service_Provider.png"
+											"publicURL": "[path]/vdi.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "7zlcSPbvNgf1npGK8KJu7n",
+								"title": "Try Cloudflare Browser Isolation",
+								"titleSize": null,
+								"description": "Demo lightning-fast, secure browsing. Try an isolated browser yourself with no subscriptions and no installations.",
+								"learnMoreUrl": "https://www.cloudflare.com/products/zero-trust/browser-isolation/experience/",
+								"learnMoreText": "Experience RBI in action",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "009df553-c8e6-5744-9e8e-2933a4ae2291",
+									"altText": "Clientless Web Isolation is now generally available",
+									"title": "Clientless Web Isolation is now generally available",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Clientless_Web_Isolation_is_now_generally_available.png"
 										}
 									},
 									"brandfolderAsset": null,
@@ -12325,8 +12664,8 @@
 		},
 		"pageContext": {
 			"locale": "en-US",
-			"pathname": "/products/zero-trust/gateway/",
-			"contentfulId": "40NoKI3sukuJI1rmfqN3tT",
+			"pathname": "/products/zero-trust/browser-isolation/",
+			"contentfulId": "yIEpGRuNKpdJxw7SP6Iky",
 			"allowedHrefLangs": [
 				"en-US",
 				"zh-CN",
