@@ -1,4 +1,5 @@
 {
+	"account_tag": "Account Tag",
 	"action": "Action",
 	"blocked_reason_av": "Anti-virus scanning",
 	"blocked_reason_unknown": "Unknown",
@@ -26,6 +27,10 @@
 	"dlp_profile_entries": "DLP profile entries",
 	"dlp_profiles": "DLP profiles",
 	"dlp_profiles_info": "DLP details",
+	"dlp_report_false_positive": "Report DLP false positive",
+	"dlp_report_false_positive_description": "Send a report to Cloudflare if you believe the DLP match is a false positive. Your report will include the below information to help improve DLP.",
+	"dlp_report_false_positive_error": "An error happened while submitting your report. Try again in a few minutes.",
+	"dlp_report_false_positive_sent": "False positive reported successfully",
 	"dlp_uploaded_downloaded_file": "Uploaded/downloaded file",
 	"dns_dnssec_validation_bypassed": "DNSSEC Validation Bypassed",
 	"dns_ede_errors": "EDE Errors",
