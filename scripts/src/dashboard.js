@@ -768,15 +768,20 @@ async function run() {
 		if(navigation) {
 			console.log('Found navigation');
 			const rawNavigation = wantedChunks.navigation.code.slice(navigation.start, navigation.end);
-			// eslint-disable-next-line no-eval
-			const realNavigation = eval('(function run(){return ' + rawNavigation + '})()');
+			try{
+				// write serialised version
+				const file = path.resolve('../data/dashboard/navigation.json');
+				// eslint-disable-next-line no-eval
+				const realNavigation = eval('(function run(){return ' + rawNavigation + '})()');
+				fs.ensureDir(path.dirname(file));
+				await fs.writeFile(file, JSON.stringify(realNavigation, null, '\t'));
+
+			}catch(err) {
+				console.error('Error getting nav', err);
+			}
 			// write raw JS version
 			await writeJS('navigation.js', 'const navigation = ' + rawNavigation);
 
-			// write serialised version
-			const file = path.resolve('../data/dashboard/navigation.json');
-			fs.ensureDir(path.dirname(file));
-			await fs.writeFile(file, JSON.stringify(realNavigation, null, '\t'));
 		}
 	}
 
