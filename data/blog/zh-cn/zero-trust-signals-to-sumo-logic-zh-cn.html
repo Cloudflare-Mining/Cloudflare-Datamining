@@ -1,0 +1,35 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/Dashboard_-Quick-Navigation-1.png" class="kg-image" alt="Adding Zero Trust signals to Sumo Logic for better security insights"></figure>
+	<p>一张图片胜过千言万语，当以现成的安全仪表板的形式获得可视化、趋势和数据时同样如此。</p>
+	<p>今天，我们隆重宣布对适用于 Sumo Logic <a href="https://www.sumologic.com/solutions/cloud-siem-enterprise/" target="_blank">云 SIEM</a> 的 <a href="https://developers.cloudflare.com/logs/about/" target="_blank">Logpush</a> 扩大对 Zero Trust 日志的自动标准化和关联支持。作为 Cloudflare <a href="https://www.cloudflare.com/partners/technology-partners/sumo-logic/" target="_blank">技术伙伴</a>，Sumo Logic 是连续智能领域的先驱，这是一种新的软件类别，使各种规模的组织能够应对数字转型、现代应用程序和云计算带来的数据挑战和机遇。 </p>
+	<p>Sumo Logic 云 SIEM 中的更新内容通过将安全和网络数据融合为高保真的见解，可以帮助 Cloudflare 的共同客户减少与 Zero Trust 日志相关的警报疲劳，加快安全分析师的分类过程。这项新功能补充了现有的 <a href="https://www.sumologic.com/application/cloudflare/" target="_blank">Cloudflare App for Sumo Logic</a>，后者旨在帮助 IT 和安全团队获得洞察，了解异常活动，并随着时间推移更好地驱动安全和网络性能数据。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/03/Cloud-SIEM-HUD.png" class="kg-image"></figure>
+	<h3 id="-zero-trust-">更深入集成以交付 Zero Trust 洞察</h3>
+	<p>使用 Cloudflare Zero Trust 有助于保护用户、设备和数据，在此过程中可能会创建大量日志。这些日志很有用，也很重要，因为它们提供了整个组织内部发生的活动的人员、内容、时间和地点。它们包含的信息包括：访问了什么网站，谁登录了应用程序，或者从 SaaS 服务中共享了什么数据。</p>
+	<p>到目前为止，我们与 Sumo Logic 的集成允许自动关联的 Cloudflare 安全信号只包括核心服务。虽然确保在整个组织中收集 WAF 和机器人检测事件非常关键，但随着分布式办公的激增以及混合和多云基础设施架构的采用，将可见性扩展到 Zero Trust 组件现已变得比以往任何时候都更加重要。</p>
+	<p>扩展 Zero Trust 日志现已在 Sumo Logic Cloud SIEM 中可用，得益于 Cloudflare 产品生成的广泛网络和安全日志，客户现在可以就安全洞察获得更深入的上下文：</p>
+	<ul>
+		<li><a href="https://www.cloudflare.com/products/zero-trust/gateway/" target="_blank">Cloudflare Gateway</a> (网络，DNS，HTTP)</li>
+		<li><a href="https://www.cloudflare.com/products/zero-trust/browser-isolation/" target="_blank">Cloudflare 远程浏览器隔离</a> (包含于 Gateway 日志中)</li>
+		<li><a href="https://www.cloudflare.com/products/zero-trust/dlp/" target="_blank">Cloudflare 数据丢失防护</a> (包含于 Gateway 日志中)</li>
+		<li><a href="https://www.cloudflare.com/products/zero-trust/access/" target="_blank">Cloudflare Access</a>(Access 审计日志)</li>
+		<li><a href="https://www.cloudflare.com/products/zero-trust/casb/" target="_blank">Cloudflare 云访问安全代理</a> (发现日志)<br></li>
+	</ul>
+	<blockquote>“作为 Cloudflare 的长期合作伙伴，我们一直共同努力，帮助共同客户分析其网站和应用程序中的事件和趋势，以提供端到端可见性，并改善数字体验。我们很高兴能够扩大这一合作关系，在 Sumo Logic 的云 SIEM 中为共同客户的 Zero Trust 安全态势提供实时洞察。” <br>John Coyle - 业务发展副总裁，Sumo Logic</blockquote>
+	<h3 id="-">如何开始</h3>
+	<p>要使用 Sumo Logic 的集成套件和通过 Logpush 提供的 Cloudflare 日志，首先启用 Logpush to Sumo Logic，它将直接将日志发送到 Sumo Logic 的云原生平台。然后，安装 Cloudflare App 并(对于云 SIEM 客户)设置将这些日志转发到云 SIEM，以实现安全洞察的自动标准化和关联。 </p>
+	<p>请注意，Cloudflare 的 Logpush 服务仅适用于 Enterprise 客户。如果有意升级，<a href="https://www.cloudflare.com/lp/cio-week-2023-cloudflare-one-contact-us/" target="_blank">请在这里联系我们</a>。</p><!--kg-card-begin: markdown-->
+	<ol>
+		<li><a href="https://developers.cloudflare.com/logs/get-started/enable-destinations/sumo-logic/" target="_blank"><strong>启用 Logpush to Sumo Logic</strong></a><br>
+			Cloudflare Logpush 支持通过 Cloudflare 仪表板或 API 直接将日志推送到 Sumo Logic。</li>
+		<li><strong>安装<a href="https://www.sumologic.com/application/cloudflare/" target="_blank">适用于 Sumo Logic 的 Cloudflare App</a></strong><br>
+			从上面链接的应用目录中找到并安装该 Cloudflare 应用。如果您想在安装之前查看包含该应用的仪表板预览，请单击“预览仪表板”。安装完成后，即可在 Cloudflare 仪表板中查看所有核心服务的关键信息。</li>
+		<li><strong>(云 SIEM 客户) 转发日志到云 SIEM</strong><br>
+			完成以上步骤后，通过 <a href="https://help.sumologic.com/docs/integrations/saas-cloud/cloudflare/#prerequisites" target="_blank">_parser 字段添加到</a>安装 Cloudflare App 时创建的 S3 源，启用更新后的 Cloudflare 日志分析器。</li>
+	</ol>
+	<!--kg-card-end: markdown-->
+	<h3 id="--1">下一步</h3>
+	<p>随着越来越多的组织转向 Zero Trust 安全模型，掌握对网络每一个方面的可见性变得越来越重要，而日志在这方面发挥着至关重要的作用。 </p>
+	<p>如果您的组织刚刚起步，还没有使用像 Sumo Logic 这样的工具，那么 <a href="https://blog.cloudflare.com/announcing-logs-engine/">Cloudflare R2 日志存储</a>值得考虑。Cloudflare R2为日志存储提供了可扩展的、经济有效的解决方案。 </p>
+	<p>我们很高兴继续与技术合作伙伴密切合作，扩展现有集成和创建新的集成，帮助推动客户的 Zero Trust 之旅。</p>
+</div>

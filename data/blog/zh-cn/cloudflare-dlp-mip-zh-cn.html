@@ -1,0 +1,22 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/Cloudflare-One-customers-can-sync-Microsoft-Labels-with-a-DLP-Profile-and-create-policies-to-block-based-on-those-labels--ie-top-secret--1.png" class="kg-image" alt="Cloudflare One DLP integrates with Microsoft Information Protection labels"></figure>
+	<p>对于一个组织来说，皇冠上的宝石通常是数据，保护的第一步应该是确定最关键的信息所在的位置。然而，维护敏感数据的全面清单比看起来要难得多，对安全团队来说通常是一个重大挑战。为了帮助客户克服数据安全问题，Microsoft 向客户提供了数据分类和保护工具。一个流行的选项是 Microsoft Purview 信息保护中可用的 <a href="https://learn.microsoft.com/en-us/microsoft-365/compliance/sensitivity-labels?view=o365-worldwide" target="_blank">敏感度标签</a>。然而，客户需要能够跟踪敏感数据移动，即使这些数据迁移到 Microsoft 可见范围以外。</p>
+	<p>今天，我们隆重宣布 <a href="https://www.cloudflare.com/cloudflare-one/" target="_blank">Cloudflare One</a> 现在为 Microsoft Purview 信息保护标签提供数据丢失防护(DLP)检测。只需与 Microsoft 帐户集成，提取标签，并构建规则来指导带标签数据的移动。单击数下，就可将 Microsoft 标签的力量扩展到您的任何企业流量。</p>
+	<h3 id="-microsoft-">使用 Microsoft 标签进行数据分类</h3>
+	<p>每个组织都有大量数据需要管理，从公开可访问的数据(如文档)到内部数据(如新产品的发布日期)。然而，当然还有需要最高级别保护的数据，例如客户 PII。组织负责将数据限制在适当的目的地，同时仍然支持可访问性和生产力，这是一个不小的壮举。 </p>
+	<p><a href="https://learn.microsoft.com/en-us/microsoft-365/compliance/sensitivity-labels?view=o365-worldwide" target="_blank">Microsoft Purview 信息保护提供敏感度标签</a> ，用于您对组织的数据进行分类。借助这些标签，微软提供了保护敏感数据的能力，同时仍能支持生产力和协作。敏感性标签可用于许多 Microsoft 应用程序，其中包括将标签应用于 Microsoft Office 文档的功能。这些标签对应于文件所含数据的敏感性，如公开、机密或高度机密。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/sensitivity-label-in-excel-1.png" class="kg-image"></figure>
+	<p>这些标签嵌入到文档的元数据中，即使文档离开 Microsoft 环境(例如从 OneDrive 下载)，它们也会被保留。</p>
+	<h3 id="-cloudflare-one-microsoft-">同步 Cloudflare One 和 Microsoft 信息保护</h3>
+	<p>Cloudflare One 是我们的 SASE 平台，提供内置 Zero Trust 安全的网络即服务(NaaS)，将用户连接到企业资源，并提供丰富功能来保护企业流量，包括检查在 Microsoft 生产力套件中移动的数据。我们将 Cloudflare One 设计成组织的一站式管理中心。这意味着，一旦部署了我们的任何一项 Zero Trust 服务，无论是 Zero Trust 网络访问还是安全 Web 网关，组织都能立即部署<a href="https://www.cloudflare.com/products/zero-trust/dlp/" target="_blank">数据丢失防护</a>、云访问安全代理、电子邮件安全、浏览器隔离来增强 Microsoft 安全和整体数据保护。</p>
+	<p>具体而言，Cloudflare 由 API 驱动的云访问安全代理(CASB)可以扫描 Microsoft 365 等 SaaS 应用程序，以查找错误配置、未经授权的用户活动、影子 IT 以及用户成功登录后可能出现的其他数据安全问题。 </p>
+	<p>有了这个新的集成，CASB 现在还可以从您的 Microsoft 帐户中检索信息保护标签。如果已经配置了标签，一旦集成，CASB 就会自动把标签填充到一个数据丢失防护配置文件中。 </p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/Screenshot-2023-02-24-at-3.37.22-PM.png" class="kg-image"></figure>
+	<p>DLP 配置文件是应用 DLP 扫描的基本要素。这是识别想要保护的敏感数据的地方，例如带 Microsoft 标签的数据、信用卡号码或自定义关键字。您的标签使用 CASB 集成的名称存储为 Microsoft Purview 信息保护敏感度标签配置文件中的条目。您也可以添加标签来自定义 DLP 配置文件，提供更多检测灵活性。</p>
+	<h3 id="-dlp-">构建 DLP 规则</h3>
+	<p>现在您可以扩展 Microsoft 标签的力量，保护移动到其他平台上的数据。通过构建 DLP 规则，您可以确定带标签的数据如何在企业网络中移动或移出。也许您希望禁止从您的 OneDrive 帐户下载高度机密标签，或者禁止将任何比敏感度超过机密级别的数据上传到您不使用的文件共享网站。这一切都可以使用 DLP 和 Cloudflare Gateway 实现。</p>
+	<p>只需转到您的网关防火墙策略，并开始使用您的 DLP 配置文件实施构建规则：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/Screenshot-2023-03-03-at-5.53.30-PM-1.png" class="kg-image"></figure>
+	<h3 id="-">如何开始</h3>
+	<p>如要使用 DLP，请预约<a href="https://www.cloudflare.com/cloudflare-one/" target="_blank">咨询</a>或联系您的帐户经理。</p>
+</div>
