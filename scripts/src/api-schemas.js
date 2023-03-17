@@ -15,46 +15,49 @@ const API_DOCS_URL = 'https://api.cloudflare.com/';
 const SCHEMAS_URL = `${API_DOCS_URL}schemas/v4/`;
 
 async function run() {
+	console.log('Ignoring API schemas for now...');
+	return;
+	/* eslint-disable no-unreachable */
 	console.log('Fetching API Schemas...');
 
-	// first do it the hacky way
-	const docs = await fetch(API_DOCS_URL);
-	const html = await docs.text();
-	const parsed = new parseDocument(html);
-	const docsScriptAttr = selectOne('script[src*=apidocs-static]', parsed);
-	if(!docsScriptAttr) {
-		return console.log('No docs script found, exiting');
-	}
+	// // first do it the hacky way
+	// const docs = await fetch(API_DOCS_URL);
+	// const html = await docs.text();
+	// const parsed = new parseDocument(html);
+	// const docsScriptAttr = selectOne('script[src*=apidocs-static]', parsed);
+	// if(!docsScriptAttr) {
+	// 	return console.log('No docs script found, exiting');
+	// }
 
-	const docsScriptReq = await fetch(`${API_DOCS_URL}/${docsScriptAttr.attribs.src}`);
-	const docsScript = await docsScriptReq.text();
-	const docsScriptParsed = parse(docsScript, {
-		sourceType: 'script',
-		ecmaVersion: 2020,
-	});
-	const schemas = {};
-	fullAncestor(docsScriptParsed, (node, ancestors) => {
-		if(node.type === 'Literal' && node.value?.includes?.(SCHEMAS_URL)) {
-			// assume that 3 from the last ancestor is the schema
-			const schema = ancestors.at(-3);
-			if(!schema || schema.type !== 'ObjectExpression') { return; }
-			// this is a massive hack. TODO: find a better way to do this
-			// eslint-disable-next-line no-eval
-			const realschema = eval('(function run(){return ' + docsScript.slice(schema.start, schema.end) + '})()');
-			schemas[node.value] = realschema;
-		}
-	});
-	for(const [url, schema] of Object.entries(schemas)) {
-		let schemaname = url.replace(SCHEMAS_URL, '');
-		if(!schemaname) { continue; }
-		if(!schemaname.endsWith('.json')) {
-			schemaname = `${schemaname}.json`;
-		}
-		const filename = path.resolve(`../data/api-schemas/${schemaname}`);
-		console.log('Writing API schema', schemaname);
-		await fs.ensureFile(filename);
-		await fs.writeFile(filename, JSON.stringify(schema, null, '\t'));
-	}
+	// const docsScriptReq = await fetch(`${API_DOCS_URL}/${docsScriptAttr.attribs.src}`);
+	// const docsScript = await docsScriptReq.text();
+	// const docsScriptParsed = parse(docsScript, {
+	// 	sourceType: 'script',
+	// 	ecmaVersion: 2020,
+	// });
+	// const schemas = {};
+	// fullAncestor(docsScriptParsed, (node, ancestors) => {
+	// 	if(node.type === 'Literal' && node.value?.includes?.(SCHEMAS_URL)) {
+	// 		// assume that 3 from the last ancestor is the schema
+	// 		const schema = ancestors.at(-3);
+	// 		if(!schema || schema.type !== 'ObjectExpression') { return; }
+	// 		// this is a massive hack. TODO: find a better way to do this
+	// 		// eslint-disable-next-line no-eval
+	// 		const realschema = eval('(function run(){return ' + docsScript.slice(schema.start, schema.end) + '})()');
+	// 		schemas[node.value] = realschema;
+	// 	}
+	// });
+	// for(const [url, schema] of Object.entries(schemas)) {
+	// 	let schemaname = url.replace(SCHEMAS_URL, '');
+	// 	if(!schemaname) { continue; }
+	// 	if(!schemaname.endsWith('.json')) {
+	// 		schemaname = `${schemaname}.json`;
+	// 	}
+	// 	const filename = path.resolve(`../data/api-schemas/${schemaname}`);
+	// 	console.log('Writing API schema', schemaname);
+	// 	await fs.ensureFile(filename);
+	// 	await fs.writeFile(filename, JSON.stringify(schema, null, '\t'));
+	// }
 
 
 	// then query the schemas endpoint
