@@ -1,0 +1,354 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/image4-7.png" class="kg-image" alt="Top 50 most impersonated brands in phishing attacks and new tools you can use to protect your employees from them"></figure>
+	<p>Un collaborateur de votre organisation vient peut-être de saisir, sur un site web incorrect, le nom d'utilisateur et le mot de passe d'un administrateur d'un système interne. Cela suffit à permettre à un acteur malveillant d'exfiltrer des données sensibles.</p>
+	<p>Comment est-ce arrivé ? Il a suffi d'un e-mail bien rédigé.</p>
+	<p>La détection et le blocage des tentatives de phishing, ainsi que l'atténuation des risques liés à celles-ci, constituent sans doute l'un des défis les plus difficiles à relever pour toutes les équipes de sécurité.</p>
+	<p>À compter d'aujourd'hui, nous proposons un accès à la version bêta de nos nouveaux outils de protection des marques et de protection contre le phishing, directement depuis le tableau de bord du Centre de sécurité de Cloudflare. Vous pouvez désormais intercepter et atténuer les campagnes de phishing ciblant votre organisation avant même qu'elles ne se produisent.</p>
+	<h2 id="le-d-fi-des-tentatives-de-phishing">Le défi des tentatives de phishing</h2>
+	<p>Les tentatives de phishing représentent peut-être le vecteur de menace le plus médiatisé au cours de ces derniers mois. Ces attaques très sophistiquées sont difficiles à détecter ; elles deviennent toujours plus fréquentes et peuvent avoir des conséquences dévastatrices pour les entreprises qui en sont victimes.</p>
+	<p>Parmi les principaux défis liés à la prévention des attaques par phishing figurent leur volume considérable et la difficulté que présente la différenciation des e-mails et des sites web légitimes de leurs contreparties frauduleuses. Même lorsque les utilisateurs se montrent vigilants, il peut s'avérer difficile pour eux de repérer les indices subtils trahissant les imitations, souvent convaincantes, d'e-mails et de sites web utilisés par les acteurs malveillants à l'origine de tentatives de phishing.</p>
+	<p>À titre d'exemple, en juillet dernier, notre suite de produits Cloudflare One et l'utilisation de clés de sécurité physiques ont permis de <a href="https://blog.cloudflare.com/2022-07-sms-phishing-attacks/">déjouer l'attaque par phishing sophistiquée appelée « Oktapus », qui ciblait les employés de Cloudflare</a>. L'auteur de l'attaque « Oktapus », qui a compromis la sécurité de <a href="https://www.theregister.com/2022/08/25/twilio_cloudflare_oktapus_phishing/" target="_blank">plus d'une centaine d'entreprises</a>, a enregistré le nom de domaine « cloudflare-okta.com » 40 minutes seulement avant d'envoyer le lien à nos employés.</p>
+	<p>À cette période, nous utilisions notre <a href="https://www.cloudflare.com/products/registrar/custom-domain-protection/" target="_blank">serveur d'inscriptions sécurisé</a> pour identifier les domaines liés au phishing, mais la réception de la liste des domaines nouvellement enregistrés à des fins de surveillance avait été retardée. Aujourd'hui, en diffusant les domaines nouvellement observés résolus par notre <a href="https://blog.cloudflare.com/announcing-1111/">résolveur 1.1.1.1</a> (ainsi que d'autres résolveurs), nous sommes en mesure de détecter presque immédiatement les domaines liés au phishing. Cela nous donne une longueur d'avance et nous permet de bloquer les tentatives de phishing avant même qu'elles ne soient mises en œuvre.</p>
+	<p>Pour aider nos clients à relever ce défi de tous les instants, nous voulons, dans un premier temps, leur permettre d'accéder aux outils que nous utilisons nous-mêmes en interne.</p>
+	<h2 id="les-nouveaux-outils-de-protection-des-marques-et-de-protection-contre-le-phishing-du-centre-de-s-curit-de-cloudflare">Les nouveaux outils de protection des marques et de protection contre le phishing du Centre de sécurité de Cloudflare</h2>
+	<p>Nous étendons les solutions de protection contre le phishing accessibles aux clients de Cloudflare One en identifiant (et en bloquant) automatiquement les domaines « susceptibles d'être confondus ». Les erreurs de saisie courantes (clodflare.com) et les concaténations de services (cloudflare-okta.com) sont souvent enregistrées en tant que noms de domaine par des acteurs malveillants, afin d'inciter des victimes inattentives à saisir des informations privées (par exemple, des mots de passe) ; ces nouveaux outils offrent une protection supplémentaire contre ces tentatives.</p>
+	<p>Les nouveaux outils de protection des marques et de protection contre le phishing se trouvent dans le Centre de sécurité de Cloudflare, et offrent encore <a href="https://developers.cloudflare.com/security-center/tasks/" target="_blank">plus de contrôles</a> (par exemple, les chaînes personnalisées à surveiller, une liste consultable de domaines historiques, etc.) à nos clients. Les utilisateurs ayant souscrit une offre Cloudflare One peuvent y accéder, le niveau de contrôle, de visibilité et d'automatisation étant variable selon l'offre souscrite.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/03/image3-6.png" class="kg-image" alt="Notre nouvelle interface de protection des marques"></figure>
+	<h3 id="nouvelles-fonctionnalit-s-d-alerte-et-de-correspondance-de-marques-et-de-domaines">Nouvelles fonctionnalités d'alerte et de correspondance de marques et de domaines</h3>
+	<p>Notre nouvelle fonctionnalité de protection des marques est fondée sur notre capacité à détecter les noms d'hôtes créés spécifiquement pour lancer des attaques par phishing contre des marques légitimes. Nous commençons par surveiller la première utilisation d'un domaine ou d'un sous-domaine ; pour cela, nous scrutons les billions de requêtes DNS adressées quotidiennement à 1.1.1.1, le résolveur DNS public de Cloudflare, afin de compiler une liste de noms d'hôtes utilisés pour la première fois « en milieu naturel ».</p>
+	<p>Nous utilisons cette liste pour établir, en temps réel, une « <a href="https://en.wikipedia.org/wiki/Fuzzy_matching_(computer-assisted_translation)" target="_blank">correspondance floue</a> », une technique utilisée pour associer deux chaînes de caractères, dont le sens ou l'orthographe sont similaires, aux modèles enregistrés par nos utilisateurs. Nous comparons les chaînes et calculons un score de similarité en fonction de différents facteurs (phonétique, distance, correspondance des sous-chaînes). Ces modèles enregistrés, qui peuvent être des chaînes avec des <a href="https://en.wikipedia.org/wiki/Edit_distance" target="_blank">distances d'édition</a>, permettent à notre système de générer des alertes chaque fois que nous détectons une correspondance avec l'un des domaines présents dans la liste.</p>
+	<p>Bien que nos utilisateurs doivent actuellement créer et enregistrer ces requêtes, nous introduirons, à l'avenir, un système de correspondance automatisé. Ce système simplifiera le processus de détection de correspondances pour nos utilisateurs ; toutefois, des chaînes personnalisées seront toujours disponibles pour les équipes de sécurité surveillant des modèles plus complexes.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/03/image2-6.png" class="kg-image" alt="Alertes de protection des marques"></figure>
+	<h3 id="historique-des-recherches">Historique des recherches</h3>
+	<p>En plus de la surveillance en temps réel, nous proposons un historique des recherches (requêtes enregistrées) et des alertes pour les domaines nouvellement observés au cours des 30 derniers jours. Lorsqu'un nouveau modèle est créé, nous affichons les résultats de recherche des 30 derniers jours, afin d'identifier les correspondances potentielles. Ceci permet aux équipes de sécurité d'évaluer rapidement le niveau de menace potentiel d'un nouveau domaine et de prendre les dispositions nécessaires.</p>
+	<p>Par ailleurs, ce mécanisme de recherche peut également être utilisé pour la recherche de domaines ad hoc, offrant davantage de flexibilité aux équipes de sécurité qui souhaitent enquêter sur des domaines ou des modèles spécifiques.</p>
+	<h2 id="observations-en-milieu-naturel-les-marques-les-plus-cibl-es-par-le-phishing">Observations « en milieu naturel » : les marques les plus ciblées par le phishing</h2>
+	<p>Lors du développement de ces nouveaux outils de protection des marques, nous avons voulu tester nos fonctionnalités avec un large éventail de marques fréquemment ciblées par des tentatives de phishing. À cette fin, nous avons examiné la fréquence à laquelle notre résolveur 1.1.1.1 a résolu des domaines contenant des URL liées à des campagnes de phishing. Tous les domaines utilisés dans le cadre de services partagés (à l'image des plateformes d'hébergement de sites Google, Amazon, GoDaddy) dont le lien avec une tentative de phishing n'a pas pu être vérifié ont été supprimés de l'ensemble de données.</p>
+	<p>Vous pouvez retrouver la liste des 50 marques que nous avons identifiées comme étant les plus fréquemment ciblées dans le tableau ci-dessous.</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-lqy6 {
+			text-align: right;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Classement</span></th>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Marque</span></th>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Exemple de domaine utilisé pour lancer une attaque par phishing contre la marque[1]</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">AT&amp;T Inc.</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">att-rsshelp[.]com</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">PayPal</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">paypal-opladen[.]be</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Microsoft</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">login[.]microsoftonline.ccisystems[.]us</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">4</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">DHL</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">dhlinfos[.]link</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">5</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Meta</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">facebookztv[.]com</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">6</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Internal Revenue Service</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">irs-contact-payments[.]com</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">7</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Verizon</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">loginnnaolcccom[.]weebly[.]com</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">8</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Mitsubishi UFJ NICOS Co., Ltd.</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">cufjaj[.]id</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">9</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Adobe</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">adobe-pdf-sick-alley[.]surge[.]sh</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">10</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Amazon</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">login-amazon-account[.]com</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">11</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Apple</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">apple-grx-support-online[.]com</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">12</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Wells Fargo &amp; Company</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">connect-secure-wellsfargo-com.herokuapp[.]com</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">13</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">eBay, Inc.</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">www[.]ebay8[.]bar</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">14</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Swiss Post</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">www[.]swiss-post-ch[.]com</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">15</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Naver</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">uzzmuqwv[.]naveicoipa[.]tech</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">16</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Instagram (Meta)</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">instagram-com-p[.]proxy.webtoppings[.]bar</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">17</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">WhatsApp (Meta)</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">joingrub-whatsapp-pistol90[.]duckdns[.]org</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">18</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Rakuten</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">rakutentk[.]com</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">19</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">East Japan Railway Company</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">www[.]jreast[.]co[.]jp[.]card[.]servicelist[].bcens[.]net</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">20</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">American Express Company</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">www[.]webcome-aexp[.]com</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">21</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">KDDI</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">aupay[.]kddi-fshruyrt[.]com</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">22</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Office365 (Microsoft)</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">office365loginonlinemicrosoft[.]weebly[.]com</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">23</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Chase Bank</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">safemailschaseonlineserviceupgrade09[.]weebly[.]com</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">24</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">AEON</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">aeon-ver1fy[.]shop</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">25</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Singtel Optus Pty Limited</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">myoptus[.]mobi</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">26</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Coinbase Global, Inc.</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">supp0rt-coinbase[.]com</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">27</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Banco Bradesco S.A.</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">portalbradesco-acesso[.]com</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">28</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Caixa Econômica Federal</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">lnternetbanklng-caixa[.]com</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">29</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">JCB Co., Ltd.</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">www[.]jcb-co-jp[.]ascaceeccea[.]ioukrg[.]top</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">30</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ING Group</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ing-ingdirect-movil[.]com</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">31</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">HSBC Holdings plc</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">hsbc-bm-online[.]com</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">32</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Netflix Inc</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">renew-netflix[.]com</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">33</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Sumitomo Mitsui Banking Corporation</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">smbc[.]co[.]jp[.]xazee[.]com</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">34</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Nubank</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">nuvip2[.]ru</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">35</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Bank Millennium SA</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">www[.]bankmillenium-pl[.]com</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">36</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">National Police Agency Japan</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">sun[.]pollice[.]xyz</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">37</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Allegro</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">powiadomienieallegro[.]net</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">38</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">InPost</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">www.inpost-polska-lox.order9512951[.]info</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">39</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Correos</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">correosa[.]online</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">40</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">FedEx</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">fedexpress-couriers[.]com</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">41</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">LinkedIn (Microsoft)</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">linkkedin-2[.]weebly[.]com</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">42</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">United States Postal Service</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">uspstrack-7518276417-addressredelivery-itemnumber.netlify[.]app</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">43</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Alphabet</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">www[.]googlecom[.]vn10000[.]cc</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">44</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">The Bank of America Corporation</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">baanofamericase8[.]hostfree[.]pw</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">45</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Deutscher Paketdienst</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">dpd-info[.]net</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">46</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Banco Itaú Unibanco S.A.</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">silly-itauu[.]netlify[.]app</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">47</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Steam</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">gift-steam-discord[.]com</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">48</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Swisscom AG</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">swiss-comch[.]duckdns[.]org</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">49</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">LexisNexis</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">mexce[.]live</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">50</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Orange S.A.</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">orange-france24[.]yolasite[.]com</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html--><!--kg-card-begin: markdown-->
+	<p><small><sup>[1]</sup> Les sites de phishing sont généralement servis avec une URL spécifique, plutôt qu'à la racine (par exemple, hxxp://example.com/login.html, plutôt que hxxp://example.com/). Les URL complètes ne sont pas fournies ici.</small></p>
+	<!--kg-card-end: markdown-->
+	<h2 id="r-unir-les-fonctionnalit-s-de-notre-syst-me-d-informations-sur-les-menaces-et-l-application-de-la-s-curit-zero-trust">Réunir les fonctionnalités de notre système d'informations sur les menaces et l'application de la sécurité Zero Trust</h2>
+	<p>Les nouvelles fonctionnalités s'avèrent beaucoup plus efficaces pour les clients utilisant notre suite de produits Zero Trust. Vous pouvez facilement bloquer tout domaine susceptible d'être confondu dès sa détection, en créant des règles dans Cloudflare Gateway ou des règles de politique DNS. Cela empêche immédiatement vos utilisateurs de résoudre ou de consulter des sites potentiellement malveillants, vous permettant ainsi de déjouer les attaques avant même qu'elles n'aient lieu.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/image1-12.png" class="kg-image" alt="Exemple d'une règle de politique DNS visant à bloquer des domaines susceptibles d'être confondus"></figure>
+	<h2 id="am-liorations-futures">Améliorations futures</h2>
+	<p>Ces nouvelles fonctionnalités ne sont que les premières dispositions de notre portefeuille étendu de solutions de sécurité contre le phishing et les atteintes aux marques.</p>
+	<h3 id="correspondance-avec-les-certificats-ssl-tls">Correspondance avec les certificats SSL/TLS</h3>
+	<p>En plus de la correspondance avec les domaines, nous prévoyons également de proposer la correspondance avec les nouveaux certificats SSL/TLS enregistrés dans <a href="https://blog.cloudflare.com/introducing-certificate-transparency-and-nimbus/">Nimbus, notre référentiel de transparence des certificats</a>. En analysant les journaux de transparence des certificats, nous pouvons identifier les certificats potentiellement frauduleux, susceptibles d'être utilisés pour mettre en œuvre des tentatives de phishing. Cette capacité est utile, car les certificats sont généralement créés peu de temps après l'enregistrement d'un domaine, afin d'accroître la légitimité du site de phishing grâce à la prise en charge du protocole HTTPS.</p>
+	<h3 id="renseignement-automatique-des-listes-g-r-es">Renseignement automatique des listes gérées</h3>
+	<p>Bien qu'aujourd'hui, les clients puissent exécuter des scripts de mise à jour des listes personnalisées référencées par une règle de blocage Zero Trust, comme nous l'avons évoqué ci-dessus, nous avons l'intention d'ajouter automatiquement des domaines à des listes mises à jour de manière dynamique. En outre, nous ajouterons automatiquement les domaines correspondants à des listes pouvant être utilisées dans les règles de notre solution Zero Trust, par exemple, le blocage depuis Gateway.</p>
+	<h3 id="changements-de-propri-taire-de-domaines-et-modifications-d-autres-m-tadonn-es">Changements de propriétaire de domaines et modifications d'autres métadonnées</h3>
+	<p>Enfin, nous prévoyons d'offrir la possibilité de surveiller les changements de propriétaire ou les modifications d'autres métadonnées liées aux domaines, telles que le titulaire, les serveurs de noms ou les adresses IP résolues. Ceci permettrait aux clients de suivre l'évolution des informations essentielles concernant leurs domaines et de prendre les dispositions nécessaires, le cas échéant.</p>
+	<h2 id="premiers-pas">Premiers pas</h2>
+	<p>Si vous êtes client de l'offre Enterprise, <a href=" https://www.cloudflare.com/lp/brandprotection/" target="_blank">inscrivez-vous pour accéder dès maintenant à la version bêta</a> de la solution de protection des marques et bénéficier de l'analyse privée de vos domaines, de l'enregistrement de vos requêtes et de la configuration d'alertes de correspondance de domaines.</p>
+</div>

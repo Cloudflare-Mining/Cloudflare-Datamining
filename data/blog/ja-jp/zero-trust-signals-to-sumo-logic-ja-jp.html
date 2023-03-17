@@ -1,0 +1,35 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/Dashboard_-Quick-Navigation-1.png" class="kg-image" alt="Adding Zero Trust signals to Sumo Logic for better security insights"></figure>
+	<p>百聞は一見にしかずであり、可視化、トレンド、データを既製のセキュリティ・ダッシュボードの形で入手する場合も同様です。</p>
+	<p>本日、Sumo Logicの<a href="https://www.sumologic.com/solutions/cloud-siem-enterprise/" target="_blank">Cloud SIEM</a>における<a href="https://developers.cloudflare.com/logs/about/" target="_blank">Logpush</a>のZero Trustログの自動正規化・相関化のサポート拡充をお知らせします。Cloudflare<a href="https://www.cloudflare.com/partners/technology-partners/sumo-logic/" target="_blank">テクノロジーパートナー</a>として、Sumo Logicは継続的インテリジェンスのパイオニアであり、あらゆる規模の組織がデジタルトランスフォーメーション、モダンアプリケーション、クラウドコンピューティングがもたらすデータの課題と機会に対処できるようにするソフトウェアの新しいカテゴリーです。</p>
+	<p>Sumo Logic Cloud SIEMの更新コンテンツは、Cloudflareのお客様がZero Trustログに関連するアラート疲労を軽減し、セキュリティとネットワークデータを忠実なインサイトに収束させることにより、セキュリティアナリストのトリアージプロセスを加速させることを支援します。この新機能は、既存の<a href="https://www.sumologic.com/application/cloudflare/" target="_blank">Cloudflare App for Sumo Logic</a>を補完するもので、ITおよびセキュリティチームが洞察を深め、異常な活動を理解し、セキュリティおよびネットワークパフォーマンスデータを長期にわたってよりよく傾向づけることができるように設計されています。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/03/Cloud-SIEM-HUD.png" class="kg-image"></figure>
+	<h3 id="-zero-trust-">より深い統合により、Zero Trustインサイトを提供</h3>
+	<p>Cloudflare Zero Trustを利用することで、ユーザー、デバイス、データを保護することができますが、その過程で大量のログが作成されることがあります。これらのログは、組織内外で起きている活動を「誰が」「何を」「いつ」「どこで」行うかを示すものであり、有用かつ重要です。どのWebサイトにアクセスしたか、誰がアプリケーションにサインインしたか、SaaSサービスからどのようなデータが共有されたか、などの情報が含まれています。</p>
+	<p>これまで、Sumo Logicとの連携では、Cloudflareのコアサービスのみを対象として、セキュリティシグナルの自動相関を行うことしかできませんでした。ファブリック全体でWAFやボット検出イベントを確実に収集することは重要ですが、分散作業の爆発的な増加やハイブリッドおよびマルチクラウドインフラストラクチャアーキテクチャの採用により、Zero Trustコンポーネントの可視性がこれまで以上に重要となっています。</p>
+	<p>Sumo Logic Cloud SIEMで利用できるようになったZero Trustログの拡張により、お客様はCloudflare製品が生成する幅広いネットワークおよびセキュリティログのセットによって、セキュリティに関する洞察をより深い文脈で得ることができるようになりました。</p>
+	<ul>
+		<li><a href="https://www.cloudflare.com/products/zero-trust/gateway/" target="_blank">Cloudflare Gateway</a>（ネットワーク、DNS、HTTP）</li>
+		<li><a href="https://www.cloudflare.com/products/zero-trust/browser-isolation/" target="_blank">Cloudflareリモートブラウザ分離</a>（Gatewayのログに含まれる）</li>
+		<li><a href="https://www.cloudflare.com/products/zero-trust/dlp/" target="_blank">Cloudflare Data Loss Prevention</a>（Gatewayのログに含まれる）</li>
+		<li><a href="https://www.cloudflare.com/products/zero-trust/access/" target="_blank">Cloudflare Access</a>（Access監査ログ）</li>
+		<li><a href="https://www.cloudflare.com/products/zero-trust/casb/" target="_blank">Cloudflareクラウドアクセスセキュリティブローカー</a>（ログの検索）</li>
+	</ul>
+	<blockquote>「当社はCloudflareのパートナーとして長期にわたり、共通のお客様がWebサイトやアプリケーションのイベント、トレンドを分析し、デジタルエクスペリエンスを改善するためにエンドツーエンドで可視化を図れるよう連携してきました。今度は、Sumo LogicのCloud SIEMで共通のお客様のZero Trustセキュリティ態勢にリアルタイムの知見を提供するため、このパートナーシップを発展させます」 <br>ジョン・コイル氏<br>Sumo Logicビジネス開発担当バイスプレジデント</blockquote>
+	<h3 id="-">使用開始手順</h3>
+	<p>Sumo LogicとCloudflareのログをLogpush経由で利用できる一連の統合機能を利用するには、まずLogpush to Sumo Logicを有効にして、Sumo Logicのクラウドネイティブプラットフォームに直接ログを送信します。その後、Cloudflareアプリをインストールし、（Cloud SIEMをご利用のお客様は）これらのログをCloud SIEMに転送することで、セキュリティインサイトの自動正規化および相関が可能になります。 </p>
+	<p>なお、CloudflareのLogpushサービスは、Enterpriseのお客様のみご利用いただけます。アップグレードをご希望の方は、<a href="https://www.cloudflare.com/lp/cio-week-2023-cloudflare-one-contact-us/" target="_blank">こちらからお問い合わせください</a>。</p><!--kg-card-begin: markdown-->
+	<ol>
+		<li><a href="https://developers.cloudflare.com/logs/get-started/enable-destinations/sumo-logic/" target="_blank"><strong>Sumo LogicへのLogpushを有効化する</strong></a><br>
+			Cloudflare Logpushは、CloudflareのダッシュボードまたはAPI経由でSumo Logicに直接ログをプッシュすることをサポートしています。</li>
+		<li><strong><a href="https://www.sumologic.com/application/cloudflare/" target="_blank">Cloudflare App for Sumo Logic</a>をインストールします</strong><br>
+			上記のリンク先のApp CatalogからCloudflareアプリを探し、インストールします。インストールする前にアプリに含まれるダッシュボードのプレビューを見たい場合は、[Preview Dashboards（ダッシュボードのプレビュー）]をクリックします。インストールすると、すべてのコアサービスのCloudflareダッシュボードで主要な情報を表示できるようになります。</li>
+		<li><strong>(Cloud SIEMをご利用のお客様）Cloud SIEMにログを転送する</strong><br>
+			上記の手順の後、Cloudflareアプリのインストール時に作成されたS3ソースに<a href="https://help.sumologic.com/docs/integrations/saas-cloud/cloudflare/#prerequisites" target="_blank">_parserフィールドを追加して、</a>Cloudflareログの更新されたパーサーを有効にします。</li>
+	</ol>
+	<!--kg-card-end: markdown-->
+	<h3 id="--1">今後の展開は？</h3>
+	<p>セキュリティのZero Trustモデルに移行を始める組織が増える中、ネットワークのあらゆる側面を可視化することがますます重要になり、そのためにログが重要な役割を果たすようになっています。 </p>
+	<p>もし貴社がまだ取り組みを始めたばかりで、Sumo Logicのようなツールをまだ使用していない場合、<a href="https://blog.cloudflare.com/announcing-logs-engine/">Cloudflare R2 for log storage</a>をご検討ください。Cloudflare R2は、ログストレージのためのスケーラブルで費用対効果の高いソリューションを提供します。</p>
+	<p>Cloudflareは、テクノロジーパートナーと緊密に連携し、お客様のZero Trustの旅に役立つ既存の統合機能を拡張し、新たな統合機能を創造していくことを楽しみにしています。</p>
+</div>
