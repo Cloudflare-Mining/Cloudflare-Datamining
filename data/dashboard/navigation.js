@@ -235,7 +235,7 @@ const navigation = {
 		iconType: "cloudflare-security-network",
 		hasPermission: function(c) {
 			var H = !!s(c) && !!I(c);
-			return !!C(c) || H
+			return !!O(c) || H
 		}
 	}, {
 		title: "navigation.account.ip_addresses",
@@ -387,20 +387,20 @@ const navigation = {
 			title: "navigation.account.stream.videos",
 			url: "/stream/videos",
 			hasPermission: function(c) {
-				return L(c)
+				return N(c)
 			}
 		}, {
 			title: "navigation.account.stream.live_inputs",
 			url: "/stream/inputs",
 			hasPermission: function(c) {
-				return L(c)
+				return N(c)
 			}
 		}, {
 			title: "navigation.common.analytics",
 			url: "/stream/analytics",
 			labels: ["new"],
 			hasPermission: function(c) {
-				return L(c)
+				return N(c)
 			}
 		}]
 	}, {
@@ -415,26 +415,26 @@ const navigation = {
 			title: "navigation.account.images",
 			url: "/images/images",
 			hasPermission: function(c) {
-				return b(c)
+				return E(c)
 			}
 		}, {
 			title: "navigation.account.images.variants",
 			url: "/images/variants",
 			hasPermission: function(c) {
-				return b(c)
+				return E(c)
 			}
 		}, {
 			title: "navigation.account.images.keys",
 			url: "/images/keys",
 			hasPermission: function(c) {
-				return b(c)
+				return E(c)
 			}
 		}, {
 			title: "navigation.account.images.sourcing_kit",
 			url: "/images/sourcing-kit",
 			testId: "sidenav-sourcingkit-link",
 			hasPermission: function(c) {
-				return b(c)
+				return E(c)
 			},
 			labels: ["beta"]
 		}, {
@@ -442,7 +442,7 @@ const navigation = {
 			url: "/images/delivery-zones",
 			testId: "sidenav-delivery-zones-link",
 			hasPermission: function(c) {
-				return b(c) && (0, O.b8)(c)
+				return E(c) && (0, C.b8)(c)
 			},
 			labels: ["new"]
 		}]
@@ -559,7 +559,7 @@ const navigation = {
 			canBeVersioned: !1,
 			hasPermission: function(c) {
 				var H = (0, a.nA)(c);
-				return H ? !!(!(0, t.yD)(c) && !!(0, a.ZB)(c, "origin_reachability_dash", "dash_view") && (0, a.tU)(H, "enterprise") && !!(0, M.Ek)(c, "httpRequestsAdaptiveGroups")) : !1
+				return H ? !!(!(0, t.yD)(c) && !!(0, a.ZB)(c, "origin_reachability_dash", "dash_view") && (0, a.tU)(H, "enterprise") && !!(0, b.Ek)(c, "httpRequestsAdaptiveGroups")) : !1
 			}
 		}, {
 			title: "navigation.zone.analytics.edge_reachability",
@@ -567,7 +567,7 @@ const navigation = {
 			canBeVersioned: !1,
 			hasPermission: function(c) {
 				var H = (0, a.nA)(c);
-				return H ? !!(!(0, t.yD)(c) && !!(0, a.ZB)(c, "edge_reachability_dash", "dash_view") && (0, a.tU)(H, "enterprise") && !!(0, M.Ek)(c, "nelReportsAdaptiveGroups")) : !1
+				return H ? !!(!(0, t.yD)(c) && !!(0, a.ZB)(c, "edge_reachability_dash", "dash_view") && (0, a.tU)(H, "enterprise") && !!(0, b.Ek)(c, "nelReportsAdaptiveGroups")) : !1
 			}
 		}, {
 			title: "navigation.zone.analytics.dns",
@@ -969,7 +969,7 @@ const navigation = {
 			url: "/traffic/health-check-analytics",
 			canBeVersioned: !1,
 			hasPermission: function(c) {
-				return !(0, t.yD)(c) && !!(0, M.Ek)(c, "healthCheckEventsAdaptiveGroups")
+				return !(0, t.yD)(c) && !!(0, b.Ek)(c, "healthCheckEventsAdaptiveGroups")
 			}
 		}, {
 			title: "navigation.zone.traffic.waiting_rooms",
