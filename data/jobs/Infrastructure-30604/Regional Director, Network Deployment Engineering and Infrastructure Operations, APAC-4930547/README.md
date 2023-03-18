@@ -6,9 +6,12 @@
 	</div>
 </div>
 <p><strong>About the department</strong></p>
-<p><span style="font-weight: 400;">Cloudflare is looking for a Regional Director of Data Center Engineering to lead our APAC Region. This leadership role is part of the Infrastructure Operations organization that is responsible for building, scaling, and running Cloudflare’s data center and network infrastructure around the world.&nbsp; You will play a key role in ensuring the performance, availability, and security of Cloudflare’s network.&nbsp; In pursuit of the goal to “help build a better Internet,” Cloudflare operates one of the world’s largest and most important cloud networks. Spanning more than 270 cities across the globe, Cloudflare’s network is a key strategic asset and supports all customers and products.&nbsp;</span></p>
+<p><span style="font-weight: 400;">Cloudflare is looking for a Regional Director of Network Deployment Engineering to lead our APAC Region. This leadership role is part of the Infrastructure Operations organization that is responsible for building, scaling, and running Cloudflare’s data center and network infrastructure around the world.&nbsp; You will play a key role in ensuring the performance, availability, and security of Cloudflare’s network.&nbsp; In pursuit of the goal to “help build a better Internet,” Cloudflare operates one of the world’s largest and most important cloud networks. Spanning more than 270 cities across the globe, Cloudflare’s network is a key strategic asset and supports all customers and products.&nbsp;</span></p>
+<p>&nbsp;</p>
 <p><span style="font-weight: 400;">The APAC region is a highly competitive market with tremendous potential for growth.&nbsp; Our ability to provide fast, reliable, and cost competitive network infrastructure in a very diverse regulatory and commercial landscape is critical to Cloudflare’s success.&nbsp; In this role, you will work directly with a globally-distributed team of engineering managers, network deployment engineers, data center engineers, and technical project managers to lead all infrastructure operations activities and initiatives in the APAC region.&nbsp; This role reports to the VP of Infrastructure Operations.</span></p>
+<p>&nbsp;</p>
 <p><span style="font-weight: 400;">As an experienced engineering leader, you will set strategy, establish priorities, hire, and mentor a group of top technical talent, and implement systems and processes to develop a world-class global technical operations team.&nbsp; We are looking for an enthusiastic and hands-on leader who can rapidly learn, adapt, and apply previous learnings to enable fast and sustainable growth. As a Regional Director, you will be expected to solve hard problems under pressure, provide clear direction, and grow and mentor your team to ensure an energized, motivating, and inclusive work environment.</span></p>
+<p>&nbsp;</p>
 <p><strong>What you will do</strong></p>
 <ul>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Lead a team of passionate, talented network and data center engineers who are building a network that touches billions of web requests each day.</span></li>
@@ -20,6 +23,7 @@
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Get the opportunity to shape product strategy and roll out new services to our customers.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Make sure our company hits our ambitious goals and have a direct impact on the overall success of our company.</span></li>
 </ul>
+<p>&nbsp;</p>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">10+ years experience managing a global datacenter operations or network infrastructure team, preferably at a hyperscale or cloud company.</span></li>
