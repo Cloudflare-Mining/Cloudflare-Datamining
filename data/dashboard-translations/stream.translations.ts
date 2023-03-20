@@ -642,6 +642,7 @@ To read the full docs, [click here](https://developers.cloudflare.com/stream/).`
 	customer_subdomain: "Customer subdomain",
 	read_docs: "read docs",
 	customer_subdomain_tooltip: "This domain is specific to your Cloudflare account. Use it for all requests to fetch video manifests, thumbnails and embed codes.",
+	video_too_long_for_downloads: "MP4 downloads are not supported for live videos longer than 4 hours. Videos longer than 4 hours are still recorded and playable using HLS/DASH.",
 	public_details_validation: {
 		link_limit: "Link exceeds the max allowed length of 2048",
 		title_limit: "Title exceeds the max allowed length of 100"
