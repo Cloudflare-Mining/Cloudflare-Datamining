@@ -8,7 +8,7 @@
 	<h3 id="revocationcheckingahistoryoffailure">Revocation checking: a history of failure</h3>
 	<p>There are several ways a web browser can check whether a site’s certificate is revoked or not. The most well-known mechanisms are Certificate Revocation Lists (CRL) and Online Certificate Status Protocol (OCSP). A CRL is a signed list of serial numbers of certificates revoked by a CA. OCSP is a protocol that can be used to query a CA about the revocation status of a given certificate. An OCSP response contains signed assertions that a certificate is not revoked.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2017/07/image1-1.jpg" alt="CRL"><br>
-		<img src="https://blog.cloudflare.com/content/images/2017/07/image8.jpg" alt="OCSP">
+		<img src="https://blog.cloudflare.com/content/images/2023/03/Frame-658.png" alt="OCSP">
 	</p>
 	<p>Certificates that support OCSP contain the responder's URL and those that support CRLs contain a URLs where the CRL can be obtained. When a browser is served a certificate as part of an HTTPS connection, it can use the embedded URL to download a CRL or an OCSP response and check that the certificate hasn't been revoked before rendering the web page. The question then becomes: what should the browser do if the request for a CRL or OCSP response fails? As it turns out, both answers to that question are problematic.</p>
 	<h3 id="hardfaildoesntwork">Hard-fail doesn’t work</h3>
