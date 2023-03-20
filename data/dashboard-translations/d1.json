@@ -15,6 +15,7 @@
 	"d1.db.create.footer": "To access this database's data from a Worker, bind it to a Service.",
 	"d1.db.create.input.label": "Database name",
 	"d1.db.create.errors.generic": "There was a problem creating your database, please try again later.",
+	"d1.db.create.errors.limit_reached": "You have reached the maximum number of databases (%{dbLimit}) for your account. Please consider deleting unused databases, or visit the <0>D1 documentation</0> to learn more.",
 	"d1.db.create.errors.invalid_length": "Database name must be less than 250 characters long",
 	"d1.db.create.errors.invalid_characters": "Database name can only contain lowercase letters (a-z), numbers (0-9), underscores (_), and hyphens (-)",
 	"d1.db.tabs.tables.title": "Tables",
