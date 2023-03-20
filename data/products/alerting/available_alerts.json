@@ -158,6 +158,30 @@
 			"filter_options": []
 		}
 	],
+	"Pages": [
+		{
+			"display_name": "Pages Alerts",
+			"type": "pages_event_alert",
+			"description": "Pages Alerts",
+			"filter_options": [
+				{
+					"Key": "project_id",
+					"ComparisonOperator": "==",
+					"Optional": false
+				},
+				{
+					"Key": "environment",
+					"ComparisonOperator": "==",
+					"Optional": false
+				},
+				{
+					"Key": "event",
+					"ComparisonOperator": "==",
+					"Optional": false
+				}
+			]
+		}
+	],
 	"Route Leak Detection": [
 		{
 			"display_name": "Route Leak Detection Alert",
