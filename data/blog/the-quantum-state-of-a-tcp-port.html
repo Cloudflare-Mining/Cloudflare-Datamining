@@ -285,7 +285,7 @@ s2.getsockname(), s2.getpeername()
 		<li>the local port number they are bound to.</li>
 	</ul>
 	<p>But in the simplest possible setup - single network namespace, no VRFs - we can say that sockets in a bind bucket are grouped by their local port number.</p>
-	<p>The set of sockets in each bind bucket, that is sharing a local port, is backed by a linked list named owners.</p>
+	<p>The set of sockets in each bind bucket, that is sharing a local port, is backed by a linked list of named owners.</p>
 	<p>When we ask the kernel to assign a local address to a socket, its task is to check for a conflict with any existing socket. That is because a local port number can be shared only <a href="https://elixir.bootlin.com/linux/v6.2/source/include/net/inet_hashtables.h#L43" target="_blank">under some conditions</a>:</p><!--kg-card-begin: markdown-->
 	<pre><code>/* There are a few simple rules, which allow for local port reuse by
  * an application.  In essence:
