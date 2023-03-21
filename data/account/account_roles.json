@@ -1,5 +1,24 @@
 [
 	{
+		"id": "9f436dc7d8294a34345b6a8dc83fdf71",
+		"name": "Cloudflare DEX",
+		"description": "Can edit Cloudflare DEX.",
+		"permissions": {
+			"dex": {
+				"read": true,
+				"edit": true
+			},
+			"zone": {
+				"read": true,
+				"edit": false
+			},
+			"organization": {
+				"read": true,
+				"edit": false
+			}
+		}
+	},
+	{
 		"id": "ccf93de592091ce5e210c816337a37d4",
 		"name": "Zone Versioning Read (Account-Wide)",
 		"description": "Can view Zone Versioning for all domains in account",
@@ -404,6 +423,10 @@
 		"name": "Cloudflare Zero Trust Reporting",
 		"description": "Can access Cloudflare for Zero Trust reporting data.",
 		"permissions": {
+			"dex": {
+				"read": true,
+				"edit": false
+			},
 			"access": {
 				"read": true,
 				"edit": false
@@ -432,6 +455,10 @@
 		"name": "Cloudflare Zero Trust Read Only",
 		"description": "Can access Cloudflare for Zero Trust read only mode.",
 		"permissions": {
+			"dex": {
+				"read": true,
+				"edit": false
+			},
 			"teams": {
 				"read": true,
 				"edit": false,
@@ -464,6 +491,10 @@
 		"name": "Cloudflare Zero Trust",
 		"description": "Can edit Cloudflare Zero Trust.",
 		"permissions": {
+			"dex": {
+				"read": true,
+				"edit": true
+			},
 			"teams": {
 				"read": true,
 				"edit": true,
@@ -516,6 +547,10 @@
 		"name": "Super Administrator - All Privileges",
 		"description": "Can edit any Cloudflare setting, make purchases, update billing, and manage memberships. Super Administrators can revoke the access of other Super Administrators.",
 		"permissions": {
+			"dex": {
+				"read": true,
+				"edit": true
+			},
 			"zone_settings": {
 				"read": true,
 				"edit": true
@@ -1090,6 +1125,10 @@
 		"name": "Administrator Read Only",
 		"description": "Can access the full account in read-only mode.",
 		"permissions": {
+			"dex": {
+				"read": true,
+				"edit": false
+			},
 			"zone_settings": {
 				"read": true,
 				"edit": false
@@ -1210,6 +1249,10 @@
 		"name": "Administrator",
 		"description": "Can access the full account, except for membership management and billing.",
 		"permissions": {
+			"dex": {
+				"read": true,
+				"edit": true
+			},
 			"zone_settings": {
 				"read": true,
 				"edit": true
