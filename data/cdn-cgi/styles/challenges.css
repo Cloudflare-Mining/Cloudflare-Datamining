@@ -12,7 +12,7 @@ html {
 
 html,
 button {
-	font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji"
 }
 
 body {
@@ -218,43 +218,15 @@ a:hover {
 	cursor: pointer
 }
 
-.webauthn-prompt {
-	align-items: center
-}
-
-.captcha-prompt:not(.hidden),
-.webauthn-prompt:not(.hidden) {
+.captcha-prompt:not(.hidden) {
 	display: flex
 }
 
-.webauthn-divider {
-	padding: 0 1.5rem
-}
-
 @media (max-width: 720px) {
-
-	.captcha-prompt:not(.hidden),
-	.webauthn-prompt:not(.hidden) {
+	.captcha-prompt:not(.hidden) {
 		flex-wrap: wrap;
 		justify-content: center
 	}
-
-	.webauthn-divider {
-		margin: 1rem 0;
-		width: 100%;
-		text-align: center
-	}
-}
-
-.webauthn-button {
-	background-color: #fff;
-	color: #0051c3
-}
-
-.webauthn-button:hover {
-	border-color: #003681;
-	background-color: #003681;
-	color: #fff
 }
 
 .pow-button {
@@ -363,7 +335,7 @@ a:hover {
 	position: absolute;
 	border: .3rem solid #595959;
 	border-radius: 50%;
-	border-color: #595959 transparent transparent transparent;
+	border-color: #595959 transparent transparent;
 	width: 1.875rem;
 	height: 1.875rem;
 	animation: lds-ring 1.2s cubic-bezier(.5, 0, .5, 1) infinite
@@ -424,7 +396,7 @@ body.no-js .challenge-running {
 	}
 
 	.lds-ring div {
-		border-color: #999999 transparent transparent transparent
+		border-color: #999 transparent transparent
 	}
 
 	.font-red {
@@ -432,7 +404,6 @@ body.no-js .challenge-running {
 	}
 
 	.big-button,
-	.webauthn-button,
 	.pow-button {
 		background-color: #4693ff;
 		color: #1d1d1d
@@ -441,4 +412,69 @@ body.no-js .challenge-running {
 	.expandable.expanded {
 		border-left-color: #4693ff
 	}
+}
+
+body.dark {
+	background-color: #222;
+	color: #d9d9d9
+}
+
+body.dark a {
+	color: #fff
+}
+
+body.dark a:hover {
+	text-decoration: underline;
+	color: #ee730a
+}
+
+body.dark .lds-ring div {
+	border-color: #999 transparent transparent
+}
+
+body.dark .font-red {
+	color: #b20f03
+}
+
+body.dark .big-button,
+body.dark .pow-button {
+	background-color: #4693ff;
+	color: #1d1d1d
+}
+
+body.dark .expandable.expanded {
+	border-left-color: #4693ff
+}
+
+body.light {
+	background-color: transparent;
+	color: #313131
+}
+
+body.light a {
+	color: #0051c3
+}
+
+body.light a:hover {
+	text-decoration: underline;
+	color: #ee730a
+}
+
+body.light .lds-ring div {
+	border-color: #595959 transparent transparent
+}
+
+body.light .font-red {
+	color: #fc574a
+}
+
+body.light .big-button,
+body.light .pow-button {
+	border-color: #003681;
+	background-color: #003681;
+	color: #fff
+}
+
+body.light .expandable.expanded {
+	border-left-color: #0051c3
 }
