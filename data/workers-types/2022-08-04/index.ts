@@ -289,8 +289,11 @@ export interface ExecutionContext {
   waitUntil(promise: Promise<any>): void;
   passThroughOnException(): void;
 }
-export type ExportedHandlerFetchHandler<Env = unknown> = (
-  request: Request,
+export type ExportedHandlerFetchHandler<
+  Env = unknown,
+  CfHostMetadata = unknown
+> = (
+  request: Request<CfHostMetadata, IncomingRequestCfProperties<CfHostMetadata>>,
   env: Env,
   ctx: ExecutionContext
 ) => Response | Promise<Response>;
@@ -314,8 +317,12 @@ export type ExportedHandlerTestHandler<Env = unknown> = (
   env: Env,
   ctx: ExecutionContext
 ) => void | Promise<void>;
-export interface ExportedHandler<Env = unknown, QueueMessage = unknown> {
-  fetch?: ExportedHandlerFetchHandler<Env>;
+export interface ExportedHandler<
+  Env = unknown,
+  QueueMessage = unknown,
+  CfHostMetadata = unknown
+> {
+  fetch?: ExportedHandlerFetchHandler<Env, CfHostMetadata>;
   trace?: ExportedHandlerTraceHandler<Env>;
   scheduled?: ExportedHandlerScheduledHandler<Env>;
   test?: ExportedHandlerTestHandler<Env>;
@@ -990,23 +997,27 @@ export interface ResponseInit {
   webSocket?: WebSocket | null;
   encodeBody?: "automatic" | "manual";
 }
-export type RequestInfo = Request | string | URL;
-export declare class Request<CfHostMetadata = unknown> extends Body {
-  constructor(input: RequestInfo, init?: RequestInit);
-  clone(): Request<CfHostMetadata>;
+export type RequestInfo<
+  CfHostMetadata = unknown,
+  Cf = CfProperties<CfHostMetadata>
+> = Request<CfHostMetadata, Cf> | string | URL;
+export declare class Request<
+  CfHostMetadata = unknown,
+  Cf = CfProperties<CfHostMetadata>
+> extends Body {
+  constructor(input: RequestInfo<CfProperties>, init?: RequestInit<Cf>);
+  clone(): Request<CfHostMetadata, Cf>;
   get method(): string;
   get url(): string;
   get headers(): Headers;
   get redirect(): string;
   get fetcher(): Fetcher | null;
   get signal(): AbortSignal;
-  get cf(): IncomingRequestCfProperties<CfHostMetadata> | undefined;
+  get cf(): Cf | undefined;
   get integrity(): string;
   get keepalive(): boolean;
 }
-export interface RequestInit<
-  CfType = IncomingRequestCfProperties | RequestInitCfProperties
-> {
+export interface RequestInit<Cf = CfProperties> {
   /** A string to set request's method. */
   method?: string;
   /** A Headers object, an object literal, or an array of two-item arrays to set request's headers. */
@@ -1016,17 +1027,14 @@ export interface RequestInit<
   /** A string indicating whether request follows redirects, results in an error upon encountering a redirect, or returns the redirect (in an opaque fashion). Sets request's redirect. */
   redirect?: string;
   fetcher?: Fetcher | null;
-  cf?: CfType;
+  cf?: Cf;
   /** A cryptographic hash of the resource to be fetched by request. Sets request's integrity. */
   integrity?: string;
   /** An AbortSignal to set request's signal. */
   signal?: AbortSignal | null;
 }
 export declare abstract class Fetcher {
-  fetch(
-    input: RequestInfo,
-    init?: RequestInit<RequestInitCfProperties>
-  ): Promise<Response>;
+  fetch(input: RequestInfo, init?: RequestInit): Promise<Response>;
 }
 export interface FetcherPutOptions {
   expiration?: number;
@@ -1868,7 +1876,7 @@ export interface BasicImageTransformationsGravityCoordinates {
  * Note: Currently, these properties cannot be tested in the
  * playground.
  */
-export interface RequestInitCfProperties {
+export interface RequestInitCfProperties extends Record<string, unknown> {
   cacheEverything?: boolean;
   /**
    * A request's cache key is what determines if two requests are
@@ -2038,6 +2046,49 @@ export interface RequestInitCfPropertiesImage
    * the origin.
    */
   "origin-auth"?: "share-publicly";
+  /**
+   * Adds a border around the image. The border is added after resizing. Border
+   * width takes dpr into account, and can be specified either using a single
+   * width property, or individually for each side.
+   */
+  border?:
+    | {
+        color: string;
+        width: number;
+      }
+    | {
+        color: string;
+        top: number;
+        right: number;
+        bottom: number;
+        left: number;
+      };
+  /**
+   * Increase brightness by a factor. A value of 1.0 equals no change, a value
+   * of 0.5 equals half brightness, and a value of 2.0 equals twice as bright.
+   * 0 is ignored.
+   */
+  brightness?: number;
+  /**
+   * Increase contrast by a factor. A value of 1.0 equals no change, a value of
+   * 0.5 equals low contrast, and a value of 2.0 equals high contrast. 0 is
+   * ignored.
+   */
+  contrast?: number;
+  /**
+   * Increase exposure by a factor. A value of 1.0 equals no change, a value of
+   * 0.5 darkens the image, and a value of 2.0 lightens the image. 0 is ignored.
+   */
+  gamma?: number;
+  /**
+   * Slightly reduces latency on a cache miss by selecting a
+   * quickest-to-compress file format, at a cost of increased file size and
+   * lower image quality. It will usually override the format option and choose
+   * JPEG over WebP or AVIF. We do not recommend using this option, except in
+   * unusual circumstances like resizing uncacheable dynamically-generated
+   * images.
+   */
+  compression?: "fast";
 }
 export interface RequestInitCfPropertiesImageMinify {
   javascript?: boolean;
@@ -2053,7 +2104,8 @@ export type IncomingRequestCfProperties<HostMetadata = unknown> =
     IncomingRequestCfPropertiesCloudflareForSaaSEnterprise<HostMetadata> &
     IncomingRequestCfPropertiesGeographicInformation &
     IncomingRequestCfPropertiesCloudflareAccessOrApiShield;
-export interface IncomingRequestCfPropertiesBase {
+export interface IncomingRequestCfPropertiesBase
+  extends Record<string, unknown> {
   /**
    * [ASN](https://www.iana.org/assignments/as-numbers/as-numbers.xhtml) of the incoming request.
    *
@@ -2246,86 +2298,82 @@ export interface IncomingRequestCfPropertiesExportedAuthenticatorMetadata {
 /**
  * Geographic data about the request's origin.
  */
-export type IncomingRequestCfPropertiesGeographicInformation =
-  | {}
-  | {
-      /** The country code `"T1"` is used for requests originating on TOR  */
-      country: "T1";
-    }
-  | {
-      /**
-       * The [ISO 3166-1 Alpha 2](https://www.iso.org/iso-3166-country-codes.html) country code the request originated from.
-       *
-       * If your worker is [configured to accept TOR connections](https://support.cloudflare.com/hc/en-us/articles/203306930-Understanding-Cloudflare-Tor-support-and-Onion-Routing), this may also be `"T1"`, indicating a request that originated over TOR.
-       *
-       * If Cloudflare is unable to determine where the request originated this property is omitted.
-       *
-       * @example "GB"
-       */
-      country: Iso3166Alpha2Code;
-      /**
-       * If present, this property indicates that the request originated in the EU
-       *
-       * @example "1"
-       */
-      isEUCountry?: "1";
-      /**
-       * A two-letter code indicating the continent the request originated from.
-       *
-       * @example "AN"
-       */
-      continent: ContinentCode;
-      /**
-       * The city the request originated from
-       *
-       * @example "Austin"
-       */
-      city?: string;
-      /**
-       * Postal code of the incoming request
-       *
-       * @example "78701"
-       */
-      postalCode?: string;
-      /**
-       * Latitude of the incoming request
-       *
-       * @example "30.27130"
-       */
-      latitude?: string;
-      /**
-       * Longitude of the incoming request
-       *
-       * @example "-97.74260"
-       */
-      longitude?: string;
-      /**
-       * Timezone of the incoming request
-       *
-       * @example "America/Chicago"
-       */
-      timezone?: string;
-      /**
-       * If known, the ISO 3166-2 name for the first level region associated with
-       * the IP address of the incoming request
-       *
-       * @example "Texas"
-       */
-      region?: string;
-      /**
-       * If known, the ISO 3166-2 code for the first-level region associated with
-       * the IP address of the incoming request
-       *
-       * @example "TX"
-       */
-      regionCode?: string;
-      /**
-       * Metro code (DMA) of the incoming request
-       *
-       * @example "635"
-       */
-      metroCode?: string;
-    };
+export interface IncomingRequestCfPropertiesGeographicInformation {
+  /**
+   * The [ISO 3166-1 Alpha 2](https://www.iso.org/iso-3166-country-codes.html) country code the request originated from.
+   *
+   * If your worker is [configured to accept TOR connections](https://support.cloudflare.com/hc/en-us/articles/203306930-Understanding-Cloudflare-Tor-support-and-Onion-Routing), this may also be `"T1"`, indicating a request that originated over TOR.
+   *
+   * If Cloudflare is unable to determine where the request originated this property is omitted.
+   *
+   * The country code `"T1"` is used for requests originating on TOR.
+   *
+   * @example "GB"
+   */
+  country?: Iso3166Alpha2Code | "T1";
+  /**
+   * If present, this property indicates that the request originated in the EU
+   *
+   * @example "1"
+   */
+  isEUCountry?: "1";
+  /**
+   * A two-letter code indicating the continent the request originated from.
+   *
+   * @example "AN"
+   */
+  continent?: ContinentCode;
+  /**
+   * The city the request originated from
+   *
+   * @example "Austin"
+   */
+  city?: string;
+  /**
+   * Postal code of the incoming request
+   *
+   * @example "78701"
+   */
+  postalCode?: string;
+  /**
+   * Latitude of the incoming request
+   *
+   * @example "30.27130"
+   */
+  latitude?: string;
+  /**
+   * Longitude of the incoming request
+   *
+   * @example "-97.74260"
+   */
+  longitude?: string;
+  /**
+   * Timezone of the incoming request
+   *
+   * @example "America/Chicago"
+   */
+  timezone?: string;
+  /**
+   * If known, the ISO 3166-2 name for the first level region associated with
+   * the IP address of the incoming request
+   *
+   * @example "Texas"
+   */
+  region?: string;
+  /**
+   * If known, the ISO 3166-2 code for the first-level region associated with
+   * the IP address of the incoming request
+   *
+   * @example "TX"
+   */
+  regionCode?: string;
+  /**
+   * Metro code (DMA) of the incoming request
+   *
+   * @example "635"
+   */
+  metroCode?: string;
+}
 /** Data about the incoming request's TLS certificate */
 export interface IncomingRequestCfPropertiesTLSClientAuth {
   /** Always `"1"`, indicating that the certificate was presented */
@@ -2718,6 +2766,9 @@ export type Iso3166Alpha2Code =
   | "ZW";
 /** The 2-letter continent codes Cloudflare uses */
 export type ContinentCode = "AF" | "AN" | "AS" | "EU" | "NA" | "OC" | "SA";
+export type CfProperties<HostMetadata = unknown> =
+  | IncomingRequestCfProperties<HostMetadata>
+  | RequestInitCfProperties;
 export interface D1Result<T = unknown> {
   results?: T[];
   success: boolean;
@@ -2740,7 +2791,7 @@ export declare abstract class D1PreparedStatement {
 /**
  * A email message that is sent to a consumer Worker.
  */
-export interface EmailMessage<Body = unknown> {
+export interface EmailMessage {
   /**
    * Envelope From attribute of the email message.
    */
