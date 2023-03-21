@@ -12,7 +12,7 @@
 <p><span style="font-weight: 400;">Working in the security portfolio, that includes the Firewall and Managed Rules, you will take a cross-functional role to ensure we protect our customers from L3-L7 attacks on a variety of levels.</span></p>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Prior commercial software development experience</span></li>
+	<li style="font-weight: 400;">At least four years of prior commercial software development experience</li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Solid competencies in practical computer science, applying the right algorithms, data structures, concurrency control systems to software design, and building large, distributed systems</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Proven experience in running high performance and enterprise scale services at pace and at scale whilst maintaining operational stability</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience of working with Product teams to balance technical agenda, operation of existing systems and new product development</span></li>
