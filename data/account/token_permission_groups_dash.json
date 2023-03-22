@@ -36,15 +36,6 @@
 		"label": "api_tokens_write"
 	},
 	{
-		"id": "eb258a38ea634c86a0c89da6b27cb6b6",
-		"name": "Access: Apps and Policies Read",
-		"description": "Grants read access to Cloudflare Access zone resources",
-		"scopes": [
-			"com.cloudflare.api.account.zone"
-		],
-		"label": "zone_access_read"
-	},
-	{
 		"id": "7ea222f6d5064cfa89ea366d7c1fee89",
 		"name": "Access: Apps and Policies Read",
 		"description": "Grants read access to Cloudflare Access account resources",
@@ -54,13 +45,13 @@
 		"label": "access_read"
 	},
 	{
-		"id": "6c9d1cfcfc6840a987d1b5bfb880a841",
-		"name": "Access: Apps and Policies Revoke",
-		"description": "Grants ability to revoke all tokens to Cloudflare Access account resources",
+		"id": "eb258a38ea634c86a0c89da6b27cb6b6",
+		"name": "Access: Apps and Policies Read",
+		"description": "Grants read access to Cloudflare Access zone resources",
 		"scopes": [
-			"com.cloudflare.api.account"
+			"com.cloudflare.api.account.zone"
 		],
-		"label": "access_revoke"
+		"label": "zone_access_read"
 	},
 	{
 		"id": "6db4e222e21248ac96a3f4c2a81e3b41",
@@ -72,13 +63,13 @@
 		"label": "zone_access_revoke"
 	},
 	{
-		"id": "959972745952452f8be2452be8cbb9f2",
-		"name": "Access: Apps and Policies Write",
-		"description": "Grants write access to Cloudflare Access zone resources",
+		"id": "6c9d1cfcfc6840a987d1b5bfb880a841",
+		"name": "Access: Apps and Policies Revoke",
+		"description": "Grants ability to revoke all tokens to Cloudflare Access account resources",
 		"scopes": [
-			"com.cloudflare.api.account.zone"
+			"com.cloudflare.api.account"
 		],
-		"label": "zone_access_write"
+		"label": "access_revoke"
 	},
 	{
 		"id": "1e13c5124ca64b72b1969a67e8829049",
@@ -88,6 +79,15 @@
 			"com.cloudflare.api.account"
 		],
 		"label": "access_write"
+	},
+	{
+		"id": "959972745952452f8be2452be8cbb9f2",
+		"name": "Access: Apps and Policies Write",
+		"description": "Grants write access to Cloudflare Access zone resources",
+		"scopes": [
+			"com.cloudflare.api.account.zone"
+		],
+		"label": "zone_access_write"
 	},
 	{
 		"id": "b05b28e839c54467a7d6cba5d3abb5a3",
@@ -459,6 +459,15 @@
 		"label": "chinanetwork_steering_write"
 	},
 	{
+		"id": "3a1e1ef09dd34271bb44fc4c6a419952",
+		"name": "Cloudflare DEX",
+		"description": "Grants access to Cloudflare DEX",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"label": "teams_dex"
+	},
+	{
 		"id": "20e5ea084b2f491c86b8d8d90abff905",
 		"name": "Config Settings Read",
 		"description": "Grants read access to config settings phase",
@@ -585,15 +594,6 @@
 		"label": "dns_write"
 	},
 	{
-		"id": "29eefa0805f94fdfae2b058b5b52f319",
-		"name": "Disable ESC Read",
-		"description": "Grants read access to Cloudflare Disable ESC",
-		"scopes": [
-			"com.cloudflare.api.account"
-		],
-		"label": "account_disable_esc_read"
-	},
-	{
 		"id": "e199d584e69344eba202452019deafe3",
 		"name": "Disable ESC Read",
 		"description": "Grants read access to Cloudflare Disable ESC",
@@ -601,6 +601,15 @@
 			"com.cloudflare.api.account.zone"
 		],
 		"label": "zone_disable_esc_read"
+	},
+	{
+		"id": "29eefa0805f94fdfae2b058b5b52f319",
+		"name": "Disable ESC Read",
+		"description": "Grants read access to Cloudflare Disable ESC",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"label": "account_disable_esc_read"
 	},
 	{
 		"id": "18555e39c5ba40d284dde87eda845a90",
@@ -927,15 +936,6 @@
 		"label": "account_logs_read"
 	},
 	{
-		"id": "3e0b5820118e47f3922f7c989e673882",
-		"name": "Logs Write",
-		"description": "Grants write access to logpush jobs",
-		"scopes": [
-			"com.cloudflare.api.account.zone"
-		],
-		"label": "logs_write"
-	},
-	{
 		"id": "96163bd1b0784f62b3e44ed8c2ab1eb6",
 		"name": "Logs Write",
 		"description": "Grants write access to logpush jobs",
@@ -943,6 +943,15 @@
 			"com.cloudflare.api.account"
 		],
 		"label": "account_logs_write"
+	},
+	{
+		"id": "3e0b5820118e47f3922f7c989e673882",
+		"name": "Logs Write",
+		"description": "Grants write access to logpush jobs",
+		"scopes": [
+			"com.cloudflare.api.account.zone"
+		],
+		"label": "logs_write"
 	},
 	{
 		"id": "3a46c728a0a040d5a65cd8e2f3bc6935",

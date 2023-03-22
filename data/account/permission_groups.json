@@ -13,6 +13,20 @@
 		"modified_on": "2020-10-13T12:42:59.660479Z",
 		"permissions": [
 			{
+				"id": "8d4a6f77689945aeb46721cd7ce1ee10",
+				"key": "com.cloudflare.team.dex.read",
+				"attributes": {
+					"legacy_name": "#dex:read"
+				}
+			},
+			{
+				"id": "444605811ae8409ea04ee8801b4429c5",
+				"key": "com.cloudflare.team.dex.edit",
+				"attributes": {
+					"legacy_name": "#dex:edit"
+				}
+			},
+			{
 				"id": "6fab336dd80b49a4a40be44b5bb08fe3",
 				"key": "com.cloudflare.api.account.zone.email.security.dmarc-reports.*",
 				"attributes": {
@@ -3989,6 +4003,13 @@
 		"created_on": "2020-10-13T12:42:59.660479Z",
 		"modified_on": "2020-10-13T12:42:59.660479Z",
 		"permissions": [
+			{
+				"id": "8d4a6f77689945aeb46721cd7ce1ee10",
+				"key": "com.cloudflare.team.dex.read",
+				"attributes": {
+					"legacy_name": "#dex:read"
+				}
+			},
 			{
 				"id": "8cd5309ea9944ca9ae2eba962021ffb1",
 				"key": "com.cloudflare.api.account.zone.email.security.dmarc-reports.read",
@@ -8067,6 +8088,57 @@
 		]
 	},
 	{
+		"id": "086efe51df864f939756a19b7ec5b324",
+		"name": "Cloudflare DEX",
+		"status": "V",
+		"meta": {
+			"description": "Can edit Cloudflare DEX.",
+			"editable": "false",
+			"label": "teams_dex",
+			"scopes": "com.cloudflare.api.account"
+		},
+		"created_on": "2023-03-21T21:17:04.032767Z",
+		"modified_on": "2023-03-21T21:17:04.032767Z",
+		"permissions": [
+			{
+				"id": "8d4a6f77689945aeb46721cd7ce1ee10",
+				"key": "com.cloudflare.team.dex.read",
+				"attributes": {
+					"legacy_name": "#dex:read"
+				}
+			},
+			{
+				"id": "444605811ae8409ea04ee8801b4429c5",
+				"key": "com.cloudflare.team.dex.edit",
+				"attributes": {
+					"legacy_name": "#dex:edit"
+				}
+			},
+			{
+				"id": "d90ead6fe9f644b498e24cc896003aab",
+				"key": "com.cloudflare.api.iam.permission-group.read"
+			},
+			{
+				"id": "e55def90f14d450f926009bfe8e637df",
+				"key": "com.cloudflare.api.iam.permission-group.list"
+			},
+			{
+				"id": "325e96ea0e494d2ebeaf5e97c7fe3c45",
+				"key": "com.cloudflare.api.account.zone.read",
+				"attributes": {
+					"legacy_name": "#zone:read"
+				}
+			},
+			{
+				"id": "878697b68861464fb6acf52cf96b5c24",
+				"key": "com.cloudflare.api.account.read",
+				"attributes": {
+					"legacy_name": "#organization:read"
+				}
+			}
+		]
+	},
+	{
 		"id": "215b1762a48f4a51bed10fee5c4d1d7d",
 		"name": "Cloudflare Gateway",
 		"status": "V",
@@ -9344,6 +9416,20 @@
 		"modified_on": "2022-03-23T23:47:46.228595Z",
 		"permissions": [
 			{
+				"id": "8d4a6f77689945aeb46721cd7ce1ee10",
+				"key": "com.cloudflare.team.dex.read",
+				"attributes": {
+					"legacy_name": "#dex:read"
+				}
+			},
+			{
+				"id": "444605811ae8409ea04ee8801b4429c5",
+				"key": "com.cloudflare.team.dex.edit",
+				"attributes": {
+					"legacy_name": "#dex:edit"
+				}
+			},
+			{
 				"id": "ad4e95cbd68046baac81be55523b3feb",
 				"key": "com.cloudflare.team.account.connectivity.*"
 			},
@@ -9649,6 +9735,13 @@
 		"created_on": "2022-03-23T23:47:46.228595Z",
 		"modified_on": "2022-03-23T23:47:46.228595Z",
 		"permissions": [
+			{
+				"id": "8d4a6f77689945aeb46721cd7ce1ee10",
+				"key": "com.cloudflare.team.dex.read",
+				"attributes": {
+					"legacy_name": "#dex:read"
+				}
+			},
 			{
 				"id": "94404e72b146432aa4d4df438cf8beea",
 				"key": "com.cloudflare.team.account.connectivity.read"
@@ -9976,6 +10069,13 @@
 		"created_on": "2022-03-23T23:47:46.228595Z",
 		"modified_on": "2022-03-23T23:47:46.228595Z",
 		"permissions": [
+			{
+				"id": "8d4a6f77689945aeb46721cd7ce1ee10",
+				"key": "com.cloudflare.team.dex.read",
+				"attributes": {
+					"legacy_name": "#dex:read"
+				}
+			},
 			{
 				"id": "b84c6efb8f1546f9bdc0914cfa7c92c3",
 				"key": "com.cloudflare.api.account.notification.list"
@@ -15866,6 +15966,13 @@
 				"key": "com.cloudflare.api.iam.permission-group.list"
 			},
 			{
+				"id": "5ceefe95a5544afca1ce060e6c50343b",
+				"key": "com.cloudflare.api.account.rule.list.*",
+				"attributes": {
+					"legacy_name": "#waf:read,#waf:edit"
+				}
+			},
+			{
 				"id": "7620f2cc66694072957e33e122957310",
 				"key": "com.cloudflare.edge.spectrum.app.delete",
 				"attributes": {
@@ -16356,6 +16463,20 @@
 		"created_on": "2020-10-13T12:42:59.660479Z",
 		"modified_on": "2020-10-13T12:42:59.660479Z",
 		"permissions": [
+			{
+				"id": "8d4a6f77689945aeb46721cd7ce1ee10",
+				"key": "com.cloudflare.team.dex.read",
+				"attributes": {
+					"legacy_name": "#dex:read"
+				}
+			},
+			{
+				"id": "444605811ae8409ea04ee8801b4429c5",
+				"key": "com.cloudflare.team.dex.edit",
+				"attributes": {
+					"legacy_name": "#dex:edit"
+				}
+			},
 			{
 				"id": "6fab336dd80b49a4a40be44b5bb08fe3",
 				"key": "com.cloudflare.api.account.zone.email.security.dmarc-reports.*",
