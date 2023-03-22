@@ -299,6 +299,25 @@ Similarly, any HTTP redirect to HTTPS at the origin while the Cloudflare proxy i
 If you do not have a valid custom or dedicated certificate at Cloudflare's edge and are unsure if any of the above Cloudflare settings are enabled, or if any HTTP redirects exist at your origin, we advise leaving Universal SSL enabled for your domain.`,
 	disable_ussl_modal_body_managed_cname_error: "Managed CNAME and SSL for SaaS require Universal SSL to remain enabled. Contact Cloudflare Support for assistance.",
 	disable_ussl_modal_title_managed_cname_error: "Unable to disable Universal SSL",
+	dcv_delegation: {
+		card_title: "DCV Delegation for Partial Zones",
+		card_description: "Enable automated certificate issuance and renewal for unproxied or wildcard hostnames with DCV Delegation. For each hostname, place a CNAME record with the authoritative DNS that points the ACME DCV challenge to the hostname specific Cloudflare validation destination.",
+		card_description_sslforsaas: "Enable automated certificate issuance and renewal for unproxied or wildcard hostnames with DCV Delegation. For each hostname, the domain owner needs to place a CNAME record with the authoritative DNS that points the ACME DCV challenge to the hostname specific Cloudflare validation destination.",
+		card_hostname: "&#60;hostname&#62",
+		card_help_description: "#### What is DCV Delegation? \n\n ACME compliant CAs (like Let's Encrypt and Google) follow CNAME records when checking for the TXT challenge tokens required to issue a certificate. This allows the domain control validation (DCV) process to be delegated to Cloudflare with a partial zone setup. For each unproxied hostname or wildcard certificate order, place up a CNAME record that points to the hostname specific validation zone on Cloudflare. The UUID portion of the CNAME destination is unique for your zone and account. Note: Moving the domain to a different account will change the value of the UUID.\n\n#### How to use DCV Delegation?\n\nIf you want to be issued a certificate for `%{zone}` and `*.%{zone}` without needing to manually place TXT tokens every renewal period,\n\n* Create a CNAME record on `_acme-challenge.%{zone}` in your authoritative DNS and point it to `%{zone}.%{uuid}.dcv.cloudflare.com`. One such record takes care of both the apex hostname as well as the wildcard.\n\nRepeat this for other subdomains of `%{zone}` that you want to order Advanced certificates for.",
+		card_title_sslforsaas: "DCV Delegation for Custom Hostnames",
+		card_help_description_sslforsaas: `#### What is DCV Delegation? 
+
+ ACME compliant CAs (like Let's Encrypt and Google) follow CNAME records when checking for the TXT challenge tokens required to issue a certificate. This allows the domain control validation (DCV) process to be delegated to Cloudflare with Custom Hostnames. For each unique wildcard-enabled hostname, the domain owner needs to place a CNAME record that points to the hostname specific validation zone on Cloudflare. The UUID portion of the CNAME destination is unique for your zone and account. Note: Moving the domain to a different account will change the value of the UUID.
+
+#### How to use DCV Delegation?
+
+If you want to be issued a certificate for \`example.com\` and \`*.example.com\` (a wildcard custom hostname) without needing to manually place TXT tokens every renewal period,
+
+* Create a CNAME record on \`_acme-challenge.example.com\` in the authoritative DNS and point it to \`example.com.%{uuid}.dcv.cloudflare.com\`. One such record takes care of both the apex hostname as well as the wildcard.
+
+`
+	},
 	ussl_ca_card_changed_notification: "Universal SSL Certificate Authority successfully changed.",
 	ussl_ca_card_title: "Universal SSL Certificate Authority",
 	ussl_ca_card_description: "Select the certificate authority (CA) that will be used for issuing your Universal SSL certificate.",
