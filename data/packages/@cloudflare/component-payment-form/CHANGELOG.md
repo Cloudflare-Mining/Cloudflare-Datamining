@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.1](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/component-payment-form@3.0.0...@cloudflare/component-payment-form@3.0.1) (2023-03-23)
+
+**Note:** Version bump only for package @cloudflare/component-payment-form
+
+
+
+
+
+# [3.0.0](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/component-payment-form@2.0.157...@cloudflare/component-payment-form@3.0.0) (2023-03-23)
+
+
+### Bug Fixes
+
+* **component-payment-form:** BILL-17812 add reducers for pm update actio ([d55d72d](http://stash.cfops.it:7999/fe/stratus/commits/d55d72d))
+* **component-payment-form:** BILL-17825 fix spacing between header ([902a92d](http://stash.cfops.it:7999/fe/stratus/commits/902a92d))
+* **component-payment-form:** BILL-17854 delete method doesn't returns 20 ([57230a2](http://stash.cfops.it:7999/fe/stratus/commits/57230a2))
+
+
+### Features
+
+* **component-payment-form:** BILL-17243 bump [@stripe](http://stash.cfops.it:7999/stripe)/react-stripe-js an ([8b4249a](http://stash.cfops.it:7999/fe/stratus/commits/8b4249a))
+* **component-payment-form:** BILL-17377 make request to decide which UI ([a1fc12a](http://stash.cfops.it:7999/fe/stratus/commits/a1fc12a))
+* **component-payment-form:** BILL-17812 update logic for updatePaymentM ([2fdeb4e](http://stash.cfops.it:7999/fe/stratus/commits/2fdeb4e))
+* **component-payment-form:** BILL-17815 remove unused form fields in pa ([44fe86a](http://stash.cfops.it:7999/fe/stratus/commits/44fe86a))
+
+
+### BREAKING CHANGES
+
+* **component-payment-form:** new endpoint
+
+
+
+
+
 ## [2.0.157](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/component-payment-form@2.0.156...@cloudflare/component-payment-form@2.0.157) (2023-02-28)
 
 **Note:** Version bump only for package @cloudflare/component-payment-form
