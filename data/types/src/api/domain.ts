@@ -264,3 +264,7 @@ export enum ResendDomainProtectionEmailRequest {
   APPROVER_EMAIL_VERIFICATION = 'DesignatedApproverVerificationRequest',
   APPROVER_REMOVAL = 'DesignatedApproverRemovalRequest'
 }
+
+export const SupportedTLDs = eg.object({
+  tlds: eg.array(eg.string)
+});

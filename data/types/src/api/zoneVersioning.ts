@@ -23,12 +23,12 @@ export type ZoneApplication = TypeFromCodec<typeof ZoneApplication>;
 const ZoneVersion = eg.object({
   version: eg.number,
   id: eg.string,
-  cloned_from: eg.string,
+  cloned_from: eg.string.optional,
   application_id: eg.string,
   description: eg.string,
   status: eg.string,
   locked: eg.boolean,
-  last_updated: eg.string
+  last_updated: eg.string.optional
 });
 
 export type ZoneVersion = TypeFromCodec<typeof ZoneVersion>;

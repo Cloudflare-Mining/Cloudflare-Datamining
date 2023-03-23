@@ -77,7 +77,7 @@ export const AccountMemberResourceGroup = eg.object({
   name: eg.string.optional,
   metadata: eg.object({
     editable: eg.boolean
-  })
+  }).optional
 });
 
 export type AccountMemberResourceGroup = TypeFromCodec<
