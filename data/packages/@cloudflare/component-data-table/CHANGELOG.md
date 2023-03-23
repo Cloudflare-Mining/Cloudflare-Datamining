@@ -1,5 +1,12 @@
 # Change Log
 
+## 4.0.1
+
+### Patch Changes
+
+- Updated dependencies [9770d520c9]
+  - @cloudflare/component-link@7.1.0
+
 ## 4.0.0
 
 ### Major Changes
