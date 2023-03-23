@@ -1,5 +1,16 @@
 # Change Log
 
+## 7.2.0
+
+### Minor Changes
+
+- 9770d520c9: Add DocumentationLink to component-link; non-breaking design changes to component-page (incl. new props, heading hierarchy) + deprecate subtitle prop.
+
+### Patch Changes
+
+- Updated dependencies [9770d520c9]
+  - @cloudflare/component-link@7.1.0
+
 ## 7.1.0
 
 ### Minor Changes
