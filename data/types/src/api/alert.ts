@@ -133,3 +133,6 @@ export const AvailableAlert = eg.object({
   description: eg.string.optional
 });
 export type AvailableAlert = TypeFromCodec<typeof AvailableAlert>;
+
+export const TestAlertRequest = eg.object({});
+export type TestAlertRequest = TypeFromCodec<typeof TestAlertRequest>;
