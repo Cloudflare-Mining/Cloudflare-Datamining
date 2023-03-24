@@ -7531,12 +7531,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				e.g.build = Dd({}, {
-					branch: "hotfix-zone-versioning-hides-ssl",
+					branch: "leland/SECENG-10686-2",
 					isReleaseCandidate: "true",
-					commit: "cd65b0cec23456979f1abbec20a8701ba0cce99b",
+					commit: "f585e44fea92029249f3c03a0cbfee33671b55c0",
 					env: "production",
-					builtAt: 1679678498071,
-					dashVersion: "a1945d134b679c1d9937f6ed7e7f87b58f4c7ad5",
+					builtAt: 1679694607403,
+					dashVersion: "ad1599504d2824e8859b76a33bb0dcbfd94f6045",
 					versions: {
 						"@cloudflare/app-dash": "25.148.28",
 						node: "16.16.0",
@@ -89501,4 +89501,4 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 	}
 ]);
 
-//# sourceMappingURL=f3c1c75866211748a171.js.map
+//# sourceMappingURL=63d869ef88967291073e.js.map
