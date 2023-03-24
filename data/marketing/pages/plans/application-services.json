@@ -14257,6 +14257,339 @@
 								"name": "Customization & Optimization",
 								"features": [
 									{
+										"contentfulId": "5Yz3unvWepSb2b4Pf5zFT4",
+										"contentTypeId": "planElementFeatures",
+										"name": "Page Rules",
+										"description": "Set up forwarding, extend or exclude caching, require SSL connections, and generally exercise fine-grained control over how Cloudflare interacts with your site on a page-by-page basis.",
+										"planValues": [
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "aTRi8ui3r4vKaFQeRJBgl",
+												"textValue": "3",
+												"plan": {
+													"contentfulId": "4J2b292gM2Io6Xb2UjbsLo",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Application Services - Free Plan",
+													"name": "Free",
+													"description": "For personal or hobby projects that aren't business-critical.",
+													"pricingDescription": "Add-ons billed monthly",
+													"price": 0,
+													"currency": "$",
+													"customPricingText": "$0/month",
+													"monthlyPricingText": "$0/month",
+													"annualPricingText": "$0/year",
+													"billingCycle": "monthly",
+													"customPricingCta": {
+														"buttonAssetFile": null,
+														"buttonWidth": "auto",
+														"buttonColor": "orange",
+														"buttonTextLoggedIn": null,
+														"contentTypeId": "button",
+														"contentfulId": "3ILA97nY8NryApAuJ1Gk1Y",
+														"elementName": "Add a website (Free Plan CTA)",
+														"standardText": null,
+														"text": "Add a Website",
+														"url": "https://dash.cloudflare.com/sign-up?pt=f",
+														"loggedInUrl": null,
+														"modal": null,
+														"openInNewTab": false,
+														"locale": "en-US"
+													},
+													"monthlyPricingCta": {
+														"buttonAssetFile": null,
+														"buttonWidth": "auto",
+														"buttonColor": "orange",
+														"buttonTextLoggedIn": null,
+														"contentTypeId": "button",
+														"contentfulId": "3ILA97nY8NryApAuJ1Gk1Y",
+														"elementName": "Add a website (Free Plan CTA)",
+														"standardText": null,
+														"text": "Add a Website",
+														"url": "https://dash.cloudflare.com/sign-up?pt=f",
+														"loggedInUrl": null,
+														"modal": null,
+														"openInNewTab": false,
+														"locale": "en-US"
+													},
+													"annualPricingCta": {
+														"buttonAssetFile": null,
+														"buttonWidth": "auto",
+														"buttonColor": "orange",
+														"buttonTextLoggedIn": null,
+														"contentTypeId": "button",
+														"contentfulId": "3ILA97nY8NryApAuJ1Gk1Y",
+														"elementName": "Add a website (Free Plan CTA)",
+														"standardText": null,
+														"text": "Add a Website",
+														"url": "https://dash.cloudflare.com/sign-up?pt=f",
+														"loggedInUrl": null,
+														"modal": null,
+														"openInNewTab": false,
+														"locale": "en-US"
+													}
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "2yZq2sc3QS2bWt4KmYPUyG",
+												"textValue": "20",
+												"plan": {
+													"contentfulId": "7JMDjiexzE2evvzrTjly8l",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Application Services - Pro Plan",
+													"name": "Pro",
+													"description": "For professional websites that aren't business-critical.",
+													"pricingDescription": "Billed $240 annually or $25/mo billed monthly",
+													"price": 20,
+													"currency": "$",
+													"customPricingText": "$20/month",
+													"monthlyPricingText": "Get Started",
+													"annualPricingText": null,
+													"billingCycle": "monthly",
+													"customPricingCta": {
+														"buttonAssetFile": null,
+														"buttonWidth": "auto",
+														"buttonColor": "orange",
+														"buttonTextLoggedIn": "Get Started",
+														"contentTypeId": "button",
+														"contentfulId": "BAPzPAKYDQYC0DtJHlpEK",
+														"elementName": "Pro Plan - (non multi-sku) (&utm_content=plans-q123)",
+														"standardText": null,
+														"text": "Get Started",
+														"url": "https://dash.cloudflare.com/sign-up?pt=p&utm_content=plans-q123",
+														"loggedInUrl": "https://dash.cloudflare.com/sign-up?pt=p&utm_content=plans-q123",
+														"modal": null,
+														"openInNewTab": false,
+														"locale": "en-US"
+													},
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "5I4iDgMHH3GreX0GDZYiyV",
+												"textValue": "50",
+												"plan": {
+													"contentfulId": "X0mi2lABGJXFQqE4wieTW",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Application Services - Business Plan",
+													"name": "Business",
+													"description": "For small businesses operating online.",
+													"pricingDescription": "Billed $2400 annually or $250/mo billed monthly",
+													"price": 200,
+													"currency": "$",
+													"customPricingText": "$200/month",
+													"monthlyPricingText": null,
+													"annualPricingText": null,
+													"billingCycle": "monthly",
+													"customPricingCta": {
+														"buttonAssetFile": null,
+														"buttonWidth": "auto",
+														"buttonColor": "orange",
+														"buttonTextLoggedIn": null,
+														"contentTypeId": "button",
+														"contentfulId": "DBuPCkGVDmRYzExWarliS",
+														"elementName": "Business Plan - (non multi-sku) (&utm_content=plans-q123)",
+														"standardText": null,
+														"text": "Get Started",
+														"url": "https://dash.cloudflare.com/sign-up?pt=b&utm_content=plans-q123",
+														"loggedInUrl": "https://dash.cloudflare.com/sign-up?pt=b&utm_content=plans-q123",
+														"modal": null,
+														"openInNewTab": false,
+														"locale": "en-US"
+													},
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "2TQttmrwndoLCjXSISKEu7",
+												"textValue": "125",
+												"plan": {
+													"contentfulId": "9KE9tgEmXrKuduOkp2NKd",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Application Services - Enterprise Plan",
+													"name": "Enterprise",
+													"description": "For mission-critical applications that are core to your business.",
+													"pricingDescription": "Billed annually",
+													"price": null,
+													"currency": null,
+													"customPricingText": "Custom",
+													"monthlyPricingText": "Custom",
+													"annualPricingText": "Custom",
+													"billingCycle": null,
+													"customPricingCta": {
+														"buttonAssetFile": null,
+														"buttonWidth": "auto",
+														"buttonColor": "orange",
+														"buttonTextLoggedIn": null,
+														"contentTypeId": "button",
+														"contentfulId": "3ZvRO75p9QfDMIy6aWvPge",
+														"elementName": "Enterprise Plan-Talk to an Expert (demo popup form)",
+														"standardText": null,
+														"text": "Talk to an Expert",
+														"url": null,
+														"loggedInUrl": null,
+														"modal": {
+															"contentTypeId": "formModal",
+															"contentfulId": "QO90opzjDQWDQJgIyXHPM",
+															"modalName": "Enterprise Plan Request Demo - Form Modal",
+															"modalId": "enterprise-plan-request-demo-form-modal",
+															"modalType": "single-form",
+															"marketoForm": {
+																"contentTypeId": "marketoEmbeddedForm",
+																"contentfulId": "3u90C4xsapCAku7d4iQehf",
+																"bladeName": "Enterprise Plan Request Demo - Form",
+																"backgroundColor": "blue",
+																"marketoFormId": 1341,
+																"marketoFormLeadSource": "Inbound - Web Form",
+																"marketoFormLeadSourceDetail": "Web Form - Request Demo",
+																"marketoFormHeaderText": null,
+																"marketoFormDefaultComment": null,
+																"showCommentBox": true,
+																"marketoFormThankYouText": null,
+																"marketoFormCustomSuccessMessage": null,
+																"marketoFormPdfDownload": null,
+																"marketoFormPdfDownloadI18n": null,
+																"marketoFormAssetDownloadButtonText": null,
+																"marketoFormSuccessRedirectUrl": null,
+																"sendAdRoll": false,
+																"meta_adRollCustomSegment": null,
+																"enableSandbox": null,
+																"marketoFormSubmitButtonText": null,
+																"marketoFormSubmitButtonColor": null,
+																"enableEmailVerification": null,
+																"disableEnterpriseEmailNotification": null,
+																"enableRingout": null
+															},
+															"title": "Request Demo",
+															"regularCopy": "Please provide your information to help us schedule a demo with you.",
+															"splitFormDefaultTab": null,
+															"selfServeTabText": null,
+															"selfServeCopy": null,
+															"enterpriseTabText": null,
+															"enterpriseCopy": null
+														},
+														"openInNewTab": false,
+														"locale": "en-US"
+													},
+													"monthlyPricingCta": {
+														"buttonAssetFile": null,
+														"buttonWidth": "auto",
+														"buttonColor": "orange",
+														"buttonTextLoggedIn": null,
+														"contentTypeId": "button",
+														"contentfulId": "3ZvRO75p9QfDMIy6aWvPge",
+														"elementName": "Enterprise Plan-Talk to an Expert (demo popup form)",
+														"standardText": null,
+														"text": "Talk to an Expert",
+														"url": null,
+														"loggedInUrl": null,
+														"modal": {
+															"contentTypeId": "formModal",
+															"contentfulId": "QO90opzjDQWDQJgIyXHPM",
+															"modalName": "Enterprise Plan Request Demo - Form Modal",
+															"modalId": "enterprise-plan-request-demo-form-modal",
+															"modalType": "single-form",
+															"marketoForm": {
+																"contentTypeId": "marketoEmbeddedForm",
+																"contentfulId": "3u90C4xsapCAku7d4iQehf",
+																"bladeName": "Enterprise Plan Request Demo - Form",
+																"backgroundColor": "blue",
+																"marketoFormId": 1341,
+																"marketoFormLeadSource": "Inbound - Web Form",
+																"marketoFormLeadSourceDetail": "Web Form - Request Demo",
+																"marketoFormHeaderText": null,
+																"marketoFormDefaultComment": null,
+																"showCommentBox": true,
+																"marketoFormThankYouText": null,
+																"marketoFormCustomSuccessMessage": null,
+																"marketoFormPdfDownload": null,
+																"marketoFormPdfDownloadI18n": null,
+																"marketoFormAssetDownloadButtonText": null,
+																"marketoFormSuccessRedirectUrl": null,
+																"sendAdRoll": false,
+																"meta_adRollCustomSegment": null,
+																"enableSandbox": null,
+																"marketoFormSubmitButtonText": null,
+																"marketoFormSubmitButtonColor": null,
+																"enableEmailVerification": null,
+																"disableEnterpriseEmailNotification": null,
+																"enableRingout": null
+															},
+															"title": "Request Demo",
+															"regularCopy": "Please provide your information to help us schedule a demo with you.",
+															"splitFormDefaultTab": null,
+															"selfServeTabText": null,
+															"selfServeCopy": null,
+															"enterpriseTabText": null,
+															"enterpriseCopy": null
+														},
+														"openInNewTab": false,
+														"locale": "en-US"
+													},
+													"annualPricingCta": {
+														"buttonAssetFile": null,
+														"buttonWidth": "auto",
+														"buttonColor": "orange",
+														"buttonTextLoggedIn": null,
+														"contentTypeId": "button",
+														"contentfulId": "3ZvRO75p9QfDMIy6aWvPge",
+														"elementName": "Enterprise Plan-Talk to an Expert (demo popup form)",
+														"standardText": null,
+														"text": "Talk to an Expert",
+														"url": null,
+														"loggedInUrl": null,
+														"modal": {
+															"contentTypeId": "formModal",
+															"contentfulId": "QO90opzjDQWDQJgIyXHPM",
+															"modalName": "Enterprise Plan Request Demo - Form Modal",
+															"modalId": "enterprise-plan-request-demo-form-modal",
+															"modalType": "single-form",
+															"marketoForm": {
+																"contentTypeId": "marketoEmbeddedForm",
+																"contentfulId": "3u90C4xsapCAku7d4iQehf",
+																"bladeName": "Enterprise Plan Request Demo - Form",
+																"backgroundColor": "blue",
+																"marketoFormId": 1341,
+																"marketoFormLeadSource": "Inbound - Web Form",
+																"marketoFormLeadSourceDetail": "Web Form - Request Demo",
+																"marketoFormHeaderText": null,
+																"marketoFormDefaultComment": null,
+																"showCommentBox": true,
+																"marketoFormThankYouText": null,
+																"marketoFormCustomSuccessMessage": null,
+																"marketoFormPdfDownload": null,
+																"marketoFormPdfDownloadI18n": null,
+																"marketoFormAssetDownloadButtonText": null,
+																"marketoFormSuccessRedirectUrl": null,
+																"sendAdRoll": false,
+																"meta_adRollCustomSegment": null,
+																"enableSandbox": null,
+																"marketoFormSubmitButtonText": null,
+																"marketoFormSubmitButtonColor": null,
+																"enableEmailVerification": null,
+																"disableEnterpriseEmailNotification": null,
+																"enableRingout": null
+															},
+															"title": "Request Demo",
+															"regularCopy": "Please provide your information to help us schedule a demo with you.",
+															"splitFormDefaultTab": null,
+															"selfServeTabText": null,
+															"selfServeCopy": null,
+															"enterpriseTabText": null,
+															"enterpriseCopy": null
+														},
+														"openInNewTab": false,
+														"locale": "en-US"
+													}
+												}
+											}
+										]
+									},
+									{
 										"contentfulId": "7rqA23HfzLnilZJfeXeGSY",
 										"contentTypeId": "planElementFeatures",
 										"name": "Accelerated Mobile Links (AMP)",
@@ -27335,6 +27668,43 @@
 														"openInNewTab": false,
 														"locale": "en-US"
 													}
+												}
+											},
+											{
+												"contentTypeId": "planElementFeatureValueText",
+												"contentfulId": "2n3mZfrjbY64E1yRWkNhYi",
+												"textValue": "10",
+												"plan": {
+													"contentfulId": "7JMDjiexzE2evvzrTjly8l",
+													"contentTypeId": "planElementPlan",
+													"entryTitle": "Application Services - Pro Plan",
+													"name": "Pro",
+													"description": "For professional websites that aren't business-critical.",
+													"pricingDescription": "Billed $240 annually or $25/mo billed monthly",
+													"price": 20,
+													"currency": "$",
+													"customPricingText": "$20/month",
+													"monthlyPricingText": "Get Started",
+													"annualPricingText": null,
+													"billingCycle": "monthly",
+													"customPricingCta": {
+														"buttonAssetFile": null,
+														"buttonWidth": "auto",
+														"buttonColor": "orange",
+														"buttonTextLoggedIn": "Get Started",
+														"contentTypeId": "button",
+														"contentfulId": "BAPzPAKYDQYC0DtJHlpEK",
+														"elementName": "Pro Plan - (non multi-sku) (&utm_content=plans-q123)",
+														"standardText": null,
+														"text": "Get Started",
+														"url": "https://dash.cloudflare.com/sign-up?pt=p&utm_content=plans-q123",
+														"loggedInUrl": "https://dash.cloudflare.com/sign-up?pt=p&utm_content=plans-q123",
+														"modal": null,
+														"openInNewTab": false,
+														"locale": "en-US"
+													},
+													"monthlyPricingCta": null,
+													"annualPricingCta": null
 												}
 											},
 											{
@@ -42068,7 +42438,22 @@
 									"openInNewTab": false,
 									"locale": "en-US"
 								},
-								"callToAction": null
+								"callToAction": {
+									"buttonAssetFile": null,
+									"buttonWidth": "auto",
+									"buttonColor": "blue",
+									"buttonTextLoggedIn": null,
+									"contentTypeId": "button",
+									"contentfulId": "3yibLzUww1YcAMJT7TE7WV",
+									"elementName": "AddOns-Workers-Activate-Button",
+									"standardText": null,
+									"text": "Activate",
+									"url": "https://dash.cloudflare.com/login?redirect_uri=https%3A%2F%2Fdash.cloudflare.com%2F%3Faccount%3Dworkers",
+									"loggedInUrl": null,
+									"modal": null,
+									"openInNewTab": false,
+									"locale": "en-US"
+								}
 							},
 							{
 								"locale": "en-US",
@@ -42303,6 +42688,304 @@
 								}
 							}
 						]
+					},
+					{
+						"contentTypeId": "bladeAccordion",
+						"contentfulId": "4vHp9YqyDZx8kwzATNdt2s",
+						"bladeName": "FAQ-Getting Set Up is Easy",
+						"title": "Getting Set Up is Easy",
+						"htmlId": "faqs",
+						"sectionTitle": "FAQ",
+						"longCopy": "Have more questions? [Visit our FAQs page](https://www.cloudflare.com/plans/faq/)",
+						"accordionElements": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "55bwjbvpJ39uvFTKkfQTko",
+								"title": "How does Cloudflare work?",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare protects and accelerates any website online. Once your website is a part of the Cloudflare community, its web traffic is routed through our intelligent global network. We automatically optimize the delivery of your web pages so your visitors get the fastest page load times and best performance. We also block threats and limit abusive bots and crawlers from wasting your bandwidth and server resources.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "24LsWMbbQ4QA1lVBzFpHqf",
+								"title": "Where can I learn more about using Cloudflare?",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The easiest way to learn how to use Cloudflare is to sign-up, which takes less than 5 minutes.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "6kqd0nsuS7skdS0VyCGrg7",
+								"title": "When is my billing date?",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The date you first select a paid plan will be the recurring billing date. For example: If you sign up for the first time on January 10, all future charges will be billed on the 10th of every month.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "4Vzj6HtRyfhgx8p6eVEQDC",
+								"title": "What happens when I upgrade?",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "If you currently have a paid plan (e.g. Pro) for one of your domains and upgrade to a higher priced plan (e.g. Business), the following happens:",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "unordered-list",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "You will be debited the hourly pro-rata cost of the Business plan until the end of the billing cycle",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "You will be credited the hourly pro-rata cost of the Pro plan until the end of the billing cycle",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "At the beginning of the next billing cycle, you will be charged for the full cost of the Business plan",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "You will receive an invoice upon successful payment of the upgrade",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						],
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"textColor": null
 					},
 					{
 						"contentTypeId": "bladeEnablement",
