@@ -683,11 +683,11 @@ const navigation = {
 		pages: [{
 			title: "navigation.common.overview",
 			url: "/ssl-tls",
-			navigationAvailable: "version"
+			navigationAvailable: "both"
 		}, {
 			title: "navigation.zone.ssl-tls.edge_certs",
 			url: "/ssl-tls/edge-certificates",
-			navigationAvailable: "version"
+			navigationAvailable: "both"
 		}, {
 			title: "navigation.zone.ssl-tls.staging_certs",
 			url: "/ssl-tls/staging-certificates",
