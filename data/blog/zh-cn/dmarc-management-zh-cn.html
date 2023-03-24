@@ -1,0 +1,54 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/Security-Center-now-includes-ZT--DLP-and-email-.png" class="kg-image" alt="Stop brand impersonation with Cloudflare DMARC Management"></figure>
+	<p>2021 年末，Cloudflare <a href="https://blog.cloudflare.com/zh-cn/security-center-zh-cn/">推出了安全中心</a>，一个汇集了我们的安全产品套件和独特互联网智能的统一解决方案。安全团队只需点击几下，就能快速发现组织的潜在安全风险和威胁，绘制攻击面并缓解这些风险。虽然安全中心最初专注于应用程序安全，但我们现在增加了关键的 Zero Trust 洞察，进一步完善其功能。</p>
+	<p>如果您的品牌广受欢迎和信任，客户和潜在客户会期待收到您发送的电子邮件。现在，想象他们收到了您发送的电子邮件：其中有您的品牌，振奋人心的主题，还有注册即可获得独特奖品的链接——他们怎么可能拒绝这样的机会？</p>
+	<p>但是，如果这封电子邮件不是您发送的呢？如果点击链接会了陷入骗局，导致他们被诈骗或身份被冒用，那将会怎样？如果他们认为这是您设计的骗局呢？事实上，即便有安全意识有时也会上当受骗，无法识别精心制作的诈骗电子邮件。</p>
+	<p>这会给您的企业和声誉带来风险。您不希望有这种风险，任何人都不想。品牌假冒是<a href="https://blog.cloudflare.com/2022-march-hackness-phishing-bracket/">全球组织都面临的重大问题</a>，这正是我们构建 DMARC Management 的原因。DMARC Management 测试版今天推出。</p>
+	<p>借助 DMARC Management，您可以全面了解是谁以您的名义发送电子邮件。您可以一键批准每一个对于您的域名属合法发件人的来源，然后设置 <a href="https://www.cloudflare.com/learning/email-security/dmarc-dkim-spf/" target="_blank">DMARC</a> 策略，拒绝任何来自未批准客户端的电子邮件。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/DMARC-1.jpg" class="kg-image" alt="DMARC Management 中可以看到通过或未通过 DMARC 的邮件趋势，并可按发送客户端（来源）显示明细"></figure>
+	<p>如果是贵公司使用的调查平台从您的域名发送电子邮件，不用担心——这是您自己这样配置的。但是，如果是远方的未知邮件服务使用您的域名发送电子邮件，这就太可怕了，需要您去解决。下面，我们来看看如何解决。</p>
+	<h3 id="-">防欺骗机制</h3>
+	<p>发送方策略框架 (SPF)、域名密钥识别邮件 (DKIM) 和基于域名的邮件身份验证报告和一致性 (DMARC) 是三种常见的身份验证方法。它们共同帮助防止垃圾邮件发件人、网络钓鱼程序和其他未经授权的各方代表并非属于他们的域名发送电子邮件。</p>
+	<p><strong>SPF</strong> 是为域名列出公司发送电子邮件使用的所有服务器。可以把它想象成一个公开的员工名录，帮助确认某人是否为公司的员工。<a href="https://www.cloudflare.com/learning/dns/dns-records/dns-spf-record/" target="_blank">SPF 记录</a>列出了可以从该域名发送电子邮件的所有服务器的 IP 地址。</p>
+	<p><strong>DKIM</strong> 让域名所有者能够自动“签署”从其域名发送的电子邮件。具体而言，DKIM 使用<a href="https://www.cloudflare.com/learning/ssl/how-does-public-key-encryption-work/" target="_blank">公钥加密</a>：</p>
+	<ol>
+		<li><a href="https://www.cloudflare.com/learning/dns/dns-records/dns-dkim-record/" target="_blank">DKIM 记录</a>存储了域名的<em>公钥</em>，邮件服务器收到来自该域名的电子邮件时，可以查看此记录获取公<a href="https://www.cloudflare.com/learning/ssl/what-is-a-cryptographic-key/" target="_blank">钥</a>。</li>
+		<li><em>私钥</em>由发件人秘密保管，发件人用私钥签署电子邮件的标头。</li>
+		<li>收到电子邮件的邮件服务器可以应用公钥来验证发件人是否使用了私钥。这也可保证电子邮件在传输过程中不会被篡改。</li>
+	</ol>
+	<p><strong>DMARC</strong> 告诉接收电子邮件的服务器在评估 SPF 和 DKIM 结果后如何处理。一个域名的 DMARC 策略可以有多种设置方式——可以指示邮件服务器隔离、拒绝还是交付没有通过 SPF 和/或 DKIM 验证的电子邮件。</p>
+	<p>然而，配置和维护 SPF 和 DMARC 并非易事。如果您的配置太严格，合法电子邮件会被丢弃或标记为垃圾邮件。如果太宽松，您的域名可能会被诈骗电子邮件滥用。这些身份验证机制 (SPF / DKIM / DMARC) 已存在超过十年，但是<a href="https://dmarc.org/stats/dmarc/" target="_blank">仍有五百多万有效 DMARC 记录便是证明</a>。</p>
+	<p>DMARC 报告可以提供帮助，DMARC Management 等完整解决方案可以减少创建和维护适当配置的负担。</p>
+	<h3 id="dmarc-">DMARC 报告</h3>
+	<p>所有符合 DMARC 规则的邮箱提供商支持将 DMARC 聚合报告发送到您指定的电子邮件地址。这些报告列出从您的域名发送了电子邮件的服务，以及通过了 DMARC、SPF 和 DKIM 的邮件比例。这些报告非常重要，因为它们给管理员提供了所需信息来决定如何调整 DMARC 策略。例如，让管理员了解他们的合法电子邮件是否通过了 SPF 和 DKIM，或者是否有垃圾邮件发送者试图发送非法电子邮件。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--1--7.png" class="kg-image" alt="电子邮件消息到达目的地，服务器根据我们的 DNS 记录中发布的 DMARC 策略进行操作。然后，接收者向来源发送一个报告。"></figure>
+	<p>但请注意，您可能不希望将 DMARC 报告发送到人工监控的电子邮件地址，因为报告又多又快——几乎接收贵组织邮件的每个电子邮件提供商均会发送 XML 格式的报告。通常，管理员将报告设置为发送到 DMARC Management 等服务，并将它们归纳成更好理解的形式。<em>注意：这些报告中不含个人可识别信息 (PII)。</em></p>
+	<p>DMARC Management 自动创建接收这些报告的电子邮件地址，向您的 Cloudflare DNS 添加相应的 <a href="https://www.cloudflare.com/learning/dns/dns-records/dns-dmarc-record/" target="_blank">RUA 记录</a>，通知邮件提供商将报告发送到哪里。您要是好奇的话，我可以告诉您，这些电子邮件地址是使用 <a href="https://www.cloudflare.com/products/email-routing/" target="_blank">Cloudflare 电子邮件路由</a>创建的。</p>
+	<p><em>注意：现在，Cloudflare DNS 是 DMARC Management 的必要条件。Cloudflare Area 1 客户很快也能查看 DMARC 报告，哪怕他们使用的是第三方 DNS 服务。</em></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/DMARC--1--1.jpg" class="kg-image" alt="这是使用此 URA 创建 DMARC 记录的预览"></figure>
+	<p>这个专用电子邮件地址收到报告后，一个 <a href="https://workers.cloudflare.com/" target="_blank">Worker</a> 将处理报告，从中提取相关数据，然后发送到我们的分析解决方案。您可能又猜到了，这是使用<a href="https://developers.cloudflare.com/email-routing/email-workers/" target="_blank"> Email Workers</a> 实现的。如果希望进一步了解该技术实现，请查看<a href="https://blog.cloudflare.com/how-we-built-dmarc-management/">这里</a>。</p>
+	<h3 id="--1">采取行动</h3>
+	<p>现在，报告发送过来了，您可以审查数据，然后采取操作。</p>
+	<p><em>注意：邮箱提供商可能需要 24 小时才能开始发送报告，向您提供这些分析。</em></p>
+	<p>除了 DMARC Management 外，您还可以全面了解域名的出站安全性配置，更具体地说，是 DMARC、DKIM 和 SPF。DMARC Management 很快也会开始报告出站电子邮件安全性，包括 STARTTLS、MTA-STS、DANE 和 TLS 报告。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/1.jpg" class="kg-image" alt="横幅显示此域名的 DMARC、SPF 和 DKIM 配置。"></figure>
+	<p>中间部分显示电子邮件数量趋势，各行分别显示通过和未通过 DMARC 的邮件。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/1--1-.jpg" class="kg-image" alt="DMARC 报告总结了电子邮件数量趋势，并将通过和未通过 DMARC 的电子邮件分开显示。"></figure>
+	<p>下面将显示其他详细信息，包括每个来源（每个 DMARC 报告）发送的电子邮件消息数量，以及相应的 DMARC、SPF 和 DKIM 统计数据。您可以点击“...”批准（即纳入 SPF）其中任何来源，可以轻松发现 DKIM 配置可能不正确的应用程序。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/Frame-4121.png" class="kg-image" alt="每个来源发送的电子邮件数量，以及相应的 DMARC、SPF 和 DKIM 统计数据。"></figure>
+	<p>点击任何来源都会显示该来源每个 IP 地址的相同 DMARC、SPF 和 DKIM 统计数据。例如，通过这种方式，可以确定可能需要纳入 SPF 记录中的其他 IP 地址。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/DMARC--2-.jpg" class="kg-image" alt="来源视图，显示识别为该来源的每个 IP 地址，以及相应的 DMARC、SPF 和 DKIM 统计数据。"></figure>
+	<p>未通过的邮件需要您采取操作：如果合法，则需要批准（即纳入 <a href="https://www.cloudflare.com/learning/email-security/dmarc-dkim-spf/" target="_blank">SPF</a>）；如果 DMARC 策略配置为 p=reject，则保持未批准状态，然后接收服务器会拒绝该邮件。</p>
+	<p>目标是使用 DMARC 拒绝策略，但您不希望应用这一限制策略，除非您确信 SPF（和 DKIM，如适用）考虑了所有合法发送服务。这可能需要几周时间，具体取决于从您的域名发送消息的服务数量，但 DMARC Management 可让您在准备行动时迅速掌握。</p>
+	<h3 id="--2">还需要什么</h3>
+	<p>一旦批准所有授权电子邮件发件人（来源），并将 DMARC 配置为隔离或拒绝，您应该相信您的品牌和组织会更安全。此后，关注批准来源列表的工作量非常小，您的团队每月只需花费几分钟即可。理想情况下，在公司部署从您的域名发送电子邮件的新应用程序时，您应该主动将相应的 IP 地址添加到您的 SPF 记录中。</p>
+	<p>但即使没有这样做，您也可在安全中心的“安全性洞察”(Security Insights) 选项卡下看到新的未批准发件人通知，以及其他您可以查看和管理的重要安全问题。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/Screenshot-with-unapproved-senders.jpg" class="kg-image" alt="有新的未批准发件人时，Cloudflare 安全中心的“洞察概览”(Insights Overview) 部分将显示通知"></figure>
+	<p>或者，您可以每隔几周在 DMARC Management 中检查未批准列表。</p>
+	<p>看到未批准的合法发件人来源时，您知道该怎么做——点击“...”，然后标记为已批准！</p>
+	<h3 id="--3">敬请期待</h3>
+	<p>DMARC Management 将电子邮件安全性提升到一个新高度，但这只是开始。 </p>
+	<p>我们很高兴为大家展示这些功能投资，它们将为客户提供更多的安全洞察。接下来，我们准备将 Cloudflare <a href="https://www.cloudflare.com/products/zero-trust/casb/" target="_blank">云访问安全代理</a> (CASB) 的安全性分析集成到<a href="https://www.cloudflare.com/securitycenter/" target="_blank">安全中心</a>。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--2--4.png" class="kg-image"></figure>
+	<p>此产品集成将帮助客户快速了解更大范围的 SaaS 安全性状态。按严重性、SaaS 集成运行状况和隐蔽问题数量显示 CASB 调查结果（或在热门 SaaS 应用程序中发现的安全问题）明细，IT 和安全管理员将能从单一来源了解更大的安全面区域状态。<br><br>敬请关注安全中心 CASB 的更多新闻。同时，您今天就可以<a href="https://dash.cloudflare.com/?to=/:account/:zone/email/dmarc-management" target="_blank">加入免费 &nbsp;DMARC Management 测试版的等候列表</a>。您也可以了解 Cloudflare Area 1 并<a href="https://www.cloudflare.com/lp/emailsecurity/" target="_blank">预约一次网络钓鱼风险评估</a>，以阻止网络钓鱼、诈骗和垃圾电子邮件进入您的环境。</p>
+</div>

@@ -1,0 +1,33 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/image1-31.png" class="kg-image" alt="Post-quantum crypto should be free, so we’re including it for free, forever"></figure>
+	<p>在 Cloudflare，帮助建设更好的互联网不仅仅是一句口号。我们致力于长期的标准发展过程。我们热爱这项工作：推动互联网基础技术，以每个人都能使用的方式向前发展。今天，我们为这一承诺增添了更多实质性内容。我们的核心信念之一是，隐私是一项人权。我们相信，为了实现这一权利，最先进的加密需要永远免费提供给每个人。今天，我们宣布我们的后量子密码学实现将满足这一标准：对所有人开放，并且永远免费。</p>
+	<p>我们有引以为豪的历史，就是采用付费加密产品并免费大规模发布到互联网上。即使会带来短期和长期收入损失，这也是正确的做法。<a href="https://blog.cloudflare.com/introducing-universal-ssl/">2014 年, 我们通过 Universal SSL 向所有 Cloudflare 客户免费提供 SSL</a>。今天，我们宣布后量子加密(PQC)永远免费，这样做是本着首个重大公告的精神：</p>
+	<blockquote>拥有尖端的加密技术对一个小博客来说似乎并不重要，但它对于推动互联网默认加密的未来至关重要。每一个字节，无论看起来多么平凡，在互联网上加密流动，都会让那些希望拦截、限制或审查网络的人更加困难。换句话说，确保你的个人博客可以通过HTTPS 访问，使得世界各地的人权组织或社交媒体服务或独立记者也能被访问。齐心协力，我们可以成就伟大事业。</blockquote>
+	<p>希望其他人也能跟进，使其 PQC 实现免费，从而让我们创造一个安全和私密的互联网，无需支付“量子附加费”。</p>
+	<p>自 20 世纪 90 年代和 SSL 面世以来，互联网已经发展成熟。曾经的实验性前沿已经变成了现代社会的基本结构。它运行在我们最关键的基础设施中，例如电力系统、医院、机场和银行。我们将最珍贵的记忆托付给它。我们把秘密托付给它。这就是为什么互联网默认是私密的。它需要默认是安全的。这就是为什么我们致力于确保任何人和每个人都可以免费实现后量子安全，并从今天开始大规模进行部署。</p>
+	<p>我们对 PQC 技术的研究是基于这样一个论点，即量子计算机可以破解传统密码学，产生类似于“千年虫”的问题。我们知道未来会出现一个问题，可能会给用户、企业甚至国家带来灾难性的后果。这次的不同之处在于，我们不知道计算机运作范式的这一突破将在何时发生。我们今天就需要为应对这种威胁做好准备。</p>
+	<p>为此，自 2018 年以来，我们一直在为这一过渡做准备。当时，我们担心其他大型协议转换(如 TLS 1.3)给我们的客户带来的实现问题，并希望走在它前面。在过去的几年里，Cloudflare Research 已经成为这个想法的领导者和拥护者：PQC 安全不是明天的追悔，而是今天需要解决的现实问题。我们已经与 <a href="https://blog.cloudflare.com/the-tls-post-quantum-experiment/">Google</a> 和 Mozilla 等业界伙伴进行合作，通过参与 IETF 为开发做出了贡献，甚至推出了一个<a href="https://github.com/cloudflare/circl" target="_blank">开源实验性密码学套件</a> 来帮助推动这一进程。我们已经努力与每个想要参与这个过程的人合作，并在这个过程中展示我们的工作。</p>
+	<p>当我们与业界和学术界的伙伴合作，帮助我们和互联网为后量子未来做好准备时，我们对一种新兴趋势感到沮丧。越来越多的供应商想要利用紧张的高管、隐私倡导者和政府领导人对量子计算破坏传统加密的合理担忧来赚钱。这些供应商提供含糊的解决方案，这些解决方案基于未经验证的技术，例如“量子密钥分发”或“后量子安全”库，其中包含未经公开审查的非标准算法，并像 RSA 在 20 世纪 90 年代那样标上高价。他们经常喜欢抛出“人工智能”和“后量子”这样的短语，却没有真正展示他们的的系统实际是如何运行的。安全和隐私是现代互联网的筹码，任何人都不应该仅仅为了获得我们当代世界所需的基本保护而付费。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/image3-24.png" class="kg-image"></figure>
+	<h3 id="-pqc-">今天就启动您的PQC 过渡</h3>
+	<p>在现代网络中测试和采用后量子密码学不必是难事！事实上，Cloudflare 客户今天就可以在他们的系统中测试 PQC，正如本文后面所述。</p>
+	<p>目前，我们支持<a href="https://pq-crystals.org/kyber/index.shtml" target="_blank">Kyber</a> 作为任何使用 TLS 1.3(包括 HTTP/3)的流量的密钥协商。(<a href="https://blog.cloudflare.com/zh-cn/post-quantum-for-all-zh-cn/">如果想深入了解我们的实现，请查看我们去年秋天宣布测试版的博客。</a>) 为了帮助您通过这些新的密钥协商方法测试到 Cloudflare 域的流量，我们提供了适用于 <a href="https://github.com/cloudflare/boringssl-pq" target="_blank">BoringSSL</a>、<a href="https://github.com/cloudflare/go" target="_blank">Go</a>和 <a href="https://github.com/cloudflare/qtls-pq" target="_blank">quic-go</a> 的开源分支。对于 BoringSSL 和 Go，请查看<a href="https://blog.cloudflare.com/experiment-with-pq/#boringssl">这里的示例代码</a>。</p>
+	<p>如果您<a href="https://blog.cloudflare.com/zh-cn/post-quantum-tunnel-zh-cn/">通过 cloudflared 使用 Tunnels，那么升级到 PQC 非常简单。</a>确保版本不低于 <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/" target="_blank">2022.9.1</a>，然后只需运行 `<code>cloudflared --post-quantum</code>`。</p>
+	<p>在测试了 Cloudflare 如何帮助您在网络中实现 PQC 之后，是时候开始为在所有系统中过渡到 PQC 做准备了。第一步的编目和识别对于顺利推出是至关重要的。我对此有切身体会，因为我们已经对自己所有的系统进行了广泛的评估，以获得我们的 FedRAMP 授权认证，我们正在再次进行类似的评估，将我们所有的内部系统过渡到 PQC。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/image2-16.png" class="kg-image"></figure>
+	<h3 id="-">我们如何为量子计算的未来做好准备</h3>
+	<p>我们正在进行为完全保护 Cloudflare 自身免受量子计算机密码学威胁的开发，以下为路径的预览。我们可以将路径为三个部分：内部系统、Zero Trust 和开源贡献。</p>
+	<p>Cloudflare 全面采用 PQC 路径的第一部分涉及我们所有的连接。您和 Cloudflare 之间的连接只是更大连接路径的一部分。在我们的内部系统中，我们将在 2023 年实施两项重大升级，以确保它们也是 PQC 安全的。</p>
+	<p>首先，我们的大量的连接都使用 BoringSSL。我们目前使用我们的分支，我们很高兴对 Kyber 的上游支持正在进行中。使用不同加密系统的任何其他内部连接也正在升级。我们正在进行的第二个主要升级是将剩余的使用 TLS 1.2 的内部连接转换为 TLS 1.3。Kyber 和 TLS 1.3 的组合将使我们的内部连接更快、更安全，即使我们混合使用经典和后量子安全加密。这是速度和安全的双赢。 <a href="https://blog.cloudflare.com/the-tls-post-quantum-experiment/">由于 Cloudflare Research 和 Google 的开创性工作，我们在超过三年半前就证明了这种强大的组合可以提供这样的速度和安全性。</a></p>
+	<p>该路径的下一部分是关于将 PQC 和 Zero Trust 作为搭档一起使用。当我们考虑到未来的安全态势是基于 PQC 时，我们必须看看今天正在实现的另一个关键的安全范式：Zero Trust。如今，Zero Trust 市场上充斥着不支持常见协议(如 IPv6 和 TLS 1.2)的产品，更不用说支持 PQC 的下一代协议(如 TLS 1.3 和 QUIC)了。因此许多中间设备在当前现代协议的负载下苦苦挣扎。它们以检查流量的名义<a href="https://blog.cloudflare.com/monsters-in-the-middleboxes/">导致连接速度下降并破坏最终用户安全</a>，因为它们没有更好的解决方案。大大小小的组织都在勉力支持那些想要尽可能高性能和安全性的客户，同时又要保证他们的业务安全，因为这些供应商抵制适应现代标准。我们不想重复过去的错误。我们正在计划和评估所有 Zero Trust 产品所需的升级，提供开箱即用的 PQC。我们相信 Zero Trust 和 PQC 彼此并不矛盾，而是共同构成了未来的安全标准。</p>
+	<p>最后，仅仅为我们自己和我们的客户这样做是不够的。互联网的强大程度取决于将我们连接在一起的连接链中最薄弱的环节。互联网上的每一个连接都需要尽可能强大的加密，以确保企业的安全，以及日常用户的隐私。我们认为，这项核心技术应该与供应商无关，并向所有人开放。为了帮助实现这一目标，我们路径的最后一部分就是为开源项目做贡献。我们已经专注于向 CIRCL 发布版本。<a href="https://github.com/cloudflare/circl" target="_blank">CIRCL</a>(Cloudflare 可互操作、可重用密码学库)是一个用 Go 编写的密码学原语集合。该库的目标是用作后量子加密算法实验部署的工具。</p>
+	<p>今年晚些时候，我们将以开源的形式发布一套易于采用、与供应商无关的路线图，以帮助您升级自己的系统，能够在今天做好应对未来的安全准备。我们希望后量子密码学所创造的安全和隐私向每个人免费提供。我们也将继续广泛撰写有关我们后量子密码学旅程的文章。要进一步了解如何在今天启用 PQC，以及我们如何在 Cloudflare 构建后量子密码学的信息，请查看这些资源：</p>
+	<ul>
+		<li><a href="https://blog.cloudflare.com/zh-cn/post-quantum-for-all-zh-cn/">抵御未来的威胁：Cloudflare 进入后量子阶段</a></li>
+		<li><a href="https://blog.cloudflare.com/post-quantum-tunnel/">介绍后量子 Cloudflare Tunnel</a></li>
+		<li><a href="https://blog.cloudflare.com/nist-post-quantum-surprise/">NIST 令人愉快的后量子惊喜</a></li>
+		<li><a href="https://blog.cloudflare.com/post-quantumify-cloudflare/">后量子化内部服务：Logfwrdr、Tunnel 和 gokeyless</a></li>
+		<li><a href="https://blog.cloudflare.com/post-quantum-taxonomy/">后量子状态：挑战的分类</a></li>
+		<li><a href="https://blog.cloudflare.com/the-tls-post-quantum-experiment/">TLS 后量子实验</a></li>
+	</ul>
+</div>

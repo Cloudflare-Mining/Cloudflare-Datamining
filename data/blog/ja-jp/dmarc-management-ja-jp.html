@@ -1,0 +1,54 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/Security-Center-now-includes-ZT--DLP-and-email-.png" class="kg-image" alt="Stop brand impersonation with Cloudflare DMARC Management"></figure>
+	<p>2021年末にCloudflareは、<a href="https://blog.cloudflare.com/ja-jp/security-center-ja-jp/">セキュリティセンター</a>、当社のセキュリティ製品群と独自のインターネットインテリジェンスを統合したソリューションとして発表しました。セキュリティチームは、数回のクリックで、組織に対する潜在的なセキュリティリスクや脅威を迅速に特定し、攻撃対象領域をマッピングして、これらのリスクを軽減することができます。セキュリティセンターは当初、アプリケーションセキュリティに重点を置いていましたが、現在、重要なZero Trustインサイトを追加して、その機能をさらに強化しています。</p>
+	<p>あなたのブランドが愛され、信頼されれば、顧客や見込み客はあなたが送るメールを心待ちにすることでしょう。そのメールには、あなたのブランドが書かれていて、主題はエキサイティングで、何かユニークなものに登録するためのリンクが張られています。その機会を逃すわけがありません。</p>
+	<p>しかし、そのメールがあなたからのものでなかったらどうでしょう。もし、そのリンクをクリックすると、詐欺や個人情報の盗難に遭うかもしれません。もし、あなたがやったと思われたらどうしますか？実は、セキュリティに敏感な人でも、巧妙に作られたなりすましメールに引っかかることがあるのです。</p>
+	<p>それは、あなたのビジネスと評判にリスクをもたらすことになります。このようなリスクは、誰も負いたくはないでしょう。ブランドのなりすましは、<a href="https://blog.cloudflare.com/2022-march-hackness-phishing-bracket/">世界中の組織にとって重大な問題であり、</a>、だからこそ私たちはDMARC Managementを構築しました。現在ベータ版でご利用いただけます。</p>
+	<p>DMARC Managementを使用すると、誰がお客様の代わりに電子メールを送信しているのかを完全に把握することができます。<a href="https://www.cloudflare.com/learning/email-security/dmarc-dkim-spf/" target="_blank">DMARC</a>ポリシーを設定し、未承認のクライアントから送信されたメールを拒否することができます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/DMARC-1.jpg" class="kg-image" alt="DMARC Managementでは、DMARCを通過または失敗したメッセージの傾向や、送信クライアント別の内訳を見ることができます（出典）"></figure>
+	<p>貴社が使用しているアンケートプラットフォームが、貴社のドメインからメールを送信している場合、そのように設定されているため、心配する必要はありません。しかし、遠隔地の未知のメールサービスが、あなたのドメインを使ってメールを送信しているとしたら、それは非常に恐ろしいことであり、すぐにでも対処したいでしょう。その方法をご覧ください。</p>
+	<h3 id="-">なりすまし防止のメカニズム</h3>
+	<p>Sender Policy Framework（SPF）、DomainKeys Identified Mail（DKIM）、Domain-based Message Authentication Reporting and Conformance（DMARC）の3つは、一般的なメール認証方法です。これらを組み合わせることで、スパマーやフィッシャーなどの不正な第三者が、自分が所有していないドメインの代わりにメールを送信することを防ぐことができます。</p>
+	<p><strong>SPF</strong>は、ドメインが、その会社がメールを送信するすべてのサーバーをリストアップするための方法です。<a href="https://www.cloudflare.com/learning/dns/dns-records/dns-spf-record/" target="_blank">SPFレコード</a>ドメインからのメール送信が許可されているすべてのサーバーのIPアドレスをリストアップします。</p>
+	<p><strong>DKIM</strong>により、ドメイン所有者は自分のドメインからのメールに自動的に「署名」することができます。具体的には、DKIMは<a href="https://www.cloudflare.com/learning/ssl/how-does-public-key-encryption-work/" target="_blank">公開鍵暗号</a>を使用します。</p>
+	<ol>
+		<li>ある<a href="https://www.cloudflare.com/learning/dns/dns-records/dns-dkim-record/" target="_blank">DKIMレコード</a>ドメインの<em>公開鍵</em>を保存し、ドメインから電子メールを受信するメールサーバーはこのレコードをチェックして公開<a href="https://www.cloudflare.com/learning/ssl/what-is-a-cryptographic-key/" target="_blank">鍵</a>を取得できます。</li>
+		<li><em>秘密鍵</em>は送信者によって秘密にされ、送信者はこの鍵でメールのヘッダーに署名します。</li>
+		<li>メールを受信したメールサーバーは、公開鍵を適用することで、送信者の秘密鍵が使用されたことを確認することができます。また、メール送信中に改ざんされていないことも保証されます。</li>
+	</ol>
+	<p><strong>DMARC</strong>は、SPFとDKIMの結果を評価した後、受信メールサーバーに何をすべきかを指示します。ドメインのDMARCポリシーは様々な方法で設定することができ、SPFやDKIM（またはその両方）に失敗したメールを隔離したり、拒否したり、配信したりするようメールサーバーに指示することができます。</p>
+	<p>しかし、SPFとDMARCを設定し、維持することは、容易なことではありません。設定が厳しすぎると、正当なメールが削除されたり、スパムとしてマークされたりすることになります。また、設定が緩すぎると、あなたのドメインがメールスプーフィングに悪用される可能性があります。その証拠に、これらの認証メカニズム（SPF/DKIM/DMARC）は10年以上前から存在していますが、いまだに<a href="https://dmarc.org/stats/dmarc/" target="_blank">アクティブなDMARCレコードは600万件未満です</a>。</p>
+	<p>DMARCレポートも役立ちますし、DMARC Managementのようなフルソリューションは、適切な設定の作成と維持の負担を軽減します。</p>
+	<h3 id="dmarc-">DMARCレポート</h3>
+	<p>すべてのDMARC対応メールボックスプロバイダーは、DMARC集計レポートを任意のメールアドレスに送信することをサポートしています。これらのレポートには、お客様のドメインからメールを送信したサービスと、DMARC、SPF、DKIMを通過したメッセージの割合（%）が記載されています。DMARCポリシーの調整方法を決定するために必要な情報を管理者に提供するため、これらは非常に重要です。例えば、管理者は、正規のメールがSPFやDKIMに失敗しているかどうか、あるいはスパム業者が不正なメールを送ろうとしているかどうかを知ることができるのです。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--1--7.png" class="kg-image" alt="電子メールメッセージが宛先に到達すると、当社のDNSレコードに公開されているDMARCポリシーに従って、サーバーでアクションが実行されます。そして、受信者は送信元へレポートを返送します。"></figure>
+	<p>DMARCレポートは、組織がメッセージを送信するほぼすべてのメールプロバイダから大量に送られてきており、XML形式で配信されるため、人間が監視するメールアドレスには送らないほうがよいでしょう。通常、管理者は、DMARC Managementのようなサービスにレポートを送信するように設定し、より理解しやすい形にまとめられます。<em>注意：これらのレポートには、個人特定可能情報（PII）は含まれません。</em></p>
+	<p>DMARC Managementは、これらのレポートの送信先となるメールアドレスを自動的に作成し、対応する<a href="https://www.cloudflare.com/learning/dns/dns-records/dns-dmarc-record/" target="_blank">RUAレコード</a>をCloudflare DNSに追加して、メールボックスプロバイダーにレポートの送信先を通知します。これらのメールアドレスは、<a href="https://www.cloudflare.com/products/email-routing/" target="_blank">Cloudflare Email Routing</a>を使って作成されています。</p>
+	<p><em>注：現在、DMARC管理にはCloudflare DNSが必須となっています。Cloudflare Area 1のお客様は、サードパーティーのDNSサービスを利用している場合でも、近日中にDMARCレポートを見ることができるようになります。</em></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/DMARC--1--1.jpg" class="kg-image" alt="このRUAで作成されるDMARCレコードのプレビューがあります"></figure>
+	<p>この専用メールアドレスに届いたレポートは、<a href="https://workers.cloudflare.com/" target="_blank">Worker</a>によって処理され、関連データを抽出、解析して分析ソリューションに送信されます。そして、ご推察の通り、<a href="https://developers.cloudflare.com/email-routing/email-workers/" target="_blank">Email Workers</a>を使用して実装されています。技術的な実装については<a href="https://blog.cloudflare.com/how-we-built-dmarc-management/">こちら</a>をご覧ください。</p>
+	<h3 id="--1">行動する</h3>
+	<p>レポートが届くようになったので、データを確認し、アクションを起こすことができます。</p>
+	<p><em>注：メールボックスプロバイダーがレポートの送信を開始し、これらの分析が利用できるようになるまでには、最大で24時間かかる場合があります。</em></p>
+	<p>DMARC Managementの上部には、ドメインの送信セキュリティ設定、特にDMARC、DKIM、SPFが一目でわかるように表示されています。DMARC Managementは、まもなくインバウンドメールのセキュリティに関するレポートも開始し、STARTTLS、MTA-STS、DANE、TLSのレポートも含まれます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/1.jpg" class="kg-image" alt="このドメインのDMARC、SPF、DKIMの設定状態を示すバナー"></figure>
+	<p>中段は、経時的なメール量を示しており、個々の線はDMARCを通過したものと失敗したものを示しています。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/1--1-.jpg" class="kg-image" alt="DMARCレポートに記載された電子メール量、経時的変化、DMARCの合格と不合格に分けられます。"></figure>
+	<p>以下では、各ソースから送信されたメールメッセージの数（DMARCレポートによる）、および対応するDMARC、SPF、DKIMの統計情報を含む追加情報をご覧いただけます。「...」をクリックすると、これらのソースを承認（つまりSPFに含める）することができ、DKIMが正しく設定されていない可能性のあるアプリケーションを簡単に発見することができます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/Frame-4121.png" class="kg-image" alt="各送信元から送信されたメールの量、および対応するDMARC、SPF、DKIMの統計値"></figure>
+	<p>任意のソースをクリックすると、そのソースのIPアドレスごとに同じDMARC、SPF、DKIMの統計情報が表示されます。これは、例えばSPFレコードに含める必要がある追加のIPアドレスがあるかどうかを識別する方法です。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/DMARC--2-.jpg" class="kg-image" alt="ソースビューには、そのソースに対して識別された個々のIPアドレスと、対応するDMARC、SPF、DKIMの統計情報が表示されます。"></figure>
+	<p>失敗したものは、正規のものであれば承認（技術的には<a href="https://www.cloudflare.com/learning/email-security/dmarc-dkim-spf/" target="_blank">SPF</a>レコードに含めることを意味します）するか、DMARCポリシーがp=rejectで設定されている場合は承認されないまま、受信サーバーで拒否することで対処を行う必要があります。</p>
+	<p>DMARCの拒否ポリシーに到達することが目標ですが、すべての正当な送信サービスがSPF（および必要に応じてDKIM）で説明されているという高い信頼性が得られるまでは、このような制限的なポリシーを適用するべきではありません。ドメインからメッセージを送信するサービスの数によっては数週間かかる場合がありますが、DMARC Managementを使用すると、準備ができたらすぐに把握できます。</p>
+	<h3 id="--2">他に必要なもの</h3>
+	<p>許可されたメール送信者（送信元）を承認し、DMARCで隔離または拒否するように設定すれば、ブランドと組織の安全性は格段に高まると確信できるはずです。それ以降、承認済みソースリストに目を通すのにチームで要する時間は月に数分以内となり、非常に簡便な作業となります。理想的には、自社ドメインからメールを送信する新しいアプリケーションが社内に導入された場合、対応するIPアドレスをSPFレコードに積極的に含めることです。</p>
+	<p>しかし、含めなかった場合でも、セキュリティセンターの[セキュリティインサイト]タブに、他の重要なセキュリティ問題と一緒に、新しい未承認の送信者の通知が表示され、確認・管理することができます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/Screenshot-with-unapproved-senders.jpg" class="kg-image" alt="Cloudflare セキュリティセンターの[インサイトの概要]セクションは、新しい未承認の送信者がいる場合に通知を表示します。"></figure>
+	<p>または、DMARC Managementの未承認リストを数週間ごとに確認することも可能です。</p>
+	<p>正規の送信元が未承認と表示されたら、「...」をクリックし、承認にマークします。<br></p>
+	<h3 id="--3">今後の展開について</h3>
+	<p>DMARC Managementは、電子メールのセキュリティを次のレベルに引き上げるものであり、これはほんの始まりに過ぎません。 </p>
+	<p>私たちは、お客様にセキュリティに関するより多くのインサイトを提供する機能への投資を実証できることを嬉しく思います。今後、Cloudflareの<a href="https://www.cloudflare.com/products/zero-trust/casb/" target="_blank">Cloud Access Security Broker</a>（CASB）から<a href="https://www.cloudflare.com/securitycenter/" target="_blank">セキュリティセンター</a>にセキュリティ分析を接続する予定です。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--2--4.png" class="kg-image"></figure>
+	<p>今回の製品統合により、お客様はより広範囲なSaaSのセキュリティ状況を一目で把握することができるようになります。CASBの調査結果（または一般的なSaaSアプリで特定されたセキュリティ問題）の構成を、重大度、SaaS統合の健全性、隠れた問題の数によって明らかにすることで、IT管理者とセキュリティ管理者は、1つのソースからより広範なセキュリティ領域の状況を把握できるようになります。<br><br>セキュリティセンターのCASBに関するさらなるニュースにご期待ください。新しい情報が出てくるまでの間でも、これらの<a href="https://dash.cloudflare.com/?to=/:account/:zone/email/dmarc-management" target="_blank">DMARC Managementベータ版の待機リストに</a>ご登録いただけます。また、まだご利用でないお客様は、Cloudflare Area 1をご確認いただき、<a href="https://www.cloudflare.com/lp/emailsecurity/" target="_blank">フィッシングリスク評価</a>をご依頼いただき、フィッシング、なりすまし、スパムメールがお客様の環境に入ってくることをブロックすることをお勧めします。</p>
+</div>
