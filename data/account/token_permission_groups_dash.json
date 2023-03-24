@@ -468,6 +468,24 @@
 		"label": "teams_dex"
 	},
 	{
+		"id": "3b376e0aa52c41cbb6afc9cab945afa8",
+		"name": "Cloudflare DEX Read",
+		"description": "Grants read access to Cloudflare DEX",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"label": "teams_dex_read"
+	},
+	{
+		"id": "92c8dcd551cc42a6a57a54e8f8d3f3e3",
+		"name": "Cloudflare DEX Write",
+		"description": "Grants full access to Cloudflare DEX",
+		"scopes": [
+			"com.cloudflare.api.account"
+		],
+		"label": "teams_dex_write"
+	},
+	{
 		"id": "20e5ea084b2f491c86b8d8d90abff905",
 		"name": "Config Settings Read",
 		"description": "Grants read access to config settings phase",
@@ -594,15 +612,6 @@
 		"label": "dns_write"
 	},
 	{
-		"id": "e199d584e69344eba202452019deafe3",
-		"name": "Disable ESC Read",
-		"description": "Grants read access to Cloudflare Disable ESC",
-		"scopes": [
-			"com.cloudflare.api.account.zone"
-		],
-		"label": "zone_disable_esc_read"
-	},
-	{
 		"id": "29eefa0805f94fdfae2b058b5b52f319",
 		"name": "Disable ESC Read",
 		"description": "Grants read access to Cloudflare Disable ESC",
@@ -610,6 +619,15 @@
 			"com.cloudflare.api.account"
 		],
 		"label": "account_disable_esc_read"
+	},
+	{
+		"id": "e199d584e69344eba202452019deafe3",
+		"name": "Disable ESC Read",
+		"description": "Grants read access to Cloudflare Disable ESC",
+		"scopes": [
+			"com.cloudflare.api.account.zone"
+		],
+		"label": "zone_disable_esc_read"
 	},
 	{
 		"id": "18555e39c5ba40d284dde87eda845a90",
