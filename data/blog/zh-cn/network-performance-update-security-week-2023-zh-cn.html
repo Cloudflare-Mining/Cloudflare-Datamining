@@ -1,0 +1,382 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/image6-12.png" class="kg-image" alt="Cloudflare Access is the fastest Zero Trust proxy"></figure>
+	<p>每一个 Innovation Week，Cloudflare 都会将我们的网络性能与竞争对手进行对比。过去几周里，我们专注于比较我们比 Akamai 这样的<a href="https://www.cloudflare.com/learning/cdn/glossary/reverse-proxy/" target="_blank">反向代理</a>快多少，或者我们的 <a href="https://blog.cloudflare.com/zh-cn/welcome-to-the-supercloud-and-developer-week-2022-zh-cn/">Supercloud</a> 比 Fastly 和 AWS 那样的无服务器计算平台要快多少。本周，我们将更新与其他反向代理的比较，并更新我们的应用服务安全产品与 Zscaler 和 Netskope 的比较。本产品是我们的 Zero Trust 平台的一部分，它有助于保护应用和连接公共互联网的体验，这不同于我们的反向代理，后者保护您的网站不受外部用户的影响。</p>
+	<p>除了<a href="https://blog.cloudflare.com/zh-cn/network-performance-update-cio-edition-zh-cn/">此前介绍我们的 Zero Trust 平台与 Zscaler 对比的文章</a>，我们<a href="https://blog.cloudflare.com/benchmarking-edge-network-performance/">还曾经分享过从全球 3000 个最后一公里网络对反向代理进行的广泛基准测试结果</a> 。我们已经有一段时间没有展示我们在每个最后一公里网络中成为第一名的进展了。我们希望展示这些数据，并重新进行我们的系列测试，将 Cloudflare Access 与 Zscaler Private Access 和 Netskope Private Access 进行对比。在我们的整体网络测试中，Cloudflare 在前 3000 个网络中的 47% 排名第一。对于我们的应用安全测试，Cloudflare 比Zscaler 快 50%，比 Netskope 快 75%。</p>
+	<p>本文将讨论为什么性能对我们的产品很重要，深入探讨我们正在测量什么指标来显示我们速度更快，并介绍我们如何测量每个产品的性能。</p>
+	<h3 id="-">为什么性能很重要？</h3>
+	<p><a href="https://blog.cloudflare.com/zh-cn/network-performance-update-cio-edition-zh-cn/">上一篇文章中</a>我们已经谈过，性能之所以重要，是因为它影响员工的体验，以及他们完成工作的能力。无论是通过访问控制产品访问服务，通过安全 Web 网关连接到公共互联网，还是通过远程浏览器隔离保护有风险的外部站点，所有这些体验都需要流畅无摩擦。</p>
+	<p>简单回顾一下：假设 Acme Corporation 的 Bob 正在从约翰内斯堡连接到 Slack 或 Zoom 以完成一些工作。如果 Acme 的安全网络网关位于远离 Bob 的伦敦，那么 Bob 的流量可能从约翰内斯堡发送到伦敦，然后回到约翰内斯堡，才能访问他的电子邮件。如果 Bob 试图在 Slack 或 Zoom 上进行语音通话，在等待邮件的发送和接收时，速度可能会非常缓慢。Zoom 和 Slack 都推荐低延迟以获得最佳性能。Bob 为通过其网关而经过的额外跃点可能会降低吞吐率并增加延迟，从而给 Bob 带来糟糕的体验。</p>
+	<p>如前所述，如果这些产品或体验缓慢，就可能发生比用户抱怨更糟糕的事情：他们可能会设法关闭或绕过产品，这将使您的公司处于风险之中。如果因为速度缓慢而没有人使用，这个 Zero Trust 产品套件就是完全无效的。确保 Zero Trust 快速运行对一个 Zero Trust 解决方案的有效性至关重要：如果员工几乎不知道它的存在，他们就不会想要关闭它并让自己处于风险之中。</p>
+	<p>和 Zscaler 很像，Netskope 的性能可能会超过许多老旧的解决方案，但其网络仍然比拟 Cloudflare 这样高性能、最优化的网络。我们已经将我们的所有 Zero Trust 产品与 Netskope 的同类产品进行了对比测试，我们甚至重新纳入 Zscaler，向您展示 Zscaler 与它们的对比。下面，让我们深入研究相关数据，向您展示我们在一个关键 &nbsp;Zero Trust 场景中如何和为什么更快，将 Cloudflare Access 与 Zscaler Private Access 和 Netskope Private Access 进行对比。</p>
+	<h3 id="cloudflare-access-zero-trust-">Cloudflare Access：最快的 Zero Trust 代理</h3>
+	<p>访问控制需要无缝且对用户透明：对 Zero Trust 解决方案的最好赞美就是员工几乎注意不到它的存在。这些服务允许用户在提供商的网络上缓存身份验证信息，确保应用可以安全、快速地访问，为用户提供他们想要的无缝体验。因此，如果网络能最大限度地减少所需登录次数，同时降低应用请求的延迟，将有助于使您的互联网体验快速、灵敏。</p>
+	<p>Cloudflare Access 实现以上这一切的速度比 Netskope 快 75%，比 Zscaler 快 50%，确保无论用户在世界任何地方，都能获得快速、安全的应用体验：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0-10.png" class="kg-image"></figure>
+	<p>在全球 300 个不同地点，我们测量了 Cloudflare、Zscaler 和 Netskope 产品连接到位于香港、多伦多、约翰内斯堡、圣保罗、凤凰城和瑞士的 6 个不同应用服务器的访问速度。在上述每个地点，Cloudflare 的 P95(第 95 个百分位) 响应时间都比 Zscaler 和 Netskope 更快。我们看一下应用托管于多伦多时的数据。鉴于处于高度互连的北美地区，Zscaler 和 Netskope 应该表现良好。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--1--8.png" class="kg-image"></figure><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0lax" colspan="2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ZT 访问 - 响应时间 (第 95 个百分位) - 多伦多</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">第 95 个百分位（毫秒）</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2,182</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Zscaler</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">4,071</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Netskope</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">6,072</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Cloudflare 在具有更多连接选项的地区(例如南美和亚太)表现尤其突出，Zscaler 与 Netskope 之间的差距没有与 Cloudflare 之间那么明显。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--2--5.png" class="kg-image"></figure>
+	<p>对于在南美本地托管的应用服务器，Cloudflare 表现突出：</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0lax" colspan="2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ZT 访问 - 响应时间 (第 95 个百分位) - 南美</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">第 95 个百分位（毫秒）</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2,961</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Zscaler</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">9,271</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Netskope</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">8,223</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Cloudflare 的网络在这里大放异彩，允许我们在靠近用户的地方吸收流量。查看在南美的连接时间可以看到这一点。</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0lax" colspan="2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ZT 访问 - 连接时间 (第 95 个百分位) - 南美</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">第 95 个百分位连接（毫秒）</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">369</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Zscaler</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1,753</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Netskope</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1,160</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Cloudflare 的网络在这里与众不同，是因为我们能够让用户更快地进入我们的网络，并在全球范围内找到返回应用主机的最佳路径。由于这一超级能力，我们的速度两倍于 Zscaler，三倍于 Netskope。所有不同的测试中，Cloudflare 的连接时间在全部 300 个测试节点上始终更快。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--3--5.png" class="kg-image"></figure>
+	<p>在我们<a href="https://blog.cloudflare.com/zh-cn/network-performance-update-cio-edition-zh-cn/">上一篇文章中</a>，当就应用访问场景评估 Cloudflare 和 Zscaler 时，我们考虑两个需要单独测量的不同场景。第一个场景是：用户登录到应用时必须进行身份验证。在这种情况下，Zero Trust Access 服务将用户引导到登录页面，进行身份验证，然后重定向到他们的应用。</p>
+	<p>这被称为“新会话”，因为 Access 网络上没有缓存或存在任何身份验证信息。第二种场景是现有会话，此时用户已经通过身份验证，可以缓存身份验证信息。这种场景通常要快得多，因为它不需要额外调用身份提供商即可完成。</p>
+	<p>我们希望分别测量这些场景，因为当我们查看第 95 个百分位值时，如果将新会话和现有会话合并起来，几乎总是看到新会话。但在两个场景中，Cloudflare 在每一个地区都始终更快。让我们回过头来看看一个托管于多伦多的应用，通过我们连接的用户无论新建还是现有会话，连接速度都比 Zscaler 和 Netskope 快。</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0lax" colspan="3"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ZT 访问 - 响应时间 (第 95 个百分位) - 多伦多</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">新会话(ms)</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">现有会话(ms)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1,276</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1,022</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Zscaler</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2,415</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1,797</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Netskope</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">5,741</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1,822</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>可以看到，新会话通常慢于预计，但 Cloudflare 的网络和优化的软件堆栈提供了一贯快速的用户体验。在端到端连接可能更具挑战性的场景中，Cloudflare 表现甚至更加突出。让我们看一下亚洲用户连接到位于香港的应用。</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0lax" colspan="3"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ZT 访问 - 响应时间 (第 95 个百分位) - 香港</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">新会话(ms)</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">现有会话(ms)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2,582</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2,075</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Zscaler</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">4,956</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3,617</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Netskope</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">5,139</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3,902</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>这里尤其引人注目的一点是，Cloudflare 网络性能遥遥领先，而 Zscaler 的性能表现更接近 Netskope 而非 Cloudflare。Netskope 在新会话上的表现也很差，这表明当用户建立新会话时，Netskope 服务反应欠佳。</p>
+	<p>我们希望将这些新会话和现有会话分开，因为查看相似的请求路径以进行适当的比较非常重要。例如，如果我们比较一个现有会话上通过 Zscaler 的请求和一个新会话上通过 Cloudflare 的请求，我们会看到 Cloudflare 比 Zscaler 慢得多，因为需要进行身份验证。所以当我们与第三方签约设计这些测试时，我们确保他们考虑到这一点。</p>
+	<p>对于这些测试，Cloudflare 配置了托管于多伦多、洛杉矶、圣保罗、约翰内斯堡和香港的 5 个应用实例。随后，Cloudflare 使用来自全球的 300 个不同 Catchpoint 节点来模拟浏览器登录，如下所示： </p>
+	<ul>
+		<li>用户从一个由 Catchpoint 实例模拟的浏览器连接到应用 —— 新会话</li>
+		<li>用户通过其身份提供商进行身份验证</li>
+		<li>用户访问资源</li>
+		<li>用户刷新浏览器页面，并尝试访问相同的资源，但凭据已经存在 —— 现有会话</li>
+	</ul>
+	<p>这让我们可以比较 Cloudflare 与另外两个产品在新会话和现有会话两种情况下的应用性能，结果证明了我们速度更快。如前所述，这在很大程度上要归功于我们的网络，以及我们如何接近用户。下面，我们要谈一下我们与其他大型网络的比较，以及我们如何接近用户。</p>
+	<h3 id="--1">网络效应使用户体验更好</h3>
+	<p>更接近用户缩短最后一公里往返时间(RTT)。正如在访问比较中所谈到那样，低 RTT 可以提高客户性能，因为新会话和现有会话不需要长距离传输就可以到达 Cloudflare 的 Zero Trust 网络。嵌入这些最后一公里网络中有助于我们更接近用户，这不仅有助于提升 Zero Trust 性能，也有助于<a href="https://blog.cloudflare.com/network-performance-update-security-week/"> Web 性能</a>和<a href="https://blog.cloudflare.com/zh-cn/network-performance-update-developer-week-zh-cn/">开发人员性能</a>，正如我们在之前的博客文章中所讨论的那样。</p>
+	<p>为量化网络性能，我们必须从世界各地的各种不同网络获取足够的数据，以便将我们自己与其他提供商进行比较。我们使用 Real User Measurements (RUM) 来从几家不同的提供商提取一个 100 kb 的文件。世界各地的用户会报告不同提供商的性能。报告数据的用户越多，信号的保真度就越高。目标是准确地反映出在哪些网络中其他提供商的速度更快；更重要的是，Cloudflare 在哪些地区还可以改进。如果需要进一步了解该方法论，请在<a href="https://blog.cloudflare.com/benchmarking-edge-network-performance/">这里</a>中阅读最初的 Speed Week 2021 博客文章。</p>
+	<p>我们不断经历一个过程：，然后加以改善。我们所面临的挑战是每个网络所特有的，并且突出了互联网上普遍存在的各种不同问题。我们将概述为提高用户性能所做的一些努力。</p>
+	<p>但在此之前，我们先介绍一下自 Developer Week 2022 (即上一次展示这些数据)以来的努力成果。在全球最主要的 3000 个网络（按广播的 IPv4 地址数量排序）中，下面详细列出了每个提供商在 P95 TCP 连接时间(表示给定网络上的用户连接到该提供商所用时间)方面排名第一的网络数量。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--4--4.png" class="kg-image"></figure>
+	<p>如下是截至本周 Security Week 2023 的数据：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--5--2.png" class="kg-image"></figure>
+	<p>图中可见，Cloudflare 已经在更多网络中扩大了领先优势，而之前更快的其他网络，例如 Akamai 和 Fastly，则失去了领先优势。这转化为我们在世界地图上看到的效果。这是 Developer Week 2022 时的世界地图：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--6--2.png" class="kg-image"></figure>
+	<p>这是今天 Security Week 2023 时的世界地图：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--7--4.png" class="kg-image"></figure>
+	<p>如图可见，Cloudflare 在巴西，包括南非、埃塞俄比亚和尼日利亚在内的许多非洲国家，亚洲的印度尼西亚，以及欧洲的挪威、瑞典和英国变得更快。</p>
+	<p>这些国家中，很多都受益于我们在 <a href="https://blog.cloudflare.com/zh-cn/how-cloudflare-helps-next-generation-markets-zh-cn/">Impact Week 博客文章</a>中所讨论的 Edge Partner Program (边缘合作伙伴计划)。简单回顾：边缘合作伙伴计划鼓励最后一公里 ISP 与 Cloudflare 合作，部署嵌入到最后一公里 ISP 的 Cloudflare 位置。这改善了最后一公里的 RTT，并提高了 Access 等产品的性能。自从我们上次向您展示这张地图以来，Cloudflare 已经在尼日利亚和沙特阿拉伯等地部署了更多合作地点，这为用户改善了在所有场景下的性能。像边缘合作伙伴计划这样的努力不仅有助于改善我们上面描述的 Zero Trust 场景，还有助于改善最终用户在受 Cloudflare 保护网站上的一般网页浏览体验。</p>
+	<h3 id="zero-trust-">Zero Trust 世界的下一代性能</h3>
+	<p>在非 Zero Trust 的世界里，您和您的 IT 团队是就是网络运营者——这赋予您控制性能的能力。虽然这种控制令人安心，但对于必须管理办公室和资源之间中间一公里连接的 IT 团队而言，这也是一个巨大的负担。而在 Zero Trust 世界中，您的网络也就是公共互联网。这意味着您的团队要做的工作减少了，但 Zero Trust 提供商要承担大得多的责任，它必须为您的每一个用户管理性能。Zero Trust 提供商在提高端到端性能方面做得越好，用户的体验就会越好，您面临的风险也就越小。对于像身份验证和安全 Web 网关这样的实时应用，拥有快速的用户体验是至关重要的。</p>
+	<p>Zero Trust 提供商不仅需要在公共互联网上保护您的用户，还需要优化公共互联网，以确保您的用户持续受到保护。转向 Zero Trust 不仅减少了对企业网络的需求，还允许用户流量更自然地流向资源。但是，考虑到 Zero Trust 提供商将成为所有用户和所有应用的守门人，性能是需要评估的一个关键方面，以便为用户减少摩擦，降低用户抱怨、效率下降或关闭解决方案的可能性。通过 <a href="https://www.cloudflare.com/partners/peering-portal/" target="_blank">Edge Partner Program</a> 这样的计划，并持续改善我们的对等连接和互连，Cloudflare 正在不断改进我们的网络，以确保用户始终拥有最佳的体验。正是这种孜孜不倦的努力，使我们成为最快的Zero Trust 提供商。<br></p>
+</div>

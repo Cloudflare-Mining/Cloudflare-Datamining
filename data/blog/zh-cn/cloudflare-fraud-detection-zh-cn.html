@@ -1,0 +1,40 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/image1-23.png" class="kg-image" alt="Announcing Cloudflare Fraud Detection."></figure>
+	<p>新冠疫情(COVID-19)疫情爆发时，世界随之发生变化。一切都转移到了线上：学校，工作，令人意外地，还有欺诈。尽管某种程度的网络欺诈已经存在了数十年，但美国联邦贸易委员会(Federal Trade Commission)报告称，消费者<a href="https://www.ftc.gov/news-events/news/press-releases/2023/02/new-ftc-data-show-consumers-reported-losing-nearly-88-billion-scams-2022" target="_blank">在 2022 年因欺诈而损失接近 88 亿美元</a> (<a href="https://www.ftc.gov/system/files/documents/reports/consumer-sentinel-network-data-book-2019/consumer_sentinel_network_data_book_2019.pdf" target="_blank">较 2019 增长逾 400%</a>) ，且这一令人不安的趋势正继续。人们<a href="https://www.washingtonpost.com/opinions/2022/11/23/americans-alone-thanksgiving-friends/" target="_blank">独处的时间比以往任何时候都要多</a>，不仅让他们更容易被盯上，也<a href="https://www.nature.com/articles/s41599-022-01445-5" target="_blank">更容易受到欺骗</a>。 与个人一样，企业也成了这些趋势的受害者：根据普华永道(PWC)的全球经济犯罪和欺诈调查，<a href="https://www.pwc.com/gx/en/services/forensics/economic-crime-survey.html?cf_target_id=AF857F14B27E73443176A59CFB4F60C7" target="_blank">收入在 100 亿美元以上的公司中半数经历过某种数字欺诈</a>。 </p>
+	<p>机器人攻击方面存在相似的情况。Cloudflare Bot Management 帮助客户识别在线诈骗背后的自动化工具，但需要注意的是，<em>并非所有诈骗都是由机器人实施的</em>。如果目标具备足够的价值，恶意行为者就会<a href="https://www.forbes.com/sites/augustinefou/2020/09/19/you-didnt-know-bots-solve-captchas-and-do-pharming-with-humans/?sh=15c47291a4d8" target="_blank">通过真实的人来实施对在线应用的利用</a>。安全团队需要关注的不仅仅是机器人，才能更好地保护在线应用程序，并应对现代在线欺诈。</p>
+	<p>今天，我们隆重宣布 Cloudflare Fraud Detection(欺诈检测)。Fraud Detection 将为您提供精确、易于使用的工具，可以在几秒钟内部署到 Cloudflare 网络上的任何网站，以帮助检测和分类欺诈。对于我们在网站上检测到的每种欺诈行为，您将能够选择对您来说最合理的操作。虽然一些客户希望在我们的边缘阻止欺诈性流量，但其他客户可能希望通过标头传递此信息，以便与他们自己的应用程序构建集成，或使用我们的 Cloudflare Workers 平台指引高风险用户加载功能较少的替代在线体验。</p>
+	<h3 id="-">今天的在线欺诈形势</h3>
+	<p>当我们与受到复杂在线欺诈影响的组织交谈时，我们从沮丧的安全团队那里听到的第一件事是，他们<em>知道</em>他们可以做些什么来阻止欺诈：他们建议在注册时要求电子邮件验证，对所有登录强制执行双因素身份验证，或者阻止来自匿名 VPN 或发现异常高比例退款的国家或地区的在线购买。所有这些措施无疑会减少欺诈，但它们也会让用户体验变得更糟。每家公司都担心糟糕的用户体验将意味着更慢的采用和更少的收入，而对于大多数普普通通的在线欺诈来说，这个代价就太高了。</p>
+	<p>对于那些选择保留无障碍用户体验并承担欺诈成本的公司来说，我们看到了两大影响：<em><strong>基础设施成本增加，员工效率下降</strong></em>。滥用帐户创建端点或服务可用性端点的不良行为者通常使用大量高度分布式的 HTTP 请求来进行此操作，这些请求在基于 IP 的速率限制规则下快速通过民用代理。如果没有确定的方法来识别欺诈性流量，公司就会被迫扩大其基础设施，以便能够服务于请求流量的新峰值，即使他们知道这些流量的大部分是非法的。工程、信任和安全团队突然有了一组全新的职责：定期禁止可能永远不会再使用的 IP 地址，定期从超过极限的数据库中清除欺诈数据，有时甚至成为事实上的欺诈调查员。结果，组织产生了更大的成本，却没有给客户带来更大的价值。</p>
+	<h3 id="--1">减少现代欺诈而不影响用户体验</h3>
+	<p>组织已经明确地告诉我们，有效的欺诈管理解决方案需要在恶意行为者创建欺诈帐户、使用被盗信用卡或窃取客户数据之前可靠地阻止他们，同时确保真实用户的用户体验顺畅无摩擦。我们正在构建新颖且高度准确的检测，应对我们从世界各地企业听到的四种最常见的欺诈：</p>
+	<ul>
+		<li><strong>欺诈帐户创建</strong>：恶意行为者注册许多不同的帐户以获得促销奖励，或获得比单个用户应该获得更多的资源。</li>
+		<li><strong>帐户接管</strong>： 通过使用从其他网站窃取的用户名和密码组合、猜测弱密码或滥用帐户恢复机制等方式，未经授权访问合法帐户。</li>
+		<li><strong><strong><strong>信用卡测试和欺诈交易：</strong></strong></strong>测试被盗信用卡信息的有效性，或使用这些信息购买商品或服务。</li>
+		<li><strong>加速：</strong>通过绕过正常的用户流程，以比正常情况下更快的速度完成订单，从而获得限量供应的商品或服务。</li>
+	</ul>
+	<p>为了信任您的欺诈管理解决方案，组织必须了解欺诈检测背后的决策或预测。这被称为可解释性。例如，仅仅知道一个注册尝试被标记为欺诈是不够的。例如，您需要知道，如果注册是欺诈性的，用户提供的哪个字段使我们认为构成问题，为什么构成问题，以及其是否属于一个更大的模式。当我们发现欺诈行为时，我们将传递以上级别的详细信息，以便您可以确保我们只将恶意行为者拒之门外。</p>
+	<p>应对现代网络欺诈时，每一家企业对可接受的风险都有不同的想法，一旦发现欺诈，处理欺诈的偏好也存在差异。为了给客户最大的灵活性，我们正在构建 Cloudflare 的欺诈检测信号以供单独使用，或以最适合每个客户的风险状况和用例的方式，与其他 Cloudflare 安全产品结合使用，并且使用熟悉的 Cloudflare 防火墙规则界面。我们将提供模板化的规则和建议来提供指引，帮助客户熟悉新功能，但每个客户都可以选择完全定制他们想要保护每个互联网应用程序的方式。客户可以在边缘阻止、限制速率或质询请求，也可以在请求标头中将这些信号发送到上游，以触发自定义的应用内行为。 </p>
+	<p>Cloudflare 为数百万个站点提供应用性能和安全服务，我们平均每秒处理 4500 万个 HTTP 请求。这种庞大的多样性和流量的规模使我们处于一个独特的位置，能够分析和挫败在线欺诈。我们已经构建了 Cloudflare Bot Management 来运行我们的机器学习模型，该模型可以在我们处理的每个请求中检测自动化流量。为了更好地解决更有挑战性的用例，如在线欺诈，我们本已闪电般快速的机器学习性能已获得进一步提升。典型的机器学习模型现在执行时间不超过 0.2 毫秒，为我们提供一个架构，可并行运行多个特定的机器学习模型，而不会减慢内容交付速度。 </p>
+	<h3 id="-cloudflare-">阻止虚假帐户创建，加强 Cloudflare 的纵深防御</h3>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/image3-21.png" class="kg-image"></figure>
+	<p>客户要求我们解决的第一个问题是检测虚假帐户创建。Cloudflare 完全有能力解决这个问题，因为我们看到的帐户创建页面比其他任何公司都多。使用来自客户的虚假帐户攻击采样数据，我们开始研究注册提交数据，以及我们的 <a href="https://blog.cloudflare.com/zh-cn/introducing-cloudforce-one-threat-operations-and-threat-research-zh-cn/">Cloudforce One</a> 团队编制的威胁情况能如何提供帮助。我们发现，<a href="https://www.cloudflare.com/cloudflare-one/" target="_blank">Cloudflare One 产品</a>中使用的数据已经能够识别 72% 的虚假帐户，这是基于恶意行为者提供的注册详细信息，比如他们在攻击中使用的电子邮件地址或域名。我们正在继续增加更多特定于虚假帐户的威胁情报数据来源，以使这一数字接近 100%。除了这些基于威胁情报的规则之外，我们还使用这些数据训练新的机器学习模型，这些模型将根据我们在 Cloudflare 网络中看到来自数百万个域的情报，发现各种趋势，例如流行的欺诈性域名。 </p>
+	<h3 id="--2">通过加速检测来降低欺诈效率</h3>
+	<p>客户要求我们优先考虑的第二个问题是加速。提醒一下，加速意味着比普通用户更快地访问一系列网页，有时为了有效地利用资源，会跳过网页的顺序。</p>
+	<p>例如，假设您有一个帐户恢复页面，该页面正在被一群老练的恶意行为者滥用，寻找他们可以窃取重置令牌的脆弱用户。在这种情况下，欺诈者可以访问大量有效的电子邮件地址，他们正在测试哪些地址可能用于您的网站。为了防止您的帐户恢复过程被滥用，我们需要确保没有一个人可以更快地完成帐户恢复过程，或者以与真人不同的顺序完成帐户恢复过程。 </p>
+	<p>为了在您的网站上完成有效的密码重置操作，您可能知道用户应该执行以下操作： </p>
+	<ul>
+		<li>发送 GET 请求来显示登录页面</li>
+		<li>向登录页面发送一个 POST 请求(收到登录页面 HTML 后至少 1 秒)</li>
+		<li>发送 GET 请求来显示帐户恢复页面(收到 POST 响应后至少 1 秒)</li>
+		<li>向密码重置页面发送 POST 请求(在收到帐户恢复页面 HTML 后至少 1 秒)</li>
+		<li>完成以上过程的总时间不到 5 秒</li>
+	</ul>
+	<p>为了解决这个问题，我们将依靠用户存储在令牌中的加密数据，以帮助确定用户是否在合理的时间内访问了在网站上执行敏感操作需要的所有页面。如果帐户恢复过程被滥用，我们提供的加密令牌将作为 VIP 通行证，仅允许授权用户成功完成密码恢复过程。如果用户没有按照正确的顺序和时间通过正常恢复流程，他们将被拒绝进入以完成密码恢复。通过迫使恶意行为者像合法用户一样操作，他们检查哪些被入侵的电子邮件地址可能在您的网站上注册的任务变得极其缓慢，迫使其转移到其他目标。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/03/image4-10.png" class="kg-image"></figure>
+	<p>以上只是我们用于识别和阻止欺诈的第一批技术中的两项。我们还在构建帐户接管和信用卡滥用检测，我们将在未来的博客中讨论。随着在线欺诈的不断演变，我们将继续构建全新且独特的检测方法，利用 Cloudflare 的独特地位来帮助维持互联网安全。 </p>
+	<h3 id="--3">如何注册？</h3>
+	<p>Cloudflare 的使命是帮助构建更美好的互联网，其中包括应对现代网络欺诈的演变。如果您在遭到欺诈后花费数小时进行善后，或者厌倦了向恶意行为者服务 Web 流量，欢迎<a href="https://cloudflare.com/lp/fraud-detection" target="_blank">在这里提交联系信息</a>，以参加 2023 年下半年的 Cloudflare Fraud Detection 功能提前体验。提前体验客户可以选择立即提供训练数据集，使我们的模型对其用例更有效。您还将有权测试我们的最新模型，以及将来推出的欺诈保护功能。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/image2-13.png" class="kg-image"></figure>
+</div>
