@@ -4,18 +4,18 @@
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "[Legal] - Privacy Policy ",
+				"pageName": "[Legal] - Privacy Policy",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "English for Locale",
 					"zhTW": "English for Locale",
-					"frFR": "English for Locale",
-					"deDE": "English for Locale",
-					"itIT": "English for Locale",
+					"frFR": "Translated for Locale",
+					"deDE": "Translated for Locale",
+					"itIT": "Translated for Locale",
 					"jaJP": "English for Locale",
 					"koKR": "English for Locale",
-					"ptBR": "English for Locale",
-					"esES": "English for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -24,13 +24,13 @@
 					"idID": "No Page for Locale",
 					"thTH": "No Page for Locale",
 					"ruRU": "No Page for Locale",
-					"svSE": "English for Locale",
+					"svSE": "Translated for Locale",
 					"viVN": "No Page for Locale",
 					"trTR": "No Page for Locale",
 					"zhHansCN": "English for Locale",
 					"plPL": "No Page for Locale",
-					"elGR": null,
-					"nbNO": null
+					"elGR": "No Page for Locale",
+					"nbNO": "No Page for Locale"
 				},
 				"relativePath": "privacypolicy",
 				"topNavOptions": "default",
@@ -7367,7 +7367,13 @@
 			"pathname": "/privacypolicy/",
 			"contentfulId": "5hsFdLy1S27xzNuevNywfi",
 			"allowedHrefLangs": [
-				"en-US"
+				"en-US",
+				"fr-FR",
+				"de-DE",
+				"it-IT",
+				"pt-BR",
+				"es-ES",
+				"sv-SE"
 			],
 			"hasPsaBanner": false,
 			"baseURL": "https://www.cloudflare.com"
