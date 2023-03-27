@@ -23,7 +23,7 @@
 <p><strong>Examples of desired skills, knowledge, and experience&nbsp;</strong></p>
 <ul>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Proven ability to work closely with business and product teams to ensure data solutions are aligned with business initiatives and are of high quality</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">More than 3 years of development experience in Big Data space working with Petabytes of data and building large scale data solutions using any Cloud Platform, Apache Spark, Airflow, Scala, Python, etc</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">2-5 years of development experience in Big Data space working with Petabytes of data and building large scale data solutions using any Cloud Platform, Apache Spark, Airflow, Scala, Python, etc</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with multiple POCs for different tools and platforms such as data lake solutions, data validation frameworks, etc</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with environment and deployment automation, IaaS, deployment pipeline specification and development</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with API design and development of RESTful web services or GraphQL</span></li>
