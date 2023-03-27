@@ -1028,6 +1028,38 @@
 						]
 					},
 					{
+						"id": "c1dd1fe0-d2be-5a5e-b28f-ca796c97a5ef",
+						"contentfulId": "71S4wboyvKuoV4ysDrMtaI",
+						"logo": {
+							"file": {
+								"publicURL": "[path]/color_full_logo.png"
+							}
+						},
+						"nameUrlSlug": "datocms",
+						"shortDescription": "DatoCMS is able to reduce maintenance time and provide a better customer experience with Cloudflare",
+						"longDescription": "__This video features Matteo Giaccone, Software Engineer at DatoCMS__\n\n### __Tell us about yourself and your company__\n\n__Matteo Giaccone:__ Hello, I'm Matteo. I'm a software engineer working at DatoCMS. DatoCMS is a headless CMS that provides UI for editors to write content and upload assets. And then a set of APIs for developers that need to retrieve the content to populate their own websites, apps, or anything else they might build.\n\n### __Why did you start using Cloudflare?__\n\nWe have started using Cloudflare Workers to monitor our APIs on the edge. We needed a way to count how many API calls our users were performing or how much traffic they were consuming on the edge before our servers. And also to provide an extra layer of caching to reduce the calls to our servers. And so we are using a combination of Workers and Key Value storage to know, for example, which customers we should block because they have stopped using our service. And so to avoid having unnecessary calls to our machine. And each day we are performing more than 150 million API calls, and we are transferring more than 10 terabytes of traffic all through Cloudflare. \n\n### __What benefits have you seen since using Cloudflare?__\n\nCloudflare has allowed us to scale globally and to respond to peaks in traffic and also to block unnecessary calls to our servers, so we can reduce our maintenance time and provide a better service to our users. Even if we are a small team.\n\n### __What is your favorite thing about Cloudflare?__\n\nOur favorite thing about Cloudflare is that we can access a global and very performant CDN at a very fair price, especially for us being a small company. And this opens up a lot of possibilities that otherwise we wouldn't be able to achieve.\n",
+						"cloudflareStreamVideoId": "bf9fb50aa33bf50ee7097c9401b06944",
+						"orderDate": "2023-01-01",
+						"ref_streamVideoThumbnail": {
+							"file": {
+								"publicURL": "[path]/DatoCMS_Thumbnail.png"
+							}
+						},
+						"twoCardPreviewImage": null,
+						"industryNew52420": [
+							"High Technology"
+						],
+						"regionNew52520": [
+							"Europe, Middle East & Africa"
+						],
+						"primaryUseCases": [
+							"Deploy custom code at the Edge"
+						],
+						"product": [
+							"Workers"
+						]
+					},
+					{
 						"id": "fb11c49b-e5e8-52b1-8c53-163f8f11881e",
 						"contentfulId": "27IkplFI9jik7uFVCI72gn",
 						"logo": {
