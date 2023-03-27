@@ -5,39 +5,31 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About the Department</strong></p>
-<p><span style="font-weight: 400;">Cloudflare’s Engineering Team builds and runs the software that handles trillions of requests per month We also build and run the internal tools that builds and runs our software. The Engineering Team is split into two groups: one handles product development and the other handles operations. Product development covers both new features and functionality and scaling our existing software to meet the challenges of a massively growing customer base. The operations team handles one of the world’s largest networks with data centers in 200+ cities worldwide.</span></p>
-<p><strong>About the Team</strong></p>
-<p><span style="font-weight: 400;">Domain management is the foundation for any online presence and Cloudflare Registrar our answer to a simple and straightforward experience.&nbsp; The Registrar product manages the full lifecycle of the domains, including searching/registering for new domains and transferring/renewing existing ones.&nbsp; Onboarding domains on Cloudflare is the gateway to the vast array of Cloudflare services.</span></p>
-<p><strong>What you'll do</strong></p>
-<p><span style="font-weight: 400;">We are looking for a talented systems engineer to be part of our Lisbon office. Come be part of the team and work with a group of passionate, talented engineers that will be creating innovative products. The amount of requests being processed is massive and we utilize all the latest technology to ensure its scalability and availability.&nbsp;</span></p>
-<p>&nbsp;</p>
-<p><strong>Responsibilities:&nbsp;</strong></p>
+<p><strong>About the team&nbsp;&nbsp;</strong></p>
+<p><span style="font-weight: 400;">The BI team builds and operates the cloud data analytics platform for Cloudflare. We are responsible for building a centralized cloud data analytics platform using open source technologies that will be used by our internal Business Partners and Machine Learning teams. Our goal is to democratize data, support Cloudflare’s critical business needs, provide reporting and analytics self-service tools to fuel existing and new business critical initiatives.</span></p>
+<p><strong>About the role</strong></p>
+<p><span style="font-weight: 400;">As part of this initiative, we are looking for a Data Engineer and help us build a scalable petabyte scale data lake and Cloud Enterprise Data Warehouse (EDW) using modern tech stack from the ground up using open source technologies. Success in this role comes from marrying a strong data engineering background with product and business acumen to deliver scalable data pipelines and analytics solutions that can enable advanced analytics via a self-service user interface.</span></p>
+<p><strong>What you will do</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Designing, building, running and scaling tools and services that support the full spectrum of domain management.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Analyzing and communicating complex technical requirements and concepts, identifying the highest priority areas, and carving a path to delivery</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Collaborating with product teams to understand goals and develop robust and scalable solutions that align with the customer need</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Improving system design and architecture to ensure stability and performance of the internal and customer-facing compliance concerns</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Working closely with Cloudflare's Trust and Safety team to help make the internet a better place</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Ongoing monitoring and maintenance of production services, including participation in oncall rotations</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Partner closely with internal stakeholders to gain a strong understanding of business and product data needs</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Design, build and support scalable and reliable data solutions that can enable self-service reporting and advanced analytics using open source technologies</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Develop technical tools and programming that leverage machine learning and big-data techniques to cleanse, organize and transform data and to maintain and update data structures and integrity on an automated basis</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Design application components and evolve architecture: API/Services, data access, integration, application components, etc.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Analyze and support platform requirements for Data Science team</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Implement automation tools and frameworks (CI/CD pipelines)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Build tools to automate the monitoring or workload and take proactive measure to scale the platform or to fix the problem&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Mentor junior data engineers</span></li>
 </ul>
-<p><br><br></p>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><strong>Examples of desired skills, knowledge, and experience&nbsp;</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience working on, and deploying, large scale systems in Go, Ruby/Rails, Java, or other high performance languages</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Good Linux &amp; scripting experience</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience (and love) for debugging to ensure the system works in all cases</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong systems level programming skills</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Excited by the idea of optimizing complex solutions to general problems that all websites face</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with a continuous integration workflow and using source control (we use git)&nbsp;</span></li>
-</ul>
-<p><strong>Bonus Points</strong></p>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with Ruby or Go&nbsp; (or a strong desire to learn)</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with Kibana, Grafana, and/or Prometheus</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with relational databases (e.g. Postgres)</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with DNS (and DNSSEC)</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience in the registry/registrar industry</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Proven ability to work closely with business and product teams to ensure data solutions are aligned with business initiatives and are of high quality</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">2-5 years of development experience in Big Data space working with Petabytes of data and building large scale data solutions using any Cloud Platform, Apache Spark, Airflow, Scala, Python, etc</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with multiple POCs for different tools and platforms such as data lake solutions, data validation frameworks, etc</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with environment and deployment automation, IaaS, deployment pipeline specification and development</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with API design and development of RESTful web services or GraphQL</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Working experience in Kubernetes, Docker etc.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Knowledge of and experience with backend frameworks like NodeJS or Golang</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Bachelor’s or Master’s Degree in Computer Science or Engineering or related experience required</span></li>
 </ul>
 <p><br><br></p>
 <div class="content-conclusion">
