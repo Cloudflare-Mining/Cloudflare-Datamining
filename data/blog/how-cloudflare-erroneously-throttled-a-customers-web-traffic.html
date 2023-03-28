@@ -1,4 +1,7 @@
 <div class="post-content lh-copy gray1">
+	<!--kg-card-begin: markdown-->
+	<p><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/how-cloudflare-erroneously-throttled-a-customers-web-traffic-zh-cn/">简体中文</a>, <a href="https://blog.cloudflare.com/zh-tw/how-cloudflare-erroneously-throttled-a-customers-web-traffic-zh-tw/">繁體中文</a>.</small></p>
+	<!--kg-card-end: markdown-->
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/02/BLOG-1707-header-1.png" class="kg-image" alt="How Cloudflare erroneously throttled a customer’s web traffic"></figure>
 	<p>Over the years when Cloudflare has had an <a href="https://blog.cloudflare.com/tag/outage/">outage</a> that affected our customers we have very quickly blogged about what happened, why, and what we are doing to address the causes of the outage. Today’s post is a little different. It’s about a single customer’s website <a href="https://news.ycombinator.com/item?id=34639212" target="_blank">not working correctly</a> because of incorrect action taken by Cloudflare.</p>
 	<p>Although the customer was not in any way banned from Cloudflare, or lost access to their account, their website didn’t work. And it didn’t work because Cloudflare applied a bandwidth throttle between us and their origin server. The effect was that the website was unusable.</p>
