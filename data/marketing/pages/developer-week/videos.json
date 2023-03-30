@@ -37,7 +37,17 @@
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
-				"metaTags": null,
+				"metaTags": {
+					"metaTitle": "Developer Week 22 - Videos",
+					"metaDescription": "Developer Week 22 - Videos",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/2022_Developer_Week_Hero.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
 				"contentfulId": "x5AOR4iFbFoUn9iK3tv8E",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
@@ -47,6 +57,44 @@
 				"proactivePopup": null,
 				"template": null,
 				"relatedBlades": [
+					{
+						"contentTypeId": "bladeSubNav",
+						"contentfulId": "4zgTCApn3fqg70Lb03yL5f",
+						"menuTitle": "Developer Week",
+						"mobileOnlyMenuTitle": null,
+						"stickyNav": true,
+						"htmlId": null,
+						"menuItems": [
+							{
+								"contentfulId": "5OGgWbt8RD1xWea34vJM4w",
+								"linkText": "Today",
+								"page": null,
+								"url": "/developer-week",
+								"subMenuItems": null
+							},
+							{
+								"contentfulId": "h9t4HE75rUSzx23vTedRR",
+								"linkText": "Updates and announcements",
+								"page": null,
+								"url": "developer-week/updates",
+								"subMenuItems": null
+							},
+							{
+								"contentfulId": "35rnkucH0hF9ep2HJYQ7qC",
+								"linkText": "Cloudflare TV",
+								"page": null,
+								"url": "developer-week/cloudflare-tv",
+								"subMenuItems": null
+							},
+							{
+								"contentfulId": "1ZpHWDhrrphMM2aItoTFeZ",
+								"linkText": "Videos",
+								"page": null,
+								"url": "developer-week/videos",
+								"subMenuItems": null
+							}
+						]
+					},
 					{
 						"contentfulId": "4bt8pIhVVdmBaraHeHmRlS",
 						"contentTypeId": "bladeHeroAnimation",
@@ -107,6 +155,203 @@
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
 						}
+					},
+					{
+						"contentfulId": "6bvI0dUd3Nmpd1c0hmpU7C",
+						"backgroundColor": "white",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
+						"copy": null,
+						"title": "Videos",
+						"subtitle": null,
+						"bladeStyle": null,
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "7LhULaMZEmWLRnK6ZyRsDP",
+								"title": "Developer Week Preview",
+								"titleSize": null,
+								"description": null,
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": null,
+								"streamId": "b409bc4dd863a0cdb9f7156c13a02be3",
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": {
+									"id": "c18c5fe2-0fa4-5558-89ea-6c95aca39b7b",
+									"altText": "Developer Week Preview",
+									"title": "Developer Week Preview",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Developer_Week_Preview.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6oSUqquIwAA8GcalQ9rwqM",
+								"title": "Developer Week- Day One Recap",
+								"titleSize": null,
+								"description": "2 minute recap of what launched Monday at Developer Week\n\nToday's recap is courtesy of Gift Egwuenu",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": null,
+								"streamId": "70c6efac308bceb81893d3fbf802f3c8",
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": {
+									"id": "ec24c5d0-11f2-5cb1-8fc7-4ae3e1ef5a5a",
+									"altText": "Developer Week 22 Day 1 Recap",
+									"title": "Developer Week 22 Day 1 Recap",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Developer_Week_22_Day_1_Recap.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3d00mgTtYRFSO2CpQPVaO8",
+								"title": "Developer Week- Day Two Recap",
+								"titleSize": null,
+								"description": "2 minute recap of what launched Tuesday at Developer Week \n\nDay two recap courtesy of Kristian Freeman",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": null,
+								"streamId": "e3e0302090bca8700423e485d8069679",
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": {
+									"id": "88189edc-26c7-5434-be8c-4c5d9bee1ad7",
+									"altText": "Developer Week- Day Two Recap",
+									"title": "Developer Week- Day Two Recap",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Developer_Week-_Day_Two_Recap.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1NIhK6EwQmzGlLGNW8E8ba",
+								"title": "Developer Week - Day Three Recap",
+								"titleSize": null,
+								"description": "2 minute recap of what launched Wednesday at Developer Week.\n\nToday's recap is courtesy of Gift Egwuenu",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": null,
+								"streamId": "3ec63f05718d83b950c0bd155cf279b7",
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": {
+									"id": "3295824e-3100-58bf-83e5-fbe0a88df24b",
+									"altText": "DevWk22 - Day 3 recap",
+									"title": "DevWk22 - Day 3 recap",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Developer_Week_-_Day_Three_Recap.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3N5o1QWVtn6QjdhCFaThUP",
+								"title": "Developer Week - Day Four Recap",
+								"titleSize": null,
+								"description": "2 minute recap of what launched Thursday at Developer Week.\n\nDay Four recap courtesy of Kristian Freeman",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": null,
+								"streamId": "274d2d29c2339de590b0d75437d520b4",
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": {
+									"id": "fed7395d-f88b-53fd-9b21-ab101ec87568",
+									"altText": "DevWk22 - Day 4 Recap",
+									"title": "DevWk22 - Day 4 Recap",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Screen_Shot_2022-11-18_at_7.56.10_AM.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5MHie9gaqy48qowyy7EdDC",
+								"title": "Developer Week - Day Five Recap",
+								"titleSize": null,
+								"description": "2 minute recap of what launched Friday at Developer Week.\n\nDay Five recap courtesy of Gift Egwuenu",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": null,
+								"streamId": "4146235cf55aa4edf871a92e0aa7cf23",
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": {
+									"id": "2df23894-a95b-5f35-b970-91160f2122f8",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Day5Intro.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								}
+							}
+						]
 					}
 				],
 				"noindex": false,
