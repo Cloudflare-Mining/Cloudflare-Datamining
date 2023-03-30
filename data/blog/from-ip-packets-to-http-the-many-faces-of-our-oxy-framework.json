@@ -1,0 +1,14 @@
+{
+	"author": {
+		"name": "Nuno Diegues",
+		"url": "https://blog.cloudflare.com/author/nuno/",
+		"sameAs": []
+	},
+	"headline": "From IP packets to HTTP: the many faces of our Oxy framework",
+	"url": "https://blog.cloudflare.com/from-ip-packets-to-http-the-many-faces-of-our-oxy-framework/",
+	"datePublished": "2023-03-30T13:00:00.000Z",
+	"dateModified": "2023-03-30T12:58:52.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2023/03/image2-26.png",
+	"keywords": "Proxying, Rust, Network Layer, Oxy",
+	"description": "We have recently introduced Oxy, our Rust-based framework for proxies powering many Cloudflare services and products. Today, we will explain why and how it spans various layers of the OSI model, by handling directly raw IP packets, TCP connections and UDP payloads"
+}
