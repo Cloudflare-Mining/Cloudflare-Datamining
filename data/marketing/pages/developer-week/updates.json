@@ -58,6 +58,44 @@
 				"template": null,
 				"relatedBlades": [
 					{
+						"contentTypeId": "bladeSubNav",
+						"contentfulId": "4zgTCApn3fqg70Lb03yL5f",
+						"menuTitle": "Developer Week",
+						"mobileOnlyMenuTitle": null,
+						"stickyNav": true,
+						"htmlId": null,
+						"menuItems": [
+							{
+								"contentfulId": "5OGgWbt8RD1xWea34vJM4w",
+								"linkText": "Today",
+								"page": null,
+								"url": "/developer-week",
+								"subMenuItems": null
+							},
+							{
+								"contentfulId": "h9t4HE75rUSzx23vTedRR",
+								"linkText": "Updates and announcements",
+								"page": null,
+								"url": "developer-week/updates",
+								"subMenuItems": null
+							},
+							{
+								"contentfulId": "35rnkucH0hF9ep2HJYQ7qC",
+								"linkText": "Cloudflare TV",
+								"page": null,
+								"url": "developer-week/cloudflare-tv",
+								"subMenuItems": null
+							},
+							{
+								"contentfulId": "1ZpHWDhrrphMM2aItoTFeZ",
+								"linkText": "Videos",
+								"page": null,
+								"url": "developer-week/videos",
+								"subMenuItems": null
+							}
+						]
+					},
+					{
 						"contentfulId": "4bt8pIhVVdmBaraHeHmRlS",
 						"contentTypeId": "bladeHeroAnimation",
 						"title": "Welcome to Developer Week 2022",
@@ -117,6 +155,983 @@
 							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
 						}
+					},
+					{
+						"contentfulId": "4kJslwx11yumkMYhvaZTFX",
+						"backgroundColor": "white",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
+						"copy": null,
+						"title": "Updates and announcements",
+						"subtitle": null,
+						"bladeStyle": "Feature Blocks - 4 columns",
+						"bladeBorder": "none",
+						"sectionPadding": "tile--no-top-padding",
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5YaQB8syEPwyCbkDqWkJhE",
+								"title": "Welcome to the Supercloud (and Developer Week 2022)",
+								"titleSize": null,
+								"description": "Every developer wants to get code running on one machine and perfect it. It's so much easier to work that way. We just happen to have one machine that scales to the size of the Internet: a global, distributed, supercomputer. It's our Supercloud and we build our own products on it and you can too.",
+								"learnMoreUrl": "https://blog.cloudflare.com/welcome-to-the-supercloud-and-developer-week-2022",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "32cc5988-5550-5c8b-8f30-8f0323a8636b",
+									"altText": "Developer Week 22 Introduction",
+									"title": "Developer Week 22 Introduction",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/2022_Developer_Week_Hero_Dark.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4e0UvhndzWWxlfMAIaTSV",
+								"title": "Build applications of any size on Cloudflare with the Queues open beta",
+								"titleSize": null,
+								"description": "Cloudflare Queues enables developers to build performant and resilient distributed applications that span the globe. Any developer with a paid Workers plan can enroll in the Open Beta and start building today!",
+								"learnMoreUrl": "https://blog.cloudflare.com/cloudflare-queues-open-beta/",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "f83e0ae0-e689-57a9-b47c-8d5a0799c6fb",
+									"altText": "Queues Open Beta",
+									"title": "Queues Open Beta",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Queus_Open_Beta.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3XFiLKsGbjeH8ROA1MCMO2",
+								"title": "The road to a more standards-compliant Workers API",
+								"titleSize": null,
+								"description": "Earlier this year, we announced our participation in a new W3C Community Group for the advancement of Web-interoperable API standards. Since then, this new WinterCG has been hard at work identifying the common API standards around which all JavaScript runtimes can build, and we've been hard at work updating the Workers runtime to conform to those standards.",
+								"learnMoreUrl": "https://blog.cloudflare.com/standards-compliant-workers-api",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "6fd72fb7-fb40-5c28-adce-402a11a85cb4",
+									"altText": "Wintercg Update + new web APIS update",
+									"title": "Wintercg Update + new web APIS update",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Wintercg_Update___new_web_APIS_update.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1Lg5n32ccIQeU9HbCvnq9d",
+								"title": "Cloudflare Workers scale too well and broke our infrastructure, so we are rebuilding it on Workers",
+								"titleSize": null,
+								"description": "DevCycle re-architected their feature management tool using Workers for improved scalability. ",
+								"learnMoreUrl": "https://blog.cloudflare.com/devcycle-customer-story",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "2e7b75a2-09c4-546c-af9d-ac7fb2648deb",
+									"altText": "Customer story: Devcycle/Taplytics",
+									"title": "Customer story: Devcycle/Taplytics",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Customer_story__Devcycle_and_Taplytics.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4ex1XGuozQJNvUt04mF27q",
+								"title": "Announcing the R2 Super Slurper",
+								"titleSize": null,
+								"description": "Moving terabytes of data from a cloud storage provider to a new one is always seen as problematic, involves planning, and likely requires staffing.\nAnd that was hard. But not anymore.\nToday we're announcing the R2 Super Slurper, the tool that will enable you to migrate all your data to R2 in a simple and efficient way.\n",
+								"learnMoreUrl": "https://blog.cloudflare.com/cloudflare-r2-super-slurper",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "73299055-4a73-5a6d-a396-c7b2ea04907d",
+									"altText": "Migrate your data from S3 to R2",
+									"title": "Migrate your data from S3 to R2",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Migrate_data_to_R2.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5jNjXm7lYhvHQrefUP9HhL",
+								"title": "Reduce origin load, save on cloud egress fees, and maximize cache hits with Cache Reserve",
+								"titleSize": null,
+								"description": "Today we're extremely excited to announce that Cache Reserve is graduating to open beta – users will now be able to test it and integrate it into their content delivery strategy without any additional waiting. ",
+								"learnMoreUrl": "https://blog.cloudflare.com/cache-reserve-open-beta",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "d2460b41-554c-58b3-bebe-cdfa76840094",
+									"altText": "Cache Reserve open beta",
+									"title": "Cache Reserve open beta",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Cache_Reserve_Open_Beta.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "55yYhjQ94jxcFBf07Aih6w",
+								"title": "Announcing Cloudflare Logs Engine",
+								"titleSize": null,
+								"description": "Today we're announcing Cloudflare Logs Engine — a new system that will enable you to do anything you need with Cloudflare Logs, all within Cloudflare.",
+								"learnMoreUrl": "https://blog.cloudflare.com/announcing-logs-engine",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "7569284d-8a98-5fae-99a6-c35f2615917b",
+									"altText": "Introducing Cloudflare Logs Engine",
+									"title": "Introducing Cloudflare Logs Engine",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Introducing_Cloudflare_Logs_Engine.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2LztIXBlSg9JmxyFZnIwVU",
+								"title": "Indexing millions of HTTP requests using Durable Objects",
+								"titleSize": null,
+								"description": "A deep-dive into how Cloudflare uses Durable Objects and the Streams API to index millions of HTTP requests stored in R2.",
+								"learnMoreUrl": "https://blog.cloudflare.com/r2-rayid-retrieval",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "afd7b23e-780c-59f8-95cd-ee45b0ebf22f",
+									"altText": "Rich Querying over R2",
+									"title": "Rich Querying over R2",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Logs_Engine_-_How_we_built_it.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1eN0XWSMZDCPAl5vbFb5Hb",
+								"title": "Seamless Postgres integration on Cloudflare Workers with Neon.tech",
+								"titleSize": null,
+								"description": "Neon.tech is a database platform that allows you to branch your (Postgres compatible) database exactly like your code repository.\nAnd with the release of their Cloudflare Workers integration you can get started in minutes.",
+								"learnMoreUrl": "https://blog.cloudflare.com/neon-postgres-database-from-workers",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "9d743252-cf21-56da-8ff8-81e994ea6870",
+									"altText": " Partnership with Neon",
+									"title": " Partnership with Neon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Neon_Partnership.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6ejl72R6YQxlHDfRMZAbKH",
+								"title": "Get started with Cloudflare Workers with ready-made templates",
+								"titleSize": null,
+								"description": "Today, we're excited to share a collection of ready-made templates to help you build your next application on Cloudflare Workers.  ",
+								"learnMoreUrl": "https://blog.cloudflare.com/cloudflare-workers-templates",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "666921dc-ba4f-5608-b19b-5956e1f39231",
+									"altText": " Templates",
+									"title": " Templates",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Templates.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "7kssjkIQzvBjJ1KeBC91tZ",
+								"title": "UPDATE Supercloud SET status = 'open alpha' WHERE product = 'D1';",
+								"titleSize": null,
+								"description": "As we continue down the road to making D1 production ready, it wouldn't be \"the Cloudflare way\" unless we stopped for feedback first. D1 is now in Open Alpha! ",
+								"learnMoreUrl": "https://blog.cloudflare.com/d1-open-alpha",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "34c747c6-0a58-59a5-a6e3-125f9035e25c",
+									"altText": "D1 Open Alpha",
+									"title": "D1 Open Alpha",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/D1_Open_Alpha.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "70AAtt9jVylml0XFlCrwDI",
+								"title": "Making static sites dynamic with Cloudflare D1",
+								"titleSize": null,
+								"description": "In this blog post, I'll show you how to use D1 to add comments to a static blog site. To do this, we'll construct a new D1 database and build a simple JSON API that allows the creation and retrieval of comments.",
+								"learnMoreUrl": "https://blog.cloudflare.com/making-static-sites-dynamic-with-cloudflare-d1",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "632b5815-e6ac-50d3-b1b0-9a965331cd39",
+									"altText": "D1 Comments API",
+									"title": "D1 Comments API",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/D1_Comments_API.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1at4cWc6ZnVljJsuO7Yg6P",
+								"title": "Automate an isolated browser instance with just a few lines of code",
+								"titleSize": null,
+								"description": "Workers Browser Rendering API is our out of the box solution for simplifying developer workflows, including capturing images or screenshots, by running browser automation in Workers. If you're interested, sign up for the waitlist. ",
+								"learnMoreUrl": "https://blog.cloudflare.com/introducing-workers-browser-rendering-api",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "2d3b0dca-62bd-52f0-a68d-bc2a169cfea1",
+									"altText": "Workers Rendering API",
+									"title": "Workers Rendering API",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Workers_Rendering_API.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5VpVdld1Gfi7K9FBI3P4P",
+								"title": "Iteration isn't just for code: here are our latest API docs",
+								"titleSize": null,
+								"description": "We're excited to share that the next iteration of Cloudflare's API reference documentation is now available. The new docs standardize our API content and improve the overall developer experience for interacting with Cloudflare's API.",
+								"learnMoreUrl": "https://blog.cloudflare.com/building-a-better-developer-experience-through-api-documentation",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "28155268-e88a-5804-b963-138bc7c81d5d",
+									"altText": "New API Docs",
+									"title": "New API Docs",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/New_API_Docs_.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1n3WbnsUHomF9GGK5QaUaE",
+								"title": "The Cloudflare API now uses OpenAPI schemas",
+								"titleSize": null,
+								"description": "Cloudflare now has OpenAPI Schemas available for the API. Users can use these schemas in any open source OpenAPI Tooling.",
+								"learnMoreUrl": "https://blog.cloudflare.com/open-api-transition",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "9c4e7c4a-7f8c-576c-93be-46b2eddfae47",
+									"altText": "OpenAPI (How we built it)",
+									"title": "OpenAPI (How we built it)",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/OpenAPI__How_we_built_it___1_.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2hwL1BJ6ulVy5yZtJFRV11",
+								"title": "Bringing authentication and identification to Workers through Mutual TLS ",
+								"titleSize": null,
+								"description": "We're excited to announce that Workers will soon be able to send outbound requests through a mutually authenticated channel via mutual TLS authentication!",
+								"learnMoreUrl": "https://blog.cloudflare.com/mutual-tls-for-workers",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "8bc25629-16ba-5666-915b-4d6fb0380dad",
+									"altText": "Mutual TLS and Workers",
+									"title": "Mutual TLS and Workers",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Mutual_TLS_and_workers_.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "7hj42mRAF2fRvWWP4Wq9xd",
+								"title": "Xata Workers: client-side database access without client-side secrets",
+								"titleSize": null,
+								"description": "Xata is on a mission to solve the industry's hardest data problems with their Serverless Data Platform. We're excited to have Xata building their serverless functions product – Xata Workers – on top of Workers for Platforms. Here is Xata's story. ",
+								"learnMoreUrl": "https://blog.cloudflare.com/xata-customer-story",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "557f829c-4cc1-5218-8386-1c85349e8d0e",
+									"altText": "Customer Story: Xata",
+									"title": "Customer Story: Xata",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Customer_Story__Xata_light.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4q4rGyT0Na2Xum8NfeIsPU",
+								"title": "Announcing the first Workers Launchpad cohort and growth of the program to $2 billion",
+								"titleSize": null,
+								"description": "Announcing the Fall 2022 cohort of 25 Workers Launchpad startups and growth of the program from $1.25BN to $2BN",
+								"learnMoreUrl": "https://blog.cloudflare.com/launchpad-fall-22",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "64f9cb85-73d6-5f62-9480-02f40504f909",
+									"altText": "Workers Launchpad Winter 2022 Cohort + Additional VC Partners",
+									"title": "Workers Launchpad Winter 2022 Cohort + Additional VC Partners",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Workers_Launchpad_Winter_2022_Cohort___Additional_VC_Partners.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6bJABOMc7WCLL0PGmMdk0E",
+								"title": "Spice up static sites on Cloudflare Pages with Pages Functions",
+								"titleSize": null,
+								"description": "Pages is officially a full stack platform with Pages Functions now Generally Available. Pages is harnessing the power and scalability of Workers and specializing them to align with the Pages developer experience. ",
+								"learnMoreUrl": "https://blog.cloudflare.com/pages-function-goes-ga",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "f28d5ee1-79f7-51a0-908d-11bb08890c11",
+									"altText": "Pages with Functions GA",
+									"title": "Pages with Functions GA",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Pages_with_Functions_GA.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2eOM7qL3ujWNpQsMjFcEHA",
+								"title": "Server-side render full stack applications with Pages Functions",
+								"titleSize": null,
+								"description": "Page Functions are now out of beta, bringing the ability to add dynamic server-side rendering to your applications. Pages makes it easy to deploy applications built using all the major frameworks. There is no better time to start deploying your server-side rendered full-stack applications to Cloudflare Pages.",
+								"learnMoreUrl": "https://blog.cloudflare.com/pages-full-stack-frameworks",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "987404fe-ceaa-5e05-98d5-aa586d50a323",
+									"altText": "Fullstack web frameworks on Pages",
+									"title": "Fullstack web frameworks on Pages",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Fullstack_web_frameworks_on_Pages.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5qkPsDvFybfZKt1TZ2KSd7",
+								"title": "The most programmable Supercloud with Cloudflare Snippets",
+								"titleSize": null,
+								"description": "Today we are announcing Cloudflare Snippets. Snippets are a simple way of executing a small piece of Javascript on select HTTP requests, using the ruleset engine filtering logic.",
+								"learnMoreUrl": "https://blog.cloudflare.com/snippets-announcement",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "c7d468eb-7043-59cb-8802-f3e65dd5e23a",
+									"altText": "Cloudflare Snippets",
+									"title": "Cloudflare Snippets",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Cloudflare_Snippets.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2biIDypjCX7DRpiY3kqbYI",
+								"title": "Incremental adoption of micro-frontends with Cloudflare Workers",
+								"titleSize": null,
+								"description": "Large frontend applications are often hard to improve without major investments. With Cloudflare Workers, our fragment-based micro-frontend architecture, and fragment piercing technique, engineering teams can incrementally improve large frontends in a fraction of the time, yielding significant user and developer experience gains.",
+								"learnMoreUrl": "https://blog.cloudflare.com/fragment-piercing",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "9417b9da-30c7-59f3-8005-bcf239152ceb",
+									"altText": "Incremental adoption of micro-frontends with Cloudflare Workers",
+									"title": "Incremental adoption of micro-frontends with Cloudflare Workers",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Incremental_adoption_of_micro-frontends_with_Cloudflare_Workers.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2gSA8EgjWe0pMpj2wJLnNw",
+								"title": "How we built it: the technology behind Cloudflare Radar 2.0",
+								"titleSize": null,
+								"description": "Radar 2.0 was launched last month during Cloudflare's Birthday Week as a complete product revamp. This blog explains how we built it technically. Hopefully, it will inspire other developers to build complex web apps using Cloudflare products.",
+								"learnMoreUrl": "https://blog.cloudflare.com/technology-behind-radar2",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "e2587ffd-2607-5934-aa37-d85efdb06b8d",
+									"altText": "How we build Radar on Pages + Remix",
+									"title": "How we build Radar on Pages + Remix",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/How_we_build_Radar_on_Pages___Remix.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "73SA8igTciIQeZ1B1JrrCp",
+								"title": "Keep track of Workers' code and configuration changes with Deployments ",
+								"titleSize": null,
+								"description": "Today we're happy to announce Deployments for Workers. Deployments allow developers to audit changes made to their applications.",
+								"learnMoreUrl": "https://blog.cloudflare.com/deployments-for-workers",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "1ab182ec-7f2c-5c26-a7b8-c9c9f92b2ab1",
+									"altText": "Workers Versioning",
+									"title": "Workers Versioning",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Workers_Versioning.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1eC0vruRH4KXbF2Hp8vUF0",
+								"title": "How Cloudflare uses Terraform to manage Cloudflare",
+								"titleSize": null,
+								"description": "Cloudflare uses the Cloudflare Terraform provider extensively to make changes to our internal accounts as easy as opening a pull request.",
+								"learnMoreUrl": "https://blog.cloudflare.com/terraforming-cloudflare-at-cloudflare",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "d176dde7-c6ab-5797-8da0-1b418f8f438c",
+									"altText": "Terraform Internal Story",
+									"title": "Terraform Internal Story",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Terraform_Internal_Story.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "33Jr48absDJNgWFVNsmdkw",
+								"title": "Send Cloudflare Workers logs to a destination of your choice with Workers Trace Events Logpush",
+								"titleSize": null,
+								"description": "Workers Trace Events Logpush gives new levels of visibility into Workers invocations, console.log messages and errors. It is now available to everyone on the Workers Paid and Enterprise plans!",
+								"learnMoreUrl": "https://blog.cloudflare.com/workers-logpush-ga",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "7608411c-c97f-55ea-b043-6386ac83c4c4",
+									"altText": "Logpush for all workers customers for Workers",
+									"title": "Logpush for all workers customers for Workers",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Workers_Visibility__Announcing_Logpush_for_Workers.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1mqKPNV0TPsmQ1S7Y630mJ",
+								"title": "Network performance update: Developer Week 2022",
+								"titleSize": null,
+								"description": "Cloudflare did the measurements to prove we're the fastest developer platform, beating out all the other competition.  ",
+								"learnMoreUrl": "https://blog.cloudflare.com/network-performance-update-developer-week/",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "6f3ac334-5001-5764-ba0f-b3d1582a745a",
+									"altText": "Network Performance Update",
+									"title": "Network Performance Update",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Network_Performance_Update.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "306PS1zCkyhYssoETmZ6lA",
+								"title": "Twilio Segment Edge SDK powered by Cloudflare Workers",
+								"titleSize": null,
+								"description": "With Segment Edge SDK, built on Cloudflare Workers, developers can collect high-quality first-party data and use Segment Edge SDK to access realtime user profiles and state, to deliver personalized app experiences without managing a ton of infrastructure.",
+								"learnMoreUrl": "https://blog.cloudflare.com/twilio-segment-sdk-powered-by-cloudflare-workers",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "1b1d5c2f-2dc8-5223-a2e2-908b2ea0d089",
+									"altText": "Segment Edge SDK",
+									"title": "Segment Edge SDK",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Segment_Edge_SDK.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2SZ5MZHkktX3IPN4lsnvTq",
+								"title": "How Cloudflare instruments services using Workers Analytics Engine",
+								"titleSize": null,
+								"description": "Learn how Cloudflare uses our own Workers Analytics Engine product to capture analytics about our own products!",
+								"learnMoreUrl": "https://blog.cloudflare.com/using-analytics-engine-to-improve-analytics-engine",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "b95f7b7f-32d3-5c76-9557-62adbf11e98e",
+									"altText": "Workers Analytics Engine",
+									"title": "Workers Analytics Engine",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Workers_Analytics_Engine_Public_Beta__1_.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4nwbLfF9uguSWCVhyxcxzL",
+								"title": "Doubling down on local development with Workers: Miniflare meets workerd",
+								"titleSize": null,
+								"description": "Today, we're taking local development to the next level by releasing Miniflare 3, powered by the open-source workerd runtime, along with support for migrating existing dashboard projects and using real data locally.",
+								"learnMoreUrl": "https://blog.cloudflare.com/miniflare-and-workerd",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "626e68e7-851f-578e-a649-9e32aa78d37e",
+									"altText": "Workerd integration with wrangler",
+									"title": "Workerd integration with wrangler",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Miniflare_Camping_with_Workerd.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3rvUdeWhX3J8qsus2mWQ7q",
+								"title": "Improving Workers TypeScript support: accuracy, ergonomics and interoperability",
+								"titleSize": null,
+								"description": "We're excited to announce the next major release of Workers TypeScript definitions with a bunch of improvements, and the open-sourcing of the new automatic generation scripts.",
+								"learnMoreUrl": "https://blog.cloudflare.com/improving-workers-types",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "d6968cd6-fa88-5d10-a7d9-9f076ededfbf",
+									"altText": "Workers Types",
+									"title": "Workers Types",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Workers_Types_with_workerd.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6wori6OYhi64N5C5x3kC1Q",
+								"title": "ICYMI: Developer Week 2022 announcements",
+								"titleSize": null,
+								"description": "This week we made over 30 announcements, in case you missed any here's a quick round-up. ",
+								"learnMoreUrl": "https://blog.cloudflare.com/icymi-developer-week-2022-announcements/",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"openLinkInNewTab": true,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "e0d380bd-7f8c-5bd9-b93f-18c646989d5b",
+									"altText": "Dev Week Wrap up Post",
+									"title": "Dev Week Wrap up Post",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/2022_Developer_Week_Hero_Dark.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						]
 					}
 				],
 				"noindex": false,
