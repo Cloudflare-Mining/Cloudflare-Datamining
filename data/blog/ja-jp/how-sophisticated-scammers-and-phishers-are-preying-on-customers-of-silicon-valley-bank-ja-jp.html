@@ -1,0 +1,81 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/SVB---Banking-Phishing.png" class="kg-image" alt="How sophisticated scammers and phishers are preying on customers of Silicon Valley Bank"></figure>
+	<p>現在までに、Silicon Valley銀行（SVB）が<a href="https://www.cnn.com/2023/03/11/business/svb-collapse-roundup-takeaways/index.html" target="_blank">破綻</a>し、米国連邦政府による買収に至るまでに何が起こったのかについてのニュースはよく知られています。破綻が起こった急速なスピードは多くの人にとって驚くべきものであり、大小両方の組織への影響はしばらく続くと予想されます。</p>
+	<p>残念ながら、誰もが悲劇的な状況と感じるところで、脅威アクターはチャンスを見出すのです。信頼を侵害し、無防備な被害者を騙すために、脅威アクターは話題性のあるイベントを誘い文句にすることが圧倒的に多いということを、私たちは何度も目にしてきました。ニュースサイクルや有名なイベント（スーパーボウル、マーチマッドネス、タックスデー、ブラックフライデーセール、新型コロナウイルス感染症など）に合わせて発信することで、その時々の話題のメッセージに引っかかる可能性が高くなるからです。</p>
+	<p>SVBのニュースサイクルは、脅威アクターが利用することができる同じように説得力のある話題のイベントとなります。そして、組織は、今後の攻撃でこれらの戦術が最終的に使用されることに対抗するために、認識キャンペーンと技術的なコントロールを強化することが極めて重要です。FDICがSVBの顧客の資金の安全を保証しているにもかかわらず、悪意のあるアクターがその資金を盗もうとしているのは悲劇的です！</p>
+	<h3 id="-">先手を打つ</h3>
+	<p>今後、SVBブランドを利用したフィッシング攻撃が発生することを想定し、<a href="https://blog.cloudflare.com/ja-jp/introducing-cloudforce-one-threat-operations-and-threat-research-ja-jp/">Cloudforce One</a>（Cloudflareの脅威オペレーション・リサーチチーム）は、2023年3月10日からSVBのデジタルプレゼンスに焦点を当てたブランドモニタリングを大幅に強化し、SVBをテーマにしたフィッシングキャンペーンを発見するためのいくつかの追加検出モジュールを発売しました。当社の各種フィッシング対策サービスをご利用のお客様は、自動的にこれらの新モデルのメリットを享受することができます。</p>
+	<p>SVBがFDICの管轄下に組み込まれて以降、実際に起きているSVBに関わるキャンペーンの実例を紹介します。</p>
+	<h3 id="kyc-docusign-svb-">KYCフィッシング - DocuSignをテーマとしたSVBキャンペーン</h3>
+	<p>脅威アクターがよく使う手口は、銀行が顧客に関する詳細を確認するために日常的に行っているKYC（Know Your Customer）活動を模倣することです。これは、詐欺、マネーロンダリング、金融犯罪などから金融機関を保護することを目的としています。</p>
+	<p>2023年3月14日、CloudflareはDocuSignをテーマにしたテンプレートでSVBブランドを活用した大規模なKYCフィッシングキャンペーンを検出しました。このキャンペーンは、Cloudflareとほぼすべての業界を対象としていました。キャンペーン開始から数時間以内に、複数の組織のさまざまな個人をターゲットにした79件の事例を検出しました。Cloudflareは、このキャンペーンの具体的例と、この活動に対するお客様の認識と監視を支援するために見られた戦術と観測データを公開します。</p>
+	<h3 id="--1">キャンペーン内容詳細</h3>
+	<p>以下に示すフィッシング攻撃は、2023年3月14日にCloudflareの創設者兼CEOであるマシュー・プリンスを標的としました。この攻撃には、最初のリンクと、4つの深さを持つ複雑なリダイレクトチェーンを含むHTMLコードが含まれていました。このチェーンは、ユーザーが「<em>文書の確認」</em>リンクをクリックしたときに始まります。このリンクは、Sizmek by Amazon Advertising Server bs[.]serving-sys[.]comが運営する追跡可能な分析用リンクにユーザーを誘導します。このリンクは、さらにユーザーをドメインna2signing[.]web[.]appでホストされているGoogle Firebaseアプリケーションにリダイレクトします。na2signing[.]web[.]appのHTMLは、その後、eaglelodgealaska[.]comでさらに別のリダイレクトを実行しているWordPressサイトへユーザーをリダイレクトします。この最後のリダイレクトの後、ユーザーは攻撃者が管理するdocusigning[.]kirklandellis[.]netのWebサイトに送られます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/Screenshot-2023-03-14-at-10.11.01.png" class="kg-image"></figure>
+	<p>キャンペーンタイムライン</p>
+	<pre><code>2023-03-14T12:05:28Z		First Observed SVB DocuSign Campaign Launched
+2023-03-14T15:25:26Z		Last Observed SVB DocuSign Campaign Launched</code></pre>
+	<h3 id="html-google-firebase-na2signing-web-app-">HTMLファイルGoogle Firebaseアプリケーション（na2signing[.]web[.]app）の確認</h3>
+	<p>攻撃に含まれるHTMLファイルは、再帰的なリダイレクト機能を持つWordPressインスタンスにユーザーを送り込みます。この記事を書いている時点では、この特定のWordPressインストールが侵害されたのか、このリダイレクト場所を開くプラグインがインストールされたのかは不明です。</p>
+	<pre><code>&lt;html dir="ltr" class="" lang="en"&gt;&lt;head&gt;
+    &lt;title&gt;Sign in to your account&lt;/title&gt;
+    
+    &lt;script type="text/javascript"&gt;
+    window.onload = function() {
+        function Redirect (url){
+            window.location.href = url;
+        }
+        var urlParams = new URLSearchParams(window.location.href);
+        var e = window.location.href;
+        
+       
+        Redirect("https://eaglelodgealaska[.]com/wp-header.php?url="+e);
+    }
+&lt;/script&gt;
+
+</code></pre>
+	<h3 id="--2">安全性が損なわれたことを示す兆候</h3>
+	<pre><code>na2signing[.]web[.]app	悪意のあるGoogle Cloudbaseアプリケーション。
+eaglelodgealaska[.]com	WordpressのWebサイトが危険にさらされた可能性、またはオープンリダイレクトの可能性があります。
+
+*[.]kirklandellis[.]net		少なくともdocusigning[.]kirklandellis[.]net上で攻撃者制御のアプリケーションが動作。
+</code></pre>
+	<h3 id="--3">推奨事項</h3><!--kg-card-begin: markdown-->
+	<ol>
+		<li>
+			<p>Cloudflareメールセキュリティをご利用のお客様は、ダッシュボードで以下の検索キーワードを使用して、このキャンペーンを受け取ったかどうかを判断できます： <br><br>
+				<code>SH_6a73a08e46058f0ff78784f63927446d875e7e045ef46a3cb7fc00eb8840f6f0</code> <br><br>
+				また、お客様は当社の脅威指標APIを通じてこのキャンペーンに関するIOCの追跡を行うことができます。更新されたIOCは、関連するAPIエンドポイントに継続的にプッシュされます。
+			</p>
+		</li>
+		<li>
+			<p>インバウンドメッセージに対して適切なDMARCポリシーを実施していることを確認してください。Cloudflareは、受信メッセージのDMARC失敗に対して、最低限 <strong>[p = quarantine]</strong> を推奨しています。SVBのDMARCレコード[<code>v=DMARC1; p=reject; pct=100</code>] は、SVBのブランドを詐称し、SVBの指定・検証済み送信者リストから送信されていないメッセージを拒否することを明示的に述べています。Cloudflareメールセキュリティをご利用中のお客様は、SVBの公開されたDMARCレコードに基づき、この強制力を自動的に得ることができます。その他のドメイン、またはすべてのインバウンドメッセージに広範なDMARCベースのポリシーを適用する場合、Cloudflareは<a href="https://developers.cloudflare.com/email-security/email-configuration/email-policies/" target="_blank">Cloudflare Area 1ダッシュボード</a>内のすべてのインバウンドメールで「送信元拡張検証」ポリシーを遵守することを推奨しています。</p>
+		</li>
+		<li>
+			<p>Cloudflare Gatewayをご利用中のお客様は、これらの悪意のあるURLやドメインから自動的に保護されます。お客様は、これらの特定のIOCのログを確認し、お客様の組織がこれらのサイトへのトラフィックを有していたかどうかを判断することができます。</p>
+		</li>
+		<li>
+			<p>フィッシングの認識やトレーニングのプロバイダーと協力し、エンドユーザー向けにSVBをテーマにしたフィッシングシミュレーションを導入しましょう（まだ導入されていない場合）。</p>
+		</li>
+		<li>
+			<p>エンドユーザーに、ACH（自動決済機関）またはSWIFT（国際銀行間通信協会）関連のメッセージに注意するよう促します。ACHとSWIFTは、金融機関が事業体間の電子資金移動に使用するシステムです。ACH・SWIFTフィッシングは、その大規模な蔓延を考えると、脅威アクターがしばしば支払いを自分自身にリダイレクトするために利用している戦術です。過去数日間、SVBブランドを利用した大規模なACHキャンペーンは見られませんでしたが、これが計画されていない、または差し迫っていないという意味ではありません。同様の支払い詐欺キャンペーンで見られた、注意すべき件名の例をいくつか示します。</p>
+			<p><em>「銀行情報を変更しました」<br>
+					「銀行口座情報を更新しました」<br>
+					「あなたの対応がすぐに必要です-<br>
+					重要 - 銀行口座情報の変更」<br>
+					「重要 - 銀行口座情報の変更）」<br>
+					「金融機関変更のお知らせ」</em></p>
+		</li>
+		<li>
+			<p>SVBに関連する電子メールやWebトラフィックに現れる可能性のある、類似ドメインやいとこドメインに警戒してください。Cloudflareのお客様は、電子メールとWebトラフィックに新しいドメインの制御を組み込んでおり、これらの新しいドメインから来る異常なアクティビティが通過するのを防ぐことができます。</p>
+		</li>
+		<li>
+			<p>公開対象のWebアプリケーションには常に最新版のパッチを適用し、アプリケーションの前で最新のWebアプリケーションファイアウォールサービスを実行するようにします。上記のキャンペーンでは、脅威アクターがフィッシングサイトに頻繁に使用するWordPressが利用されました。Cloudflare WAFを使用している場合、サードパーティのCVEを知る前に、自動的に保護することができます。効果的なWAFを導入することは、SVBをテーマとしたフィッシングキャンペーンや、それ以外のキャンペーンで、脅威からWebサイトを乗っ取られることを防ぐために重要です。</p>
+		</li>
+	</ol>
+	<!--kg-card-end: markdown-->
+	<h3 id="--4">先を見据えて</h3>
+	<p>Cloudforce One（Cloudflareの脅威オペレーションチーム）は、新しく出てきたキャンペーンを形成段階で積極的に監視し、アドバイザリーや検出モデルのアップデートを公表して、お客様の保護を確実にします。今回のキャンペーンはSVBに焦点を当てたものですが、見られる戦術は他の同様のキャンペーンと異なるところはありません。Cloudflareのグローバルネットワークは毎日それを監視しており、お客様に影響を与える前に自動的に停止しています。</p>
+	<p>このような攻撃を阻止するには、複数の通信チャネルにわたる強力な技術的コントロールと、デジタル通信がもたらす危険性を認識する訓練された警戒力を持ち合わせる従業員を組み合わせることが不可欠です。</p>
+	<p>包括的なフィッシング対策に向けたCloudflareの取り組みについては、<a href="https://www.cloudflare.com/zero-trust-hub/" target="_blank">Zero Trustサービス</a>をご覧ください。また、<a href="https://www.cloudflare.com/lp/emailsecurity/" target="_blank">無料評価を本日お申し込みください</a>。</p>
+</div>

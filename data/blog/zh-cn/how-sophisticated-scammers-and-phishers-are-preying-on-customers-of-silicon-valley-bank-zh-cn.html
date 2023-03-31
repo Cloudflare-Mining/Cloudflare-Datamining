@@ -1,0 +1,81 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/SVB---Banking-Phishing.png" class="kg-image" alt="How sophisticated scammers and phishers are preying on customers of Silicon Valley Bank"></figure>
+	<p>目前，硅谷银行 (SVB)<a href="https://www.cnn.com/2023/03/11/business/svb-collapse-roundup-takeaways/index.html" target="_blank"> 倒闭</a>并被美国联邦政府接管的新闻已经人尽皆知。崩溃速度之快令人唏嘘，各大组织无论规模如何，预计都将持续受到影响。</p>
+	<p>不幸的是，当大家看到的都是悲剧时，威胁行为者看到的是机会。我们又一次见证了这一点：为了攻破信任防线并诱骗毫无戒备的受害者，绝大多数情况下威胁行为者会使用热门事件作为诱饵。这些都是跟随新闻周期或关注已知的知名事件（例如超级碗、NCAA 一级男子篮球锦标赛、纳税日、黑色星期五促销、新冠疫情，等等），因为无论何时，如果消息中提及了当时的热门话题，用户就更有可能受到吸引。</p>
+	<p>SVB 新闻周期引发了一个万众瞩目的热门话题，可能被威胁行为者利用；而且，组织必须加强意识宣传和技术控制，以帮助应对威胁行为者最终使用这些策略发起攻击，这一点至关重要。可悲的是，尽管 FDIC 承诺保证 SVB 客户的资金安全，但恶意行为者却试图窃取他们的资金！</p>
+	<h3 id="-">先发制人的行动</h3>
+	<p>为了应对未来利用 SVB 事件发起网络钓鱼攻击，从 2023 年 3 月 10 日起，<a href="https://blog.cloudflare.com/zh-cn/introducing-cloudforce-one-threat-operations-and-threat-research-zh-cn/">Cloudforce One</a>（Cloudflare 的威胁运营和研究团队）大大加强了品牌监测，重点关注数字形式存在的 SVB，并推出了几个额外的检测模块来发现 SVB 主题的网络钓鱼活动。使用我们的各种网络钓鱼防护服务的所有客户均会自动获得这些新模块的功能。</p>
+	<p>下面说一个涉及 SVB 的示例，这是该银行被 FDIC 接管之后发生的真实事件。</p>
+	<h3 id="kyc-docusign-svb-">KYC 网络钓鱼——以 DocuSign 为主题的 SVB 活动</h3>
+	<p>威胁行为者经常使用的一个策略是模仿持续开展的 KYC（了解您的客户）工作。这是银行为验证客户的身份详情而惯常执行的调查，旨在保护金融机构免受欺诈、洗钱和金融犯罪等活动的影响。</p>
+	<p>2023 年 3 月 14 日，Cloudflare 检测到一起大型 KYC 网络钓鱼活动，他们使用 DocuSign 主题模板并利用 SVB 品牌。此活动瞄准 Cloudflare 和几乎所有行业的垂直领域。在活动的头几个小时内，我们检测到了 79 个目标为多个组织中不同个人的示例。Cloudflare 发布了此次活动的一个具体示例，以及所用策略和观察结果，帮助客户了解并警惕该活动。</p>
+	<h3 id="--1">活动详情</h3>
+	<p>下图所示的网络钓鱼攻击发生于 2023 年 3 月 14 日，目标是 Cloudflare 的创始人兼首席执行官 Matthew Prince。它包括 HTML 代码，其中包含一个初始链接和一个复杂的重定向链，有四层之深。该链始于用户点击“<em>Review Documents</em>”（查阅文档），然后将用户转到一个由 Amazon 广告服务器 bs[.]serving-sys[.]com 支持的 Sizmek 运行的可追踪分析链接。然后，该链接进一步将用户重定向到一个托管在 na2signing[.]web[.]app 域上的 Google Firebase 应用程序。na2signing[.]web[.]app HTML 随后将用户重定向到一个 WordPress 网站，但该网站运行的是另一重定向器 eaglelodgealaska[.]com。经过最后这次重定向后，用户转到了一个由攻击者控制的 docusigning[.]kirklandellis[.]net 网站。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/Screenshot-2023-03-14-at-10.11.01.png" class="kg-image"></figure>
+	<p>运动时间表</p>
+	<pre><code>2023-03-14T12:05:28Z		First Observed SVB DocuSign Campaign Launched
+2023-03-14T15:25:26Z		Last Observed SVB DocuSign Campaign Launched</code></pre>
+	<h3 id="-html-google-firebase-na2signing-web-app-">简要了解 HTML 文件 Google Firebase 应用程序(na2signing[.]web[.]app)</h3>
+	<p>攻击中包含的 HTML 文件将用户转到一个具有递归重定向能力的 WordPress 实例。截至本文撰写之时，我们还不确定这次特定的 WordPress 安装是否已经破坏，或者是否安装了一个插件来打开这个重定向位置。</p>
+	<pre><code>&lt;html dir="ltr" class="" lang="en"&gt;&lt;head&gt;
+    &lt;title&gt;Sign in to your account&lt;/title&gt;
+    
+    &lt;script type="text/javascript"&gt;
+    window.onload = function() {
+        function Redirect (url){
+            window.location.href = url;
+        }
+        var urlParams = new URLSearchParams(window.location.href);
+        var e = window.location.href;
+        
+       
+        Redirect("https://eaglelodgealaska[.]com/wp-header.php?url="+e);
+    }
+&lt;/script&gt;
+
+</code></pre>
+	<h3 id="--2">入侵指标</h3>
+	<pre><code>na2signing[.]web[.]app	恶意的 Google Cloudbase 应用程序。
+eaglelodgealaska[.]com	可能入侵了 Wordpress 网站或某个开放式重定向。
+
+*[.]kirklandellis[.]net		攻击者控制的应用程序至少在 docusigning[.]kirklandellis[.]net 上运行。
+</code></pre>
+	<h3 id="--3">建议</h3><!--kg-card-begin: markdown-->
+	<ol>
+		<li>
+			<p>Cloudflare Email Security 客户可以在仪表板上使用以下搜索词来确定自己是否收到了此活动： <br><br>
+				<code>SH_6a73a08e46058f0ff78784f63927446d875e7e045ef46a3cb7fc00eb8840f6f0</code> <br><br>
+				客户还可以通过我们的威胁指标 API 跟踪与此活动相关的 IOC。任何更新的 IOC 将持续推送到相关的 API 端点。
+			</p>
+		</li>
+		<li>
+			<p>确保您为入站消息适当地执行了 DMARC 策略。对于入站消息的任何 DMARC 故障，Cloudflare 建议至少使用 <strong>[p = quarantine]</strong> 。SVB 的 DMARC 记录 [<code>v=DMARC1; p=reject; pct=100</code>] 明确表示，拒绝任何冒充 SVB 品牌且不是从 SVB 指定的验证发件人列表中发出的消息。Cloudflare Email Security 客户将根据 SVB 分布的 DMARC 记录自动完成执行。对于其他域，或者为了在所有入站消息中应用更广泛的基于 DMARC 的策略，Cloudflare 建议在其 <a href="https://developers.cloudflare.com/email-security/email-configuration/email-policies/" target="_blank">Cloudflare Area 1 仪表板</a>内对所有入站邮件坚持使用“增强型发件人验证”策略。</p>
+		</li>
+		<li>
+			<p>Cloudflare Gateway 客户会自动获得保护，免受这些恶意 URL 和域的影响。客户可以检查这些特定 IOC 的日志，确定其组织是否有任何传往这些网站的流量。</p>
+		</li>
+		<li>
+			<p>请与您的网络钓鱼意识与培训提供商合作，为您的终端用户部署 SVB 主题的网络钓鱼模拟（如果他们还未部署）。</p>
+		</li>
+		<li>
+			<p>鼓励您的终端用户对任何与 ACH（自动清算所）或 SWIFT（环球银行间金融电信协会）相关的消息保持警惕。ACH 和 SWIFT 是金融机构使用的实体间电子资金转移系统。由于这些系统规模庞大、使用普遍，威胁行为者经常利用 ACH 和 SWIFT 网络钓鱼来将付款转给他们自己。虽然过去几天中，我们没有发现任何利用 SVB 品牌的大规模 ACH 活动，但这并不意味着没有这样的计划或者眼下不会发生。我们在类似的付款欺诈活动中发现了一些需要注意的主题行，请务必保持警惕，示例如下：</p>
+			<p><em>“我们变更了我们的银行信息”<br>
+					“更新后的银行账户信息”<br>
+					“您需要立即采取行动”<br>
+					“请注意：银行账户详情变更”<br>
+					“请注意：银行账户详情变更”<br>
+					“金融机构变更通知”</em></p>
+		</li>
+		<li>
+			<p>请对您电子邮件中可能弹出的相像或近似的域名，以及与 SVB 相关的 web 流量保持警惕。Cloudflare 客户在其电子邮件和 web 流量中内置了新域名控制，将阻止来自这些新域名的异常活动。</p>
+		</li>
+		<li>
+			<p>确保任何面向公众的 web 应用程序始终安装了最新版本的补丁，并在您的应用程序前运行现代 web 应用程序防火墙服务。上述活动利用了 WordPress 的优势，但威胁行为者经常在钓鱼网站上使用 WordPress。如果使用 Cloudflare WAF，在您知道第三方 CVE 之前，就已自动为您提供防护。拥有一个有效的 WAF 至关重要，旨在防止威胁行为者接管您的公共 web 资产，并将其用于任何网络钓鱼活动（不论是以 SVB 为主题还是其他方式）。</p>
+		</li>
+	</ol>
+	<!--kg-card-end: markdown-->
+	<h3 id="--4">先人一步</h3>
+	<p>Cloudforce One（Cloudflare 的威胁运营团队）主动监测即将发生、正在形成阶段的新活动，并发布建议和检测模型更新，确保我们的客户得到妥善保护。虽然这一特定活动主要关注的是 SVB，但所用策略与我们全球网络每天发现的其他类似活动并无二致，我们可以自动阻止这些活动，让它们无法伤害我们的客户。</p>
+	<p>要阻止这些攻击，在多个通信渠道中融合强大的技术控制，同时拥有一支训练有素、警惕性高、了解数字通信的危险的员工队伍至关重要。</p>
+	<p>使用我们的<a href="https://www.cloudflare.com/zero-trust-hub/" target="_blank"> Zero Trust 服务</a>，立即申请<a href="https://www.cloudflare.com/lp/emailsecurity/" target="_blank">免费评估</a>，进一步了解 Cloudflare 如何帮助您获得全面的网络钓鱼防护。</p>
+</div>

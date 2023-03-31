@@ -1,0 +1,81 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/SVB---Banking-Phishing.png" class="kg-image" alt="How sophisticated scammers and phishers are preying on customers of Silicon Valley Bank"></figure>
+	<p>이제 실리콘밸리뱅크(SVB)가<a href="https://www.cnn.com/2023/03/11/business/svb-collapse-roundup-takeaways/index.html" target="_blank"> 파산</a>하면서 미연방정부의 폐쇄 결정이 내려졌다는 소식은 모두가 알고 있습니다. 이렇게 빠른 속도로 파산 결정이 이루어졌다는 사실에 많은 사람들이 놀라움을 금치 못했으며, 크고 작은 조직에 미치는 영향은 당분간 지속될 것으로 예상됩니다.</p>
+	<p>안타깝게도 모두가 비극을 바라볼 때 위협 행위자는 기회를 봅니다. 위협 행위자들은 신뢰를 깨고 순진한 피해자를 속이기 위해 화제의 사건을 미끼로 삼는 경우가 압도적으로 많다는 사실을 여러 차례 확인했습니다. 이는 뉴스 주기 또는 유명 이벤트(슈퍼볼, 3월의 광란, 납세일, 블랙 프라이데이 세일, 코로나19 등)를 따르는데, 이는 사용자가 특정 시점에 가장 관심 있는 내용을 언급하는 메시지에 넘어갈 가능성이 높기 때문입니다.</p>
+	<p>SVB 뉴스 주기는 위협 공격자들이 활용할 수 있는 매우 매력적인 화제성 이벤트이며, 조직은 향후 공격에서 결국 이러한 전술이 사용될 것에 대응할 수 있도록 인식 캠페인과 기술적인 제어력을 강화하는 것이 중요합니다. FDIC가 SVB 고객의 자금이 안전하다고 보장하고 있음에도 불구하고 악의적인 행위자들이 바로 그 돈을 훔치려고 시도하고 있다는 것은 비극이 아닐 수 없습니다!</p>
+	<h3 id="-">선제적 조치</h3>
+	<p>향후 SVB 브랜드를 악용하는 피싱 공격이 예상됨에 따라,<a href="https://blog.cloudflare.com/introducing-cloudforce-one-threat-operations-and-threat-research/"> Cloudforce One</a>(Cloudflare의 위협 운영 및 연구팀)은 2023년 3월 10일부터 SVB의 디지털 프레즌스에 초점을 맞춘 브랜드 모니터링을 대폭 강화했으며, SVB 테마 피싱 캠페인을 발견하기 위한 몇 가지 추가 탐지 모듈을 출시했습니다. 다양한 피싱 방지 서비스를 이용하는 모든 고객은 이러한 새로운 모델의 혜택을 자동으로 받게 됩니다.</p>
+	<p>다음은 FDIC가 실리콘밸리뱅크를 인수한 이후 SVB와 관련하여 실제 발생했던 캠페인의 예입니다.</p>
+	<h3 id="kyc-docusign-svb-">KYC 피싱 - DocuSign을 테마로 한 SVB 캠페인</h3>
+	<p>위협 행위자가 자주 사용하는 전술은 은행이 고객에 대한 세부 정보를 확인하기 위해 일상적으로 수행하는 지속적인 KYC(Know Your Customer) 노력을 모방하는 것입니다. 이는 무엇보다도 사기, 자금 세탁 및 금융 범죄로부터 금융 기관을 보호하기 위한 것입니다.</p>
+	<p>2023년 3월 14일, Cloudflare는 DocuSign 테마 템플릿에서 SVB 브랜드를 활용한 대규모 KYC 피싱 캠페인을 탐지했습니다. 이 캠페인은 Cloudflare와 거의 모든 산업 분야를 표적으로 삼았습니다. 캠페인이 시작된 지 몇 시간 만에 여러 조직의 여러 개인을 대상으로 한 79건의 사례가 발견되었습니다. Cloudflare는 고객이 이러한 활동을 인식하고 경계하는 데 도움이 될 수 있도록 이 캠페인의 구체적인 사례와 함께 관찰된 전술 및 관찰 가능한 정보를 게시합니다.</p>
+	<h3 id="--1">캠페인 세부 정보</h3>
+	<p>아래 나온 피싱 공격은 2023년 3월 14일에 Cloudflare의 설립자이자 CEO인 Matthew Prince를 표적으로 삼았습니다. 이 공격에는 초기 링크와 4단계로 구성된 복잡한 리디렉션 체인이 포함된 HTML 코드가 심어져 있습니다. 이 체인은 사용자가 '<em>문서 검토'</em> 링크를 클릭할 때 시작됩니다. 이 링크는 Sizmek이 Amazon Advertising Server bs[.]serving-sys[.]com에서 실행하는 추적 가능한 분석 링크로 사용자를 리디렉션합니다. 그런 다음 사용자를 na2signing[.]web[.]app 도메인에서 호스팅되는 Google Firebase 애플리케이션으로 리디렉션합니다. na2signing[.]web[.]app HTML은 이후 사용자를 eaglelodgealaska[.]com에서 또 다른 리디렉터를 실행하는 WordPress 사이트로 리디렉션합니다. 이 최종 리디렉션이 끝나면 사용자는 공격자가 제어하는 docusigning[.]kirklandellis[.]net 웹사이트로 보내집니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/Screenshot-2023-03-14-at-10.11.01.png" class="kg-image"></figure>
+	<p>캠페인 타임라인</p>
+	<pre><code>2023-03-14T12:05:28Z		First Observed SVB DocuSign Campaign Launched
+2023-03-14T15:25:26Z		Last Observed SVB DocuSign Campaign Launched</code></pre>
+	<h3 id="html-google-firebase-na2signing-web-app-">HTML 파일 Google Firebase 애플리케이션(na2signing[.]web[.]app) 살펴보기</h3>
+	<p>공격에 포함된 HTML 파일은 사용자를 재귀적 리디렉션 기능이 있는 WordPress 인스턴스로 보냅니다. 이 글을 쓰는 현재로서는 이 특정 WordPress 설치가 손상되었는지 또는 이 리디렉션 위치를 열기 위해 플러그인이 설치되었는지는 확실하지 않습니다.</p>
+	<pre><code>&lt;html dir="ltr" class="" lang="en"&gt;&lt;head&gt;
+    &lt;title&gt;Sign in to your account&lt;/title&gt;
+    
+    &lt;script type="text/javascript"&gt;
+    window.onload = function() {
+        function Redirect (url){
+            window.location.href = url;
+        }
+        var urlParams = new URLSearchParams(window.location.href);
+        var e = window.location.href;
+        
+       
+        Redirect("https://eaglelodgealaska[.]com/wp-header.php?url="+e);
+    }
+&lt;/script&gt;
+
+</code></pre>
+	<h3 id="--2">손상 지표</h3>
+	<pre><code>na2signing[.]web[.]app	악성 Google Cloudbase 애플리케이션.
+eaglelodgealaska[.]com	손상되었을 수 있는 Wordpress 웹사이트 또는 개방적 리디렉션.
+
+*[.]kirklandellis[.]net		최소 docusigning[.]kirklandellis[.]net에서 실행되는 공격자 제어 애플리케이션.
+</code></pre>
+	<h3 id="--3">권장 사항</h3><!--kg-card-begin: markdown-->
+	<ol>
+		<li>
+			<p>Cloudflare Email Security 고객은 다음 검색어를 이용하여 대시보드에서 이 캠페인을 수신했는지 여부를 확인할 수 있습니다. <br><br>
+				<code>SH_6a73a08e46058f0ff78784f63927446d875e7e045ef46a3cb7fc00eb8840f6f0</code> <br><br>
+				또한, Cloudflare의 위협 지표 API를 통해 이 캠페인과 관련된 IOC를 추적할 수 있습니다. 업데이트된 IOC는 관련 API 엔드포인트로 지속적으로 푸시됩니다.
+			</p>
+		</li>
+		<li>
+			<p>인바운드 메시지에 대해 적절한 DMARC 정책을 적용하고 있는지 확인하십시오. Cloudflare는 최소한 수신 메시지의 DMARC 실패에 대해서라도 <strong>[p = quarantine]</strong> 을 권장합니다. SVB의 DMARC 레코드 [<code>v=DMARC1; p=reject; pct=100</code>] 은 브랜드를 사칭하고 SVB의 지정 및 확인된 발신자 목록에서 전송되지 않은 모든 메시지를 거부한다고 명시적으로 밝히고 있습니다. Cloudflare Email Security 고객은 SVB의 게시된 DMARC 레코드를 기반으로 이 정책이 자동으로 시행됩니다. 다른 도메인의 경우 또는 모든 인바운드 메시지에 대해 더 광범위한 DMARC 기반 정책을 적용하려면 <a href="https://developers.cloudflare.com/email-security/email-configuration/email-policies/" target="_blank">Cloudflare Area 1 대시보드</a>에서 모든 인바운드 이메일에 대해 '향상된 발신자 확인' 정책을 준수할 것을 권장합니다.</p>
+		</li>
+		<li>
+			<p>Cloudflare Gateway 고객은 이러한 악성 URL 및 도메인으로부터 자동으로 보호됩니다. 고객은 이러한 특정 IOC에 대한 로그를 확인하여 조직에서 이러한 사이트로의 트래픽이 발생했는지 확인할 수 있습니다.</p>
+		</li>
+		<li>
+			<p>피싱 인식 및 교육 제공업체와 협력하여 아직 배포하지 않은 경우 최종 사용자를 위한 SVB 테마의 피싱 시뮬레이션을 배포하십시오.</p>
+		</li>
+		<li>
+			<p>최종 사용자에게 ACH(Automated Clearing House) 또는 SWIFT(Society for Worldwide Interbank Financial Telecommunication) 관련 메시지에 대해 주의를 기울이도록 권장하십시오. ACH 및 SWIFT는 금융 기관이 기업 간 전자 자금 이체에 사용하는 시스템입니다. 아주 널리 퍼져 있는 ACH 및 SWIFT 피싱은 위협 행위자가 결제를 자신에게 리디렉션하기 위해 자주 사용하는 전술입니다. 지난 며칠 동안 SVB 브랜드를 활용한 대규모 ACH 캠페인은 아직 발견되지 않았지만, 그렇다고 해서 계획 중이지 않거나 임박하지 않았다는 의미는 아닙니다. 다음은 유사한 결제 사기 캠페인에서 확인된 몇 가지 주의해야 할 제목의 예입니다.</p>
+			<p><em>"은행 정보를 변경했습니다"<br>
+					"업데이트된 은행 계좌 정보"<br>
+					"긴급 조치가 필요합니다 -<br>
+					중요 - 은행 계좌 정보 변경"<br>
+					"중요 - 은행 계좌 정보 변경"<br>
+					"금융 기관 변경 공지"</em></p>
+		</li>
+		<li>
+			<p>SVB와 관련된 이메일 및 웹 트래픽에 나타날 수 있는 유사 도메인 또는 사촌 도메인을 경계하십시오. Cloudflare 고객은 이메일 및 웹 트래픽 내에 새로운 도메인 제어 기능이 내장되어 있어 이러한 새로운 도메인에서 발생하는 비정상적인 활동이 통과하지 못하도록 방지할 수 있습니다.</p>
+		</li>
+		<li>
+			<p>모든 공개 웹 애플리케이션을 항상 최신 버전으로 패치하고 애플리케이션 앞 단계에서 최신 웹 애플리케이션 방화벽 서비스를 실행하십시오. 위에서 언급한 캠페인은 위협 공격자들이 피싱 사이트에 자주 사용하는 WordPress를 이용했습니다. Cloudflare WAF를 사용하는 경우, 타사 CVE에 대해 알기도 전에 자동으로 보호받을 수 있습니다. 위협 공격자가 공개 웹 사이트를 장악하여 피싱 캠페인(SVB 테마 또는 기타)의 일부로 사용하는 것을 방지하려면 효과적인 WAF를 구축하는 것이 중요합니다.</p>
+		</li>
+	</ol>
+	<!--kg-card-end: markdown-->
+	<h3 id="--4">앞서 나가기</h3>
+	<p>Cloudflare의 위협 운영팀인 Cloudforce One은 새로운 캠페인이 형성되는 단계에서 선제적으로 모니터링하고 고객을 보호하기 위해 권고 및 탐지 모델 업데이트를 게시합니다. 이 특정 캠페인은 SVB에 초점을 맞추고 있지만, 발견된 수법은 전 세계 네트워크에서 매일 발견하여 고객에게 영향을 미치기 전에 자동으로 차단하는 다른 유사한 캠페인과 다르지 않습니다.</p>
+	<p>여러 커뮤니케이션 채널에 걸쳐 강력한 기술적 통제와 함께 디지털 커뮤니케이션의 위험성을 인지하고 있는 숙련되고 경계심이 높은 인력을 배치하는 것은 이러한 공격을 차단하는 데 매우 중요합니다.</p>
+	<p>Cloudflare가<a href="https://www.cloudflare.com/zero-trust-hub/" target="_blank"> Zero Trust 서비스</a>를 이용하여 포괄적인 피싱 방어 체계를 구축하는 데 어떤 도움을 줄 수 있는지 알아보고<a href="https://www.cloudflare.com/lp/emailsecurity/" target="_blank"> 지금 바로 무료 평가</a>도 받아보십시오.</p>
+</div>
