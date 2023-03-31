@@ -43,7 +43,7 @@
 		<h4><span style="font-weight: 400;">For Bay Area-based hires: Estimated annual salary of $288,000 - $352,000.</span></h4>
 	</li>
 	<li style="font-weight: 400;">
-		<h4><span style="font-weight: 400;">For Colorado-based hires: Estimated annual salary of $275,000 - $336,000.</span></h4>
+		<h4><span style="font-weight: 400;">For Colorado-based hires and Washington hires: Estimated annual salary of $275,000 - $336,000.</span></h4>
 	</li>
 	<li style="font-weight: 400;">
 		<h4><span style="font-weight: 400;">For New York City-based hires: Estimated annual salary of $279,000 - $341,000</span></h4>
