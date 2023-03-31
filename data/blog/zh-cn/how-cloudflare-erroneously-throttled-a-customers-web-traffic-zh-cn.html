@@ -1,0 +1,22 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/02/BLOG-1707-header-1.png" class="kg-image" alt="How Cloudflare erroneously throttled a customer’s web traffic"></figure>
+	<p>过年来，每当 Cloudflare 发生影响到客户的<a href="https://blog.cloudflare.com/tag/outage/">宕机</a>事件时，我们都会迅速通过博客说明所发生的事情，其起因，以及我们采取什么措施来解决宕机的原因。但今天这篇文章有点不同。本文介绍某个客户的网站因 Cloudflare 采取的错误操作而<a href="https://news.ycombinator.com/item?id=34639212" target="_blank">不能正常工作</a>。</p>
+	<p>尽管该客户没有被 Cloudflare 以任何方式禁止，也没有失去帐户的访问权限，但他们的网站无法工作。原因是 Cloudflare 在我们与其源服务器之间应用了带宽限制。结果是网站变得不可用。</p>
+	<p>由于这种不寻常的限流，我们的客户支持团队在关于发生了什么方面出现了一些内部混乱。他们错误地认为，该客户之所以被限流，是因为违反了<a href="https://www.cloudflare.com/terms/" target="_blank">自助订阅协议</a>的第 2.8 条，即禁止使用我们的自助 CDN 来服务过多的非 HTML 内容，例如图像和视频，除非订阅了包含那些服务的付费计划(例如，这是为了防止有人在 Cloudflare 上构建图像托管服务，消耗大量带宽；对于此类用例，我们有付费的<a href="https://www.cloudflare.com/products/cloudflare-images/" target="_blank">图像</a>和<a href="https://www.cloudflare.com/products/cloudflare-stream/" target="_blank">视频</a>计划)。</p>
+	<p>然而，该客户并没有违反第 2.8 条，他们既是付费客户，也是被限制的流量所通过的 Cloudflare Workers 的付费客户。以上限流本不应发生。此外，客户现在和将来都不需要升级到其他计划级别。</p>
+	<p>这一事件在 Cloudflare 内部触发了多个工作流程，以确保团队之间更好地沟通，防止此类事件发生，并确保 Cloudflare 和我们的客户之间的沟通更加清晰。</p>
+	<p>在解释我们自己的错误及其发生经过前，我们希望向该客户道歉。我们意识到此事造成的严重影响，以及我们如何未达到预期。在这篇博客文章中，我们想解释发生了什么，更重要的是，我们将做出什么改变，以确保它不再发生。</p>
+	<h3 id="-">背景</h3>
+	<p>2月2日，在我们的阿仕本(Ashburn)数据中心，一名当值网络工程师收到了关于 Equinix IX 接口拥塞的警报。虽然这个警报并不罕见，但两个原因使其引人注目。首先，这个情况已经连续第二天发生，其次，拥堵是由于流量突然急剧增加。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/image2-1.png" class="kg-image"></figure>
+	<p>负责的工程师指出，该客户的域 tardis.dev是造成 Cloudflare 与其源网络(一家存储提供商)之间流量突然激增的原因。这一拥塞发生在连接到外部对等网络的物理接口上，因此对我们的许多客户和对等网络造成了直接影响。像这样的端口拥塞通常会导致丢包、吞吐量下降和延迟高于平时。虽然我们有针对接口拥塞的自动缓解措施，但在这种情况下，缓解措施无法完全解决影响。</p>
+	<p>来自该客户的流量突然从平均每秒 1500 个请求和每个请求 0.5 MB 的有效负载增加到每秒 3000 个请求(2 倍)和每个请求超过 12 MB 的有效负载(25 倍)。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/image1-4.png" class="kg-image"></figure>
+	<p>拥塞发生在 Cloudflare 和源网络之间。缓存没有发生，原因是这些请求都是前往源的唯一 URL，因而我们不能从缓存提供服务。</p>
+	<p><strong>Cloudflare 的一名工程师决定应用一种限流机制，以防止该区域从源拉取如此多流量。对于这个操作，我们希望明确一点：Cloudflare 并没有既定的流程来对消耗大量带宽的客户进行限流，也无意那样做。这个补救措施是错误的，没有经过批准，我们对此深表歉意。</strong></p>
+	<p>在实施 12 小时 53 分钟后，我们通过内部升级处理取消了限流。</p>
+	<h3 id="--1">下一步</h3>
+	<p>为了确保类似的事件不会发生，我们正在设置明确的规则来缓解类似的问题。无论是否付费客户，对客户的域采取行动前，都将需要经过多个层级的批准，并与客户进行清晰的沟通。我们的工具将会改进以反映这一点。对于流量激增影响到某个链路的情况，我们有很多流量整形的方式；在以上实例中，本可应用一种不同的缓解措施。</p>
+	<p>我们正在改写我们的服务条款，以更好地反映客户今天在我们的平台上提供的服务类型。我们还致力于用通俗易懂的语言向用户解释自助服务计划中允许的内容。作为一家以开发人员为中心、以透明度为核心原则之一的公司，我们知道我们可以做得更好。我们将在稍后发布一篇文章来专门介绍这些变化。</p>
+	<p>我们再次为这一行动向该客户致歉，并为给其他 Cloudflare 客户造成的困惑表示歉意。</p>
+</div>

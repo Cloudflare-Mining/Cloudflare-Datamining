@@ -1,0 +1,527 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image1-49.png" class="kg-image" alt="Inside Geo Key Manager v2: re-imagining access control for distributed systems"></figure>
+	<p>2022 年 12 月，我们宣布推出新版 <a href="https://blog.cloudflare.com/zh-cn/configurable-and-scalable-geo-key-manager-closed-beta-zh-cn/">Geo Key Manager</a> 封闭测试。我们希望帮助客户安全、灵活地按地理位置控制私钥分发，Geo Key Manager v2 (GeoV2) 便是我们为此推出的下一款产品。第一版系统（即 <a href="https://blog.cloudflare.com/introducing-cloudflare-geo-key-manager/">Geo Key Manager v1</a>）是在 2017 年作为一个研究项目推出的，但随着客户需求的变化，以及我们自身规模的扩大，我们意识到，我们需要大力改进才能提升用户体验。</p>
+	<p>我们在使用 Geo Key Manager v1 (GeoV1) 时，面临几项主要挑战，其中一项是访问控制策略不灵活。客户需要更丰富的数据本地化，这往往是因监管问题所致。由于乌克兰冲突等国际事件，能够迅速限制访问敏感关键资料的需求增加。Geo Key Manager v1 的底层密码技术是基于身份的广播加密和基于身份的撤销，模拟基于属性的加密 (ABE) 的一个功能子集。换成一个成熟的 ABE 方案后，解决了我们访问控制策略不灵活的问题，为我们的系统提供了一个更安全的基础。</p>
+	<p>我们以前的方案在一开始就冻结参与的数据中心和策略集，从而限制了未来的灵活性，而使用 ABE，系统很容易适应未来的需求。实例化后增加额外的数据中心提升了性能，我们充分利用这一优势，极大地简化了属性和策略变更的处理过程。此外，GeoV1 还面临一些复杂的性能问题，导致较高的尾部延迟和痛苦的手动密钥轮换过程。GeoV2 解决了 GeoV1 存在的这些挑战和限制。</p>
+	<p>虽然本文重点讨论的是我们的地理密钥管理解决方案，但这些经验也可应用于其他访问控制需求。传统上，访问控制解决方案是使用一个高度可用的中央机构来控制对资源的访问。ABE 则能够避免这种单点故障，大家很快便可见证。据我们所知，目前没有基于 ABE 的大型访问控制系统，希望我们的讨论可以启发工程师，鼓励他们考虑使用 ABE 作为访问控制的替代方案，尽量减少对中心化机构的依赖。为了促进采纳这一方案，我们在我们的开源加密库 <a href="https://pkg.go.dev/github.com/cloudflare/circl@v1.3.0/abe/cpabe/tkn20" target="_blank">CIRCL</a> 中加入了我们的 ABE 实现方式。</p>
+	<h2 id="-">一些不满意的尝试</h2>
+	<p>在讨论 GeoV2 之前，我们先来探讨一下我们要解决的问题。</p>
+	<p>例如：一家大型欧洲银行希望只将他们的 TLS 私钥存储在欧盟内部。这家银行是 Cloudflare 的客户，即我们代表该银行执行 TLS 握手。我们需要为他们终止 TLS，以便我们对 DDoS 攻击提供最佳防护，通过缓存提高性能，支持 web 应用程序防火墙等。</p><!--kg-card-begin: markdown-->
+	<p>为了终止 TLS，我们需要访问它们的 TLS 私钥<sup>1</sup>。处理 API 流量的控制平面将客户上传的私钥与全球所有机器共有的主公钥加密。然后，它将密钥放入全球分布式 KV 存储 <a href="https://blog.cloudflare.com/introducing-quicksilver-configuration-distribution-at-internet-scale/">Quicksilver</a>。这意味着世界上每个数据中心的每台机器都有这个客户的 TLS 私钥的本地副本。因此，每个数据中心的每台机器都有每位客户的私钥的副本。</p>
+	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/01/Customer-uploading-their-TLS-certificate-and-private-key-to-be-stored-in-all-datacenters.png" class="kg-image" alt="客户上传他们的 TLS 证书和私钥，并存储在所有数据中心">
+		<figcaption>客户上传他们的 TLS 证书和私钥，并存储在所有数据中心</figcaption>
+	</figure>
+	<p>然而，这家银行希望其密钥仅存储在欧盟的数据中心。为实现这一目的，我们有三种方案。</p>
+	<p>第一种方案是确保只有欧盟的数据中心可以接收密钥并终止握手。所有其他机器将 TLS 请求代理到欧盟的服务器进行处理。这就需要只给每台机器提供 Quicksilver 中存储的整个密钥集的一个子集，而 Cloudflare 多年来的核心设计决策就是假设整个数据集都复制在每台机器上，这是需要解决的挑战。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/01/Restricting-customer-keys-to-EU-datacenters.png" class="kg-image" alt="将客户密钥限制在欧盟数据中心内">
+		<figcaption>将客户密钥限制在欧盟数据中心内</figcaption>
+	</figure>
+	<p>第二种方案是将密钥存储在核心数据中心而非 Quicksilver。这样我们便能每次都执行适当的访问控制策略，确保只有某些机器可以访问某些密钥。但这违背了构建全球网络的初衷：减少延迟，避免核心发生单点故障。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/01/Storing-keys-in-core-datacenter-where-complicated-business-logic-runs-to-enforce-policies.png" class="kg-image" alt="将密钥存储在核心数据中心，但核心数据中心运行复杂的业务逻辑来执行策略">
+		<figcaption>将密钥存储在核心数据中心，但核心数据中心运行复杂的业务逻辑来执行策略</figcaption>
+	</figure>
+	<p>第三种方案是使用公钥加密。每个数据中心都有自己的密钥对，而不是一个主密钥对。该核心将客户的私钥和允许使用该私钥的每个数据中心的密钥加密。在这个例子中，只有欧盟的机器能够访问该密钥。假设有 500 个数据中心，每个数据中心有 50 台机器。假设这 500 个数据中心中，有 200 个位于欧盟。以前 100 个 1kB 的密钥共需消耗 100 x 500 x 50 x 1 kB（全球），现在将变成 200 倍，在最糟糕的情况下甚至可能消耗 500 倍。因此，每台机器存储密钥所需的空间又增加了一个全新的因素——以前，存储空间就是客户密钥注册数量的函数；现在，存储空间虽然也是客户密钥数量的函数，但还要乘以数据中心的数量。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/01/Assigning-unique-keys-to-each-data-center.png" class="kg-image" alt="为每个数据中心分配唯一的密钥，并将客户密钥与欧盟数据中心的密钥封装起来">
+		<figcaption>为每个数据中心分配唯一的密钥，并将客户密钥与欧盟数据中心的密钥封装起来</figcaption>
+	</figure>
+	<p>遗憾的是，这三种方案都有各自的缺点。它们要么需要改变 Cloudflare 架构的基本假设，放弃使用高度分布式网络的优势，要么需要成倍地增加该功能使用的存储空间。</p>
+	<p>再深入研究第三种方案后发现，为什么不为每个数据中心创建两个密钥对，而只创建一个唯一密钥对呢？一对为所有欧盟数据中心共有，另一对为所有非欧盟数据中心共有。这样一来，核心就只需要对客户的密钥进行两次加密，而不是为每个欧盟数据中心分别加密。对欧盟的这家银行来说，这是一个很好的解决方案，但一旦我们开始添加额外的策略，它就不能扩展了。试想：纽约市的一个数据中心可能有一个策略的密钥“<code>country: US</code>”，另一个策略的密钥“country: US or region: EU”，另一个策略的密钥“<code>not country: RU</code>”，以此类推......您已经发现，这实在太复杂了。而且，每次配置新的数据中心时，都必须重新评估所有策略，并分配适当的密钥。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/01/A-key-for-a-each-policy-and-its-negation.png" class="kg-image" alt="每个策略一个密钥与策略否定">
+		<figcaption>每个策略一个密钥与策略否定</figcaption>
+	</figure>
+	<h2 id="geo-key-manager-v1-">Geo Key Manager v1：基于身份的加密和广播加密</h2>
+	<p>1978 年发明了 RSA，拉开了现代公钥密码学时代的序幕，但任何人只要使用过 GPG 或参与过证书机构就知道，管理连接密钥和用户身份的公钥基础设施非常困难。1984 年，Shamir 提出，有没有可能创建一个公钥加密系统，这个公钥可以是任何字符串。他提出这个问题是为了简化电子邮件管理。Alice 可以不使用 Bob 的公钥将发送给 Bob 的电子邮件加密，而是对 Bob 的身份 <a href="mailto:bob@institution.org" target="_blank"><code>bob@institution.org</code></a> 加密。最终，在 2001 年，<a href="https://crypto.stanford.edu/~dabo/papers/bfibe.pdf" target="_blank">Boneh 和 Franklin</a> 想出了有效的实现方式。</p>
+	<p>1993 年，<a href="https://www.wisdom.weizmann.ac.il/~naor/PAPERS/broad.pdf" target="_blank">Fiat 和 Naor</a> 首次提出了广播加密。您可以向所有人发送相同的加密信息，但只有拥有正确密钥的人才能解密。回到我们的第三种方案，与其用每个欧盟数据中心的密钥来封装客户的密钥，我们可以使用广播加密来创建单个客户密钥加密，只有欧盟的数据中心可以解密。这样就解决了存储问题。</p>
+	<p>Geo Key Manager v1 结合使用基于身份的广播加密和基于身份的撤销来实现访问控制。简而言之就是为每个区域和每个数据中心位置指定一组身份。然后，每台机器都会为其所在地区和位置颁发一个基于身份的私钥。然后就可以用三个集来控制对客户密钥的访问：要加密的地区集、这些地区内要排除的位置集，以及这些地区外要包括的位置集。例如，通过将客户的密钥加密，可以在除几个特定位置外的所有地区以及这些地区以外的几个位置使用密钥。本文详细讨论了这一方法的所有<a href="https://blog.cloudflare.com/geo-key-manager-how-it-works/">实质内容</a>。</p>
+	<p>遗憾的是，这个方案不能充分响应客户的需求；在最初的加密设置中，使用的参数（例如地区、数据中心及其属性的列表）都嵌入在系统中，难以变更。更糟糕的是，由于英国脱欧，因此还要将英国排除在欧盟地区之外，或根据客户需要的最新合规标准支持一个新的地区。此外，由于使用预先确定的静态位置列表，难以快速撤销机器访问。此外，无法为设置之后新配备的数据中心分配解密密钥，使其无法加快请求速度。这些限制促使我们在 Geo Key Manager 中使用基于属性的加密 (ABE)。</p>
+	<h2 id="--1">基于属性的加密</h2>
+	<p>2004 年，Amit Sahai 和 Brent Waters 提出了一个基于访问策略的新型密码系统，称为基于属性的加密 (ABE)。从本质上讲，消息的加密是针对访问策略而非身份。用户获发私钥是由其自身属性决定的，只有当用户的属性与策略相符时，才能解密消息。与传统加密方法相比，这可实现更加灵活精细的访问控制。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/01/Group-4899-1.png" class="kg-image" alt="公钥加密大事记">
+		<figcaption>公钥加密大事记</figcaption>
+	</figure>
+	<p>该策略可以附加到密钥或密文上，得到 ABE 的两个变体：基于密钥策略属性的加密 (KP-ABE) 和基于密文策略属性的加密 (CP-ABE)。两者之间存在权衡取舍，但功能相当，因为它们互为对偶。我们来重点讨论 CP-ABE，它与现实世界中的访问控制更相近。试想在一家医院，医生的属性是“<code>role: doctor</code>”和“<code>region: US</code>”，而护士的属性是“<code>role: nurse</code>”和“<code>region: EU</code>”。如果文件的加密策略是“<code>role: doctor or region: EU</code>”，则医生和护士均可解密该文件。换而言之，ABE 就像一把神奇的锁，只有具备相应属性的人才能打开。</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-amwm {
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-amwm"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">策略</span></th>
+				<th class="tg-amwm"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">语义</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">country: US or region: EU</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">无论在美国还是在欧盟，均可能解密</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">not (country: RU or country: US)</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">在俄罗斯和美国不可能解密</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">country: US and security: high</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">只有在美国且具有较高安全级别的数据中心才可能解密（根据之前确定的一些安全性定义）</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>根据不同的属性，可以有许多不同的 ABE 方案。我们选择的方案必须满足几个要求：</p>
+	<ol>
+		<li><strong>否定</strong>我们希望能够支持由 <strong>AND</strong>、<strong>OR</strong> 和 <strong>NOT</strong> 组成的布尔公式，即非单调的布尔公式。虽然几乎每个方案都会处理 <strong>AND</strong> 和 <strong>OR</strong>，但能处理 <strong>NOT</strong> 的比较少见。而否定可更轻松屏蔽某些国家/地区或机器。</li>
+		<li><strong>重复属性</strong>例如策略“<code>organization: executive or (organization: weapons and clearance: top-secret)</code>”。在该策略中，属性“<code>organization</code>”重复了两次。如果支持重复，制定策略时便更容易表达，灵活性也更高，这极具意义。</li>
+		<li><strong>安全防御所选密文攻击</strong>大多数方案的呈现形式都是，只有当攻击者未选择要解密的消息时才安全 (<a href="https://en.wikipedia.org/wiki/Chosen-plaintext_attack" target="_blank">CPA</a>)。有<a href="https://www.cs.umd.edu/~jkatz/papers/id-cca-mac.pdf" target="_blank">标准方法</a>可将这类方案转换成“即使有攻击者操纵密文也安全”的方案 (<a href="https://en.wikipedia.org/wiki/Ciphertext_indistinguishability#Indistinguishability_under_chosen_ciphertext_attack/adaptive_chosen_ciphertext_attack_(IND-CCA1,_IND-CCA2)" target="_blank">CCA</a>)，但它不会自动转换。我们在所选方案中应用了著名的 <a href="https://www.iacr.org/archive/pkc2011/65710074/65710074.pdf" target="_blank">Boneh-Katz 转换</a>，让该方案能够应对此类攻击，提供安全防护。我们即将发文提供证据，证明端到端方案的安全性。</li>
+	</ol>
+	<p>否定特别值得进一步讨论。一个满足条件的属性被否定时，其名称必须保持不变，但其值必须不同。就像数据中心说：“我有一个国家，但绝对不是日本”，而不是“我没有国家”。这似乎与直觉相悖，但也因此，解密时无需检查每个属性的值，还可以安全地逐步推出属性。基于这些标准，我们最终选择了 <a href="https://eprint.iacr.org/2019/966" target="_blank">Tomida 等 (2021)</a> 提出的方案。</p>
+	<p>要实现如此复杂的加密方案可能极具挑战。作为传统公钥密码学基础的离散日志假设并不足以满足 ABE 的安全要求。ABE 方案必须确保密文和基于属性的秘钥的安全，而传统的公钥密码学只对密文施加安全限制，而密钥只是一个整数。为了实现这一点，大多数 ABE 方案均使用双线性配对（一种数学运算）来构建。</p>
+	<p>我们进行配对操作的速度决定了实现的基准性能。在解密过程中，配对特别高效，并用于结合基于属性的密钥与密文来恢复明文。为此，我们依托我们的开源密码套件库 CIRCL 高度优化的配对实现，我们在<a href="https://blog.cloudflare.com/circl-pairings-update/">之前的博客</a>中详细讨论了这一点。此外，各种密钥、属性和嵌入访问结构的密文使用矩阵和矢量来表达。我们编写了线性代数例程来处理矩阵运算，例如乘法、转置、逆运算，这些都是根据需要来操作结构。我们还增加了序列化、广泛的测试和基准分析。最终，我们实现了对 <a href="https://en.wikipedia.org/wiki/Adaptive_chosen-ciphertext_attack" target="_blank">CCA2 安全</a>方案的转换。</p>
+	<p>除核心密码学之外，我们还必须决定如何表达和声明策略。最终我们决定为 API 使用字符串。虽然对程序来说，字符串可能没有结构那么方便，但我们方案的用户无论如何都要实现一个解析器。我们为他们实现解析器似乎是获得更稳定的接口的好方法。这意味着，我们的策略语言的前端是由布尔表达式组成的字符串，例如“<code>country: JP or (not region: EU)</code>”，后端则是一个由线和门组成<em>单调</em>布尔电路。单调布尔电路仅包括 AND 门和 OR 门。为了处理 NOT 门，我们为线分配了正值或负值。每个 NOT 门都可以直接放在线上，因为<a href="https://en.wikipedia.org/wiki/De_Morgan%27s_laws" target="_blank">德摩根定律</a>允许将“<code>not (X and Y)</code>”等公式转换为“<code>not X or not Y</code>”，析取也是如此。</p>
+	<p>该 API 演示如下。中央机构运行 Setup 来生成主公钥和主密钥。访问策略允许的任何人都可以使用主公钥将消息加密。中央机构持有的主密钥则用于根据用户的属性为其生成密钥。属性本身可以带外提供。在我们的案例中，我们依靠机器配置数据库来提供和验证属性。这些基于属性的密钥通过 TLS 等方式安全分配给用户，并用于解密密文。该 API 还包括检查解密能力和从密文中提取策略的辅助函数，可以提高可用性。</p><!--kg-card-begin: markdown-->
+	<pre><code>publicKey, masterSecretKey := cpabe.Setup()
+
+policy := cpabe.Policy{}
+policy.FromString("country: US or region: EU")
+
+ciphertext := publicKey.Encrypt(policy, []byte("secret message"))
+
+attrsParisDC := cpabe.Attributes{}
+attrsParisDC.FromMap(map[string]string{"country": "FR", "region": "EU"}
+
+secretKeyParisDC := masterSecretKey.KeyGen(attrsParisDC)
+
+plaintext := secretKeyParisDC.Decrypt(ciphertext)
+
+assertEquals(plaintext, "secret message")
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>回到我们原来的例子。这一次，中央机构持有主密钥。每个数据中心的每台机器都向中央机构提交其属性集，中央权威机构经验证后，为该特定机器生成一个独特的基于属性的密钥。机器首次启动时，如果必须轮换密钥，或如果一个属性发生了变化，就会颁发密钥，但绝不会在 TLS 握手的关键过程中颁发。这个解决方案还能防止串通，即两台不具备相应属性的机器不能通过结合它们的密钥来将不能单独解密的密钥解密。例如，一台具有属性“<code>country: US</code>”和另一台具有属性“<code>security: high</code>”的机器，它们不能串通起来将策略“<code>country: US and security: high</code>”解密。</p>
+	<p>最重要的是，这个解决方案可以无缝扩展，响应机器变更。如果增加了一台新机器，中央机构可以简单地为其颁发一个密钥，因为该方案不必在设置时预先确定参与者，这一点与以前基于的身份广播方案不同。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/01/Key-Distribution.png" class="kg-image" alt="密钥分发">
+		<figcaption>密钥分发</figcaption>
+	</figure>
+	<p>客户可以在上传 TLS 证书时指定策略，中央机构将根据指定的策略使用主公钥将其私钥加密。加密后的客户密钥将写入 Quicksilver，然后分发到所有数据中心。在实践中，这里有一层间接性，我们将在后面的章节中继续讨论。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/01/Encryption-using-Master-Public-Key.png" class="kg-image" alt="使用主公钥加密">
+		<figcaption>使用主公钥加密</figcaption>
+	</figure>
+	<p>用户访问客户的网站时，首先收到请求的数据中心的 TLS 终止服务会从 Quicksilver 获取客户的加密私钥。如果服务的属性与策略不符，则解密失败，请求将被代理到最近的、与策略相符的数据中心。无论哪个数据中心，只要能成功将密钥解密，就会执行签名，完成 TLS 握手。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/01/Decryption-using-Attribute-based-Secret-Key.png" class="kg-image" alt="使用基于属性的密钥解密（简化版）">
+		<figcaption>使用基于属性的密钥解密（简化版）</figcaption>
+	</figure>
+	<p>下表总结了上述各解决方案的优缺点：</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">解决方案</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">策略灵活</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">容错能力</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">高效空间</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">低延时</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">防止串通</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">机器变更</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">数据中心中不同的 Quicksilver 副本</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">核心业务逻辑复杂</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">使用每个数据中心的唯一密钥对将客户的密钥加密</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-0lax"></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">使用基于策略的密钥对将客户的密钥加密，每个数据中心有多个基于策略的密钥对</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-0lax"></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">基于身份的广播加密 + 基于身份的否定广播加密</span><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">(Geo Key Manager v1)</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">基于属性的加密</span><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">(Geo Key Manager v2)</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<h3 id="--2">性能特征</h3>
+	<p>我们受 <a href="https://bench.cr.yp.to/results-encrypt.html" target="_blank">ECRYPT</a> 启发，总结了一些测量来描绘方案的性能。我们将<strong>属性“size”设置为 50</strong>，这远高于大多数应用程序的需要，但作为基准测试的最坏情况。我们在配备英特尔酷睿 i7-10610U CPU @ 1.80GHz 的笔记本电脑上进行测量，并将结果与 2048 位安全的 RSA、X25519 和我们以前的方案进行比较。</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">方案</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">密匙（字节）</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">公钥（字节）</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">加密 23 个字节的开销</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">（密文长度 - 消息长度）</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">加密 1 万个字节的开销</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">（密文长度 - 消息长度）</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">RSA-2048</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1190 (PKCS#1)</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">256</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">233</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3568</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">X25519</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">32</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">32</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">48</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">48</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GeoV1 方案</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">4838</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">4742</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">169</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">169</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GeoV2 ABE 方案</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">33416</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3282</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">19419</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">19419</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>不同的基于属性的加密方案优化了不同的性能特征。有些可能可快速生成密钥，而另一些可能优先考虑快速解密。在我们的案例中，我们只关心快速解密，因为只有这个环节位于请求的关键路径上。其他事情都发生在带外，而带外开销是可以接受的。</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">方案</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">生成密钥对</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">加密 23 个字节</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">解密 23 个字节</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">RSA-2048</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">117 毫秒</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.043 毫秒</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1.26 毫秒</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">X25519</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.045 毫秒</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.093 毫秒</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.046 毫秒</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GeoV1 方案</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">75 毫秒</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">10.7 毫秒</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">13.9 毫秒</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GeoV2 ABE 方案</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1796 毫秒</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">704 毫秒</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">62.4 毫秒</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<h3 id="-abac-">基于属性的访问控制 (ABAC) 简介</h3>
+	<p>我们使用基于属性的加密来实现所谓的<a href="https://csrc.nist.gov/Projects/Attribute-Based-Access-Control" target="_blank">基于属性的访问控制 (ABAC)</a>。</p>
+	<p>ABAC 源自更熟悉的<a href="https://csrc.nist.gov/Projects/Role-Based-Access-Control" target="_blank">基于角色的访问控制 (RBAC)</a>。为了理解 ABAC 的重要性，我们简单讨论一下它的起源。1970 年，美国国防部推出了自主访问控制 (DAC)。DAC 是 Unix 文件系统的实现方式。但是，如果您想限制再共享，只有 DAC 是不够的，因为资源的所有者可能在中央管理员不同意的情况下授权其他用户访问资源。为了解决这一问题，美国国防部推出了强制访问控制 (MAC)。DRM 就是一个很好 MAC 示例。即使文件拥有者也无权与他人分享。</p>
+	<p>RBAC 是对 MAC 某些方面的实现。ABAC 是 RBAC 的延伸。2017 年，NIST 确定了 RBAC 的标准，以应对越来越多不受角色限制的用户特征，例如时间、用户代理等。</p>
+	<p>然而，RBAC/ABAC 只是一种规范。虽然它们传统上是用一个中央机构来控制对某些资源的访问，但并非必须如此。基于属性的加密是在分布式系统中实现 ABAC 的优良机制。</p>
+	<h2 id="--3">密钥轮换</h2>
+	<p>虽然可能很容易把所有问题都归咎于 DNS，但在这场竞赛中，更换密钥也是强有力的竞争对手。由于 Geo Key Manager v1 的密钥轮换过程非常依赖人工操作，且容易出错，所以我们打算在不影响可用性的情况下进行强大而简单的密钥轮换，这是 Geo Key Manager v2 明确的设计目标之一。</p>
+	<p>为了方便密钥轮换，改善性能，我们为客户的密钥封装（加密）过程引入了一层间接性。客户上传他们的 TLS 私钥时，我们不用主公钥加密，而是生成一个 X25519 密钥对，即<em>策略密钥</em>。然后，中央机构将这个新产生的策略密钥对的公共部分及其相关的策略标签添加到一个数据库中，然后再根据相关访问策略，使用主公钥将策略密钥对的私有部分加密。客户的私钥便通过公共策略密钥得以加密，并保存在 Quicksilver 中。</p>
+	<p>用户访问客户的网站时，收到请求的数据中心的 TLS 终端服务会获取与客户访问策略相关的加密策略密钥。如果机器的属性与策略不符，则解密失败，请求将被转发到最近的、条件相符的数据中心。如果解密成功，则使用策略密钥将客户的私钥解密，并完成握手。</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">密钥</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">目的</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">核心 CA</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">核心</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">网络</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">主公钥</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">根据访问策略将私有策略密钥加密</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">生成</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">阅读</span></td>
+				<td class="tg-0lax"></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">主密钥</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">根据机器的属性为机器生成密钥</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">生成、读取</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">机器密钥/基于属性的密钥</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">将存储在全球 KV 存储 Quicksilver 中的私有策略密钥解密</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">生成</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">阅读</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">客户 TLS 私钥</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">执行必要的数字签名以完成与客户网站的 TLS 握手</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">读取（上传后短暂读取）</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">阅读</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">公共策略密钥</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">将客户的 TLS 私钥加密</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">生成、</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">阅读</span></td>
+				<td class="tg-0lax"></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">私有策略密钥</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">将客户的 TLS 私钥解密</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">读取（在密钥轮换过程短暂读取）</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">生成</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">阅读</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>然而，策略密钥并不是为每位客户的证书上传而生成。如下图所示，如果客户请求的是系统中已经存在的策略，因此也存在一个相关的策略密钥，那么将重复使用该策略密钥。由于大多数客户使用相同的几个策略，例如限制在某一个国家/地区，或限制在欧盟，与客户密钥相比，策略密钥的数量要少几个数量级。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/01/Policy-Keys.png" class="kg-image" alt="策略密钥">
+		<figcaption>策略密钥</figcaption>
+	</figure>
+	<p>这种策略密钥共享对密钥轮换帮助极大。如果主密钥被轮换（机器密钥也随之轮换），只需要将少数用于控制客户密钥访问的策略密钥重新加密，而不需要将每位客户的密钥重新加密。这降低了计算和带宽要求。此外，在 TLS 终端服务中缓存策略密钥，通过减少关键路径中的频繁解密需求来提高性能。</p>
+	<p>这与混合加密相似。在混合加密中，公钥加密法用于建立一个共享的对称密钥，然后使用对称密钥加密数据。差别在于，策略密钥不是对称密钥，而是 X25519 密钥对——一个基于椭圆曲线的非对称方案。虽然没有 AES 等对称方案那么快，但传统的椭圆曲线加密技术比基于属性的加密要快得多。这里还有一点优势：中央服务不需要通过访问密钥资料来将客户密钥加密。</p>
+	<p>稳健的密钥轮换的另一组成部分涉及维护多个密钥版本。最新的密钥生成用于加密，但最新和以前的版本可用于解密。我们使用一个状态系统来管理密钥转换和安全删除旧密钥。我们还部署了广泛监测系统，如果任何机器没有使用适当的密钥生成，就会提醒我们。</p>
+	<h2 id="--4">大规模尾部延迟</h2>
+	<p>Geo Key Manager 存在高尾部延迟问题，这有时会影响可用性。Jeff Dean 的文章 <a href="https://research.google/pubs/pub40801/" target="_blank">The Tail at Scale</a>（《大规模尾部延迟》）很有启发性，说明以 Cloudflare 的规模，即使 p99 延迟升高也会造成损害。尽管我们对服务的服务器和客户端组件进行了改造，但并没有考虑 p99 延迟问题。这些改造（例如从 Worker 池切换到每个请求一个 Goroutine）确实简化了服务，因为删除了数千行代码。分布式跟踪能够确定延迟发生在客户端发送请求和服务器接收请求之间，但我们无法进一步确定。去年我们甚至写了一篇博客，介绍了我们的<a href="https://blog.cloudflare.com/scaling-geo-key-manager/">排查尝试</a>，但没有得出具体的解决方案。</p>
+	<p>最后，我们意识到，客户端和服务器之间存在一层间接性。我们世界各地的数据中心规模相差很大。为了避免小型数据中心被连接淹没，大型数据中心将使用 Go net/rpc 库安排各台中间机器将请求代理到其他数据中心。</p>
+	<p>一旦我们将中间服务器的转发功能纳入追踪范围，问题就一清二楚了。发出请求和处理请求之间有一个很长的延迟。然而，此代码只是对一个内置库函数的调用。它为什么要将请求延迟呢？</p>
+	<p>最终我们发现，将请求序列化时，有一个锁无法解锁。net/rpc 包不支持流，但我们在 gRPC 出现之前编写的面向数据包的自定义应用程序协议确实支持流。为了解决这一问题，我们执行了一个请求，并等待序列化函数的响应。虽然这可快速完成代码编写，但它造成了性能瓶颈，因为每次只能转发一个请求。</p>
+	<p>我们的解决方案是使用协调通道，让多个请求执行，同时等待响应。在我们推出之时，我们发现尾部延迟已大为降低。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/01/Untitled-4.png" class="kg-image" alt="在澳大利亚的远程 colo 中修复 RPC 故障的结果">
+		<figcaption>在澳大利亚的远程 colo 中修复 RPC 故障的结果</figcaption>
+	</figure>
+	<p>遗憾的是，我们无法将光速提高（至少目前如此）。客户如果希望他们的密钥只保存在美国，但他们的网站用户却在地球的另一面，那就不得不忍受一些延迟，因为需要进行越洋传输。但由于有会话票证，这些延迟只会影响新的连接。</p><!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 49.86830553116769%;"><iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/a2ff6e606d424150264223bc7635ca25/iframe?preload=true&amp;loop=true&amp;autoplay=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2Fa2ff6e606d424150264223bc7635ca25%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
+	<p>正常运行时间也显著增加。加密启动之后才配置的数据中心现可加入系统，这也意味着不符合特定策略的数据中心会有更多符合条件的邻居，可以将签署请求转发给这些邻近的数据中心。这增加了系统冗余，对于没有最佳互联网连接的地区的数据中心特别有利。下图表示在两天时间中，全球每台机器进行的成功探测。对于 GeoV1，我们发现，限制在美国和欧盟地区的策略的网站一度降到 98% 以下；而对于 GeoV2，正常运行时间可用性很少降到 99.99% 以下。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/01/ss.png" class="kg-image" alt="不同密钥配置的正常运行时间（GeoV1 在美国和欧盟，以及 GeoV2 在美国、欧盟和印度）">
+		<figcaption>不同密钥配置的正常运行时间（GeoV1 在美国和欧盟，以及 GeoV2 在美国、欧盟和印度）</figcaption>
+	</figure>
+	<h2 id="--5">总结</h2>
+	<p>亲爱的读者，感谢您坚持阅读到这里。应用密码学也经历了漫长的发展才走到今天，但只有少数研究成果能够走出实验室，获得实际采用。弥合研究与现实的差距，有助于实现以创新方式保护敏感数据。过去几年中，基于属性的加密本身已经变得更加高效、更具特色。希望本文能给您启发，鼓励您考虑使用 ABE 来解决自己的访问控制需求，特别是如果您处理的是一个分布式系统，且不想依赖一个高度可用的中央机构。我们已经在 <a href="https://github.com/cloudflare/circl/tree/main/abe/cpabe/tkn20" target="_blank">CIRCL</a> 中公开了我们的 CP-ABE 实现的开源代码，并计划撰文提供更多细节。</p>
+	<p>希望这一新的密码学技术基础将使 Geo Key Manager 产品大为改进。除存储私钥外，我们还计划使用这种基于 ABE 的机制来存储其他类型的数据。我们正在努力提高其操作方便性，并进行通用化处理，供内部服务部门使用。</p>
+	<h2 id="--6">致谢</h2>
+	<p>特别感谢 Watson Ladd 在 Cloudflare 任职期间为本项目做出的巨大贡献。</p><!--kg-card-begin: markdown-->
+	<p><small>......<br>
+			<sup>1</sup>对大多数客户来说都是如此，但我们确实提供<a href="https://www.cloudflare.com/ssl/keyless-ssl/" target="_blank">无密钥 SSL</a>，有能力运行自己的密钥服务器的客户可在内部存储其私钥。</small></p>
+	<!--kg-card-end: markdown-->
+</div>
