@@ -45,7 +45,7 @@ $ ./stackcollapse-stap.pl out.stap-stacks | ./flamegraph.pl &gt; stap-kernel.svg
 net.core.netdev_budget = 300
 </code></pre>
 	<p>Here is a run of <a href="https://github.com/majek/dump/blob/master/system-tap/histogram-kernel.stp" target="_blank">our <code>stap</code> script showing the latency</a> distribution for this function:</p>
-	<pre><code class="language-.sh">$ stap -v histogram-kernel.stp 'kernel.function("net_rx_action)"' 30
+	<pre><code class="language-.sh">$ stap -v histogram-kernel.stp 'kernel.function("net_rx_action")' 30
 Duration min:0ms avg:0ms max:23ms count:3685271
 Duration (ms):
 value |-------------------------------------------------- count
