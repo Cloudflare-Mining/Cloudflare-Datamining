@@ -1,8 +1,20 @@
 [
+	"/[id]/[id]/dns/settings/wizard/dkim",
+	"/[id]/[id]/dns/settings/wizard/dmarc",
+	"/[id]/[id]/dns/settings/wizard/spf",
 	"/[id]/[id]/email/dmarc-management",
+	"/[id]/[id]/email/dmarc-management/dmarc-reports/dmarc/wizard",
+	"/[id]/[id]/email/dmarc-management/dmarc-reports/reports",
+	"/[id]/[id]/email/dmarc-management/dmarc-reports/reports/[id]/*",
+	"/[id]/[id]/email/dmarc-management/dmarc-reports/sources",
+	"/[id]/[id]/email/dmarc-management/dmarc-reports/sources/[id]/*",
+	"/[id]/[id]/email/dmarc-management/dns",
 	"/[id]/[id]/email/routing/:id?",
 	"/[id]/[id]/email/routing/workers/edit/[id]/[id]/*",
 	"/[id]/[id]/email/routing/workers/new",
 	"/[id]/[id]/email/security",
-	"/[id]/workers/overview"
+	"/[id]/workers/overview",
+	"/zones/[id]/email/security/dmarc-reports",
+	"/zones/[id]/email/security/dmarc-reports/spf",
+	"/zones/[id]/email/security/dmarc-reports/spf/ips"
 ]
