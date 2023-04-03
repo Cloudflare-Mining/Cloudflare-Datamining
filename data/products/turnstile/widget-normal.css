@@ -175,17 +175,10 @@ tr {
 	animation: scale-up-center .4s cubic-bezier(.55, .085, .68, .53) both
 }
 
-.ctp-checkbox-label input:focus~.mark {
-	border: 2px solid orange
-}
-
-.ctp-checkbox-label input:focus~span.ctp-label {
-	text-decoration: underline
-}
-
 .ctp-checkbox-label input:checked~.mark {
 	transform: rotate(0) scale(1);
 	opacity: 1;
+	border: 2px solid white;
 	border-radius: 5px;
 	background-color: #fff
 }
@@ -345,9 +338,6 @@ tr {
 		color: #fff
 	}
 
-	.theme-auto #challenge-error-title a,
-	.theme-auto #challenge-error-title a:visited,
-	.theme-auto #challenge-error-title a:link,
 	.theme-auto #terms,
 	.theme-auto #terms a,
 	.theme-auto #terms a:link,
@@ -356,7 +346,7 @@ tr {
 	}
 
 	.theme-auto #content {
-		border-color: #666;
+		border-color: #999;
 		background-color: #222
 	}
 
@@ -386,9 +376,6 @@ body.theme-dark {
 	color: #fff
 }
 
-.theme-dark #challenge-error-title a,
-.theme-dark #challenge-error-title a:visited,
-.theme-dark #challenge-error-title a:link,
 .theme-dark #terms,
 .theme-dark #terms a,
 .theme-dark #terms a:link,
@@ -397,7 +384,7 @@ body.theme-dark {
 }
 
 .theme-dark #content {
-	border-color: #666;
+	border-color: #999;
 	background-color: #222
 }
 
@@ -423,8 +410,7 @@ body.theme-dark {
 	margin: 5px 0;
 	width: 200px;
 	height: 55px;
-	color: red;
-	font-size: 11px
+	color: red
 }
 
 #challenge-error-title .icon-wrapper {
@@ -482,11 +468,6 @@ body.theme-dark {
 .size-compact #challenge-error-title {
 	margin-top: 3px;
 	width: auto
-}
-
-#challenge-error-title a,
-#challenge-error-title a:visited {
-	color: #1d1f20
 }
 
 #expired-refresh-link,
@@ -659,18 +640,4 @@ html.rtl {
 	position: relative;
 	top: -5px;
 	left: 0
-}
-
-.lang-tr #challenge-error-title,
-.lang-pt-br #challenge-error-title,
-.lang-pt #challenge-error-title,
-.lang-pl #challenge-error-title,
-.lang-nl #challenge-error-title,
-.lang-ja #challenge-error-title,
-.lang-it #challenge-error-title,
-.lang-de #challenge-error-title,
-.lang-id #challenge-error-title,
-.lang-es #challenge-error-title,
-.lang-fr #challenge-error-title {
-	line-height: 11px
 }
