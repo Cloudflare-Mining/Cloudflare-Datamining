@@ -7444,12 +7444,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				e.g.build = Zd({}, {
-					branch: "release-Apr.03.2023-1680542655",
+					branch: "cmateus/LOUI-4295-hotfix",
 					isReleaseCandidate: "true",
-					commit: "c15f507b83189908702a5cecf9d0407c731f2063",
+					commit: "baf3e646bd79a31db49a1edcaea59fff99bc2fe9",
 					env: "production",
-					builtAt: 1680554010349,
-					dashVersion: "34abe38e9acea5cd1e8206d8ac8dd057754deaad",
+					builtAt: 1680604574112,
+					dashVersion: "69f63bfb7823e9a18f63d811e55b18e063ab26b9",
 					versions: {
 						"@cloudflare/app-dash": "25.151.1",
 						node: "16.16.0",
@@ -32052,47 +32052,48 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 		"../react/common/components/analytics/AnalyticsReport/timeOptions.ts": function(U, x, e) {
 			"use strict";
 			e.d(x, {
-				q: function() {
-					return n
+				w: function() {
+					return r
 				}
 			});
-			var r = e("../react/utils/translator.tsx"),
-				n = [{
+			var r = function(a) {
+				return [{
 					value: 30,
-					label: (0, r.ZP)("analytics.time.last.30_minutes")
+					label: a("analytics.time.last.30_minutes")
 				}, {
 					value: 6 * 60,
-					label: (0, r.ZP)("analytics.time.last.6_hours")
+					label: a("analytics.time.last.6_hours")
 				}, {
 					value: 12 * 60,
-					label: (0, r.ZP)("analytics.time.last.12_hours")
+					label: a("analytics.time.last.12_hours")
 				}, {
 					value: 24 * 60,
-					label: (0, r.ZP)("analytics.time.last.24_hours")
+					label: a("analytics.time.last.24_hours")
 				}, {
 					value: 24 * 60 * 3,
-					label: (0, r.ZP)("analytics.time.last.72_hours")
+					label: a("analytics.time.last.72_hours")
 				}, {
 					value: 24 * 60 * 7,
-					label: (0, r.ZP)("analytics.time.last.n_days", {
+					label: a("analytics.time.last.n_days", {
 						n: 7
 					})
 				}, {
 					value: 24 * 60 * 7 * 2,
-					label: (0, r.ZP)("analytics.time.last.n_days", {
+					label: a("analytics.time.last.n_days", {
 						n: 14
 					})
 				}, {
 					value: 24 * 60 * 7 * 3,
-					label: (0, r.ZP)("analytics.time.last.n_days", {
+					label: a("analytics.time.last.n_days", {
 						n: 21
 					})
 				}, {
 					value: 24 * 60 * 30,
-					label: (0, r.ZP)("analytics.time.last.n_days", {
+					label: a("analytics.time.last.n_days", {
 						n: 30
 					})
 				}]
+			}
 		},
 		"../react/common/components/analytics/AnalyticsReport/utils.js": function(U, x, e) {
 			"use strict";
@@ -95792,7 +95793,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 								maxDuration: di,
 								maxPageSize: Ri,
 								notOlderThan: pi
-							}), Ho(na.q.filter(function(ms) {
+							}), Ho((0, na.w)(m.ZP).filter(function(ms) {
 								var ss = ms.value;
 								return ss <= pi / 60
 							}))
@@ -129491,4 +129492,4 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 	}
 ]);
 
-//# sourceMappingURL=077cd2a0417ab44e2c77.js.map
+//# sourceMappingURL=8a72e27dedc3318e1728.js.map
