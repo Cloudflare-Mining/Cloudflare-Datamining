@@ -78,7 +78,7 @@ for(const flag of flagsInfo as workerdFlagInfo[]) {
 		enable_flag: flag.annotations?.compatEnableFlag ?? null,
 		experimental: flag.annotations?.experimental === 'true',
 		publicly_documented: false,
-		usable: false
+		usable: false,
 	};
 	if(remoteFlag) {
 		flagInfo.description = marked.parse(remoteFlag.description);
