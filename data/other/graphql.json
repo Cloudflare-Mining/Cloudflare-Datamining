@@ -77,6 +77,7 @@
 		"destinationAsn": "ASN associated with the destination IP of the packet, or 0 if there was no mapping available",
 		"destinationAsnName": "Name of ASN associated with the destination IP of the packet, if available",
 		"destinationCountry": "Country where the destination IP of the packet is located (ISO 3166-1 alpha-2)",
+		"destinationDeviceTag": "Device tag associated with the destination IP of the packet",
 		"destinationGeohash": "Latitude and longitude where the destination IP of the packet is located (Geohash encoding)",
 		"destinationPort": "Value of the Destination Port header field in the TCP or UDP packet",
 		"direction": "Direction of the packet relative to the customer network (possible values: inbound, outbound, lateral)",
@@ -120,6 +121,7 @@
 		"sourceAsn": "ASN associated with the source IP of the packet, or 0 if there was no mapping available",
 		"sourceAsnName": "Name of ASN associated with the source IP of the packet, if available",
 		"sourceCountry": "Country where the source IP of the packet is located (ISO 3166-1 alpha-2)",
+		"sourceDeviceTag": "Device tag associated with the source IP of the packet",
 		"sourceGeohash": "Latitude and longitude where the source IP of the packet is located (Geohash encoding)",
 		"sourcePort": "Value of the Source Port header field in the TCP or UDP packet",
 		"tcpAcknowledgementNumber": "Value of the Acknowledgement Number header field in the TCP packet",
@@ -801,6 +803,7 @@
 		"deviceId": "The device ID of the gateway user who initiated the session",
 		"email": "The email address of the gateway user who initiated the session",
 		"sni": "The SNI pulled from the session tls handshake, if present",
+		"sourceInternalIp": "Local LAN IP of the device. Only available when connected via a GRE/IPsec tunnel on-ramp",
 		"sourceIp": "The source IP address for the session",
 		"sourcePort": "The source port for the session",
 		"transport": "The transport protocol used in the session, one of (0, tcp) (1, quic) (2, udp)",
@@ -876,7 +879,10 @@
 		"deviceId": "The device ID of the gateway user who made the request",
 		"email": "The email address of the gateway user who made the request",
 		"httpHost": "The destination host for the request",
+		"httpStatusCode": "HTTP status code gateway returned to the user. 0 if nothing was returned(e.g client disconnected)",
 		"isIsolated": "Indicates whether this request was made through an isolated link",
+		"sourceInternalIp": "Local LAN IP of the device. Only available when connected via a GRE/IPsec tunnel on-ramp",
+		"untrustedCertificateAction": "Action taken when an untrusted origin certificate error occurs",
 		"userId": "The ID of the gateway user who made the request"
 	},
 	"AccountGatewayL7RequestsAdaptiveGroupsFilter_InputObject": {
@@ -1717,6 +1723,7 @@
 		"destinationAsn": "ASN associated with the destination IP of the packet, or 0 if there was no mapping available",
 		"destinationAsnName": "Name of ASN associated with the destination IP of the packet, if available",
 		"destinationCountry": "Country where the destination IP of the packet is located (ISO 3166-1 alpha-2)",
+		"destinationDeviceTag": "Device tag associated with the destination IP of the packet",
 		"destinationGeohash": "Latitude and longitude where the destination IP of the packet is located (Geohash encoding)",
 		"destinationPort": "Value of the Destination Port header field in the TCP or UDP packet",
 		"direction": "Direction of the packet relative to the customer network (possible values: inbound, outbound, lateral)",
@@ -1761,6 +1768,7 @@
 		"sourceAsn": "ASN associated with the source IP of the packet, or 0 if there was no mapping available",
 		"sourceAsnName": "Name of ASN associated with the source IP of the packet, if available",
 		"sourceCountry": "Country where the source IP of the packet is located (ISO 3166-1 alpha-2)",
+		"sourceDeviceTag": "Device tag associated with the source IP of the packet",
 		"sourceGeohash": "Latitude and longitude where the source IP of the packet is located (Geohash encoding)",
 		"sourcePort": "Value of the Source Port header field in the TCP or UDP packet",
 		"tcpAcknowledgementNumber": "Value of the Acknowledgement Number header field in the TCP packet",
@@ -2198,6 +2206,30 @@
 	"AccountQueueBacklogAdaptiveGroupsOrderBy": {
 		"__description": ""
 	},
+	"AccountQueueConsumerMetricsAdaptiveGroups": {
+		"__description": "Beta. Queue consumer metrics with adaptive sampling. Inactive queues will not return data.",
+		"avg": "The average value for a metric per dimension",
+		"dimensions": "List of dimensions to group by"
+	},
+	"AccountQueueConsumerMetricsAdaptiveGroupsAvg": {
+		"__description": "",
+		"concurrency": "The average concurrency of the queue",
+		"sampleInterval": "The average value used for sample interval"
+	},
+	"AccountQueueConsumerMetricsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "Consumer metric timestamp, truncated to start of a day",
+		"datetime": "Consumer metric timestamp",
+		"datetimeHour": "Consumer metric timestamp, truncated to start of an hour",
+		"datetimeMinute": "Consumer metric timestamp, truncated to start of an minute",
+		"queueId": "The ID of the Queue"
+	},
+	"AccountQueueConsumerMetricsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountQueueConsumerMetricsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountQueueMessageOperationsAdaptiveGroups": {
 		"__description": "Beta. Queue message operation data with adaptive sampling",
 		"avg": "The average value for a metric per dimension",
@@ -2610,6 +2642,7 @@
 		"nelReportsAdaptiveGroups": "",
 		"pagesFunctionsInvocationsAdaptiveGroups": "",
 		"queueBacklogAdaptiveGroups": "",
+		"queueConsumerMetricsAdaptiveGroups": "",
 		"queueMessageOperationsAdaptiveGroups": "",
 		"r2OperationsAdaptiveGroups": "",
 		"r2StorageAdaptiveGroups": "",
@@ -3153,6 +3186,35 @@
 	},
 	"Time": {
 		"__description": "Scalar type time.Time"
+	},
+	"ZoneApiGatewayGraphqlQueryAnalyticsGroups": {
+		"__description": "GraphQL query attributes and trends",
+		"avg": "",
+		"count": "Number of events with GraphQL query attributes computed",
+		"dimensions": "List of dimensions to group by"
+	},
+	"ZoneApiGatewayGraphqlQueryAnalyticsGroupsAvg": {
+		"__description": "",
+		"sampleInterval": "Average sample interval"
+	},
+	"ZoneApiGatewayGraphqlQueryAnalyticsGroupsDimensions": {
+		"__description": "",
+		"apiGatewayGraphqlQueryDepth": "Maximum depth level of a terminal (leaf) field in the query",
+		"apiGatewayGraphqlQuerySize": "Number of terminal (leaf) fields in the query",
+		"date": "",
+		"datetime": "",
+		"datetimeDay": "",
+		"datetimeFifteenMinutes": "",
+		"datetimeFiveMinutes": "",
+		"datetimeHalfOfHour": "",
+		"datetimeHour": "",
+		"datetimeMinute": ""
+	},
+	"ZoneApiGatewayGraphqlQueryAnalyticsGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"ZoneApiGatewayGraphqlQueryAnalyticsGroupsOrderBy": {
+		"__description": ""
 	},
 	"ZoneApiGatewayMatchedSessionIDsAdaptiveGroups": {
 		"__description": "Beta. Aggregated count of Session Identifier matches",
@@ -4411,8 +4473,41 @@
 	"ZoneNelReportsAdaptiveGroupsOrderBy": {
 		"__description": ""
 	},
+	"ZonePageShieldReportsAdaptiveGroups": {
+		"__description": "Page Shield CSP reports",
+		"avg": "",
+		"count": "Number of Page Shield CSP reports",
+		"dimensions": "List of dimensions to group by"
+	},
+	"ZonePageShieldReportsAdaptiveGroupsAvg": {
+		"__description": "",
+		"sampleInterval": "Average sample interval"
+	},
+	"ZonePageShieldReportsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"action": "policy action, log | allow",
+		"date": "",
+		"datetime": "The date and time the event occurred at the edge",
+		"datetimeFifteenMinutes": "Report datetime from edge, truncated to multiple of 15 minutes",
+		"datetimeFiveMinutes": "Report datetime from edge, truncated to multiple of 5 minutes",
+		"datetimeHalfOfHour": "Report datetime from edge, truncated to multiple of 30 minutes",
+		"datetimeHour": "Report datetime from edge, truncated to the hour",
+		"datetimeMinute": "Report datetime from edge, truncated to the minute",
+		"host": "hostname of the zone",
+		"pageURL": "page on which the resource was found",
+		"resourceType": "resource type e.g script",
+		"url": "URL of the CSP reported resource",
+		"urlHost": "hostname of the resource URL"
+	},
+	"ZonePageShieldReportsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"ZonePageShieldReportsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"ZoneSettings": {
 		"__description": "Access and limitations for a zone",
+		"apiGatewayGraphqlQueryAnalyticsGroups": "",
 		"apiGatewayMatchedSessionIDsAdaptiveGroups": "",
 		"apiRequestSequencesGroups": "",
 		"cacheReserveOperationsAdaptiveGroups": "",
@@ -4439,6 +4534,7 @@
 		"loadBalancingRequestsAdaptiveGroups": "",
 		"logpushHealthAdaptiveGroups": "",
 		"nelReportsAdaptiveGroups": "",
+		"pageShieldReportsAdaptiveGroups": "",
 		"synAvgPps1mGroups": "",
 		"waitingRoomAnalyticsAdaptive": "",
 		"waitingRoomAnalyticsAdaptiveGroups": "",
@@ -4752,6 +4848,7 @@
 		"nelReportsAdaptiveGroups": "Data to visualize network error logs",
 		"pagesFunctionsInvocationsAdaptiveGroups": "Pages Functions invocations with adaptive sampling",
 		"queueBacklogAdaptiveGroups": "Beta. Queue backlog data with adaptive sampling. Queues that are not being written to, or read from, will not return data, even if they have a backlog.",
+		"queueConsumerMetricsAdaptiveGroups": "Beta. Queue consumer metrics with adaptive sampling. Inactive queues will not return data.",
 		"queueMessageOperationsAdaptiveGroups": "Beta. Queue message operation data with adaptive sampling",
 		"r2OperationsAdaptiveGroups": "Beta. R2 operations with adaptive sampling",
 		"r2StorageAdaptiveGroups": "Beta. R2 storage with adaptive sampling",
@@ -4787,8 +4884,14 @@
 	"float64": {
 		"__description": "Scalar type float64"
 	},
+	"int16": {
+		"__description": "Scalar type int16"
+	},
 	"int64": {
 		"__description": "Scalar type int64"
+	},
+	"int8": {
+		"__description": "Scalar type int8"
 	},
 	"string": {
 		"__description": "Scalar type string"
@@ -4813,6 +4916,7 @@
 	},
 	"zone": {
 		"__description": "",
+		"apiGatewayGraphqlQueryAnalyticsGroups": "GraphQL query attributes and trends",
 		"apiGatewayMatchedSessionIDsAdaptiveGroups": "Beta. Aggregated count of Session Identifier matches",
 		"apiRequestSequencesGroups": "Sequences of API endpoint operations. Sequences are grouped by AuthID and currently ranked by correlation score. Correlation scores are estimated over a 24 hour window and are current to within 10 minutes",
 		"cacheReserveOperationsAdaptiveGroups": "Beta. Cache Reserve operations with adaptive sampling",
@@ -4839,6 +4943,7 @@
 		"loadBalancingRequestsAdaptiveGroups": "Aggregated Load Balancing origin requests with adaptive sampling",
 		"logpushHealthAdaptiveGroups": "Beta. Logpush job health metrics",
 		"nelReportsAdaptiveGroups": "Data to visualize network error logs",
+		"pageShieldReportsAdaptiveGroups": "Page Shield CSP reports",
 		"settings": "",
 		"synAvgPps1mGroups": "Minutely rollups of average packets per second sent in a SYN attack",
 		"waitingRoomAnalyticsAdaptive": "Beta. Raw waiting room analytics logs",
