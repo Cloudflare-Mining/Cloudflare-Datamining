@@ -218,11 +218,11 @@
 		"name": "Network Services (Magic)",
 		"description": "Grants write access to network configurations for Magic services.",
 		"permissions": {
-			"waf": {
+			"magic": {
 				"read": true,
 				"edit": true
 			},
-			"magic": {
+			"waf": {
 				"read": true,
 				"edit": true
 			},
@@ -241,11 +241,11 @@
 		"name": "Network Services (Magic, Read-Only)",
 		"description": "Grants read access to network configurations for Magic services.",
 		"permissions": {
-			"waf": {
+			"magic": {
 				"read": true,
 				"edit": false
 			},
-			"magic": {
+			"waf": {
 				"read": true,
 				"edit": false
 			},
@@ -547,6 +547,10 @@
 		"name": "Super Administrator - All Privileges",
 		"description": "Can edit any Cloudflare setting, make purchases, update billing, and manage memberships. Super Administrators can revoke the access of other Super Administrators.",
 		"permissions": {
+			"magic": {
+				"read": true,
+				"edit": true
+			},
 			"dex": {
 				"read": true,
 				"edit": true
@@ -602,10 +606,6 @@
 			},
 			"fbm_acc": {
 				"read": false,
-				"edit": true
-			},
-			"magic": {
-				"read": true,
 				"edit": true
 			},
 			"http_applications": {
@@ -1125,6 +1125,10 @@
 		"name": "Administrator Read Only",
 		"description": "Can access the full account in read-only mode.",
 		"permissions": {
+			"magic": {
+				"read": true,
+				"edit": false
+			},
 			"dex": {
 				"read": true,
 				"edit": false
@@ -1166,10 +1170,6 @@
 				"edit": false
 			},
 			"fbm": {
-				"read": true,
-				"edit": false
-			},
-			"magic": {
 				"read": true,
 				"edit": false
 			},
@@ -1249,6 +1249,10 @@
 		"name": "Administrator",
 		"description": "Can access the full account, except for membership management and billing.",
 		"permissions": {
+			"magic": {
+				"read": true,
+				"edit": true
+			},
 			"dex": {
 				"read": true,
 				"edit": true
@@ -1299,10 +1303,6 @@
 				"edit": true
 			},
 			"fbm": {
-				"read": true,
-				"edit": true
-			},
-			"magic": {
 				"read": true,
 				"edit": true
 			},
