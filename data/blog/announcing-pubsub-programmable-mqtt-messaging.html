@@ -99,7 +99,7 @@ LIMIT 10
 	<!--kg-card-end: markdown-->
 	<p>You could replace or augment the calls to Analytics Engine with any number of examples:</p>
 	<ul>
-		<li>Asynchronously writing messages (using <a href="https://developers.cloudflare.com/workers/runtime-apis/fetch-event/#waituntil" target="_blank">ctx.waitUntil</a>) on specific topics to our R2 object storage without blocking message delivery</li>
+		<li>Asynchronously writing messages (using <a href="https://developers.cloudflare.com/workers/runtime-apis/fetch-event/#waituntil" target="_blank">ctx.waitUntil</a>) on specific topics to our R2 <a href="https://www.cloudflare.com/learning/cloud/what-is-object-storage/" target="_blank">object storage</a> without blocking message delivery</li>
 		<li>Rewriting messages on-the-fly with data <a href="https://developers.cloudflare.com/workers/runtime-apis/kv/" target="_blank">populated from KV</a>, before the message is pushed to subscribers</li>
 		<li>Aggregate messages based on their payload and HTTP POST them to legacy infrastructure hosted outside of Cloudflare</li>
 	</ul>

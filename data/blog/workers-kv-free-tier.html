@@ -14,7 +14,7 @@
 	<h3 id="how-does-workers-kv-work">How does Workers KV work?</h3>
 	<p>Workers KV stores key-value pairs and caches hot keys in Cloudflare’s data centers around the world. When a request hits a Worker that uses KV, it retrieves the KV pair from Cloudflare’s local cache with low latency if the pair has been accessed recently.</p>
 	<p>While some programs running on the Workers platform are stateless, it is often necessary to distribute files or configuration data to running Workers. Workers KV allows you to persist data and access it across multiple Workers calls.</p>
-	<p>For example, let’s say I wanted to serve a static text file from Cloudflare’s edge. I could provision my own object storage, host it on my own domain, and put that domain behind Cloudflare.<br><br>With Workers KV, however, that reduces down to a few simple steps. First, I bind my KV namespace to my Workers code with Wrangler.</p><!--kg-card-begin: markdown-->
+	<p>For example, let’s say I wanted to serve a static text file from Cloudflare’s edge. I could provision my own <a href="https://www.cloudflare.com/learning/cloud/what-is-object-storage/" target="_blank">object storage</a>, host it on my own domain, and put that domain behind Cloudflare.<br><br>With Workers KV, however, that reduces down to a few simple steps. First, I bind my KV namespace to my Workers code with Wrangler.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-sh">wrangler kv:namespace create "BUCKET"
 </code></pre>
 	<!--kg-card-end: markdown-->
