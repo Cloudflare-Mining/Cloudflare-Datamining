@@ -359,13 +359,24 @@ declare interface DurableObjectNamespace {
     id: DurableObjectId,
     options?: DurableObjectNamespaceGetDurableObjectOptions
   ): DurableObjectStub;
-  jurisdiction(jurisdiction: string): DurableObjectNamespace;
+  jurisdiction(jurisdiction: DurableObjectJurisdiction): DurableObjectNamespace;
 }
+declare type DurableObjectJurisdiction = "eu" | "fedramp";
 declare interface DurableObjectNamespaceNewUniqueIdOptions {
-  jurisdiction?: string;
+  jurisdiction?: DurableObjectJurisdiction;
 }
+declare type DurableObjectLocationHint =
+  | "wnam"
+  | "enam"
+  | "sam"
+  | "weur"
+  | "eeur"
+  | "apac"
+  | "oc"
+  | "afr"
+  | "me";
 declare interface DurableObjectNamespaceGetDurableObjectOptions {
-  locationHint?: string;
+  locationHint?: DurableObjectLocationHint;
 }
 declare interface DurableObjectState {
   waitUntil(promise: Promise<any>): void;
@@ -1296,12 +1307,18 @@ declare interface R2HTTPMetadata {
   cacheControl?: string;
   cacheExpiry?: Date;
 }
-declare interface R2Objects {
+declare type R2Objects = {
   objects: R2Object[];
-  truncated: boolean;
-  cursor?: string;
   delimitedPrefixes: string[];
-}
+} & (
+  | {
+      truncated: true;
+      cursor: string;
+    }
+  | {
+      truncated: false;
+    }
+);
 declare abstract class ScheduledEvent extends ExtendableEvent {
   readonly scheduledTime: number;
   readonly cron: string;
@@ -1512,13 +1529,19 @@ declare class TransformStream<I = any, O = any> {
   get writable(): WritableStream<I>;
 }
 declare class FixedLengthStream extends IdentityTransformStream {
-  constructor(expectedLength: number | bigint);
+  constructor(
+    expectedLength: number | bigint,
+    queuingStrategy?: IdentityTransformStreamQueuingStrategy
+  );
 }
 declare class IdentityTransformStream extends TransformStream<
   ArrayBuffer | ArrayBufferView,
   Uint8Array
 > {
-  constructor();
+  constructor(queuingStrategy?: IdentityTransformStreamQueuingStrategy);
+}
+declare interface IdentityTransformStreamQueuingStrategy {
+  highWaterMark?: number | bigint;
 }
 declare interface ReadableStreamValuesOptions {
   preventCancel?: boolean;
@@ -2784,7 +2807,7 @@ declare abstract class D1PreparedStatement {
   raw<T = unknown>(): Promise<T[]>;
 }
 /**
- * A email message that is sent to a consumer Worker.
+ * An email message that can be sent from a Worker.
  */
 declare interface EmailMessage {
   /**
@@ -2795,14 +2818,19 @@ declare interface EmailMessage {
    * Envelope To attribute of the email message.
    */
   readonly to: string;
-  /**
-   * A [Headers object](https://developer.mozilla.org/en-US/docs/Web/API/Headers).
-   */
-  readonly headers: Headers;
+}
+/**
+ * An email message that is sent to a consumer Worker and can be rejected/forwarded.
+ */
+declare interface ForwardableEmailMessage extends EmailMessage {
   /**
    * Stream of the email message content.
    */
   readonly raw: ReadableStream;
+  /**
+   * An [Headers object](https://developer.mozilla.org/en-US/docs/Web/API/Headers).
+   */
+  readonly headers: Headers;
   /**
    * Size of the email message content.
    */
@@ -2821,14 +2849,27 @@ declare interface EmailMessage {
    */
   forward(rcptTo: string, headers?: Headers): Promise<void>;
 }
+/**
+ * A binding that allows a Worker to send email messages.
+ */
+declare interface SendEmail {
+  send(message: EmailMessage): Promise<void>;
+}
 declare abstract class EmailEvent extends ExtendableEvent {
-  readonly message: EmailMessage;
+  readonly message: ForwardableEmailMessage;
 }
 declare type EmailExportedHandler<Env = unknown> = (
-  message: EmailMessage,
+  message: ForwardableEmailMessage,
   env: Env,
   ctx: ExecutionContext
 ) => void | Promise<void>;
+declare module "cloudflare:email" {
+  let _EmailMessage: {
+    prototype: EmailMessage;
+    new (from: string, to: string, raw: ReadableStream | string): EmailMessage;
+  };
+  export { _EmailMessage as EmailMessage };
+}
 declare type Params<P extends string = any> = Record<P, string | string[]>;
 declare type EventContext<Env, P extends string, Data> = {
   request: Request;

@@ -361,13 +361,24 @@ export interface DurableObjectNamespace {
     id: DurableObjectId,
     options?: DurableObjectNamespaceGetDurableObjectOptions
   ): DurableObjectStub;
-  jurisdiction(jurisdiction: string): DurableObjectNamespace;
+  jurisdiction(jurisdiction: DurableObjectJurisdiction): DurableObjectNamespace;
 }
+export type DurableObjectJurisdiction = "eu" | "fedramp";
 export interface DurableObjectNamespaceNewUniqueIdOptions {
-  jurisdiction?: string;
+  jurisdiction?: DurableObjectJurisdiction;
 }
+export type DurableObjectLocationHint =
+  | "wnam"
+  | "enam"
+  | "sam"
+  | "weur"
+  | "eeur"
+  | "apac"
+  | "oc"
+  | "afr"
+  | "me";
 export interface DurableObjectNamespaceGetDurableObjectOptions {
-  locationHint?: string;
+  locationHint?: DurableObjectLocationHint;
 }
 export interface DurableObjectState {
   waitUntil(promise: Promise<any>): void;
@@ -1298,12 +1309,18 @@ export interface R2HTTPMetadata {
   cacheControl?: string;
   cacheExpiry?: Date;
 }
-export interface R2Objects {
+export type R2Objects = {
   objects: R2Object[];
-  truncated: boolean;
-  cursor?: string;
   delimitedPrefixes: string[];
-}
+} & (
+  | {
+      truncated: true;
+      cursor: string;
+    }
+  | {
+      truncated: false;
+    }
+);
 export declare abstract class ScheduledEvent extends ExtendableEvent {
   readonly scheduledTime: number;
   readonly cron: string;
@@ -1514,13 +1531,19 @@ export declare class TransformStream<I = any, O = any> {
   get writable(): WritableStream<I>;
 }
 export declare class FixedLengthStream extends IdentityTransformStream {
-  constructor(expectedLength: number | bigint);
+  constructor(
+    expectedLength: number | bigint,
+    queuingStrategy?: IdentityTransformStreamQueuingStrategy
+  );
 }
 export declare class IdentityTransformStream extends TransformStream<
   ArrayBuffer | ArrayBufferView,
   Uint8Array
 > {
-  constructor();
+  constructor(queuingStrategy?: IdentityTransformStreamQueuingStrategy);
+}
+export interface IdentityTransformStreamQueuingStrategy {
+  highWaterMark?: number | bigint;
 }
 export interface ReadableStreamValuesOptions {
   preventCancel?: boolean;
@@ -2786,7 +2809,7 @@ export declare abstract class D1PreparedStatement {
   raw<T = unknown>(): Promise<T[]>;
 }
 /**
- * A email message that is sent to a consumer Worker.
+ * An email message that can be sent from a Worker.
  */
 export interface EmailMessage {
   /**
@@ -2797,14 +2820,19 @@ export interface EmailMessage {
    * Envelope To attribute of the email message.
    */
   readonly to: string;
-  /**
-   * A [Headers object](https://developer.mozilla.org/en-US/docs/Web/API/Headers).
-   */
-  readonly headers: Headers;
+}
+/**
+ * An email message that is sent to a consumer Worker and can be rejected/forwarded.
+ */
+export interface ForwardableEmailMessage extends EmailMessage {
   /**
    * Stream of the email message content.
    */
   readonly raw: ReadableStream;
+  /**
+   * An [Headers object](https://developer.mozilla.org/en-US/docs/Web/API/Headers).
+   */
+  readonly headers: Headers;
   /**
    * Size of the email message content.
    */
@@ -2823,11 +2851,17 @@ export interface EmailMessage {
    */
   forward(rcptTo: string, headers?: Headers): Promise<void>;
 }
+/**
+ * A binding that allows a Worker to send email messages.
+ */
+export interface SendEmail {
+  send(message: EmailMessage): Promise<void>;
+}
 export declare abstract class EmailEvent extends ExtendableEvent {
-  readonly message: EmailMessage;
+  readonly message: ForwardableEmailMessage;
 }
 export type EmailExportedHandler<Env = unknown> = (
-  message: EmailMessage,
+  message: ForwardableEmailMessage,
   env: Env,
   ctx: ExecutionContext
 ) => void | Promise<void>;
