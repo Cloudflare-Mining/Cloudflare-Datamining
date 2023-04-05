@@ -10,8 +10,6 @@ import Description from '../components/Description.astro';
 const importFiles = await Astro.glob('../../../data/other/colos-id-map.json');
 const colos = importFiles[0].default;
 
-
-
 for(const coloId in colos) {
 	const colo = colos[coloId];
 	const airport = airports.find(air => colo.toUpperCase().startsWith(air.code));
@@ -23,11 +21,25 @@ for(const coloId in colos) {
 	}
 }
 
+const additionalTags: {
+	[key: string]: string[];
+} = {};
+
+const DOColosRes = await fetch('https://colo-route.jross.dev/colo-route/colos');
+const DOColos = await DOColosRes.json();
+for (const colo of DOColos) {
+	if(!additionalTags[colo]) {
+		additionalTags[colo] = [];
+	}
+	additionalTags[colo].push('DOs');
+}
+
 ---
 <Layout title="Colos - Cloudflare Datamining" description="A lot of Cloudflare locations and types with their current status.">
 	<MainHeading title="Colos" />
 	<Description>
 		<p>Listed below are all known Cloudflare datacenters. At any given time, traffic could be re-routed so they'll appear offline, or they could simply not be a datacenter that serves public traffic. All of the types listed below are estimated, and not sourced from any official information.</p>
+		<p>Colos tagged with <code>DOs</code> support <a href="https://developers.cloudflare.com/workers/learning/using-durable-objects/" rel="noopener" target="_blank">Durable Objects</a></p>
 	</Description>
 	<Table
 		headers = {['Status', 'Total', '%']}
@@ -40,13 +52,16 @@ for(const coloId in colos) {
 		])}
 	></Table>
 	<Table
-		headers = {['ID', 'Colo', 'Type', 'Status']}
+		headers = {['ID', 'Colo', 'Tags', 'Status']}
 		widths={['w-[30%]', 'w-[30%]', 'w-[30%]', 'w-[10%]']}
 		id="colos"
 		data = {Object.keys(colos).map((id:string) => [
 			id,
 			colos[id],
-			types[colos[id]],
+			[
+				types[colos[id]],
+				...additionalTags[colos[id]] || [],
+			].filter(Boolean),
 			'loading...',
 		])}
 	></Table>
@@ -81,9 +96,9 @@ async function getColosStatus() {
 	let totalColos = 0;
 
 	for(const row of tableRows) {
-		const coloName = row.querySelector('td:nth-child(2)')?.textContent;
+		const coloName = row.querySelector('td:nth-child(2)')?.textContent?.trim?.();
 		const status = row.querySelector(`td:nth-child(${statusIndex})`);
-		const type = row.querySelector('td:nth-child(3)')?.textContent;
+		const tags = row.querySelector('td:nth-child(3)')?.innerHTML?.trim?.();
 		if(!coloName || !status) {
 			continue;
 		}
@@ -98,7 +113,7 @@ async function getColosStatus() {
 		if(online) {
 			spanElement.classList.add('bg-green-100', 'dark:bg-green-800', 'text-green-800', 'dark:text-green-100');
 			spanElement.textContent = 'Online';
-		}else if(type === 'JDC') {
+		}else if(tags?.includes('JDC')) {
 			spanElement.classList.add('bg-gray-100', 'dark:bg-gray-800', 'text-gray-800', 'dark:text-gray-100');
 			spanElement.textContent = 'China';
 		}else{
@@ -119,9 +134,10 @@ async function getColosStatus() {
 		return;
 	}
 	for(const row of tableRows) {
-		const status = row.querySelector('td:nth-child(1)')?.textContent as 'Online' | 'Offline' | 'China';
+		const status = row.querySelector('td:nth-child(1)')?.textContent?.trim?.() as 'Online' | 'Offline' | 'China';
 		const total = row.querySelector('td:nth-child(2)');
 		const percent = row.querySelector('td:nth-child(3)');
+		console.log({status, total, percent})
 		if(!status || !total || !percent || colosStatuses[status] === undefined) {
 			continue;
 		}

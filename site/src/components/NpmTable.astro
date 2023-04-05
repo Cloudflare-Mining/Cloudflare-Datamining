@@ -18,14 +18,14 @@ const tableHeaders = headers ?? ['Entitlement', 'Default Value'];
 		<div>
 			<SubHeading category={namespace} />
 			<div class="mt-2 flex flex-col">
-				<div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
+				<div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
 					<div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
 						<div class="overflow-hidden shadow ring-1 ring-black/5 md:rounded-lg">
 							<table class="min-w-full divide-y divide-gray-300 dark:divide-gray-700">
 								<thead class="bg-gray-50 dark:bg-gray-800">
 									<tr>
 										{(tableHeaders ?? []).map((header:string) => (
-											<th scope="col" class="truncate whitespace-nowrap py-3.5 px-2 text-left text-sm font-semibold first:pl-4">{header}</th>
+											<th scope="col" class="truncate whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold first:pl-4">{header}</th>
 										))}
 									</tr>
 								</thead>
