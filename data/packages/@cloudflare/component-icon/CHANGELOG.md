@@ -1,5 +1,11 @@
 # Change Log
 
+## 10.1.0
+
+### Minor Changes
+
+- 86ee7b8704: Add DLP icon
+
 ## 10.0.0
 
 ### Major Changes
