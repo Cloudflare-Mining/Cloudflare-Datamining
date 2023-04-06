@@ -13,6 +13,27 @@
 		"modified_on": "2020-10-13T12:42:59.660479Z",
 		"permissions": [
 			{
+				"id": "c9bf28ab9d43452983dc9cf704964694",
+				"key": "com.cloudflare.edge.magic-transit.lan.*",
+				"attributes": {
+					"legacy_name": "#magic:read,#magic:edit"
+				}
+			},
+			{
+				"id": "70ab80457ce34efda2e10566651c4498",
+				"key": "com.cloudflare.edge.magic-transit.wan.*",
+				"attributes": {
+					"legacy_name": "#magic:read,#magic:edit"
+				}
+			},
+			{
+				"id": "08618fb19e04412abaec7285fdcea82e",
+				"key": "com.cloudflare.edge.magic-transit.site.*",
+				"attributes": {
+					"legacy_name": "#magic:read,#magic:edit"
+				}
+			},
+			{
 				"id": "8d4a6f77689945aeb46721cd7ce1ee10",
 				"key": "com.cloudflare.team.dex.read",
 				"attributes": {
@@ -4003,6 +4024,48 @@
 		"created_on": "2020-10-13T12:42:59.660479Z",
 		"modified_on": "2020-10-13T12:42:59.660479Z",
 		"permissions": [
+			{
+				"id": "02002b4d30744903ae65282898682f4d",
+				"key": "com.cloudflare.edge.magic-transit.lan.read",
+				"attributes": {
+					"legacy_name": "#magic:read"
+				}
+			},
+			{
+				"id": "8c095e435157491dadc7c5415b1b87c7",
+				"key": "com.cloudflare.edge.magic-transit.lan.list",
+				"attributes": {
+					"legacy_name": "#magic:read"
+				}
+			},
+			{
+				"id": "cf949e1159244574ad72a4f50968f715",
+				"key": "com.cloudflare.edge.magic-transit.wan.read",
+				"attributes": {
+					"legacy_name": "#magic:read"
+				}
+			},
+			{
+				"id": "d163f2ec73fc47cd982b086bd0452ad2",
+				"key": "com.cloudflare.edge.magic-transit.wan.list",
+				"attributes": {
+					"legacy_name": "#magic:read"
+				}
+			},
+			{
+				"id": "1513c14ed35a45fb9b96e4788c209616",
+				"key": "com.cloudflare.edge.magic-transit.site.read",
+				"attributes": {
+					"legacy_name": "#magic:read"
+				}
+			},
+			{
+				"id": "67abf6b53eae4a87bfe8fc3684f49426",
+				"key": "com.cloudflare.edge.magic-transit.site.list",
+				"attributes": {
+					"legacy_name": "#magic:read"
+				}
+			},
 			{
 				"id": "8d4a6f77689945aeb46721cd7ce1ee10",
 				"key": "com.cloudflare.team.dex.read",
@@ -15117,6 +15180,48 @@
 		"modified_on": "2022-08-12T21:38:07.587547Z",
 		"permissions": [
 			{
+				"id": "02002b4d30744903ae65282898682f4d",
+				"key": "com.cloudflare.edge.magic-transit.lan.read",
+				"attributes": {
+					"legacy_name": "#magic:read"
+				}
+			},
+			{
+				"id": "8c095e435157491dadc7c5415b1b87c7",
+				"key": "com.cloudflare.edge.magic-transit.lan.list",
+				"attributes": {
+					"legacy_name": "#magic:read"
+				}
+			},
+			{
+				"id": "cf949e1159244574ad72a4f50968f715",
+				"key": "com.cloudflare.edge.magic-transit.wan.read",
+				"attributes": {
+					"legacy_name": "#magic:read"
+				}
+			},
+			{
+				"id": "d163f2ec73fc47cd982b086bd0452ad2",
+				"key": "com.cloudflare.edge.magic-transit.wan.list",
+				"attributes": {
+					"legacy_name": "#magic:read"
+				}
+			},
+			{
+				"id": "1513c14ed35a45fb9b96e4788c209616",
+				"key": "com.cloudflare.edge.magic-transit.site.read",
+				"attributes": {
+					"legacy_name": "#magic:read"
+				}
+			},
+			{
+				"id": "67abf6b53eae4a87bfe8fc3684f49426",
+				"key": "com.cloudflare.edge.magic-transit.site.list",
+				"attributes": {
+					"legacy_name": "#magic:read"
+				}
+			},
+			{
 				"id": "667bed69a5a34776a96546f2a1dcea11",
 				"key": "com.cloudflare.api.account.ruleset-phase.magic-transit-ids-managed.read",
 				"attributes": {
@@ -15275,6 +15380,27 @@
 		"created_on": "2022-08-12T21:38:07.587547Z",
 		"modified_on": "2022-08-12T21:38:07.587547Z",
 		"permissions": [
+			{
+				"id": "c9bf28ab9d43452983dc9cf704964694",
+				"key": "com.cloudflare.edge.magic-transit.lan.*",
+				"attributes": {
+					"legacy_name": "#magic:read,#magic:edit"
+				}
+			},
+			{
+				"id": "70ab80457ce34efda2e10566651c4498",
+				"key": "com.cloudflare.edge.magic-transit.wan.*",
+				"attributes": {
+					"legacy_name": "#magic:read,#magic:edit"
+				}
+			},
+			{
+				"id": "08618fb19e04412abaec7285fdcea82e",
+				"key": "com.cloudflare.edge.magic-transit.site.*",
+				"attributes": {
+					"legacy_name": "#magic:read,#magic:edit"
+				}
+			},
 			{
 				"id": "1fb6a247618f47df91c20add99436ebb",
 				"key": "com.cloudflare.api.account.ruleset-phase.magic-transit-ids-managed.*",
@@ -16463,6 +16589,27 @@
 		"created_on": "2020-10-13T12:42:59.660479Z",
 		"modified_on": "2020-10-13T12:42:59.660479Z",
 		"permissions": [
+			{
+				"id": "c9bf28ab9d43452983dc9cf704964694",
+				"key": "com.cloudflare.edge.magic-transit.lan.*",
+				"attributes": {
+					"legacy_name": "#magic:read,#magic:edit"
+				}
+			},
+			{
+				"id": "70ab80457ce34efda2e10566651c4498",
+				"key": "com.cloudflare.edge.magic-transit.wan.*",
+				"attributes": {
+					"legacy_name": "#magic:read,#magic:edit"
+				}
+			},
+			{
+				"id": "08618fb19e04412abaec7285fdcea82e",
+				"key": "com.cloudflare.edge.magic-transit.site.*",
+				"attributes": {
+					"legacy_name": "#magic:read,#magic:edit"
+				}
+			},
 			{
 				"id": "8d4a6f77689945aeb46721cd7ce1ee10",
 				"key": "com.cloudflare.team.dex.read",
