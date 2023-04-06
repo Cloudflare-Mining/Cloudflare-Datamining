@@ -7448,12 +7448,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				e.g.build = Fd({}, {
-					branch: "release-Apr.05.2023-1680703443",
+					branch: "incident-3687-fix",
 					isReleaseCandidate: "true",
-					commit: "a5d1f7a625ff0b6df96000f30cdaec78e13c1a09",
+					commit: "41c2114d1628532156a94f4769fd82c893c8685d",
 					env: "production",
-					builtAt: 1680703709852,
-					dashVersion: "356a2d5c36376ef78dc4dd40d1ddca729cbeca13",
+					builtAt: 1680752591863,
+					dashVersion: "9454ca3eeefaca9a5d6bc309ef0fc7238c6d0c8c",
 					versions: {
 						"@cloudflare/app-dash": "25.151.1",
 						node: "16.16.0",
@@ -72701,7 +72701,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 												return regeneratorRuntime.wrap(function(We) {
 													for (;;) switch (We.prev = We.next) {
 														case 0:
-															if (!((0, O.sg)(be.name) && !be.transferAuthCode)) {
+															if (!(!(0, O.sg)(be.name) && !be.transferAuthCode)) {
 																We.next = 2;
 																break
 															}
@@ -129728,4 +129728,4 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 	}
 ]);
 
-//# sourceMappingURL=ed846beb1e381a557355.js.map
+//# sourceMappingURL=3afa4f0f37b775d6cfff.js.map
