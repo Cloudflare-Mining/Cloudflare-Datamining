@@ -96,8 +96,7 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 		register: "Register"
 	},
 	register_page: {
-		find: "Find a domain",
-		enter: "Enter a domain name"
+		search: "Search for a domain name"
 	},
 	onboarding: {
 		overview: {
