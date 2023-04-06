@@ -127,26 +127,36 @@ export default IconComponent;
 ## Updating Icons
 If you would like to add new icons to the component library/design system please follow the procedures below to help ensure the icons remain consistent.
 
-### Product Design
+### Repo: product-design
 Follow the link to the `product-design` repository where you will find the original SVG's. Follow the [Icon Guidelines](https://wiki.cfops.it/x/QLcvCQ) for details on how to create, export, and add new icons to [product-design](https://bitbucket.cfdata.org/projects/DESIGN/repos/product-design/browse) and stratus repositories.
 
-### component-library
+### Repo: component-library
 Once your icon is added to the `product-design` repo under the `/icons/icons-exports/` folder and all instructions are followed it is ready to be converted to our React format in this `component-library` repo. 
 
-1. `yarn install` from the root of `component-library`. 
-- This should install the `svgo` dependency which is required in order to clean and compile the SVG's
-    - If `svgo` does not install, you can install it globally on your machine with `npm install -g svgo`
+#### 1. Install dependencies 
 
-2. Create a new branch
+run `yarn install` from the root of your `component-library` folder.
 
-3. Navigate to the top of the `component-library` repository and run `yarn update-icons`. 
+This should install the `svgo` dependency which is required in order to clean and compile the SVGs. If `svgo` does not install, you can install it globally on your machine with the command `npm install -g svgo`
 
-- The `product-design` repo will be pulled in using the `svgtoreact.sh` script
-- The list of SVG's will be extracted and converted into React components based on the file names provided. They will be added under `../component-icon/src/reactsvgs/`. 
-- Additional files touched may include `iconTypes.js` and `/reactsvgs/index.js`
+#### 2. Create a new branch
 
-4. Push up the changes and create a PR to `main`. Your new icon will be merged into the repository and be available for use shortly!
+Run the `git checkout -b <branchname>` command or create a new branch via the graphical git tool of your choice.
+
+#### 3. Run the update icons script 
+
+The `product-design` repo will be pulled in using the `svgtoreact.sh` script
+
+*** NOTE: The product-design repo should be up to date and located within the same parent folder as component library before running this command ***
+
+Run `yarn update-icons` in the root folder of `component-library`
+
+The list of SVG's will be extracted and converted into React components based on the file names provided. They will be added under `../component-icon/src/reactsvgs/`. 
+
+Additional files touched may include `iconTypes.js` and `/reactsvgs/index.js`
+
+#### 4. Push up the changes and create a PR to `main`. 
+
+After review, your new icon will be merged into the repository and be available for use shortly!
 
 **Note**: Stratus repository [README](https://bitbucket.cfdata.org/projects/FE/repos/stratus/browse) may also be valuable.
-
-
