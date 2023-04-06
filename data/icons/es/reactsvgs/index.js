@@ -26,6 +26,7 @@ import CreditCard from './CreditCard';
 import Discord from './Discord';
 import Documentation from './Documentation';
 import Download from './Download';
+import DataLossPrevention from './DataLossPrevention';
 import Drive from './Drive';
 import Edgeworker from './Edgeworker';
 import Edit from './Edit';
@@ -150,6 +151,7 @@ export default {
   discord: Discord,
   documentation: Documentation,
   download: Download,
+  'data-loss-prevention': DataLossPrevention,
   drive: Drive,
   edgeworker: Edgeworker,
   edit: Edit,
