@@ -3048,7 +3048,7 @@ Commit \u2014 `).concat(ct.commit)
 			var ou = (0, _o.C)("permissionGroups").get(ru(), "accountId"),
 				Vs = e("../react/common/selectors/entitlementsSelectors.ts"),
 				cl = i().lazy(function() {
-					return e.e(86503).then(e.bind(e, "../react/pages/home/billing/lego-contract/Main.tsx"))
+					return Promise.all([e.e(38025), e.e(86503)]).then(e.bind(e, "../react/pages/home/billing/lego-contract/Main.tsx"))
 				}),
 				iu = function(z) {
 					return i().createElement(cl, z)
@@ -7463,12 +7463,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				e.g.build = Qd({}, {
-					branch: "release-Apr.06.2023-1680789868",
+					branch: "release-Apr.07.2023-1680880585",
 					isReleaseCandidate: "true",
-					commit: "3cbc38d6e4fa5edbd593668e9c1a542cbbc6a0a5",
+					commit: "185ad4b4051d230f2661e6638ae577ae173851f9",
 					env: "production",
-					builtAt: 1680800389240,
-					dashVersion: "8a327fd4827793cc449b6d2f78fd82b82062a2ac",
+					builtAt: 1680880871424,
+					dashVersion: "435bc900e586677447515f1975ff0bb631645cb5",
 					versions: {
 						"@cloudflare/app-dash": "25.151.1",
 						node: "16.16.0",
@@ -12357,7 +12357,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						title: function(v) {
 							return (0, n.z1)("registrar-account-home-copy-experiment")(v) === "registrar" ? "navigation.account.registrar" : "navigation.account.registrar.buy_domains"
 						},
-						url: "",
+						url: "/domains",
 						iconType: "registrar-logo",
 						pages: [{
 							title: "navigation.account.registrar.manage_domains",
@@ -12384,7 +12384,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						}]
 					}, {
 						title: "navigation.common.analytics_and_logs",
-						url: "",
+						url: "/analytics",
 						iconType: "chart",
 						pages: [{
 							title: "navigation.account.account_analytics",
@@ -12773,7 +12773,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 						iconType: "internet-browser"
 					}, {
 						title: "navigation.account.manage_account",
-						url: "",
+						url: "/members",
 						iconType: "gear",
 						testId: "manage-account-link",
 						pages: [{
@@ -13351,7 +13351,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 							url: "/zaraz/settings"
 						}]
 					}, {
-						title: "navigation.zone.web3",
+						title: "navigation.zone.web3.title",
 						url: "/web3",
 						navigationType: "global-settings",
 						iconType: "web3",
@@ -14279,7 +14279,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			var Ke = he,
 				ht = u().lazy(function() {
-					return Promise.all([e.e(78297), e.e(47588), e.e(73018), e.e(93423)]).then(e.bind(e, "../react/pages/speed/Main.tsx"))
+					return Promise.all([e.e(78297), e.e(47588), e.e(73018), e.e(38025), e.e(93423)]).then(e.bind(e, "../react/pages/speed/Main.tsx"))
 				}),
 				Ct = function(kn) {
 					var cr = kn.zone,
@@ -14298,7 +14298,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			var Re = Ct,
 				vt = u().lazy(function() {
-					return Promise.all([e.e(90322), e.e(33415), e.e(82256), e.e(86178)]).then(e.bind(e, "../react/pages/ssl-tls/Main.tsx"))
+					return Promise.all([e.e(90322), e.e(33415), e.e(82256), e.e(38025), e.e(86178)]).then(e.bind(e, "../react/pages/ssl-tls/Main.tsx"))
 				}),
 				Qt = function(kn) {
 					return u().createElement(I.ZP, {
@@ -129775,4 +129775,4 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 	}
 ]);
 
-//# sourceMappingURL=d17140408757135a8a24.js.map
+//# sourceMappingURL=8d832fb2a0ed6019355f.js.map

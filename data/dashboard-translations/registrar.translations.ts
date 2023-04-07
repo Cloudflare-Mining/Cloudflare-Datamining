@@ -629,7 +629,7 @@ Payment will be charged in US dollars.`,
 		servertransferprohibited: "Registry status: Server transfer prohibited",
 		pendingdelete: "Registry status: Pending delete",
 		pendingtransfer: "Registry status: Pending transfer",
-		clienttransferprohibited: "Registry status: Client transfer prohibited"
+		clienttransferprohibited: "Registry status: Client transfer prohibited. Please unlock and allow a few hours to update."
 	},
 	pricing_title: "Upcoming Price Changes",
 	pricing_description: "Due to changes in the Registry pricing, our fees for the following TLDs will be changing. All transactions, including auto-renewals, that occur on or after the effective date will be billed at the new price. As a reminder, renewals can be submitted manually at any time.",
