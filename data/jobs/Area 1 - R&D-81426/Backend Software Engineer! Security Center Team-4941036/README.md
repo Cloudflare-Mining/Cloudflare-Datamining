@@ -5,33 +5,20 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>Systems Engineer - Compute Hardware</strong></h4>
-<h4><span style="font-weight: 400;">Cloudflare’s Infrastructure group is responsible for building our global network. Our Hardware Engineering team helps research, design, test, and deploy new equipment enabling compute, storage, and network. Deployed across 200+ cities in 100+ countries, the hardware we select helps improve the security, reliability, and performance of the Internet.</span></h4>
-<h4><strong>What you'll do</strong></h4>
-<p><span style="font-weight: 400;">We need to make thoughtful infrastructure choices affecting a significant portion of the Internet. Hardware we work with includes servers, routers, switches, optical equipment, power distribution units, cables, optics, and more. As a Hardware Systems Engineer, you will work with colleagues on the Hardware Engineering, Product teams, and Hardware Sourcing teams to evaluate and inform decisions around new hardware.</span></p>
+<p><strong>About the department</strong></p>
+<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers.&nbsp;</p>
+<p>The Security Center team is responsible for building security intelligence products within the Cloudflare ecosystem, leveraging Cloudflare’s unique data and insights. We help surface valuable security information to help keep customers safe from security threats, and build internal tools to help Cloudflare make the internet better.</p>
+<p><strong>What you'll do</strong></p>
+<p>You will be responsible for how threat data is presented both internally and externally, as well as development of several exciting new products. You will spend the majority of your time developing REST APIs implemented in Python and Golang, with the option to expand into building tools and services in JavaScript on the Cloudflare Workers platform.</p>
+<p><strong>A qualified candidate has</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Design hardware (Compute, AI/ML, and accelerators across traditional system boundaries which are efficient, secure, reliable and serviceable) for cloud customer workloads</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Develop and deploy Cloudflare’s next generation of servers, and other innovative technologies as part of Cloudflare’s data center infrastructure&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experiment with different designs and solutions for Cloudflare’s hardware and work cross-functionally with Product teams and Hardware Sourcing to enact your suggestions globally</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Work with vendors to obtain, debug, and maintain the most performant, power efficient and cost effective next-generation compute hardware and firmware for Cloudflare’s workloads</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Develop tools and automation to evaluate and optimize hardware performance</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Communicate your results and updates through blog posts, internal talks, and tickets</span></li>
-</ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Extensive experience with computer hardware architecture, design engineering, validation, performance benchmarking, debugging, and deployment used in the data center</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Relevant engineering disciplines include ASIC development, Computer hardware engineering and Electrical engineering.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Previous experience in testing, measuring, and/or simulating hardware performance and an understanding of no-stone-left-unturned experimentation</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Track record of driving engineering projects from idea to experiment to implementation</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Demonstrated success in working with ODMs and technology vendors</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Professional-level proficiency in Python, Go, or similar programming and/or scripting languages</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Good Linux systems knowledge</span></li>
-</ul>
-<h4>&nbsp;</h4>
-<p><strong>Bonus Points</strong></p>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Knowledge of XPU/accelerator architectures is a plus.&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience in a hyperscale cloud infrastructure role also valuable</span></li>
+	<li>Strong experience building RESTful APIs, preferably in Python and/or Golang</li>
+	<li>Experience building APIs using Object-Oriented languages and SQL databases</li>
+	<li>Strong cognitive empathy for the user and their goals</li>
+	<li>Experience shipping high-quality software in a fast-paced environment</li>
+	<li>Experience with or demonstrated interest in computer and network security</li>
+	<li>Experience with or interest in data science, machine learning, and/or devops</li>
+	<li>Experience with or interest in Cloudflare Workers</li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
