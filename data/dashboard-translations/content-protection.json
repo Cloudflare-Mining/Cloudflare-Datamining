@@ -1,5 +1,6 @@
 {
-	"content_protection.description": "Protect content on your site",
+	"content_protection.description": "Protect content on your website.",
+	"content_protection.documentation": "Scrape Shield documentation",
 	"content_protection.title": "Scrape Shield",
 	"email_filter.description": "Display obfuscated email addresses on your website to prevent harvesting by bots and spammers, without visible changes to the address for human visitors.",
 	"email_filter.help": "#### Why use Email Address Obfuscation?\nEmail harvesters and bots are roaming the Internet looking for email addresses to add to their spam lists. Cloudflareu2019s Email Address Obfuscation encrypts email addresses on your web pages. This means that email addresses are hidden from harvesters and bots, but still visible to human visitors.\n\n**Note:** Email Address Obfuscation is only applied in certain instances. It will work for email addresses within documents with a MIME type of text/html or application/xhtml+xml. However, it will not work for email addresses inside certain conditional comments, attributes, and tags outlined below:\n\n ```\n// Conditional comment:       <!--email_off--><!--/email_off--> \n// Script:                    <script></script> \n// Noscript:                  <noscript></noscript> \n// Comments:                  <!-- --> \n// Textarea:                  <textarea></textarea> \n// XMP:                       <xmp></xmp> \n// Head:                      <head></head> ``` \n",

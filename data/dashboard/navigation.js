@@ -58,7 +58,7 @@ const navigation = {
 		title: function(v) {
 			return (0, n.z1)("registrar-account-home-copy-experiment")(v) === "registrar" ? "navigation.account.registrar" : "navigation.account.registrar.buy_domains"
 		},
-		url: "",
+		url: "/domains",
 		iconType: "registrar-logo",
 		pages: [{
 			title: "navigation.account.registrar.manage_domains",
@@ -85,7 +85,7 @@ const navigation = {
 		}]
 	}, {
 		title: "navigation.common.analytics_and_logs",
-		url: "",
+		url: "/analytics",
 		iconType: "chart",
 		pages: [{
 			title: "navigation.account.account_analytics",
@@ -474,7 +474,7 @@ const navigation = {
 		iconType: "internet-browser"
 	}, {
 		title: "navigation.account.manage_account",
-		url: "",
+		url: "/members",
 		iconType: "gear",
 		testId: "manage-account-link",
 		pages: [{
@@ -1052,7 +1052,7 @@ const navigation = {
 			url: "/zaraz/settings"
 		}]
 	}, {
-		title: "navigation.zone.web3",
+		title: "navigation.zone.web3.title",
 		url: "/web3",
 		navigationType: "global-settings",
 		iconType: "web3",
