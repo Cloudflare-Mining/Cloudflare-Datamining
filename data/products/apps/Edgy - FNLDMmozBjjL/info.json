@@ -41571,6 +41571,618 @@
 				"reviewedByUserId": "4ab3e9449a64a5949326a81e6639d4fa",
 				"reviewedAt": "2020-12-01T15:13:42.599040319Z"
 			}
+		},
+		{
+			"tag": "5.0.1",
+			"appId": "FNLDMmozBjjL",
+			"definition": {
+				"options": {
+					"properties": {
+						"emailAddressContainer": {
+							"order": 17,
+							"properties": {
+								"help": {
+									"helpvalue": "<h3>❗ <strong>After installation, check your email for account activation instructions.</strong></h3>Reach out to us at <a href='mailto:support@networkchimp.com'>support@networkchimp.com</a> if it does not arrive within a few minutes.",
+									"order": 0,
+									"type": "help"
+								},
+								"value": {
+									"description": "Make sure you can receive email at this address to activate your account.",
+									"order": 2,
+									"placeholder": "support@networkchimp.com",
+									"required": true,
+									"title": "Email address",
+									"type": "string"
+								}
+							},
+							"showIf": {
+								"showEmailContainer": true
+							},
+							"title": "Account Options",
+							"type": "object"
+						},
+						"evergreenMode": {
+							"order": 30,
+							"properties": {
+								"enabled": {
+									"default": "maintenance",
+									"description": "💚 Render a friendly template for visitors and receive alerts when your servers aren't responding. <a href='https://www.networkchimp.com/docs/edgy.html#never-go-down' target='_blank'>[See Docs]</a>",
+									"enum": [
+										"maintenance",
+										"remote",
+										"local",
+										"disable",
+										"test"
+									],
+									"enumNames": {
+										"disable": "Disable Never Go Down",
+										"local": "Render an HTML template",
+										"maintenance": "Render Edgy's maintenance template",
+										"remote": "Render a remotely-hosted webpage",
+										"test": "Test Never Go Down"
+									},
+									"order": 1,
+									"title": "Never Go Down",
+									"type": "string"
+								},
+								"evergreenHtmlTemplate": {
+									"description": "Never Go Down Template to display when your site is down.",
+									"format": "code",
+									"order": 50,
+									"placeholder": "<!-- HTML template to use -->",
+									"showIf": {
+										"evergreenMode.enabled": "local"
+									},
+									"title": "📝 Never Go Down Template",
+									"type": "string"
+								},
+								"evergreenPageUrl": {
+									"description": "Remotely hosted page to display when your site is down.",
+									"order": 60,
+									"placeholder": "https://anotherdomain.com/never-go-down-template",
+									"showIf": {
+										"evergreenMode.enabled": "remote"
+									},
+									"title": "🌐 Never Go Down Template Location",
+									"type": "string"
+								},
+								"selector": {
+									"default": "emailOnly",
+									"description": "Do you want to receive notifications when your site becomes unresponsive?",
+									"enum": [
+										"emailOnly",
+										"webhookOnly",
+										"textMessageOnly",
+										"showAll",
+										"none"
+									],
+									"enumNames": {
+										"emailOnly": "Show email notifications",
+										"none": "Hide all notifications",
+										"showAll": "Show all notifications",
+										"textMessageOnly": "Show text notifications",
+										"webhookOnly": "Show webhook notifications"
+									},
+									"order": 65,
+									"showIf": {
+										"evergreenMode.enabled": {
+											"method": "any",
+											"op": "!=",
+											"value": [
+												"disable"
+											]
+										}
+									},
+									"title": "Notification Type",
+									"type": "string"
+								},
+								"targetEmails": {
+									"description": "Notification emails will be sent to these recipients every 30 minutes while you're offline. <a href='https://www.networkchimp.com/docs/edgy.html#email-alerts' target='_blank'>[See Docs]</a>",
+									"format": "code",
+									"order": 70,
+									"placeholder": "developers@yoursite.com\n(up to five email addresses)",
+									"showIf": {
+										"evergreenMode.enabled": {
+											"method": "any",
+											"op": "!=",
+											"value": [
+												"disable"
+											]
+										},
+										"evergreenMode.selector": {
+											"method": "any",
+											"op": "==",
+											"value": [
+												"emailOnly",
+												"showAll"
+											]
+										}
+									},
+									"title": "✉️ Email Alerts (Beta)",
+									"type": "string"
+								},
+								"targetPhones": {
+									"description": "Notification text will be sent to these recipients when your site goes offline and when your site comes back online. <a href='https://countrycode.org'>[Phone Number Formatter]</a> <a href='https://www.networkchimp.com/docs/edgy.html#text-message-alerts' target='_blank'>[See Docs]</a>",
+									"format": "code",
+									"order": 75,
+									"placeholder": "+13302228538\n(up to five phone numbers)",
+									"showIf": {
+										"evergreenMode.enabled": {
+											"method": "any",
+											"op": "!=",
+											"value": [
+												"disable"
+											]
+										},
+										"evergreenMode.selector": {
+											"method": "any",
+											"op": "==",
+											"value": [
+												"textMessageOnly",
+												"showAll"
+											]
+										}
+									},
+									"title": "📲 Text Message Alerts (Beta)",
+									"type": "string"
+								},
+								"webhook": {
+									"description": "Notification alerts will be made to this endpoint every 5 minutes while you're offline. <a href='https://www.networkchimp.com/docs/edgy.html#webhook-alerts' target='_blank'>[See Docs]</a>",
+									"order": 80,
+									"properties": {
+										"authorizationHeaderValue": {
+											"description": "Authorization header to attach when authentication is required.",
+											"order": 20,
+											"placeholder": "Bearer YRiNXaDMzag==",
+											"title": "Authorization header",
+											"type": "string"
+										},
+										"endpoint": {
+											"description": "Alerts will be sent to this endpoint.",
+											"order": 10,
+											"placeholder": "https://sentry.yoursite.com",
+											"title": "Webhook URL",
+											"type": "string"
+										}
+									},
+									"showIf": {
+										"evergreenMode.enabled": {
+											"method": "any",
+											"op": "!=",
+											"value": [
+												"disable"
+											]
+										},
+										"evergreenMode.selector": {
+											"method": "any",
+											"op": "==",
+											"value": [
+												"webhookOnly",
+												"showAll"
+											]
+										}
+									},
+									"title": "🎣 Webhook Alerts (Beta)",
+									"type": "object"
+								},
+								"welcome00": {
+									"helpvalue": "⚠️ While testing Never Go Down, Edgy will respond as if your website is down and render the Never Go Down template <em>on your entire website</em>. Disable this immediately once your testing is complete.",
+									"order": 2,
+									"showIf": {
+										"evergreenMode.enabled": {
+											"method": "any",
+											"op": "==",
+											"value": [
+												"test"
+											]
+										}
+									},
+									"type": "help"
+								}
+							},
+							"title": "Never Go Down",
+							"type": "object"
+						},
+						"jumbotron": {
+							"order": 15,
+							"properties": {
+								"info0": {
+									"helpvalue": "📖 <strong>Just getting started?</strong> Check out the <a href=\"https://networkchimp.com/docs/edgy.html?ref=install\" target=\"_blank\">documentation</a></strong>.",
+									"order": 0,
+									"type": "help"
+								},
+								"info10": {
+									"helpvalue": "🐛 <strong>Find a bug? Help us squash it.</strong> <em>Send a detailed description to us at <a href='mailto:support@networkchimp.com'>support@networkchimp.com</a> and we'll fix it in the next release.</em>",
+									"order": 10,
+									"type": "help"
+								},
+								"info20": {
+									"helpvalue": "❤️ <strong>Enjoying the app?</strong> Your <a href=\"https://www.cloudflare.com/apps/edgy?leaveComment=true\">rating or review</a> helps spread the word.",
+									"order": 20,
+									"type": "help"
+								},
+								"info5": {
+									"helpvalue": "🏆 <strong>Looking to upgrade?</strong> Try the <a href=\"https://edgy.networkchimp.com#pricing\">unlimited plan</a> today.",
+									"order": 5,
+									"type": "help"
+								}
+							},
+							"showIf": {
+								"showEmailContainer": false
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"maintenanceMode": {
+							"order": 30,
+							"properties": {
+								"enablement": {
+									"order": 40,
+									"properties": {
+										"bypassCode": {
+											"description": "Provide an <em>EdgyBypassCode</em> query string to access your website while in maintenance mode (<em>yoursite.com?EdgyBypassCode=my-bypass-code</em>).",
+											"maxLength": 48,
+											"order": 50,
+											"placeholder": "my-bypass-code",
+											"required": false,
+											"title": "Bypass Code",
+											"type": "string"
+										},
+										"enabled": {
+											"default": "disable",
+											"description": "⛔ Do you want to activate maintenance mode?",
+											"enum": [
+												"disable",
+												"global",
+												"route",
+												"globalScheduled",
+												"routeScheduled"
+											],
+											"enumNames": {
+												"disable": "Disable maintenance mode on my domain",
+												"global": "Activate it on my entire domain",
+												"globalScheduled": "Schedule it on my entire domain",
+												"route": "Activate it on a part of my domain",
+												"routeScheduled": "Schedule it on a part of my domain"
+											},
+											"order": 1,
+											"title": "Activate Maintenance Mode",
+											"type": "string"
+										},
+										"maintenanceRoutes": {
+											"description": "Only activate maintenance mode on these routes and keep the rest of your site online.",
+											"format": "code",
+											"order": 25,
+											"placeholder": "blog.mysite.com\nmysite.com/docs",
+											"showIf": {
+												"maintenanceMode.enablement.enabled": {
+													"method": "any",
+													"op": "==",
+													"value": [
+														"route",
+														"routeScheduled"
+													]
+												}
+											},
+											"title": "Maintenance Routes",
+											"type": "string"
+										},
+										"maintenanceScheduledFor": {
+											"description": "📅 Activate maintenance mode on your entire site after this <a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString' target='_blank'>ISO 8601</ema> date. <a href='https://timestampgenerator.com' target='_blank'>[Generate date]</a>",
+											"order": 20,
+											"placeholder": "2039-11-11T00:47:13.101Z or Leave blank to disable",
+											"showIf": {
+												"maintenanceMode.enablement.enabled": {
+													"method": "any",
+													"op": "==",
+													"value": [
+														"globalScheduled",
+														"routeScheduled"
+													]
+												}
+											},
+											"title": "Scheduled Maintenance Mode",
+											"type": "string"
+										},
+										"responseCode": {
+											"default": 503,
+											"description": "Routes under maintenance will respond with this HTTP status code between 200 and 600.",
+											"maximum": 600,
+											"minimum": 200,
+											"order": 30,
+											"title": "🔔 Response Status",
+											"type": "number"
+										}
+									},
+									"showIf": {
+										"maintenanceMode.selector": "show"
+									},
+									"title": "Maintenance Control Panel",
+									"type": "object"
+								},
+								"pageOptions": {
+									"order": 65,
+									"properties": {
+										"htmlTemplate": {
+											"description": "Page template to display in maintenance mode.",
+											"format": "code",
+											"order": 70,
+											"placeholder": "<!-- Insert HTML markup here -->",
+											"showIf": {
+												"maintenanceMode.pageOptions.theme": "customTemplate"
+											},
+											"title": "📝 Maintenance Template",
+											"type": "string"
+										},
+										"pageUrl": {
+											"description": "Remotely hosted page to display in maintenance mode.",
+											"order": 80,
+											"placeholder": "www.availablesite.com/my-maintenance-page",
+											"showIf": {
+												"maintenanceMode.pageOptions.theme": "customTemplate"
+											},
+											"title": "🌐 Template Location",
+											"type": "string"
+										},
+										"theme": {
+											"default": "multilingual",
+											"description": "The type of page to render during maintenance. <a href=\"https://www.networkchimp.com/docs/edgy.html#theme\" target=\"_blank\">[View themes]</a>",
+											"enum": [
+												"multilingual",
+												"surreal",
+												"modern",
+												"colorful",
+												"customTemplate"
+											],
+											"enumNames": {
+												"colorful": "Rustic",
+												"customTemplate": "Bring your own template",
+												"modern": "Modern",
+												"multilingual": "Multilingual",
+												"surreal": "Surreal"
+											},
+											"order": 15,
+											"title": "📝 Template Type",
+											"type": "string"
+										},
+										"themeHeadingText": {
+											"default": "We're undergoing a bit of scheduled maintenance",
+											"description": "The heading text of your maintenance template.",
+											"order": 30,
+											"placeholder": "We're undergoing a bit of scheduled maintenance",
+											"required": false,
+											"showIf": {
+												"maintenanceMode.pageOptions.theme": {
+													"method": "any",
+													"op": "==",
+													"value": [
+														"surreal",
+														"modern",
+														"colorful"
+													]
+												}
+											},
+											"title": "Heading Text",
+											"type": "string"
+										},
+										"themeSiteName": {
+											"description": "The page title will read <em>[Site Name] | Under Maintenance</em>.",
+											"order": 20,
+											"placeholder": "Enter your website's name",
+											"showIf": {
+												"maintenanceMode.pageOptions.theme": {
+													"method": "any",
+													"op": "!=",
+													"value": [
+														"customTemplate"
+													]
+												}
+											},
+											"title": "Site Name",
+											"type": "string"
+										},
+										"themeSubheadingText": {
+											"default": "We'll be back online soon.",
+											"description": "The subheading text of your maintenance template.",
+											"order": 40,
+											"placeholder": "We'll be back online soon.",
+											"required": false,
+											"showIf": {
+												"maintenanceMode.pageOptions.theme": {
+													"method": "any",
+													"op": "==",
+													"value": [
+														"surreal",
+														"modern",
+														"colorful"
+													]
+												}
+											},
+											"title": "Subheading Text",
+											"type": "string"
+										},
+										"welcome00": {
+											"helpvalue": "📖 Provide your own HTML template or link to a remotely-hosted template.",
+											"order": 60,
+											"showIf": {
+												"maintenanceMode.pageOptions.theme": "customTemplate"
+											},
+											"type": "help"
+										}
+									},
+									"showIf": {
+										"maintenanceMode.selector": "show"
+									},
+									"title": "Maintenance Template",
+									"type": "object"
+								},
+								"selector": {
+									"default": "show",
+									"description": "Do you want to set up maintenance mode?",
+									"enum": [
+										"show",
+										"hide"
+									],
+									"enumNames": {
+										"hide": "No, hide my options",
+										"show": "Yes, show my options"
+									},
+									"order": 0,
+									"title": "Show/Hide Options",
+									"type": "string"
+								}
+							},
+							"title": "Maintenance Mode",
+							"type": "object"
+						},
+						"otherApps": {
+							"order": 110,
+							"properties": {
+								"otherApps0": {
+									"helpvalue": "<strong>🍌 Other POWERFUL apps by <a href='https://www.networkchimp.com' target='_blank'>Network Chimp 🐒</a></strong>",
+									"order": 10,
+									"type": "help"
+								},
+								"otherApps1": {
+									"helpvalue": "🦖 <strong><a href='https://www.cloudflare.com/apps/portzilla' target='_blank'>Portzilla</a></strong> - <em>proxy traffic from any route to another port</em>",
+									"order": 20,
+									"type": "help"
+								},
+								"otherApps16": {
+									"helpvalue": "💪 <strong><a href='https://www.cloudflare.com/apps/fortify' target='_blank'>Fortify</a></strong> - <em>Enrich your HTTP requests with custom headers</em>",
+									"order": 25,
+									"type": "help"
+								},
+								"otherApps2": {
+									"helpvalue": "🐇 <strong><a href='https://www.cloudflare.com/apps/quick' target='_blank'>Quick</a></strong> - <em>serverless static pages served from the edge</em>",
+									"order": 30,
+									"type": "help"
+								},
+								"otherApps31": {
+									"helpvalue": "🤖 <strong><a href='https://www.cloudflare.com/apps/cassette' target='_blank'>Cassette</a></strong> - <em>cache your object storage assets for speed and savings</em>",
+									"order": 31,
+									"type": "help"
+								}
+							},
+							"title": " ",
+							"type": "object"
+						},
+						"showEmailContainer": {
+							"default": true,
+							"order": 16,
+							"title": "Show Account Options",
+							"type": "boolean"
+						},
+						"welcome1": {
+							"helpvalue": "<h3><strong>Let Edgy keep you online so you can focus on more important things.</strong></h3>",
+							"order": 1,
+							"type": "help"
+						},
+						"welcome2": {
+							"helpvalue": "<ul><li>Enable <strong>Never Go Down</strong> to stay online for your visitors and receive alerts when your servers aren't responding.</li><li>Toggle <strong>on-demand maintenance mode</strong> for scheduled downtime with one click. <a href=\"https://networkchimp.com/tutorials/edgy.html?ref=install\" target=\"_blank\">See the demo</a>.</li></ul>",
+							"order": 2,
+							"type": "help"
+						}
+					}
+				},
+				"allowPageRestrictions": false,
+				"preview": {
+					"hide": true
+				},
+				"hooks": [
+					{
+						"endpoint": "https://edgy-hooks-5t4qu63a5.vercel.app",
+						"events": [
+							"before-new-install",
+							"before-update-install"
+						],
+						"block": true,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					},
+					{
+						"endpoint": "https://edgy-hooks-5t4qu63a5.vercel.app",
+						"events": [
+							"preview",
+							"new-install",
+							"update-install",
+							"delete-install"
+						],
+						"block": false,
+						"failure": {
+							"action": "",
+							"message": ""
+						},
+						"authenticate": []
+					}
+				],
+				"workers": [
+					{
+						"priority": 500,
+						"src": "./build/runner.js"
+					}
+				]
+			},
+			"releaseNotes": "Adjusted bulletpoint ordering in the description",
+			"source": "",
+			"creatorUserId": "",
+			"installable": false,
+			"files": [],
+			"hasCode": true,
+			"fileHandle": "local/lcRcb_CsciEt",
+			"created": "2023-04-07T15:10:28.262391Z",
+			"proposedApp": {
+				"id": "FNLDMmozBjjL",
+				"title": "Edgy",
+				"shortDescription": "Never go down again, plus maintenance mode, alerts, and more",
+				"longDescription": "**What's your strategy for handling scheduled maintenance and downtime? Does it involve maintaining code or deploying bespoke builds? Let Edgy handle your maintenance infrastructure and find something better to do with your development time.**\n\nWhy use Edgy?\n* For scheduled downtime, toggle *on-demand maintenance mode* with one click.\n* For unscheduled downtime, enable *Never Go Down* to stay online for your visitors and receive alerts.\n\n[Check out Edgy in action](https://www.networkchimp.com/tutorials/edgy.html?ref=app-page).\n\nEdgy keeps your site online when your servers go down and delivers on-demand maintenance mode with one click.  Simply customize the default page or bring your own HTML template.\n\nEdgy Features:\n* Never Go Down to keep your site online when your servers are unresponsive.\n* Email and webhook alerts when your servers are unresponsive.\n* Configurable, built-in maintenance pages or bring your own template with *one click* maintenance mode.\n* Only want to take one part of your site down? Use route-based maintenance mode.\n* Manage authorized access to bypass maintenance mode with IP Whitelists and override query parameters.\n\nCheck out [Edgy in action](https://www.networkchimp.com/tutorials/edgy.html?ref=app-page) or \nread the [docs](https://www.networkchimp.com/docs/edgy.html?ref=app-page) for more information.",
+				"instructions": "",
+				"alias": "edgy",
+				"orgId": "8ccf52eed199615cba4d77dcd4ed0dda",
+				"icon": "https://images.cloudflareapps.com/pSYbwPlTyTiM/icon.png",
+				"screenshots": [
+					"https://images.cloudflareapps.com/ykbd5xdBXiFe/gallery-config.png",
+					"https://images.cloudflareapps.com/ykbd5xdBXiFe/gallery-templates.png",
+					"https://images.cloudflareapps.com/6xWlQ3Qv5r08/gallery-config-routes.png",
+					"https://images.cloudflareapps.com/6xWlQ3Qv5r08/gallery-config-advanced.png"
+				],
+				"tileImage": "https://images.cloudflareapps.com/s9-lqSVmn-Mk/tileImage-2.png",
+				"featuredAppImage": "https://images.cloudflareapps.com/9_F_5j12oITC/featured-banner.png",
+				"author": "Network Chimp",
+				"tagline": "",
+				"website": "https://www.networkchimp.com",
+				"sourceURL": "",
+				"termsOfServiceURL": "https://www.networkchimp.com/terms-of-service.html",
+				"privacyPolicyURL": "https://www.networkchimp.com/privacy-policy.html",
+				"color": "",
+				"source": "",
+				"adminVisible": true,
+				"userVisible": true,
+				"installable": false,
+				"codeVersion": "",
+				"infoVersion": "",
+				"points": 0,
+				"supportEmail": "support@networkchimp.com",
+				"products": [],
+				"categoryIds": [
+					"performance"
+				],
+				"agreements": {},
+				"metadata": {
+					"importedFromVersion": "3AnwlGu4z6gD"
+				},
+				"created": "2019-02-27T05:49:27.086549Z"
+			},
+			"moderationStatus": "pending",
+			"moderationMetadata": {
+				"requestedByUserId": "8ccf52eed199615cba4d77dcd4ed0dda",
+				"requestedAt": "2023-04-07T15:10:28.787291923Z",
+				"canceledAt": null,
+				"reviewedAt": null
+			}
 		}
 	]
 }
