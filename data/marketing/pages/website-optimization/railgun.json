@@ -1,10 +1,10 @@
 {
 	"componentChunkName": "component---src-components-page-page-template-tsx",
-	"path": "/performance/accelerate-internet-applications/",
+	"path": "/website-optimization/railgun/",
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "Performance - Accelerate Internet Applications",
+				"pageName": "Railgun - Product Page ",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
@@ -32,14 +32,14 @@
 					"elGR": null,
 					"nbNO": null
 				},
-				"relativePath": "performance/accelerate-internet-applications",
-				"topNavOptions": "default",
+				"relativePath": "website-optimization/railgun",
+				"topNavOptions": "custom",
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
 				"metaTags": {
-					"metaTitle": "Application performance services",
-					"metaDescription": "Deliver fast user experiences to increase engagement and conversion on your website. Learn how the world's fastest DNS + network can improve your web app.",
+					"metaTitle": "Railgun™",
+					"metaDescription": "Railgun origin network optimization ensures that the connection between your origin server and the Cloudflare network is as fast as possible to improve performance.",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
@@ -48,7 +48,7 @@
 					},
 					"facebookCustomImage": null
 				},
-				"contentfulId": "4wrCECDaTmGeYCOgoySsmi",
+				"contentfulId": "2I7gLKp1OUwqCQAIKW68qK",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
 				"psaBanner": null,
@@ -58,41 +58,38 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"contentfulId": "24aANTboramgUcQcWUeKIu",
+						"contentfulId": "56MokD3328mkM6eWaogqEo",
 						"contentTypeId": "bladeHeroAnimation",
-						"title": "Accelerate Web Applications",
-						"subtitle": null,
-						"copy": "Today's web pages are increasingly complex with a globally dispersed audience, which can degrade the user experience. \n\nCloudflare increases web application performance by bringing content closer to your users, caching static content on its network, optimizing image files, compressing dynamic content, routing requests to the least congested path, and much more.",
-						"buttonColor": "blue",
-						"buttonColor2": "blue",
-						"buttonText1": "View services",
+						"title": "Railgun™ Origin Network Optimizer",
+						"subtitle": "Optimized partners can reach international customers faster with Railgun",
+						"copy": "Railgun ensures that the connection between your origin server and the Cloudflare network is as fast as possible.\n\nRailgun compresses previously unreachable web objects by leveraging techniques similar to those used in the compression of high-quality video. This can result in additional performance increase.",
+						"buttonColor": "orange",
+						"buttonColor2": "orange",
+						"buttonText1": "Sign Up",
 						"buttonText1LoggedIn": null,
-						"buttonUrl1": "#performance-services",
+						"buttonUrl1": "https://dash.cloudflare.com/sign-up",
 						"buttonUrl1LoggedIn": null,
 						"button1ExtraClass": null,
-						"buttonText2": "Compare plans and pricing",
-						"buttonText2LoggedIn": "Looking for enterprise-grade solutions?",
-						"buttonUrl2": "#price-matrix",
-						"button2ExtraClass": "performance-accelerate-internet-applications-contact-sales",
+						"buttonText2": "Contact Sales",
+						"buttonText2LoggedIn": null,
+						"buttonUrl2": "#",
+						"button2ExtraClass": "railgun-product-contact-us",
 						"bladeBorder": "none",
 						"htmlId": null,
 						"textColor": "black",
 						"includeVideo": false,
 						"streamVideoId": null,
-						"streamOptions": [
-							"controls",
-							"autoplay"
-						],
+						"streamOptions": null,
 						"streamCaptions": null,
-						"popupStreamId": "cc65d144410f8f7726121274736f1c49",
-						"popupText": "View Demo Video (8.5 min)",
+						"popupStreamId": null,
+						"popupText": null,
 						"button1OpenInNewTab": null,
 						"button2OpenInNewTab": null,
 						"streamThumbnails": null,
 						"sectionPadding": null,
 						"streamPosterAssetFile": null,
 						"streamPoster": null,
-						"imageSize": null,
+						"imageSize": "Large",
 						"imagePosition": null,
 						"leftLinkUrl": null,
 						"leftLink": null,
@@ -104,887 +101,30 @@
 						"imageLayout": null,
 						"image": {
 							"file": {
-								"publicURL": "[path]/cloudflare-mobile-hero.svg"
+								"publicURL": "[path]/railgun-diagram-map-v4.svg"
 							}
 						},
-						"imageAssetFile": {
-							"id": "f2a37e86-fac9-55a5-b16e-83823c232610",
-							"altText": "Ensure application accelerate mobile experiences spot illustration",
-							"title": "Ensure application accelerate mobile experiences spot illustration",
-							"activeAsset": "Brandfolder Asset",
-							"locale": "en-US",
-							"contentfulAsset": null,
-							"brandfolderAsset": {
-								"size": 9019,
-								"height": 510,
-								"width": 898,
-								"filename": "ensure-application-accelerate-mobile-experiences-spot-illustration.svg",
-								"file": {
-									"publicURL": "[path]/ensure-application-accelerate-mobile-experiences-spot-illustration.svg"
-								}
-							},
-							"brandfolderAssetMobile": null
-						}
-					},
-					{
-						"contentfulId": "h13oXWp3E6LfZBFTEEyOF",
-						"backgroundColor": "light-blue",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": null,
-						"copy": null,
-						"title": null,
-						"subtitle": null,
-						"bladeStyle": null,
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "3Y7wsA41HXjpU5oMwcqCXV",
-								"title": "Global Scale",
-								"titleSize": null,
-								"description": "Cloudflare's global Anycast network spans %{DataCenterCount} cities in %{CountryCount} countries, reducing latency and time to first byte by delivering content closest to visitors.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"icon": {
-									"file": {
-										"publicURL": "[path]/icon-scale-aqua.png"
-									}
-								},
-								"iconAssetFile": {
-									"id": "122122d8-cea5-5bcc-8451-b0810e564bf3",
-									"altText": "Optimization scale blue",
-									"title": "Optimization scale blue",
-									"activeAsset": "Brandfolder Asset",
-									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 553,
-										"height": 192,
-										"width": 192,
-										"filename": "optimization-scale-blue.svg",
-										"file": {
-											"publicURL": "[path]/optimization-scale-blue.svg"
-										}
-									},
-									"brandfolderAssetMobile": null
-								},
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "3JMWcvpSPGyh4soLtbcGGx",
-								"title": "Ease of Use",
-								"titleSize": null,
-								"description": "Setting up Cloudflare takes as little as 5 minutes. The easy-to-use dashboard enables quick configuration of fine-grained functionalities to improve the performance of complex applications.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"icon": {
-									"file": {
-										"publicURL": "[path]/icon-api-aqua.png"
-									}
-								},
-								"iconAssetFile": {
-									"id": "7dcf0b32-5e52-5e8a-be1e-2324e1aab71c",
-									"altText": "Code api blue",
-									"title": "Code api blue",
-									"activeAsset": "Brandfolder Asset",
-									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 3021,
-										"height": 192,
-										"width": 192,
-										"filename": "code-api-blue.svg",
-										"file": {
-											"publicURL": "[path]/code-api-blue.svg"
-										}
-									},
-									"brandfolderAssetMobile": null
-								},
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "1AMOL62ZOC8cjZo6la3X8S",
-								"title": "Integrated Security & Performance",
-								"titleSize": null,
-								"description": "Cloudflare includes integrated security services to defend against DDoS attacks, customer data breaches, and abusive bots, while preventing performance trade-offs.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"openLinkInNewTab": null,
-								"icon": {
-									"file": {
-										"publicURL": "[path]/icon-scanning_1-aqua.png"
-									}
-								},
-								"iconAssetFile": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							}
-						]
-					},
-					{
-						"contentfulId": "5oSDEJ46vNYjqcnOCopcF9",
-						"backgroundColor": "white",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": "performance-services",
-						"copy": "Cloudflare makes your sites and applications perform like never before.  With our global Anycast network, content is always a blink away for incredible experiences on any device. We keep you online and available, regardless of traffic spikes, attacks, and outages. \n",
-						"title": "Supercharge your applications",
-						"subtitle": "Website and application performance services",
-						"bladeStyle": "Feature Blocks - 4 columns",
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "5O4rc7V8FWJNOwFItjKIuy",
-								"title": "CDN",
-								"titleSize": "small",
-								"description": "Ultra-fast static and dynamic content delivery.",
-								"learnMoreUrl": "https://www.cloudflare.com/cdn/",
-								"learnMoreText": "Learn more",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "213e44f5-f2f9-5afa-930f-b9559ccedf63",
-									"altText": "Connect 2 blue",
-									"title": "Connect 2 blue",
-									"activeAsset": "Brandfolder Asset",
-									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 812,
-										"height": 192,
-										"width": 192,
-										"filename": "connect-2-blue.svg",
-										"file": {
-											"publicURL": "[path]/connect-2-blue.svg"
-										}
-									},
-									"brandfolderAssetMobile": null
-								},
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "2FDWa6y1JscNEMl2ZgtEVz",
-								"title": "DNS",
-								"titleSize": "small",
-								"description": "Fastest, most resilient and secure authoritative DNS.",
-								"learnMoreUrl": "https://www.cloudflare.com/dns/",
-								"learnMoreText": "Learn more",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "6bb3285c-bf75-5bac-82dd-58c220479c42",
-									"altText": "Reliability dns blue",
-									"title": "Reliability dns blue",
-									"activeAsset": "Brandfolder Asset",
-									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 682,
-										"height": 192,
-										"width": 192,
-										"filename": "reliability-dns-blue.svg",
-										"file": {
-											"publicURL": "[path]/reliability-dns-blue.svg"
-										}
-									},
-									"brandfolderAssetMobile": null
-								},
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "4c0ggFRPQGrWFSdrK6ICqk",
-								"title": "Argo smart routing",
-								"titleSize": "small",
-								"description": "Route web traffic across the most reliable network paths.",
-								"learnMoreUrl": "https://www.cloudflare.com/products/argo-smart-routing/",
-								"learnMoreText": "Learn more",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "d0d91ab6-8531-56fe-89d3-5fe996d9f7bf",
-									"altText": "Performance intelligent routing blue",
-									"title": "Performance intelligent routing blue",
-									"activeAsset": "Brandfolder Asset",
-									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 2190,
-										"height": 192,
-										"width": 192,
-										"filename": "performance-intelligent-routing-blue.svg",
-										"file": {
-											"publicURL": "[path]/performance-intelligent-routing-blue.svg"
-										}
-									},
-									"brandfolderAssetMobile": null
-								},
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "37hvwo0LZPlT7vgYXu0etG",
-								"title": "Load balancing",
-								"titleSize": "small",
-								"description": "DNS-based load balancing and active health checks against origin servers.",
-								"learnMoreUrl": "https://www.cloudflare.com/load-balancing/",
-								"learnMoreText": "Learn more",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "5a959b28-b768-5052-bf8d-c87c2f5dcfb3",
-									"altText": "Reliability load balancer blue",
-									"title": "Reliability load balancer blue",
-									"activeAsset": "Brandfolder Asset",
-									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 2275,
-										"height": 192,
-										"width": 192,
-										"filename": "reliability-load-balancer-blue.svg",
-										"file": {
-											"publicURL": "[path]/reliability-load-balancer-blue.svg"
-										}
-									},
-									"brandfolderAssetMobile": null
-								},
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "2EpNvyejgh9qA7sZgjDJGl",
-								"title": "Cache Reserve",
-								"titleSize": "small",
-								"description": "Maximize savings by getting closer to the dream of 100% cache hit ratio",
-								"learnMoreUrl": "https://www.cloudflare.com/products/cache-reserve/",
-								"learnMoreText": "Learn More",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "773c23ff-5e01-502e-b9ca-cd0fb0de4bd2",
-									"altText": null,
-									"title": null,
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "[path]/server-1.png"
-										}
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "npkFJN67VligBefZUb3La",
-								"title": "Video stream delivery",
-								"titleSize": "small",
-								"description": "Cache and deliver HTTP(S) video content on your website.",
-								"learnMoreUrl": "https://www.cloudflare.com/products/stream-delivery/",
-								"learnMoreText": "Learn more",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "2rNY9CpnpOuVcHYjLSiOgb",
-								"title": "Web optimization",
-								"titleSize": "small",
-								"description": "Gauge how fast your website is and how you can make it even faster.",
-								"learnMoreUrl": "https://www.cloudflare.com/website-optimization/",
-								"learnMoreText": "Learn more",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "c83156b2-55b7-5045-8877-3e9545d7e4cb",
-									"altText": "Automatic Platform Optimization",
-									"title": "APO Icon",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "[path]/optimization-web.svg"
-										}
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "7IdKFYmD0b0KzZvoNbVkGv",
-								"title": "Waiting room",
-								"titleSize": "small",
-								"description": "Virtual waiting room to manage peak traffic.",
-								"learnMoreUrl": "https://www.cloudflare.com/waiting-room/",
-								"learnMoreText": "Learn more",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "e717541b-a824-540c-bb3f-8b59a901b6b1",
-									"altText": "Loading blue",
-									"title": "Loading blue",
-									"activeAsset": "Brandfolder Asset",
-									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 2535,
-										"height": 192,
-										"width": 192,
-										"filename": "loading-blue.svg",
-										"file": {
-											"publicURL": "[path]/loading-blue.svg"
-										}
-									},
-									"brandfolderAssetMobile": null
-								},
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "2fKCb74vu7Iy7hnJ0TrA83",
-								"title": "China network",
-								"titleSize": "small",
-								"description": "Extend Cloudflare performance and security into mainland China.",
-								"learnMoreUrl": "https://www.cloudflare.com/china-network/",
-								"learnMoreText": "Learn more",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "799c866d-69a4-5646-b6bb-5261eae7cb14",
-									"altText": "Network scale blue",
-									"title": "Network scale blue",
-									"activeAsset": "Brandfolder Asset",
-									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 5263,
-										"height": 192,
-										"width": 192,
-										"filename": "network-scale-blue.svg",
-										"file": {
-											"publicURL": "[path]/network-scale-blue.svg"
-										}
-									},
-									"brandfolderAssetMobile": null
-								},
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "7IpQDvVyIS4qKO9ltZUEbk",
-								"title": "Web3 gateways",
-								"titleSize": "small",
-								"description": "Manage, maintain, and monitor Web3 infrastructure.",
-								"learnMoreUrl": "https://www.cloudflare.com/web3/",
-								"learnMoreText": "Learn more",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "2ENVtF6F7yXWZa2pmmBcT3",
-								"title": "Zaraz (3rd party tool manager)",
-								"titleSize": "small",
-								"description": "A third-party tool manager — load tools in the cloud, without code.",
-								"learnMoreUrl": "https://www.cloudflare.com/products/zaraz/",
-								"learnMoreText": "Learn more",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "ca4a1b6a-497a-5aff-ad91-0c65c7cdea2b",
-									"altText": null,
-									"title": null,
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "[path]/performance-wrench.png"
-										}
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "3ZP8ho5QYXCO5W1YRxHftv",
-								"title": "Analytics",
-								"titleSize": "small",
-								"description": "Granular lens into network traffic.",
-								"learnMoreUrl": "/analytics/",
-								"learnMoreText": "Learn more",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "082acf6d-2836-52a9-a97d-f6a571c67183",
-									"altText": null,
-									"title": null,
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "[path]/analytics-data.svg"
-										}
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "3w5oLFkNUiQVgAvVumfOt",
-								"title": "Logs",
-								"titleSize": "small",
-								"description": "Detailed logs of HTTP requests, Spectrum events, or Firewall events.",
-								"learnMoreUrl": "/products/cloudflare-logs/",
-								"learnMoreText": "Learn more",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "85c4fbc4-0db5-571b-8e57-5e56edf68d42",
-									"altText": "Cloudflare Logs",
-									"title": "Logs Icon",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "[path]/logicon.svg"
-										}
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "2Zw28UtOSXt78RRkuj4mSK",
-								"title": "Stream",
-								"titleSize": "small",
-								"description": "Ingest, encode, record, and play live or on-demand videos.",
-								"learnMoreUrl": "products/cloudflare-stream/",
-								"learnMoreText": "Learn more",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "08e29c98-f860-5f57-8de5-a2d65dc17f11",
-									"altText": "Cloudflare stream delivery blue",
-									"title": "Cloudflare stream delivery blue",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "[path]/cloudflare-stream-delivery.svg"
-										}
-									},
-									"brandfolderAsset": {
-										"size": 2540,
-										"height": 192,
-										"width": 192,
-										"filename": "cloudflare-stream-delivery-blue.svg",
-										"file": {
-											"publicURL": "[path]/cloudflare-stream-delivery-blue.svg"
-										}
-									},
-									"brandfolderAssetMobile": null
-								},
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "2cTMDQJmDsNu39g37Y3PLc",
-								"title": "Images",
-								"titleSize": "small",
-								"description": "Build a highly scalable image pipeline to resize, optimize, store, and deliver images.",
-								"learnMoreUrl": "products/cloudflare-images/",
-								"learnMoreText": "Learn more",
-								"displayBorder": false,
-								"openLinkInNewTab": null,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "134a8bb8-faef-533e-96a2-dabd4762da64",
-									"altText": "Cloudflare Images",
-									"title": "Cloudflare Images Icon",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "[path]/image-blue.svg"
-										}
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							}
-						]
-					},
-					{
-						"contentfulId": "5MdEjZ0ZFRUWPojSAypWlC",
-						"title": "Challenges Affecting Performance",
-						"copy": null,
-						"toggleText": null,
-						"button": null,
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": null,
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": null,
-						"imageAssetFile": null,
-						"featureList": null,
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": "large",
-						"sectionPadding": "tile--no-bottom-padding",
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"imagePosition": false,
-						"imageSize": null,
-						"imageTextAlignment": null,
-						"togglesTo": null
-					},
-					{
-						"contentfulId": "dC887BZWxMQSOuCM4I6Eq",
-						"title": "Heavy, complex web pages",
-						"copy": "Average page size continues to increase due to complex CSS, high-quality images and video assets, or extensive usage of javascript snippets. Larger web page sizes (the 'payload') increases the amount of data which must travel over the network to be rendered by the visitor's browser, slowing down loading speeds.",
-						"toggleText": null,
-						"button": null,
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": null,
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "[path]/diagram-heavy-webpage.svg"
-							}
-						},
-						"imageAssetFile": {
-							"id": "9bdb5ae4-dbdd-59bc-beb2-04b5c06190e0",
-							"altText": "Icon depicting a laptop with a webpage loaded in the browser. ",
-							"title": "diagram-heavy-webpage",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "[path]/diagram-heavy-webpage.svg"
-								}
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"featureList": null,
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "white",
-						"bladeBorder": "border-bottom",
-						"imagePosition": false,
-						"imageSize": null,
-						"imageTextAlignment": null,
-						"togglesTo": null
-					},
-					{
-						"contentfulId": "3MLBL0zKLCgoyWQwcawa2g",
-						"title": "Interactivity and Personalization",
-						"copy": "When applications use APIs to fetch dynamic content to support personalization and interactivity, the number of connections and trips to origin infrastructure increases, resulting in performance degradations and poor visitor experiences.",
-						"toggleText": null,
-						"button": null,
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": null,
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "[path]/diagram-more-trips-to-origin.svg"
-							}
-						},
-						"imageAssetFile": {
-							"id": "1abfa784-3623-59ef-80a9-f2ebe7aacff0",
-							"altText": "Diagram depicting the number of trips to the origin made when APIs fetch dynamic content to support personalization.",
-							"title": "diagram-more-trips-to-origin",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "[path]/diagram-more-trips-to-origin.svg"
-								}
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"featureList": null,
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "white",
-						"bladeBorder": "border",
-						"imagePosition": true,
-						"imageSize": null,
-						"imageTextAlignment": null,
-						"togglesTo": null
-					},
-					{
-						"contentfulId": "CEV7TYBXmZhIaXqfLpsAC",
-						"title": "Globally Distributed Visitors",
-						"copy": "As modern web page visitors become more globally dispersed, content must travel longer distances, sometimes to countries with slow or unreliable networks. For example, a website with an origin server in San Francisco might have an equal number of global visitors as it does local and global visitors will experience increases in latency.",
-						"toggleText": null,
-						"button": null,
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": null,
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "[path]/diagram-global-dist-users.svg"
-							}
-						},
-						"imageAssetFile": {
-							"id": "f52fcf01-9d35-5fee-afa1-72ff45be2633",
-							"altText": "A diagram depicting how content must travel as webpages become more globally dispersed. ",
-							"title": "diagram-global-dist-users",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "[path]/diagram-global-dist-users.svg"
-								}
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"featureList": null,
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "white",
-						"bladeBorder": "border-bottom",
-						"imagePosition": false,
-						"imageSize": null,
-						"imageTextAlignment": null,
-						"togglesTo": null
-					},
-					{
-						"contentfulId": "37Kx8r7jecTOBU0kZkOV00",
-						"title": "Cloudflare's Performance Services",
-						"copy": "Every Cloudflare data center runs an integrated stack of performance features which address the most common causes of poor performance. These features help solve many of the core problems that slow down the delivery of applications over the Internet. From fast web address lookups to accelerated delivery to the origin server, Cloudflare speeds up traffic at key points in the life of a request.\n",
-						"toggleText": null,
-						"button": null,
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": null,
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "[path]/diagram-web-performance-services-01.svg"
-							}
-						},
-						"imageAssetFile": {
-							"id": "e19e2f51-b366-5f29-88ae-fc154477ab1e",
-							"altText": "Digram depicting Cloudflare's web performance services",
-							"title": "Diagram web performance services",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "[path]/diagram-web-performance-services-01.svg"
-								}
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"featureList": null,
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "white",
-						"bladeBorder": "border-bottom",
-						"imagePosition": false,
-						"imageSize": "large",
-						"imageTextAlignment": null,
-						"togglesTo": null
+						"imageAssetFile": null
 					},
 					{
 						"contentTypeId": "bladeRichTextColumnGroup",
-						"contentfulId": "7oCVKS4I1Voy20cP9KsoWu",
+						"contentfulId": "5cuwYBlQcCFeiHKI3uxlA",
 						"htmlId": null,
-						"mainHeadline": "More Cloudflare Performance Use Cases",
-						"backgroundColor": "white",
+						"mainHeadline": null,
+						"backgroundColor": "light-gray",
 						"bladeBorder": "none",
-						"sectionPadding": null,
-						"columnLayout": null,
+						"sectionPadding": "tile--no-top-bottom-padding",
+						"columnLayout": "One Column Wide",
 						"columns": [
 							{
 								"contentTypeId": "elementRichText",
-								"contentfulId": "54M35oZhgU4G8Gc6B9Urk4",
-								"title": "Accelerate Mobile Experiences",
+								"contentfulId": "2m0bDOPbgkRBjWVRnu7s8K",
+								"title": null,
 								"column": {
 									"nodeType": "document",
 									"content": [
 										{
-											"nodeType": "heading-3",
+											"nodeType": "heading-2",
 											"data": {
 												"target": null,
 												"uri": null
@@ -998,133 +138,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Accelerate Mobile Experiences",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "embedded-entry-block",
-											"data": {
-												"target": {
-													"sys": {
-														"id": "6leEd2xRUrh9Dfp0QjDWdC",
-														"type": "Link",
-														"linkType": "Entry"
-													},
-													"related_asset": [],
-													"entry_elementMarkdown": [],
-													"entry_assetFile": [
-														{
-															"id": "37fce547-ee27-5130-9cf0-3ee79668106b",
-															"altText": "Diagram depicting the constraints that mobile performance introduce.",
-															"title": "diagram-mobile-performance",
-															"activeAsset": "Contentful Asset",
-															"locale": "en-US",
-															"contentfulAsset": {
-																"file": {
-																	"publicURL": "[path]/diagram-mobile-performance.svg"
-																}
-															},
-															"brandfolderAsset": null,
-															"brandfolderAssetMobile": null
-														}
-													],
-													"entry_button": [],
-													"entry_elementLink": [],
-													"entry_page": [],
-													"entry_elementIcon": [],
-													"entry_bladeTable": [],
-													"entry_bladeThreeFeatures": [],
-													"entry_bladeFourFeatures": []
-												},
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": []
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Mobile clients introduce performance and content delivery constraints which hurt user experiences. Deliver fast mobile experiences that increase engagement and conversions, regardless of distance to origin servers, device types, or network health.",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "embedded-entry-block",
-											"data": {
-												"target": {
-													"sys": {
-														"id": "yDqQtaZphdGdxrlbqBX9u",
-														"type": "Link",
-														"linkType": "Entry"
-													},
-													"related_asset": [],
-													"entry_elementMarkdown": [],
-													"entry_assetFile": [],
-													"entry_button": [
-														{
-															"buttonAssetFile": null,
-															"buttonWidth": "auto",
-															"buttonColor": "blue",
-															"buttonTextLoggedIn": null,
-															"contentTypeId": "button",
-															"contentfulId": "yDqQtaZphdGdxrlbqBX9u",
-															"elementName": "Accelerate Internet Applications - Accelerate Mobile Experiences - Button",
-															"standardText": null,
-															"text": "Learn more",
-															"url": "https://www.cloudflare.com/performance/accelerate-mobile-experiences/",
-															"loggedInUrl": null,
-															"modal": null,
-															"openInNewTab": false,
-															"locale": "en-US"
-														}
-													],
-													"entry_elementLink": [],
-													"entry_page": [],
-													"entry_elementIcon": [],
-													"entry_bladeTable": [],
-													"entry_bladeThreeFeatures": [],
-													"entry_bladeFourFeatures": []
-												},
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": []
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "",
+													"value": "What Railgun Does ",
 													"marks": [],
 													"content": null
 												}
@@ -1145,83 +159,11 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "",
+													"value": "Railgun accelerates the connection between each Cloudflare data center and an origin server so that requests that cannot be served from the Cloudflare cache are nevertheless served very fast.",
 													"marks": [],
 													"content": null
 												}
 											]
-										}
-									]
-								}
-							},
-							{
-								"contentTypeId": "elementRichText",
-								"contentfulId": "3jMx7XzUAXIikK9Hxf3c3D",
-								"title": "Accelerate Internet Applications - Ensure Application Availability ",
-								"column": {
-									"nodeType": "document",
-									"content": [
-										{
-											"nodeType": "heading-3",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": " Ensure Application Availability ",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "embedded-entry-block",
-											"data": {
-												"target": {
-													"sys": {
-														"id": "1YoPiagSBAf2EfiPdD7adf",
-														"type": "Link",
-														"linkType": "Entry"
-													},
-													"related_asset": [],
-													"entry_elementMarkdown": [],
-													"entry_assetFile": [
-														{
-															"id": "f52fcf01-9d35-5fee-afa1-72ff45be2633",
-															"altText": "A diagram depicting how content must travel as webpages become more globally dispersed. ",
-															"title": "diagram-global-dist-users",
-															"activeAsset": "Contentful Asset",
-															"locale": "en-US",
-															"contentfulAsset": {
-																"file": {
-																	"publicURL": "[path]/diagram-global-dist-users.svg"
-																}
-															},
-															"brandfolderAsset": null,
-															"brandfolderAssetMobile": null
-														}
-													],
-													"entry_button": [],
-													"entry_elementLink": [],
-													"entry_page": [],
-													"entry_elementIcon": [],
-													"entry_bladeTable": [],
-													"entry_bladeThreeFeatures": [],
-													"entry_bladeFourFeatures": []
-												},
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": []
 										},
 										{
 											"nodeType": "paragraph",
@@ -1238,54 +180,11 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Overloaded or unavailable infrastructure prevents users from accessing applications. Keep Internet applications fast, available, and scalable, even during unexpected traffic spikes or infrastructure outages.",
+													"value": "Approximately 2/3 of requests to sites on Cloudflare are served directly from cache from the data center that is physically closest to the person surfing the web. Because Cloudflare has data centers around the world this means that whether you are in Bangalore, Brisbane, Birmingham or Boston web pages are delivered quickly even when the real, origin web server is thousands of miles away.",
 													"marks": [],
 													"content": null
 												}
 											]
-										},
-										{
-											"nodeType": "embedded-entry-block",
-											"data": {
-												"target": {
-													"sys": {
-														"id": "6koXCwcQQ27AWtW17Skvsw",
-														"type": "Link",
-														"linkType": "Entry"
-													},
-													"related_asset": [],
-													"entry_elementMarkdown": [],
-													"entry_assetFile": [],
-													"entry_button": [
-														{
-															"buttonAssetFile": null,
-															"buttonWidth": "auto",
-															"buttonColor": "blue",
-															"buttonTextLoggedIn": null,
-															"contentTypeId": "button",
-															"contentfulId": "6koXCwcQQ27AWtW17Skvsw",
-															"elementName": "Accelerate Internet Applications - Ensure Application Availability",
-															"standardText": null,
-															"text": "Learn more",
-															"url": "https://www.cloudflare.com/performance/ensure-application-availability/",
-															"loggedInUrl": null,
-															"modal": null,
-															"openInNewTab": false,
-															"locale": "en-US"
-														}
-													],
-													"entry_elementLink": [],
-													"entry_page": [],
-													"entry_elementIcon": [],
-													"entry_bladeTable": [],
-													"entry_bladeThreeFeatures": [],
-													"entry_bladeFourFeatures": []
-												},
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": []
 										},
 										{
 											"nodeType": "paragraph",
@@ -1302,7 +201,112 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "",
+													"value": "Cloudflare's ability to make a web site appear to be hosted close to web surfers is key in accelerating web surfing. A web site might be hosted in the US, but accessed mainly by web surfers in the UK. With Cloudflare the site will be served from a UK data center eliminating the costly delay caused by the speed of light.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "But the other 1/3 of requests made to Cloudflare have to be sent to the origin server for processing. This happens because many web pages are not cacheable. This can be because of a misconfiguration, or, more commonly, because the web page changes frequently or is personalized.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "For example, it's hard to cache the New York Times home page for any length of time because the news changes and being up to date is essential to their business. And for a personalized web site like Facebook each user sees a different page even though the URL may be the same for different users.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Railgun uses a collection of techniques to accelerate and cache these previously uncacheable web pages so that even when the origin server must be consulted web pages are delivered quickly. And that even works for rapidly changing pages like news sites, or for personalized content.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare research showed that even though many sites cannot be cached they actually change very slowly. For example, the New York Times home page changes throughout the day as news stories are written, but the boilerplate HTML of the page mostly stays the same and many stories stay on the front page all day.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "For personalized sites the boilerplate HTML is the same with only small pieces of content (such as a person's Twitter timeline or Facebook news feed) changing. This means there's a huge opportunity to compress web pages for transmission if the unchanging parts of a page can be detected and only the differences transmitted.",
 													"marks": [],
 													"content": null
 												}
@@ -1314,56 +318,617 @@
 						]
 					},
 					{
-						"contentTypeId": "bladeQuote",
-						"contentfulId": "57ufEIyA7fAcpazIXEix1k",
-						"quote": "\"Cloudflare, in conjunction with a few providers, makes deploying and running our site very light and easy. I would recommend Cloudflare to anyone looking to solve the problems we have.\"\n",
-						"quoteAuthor": "Jared Hales  ",
-						"quoteTitle": "Director of Engineering",
-						"learnMoreText": null,
-						"sectionPadding": null,
+						"contentTypeId": "bladeRichTextColumnGroup",
+						"contentfulId": "11EQVdSdLlWvAyzfjVmBRU",
+						"htmlId": null,
+						"mainHeadline": null,
+						"backgroundColor": "white",
+						"bladeBorder": "none",
+						"sectionPadding": "tile--no-top-padding",
+						"columnLayout": "One Column Wide",
+						"columns": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "5XkqTUDkVqUMvyo7MsxMON",
+								"title": null,
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "heading-2",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "How It Works",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "When a request is made to a Cloudflare server for a web page that is not in cache Cloudflare makes an HTTP connection to the origin server to request the page. It's that HTTP connection that Railgun accelerates and secures.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-3",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Without Railgun",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "embedded-entry-block",
+											"data": {
+												"target": {
+													"sys": {
+														"id": "41y9i9X4yU6tmS43Vqhffi",
+														"type": "Link",
+														"linkType": "Entry"
+													},
+													"related_asset": [],
+													"entry_elementMarkdown": [],
+													"entry_assetFile": [
+														{
+															"id": "7f4ee133-7c98-5af9-ad6a-6345a82225db",
+															"altText": "Railgun - how it works without",
+															"title": "Railgun - how it works without",
+															"activeAsset": "Contentful Asset",
+															"locale": "en-US",
+															"contentfulAsset": {
+																"file": {
+																	"publicURL": "[path]/railgun-diagram-how-it-works-without.svg"
+																}
+															},
+															"brandfolderAsset": null,
+															"brandfolderAssetMobile": null
+														}
+													],
+													"entry_button": [],
+													"entry_elementLink": [],
+													"entry_page": [],
+													"entry_elementIcon": [],
+													"entry_bladeTable": [],
+													"entry_bladeThreeFeatures": [],
+													"entry_bladeFourFeatures": []
+												},
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-3",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "With Railgun",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "embedded-entry-block",
+											"data": {
+												"target": {
+													"sys": {
+														"id": "151AyOL1jUu5Xm1ppcQXiM",
+														"type": "Link",
+														"linkType": "Entry"
+													},
+													"related_asset": [],
+													"entry_elementMarkdown": [],
+													"entry_assetFile": [
+														{
+															"id": "4eb77b44-36fd-5b86-8bbd-c5da202d590f",
+															"altText": "Railgun - how it works with",
+															"title": "Railgun - how it works with",
+															"activeAsset": "Contentful Asset",
+															"locale": "en-US",
+															"contentfulAsset": {
+																"file": {
+																	"publicURL": "[path]/railgun-diagram-how-it-works-with.svg"
+																}
+															},
+															"brandfolderAsset": null,
+															"brandfolderAssetMobile": null
+														}
+													],
+													"entry_button": [],
+													"entry_elementLink": [],
+													"entry_page": [],
+													"entry_elementIcon": [],
+													"entry_bladeTable": [],
+													"entry_bladeThreeFeatures": [],
+													"entry_bladeFourFeatures": []
+												},
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Railgun consists of two software components: the Listener and Sender. The Railgun Listener is installed at your web host on an origin server. It's a small piece of software that runs on a standard server and services requests from Cloudflare using the encrypted, binary Railgun protocol.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The Railgun Sender is installed in all Cloudflare data centers around the world and maintains connections with Railgun Listeners.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "When an HTTP request comes in that must be handled by an origin server, Cloudflare determines whether it is destined for a Railgun-enabled website. If not, standard HTTP is used, but if so the HTTP request is routed to the Railgun Sender for handling.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The Railgun Sender turns the request into a compressed, binary chunk that's transmitted to the corresponding Railgun Listener. The Railgun Listener handles the request and performs an HTTP request to the origin server. From the origin server's perspective it's as if the HTTP connection came directly from Cloudflare, but because it comes from inside the hosting partner's infrastructure the request suffers no latency related delay.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Railgun uses a new caching mechanism based on comparing page versions to determine what needs to be transmitted across the Internet to the Railgun Sender. Using this mechanism Cloudflare is able to achieve typical 99.6% compression (taking, for example, a 100k web page down to 400 bytes) and a speedup of over 700%. In fact, the compressed data is often so small that using the binary Railgun protocol the entire response fits inside a single TCP packet.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Railgun connections are secured by TLS so that requests sent across them cannot be eavesdropped upon. The connection is secured by certificates so that a on-path attack is not possible. The TCP connection between Cloudflare and the origin server is kept alive so that it can be reused for subsequent requests eliminating the slow start up of a TCP connection.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Railgun requests are multiplexed onto the same connection and can be handled asynchronously. This means that Railgun is able to handle many, simultaneous requests without blocking and maximizing the use of the TCP connection.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						]
+					},
+					{
+						"contentTypeId": "bladeRichTextColumnGroup",
+						"contentfulId": "1rR5QUwu9R4QOC2STcmd1H",
+						"htmlId": null,
+						"mainHeadline": null,
 						"backgroundColor": "light-blue",
 						"bladeBorder": "none",
-						"learnMoreUrl": null,
-						"htmlId": null,
-						"image": {
-							"file": {
-								"publicURL": "[path]/bespoke-post.png"
+						"sectionPadding": null,
+						"columnLayout": "One Column Wide",
+						"columns": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "jJqaRWAzUyE68cLekmiXR",
+								"title": null,
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Railgun Listener is a single executable whose only dependency is a running Memcache instance. It runs on 64-bit Linux systems as a daemon.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "The Listener requires a single port open onto the Internet for the Railgun protocol so that Cloudflare data centers can contact it. And it requires access to the website via HTTP and HTTPS. Ideally, the Listener would be placed on a server with fast access to the Internet and low latency. Installation is simply a matter of installing via an RPM or .deb file. For detailed instructions on installing Railgun, refer to the official ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/docs/railgun/index.html"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "Railgun Documentation",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ".",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Railgun is available for customers with a Cloudflare ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/plans/business"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "Business",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " or ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/plans/enterprise/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "Enterprise",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " plan or customers hosted with an ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/partners/hosting-provider/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "Optimized Hosting Partner",
+															"marks": [],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ".",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
 							}
-						},
-						"imageAssetFile": null,
-						"imageLinkUrl": null,
-						"logoList": null,
-						"logoListAssetFile": null,
-						"quoteCarousel": null
+						]
 					},
 					{
-						"contentTypeId": "bladeEnablement",
-						"contentfulId": "6cDXfTCtKWIaUJhppDaEIG",
-						"buttonExtraClass": null,
-						"buttonColor": "orange",
-						"buttonColor2": null,
-						"title": "Get Started Today",
-						"backgroundColor": "blue",
-						"buttonText": "Sign Up",
-						"buttonUrl": "https://dash.cloudflare.com/sign-up",
-						"buttonText2": null,
-						"buttonModalId2": null,
-						"buttonUrl2": null,
-						"bladeSizeType": "small",
-						"htmlId": null,
-						"textColor": "white",
-						"bladeBorder": "border-bottom",
-						"buttonOne": null,
-						"buttonTwo": null,
-						"sectionPadding": null
-					},
-					{
-						"contentfulId": "1nALEjidleOm4g8soMwsEi",
-						"contentTypeId": "bladeFullContent",
-						"title": null,
-						"copy": "<section class=\"tile tile--no-bottom-padding tile--no-top-padding\">\n  <div class=\"tile__content tile__content--fixed tile__content--no-padding-top\">\n    <div class=\"grid\">\n      <div class=\"grid__item grid__item--no-bottom-margin\">\n        <p class=\"text--12px text--no-pad-no-margin\"><sup>1</sup> Schurman, Eric, Bing and Brutlag, Jake, Google Search, \"Performance Related Changes and their User Impact\" 2009 Velocity Conference</p>\n        <p class=\"text--12px text--no-pad-no-margin\"><sup>2</sup> Simic, Bojan, \"The Performance of Web Applications: Customers Are Won or Lost in One Second\" November 2008, Aberdeen Group</p>\n        <p class=\"text--12px text--no-pad-no-margin\"><sup>3</sup> \"HTTP Archive\" <a href=\"http://beta.httparchive.org/reports/page-weight?start=2017_01_01&amp;end=2018_01_01&amp;view=grid\" target=\"_blank\">http://beta.httparchive.org/reports/page-weight?start=2017_01_01&amp;end=2018_01_01&amp;view=grid</a></p>\n      </div>\n    </div>\n  </div>\n</section>",
-						"image": null,
-						"imageAssetFile": null
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "76Of7L7xZNVIkJ1Xc8JtQe",
+						"htmlContent": "<section\n  class=\"tile tile--border tile__background--white js-cloudflare-setup-video-tile\"\n>\n  <div class=\"tile__content tile__content--fixed\">\n    <h2 class=\"marketing-h2 marketing-h2--center marketing-h2--bottom-margin\">\n      Setting Up Cloudflare Is Easy\n    </h2>\n    <br /><br />\n    <div class=\"grid grid--center\">\n      <video\n        poster=\"/img/getting-started.png\"\n        muted=\"\"\n        autoplay=\"\"\n        loop=\"\"\n        class=\"responsive-image grid__item grid__item js-cloudflare-setup-video no-margin-bottom\"\n        id=\"cloudflare-stream-video\"\n      >\n        <source src=\"/video/cloudflare-setup.mp4?v=3\" type=\"video/mp4\" />\n        <source src=\"/video/cloudflare-setup.webm?v=3\" type=\"video/webm\" />\n      </video>\n      <p class=\"tc db w-100\">\n        Set up a domain in less than 5 minutes. Keep your hosting provider. No\n        code changes required.\n      </p>\n    </div>\n  </div>\n</section>\n\n<hr />",
+						"htmlId": null
 					},
 					{
 						"contentfulId": "3gjbNqPWrBSa4572O8KSjJ",
@@ -8382,18 +7947,18 @@
 				"formModal": [
 					{
 						"contentTypeId": "formModal",
-						"contentfulId": "1AUs2uOyZy94yoMxGRynmV",
-						"modalName": "Performance - Accelerate Internet Applications: Form Modal",
-						"modalId": "performance-accelerate-internet-applications-contact-sales",
+						"contentfulId": "1GXag6ioAQqqrhXRPd8noo",
+						"modalName": "Railgun - Product Page - Form Modal",
+						"modalId": "railgun-product-contact-us",
 						"modalType": "single-form",
 						"marketoForm": {
 							"contentTypeId": "marketoEmbeddedForm",
-							"contentfulId": "1Adqtl4BU7Q9M2FjN9nfkJ",
-							"bladeName": "Performance - Accelerate Internet Applications: Marketo Form (1341)",
+							"contentfulId": "18uy2B7RUeVeoUszKVHDuB",
+							"bladeName": "Railgun - Product Page: Marketo Form (1341)",
 							"backgroundColor": "white",
 							"marketoFormId": 1341,
 							"marketoFormLeadSource": "Inbound - Web Form",
-							"marketoFormLeadSourceDetail": "Contact Us Performance: Accelerate Internet Applications",
+							"marketoFormLeadSourceDetail": "Contact Us Railgun",
 							"marketoFormHeaderText": null,
 							"marketoFormDefaultComment": null,
 							"showCommentBox": true,
@@ -8413,7 +7978,7 @@
 							"enableRingout": null
 						},
 						"title": "Contact Sales",
-						"regularCopy": "Accelerate Internet Applications to Increase Conversion Rates",
+						"regularCopy": "Railgun™ Origin Network Optimizer",
 						"splitFormDefaultTab": null,
 						"selfServeTabText": null,
 						"selfServeCopy": null,
@@ -8432,8 +7997,8 @@
 		"pageContext": {
 			"currentLocale": "en-US",
 			"locale": "en-US",
-			"pathname": "/performance/accelerate-internet-applications/",
-			"contentfulId": "4wrCECDaTmGeYCOgoySsmi",
+			"pathname": "/website-optimization/railgun/",
+			"contentfulId": "2I7gLKp1OUwqCQAIKW68qK",
 			"allowedHrefLangs": [
 				"en-US",
 				"zh-CN",
