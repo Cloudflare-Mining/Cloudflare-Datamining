@@ -681,8 +681,8 @@ const navigation = {
 			if ((0, l.yD)(v) || !(0, r.wB)(v, "zone_settings", "spectrum.app") || !M) return !1;
 			var g = !!((0, W.l8)(v) || (0, d.DQ)(v)),
 				U = !!(0, d.ZB)(v, "spectrum", "enabled"),
-				V = !!(0, d.Ns)(M);
-			return U || g || !V
+				Y = !!(0, d.Ns)(M);
+			return U || g || !Y
 		}
 	}, {
 		title: "navigation.zone.ssl-tls",

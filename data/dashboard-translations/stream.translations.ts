@@ -602,6 +602,8 @@ To read the full docs, [click here](https://developers.cloudflare.com/stream/).`
 	metadata_tooltip: "Add arbitrary key-value pairs that will appear in the API. This could be useful if you store internal IDs in your database.",
 	live_playback_and_recording: "Live Playback and Recording",
 	live_playback_and_recording_tooltip: "Watch the live stream using the Stream Player or any player that supports HLS/DASH. Instantly replay the recording when the live stream ends.",
+	live_require_signed_urls: "Require Signed URLs",
+	live_require_signed_urls_tooltip: "Restrict access to certain users by requiring a signed URL token to watch the live stream.",
 	remove_field: "Remove field",
 	name_reserved_key: 'Use the "Name" field above for this key',
 	value: "Value",
