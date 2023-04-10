@@ -23,6 +23,72 @@
 		"name": "string",
 		"timeout": "function"
 	},
+	"Array": {
+		"__proto": "function",
+		"__type": "function",
+		"_prototype": {
+			"from": "undefined",
+			"isArray": "undefined",
+			"length": "number",
+			"name": "undefined",
+			"of": "undefined",
+			"prototype": "undefined"
+		},
+		"from": "function",
+		"isArray": "function",
+		"length": "number",
+		"name": "string",
+		"of": "function"
+	},
+	"ArrayBuffer": {
+		"__proto": "function",
+		"__type": "function",
+		"_prototype": {
+			"isView": "undefined",
+			"length": "undefined",
+			"name": "undefined",
+			"prototype": "undefined"
+		},
+		"isView": "function",
+		"length": "number",
+		"name": "string"
+	},
+	"Atomics": {},
+	"BigInt": {
+		"__proto": "function",
+		"__type": "function",
+		"_prototype": {},
+		"asIntN": "function",
+		"asUintN": "function",
+		"length": "number",
+		"name": "string"
+	},
+	"BigInt64Array": {
+		"BYTES_PER_ELEMENT": "number",
+		"__proto": "function",
+		"__type": "function",
+		"_prototype": {
+			"BYTES_PER_ELEMENT": "number",
+			"length": "number",
+			"name": "undefined",
+			"prototype": "undefined"
+		},
+		"length": "number",
+		"name": "string"
+	},
+	"BigUint64Array": {
+		"BYTES_PER_ELEMENT": "number",
+		"__proto": "function",
+		"__type": "function",
+		"_prototype": {
+			"BYTES_PER_ELEMENT": "number",
+			"length": "number",
+			"name": "undefined",
+			"prototype": "undefined"
+		},
+		"length": "number",
+		"name": "string"
+	},
 	"Blob": {
 		"__proto": "function",
 		"__type": "function",
@@ -46,6 +112,17 @@
 		"__proto": "function",
 		"__type": "function",
 		"_prototype": "object",
+		"length": "number",
+		"name": "string"
+	},
+	"Boolean": {
+		"__proto": "function",
+		"__type": "function",
+		"_prototype": {
+			"length": "undefined",
+			"name": "undefined",
+			"prototype": "undefined"
+		},
 		"length": "number",
 		"name": "string"
 	},
@@ -245,6 +322,13 @@
 		"length": "number",
 		"name": "string"
 	},
+	"DataView": {
+		"__proto": "function",
+		"__type": "function",
+		"_prototype": {},
+		"length": "number",
+		"name": "string"
+	},
 	"DecompressionStream": {
 		"__proto": "function",
 		"__type": "function",
@@ -352,6 +436,32 @@
 			"prototype": "undefined",
 			"readable": "object",
 			"writable": "object"
+		},
+		"length": "number",
+		"name": "string"
+	},
+	"Float32Array": {
+		"BYTES_PER_ELEMENT": "number",
+		"__proto": "function",
+		"__type": "function",
+		"_prototype": {
+			"BYTES_PER_ELEMENT": "number",
+			"length": "number",
+			"name": "undefined",
+			"prototype": "undefined"
+		},
+		"length": "number",
+		"name": "string"
+	},
+	"Float64Array": {
+		"BYTES_PER_ELEMENT": "number",
+		"__proto": "function",
+		"__type": "function",
+		"_prototype": {
+			"BYTES_PER_ELEMENT": "number",
+			"length": "number",
+			"name": "undefined",
+			"prototype": "undefined"
 		},
 		"length": "number",
 		"name": "string"
@@ -554,6 +664,45 @@
 		"length": "number",
 		"name": "string"
 	},
+	"Int16Array": {
+		"BYTES_PER_ELEMENT": "number",
+		"__proto": "function",
+		"__type": "function",
+		"_prototype": {
+			"BYTES_PER_ELEMENT": "number",
+			"length": "number",
+			"name": "undefined",
+			"prototype": "undefined"
+		},
+		"length": "number",
+		"name": "string"
+	},
+	"Int32Array": {
+		"BYTES_PER_ELEMENT": "number",
+		"__proto": "function",
+		"__type": "function",
+		"_prototype": {
+			"BYTES_PER_ELEMENT": "number",
+			"length": "number",
+			"name": "undefined",
+			"prototype": "undefined"
+		},
+		"length": "number",
+		"name": "string"
+	},
+	"Int8Array": {
+		"BYTES_PER_ELEMENT": "number",
+		"__proto": "function",
+		"__type": "function",
+		"_prototype": {
+			"BYTES_PER_ELEMENT": "number",
+			"length": "number",
+			"name": "undefined",
+			"prototype": "undefined"
+		},
+		"length": "number",
+		"name": "string"
+	},
 	"Intl": {
 		"Collator": {
 			"__proto": "function",
@@ -687,6 +836,18 @@
 			"supportedLocalesOf": "function"
 		}
 	},
+	"JSON": {},
+	"Map": {
+		"__proto": "function",
+		"__type": "function",
+		"_prototype": {
+			"length": "undefined",
+			"name": "undefined",
+			"prototype": "undefined"
+		},
+		"length": "number",
+		"name": "string"
+	},
 	"MessageEvent": {
 		"__proto": "function",
 		"__type": "function",
@@ -700,6 +861,113 @@
 		"_prototype": {},
 		"length": "number",
 		"name": "string"
+	},
+	"Number": {
+		"EPSILON": "number",
+		"MAX_SAFE_INTEGER": "number",
+		"MAX_VALUE": "number",
+		"MIN_SAFE_INTEGER": "number",
+		"MIN_VALUE": "number",
+		"NEGATIVE_INFINITY": "number",
+		"NaN": "number",
+		"POSITIVE_INFINITY": "number",
+		"__proto": "function",
+		"__type": "function",
+		"_prototype": {
+			"EPSILON": "undefined",
+			"MAX_SAFE_INTEGER": "undefined",
+			"MAX_VALUE": "undefined",
+			"MIN_SAFE_INTEGER": "undefined",
+			"MIN_VALUE": "undefined",
+			"NEGATIVE_INFINITY": "undefined",
+			"NaN": "undefined",
+			"POSITIVE_INFINITY": "undefined",
+			"isFinite": "undefined",
+			"isInteger": "undefined",
+			"isNaN": "undefined",
+			"isSafeInteger": "undefined",
+			"length": "undefined",
+			"name": "undefined",
+			"parseFloat": "undefined",
+			"parseInt": "undefined",
+			"prototype": "undefined"
+		},
+		"isFinite": "function",
+		"isInteger": "function",
+		"isNaN": "function",
+		"isSafeInteger": "function",
+		"length": "number",
+		"name": "string",
+		"parseFloat": "function",
+		"parseInt": "function"
+	},
+	"Object": {
+		"__proto": "function",
+		"__type": "function",
+		"_prototype": {
+			"assign": "undefined",
+			"create": "undefined",
+			"defineProperties": "undefined",
+			"defineProperty": "undefined",
+			"entries": "undefined",
+			"freeze": "undefined",
+			"fromEntries": "undefined",
+			"getOwnPropertyDescriptor": "undefined",
+			"getOwnPropertyDescriptors": "undefined",
+			"getOwnPropertyNames": "undefined",
+			"getOwnPropertySymbols": "undefined",
+			"getPrototypeOf": "undefined",
+			"hasOwn": "undefined",
+			"is": "undefined",
+			"isExtensible": "undefined",
+			"isFrozen": "undefined",
+			"isSealed": "undefined",
+			"keys": "undefined",
+			"length": "undefined",
+			"name": "undefined",
+			"preventExtensions": "undefined",
+			"prototype": "undefined",
+			"seal": "undefined",
+			"setPrototypeOf": "undefined",
+			"values": "undefined"
+		},
+		"assign": "function",
+		"create": "function",
+		"defineProperties": "function",
+		"defineProperty": "function",
+		"entries": "function",
+		"freeze": "function",
+		"fromEntries": "function",
+		"getOwnPropertyDescriptor": "function",
+		"getOwnPropertyDescriptors": "function",
+		"getOwnPropertyNames": "function",
+		"getOwnPropertySymbols": "function",
+		"getPrototypeOf": "function",
+		"hasOwn": "function",
+		"is": "function",
+		"isExtensible": "function",
+		"isFrozen": "function",
+		"isSealed": "function",
+		"keys": "function",
+		"length": "number",
+		"name": "string",
+		"preventExtensions": "function",
+		"seal": "function",
+		"setPrototypeOf": "function",
+		"values": "function"
+	},
+	"Promise": {
+		"__proto": "function",
+		"__type": "function",
+		"_prototype": {},
+		"all": "function",
+		"allSettled": "function",
+		"any": "function",
+		"length": "number",
+		"name": "string",
+		"race": "function",
+		"reject": "function",
+		"resolve": "function"
 	},
 	"PromiseRejectionEvent": {
 		"__proto": "function",
@@ -885,6 +1153,45 @@
 		"length": "number",
 		"name": "string"
 	},
+	"Set": {
+		"__proto": "function",
+		"__type": "function",
+		"_prototype": {
+			"length": "undefined",
+			"name": "undefined",
+			"prototype": "undefined"
+		},
+		"length": "number",
+		"name": "string"
+	},
+	"SharedArrayBuffer": {
+		"__proto": "function",
+		"__type": "function",
+		"_prototype": {
+			"length": "undefined",
+			"name": "undefined",
+			"prototype": "undefined"
+		},
+		"length": "number",
+		"name": "string"
+	},
+	"String": {
+		"__proto": "function",
+		"__type": "function",
+		"_prototype": {
+			"fromCharCode": "undefined",
+			"fromCodePoint": "undefined",
+			"length": "number",
+			"name": "undefined",
+			"prototype": "undefined",
+			"raw": "undefined"
+		},
+		"fromCharCode": "function",
+		"fromCodePoint": "function",
+		"length": "number",
+		"name": "string",
+		"raw": "function"
+	},
 	"SubtleCrypto": {
 		"__proto": "function",
 		"__type": "function",
@@ -970,6 +1277,28 @@
 		},
 		"length": "number",
 		"name": "string"
+	},
+	"Symbol": {
+		"__proto": "function",
+		"__type": "function",
+		"_prototype": {},
+		"asyncIterator": "symbol",
+		"for": "function",
+		"hasInstance": "symbol",
+		"isConcatSpreadable": "symbol",
+		"iterator": "symbol",
+		"keyFor": "function",
+		"length": "number",
+		"match": "symbol",
+		"matchAll": "symbol",
+		"name": "string",
+		"replace": "symbol",
+		"search": "symbol",
+		"species": "symbol",
+		"split": "symbol",
+		"toPrimitive": "symbol",
+		"toStringTag": "symbol",
+		"unscopables": "symbol"
 	},
 	"TextDecoder": {
 		"__proto": "function",
@@ -1108,6 +1437,80 @@
 			"size": "number",
 			"sort": "function",
 			"values": "function"
+		},
+		"length": "number",
+		"name": "string"
+	},
+	"Uint16Array": {
+		"BYTES_PER_ELEMENT": "number",
+		"__proto": "function",
+		"__type": "function",
+		"_prototype": {
+			"BYTES_PER_ELEMENT": "number",
+			"length": "number",
+			"name": "undefined",
+			"prototype": "undefined"
+		},
+		"length": "number",
+		"name": "string"
+	},
+	"Uint32Array": {
+		"BYTES_PER_ELEMENT": "number",
+		"__proto": "function",
+		"__type": "function",
+		"_prototype": {
+			"BYTES_PER_ELEMENT": "number",
+			"length": "number",
+			"name": "undefined",
+			"prototype": "undefined"
+		},
+		"length": "number",
+		"name": "string"
+	},
+	"Uint8Array": {
+		"BYTES_PER_ELEMENT": "number",
+		"__proto": "function",
+		"__type": "function",
+		"_prototype": {
+			"BYTES_PER_ELEMENT": "number",
+			"length": "number",
+			"name": "undefined",
+			"prototype": "undefined"
+		},
+		"length": "number",
+		"name": "string"
+	},
+	"Uint8ClampedArray": {
+		"BYTES_PER_ELEMENT": "number",
+		"__proto": "function",
+		"__type": "function",
+		"_prototype": {
+			"BYTES_PER_ELEMENT": "number",
+			"length": "number",
+			"name": "undefined",
+			"prototype": "undefined"
+		},
+		"length": "number",
+		"name": "string"
+	},
+	"WeakMap": {
+		"__proto": "function",
+		"__type": "function",
+		"_prototype": {
+			"length": "undefined",
+			"name": "undefined",
+			"prototype": "undefined"
+		},
+		"length": "number",
+		"name": "string"
+	},
+	"WeakSet": {
+		"__proto": "function",
+		"__type": "function",
+		"_prototype": {
+			"length": "undefined",
+			"name": "undefined",
+			"prototype": "undefined"
 		},
 		"length": "number",
 		"name": "string"
