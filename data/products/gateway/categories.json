@@ -547,9 +547,27 @@
 				"deprecated": false
 			},
 			{
+				"name": "No Content",
+				"id": 124,
+				"description": "Sites that have no content.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
 				"name": "Redirect",
 				"id": 141,
 				"description": "Domains that redirect to other sites.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Unreachable",
+				"id": 161,
+				"description": "Domains that resolve to unreachable IP addresses.",
 				"class": "premium",
 				"subcategories": null,
 				"beta": false,
@@ -1318,27 +1336,9 @@
 				"deprecated": false
 			},
 			{
-				"name": "No Content",
-				"id": 124,
-				"description": "Sites that have no content.",
-				"class": "premium",
-				"subcategories": null,
-				"beta": false,
-				"deprecated": false
-			},
-			{
 				"name": "Parked & For Sale Domains",
 				"id": 128,
 				"description": "Domains that are parked or for sale. These domains may be malicious.",
-				"class": "premium",
-				"subcategories": null,
-				"beta": false,
-				"deprecated": false
-			},
-			{
-				"name": "Unreachable",
-				"id": 161,
-				"description": "Domains that resolve to unreachable IP addresses.",
 				"class": "premium",
 				"subcategories": null,
 				"beta": false,
