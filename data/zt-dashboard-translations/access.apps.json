@@ -391,9 +391,9 @@
 	"temporary_auth_title": "Temporary authentication",
 	"title": "Applications",
 	"tooltip_empty_policies": "No rules.",
-	"user_input_description": "Check policy behavior for a given user email",
-	"user_input_start_testing": "Check user",
-	"user_input_title": "Test your policies",
+	"user_input_description": "To test policy behavior, a user must have attempted at least one application login. Users synchronized via SCIM without a login event are not supported in the policy tester.",
+	"user_input_start_testing": "Test policies",
+	"user_input_title": "Enter a user email address",
 	"validation_settings_max_age": "Maximum age can only be a number between %{min} and %{max}.",
 	"view": "View"
 }
