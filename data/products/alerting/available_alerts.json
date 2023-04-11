@@ -324,19 +324,5 @@
 			"description": "Receive regular Web Analytics metrics updates by email",
 			"filter_options": []
 		}
-	],
-	"Workers": [
-		{
-			"display_name": "Workers Usage Report",
-			"type": "workers_alert",
-			"description": "Receive an alert whenever CPU usage or duration significantly exceeds average CPU usage or duration.",
-			"filter_options": []
-		},
-		{
-			"display_name": "Workers Weekly Summary",
-			"type": "weekly_account_overview",
-			"description": "Receive a weekly usage summary containing select information about your Workers account.",
-			"filter_options": []
-		}
 	]
 }
