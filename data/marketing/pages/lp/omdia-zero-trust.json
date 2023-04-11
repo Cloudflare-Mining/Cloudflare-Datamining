@@ -28,13 +28,15 @@
 					"viVN": "No Page for Locale",
 					"trTR": "No Page for Locale",
 					"zhHansCN": "Translated for Locale",
-					"plPL": "No Page for Locale"
+					"plPL": "No Page for Locale",
+					"elGR": "No Page for Locale",
+					"nbNO": "No Page for Locale"
 				},
 				"relativePath": "lp/omdia-zero-trust",
 				"topNavOptions": "empty",
 				"topNavButtonText": "Cloudflare Access",
 				"topNavButtonUrl": "https://teams.cloudflare.com/access/index.html",
-				"footerOptions": "empty",
+				"footerOptions": "default",
 				"metaTags": {
 					"metaTitle": "Omdia Zero Trust Access Market Guide ",
 					"metaDescription": "Cloudflare was named a leader in Omdia's Zero Trust Access Market Guide.",
@@ -84,7 +86,7 @@
 							},
 							"marketoFormPdfDownloadI18n": null,
 							"marketoFormAssetDownloadButtonText": "Download Now",
-							"marketoFormSuccessRedirectUrl": null,
+							"marketoFormSuccessRedirectUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4aZ4VsHsHCpXXtjwOnaJyS/0cddd4f2d0ea579c4e0b5b70031afb51/Omdia_ZTA_Market_Radar_March_2020__1_.pdf",
 							"sendAdRoll": true,
 							"meta_adRollCustomSegment": "bde28789",
 							"enableSandbox": null,
@@ -105,7 +107,7 @@
 						"streamOptions": null,
 						"rightSideCopy": null,
 						"rightSideCopyPosition": null,
-						"backgroundColor": "purple",
+						"backgroundColor": "white",
 						"bladeBorder": "none",
 						"textColor": "white",
 						"extraClass": null,
@@ -115,7 +117,6 @@
 					}
 				],
 				"noindex": false,
-				"enableZendeskChat": null,
 				"formModal": null,
 				"keepHashUrlSyncedWithScrollPosition": null
 			},
@@ -126,6 +127,7 @@
 			}
 		},
 		"pageContext": {
+			"currentLocale": "en-US",
 			"locale": "en-US",
 			"pathname": "/lp/omdia-zero-trust/",
 			"contentfulId": "67z9F5ihdSjPvzsHOmCt9z",

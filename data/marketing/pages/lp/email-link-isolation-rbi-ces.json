@@ -20,15 +20,17 @@
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
 					"enGB": "English for Locale",
-					"nlNL": "No Page for Locale",
-					"idID": "No Page for Locale",
-					"thTH": "No Page for Locale",
-					"ruRU": "No Page for Locale",
-					"svSE": "No Page for Locale",
-					"viVN": "No Page for Locale",
-					"trTR": "No Page for Locale",
+					"nlNL": "English for Locale",
+					"idID": "English for Locale",
+					"thTH": "English for Locale",
+					"ruRU": "English for Locale",
+					"svSE": "English for Locale",
+					"viVN": "English for Locale",
+					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
-					"plPL": "No Page for Locale"
+					"plPL": "English for Locale",
+					"elGR": "English for Locale",
+					"nbNO": "English for Locale"
 				},
 				"relativePath": "lp/email-link-isolation-rbi-ces",
 				"topNavOptions": "only-phone",
@@ -84,7 +86,7 @@
 							},
 							"marketoFormPdfDownloadI18n": null,
 							"marketoFormAssetDownloadButtonText": "READ THE WHITEPAPER",
-							"marketoFormSuccessRedirectUrl": null,
+							"marketoFormSuccessRedirectUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3ycnronTAuYX8GDamo8Fhc/88d8c9fd423af81f5a1d0b3705ee8fe1/Email_Link_Isolation_Product_Brief__RBI___CES_.pdf",
 							"sendAdRoll": true,
 							"meta_adRollCustomSegment": null,
 							"enableSandbox": null,
@@ -194,7 +196,6 @@
 					}
 				],
 				"noindex": false,
-				"enableZendeskChat": false,
 				"formModal": [
 					{
 						"contentTypeId": "formModal",
@@ -250,6 +251,7 @@
 			}
 		},
 		"pageContext": {
+			"currentLocale": "en-US",
 			"locale": "en-US",
 			"pathname": "/lp/email-link-isolation-rbi-ces/",
 			"contentfulId": "596zqcUWSKlPbAVnA9cuhm",

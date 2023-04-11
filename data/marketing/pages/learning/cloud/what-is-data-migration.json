@@ -1,0 +1,668 @@
+{
+	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
+	"path": "/learning/cloud/what-is-data-migration/",
+	"result": {
+		"data": {
+			"learningCenterArticle": {
+				"contentTypeId": "learningCenterArticle",
+				"contentfulId": "5IsgoEpGKjlk7sIyVxxrdm",
+				"urlSlug": "cloud/what-is-data-migration/",
+				"metaTags": {
+					"metaTitle": "What is data migration? | Definition and common processes",
+					"metaDescription": "Data migration is the process of transferring data from one location to another, such as moving data from physical storage to cloud storage.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"metaTitle": null,
+				"metaDescription": null,
+				"learningCenterArticleSubHeader": {
+					"contentTypeId": "learningCenterArticleSubHeader",
+					"contentfulId": "4jVAWuMHyHW66VeCaAvuo",
+					"learningCenterName": "cloud",
+					"links": [
+						{
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "5ESn5jCqN6jtX9UJgIrsRH",
+							"displayText": "What is the cloud?",
+							"url": "/learning/cloud/what-is-the-cloud/"
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "39LIvqQCFa8iU7ITBQmaEm",
+							"name": "Cloud Header: Cloud Basics",
+							"displayText": "Cloud basics",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5k1A20zBRQpjW2079su8uz",
+									"displayText": "What is SaaS?",
+									"url": "/learning/cloud/what-is-saas/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3bp7MdZXHJ9jhS0bPi7qBH",
+									"displayText": "What is IaaS?",
+									"url": "/learning/cloud/what-is-iaas/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1SN7sOwuKF24XpabR8qc7e",
+									"displayText": "What is cloud storage?",
+									"url": "/learning/cloud/what-is-cloud-storage/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "kWPL9rdGF7EWO7d1c78qR",
+									"displayText": "Virtual machine",
+									"url": "/learning/cloud/what-is-a-virtual-machine/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4CHr7c74hoYbWDIKSsoT3c",
+									"displayText": "Multitenancy",
+									"url": "/learning/cloud/what-is-multitenancy/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "38DHkZos35DYciaxPnJk7g",
+									"displayText": "Vendor lock-in",
+									"url": "/learning/cloud/what-is-vendor-lock-in/"
+								}
+							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "3X81SpcBRddDrjqw17J1l2",
+							"name": "Cloud Header: Multicloud and hybrid cloud",
+							"displayText": "Multi-cloud and hybrid cloud",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3bGUr2R4WNTT4abh8BX36L",
+									"displayText": "What is multi-cloud?",
+									"url": "/learning/cloud/what-is-multicloud/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "46jUdh9dxvdVuLgOzTEDDi",
+									"displayText": "What is hybrid cloud?",
+									"url": "/learning/cloud/what-is-hybrid-cloud/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5QdBz8Tha313mqXWoYfCFZ",
+									"displayText": "Multi-cloud vs hybrid cloud",
+									"url": "/learning/cloud/multicloud-vs-hybrid-cloud/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6LFc49JFiXpc8Z0oGYrDtD",
+									"displayText": "Multi-cloud management",
+									"url": "/learning/cloud/what-is-multicloud-management/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5dJ8VUc0QrnSDfLrjEfGYd",
+									"displayText": "Hybrid cloud architecture",
+									"url": "/learning/cloud/how-does-hybrid-cloud-architecture-work/"
+								}
+							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "486fCRIX89EKjcHElALCiw",
+							"name": "Cloud Header: Securing the Cloud",
+							"displayText": "Securing the cloud",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5W7CZ85ygOlDuRPDKS8YyD",
+									"displayText": "Cloud security",
+									"url": "/learning/cloud/what-is-cloud-security/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "kNE9anSSaRE82gAHCyVxp",
+									"displayText": "What is a cloud firewall (FWaaS)?",
+									"url": "/learning/cloud/what-is-a-cloud-firewall/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4R6CEXd0uFAUyNGgf2L23h",
+									"displayText": "FWaaS vs. NGFW",
+									"url": "/learning/cloud/ngfw-vs-fwaas/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7gfIk2HzyB944KR3zD1mi1",
+									"displayText": "SaaS management platform (SMP)",
+									"url": "/learning/cloud/what-is-smp/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1Pjlevs1rjT7mbR4XKYuF0",
+									"displayText": "Cloud security posture management (CSPM)",
+									"url": "/learning/cloud/what-is-cspm/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3GeTEPTVWNP6qb2mpTdCDV",
+									"displayText": "SaaS security posture management (SSPM)",
+									"url": "/learning/cloud/what-is-sspm/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "GwVc1hHnTxsRhgjek3ysU",
+									"displayText": "Cloud workload protection platform (CWPP)",
+									"url": "/learning/cloud/what-is-cwpp/"
+								}
+							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "2OkRH9jhjm8FmxBtbYnZ9V",
+							"name": "Cloud Header: Cloud Glossary",
+							"displayText": "Glossary",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4oFI2Rqn0okhO2CsvXmAZz",
+									"displayText": "Cloud migration",
+									"url": "/learning/cloud/what-is-cloud-migration/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "20IyCkk9eWwqfI8ruYzrXB",
+									"displayText": "Digital transformation",
+									"url": "/learning/cloud/what-is-digital-transformation/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5UN5B9nyPbKlFZRYN0eY4E",
+									"displayText": "What is a public cloud?",
+									"url": "/learning/cloud/what-is-a-public-cloud/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5jGuXVqI2DYDt0My0BXI77",
+									"displayText": "What is a private cloud?",
+									"url": "/learning/cloud/what-is-a-private-cloud/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "53Auemqu8excTZE8bzc7Zk",
+									"displayText": "Virtual private cloud",
+									"url": "/learning/cloud/what-is-a-virtual-private-cloud/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4tdJ2w6eYbR8xOXMfltAVK",
+									"displayText": "Cloudflare and the cloud",
+									"url": "/learning/cloud/cloudflare-and-the-cloud/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "J93zt7n2b6WBPOCwb1NVy",
+									"displayText": "What is blob storage?",
+									"url": "/learning/cloud/what-is-blob-storage/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2Sl5qWn2qPay1wCwwwjYHj",
+									"displayText": "What is block storage?",
+									"url": "/learning/cloud/what-is-block-storage/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7u090eTI3Lc6TC6CZRHIhI",
+									"displayText": "What is object storage?",
+									"url": "/learning/cloud/what-is-object-storage/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5uYvlmPUWnPKLlrcDO8nyW",
+									"displayText": "Object storage vs. block storage",
+									"url": "/learning/cloud/object-storage-vs-block-storage/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5B5tj7ma2Vs8EPIFrw0In1",
+									"displayText": "Data egress fees",
+									"url": "/learning/cloud/what-are-data-egress-fees/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2poSO07sAv136qKoXulTex",
+									"displayText": "AWS data transfer pricing",
+									"url": "/learning/cloud/what-is-aws-data-transfer-pricing/"
+								}
+							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "7qiJLGJVI1us6Le145zRbC",
+							"name": "Cloud Header: Insights",
+							"displayText": "Insights",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6LQmFiGz1KUuA6DwDNfV4F",
+									"displayText": "The challenges of network infrastructure",
+									"url": "https://www.cloudflare.com/insights-network-infrastructure/"
+								}
+							]
+						}
+					]
+				},
+				"learningCenterArticleFooter": {
+					"contentTypeId": "learningCenterArticleFooter",
+					"contentfulId": "39Qw8qLsrHNlQ3tqVJ1Dtt",
+					"learningCenterName": "cloud",
+					"column1Title": "About the cloud",
+					"column1": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "2PUeZxc6Kw9UYN9rDC8IYy",
+						"name": "Cloud Footer - About the Cloud",
+						"displayText": "About the cloud",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5ESn5jCqN6jtX9UJgIrsRH",
+								"displayText": "What is the cloud?",
+								"url": "/learning/cloud/what-is-the-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4tdJ2w6eYbR8xOXMfltAVK",
+								"displayText": "Cloudflare and the cloud",
+								"url": "/learning/cloud/cloudflare-and-the-cloud/"
+							}
+						]
+					},
+					"column2Title": "Cloud Configurations",
+					"column2": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "gD760jkD40xsJ5VKKDGCY",
+						"name": "Cloud Footer - Cloud Configurations",
+						"displayText": "Cloud configurations",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3bGUr2R4WNTT4abh8BX36L",
+								"displayText": "What is multi-cloud?",
+								"url": "/learning/cloud/what-is-multicloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "46jUdh9dxvdVuLgOzTEDDi",
+								"displayText": "What is hybrid cloud?",
+								"url": "/learning/cloud/what-is-hybrid-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5UN5B9nyPbKlFZRYN0eY4E",
+								"displayText": "What is a public cloud?",
+								"url": "/learning/cloud/what-is-a-public-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5jGuXVqI2DYDt0My0BXI77",
+								"displayText": "What is a private cloud?",
+								"url": "/learning/cloud/what-is-a-private-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4CHr7c74hoYbWDIKSsoT3c",
+								"displayText": "Multitenancy",
+								"url": "/learning/cloud/what-is-multitenancy/"
+							}
+						]
+					},
+					"column3Title": "Cloud Security",
+					"column3": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "5jkIKbYcSS95KrnsL6yhXO",
+						"name": "Cloud Footer - Cloud security",
+						"displayText": "Cloud security",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "kNE9anSSaRE82gAHCyVxp",
+								"displayText": "What is a cloud firewall (FWaaS)?",
+								"url": "/learning/cloud/what-is-a-cloud-firewall/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4R6CEXd0uFAUyNGgf2L23h",
+								"displayText": "FWaaS vs. NGFW",
+								"url": "/learning/cloud/ngfw-vs-fwaas/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7gfIk2HzyB944KR3zD1mi1",
+								"displayText": "SaaS management platform (SMP)",
+								"url": "/learning/cloud/what-is-smp/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1Pjlevs1rjT7mbR4XKYuF0",
+								"displayText": "Cloud security posture management (CSPM)",
+								"url": "/learning/cloud/what-is-cspm/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3GeTEPTVWNP6qb2mpTdCDV",
+								"displayText": "SaaS security posture management (SSPM)",
+								"url": "/learning/cloud/what-is-sspm/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "GwVc1hHnTxsRhgjek3ysU",
+								"displayText": "Cloud workload protection platform (CWPP)",
+								"url": "/learning/cloud/what-is-cwpp/"
+							}
+						]
+					},
+					"column4Title": "Cloud Glossary",
+					"column4": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "4ITdD1qcb1o7qstB32QX0V",
+						"name": "Cloud Footer - Glossary",
+						"displayText": "Cloud glossary",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5k1A20zBRQpjW2079su8uz",
+								"displayText": "What is SaaS?",
+								"url": "/learning/cloud/what-is-saas/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4oFI2Rqn0okhO2CsvXmAZz",
+								"displayText": "Cloud migration",
+								"url": "/learning/cloud/what-is-cloud-migration/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6LFc49JFiXpc8Z0oGYrDtD",
+								"displayText": "Multi-cloud management",
+								"url": "/learning/cloud/what-is-multicloud-management/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5dJ8VUc0QrnSDfLrjEfGYd",
+								"displayText": "Hybrid cloud architecture",
+								"url": "/learning/cloud/how-does-hybrid-cloud-architecture-work/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5QdBz8Tha313mqXWoYfCFZ",
+								"displayText": "Multi-cloud vs hybrid cloud",
+								"url": "/learning/cloud/multicloud-vs-hybrid-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "kWPL9rdGF7EWO7d1c78qR",
+								"displayText": "Virtual machine",
+								"url": "/learning/cloud/what-is-a-virtual-machine/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1SN7sOwuKF24XpabR8qc7e",
+								"displayText": "What is cloud storage?",
+								"url": "/learning/cloud/what-is-cloud-storage/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "20IyCkk9eWwqfI8ruYzrXB",
+								"displayText": "Digital transformation",
+								"url": "/learning/cloud/what-is-digital-transformation/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "38DHkZos35DYciaxPnJk7g",
+								"displayText": "Vendor lock-in",
+								"url": "/learning/cloud/what-is-vendor-lock-in/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3bp7MdZXHJ9jhS0bPi7qBH",
+								"displayText": "What is IaaS?",
+								"url": "/learning/cloud/what-is-iaas/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "53Auemqu8excTZE8bzc7Zk",
+								"displayText": "Virtual private cloud",
+								"url": "/learning/cloud/what-is-a-virtual-private-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5W7CZ85ygOlDuRPDKS8YyD",
+								"displayText": "Cloud security",
+								"url": "/learning/cloud/what-is-cloud-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "J93zt7n2b6WBPOCwb1NVy",
+								"displayText": "What is blob storage?",
+								"url": "/learning/cloud/what-is-blob-storage/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2Sl5qWn2qPay1wCwwwjYHj",
+								"displayText": "What is block storage?",
+								"url": "/learning/cloud/what-is-block-storage/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5B5tj7ma2Vs8EPIFrw0In1",
+								"displayText": "Data egress fees",
+								"url": "/learning/cloud/what-are-data-egress-fees/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7u090eTI3Lc6TC6CZRHIhI",
+								"displayText": "What is object storage?",
+								"url": "/learning/cloud/what-is-object-storage/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5uYvlmPUWnPKLlrcDO8nyW",
+								"displayText": "Object storage vs. block storage",
+								"url": "/learning/cloud/object-storage-vs-block-storage/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2poSO07sAv136qKoXulTex",
+								"displayText": "AWS data transfer pricing",
+								"url": "/learning/cloud/what-is-aws-data-transfer-pricing/"
+							}
+						]
+					},
+					"column5Title": "Learning Center Navigation",
+					"column5": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "3Z0WMXrDmdWdc5R8JIkDrG",
+						"name": "Cloud Footer - Navigationi kn",
+						"displayText": "Learning Center Navigation",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2hdSVoYA5asSIG0U2ae20c",
+								"displayText": "Learning Center Home",
+								"url": "/learning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "56Y6OytBNgNoNDWQL2ezlf",
+								"displayText": "DDoS Learning Center",
+								"url": "/learning/ddos/what-is-a-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4Ra0qmFJ1uewk2MYscW8KI",
+								"displayText": "DNS Learning Center",
+								"url": "/learning/dns/what-is-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6DGcnYIMM0eCGwqAKu2ECO",
+								"displayText": "CDN Learning Center",
+								"url": "/learning/cdn/what-is-a-cdn/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1z3UC9tP1Kjk85BX5zSGPY",
+								"displayText": "Serverless Learning Center",
+								"url": "/learning/serverless/what-is-serverless/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1yItw6W6SsM2Y0Wuq6Y2c6",
+								"displayText": "Security Learning Center",
+								"url": "/learning/security/what-is-web-application-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "Q67XLnKqKhfmDJR4q9hJT",
+								"displayText": "Performance Learning Center",
+								"url": "/learning/performance/why-site-speed-matters/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "52V7iI9YriJ0En2SGmEXz5",
+								"displayText": "SSL Learning Center",
+								"url": "/learning/ssl/what-is-ssl/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7D22pOfjb98KXcnAJyJFCX",
+								"displayText": "Bots Learning Center",
+								"url": "/learning/bots/what-is-a-bot/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6PdBQjiFs98K6RQuG5TYNd",
+								"displayText": "Access Management Learning Center",
+								"url": "/learning/access-management/what-is-identity-and-access-management/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3jjEMuuLrCwhRidjG5kglM",
+								"displayText": "Network Layer Learning Center",
+								"url": "/learning/network-layer/what-is-the-network-layer/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6RvS0l0m86G1VISDrEvlJb",
+								"displayText": "Privacy Learning Center",
+								"url": "/learning/privacy/what-is-data-privacy/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "MytksT5WU5mh863BQYEkj",
+								"displayText": "Video Streaming Learning Center",
+								"url": "/learning/video/what-is-streaming/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5ysNN6LRvlvlFj4ekk2xq4",
+								"displayText": "Email Security Learning Center",
+								"url": "/learning/email-security/what-is-email-security/"
+							}
+						]
+					}
+				},
+				"header": "What is data migration? | Definition and common processes",
+				"blurbSubHeader": "Data migration is the process of moving digital information to a different location (such as to cloud storage), application, database, or computing environment.",
+				"objectivesHeader": "Data migration",
+				"objectivesList": [
+					"Define data migration",
+					"Explain five different types of data migration",
+					"Explore what a data migration plan includes",
+					"Describe basic data migration processes "
+				],
+				"relatedContentLinkText": "Related Content",
+				"relatedContent": [
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "2mbYi4Ub0KYCderpgknwq3",
+						"displayText": "What is cloud migration?",
+						"url": "/learning/cloud/what-is-cloud-migration/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "20IyCkk9eWwqfI8ruYzrXB",
+						"displayText": "Digital transformation",
+						"url": "/learning/cloud/what-is-digital-transformation/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "1SN7sOwuKF24XpabR8qc7e",
+						"displayText": "What is cloud storage?",
+						"url": "/learning/cloud/what-is-cloud-storage/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "kWPL9rdGF7EWO7d1c78qR",
+						"displayText": "Virtual machine",
+						"url": "/learning/cloud/what-is-a-virtual-machine/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "7u090eTI3Lc6TC6CZRHIhI",
+						"displayText": "What is object storage?",
+						"url": "/learning/cloud/what-is-object-storage/"
+					}
+				],
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is data migration?</h2>\n\n<p>Data migration is the process of selecting, preparing, and moving existing data from one computing environment to another. Data may be migrated between applications, storage systems, databases, data centers, and business processes.</p>\n\n<p>Each organization's data migration goals and processes are unique. They must consider many factors such as costs, timing, technical requirements, impact to business operations, the potential for data loss, compliance requirements, and more.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Why do businesses migrate data?</h2>\n\n<p>Businesses may undertake data migration projects for a number of reasons, such as to:</p>\n\n<ul class='learning-list'>\n  <li>Reduce media, storage, or other IT equipment costs</li>\n  <li>Expand and scale storage capacity</li>\n  <li>Improve customers' website or digital experience</li>\n  <li>Centralize and simplify data management</li>\n  <li>Accelerate application performance</li>\n  <li>Merge data from a company acquisition</li>\n  <li>Meet new compliance or security requirements</li>\n  <li>Enhance data analytics and reporting capabilities</li>\n</ul>\n\n<p>Consider the following example: when someone buys a new computer, they usually prefer to install the newest versions of software and just copy over the most important files from their old one. Adding a bloat of obsolete software and files would unnecessarily take up storage space and slow down their new device. Likewise, efficient data migration ensures that the new system is utilizing correctly cleansed, extracted, and transformed data.</p>\n\n<p>Data migration can be a key enabler of <a href='/learning/cloud/what-is-digital-transformation/'>digital transformation</a> — the use of digital technology to modernize business workloads and processes. It often goes hand-in-hand with <a href='/learning/cloud/what-is-cloud-migration/'> cloud migration</a> — specifically to ensure that no outdated or corrupt data is migrated to an organization's new cloud infrastructure.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are the main types of data migration?</h2>\n\n<p>Data centers store files or databases used by software applications, which drive business processes and workflows. As such, data migration is commonly categorized into five types:</p>\n\n<ol class=\"learning-list\">\n  <li><strong>Storage migration</strong> transfers data from one storage medium to another. Organizations may change physical media formats (such as from paper to digital files or hard disk drives), or from on-premise storage to <a href='/learning/cloud/what-is-cloud-storage/'>cloud storage</a>. Data can also be migrated between one or more cloud storage systems. After a storage migration, how the data is accessed changes, although the data itself does not.</li>\n  <li><strong>Application migration</strong> shifts software applications from one computing environment to another. This may include migrating application programs from an on-premise server to a <a href='/learning/cloud/what-is-the-cloud/'>cloud</a> environment, between clouds (e.g., from AWS to Microsoft Azure), or upgrading an application and retiring the old one. Because every application has a unique data model, the format of the data (as well as how it is viewed by end users) may change during an application migration.</li>\n  <li><strong>Business process migration</strong> transfers applications or databases (such as a CRM or ERP platform) that are operated by humans to produce a service for customers. A business process migration is usually prompted by a company merger, acquisition, or reorganization.</li>\n  <li><strong>Database migration</strong>, also sometimes called schema migration, moves data between two or more databases. Databases are managed with database management systems (DBMS) such as Oracle, MySQL, PostgreSQL, and others, so database migration can mean moving from one DBMS to another, or upgrading to a newer DBMS version.</li>\n  <li><strong>Data center migration</strong> refers to transferring assets from one <a href='/learning/cdn/glossary/data-center/'>data center</a> to another location or operating environment. A data center migration is particularly complex because data centers include IT assets that store, retrieve, distribute, or archive data and applications. Depending on the organization's objectives, data center migration can involve completely changing physical hardware, <a href='/learning/cloud/what-is-a-virtual-machine/'>virtual machines</a>, or cloud solutions.</li>\n</ol>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What does the data migration process involve?</h2>\n\n<p>There is no \"one size fits all\" process for every type of data migration. However, a complete data migration plan contains three phases, which then comprise a number of other components and stages.</p>\n\n<ol class=\"learning-list\">\n  <li>Pre-migration</li>\n  <li>Migration (\"go-live\")</li>\n  <li>Post-migration (test/audit)</li>\n</ol>\n\n<p><u>Pre-migration (planning/discovery)</u></p>\n\n<p>Pre-migration is the initial planning phase, which ensures that the migration will go smoothly and aims to minimize risks. During this phase, the data migration teams establish project objectives, scope, staffing/resources required, and critical requirements.</p>\n\n<p>Pre-migration tasks can include (but are not limited to):</p>\n<ul class='learning-list'>\n  <li>Assessing (profiling) data sources, destinations and formats</li>\n  <li>Inspecting data quality, anomalies, or duplications</li>\n  <li>Identifying impacted users and potential disruption</li>\n  <li>Defining hardware, software, and security requirements</li>\n  <li>Determining costs, staff, and data migration tools required</li>\n  <li>Setting a migration completion timeline</li>\n  <li>Cleansing or reformatting data</li>\n  <li>Backing up data and determining what to do with obsolete data</li>\n  <li>Deciding on specific approach (described in the next section)</li>\n  <li>Creating risk mitigation and stakeholder communication plans</li>\n</ul>\n\n<p><u>Migration (\"go-live\")</u></p>\n\n<p>Once the plan has been created, the right permissions are secured, and all the data is ready for migrating to the target system, the actual data migration begins. The \"go live\" execution can include:</p>\n\n<ul class='learning list'>\n  <li>Loading the necessary permissions and settings</li>\n  <li>Testing the migration with a mirror of the live environment</li>\n  <li>Implementing the data migration policies and security rules</li>\n  <li>Testing data in the new system to ensure it is accurate</li>\n  <li>Fixing problems from migration</li>\n </ul>\n\nThere are a few specific strategies for application migrations to the cloud, such as re-hosting (also called \"lift and shift\"), re-architecting, re-platforming, and others. Read <a href='/learning/cloud/what-is-cloud-migration/'>\"What is cloud migration?\"</a> to learn more.\n\n</p><u>Post-migration (validation)</u></p>\n\n<p>Data migration is not complete after \"flipping the switch.\" The results of the migration must be audited and validated to make sure everything has been correctly transferred and logged.</p>\n\n<p>Once the post-migration audit is deemed successful, the old system can be decommissioned.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Common data migration approaches</h2>\n\n<p>In a data migration, organizations may decide to migrate one system to another one or merge two systems into a brand new one. Whichever strategy they choose, there are two common data migration approaches.\n\n<p><strong>\"Big bang\" migration:</strong> The \"big bang\" data migration moves an entire dataset in one phase from the legacy system to the new target system. This migration typically occurs over or during a planned downtime period (such as a weekend or holiday).</p>\n\n<p><i>Pros:</i></p>\n<ul class='learning list'>\n  <li>Requires a shorter implementation timeline</li>\n  <li>Users do not need to switch back and forth between two different systems</li>\n  <li>Potentially lower cost since both systems do not need to be maintained simultaneously</li>\n</ul>\n\n<p><i>Cons:</i></p>\n<ul class='learning list'>\n  <li>Increases the burden on the initial planning, development, and testing phases</li>\n  <li>Users have little time to get familiar with the new system</li>\n  <li>Failures in one part of the system can cause problems in others — requiring a complete rollback to the old system</li>\n</ul>\n\n<p><strong>\"Trickle-feed\" migration:</strong> Global businesses or critical infrastructure providers that need to avoid periods of data inaccessibility may pursue a \"trickle-feed\" data migration, instead. This phased approach packages and transfers data in smaller increments.</p>\n\n<p><i>Pros:</i></p>\n<ul class='learning list'>\n  <li>Can happen virtually anytime</li>\n  <li>Gives end-users more time to learn and adapt to the new system</li>\n  <li>Failures in one part of the system have less impact to the entire organization</li>\n</ul>\n\n<p><i>Cons:</i></p>\n<ul class='learning list'>\n  <li>Requires more synchronization across the organization</li>\n  <li>Potential end-user confusion about switching back and forth between systems</li>\n  <li>Potentially higher costs from running both the old and new system for a period</li>\n</ul>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Data migration vs. data integration</h2>\n\n<p>Data migration and the term <a href='https://www.gartner.com/en/information-technology/glossary/data-integration-tools/'target='blank'>\"data integration\"</a> are sometimes used interchangeably, but they are distinct. Unlike a data migration project — which only happens once — data integration is an ongoing process involving incremental data changes. Also, unlike data migration, data integration can combine data residing in different locations into one unified view.</p>\n\n<p>Data migration can be a key milestone for data integration initiatives. For example, a business may migrate large amounts of unstructured data (such as music, video, and images) to a new <a href='/learning/cloud/what-is-object-storage/'>object storage</a> service, but integrate that data with a media processing tool hosted elsewhere.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Can Cloudflare help with data migration?</h2>\n\n<p><a href='/products/r2/'>Cloudflare R2</a> is an AWS S3-compatible, globally distributed object storage that allows developers to store large amounts of unstructured data with zero egress fees. R2 enables customers to quickly and easily migrate data objects stored in other cloud providers to an R2 bucket of their choice, with the <a href='https://developers.cloudflare.com/r2/r2-migrator/'target='blank'>R2 Migrator</a> (also known as Super Slurper).</a></p>\n\n<p><a href='https://blog.cloudflare.com/whats-new-with-d1/'>Cloudflare D1<a>, an SQL database at the edge, also enables developers to import existing SQLite tables and their data directly.</p>\n\n<p><a href='/solutions/build-deploy-code-at-edge/'>Learn more</a> about Cloudflare's developer platform.</p>\n",
+				"availableLocales": null,
+				"localized": null,
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "English for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "English for Locale",
+					"deDE": "English for Locale",
+					"itIT": "English for Locale",
+					"jaJP": "English for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "English for Locale",
+					"esES": "English for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "English for Locale",
+					"idID": "English for Locale",
+					"thTH": "English for Locale",
+					"ruRU": "English for Locale",
+					"svSE": "English for Locale",
+					"viVN": "English for Locale",
+					"trTR": "English for Locale",
+					"zhHansCN": "English for Locale",
+					"plPL": "English for Locale",
+					"elGR": "English for Locale",
+					"nbNO": "English for Locale"
+				},
+				"proactivePopup": null,
+				"sidebarForm": null
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "5IsgoEpGKjlk7sIyVxxrdm",
+			"pathname": "/learning/cloud/what-is-data-migration/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US"
+			]
+		}
+	}
+}

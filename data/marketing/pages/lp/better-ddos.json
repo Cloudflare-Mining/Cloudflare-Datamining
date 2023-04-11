@@ -28,13 +28,15 @@
 					"viVN": "No Page for Locale",
 					"trTR": "No Page for Locale",
 					"zhHansCN": "Translated for Locale",
-					"plPL": "No Page for Locale"
+					"plPL": "No Page for Locale",
+					"elGR": null,
+					"nbNO": null
 				},
 				"relativePath": "lp/better-ddos",
 				"topNavOptions": "minimized",
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
-				"footerOptions": "empty",
+				"footerOptions": "default",
 				"metaTags": {
 					"metaTitle": "See why Wikimedia chose Cloudflare to secure their network infrastructure from DDoS attacks ",
 					"metaDescription": "Wikimedia used Cloudflare Magic Transit to protect their network infrastructure from a massive DDoS attack and bring their services back online",
@@ -125,7 +127,7 @@
 						"streamOptions": null,
 						"rightSideCopy": null,
 						"rightSideCopyPosition": null,
-						"backgroundColor": "blue",
+						"backgroundColor": "light-blue",
 						"bladeBorder": "none",
 						"textColor": "black",
 						"extraClass": null,
@@ -420,7 +422,6 @@
 					}
 				],
 				"noindex": false,
-				"enableZendeskChat": null,
 				"formModal": null,
 				"keepHashUrlSyncedWithScrollPosition": null
 			},
@@ -431,6 +432,7 @@
 			}
 		},
 		"pageContext": {
+			"currentLocale": "en-US",
 			"locale": "en-US",
 			"pathname": "/lp/better-ddos/",
 			"contentfulId": "3b198c3Ldtmc2hQkaIrqfv",

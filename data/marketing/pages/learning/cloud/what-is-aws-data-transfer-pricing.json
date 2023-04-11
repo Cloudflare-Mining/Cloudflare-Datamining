@@ -1,0 +1,668 @@
+{
+	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
+	"path": "/learning/cloud/what-is-aws-data-transfer-pricing/",
+	"result": {
+		"data": {
+			"learningCenterArticle": {
+				"contentTypeId": "learningCenterArticle",
+				"contentfulId": "dDPhDM72mPEfuJBabhBkt",
+				"urlSlug": "cloud/what-is-aws-data-transfer-pricing",
+				"metaTags": {
+					"metaTitle": "What is AWS data transfer pricing? | AWS bandwidth pricing",
+					"metaDescription": "Amazon services like S3 object storage charge for certain data transfers, also known as AWS bandwidth pricing or data egress fees.",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"metaTitle": null,
+				"metaDescription": null,
+				"learningCenterArticleSubHeader": {
+					"contentTypeId": "learningCenterArticleSubHeader",
+					"contentfulId": "4jVAWuMHyHW66VeCaAvuo",
+					"learningCenterName": "cloud",
+					"links": [
+						{
+							"contentTypeId": "learningCenterArticleLink",
+							"contentfulId": "5ESn5jCqN6jtX9UJgIrsRH",
+							"displayText": "What is the cloud?",
+							"url": "/learning/cloud/what-is-the-cloud/"
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "39LIvqQCFa8iU7ITBQmaEm",
+							"name": "Cloud Header: Cloud Basics",
+							"displayText": "Cloud basics",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5k1A20zBRQpjW2079su8uz",
+									"displayText": "What is SaaS?",
+									"url": "/learning/cloud/what-is-saas/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3bp7MdZXHJ9jhS0bPi7qBH",
+									"displayText": "What is IaaS?",
+									"url": "/learning/cloud/what-is-iaas/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1SN7sOwuKF24XpabR8qc7e",
+									"displayText": "What is cloud storage?",
+									"url": "/learning/cloud/what-is-cloud-storage/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "kWPL9rdGF7EWO7d1c78qR",
+									"displayText": "Virtual machine",
+									"url": "/learning/cloud/what-is-a-virtual-machine/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4CHr7c74hoYbWDIKSsoT3c",
+									"displayText": "Multitenancy",
+									"url": "/learning/cloud/what-is-multitenancy/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "38DHkZos35DYciaxPnJk7g",
+									"displayText": "Vendor lock-in",
+									"url": "/learning/cloud/what-is-vendor-lock-in/"
+								}
+							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "3X81SpcBRddDrjqw17J1l2",
+							"name": "Cloud Header: Multicloud and hybrid cloud",
+							"displayText": "Multi-cloud and hybrid cloud",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3bGUr2R4WNTT4abh8BX36L",
+									"displayText": "What is multi-cloud?",
+									"url": "/learning/cloud/what-is-multicloud/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "46jUdh9dxvdVuLgOzTEDDi",
+									"displayText": "What is hybrid cloud?",
+									"url": "/learning/cloud/what-is-hybrid-cloud/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5QdBz8Tha313mqXWoYfCFZ",
+									"displayText": "Multi-cloud vs hybrid cloud",
+									"url": "/learning/cloud/multicloud-vs-hybrid-cloud/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6LFc49JFiXpc8Z0oGYrDtD",
+									"displayText": "Multi-cloud management",
+									"url": "/learning/cloud/what-is-multicloud-management/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5dJ8VUc0QrnSDfLrjEfGYd",
+									"displayText": "Hybrid cloud architecture",
+									"url": "/learning/cloud/how-does-hybrid-cloud-architecture-work/"
+								}
+							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "486fCRIX89EKjcHElALCiw",
+							"name": "Cloud Header: Securing the Cloud",
+							"displayText": "Securing the cloud",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5W7CZ85ygOlDuRPDKS8YyD",
+									"displayText": "Cloud security",
+									"url": "/learning/cloud/what-is-cloud-security/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "kNE9anSSaRE82gAHCyVxp",
+									"displayText": "What is a cloud firewall (FWaaS)?",
+									"url": "/learning/cloud/what-is-a-cloud-firewall/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4R6CEXd0uFAUyNGgf2L23h",
+									"displayText": "FWaaS vs. NGFW",
+									"url": "/learning/cloud/ngfw-vs-fwaas/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7gfIk2HzyB944KR3zD1mi1",
+									"displayText": "SaaS management platform (SMP)",
+									"url": "/learning/cloud/what-is-smp/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1Pjlevs1rjT7mbR4XKYuF0",
+									"displayText": "Cloud security posture management (CSPM)",
+									"url": "/learning/cloud/what-is-cspm/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3GeTEPTVWNP6qb2mpTdCDV",
+									"displayText": "SaaS security posture management (SSPM)",
+									"url": "/learning/cloud/what-is-sspm/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "GwVc1hHnTxsRhgjek3ysU",
+									"displayText": "Cloud workload protection platform (CWPP)",
+									"url": "/learning/cloud/what-is-cwpp/"
+								}
+							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "2OkRH9jhjm8FmxBtbYnZ9V",
+							"name": "Cloud Header: Cloud Glossary",
+							"displayText": "Glossary",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4oFI2Rqn0okhO2CsvXmAZz",
+									"displayText": "Cloud migration",
+									"url": "/learning/cloud/what-is-cloud-migration/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "20IyCkk9eWwqfI8ruYzrXB",
+									"displayText": "Digital transformation",
+									"url": "/learning/cloud/what-is-digital-transformation/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5UN5B9nyPbKlFZRYN0eY4E",
+									"displayText": "What is a public cloud?",
+									"url": "/learning/cloud/what-is-a-public-cloud/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5jGuXVqI2DYDt0My0BXI77",
+									"displayText": "What is a private cloud?",
+									"url": "/learning/cloud/what-is-a-private-cloud/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "53Auemqu8excTZE8bzc7Zk",
+									"displayText": "Virtual private cloud",
+									"url": "/learning/cloud/what-is-a-virtual-private-cloud/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "4tdJ2w6eYbR8xOXMfltAVK",
+									"displayText": "Cloudflare and the cloud",
+									"url": "/learning/cloud/cloudflare-and-the-cloud/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "J93zt7n2b6WBPOCwb1NVy",
+									"displayText": "What is blob storage?",
+									"url": "/learning/cloud/what-is-blob-storage/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2Sl5qWn2qPay1wCwwwjYHj",
+									"displayText": "What is block storage?",
+									"url": "/learning/cloud/what-is-block-storage/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "7u090eTI3Lc6TC6CZRHIhI",
+									"displayText": "What is object storage?",
+									"url": "/learning/cloud/what-is-object-storage/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5uYvlmPUWnPKLlrcDO8nyW",
+									"displayText": "Object storage vs. block storage",
+									"url": "/learning/cloud/object-storage-vs-block-storage/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "5B5tj7ma2Vs8EPIFrw0In1",
+									"displayText": "Data egress fees",
+									"url": "/learning/cloud/what-are-data-egress-fees/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2poSO07sAv136qKoXulTex",
+									"displayText": "AWS data transfer pricing",
+									"url": "/learning/cloud/what-is-aws-data-transfer-pricing/"
+								}
+							]
+						},
+						{
+							"contentTypeId": "learningCenterArticleLinkedList",
+							"contentfulId": "7qiJLGJVI1us6Le145zRbC",
+							"name": "Cloud Header: Insights",
+							"displayText": "Insights",
+							"links": [
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6LQmFiGz1KUuA6DwDNfV4F",
+									"displayText": "The challenges of network infrastructure",
+									"url": "https://www.cloudflare.com/insights-network-infrastructure/"
+								}
+							]
+						}
+					]
+				},
+				"learningCenterArticleFooter": {
+					"contentTypeId": "learningCenterArticleFooter",
+					"contentfulId": "39Qw8qLsrHNlQ3tqVJ1Dtt",
+					"learningCenterName": "cloud",
+					"column1Title": "About the cloud",
+					"column1": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "2PUeZxc6Kw9UYN9rDC8IYy",
+						"name": "Cloud Footer - About the Cloud",
+						"displayText": "About the cloud",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5ESn5jCqN6jtX9UJgIrsRH",
+								"displayText": "What is the cloud?",
+								"url": "/learning/cloud/what-is-the-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4tdJ2w6eYbR8xOXMfltAVK",
+								"displayText": "Cloudflare and the cloud",
+								"url": "/learning/cloud/cloudflare-and-the-cloud/"
+							}
+						]
+					},
+					"column2Title": "Cloud Configurations",
+					"column2": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "gD760jkD40xsJ5VKKDGCY",
+						"name": "Cloud Footer - Cloud Configurations",
+						"displayText": "Cloud configurations",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3bGUr2R4WNTT4abh8BX36L",
+								"displayText": "What is multi-cloud?",
+								"url": "/learning/cloud/what-is-multicloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "46jUdh9dxvdVuLgOzTEDDi",
+								"displayText": "What is hybrid cloud?",
+								"url": "/learning/cloud/what-is-hybrid-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5UN5B9nyPbKlFZRYN0eY4E",
+								"displayText": "What is a public cloud?",
+								"url": "/learning/cloud/what-is-a-public-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5jGuXVqI2DYDt0My0BXI77",
+								"displayText": "What is a private cloud?",
+								"url": "/learning/cloud/what-is-a-private-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4CHr7c74hoYbWDIKSsoT3c",
+								"displayText": "Multitenancy",
+								"url": "/learning/cloud/what-is-multitenancy/"
+							}
+						]
+					},
+					"column3Title": "Cloud Security",
+					"column3": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "5jkIKbYcSS95KrnsL6yhXO",
+						"name": "Cloud Footer - Cloud security",
+						"displayText": "Cloud security",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "kNE9anSSaRE82gAHCyVxp",
+								"displayText": "What is a cloud firewall (FWaaS)?",
+								"url": "/learning/cloud/what-is-a-cloud-firewall/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4R6CEXd0uFAUyNGgf2L23h",
+								"displayText": "FWaaS vs. NGFW",
+								"url": "/learning/cloud/ngfw-vs-fwaas/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7gfIk2HzyB944KR3zD1mi1",
+								"displayText": "SaaS management platform (SMP)",
+								"url": "/learning/cloud/what-is-smp/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1Pjlevs1rjT7mbR4XKYuF0",
+								"displayText": "Cloud security posture management (CSPM)",
+								"url": "/learning/cloud/what-is-cspm/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3GeTEPTVWNP6qb2mpTdCDV",
+								"displayText": "SaaS security posture management (SSPM)",
+								"url": "/learning/cloud/what-is-sspm/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "GwVc1hHnTxsRhgjek3ysU",
+								"displayText": "Cloud workload protection platform (CWPP)",
+								"url": "/learning/cloud/what-is-cwpp/"
+							}
+						]
+					},
+					"column4Title": "Cloud Glossary",
+					"column4": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "4ITdD1qcb1o7qstB32QX0V",
+						"name": "Cloud Footer - Glossary",
+						"displayText": "Cloud glossary",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5k1A20zBRQpjW2079su8uz",
+								"displayText": "What is SaaS?",
+								"url": "/learning/cloud/what-is-saas/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4oFI2Rqn0okhO2CsvXmAZz",
+								"displayText": "Cloud migration",
+								"url": "/learning/cloud/what-is-cloud-migration/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6LFc49JFiXpc8Z0oGYrDtD",
+								"displayText": "Multi-cloud management",
+								"url": "/learning/cloud/what-is-multicloud-management/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5dJ8VUc0QrnSDfLrjEfGYd",
+								"displayText": "Hybrid cloud architecture",
+								"url": "/learning/cloud/how-does-hybrid-cloud-architecture-work/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5QdBz8Tha313mqXWoYfCFZ",
+								"displayText": "Multi-cloud vs hybrid cloud",
+								"url": "/learning/cloud/multicloud-vs-hybrid-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "kWPL9rdGF7EWO7d1c78qR",
+								"displayText": "Virtual machine",
+								"url": "/learning/cloud/what-is-a-virtual-machine/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1SN7sOwuKF24XpabR8qc7e",
+								"displayText": "What is cloud storage?",
+								"url": "/learning/cloud/what-is-cloud-storage/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "20IyCkk9eWwqfI8ruYzrXB",
+								"displayText": "Digital transformation",
+								"url": "/learning/cloud/what-is-digital-transformation/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "38DHkZos35DYciaxPnJk7g",
+								"displayText": "Vendor lock-in",
+								"url": "/learning/cloud/what-is-vendor-lock-in/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3bp7MdZXHJ9jhS0bPi7qBH",
+								"displayText": "What is IaaS?",
+								"url": "/learning/cloud/what-is-iaas/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "53Auemqu8excTZE8bzc7Zk",
+								"displayText": "Virtual private cloud",
+								"url": "/learning/cloud/what-is-a-virtual-private-cloud/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5W7CZ85ygOlDuRPDKS8YyD",
+								"displayText": "Cloud security",
+								"url": "/learning/cloud/what-is-cloud-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "J93zt7n2b6WBPOCwb1NVy",
+								"displayText": "What is blob storage?",
+								"url": "/learning/cloud/what-is-blob-storage/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2Sl5qWn2qPay1wCwwwjYHj",
+								"displayText": "What is block storage?",
+								"url": "/learning/cloud/what-is-block-storage/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5B5tj7ma2Vs8EPIFrw0In1",
+								"displayText": "Data egress fees",
+								"url": "/learning/cloud/what-are-data-egress-fees/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7u090eTI3Lc6TC6CZRHIhI",
+								"displayText": "What is object storage?",
+								"url": "/learning/cloud/what-is-object-storage/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5uYvlmPUWnPKLlrcDO8nyW",
+								"displayText": "Object storage vs. block storage",
+								"url": "/learning/cloud/object-storage-vs-block-storage/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2poSO07sAv136qKoXulTex",
+								"displayText": "AWS data transfer pricing",
+								"url": "/learning/cloud/what-is-aws-data-transfer-pricing/"
+							}
+						]
+					},
+					"column5Title": "Learning Center Navigation",
+					"column5": {
+						"contentTypeId": "learningCenterArticleLinkedList",
+						"contentfulId": "3Z0WMXrDmdWdc5R8JIkDrG",
+						"name": "Cloud Footer - Navigationi kn",
+						"displayText": "Learning Center Navigation",
+						"links": [
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "2hdSVoYA5asSIG0U2ae20c",
+								"displayText": "Learning Center Home",
+								"url": "/learning/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "56Y6OytBNgNoNDWQL2ezlf",
+								"displayText": "DDoS Learning Center",
+								"url": "/learning/ddos/what-is-a-ddos-attack/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "4Ra0qmFJ1uewk2MYscW8KI",
+								"displayText": "DNS Learning Center",
+								"url": "/learning/dns/what-is-dns/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6DGcnYIMM0eCGwqAKu2ECO",
+								"displayText": "CDN Learning Center",
+								"url": "/learning/cdn/what-is-a-cdn/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1z3UC9tP1Kjk85BX5zSGPY",
+								"displayText": "Serverless Learning Center",
+								"url": "/learning/serverless/what-is-serverless/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1yItw6W6SsM2Y0Wuq6Y2c6",
+								"displayText": "Security Learning Center",
+								"url": "/learning/security/what-is-web-application-security/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "Q67XLnKqKhfmDJR4q9hJT",
+								"displayText": "Performance Learning Center",
+								"url": "/learning/performance/why-site-speed-matters/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "52V7iI9YriJ0En2SGmEXz5",
+								"displayText": "SSL Learning Center",
+								"url": "/learning/ssl/what-is-ssl/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "7D22pOfjb98KXcnAJyJFCX",
+								"displayText": "Bots Learning Center",
+								"url": "/learning/bots/what-is-a-bot/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6PdBQjiFs98K6RQuG5TYNd",
+								"displayText": "Access Management Learning Center",
+								"url": "/learning/access-management/what-is-identity-and-access-management/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3jjEMuuLrCwhRidjG5kglM",
+								"displayText": "Network Layer Learning Center",
+								"url": "/learning/network-layer/what-is-the-network-layer/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6RvS0l0m86G1VISDrEvlJb",
+								"displayText": "Privacy Learning Center",
+								"url": "/learning/privacy/what-is-data-privacy/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "MytksT5WU5mh863BQYEkj",
+								"displayText": "Video Streaming Learning Center",
+								"url": "/learning/video/what-is-streaming/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "5ysNN6LRvlvlFj4ekk2xq4",
+								"displayText": "Email Security Learning Center",
+								"url": "/learning/email-security/what-is-email-security/"
+							}
+						]
+					}
+				},
+				"header": "What is AWS data transfer pricing? ",
+				"blurbSubHeader": "AWS (Amazon Web Services) cloud storage customers pay for certain types of data transfer. Learn about AWS data transfer pricing, also known as AWS bandwidth or AWS egress fees.",
+				"objectivesHeader": "AWS data transfer pricing",
+				"objectivesList": [
+					"Define AWS data transfer pricing",
+					"Explain why data is transferred from or within AWS",
+					"Describe how certain AWS data transfer fees are calculated",
+					"Explore ways to reduce data transfer charges"
+				],
+				"relatedContentLinkText": "Related Content",
+				"relatedContent": [
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "1SN7sOwuKF24XpabR8qc7e",
+						"displayText": "What is cloud storage?",
+						"url": "/learning/cloud/what-is-cloud-storage/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "5B5tj7ma2Vs8EPIFrw0In1",
+						"displayText": "Data egress fees",
+						"url": "/learning/cloud/what-are-data-egress-fees/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "38DHkZos35DYciaxPnJk7g",
+						"displayText": "Vendor lock-in",
+						"url": "/learning/cloud/what-is-vendor-lock-in/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "7u090eTI3Lc6TC6CZRHIhI",
+						"displayText": "What is object storage?",
+						"url": "/learning/cloud/what-is-object-storage/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "5uYvlmPUWnPKLlrcDO8nyW",
+						"displayText": "Object storage vs. block storage",
+						"url": "/learning/cloud/object-storage-vs-block-storage/"
+					}
+				],
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is AWS data transfer pricing?</h2>\n\n<p><a href='/learning/cloud/what-is-cloud-storage/'>Cloud storage</a> providers, such as Amazon Web Services (AWS), charge customers for certain types of data transfers. These costs, also known as <a href='/learning/cdn/how-cdns-reduce-bandwidth-cost/'>bandwidth</a> pricing or <a href='/learning/cloud/what-are-data-egress-fees/'>data egress fees</a>, are charged monthly.</p>\n\n<p>Customers pay little to nothing to upload their data to AWS. However, customers are charged for exporting data out of the cloud, and for transferring data in between regions (availability zones) or to other Amazon services. Data transfer charges vary depending on several factors, including the volume of data that needs to be transferred and the region to which it is traveling.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">When are customers charged for AWS data transfer?</h2>\n\n<p>Developers and businesses send all types of data — files, applications, images, videos, databases, and more — to <a href='/learning/cloud/what-is-the-cloud/'>the cloud</a>.</p>\n\n<p>When the cloud \"collects\" data, that is referred to as data ingress, which is usually free. However, the value of data is only fully realized when used outside of storage. A water dam that releases water for homes, irrigation, and electricity is more valuable to local residents, for example, than a dam that only collects water.</p>\n\n<p>Data egress occurs when data exits the cloud provider's \"boundaries\" using the provider's network capacity, or bandwidth. AWS passes along a portion of their bandwidth costs to their customers in the form of data egress fees. This is why AWS data transfer pricing is sometimes referred to as bandwidth pricing.</p>\n\n<p>Many businesses need the cloud not just to store data, but also to process and share it. They may transfer data for reasons such as:</p>\n<ul class='learning-list'>\n  <li>Analyzing and deriving new insights from logs and customer data</li>\n  <li>Serving application assets (such as stored images and video on a website) back to customers</li>\n  <li>Enabling remote collaboration on critical documents</li>\n  <li>Connecting business data to different applications</li>\n  <li>Developing, testing, and updating cloud-based applications</li>\n  <li>Archiving data for backup or disaster recovery</li>\n</ul>\n\n<p>Different services have different data transfer guidelines. Customers of Amazon Simple Storage (Amazon S3) <a href='/learning/cloud/what-is-object-storage/'>object storage</a>, for instance, are charged every time they transfer data — with just a few exceptions:</p>\n<ul class='learning-list'>\n  <li>Data transferred out to the Internet for the first 100 GB per month, aggregated across all AWS services and Regions (except China and GovCloud)</li>\n  <li>Data transferred between S3 buckets in the same AWS Region</li>\n  <li>Data transferred from an Amazon S3 bucket to any AWS service(s) within the same AWS Region as the S3 bucket</li>\n  <li>Data transferred out to Amazon CloudFront</li>\n</ul>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How can customers calculate Amazon S3 bandwidth pricing?</h2>\n\n<p>The online AWS Pricing Calculator can help customers estimate bandwidth pricing, which is based on location type, region (an \"AWS Region\" being a physical location where Amazon clusters data centers), the specific Amazon service used, customer tier, and other factors.</p>\n\n<p>Amazon S3 gives customers 100 GB of free data transfer out to the Internet each month, aggregated across all AWS services and AWS Regions (except China and GovCloud). Customers who exceed that amount will be charged additional fees based on the volume of data they are transferring.</p>\n\n<div class=\"record-table\">\n  <table>\n    <tr>\n      <th>Data transfer out from Amazon S3 to Internet*</th>\n      <th>Price per GB</th>\n    </tr>\n      <tr>\n        <td>First 10 TB / Month</td>\n      <td>$0.09 per GB</td>\n    </tr>\n    <tr>\n        <td>Next 40 TB / Month</td>\n      <td>$0.09 per GB</td>\n    </tr>\n       <tr>\n        <td>Next 100 TB / Month</td>\n      <td>$0.07 per GB</td>\n    </tr>\n      <tr>\n        <td>Greater than 150 TB / Month</td>\n      <td>$0.05 per GB</td>\n    </tr>\n  </table></div>\n<small><i>*Example based on data from US West-Northern California</i></small>\n\n<p>US customers will also usually pay $0.02 per GB for transferring data from S3 to a different AWS availability zone. It is an additional fee if they want to accelerate data transfer performance (i.e. ensure the lowest latency). Going back to the water analogy, this is like a customer paying extra to their water utility provider for using a high-pressure vs. low-flow shower head.</p>\n\n<p>Although the AWS Pricing Calculator is helpful, some customers may find data transfer pricing to be unpredictable. In fact, Amazon lists more than a dozen reasons why actual costs may vary from pricing calculator quotes. Some of these reasons include:</p>\n\n<ul class='learning-list'>\n  <li><strong>Region used:</strong> Services vary by availability zone, in part because Amazon's cost of land, fiber, electricity, and taxes paid also vary by region. Customers may also have specific data sovereignty requirements (such as <a href='/learning/privacy/what-is-the-gdpr/'>GDPR</a>), which will dictate where to deploy their applications.</li>\n  <li><strong>Change in prices:</strong> Customers who use \"pay-as-you-go\" pricing are charged different amounts than those who lock in a one- or three-year \"reservation.\"</li>\n  <li><strong>Taxes:</strong> The AWS Pricing Calculator does not estimate taxes.</li>\n  <li><strong>Tiered pricing:</strong> Certain customers are eligible for volume discounts.</li>\n  </ul>\n\n<p>On the note of tiered pricing, larger customers may also be able to negotiate further discounts. In one example, NASA's Earth Science Data and Information System, which expected to store 247 petabytes of data by 2025, <a href='https://www.earthdata.nasa.gov/learn/articles/cloud-data-egress/'target=\"_blank\">received</a> special pricing for AWS egress and storage. (For comparison, just one petabyte of data is roughly the equivalent of 13 years' worth of HD-TV video.)</p>\n\n<p>Yet, AWS data transfer costs may become cost-prohibitive — particularly for smaller businesses or developers that want to avoid <a href='/learning/cloud/what-is-vendor-lock-in/'>vendor lock-in</a>, in favor of a <a href='/learning/cloud/what-is-hybrid-cloud/'>hybrid cloud</a> or <a href='/learning/cloud/what-is-multicloud/'>multi-cloud</a> approach.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How can cloud customers reduce data transfer costs?</h2>\n\n<p>Because cloud adoption is growing so quickly, cloud budget overruns are increasingly common. More than half of C-level executives and DevOps professionals <a href='https://www.techrepublic.com/article/kubernetes-cloud-adoption-challenges/'target=\"_blank\">cite</a> the \"significant or unexpected spend on compute, storage, networking infrastructure, and/or cloud-based IaaS\" as their biggest challenge.</p>\n\n<p>Cloud cost optimization can help businesses looking to reduce their data transfer costs. A few key strategies include the following:</p>\n\n<ul class='learning list'>\n  <li>Centralize the management of costs with a cloud \"center of excellence.\"</li>\n  <li>If using Amazon, use other AWS services that can help reduce bandwidth charges from Internet providers, or that minimize the distance that data has to travel.</li>\n  <li>Explore alternative cloud providers and types of cloud storage for different types of data.</li>\n  </ul>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Does Cloudflare charge storage customers for egress or bandwidth?</li>\n\n<p><a href='/products/r2/'>Cloudflare R2</a> is object storage with zero egress fees, making it more affordable than typical cloud storage services. R2 allows developers to store large amounts of unstructured data without the costly egress bandwidth fees. To estimate potential savings of using Cloudflare R2 instead of Amazon S3, access the <a href='https://r2-calculator.cloudflare.com/'target='blank'>R2 Pricing Calculator</a>.</p>\n",
+				"availableLocales": null,
+				"localized": null,
+				"localeList": {
+					"enUS": "English for Locale",
+					"zhCN": "English for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "English for Locale",
+					"deDE": "English for Locale",
+					"itIT": "English for Locale",
+					"jaJP": "English for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "English for Locale",
+					"esES": "English for Locale",
+					"enAU": "English for Locale",
+					"enCA": "English for Locale",
+					"enIN": "English for Locale",
+					"enGB": "English for Locale",
+					"nlNL": "English for Locale",
+					"idID": "English for Locale",
+					"thTH": "English for Locale",
+					"ruRU": "English for Locale",
+					"svSE": "English for Locale",
+					"viVN": "English for Locale",
+					"trTR": "English for Locale",
+					"zhHansCN": "English for Locale",
+					"plPL": "English for Locale",
+					"elGR": "English for Locale",
+					"nbNO": "English for Locale"
+				},
+				"proactivePopup": null,
+				"sidebarForm": null
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "dDPhDM72mPEfuJBabhBkt",
+			"pathname": "/learning/cloud/what-is-aws-data-transfer-pricing/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US"
+			]
+		}
+	}
+}

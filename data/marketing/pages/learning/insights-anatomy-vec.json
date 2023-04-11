@@ -20,18 +20,20 @@
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
 					"enGB": "English for Locale",
-					"nlNL": "No Page for Locale",
-					"idID": "No Page for Locale",
-					"thTH": "No Page for Locale",
-					"ruRU": "No Page for Locale",
-					"svSE": "No Page for Locale",
-					"viVN": "No Page for Locale",
-					"trTR": "No Page for Locale",
+					"nlNL": "English for Locale",
+					"idID": "English for Locale",
+					"thTH": "English for Locale",
+					"ruRU": "English for Locale",
+					"svSE": "English for Locale",
+					"viVN": "English for Locale",
+					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
-					"plPL": "No Page for Locale"
+					"plPL": "English for Locale",
+					"elGR": "English for Locale",
+					"nbNO": "English for Locale"
 				},
 				"relativePath": "learning/insights-anatomy-vec",
-				"topNavOptions": "custom",
+				"topNavOptions": "default",
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
@@ -51,11 +53,7 @@
 				"promotionalBanner": null,
 				"psaBanner": null,
 				"customTopNav": null,
-				"headerLogo": {
-					"file": {
-						"publicURL": "[path]/theNET_Cloudflare_Logo.png"
-					}
-				},
+				"headerLogo": null,
 				"proactivePopup": {
 					"contentTypeId": "proactivePopup",
 					"contentfulId": "1CsLKj1fesYJdTYADz0tWP",
@@ -217,7 +215,7 @@
 											]
 										},
 										{
-											"nodeType": "heading-3",
+											"nodeType": "heading-4",
 											"data": {
 												"target": null,
 												"uri": null
@@ -574,7 +572,7 @@
 											]
 										},
 										{
-											"nodeType": "heading-3",
+											"nodeType": "heading-4",
 											"data": {
 												"target": null,
 												"uri": null
@@ -795,7 +793,7 @@
 											]
 										},
 										{
-											"nodeType": "heading-3",
+											"nodeType": "heading-4",
 											"data": {
 												"target": null,
 												"uri": null
@@ -984,7 +982,7 @@
 											]
 										},
 										{
-											"nodeType": "heading-3",
+											"nodeType": "heading-4",
 											"data": {
 												"target": null,
 												"uri": null
@@ -1581,18 +1579,7 @@
 															]
 														}
 													]
-												}
-											]
-										},
-										{
-											"nodeType": "unordered-list",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
+												},
 												{
 													"nodeType": "list-item",
 													"data": {
@@ -1826,7 +1813,7 @@
 											]
 										},
 										{
-											"nodeType": "heading-3",
+											"nodeType": "heading-4",
 											"data": {
 												"target": null,
 												"uri": null
@@ -2879,7 +2866,6 @@
 					}
 				],
 				"noindex": false,
-				"enableZendeskChat": false,
 				"formModal": null,
 				"keepHashUrlSyncedWithScrollPosition": false
 			},
@@ -2890,6 +2876,7 @@
 			}
 		},
 		"pageContext": {
+			"currentLocale": "en-US",
 			"locale": "en-US",
 			"pathname": "/learning/insights-anatomy-vec/",
 			"contentfulId": "10e5BHTsoKlDe5rZvVi9VS",

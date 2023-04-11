@@ -28,13 +28,15 @@
 					"viVN": "No Page for Locale",
 					"trTR": "No Page for Locale",
 					"zhHansCN": "Translated for Locale",
-					"plPL": "No Page for Locale"
+					"plPL": "No Page for Locale",
+					"elGR": "No Page for Locale",
+					"nbNO": "No Page for Locale"
 				},
 				"relativePath": "lp/rdos-protection",
 				"topNavOptions": "minimized",
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
-				"footerOptions": null,
+				"footerOptions": "default",
 				"metaTags": {
 					"metaTitle": "Ransom DDOS (RDDoS) Attack? ",
 					"metaDescription": "Ransomware attacks are on the rise again. And so are Ransom DDoS (RDDoS) attacks. Bad actors are increasingly threatening to bring down websites and network infrastructure with DDoS attacks unless a ransom is paid before a deadline. See how Cloudflare DDoS mitigation can help.",
@@ -232,7 +234,7 @@
 						"htmlId": null,
 						"image": {
 							"file": {
-								"publicURL": "[path]/tr_ahz_rgb_pos1.png"
+								"publicURL": "[path]/logo_thomson-reuters_gray.svg"
 							}
 						},
 						"imageAssetFile": {
@@ -505,7 +507,6 @@
 					}
 				],
 				"noindex": false,
-				"enableZendeskChat": null,
 				"formModal": null,
 				"keepHashUrlSyncedWithScrollPosition": null
 			},
@@ -516,6 +517,7 @@
 			}
 		},
 		"pageContext": {
+			"currentLocale": "en-US",
 			"locale": "en-US",
 			"pathname": "/lp/rdos-protection/",
 			"contentfulId": "exZ4slt0oNjuzrRU25R9R",
