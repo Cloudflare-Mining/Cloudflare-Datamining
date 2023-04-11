@@ -1,5 +1,11 @@
 # Change Log
 
+## 7.2.2
+
+### Patch Changes
+
+- 3cd7b68ce7: This PR reverts the component-page beta label from gray to orange.
+
 ## 7.2.1
 
 ### Patch Changes
