@@ -7475,12 +7475,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				e.g.build = Qd({}, {
-					branch: "release-Apr.10.2023-1681135543",
+					branch: "nduarte/EMAIL-818",
 					isReleaseCandidate: "true",
-					commit: "217fd04e95a753aaa079664c2af8cf8bfe7e700f",
+					commit: "e09e7f52d4352301c5ceb132d7685245c79ce9e1",
 					env: "production",
-					builtAt: 1681138513117,
-					dashVersion: "1d117f8fa861a5c5a04009e69421b4ad2e3b625f",
+					builtAt: 1681170615957,
+					dashVersion: "77d2aebd38ce3b4488f3d49f0ace564028057c23",
 					versions: {
 						"@cloudflare/app-dash": "25.151.1",
 						node: "16.16.0",
@@ -129737,4 +129737,4 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 	}
 ]);
 
-//# sourceMappingURL=0e07894750197fbe11e1.js.map
+//# sourceMappingURL=d288452dadc3e94495f6.js.map
