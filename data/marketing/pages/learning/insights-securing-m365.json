@@ -7,37 +7,39 @@
 				"pageName": "theNET - The trade-offs in Microsoft 365's native security - Page",
 				"localeList": {
 					"enUS": "English for Locale",
-					"zhCN": "English for Locale",
-					"zhTW": "English for Locale",
-					"frFR": "English for Locale",
-					"deDE": "English for Locale",
-					"itIT": "English for Locale",
-					"jaJP": "English for Locale",
-					"koKR": "English for Locale",
-					"ptBR": "English for Locale",
-					"esES": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "Translated for Locale",
+					"frFR": "Translated for Locale",
+					"deDE": "Translated for Locale",
+					"itIT": "Translated for Locale",
+					"jaJP": "Translated for Locale",
+					"koKR": "Translated for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
 					"enGB": "English for Locale",
 					"nlNL": "English for Locale",
-					"idID": "No Page for Locale",
-					"thTH": "No Page for Locale",
-					"ruRU": "No Page for Locale",
-					"svSE": "No Page for Locale",
-					"viVN": "No Page for Locale",
-					"trTR": "No Page for Locale",
-					"zhHansCN": "English for Locale",
-					"plPL": "No Page for Locale"
+					"idID": "English for Locale",
+					"thTH": "English for Locale",
+					"ruRU": "English for Locale",
+					"svSE": "English for Locale",
+					"viVN": "English for Locale",
+					"trTR": "English for Locale",
+					"zhHansCN": "Translated for Locale",
+					"plPL": "English for Locale",
+					"elGR": "English for Locale",
+					"nbNO": "English for Locale"
 				},
 				"relativePath": "learning/insights-securing-m365",
-				"topNavOptions": "custom",
+				"topNavOptions": "default",
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
 				"metaTags": {
 					"metaTitle": "The trade-offs in Microsoft 365's native security",
-					"metaDescription": "Strategies for supplementing Microsoft 365's native security without compromising employee efficiency",
+					"metaDescription": "Strengthen your organization's security posture against both isolated Microsoft vulnerabilities and more systemic weaknesses",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
@@ -50,230 +52,8 @@
 				"contentTypeId": "page",
 				"promotionalBanner": null,
 				"psaBanner": null,
-				"customTopNav": [
-					{
-						"contentTypeId": "navNavigationGroup",
-						"contentfulId": "7vtXhMutS3hr5urm12KUGs",
-						"locale": "en-US",
-						"mainNav": {
-							"contentTypeId": "navNavigation",
-							"contentfulId": "43PdHIHIsgmVJp1nN48Njc",
-							"locale": "en-US",
-							"navigationType": "Header",
-							"isDefaultNav": false,
-							"backgroundColor": "white",
-							"sectionPadding": null,
-							"navigationItems": [
-								{
-									"contentTypeId": "navNavigationItem",
-									"contentfulId": "1ll1oUb6JdF7xzHFrL5BtI",
-									"locale": "en-US",
-									"name": "Home",
-									"description": null,
-									"navIcon": null,
-									"contentfulButton": null,
-									"showIconOnly": false,
-									"hideOnChinaSite": false,
-									"navigationItems": null,
-									"mainLink": {
-										"contentTypeId": "elementNavLink",
-										"contentfulId": "1CFvERWkgaLU62M1N1pxQD",
-										"locale": "en-US",
-										"title": "Home",
-										"description": null,
-										"url": "the-net",
-										"badges": null,
-										"specialLinkType": null,
-										"openInNewWindow": false,
-										"isExternalUrl": null
-									},
-									"navigationLinks": null
-								},
-								{
-									"contentTypeId": "navNavigationItem",
-									"contentfulId": "6GKXXIm70KXYwj2jnsBrR7",
-									"locale": "en-US",
-									"name": "Security Innovation",
-									"description": null,
-									"navIcon": null,
-									"contentfulButton": null,
-									"showIconOnly": false,
-									"hideOnChinaSite": false,
-									"navigationItems": null,
-									"mainLink": {
-										"contentTypeId": "elementNavLink",
-										"contentfulId": "2c0im4m95oZ8rlwS8ePtbO",
-										"locale": "en-US",
-										"title": "Security Innovation",
-										"description": null,
-										"url": "/the-net/security-innovation/",
-										"badges": null,
-										"specialLinkType": null,
-										"openInNewWindow": false,
-										"isExternalUrl": null
-									},
-									"navigationLinks": null
-								},
-								{
-									"contentTypeId": "navNavigationItem",
-									"contentfulId": "13DnpsI1G49Zk7wJbppRnd",
-									"locale": "en-US",
-									"name": "Threat Landscape",
-									"description": null,
-									"navIcon": null,
-									"contentfulButton": null,
-									"showIconOnly": false,
-									"hideOnChinaSite": false,
-									"navigationItems": null,
-									"mainLink": {
-										"contentTypeId": "elementNavLink",
-										"contentfulId": "18vMkNil63nAJw79ZSR4UJ",
-										"locale": "en-US",
-										"title": "Threat Landscape",
-										"description": null,
-										"url": "/the-net/threat-landscape/",
-										"badges": null,
-										"specialLinkType": null,
-										"openInNewWindow": false,
-										"isExternalUrl": null
-									},
-									"navigationLinks": null
-								},
-								{
-									"contentTypeId": "navNavigationItem",
-									"contentfulId": "RanCdjDWzy8KI9Ha33Qal",
-									"locale": "en-US",
-									"name": "Future Internet",
-									"description": null,
-									"navIcon": null,
-									"contentfulButton": null,
-									"showIconOnly": false,
-									"hideOnChinaSite": false,
-									"navigationItems": null,
-									"mainLink": {
-										"contentTypeId": "elementNavLink",
-										"contentfulId": "0xC7JehkyUdfAgWDStXHa",
-										"locale": "en-US",
-										"title": "Future Internet",
-										"description": null,
-										"url": "/the-net/future-internet",
-										"badges": null,
-										"specialLinkType": null,
-										"openInNewWindow": false,
-										"isExternalUrl": null
-									},
-									"navigationLinks": null
-								}
-							]
-						},
-						"utilityNav": {
-							"contentTypeId": "navNavigation",
-							"contentfulId": "52CjZzRgYo8tC0nwT23Fc",
-							"locale": "en-US",
-							"navigationType": "Custom Navigation",
-							"isDefaultNav": true,
-							"backgroundColor": null,
-							"sectionPadding": "default",
-							"navigationItems": [
-								{
-									"contentTypeId": "navNavigationItem",
-									"contentfulId": "5XqIIHouIN3SqoeS8eIQL8",
-									"locale": "en-US",
-									"name": "Support",
-									"description": null,
-									"navIcon": null,
-									"contentfulButton": null,
-									"showIconOnly": false,
-									"hideOnChinaSite": null,
-									"navigationItems": null,
-									"mainLink": null,
-									"navigationLinks": [
-										{
-											"contentTypeId": "elementNavLink",
-											"contentfulId": "39ahAfcnTcrePwvvA1l0MW",
-											"locale": "en-US",
-											"title": "Contact Support",
-											"description": null,
-											"url": "https://dash.cloudflare.com/?to=/:account/support",
-											"badges": null,
-											"specialLinkType": null,
-											"openInNewWindow": true,
-											"isExternalUrl": null
-										},
-										{
-											"contentTypeId": "elementNavLink",
-											"contentfulId": "7eEo2tTS8nkTUH01h4y5BN",
-											"locale": "en-US",
-											"title": "Help Center",
-											"description": null,
-											"url": "https://support.cloudflare.com/",
-											"badges": null,
-											"specialLinkType": null,
-											"openInNewWindow": true,
-											"isExternalUrl": null
-										},
-										{
-											"contentTypeId": "elementNavLink",
-											"contentfulId": "4qMTa5oo6WQknsTOzFsrQ",
-											"locale": "en-US",
-											"title": "Cloudflare Community",
-											"description": null,
-											"url": "https://community.cloudflare.com/",
-											"badges": null,
-											"specialLinkType": null,
-											"openInNewWindow": true,
-											"isExternalUrl": null
-										},
-										{
-											"contentTypeId": "elementNavLink",
-											"contentfulId": "52WmBFB2P512JhW6jzATzc",
-											"locale": "en-US",
-											"title": "Lost account access?",
-											"description": null,
-											"url": "https://support.cloudflare.com/hc/en-us/articles/203471284-Login-and-account-issues",
-											"badges": null,
-											"specialLinkType": null,
-											"openInNewWindow": false,
-											"isExternalUrl": null
-										}
-									]
-								}
-							]
-						},
-						"rightNav": {
-							"contentTypeId": "navNavigation",
-							"contentfulId": "2lJyDCIXKA3ggOeKrNSCMQ",
-							"locale": "en-US",
-							"navigationType": "Footer",
-							"isDefaultNav": false,
-							"backgroundColor": null,
-							"sectionPadding": "default",
-							"navigationItems": [
-								{
-									"contentTypeId": "navNavigationItem",
-									"contentfulId": "2yvvSmtqM5YECHou5SqrhX",
-									"locale": "en-US",
-									"name": " ",
-									"description": null,
-									"navIcon": null,
-									"contentfulButton": null,
-									"showIconOnly": false,
-									"hideOnChinaSite": null,
-									"navigationItems": null,
-									"mainLink": null,
-									"navigationLinks": null
-								}
-							]
-						},
-						"experimentId": null,
-						"variant": null
-					}
-				],
-				"headerLogo": {
-					"file": {
-						"publicURL": "[path]/theNET_Cloudflare_Logo.png"
-					}
-				},
+				"customTopNav": null,
+				"headerLogo": null,
 				"proactivePopup": {
 					"contentTypeId": "proactivePopup",
 					"contentfulId": "1CsLKj1fesYJdTYADz0tWP",
@@ -314,8 +94,8 @@
 					{
 						"contentTypeId": "bladeHtml",
 						"contentfulId": "3PfSgR6RxFckxj30JU8UNT",
-						"htmlContent": "<div style=\"background-image: url('https://cf-assets.www.cloudflare.com/slt3lc6tev37/7zJugm2NKzRQIcUaiFPmrM/e986db09336aaa7846d56c5c201efc4a/BDES-4015_theNET_Website_TopBanner1440x176_v1.jpg'); width: 1440px; height: 168px; background-repeat:no-repeat; border: none;\"></div>",
-						"htmlId": "theNET - Banner"
+						"htmlContent": "<section style=\"width: 100vw;margin-left: calc((100vw - 100%) / -2); \">\n<img src= 'https://cf-assets.www.cloudflare.com/slt3lc6tev37/285sCZZbKXBtsa5g3auYHu/79a31e8173f207459b8ea3c35e75cb98/BDES-4015_theNET_TopBanner_1440x176_Top_webpage_banner.svg'; style=\"width: 100%; display:block \" /> \n</section>",
+						"htmlId": "theNETBanner"
 					},
 					{
 						"contentTypeId": "bladeRichTextColumnGroup",
@@ -2028,42 +1808,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Microsoft 365 offers several services for managing what access and permissions users have. However, in recent years, privilege escalation has been the most common form of Microsoft 365 vulnerability, ",
-													"marks": [],
-													"content": null
-												},
-												{
-													"nodeType": "hyperlink",
-													"data": {
-														"target": null,
-														"uri": "https://www.cyberseer.net/technologies/beyondtrust/"
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "text",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": "according to BeyondTrust research",
-															"marks": [
-																{
-																	"type": "underline"
-																}
-															],
-															"content": null
-														}
-													]
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": ". In these incidents, attackers gain access to a user account and expand the variety of systems and settings it can access, facilitating lateral movement, credential theft, and the compromise of targeted applications.",
+													"value": "Microsoft 365 offers several services for managing what access and permissions users have. However, in recent years, privilege escalation has been the most common form of Microsoft 365 vulnerability, according to BeyondTrust research. In these incidents, attackers gain access to a user account and expand the variety of systems and settings it can access, facilitating lateral movement, credential theft, and the compromise of targeted applications.",
 													"marks": [],
 													"content": null
 												}
@@ -3836,7 +3581,6 @@
 					}
 				],
 				"noindex": false,
-				"enableZendeskChat": false,
 				"formModal": null,
 				"keepHashUrlSyncedWithScrollPosition": false
 			},
@@ -3847,11 +3591,22 @@
 			}
 		},
 		"pageContext": {
+			"currentLocale": "en-US",
 			"locale": "en-US",
 			"pathname": "/learning/insights-securing-m365/",
 			"contentfulId": "4FZ8aw0aAL5A6abIBbCjKV",
 			"allowedHrefLangs": [
-				"en-US"
+				"en-US",
+				"zh-CN",
+				"zh-TW",
+				"fr-FR",
+				"de-DE",
+				"it-IT",
+				"ja-JP",
+				"ko-KR",
+				"pt-BR",
+				"es-ES",
+				"zh-Hans-CN"
 			],
 			"hasPsaBanner": false,
 			"baseURL": "https://www.cloudflare.com"

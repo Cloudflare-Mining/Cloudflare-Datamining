@@ -20,15 +20,17 @@
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
 					"enGB": "English for Locale",
-					"nlNL": "No Page for Locale",
-					"idID": "No Page for Locale",
-					"thTH": "No Page for Locale",
-					"ruRU": "No Page for Locale",
-					"svSE": "No Page for Locale",
-					"viVN": "No Page for Locale",
-					"trTR": "No Page for Locale",
+					"nlNL": "English for Locale",
+					"idID": "English for Locale",
+					"thTH": "English for Locale",
+					"ruRU": "English for Locale",
+					"svSE": "English for Locale",
+					"viVN": "English for Locale",
+					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
-					"plPL": "No Page for Locale"
+					"plPL": "English for Locale",
+					"elGR": "English for Locale",
+					"nbNO": "English for Locale"
 				},
 				"relativePath": "lp/soc-ddos-attacks-healthcare/",
 				"topNavOptions": "empty",
@@ -92,7 +94,7 @@
 						},
 						"title": "DDoS mitigation for healthcare",
 						"subtitle": "Industry-leading, automatic protection that onboards in minutes",
-						"copy": "Your network enables you to deliver patients the care they need. However, healthcare organizations have become high-profile targets for cyberattackers. This includes a [recent spate of claimed DDoS attacks by the hacktivist group Killnet](https://blog.cloudflare.com/uptick-in-healthcare-organizations-experiencing-targeted-ddos-attacks/). \n\nCloudflare can help keep your website running smoothly. We block an average of %{ThreatsBlockedPerDay} per day, and our global cloud security platform automatically mitigates the most sophisticated DDoS attacks. Whether you're planning proactively or are under active attack, Cloudflare DDoS mitigation offers: \n\n- __Fast onboarding__: Deployment time in minutes and hours, not days or weeks. Our expert team is on standby to help bring your website and network back online immediately\n- __Unmetered protection__: Over %{NetworkCapacity} of mitigation capacity ensures your website and network remain online regardless of the attack's size or sophistication\n- __24/7/365 support__: Our Enterprise plan customers get access to 24/7/365 support via chat, email, and phone for immediate help with customization or any issues\n",
+						"copy": "Your network enables you to deliver patients the care they need. However, healthcare organizations have become high-profile targets for cyberattackers. This includes a [recent spate of claimed DDoS attacks by the hacktivist group Killnet](https://blog.cloudflare.com/uptick-in-healthcare-organizations-experiencing-targeted-ddos-attacks/). \n\nCloudflare can help keep your website running smoothly. We block an average of %{ThreatsBlockedPerDay} billion threats per day, and our global cloud security platform automatically mitigates the most sophisticated DDoS attacks. Whether you're planning proactively or are under active attack, Cloudflare DDoS mitigation offers: \n\n- __Fast onboarding__: Deployment time in minutes and hours, not days or weeks. Our expert team is on standby to help bring your website and network back online immediately\n- __Unmetered protection__: Over %{NetworkCapacity} of mitigation capacity ensures your website and network remain online regardless of the attack's size or sophistication\n- __24/7/365 support__: Our Enterprise plan customers get access to 24/7/365 support via chat, email, and phone for immediate help with customization or any issues\n",
 						"iconList": null,
 						"iconTitleList": null,
 						"iconCopyList": null,
@@ -482,7 +484,6 @@
 					}
 				],
 				"noindex": false,
-				"enableZendeskChat": false,
 				"formModal": null,
 				"keepHashUrlSyncedWithScrollPosition": false
 			},
@@ -493,6 +494,7 @@
 			}
 		},
 		"pageContext": {
+			"currentLocale": "en-US",
 			"locale": "en-US",
 			"pathname": "/lp/soc-ddos-attacks-healthcare/",
 			"contentfulId": "63vtkKAmz4QSBqj80unPPB",

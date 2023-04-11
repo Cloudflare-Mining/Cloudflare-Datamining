@@ -28,7 +28,9 @@
 					"viVN": "No Page for Locale",
 					"trTR": "No Page for Locale",
 					"zhHansCN": "Translated for Locale",
-					"plPL": "No Page for Locale"
+					"plPL": "No Page for Locale",
+					"elGR": null,
+					"nbNO": null
 				},
 				"relativePath": "learning/insights-sase-network-transformation",
 				"topNavOptions": "custom",
@@ -314,8 +316,8 @@
 					{
 						"contentTypeId": "bladeHtml",
 						"contentfulId": "3PfSgR6RxFckxj30JU8UNT",
-						"htmlContent": "<div style=\"background-image: url('https://cf-assets.www.cloudflare.com/slt3lc6tev37/7zJugm2NKzRQIcUaiFPmrM/e986db09336aaa7846d56c5c201efc4a/BDES-4015_theNET_Website_TopBanner1440x176_v1.jpg'); width: 1440px; height: 168px; background-repeat:no-repeat; border: none;\"></div>",
-						"htmlId": "theNET - Banner"
+						"htmlContent": "<section style=\"width: 100vw;margin-left: calc((100vw - 100%) / -2); \">\n<img src= 'https://cf-assets.www.cloudflare.com/slt3lc6tev37/285sCZZbKXBtsa5g3auYHu/79a31e8173f207459b8ea3c35e75cb98/BDES-4015_theNET_TopBanner_1440x176_Top_webpage_banner.svg'; style=\"width: 100%; display:block \" /> \n</section>",
+						"htmlId": "theNETBanner"
 					},
 					{
 						"contentTypeId": "bladeRichTextColumnGroup",
@@ -2419,7 +2421,6 @@
 					}
 				],
 				"noindex": false,
-				"enableZendeskChat": false,
 				"formModal": null,
 				"keepHashUrlSyncedWithScrollPosition": null
 			},
@@ -2430,6 +2431,7 @@
 			}
 		},
 		"pageContext": {
+			"currentLocale": "en-US",
 			"locale": "en-US",
 			"pathname": "/learning/insights-sase-network-transformation/",
 			"contentfulId": "22JBzYLg2ThUByfYk3ktX4",

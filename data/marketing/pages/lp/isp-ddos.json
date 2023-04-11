@@ -21,14 +21,16 @@
 					"enIN": "English for Locale",
 					"enGB": "English for Locale",
 					"nlNL": "English for Locale",
-					"idID": "No Page for Locale",
-					"thTH": "No Page for Locale",
-					"ruRU": "No Page for Locale",
-					"svSE": "No Page for Locale",
-					"viVN": "No Page for Locale",
-					"trTR": "No Page for Locale",
+					"idID": "English for Locale",
+					"thTH": "English for Locale",
+					"ruRU": "English for Locale",
+					"svSE": "English for Locale",
+					"viVN": "English for Locale",
+					"trTR": "English for Locale",
 					"zhHansCN": "English for Locale",
-					"plPL": "No Page for Locale"
+					"plPL": "English for Locale",
+					"elGR": "English for Locale",
+					"nbNO": "English for Locale"
 				},
 				"relativePath": "lp/isp-ddos",
 				"topNavOptions": "empty",
@@ -578,6 +580,7 @@
 						"quoteCarousel": [
 							{
 								"contentTypeId": "bladeQuote",
+								"contentfulId": "14zZrTdGU71X09JVuodBIb",
 								"quote": "\"Thomson Reuters operates on-premise and cloud networks around the world. I'm excited about Cloudflare Magic Transit — the potential to unify our IP transit, DDoS mitigation, and traffic steering solutions into something we can manage with a single pane of glass will be game-changing. Cloudflare continues to impress me with its network's scale, in terms of geography, capacity, and product breadth.\"",
 								"quoteAuthor": "Jesse Haraldson",
 								"quoteTitle": "Principal Software Architect",
@@ -603,12 +606,13 @@
 								},
 								"image": {
 									"file": {
-										"publicURL": "[path]/tr_ahz_rgb_pos1.png"
+										"publicURL": "[path]/logo_thomson-reuters_gray.svg"
 									}
 								}
 							},
 							{
 								"contentTypeId": "bladeQuote",
+								"contentfulId": "1lvHQfGKZ17aJjBNoW81UV",
 								"quote": "\"As the lines between corporate infrastructure and cloud services continue to converge, Cloudflare's modern approach to protecting infrastructure is a much-needed solution for the industry. The ability for Magic Transit to leverage the power and scale of cloud services to protect infrastructure, while maintaining per IP configuration and optionality, all while routing traffic performantly across Cloudflare's global network, makes it a no-brainer.\"",
 								"quoteAuthor": "Aaron Edwards",
 								"quoteTitle": "Field CTO",
@@ -714,7 +718,6 @@
 					}
 				],
 				"noindex": false,
-				"enableZendeskChat": false,
 				"formModal": null,
 				"keepHashUrlSyncedWithScrollPosition": false
 			},
@@ -725,6 +728,7 @@
 			}
 		},
 		"pageContext": {
+			"currentLocale": "en-US",
 			"locale": "en-US",
 			"pathname": "/lp/isp-ddos/",
 			"contentfulId": "4Ps3GpQqAsI4Rds03Nk9fk",

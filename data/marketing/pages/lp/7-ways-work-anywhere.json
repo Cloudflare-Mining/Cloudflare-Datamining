@@ -7,15 +7,15 @@
 				"pageName": "7 Ways To Work From Anywhere - Gate Page",
 				"localeList": {
 					"enUS": "English for Locale",
-					"zhCN": "English for Locale",
-					"zhTW": "English for Locale",
-					"frFR": "English for Locale",
-					"deDE": "English for Locale",
-					"itIT": "English for Locale",
-					"jaJP": "English for Locale",
-					"koKR": "English for Locale",
-					"ptBR": "English for Locale",
-					"esES": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "Translated for Locale",
+					"frFR": "Translated for Locale",
+					"deDE": "Translated for Locale",
+					"itIT": "Translated for Locale",
+					"jaJP": "Translated for Locale",
+					"koKR": "Translated for Locale",
+					"ptBR": "Translated for Locale",
+					"esES": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
@@ -23,12 +23,14 @@
 					"nlNL": "No Page for Locale",
 					"idID": "No Page for Locale",
 					"thTH": "No Page for Locale",
-					"ruRU": "Translated for Locale",
+					"ruRU": "English for Locale",
 					"svSE": "No Page for Locale",
 					"viVN": "No Page for Locale",
 					"trTR": "No Page for Locale",
-					"zhHansCN": "English for Locale",
-					"plPL": "No Page for Locale"
+					"zhHansCN": "Translated for Locale",
+					"plPL": "No Page for Locale",
+					"elGR": "No Page for Locale",
+					"nbNO": "No Page for Locale"
 				},
 				"relativePath": "lp/7-ways-work-anywhere",
 				"topNavOptions": "empty",
@@ -90,7 +92,7 @@
 								}
 							],
 							"marketoFormAssetDownloadButtonText": null,
-							"marketoFormSuccessRedirectUrl": null,
+							"marketoFormSuccessRedirectUrl": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/pM40ZCs1VpZGKEO7ESHFL/153c93bd953841af0654b0fdcabc3e2e/Seven_Ways_to_Work_from_Anywhere_Whitepaper.pdf",
 							"sendAdRoll": null,
 							"meta_adRollCustomSegment": null,
 							"enableSandbox": null,
@@ -394,7 +396,6 @@
 					}
 				],
 				"noindex": true,
-				"enableZendeskChat": null,
 				"formModal": null,
 				"keepHashUrlSyncedWithScrollPosition": null
 			},
@@ -405,12 +406,22 @@
 			}
 		},
 		"pageContext": {
+			"currentLocale": "en-US",
 			"locale": "en-US",
 			"pathname": "/lp/7-ways-work-anywhere/",
 			"contentfulId": "7k6pSTlxH5wfyHKKp3NKjh",
 			"allowedHrefLangs": [
 				"en-US",
-				"ru-RU"
+				"zh-CN",
+				"zh-TW",
+				"fr-FR",
+				"de-DE",
+				"it-IT",
+				"ja-JP",
+				"ko-KR",
+				"pt-BR",
+				"es-ES",
+				"zh-Hans-CN"
 			],
 			"hasPsaBanner": false,
 			"baseURL": "https://www.cloudflare.com"

@@ -9,7 +9,7 @@
 				"urlSlug": "security/api/what-is-an-api",
 				"metaTags": {
 					"metaTitle": "What is an API? | API definition",
-					"metaDescription": "An API is a set of rules that enable one program to transmit data to another program. Learn about API calls, API integrations, and what 'API' stands for.",
+					"metaDescription": "An application programming interface (API) is a set of rules that enable one program to transmit data to another program. Learn more about API calls, API security, and API integrations.",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
@@ -32,7 +32,7 @@
 						{
 							"contentTypeId": "learningCenterArticleLink",
 							"contentfulId": "7esVgOhtx4g1wc9j085HEg",
-							"displayText": "Web Application Security",
+							"displayText": "Web application security",
 							"url": "/learning/security/what-is-web-application-security/"
 						},
 						{
@@ -46,6 +46,12 @@
 									"contentfulId": "5bLsysaJiy1V2vLbnfFSCA",
 									"displayText": "What is an API?",
 									"url": "/learning/security/api/what-is-an-api/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6Lv5tCM45ztYTOqzek2loT",
+									"displayText": "How do APIs work?",
+									"url": "/learning/security/api/how-do-apis-work/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
@@ -70,6 +76,12 @@
 									"contentfulId": "7J4bElUm4dIjsfAvV6c51Z",
 									"displayText": "API Endpoint",
 									"url": "/learning/security/api/what-is-api-endpoint/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "gNSNOHfDCmgDBpWKgKuiW",
+									"displayText": "What is a cloud API?",
+									"url": "/learning/security/api/what-is-a-cloud-api/"
 								}
 							]
 						},
@@ -82,7 +94,7 @@
 								{
 									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "7E7WwNyil3bJj73NvtGlm2",
-									"displayText": "On-Path Attack",
+									"displayText": "On-path attack",
 									"url": "/learning/security/threats/on-path-attack/"
 								},
 								{
@@ -112,20 +124,20 @@
 								{
 									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "2Dg5Q4JDGkBwOFWJN8wgsC",
-									"displayText": "Social Engineering Attack",
+									"displayText": "Social engineering attack",
 									"url": "/learning/security/threats/social-engineering-attack/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "6XPhbYmE7dwzO6WII8TzfE",
-									"displayText": "Data Breach",
+									"displayText": "Data breach",
 									"url": "/learning/security/what-is-a-data-breach/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "5cGXrdJmHiePGFShMVWvtf",
 									"displayText": "Supply Chain Attacks",
-									"url": "/security/what-is-a-supply-chain-attack"
+									"url": "/learning/security/what-is-a-supply-chain-attack/"
 								}
 							]
 						},
@@ -269,7 +281,7 @@
 									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "2rHmLbOwwKqmTccVo3hAH6",
 									"displayText": "What is HTTPS Inspection?",
-									"url": "/learning/security/what-is-https-inspection"
+									"url": "/learning/security/what-is-https-inspection/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
@@ -323,13 +335,37 @@
 									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "69gWUkZLgad0t8LnwMSRXY",
 									"displayText": "Security operations center (SOC)",
-									"url": "/learning/security/glossary/what-is-a-security-operations-center-soc"
+									"url": "/learning/security/glossary/what-is-a-security-operations-center-soc/"
 								},
 								{
 									"contentTypeId": "learningCenterArticleLink",
 									"contentfulId": "6sXZSYzVxhxxquXfRdnlSj",
 									"displayText": "Threat hunting",
 									"url": "/learning/security/glossary/what-is-threat-hunting/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "61tw3eONgbRj2ZO8Vc0kc9",
+									"displayText": "STIX/TAXII",
+									"url": "/learning/security/what-is-stix-and-taxii/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "3YD6UkOMswIRDGd5LniESd",
+									"displayText": "Indicators of compromise (IoC)",
+									"url": "/learning/security/what-are-indicators-of-compromise/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "6Ho7G7G6VEpfNhoq2hWaa1",
+									"displayText": "Threat intelligence feed",
+									"url": "/learning/security/glossary/threat-intelligence-feed/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "1Q0QBzwkoSp1QbFj4OClB0",
+									"displayText": "Threat modeling",
+									"url": "/learning/security/glossary/what-is-threat-modeling/"
 								}
 							]
 						},
@@ -380,6 +416,18 @@
 									"contentfulId": "3h3E4btP1QgwPPWbyA1fX3",
 									"displayText": "Bypassing multi-factor authentication",
 									"url": "/learning/insights-bypassing-mfa/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2MjBoHvagpKWrXqLf95pGH",
+									"displayText": "The gaps in web application security",
+									"url": "learning/insights-waap-gaps"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "2Op2roWYABZSvyMX321o1I",
+									"displayText": "API growth parallels attacks",
+									"url": "learning/insights-waap-api-security"
 								}
 							]
 						}
@@ -399,7 +447,7 @@
 							{
 								"contentTypeId": "learningCenterArticleLink",
 								"contentfulId": "7esVgOhtx4g1wc9j085HEg",
-								"displayText": "Web Application Security",
+								"displayText": "Web application security",
 								"url": "/learning/security/what-is-web-application-security/"
 							},
 							{
@@ -438,19 +486,19 @@
 							{
 								"contentTypeId": "learningCenterArticleLink",
 								"contentfulId": "7E7WwNyil3bJj73NvtGlm2",
-								"displayText": "On-Path Attack",
+								"displayText": "On-path attack",
 								"url": "/learning/security/threats/on-path-attack/"
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
 								"contentfulId": "4Iu9iZ8JoQuMdcLsZeMa1g",
-								"displayText": "Brute Force Attack",
+								"displayText": "Brute force attack",
 								"url": "/learning/bots/brute-force-attack/"
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
 								"contentfulId": "2krgvvRxSgPgmshS6kPUsN",
-								"displayText": "Buffer Overflow Attack",
+								"displayText": "Buffer overflow attack",
 								"url": "/learning/security/threats/buffer-overflow/"
 							},
 							{
@@ -474,13 +522,13 @@
 							{
 								"contentTypeId": "learningCenterArticleLink",
 								"contentfulId": "2Dg5Q4JDGkBwOFWJN8wgsC",
-								"displayText": "Social Engineering Attack",
+								"displayText": "Social engineering attack",
 								"url": "/learning/security/threats/social-engineering-attack/"
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
 								"contentfulId": "4QoH8dVxKKYSsfePjHNKxD",
-								"displayText": "Phishing Attack",
+								"displayText": "Phishing attack",
 								"url": "/learning/access-management/phishing-attack/"
 							},
 							{
@@ -505,7 +553,7 @@
 								"contentTypeId": "learningCenterArticleLink",
 								"contentfulId": "5cGXrdJmHiePGFShMVWvtf",
 								"displayText": "Supply Chain Attacks",
-								"url": "/security/what-is-a-supply-chain-attack"
+								"url": "/learning/security/what-is-a-supply-chain-attack/"
 							}
 						]
 					},
@@ -519,14 +567,14 @@
 							{
 								"contentTypeId": "learningCenterArticleLink",
 								"contentfulId": "4FKVZaN6mpIm5iyZ7Lcxs5",
-								"displayText": "What's a VPN? ",
+								"displayText": "What is a VPN? ",
 								"url": "/learning/access-management/what-is-a-vpn/"
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
 								"contentfulId": "4W9Oi0Ap2vVUSKzYj0a9cM",
 								"displayText": "Choosing the Best VPN",
-								"url": "/learning/security/vpn/choosing-the-best-vpn/"
+								"url": "https://www.cloudflare.com/learning/vpn/what-is-a-vpn/"
 							}
 						]
 					},
@@ -577,13 +625,19 @@
 								"contentTypeId": "learningCenterArticleLink",
 								"contentfulId": "2rHmLbOwwKqmTccVo3hAH6",
 								"displayText": "What is HTTPS Inspection?",
-								"url": "/learning/security/what-is-https-inspection"
+								"url": "/learning/security/what-is-https-inspection/"
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
 								"contentfulId": "5bLsysaJiy1V2vLbnfFSCA",
 								"displayText": "What is an API?",
 								"url": "/learning/security/api/what-is-an-api/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6Lv5tCM45ztYTOqzek2loT",
+								"displayText": "How do APIs work?",
+								"url": "/learning/security/api/how-do-apis-work/"
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
@@ -683,6 +737,12 @@
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "gNSNOHfDCmgDBpWKgKuiW",
+								"displayText": "What is a cloud API?",
+								"url": "/learning/security/api/what-is-a-cloud-api/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
 								"contentfulId": "60NMUJD4OQw5PuujgjtNlj",
 								"displayText": "Data at Rest",
 								"url": "/learning/security/glossary/data-at-rest/"
@@ -691,13 +751,37 @@
 								"contentTypeId": "learningCenterArticleLink",
 								"contentfulId": "69gWUkZLgad0t8LnwMSRXY",
 								"displayText": "Security operations center (SOC)",
-								"url": "/learning/security/glossary/what-is-a-security-operations-center-soc"
+								"url": "/learning/security/glossary/what-is-a-security-operations-center-soc/"
 							},
 							{
 								"contentTypeId": "learningCenterArticleLink",
 								"contentfulId": "6sXZSYzVxhxxquXfRdnlSj",
 								"displayText": "Threat hunting",
 								"url": "/learning/security/glossary/what-is-threat-hunting/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "61tw3eONgbRj2ZO8Vc0kc9",
+								"displayText": "STIX/TAXII",
+								"url": "/learning/security/what-is-stix-and-taxii/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "3YD6UkOMswIRDGd5LniESd",
+								"displayText": "Indicators of compromise (IoC)",
+								"url": "/learning/security/what-are-indicators-of-compromise/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "6Ho7G7G6VEpfNhoq2hWaa1",
+								"displayText": "Threat intelligence feed",
+								"url": "/learning/security/glossary/threat-intelligence-feed/"
+							},
+							{
+								"contentTypeId": "learningCenterArticleLink",
+								"contentfulId": "1Q0QBzwkoSp1QbFj4OClB0",
+								"displayText": "Threat modeling",
+								"url": "/learning/security/glossary/what-is-threat-modeling/"
 							}
 						]
 					},
@@ -815,7 +899,7 @@
 					{
 						"contentTypeId": "learningCenterArticleLink",
 						"contentfulId": "7esVgOhtx4g1wc9j085HEg",
-						"displayText": "Web Application Security",
+						"displayText": "Web application security",
 						"url": "/learning/security/what-is-web-application-security/"
 					},
 					{
@@ -837,32 +921,35 @@
 						"url": "/learning/security/api/what-is-api-call/"
 					}
 				],
-				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is an application programming interface (API)?</h2>\n\n<p>An application programming interface (API) is a set of rules that enables a software program to transmit data to another software program. APIs enable developers to avoid redundant work; instead of building and rebuilding application functions that already exist, developers can incorporate existing ones into their new applications by formatting requests as the API requires.</p>\n\n<p>An API is an \"interface,\" meaning a way for one thing to interact with another. As a real-world example, an ATM has an interface — a screen and several buttons — allowing customers to interact with their bank and request services, like getting cash. Similarly, an API is how one piece of software interacts with another program to obtain needed services.</p>\n\n<p>Imagine Jennifer builds a website that helps commuters check highway traffic before they leave for work. Jennifer could spend a lot of time and money setting up a complex highway tracking system to provide this information to her website's users. But these capabilities already exist, as outside parties have created such systems. Instead of reinventing the wheel in this way, Jennifer's website uses an API that is offered by an external highway tracking service. Now Jennifer can focus on building other aspects of the website.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is an API call?</h2>\n\n<p>An <a href='/learning/security/api/what-is-api-call/'>API call</a>, also known as an API request, is a message directed at an API that triggers the API's use. Referring back to the example, Jennifer constructs her website in such a way that when it loads, it automatically generates an API call to the highway tracking service. The response comes back to the website from that service and enables it to display the latest highway traffic information.</p>\n\n<p>API calls have to be formatted in accordance with the API's requirements in order to work. The API's requirements are called its \"schema.\" The schema also describes the types of responses that are provided to each request.</p>\n\n<p>Suppose a commuter uses Jennifer's website to check traffic on Highway 192. The website sends an API call to provide this information — a message that reads \"Highway 192.\" The highway tracking service's API server receives this message and replies with travel times on Highway 192. Imagine the API's schema in this way:</p>\n\n<div class=\"record-table\">\n<table>\n<tr>\n  <th><strong>API request</strong></th>\n  <th><strong>API response</strong></th>\n  </tr>\n  <tr>\n    <td>\"Highway 192\"</td>\n    <td>Travel times on Highway 192</td>\n  </tr>\n  <tr>\n    <td>\"Highway 217\"</td>\n    <td>Travel times on Highway 217</td>\n  </tr>\n  <tr>\n    <td>\"Highway 225\"</td>\n    <td>Travel times on Highway 225</td>\n  </tr>\n  </table>\n</div>\n\n<p>(Note that this is a highly simplified example — real-world API requests, responses, and schemas are more complex.)</p>\n\n<p>Now suppose that Jennifer's website sends an API request for \"Highway ASDFGHJ.\" This is not a valid request because it does not conform to the API's schema, which only allows for actual names of highways. The server will not be able to provide a usable response to such a request.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is an API endpoint?</h2>\n\n<p>An endpoint is the end of a communications channel. An <a href='/learning/security/api/what-is-api-endpoint/'>API endpoint</a> is the place where an API response originates from.</p>\n\n<p>In the example, the client of the API connection is Jennifer's website, and the endpoint is the server that hosts the API. Jennifer's API calls have to go to a certain URL (a URL is a web address, like <a href='/learning/'>www.cloudflare.com/learning</a>) that the API server is responsible for in order to get a response.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is API integration?</h2>\n\n<p>API integration is the combination of two or more applications using APIs. API integration is what enables one application to benefit from the capabilities of another application, just as combining a sales team and a marketing team in one office enables those two teams to work together and benefit from each other's efforts. API integrations are also commonly used to synchronize data between two applications or databases.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is a web API?</h2>\n\n<p>Anything that involves computer code can have an API, from operating systems to software libraries. A web API is specifically for use by web applications that are accessed over the Internet.</p>\n\n<p>Web APIs are incredibly important for the modern Internet. Almost all user-facing applications rely on APIs to function (not just Jennifer's website!). Entire software development philosophies rely on the use of APIs — one such philosophy is <a href='/learning/performance/what-is-jamstack/'>JAMstack</a>, with JAM standing for JavaScript, APIs, markup. Another example is <a href='/learning/serverless/glossary/serverless-microservice/'>microservices</a> architecture, which uses APIs in order to call the different functions that make up an application. Even applications built without these approaches usually rely on APIs.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are SOAP APIs and REST APIs?</h2>\n\n<p>SOAP APIs and REST APIs describe different categories of APIs.</p>\n\n<p>SOAP (Simple Object Access Protocol) is a type of <a href='/learning/network-layer/what-is-a-protocol/'>protocol</a>. SOAP APIs are APIs that only use the SOAP protocol.</p>\n\n<p>REST (REpresentational State Transfer) is an architectural style for web services. A REST API is any API built using REST architecture. Unlike SOAP APIs, REST APIs work with any protocol. Most APIs today are REST APIs.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Do APIs introduce security risks?</h2>\n\n<p>Just as allowing a person to use an application introduces the risk that the person will abuse the application, an API introduces the risk that an API client will abuse the service. Additionally, web API calls travel over the Internet and can be intercepted, <a href='/learning/ddos/glossary/ip-spoofing/'>spoofed</a>, or modified just like any other data transfer over a network.</p>\n\n<p><a href='/learning/security/api/what-is-api-security/'>API security</a> is the practice of protecting APIs from attacks and abuse. Given the importance of APIs to the modern Internet, API security is a core component of <a href='/learning/security/what-is-web-application-security'>web application security</a>. Crucial API security measures include:</p>\n\n<ul class=\"learning-list\">\n  <li><a href='/learning/bots/what-is-rate-limiting'>Rate limiting</a>: Clients who make too many API requests can slow down or crash the API for other clients. Rate limiting puts a cap on how many API requests can come from a given API endpoint within a certain timeframe.</li>\n  <li><a href='/learning/ddos/ddos-mitigation'>DDoS protection</a>: Similar to rate limiting, distributed denial-of-service (DDoS) protection stops <a href='/learning/ddos/what-is-a-ddos-attack/'>DDoS attacks</a>, which aim to exhaust or overwhelm an API with a large amount of requests sent all at once.</li>\n  <li><a href='/learning/access-management/what-is-identity-and-access-management'>Authentication</a>: It is important to authenticate API endpoints and clients in order to make sure that API requests come from legitimate sources and not from attackers. Mutual TLS (mTLS) is one of the most effective forms of API authentication.</li>\n  <li>Schema validation: If an API request does not conform to the API's schema, the API may react in unexpected ways — by revealing confidential data, for instance. Schema validation enables an API to drop such requests.</li>\n</ul>\n\n<p><a href='/apishield/'>Cloudflare API Shield</a> includes these and other security features to protect against API threats. To read about API security in more depth, see <a href='/learning/security/api/what-is-api-security/'>What is API security?</a></p>",
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is an application programming interface (API)?</h2>\n\n<p>An application programming interface (API) is a set of rules that enables a software program to transmit data to another software program. APIs enable developers to avoid redundant work; instead of building and rebuilding application functions that already exist, developers can incorporate existing ones into their new applications by formatting requests as the API requires.</p>\n\n<p>An API is an \"interface,\" meaning a way for one thing to interact with another. As a real-world example, an ATM has an interface — a screen and several buttons — allowing customers to interact with their bank and request services, like getting cash. Similarly, an API is how one piece of software interacts with another program to obtain needed services.</p>\n\n<p>Imagine Jennifer builds a website that helps commuters check highway traffic before they leave for work. Jennifer could spend a lot of time and money setting up a complex highway tracking system to provide this information to her website's users. But these capabilities already exist, as outside parties have created such systems. Instead of reinventing the wheel in this way, Jennifer's website uses an API that is offered by an external highway tracking service. Now Jennifer can focus on building other aspects of the website.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is an API call?</h2>\n\n<p>An <a href='/learning/security/api/what-is-api-call/'>API call</a>, also known as an API request, is a message directed at an API that triggers the API's use. Referring back to the example, Jennifer constructs her website in such a way that when it loads, it automatically generates an API call to the highway tracking service. The response comes back to the website from that service and enables it to display the latest highway traffic information.</p>\n\n<p>API calls have to be formatted in accordance with the API's requirements in order to work. The API's requirements are called its \"schema.\" The schema also describes the types of responses that are provided to each request.</p>\n\n<p>Suppose a commuter uses Jennifer's website to check traffic on Highway 192. The website sends an API call to provide this information — a message that reads \"Highway 192.\" The highway tracking service's API server receives this message and replies with travel times on Highway 192. Imagine the API's schema in this way:</p>\n\n<div class=\"record-table\">\n<table>\n<tr>\n  <th><strong>API request</strong></th>\n  <th><strong>API response</strong></th>\n  </tr>\n  <tr>\n    <td>\"Highway 192\"</td>\n    <td>Travel times on Highway 192</td>\n  </tr>\n  <tr>\n    <td>\"Highway 217\"</td>\n    <td>Travel times on Highway 217</td>\n  </tr>\n  <tr>\n    <td>\"Highway 225\"</td>\n    <td>Travel times on Highway 225</td>\n  </tr>\n  </table>\n</div>\n\n<p>(Note that this is a highly simplified example — real-world API requests, responses, and schemas are more complex.)</p>\n\n<p>Now suppose that Jennifer's website sends an API request for \"Highway ASDFGHJ.\" This is not a valid request because it does not conform to the API's schema, which only allows for actual names of highways. The server will not be able to provide a usable response to such a request.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is an API endpoint?</h2>\n\n<p>An endpoint is the end of a communications channel. An <a href='/learning/security/api/what-is-api-endpoint/'>API endpoint</a> is the place where an API response originates from.</p>\n\n<p>In the example, the client of the API connection is Jennifer's website, and the endpoint is the server that hosts the API. Jennifer's API calls have to go to a certain URL (a URL is a web address, like <a href='/learning/'>www.cloudflare.com/learning</a>) that the API server is responsible for in order to get a response.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is API integration?</h2>\n\n<p>API integration is the combination of two or more applications using APIs. API integration is what enables one application to benefit from the capabilities of another application, just as combining a sales team and a marketing team in one office enables those two teams to work together and benefit from each other's efforts. API integrations are also commonly used to synchronize data between two applications or databases.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is a web API?</h2>\n\n<p>Anything that involves computer code can have an API, from operating systems to software libraries. A web API is specifically for use by web applications that are accessed over the Internet.</p>\n\n<p>Web APIs are incredibly important for the modern Internet. Almost all user-facing applications rely on APIs to function (not just Jennifer's website!). Entire software development philosophies rely on the use of APIs — one such philosophy is <a href='/learning/performance/what-is-jamstack/'>JAMstack</a>, with JAM standing for JavaScript, APIs, markup. Another example is <a href='/learning/serverless/glossary/serverless-microservice/'>microservices</a> architecture, which uses APIs in order to call the different functions that make up an application. Even applications built without these approaches usually rely on APIs.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What are SOAP APIs and REST APIs?</h2>\n\n<p>SOAP APIs and REST APIs describe different categories of APIs.</p>\n\n<p>SOAP (Simple Object Access Protocol) is a type of <a href='/learning/network-layer/what-is-a-protocol/'>protocol</a>. SOAP APIs are APIs that only use the SOAP protocol.</p>\n\n<p>REST (REpresentational State Transfer) is an architectural style for web services. A REST API is any API built using REST architecture. Unlike SOAP APIs, REST APIs work with any protocol. Most APIs today are REST APIs.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Do APIs introduce security risks?</h2>\n\n<p>Just as allowing a person to use an application introduces the risk that the person will abuse the application, an API introduces the risk that an API client will abuse the service. Additionally, web API calls travel over the Internet and can be intercepted, <a href='/learning/ddos/glossary/ip-spoofing/'>spoofed</a>, or modified just like any other data transfer over a network.</p>\n\n<p><a href='/learning/security/api/what-is-api-security/'>API security</a> is the practice of protecting APIs from attacks and abuse. Given the importance of APIs to the modern Internet, API security is a core component of <a href='/learning/security/what-is-web-application-security/'>web application security</a>. Crucial API security measures include:</p>\n\n<ul class=\"learning-list\">\n  <li><a href='/learning/bots/what-is-rate-limiting/'>Rate limiting</a>: Clients who make too many API requests can slow down or crash the API for other clients. Rate limiting puts a cap on how many API requests can come from a given API endpoint within a certain timeframe.</li>\n  <li><a href='/learning/ddos/ddos-mitigation/'>DDoS protection</a>: Similar to rate limiting, distributed denial-of-service (DDoS) protection stops <a href='/learning/ddos/what-is-a-ddos-attack/'>DDoS attacks</a>, which aim to exhaust or overwhelm an API with a large amount of requests sent all at once.</li>\n  <li><a href='/learning/access-management/what-is-identity-and-access-management/'>Authentication</a>: It is important to authenticate API endpoints and clients in order to make sure that API requests come from legitimate sources and not from attackers. Mutual TLS (mTLS) is one of the most effective forms of API authentication.</li>\n  <li>Schema validation: If an API request does not conform to the API's schema, the API may react in unexpected ways — by revealing confidential data, for instance. Schema validation enables an API to drop such requests.</li>\n</ul>\n\n<p><a href='/products/api-gateway/'>Cloudflare API Gateway</a> includes these and other security features to protect against API threats. To read about API security in more depth, see <a href='/learning/security/api/what-is-api-security/'>What is API security?</a></p>",
 				"availableLocales": null,
 				"localized": null,
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
-					"zhTW": "English for Locale",
+					"zhTW": "Translated for Locale",
 					"frFR": "Translated for Locale",
 					"deDE": "Translated for Locale",
 					"itIT": "English for Locale",
 					"jaJP": "Translated for Locale",
-					"koKR": "English for Locale",
+					"koKR": "Translated for Locale",
 					"ptBR": "Translated for Locale",
 					"esES": "Translated for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
 					"enGB": "English for Locale",
-					"nlNL": "No Page for Locale",
-					"idID": "No Page for Locale",
-					"thTH": "No Page for Locale",
-					"ruRU": "No Page for Locale",
-					"svSE": "No Page for Locale",
-					"viVN": "No Page for Locale",
-					"trTR": "No Page for Locale",
-					"zhHansCN": "Translated for Locale"
+					"nlNL": "English for Locale",
+					"idID": "English for Locale",
+					"thTH": "English for Locale",
+					"ruRU": "English for Locale",
+					"svSE": "English for Locale",
+					"viVN": "English for Locale",
+					"trTR": "English for Locale",
+					"zhHansCN": "Translated for Locale",
+					"plPL": "English for Locale",
+					"elGR": "English for Locale",
+					"nbNO": "English for Locale"
 				},
 				"proactivePopup": null,
 				"sidebarForm": null
@@ -876,9 +963,11 @@
 			"allowedHrefLangs": [
 				"en-US",
 				"zh-CN",
+				"zh-TW",
 				"fr-FR",
 				"de-DE",
 				"ja-JP",
+				"ko-KR",
 				"pt-BR",
 				"es-ES",
 				"zh-Hans-CN"
