@@ -50,7 +50,12 @@
 				},
 				"contentfulId": "5sUwtIOykMMaqiksqGwA0M",
 				"contentTypeId": "page",
-				"promotionalBanner": null,
+				"promotionalBanner": {
+					"pillText": "What is it?",
+					"linkText": "Here",
+					"linkUrl": "https://developers.cloudflare.com/dns/",
+					"desktopText": " Not sure what DNS is.  Learn more about it "
+				},
 				"psaBanner": null,
 				"customTopNav": null,
 				"headerLogo": null,
@@ -325,300 +330,6 @@
 						"quoteCarousel": null
 					},
 					{
-						"contentfulId": "592ppDGeF1KRqUpDrl8RjH",
-						"title": "Unlimited and Unmetered DDoS Mitigation",
-						"copy": "Relieve your organization from the costs and stress of DDoS attacks against your DNS. With Cloudflare Managed DNS, you get unlimited and unmetered mitigation against DNS-based DDoS attacks. Our network capacity is %{NetworkCapacityLargestDDOS} bigger than the largest DDoS attack ever recorded.",
-						"toggleText": null,
-						"button": null,
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": null,
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "[path]/CloudFlare_DDOS_illustration.png"
-							}
-						},
-						"imageAssetFile": {
-							"id": "52c29133-7355-575d-a546-b2150d8f4231",
-							"altText": "Dns unmetered ddos spot illustration",
-							"title": "Dns unmetered ddos spot illustration",
-							"activeAsset": "Brandfolder Asset",
-							"locale": "en-US",
-							"contentfulAsset": null,
-							"brandfolderAsset": {
-								"size": 21737,
-								"height": 2794,
-								"width": 3996,
-								"filename": "dns-unmetered-ddos-spot-illustration.svg",
-								"file": {
-									"publicURL": "[path]/dns-unmetered-ddos-spot-illustration.svg"
-								}
-							},
-							"brandfolderAssetMobile": null
-						},
-						"featureList": null,
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"imagePosition": true,
-						"imageSize": null,
-						"imageTextAlignment": null,
-						"togglesTo": null
-					},
-					{
-						"contentfulId": "2OZnJDBXOMB28QUTbSIpmm",
-						"title": "One-Click DNSSEC",
-						"copy": "Cloudflare Managed DNS comes with built-in DNSSEC to protect your users from on-path attacks that can spoof or hijack your DNS records. DNSSEC adds an additional layer of security at every level in the DNS lookup process. The best part — you can easily deploy DNSSEC at the click of a single button. \n",
-						"toggleText": null,
-						"button": null,
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": null,
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "[path]/BDES-39_DNS-Product-Page_DNSSEC-One-Click.svg"
-							}
-						},
-						"imageAssetFile": {
-							"id": "33a5fbeb-9f8b-5058-84d3-e37d39389acb",
-							"altText": "Simple integration spot illustration",
-							"title": "Simple integration spot illustration",
-							"activeAsset": "Brandfolder Asset",
-							"locale": "en-US",
-							"contentfulAsset": null,
-							"brandfolderAsset": {
-								"size": 23314,
-								"height": 2168,
-								"width": 3974,
-								"filename": "simple-integration-spot-illustration.svg",
-								"file": {
-									"publicURL": "[path]/simple-integration-spot-illustration.svg"
-								}
-							},
-							"brandfolderAssetMobile": null
-						},
-						"featureList": null,
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "white",
-						"bladeBorder": "border-top",
-						"imagePosition": false,
-						"imageSize": null,
-						"imageTextAlignment": null,
-						"togglesTo": null
-					},
-					{
-						"contentfulId": "3b948mzfIGkmFIYzEYMoEZ",
-						"title": "Easy Configuration Backed By 24/7/365 Technical Support ",
-						"copy": "We make DNS easy. All your domains can be managed through our user-friendly interface or via an API, regardless of where your Internet properties are hosted. Terraform integration further automates DNS management and configuration. \n\nYou get 24/7 phone and email support, and dedicated solutions and success engineers — helping onboard and configure DNS records with zero downtime.\n",
-						"toggleText": null,
-						"button": null,
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": null,
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "[path]/4-Configuration_and_Support.png"
-							}
-						},
-						"imageAssetFile": {
-							"id": "33a5fbeb-9f8b-5058-84d3-e37d39389acb",
-							"altText": "Simple integration spot illustration",
-							"title": "Simple integration spot illustration",
-							"activeAsset": "Brandfolder Asset",
-							"locale": "en-US",
-							"contentfulAsset": null,
-							"brandfolderAsset": {
-								"size": 23314,
-								"height": 2168,
-								"width": 3974,
-								"filename": "simple-integration-spot-illustration.svg",
-								"file": {
-									"publicURL": "[path]/simple-integration-spot-illustration.svg"
-								}
-							},
-							"brandfolderAssetMobile": null
-						},
-						"featureList": null,
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "white",
-						"bladeBorder": "border-top",
-						"imagePosition": true,
-						"imageSize": null,
-						"imageTextAlignment": null,
-						"togglesTo": null
-					},
-					{
-						"contentfulId": "67k4eq6yMpg48me0WyF6tn",
-						"title": "Global and Local Load Balancing ",
-						"copy": "With Cloudflare Load Balancing, you can reduce latency and improve application availability by steering traffic away from unhealthy origins and dynamically distributing it to the most available and responsive server pools. Our load balancing solution leverages Cloudflare's global Anycast network and supports all protocols from HTTP(S) to TCP and UDP.",
-						"toggleText": null,
-						"button": null,
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": null,
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "[path]/load-balancing-hero.svg"
-							}
-						},
-						"imageAssetFile": {
-							"id": "4e50d397-d6f1-5f06-9ae2-1ae8b9b93c89",
-							"altText": "load-balancing-hero",
-							"title": "load-balancing-hero",
-							"activeAsset": "Brandfolder Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "[path]/load-balancing-hero.svg"
-								}
-							},
-							"brandfolderAsset": {
-								"size": 17962,
-								"height": 2070,
-								"width": 3992,
-								"filename": "load-balancing-hero-illustration.svg",
-								"file": {
-									"publicURL": "[path]/load-balancing-hero-illustration.svg"
-								}
-							},
-							"brandfolderAssetMobile": null
-						},
-						"featureList": null,
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "white",
-						"bladeBorder": "border-top",
-						"imagePosition": false,
-						"imageSize": null,
-						"imageTextAlignment": null,
-						"togglesTo": null
-					},
-					{
-						"contentfulId": "713sAiCdQ9yiLfXem6PPuB",
-						"title": "Advanced Analytics",
-						"copy": "Get in-depth, real-time analytics into the health of your DNS traffic — all easily accessible from the Cloudflare Dashboard. Generate detailed raw and visual reports for your DNS queries - filtered by response codes, record types, geography, domains, etc. Raw log files are also available via API and can be integrated with SIEM/parsing tools.",
-						"toggleText": null,
-						"button": null,
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": null,
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "[path]/illustration_analytics_data.svg"
-							}
-						},
-						"imageAssetFile": {
-							"id": "bf3a98aa-ee99-5d63-b713-20564513c0ca",
-							"altText": "Cdn analytics spot illustration",
-							"title": "Cdn analytics spot illustration",
-							"activeAsset": "Brandfolder Asset",
-							"locale": "en-US",
-							"contentfulAsset": null,
-							"brandfolderAsset": {
-								"size": 15556,
-								"height": 2272,
-								"width": 3016,
-								"filename": "cdn-analytics-spot-illustration.svg",
-								"file": {
-									"publicURL": "[path]/cdn-analytics-spot-illustration.svg"
-								}
-							},
-							"brandfolderAssetMobile": null
-						},
-						"featureList": null,
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "white",
-						"bladeBorder": "border-top",
-						"imagePosition": true,
-						"imageSize": null,
-						"imageTextAlignment": null,
-						"togglesTo": null
-					},
-					{
 						"contentfulId": "5PMUkO469z8Ik7Njk681bA",
 						"title": "Quickly Configure Email Security DNS Records",
 						"copy": "Ensure peace of mind with our easy-to-use Email Security DNS Wizard to prevent malicious actors from sending fraudulent emails on behalf of your domain — configure the required email DNS records with just a few clicks. We will warn you if we detect missing or insecure email configuration on your domain. \n\nLearn more about SPF, DKIM, and DMARC in our [Learning Center](https://www.cloudflare.com/learning/dns/dns-records/dns-txt-record/).",
@@ -675,64 +386,52 @@
 						"togglesTo": null
 					},
 					{
-						"contentfulId": "79PthEbQkqrG2Uf3bL3QWR",
-						"contentTypeId": "bladeKeyFeatures",
-						"backgroundColor": "light-blue",
-						"title": "Key Features",
-						"keyFeature": [
-							"Fully redundant architecture designed for 100% uptime",
-							"Unmetered and unlimited DDoS mitigation",
-							"Support for CNAME records at the apex level",
-							"DNS resolution at the edge",
-							"One-click DNSSEC support",
-							"Custom Nameservers",
-							"Global and local load balancing",
-							"Role-based access controls",
-							"Advanced analytics (up to 6 months)",
-							"24/7/365 dedicated technical support",
-							"Multi-factor authentication and SSO",
-							"Integration with SIEM/parsing tools"
-						],
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"titleColor": null,
-						"variant": null,
-						"description": null,
-						"featuresTextStyle": null,
-						"htmlId": null
-					},
-					{
-						"contentfulId": "5kk1BaUW28DrLBfk3sxPDH",
-						"title": "Not Ready to Change Your Authoritative DNS?",
-						"copy": "Maintain your existing DNS infrastructure while using Cloudflare DNS as a secondary DNS or in a hidden primary setup. We support TSIG authentication for zone transfers.\n\nCloudflare is one of the world's fastest and most reliable authoritative DNS providers [Learn More](https://www.dnsperf.com/)",
+						"contentfulId": "1d5VgtujskMYfvAmobRGNm",
+						"title": "Handle Misdirected Queries with the AS112 Project",
+						"copy": "Cloudflare helps reduce the load on public DNS infrastructure by functioning as an operator of the AS112 project, assisting the community-operated, loosely-coordinated anycast deployment of DNS servers that primarily answer reverse DNS lookup queries that are misdirected and create significant, unwanted load on the Internet.\n\nLearn more about Cloudflare's impact on the AS112 project via [Cloudflare Radar](https://radar.cloudflare.com/as112).\n",
 						"toggleText": null,
 						"button": null,
-						"learnMoreUrl": "https://support.cloudflare.com/hc/en-us/articles/360017421192-Cloudflare-DNS-FAQ",
-						"learnMoreText": "View DNS FAQs",
+						"learnMoreUrl": null,
+						"learnMoreText": null,
 						"link": null,
-						"subheadline": "Cloudflare DNS can easily integrate into a multi-vendor environment.",
+						"subheadline": null,
 						"button1Text": null,
 						"button1Url": null,
 						"button1Color": null,
 						"button2Text": null,
 						"button2Url": null,
 						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
 						"streamVideoId": null,
 						"streamThumbnails": null,
 						"streamPoster": null,
 						"streamPosterAssetFile": null,
 						"image": null,
-						"imageAssetFile": null,
+						"imageAssetFile": {
+							"id": "aa7a3d1a-226e-58bc-a6b7-2a52b787c423",
+							"altText": "AS112 support",
+							"title": "AS112 support",
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "[path]/AS112_support.png"
+								}
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
 						"featureList": null,
 						"contentTypeId": "bladeImageText",
 						"sectionTitle": null,
 						"htmlId": null,
-						"titleSize": "large",
-						"sectionPadding": "tile--no-bottom-padding",
-						"backgroundColor": "light-blue",
-						"bladeBorder": "none",
+						"titleSize": null,
+						"sectionPadding": null,
+						"backgroundColor": "white",
+						"bladeBorder": "border-top",
 						"imagePosition": true,
 						"imageSize": null,
 						"imageTextAlignment": null,
