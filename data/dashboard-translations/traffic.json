@@ -170,7 +170,7 @@
 	"traffic.health_checks.tooltip.http_config.headers": "The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.",
 	"traffic.health_checks.tooltip.http_config.allow_insecure": "Do not validate the certificate when the monitor uses HTTPS",
 	"traffic.health_checks.tooltip.http_config.follow_redirects": "If enabled, the probe will follow redirects",
-	"traffic.health_checks.tooltip.interval": "The interval between each Health Check.",
+	"traffic.health_checks.tooltip.interval": "The interval between each Health Check in seconds.",
 	"traffic.health_checks.tooltip.timeout": "The timeout (in seconds) before marking the health check as failed",
 	"traffic.health_checks.tooltip.retries": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.",
 	"traffic.health_checks.tooltip.check_regions": "Configure Cloudflare to check your health from multiple locations.",
