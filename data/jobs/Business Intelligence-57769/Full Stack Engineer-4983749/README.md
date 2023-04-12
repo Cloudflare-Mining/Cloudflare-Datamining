@@ -5,33 +5,34 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Job Description:</strong></p>
-<p><span style="font-weight: 400;">As an intern on the</span><span style="font-weight: 400;">&nbsp;Internal Audit (IA) team, you will support the IA team in executing all aspects of Cloudflare’s Operational Audits. You will also support the execution of Business Process Controls testing for SOX controls deemed reliant by our external auditors.</span></p>
+<p><strong>About Us</strong></p>
+<p><span style="font-weight: 400;">At Cloudflare, we have our eyes set on an ambitious goal: to help build a better Internet. Today the company runs one of the world’s largest networks that powers trillions of requests per month. Cloudflare protects and accelerates any Internet application online without adding hardware, installing software, or changing a line of code. Internet properties powered by Cloudflare have all web traffic routed through its intelligent global network, which gets smarter with every request. As a result, they see significant improvement in performance and a decrease in spam and other attacks. Cloudflare was recognized by the World Economic Forum as a Technology Pioneer and named to Entrepreneur Magazine’s Top Company Cultures list.</span></p>
+<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;&nbsp;</span></p>
+<h4><strong>About the team</strong></h4>
+<p><span style="font-weight: 400;">The Business Intelligence team at Cloudflare is responsible for building a centralized cloud data lake and an analytics platform that enables our internal Business Partners and Product teams with actionable insights and also provides a 360 view of our business. Our goal is to democratize data, support Cloudflare’s critical business needs, provide reporting and analytics via self-service tools to fuel existing and new business critical initiatives.</span></p>
+<h4><strong>About the role</strong></h4>
+<p><span style="font-weight: 400;">We are looking for an entry level Software Engineer to join our Lisbon team to scale our development efforts on product and customer insights initiatives. You will work on building internal analytics applications which empowers our Go to Market teams with data insights.&nbsp;</span></p>
+<p><span style="font-weight: 400;">&nbsp;</span></p>
 <p><strong>What you'll do</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Assist in executing the Internal Audit plan under the supervision of an IA Manager. This includes operational audit planning, risk assessment, fieldwork, issues validation, and reporting.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Execute operational audits in accordance with department and professional standards, and complete assignments timely in an efficient manner</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Help design testing procedures relevant to risk and test objectives</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Identify and document operational audit processes, risks, and controls</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Prepare audit workpapers and reports with direct supervision</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Build relationships with key stakeholders and business owners</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Execute test of design and operating effectiveness for reliant SOX controls</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Document all Operational Audit &amp; SOX work in the AuditBoard tool</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Report to an IA Manager</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Be assigned a mentor to guide you through the internship and help with career goals.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Make friends across the company through our Buddy Program, Employee Resource Group (ERG) programs, and Activity Groups (Cat or dog lovers, we’ve got communities for you! @Catflare @Doggos).</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Present your project to the entire company at the end of the internship.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Get direct access to our executives and leadership team including our co-founders.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Design reusable UI components and ship new features to our internal web applications</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Design backend database schemas and the APIs&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Work closely with a cross functional team of data engineers,analysts and software engineers</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Integrate internal web applications with other SaaS applications used by Go to market functions</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Contribute in improving an evolving platform architecture for scalability, observability and reliability</span></li>
 </ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Accounting, Finance, Business, Economics, Data Analytics major preferred</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Effective communicator, ability to build relations &amp; manage expectations&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Time management skills and ability to plan and prioritize effectively</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Proficiency in Microsoft Excel/Google Sheets required&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to work effectively in a team environment</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Critical thinking decision making/problem solving skills</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Curious mindset &amp; initiative</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">B.S. or M.S in Computer Science, Statistics, Mathematics, or other quantitative fields&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Hands on programming experience with React, Go or any similar programming languages</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Knowledge of SQL and common relational database systems such as PostgreSQL and MySQL</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience writing or shipping software as part of full-time work, college/bootcamp coursework, personal projects, internships, coding competitions or research</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Excellent analytical &amp; problem solving skills&nbsp;</span></li>
+</ul>
+<p><strong>Bonus Points</strong></p>
+<ul>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Familiarity with container based deployments such as Docker &amp; Kubernetes</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Familiarity with Google Cloud Platform or something similar</span></li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
