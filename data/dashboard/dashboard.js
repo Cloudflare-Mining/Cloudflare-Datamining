@@ -7474,12 +7474,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				e.g.build = Gd({}, {
-					branch: "release-Apr.12.2023-1681315323",
+					branch: "hotfix-bad-transkey",
 					isReleaseCandidate: "true",
-					commit: "f3198435eeebd6b82fffa2e647a69e353f4bb526",
+					commit: "9c5d1c460fe000ff57ae83fe78614375980181d3",
 					env: "production",
-					builtAt: 1681322639024,
-					dashVersion: "39f90f1a84ca2351ec89dff945e96607992ee60a",
+					builtAt: 1681326236736,
+					dashVersion: "8a52e2d3cffea4eaefb6e0d609a42b9ab6a13b03",
 					versions: {
 						"@cloudflare/app-dash": "25.151.1",
 						node: "16.16.0",
@@ -12309,16 +12309,16 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				A = e("../react/pages/zaraz/routes.ts"),
 				D = e("../react/app/components/SidebarNav/utils.ts"),
 				K = [{
-					title: "edge_traffic_order_nav.url_rewrites",
+					title: "navigation.zone.rules.transform_rules.tab.rewrite-url",
 					url: "/rewrite-url"
 				}, {
-					title: "edge_traffic_order_nav.header_modification",
+					title: "navigation.zone.rules.transform_rules.tab.modify-request-header",
 					url: "/modify-request-header"
 				}, {
-					title: "edge_traffic_order_nav.header_modifications",
+					title: "navigation.zone.rules.transform_rules.tab.modify-response-header",
 					url: "/modify-response-header"
 				}, {
-					title: "managed_header_modifications.table.title.request_headers",
+					title: "navigation.zone.rules.transform_rules.tab.managed-transforms",
 					url: "/managed-transforms"
 				}],
 				N = e("../react/pages/zone-versioning/routes.ts"),
@@ -129851,4 +129851,4 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 	}
 ]);
 
-//# sourceMappingURL=6c68ec69d7e32d98b919.js.map
+//# sourceMappingURL=82dbc789f93745b6d893.js.map
