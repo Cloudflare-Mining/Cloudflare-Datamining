@@ -278,6 +278,8 @@
 	"speed.earlyhints.card_help": "103 Early Hints is an HTTP status code designed to speed up content delivery. When enabled, Cloudflare can cache the Link headers marked with preload and/or preconnect from HTML pages and serve them in a 103 Early Hints response before reaching the origin server. Browsers can use these hints to fetch linked assets while waiting for the origin's final response, dramatically improving page load speeds.\n\nPlease see the [feature docs](https://developers.cloudflare.com/cache/about/early-hints) and [announcement blog](https://blog.cloudflare.com/early-hints) for more information.",
 	"speed.test.title": "Speed Test",
 	"speed.test.subtitle": "Run tests with synthetic data to identify opportunities to improve performance.",
+	"speed.test.documentation": "Speed Test documentation",
+	"speed.optimization.description": "Speed up your website or application.",
 	"speed.test.run_form.url_label": "URL",
 	"speed.test.run_form.region_label": "Region",
 	"speed.test.run_form.frequency_label": "Frequency",

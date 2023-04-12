@@ -406,6 +406,7 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	domain_management_table_auto_renew: "Auto-renew",
 	domain_management_table_expires: "Expires",
 	domain_management_table_manage: "Manage",
+	domain_management_table_invalid_date: "-",
 	domain_management_new_tld_banner_1: "**.TV** and **.CC** domains now available!",
 	domain_management_new_tld_banner_2: "**.US** domains now available!",
 	domain_management_auto_renew_disabled: "No payment method in billing profile. Add one to enable automatic renewal.",
