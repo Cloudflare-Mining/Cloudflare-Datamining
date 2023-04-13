@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/image1-26.png" class="kg-image" alt="Detecting API abuse automatically using sequence analysis"></figure>
-	<p>今天，我们隆重宣布推出 Cloudflare API 序列分析。订阅了 <a href="https://developers.cloudflare.com/api-shield/" target="_blank">API Gateway</a> 服务的客户可以使用序列分析，查看对其端点发出的 API 请求的最重要序列。这项新增功能有助于客户首先保护最重要的端点。</p>
+	<p>今天，我们宣布推出 Cloudflare Sequence Analytics for API。使用 Sequence Analytics， 订阅 <a href="https://developers.cloudflare.com/api-shield/" target="_blank">API Gateway</a> 的客户可以查看对其端点的最重要的 API 请求序列。这个新功能可以帮助客户首先对最重要的端点<a href="https://www.cloudflare.com/learning/security/api/what-is-an-api-gateway/" target="_blank">应用保护</a>。</p>
 	<p>什么是序列？它是一个按时间排序的列表，包含特定访问者在浏览网站、使用移动应用或通过 API 与 B2B 合作伙伴交互时发出 HTTP API 请求列表。例如，银行转账过程会产生序列，其中一部分可能看起来像这样：</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
@@ -213,8 +213,8 @@
 	<h3 id="--1">序列创建的挑战</h3>
 	<p>序列分析带来了一些困难的技术挑战，因为会话可能长时间持续，可能包含许多请求。因此，仅通过会话标识符定义序列并不足够。取而代之，我们有必要开发一个解决方案，以便自动识别给定会话中发生的多个序列。此外，由于重要序列不一定只具有大容量特征，而且可能序列的集合很大，因此有必要开发一种能够识别<em>重要</em>序列的方法，而非仅仅显示<em>频繁的</em>序列。</p>
 	<p>为了展示这些挑战，以 api.cloudflare.com 为例，我们可以按会话对 API 请求进行分组，并绘制不同序列的数量与序列长度的关系：</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/image3-22.png" class="kg-image" title="Chart"></figure>
-	<p>上图基于一个小时的快照，包含大约 8.8 万个会话和 3 亿个API 请求，有 302 个不同的 API 端点。通过对每个会话应用固定长度的滑动窗口来处理数据，然后统计应用滑动窗口后观察到的不同固定长度序列(‘n-grams’) 的总数。该图显示了窗口大小(‘n-gram length’) 在 1 到 10 个请求之间变化的结果。根据该图，我们观察到大量随着序列长度而增长的可能序列：随着我们增加滑动窗口大小，我们在样本中看到越来越大量的不同序列。这种平滑趋势可以通过以下事实来解释：我们应用了一个滑动窗口(会话本身可能包含许多序列)，结合了相对于序列长度的许多长会话。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/04/unnamed-1.png" class="kg-image" title="Chart"></figure>
+	<p>上图基于一个小时的快照，包含大约 8.8 万个会话和 2.6 亿个API 请求，涉及 302 个不同的 API 端点。通过对每个会话应用固定长度的滑动窗口来处理数据，然后统计应用滑动窗口后观察到的不同固定长度序列(‘n-grams’) 的总数。该图显示了窗口大小(‘n-gram length’) 在 1 到 10 个请求之间变化的结果。不同序列的数量范围从 301（对于一个请求的窗口大小）到大约 780,000（对于 10 个请求的窗口大小）。根据该图，我们观察到大量随着序列长度而增长的可能序列：随着我们增加滑动窗口大小，我们在样本中看到越来越大量的不同序列。这种平滑趋势可以通过以下事实来解释：我们应用了一个滑动窗口(会话本身可能包含许多序列)，结合了相对于序列长度的许多长会话。</p>
 	<p>考虑到大量可能的序列，试图找到滥用序列犹如“大海捞针”。</p>
 	<h3 id="--2">序列分析登场</h3>
 	<p>下面是 API Gateway 仪表板以序列分析为重点的截图：</p>
