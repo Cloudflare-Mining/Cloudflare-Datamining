@@ -10,20 +10,20 @@
 		delete: "Delete",
 		addCard: "Add card",
 		invalid_email: "Invalid email",
-		back_to_zone: (0, a.d)(R(), "zoneName"),
+		back_to_zone: (0, a.d)(A(), "zoneName"),
 		email_notification: "Please <0>verify your account email address</0> to access all Registrar features such as Registration and Transfer.",
 		invalid_auth_code: "The registry has indicated that the authorization code is not correct. Please re-enter the code again. If you continue to receive an authorization code error, please request a new code from your current registrar.",
 		registrar_managed: "As this is a Cloudflare Registrar managed account, no payment is needed."
 	},
 	form: {
-		field_validation_error: (0, a.d)(P(), "field"),
+		field_validation_error: (0, a.d)(R(), "field"),
 		field_required_error: "This field is required",
-		field_name_required_error: (0, a.d)(A(), "field"),
-		field_mismatch_error: (0, a.d)(T(), "fieldPlural"),
-		field_min_length_error: (0, a.d)(D(), "length", "characters"),
-		field_length_error: (0, a.d)(x(), "length", "characters"),
+		field_name_required_error: (0, a.d)(P(), "field"),
+		field_mismatch_error: (0, a.d)(S(), "fieldPlural"),
+		field_min_length_error: (0, a.d)(T(), "length", "characters"),
+		field_length_error: (0, a.d)(D(), "length", "characters"),
 		field_must_contain_alpha_characters_error: "This field must contain more than one alphabetical character",
-		field_must_contain_at_least_multiple_alpha_characters_error: (0, a.d)(S(), "numAlphaCharacters"),
+		field_must_contain_at_least_multiple_alpha_characters_error: (0, a.d)(x(), "numAlphaCharacters"),
 		field_must_contain_at_least_one_alpha_characters_error: "This field must contain at least one alphabetical character",
 		field_must_contain_ascii_characters_error: "This field must only include A-Z, a-z, 0-7, spaces, punctuation, and symbols",
 		field_invalid_email_error: "Invalid email address",
@@ -73,8 +73,8 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 		purchase_security: "All transactions are secure and encrypted.",
 		purchase_agreement: (0, a.d)(z()),
 		purchase_agreement_with_icloud: (0, a.d)(C()),
-		automatic_renewal_agreement: "Automatic renewals may be cancelled at any time via the Domain Management page in your account. Automatic renewals will be billed to the payment method on file, until cancelled.",
-		automatic_renewal_agreement_enabled: "You are consenting to the automatic renewal of your domain names(s)."
+		automatic_renewal_agreement: 'Your subscription, including any domain name(s), automatically renews and will be billed to your payment method on file, until canceled. You may cancel anytime in <a href="/%{accountId}/billing/subscriptions" rel="noopener noreferrer" target="_blank">Billing Subscriptions</a>, or via the Domain Management page in your account for registrar, at least a day before each renewal date.',
+		usage_base_disclaimer: "For Services subject to usage based billing, you will be charged based on your use of the Services during the period specified by Cloudflare."
 	},
 	global_banner: {
 		cta: "Click here",
