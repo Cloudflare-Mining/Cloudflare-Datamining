@@ -60,7 +60,15 @@
 					"linkUrl": "https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway/",
 					"desktopText": "What is a Secure Web Gateway (SWG) and what does it do? Read more in our Learning Center."
 				},
-				"psaBanner": null,
+				"psaBanner": {
+					"contentTypeId": "psaBanner",
+					"contentfulId": "47TUqQxRSVeRrYNsFpOYo8",
+					"text": "Cloudflare is the only new vendor to be recognized in the 2023 GartnerⓇ Magic Quadrant™ for Security Service Edge (SSE).",
+					"learnMoreText": "Read the report",
+					"learnMoreUrl": "https://www.cloudflare.com/lp/gartner-magic-quadrant-sse-2023/",
+					"backgroundColor": "blue0",
+					"hideCloseButton": false
+				},
 				"customTopNav": [
 					{
 						"contentTypeId": "navNavigationGroup",
@@ -5962,56 +5970,81 @@
 						]
 					},
 					{
-						"contentfulId": "6jcRrKhi3kJP1U4gluQ8Dg",
-						"title": "Cloudflare named a Strong Performer",
-						"copy": "See why Cloudflare was named a Strong Performer in the 2022 Gartner Peer Insights \"Voice of the Customer\" report for Security Service Edge (SSE).",
-						"toggleText": null,
-						"button": null,
-						"learnMoreUrl": "https://www.gartner.com/reviews/market/security-service-edge/vendor/cloudflare/product/cloudflare-one",
-						"learnMoreText": "Read the reviews",
-						"link": null,
-						"subheadline": "Reviewed by customers on Gartner Peer Insights",
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": [
-							"controls"
-						],
-						"streamCaptions": "en",
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": null,
-						"imageAssetFile": {
-							"id": "d4c6e855-e2d4-53d1-bdb0-8c39fc8cc174",
-							"altText": null,
-							"title": "Gartner Peer Insights Logo",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "[path]/GPI_Logo.png"
-								}
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"featureList": null,
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": "Customer recognition",
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
+						"contentfulId": "7yzUeNR8UP5T4k12xpr3F2",
 						"backgroundColor": "white",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
+						"copy": null,
+						"title": null,
+						"subtitle": "Analyst Recognition",
+						"bladeStyle": "Feature Blocks - 2 columns",
 						"bladeBorder": "none",
-						"imagePosition": false,
-						"imageSize": "small",
-						"imageTextAlignment": "center",
-						"togglesTo": null
+						"sectionPadding": null,
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4v8WQXNxB95wnnT75RdlXq",
+								"title": "Cloudflare is the only new vendor in the GartnerⓇ Magic Quadrant™ for SSE.",
+								"titleSize": "medium",
+								"description": "Cloudflare has been recognized in the 2023 GartnerⓇ Magic Quadrant™ for Security Service Edge (SSE) report. We believe our recognition validates our commitment to continue advancing our Zero Trust platform to help secure hybrid work.",
+								"learnMoreUrl": "https://cloudflare.com/lp/gartner-magic-quadrant-sse-2023/",
+								"learnMoreText": "Read the report",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "5fea919a-6858-5f63-bd0b-f6d9280e229a",
+									"altText": null,
+									"title": "Gartner Logo narrow aspect ratio with space",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Gartner_Logo_SVG_Narrow.svg"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "17G0YOl6ZHpik3DBwOgoMt",
+								"title": "Cloudflare named a \"Leader\" in KuppingerCole Leadership Compass for SASE",
+								"titleSize": "medium",
+								"description": "Through its 2023 SASE market analysis, KuppingerCole Analysts AG cited several Cloudflare strengths such as our large globally distributed presence and sophisticated traffic acceleration, massive backbone capacity, 100% uptime guarantee, and innovative Remote Browser Isolation.",
+								"learnMoreUrl": "www.cloudflare.com/lp/kuppingercole-leadership-compass-for-sase-report/",
+								"learnMoreText": "Read the report",
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "837d93d6-fa8b-5dc9-995b-9e109a13171f",
+									"altText": null,
+									"title": "KuppingerCole Logo narrow aspect ratio with space",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/KuppingerCole_Logo_SVG_Narrow.svg"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						]
 					},
 					{
 						"contentfulId": "3INum3NIMQCUZI6xqJfL6z",
@@ -15496,12 +15529,6 @@
 								"streamThumbnailAssetFile": null
 							}
 						]
-					},
-					{
-						"contentTypeId": "bladeHtml",
-						"contentfulId": "cppoL9hrQDDGfC8WAknzw",
-						"htmlContent": "<p class=\"body-3 gray1 pt3\">Gartner Peer Insights Customers' Choice constitute the subjective opinions of individual end-user reviews, ratings, and data applied against a documented methodology; they neither represent the views of, nor constitute an endorsement by, Gartner or its affiliates. </p>",
-						"htmlId": null
 					}
 				],
 				"noindex": false,
@@ -15532,7 +15559,7 @@
 				"es-ES",
 				"zh-Hans-CN"
 			],
-			"hasPsaBanner": false,
+			"hasPsaBanner": true,
 			"baseURL": "https://www.cloudflare.com"
 		}
 	}
