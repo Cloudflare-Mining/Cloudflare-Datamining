@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/image1-26.png" class="kg-image" alt="Detecting API abuse automatically using sequence analysis"></figure>
-	<p>오늘, API용 Cloudflare Sequence Analytics를 발표합니다.<a href="https://developers.cloudflare.com/api-shield/" target="_blank">API Gateway</a> 구독 고객은 Sequence Analytics를 사용하여 엔드포인트로 들어오는 요청 중에서 가장 중요한 API 요청 시퀀스를 확인할 수 있습니다. 고객은 이 새로운 기능을 통해 가장 중요한 엔드포인트에 보호 조치를 우선적으로 적용할 수 있습니다.</p>
+	<p>오늘, API용 Cloudflare Sequence Analytics를 발표합니다. <a href="https://developers.cloudflare.com/api-shield/" target="_blank">API Gateway</a> 구독 고객은 Sequence Analytics를 사용하여 엔드포인트로 들어오는 요청 중에서 가장 중요한 API 요청 시퀀스를 확인할 수 있습니다. 고객은 이 새로운 기능을 통해 가장 중요한 엔드포인트에 <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api-gateway/" target="_blank">보호 조치</a>를 우선적으로 적용할 수 있습니다.</p>
 	<p>시퀀스란? 시퀀스는 간단히 말해 특정 방문자가 웹 사이트를 브라우징하거나 모바일 앱을 사용하거나 API를 통해 B2B 파트너와 상호 작용할 때 수행한 HTTP API 요청을 시간 순으로 나열한 목록입니다. 예를 들어, 은행 자금 이체 중에 생성된 시퀀스의 일부는 다음과 같을 수 있습니다.</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
@@ -217,8 +217,8 @@
 	<h3 id="--1">시퀀스 생성 시 문제점</h3>
 	<p>Sequence Analytics에는 어려운 기술적 문제가 몇 가지 있습니다. 세션은 수명이 길 수도 있고 많은 요청으로 구성될 수 있기 때문에 세션 식별자만으로는 시퀀스를 정의하는 것으로는 충분하지 않습니다. 그래서 특정 세션 내에서 발생하는 여러 시퀀스를 자동으로 확인할 수 있는 솔루션 개발이 필요했습니다. 또한 반드시 용량만으로는 중요한 시퀀스를 분류할 수 없고, 가능한 시퀀스 세트가 많으므로, <em>빈번한 </em>시퀀스를 단순하게 표면화하는 것이 아니라 <em>중요한</em> 시퀀스를 확인할 수 있는 솔루션을 개발해야 했습니다.</p>
 	<p>api.cloudflare.com의 예시에서 이러한 문제를 설명하는 데 도움이 되도록 API 요청을 세션별로 그룹화하고 고유한 시퀀스 수와 시퀀스 길이를 그래프로 그릴 수 있습니다.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/image3-22.png" class="kg-image" title="Chart"></figure>
-	<p>이 그래프는 302개의 개별 API 엔드포인트와 함께 약 88,000개의 세션과 3억 개의 API 요청으로 구성된 1시간의 스냅샷을 기반으로 합니다. 각 세션에 고정 길이 슬라이딩 윈도우를 적용하여 데이터를 처리한 다음, 슬라이딩 윈도우를 적용한 결과로 관찰되는 다양한 고정 길이 시퀀스(‘n-그램’)의 총 개수를 계산합니다. 그래프에는 요청이 1개~10개 사이에서 변할 때 윈도우 크기(‘n-그램 길이’)의 결과가 표시됩니다. 그래프를 보면 시퀀스 길이에 따라 증가하는 가능한 시퀀스를 많이 관찰할 수 있습니다. 슬라이딩 윈도우 크기를 늘리면 샘플에서 점점 더 많은 양의 시퀀스를 다양하게 확인할 수 있습니다. 동향이 부드러운 이유는 시퀀스 길이에 비해 상대적으로 많은 긴 세션과 함께 슬라이딩 윈도우(세션 자체에 많은 시퀀스가 포함될 수 있음)가 적용되었다는 사실로 설명할 수 있습니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/04/unnamed-1.png" class="kg-image" title="Chart"></figure>
+	<p>이 그래프는 301개의 개별 API 엔드포인트와 함께 약 88,000개의 세션과 2억 6천만 개의 API 요청으로 구성된 1시간의 스냅샷을 기반으로 합니다. 각 세션에 고정 길이 슬라이딩 윈도우를 적용하여 데이터를 처리한 다음, 슬라이딩 윈도우를 적용한 결과로 관찰되는 다양한 고정 길이 시퀀스(‘n-그램’)의 총 개수를 계산합니다. 그래프에는 요청이 1개~10개 사이에서 변할 때 윈도우 크기(‘n-그램 길이’)의 결과가 표시됩니다. 고유한 시퀀스 개수의 범위는 301개(요청이 1개인 윈도우 크기의 경우)에서 약 780,000개(요청이 10개인 윈도우 크기의 경우) 사이입니다. 그래프를 보면 시퀀스 길이에 따라 증가하는 가능한 시퀀스를 많이 관찰할 수 있습니다. 슬라이딩 윈도우 크기를 늘리면 샘플에서 점점 더 많은 양의 시퀀스를 다양하게 확인할 수 있습니다. 동향이 부드러운 이유는 시퀀스 길이에 비해 상대적으로 많은 긴 세션과 함께 슬라이딩 윈도우(세션 자체에 많은 시퀀스가 포함될 수 있음)가 적용되었다는 사실로 설명할 수 있습니다.</p>
 	<p>가능한 시퀀스 수가 많으므로 남용 시퀀스를 찾는 것은 ‘건초 더미에서 바늘 찾기’와 같은 상황입니다.</p>
 	<h3 id="sequence-analytics-">Sequence Analytics 소개</h3>
 	<p>다음은 Sequence Analytics를 강조 표시한 API Gateway 대시보드의 스크린샷입니다.</p>
