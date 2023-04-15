@@ -530,20 +530,7 @@
 													"name": "For developers",
 													"description": null,
 													"mainLink": null,
-													"navigationLinks": [
-														{
-															"contentTypeId": "elementNavLink",
-															"contentfulId": "78KpM8lZSMmrTtJ8fmIe0b",
-															"locale": "en-US",
-															"title": "Developer platform",
-															"description": "Build and deploy serverless applications with scale, performance, security, and reliability",
-															"url": "developer-platform-hub",
-															"badges": null,
-															"specialLinkType": null,
-															"openInNewWindow": false,
-															"isExternalUrl": null
-														}
-													],
+													"navigationLinks": [],
 													"navIcon": null,
 													"showIconOnly": false,
 													"hideOnChinaSite": false,
@@ -2549,6 +2536,31 @@
 										"isExternalUrl": null
 									},
 									"navigationLinks": null
+								},
+								{
+									"contentTypeId": "navNavigationItem",
+									"contentfulId": "6hwsf5NzNvaEIvken104XZ",
+									"locale": "en-US",
+									"name": "Log In",
+									"description": null,
+									"navIcon": null,
+									"contentfulButton": null,
+									"showIconOnly": false,
+									"hideOnChinaSite": false,
+									"navigationItems": null,
+									"mainLink": {
+										"contentTypeId": "elementNavLink",
+										"contentfulId": "YUMQ7a1ifjCuSHsRUNTq6",
+										"locale": "en-US",
+										"title": "Log In",
+										"description": null,
+										"url": "https://dash.cloudflare.com/login",
+										"badges": null,
+										"specialLinkType": "BLUE_CTA",
+										"openInNewWindow": true,
+										"isExternalUrl": null
+									},
+									"navigationLinks": null
 								}
 							]
 						},
@@ -2824,6 +2836,18 @@
 																"title": "Replace legacy WAN architectures",
 																"description": null,
 																"url": "/magic-wan/",
+																"badges": null,
+																"specialLinkType": null,
+																"openInNewWindow": false,
+																"isExternalUrl": null
+															},
+															{
+																"contentTypeId": "elementNavLink",
+																"contentfulId": "6HloG03mH42IpdKl6UVHVc",
+																"locale": "en-US",
+																"title": "VIEW ALL >",
+																"description": null,
+																"url": "/network-services/solutions/",
 																"badges": null,
 																"specialLinkType": null,
 																"openInNewWindow": false,
@@ -3262,18 +3286,6 @@
 																"specialLinkType": null,
 																"openInNewWindow": false,
 																"isExternalUrl": null
-															},
-															{
-																"contentTypeId": "elementNavLink",
-																"contentfulId": "3Yox9Nr9VNEJP4lzQKxLcr",
-																"locale": "en-US",
-																"title": "VIEW ALL >",
-																"description": null,
-																"url": "/application-services/products/",
-																"badges": null,
-																"specialLinkType": null,
-																"openInNewWindow": false,
-																"isExternalUrl": null
 															}
 														],
 														"navIcon": null,
@@ -3315,6 +3327,18 @@
 															},
 															{
 																"contentTypeId": "elementNavLink",
+																"contentfulId": "6Ntv8CRFSpzdKLx1YbRwmm",
+																"locale": "en-US",
+																"title": "Secure Web Gateway (SWG)",
+																"description": null,
+																"url": "/products/zero-trust/gateway/",
+																"badges": null,
+																"specialLinkType": null,
+																"openInNewWindow": false,
+																"isExternalUrl": null
+															},
+															{
+																"contentTypeId": "elementNavLink",
 																"contentfulId": "1HrUqELjPCCgQRsgSeFXuL",
 																"locale": "en-US",
 																"title": "Remote Browser Isolation (RBI)",
@@ -3327,11 +3351,11 @@
 															},
 															{
 																"contentTypeId": "elementNavLink",
-																"contentfulId": "H3TsO30OSXfyDuHD2m20X",
+																"contentfulId": "31ijT1pGnjYs74w5VAVjHt",
 																"locale": "en-US",
-																"title": "Cloud Access Security Broker (CASB)",
+																"title": "Cloud Email Security",
 																"description": null,
-																"url": "/products/zero-trust/casb/",
+																"url": "/products/zero-trust/email-security/",
 																"badges": null,
 																"specialLinkType": null,
 																"openInNewWindow": false,
@@ -3339,11 +3363,11 @@
 															},
 															{
 																"contentTypeId": "elementNavLink",
-																"contentfulId": "31ijT1pGnjYs74w5VAVjHt",
+																"contentfulId": "7FqUAIGQLwP2nABFEATU8w",
 																"locale": "en-US",
-																"title": "Cloud Email Security",
+																"title": "VIEW ALL > ",
 																"description": null,
-																"url": "/products/zero-trust/email-security/",
+																"url": "/zero-trust-hub/",
 																"badges": null,
 																"specialLinkType": null,
 																"openInNewWindow": false,
@@ -5551,6 +5575,31 @@
 											"isExternalUrl": null
 										},
 										"navigationLinks": null
+									},
+									{
+										"contentTypeId": "navNavigationItem",
+										"contentfulId": "6hwsf5NzNvaEIvken104XZ",
+										"locale": "en-US",
+										"name": "Log In",
+										"description": null,
+										"navIcon": null,
+										"contentfulButton": null,
+										"showIconOnly": false,
+										"hideOnChinaSite": false,
+										"navigationItems": null,
+										"mainLink": {
+											"contentTypeId": "elementNavLink",
+											"contentfulId": "YUMQ7a1ifjCuSHsRUNTq6",
+											"locale": "en-US",
+											"title": "Log In",
+											"description": null,
+											"url": "https://dash.cloudflare.com/login",
+											"badges": null,
+											"specialLinkType": "BLUE_CTA",
+											"openInNewWindow": true,
+											"isExternalUrl": null
+										},
+										"navigationLinks": null
 									}
 								]
 							}
@@ -5752,12 +5801,6 @@
 										"linkText": "Remote Browser Isolation (RBI) demo",
 										"page": null,
 										"url": "/products/zero-trust/browser-isolation/experience"
-									},
-									{
-										"contentfulId": "X5QnBKjAjIeZUBeVKAQfV",
-										"linkText": "Email security (Area 1) demo",
-										"page": null,
-										"url": "/lp/email-security-self-guided-demo-request/"
 									}
 								]
 							},
