@@ -543,7 +543,20 @@
 													"name": "For developers",
 													"description": null,
 													"mainLink": null,
-													"navigationLinks": [],
+													"navigationLinks": [
+														{
+															"contentTypeId": "elementNavLink",
+															"contentfulId": "78KpM8lZSMmrTtJ8fmIe0b",
+															"locale": "en-US",
+															"title": "Developer platform",
+															"description": "Build and deploy serverless applications with scale, performance, security, and reliability",
+															"url": "developer-platform-hub",
+															"badges": null,
+															"specialLinkType": null,
+															"openInNewWindow": false,
+															"isExternalUrl": null
+														}
+													],
 													"navIcon": null,
 													"showIconOnly": false,
 													"hideOnChinaSite": false,
@@ -3299,6 +3312,18 @@
 																"specialLinkType": null,
 																"openInNewWindow": false,
 																"isExternalUrl": null
+															},
+															{
+																"contentTypeId": "elementNavLink",
+																"contentfulId": "3Yox9Nr9VNEJP4lzQKxLcr",
+																"locale": "en-US",
+																"title": "VIEW ALL >",
+																"description": null,
+																"url": "/application-services/products/",
+																"badges": null,
+																"specialLinkType": null,
+																"openInNewWindow": false,
+																"isExternalUrl": null
 															}
 														],
 														"navIcon": null,
@@ -3357,6 +3382,18 @@
 																"title": "Remote Browser Isolation (RBI)",
 																"description": null,
 																"url": "/products/zero-trust/browser-isolation/",
+																"badges": null,
+																"specialLinkType": null,
+																"openInNewWindow": false,
+																"isExternalUrl": null
+															},
+															{
+																"contentTypeId": "elementNavLink",
+																"contentfulId": "H3TsO30OSXfyDuHD2m20X",
+																"locale": "en-US",
+																"title": "Cloud Access Security Broker (CASB)",
+																"description": null,
+																"url": "/products/zero-trust/casb/",
 																"badges": null,
 																"specialLinkType": null,
 																"openInNewWindow": false,
@@ -6377,6 +6414,40 @@
 						"carouselSlidesToScroll": null,
 						"locale": "en-US",
 						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3hcWA3pe5D6mDLhjRmePCi",
+								"title": "Simple, flexible architecture",
+								"titleSize": "small",
+								"description": "Fast-track your journey to secure any-to-any connectivity. Cloudflare uniformly connects and secures end-to-end using one network and control plane.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"openLinkInNewTab": null,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "11e03783-c55c-582e-b490-3eab11cac88b",
+									"altText": "Ease of use blue",
+									"title": "Ease of use blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 1444,
+										"height": 192,
+										"width": 192,
+										"filename": "ease-of-use-blue.svg",
+										"file": {
+											"publicURL": "[path]/ease-of-use-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
 							{
 								"contentTypeId": "feature",
 								"contentfulId": "4DBeWwHL8btOaeAinTV6Fy",
