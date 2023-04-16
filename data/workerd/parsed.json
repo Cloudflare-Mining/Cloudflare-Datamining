@@ -2640,6 +2640,10 @@
 				{
 					"name": "tsDefine",
 					"annotations": {}
+				},
+				{
+					"name": "callable",
+					"annotations": {}
 				}
 			]
 		},
@@ -2780,6 +2784,15 @@
 			]
 		},
 		{
+			"name": "workerd/src/workerd/server/workerd.capnp:Extension",
+			"fields": [
+				{
+					"name": "modules",
+					"annotations": {}
+				}
+			]
+		},
+		{
 			"name": "workerd/src/workerd/server/workerd.capnp:Config",
 			"fields": [
 				{
@@ -2792,6 +2805,10 @@
 				},
 				{
 					"name": "v8Flags",
+					"annotations": {}
+				},
+				{
+					"name": "extensions",
 					"annotations": {}
 				}
 			]
@@ -3000,6 +3017,14 @@
 				{
 					"name": "r2Admin",
 					"annotations": {}
+				},
+				{
+					"name": "wrapped",
+					"annotations": {}
+				},
+				{
+					"name": "queue",
+					"annotations": {}
 				}
 			]
 		},
@@ -3079,6 +3104,10 @@
 				{
 					"name": "r2Admin",
 					"annotations": {}
+				},
+				{
+					"name": "queue",
+					"annotations": {}
 				}
 			]
 		},
@@ -3145,6 +3174,23 @@
 				},
 				{
 					"name": "serviceName",
+					"annotations": {}
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/workerd.capnp:Worker.Binding.WrappedBinding",
+			"fields": [
+				{
+					"name": "moduleName",
+					"annotations": {}
+				},
+				{
+					"name": "entrypoint",
+					"annotations": {}
+				},
+				{
+					"name": "innerBindings",
 					"annotations": {}
 				}
 			]
@@ -3268,6 +3314,23 @@
 				},
 				{
 					"name": "tlsOptions",
+					"annotations": {}
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/server/workerd.capnp:Extension.Module",
+			"fields": [
+				{
+					"name": "name",
+					"annotations": {}
+				},
+				{
+					"name": "internal",
+					"annotations": {}
+				},
+				{
+					"name": "esModule",
 					"annotations": {}
 				}
 			]
