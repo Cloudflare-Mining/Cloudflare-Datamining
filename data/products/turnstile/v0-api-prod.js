@@ -8,11 +8,11 @@
 		return y(["auto", "dark", "light"], e)
 	}
 
-	function P(e) {
+	function D(e) {
 		return y(["auto", "never"], e)
 	}
 
-	function D(e) {
+	function P(e) {
 		return e > 0 && e < 9e5
 	}
 	var he = /^[0-9A-Za-z_-]{3,100}$/;
@@ -386,7 +386,7 @@
 				l(`Invalid type for parameter "theme", expected dark|light|auto, got "${t.theme}" ${typeof t.theme}`);
 				return
 			}
-			if (!P(t.retry)) {
+			if (!D(t.retry)) {
 				l(`Invalid type for parameter "retry", expected never|auto, got "${t.retry}" ${typeof t.retry}`);
 				return
 			}
@@ -402,7 +402,7 @@
 				l(`Unknown data-execution value: "${t.execution}, expected either: 'render' or 'execute'.`);
 				return
 			}
-			if (!D(t["retry-interval"])) {
+			if (!P(t["retry-interval"])) {
 				f(`Invalid data-retry-interval value: "${t["retry-interval"]}, expected an integer value > 0 and < 900000"`);
 				return
 			}
@@ -444,7 +444,7 @@
 				isInitialized: !1,
 				msgQueue: Z
 			}), E.style.display = "none", E.style.border = "none", E.style.overflow = "hidden";
-			let Ie = "h/g/";
+			let Ie = "h/b/";
 			if (E.setAttribute("src", `${ye}/cdn-cgi/challenge-platform/${Ie}turnstile/if/ov2/av0/${N}/${g}/${t.theme}/${t.size}`), E.setAttribute("allow", "cross-origin-isolated"), E.id = A, E.tabIndex = (ae = t.tabindex) != null ? ae : 0, E.title = "Widget containing a Cloudflare security challenge", r.appendChild(E), (oe = t["response-field"]) != null ? oe : !0) {
 				let m = document.createElement("input");
 				if (m.type = "hidden", m.name = (se = t["response-field-name"]) != null ? se : Ce, m.id = `${A}_response`, r.appendChild(m), typeof t["response-field-name"] != "string" && Ne(g)) {
@@ -538,11 +538,11 @@
 		let R = e.getAttribute("data-cdata");
 		typeof R == "string" && (s.cData = R);
 		let v = e.getAttribute("data-retry");
-		v && (P(v) ? s.retry = v : f(`Invalid data-retry value: "${v}, expected either 'never' or 'auto'"`));
+		v && (D(v) ? s.retry = v : f(`Invalid data-retry value: "${v}, expected either 'never' or 'auto'"`));
 		let a = e.getAttribute("data-retry-interval");
 		if (a) {
 			let I = parseInt(a, 10);
-			D(I) ? s["retry-interval"] = I : f(`Invalid data-retry-interval value: "${a}, expected an integer value > 0 and < 900000"`)
+			P(I) ? s["retry-interval"] = I : f(`Invalid data-retry-interval value: "${a}, expected an integer value > 0 and < 900000"`)
 		}
 		let i = e.getAttribute("data-refresh-expired");
 		i && (F(i) ? s["refresh-expired"] = i : f(`Unknown data-refresh-expired value: "${i}, expected either: 'never', 'auto' or 'manual'.`));
