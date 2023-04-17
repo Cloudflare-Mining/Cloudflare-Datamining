@@ -109,7 +109,7 @@ async function getColosStatus() {
 			status.append(spanElement);
 		}
 		spanElement.classList.add('font-sans', 'inline-flex', 'items-center', 'rounded-full', 'px-2.5', 'py-0.5', 'text-xs', 'font-medium');
-		const online = coloStatus[coloName] === true;
+		const online = coloStatus?.[coloName] === true;
 		if(online) {
 			spanElement.classList.add('bg-green-100', 'dark:bg-green-800', 'text-green-800', 'dark:text-green-100');
 			spanElement.textContent = 'Online';
@@ -137,7 +137,6 @@ async function getColosStatus() {
 		const status = row.querySelector('td:nth-child(1)')?.textContent?.trim?.() as 'Online' | 'Offline' | 'China';
 		const total = row.querySelector('td:nth-child(2)');
 		const percent = row.querySelector('td:nth-child(3)');
-		console.log({status, total, percent})
 		if(!status || !total || !percent || colosStatuses[status] === undefined) {
 			continue;
 		}
