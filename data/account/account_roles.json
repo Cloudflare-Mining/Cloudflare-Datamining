@@ -547,6 +547,10 @@
 		"name": "Super Administrator - All Privileges",
 		"description": "Can edit any Cloudflare setting, make purchases, update billing, and manage memberships. Super Administrators can revoke the access of other Super Administrators.",
 		"permissions": {
+			"waf": {
+				"read": true,
+				"edit": true
+			},
 			"magic": {
 				"read": true,
 				"edit": true
@@ -583,10 +587,6 @@
 				"read": true,
 				"edit": true,
 				"publish": true
-			},
-			"waf": {
-				"read": true,
-				"edit": true
 			},
 			"logs": {
 				"read": true,
@@ -689,11 +689,11 @@
 		"name": "SSL/TLS, Caching, Performance, Page Rules, and Customization",
 		"description": "Can edit most Cloudflare settings except for DNS and Firewall.",
 		"permissions": {
-			"ssl": {
+			"waf": {
 				"read": true,
 				"edit": true
 			},
-			"waf": {
+			"ssl": {
 				"read": true,
 				"edit": true
 			},
@@ -1125,6 +1125,10 @@
 		"name": "Administrator Read Only",
 		"description": "Can access the full account in read-only mode.",
 		"permissions": {
+			"waf": {
+				"read": true,
+				"edit": false
+			},
 			"magic": {
 				"read": true,
 				"edit": false
@@ -1146,10 +1150,6 @@
 				"edit": false
 			},
 			"zone_versioning": {
-				"read": true,
-				"edit": false
-			},
-			"waf": {
 				"read": true,
 				"edit": false
 			},
@@ -1249,6 +1249,10 @@
 		"name": "Administrator",
 		"description": "Can access the full account, except for membership management and billing.",
 		"permissions": {
+			"waf": {
+				"read": true,
+				"edit": true
+			},
 			"magic": {
 				"read": true,
 				"edit": true
@@ -1285,10 +1289,6 @@
 				"read": true,
 				"edit": true,
 				"publish": true
-			},
-			"waf": {
-				"read": true,
-				"edit": true
 			},
 			"logs": {
 				"read": true,
