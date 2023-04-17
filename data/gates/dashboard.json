@@ -158,6 +158,20 @@
 	"dx-persistence-worker": {
 		"enabled": true
 	},
+	"dx-product-discovery-page": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"experiment"
+		]
+	},
+	"dx-product-discovery-solutions": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"experiment"
+		]
+	},
 	"dx-sign-up-workers-onboarding-path-test-1": {
 		"enabled": true,
 		"branches": [
@@ -395,6 +409,9 @@
 	},
 	"tsf-3-category-suggestion": {
 		"enabled": true
+	},
+	"tsf-3-chat": {
+		"enabled": false
 	},
 	"tsf-3-chat-deflection": {
 		"enabled": true
