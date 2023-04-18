@@ -7523,12 +7523,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				e.g.build = Vd({}, {
-					branch: "release-Apr.18.2023-1681826712",
+					branch: "siddhant/R2-000-disable-bindings",
 					isReleaseCandidate: "true",
-					commit: "e71a371d9dcd38c138fc22c101aad062331e46c7",
+					commit: "1b98ffd7c88872321e66dd4ca16227eece7dfe7a",
 					env: "production",
-					builtAt: 1681827040660,
-					dashVersion: "367b3ad981250bf42aa2ffb5efd3cb908dd93639",
+					builtAt: 1681834891930,
+					dashVersion: "018340f1da9d2da12e4bddeef76e3d2742bc450f",
 					versions: {
 						"@cloudflare/app-dash": "25.151.1",
 						node: "16.16.0",
@@ -130296,4 +130296,4 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 	}
 ]);
 
-//# sourceMappingURL=94f9c39e8add94035dd5.js.map
+//# sourceMappingURL=2bbd07f84a7d5820ff51.js.map
