@@ -40,9 +40,21 @@
 				"metaTags": {
 					"metaTitle": "A new framework for network security",
 					"metaDescription": "SASE promises to take network security to the next level: one where network and security services merge on a single, cloud-based platform.",
-					"twitterCustomImage": null,
-					"metaImage": null,
-					"facebookCustomImage": null
+					"twitterCustomImage": {
+						"file": {
+							"publicURL": "[path]/anewframeworkfornetworksecurity.png"
+						}
+					},
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/anewframeworkfornetworksecurity.png"
+						}
+					},
+					"facebookCustomImage": {
+						"file": {
+							"publicURL": "[path]/anewframeworkfornetworksecurity.png"
+						}
+					}
 				},
 				"contentfulId": "3SfvC7JVgGjMaQ9JcYs0rC",
 				"contentTypeId": "page",
@@ -140,7 +152,20 @@
 														"type": "Link",
 														"linkType": "Asset"
 													},
-													"related_asset": [],
+													"related_asset": [
+														{
+															"contentfulId": "3S7AD2YDw8QeVjoYbS8rnp",
+															"locale": "en-US",
+															"title": "theNET - insights SASE framework article - Article Banner Image",
+															"file": {
+																"name": "anewframeworkfornetworksecurity",
+																"publicURL": "[path]/anewframeworkfornetworksecurity.png",
+																"internal": {
+																	"mediaType": "image/png"
+																}
+															}
+														}
+													],
 													"entry_elementMarkdown": [],
 													"entry_assetFile": [],
 													"entry_button": [],
