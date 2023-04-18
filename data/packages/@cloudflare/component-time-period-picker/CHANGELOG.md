@@ -1,5 +1,13 @@
 # Change Log
 
+## 5.0.0
+
+### Patch Changes
+
+- Updated dependencies [54ebdb53f4]
+  - @cloudflare/component-icon@11.0.0
+  - @cloudflare/component-calendar@6.0.0
+
 ## 4.1.1
 
 ### Patch Changes

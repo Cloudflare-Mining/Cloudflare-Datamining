@@ -1,5 +1,12 @@
 # Change Log
 
+## 8.0.0
+
+### Patch Changes
+
+- Updated dependencies [54ebdb53f4]
+  - @cloudflare/component-icon@11.0.0
+
 ## 7.0.1
 
 ## 7.0.0
