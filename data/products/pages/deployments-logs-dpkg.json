@@ -1549,6 +1549,11 @@
 		"short_description": "Free Implementation of the Unicode BiDi algorithm",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
+	"libgbm1:amd64": {
+		"version": "21.2.6-0ubuntu0.1~20.04.2",
+		"short_description": "generic buffer management API -- runtime",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
 	"libgcc-9-dev:amd64": {
 		"version": "9.4.0-1ubuntu1~20.04.1",
 		"short_description": "GCC support library (development files)",
@@ -2400,7 +2405,7 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libpam-systemd:amd64": {
-		"version": "245.4-4ubuntu3.20",
+		"version": "245.4-4ubuntu3.21",
 		"short_description": "system and service manager - PAM module",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -2890,7 +2895,7 @@
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libsystemd0:amd64": {
-		"version": "245.4-4ubuntu3.20",
+		"version": "245.4-4ubuntu3.21",
 		"short_description": "systemd utility library",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
@@ -3062,6 +3067,11 @@
 	"libwayland-egl1:amd64": {
 		"version": "1.18.0-1ubuntu0.1",
 		"short_description": "wayland compositor infrastructure - EGL library",
+		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
+	},
+	"libwayland-server0:amd64": {
+		"version": "1.18.0-1ubuntu0.1",
+		"short_description": "wayland compositor infrastructure - server library",
 		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	},
 	"libwebp-dev:amd64": {
@@ -4093,15 +4103,5 @@
 		"version": "0.99.9.11",
 		"short_description": "manage the repositories that you install software from",
 		"author": "Michael Vogt <michael.vogt@ubuntu.com>"
-	},
-	"python3-urllib3": {
-		"version": "1.25.8-2ubuntu0.2",
-		"short_description": "HTTP library with thread-safe connection pooling for Python3",
-		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
-	},
-	"python3-virtualenv": {
-		"version": "20.0.17-1ubuntu0.4",
-		"short_description": "Python virtual environment creator",
-		"author": "Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>"
 	}
 }
