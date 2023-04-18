@@ -1,5 +1,11 @@
 # Change Log
 
+## 3.3.5
+
+### Patch Changes
+
+- @cloudflare/component-button@7.0.0
+
 ## 3.3.4
 
 ## 3.3.3

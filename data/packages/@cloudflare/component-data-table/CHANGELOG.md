@@ -1,5 +1,15 @@
 # Change Log
 
+## 5.0.0
+
+### Patch Changes
+
+- Updated dependencies [54ebdb53f4]
+  - @cloudflare/component-icon@11.0.0
+  - @cloudflare/component-button@7.0.0
+  - @cloudflare/component-pagination@9.0.0
+  - @cloudflare/component-link@7.1.2
+
 ## 4.0.2
 
 ### Patch Changes
