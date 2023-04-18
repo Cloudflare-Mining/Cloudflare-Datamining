@@ -1,3 +1,4 @@
+import Dlp from './Dlp';
 import AccountAnalyticsLogo from './AccountAnalyticsLogo';
 import AddMember from './AddMember';
 import Add from './Add';
@@ -26,7 +27,6 @@ import CreditCard from './CreditCard';
 import Discord from './Discord';
 import Documentation from './Documentation';
 import Download from './Download';
-import DataLossPrevention from './DataLossPrevention';
 import Drive from './Drive';
 import Edgeworker from './Edgeworker';
 import Edit from './Edit';
@@ -41,7 +41,6 @@ import FirewallRules from './FirewallRules';
 import Flowchart from './Flowchart';
 import Folder from './Folder';
 import Forward from './Forward';
-import Funnel from './Funnel';
 import Gateway from './Gateway';
 import Gear from './Gear';
 import GitBranch from './GitBranch';
@@ -96,13 +95,11 @@ import Shield from './Shield';
 import Spectrum from './Spectrum';
 import Speech from './Speech';
 import Stream from './Stream';
-import Subtract from './Subtract';
 import Teams from './Teams';
 import Terraform from './Terraform';
 import Time from './Time';
 import Twitter from './Twitter';
 import TwoWay from './TwoWay';
-import Turnstile from './Turnstile';
 import UnlockOutline from './UnlockOutline';
 import Upload from './Upload';
 import UserMulti from './UserMulti';
@@ -123,6 +120,7 @@ import Youtube from './Youtube';
 import Zaraz from './Zaraz';
 import ZerotrustCasbLogo from './ZerotrustCasbLogo';
 export default {
+  dlp: Dlp,
   'account-analytics-logo': AccountAnalyticsLogo,
   'add-member': AddMember,
   add: Add,
@@ -151,7 +149,6 @@ export default {
   discord: Discord,
   documentation: Documentation,
   download: Download,
-  'data-loss-prevention': DataLossPrevention,
   drive: Drive,
   edgeworker: Edgeworker,
   edit: Edit,
@@ -166,7 +163,6 @@ export default {
   flowchart: Flowchart,
   folder: Folder,
   forward: Forward,
-  funnel: Funnel,
   gateway: Gateway,
   gear: Gear,
   'git-branch': GitBranch,
@@ -221,13 +217,11 @@ export default {
   spectrum: Spectrum,
   speech: Speech,
   stream: Stream,
-  subtract: Subtract,
   teams: Teams,
   terraform: Terraform,
   time: Time,
   twitter: Twitter,
   'two-way': TwoWay,
-  turnstile: Turnstile,
   'unlock-outline': UnlockOutline,
   upload: Upload,
   'user-multi': UserMulti,

@@ -30,34 +30,11 @@ function defaultIndexTemplate(filePaths) {
 
   indexString += '\n};';
 
-  // Generate a static list of all icon types, for use in internal documentation
-  let iconTypesString = `export default [\n`;
-  iconTypesString += filePaths
-    .map(filePath => {
-      const basename = path.basename(filePath, path.extname(filePath));
-      return `  '${camelCaseToDash(basename)}'`;
-    })
-    .join(',\n');
-  iconTypesString += '\n];\n';
-
-  fs.writeFileSync('./src/iconTypes.js', iconTypesString);
-
-  // Hacky, but until we switch to using the built-in 'typescript' option in svgr, let's handle our typedefs here too
-  let typeString = 'export type IconType =\n';
-  typeString += filePaths
-    .map(filePath => {
-      const basename = path.basename(filePath, path.extname(filePath));
-      return `  | '${camelCaseToDash(basename)}'`;
-    })
-    .join('\n');
-  typeString += ';\n';
-
-  fs.writeFileSync('./src/IconType.ts', typeString);
-
   return indexString;
 }
 
 module.exports = {
+  typescript: true,
   outDir: './src/reactsvgs',
   indexTemplate: defaultIndexTemplate,
   expandProps: 'start',

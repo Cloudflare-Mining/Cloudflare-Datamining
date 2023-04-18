@@ -1,5 +1,13 @@
 # Change Log
 
+## 11.0.0
+
+### Major Changes
+
+- 54ebdb53f4: Update types to properly export `IconType`, and correctly use the type of `Icon` as inferred from the source, rather than manually defined in `index.d.ts`.
+
+  This is a breaking change to the type signatures, and consumers of the package will need to make changes. Primarily, the prop `ariaLabel` was previously incorrectly typed as `label`.
+
 ## 10.1.0
 
 ### Minor Changes

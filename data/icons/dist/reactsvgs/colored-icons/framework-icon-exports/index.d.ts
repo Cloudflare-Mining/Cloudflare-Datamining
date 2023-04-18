@@ -1,0 +1,30 @@
+/// <reference types="react" />
+declare const _default: {
+    angular: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    brunch: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    docusaurus: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    eleventy: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    ember: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    gatsby: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    gitbook: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    gridsome: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    harp: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    hexo: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    hugo: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    jekyll: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'md-book': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    middleman: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    mkdocs: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    nextjs: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    nuxt: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    pelican: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    react: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'react-static': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    slate: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    svelte: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'umi-js': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    vue: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'vue-press': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    zola: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+};
+export default _default;

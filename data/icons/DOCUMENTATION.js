@@ -22,7 +22,9 @@ import { saveSvgAsPng } from 'save-svg-as-png';
 import { useClipboard } from 'use-clipboard-copy';
 import reactElementToJSXString from 'react-element-to-jsx-string';
 
-import TYPES from './src/iconTypes';
+import IconComponents from './src/reactsvgs/index';
+
+const TYPES = Object.keys(IconComponents);
 
 const THEME_COLORS = [
   'red',
