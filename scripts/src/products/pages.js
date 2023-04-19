@@ -24,6 +24,15 @@ const reqs = [
 		transform: json => json.result,
 	},
 	{
+		name: 'overview',
+		url: `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/pages/overview`,
+		method: 'GET',
+		transform: (json) => {
+			json.result = json.result.filter(project => project.name === 'blank-index');
+			return propertiesToArray(json).sort();
+		},
+	},
+	{
 		name: 'projects-list',
 		url: `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/pages/projects`,
 		method: 'GET',
