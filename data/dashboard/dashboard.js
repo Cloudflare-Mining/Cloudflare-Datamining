@@ -7523,12 +7523,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				e.g.build = Vd({}, {
-					branch: "release-Apr.19.2023-1681913245",
+					branch: "hotfix-rendering-wrong-text",
 					isReleaseCandidate: "true",
-					commit: "66be0b8e3c74433a9a3efd13a5633cd4ce00df51",
+					commit: "328226c702a6c1309ffb6d3a93ec706c86373f74",
 					env: "production",
-					builtAt: 1681916025439,
-					dashVersion: "605c5b7cfe48f49290416c327d3e6bf8704636a0",
+					builtAt: 1681923497674,
+					dashVersion: "d11fe39040e5e1fb73e2d7fc0d6a2e962c0055f3",
 					versions: {
 						"@cloudflare/app-dash": "25.151.1",
 						node: "16.16.0",
@@ -80096,14 +80096,15 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					if (!(g == null ? void 0 : g.length)) return [];
 					var d = [];
 					return g.forEach(function(A) {
-						A.resource_groups.forEach(function(T) {
-							var f, p;
-							if ((f = T.scope) === null || f === void 0 || (p = f.key) === null || p === void 0 ? void 0 : p.startsWith(r.Rl)) d.push(S(T.scope.key));
+						var T;
+						(T = A.resource_groups) === null || T === void 0 || T.forEach(function(f) {
+							var p, O;
+							if ((p = f.scope) === null || p === void 0 || (O = p.key) === null || O === void 0 ? void 0 : O.startsWith(r.Rl)) d.push(S(f.scope.key));
 							else {
-								var O, D;
-								(O = T.scope) === null || O === void 0 || (D = O.objects) === null || D === void 0 || D.forEach(function(X) {
-									var z;
-									((z = X.key) === null || z === void 0 ? void 0 : z.startsWith(r.Rl)) && d.push(S(X.key))
+								var D, X;
+								(D = f.scope) === null || D === void 0 || (X = D.objects) === null || X === void 0 || X.forEach(function(z) {
+									var x;
+									((x = z.key) === null || x === void 0 ? void 0 : x.startsWith(r.Rl)) && d.push(S(z.key))
 								})
 							}
 						})
@@ -130307,4 +130308,4 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 	}
 ]);
 
-//# sourceMappingURL=5ec048376dd8eebeafde.js.map
+//# sourceMappingURL=774efcfcb57d576dc852.js.map
