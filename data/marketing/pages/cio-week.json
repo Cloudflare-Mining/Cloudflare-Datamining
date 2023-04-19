@@ -37,17 +37,7 @@
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
-				"metaTags": {
-					"metaTitle": "CIO Week 2023",
-					"metaDescription": "Join us for announcements, product updates, press releases and Cloudflare TV for CIOs!",
-					"twitterCustomImage": null,
-					"metaImage": {
-						"file": {
-							"publicURL": "[path]/CIO-Week-2023_OG.png"
-						}
-					},
-					"facebookCustomImage": null
-				},
+				"metaTags": null,
 				"contentfulId": "86Xw7qPmJe2KZ9Bs5AX5i",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
@@ -57,37 +47,6 @@
 				"proactivePopup": null,
 				"template": null,
 				"relatedBlades": [
-					{
-						"contentTypeId": "bladeSubNav",
-						"contentfulId": "61uZ9fQ9x3E7zlTfrDttgb",
-						"menuTitle": "CIO Week",
-						"mobileOnlyMenuTitle": null,
-						"stickyNav": true,
-						"htmlId": null,
-						"menuItems": [
-							{
-								"contentfulId": "2jqUASeSYF38EkzInDxEoB",
-								"linkText": "Latest",
-								"page": null,
-								"url": "cio-week",
-								"subMenuItems": null
-							},
-							{
-								"contentfulId": "7BJZnDZ4d0bYNssGpiObGg",
-								"linkText": "Updates & Announcements",
-								"page": null,
-								"url": "cio-week/updates",
-								"subMenuItems": null
-							},
-							{
-								"contentfulId": "3EwLlSMKu0PXVpStCE0NrO",
-								"linkText": "Cloudflare TV",
-								"page": null,
-								"url": "cio-week/cloudflare-tv",
-								"subMenuItems": null
-							}
-						]
-					},
 					{
 						"contentfulId": "4znIamZoDUAtVa9sSO4Ozp",
 						"contentTypeId": "bladeHeroAnimation",
@@ -196,36 +155,6 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "6unzh3YVGkaMSC9rxf7IYP",
-								"title": "China Express: Cloudflare partners to boost performance in China for corporate networks",
-								"titleSize": null,
-								"description": "China Express is a suite of connectivity and performance offerings designed to improve application performance for users in China.",
-								"learnMoreUrl": "https://blog.cloudflare.com/china-express/",
-								"learnMoreText": "Learn more",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": {
-									"id": "bd59e666-1ee6-5f82-b623-0c0992c72513",
-									"altText": "Cloudflare One in China - CMI and China Express updates",
-									"title": "Cloudflare One in China - CMI and China Express updates",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "[path]/Cloudflare_One_in_China.png"
-										}
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
 								"contentfulId": "2ojjxf15Q2CNTVPhev5SiK",
 								"title": "Cloudflare Application Services for private networks: do more with the tools you already love",
 								"titleSize": null,
@@ -286,36 +215,6 @@
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "4gAxO0iOimPQtP0jS2l0ZV",
-								"title": "Cloudflare Zero Trust for managed service providers",
-								"titleSize": null,
-								"description": "Adding new features to Cloudflare Zero Trust for Managed Service Providers using Gateway DNS.",
-								"learnMoreUrl": "https://blog.cloudflare.com/gateway-managed-service-provider/",
-								"learnMoreText": "Learn more",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": {
-									"id": "28ed3bb7-0e19-50a0-a7e4-55eceb575f7f",
-									"altText": "Gateway DNS-only Manage Service Provider",
-									"title": "Gateway DNS-only Manage Service Provider",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "[path]/Gateway_DNS-only_Manage_Service_Provider.png"
-										}
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
 								"contentfulId": "5B81mZSuJxX7wModTU1LlL",
 								"title": "CIO Week 2023 recap",
 								"titleSize": null,
@@ -335,66 +234,6 @@
 									"contentfulAsset": {
 										"file": {
 											"publicURL": "[path]/CIO_Week_2023_Recap.png"
-										}
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "2plnwlDimBp56so5JgeeUi",
-								"title": "Cloudflare TV- Gateway DNS-only Manage Service Provider   ",
-								"titleSize": null,
-								"description": "__Friday, 12/16\t8:30 AM PT__\n\nAnkur Aggarwal, Dan Hollinger, & Teddy Solano",
-								"learnMoreUrl": "https://cloudflare.tv/event/cloudflare-tv-segment/DvNDJPZw ",
-								"learnMoreText": "Tune in",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": {
-									"id": "196f472e-7a2a-56e8-8a34-adf96a0d51bc",
-									"altText": "Cloudflare TV Header",
-									"title": "Cloudflare TV Header",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "[path]/CFTV.png"
-										}
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "6SeQanzyiu1WhcuVkU4LTj",
-								"title": "Cloudflare TV- Privately connect from Cloudflare to other clouds",
-								"titleSize": null,
-								"description": "__Friday, 12/16\t10:30 AM PT__\n\nDavid Tuber & Ameet Naik",
-								"learnMoreUrl": "https://cloudflare.tv/event/cloudflare-tv-segment/zaGdL9Z2",
-								"learnMoreText": "Tune in",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": {
-									"id": "196f472e-7a2a-56e8-8a34-adf96a0d51bc",
-									"altText": "Cloudflare TV Header",
-									"title": "Cloudflare TV Header",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "[path]/CFTV.png"
 										}
 									},
 									"brandfolderAsset": null,
@@ -592,36 +431,6 @@
 									"contentfulAsset": {
 										"file": {
 											"publicURL": "[path]/API-Based_email_scanning__MSFT_marketplace_.png"
-										}
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "6UJpiio3xfyBs9KTWVJdho",
-								"title": "New: Scan Salesforce and Box for security issues",
-								"titleSize": null,
-								"description": "Cloudflare CASB adds two new SaaS integrations for Salesforce and Box.",
-								"learnMoreUrl": "https://blog.cloudflare.com/casb-adds-salesforce-and-box-integrations/",
-								"learnMoreText": "Learn more",
-								"displayBorder": false,
-								"openLinkInNewTab": true,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": {
-									"id": "6f090d81-8453-5e0b-9c8c-00731d4578f8",
-									"altText": "CASB integrations for  Box Salesforce OneDrive",
-									"title": "CASB integrations for  Box Salesforce OneDrive",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "[path]/CASB_integrations.png"
 										}
 									},
 									"brandfolderAsset": null,
