@@ -235,7 +235,7 @@
 	</table><!--kg-card-end: html-->
 	<p>Among the three device widths, x4 devices have the shortest tFAW timing limit, and x16 devices have the longest tFAW timing limit. The difference in tFAW specification has a negative timing performance impact on devices with higher device width.</p>
 	<h2 id="an-experiment-with-2rx4-and-2rx8-ddr4-modules">An experiment with 2Rx4 and 2Rx8 DDR4 modules</h2>
-	<p>To quantify the impact on memory performance from different memory device widths, an experiment has been conducted on our Gen11 servers with AMD EPYC 7713 Milan CPU. The Rome CPU has 64 cores, supports 8 memory channels.</p>
+	<p>To quantify the impact on memory performance from different memory device widths, an experiment has been conducted on our Gen11 servers with AMD EPYC 7713 Milan CPU. The Milan CPU has 64 cores, supports 8 memory channels.</p>
 	<p>Our production Gen11 servers are configured with 1 DIMM populated in each memory channel. In order to achieve 6GB/core memory per core ratio, the total memory for the Gen11 system is 64 core * 6 GB/core = 384 GB. This is achieved by installing four pieces of 32GB 2Rx8 and four pieces of 64GB 2Rx4 memory modules.</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/04/Untitled.png" class="kg-image">
 		<figcaption>Figure 5: Gen11 server memory configuration</figcaption>
