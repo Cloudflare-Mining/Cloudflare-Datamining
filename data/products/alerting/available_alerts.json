@@ -150,6 +150,25 @@
 			"filter_options": []
 		}
 	],
+	"Maintenance": [
+		{
+			"display_name": "Maintenance Event Notification",
+			"type": "maintenance_event_notification",
+			"description": "",
+			"filter_options": [
+				{
+					"Key": "airport_code",
+					"ComparisonOperator": "==",
+					"Optional": true
+				},
+				{
+					"Key": "event_type",
+					"ComparisonOperator": "==",
+					"Optional": true
+				}
+			]
+		}
+	],
 	"Origin Monitoring": [
 		{
 			"display_name": "Passive Origin Monitoring",
