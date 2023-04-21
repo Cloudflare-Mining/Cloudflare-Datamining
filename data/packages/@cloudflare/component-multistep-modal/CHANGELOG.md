@@ -1,5 +1,11 @@
 # Change Log
 
+## 3.0.6
+
+### Patch Changes
+
+- @cloudflare/component-progress@8.0.1
+
 ## 3.0.5
 
 ### Patch Changes
