@@ -2322,6 +2322,13 @@
 						"compatEnableDate": "2023-03-01",
 						"compatEnableFlag": "dynamic_dispatch_tunnel_exceptions"
 					}
+				},
+				{
+					"name": "serviceBindingExtraHandlers",
+					"annotations": {
+						"compatEnableFlag": "service_binding_extra_handlers",
+						"experimental": "true"
+					}
 				}
 			]
 		},
