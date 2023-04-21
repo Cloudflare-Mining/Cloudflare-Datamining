@@ -1,5 +1,11 @@
 # Change Log
 
+## 7.1.3
+
+### Patch Changes
+
+- ce5931e416: Explicitly add package deps to component-link
+
 ## 7.1.2
 
 ### Patch Changes

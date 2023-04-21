@@ -1,5 +1,12 @@
 # Change Log
 
+## 7.2.4
+
+### Patch Changes
+
+- Updated dependencies [ce5931e416]
+  - @cloudflare/component-link@7.1.3
+
 ## 7.2.3
 
 ### Patch Changes
