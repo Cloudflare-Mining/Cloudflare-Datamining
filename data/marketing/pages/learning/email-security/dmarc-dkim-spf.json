@@ -144,8 +144,8 @@
 						{
 							"contentTypeId": "learningCenterArticleLinkedList",
 							"contentfulId": "20DLRJkjwTwJWk3PInYJvl",
-							"name": "Email security header: Insights",
-							"displayText": "Insights",
+							"name": "Email security header: theNET",
+							"displayText": "theNET",
 							"links": [
 								{
 									"contentTypeId": "learningCenterArticleLink",
@@ -158,6 +158,12 @@
 									"contentfulId": "4MTBhfGd8FrzrXCPUQfycg",
 									"displayText": "The anatomy of vendor email compromise",
 									"url": "https://www.cloudflare.com/learning/insights-anatomy-vec/"
+								},
+								{
+									"contentTypeId": "learningCenterArticleLink",
+									"contentfulId": "ObmnTzqDZAsLHIRoWpuDM",
+									"displayText": "The phishing implications of AI chatbots",
+									"url": "https://www.cloudflare.com/learning/insights-chatgpt-phishing/"
 								}
 							]
 						}
@@ -440,12 +446,12 @@
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
-					"zhTW": "Translated for Locale",
+					"zhTW": "English for Locale",
 					"frFR": "Translated for Locale",
 					"deDE": "Translated for Locale",
 					"itIT": "English for Locale",
 					"jaJP": "Translated for Locale",
-					"koKR": "Translated for Locale",
+					"koKR": "English for Locale",
 					"ptBR": "Translated for Locale",
 					"esES": "Translated for Locale",
 					"enAU": "English for Locale",
@@ -455,13 +461,13 @@
 					"nlNL": "English for Locale",
 					"idID": "English for Locale",
 					"thTH": "English for Locale",
-					"ruRU": "No Page for Locale",
-					"svSE": "No Page for Locale",
+					"ruRU": "English for Locale",
+					"svSE": "English for Locale",
 					"viVN": "English for Locale",
 					"trTR": "English for Locale",
 					"zhHansCN": "Translated for Locale",
 					"plPL": "English for Locale",
-					"elGR": "Translated for Locale",
+					"elGR": "English for Locale",
 					"nbNO": "English for Locale"
 				},
 				"proactivePopup": null,
@@ -476,15 +482,12 @@
 			"allowedHrefLangs": [
 				"en-US",
 				"zh-CN",
-				"zh-TW",
 				"fr-FR",
 				"de-DE",
 				"ja-JP",
-				"ko-KR",
 				"pt-BR",
 				"es-ES",
-				"zh-Hans-CN",
-				"el-GR"
+				"zh-Hans-CN"
 			]
 		}
 	}

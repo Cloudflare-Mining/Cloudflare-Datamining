@@ -1,25 +1,29 @@
 {
 	"componentChunkName": "component---src-components-learning-center-templates-learning-center-article-template-tsx",
-	"path": "/learning/cdn/what-is-a-cache-hit-ratio/",
+	"path": "/learning/cdn/cdn-for-wordpress/",
 	"result": {
 		"data": {
 			"learningCenterArticle": {
 				"contentTypeId": "learningCenterArticle",
-				"contentfulId": "2WefRZY1DlxzW8paJcL6Fb",
-				"urlSlug": "cdn/what-is-a-cache-hit-ratio",
+				"contentfulId": "3o0cJIgMqSiP6ygdmhjr0y",
+				"urlSlug": "cdn/cdn-for-wordpress",
 				"metaTags": {
-					"metaTitle": "What is a cache hit ratio?",
-					"metaDescription": "A CDN should have a high cache hit ratio. Learn about the difference between a cache hit and a cache miss, and how to calculate a cache hit ratio.",
+					"metaTitle": "CDN for WordPress: Key features to look for",
+					"metaDescription": "tent delivery networks (CDNs) make WordPress sites much faster and more reliable. Learn how to find the best CDNs for WordPress websites.",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
 							"publicURL": "[path]/cdn-lc.png"
 						}
 					},
-					"facebookCustomImage": null
+					"facebookCustomImage": {
+						"file": {
+							"publicURL": "[path]/cdn-lc.png"
+						}
+					}
 				},
-				"metaTitle": "What is a Cache Hit Ratio?",
-				"metaDescription": "A CDN should have a high cache hit ratio. Learn about the difference between a cache hit and a cache miss, and how to calculate a cache hit ratio.",
+				"metaTitle": null,
+				"metaDescription": null,
 				"learningCenterArticleSubHeader": {
 					"contentTypeId": "learningCenterArticleSubHeader",
 					"contentfulId": "1TmxktXfUAclAhABE2horM",
@@ -415,21 +419,27 @@
 						]
 					}
 				},
-				"header": "What is a cache hit ratio?",
-				"blurbSubHeader": "A cache hit ratio is calculated by dividing the number of cache hits by the total number of cache hits and misses, and it measures how effective a cache is at fulfilling requests for content.",
-				"objectivesHeader": "Cache Hit Ratio",
+				"header": "CDN for WordPress: Key features to look for",
+				"blurbSubHeader": "Content delivery networks (CDNs) make WordPress sites much faster and more reliable.",
+				"objectivesHeader": "CDN for WordPress",
 				"objectivesList": [
-					"Understand the difference between a cache hit and a cache miss",
-					"Learn how to calculate cache hit ratio",
-					"Understand the importance of cache hit ratio for CDNs"
+					"Describe how a CDN helps WordPress sites",
+					"Identify the best CDNs for WordPress",
+					"Understand how CDNs protect sites from DDoS attacks"
 				],
 				"relatedContentLinkText": "Related Content",
 				"relatedContent": [
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "7oxj52SCzgMFJWTD2JRMDU",
-						"displayText": "What is caching?",
-						"url": "/learning/cdn/what-is-caching/"
+						"contentfulId": "3D1xEG3yadmgE8mx0qn5MJ",
+						"displayText": "What is a CDN?  ",
+						"url": "/learning/cdn/what-is-a-cdn/"
+					},
+					{
+						"contentTypeId": "learningCenterArticleLink",
+						"contentfulId": "3Rtr5Y3B21KDY5rll94vfV",
+						"displayText": "CDN benefits summary",
+						"url": "/learning/cdn/cdn-benefits/"
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
@@ -445,46 +455,40 @@
 					},
 					{
 						"contentTypeId": "learningCenterArticleLink",
-						"contentfulId": "5sZpyP6Z4glWzcyC45momG",
-						"displayText": "CDN SSL TLS security",
-						"url": "/learning/cdn/cdn-ssl-tls-security/"
-					},
-					{
-						"contentTypeId": "learningCenterArticleLink",
 						"contentfulId": "6igaSfAmzhyUfouCsoHbVq",
 						"displayText": "How CDNs reduce costs",
 						"url": "/learning/cdn/how-cdns-reduce-bandwidth-cost/"
 					}
 				],
-				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">What is a cache hit ratio?</h2>\n\n<p>Cache hit ratio is a measurement of how many content requests a cache is able to fill successfully, compared to how many requests it receives. A <a href='/learning/cdn/what-is-a-cdn/'>content delivery network (CDN)</a> provides a type of <a href='/learning/cdn/what-is-caching/'>cache</a>, and a high-performing CDN will have a high cache hit ratio.</p>\n\n<p>The formula for calculating a cache hit ratio is as follows:</p>\n\n<img src=\"/resources/images/slt3lc6tev37/9tqnmxxbqjmGcBQPvMgJN/a804f98a247f09bd21e42c398c507e96/cache-hit-ratio.svg\" class=\"responsive-image\" alt=\"Cache hit ratio equation\" itemprop=\"image\" />\n\n<p>For example, if a CDN has 39 cache hits and 2 cache misses over a given timeframe, then the cache hit ratio is equal to 39 divided by 41, or 0.951. The cache hit ratio can also be expressed as a percentage by multiplying this result by 100. As a percentage, this would be a cache hit ratio of 95.1%.\n</p>\n\n<p>Cache hit ratio is a metric that applies to any cache; it's not just for measuring <a href='/learning/cdn/performance/'>CDN performance</a>. However, it is an especially important benchmark for CDNs. Most CDN services will provide customers with this metric within their user interface or dashboard.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is a cache hit?</h2>\n\n<p>A \"cache hit\" occurs when a file is requested from a cache and the cache is able to fulfill that request. For instance, if a user visits a webpage that's supposed to display a picture of a cat playing a piano, the browser may send a request to the webpage's CDN for this picture. If the CDN has a copy of the picture in its storage, then the request results in a cache hit, and the picture is sent to the browser.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is a cache miss?</h2>\n\n<p>A cache miss is when the cache does not contain the requested content. If a copy of the cat-playing-piano picture is not currently in the CDN cache, this request results in a cache miss, and the request is passed along to the <a href='/learning/cdn/glossary/origin-server/'>origin server</a> for the original picture. The CDN server will cache the photo once the origin server responds, so that additional requests for it will result in a cache hit.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is a good CDN cache hit ratio for most websites?</h2>\n\n<p>A typical website that's mostly made up of static content could easily have a cache hit ratio in the 95-99% range. However, getting this metric as high as possible isn't the only goal of a CDN. Additionally, a website with lots of dynamic content may have a much lower cache hit ratio (although caching dynamic content is becoming possible).</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Does a high cache hit ratio always mean a CDN is effective?</h2>\n\n<p>Cache hit ratio is not the last word in CDN performance; other factors are extremely important in assessing a CDN's effectiveness as well. For instance, <a href='/learning/cdn/performance/'>where the content is served from</a> is also important. Ideally, a CDN will serve content from the CDN server closest to the end user. If this doesn't occur, the CDN's performance will not be optimal. The <a href='/cdn/'>Cloudflare CDN</a> is built to serve any content from any of our %{DataCenterCount} locations around the world. Any content that is cached in one data center) can be served from every other data center as well.</p>\n\n<p><a href='/learning/cdn/what-is-caching/'>Caching</a> is an important part of what a CDN does, but its main purpose is to make web properties faster and more reliable in general. A variety of <a href='/learning/performance/test-the-speed-of-a-website/'>performance metrics</a> help measure how much a CDN has helped to speed up a web app or website.</p>",
+				"desktopMainContent": "<h2 class=\"learning-content-h2 learning-content-h2--margin-top-16px\" itemprop=\"headline\">How does a CDN help WordPress sites?</h2>\n\n<p>A <a href='/learning/cdn/what-is-a-cdn/'>content delivery network (CDN)</a> is a distributed network of servers for <a href='/learning/cdn/what-is-caching/'>caching</a> web content close to end users. CDNs serve content on behalf of a website's regular servers (or <a href='/learning/cdn/glossary/origin-server/'>origin servers</a>) in order to accelerate the delivery of that content. Basically, they make websites load faster, just as a network of delivery trucks makes for a faster delivery service than a single truck trying to deliver packages to everyone. WordPress websites can benefit from using a CDN in several ways:</p>\n\n<ul class=\"learning-list\">\n  <li>CDNs ensure that WordPress-hosted content is delivered quickly to site visitors, improving users' experience on the site and boosting SEO</li>\n  <li><a href='/learning/cdn/cdn-load-balance-reliability/'>CDNs increase reliability</a> by serving content even if the WordPress host goes down</li>\n  <li>CDNs <a href='/learning/cdn/how-cdns-reduce-bandwidth-cost/'>reduce bandwidth costs</a> by minimizing trips to the origin server</li>\n  <li>CDNs can increase security by stopping <a href='/learning/ddos/what-is-a-ddos-attack/'>distributed denial-of-service (DDoS) attacks</a></li>\n  <li></li>\n</ul>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How do CDNs integrate with WordPress sites?</h2>\n\n<p>CDNs are <a href='/learning/cdn/glossary/reverse-proxy/'>proxy</a> networks: this means they sit in between website hosts and Internet users, forwarding network traffic to and from the two sides. A CDN can serve content on behalf of any website host. The best CDNs have a global presence, which enables them to easily cache and serve content anywhere in the world.</p>\n\n<p>Some WordPress hosts offer a built-in option for activating CDN services. Other CDN services require WordPress site owners to sign up separately. Others offer a WordPress plugin. Regardless of the method used, turning on CDN services for a WordPress site is usually a simple, beginner-friendly process.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">How does a CDN protect WordPress sites from DDoS attacks?</h2>\n\n<p>A DDoS attack is a flood of network traffic directed at a website or server, with the goal of overwhelming that website or server so that regular users cannot receive service. Sometimes the website or server crashes as well.</p>\n\n<p>Because CDNs process all traffic before it reaches a website, they are well-positioned to identify and block DDoS attacks. Thanks to their many servers, CDNs are able to absorb or remove extra traffic without crashing.</p>\n\n<p>Protection from DDoS attacks is a must-have for most WordPress sites. DDoS attacks can slow down service or take websites offline for hours or days at a time. Some DDoS attackers even use these attacks to extort website administrators for money (these are called \"<a href='/learning/ddos/ransom-ddos-attack/'>ransom DDoS attacks</a>\"). Robust DDoS protection ensures that WordPress websites remain available and reliable even in the face of large attacks.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is the best CDN for WordPress?</h2>\n\n<p>The best CDNs for WordPress should offer the following features:</p>\n\n<ul class=\"learning-list\">\n  <li><strong>Easy integration with WordPress:</strong> A CDN should be designed to natively integrate with WordPress, rather than requiring complex configuration.</li>\n  <li><strong>High cache hit ratio:</strong> <a href='/learning/cdn/what-is-a-cache-hit-ratio/'>Cache hit ratio</a> measures the percentage of content requests that a CDN can serve from its cache, instead of querying the origin server. A CDN should have a high cache hit ratio, which allows it to serve content faster and more reliably to website visitors.</li>\n  <li><strong>International presence:</strong> A CDN with a global presence can deliver content faster to all website visitors, no matter where they are located.</li>\n  <li><strong>DDoS protection:</strong> A CDN should be able to absorb DDoS attacks to ensure website reliability.</li>\n  <li><strong>WAF integration:</strong> A <a href='/learning/ddos/glossary/web-application-firewall-waf/'>web application firewall (WAF)</a> blocks attacks directed at web applications, keeping both the site itself and its users secure. Without a WAF, websites are vulnerable to <a href='/learning/security/threats/cross-site-scripting/'>cross-site scripting</a>, <a href='/learning/security/threats/sql-injection/'>SQL injection</a>, and other attacks that put users and data at risk. CDNs are an ideal way to deploy WAFs: they already proxy all traffic to a website and can therefore inspect and block malicious traffic.</li>\n  <li><strong>Caching static and dynamic content:</strong> A lot of web content is static, meaning it does not change. Some web content is dynamic, changing based on information about the user, the time of day, location, or other factors. A CDN should offer the ability to cache and serve <a href='/learning/cdn/caching-static-and-dynamic-content/'>dynamic content as well as static content</a>.</li>\n</ul>\n\n<p>To see an example of a CDN with these features, <a href='/cdn/'>learn about the Cloudflare CDN</a>.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">Can a CDN host WordPress sites?</h2>\n\n<p>CDNs are not usually used for hosting. Instead, they sit in front of the host and accelerate delivery of the hosted website. While the Cloudflare CDN can host certain types of content (in particular <a href='/products/cloudflare-images/'>images</a>, <a href='/products/cloudflare-stream/'>video</a>, and <a href='https://pages.cloudflare.com/' target='_blank'>static webpages</a>), WordPress sites are usually hosted separately from the CDNs they use.</p>\n\n<h2 class=\"learning-content-h2\" itemprop=\"headline\">What is Automatic Platform Optimization?</h2>\n\n<p>Site owners should optimize their websites to load quickly since performance affects everything from <a href='/learning/performance/how-website-speed-boosts-seo/'>SEO</a> to <a href='/learning/performance/more/website-performance-conversion-rates/'>conversion rates</a>. CDNs boost performance, but there are a ton of other optimizations possible for WordPress sites.</p>\n\n<p>Automatic Platform Optimization (APO) is a Cloudflare service that intelligently caches dynamic content, so both static and dynamic content can be served from the Cloudflare global network. APO keeps WordPress sites fast, even when updates and slow plugins would otherwise hinder their performance. <a href='https://developers.cloudflare.com/automatic-platform-optimization/' target='_blank'>Learn more about Cloudflare APO</a>.</p>",
 				"availableLocales": null,
-				"localized": true,
+				"localized": null,
 				"localeList": {
 					"enUS": "English for Locale",
-					"zhCN": "Translated for Locale",
-					"zhTW": "Translated for Locale",
-					"frFR": "Translated for Locale",
-					"deDE": "Translated for Locale",
+					"zhCN": "English for Locale",
+					"zhTW": "English for Locale",
+					"frFR": "English for Locale",
+					"deDE": "English for Locale",
 					"itIT": "English for Locale",
-					"jaJP": "Translated for Locale",
-					"koKR": "Translated for Locale",
-					"ptBR": "Translated for Locale",
-					"esES": "Translated for Locale",
+					"jaJP": "English for Locale",
+					"koKR": "English for Locale",
+					"ptBR": "English for Locale",
+					"esES": "English for Locale",
 					"enAU": "English for Locale",
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
 					"enGB": "English for Locale",
-					"nlNL": "No Page for Locale",
-					"idID": "No Page for Locale",
-					"thTH": "No Page for Locale",
-					"ruRU": "No Page for Locale",
-					"svSE": "No Page for Locale",
-					"viVN": "No Page for Locale",
-					"trTR": "No Page for Locale",
-					"zhHansCN": "Translated for Locale",
-					"plPL": "No Page for Locale",
-					"elGR": null,
-					"nbNO": null
+					"nlNL": "English for Locale",
+					"idID": "English for Locale",
+					"thTH": "English for Locale",
+					"ruRU": "English for Locale",
+					"svSE": "English for Locale",
+					"viVN": "English for Locale",
+					"trTR": "English for Locale",
+					"zhHansCN": "English for Locale",
+					"plPL": "English for Locale",
+					"elGR": "English for Locale",
+					"nbNO": "English for Locale"
 				},
 				"proactivePopup": null,
 				"sidebarForm": null
@@ -492,20 +496,11 @@
 		},
 		"pageContext": {
 			"locale": "en-US",
-			"contentfulId": "2WefRZY1DlxzW8paJcL6Fb",
-			"pathname": "/learning/cdn/what-is-a-cache-hit-ratio/",
+			"contentfulId": "3o0cJIgMqSiP6ygdmhjr0y",
+			"pathname": "/learning/cdn/cdn-for-wordpress/",
 			"baseURL": "https://www.cloudflare.com",
 			"allowedHrefLangs": [
-				"en-US",
-				"zh-CN",
-				"zh-TW",
-				"fr-FR",
-				"de-DE",
-				"ja-JP",
-				"ko-KR",
-				"pt-BR",
-				"es-ES",
-				"zh-Hans-CN"
+				"en-US"
 			]
 		}
 	}
