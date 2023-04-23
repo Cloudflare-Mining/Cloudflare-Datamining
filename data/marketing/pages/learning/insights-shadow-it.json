@@ -33,7 +33,7 @@
 					"nbNO": null
 				},
 				"relativePath": "learning/insights-shadow-it",
-				"topNavOptions": "default",
+				"topNavOptions": "custom",
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"footerOptions": "default",
@@ -43,7 +43,7 @@
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
-							"publicURL": "[path]/shadow-it-hero.png"
+							"publicURL": "[path]/growingcostofshadowit.png"
 						}
 					},
 					"facebookCustomImage": null
@@ -52,18 +52,240 @@
 				"contentTypeId": "page",
 				"promotionalBanner": null,
 				"psaBanner": null,
-				"customTopNav": null,
-				"headerLogo": null,
+				"customTopNav": [
+					{
+						"contentTypeId": "navNavigationGroup",
+						"contentfulId": "7vtXhMutS3hr5urm12KUGs",
+						"locale": "en-US",
+						"mainNav": {
+							"contentTypeId": "navNavigation",
+							"contentfulId": "43PdHIHIsgmVJp1nN48Njc",
+							"locale": "en-US",
+							"navigationType": "Header",
+							"isDefaultNav": false,
+							"backgroundColor": "white",
+							"sectionPadding": null,
+							"navigationItems": [
+								{
+									"contentTypeId": "navNavigationItem",
+									"contentfulId": "1ll1oUb6JdF7xzHFrL5BtI",
+									"locale": "en-US",
+									"name": "Home",
+									"description": null,
+									"navIcon": null,
+									"contentfulButton": null,
+									"showIconOnly": false,
+									"hideOnChinaSite": false,
+									"navigationItems": null,
+									"mainLink": {
+										"contentTypeId": "elementNavLink",
+										"contentfulId": "1CFvERWkgaLU62M1N1pxQD",
+										"locale": "en-US",
+										"title": "Home",
+										"description": null,
+										"url": "the-net",
+										"badges": null,
+										"specialLinkType": null,
+										"openInNewWindow": false,
+										"isExternalUrl": null
+									},
+									"navigationLinks": null
+								},
+								{
+									"contentTypeId": "navNavigationItem",
+									"contentfulId": "6GKXXIm70KXYwj2jnsBrR7",
+									"locale": "en-US",
+									"name": "Security Innovation",
+									"description": null,
+									"navIcon": null,
+									"contentfulButton": null,
+									"showIconOnly": false,
+									"hideOnChinaSite": false,
+									"navigationItems": null,
+									"mainLink": {
+										"contentTypeId": "elementNavLink",
+										"contentfulId": "2c0im4m95oZ8rlwS8ePtbO",
+										"locale": "en-US",
+										"title": "Security Innovation",
+										"description": null,
+										"url": "/the-net/security-innovation/",
+										"badges": null,
+										"specialLinkType": null,
+										"openInNewWindow": false,
+										"isExternalUrl": null
+									},
+									"navigationLinks": null
+								},
+								{
+									"contentTypeId": "navNavigationItem",
+									"contentfulId": "13DnpsI1G49Zk7wJbppRnd",
+									"locale": "en-US",
+									"name": "Threat Landscape",
+									"description": null,
+									"navIcon": null,
+									"contentfulButton": null,
+									"showIconOnly": false,
+									"hideOnChinaSite": false,
+									"navigationItems": null,
+									"mainLink": {
+										"contentTypeId": "elementNavLink",
+										"contentfulId": "18vMkNil63nAJw79ZSR4UJ",
+										"locale": "en-US",
+										"title": "Threat Landscape",
+										"description": null,
+										"url": "/the-net/threat-landscape/",
+										"badges": null,
+										"specialLinkType": null,
+										"openInNewWindow": false,
+										"isExternalUrl": null
+									},
+									"navigationLinks": null
+								},
+								{
+									"contentTypeId": "navNavigationItem",
+									"contentfulId": "RanCdjDWzy8KI9Ha33Qal",
+									"locale": "en-US",
+									"name": "Future Internet",
+									"description": null,
+									"navIcon": null,
+									"contentfulButton": null,
+									"showIconOnly": false,
+									"hideOnChinaSite": false,
+									"navigationItems": null,
+									"mainLink": {
+										"contentTypeId": "elementNavLink",
+										"contentfulId": "0xC7JehkyUdfAgWDStXHa",
+										"locale": "en-US",
+										"title": "Future Internet",
+										"description": null,
+										"url": "/the-net/future-internet",
+										"badges": null,
+										"specialLinkType": null,
+										"openInNewWindow": false,
+										"isExternalUrl": null
+									},
+									"navigationLinks": null
+								}
+							]
+						},
+						"utilityNav": {
+							"contentTypeId": "navNavigation",
+							"contentfulId": "52CjZzRgYo8tC0nwT23Fc",
+							"locale": "en-US",
+							"navigationType": "Custom Navigation",
+							"isDefaultNav": true,
+							"backgroundColor": null,
+							"sectionPadding": "default",
+							"navigationItems": [
+								{
+									"contentTypeId": "navNavigationItem",
+									"contentfulId": "5XqIIHouIN3SqoeS8eIQL8",
+									"locale": "en-US",
+									"name": "Support",
+									"description": null,
+									"navIcon": null,
+									"contentfulButton": null,
+									"showIconOnly": false,
+									"hideOnChinaSite": null,
+									"navigationItems": null,
+									"mainLink": null,
+									"navigationLinks": [
+										{
+											"contentTypeId": "elementNavLink",
+											"contentfulId": "39ahAfcnTcrePwvvA1l0MW",
+											"locale": "en-US",
+											"title": "Contact Support",
+											"description": null,
+											"url": "https://dash.cloudflare.com/?to=/:account/support",
+											"badges": null,
+											"specialLinkType": null,
+											"openInNewWindow": true,
+											"isExternalUrl": null
+										},
+										{
+											"contentTypeId": "elementNavLink",
+											"contentfulId": "7eEo2tTS8nkTUH01h4y5BN",
+											"locale": "en-US",
+											"title": "Help Center",
+											"description": null,
+											"url": "https://support.cloudflare.com/",
+											"badges": null,
+											"specialLinkType": null,
+											"openInNewWindow": true,
+											"isExternalUrl": null
+										},
+										{
+											"contentTypeId": "elementNavLink",
+											"contentfulId": "4qMTa5oo6WQknsTOzFsrQ",
+											"locale": "en-US",
+											"title": "Cloudflare Community",
+											"description": null,
+											"url": "https://community.cloudflare.com/",
+											"badges": null,
+											"specialLinkType": null,
+											"openInNewWindow": true,
+											"isExternalUrl": null
+										},
+										{
+											"contentTypeId": "elementNavLink",
+											"contentfulId": "52WmBFB2P512JhW6jzATzc",
+											"locale": "en-US",
+											"title": "Lost account access?",
+											"description": null,
+											"url": "https://support.cloudflare.com/hc/en-us/articles/203471284-Login-and-account-issues",
+											"badges": null,
+											"specialLinkType": null,
+											"openInNewWindow": false,
+											"isExternalUrl": null
+										}
+									]
+								}
+							]
+						},
+						"rightNav": {
+							"contentTypeId": "navNavigation",
+							"contentfulId": "2lJyDCIXKA3ggOeKrNSCMQ",
+							"locale": "en-US",
+							"navigationType": "Footer",
+							"isDefaultNav": false,
+							"backgroundColor": null,
+							"sectionPadding": "default",
+							"navigationItems": [
+								{
+									"contentTypeId": "navNavigationItem",
+									"contentfulId": "2yvvSmtqM5YECHou5SqrhX",
+									"locale": "en-US",
+									"name": " ",
+									"description": null,
+									"navIcon": null,
+									"contentfulButton": null,
+									"showIconOnly": false,
+									"hideOnChinaSite": null,
+									"navigationItems": null,
+									"mainLink": null,
+									"navigationLinks": null
+								}
+							]
+						},
+						"experimentId": null,
+						"variant": null
+					}
+				],
+				"headerLogo": {
+					"file": {
+						"publicURL": "[path]/theNET_Cloudflare_Logo.png"
+					}
+				},
 				"proactivePopup": {
 					"contentTypeId": "proactivePopup",
 					"contentfulId": "1CsLKj1fesYJdTYADz0tWP",
-					"headerText": "Subscribe to Trending Stories",
+					"headerText": "Subscribe to theNET",
 					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
 					"hasMarketoForm": true,
 					"marketoForm": {
 						"contentTypeId": "marketoEmbeddedForm",
 						"contentfulId": "55VRCxLgGVxT4XfkaKSPQ7",
-						"bladeName": "TheNET - Trending Stories - Form: Proactive Pop-up - Subscribe",
+						"bladeName": "theNET - Trending Stories - Form: Proactive Pop-up - Subscribe",
 						"backgroundColor": "white",
 						"marketoFormId": 2459,
 						"marketoFormLeadSource": "Inbound - Blog Subscriber",
@@ -91,6 +313,12 @@
 				},
 				"template": null,
 				"relatedBlades": [
+					{
+						"contentTypeId": "bladeHtml",
+						"contentfulId": "3PfSgR6RxFckxj30JU8UNT",
+						"htmlContent": "<section style=\"width: 100vw;margin-left: calc((100vw - 100%) / -2); \">\n<img src= 'https://cf-assets.www.cloudflare.com/slt3lc6tev37/285sCZZbKXBtsa5g3auYHu/79a31e8173f207459b8ea3c35e75cb98/BDES-4015_theNET_TopBanner_1440x176_Top_webpage_banner.svg'; style=\"width: 100%; display:block \" /> \n</section>",
+						"htmlId": "theNETBanner"
+					},
 					{
 						"contentTypeId": "bladeRichTextColumnGroup",
 						"contentfulId": "3ktt9zbs69OpzTzsK2dpsC",
@@ -171,10 +399,10 @@
 														{
 															"contentfulId": "1uHOjNG1oOGCiniGbo0J7K",
 															"locale": "en-US",
-															"title": "theNET - The growing cost of shadow IT - Meta - Image",
+															"title": "theNET - the growing cost of shadow IT - meta - image",
 															"file": {
-																"name": "shadow-it-hero",
-																"publicURL": "[path]/shadow-it-hero.png",
+																"name": "growingcostofshadowit",
+																"publicURL": "[path]/growingcostofshadowit.png",
 																"internal": {
 																	"mediaType": "image/png"
 																}
@@ -2388,21 +2616,21 @@
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
 							"contentfulId": "42YK7xPyI7ogEbiDthlJRL",
-							"elementName": "Blog Subscribe Blade - Button",
+							"elementName": "theNET - Subscribe Blade - Button",
 							"standardText": null,
-							"text": "Subscribe to Trending Stories",
+							"text": "Subscribe to theNET",
 							"url": null,
 							"loggedInUrl": null,
 							"modal": {
 								"contentTypeId": "formModal",
 								"contentfulId": "46yewBLdXHwQh9wdijoTot",
-								"modalName": "Blog Subscribe Modal Two",
+								"modalName": "theNET - Subscribe Modal Two",
 								"modalId": "blog-subscribe-modal-two",
 								"modalType": "split-form",
 								"marketoForm": {
 									"contentTypeId": "marketoEmbeddedForm",
 									"contentfulId": "163Qf8tDGZJZMB7N1hPbhR",
-									"bladeName": "Blog Subscribe Blade - Marketo Form",
+									"bladeName": "theNET - Subscribe Blade - Marketo Form",
 									"backgroundColor": "white",
 									"marketoFormId": 2459,
 									"marketoFormLeadSource": "Inbound - Blog Subscriber",
@@ -2419,7 +2647,7 @@
 									"sendAdRoll": null,
 									"meta_adRollCustomSegment": null,
 									"enableSandbox": null,
-									"marketoFormSubmitButtonText": "Subscribe to Trending Stories",
+									"marketoFormSubmitButtonText": "Subscribe to theNET",
 									"marketoFormSubmitButtonColor": "orange",
 									"enableEmailVerification": null,
 									"disableEnterpriseEmailNotification": null,
