@@ -330,10 +330,10 @@
 						"contentfulId": "6gmCnzNifrOtwa3BGB2p7f",
 						"htmlId": null,
 						"mainHeadline": null,
-						"backgroundColor": "white",
+						"backgroundColor": "light-blue",
 						"bladeBorder": "none",
-						"sectionPadding": "tile--no-top-padding",
-						"columnLayout": "One Column Narrow",
+						"sectionPadding": "tile--no-bottom-padding",
+						"columnLayout": "Two Thirds & One Third",
 						"columns": [
 							{
 								"contentTypeId": "elementRichText",
@@ -1123,7 +1123,7 @@
 						"backgroundColor": "light-blue",
 						"bladeBorder": "none",
 						"sectionPadding": null,
-						"columnLayout": "One Column Narrow",
+						"columnLayout": "Two Thirds & One Third",
 						"columns": [
 							{
 								"contentTypeId": "elementRichText",
@@ -1132,6 +1132,37 @@
 								"column": {
 									"nodeType": "document",
 									"content": [
+										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
 										{
 											"nodeType": "heading-2",
 											"data": {
@@ -1220,7 +1251,7 @@
 													"entry_button": [
 														{
 															"buttonAssetFile": null,
-															"buttonWidth": "auto",
+															"buttonWidth": "wide",
 															"buttonColor": "orange",
 															"buttonTextLoggedIn": null,
 															"contentTypeId": "button",
