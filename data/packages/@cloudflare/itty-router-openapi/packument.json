@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/itty-router-openapi",
 	"dist-tags": {
-		"latest": "0.1.2"
+		"latest": "0.1.3"
 	},
 	"versions": {
 		"0.0.1": {
@@ -743,6 +743,48 @@
 					}
 				],
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkOTzxACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpTHQ//aSefxv28mlqfwpd3LJBXfzfmKZn6asiDcMHK00OwReWtEO2n\r\nQXc9W7oMFzC6tfxx0qjG5cHoBKIpRJgPqtkKNP1Bd6UMGAEAwLodDmz6Dngf\r\noiuJoJc/KBifEJJrKHOog+GkplK8nwDx4jX5Wwkg1WYXPcPy4tKUn2r4gMiA\r\n1pCL0k+WmCIYPuLn/mEhbNWpmjOXTGSc0GD6xx7I0fjrAbpVmRHjVT5kXrWo\r\nLPeabuEi7IyTXz5m+Qsr9W/Vs7KKwwKuYEJUF4UUkqVdIiNs31WvUu3P96cl\r\nR1GGF5MUwEbpyV2N0XLpbyQoEqA6WmU5tPuZDM9qLLJ2C/HzKRPNVTJfXDrE\r\n41WXxM8o43D0erwyFuvMjD8X60kqOZ2juAG326VbzzNYcvnYM0GvNfhtCthk\r\nSuluTOa85nY/kKzqO6CFtO/PxjUFXnh9kF7KuVKaSwiW/ClOFoCdlgcUeYui\r\nw5D1fKS4dYHQzTDP7dQcZkF+ikkzZ50pSjWZsrAPcIBoJA9FP+wn8sWdNRS1\r\neN4C4aZRkYa7E/nqZLnOx9GPPN4wY5Q26wuKyTK/jLpebu835NF8UhQ0pB/C\r\ncO2gIOsS6KTu2CdOiM4HBo8i7choeOE8T3l/E5IW1x491t5P17cgLyGAl3vp\r\n6GuvbooHqeEgQl2Wzm6a8sRw1eeVMdFqKjg=\r\n=SdYK\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.1.3": {
+			"name": "@cloudflare/itty-router-openapi",
+			"version": "0.1.3",
+			"dependencies": {
+				"itty-router": "^3.0.12"
+			},
+			"devDependencies": {
+				"@cloudflare/workers-types": "^3.18.0",
+				"@commitlint/cli": "^13.1.0",
+				"@commitlint/config-conventional": "^13.1.0",
+				"@rollup/plugin-terser": "^0.2.1",
+				"@rollup/plugin-typescript": "^10.0.1",
+				"@types/jest": "^27.0.1",
+				"@typescript-eslint/eslint-plugin": "^4.31.1",
+				"@typescript-eslint/parser": "^4.31.1",
+				"eslint": "^7.32.0",
+				"eslint-config-prettier": "^8.3.0",
+				"eslint-plugin-prettier": "^4.0.0",
+				"husky": "^7.0.2",
+				"jest": "^28.1.2",
+				"pinst": "^2.1.6",
+				"prettier": "^2.4.0",
+				"rollup": "^3.8.1",
+				"rollup-plugin-bundle-size": "^1.0.3",
+				"ts-jest": "^28.0.5",
+				"typescript": "^4.8.4"
+			},
+			"dist": {
+				"integrity": "sha512-rE2Ghrv9cTY+E7Qu5pX8qDCwgVJryB6GplK3D0/RYS/uZ33ZuqhizHid60t7YETS1lKDS3ZZuX2s1CA/ULxC5g==",
+				"shasum": "227a4ffc5c91eb1581fe67e28762446b2788e372",
+				"tarball": "https://registry.npmjs.org/@cloudflare/itty-router-openapi/-/itty-router-openapi-0.1.3.tgz",
+				"fileCount": 12,
+				"unpackedSize": 75316,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEQCIG5/1nfKlGrumlJz6QYXXgk9fObAPsfQmQ5Li21L1gzkAiAmGWbUTBxseOzV56LaJIvNVuyP9YmEiGbSEQiJQV8X2w=="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJkSQ+1ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmp9ORAAh7pq2TJ1tyZaIvWYDhEjetNNr+AWBAA31lMwWlt7NRWUJzey\r\n/aMxzIXrGuf/Ak0Fpkdk3DNEqUSBb8yc/3Q/RMdCmFvTXrsdokdHY2Wua47f\r\nzeTpRGvlfkwRKh5DuJ0QpHnA6J85I33qV7CweEE10HjJGEsH7NvFySJiRerD\r\ny8jPCgxyG7Gmtmo9DdshrpCgM8Iwl70+/sgF5eP6Q/k8VpCg3w+W3COPMKoL\r\nYWZ0OTeuk3r5/E+d3tnMMuQkfOTJqElbnwt9EP6ddpNRc0jzvMKFSGNl85tu\r\nyQxvoH/X7Do7aBU42/Kfua3sosJee+jgCrm1PLxMA138hgKv9bUb6WvyRy7q\r\noTCpmg6vII+03VyTr3BoIvHZB/DZ/DCIWnDuq+bw1Wx6IcjxVRs/+TjlV575\r\nodi3PyBIVwYdVUxzQmqyY0X7CeZbBYrUw8eyo30oJHR6QSzofX2RyYcTVduo\r\nFe4hpV1kGqUWaGao/24NcEPGiGxjkWisynWtlZp150gB2eOOCZYScY4fgvsV\r\nlEf7o5Y/AGey7EN123kMNuvrTRIIqWN8JJZNXwKh4Ff6K696RcZsip3/hbSt\r\nVI07GHhzKdymuDO4l9hIOMCp95o11irQ2eBIgCRZ05IQqeAiKFIKEa3HVXo/\r\nZlldRnVwEePoB4QmCCQp0lPVH7Ks503gloE=\r\n=ibkq\r\n-----END PGP SIGNATURE-----\r\n"
 			}
 		}
 	}

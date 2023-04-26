@@ -75,7 +75,7 @@ export class ToDoList extends OpenAPIRoute {
     },
   }
 
-  async handle(request: Request, data: Record<string, any>) {
+  async handle(request: Request, env: any, context: any, data: Record<string, any>) {
     const { page } = data
 
     return {
@@ -98,7 +98,9 @@ router.get('/todos', ToDoList)
 // 404 for everything else
 router.all('*', () => new Response('Not Found.', { status: 404 }))
 
-addEventListener('fetch', (event) => event.respondWith(router.handle(event.request)))
+export default {
+  fetch: router.handle,
+}
 ```
 
 Now `wrangler dev` and go to `/docs` or `/redocs` with your browser. You'll be greeted with an OpenAPI UI that you can
@@ -147,19 +149,19 @@ and ready to be invoked.
 
 Example configurations are [available here](#openai-plugin-support)
 
-| Name                    | Type(s)                                    | Description                                                                           | Examples                                                                   |
-| ----------------------- | ------------------------------------------ | ------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `schema_version`        | `SchemaVersion` or `string` or `undefined` | Schema Version, if `undefined` this is filled with `V1`                               | `Router({ base: '/api' })`                                                 |
-| `name_for_model`        | `string`                                   | Name for model                                                                        | [see documentation](https://github.com/kwhitley/itty-router#manual-routes) |
-| `name_for_human`        | `string`                                   | Name for Human                                                                        | [see documentation](https://github.com/kwhitley/itty-router#manual-routes) |
-| `description_for_model` | `string`                                   | Description for model                                                                 | [see documentation](https://github.com/kwhitley/itty-router#manual-routes) |
-| `description_for_human` | `string`                                   | Description for human                                                                 | [see documentation](https://github.com/kwhitley/itty-router#manual-routes) |
-| `logo_url`              | `string`                                   | Logo url                                                                              | [see documentation](https://github.com/kwhitley/itty-router#manual-routes) |
-| `contact_email`         | `string`                                   | Contact email                                                                         | [see documentation](https://github.com/kwhitley/itty-router#manual-routes) |
-| `legal_info_url`        | `string`                                   | Legal info url                                                                        | [see documentation](https://github.com/kwhitley/itty-router#manual-routes) |
-| `auth`                  | `object` or `undefined`                    | Object for Auth configuration, `undefined`: defaults to no Auth                       | [see documentation](#4-core-openapi-schema-customizations)                 |
-| `api`                   | `object` or `undefined`                    | Object for Api configuration, `undefined`: defaults to openapi.json spec              | [see documentation](#4-core-openapi-schema-customizations)                 |
-| `is_dev`                | `boolean` or `undefined`                   | Boolean to let chatgpt know it is in development mode, `undefined`: defaults to false | [see documentation](#4-core-openapi-schema-customizations)                 |
+| Name                    | Type(s)                                    | Description                                                                           | Examples                                                                                                                                                                                                                   |
+| ----------------------- | ------------------------------------------ | ------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `schema_version`        | `SchemaVersion` or `string` or `undefined` | Schema Version, `undefined`: defaults `v1`                                            | `v1`                                                                                                                                                                                                                       |
+| `name_for_model`        | `string`                                   | Name for model                                                                        | `cloudflare_radar`                                                                                                                                                                                                         |
+| `name_for_human`        | `string`                                   | Name for Human                                                                        | `Cloudflare Radar API`                                                                                                                                                                                                     |
+| `description_for_model` | `string`                                   | Description for model                                                                 | `Plugin for retrieving the data based on Cloudflare Radar's data. Use it whenever a user asks something that might be related to Internet usage, eg. outages, Internet traffic, or Cloudflare Radar's data in particular.` |
+| `description_for_human` | `string`                                   | Description for human                                                                 | `Get data insights from Cloudflare's point of view.`                                                                                                                                                                       |
+| `logo_url`              | `string`                                   | Logo url                                                                              | `https://cdn-icons-png.flaticon.com/512/5969/5969044.png`                                                                                                                                                                  |
+| `contact_email`         | `string`                                   | Contact email                                                                         | `radar@cloudflare.com`                                                                                                                                                                                                     |
+| `legal_info_url`        | `string`                                   | Legal info url                                                                        | `https://www.cloudflare.com/website-terms/`                                                                                                                                                                                |
+| `auth`                  | `object` or `undefined`                    | Object for Auth configuration, `undefined`: defaults to no Auth                       | `{type: AuthType.USER_HTTP, authorization_type: 'bearer'}`                                                                                                                                                                 |
+| `api`                   | `object` or `undefined`                    | Object for Api configuration, `undefined`: defaults to openapi.json spec              | `{type: APIType.OPENAPI, has_user_authentication: false, url: '/openai.json'}`                                                                                                                                             |
+| `is_dev`                | `boolean` or `undefined`                   | Boolean to let chatgpt know it is in development mode, `undefined`: defaults to false | `true`                                                                                                                                                                                                                     |
 
 ## Schema types
 
@@ -324,7 +326,7 @@ export class ToDoFetch extends OpenAPIRoute {
     },
   }
 
-  async handle(request: Request, data: Record<string, any>) {
+  async handle(request: Request, env: any, context: any, data: Record<string, any>) {
     const { todoId } = data
     // ...
   }
@@ -351,7 +353,7 @@ export class ToDoList extends OpenAPIRoute {
     },
   }
 
-  async handle(request: Request, data: Record<string, any>) {
+  async handle(request: Request, env: any, context: any, data: Record<string, any>) {
     const { page } = data
     // ...
   }
@@ -394,7 +396,7 @@ export class ToDoCreate extends OpenAPIRoute {
     },
   }
 
-  async handle(request: Request, data: Record<string, any>) {
+  async handle(request: Request, env: any, context: any, data: Record<string, any>) {
     const {body} = data
 
     // Actually insert the data somewhere
@@ -485,7 +487,7 @@ const router = OpenAPIRouter({
 
 Then when calling for `https://example.com/.well-known/ai-plugin.json` the response will have the absolut url
 
-```json
+```
 {
   ...
   api: {
@@ -561,7 +563,7 @@ export default {
 Learn more
 about [Cloudflare Module Worker format here](https://developers.cloudflare.com/workers/runtime-apis/fetch-event#syntax-module-worker).
 
-### 2. Using Typescript types
+### 2. Using Javascript types
 
 If you are planning on using this lib with Typescript, then declaring schemas is even easier than with Javascript
 because instead of importing the parameter types, you can use the native Typescript data types `String`, `Number`,
@@ -734,6 +736,63 @@ router.get('/api/v1/bgp/timeseries', BgpTimeseries)
 
 Now run `wrangler dev` and go to `/docs` with your browser, here you can verify that all nested routers appear correctly
 and you are able to call every endpoint.
+
+### 8. Cloudflare Worker using addEventListener
+
+If you want to use the `addEventListener` instead of exporting an object, you can define your worker like this:
+
+```ts
+import {OpenAPIRouter, OpenAPIRoute} from '@cloudflare/itty-router-openapi'
+
+export class ToDoList extends OpenAPIRoute {
+  static schema = {...}
+
+  async handle(request: Request, data: Record<string, any>) {
+    const {page} = data
+
+    return {
+      currentPage: page,
+      nextPage: page + 1,
+      results: ['lorem', 'ipsum'],
+    }
+  }
+}
+
+const router = OpenAPIRouter()
+router.get('/todos', ToDoList)
+
+addEventListener('fetch', (event) => event.respondWith(router.handle(event.request)))
+```
+
+You can also pass other `event` parameters to the endpoint, by adding them in the `addEventListener` function
+
+```ts
+import {OpenAPIRouter, OpenAPIRoute} from '@cloudflare/itty-router-openapi'
+
+export class ToDoList extends OpenAPIRoute {
+  static schema = {...}
+
+  async handle(request: Request, waitUntil: any, data: Record<string, any>) {
+    const {page} = data
+
+    return {
+      currentPage: page,
+      nextPage: page + 1,
+      results: ['lorem', 'ipsum'],
+    }
+  }
+}
+
+const router = OpenAPIRouter()
+router.get('/todos', ToDoList)
+
+addEventListener('fetch', (event) => event.respondWith(router.handle(event.request, event.waitUntil.bind(event))))
+```
+
+Notice that, in this last example the endpoint is receiving an extra `waitUntil` parameter.
+
+Learn more
+about [Cloudflare Workers addEventListener here](https://developers.cloudflare.com/workers/runtime-apis/add-event-listener/).
 
 ## Feedback and contributions
 
