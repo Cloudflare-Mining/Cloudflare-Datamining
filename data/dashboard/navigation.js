@@ -113,7 +113,7 @@ const navigation = {
 			url: "/logs",
 			labels: ["new"],
 			hasPermission: function(l) {
-				return (0, r.iY)(l) && (0, f.S6)(l) && !!(0, n.z1)("account-logpush")(l)
+				return (0, r.iY)(l) && (0, g.S6)(l) && !!(0, n.z1)("account-logpush")(l)
 			}
 		}, {
 			title: "navigation.account.carbon",
@@ -231,7 +231,7 @@ const navigation = {
 		hasPermission: function(l) {
 			return (0, r.iY)(l) && !!(0, a.Le)(l, "magic_transit", "mt_home")
 		},
-		tabs: g.Lx.concat(g.SF, g.Jg)
+		tabs: f.Lx.concat(f.SF, f.Jg)
 	}, {
 		title: "navigation.account.magic_firewall",
 		url: "/network-security/magic_firewall",
@@ -297,7 +297,7 @@ const navigation = {
 		hasPermission: function(l) {
 			return (0, r.iY)(l) && !!(0, a.Le)(l, "magic_wan", "mw_home")
 		},
-		tabs: g.SF.concat(g.Jg)
+		tabs: f.SF.concat(f.Jg)
 	}, {
 		hasPermission: function(l) {
 			return (0, r.iY)(l)
@@ -348,7 +348,7 @@ const navigation = {
 			url: "/workers/plans",
 			hasPermission: function(l) {
 				var j = (0, i.tJ)(l);
-				return !(0, s.ky)(j, [A.uD.UnboundEnterpriseTrial])
+				return !(0, s.ky)(j, [E.uD.UnboundEnterpriseTrial])
 			}
 		}]
 	}, {
@@ -359,6 +359,9 @@ const navigation = {
 			return !!(0, n.z1)("workers-and-pages-convergence")(l) && (0, r.iY)(l)
 		},
 		pages: [{
+			title: "navigation.common.overview",
+			url: "/workers-and-pages"
+		}, {
 			title: "navigation.account.workers.kv",
 			url: "/workers/kv/namespaces"
 		}, {
@@ -380,7 +383,7 @@ const navigation = {
 			url: "/workers/plans",
 			hasPermission: function(l) {
 				var j = (0, i.tJ)(l);
-				return !(0, s.ky)(j, [A.uD.UnboundEnterpriseTrial])
+				return !(0, s.ky)(j, [E.uD.UnboundEnterpriseTrial])
 			}
 		}]
 	}, {
@@ -630,7 +633,7 @@ const navigation = {
 			url: "/analytics/logs",
 			navigationType: "global-settings",
 			hasPermission: function(l) {
-				return Object.values((0, f.H_)(l)).some(Boolean)
+				return Object.values((0, g.H_)(l)).some(Boolean)
 			}
 		}, {
 			title: "navigation.zone.analytics.instant_logs",
@@ -646,7 +649,7 @@ const navigation = {
 		navigationType: "both",
 		iconType: "git-branch",
 		testId: "zone-navigation-link-zone-versioning",
-		tabs: U.bB,
+		tabs: F.bB,
 		hasPermission: function(l) {
 			return !(0, u.yD)(l) && (0, d.m7)(l)
 		}
@@ -712,10 +715,10 @@ const navigation = {
 		hasPermission: function(l) {
 			var j = (0, m.nA)(l);
 			if ((0, u.yD)(l) || !(0, r.wB)(l, "zone_settings", "spectrum.app") || !j) return !1;
-			var k = !!((0, R.l8)(l) || (0, m.DQ)(l)),
+			var x = !!((0, R.l8)(l) || (0, m.DQ)(l)),
 				N = !!(0, m.ZB)(l, "spectrum", "enabled"),
-				x = !!(0, m.Ns)(j);
-			return N || k || !x
+				W = !!(0, m.Ns)(j);
+			return N || x || !W
 		}
 	}, {
 		title: "navigation.zone.ssl-tls",
@@ -772,7 +775,7 @@ const navigation = {
 			url: "/security/analytics",
 			labels: ["beta"],
 			hasPermission: function(l) {
-				return (0, S.B_)(l)
+				return (0, O.B_)(l)
 			}
 		}, {
 			title: "navigation.zone.security.events",
@@ -920,7 +923,7 @@ const navigation = {
 			title: "navigation.zone.rules.transform_rules",
 			url: "/rules/transform-rules",
 			navigationType: "version",
-			tabs: K
+			tabs: Y
 		}, {
 			title: "navigation.zone.rules.redirect_rules",
 			labels: ["beta"],
@@ -1046,8 +1049,8 @@ const navigation = {
 		navigationType: "global-settings",
 		labels: function(l) {
 			var j = [],
-				k = (0, m.nA)(l);
-			return k && !(0, m.tU)(k, "pro") && j.push("beta"), j
+				x = (0, m.nA)(l);
+			return x && !(0, m.tU)(x, "pro") && j.push("beta"), j
 		},
 		iconType: "zaraz",
 		testId: "zone-navigation-link-zaraz",
@@ -1058,7 +1061,7 @@ const navigation = {
 			title: "navigation.zone.zaraz.tools.configuration",
 			navigationType: "global-settings",
 			url: "/zaraz/tools-config",
-			tabs: O.az
+			tabs: S.az
 		}, {
 			title: "navigation.zone.zaraz.history",
 			navigationType: "global-settings",
@@ -1076,8 +1079,8 @@ const navigation = {
 			url: "/zaraz/consent",
 			labels: function(l) {
 				var j = [],
-					k = (0, m.nA)(l);
-				return k && (0, m.tU)(k, "pro") && j.push("beta"), j
+					x = (0, m.nA)(l);
+				return x && (0, m.tU)(x, "pro") && j.push("beta"), j
 			}
 		}, {
 			title: "navigation.zone.zaraz.settings",
@@ -1092,8 +1095,8 @@ const navigation = {
 		labels: ["new"],
 		hasPermission: function(l) {
 			var j = (0, a.uF)(l),
-				k = (j == null ? void 0 : j.roles) || [];
-			return k.includes("Trust and Safety") ? !1 : !(0, u.yD)(l)
+				x = (j == null ? void 0 : j.roles) || [];
+			return x.includes("Trust and Safety") ? !1 : !(0, u.yD)(l)
 		}
 	}],
 	zeroTrust: [{
