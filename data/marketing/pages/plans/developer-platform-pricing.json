@@ -1875,17 +1875,7 @@
 								},
 								"category": "Performance",
 								"pricingText": "50,000 monthly resizing requests included with Pro, Business. $9 per additional 50,000 resizing requests.",
-								"learnMoreLink": {
-									"contentTypeId": "elementLink",
-									"contentfulId": "3BAVogjsFzWGBzfg9smGKJ",
-									"elementName": "AddOns-Image Resizing-Learn more",
-									"standardText": null,
-									"text": "Learn more",
-									"url": "/website-optimization/#plan-features",
-									"modal": null,
-									"openInNewTab": false,
-									"locale": "en-US"
-								},
+								"learnMoreLink": null,
 								"callToAction": {
 									"buttonAssetFile": null,
 									"buttonWidth": "auto",
@@ -1897,86 +1887,6 @@
 									"standardText": null,
 									"text": "Activate",
 									"url": "https://dash.cloudflare.com/?to=/:account/:zone/speed/optimization",
-									"loggedInUrl": null,
-									"modal": null,
-									"openInNewTab": false,
-									"locale": "en-US"
-								}
-							},
-							{
-								"locale": "en-US",
-								"entryTitle": "AddOns-Video Streaming",
-								"contentfulId": "24Ry9wWD5ffaeFvWwRHvC7",
-								"contentTypeId": "elementAddOn",
-								"iconAssetFile": {
-									"id": "354f7679-9260-56e3-8424-c7ab413df9c4",
-									"altText": "Browser video blue",
-									"title": "Browser video blue",
-									"activeAsset": "Brandfolder Asset",
-									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 1081,
-										"height": 192,
-										"width": 192,
-										"filename": "browser-video-blue.svg",
-										"file": {
-											"publicURL": "[path]/browser-video-blue.svg"
-										}
-									},
-									"brandfolderAssetMobile": null
-								},
-								"title": "Video Streaming",
-								"description": {
-									"nodeType": "document",
-									"content": [
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Cloudflare Stream makes streaming high quality video at scale, easy and affordable.",
-													"marks": [],
-													"content": null
-												}
-											]
-										}
-									]
-								},
-								"category": "Serverless",
-								"pricingText": "Starting at $5 per month",
-								"learnMoreLink": {
-									"contentTypeId": "elementLink",
-									"contentfulId": "eGJIN6Luq9PdcMZhG4gZM",
-									"elementName": "AddOns-Video Streaming-Learn more link",
-									"standardText": null,
-									"text": "Learn more",
-									"url": "/products/cloudflare-stream/",
-									"modal": null,
-									"openInNewTab": false,
-									"locale": "en-US"
-								},
-								"callToAction": {
-									"buttonAssetFile": null,
-									"buttonWidth": "auto",
-									"buttonColor": "blue",
-									"buttonTextLoggedIn": null,
-									"contentTypeId": "button",
-									"contentfulId": "BzhTYyTCjQM2igJSZ7Nhm",
-									"elementName": "AddOns-Video Streaming-Activate Button",
-									"standardText": null,
-									"text": "Activate",
-									"url": "https://dash.cloudflare.com/stream",
 									"loggedInUrl": null,
 									"modal": null,
 									"openInNewTab": false,
