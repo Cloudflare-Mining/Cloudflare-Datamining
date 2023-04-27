@@ -119,6 +119,8 @@ import Wrench from './Wrench';
 import Youtube from './Youtube';
 import Zaraz from './Zaraz';
 import ZerotrustCasbLogo from './ZerotrustCasbLogo';
+import Discover from './Discover';
+import NetworkSecurity from './NetworkSecurity';
 export default {
   dlp: Dlp,
   'account-analytics-logo': AccountAnalyticsLogo,
@@ -147,6 +149,7 @@ export default {
   copy: Copy,
   'credit-card': CreditCard,
   discord: Discord,
+  discover: Discover,
   documentation: Documentation,
   download: Download,
   drive: Drive,
@@ -188,6 +191,7 @@ export default {
   more: More,
   'network-analytics-logo': NetworkAnalyticsLogo,
   network: Network,
+  'network-security': NetworkSecurity,
   notifications: Notifications,
   'ok-sign': OkSign,
   ok: Ok,

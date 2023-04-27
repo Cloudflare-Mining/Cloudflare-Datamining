@@ -1,5 +1,11 @@
 # Change Log
 
+## 11.1.0
+
+### Minor Changes
+
+- 2912e1c24b: Added discover and network-security Icon types
+
 ## 11.0.0
 
 ### Major Changes

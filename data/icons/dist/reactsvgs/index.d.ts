@@ -27,6 +27,7 @@ declare const _default: {
     copy: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'credit-card': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     discord: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    discover: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     documentation: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     download: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     drive: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
@@ -68,6 +69,7 @@ declare const _default: {
     more: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'network-analytics-logo': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     network: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'network-security': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     notifications: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'ok-sign': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     ok: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
