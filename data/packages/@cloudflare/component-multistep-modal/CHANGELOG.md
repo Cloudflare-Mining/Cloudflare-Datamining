@@ -1,5 +1,13 @@
 # Change Log
 
+## 3.0.7
+
+### Patch Changes
+
+- @cloudflare/component-button@7.0.1
+- @cloudflare/component-modal@7.0.1
+- @cloudflare/component-progress@8.0.2
+
 ## 3.0.6
 
 ### Patch Changes
