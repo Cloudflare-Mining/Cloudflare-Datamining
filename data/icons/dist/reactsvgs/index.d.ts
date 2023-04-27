@@ -44,6 +44,7 @@ declare const _default: {
     flowchart: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     folder: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     forward: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    funnel: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     gateway: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     gear: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'git-branch': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
@@ -99,9 +100,11 @@ declare const _default: {
     spectrum: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     speech: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     stream: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    subtract: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     teams: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     terraform: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     time: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    turnstile: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     twitter: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'two-way': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'unlock-outline': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
