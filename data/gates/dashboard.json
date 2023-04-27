@@ -386,6 +386,14 @@
 	"skip-sbfm": {
 		"enabled": true
 	},
+	"snippets": {
+		"enabled": false,
+		"branches": [
+			"mocks",
+			"staging",
+			"prod"
+		]
+	},
 	"speed-test-region": {
 		"enabled": true
 	},
