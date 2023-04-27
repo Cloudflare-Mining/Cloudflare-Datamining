@@ -1,5 +1,15 @@
 # Change Log
 
+## 7.1.5
+
+### Patch Changes
+
+- Updated dependencies [259644c28d]
+- Updated dependencies [259644c28d]
+  - @cloudflare/component-icon@11.1.1
+  - @cloudflare/component-arrow-swivel@7.0.2
+  - @cloudflare/component-button@7.0.2
+
 ## 7.1.4
 
 ### Patch Changes

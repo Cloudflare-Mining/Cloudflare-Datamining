@@ -1,5 +1,11 @@
 # Change Log
 
+## 3.0.5
+
+### Patch Changes
+
+- @cloudflare/component-legend@5.0.2
+
 ## 3.0.4
 
 ### Patch Changes

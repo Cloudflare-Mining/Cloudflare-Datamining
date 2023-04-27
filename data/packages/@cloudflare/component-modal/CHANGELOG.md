@@ -1,5 +1,11 @@
 # Change Log
 
+## 7.0.2
+
+### Patch Changes
+
+- @cloudflare/component-button@7.0.2
+
 ## 7.0.1
 
 ### Patch Changes

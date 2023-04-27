@@ -1,5 +1,15 @@
 # Change Log
 
+## 6.0.3
+
+### Patch Changes
+
+- @cloudflare/component-arrow-swivel@7.0.2
+- @cloudflare/component-button@7.0.2
+- @cloudflare/component-link@7.1.5
+- @cloudflare/component-time-period-picker@5.0.2
+- @cloudflare/component-forms@5.2.7
+
 ## 6.0.2
 
 ### Patch Changes

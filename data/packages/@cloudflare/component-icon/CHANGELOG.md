@@ -1,5 +1,12 @@
 # Change Log
 
+## 11.1.1
+
+### Patch Changes
+
+- 259644c28d: Restored missing Funnel, Subtract, and Turnstile icons
+- 259644c28d: Fixed viewBox for Queues icon
+
 ## 11.1.0
 
 ### Minor Changes
