@@ -1212,6 +1212,7 @@
 		"botScore": "The final score originated from bot management detections.",
 		"botScoreBucketBy10": "Range of the bot management score",
 		"botScoreSrcName": "Name of the source detection which generated the bot management score.",
+		"cacheReserveUsed": "Used Cache Reserve to serve the response",
 		"cacheStatus": "Cache status",
 		"clientASNDescription": "The ASN of the visitor as string",
 		"clientAsn": "The ASN number of the visitor",
@@ -1284,6 +1285,7 @@
 		"botScore": "The final score originated from bot management detections.",
 		"botScoreBucketBy10": "Range of the bot management score",
 		"botScoreSrcName": "Name of the source detection which generated the bot management score.",
+		"cacheReserveUsed": "Used Cache Reserve to serve the response",
 		"cacheStatus": "",
 		"clientASNDescription": "The ASN of the visitor as string",
 		"clientAsn": "",
@@ -2662,6 +2664,7 @@
 		"workersInvocationsAdaptive": "",
 		"workersInvocationsScheduled": "",
 		"workersSubrequestsAdaptiveGroups": "",
+		"zarazTriggersAdaptiveGroups": "",
 		"zeroTrustPrivateNetworkDiscoveryGroups": ""
 	},
 	"AccountSpectrumNetworkAnalyticsAdaptiveGroups": {
@@ -3127,6 +3130,26 @@
 		"requestBodySizeUncached": "Workers fetch request body size in bytes where the request was not cached",
 		"subrequests": "Number of subrequests"
 	},
+	"AccountZarazTriggersAdaptiveGroups": {
+		"__description": "Zaraz Triggers Analytics (a trigger is a set of rules that can trigger a zaraz action)",
+		"count": "Number of processed Zaraz Triggers",
+		"dimensions": "List of dimensions to group by"
+	},
+	"AccountZarazTriggersAdaptiveGroupsDimensions": {
+		"__description": "",
+		"date": "The date when trigger was triggerd",
+		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
+		"datetimeFiveMinutes": "The date and time truncated to five minutes",
+		"datetimeHour": "The date and time truncated to the hour",
+		"datetimeMinute": "The date and time truncated to the minute",
+		"triggerName": "Trigger Name"
+	},
+	"AccountZarazTriggersAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountZarazTriggersAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountZeroTrustPrivateNetworkDiscoveryGroups": {
 		"__description": "Beta - Unique origins, applications, and users discovered for Zero Trust private networks",
 		"count": "Sum of network access during the select range",
@@ -3287,6 +3310,8 @@
 		"bucketName": "Name of bucket containing stored objects",
 		"date": "Request timestamp, truncated to start of a day",
 		"datetime": "Request timestamp",
+		"datetimeFifteenMinutes": "Request timestamp, truncated to multiple of 15 minutes",
+		"datetimeFiveMinutes": "Request timestamp, truncated to multiple of 5 minutes",
 		"datetimeHour": "Request timestamp, truncated to start of an hour",
 		"datetimeMinute": "Request timestamp, truncated to start of an minute",
 		"operationClass": "Billable class of storage operation"
@@ -3301,6 +3326,39 @@
 		"__description": "",
 		"requests": "Sum of Requests"
 	},
+	"ZoneCacheReserveRequestsAdaptiveGroups": {
+		"__description": "Cache Reserve HTTP requests data with adaptive sampling",
+		"avg": "The average value used for sample interval",
+		"count": "",
+		"dimensions": "List of dimensions to group by",
+		"sum": "Sum of bytes returned to client"
+	},
+	"ZoneCacheReserveRequestsAdaptiveGroupsAvg": {
+		"__description": "",
+		"sampleInterval": ""
+	},
+	"ZoneCacheReserveRequestsAdaptiveGroupsDimensions": {
+		"__description": "",
+		"cacheStatus": "Cache status",
+		"date": "The date the event occurred at the edge",
+		"datetime": "The date and time the event occurred at the edge",
+		"datetimeFifteenMinutes": "The date and time the event occurred at the edge truncated to a multiple of 15 minutes",
+		"datetimeFiveMinutes": "The date and time the event occurred at the edge truncated to a multiple of 5 minutes",
+		"datetimeHour": "The date and time the event occurred at the edge truncated to hours",
+		"datetimeMinute": "The date and time the event occurred at the edge truncated to the minute",
+		"edgeResponseContentTypeName": "Content type returned to client",
+		"edgeResponseStatus": "HTTP response status code returned to browser"
+	},
+	"ZoneCacheReserveRequestsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"ZoneCacheReserveRequestsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"ZoneCacheReserveRequestsAdaptiveGroupsSum": {
+		"__description": "",
+		"edgeResponseBytes": ""
+	},
 	"ZoneCacheReserveStorageAdaptiveGroups": {
 		"__description": "Beta. Cache Reserve storage with adaptive sampling",
 		"dimensions": "List of dimensions to group by",
@@ -3312,6 +3370,8 @@
 		"bucketName": "Name of bucket containing stored objects",
 		"date": "Storage sample timestamp, truncated to start of a day",
 		"datetime": "Storage sample timestamp",
+		"datetimeFifteenMinutes": "Storage sample timestamp, truncated to multiple of 15 minutes",
+		"datetimeFiveMinutes": "Storage sample timestamp, truncated to multiple of 5 minutes",
 		"datetimeHour": "Storage sample timestamp, truncated to start of an hour",
 		"datetimeMinute": "Storage sample timestamp, truncated to start of an minute"
 	},
@@ -4086,6 +4146,7 @@
 		"botScore": "The final score originated from bot management detections.",
 		"botScoreBucketBy10": "Range of the bot management score",
 		"botScoreSrcName": "Name of the source detection which generated the bot management score.",
+		"cacheReserveUsed": "Used Cache Reserve to serve the response",
 		"cacheStatus": "Cache status",
 		"clientASNDescription": "The ASN of the visitor as string",
 		"clientAsn": "The ASN number of the visitor",
@@ -4157,6 +4218,7 @@
 		"botScore": "The final score originated from bot management detections.",
 		"botScoreBucketBy10": "Range of the bot management score",
 		"botScoreSrcName": "Name of the source detection which generated the bot management score.",
+		"cacheReserveUsed": "Used Cache Reserve to serve the response",
 		"cacheStatus": "",
 		"clientASNDescription": "The ASN of the visitor as string",
 		"clientAsn": "",
@@ -4512,6 +4574,7 @@
 		"apiGatewayMatchedSessionIDsAdaptiveGroups": "",
 		"apiRequestSequencesGroups": "",
 		"cacheReserveOperationsAdaptiveGroups": "",
+		"cacheReserveRequestsAdaptiveGroups": "",
 		"cacheReserveStorageAdaptiveGroups": "",
 		"dmarcReportsAdaptive": "",
 		"dmarcReportsSourcesAdaptiveGroups": "",
@@ -4571,7 +4634,7 @@
 		"avgPpsPerMinute": "Avg packets per second for this minute."
 	},
 	"ZoneWaitingRoomAnalyticsAdaptive": {
-		"__description": "Beta. Raw waiting room analytics logs",
+		"__description": "Raw Waiting Room analytics logs",
 		"datetime": "The date and time of the state of analytics for the waiting room",
 		"maxEstimatedTimeMinutes": "Maximum value of estimated time in minutes",
 		"newUsersPerMinute": "Actual value of new users per minute",
@@ -4604,13 +4667,13 @@
 		"__description": ""
 	},
 	"ZoneWaitingRoomAnalyticsAdaptiveGroups": {
-		"__description": "Beta. Aggregated waiting room analytics logs with adaptive sampling",
+		"__description": "Aggregated Waiting Room analytics logs with adaptive sampling",
 		"avg": "Beta. The avg of values for a metric per dimension",
 		"avgWeighted": "Beta. The avgWeighted values for a metric per dimension",
 		"dimensions": "List of dimensions to group by",
 		"max": "Beta. The max value for a metric per dimenstion",
 		"min": "Beta. The minimum value for a metric per dimenstion",
-		"sum": "The sum for a metric per dimension"
+		"sum": "The sum for a metric per dimension. Use for shorter queries since data gets sampled after 7 days."
 	},
 	"ZoneWaitingRoomAnalyticsAdaptiveGroupsAvg": {
 		"__description": "",
@@ -4670,10 +4733,10 @@
 		"__description": "",
 		"maxEstimatedTimeMinutes": "The minimum value of estimated time in minutes. A negative number means no data",
 		"newUsersPerMinute": "The minimum value of the actual new users per minute. A negative number means no data",
-		"newUsersPerMinuteConfig": "The minimum value of the configured new users per minute. A negative number means no data",
+		"newUsersPerMinuteConfig": "The minimum value of the configured new users per minute. A negative number means either Waiting Room is in passthrough or no data",
 		"sessionDuration": "The minimum value of the configured session duration configuration. A negative number means no data",
 		"totalActiveUsers": "The minimum value of the actual total active users. A negative number means no data",
-		"totalActiveUsersConfig": "The minimum value of the configured total active users. A negative number means no data",
+		"totalActiveUsersConfig": "The minimum value of the configured total active users. A negative number means either Waiting Room is in passthrough or no data",
 		"totalQueuedUsers": "The minimum value of total number of queued users. A negative number means no data"
 	},
 	"ZoneWaitingRoomAnalyticsAdaptiveGroupsOrderBy": {
@@ -4870,6 +4933,7 @@
 		"workersInvocationsAdaptive": "Beta. Workers invocations with adaptive sampling",
 		"workersInvocationsScheduled": "Workers scheduled invocations",
 		"workersSubrequestsAdaptiveGroups": "Beta. Workers subrequests with adaptive sampling",
+		"zarazTriggersAdaptiveGroups": "Zaraz Triggers Analytics (a trigger is a set of rules that can trigger a zaraz action)",
 		"zeroTrustPrivateNetworkDiscoveryGroups": "Beta - Unique origins, applications, and users discovered for Zero Trust private networks",
 		"zones": ""
 	},
@@ -4921,6 +4985,7 @@
 		"apiGatewayMatchedSessionIDsAdaptiveGroups": "Beta. Aggregated count of Session Identifier matches",
 		"apiRequestSequencesGroups": "Sequences of API endpoint operations. Sequences are grouped by AuthID and currently ranked by correlation score. Correlation scores are estimated over a 24 hour window and are current to within 10 minutes",
 		"cacheReserveOperationsAdaptiveGroups": "Beta. Cache Reserve operations with adaptive sampling",
+		"cacheReserveRequestsAdaptiveGroups": "Cache Reserve HTTP requests data with adaptive sampling",
 		"cacheReserveStorageAdaptiveGroups": "Beta. Cache Reserve storage with adaptive sampling",
 		"dmarcReportsAdaptive": "Dmarc report records with adaptive sampling",
 		"dmarcReportsSourcesAdaptiveGroups": "Aggregated dmarc reports by sources logs with adaptive sampling",
@@ -4947,8 +5012,8 @@
 		"pageShieldReportsAdaptiveGroups": "Page Shield CSP reports",
 		"settings": "",
 		"synAvgPps1mGroups": "Minutely rollups of average packets per second sent in a SYN attack",
-		"waitingRoomAnalyticsAdaptive": "Beta. Raw waiting room analytics logs",
-		"waitingRoomAnalyticsAdaptiveGroups": "Beta. Aggregated waiting room analytics logs with adaptive sampling",
+		"waitingRoomAnalyticsAdaptive": "Raw Waiting Room analytics logs",
+		"waitingRoomAnalyticsAdaptiveGroups": "Aggregated Waiting Room analytics logs with adaptive sampling",
 		"workersZoneInvocationsAdaptiveGroups": "Workers invocations with adaptive sampling",
 		"workersZoneSubrequestsAdaptiveGroups": "Workers subrequests with adaptive sampling",
 		"zarazActionsAdaptiveGroups": "Zaraz Actions Analytics",
