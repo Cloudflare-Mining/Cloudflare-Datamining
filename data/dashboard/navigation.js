@@ -649,7 +649,7 @@ const navigation = {
 		navigationType: "both",
 		iconType: "git-branch",
 		testId: "zone-navigation-link-zone-versioning",
-		tabs: F.bB,
+		tabs: W.bB,
 		hasPermission: function(l) {
 			return !(0, u.yD)(l) && (0, d.m7)(l)
 		}
@@ -717,8 +717,8 @@ const navigation = {
 			if ((0, u.yD)(l) || !(0, r.wB)(l, "zone_settings", "spectrum.app") || !j) return !1;
 			var x = !!((0, R.l8)(l) || (0, m.DQ)(l)),
 				N = !!(0, m.ZB)(l, "spectrum", "enabled"),
-				W = !!(0, m.Ns)(j);
-			return N || x || !W
+				Z = !!(0, m.Ns)(j);
+			return N || x || !Z
 		}
 	}, {
 		title: "navigation.zone.ssl-tls",
