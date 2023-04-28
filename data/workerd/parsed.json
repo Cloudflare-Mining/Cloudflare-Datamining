@@ -2329,6 +2329,14 @@
 						"compatEnableFlag": "service_binding_extra_handlers",
 						"experimental": "true"
 					}
+				},
+				{
+					"name": "noCfBotManagementDefault",
+					"annotations": {
+						"compatDisableFlag": "cf_botmanagement_default",
+						"compatEnableDate": "2023-08-01",
+						"compatEnableFlag": "no_cf_botmanagement_default"
+					}
 				}
 			]
 		},
@@ -2966,6 +2974,10 @@
 				},
 				{
 					"name": "json",
+					"annotations": {}
+				},
+				{
+					"name": "nodeJsCompatModule",
 					"annotations": {}
 				}
 			]
