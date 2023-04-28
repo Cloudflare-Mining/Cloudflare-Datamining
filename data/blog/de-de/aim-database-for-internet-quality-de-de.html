@@ -1,0 +1,481 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/02/111.png" class="kg-image"></figure>
+	<p>Sie sind über die Feiertage bei Ihrer Familie und verbinden sich mit dem WLAN. Dann merken Sie, dass Netflix nicht so schnell lädt wie sonst. Sie gehen zu speed.cloudflare.com, fast.com, speedtest.net, oder geben „Geschwindigkeitstest“ in Google Chrome ein, um herauszufinden, ob Ihre Internetverbindung ein Problem hat. Sie erhalten dann etwas, das in etwa so aussieht:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/02/112.png" class="kg-image"></figure>
+	<p>Wenn Sie Ihre eigenen Zahlen sehen möchten, können Sie es <a href="https://speed.cloudflare.com/" target="_blank">hier</a> selbst ausprobieren. Aber was bedeuten diese Messungen? Was haben sie damit zu tun, ob Netflix geladen wird, oder mit einem der anderen üblichen Anwendungsfälle, mit Gaming oder Audio-/Videochats mit Ihren Freunden und Verwandten? Selbst Netzwerkentwickler finden: Geschwindigkeitstests und die eigentliche Nutzungserfahrung des Internets lassen sich nur schwer verbinden.</p>
+	<p>Erstaunlicherweise haben sich Geschwindigkeitstests in fast zwei Jahrzehnten kaum verändert, obwohl wir das Internet inzwischen ganz anders nutzen. Angesichts der steigenden Zahl von Internetnutzern wird die Kluft zwischen Geschwindigkeitstests und der Nutzererfahrung mit der Netzqualität immer größer. Das Problem ist so wichtig, dass auch die Organisation für Internetstandards <a href="https://datatracker.ietf.org/doc/rfc9318/" target="_blank">darauf aufmerksam geworden ist</a>.</p>
+	<p>Auf übergeordneter Ebene gibt es drei große Herausforderungen bei Netzwerktests:</p>
+	<ol>
+		<li>Methoden zur effizienten und genauen Messung der Netzqualität finden und den Endnutzern vermitteln, ob und wie sich die Qualität auf ihre Erfahrungen auswirkt.</li>
+		<li>Wenn ein Problem gefunden wird, die Quelle des Problems ermitteln, ob es sich z. B. um die drahtlose Verbindung oder um eines der vielen Kabel und Geräte handelt, aus denen das Internet besteht.</li>
+		<li>Die Testergebnisse eines einzelnen Nutzers im Kontext der Ergebnisse seiner Nachbarn verstehen oder die Ergebnisse archivieren, um z. B. Nachbarschaften zu vergleichen oder zu erfahren, ob das Netzwerk besser oder schlechter wird. </li>
+	</ol>
+	<p>Cloudflare freut sich, die neue Initiative „Aggregated Internet Measurement“ (AIM) ankündigen zu können. AIM soll bei allen drei Herausforderungen helfen. Es handelt sich dabei um ein neues und offenes Format, mit dem Internetqualität in einer Form dargestellt wird, die für Internetendnutzer sinnvoll ist. Dabei geht es um Anwendungsfälle, die bestimmte Arten von Internet-Performance erfordern und gleichzeitig bleiben alle Netzwerkdaten erhalten, die Entwickler zur Problembehebung benötigen. Wir freuen darüber, bei diesem Projekt mit <a href="https://www.measurementlab.net/" target="_blank">Measurement Lab</a> zusammenzuarbeiten und all diese Daten in einem <a href="https://colab.research.google.com/drive/1xgc-7L1Okr04MSjsYJfiFeUN0Gu05bpQ?usp=sharing" target="_blank"> öffentlich zugänglichen Repository</a> zu speichern. Auf dieses Repository können Sie zugreifen, um die Daten zu analysieren, die hinter den Ergebnissen Ihrer Geschwindigkeitstestseite stehen, deren Quellcode jetzt zusammen mit den AIM-Berechnungen <a href="https://github.com/cloudflare/speedtest" target="_blank">offengelegt</a> wird.</p>
+	<h2 id="was-ist-ein-geschwindigkeitstest">Was ist ein Geschwindigkeitstest?</h2>
+	<p>Ein Geschwindigkeitstest ist eine zeitpunktbezogene Messung Ihrer Internetverbindung. Wenn Sie sich mit einem Geschwindigkeitstest verbinden, versucht dieser gewöhnlich, eine große Datei abzurufen (wichtig für Video-Streaming), führt dann einen Paketverlusttest durch (wichtig für Gaming), misst den Jitter (wichtig für Video-/VoIP-Anrufe) und die Latenz (wichtig für alle Anwendungsfälle im Internet). Mit diesem Test wird ermittelt, wie gut Ihre Internetverbindung in der Lage ist, grundlegende Aufgaben auszuführen.</p>
+	<p>Bei diesem Ansatz gibt es einige Herausforderungen, die mit einer einfachen Beobachtung beginnen: Auf der „Netzwerkebene“ des Internets, auf der Daten und Pakete bewegt werden, gibt es nur drei Maßnahmen, die direkt beobachtet werden können. Diese sind:</p>
+	<ul>
+		<li>die verfügbare <em>Bandbreite</em>, manchmal auch als „Durchsatz“ bezeichnet;</li>
+		<li><em>Paketverluste</em>, die im gesamten Internet bei stabilem Zustand extrem gering sind; und</li>
+		<li><em>die Latenz</em>, die oft als Round-Trip-Time (RTT) bezeichnet wird.</li>
+	</ul>
+	<p>Diese drei Attribute sind eng miteinander verwoben. Vor allem der Anteil der verfügbaren Bandbreite, den ein Nutzer tatsächlich erreicht (Durchsatz), wird direkt von Verlust und Latenz beeinflusst. Ihr Computer entscheidet anhand von Verlust und Latenz, wann ein Paket gesendet wird und wann nicht. Ein gewisser Verlust und eine gewisse Latenz sind zu erwarten, ja sogar notwendig. Wenn es zu viel wird, beginnt die Bandbreite zu sinken.</p>
+	<p>Es handelt sich um einfache Zahlen, aber ihre Beziehung ist alles andere als selbstverständlich. Denken Sie daran, wie viele Möglichkeiten es gibt, zwei Zahlen so zu addieren, <em>dass sie hundert ergeben</em>: x + y ≤ 100. Wenn x und y genau richtig sind, dann ergeben sie zusammen hundert. Allerdings sind viele Kombinationen von x und y möglich. Schlimmer noch: Wenn entweder x oder y oder beide ein wenig Abweichen, dann ergeben sie zusammen weniger als hundert. In diesem Beispiel sind x und y der Verlust und die Latenz, 100 ist die verfügbare Bandbreite.</p>
+	<p>Es sind noch andere Kräfte am Werk und diese Zahlen verraten nicht alles. Sie sind jedoch die einzigen Messwerte, die sich direkt beobachten lassen. Ihre Bedeutung ist wichtig und ebenso die Gründe, warum sie für die Diagnose relevant sind. Erörtern wir also nacheinander die einzelnen Faktoren und wie Aggregated Internet Measurement versucht, diese Probleme zu lösen.</p>
+	<h2 id="was-bedeuten-die-zahlen-in-einem-geschwindigkeitstest">Was bedeuten die Zahlen in einem Geschwindigkeitstest?</h2>
+	<p>Die meisten Geschwindigkeitstests zeigen die oben genannten Werte an: Bandbreite, Latenz, Jitter und Paketverlust. Im Folgenden schlüsseln wir jede dieser Zahlen einzeln auf und erklären ihre Bedeutung:</p>
+	<h3 id="bandbreite">Bandbreite</h3>
+	<p>Bandbreite ist der maximale Durchsatz/die maximale Kapazität über eine Kommunikationsverbindung. Die übliche Analogie zur Definition der Bandbreite ist der Vergleich einer Internetverbindung mit einer Autobahn: Die Bandbreite ist die Anzahl der Fahrspuren und der Autos, die auf die Spuren passen. Früher hieß die Bandbreite oft „Geschwindigkeit“, weil Internet Service<br>Provider (ISP) die Geschwindigkeit als die Zeit messen, die für das Herunterladen einer großen Datei benötigt wird, und mit einer größeren Bandbreite auf Ihrer Verbindung laden Dateien schneller.</p>
+	<h3 id="paketverlust">Paketverlust</h3>
+	<p>Paketverlust ist exakt das, was der Name sagt: Einige Pakete werden von einem Ursprung an ein Ziel gesendet, werden vom Ziel aber nicht empfangen. Dies kann Anwendungen stark beeinträchtigen, denn wenn Informationen auf dem Weg zum Empfänger verloren gehen, ann de Emfnge nr swer vrthn, ws gsedt ird (kann der Empfänger nur schwer verstehen, was gesendet wird).</p>
+	<h3 id="latenz">Latenz</h3>
+	<p>Latenz ist die Zeit, die ein Paket oder eine Nachricht braucht, um von Punkt A zu Punkt B zu gelangen. Im Kern besteht das Internet aus Computern, die Signale in Form von elektrischen Signalen oder Lichtstrahlen über Kabel an andere Computer senden. Die Latenz bezeichnet die Zeit, die ein elektrisches Signal benötigt, um über ein Kabel oder eine Glasfaser von einem Computer zu einem anderen zu gelangen. Eine Möglichkeit, die Latenz zu verringern, besteht also darin, die Strecke zu verkürzen, die die Signale bis zu ihrem Ziel zurücklegen müssen.</p>
+	<p>Bei der Latenz wird zwischen der Latenz ohne Last und der Latenz unter Last unterschieden. Der Grund: Bei Routern und Switches gibt es Warteschlangen. Dort werden Datenpakete gespeichert, wenn sie schneller ankommen, als sie übertragen werden können. Die Bildung von Warteschlangen ist normal und gewährleistet eine korrekte Datenübertragung. Wenn diese Warteschlangen jedoch zu lang sind oder wenn sich andere Anwendungen völlig anders verhalten als Ihre, fühlt sich die Verbindung langsamer an, als sie tatsächlich ist. Dies nennt man einen <a href="https://www.bufferbloat.net/projects/" target="_blank">Bufferbloat</a>.</p>
+	<p>In unserem AIM-Test betrachten wir die Latenz ohne Last, um Ihnen zu zeigen, wie hoch Ihre Latenz sein <em>könnte</em>. Wir erfassen aber auch die Latenz unter Last. Sie gibt ein besseres Bild über Ihre Latenz während Ihrer alltäglichen Internetnutzung.</p>
+	<h3 id="jitter">Jitter</h3>
+	<p>Jitter ist eine spezielle Art der Latenzmessung. Es handelt sich dabei um die Varianz der Latenz Ihrer Internetverbindung. Wenn der Jitter hoch ist, kommen einzelne Pakete später an. Dies kann sich auf Anwendungsfälle auswirken, bei denen Inhalt in Echtzeit übertragen werden muss, z. B. bei der Sprachkommunikation.</p>
+	<p>Stellen Sie sich den Jitter am besten wie einen Arbeitsweg auf einer konkreten Strecke oder einem Pfad vor. Bei der Latenz stellt sich die Frage: „Wie weit bin ich vom Zielort entfernt, gemessen in Zeit?“ Die durchschnittliche Fahrzeit mit der Bahn beträgt beispielsweise 40 Minuten. Anstelle der Fahrtdauer fragt Jitter: „Wie einheitlich ist meine Fahrdauer?“ Ein Jitter von Null bedeutet, dass die Bahn immer 40 Minuten braucht. Liegt der Jitter jedoch bei 15, wird die Fahrt schwieriger, da sie zwischen 25 und 55 Minuten dauern kann.</p>
+	<p>Aber selbst wenn wir diese Werte verstehen, verraten sie uns zwar, <em>was</em> vor sich geht, aber nicht, <em>wo</em> genau.</p>
+	<h2 id="ist-das-wlan-oder-meine-internetverbindung-das-problem">Ist das WLAN oder meine Internetverbindung das Problem?</h2>
+	<p>Wenn Sie einen Geschwindigkeitstest durchführen, verbinden Sie sich nicht nur mit Ihrem ISP, sondern auch mit Ihrem lokalen Netzwerk, das wiederum mit Ihrem ISP verbunden ist. Und Ihr lokales Netzwerk kann seine eigenen Probleme haben. Denken Sie an einen Geschwindigkeitstest, der auf hohe Paketverluste und Jitter hinweist: Meist bedeutet es, dass irgendetwas im Netzwerk die Pakete fallen lassen könnte. Normalerweise rufen Sie in diesem Fall Ihren ISP an. Sein Rat lautet oft: „Gehen Sie näher an Ihren WLAN-Zugangspunkt oder besorgen Sie sich einen Verstärker.“ </p>
+	<p>Das ist wichtig – WLAN nutzt Funkwellen zur Übertragung von Informationen, und Materialien wie Ziegel, Putz und Beton Stören und schwächen das Signal, je weiter Sie sich von Ihrem Zugangspunkt entfernen. Mesh-WLAN-Geräte wie Nest WiFi und Eero führen regelmäßig Geschwindigkeitstests von ihrem Hauptzugangspunkt aus durch, um diese Art von Problemen zu erkennen. Wenn Sie Nutzern <a href="https://developers.cloudflare.com/fundamentals/speed/aim/" target="_blank">also im Voraus mitteilen</a>, wie Sie hohe Paketverluste und Jitter einfach verhindern, können diese Nutzer besser beurteilen, ob das Problem beim Setup ihrer WLAN-Verbindung liegt.</p>
+	<p>Zwar trifft dies auf die meisten Probleme im Internet zu, doch ist es oft hilfreich, wenn Netzbetreiber diese Daten in ihrer Gesamtheit betrachten können, anstatt die Nutzer nur näher an ihre Zugangspunkte zu schicken. Wenn man die Ergebnisse Ihres Geschwindigkeitstests an einen Ort leitet, an dem Ihr Netzbetreiber Ihre Werte und andere in Ihrem Gebiet überblicken, würden Netzwerkentwickler Probleme proaktiv erkennen, bevor Nutzer sie melden. Das hilft nicht nur den Nutzern, sondern auch den Netzwerk-Providern. Schließlich ist es teuer und zeitaufwendig, Anrufe entgegenzunehmen und Techniker loszuschicken, um Probleme zu lösen, die auf die Konfiguration der Nutzer zurückzuführen sind.</p>
+	<p>Das ist eines der Ziele von AIM. Die Initiative soll helfen, Probleme zu lösen, noch bevor jemand zum Telefon greift. Endnutzer erhalten eine Reihe von Tipps, um die Tauglichkeit ihrer Internetverbindung zu verstehen und erfahren, wie sie sich verbessern lässt – und zwar in einem verständlichen Format. Netzbetreiber bekommen alle notwendigen Daten, um Probleme auf der „letzten Meile“ zu erkennen, bevor jemand zum Telefon greift, und sparen so Zeit und Geld. Schauen wir uns im nächsten Abschnitt an einem konkreten Beispiel an, wie das funktionieren kann.</p>
+	<h2 id="ein-praxisbeispiel">Ein Praxisbeispiel</h2>
+	<p>Die Ergebnisse eines Geschwindigkeitstests können verwirrend sein. Das liegt daran, dass Sie womöglich nicht verstehen, wie sich diese Messungen in ihrer Kombination auf Ihr Interneterlebnis auswirken. Schauen wir uns ein Praxisbeispiel an und wie es sich auf Sie auswirkt.</p>
+	<p>Nehmen wir an, Sie arbeiten in einem Gebäude mit vier Büros und einem Hauptarbeitsbereich, der wie folgt aussieht:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/02/113.png" class="kg-image"></figure>
+	<p>Sie müssen den ganzen Tag Videogespräche mit Ihren Kunden führen und sitzen in dem Büro, das am weitesten vom WLAN-Zugangspunkt entfernt ist. Ihre Anrufe brechen ständig ab und Sie haben eine wirklich schlechte Nutzererfahrung. Als Sie von Ihrem Büro aus einen Geschwindigkeitstest durchführen, sehen Sie folgendes Ergebnis:</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Kennzahl</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Weit entfernt vom Zugangspunkt</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">In der Nähe des Zugangspunkts</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Download-Bandbreite</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">21,8 Mbit/s</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">25,7 Mbit/s</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Upload-Bandbreite</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">5,66 Mbit/s</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">5,26 Mbit/s</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Latenz ohne Last</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">19,6 ms</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">19,5 ms</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Jitter</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">61,4 ms</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">37,9 ms</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Paketverlust</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">7,7 %</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0 %</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Was bedeuten diese Daten für Sie? Ein Netzwerkentwickler würde einen Blick auf den hohen Jitter und den Paketverlust werfen und denken: „Dieser Nutzer muss wahrscheinlich näher an den Router heranrücken, um ein besseres Signal zu erhalten.“ Aber wenn Sie sich diese Ergebnisse ansehen und keine Ahnung haben, müssen Sie einen Netzwerkentwickler um Hilfe bitten. Das könnte zu einem Anruf bei Ihrem ISP führen und damit die Zeit und das Geld aller Beteiligten verschwenden. Aber Sie sollten nicht auf einen Netzwerkentwickler angewiesen sein, um herauszufinden, ob Sie Ihren WLAN-Zugangspunkt verlegen müssen oder ob Ihr ISP keine gute Erfahrung bietet.</p>
+	<p>Aggregated Internet Measurement ordnet den Zahlen Ihres Geschwindigkeitstests qualitative Bewertungen zu, um Ihnen zu helfen, diese Zahlen sinnvoll zu interpretieren. Wir haben szenariospezifische Scores erstellt, d. h. einen einzelnen qualitativen Wert, der auf der Ebene eines Szenarios berechnet wird: Wir berechnen verschiedene Qualitätswerte auf der Grundlage dessen, was Sie zu tun versuchen. Für den Anfang haben wir drei AIM-Scores erstellt: Streaming, Gaming und WebChat/RTC. Diese Scores gewichten jede Metrik unterschiedlich, je nachdem, welche Internetbedingungen für die erfolgreiche Ausführung der Anwendung erforderlich sind. </p>
+	<p>Die Scoring-Rubrik von AIM weist Ihrer Verbindung auf der Grundlage der Tests Punktwerte zu. Wir veröffentlichen AIM mit einem „gewichteten Score“, bei dem die Punktwerte auf der Grundlage der in den jeweiligen Szenarien wichtigsten Metriken berechnet werden. Diese Punktwerte sind nicht als statische Werte gedacht. Sie werden sich weiterentwickeln, je nachdem, was Anwendungsentwickler, Netzwerkbetreiber und die Internet-Community darüber herausfinden, wie sich die verschiedenen Performance-Merkmale auf die Anwendungserfahrung in den einzelnen Szenarien auswirken. Das ist ein Grund mehr, die Daten ins M-Lab zu stellen, damit die Community bei der Entwicklung wirksamer Bewertungsmechanismen mithelfen kann. </p>
+	<p>Hier finden Sie die vollständige Rubrik und die einzelnen Punktwerte, die mit den aktuellen Metriken assoziiert werden:</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-d6mv {
+			background-color: #666;
+			color: #FFF;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-kyaz {
+			background-color: #D9D9D9;
+			color: #172B4D;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-d6mv"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">Kennzahl</span></th>
+				<th class="tg-d6mv"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">0 Punkte</span></th>
+				<th class="tg-d6mv"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">5 Punkte</span></th>
+				<th class="tg-d6mv"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">10 Punkte</span></th>
+				<th class="tg-d6mv"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">20 Punkte</span></th>
+				<th class="tg-d6mv"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">30 Punkte</span></th>
+				<th class="tg-d6mv"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">50 Punkte</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-kyaz"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#172B4D;background-color:transparent">Verlustrate</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&gt; 5 %</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 5 %</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 1 %</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"></td>
+			</tr>
+			<tr>
+				<td class="tg-kyaz"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#172B4D;background-color:transparent">Jitter</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&gt; 20 ms</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 20 ms</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 10 ms</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"></td>
+			</tr>
+			<tr>
+				<td class="tg-kyaz"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#172B4D;background-color:transparent">Latenz ohne Last</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&gt; 100 ms</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 50 ms</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 20 ms</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 10 ms</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"></td>
+			</tr>
+			<tr>
+				<td class="tg-kyaz"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#172B4D;background-color:transparent">Download-Durchsatz</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 1 Mbit/s</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 10 Mbit/s</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 50 Mbit/s</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 100 Mbit/s</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 1000 Mbit/s</span></td>
+				<td class="tg-0lax"></td>
+			</tr>
+			<tr>
+				<td class="tg-kyaz"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#172B4D;background-color:transparent">Upload-Durchsatz</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 1 Mbit/s</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 10 Mbit/s</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 50 Mbit/s</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 100 Mbit/s</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 1000 Mbit/s</span></td>
+				<td class="tg-0lax"></td>
+			</tr>
+			<tr>
+				<td class="tg-kyaz"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#172B4D;background-color:transparent">Differenz zwischen Latenz mit und ohne Last</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&gt; 50 ms</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 50 ms</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 20 ms</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 10 ms</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Und hier ist ein kurzer Überblick darüber, welche Werte wichtig sind und wie wir die Scores für jedes Szenario berechnen:</p>
+	<ul>
+		<li>Streaming: Downloadbandbreite + Latenz ohne Last + Paketverlust + (Latenz mit Last - Latenz ohne Lastdifferenz) </li>
+		<li>Gaming: Paketverlust + Latenz ohne Last + (Latenz mit Last - Latenz ohne Lastdifferenz)</li>
+		<li>RTC/Video: Paketverlust + Jitter + Latenz ohne Last + (Latenz mit Last - Latenz ohne Lastdifferenz) </li>
+	</ul>
+	<p>Um die einzelnen Scores zu berechnen, nehmen wir die Punktwerte aus Ihrem Geschwindigkeitstest und berechnen diese aus den insgesamt möglichen Punkten für das jeweilige Szenario. Anhand des Ergebnisses können wir Ihre Internetverbindung für jedes Szenario bewerten: schlecht, mangelhaft, durchschnittlich, gut und großartig. So richtet sich die Bewertung Ihrer Internetqualität für Videoanrufe beispielsweise nach Paketverlusten, Jitter, Latenz ohne Last und der Differenz zwischen der Latenz mit und ohne Last. Wir addieren die Punktwerte, die sich aus Ihren Geschwindigkeitstests ergeben, und erhalten einen Score, der angibt, wie weit Ihre Internetqualität von der perfekten Videogesprächserfahrung entfernt ist. Auf der Grundlage Ihres Geschwindigkeitstests sehen Sie hier die AIM-Scores Ihres Büros, das sich weit vom Zugangspunkt befindet:</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Kennzahl</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Ergebnis</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Streaming-Score</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">25/70 Punkten (durchschnittlich)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Gaming-Score</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">15/40 Punkten (mangelhaft)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">RTC-Score</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">15/50 Punkten (durchschnittlich)</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Anstatt zu sagen „Ihre Bandbreite ist X und Ihr Jitter ist Y“, können wir sagen „Ihr Internet ist okay für Netflix, aber mangelhaft für Gaming und nur durchschnittlich für Zoom“. In diesem Fall war die Verlegung des WLAN-Zugangspunkts an einen zentraleren Standort die Lösung, die den AIM-Score in diesen Wert verwandelte:</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Kennzahl</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Ergebnis</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Streaming-Score</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">45/70 Punkten (gut)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Gaming-Score</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">35/40 Punkten (großartig)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">RTC-Score</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">35/50 Punkten (großartig)</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Sie können diese Ergebnisse heute sogar im Cloudflare-Geschwindigkeitstest als „Network Quality Score“ sehen:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/02/114.png" class="kg-image"></figure>
+	<p>In diesem speziellen Fall war kein Anruf beim ISP erforderlich und es wurden auch keine Netzwerkentwickler hinzugezogen. Der Zugangspunkt wurde einfach näher an die Mitte des Büros verlegt. Niemand musste zum Telefon greifen und das Erlebnis wurde für alle Beteiligten reibungsloser.</p>
+	<p>AIM nimmt die Metriken, die den Netzwerkentwicklern wichtig sind, und übersetzt sie in verständliche Zahlen, die auf den Anwendungen basieren, die Sie tatsächlich nutzen möchten. Die aggregierten Daten sind anonym (in Übereinstimmung mit unserer <a href="https://www.cloudflare.com/privacypolicy/" target="_blank">Datenschutzrichtlinie</a>), sodass Ihr ISP Geschwindigkeitstests in Ihrem Stadtgebiet einsehen kann und die zugrundeliegenden Daten dazu beitragen können, Nutzerbeschwerden in Informationen zu übersetzen, die für Netzwerkentwickler verwertbar sind. Darüber hinaus können politische Entscheidungsträger und Forscher die aggregierten Daten untersuchen, um besser zu verstehen, was die Nutzer in ihren Regionen erleben, damit sie sich für eine bessere Internetqualität einsetzen können.</p>
+	<h2 id="arbeitsbedingungen">Arbeitsbedingungen</h2>
+	<p>Hier ist eine interessante Frage: Wenn Sie einen Geschwindigkeitstest durchführen, womit verbinden Sie sich dann und wie ist das Internet am anderen Ende der Verbindung? Eine der Herausforderungen, mit denen Geschwindigkeitstests häufig konfrontiert sind, besteht darin, dass die Server, mit denen Sie Ihren Test durchführen, nicht dieselben sind, die Ihre Websites betreiben oder schützen. Aus diesem Grund können die Netzwerkpfade, die Ihr Geschwindigkeitstest zum Host auf der anderen Seite nimmt, sehr unterschiedlich sein. Sie können sogar optimiert werden, um so viele Geschwindigkeitstests wie möglich zu bedienen. Das bedeutet, dass Ihr Geschwindigkeitstest nicht den Pfad testet, den Ihr Traffic normalerweise nimmt, wenn er die von Ihnen verwendeten Anwendungen erreicht. Die Tests, die Sie durchgeführt haben, messen einen Netzwerkpfad, aber es ist nicht der Netzwerkpfad, den Sie normalerweise nutzen.</p>
+	<p>Geschwindigkeitstests sollten unter realen Netzwerkbedingungen stattfinden. Diese sollten die reale Nutzung des Internets widerspiegeln, nämlich mit mehreren offenen Anwendungen, Browser-Tabs und Geräten, die alle um die Verbindung konkurrieren. Dieses Konzept der Messung Ihrer Internetverbindung mit anwendungsnahen Tools – und zwar während Ihr Netzwerk so viel wie möglich genutzt wird – nennt man „Messung unter Arbeitsbedingungen“. Heute stellen Geschwindigkeitstests völlig neue Verbindungen zu einer Website her, die für den Test der Netzwerk-Performance reserviert ist. Leider erfolgt die alltägliche Internetnutzung nicht über neue Verbindungen zu speziellen Websites für Geschwindigkeitstests. Das ist bei vielen Internetanwendungen sogar so gewollt, denn sie verlassen sich auf die Wiederverwendung derselben Verbindung zu einer Website, um dem Endnutzer eine bessere Performance zu bieten. Dadurch entfällt die kostspielige Latenz, die durch den Aufbau der Verschlüsselung, den Austausch von Zertifikaten und mehr entsteht. </p>
+	<p>AIM trägt in mehrfacher Hinsicht zur Lösung dieses Problems bei. Erstens haben wir alle unsere Tests so implementiert, wie unsere Anwendungen es tun würden, und messen sie unter Arbeitsbedingungen. Wir messen die Latenz unter Last, um Ihnen zu zeigen, wie sich Ihre Internetverbindung bei realer Nutzung verhält. Sie können das heute im Geschwindigkeitstest sehen:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/02/Screenshot-2023-02-10-at-11.43.27.png" class="kg-image"></figure>
+	<p>Zweitens sammeln wir Ergebnisse von Geschwindigkeitstests für Endpunkte, die Sie heute nutzen. Indem wir die Geschwindigkeitstests mit Cloudflare und anderen Websites messen, zeigen wir die Internetqualität für Endnutzer im Vergleich zu Netzwerken, die Sie im Alltag häufig nutzen. So erhalten Sie einen besseren Eindruck von den tatsächlichen Arbeitsbedingungen.</p>
+	<h2 id="aim-datenbank">AIM-Datenbank</h2>
+	<p>Wir freuen uns, ankündigen zu können, dass AIM-Daten heute im Rahmen einer Partnerschaft mit Measurement Lab (M-Lab) <a href="https://colab.research.google.com/drive/1xgc-7L1Okr04MSjsYJfiFeUN0Gu05bpQ?usp=sharing" target="_blank">öffentlich zugänglich</a> sind. Endnutzer und Netzwerkentwickler können die Daten zur Netzwerkqualität in einer Vielzahl von Netzwerken durchforsten. Sowohl M-Lab als auch Cloudflare berechnen AIM-Scores aus den von ihnen durchgeführten Geschwindigkeitstests und stellen sie in eine gemeinsame Datenbank ein. Dort sehen sowohl Endnutzer als auch Netzbetreiber die Internetqualität aus möglichst vielen Punkten einer Vielzahl verschiedener Geschwindigkeitstests. </p>
+	<p>Um Ihnen einen Eindruck der Ergebnisse zu vermitteln, sehen Sie sich eine Grafik an, die wir auf der Grundlage dieser Scores erstellt haben. Sie zeigt die Scores pro Szenario für die erste Oktoberwoche in Tokio, alle ausschließlich aus Cloudflare-Daten:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/02/116.png" class="kg-image"></figure>
+	<p>Daraus können Sie sehen, dass von den 5.814 durchgeführten Geschwindigkeitstests 50,7 % der Nutzer eine gute Streaming-Qualität hatten, aber 48,2 % waren nur durchschnittlich. Gaming scheint in Tokio relativ schwierig zu sein, denn 39 % der Nutzer hatten ein mangelhaftes Gaming-Erlebnis, aber die meisten Nutzer hatten ein ziemlich durchschnittliches bis anständiges RTC-Erlebnis. Werfen wir einen Blick darauf, wie das im Vergleich zu einigen anderen Städten aussieht:</p><!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Ort</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Durchschnittlicher Streaming-Score</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Durchschnittlicher Gaming-Score</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Durchschnittlicher RTC-Score</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Tokio</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">31</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">13</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">16</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">New York</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">33</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">13</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">17</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Mumbai</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">25</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">13</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">16</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Dublin</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">32</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">14</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">18</span></td>
+			</tr>
+		</tbody>
+	</table><!--kg-card-end: html-->
+	<p>Anhand unserer Daten können wir feststellen, dass die meisten Nutzer beim Videostreaming gut aufgestellt sind, mit Ausnahme von Mumbai, das ein wenig zurückliegt. Die Nutzer haben im Allgemeinen eine schwankende Gaming-Erfahrung, vor allem wegen einer hohen Latenz. Aber ihre RTC-Apps schneiden etwas besser ab und sind im Allgemeinen in allen Regionen durchschnittlich.</p>
+	<h2 id="kooperation-mit-m-lab">Kooperation mit M-Lab</h2>
+	<p>M-Lab ist ein offenes Repository für Internet-Messungen. Seine Aufgabe besteht darin, das Internet zu messen, die Daten zu speichern und sie universell zugänglich und nutzbar zu machen. M-Lab bietet nicht nur Netzbetreibern kostenlosen und offenen Zugang zu den AIM-Daten, sondern auch politischen Entscheidungsträgern, akademischen Forschern, Journalisten, Verfechtern der digitalen Integration und allen Interessierten. Sie erhalten Zugang zu den Daten, die sie für wichtige Entscheidungen benötigen, um das Internet besser zu machen. </p>
+	<p>M-Lab ist nicht nur ein etablierter Name für den offenen Austausch von Qualitätsdaten des Internets mit politischen Entscheidungsträgern und Akademikern. Die Organisation bietet auch bereits einen „Geschwindigkeitstest“ namens Network Diagnostic Test (NDT) an. Sie führen ihn durch, wenn Sie bei Google „Geschwindigkeitstest“ eingeben. Durch die Partnerschaft mit M-Lab erhalten wir Aggregated Internet Measurement-Metriken von erheblich mehr Nutzern. Wir planen auch die Zusammenarbeit mit anderen Geschwindigkeitstests, um ein vollständiges Bild der Internetqualität auf der ganzen Welt für so viele Nutzer wie möglich zu erhalten. Wenn Ihre Firma Internet-Performance misst, würden wir uns freuen, wenn Sie sich uns anschließen, um Nutzern zu zeigen, wofür ihr Internet wirklich gut ist.</p>
+	<h2 id="geschwindigkeitstest-jetzt-open-source">Geschwindigkeitstest, jetzt Open-Source</h2>
+	<p>Zusätzlich zu unserer Partnerschaft mit M-Lab haben wir auch unseren Geschwindigkeitstest-Client Open Source zur Verfügung gestellt. Die Öffnung des Geschwindigkeitstests ist ein wichtiger Schritt, um Anwendungen den Zugang zu Geschwindigkeitsmessungen durch Cloudflare zu erlauben und eine einfache Möglichkeit zu schaffen, den AIM-Score für Ihre Anwendung zu berechnen. Unser Geschwindigkeitstest kann jetzt als Javascript-Anwendung eingebettet werden, sodass Sie Netzwerkqualitätstests durchführen können, ohne in den Browser wechseln zu müssen. Die Anwendung stellt Ihnen nicht nur alle Messwerte zur Verfügung, die wir für unseren aktuellen Geschwindigkeitstest verwenden, sondern lädt die Ergebnisse auch auf eine vertrauliche Weise zu Cloudflare hoch. Das Repository zeigt auch, wie wir die AIM-Scores berechnen, sodass Sie sehen können, wie die Netzwerkqualität für Endnutzer definiert wird und wie sie sich in Echtzeit verändert. Wenn Sie mit unserem Open-Source-Geschwindigkeitstest arbeiten möchten, klicken Sie auf den <a href="https://github.com/cloudflare/speedtest" target="_blank">Open-Source-Link</a>.</p>
+	<h2 id="eine-zukunft-mit-vielversprechender-internetqualit-t">Eine Zukunft mit vielversprechender Internetqualität</h2>
+	<p>Wir freuen uns, dass wir diese Daten sammeln konnten, um die Internetqualität in einer Vielzahl von Tests und Netzwerken darzustellen. Wir werden diese Daten kontinuierlich analysieren und unser Bewertungssystem verbessern. Wir haben es Open Source zur Verfügung gestellt, sodass Sie sehen können, wie wir die Ergebnisse der Geschwindigkeitstests nutzen, um die Internetqualität für eine Vielzahl von Anwendungen zu bewerten und sogar AIM selbst zu implementieren. Außerdem haben wir unsere AIM-Scores in den Geschwindigkeitstest zusammen mit allen anderen Tests, die Sie heute sehen, aufgenommen, damit Sie endlich ein besseres Verständnis dafür bekommen, wofür Ihr Internet gut ist. </p>
+	<p>Führen Sie Geschwindigkeitsmessungen durch und sind an einer Partnerschaft mit uns interessiert? Sie möchten Daten darüber sammeln, wie Nutzer die Qualität des Internets erleben? Dann <a href="mailto:aim-owners@cloudflare.com" target="_blank">melden Sie sich gerne bei uns</a> und lassen Sie uns gemeinsam das Internet besser machen. Und wenn Sie eine Anwendung betreiben, mit der Sie die Internetqualität messen möchten, sollten Sie sich unser <a href="https://github.com/cloudflare/speedtest" target="_blank">Open Source Repo</a> ansehen, damit Sie noch heute loslegen können.</p>
+	<p>Um herauszufinden, wofür Ihr Internet gut ist, müssen Sie kein Netzwerkexperte sein, dafür sind wir da. Mit AIM und unseren Kollegen von mLab wollen wir Ihnen zeigen, was Ihr Internet leisten kann. Und wir wollen diese Informationen nutzen, um das Internet für alle besser zu machen.</p>
+</div>

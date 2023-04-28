@@ -1,0 +1,38 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/image4-17.png" class="kg-image" alt="Making home Internet faster has little to do with “speed”"></figure>
+	<p>十多年前，Google 研究人员曾<a href="https://docs.google.com/a/chromium.org/viewer?a=v&amp;pid=sites&amp;srcid=Y2hyb21pdW0ub3JnfGRldnxneDoxMzcyOWI1N2I4YzI3NzE2" target="_blank">发布了</a>一篇论文，搭配了一个看似离经叛道的标题“增加带宽并不（太）重要”。Cloudflare 也曾<a href="https://blog.cloudflare.com/the-bandwidth-of-a-boeing-747-and-its-impact/">发布</a>一篇博客文章，指出将 1 TB 数据从旧金山空运到伦敦的时间比通过 100 Mbps 连接网速上传所需的时间更短。遗憾的是，这种情况多年来一直没有太大改变。如果您决定购买家庭网络套餐，可能会在评估互联网性能时考虑网络连接的带宽大小。带宽越大，网速就越快，至少市场营销是如此宣传的。在本篇文章中，我们将使用现实世界中的真实数据来揭示带宽和——剧透！——延迟这两者会如何影响网络连接的网速。我们相信，您读完文章后将会明白为什么 Cloudflare 如此<a href="https://blog.cloudflare.com/zh-cn/network-performance-update-developer-week-zh-cn/">聚焦于</a>尽一切可能<a href="https://blog.cloudflare.com/last-mile-insights/">降低</a><a href="https://blog.cloudflare.com/new-cities-april-2022-edition/">延迟</a>。</p>
+	<p>博客文章的主旨摘要如下：</p>
+	<ul>
+		<li>评估网络性能的方式多种多样。</li>
+		<li>性能“好坏”取决于应用场景：一种应用场景下性能分数不错，可能在另一种应用场景下毫无益处。</li>
+		<li>“速度”数字可能具有一定的误导性，尤其是因为任何单一指标都无法准确描述所有应用程序的性能。</li>
+	</ul>
+	<p>为了更好地理解这些观点，我们应该首先界定带宽和延迟的定义。带宽是单位时间内可以传输的数据总量。它是指两个彼此交换数据的服务器之间的通信链路所具备的最大吞吐量或容量。瓶颈是指网络中连接速度受到可用带宽量限制的地方。通常情况下，这个瓶颈在“最后一英里”处，要么是连接家庭网络的电线，要么是家里的调制解调器或路由器。</p>
+	<p>如果将互联网比作一条信息高速公路，那么带宽就相当于道路上的车道数量。道路越宽，高速公路上随时可以容纳的行驶车辆就越多。带宽对于下载操作系统更新和大型游戏更新之类的大文件很实用。我们在播放视频流时会使用带宽，尽管可能比您想象中的要少一些。Netflix <a href="https://help.netflix.com/en/node/306" target="_blank">建议</a>使用 15 Mbps 带宽来观看 4K/超高清视频流。单个 1 Gbps 连接网速可支持同时播放 60 多个 Netflix 4K 视频流节目！</p>
+	<p>另一方面，延迟是指数据在互联网中移动所花费的时间。拓展一下我们之前的比喻，延迟相当于行驶车辆在高速公路上移动的速度。如果行驶车辆快速移动，那么您将会更快到达目的地。延迟是指数据包从客户端（例如，个人笔记本电脑）到服务器，然后从服务器再返回客户端所需的时间（以毫秒为单位）。以对墙练习网球为例，往返延迟是指球在空中飞行的时间。在互联网“骨干”网络上，数据会在光纤内的玻璃弹跳，以近乎每秒 200,000 公里的速度<a href="https://www.blog.adva.com/en/speed-light-fiber-first-building-block-low-latency-trading-infrastructure#:~:text=The%20refractive%20index%20of%20light,1.467%20%3D%20124%2C188%20miles%20per%20second." target="_blank">传输</a>。这个速度相当快！</p>
+	<p>我们深知低延迟（低延迟；高速度）连接对于游戏体验至关重要，在玩游戏时，极少量的数据（例如，玩家位置变化）需要快速到达另一台计算机。而且我们逐渐意识到高延迟问题会导致视频会议变得断断续续和令人不愉快。</p>
+	<p>虽然我们无法提高光在玻璃中的传播速度，但是可以通过将内容移动到距离用户更近的地方、缩短数据需要传输的距离来降低延迟。这就是我们在全球超过 <a href="https://www.cloudflare.com/network/" target="_blank">285 个城市</a>开展业务的效果：当您在互联网高速公路上前进想要到达 Cloudflare 时，我们恰好就在下一个出口。</p>
+	<p>虽然带宽、容量和最大吞吐量的含义略有<a href="https://en.wikipedia.org/wiki/Bandwidth_(computing)" target="_blank">不同</a>，但它们意思相近可以<a href="https://en.wikipedia.org/wiki/Network_performance" target="_blank">互换使用</a>，令人困惑的是，在谈及互联网套餐时，“速度”已成为带宽的代名词，但它并未指明设备与其连接的服务器之间的延迟。后文将会详细介绍“速度”的确切所指是什么。现在，我们不仅使用互联网玩游戏和观看流视频，而且会在这两者之间的空隙时间访问各种常规的网页。</p>
+	<p>2010 年，在 Google 发布的<a href="https://docs.google.com/a/chromium.org/viewer?a=v&amp;pid=sites&amp;srcid=Y2hyb21pdW0ub3JnfGRldnxneDoxMzcyOWI1N2I4YzI3NzE2" target="_blank">文章</a>中，作者模拟了在改变网络连接的吞吐量和延迟的情况下加载网页。他发现：当带宽超过 5 Mbps 时，页面加载速度并没有提高多少；将带宽从 1 Mbps 提高到 2 Mbps，页面加载时间几乎可以缩短 40%；而将带宽从 5 Mbps 提高到 6 Mbps，页面加载时间缩短不足 5%。</p>
+	<p>但是，当他改变延迟（往返时间或 RTT）时却发现了一件有趣的事情：页面加载时间呈线性比例改善。每降低 20 毫秒延迟，页面加载时间就会缩短约 10%。 </p>
+	<p>让我们通过实证数据看看现实生活中的实际情况。下图源自麻省理工学院两位研究人员最近发表的一篇优秀<a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4178804" target="_blank">论文</a>。研究人员使用 FCC 的 <a href="https://www.fcc.gov/general/measuring-broadband-america" target="_blank">Measuring Broadband America</a> 计划中的数据制作了一张图表，它与 2010 年模拟实验得到的结果类似。这些结果汇总在下面的图表中。虽然提高带宽的收益递减点已升至约 20 Mbps，但总体趋势完全相同。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/03/Screen-Shot-2022-11-02-at-11.49.48-AM.png" class="kg-image"></figure>
+	<p>我们使用了 Cloudflare 的数据，重复进行了一轮分析，侧重于网络延迟。结果如出一辙，具体请查看如下所示的图表。每降低 200 毫秒延迟，页面加载时间会缩短 1 秒以上。并且无论减少 950 毫秒。还是 50 毫秒延迟，页面加载时间均会缩短。 </p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/Screen-Shot-2022-11-07-at-2.29.30-PM.png" class="kg-image"></figure>
+	<p>在加载网页所需完成的一组事务中，有几个原因使延迟变得很重要。连接到某个网站后，浏览器首先会建立安全连接，用于进行身份验证并确保数据加密。为此，要使用 TCP 和 TLS 协议或 <a href="https://blog.cloudflare.com/the-road-to-quic/">QUIC</a>（默认会加密数据）。建立安全连接需要进行的消息交换次数各不相同，但无论交换次数是多少，在建立连接这个阶段都存在一个共同的问题：网络延迟是最重要的一个因素。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/04/pasted-image-0--1--4.png" class="kg-image"></figure>
+	<p>除此以外，我们在创建加密并验证网站访问权限之后，加载网页时可能会要求浏览器跨几十个不同的域<a href="https://www.webpagetest.org/result/221107_BiDcB1_ERZ/2/details/#waterfall_view_step1" target="_blank">加载</a>数百个不同的文件。一些文件可以并行加载，而其他文件需要按顺序加载。当浏览器竞相编译所有这些不同的文件时，信息往返服务器的速度决定了页面加载速度。这些文件通常很小，但数量很多。</p>
+	<p>下图显示了浏览器加载 cnn.com 页面的初始步骤。首先是连接第一次握手阶段，随后是通过 301 重定向到 <a href="http://www.cnn.com" target="_blank">www.cnn.com</a>，这需要执行一次全新的连接握手，然后浏览器才能加载第二步中的主 HTML 页面。只有这样，在加载超过 1 秒后，它才会了解渲染页面所需的所有 JavaScript 文件。虽然文件 3-19 是通过同一连接请求的，但在完整交付 HTML 文件后才会提供这些文件。文件 8、9 和 10 是通过单独的连接请求的（各自需要进行一次握手）。文件 20-27 在先前的文件上均已被阻止，也需要新连接。直到浏览器收到从服务器返回的先前文件才能启用并执行这些文件。这个页面加载中包含 650 项资产，在整个页面加载过程中一直出现文件受阻。因此，这一点很重要：降低延迟会使每个文件加载速度更快，从而更快速地解除对其他文件的阻止，等等。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/Screen-Shot-2022-11-21-at-8.40.41-AM.png" class="kg-image"></figure>
+	<p>这些协议将会使用所有可用的带宽，但通常在所有可用带宽被使用殆尽之前完成数据传输。这也难怪添加更多带宽并不能加快页面加载速度，但降低延迟却可以。虽然像 <a href="https://blog.cloudflare.com/early-hints/">Early Hints</a> 之类的开发技术通过提前提供浏览器依赖性信息、允许它们预先连接到服务器或预先获取无需严格排序的资源有助于加快页面加载，但是对于当今互联网上的许多网站来说，页面加载速度仍然是一个难题。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/03/Screen-Shot-2022-11-07-at-1.57.29-PM.png" class="kg-image"></figure>
+	<p>最近，互联网研究人员已将注意力转向利用 Cloudflare 对吞吐量与延迟之间关系的理解来提高互联网体验质量 (QoE)。宽带互联网技术咨询小组 (BITAG) 的一篇<a href="https://www.bitag.org/latency-explained.php" target="_blank">论文</a>总结指出：</p>
+	<blockquote>但是我们现在意识到，不仅提高吞吐量很重要，而且实现一致的低延迟也同样重要。遗憾的是，我们过去对延迟的理解和特征描述都存在不足，使用的延迟衡量指标与最终用户 QoE 不一致。</blockquote>
+	<p>更让人困惑的是，处于空闲状态的互联网延迟与在众多连接共享网络资源的工作条件下测量的延迟这二者之间存在差异，我们称之为“工作延迟”或“<a href="https://www.ietf.org/archive/id/draft-cpaasch-ippm-responsiveness-00.html" target="_blank">响应速度</a>”。由于响应速度是用户体验到的互联网连接速度，因此，了解和衡量这种特定条件下的延迟至关重要。</p>
+	<p>如果数据在缓冲区中延迟，互联网连接可能会出现响应速度慢的情况（即使处于空闲状态时的延迟适中）。如果要下载操作系统更新之类的大文件，负责发送文件的服务器可能会以高于互联网连接可接受的吞吐量来发送文件。这也没关系。文件的额外部分将一直留存缓冲区中，直到轮到它们通过流量隧道。在高速公路上增加额外的车道可以让更多汽车通行，如果不是特别在意流量速度的话，这是一个不错的策略。</p>
+	<p>例如，Christabel 一边参加视频会议一边观看新闻流。当 Christabel 开始观看视频时，她的浏览器会获取一堆内容，并在这些内容从主机传输到浏览器的途中将其存储在各种缓冲区中。这些相同的缓冲区中还包含与 Christabel 当前参加的视频会议相关的数据包。如果作为视频会议生成数据的部分文件与视频文件位于同一缓冲区中，则视频文件将会填满缓冲区并导致视频会议数据包延迟。如果缓冲区越大，则需要等待视频会议数据包传回的时间越长。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--1--9.png" class="kg-image"></figure>
+	<p>为帮助用户了解其网络连接的优势和劣势，Cloudflare 最近在自己的<a href="https://speed.cloudflare.com/" target="_blank">“速度”测试</a>中添加了<a href="https://developers.cloudflare.com/fundamentals/speed/aim/" target="_blank">汇总网络测量 (AIM) </a>指标分数。这些分数剔除了技术指标，让用户以通俗易懂的方式了解现实运行中其网络连接的优点和难点。我们还希望从速度测试中收集更多数据，以协助跟踪页面加载时间 (PLT) 并了解它们与减少工作延迟之间的相互关联。我们将会很快发布速度测试的相关数据供您查看！</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/03/Screenshot-2023-03-10-at-8.55.03-AM.png" class="kg-image"></figure>
+	<p>大家使用的连网方式略有不同，但我们都希望连接的网速尽可能快。随着越来越多的服务迁移到云端，例如 Word 文档、音乐、网站、通信等，我们访问这些服务内容的速度变得至关重要。虽然网络带宽发挥着一定的作用，但是连接的延迟（真正意义上的互联网“速度”）更加重要。 <br><br>Cloudflare 始终致力于协助优化互联网性能。想要加入我们吗？请单击<a href="https://www.cloudflare.com/careers/" target="_blank">此处</a>申请我们空缺的工程师职位。</p>
+</div>
