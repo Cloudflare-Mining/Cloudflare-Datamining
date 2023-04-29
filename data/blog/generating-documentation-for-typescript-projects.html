@@ -1,10 +1,10 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
 	<p>Documentation for JavaScript projects has traditionally been generated via annotations inserted as code comments. While this gets the job done, it seems far from ideal. In this post, I’ll explore how to use TypeScript to generate documentation from source code alone.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/11/511102367_1ce398ad1d_o.png" alt="" loading="lazy"><br>
-		<small><a href="https://creativecommons.org/licenses/by-sa/2.0/?ref=blog.cloudflare.com" target="_blank">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/davidjoyner/511102367/in/photolist-MawVM-7zyucG-7aZ4QT-6GBfU4-aFrGn6-unAh43-axBGXx-ciiroq-92cKAD-iER1r2-5bRGPh-92fVBf-92fQBm-iER1Gc-2JMg5k-8rfzDR-iERFKo-jL2WXi-iEU2RU-jL4n6N-nqbf3-iER2q6-6H9k7G-dgnntH-eMMtEx-hHiLuM-9Sx4wb-9pCef2-9RLkVe-iEU1Nb-jL27Jr-ai89xS-dWQYFd-dyZqij-7cnSxN-8dyQSg-6yATnF-3om4q-nMWdCg-2KEjsj-eoQ3Lw-eoQfdN-9snnkJ-abB6Hb-2KEvib-eoQcXG-iEU2xh-9Hz7sB-5VhaNf-2KzRJp?ref=blog.cloudflare.com" target="_blank">image</a> by <a href="https://www.flickr.com/photos/davidjoyner/?ref=blog.cloudflare.com" target="_blank">David Joyner</a></small>
+	<p><img src="https://blog.cloudflare.com/content/images/2016/11/511102367_1ce398ad1d_o.png" alt=""><br>
+		<small><a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/davidjoyner/511102367/in/photolist-MawVM-7zyucG-7aZ4QT-6GBfU4-aFrGn6-unAh43-axBGXx-ciiroq-92cKAD-iER1r2-5bRGPh-92fVBf-92fQBm-iER1Gc-2JMg5k-8rfzDR-iERFKo-jL2WXi-iEU2RU-jL4n6N-nqbf3-iER2q6-6H9k7G-dgnntH-eMMtEx-hHiLuM-9Sx4wb-9pCef2-9RLkVe-iEU1Nb-jL27Jr-ai89xS-dWQYFd-dyZqij-7cnSxN-8dyQSg-6yATnF-3om4q-nMWdCg-2KEjsj-eoQ3Lw-eoQfdN-9snnkJ-abB6Hb-2KEvib-eoQcXG-iEU2xh-9Hz7sB-5VhaNf-2KzRJp" target="_blank">image</a> by <a href="https://www.flickr.com/photos/davidjoyner/" target="_blank">David Joyner</a></small>
 	</p>
-	<p><a href="https://www.typescriptlang.org/?ref=blog.cloudflare.com" target="_blank">TypeScript</a> is JavaScript with optional types. Here’s a simple example:</p>
+	<p><a href="https://www.typescriptlang.org/" target="_blank">TypeScript</a> is JavaScript with optional types. Here’s a simple example:</p>
 	<pre><code class="language-javascript">// Sends some data to some analytics endpoint
 function sendAnalyticsJS(data) {
   if (typeof data.type !== 'string') {
@@ -48,7 +48,7 @@ sendAnalytics({ foo: 'bar' })
 </code></pre>
 	<p>These annotations are all optional and the more you add, the more the compiler can help you. Compiling the TypeScript version results in code equivalent to the first example. The only difference is that the developer is warned about an error while writing the code.</p>
 	<p>With TypeScript, JavaScript developers are given powerful tools that aid the development of applications, large and small. Anders Hejlsberg, lead architect of C# and core dev for TypeScript, describes the language as, “JavaScript that scales.”</p>
-	<p><img src="http://storage.j0.hn/code-peek.gif" alt="Typescript + VSCode" loading="lazy"></p>
+	<p><img src="http://storage.j0.hn/code-peek.gif" alt="Typescript + VSCode"></p>
 	<p>Using TypeScript means you can:</p>
 	<ul>
 		<li>Interactively explore library interfaces from your text editor</li>
@@ -57,10 +57,10 @@ sendAnalytics({ foo: 'bar' })
 		<li>Navigate your codebase via the ontology that describes it (by that, I mean jumping to class and interface definitions, modules, etc. from individual instances/references)</li>
 		<li>And most importantly to this post, generate documentation that’s tightly coupled to your codebase.</li>
 	</ul>
-	<p><img src="http://storage.j0.hn/amp-viewer-docs-2.png" alt="AMP Viewer Docs 1" loading="lazy"></p>
+	<p><img src="http://storage.j0.hn/amp-viewer-docs-2.png" alt="AMP Viewer Docs 1"></p>
 	<p><em>The screenshot above is of the generated documentation from a TypeScript project at Cloudflare.</em></p>
 	<h3 id="whynotjsdoc">Why not JSDoc?</h3>
-	<p><img src="http://storage.j0.hn/jsdoc-example-1.png" alt="JSDoc Example 1" loading="lazy"></p>
+	<p><img src="http://storage.j0.hn/jsdoc-example-1.png" alt="JSDoc Example 1"></p>
 	<p>The amount of work required to annotate source code with JSDoc comments is comparable to adopting TypeScript annotations. However, JSDoc comments are not tightly coupled to the codebase, so when the code changes, an independent change of the JSDoc comment is also required. Contrast to TypeScript where the structure is gleaned directly from the source. Here’s a side-by-side comparison between JSDoc and TypeScript:</p>
 	<p><strong>JSDoc</strong></p>
 	<pre><code class="language-javascript">/**
@@ -163,11 +163,11 @@ class Point {
   }
 }
 </code></pre>
-	<p>The above code sample was taken from the <a href="http://usejsdoc.org/howto-es2015-classes.html?ref=blog.cloudflare.com#documenting-a-simple-class" target="_blank">JSDoc documentation</a> and adapted for use with TypeScript.</p>
+	<p>The above code sample was taken from the <a href="http://usejsdoc.org/howto-es2015-classes.html#documenting-a-simple-class" target="_blank">JSDoc documentation</a> and adapted for use with TypeScript.</p>
 	<p>The annotations for TypeScript are much more compact, they’re syntax-highlighted, and most importantly, if something is wrong, the compiler lets us know. Long-form descriptions of things are still made in comments, but the type information has been moved into language semantics.</p>
 	<p>The downside to adopting TypeScript is the large amount of work required to fit the build tools into your current processes. However, we won’t focus on the nitty-gritty details of build tools since the ecosystem is rapidly changing.</p>
 	<h3 id="usingtypedoc">Using TypeDoc</h3>
-	<p>At Cloudflare, we use a tool called <a href="http://typedoc.org/?ref=blog.cloudflare.com" target="_blank">TypeDoc</a> to help build documentation. It’s set up such that documentation-generation is on watch and will re-build on codebase changes. Anybody hacking on the project will always have up-to-date docs at localhost:3000/docs.</p>
+	<p>At Cloudflare, we use a tool called <a href="http://typedoc.org/" target="_blank">TypeDoc</a> to help build documentation. It’s set up such that documentation-generation is on watch and will re-build on codebase changes. Anybody hacking on the project will always have up-to-date docs at localhost:3000/docs.</p>
 	<p>If you’re using TypeScript 2.x, use the following command to install TypeDoc for your project:</p>
 	<pre><code class="language-bash">npm install --save-dev https://github.com/DatenMetzgerX/typedoc/tarball/typescript-2-build
 </code></pre>
@@ -203,12 +203,12 @@ class Point {
     ├── _src_my_module_.html
     └── ...
 </code></pre>
-	<p>I wanted to build something akin to <a href="https://lodash.com/docs?ref=blog.cloudflare.com" target="_blank">Lodash’s documentation</a> (a beautiful single page API reference with examples and links to source code). Luckily, you can use TypeDoc’s --json flag to produce a set of useful descriptions of your codebase in JSON format.</p>
+	<p>I wanted to build something akin to <a href="https://lodash.com/docs" target="_blank">Lodash’s documentation</a> (a beautiful single page API reference with examples and links to source code). Luckily, you can use TypeDoc’s --json flag to produce a set of useful descriptions of your codebase in JSON format.</p>
 	<pre><code class="language-bash">./node_modules/.bin/typedoc --json dist/docs.json --mode modules
 </code></pre>
-	<p><em>Note: In order to use the --json flag, you’ll need to setup a proper <a href="https://www.typescriptlang.org/docs/handbook/tsconfig-json.html?ref=blog.cloudflare.com" target="_blank">tsconfig.json</a> for your TypeScript project.</em></p>
-	<p><img src="http://storage.j0.hn/ts-docs-post-screen-1.png" alt="AMP Viewer JSON Docs" loading="lazy"></p>
-	<p>With this high-level, structured description of our code base, we can render any HTML we’d like with a few scripts and a templating language like <a href="http://handlebarsjs.com/?ref=blog.cloudflare.com" target="_blank">Handlebars</a>. Here’s a simple script to render a list of code base modules:</p>
+	<p><em>Note: In order to use the --json flag, you’ll need to setup a proper <a href="https://www.typescriptlang.org/docs/handbook/tsconfig-json.html" target="_blank">tsconfig.json</a> for your TypeScript project.</em></p>
+	<p><img src="http://storage.j0.hn/ts-docs-post-screen-1.png" alt="AMP Viewer JSON Docs"></p>
+	<p>With this high-level, structured description of our code base, we can render any HTML we’d like with a few scripts and a templating language like <a href="http://handlebarsjs.com" target="_blank">Handlebars</a>. Here’s a simple script to render a list of code base modules:</p>
 	<pre><code class="language-javascript">const fs = require('fs')
 const hbs = require('handlebars')
 const project = require('./dist/docs.json')
