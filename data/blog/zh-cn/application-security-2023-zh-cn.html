@@ -1,14 +1,14 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/image13-1.png" class="kg-image" alt="The state of application security in 2023"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/image13-1.png" class="kg-image" alt="The state of application security in 2023" loading="lazy"></figure>
 	<p>一年前，我们发布了<a href="https://blog.cloudflare.com/zh-cn/application-security-zh-cn/">首份应用安全报告</a>。Security Week 2023 期间，我们将介绍关于缓解流量、机器人和 API 流量以及帐户接管攻击的最新洞见和发展趋势。</p>
-	<p>Cloudflare 在过去一年取得显著增长。 <a href="https://news.netcraft.com/archives/2023/02/28/february-2023-web-server-survey.html" target="_blank">2023 年 2 月</a>，Netcraft 指出，在 2023 年初，Cloudflare 已经成为排名前百万网站中最常用的 Web 服务器供应商，并继续增长，市场份额达到 21.71%，高于 2022 年 2 月的 19.4%。</p>
+	<p>Cloudflare 在过去一年取得显著增长。 <a href="https://news.netcraft.com/archives/2023/02/28/february-2023-web-server-survey.html?ref=blog.cloudflare.com" target="_blank">2023 年 2 月</a>，Netcraft 指出，在 2023 年初，Cloudflare 已经成为排名前百万网站中最常用的 Web 服务器供应商，并继续增长，市场份额达到 21.71%，高于 2022 年 2 月的 19.4%。</p>
 	<p>由于这种持续增长，目前 Cloudflare 平均每秒处理 4500 万个 HTTP 请求(高于去年的 3200 万)，峰值时每秒处理超过 6100 万个 HTTP 请求。Cloudflare 网络处理的 DNS 查询也在不断增长，达到 2460 万次/秒。所有这些流量让我们对互联网趋势有了前所未有的了解。</p>
 	<p>在深入讨论之前，需要定义我们的术语。</p>
 	<h2 id="-">定义</h2>
 	<p>本文中，我们将使用如下术语：</p>
 	<ul>
-		<li><strong>缓解流量</strong>：由 Cloudflare 平台应用了“终止”操作的眼球请求。包括如下操作：<code>BLOCK</code>, <a href="https://developers.cloudflare.com/fundamentals/get-started/concepts/cloudflare-challenges/#legacy-captcha-challenge" target="_blank"><code>CHALLENGE</code></a>, <a href="https://developers.cloudflare.com/fundamentals/get-started/concepts/cloudflare-challenges/#js-challenge" target="_blank"><code>JS_CHALLENGE</code></a> 和 <a href="https://developers.cloudflare.com/fundamentals/get-started/concepts/cloudflare-challenges/#managed-challenge-recommended" target="_blank"><code>MANAGED_CHALLENGE</code></a>。这并不包括应用以下操作的请求： <code>LOG</code>、<code>SKIP</code>、 <code>ALLOW</code>。与去年相比，现在我们不包括由我们的 DDoS 缓解系统应用了 <code>CONNECTION_CLOSE</code> 和 <code>FORCE_CONNECTION_CLOSE</code> 操作的请求，因为在技术上只会降低连接初始化的速度。它们在请求中所占比例也相对较小。此外，我们改进了关于 <code>CHALLENGE</code> 类型操作的计算，以确保只有未解决的质询被计入缓解。有关<a href="https://developers.cloudflare.com/ruleset-engine/rules-language/actions/" target="_blank">操作的详细说明</a>请参阅我们的开发人员文档。</li>
-		<li><strong>机器人流量/自动化流量</strong>： 被 Cloudflare <a href="https://www.cloudflare.com/products/bot-management/" target="_blank">Bot Management</a> 系统确认由机器人产生的任何 HTTP* 请求。包括<a href="https://developers.cloudflare.com/bots/concepts/bot-score/" target="_blank">机器人分数</a>在<a href="https://developers.cloudflare.com/bots/concepts/bot-score/" target="_blank">1-29</a>(含)的请求。与去年的报告相比，这一点没有改变。</li>
+		<li><strong>缓解流量</strong>：由 Cloudflare 平台应用了“终止”操作的眼球请求。包括如下操作：<code>BLOCK</code>, <a href="https://developers.cloudflare.com/fundamentals/get-started/concepts/cloudflare-challenges/?ref=blog.cloudflare.com#legacy-captcha-challenge" target="_blank"><code>CHALLENGE</code></a>, <a href="https://developers.cloudflare.com/fundamentals/get-started/concepts/cloudflare-challenges/?ref=blog.cloudflare.com#js-challenge" target="_blank"><code>JS_CHALLENGE</code></a> 和 <a href="https://developers.cloudflare.com/fundamentals/get-started/concepts/cloudflare-challenges/?ref=blog.cloudflare.com#managed-challenge-recommended" target="_blank"><code>MANAGED_CHALLENGE</code></a>。这并不包括应用以下操作的请求： <code>LOG</code>、<code>SKIP</code>、 <code>ALLOW</code>。与去年相比，现在我们不包括由我们的 DDoS 缓解系统应用了 <code>CONNECTION_CLOSE</code> 和 <code>FORCE_CONNECTION_CLOSE</code> 操作的请求，因为在技术上只会降低连接初始化的速度。它们在请求中所占比例也相对较小。此外，我们改进了关于 <code>CHALLENGE</code> 类型操作的计算，以确保只有未解决的质询被计入缓解。有关<a href="https://developers.cloudflare.com/ruleset-engine/rules-language/actions/?ref=blog.cloudflare.com" target="_blank">操作的详细说明</a>请参阅我们的开发人员文档。</li>
+		<li><strong>机器人流量/自动化流量</strong>： 被 Cloudflare <a href="https://www.cloudflare.com/products/bot-management/?ref=blog.cloudflare.com" target="_blank">Bot Management</a> 系统确认由机器人产生的任何 HTTP* 请求。包括<a href="https://developers.cloudflare.com/bots/concepts/bot-score/?ref=blog.cloudflare.com" target="_blank">机器人分数</a>在<a href="https://developers.cloudflare.com/bots/concepts/bot-score/?ref=blog.cloudflare.com" target="_blank">1-29</a>(含)的请求。与去年的报告相比，这一点没有改变。</li>
 		<li><strong>API 流量</strong>： 任何响应内容类型为 <code>XML</code> 或 <code>JSON</code> 的 HTTP* 请求。在响应内容类型不可用的情况下，例如对于缓解请求，则使用等效的 <code>Accept</code>内容类型(由用户代理指定)。在后一种情况下，API 流量不会被完全计算在内，但它仍然为获得洞察的目的提供了一个很好的代表。</li>
 	</ul>
 	<p>除非另有说明，本文评估的时间范围是 2022 年 3 月到 2023 年 2 月(含)的 12 个月期间。</p>
@@ -18,13 +18,13 @@
 	<h2 id="--1">全球流量洞察</h2>
 	<h3 id="-6-http-">平均每天有 6% 的 HTTP 请求被缓解</h3>
 	<p>从 Cloudflare 网络代理的所有 HTTP 请求来看，我们发现被缓解的请求占比下降到 6%，与去年低两个百分点。2023 年到目前为止，我们看到缓解的请求占比进一步下降到 4-5% 之间。下图中可见的大峰值，比如 6 月和 10 月出现的峰值，通常与 Cloudflare 缓解的大规模 DDoS 攻击有关。值得注意的是，尽管缓解流量的百分比随着时间的推移而下降，但缓解的总请求量一直相对稳定，如下面的第二个图表所示，这表明全球总体干净流量有所增加，而不是恶意流量的绝对减少。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/Screenshot-2023-03-06-at-23.00.01.png" class="kg-image" alt="过去 12 个月缓解 HTTP 请求百分比"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0-7.png" class="kg-image" alt="过去 12 个月每日 HTTP 总请求和缓解请求"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/Screenshot-2023-03-06-at-23.00.01.png" class="kg-image" alt="过去 12 个月缓解 HTTP 请求百分比" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0-7.png" class="kg-image" alt="过去 12 个月每日 HTTP 总请求和缓解请求" loading="lazy"></figure>
 	<p>81% 的缓解 HTTP 请求是被直接 <code>BLOCK</code> 的， 其余则包含各种 <code>CHALLENGE</code> 类型的操作。</p>
 	<h3 id="ddos-50-">DDoS 缓解占所有缓解流量的 50% 以上。</h3>
 	<p>Cloudflare 提供各种安全功能，用户可以通过配置这些功能来保障应用安全。不出所料，DDoS 缓解仍然是缓解第 7 层(应用层) HTTP 请求的最大贡献者。就在上月(2023 年 2 月)， 我们报告了<a href="https://blog.cloudflare.com/zh-cn/cloudflare-mitigates-record-breaking-71-million-request-per-second-ddos-attack-zh-cn/">按每秒 HTTP 请求数计算最大的已知被缓解 DDoS 攻击</a> (该攻击在上述图表中不可见，因为这些图表是按每天汇总的，而该攻击仅持续了大约 5 分钟)。</p>
 	<p>然而，与去年相比，Cloudflare WAF 缓解请求显著增长，现在占缓解请求的近 41%。部分原因在于<a href="https://blog.cloudflare.com/stop-attacks-before-they-are-known-making-the-cloudflare-waf-smarter/">我们的 WAF 技术进步</a>，使其能够检测和阻止更大范围的攻击。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/out.png" class="kg-image" alt="HTTP 请求最后一个缓解操作的对应产品组别"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/out.png" class="kg-image" alt="HTTP 请求最后一个缓解操作的对应产品组别" loading="lazy"></figure>
 	<p>表格形式供参考：</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
@@ -102,14 +102,14 @@
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
-	<p>请注意，与去年不同的是，上表中的产品分组方法与我们的市场营销资料和 <a href="https://radar.cloudflare.com/year-in-review/2022" target="_blank">2022 Radar 年度回顾</a>中使用的分组一致。这主要影响我们的 WAF 产品，其中包括 WAF 自定义规则、WAF 速率限制规则和 WAF 管理规则。在去年的报告中，这三个功能合计占缓解请求的 31%。</p>
+	<p>请注意，与去年不同的是，上表中的产品分组方法与我们的市场营销资料和 <a href="https://radar.cloudflare.com/year-in-review/2022?ref=blog.cloudflare.com" target="_blank">2022 Radar 年度回顾</a>中使用的分组一致。这主要影响我们的 WAF 产品，其中包括 WAF 自定义规则、WAF 速率限制规则和 WAF 管理规则。在去年的报告中，这三个功能合计占缓解请求的 31%。</p>
 	<p>要了解 WAF 缓解请求随时间的增长，我们可以再深入一个层级，其中可以明显看到， Cloudflare 客户越来越依赖 WAF 自定义规则(过去称为“防火墙规则”)，以缓解恶意流量或实施业务逻辑阻止。下图中的橙色线条 (防火墙规则) 显示随着时间的逐步增长，而蓝色线条 (L7 DDoS) 呈现明显的下降趋势。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--1--3.png" class="kg-image" alt="过去 12 个月期间每日缓解请求：DDoS vs WAF 自定义规则"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--1--3.png" class="kg-image" alt="过去 12 个月期间每日缓解请求：DDoS vs WAF 自定义规则" loading="lazy"></figure>
 	<h3 id="http-waf-7-">HTTP 异常是通过 WAF 缓解的最常见第 7 层攻击手段</h3>
 	<p>2023 年 3 月，HTTP 异常占比与去年同期相比下降了近 25 个百分点。HTTP 异常的例子包括格式不规范的方法名，头部的空字节字符，非标准端口或 <code>POST</code> 请求的内容长度为零。这可以归因于匹配 HTTP 异常特征的僵尸网络缓慢改变其流量模式。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--2--1.png" class="kg-image" alt="过去12个月 WAF 托管规则类别匹配的 HTTP 请求"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--2--1.png" class="kg-image" alt="过去12个月 WAF 托管规则类别匹配的 HTTP 请求" loading="lazy"></figure>
 	<p>从图中移除 HTTP 异常线条，可以看到在 2023 年初，攻击手段分布看起来更加均衡。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--3--1.png" class="kg-image" alt="过去12个月 WAF 托管规则类别匹配的 HTTP 请求，排除 HTTP 异常"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--3--1.png" class="kg-image" alt="过去12个月 WAF 托管规则类别匹配的 HTTP 请求，排除 HTTP 异常" loading="lazy"></figure>
 	<p>表格形式供参考(前 10 类别)</p><!--kg-card-begin: html-->
 	<style type="text/css">
 		.tg {
@@ -212,44 +212,44 @@
 		<li>Drupal - Anomaly:Header:X-Forwarded-For (id: <code>d6f6d394cb01400284cfb7971e7aed1e</code>)</li>
 		<li>Drupal - Anomaly:Header:X-Forwarded-Host (id: <code>d9aeff22f1024655937e5b033a61fbc5</code>)</li>
 	</ul>
-	<p>这两条规则是根据 <a href="https://nvd.nist.gov/vuln/detail/CVE-2018-14774" target="_blank">CVE-2018-14774</a> 标记的， 这表明了，即使是相对较老的已知漏洞，仍然经常被用于对潜在的未修补软件进行攻击。</p>
+	<p>这两条规则是根据 <a href="https://nvd.nist.gov/vuln/detail/CVE-2018-14774?ref=blog.cloudflare.com" target="_blank">CVE-2018-14774</a> 标记的， 这表明了，即使是相对较老的已知漏洞，仍然经常被用于对潜在的未修补软件进行攻击。</p>
 	<h2 id="--2">机器人流量洞察</h2>
-	<p>Cloudflare’s <a href="https://www.cloudflare.com/products/bot-management/" target="_blank">Bot Management</a> 在过去 12 个月内获得了重大投资。我们推出了一些新功能，例如如可配置的启发式方法、强化的 JavaScript 检测、自动机器学习模型更新，以及 <a href="https://www.cloudflare.com/products/turnstile/" target="_blank">Turnstile</a> —— Cloudflare 的免费 CAPTCHA 替代品，改善了我们每天的人类和机器人流量分类工作。</p>
+	<p>Cloudflare’s <a href="https://www.cloudflare.com/products/bot-management/?ref=blog.cloudflare.com" target="_blank">Bot Management</a> 在过去 12 个月内获得了重大投资。我们推出了一些新功能，例如如可配置的启发式方法、强化的 JavaScript 检测、自动机器学习模型更新，以及 <a href="https://www.cloudflare.com/products/turnstile/?ref=blog.cloudflare.com" target="_blank">Turnstile</a> —— Cloudflare 的免费 CAPTCHA 替代品，改善了我们每天的人类和机器人流量分类工作。</p>
 	<p>我们对分类输出的信心非常充足。如果我们绘制出 2023 年 2 月最后一周流量的机器人分数图，可以看到非常清晰的分布，大多请求要不分类为绝对机器人(低于 30)，要么为绝对人类(高于 80)，大部分请求实际得分低于 2 或高于 95。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--4--1.png" class="kg-image" alt="请求流量机器人分数分布"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--4--1.png" class="kg-image" alt="请求流量机器人分数分布" loading="lazy"></figure>
 	<h3 id="30-http-">30% 的 HTTP 流量是自动化的。</h3>
 	<p>在 2023 年 2 月的最后一周，30% 的 Cloudflare HTTP 流量被分类为自动化流量，相当于 Cloudflare 网络上每秒约 1300 万个 HTTP 请求。这比去年同期下降了 8 个百分点。</p>
-	<p>如果仅看机器人流量，我们发现，仅有 8% 是由经过验证的机器人产生的，占总流量的 2%。Cloudflare 维护一个已知的善意(经验证)机器人列表，以便客户轻松区分行为良好的机器人提供商(如 Google 和 Facebook)和可能不太知名或不受欢迎的机器人。目前<a href="https://radar.cloudflare.com/traffic/verified-bots" target="_blank">列表中有 171 个机器人</a>。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--5-.png" class="kg-image" alt="过去 12 个月被归类为机器人的 HTTP 流量百分比"></figure>
+	<p>如果仅看机器人流量，我们发现，仅有 8% 是由经过验证的机器人产生的，占总流量的 2%。Cloudflare 维护一个已知的善意(经验证)机器人列表，以便客户轻松区分行为良好的机器人提供商(如 Google 和 Facebook)和可能不太知名或不受欢迎的机器人。目前<a href="https://radar.cloudflare.com/traffic/verified-bots?ref=blog.cloudflare.com" target="_blank">列表中有 171 个机器人</a>。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--5-.png" class="kg-image" alt="过去 12 个月被归类为机器人的 HTTP 流量百分比" loading="lazy"></figure>
 	<h3 id="16-http-">16% 的未经验证机器人 HTTP 流量被缓解</h3>
 	<p>未经验证的机器人网络流量通常包括不断在 Web 上寻找利用机会的漏洞扫描器，因此，近六分之一的此类流量得到了缓解，因为一些客户更喜欢限制此类工具可能获得的洞察。</p>
 	<p>尽管像 googlebot 和 bingbot 这样的经验证机器人通常被认为是有益的，大多数客户也希望允许它们，但我们也看到一小部分(1.5%)经验证机器人流量被缓解。这是因为一些站点管理员不希望站点的某些部分被爬取，而客户通常依赖 WAF 自定义规则来强制执行这个业务逻辑。</p>
 	<p>客户使用的最常见操作是 <code>BLOCK</code> 这些请求 (13%), 但我们也看到一些客户配置 <code>CHALLENGE</code> 操作 (3%) ，以确保任何是人类的误报仍可在必要时完成请求。</p>
 	<p>类似地，同样值得注意的是，所有缓解流量中有近 80% 被归类为机器人，如下图所示。有人可能指出，20% 的缓解流量被归类为人类流量仍然非常高，但大多数人类流量的缓解是由 WAF 自定义规则生成的，常常是由于客户在其应用程序上实施国家级别或其他相关法律的阻止。这种情况很常见，例如，设在美国的公司出于 GDPR 合规性的原因，阻止欧洲用户的访问。</p>
-	<figure class="kg-card kg-image-card"><img src="https://lh4.googleusercontent.com/Ms7yLEMZH9YTC2GfsGffgbk4rQwzHfpIwPlVe1dy7ZkNxLKe49WZHfope9X9Z-x9BZ0ygFBqay5NV5ipMU42-7uNt5QTYkv8VryoXr5QaJp4-ystQ7I7x6WIa2-cTSiPQ3qRfkel8OhUGFRtXr_8QYs" class="kg-image" alt="缓解 HTTP 流量的机器人分数分布"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://lh4.googleusercontent.com/Ms7yLEMZH9YTC2GfsGffgbk4rQwzHfpIwPlVe1dy7ZkNxLKe49WZHfope9X9Z-x9BZ0ygFBqay5NV5ipMU42-7uNt5QTYkv8VryoXr5QaJp4-ystQ7I7x6WIa2-cTSiPQ3qRfkel8OhUGFRtXr_8QYs" class="kg-image" alt="缓解 HTTP 流量的机器人分数分布" loading="lazy"></figure>
 	<h2 id="api-">API 流量洞察</h2>
 	<h3 id="55-api-">55% 的动态(不可缓存) 流量与 API 有关</h3>
 	<p>例如我们的 Bot Management 解决方案，我们也在大量投资于保护 API 端点的工具。这是因为<strong>大量</strong> HTTP 流量与 API 相关。事实上，如果仅计算到达源且<strong>不可</strong>缓存的流量，则根据之前声明的定义，其中 55% 的流量是与 API 有关的。这与去年的报告使用的方法相同，55% 的数字与去年相比没有变化。</p>
-	<p>如果只考虑缓存的 HTTP 请求(缓存状态为 <code>HIT</code>、 <code>UPDATING</code>、<code>REVALIDATED</code> 和 <code>EXPIRED</code>)，我们发现，也许有点出人意料，接近 7% 与 API 相关。现代的 API 端点实现和代理系统，包括我们自己的 API 网关/缓存功能集，实际上允许非常灵活的缓存逻辑，既允许<a href="https://developers.cloudflare.com/cache/how-to/create-cache-keys/" target="_blank">自定义键缓存</a>，也允许快速缓存重新验证 (<a href="https://developers.cloudflare.com/cache/about/edge-browser-cache-ttl/#:~:text=Edge%20Cache%20TTL%20(Time%20to,TTL%20depends%20on%20plan%20type.&amp;text=For%20more%20information%20on%20creating%20page%20rules%2C%20see%20Create%20page%20rules." target="_blank">快至每秒一次</a>) ，以便开发人员减少后端端点的负载。</p>
+	<p>如果只考虑缓存的 HTTP 请求(缓存状态为 <code>HIT</code>、 <code>UPDATING</code>、<code>REVALIDATED</code> 和 <code>EXPIRED</code>)，我们发现，也许有点出人意料，接近 7% 与 API 相关。现代的 API 端点实现和代理系统，包括我们自己的 API 网关/缓存功能集，实际上允许非常灵活的缓存逻辑，既允许<a href="https://developers.cloudflare.com/cache/how-to/create-cache-keys/?ref=blog.cloudflare.com" target="_blank">自定义键缓存</a>，也允许快速缓存重新验证 (<a href="https://developers.cloudflare.com/cache/about/edge-browser-cache-ttl/?ref=blog.cloudflare.com#:~:text=Edge%20Cache%20TTL%20(Time%20to,TTL%20depends%20on%20plan%20type.&amp;text=For%20more%20information%20on%20creating%20page%20rules%2C%20see%20Create%20page%20rules." target="_blank">快至每秒一次</a>) ，以便开发人员减少后端端点的负载。</p>
 	<p>如果将可缓存的资源和其他请求(例如重定向)计算在总数中，则这个数字会减少，但仍然占流量的 25%。下图中，我们提供了有关 API 流量的两种视角：</p>
 	<ul>
 		<li>黄线：API 流量占所有 HTTP 请求的百分比。这将把重定向、缓存资源和所有其他 HTTP 请求包括在总数中；</li>
 		<li>蓝线：API 流量占动态流量(仅返回 HTTP 200 OK 响应码)的百分比；</li>
 	</ul>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--6-.png" class="kg-image" alt="过去 12 个月的 API 流量：占总 HTTP 请求的 %，占 200 响应不可缓存 HTTP 请求的 %"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--6-.png" class="kg-image" alt="过去 12 个月的 API 流量：占总 HTTP 请求的 %，占 200 响应不可缓存 HTTP 请求的 %" loading="lazy"></figure>
 	<h3 id="65-api-">65% 的全球 API 流量是由浏览器生成的</h3>
-	<p>如今，越来越多 Web 应用是以“API 优先”方式构建的。这意味着初始 HTML 页面加载只提供了框架布局，大多数动态组件和数据是通过单独的 API 调用加载的 (例如，通过 <a href="https://en.wikipedia.org/wiki/Ajax_(programming)" target="_blank">AJAX</a>)。Cloudflare 自己的仪表盘就是这样。在分析 API 流量的机器人分数时，可以看到这种不断增长的实现范式。下图可见，大量的 API 流量是由我们的系统分类为“人类”的用户驱动浏览器产生的，其中近三分之二的流量集中在“人类”范围的高端。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--7--2.png" class="kg-image" alt="API 流量的机器人分数分布"></figure>
+	<p>如今，越来越多 Web 应用是以“API 优先”方式构建的。这意味着初始 HTML 页面加载只提供了框架布局，大多数动态组件和数据是通过单独的 API 调用加载的 (例如，通过 <a href="https://en.wikipedia.org/wiki/Ajax_(programming)?ref=blog.cloudflare.com" target="_blank">AJAX</a>)。Cloudflare 自己的仪表盘就是这样。在分析 API 流量的机器人分数时，可以看到这种不断增长的实现范式。下图可见，大量的 API 流量是由我们的系统分类为“人类”的用户驱动浏览器产生的，其中近三分之二的流量集中在“人类”范围的高端。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--7--2.png" class="kg-image" alt="API 流量的机器人分数分布" loading="lazy"></figure>
 	<p>计算缓解 API 流量是一个挑战，因为我们并不将请求转发到源服务器，因此不能依赖于响应内容类型。按照去年使用的相同计算方法，略高于 2% 的 API 流量被缓解，低于去年的 10.2%。</p>
 	<h3 id="http-sqli-api-">HTTP 异常超过了 SQLi，成为 API 端点上最常见的攻击手段</h3>
 	<p>与去年相比，HTTP 异常现在超过了 SQLi，成为针对 API 端点的最流行攻击手段(注意，图表开始处，即去年的报告发布时，蓝色线更高)。针对 API 流量的攻击手段在全年内并不一致，与全球 HTTP 流量相比变化更大。例如，请注意 2023 年初的文件包含攻击尝试出现激增。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--8-.png" class="kg-image" alt="过去 12 个月 API 流量最后一个缓解操作对应的 WAF 规则类别"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--8-.png" class="kg-image" alt="过去 12 个月 API 流量最后一个缓解操作对应的 WAF 规则类别" loading="lazy"></figure>
 	<h2 id="--3">探索帐户接管攻击</h2>
 	<p>自 <a href="https://blog.cloudflare.com/zh-cn/account-takeover-protection-zh-cn/">2021 年 3 月以来，Cloudflare 在其 WAF 中提供泄露凭据检查功能</a>。当检测到身份验证请求带有已知泄露的用户名/密码对时，客户就会得到通知(通过 HTTP 请求标头)。对于检测执行帐户接管暴力攻击的僵尸网络而言，这往往是一个非常有效的信号。</p>
 	<p>客户还使用这个信号，对有效的用户名/密码对登录尝试，发出双因素身份验证、密码重置，或者在某些情况下，对用户不是凭据合法所有者的情况添加日志记录。</p>
 	<h3 id="--4">暴力帐户接管攻击越来越多</h3>
 	<p>从过去 12 个月的匹配请求趋势来看，2022 年下半年开始出现明显的增长，这表明针对登录端点的欺诈活动越来越多。在大型暴力破解攻击中，我们观察到匹配泄露凭据的 HTTP 请求速率达到每分钟 12k 以上。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--9-.png" class="kg-image" alt="过去 12 个月的每日帐户接管 HTTP 请求"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--9-.png" class="kg-image" alt="过去 12 个月的每日帐户接管 HTTP 请求" loading="lazy"></figure>
 	<p>我们的泄露凭据检查功能具有匹配对以下系统身份验证请求的规则：</p>
 	<ul>
 		<li>Drupal</li>
@@ -263,11 +263,11 @@
 	</ul>
 	<p>这使我们能够比较来自恶意行为者的活动，其通常采取僵尸网络的形式，试图“入侵”潜在泄露帐户。</p>
 	<h3 id="microsoft-exchange-wordpress">Microsoft Exchange 受到的攻击超过 WordPress</h3>
-	<p>主要由于其热门程度，您可能会预期 <a href="https://w3techs.com/technologies/details/cm-wordpress" target="_blank">WordPress</a> 是风险最大和/或遭遇最多暴力帐户接管流量的应用。然而，从上述受支持系统的规则匹配情况来看，我们发现，除了我们的通用特征，Microsoft Exchange 特征是最频繁的匹配。</p>
+	<p>主要由于其热门程度，您可能会预期 <a href="https://w3techs.com/technologies/details/cm-wordpress?ref=blog.cloudflare.com" target="_blank">WordPress</a> 是风险最大和/或遭遇最多暴力帐户接管流量的应用。然而，从上述受支持系统的规则匹配情况来看，我们发现，除了我们的通用特征，Microsoft Exchange 特征是最频繁的匹配。</p>
 	<p>大多数遭受暴力攻击的应用都是高价值资产，根据我们反应这一趋势的数据，Exchange 账户是最有可能被攻击的目标。</p>
 	<p>从泄露凭据匹配流量的国别来看，美国遥遥领先。鉴于中国的网络规模，中国没有出现在前列可能值得注意。唯一的例外是：乌克兰在 2022 年上半年俄乌冲突爆发前领先——下图中的黄线。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--10-.png" class="kg-image" alt="过去 12 个月每日帐户接管 HTTP 请求的国别分布"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/03/pasted-image-0--10-.png" class="kg-image" alt="过去 12 个月每日帐户接管 HTTP 请求的国别分布" loading="lazy"></figure>
 	<h2 id="--5">展望未来</h2>
 	<p>鉴于 Cloudflare 承载的网络流量，我们观察到广泛的攻击类型。从 HTTP 异常、SQL 注入攻击、跨站脚本攻击(XSS)到帐户接管尝试和恶意机器人，威胁形势不断变化。因此，任何在线运营的企业都必须投资于可见性、检测和缓解技术，以确保其应用程序——以及更重要的是——其最终用户数据的安全。</p>
-	<p>我们希望本报告的结果能引起您的兴趣，至少可以让您了解互联网应用安全的状态。网络上有大量恶意行为者，而且没有迹象表明互联网安全将变得更加容易。<br><br>我们已经计划更新这份报告，以包含来自我们产品组合的更多数据和洞察。欢迎关注 <a href="https://radar.cloudflare.com/" target="_blank">Cloudflare Radar</a>，以获得更频繁的应用安全报告和见解。</p>
+	<p>我们希望本报告的结果能引起您的兴趣，至少可以让您了解互联网应用安全的状态。网络上有大量恶意行为者，而且没有迹象表明互联网安全将变得更加容易。<br><br>我们已经计划更新这份报告，以包含来自我们产品组合的更多数据和洞察。欢迎关注 <a href="https://radar.cloudflare.com/?ref=blog.cloudflare.com" target="_blank">Cloudflare Radar</a>，以获得更频繁的应用安全报告和见解。</p>
 </div>

@@ -1,5 +1,5 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/Image_20201016_072224.jpeg" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/Image_20201016_072224.jpeg" class="kg-image" alt="" loading="lazy"></figure>
 	<p>今天，我们很高兴地发布 Magic Firewall™，这款通过 Cloudflare 提供的网络级防火墙能够保护您的企业安全。Magic Firewall 为您的远程用户、分支机构、数据中心和云基础结构提供安全保障。最重要的是，它与 Cloudflare One™ 深度集成，让您在一个一站式视图中洞悉网络中的所有情况。</p>
 	<p>Cloudflare Magic Transit™ 采用与我们用来保障自有全球网络安全的相同 DDoS 保护技术，为 IP 子网提供保护。这有助于确保您的网络免受攻击并保持可用，而且还能用 Cloudflare 网络来取代存在限制的物理设备。</p>
 	<p>不过，企业内部仍然遗留了一些硬件来承担其职能：防火墙。网络需要的不仅仅是防御 DDoS 攻击。管理员需要一种方式，为所有进出网络的流量设置策略。我们希望，Magic Firewall 能帮助您的团队淘汰那些网络防火墙设备，并将这些负担转移到 Cloudflare 全球网络。</p>
@@ -10,7 +10,7 @@
 	<p>网络运维人员将来自不同供应商的解决方案拼凑在一起，混合和搭配不同的功能，而且还要努力使策略在整个网络中保持同步。结果是烦恼变得更多，成本也更高。</p>
 	<h3 id="--1">解决方案不是添加硬件</h3>
 	<p>后来，一些组织转向更多供应商购买额外的硬件，以管理他们拼凑在一起的防火墙硬件。这样一来，团队必须在更多平台之间平衡硬件的换代、更新和退役管理。这些创可贴式解决方案无法解决根本的问题：如何创建整个网络的单一视图，以便洞悉正在发生的情况（不论好坏）并在全局范围内即时应用策略？</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/10/image2-18.png" class="kg-image">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/10/image2-18.png" class="kg-image" alt="" loading="lazy">
 		<figcaption>传统防火墙架构</figcaption>
 	</figure>
 	<h3 id="magic-firewall-">Magic Firewall 简介</h3>
@@ -85,11 +85,11 @@
 		<li>数据包长度</li>
 		<li>位域匹配</li>
 	</ul>
-	<p>规则可以用 <a href="https://www.wireshark.org/docs/wsug_html_chunked/ChWorkBuildDisplayFilterSection.html" target="_blank">Wireshark 语法</a>编写，这是网络世界中常用的域特定语言，也是我们在其他产品中使用的相同语法。使用这种语法，您可以轻松地制定极其强大的规则，精确地允许或拒绝任何流量进出您的网络。如果您怀疑网络边界内部或外部有不良行为者，只需登录仪表板并阻止其流量便可。几秒钟后，便可将规则推送到全球，从而在边缘阻止威胁。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image4-13.png" class="kg-image"></figure>
+	<p>规则可以用 <a href="https://www.wireshark.org/docs/wsug_html_chunked/ChWorkBuildDisplayFilterSection.html?ref=blog.cloudflare.com" target="_blank">Wireshark 语法</a>编写，这是网络世界中常用的域特定语言，也是我们在其他产品中使用的相同语法。使用这种语法，您可以轻松地制定极其强大的规则，精确地允许或拒绝任何流量进出您的网络。如果您怀疑网络边界内部或外部有不良行为者，只需登录仪表板并阻止其流量便可。几秒钟后，便可将规则推送到全球，从而在边缘阻止威胁。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image4-13.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>防火墙配置应该简便，并且功能强大。使用 Magic Firewall 时，您可以通过便捷的 UI 来配置规则，实现复杂的逻辑。或者，只需使用 Wireshark 过滤器语法手动键入过滤规则并进行配置。不想操作 UI？您可以通过 API 轻松添加规则。</p>
 	<h3 id="--3">下一步是什么？</h3>
 	<p>查看数据包还不足够… 即使有了防火墙规则，团队仍需要了解网络中 实际发生的情况：这些数据流内部发生了什么？这是合法的流量，还是有恶意行为者在我们网络内部或外部干坏事？将 Cloudflare 部署到与您的任何资产进行交互的任何两个行为者之间（不论员工设备还是对互联网公开的服务），可以使我们在任何地方执行任何策略，无论流量来自何处或其内部包含什么。基于流量类型应用策略指日可待，而且我们也计划在不久之后增加其他功能，以基于数据流内部的情况自动检测入侵事件。</p>
 	<p>我们为这一新旅程感到兴奋。借助 Cloudflare One，我们正在重塑企业网络的新面貌。我们全面集成了访问管理、安全功能和性能：同时面向网络的访问者，以及网络内部的所有人。所有这些都建立在 <a href="https://blog.cloudflare.com/our-network-cloudflare-one">#BuiltForThis</a> 的网络之上。</p>
-	<p>我们将从现有的 Magic Transit 客户开始，限量开放 Magic Firewall 的 Beta 版测试。如果您有兴趣，请<a href="https://www.cloudflare.com/lp/magic-firewall-beta/" target="_blank">告诉我们</a>。</p>
+	<p>我们将从现有的 Magic Transit 客户开始，限量开放 Magic Firewall 的 Beta 版测试。如果您有兴趣，请<a href="https://www.cloudflare.com/lp/magic-firewall-beta/?ref=blog.cloudflare.com" target="_blank">告诉我们</a>。</p>
 </div>
