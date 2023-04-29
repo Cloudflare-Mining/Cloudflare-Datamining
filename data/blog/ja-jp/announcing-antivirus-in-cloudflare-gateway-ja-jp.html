@@ -1,7 +1,7 @@
 <div class="post-content lh-copy gray1">
 	<p>本日は、Cloudflareのエッジから直接マルウェアを検出および阻止し、Gatewayユーザーにセキュリティの脅威に対する追加的な防御ラインをご提供できるようになったことを発表します。</p>
 	<p>Cloudflare Gatewayは、インターネット上の脅威から従業員とデータを保護し、セキュリティのためにパフォーマンスを低下させることなく保護します。トラフィックを中央にバックホールするのではなく、Gatewayのお客様は世界200都市にあるCloudflareのデータセンターに接続するため、当社のネットワークはインターネットへのトラフィックを保護するためにコンテンツとセキュリティポリシーを適用できます。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/1-3.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/1-3.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>昨年、Gatewayは、<a href="https://blog.cloudflare.com/protect-your-team-with-cloudflare-gateway/">セキュアなDNSフィルタリングソリューション</a>から、すべてのユーザーのHTTPトラフィックを保護できる完全な<a href="https://blog.cloudflare.com/ja-jp/gateway-swg-ja-jp/">Secure Web Gateway</a>に拡張しました。これにより、管理者はDNSレイヤーに対する脅威だけでなく、悪意のあるURLや望ましくないファイルタイプも検出してブロックできます。さらに、管理者は、ワンクリックですべてのユーザーを保護する、影響力の大きい、会社全体に適用するポリシーを作成できるようになりました。また、<a href="https://blog.cloudflare.com/gateway-swg-2/">ユーザーIDに基づいてより詳細なルールを作成することもできます</a>。</p>
 	<p>今月初め、管理者が特定のWebアプリケーションをブロックしやすくするために、Cloudflare Gatewayで<a href="https://blog.cloudflare.com/gateway-app-policies/">アプリケーションポリシー</a>を開始しました。この機能を使用すると、管理者は、パブリッククラウドファイルストレージなど、マルウェアの拡散に一般的に使用されるアプリケーションをブロックできます。</p>
 	<p>Gatewayのこれらの機能により、階層化されたセキュリティへのアプローチが可能になります。GatewayのDNSフィルタリングを使用すると、C2サーバーとの通信、インプラントペイロードのダウンロード、企業データの漏えいなどを目的とした、<a href="https://blog.cloudflare.com/a-quirk-in-the-sunburst-dga-algorithm/">DNSプロトコルを悪用する脅威</a>から保護します。DNSフィルタリングは、DNSクエリーを生成するすべてのアプリケーションに適用され、HTTPトラフィックインスペクションは、インターネットを利用するユーザーが遭遇し得る脅威を深く掘り下げることで、DNSフィルタリングを補完します。</p>
@@ -15,7 +15,7 @@
 	<p>非常に巧妙な脅威がユーザーのネットワークに侵入してしまった場合、セキュリティチームの最も重要なタスクは、組織に対する攻撃の範囲を迅速に判断することです。最悪の場合、悪意があると判断されるドメイン、Webサイト、またはファイルにユーザーがアクセスしてしまったとき、セキュリティチームの最後の防御策は、組織に対する攻撃元と影響を受けたリソースを確実に把握することです。</p>
 	<h3 id="file-scanning-">File Scanningの発表</h3>
 	<p>本日から、Cloudflare Gatewayを使用すると、エンドポイント保護を強化し、悪意のあるファイルが従業員のデバイスにダウンロードされるのを防止できるようになります。Gatewayはインターネットから送られ、Cloudflareエッジを通過するファイルを、最も近いデータセンターでスキャンします。Cloudflareは、DNSおよびHTTPトラフィックフィルタリングに使用されるインテリジェンスを管理するのと同じように、お客様のためにこの防御層を管理します。これにより、管理者は追加のウイルス対策ライセンスを購入したり、ウイルス定義を最新の状態に保つことを心配する必要がなくなります。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/2-2.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/2-2.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>ユーザーがダウンロードを開始し、ファイルがCloudflareのエッジにあるGatewayを通過すると、ファイルはマルウェアスキャニングエンジンに送信されます。このエンジンには、マルウェアサンプル定義があり、毎日更新されます。Gatewayがファイルをスキャンし、マルウェアの存在を検出すると、接続がリセットされ、ダウンロードエラーとしてブラウザに表示され、ファイル転送がブロックされます。Gatewayは、ファイルがダウンロードされたURL、ファイルの SHA-256 ハッシュ、マルウェアの存在によりファイルがブロックされたという事実も記録します。</p>
 	<p>セキュリティに対する一般的なアプローチは、「漏えいを想定する」ことです。セキュリティチームによるこの前提に立てば、すべての脅威を事前に把握できるわけではないことが認識され、迅速に脅威に対応できるように最適化されます。Gatewayを使用すると、管理者はGatewayの一元化されたログ機能を利用して、脅威が組織に与える影響を完全に可視化できます。これにより、インシデント対応の一環として脅威の修復のための明確な手順が提供されます。</p>
 	<h3 id="--2">安全性が損なわれた後でマルウェアを検出する</h3>
@@ -30,6 +30,6 @@
 	<p>Cloudflare Gatewayは、以前からC2、DNSトンネリングに関連すると知られていたドメインや、ドメイン生成アルゴリズム（DGA）によって生成されたように見えるドメインへのクエリを検出してブロックするだけではありません。Gatewayは、脅威リサーチのヒューリスティックを使用して、上記で説明した攻撃の目的でDGAによって生成されたと思われるクエリを特定し、組織のログデータからこれらの未知の脅威を検出し、セキュリティ管理者が手動で介入する前に事前にそれらをブロックします。</p>
 	<p>脅威リサーチは絶えず進化しています。Cloudflare Gateway は、 <a href="https://blog.cloudflare.com/solarwinds-orion-compromise-trend-data/">Cloudflareのネットワークから得られたインサイトを提供することで、セキュリティ上の脅威に対処するIT管理者の負担を軽減し</a>、あらゆる規模の組織をどの場所でも保護します。</p>
 	<h3 id="--3">次は何を？</h3>
-	<p>Cloudflareの目標は、企業の規模に関係なく、高度で実装が容易なセキュリティ機能を提供し、お客様がビジネスに本当に必要なことに再び取り組めるようにすることです。Gateway機能の拡張を続け、ユーザーとそのデータを保護できることをうれしく思います。DNSトンネリングとDGA検出は、<a href="https://www.cloudflare.com/ja-jp/teams-pricing/" target="_blank">最大50人のユーザーまで</a>無料でGateway DNSフィルタリングに含まれています。Cloudflareのエッジでのマルウェアのインライン検出は、Teams StandardプランとTeams Enterpriseプランに含まれています。</p>
-	<p>ネットワークレベルのフィルタリングとGREトンネルの統合にご期待ください。まだ始まったばかりです。今すぐサインアップするには、この<a href="https://www.cloudflare.com/ja-jp/teams/" target="_blank">リンク</a>を参照してください。</p>
+	<p>Cloudflareの目標は、企業の規模に関係なく、高度で実装が容易なセキュリティ機能を提供し、お客様がビジネスに本当に必要なことに再び取り組めるようにすることです。Gateway機能の拡張を続け、ユーザーとそのデータを保護できることをうれしく思います。DNSトンネリングとDGA検出は、<a href="https://www.cloudflare.com/ja-jp/teams-pricing/?ref=blog.cloudflare.com" target="_blank">最大50人のユーザーまで</a>無料でGateway DNSフィルタリングに含まれています。Cloudflareのエッジでのマルウェアのインライン検出は、Teams StandardプランとTeams Enterpriseプランに含まれています。</p>
+	<p>ネットワークレベルのフィルタリングとGREトンネルの統合にご期待ください。まだ始まったばかりです。今すぐサインアップするには、この<a href="https://www.cloudflare.com/ja-jp/teams/?ref=blog.cloudflare.com" target="_blank">リンク</a>を参照してください。</p>
 </div>

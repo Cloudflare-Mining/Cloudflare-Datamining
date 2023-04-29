@@ -1,22 +1,22 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
-	<p>Last November, we <a href="https://blog.cloudflare.com/introducing-http2/">rolled out</a> HTTP/2 support for all our customers. At the time, HTTP/2 was not in wide use, but more than 88k of the Alexa 2 million websites are now HTTP/2-enabled. Today, <a href="http://isthewebhttp2yet.com/measurements/adoption.html#organization" target="_blank">more than 70%</a> of sites that use HTTP/2 are served via CloudFlare.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/04/They_started_our_car_by_pushing_it_backwards_up_the_hill-_-3854246685-.jpg" alt=""><br>
-		<small><a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">CC BY 2.0</a> <a href="https://commons.wikimedia.org/wiki/File:They_started_our_car_by_pushing_it_backwards_up_the_hill!_(3854246685).jpg" target="_blank">image</a> by <a href="https://www.flickr.com/people/83555001@N00" target="_blank">Roger Price</a></small>
+	<p>Last November, we <a href="https://blog.cloudflare.com/introducing-http2/">rolled out</a> HTTP/2 support for all our customers. At the time, HTTP/2 was not in wide use, but more than 88k of the Alexa 2 million websites are now HTTP/2-enabled. Today, <a href="http://isthewebhttp2yet.com/measurements/adoption.html?ref=blog.cloudflare.com#organization" target="_blank">more than 70%</a> of sites that use HTTP/2 are served via CloudFlare.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2016/04/They_started_our_car_by_pushing_it_backwards_up_the_hill-_-3854246685-.jpg" alt="" loading="lazy"><br>
+		<small><a href="https://creativecommons.org/licenses/by/2.0/?ref=blog.cloudflare.com" target="_blank">CC BY 2.0</a> <a href="https://commons.wikimedia.org/wiki/File:They_started_our_car_by_pushing_it_backwards_up_the_hill!_(3854246685).jpg?ref=blog.cloudflare.com" target="_blank">image</a> by <a href="https://www.flickr.com/people/83555001@N00?ref=blog.cloudflare.com" target="_blank">Roger Price</a></small>
 	</p>
 	<h3 id="incrementalimprovementsonspdy">Incremental Improvements On SPDY</h3>
 	<p>HTTP/2’s main benefit is multiplexing, which allows multiple HTTP requests to share a single TCP connection. This has a huge impact on performance compared to HTTP/1.1, but it’s nothing new—SPDY has been multiplexing TCP connections since at least 2012.</p>
 	<p>Some of the most important aspects of HTTP/2 have yet to be implemented by major web servers or edge networks. The real promise of HTTP/2 comes from brand new features like Header Compression and Server Push. Since February, we’ve been quietly testing and deploying HTTP/2 Header Compression, which resulted in an average 30% reduction in header size for all of our clients using HTTP/2. That's awesome. However, the real opportunity for a quantum leap in web performance comes from Server Push.</p>
 	<h3 id="pushingahead">Pushing Ahead</h3>
-	<p>Today, we’re happy to announce <a href="https://cloudflare.com/http2/server-push/" target="_blank">HTTP/2 Server Push support</a> for all of our customers. Server Push enables websites and APIs to speculatively deliver content to the web browser before the browser sends a request for it. This behavior is opportunistic, since in some cases, the content might already be in the client’s cache or not required at all.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/04/http2-server-push-2.png" alt="Server Push Diagram"></p>
-	<p>It’s been <a href="https://www.igvita.com/2013/06/12/innovating-with-http-2.0-server-push/" target="_blank">touted as one of the major features</a> of HTTP/2, and by enabling it, we cover the entire set of HTTP/2 features for all of our users. You can see it in action on our <a href="https://cloudflare.com/http2/server-push/" target="_blank">live Server Push demo</a>.</p>
-	<p>Server Push provides significant performance gains if used judiciously. In its most basic form, Server Push allows the server to “bundle” assets that the client didn’t ask for. It works by sending <a href="https://tools.ietf.org/html/rfc7540#section-6.6" target="_blank"><code>PUSH_PROMISE</code></a>—a declaration of the intention to send the assets, followed by the actual assets.</p>
-	<p>Upon the receipt of a <code>PUSH_PROMISE</code>, the client may respond with a <a href="https://tools.ietf.org/html/rfc7540#section-6.4" target="_blank"><code>RST_STREAM</code></a> message, indicating this asset is not needed. Even in this case, due to the asynchronous nature of HTTP/2, the client may receive the asset before the server gets the <code>RST_STREAM</code> message.</p>
+	<p>Today, we’re happy to announce <a href="https://cloudflare.com/http2/server-push/?ref=blog.cloudflare.com" target="_blank">HTTP/2 Server Push support</a> for all of our customers. Server Push enables websites and APIs to speculatively deliver content to the web browser before the browser sends a request for it. This behavior is opportunistic, since in some cases, the content might already be in the client’s cache or not required at all.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2016/04/http2-server-push-2.png" alt="Server Push Diagram" loading="lazy"></p>
+	<p>It’s been <a href="https://www.igvita.com/2013/06/12/innovating-with-http-2.0-server-push/?ref=blog.cloudflare.com" target="_blank">touted as one of the major features</a> of HTTP/2, and by enabling it, we cover the entire set of HTTP/2 features for all of our users. You can see it in action on our <a href="https://cloudflare.com/http2/server-push/?ref=blog.cloudflare.com" target="_blank">live Server Push demo</a>.</p>
+	<p>Server Push provides significant performance gains if used judiciously. In its most basic form, Server Push allows the server to “bundle” assets that the client didn’t ask for. It works by sending <a href="https://tools.ietf.org/html/rfc7540?ref=blog.cloudflare.com#section-6.6" target="_blank"><code>PUSH_PROMISE</code></a>—a declaration of the intention to send the assets, followed by the actual assets.</p>
+	<p>Upon the receipt of a <code>PUSH_PROMISE</code>, the client may respond with a <a href="https://tools.ietf.org/html/rfc7540?ref=blog.cloudflare.com#section-6.4" target="_blank"><code>RST_STREAM</code></a> message, indicating this asset is not needed. Even in this case, due to the asynchronous nature of HTTP/2, the client may receive the asset before the server gets the <code>RST_STREAM</code> message.</p>
 	<p>The <code>PUSH_PROMISE</code> looks a lot like an HTTP/2 GET request, and the client attempts to match received push promises before sending outgoing requests.</p>
 	<h3 id="enablingserverpush">Enabling Server Push</h3>
 	<p>All of our customers using HTTP/2 now have Server Push enabled, but unfortunately, Server Push isn’t one of those features that just works—you’ll need to do a little bit of work to truly leverage the benefits of Server Push.</p>
-	<p>Our implementation follows the guidelines laid out in the W3C’s draft standard on the use of a <a href="https://w3c.github.io/preload/#server-push-http-2" target="_blank"><code>preload</code></a> keyword in <code>Link</code> headers<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>, and we will continue to track that standard as it evolves.</p>
+	<p>Our implementation follows the guidelines laid out in the W3C’s draft standard on the use of a <a href="https://w3c.github.io/preload/?ref=blog.cloudflare.com#server-push-http-2" target="_blank"><code>preload</code></a> keyword in <code>Link</code> headers<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>, and we will continue to track that standard as it evolves.</p>
 	<p>So, if you want to push assets for a given request, you simply add a specially formatted <code>Link</code> header to the response:</p>
 	<pre><code>Link: &lt;/asset/to/push.js&gt;; rel=preload; as=script
 </code></pre>
@@ -43,27 +43,27 @@
 		</li>
 	</ul>
 	<h3 id="profilingserverpush">Profiling Server Push</h3>
-	<p>There are currently several tools and browsers that support Server Push. However, to visualize the performance benefits of the feature, the current <a href="https://www.google.co.uk/chrome/browser/canary.html" target="_blank">Canary</a> version of Google Chrome is the best. Here is an example of a webpage with five images loading with and without Server Push, as depicted in the timeline:</p>
+	<p>There are currently several tools and browsers that support Server Push. However, to visualize the performance benefits of the feature, the current <a href="https://www.google.co.uk/chrome/browser/canary.html?ref=blog.cloudflare.com" target="_blank">Canary</a> version of Google Chrome is the best. Here is an example of a webpage with five images loading with and without Server Push, as depicted in the timeline:</p>
 	<h4 id="plainhttp2">Plain HTTP/2:</h4>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/04/Screen-Shot-2016-04-26-at-15-07-53.png" alt="alt"></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2016/04/Screen-Shot-2016-04-26-at-15-07-53.png" alt="alt" loading="lazy"></p>
 	<p>After the main page is loaded (and some processing time) the browser makes a request for the five images. After another round trip, those images are delivered and loaded.</p>
 	<h6 id="http2serverpush">HTTP/2 + Server Push:</h6>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/04/Screen-Shot-2016-04-26-at-15-08-59.png" alt="alt"></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2016/04/Screen-Shot-2016-04-26-at-15-08-59.png" alt="alt" loading="lazy"></p>
 	<p>With Server Push enabled, we can see that the images are delivered while the page is being processed, thus no additional round trip is required. As soon as the images are needed, Chrome matches them with existing Push Promises and immediately uses them.</p>
 	<p>In Canary Chrome, you can also see that the pushed assets are identified in the Initiator column as Push/Other.</p>
 	<h4 id="otherbrowsers">Other browsers:</h4>
 	<h4 id="firefox">Firefox</h4>
 	<p>Pushed assets will not get a timeline and are identified by a solid grey circle (unlike cached content that is identified by a non-solid circle, and a “cached” indication in the “Transferred tab”).</p>
 	<p><strong>Plain HTTP/2:</strong></p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/04/Screen-Shot-2016-04-26-at-17-25-15.png" alt="alt"></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2016/04/Screen-Shot-2016-04-26-at-17-25-15.png" alt="alt" loading="lazy"></p>
 	<p><strong>HTTP/2 + Server Push:</strong></p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/04/Screen-Shot-2016-04-26-at-17-25-42.png" alt="alt"></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2016/04/Screen-Shot-2016-04-26-at-17-25-42.png" alt="alt" loading="lazy"></p>
 	<h4 id="edge">Edge</h4>
 	<p>Pushed assets won’t have the yellow bar in the timeline (TTFB), and under the Protocol tab, the protocol will appear as HTTPS and not HTTP/2.</p>
 	<p><strong>Plain HTTP/2:</strong></p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/04/Capture3.PNG" alt="alt"></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2016/04/Capture3.PNG" alt="alt" loading="lazy"></p>
 	<p><strong>HTTP/2 + Server Push:</strong></p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/04/Capture1.PNG" alt="alt"></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2016/04/Capture1.PNG" alt="alt" loading="lazy"></p>
 	<h4 id="safari">Safari</h4>
 	<p>The Safari browser does not support Server Push at the moment, but support is expected in the near future.</p>
 	<h3 id="whatsnextforhttp2">What’s Next For HTTP/2?</h3>

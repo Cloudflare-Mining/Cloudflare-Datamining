@@ -1,14 +1,14 @@
 <div class="post-content lh-copy gray1">
-	<p>在我们的<a href="https://www.cloudflare.com/products/cloudflare-spectrum/" target="_blank">Spectrum服务器</a>上工作时，我们注意到了一些奇怪的现象：我们认为应该关闭了的TCP套接字一直在徘徊。我们意识到我们并不真正了解TCP套接字何时应该超时！</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/01/Tcp_state_diagram_fixed_new.svga.png" class="kg-image">
-		<figcaption><a href="https://commons.wikimedia.org/wiki/File:Tcp_state_diagram_fixed_new.svg" target="_blank">图像</a> 来自 Sergiodc2 CC BY SA 3.0</figcaption>
+	<p>在我们的<a href="https://www.cloudflare.com/products/cloudflare-spectrum/?ref=blog.cloudflare.com" target="_blank">Spectrum服务器</a>上工作时，我们注意到了一些奇怪的现象：我们认为应该关闭了的TCP套接字一直在徘徊。我们意识到我们并不真正了解TCP套接字何时应该超时！</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/01/Tcp_state_diagram_fixed_new.svga.png" class="kg-image" alt="" loading="lazy">
+		<figcaption><a href="https://commons.wikimedia.org/wiki/File:Tcp_state_diagram_fixed_new.svg?ref=blog.cloudflare.com" target="_blank">图像</a> 来自 Sergiodc2 CC BY SA 3.0</figcaption>
 	</figure>
 	<p></p>
-	<p>在我们的代码中，我们想确保我们不保持与死主机的连接。在我们早期的代码中，我们天真地认为启用TCP keepalives就足够了……但事实并非如此。事实证明，相当现代的<a href="https://tools.ietf.org/html/rfc5482" target="_blank">TCP_USER_TIMEOUT</a>套接字选项同样重要。此外，它以微妙的方式与TCP Keepalive交互。<a href="http://codearcana.com/posts/2015/08/28/tcp-keepalive-is-a-lie.html" target="_blank">许多人</a>对此感到困惑。</p>
+	<p>在我们的代码中，我们想确保我们不保持与死主机的连接。在我们早期的代码中，我们天真地认为启用TCP keepalives就足够了……但事实并非如此。事实证明，相当现代的<a href="https://tools.ietf.org/html/rfc5482?ref=blog.cloudflare.com" target="_blank">TCP_USER_TIMEOUT</a>套接字选项同样重要。此外，它以微妙的方式与TCP Keepalive交互。<a href="http://codearcana.com/posts/2015/08/28/tcp-keepalive-is-a-lie.html?ref=blog.cloudflare.com" target="_blank">许多人</a>对此感到困惑。</p>
 	<p>在这篇博客文章中，我们将尝试展示这些选项是如何工作的。我们将展示一个TCP套接字如何在其生命周期的不同阶段超时，以及TCP keepalives和用户超时如何影响它。为了更好地说明TCP连接的内部机制，我们将混合使用tcpdump和ss -o命令的输出。这很好地显示了传输的数据包和TCP连接的变化参数。</p>
 	<h2 id="-">同步发送</h2>
 	<p>让我们从最简单的情况开始——当一个人试图与服务器建立连接并丢弃入站SYN数据包时会发生什么？</p>
-	<p>这里使用的脚本<a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2019-09-tcp-keepalives" target="_blank">可以在我们的Github上找到</a>。</p><!--kg-card-begin: markdown-->
+	<p>这里使用的脚本<a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2019-09-tcp-keepalives?ref=blog.cloudflare.com" target="_blank">可以在我们的Github上找到</a>。</p><!--kg-card-begin: markdown-->
 	<pre><code>$ sudo ./test-syn-sent.py
 # all packets dropped
 00:00.000 IP host.2 &gt; host.1: Flags [S] # initial SYN
@@ -106,7 +106,7 @@ State Recv-Q Send-Q Local:Port Peer:Port
 ESTAB 11     0      host:1     host:2
 ESTAB 0      0      host:2     host:1</code></pre>
 	<!--kg-card-end: markdown-->
-	<p>即使在收到最后的TCP握手ACK后，服务器套接字仍然处于SYN-RECV状态。它有一个有趣的“on”计时器，其中的重试计数卡在0次。在客户端发送数据包或TCP_DEFER_ACCEPT计时器过期后，它被转换为ESTAB——并从SYN移动到accept队列。基本上，使用DEFER ACCEPT时，SYN-RECV微型套接字会<a href="https://marc.info/?l=linux-netdev&amp;m=118793048828251&amp;w=2" target="_blank">丢弃无数据的入站ACK</a>。</p>
+	<p>即使在收到最后的TCP握手ACK后，服务器套接字仍然处于SYN-RECV状态。它有一个有趣的“on”计时器，其中的重试计数卡在0次。在客户端发送数据包或TCP_DEFER_ACCEPT计时器过期后，它被转换为ESTAB——并从SYN移动到accept队列。基本上，使用DEFER ACCEPT时，SYN-RECV微型套接字会<a href="https://marc.info/?l=linux-netdev&amp;m=118793048828251&amp;w=2&amp;ref=blog.cloudflare.com" target="_blank">丢弃无数据的入站ACK</a>。</p>
 	<h2 id="-estab-">空闲ESTAB永久存在</h2>
 	<p>让我们继续讨论连接到不健康（死亡）对等点的完全建立的套接字。握手完成后，两边的套接字移动到建立状态，像这样：</p><!--kg-card-begin: markdown-->
 	<pre><code>State Recv-Q Send-Q Local:Port Peer:Port
@@ -139,13 +139,13 @@ ESTAB 0      0      host:2     host:1  timer:(keepalive,2.992ms,0)
 	<p>确实！我们可以清楚地看到在5s标记处发送的第一个探测，还有两个剩余的探测相距3秒——这完全符合我们的指定。在总共发送了3个探测，并且再延迟3秒之后，连接就会显示ETIMEDOUT而终止，最后发送了RST。</p>
 	<p>要使keepalives正常工作，发送缓冲区必须为空。您可以在“timer:(keepalive)”行中注意到keepalive计时器处于活动状态。</p>
 	<h2 id="-tcp_user_timeout-keepalives-">使用TCP_USER_TIMEOUT的Keepalives令人困惑</h2>
-	<p>我们之前提到过TCP_USER_TIMEOUT选项。它设置了在内核强行关闭连接之前，传输的数据可能保持未确认状态的最长时间。就其本身而言，在空闲连接的情况下，它并没有什么作用。即使断开连接，套接字也将保持建立状态。但是，这个套接字选项确实改变了TCP keepalives的语义。<a href="https://linux.die.net/man/7/tcp" target="_blank">tcp（7）帮助页</a>有些令人困惑：</p>
+	<p>我们之前提到过TCP_USER_TIMEOUT选项。它设置了在内核强行关闭连接之前，传输的数据可能保持未确认状态的最长时间。就其本身而言，在空闲连接的情况下，它并没有什么作用。即使断开连接，套接字也将保持建立状态。但是，这个套接字选项确实改变了TCP keepalives的语义。<a href="https://linux.die.net/man/7/tcp?ref=blog.cloudflare.com" target="_blank">tcp（7）帮助页</a>有些令人困惑：</p>
 	<p><em>此外，当与TCP keepalive (SO_KEEPALIVE)选项一起使用时，TCP_USER_TIMEOUT将覆盖keepalive，从而确定何时由于keepalive失败而关闭连接。</em></p>
 	<p>原始的提交消息有更多的细节：</p>
 	<ul>
-		<li><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=dca43c75e7e545694a9dd6288553f55c53e2a3a3" target="_blank">tcp：添加TCP_USER_TIMEOUT套接字选项</a></li>
+		<li><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=dca43c75e7e545694a9dd6288553f55c53e2a3a3&amp;ref=blog.cloudflare.com" target="_blank">tcp：添加TCP_USER_TIMEOUT套接字选项</a></li>
 	</ul>
-	<p>要理解语义，我们需要查看<a href="https://github.com/torvalds/linux/blob/b41dae061bbd722b9d7fa828f35d22035b218e18/net/ipv4/tcp_timer.c#L693-L697" target="_blank">linux / net / ipv4 / tcp_timer.c：693中的内核代码</a>：</p><!--kg-card-begin: markdown-->
+	<p>要理解语义，我们需要查看<a href="https://github.com/torvalds/linux/blob/b41dae061bbd722b9d7fa828f35d22035b218e18/net/ipv4/tcp_timer.c?ref=blog.cloudflare.com#L693-L697" target="_blank">linux / net / ipv4 / tcp_timer.c：693中的内核代码</a>：</p><!--kg-card-begin: markdown-->
 	<pre><code>if ((icsk-&gt;icsk_user_timeout != 0 &amp;&amp;
     elapsed &gt;= msecs_to_jiffies(icsk-&gt;icsk_user_timeout) &amp;&amp;
     icsk-&gt;icsk_probes_out &gt; 0) ||</code></pre>
@@ -220,7 +220,7 @@ ESTAB 0      11     host:2     host:1    timer:(on,1.304ms,3)
 	<pre><code>$ sysctl net.ipv4.tcp_retries2
 net.ipv4.tcp_retries2 = 15</code></pre>
 	<!--kg-card-end: markdown-->
-	<p>根据<a href="https://www.kernel.org/doc/Documentation/networking/ip-sysctl.txt" target="_blank"><code>ip-sysctl.txt</code></a>文档中的描述：</p>
+	<p>根据<a href="https://www.kernel.org/doc/Documentation/networking/ip-sysctl.txt?ref=blog.cloudflare.com" target="_blank"><code>ip-sysctl.txt</code></a>文档中的描述：</p>
 	<p><em>默认值15表示假设时限时间为924.6秒，这也是有效时限的下限。TCP将在第一个超过假设时限的RTO（重传时限）处有效地超时。</em></p>
 	<p>连接确实在约940秒时终止。注意，套接字中 “on”计时器正在运行。设置SO_KEEPALIVE完全不会造成影响——当“on”计时器正在运行时，keepalives不会被占用。</p>
 	<p>TCP_USER_TIMEOUT仍可以正常工作。自上次接受到的数据包起，连接将在用户超时指定时间之后被终止。设置用户超时时间后，tcp_retries2值将被忽略。</p>
@@ -284,7 +284,7 @@ ESTAB 0      129920 host:2     host:1  timer:(persist,048ms,0)</code></pre>
     else:
         # socket is too slow...</code></pre>
 	<!--kg-card-end: markdown-->
-	<p>有很多方法可以进一步改进这个逻辑。我们可以使用<a href="https://lwn.net/Articles/560082/" target="_blank">TCP_NOTSENT_LOWAT</a>，尽管它通常只在发送缓冲区相对为空的情况下有用。然后，我们可以使用<a href="https://www.kernel.org/doc/Documentation/networking/timestamping.txt" target="_blank">SO_TIMESTAMPING</a>接口来通知何时交付数据。最后，如果我们完成了向套接字发送数据的工作，那么只需调用close()并将套接字的处理推延到操作系统即可。这样的套接字将被卡在FIN-WAIT-1或LAST-ACK状态，直至正确释放。</p>
+	<p>有很多方法可以进一步改进这个逻辑。我们可以使用<a href="https://lwn.net/Articles/560082/?ref=blog.cloudflare.com" target="_blank">TCP_NOTSENT_LOWAT</a>，尽管它通常只在发送缓冲区相对为空的情况下有用。然后，我们可以使用<a href="https://www.kernel.org/doc/Documentation/networking/timestamping.txt?ref=blog.cloudflare.com" target="_blank">SO_TIMESTAMPING</a>接口来通知何时交付数据。最后，如果我们完成了向套接字发送数据的工作，那么只需调用close()并将套接字的处理推延到操作系统即可。这样的套接字将被卡在FIN-WAIT-1或LAST-ACK状态，直至正确释放。</p>
 	<h2 id="--3">总结</h2>
 	<p>在本文中，我们讨论了TCP连接可能会注意到另一方离线的五种情况：</p>
 	<ul>
@@ -297,6 +297,6 @@ ESTAB 0      129920 host:2     host:1  timer:(persist,048ms,0)</code></pre>
 	<p>特别是后两个已建立的用例可以使用TCP_USER_TIMEOUT进行自定义，但是这个设置也会影响其他情况。一般来说，它可以被看作是向内核发出的一个提示，即在上一个好数据包发送后过多少秒终止连接。但是，这是一个危险的设置，如果与TCP keepalives一起使用，则应该将其设置为略低于TCP_KEEPIDLE + TCP_KEEPINTVL * TCP_KEEPCNT的值。否则，它将影响并可能取消TCP_KEEPCNT值。</p>
 	<p>在这篇文章中，我们提供了一些脚本展示了在各种网络条件下超时相关套接字选项的效果。将tcpdump包捕获与ss -o输出交叉并联是理解网络堆栈的一种好方法。我们能够创建可重复的测试用例，显示“on”、“keepalive”和“persist”计时器的作用。对于进一步的实验来说，这是一个非常有用的框架。</p>
 	<p>最后，要调优TCP连接以确信远程主机实际上已经启动，这是非常困难的。在调试过程中，我们发现查看发送缓冲区大小和当前活动的TCP计时器对于了解套接字是否健康非常有帮助。我们Spectrum应用中的bug被证明是由一个错误的TCP_USER_TIMEOUT设置造成的——如果没有这个设置，带有大型发送缓冲区的套接字的停留时间会比我们预期的长得多。</p>
-	<p><a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2019-09-tcp-keepalives" target="_blank">您可以在我们的Github上找到</a>本文中使用的脚本。</p>
-	<p>这个问题的解决是三个Cloudflare办公室协作的结果。感谢来自圣何塞的<a href="https://twitter.com/Hirenpanchasara" target="_blank">Hiren Panchasara</a>，来自奥斯汀的<a href="https://twitter.com/warrncn" target="_blank">Warren Nelson</a>和来自华沙的<a href="https://twitter.com/jkbs0" target="_blank">Jakub Sitnicki</a>。想加入这个团队吗？<a href="https://www.cloudflare.com/careers/departments/?utm_referrer=blog" target="_blank">点击这里进行申请</a>！</p>
+	<p><a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2019-09-tcp-keepalives?ref=blog.cloudflare.com" target="_blank">您可以在我们的Github上找到</a>本文中使用的脚本。</p>
+	<p>这个问题的解决是三个Cloudflare办公室协作的结果。感谢来自圣何塞的<a href="https://twitter.com/Hirenpanchasara?ref=blog.cloudflare.com" target="_blank">Hiren Panchasara</a>，来自奥斯汀的<a href="https://twitter.com/warrncn?ref=blog.cloudflare.com" target="_blank">Warren Nelson</a>和来自华沙的<a href="https://twitter.com/jkbs0?ref=blog.cloudflare.com" target="_blank">Jakub Sitnicki</a>。想加入这个团队吗？<a href="https://www.cloudflare.com/careers/departments/?utm_referrer=blog&amp;ref=blog.cloudflare.com" target="_blank">点击这里进行申请</a>！</p>
 </div>
