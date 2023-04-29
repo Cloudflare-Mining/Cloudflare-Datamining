@@ -140,6 +140,44 @@
 						"features": [
 							{
 								"contentTypeId": "feature",
+								"contentfulId": "7xrtlLZhydNzCDcMGVibwW",
+								"title": "Global scale",
+								"titleSize": null,
+								"description": "Cloudflare's global Anycast network spans %{DataCenterCount} cities across %{CountryCount} countries, delivering content closest to mobile visitors anywhere in the world.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": null,
+								"openLinkInNewTab": null,
+								"icon": {
+									"file": {
+										"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7vSmQwpXxBBSUXvax4mTTj/1e2de3ad019ead74bf904e0b49806d8f/icon-scale-aqua.png"
+									}
+								},
+								"iconAssetFile": {
+									"id": "122122d8-cea5-5bcc-8451-b0810e564bf3",
+									"altText": "Optimization scale blue",
+									"title": "Optimization scale blue",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": null,
+									"brandfolderAsset": {
+										"size": 553,
+										"height": 192,
+										"width": 192,
+										"filename": "optimization-scale-blue.svg",
+										"file": {
+											"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/optimization-scale-blue.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
 								"contentfulId": "6zBwKVNPShZG9pDwZQwo3U",
 								"title": "Ease of use",
 								"titleSize": null,
@@ -373,6 +411,68 @@
 						"backgroundColor": "light-blue",
 						"bladeBorder": "border-top",
 						"imagePosition": true,
+						"imageSize": null,
+						"imageTextAlignment": null,
+						"togglesTo": null
+					},
+					{
+						"contentfulId": "46ZP8Kar2aklOSvTUSsmwV",
+						"title": "Mobile application API usage",
+						"copy": "Mobile applications utilize APIs and increase the number of calls to origin servers. This reduces the effectiveness of static content caching and requires visitor requests to travel longer distances to the origin, resulting in slower performance and higher likelihood of overloaded infrastructure.",
+						"toggleText": null,
+						"button": null,
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": null,
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": null,
+						"streamCaptions": null,
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": {
+							"file": {
+								"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/15NTReZ9aCsckSYIqgKSqA/bfd9431c7d9ff2ab51133c18665c7826/diagram-mobile-applications.svg"
+							}
+						},
+						"imageAssetFile": {
+							"id": "007a8cda-7dc8-5546-9f97-9ac755b8cdf9",
+							"altText": "diagram-mobile-applications",
+							"title": "diagram-mobile-applications",
+							"activeAsset": "Brandfolder Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/15NTReZ9aCsckSYIqgKSqA/bfd9431c7d9ff2ab51133c18665c7826/diagram-mobile-applications.svg"
+								}
+							},
+							"brandfolderAsset": {
+								"size": 6743,
+								"height": 1032,
+								"width": 4000,
+								"filename": "accelerate-internet-mobile-experiences-spot-illustration.svg",
+								"file": {
+									"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/accelerate-internet-mobile-experiences-spot-illustration.svg"
+								}
+							},
+							"brandfolderAssetMobile": null
+						},
+						"featureList": null,
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": null,
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": null,
+						"backgroundColor": "light-blue",
+						"bladeBorder": "border-top",
+						"imagePosition": false,
 						"imageSize": null,
 						"imageTextAlignment": null,
 						"togglesTo": null
@@ -629,6 +729,181 @@
 																	"loggedInUrl": null,
 																	"modal": null,
 																	"openInNewTab": false,
+																	"locale": "en-US"
+																}
+															],
+															"entry_elementLink": [],
+															"entry_page": [],
+															"entry_elementIcon": [],
+															"entry_bladeTable": [],
+															"entry_bladeThreeFeatures": [],
+															"entry_bladeFourFeatures": []
+														},
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": []
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "6y0qAs5iaX6kMeADDEanH4",
+								"title": "Ensure application availability",
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "heading-3",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Ensure application availability",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "embedded-entry-block",
+											"data": {
+												"target": {
+													"sys": {
+														"id": "6sZoXMwKZKlHe7q9FGNN7Q",
+														"type": "Link",
+														"linkType": "Entry"
+													},
+													"related_asset": [],
+													"entry_elementMarkdown": [],
+													"entry_assetFile": [
+														{
+															"id": "5e23824e-9b58-5866-81f2-d6649d807be7",
+															"altText": "diagram-global-dist-users",
+															"title": "diagram-global-dist-users",
+															"activeAsset": "Brandfolder Asset",
+															"locale": "en-US",
+															"contentfulAsset": {
+																"file": {
+																	"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/3qtViZ7XnOciQ2agwgCasG/4ca0010ec49848995b6de97eaaca73a8/diagram-global-dist-users.svg"
+																}
+															},
+															"brandfolderAsset": {
+																"size": 29337,
+																"height": 641,
+																"width": 4000,
+																"filename": "ensure-application-traffic-overload-spot-illustration.svg",
+																"file": {
+																	"publicURL": "https://cf-assets.www.cloudflare.com/brandfolder/ensure-application-traffic-overload-spot-illustration.svg"
+																}
+															},
+															"brandfolderAssetMobile": null
+														}
+													],
+													"entry_button": [],
+													"entry_elementLink": [],
+													"entry_page": [],
+													"entry_elementIcon": [],
+													"entry_bladeTable": [],
+													"entry_bladeThreeFeatures": [],
+													"entry_bladeFourFeatures": []
+												},
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Overloaded or unavailable infrastructure prevents users from accessing applications. Keep Internet applications fast, available, and scalable, even during unexpected traffic spikes or infrastructure outages.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "embedded-entry-inline",
+													"data": {
+														"target": {
+															"sys": {
+																"id": "39Uo8Nr7eqOHMcgrz9f5yj",
+																"type": "Link",
+																"linkType": "Entry"
+															},
+															"related_asset": [],
+															"entry_elementMarkdown": [],
+															"entry_assetFile": [],
+															"entry_button": [
+																{
+																	"buttonAssetFile": null,
+																	"buttonWidth": "auto",
+																	"buttonColor": "blue",
+																	"buttonTextLoggedIn": null,
+																	"contentTypeId": "button",
+																	"contentfulId": "39Uo8Nr7eqOHMcgrz9f5yj",
+																	"elementName": "Accelerate Mobile Experiences - Ensure Application Availability CTA",
+																	"standardText": "Learn More",
+																	"text": "Learn more",
+																	"url": "https://www.cloudflare.com/performance/ensure-application-availability/",
+																	"loggedInUrl": null,
+																	"modal": null,
+																	"openInNewTab": true,
 																	"locale": "en-US"
 																}
 															],
