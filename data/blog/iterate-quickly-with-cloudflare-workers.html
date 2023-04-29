@@ -1,12 +1,12 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
-	<p><img src="https://images.unsplash.com/photo-1526253038957-bce54e05968e?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjExNzczfQ&amp;s=9d7b88a36bbd544c26a37f356595fc67" alt="" loading="lazy"><br>
+	<p><img src="https://images.unsplash.com/photo-1526253038957-bce54e05968e?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjExNzczfQ&amp;s=9d7b88a36bbd544c26a37f356595fc67" alt=""><br>
 		<small>Photo by <a href="https://unsplash.com/@nesabymakers?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit" target="_blank">NESA by Makers</a> / <a href="https://unsplash.com/?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit" target="_blank">Unsplash</a></small>
 	</p>
 	<p>At Cloudflare, we believe that getting new products and features into the hands of customers as soon as possible is the best way to get great feedback. The thing about releasing products early and often is that sometimes they might not be initially ready for your entire user base. You might want to provide access to only particular sets of customers that may be: power users, those who have expressed interest participating in a beta, or customers in need of a new feature the most.</p>
 	<p>As I have been meeting with many of the users who were in our own Workers beta program, I’ve seen (somewhat unsurprisingly) that many of our users share the same belief that they should be getting feedback from their own users early and often.</p>
 	<p>However, I was surprised to learn about the difficulty that many beta program members had in creating the necessary controls to quickly and securely gate new or deprecated features when testing and releasing updates.</p>
-	<p>Below are some ideas and recipes I’ve seen implemented inside of <a href="https://www.cloudflare.com/products/cloudflare-workers/?ref=blog.cloudflare.com" target="_blank">Cloudflare Workers</a> to ensure the appropriate customers have access to the correct features.</p>
+	<p>Below are some ideas and recipes I’ve seen implemented inside of <a href="https://www.cloudflare.com/products/cloudflare-workers/" target="_blank">Cloudflare Workers</a> to ensure the appropriate customers have access to the correct features.</p>
 	<h3 id="howworkerswork">How Workers Work</h3>
 	<p>First, a brief primer on how Workers work.</p>
 	<p>As soon as a Worker is deployed, it is available and ready to run at every one of Cloudflare’s 155+ data centers in response to a request made to your website, application or API. Workers are able to modify anything about both the request to and response from your origin server. They also have the ability to make subrequests to other endpoints in response to the initial request.</p>
@@ -69,7 +69,7 @@ if (apiV2) {
 	<br>
 	<h3 id="abtesting">A/B Testing</h3>
 	<br>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/06/workers-ab-test.png" alt="workers-ab-test" loading="lazy"><br>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/06/workers-ab-test.png" alt="workers-ab-test"><br>
 		When releasing a new API version you might also want to update your documentation with a new design, but before rolling out anything it’s important to run a test to make sure it improves (or doesn’t harm) your relevant metrics. A/B testing different versions of the documentation amongst users who have access to V2 of the API can be easily done with Cloudflare Workers:<br>
 		<br>
 	</p>
@@ -143,6 +143,6 @@ if (apiVersion === 'v2') {
 }
 </code></pre>
 	<br>
-	<p>Think I should have included another way of gating features? Make sure to share it on our <a href="https://community.cloudflare.com/tags/recipe-exchange?ref=blog.cloudflare.com" target="_blank">Cloudflare Community recipe exchange</a>.</p>
+	<p>Think I should have included another way of gating features? Make sure to share it on our <a href="https://community.cloudflare.com/tags/recipe-exchange" target="_blank">Cloudflare Community recipe exchange</a>.</p>
 	<!--kg-card-end: markdown-->
 </div>
