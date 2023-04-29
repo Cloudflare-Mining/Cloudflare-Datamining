@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
-	<p><em>This is a guest post by </em><a href="https://twitter.com/bcnzer" target="_blank"><em>Ben Chartrand</em></a><em>, who is a Development Manager at </em><a href="https://www.gettimely.com/" target="_blank"><em>Timely</em></a><em>. You can check out some of Ben's other Workers projects on his</em><a href="https://github.com/bcnzer" target="_blank"><em> GitHub</em></a><em> and his </em><a href="https://liftcodeplay.com/" target="_blank"><em>blog</em></a><em>.</em></p>
-	<p>At <a href="https://www.gettimely.com/" target="_blank">Timely</a> we started a project to migrate our web applications from legacy Azure services to a modern PaaS offering. In theory it meant no code changes.</p>
+	<p><em>This is a guest post by </em><a href="https://twitter.com/bcnzer?ref=blog.cloudflare.com" target="_blank"><em>Ben Chartrand</em></a><em>, who is a Development Manager at </em><a href="https://www.gettimely.com/?ref=blog.cloudflare.com" target="_blank"><em>Timely</em></a><em>. You can check out some of Ben's other Workers projects on his</em><a href="https://github.com/bcnzer?ref=blog.cloudflare.com" target="_blank"><em> GitHub</em></a><em> and his </em><a href="https://liftcodeplay.com/?ref=blog.cloudflare.com" target="_blank"><em>blog</em></a><em>.</em></p>
+	<p>At <a href="https://www.gettimely.com/?ref=blog.cloudflare.com" target="_blank">Timely</a> we started a project to migrate our web applications from legacy Azure services to a modern PaaS offering. In theory it meant no code changes.</p>
 	<p>We decided to start with our webhooks. All our endpoints can be grouped into four categories:</p>
 	<ol>
 		<li>Integration with internal tools i.e. HelpScout, monitoring endpoint for PagerDuty</li>
@@ -138,16 +138,16 @@ async function handleRequest(event) {
 	<h3 id="go-live-problems-and-solutions-">Go Live Problems - and Solutions!</h3>
 	<p>We went live with our first endpoint. The Workers script and KV worked fine but I noticed a small number of exceptions were being reported in Workers &gt; Worker Status.</p>
 	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/01/Chart1.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/01/Chart1.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p></p>
-	<p>Cloudflare provides <a href="https://www.google.com/url?q=https://developers.cloudflare.com/workers/writing-workers/debugging-tips/&amp;sa=D&amp;ust=1547151883991000" target="_blank">Debugging Tips</a>. I followed the section “Make subrequests to your debug server” and decided to incorporate <a href="https://www.google.com/url?q=https://www.loggly.com/&amp;sa=D&amp;ust=1547151883991000" target="_blank">Loggly</a>. I could now catch the exceptions and send it to Loggly by running a POST using <code>fetch</code> to the URL provided by Loggly. With this I quickly determined what the problem was and corrected the issue.</p>
+	<p>Cloudflare provides <a href="https://www.google.com/url?q=https%3A%2F%2Fdevelopers.cloudflare.com%2Fworkers%2Fwriting-workers%2Fdebugging-tips%2F&amp;sa=D&amp;ust=1547151883991000&amp;ref=blog.cloudflare.com" target="_blank">Debugging Tips</a>. I followed the section “Make subrequests to your debug server” and decided to incorporate <a href="https://www.google.com/url?q=https%3A%2F%2Fwww.loggly.com%2F&amp;sa=D&amp;ust=1547151883991000&amp;ref=blog.cloudflare.com" target="_blank">Loggly</a>. I could now catch the exceptions and send it to Loggly by running a POST using <code>fetch</code> to the URL provided by Loggly. With this I quickly determined what the problem was and corrected the issue.</p>
 	<p>Another problem that came up was a plethora of 403s. This was highly visible in the Workers &gt; Status Code graph (the green).</p>
 	<p></p>
 	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/01/Chart2.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/01/Chart2.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p></p>
-	<p>Turns out our IIS box had <a href="https://docs.microsoft.com/en-us/iis/configuration/system.webserver/security/dynamicipsecurity/denybyrequestrate" target="_blank">rate limiting</a> setup. Instead of returning a 429 (Too Many Requests), it returned 403 (Forbidden). Phew - it wasn’t an issue with my Worker or the new infrastructure!</p>
-	<p>We could have set up the rate limiting on the new infrastructure but we instead opted for <a href="https://www.cloudflare.com/rate-limiting/" target="_blank">Cloudflare Rate Limiting</a>. It was cheap, easy to setup and meant the blocked requests didn’t even hit our infrastructure in the first place.</p>
+	<p>Turns out our IIS box had <a href="https://docs.microsoft.com/en-us/iis/configuration/system.webserver/security/dynamicipsecurity/denybyrequestrate?ref=blog.cloudflare.com" target="_blank">rate limiting</a> setup. Instead of returning a 429 (Too Many Requests), it returned 403 (Forbidden). Phew - it wasn’t an issue with my Worker or the new infrastructure!</p>
+	<p>We could have set up the rate limiting on the new infrastructure but we instead opted for <a href="https://www.cloudflare.com/rate-limiting/?ref=blog.cloudflare.com" target="_blank">Cloudflare Rate Limiting</a>. It was cheap, easy to setup and meant the blocked requests didn’t even hit our infrastructure in the first place.</p>
 	<h3 id="where-to-from-here">Where to From Here?</h3>
 	<p>As I write this we’ve transitioned all traffic. All endpoints are enabled. Once we’re ready to decommission the old infrastructure we will:</p>
 	<ul>
