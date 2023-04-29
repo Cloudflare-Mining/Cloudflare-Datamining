@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image2-24.png" class="kg-image" alt="Infinitely extensible Access policies" loading="lazy"></figure>
-	<p>En la seguridad de aplicaciones Zero Trust se deniega cualquier solicitud a una aplicación a no ser que supere un conjunto específico de políticas de seguridad definidas. La mayoría de soluciones <a href="https://www.cloudflare.com/es-es/learning/security/glossary/what-is-zero-trust/?ref=blog.cloudflare.com" target="_blank">Zero Trust</a> permiten utilizar la identidad, el dispositivo y la ubicación del usuario como variables para definir estas políticas de seguridad.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image2-24.png" class="kg-image" alt="Infinitely extensible Access policies"></figure>
+	<p>En la seguridad de aplicaciones Zero Trust se deniega cualquier solicitud a una aplicación a no ser que supere un conjunto específico de políticas de seguridad definidas. La mayoría de soluciones <a href="https://www.cloudflare.com/es-es/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trust</a> permiten utilizar la identidad, el dispositivo y la ubicación del usuario como variables para definir estas políticas de seguridad.</p>
 	<p>Algunos clientes nos han comentado que querían más control y más personalización a la hora de definir sus políticas Zero Trust.</p>
 	<p>Desde hoy, estamos encantados de que las políticas de Access pueden analizar cualquier cosa antes de permitir al usuario acceder a una aplicación, y con cualquier cosa, nos referimos a absolutamente <em>todo</em>. Ahora puedes crear políticas que son personalizables hasta el infinito con la opción de reglas de evaluación externa, que te permite llamar a cualquier API durante la evaluación de una política de Access.</p>
 	<h3 id="por-qu-creamos-reglas-de-evaluaci-n-externa">Por qué creamos reglas de evaluación externa</h3>
@@ -13,7 +13,7 @@
 	<p>● &nbsp; &nbsp; El usuario inició sesión desde Estados Unidos.</p>
 	<p>Si el usuario supera la política, se le concede una cookie que le dará acceso a la aplicación hasta que expire su sesión.</p>
 	<p>Para evaluar al usuario según otros criterios personalizados, puedes añadir una regla de evaluación externa a la política de Access. La regla de evaluación externa requiere dos valores: un punto final de la API al que llamar, y una clave para verificar que cualquier respuesta a la solicitud procede de una fuente de confianza.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image1-25.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image1-25.png" class="kg-image"></figure>
 	<p>Después de que el usuario se haya autenticado con tu proveedor de identidad, toda la información sobre el usuario, el dispositivo y la ubicación se pasa a tu API externa. La API devuelve una respuesta de apto o no apto a Access, que permitirá o denegará el acceso al usuario.</p>
 	<p>Un ejemplo de lógica para la API sería de la siguiente manera:</p><!--kg-card-begin: markdown-->
 	<pre><code>/**
@@ -26,12 +26,12 @@ async function externalEvaluation(claims) {
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Donde el objeto de notificación incluye toda la información sobre el usuario, el dispositivo y la red que realiza la solicitud. Esta función externalEvaluation se puede ampliar para realizar cualquier lógica empresarial que se desee. Hemos puesto a disposición de los usuarios un <a href="https://github.com/cloudflare/workers-access-external-auth-example?ref=blog.cloudflare.com" target="_blank">repositorio de código abierto</a> con código de ejemplo para usar las notificaciones de Access y verificar las claves de inicio de sesión de Access.</p>
+	<p>Donde el objeto de notificación incluye toda la información sobre el usuario, el dispositivo y la red que realiza la solicitud. Esta función externalEvaluation se puede ampliar para realizar cualquier lógica empresarial que se desee. Hemos puesto a disposición de los usuarios un <a href="https://github.com/cloudflare/workers-access-external-auth-example" target="_blank">repositorio de código abierto</a> con código de ejemplo para usar las notificaciones de Access y verificar las claves de inicio de sesión de Access.</p>
 	<p>¡Es muy eficaz! Cualquier política de Access se puede ampliar ahora infinitamente para que se tenga en cuenta cualquier tipo de información antes de permitir el acceso a un usuario. Entre los ejemplos potenciales están:</p>
 	<p>● &nbsp; &nbsp; Integración con herramientas de protección de puntos finales con las que aún no nos integramos, desarrollando un middleware que compruebe la API de la herramienta de protección de puntos finales.</p>
 	<p>● &nbsp; &nbsp; Comprobación de las direcciones IP con respecto a las fuentes de amenazas externas.</p>
 	<p>● &nbsp; &nbsp; Llamada a los registros de usuarios específicos del sector.</p>
 	<p>● &nbsp; &nbsp; ¡Y mucho más!</p>
 	<p>Esta ampliación de las políticas de Access es solo el comienzo. En el futuro facilitaremos la toma de decisiones mediante programación sobre cómo se debe tratar a un usuario antes de acceder a una aplicación, y no se tratará solo de permitir o denegar el acceso.</p>
-	<p>Esta función está disponible hoy en el panel de control de Cloudflare Zero Trust. ¡Consulta <a href="https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/?ref=blog.cloudflare.com" target="_blank">esta guía</a> para empezar!</p>
+	<p>Esta función está disponible hoy en el panel de control de Cloudflare Zero Trust. ¡Consulta <a href="https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/" target="_blank">esta guía</a> para empezar!</p>
 </div>

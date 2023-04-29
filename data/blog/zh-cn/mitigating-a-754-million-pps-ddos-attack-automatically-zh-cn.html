@@ -1,22 +1,22 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/12/image.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/12/image.png" class="kg-image"></figure>
 	<p>6月21日，Cloudflare自动缓解了一次每秒7.54亿封包的高容量DDoS攻击。此次攻击属于6月18日开始到6月21日结束的为期四天的有组织攻击活动的一部分：攻击流量来自于超过316000个IP地址，并发送到了单个Cloudflare IP，被攻击IP主要用于我们的免费计划网站。攻击期间并未报告停机或服务降级，并且由于我们的<a href="https://blog.cloudflare.com/unmetered-mitigation/">不设上限缓解DDoS的保证</a>，客户无需付出任何费用。</p>
 	<p>该攻击是由<a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep/">Gatebot</a>（我们的全球DDoS检测和缓解系统）自动检测和处理的，而无需我们的团队进行任何手动干预。值得注意的是，由于我们的自动化系统能够轻松缓解攻击，因此我们的待命团队没有收到警报或提示页面，也没有人员参与其中。</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/12/image-1.png" class="kg-image" alt="" loading="lazy">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/12/image-1.png" class="kg-image">
 		<figcaption>攻击快照——峰值为754 Mpps。图中两种不同颜色的曲线表示两个独立系统丢弃的数据包。</figcaption>
 	</figure>
-	<p>在这四天中，攻击利用了<a href="https://www.cloudflare.com/learning/ddos/glossary/tcp-ip/?ref=blog.cloudflare.com" target="_blank">TCP</a>协议上三个攻击向量的组合：<a href="https://www.cloudflare.com/learning/ddos/syn-flood-ddos-attack/?ref=blog.cloudflare.com" target="_blank">SYN泛洪</a>，<a href="https://www.cloudflare.com/learning/ddos/what-is-an-ack-flood/?ref=blog.cloudflare.com" target="_blank">ACK泛洪</a>和SYN-ACK泛洪。攻击活动以每秒4亿到6亿封包的速率持续了数个小时，并多次达到700Mpps的高峰，最高峰值为754Mpps。面对持续的高封包速率攻击，我们的边缘仍能在攻击期间持续为客户提供服务，性能完全不受影响。</p>
+	<p>在这四天中，攻击利用了<a href="https://www.cloudflare.com/learning/ddos/glossary/tcp-ip/" target="_blank">TCP</a>协议上三个攻击向量的组合：<a href="https://www.cloudflare.com/learning/ddos/syn-flood-ddos-attack/" target="_blank">SYN泛洪</a>，<a href="https://www.cloudflare.com/learning/ddos/what-is-an-ack-flood/" target="_blank">ACK泛洪</a>和SYN-ACK泛洪。攻击活动以每秒4亿到6亿封包的速率持续了数个小时，并多次达到700Mpps的高峰，最高峰值为754Mpps。面对持续的高封包速率攻击，我们的边缘仍能在攻击期间持续为客户提供服务，性能完全不受影响。</p>
 	<h3 id="ddos-">DDoS攻击的三种类型：比特，数据包和请求</h3>
 	<p>高比特率的攻击旨在通过每秒发送超过链路处理能力的带宽，使互联网链路饱和。缓解比特密集型洪水就像在容量有限的运河中，用大坝堵住喷涌而出的流水，只允许其中的一部分通过。</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/12/image-2.png" class="kg-image" alt="" loading="lazy">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/12/image-2.png" class="kg-image">
 		<figcaption>Gatebot阻止如同奔涌河流的比特密集型攻击</figcaption>
 	</figure>
 	<p>在这种情况下，互联网服务提供商可能会阻止或限制超出限额的流量，从而导致试图连接到网站的合法用户被拒绝服务。在其他情况下，链接只是饱和，而该连接后面的所有内容都处于脱机状态。</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/12/image-3.png" class="kg-image" alt="" loading="lazy">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/12/image-3.png" class="kg-image">
 		<figcaption>数据包密集型DDoS攻击如同成群的蚊子</figcaption>
 	</figure>
 	<p>然而，在此次DDoS攻击活动中，攻击的峰值仅达到250 Gbps（但若没有某些DDoS缓解服务的支持，250Gbps的攻击也足以使许多内容离线），因此攻击者并非旨在饱和我们的互联网链接，也许是因为他们知道我们的全球容量超过了37 Tbps。取而代之的是，攻击者似乎试图（但没能成功）以每秒高达7.54亿个数据包的高数据包速率淹没我们的路由器和数据中心设备。与涌向大坝的洪水不同，大量的数据包可以看作成千上万的蚊子，您需要逐一消灭它们。</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/12/image-4.png" class="kg-image" alt="" loading="lazy">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/12/image-4.png" class="kg-image">
 		<figcaption>使用Gatebot来“驱蚊”</figcaption>
 	</figure>
 	<p>根据数据中心的“最薄弱环节”，数据包密集型的DDoS攻击可能会影响路由器、交换机、web服务器、防火墙、DDoS缓解设备或联机的任何其他设备。通常，高数据包速率可能会导致内存缓冲区溢出，从而使路由器处理其他数据包的能力失效。这是因为处理每个数据包的固定CPU成本很小，因此，如果您可以发送大量小数据包，无需饱和互联网链路，只需填满处理连接的硬件就可以阻止互联网连接。</p>
