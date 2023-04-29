@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
-	<p>The following blog post describes a debugging adventure on Cloudflare's <a href="https://mesos.apache.org/?ref=blog.cloudflare.com" target="_blank">Mesos</a>-based cluster. This internal cluster is primarily used to process log file information so that Cloudflare customers have analytics, and for our systems that detect and respond to attacks.</p>
+	<p>The following blog post describes a debugging adventure on Cloudflare's <a href="https://mesos.apache.org/" target="_blank">Mesos</a>-based cluster. This internal cluster is primarily used to process log file information so that Cloudflare customers have analytics, and for our systems that detect and respond to attacks.</p>
 	<p>The problem encountered didn't have any effect on our customers, but did have engineers scratching their heads...</p>
 	<h3 id="theproblem">The Problem</h3>
 	<p>At some point in one of our cluster we started seeing errors like this (an NXDOMAIN for an existing domain on our internal DNS):</p>
@@ -12,7 +12,7 @@
 </code></pre>
 	<p>Running this for a while on one server did not reproduce the problem: all the lookups were successful. Then we took our service logs for a day and did a grep for “no such host” and similar messages. Errors were happening sporadically. There were hours between errors and no obvious pattern that could lead us to any conclusion. Our investigation discarded the possibility that the error lay in Go, which we use for lots of our services, since errors were coming from Java services too.</p>
 	<h3 id="intotherabbithole">Into the rabbit hole</h3>
-	<p>We used to run <a href="https://www.unbound.net/?ref=blog.cloudflare.com" target="_blank">Unbound</a> on a single IP across a few machines for our cluster DNS resolver. BGP is then responsible for announcing internal routes from the machines to the router. We decided to try to find a pattern by sending lots of requests from different machines and recording errors. Here’s what our load testing program looked like at first:</p>
+	<p>We used to run <a href="https://www.unbound.net/" target="_blank">Unbound</a> on a single IP across a few machines for our cluster DNS resolver. BGP is then responsible for announcing internal routes from the machines to the router. We decided to try to find a pattern by sending lots of requests from different machines and recording errors. Here’s what our load testing program looked like at first:</p>
 	<pre><code>package main
 
 import (
@@ -44,10 +44,10 @@ func main() {
 	}
 }
 </code></pre>
-	<p>We run <code>net.LookupHost</code> in a loop with small pauses and log errors; that’s it. Packaging this into a <a href="https://www.docker.com/?ref=blog.cloudflare.com" target="_blank">Docker</a> container and running on Marathon was an obvious choice for us, since that is how we run other services anyway. Logs get shipped to <a href="https://kafka.apache.org/?ref=blog.cloudflare.com" target="_blank">Kafka</a> and then to <a href="https://www.elastic.co/products/kibana?ref=blog.cloudflare.com" target="_blank">Kibana</a>, where we can analyze them. Running this program on 65 machines doing lookups every 50ms shows the following error distribution (from high to low) across hosts:</p>
-	<p><a href="https://blog.cloudflare.com/content/images/2016/12/image01.png"><img src="https://blog.cloudflare.com/content/images/2016/12/image01.png" alt="" loading="lazy"></a></p>
+	<p>We run <code>net.LookupHost</code> in a loop with small pauses and log errors; that’s it. Packaging this into a <a href="https://www.docker.com/" target="_blank">Docker</a> container and running on Marathon was an obvious choice for us, since that is how we run other services anyway. Logs get shipped to <a href="https://kafka.apache.org/" target="_blank">Kafka</a> and then to <a href="https://www.elastic.co/products/kibana" target="_blank">Kibana</a>, where we can analyze them. Running this program on 65 machines doing lookups every 50ms shows the following error distribution (from high to low) across hosts:</p>
+	<p><a href="https://blog.cloudflare.com/content/images/2016/12/image01.png"><img src="https://blog.cloudflare.com/content/images/2016/12/image01.png" alt=""></a></p>
 	<p>We saw no strong correlation to racks or specific machines. Errors happened on many hosts, but not on all of them and in different time windows errors happen on different machines. Putting time on X axis and number of errors on Y axis showed the following:</p>
-	<p><a href="https://blog.cloudflare.com/content/images/2016/12/image00.png"><img src="https://blog.cloudflare.com/content/images/2016/12/image00.png" alt="" loading="lazy"></a></p>
+	<p><a href="https://blog.cloudflare.com/content/images/2016/12/image00.png"><img src="https://blog.cloudflare.com/content/images/2016/12/image00.png" alt=""></a></p>
 	<p>To see if some particular DNS recursor had gone crazy, we stopped all load generators on regular machines and started the load generation tool on the recursors themselves. There were no errors in a few hours, which suggested that Unbound was perfectly healthy.</p>
 	<p>We started to suspect that packet loss was the issue, but why would “no such host” occur? It should only happen when an NXDOMAIN error is in a DNS response, but our theory was that replies didn’t come back at all.</p>
 	<h3 id="themissing">The Missing</h3>
@@ -148,6 +148,6 @@ func main() {
 	<p>As you know many system libraries that provide DNS resolution like glibc, nscd, systemd-resolved are not hardened to handle being on the internet or in a environment with packet losses. We have faced the challenge of creating a reliable and fast DNS resolution environment a number of times as we have grown, only to later discover that the solution is not perfect.</p>
 	<h3 id="overtoyou">Over to you</h3>
 	<p>Given what you have read in this article about packet loss and split-DNS/private-namespace, how would you design a fast and reliable resolution setup? What software would you use and why? What tuning changes from standard configuration would you use?</p>
-	<p>We'd love to hear your ideas in the comments. And, if you like working on problems like send us your resume. We are <a href="https://www.cloudflare.com/join-our-team/?ref=blog.cloudflare.com" target="_blank">hiring</a>.</p>
+	<p>We'd love to hear your ideas in the comments. And, if you like working on problems like send us your resume. We are <a href="https://www.cloudflare.com/join-our-team/" target="_blank">hiring</a>.</p>
 	<!--kg-card-end: markdown-->
 </div>
