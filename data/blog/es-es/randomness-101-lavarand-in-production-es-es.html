@@ -1,10 +1,10 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/05/lava-lamps.jpg" class="kg-image">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/05/lava-lamps.jpg" class="kg-image" alt="" loading="lazy">
 		<figcaption>Lámparas de lava en el vestíbulo de Cloudflare, cortesía de @mahtin</figcaption>
 	</figure>
 	<p></p>
 	<h3 id="introducci-n"><strong>Introducción</strong></h3>
-	<p>Como algunos quizás ya sabéis, en el vestíbulo de nuestra oficina de San Francisco <a href="https://www.fastcodesign.com/90137157/the-hardest-working-office-design-in-america-encrypts-your-data-with-lava-lamps" target="_blank">hay una pared con lámparas de lava</a> que usamos para la criptografía. En esta publicación, vamos a explorar cómo funciona. Para entenderla no se requiere ninguna experiencia técnica. Si quieres profundizar en los detalles técnicos, consulta <a href="https://blog.cloudflare.com/lavarand-in-production-the-nitty-gritty-technical-details">LavaRand en producción: detalles técnicos esenciales</a>.</p>
+	<p>Como algunos quizás ya sabéis, en el vestíbulo de nuestra oficina de San Francisco <a href="https://www.fastcodesign.com/90137157/the-hardest-working-office-design-in-america-encrypts-your-data-with-lava-lamps?ref=blog.cloudflare.com" target="_blank">hay una pared con lámparas de lava</a> que usamos para la criptografía. En esta publicación, vamos a explorar cómo funciona. Para entenderla no se requiere ninguna experiencia técnica. Si quieres profundizar en los detalles técnicos, consulta <a href="https://blog.cloudflare.com/lavarand-in-production-the-nitty-gritty-technical-details">LavaRand en producción: detalles técnicos esenciales</a>.</p>
 	<h3 id="antecedentes"><strong>Antecedentes</strong></h3>
 	<h4 id="aleatoriedad-en-criptograf-a"><strong>Aleatoriedad en criptografía</strong></h4>
 	<p>Como hemos <a href="https://blog.cloudflare.com/why-randomness-matters/">comentado en el pasado</a>, la criptografía se basa en la capacidad de generar números aleatorios que son impredecibles y se mantienen en secreto ante cualquier adversario.</p>
@@ -75,12 +75,12 @@
 	<p>En Cloudflare, tenemos miles de ordenadores en los centros de datos de todo el mundo y cada uno de estos equipos necesita aleatoriedad criptográfica. Históricamente, consiguieron esa aleatoriedad usando el mecanismo predeterminado por el sistema operativo que se ejecuta en ellos, Linux.</p>
 	<p>Pero como buenos criptógrafos, siempre estamos tratando de cubrirnos las espaldas. Queríamos un sistema que garantizara que incluso si el mecanismo predeterminado para obtener aleatoriedad tuviera algún defecto, todavía estaríamos seguros. Así se nos ocurrió LavaRand.</p>
 	<p></p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/05/lava-lamps-camera.jpg" class="kg-image">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/05/lava-lamps-camera.jpg" class="kg-image" alt="" loading="lazy">
 		<figcaption>Vista desde la cámara</figcaption>
 	</figure>
 	<p></p>
 	<p>LavaRand es un sistema que utiliza lámparas de lava como fuente secundaria de aleatoriedad para nuestros servidores de producción. Una pared de lámparas de lava en el vestíbulo de nuestra oficina de San Francisco proporciona una entrada impredecible a una cámara que enfoca la pared. Una retransmisión del vídeo de la cámara se envía al CSPRNG, que proporciona un flujo de valores aleatorios que pueden utilizarse como fuente adicional de aleatoriedad para nuestros servidores de producción. Puesto que el flujo de la "lava" de las lámparas es altamente impredecible,1 "medir" las lámparas tomando imágenes de ellas es una buena manera de obtener aleatoriedad impredecible. Los ordenadores almacenan imágenes como números muy largos para que los usemos como entrada a un CSPRNG, al igual que cualquier otro número.</p>
-	<p>No somos los primeros que han hecho esto. Nuestro sistema LavaRand se inspira en un sistema similar anterior <a href="https://en.wikipedia.org/wiki/Lavarand" target="_blank">propuesto y construido</a> por Silicon Graphics y <a href="https://www.google.com/patents/US5732138" target="_blank">patentado</a> en 1996 (la patente ya ha caducado).</p>
+	<p>No somos los primeros que han hecho esto. Nuestro sistema LavaRand se inspira en un sistema similar anterior <a href="https://en.wikipedia.org/wiki/Lavarand?ref=blog.cloudflare.com" target="_blank">propuesto y construido</a> por Silicon Graphics y <a href="https://www.google.com/patents/US5732138?ref=blog.cloudflare.com" target="_blank">patentado</a> en 1996 (la patente ya ha caducado).</p>
 	<p>Ojalá no lo necesitemos nunca. Esperamos que las fuentes primarias de aleatoriedad usadas por nuestros servidores de producción se mantengan seguras y LavaRand sirva poco más que para darle estilo a nuestra oficina. Pero si resulta que nos equivocamos y que nuestras fuentes de aleatoriedad en producción tienen algún defecto, entonces LavaRand nos cubre, haciendo que Cloudflare sea un poco más difícil de hackear.</p>
 	<hr>
 	<ol>

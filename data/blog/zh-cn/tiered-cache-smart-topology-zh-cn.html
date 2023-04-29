@@ -1,11 +1,11 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image5--1-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image5--1-.png" class="kg-image"></figure>
 	<p>几年前，我们发布了 <a href="https://blog.cloudflare.com/argo/">Argo</a> 来帮助提高互联网的速度和效率。Argo 会观察网络状况，寻找互联网上最适合源服务器请求的最佳路由，以免传输过程中遭遇拥塞。</p>
 	<p>分级缓存是 Argo 的一项功能，可减少负责从源服务器请求资源的数据中心数量。启用分级缓存后，南非的请求不会直接发送到北美的源服务器，而是首先在附近的大型数据中心中查看那里是否缓存了请求的数据。分级缓存使用的数据中心数量和位置由一种称为拓扑的配置进行控制。默认情况下，我们为每个客户使用通用拓扑，它可在高速缓存命中率和延迟之间取得平衡，这种方式适合大多数用户。</p>
 	<p>今天，我们将推出“智能拓扑”。它依托 Argo 内部基础结构而构建，可以确定向源服务器提出请求的一个最佳数据中心，从而最大限度提高缓存命中率。</p>
 	<h2 id="-">标准高速缓存</h2>
 	<p>缓存资源的标准方法是让每个数据中心成为源服务器的反向代理。在这种方案中，任何数据中心发生未命中都会导致向源服务器请求资源。向源服务器请求资源的次数可能会与数据中心的数目一样多。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image4--2-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image4--2-.png" class="kg-image"></figure>
 	<p>任何数据中心发生缓存未命中的情况都会导致请求被发送到源服务器，即使资源已在另外某个数据中心缓存也一样。其原因在于，数据中心完全不顾彼此的存在。</p>
 	<p>在理论上，对资源的请求必须发送到每个数据中心，缓存未命中率才能降低到最低程度。然而，将每个请求发送到每个数据中心是不切实际的。</p>
 	<p>如果资源在被请求之前就已移到距离最近的缓存中，那就可达到可能最低的缓存命中延迟，但这种预测通常并无可能。相反，一种不错的启发式方法是资源在首次缓存未命中后从距离最近的数据中心缓存中获取。</p>
@@ -13,7 +13,7 @@
 	<p>若要避免查询每一个数据中心，必须在首次缓存未命中后将资源的副本存储到一个已知位置，以便其他数据中心可以使用它。这正是分级高速缓存的作用。</p>
 	<h2 id="--1">分级高速缓存</h2>
 	<p>分级高速缓存允许某些数据中心充当其他数据中心的缓存，使后者不再需要向源服务器提交请求，以此提高缓存命中率。使用分级缓存时，某些数据中心将成为其他数据中心的源服务器反向代理。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image7--2-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image7--2-.png" class="kg-image"></figure>
 	<p>如果被代理的数据中心请求相同的资源，那么资源已经缓存在了代理数据中心中，并可从那里检索，不必再从源服务器检索了。在总体上，对源服务器的请求会变少。</p>
 	<h2 id="--2">自定义拓扑</h2>
 	<p>在分级缓存中，拓扑描述了哪一个数据中心应充当其他数据中心的代理。</p>
@@ -41,16 +41,16 @@
 	<p>同样，排行榜实际上同时含有延迟最低的数据中心和延迟第二低的数据中心。如果首选数据中心脱机以进行维护，那么延迟第二低的数据中心将充当备用。</p>
 	<p><strong>Anycast 网络</strong></p>
 	<p>我们测量的是源站 IP 地址的延迟，也假设它代表源服务器的延迟，但在某些情况下这种假设可能会不成立。除了 Cloudflare 外，另外几家云提供商也使用 Anycast 技术来提供其服务。在 Anycast 中，多台机器可能会共享一个 IP 地址，不管是从哪里连入互联网；而且，互联网通常会将发往该地址的数据包路由到距离最近的机器。如果使用 Anycast 网络代理源服务器，则源服务器 IP 地址的表观延迟实际上是 Anycast 网络边缘的延迟，而不是源服务器的延迟。源服务器的实际延迟无法通过探测来确定。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image3--2-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image3--2-.png" class="kg-image"></figure>
 	<p>如果这些延迟不能代表数据中心与源服务器之间的实际延迟，那么算法就无法选出一个最佳代理数据中心。选择错误的数据中心会给对源服务器的请求的延迟造成不利影响，而且代价可能会很高。</p>
 	<p>例如，某个云提供商提供一个 IP 地址，该地址实际上路由到全球多个数据中心。一旦数据包进入网络，便会通过私有基础结构路由到正确的目的地。到此 Anycast IP 地址延迟最低的数据中心甚至可能位于和实际源服务器不同的大陆上。因此，表观延迟实际上不能被视为衡量源服务器延迟的可信尺度。</p>
 	<p>数据中心选择算法假设源服务器位于单个地理位置，并且可以对其进行探测来确定各个数据中心的延迟。此类网络破坏了这些假设中的一个或两个，因此必须开发一种手段来检测它们。首先，假定 IP 出现在单个地理位置上，并且没有被此类网络代理。源服务器的延迟受到光线穿过光纤的速度的限制。尽管任何数据中心与源服务器的距离是未知的，但 Cloudflare 知道数据中心之间的距离。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image2--2-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image2--2-.png" class="kg-image"></figure>
 	<p>想象一下，将源服务器比作旅途上的一个休息站。那么，可以计算源服务器与任何两个数据中心的一对理论上可能的最低可观察延迟。我们拥有来自这两个数据中心和源服务器的延迟探测数据，因此可以检查观察到的延迟是否低于可能的延迟。</p>
 	<p>最初的假设是，源站 IP 地址标识位于某一位置的源服务器，并且该 IP 地址的延迟就是源服务器的延迟。如果观察到的延迟比理想值快，那么该假设显然是错误的。当最初假设不成立时，智能拓扑将回退为通用拓扑。为了更确定一些，我们对世界各地的多个数据中心检查此约束，只要存在一个物理上不可行的观察结果，就会发生回退。</p>
 	<h3 id="--7">纵观全局</h3>
 	<p>启用智能拓扑后，许多 Cloudflare 系统将协同工作，确保最终使用正确的数据中心来向源服务器请求资源。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image6--1-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image6--1-.png" class="kg-image"></figure>
 	<p>客户启用分级缓存智能拓扑后，从源站的角度看，可能会出现几种情况。如果代理数据中心被分配了包含源站 IP 的 CIDR 块，则首选或备用数据中心将用于从源服务器请求资源。否则，通用拓扑将被用于确定要使用哪些代理数据中心从源服务器提取资源。代理数据中心的选择时间会随着其到源站的延迟不断更新而减少。</p>
 	<h2 id="--8">总结</h2>
 	<p>这项技术的开发为实现领先的技术并打造有影响力的产品创造了许多机会。这并不是孤立完成的。我们使用了 Cloudflare 已经建设的基础设施，而且我们在运用现有发展的基础上继续提高，以取得更大的进步。构建这一框架也为日后的进步打开大门；例如，未来可以探索不同的方法来选择理想的代理数据中心，即使是源服务器位于 Anycast 网络后方并隐藏了源服务器的真实延迟。</p>
