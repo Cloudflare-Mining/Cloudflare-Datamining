@@ -43,7 +43,7 @@
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
-							"publicURL": "[path]/roadmaptozerotrust.jpeg"
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1pN4FGhDDerJYzAK1xuV7m/4cdd31976eec3949295de2c6fbfc2c4d/roadmaptozerotrust.jpeg"
 						}
 					},
 					"facebookCustomImage": null
@@ -244,25 +244,86 @@
 						},
 						"rightNav": {
 							"contentTypeId": "navNavigation",
-							"contentfulId": "2lJyDCIXKA3ggOeKrNSCMQ",
+							"contentfulId": "7K1BCmoOZx7VsJ6AbaOzg",
 							"locale": "en-US",
-							"navigationType": "Footer",
-							"isDefaultNav": false,
+							"navigationType": "Custom Navigation",
+							"isDefaultNav": true,
 							"backgroundColor": null,
 							"sectionPadding": "default",
 							"navigationItems": [
 								{
 									"contentTypeId": "navNavigationItem",
-									"contentfulId": "2yvvSmtqM5YECHou5SqrhX",
+									"contentfulId": "46DxDIGywOr0PvMTD9SPaR",
 									"locale": "en-US",
-									"name": " ",
+									"name": "Sign Up",
 									"description": null,
 									"navIcon": null,
 									"contentfulButton": null,
 									"showIconOnly": false,
-									"hideOnChinaSite": null,
+									"hideOnChinaSite": false,
 									"navigationItems": null,
-									"mainLink": null,
+									"mainLink": {
+										"contentTypeId": "elementNavLink",
+										"contentfulId": "wXmPzQ9k2K8zZvQmlRYcv",
+										"locale": "en-US",
+										"title": "Sign Up",
+										"description": null,
+										"url": "https://dash.cloudflare.com/sign-up",
+										"badges": null,
+										"specialLinkType": null,
+										"openInNewWindow": true,
+										"isExternalUrl": null
+									},
+									"navigationLinks": null
+								},
+								{
+									"contentTypeId": "navNavigationItem",
+									"contentfulId": "5bNBJ3HDA562GjqIPZsaCp",
+									"locale": "en-US",
+									"name": "Under Attack?",
+									"description": null,
+									"navIcon": null,
+									"contentfulButton": null,
+									"showIconOnly": false,
+									"hideOnChinaSite": false,
+									"navigationItems": null,
+									"mainLink": {
+										"contentTypeId": "elementNavLink",
+										"contentfulId": "25HvfOsOXWuBqUEMZRZe5l",
+										"locale": "en-US",
+										"title": "Under Attack?",
+										"description": null,
+										"url": "under-attack-hotline",
+										"badges": null,
+										"specialLinkType": "CTA",
+										"openInNewWindow": false,
+										"isExternalUrl": null
+									},
+									"navigationLinks": null
+								},
+								{
+									"contentTypeId": "navNavigationItem",
+									"contentfulId": "6hwsf5NzNvaEIvken104XZ",
+									"locale": "en-US",
+									"name": "Log In",
+									"description": null,
+									"navIcon": null,
+									"contentfulButton": null,
+									"showIconOnly": false,
+									"hideOnChinaSite": false,
+									"navigationItems": null,
+									"mainLink": {
+										"contentTypeId": "elementNavLink",
+										"contentfulId": "YUMQ7a1ifjCuSHsRUNTq6",
+										"locale": "en-US",
+										"title": "Log In",
+										"description": null,
+										"url": "https://dash.cloudflare.com/login",
+										"badges": null,
+										"specialLinkType": "BLUE_CTA",
+										"openInNewWindow": true,
+										"isExternalUrl": null
+									},
 									"navigationLinks": null
 								}
 							]
@@ -273,7 +334,7 @@
 				],
 				"headerLogo": {
 					"file": {
-						"publicURL": "[path]/theNET_Cloudflare_Logo.png"
+						"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5bdSgqJjjsJX1ornr7tfnK/c81302df205bab05d9041405f917bb32/theNET_Cloudflare_Logo.png"
 					}
 				},
 				"proactivePopup": {
@@ -414,8 +475,8 @@
 															"locale": "en-US",
 															"title": "Zero Trust Article Image",
 															"file": {
-																"name": "zero-trust-roadmap-article-image",
-																"publicURL": "[path]/zero-trust-roadmap-article-image.jpg",
+																"name": "zero-trust-roadmap-article-image.jpg",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5cvcuiEpXbMRtOAoLTnh7w/1137227de462f3ddb49462949a8f1beb/zero-trust-roadmap-article-image.jpg",
 																"internal": {
 																	"mediaType": "image/jpeg"
 																}
@@ -1069,8 +1130,8 @@
 															"locale": "en-US",
 															"title": "Zero Trust Table One",
 															"file": {
-																"name": "zero-trust-table-one",
-																"publicURL": "[path]/zero-trust-table-one.png",
+																"name": "zero-trust-table-one.png",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/63yrWzLixgWGtqk6vs1Kdm/f9ce638c4113b9bb4c18883d94e54df5/zero-trust-table-one.png",
 																"internal": {
 																	"mediaType": "image/png"
 																}
@@ -1380,8 +1441,8 @@
 															"locale": "en-US",
 															"title": "Roadmap to ZT - Project 2 Image",
 															"file": {
-																"name": "Screen_Shot_2022-11-28_at_11.53.15_AM",
-																"publicURL": "[path]/Screen_Shot_2022-11-28_at_11.53.15_AM.png",
+																"name": "Screen Shot 2022-11-28 at 11.53.15 AM.png",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2HBOxaNjfvlWm40K0UKxws/8f39c252a5b110d47a9ef211b9fdca8f/Screen_Shot_2022-11-28_at_11.53.15_AM.png",
 																"internal": {
 																	"mediaType": "image/png"
 																}
@@ -1563,8 +1624,8 @@
 															"locale": "en-US",
 															"title": "ZT Roadmap Project 3 Article",
 															"file": {
-																"name": "project-3-table-image-revised",
-																"publicURL": "[path]/project-3-table-image-revised.png",
+																"name": "project-3-table-image-revised.png",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/Q4higS3CUSx0vTqnb7O9q/1a87304784a9a50d7c7d862298c3f47f/project-3-table-image-revised.png",
 																"internal": {
 																	"mediaType": "image/png"
 																}
@@ -1767,8 +1828,8 @@
 															"locale": "en-US",
 															"title": "Zero Trust Project Four ",
 															"file": {
-																"name": "zero-trust-article-project-4",
-																"publicURL": "[path]/zero-trust-article-project-4.png",
+																"name": "zero-trust-article-project-4.png",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/2moHg0TJi50HN3nc3SUL4M/69c54900223a14a6719868246d288aa9/zero-trust-article-project-4.png",
 																"internal": {
 																	"mediaType": "image/png"
 																}
@@ -1950,8 +2011,8 @@
 															"locale": "en-US",
 															"title": "Zero Trust Project Five",
 															"file": {
-																"name": "zero-trust-project-5",
-																"publicURL": "[path]/zero-trust-project-5.png",
+																"name": "zero-trust-project-5.png",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/4F9gXlPxxRREG8KD3LUpdD/fd52b59841c409f96cc7a64197c25cc2/zero-trust-project-5.png",
 																"internal": {
 																	"mediaType": "image/png"
 																}

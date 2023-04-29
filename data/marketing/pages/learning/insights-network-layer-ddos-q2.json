@@ -43,7 +43,7 @@
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
-							"publicURL": "[path]/ddosattackscontinuetorisewithshelterinplace.png"
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5r63Xc9VkV7JQrBozyxJ2g/e501d81b06ba9730fc718124ed478854/ddosattackscontinuetorisewithshelterinplace.png"
 						}
 					},
 					"facebookCustomImage": null
@@ -244,25 +244,86 @@
 						},
 						"rightNav": {
 							"contentTypeId": "navNavigation",
-							"contentfulId": "2lJyDCIXKA3ggOeKrNSCMQ",
+							"contentfulId": "7K1BCmoOZx7VsJ6AbaOzg",
 							"locale": "en-US",
-							"navigationType": "Footer",
-							"isDefaultNav": false,
+							"navigationType": "Custom Navigation",
+							"isDefaultNav": true,
 							"backgroundColor": null,
 							"sectionPadding": "default",
 							"navigationItems": [
 								{
 									"contentTypeId": "navNavigationItem",
-									"contentfulId": "2yvvSmtqM5YECHou5SqrhX",
+									"contentfulId": "46DxDIGywOr0PvMTD9SPaR",
 									"locale": "en-US",
-									"name": " ",
+									"name": "Sign Up",
 									"description": null,
 									"navIcon": null,
 									"contentfulButton": null,
 									"showIconOnly": false,
-									"hideOnChinaSite": null,
+									"hideOnChinaSite": false,
 									"navigationItems": null,
-									"mainLink": null,
+									"mainLink": {
+										"contentTypeId": "elementNavLink",
+										"contentfulId": "wXmPzQ9k2K8zZvQmlRYcv",
+										"locale": "en-US",
+										"title": "Sign Up",
+										"description": null,
+										"url": "https://dash.cloudflare.com/sign-up",
+										"badges": null,
+										"specialLinkType": null,
+										"openInNewWindow": true,
+										"isExternalUrl": null
+									},
+									"navigationLinks": null
+								},
+								{
+									"contentTypeId": "navNavigationItem",
+									"contentfulId": "5bNBJ3HDA562GjqIPZsaCp",
+									"locale": "en-US",
+									"name": "Under Attack?",
+									"description": null,
+									"navIcon": null,
+									"contentfulButton": null,
+									"showIconOnly": false,
+									"hideOnChinaSite": false,
+									"navigationItems": null,
+									"mainLink": {
+										"contentTypeId": "elementNavLink",
+										"contentfulId": "25HvfOsOXWuBqUEMZRZe5l",
+										"locale": "en-US",
+										"title": "Under Attack?",
+										"description": null,
+										"url": "under-attack-hotline",
+										"badges": null,
+										"specialLinkType": "CTA",
+										"openInNewWindow": false,
+										"isExternalUrl": null
+									},
+									"navigationLinks": null
+								},
+								{
+									"contentTypeId": "navNavigationItem",
+									"contentfulId": "6hwsf5NzNvaEIvken104XZ",
+									"locale": "en-US",
+									"name": "Log In",
+									"description": null,
+									"navIcon": null,
+									"contentfulButton": null,
+									"showIconOnly": false,
+									"hideOnChinaSite": false,
+									"navigationItems": null,
+									"mainLink": {
+										"contentTypeId": "elementNavLink",
+										"contentfulId": "YUMQ7a1ifjCuSHsRUNTq6",
+										"locale": "en-US",
+										"title": "Log In",
+										"description": null,
+										"url": "https://dash.cloudflare.com/login",
+										"badges": null,
+										"specialLinkType": "BLUE_CTA",
+										"openInNewWindow": true,
+										"isExternalUrl": null
+									},
 									"navigationLinks": null
 								}
 							]
@@ -273,7 +334,7 @@
 				],
 				"headerLogo": {
 					"file": {
-						"publicURL": "[path]/theNET_Cloudflare_Logo.png"
+						"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5bdSgqJjjsJX1ornr7tfnK/c81302df205bab05d9041405f917bb32/theNET_Cloudflare_Logo.png"
 					}
 				},
 				"proactivePopup": {
@@ -372,8 +433,8 @@
 															"locale": "en-US",
 															"title": "theNET - layer 3/4 DDoS attacks continue to rise with shelter-in-place - meta - imageq",
 															"file": {
-																"name": "ddosattackscontinuetorisewithshelterinplace",
-																"publicURL": "[path]/ddosattackscontinuetorisewithshelterinplace.png",
+																"name": "ddosattackscontinuetorisewithshelterinplace.png",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5r63Xc9VkV7JQrBozyxJ2g/e501d81b06ba9730fc718124ed478854/ddosattackscontinuetorisewithshelterinplace.png",
 																"internal": {
 																	"mediaType": "image/png"
 																}
@@ -748,8 +809,8 @@
 															"locale": "en-US",
 															"title": "L3:4 DDoS attack distribution in 1H20",
 															"file": {
-																"name": "L3_4_DDoS_attack_distribution_in_1H20",
-																"publicURL": "[path]/L3_4_DDoS_attack_distribution_in_1H20.png",
+																"name": "L3:4 DDoS attack distribution in 1H20.png",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/1xRrgV8X5Amw3ztKbnehSL/7f20af9c6b2475a955f11315927e2878/L3_4_DDoS_attack_distribution_in_1H20.png",
 																"internal": {
 																	"mediaType": "image/png"
 																}
@@ -860,8 +921,8 @@
 															"locale": "en-US",
 															"title": "DDoS Report Q2-20 Infographic Blog 2 V2",
 															"file": {
-																"name": "DDoS_Report_Q2-20_Infographic_Blog_2_V2",
-																"publicURL": "[path]/DDoS_Report_Q2-20_Infographic_Blog_2_V2.png",
+																"name": "DDoS_Report_Q2-20_Infographic_Blog_2_V2.png",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6HRNV0kkgTemTSK3q2myYs/28f6a0ecce4e23239c9d3b547b7ad596/DDoS_Report_Q2-20_Infographic_Blog_2_V2.png",
 																"internal": {
 																	"mediaType": "image/png"
 																}
@@ -1045,8 +1106,8 @@
 															"locale": "en-US",
 															"title": "L3:4 DDos attack distribution by bit rate",
 															"file": {
-																"name": "L3_4_DDos_attack_distribution_by_bit_rate",
-																"publicURL": "[path]/L3_4_DDos_attack_distribution_by_bit_rate.png",
+																"name": "L3:4 DDos attack distribution by bit rate.png",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6L6140j2GxZs2yaTcmH7IL/df8bd8a22119dc5067c83504d9eaaa50/L3_4_DDos_attack_distribution_by_bit_rate.png",
 																"internal": {
 																	"mediaType": "image/png"
 																}
@@ -1126,8 +1187,8 @@
 															"locale": "en-US",
 															"title": "L3:2 DDoS attack distribution by packet rate",
 															"file": {
-																"name": "L3_2_DDoS_attack_distribution_by_packet_rate",
-																"publicURL": "[path]/L3_2_DDoS_attack_distribution_by_packet_rate.png",
+																"name": "L3:2 DDoS attack distribution by packet rate.png",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/6yLnVhEkMWBUArFWDJdWLy/e59985f34cd5db506005d24350c9169c/L3_2_DDoS_attack_distribution_by_packet_rate.png",
 																"internal": {
 																	"mediaType": "image/png"
 																}
@@ -1259,8 +1320,8 @@
 															"locale": "en-US",
 															"title": "L3:4 DDoS attacks by country",
 															"file": {
-																"name": "L3_4_DDoS_attacks_by_country",
-																"publicURL": "[path]/L3_4_DDoS_attacks_by_country.png",
+																"name": "L3:4 DDoS attacks by country.png",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/HIUtZ6iNqHuHI11RLTw0m/6cba11c5b1747b618458adca44ba7958/L3_4_DDoS_attacks_by_country.png",
 																"internal": {
 																	"mediaType": "image/png"
 																}

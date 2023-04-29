@@ -43,7 +43,7 @@
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
-							"publicURL": "[path]/securityfortheholidays.jpeg"
+							"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/286tQeNqQNg2IMFxYWEeEs/f55b17c19319ad0db8aec58eee2ca216/securityfortheholidays.jpeg"
 						}
 					},
 					"facebookCustomImage": null
@@ -244,25 +244,86 @@
 						},
 						"rightNav": {
 							"contentTypeId": "navNavigation",
-							"contentfulId": "2lJyDCIXKA3ggOeKrNSCMQ",
+							"contentfulId": "7K1BCmoOZx7VsJ6AbaOzg",
 							"locale": "en-US",
-							"navigationType": "Footer",
-							"isDefaultNav": false,
+							"navigationType": "Custom Navigation",
+							"isDefaultNav": true,
 							"backgroundColor": null,
 							"sectionPadding": "default",
 							"navigationItems": [
 								{
 									"contentTypeId": "navNavigationItem",
-									"contentfulId": "2yvvSmtqM5YECHou5SqrhX",
+									"contentfulId": "46DxDIGywOr0PvMTD9SPaR",
 									"locale": "en-US",
-									"name": " ",
+									"name": "Sign Up",
 									"description": null,
 									"navIcon": null,
 									"contentfulButton": null,
 									"showIconOnly": false,
-									"hideOnChinaSite": null,
+									"hideOnChinaSite": false,
 									"navigationItems": null,
-									"mainLink": null,
+									"mainLink": {
+										"contentTypeId": "elementNavLink",
+										"contentfulId": "wXmPzQ9k2K8zZvQmlRYcv",
+										"locale": "en-US",
+										"title": "Sign Up",
+										"description": null,
+										"url": "https://dash.cloudflare.com/sign-up",
+										"badges": null,
+										"specialLinkType": null,
+										"openInNewWindow": true,
+										"isExternalUrl": null
+									},
+									"navigationLinks": null
+								},
+								{
+									"contentTypeId": "navNavigationItem",
+									"contentfulId": "5bNBJ3HDA562GjqIPZsaCp",
+									"locale": "en-US",
+									"name": "Under Attack?",
+									"description": null,
+									"navIcon": null,
+									"contentfulButton": null,
+									"showIconOnly": false,
+									"hideOnChinaSite": false,
+									"navigationItems": null,
+									"mainLink": {
+										"contentTypeId": "elementNavLink",
+										"contentfulId": "25HvfOsOXWuBqUEMZRZe5l",
+										"locale": "en-US",
+										"title": "Under Attack?",
+										"description": null,
+										"url": "under-attack-hotline",
+										"badges": null,
+										"specialLinkType": "CTA",
+										"openInNewWindow": false,
+										"isExternalUrl": null
+									},
+									"navigationLinks": null
+								},
+								{
+									"contentTypeId": "navNavigationItem",
+									"contentfulId": "6hwsf5NzNvaEIvken104XZ",
+									"locale": "en-US",
+									"name": "Log In",
+									"description": null,
+									"navIcon": null,
+									"contentfulButton": null,
+									"showIconOnly": false,
+									"hideOnChinaSite": false,
+									"navigationItems": null,
+									"mainLink": {
+										"contentTypeId": "elementNavLink",
+										"contentfulId": "YUMQ7a1ifjCuSHsRUNTq6",
+										"locale": "en-US",
+										"title": "Log In",
+										"description": null,
+										"url": "https://dash.cloudflare.com/login",
+										"badges": null,
+										"specialLinkType": "BLUE_CTA",
+										"openInNewWindow": true,
+										"isExternalUrl": null
+									},
 									"navigationLinks": null
 								}
 							]
@@ -273,7 +334,7 @@
 				],
 				"headerLogo": {
 					"file": {
-						"publicURL": "[path]/theNET_Cloudflare_Logo.png"
+						"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/5bdSgqJjjsJX1ornr7tfnK/c81302df205bab05d9041405f917bb32/theNET_Cloudflare_Logo.png"
 					}
 				},
 				"proactivePopup": {
@@ -418,8 +479,8 @@
 															"locale": "en-US",
 															"title": "theNET - security for the holidays - image",
 															"file": {
-																"name": "securityfortheholidays",
-																"publicURL": "[path]/securityfortheholidays.jpeg",
+																"name": "securityfortheholidays.jpeg",
+																"publicURL": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/286tQeNqQNg2IMFxYWEeEs/f55b17c19319ad0db8aec58eee2ca216/securityfortheholidays.jpeg",
 																"internal": {
 																	"mediaType": "image/jpeg"
 																}
