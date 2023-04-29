@@ -1,9 +1,9 @@
 <div class="post-content lh-copy gray1">
-	<p>Our servers process a lot of network packets, be it legitimate traffic or <a href="https://blog.cloudflare.com/say-cheese-a-snapshot-of-the-massive-ddos-attacks-coming-from-iot-cameras/">large</a> <a href="https://blog.cloudflare.com/how-the-consumer-product-safety-commission-is-inadvertently-behind-the-internets-largest-ddos-attacks/">denial of service</a> <a href="https://blog.cloudflare.com/reflections-on-reflections/">attacks</a>. To do so efficiently, we’ve embraced <a href="http://docs.cilium.io/en/latest/bpf/?ref=blog.cloudflare.com" target="_blank">eXpress Data Path (XDP)</a>, a Linux kernel technology that provides a high performance mechanism for low level packet processing. We’re using it to <a href="https://blog.cloudflare.com/l4drop-xdp-ebpf-based-ddos-mitigations/">drop DoS attack packets with L4Drop</a>, and also in our new layer 4 load balancer. But there’s a downside to XDP: because it processes packets before the normal Linux network stack sees them, packets redirected or dropped are invisible to regular debugging tools such as <a href="https://www.tcpdump.org/?ref=blog.cloudflare.com" target="_blank">tcpdump</a>.</p>
-	<p>To address this, we built a tcpdump replacement for XDP, xdpcap. We are open sourcing this tool: the <a href="https://github.com/cloudflare/xdpcap?ref=blog.cloudflare.com" target="_blank">code and documentation are available on GitHub</a>.</p>
-	<p>xdpcap uses our classic BPF (cBPF) to eBPF or C compiler, cbpfc, which we are also open sourcing: the <a href="https://github.com/cloudflare/cbpfc?ref=blog.cloudflare.com" target="_blank">code and documentation are available on GitHub</a>.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/04/White_tailed_eagle_raftsund_square_crop.jpg" class="kg-image" alt="" loading="lazy">
-		<figcaption><a href="https://creativecommons.org/licenses/by/4.0/?ref=blog.cloudflare.com" target="_blank">CC BY 4.0</a> <a href="https://commons.wikimedia.org/wiki/File:White_tailed_eagle_raftsund_square_crop.jpg?ref=blog.cloudflare.com" target="_blank">image</a> by <a href="http://www.christophmueller.org/?ref=blog.cloudflare.com" target="_blank">Christoph Müller</a></figcaption>
+	<p>Our servers process a lot of network packets, be it legitimate traffic or <a href="https://blog.cloudflare.com/say-cheese-a-snapshot-of-the-massive-ddos-attacks-coming-from-iot-cameras/">large</a> <a href="https://blog.cloudflare.com/how-the-consumer-product-safety-commission-is-inadvertently-behind-the-internets-largest-ddos-attacks/">denial of service</a> <a href="https://blog.cloudflare.com/reflections-on-reflections/">attacks</a>. To do so efficiently, we’ve embraced <a href="http://docs.cilium.io/en/latest/bpf/" target="_blank">eXpress Data Path (XDP)</a>, a Linux kernel technology that provides a high performance mechanism for low level packet processing. We’re using it to <a href="https://blog.cloudflare.com/l4drop-xdp-ebpf-based-ddos-mitigations/">drop DoS attack packets with L4Drop</a>, and also in our new layer 4 load balancer. But there’s a downside to XDP: because it processes packets before the normal Linux network stack sees them, packets redirected or dropped are invisible to regular debugging tools such as <a href="https://www.tcpdump.org/" target="_blank">tcpdump</a>.</p>
+	<p>To address this, we built a tcpdump replacement for XDP, xdpcap. We are open sourcing this tool: the <a href="https://github.com/cloudflare/xdpcap" target="_blank">code and documentation are available on GitHub</a>.</p>
+	<p>xdpcap uses our classic BPF (cBPF) to eBPF or C compiler, cbpfc, which we are also open sourcing: the <a href="https://github.com/cloudflare/cbpfc" target="_blank">code and documentation are available on GitHub</a>.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/04/White_tailed_eagle_raftsund_square_crop.jpg" class="kg-image">
+		<figcaption><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a> <a href="https://commons.wikimedia.org/wiki/File:White_tailed_eagle_raftsund_square_crop.jpg" target="_blank">image</a> by <a href="http://www.christophmueller.org" target="_blank">Christoph Müller</a></figcaption>
 	</figure>
 	<p>Tcpdump provides an easy way to dump specific packets of interest. For example, to capture all IPv4 DNS packets, one could:</p>
 	<pre><code>$ tcpdump ip and udp port 53
@@ -20,11 +20,11 @@ reading from file -, link-type EN10MB (Ethernet)
 </code></pre>
 	<p>The remainder of this post explains how we built xdpcap, including how <code>/path/to/hook/</code> is used to attach to XDP programs.</p>
 	<h2 id="tcpdump">tcpdump</h2>
-	<p>To replicate tcpdump, we first need to understand its inner workings. <a href="https://blog.cloudflare.com/bpf-the-forgotten-bytecode/">Marek Majkowski has previously written a detailed post on the subject</a>. Tcpdump exposes a high level filter language, <a href="https://www.tcpdump.org/manpages/pcap-filter.7.html?ref=blog.cloudflare.com" target="_blank">pcap-filter</a>, to specify which packets are of interest. Reusing our earlier example, the following filter expression captures all IPv4 UDP packets to or from port 53, likely DNS traffic:</p>
+	<p>To replicate tcpdump, we first need to understand its inner workings. <a href="https://blog.cloudflare.com/bpf-the-forgotten-bytecode/">Marek Majkowski has previously written a detailed post on the subject</a>. Tcpdump exposes a high level filter language, <a href="https://www.tcpdump.org/manpages/pcap-filter.7.html" target="_blank">pcap-filter</a>, to specify which packets are of interest. Reusing our earlier example, the following filter expression captures all IPv4 UDP packets to or from port 53, likely DNS traffic:</p>
 	<pre><code class="language-c">ip and udp port 53
 </code></pre>
-	<p>Internally, tcpdump uses libpcap to compile the filter to classic BPF (cBPF). cBPF is a simple bytecode language to represent programs that inspect the contents of a packet. A program returns non-zero to indicate that a packet matched the filter, and zero otherwise. The virtual machine that executes cBPF programs is very simple, featuring only two registers, <code>a</code> and <code>x</code>. There is no way of checking the length of the input packet<sup><a href="https://blog.cloudflare.com/xdpcap/#fn1">[1]</a></sup>; instead any out of bounds packet access will terminate the cBPF program, returning 0 (no match). The full set of opcodes are listed in <a href="https://www.kernel.org/doc/Documentation/networking/filter.txt?ref=blog.cloudflare.com" target="_blank">the Linux documentation</a>. Returning to our example filter, <code>ip and udp port 53</code> compiles to the following cBPF program, expressed as an annotated flowchart:</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/08/Screen-Shot-2019-08-27-at-10.43.41-AM.png" class="kg-image" alt="" loading="lazy">
+	<p>Internally, tcpdump uses libpcap to compile the filter to classic BPF (cBPF). cBPF is a simple bytecode language to represent programs that inspect the contents of a packet. A program returns non-zero to indicate that a packet matched the filter, and zero otherwise. The virtual machine that executes cBPF programs is very simple, featuring only two registers, <code>a</code> and <code>x</code>. There is no way of checking the length of the input packet<sup><a href="https://blog.cloudflare.com/xdpcap/#fn1">[1]</a></sup>; instead any out of bounds packet access will terminate the cBPF program, returning 0 (no match). The full set of opcodes are listed in <a href="https://www.kernel.org/doc/Documentation/networking/filter.txt" target="_blank">the Linux documentation</a>. Returning to our example filter, <code>ip and udp port 53</code> compiles to the following cBPF program, expressed as an annotated flowchart:</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/08/Screen-Shot-2019-08-27-at-10.43.41-AM.png" class="kg-image">
 		<figcaption>Example cBPF filter flowchart</figcaption>
 	</figure>
 	<p>Tcpdump attaches the generated cBPF filter to a raw packet socket using a <code>setsockopt</code> system call with <code>SO_ATTACH_FILTER</code>. The kernel runs the filter on every packet destined for the socket, but only delivers matching packets. Tcpdump displays the delivered packets, or writes them to a pcap capture file for later analysis.</p>
@@ -47,15 +47,15 @@ reading from file -, link-type EN10MB (Ethernet)
 	<h3 id="filter-function filter() { [native code] }1">Filter</h3>
 	<p>A key feature of tcpdump is the ability to efficiently pick out packets of interest; packets are filtered before reaching userspace. To achieve this in XDP, the desired filter must be converted to eBPF.</p>
 	<p>cBPF is already used in our <a href="https://blog.cloudflare.com/l4drop-xdp-ebpf-based-ddos-mitigations/#bpf-support">XDP based DoS mitigation pipeline</a>: cBPF filters are first converted to C by cbpfc, and the result compiled with Clang to eBPF. Reusing this mechanism allows us to fully support libpcap filter expressions:</p>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/08/2-1.png" class="kg-image" alt="" loading="lazy">
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/08/2-1.png" class="kg-image">
 		<figcaption>Pipeline to convert pcap-filter expressions to eBPF via C using cbpfc</figcaption>
 	</figure>
 	<p>To remove the Clang runtime dependency, our cBPF compiler, cbpfc, was extended to directly generate eBPF:</p>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/08/3-1.png" class="kg-image" alt="" loading="lazy">
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/08/3-1.png" class="kg-image">
 		<figcaption>Pipeline to convert pcap-filter expressions directly to eBPF using cbpfc</figcaption>
 	</figure>
 	<p>Converted to eBPF using cbpfc, <code>ip and udp port 53</code> yields:</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/08/Screen-Shot-2019-08-27-at-10.44.20-AM.png" class="kg-image" alt="" loading="lazy">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/08/Screen-Shot-2019-08-27-at-10.44.20-AM.png" class="kg-image">
 		<figcaption>Example cBPF filter converted to eBPF with cbpfc flowchart</figcaption>
 	</figure>
 	<p>The emitted eBPF requires a prologue, which is responsible for loading a pointer to the beginning, and end, of the input packet into registers <code>r6</code>and <code>r7</code> respectively<sup><a href="https://blog.cloudflare.com/xdpcap/#fn2">[2]</a></sup>.</p>
@@ -65,11 +65,11 @@ reading from file -, link-type EN10MB (Ethernet)
 		<li>Guards to check the length of the packet before we load data from it. These are required by the kernel verifier.</li>
 	</ul>
 	<p>The epilogue can use the result of the filter to perform different actions on the input packet.</p>
-	<p>As mentioned earlier, we’re open sourcing cbpfc; <a href="https://github.com/cloudflare/cbpfc?ref=blog.cloudflare.com" target="_blank">the code and documentation are available on GitHub</a>. It can be used to compile cBPF to C, or directly to eBPF, and the generated code is accepted by the kernel verifier.</p>
+	<p>As mentioned earlier, we’re open sourcing cbpfc; <a href="https://github.com/cloudflare/cbpfc" target="_blank">the code and documentation are available on GitHub</a>. It can be used to compile cBPF to C, or directly to eBPF, and the generated code is accepted by the kernel verifier.</p>
 	<h3 id="instrument">Instrument</h3>
 	<p>Tcpdump can start and stop capturing packets at any time, without requiring coordination from applications. This rules out modifying existing XDP programs to directly run the generated eBPF filter; the programs would have to be modified each time xdpcap is run. Instead, programs should expose a hook that can be used by xdpcap to attach filters at runtime.</p>
 	<p>xdpcap’s hook support is built around eBPF tail-calls. XDP programs can yield control to other programs using the tail-call helper. Control is never handed back to the calling program, the return code of the subsequent program is used. For example, consider two XDP programs, foo and bar, with foo attached to the network interface. Foo can tail-call into bar:</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/08/5.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/08/5.png" class="kg-image"></figure>
 	<p>Flow of XDP program foo tail-calling into program bar</p>
 	<p>The program to tail-call into is configured at runtime, using a special eBPF program array map. eBPF programs tail-call into a specific index of the map, the value of which is set by userspace. From our example above, foo’s tail-call map holds a single entry:</p><!--kg-card-begin: markdown-->
 	<table>
@@ -96,9 +96,9 @@ reading from file -, link-type EN10MB (Ethernet)
     return XDP_PASS;
 }
 </code></pre>
-	<p>To leverage this as a hook point, the instrumented programs are modified to always tail-call, using a map that is exposed to xdpcap by <a href="https://facebookmicrosites.github.io/bpf/blog/2018/08/31/object-lifetime.html?ref=blog.cloudflare.com#bpffs" target="_blank">pinning it to a bpffs</a>. To attach a filter, xdpcap can set it in the map. If no filter is attached, the instrumented program returns the correct action itself.</p>
+	<p>To leverage this as a hook point, the instrumented programs are modified to always tail-call, using a map that is exposed to xdpcap by <a href="https://facebookmicrosites.github.io/bpf/blog/2018/08/31/object-lifetime.html#bpffs" target="_blank">pinning it to a bpffs</a>. To attach a filter, xdpcap can set it in the map. If no filter is attached, the instrumented program returns the correct action itself.</p>
 	<p>With a filter attached to program foo, we have:</p>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/08/6.png" class="kg-image" alt="" loading="lazy">
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/08/6.png" class="kg-image">
 		<figcaption>Flow of XDP program foo tail-calling into an xdpcap filter</figcaption>
 	</figure>
 	<p>The filter must return the original action taken by the instrumented program to ensure the packet is processed correctly. To achieve this, xdpcap generates one filter program per possible XDP action, each one hardcoded to return that specific action. All the programs are set in the map:</p><!--kg-card-begin: markdown-->
@@ -130,7 +130,7 @@ reading from file -, link-type EN10MB (Ethernet)
 	</table>
 	<!--kg-card-end: markdown-->
 	<p>By tail-calling into the correct index, the instrumented program determines the final action:</p>
-	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/08/7.png" class="kg-image" alt="" loading="lazy">
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/08/7.png" class="kg-image">
 		<figcaption>Flow of XDP program foo tail-calling into xdpcap filters, one for each action</figcaption>
 	</figure>
 	<p>xdpcap provides a helper function that attempts a tail-call for the given action. Should it fail, the action is returned instead:</p>

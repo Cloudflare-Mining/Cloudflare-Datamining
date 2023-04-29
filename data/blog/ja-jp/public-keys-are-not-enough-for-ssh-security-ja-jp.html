@@ -27,14 +27,14 @@
 	<p>ユーザーがSSH経由でAccess for Infrastructureによって保護されているリソースに接続する場合、コマンドラインツールcloudflaredを使用します。cloudflaredは、そのホスト名にバインドされているSSHトラフィックを取得し、ssh config設定に基づいてCloudflareを介して転送します。パイピングやコマンドラッピングは必要ありません。cloudflaredは、ブラウザーウィンドウを起動し、SSO認証情報を用いて認証するようユーザーに要求します。</p>
 	<p>認証されると、AccessはユーザーのIDを、そのアプリケーションに対して設定したポリシーと照合します。ユーザーがリソースへのアクセスを許可されている場合、Accessは、Cloudflareによって署名され、ユーザーとアプリケーションを対象範囲とするJSON Web Token（JWT）を生成します。Accessは、cloudflaredを介してそのトークンをユーザーのデバイスに配布し、ツールがトークンをローカルに保存します。</p>
 	<p>主なAccess認証フローと同様に、トークン検証は、すべてのデータセンターで実行しているCloudflare Workerを使用して構築されるため、高速かつ高可用性を実現します。Workerにより、Cloudflareのデータセンターの194か所すべてにこのSSHプロキシ機能を実装できました。多くの場合、Access for Infrastructureは、SSHセッションの速度を下げるのではなく上げることになります。</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/10/Short-lived-Cert-copy@2x-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/10/Short-lived-Cert-copy@2x-1.png" class="kg-image"></figure>
 	<p>短時間の証明書を有効にすると、クライアント上で実行されているcloudflaredのインスタンスがもう1つの手順を実行します。cloudflaredは、そのトークンを一時的な証明書を作成するCloudflareの証明書署名エンドポイントに送信します。次に、ユーザーのSSHフローが、Accessによる認証に使用されるトークンと、認証に使用される短時間の証明書の両方をサーバーに送信します。主なAccess認証フローと同様に、トークン検証は、すべてのデータセンターで実行しているCloudflare Workerを使用して構築されるため、高速かつ高可用性を実現します。</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/10/Short-lived-Cert@2x.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/10/Short-lived-Cert@2x.png" class="kg-image"></figure>
 	<p>サーバーが要求を受信すると、短時間の証明書をその公開鍵に対して検証します。有効な場合は、一致するUnixユーザーに対してユーザーIDを承認します。証明書は発行から2分間有効ですが、セッションが開始するとSSH接続はそれより長く維持される可能性があります。</p>
 	<h2 id="--1"><strong>エンドユーザーの利用体験</strong></h2>
 	<p>Cloudflare AccessのSSH機能は、エンドユーザーに対して完全に透過的であり、一意のSSHコマンド、ラッパー、フラグは必要ありません。代わりに、Accessでは、使用するにあたって、チームメンバーは以下のような1回限りの手順を実行する必要があります：</p>
 	<h4 id="1-cloudflared-"><strong>1.cloudflaredデーモンをインストールする</strong></h4>
-	<p>Cloudflareを介してチームメンバーのデバイスからSSH接続をプロキシするのに、ターゲットサーバー上で実行されるのと同じ軽量ソフトウェアを使用します。ユーザーは、brewのような人気のパッケージマネージャーを使用するか、または<a href="https://developers.cloudflare.com/access/cli/installing-cli-tool/?ref=blog.cloudflare.com" target="_blank">こちら</a>にあるリンクにてcloudflaredデーモンをインストールすることができます。あるいは、オープンソースソフトウェアであるため、アドミニストレーターが構築して配布することができます。</p>
+	<p>Cloudflareを介してチームメンバーのデバイスからSSH接続をプロキシするのに、ターゲットサーバー上で実行されるのと同じ軽量ソフトウェアを使用します。ユーザーは、brewのような人気のパッケージマネージャーを使用するか、または<a href="https://developers.cloudflare.com/access/cli/installing-cli-tool/" target="_blank">こちら</a>にあるリンクにてcloudflaredデーモンをインストールすることができます。あるいは、オープンソースソフトウェアであるため、アドミニストレーターが構築して配布することができます。</p>
 	<h4 id="2-ssh-"><strong>2.SSH構成の更新を印刷して保存する</strong></h4>
 	<p>エンドユーザーがcloudflaredをインストールしたら、以下の1つのコマンドを実行して、SSH構成ファイルに追加する新しい行を生成する必要があります：</p>
 	<pre><code class="language-ssh">cloudflared access ssh-config --hostname vm.example.com --short-lived-cert</code></pre>
@@ -52,5 +52,5 @@ Host cfpipe-vm.example.com
 	<stream src="bb9667207c9686037858c6534ff7d6bc" controls=""></stream>
 	<script data-cfasync="false" defer="" type="text/javascript" src="https://embed.videodelivery.net/embed/r4xu.fla9.latest.js?video=bb9667207c9686037858c6534ff7d6bc"></script><!--kg-card-end: html-->
 	<h2 id="--2"><strong>次は何？</strong></h2>
-	<p>Accessは、短時間の証明書を使用して、あらゆる環境でチームとインフラストラクチャに対する単一のSSO統合ゲートウェイになることができます。ユーザーは、任意のマシンに直接SSH接続することができ、アドミニストレーターは、ジャンプホストを完全に置き換え、オーバーヘッドを削除することができます。この機能は、現在、すべてのAccessのお客様がご利用いただけます。<a href="https://developers.cloudflare.com/access/ssh/short-live-cert-server/?ref=blog.cloudflare.com" target="_blank">こちら</a>にあるドキュメントの手順に従って使い始めることができます。</p>
+	<p>Accessは、短時間の証明書を使用して、あらゆる環境でチームとインフラストラクチャに対する単一のSSO統合ゲートウェイになることができます。ユーザーは、任意のマシンに直接SSH接続することができ、アドミニストレーターは、ジャンプホストを完全に置き換え、オーバーヘッドを削除することができます。この機能は、現在、すべてのAccessのお客様がご利用いただけます。<a href="https://developers.cloudflare.com/access/ssh/short-live-cert-server/" target="_blank">こちら</a>にあるドキュメントの手順に従って使い始めることができます。</p>
 </div>
