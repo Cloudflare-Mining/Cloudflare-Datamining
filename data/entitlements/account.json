@@ -444,6 +444,18 @@
 		}
 	},
 	{
+		"id": "challenge_widgets.bfm",
+		"feature": {
+			"feature_set": "challenge_widgets",
+			"id": 1184,
+			"key": "challenge_widgets.bfm",
+			"name": "Challenge widgets Bot Fight Mode Support"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "challenge_widgets.china_region",
 		"feature": {
 			"feature_set": "challenge_widgets",
@@ -465,6 +477,18 @@
 		},
 		"allocation": {
 			"type": "max_count"
+		}
+	},
+	{
+		"id": "challenge_widgets.offlabel",
+		"feature": {
+			"feature_set": "challenge_widgets",
+			"id": 1185,
+			"key": "challenge_widgets.offlabel",
+			"name": "Challenge widgets Offlabel Support (Removes CF Branding)"
+		},
+		"allocation": {
+			"type": "bool"
 		}
 	},
 	{
@@ -1314,6 +1338,18 @@
 			"id": 1047,
 			"key": "logpush.workers_trace_events.max_jobs_allowed",
 			"name": "Logpush - Workers Trace Events - Max Jobs"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "logpush.zero_trust_network_sessions.max_jobs_allowed",
+		"feature": {
+			"feature_set": "logpush",
+			"id": 1180,
+			"key": "logpush.zero_trust_network_sessions.max_jobs_allowed",
+			"name": "Logpush - Zero Trust Network Session Logs - Max Jobs"
 		},
 		"allocation": {
 			"type": "max_count"

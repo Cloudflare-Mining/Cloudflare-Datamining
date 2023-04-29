@@ -192,12 +192,36 @@
 		}
 	},
 	{
+		"id": "central_endpoint_list.max_learned_schemas_per_zone",
+		"feature": {
+			"feature_set": "central_endpoint_list",
+			"id": 1192,
+			"key": "central_endpoint_list.max_learned_schemas_per_zone",
+			"name": "Central Endpoint List - Max Learned Schemas Per Zone"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
 		"id": "central_endpoint_list.max_schemas_per_zone",
 		"feature": {
 			"feature_set": "central_endpoint_list",
 			"id": 1112,
 			"key": "central_endpoint_list.max_schemas_per_zone",
 			"name": "Central Endpoint List - Max Allowed Schemas Per Zone"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "central_endpoint_list.max_translated_schema_bytes_per_zone",
+		"feature": {
+			"feature_set": "central_endpoint_list",
+			"id": 1193,
+			"key": "central_endpoint_list.max_translated_schema_bytes_per_zone",
+			"name": "Central Endpoint List - Max Total Schema Storage per Zone"
 		},
 		"allocation": {
 			"type": "max_count"
@@ -213,6 +237,18 @@
 		},
 		"allocation": {
 			"type": "max_count"
+		}
+	},
+	{
+		"id": "central_endpoint_list.schema_validation_allowed",
+		"feature": {
+			"feature_set": "central_endpoint_list",
+			"id": 1186,
+			"key": "central_endpoint_list.schema_validation_allowed",
+			"name": "Central Endpoint List - Schema Validation Allowed"
+		},
+		"allocation": {
+			"type": "bool"
 		}
 	},
 	{
@@ -1128,6 +1164,18 @@
 		}
 	},
 	{
+		"id": "rulesets.api_shield_graphql_query_analytics_allowed",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 1191,
+			"key": "rulesets.api_shield_graphql_query_analytics_allowed",
+			"name": "Rulesets - API Shield GraphQL Query Analytics allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "rulesets.block_customized_response_allowed",
 		"feature": {
 			"feature_set": "rulesets",
@@ -1716,6 +1764,18 @@
 		}
 	},
 	{
+		"id": "rulesets.response_compression_max_rules",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 1181,
+			"key": "rulesets.response_compression_max_rules",
+			"name": "Rulesets - Response compression max rules"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
 		"id": "rulesets.response_phase_allowed",
 		"feature": {
 			"feature_set": "rulesets",
@@ -1725,6 +1785,18 @@
 		},
 		"allocation": {
 			"type": "bool"
+		}
+	},
+	{
+		"id": "rulesets.snippets_rule_max",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 1188,
+			"key": "rulesets.snippets_rule_max",
+			"name": "Rulesets - Snippets Rule Max"
+		},
+		"allocation": {
+			"type": "max_count"
 		}
 	},
 	{
@@ -1878,6 +1950,18 @@
 			"id": 515,
 			"key": "sni_custom_certificates",
 			"name": "SNI Certificates"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "snippets.max_snippets_allowed",
+		"feature": {
+			"feature_set": "snippets",
+			"id": 1189,
+			"key": "snippets.max_snippets_allowed",
+			"name": "Snippets - Snippets Allowed Max"
 		},
 		"allocation": {
 			"type": "max_count"
