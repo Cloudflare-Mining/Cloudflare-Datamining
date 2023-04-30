@@ -1,5 +1,5 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/Image_20201016_072224.jpeg" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/Image_20201016_072224.jpeg" class="kg-image"></figure>
 	<p>오늘, 기업을 보호할 수 있게 Cloudflare를 통해 네트워크 수준 방화벽으로 제공되는 Magic Firewall™을 발표하게 되어 기쁩니다. Magic Firewall은 원격 사용자, 지사, 데이터 센터, 클라우드 인프라를 포괄합니다. 무엇보다도, Cloudflare One™과 긴밀하게 통합되므로 네트워크에서 일어나는 모든 일을 한 곳에서 살펴볼 수 있습니다.</p>
 	<p>Cloudflare Magic Transit™은 Cloudflare 전역 네트워크를 안전하게 유지하려고 마련한 바로 그 DDoS 방어 기술로 IP 서브넷을 보호합니다. 네트워크가 공격으로부터 안전한지, 사용이 가능한지 확인하는 데 유용하며 제한적인 물리적 장비를 Cloudflare의 네트워크로 대체합니다.</p>
 	<p>그러나 현장에는 아직 방화벽과 같이 다른 기능에 필요한 하드웨어 일부가 있습니다. DDoS 공격에서만 네트워크를 보호해야 하는 것은 아닙니다. 관리자에게는 네트워크를 오가는 모든 트래픽에 적용할 수 있는 정책을 설정할 방법이 필요합니다. Magic Firewall을 통해, Cloudflare는 사용자의 팀이 네트워크 방화벽 장비를 더 이상 사용하지 않고 Cloudflare 전역 네트워크로 그 부담을 옮길 수 있게 돕고 싶습니다.</p>
@@ -10,7 +10,7 @@
 	<p>네트워크 사업자는 서로 다른 공급업체의 솔루션을 결합하고 기능을 조합하여 맞추며 정책을 네트워크 전체에 동기화하는 데 신경을 쓰고 있습니다. 상황은 더 복잡해지고 비용은 늘어납니다.</p>
 	<h2 id="--1">이제 하드웨어는 솔루션이 아닙니다</h2>
 	<p>이 상황에서 일부 조직은 공급업체를 더 많이 찾아 추가 하드웨어를 구입하여, 짜깁기로 배포한 방화벽 하드웨어를 관리합니다. 그러면 팀이 더 많은 플랫폼에서 새로 고침 주기, 업데이트, 수명 종료 관리 업무의 균형을 맞춰야 합니다. 이는 근본적인 문제를 해결하지 않는 미봉책입니다. 한 곳에서 전체 네트워크를 볼 수 있게 만들어 현재의 상황(좋은 상황과 나쁜 상황)에 대한 인사이트를 제공하고, 정책을 <em>전역적으로</em> 즉시 적용하려면 어떻게 해야 할까요?</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/10/image2-18.png" class="kg-image" alt="" loading="lazy">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/10/image2-18.png" class="kg-image">
 		<figcaption>기존 방화벽 아키텍처</figcaption>
 	</figure>
 	<h2 id="magic-firewall-">Magic Firewall 소개</h2>
@@ -84,11 +84,11 @@
 		<li>패킷 길이</li>
 		<li>비트 필드 일치</li>
 	</ul>
-	<p>네트워킹 세계에서 흔히 사용하는 도메인 특정 언어이며 Cloudflare가 기타 제품에서 사용하는 <a href="https://www.wireshark.org/docs/wsug_html_chunked/ChWorkBuildDisplayFilterSection.html?ref=blog.cloudflare.com" target="_blank">Wireshark 구문</a>으로 규칙을 만들 수 있습니다. 이 구문을 사용하면 네트워크 안팎의 모든 트래픽을 정확하게 허용하거나 거부하는 아주 강력한 규칙을 손쉽게 만들 수 있습니다. 경계 내부나 외부에 악의적 행위자가 있을 것 같다면, 대시보드에 로그인해 의심되는 트래픽을 차단하기만 하면 됩니다. 규칙은 몇 초 만에 전역적으로 푸시되고 위협은 에지에서 차단됩니다.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image4-13.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>네트워킹 세계에서 흔히 사용하는 도메인 특정 언어이며 Cloudflare가 기타 제품에서 사용하는 <a href="https://www.wireshark.org/docs/wsug_html_chunked/ChWorkBuildDisplayFilterSection.html" target="_blank">Wireshark 구문</a>으로 규칙을 만들 수 있습니다. 이 구문을 사용하면 네트워크 안팎의 모든 트래픽을 정확하게 허용하거나 거부하는 아주 강력한 규칙을 손쉽게 만들 수 있습니다. 경계 내부나 외부에 악의적 행위자가 있을 것 같다면, 대시보드에 로그인해 의심되는 트래픽을 차단하기만 하면 됩니다. 규칙은 몇 초 만에 전역적으로 푸시되고 위협은 에지에서 차단됩니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image4-13.png" class="kg-image"></figure>
 	<p>방화벽 구성은 쉽고 강력해야 합니다. Magic Firewall을 사용하면 복잡한 논리도 가능하며 간단한 UI를 사용하여 규칙을 구성할 수 있습니다. 또는, 간단히 Wireshark 필터 구문을 사용하여 필터 규칙을 직접 입력하고 구성하세요. UI에는 손대고 싶지 않나요? API만을 통해 규칙을 쉽게 추가할 수 있습니다.</p>
 	<h2 id="--3">다음은 무엇일까요?</h2>
 	<p>그냥 패킷을 확인하는 것으로는 부족합니다... 방화벽 규칙이 있어도, 네트워크에서 <em>실제로</em> 일어나는 일을 팀이 확인할 수 있어야 합니다. 데이터 스트림 내부에서 무슨 일이 일어나고 있는지, 합법적인 트래픽인지, 아니면 네트워크 내부 또는 외부에서 범죄를 저지르는 악의적 행위자가 있는지 확인할 수 있어야 합니다. 고객의 자산(직원 장치 또는 인터넷에 노출된 서비스)과 상호 작용하는 두 행위자 사이에 Cloudflare를 배포하면 트래픽이 유발된 위치나 트래픽 내용에 관계없이 Cloudflare가 모든 정책을 어디에나 시행할 수 있습니다. 곧 트래픽 유형을 기반으로 정책을 적용할 수 있게 됩니다. 데이터 스트림 내부에서 발생하는 상황에 따라 침입 이벤트를 자동 감지하는 기능을 곧 추가할 계획임을 기쁜 마음으로 발표합니다.</p>
 	<p>이러한 새 여정이 기대됩니다. Cloudflare는 Cloudflare One으로 기업용 네트워크의 모습을 다시 만들어나가고 있습니다. Cloudflare는 네트워크 방문자뿐만 아니라 네트워크 내부의 모든 사용자에게 액세스 관리, 보안 기능, 성능 전반을 통합합니다. 이 모든 것은 <a href="https://blog.cloudflare.com/our-network-cloudflare-one">#BuiltForThis</a>라는 목적의 네트워크에 구축되었습니다.</p>
-	<p>기존 Magic Transit 고객부터, 제한 베타로 Magic Firewall을 공개할 예정입니다. 관심이 있다면 <a href="https://www.cloudflare.com/lp/magic-firewall-beta/?ref=blog.cloudflare.com" target="_blank">알려주세요</a>.</p>
+	<p>기존 Magic Transit 고객부터, 제한 베타로 Magic Firewall을 공개할 예정입니다. 관심이 있다면 <a href="https://www.cloudflare.com/lp/magic-firewall-beta/" target="_blank">알려주세요</a>.</p>
 </div>

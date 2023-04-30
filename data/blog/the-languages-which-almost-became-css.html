@@ -4,28 +4,28 @@
 		<p>When Tim Berners-Lee announced HTML in 1991 there was no method of styling pages. How a given HTML tag was rendered was determined by the browser, often with significant input from the user’s preferences. To many, it seemed like a good idea to create a standard way for pages to ‘suggest’ how they might prefer to be rendered stylistically.</p>
 	</div>
 	<p class="attribution">
-		This was adapted from a post which originally appeared on the Eager blog. Eager has now become the new <a href="https://www.cloudflare.com/apps?ref=blog.cloudflare.com" target="_blank">Cloudflare Apps</a>.</p>
+		This was adapted from a post which originally appeared on the Eager blog. Eager has now become the new <a href="https://www.cloudflare.com/apps" target="_blank">Cloudflare Apps</a>.</p>
 	<blockquote class="pull-quote-centered" style="padding-bottom: 0.5em">
 		<p>In fact, it has been a constant source of delight for me over the past year to get to continually tell hordes (literally) of people who want to – strap yourselves in, here it comes – control what their documents look like in ways that would be trivial in TeX, Microsoft Word, and every other common text processing environment: “<strong>Sorry, you’re screwed.</strong>”</p>
-		<p>— Marc Andreessen <a href="http://1997.webhistory.org/www.lists/www-talk.1994q1/0648.html?ref=blog.cloudflare.com" target="_blank"><code class="year">1994</code></a></p>
+		<p>— Marc Andreessen <a href="http://1997.webhistory.org/www.lists/www-talk.1994q1/0648.html" target="_blank"><code class="year">1994</code></a></p>
 	</blockquote>
 	When Tim Berners-Lee announced HTML in 1991 there was no method of styling pages. How a given HTML tag was rendered was determined by the browser, often with significant input from the user’s preferences. To many, it seemed like a good idea to create a standard way for pages to ‘suggest’ how they might prefer to be rendered stylistically.
 	<p>But CSS wouldn’t be introduced for five years, and wouldn’t be fully implemented for ten. This was a period of intense work and innovation which resulted in more than a few competing styling methods that just as easily could have become the standard.</p>
 	<p>While these languages are obviously not in common use today, we find it fascinating to think about the world that might have been. Even more surprisingly, it happens that many of these other options include features which developers would love to see appear in CSS even today.</p>
 	<h3 id="thefirstproposal">The First Proposal</h3>
 	<p>In early 1993 the Mosaic browser had not yet reached 1.0. Those browsers that did exist dealt solely with HTML. There was no method of specifying the style of HTML whatsoever, meaning whatever the browser decided an <code>&lt;h1&gt;</code> should look like, that’s what you got.</p>
-	<p>In June of that year, Robert Raisch made <a href="http://1997.webhistory.org/www.lists/www-talk.1993q2/0445.html?ref=blog.cloudflare.com" target="_blank">a proposal</a> to the www-talk mailing list to create a “an easily parsable format to deliver stylistic information along with Web documents” which would be called RRP.</p>
+	<p>In June of that year, Robert Raisch made <a href="http://1997.webhistory.org/www.lists/www-talk.1993q2/0445.html" target="_blank">a proposal</a> to the www-talk mailing list to create a “an easily parsable format to deliver stylistic information along with Web documents” which would be called RRP.</p>
 	<pre><code class="language-css">@BODY fo(fa=he,si=18)
 </code></pre>
 	<p>If you have no idea what this code is doing you are forgiven. This particular rule is setting the font family (<code>fa</code>) to helvetica (<code>he</code>), and the font size (<code>si</code>) to 18 points. It made sense to make the content of this new format as terse as was possible as it was born in the era before gzipping and when connection speeds hovered around 14.4k.</p>
-	<p>Some interesting things missing from this proposal were any mention of units, all numbers being interpreted based on their context (font sizes were always in points for example). This could be attributed to RRP being designed more as a “set of HINTS or SUGGESTIONS to the renderer” rather than a specification. This was considered necessary because the same stylesheet needed to function for both the common line-mode browsers (like <a href="https://en.wikipedia.org/wiki/Lynx_(web_browser)?ref=blog.cloudflare.com" target="_blank">Lynx</a>, and the graphical browsers which were becoming increasingly popular.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/07/lynx.png" alt="Lynx browser screenshot" loading="lazy"></p>
+	<p>Some interesting things missing from this proposal were any mention of units, all numbers being interpreted based on their context (font sizes were always in points for example). This could be attributed to RRP being designed more as a “set of HINTS or SUGGESTIONS to the renderer” rather than a specification. This was considered necessary because the same stylesheet needed to function for both the common line-mode browsers (like <a href="https://en.wikipedia.org/wiki/Lynx_(web_browser)" target="_blank">Lynx</a>, and the graphical browsers which were becoming increasingly popular.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2017/07/lynx.png" alt="Lynx browser screenshot"></p>
 	<p>Interestingly, RRP did include a method of specifying a columnar layout, a feature which wouldn’t make it to CSS until 2011. For example, three columns, each of width ‘80 units’ would look like this:</p>
 	<pre><code class="language-css">@P co(nu=3,wi=80)
 </code></pre>
 	<p>It’s a little hard to parse, but not much worse than <code>white-space: nowrap</code> perhaps.</p>
 	<p>It’s worth noting that RRP did not support any of the ‘cascading’ we associate with stylesheets today. A given document could only have one active stylesheet at a time, which is a logical way to think about styling a document, even if it’s foreign to us today.</p>
-	<p>Marc Andreessen (the creator of Mosaic, which would become the most popular browser) was <a href="http://www.webhistory.org/www.lists/www-talk.1993q4/0266.html?ref=blog.cloudflare.com" target="_blank">aware</a> of the RRP proposal, but it was never implemented by Mosaic. Instead, Mosaic quickly moved (somewhat tragically) down the path of using HTML tags to define style, introducing tags like <code>&lt;FONT&gt;</code> and <code>&lt;CENTER&gt;</code>.</p>
+	<p>Marc Andreessen (the creator of Mosaic, which would become the most popular browser) was <a href="http://www.webhistory.org/www.lists/www-talk.1993q4/0266.html" target="_blank">aware</a> of the RRP proposal, but it was never implemented by Mosaic. Instead, Mosaic quickly moved (somewhat tragically) down the path of using HTML tags to define style, introducing tags like <code>&lt;FONT&gt;</code> and <code>&lt;CENTER&gt;</code>.</p>
 	<h3 id="violaandtheprotobrowserwars">Viola and the Proto-Browser Wars</h3>
 	<blockquote>
 		<blockquote>
@@ -37,11 +37,11 @@
 			to write your document, and then you get to learn <em>that</em> language for<br>
 			actually making your document look like you want it to." Oh, they'll<br>
 			love that.</p>
-		<p>— Marc Andreessen <a href="http://1997.webhistory.org/www.lists/www-talk.1994q1/0683.html?ref=blog.cloudflare.com" target="_blank"><code class="year">1994</code></a></p>
+		<p>— Marc Andreessen <a href="http://1997.webhistory.org/www.lists/www-talk.1994q1/0683.html" target="_blank"><code class="year">1994</code></a></p>
 	</blockquote>
-	<p>Contrary to popular perception, Mosaic was not the first graphical browser. It was predated by <a href="https://en.wikipedia.org/wiki/ViolaWWW?ref=blog.cloudflare.com" target="_blank">ViolaWWW</a>, a graphical browser originally written by Pei-Yuan Wei in just four days.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/07/viola.png" alt="Viola browser screenshot" loading="lazy"></p>
-	<p>Pei-Yuan created a <a href="http://1997.webhistory.org/www.lists/www-talk.1993q4/0264.html?ref=blog.cloudflare.com" target="_blank">stylesheet language</a> which supports a form of the nested structure we are used to in CSS today:</p>
+	<p>Contrary to popular perception, Mosaic was not the first graphical browser. It was predated by <a href="https://en.wikipedia.org/wiki/ViolaWWW" target="_blank">ViolaWWW</a>, a graphical browser originally written by Pei-Yuan Wei in just four days.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2017/07/viola.png" alt="Viola browser screenshot"></p>
+	<p>Pei-Yuan created a <a href="http://1997.webhistory.org/www.lists/www-talk.1993q4/0264.html" target="_blank">stylesheet language</a> which supports a form of the nested structure we are used to in CSS today:</p>
 	<pre><code class="language-scheme">(BODY fontSize=normal
       BGColor=white
       FGColor=black
@@ -54,7 +54,7 @@
 	<p>PWP is also notable for introducing the method of referring to external stylesheets we still use today:</p>
 	<pre><code class="language-html">&lt;LINK REL="STYLE" HREF="URL_to_a_stylesheet"&gt;
 </code></pre>
-	<p>ViolaWWW was unfortunately written to work chiefly with the <a href="https://en.wikipedia.org/wiki/X_Window_System?ref=blog.cloudflare.com" target="_blank">X Windowing<br>
+	<p>ViolaWWW was unfortunately written to work chiefly with the <a href="https://en.wikipedia.org/wiki/X_Window_System" target="_blank">X Windowing<br>
 			System</a> which was only popular on Unix systems. When Mosaic was ported to Windows it quickly left Viola in the dust.</p>
 	<h3 id="stylesheetsbeforetheweb">Stylesheets Before the Web</h3>
 	<blockquote>
@@ -63,12 +63,12 @@
 			structure of a document, but documents are more than just structured text<br>
 			databases; they have visual impact. HTML totally eliminates any visual<br>
 			creativity that a document’s designer might have.</p>
-		<p>— Roy Smith <a href="http://1997.webhistory.org/www.lists/www-talk.1993q3/0238.html?ref=blog.cloudflare.com" target="_blank"><code class="year">1993</code></a></p>
+		<p>— Roy Smith <a href="http://1997.webhistory.org/www.lists/www-talk.1993q3/0238.html" target="_blank"><code class="year">1993</code></a></p>
 	</blockquote>
 	<p>The need for a language to express the style of documents long predates the Internet.</p>
 	<p>As you may know, HTML as we know it was originally based on a pre-Internet language called SGML. In 1987 the US Department of Defense decided to study if SGML could be used to make it easier to store and transmit the huge volume of documentation they deal with. Like any good government project, they wasted no time coming up with a name. The team was originally called the Computer-Aided Logistics Support team, then the Computer-aided Acquisition and Logistics Support team, then finally the Continuous Acquisition and Life-cycle Support initiative. In any case, the initials were CALS.</p>
-	<p>The CALS team created a language for styling SGML documents called FOSI which is an initialism which undoubtedly stands for some combination of four words. They published <a href="http://people.opera.com/howcome/2006/phd/archive/www.dt.navy.mil/tot-shi-sys/tec-inf-sys/cal-std/doc/28001C.pdf?ref=blog.cloudflare.com" target="_blank">a specification</a> for the language which is as comprehensive as it is incomprehensible. It also includes one of the best <a href="http://people.opera.com/howcome/2006/phd/i/fosi.png?ref=blog.cloudflare.com" target="_blank">nonsensical infographics</a> to ever exist on the web.</p>
-	<p>One inviolate rule of the Internet is: more will always get done if you can prove someone wrong in the process. In 1993, just four days after Pei-Yuan’s proposal, Steven Heaney <a href="http://1997.webhistory.org/www.lists/www-talk.1993q4/0295.html?ref=blog.cloudflare.com" target="_blank">proposed</a> that rather than “re-inventing the wheel,” it was best to use a variant of FOSI to style the web.</p>
+	<p>The CALS team created a language for styling SGML documents called FOSI which is an initialism which undoubtedly stands for some combination of four words. They published <a href="http://people.opera.com/howcome/2006/phd/archive/www.dt.navy.mil/tot-shi-sys/tec-inf-sys/cal-std/doc/28001C.pdf" target="_blank">a specification</a> for the language which is as comprehensive as it is incomprehensible. It also includes one of the best <a href="http://people.opera.com/howcome/2006/phd/i/fosi.png" target="_blank">nonsensical infographics</a> to ever exist on the web.</p>
+	<p>One inviolate rule of the Internet is: more will always get done if you can prove someone wrong in the process. In 1993, just four days after Pei-Yuan’s proposal, Steven Heaney <a href="http://1997.webhistory.org/www.lists/www-talk.1993q4/0295.html" target="_blank">proposed</a> that rather than “re-inventing the wheel,” it was best to use a variant of FOSI to style the web.</p>
 	<p>A FOSI document is itself written in SGML, which is actually a somewhat logical move given web developers existing familiarity with the SGML variant HTML. An example document looks like this:</p>
 	<pre><code class="language-xml">&lt;outspec&gt;
   &lt;docdesc&gt;
@@ -84,9 +84,9 @@
 </code></pre>
 	<p>If you’re a bit confused what a <code>docdesc</code> or <code>charlist</code> are, so were the<br>
 		members of <code>www-talk</code>. The only contextual information given was that <code>e-i-c</code> means ‘element in context’. FOSI is notable however for introducing the <code>em</code> unit which has now become the preferred method for people who know more about CSS than you to style things.</p>
-	<p>The language conflict which was playing out was actually as old as programming itself. It was the battle of functional ‘lisp-style’ syntax vs the syntax of more declarative languages. Pei-Yuan himself <a href="http://1997.webhistory.org/www.lists/www-talk.1993q4/0297.html?ref=blog.cloudflare.com" target="_blank">described</a> his syntax as “LISP’ish,” but it was only a matter of time until a true LISP variant entered the stage.</p>
+	<p>The language conflict which was playing out was actually as old as programming itself. It was the battle of functional ‘lisp-style’ syntax vs the syntax of more declarative languages. Pei-Yuan himself <a href="http://1997.webhistory.org/www.lists/www-talk.1993q4/0297.html" target="_blank">described</a> his syntax as “LISP’ish,” but it was only a matter of time until a true LISP variant entered the stage.</p>
 	<h3 id="theturingcompletestylesheet">The Turing-Complete Stylesheet</h3>
-	<p>For all its complexity, FOSI was actually perceived to be an <a href="http://xml.coverpages.org/kennDSSSLInt.html?ref=blog.cloudflare.com" target="_blank">interim solution</a> to the problem of formatting documents. The long-term plan was to create a language based on the functional programming language Scheme which could enable the most powerful document transformations you could imagine. This language was called DSSSL.</p>
+	<p>For all its complexity, FOSI was actually perceived to be an <a href="http://xml.coverpages.org/kennDSSSLInt.html" target="_blank">interim solution</a> to the problem of formatting documents. The long-term plan was to create a language based on the functional programming language Scheme which could enable the most powerful document transformations you could imagine. This language was called DSSSL.</p>
 	<p>In the words of contributor Jon Bosak:</p>
 	<blockquote>
 		<p>It’s a mistake to put DSSSL into the same bag as scripting languages. Yes,<br>
@@ -128,11 +128,11 @@
 </code></pre>
 	<p>DSSSL did, unfortunately, have the fatal flaw which would plague all<br>
 		Scheme-like languages: too many parenthesis. Additionally, it was arguably <em>too complete</em> of a spec when it was finally published which made it intimidating to browser developers. The DSSSL spec included over 210 separate styleable properties.</p>
-	<p>The team did go on to create <a href="https://en.wikipedia.org/wiki/XSL?ref=blog.cloudflare.com" target="_blank">XSL</a>, a language for document transformation which is no less confusing, but which would be decidedly more popular.</p>
+	<p>The team did go on to create <a href="https://en.wikipedia.org/wiki/XSL" target="_blank">XSL</a>, a language for document transformation which is no less confusing, but which would be decidedly more popular.</p>
 	<h3 id="whydidthestylesheetcrossthewire">Why Did The Stylesheet Cross The Wire</h3>
-	<p>CSS does not include parent selectors (a method of styling a parent based on what children it contains). This fact has been <a href="http://stackoverflow.com/questions/1014861/is-there-a-css-parent-selector?ref=blog.cloudflare.com" target="_blank">long</a> <a href="http://stackoverflow.com/questions/45004/complex-css-selector-for-parent-of-active-child?lq=1&amp;ref=blog.cloudflare.com" target="_blank">bemoaned</a> <a href="http://stackoverflow.com/questions/2000582/css-selector-for-foo-that-contains-bar?lq=1&amp;ref=blog.cloudflare.com" target="_blank">by</a> <a href="http://stackoverflow.com/questions/4220327/css-selector-element-with-a-given-child?lq=1&amp;ref=blog.cloudflare.com" target="_blank">Stack</a> <a href="http://stackoverflow.com/questions/21252551/apply-style-to-parent-if-it-has-child-with-css?lq=1&amp;ref=blog.cloudflare.com" target="_blank">Overflow</a> posters, but it turns out there is a very good reason for its absence. Particularly in the early days of the Internet, it was considered critically important that the page be renderable before the document has been fully loaded. In other words, we want to be able to render the beginning of the HTML to the page before the HTML which will form the bottom of the page has been fully downloaded.</p>
+	<p>CSS does not include parent selectors (a method of styling a parent based on what children it contains). This fact has been <a href="http://stackoverflow.com/questions/1014861/is-there-a-css-parent-selector" target="_blank">long</a> <a href="http://stackoverflow.com/questions/45004/complex-css-selector-for-parent-of-active-child?lq=1" target="_blank">bemoaned</a> <a href="http://stackoverflow.com/questions/2000582/css-selector-for-foo-that-contains-bar?lq=1" target="_blank">by</a> <a href="http://stackoverflow.com/questions/4220327/css-selector-element-with-a-given-child?lq=1" target="_blank">Stack</a> <a href="http://stackoverflow.com/questions/21252551/apply-style-to-parent-if-it-has-child-with-css?lq=1" target="_blank">Overflow</a> posters, but it turns out there is a very good reason for its absence. Particularly in the early days of the Internet, it was considered critically important that the page be renderable before the document has been fully loaded. In other words, we want to be able to render the beginning of the HTML to the page before the HTML which will form the bottom of the page has been fully downloaded.</p>
 	<p>A parent selector would mean that styles would have to be updated as the HTML document loads. Languages like DSSSL were completely out, as they could perform operations on the document itself, which would not be entirely available when the rendering is to begin.</p>
-	<p>The first contributor to bring up this issue and <a href="http://people.opera.com/howcome/2006/phd/archive/odur.let.rug.nl/~bert/stylesheets.html?ref=blog.cloudflare.com" target="_blank">propose</a> a workable language was Bert Bos in March of 1995. His proposal also contains an early edition of the ‘smiley’ emoticon :-).</p>
+	<p>The first contributor to bring up this issue and <a href="http://people.opera.com/howcome/2006/phd/archive/odur.let.rug.nl/~bert/stylesheets.html" target="_blank">propose</a> a workable language was Bert Bos in March of 1995. His proposal also contains an early edition of the ‘smiley’ emoticon :-).</p>
 	<p>The language itself was somewhat ‘object-oriented’ in syntax:</p>
 	<pre><code>*LI.prebreak: 0.5
 *LI.postbreak: 0.5
@@ -144,7 +144,7 @@
 	<pre><code>*A.anchor: !HREF
 </code></pre>
 	<p>In this case we specified that the destination of the link element is the value of its <code>HREF</code> attribute. The idea that the behavior of elements like links should be controllable was popular in several proposals. In the era pre-JavaScript, there was not an existing way of controlling such things, so it seemed logical to include it in these new proposals.</p>
-	<p>One functional <a href="http://people.opera.com/howcome/2006/phd/archive/tigger.cc.uic.edu/~cmsmcq/style-primitives.html?ref=blog.cloudflare.com" target="_blank">proposal</a>, introduced in 1994 by a gentleman with the name ‘C.M. Sperberg-McQueen’, includes the same behavior functionally:</p>
+	<p>One functional <a href="http://people.opera.com/howcome/2006/phd/archive/tigger.cc.uic.edu/~cmsmcq/style-primitives.html" target="_blank">proposal</a>, introduced in 1994 by a gentleman with the name ‘C.M. Sperberg-McQueen’, includes the same behavior functionally:</p>
 	<pre><code class="language-scheme">(style a
   (block #f)     ; format as inline phrase
   (color blue)   ; in blue if you’ve got it
@@ -187,7 +187,7 @@
 </code></pre>
 	<p>Support for functionality like this could have perhaps truly enabled the dream of separating content from style. Unfortunately this language was plagued by being a bit too extensible, meaning it would have been very possible for its implementation to vary considerably from browser to browser. Additionally, it was published in a series of papers in the academic world, rather than on the www-talk mailing list where most of the functional work was being done. It was never integrated into a mainstream browser.</p>
 	<h3 id="theghostofcsspast">The Ghost of CSS Past</h3>
-	<p>The language which, at least in name, would directly lead to CSS was called CHSS (Cascading HTML Style Sheets), <a href="http://people.opera.com/howcome/2006/phd/archive/www.w3.org/People/howcome/p/cascade.html?ref=blog.cloudflare.com" target="_blank">proposed</a> in 1994 by Håkon W Lie.</p>
+	<p>The language which, at least in name, would directly lead to CSS was called CHSS (Cascading HTML Style Sheets), <a href="http://people.opera.com/howcome/2006/phd/archive/www.w3.org/People/howcome/p/cascade.html" target="_blank">proposed</a> in 1994 by Håkon W Lie.</p>
 	<p>Like most good ideas, the original proposal was pretty nutty.</p>
 	<pre><code class="language-css">h1.font.size = 24pt 100%
 h2.font.size = 20pt 40%
@@ -212,9 +212,9 @@ DISPLAY_HEIGHT &gt; 30cm ? http://NYT.com/style : http://LeMonde.fr/style
 	<h3 id="youknowwhathappenednext">You Know What Happened Next</h3>
 	<blockquote>
 		<p>Microsoft is absolutely committed to open standards, especially on the Internet.</p>
-		<p>— John Ludeman <a href="http://1997.webhistory.org/www.lists/www-talk.1994q4/0003.html?ref=blog.cloudflare.com" target="_blank"><code class="year">1994</code></a></p>
+		<p>— John Ludeman <a href="http://1997.webhistory.org/www.lists/www-talk.1994q4/0003.html" target="_blank"><code class="year">1994</code></a></p>
 	</blockquote>
-	<p>Håkon Lie went on to simplify his proposal and, working with Bert Bos, published the first version of the CSS spec in December of 1996. Ultimately he would go on to write his doctoral thesis on the creation of CSS, <a href="http://people.opera.com/howcome/2006/phd/?ref=blog.cloudflare.com" target="_blank">a document</a> which was heroically helpful to me in writing this.</p>
+	<p>Håkon Lie went on to simplify his proposal and, working with Bert Bos, published the first version of the CSS spec in December of 1996. Ultimately he would go on to write his doctoral thesis on the creation of CSS, <a href="http://people.opera.com/howcome/2006/phd/" target="_blank">a document</a> which was heroically helpful to me in writing this.</p>
 	<p>Compared to many of the other proposals, one notable fact of CSS is its simplicity. It can be easily parsed, easily written, and easily read. As with many other examples over the history of the Internet, it was the technology which was easiest for a beginner to pick up which won, rather than those which were most powerful for an expert.</p>
 	<p>It is itself a reminder of how incidental much of this innovation can be. For example, support for contextual selectors (<code>body ol li</code>) was only added because Netscape already had a method for removing borders from images that were hyperlinks, and it seemed necessary to implement everything the popular browser could do. The functionality itself added a significant delay to the implementation of CSS, as at the time most browsers didn’t keep a ‘stack’ of tags as they parsed HTML. This meant the parsers had to be redesigned to support CSS fully.</p>
 	<p>Challenges like this (and the widespread use of non-standard HTML tags to define style) meant CSS was not usable until 1997, and was not fully supported by any single browser until March of 2000. As any developer can tell you, browser support wasn’t anywhere close to standards compliant until just a few years ago, more than fifteen years after CSS’ release.</p>
@@ -251,18 +251,18 @@ ids.z098y.letterSpacing = "0.3em"
 
 tag.UL.apply = evaluate_style();
 </code></pre>
-	<p>The idea that we should simplify the dividing line between styles and scripts is certainly reasonable, and is now even experiencing a resurgence of sorts in the <a href="https://facebook.github.io/react/tips/inline-styles.html?ref=blog.cloudflare.com" target="_blank">React community</a>.</p>
-	<p>JavaScript was itself a very new language at this time, but via some reverse engineering Internet Explorer had already added support for it into IE3 (as “JScript”). The bigger issue was the community had already rallied around CSS, and Netscape was, at this time, viewed as <a href="https://lists.w3.org/Archives/Public/www-style/1996Jun/0068.html?ref=blog.cloudflare.com" target="_blank">bullies</a> by much of the standards community. When Netscape did <a href="https://www.w3.org/Submission/1996/1/WD-jsss-960822?ref=blog.cloudflare.com" target="_blank">submit</a> JSSS to the standards committee, it fell on deaf ears. Three years later, Netscape 6 dropped support for JSSS and it died a (mostly) quiet death.</p>
+	<p>The idea that we should simplify the dividing line between styles and scripts is certainly reasonable, and is now even experiencing a resurgence of sorts in the <a href="https://facebook.github.io/react/tips/inline-styles.html" target="_blank">React community</a>.</p>
+	<p>JavaScript was itself a very new language at this time, but via some reverse engineering Internet Explorer had already added support for it into IE3 (as “JScript”). The bigger issue was the community had already rallied around CSS, and Netscape was, at this time, viewed as <a href="https://lists.w3.org/Archives/Public/www-style/1996Jun/0068.html" target="_blank">bullies</a> by much of the standards community. When Netscape did <a href="https://www.w3.org/Submission/1996/1/WD-jsss-960822" target="_blank">submit</a> JSSS to the standards committee, it fell on deaf ears. Three years later, Netscape 6 dropped support for JSSS and it died a (mostly) quiet death.</p>
 	<h3 id="whatmighthavebeen">What Might Have Been</h3>
-	<p>Thanks to some <a href="https://www.w3.org/Style/CSS/Test/CSS1/current/?ref=blog.cloudflare.com" target="_blank">public shaming</a> by the W3C, Internet Explorer 5.5 launched with nearly complete CSS1 support in the year 2000. Of course, as we now know, browser CSS implementations were heroically buggy and difficult to work with for at least another decade.</p>
+	<p>Thanks to some <a href="https://www.w3.org/Style/CSS/Test/CSS1/current/" target="_blank">public shaming</a> by the W3C, Internet Explorer 5.5 launched with nearly complete CSS1 support in the year 2000. Of course, as we now know, browser CSS implementations were heroically buggy and difficult to work with for at least another decade.</p>
 	<p>Today the situation has fortunately improved dramatically, allowing developers to finally realize the dream of writing code once and trusting it will function (almost) the same from browser to browser.</p>
 	<p>Our conclusion from all of this is the realization of just how arbitrary and contextual many of the decisions which govern our current tools were. If CSS was designed the way it is just to satisfy the constraints of 1996, then maybe that gives us permission 20 years later to do things a little differently.</p>
 	<hr>
 	<ul class="closing-cards">
 		<li class="closing-card">
 			<p>Use Cloudflare Apps to build tools which can be installed by millions of sites.</p>
-			<p><a href="https://www.cloudflare.com/apps/developer/docs/getting-started?ref=blog.cloudflare.com" target="_blank">Build an app →</a></p>
-			<p>If you're in San Francisco, London or Austin: <a href="mailto:work-with-apps@cloudflare.com?subject=Let%27s+chat+about+working+on+the+apps+team%21&amp;ref=blog.cloudflare.com" target="_blank">work with us</a>.</p>
+			<p><a href="https://www.cloudflare.com/apps/developer/docs/getting-started" target="_blank">Build an app →</a></p>
+			<p>If you're in San Francisco, London or Austin: <a href="https://blog.cloudflare.com/the-languages-which-almost-became-css/MaILTo:work-with-apps@cloudflare.com?subject=Let%27s%20chat%20about%20working%20on%20the%20apps%20team%21">work with us</a>.</p>
 		</li>
 		<li id="mc_embed_signup" class="closing-card">
 			<form action="//cloudflare.us5.list-manage.com/subscribe/post?u=d80d4d74266c0c044b0bcd7ca&amp;id=cb12c756a6" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate="">
