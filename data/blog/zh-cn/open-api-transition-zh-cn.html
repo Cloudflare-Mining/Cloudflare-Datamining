@@ -1,16 +1,16 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-44.png" class="kg-image" alt="The Cloudflare API now uses OpenAPI schemas"></figure>
-	<p>今天，我们宣布 <a href="https://github.com/cloudflare/api-schemas" target="_blank">Cloudflare API 的 OpenAPI 模式</a>全面上市。这些模式通过 GitHub 发布，并将定期更新 Cloudflare 添加和更新的 API。OpenAPI 是广泛采用的标准，用于以机器可读的格式定义 API。OpenAPI 模式让我们的 API 能够插入各种工具中，为我们自己、也为客户加速开发流程。对内部而言，我们将可以更轻松地维护和更新 API。在讨论这些好处之前，我们先介绍一些基础知识。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-44.png" class="kg-image" alt="The Cloudflare API now uses OpenAPI schemas" loading="lazy"></figure>
+	<p>今天，我们宣布 <a href="https://github.com/cloudflare/api-schemas?ref=blog.cloudflare.com" target="_blank">Cloudflare API 的 OpenAPI 模式</a>全面上市。这些模式通过 GitHub 发布，并将定期更新 Cloudflare 添加和更新的 API。OpenAPI 是广泛采用的标准，用于以机器可读的格式定义 API。OpenAPI 模式让我们的 API 能够插入各种工具中，为我们自己、也为客户加速开发流程。对内部而言，我们将可以更轻松地维护和更新 API。在讨论这些好处之前，我们先介绍一些基础知识。</p>
 	<h2 id="-openapi-">什么是 OpenAPI？</h2>
-	<p>互联网大部分内容构建在 API（应用程序编程接口）基础之上，或将 API 作为服务提供给世界各地的客户。计算机因此能够以一种标准化的方式相互对话。OpenAPI 是一个广泛采用的关于如何定义 API 的标准，让其他机器能够可靠地解析并以有趣的方式使用这些定义。Cloudflare 自己的 <a href="https://developers.cloudflare.com/api-shield/security/schema-validation/" target="_blank">API Shield 产品</a>使用 OpenAPI 模式来提供模式验证，以确保只有符合语法规则的 API 请求会发送到您的源站。</p>
-	<p>Cloudflare 本身有一个 API，客户可以利用它从互联网的其他地方连接我们的安全和性能产品。我们如何定义我们自己的 API？过去我们使用的标准为 <a href="https://github.com/json-schema-org/json-hyperschema-spec" target="_blank">JSON Hyper-Schema</a>。该标准为我们提供了很好的服务，但随着时间的推移，我们希望采用更多既能使我们内部受益、又能减化客户工作的工具。过去几年中，OpenAPI 社区蓬勃发展，提供了许多 JSON Hyper-Schema 无法提供的功能，我们将在后面一一讨论。现在我们使用的是 OpenAPI。</p>
-	<p>您可<a href="https://oai.github.io/Documentation/start-here.html" target="_blank">在此</a>进一步了解 OpenAPI 本身。有一个充分理解的开放标准来定义我们的 API，因此可以使用共享工具和基础设施来读取这些标准定义。我们来看几个示例。</p>
+	<p>互联网大部分内容构建在 API（应用程序编程接口）基础之上，或将 API 作为服务提供给世界各地的客户。计算机因此能够以一种标准化的方式相互对话。OpenAPI 是一个广泛采用的关于如何定义 API 的标准，让其他机器能够可靠地解析并以有趣的方式使用这些定义。Cloudflare 自己的 <a href="https://developers.cloudflare.com/api-shield/security/schema-validation/?ref=blog.cloudflare.com" target="_blank">API Shield 产品</a>使用 OpenAPI 模式来提供模式验证，以确保只有符合语法规则的 API 请求会发送到您的源站。</p>
+	<p>Cloudflare 本身有一个 API，客户可以利用它从互联网的其他地方连接我们的安全和性能产品。我们如何定义我们自己的 API？过去我们使用的标准为 <a href="https://github.com/json-schema-org/json-hyperschema-spec?ref=blog.cloudflare.com" target="_blank">JSON Hyper-Schema</a>。该标准为我们提供了很好的服务，但随着时间的推移，我们希望采用更多既能使我们内部受益、又能减化客户工作的工具。过去几年中，OpenAPI 社区蓬勃发展，提供了许多 JSON Hyper-Schema 无法提供的功能，我们将在后面一一讨论。现在我们使用的是 OpenAPI。</p>
+	<p>您可<a href="https://oai.github.io/Documentation/start-here.html?ref=blog.cloudflare.com" target="_blank">在此</a>进一步了解 OpenAPI 本身。有一个充分理解的开放标准来定义我们的 API，因此可以使用共享工具和基础设施来读取这些标准定义。我们来看几个示例。</p>
 	<h2 id="-cloudflare-openapi-">使用 Cloudflare 的 OpenAPI 模式</h2>
-	<p>大多数客户并不需要自己使用模式来了解其价值。第一个利用 OpenAPI 模式的系统是我们<a href="https://blog.cloudflare.com/building-a-better-developer-experience-through-api-documentation/">今天宣布的</a><a href="https://developers.cloudflare.com/api/" target="_blank">新 API 文档</a>。因为我们现在有 OpenAPI 模式，所以我们利用开源工具 <a href="https://stoplight.io/open-source/elements" target="_blank">Stoplight Elements</a> 来帮助生成这个新的文档站点。我们因此可以淘汰以前那个难以维护的定制站点。此外，Cloudflare 的许多工程师都熟悉 OpenAPI，因此团队可以更快地编写新模式，而且在定义新 API 时使用团队理解的标准，出错可能性降低。</p>
+	<p>大多数客户并不需要自己使用模式来了解其价值。第一个利用 OpenAPI 模式的系统是我们<a href="https://blog.cloudflare.com/building-a-better-developer-experience-through-api-documentation/">今天宣布的</a><a href="https://developers.cloudflare.com/api/?ref=blog.cloudflare.com" target="_blank">新 API 文档</a>。因为我们现在有 OpenAPI 模式，所以我们利用开源工具 <a href="https://stoplight.io/open-source/elements?ref=blog.cloudflare.com" target="_blank">Stoplight Elements</a> 来帮助生成这个新的文档站点。我们因此可以淘汰以前那个难以维护的定制站点。此外，Cloudflare 的许多工程师都熟悉 OpenAPI，因此团队可以更快地编写新模式，而且在定义新 API 时使用团队理解的标准，出错可能性降低。</p>
 	<p>不过，有一些方法可以直接利用这些模式。OpenAPI 社区有大量工具，只需要一套模式就可以使用。模拟 API 和库的生成便是两个示例。</p>
 	<h3 id="-cloudflare-api">模拟 Cloudflare 的 API</h3>
 	<p>假设您有调用 Cloudflare 的 API 代码，您希望能够在本地轻松运行单元测试或在您的 CI/CD 管道中运行集成测试。虽然您可以在每次运行时直接调用 Cloudflare 的 API，但由于以下原因，您可能并不希望这样做。首先，您可能想频繁运行测试，管理资源的创建和拆除成为一件痛苦的事。此外，在许多此类测试中，您不一定是要验证 Cloudflare 的逻辑，而是验证您自己的系统的行为。在这种情况下，模拟 Cloudflare 的 API 将是理想的选择，因为您可以确信您没有违反 Cloudflare 的 API 合约，但不需要担心管理真实资源的细节问题。此外，您可以模拟不同的场景，例如限制速率或接收 500 次错误。让您能够针对通常很罕见、但最终会产生严重影响的情况测试您的代码。</p>
-	<p>例如，可以使用 <a href="https://docs.stoplight.io/docs/prism/83dbbd75532cf-http-mocking" target="_blank">Stoplight Prism</a> 模拟 Cloudflare 的 API，以达到测试目的。利用 Cloudflare 的 API 模式的本地副本，您可以运行以下命令来启动一个本地模拟服务器：</p><!--kg-card-begin: markdown-->
+	<p>例如，可以使用 <a href="https://docs.stoplight.io/docs/prism/83dbbd75532cf-http-mocking?ref=blog.cloudflare.com" target="_blank">Stoplight Prism</a> 模拟 Cloudflare 的 API，以达到测试目的。利用 Cloudflare 的 API 模式的本地副本，您可以运行以下命令来启动一个本地模拟服务器：</p><!--kg-card-begin: markdown-->
 	<pre><code>$ docker run --init --rm \
   -v /home/user/git/api-schemas/openapi.yaml:/tmp/openapi.yaml \
   -p 4010:4010 stoplight/prism:4 \
@@ -32,7 +32,7 @@
 	<!--kg-card-end: markdown-->
 	<p>这意味着开发速度更快，测试运行时间更短，同时还能在合并或部署之前及早发现 API 合约问题。</p>
 	<h3 id="-">库的生成</h3>
-	<p>Cloudflare 拥有许多编程语言的库，例如 <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest" target="_blank">Terraform</a> 和 <a href="https://github.com/cloudflare/cloudflare-go" target="_blank">Go</a>，但我们并不支持所有可能的编程语言。幸运的是，使用 <a href="https://github.com/OpenAPITools/openapi-generator" target="_blank">OpenAPI 生成器</a>等工具，您可以输入 Cloudflare 的 API 模式并生成各种语言的库，然后在您的代码中使用这些库与 Cloudflare 的 API 对话。例如，您可以使用以下命令生成一个 Java 库：</p><!--kg-card-begin: markdown-->
+	<p>Cloudflare 拥有许多编程语言的库，例如 <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest?ref=blog.cloudflare.com" target="_blank">Terraform</a> 和 <a href="https://github.com/cloudflare/cloudflare-go?ref=blog.cloudflare.com" target="_blank">Go</a>，但我们并不支持所有可能的编程语言。幸运的是，使用 <a href="https://github.com/OpenAPITools/openapi-generator?ref=blog.cloudflare.com" target="_blank">OpenAPI 生成器</a>等工具，您可以输入 Cloudflare 的 API 模式并生成各种语言的库，然后在您的代码中使用这些库与 Cloudflare 的 API 对话。例如，您可以使用以下命令生成一个 Java 库：</p><!--kg-card-begin: markdown-->
 	<pre><code>git clone https://github.com/openapitools/openapi-generator
 cd openapi-generator
 mvn clean package
