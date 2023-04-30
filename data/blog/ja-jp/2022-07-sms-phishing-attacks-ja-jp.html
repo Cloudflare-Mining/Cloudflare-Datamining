@@ -1,24 +1,24 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/08/unnamed-1.png" class="kg-image" alt="The mechanics of a sophisticated phishing scam and how we stopped it" loading="lazy"></figure>
-	<p>昨日（2022年8月8日）、Twilioが<a href="https://www.twilio.com/blog/august-2022-social-engineering-attack?ref=blog.cloudflare.com" target="_blank">標的型フィッシング攻撃による侵害を受けた</a>と発表しました。同じ頃、Cloudflareの従業員を標的とする、よく似た特性の攻撃がありました。従業員個人はフィッシングメッセージに引っ掛かりましたが、当社は自社の<a href="https://www.cloudflare.com/ja-jp/cloudflare-one/?ref=blog.cloudflare.com" target="_blank">Cloudflare One製品</a>を使用し、各従業員に支給した物理的セキュリティキー（ハードキー）を使わなければアプリケーションにアクセスできないようにしていたため、攻撃を阻止することができました。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/08/unnamed-1.png" class="kg-image" alt="The mechanics of a sophisticated phishing scam and how we stopped it"></figure>
+	<p>昨日（2022年8月8日）、Twilioが<a href="https://www.twilio.com/blog/august-2022-social-engineering-attack" target="_blank">標的型フィッシング攻撃による侵害を受けた</a>と発表しました。同じ頃、Cloudflareの従業員を標的とする、よく似た特性の攻撃がありました。従業員個人はフィッシングメッセージに引っ掛かりましたが、当社は自社の<a href="https://www.cloudflare.com/ja-jp/cloudflare-one/" target="_blank">Cloudflare One製品</a>を使用し、各従業員に支給した物理的セキュリティキー（ハードキー）を使わなければアプリケーションにアクセスできないようにしていたため、攻撃を阻止することができました。</p>
 	<p>Cloudflareシステムのセキュリティ侵害は一切なかったことを確認しました。当社の<a href="https://blog.cloudflare.com/ja-jp/introducing-cloudforce-one-threat-operations-and-threat-research-ja-jp/">Cloudflare One脅威インテリジェンスチーム</a>は、攻撃のからくりを調べて攻撃者追跡に役立つ重要証拠を集めるため、更なる分析を行いました。</p>
 	<p>それは従業員とシステムを標的とし、たいていの企業が侵入されてしまうと思われるような高度な攻撃でした。攻撃者が複数企業を狙っていることから、他社がこの攻撃を認識して軽減できるように、今回の事件の概略をここで説明したいと思います。</p>
 	<h2 id="-">標的型テキストメッセージ</h2>
-	<p>2022年7月20日、Cloudflare Securityチームに、「Cloudflare Oktaのログインページらしきページに誘導する正当そうなテキストメッセージを従業員が受け取った」という通報がありました。このメッセージの受信は2022-07-20 22:50 UTCに始まり、それから1分も経たないうちに、少なくとも76名の従業員の私用電話と業務用電話にテキストメッセージが届きました。いくつかのメッセージは従業員の家族にも送られました。攻撃者がどのようにして従業員の電話番号リストを集めたのかはまだ判明していませんが、従業員ディレクトリサービスのアクセスログを確認したところ、侵害の兆候は見られませんでした。</p>
+	<p>2022年7月20日、Cloudflare Securityチームに、「Cloudflare Oktaのログインページらしきページに誘導する正当そうなテキストメッセージを従業員が受け取った」という通報がありました。このメッセージの受信は2022-07-22 22:50 UTCに始まり、それから1分も経たないうちに、少なくとも76名の従業員の私用電話と業務用電話にテキストメッセージが届きました。いくつかのメッセージは従業員の家族にも送られました。攻撃者がどのようにして従業員の電話番号リストを集めたのかはまだ判明していませんが、従業員ディレクトリサービスのアクセスログを確認したところ、侵害の兆候は見られませんでした。</p>
 	<p>Cloudflareには年中無休体制のセキュリティインシデント対応チーム（SIRT）があり、Cloudflareの各従業員は不審なことがあれば必ずSIRTへ通報するよう訓練されています。SIRTへの通報の90%以上は脅威でないことが判明していますが、従業員はどんなことでも通報し、通報しすぎを恐れないよう指導されています。しかし、今回SIRTへ通報されたのは真の脅威でした。</p>
 	<p>従業員が受信したテキストメッセージは次のようなものでした。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/08/image3-5.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>送信元はT-MobileのSIMカードに関係する3つの電話番号 (754) 268-9387、 (205) 946-7573、(754) 364-6683、(561) 524-5989）で、公式に見えるドメインcloudflare-okta.comへのリンクが貼られていました。このドメインはドメインレジストラのPorkbun経由で2022-07-20 22:13:04 UTCに登録されており、それから40分も経たないうちに大規模フィッシング攻撃が始まっています。</p>
-	<p>Cloudflareは<a href="https://www.cloudflare.com/products/registrar/custom-domain-protection/?ref=blog.cloudflare.com" target="_blank">安全なレジストラ製品</a>を構築しましたが、その目的の1つはCloudflareブランドを使用するドメインが登録された時に検知して停止できるようにするためでした。しかし、問題のドメインは攻撃直前に登録されたため、新規の「.com」登録としてまだ公表されておらず、当社システムによる登録検知と当社チームによるドメイン停止要請が間に合わなかったのです。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/08/image3-5.png" class="kg-image"></figure>
+	<p>送信元はT-MobileのSIMカードに関係する3つの電話番号（ (754) 268-9387、(205) 946-7573、(561) 524-5989）で、公式に見えるドメインcloudflare-okta.comへのリンクが貼られていました。このドメインはドメインレジストラのPorkbun経由で2022-07-20 22:13:04 UTCに登録されており、それから40分も経たないうちに大規模フィッシング攻撃が始まっています。</p>
+	<p>Cloudflareは<a href="https://www.cloudflare.com/products/registrar/custom-domain-protection/" target="_blank">安全なレジストラ製品</a>を構築しましたが、その目的の1つはCloudflareブランドを使用するドメインが登録された時に検知して停止できるようにするためでした。しかし、問題のドメインは攻撃直前に登録されたため、新規の「.com」登録としてまだ公表されておらず、当社システムによる登録検知と当社チームによるドメイン停止要請が間に合わなかったのです。</p>
 	<p>リンクをクリックすると、フィッシングページへ誘導されるようになっていました。DigitalOceanがホストするフィッシングページは、下のようなものでした。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/08/image1-13.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/08/image1-13.png" class="kg-image"></figure>
 	<p>CloudflareはIDプロバイダーとしてOktaを使っています。フィッシングページは正当なOktaログインページと瓜二つのデザインで、訪問者すべてにユーザー名とパスワードを入力するよう促しました。</p>
 	<h2 id="--1">リアルタイムフィッシング</h2>
 	<p>従業員が受信したテキストとそのコンテンツを、既に攻撃された他社がVirusTotalなどのサービスに投稿していたことから、当社でこのフィッシング攻撃のペイロードを分析することができました。被害者がフィッシングページの入力を完了すると、資格情報がメッセージングサービスのTelegramで攻撃者へ即時転送されました。このページではタイムベースワンタイムパスワード（TOTP）コードの入力も促されるため、こうしたリアルタイム転送は重大問題でした。</p>
 	<p>おそらくは、攻撃者が資格情報をリアルタイムで受け取り、それを被害企業の実際のログインページに入力します。すると、多くの企業はコードを生成してSMSで従業員へ送信するか、パスワードジェネレーターで表示します。従業員はそのTOTPコードをフィッシングサイトで入力し、その情報もまた、攻撃者へ転送されます。攻撃者は、そのTOTPコードが無効になる前にそれを使って被害企業の実際のログインページにアクセスし、たいていの二要素認証の実装を突破してしまいます。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/08/image2-6_1_ja-JP.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/08/image2-6_1_ja-JP.png" class="kg-image"></figure>
 	<h3 id="--2">完璧でなくても保護</h3>
-	<p>当社で確認したところ、Cloudflareの従業員3名がフィッシングメッセージに引っ掛かって資格情報を入力していました。ただ、CloudflareではTOTPコードは使わず、各従業員にはYubiKeyなどのベンダーが発行するFIDO2準拠のセキュリティキーを支給しています。ハードキーはユーザーに紐づけて<a href="https://www.yubico.com/blog/creating-unphishable-security-key/?ref=blog.cloudflare.com" target="_blank">オリジンバインディング</a>を実装しているため、今回のような高度なリアルタイムフィッシング攻撃でも当社システムへのログインに必要な情報を集めることはできません。攻撃者は不正入手したユーザー名とパスワードを使ってシステムにログインしようと試みましたが、ハードキーの要件を掻い潜ることはできませんでした。</p>
+	<p>当社で確認したところ、Cloudflareの従業員3名がフィッシングメッセージに引っ掛かって資格情報を入力していました。ただ、CloudflareではTOTPコードは使わず、各従業員にはYubiKeyなどのベンダーが発行するFIDO2準拠のセキュリティキーを支給しています。ハードキーはユーザーに紐づけて<a href="https://www.yubico.com/blog/creating-unphishable-security-key/" target="_blank">オリジンバインディング</a>を実装しているため、今回のような高度なリアルタイムフィッシング攻撃でも当社システムへのログインに必要な情報を集めることはできません。攻撃者は不正入手したユーザー名とパスワードを使ってシステムにログインしようと試みましたが、ハードキーの要件を掻い潜ることはできませんでした。</p>
 	<p>しかし、このフィッシングページは単に資格情報とTOTPコードを狙うだけではありませんでした。上記の段階を経てしまうと、続いてAnyDeskのリモートアクセスソフトウェアを含んだフィッシングペイロードのダウンロードが始まるようになっていたのです。このソフトウェアがインストールされると、攻撃者は被害者の端末をリモート操作できるようになります。この段階まで達した当社チームメンバーはいなかったことが確認されていますが、仮にいたとしても、当社のエンドポイントセキュリティがリモートアクセスソフトウェアのインストールを阻止していたことでしょう。</p>
 	<h3 id="--3">当社の対応</h3>
 	<p>このインシデントに関して当社がとった主な対応は、以下の通りです。</p>
@@ -36,7 +36,7 @@
 	<p>攻撃の後、当社はすべてのシステムログを精査し、今回の攻撃者のフィンガープリントが他にないか確認しました。Cloudflare AccessがすべてのCloudflareアプリケーションの中央制御ポイントになっているため、当社はログを見て、攻撃者がシステムに侵入した痕跡を探すことができました。従業員の電話が狙われたため、従業員のディレクトリプロバイダーのログも精査しましたが、安全性が損なわれた証拠は一切見つかりませんでした。</p>
 	<h3 id="--4">学んだ教訓と追加措置</h3>
 	<p>私たちは攻撃があるたびに学びます。今回は阻止できましたが、学んだことを基に調整は加えています。登録後24時間以内のドメインで運営されるサイトへのアクセスは、制限するかサンドボックスモードで実行するようにCloudflare Gatewayの設定を調整しています。また、“cloudflare”、“okta”、“sso”、“2fa”といった語を含むホワイトリスト非掲載サイトは、当社のブラウザー分離技術を使って運営します。さらに、Area 1 のフィッシュ識別技術を広く活用し、Webをスキャンして、Cloudflareを標的とすべく設計されたページをことごとく検出します。最後に、Accessの実装を厳格化して、未知のVPNや住宅用プロキシ、インフラプロバイダーからのログインをすべて阻止します。これらはすべて、当社がお客様に提供するのと同一製品の標準的な機能です。</p>
-	<p>今回の攻撃は、当社で成功している3点の重要性を改めて感じさせるものでした。第一に、すべてのアプリケーションへのアクセスにハードキーを要件とすること。<a href="https://krebsonsecurity.com/2018/07/google-security-keys-neutralized-employee-phishing/?ref=blog.cloudflare.com" target="_blank">Googleと同様</a>、当社でもハードキーの導入以来、フィッシング攻撃が成功した例はありません。Cloudflare Accessのようなツールで、レガシーアプリケーションでもハードキーをサポートしやすくなっています。当社がどのようにハードキーを導入したかに関心をお持ちの企業は、<a href="mailto:cloudforceone-irhelp@cloudflare.com?ref=blog.cloudflare.com" target="_blank">cloudforceone-irhelp@cloudflare.com</a>へご連絡ください。当社のセキュリティチームが、導入プロセスで学んだベストプラクティスを喜んで共有させていただきます。</p>
+	<p>今回の攻撃は、当社で成功している3点の重要性を改めて感じさせるものでした。第一に、すべてのアプリケーションへのアクセスにハードキーを要件とすること。<a href="https://krebsonsecurity.com/2018/07/google-security-keys-neutralized-employee-phishing/" target="_blank">Googleと同様</a>、当社でもハードキーの導入以来、フィッシング攻撃が成功した例はありません。Cloudflare Accessのようなツールで、レガシーアプリケーションでもハードキーをサポートしやすくなっています。当社がどのようにハードキーを導入したかに関心をお持ちの企業は、<a href="mailto:cloudforceone-irhelp@cloudflare.com" target="_blank">cloudforceone-irhelp@cloudflare.com</a>へご連絡ください。当社のセキュリティチームが、導入プロセスで学んだベストプラクティスを喜んで共有させていただきます。</p>
 	<p>第二に、自社の従業員とシステムの保護にCloudflareの独自技術を使っていること。常に攻撃者の優位に立つには、AccessやGatewayといったCloudflare Oneのソリューションが必須です。当社はAccessの実装を、すべてのアプリケーションにハードキーが必要となるように構成しました。Accessは、すべてのアプリケーション認証を扱う中央ロギングロケーションにもなりますし、必要に応じて、侵害された可能性がある従業員のセッションもここで終了させることができます。Gatewayは、今回のような悪性サイトをすばやくシャットダウンし、どの従業員が攻撃に引っ掛かったかを把握できるようにします。これらはすべて、Cloudflare Oneスイートの一環としてCloudflareのお客様に提供している機能であり、今回の攻撃でその有効性が実証されました。</p>
 	<p>第三に、セキュリティには、偏執的な用心深さを備えつつ人を責めない企業文化が極めて重要だということ。フィッシング詐欺に引っ掛かった3名の従業員は処分されませんでした。私たちはみな人間であり、過ちを犯します。重要なのは、過ちを犯した時にそれを報告し、決してごまかさないことです。今回のインシデントは、Cloudflareの各チームメンバーにとってセキュリティが仕事の一部になっている理由を示す1つの例となりました。</p>
 	<h3 id="--5">イベントの詳細タイムライン</h3><!--kg-card-begin: markdown-->
@@ -168,16 +168,16 @@
 			<tr>
 				<td class="tg-0pky">147[.]182[.]132[.]52でホストされるcloudflare-okta[.]com</td>
 				<td class="tg-0pky">フィッシングURL</td>
-				<td class="tg-0pky"><a href="https://attack.mitre.org/techniques/T1566/002/?ref=blog.cloudflare.com" target="_blank">T1566.002</a>: フィッシング：標的型フィッシングのリンクをユーザーに送信</td>
+				<td class="tg-0pky"><a href="https://attack.mitre.org/techniques/T1566/002/" target="_blank">T1566.002</a>: フィッシング：標的型フィッシングのリンクをユーザーに送信</td>
 			</tr>
 			<tr>
 				<td class="tg-0pky">64547b7a4a9de8af79ff0eefadde2aed10c17f9d8f9a2465c0110c848d85317a</td>
 				<td class="tg-0pky">SHA-256</td>
-				<td class="tg-0pky"><a href="https://attack.mitre.org/techniques/T1219/?ref=blog.cloudflare.com" target="_blank">T1219</a>: 脅威アクターがリモートアクセスソフトウェアを配信</td>
+				<td class="tg-0pky"><a href="https://attack.mitre.org/techniques/T1219/" target="_blank">T1219</a>: 脅威アクターがリモートアクセスソフトウェアを配信</td>
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
 	<h2 id="--7">可能な対策</h2>
 	<p>お客様の環境で同様の攻撃が見られる場合は、今すぐcloudforceone-irhelp@cloudflare.comまでご連絡ください。ビジネスを安全に維持するためのベストプラクティスを喜んで共有させていただきます。また、当社のセキュリティキー実装方法について詳しくお知りになりたい方は、当社の<a href="https://blog.cloudflare.com/how-cloudflare-implemented-fido2-and-zero-trust/">https://blog.cloudflare.com/how-cloudflare-implemented-fido2-and-zero-trust/ブログ記事</a>をお読みいただくか、securitykeys@cloudflare.comまでご連絡ください。</p>
-	<p>最後に、当社と共に次の攻撃の検出と軽減に取り組んでみたいと思いませんか？当社は現在、Detection and Responseチームの人材募集を行っています。どうぞ<a href="https://boards.greenhouse.io/cloudflare/jobs/4364485?gh_jid=4364485&amp;ref=blog.cloudflare.com" target="_blank">https://boards.greenhouse.io/cloudflare/jobs/4364485?gh_jid=4364485ご応募ください</a>！</p>
+	<p>最後に、当社と共に次の攻撃の検出と軽減に取り組んでみたいと思いませんか？当社は現在、Detection and Responseチームの人材募集を行っています。どうぞ<a href="https://boards.greenhouse.io/cloudflare/jobs/4364485?gh_jid=4364485" target="_blank">https://boards.greenhouse.io/cloudflare/jobs/4364485?gh_jid=4364485ご応募ください</a>！</p>
 </div>

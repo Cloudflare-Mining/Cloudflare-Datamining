@@ -1,8 +1,8 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image5-11.png" class="kg-image" alt="Announcing SCIM support for Cloudflare Access &amp; Gateway" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image5-11.png" class="kg-image" alt="Announcing SCIM support for Cloudflare Access &amp; Gateway"></figure>
 	<p>今天，我们很高兴地宣布，Cloudflare Access 和 Gateway 现在支持跨域身份管理系统 (SCIM) 协议。在深入分析之前，我们先来回顾一下 SCIM、Access 和 Gateway 分别是什么。</p>
-	<p><a href="https://www.rfc-editor.org/rfc/rfc7642.txt?ref=blog.cloudflare.com" target="_blank">SCIM</a> 是一种协议，允许组织在多个系统和域之间管理用户身份和资源访问权限。它常用于自动执行创建、更新和删除用户帐户与权限的过程，并使这些帐户和权限在不同系统之间保持同步。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/Access-SCIM-integration_CN-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p><a href="https://www.rfc-editor.org/rfc/rfc7642.txt" target="_blank">SCIM</a> 是一种协议，允许组织在多个系统和域之间管理用户身份和资源访问权限。它常用于自动执行创建、更新和删除用户帐户与权限的过程，并使这些帐户和权限在不同系统之间保持同步。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/Access-SCIM-integration_CN-1.png" class="kg-image"></figure>
 	<p>例如，大部分组织都有标识提供程序，如 Okta 或 Azure Active Directory，标识提供程序会存储有关其员工的信息，如姓名、地址和职位。组织还可能使用基于云的应用程序进行协作。为了访问基于云的应用程序，员工需要创建帐户并使用用户名和密码登录。无需手动创建和管理这些帐户，组织可以使用 SCIM 自动执行该过程。本地系统和基于云的应用程序都配置为支持 SCIM。 </p>
 	<p>向标识提供程序添加新员工或从中移除员工时，SCIM 会使用本地系统中的信息，在基于云的应用程序中自动创建该员工的帐户。如果标识提供程序更新了员工信息，例如职位变更，SCIM 会在基于云的应用程序中自动更新对应信息。如果员工离开组织，可以使用 SCIM 从两个系统中删除其帐户。 </p>
 	<p>SCIM 帮助组织高效管理多个系统中的用户身份和访问权限，减少手动干预的需要，并确保用户信息是准确、最新的。</p>
@@ -10,20 +10,20 @@
 	<p>同样，Cloudflare Gateway 是一个全面的安全 web 网关 (SWG)，利用与 Access 相同的标识提供程序配置，让管理员可以依据身份构建 DNS、网络和 HTTP 检查策略。用户使用 WARP 客户端通过标识提供程序登录之后，便将根据组织管理员创建的任何策略记录并评估其身份。</p>
 	<h3 id="-scim-">引入 SCIM 之前面临的挑战</h3>
 	<p>在推出 SCIM 之前，如需取消用户配置（例如用户离职、安全漏洞或其他因素），管理员需要在标识提供程序和 Access 中同时删除该用户的访问权限。这是因为，用户的 Cloudflare Zero Trust 会话会一直保持活动，直至该用户再次尝试通过标识提供程序登录为止。这种做法很耗时，而且容易出错，如果没有及时删除用户的访问权限，还会留下安全漏洞隐患。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/1@2x.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/1@2x.png" class="kg-image"></figure>
 	<p>Cloudflare Access 和 Gateway 面临的另一项挑战是，标识提供程序组必须手动输入。这意味着，如果标识提供程序组发生变化，管理员必须手动更新 Cloudflare Zero Trust 仪表板中的值以反映这些变化。这既繁琐又耗时，如果没有及时更新，还会造成不一致的情况。此外，还需要更多资源和专业知识来有效管理该过程。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/pasted-image-0.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/pasted-image-0.png" class="kg-image"></figure>
 	<h3 id="-access-gateway-scim">融入 Access 和 Gateway 的 SCIM</h3>
 	<p>现在，与 SCIM 集成之后，Access 和 Gateway 可以在标识提供程序中停用用户之后自动取消该用户的配置，并同步标识提供程序组。这可确保只有正确组中的活动用户有权访问您组织的资源，从而提高您网络的安全性。</p>
 	<p>通过 SCIM 取消用户配置时，系统会侦听标识提供程序中的任何用户停用事件，然后撤消该用户的所有活动会话。这会立即切断该用户对受 Access 保护的任何应用程序及其通过 Gateway 的 WARP 进行的会话的访问权限。 </p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/pasted-image-0--1-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/pasted-image-0--1-.png" class="kg-image"></figure>
 	<p>此外，利用 SCIM 集成，还可以在 Access 和 Gateway 策略中同步标识提供程序组信息。这意味着，所有标识提供程序组将自动在 Access 和 Gateway 策略构建器中同时可用。还可以选择在用户的组成员资格发生变化时强制该用户重新进行身份验证。</p>
 	<p>例如，如果您想创建一个 Access 策略，该策略仅适用于电子邮箱与 example.com 关联的用户，但风险用户组除外，您可以按如下所示直接从下拉菜单选择风险用户组来构建策略：</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/pasted-image-0--2-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/pasted-image-0--2-.png" class="kg-image"></figure>
 	<p>同样，如果您想创建一个 Gateway 策略来为这些用户阻止 example.com 及其所有子域，您可以创建以下策略：</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/pasted-image-0--3-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/pasted-image-0--3-.png" class="kg-image"></figure>
 	<h3 id="-">下一步</h3>
 	<p>今天，SCIM 支持可用于适用于自托管 Access 应用程序的 Azure Active Directory 和 Okta。未来，我们计划将支持扩展到更多标识提供程序以及用于 SaaS 的 Access。</p>
 	<h2 id="--1">马上试试吧</h2>
-	<p>SCIM 现可供所有 Zero Trust 客户使用，并可用于改善运营，提高总体安全性。立即亲自尝试<a href="https://one.dash.cloudflare.com/?ref=blog.cloudflare.com" target="_blank">在 Access 和 Gateway 中集成 SCIM</a>。</p>
+	<p>SCIM 现可供所有 Zero Trust 客户使用，并可用于改善运营，提高总体安全性。立即亲自尝试<a href="https://one.dash.cloudflare.com/" target="_blank">在 Access 和 Gateway 中集成 SCIM</a>。</p>
 </div>
