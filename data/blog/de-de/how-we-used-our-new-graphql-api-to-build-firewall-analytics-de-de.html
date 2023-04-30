@@ -1,5 +1,5 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/12/image3-11.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/12/image3-11.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Firewall Analytics ist das erste Produkt im Cloudflare-Dashboard, das die neue GraphQL Analytics API verwendet. Alle Produkte im Cloudflare-Dashboard werden mit denselben öffentlichen APIs entwickelt, die wir auch unseren Kunden zur Verfügung stellen. Auf diese Weise lernen auch wir auch die Schwierigkeiten kennen, die beim Einsatz unserer APIs auftreten können. Durch diese Gleichbehandlung können wir unsere eigenen Produkte besser entwickeln und gestalten, zuletzt die neue GraphQL Analytics API, die wir heute voller Stolz präsentieren.</p>
 	<p>Durch Definition der gewünschten Daten und des Antwortformats können wir mit unserer GraphQL Analytics API Prototypen neuer Funktionen erstellen und auf der Basis des Feedbacks unserer Beta-Anwender schnell iterieren. Damit können wir unseren Kunden innerhalb des Cloudflare-Dashboards informativere Analysetools anbieten.</p>
 	<p>Im Rahmen unserer Anwenderstudien und Tests für <a href="https://blog.cloudflare.com/new-firewall-tab-and-analytics/#new-firewall-analytics-for-analysing-events-and-maintaining-optimal-configurations">Firewall Analytics</a> sind häufige Anwendungsfälle im Workflow unserer Kunden zutage getreten:</p>
@@ -11,8 +11,8 @@
 	<p>Mit unserer neuen GraphQL Analytics API können wir all diese Anwendungsfälle abdecken.</p>
 	<h3 id="graphql-grundlagen"><strong>GraphQL-Grundlagen</strong></h3>
 	<p>Bevor wir uns damit beschäftigen, wie wir diese Anwendungsfälle abdecken, werfen wir einen Blick auf das Format einer GraphQL-Abfrage und die Struktur unseres Schemas.</p>
-	<p>Eine GraphQL-Abfrage besteht aus einem strukturierten Satz von Feldern, für die der Server in seiner Antwort entsprechende Werte zurückliefert. Im Schema wird definiert, welche Felder verfügbar sind und welchen Typ sie haben. Weitere Informationen zur GraphQL-Abfragesyntax und zum Format finden Sie in der <a href="https://graphql.org/learn/queries/" target="_blank">offiziellen GraphQL-Dokumentation</a>.</p>
-	<p>Wenn Sie GraphQL-Abfragen ausführen möchten, empfehlen wir, einen GraphQL-Client wie <a href="https://electronjs.org/apps/graphiql" target="_blank">GraphiQL</a> herunterzuladen. Mit diesem können Sie sich unser Schema ansehen und einige Abfragen ausführen. In unseren <a href="https://developers.cloudflare.com/analytics/graphql-api/getting-started/" target="_blank">Entwicklerdokumenten</a> finden Sie eine Dokumentation für den Einstieg.</p>
+	<p>Eine GraphQL-Abfrage besteht aus einem strukturierten Satz von Feldern, für die der Server in seiner Antwort entsprechende Werte zurückliefert. Im Schema wird definiert, welche Felder verfügbar sind und welchen Typ sie haben. Weitere Informationen zur GraphQL-Abfragesyntax und zum Format finden Sie in der <a href="https://graphql.org/learn/queries/?ref=blog.cloudflare.com" target="_blank">offiziellen GraphQL-Dokumentation</a>.</p>
+	<p>Wenn Sie GraphQL-Abfragen ausführen möchten, empfehlen wir, einen GraphQL-Client wie <a href="https://electronjs.org/apps/graphiql?ref=blog.cloudflare.com" target="_blank">GraphiQL</a> herunterzuladen. Mit diesem können Sie sich unser Schema ansehen und einige Abfragen ausführen. In unseren <a href="https://developers.cloudflare.com/analytics/graphql-api/getting-started/?ref=blog.cloudflare.com" target="_blank">Entwicklerdokumenten</a> finden Sie eine Dokumentation für den Einstieg.</p>
 	<p>Auf der obersten Ebene des Schemas befindet sich das Feld viewer. Es stellt den obersten Knoten des Benutzers dar, der die Abfrage ausführt. Innerhalb davon können wir das Feld zones abfragen, um Zonen zu finden, auf die der aktuelle Benutzer Zugriff hat. Dazu geben wir ein filter-Argument an, das ein zoneTag enthält, mit dem wir die Zone identifizieren, auf die wir die Suche einschränken möchten.</p>
 	<pre><code>{
   viewer {
@@ -72,7 +72,7 @@
 }
 </code></pre>
 	<p>Wir können diese Gruppen dann jeweils als Punkt in einem Zeitreihendiagramm darstellen. Durch Zuordnung zum Array firewallEventsAdaptiveGroups können wir das Attribut count für die y-Achse unseres Diagramms verwenden. Von den im Objekt dimensions verschachtelten Feldern verwenden wir action als eindeutige Reihe und die datetimeHour als Zeitstempel auf der x-Achse.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/12/image2-15.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/12/image2-15.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="top-n"><strong>Top N</strong></h3>
 	<p>Nachdem wir eine Aktivitätsspitze erkannt haben, besteht der nächste Schritt darin, Ereignisse mit gemeinsamen Attributen hervorzuheben. Wenn z. B. eine bestimmte IP-Adresse oder ein einzelner User Agent viele Firewall Events auslöst, kann dies ein Zeichen für einen einzelnen Angreifer sein – oder ein falsch-positives Ergebnis.</p>
 	<p>Ähnlich wie oben können wir aggregierte Gruppen von Firewall Events über das Feld firewallEventsAdaptiveGroups abfragen. In diesem Fall können wir jedoch einzelne Felder hinzufügen, für die wir gemeinsame Gruppen suchen möchten, anstatt action und datetimeHour bei den dimensions der Gruppe anzugeben.</p>
@@ -111,7 +111,7 @@
   }
 }</code></pre>
 	<p><em>Hinweis: Wir können das Feld firewallEventsAdaptiveGroups innerhalb einer einzelnen Abfrage mehrmals angeben, jedes Mal mit einem anderen Alias. Auf diese Weise können wir mehrere verschiedene Gruppierungen nach verschiedenen Feldern oder ganz ohne Gruppierungen abrufen. In diesem Fall rufen wir eine Liste der obersten IP-Adressen, der obersten User Agents und die Anzahl aller Events ab.</em></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/12/image5-9.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/12/image5-9.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>In der Benutzeroberfläche kann man dann auf jeden dieser Aliase Bezug nehmen und durch Zuordnung zu den jeweiligen Gruppen jede Zeile mit der zugehörigen Anzahl erzeugen. Dazu wird ein Balken dargestellt, der den Anteil jeder Zeile an der Gesamtanzahl der Events verdeutlicht.</p>
 	<h3 id="sind-diese-firewall-events-falsch-positive-ergebnisse"><strong>Sind diese Firewall Events falsch-positive Ergebnisse?</strong></h3>
 	<p>Nachdem Benutzer Spitzen, Anomalien und gemeinsame Attribute identifiziert hatten, wollten wir weitere Informationen darüber zutage fördern, ob es sich dabei um böswilligen Traffic oder falsch-positive Ergebnisse handelt.</p>
@@ -139,8 +139,8 @@
     }
   }
 }</code></pre>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/12/image4-9.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/12/image4-9.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Sobald wir die einzelnen Events haben, können wir alle angeforderten individuellen Felder erzeugen. Dadurch liefern wir den Anwendern den zusätzlichen Kontext für das Event, mit dem sie feststellen können, ob es sich um ein falsch-positives Ergebnis handelt oder nicht.</p>
 	<p>Auf diese Weise haben wir mit unserer neuer GraphQL Analytics API die Firewall Analytics entwickelt und einige der häufigsten sicherheitsbezogenen Anwendungsfälle unserer Kunden einer Lösung näher gebracht. Wir sind schon gespannt, was Sie damit entwickeln und welche Probleme Sie damit anpacken werden.</p>
-	<p>In unserer <a href="https://developers.cloudflare.com/analytics/graphql-api/getting-started/" target="_blank">Entwicklerdokumentation</a> finden Sie alle notwendigen Informationen für das Abfragen unserer GraphQL Analytics API mit GraphiQL. Mehr über das Schreiben von GraphQL-Abfragen erfahren Sie in der offiziellen <a href="https://graphql.org/learn/queries/" target="_blank">Dokumentation</a> der GraphQL Foundation.<br></p>
+	<p>In unserer <a href="https://developers.cloudflare.com/analytics/graphql-api/getting-started/?ref=blog.cloudflare.com" target="_blank">Entwicklerdokumentation</a> finden Sie alle notwendigen Informationen für das Abfragen unserer GraphQL Analytics API mit GraphiQL. Mehr über das Schreiben von GraphQL-Abfragen erfahren Sie in der offiziellen <a href="https://graphql.org/learn/queries/?ref=blog.cloudflare.com" target="_blank">Dokumentation</a> der GraphQL Foundation.<br></p>
 </div>

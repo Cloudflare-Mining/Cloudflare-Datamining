@@ -1,12 +1,12 @@
 <div class="post-content lh-copy gray1">
-	<p>今天我们很高兴能发布<a href="https://www.cloudflare.com/magic-transit" target="_blank">Cloudflare Magic Transit</a>。Magic Transit为互联网提供安全，高性能和可靠的IP连接。在您的内部网络前部署Magic Transit即可立即进行使用，它可以保护您免受DDoS攻击，并支持配置全套虚拟网络功能，包括高级数据包过滤，负载平衡和流量管理工具。</p>
+	<p>今天我们很高兴能发布<a href="https://www.cloudflare.com/magic-transit?ref=blog.cloudflare.com" target="_blank">Cloudflare Magic Transit</a>。Magic Transit为互联网提供安全，高性能和可靠的IP连接。在您的内部网络前部署Magic Transit即可立即进行使用，它可以保护您免受DDoS攻击，并支持配置全套虚拟网络功能，包括高级数据包过滤，负载平衡和流量管理工具。</p>
 	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/Magic-Transit-Network-Diagram-3.gif" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/Magic-Transit-Network-Diagram-3.gif" class="kg-image" alt="" loading="lazy"></figure>
 	<p></p>
 	<p>Magic Transit建立在您熟悉的标准和网络原语之上，但是是一项从Cloudflare的全球边缘网络提供的服务。Cloudflare Network通过任播和BGP（边界网关协议）来吸收流量，宣布您公司的IP地址空间并在全球范围内扩展您的网络存在。现今，我们的任播边缘网络已遍布全球90多个国家的193个城市。</p>
 	<p>一旦数据包到达我们的网络，流量就会经检查验证是否受到过攻击、过滤、引导转向、加速，并被发送到源。Magic Transit将通过通用路由封装（GRE）隧道，专用网络互连（PNI）或其他形式的对等网络连接回原始基础设施。</p>
 	<p>在部署IP网络服务时，企业往往不得不在性能和安全性之间进行选择。Magic Transit是从头开始设计的，目的是最大限度地减少这些条件的相互制约：使得性能和安全性更好。Magic Transit在我们整个全球网络中部署IP安全服务。<strong>这意味着不再需要将流量转移到少量的远程“清除中心”或依靠内部部署硬件来缓解对您的基础架构的攻击。</strong></p>
-	<p>自2010年Cloudflare问世以来，我们就一直在为Magic Transit奠定基础。Cloudflare所构建的IP网络的扩展和安全需要一些工具，而这些工具是无法购买或过于昂贵的。所以我们自己制造了这些工具！我们成长于<a href="https://en.wikipedia.org/wiki/Software-defined_networking" target="_blank">软件定义网络</a>和<a href="https://en.wikipedia.org/wiki/Network_function_virtualization" target="_blank">网络功能虚拟化</a>的时代，这些现代概念背后的原则贯穿于我们所做的一切。</p>
+	<p>自2010年Cloudflare问世以来，我们就一直在为Magic Transit奠定基础。Cloudflare所构建的IP网络的扩展和安全需要一些工具，而这些工具是无法购买或过于昂贵的。所以我们自己制造了这些工具！我们成长于<a href="https://en.wikipedia.org/wiki/Software-defined_networking?ref=blog.cloudflare.com" target="_blank">软件定义网络</a>和<a href="https://en.wikipedia.org/wiki/Network_function_virtualization?ref=blog.cloudflare.com" target="_blank">网络功能虚拟化</a>的时代，这些现代概念背后的原则贯穿于我们所做的一切。</p>
 	<p>当我们与管理内部网络的客户交谈时，我们总是听到一些事情：构建和管理他们的网络既昂贵又痛苦，而且这些问题不能短时解决。</p>
 	<p>传统上，首席信息官（CIO）尝试将他们的IP网络连接到互联网上需要两个步骤:</p>
 	<ol>
@@ -18,15 +18,15 @@
 	<p>Magic Transit的目标是将传统的数据中心硬件模型引入云中，使用您可能需要的所有网络“硬件”打包传输，这些网络“硬件”可以保持网络的快速，可靠性和安全性。部署完成后，Magic Transit可以无缝地提供虚拟化网络功能，包括路由、DDoS缓解、防火墙、负载平衡和流量加速服务。</p>
 	<h2 id="magic-transit-">Magic Transit是你的网络通往互联网的入口</h2>
 	<p>Magic Transit作为IP网络的“前门”，可提供连接，安全性和性能优势。也即，它接收发往您网络的IP数据包，处理它们，然后将它们输出到您的原始基础设施。</p>
-	<p>通过Cloudflare连接到互联网可以为您带来许多好处。从最基本的说起，Cloudflare是互联网上<a href="https://bgp.he.net/AS13335" target="_blank">连接最广泛的网络</a>之一。我们与世界各地的运营商，互联网交换机和对等网络伙伴合作，确保我们的网络上的比特能够快速可靠地到达目的地，无论目的地如何。</p>
+	<p>通过Cloudflare连接到互联网可以为您带来许多好处。从最基本的说起，Cloudflare是互联网上<a href="https://bgp.he.net/AS13335?ref=blog.cloudflare.com" target="_blank">连接最广泛的网络</a>之一。我们与世界各地的运营商，互联网交换机和对等网络伙伴合作，确保我们的网络上的比特能够快速可靠地到达目的地，无论目的地如何。</p>
 	<h2 id="-acme-corp-">部署示例：Acme Corp（顶点集团）</h2>
 	<p>让我们来看看客户是如何部署Magic Transit的吧。客户Acme Corp拥有IP前缀203.0.113.0/24，用于定位他们在自己的物理数据中心运行的硬件机架。Acme目前宣布了从他们的客户端设备（CPE，也即数据中心周边的路由器）到互联网的路由，告诉全世界可以从他们的自治系统号AS64512访问203.0.113.0/24。Acme在内部部署了DDoS缓解和防火墙硬件设备。</p>
 	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/Legacy-Arch_Diagram@3x--1-.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/Legacy-Arch_Diagram@3x--1-.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p></p>
 	<p>Acme希望连接到Cloudflare网络，以提高自己网络的安全性和性能。具体来说，它们一直是分布式拒绝服务（DDoS）攻击的目标，并且不想依赖内部部署硬件来处理攻击，从而晚上能够睡个安稳觉。这就是Cloudflare的用武之地。</p>
 	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/Modern-Arch_Diagram@3x.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/Modern-Arch_Diagram@3x.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p></p>
 	<p>在他们的网络前部署Magic Transit很简单：</p>
 	<ol>
@@ -57,8 +57,8 @@
 	<ul>
 		<li><a href="https://blog.cloudflare.com/l4drop-xdp-ebpf-based-ddos-mitigations/">L4Drop：XDP DDoS缓解措施</a></li>
 		<li><a href="https://blog.cloudflare.com/xdpcap/">xdpcap：XDP数据包捕获</a></li>
-		<li><a href="https://netdevconf.org/0x13/session.html?talk-XDP-based-DDoS-mitigation" target="_blank">基于XDP的DoS缓解</a>演示</li>
-		<li><a href="https://netdevconf.org/2.1/papers/Gilberto_Bertin_XDP_in_practice.pdf" target="_blank">实践中的XDP：将XDP集成到我们的DDoS缓解管道中</a>（PDF）</li>
+		<li><a href="https://netdevconf.org/0x13/session.html?talk-XDP-based-DDoS-mitigation=&amp;ref=blog.cloudflare.com" target="_blank">基于XDP的DoS缓解</a>演示</li>
+		<li><a href="https://netdevconf.org/2.1/papers/Gilberto_Bertin_XDP_in_practice.pdf?ref=blog.cloudflare.com" target="_blank">实践中的XDP：将XDP集成到我们的DDoS缓解管道中</a>（PDF）</li>
 		<li><a href="https://blog.cloudflare.com/cloudflare-architecture-and-how-bpf-eats-the-world/">Cloudflare架构以及BPF如何吞食世界</a></li>
 	</ul>
 	<p>最终，我们得到了一个DDoS缓解系统：</p>
@@ -80,7 +80,7 @@
 	<p>当您将您的网络连接到Cloudflare Magic Transit时，您可以访问整个Cloudflare网络。这意味着我们所有的网络位点都将成为您的网络位点。我们的网络容量变成了您的网络容量，您可以使用它来增强您的体验、交付您的内容，并减轻对您基础设施的攻击。</p>
 	<p>Cloudflare网络的规模有多大？我们在全球193个城市拥有超过30Tbps的网络容量。发达国家中98％互联网用户以及全球93％的互联网用户连接Cloudflare的时间仅在100毫秒以内（值得一提，人的眨眼时间为300-400毫秒）。</p>
 	<p></p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/09/image1-2-1.png" class="kg-image">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/09/image1-2-1.png" class="kg-image" alt="" loading="lazy">
 		<figcaption>全球百毫秒内可达Cloudflare数据中心的地区</figcaption>
 	</figure>
 	<p></p>
@@ -93,5 +93,5 @@
 	<h2 id="magic-transit--3">Magic Transit现已面市</h2>
 	<p>在过去的九年里，我们一直在努力使我们的网络、管理工具和网络功能以服务的形式进入今天的状态。我们很高兴能把我们每天使用的工具交到客户手中。</p>
 	<p>这就引出了命名。当我们把这个展示给顾客看时，他们最常用的词是“哇”。当我们追问他们的意思时，他们几乎都说：“这比我们以前见过的任何解决方案都要好得多。像魔术一样！”所以，我们把这个产品命名为“Magic Transit（魔术传输）”，虽然有点俗气，但似乎也很自然。</p>
-	<p>我们认为这一切都很神奇，相信你也如此。快来<a href="https://www.cloudflare.com/plans/enterprise/contact/" target="_blank">联系我们的企业销售团队</a>，来获取Magic Transit吧！</p>
+	<p>我们认为这一切都很神奇，相信你也如此。快来<a href="https://www.cloudflare.com/plans/enterprise/contact/?ref=blog.cloudflare.com" target="_blank">联系我们的企业销售团队</a>，来获取Magic Transit吧！</p>
 </div>
