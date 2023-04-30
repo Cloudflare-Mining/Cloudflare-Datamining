@@ -1,5 +1,5 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image1-20.png" class="kg-image" alt="A New Hope for Object Storage: R2 enters open beta" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image1-20.png" class="kg-image" alt="A New Hope for Object Storage: R2 enters open beta"></figure>
 	<p>Im September <a href="https://blog.cloudflare.com/introducing-r2-object-storage/">gaben wir bekannt</a>, dass wir an unserer eigenen Objektspeicherlösung arbeiten: Cloudflare R2. R2 ist unsere Antwort auf die horrenden Bandbreitengebühren der etablierten Cloud-Anbieter. Entwickler können so viele Daten speichern, wie sie wollen, ohne sich um die Kosten für den Zugriff auf diese Daten sorgen zu müssen.</p>
 	<p>Die Resonanz war überwältigend.</p>
 	<ul>
@@ -7,15 +7,15 @@
 		<li><strong>Große Unternehmen</strong> hatten Multi-Cloud-Storage – und damit Multi-Cloud selbst – als einen Wunschtraum abgeschrieben. Aufgeregt kamen sie zu uns, um uns neue Produkte vorzuschlagen, die Daten mit Partnerunternehmen integrieren würden.</li>
 		<li><strong>Gemeinnützige Forschungseinrichtungen</strong> zahlten hohe Gebühren, bloß um Experimentdaten untereinander auszutauschen. Die Bandbreitengebühren beeinträchtigten ihre Fähigkeit zur Zusammenarbeit, führten zu Silos zwischen den Organisationen und schränkten die Experimente und Analysen ein, die sie durchführen konnten.</li>
 	</ul>
-	<p>Cloudflare existiert, um ein besseres Internet zu schaffen. Heute bekommt das Internet, was es verdient: R2 ist jetzt im <a href="https://developers.cloudflare.com/r2/get-started/?ref=blog.cloudflare.com" target="_blank">Open Beta</a> verfügbar.</p>
+	<p>Cloudflare existiert, um ein besseres Internet zu schaffen. Heute bekommt das Internet, was es verdient: R2 ist jetzt im <a href="https://developers.cloudflare.com/r2/get-started/" target="_blank">Open Beta</a> verfügbar.</p>
 	<p>Kunden mit Self-Serve-Abonnement können R2 im Cloudflare-Dashboard aktivieren. Enterprise-Kunden können sich für das Onboarding an ihren CSM wenden.</p>
 	<h2 id="interne-und-externe-apis">Interne und externe APIs</h2>
-	<p>R2 hat zwei APIs: eine API, die nur von Workers aus zugänglich ist und die wir In-Worker-API nennen, und eine S3-kompatible API, die Ihren Bucket über eine URL der Form <a href="http://account.r2.cloudflarestorage.com/bucket?ref=blog.cloudflare.com" target="_blank">bucket.account.r2storage.com</a>. zugänglich macht. Bevor Sie Anfragen an R2 stellen können, müssen Sie authentifiziert werden – R2-Buckets sind standardmäßig privat.</p>
+	<p>R2 hat zwei APIs: eine API, die nur von Workers aus zugänglich ist und die wir In-Worker-API nennen, und eine S3-kompatible API, die Ihren Bucket über eine URL der Form <a href="http://account.r2.cloudflarestorage.com/bucket" target="_blank">bucket.account.r2storage.com</a>. zugänglich macht. Bevor Sie Anfragen an R2 stellen können, müssen Sie authentifiziert werden – R2-Buckets sind standardmäßig privat.</p>
 	<h3 id="in-worker-api">In-Worker-API</h3>
 	<p>Mit der In-Worker-API wird ein Bucket an einen bestimmten Worker „gebunden“, der dann PUT-, GET-, DELETE- und LIST-Vorgänge mit dem Bucket durchführen kann.</p>
 	<h3 id="s3-kompatible-api">S3-kompatible API</h3>
 	<p>Bei der S3-kompatiblen API erfolgt die Authentifizierung auf die gleiche Weise wie bei S3: SigV4 gegenüber einer R2 URL. SigV4 signiert Anfragen mit einem geheimen Schlüssel, um sie gegenüber R2 zu authentifizieren. Das bedeutet, dass der öffentliche Zugang zu R2 über das Internet heute nur möglich ist, wenn Sie einen Worker hosten, ihn mit R2 verbinden und Anfragen über ihn weiterleiten.</p>
-	<p>Der einfachste Weg, die S3-kompatible API zu testen, ist die Verwendung eines S3-Clients. Einer der beliebtesten S3-Clients ist das <a href="https://boto3.amazonaws.com/v1/documentation/api/latest/index.html?ref=blog.cloudflare.com" target="_blank">boto3</a> SDK.</p>
+	<p>Der einfachste Weg, die S3-kompatible API zu testen, ist die Verwendung eines S3-Clients. Einer der beliebtesten S3-Clients ist das <a href="https://boto3.amazonaws.com/v1/documentation/api/latest/index.html" target="_blank">boto3</a> SDK.</p>
 	<p>Kopieren Sie in Python das folgende Skript und füllen Sie die Felder <code>account_id</code>, <code>access_key</code>, und <code>secret_access_key</code> mit Ihren Anmeldedaten für das R2-Konto aus.</p><!--kg-card-begin: markdown-->
 	<pre><code>main.py
 import boto3
@@ -50,7 +50,7 @@ for item in bucket.objects.all():
 		<li>Vorgänge der Klasse A (einschließlich Schreibvorgänge und Listen) kosten $ 4,50/Million.</li>
 		<li>Vorgänge der Klasse B kosten $ 0,36 /Million.</li>
 	</ul>
-	<p>Vorgänge der Klasse A verändern in der Regel den Zustand, z.B. das Erstellen eines Buckets, das Auflisten von Objekten in einem Bucket oder das Schreiben eines Objekts. Operationen der Klasse B lesen in der Regel einen bestehenden Zustand, z.B. das Lesen eines Objekts aus einem Bucket. Weitere Informationen zur Preisgestaltung und eine vollständige Liste der Operationstypen finden Sie in der <a href="https://developers.cloudflare.com/r2/platform/pricing/?ref=blog.cloudflare.com" target="_blank">Dokumentation</a>.</p>
+	<p>Vorgänge der Klasse A verändern in der Regel den Zustand, z.B. das Erstellen eines Buckets, das Auflisten von Objekten in einem Bucket oder das Schreiben eines Objekts. Operationen der Klasse B lesen in der Regel einen bestehenden Zustand, z.B. das Lesen eines Objekts aus einem Bucket. Weitere Informationen zur Preisgestaltung und eine vollständige Liste der Operationstypen finden Sie in der <a href="https://developers.cloudflare.com/r2/platform/pricing/" target="_blank">Dokumentation</a>.</p>
 	<p>Natürlich fallen für die ausgehende Bandbreite von R2 keine Gebühren an. Sie können nach Herzenslust auf Ihren Bucket zugreifen.</p>
 	<p>Die kostenlose Tarif-Stufe von R2 beinhaltet:</p>
 	<ul>
@@ -74,5 +74,5 @@ for item in bucket.objects.all():
 		<li>Unterstützung von vorsignierten URLs, die den Lese- und Schreibzugriff für einen bestimmten Schlüssel an ein Token delegieren.</li>
 		<li>Integration mit dem Cache von Cloudflare, um Leseanfragen zu skalieren und eine globale Verteilung der Daten zu ermöglichen.</li>
 	</ul>
-	<p>Wenn Sie zusätzliche Funktionswünsche haben, die oben nicht aufgeführt sind, möchten wir von Ihnen hören! Treten Sie unserem <a href="https://discord.gg/cloudflaredev?ref=blog.cloudflare.com" target="_blank">Discord</a> bei und teilen Sie uns im r2-open-beta-Kanal mit, was Sie brauchen, um R2 zu Ihrem neuen Objektspeicher ohne Bandbreitenkosten zu machen.</p>
+	<p>Wenn Sie zusätzliche Funktionswünsche haben, die oben nicht aufgeführt sind, möchten wir von Ihnen hören! Treten Sie unserem <a href="https://discord.gg/cloudflaredev" target="_blank">Discord</a> bei und teilen Sie uns im r2-open-beta-Kanal mit, was Sie brauchen, um R2 zu Ihrem neuen Objektspeicher ohne Bandbreitenkosten zu machen.</p>
 </div>

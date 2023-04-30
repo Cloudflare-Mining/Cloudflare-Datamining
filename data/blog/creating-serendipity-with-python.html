@@ -35,7 +35,7 @@
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>This is a really simple implementation. I don't like it because it loops <code>n</code> times but it helps visualize something. Imagine that <code>g == 4</code> and <code>n == 17</code>. This loop 'fills up' each entry in <code>groups</code> like this (each square is an entry in <code>groups</code> and numbers in the squares are values of <code>i</code> for which that entry was incremented by the loop).</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/02/N-elements-G-sized-groups.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/02/N-elements-G-sized-groups.png" class="kg-image"></figure>
 	<p>So groups ends up being <code>[5, 4, 4, 4]</code>. &nbsp;What this helps see is that the number of times <code>groups[i]</code> is incremented depends on the number of times the <code>for</code> loop 'loops around' on the <code>i</code>th element. And that's something that's easy to calculate without looping.</p>
 	<p>So this means that the code is now simply:</p><!--kg-card-begin: markdown-->
 	<pre><code>    groups = [1+max(0,n-(i+1))//(n//g) for i in range(n//g)]

@@ -1,9 +1,9 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/download-2.png" class="kg-image" alt="Dig through SERVFAILs with EDE" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/download-2.png" class="kg-image" alt="Dig through SERVFAILs with EDE"></figure>
 	<p>It can be frustrating to get errors (SERVFAIL response codes) returned from your DNS queries. It can be even more frustrating if you don’t get enough information to understand why the error is occurring or what to do next. That’s why back in 2020, we <a href="https://blog.cloudflare.com/unwrap-the-servfail/">launched support</a> for Extended DNS Error (EDE) Codes to 1.1.1.1.</p>
-	<p>As a quick refresher, EDE codes are a <a href="https://www.rfc-editor.org/rfc/rfc8914.html?ref=blog.cloudflare.com" target="_blank">proposed</a> IETF standard enabled by the Extension Mechanisms for DNS (EDNS) spec. The codes return extra information about DNS or DNSSEC issues without touching the RCODE so that debugging is easier.</p>
+	<p>As a quick refresher, EDE codes are a <a href="https://www.rfc-editor.org/rfc/rfc8914.html" target="_blank">proposed</a> IETF standard enabled by the Extension Mechanisms for DNS (EDNS) spec. The codes return extra information about DNS or DNSSEC issues without touching the RCODE so that debugging is easier.</p>
 	<p>Now we’re happy to announce we will return more error code types and include additional helpful information to further improve your debugging experience. Let’s run through some examples of how these error codes can help you better understand the issues you may face.</p>
-	<p>To try for yourself, you’ll need to run the dig or kdig command in the terminal. For dig, please ensure you have <a href="http://ftp.swin.edu.au/isc/bind/9.11.20/RELEASE-NOTES-bind-9.11.20.html?ref=blog.cloudflare.com" target="_blank">v9.11.20</a> or above. If you are on macOS 12.1, by default you only have dig 9.10.6. <a href="https://formulae.brew.sh/formula/bind?ref=blog.cloudflare.com" target="_blank">Install</a> an updated version of BIND to fix that.</p>
+	<p>To try for yourself, you’ll need to run the dig or kdig command in the terminal. For dig, please ensure you have <a href="http://ftp.swin.edu.au/isc/bind/9.11.20/RELEASE-NOTES-bind-9.11.20.html" target="_blank">v9.11.20</a> or above. If you are on macOS 12.1, by default you only have dig 9.10.6. <a href="https://formulae.brew.sh/formula/bind" target="_blank">Install</a> an updated version of BIND to fix that.</p>
 	<p>Let’s start with the output of an example dig command without EDE support.</p><!--kg-card-begin: markdown-->
 	<pre><code>% dig @1.1.1.1 dnssec-failed.org +noedns
 
@@ -119,5 +119,5 @@
 		</tbody>
 	</table>
 	<!--kg-card-end: markdown-->
-	<p>We have documented all the error codes we currently support with additional information you may find helpful. Refer to our <a href="https://developers.cloudflare.com/1.1.1.1/infrastructure/extended-dns-error-codes/?ref=blog.cloudflare.com" target="_blank">dev docs</a> for more information.</p>
+	<p>We have documented all the error codes we currently support with additional information you may find helpful. Refer to our <a href="https://developers.cloudflare.com/1.1.1.1/infrastructure/extended-dns-error-codes/" target="_blank">dev docs</a> for more information.</p>
 </div>
