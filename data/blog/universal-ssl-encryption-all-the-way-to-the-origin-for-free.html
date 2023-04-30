@@ -9,7 +9,7 @@
 	<p>As we <a href="https://blog.cloudflare.com/origin-server-connection-security-with-universal-ssl/">previously discussed</a>, sites on CloudFlare’s Free plan default to Flexible SSL mode. To take advantage of our Strict SSL mode it’s necessary to install a certificate on the origin server, which until now required them to buy one from a third party. Now customers can get that certificate directly from CloudFlare, for free.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2015/02/illustration-strict-ssl--2-.png" alt=""></p>
 	<p>This certificate is only used to protect the traffic between the origin server and CloudFlare; it is never presented to browsers. For now you should only use it behind orange-clouded sites on CloudFlare.</p>
-	<p><s>If you are a CloudFlare customer and want to sign up for the beta, just send an email to <a href="mailto:origin-ca-beta@cloudflare.com" target="_blank">origin-ca-beta@cloudflare.com</a> with the following:</s></p>
+	<p><s>If you are a CloudFlare customer and want to sign up for the beta, just send an email to <a href="mailto:origin-ca-beta@cloudflare.com">origin-ca-beta@cloudflare.com</a> with the following:</s></p>
 	<ul>
 		<li><s>A certificate signing request (CSR)</s></li>
 		<li><s>The domain name of the orange-clouded zone you want to install the certificate on</s></li>
@@ -20,7 +20,7 @@
 	<p>In order to grant certificates to customer origins, CloudFlare had to create its own Certificate Authority. This consists of a set of processes and systems to validate certificate requests and create new certificates. For the Origin CA, CloudFlare created a private key and certificate for the specific purpose of signing certificates for origin servers.</p>
 	<h4 id="software">Software</h4>
 	<p>The certificate authority software we use is <a href="https://blog.cloudflare.com/introducing-cfssl/">CFSSL</a>, our open source PKI toolkit written in Go. It allows us to validate CSRs and use them to create new certificates for sites. These certificates are signed with our certificate authority private key, and validated when CloudFlare connects to the origin in Strict SSL mode.</p>
-	<p>In collaboration with other members of the industry (such as Richard Barnes from the <a href="https://letsencrypt.org/" target="_blank">Let's Encrypt</a> project), we have updated CFSSL with several new features that help make it a viable certificate authority tool. These include <a href="https://en.wikipedia.org/wiki/PKCS_11" target="_blank">PKCS#11</a> support, which makes it possible for CFSSL to use a Hardware Security Module (HSM) to store private keys and <a href="https://en.wikipedia.org/wiki/Online_Certificate_Status_Protocol" target="_blank">OCSP</a> support, which lets CFSSL answer questions about the revocation status of a certificate.</p>
+	<p>In collaboration with other members of the industry (such as Richard Barnes from the <a href="https://letsencrypt.org/">Let's Encrypt</a> project), we have updated CFSSL with several new features that help make it a viable certificate authority tool. These include <a href="https://en.wikipedia.org/wiki/PKCS_11">PKCS#11</a> support, which makes it possible for CFSSL to use a Hardware Security Module (HSM) to store private keys and <a href="https://en.wikipedia.org/wiki/Online_Certificate_Status_Protocol">OCSP</a> support, which lets CFSSL answer questions about the revocation status of a certificate.</p>
 	<h4 id="validation">Validation</h4>
 	<p>CAs are supposed to only give certificates to sites that own the domain(s) listed in the certificate. Domain validation is usually done in one of three ways:</p>
 	<ul>
@@ -37,7 +37,7 @@
 	<h4 id="creatingacsrandprivatekeywithcfssl">Creating a CSR and private key with CFSSL</h4>
 	<p>CFSSL is not only a tool that can be used for running a CA, but it can be used to create CSRs too. Following these instructions will get you a private key and a CSR to submit to a certificate authority.</p>
 	<h6 id="1installgo">1) Install Go:</h6>
-	<p><a href="https://golang.org/doc/install" target="_blank">https://golang.org/doc/install</a></p>
+	<p><a href="https://golang.org/doc/install">https://golang.org/doc/install</a></p>
 	<h6 id="2installcfssl">2) Install CFSSL</h6>
 	<pre><code>$ go get github.com/cloudflare/cfssl/cmd/...
 </code></pre>
@@ -75,9 +75,9 @@
 	<h5 id="otherresources">Other resources</h5>
 	<p>If CFSSL is not working for you, here are some more resources for creating CSRs:</p>
 	<ul>
-		<li><a href="https://support.comodo.com/index.php?/Default/Knowledgebase/Article/View/1/19/csr-generation-using-openssl-apache-wmod_ssl-nginx-os-x" target="_blank">Comodo</a></li>
-		<li><a href="https://support.globalsign.com/customer/portal/articles/1229769-certificate-signing-request-csr---overview" target="_blank">GlobalSign</a></li>
-		<li><a href="https://www.digicert.com/csr-creation.htm" target="_blank">Digicert</a></li>
+		<li><a href="https://support.comodo.com/index.php?/Default/Knowledgebase/Article/View/1/19/csr-generation-using-openssl-apache-wmod_ssl-nginx-os-x">Comodo</a></li>
+		<li><a href="https://support.globalsign.com/customer/portal/articles/1229769-certificate-signing-request-csr---overview">GlobalSign</a></li>
+		<li><a href="https://www.digicert.com/csr-creation.htm">Digicert</a></li>
 	</ul>
 	<p>In the future we plan on releasing tools to make certificate generation even easier and more automatic.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2015/02/cloudflare_ssl-week-2.png" alt="CloudFlare SSL Week"></p>

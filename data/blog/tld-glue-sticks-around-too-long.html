@@ -1,18 +1,18 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
-	<p>Recent <a href="https://en.wikipedia.org/wiki/2016_Dyn_cyberattack" target="_blank">headline grabbing DDoS attacks</a> provoked heated debates in the DNS community. Everyone has strong opinions on how to harden DNS to avoid downtime in the future. Is it better to use a single DNS provider or multiple? What DNS TTL values are best? Does DNSSEC make you more or less exposed?</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/11/4536619509_0a576921df_z.jpg" alt=""><br>
-		<small><a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">CC BY 2.0</a> <a href="https://www.flickr.com/photos/07anycolouryoulike/4536619509/" target="_blank">image</a> by <a href="https://www.flickr.com/photos/07anycolouryoulike/" target="_blank">Leticia Chamorro</a></small>
+	<p>Recent <a href="https://en.wikipedia.org/wiki/2016_Dyn_cyberattack?ref=blog.cloudflare.com" target="_blank">headline grabbing DDoS attacks</a> provoked heated debates in the DNS community. Everyone has strong opinions on how to harden DNS to avoid downtime in the future. Is it better to use a single DNS provider or multiple? What DNS TTL values are best? Does DNSSEC make you more or less exposed?</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2016/11/4536619509_0a576921df_z.jpg" alt="" loading="lazy"><br>
+		<small><a href="https://creativecommons.org/licenses/by/2.0/?ref=blog.cloudflare.com" target="_blank">CC BY 2.0</a> <a href="https://www.flickr.com/photos/07anycolouryoulike/4536619509/?ref=blog.cloudflare.com" target="_blank">image</a> by <a href="https://www.flickr.com/photos/07anycolouryoulike/?ref=blog.cloudflare.com" target="_blank">Leticia Chamorro</a></small>
 	</p>
 	<p>These are valid questions worth serious discussion, but tuning your own DNS server settings is not the full story. Together, as a community, we need to harden the DNS protocol itself. We need to prepare it to withstand the toughest DDoS attacks the future will surely bring. In this blog post I'll point out an obscure feature in the core DNS protocol. It is not practical to use this "hidden" feature for DDoS mitigation now, but with a small tweak it could become extremely useful. The feature is currently unused <em>not</em> due to protocol problems - it's unused because of the DNS Top Level Domain (TLD) operators' apathy. If it was working it would reduce DDoS recovery time for the DNS servers under attack.</p>
 	<p>The feature in question is: DNS TLD glue records. More specifically DNS TLD glue records with custom TTL values.</p>
 	<p>DNS glue is one of the least understood quirks in the DNS protocol. Allow me to explain why I think reducing glue TTL is a good idea.</p>
 	<p>But first: what is glue anyway?</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/11/7230017432_fd71ce6a85_z.jpg" alt=""><br>
-		<small><a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">CC BY 2.0</a> <a href="https://www.flickr.com/photos/armydre2008/7230017432" target="_blank">image</a> by <a href="https://www.flickr.com/photos/armydre2008/" target="_blank">Frankieleon</a></small>
+	<p><img src="https://blog.cloudflare.com/content/images/2016/11/7230017432_fd71ce6a85_z.jpg" alt="" loading="lazy"><br>
+		<small><a href="https://creativecommons.org/licenses/by/2.0/?ref=blog.cloudflare.com" target="_blank">CC BY 2.0</a> <a href="https://www.flickr.com/photos/armydre2008/7230017432?ref=blog.cloudflare.com" target="_blank">image</a> by <a href="https://www.flickr.com/photos/armydre2008/?ref=blog.cloudflare.com" target="_blank">Frankieleon</a></small>
 	</p>
 	<h3 id="dnsglue">DNS Glue</h3>
-	<p>DNS glue is a solution to <a href="https://en.wikipedia.org/wiki/Chicken_or_the_egg" target="_blank">"the chicken or the egg problem"</a> that is inherent in DNS. It's easiest to explain it with a concrete example.</p>
+	<p>DNS glue is a solution to <a href="https://en.wikipedia.org/wiki/Chicken_or_the_egg?ref=blog.cloudflare.com" target="_blank">"the chicken or the egg problem"</a> that is inherent in DNS. It's easiest to explain it with a concrete example.</p>
 	<p>Imagine you want to resolve the <code>cloudflare.net</code> domain. For that you ask your local recursive DNS server for the resolution. OK, but that doesn't answer the question, what does the resolver do?</p>
 	<p>For simplicity let's make a couple of assumptions:</p>
 	<ul>
@@ -34,8 +34,8 @@ cloudflare.net.         172800  IN      NS      ns1.cloudflare.net.
 	<p>This is called "a delegation". <code>.net</code> told us to go away and ask <code>ns1.cloudflare.net</code> instead.</p>
 	<p>Hold on, but where is <code>ns1.cloudflare.net</code>? What is its IP address? If we asked the <code>.net</code> nameserver, it would tell us the same thing - go and talk to <code>ns1.cloudflare.net</code>!</p>
 	<p>As you can see, here is a chicken and egg problem. To resolve <code>cloudflare.net</code> we need to resolve <code>ns1.cloudflare.net</code>. To resolve <code>ns1.cloudflare.net</code> we need to resolve <code>ns1.cloudflare.net</code>, and so on.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/11/3326878608_c7d9273897_z.jpg" alt=""><br>
-		<small><a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">CC BY 2.0</a> <a href="https://www.flickr.com/photos/samcatchesides/3326878608/" target="_blank">image</a> by <a href="https://www.flickr.com/photos/samcatchesides/" target="_blank">Sam-Cat</a></small>
+	<p><img src="https://blog.cloudflare.com/content/images/2016/11/3326878608_c7d9273897_z.jpg" alt="" loading="lazy"><br>
+		<small><a href="https://creativecommons.org/licenses/by/2.0/?ref=blog.cloudflare.com" target="_blank">CC BY 2.0</a> <a href="https://www.flickr.com/photos/samcatchesides/3326878608/?ref=blog.cloudflare.com" target="_blank">image</a> by <a href="https://www.flickr.com/photos/samcatchesides/?ref=blog.cloudflare.com" target="_blank">Sam-Cat</a></small>
 	</p>
 	<h3 id="theglue">The glue</h3>
 	<p>This is where DNS glue comes in. I lied a bit in the previous terminal output, the resolution of <code>ns1.cloudflare.net</code> <em>is</em> available in the response given by <code>.net</code> nameserver. This time allow me to show the relevant "ADDITIONAL" section of the answer:</p>
@@ -59,8 +59,8 @@ cloudflare.net.         172800  IN      NS      ns1.cloudflare.net.
 ns1.cloudflare.net.     172800  IN      A       173.245.59.31
 www.google.com          172800  IN      A       1.2.3.4
 </code></pre>
-	<p>The fun story is: it used to "work" and confuse recursors. This is precisely what the <a href="http://www.secure64.com/news-internic-alternic-dns-poisoning" target="_blank">Kashpureff attack did in 1997</a>.</p>
-	<p>This is a good old school DNS cache injection or cache poisoning attack. The recursor logic of interpreting DNS glue answers is pretty twisted. The details are poorly understood, and vary with every implementation. Conceptually the barrier between a valid glue record and cache injection is very thin. This is being actively discussed by the DNS gurus, see <a href="https://tools.ietf.org/html/draft-fujiwara-dnsop-resolver-update-00" target="_blank">draft-fujiwara-dnsop-resolver-update-00</a> and <a href="https://tools.ietf.org/id/draft-weaver-dnsext-comprehensive-resolver-00.html#object_scope" target="_blank">draft-weaver-dnsext-comprehensive-resolver-00</a>.</p>
+	<p>The fun story is: it used to "work" and confuse recursors. This is precisely what the <a href="http://www.secure64.com/news-internic-alternic-dns-poisoning?ref=blog.cloudflare.com" target="_blank">Kashpureff attack did in 1997</a>.</p>
+	<p>This is a good old school DNS cache injection or cache poisoning attack. The recursor logic of interpreting DNS glue answers is pretty twisted. The details are poorly understood, and vary with every implementation. Conceptually the barrier between a valid glue record and cache injection is very thin. This is being actively discussed by the DNS gurus, see <a href="https://tools.ietf.org/html/draft-fujiwara-dnsop-resolver-update-00?ref=blog.cloudflare.com" target="_blank">draft-fujiwara-dnsop-resolver-update-00</a> and <a href="https://tools.ietf.org/id/draft-weaver-dnsext-comprehensive-resolver-00.html?ref=blog.cloudflare.com#object_scope" target="_blank">draft-weaver-dnsext-comprehensive-resolver-00</a>.</p>
 	<h3 id="whatstheproblem">What's the problem?</h3>
 	<p>We've shown what DNS glue is, how it works, and why it is needed in the DNS protocol. Frankly speaking, DNS glue is a pretty ingenious solution to solve a real struggle.</p>
 	<p>Let me now explain the problem. Let's take a look at the glue answer again:</p>
@@ -75,7 +75,7 @@ ns1.cloudflare.net.	900	IN	A	173.245.59.31
 	<p>Where does this discrepancy come from?</p>
 	<p>The glue records are usually managed in some kind of panel exposed by the registrar. This is fine; in the end, we inject part of the <code>cloudflare.net</code> namespace into the <code>.net</code> zone. But here's the problem: while there is a way to set the glue IP address, there is no way to configure the TTL. The glue TTL is hardcoded to 48 hours by the TLD operators.</p>
 	<p>I strongly believe this is way too long and hurts aggressive DDoS mitigation techniques.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/11/Screen-Shot-2016-11-30-at-15.13.24.png" alt=""></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2016/11/Screen-Shot-2016-11-30-at-15.13.24.png" alt="" loading="lazy"></p>
 	<h3 id="scattering">Scattering</h3>
 	<p>Had that DNS glue TTL been smaller, it would be possible to rotate the nameserver IPs during an attack. In fact, at Cloudflare we use this technique at the HTTP layer all the time.</p>
 	<p>During significant attacks we have the ability to promptly move customer traffic between IP addresses by changing the DNS resolution of our customer orange-clouded domains (those we proxy). This allows us to shift legitimate traffic off attacked IP addresses, and deploy aggressive DDoS mitigations on them. In extreme cases we can BGP null route the targeted IPs with little customer impact. Internally we call this technique "scattering".</p>
@@ -85,13 +85,13 @@ ns1.cloudflare.net.	900	IN	A	173.245.59.31
 	<p>I believe this should be fixed.</p>
 	<h3 id="counterarguments">Counter arguments</h3>
 	<p>While I strongly believe that short DNS TTLs are a good thing, others disagree.</p>
-	<p>An often raised point is that short TTLs increase the load on DNS servers. This is certainly true, but as pointed out in <a href="https://indico.dns-oarc.net/event/22/session/1/contribution/26/material/slides/0.pdf" target="_blank">this OARC presentation</a> by the <code>.nl</code> operators, the impact is minimal. DNS servers <em>must</em> be heavily over provisioned anyway to deal with attacks. Actually the <code>.nl</code> operators have been serving 1 hour glue TTL since the beginning of 2016 without issues.</p>
-	<p>In <a href="https://techblog.bozho.net/short-dns-ttl-and-centralization-are-serious-risks-for-the-internet/" target="_blank">this blog post</a>, Bozhidar Bozhanov argues that short TTLs in general are undesirable.</p>
+	<p>An often raised point is that short TTLs increase the load on DNS servers. This is certainly true, but as pointed out in <a href="https://indico.dns-oarc.net/event/22/session/1/contribution/26/material/slides/0.pdf?ref=blog.cloudflare.com" target="_blank">this OARC presentation</a> by the <code>.nl</code> operators, the impact is minimal. DNS servers <em>must</em> be heavily over provisioned anyway to deal with attacks. Actually the <code>.nl</code> operators have been serving 1 hour glue TTL since the beginning of 2016 without issues.</p>
+	<p>In <a href="https://techblog.bozho.net/short-dns-ttl-and-centralization-are-serious-risks-for-the-internet/?ref=blog.cloudflare.com" target="_blank">this blog post</a>, Bozhidar Bozhanov argues that short TTLs in general are undesirable.</p>
 	<p><em>What matters is that the glue TTL should be configurable.</em></p>
 	<h2 id="testingthings">Testing things</h2>
 	<p>It's hard to prove the effectiveness of the "DNS auth scattering" technique since glue TTL is hardcoded at the lengthy 48 hours, but we tried to check it anyway. For a test we added a glue record and measured how long it took to pick up its share of the traffic.</p>
 	<p>We performed the experiment on the <code>cloudflare.com</code> domain. Here is a chart of traffic levels to two Cloudflare nameservers with glue already present: ns3 and ns6, and new one we just added glue for: ns6-bis.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/11/39eed057d05d258e59750143378f3e3d.png" alt=""></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2016/11/39eed057d05d258e59750143378f3e3d.png" alt="" loading="lazy"></p>
 	<p>We added glue at 2200 UTC one day. It is nicely visible that the traffic on this IP address gradually increased as the caches on recursors worldwide expired. The traffic seem to have reached levels comparable with other glue nameservers at about 1600 to 1800 the next day - around 8 hours later.</p>
 	<p>There is at least an 8 hour delay before a big chunk of DNS resolvers will pick up new glued IP. The maximum time for the full switch is, of course, 48 hours.</p>
 	<h3 id="closingthoughts">Closing thoughts</h3>
