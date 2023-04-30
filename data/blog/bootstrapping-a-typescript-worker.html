@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
-	<p>Cloudflare <a href="https://developers.cloudflare.com/workers/about/">Workers</a> allows you to quickly deploy Javascript code to our 150+ data centers around the world and execute very close to your end-user. The edit/compile/debug story is already pretty amazing using the <a href="https://dash.cloudflare.com/workers">Workers IDE</a> with integrated Chrome Dev Tools. However, for those hankering for some <a href="https://www.typescriptlang.org/">Typescript</a> and an IDE with static analysis, autocomplete and that jazz, follow along to see one way to set up a Typescript project with <a href="https://www.jetbrains.com/webstorm/">Webstorm</a> and npm run upload your code straight to the edge.</p>
+	<p>Cloudflare <a href="https://developers.cloudflare.com/workers/about/" target="_blank">Workers</a> allows you to quickly deploy Javascript code to our 150+ data centers around the world and execute very close to your end-user. The edit/compile/debug story is already pretty amazing using the <a href="https://dash.cloudflare.com/workers" target="_blank">Workers IDE</a> with integrated Chrome Dev Tools. However, for those hankering for some <a href="https://www.typescriptlang.org/" target="_blank">Typescript</a> and an IDE with static analysis, autocomplete and that jazz, follow along to see one way to set up a Typescript project with <a href="https://www.jetbrains.com/webstorm/" target="_blank">Webstorm</a> and npm run upload your code straight to the edge.</p>
 	<h3 id="prerequisites">Pre Requisites</h3>
 	<p>My environment looks like this:</p>
 	<ul>
@@ -9,7 +9,7 @@
 		<li>npm v5.6.0</li>
 		<li>Webstorm v2018.1.3</li>
 	</ul>
-	<p>You'll also need a <a href="https://support.cloudflare.com/hc/en-us/articles/201720164">Cloudflare domain</a> and to <a href="https://www.cloudflare.com/a/workers">activate Workers</a> on it.</p>
+	<p>You'll also need a <a href="https://support.cloudflare.com/hc/en-us/articles/201720164" target="_blank">Cloudflare domain</a> and to <a href="https://www.cloudflare.com/a/workers" target="_blank">activate Workers</a> on it.</p>
 	<p>I'll be using cryptoserviceworker.com</p>
 	<p>I'll also use Yeoman to build our initial scaffolding. Install it with <code>npm install yo -g</code></p>
 	<h2 id="gettingstarted">Getting Started</h2>
@@ -77,7 +77,7 @@ Ran all test suites.
 	<h3 id="helloworldwithworkers">Hello, World with Workers</h3>
 	<p>A hello world implementation in Typescript might look something like this:</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2018/06/typescript-hello-world.png" alt="Hello world first attempt"></p>
-	<p>Webstorm doesn't like it as you can see from the red error highlights. Even though Request and Response are part of the Service Worker API and will be available to us in the V8 runtime, Typescript doesn't know about them yet. <a href="https://www.npmjs.com/package/node-fetch">node-fetch</a> provides an implementation for node, so let’s install that.</p>
+	<p>Webstorm doesn't like it as you can see from the red error highlights. Even though Request and Response are part of the Service Worker API and will be available to us in the V8 runtime, Typescript doesn't know about them yet. <a href="https://www.npmjs.com/package/node-fetch" target="_blank">node-fetch</a> provides an implementation for node, so let’s install that.</p>
 	<pre><code class="language-bash">npm install node-fetch
 npm install @types/node-fetch
 </code></pre>
@@ -135,7 +135,7 @@ class Worker {
 }
 exports.Worker = Worker;
 </code></pre>
-	<p>Actually, let's try it in the Cloudflare Workers IDE and try it for real. Go to your <a href="https://dash.cloudflare.com">dashboard</a>, click the Workers icon and then "Launch Editor"</p>
+	<p>Actually, let's try it in the Cloudflare Workers IDE and try it for real. Go to your <a href="https://dash.cloudflare.com" target="_blank">dashboard</a>, click the Workers icon and then "Launch Editor"</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2018/06/workers-dashboard.png" alt="Workers Dashboard"></p>
 	<p>First things first, check the canonical Hello World implementation works.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2018/06/hello-world-ide.png" alt="Hello world in IDE"></p>
@@ -154,7 +154,7 @@ exports.Worker = Worker;
 })
 </code></pre>
 	<p><strong>Error #4: Uncaught ReferenceError: <code>node_fetch_1</code> is not defined</strong></p>
-	<p>Right, we removed that because <a href="https://developer.mozilla.org/en-US/docs/Web/API/Request">Response</a> is a native object when it runs in the context of a worker. So remove the <code>node_fetch_1</code> prefix.</p>
+	<p>Right, we removed that because <a href="https://developer.mozilla.org/en-US/docs/Web/API/Request" target="_blank">Response</a> is a native object when it runs in the context of a worker. So remove the <code>node_fetch_1</code> prefix.</p>
 	<p><strong>Error #5: exports.__esModule = true does nothing</strong></p>
 	<p>So let's remove that.</p>
 	<p>Success!!</p>
@@ -413,9 +413,9 @@ exports.Worker = Worker;
 </code></pre>
 	<p>Paste that into the Workers IDE... works first time.</p>
 	<h3 id="automatedupload">Automated upload</h3>
-	<p>It's going to get old uploading from our IDE to the Web IDE every time we want to test a change and we're going to want to auto deploy from CI at some point. Thankfully there's <a href="https://developers.cloudflare.com/workers/api/">Workers Configuration API</a>, which makes it very simple to upload a Worker automatically:</p>
+	<p>It's going to get old uploading from our IDE to the Web IDE every time we want to test a change and we're going to want to auto deploy from CI at some point. Thankfully there's <a href="https://developers.cloudflare.com/workers/api/" target="_blank">Workers Configuration API</a>, which makes it very simple to upload a Worker automatically:</p>
 	<p><code>curl -X PUT "https://api.cloudflare.com/client/v4/zones/:zone_id/workers/script" -H "X-Auth-Email:YOUR_CLOUDFLARE_EMAIL" -H "X-Auth-Key:ACCOUNT_AUTH_KEY" -H "Content-Type:application/javascript" --data-binary "@PATH_TO_YOUR_WORKER_SCRIPT"</code></p>
-	<p>OK, so we need our zone ID, Cloudflare email, auth key and path to the binary. I'm going to create Grunt task that uses the <a href="https://www.npmjs.com/package/dotenv">dotenv</a> package to load config from a .env file or environment variables.</p>
+	<p>OK, so we need our zone ID, Cloudflare email, auth key and path to the binary. I'm going to create Grunt task that uses the <a href="https://www.npmjs.com/package/dotenv" target="_blank">dotenv</a> package to load config from a .env file or environment variables.</p>
 	<p>Create a <code>.env</code> file that looks like this:</p>
 	<pre><code>CF_WORKER_ZONE_ID=xxxxxxxxxxxxxxxxxxx
 CF_WORKER_EMAIL=steve@example.com
@@ -570,6 +570,6 @@ Hello, world!
 		<li>Profit</li>
 	</ul>
 	<hr>
-	<p><em><small>If you have a worker you'd like to share, or want to check out workers from other Cloudflare users, visit the <a href="https://community.cloudflare.com/tags/recipe-exchange">“Recipe Exchange”</a> in the Workers section of the <a href="https://community.cloudflare.com/c/developers/workers">Cloudflare Community Forum</a>. </small></em></p>
+	<p><em><small>If you have a worker you'd like to share, or want to check out workers from other Cloudflare users, visit the <a href="https://community.cloudflare.com/tags/recipe-exchange" target="_blank">“Recipe Exchange”</a> in the Workers section of the <a href="https://community.cloudflare.com/c/developers/workers" target="_blank">Cloudflare Community Forum</a>. </small></em></p>
 	<!--kg-card-end: markdown-->
 </div>
