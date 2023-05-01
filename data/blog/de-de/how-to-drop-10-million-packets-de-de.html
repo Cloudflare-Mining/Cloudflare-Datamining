@@ -1,7 +1,7 @@
 <div class="post-content lh-copy gray1">
 	<p>Intern wird unser DDoS-Abwehrteam manchmal „the packet droppers“ („die Paketverwerfer“) genannt. Während andere Teams aufregende Produkte entwickeln, um intelligente Dinge mit dem Datenverkehr zu tun, der durch unser Netzwerk fließt, freuen wir uns, wenn wir neue Wege finden, ihn zu entsorgen.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2018/07/38464589350_d00908ee98_b.jpg" class="kg-image" alt="38464589350_d00908ee98_b">
-		<figcaption><a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/beegee49/38464589350" target="_blank">Foto</a> von <a href="https://www.flickr.com/photos/beegee49" target="_blank">Brian Evans</a></figcaption>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2018/07/38464589350_d00908ee98_b.jpg" class="kg-image" alt="38464589350_d00908ee98_b" loading="lazy">
+		<figcaption><a href="https://creativecommons.org/licenses/by-sa/2.0/?ref=blog.cloudflare.com" target="_blank">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/beegee49/38464589350?ref=blog.cloudflare.com" target="_blank">Foto</a> von <a href="https://www.flickr.com/photos/beegee49?ref=blog.cloudflare.com" target="_blank">Brian Evans</a></figcaption>
 	</figure>
 	<p>Die Möglichkeit, Pakete schnell zu verwerfen, ist sehr wichtig, um DDoS-Angriffen standzuhalten.</p>
 	<p>Das Verwerfen von Paketen, die auf unsere Server gelangen, kann auf mehreren Ebenen durchgeführt werden. Jede Technik hat ihre Vor- und Nachteile. In diesem Blogbeitrag besprechen wir alle Techniken, die wir bisher ausprobiert haben.</p>
@@ -35,7 +35,7 @@ p_raw  UNCONN     525157 0      *:vlan100          users:(("tcpdump",pid=23683,f
 	<p>Schließlich deaktivieren wir die Intel-Turbo-Boost-Funktion auf dem Rechner:</p>
 	<p><code>echo 1 | sudo tee /sys/devices/system/cpu/intel_pstate/no_turbo</code></p>
 	<p>Obwohl Turbo Boost eine schöne Sache ist und den Durchsatz um mindestens 20 % erhöht, verschlechtert die Funktion aber auch die Standardabweichung in unseren Tests drastisch. Bei aktiviertem Turbo Boost hatten wir eine Abweichung von ±1,5 % in unseren Zahlen. Bei deaktiviertem Turbo Boost sinkt dieser Wert auf überschaubare 0,25 %.<br></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/07/layers.JPG" class="kg-image" alt="layers"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/07/layers.JPG" class="kg-image" alt="layers" loading="lazy"></figure>
 	<h4 id="schritt-1-verwerfen-von-paketen-in-der-anwendung"><strong>Schritt 1: Verwerfen von Paketen in der Anwendung</strong></h4>
 	<p>Beginnen wir mit der Idee, Pakete an eine Anwendung zu liefern und sie im Userspace-Code zu ignorieren. Für das Test-Setup stellen wir sicher, dass unsere iptables die Leistung nicht beeinträchtigen:</p>
 	<pre><code>iptables -I PREROUTING -t mangle -d 198.18.0.12 -p udp --dport 1234 -j ACCEPT
@@ -47,7 +47,7 @@ iptables -I INPUT -t filter -d 198.18.0.12 -p udp --dport 1234 -j ACCEPT
 s.bind(("0.0.0.0", 1234))
 while True:
     s.recvmmsg([...])</code></pre>
-	<p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/recvmmsg-loop.c" target="_blank">Wir haben den Code vorbereitet</a>, um ihn auszuführen:</p>
+	<p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/recvmmsg-loop.c?ref=blog.cloudflare.com" target="_blank">Wir haben den Code vorbereitet</a>, um ihn auszuführen:</p>
 	<pre><code>$ ./dropping-packets/recvmmsg-loop
 packets=171261 bytes=1940176</code></pre>
 	<p>Dieses Setup ermöglicht es dem Kernel, magere 175 kpps aus der Hardware-Empfangsqueue zu erhalten, gemessen mit ethtool und mit unserem einfachen <a href="https://blog.cloudflare.com/three-little-tools-mmsum-mmwatch-mmhistogram/">mmwatch-Tool</a>:</p>
@@ -93,7 +93,7 @@ packets=331008 bytes=5296128</code></pre>
 	<p>PS: Mit <code>SO_BUSY_POLL</code> können wir die Zahlen auf 470 kpps erhöhen, aber das ist ein Thema für ein anderes Mal.</p>
 	<h4 id="schritt-3-verwerfen-in-bpf-auf-einem-socket"><strong>Schritt 3: Verwerfen in BPF auf einem Socket</strong></h4>
 	<p>Warum überhaupt Pakete an die Userspace-Anwendung liefern? Obwohl diese Technik ungewöhnlich ist, können wir mit setsockopt( <code>SO_ATTACH_FILTER</code> ) einen klassischen BPF-Filter an einen <code>SOCK_DGRAM</code>-Socket anfügen und den Filter so programmieren, dass er Pakete im Kernelspace verwirft.</p>
-	<p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/bpf-drop.c" target="_blank">Hier ist der Code</a> zum Auszuführen:</p>
+	<p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/bpf-drop.c?ref=blog.cloudflare.com" target="_blank">Hier ist der Code</a> zum Auszuführen:</p>
 	<pre><code>$ ./bpf-drop
 packets=0 bytes=0</code></pre>
 	<p>Beim Verwerfen in BPF (sowohl das klassische BPF als auch das erweiterte eBPF haben eine ähnliche Leistung) verarbeiten wir rund 512 kpps. Sie werden alle im BPF-Filter verworfen, obwohl der noch im Software-Interrupt-Modus ist, was uns CPU einspart, die zum Aufwecken der Userspace-Anwendung benötigt würde.</p>
@@ -116,7 +116,7 @@ Chain INPUT (policy DROP 0 packets, 0 bytes)
 	<p>Das ist ein ziemlich signifikanter Leistungssprung, den ich allerdings nicht ganz verstehe. Entweder ist unser Routing-Layer ungewöhnlich komplex oder es gibt einen Fehler in unserer Serverkonfiguration.</p>
 	<p>In jedem Fall ist die „rohe“ iptables-Tabelle definitiv viel schneller.</p>
 	<h4 id="schritt-6-verwerfen-in-nftables-vor-conntrack"><strong>Schritt 6: VERWERFEN in nftables vor CONNTRACK</strong></h4>
-	<p>Iptables gilt heutzutage als passé. Der neue Stern am Himmel ist nftables. In diesem <a href="https://www.youtube.com/watch?v=9Zr8XqdET1c" target="_blank">Video erhalten Sie eine technische Erklärung, warum</a> nftables überlegen ist. Nftables verspricht aus vielen Gründen, schneller zu sein als ergraute iptables. Es hält sich das Gerücht, dass Retpolines (aka: keine Spekulation auf indirekte Sprünge) iptables ziemlich zugesetzt haben.</p>
+	<p>Iptables gilt heutzutage als passé. Der neue Stern am Himmel ist nftables. In diesem <a href="https://www.youtube.com/watch?v=9Zr8XqdET1c&amp;ref=blog.cloudflare.com" target="_blank">Video erhalten Sie eine technische Erklärung, warum</a> nftables überlegen ist. Nftables verspricht aus vielen Gründen, schneller zu sein als ergraute iptables. Es hält sich das Gerücht, dass Retpolines (aka: keine Spekulation auf indirekte Sprünge) iptables ziemlich zugesetzt haben.</p>
 	<p>Da es in diesem Artikel nicht darum geht, die Geschwindigkeit von nftables und iptables zu vergleichen, versuchen wir nur das schnellste Verwerfen, auf das ich gekommen bin:</p>
 	<pre><code>nft add table netdev filter
 nft -- add chain netdev filter input { type filter hook ingress device vlan100 priority -500 \; policy accept \; }
@@ -135,7 +135,7 @@ table netdev filter {
 	<p>Der „ingress“-Hook von nftables liefert etwa 1,53 mpps. Das ist etwas langsamer als iptables im <code>PREROUTING</code>-Layer. Das ist rätselhaft – theoretisch erfolgt „ingress“ vor dem <code>PREROUTING</code>, es sollte also schneller sein.</p>
 	<p>In unserem Test war nftables etwas langsamer als iptables, aber nicht viel. Nftables ist trotzdem besser :P</p>
 	<h4 id="schritt-7-verwerfen-mit-tc-ingress-handler"><strong>Schritt 7: VERWERFEN mit tc Ingress-Handler</strong></h4>
-	<p>Eine etwas überraschende Tatsache ist, dass ein tc (Traffic Control) Ingress-Hook noch vor dem <code>PREROUTING</code> passiert. tc ermöglicht es, Pakete nach grundlegenden Kriterien auszuwählen und in der Tat mit „action drop“ zu verwerfen. Die Syntax ist eher unelegant, daher wird empfohlen, zum Einrichten dieses <a href="https://github.com/netoptimizer/network-testing/blob/master/bin/tc_ingress_drop.sh" target="_blank">Skript zu verwenden</a>. Wir brauchen einen etwas komplexeren tc-Match, hier ist die Befehlszeile:</p>
+	<p>Eine etwas überraschende Tatsache ist, dass ein tc (Traffic Control) Ingress-Hook noch vor dem <code>PREROUTING</code> passiert. tc ermöglicht es, Pakete nach grundlegenden Kriterien auszuwählen und in der Tat mit „action drop“ zu verwerfen. Die Syntax ist eher unelegant, daher wird empfohlen, zum Einrichten dieses <a href="https://github.com/netoptimizer/network-testing/blob/master/bin/tc_ingress_drop.sh?ref=blog.cloudflare.com" target="_blank">Skript zu verwenden</a>. Wir brauchen einen etwas komplexeren tc-Match, hier ist die Befehlszeile:</p>
 	<pre><code>tc qdisc add dev vlan100 ingress
 tc filter add dev vlan100 parent ffff: prio 4 protocol ip u32 match ip protocol 17 0xff match ip dport 1234 0xffff match ip dst 198.18.0.0/24 flowid 1:1 action drop
 tc filter add dev vlan100 parent ffff: protocol ipv6 u32 match ip6 dport 1234 0xffff match ip6 dst fd00::/64 flowid 1:1 action drop
@@ -158,17 +158,17 @@ filter parent ffff: protocol ip pref 4 u32 fh 800::800 order 2048 key ht 800 bkt
 	<p>Ein tc-Ingress-Hook mit u32-Match ermöglicht es uns, 1,8 mpps auf einer einzelnen CPU zu verwerfen. Das ist genial!</p>
 	<p>Aber wir können noch schneller werden ...</p>
 	<h4 id="schritt-8-xdp_drop"><strong>Schritt 8: XDP_DROP</strong></h4>
-	<p>Zu guter Letzt die ultimative Waffe: XDP – der <a href="https://prototype-kernel.readthedocs.io/en/latest/networking/XDP/" target="_blank">eXpress Data Path</a>. Mit XDP können wir eBPF-Code im Kontext eines Netzwerktreibers ausführen. Am wichtigsten ist, dass dies vor der skbuff-Speicherzuweisung erfolgt, was hohe Geschwindigkeiten ermöglicht.</p>
+	<p>Zu guter Letzt die ultimative Waffe: XDP – der <a href="https://prototype-kernel.readthedocs.io/en/latest/networking/XDP/?ref=blog.cloudflare.com" target="_blank">eXpress Data Path</a>. Mit XDP können wir eBPF-Code im Kontext eines Netzwerktreibers ausführen. Am wichtigsten ist, dass dies vor der skbuff-Speicherzuweisung erfolgt, was hohe Geschwindigkeiten ermöglicht.</p>
 	<p>In der Regel bestehen XDP-Projekte aus zwei Teilen:</p>
 	<ul>
 		<li>dem eBPF-Code, der in den Kernelkontext geladen wurde,</li>
 		<li>dem Userspace-Loader, der den Code auf die richtige Netzwerkkarte lädt und verwaltet.</li>
 	</ul>
-	<p>Das Schreiben des Laders ist ziemlich schwierig, sodass wir stattdessen die <a href="https://cilium.readthedocs.io/en/latest/bpf/#iproute2" target="_blank">neue iproute2-Funktion</a> verwenden und den Code mit diesem trivialen Befehl laden können:</p>
+	<p>Das Schreiben des Laders ist ziemlich schwierig, sodass wir stattdessen die <a href="https://cilium.readthedocs.io/en/latest/bpf/?ref=blog.cloudflare.com#iproute2" target="_blank">neue iproute2-Funktion</a> verwenden und den Code mit diesem trivialen Befehl laden können:</p>
 	<pre><code>ip link set dev ext0 xdp obj xdp-drop-ebpf.o
 </code></pre>
 	<p>Bitte sehr!</p>
-	<p>Den Quellcode für<a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/xdp-drop-ebpf.c" target="_blank">das geladene eBPF XDP-Programm finden Sie hier</a>. Das Programm analysiert IP-Pakete und sucht nach den gewünschten Eigenschaften: IP-Transport, UDP-Protokoll, gewünschtes Zielsubnetz und Zielport:</p>
+	<p>Den Quellcode für<a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/xdp-drop-ebpf.c?ref=blog.cloudflare.com" target="_blank">das geladene eBPF XDP-Programm finden Sie hier</a>. Das Programm analysiert IP-Pakete und sucht nach den gewünschten Eigenschaften: IP-Transport, UDP-Protokoll, gewünschtes Zielsubnetz und Zielport:</p>
 	<pre><code class="language-python">if (h_proto == htons(ETH_P_IP)) {
     if (iph-&gt;protocol == IPPROTO_UDP
         &amp;&amp; (htonl(iph-&gt;daddr) &amp; 0xFFFFFF00) == 0xC6120000 // 198.18.0.0/24
@@ -189,21 +189,21 @@ filter parent ffff: protocol ip pref 4 u32 fh 800::800 order 2048 key ht 800 bkt
      rx2_xdp_drop:        10.1m/s
 </code></pre>
 	<p>Wow! Mit XDP können wir 10 Millionen Pakete pro Sekunde auf einer einzelnen CPU verwerfen.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/10/image-1.png" class="kg-image">
-		<figcaption><a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/afiler/225821241/" target="_blank">Foto</a> von <a href="https://www.flickr.com/photos/afiler/" target="_blank">Andrew Filer</a></figcaption>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/10/image-1.png" class="kg-image" alt="" loading="lazy">
+		<figcaption><a href="https://creativecommons.org/licenses/by-sa/2.0/?ref=blog.cloudflare.com" target="_blank">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/afiler/225821241/?ref=blog.cloudflare.com" target="_blank">Foto</a> von <a href="https://www.flickr.com/photos/afiler/?ref=blog.cloudflare.com" target="_blank">Andrew Filer</a></figcaption>
 	</figure>
 	<h3 id="zusammenfassung"><strong>Zusammenfassung</strong></h3>
 	<p>Wir haben das für IPv4 und IPv6 wiederholt und dieses Diagramm erstellt:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/image-2.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/image-2.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Im Allgemeinen hatte IPv6 in unserem Setup eine etwas geringere Leistung. Sie sollten aber daran denken, dass IPv6-Pakete etwas größer sind, sodass ein gewisser Leistungsunterschied unvermeidbar ist.</p>
 	<p>Linux verfügt über zahlreiche Hooks, mit denen Pakete gefiltert werden können und die jeweils unterschiedliche Eigenschaften hinsichtlich Leistung und Benutzerfreundlichkeit aufweisen.</p>
 	<p>Für DDoS-Zwecke kann es durchaus sinnvoll sein, die Pakete einfach in der Anwendung zu empfangen und im Userspace zu verarbeiten. Richtig abgestimmte Anwendungen können ziemlich gute Zahlen erreichen.</p>
 	<p>Bei DDoS-Angriffen mit zufälligen/gefälschten Quell-IPs kann es sich lohnen, conntrack zu deaktivieren, um mehr Geschwindigkeit zu erzielen. Seien Sie jedoch vorsichtig – es gibt Angriffe, bei denen conntrack sehr hilfreich ist.</p>
 	<p>Unter anderen Umständen kann es sinnvoll sein, die Linux-Firewall in die DDoS-Abwehrpipeline zu integrieren. Denken Sie in solchen Fällen daran, die Abwehr in einen „-t raw PREROUTING“-Layer zu legen, weil der deutlich schneller ist als die „filter“-Tabelle.</p>
 	<p>Für noch anspruchsvollere Workloads haben wir immer XDP. Und Junge, ist der stark. Hier ist das gleiche Diagramm wie oben, aber mit XDP:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/image-3.png" class="kg-image"></figure>
-	<p>Wenn Sie diese Zahlen reproduzieren möchten, <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/README.md" target="_blank">lesen Sie die README-Datei, in der wir alles dokumentiert haben</a>.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/image-3.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Wenn Sie diese Zahlen reproduzieren möchten, <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/README.md?ref=blog.cloudflare.com" target="_blank">lesen Sie die README-Datei, in der wir alles dokumentiert haben</a>.</p>
 	<p>Hier bei Cloudflare verwenden wir ... fast alle diese Techniken. Einige der Userspace-Tricks sind in unsere Anwendungen integriert. Der iptables-Layer wird von <a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep/">unserer Gatebot DDoS-Pipeline</a> verwaltet. Außerdem arbeiten wir daran, unsere proprietäre Kernel-Offload-Lösung durch XDP zu ersetzen.</p>
 	<p>Möchten Sie uns helfen, noch mehr Pakete zu verwerfen? Wir stellen für viele Aufgaben ein, darunter Paketverwerfer, Systemingenieure und mehr!</p>
-	<p><em>Ein besonderer Dank für die Unterstützung bei dieser Arbeit geht an</em><a href="https://twitter.com/JesperBrouer" target="_blank"><em>Jesper Dangaard Brouer</em></a><em>.</em></p>
+	<p><em>Ein besonderer Dank für die Unterstützung bei dieser Arbeit geht an</em><a href="https://twitter.com/JesperBrouer?ref=blog.cloudflare.com" target="_blank"><em>Jesper Dangaard Brouer</em></a><em>.</em></p>
 </div>

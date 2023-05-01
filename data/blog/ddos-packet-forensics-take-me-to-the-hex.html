@@ -1,8 +1,8 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
 	<p>A few days ago, my colleague Marek sent an email about a DDoS attack against one of our DNS servers that we'd been blocking with our <a href="https://blog.cloudflare.com/bpf-the-forgotten-bytecode/">BPF rules</a>. He noticed that there seemed to be a strange correlation between the TTL field in the IP header and the IPv4 source address.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2015/01/30957385_bfb4b7fb79_z.jpg" alt=""><br>
-		<small><a href="https://creativecommons.org/licenses/by/2.0" target="_blank">CC BY 2.0</a> <a href="https://www.flickr.com/photos/adactio/30957385/" target="_blank">image</a> by <a href="https://www.flickr.com/photos/adactio/" target="_blank">Jeremy Keith</a></small>
+	<p><img src="https://blog.cloudflare.com/content/images/2015/01/30957385_bfb4b7fb79_z.jpg" alt="" loading="lazy"><br>
+		<small><a href="https://creativecommons.org/licenses/by/2.0?ref=blog.cloudflare.com" target="_blank">CC BY 2.0</a> <a href="https://www.flickr.com/photos/adactio/30957385/?ref=blog.cloudflare.com" target="_blank">image</a> by <a href="https://www.flickr.com/photos/adactio/?ref=blog.cloudflare.com" target="_blank">Jeremy Keith</a></small>
 	</p>
 	<p>The source address was being spoofed, as usual, and apparently chosen randomly, but something else was going on. He offered a bottle of Scotch to the first person to come up with a satisfactory solution.</p>
 	<p>Here's what some of the packets looked like:</p>
