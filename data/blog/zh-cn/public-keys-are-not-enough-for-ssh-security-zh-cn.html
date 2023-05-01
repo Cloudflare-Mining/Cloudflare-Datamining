@@ -27,16 +27,16 @@
 	<p>当用户通过SSH连接到受Access for Infrastructure保护的资源时，他们将使用命令行工具cloudflared。cloudflared接收绑定到该主机名的SSH流量，并根据SSH配置设置通过Cloudflare转发该流量。无需管道或命令包装。cloudflared启动浏览器窗口，并提示用户使用其SSO凭据进行身份验证。</p>
 	<p>一旦通过身份验证，Access将根据您为该应用程序配置的策略检查用户的身份。如果允许用户访问资源，则Access将生成一个JSON Web令牌（JWT），该令牌由Cloudflare签名，作用域为用户和应用程序。Access通过cloudflared将该令牌分发给用户的设备，该工具将其存储在本地。</p>
 	<p>像核心访问身份验证流程一样，令牌验证是通过在我们每个数据中心中运行的Cloudflare Worker构建的，这使得它既快速又高度可用。Worker使我们能够将这种SSH代理部署到Cloudflare的所有194个数据中心，这意味着对基础设施的访问通常会加快SSH会话，而不是减慢它们。</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2020/01/Short-lived-Cert-copy@2x-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2020/01/Short-lived-Cert-copy@2x-1.png" class="kg-image"></figure>
 	<p></p>
 	<p>启用了短期证书后，在客户端上运行cloudflared实例需要执行一个额外的步骤。cloudflared将该令牌发送到创建临时证书的Cloudflare证书签名端点。然后，用户的SSH流将同时发送令牌（用于通过Access进行身份验证）和短期证书（用于对服务器进行身份验证）。</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2020/01/Short-lived-Cert@2x.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2020/01/Short-lived-Cert@2x.png" class="kg-image"></figure>
 	<p></p>
 	<p>当服务器接收到请求时，它将根据该公钥验证生存期较短的证书，如果证书是真实的，则将用户标识授权给匹配的Unix用户。证书一旦发出，有效期只有2分钟，但是一旦会话启动，SSH连接可以持续更长时间。</p>
 	<h2 id="--1">最终用户体验如何？</h2>
 	<p>Cloudflare Access的SSH功能对最终用户完全透明，并且不需要任何唯一的SSH命令，包装程序或标志。相反，Access要求您的团队成员采取几个一次性的步骤来开始：</p>
 	<p><strong>1.安装cloudflared守护程序</strong></p>
-	<p>这是在目标服务器上运行的相同的轻量级软件，用于通过Cloudflare代理来自团队成员设备的SSH连接。用户可以使用流行的软件包管理器（例如brew）或通过<a href="https://developers.cloudflare.com/access/cli/installing-cli-tool/?ref=blog.cloudflare.com" target="_blank">此处</a>的链接进行安装。另外，该软件是开源的，可以由管理员构建和分发。</p>
+	<p>这是在目标服务器上运行的相同的轻量级软件，用于通过Cloudflare代理来自团队成员设备的SSH连接。用户可以使用流行的软件包管理器（例如brew）或通过<a href="https://developers.cloudflare.com/access/cli/installing-cli-tool/" target="_blank">此处</a>的链接进行安装。另外，该软件是开源的，可以由管理员构建和分发。</p>
 	<p><strong>2.打印SSH配置更新并保存</strong></p>
 	<p>最终用户安装后cloudflared，他们需要运行一个命令来生成新的行来添加到其SSH配置文件中：</p>
 	<pre><code class="language-ssh">cloudflared access ssh-config --hostname vm.example.com --short-lived-cert</code></pre>
@@ -52,5 +52,5 @@ Host cfpipe-vm.example.com
 	<p>用户需要将输出附加到他们的SSH配置文件中。一旦保存，它们就可以通过SSH连接到受保护的资源。Access将提示他们使用浏览器中的SSO凭据进行身份验证，就像他们登录到其他任何基于浏览器的工具一样。如果他们已经使用其凭据进行了有效的浏览器会话，则只会看到成功页面。</p>
 	<p>在他们的终端中，cloudflared将建立会话并颁​​发与其身份相对应的客户端证书。</p>
 	<h2 id="--2">接下来呢？</h2>
-	<p>使用短期证书，Access可以成为您的团队和基础架构在任何环境中的单个SSO集成网关。用户可以直接通过SSH访问给定的机器，管理员可以完全替换其跳转主机，从而消除了这些开销。该功能从今天起对所有Access客户可用。您可以按照<a href="https://developers.cloudflare.com/access/ssh/short-live-cert-server/?ref=blog.cloudflare.com" target="_blank">此处</a>提供的文档开始使用。<a href="https://blog.cloudflare.com/tag/access/"></a><a href="https://blog.cloudflare.com/tag/product-news/"></a><a href="https://blog.cloudflare.com/tag/security/"></a><a href="https://blog.cloudflare.com/tag/jian-ti-zhong-wen/"></a><a href="https://blog.cloudflare.com/tag/simplified-chinese/">=</a></p>
+	<p>使用短期证书，Access可以成为您的团队和基础架构在任何环境中的单个SSO集成网关。用户可以直接通过SSH访问给定的机器，管理员可以完全替换其跳转主机，从而消除了这些开销。该功能从今天起对所有Access客户可用。您可以按照<a href="https://developers.cloudflare.com/access/ssh/short-live-cert-server/" target="_blank">此处</a>提供的文档开始使用。<a href="https://blog.cloudflare.com/tag/access/"></a><a href="https://blog.cloudflare.com/tag/product-news/"></a><a href="https://blog.cloudflare.com/tag/security/"></a><a href="https://blog.cloudflare.com/tag/jian-ti-zhong-wen/"></a><a href="https://blog.cloudflare.com/tag/simplified-chinese/">=</a></p>
 </div>
