@@ -20,7 +20,11 @@ var Icon = _ref2 => {
     type,
     className,
     ariaLabel,
-    testId
+    testId,
+    // Keep label prop to unblock using new icons on stratus. Was getting type error by passing label prop.
+    // Currently have 500+ Icon using label prop in stratus. Need to remove the label prop in the dash
+    // instead of migrate it to ariaLabel. Once we remove label props in dash, we can remove the prop here.
+    label
   } = _ref2;
   var Svg = IconComponents[type];
   return /*#__PURE__*/React.createElement(Svg, {

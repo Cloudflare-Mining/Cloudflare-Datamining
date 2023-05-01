@@ -1,5 +1,11 @@
 # Change Log
 
+## 11.2.1
+
+### Patch Changes
+
+- 324e10c6df: adding optional label prop back
+
 ## 11.2.0
 
 ### Minor Changes
