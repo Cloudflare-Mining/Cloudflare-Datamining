@@ -848,7 +848,67 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " delivers ZTNA on a massive network that is cloud-agnostic and truly global, spanning 200 cities and 100 countries replacing corporate VPN with an identity-aware protection layer that sits in front of internal resources and checks for employees' single sign-on (SSO) credentials instead of a VPN client. Rather than routing traffic through a network VPN appliance, employees accessing internal applications are connected to the data center nearest them. Authentication takes place at the network's edge—only 100 milliseconds from anyone or anything connected to the Internet—speeding authentication and secure access.",
+													"value": " delivers ZTNA on a massive network that is cloud-agnostic and truly global, spanning %{",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "DataCenterCount}",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " cities and %{",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "CountryCount}",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " countries replacing corporate VPN with an identity-aware protection layer that sits in front of internal resources and checks for employees' single sign-on (SSO) credentials instead of a VPN client. Rather than routing traffic through a network VPN appliance, employees accessing internal applications are connected to the data center nearest them. Authentication takes place at the network's edge—only %{",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "OperationMilliseconds}",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " milliseconds from anyone or anything connected to the Internet—speeding authentication and secure access.",
 													"marks": [],
 													"content": null
 												}
