@@ -7,9 +7,9 @@
 	<blockquote>
 		<p>...WASM is not always the right tool for the job. For lightweight tasks like redirecting a request to a different URL or checking an authorization token, sticking to pure JavaScript is probably both faster and easier than WASM. WASM programs operate in their own separate memory space, which means that it's necessary to copy data in and out of that space in order to operate on it. Code that mostly interacts with external objects without doing any serious "number crunching" likely does not benefit from WASM.</p>
 	</blockquote>
-	<p>OK, I'm unlikely to gain significant performance improvements on this particular project, but it serves as a good opportunity illustrate the developer experience and tooling. ?</p>
+	<p>OK, I'm unlikely to gain significant performance improvements on this particular project, but it serves as a good opportunity illustrate the developer experience and tooling. 🦀</p>
 	<h2 id="setuptheenvironmentwithwasmpack">Setup the environment with wasm-pack</h2>
-	<p>Coding with WASM has been bleeding edge for a while, but Rust's tool for WASM development recently reached a fairly ergonomic state and even got a <a href="https://rustwasm.github.io/wasm-pack/?ref=blog.cloudflare.com" target="_blank">website</a>. Make sure you have the <a href="https://rustwasm.github.io/wasm-pack/book/prerequisites/index.html?ref=blog.cloudflare.com" target="_blank">prerequisites</a> installed and then follow the steps below to get started.</p>
+	<p>Coding with WASM has been bleeding edge for a while, but Rust's tool for WASM development recently reached a fairly ergonomic state and even got a <a href="https://rustwasm.github.io/wasm-pack/" target="_blank">website</a>. Make sure you have the <a href="https://rustwasm.github.io/wasm-pack/book/prerequisites/index.html" target="_blank">prerequisites</a> installed and then follow the steps below to get started.</p>
 	<p>wasm-pack allows you to compile Rust to WebAssembly, as well as generate bindings between JavaScript objects and Rust objects. We'll talk about why that's important later.</p>
 	<pre><code># Install wasm-pack
 curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
@@ -20,11 +20,11 @@ cargo install cargo-generate
 # And generate a HelloWorld wasm app, based on the wasm-pack template
 cargo generate --git https://github.com/rustwasm/wasm-pack-template
 
-?  Project Name: bob-ross-lorem-ipsum-rust
-?   Creating project called `bob-ross-lorem-ipsum-rust`...
+🤷  Project Name: bob-ross-lorem-ipsum-rust
+🔧   Creating project called `bob-ross-lorem-ipsum-rust`...
 ✨   Done! New project created /Volumes/HD2/Code/cloudflare/bobross/bob-ross-lipsum-rust/api-rust/bob-ross-lorem-ipsum-rust
 </code></pre>
-	<p>The <a href="https://rustwasm.github.io/wasm-pack/book/tutorial/template-deep-dive/cargo-toml.html?ref=blog.cloudflare.com" target="_blank">WASM book</a> describes some of the glue in the Cargo.toml file, but the meat of the project is here:</p>
+	<p>The <a href="https://rustwasm.github.io/wasm-pack/book/tutorial/template-deep-dive/cargo-toml.html" target="_blank">WASM book</a> describes some of the glue in the Cargo.toml file, but the meat of the project is here:</p>
 	<pre><code>...
 #[wasm_bindgen]
 extern {
@@ -48,26 +48,26 @@ pub fn greet() {
 	<p>Build with <code>wasm-pack build</code></p>
 	<pre><code>$ wasm-pack build
   
-  [1/9] ?  Checking `rustc` version...
-  [2/9] ?  Checking crate configuration...
-  [3/9] ?  Adding WASM target...
-  [4/9] ?  Compiling to WASM...
-  [5/9] ?  Creating a pkg directory...
-  [6/9] ?  Writing a package.json...
+  [1/9] 🦀  Checking `rustc` version...
+  [2/9] 🔧  Checking crate configuration...
+  [3/9] 🎯  Adding WASM target...
+  [4/9] 🌀  Compiling to WASM...
+  [5/9] 📂  Creating a pkg directory...
+  [6/9] 📝  Writing a package.json...
   ⚠️   [WARN]: Field 'description' is missing from Cargo.toml. It is not necessary, but recommended
   ⚠️   [WARN]: Field 'repository' is missing from Cargo.toml. It is not necessary, but recommended
   ⚠️   [WARN]: Field 'license' is missing from Cargo.toml. It is not necessary, but recommended
-  [7/9] ?  Copying over your README...
+  [7/9] 👯  Copying over your README...
   [8/9] ⬇️  Installing wasm-bindgen...
-  [9/9] ?‍♀️  Running WASM-bindgen...
+  [9/9] 🏃‍♀️  Running WASM-bindgen...
   ✨   Done in 2 minutes
-| ?   Your wasm pkg is ready to publish at "/Volumes/HD2/Code/cloudflare/bobross/bob-ross-lipsum-rust/bob-ross
+| 📦   Your wasm pkg is ready to publish at "/Volumes/HD2/Code/cloudflare/bobross/bob-ross-lipsum-rust/bob-ross
 </code></pre>
 	<p>Subsequent builds will be faster. We eventually want to ship that .wasm file to a Worker, but I'd like to keep things local and test in a browser first.</p>
-	<p>There's an <a href="https://www.npmjs.com/package/create-wasm-app?ref=blog.cloudflare.com" target="_blank">npm</a> package that will create a templated webpack webapp, preconfigured to import WebAssembly node modules, which we'll use as a test harness.</p>
+	<p>There's an <a href="https://www.npmjs.com/package/create-wasm-app" target="_blank">npm</a> package that will create a templated webpack webapp, preconfigured to import WebAssembly node modules, which we'll use as a test harness.</p>
 	<pre><code>$ npm init wasm-app www
 npx: installed 1 in 2.533s
-? Rust + ? Wasm = ❤
+🦀 Rust + 🕸 Wasm = ❤
 </code></pre>
 	<p>Install the dependencies with <code>npm install</code> and then <code>npm start</code> to fire up the webpack bundled web server to serve your page</p>
 	<pre><code>$ npm start
@@ -77,8 +77,8 @@ npx: installed 1 in 2.533s
 
 ℹ ｢wds｣: Project is running at http://localhost:8080/
 </code></pre>
-	<p>Open your web browser at <a href="http://localhost:8080/?ref=blog.cloudflare.com" target="_blank">http://localhost:8080</a> and you should see your first WASM generated content!</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/10/rust-wasm-hello-world.png" alt="Rust WASM Hello World" loading="lazy"></p>
+	<p>Open your web browser at <a href="http://localhost:8080" target="_blank">http://localhost:8080</a> and you should see your first WASM generated content!</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/10/rust-wasm-hello-world.png" alt="Rust WASM Hello World"></p>
 	<p>OK, that's promising, but it's not actually our code. Our greet function returned <code>"Hello, bob-ross-lorem-ipsum-rust!"</code></p>
 	<p>If we open up <code>www/index.js</code>, we can see this:</p>
 	<pre><code>import * as wasm from "hello-wasm-pack";
@@ -107,7 +107,7 @@ import * as wasm from "bob-ross-lorem-ipsum-rust"
 npm run start
 </code></pre>
 	<p>Better! That's our code.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/10/rust-wasm-hello-world2.png" alt="Rust WASM Hello World 2" loading="lazy"></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/10/rust-wasm-hello-world2.png" alt="Rust WASM Hello World 2"></p>
 	<h3 id="quickrecap">Quick recap</h3>
 	<p>We have:</p>
 	<ul>
@@ -116,7 +116,7 @@ npm run start
 		<li>A webpack app which imports that module</li>
 		<li>And invokes the greet() function</li>
 	</ul>
-	<p>We're now going to port our Bob Ross Lorem Ipsum generator to Rust, and try it out locally before uploading as a worker. Check it out on in the <a href="https://github.com/stevenpack/bob-ross-lipsum-rust?ref=blog.cloudflare.com" target="_blank">GitHub</a> repo, or follow along.</p>
+	<p>We're now going to port our Bob Ross Lorem Ipsum generator to Rust, and try it out locally before uploading as a worker. Check it out on in the <a href="https://github.com/stevenpack/bob-ross-lipsum-rust" target="_blank">GitHub</a> repo, or follow along.</p>
 	<pre><code class="language-rust">
 use std::vec::Vec;
 use rand::distributions::{Range, Distribution};
@@ -219,12 +219,12 @@ console.log(phraseText);
 alert(phraseText);
 </code></pre>
 	<p>Fail.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/10/rust-wasm-fail-no-entropy.png" alt="Rust WASM Fail no entropy" loading="lazy"></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/10/rust-wasm-fail-no-entropy.png" alt="Rust WASM Fail no entropy"></p>
 	<p>If you've played around with Rust, you'll know how jarring it can be to see your code compile and tests pass, only to have it blow up at runtime. The strictness of the language means your code behaves exactly as you expect more often than other languages, so this failure really threw me.</p>
 	<p>Analysing the stack trace, we can see the failure starts at FromEntropy. My first instinct was that the WASM host didn't support providing entropy. I re-jigged the code to use a time-based seed instead and that failed too. The common theme seemed to be both entropy, and the current time, both make system calls.</p>
-	<p>Reading through the relevant Github issues which discuss this <a href="https://github.com/rustwasm/team/issues/16?ref=blog.cloudflare.com" target="_blank">here</a> and <a href="https://github.com/rust-lang/rust/pull/47102?ref=blog.cloudflare.com" target="_blank">here</a>, it looks like the design for how Rust generated WASM will handle system calls remains open. If the compiler isn't able to guarantee the system calls will be available, shouldn't the linker fail to compile? I think the answer lies in the <code>wasm-unknown-unknown</code> triplet that we compile to. There are no guarantees on what the target platform provides when you target unknown, so you're on your own.</p>
-	<p>That said, we know that the v8 JavaScript engine will be our host in both the browser, and in Workers. There are libraries which allow us to make all Web APIs defined in the ECMAScript standard available to Rust, such as <a href="https://rustwasm.github.io/wasm-bindgen/api/js_sys/index.html?ref=blog.cloudflare.com" target="_blank">js-sys</a></p>
-	<p>Using that, I can rewrite the failing <code>get_rng()</code> method to return a pseudo-random number generated seed with a time-based value using the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date?ref=blog.cloudflare.com" target="_blank">Date</a> object provided by the JavaScript host, rather than making a system call. Full code listing is on <a href="https://github.com/stevenpack/bob-ross-lipsum-rust?ref=blog.cloudflare.com" target="_blank">Github</a></p>
+	<p>Reading through the relevant Github issues which discuss this <a href="https://github.com/rustwasm/team/issues/16" target="_blank">here</a> and <a href="https://github.com/rust-lang/rust/pull/47102" target="_blank">here</a>, it looks like the design for how Rust generated WASM will handle system calls remains open. If the compiler isn't able to guarantee the system calls will be available, shouldn't the linker fail to compile? I think the answer lies in the <code>wasm-unknown-unknown</code> triplet that we compile to. There are no guarantees on what the target platform provides when you target unknown, so you're on your own.</p>
+	<p>That said, we know that the v8 JavaScript engine will be our host in both the browser, and in Workers. There are libraries which allow us to make all Web APIs defined in the ECMAScript standard available to Rust, such as <a href="https://rustwasm.github.io/wasm-bindgen/api/js_sys/index.html" target="_blank">js-sys</a></p>
+	<p>Using that, I can rewrite the failing <code>get_rng()</code> method to return a pseudo-random number generated seed with a time-based value using the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank">Date</a> object provided by the JavaScript host, rather than making a system call. Full code listing is on <a href="https://github.com/stevenpack/bob-ross-lipsum-rust" target="_blank">Github</a></p>
 	<pre><code class="language-Rust">fn get_rng() -&gt; SmallRng {    
     use js_sys::Date;
     use rand::SeedableRng;
@@ -237,11 +237,11 @@ alert(phraseText);
 }
 </code></pre>
 	<p>After another <code>wasm-pack build</code> and reloading our test page...</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/10/rust-wasm-random-phrases.png" alt="Generating random phrases" loading="lazy"></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/10/rust-wasm-random-phrases.png" alt="Generating random phrases"></p>
 	<p>Huzzah! OK, if my WASM module returns the right output in Chrome, I'm feeling good about it working in Workers.</p>
 	<h2 id="fromlocalbrowserharnesstoworkers">From local browser harness to Workers</h2>
-	<p>You can use the <a href="https://developers.cloudflare.com/workers/api/?ref=blog.cloudflare.com" target="_blank">API</a> or UI to upload. Below, I upload the .wasm file in my /pkg director and bind it to the global variable BOBROSS_WASM, where it will be available in my Worker.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/10/rust-wasm-upload.png" alt="Rust WASM upload" loading="lazy"></p>
+	<p>You can use the <a href="https://developers.cloudflare.com/workers/api/" target="_blank">API</a> or UI to upload. Below, I upload the .wasm file in my /pkg director and bind it to the global variable BOBROSS_WASM, where it will be available in my Worker.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/10/rust-wasm-upload.png" alt="Rust WASM upload"></p>
 	<p>If you're following and looked at the output of the <code>wasm-pack build</code> command, you might have noticed it produced a JavaScript glue file in the pkg folder, which is actually what the browser executed.</p>
 	<p>It looks like this:</p>
 	<pre><code>/* tslint:disable */
@@ -322,8 +322,8 @@ export function __wbg_now_4410283ed4cdb45a() {
 		<li>Create an importObject referencing the methods</li>
 		<li>Pass that in when you create the WebAssembly instance</li>
 	</ul>
-	<p><em>Update 28-Dec-2018: wasm-bindgen has been updated since this post. See this <a href="https://github.com/stevenpack/bob-ross-lipsum-rust/pull/1?ref=blog.cloudflare.com" target="_blank">PR</a> if you're getting errors related to the glue code. Thanks <a href="https://github.com/andrewdavidmackenzie?ref=blog.cloudflare.com" target="_blank">Andrew</a>!</em></p>
-	<p>You can view a <a href="https://blog.cloudflare.com/content/images/2018/10/rust-wasm-local-vs-worker-diff.png">side-by-side diff</a> or a <a href="https://github.com/stevenpack/bob-ross-lipsum-rust/blob/master/worker/glue-to-worker.patch?ref=blog.cloudflare.com" target="_blank">patch</a> to see the changes required to have it run in a Worker. Include the modified glue code into your worker and you can now call it like any other function. (Thanks for the tip Jake Riesterer!)</p>
+	<p><em>Update 28-Dec-2018: wasm-bindgen has been updated since this post. See this <a href="https://github.com/stevenpack/bob-ross-lipsum-rust/pull/1" target="_blank">PR</a> if you're getting errors related to the glue code. Thanks <a href="https://github.com/andrewdavidmackenzie" target="_blank">Andrew</a>!</em></p>
+	<p>You can view a <a href="https://blog.cloudflare.com/content/images/2018/10/rust-wasm-local-vs-worker-diff.png">side-by-side diff</a> or a <a href="https://github.com/stevenpack/bob-ross-lipsum-rust/blob/master/worker/glue-to-worker.patch" target="_blank">patch</a> to see the changes required to have it run in a Worker. Include the modified glue code into your worker and you can now call it like any other function. (Thanks for the tip Jake Riesterer!)</p>
 	<pre><code>// Request Handler
 async function handleRequest(request) {
 
@@ -344,12 +344,12 @@ async function handleRequest(request) {
 }
 </code></pre>
 	<p>Success!</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/10/rust-wasm-success.png" alt="Serverless Rust on the Edge" loading="lazy"></p>
-	<p>The full <a href="https://github.com/stevenpack/bob-ross-lipsum-rust/blob/master/worker/worker.js?ref=blog.cloudflare.com" target="_blank">source code</a> is on Github.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/10/rust-wasm-success.png" alt="Serverless Rust on the Edge"></p>
+	<p>The full <a href="https://github.com/stevenpack/bob-ross-lipsum-rust/blob/master/worker/worker.js" target="_blank">source code</a> is on Github.</p>
 	<h3 id="summary">Summary</h3>
 	<p>We can compile Rust to WASM, and call it from Serverless functions woven into the very fabric of the Internet. That's huge and I can't wait to do more of it.</p>
 	<p>There's some wrangling of the generated code required, but the tooling will improve over time. Once you've modified the glue code, calling a function in Rust generated WASM modules is just as simple as JavaScript.</p>
 	<p>Are we Serverless yet? Yes we are.</p>
-	<p>In a future post, I'll extract out the phrases and the UI to the <a href="https://developers.cloudflare.com/workers/kv/?ref=blog.cloudflare.com" target="_blank">KV store</a> to show a full fledged serverless app powered by Rust and WASM.</p>
+	<p>In a future post, I'll extract out the phrases and the UI to the <a href="https://developers.cloudflare.com/workers/kv/" target="_blank">KV store</a> to show a full fledged serverless app powered by Rust and WASM.</p>
 	<!--kg-card-end: markdown-->
 </div>

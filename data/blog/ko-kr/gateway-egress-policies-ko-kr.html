@@ -1,12 +1,12 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/02/image5-1.png" class="kg-image" alt="Manage and control the use of dedicated egress IPs with Cloudflare Zero Trust" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/02/image5-1.png" class="kg-image" alt="Manage and control the use of dedicated egress IPs with Cloudflare Zero Trust"></figure>
 	<p>ID 기반 Zero Trust 규칙이 나타나기 전, 공용 인터넷상의 일부 SaaS 애플리케이션은 연결된 사용자의 IP 주소를 보안 모델로 이용했습니다. 사용자는 IP 주소 범위가 고정되어 있는 알려진 지점 위치를 통해 연결되었고, SaaS 애플리케이션은 로그인 자격 증명과 더불어 사용자의 주소를 확인했습니다.</p>
 	<p>아직도 이 2단계 방법을 제공하는 시스템이 많습니다. Cloudflare One 고객은 Zero Trust 모델로 향하는 과정으로서, 이러한 목적에 전용 송신 IP를 사용할 수 있습니다. 다른 솔루션과 달리 이 옵션을 사용하는 고객은 자체 인프라를 배포할 필요가 없습니다. 그러나 모든 트래픽에서 전용 송신 IP를 사용해야 하는 것은 아닙니다.</p>
 	<p>Cloudflare는 오늘, Cloudflare에서 전용 송신 IP를 사용할 시기를 관리자가 제어할 수 있게 하는 정책을 발표합니다. 구체적으로, 관리자는 Cloudflare 대시보드에서 규칙 빌더를 사용해 ID, 애플리케이션, IP 주소, 지리적 위치와 같은 속성에 따라 어떤 송신 IP를 언제 사용할지 결정할 수 있습니다. 이 기능은 Zero Trust 구독에 전용 송신 IP를 추가한 모든 기업 계약 고객에게 제공됩니다.</p>
 	<h3 id="-">이 기능을 구축한 이유는 무엇일까요?</h3>
-	<p>현재와 같은 하이브리드 근무 환경에서 조직은 더 일관적인 보안과 IT 경험으로 사무실, 데이터 센터, 로밍 사용자 위치에서 송신되는 직원의 트래픽을 관리하기를 지향합니다. 더욱 간소화된 경험을 제공하기 위해 여러 조직에서는 <a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway/?ref=blog.cloudflare.com" target="_blank">보안 웹 게이트웨이</a>(SWG)와 같이 클라우드로 제공되는 최신 프록시 서비스를 도입하여 다양하고 복잡하게 구성된 온프레미스 장비를 줄이려 합니다.</p>
+	<p>현재와 같은 하이브리드 근무 환경에서 조직은 더 일관적인 보안과 IT 경험으로 사무실, 데이터 센터, 로밍 사용자 위치에서 송신되는 직원의 트래픽을 관리하기를 지향합니다. 더욱 간소화된 경험을 제공하기 위해 여러 조직에서는 <a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway/" target="_blank">보안 웹 게이트웨이</a>(SWG)와 같이 클라우드로 제공되는 최신 프록시 서비스를 도입하여 다양하고 복잡하게 구성된 온프레미스 장비를 줄이려 합니다.</p>
 	<p>이러한 레거시 도구가 전통적으로 선사했던 편리한 점은, 정적 소스 IP에 따라 허용 목록 정책을 만드는 기능이었습니다. 사용자가 기본적으로 한 장소에 머물렀을 때는 송신 위치에 따라 트래픽을 확인하기가 쉬웠고 신뢰하기에도 충분했습니다. 사용자가 더 이상 한 장소에 머무르지 않음에도 불구하고 이와 같은 트래픽 유효성 검사 방식을 유지하고 싶어 하거나, 유지해야만 하는 조직이 많습니다.</p>
-	<p>지금까지 Cloudflare는 프록시 <a href="https://www.cloudflare.com/products/zero-trust/?ref=blog.cloudflare.com" target="_blank">Zero Trust 서비스</a>의 추가 서비스로 전용 송신 IP를 제공하여 조직을 지원해왔습니다. 기본 송신 IP와 달리 전용 송신 IP는 다른 Gateway 계정과 공유되지 않으며 지정된 계정에 프록시 트래픽을 송신하는 데만 사용됩니다.</p>
+	<p>지금까지 Cloudflare는 프록시 <a href="https://www.cloudflare.com/products/zero-trust/" target="_blank">Zero Trust 서비스</a>의 추가 서비스로 전용 송신 IP를 제공하여 조직을 지원해왔습니다. 기본 송신 IP와 달리 전용 송신 IP는 다른 Gateway 계정과 공유되지 않으며 지정된 계정에 프록시 트래픽을 송신하는 데만 사용됩니다.</p>
 	<p><a href="https://blog.cloudflare.com/ko-kr/gateway-dedicated-egress-policies-ko-kr/">이전 블로그 게시물에서 다뤘듯이</a> 이미 고객들은 Cloudflare의 전용 송신 IP를 사용하여, 사용자의 프록시 트래픽을 구별하거나 타사 공급자의 허용 목록에 추가하는 방식으로 VPN 사용을 줄이고 있습니다. 알려진 고정 IP의 이점인 단순함을 조직에서 계속 누릴 수 있으며, 트래픽에 기존 온프레미스 장비로 인한 병목 현상과 백홀이 발생하지 않습니다.</p>
 	<h3 id="--1">송신 정책 사용 시점</h3>
 	<p>Gateway 송신 정책 빌더는 유연성이 강화되었고, 사용자 ID, 장치 상태, 소스/대상 IP 주소 등에 따라 트래픽을 구별해 송신할 수 있어 관리자에게 유용합니다.</p>
@@ -17,14 +17,14 @@
 	<h3 id="--2">송신 정책 구축</h3>
 	<p>관리자가 얼마나 쉽게 정책을 작성할 수 있는지 보여드리기 위해 마지막 시나리오를 살펴보겠습니다. 이 조직에서는 타사 서비스를 사용하고, 도메인에 액세스하려면 사용자 이름/암호 로그인과 더불어 정적 소스 IP나 네트워크 범위 사용이 필요합니다.</p>
 	<p>이를 설정하려면 Zero Trust 대시보드에서 Gateway에 있는 송신 정책으로 이동하기만 하면 됩니다. 이 페이지에서 ‘송신 정책 생성’을 누릅니다.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/image3-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/image3-1.png" class="kg-image"></figure>
 	<p>이 조직의 경우, 타사 서비스에 액세스하는 사용자 대부분은 포르투갈에 있습니다. 그러니 포르투갈 몬티주에 할당된 전용 송신 IP를 사용합니다. 사용자는 203.0.113.10에서 호스팅된 example.com에 액세스할 것이므로, 대상 IP 선택기를 사용하여 이 사이트로 들어오는 모든 트래픽을 조회하겠습니다. 아래와 같이 정책을 구성합니다.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/02/image2.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/02/image2.png" class="kg-image"></figure>
 	<p>정책을 만들었다면, 이 타사 서비스와 연관이 없는 대상에 전용 송신 IP를 사용하지 않도록 조직에서 광범위하게 사용할 정책을 하나 더 추가합니다. 공유 IP의 기업 풀을 통해 송신이 이루어져 사용자의 개인정보는 계속 보호되면서도, 가장 성능이 뛰어난 네트워크 경험을 제공할 수 있으므로 이 과정은 중요합니다. 아래와 같이 정책을 구성합니다.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/02/image4.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/02/image4.png" class="kg-image"></figure>
 	<p>송신 정책 목록을 살펴보면, 모든 정책이 활성화되어 있습니다. 이제 사용자가 example.com에 액세스하려 하면 주요 또는 보조 전용 IPv4나 IPv6 범위가 송신 IP로 사용됩니다. 그리고 다른 트래픽에는 모두 기본 Cloudflare 송신 IP가 사용됩니다.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/image1-3.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/02/image1-3.png" class="kg-image"></figure>
 	<h3 id="--3">다음 단계</h3>
 	<p>온프레미스 장비를 줄여가고 있는 조직들은 클라우드 보안 스택을 통해 트래픽을 더 많이 프록시하고 있으므로, 지속적인 단순성과 제어력을 원한다는 점을 잘 알고 있습니다. 앞으로 관리자는 Gateway 송신 정책을 사용하여 점점 더 폭넓게 위치하고 있는 인력의 트래픽 흐름을 제어할 수 있습니다.</p>
-	<p>Cloudflare의 전용 송신 IP에 대한 정책을 구축하는 데 관심이 있으시다면<a href="https://www.cloudflare.com/lp/cio-week-2023-cloudflare-one-contact-us/?ref=blog.cloudflare.com" target="_blank"> Cloudflare Zero Trust Enterprise 요금제</a>에 추가하거나 계정 관리자에게 문의하시기 바랍니다.</p>
+	<p>Cloudflare의 전용 송신 IP에 대한 정책을 구축하는 데 관심이 있으시다면<a href="https://www.cloudflare.com/lp/cio-week-2023-cloudflare-one-contact-us/" target="_blank"> Cloudflare Zero Trust Enterprise 요금제</a>에 추가하거나 계정 관리자에게 문의하시기 바랍니다.</p>
 </div>

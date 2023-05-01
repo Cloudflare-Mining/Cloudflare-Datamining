@@ -1,7 +1,7 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/workers-KV-dark-back@2x.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/workers-KV-dark-back@2x.png" class="kg-image"></figure>
 	<p></p>
-	<p>In this tutorial, we’ll build a todo list application in HTML, CSS and JavaScript, with a twist: all the data should be stored inside of the newly-launched Workers KV, and the application itself should be served directly from Cloudflare’s edge network, using <a href="https://www.cloudflare.com/products/cloudflare-workers/?ref=blog.cloudflare.com" target="_blank">Cloudflare Workers</a>.</p>
+	<p>In this tutorial, we’ll build a todo list application in HTML, CSS and JavaScript, with a twist: all the data should be stored inside of the newly-launched Workers KV, and the application itself should be served directly from Cloudflare’s edge network, using <a href="https://www.cloudflare.com/products/cloudflare-workers/" target="_blank">Cloudflare Workers</a>.</p>
 	<p>To start, let’s break this project down into a couple different discrete steps. In particular, it can help to focus on the constraint of working with Workers KV, as handling data is generally the most complex part of building an application:</p>
 	<ol>
 		<li>Build a todos data structure</li>
@@ -24,8 +24,8 @@
 	</ol>
 	<p>For this project, we’ll lean heavily towards the latter end of that list, building an application that clients communicate with, served on Cloudflare’s edge network. This means that it’ll be globally available, with low-latency, while still allowing the ease-of-use in building applications directly in JavaScript.</p>
 	<h3 id="setting-up-a-canvas">Setting up a canvas</h3>
-	<p>To start, I wanted to approach this project from the bare minimum: no frameworks, JS utilities, or anything like that. In particular, I was most interested in writing a project from scratch and serving it directly from the edge. Normally, I would deploy a site to something like <a href="https://pages.github.com/?ref=blog.cloudflare.com" target="_blank">GitHub Pages</a>, but avoiding the need for an origin server altogether seems like a really powerful (and performant idea) - let’s try it!</p>
-	<p>I also considered using <a href="https://todomvc.com/?ref=blog.cloudflare.com" target="_blank">TodoMVC</a> as the blueprint for building the functionality for the application, but even the <a href="http://todomvc.com/examples/vanillajs/?ref=blog.cloudflare.com#/" target="_blank">Vanilla JS</a> version is a pretty impressive amount of <a href="https://github.com/tastejs/todomvc/tree/gh-pages/examples/vanillajs?ref=blog.cloudflare.com" target="_blank">code</a>, including a number of Node packages - it wasn’t exactly a concise chunk of code to just dump into the Worker itself.</p>
+	<p>To start, I wanted to approach this project from the bare minimum: no frameworks, JS utilities, or anything like that. In particular, I was most interested in writing a project from scratch and serving it directly from the edge. Normally, I would deploy a site to something like <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>, but avoiding the need for an origin server altogether seems like a really powerful (and performant idea) - let’s try it!</p>
+	<p>I also considered using <a href="https://todomvc.com/" target="_blank">TodoMVC</a> as the blueprint for building the functionality for the application, but even the <a href="http://todomvc.com/examples/vanillajs/#/" target="_blank">Vanilla JS</a> version is a pretty impressive amount of <a href="https://github.com/tastejs/todomvc/tree/gh-pages/examples/vanillajs" target="_blank">code</a>, including a number of Node packages - it wasn’t exactly a concise chunk of code to just dump into the Worker itself.</p>
 	<p>Instead, I decided to approach the beginnings of this project by building a simple, blank HTML page, and including it inside of the Worker. To start, we’ll sketch something out locally, like this:</p>
 	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-html">&lt;!DOCTYPE html&gt;
@@ -42,12 +42,12 @@
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p></p>
-	<p>Hold on to this code - we’ll add it later, inside of the Workers script. For the purposes of the tutorial, I’ll be serving up this project at <a href="http://todo.kristianfreeman.com/?ref=blog.cloudflare.com" target="_blank">todo.kristianfreeman.com</a>. My personal website was already hosted on Cloudflare, and since I’ll be serving, it was time to create my first Worker.</p>
+	<p>Hold on to this code - we’ll add it later, inside of the Workers script. For the purposes of the tutorial, I’ll be serving up this project at <a href="http://todo.kristianfreeman.com/" target="_blank">todo.kristianfreeman.com</a>. My personal website was already hosted on Cloudflare, and since I’ll be serving, it was time to create my first Worker.</p>
 	<h3 id="creating-a-worker">Creating a worker</h3>
 	<p>Inside of my Cloudflare account, I hopped into the Workers tab and launched the Workers editor.</p>
 	<p>This is one of my favorite features of the editor - working with your actual website, understanding <em>how</em> the worker will interface with your existing project.</p>
 	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/image4-2.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/image4-2.png" class="kg-image"></figure>
 	<p></p>
 	<p>The process of writing a Worker should be familiar to anyone who’s used the fetch library before. In short, the default code for a Worker hooks into the <code>fetch</code> event, passing the request of that event into a custom function, <code>handleRequest</code>:</p>
 	<p></p><!--kg-card-begin: markdown-->
@@ -80,18 +80,18 @@
 	<p></p>
 	<p>Given that very small functionality we’ve added to the worker, let’s deploy it. Moving into the “Routes” tab of the Worker editor, I added the route <code>https://todo.kristianfreeman.com/*</code> and attached it to the cloudflare-worker-todos script.</p>
 	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/image5.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/image5.png" class="kg-image"></figure>
 	<p></p>
 	<p>Once attached, I deployed the worker, and voila! Visiting todo.kristianfreeman.com in-browser gives me my simple “Hello!” response back.</p>
 	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/Screen-Shot-2019-05-15-at-10.12.04-AM.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/Screen-Shot-2019-05-15-at-10.12.04-AM.png" class="kg-image"></figure>
 	<p></p>
 	<h3 id="writing-data-to-kv">Writing data to KV</h3>
 	<p>The next step is to populate our todo list with actual data. To do this, we’ll make use of Cloudflare’s Workers KV - it’s a simple key-value store that you can access inside of your Worker script to read (and write, although it’s less common) data.</p>
 	<p>To get started with KV, we need to set up a “namespace”. All of our cached data will be stored inside that namespace, and given just a bit of configuration, we can access that namespace inside the script with a predefined variable.</p>
 	<p>I’ll create a new namespace in the Workers dashboard, called <code>KRISTIAN_TODOS</code>, and in the Worker editor, I’ll expose the namespace by binding it to the variable <code>KRISTIAN_TODOS</code>.</p>
 	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/image1-6.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/image1-6.png" class="kg-image"></figure>
 	<p></p>
 	<p>Given the presence of <code>KRISTIAN_TODOS</code> in my script, it’s time to understand the KV API. At time of writing, a KV namespace has three primary methods you can use to interface with your cache: <code>get</code>, <code>put</code>, and <code>delete</code>. Pretty straightforward!</p>
 	<p>Let’s start storing data by defining an initial set of data, which we’ll put inside of the cache using the put method. I’ve opted to define an object, <code>defaultData</code>, instead of a simple array of todos: we may want to store metadata and other information inside of this cache object later on. Given that data object, I’ll use <code>JSON.stringify</code> to put a simple string into the cache:</p>
@@ -173,7 +173,7 @@ async function handleRequest(request) {
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/Screen-Shot-2019-05-15-at-10.06.57-AM.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/Screen-Shot-2019-05-15-at-10.06.57-AM.png" class="kg-image"></figure>
 	<p></p>
 	<p>We have a static HTML site being rendered, and now we can begin populating it with data! In the body, we’ll add a <code>ul</code> tag with an id of <code>todos</code>:</p>
 	<p></p><!--kg-card-begin: markdown-->
@@ -234,7 +234,7 @@ async function handleRequest(request) {
 	<p></p>
 	<p>The finished product looks something like this:</p>
 	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/image3-3.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/image3-3.png" class="kg-image"></figure>
 	<p></p>
 	<h3 id="adding-todos-from-the-ui">Adding todos from the UI</h3>
 	<p>At this point, we’ve built a Cloudflare Worker that takes data from Cloudflare KV and renders a static page based on it. That static page reads the data, and generates a todo list based on that data. Of course, the piece we’re missing is <em>creating</em> todos, from inside the UI. We know that we can add todos using the KV API - we could simply update the cache by saying <code>KRISTIAN_TODOS.put(newData)</code>, but how do we update it from inside the UI?</p>
@@ -347,7 +347,7 @@ document.querySelector("#create")
 	<p></p>
 	<p>With the client-side code in place, deploying the new Worker should put all these pieces together. The result is an actual dynamic todo list!</p>
 	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/image7.gif" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/image7.gif" class="kg-image"></figure>
 	<p></p>
 	<h3 id="updating-todos-from-the-ui">Updating todos from the UI</h3>
 	<p>For the final piece of our (very) basic todo list, we need to be able to update todos - specifically, marking them as completed.</p>
@@ -376,7 +376,7 @@ document.querySelector("#create")
 	<!--kg-card-end: markdown-->
 	<p></p>
 	<p>So far, we’ve designed the client-side part of this code to take an array of todos in, and given that array, render out a list of simple HTML elements. There’s a number of things that we’ve been doing that we haven’t quite had a use for, yet: specifically, the inclusion of IDs, and updating the completed value on a todo. Luckily, these things work well together, in order to support actually updating todos in the UI.</p>
-	<p>To start, it would be useful to signify the ID of each todo in the HTML. By doing this, we can then refer to the element later, in order to correspond it to the todo in the JavaScript part of our code. <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset?ref=blog.cloudflare.com" target="_blank"><em>Data attributes</em></a>, and the corresponding dataset method in JavaScript, are a perfect way to implement this. When we generate our <code>div</code> element for each todo, we can simply attach a data attribute called <code>todo</code> to each <code>div</code>:</p>
+	<p>To start, it would be useful to signify the ID of each todo in the HTML. By doing this, we can then refer to the element later, in order to correspond it to the todo in the JavaScript part of our code. <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset" target="_blank"><em>Data attributes</em></a>, and the corresponding dataset method in JavaScript, are a perfect way to implement this. When we generate our <code>div</code> element for each todo, we can simply attach a data attribute called <code>todo</code> to each <code>div</code>:</p>
 	<p></p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">window.todos.forEach(todo =&gt; {
   var el = document.createElement("div");
@@ -434,12 +434,12 @@ document.querySelector("#create")
 	<p></p>
 	<p>The final result of our code is a system that simply checks the <code>todos</code> variable, updates our Cloudflare KV cache with that value, and then does a straightforward re-render of the UI based on the data it has locally.</p>
 	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/image8-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/image8-1.png" class="kg-image"></figure>
 	<p></p>
 	<h3 id="conclusions-and-next-steps">Conclusions and next steps</h3>
-	<p>With this, we’ve created a pretty remarkable project: an almost entirely static HTML/JS application, transparently powered by Cloudflare KV and Workers, served at the edge. There’s a number of additions to be made to this application, whether you want to implement a better design (I’ll leave this as an exercise for readers to implement - you can see my version at <a href="https://todo.kristianfreeman.com/?ref=blog.cloudflare.com" target="_blank">todo.kristianfreeman.com</a>), security, speed, etc.</p>
+	<p>With this, we’ve created a pretty remarkable project: an almost entirely static HTML/JS application, transparently powered by Cloudflare KV and Workers, served at the edge. There’s a number of additions to be made to this application, whether you want to implement a better design (I’ll leave this as an exercise for readers to implement - you can see my version at <a href="https://todo.kristianfreeman.com/" target="_blank">todo.kristianfreeman.com</a>), security, speed, etc.</p>
 	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/image2-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/image2-1.png" class="kg-image"></figure>
 	<p></p>
 	<p>One interesting and fairly trivial addition is implementing per-user caching. Of course, right now, the cache key is simply “data”: anyone visiting the site will share a todo list with any other user. Because we have the request information inside of our worker, it’s easy to make this data user-specific. For instance, implementing per-user caching by generating the cache key based on the requesting IP:</p>
 	<p></p><!--kg-card-begin: markdown-->
@@ -584,5 +584,5 @@ addEventListener('fetch', event =&gt; {
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p></p>
-	<p>You can find the source code for this project, as well as a README with deployment instructions, on <a href="https://github.com/signalnerve/cloudflare-workers-todos?ref=blog.cloudflare.com" target="_blank">GitHub</a>.</p>
+	<p>You can find the source code for this project, as well as a README with deployment instructions, on <a href="https://github.com/signalnerve/cloudflare-workers-todos" target="_blank">GitHub</a>.</p>
 </div>

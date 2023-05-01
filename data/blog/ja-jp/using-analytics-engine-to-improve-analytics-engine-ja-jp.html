@@ -1,9 +1,9 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-62.png" class="kg-image" alt="How Cloudflare instruments services using Workers Analytics Engine" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-62.png" class="kg-image" alt="How Cloudflare instruments services using Workers Analytics Engine"></figure>
 	<p>Workers Analytics Engineは、<a href="https://blog.cloudflare.com/workers-analytics-engine/">今年の初めに発表された新ツールです。</a>開発者や製品チームが、高次元、高カーディナリティ、楽なスケーリングな環境で、いかなる時系列分析も構築できるようになりました。チームがWorkersで実行するコードについてのインサイトを得たり、エンドカスタマーに分析を提供したり、使用量ベースの課金を構築したりすることを目的に、Workers Analytics Engineを構築しました。</p>
 	<p>本記事ではAnalytics Engineをどのように使ってAnalytics Engineを構築しているかをお伝えします。Analytics EngineのSQL APIをAnalytics Engine自身を使って計測し、このデータをバグの発見や新しい製品機能の優先順位付けに使用しています。自社製品の計測やフィードバック収集の方法を模索している他のチームに参考となるような情報がお伝えできたら嬉しいです。</p>
 	<h3 id="analytics-engine-">Analytics Engineが必要な理由</h3>
-	<p>Analytics Engineは<a href="https://developers.cloudflare.com/analytics/analytics-engine/get-started/?ref=blog.cloudflare.com" target="_blank"> わずか数行のコードを使ってWorkersでイベント（または「データポイント」）を生成することができます</a> 。GraphQLまたは<a href="https://developers.cloudflare.com/analytics/analytics-engine/sql-api/?ref=blog.cloudflare.com" target="_blank"> SQL API</a> を使用すれば、これらのイベントを照会して、ビジネスやテクノロジースタックに関する有益なインサイトを得ることができます。Analytics Engineを使用開始方法の詳細については、<a href="https://developers.cloudflare.com/analytics/analytics-engine/?ref=blog.cloudflare.com" target="_blank"> developer docs</a>をご覧ください。</p>
+	<p>Analytics Engineは<a href="https://developers.cloudflare.com/analytics/analytics-engine/get-started/" target="_blank"> わずか数行のコードを使ってWorkersでイベント（または「データポイント」）を生成することができます</a> 。GraphQLまたは<a href="https://developers.cloudflare.com/analytics/analytics-engine/sql-api/" target="_blank"> SQL API</a> を使用すれば、これらのイベントを照会して、ビジネスやテクノロジースタックに関する有益なインサイトを得ることができます。Analytics Engineを使用開始方法の詳細については、<a href="https://developers.cloudflare.com/analytics/analytics-engine/" target="_blank"> developer docs</a>をご覧ください。</p>
 	<p><a href="https://blog.cloudflare.com/analytics-engine-open-beta/">9月のAnalytics Engineオープンベータ版</a>リリース以降 、開発者の方々からのフィードバックに基づいて新機能を順次追加してきました。しかし、製品に対する可視性において2つの大きなギャップがありました。</p>
 	<p>ギャップの1つ目は、エンジニアリングチームは、「リクエストを受ける数はどれくらいか」「そのうちエラーになるのはどれくらいか」「エラーの内容は何か」など、オブザーバビリティに関するよくある問いに答えを出さなければいけないというものです。平均エラー率やp99の応答時間などの集計データと、個々の事象を掘り下げることの両方ができる必要があるのです。</p>
 	<p>2つ目のギャップは、新製品であるために、当社ではプロダクトインサイトを求めているということです。SQL APIをインストゥルメント化することで、お客様の書くクエリや表示エラーを把握し、不足している機能の優先順位付けに役立てることができるのです。</p>
@@ -12,34 +12,34 @@
 	<h2 id="sql-api-">SQL APIにインストルメンテーションを追加する</h2>
 	<p>Analytics EngineのSQL APIでは、通常のデータベースと同じようにイベントデータに問い合わせることができます。SQLはこれまで何十年もの間、データを照会するための最も一般的な言語として使用されてきました。私たちは新しいクエリー言語を習得することなく、データに関する質問をすぐに始められるようなインターフェイスを提供したいと考えました。</p>
 	<p>当社のSQL APIはユーザーのSQLクエリーを解析し、変換・検証した後、バックエンドのデータベースサーバーに対して実行します。そして、Analytics Engineにクエリーの情報を書き戻すことで、独自の分析を行えるようにしています。</p>
-	<p>Cloudflare WorkerからAnalytics Engineへのデータの書き込みは非常に簡単で、 <a href="https://developers.cloudflare.com/analytics/analytics-engine/get-started/?ref=blog.cloudflare.com" target="_blank">ドキュメントで説明しています</a> 。ユーザーと同じようにSQL APIをインストルメントしています。このコードの抜粋は、Analytics Engineに書き込むデータを示しています。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/carbon--3--1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Cloudflare WorkerからAnalytics Engineへのデータの書き込みは非常に簡単で、 <a href="https://developers.cloudflare.com/analytics/analytics-engine/get-started/" target="_blank">ドキュメントで説明しています</a> 。ユーザーと同じようにSQL APIをインストルメントしています。このコードの抜粋は、Analytics Engineに書き込むデータを示しています。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/carbon--3--1.png" class="kg-image"></figure>
 	<p>そのデータをAnalytics Engineに格納することで、レポートするすべてのフィールドに関するインサイトを引き出すことができるようになりました。</p>
 	<h2 id="-">インサイトのクエリー</h2>
 	<p>SQLデータベースで分析を行うことで、どんなクエリーでも自由に作成することができます。メトリクスのように、あらかじめ定義され目的に応じて使い分るものに比べ、カスタムデータセットを自由に定義し、データを照会して新しく質問することができます。</p>
 	<p>当社では何兆ものデータ点からなるデータセットへの対応が求められています。その実現するために、<a href="https://blog.cloudflare.com/explaining-cloudflares-abr-analytics/">Adaptive Bit Rate</a>（ABR）と呼ばれるサンプリング手法を実施しています。ABRにおいて大量のデータがある場合、合理的な時間で応答するために、クエリーはサンプリングされたイベントを返すことがあります。データ量が一般的である場合には、Analytics Engineはすべてのデータにクエリーを実行します。これにより、どんなクエリーを実行しても、短時間で応答を得ることができます。今のところクエリーの作成方法において、サンプリングを考慮する必要がありますが、当社ではその自動化を検討しています。</p>
-	<p>どのようなデータ可視化ツールでも、分析結果を可視化することができます。CloudflareではGrafanaを多用しています（<a href="https://developers.cloudflare.com/analytics/analytics-engine/grafana/?ref=blog.cloudflare.com" target="_blank">きっとあなたもそうでしょう</a> ）。これは、特に観測可能性のユースケースに有効です。</p>
+	<p>どのようなデータ可視化ツールでも、分析結果を可視化することができます。CloudflareではGrafanaを多用しています（<a href="https://developers.cloudflare.com/analytics/analytics-engine/grafana/" target="_blank">きっとあなたもそうでしょう</a> ）。これは、特に観測可能性のユースケースに有効です。</p>
 	<h3 id="--1">クエリーの応答時間を観測する</h3>
 	<p>当社ではバックエンドのデータベース・クラスタのパフォーマンスに関する情報を伝えるクエリーに注目しています。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image2-45.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image2-45.png" class="kg-image"></figure>
 	<p>ご覧のように、99%パーセンタイル（1%の最も複雑なクエリーを実行することに相当）では、約300msまで急増することがあります。しかし、当社のバックエンドは平均して100ms以内にクエリーに応答しています。</p>
 	<p>このビジュアライゼーションは、それ自体がSQLクエリから生成されています。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/carbon--2-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/carbon--2-.png" class="kg-image"></figure>
 	<h3 id="--2">高カーディナリティデータから得られる顧客インサイト</h3>
 	<p>Analytics Engineにはもう1つ、顧客の行動からインサイトを引き出すという使い方があります。特に当社のSQL APIは、SQLのパワーをフルに活用できるため、このような場合に適しています。当社のABR技術により、膨大なデータセットに対して高価なクエリーも実行することができます。</p>
 	<p>この能力をAnalytics Engineの改善の優先順位付けに使用しています。当社のSQL APIはかなりSQLの標準的なダイアレクトをサポートしていますが、まだ機能として完全なものではありません。ユーザーがSQLクエリーでサポートされていないことを行おうとすると、構造化されたエラーメッセージが返されます。これらのエラーメッセージはAnalytics Engineに報告されます。お客様が遭遇したエラーの種類を集計することで、次にどの機能を優先させるべきかを判断するのに役立ちます。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image3-36.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image3-36.png" class="kg-image"></figure>
 	<p>SQL APIは<code>type of error: more details</code>というフォーマットでエラーを返すので、コロンの前の最初の部分を取って、エラーの種類を知ることができます。それを元にグループ化し、そのエラーが何回発生し、何人のユーザーに影響を与えたかをカウントします。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/Screenshot-2022-11-18-at-08.33.57.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/Screenshot-2022-11-18-at-08.33.57.png" class="kg-image"></figure>
 	<p>通常のメトリクスを使って上記の問い合わせを行うには、エラーの種類ごとに異なるメトリクスで表す必要があります。各マイクロサービスからそれほど多くのメトリクスのレポートがあると、スケーラビリティの面で課題が生じます。Analytics Engineは高カーディナリティのデータを扱うように設計されているため、そのような問題が起こりません。</p>
 	<p>Analytics Engineのような高カーディナリティストアのもう一つの大きな利点は、具体的に掘り下げることができることにあります。SQLエラーが大量に発生した場合、どの顧客に問題が発生しているのか、あるいはどのような機能を使いたいのかを特定するために、発生している問題の中身を知りたいというケースがあります。別のSQLクエリーを使用することで簡単に解決することができます。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/carbon-3.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/carbon-3.png" class="kg-image"></figure>
 	<p>これまでCloudflareでは、この種の情報はバックエンドのデータベースサーバーへの問い合わせに頼っていました。Analytics EngineのSQL APIの使用により、当社の技術をお客様に公開することが可能になり、あらゆるスケールのサービスに関するインサイトを簡単に収集していただけます。</p>
 	<h2 id="--3">まとめと今後について</h2>
-	<p>SQL API の使用に関して収集した分析情報は、製品の優先順位を決定するための非常に役立つ情報です。上記のビジュアライゼーションで使用した<a href="https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/?ref=blog.cloudflare.com" target="_blank">部分<code>substring</code>、そして<code>position</code>関数へのサポート</a>の追加は完了しています。</p>
+	<p>SQL API の使用に関して収集した分析情報は、製品の優先順位を決定するための非常に役立つ情報です。上記のビジュアライゼーションで使用した<a href="https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/" target="_blank">部分<code>substring</code>、そして<code>position</code>関数へのサポート</a>の追加は完了しています。</p>
 	<p>SQLエラーの上位を見ると、列の選択に関連するエラーが多数見受けられます。これらのエラーの多くはGrafanaプラグインに関連するいくつかのユーザビリティの問題が原因となっています。DESCRIBE 関数のサポートを追加すると、これが緩和されるはずです。これがないと、Grafanaプラグインはテーブル構造を理解できないからです。これはGrafanaプラグインのその他の改善と同様に、ロードマップに含まれています。</p>
 	<p>また、ユーザーが存在しなくなった古いデータの時間範囲を問い合わせしようとしていることがわかります。これはデータ保持期間が延長されたことをお客様に高く評価していただいていることを示しています。先日、リテンションを31日から92日に延長しましたが、さらなる延長をすべきかどうか、今後も注視していきたいと思います。</p>
 	<p>よくある間違いや適切な SQL 構文の誤解に関連する多くのエラーが見られました。これはユーザーのトラブルシューティングへのサポートに、ドキュメントでさらにいい事例やエラーの説明を提示できることを示唆しています。</p>
-	<p><a href="https://developers.cloudflare.com/analytics/analytics-engine/?ref=blog.cloudflare.com" target="_blank">開発者向けドキュメント</a>で、今後の機能追加をご確認ください。</p>
-	<p>Workers Analytics Engineは今すぐ使い始めることができます。Analytics Engineは現在、90日間の無料延長付きのオープンベータ版です。 <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fworkers%2Fanalytics-engine&amp;ref=blog.cloudflare.com" target="_blank">今すぐ使い始める</a>か、あるいは<a href="https://discord.gg/cloudflaredev?ref=blog.cloudflare.com" target="_blank">Discordコミュニティに参加する</a>チームと会話することもできます。</p>
+	<p><a href="https://developers.cloudflare.com/analytics/analytics-engine/" target="_blank">開発者向けドキュメント</a>で、今後の機能追加をご確認ください。</p>
+	<p>Workers Analytics Engineは今すぐ使い始めることができます。Analytics Engineは現在、90日間の無料延長付きのオープンベータ版です。 <a href="https://dash.cloudflare.com/?to=/:account/workers/analytics-engine" target="_blank">今すぐ使い始める</a>か、あるいは<a href="https://discord.gg/cloudflaredev" target="_blank">Discordコミュニティに参加する</a>チームと会話することもできます。</p>
 </div>

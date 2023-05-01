@@ -1,22 +1,22 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image4-12.png" class="kg-image" alt="How Cloudflare CASB and DLP work together to protect your data" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image4-12.png" class="kg-image" alt="How Cloudflare CASB and DLP work together to protect your data"></figure>
 	<p>CloudflareのCloud Access Security Broker（CASB）は、SaaSアプリケーションの設定ミス、不正なユーザー活動、シャドーIT、その他のデータセキュリティの問題をスキャンします。発見されたセキュリティ脅威は、ITおよびセキュリティ管理者に呼び出され、タイムリーに修正されるため、長いリストのアプリケーションを延々と手作業でチェックする負担がなくなります。</p>
 	<p>しかし、Cloudflareの顧客は、設定ミスに伴うリスクを評価するために、より多くの情報を利用できるようにしてほしいと考えていることを明らかにしました。一般に公開される社内のキックオフスケジュールの日程は、一般に公開される顧客リストほど重要ではないので、顧客はそれとは異なる扱いを求めています。彼らは、機密データの漏洩箇所を特定し、漏洩やインシデント発生時の評価と修復時間を短縮することを私たちに求めました。このフィードバックにより、私たちはCloudflareが得意とする、自社製品の優れた部分を組み合わせてお客様の問題を解決するための新たな機会を認識しました。</p>
-	<p><a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/?ref=blog.cloudflare.com" target="_blank">Zero Trust</a>ユーザーが、ネットワークを経由する機密データ以外にも同じDLPを適用する方法を提供するために、現在進行中のエキサイティングな取り組みがあります。SaaS DLPは、何百万もの組織で使用されている一般的なSaaSアプリに保存されているデータを対象としています。</p>
+	<p><a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trust</a>ユーザーが、ネットワークを経由する機密データ以外にも同じDLPを適用する方法を提供するために、現在進行中のエキサイティングな取り組みがあります。SaaS DLPは、何百万もの組織で使用されている一般的なSaaSアプリに保存されているデータを対象としています。</p>
 	<p>これらの機能により、お客様はわずか数クリックでSaaSアプリケーションを接続し、ドキュメント、スプレッドシート、PDF、その他のアップロードファイルに保存されているPII、PCI、さらにはカスタム正規表現などの機密データをスキャンできるようになります。これにより、お客様は主要なセキュリティリスクを迅速に評価し、改善するためのシグナルを得ることができます。</p>
 	<h3 id="casb-">CASBを理解する</h3>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/image2.jpg" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/image2.jpg" class="kg-image"></figure>
 	<p>9月にリリースされたCloudflareのAPI CASBは、Google Workspace、Microsoft 365、その他当社がサポートするSaaSアプリケーション（本日リリースしたSalesforceやBoxを含む）のいずれであっても、セキュリティを迅速かつ容易に深く掘り下げることを可能にしました。CASBを利用することで、安全でない設定や設定ミス、不適切なファイル共有、ユーザーアクセスのリスク、ベストプラクティスが守られていないなど、組織や社員を危険にさらすSaaSのセキュリティ問題を把握することができるようになったのです。</p>
 	<p>「しかし、私たちが共同作業しているファイルの<em>中</em>に保存されている機密データについてはどうだろう？どのようにそれを特定できるのだろうか？」</p>
 	<h3 id="dlp-">DLPを理解する</h3>
 	<p>また、9月にリリースされたCloudflare DLP for data in-transitは、CloudflareのSecure Web Gateway（SWG）のユーザーに、企業ネットワークへの機密情報の出入りを管理し完全にブロックする方法を提供し、悪意のある人の手に渡ることを防止します。この場合、DLPは、クレジットカード番号や社会保障番号などの機密文字列を、Google Driveに文書でアップロードしたり、Slackのメッセージで送信したりするなど、何らかの形で従業員が伝達しようとする際に、それを発見することができます。Cloudflare DLPは、HTTPリクエストが目的のアプリケーションに到達する前にブロックします。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image3-14.png" class="kg-image" alt="" loading="lazy"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image1-25.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image3-14.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image1-25.png" class="kg-image"></figure>
 	<p>しかし、今回もまた、前回と同じような質問や感想が寄せられました。</p>
 	<p>「SaaSアプリケーションのデータはどうなるのでしょうか？そこに保存された情報は、ネットワーク上で見ることはできません。」</p>
 	<h3 id="casb-dlp-">CASB + DLPを組み合わせることでより有効に</h3>
 	<p>2023年初頭、Cloudflare Zero Trustは、お客様がSaaSアプリケーションに保存されているファイルを確認し、その中の特に機密性の高いデータを特定できるようにする新しい製品シナジーを導入する予定です。</p>
 	<p>Googleドキュメント上のクレジットカード番号はどうでしょうか？問題ありません。社会保障番号が記載されたExcelのスプレッドシートは？CASBがお知らせします。</p>
 	<p>今回の製品提携により、Cloudflareは、ITおよびセキュリティ管理者に、セキュリティの重要な領域をさらに1つ提供し、データ損失防止に関するストーリーを完結させることができるようになります。データの転送を監視するDLP、ファイル共有を監視するCASB、さらにデータの使用中を監視するリモートブラウザ分離（RBI）と電子メールを監視するArea 1があれば、使用中のデータの流出と悪用に関して、企業は安心して対処することができます。</p>
-	<p>今後も開発は続きますが、このような機能があなたのような組織でどのように使われるのか、ぜひお聞かせください。これらの製品の詳細や今後の展開にご興味がおありですか？アカウントマネージャーにお問い合わせいただくか、Cloudflareの新しいお客様の場合は<a href="https://www.cloudflare.com/lp/cio-week-2023-cloudflare-one-contact-us/?ref=blog.cloudflare.com" target="_blank">こちらをクリックして当社までご連絡ください</a>。</p>
+	<p>今後も開発は続きますが、このような機能があなたのような組織でどのように使われるのか、ぜひお聞かせください。これらの製品の詳細や今後の展開にご興味がおありですか？アカウントマネージャーにお問い合わせいただくか、Cloudflareの新しいお客様の場合は<a href="https://www.cloudflare.com/lp/cio-week-2023-cloudflare-one-contact-us/" target="_blank">こちらをクリックして当社までご連絡ください</a>。</p>
 </div>

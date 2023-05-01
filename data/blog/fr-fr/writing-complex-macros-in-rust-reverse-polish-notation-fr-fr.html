@@ -1,9 +1,9 @@
 <div class="post-content lh-copy gray1">
-	<p>(<em>Ceci est une publication croisée d'un tutoriel </em><a href="https://rreverser.com/writing-complex-macros-in-rust/?ref=blog.cloudflare.com" target="_blank"><em>publié à l'origine</em></a><em> sur mon blog personnel</em>)</p>
+	<p>(<em>Ceci est une publication croisée d'un tutoriel </em><a href="https://rreverser.com/writing-complex-macros-in-rust/" target="_blank"><em>publié à l'origine</em></a><em> sur mon blog personnel</em>)</p>
 	<p>Rust dispose, entre autres fonctionnalités intéressantes, d’un puissant système de macro. Malheureusement, même après la lecture de The Book et de divers tutoriels, lorsque j'ai essayé d'implémenter une macro impliquant le traitement de listes complexes d'éléments différents, j'ai toujours eu du mal à comprendre comment y parvenir. Et il a fallu un certain temps pour arriver à ce moment de « déclic », et j’ai commencé à mal utiliser les macros pour tout :) (ok, pas tout comme dans <em>i-am-using-macros-because-i-dont-want-to-use-functions-and-specify-types-and-lifetimes everything comme j'ai vu certaines personnes le faire, mais n'importe où c'est réellement utile)</em></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/image-4.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>Voici donc mon point de vue sur la description des principes sous-jacents à l’écriture de ces macros. Cela suppose que vous ayez lu la section <a href="https://doc.rust-lang.org/book/first-edition/macros.html?ref=blog.cloudflare.com" target="_blank">Macros</a> du The Book et que vous maîtrisiez bien les définitions de macros de base et les types de jetons.</p>
-	<p>Je prendrai une <a href="https://en.wikipedia.org/wiki/Reverse_Polish_notation?ref=blog.cloudflare.com" target="_blank">notation polonaise inverse</a> comme exemple pour ce tutoriel. C'est intéressant parce que c'est assez simple, vous le connaissez peut-être déjà à l'école. Et, pourtant, pour le mettre en œuvre de manière statique au moment de la compilation, vous devez déjà utiliser une approche par macros récursive.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/image-4.png" class="kg-image"></figure>
+	<p>Voici donc mon point de vue sur la description des principes sous-jacents à l’écriture de ces macros. Cela suppose que vous ayez lu la section <a href="https://doc.rust-lang.org/book/first-edition/macros.html" target="_blank">Macros</a> du The Book et que vous maîtrisiez bien les définitions de macros de base et les types de jetons.</p>
+	<p>Je prendrai une <a href="https://en.wikipedia.org/wiki/Reverse_Polish_notation" target="_blank">notation polonaise inverse</a> comme exemple pour ce tutoriel. C'est intéressant parce que c'est assez simple, vous le connaissez peut-être déjà à l'école. Et, pourtant, pour le mettre en œuvre de manière statique au moment de la compilation, vous devez déjà utiliser une approche par macros récursive.</p>
 	<p>La notation polonaise inverse (également appelée notation postfixe) utilise une pile pour toutes ses opérations, de sorte que n’importe quel opérande est placé sur la pile et que n’importe quel opérateur <em>[binaire]</em> extrait deux opérandes de la pile, évalue le résultat et le restitue. Donc, une expression comme celle-ci :</p>
 	<p><code>2 3 + 4 *</code></p>
 	<p>se traduit par :</p>
@@ -139,10 +139,10 @@ println!("{}", rpn!(2 3 + 4 *)); // 20</code></pre>
   };
 }</code></pre>
 	<p>À ce stade, si vous appelez cette macro avec une pile vide et une expression RPN, le résultat produit sera déjà correct :</p>
-	<p><a href="https://play.rust-lang.org/?gist=cd56f6d7335e2d27c05e7fa89545b2cd&amp;version=stable&amp;ref=blog.cloudflare.com" target="_blank">Terrain de jeu</a></p>
+	<p><a href="https://play.rust-lang.org/?gist=cd56f6d7335e2d27c05e7fa89545b2cd&amp;version=stable" target="_blank">Terrain de jeu</a></p>
 	<p><code>println!("{}", rpn!([] 2 3 + 4 *)); // 20</code></p>
 	<p>Toutefois, notre pile est un détail d'implémentation et il ne faut vraiment pas que tous les consommateurs transmettent une pile vide. Nous allons donc ajouter une autre branche fourre-tout à la fin qui servirait de point d'entrée et ajouter <code>[]</code> automatiquement :</p>
-	<p><a href="https://play.rust-lang.org/?gist=d94abc0e20aa5c7f689706af06fd1923&amp;version=stable&amp;ref=blog.cloudflare.com" target="_blank">Terrain de jeu</a></p>
+	<p><a href="https://play.rust-lang.org/?gist=d94abc0e20aa5c7f689706af06fd1923&amp;version=stable" target="_blank">Terrain de jeu</a></p>
 	<pre><code class="language-rust">macro_rules! rpn {
   // ...
 
@@ -152,7 +152,7 @@ println!("{}", rpn!(2 3 + 4 *)); // 20</code></pre>
 }
 
 println!("{}", rpn!(2 3 + 4 *)); // 20</code></pre>
-	<p>Notre macro fonctionne même pour des expressions plus complexes, comme celle <a href="https://en.wikipedia.org/wiki/Reverse_Polish_notation?ref=blog.cloudflare.com#Example" target="_blank">de la page Wikipédia au sujet de la RPN</a> !</p>
+	<p>Notre macro fonctionne même pour des expressions plus complexes, comme celle <a href="https://en.wikipedia.org/wiki/Reverse_Polish_notation#Example" target="_blank">de la page Wikipédia au sujet de la RPN</a> !</p>
 	<p><code>println!("{}", rpn!(15 7 1 1 + - / 3 * 2 1 1 + + -)); // 5</code></p>
 	<h3 id="gestion-d-erreur"><strong>Gestion d'erreur</strong></h3>
 	<p>Maintenant, tout semble fonctionner de manière fluide pour les expressions RPN correctes, mais pour qu'une macro soit prête pour la production, nous devons nous assurer qu'elle peut également gérer les entrées non valides avec un message d'erreur raisonnable.</p>
@@ -168,8 +168,8 @@ println!("{}", rpn!(2 3 + 4 *)); // 20</code></pre>
    = help: the trait `std::fmt::Display` is not implemented for `[{integer}; 2]`
    = note: required by `std::fmt::Display::fmt`</code></pre>
 	<p>D'accord, cela ne semble résolument pas utile car il ne fournit aucune information pertinente sur l'erreur réelle dans l'expression.</p>
-	<p>Afin de comprendre ce qui s'est passé, nous devrons déboguer nos macros. Pour cela, nous utiliserons une fonctionnalité <a href="https://doc.rust-lang.org/unstable-book/language-features/trace-macros.html?ref=blog.cloudflare.com" target="_blank"><code>trace_macros</code></a> (et, comme pour toute autre fonctionnalité optionnelle du compilateur, vous aurez besoin d’une version Nightly de Rust). Nous ne voulons pas tracer l’appel <code>println!</code>, nous allons donc séparer notre calcul RPN en une variable :</p>
-	<p><a href="https://play.rust-lang.org/?gist=610bc0c241aacda3d30a916f89b244cd&amp;version=nightly&amp;ref=blog.cloudflare.com" target="_blank">Terrain de jeu</a></p>
+	<p>Afin de comprendre ce qui s'est passé, nous devrons déboguer nos macros. Pour cela, nous utiliserons une fonctionnalité <a href="https://doc.rust-lang.org/unstable-book/language-features/trace-macros.html" target="_blank"><code>trace_macros</code></a> (et, comme pour toute autre fonctionnalité optionnelle du compilateur, vous aurez besoin d’une version Nightly de Rust). Nous ne voulons pas tracer l’appel <code>println!</code>, nous allons donc séparer notre calcul RPN en une variable :</p>
+	<p><a href="https://play.rust-lang.org/?gist=610bc0c241aacda3d30a916f89b244cd&amp;version=nightly" target="_blank">Terrain de jeu</a></p>
 	<pre><code class="language-rust">#![feature(trace_macros)]
 
 macro_rules! rpn { /* ... */ }
@@ -217,9 +217,9 @@ fn main() {
    = note: to `rpn ! ( [  ] [ 3 + 7 * 4 , 2 ] )`</code></pre>
 	<p>Puisque <code>[3 + 7 * 4, 2]</code> ne correspondait pas à la branche <code>([$ result: expr]) =&gt; ...</code> &nbsp;comme expression finale, il a été attrapé par notre dernière branche fourre-tout <code>($ ($ tokens: tt) *) =&gt; ...</code> à la place, précédée d'une pile vide <code>[]</code> puis l'original <code>[3 + 7 * 4, 2]</code> a été comparé au <code>$num:tt</code> générique et placé sur la pile en tant que valeur finale unique.</p>
 	<p>Afin d'éviter que cela ne se produise, insérons une autre branche entre ces deux dernières qui correspondrait à n'importe quelle pile.</p>
-	<p>Elle ne serait touchée que lorsque nous n'aurions plus de jetons, mais la pile n'avait pas une valeur finale exacte. Nous pouvons donc la traiter comme une erreur de compilation et générer un message d'erreur plus utile à l'aide d'une macro <a href="https://doc.rust-lang.org/std/macro.compile_error.html?ref=blog.cloudflare.com" target="_blank"><code>compile_error</code></a> intégrée.</p>
+	<p>Elle ne serait touchée que lorsque nous n'aurions plus de jetons, mais la pile n'avait pas une valeur finale exacte. Nous pouvons donc la traiter comme une erreur de compilation et générer un message d'erreur plus utile à l'aide d'une macro <a href="https://doc.rust-lang.org/std/macro.compile_error.html" target="_blank"><code>compile_error</code></a> intégrée.</p>
 	<p>Notez que nous ne pouvons pas utiliser <code>format!</code> dans ce contexte puisqu'il utilise des API d'exécution pour formater une chaîne. Nous devrons plutôt nous limiter aux macros <code>concat!</code> et <code>stringify!</code> intégrés pour formater un message :</p>
-	<p><a href="https://play.rust-lang.org/?gist=e56be9422387bcae54aab3b8405a11e7&amp;version=stable&amp;ref=blog.cloudflare.com" target="_blank">Terrain de jeu</a></p>
+	<p><a href="https://play.rust-lang.org/?gist=e56be9422387bcae54aab3b8405a11e7&amp;version=stable" target="_blank">Terrain de jeu</a></p>
 	<pre><code class="language-rust">macro_rules! rpn {
   // ...
 
@@ -249,7 +249,7 @@ fn main() {
    |                    ----------------- in this macro invocation
 </code></pre>
 	<p>Mais que se passe-t-il si, au contraire, nous manquons un numéro ?</p>
-	<p><a href="https://play.rust-lang.org/?gist=ce40630b8c1aa610c46b94557fdc9905&amp;version=stable&amp;ref=blog.cloudflare.com" target="_blank">Terrain de jeu</a></p>
+	<p><a href="https://play.rust-lang.org/?gist=ce40630b8c1aa610c46b94557fdc9905&amp;version=stable" target="_blank">Terrain de jeu</a></p>
 	<p><code>println!("{}", rpn!(2 3 + *));</code></p>
 	<p>Malheureusement, celui-ci n'est toujours pas très utile :</p>
 	<pre><code class="language-rust">error: expected expression, found `@`
@@ -263,7 +263,7 @@ fn main() {
 </code></pre>
 	<p>Si vous essayez d'utiliser trace_macros, même si cela ne développera pas la pile pour une raison quelconque, heureusement, ce qui se passe est relativement clair. <code>@op</code> a des conditions très spécifiques quant à ce qui doit être mis en correspondance (il attend au moins deux valeurs sur la pile) et, quand il ne les obtient pas, <code>@op</code> est apparié par le même bien trop gourmand <code>$num:tt</code> et placé sur la pile.</p>
 	<p>Pour éviter cela, encore une fois, nous allons ajouter une autre branche pour correspondre à tout ce qui commence par <code>@op</code> et qui ne correspondait pas déjà, et produire une erreur de compilation :</p>
-	<p><a href="https://play.rust-lang.org/?gist=8729a8f3c96fa58ed62d35804c48782d&amp;version=stable&amp;ref=blog.cloudflare.com" target="_blank">Terrain de jeu</a></p>
+	<p><a href="https://play.rust-lang.org/?gist=8729a8f3c96fa58ed62d35804c48782d&amp;version=stable" target="_blank">Terrain de jeu</a></p>
 	<pre><code class="language-rust">macro_rules! rpn {
   (@op [ $b:expr, $a:expr $(, $stack:expr)* ] $op:tt $($rest:tt)*) =&gt; {
     rpn!([ $a $op $b $(, $stack)* ] $($rest)*)
@@ -292,5 +292,5 @@ fn main() {
 </code></pre>
 	<p>Beaucoup mieux ! Désormais, notre macro peut évaluer n’importe quelle expression RPN au moment de la compilation et gère gracieusement les erreurs les plus courantes. Invoquons-la un jour et disons qu’elle est prête pour la production :)</p>
 	<p>Nous pourrions ajouter de nombreuses autres petites améliorations mais j'aimerais les laisser en dehors de ce tutoriel de démonstration.</p>
-	<p>N'hésitez pas à me dire si cela a été utile et/ou quels sujets vous souhaiteriez voir davantage couvert<a href="https://twitter.com/RReverser?ref=blog.cloudflare.com" target="_blank">sur Twitter</a> !</p>
+	<p>N'hésitez pas à me dire si cela a été utile et/ou quels sujets vous souhaiteriez voir davantage couvert<a href="https://twitter.com/RReverser" target="_blank">sur Twitter</a> !</p>
 </div>

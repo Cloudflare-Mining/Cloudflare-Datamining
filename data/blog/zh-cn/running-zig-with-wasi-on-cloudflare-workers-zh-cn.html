@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/08/image1-4.png" class="kg-image" alt="Running Zig with WASI on Cloudflare Workers" loading="lazy"></figure>
-	<p>在阅读最近关于 <a href="https://blog.cloudflare.com/zh-cn/announcing-wasi-on-workers-zh-cn/">Workers 中的 WASI 支持</a>的公告之后，我决定探索一下，怎样才能让 <a href="https://ziglang.org/?ref=blog.cloudflare.com" target="_blank">Zig</a> 中编写的代码作为 Worker 运行，结果发现毫不费力就能做到。本文记录了我作为 Zig 的新用户所采用的过程。我惊奇地发现，Cloudflare Workers 是一个多语言平台，可以采用自己喜欢的语言或者正在学习的语言来编写程序！</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/08/image1-4.png" class="kg-image" alt="Running Zig with WASI on Cloudflare Workers"></figure>
+	<p>在阅读最近关于 <a href="https://blog.cloudflare.com/zh-cn/announcing-wasi-on-workers-zh-cn/">Workers 中的 WASI 支持</a>的公告之后，我决定探索一下，怎样才能让 <a href="https://ziglang.org/" target="_blank">Zig</a> 中编写的代码作为 Worker 运行，结果发现毫不费力就能做到。本文记录了我作为 Zig 的新用户所采用的过程。我惊奇地发现，Cloudflare Workers 是一个多语言平台，可以采用自己喜欢的语言或者正在学习的语言来编写程序！</p>
 	<h3 id="-">你好，世界！</h3>
 	<p>我绝非 Zig 专家，实不相瞒，我刚刚开始学习这门语言，但我们总归要迈出第一步。所以，如果我的 Zig 代码有疏漏之处，请多包涵。我的目标是使用 Zig 构建一个真实的小程序，并将其部署到 Cloudflare Workers 上。然后看看我从一片空白开始，到写出富有成效的代码，需要多长时间。</p>
 	<p>我的目标谈不上宏伟，就只是从 stdin 读取一些文本，然后打印到 stdout 并加上行号，就像运行 <code>cat -n</code> 那样。但这确实表明 Workers 范式非常简单。这个 Zig 程序在笔记本电脑的命令行上以及作为部署到 Cloudflare Workers 上的 HTTP API 时采用完全相同的方式运行。</p>
@@ -56,7 +56,7 @@ $ echo "Hello\nWorld" | ./zig-out/bin/print-with-line-numbers
 	<!--kg-card-end: markdown-->
 	<h3 id="wasi">WASI</h3>
 	<p>下一步就是在 Workers 上运行此程序，但首先我需要将其编译到具有 WASI 支持的 WASM 中。</p>
-	<p>幸好，在最新版本的 Zig 中，这个功能开箱即用，所以可以直接让编译器使用 <code>wasm32-wasi</code> 目标构建可执行文件，这样生成的文件可以在任何兼容 WASI 的 WebAssembly 运行时上运行，例如 <a href="https://wasmtime.dev/?ref=blog.cloudflare.com" target="_blank">wasmtime</a>。</p>
+	<p>幸好，在最新版本的 Zig 中，这个功能开箱即用，所以可以直接让编译器使用 <code>wasm32-wasi</code> 目标构建可执行文件，这样生成的文件可以在任何兼容 WASI 的 WebAssembly 运行时上运行，例如 <a href="https://wasmtime.dev/" target="_blank">wasmtime</a>。</p>
 	<p>这同一个 .wasm 文件可在 wasmtime 中运行并直接部署到 Cloudflare Workers。这样一来，就可以无缝地编译、测试和部署。</p><!--kg-card-begin: markdown-->
 	<pre><code>$ zig build -Dtarget=wasm32-wasi
 
@@ -69,7 +69,7 @@ $ echo "Hello\nWorld" | wasmtime ./zig-out/bin/print-with-line-numbers.wasm
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<h3 id="workers-zig">Workers 上的 Zig</h3>
-	<p>二进制文件准备好之后，最后需要使用 <a href="https://blog.cloudflare.com/zh-cn/wrangler-v2-beta-zh-cn/">Wrangler2</a> 在 Cloudflare Workers 上运行它。这很简单，只需在 workers.dev 上发布 .wasm 文件即可。如果没有 <a href="https://workers.dev/?ref=blog.cloudflare.com" target="_blank">workers.dev</a> 帐户，可以按照我们<a href="https://developers.cloudflare.com/workers/get-started/guide/?ref=blog.cloudflare.com" target="_blank">入门指南</a>上的教程，几分钟就能完成从编写代码到部署的全过程！</p>
+	<p>二进制文件准备好之后，最后需要使用 <a href="https://blog.cloudflare.com/zh-cn/wrangler-v2-beta-zh-cn/">Wrangler2</a> 在 Cloudflare Workers 上运行它。这很简单，只需在 workers.dev 上发布 .wasm 文件即可。如果没有 <a href="https://workers.dev/" target="_blank">workers.dev</a> 帐户，可以按照我们<a href="https://developers.cloudflare.com/workers/get-started/guide/" target="_blank">入门指南</a>上的教程，几分钟就能完成从编写代码到部署的全过程！</p>
 	<p>事实上，我注册帐户之后，只需完成前两步，即安装 Wrangler 和登录。</p><!--kg-card-begin: markdown-->
 	<pre><code>$ npx wrangler@wasm login
 Attempting to login via OAuth...
