@@ -20,6 +20,7 @@ declare const _default: {
     chart: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     clipboard: (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'cloudflare-access': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
+    'cloudflare-dex': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'cloudflare-magic-wan': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'cloudflare-security-application': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;
     'cloudflare-security-network': (props: import("react").SVGProps<SVGSVGElement>) => JSX.Element;

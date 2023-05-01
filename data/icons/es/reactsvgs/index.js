@@ -18,6 +18,7 @@ import CaretUp from './CaretUp';
 import Chart from './Chart';
 import Clipboard from './Clipboard';
 import CloudflareAccess from './CloudflareAccess';
+import CloudflareDex from './CloudflareDex';
 import CloudflareMagicWan from './CloudflareMagicWan';
 import CloudflareSecurityApplication from './CloudflareSecurityApplication';
 import CloudflareSecurityNetwork from './CloudflareSecurityNetwork';
@@ -145,6 +146,7 @@ export default {
   chart: Chart,
   clipboard: Clipboard,
   'cloudflare-access': CloudflareAccess,
+  'cloudflare-dex': CloudflareDex,
   'cloudflare-magic-wan': CloudflareMagicWan,
   'cloudflare-security-application': CloudflareSecurityApplication,
   'cloudflare-security-network': CloudflareSecurityNetwork,
