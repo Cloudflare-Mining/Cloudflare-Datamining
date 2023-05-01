@@ -2,24 +2,24 @@
 	<!--kg-card-begin: markdown-->
 	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/fr-fr/introducing-d1-fr-fr/">Français</a>, <a href="https://blog.cloudflare.com/de-de/introducing-d1-de-de/">Deutsch</a>, <a href="https://blog.cloudflare.com/es-es/introducing-d1-es-es/">Español</a>, <a href="https://blog.cloudflare.com/zh-cn/introducing-d1-zh-cn/">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/introducing-d1-ja-jp/">日本語</a> and <a href="https://blog.cloudflare.com/zh-tw/introducing-d1-zh-tw/">繁體中文</a>.</small></em></p>
 	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image1-23.png" class="kg-image" alt="Announcing D1: Our first SQL database"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image1-23.png" class="kg-image" alt="Announcing D1: Our first SQL database" loading="lazy"></figure>
 	<p>We <a href="https://blog.cloudflare.com/introducing-cloudflare-workers/">announced</a> Cloudflare Workers in 2017, giving developers access to compute on our network. We were excited about the possibilities this unlocked, but we quickly realized — most real world applications are stateful. Since then, we’ve delivered KV, Durable Objects, and R2, giving developers access to various types of storage.</p>
 	<p>Today, we're excited to announce D1, our first SQL database.</p>
-	<p>While the wait on beta access shouldn’t be long — we’ll start letting folks in as early as June (<a href="https://www.cloudflare.com/lp/d1/" target="_blank">sign up here</a>), we’re excited to share some details of what’s to come.</p>
+	<p>While the wait on beta access shouldn’t be long — we’ll start letting folks in as early as June (<a href="https://www.cloudflare.com/lp/d1/?ref=blog.cloudflare.com" target="_blank">sign up here</a>), we’re excited to share some details of what’s to come.</p>
 	<h2 id="meet-d1-the-database-designed-for-cloudflare-workers">Meet D1, the database designed for Cloudflare Workers</h2>
-	<p>D1 is built on SQLite. Not only is SQLite the most ubiquitous database in the world, used by billions of devices a day, it’s also the first ever <em>serverless</em> database. Surprised? SQLite was so ahead of its time, it dubbed itself “<a href="https://www.sqlite.org/serverless.html" target="_blank">serverless</a>” before the term gained connotation with cloud services, and originally meant literally “not involving a server”.</p>
+	<p>D1 is built on SQLite. Not only is SQLite the most ubiquitous database in the world, used by billions of devices a day, it’s also the first ever <em>serverless</em> database. Surprised? SQLite was so ahead of its time, it dubbed itself “<a href="https://www.sqlite.org/serverless.html?ref=blog.cloudflare.com" target="_blank">serverless</a>” before the term gained connotation with cloud services, and originally meant literally “not involving a server”.</p>
 	<p>Since Workers itself runs between the server and the client, and was inspired by technology built for the client, SQLite seemed like the perfect fit for our first entry into databases.</p>
 	<p>So what can you build with D1? The true answer is “almost anything!”, that might not be very helpful in triggering the imagination, so how about a live demo?</p>
 	<h2 id="d1-demo-northwind-traders">D1 Demo: Northwind Traders</h2>
-	<p>You can check out an example of D1 in action by trying out our demo running here: <a href="https://northwind.d1sql.com/" target="_blank">northwind.d1sql.com</a>.</p>
+	<p>You can check out an example of D1 in action by trying out our demo running here: <a href="https://northwind.d1sql.com/?ref=blog.cloudflare.com" target="_blank">northwind.d1sql.com</a>.</p>
 	<p>If you’re wondering “Who are Northwind Traders?”, Northwind Traders is the “Hello, World!” of databases, if you will. A sample database that Microsoft would provide alongside Microsoft Access to use as their own tutorial. It first appeared 25 years ago in 1997, and you’ll find many examples of its use on the Internet.</p>
 	<p>It’s a typical business application, with a realistic schema, with many foreign keys, across many different tables — a truly timeless representation of data.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image3-13.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image3-13.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>When was the recent order of Queso Cabrales shipped, and what ship was it on? You can quickly find out. Someone calling in about ordering some Chai? Good thing Exotic Liquids still has 39 units in stock, for just \$18 each.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image2-14.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image2-14.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>We welcome you to play and poke around, and answer any questions you have about Northwind Trading’s business.</p>
 	<p>The Northwind Traders demo also features a dashboard where you can find details and metrics about the D1 SQL queries happening behind the scenes.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image5-5.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image5-5.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h2 id="what-can-you-build-with-d1">What can you build with D1?</h2>
 	<p>Going back to our original question before the demo, however, what can you build with D1?</p>
 	<p>While you may not be running Northwind Traders yourself, you’re likely running a very similar piece of software somewhere. Even at the very core of Cloudflare’s service is a database. A SQL database filled with tables, materialized views and a plethora of stored procedures. Every time a customer interacts with our dashboard they end up changing state in that database.</p>
@@ -30,7 +30,7 @@
 	<p>To give you a sense of it, here’s what getting started with D1 will look like.</p>
 	<h3 id="creating-your-first-d1-database">Creating your first D1 database</h3>
 	<p>With D1, you will be able to create a database, in just a few clicks — define the tables, insert or upload some data, no need to memorize any commands unless you need to.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image4-10.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image4-10.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Of course, if the command-line is your jam, earlier this week, we announced <a href="https://blog.cloudflare.com/10-things-i-love-about-wrangler/">the new and improved Wrangler 2</a>, the best tool for wrangling and deploying your Workers, and soon also your tool for deploying D1. Wrangler will also come with native D1 support, so you can create &amp; manage databases with a few simple commands:</p><!--kg-card-begin: html-->
 	<div style="position: relative; padding-top: 60.42084168336673%;"><iframe src="https://iframe.videodelivery.net/6bc08db0ee3524778effb6af3cbbf90f?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F6bc08db0ee3524778effb6af3cbbf90f%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D9s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
 	<p></p><!--kg-card-end: html-->
@@ -98,5 +98,5 @@ export default {
 	<p>Likewise, one of SQLite’s advantages is its portability. If your application has a dedicated staging environment, say, you’ll be able to clone a snapshot of that data down to your local machine to develop against. And we’ll be adding more flexibility, such as the ability to create a new database with a set of test data for each new pull request on your Pages project.</p>
 	<h2 id="what-s-next">What’s next?</h2>
 	<p>This wouldn’t be a Cloudflare announcement if we didn’t conclude on “we’re just getting started!” — and it’s true! We are really excited about all the powerful possibilities our database on our global network opens up.</p>
-	<p>Are you already thinking about what you’re going to build with D1 and Workers? Same. <a href="https://www.cloudflare.com/lp/d1/" target="_blank">Give us your details</a>, and we’ll give you access as soon as we can — look out for a beta invite from us starting as early as June 2022!</p>
+	<p>Are you already thinking about what you’re going to build with D1 and Workers? Same. <a href="https://www.cloudflare.com/lp/d1/?ref=blog.cloudflare.com" target="_blank">Give us your details</a>, and we’ll give you access as soon as we can — look out for a beta invite from us starting as early as June 2022!</p>
 </div>

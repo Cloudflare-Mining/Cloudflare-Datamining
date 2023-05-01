@@ -3,8 +3,8 @@
 	<p>The Workers team have already done an amazing job of creating a functional, familiar edit and debug tooling experience in the Workers IDE. It's Chrome Developer Tools fully integrated to Workers.</p>
 	<p><code>console.log</code> in your Worker goes straight to the console, just as if you were debugging locally! Furthermore, errors and even log lines come complete with call-site info, so you click and navigate straight to the relevant line.<br>
 		In this blog post I’m going to show a small and powerful technique I use to make debugging serverless apps simple and quick.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2018/06/workers-ide-console.gif" alt="Integrated Chrome Dev Tools" loading="lazy"></p>
-	<p>There is a <a href="https://developers.cloudflare.com/workers/writing-workers/debugging-tips/?ref=blog.cloudflare.com" target="_blank">comprehensive guide</a> to common debugging approaches and I'm going to focus on returning debug information in a header. This is a great tip and one that I use to capture debug information when I'm using curl or Postman, or integration tests. It was a little finicky to get right the first time, so let me save you some trouble.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/06/workers-ide-console.gif" alt="Integrated Chrome Dev Tools"></p>
+	<p>There is a <a href="https://developers.cloudflare.com/workers/writing-workers/debugging-tips/" target="_blank">comprehensive guide</a> to common debugging approaches and I'm going to focus on returning debug information in a header. This is a great tip and one that I use to capture debug information when I'm using curl or Postman, or integration tests. It was a little finicky to get right the first time, so let me save you some trouble.</p>
 	<p>If you've followed <a href="https://blog.cloudflare.com/p/607ad519-5652-4688-9fff-33fbb1fc9d3f/">part 1</a> or <a href="https://blog.cloudflare.com/p/5cd5d990-7b88-4e62-9615-9c51d33daae8/">part 2</a> of my Workers series, you'll know I'm using Typescript, but the approach would equally apply to Javascript. In the rest of this example, I’ll be using the routing framework I created in part 2.</p>
 	<h3 id="requestingdebuginfo">Requesting Debug Info</h3>
 	<p>I want my Worker to return debugging information whenever:</p>
@@ -15,7 +15,7 @@
 	<p>Exercise for the reader: You may also like to require a shared secret key (so that you control who can enable debugging information) and pass a log level.</p>
 	<p>I'd like my debug info to be the same that I'd see in the Workers IDE. That is, all the log lines and any exception info from the execution of my Worker.</p>
 	<h3 id="architecture">Architecture</h3>
-	<p>Logging is orthogonal to the main request flow, so let's try keep it abstracted. Different frameworks use different terms for this abstraction. I’ll use the term <a href="https://en.wikipedia.org/wiki/Interceptor_pattern?ref=blog.cloudflare.com" target="_blank">interceptor</a>.</p>
+	<p>Logging is orthogonal to the main request flow, so let's try keep it abstracted. Different frameworks use different terms for this abstraction. I’ll use the term <a href="https://en.wikipedia.org/wiki/Interceptor_pattern" target="_blank">interceptor</a>.</p>
 	<p>Let's define an interceptor as something that runs pre and/or post the main request flow.</p>
 	<pre><code class="language-Typescript">/**
  * Intercepts requests before handlers and responses after handlers
@@ -114,7 +114,7 @@ export class LogInterceptor implements IInterceptor {
 	<p>urldecode isn't native on most operating systems. There are Perl and Python implementations, but here's a Bash only function:</p>
 	<pre><code class="language-bash">$ urldecode() { : "${*//+/ }"; echo -e "${_//%/\\x}"; }
 </code></pre>
-	<p>Source: <a href="https://stackoverflow.com/questions/6250698/how-to-decode-url-encoded-string-in-shell?ref=blog.cloudflare.com" target="_blank">StackOverflow</a></p>
+	<p>Source: <a href="https://stackoverflow.com/questions/6250698/how-to-decode-url-encoded-string-in-shell" target="_blank">StackOverflow</a></p>
 	<p>Using that, we can call curl, extract the headers, grep for our X-Debug header and then invoke the urldecode function.</p>
 	<pre><code class="language-bash">$ urldecode `curl -sD - -o /dev/null https://cryptoserviceworker.com/api/all/spot/btc-usd -H "X-Debug:true" | grep x-debug`
 x-debug: INFO: Handling: https://cryptoserviceworker.com/api/all/spot/btc-usd

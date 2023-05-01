@@ -1,18 +1,18 @@
 <div class="post-content lh-copy gray1">
-	<p><em>The following is a guest post by <a href="https://twitter.com/jachands?ref=blog.cloudflare.com" target="_blank">Jacob Hands</a>, Creator of <a href="https://factoriomaps.com/browse.html?ref=blog.cloudflare.com" target="_blank">FactorioMaps.com</a>. He is building a community site for the game <a href="https://www.factorio.com/?ref=blog.cloudflare.com" target="_blank">Factorio</a> centered around sharing user creations.</em></p>
+	<p><em>The following is a guest post by <a href="https://twitter.com/jachands" target="_blank">Jacob Hands</a>, Creator of <a href="https://factoriomaps.com/browse.html" target="_blank">FactorioMaps.com</a>. He is building a community site for the game <a href="https://www.factorio.com/" target="_blank">Factorio</a> centered around sharing user creations.</em></p>
 	<p>Factorio is a game about building and maintaining factories. Players mine resources, research new technology and automate production. Resources move along the production line through multiple means of transportation such as belts and trains. Once production starts getting up to speed, alien bugs start to attack the factory requiring strong defenses. </p>
 	<p></p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2018/10/Screen-Shot-2018-10-03-at-5.25.28-PM.png" class="kg-image" alt="" loading="lazy">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2018/10/Screen-Shot-2018-10-03-at-5.25.28-PM.png" class="kg-image">
 		<figcaption>A Factorio factory producing many different items.</figcaption>
 	</figure>
 	<p></p>
 	<p></p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2018/10/Screen-Shot-2018-10-03-at-5.26.28-PM.png" class="kg-image" alt="" loading="lazy">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2018/10/Screen-Shot-2018-10-03-at-5.26.28-PM.png" class="kg-image">
 		<figcaption>A Factorio military outpost fighting the alien bugs.</figcaption>
 	</figure>
 	<p></p>
 	<p></p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2018/10/Screen-Shot-2018-10-03-at-5.27.24-PM.png" class="kg-image" alt="" loading="lazy">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2018/10/Screen-Shot-2018-10-03-at-5.27.24-PM.png" class="kg-image">
 		<figcaption>A Factorio map view of a small factory, that’s still too big to easily share fully with screenshots.</figcaption>
 	</figure>
 	<p></p>
@@ -25,7 +25,7 @@
 	<p>Leaflet maps work by loading images at the user's X/Y/Z coordinates to render the current view. As a map is zoomed in, it requires 4x as many images to show the same area. That means 75% of a map's images are in the max rendered zoom level.</p>
 	<p></p>
 	<p></p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2018/10/Screen-Shot-2018-10-03-at-5.29.14-PM.png" class="kg-image" alt="" loading="lazy">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2018/10/Screen-Shot-2018-10-03-at-5.29.14-PM.png" class="kg-image">
 		<figcaption>A diagram of how each zoom level is 4x larger than the previous</figcaption>
 	</figure>
 	<p></p>
@@ -81,7 +81,7 @@ if (response.ok) {
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>The resulting stats prove that GCS is serving the majority of requests, and Cloudflare caches over 50% of those requests. The code for the logResponse function can be found <a href="https://gist.github.com/jahands/636e89a125f0352a3d50fff155bfa50f?ref=blog.cloudflare.com#file-stat-logging-to-stathat-js" target="_blank"><strong>here</strong></a>. &nbsp;</p>
+	<p>The resulting stats prove that GCS is serving the majority of requests, and Cloudflare caches over 50% of those requests. The code for the logResponse function can be found <a href="https://gist.github.com/jahands/636e89a125f0352a3d50fff155bfa50f#file-stat-logging-to-stathat-js" target="_blank"><strong>here</strong></a>. &nbsp;</p>
 	<h3 id="making-b2-faster-with-argo">Making B2 Faster with Argo</h3>
 	<p>Tracking request time surfaced another issue. Requests to B2 from countries outside of North America are still quite slow. Cloudflare's Argo can reduce latency by over 50%, but is too expensive to enable for the whole site. Additionally, it would be redundant to smart-route content from GCS that Google already does an excellent job of keeping latency down. Cloudflare request headers include the country of origin, making it trivial to route this subset of requests through an Argo-enabled domain.</p>
 	<p></p><!--kg-card-begin: markdown-->
@@ -98,5 +98,5 @@ function getB2Url(request) {
 	<!--kg-card-end: markdown-->
 	<p></p>
 	<h3 id="conclusion">Conclusion</h3>
-	<p>Cloudflare Workers are an excellent fit for my project; they enabled me to make a cost-effective solution to hosting Leaflet maps at scale. Check out <a href="https://factoriomaps.com/?ref=blog.cloudflare.com" target="_blank">https://factoriomaps.com</a> for performant Leaflet maps, and if you play Factorio, <a href="https://factoriomaps.com/submit?ref=blog.cloudflare.com" target="_blank">submit</a> your <a href="https://www.factorio.com/?ref=blog.cloudflare.com" target="_blank">Factorio</a> world to share with others!</p>
+	<p>Cloudflare Workers are an excellent fit for my project; they enabled me to make a cost-effective solution to hosting Leaflet maps at scale. Check out <a href="https://factoriomaps.com" target="_blank">https://factoriomaps.com</a> for performant Leaflet maps, and if you play Factorio, <a href="https://factoriomaps.com/submit" target="_blank">submit</a> your <a href="https://www.factorio.com/" target="_blank">Factorio</a> world to share with others!</p>
 </div>
