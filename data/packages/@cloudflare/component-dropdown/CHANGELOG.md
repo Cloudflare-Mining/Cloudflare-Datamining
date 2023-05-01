@@ -1,5 +1,11 @@
 # Change Log
 
+## 6.0.7
+
+### Patch Changes
+
+- @cloudflare/component-link@7.1.6
+
 ## 6.0.6
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # Change Log
 
+## 11.2.0
+
+### Minor Changes
+
+- 7b1d8e65a0: Add DEX Icon
+
 ## 11.1.1
 
 ### Patch Changes
