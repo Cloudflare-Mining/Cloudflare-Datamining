@@ -2,22 +2,22 @@
 	<!--kg-card-begin: markdown-->
 	<p>Cloudflare has an automatic image optimization feature called <a href="https://blog.cloudflare.com/introducing-polish-automatic-image-optimizati/">Polish</a>, available to customers on paid plans. It recompresses images and removes unnecessary data so that they are delivered to browsers more quickly.</p>
 	<p>Up until now, Polish has not changed image types when optimizing (even if, for example, a PNG might sometimes have been smaller than the equivalent JPEG). But a new feature in Polish allows us to swap out an image for an equivalent image compressed using Google’s WebP format when the browser is capable of handling WebP and delivering that type of image would be quicker.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/12/holly.jpg" alt=""><br>
-		<small><a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">CC-BY 2.0</a> <a href="https://www.flickr.com/photos/john47kent/5307525503/" target="_blank">image</a> by <a href="https://www.flickr.com/photos/john47kent/" target="_blank">John Stratford</a></small>
+	<p><img src="https://blog.cloudflare.com/content/images/2016/12/holly.jpg" alt="" loading="lazy"><br>
+		<small><a href="https://creativecommons.org/licenses/by/2.0/?ref=blog.cloudflare.com" target="_blank">CC-BY 2.0</a> <a href="https://www.flickr.com/photos/john47kent/5307525503/?ref=blog.cloudflare.com" target="_blank">image</a> by <a href="https://www.flickr.com/photos/john47kent/?ref=blog.cloudflare.com" target="_blank">John Stratford</a></small>
 	</p>
 	<h3 id="whatiswebp">What is WebP?</h3>
-	<p>The main image formats used on the web haven’t changed much since the early days (apart from the SVG vector format, PNG was the last one to establish itself, <a href="https://en.wikipedia.org/wiki/Portable_Network_Graphics#History_and_development" target="_blank">almost two decades ago</a>).</p>
-	<p><a href="https://en.wikipedia.org/wiki/WebP" target="_blank">WebP</a> is a newer image format for the web, proposed by Google. It takes advantage of progress in image compression techniques since formats such as JPEG and PNG were designed. It is often able to compress the images into a significantly smaller amount of data than the older formats.</p>
+	<p>The main image formats used on the web haven’t changed much since the early days (apart from the SVG vector format, PNG was the last one to establish itself, <a href="https://en.wikipedia.org/wiki/Portable_Network_Graphics?ref=blog.cloudflare.com#History_and_development" target="_blank">almost two decades ago</a>).</p>
+	<p><a href="https://en.wikipedia.org/wiki/WebP?ref=blog.cloudflare.com" target="_blank">WebP</a> is a newer image format for the web, proposed by Google. It takes advantage of progress in image compression techniques since formats such as JPEG and PNG were designed. It is often able to compress the images into a significantly smaller amount of data than the older formats.</p>
 	<p>WebP is versatile and able to replace the three main raster image formats used on the web today:</p>
 	<ul>
 		<li>WebP can do lossy compression, so it can be used instead of JPEG for photographic and photo-like images.</li>
 		<li>WebP can do lossless compression, and supports an alpha channel meaning images can have transparent regions. So it can be used instead of PNG, such as for images with sharp transitions that should be reproduced exactly (e.g. line art and graphic design elements).</li>
 		<li>WebP images can be animated, so it can be used as a replacement for animated GIF images.</li>
 	</ul>
-	<p>Currently the main browser that supports WebP is Google’s Chrome (both on desktop and mobile devices). See <a href="http://caniuse.com/#feat=webp" target="_blank">the WebP page on caniuse.com</a> for more details.</p>
+	<p>Currently the main browser that supports WebP is Google’s Chrome (both on desktop and mobile devices). See <a href="http://caniuse.com/?ref=blog.cloudflare.com#feat=webp" target="_blank">the WebP page on caniuse.com</a> for more details.</p>
 	<h3 id="polishwebpconversion">Polish WebP conversion</h3>
 	<p>Customers on the Pro, Business, and Enterprise plans can enable the automatic creation of WebP images by checking the WebP box in the Polish settings for a zone (these are found on the “Speed” page of the dashboard):</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/12/polish-webp.png" alt=""></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2016/12/polish-webp.png" alt="" loading="lazy"></p>
 	<p>When this is enabled, Polish will optimize images just as it always has. But it will also convert the image to WebP, if WebP can shrink the image data more than the original format. These WebP images are only returned to web browsers that indicate they support WebP (e.g. Google Chrome), so most websites using Polish should be able to benefit from WebP conversion.</p>
 	<p>(Although Polish can now produce WebP images by converting them from other formats, it can't consume WebP images to optimize them. If you put a WebP image on an origin site, Polish won't do anything with it. Until the WebP ecosystem grows and matures, it is uncertain that attempting to optimize WebP is worthwhile.)</p>
 	<p>Polish has two modes: <em>lossless</em> and <em>lossy</em>. In lossless mode, JPEG images are optimized to remove unnecessary data, but the image displayed is unchanged. In lossy mode, Polish reduces the quality of JPEG images in a way that should not have a significant visible effect, but allows it to further reduce the size of the image data.</p>
@@ -33,7 +33,7 @@
 		<li>In some cases, converting to WebP does not produce a result smaller than the optimized image in the original format. In such cases, we discard the WebP image. So the figures presented below do not penalize WebP for such cases.</li>
 	</ul>
 	<p>Here is a chart showing the results of Polish, with and without WebP conversion. For each format, the average original image size is normalized to 100%, and the average sizes after Polishing are shown relative to that.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/12/webp-chart.png" alt=""></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2016/12/webp-chart.png" alt="" loading="lazy"></p>
 	<p>Here are the average savings corresponding to the chart:</p>
 	<table>
 		<tbody>
@@ -68,6 +68,6 @@
 	<p>As you can see, WebP conversion achieves significant size improvements not only for JPEG images, but also for PNG and GIF images. We believe supporting WebP will result in lower bandwidth and faster website delivery.</p>
 	<h3 id="andawebpnewyear">… and a WebP New Year</h3>
 	<p>WebP does not yet have the same level of browser support as JPEG, PNG and GIF, but we are excited about its potential to streamline web pages. Polish WebP conversion allows our customers to adopt WebP with a simple change to the settings in the Cloudflare dashboard. So, if you are on one of our paid plans, we encourage you to try it out today.</p>
-	<p>PS — Want to help optimize the web? We’re <a href="https://www.cloudflare.com/join-our-team/" target="_blank">hiring</a>.</p>
+	<p>PS — Want to help optimize the web? We’re <a href="https://www.cloudflare.com/join-our-team/?ref=blog.cloudflare.com" target="_blank">hiring</a>.</p>
 	<!--kg-card-end: markdown-->
 </div>

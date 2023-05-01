@@ -1,12 +1,12 @@
 <div class="post-content lh-copy gray1">
 	<h2 id="introduction">Introduction</h2>
-	<p>We use <a href="https://www.consul.io/" target="_blank">Consul</a> for service discovery, and we’ve deployed a cluster that spans several of our data centers. This cluster exposes HTTP and DNS interfaces so that clients can query the Consul catalog and search for a particular service and the majority of the clients use DNS. We were aware from the start that the DNS query latencies were not great from certain parts of the world that were furthest away from these data centers. This, together with the fact that we use <a href="https://en.wikipedia.org/wiki/DNS_over_TLS" target="_blank">DNS over TLS</a>, results in some long latencies. The TTL of these names being low makes it even more impractical when resolving these names in the hot path.</p>
-	<p>The usual way to solve these issues is by caching values so that at least subsequent requests are resolved quickly, and this is exactly what our resolver of choice, <a href="https://www.nlnetlabs.nl/projects/unbound/about/" target="_blank">Unbound</a>, is configured to do. The problem remains when the cache expires. When it expires, the next client will have to wait while Unbound resolves the name using the network. To have a low recovery time in case some service needs to failover and clients need to use another address we use a small TTL (30 seconds) in our records and as such cache expirations happen often.</p>
+	<p>We use <a href="https://www.consul.io/?ref=blog.cloudflare.com" target="_blank">Consul</a> for service discovery, and we’ve deployed a cluster that spans several of our data centers. This cluster exposes HTTP and DNS interfaces so that clients can query the Consul catalog and search for a particular service and the majority of the clients use DNS. We were aware from the start that the DNS query latencies were not great from certain parts of the world that were furthest away from these data centers. This, together with the fact that we use <a href="https://en.wikipedia.org/wiki/DNS_over_TLS?ref=blog.cloudflare.com" target="_blank">DNS over TLS</a>, results in some long latencies. The TTL of these names being low makes it even more impractical when resolving these names in the hot path.</p>
+	<p>The usual way to solve these issues is by caching values so that at least subsequent requests are resolved quickly, and this is exactly what our resolver of choice, <a href="https://www.nlnetlabs.nl/projects/unbound/about/?ref=blog.cloudflare.com" target="_blank">Unbound</a>, is configured to do. The problem remains when the cache expires. When it expires, the next client will have to wait while Unbound resolves the name using the network. To have a low recovery time in case some service needs to failover and clients need to use another address we use a small TTL (30 seconds) in our records and as such cache expirations happen often.</p>
 	<p>There are at least two strategies to deal with this: prefetching and stale cache.</p>
 	<h2 id="prefetching">Prefetching</h2>
 	<p>When prefetching is turned on, the server tries to refresh DNS records in the background before they expire. In practice, the way this works is: if an entry is served from cache and the TTL is less than 10% of the lifetime of the records, the server responds to the client, but in the background, it dispatches a job to refresh the record across the network. If it all goes as planned, the entry is refreshed in the cache before the TTL expires, and no client is ever left waiting for the network resolution.</p>
 	<p>This works very well for records that are accessed frequently, but poses issues in two situations: records that are accessed infrequently and records that have a small TTL. In both cases it is unlikely that a prefetch would be triggered, and so the cache expires and the next client will have to wait for the network resolution.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image1-6.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image1-6.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>In our case, the records have a 30 second TTL, so frequently no requests come in during the yellow "prefetch" stage, which bumps the records out of the cache and causes the next client to have to wait for the slow network resolution. Prefetching was already turned on in our Unbound configuration but this still was not enough for our use case.</p>
 	<h2 id="stale-cache">Stale cache</h2>
 	<p>Another option is to serve stale records from the cache while we dispatch a job to refresh the record in the background without keeping the client waiting for the response. This would provide benefits in two different scenarios:</p>
@@ -15,8 +15,8 @@
 		<li>Consul/network blips - if for some reason Consul is unavailable/unreachable, there is still a period of time that expired responses can be used instead of failing resolution.</li>
 	</ul>
 	<p>The first case is exactly our current scenario.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image7.png" class="kg-image"></figure>
-	<p>Being able to serve stale entries from the cache for a period after the TTL expires affords us some time in which we can return a result to a client either immediately or after some small amount of time has passed. The latter is the behaviour that we are looking for which also makes us compliant with <a href="https://www.rfc-editor.org/rfc/rfc8767" target="_blank">RFC 8767</a>, “Serving Stale Data to Improve DNS Resiliency”, published March 2020.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image7.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Being able to serve stale entries from the cache for a period after the TTL expires affords us some time in which we can return a result to a client either immediately or after some small amount of time has passed. The latter is the behaviour that we are looking for which also makes us compliant with <a href="https://www.rfc-editor.org/rfc/rfc8767?ref=blog.cloudflare.com" target="_blank">RFC 8767</a>, “Serving Stale Data to Improve DNS Resiliency”, published March 2020.</p>
 	<h3 id="previous-dealings-with-unbound-s-stale-cache">Previous dealings with Unbound's stale cache</h3>
 	<p>Stale cache had been tried before at Cloudflare in 2017, and at that time, we encountered two problems:</p><!--kg-card-begin: markdown-->
 	<p><strong>1. Unbound could serve stale records from cache indefinitely</strong><br>
@@ -102,8 +102,8 @@ service1.query.consul. 30 IN A 192.0.2.1
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>We lowered <em>serve-expired-ttl</em> to 40 to help testing the issue and we were able to see that as soon as the A entry was deemed not serve-able, the CNAME was also not returned, which is the behaviour that we want.</p>
-	<p>One last thing that we wanted to test was if the cache was really refreshed in the background while the stale entry was returned. <a href="https://developer.apple.com/download/more/?q=Additional%20Tools" target="_blank">Network Link Conditioner</a> was used to simulate high latency:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image16.png" class="kg-image"></figure><!--kg-card-begin: markdown-->
+	<p>One last thing that we wanted to test was if the cache was really refreshed in the background while the stale entry was returned. <a href="https://developer.apple.com/download/more/?q=Additional+Tools&amp;ref=blog.cloudflare.com" target="_blank">Network Link Conditioner</a> was used to simulate high latency:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image16.png" class="kg-image" alt="" loading="lazy"></figure><!--kg-card-begin: markdown-->
 	<pre><code>➜ dig service1.service.consul @CONSUL_ADDRESS
  
 ;; ANSWER SECTION:
@@ -137,39 +137,39 @@ service2.service.consul. 58 IN A 192.0.2.200
 	<!--kg-card-end: markdown-->
 	<p>We can see that the first attempt was served from the stale cache, since the address was already changed on Consul to <em>192.0.2.200</em>, and the query time was 500ms. The next attempt was served from the fresh cache, hence the 0ms response time, and so we know that the cache was refreshed in the background.</p>
 	<h4 id="test-notes"><strong>Test notes</strong></h4>
-	<p>All the test scenarios completed successfully, even though we did find an <a href="https://github.com/NLnetLabs/unbound/issues/394" target="_blank">issue</a> that has since been fixed upstream. We realised that the prefetching logic blocked the cache while it attempted to refresh the entry, which prevented stale entries from being served if the upstream was unresponsive. This fix is included in version 1.13.1.</p>
+	<p>All the test scenarios completed successfully, even though we did find an <a href="https://github.com/NLnetLabs/unbound/issues/394?ref=blog.cloudflare.com" target="_blank">issue</a> that has since been fixed upstream. We realised that the prefetching logic blocked the cache while it attempted to refresh the entry, which prevented stale entries from being served if the upstream was unresponsive. This fix is included in version 1.13.1.</p>
 	<h2 id="deployment-status">Deployment status</h2>
 	<p>This change has already been deployed to all of our data centers, and while the change addressed our original use case, there were some interesting side-effects as can be seen from the graphs below.</p>
 	<h3 id="decreased-in-flight-requests">Decreased in-flight requests</h3>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image2-2.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image2-2.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>The graph above is from the Toronto data center which received the change at approximately 14:00 UTC. We can observe an attenuated curve, which indicates that spikes in the number of in-flight requests were probably caused by slow/unresponsive upstreams which are now served a stale response after a short while.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image5-2.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image5-2.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>The same graph from the Perth data center, which received the change on a later day.</p>
 	<h3 id="decrease-in-p99-latency">Decrease in P99 latency</h3>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image15.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image15.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>The graph above is from the Lisbon data center<em>,</em> which received the change at approximately 12:37 UTC. We can see that the long tail (P99) of request latencies decreases dramatically as we are now able to serve a response to clients in more situations without having them wait for a slow upstream network resolution that might not even succeed.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image10-2.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image10-2.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>The effect is even more dramatic on the Paris data center.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image8-2.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image8-2.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>The decrease in P99 latencies directly correlates to the start of serving stale entries, even though there are not many of them. In the graph above we can observe the number of stale records served per second for the same data center, using the last 3 minutes of datapoints.</p>
 	<h3 id="decreased-general-error-rate">Decreased general error rate</h3>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image12.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image12.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>This graph is from our Perth data center, which received the change on February 8. This is explained by now being able to serve some requests to unresponsive/slow upstreams, which previously would have resulted in a failed request.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image19.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image19.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Graph from the Vientiane data center, which received the change on February 1.</p>
 	<h3 id="less-jitter-on-the-rate-of-load-balancer-queries-by-rrdns">Less jitter on the rate of load balancer queries by RRDNS</h3>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image11.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image11.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Another graph from the Perth data center, which received the change on February 8. An explanation for this change is that resolvers usually retry after a small amount of time when they don't get any response, and so by returning a stale response instead of keeping the client waiting (and retrying), we prevent a surge of new queries for expired and slow to resolve records.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image18.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image18.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>A graph from the Doha data center, which received the change on February 1.</p>
 	<h3 id="miscellaneous-unbound-metrics">Miscellaneous Unbound metrics</h3>
 	<p>This change also had a positive effect on several Unbound-specific metrics, below are several graphs from the Perth data center that received the change on February 8.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image6-2.png" class="kg-image"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image13.png" class="kg-image"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image14.png" class="kg-image"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image4-4.png" class="kg-image"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image9-1.png" class="kg-image"></figure>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/03/image17.png" class="kg-image">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image6-2.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image13.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image14.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image4-4.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image9-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/03/image17.png" class="kg-image" alt="" loading="lazy">
 		<figcaption>How it started vs how it's going</figcaption>
 	</figure>
 	<h3 id="further-improvements">Further improvements</h3>
