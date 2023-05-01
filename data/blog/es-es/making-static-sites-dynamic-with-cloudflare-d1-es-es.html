@@ -1,10 +1,10 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-40.png" class="kg-image" alt="Making static sites dynamic with Cloudflare D1" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-40.png" class="kg-image" alt="Making static sites dynamic with Cloudflare D1"></figure>
 	<h3 id="introducci-n">Introducción</h3>
 	<p>Hay muchas formas de almacenar los datos en sus aplicaciones. Por ejemplo, en las aplicaciones Cloudflare Workers, tenemos Workers KV para el almacenamiento de valores clave y Durable Objects para el almacenamiento coordinado en tiempo real sin poner en riesgo la consistencia. Fuera del ecosistema de Cloudflare, también puede conectar otras herramientas, tales como NoSQL y bases de datos de gráficos.</p>
 	<p>Sin embargo, a veces quiere SQL. Los índices permiten recuperar datos rápidamente. Las combinaciones nos permiten describir relaciones complejas entre diferentes tablas. SQL describe de manera declarativa cómo se validan, crean y consultan los datos de nuestra aplicación.</p>
 	<p><a href="https://blog.cloudflare.com/es-es/d1-open-alpha-es-es">D1 se lanzó hoy en open alpha</a> y, para celebrarlo, quiero compartir mi experiencia en la creación de aplicaciones con D1: específicamente, cómo comenzar y por qué estoy emocionado de que D1 se una a la larga lista de herramientas que puede usar para crear aplicaciones en Cloudflare.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image3-24.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image3-24.png" class="kg-image"></figure>
 	<p>D1 es notable porque es un valor agregado instantáneo para las aplicaciones sin necesidad de nuevas herramientas o salir del ecosistema de Cloudflare. Usando wrangler, podemos hacer desarrollo local en nuestras aplicaciones de Trabajadores, y con la adición de D1 en wrangler, ahora también podemos desarrollar aplicaciones con estado apropiadas localmente. Luego, cuando llega el momento de implementar la aplicación, Wrangler nos permite acceder y ejecutar comandos en su base de datos D1, así como en su propia API.</p>
 	<h3 id="qu-estamos-creando">Qué estamos creando</h3>
 	<p>En esta publicación del blog, te mostraré cómo utilizar D1 para añadir comentarios a un blog estático. Para ello, crearemos una nueva base de datos D1 y una sencilla API JSON que permita la creación y la recuperación de comentarios.</p>
@@ -112,8 +112,8 @@ create index idx_comments_post_id on comments (post_slug);
 })
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>En este ejemplo, creamos una API de comentarios para impulsar un blog. Para ver la fuente de esta API de comentarios basada en D1, puede visitar <a href="https://github.com/cloudflare/templates/tree/main/worker-d1-api?ref=blog.cloudflare.com" target="_blank">cloudflare/templates/worker-d1-api</a>.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image2-31.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>En este ejemplo, creamos una API de comentarios para impulsar un blog. Para ver la fuente de esta API de comentarios basada en D1, puede visitar <a href="https://github.com/cloudflare/templates/tree/main/worker-d1-api" target="_blank">cloudflare/templates/worker-d1-api</a>.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image2-31.png" class="kg-image"></figure>
 	<h3 id="conclusi-n">Conclusión</h3>
 	<p>Una de las cosas más emocionantes de D1 es la oportunidad de aumentar las aplicaciones o sitios web existentes con los datos relacionales dinámicos. Como antiguo desarrollador de Ruby on Rails, una de las cosas que más echo de menos de ese marco en el mundo de JavaScript y las herramientas de desarrollo sin servidor es la capacidad de activar rápidamente aplicaciones completas basadas en datos, sin tener que ser un experto en la gestión de la infraestructura de bases de datos. Con D1 y su fácil acceso a datos basados ​​en SQL, podemos crear verdaderas aplicaciones basadas en datos sin comprometer el rendimiento o la experiencia del desarrollador.</p>
 	<p>Este cambio corresponde muy bien con la llegada de los sitios estáticos en los últimos años, utilizando herramientas como Hugo o Gatsby. Un blog construido con un generador de sitios estáticos como Hugo tiene un rendimiento increíble: se creará en segundos con activos pequeños.</p>
