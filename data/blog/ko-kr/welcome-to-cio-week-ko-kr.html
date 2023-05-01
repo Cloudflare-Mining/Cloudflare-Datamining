@@ -1,12 +1,12 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image5-28.png" class="kg-image" alt="CIO Week와 기업 네트워크의 미래에 오신 것을 환영합니다"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image5-28.png" class="kg-image" alt="CIO Week와 기업 네트워크의 미래에 오신 것을 환영합니다" loading="lazy"></figure>
 	<p>최고 정보 책임자(CIO)의 세계는 변했습니다. 오늘날의 기업 네트워크는 5~10년 전과 환경이 전혀 다릅니다. 이러한 변화 때문에 가시성과 보안에 취약점이 생기고, 높은 비용과 운영상의 부담이 초래되며, 네트워크가 취약하고 불안정해졌습니다.</p>
 	<p>우리는 CIO의 미래가 더욱 밝을 것으로 기대해도 좋으리라고 낙관합니다. 연구 프로젝트였던 인터넷은 이제 회사에서 의존하는 필수적인 인프라로 발전했습니다. 따라서 인터넷이 향상되어야 오늘날 CIO가 맞닥뜨리는 어려운 문제가 해결될 것이라고 믿습니다. Cloudflare는 더 빠르고, 더 안전하며, 더 신뢰할 수 있고, 더 비공개이며 프로그램 가능한 인터넷을 구축할 수 있도록 돕습니다. 이를 통해 조직에서는 차세대 네트워크를 당사의 네트워크에서 구축할 수 있습니다.</p>
 	<p>이번 주에는 Zero Trust NaaS 네트워크형 서비스(Network-as-a-Service)인 Cloudflare One이 CIO가 기업 네트워크를 혁신하는 데 어떻게 도움이 되는지 알려드립니다. CIO가 기존에 필요했던 사항과 새롭게 필요해지는 사항을 해결하기 위해 Cloudflare 플랫폼의 범위를 확장하는 새로운 기능도 소개해 드립니다. 이번 주 내용을 시작하기에 앞서 잠깐 시간을 내어 미래의 기업 네트워크에 대한 당사의 비전을 소개해 드리고 싶습니다. 이 설명을 통해 이 분야의 잠재력을 깨달은 벤더와 분석가들이 사용하는 언어와 약어를 알려드리고자 합니다.(도대체 Zero Trust 네트워크형 서비스가 뭘까요?). 또한 당사의 혁신적인 접근법으로 오늘날 어떻게 이러한 비전을 실제 CIO를 위해 실현하는지를 파악하도록 도와드리겠습니다.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/unnamed-31.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/unnamed-31.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h2 id="1-">1세대: 거대한 성과 이를 둘러싼 성곽</h2>
 	<p>여러 해 동안 기업 네트워크는 다음과 같은 모습이었습니다.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/unnamed--1--19.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/unnamed--1--19.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>물리적으로 주요 사무실 내에 있거나 사무실에서 가까운 데이터 센터 공간을 회사에서 구축하거나 대여했습니다. 기업은 비즈니스 응용 프로그램(이메일 서버, ERP 시스템, CRM 등)을 이러한 데이터 센터 서버에서 호스팅했습니다. 사무실에 있는 직원은 LAN(근거리 통신망)이나 지사 위치의 사설 WAN(광역 통신망) 링크를 통해 이러한 응용 프로그램에 연결했습니다. 각 데이터 센터에 있는 보안 하드웨어(예: 방화벽) 스택은 들어오고 나가는 모든 트래픽의 보안을 강화했습니다. 기업 네트워크에 접속한 사용자는 연결된 다른 장치와 호스팅된 응용 프로그램으로 수평 이동할 수 있었지만, 신뢰할 수 없는 사용자가 액세스하는 것은 일반적으로 네트워크 인증의 기본 양식, 직원 배지 시스템 등의 물리적 보안 제어로 방지했습니다.</p>
 	<p>네트워크 아키텍처 스코어카드: 1세대</p><!--kg-card-begin: markdown-->
 	<table>
@@ -63,7 +63,7 @@
 	<p>이렇게 엄청난 첫 번째 변화(이로 인해 복잡한 하이브리드 아키텍처가 만들어지고 예상 못 한 비용이 증가함)로도 충분하지 않은 듯, CIO는 곧바로 다른 문제를 만났습니다. 인터넷은 응용 프로그램만이 아니라 사용자의 경우에도 상황을 변화시켰습니다. 서버가 물리적으로 회사 본사에 위치할 필요가 없어지면서 직원은 자신의 도구에 액세스하기 위해 사무실 LAN에 접속해야 할 필요가 없어졌습니다. VPN을 통해 사무실 외부에서 작업하는 사용자는 회사 네트워크(물리적 또는 클라우드)에서 호스팅하는 응용 프로그램에 액세스할 수 있게 되었습니다.</p>
 	<p>이러한 VPN은 원격 사용자에게 기업 네트워크에 대한 액세스 권한을 부여하지만, 연결이 느리고, 자주 끊기며, 사용할 수 없는 수준으로 성능이 저하되지 않도록 제한된 수의 사용자만 지원할 수 있습니다. 보안 관점에서도 문제가 많습니다. 사용자가 VPN에 접속하면 기업 네트워크에 있는 기타 리소스를 찾고 액세스하기 위해 수평 이동할 수 있습니다. 공원, 대중교통, 바와 같이 어디에서나 연결할 수 있는 VPN 액세스로 인해 기존 성과 해자 사무실 환경에서 배지를 가진 직원이 사용하는 컴퓨터를 제어하는 것보다 노트북을 제어하는 일이 CIO와 CISO에게 더 어려워졌습니다.</p>
 	<p>2020년에는 COVID-19로 인해 VPN 비용, 성능, 보안에 대한 새로운 우려가 업무에 중요하고 비즈니스에 영향을 주는 어려움으로 바뀌었습니다. 직원들이 사무실 근무로 복귀함에 따라 이러한 어려움은 가중될 것입니다.</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/unnamed--2--8.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/unnamed--2--8.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h2 id="2-">2세대: 다양한 포인트 솔루션의 등장</h2>
 	<p>이러한 주요 변화로 인한 문제를 해결하기 위해 많은 벤더가 등장했습니다. 이들은 대부분 하나 또는 소수의 사용 사례에 집중합니다. 일부 공급자는 다른 클라우드 플랫폼에서 전달된 하드웨어 장비의 가상화된 버전을 제공합니다. 다른 공급자는 응용 프로그램 액세스 또는 웹 필터링 등의 특정 문제를 해결하기 위해 클라우드 네이티브 접근법을 사용합니다. 하지만 여러 포인트 솔루션을 함께 사용하려는 노력은 CIO에게 더 많은 골칫거리를 안겨줬습니다. 또한 대부분의 구매 가능한 제품은 네트워크 보안 문제를 근본적으로 해결하지 않고 ID, 엔드포인트, 응용 프로그램 보안을 강화하는 데만 집중했습니다.</p>
 	<h4 id="--1"><strong>가시성 취약점</strong></h4>
@@ -155,7 +155,7 @@
 		<li>시간이 지남에 따라 더 열린 정책에서 더 엄격한 정책으로 업그레이드하는 것을 허용합니다. 레거시 아키텍처를 반영하는 보안 규칙으로 시작한 다음, 누가 어떤 것에 액세스하는지를 확인할 수 있을 때 더 엄격한 정책을 적용하기 위해 분석 정보와 로그를 사용합니다.</li>
 		<li>빠르고 쉽게 변경할 수 있도록 허용합니다. 모던 SaaS 인터페이스를 사용하여 자체적인 차세대 네트워크를 설계합니다.</li>
 	</ul>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/unnamed--3--3.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/unnamed--3--3.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>네트워크 아키텍처 스코어카드: 3세대</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
@@ -206,7 +206,7 @@
 	<!--kg-card-end: markdown-->
 	<h2 id="cloudflare-one-"><strong>Cloudflare One은 차세대 네트워크를 위하여 구축된 첫 번째 통합 플랫폼입니다</strong></h2>
 	<p>지금까지 설명한 야심찬 비전을 현실로 만들기 위해 CIO에게는 Zero Trust와 세계 수준의 전역 네트워크에서 운영되는 네트워크 서비스를 통합할 수 있는 플랫폼이 필요합니다. 우리는 Cloudflare One이 CIO가 이러한 비전을 완전하게 현실로 만들 수 있는 첫 번째 플랫폼이라고 믿습니다.</p>
-	<p>당사의 <a href="https://www.cloudflare.com/ko-kr/network/" target="_blank">전역 네트워크</a>에 통합 Zero Trust 네트워크형 서비스 플랫폼인 Cloudflare One이 상품 하드웨어를 위한 소프트웨어로 구축되었습니다. 처음에 이 여정은 자체적인 IT 및 보안 팀의 필요를 충족하기 위해 시작되었지만, 시간이 지남에 따라 다른 회사의 네트워크 전환을 도울 수 있는 잠재성을 포착하고 고객에게 도움을 줄 수 있도록 기능을 확장했습니다. 모든 Cloudflare 서비스는 250개 이상의 도시에서 100Tbps 이상의 용량으로 모든 서버에서 실행됩니다. 이를 통해 지금까지 경험하지 못한 규모와 성능을 제공합니다. 또한 당사의 보안 서비스는 그 자체로 더 빠릅니다. 당사의 DNS 필터링은 세계에서 가장 빠른 공공 DNS 리졸버에서 실행되고 ID 확인은 가장 빠른 서버리스 플랫폼인 Cloudflare Workers에서 실행됩니다.</p>
+	<p>당사의 <a href="https://www.cloudflare.com/ko-kr/network/?ref=blog.cloudflare.com" target="_blank">전역 네트워크</a>에 통합 Zero Trust 네트워크형 서비스 플랫폼인 Cloudflare One이 상품 하드웨어를 위한 소프트웨어로 구축되었습니다. 처음에 이 여정은 자체적인 IT 및 보안 팀의 필요를 충족하기 위해 시작되었지만, 시간이 지남에 따라 다른 회사의 네트워크 전환을 도울 수 있는 잠재성을 포착하고 고객에게 도움을 줄 수 있도록 기능을 확장했습니다. 모든 Cloudflare 서비스는 250개 이상의 도시에서 100Tbps 이상의 용량으로 모든 서버에서 실행됩니다. 이를 통해 지금까지 경험하지 못한 규모와 성능을 제공합니다. 또한 당사의 보안 서비스는 그 자체로 더 빠릅니다. 당사의 DNS 필터링은 세계에서 가장 빠른 공공 DNS 리졸버에서 실행되고 ID 확인은 가장 빠른 서버리스 플랫폼인 Cloudflare Workers에서 실행됩니다.</p>
 	<p>당사는 모든 고객을 대상으로 더 영리한 보안과 성능 결정을 위해 초당 2천 8백만개 이상의 요청과 10,000개 이상의 상호연결로부터의 인사이트를 사용합니다. 당사는 단일 패스 검사와 단일 창 관리를 통해 단일 플랫폼에서 네트워크 연결과 보안 서비스를 모두 제공하고, 가시성 격차를 메우며, 포인트 솔루션의 합이 단독으로 제공할 수 있는 것보다 훨씬 더 많은 가치를 제공합니다. 당사는 CIO에게 전 세계에 분산된 초고속 지능형 네트워크에 대한 액세스 권한을 부여하여 자체 네트워크의 확장으로 사용할 수 있도록 합니다.</p>
 	<p>이번 주에는 자체적인 차세대 네트워크를 Cloudflare에서 구축하고 있는 실제 고객의 예시를 들면서 Cloudflare One에 대한 개요를 설명하고 이를 자세하게 설명할 예정입니다. 오늘 바로 사용 가능한 기능과 이 기능으로 2세대에서 생겨난 문제를 해결하는 방법에 대해 자세히 알아볼 예정입니다. 또한 비용을 절약하고, 레거시 하드웨어를 단순화하며, 네트워크와 여러 각도에서 보안을 강화하고, 모든 트래픽을 당사의 이미 빠른 네트워크를 통해 라우팅하여 더 빠르게 만들어 CIO의 삶을 더 편하게 만들어 줄 새로운 제품을 소개해 드리겠습니다.</p>
 	<p>기업 네트워크의 미래를 위한 꿈을 실현하는 방법을 공유할 수 있어서 즐거웠습니다. 이 내용을 읽는 CIO를 비롯한 모든 분이 이러한 내용에 대해 관심을 가지셨기를 바랍니다.</p>

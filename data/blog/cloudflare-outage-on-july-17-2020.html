@@ -5,7 +5,7 @@
 	<p>For the avoidance of doubt: this was not caused by an attack or breach of any kind.</p>
 	<p>We are sorry for this outage and have already made a global change to the backbone configuration that will prevent it from being able to occur again.</p>
 	<h3 id="the-cloudflare-backbone">The Cloudflare Backbone</h3>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/07/1a.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/07/1a.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>Cloudflare operates a <em>backbone</em> between many of our data centers around the world. The backbone is a series of private lines between our data centers that we use for faster and more reliable paths between them. These links allow us to carry traffic between different data centers, without going over the public Internet. </p>
 	<p>We use this, for example, to reach a website origin server sitting in New York, carrying requests over our private backbone to both San Jose, California, as far as Frankfurt or São Paulo. This additional option to avoid the public Internet allows a higher quality of service, as the private network can be used to avoid Internet congestion points. With the backbone, we have far greater control over where and how to route Internet requests and traffic than the public Internet provides.</p>
 	<h3 id="timeline">Timeline</h3>
@@ -23,7 +23,7 @@
 	</ul>
 	<p>Here’s a view of the impact from Cloudflare’s internal traffic manager tool. The red and orange region at the top shows CPU utilization in Atlanta reaching overload, and the white regions show affected data centers seeing CPU drop to near zero as they were no longer handling traffic. This is the period of the outage.</p>
 	<p>Other, unaffected data centers show no change in their CPU utilization during the incident. That’s indicated by the fact that the green color does not change during the incident for those data centers.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/07/tm.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/07/tm.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="what-happened-and-what-we-re-doing-about-it">What happened and what we’re doing about it</h3>
 	<p>As there was backbone congestion in Atlanta, the team had decided to remove some of Atlanta’s backbone traffic. But instead of removing the Atlanta routes from the backbone, a one line change started leaking all BGP routes into the backbone.</p>
 	<pre><code>{master}[edit]
