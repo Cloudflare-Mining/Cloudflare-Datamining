@@ -1,22 +1,22 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image1-32.png" class="kg-image" alt="API-based email scanning" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image1-32.png" class="kg-image" alt="API-based email scanning"></figure>
 	<p>电子邮件安全的格局瞬息万变。保持不变的一个方面是，大部分威胁活动在一开始依赖电子邮件。攻击者常常首先开展网络钓鱼活动，采集员工凭证，一旦得手，就使用这些凭证外泄数据，转移资金，或开展其他恶意活动。这种威胁仍然很普遍，哪怕公司使用 Microsoft 365 或 Google Workspace 等提供程序将其电子邮件迁移到云中也是如此。 </p>
 	<p>我们致力于帮助打造更好的互联网并应对在线威胁，Cloudflare 通过我们的 Area 1 产品提供电子邮件安全，以保护所有类型的电子邮件收件箱，从云端到本地，无一例外。Area 1 产品会分析组织收到的每一封电子邮件，并使用我们的威胁模型评估邮件是否对客户带来风险。对于被视为具有恶意的邮件，Area 1 平台甚至会防止该电子邮件进入收件人的收件箱，确保攻击企图没有机会得逞。 &nbsp;</p>
 	<p>我们努力让客户能够灵活地以他们认为最轻松的任意方式部署我们的解决方案。我们一直致力于使我们的解决方案尽量像“交钥匙”那样可立即使用，现在我们很高兴地推出通过 Microsoft Graph API 载入 Microsoft 365 域的开放测试。我们知道，通过 API 载入的域可更快速、更灵活地部署。这种载入方法是许多方法中的一种，所以客户现在可以视情况而定选择合适的方法部署域，而不会失去 Area 1 防护。 </p>
 	<h2 id="-api-microsoft-365-">通过 API 载入 Microsoft 365 域</h2>
-	<p>Cloudflare Area 1 为客户提供了许多<a href="https://developers.cloudflare.com/email-security/deployment/?ref=blog.cloudflare.com" target="_blank">部署选项</a>。无论是日志 + BCC（其中客户将每封电子邮件的副本发送给 Area 1）、内联/MX 记录（其中通过 MX 记录添加另一个跃点）还是安全电子邮件网关连接器（其中 Area 1 直接与 SEG 交互），客户都可以使用 Area 1 灵活地选择如何部署我们的解决方案。但是，我们始终推荐客户使用 MX 记录进行部署。</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/image2-21.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Cloudflare Area 1 为客户提供了许多<a href="https://developers.cloudflare.com/email-security/deployment/" target="_blank">部署选项</a>。无论是日志 + BCC（其中客户将每封电子邮件的副本发送给 Area 1）、内联/MX 记录（其中通过 MX 记录添加另一个跃点）还是安全电子邮件网关连接器（其中 Area 1 直接与 SEG 交互），客户都可以使用 Area 1 灵活地选择如何部署我们的解决方案。但是，我们始终推荐客户使用 MX 记录进行部署。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/image2-21.png" class="kg-image"></figure>
 	<p>添加这一额外的跃点并让域指向 Area 1，服务就能够提供对 Sinkhole 的防护，确保恶意电子邮件不会到达目的地电子邮件收件箱。但是，我们意识到，将 Area 1 配置为第一个跃点（即更改 MX 记录）可能需要组织内的其他团队签核，并可能带来更多周期。组织还需要等待这一内联更改在 DNS 中反映出来（称为 DNS 传播时间）。我们知道我们的客户想在做出这些必要调整时尽快受到保护。</p>
 	<p>利用 Microsoft 365 载入，可以减少添加防护过程所需的配置步骤和等待时间。现在我们使用 Microsoft Graph API 评估与域关联的所有邮件。这样一来，运营团队就可以更灵活地部署 Area 1。 </p>
 	<p>例如，Area 1 的某个客户由于其行业性质而频繁参与并购交易，就可以使用 Microsoft API 快速部署 Area 1，从而受益。在 API 载入之前，IT 团队要花不少时间，疲于应付各种收购资产的移交工作。分配新的访问权限、移交所有权以及其他任务，执行起来都需要一些时间，使邮箱处于未受保护状态。但是，现在当客户收购新实体时，他们可以使用 API 载入，快速为他们刚刚收购的域添加防护。这样一来，他们就可以保护与新域关联的电子邮件地址，同时致力于完成手头的其他任务。我们 API 载入过程的工作原理如下所示。 </p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/image4-16.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/image4-16.png" class="kg-image"></figure>
 	<p>一旦我们获得授权，可从 Microsoft 365 读取传入邮件，我们就将开始处理电子邮件，并对可疑电子邮件触发检测。这个新的载入过程速度快得多，只需要点击几次即可开始运行。 </p>
 	<p>要开始该过程，请选择您希望通过 API 载入的域。然后在 UI 中，您可以浏览到设置中的“域和路由”。添加新域并选择 API 扫描之后，您可以按照我们的设置向导操作，授权 Area 1 开始读取邮件。</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/01/image5-12.png" class="kg-image" alt="" loading="lazy">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/01/image5-12.png" class="kg-image">
 		<figcaption><strong>API 扫描</strong></figcaption>
 	</figure>
 	<p>在授权几分钟之内，您的组织随即将受 Area 1 保护。</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/01/image3-20.png" class="kg-image" alt="准备好开始扫描 " loading="lazy">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/01/image3-20.png" class="kg-image" alt="准备好开始扫描 ">
 		<figcaption>Ready to scan <span class="-mobiledoc-kit__atom">‌‌</span></figcaption>
 	</figure>
 	<h3 id="-">展望</h3>

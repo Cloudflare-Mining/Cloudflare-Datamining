@@ -1,81 +1,81 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-20.png" class="kg-image" alt="The road to a more standards-compliant Workers API" loading="lazy"></figure>
-	<p>Earlier this year, we <a href="https://blog.cloudflare.com/introducing-the-wintercg/">announced our participation</a> in a new W3C Community Group for the advancement of Web-interoperable API standards. Since then, this new <a href="https://github.com/wintercg?ref=blog.cloudflare.com" target="_blank">WinterCG</a> has been hard at work identifying the common API standards around which all JavaScript runtimes can build. Today I just want to give a peek at some work the WinterCG has been doing; and show off some of the improvements we have been making in the Workers runtime to increase alignment with Web Platform standards around event handling, task cancellation using AbortController, text encoding and decoding, URL parsing and pattern matching, and streams support.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-20.png" class="kg-image" alt="The road to a more standards-compliant Workers API"></figure>
+	<p>Earlier this year, we <a href="https://blog.cloudflare.com/introducing-the-wintercg/">announced our participation</a> in a new W3C Community Group for the advancement of Web-interoperable API standards. Since then, this new <a href="https://github.com/wintercg" target="_blank">WinterCG</a> has been hard at work identifying the common API standards around which all JavaScript runtimes can build. Today I just want to give a peek at some work the WinterCG has been doing; and show off some of the improvements we have been making in the Workers runtime to increase alignment with Web Platform standards around event handling, task cancellation using AbortController, text encoding and decoding, URL parsing and pattern matching, and streams support.</p>
 	<h2 id="the-wintercg-minimum-common-web-platform-api">The WinterCG Minimum Common Web Platform API</h2>
-	<p>Right at the start of the WinterCG activity, the group took some time to evaluate and compare the various non-browser JavaScript runtimes such as <a href="https://nodejs.org/?ref=blog.cloudflare.com" target="_blank">Node.js</a>, <a href="https://deno.land/?ref=blog.cloudflare.com" target="_blank">Deno</a>, <a href="https://oven.sh/?ref=blog.cloudflare.com" target="_blank">Bun</a>, and <a href="https://workers.cloudflare.com/?ref=blog.cloudflare.com" target="_blank">Workers</a> with the purpose of identifying the Web Platform APIs they all had in common. Following a very simple criteria, we looked at the standard APIs that were already implemented and supported by at least two of these runtimes and compiled those into a list that the WinterCG calls the "<a href="https://common-min-api.proposal.wintercg.org/?ref=blog.cloudflare.com" target="_blank">Minimum Common Web Platform API</a>". This list will serve as the basis for what the community group defines as the minimum set of Web Platform APIs that should be implemented consistently across runtimes that claim to be "Web-interoperable".</p>
+	<p>Right at the start of the WinterCG activity, the group took some time to evaluate and compare the various non-browser JavaScript runtimes such as <a href="https://nodejs.org" target="_blank">Node.js</a>, <a href="https://deno.land" target="_blank">Deno</a>, <a href="https://oven.sh/" target="_blank">Bun</a>, and <a href="https://workers.cloudflare.com/" target="_blank">Workers</a> with the purpose of identifying the Web Platform APIs they all had in common. Following a very simple criteria, we looked at the standard APIs that were already implemented and supported by at least two of these runtimes and compiled those into a list that the WinterCG calls the "<a href="https://common-min-api.proposal.wintercg.org/" target="_blank">Minimum Common Web Platform API</a>". This list will serve as the basis for what the community group defines as the minimum set of Web Platform APIs that should be implemented consistently across runtimes that claim to be "Web-interoperable".</p>
 	<p>The current list is straightforward:</p><!--kg-card-begin: html-->
 	<table>
 		<thead>
 			<tr>
-				<td><a href="https://dom.spec.whatwg.org/?ref=blog.cloudflare.com#abortcontroller" target="_blank">AbortController</a></td>
-				<td><a href="https://streams.spec.whatwg.org/?ref=blog.cloudflare.com#readablestreamdefaultcontroller" target="_blank">ReadableStreamDefaultController</a></td>
+				<td><a href="https://dom.spec.whatwg.org/#abortcontroller" target="_blank">AbortController</a></td>
+				<td><a href="https://streams.spec.whatwg.org/#readablestreamdefaultcontroller" target="_blank">ReadableStreamDefaultController</a></td>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
-				<td><a href="https://dom.spec.whatwg.org/?ref=blog.cloudflare.com#abortsignal" target="_blank">AbortSignal</a></td>
-				<td><a href="https://streams.spec.whatwg.org/?ref=blog.cloudflare.com#readablestreamdefaultreader" target="_blank">ReadableStreamDefaultReader</a></td>
+				<td><a href="https://dom.spec.whatwg.org/#abortsignal" target="_blank">AbortSignal</a></td>
+				<td><a href="https://streams.spec.whatwg.org/#readablestreamdefaultreader" target="_blank">ReadableStreamDefaultReader</a></td>
 			</tr>
 			<tr>
-				<td><a href="https://streams.spec.whatwg.org/?ref=blog.cloudflare.com#bytelengthqueuingstrategy" target="_blank">ByteLengthQueuingStrategy</a></td>
-				<td><a href="https://w3c.github.io/webcrypto/?ref=blog.cloudflare.com#dfn-SubtleCrypto" target="_blank">SubtleCrypto</a></td>
+				<td><a href="https://streams.spec.whatwg.org/#bytelengthqueuingstrategy" target="_blank">ByteLengthQueuingStrategy</a></td>
+				<td><a href="https://w3c.github.io/webcrypto/#dfn-SubtleCrypto" target="_blank">SubtleCrypto</a></td>
 			</tr>
 			<tr>
-				<td><a href="https://wicg.github.io/compression/?ref=blog.cloudflare.com#compression-stream" target="_blank">CompressionStream</a></td>
-				<td><a href="https://encoding.spec.whatwg.org/?ref=blog.cloudflare.com#textdecoder" target="_blank">TextDecoder</a></td>
+				<td><a href="https://wicg.github.io/compression/#compression-stream" target="_blank">CompressionStream</a></td>
+				<td><a href="https://encoding.spec.whatwg.org/#textdecoder" target="_blank">TextDecoder</a></td>
 			</tr>
 			<tr>
-				<td><a href="https://streams.spec.whatwg.org/?ref=blog.cloudflare.com#countqueuingstrategy" target="_blank">CountQueuingStrategy</a></td>
-				<td><a href="https://encoding.spec.whatwg.org/?ref=blog.cloudflare.com#textdecoderstream" target="_blank">TextDecoderStream</a></td>
+				<td><a href="https://streams.spec.whatwg.org/#countqueuingstrategy" target="_blank">CountQueuingStrategy</a></td>
+				<td><a href="https://encoding.spec.whatwg.org/#textdecoderstream" target="_blank">TextDecoderStream</a></td>
 			</tr>
 			<tr>
-				<td><a href="https://w3c.github.io/webcrypto/?ref=blog.cloudflare.com#dfn-Crypto" target="_blank">Crypto</a></td>
-				<td><a href="https://encoding.spec.whatwg.org/?ref=blog.cloudflare.com#textencoder" target="_blank">TextEncoder</a></td>
+				<td><a href="https://w3c.github.io/webcrypto/#dfn-Crypto" target="_blank">Crypto</a></td>
+				<td><a href="https://encoding.spec.whatwg.org/#textencoder" target="_blank">TextEncoder</a></td>
 			</tr>
 			<tr>
-				<td><a href="https://w3c.github.io/webcrypto/?ref=blog.cloudflare.com#dfn-CryptoKey" target="_blank">CryptoKey</a></td>
-				<td><a href="https://encoding.spec.whatwg.org/?ref=blog.cloudflare.com#textencoderstream" target="_blank">TextEncoderStream</a></td>
+				<td><a href="https://w3c.github.io/webcrypto/#dfn-CryptoKey" target="_blank">CryptoKey</a></td>
+				<td><a href="https://encoding.spec.whatwg.org/#textencoderstream" target="_blank">TextEncoderStream</a></td>
 			</tr>
 			<tr>
-				<td><a href="https://wicg.github.io/compression/?ref=blog.cloudflare.com#decompression-stream" target="_blank">DecompressionStream</a></td>
-				<td><a href="https://streams.spec.whatwg.org/?ref=blog.cloudflare.com#transformstream" target="_blank">TransformStream</a></td>
+				<td><a href="https://wicg.github.io/compression/#decompression-stream" target="_blank">DecompressionStream</a></td>
+				<td><a href="https://streams.spec.whatwg.org/#transformstream" target="_blank">TransformStream</a></td>
 			</tr>
 			<tr>
-				<td><a href="https://webidl.spec.whatwg.org/?ref=blog.cloudflare.com#idl-DOMException" target="_blank">DOMException</a></td>
-				<td><a href="https://streams.spec.whatwg.org/?ref=blog.cloudflare.com#transformstreamdefaultcontroller" target="_blank">TransformStreamDefaultController</a></td>
+				<td><a href="https://webidl.spec.whatwg.org/#idl-DOMException" target="_blank">DOMException</a></td>
+				<td><a href="https://streams.spec.whatwg.org/#transformstreamdefaultcontroller" target="_blank">TransformStreamDefaultController</a></td>
 			</tr>
 			<tr>
-				<td><a href="https://dom.spec.whatwg.org/?ref=blog.cloudflare.com#event" target="_blank">Event</a></td>
-				<td><a href="https://url.spec.whatwg.org/?ref=blog.cloudflare.com#url" target="_blank">URL</a></td>
+				<td><a href="https://dom.spec.whatwg.org/#event" target="_blank">Event</a></td>
+				<td><a href="https://url.spec.whatwg.org/#url" target="_blank">URL</a></td>
 			</tr>
 			<tr>
-				<td><a href="https://dom.spec.whatwg.org/?ref=blog.cloudflare.com#eventtarget" target="_blank">EventTarget</a></td>
-				<td><a href="https://wicg.github.io/urlpattern/?ref=blog.cloudflare.com#urlpattern-class" target="_blank">URLPattern</a></td>
+				<td><a href="https://dom.spec.whatwg.org/#eventtarget" target="_blank">EventTarget</a></td>
+				<td><a href="https://wicg.github.io/urlpattern/#urlpattern-class" target="_blank">URLPattern</a></td>
 			</tr>
 			<tr>
-				<td><a href="https://streams.spec.whatwg.org/?ref=blog.cloudflare.com#readablebytestreamcontroller" target="_blank">ReadableByteStreamController</a></td>
-				<td><a href="https://url.spec.whatwg.org/?ref=blog.cloudflare.com#urlsearchparams" target="_blank">URLSearchParams</a></td>
+				<td><a href="https://streams.spec.whatwg.org/#readablebytestreamcontroller" target="_blank">ReadableByteStreamController</a></td>
+				<td><a href="https://url.spec.whatwg.org/#urlsearchparams" target="_blank">URLSearchParams</a></td>
 			</tr>
 			<tr>
-				<td><a href="https://streams.spec.whatwg.org/?ref=blog.cloudflare.com#readablestream" target="_blank">ReadableStream</a></td>
-				<td><a href="https://streams.spec.whatwg.org/?ref=blog.cloudflare.com#writablestream" target="_blank">WritableStream</a></td>
+				<td><a href="https://streams.spec.whatwg.org/#readablestream" target="_blank">ReadableStream</a></td>
+				<td><a href="https://streams.spec.whatwg.org/#writablestream" target="_blank">WritableStream</a></td>
 			</tr>
 			<tr>
-				<td><a href="https://streams.spec.whatwg.org/?ref=blog.cloudflare.com#readablestreambyobreader" target="_blank">ReadableStreamBYOBReader</a></td>
-				<td><a href="https://streams.spec.whatwg.org/?ref=blog.cloudflare.com#writablestreamdefaultcontroller" target="_blank">WritableStreamDefaultController</a></td>
+				<td><a href="https://streams.spec.whatwg.org/#readablestreambyobreader" target="_blank">ReadableStreamBYOBReader</a></td>
+				<td><a href="https://streams.spec.whatwg.org/#writablestreamdefaultcontroller" target="_blank">WritableStreamDefaultController</a></td>
 			</tr>
 			<tr>
-				<td><a href="https://streams.spec.whatwg.org/?ref=blog.cloudflare.com#readablestreambyobrequest" target="_blank">ReadableStreamBYOBRequest</a></td>
+				<td><a href="https://streams.spec.whatwg.org/#readablestreambyobrequest" target="_blank">ReadableStreamBYOBRequest</a></td>
 				<td>&nbsp;</td>
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->
-	<p>In addition to these, the WinterCG also expects Web-interoperable runtimes to have implementations of the <a href="https://html.spec.whatwg.org/multipage/webappapis.html?ref=blog.cloudflare.com#dom-atob" target="_blank">atob()</a>, <a href="https://html.spec.whatwg.org/multipage/webappapis.html?ref=blog.cloudflare.com#dom-btoa" target="_blank">btoa()</a>, <a href="https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html?ref=blog.cloudflare.com#dom-queuemicrotask" target="_blank">queueMicrotask()</a>, <a href="https://html.spec.whatwg.org/multipage/structured-data.html?ref=blog.cloudflare.com#dom-structuredclone" target="_blank">structuredClone()</a>, <a href="https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html?ref=blog.cloudflare.com#dom-settimeout" target="_blank">setTimeout()</a>, <a href="https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html?ref=blog.cloudflare.com#dom-cleartimeout" target="_blank">clearTimeout()</a>, <a href="https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html?ref=blog.cloudflare.com#dom-setinterval" target="_blank">setInterval()</a>, <a href="https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html?ref=blog.cloudflare.com#dom-clearinterval" target="_blank">clearInterval()</a>, <a href="https://console.spec.whatwg.org/?ref=blog.cloudflare.com#namespacedef-console" target="_blank">console</a>, and<a href="https://w3c.github.io/webcrypto/?ref=blog.cloudflare.com#dom-windoworworkerglobalscope-crypto" target="_blank"> crypto.subtle</a> APIs available on the global scope.<br></p>
+	<p>In addition to these, the WinterCG also expects Web-interoperable runtimes to have implementations of the <a href="https://html.spec.whatwg.org/multipage/webappapis.html#dom-atob" target="_blank">atob()</a>, <a href="https://html.spec.whatwg.org/multipage/webappapis.html#dom-btoa" target="_blank">btoa()</a>, <a href="https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#dom-queuemicrotask" target="_blank">queueMicrotask()</a>, <a href="https://html.spec.whatwg.org/multipage/structured-data.html#dom-structuredclone" target="_blank">structuredClone()</a>, <a href="https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#dom-settimeout" target="_blank">setTimeout()</a>, <a href="https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#dom-cleartimeout" target="_blank">clearTimeout()</a>, <a href="https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#dom-setinterval" target="_blank">setInterval()</a>, <a href="https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#dom-clearinterval" target="_blank">clearInterval()</a>, <a href="https://console.spec.whatwg.org/#namespacedef-console" target="_blank">console</a>, and<a href="https://w3c.github.io/webcrypto/#dom-windoworworkerglobalscope-crypto" target="_blank"> crypto.subtle</a> APIs available on the global scope.<br></p>
 	<p>Today, we are happy to say that the Workers runtime has compliant or nearly compliant implementations of every one of these WinterCG Minimum Common Web Platform APIs. Some of these APIs intentionally diverge from the standards either due to backwards compatibility concerns, Workers-specific features, or performance optimizations. Other APIs diverge still because we are still in the process of updating them to align with the specifications.</p>
 	<h2 id="improving-standards-compliance-in-the-workers-runtime">Improving standards compliance in the Workers runtime</h2>
 	<p>The Workers runtime has, from the beginning, had the mission to align its developer experience with JavaScript and Web Platform standards as much as possible. Over the past year we have worked hard to continue advancing that mission forward both by improving the standards-compliance of existing APIs such as Event, EventTarget, URL, and streams; and the introduction of new Web Platform APIs such as URLPattern, encoding streams, and compression streams.</p>
 	<h3 id="event-and-eventtarget">Event and EventTarget</h3>
-	<p>The Workers runtime has provided an implementation of the Event and EventTarget Web Platform APIs from the very beginning. These were, however, only limited implementations of what the <a href="https://dom.spec.whatwg.org/?ref=blog.cloudflare.com#interface-event" target="_blank">WHATWG DOM specification</a> defines. Specifically, Workers had only implemented the bare minimum of the Event API that it itself needed to operate.</p>
+	<p>The Workers runtime has provided an implementation of the Event and EventTarget Web Platform APIs from the very beginning. These were, however, only limited implementations of what the <a href="https://dom.spec.whatwg.org/#interface-event" target="_blank">WHATWG DOM specification</a> defines. Specifically, Workers had only implemented the bare minimum of the Event API that it itself needed to operate.</p>
 	<p>Today, the Event and EventTarget implementations in Workers provide a more complete implementation.</p>
 	<p>Let's look at the official definition of Event as defined by the WHATWG DOM standard:</p><!--kg-card-begin: markdown-->
 	<pre><code>[Exposed=*]
@@ -139,7 +139,7 @@ dictionary EventInit {
   dispatchEvent(event);
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>While we were at it, we also fixed a long standing bug in the implementation of Event that prevented user code from properly subclassing the Event object to create their own custom event types. This change is protected by a <a href="https://developers.cloudflare.com/workers/platform/compatibility-dates/?ref=blog.cloudflare.com" target="_blank">compatibility flag</a> that is now enabled by default for all Workers using a compatibility date on or past 2022-01-31.</p><!--kg-card-begin: markdown-->
+	<p>While we were at it, we also fixed a long standing bug in the implementation of Event that prevented user code from properly subclassing the Event object to create their own custom event types. This change is protected by a <a href="https://developers.cloudflare.com/workers/platform/compatibility-dates/" target="_blank">compatibility flag</a> that is now enabled by default for all Workers using a compatibility date on or past 2022-01-31.</p><!--kg-card-begin: markdown-->
 	<pre><code>  class MyEvent extends Event {
     constructor() {
       super('my-event')
@@ -231,7 +231,7 @@ dictionary EventInit {
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<h3 id="textencoderstream-and-textdecoderstream">TextEncoderStream and TextDecoderStream</h3>
-	<p>The Workers runtime has long provided basic implementations of the <a href="https://developer.mozilla.org/en-US/docs/Web/API/TextEncoder?ref=blog.cloudflare.com" target="_blank"><code>TextEncoder</code></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder?ref=blog.cloudflare.com" target="_blank"><code>TextDecoder</code></a> APIs. Initially, these were limited to only supporting encoding and decoding of UTF-8 text. The standard definition of <code>TextDecoder</code>, however, defines a much broader range of text encodings that are now fully supported by the Workers implementation. Per the standard, <code>TextEncoder</code> currently only supports UTF-8.</p><!--kg-card-begin: markdown-->
+	<p>The Workers runtime has long provided basic implementations of the <a href="https://developer.mozilla.org/en-US/docs/Web/API/TextEncoder" target="_blank"><code>TextEncoder</code></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder" target="_blank"><code>TextDecoder</code></a> APIs. Initially, these were limited to only supporting encoding and decoding of UTF-8 text. The standard definition of <code>TextDecoder</code>, however, defines a much broader range of text encodings that are now fully supported by the Workers implementation. Per the standard, <code>TextEncoder</code> currently only supports UTF-8.</p><!--kg-card-begin: markdown-->
 	<pre><code>  const win1251decoder = new TextDecoder("windows-1251");
   const bytes = new Uint8Array([
     207, 240, 232, 226, 229, 242, 44, 32, 236, 232, 240, 33,
@@ -252,9 +252,9 @@ dictionary EventInit {
   console.log(res.value); // Привет, мир!
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Using the encoding streams requires the use of the <code>transformstream_enable_standard_constructor</code> <a href="https://developers.cloudflare.com/workers/platform/compatibility-dates/?ref=blog.cloudflare.com" target="_blank">compatibility flag</a>.</p>
+	<p>Using the encoding streams requires the use of the <code>transformstream_enable_standard_constructor</code> <a href="https://developers.cloudflare.com/workers/platform/compatibility-dates/" target="_blank">compatibility flag</a>.</p>
 	<h3 id="compressionstream-and-decompressionstream">CompressionStream and DecompressionStream</h3>
-	<p>Streaming compression and decompression is also now supported in the runtime using the standard <a href="https://developer.mozilla.org/en-US/docs/Web/API/CompressionStream?ref=blog.cloudflare.com" target="_blank"><code>CompressionStream</code></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/API/DecompressionStream?ref=blog.cloudflare.com" target="_blank"><code>DecompressionStream</code></a> APIs.</p><!--kg-card-begin: markdown-->
+	<p>Streaming compression and decompression is also now supported in the runtime using the standard <a href="https://developer.mozilla.org/en-US/docs/Web/API/CompressionStream" target="_blank"><code>CompressionStream</code></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/API/DecompressionStream" target="_blank"><code>DecompressionStream</code></a> APIs.</p><!--kg-card-begin: markdown-->
 	<pre><code>const ds = new DecompressionStream('gzip');
 const decompressedStream = blob.stream().pipeThrough(ds);
 
@@ -267,7 +267,7 @@ const compressedStream = blob.stream().pipeThrough(cs);
 	<p>Similar to Event, there has been an implementation of the Web Platform standard URL API available within Workers from nearly the beginning. But also like Event, the implementation was not entirely compatible with the standard.</p>
 	<p>The incompatibilities were subtle, for instance, in the original implementation, the URL string "<code>https://a//b//c//</code>" would be parsed incorrectly as "<code>https://a/b/c</code>" (note that the extra empty path segments are removed) whereas the standard parsing algorithm would produce "<code>https://a//b//c/</code>" as a result. Such inconsistent results were causing interoperability issues with JavaScript written to run across multiple JavaScript runtimes and needed to be fixed.</p>
 	<p>A new implementation of the URL parsing algorithm has been provided, and as of October 31, 2022 it has been enabled by default for all newly deployed Workers. Older Workers can begin using the new implementation by updating their compatibility dates to 2022-10-31 or by enabling the <code>url_standard</code> compatibility flag.</p>
-	<p>Along with the updated URL implementation, Workers now provides an implementation of the standard <a href="https://developer.mozilla.org/en-US/docs/Web/API/URLPattern?ref=blog.cloudflare.com" target="_blank">URLPattern</a> API.</p>
+	<p>Along with the updated URL implementation, Workers now provides an implementation of the standard <a href="https://developer.mozilla.org/en-US/docs/Web/API/URLPattern" target="_blank">URLPattern</a> API.</p>
 	<p><code>URLPattern</code> provides a regular-expression-like syntax for matching a <code>URL</code> string against a pattern. For instance, consider this example taken from the MDN documentation for <code>URLPattern</code>:</p><!--kg-card-begin: markdown-->
 	<pre><code>  // Matching a pathname
   let pattern1 = new URLPattern('https://example.com/books/:id')
@@ -356,5 +356,5 @@ const compressedStream = blob.stream().pipeThrough(cs);
 	<p>If your code is using new <code>TransformStream()</code> today as this kind of pass-through, the new implementation will continue to work except for one very important difference: the old, non-standard implementation of new <code>TransformStream()</code> supported BYOB reads on the readable side (i.e. <code>readable.getReader({ mode: 'byob' })</code>). The new implementation (enabled via a compatibility flag and becoming the default on November 30 ) does not support BYOB reads as required by the stream standard.</p>
 	<h2 id="what-s-next">What's next</h2>
 	<p>It is clear that we have made a lot of progress in improving the standards compliance of the Workers runtime over the past year, but there is far more to do. Next we will be turning our attention to the implementation of the fetch() and WebSockets APIs, as well as actively seeking closer alignment with other runtimes through collaboration in the Web-interoperable Runtimes Community Group.</p>
-	<p>If you are interested in helping drive the implementation of Web Platform APIs forward, and advancing interoperability between JavaScript runtime environments, the Workers Runtime team at Cloudflare is hiring! Reach out, or see our open positions <a href="https://www.cloudflare.com/careers/jobs/?title=Workers+Runtime&amp;ref=blog.cloudflare.com" target="_blank">here</a>.</p>
+	<p>If you are interested in helping drive the implementation of Web Platform APIs forward, and advancing interoperability between JavaScript runtime environments, the Workers Runtime team at Cloudflare is hiring! Reach out, or see our open positions <a href="https://www.cloudflare.com/careers/jobs/?title=Workers+Runtime" target="_blank">here</a>.</p>
 </div>

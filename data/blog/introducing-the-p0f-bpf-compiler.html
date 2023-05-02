@@ -1,13 +1,13 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
 	<p>Two years ago we blogged about our love of <a href="https://blog.cloudflare.com/bpf-the-forgotten-bytecode/">BPF (BSD packet filter)</a> bytecode.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/08/13488404_e45bf52f98_z.jpg" alt="" loading="lazy"><br>
-		<small><a href="https://creativecommons.org/licenses/by/2.0/?ref=blog.cloudflare.com" target="_blank">CC BY 2.0</a> <a href="https://www.flickr.com/photos/rocketjim54/13488404/in/photolist-6UV6AL-cNg6EC-bCTyGc-pHpUZt-8mgA4n-pZV4Qq-dJTkkr-ckZqwA-dJTkhB-q2Kyas-cLvVP1-2c8CG-a5JDy8-6NSXFW-73SFAD-9JGikG-6NNM2t-6mGTaN-eHCuuX-6NSXLC-6mH8fQ?ref=blog.cloudflare.com" target="_blank">image</a> by <a href="https://www.flickr.com/photos/rocketjim54/?ref=blog.cloudflare.com" target="_blank">jim simonson</a></small>
+	<p><img src="https://blog.cloudflare.com/content/images/2016/08/13488404_e45bf52f98_z.jpg" alt=""><br>
+		<small><a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">CC BY 2.0</a> <a href="https://www.flickr.com/photos/rocketjim54/13488404/in/photolist-6UV6AL-cNg6EC-bCTyGc-pHpUZt-8mgA4n-pZV4Qq-dJTkkr-ckZqwA-dJTkhB-q2Kyas-cLvVP1-2c8CG-a5JDy8-6NSXFW-73SFAD-9JGikG-6NNM2t-6mGTaN-eHCuuX-6NSXLC-6mH8fQ" target="_blank">image</a> by <a href="https://www.flickr.com/photos/rocketjim54/" target="_blank">jim simonson</a></small>
 	</p>
 	<p>Then we published a set of utilities we are using to generate the BPF rules for our production iptables: <a href="https://blog.cloudflare.com/introducing-the-bpf-tools/">the bpftools</a>.</p>
 	<p>Today we are very happy to open source another component of the bpftools: our <strong>p0f BPF compiler</strong>!</p>
 	<h3 id="meetthep0f">Meet the p0f</h3>
-	<p><a href="http://lcamtuf.coredump.cx/p0f3/?ref=blog.cloudflare.com" target="_blank">p0f</a> is a tool written by superhuman <a href="https://en.wikipedia.org/wiki/Micha%C5%82_Zalewski?ref=blog.cloudflare.com" target="_blank">Michal Zalewski</a>.<br>
+	<p><a href="http://lcamtuf.coredump.cx/p0f3/" target="_blank">p0f</a> is a tool written by superhuman <a href="https://en.wikipedia.org/wiki/Micha%C5%82_Zalewski" target="_blank">Michal Zalewski</a>.<br>
 		The main purpose of p0f is to passively analyze and categorize arbitrary network traffic. You can feed p0f any packet and in return it will derive knowledge about the operating system that sent the packet.</p>
 	<p>One of the features that caught our attention was the concise yet explanatory signature format used to describe TCP SYN packets.</p>
 	<p>The p0f SYN signature is a simple string consisting of colon separated values. This string cleanly describes a SYN packet in a human-readable way. The format is pretty smart, skipping the varying TCP fields and keeping focus only on the essence of the SYN packet, extracting the interesting bits from it.</p>
@@ -23,11 +23,11 @@
 	<pre><code>4:255:0:0:*,0::ack+,uptr+:0
 4:64:0:*:65535,*:mss,nop,ws,nop,nop,sok:df,id+:0
 </code></pre>
-	<p>You can have a look at more signatures in p0f's <a href="https://github.com/p0f/p0f/blob/master/docs/README?ref=blog.cloudflare.com" target="_blank">README</a> and <a href="https://github.com/p0f/p0f/blob/master/p0f.fp?ref=blog.cloudflare.com" target="_blank">signatures database</a>.</p>
+	<p>You can have a look at more signatures in p0f's <a href="https://github.com/p0f/p0f/blob/master/docs/README" target="_blank">README</a> and <a href="https://github.com/p0f/p0f/blob/master/p0f.fp" target="_blank">signatures database</a>.</p>
 	<p>It's not <em>always</em> possible to perfectly distinguish an attack from valid packets, but very often it is. This realization led us to develop an attack mitigation tool based on p0f SYN signatures. With this we can ask <code>iptables</code> to rate limit only the selected attack signatures.</p>
 	<p>But before we discuss the mitigations, let's explain the signature format.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/08/640px-12-8_equals_4-4_drum_pattern.png" alt="" loading="lazy"><br>
-		<small><a href="http://creativecommons.org/licenses/by-sa/3.0/?ref=blog.cloudflare.com" title="Creative Commons Attribution-Share Alike 3.0" target="_blank">CC BY-SA 3.0</a> <a href="https://commons.wikimedia.org/w/index.php?curid=17871154&amp;ref=blog.cloudflare.com" target="_blank">image</a> by <a href="//en.wikipedia.org/wiki/User:Hyacinth" class="extiw" title="en:User:Hyacinth" target="_blank">Hyacinth</a> at the <a href="//en.wikipedia.org/wiki/" class="extiw" title="w:" target="_blank">English language Wikipedia</a></small>
+	<p><img src="https://blog.cloudflare.com/content/images/2016/08/640px-12-8_equals_4-4_drum_pattern.png" alt=""><br>
+		<small><a href="http://creativecommons.org/licenses/by-sa/3.0/" title="Creative Commons Attribution-Share Alike 3.0" target="_blank">CC BY-SA 3.0</a> <a href="https://commons.wikimedia.org/w/index.php?curid=17871154" target="_blank">image</a> by <a href="//en.wikipedia.org/wiki/User:Hyacinth" class="extiw" title="en:User:Hyacinth" target="_blank">Hyacinth</a> at the <a href="//en.wikipedia.org/wiki/" class="extiw" title="w:" target="_blank">English language Wikipedia</a></small>
 	</p>
 	<h2 id="signature">Signature</h2>
 	<p>As mentioned, the p0f SYN signature is a colon-separated string with the following parts:</p>
@@ -271,8 +271,8 @@ Chain INPUT (policy DROP 0 packets, 0 bytes)
 </code></pre>
 	<h4 id="closingwords">Closing words</h4>
 	<p>While defending from DDoS attacks is sometimes fun, most often it's a mundane repetitive job. We are constantly working on improving our automatic DDoS mitigation system, but we do not believe there is a strong reason to keep it all secret. We want to help others fighting attacks. Maybe if we all worked together one day we could solve the DDoS problem for all.</p>
-	<p>Releasing our code <a href="https://cloudflare.github.io/?ref=blog.cloudflare.com" target="_blank">open source</a> is an important part of CloudFlare. This blog post and the p0f BPF compiler are part of our effort to open source our DDoS mitigations. We hope others affected by SYN floods will find it useful.</p>
+	<p>Releasing our code <a href="https://cloudflare.github.io/" target="_blank">open source</a> is an important part of CloudFlare. This blog post and the p0f BPF compiler are part of our effort to open source our DDoS mitigations. We hope others affected by SYN floods will find it useful.</p>
 	<p><em>Do you enjoy playing with low level networking bits? Are you interested in dealing with some of the largest DDoS attacks ever seen?<br>
-			If so you should definitely have a look at the <a href="https://www.cloudflare.com/join-our-team/?ref=blog.cloudflare.com" target="_blank">opened positions</a> in our London, San Francisco, Singapore, Champaign (IL) and Austin (TX) offices!</em></p>
+			If so you should definitely have a look at the <a href="https://www.cloudflare.com/join-our-team/" target="_blank">opened positions</a> in our London, San Francisco, Singapore, Champaign (IL) and Austin (TX) offices!</em></p>
 	<!--kg-card-end: markdown-->
 </div>
