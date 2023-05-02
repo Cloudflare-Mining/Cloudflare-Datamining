@@ -569,6 +569,39 @@
 			]
 		},
 		{
+			"name": "workerd/src/workerd/api/r2-api.capnp:R2Etag",
+			"fields": [
+				{
+					"name": "value",
+					"annotations": {}
+				},
+				{
+					"name": "type",
+					"annotations": {
+						"discriminator": "unhandled type",
+						"flatten": "unhandled type"
+					}
+				}
+			]
+		},
+		{
+			"name": "workerd/src/workerd/api/r2-api.capnp:R2Etag.type",
+			"fields": [
+				{
+					"name": "strong",
+					"annotations": {}
+				},
+				{
+					"name": "weak",
+					"annotations": {}
+				},
+				{
+					"name": "wildcard",
+					"annotations": {}
+				}
+			]
+		},
+		{
 			"name": "workerd/src/workerd/api/r2-api.capnp:Record",
 			"fields": [
 				{
