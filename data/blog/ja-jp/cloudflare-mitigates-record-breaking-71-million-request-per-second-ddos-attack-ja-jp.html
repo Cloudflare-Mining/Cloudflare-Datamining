@@ -1,44 +1,44 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/02/DDoS-protection-1.png" class="kg-image"></figure>
-	<p>この週末は、記録的な<a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/" target="_blank">DDoS攻撃</a>が行われました。この週末、Cloudflareは数十件の<em>超大規模</em>DDoS攻撃を検知し、軽減しました。攻撃の大部分はピーク時に概算5,000万～7,000万リクエスト/秒（rps）で、最大で7,100万rpsを超えるものもありました。これは、報告されたHTTP DDoS攻撃の中では過去最大のもので、2022年6月に報告された4600万rpsの記録を54%以上上回ったことになります。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/02/DDoS-protection-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>この週末は、記録的な<a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/?ref=blog.cloudflare.com" target="_blank">DDoS攻撃</a>が行われました。この週末、Cloudflareは数十件の<em>超大規模</em>DDoS攻撃を検知し、軽減しました。攻撃の大部分はピーク時に概算5,000万～7,000万リクエスト/秒（rps）で、最大で7,100万rpsを超えるものもありました。これは、報告されたHTTP DDoS攻撃の中では過去最大のもので、2022年6月に報告された4600万rpsの記録を54%以上上回ったことになります。</p>
 	<p>この攻撃は、Cloudflareで保護されているHTTP/2ベースのWebサイトを標的としていました。この攻撃は3万を超えるIPアドレスから発信されていました。攻撃を受けたWebサイトには、人気のゲームプロバイダー、暗号通貨会社、ホスティングプロバイダー、クラウドコンピューティングプラットフォームなどが含まれています。これらの攻撃は多数のクラウドプロバイダーから発信されており、当社はこのプロバイダーらと協力してボットネットの取り締まりを協力しています。</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/02/1711-1.png" class="kg-image">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/02/1711-1.png" class="kg-image" alt="" loading="lazy">
 		<figcaption>記録的な攻撃：1秒あたり7,100万リクエストを超えるDDoS攻撃</figcaption>
 	</figure>
-	<p>ここ1年の間、クラウドコンピューティングプロバイダーから発信される攻撃が増加しています。そのため、当社は、独自の自律システムを所有するサービスプロバイダーに、<a href="https://blog.cloudflare.com/botnet-threat-feed-for-isp/">無料のボットネット脅威フィード</a>を提供する予定です。このフィードは、サービスプロバイダ内のIP空間に、同社の自律システム内から発生する攻撃の脅威インテリジェンスを提供するものです。独自のIP空間を運営するサービスプロバイダーは、現在早期アクセス待ちリストに<a href="https://www.cloudflare.com/lp/botnet-threat-feed/" target="_blank">登録</a>することができます。</p>
+	<p>ここ1年の間、クラウドコンピューティングプロバイダーから発信される攻撃が増加しています。そのため、当社は、独自の自律システムを所有するサービスプロバイダーに、<a href="https://blog.cloudflare.com/botnet-threat-feed-for-isp/">無料のボットネット脅威フィード</a>を提供する予定です。このフィードは、サービスプロバイダ内のIP空間に、同社の自律システム内から発生する攻撃の脅威インテリジェンスを提供するものです。独自のIP空間を運営するサービスプロバイダーは、現在早期アクセス待ちリストに<a href="https://www.cloudflare.com/lp/botnet-threat-feed/?ref=blog.cloudflare.com" target="_blank">登録</a>することができます。</p>
 	<h3 id="-">スーパーボウルやキルネットとの関連性はありますか？</h3>
 	<p>いいえ。<a href="https://blog.cloudflare.com/uptick-in-healthcare-organizations-experiencing-targeted-ddos-attacks/">Killnet DDoSキャンペーンは、ヘルスケア関連のWebサイトを標的</a>としていましたが、今回の攻撃キャンペーンはそれから2週間も経たないうちに行われたものです。今回の攻撃は、その手口やターゲットから、ヘルスケア関連のキャンペーンとは無関係と思われます。さらに、昨日は米国のスーパーボウルが開催されましたが、この攻撃キャンペーンが試合イベントと関連しているとは考えていません。</p>
 	<h3 id="ddos-">DDoS攻撃とは？</h3>
-	<p><a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/" target="_blank">分散サービス妨害攻撃攻</a>は、インターネットプロパティをダウンさせ、ユーザーが利用できないようにすることを目的としたサイバー攻撃です。この種のサイバー攻撃は、保護されていないWebサイトに対して非常に効果的であり、攻撃者にとっては非常に安価に実行することができます。</p>
-	<p>HTTP DDoS攻撃では、通常、標的のWebサイトに向けて<a href="https://www.cloudflare.com/learning/ddos/http-flood-ddos-attack/" target="_blank">大量のHTTPリクエスト</a>を送信します。攻撃者の目的は、Web サイトが処理できないほどのリクエストでWebサイトを過負荷にすることです。ダウンさせるのに十分な量のリクエストがある場合、Webサイトのサーバーは、<em>正規の</em>ユーザーリクエストとともに、すべての攻撃リクエストを処理することができなくなります。ユーザーは、Webサイトの読み込み遅延、タイムアウトを経験し、最終的には目的のWebサイトに全く接続できなくなるります。</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/02/1711-2.png" class="kg-image">
+	<p><a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/?ref=blog.cloudflare.com" target="_blank">分散サービス妨害攻撃攻</a>は、インターネットプロパティをダウンさせ、ユーザーが利用できないようにすることを目的としたサイバー攻撃です。この種のサイバー攻撃は、保護されていないWebサイトに対して非常に効果的であり、攻撃者にとっては非常に安価に実行することができます。</p>
+	<p>HTTP DDoS攻撃では、通常、標的のWebサイトに向けて<a href="https://www.cloudflare.com/learning/ddos/http-flood-ddos-attack/?ref=blog.cloudflare.com" target="_blank">大量のHTTPリクエスト</a>を送信します。攻撃者の目的は、Web サイトが処理できないほどのリクエストでWebサイトを過負荷にすることです。ダウンさせるのに十分な量のリクエストがある場合、Webサイトのサーバーは、<em>正規の</em>ユーザーリクエストとともに、すべての攻撃リクエストを処理することができなくなります。ユーザーは、Webサイトの読み込み遅延、タイムアウトを経験し、最終的には目的のWebサイトに全く接続できなくなるります。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/02/1711-2.png" class="kg-image" alt="" loading="lazy">
 		<figcaption>DDoS攻撃のイメージ図</figcaption>
 	</figure>
-	<p>攻撃をより大規模かつ複雑にするために、攻撃者は通常、ボットのネットワーク（<a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-botnet/" target="_blank"><em>ボットネット</em></a>）を利用します。攻撃者はボットネットを編成し、被害者のWebサイトに大量のHTTPリクエストを殺到させます。十分に大規模で強力なボットネットは、今回見たような非常に大規模な攻撃を発生させることができます。</p>
+	<p>攻撃をより大規模かつ複雑にするために、攻撃者は通常、ボットのネットワーク（<a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-botnet/?ref=blog.cloudflare.com" target="_blank"><em>ボットネット</em></a>）を利用します。攻撃者はボットネットを編成し、被害者のWebサイトに大量のHTTPリクエストを殺到させます。十分に大規模で強力なボットネットは、今回見たような非常に大規模な攻撃を発生させることができます。</p>
 	<p>しかし、ボットネットの構築・運用には、多くの投資と専門知識が必要です。一般的な人がこれを行うにはどうすれば良いでしょうか？一般的な人がWebサイトに対してDDoS攻撃を仕掛けようとする場合、ゼロから始める必要はありません。月額わずか30ドルほどで、数あるDDoS as a Serviceプラットフォームを選択して利用することができます。支払う額を増やすことで、より大きく、より長い攻撃を発信することが可能になります。</p>
 	<h3 id="-ddos-">なぜDDoS攻撃なのか？</h3>
 	<p>ここ数年の間に、DDoS攻撃を仕掛けることは、攻撃者や攻撃代行者にとって、より容易で安価、利用しやすいものになってきました。しかし、攻撃者にとって簡単になったのと同様に、私たちは、あらゆる規模の組織があらゆる種類のDDoS攻撃から守ることをさらに簡単に（しかも無料で）できるようにしたいと考えています。 </p>
-	<p><a href="https://www.cloudflare.com/learning/security/ransomware/what-is-ransomware/" target="_blank">ランサムウェア</a>攻撃とは異なり、<a href="https://www.cloudflare.com/learning/ddos/ransom-ddos-attack/" target="_blank">ランサムDDoS攻撃</a>では、実際にシステムに侵入したり、標的のネットワーク内に足場を作るは必要ありません。通常、ランサムウェア攻撃は、従業員がメールに記載されたリンクを疑いなくクリックし、マルウェアをインストールし、増殖させた時点で始まります。DDoS攻撃では、そのような必要はありません。DDoS攻撃は当て逃げのような攻撃です。DDoS攻撃者が知る必要があるのは、WebサイトのアドレスとIPアドレスだけです。</p>
+	<p><a href="https://www.cloudflare.com/learning/security/ransomware/what-is-ransomware/?ref=blog.cloudflare.com" target="_blank">ランサムウェア</a>攻撃とは異なり、<a href="https://www.cloudflare.com/learning/ddos/ransom-ddos-attack/?ref=blog.cloudflare.com" target="_blank">ランサムDDoS攻撃</a>では、実際にシステムに侵入したり、標的のネットワーク内に足場を作るは必要ありません。通常、ランサムウェア攻撃は、従業員がメールに記載されたリンクを疑いなくクリックし、マルウェアをインストールし、増殖させた時点で始まります。DDoS攻撃では、そのような必要はありません。DDoS攻撃は当て逃げのような攻撃です。DDoS攻撃者が知る必要があるのは、WebサイトのアドレスとIPアドレスだけです。</p>
 	<h3 id="ddos--1">DDoS攻撃は増えているのでしょうか？</h3>
 	<p>はい。この数ヶ月、攻撃の規模、洗練度、頻度は増加の一途をたどっています。最新の<a href="https://blog.cloudflare.com/ja-jp/ddos-threat-report-2022-q4-ja-jp/">DDoS脅威レポート</a>では、HTTP DDoS攻撃の量が前年比で79%増加したことが確認されています。さらに、100Gbpsを超えるボリュームの攻撃は前四半期比（QoQ）で67%増、3時間以上継続する攻撃の数は87%増となっています。</p>
-	<p>しかし、それだけに留まらず、攻撃者の大胆さも増してきています。最新のDDoS脅威レポートでは、<a href="https://www.cloudflare.com/learning/ddos/ransom-ddos-attack/" target="_blank">ランサムDDoS攻撃</a>が年間を通じて着実に増加していることが確認されています。2022年11月にピークを迎え、調査対象のお客様の4人に1人がランサムDDoS攻撃や脅威を受けたと回答しています。</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/02/1711-3.png" class="kg-image">
+	<p>しかし、それだけに留まらず、攻撃者の大胆さも増してきています。最新のDDoS脅威レポートでは、<a href="https://www.cloudflare.com/learning/ddos/ransom-ddos-attack/?ref=blog.cloudflare.com" target="_blank">ランサムDDoS攻撃</a>が年間を通じて着実に増加していることが確認されています。2022年11月にピークを迎え、調査対象のお客様の4人に1人がランサムDDoS攻撃や脅威を受けたと回答しています。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/02/1711-3.png" class="kg-image" alt="" loading="lazy">
 		<figcaption>ランサムDDoS攻撃の月別分布</figcaption>
 	</figure>
 	<h3 id="ddos--2">DDoS攻撃を心配する必要がありますか？</h3>
 	<p>はい。もし、お客様のWebサイトやサーバー、ネットワークが、自動検出・軽減機能を持つクラウドサービスを使って、大容量のDDoS攻撃からの保護を受けていない場合、ぜひ検討してみることをおすすめします。 </p>
 	<p>Cloudflareのお客様であれば心配する必要はありませんが、意識して備える必要があります。以下は、セキュリティ体制を最適化するために推奨される手順のリストです。</p>
 	<h3 id="ddos--3">DDoS攻撃から身を守るには、どのような対策をとればよいのでしょうか？</h3>
-	<p>Cloudflareのシステムは、これらのDDoS攻撃を自動的に検出して<a href="https://www.cloudflare.com/learning/ddos/ddos-mitigation/" target="_blank">軽減</a>します。 </p>
+	<p>Cloudflareのシステムは、これらのDDoS攻撃を自動的に検出して<a href="https://www.cloudflare.com/learning/ddos/ddos-mitigation/?ref=blog.cloudflare.com" target="_blank">軽減</a>します。 </p>
 	<p>すでにCloudflareをご利用のお客様も、恐らくまだ利用されていない今すぐ利用できる多くの機能や性能を提供しています。そのため、追加の予防策としてこれらの機能を活用し、セキュリティ体制を強化・最適化することをお勧めします。</p>
 	<ol>
-		<li>最適なDDoS対策のため、<a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/" target="_blank">DDoS軽減ルール</a>がすべてデフォルト設定（感度レベルと軽減アクションが高）になっていることを確認してください。</li>
-		<li>高度な DDoS 攻撃対策サービスを契約しているCloudflare Enterpriseのお客様は、<a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/adaptive-protection/" target="_blank">適応型DDoS攻撃対策</a>を有効にすることをご検討ください。このサービスは、お客様固有のトラフィックパターンに基づいて攻撃をよりインテリジェントに軽減します。</li>
-		<li><a href="https://developers.cloudflare.com/firewall/cf-firewall-rules/" target="_blank">ファイアウォールルール</a>および<a href="https://developers.cloudflare.com/waf/rate-limiting-rules/" target="_blank">レート制限</a>ルールを導入し、ポジティブとネガティブを組み合わせたセキュリティモデルを適用します。既知の使用状況に基づいて、Webサイトに許可するトラフィックを制限します。</li>
-		<li>オリジンが公衆インターネットに公開されていないことを確認します（<a href="https://developers.cloudflare.com/fundamentals/get-started/setup/allow-cloudflare-ip-addresses/" target="_blank">CloudflareのIPアドレスへのアクセスのみを有効にします</a>）。過去に直接ターゲットにされたことがある場合は、セキュリティ対策としてホスティングプロバイダーに連絡し、新しいオリジンサーバーのIPを要求することをお勧めします。</li>
-		<li><a href="https://developers.cloudflare.com/fundamentals/global-configurations/lists/ip-lists/#managed-ip-lists" target="_blank">Managed IP Lists</a>を利用できるお客様は、ファイアウォールルールにこれらのリストを活用することを是非ご検討ください。また、<a href="https://developers.cloudflare.com/bots/get-started/bm-subscription/" target="_blank">ボット管理</a>をご利用のお客様は、ファイアウォールルール内のボットスコアの活用を合わせてご検討ください。</li>
-		<li>オリジンサーバーへの負担を軽減するために、出来る限り<a href="https://developers.cloudflare.com/cache/" target="_blank">キャッシュ</a>を有効にしてください。また、<a href="https://workers.cloudflare.com/" target="_blank">Workers</a>を使用する場合は、必要以上のサブリクエストでオリジンサーバーに負担をかけないようにしてください。</li>
-		<li><a href="https://developers.cloudflare.com/ddos-protection/reference/alerts/" target="_blank">DDoSアラート</a>を有効にして応答時間の短縮を図ります。</li>
+		<li>最適なDDoS対策のため、<a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/?ref=blog.cloudflare.com" target="_blank">DDoS軽減ルール</a>がすべてデフォルト設定（感度レベルと軽減アクションが高）になっていることを確認してください。</li>
+		<li>高度な DDoS 攻撃対策サービスを契約しているCloudflare Enterpriseのお客様は、<a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/adaptive-protection/?ref=blog.cloudflare.com" target="_blank">適応型DDoS攻撃対策</a>を有効にすることをご検討ください。このサービスは、お客様固有のトラフィックパターンに基づいて攻撃をよりインテリジェントに軽減します。</li>
+		<li><a href="https://developers.cloudflare.com/firewall/cf-firewall-rules/?ref=blog.cloudflare.com" target="_blank">ファイアウォールルール</a>および<a href="https://developers.cloudflare.com/waf/rate-limiting-rules/?ref=blog.cloudflare.com" target="_blank">レート制限</a>ルールを導入し、ポジティブとネガティブを組み合わせたセキュリティモデルを適用します。既知の使用状況に基づいて、Webサイトに許可するトラフィックを制限します。</li>
+		<li>オリジンが公衆インターネットに公開されていないことを確認します（<a href="https://developers.cloudflare.com/fundamentals/get-started/setup/allow-cloudflare-ip-addresses/?ref=blog.cloudflare.com" target="_blank">CloudflareのIPアドレスへのアクセスのみを有効にします</a>）。過去に直接ターゲットにされたことがある場合は、セキュリティ対策としてホスティングプロバイダーに連絡し、新しいオリジンサーバーのIPを要求することをお勧めします。</li>
+		<li><a href="https://developers.cloudflare.com/fundamentals/global-configurations/lists/ip-lists/?ref=blog.cloudflare.com#managed-ip-lists" target="_blank">Managed IP Lists</a>を利用できるお客様は、ファイアウォールルールにこれらのリストを活用することを是非ご検討ください。また、<a href="https://developers.cloudflare.com/bots/get-started/bm-subscription/?ref=blog.cloudflare.com" target="_blank">ボット管理</a>をご利用のお客様は、ファイアウォールルール内のボットスコアの活用を合わせてご検討ください。</li>
+		<li>オリジンサーバーへの負担を軽減するために、出来る限り<a href="https://developers.cloudflare.com/cache/?ref=blog.cloudflare.com" target="_blank">キャッシュ</a>を有効にしてください。また、<a href="https://workers.cloudflare.com/?ref=blog.cloudflare.com" target="_blank">Workers</a>を使用する場合は、必要以上のサブリクエストでオリジンサーバーに負担をかけないようにしてください。</li>
+		<li><a href="https://developers.cloudflare.com/ddos-protection/reference/alerts/?ref=blog.cloudflare.com" target="_blank">DDoSアラート</a>を有効にして応答時間の短縮を図ります。</li>
 	</ol>
 	<h3 id="-ddos--1">次のDDoSの波に備える</h3>
 	<p>DDoS攻撃への防御は、あらゆる規模の組織にとって重要です。攻撃を仕掛けるのは人間ですが、実行するのはボットです。撃退するには、ボット同士で戦わせる必要があります。人間だけに頼ると防御側が不利になるため、検出と軽減は可能な限り自動化してリアルタイムで軽減する必要があります。Cloudflareの自動化されたシステムは、常にDDoS攻撃を検知し軽減するため、お客様がそのような作業を行う必要はありません。この自動化されたアプローチと、当社の幅広いセキュリティ機能を組み合わせることで、お客様はニーズに合わせて保護をカスタマイズすることができます。</p>

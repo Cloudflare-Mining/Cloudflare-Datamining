@@ -2,7 +2,7 @@
 	<p>由Bot驱动的<strong>凭证填充</strong>是现代互联网上的一大祸害。这些攻击会试图登录并接管一个用户的帐户，使用大量字典单词和以前被盗的帐户凭证攻击密码表单，其目的是执行欺诈性交易、窃取敏感数据和损害个人信息。</p>
 	<p>在Cloudflare，我们已经构建了一套技术来对抗Bot，其中的许多都以机器学习为基础。机器学习是当今的一个热门话题，但相关文献往往只是关注于改进其核心技术，而没有关注如何将这些学习机器整合到现实世界中。</p>
 	<p>鉴于我们在机器学习上拥有丰富的经验（不只是Bot管理，我们还在许多安全性和性能产品中使用了机器学习），我们希望分享有关该技术在实际产品中应用的一些经验教训。</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/11/Stop-the-Bots.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/11/Stop-the-Bots.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>每家企业在将机器学习融入其DNA的生命周期中通常会经历三个阶段。它们分别是：</p>
 	<ul>
 		<li>商业情报</li>
@@ -31,16 +31,16 @@
 	</ul>
 	<p>有了这个框架，让我们来探索如何应用Cloudflare的机器学习。</p>
 	<p>为了给我们的机器学习模型提供信息，我们依赖于Cloudflare网络上1300万个域名的数据，该网络每天有超过6600亿个请求，每月服务超过28亿人。我们利用海量数据来应对Web上最紧急的安全威胁之一：<strong>bot攻击</strong>。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/11/Bot-Attacks.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/11/Bot-Attacks.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p></p>
 	<h2 id="--3">商业情报</h2>
 	<p>我们最近分析了Cloudflare全部1300万个域名上一天内出现的（6600亿个）请求，并给每一次潜在攻击打上“bot分数”，分数范围从0到100。Cloudflare已经有大量的工具来帮助我们得到这个分数，但是原则上，我们也可以手动将每个数据点标记为“bot”或“非bot”，类似于上面的牙医示例。</p>
 	<p>我们的分析得出的最初结论是攻击的地域分布。基本的Bot防护工具依赖于阻止来自通常与恶意流量相关的国家的IP地址。但是，当我们对整个网络中的僵尸程序来源进行排名时，很明显，这种方法是站不住脚的，因为大多数攻击都来自合法流量很大的国家。还有一个更为复杂的解决方案可以使我们在不影响实际用户的情况下防御僵尸程序。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/11/image2.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/11/image2.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p></p>
 	<h2 id="--4">独立机器学习</h2>
 	<p>在编译了从Cloudflare的网络中取样的大型数据集之后，我们的机器学习专家团队开发了一个最先进的模型来预测自动凭证填充和其他Bot攻击。</p>
-	<p><strong>训练</strong>：在我们的训练集内，我们从1万亿个请求（经过几天的编译）开始，每个请求都被附上了之前提到的bot分数，并且我们在CPU/GPU集群上分析了它们的特性，以识别恶意流量的趋势。我们使用了<a href="https://catboost.ai/" target="_blank">CatBoost</a>，这是一个类似于XGBoost 的<a href="https://en.wikipedia.org/wiki/Gradient_boosting" target="_blank">梯度增强</a>库。</p>
+	<p><strong>训练</strong>：在我们的训练集内，我们从1万亿个请求（经过几天的编译）开始，每个请求都被附上了之前提到的bot分数，并且我们在CPU/GPU集群上分析了它们的特性，以识别恶意流量的趋势。我们使用了<a href="https://catboost.ai/?ref=blog.cloudflare.com" target="_blank">CatBoost</a>，这是一个类似于XGBoost 的<a href="https://en.wikipedia.org/wiki/Gradient_boosting?ref=blog.cloudflare.com" target="_blank">梯度增强</a>库。</p>
 	<p><strong>验证</strong>：尽管我们执行了数百个独立的验证测试，但最终要验证的是有多少登录请求会面临验证码测试，而又有多少请求通过了验证码测试（通过验证码很可能代表着假阳性——将真人判为Bot）。</p>
 	<p>在一周的时间里，我们将我们的解决方案部署到95个带有WordPress登录页面的网站上，发现我们发出了超过66万次验证，其中只有0.32%得到了解决——这意味着我们的算法检测Bot的准确率为99.68%。</p>
 	<p>尽管这项工作才刚刚开始，但WordPress网站占全球网站总数的32.5％，因此这是非常有意义的一步。与此同时，我们发现超过80%的WordPress登录页面请求都是凭证填充攻击，这说明了这些攻击是多么普遍。</p>

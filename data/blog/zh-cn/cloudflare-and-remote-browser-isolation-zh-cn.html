@@ -29,7 +29,7 @@
 	<p>由于其天生具有优势，大多数浏览器隔离解决方案（包括 S2 Systems）都利用基于云的远程隔离。正确实施后，远程浏览器隔离可以保护组织免受浏览器利用、插件、零日漏洞、恶意软件和嵌入在 Web 内容中的其他攻击。</p>
 	<h3 id="-rbi-">远程浏览器隔离（RBI）如何工作？</h3>
 	<p>在典型的基于云型 RBI 系统中（下方蓝色虚线框 ❶），远程浏览器个体 ❷ 作为一次性的容器化实例在云端运行，通常是每个用户一个实例。远程浏览器使用特定协议和数据格式 ❸ 将网页的渲染后内容发送到用户端点设备 ❹。用户操作（例如击键、鼠标和滚动命令）通过安全的加密通道发送回隔离服务，在那里由远程浏览器加以处理；对远程浏览器网页的所有更改则发送回端点设备。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/02/image3-2.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/02/image3-2.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>实际上，端点设备正在“遥控”云浏览器。一些 RBI 系统使用安装在本地端点上的专有客户端，其他系统则利用端点上现有的 HTML5 兼容浏览器，被视为“无客户端”。</p>
 	<p>远程浏览器中发生的数据泄露与本地端点和企业网络隔离。每个远程浏览器实例视为已受损来对待，并在每次会话后终止。新的浏览器会话以全新的实例启动。显然，RBI 服务必须防止浏览器违规，从浏览器容器外部泄漏到服务本身。大多数 RBI 系统提供远程文件查看器，免除了下载文件的必要，而且还有检查文件没有恶意软件后再允许下载的功能。</p>
 	<p>上述架构有一个关键组成部分，即云 RBI 服务采用的特定远程处理技术。远程处理技术对 RBI 服务的运营成本和可扩展性、网站保真度和兼容性、带宽要求、端点硬件/软件要求，乃至用户体验都具有重要影响。远程处理技术还决定了 RBI 系统提供的安全性的有效等级。</p>
@@ -47,21 +47,21 @@
 		<li>安全性。底层技术（HTML、CSS、Web 字体等）是被黑客用来破坏端点的攻击媒介。试图去除恶意内容或代码就像给蚊子洗澡：您可以尽力清洁它们，但它们仍然是危险和恶意材料的固有载体。即便是借助 RBI 系统，也无法提前识别利用这些技术的所有手段。</li>
 		<li>网站保真度。不可避免地，尝试移除恶意活动代码并重建 HTML、CSS 和现代网站的其他方面会导致页面遭到破坏，无法正常渲染或根本不能渲染。今天可行的网站明天就可能不行，因为网站发布者的日常变更可能会破坏 DOM 重建功能。结果就是像打鼹鼠游戏里那样无休止地遗留需要大量资源的问题。某些 RBI 解决方案难以支持常见的企业级服务，例如 Google G Suite 或 Microsoft Office 365。即使被认为是恶意软件的载体，Web 电子邮件仍然是数据泄露的一大来源。</li>
 	</ul>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/02/image2-4.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/02/image2-4.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>客户仍然要做出权衡，要么选择用户体验差、运营成本高的安全解决方案，要么选择速度快、安全性低很多、还破坏网站的解决方案。这样的权衡促使一些 RBI 提供商在其产品中同时实施两种远程处理技术。然而，这是让客户饮鸩止渴，不去解决基本的问题。</p>
 	<p>考虑到当今 RBI 系统的重要权衡，当前客户的一项常见优化是仅向组织里最易受攻击的用户（例如风险较高的高管、财务、业务开发或 HR 员工）部署远程浏览功能。如同给教室里的一半学生接种疫苗，这会导致一种错误的安全感，对保护大型组织来说无济于事。</p>
 	<p>遗憾的是，当前远程浏览器隔离系统创造的最大“间隙”是底层隔离概念的潜力与当前可用 RBI 系统的实施现实之间的空白。</p>
 	<h3 id="s2-systems-">S2 Systems 远程浏览器隔离</h3>
 	<p>S2 Systems 远程浏览器隔离采用一种截然不同的方法，它基于称为网络矢量渲染（NVR）的 S2 专利技术。</p>
 	<p>S2 远程浏览器基于开源的 Chromium 引擎，Google Chrome 同样也基于这个引擎。除了为市场份额约占 70％[8] 的 Google Chrome 提供支持之外，Chromium 还为其他 21 种 Web 浏览器（包括新的 Microsoft Edge 浏览器）提供支持。[9]因此，对 Chromium 引擎的大量持续投资确保了最高水平的网站支持、兼容性和持续不断的改进。</p>
-	<p>Chromium 浏览器的一个关键架构特征是使用 <a href="https://skia.org/" target="_blank">Skia</a>图形库。Skia 是使用广泛的跨平台图形引擎，用于 Android、Google Chrome、Chrome OS、Mozilla Firefox、Firefox OS、FitbitOS、Flutter、<a href="https://electronjs.org/" target="_blank">Electron</a>应用程序框架和许多其他产品。与Chromium 一样，Skia 的普及性确保了持续拥有广泛的硬件和平台。</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/02/image1-1-1.png" class="kg-image">
+	<p>Chromium 浏览器的一个关键架构特征是使用 <a href="https://skia.org/?ref=blog.cloudflare.com" target="_blank">Skia</a>图形库。Skia 是使用广泛的跨平台图形引擎，用于 Android、Google Chrome、Chrome OS、Mozilla Firefox、Firefox OS、FitbitOS、Flutter、<a href="https://electronjs.org/?ref=blog.cloudflare.com" target="_blank">Electron</a>应用程序框架和许多其他产品。与Chromium 一样，Skia 的普及性确保了持续拥有广泛的硬件和平台。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/02/image1-1-1.png" class="kg-image" alt="" loading="lazy">
 		<figcaption><em>Skia代码片段</em></figcaption>
 	</figure>
 	<p>Chromium 浏览器窗口中可见的所有内容均通过 Skia 渲染层进行渲染。这包括应用程序窗口 UI（如菜单），但更重要的是，网页窗口的整个内容均通过 Skia 渲染。Chromium 合成、布局和渲染极其复杂，具有针对不同内容类型、设备环境等进行了优化的多个并行路径。下图为说明 S2 的工作原理而进行简化（向 Chromium 专家致歉）：</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/02/image4-2.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/02/image4-2.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>S2 Systems NVR 技术截获远程Chromium 浏览器的Skia 绘制命令 ❶，对其进行令牌化和压缩，然后加密并通过网络 ❷ 传输到在用户端点桌面或移动设备本地运行的任何 HTML5 兼容 Web 浏览器 ❸（Chrome、Firefox 和 Safari 等）。NVR 捕获的 Skia API 命令是预先光栅化的，这意味着它们非常紧凑。</p>
-	<p>首次使用时，S2 RBI 服务将 NVR <a href="https://webassembly.org/" target="_blank">WebAssembly</a>（Wasm）库 ❹ 透明地推送到端点设备上的本地 HTML5 Web 浏览器，并在那里缓存以备日后使用。NVR Wasm 代码包含一个嵌入式 Skia 库和必要的代码，用于解压缩、解密和“重演”从远程 RBI 服务器到本地浏览器窗口的 Skia绘制命令。WebAssembly 可以“<em>通过利用广泛平台上可用的通用硬件功能来以本机速度执行</em>”[10]，从而达到接近于本机的绘图性能。</p>
+	<p>首次使用时，S2 RBI 服务将 NVR <a href="https://webassembly.org/?ref=blog.cloudflare.com" target="_blank">WebAssembly</a>（Wasm）库 ❹ 透明地推送到端点设备上的本地 HTML5 Web 浏览器，并在那里缓存以备日后使用。NVR Wasm 代码包含一个嵌入式 Skia 库和必要的代码，用于解压缩、解密和“重演”从远程 RBI 服务器到本地浏览器窗口的 Skia绘制命令。WebAssembly 可以“<em>通过利用广泛平台上可用的通用硬件功能来以本机速度执行</em>”[10]，从而达到接近于本机的绘图性能。</p>
 	<p>S2 远程浏览器隔离服务使用云端基于 Chromium 的无头浏览器，透明地截获绘图层输出，通过网络安全、高效地传输绘图命令，然后在本地 HTML5 浏览器的窗口中重新绘制它们。这种架构具有诸多技术优势：</p>
 	<p>(1) 安全性：底层数据传输不是现有的攻击媒介，客户也不会被迫在安全性和性能之间进行取舍。</p>
 	<p>(2) 网站兼容性：没有网站兼容性问题，也没有追逐不断发展的Web 技术或新生漏洞的麻烦。</p>
@@ -78,11 +78,11 @@
 	<p>与 Cloudflare for Teams 套件集成后，远程浏览器隔离可以保护组织免受浏览器利用、零日漏洞、恶意软件和嵌入在 Web 内容中的其他攻击。企业将能够保护所有员工的浏览器，而不必在安全性和用户体验之间权衡取舍。此服务可以让 IT 控制由浏览器传送的企业数据并实现合规性监督。我们产品和服务之间的无缝集成将使用户和企业无忧畅游 Web 世界。</p>
 	<p>Cloudflare 的使命是帮助构建更美好的互联网。这意味着在用户和企业在互联网上工作和娱乐时为其保驾护航；也就是说，让互联网访问变得快速、可靠和透明。重新构想和现代化 Web 浏览的工作方式是帮助构建更美好互联网的重要组成部分。</p>
 	<hr>
-	<p>[1]<a href="https://time.com/21039/tim-berners-lee-web-proposal-at-25/" target="_blank"> </a><a href="https://www.w3.org/History/1989/proposal.html" target="_blank">https://www.w3.org/History/1989/proposal.html</a></p>
-	<p>[2]“<a href="https://www.internetworldstats.com/stats.htm" target="_blank">互联网世界统计数据</a>”，<a href="https://www.internetworldstats.com/" target="_blank">https://www.internetworldstats.com/</a>，2019 年 12 月 21 日检索。</p>
-	<p>[6] “<a href="https://www.webroot.com/us/en/about/press-room/releases/2019-webroot-threat-report" target="_blank">2019 Webroot 威胁报告：四成恶意 URL 见于善意网域</a>”，2019 年 2 月 28 日</p>
+	<p>[1]<a href="https://time.com/21039/tim-berners-lee-web-proposal-at-25/?ref=blog.cloudflare.com" target="_blank"> </a><a href="https://www.w3.org/History/1989/proposal.html?ref=blog.cloudflare.com" target="_blank">https://www.w3.org/History/1989/proposal.html</a></p>
+	<p>[2]“<a href="https://www.internetworldstats.com/stats.htm?ref=blog.cloudflare.com" target="_blank">互联网世界统计数据</a>”，<a href="https://www.internetworldstats.com/?ref=blog.cloudflare.com" target="_blank">https://www.internetworldstats.com/</a>，2019 年 12 月 21 日检索。</p>
+	<p>[6] “<a href="https://www.webroot.com/us/en/about/press-room/releases/2019-webroot-threat-report?ref=blog.cloudflare.com" target="_blank">2019 Webroot 威胁报告：四成恶意 URL 见于善意网域</a>”，2019 年 2 月 28 日</p>
 	<p>[7] “Kleiner Perkins 2018 年互联网趋势”，Mary Meeker。</p>
-	<p>[8]<a href="https://www.statista.com/statistics/544400/market-share-of-internet-browsers-desktop/" target="_blank">https://www.statista.com/statistics/544400/market-share-of-internet-browsers-desktop/</a>，2019 年 12 月 21 日检索</p>
-	<p>[9]<a href="https://en.wikipedia.org/wiki/Chromium_(web_browser)" target="_blank">https://en.wikipedia.org/wiki/Chromium_(web_browser)</a>，2019 年 12 月 29 日检索</p>
-	<p>[10]<a href="https://webassembly.org/" target="_blank"> https://webassembly.org/</a>，2019 年 12 月 30 日检索</p>
+	<p>[8]<a href="https://www.statista.com/statistics/544400/market-share-of-internet-browsers-desktop/?ref=blog.cloudflare.com" target="_blank">https://www.statista.com/statistics/544400/market-share-of-internet-browsers-desktop/</a>，2019 年 12 月 21 日检索</p>
+	<p>[9]<a href="https://en.wikipedia.org/wiki/Chromium_(web_browser)?ref=blog.cloudflare.com" target="_blank">https://en.wikipedia.org/wiki/Chromium_(web_browser)</a>，2019 年 12 月 29 日检索</p>
+	<p>[10]<a href="https://webassembly.org/?ref=blog.cloudflare.com" target="_blank"> https://webassembly.org/</a>，2019 年 12 月 30 日检索</p>
 </div>
