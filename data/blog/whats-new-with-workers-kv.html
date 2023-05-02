@@ -1,5 +1,5 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/11/workers-KV-dark-back@2x.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/11/workers-KV-dark-back@2x.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>The Storage team here at Cloudflare shipped Workers KV, our global, low-latency, key-value store, <a href="https://blog.cloudflare.com/workers-kv-is-ga/">earlier this year</a>. As people have started using it, we’ve gotten some feature requests, and have shipped some new features in response! In this post, we’ll talk about some of these use cases and how these new features enable them.</p>
 	<h2 id="new-kv-apis">New KV APIs</h2>
 	<p>We’ve shipped some new APIs, both via <code>api.cloudflare.com</code>, as well as inside of a Worker. The first one provides the ability to upload and delete more than one key/value pair at once. Given that Workers KV is great for read-heavy, write-light workloads, a common pattern when getting started with KV is to write a bunch of data via the API, and then read that data from within a Worker. You can now do these bulk uploads without needing a separate API call for every key/value pair. This feature is available via <code>api.cloudflare.com</code>, but is not yet available from within a Worker.</p>
@@ -72,15 +72,15 @@ const next_value = await NAMESPACE.list({"cursor": cursor})</code></pre>
 	<p>Additionally, we had a two megabyte maximum size for values. We’ve increased the limit for values to ten megabytes. With the release of Workers Sites, folks are keeping things like images inside of Workers KV, and two megabytes felt a bit cramped. While Workers KV is not a great fit for truly large values, ten megabytes gives you the ability to store larger images easily. As an example, a 4k monitor has a native resolution of 4096 x 2160 pixels. If we had an image at this resolution as a lossless PNG, for example, it would be just over five megabytes in size.</p>
 	<h2 id="kv-browser">KV browser</h2>
 	<p>Finally, you may have noticed that there’s now a KV browser in the dashboard! Needing to type out a cURL command just to see what’s in your namespace was a real pain, and so we’ve given you the ability to check out the contents of your namespaces right on the web. When you look at a namespace, you’ll also see a table of keys and values:</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/11/image-1.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/11/image-1.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>The browser has grown with a bunch of useful features since it initially shipped. You can not only see your keys and values, but also add new ones: </p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/11/image-2.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/11/image-2.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>edit existing ones:</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/11/image-3.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/11/image-3.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>...and even upload files!</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/11/image-4.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/11/image-4.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>You can also download them:</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/11/image-5.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/11/image-5.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>As we ship new features in Workers KV, we’ll be expanding the browser to include them too.</p>
 	<h2 id="wrangler-integration">Wrangler integration</h2>
 	<p>The Workers Developer Experience team has also been shipping some features related to Workers KV. Specifically, you can fully interact with your namespaces and the key/value pairs inside of them.</p>
