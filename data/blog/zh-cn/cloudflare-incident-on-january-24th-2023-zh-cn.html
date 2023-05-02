@@ -1,7 +1,7 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/Disruption.png" class="kg-image" alt="Cloudflare incident on January 24, 2023"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/Disruption.png" class="kg-image" alt="Cloudflare incident on January 24, 2023" loading="lazy"></figure>
 	<p>2023 年 1 月 24 日，由于负责管理服务令牌的发布代码出现错误，Cloudflare 的若干项服务在 121 分钟内无法使用。该事件致使 Cloudflare 的一系列产品性能下降，包括我们的 Workers 平台、Zero Trust 解决方案和内容分发网络 (CDN) 中的控制平面功能方面。</p>
-	<p>Cloudflare 提供了一个<a href="https://developers.cloudflare.com/cloudflare-one/identity/service-tokens/" target="_blank">服务令牌功能</a>，允许自动化服务对其他服务进行认证。客户可以使用服务令牌来确保在数据中心运行的应用程序和公共云提供商的资源之间的互动，例如，作为发布的一部分，我们打算引入一个功能，即向管理员显示令牌最后被使用的时间，使用户能够安全地清理未使用的令牌。这一变化无意中覆盖了关于服务令牌的其他元数据，使受影响账户的令牌在事件发生期间失效。</p>
+	<p>Cloudflare 提供了一个<a href="https://developers.cloudflare.com/cloudflare-one/identity/service-tokens/?ref=blog.cloudflare.com" target="_blank">服务令牌功能</a>，允许自动化服务对其他服务进行认证。客户可以使用服务令牌来确保在数据中心运行的应用程序和公共云提供商的资源之间的互动，例如，作为发布的一部分，我们打算引入一个功能，即向管理员显示令牌最后被使用的时间，使用户能够安全地清理未使用的令牌。这一变化无意中覆盖了关于服务令牌的其他元数据，使受影响账户的令牌在事件发生期间失效。</p>
 	<p>本次发布之所以影响其他服务，是因为 Cloudflare 在 Cloudflare 上运行。服务令牌影响账户的认证能力，其中两个受影响的账户为多个 Cloudflare 服务提供支持。当这些账户的服务令牌被覆盖后，在这些账户上运行的服务开始出现请求失败和其他意外错误。</p>
 	<p>虽然有限的细分客户和最终用户直接受到了本次事件的影响，并且其他客户服务可能出现了下降，但对 Cloudflare 的网络和服务的总体影响并不严重。尽管如此，我们深知这对于受影响的客户来说是很不愉快的体验。我们正在记录出错的原因以便您了解为什么会发生这种情况以及我们为防止这种情况再次发生所采取的措施。</p>
 	<h3 id="-">什么是服务令牌？</h3>
@@ -9,19 +9,19 @@
 	<p>然而，个人并不是唯一需要对服务进行身份验证的用户。应用程序经常需要与其他应用程序交换信息。例如，设想您创建了一个应用程序，向用户展示他们即将到来的旅游计划的信息。</p>
 	<p>航空公司在自己的系统中存有关于航班及其飞行时长的详细信息。他们无意在互联网上公开每个人的详细旅游信息，也无意邀请您的应用程序加入他们的专用网络。同样，酒店希望确保他们只向有效的、经批准的第三方服务发送有关房间预订的详细信息。</p>
 	<p>您的应用程序需要一个可信任的方式来验证这些外部系统。服务令牌可通过作为您的服务的一种用户名和密码来解决这个问题。像用户名和密码一样，服务令牌分为两部分：一个客户端ID和一个客户端密钥。ID和密钥都必须和身份验证请求一起发送。令牌也被分配了一个期限，过了这个期限就会失效且必须对令牌进行轮换。您可以授予您的应用程序一个服务令牌，如果您需要的上游系统对其进行了验证，您的服务即可获取航空公司和酒店信息，并在联合报告中呈现给终端用户。</p>
-	<p>当管理员创建 Cloudflare 服务令牌时，我们会生成客户端 ID 和客户端密钥对。然后，客户可以配置他们的请求服务，当他们需要访问受保护的资源时，将 ID 和密钥对作为 HTTP 标头发送。请求服务可以在任何环境中运行，包括在 Cloudflare 的网络内部以 <a href="https://workers.cloudflare.com/" target="_blank">Workers</a> 形式或在一个单独的位置，如公共云提供商。客户需要在 Cloudflare 的反向代理后面部署相应的受保护资源。我们的网络会检查每个与已配置服务绑定的请求的 HTTP 标头。如果存在，Cloudflare 会验证其真实性，并阻止该请求或允许其继续。我们还会记录身份验证事件。</p>
+	<p>当管理员创建 Cloudflare 服务令牌时，我们会生成客户端 ID 和客户端密钥对。然后，客户可以配置他们的请求服务，当他们需要访问受保护的资源时，将 ID 和密钥对作为 HTTP 标头发送。请求服务可以在任何环境中运行，包括在 Cloudflare 的网络内部以 <a href="https://workers.cloudflare.com/?ref=blog.cloudflare.com" target="_blank">Workers</a> 形式或在一个单独的位置，如公共云提供商。客户需要在 Cloudflare 的反向代理后面部署相应的受保护资源。我们的网络会检查每个与已配置服务绑定的请求的 HTTP 标头。如果存在，Cloudflare 会验证其真实性，并阻止该请求或允许其继续。我们还会记录身份验证事件。</p>
 	<h3 id="--1">事件时间线</h3>
 	<p><em>所有时间均为格林威治时间 (UTC)</em></p>
 	<p>在 2023 年 1 月 24 日下午 4 点 55 分，Access 工程团队启动了发布工作，无意中开始覆盖服务令牌元数据，从而导致了本次事件的发生。</p>
 	<p>在 2023 年 1 月 24 日下午 5 点 05 分，Access 工程团队的一名成员注意到了一个不相关的问题，并回滚了该软件版本，停止了对服务令牌元数据的进一步覆盖。</p>
 	<p>在服务令牌本身被更新之前，服务令牌的值不会在 Cloudflare 的网络中被更新（更多细节见下文）。这对于元数据被覆盖的服务令牌造成了交错影响。</p>
 	<p>2023 年 1 月 24 日下午 5 点 50 分：Cloudflare WARP 的第一个无效服务令牌被同步到我们的全局网络。<strong>开始对 WARP 和 Zero Trust 用户产生影响。</strong></p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/01/Group-1.png" class="kg-image">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2023/01/Group-1.png" class="kg-image" alt="" loading="lazy">
 		<figcaption>WARP 设备态势上传下降到零，引发内部警报</figcaption>
 	</figure>
 	<p>在 2023 年 1 月 24 日下午 6 点 12 分，由于 WARP 设备态势成功上传的大幅下降，宣布发生事件。</p>
 	<p>2023 年 1 月 24 日下午 6 点 19 分：Cloudflare API 的第一个无效服务令牌被同步到我们的全局网络。<strong>开始对 Cache Purge、Cache Reserve、Images 和 R2 产生影响。</strong>对这些产品触发了警报，确定了事件的更大范围。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/2-4.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/2-4.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>在 2023 年 1 月 24 日下午 6 点 21 分，于初步调查中发现了被覆盖的服务令牌。</p>
 	<p>在 2023 年 1 月 24 日下午 6 点 28 分，本次事件等级被提升至涵盖所有受影响的产品。</p>
 	<p>在 2023 年 1 月 24 日下午 6 点 51 分，确定并实施了一个初步解决方案，将 Cloudflare WARP 帐户的服务令牌恢复至其原始值，对 WARP 和 Zero Trust 产生影响。<strong>对 WARP 和 Zero Trust 的影响结束。</strong></p>
@@ -57,20 +57,20 @@
 	<h3 id="-cloudflare-">这为什么会影响到其他 Cloudflare 服务？</h3>
 	<p>服务令牌影响账户的认证能力。其中两个受影响的账户为多个 Cloudflare 服务提供支持。当这些账户的服务令牌被覆盖后，在这些账户上运行的服务开始出现请求失败和其他意外错误。</p>
 	<h3 id="cloudflare-warp-">Cloudflare WARP 注册</h3>
-	<p>Cloudflare 提供了一个移动和桌面前向代理，<a href="https://1.1.1.1/" target="_blank">Cloudflare WARP</a>（我们的“1.1.1.1”应用程序），任何用户都可以在设备上安装，以提高其互联网流量的隐私性。任何个人无需 Cloudflare 账户即可安装这项服务，我们不对可将活动映射到用户的日志进行保留。</p>
+	<p>Cloudflare 提供了一个移动和桌面前向代理，<a href="https://1.1.1.1/?ref=blog.cloudflare.com" target="_blank">Cloudflare WARP</a>（我们的“1.1.1.1”应用程序），任何用户都可以在设备上安装，以提高其互联网流量的隐私性。任何个人无需 Cloudflare 账户即可安装这项服务，我们不对可将活动映射到用户的日志进行保留。</p>
 	<p>当用户使用 WARP 进行连接时，Cloudflare 通过依靠用于接收和验证设备上的密钥的服务来验证设备的注册情况。反过来，该服务会与另一个系统进行通信，以告知我们的网络为新注册的设备提供对网络的访问</p>
 	<p>在这一事件中，注册服务无法再与我们网络中用于验证设备的系统进行通信。因此，用户无法再注册新设备和/或在新设备上安装应用程序，而且可能遇到了关于升级到新版本应用程序的问题（这也会触发重新注册）。</p>
 	<h3 id="cloudflare-zero-trust-">Cloudflare Zero Trust 设备态势和重新验证政策</h3>
 	<p>Cloudflare 提供了一个全面的 Zero Trust 解决方案，客户可以在已添加或尚未添加设备代理的情况下进行部署。有些使用案例只有在设备上使用 Cloudflare 代理时才可用。该代理是同一个 Cloudflare WARP 解决方案的企业版本，在任何需要发送或接收设备状态的时候都出现了类似的功能降级。这影响了 Cloudflare Zero Trust 的三个使用案例。</p>
 	<p>首先，与消费者产品类似，新设备无法注册，现有设备无法撤销。管理员也无法修改已注册设备的设置。在所有情况下，错误都会呈现给用户。</p>
 	<p>其次，许多使用 Cloudflare 的 Zero Trust 解决方案替换现有专用网络的客户可能会添加一些规则，通过使用会话持续时间策略不断验证用户身份。这些规则的目的是强制用户重新验证，以防止过时的会话对内部系统的持续访问。设备上的代理会根据来自 Cloudflare 控制平面的信号来提示用户重新验证。在事件发生期间，信号没有被发送，用户无法成功进行重新验证。</p>
-	<p>最后，依赖设备态势规则的客户也受到了影响。<a href="https://developers.cloudflare.com/cloudflare-one/identity/devices/" target="_blank">设备态势规则</a>允许使用 Access 或 Gateway 策略的客户依靠 WARP 代理来持续遵循“设备符合企业合规规则”。</p>
+	<p>最后，依赖设备态势规则的客户也受到了影响。<a href="https://developers.cloudflare.com/cloudflare-one/identity/devices/?ref=blog.cloudflare.com" target="_blank">设备态势规则</a>允许使用 Access 或 Gateway 策略的客户依靠 WARP 代理来持续遵循“设备符合企业合规规则”。</p>
 	<p>代理将这些信号传达给负责维护设备状态的 Cloudflare 服务。Cloudflare 的 Zero Trust 访问控制产品使用服务令牌来接收这一信号，并与其他规则共同对其进行评估，以确定用户是否可以访问某一特定资源。在本次事件中，这些规则默认为阻止行动，这意味着经这些政策修改后的流量对用户来说是打了折扣的。在某些情况下，这意味着来自一个设备的所有互联网流量被完全阻断，使用户无法访问任何信息。</p>
 	<p>Cloudflare Gateway 每5分钟为用户缓存一次设备态势状态，以应用 Gateway 策略。设备态势状态被缓存，因此 Gateway 可以应用策略，而不必在每次请求时都验证设备状态。根据所匹配的网关策略类型，用户将面临两种不同的结果。如果与网络策略相匹配，用户将面临连接中断的情况，而对于 HTTP 策略，会出现一个 5XX 错误页面。在事件得到解决之前，峰值超过了 5 万个 5XX 错误/分钟，并且有超过 1050 万个态势读取错误。</p>
 	<p><strong>网关 5XX 错误/分钟</strong></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/3-4.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/3-4.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p><strong>网关设备态势错误总数</strong></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/4-4.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/4-4.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="cloudflare-r2-storage-cache-reserve">Cloudflare R2 Storage 和 Cache Reserve</h3>
 	<p><a href="https://blog.cloudflare.com/zh-cn/r2-ga-zh-cn/">Cloudflare R2 Storage</a> 允许开发人员存储大量的非结构化数据，而无需支付与典型云存储服务相关的昂贵的出口带宽费用。</p>
 	<p>在本次事件中，R2 服务无法向 Cloudflare 基础结构的其他部分提出出站 API 请求。因此，R2 用户在向 R2 提出请求时会面临较高的请求失败率。</p>

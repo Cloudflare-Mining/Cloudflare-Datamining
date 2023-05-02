@@ -1,11 +1,11 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/workers-versions-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/workers-versions-1.png" class="kg-image"></figure>
 	<p>Cloudflare Workers is our serverless platform that runs your code in 250+ cities worldwide.</p>
 	<p>On the Workers team, we have a policy:</p>
 	<blockquote><em>A change to the Workers Runtime must never break an application that is live in production.</em></blockquote>
 	<p>It seems obvious enough, but this policy has deep consequences. What if our API has a bug, and some deployed Workers accidentally depend on that bug? Then, seemingly, we can't fix the bug! That sounds… bad?</p>
 	<p>This post will dig deeper into our policy, explaining why Workers is different from traditional server stacks in this respect, and how we're now making backwards-incompatible changes possible by introducing "compatibility dates".</p>
-	<p><strong>TL;DR:</strong> Developers may now opt into backwards-incompatible fixes by setting a <a href="https://developers.cloudflare.com/workers/platform/compatibility-dates?ref=blog.cloudflare.com" target="_blank">compatibility date</a>.</p>
+	<p><strong>TL;DR:</strong> Developers may now opt into backwards-incompatible fixes by setting a <a href="https://developers.cloudflare.com/workers/platform/compatibility-dates" target="_blank">compatibility date</a>.</p>
 	<h2 id="serverless-demands-strict-compatibility">Serverless demands strict compatibility</h2>
 	<p>Workers is a serverless platform, which means we maintain the server stack for you. You do not have to manage the runtime version, you only manage your own code. This means that when we update the Workers Runtime, we update it for everyone. We do this at least once a week, sometimes more.</p>
 	<p>This means that if a runtime upgrade breaks someone's application, it's really bad. The developer didn't make any change, so won't be watching for problems. They may be asleep, or on vacation. If we want people to trust serverless, we can't let this happen.</p>
@@ -31,7 +31,7 @@
 	<pre><code class="language-toml"># wrangler.toml
 compatibility_date = "2021-09-20"</code></pre>
 	<p>We can now introduce breaking changes. When we do, the Workers Runtime must implement both the old and the new behavior, and chooses behavior based on the compatibility date. Each time we introduce a new change, we choose a date in the future when that change will become the default. Workers with a later compatibility date will see the change; Workers with an older compatibility date will retain the old behavior.</p>
-	<p><a href="https://developers.cloudflare.com/workers/platform/compatibility-dates?ref=blog.cloudflare.com" target="_blank">A page in our documentation</a> lists the history of breaking changes -- and only breaking changes. When you wish to update your Worker's compatibility date, you can refer to this page to quickly determine what might be affected, so that you can test for problems.</p>
+	<p><a href="https://developers.cloudflare.com/workers/platform/compatibility-dates" target="_blank">A page in our documentation</a> lists the history of breaking changes -- and only breaking changes. When you wish to update your Worker's compatibility date, you can refer to this page to quickly determine what might be affected, so that you can test for problems.</p>
 	<p>We will reserve the compatibility system strictly for changes which cannot be made without causing a breakage. We don't want to force people to update their compatibility date to get regular updates, including new features, non-breaking bug fixes, and so on.</p>
 	<p>If you'd prefer never to update your compatibility date, that's OK! Old compatibility dates are intended to be supported forever. However, if you are frequently updating your code, you should update your compatibility date along with it.</p>
 	<h2 id="acknowledgement">Acknowledgement</h2>

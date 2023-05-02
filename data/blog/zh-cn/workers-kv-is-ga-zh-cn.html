@@ -1,10 +1,10 @@
 <div class="post-content lh-copy gray1">
 	<p>今天，我们很高兴地宣布Workers KV即将普遍可用并为生产使用做好了准备！</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/Workers-KV-GA@2x.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/Workers-KV-GA@2x.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h2 id="-workers-kv-">什么是Workers KV？</h2>
-	<p><a href="https://www.cloudflare.com/products/workers-kv/" target="_blank">Workers KV</a>是一个高度分布、终极一致的键值存储数据库，跨越Cloudflare的全球边缘网络。它允许您存储数十亿个键值对，并且您在世界各地都能以极低的延迟读取它们。现在，您可以构建整个拥有CDN静态缓存性能的应用程序。</p>
+	<p><a href="https://www.cloudflare.com/products/workers-kv/?ref=blog.cloudflare.com" target="_blank">Workers KV</a>是一个高度分布、终极一致的键值存储数据库，跨越Cloudflare的全球边缘网络。它允许您存储数十亿个键值对，并且您在世界各地都能以极低的延迟读取它们。现在，您可以构建整个拥有CDN静态缓存性能的应用程序。</p>
 	<h2 id="-">我们为什么要构建它？</h2>
-	<p><a href="https://www.cloudflare.com/products/cloudflare-workers/" target="_blank">Workers</a>是一个平台，允许您在Cloudflare全球175+个（直至2019年9月已经扩展为193个）数据中心的边缘运行JavaScript。只需几行代码，您就可以路由HTTP请求，更改响应，甚至可以在没有原始服务器的情况下创建新的响应。</p>
+	<p><a href="https://www.cloudflare.com/products/cloudflare-workers/?ref=blog.cloudflare.com" target="_blank">Workers</a>是一个平台，允许您在Cloudflare全球175+个（直至2019年9月已经扩展为193个）数据中心的边缘运行JavaScript。只需几行代码，您就可以路由HTTP请求，更改响应，甚至可以在没有原始服务器的情况下创建新的响应。</p>
 	<pre><code class="language-javascript">// A Worker that handles a single redirect,
 // such a humble beginning...
 addEventListener("fetch", event =&gt; {
@@ -50,14 +50,14 @@ async function handleBillionsOfRedirects(request) {
 </code></pre>
 	<p>只需对我们之前的示例进行一些更改，我们就可以从一个重定向扩展到数十亿个——这就是您可以使用Workers KV构建的内容。</p>
 	<h2 id="--1">它是如何工作的？</h2>
-	<p>分布式数据存储通常使用<a href="https://en.wikipedia.org/wiki/CAP_theorem" target="_blank">CAP定理</a>建模，该定理指出分布式系统只能在以下<strong>3个指标的两两组合</strong>中进行选取：</p>
+	<p>分布式数据存储通常使用<a href="https://en.wikipedia.org/wiki/CAP_theorem?ref=blog.cloudflare.com" target="_blank">CAP定理</a>建模，该定理指出分布式系统只能在以下<strong>3个指标的两两组合</strong>中进行选取：</p>
 	<ul>
 		<li><strong>C</strong>onsistency（一致性）——我的数据是否在各地都一样？</li>
 		<li><strong>A</strong>vailability（可用性）——我是否可以随时访问我的数据？</li>
 		<li><strong>P</strong>artition tolerance（分区容错）——我的数据对区域传输中断有弹性吗？</li>
 	</ul>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/workers-kv-venn-diagram@2x-1.png" class="kg-image"></figure>
-	<p>Workers KV选择满足一致性与分区容错。这种组合被称为<a href="https://en.wikipedia.org/wiki/Eventual_consistency" target="_blank">终极一致性</a>，它为Workers KV提供了两个独特的竞争优势：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/workers-kv-venn-diagram@2x-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>Workers KV选择满足一致性与分区容错。这种组合被称为<a href="https://en.wikipedia.org/wiki/Eventual_consistency?ref=blog.cloudflare.com" target="_blank">终极一致性</a>，它为Workers KV提供了两个独特的竞争优势：</p>
 	<ul>
 		<li>读取速度非常快（中位数为12毫秒），因为它是由我们的缓存技术支持的。</li>
 		<li>数据在我们175+（现在是193个）边缘数据中心可用，并且对区域中断具有容错性。</li>
@@ -90,7 +90,7 @@ async function handleBillionsOfRedirects(request) {
 	<h2 id="--4">测试版之后更新了什么新的内容？</h2>
 	<p>到目前为止，我们最常见的需求是使向Workers KV让写入数据变得更容易。这就是为什么我们发布了三种新方法来让这种体验变得更好：</p>
 	<h3 id="1-">1.批量写入</h3>
-	<p>当您想将现有数据导入Workers KV时，您不会想要为每个键值对发送HTTP请求。这就是为什么我们向Cloudflare API添加了一个<a href="https://api.cloudflare.com/#workers-kv-namespace-write-multiple-key-value-pairs" target="_blank">批量端点</a>。现在，您可以在单个PUT请求中上传最多10000对键值（最多100MB的数据）。</p>
+	<p>当您想将现有数据导入Workers KV时，您不会想要为每个键值对发送HTTP请求。这就是为什么我们向Cloudflare API添加了一个<a href="https://api.cloudflare.com/?ref=blog.cloudflare.com#workers-kv-namespace-write-multiple-key-value-pairs" target="_blank">批量端点</a>。现在，您可以在单个PUT请求中上传最多10000对键值（最多100MB的数据）。</p>
 	<pre><code class="language-bash">curl "https://api.cloudflare.com/client/v4/accounts/ \
      $ACCOUNT_ID/storage/kv/namespaces/$NAMESPACE_ID/bulk" \
   -X PUT \
@@ -102,7 +102,7 @@ async function handleBillionsOfRedirects(request) {
     {"key": "approved_by", value: "steve"}
   ]'</code></pre>
 	<p>让我们来看一个用例：您希望将网站翻译任务离线到Workers上进行。由于您经常需要读取翻译键，并且只是偶尔更新它们，因此该应用程序与Workers KV的终极一致性模型可以很好地配合。</p>
-	<p>在本例中，我们看到<a href="https://crowdin.com/" target="_blank">Crowdin</a>，这是一个流行的管理翻译数据的平台。这个Worker模型可以对一个/translate端点做出响应，下载你所有的翻译键，并批量写入Workers KV，以便您以后可以在我们的边缘网络读取它：</p>
+	<p>在本例中，我们看到<a href="https://crowdin.com/?ref=blog.cloudflare.com" target="_blank">Crowdin</a>，这是一个流行的管理翻译数据的平台。这个Worker模型可以对一个/translate端点做出响应，下载你所有的翻译键，并批量写入Workers KV，以便您以后可以在我们的边缘网络读取它：</p>
 	<pre><code class="language-js">addEventListener("fetch", event =&gt; {
   if (event.request.url.pathname === "/translate") {
     event.respondWith(uploadTranslations())
@@ -201,7 +201,7 @@ async function handleRequest(request) {
 </code></pre>
 	<h3 id="3-">3.更大的数值</h3>
 	<p>我们已经将值的大小限制从64 kB增加到2MB。如果您需要将基于缓冲区的数据或文件数据存储在Workers KV中，这是非常有用的。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/workers-kc-file-size-update@2x.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/workers-kc-file-size-update@2x.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>考虑一下这个场景：您想让您的用户上传他们最喜欢的GIF到他们的个人资料中，而不需要将这些GIF作为二进制文件存储在您的数据库中，或者需要您管理<em>另一个</em>云存储器。</p>
 	<p>Workers KV非常适合这个用例！您可以为用户的GIF创建Workers KV命名空间，无论客户身在何处，都可以快速，可靠地使用它。</p>
 	<p>在这个例子中，用户上传一个他们最喜欢的GIF的链接，然后Worker再将链接下载下来并储存到Workers KV。</p>
@@ -257,7 +257,7 @@ async function getGif(username) {
 		<li>每个键每秒无限次读取</li>
 	</ul>
 	<h2 id="--7">现在就来试试吧！</h2>
-	<p>Workers KV现在对所有客户开放，您现在可以在Cloudflare控制面板中Workers选项卡下启用<a href="https://www.cloudflare.com/products/workers-kv/" target="_blank">Workers KV</a>。您还可以查看我们的更新<a href="https://developers.cloudflare.com/workers/kv/" target="_blank">文档</a>。</p>
+	<p>Workers KV现在对所有客户开放，您现在可以在Cloudflare控制面板中Workers选项卡下启用<a href="https://www.cloudflare.com/products/workers-kv/?ref=blog.cloudflare.com" target="_blank">Workers KV</a>。您还可以查看我们的更新<a href="https://developers.cloudflare.com/workers/kv/?ref=blog.cloudflare.com" target="_blank">文档</a>。</p>
 	<p>看到你们都可以用Workers KV构建应用程序，我们真的很高兴！</p>
 	<p><a href="https://blog.cloudflare.com/tag/serverless/">无服务器</a> <a href="https://blog.cloudflare.com/tag/workers/">Workers</a> <a href="https://blog.cloudflare.com/tag/workers-kv/">Workers KV</a> <a href="https://blog.cloudflare.com/tag/javascript/">JavaScript</a> <a href="https://blog.cloudflare.com/tag/bash/">Bash</a></p>
 </div>

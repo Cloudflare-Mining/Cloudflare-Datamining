@@ -1,10 +1,10 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-40.png" class="kg-image" alt="Making static sites dynamic with Cloudflare D1" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image1-40.png" class="kg-image" alt="Making static sites dynamic with Cloudflare D1"></figure>
 	<h3 id="-">简介</h3>
 	<p>有许多方法可以存储您应用程序中的数据。例如，在 Cloudflare Workers 应用程序中，我们有用于键值存储的 Workers KV 和可以实时协调存储而不影响一致性的 Durable Objects。您还可以插入 Cloudflare 生态系统之外的其他工具，例如 NoSQL 和图形数据库。</p>
 	<p>但有时，您想使用 SQL。索引帮助我们快速检索数据。连接可用于描述不同表之间的复杂关系。SQL 使用声明式语言描述如何验证、创建和永久查询我们应用程序的数据。</p>
 	<p><a href="https://blog.cloudflare.com/d1-open-alpha">今天发布了 D1 的公开 α 测试</a>。我想借机分享我使用 D1 构建应用程序的经验：特别是如何入门，以及我为什么对 D1 成为 Cloudflare 上构建应用程序的许多工具之一感到兴奋。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image3-24.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image3-24.png" class="kg-image"></figure>
 	<p>D1 的卓越之处在于，它是向应用程序即时添加值，既不需要新的工具，也不需要离开 Cloudflare 生态系统。使用 Wrangler，我们可以对 Workers 应用程序进行本地开发；而在 Wrangler 中添加 D1 后，我们现在还可以在本地开发适当的有状态的应用程序。然后，在部署应用程序的时候，Wrangler 让我们可以访问并执行对 D1 数据库的命令，以及您的 API 本身。</p>
 	<h3 id="--1">我们正在构建的产品</h3>
 	<p>在这篇博客文章中，我将向您讲述如何使用 D1 向静态博客网站添加评论。为此，我们将构建一个新的 D1 数据库，并建立一个允许创建和检索评论的简单 JSON API。</p>
@@ -112,8 +112,8 @@ create index idx_comments_post_id on comments (post_slug);
 })
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>在这个示例中，我们构建了一个评论 API 来支持博客。如需查看这个 D1 驱动的评论 API 的源代码，请访问 <a href="https://github.com/cloudflare/templates/tree/main/worker-d1-api?ref=blog.cloudflare.com" target="_blank">cloudflare/templates/worker-d1-api</a>。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image2-31.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>在这个示例中，我们构建了一个评论 API 来支持博客。如需查看这个 D1 驱动的评论 API 的源代码，请访问 <a href="https://github.com/cloudflare/templates/tree/main/worker-d1-api" target="_blank">cloudflare/templates/worker-d1-api</a>。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/image2-31.png" class="kg-image"></figure>
 	<h3 id="--3">总结</h3>
 	<p>D1 最令人振奋的优势之一是，有机会利用动态关系型数据增强现有应用程序或网站。作为曾经的 Ruby on Rails 开发人员，面对 JavaScript 和无服务器开发工具的世界，我最怀念该框架的一点是，能够快速启动完整的数据驱动的应用程序，而不需要成为管理数据库基础设施的专家。利用 D1 及其基于 SQL 的数据的简单入口，我们可以构建真正的数据驱动的应用程序，而不会影响性能或开发人员的体验。</p>
 	<p>这一转变源于过去几年中使用 Hugo 或 Gatsby 等工具的静态网站的出现。使用 Hugo 等静态网站生成器构建的博客可提供不可思议的性能，只需几秒钟即可构建小型资产。</p>
