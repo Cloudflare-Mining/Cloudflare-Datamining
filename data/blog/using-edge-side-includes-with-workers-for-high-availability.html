@@ -1,11 +1,11 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
-	<p><img src="https://blog.cloudflare.com/content/images/2018/08/workers-social@2x.png" alt="workers-social@2x" loading="lazy"></p>
-	<p><em>Last week, we wrote about <a href="https://blog.cloudflare.com/edge-side-includes-with-cloudflare-workers/">implementing ESI with Cloudflare Workers</a>. This is a guest post by <a href="https://twitter.com/Overbryd?ref=blog.cloudflare.com" target="_blank">Lukas Reider</a> on how to use ESI not only for better performance, but to optimize availability while migrating backends.</em></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/08/workers-social@2x.png" alt="workers-social@2x"></p>
+	<p><em>Last week, we wrote about <a href="https://blog.cloudflare.com/edge-side-includes-with-cloudflare-workers/">implementing ESI with Cloudflare Workers</a>. This is a guest post by <a href="https://twitter.com/Overbryd" target="_blank">Lukas Reider</a> on how to use ESI not only for better performance, but to optimize availability while migrating backends.</em></p>
 	<p>In this post, you will learn about how my client Titel Media was able to use Cloudflare Workers to implement simple edge side includes.</p>
-	<p>The idea is to partially replace the parts of the online magazine <a href="https://www.highsnobiety.com/?ref=blog.cloudflare.com" target="_blank">highsnobiety.com</a> with a new, and much more refined frontend implementation. In this article, you will get to know the use case, and how I found a powerful application for Cloudflare Workers.</p>
+	<p>The idea is to partially replace the parts of the online magazine <a href="https://www.highsnobiety.com/" target="_blank">highsnobiety.com</a> with a new, and much more refined frontend implementation. In this article, you will get to know the use case, and how I found a powerful application for Cloudflare Workers.</p>
 	<h3 id="backstory">Backstory</h3>
-	<p>My current project, <a href="https://www.highsnobiety.com/?ref=blog.cloudflare.com" target="_blank">highsnobiety.com</a> is in the process of replacing Wordpress with a dedicated content pipeline and a custom frontend. It is a huge magazine, with tons of contents, hundreds of daily updates and an international team of more than 60 editors, researching and writing exciting stories.</p>
+	<p>My current project, <a href="https://www.highsnobiety.com/" target="_blank">highsnobiety.com</a> is in the process of replacing Wordpress with a dedicated content pipeline and a custom frontend. It is a huge magazine, with tons of contents, hundreds of daily updates and an international team of more than 60 editors, researching and writing exciting stories.</p>
 	<p>The company behind it, Titel Media GmbH, a publishing house with offices in Berlin, and New York, surely has grown out of Wordpress for hosting their content.</p>
 	<h3 id="theshowmustgoon">The show must go on</h3>
 	<p>One does not simply rewrite a sophisticated web publishing pipeline like WordPress. Nor does one, simply rewrite a complete frontend in any manageable timeframe and then deploy it safely without causing any interruptions.</p>
@@ -77,7 +77,7 @@
 	<h3 id="cloudflareworkers">Cloudflare Workers</h3>
 	<p>This is the forefront (pun intended) of amazing cloud services. Their latest feature: Cloudflare Workers, really spiked my interest. We were in the process of examining the ESI space for potential solutions. And there are not many. So we were already planning to build our own caching layer, that would be capable of handling includes and fallbacks. But now, with the power of running a Service Worker API on the edge, we might have just found the perfect solution for our limited ESI-needs.</p>
 	<h4 id="workercode">Worker code</h4>
-	<p>Here is what I wrote for Titel Media (<a href="https://gist.github.com/Overbryd/c070bb1fa769609d404f648cd506340f?ref=blog.cloudflare.com" target="_blank">available on GitHub</a>):</p>
+	<p>Here is what I wrote for Titel Media (<a href="https://gist.github.com/Overbryd/c070bb1fa769609d404f648cd506340f" target="_blank">available on GitHub</a>):</p>
 	<p>Let me break it down for you here.</p>
 	<p>A client request comes in, the Cloudflare worker is picking it up, and passing it to the origin.</p>
 	<pre><code class="language-javascript">addEventListener('fetch', event =&gt; {
@@ -179,7 +179,7 @@ async function main(request) {
 	</ul>
 	<h3 id="recap">Recap</h3>
 	<p>The article shows the power of running code on the http-edge. With the power of V8 at your fingertips, you can really build great services right in front of your content delivery. Edge side includes, if narrowed down to a small feature set, are simple to implement and can even be safely controlled with timeouts.</p>
-	<p>My client, Titel Media, financed the work on this worker. Stop by at <a href="https://www.highsnobiety.com/?ref=blog.cloudflare.com" target="_blank">highsnobiety.com</a>. Also, I want to thank the folk from Cloudflare, Harris Hancock and Matthew Prince for their outstanding support, while developing this worker.</p>
+	<p>My client, Titel Media, financed the work on this worker. Stop by at <a href="https://www.highsnobiety.com/" target="_blank">highsnobiety.com</a>. Also, I want to thank the folk from Cloudflare, Harris Hancock and Matthew Prince for their outstanding support, while developing this worker.</p>
 	<p>Always Remember: “Web development is the art of finding the most complex way to concatenate strings.” Leave a message, or subscribe if you liked this post. I am curious what you think about this solution.</p>
 	<!--kg-card-end: markdown-->
 </div>

@@ -1,49 +1,49 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/04/image3-14.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/04/image3-14.png" class="kg-image"></figure>
 	<p>The highest trafficked sites using Cloudflare receive billions of requests per day. But only about 5% of those requests typically trigger security rules, whether they be “managed” rules such as our WAF and DDoS protections, or custom rules such as those configured by customers using our powerful Firewall Rules and Rate Limiting engines.</p>
 	<p>When enforcement is taken on a request that interrupts the flow of malicious traffic, a <a href="https://blog.cloudflare.com/updates-to-firewall-analytics/#event-based-logging">Firewall Event is logged with detail</a> about the request including which rule triggered us to take action and what action we took, e.g., challenged or blocked outright.</p>
-	<p>Previously, if you wanted to ingest all of these events into your <a href="https://www.gartner.com/en/information-technology/glossary/security-information-and-event-management-siem?ref=blog.cloudflare.com" target="_blank">SIEM</a> or logging platform, you had to take the whole firehose of requests—good and bad—and then filter them client side. If you’re paying by the log line or scaling your own storage solution, this cost can add up quickly. And if you have a security team monitoring logs, they’re being sent a lot of extraneous data to sift through before determining what needs their attention most.</p>
-	<p>As of today, customers using Cloudflare Logs can create <a href="https://developers.cloudflare.com/logs/about?ref=blog.cloudflare.com" target="_blank">Logpush jobs</a> that send only Firewall Events. These events arrive much faster than our existing HTTP requests logs: they are typically delivered to your logging platform within 60 seconds of sending the response to the client.</p>
-	<p>In this post we’ll show you how to use Terraform and Sumo Logic, an <a href="https://developers.cloudflare.com/logs/analytics-integrations/?ref=blog.cloudflare.com" target="_blank">analytics integration partner</a>, to get this logging set up live in just a few minutes.</p>
+	<p>Previously, if you wanted to ingest all of these events into your <a href="https://www.gartner.com/en/information-technology/glossary/security-information-and-event-management-siem" target="_blank">SIEM</a> or logging platform, you had to take the whole firehose of requests—good and bad—and then filter them client side. If you’re paying by the log line or scaling your own storage solution, this cost can add up quickly. And if you have a security team monitoring logs, they’re being sent a lot of extraneous data to sift through before determining what needs their attention most.</p>
+	<p>As of today, customers using Cloudflare Logs can create <a href="https://developers.cloudflare.com/logs/about" target="_blank">Logpush jobs</a> that send only Firewall Events. These events arrive much faster than our existing HTTP requests logs: they are typically delivered to your logging platform within 60 seconds of sending the response to the client.</p>
+	<p>In this post we’ll show you how to use Terraform and Sumo Logic, an <a href="https://developers.cloudflare.com/logs/analytics-integrations/" target="_blank">analytics integration partner</a>, to get this logging set up live in just a few minutes.</p>
 	<h2 id="process-overview">Process overview</h2>
-	<p>The steps below take you through the process of configuring Cloudflare Logs to push security events directly to your logging platform. For purposes of this tutorial, we’ve chosen Sumo Logic as our log destination, but you’re free to use any of our <a href="https://developers.cloudflare.com/logs/analytics-integrations/?ref=blog.cloudflare.com" target="_blank">analytics partners</a>, or any logging platform that can read from cloud storage such as <a href="https://developers.cloudflare.com/logs/logpush/aws-s3/?ref=blog.cloudflare.com" target="_blank">AWS S3</a>, <a href="https://developers.cloudflare.com/logs/logpush/azure/?ref=blog.cloudflare.com" target="_blank">Azure Blob Storage</a>, or <a href="https://developers.cloudflare.com/logs/logpush/google-cloud-storage/?ref=blog.cloudflare.com" target="_blank">Google Cloud Storage</a>.</p>
+	<p>The steps below take you through the process of configuring Cloudflare Logs to push security events directly to your logging platform. For purposes of this tutorial, we’ve chosen Sumo Logic as our log destination, but you’re free to use any of our <a href="https://developers.cloudflare.com/logs/analytics-integrations/" target="_blank">analytics partners</a>, or any logging platform that can read from cloud storage such as <a href="https://developers.cloudflare.com/logs/logpush/aws-s3/" target="_blank">AWS S3</a>, <a href="https://developers.cloudflare.com/logs/logpush/azure/" target="_blank">Azure Blob Storage</a>, or <a href="https://developers.cloudflare.com/logs/logpush/google-cloud-storage/" target="_blank">Google Cloud Storage</a>.</p>
 	<p>To configure Sumo Logic and Cloudflare we make use of Terraform, a popular Infrastructure-as-Code tool from HashiCorp. If you’re new to Terraform, see <a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-1/">Getting started with Terraform and Cloudflare</a> for a guided walkthrough with best practice recommendations such as how to version and store your configuration in git for easy rollback.</p>
 	<p>Once the infrastructure is in place, you’ll send a malicious request towards your site to trigger the Cloudflare Web Application Firewall, and watch as the Firewall Events generated by that request shows up in Sumo Logic about a minute later.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/04/image2-18.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/04/image2-18.png" class="kg-image"></figure>
 	<h2 id="prerequisites">Prerequisites</h2>
 	<h3 id="install-terraform-and-go">Install Terraform and Go</h3>
-	<p>First you’ll need to install Terraform. See our Developer Docs for <a href="https://developers.cloudflare.com/terraform/getting-started/installing/?ref=blog.cloudflare.com" target="_blank">instructions</a>. </p>
-	<p>Next you’ll need to install Go. The easiest way on macOS to do so is with <a href="https://brew.sh/?ref=blog.cloudflare.com" target="_blank">Homebrew</a>:</p>
+	<p>First you’ll need to install Terraform. See our Developer Docs for <a href="https://developers.cloudflare.com/terraform/getting-started/installing/" target="_blank">instructions</a>. </p>
+	<p>Next you’ll need to install Go. The easiest way on macOS to do so is with <a href="https://brew.sh/" target="_blank">Homebrew</a>:</p>
 	<pre><code>$ brew install golang
 $ export GOPATH=$HOME/go
 $ mkdir $GOPATH</code></pre>
-	<p><a href="https://golang.org/?ref=blog.cloudflare.com" target="_blank">Go</a> is required because the Sumo Logic Terraform Provider is a "community" plugin, which means it has to be built and installed manually rather than automatically through the Terraform Registry, as will happen later for the Cloudflare Terraform Provider. </p>
+	<p><a href="https://golang.org/" target="_blank">Go</a> is required because the Sumo Logic Terraform Provider is a "community" plugin, which means it has to be built and installed manually rather than automatically through the Terraform Registry, as will happen later for the Cloudflare Terraform Provider. </p>
 	<h3 id="install-the-sumo-logic-terraform-provider-module">Install the Sumo Logic Terraform Provider Module</h3>
-	<p>The official installation instructions for installing the Sumo Logic provider can be found on their <a href="https://github.com/SumoLogic/sumologic-terraform-provider?ref=blog.cloudflare.com" target="_blank">GitHub Project page</a>, but here are my notes:</p>
+	<p>The official installation instructions for installing the Sumo Logic provider can be found on their <a href="https://github.com/SumoLogic/sumologic-terraform-provider" target="_blank">GitHub Project page</a>, but here are my notes:</p>
 	<pre><code>$ mkdir -p $GOPATH/src/github.com/terraform-providers &amp;&amp; cd $_
 $ git clone https://github.com/SumoLogic/sumologic-terraform-provider.git
 $ cd sumologic-terraform-provider
 $ make install</code></pre>
 	<h2 id="prepare-sumo-logic-to-receive-cloudflare-logs">Prepare Sumo Logic to receive Cloudflare Logs</h2>
 	<h3 id="install-sumo-logic-livetail-utility">Install Sumo Logic livetail utility</h3>
-	<p>While not strictly necessary, the <a href="https://help.sumologic.com/05Search/Live-Tail/Live-Tail-CLI?ref=blog.cloudflare.com" target="_blank">livetail tool</a> from Sumo Logic makes it easy to grab the Cloudflare Logs challenge token we’ll need in a minute, and also to view the fruits of your labor: seeing a Firewall Event appear in Sumo Logic shortly after the malicious request hit the edge.</p>
+	<p>While not strictly necessary, the <a href="https://help.sumologic.com/05Search/Live-Tail/Live-Tail-CLI" target="_blank">livetail tool</a> from Sumo Logic makes it easy to grab the Cloudflare Logs challenge token we’ll need in a minute, and also to view the fruits of your labor: seeing a Firewall Event appear in Sumo Logic shortly after the malicious request hit the edge.</p>
 	<p>On macOS:</p>
 	<pre><code>$ brew cask install livetail
 ...
 ==&gt; Verifying SHA-256 checksum for Cask 'livetail'.
 ==&gt; Installing Cask livetail
 ==&gt; Linking Binary 'livetail' to '/usr/local/bin/livetail'.
-?  livetail was successfully installed!</code></pre>
+🍺  livetail was successfully installed!</code></pre>
 	<h3 id="generate-sumo-logic-access-key">Generate Sumo Logic Access Key</h3>
-	<p>This step assumes you already have a Sumo Logic account. If not, you can sign up for a free trial <a href="https://www.sumologic.com/sign-up/?ref=blog.cloudflare.com" target="_blank">here</a>.</p>
+	<p>This step assumes you already have a Sumo Logic account. If not, you can sign up for a free trial <a href="https://www.sumologic.com/sign-up/" target="_blank">here</a>.</p>
 	<ol>
-		<li>Browse to <code>https://service.$ENV.sumologic.com/ui/#/security/access-keys</code> where <code>$ENV</code> should be replaced by <a href="http://help.sumologic.com/Send_Data/Collector_Management_API/Sumo_Logic_Endpoints?ref=blog.cloudflare.com" target="_blank">the environment</a> you chose on signup.</li>
+		<li>Browse to <code>https://service.$ENV.sumologic.com/ui/#/security/access-keys</code> where <code>$ENV</code> should be replaced by <a href="http://help.sumologic.com/Send_Data/Collector_Management_API/Sumo_Logic_Endpoints" target="_blank">the environment</a> you chose on signup.</li>
 		<li>Click the "+ Add Access Key" button, give it a name, and click "Create Key"</li>
 		<li>In the next step you'll save the Access ID and Access Key that are provided as environment variables, so don’t close this modal until you do. </li>
 	</ol>
 	<h3 id="generate-cloudflare-scoped-api-token">Generate Cloudflare Scoped API Token</h3>
 	<ol>
-		<li>Log in to the <a href="https://dash.cloudflare.com/?ref=blog.cloudflare.com" target="_blank">Cloudflare Dashboard</a></li>
+		<li>Log in to the <a href="https://dash.cloudflare.com/" target="_blank">Cloudflare Dashboard</a></li>
 		<li>Click on the profile icon in the top-right corner and then select "My Profile"</li>
 		<li>Select "API Tokens" from the nav bar and click "Create Token"</li>
 		<li>Click the "Get started" button next to the "Create Custom Token" label</li>
@@ -176,7 +176,7 @@ Apply complete! Resources: 2 added, 0 changed, 0 destroyed.</code></pre>
 	<p>Before we’ll start sending logs to your collector, you need to demonstrate the ability to read from it. This validation step prevents accidental (or intentional) misconfigurations from overrunning your logs.</p>
 	<h3 id="tail-the-sumo-logic-collector-and-await-the-challenge-token">Tail the Sumo Logic Collector and await the challenge token</h3>
 	<p>In a new shell window—you should keep the current one with your environment variables set for use with Terraform—we'll start tailing Sumo Logic for events sent from the <code>firewall-events-source</code> HTTP source. </p>
-	<p>The first time that you run livetail you'll need to specify your <a href="https://help.sumologic.com/APIs/General-API-Information/Sumo-Logic-Endpoints-and-Firewall-Security?ref=blog.cloudflare.com" target="_blank">Sumo Logic Environment</a>, Access ID and Access Key, but these values will be stored in the working directory for subsequent runs:</p>
+	<p>The first time that you run livetail you'll need to specify your <a href="https://help.sumologic.com/APIs/General-API-Information/Sumo-Logic-Endpoints-and-Firewall-Security" target="_blank">Sumo Logic Environment</a>, Access ID and Access Key, but these values will be stored in the working directory for subsequent runs:</p>
 	<pre><code>$ livetail _source=firewall-events-source
 ### Welcome to Sumo Logic Live Tail Command Line Interface ###
 1 US1
@@ -346,7 +346,7 @@ Apply complete! Resources: 1 added, 0 changed, 0 destroyed.</code></pre>
 ### Authenticating ###
 ### Starting Live Tail session ###</code></pre>
 	<p>Then in a browser make the following request <code>https://example.com/&lt;script&gt;alert()&lt;/script&gt;</code>. You should see the following returned:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/04/sqli-upinatoms.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/04/sqli-upinatoms.png" class="kg-image"></figure>
 	<p>And a few moments later in livetail:</p>
 	<pre><code>{"RayName":"58830d3f9945bc36","Source":"waf","RuleId":"958052","Action":"log","EdgeColoName":"LHR","ClientIP":"203.0.113.69","ClientCountryName":"gb","ClientASNDescription":"NTL","UserAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36","ClientRequestHTTPMethodName":"GET","ClientRequestHTTPHost":"upinatoms.com"}
 {"RayName":"58830d3f9945bc36","Source":"waf","RuleId":"958051","Action":"log","EdgeColoName":"LHR","ClientIP":"203.0.113.69","ClientCountryName":"gb","ClientASNDescription":"NTL","UserAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36","ClientRequestHTTPMethodName":"GET","ClientRequestHTTPHost":"upinatoms.com"}
@@ -357,5 +357,5 @@ Apply complete! Resources: 1 added, 0 changed, 0 destroyed.</code></pre>
 	<p>Note that for this one malicious request Cloudflare Logs actually sent 6 separate Firewall Events to Sumo Logic. The reason for this is that this specific request triggered a variety of different Managed Rules: #958051, 958052, 973300, 973307, 973331, and 981176.</p>
 	<h2 id="seeing-it-all-in-action">Seeing it all in action</h2>
 	<p>Here's a demo of &nbsp;launching <code>livetail</code>, making a malicious request in a browser, and then seeing the result sent from the Cloudflare Logpush job:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/04/fwevents-sumo-demo.gif" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/04/fwevents-sumo-demo.gif" class="kg-image"></figure>
 </div>

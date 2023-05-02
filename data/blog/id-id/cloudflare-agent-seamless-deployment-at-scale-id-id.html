@@ -1,5 +1,5 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-51.png" class="kg-image" alt="Cloudflare Agent — Seamless Deployment at Scale" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-51.png" class="kg-image" alt="Cloudflare Agent — Seamless Deployment at Scale"></figure>
 	<p>Setahun yang lalu, kami meluncurkan <a href="https://blog.cloudflare.com/warp-for-desktop/">WARP for Desktop</a> untuk memberikan akses Internet yang cepat dan pribadi kepada siapa pun. Untuk pelanggan bisnis kami, administrator TI dan keamanan juga dapat menggunakan agen yang sama dan mendaftarkan perangkat di organisasi mereka ke Cloudflare for Teams. Setelah terdaftar, anggota tim mereka memiliki akses yang cepat ke Internet di mana Cloudflare juga dapat menyediakan pemfilteran keamanan komprehensif dari fungsi firewall jaringan hingga browser jarak jauh.</p>
 	<p>Saat tahun lalu diluncurkan, kami mendukung mekanisme penerapan seluas mungkin dengan serangkaian opsi konfigurasi sederhana agar organisasi Anda terlindungi dengan cepat. Fokus kami adalah membantu organisasi menjaga keamanan pengguna dan data dengan pemfilteran HTTP dan DNS dari lokasi mana pun. Kami memulai dukungan untuk Mac, Windows, iOS, dan Android.</p>
 	<p>Sejak peluncurannya, agen telah diterapkan oleh ribuan organisasi untuk mengamankan anggota tim dan proses akhir mereka. Kami telah mendengar dari pelanggan yang tidak sabar untuk memperluas peluncurannya, tetapi membutuhkan dukungan OS dan kontrol konfigurasi yang lebih baik.</p>
@@ -19,18 +19,18 @@
 		<li>Android</li>
 	</ul>
 	<h3 id="dibuat-untuk-memenuhi-model-penerapan-anda"><strong>Dibuat untuk memenuhi model penerapan Anda</strong></h3>
-	<p>Saat agen kami pertama kali diperkenalkan, fokusnya adalah mengenkripsi semua traffic perangkat ke jaringan Cloudflare dan membuat admin dapat membuat <a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering?ref=blog.cloudflare.com" target="_blank">kebijakan</a> HTTP dan DNS seputar traffic tersebut. Kami juga tahu bahwa pelanggan sedang dalam proses untuk bermigrasi ke model Zero Trust. Terkadang transformasi itu perlu terjadi selangkah demi selangkah.</p>
+	<p>Saat agen kami pertama kali diperkenalkan, fokusnya adalah mengenkripsi semua traffic perangkat ke jaringan Cloudflare dan membuat admin dapat membuat <a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering" target="_blank">kebijakan</a> HTTP dan DNS seputar traffic tersebut. Kami juga tahu bahwa pelanggan sedang dalam proses untuk bermigrasi ke model Zero Trust. Terkadang transformasi itu perlu terjadi selangkah demi selangkah.</p>
 	<p>Kami telah menghabiskan waktu untuk membangun fitur yang tidak hanya mengganti sepenuhnya solusi lama Anda, tetapi juga menjalankan perangkat lunak kami bersama dengan solusi lama tersebut untuk memastikan migrasi yang lebih lancar.</p>
 	<ul>
-		<li><strong>Domain-Based Split Tunneling</strong> - Terkadang, Anda tidak perlu mengirimkan semua traffic melalui layer keamanan Anda. Kami sudah mendukung pengecualian berbasis IP, tetapi sekarang kami mempermudah pembuatan aturan <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/exclude-traffic/split-tunnels?ref=blog.cloudflare.com#add-a-domain" target="_blank">Split Tunnel dengan nama domain</a> (mis., *.example.com atau example.com) daripada memaksa Anda mencari alamat IP CIDR untuk domain tertentu.</li>
-		<li><strong>Include-Only Split Tunnels</strong> - Agen kami awalnya dibangun berdasarkan premis bahwa semua traffic perangkat harus dienkripsi dan dikirim ke jaringan kami. Hal ini memastikan traffic tidak diintai dan membuat admin dapat mempertahankan visibilitas. Namun, terkadang, Anda hanya ingin mengirim beberapa traffic ke Cloudflare dan mengecualikan sisanya secara default. <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/exclude-traffic?ref=blog.cloudflare.com" target="_blank"><em>Include-Only</em> Split Tunnels</a> melakukannya sehingga Anda dapat memilih rute individual yang ingin Anda tuju ke jaringan kami. Jika Anda memerlukan penggantian VPN lama yang cepat untuk terhubung ke <a href="https://blog.cloudflare.com/build-your-own-private-network-on-cloudflare/">sumber daya Cloudflare Tunnel</a> atau hanya ingin memastikan traffic ke infrastruktur Anda yang paling sensitif sesuai dengan inspeksi HTTP, gunakan <em>aturan Include-Only</em> Split Tunnels.</li>
-		<li><strong>Domain Pribadi yang Ditingkatkan</strong> - Beberapa organisasi memulai migrasi mereka dengan menjalankan produk Zero Trust Cloudflare bersama VPN pihak ketiga yang ada. Sebelumnya, agen kami mendukung konfigurasi ini dengan membuat administrator dapat menyetel ulang resolusi nama domain untuk mengirim kueri DNS untuk kasus penggunaan tertentu melalui VPN. Namun, itu bersifat global dan pengiriman kueri tidak dapat dikendalikan. Sekarang kami telah menambahkan kemampuan untuk <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/exclude-traffic/local-domains?ref=blog.cloudflare.com" target="_blank">menentukan server DNS mana</a> yang harus merespons domain pribadi, dan seperti yang dibahas <a href="https://blog.cloudflare.com/zero-trust-private-networking-rules/">di awal minggu ini</a>, kompatibel dengan kemampuan jaringan Zero Trust baru kami.</li>
+		<li><strong>Domain-Based Split Tunneling</strong> - Terkadang, Anda tidak perlu mengirimkan semua traffic melalui layer keamanan Anda. Kami sudah mendukung pengecualian berbasis IP, tetapi sekarang kami mempermudah pembuatan aturan <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/exclude-traffic/split-tunnels#add-a-domain" target="_blank">Split Tunnel dengan nama domain</a> (mis., *.example.com atau example.com) daripada memaksa Anda mencari alamat IP CIDR untuk domain tertentu.</li>
+		<li><strong>Include-Only Split Tunnels</strong> - Agen kami awalnya dibangun berdasarkan premis bahwa semua traffic perangkat harus dienkripsi dan dikirim ke jaringan kami. Hal ini memastikan traffic tidak diintai dan membuat admin dapat mempertahankan visibilitas. Namun, terkadang, Anda hanya ingin mengirim beberapa traffic ke Cloudflare dan mengecualikan sisanya secara default. <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/exclude-traffic" target="_blank"><em>Include-Only</em> Split Tunnels</a> melakukannya sehingga Anda dapat memilih rute individual yang ingin Anda tuju ke jaringan kami. Jika Anda memerlukan penggantian VPN lama yang cepat untuk terhubung ke <a href="https://blog.cloudflare.com/build-your-own-private-network-on-cloudflare/">sumber daya Cloudflare Tunnel</a> atau hanya ingin memastikan traffic ke infrastruktur Anda yang paling sensitif sesuai dengan inspeksi HTTP, gunakan <em>aturan Include-Only</em> Split Tunnels.</li>
+		<li><strong>Domain Pribadi yang Ditingkatkan</strong> - Beberapa organisasi memulai migrasi mereka dengan menjalankan produk Zero Trust Cloudflare bersama VPN pihak ketiga yang ada. Sebelumnya, agen kami mendukung konfigurasi ini dengan membuat administrator dapat menyetel ulang resolusi nama domain untuk mengirim kueri DNS untuk kasus penggunaan tertentu melalui VPN. Namun, itu bersifat global dan pengiriman kueri tidak dapat dikendalikan. Sekarang kami telah menambahkan kemampuan untuk <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/exclude-traffic/local-domains" target="_blank">menentukan server DNS mana</a> yang harus merespons domain pribadi, dan seperti yang dibahas <a href="https://blog.cloudflare.com/zero-trust-private-networking-rules/">di awal minggu ini</a>, kompatibel dengan kemampuan jaringan Zero Trust baru kami.</li>
 		<li><strong>Mode postur saja (segera hadir)</strong> — Kami telah <a href="https://blog.cloudflare.com/6-new-ways-to-validate-device-posture/">berbicara sebelumnya</a> tentang pentingnya postur perangkat dan kemampuan kami. Pada kuartal pertama tahun 2022, kami akan mengirimkan kemampuan agen kami untuk berjalan dalam mode postur saja. Artinya, klien kami tidak akan memproses permintaan DNS apa pun atau mengirim traffic lainnya kepada kami. Ini memungkinkan Anda untuk menerapkan kebijakan postur Cloudflare Access tanpa mengaktifkan inspeksi HTTP untuk pengguna Anda.</li>
 	</ul>
 	<h3 id="dibangun-untuk-konfigurasi-yang-mulus"><strong>Dibangun untuk konfigurasi yang mulus</strong></h3>
 	<p>Menerapkan agen apa pun ke puluhan ribu pengguna dapat menjadi rintangan logistik. Kami membangun agen Cloudflare for Teams agar mudah digunakan dalam skala besar di tim Anda. Pengumuman hari ini memberi Anda lebih banyak opsi untuk meluncurkan agen ke seluruh organisasi Anda dengan kontrol berbasis API dan Terraform.</p>
-	<p>Mengotomatiskan tugas administratif adalah cara terbaik untuk membuatnya tetap konsisten. Di Cloudflare, kami membangun UI kami di atas serangkaian RESTful API berdasarkan permintaan HTTPS dan respons JSON. API yang sama ini dalam hal manajemen perangkat kami kemudian diekspos ke pengguna melalui <a href="https://api.cloudflare.com/?ref=blog.cloudflare.com" target="_blank">Dokumentasi API</a> kami dan sebagai tambahan melalui <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs?ref=blog.cloudflare.com" target="_blank">penyedia Terraform</a> kami. Semua yang diekspos dalam versi web <a href="https://dash.teams.cloudflare.com/?ref=blog.cloudflare.com" target="_blank">https://dash.teams.cloudflare.com/</a> tersedia melalui salah satu antarmuka ini.</p>
-	<p>Sebagai contoh bagaimana Anda dapat melakukan otomatisasi, kami akan melihat domain-based split tunneling kami. Untuk referensi, berikut adalah <a href="https://api.cloudflare.com/?ref=blog.cloudflare.com#devices-set-split-tunnel-include-list" target="_blank">Dokumentasi API</a> dan <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/split_tunnel?ref=blog.cloudflare.com" target="_blank">Terraform yang setara</a>.</p>
+	<p>Mengotomatiskan tugas administratif adalah cara terbaik untuk membuatnya tetap konsisten. Di Cloudflare, kami membangun UI kami di atas serangkaian RESTful API berdasarkan permintaan HTTPS dan respons JSON. API yang sama ini dalam hal manajemen perangkat kami kemudian diekspos ke pengguna melalui <a href="https://api.cloudflare.com/" target="_blank">Dokumentasi API</a> kami dan sebagai tambahan melalui <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs" target="_blank">penyedia Terraform</a> kami. Semua yang diekspos dalam versi web <a href="https://dash.teams.cloudflare.com/" target="_blank">https://dash.teams.cloudflare.com/</a> tersedia melalui salah satu antarmuka ini.</p>
+	<p>Sebagai contoh bagaimana Anda dapat melakukan otomatisasi, kami akan melihat domain-based split tunneling kami. Untuk referensi, berikut adalah <a href="https://api.cloudflare.com/#devices-set-split-tunnel-include-list" target="_blank">Dokumentasi API</a> dan <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/split_tunnel" target="_blank">Terraform yang setara</a>.</p>
 	<p>Untuk membuat aturan penyertaan berbasis domain untuk example.com:</p><!--kg-card-begin: markdown-->
 	<pre><code>curl -X PUT "https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices/policy/include" \
      -H "X-Auth-Email: user@example.com" \
@@ -51,7 +51,7 @@ resource "cloudflare_split_tunnel" "example_split_tunnel_include" {
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Tugas umum lainnya adalah membuat laporan perangkat yang terdaftar. Menggunakan <a href="https://api.cloudflare.com/?ref=blog.cloudflare.com#devices-list-devices" target="_blank">Device List API</a>, contoh berikut menunjukkan cara membuat daftar semua perangkat Windows yang terdaftar di organisasi Anda:</p><!--kg-card-begin: markdown-->
+	<p>Tugas umum lainnya adalah membuat laporan perangkat yang terdaftar. Menggunakan <a href="https://api.cloudflare.com/#devices-list-devices" target="_blank">Device List API</a>, contoh berikut menunjukkan cara membuat daftar semua perangkat Windows yang terdaftar di organisasi Anda:</p><!--kg-card-begin: markdown-->
 	<pre><code>curl -X GET "https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices?type=windows" \
      --header 'Authorization: Bearer 8M7wS6hCpXVc-DoRnPPY_UCWPgy8aea4Wy6kCe5T' \
      -H "Content-Type: application/json"
@@ -102,7 +102,7 @@ resource "cloudflare_split_tunnel" "example_split_tunnel_include" {
 	<h3 id="dibangun-untuk-dikelola-siapa-saja"><strong>Dibangun untuk dikelola siapa saja</strong></h3>
 	<p>Termasuk dari rilis hari ini, kami juga mengumumkan <a href="https://blog.cloudflare.com/mdm-partnerships/">kemitraan dengan penyedia MDM</a> sebagai mekanisme yang dapat Anda gunakan untuk menerapkan perangkat lunak dengan pengguna Anda. Kami juga mengetahui bahwa beberapa organisasi belum memiliki MDM atau memiliki administrator yang mengelola penerapan yang lebih memilih antarmuka pengguna visual.</p>
 	<p>Dalam beberapa minggu ke depan, kami akan mengaktifkan kemampuan untuk mengelola aspek perilaku klien langsung dari dasbor, dalam versi beta. Hal ini agar Anda dapat untuk segera membuat perubahan pada konfigurasi klien tanpa harus mendorong versi baru klien.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image3-24.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image3-24.png" class="kg-image"></figure>
 	<h3 id="apa-yang-akan-terjadi-selanjutnya"><strong>Apa yang akan terjadi selanjutnya?</strong></h3>
 	<p>Tahun depan adalah waktu yang luar biasa bagi klien saat kami benar-benar akan menggandakan dukungan dan fleksibilitas klien setelah diterapkan. Beberapa fitur yang sangat ingin kami berikan adalah:</p>
 	<ul>
@@ -152,30 +152,30 @@ resource "cloudflare_split_tunnel" "example_split_tunnel_include" {
 		<thead>
 			<tr>
 				<th class="tg-0pky">Windows</th>
-				<th class="tg-0pky"><a href="https://install.appcenter.ms/orgs/cloudflare/apps/1.1.1.1-windows/distribution_groups/beta?ref=blog.cloudflare.com" target="_blank" rel="noopener noreferrer">Unduh Beta</a></th>
-				<th class="tg-0pky"><a href="https://install.appcenter.ms/orgs/cloudflare/apps/1.1.1.1-windows-1/distribution_groups/release?ref=blog.cloudflare.com" target="_blank" rel="noopener noreferrer">Unduh Rilis</a></th>
+				<th class="tg-0pky"><a href="https://install.appcenter.ms/orgs/cloudflare/apps/1.1.1.1-windows/distribution_groups/beta" target="_blank" rel="noopener noreferrer">Unduh Beta</a></th>
+				<th class="tg-0pky"><a href="https://install.appcenter.ms/orgs/cloudflare/apps/1.1.1.1-windows-1/distribution_groups/release" target="_blank" rel="noopener noreferrer">Unduh Rilis</a></th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
 				<td class="tg-0pky">macOS</td>
-				<td class="tg-0pky"><a href="https://install.appcenter.ms/orgs/cloudflare/apps/1.1.1.1-macos/distribution_groups/beta?ref=blog.cloudflare.com" target="_blank" rel="noopener noreferrer">Unduh Beta</a></td>
-				<td class="tg-0pky"><a href="https://install.appcenter.ms/orgs/cloudflare/apps/1.1.1.1-macos-1/distribution_groups/release?ref=blog.cloudflare.com" target="_blank" rel="noopener noreferrer">Unduh Rilis</a></td>
+				<td class="tg-0pky"><a href="https://install.appcenter.ms/orgs/cloudflare/apps/1.1.1.1-macos/distribution_groups/beta" target="_blank" rel="noopener noreferrer">Unduh Beta</a></td>
+				<td class="tg-0pky"><a href="https://install.appcenter.ms/orgs/cloudflare/apps/1.1.1.1-macos-1/distribution_groups/release" target="_blank" rel="noopener noreferrer">Unduh Rilis</a></td>
 			</tr>
 			<tr>
 				<td class="tg-0pky">Linux</td>
-				<td class="tg-0pky"><a href="https://pkg.cloudflareclient.com/install?ref=blog.cloudflare.com" target="_blank" rel="noopener noreferrer">Setup Repositori</a></td>
-				<td class="tg-0pky"><a href="https://pkg.cloudflareclient.com/packages/cloudflare-warp?ref=blog.cloudflare.com" target="_blank" rel="noopener noreferrer">Unduh Paket</a></td>
+				<td class="tg-0pky"><a href="https://pkg.cloudflareclient.com/install" target="_blank" rel="noopener noreferrer">Setup Repositori</a></td>
+				<td class="tg-0pky"><a href="https://pkg.cloudflareclient.com/packages/cloudflare-warp" target="_blank" rel="noopener noreferrer">Unduh Paket</a></td>
 			</tr>
 			<tr>
 				<td class="tg-0pky">iOS</td>
 				<td class="tg-0pky"></td>
-				<td class="tg-0pky"><a href="https://apps.apple.com/us/app/1-1-1-1-faster-internet/id1423538627?ref=blog.cloudflare.com" target="_blank" rel="noopener noreferrer">Unduh Rilis</a></td>
+				<td class="tg-0pky"><a href="https://apps.apple.com/us/app/1-1-1-1-faster-internet/id1423538627" target="_blank" rel="noopener noreferrer">Unduh Rilis</a></td>
 			</tr>
 			<tr>
 				<td class="tg-0pky">Android/Chrome</td>
 				<td class="tg-0pky"></td>
-				<td class="tg-0pky"><a href="https://play.google.com/store/apps/details?id=com.cloudflare.onedotonedotonedotone&amp;ref=blog.cloudflare.com" target="_blank" rel="noopener noreferrer">Unduh Rilis</a></td>
+				<td class="tg-0pky"><a href="https://play.google.com/store/apps/details?id=com.cloudflare.onedotonedotonedotone" target="_blank" rel="noopener noreferrer">Unduh Rilis</a></td>
 			</tr>
 		</tbody>
 	</table><!--kg-card-end: html-->

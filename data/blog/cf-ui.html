@@ -1,21 +1,21 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
 	<p>Late last year, the CloudFlare UI team made a huge decision: to change JavaScript frameworks from Backbone &amp; Marionette to React &amp; Redux.</p>
-	<p>We’ve been one of the single biggest Backbone+Marionette apps on the web for a while now, and the decision to move was not taken lightly. On our team we have a former core team member of the Marionette team (<a href="https://github.com/thejameskyle?ref=blog.cloudflare.com" target="_blank">myself</a>), and the <a href="https://github.com/wyuenho?ref=blog.cloudflare.com" target="_blank">author</a> of several popular Backbone projects: Backgrid and Backbone Paginator.</p>
+	<p>We’ve been one of the single biggest Backbone+Marionette apps on the web for a while now, and the decision to move was not taken lightly. On our team we have a former core team member of the Marionette team (<a href="https://github.com/thejameskyle" target="_blank">myself</a>), and the <a href="https://github.com/wyuenho" target="_blank">author</a> of several popular Backbone projects: Backgrid and Backbone Paginator.</p>
 	<p>In the spirit of the open web, we want to share more about what we’re doing. This starts by open sourcing the UI framework that we have spent the last few months building.</p>
 	<h3 id="introducingcfui">Introducing cf-ui</h3>
 	<p>While moving to React, we’ve taken our existing Backbone UI framework and rebuilt it from scratch on top of React. This includes over 50 packages that include dozens of components, utilities, test helpers, and more.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/06/cf-ui-turned-ghost.png" alt="cf-ui logo" loading="lazy"></p>
-	<p>Examples: <a href="https://cloudflare.github.io/cf-ui?ref=blog.cloudflare.com" target="_blank">https://cloudflare.github.io/cf-ui</a><br>
-		GitHub: <a href="https://github.com/cloudflare/cf-ui?ref=blog.cloudflare.com" target="_blank">https://github.com/cloudflare/cf-ui</a></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2016/06/cf-ui-turned-ghost.png" alt="cf-ui logo"></p>
+	<p>Examples: <a href="https://cloudflare.github.io/cf-ui" target="_blank">https://cloudflare.github.io/cf-ui</a><br>
+		GitHub: <a href="https://github.com/cloudflare/cf-ui" target="_blank">https://github.com/cloudflare/cf-ui</a></p>
 	<p>We’re not open sourcing cf-ui because we think our buttons are any better than anyone else’s buttons, but because it’s an opportunity to share some of the technical decisions that we’ve made while building out a massive React application. The hope is that this will be an awesome technical resource for many other devs.</p>
 	<p>We’ve made some interesting design decisions in cf-ui that we would like to talk about more, starting with the multi-package repo structure.</p>
-	<h3 id="improvingthedevelopmentexperiencewithlerna">Improving the development experience with <a href="https://lernajs.io/?ref=blog.cloudflare.com" target="_blank">Lerna</a></h3>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/06/lerna-text-ghost.png" alt="Lerna logo" loading="lazy"></p>
+	<h3 id="improvingthedevelopmentexperiencewithlerna">Improving the development experience with <a href="https://lernajs.io" target="_blank">Lerna</a></h3>
+	<p><img src="https://blog.cloudflare.com/content/images/2016/06/lerna-text-ghost.png" alt="Lerna logo"></p>
 	<p>We have several different applications under development at CloudFlare: there’s our primary dashboard that the majority of our customers are familiar with, but also a number of internal and external applications that we build.</p>
-	<p>For us, being able to share code between repositories is a must have. We could just dump all the shared code into a single repository, but our applications are developed at different speeds and we want to be able to version our shared code using <a href="http://semver.org/?ref=blog.cloudflare.com" target="_blank">semver</a>. So we use <a href="https://www.npmjs.com/?ref=blog.cloudflare.com" target="_blank">npm</a> to build tons of separate packages.</p>
+	<p>For us, being able to share code between repositories is a must have. We could just dump all the shared code into a single repository, but our applications are developed at different speeds and we want to be able to version our shared code using <a href="http://semver.org" target="_blank">semver</a>. So we use <a href="https://www.npmjs.com" target="_blank">npm</a> to build tons of separate packages.</p>
 	<p>However, maintaining dozens of packages across all of their repositories is a development nightmare. Making changes across packages is a difficult workflow, and it’s tough to test changes across all the packages.</p>
-	<p>Using <a href="https://lernajs.io/?ref=blog.cloudflare.com" target="_blank">Lerna</a>, we’re able to put all of the packages into a single repository and have our ideal workflow while also versioning packages independently.</p>
+	<p>Using <a href="https://lernajs.io" target="_blank">Lerna</a>, we’re able to put all of the packages into a single repository and have our ideal workflow while also versioning packages independently.</p>
 	<p>The basic idea here is that our cf-ui repository looks like this:</p>
 	<pre><code>packages/
   cf-builder-card/
@@ -37,9 +37,9 @@ package.json
 	<p>The other interesting part of Lerna is that it “links” cross-dependencies within the same repo so that you can test changes made in one package across all of the packages</p>
 	<p>For example, <code>cf-util-http-poll</code> depends on <code>cf-util-http</code>. If I make a change to <code>cf-util-http</code>, I want to be able to test that it didn’t break <code>cf-util-http-poll</code> and if it did I want to make sure that both packages get updated and versioned properly. Lerna allows us to do exactly that.</p>
 	<p>There are many more benefits to using this multi-package style repository which is why many other projects choose to use a similar structure. Projects like Babel, React, Ember, Angular, Jest, Meteor, PouchDB, and many many more all do the same thing.</p>
-	<p>Read more on the <a href="https://lernajs.io/?ref=blog.cloudflare.com" target="_blank">Lerna website</a>.</p>
+	<p>Read more on the <a href="https://lernajs.io" target="_blank">Lerna website</a>.</p>
 	<h3 id="buildercomponents">Builder Components</h3>
-	<p><img src="https://blog.cloudflare.com/content/images/2016/06/feedback-form-ghost.png" alt="Form Builder Component example" loading="lazy"></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2016/06/feedback-form-ghost.png" alt="Form Builder Component example"></p>
 	<p>When we built the UI framework initially, we built each component package out to expose multiple components that you compose together like so:</p>
 	<pre><code class="language-js">import React from 'react';
 import {
@@ -153,9 +153,9 @@ module.exports = createLogger;
 	<h3 id="improvingtheaccessibilityofourcomponents">Improving the accessibility of our components</h3>
 	<p>Rewriting all of our components from the ground up was an excellent opportunity to evaluate how well we’ve been following accessibility best practices.</p>
 	<p>As we rewrote the components, we found a number of improvements that we could make and we took the time to make sure that our components were as accessible as possible.</p>
-	<p>For example, we greatly improved keyboard navigation across all of our components, even open sourcing some of the libraries we built to do it: <a href="https://github.com/cloudflare/react-modal2?ref=blog.cloudflare.com" target="_blank">react-modal2</a>, <a href="https://github.com/cloudflare/a11y-focus-store?ref=blog.cloudflare.com" target="_blank">a11y-focus-store</a>, <a href="https://github.com/cloudflare/a11y-focus-scope?ref=blog.cloudflare.com" target="_blank">a11y-focus-scope</a>.</p>
+	<p>For example, we greatly improved keyboard navigation across all of our components, even open sourcing some of the libraries we built to do it: <a href="https://github.com/cloudflare/react-modal2" target="_blank">react-modal2</a>, <a href="https://github.com/cloudflare/a11y-focus-store" target="_blank">a11y-focus-store</a>, <a href="https://github.com/cloudflare/a11y-focus-scope" target="_blank">a11y-focus-scope</a>.</p>
 	<hr>
-	<p>In closing, we’re really really excited to be open sourcing our UI framework today. A lot of work went into this and it’s great to finally be putting it out there, so please give us a star on <a href="https://github.com/cloudflare/cf-ui?ref=blog.cloudflare.com" target="_blank">GitHub</a> (we love stars).</p>
+	<p>In closing, we’re really really excited to be open sourcing our UI framework today. A lot of work went into this and it’s great to finally be putting it out there, so please give us a star on <a href="https://github.com/cloudflare/cf-ui" target="_blank">GitHub</a> (we love stars).</p>
 	<p>Also, if this work interests you then you should come <a href="https://careers.jobscore.com/careers/cloudflare/jobs/ui-engineer-cI9kn86-ir4z5yiGakhP3Q?ref=rss&amp;sid=68" target="_blank">join our team</a>!</p>
 	<!--kg-card-end: markdown-->
 </div>
