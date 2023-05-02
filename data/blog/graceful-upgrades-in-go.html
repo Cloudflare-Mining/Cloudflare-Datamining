@@ -1,10 +1,10 @@
 <div class="post-content lh-copy gray1">
 	<p>The idea behind graceful upgrades is to swap out the configuration and code of a process while it is running, without anyone noticing it. If this sounds error prone, dangerous, undesirable and in general a bad idea – I’m with you. However, sometimes you really need them. Usually this happens in an environment where there is no load balancing layer. We have these at Cloudflare, which led to us investigating and implementing various solutions to this problem.</p>
 	<p></p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2018/10/thing.jpg" class="kg-image" alt="" loading="lazy"></figure><!--kg-card-begin: markdown-->
-	<p><small><em>Dingle Dangle! by <a href="https://www.flickr.com/photos/grant_subaru/14175646490?ref=blog.cloudflare.com" target="_blank">Grant C.</a> (CC-BY 2.0)</em></small></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2018/10/thing.jpg" class="kg-image"></figure><!--kg-card-begin: markdown-->
+	<p><small><em>Dingle Dangle! by <a href="https://www.flickr.com/photos/grant_subaru/14175646490" target="_blank">Grant C.</a> (CC-BY 2.0)</em></small></p>
 	<!--kg-card-end: markdown-->
-	<p>Coincidentally, implementing graceful upgrades involves some fun low-level systems programming, which is probably why there are already a bajillion options out there. Read on to learn what trade-offs there are, and why you should really really use the Go library we are about to open source. For the impatient, the code is on <a href="https://github.com/cloudflare/tableflip?ref=blog.cloudflare.com" target="_blank">github</a> &nbsp;and you can read the <a href="https://godoc.org/github.com/cloudflare/tableflip?ref=blog.cloudflare.com" target="_blank">documentation on godoc</a>.</p>
+	<p>Coincidentally, implementing graceful upgrades involves some fun low-level systems programming, which is probably why there are already a bajillion options out there. Read on to learn what trade-offs there are, and why you should really really use the Go library we are about to open source. For the impatient, the code is on <a href="https://github.com/cloudflare/tableflip" target="_blank">github</a> &nbsp;and you can read the <a href="https://godoc.org/github.com/cloudflare/tableflip" target="_blank">documentation on godoc</a>.</p>
 	<h3 id="the-basics">The basics</h3>
 	<p>So what does it mean for a process to perform a graceful upgrade? Let’s use a web server as an example: we want to be able to fire HTTP requests at it, and never see an error because a graceful upgrade is happening.</p>
 	<p>We know that HTTP uses TCP under the hood, and that we interface with TCP using the BSD socket API. We have told the OS that we’d like to receive connections on port 80, and the OS has given us a listening socket, on which we call <code>Accept()</code> to wait for new clients.</p>
@@ -32,10 +32,10 @@ func main() {
 	<!--kg-card-end: markdown-->
 	<p></p>
 	<p>Unfortunately this has a fatal flaw since we can’t “undo” the exec. Imagine a configuration file with too much white space in it or an extra semicolon. The new process would try to read that file, get an error and exit.</p>
-	<p>Even if the exec call works, this solution assumes that initialisation of the new process is practically instantaneous. We can get into a situation where the kernel refuses new connections because the <a href="https://veithen.github.io/2014/01/01/how-tcp-backlog-works-in-linux.html?ref=blog.cloudflare.com" target="_blank">listen queue is overflowing</a>.</p>
+	<p>Even if the exec call works, this solution assumes that initialisation of the new process is practically instantaneous. We can get into a situation where the kernel refuses new connections because the <a href="https://veithen.github.io/2014/01/01/how-tcp-backlog-works-in-linux.html" target="_blank">listen queue is overflowing</a>.</p>
 	<p></p>
 	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/10/Example1-1.png" class="kg-image" alt="" loading="lazy"></figure><!--kg-card-begin: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/10/Example1-1.png" class="kg-image"></figure><!--kg-card-begin: markdown-->
 	<p><small><em>New connections may be dropped if <code>Accept()</code> is not called regularly enough</em></small></p>
 	<!--kg-card-end: markdown-->
 	<p>Specifically, the new binary is going to spend some time after <code>Exec()</code> to initialise, which delays calls to &nbsp;<code>Accept()</code>. This means the backlog of new connections grows until some are dropped. Plain exec is out of the game.</p>
@@ -59,13 +59,13 @@ func main() {
 	<!--kg-card-end: markdown-->
 	<p></p>
 	<p>Now both processes have working listening sockets and the upgrade works. Right?</p>
-	<p><code>SO_REUSEPORT</code> is a little bit peculiar in what it does inside the kernel. As systems programmers, we tend to think of a socket as the file descriptor that is returned by the socket call. The kernel however makes a distinction between the data structure of a socket, and one or more file descriptors pointing at it. It creates a separate socket structure if you bind using <code>SO_REUSEPORT</code>, not just another file descriptor. The old and the new process are thus referring to two separate sockets, which happen to share the same address. This leads to an unavoidable race condition: new-but-not-yet-accepted connections on the socket used by the old process will be orphaned and terminated by the kernel. GitHub wrote <a href="https://githubengineering.com/glb-part-2-haproxy-zero-downtime-zero-delay-reloads-with-multibinder/?ref=blog.cloudflare.com#haproxy-almost-safe-reloads" target="_blank">an excellent blog post about this problem</a>.</p>
-	<p>The engineers at GitHub solved the problems with <code>SO_REUSEPORT</code> by using an obscure feature of the sendmsg syscall <a href="http://man7.org/linux/man-pages/man0/sys_socket.h.0p.html?ref=blog.cloudflare.com" target="_blank">called ancilliary data</a>. It turns out that ancillary data can include file descriptors. Using this API made sense for GitHub, since it allowed them to integrate elegantly with HAProxy. Since we have the luxury of changing the program we can use simpler alternatives.</p>
+	<p><code>SO_REUSEPORT</code> is a little bit peculiar in what it does inside the kernel. As systems programmers, we tend to think of a socket as the file descriptor that is returned by the socket call. The kernel however makes a distinction between the data structure of a socket, and one or more file descriptors pointing at it. It creates a separate socket structure if you bind using <code>SO_REUSEPORT</code>, not just another file descriptor. The old and the new process are thus referring to two separate sockets, which happen to share the same address. This leads to an unavoidable race condition: new-but-not-yet-accepted connections on the socket used by the old process will be orphaned and terminated by the kernel. GitHub wrote <a href="https://githubengineering.com/glb-part-2-haproxy-zero-downtime-zero-delay-reloads-with-multibinder/#haproxy-almost-safe-reloads" target="_blank">an excellent blog post about this problem</a>.</p>
+	<p>The engineers at GitHub solved the problems with <code>SO_REUSEPORT</code> by using an obscure feature of the sendmsg syscall <a href="http://man7.org/linux/man-pages/man0/sys_socket.h.0p.html" target="_blank">called ancilliary data</a>. It turns out that ancillary data can include file descriptors. Using this API made sense for GitHub, since it allowed them to integrate elegantly with HAProxy. Since we have the luxury of changing the program we can use simpler alternatives.</p>
 	<h3 id="nginx-share-sockets-via-fork-and-exec">NGINX: share sockets via fork and exec</h3>
 	<p>NGINX is the tried and trusted workhorse of the Internet, and happens to support graceful upgrades. As a bonus we also use it at Cloudflare, so we were confident in its implementation.</p>
 	<p>It is written in a process-per-core model, which means that instead of spawning a bunch of threads NGINX runs a process per logical CPU core. Additionally, there is a primary process which orchestrates graceful upgrades.</p>
 	<p>The primary is responsible for creating all listen sockets used by NGINX and sharing them with the workers. This is fairly straightforward: first, the <code>FD_CLOEXEC</code> bit is cleared on all listen sockets. This means that they are not closed when the <code>exec()</code> syscall is made. The primary then does the customary <code>fork()</code> / <code>exec()</code> dance to spawn the workers, passing the file descriptor numbers as an environment variable.</p>
-	<p>Graceful upgrades make use of the same mechanism. We can spawn a new primary process (PID 1176) by <a href="http://nginx.org/en/docs/control.html?ref=blog.cloudflare.com#upgrade" target="_blank">following the NGINX documentation</a>. This inherits the existing listeners from the old primary process (PID 1017) just like workers do. The new primary then spawns its own workers:</p><!--kg-card-begin: markdown-->
+	<p>Graceful upgrades make use of the same mechanism. We can spawn a new primary process (PID 1176) by <a href="http://nginx.org/en/docs/control.html#upgrade" target="_blank">following the NGINX documentation</a>. This inherits the existing listeners from the old primary process (PID 1017) just like workers do. The new primary then spawns its own workers:</p><!--kg-card-begin: markdown-->
 	<pre><code> CGroup: /system.slice/nginx.service
        	├─1017 nginx: master process /usr/sbin/nginx -g daemon on; master_process on;
        	├─1019 nginx: worker process
@@ -115,7 +115,7 @@ func main() {
 	<h3 id="graceful-upgrade-wishlist">Graceful upgrade wishlist</h3>
 	<p>The way NGINX has implemented graceful upgrades is very nice. There is a clear life cycle which determines valid actions at any point in time:</p>
 	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/10/upgrade-lifecycle.svg" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/10/upgrade-lifecycle.svg" class="kg-image"></figure>
 	<p></p>
 	<p>It also solves the problems we’ve identified with the other approaches. Really, we’d like NGINX-style graceful upgrades as a Go library.</p>
 	<ul>
@@ -125,10 +125,10 @@ func main() {
 	</ul>
 	<p>Of course, the Go community has produced some fine libraries just for this occasion. We looked at</p>
 	<ul>
-		<li><a href="https://github.com/alext/tablecloth?ref=blog.cloudflare.com" target="_blank">github.com/alext/tablecloth</a> (hat tip for the great name)</li>
-		<li><a href="https://godoc.org/github.com/astaxie/beego/grace?ref=blog.cloudflare.com" target="_blank">github.com/astaxie/beego/grace</a></li>
-		<li><a href="https://github.com/facebookgo/grace?ref=blog.cloudflare.com" target="_blank">github.com/facebookgo/grace</a></li>
-		<li><a href="https://github.com/crawshaw/littleboss?ref=blog.cloudflare.com" target="_blank">github.com/crawshaw/littleboss</a></li>
+		<li><a href="https://github.com/alext/tablecloth" target="_blank">github.com/alext/tablecloth</a> (hat tip for the great name)</li>
+		<li><a href="https://godoc.org/github.com/astaxie/beego/grace" target="_blank">github.com/astaxie/beego/grace</a></li>
+		<li><a href="https://github.com/facebookgo/grace" target="_blank">github.com/facebookgo/grace</a></li>
+		<li><a href="https://github.com/crawshaw/littleboss" target="_blank">github.com/crawshaw/littleboss</a></li>
 	</ul>
 	<p>just to name a few. Each of them is different in its implementation and trade offs, but none of them ticked all of our boxes. The most common problem is that they are designed to gracefully upgrade an http.Server. This makes their API much nicer, but removes flexibility that we need to support other socket based protocols. So really, there was absolutely no choice but to write our own library, called tableflip. Having fun was not part of the equation.</p>
 	<h3 id="tableflip">tableflip</h3>
@@ -163,6 +163,6 @@ server.Shutdown(context.TODO())
 	<!--kg-card-end: markdown-->
 	<p></p>
 	<p>Calling <code>Upgrader.Upgrade</code> spawns a new process with the necessary net.Listeners, and waits for the new process to signal that it has finished initialisation, to die or to time out. Calling it when an upgrade is ongoing returns an error.</p>
-	<p><code>Upgrader.Fds.Listen</code> is inspired by <code>facebookgo/grace</code> and allows inheriting net.Listener easily. Behind the scenes, <code>Fds</code> makes sure that unused inherited sockets are cleaned up. This includes UNIX sockets, which are tricky due to <a href="https://golang.org/pkg/net/?ref=blog.cloudflare.com#UnixListener.SetUnlinkOnClose" target="_blank">UnlinkOnClose</a>. You can also pass straight up <code>*os.File</code> to the new process if you desire.</p>
+	<p><code>Upgrader.Fds.Listen</code> is inspired by <code>facebookgo/grace</code> and allows inheriting net.Listener easily. Behind the scenes, <code>Fds</code> makes sure that unused inherited sockets are cleaned up. This includes UNIX sockets, which are tricky due to <a href="https://golang.org/pkg/net/#UnixListener.SetUnlinkOnClose" target="_blank">UnlinkOnClose</a>. You can also pass straight up <code>*os.File</code> to the new process if you desire.</p>
 	<p>Finally, <code>Upgrader.Ready</code> cleans up unused fds and signals the parent process that initialization is done. The parent can then exit, which completes the graceful upgrade cycle.</p>
 </div>

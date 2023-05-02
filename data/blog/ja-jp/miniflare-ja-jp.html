@@ -1,32 +1,32 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/01/image1-6.png" class="kg-image" alt="Miniflare 2.0: fully-local development and testing for Workers"></figure><!--kg-card-begin: markdown-->
-	<p>2021年7月、私はWorkers向けの遊び心を持ちフル機能を備えた完全ローカルシミュレータであるMiniflare 1.0を、<a href="https://discord.gg/cloudflaredev" target="_blank">Cloudflare Workers Discordサーバ</a>上に立ち上げました。<a href="https://github.com/gja/cloudflare-worker-local/pull/57" target="_blank"><code>cloudflare-worker-local</code></a>プロジェクトへのプルリクエストとして始まったものが今ではCloudflareの公式プロジェクトとなり、Workersのエコシステムの中核となって<a href="https://blog.cloudflare.com/wrangler-v2-beta/">wrangler 2.0</a>に統合されています。本日、次のメジャーバージョンである、よりモジュール化された、軽量で正確なMiniflare 2.0のリリースを発表できることを嬉しく思います。🔥</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/01/image1-6.png" class="kg-image" alt="Miniflare 2.0: fully-local development and testing for Workers" loading="lazy"></figure><!--kg-card-begin: markdown-->
+	<p>2021年7月、私はWorkers向けの遊び心を持ちフル機能を備えた完全ローカルシミュレータであるMiniflare 1.0を、<a href="https://discord.gg/cloudflaredev?ref=blog.cloudflare.com" target="_blank">Cloudflare Workers Discordサーバ</a>上に立ち上げました。<a href="https://github.com/gja/cloudflare-worker-local/pull/57?ref=blog.cloudflare.com" target="_blank"><code>cloudflare-worker-local</code></a>プロジェクトへのプルリクエストとして始まったものが今ではCloudflareの公式プロジェクトとなり、Workersのエコシステムの中核となって<a href="https://blog.cloudflare.com/wrangler-v2-beta/">wrangler 2.0</a>に統合されています。本日、次のメジャーバージョンである、よりモジュール化された、軽量で正確なMiniflare 2.0のリリースを発表できることを嬉しく思います。?</p>
 	<h2 id="miniflare">背景：Miniflareが作られた理由</h2>
-	<p><img src="https://blog.cloudflare.com/content/images/2022/01/image3-7.png" alt="image3-7"></p>
-	<p>2020年末頃に、私は初めてとなるWorkersアプリの制作を始めました。最初は、当時<a href="https://blog.cloudflare.com/announcing-wrangler-dev-the-edge-on-localhost/">最新のリリースである <code>wrangler dev</code></a>を使用していましたが、これは変更が反映されるまでに数秒かかることがわかりました。Workersのランタイム上で動作していることを考えると十分凄いことではありますが、私はフロントエンドの開発に<a href="https://vitejs.dev/" target="_blank">Vite</a>を使用していたので、開発者体験の大幅な高速化が可能であることを知っていました。</p>
-	<p>その後、ローカルのWorkersシミュレータである<a href="https://github.com/gja/cloudflare-worker-local" target="_blank"><code>cloudflare-worker-local</code></a>と<a href="https://github.com/dollarshaveclub/cloudworker" target="_blank"><code>cloudworker</code></a>に目を付けましたが、Workers Sitesのような新しい機能はサポートされていませんでした。私は、開発者体験に焦点を当てて、既存のプロジェクトで✨ <em>が動作す</em> る魔法のようなシミュレータを求めていましたが、Miniflare 1.0についての世間の反応を見ると、それは私だけではなかったようです。</p>
-	<p>Miniflare 1.0は、瞬時のリロード、ソースマップのサポート（どこでエラーが発生したかがわかる）、すっきりとしたログ（<code>{ unknown object }</code>や大量の JSON スタックトレースはもはや不要）、エラーの原因を強調する美しいエラーページ、<a href="https://miniflare.dev/developing/debugger" target="_blank">ステップスルーデバッガのサポート</a>などを実現していました。</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2021/12/image2-81.png" alt="image2-81"></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2022/01/image3-7.png" alt="image3-7" loading="lazy"></p>
+	<p>2020年末頃に、私は初めてとなるWorkersアプリの制作を始めました。最初は、当時<a href="https://blog.cloudflare.com/announcing-wrangler-dev-the-edge-on-localhost/">最新のリリースである <code>wrangler dev</code></a>を使用していましたが、これは変更が反映されるまでに数秒かかることがわかりました。Workersのランタイム上で動作していることを考えると十分凄いことではありますが、私はフロントエンドの開発に<a href="https://vitejs.dev/?ref=blog.cloudflare.com" target="_blank">Vite</a>を使用していたので、開発者体験の大幅な高速化が可能であることを知っていました。</p>
+	<p>その後、ローカルのWorkersシミュレータである<a href="https://github.com/gja/cloudflare-worker-local?ref=blog.cloudflare.com" target="_blank"><code>cloudflare-worker-local</code></a>と<a href="https://github.com/dollarshaveclub/cloudworker?ref=blog.cloudflare.com" target="_blank"><code>cloudworker</code></a>に目を付けましたが、Workers Sitesのような新しい機能はサポートされていませんでした。私は、開発者体験に焦点を当てて、既存のプロジェクトで✨ <em>が動作す</em> る魔法のようなシミュレータを求めていましたが、Miniflare 1.0についての世間の反応を見ると、それは私だけではなかったようです。</p>
+	<p>Miniflare 1.0は、瞬時のリロード、ソースマップのサポート（どこでエラーが発生したかがわかる）、すっきりとしたログ（<code>{ unknown object }</code>や大量の JSON スタックトレースはもはや不要）、エラーの原因を強調する美しいエラーページ、<a href="https://miniflare.dev/developing/debugger?ref=blog.cloudflare.com" target="_blank">ステップスルーデバッガのサポート</a>などを実現していました。</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2021/12/image2-81.png" alt="image2-81" loading="lazy"></p>
 	<center>「幼児語」で動作する可愛らしいエラーページ</center>
-	<p><img src="https://blog.cloudflare.com/content/images/2022/01/image5-5.png" alt="image5-5"></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2022/01/image5-5.png" alt="image5-5" loading="lazy"></p>
 	<h2 id="2">次のイテレーション：バージョン2での新機能</h2>
 	<p>7月にMiniflare1.0がリリースされてから比較的短い期間で、プラットフォームとしてのWorkersは劇的に向上しました。Durable Objectsは明示的なトランザクションなしで一貫性を確保するための<a href="https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/">入・出力ゲート</a>を持ち、Workersは開発者が後方互換性のない修正を選択できる<a href="https://blog.cloudflare.com/backwards-compatibility-in-cloudflare-workers/">互換性のある日付</a>を持ち、お客様は<a href="https://blog.cloudflare.com/workers-javascript-modules/">JavaScriptモジュール</a>を使用してワーカーを制作できるようになりました。</p>
 	<p>Miniflare 2はこれらの機能をすべてサポートし、3つの主要な設計目標に基づいて完全に再設計されています。</p>
 	<ol>
 		<li><strong>モジュール式：</strong> Miniflare 2では、Workersのコンポーネント（KV、Durable Objectsなど）を個別のパッケージ（<code>@miniflare/kv</code>、<code>@miniflare/durable-objects</code>など）に分割し、テスト用に単独でインポートできるようにしています。これにより、<a href="https://blog.cloudflare.com/introducing-r2-object-storage/">R2 Storage</a>のような、リリースされていない新機能のサポートを追加することも容易になります。</li>
-		<li><strong>軽量：</strong> Miniflare 1には<a href="http://npm.anvaka.com/#/view/2d/miniflare/1.4.1" target="_blank">122個のサードパーティ製パッケージ</a>が含まれており、インストールサイズは合計<code>88.3MB</code>でした。Miniflare 2は、Node.js 16に含まれる機能を活用することで、これを<strong>23個のパッケージと、<code>6MB</code></strong> のサイズにまで削減しています。</li>
+		<li><strong>軽量：</strong> Miniflare 1には<a href="http://npm.anvaka.com/?ref=blog.cloudflare.com#/view/2d/miniflare/1.4.1" target="_blank">122個のサードパーティ製パッケージ</a>が含まれており、インストールサイズは合計<code>88.3MB</code>でした。Miniflare 2は、Node.js 16に含まれる機能を活用することで、これを<strong>23個のパッケージと、<code>6MB</code></strong> のサイズにまで削減しています。</li>
 		<li><strong>正確さ：</strong> Miniflare 2では、実際のWorkerのランタイムの癖やスローイングエラーを再現しているので、デプロイする前に破損の予兆を知ることができます。もちろん<code>wrangler dev</code>は、実際のデータを使って実際のエッジ環境で実行されているため、常に最も正確なプレビューとなりますが、Miniflare 2は本当に近いものとなっています。</li>
 	</ol>
-	<p>また、新しい<a href="https://miniflare.dev/developing/live-reload" target="_blank">live-reload機能</a>と、Jestによるテストのfirst-classのサポートが追加され、開発者体験がさらに楽しいものになりました。</p>
+	<p>また、新しい<a href="https://miniflare.dev/developing/live-reload?ref=blog.cloudflare.com" target="_blank">live-reload機能</a>と、Jestによるテストのfirst-classのサポートが追加され、開発者体験がさらに楽しいものになりました。</p>
 	<div style="position: relative; padding-top: 45.565217391304344%;"><iframe src="https://iframe.videodelivery.net/3c37cfa72152fef7e44de922f84b0920?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F3c37cfa72152fef7e44de922f84b0920%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600&amp;primaryColor=%23e97f07" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
 	<p></p>
 	<h2 id="">ローカル開発を始めるにあたって</h2>
-	<p>冒頭で述べたように、Miniflare 2.0は現在<a href="https://blog.cloudflare.com/wrangler-v2-beta/">wrangler 2.0</a>に統合されているため、完全ローカルのWorker開発サーバーを起動するには<code>npx wrangler@beta dev --local</code>を、<a href="https://blog.cloudflare.com/ja-jp/cloudflare-pages-goes-full-stack-ja-jp/">Cloudflare Pages Functions</a>サーバーを起動するには<code>npx wrangler@beta pages dev</code>を実行するだけです。<a href="https://nodejs.org/" target="_blank">Node.jsの最新リリース</a>がインストールされていることを確認してください。</p>
+	<p>冒頭で述べたように、Miniflare 2.0は現在<a href="https://blog.cloudflare.com/wrangler-v2-beta/">wrangler 2.0</a>に統合されているため、完全ローカルのWorker開発サーバーを起動するには<code>npx wrangler@beta dev --local</code>を、<a href="https://blog.cloudflare.com/ja-jp/cloudflare-pages-goes-full-stack-ja-jp/">Cloudflare Pages Functions</a>サーバーを起動するには<code>npx wrangler@beta pages dev</code>を実行するだけです。<a href="https://nodejs.org/?ref=blog.cloudflare.com" target="_blank">Node.jsの最新リリース</a>がインストールされていることを確認してください。</p>
 	<p>しかし、Wrangler 1を使用している場合や、お使いのローカル環境をカスタマイズしたい場合は、Miniflare をスタンドアロンでインストールすることができます。もしお客様が<code>wrangler.toml</code>ファイルを持つ既存のWorkerをお持ちであれば、<code>npx miniflare --live-reload</code>を実行するだけでライブリロード型の開発サーバーを起動することができます。Miniflareは、KV名前空間やDurable Objectバインディングのような設定を<code>wrangler.toml</code>ファイルから、そしてsecretsを<code>.env</code>ファイルから自動的に読み込みます。</p>
-	<p>Miniflareは高度な設定が可能です。たとえば、再起動の間KVデータを持続させたい場合は、<code>--kv-persist</code>フラグを含めます。複数のWorkersの実行や HTTPS サーバーの起動など、さらに多くのオプションを利用する場合、<a href="https://miniflare.dev/" target="_blank">Miniflare docs</a>を参照いただくか、<code>npx miniflare --help</code>を実行してください。</p>
+	<p>Miniflareは高度な設定が可能です。たとえば、再起動の間KVデータを持続させたい場合は、<code>--kv-persist</code>フラグを含めます。複数のWorkersの実行や HTTPS サーバーの起動など、さらに多くのオプションを利用する場合、<a href="https://miniflare.dev/?ref=blog.cloudflare.com" target="_blank">Miniflare docs</a>を参照いただくか、<code>npx miniflare --help</code>を実行してください。</p>
 	<p><code>scheduled</code>状態のイベントハンドラがあれば、お使いのブラウザで<code>http://localhost:8787/cdn-cgi/mf/scheduled</code>にアクセスすることで、手動でトリガすることができます。</p>
 	<h2 id="jestworker">JestによるWorkerのテスト</h2>
-	<p><a href="https://jestjs.io/" target="_blank">Jest</a>は、最も人気のあるJavaScriptテストフレームワークの1つであるため、ファーストクラスのサポートを追加することは理にかなっています。Miniflare 2.0には、<a href="https://developers.cloudflare.com/workers/runtime-apis" target="_blank">WorkersのランタイムAPI</a>にアクセスできる<a href="https://jestjs.io/docs/configuration#testenvironment-string" target="_blank">カスタムテスト環境</a>が含まれています。</p>
+	<p><a href="https://jestjs.io/?ref=blog.cloudflare.com" target="_blank">Jest</a>は、最も人気のあるJavaScriptテストフレームワークの1つであるため、ファーストクラスのサポートを追加することは理にかなっています。Miniflare 2.0には、<a href="https://developers.cloudflare.com/workers/runtime-apis?ref=blog.cloudflare.com" target="_blank">WorkersのランタイムAPI</a>にアクセスできる<a href="https://jestjs.io/docs/configuration?ref=blog.cloudflare.com#testenvironment-string" target="_blank">カスタムテスト環境</a>が含まれています。</p>
 	<p>例えば、JavaScriptモジュールを使って書かれた次のようなWorkerがあり、各URLの訪問回数をWorkers KVに格納しているとします。</p>
 	<blockquote>
 		<p>余談ですが、Workers KVは最終的に一貫性を保つ仕組みであるためカウンター用には設計されていません。実際のWorkersではDurable Objectを使うべきです。ここでは簡単な例を紹介します。</p>
@@ -117,12 +117,12 @@ $ npm install -D jest jest-environment-miniflare
 # Run tests with experimental ES modules support
 $ NODE_OPTIONS=--experimental-vm-modules npx jest
 </code></pre>
-	<p>カスタムテスト環境と分離ストレージの詳細については<a href="https://miniflare.dev/testing/jest" target="_blank">Miniflare docs</a>、またはTypeScriptとDurableObjectsを使用した<a href="https://github.com/mrbbot/miniflare-typescript-esbuild-jest" target="_blank">こちらのサンプルプロジェクト</a>を参照してください。</p>
-	<p>Jestをお使いではありませんか？Miniflareでは、vanilla Node.jsやその他のテストフレームワークを使って独自の統合テストを書くことができます。AVAを使用した例については、<a href="https://miniflare.dev/testing/ava" target="_blank">Miniflareのドキュメント</a>または<a href="https://github.com/mrbbot/miniflare-esbuild-ava" target="_blank">こちらのリポジトリ</a>を参照してください。</p>
+	<p>カスタムテスト環境と分離ストレージの詳細については<a href="https://miniflare.dev/testing/jest?ref=blog.cloudflare.com" target="_blank">Miniflare docs</a>、またはTypeScriptとDurableObjectsを使用した<a href="https://github.com/mrbbot/miniflare-typescript-esbuild-jest?ref=blog.cloudflare.com" target="_blank">こちらのサンプルプロジェクト</a>を参照してください。</p>
+	<p>Jestをお使いではありませんか？Miniflareでは、vanilla Node.jsやその他のテストフレームワークを使って独自の統合テストを書くことができます。AVAを使用した例については、<a href="https://miniflare.dev/testing/ava?ref=blog.cloudflare.com" target="_blank">Miniflareのドキュメント</a>または<a href="https://github.com/mrbbot/miniflare-esbuild-ava?ref=blog.cloudflare.com" target="_blank">こちらのリポジトリ</a>を参照してください。</p>
 	<h2 id="miniflare">Miniflareの仕組み</h2>
 	<p>それでは、Miniflareの興味深い機能について詳しく見ていきましょう。</p>
-	<p>Miniflareは、ChromeのV8 JavaScriptエンジン上に構築されたJavaScriptランタイムであるNode.jsを利用しています。V8はCloudflare Workersランタイムを強化するのと同じエンジンですが、NodeとWorkersはその上に異なるランタイムAPIを実装しています。NodeのAPIは、ユーザーに表示されないようにし、WorkersのAPIを注入するために、<a href="https://nodejs.org/api/vm.html" target="_blank">MiniflareはNode.jsの<code>vm</code>モジュール</a>を使用しています。これにより、カスタムV8コンテキストで任意のコードを実行できます。</p>
-	<p>Workersのコア部分は、<code>Request</code>と<code>Response</code>のクラスです。MiniflareはこれらをNodeチームがNodeに<code>fetch</code>を導入するために書いたプロジェクトである<a href="https://github.com/nodejs/undici" target="_blank"><code>undici</code></a>から取得しています。また、service workers用にNode 15 で追加された<code>addEventListener</code>と<code>EventTarget</code> API を使ってイベントをディスパッチする方法も必要です。</p>
+	<p>Miniflareは、ChromeのV8 JavaScriptエンジン上に構築されたJavaScriptランタイムであるNode.jsを利用しています。V8はCloudflare Workersランタイムを強化するのと同じエンジンですが、NodeとWorkersはその上に異なるランタイムAPIを実装しています。NodeのAPIは、ユーザーに表示されないようにし、WorkersのAPIを注入するために、<a href="https://nodejs.org/api/vm.html?ref=blog.cloudflare.com" target="_blank">MiniflareはNode.jsの<code>vm</code>モジュール</a>を使用しています。これにより、カスタムV8コンテキストで任意のコードを実行できます。</p>
+	<p>Workersのコア部分は、<code>Request</code>と<code>Response</code>のクラスです。MiniflareはこれらをNodeチームがNodeに<code>fetch</code>を導入するために書いたプロジェクトである<a href="https://github.com/nodejs/undici?ref=blog.cloudflare.com" target="_blank"><code>undici</code></a>から取得しています。また、service workers用にNode 15 で追加された<code>addEventListener</code>と<code>EventTarget</code> API を使ってイベントをディスパッチする方法も必要です。</p>
 	<p>それらがあれば、私たちは <em>小規模の</em>-miniflareを作ることができます。</p>
 	<pre><code class="language-js">import vm from "vm";
 import { Request, Response } from "undici";
@@ -181,7 +181,7 @@ globalScope.dispatchEvent(event);
 console.log(await event.response.text()); // Hello mini-miniflare!
 </code></pre>
 	<h3 id="">プラグイン</h3>
-	<p><img src="https://blog.cloudflare.com/content/images/2021/12/image1-108.png" alt="image1-108"></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2021/12/image1-108.png" alt="image1-108" loading="lazy"></p>
 	<center>Miniflare monorepoの依存関係グラフ。</center>
 	<p>WorkersのランタイムAPIはたくさんあるため、上記のようにすべてを手作業で追加・設定するのは面倒です。そこでMiniflare 2では、各パッケージがグローバルやバインディングをエクスポートして、サンドボックスに含めることができるプラグインシステムを採用しました。オプションには、それらのタイプ、CLIフラグ、それらがWrangler設定ファイル内のどこにあるかを説明する注釈があります。</p>
 	<pre><code class="language-ts">@Option({
@@ -209,7 +209,7 @@ kvNamespaces?: string[];
   return value;
 }
 </code></pre>
-	<p>Miniflareではこれを<a href="https://dl.acm.org/doi/10.1145/319566.319567" target="_blank">optimistic-concurrency control (OCC)</a>を使って実装しています。しかし、入出力ゲートが利用できるようになったため、新しく書かれたDurable Objectのコードをシミュレーションする際の競合状態を回避するために、Miniflare 2ではそれらを実装する必要がありました。</p>
+	<p>Miniflareではこれを<a href="https://dl.acm.org/doi/10.1145/319566.319567?ref=blog.cloudflare.com" target="_blank">optimistic-concurrency control (OCC)</a>を使って実装しています。しかし、入出力ゲートが利用できるようになったため、新しく書かれたDurable Objectのコードをシミュレーションする際の競合状態を回避するために、Miniflare 2ではそれらを実装する必要がありました。</p>
 	<p><a href="https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/#part1inputgates">ゲート発表時のブログ記事</a>の説明より：</p>
 	<blockquote>
 		<p><strong>入力ゲート：</strong> ストレージ操作の実行中は、ストレージ完了イベント以外のイベントをオブジェクトに配信してはなりません。その他のイベントは、オブジェクトがJavaScriptコードを実行しなくなり、ストレージ操作の待ちがなくなるまで待機状態にされます。私たちはこれらのイベントが「入力ゲート」が開くのを待っている状態と表現します。</p>
@@ -248,7 +248,7 @@ async function fetch(input, init) {
   return response;
 }
 </code></pre>
-	<p>ここで問題に気づいたかもしれません。<code>inputGate</code>は<code>fetch</code>内のどこから来るのでしょうか？Worker全体とそのすべてのDurable Objectに対して1つのグローバルスコープしかないため、Durable Objectの<code>InputGate</code>ごとに<code>fetch</code>を行うことはできません。また、それを必要とするすべての関数に別のパラメーターとして渡すようにユーザーに求めることはできません。潜在的に_<code>async</code>_ 関数間で自動的に渡されるコンテキストの中にそれを格納する何らかの方法が必要です。このために、我々は、 <a href="https://nodejs.org/api/async_context.html#class-asynclocalstorage" target="_blank"><code>AsyncLocalStorage</code> クラス</a>を含む、もう一つのあまり知られてNodeモジュール<a href="https://nodejs.org/api/async_context.html" target="_blank"><code>async_hooks</code></a>を使用することができます ：</p>
+	<p>ここで問題に気づいたかもしれません。<code>inputGate</code>は<code>fetch</code>内のどこから来るのでしょうか？Worker全体とそのすべてのDurable Objectに対して1つのグローバルスコープしかないため、Durable Objectの<code>InputGate</code>ごとに<code>fetch</code>を行うことはできません。また、それを必要とするすべての関数に別のパラメーターとして渡すようにユーザーに求めることはできません。潜在的に_<code>async</code>_ 関数間で自動的に渡されるコンテキストの中にそれを格納する何らかの方法が必要です。このために、我々は、 <a href="https://nodejs.org/api/async_context.html?ref=blog.cloudflare.com#class-asynclocalstorage" target="_blank"><code>AsyncLocalStorage</code> クラス</a>を含む、もう一つのあまり知られてNodeモジュール<a href="https://nodejs.org/api/async_context.html?ref=blog.cloudflare.com" target="_blank"><code>async_hooks</code></a>を使用することができます ：</p>
 	<pre><code class="language-ts">import { AsyncLocalStorage } from "async_hooks";
 
 const inputGateStorage = new AsyncLocalStorage&lt;InputGate&gt;();
@@ -301,9 +301,9 @@ async function fetch(input: RequestInfo, init: RequestInit): Promise&lt;Response
 }
 </code></pre>
 	<p>現在、<code>blockConcurrencyWhile</code>の外側の入力ゲートが閉じられるので、Durable Objectへのフェッチは待機状態にされますが、closureの内側の入力ゲートは開かれるので、<code>fetch</code>は戻ることができます。</p>
-	<p>ここではいくつかの詳細を説明していますが、<a href="https://github.com/cloudflare/miniflare/blob/v2.0.0/packages/shared/src/sync/gate.ts" target="_blank">ゲートの実装</a>で追加の構文やコメントをチェックすることができます。🙂</p>
+	<p>ここではいくつかの詳細を説明していますが、<a href="https://github.com/cloudflare/miniflare/blob/v2.0.0/packages/shared/src/sync/gate.ts?ref=blog.cloudflare.com" target="_blank">ゲートの実装</a>で追加の構文やコメントをチェックすることができます。?</p>
 	<h3 id="htmlrewriter">HTMLRewriter</h3>
-	<p><code>HTMLRewriter</code>はHTMLストリームを解析・変換するための新しいクラスです。edge Workers のランタイムでは、Rustライブラリ<a href="https://github.com/cloudflare/lol-html" target="_blank">lol-html</a>へのCバインディングによって動作しています。幸運なことに、 <a href="https://blog.cloudflare.com/author/ivan-nikulin/">Ivan Nikulin</a>氏 がこのために<a href="https://github.com/cloudflare/lol-html/issues/38" target="_blank">WebAssembly bindings</a>バインディングを構築したので、Node.jsで同じライブラリを使用することができます。</p>
+	<p><code>HTMLRewriter</code>はHTMLストリームを解析・変換するための新しいクラスです。edge Workers のランタイムでは、Rustライブラリ<a href="https://github.com/cloudflare/lol-html?ref=blog.cloudflare.com" target="_blank">lol-html</a>へのCバインディングによって動作しています。幸運なことに、 <a href="https://blog.cloudflare.com/author/ivan-nikulin/">Ivan Nikulin</a>氏 がこのために<a href="https://github.com/cloudflare/lol-html/issues/38?ref=blog.cloudflare.com" target="_blank">WebAssembly bindings</a>バインディングを構築したので、Node.jsで同じライブラリを使用することができます。</p>
 	<p>しかし、これらには書き換え時に外部リソースにアクセスできるasyncハンドラのサポートが欠けていました。</p>
 	<pre><code class="language-js">class UserElementHandler {
   async element(node) {
@@ -334,13 +334,13 @@ async function fetch(input: RequestInfo, init: RequestInit): Promise&lt;Response
 }
 </code></pre>
 	<p>ここで重要なのは、Rustの<code>move |...| { ... }</code>クロージャは同期的ですが、ハンドラは非同期的にできることです。これは非<code>async</code>関数で<code>Promise</code>を<code>await</code>しようとするようなものです。</p>
-	<p>これを解決するために、 WebAssemblyモジュールを扱うためのツールのセットである <a href="https://github.com/WebAssembly/binaryen" target="_blank">Binaryen</a>の<a href="https://github.com/WebAssembly/binaryen/blob/main/src/passes/Asyncify.cpp" target="_blank">Asyncify</a>機能を使用します。<code>await_promise</code>を呼び出すたびに、Asyncify は現在の WebAssembly スタックを一時的なストレージに展開します。そして、JavaScriptで、<code>Promise</code>を<code>await</code>します。最後に、一時ストレージからスタックを前の状態に巻き戻し、中断したところから書き換えを続けます。</p>
-	<p>完全な実装は、 <a href="https://github.com/mrbbot/html-rewriter-wasm" target="_blank"><code>html-rewriter-wasm</code> パッケージ</a>にあります。</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2022/01/image4-4.png" alt="image4-4"></p>
+	<p>これを解決するために、 WebAssemblyモジュールを扱うためのツールのセットである <a href="https://github.com/WebAssembly/binaryen?ref=blog.cloudflare.com" target="_blank">Binaryen</a>の<a href="https://github.com/WebAssembly/binaryen/blob/main/src/passes/Asyncify.cpp?ref=blog.cloudflare.com" target="_blank">Asyncify</a>機能を使用します。<code>await_promise</code>を呼び出すたびに、Asyncify は現在の WebAssembly スタックを一時的なストレージに展開します。そして、JavaScriptで、<code>Promise</code>を<code>await</code>します。最後に、一時ストレージからスタックを前の状態に巻き戻し、中断したところから書き換えを続けます。</p>
+	<p>完全な実装は、 <a href="https://github.com/mrbbot/html-rewriter-wasm?ref=blog.cloudflare.com" target="_blank"><code>html-rewriter-wasm</code> パッケージ</a>にあります。</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2022/01/image4-4.png" alt="image4-4" loading="lazy"></p>
 	<h2 id="miniflare">Miniflareの今後について</h2>
 	<p>前述の通り、Miniflareはwrangler 2.0に含まれるようになりました。ぜひお試しいただき、ご意見をお聞かせください。</p>
 	<p>このような素晴らしいプラットフォームと支援してくれるコミュニティを構築してくれたCloudflareのWorkersチームの皆さんに感謝したいと思います。Miniflareに貢献してくださった方、問題を提起してくれた方、提案をしてくださった方、Discordサーバーで質問してくれた方へも感謝をお伝えします。</p>
-	<p>これで本来のWorkersプロジェクトを終わらせることができるかもしれません...😅</p>
+	<p>これで本来のWorkersプロジェクトを終わらせることができるかもしれません...?</p>
 	<!--kg-card-end: markdown-->
 	<p></p>
 </div>
