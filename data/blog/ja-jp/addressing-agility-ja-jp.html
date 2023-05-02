@@ -1,5 +1,5 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/image6-19.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/image6-19.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>ネットワーク指向やWeb指向のサービスを大規模に展開する上で、IPアドレスの割り当てに伴う問題が革新の妨げになっています。アーキテクチャの変更時、特に新システムの設計開始時には必ず、まず以下で触れる一連の事項について検討しなければなりません。</p>
 	<ul>
 		<li>IPアドレスのどのブロックを使うか、あるいは使えるか。</li>
@@ -7,39 +7,39 @@
 		<li>IPv6アドレスをどのように使うか。それによりIPv6の他の用途に影響はあるか。</li>
 		<li>移行に際し、必要になる細かな計画、チェック、時間、人材はどのようなものか。</li>
 	</ul>
-	<p>IPアドレスの懸念の解消には、時間も費用もリソースもかかります。40年以上前に<a href="https://datatracker.ietf.org/doc/html/rfc791" target="_blank">登場したIP</a>の先見性と弾力性を思い返すと、こうした心配をしなければならないことは意外かもしれません。IPアドレスはその設計からして、いかなるネットワークでも気にする必要なく使えるべきものです。ところが、そのIPアドレスこそが、些細で重要に見えない（設計段階では見えない、または見えてこない）のに、規模が大きくなると必ず露見する弱点であったことが、インターネットの発展に伴って明らかになりました。</p><!--kg-card-begin: markdown-->
+	<p>IPアドレスの懸念の解消には、時間も費用もリソースもかかります。40年以上前に<a href="https://datatracker.ietf.org/doc/html/rfc791?ref=blog.cloudflare.com" target="_blank">登場したIP</a>の先見性と弾力性を思い返すと、こうした心配をしなければならないことは意外かもしれません。IPアドレスはその設計からして、いかなるネットワークでも気にする必要なく使えるべきものです。ところが、そのIPアドレスこそが、些細で重要に見えない（設計段階では見えない、または見えてこない）のに、規模が大きくなると必ず露見する弱点であったことが、インターネットの発展に伴って明らかになりました。</p><!--kg-card-begin: markdown-->
 	<p>1つわかっているのは、「アドレスを増やす」ことが答えであってはならないということです。IPv4では、その種の考え方は希少性を高めて市場価格のさらなる上昇につながるだけです。IPv6は間違いなく必要ですが、それは解決策の一部に過ぎません。たとえば、IPv6では割り当ての最小単位（パーソナルな利用のみ）は/56がベストプラクティスです。つまり、2<sup>72</sup>、約4,722,000,000,000,000,000,000個のアドレスです。この規模の数字を理論的に説明することは、とてもできませんよね。</p>
 	<!--kg-card-end: markdown-->
 	<p>1つわかっているのは、「アドレスを増やす」ことが答えであってはならないということです。IPv4では、その種の考え方は希少性を高めて市場価格のさらなる上昇につながるだけです。IPv6は間違いなく必要ですが、それは解決策の一部に過ぎません。たとえば、IPv6では割り当ての最小単位（パーソナルな利用のみ）は/56がベストプラクティスです。つまり、272、約4,722,000,000,000,000,000,000個のアドレスです。この規模の数字を理論的に説明することは、とてもできませんよね。</p>
-	<p>このブログ記事では、WebサービスにとってIPアドレスの割り当てがなぜ問題なのか、根底にある原因を説明してから、当社でAddressing Agilityと呼んでいる革新的なソリューションとこれまでに学んだ教訓について述べていきます。最も素晴らしいのは、Addressing Agilityでどういう種類の新システムや新アーキテクチャが可能になるかという点かもしれません。詳細は、最近ACM SIGCOMM 2021で報告された<a href="https://research.cloudflare.com/publications/Fayed2021/" target="_blank">文書</a>をお読みください。ここでは、わかったことのいくつかを要約してお伝えします。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/1_jaJP-2.png" class="kg-image"></figure>
+	<p>このブログ記事では、WebサービスにとってIPアドレスの割り当てがなぜ問題なのか、根底にある原因を説明してから、当社でAddressing Agilityと呼んでいる革新的なソリューションとこれまでに学んだ教訓について述べていきます。最も素晴らしいのは、Addressing Agilityでどういう種類の新システムや新アーキテクチャが可能になるかという点かもしれません。詳細は、最近ACM SIGCOMM 2021で報告された<a href="https://research.cloudflare.com/publications/Fayed2021/?ref=blog.cloudflare.com" target="_blank">文書</a>をお読みください。ここでは、わかったことのいくつかを要約してお伝えします。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/1_jaJP-2.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>確かに、1つのアドレスに含められる名前の数に制限はありません。どんな名前でも新たなクエリのたびに<em>どこででも</em>変わり得ますし、アドレスの変更はどんな理由でも可能で、サービスのプロビジョニングであったり、ポリシーやパフォーマンスの評価であったり、未だ直面していないようなその他の理由である可能性もあります。</p>
 	<p>以下では、上記の教訓がすべて真実である理由とそのことを学んだ経緯、それらが<em>あらゆる規模の</em>HTTPサービスやTLSサービスにとって重要である理由を説明します。当社が得た重要な見識で、構築の基礎としているのが、「インターネットプロトコル（IP）の設計は国際郵便制度に似ていて、アドレスに名前を表記する必要は今までなかったし今後も決してないし、必要とすべきでもない」ということ。ただ、アドレスを名前の表記であるかのように扱うことが時々あるというだけなのですが、この文書では、すべての名前がそのアドレスまたはアドレス群のすべて（アドレスが1つの場合も）を共有すべきであることを示しています。</p>
 	<h2 id="-">「細いウエスト」は流れを誘導する漏斗のようだが、詰まりやすい</h2>
 	<p>IPアドレスを名前とリソースに人為的に紐づけるのは、数十年前からの慣例です。インターネット運用のためのアーキテクチャとソフトウェアが、1台のコンピュータが1つの名前と（通常は）1つのネットワークインタフェースカードを持つ環境から発展した経緯を考えると、この慣例は理解できます。1つのIPアドレスが名前やソフトウェアプロセスと関連づけられる形でインターネットが発展したことも、必然の流れでしょう。</p>
 	<p>名前を使う必要がほとんどなくてリスニングプロセスの必要もわずかなエンドクライアントやネットワーク事業者には、こうしたIPのバインディングはほとんど影響しません。しかし、名前とプロセスにまつわるこの慣例は、<em>すべての</em>コンテンツホスティング、配信、コンテンツサービスプロバイダー（CSP）にとって大きな制約となります。アドレスはいったん名前、インタフェース、ソケットに割り振られてしまうとほぼ静的なものになり、変更が可能だとしても難しく、計画性と周到さが必要になります。</p>
 	<p>IPの「細いウエスト」が、インターネットを実現する立役者となったわけですが、ちょうどトランスポートプロトコルに対するTCP、アプリケーションプロトコルに対するHTTPと同じように、IPは革新を妨げる足かせになってしまいました。この閉塞状態を表したものが下図で、本来別個である通信のバインディング（名前との）と接続のバインディング（インターフェースやソケットとの）が、推移的依存関係を作ってしまったことがわかります。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/2_jaJP.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/2_jaJP.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>この推移的な「縛り」は、一方を変更すると他方にも影響する可能性があるため断ち切ることは困難です。しかも、サービスプロバイダーは、名前とは別個に存在するポリシーやサービスレベルを表すために、IPアドレスをよく使います。そのため、本来その必要はないにもかかわらず、結局はIPバインディングも考慮しなければならなくなるのです。</p>
 	<p>別の言い方をすれば、新しい設計やアーキテクチャを考案する際や、リソースの配分改善を考える際に、まず自問すべきことが「どのIPアドレスを使うか」とか「このためのIPアドレスがあるか」であってはならないということです。そうした問いとその答えは、開発や革新を遅らせます。</p>
-	<p>私たちは、IPバインディングは人為的であるだけでなく、そもそも先見性をもって作られたRFCと基準に照らして考えれば、IPバインディング自体が間違っているということに気が付きました。実際、IPアドレスが到達可能性以外の何かを表記するものだという考え方は、元来の設計に反しています。もともとの<a href="https://datatracker.ietf.org/doc/html/rfc791#section-2.3" target="_blank">RFC</a>と関連草稿で、アーキテクトは「名前、アドレス、経路は区別する。名前は目的物、アドレスは場所、経路は到達方法を示す」と明記しています。<strong>上位層プロトコル中のSNIやHTTPのホスト名といった情報とIPを関連づけることは、レイヤリングの原則に明らかに反します。</strong></p>
+	<p>私たちは、IPバインディングは人為的であるだけでなく、そもそも先見性をもって作られたRFCと基準に照らして考えれば、IPバインディング自体が間違っているということに気が付きました。実際、IPアドレスが到達可能性以外の何かを表記するものだという考え方は、元来の設計に反しています。もともとの<a href="https://datatracker.ietf.org/doc/html/rfc791?ref=blog.cloudflare.com#section-2.3" target="_blank">RFC</a>と関連草稿で、アーキテクトは「名前、アドレス、経路は区別する。名前は目的物、アドレスは場所、経路は到達方法を示す」と明記しています。<strong>上位層プロトコル中のSNIやHTTPのホスト名といった情報とIPを関連づけることは、レイヤリングの原則に明らかに反します。</strong></p>
 	<p>もちろん、私たちの取り組みは決して独立したものではありません。むしろ、長年進められてきたIPアドレスを従来の使い方から切り離す動きを完結するものであり、その<a href="https://blog.cloudflare.com/cloudflare-research-two-years-in/">土台</a>には、先人の偉大な功績があります。</p>
 	<h3 id="--1">これまでの発展の経緯は......</h3>
 	<p>過去20年間を振り返ると、アドレス割り当てのアジリティ追求の動きがしばらく前から続いており、Cloudflareがそれに深く関与してきたことがすぐわかります。</p>
-	<p>数十年続いたIPとネットワークカードインタフェースとの一対一のバインディングが初めて解かれたのは、数年前にGoogleの<a href="https://research.google/pubs/pub44824/" target="_blank">Maglev</a>が等コストマルチパス（ECMP）とコンシステントハッシュ法を組み合わせてトラフィックを1つの「仮想」IPアドレスから多数のサーバーへ分散した時です。ちなみに、元来のインターネットプロトコルRFCではこうしたIPの使い方は除外されていて、仮想でもありません。</p>
+	<p>数十年続いたIPとネットワークカードインタフェースとの一対一のバインディングが初めて解かれたのは、数年前にGoogleの<a href="https://research.google/pubs/pub44824/?ref=blog.cloudflare.com" target="_blank">Maglev</a>が等コストマルチパス（ECMP）とコンシステントハッシュ法を組み合わせてトラフィックを1つの「仮想」IPアドレスから多数のサーバーへ分散した時です。ちなみに、元来のインターネットプロトコルRFCではこうしたIPの使い方は除外されていて、仮想でもありません。</p>
 	<p>以来、GitHub、Facebookなどで類似のシステムが多数考案されました。Cloudflareの<a href="https://blog.cloudflare.com/unimog-cloudflares-edge-load-balancer/">Unimog</a>もその1つです。最近ではCloudflareが新たにプログラム可能なソケットアーキテクチャ<a href="https://blog.cloudflare.com/its-crowded-in-here/">bpf_sk_lookup</a>を設計し、IPアドレスをソケットやプロセスから分離しています。</p>
 	<p><strong>しかし、名前についてはどうでしょうか。</strong>「仮想ホスティング」の価値は、1997年にHTTP 1.1がホストフィールドを必須項目と定義した際に確立されました。複数の名前が単一IPアドレス上に共存できることが正式に認められたのはこれが初めてで、この項目はTLSによってServer Name Indication（SNI：サーバー名表示）フィールドに必ず複製されました。可能な名前の数はIPアドレスの数より多いため、これらの項目の入力は必須です。</p>
 	<h3 id="--2">…アジャイルな未来を示唆</h3>
 	<p>将来を考えた時、シェークスピアが投げかけたとの同じ「名前って何？」という疑問が湧いてきます。もしインターネットが話せたならば、こう答えるでしょう。「その名前と別のアドレスを結び付けても、同じように到達できます」。</p>
 	<p>また、この質問が「アドレスって何？」であったとしても、インターネットは同様に「そのアドレスと別の名前を結び付けても、同じように到達できます」と答えるはずです。</p>
 	<p>こうした「答え」の背後には、ある言外の意味が存在します。それは、名前とアドレスのマッピングが、any-to-any（多対多）だということです。もし、それが事実であれば、1つの名前から1つのアドレスに到達できる限り、1つの名前に到達するために使うアドレスは、任意でよいということになります。</p>
-	<p>実際、1995年に<a href="https://datatracker.ietf.org/doc/html/rfc1794" target="_blank">DNSベースの負荷分散</a>が導入されて以来、1つの名前に対してあるバージョンの複数アドレスが利用可能になっています。それならば、すべての名前に対してすべてのアドレスを、あるいは、すべての名前に対して、一時的に任意のアドレスを使わないのはなぜでしょうか。さらに言えば、すべての名前に対して単一のアドレスを使うこともできるはずです。これについては以下で取り上げますが、まずはアドレス割り当てのアジリティを実現する方法についてお話しましょう。</p>
+	<p>実際、1995年に<a href="https://datatracker.ietf.org/doc/html/rfc1794?ref=blog.cloudflare.com" target="_blank">DNSベースの負荷分散</a>が導入されて以来、1つの名前に対してあるバージョンの複数アドレスが利用可能になっています。それならば、すべての名前に対してすべてのアドレスを、あるいは、すべての名前に対して、一時的に任意のアドレスを使わないのはなぜでしょうか。さらに言えば、すべての名前に対して単一のアドレスを使うこともできるはずです。これについては以下で取り上げますが、まずはアドレス割り当てのアジリティを実現する方法についてお話しましょう。</p>
 	<h2 id="addressing-agility-">Addressing Agilityの実現：名前、マップ、ポリシーはすべて無視</h2>
 	<p>アドレス割り当てのアジリティを実現する際に鍵となるのは権威DNSです。レコードや検索テーブルなど何らかの形で格納された静的な「名前-IP」マッピングではありません。クライアントの視点から見れば、そのバインディングは「クエリ時に」のみ現れます。現実的なマッピングの使い道全体を見ても、1つの名前と1つのアドレスを結び付けることが可能だったとして、リクエスト存続時間内で最後の可能な瞬間は、クエリ応答時になります。</p>
 	<p>だとすれば、名前のマッピングが行われるのは何らかのレコードやゾーンファイル中ではなく、応答が返信される瞬間だということになります。これは微妙ですが重要な違いです。現在のDNSシステムは1つの名前を使ってアドレス群を検索しており、返信する特定アドレスを何らかのポリシーに従って決定する場合が時々あります。この概念を示したのが下図です。クエリが到着すると、その名前に紐づけられたアドレスをルックアップが検索し、そうしたアドレスの1つまたは複数を返してきます。大概はサービスレベルや地理的カバレッジなど追加的なポリシーやロジックでフィルターをかけ、選出されたアドレスをさらに絞っていきます。ここで重要なことは、アドレスはまず名前で識別され、ポリシーはその後で適用されているという点です。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/3_jaJP.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/3_jaJP.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>(a) 従来の権威DNS</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/4_jaJP.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/4_jaJP.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>(b) Addressing Agility</p>
 	<p>アドレス割り当てのアジリティは、この関係を逆にすることによって成立します。Cloudflareのアーキテクチャは、IPアドレスを名前にあらかじめ割り当てるのではなく、ポリシーありきの設計になっています。そのポリシーが名前を含む場合と、含まない場合があります　　（Cloudflareの場合は含みません）。たとえば、ポリシーを場所やアカウントタイプなどの属性で表現し、名前は無視するという方法です（Cloudflareのデプロイメントではこの手法が採用されています）。それらの属性によって、そのポリシーに関連するアドレスプールが特定されます。プール自体は、そのポリシーだけに該当することもあれば、他のプールやポリシーと共通する要素を持つこともあります。しかも、プールに属すアドレスはすべて同等です。つまり、それらのアドレスはどれでも、DNSクエリ名の検査をすることなく返信可能で、ランダムに選んでも差し支えないということです。</p>
 	<p>ここで、クエリごとの応答について注目すべき推察が2点ありますので、それらを少し考えてみましょう。</p>
@@ -75,18 +75,18 @@
 	<p>「何もない」の真の意味をよりよく理解するため、上記の問いに、下から順に回答していきましょう。</p>
 	<p><strong>何が起こっているか見ることが可能ならば、何が見えるか？</strong></p>
 	<p>答えを下図の例で示します。当社のデプロイメントの対象外である「その他地域（Rest of World）」のすべてのデータセンターから、1つのゾーンに対する1つのクエリに同じアドレスが返信されています（Cloudflareのグローバルエニキャストシステムとはそういうものです）。一方、デプロイメント対象地域のデータセンターに来た各クエリは、ランダムなアドレスを受信します。このことは、2つのデータセンターへの次のdigコマンドに見てとれます。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/5_jaJP.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/5_jaJP.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>後続するリクエストトラフィックはどうなるか知りたい方がいるかもしれません。お察しの通り、この2000万余のドメインの<em>いずれ</em>に対しても、接続リクエストをアドレスプール中の<em>全</em>アドレスで受け入れるようにサーバーが構成されているということを意味します。</p>
 	<h4 id="-cloudflare-"><strong>それにしても、Cloudflareを取り巻くシステムには変更が必要だったのではないか？</strong></h4>
 	<p>いいえ。これは、権威DNSのためのデータパイプラインに対するドロップインの透明な変更です。BGP、DDoS、ロードバランサー、分散型キャッシュにおけるルーティングプレフィックスの通知では、変更は一切必要ありませんでした。</p>
 	<p>ただし、1つ興味深い副次的な作用がありました。IPアドレスのランダム化は、ハッシュテーブルの構成における優れたハッシュ関数と同じように、恣意的なサイズのインプットを一定数のアウトプットに均等にマッピングします。その効果、ランダム化前後のIP 1つあたりの負荷を尺度として測ることができます。下のグラフは、7日間にわたって1か所のデータセンターで受信したリクエストの1％をサンプルとして得たデータです。</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/10/image4-24.png" class="kg-image" alt="Before Addressing Agility">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/10/image4-24.png" class="kg-image" alt="Before Addressing Agility" loading="lazy">
 		<figcaption>Addressing Agility導入前</figcaption>
 	</figure>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/10/image2-26.png" class="kg-image" alt="Randomization on /20">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/10/image2-26.png" class="kg-image" alt="Randomization on /20" loading="lazy">
 		<figcaption>/20でランダム化</figcaption>
 	</figure>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/10/image1-40.png" class="kg-image" alt="Randomization on /24">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/10/image1-40.png" class="kg-image" alt="Randomization on /24" loading="lazy">
 		<figcaption>/24でランダム化</figcaption>
 	</figure>
 	<p>ランダム化前は、CloudflareのIPスペースのごく一部について、(a) IPあたりのリクエスト数（左側のy1軸）の最大値と最小値の差は3桁、同様にIPあたりのバイト数（右側のy2軸）ではほぼ6桁です。ランダム化後は、(b) 1回の /20で得られたドメイン（以前は複数 /20）すべてについて、それぞれ2桁と3桁に縮小しています。これをさらに進めて (c) では /24にし、クエリごとに2000万以上のゾーンを256のアドレスにランダム化すると、負荷の差が縮小して小さな定数係数になります。</p>
@@ -110,7 +110,7 @@
 	<p>単一のIPv6アドレスへバインディングすることに対する反論の1つは、アドレスが枯渇する心配がまずないのに不要ではないか、というものです。これはCIDRが登場する以前の立場で、毒にはならないものの無責任だと考えます。上述した通り、IPv6アドレスの数が多いだけに理由の説明は容易ではありません。自問すべきは、なぜ単一のIPv6アドレスを使うのかではなく、「なぜ使わないのか」なのです。</p>
 	<h3 id="--7">アップストリームへの影響は？影響はあるものの機会も！</h3>
 	<p>Ao1によって、IPランダム化のまったく別の意味合いも明らかになりました。一見些細な行動の効果を増幅することで、インターネットのルーティングと到達可能性が将来どうなるのかを垣間見れたといえるでしょう。</p>
-	<p>その理由は？宇宙にあり得る可変長の名前の数は、固定長のアドレスの数を常に上回ります。つまり、<a href="https://en.wikipedia.org/wiki/Pigeonhole_principle" target="_blank">鳩の巣原理</a>によって、単一のIPアドレスを複数の名前、無関係の当事者が提供する異なるコンテンツの間で共用しなければならないということです。</p>
+	<p>その理由は？宇宙にあり得る可変長の名前の数は、固定長のアドレスの数を常に上回ります。つまり、<a href="https://en.wikipedia.org/wiki/Pigeonhole_principle?ref=blog.cloudflare.com" target="_blank">鳩の巣原理</a>によって、単一のIPアドレスを複数の名前、無関係の当事者が提供する異なるコンテンツの間で共用しなければならないということです。</p>
 	<p>Ao1によって増幅されたアップストリームで起こり得る効果は、触れておくべきでしょうから以下で説明します。ただ、これまでのところ、それらの効果はいずれも当社の評価では発現していませんし、アップストリームネットワークとの対話でも話題に上ったことはありません。</p>
 	<ul>
 		<li><strong>アップストリームのルーティングエラーは直接かつ全面的です。</strong>すべてのトラフィックが単一のアドレス（またはプレフィックス）に到着するとなると、アップストリームのルーティングエラーはすべてのコンテンツに等しく影響します。（これが、Cloudflareが不連続のアドレス範囲の2つのアドレスを返信する理由です。）しかし、同じことが脅威のブロックにも該当することに注意してください。</li>
@@ -121,18 +121,18 @@
 	<ul>
 		<li><strong>IPv4 NATのポート枯渇が加速するかもしれませんが、IPv6が解決します。</strong>クライアント側から見れば、1つのアドレスに対して許可できる同時接続数の上限は、トランスポートプロトコルのポートフィールドのサイズ（例：TCPでは約65000）によって決まります。</li>
 	</ul>
-	<p>たとえば、Linux上のTCPでは、これは最近まで問題がありました（この<a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=90c337da1524863838658078ec34241f45d8394d" target="_blank">コミット</a>とマニュアルページip(7)のSO_BIND_ADDRESS_NO_PORTを参照）。UDPには依然この問題があります。一方、QUICでは接続識別子がポート枯渇を防止できますが、まず識別子を使っていなければなりません。ただ、それが問題だという証拠は今のところありません。</p>
+	<p>たとえば、Linux上のTCPでは、これは最近まで問題がありました（この<a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=90c337da1524863838658078ec34241f45d8394d&amp;ref=blog.cloudflare.com" target="_blank">コミット</a>とマニュアルページip(7)のSO_BIND_ADDRESS_NO_PORTを参照）。UDPには依然この問題があります。一方、QUICでは接続識別子がポート枯渇を防止できますが、まず識別子を使っていなければなりません。ただ、それが問題だという証拠は今のところありません。</p>
 	<p>とはいえ、当社で知る限り<em>単一アドレスを使用するリスクはこれだけであり、それもIPv6への移行によって即解決できる</em>という点が嬉しいですね。（ですから、ISPやネットワーク管理者はどうぞIPv6の実装を進めてください！）</p>
 	<h2 id="--8">まだまだこれから！</h2>
 	<p>最後に、冒頭に述べたことを振り返ってみます。どのIPアドレス1つをとっても名前の数が無限で、理由を問わずクエリごとにアドレスを変えることができるなら、<em>あなた</em>は何を構築できるでしょうか？</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/6_jaJP.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/6_jaJP.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>私たちの取り組みはまさしく今始まったばかりです。Addressing Agilityで実現する柔軟性と将来性があれば、新たなシステムやアーキテクチャを構想し、設計し、構築することができます。当社では今後、エニキャストシステムでのBGPルートリークの検出・軽減、評価プラットフォームなどに取り組んでいく計画です。</p>
-	<p>上で述べたことの技術的な詳細と、この記事の執筆に助力くださった方々への謝辞は、本<a href="https://research.cloudflare.com/publications/Fayed2021/" target="_blank">論文</a>および<a href="https://youtu.be/zg6944L-B3M?t=2137" target="_blank">ショートトーク</a>中にあります。今回触れた新たな可能性がある一方、課題も残っています。以下をはじめ、答えがまだない疑問もたくさんあるでしょう（あくまで例示であり、網羅してはいません）。</p>
+	<p>上で述べたことの技術的な詳細と、この記事の執筆に助力くださった方々への謝辞は、本<a href="https://research.cloudflare.com/publications/Fayed2021/?ref=blog.cloudflare.com" target="_blank">論文</a>および<a href="https://youtu.be/zg6944L-B3M?t=2137&amp;ref=blog.cloudflare.com" target="_blank">ショートトーク</a>中にあります。今回触れた新たな可能性がある一方、課題も残っています。以下をはじめ、答えがまだない疑問もたくさんあるでしょう（あくまで例示であり、網羅してはいません）。</p>
 	<ul>
 		<li>どのようなポリシーを合理的に表現し、また実装できるか？</li>
 		<li>表現する際に使う抽象構文や文法はあるか？</li>
 		<li>ポリシーの誤りや矛盾を防ぐために、形式手法・検証は使えるか？</li>
 	</ul>
-	<p>Addressing Agilityは万人向けで、これらのアイデアを広く普及させるためにも必要です。インプットやアイデアを<a href="mailto:ask-research@cloudflare.com" target="_blank">ask-research@cloudflare.com</a>までお寄せください。お待ちしています。</p>
-	<p>博士号過程または同等のリサーチプログラムに在籍する方で、<a href="https://boards.greenhouse.io/cloudflare/jobs/1976547?gh_jid=1976547" target="_blank">米国またはカナダ</a>、<a href="https://boards.greenhouse.io/cloudflare/jobs/2525989?gh_jid=2525989" target="_blank">EUまたは英国</a>で2022年のインターンシップをお探しの方、このようなプロジェクトへの貢献や、Cloudflareのトラフィック・アドレス管理システム開発への協力に関心がある方を、<a href="https://boards.greenhouse.io/cloudflare/jobs/2428325" target="_blank">当社Addressing Engineeringチームで募集しています。ご応募ください</a>！</p>
+	<p>Addressing Agilityは万人向けで、これらのアイデアを広く普及させるためにも必要です。インプットやアイデアを<a href="mailto:ask-research@cloudflare.com?ref=blog.cloudflare.com" target="_blank">ask-research@cloudflare.com</a>までお寄せください。お待ちしています。</p>
+	<p>博士号過程または同等のリサーチプログラムに在籍する方で、<a href="https://boards.greenhouse.io/cloudflare/jobs/1976547?gh_jid=1976547&amp;ref=blog.cloudflare.com" target="_blank">米国またはカナダ</a>、<a href="https://boards.greenhouse.io/cloudflare/jobs/2525989?gh_jid=2525989&amp;ref=blog.cloudflare.com" target="_blank">EUまたは英国</a>で2022年のインターンシップをお探しの方、このようなプロジェクトへの貢献や、Cloudflareのトラフィック・アドレス管理システム開発への協力に関心がある方を、<a href="https://boards.greenhouse.io/cloudflare/jobs/2428325?ref=blog.cloudflare.com" target="_blank">当社Addressing Engineeringチームで募集しています。ご応募ください</a>！</p>
 </div>

@@ -2,25 +2,25 @@
 	<p>API는 인터넷으로 연결된 최신 응용 프로그램에서 생명선 역할을 합니다. 매 1/1000초마다 API는 모바일 응용 프로그램으로부터의 요청, 즉 사진에 '좋아요' 추천하기, 음식 배달 주문하기를 비롯하여, IoT 장치에 차 문 열기, 세탁 사이클 시작하기, 주인이 방금 5km 달리기를 마침 등을 지시하는 것을 포함하여 수많은 작업을 수행합니다.</p>
 	<p>API는 또한 무단 조치 또는 데이터 탈취를 위한 광범위한 공격의 대상이 되기도 합니다. Gartner의 데이터에 따르면 "2019년에는 40%였던 웹 기반 응용 프로그램이 UI보다는 노출된 API의 형태로 공격을 받는 부분이 더 늘어나 2021년경에는 90%에 이를 것"이라고 합니다. Gartner에서는 "2022년경에는 API 남용이 빈번하지 않았던 공격 벡터에서 가장 빈번한 공격 벡터로 옮겨가 기업의 웹 응용 프로그램 데이터 유출의 원인이 될 것"이라고도 예상했습니다[1][2]. Cloudflare의 네트워크를 통과하는 요청은 초당 1800만 개 정도이고 그중 50%는 바로 API로 향하며 이 요청 중 대부분은 악의적인 요청으로 판단되어 차단됩니다.</p>
 	<p>이러한 위협에 대응하기 위해 Cloudflare는 강력한 클라이언트 인증서 기반의 ID와 스키마 기반의 유효성 검사를 통해 API의 보안을 간소화하고 있습니다. 현재 이러한 기능은 새로운 "API Shield" 내의 모든 요금제에서 무료로 이용할 수 있습니다. 또한 현재의 보안 혜택은 <a href="https://blog.cloudflare.com/announcing-grpc/">gRPC 기반의 API까지 확장되는데</a>, 해당 API는 JSON이 아니라 프로토콜 버퍼 등의 바이너리 형식을 사용하며, 고객들의 선호도가 계속 높아지고 있습니다.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image3.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image3.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p>새 기능에 대해 계속 읽어보실 수도 있고, 첫 API Shield 규칙 구성 방법에 대한 예를 알아보시려면 "적용 예시" 단락으로 건너뛰셔도 됩니다.</p>
 	<h2 id="-">능동적 보안 모델 및 클라이언트 인증서</h2>
 	<p>"능동적 보안" 모델은 알려진 행동과 ID만을 허용하고 나머지는 모두 차단하는 모델입니다. 이는 전통적인 "소극적 보안" 모델과는 정반대의 성격입니다. 소극적 모델은 문제가 될 수 있는 IP, ASN, 국가로부터의 요청 또는 문제가 될 수 있는 서명(SQL 삽입 시도 등)이 된 요청을 <em>제외하고는</em> 모든 진입을 허용하는 웹 애플리케이션 방화벽(WAF)으로 실행됩니다.</p>
-	<p>API를 대상으로 능동적 보안 모델을 실행하는 것은 자격 증명 스터핑 공격과 기타 자동화 스캐닝 툴의 노이즈를 제거하는 가장 직접적인 방식입니다. 능동적 모델로 가는 첫 번째 단계는 상호 TLS 인증과 같은 강력한 인증을 배포하는 것입니다. 상호 TLS 인증은 <a href="https://spycloud.com/2020-annual-credential-exposure-report/" target="_blank">비밀번호를 재사용하거나 공유하는 행위</a>에 취약하지 않습니다.</p>
+	<p>API를 대상으로 능동적 보안 모델을 실행하는 것은 자격 증명 스터핑 공격과 기타 자동화 스캐닝 툴의 노이즈를 제거하는 가장 직접적인 방식입니다. 능동적 모델로 가는 첫 번째 단계는 상호 TLS 인증과 같은 강력한 인증을 배포하는 것입니다. 상호 TLS 인증은 <a href="https://spycloud.com/2020-annual-credential-exposure-report/?ref=blog.cloudflare.com" target="_blank">비밀번호를 재사용하거나 공유하는 행위</a>에 취약하지 않습니다.</p>
 	<p>2014년에<a href="https://blog.cloudflare.com/introducing-universal-ssl/">Universal SSL</a>로 서버 인증서 발급을 간소화했듯이, API Shield도 클라이언트 인증서 발급 프로세스를 Cloudflare Dashboard에서 몇 개의 버튼만 클릭하면 되도록 줄여줍니다. 완전히 호스팅된 개인 공개 키 인프라(PKI)를 제공하기 때문에, 자체 인증 기관(CA)을 운영하고 보호하는 일에서 벗어나 응용 프로그램과 기능에 집중할 수 있습니다.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/API_Shield_Mutual_TLS.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/API_Shield_Mutual_TLS.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h2 id="--1">스키마 유효성 검사를 통한 유효한 요청 강제 적용</h2>
 	<p>개발자가 문제 없는 클라이언트(SSL 인증서 소유)만이 API와 연동한다고 확신할 수 있게 되면, 능동적 보안 모델 구현을 위한 그 다음 단계는 그러한 클라이언트가 유효한 요청을 하는지 확인하는 것입니다. 기기에서 클라이언트 인증서를 추출하고 다른 곳에서 재사용하는 것은 어렵기는 하지만 불가능하지는 않습니다. 그러므로 API가 의도한대로 호출되는지 확인하는 작업도 중요합니다.</p>
 	<p>불필요한 입력을 포함한 요청은 API 개발자가 예상하지 못했을 수도 있고 응용 프로그램이 곧바로 처리한다면 문제로 이어질 수도 있으므로 가능하면 이를 제외해야 합니다. API 스키마 유효성 검사는 예상하는 내용에 대한 규칙을 포함하는 계약이나 "스키마"에 대해 API 요청, 즉 URL 다음에 오는 쿼리 매개변수와 POST 본문의 내용을 매칭하는 방식으로 작동합니다. 유효성 검사가 실패할 경우 API 호출이 차단되어 유효하지 않은 요청이나 악의적인 페이로드로부터 원본이 보호됩니다.</p>
 	<p>스키마 유효성 검사는 현재 JSON 페이로드를 대상으로 비공개 베타 버전을 진행 중이며, 로드맵의 gRPC/protocol 버퍼를 함께 지원하고 있습니다. 베타 버전에 참여하시려면 "API Schema Validation Beta(API 스키마 유효성 검사 베타)" 제목으로 지원서를 작성해주세요. 스키마 유효성 검사는 베타 종료 후에 API Shield 사용자 인터페이스의 일부로 제공할 예정입니다.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/API_Shield_Schema_Protection.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/API_Shield_Schema_Protection.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h2 id="--2">적용 예시</h2>
 	<p>IoT 장치와 모바일 응용 프로그램을 구동하는 API가 어떻게 보안을 확보하는지 예시를 보여드리기 위해 클라이언트 인증서와 스키마 유효성 검사를 사용해 API Shield 예시를 구축합니다.</p>
 	<p>온도는 외부 적외선 온도 센서가 장착된 Raspberry Pi 3 Model B+ 데모로 보여주는 IoT 장치로 기록하고, POST 요청을 통해서 Cloudflare가 보호하는 API로 전송됩니다. 그런 다음 GET 요청으로 온도가 검색되어 iOS용 Swift에 내장된 모바일 응용 프로그램에 표시됩니다.</p>
 	<p>두 경우 모두 API는 실제로 Cloudflare Workers®와 Workers KV를 사용해 구축했지만, 인터넷으로 액세스할 수 있는 모든 엔드포인트로 교체할 수 있습니다.</p>
 	<h3 id="1-api-">1. API 구성</h3>
-	<p>안전하게 API와 통신하기 위하여 IoT 장치와 모바일 응용 프로그램을 구성하기 전에, API 엔드포인트를 부트스트랩해야 합니다. 예를 단순화하고 추가 사용자 정의를 허용하기 위해 Cloudflare Worker로서의 API를 구현했습니다(코드는 <a href="https://developers.cloudflare.com/workers/tutorials/build-a-jamstack-app" target="_blank">To-Do List 튜토리얼</a>에서 가져옴).</p>
-	<p>이 특정한 예시에서는 소스 IP 주소를 키로 사용해 온도를 Workers KV에 저장하지만, 이는 지문과 같은 <a href="https://developers.cloudflare.com/access/service-auth/mtls-headers/" target="_blank">클라이언트 인증서에 있는 값</a>으로 쉽게 교체할 수 있습니다. 아래 코드는 POST가 이루어질 때 KV에 온도와 타임스탬프를 저장하고, GET 요청이 들어오면 최근의 온도 5개를 반환합니다.</p>
+	<p>안전하게 API와 통신하기 위하여 IoT 장치와 모바일 응용 프로그램을 구성하기 전에, API 엔드포인트를 부트스트랩해야 합니다. 예를 단순화하고 추가 사용자 정의를 허용하기 위해 Cloudflare Worker로서의 API를 구현했습니다(코드는 <a href="https://developers.cloudflare.com/workers/tutorials/build-a-jamstack-app?ref=blog.cloudflare.com" target="_blank">To-Do List 튜토리얼</a>에서 가져옴).</p>
+	<p>이 특정한 예시에서는 소스 IP 주소를 키로 사용해 온도를 Workers KV에 저장하지만, 이는 지문과 같은 <a href="https://developers.cloudflare.com/access/service-auth/mtls-headers/?ref=blog.cloudflare.com" target="_blank">클라이언트 인증서에 있는 값</a>으로 쉽게 교체할 수 있습니다. 아래 코드는 POST가 이루어질 때 KV에 온도와 타임스탬프를 저장하고, GET 요청이 들어오면 최근의 온도 5개를 반환합니다.</p>
 	<pre><code>const defaultData = { temperatures: [] }
 
 const getCache = key =&gt; TEMPERATURES.get(key)
@@ -126,7 +126,7 @@ $ curl -v -H "Content-Type: application/json" -d '{"temperature":'''$TEMPERATURE
 </code></pre>
 	<h3 id="2-">2. 클라이언트 인증서 발급</h3>
 	<p>Cloudflare API가 있으면 유효한 클라이언트 인증서를 요청하기 위해 API를 잠글 수 있습니다. 하지만 그 전에 해당 인증서를 생성해야 합니다. 인증서를 생성하려면, SSL/TLS → Cloudflare Dashboard의 클라이언트 인증서 탭에서 “인증서 생성”을 클릭하거나, API 호출로 해당 프로세스를 자동화할 수 있습니다.</p>
-	<p>대부분의 개발자가 각자 자신의 개인 키와 CSR을 생성하고 API를 통해 이에 대한 서명을 요청할 것이므로, 여기에 그 프로세스를 작성해 놓았습니다. Cloudflare의 PKI 툴킷 <a href="https://github.com/cloudflare/cfssl" target="_blank">CFSSL</a>을 사용해 먼저 iOS 응용 프로그램에 대한 부트스트랩 인증서를 생성하고 나서, IoT 장치에 대한 인증서를 생성합니다.</p>
+	<p>대부분의 개발자가 각자 자신의 개인 키와 CSR을 생성하고 API를 통해 이에 대한 서명을 요청할 것이므로, 여기에 그 프로세스를 작성해 놓았습니다. Cloudflare의 PKI 툴킷 <a href="https://github.com/cloudflare/cfssl?ref=blog.cloudflare.com" target="_blank">CFSSL</a>을 사용해 먼저 iOS 응용 프로그램에 대한 부트스트랩 인증서를 생성하고 나서, IoT 장치에 대한 인증서를 생성합니다.</p>
 	<figure class="kg-card kg-code-card">
 		<pre><code>$ cat &lt;&lt;'EOF' | tee -a csr.json
 {
@@ -226,7 +226,7 @@ $ curl -H 'X-Auth-Email: YOUR_EMAIL' -H 'X-Auth-Key: YOUR_API_KEY' -H 'Content-T
 	<h3 id="3-api-shield-">3. API Shield 규칙 생성</h3>
 	<p>인증서가 있으면 API 엔드포인트가 인증서의 사용을 요청하도록 구성할 수 있습니다. 아래는 규칙을 생성하는 방법에 대한 적용 예시입니다.</p>
 	<p>이 단계는 어떤 호스트가 인증서(shield.upinatoms.com 등)를 요구하는지 지정하고 API Shield 규칙을 만드는 작업으로 구성됩니다.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/API_Shield_demo.gif" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/API_Shield_demo.gif" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="4-iot-">4. IoT 장치 통신</h3>
 	<p>Cloudflare API 엔드포인트와의 안전한 통신이 가능한 IoT 장치를 준비하려면, API 엔드포인트에 POST 요청 시 사용할 수 있도록 해당 장치에 인증서를 포함하고 Cloudflare의 응용 프로그램을 지정해야 합니다.</p>
 	<p>개인 키와 인증서를 /etc/ssl/private/sensor-key.pem 및 /etc/ssl/certs/sensor.pem에 안전하게 복사하고 샘플 스크립트가 다음의 파일을 지정하도록 수정합니다.</p>
@@ -260,7 +260,7 @@ def main():
     print("Request body: ", r.request.body)
     print("Response status code: %d" % r.status_code)
 </code></pre>
-	<p>해당 스크립트가 <a href="https://shield.upinatoms.com/temps" target="_blank">https://shield.upinatoms.com/temps</a>에 연동을 시도하면, Cloudflare는 ClientCertificate 전송을 요청합니다. 스크립트는 SSL/TLS 핸드셰이크를 완료하는 데 필요한 sensor-key.pem을 가지고 있음을 증명하기 전에 sensor.pem의 내용을 전송합니다.</p>
+	<p>해당 스크립트가 <a href="https://shield.upinatoms.com/temps?ref=blog.cloudflare.com" target="_blank">https://shield.upinatoms.com/temps</a>에 연동을 시도하면, Cloudflare는 ClientCertificate 전송을 요청합니다. 스크립트는 SSL/TLS 핸드셰이크를 완료하는 데 필요한 sensor-key.pem을 가지고 있음을 증명하기 전에 sensor.pem의 내용을 전송합니다.</p>
 	<p>클라이언트 인증서를 전송하지 못하거나, API 요청에서 불필요한 필드를 포함하려는 시도를 한다면, 스키마 유효성 검사가 실패하고(구성이 표시되지 않음) 요청이 거절됩니다.</p>
 	<pre><code>Cloudflare API Shield [IoT device demonstration]
 Request body:  {"temperature": "36.5", "time": "2020-09-28T15:52:19Z"}
@@ -280,9 +280,9 @@ Verifying - Enter Export Password:</code></pre>
 	<h4 id="-ios-"><strong>사용자의 iOS 응용 프로그램에 인증서 번들 추가하기</strong></h4>
 	<p>XCode에서 File(파일) → Add Files To "[Project Name]"("[프로젝트명]"에 파일 추가)를 클릭하고 .pfx 파일을 선택합니다. "Add to target(대상에 추가)"에 체크하고 확인합니다.</p>
 	<h4 id="urlsession-"><strong>URLSession 코드가 클라이언트 인증서를 사용하도록 수정하기</strong></h4>
-	<p><a href="https://leenarts.net/2020/02/28/client-certificate-with-urlsession-in-swift/" target="_blank">이 글은</a> PKCS#11 클래스와<a href="https://developer.apple.com/documentation/foundation/urlsessiondelegate" target="_blank">URLSessionDelegate</a>의 사용을 통한 멋진 시연을 제공해 상호 TLS 인증을 요청하는 API와의 연동 시 이를 완료하기 위해 사용자의 응용 프로그램을 수정하는 내용입니다.</p>
+	<p><a href="https://leenarts.net/2020/02/28/client-certificate-with-urlsession-in-swift/?ref=blog.cloudflare.com" target="_blank">이 글은</a> PKCS#11 클래스와<a href="https://developer.apple.com/documentation/foundation/urlsessiondelegate?ref=blog.cloudflare.com" target="_blank">URLSessionDelegate</a>의 사용을 통한 멋진 시연을 제공해 상호 TLS 인증을 요청하는 API와의 연동 시 이를 완료하기 위해 사용자의 응용 프로그램을 수정하는 내용입니다.</p>
 	<h2 id="--4">앞으로의 전망</h2>
-	<p>앞으로 몇 개월 동안 API 트래픽을 보호하기 위해 설계한 여러 추가 기능과 함께 API Shield를 확장할 계획입니다. 자신의 PKI를 사용하기를 원하는 고객을 위해Cloudflare Access일부로 <a href="https://developers.cloudflare.com/access/service-auth/mtls/" target="_blank">현재 이용 가능한</a> 자체 CA를 가져올 수 있는 기능을 제공할 예정입니다.</p>
+	<p>앞으로 몇 개월 동안 API 트래픽을 보호하기 위해 설계한 여러 추가 기능과 함께 API Shield를 확장할 계획입니다. 자신의 PKI를 사용하기를 원하는 고객을 위해Cloudflare Access일부로 <a href="https://developers.cloudflare.com/access/service-auth/mtls/?ref=blog.cloudflare.com" target="_blank">현재 이용 가능한</a> 자체 CA를 가져올 수 있는 기능을 제공할 예정입니다.</p>
 	<p>스키마 유효성 검사 베타 버전의 피드백을 받는 대로 모든 고객이 보편적으로 이용할 수 있는 기능을 제공하게 되기를 기대하고 있습니다. 베타 버전을 체험 중이고 공유할만한 아이디어가 있으시면, 여러분의 피드백을 들려주세요.</p>
 	<p>인증서와 스키마 유효성 검사 외에도, 우리는 추가 API 보안 기능과 API에 대해 더 깊은 이해를 도울 수 있는 심도있는 분석을 제공하게 된 것을 자랑스럽게 생각합니다. 사용하고 싶은 기능이 있으면 아래 댓글난에 적어주세요!</p>
 	<p><em>1: "2019년에는 40%였던 웹 활성화 응용 프로그램이 UI보다는 노출된 API의 형태로의 공격을 받는 부분이 더 늘어나 2021년경에는 90%에 이를 것이다." 출처: Gartner “Gartner's API Strategy Maturity Model(Gartner의 API 전략 완성 모델”, Saniye Alaybeyi, Mark O'Neill, 2019년 10월 21일. (Gartner 구독 필요)</em></p>

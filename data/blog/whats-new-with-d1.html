@@ -2,14 +2,14 @@
 	<!--kg-card-begin: markdown-->
 	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/de-de/whats-new-with-d1-de-de/">Deutsch</a>, <a href="https://blog.cloudflare.com/fr-fr/whats-new-with-d1-fr-fr/">Français</a>.</small></em></p>
 	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/D1-Open-Beta-dark-1.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>When we announced D1 in May of this year, we knew it would be the start of something new – our first SQL database with Cloudflare Workers. Prior to D1 we’ve announced storage options like KV (key-value store), Durable Objects (single location, strongly consistent data storage) and <a href="https://www.cloudflare.com/learning/cloud/what-is-blob-storage/?ref=blog.cloudflare.com" target="_blank">R2 (blob storage)</a>. But the question always remained “How can I store and query relational data without latency concerns and an easy API?”</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/D1-Open-Beta-dark-1.png" class="kg-image"></figure>
+	<p>When we announced D1 in May of this year, we knew it would be the start of something new – our first SQL database with Cloudflare Workers. Prior to D1 we’ve announced storage options like KV (key-value store), Durable Objects (single location, strongly consistent data storage) and <a href="https://www.cloudflare.com/learning/cloud/what-is-blob-storage/" target="_blank">R2 (blob storage)</a>. But the question always remained “How can I store and query relational data without latency concerns and an easy API?”</p>
 	<p>The long awaited “Cloudflare Database'' was the true missing piece to build your application <strong>entirely </strong>on Cloudflare’s global network, going from a blank canvas in VSCode to a full stack application in seconds. Compatible with the popular SQLite API, D1 empowers developers to build out their databases without getting bogged down by complexity and having to manage every underlying layer.</p>
-	<p>Since our launch announcement in May and private beta in June, we’ve made great strides in building out our vision of a serverless database. With D1 still in <a href="https://www.cloudflare.com/lp/d1/?ref=blog.cloudflare.com" target="_blank">private beta</a> but an open beta on the horizon, we’re excited to show and tell our journey of building D1 and what’s to come.</p>
+	<p>Since our launch announcement in May and private beta in June, we’ve made great strides in building out our vision of a serverless database. With D1 still in <a href="https://www.cloudflare.com/lp/d1/" target="_blank">private beta</a> but an open beta on the horizon, we’re excited to show and tell our journey of building D1 and what’s to come.</p>
 	<h2 id="the-d1-experience">The D1 Experience</h2>
 	<p>We knew from Cloudflare Workers feedback that using Wrangler as the mechanism to create and deploy applications is loved and preferred by many. That’s why when <a href="https://blog.cloudflare.com/10-things-i-love-about-wrangler/">Wrangler 2.0</a> was announced this past May alongside D1, we took advantage of the new and improved CLI for every part of the experience from data creation to every update and iteration. Let’s take a quick look on how to get set up in a few easy steps.</p>
 	<h3 id="create-your-database">Create your database</h3>
-	<p>With the latest version of <a href="https://github.com/cloudflare/wrangler2?ref=blog.cloudflare.com" target="_blank">Wrangler</a> installed, you can create an initialized empty database with a quick</p>
+	<p>With the latest version of <a href="https://github.com/cloudflare/wrangler2" target="_blank">Wrangler</a> installed, you can create an initialized empty database with a quick</p>
 	<p><code>npx wrangler d1 create my_database_name</code></p>
 	<p>To get your database up and running! Now it’s time to add your data.</p>
 	<h3 id="bootstrap-it">Bootstrap it</h3>
@@ -18,21 +18,21 @@
 	<p>and pass through an existing SQLite .sql file of your choice. Your database is now ready for action.</p>
 	<h3 id="develop-test-locally">Develop &amp; Test Locally</h3>
 	<p>With all the improvements we’ve made to Wrangler since version 2 launched <a href="https://blog.cloudflare.com/wrangler-v2-beta/">a few months ago</a>, we’re pleased to report that D1 has full remote &amp; local wrangler dev support:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image2-43.png" class="kg-image" alt="" loading="lazy"></figure>
-	<p>When running <code>wrangler dev -–local -–persist</code>, an SQLite file will be created inside <code>.wrangler/state</code>. You can then use a local GUI program for managing it, like SQLiteFlow (<a href="https://www.sqliteflow.com/?ref=blog.cloudflare.com" target="_blank">https://www.sqliteflow.com/</a>) or Beekeeper (<a href="https://www.beekeeperstudio.io/?ref=blog.cloudflare.com" target="_blank">https://www.beekeeperstudio.io/</a>).</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image2-43.png" class="kg-image"></figure>
+	<p>When running <code>wrangler dev -–local -–persist</code>, an SQLite file will be created inside <code>.wrangler/state</code>. You can then use a local GUI program for managing it, like SQLiteFlow (<a href="https://www.sqliteflow.com/" target="_blank">https://www.sqliteflow.com/</a>) or Beekeeper (<a href="https://www.beekeeperstudio.io/" target="_blank">https://www.beekeeperstudio.io/</a>).</p>
 	<p>Or you can simply use SQLite directly with the SQLite command line by running <code>sqlite3 .wrangler/state/d1/DB.sqlite3</code>:</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image6-8.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image6-8.png" class="kg-image"></figure>
 	<h3 id="automatic-backups-one-click-restore">Automatic backups &amp; one-click restore</h3>
 	<p>No matter how much you test your changes, sometimes things don’t always go according to plan. But with Wrangler you can create a backup of your data, view your list of backups or restore your database from an existing backup. In fact, during the beta, we’re taking backups of your data every hour automatically and storing them in R2, so you will have the option to rollback if needed.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image1-53.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image1-53.png" class="kg-image"></figure>
 	<p>And the best part – if you want to use a production snapshot for local development or to reproduce a bug, simply copy it into the .wrangler/state directory and <code>wrangler dev –-local –-persist</code> will pick it up!</p>
 	<p>Let’s download a D1 backup to our local disk. It’s SQLite compatible.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image4-14.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image4-14.png" class="kg-image"></figure>
 	<p>Now let’s run our D1 worker locally, from the backup.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image5-16.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image5-16.png" class="kg-image"></figure>
 	<h3 id="create-and-manage-from-the-dashboard">Create and Manage from the dashboard</h3>
 	<p>However, we realize that CLIs are not everyone’s jam. In fact, we believe databases should be accessible to every kind of developer – even those without much database experience! D1 is available right from the Cloudflare dashboard giving you near total command parity with Wrangler in just a few clicks. Bootstrapping your database, creating tables, updating your database, viewing tables and triggering backups are all accessible right at your fingertips.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image3-32.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image3-32.png" class="kg-image"></figure>
 	<p>Changes made in the UI are instantly available to your Worker — no deploy required!</p>
 	<p>We’ve told you about some of the improvements we’ve landed since we first announced D1, but as always, we also wanted to give you a small taste (with some technical details) of what’s ahead. One really important functionality of a database is transactions — something D1 wouldn’t be complete without.</p>
 	<h2 id="sneak-peek-how-we-re-bringing-javascript-transactions-to-d1">Sneak peek: how we're bringing JavaScript transactions to D1</h2>
@@ -184,13 +184,13 @@ const fetched = await qb.fetchOne({
 })
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>Check out the project homepage for more information: <a href="https://workers-qb.massadas.com/?ref=blog.cloudflare.com" target="_blank">https://workers-qb.massadas.com/</a>.</p>
+	<p>Check out the project homepage for more information: <a href="https://workers-qb.massadas.com/" target="_blank">https://workers-qb.massadas.com/</a>.</p>
 	<h3 id="d1-console">D1 console</h3>
 	<p>While you can interact with D1 through both Wrangler and the dashboard, Cloudflare Community champion, Isaac McFadyen created the very first D1 console where you can quickly execute a series of queries right through your terminal. With the D1 console, you don’t need to spend time writing the various Wrangler commands we’ve created – just execute your queries.</p>
 	<p>This includes all bells and whistles you would expect from a modern database console including multiline input, command history, validation for things D1 may not yet support, and ability to save your Cloudflare credentials for later use.</p>
-	<p>Check out the full project on <a href="https://github.com/isaac-mcfadyen/d1-console?ref=blog.cloudflare.com" target="_blank">GitHub</a> or <a href="https://www.npmjs.com/package/d1-console?ref=blog.cloudflare.com" target="_blank">NPM</a> for more information.</p>
+	<p>Check out the full project on <a href="https://github.com/isaac-mcfadyen/d1-console" target="_blank">GitHub</a> or <a href="https://www.npmjs.com/package/d1-console" target="_blank">NPM</a> for more information.</p>
 	<h3 id="miniflare-test-integration">Miniflare test Integration</h3>
-	<p>The <a href="https://miniflare.dev/?ref=blog.cloudflare.com" target="_blank">Miniflare project,</a> which powers Wrangler’s local development experience, also provides fully-fledged test environments for popular JavaScript test runners, <a href="https://miniflare.dev/testing/jest?ref=blog.cloudflare.com" target="_blank">Jest</a> and <a href="https://miniflare.dev/testing/vitest?ref=blog.cloudflare.com" target="_blank">Vitest</a>. With this comes the concept of <a href="https://miniflare.dev/testing/jest?ref=blog.cloudflare.com#isolated-storage" target="_blank"><em>Isolated Storage</em></a>, allowing each test to run independently, so that changes made in one don’t affect the others. Brendan Coll, creator of Miniflare, guided the D1 test implementation to give the same benefits:</p><!--kg-card-begin: markdown-->
+	<p>The <a href="https://miniflare.dev/" target="_blank">Miniflare project,</a> which powers Wrangler’s local development experience, also provides fully-fledged test environments for popular JavaScript test runners, <a href="https://miniflare.dev/testing/jest" target="_blank">Jest</a> and <a href="https://miniflare.dev/testing/vitest" target="_blank">Vitest</a>. With this comes the concept of <a href="https://miniflare.dev/testing/jest#isolated-storage" target="_blank"><em>Isolated Storage</em></a>, allowing each test to run independently, so that changes made in one don’t affect the others. Brendan Coll, creator of Miniflare, guided the D1 test implementation to give the same benefits:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">import Worker from ‘../src/index.ts’
 const { DB } = getMiniflareBindings();
 
@@ -230,6 +230,6 @@ describe(‘with two entries in the DB’, () =&gt; {
 	<p>All the databases for tests are run in-memory, so these are lightning fast. And fast, reliable testing is a big part of building maintainable real-world apps, so we’re thrilled to extend that to D1.</p>
 	<h2 id="want-access-to-the-private-beta">Want access to the private beta?</h2>
 	<p>Feeling inspired?</p>
-	<p>We love to see what our beta users build or want to build especially when our products are at an early stage. As we march toward an open beta, we’ll be looking specifically for your feedback. We are slowly letting more folks into the beta, but if you haven’t received your “golden ticket” yet with access, sign up <a href="https://www.cloudflare.com/lp/d1/?ref=blog.cloudflare.com" target="_blank">here</a>! Once you’ve been invited in, you’ll receive an official welcome email.</p>
+	<p>We love to see what our beta users build or want to build especially when our products are at an early stage. As we march toward an open beta, we’ll be looking specifically for your feedback. We are slowly letting more folks into the beta, but if you haven’t received your “golden ticket” yet with access, sign up <a href="https://www.cloudflare.com/lp/d1/" target="_blank">here</a>! Once you’ve been invited in, you’ll receive an official welcome email.</p>
 	<p>As always, happy building!</p>
 </div>

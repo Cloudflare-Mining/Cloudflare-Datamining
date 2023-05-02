@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://lh3.googleusercontent.com/tP04mOJyy0P2m2sYCESZ1ME2Q-KcW9ERsTFu6O4flDLFDYbaPer8-VtUeFiamvHecXSVQppe73_KlJjzu38zETOmup5DGJbhXt010I8-a8hFE-N4eeu5MR8kKP8cEj2IXq5MHAUQ" class="kg-image" alt="Launching a Startup on Cloudflare Workers" loading="lazy"></figure>
-	<p>今週の<a href="https://blog.cloudflare.com/tag/developer-spotlight/">開発者スポットライト</a>シリーズを締めくくるのは、自身のスタートアップである<a href="https://cclip.app/?ref=blog.cloudflare.com" target="_blank">cClip</a>をどのように構築したかを共有してくれるTejas Mehta氏です。</p>
+	<figure class="kg-card kg-image-card"><img src="https://lh3.googleusercontent.com/tP04mOJyy0P2m2sYCESZ1ME2Q-KcW9ERsTFu6O4flDLFDYbaPer8-VtUeFiamvHecXSVQppe73_KlJjzu38zETOmup5DGJbhXt010I8-a8hFE-N4eeu5MR8kKP8cEj2IXq5MHAUQ" class="kg-image" alt="Launching a Startup on Cloudflare Workers"></figure>
+	<p>今週の<a href="https://blog.cloudflare.com/tag/developer-spotlight/">開発者スポットライト</a>シリーズを締めくくるのは、自身のスタートアップである<a href="https://cclip.app/" target="_blank">cClip</a>をどのように構築したかを共有してくれるTejas Mehta氏です。</p>
 	<p>cClipは、実行するOSの種類にかかわらず、「コピー/ペースト」でどのデバイス間でもファイルを伝達することができる素晴らしいツールです。</p>
 	<p>cClipのとても興味深い点は、WorkersとKVをベースに構築された完全なサーバーレスアプリケーションであるにもかかわらず、独占的ではないことです。認証にはFirebase、AppleとGoogle Playストアでの統合ビューにはRevenueCat、その他のすべての請求関連作業にはStripeを使用しています。<br></p>
 	<p>これは、アプリケーション開発の未来を垣間見るものです。これは、現在私たちがパッケージマネージャーからパッケージをインポートするのと同じくらい簡単に他のSaaSアプリケーションを「インポート」しているであろう未来です。また、その外部アプリケーションのAPIを呼び出すことによって単方向だけではなく、Webhooksを使ってイベントを介する双方向通信も可能です。</p>
@@ -10,14 +10,14 @@
 	<p>これが、自分の携帯電話からノートパソコンに画像やリンクを送信するシンプルな転送ツールであるcClipを作るきっかけとなりました。何人かの友人がそれを見て彼らも欲しがりました。その時、多くの仮想ワークスペースに、より強力な生産性とプラットフォームにとらわれない流動性をもたらすことができると気づいたのです。</p>
 	<p>エンドツーエンド暗号化、ライブタイム更新、サブスクリプションモデルを追加した後、私はcClipを一般に公開しました。</p>
 	<h2 id="-"><strong>アーキテクチャ</strong></h2>
-	<p>Erwin氏が述べたように、cClipのアーキテクチャはWorkersだけではなく、他のいくつかのSaaS製品とも統合されています。私は、Webhooksを介してモバイルアプリストアやStripeと簡単に統合させるために<a href="https://www.revenuecat.com/?ref=blog.cloudflare.com" target="_blank">RevenueCat</a>を使用しています。Firebaseは認証とメッセージングの両方に使用され、最後に、クラウドストレージにはB2が使用されます。(少なくともR2が利用可能になるまでは)</p>
+	<p>Erwin氏が述べたように、cClipのアーキテクチャはWorkersだけではなく、他のいくつかのSaaS製品とも統合されています。私は、Webhooksを介してモバイルアプリストアやStripeと簡単に統合させるために<a href="https://www.revenuecat.com/" target="_blank">RevenueCat</a>を使用しています。Firebaseは認証とメッセージングの両方に使用され、最後に、クラウドストレージにはB2が使用されます。(少なくともR2が利用可能になるまでは)</p>
 	<p>そしてもちろん、私たちはすべての単一プラットフォーム用のクライアントも必要とします。</p>
 	<p>図で示すと、次のようになります。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image1-54.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image1-54.png" class="kg-image"></figure>
 	<h3 id="--1"><strong>クライアント</strong></h3>
 	<p>大きな課題の1つは、ありとあらゆるOSとプラットフォーム用のクライアントを作成することでした。少なくとも、iOSとAndroidの両アプリ、Windows、MacおよびWebアプリケーションも必要です。</p>
 	<h4 id="flutter-"><strong>Flutterによる助け</strong></h4>
-	<p><a href="https://flutter.dev/?ref=blog.cloudflare.com" target="_blank">Flutter</a>はクロスプラットフォームアプリケーション開発フレームワークです。これにより、UIとロジックの大部分を単一のコードベースにすることができ、さらに暗号化などの特定の部分をプラットフォーム固有のライブラリとインターフェイスできるようになりました。</p>
+	<p><a href="https://flutter.dev/" target="_blank">Flutter</a>はクロスプラットフォームアプリケーション開発フレームワークです。これにより、UIとロジックの大部分を単一のコードベースにすることができ、さらに暗号化などの特定の部分をプラットフォーム固有のライブラリとインターフェイスできるようになりました。</p>
 	<p>FlutterはiOSとAndroidの両方を十分にサポートしていますが、Flutter Webは、まだ比較的新しいものでした。Flutter WebにはWebWorkerサポートがまだないので、暗号化などのタスクやファイルのアップロードやダウンロードにJavaScriptを多用する必要がありました。私は、より大きなファイルのメモリ消費を節約するために、ダウンロードするストリーム復号化にStreamSaver.jsを使用したかったのです。</p>
 	<p>さらにFlutter Webを使用することで、Webサイトにアクセスする代わりにcClip用のネイティブアプリが必要な場合、WindowsまたはLinuxユーザー用の電子アプリを作成することができました。</p>
 	<h4 id="macos"><strong>macOS</strong></h4>
@@ -29,7 +29,7 @@
 	<p>ユーザーが認証された後、Workersは、ユーザーが特定の場所にあるファイルにアクセスできることを確認したり、RevenueCatによって通知されたときにユーザーのサブスクリプションステータスを更新したりするなど、すべてのアクセス制御を処理します。</p>
 	<p>Workersは、ユーザーのアップロードまたはダウンロード承認のGatekeeperとしての機能を果たします。リクエストが送信されると、WorkersはユーザーのIDを検証し、要求された場所とユーザーのサブスクリプションステータスを確認します。3つすべての確認が取れたら、Workersは要求されたアクションをB2で承認し、対応する情報を返します。</p>
 	<h3 id="--4"><strong>ストレージとメッセージ</strong></h3>
-	<p>ファイルは25MBより大きくなる可能性があり、Workers KVに保存するのは実用的ではなかったので、私はB2クラウドストレージを選択しました。B2クラウドストレージはCloudflareの<a href="https://www.cloudflare.com/ja-jp/bandwidth-alliance/?ref=blog.cloudflare.com" target="_blank">Bandwidth Alliance</a>の一部であり、私がこれらのファイルに対してエグレス料金を支払うことはありません。素晴らしい特典です。</p>
+	<p>ファイルは25MBより大きくなる可能性があり、Workers KVに保存するのは実用的ではなかったので、私はB2クラウドストレージを選択しました。B2クラウドストレージはCloudflareの<a href="https://www.cloudflare.com/ja-jp/bandwidth-alliance/" target="_blank">Bandwidth Alliance</a>の一部であり、私がこれらのファイルに対してエグレス料金を支払うことはありません。素晴らしい特典です。</p>
 	<p>前述のように、B2の前のWorkerはアップロード、ダウンロードおよびその他のB2操作両方のすべての認証と承認を行います。</p>
 	<p>Firebaseは、すべてのクライアントとのリアルタイム通信に使用されます。例えば、サブスクリプション情報はそこに格納され、必要に応じて別のクライアントに通知を送信するのにクラウドメッセージングAPIを使用します。</p>
 	<h3 id="--5"><strong>サブスクリプション管理</strong></h3>
@@ -48,6 +48,6 @@
 	<p>私は現在、デバイス間でどんなファイルでも共有できるようにするピアツーピア転送プロトコルであるcClip Direct実装の刷新に取り組んでいます。Workersを使用して通知とシグナリングを管理し、最初のハンドシェイクプロセスが修正され、FirebaseからDurable ObjectsとWebSocketにリアルタイム通信の移動を検討しています。そしてもちろん、R2が利用可能になった時に試すのが待ちきれません。</p>
 	<p>何であれ、自分が必要として作ったアプリケーションが特に問題なく本格的な製品へと拡張できたのを見れて、本当に良かったです。</p>
 	<p><em>今週の開発者スポットライトシリーズにお付き合いいただき、ありがとうございます。私たちのお客様のCloudflareエコシステムを使用した興味深い問題の解決方法について、楽しんでお読み頂けたら幸いです。今後さらにスポットライトを行っていきたいので、もっと読みたい場合や、私たちに書いて欲しいユースケースがある場合は、お気軽にTwitterや以下リンクのディスカッションで私までお知らせください。</em></p>
-	<p><a href="https://twitter.com/intent/tweet?in_reply_to=1461704069974740993&amp;ref=blog.cloudflare.com" target="_blank"><strong>Twitterでつぶやく</strong></a><a href="https://news.ycombinator.com/item?id=29277866&amp;ref=blog.cloudflare.com" target="_blank"><strong>Hacker Newsで話し合う</strong></a><a href="https://reddit.com/r/CloudFlare/comments/qxh7c2/launching_a_startup_on_cloudflare_workers/?ref=blog.cloudflare.com" target="_blank"><strong>Redditで話し合う</strong></a></p>
+	<p><a href="https://twitter.com/intent/tweet?in_reply_to=1461704069974740993" target="_blank"><strong>Twitterでつぶやく</strong></a><a href="https://news.ycombinator.com/item?id=29277866" target="_blank"><strong>Hacker Newsで話し合う</strong></a><a href="https://reddit.com/r/CloudFlare/comments/qxh7c2/launching_a_startup_on_cloudflare_workers/" target="_blank"><strong>Redditで話し合う</strong></a></p>
 	<p><a href="https://blog.cloudflare.com/tag/full-stack-week/">Full Stack Week</a> <a href="https://blog.cloudflare.com/tag/developer-spotlight/">開発者スポットライト</a> <a href="https://blog.cloudflare.com/tag/flutter/">Flutter</a></p>
 </div>

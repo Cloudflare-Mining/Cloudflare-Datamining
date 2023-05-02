@@ -1,10 +1,10 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/unnamed-5.png" class="kg-image" alt="The Linux Kernel Key Retention Service and why you should use it in your next application"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/11/unnamed-5.png" class="kg-image" alt="The Linux Kernel Key Retention Service and why you should use it in your next application" loading="lazy"></figure>
 	<p>我们希望确保数字数据的安全。我们需要访问网站，发送银行详细信息，输入密码，在线签署文件，登录远程计算机，将数据加密后再存储到数据库，并确保无人可以篡改。密码学可以高度确保数据安全，但我们需要保护加密密钥。</p>
 	<p>同时，我们不能安全地把密钥写在某处，并非只是偶尔使用一下。恰恰相反，密钥涉及我们进行加密操作的每个请求。如果一个网站支持 TLS，就会使用私钥建立每个连接。</p>
 	<p>不幸的是，加密密钥有时会泄漏，一旦发生泄漏，就会导致严重的后果。许多泄漏事件的发生是源于软件缺陷和安全漏洞。本文我们将学习 Linux 内核如何帮助保护加密密钥抵御这类潜在安全漏洞：内存访问违规。</p>
 	<h3 id="-">内存访问违规</h3>
-	<p>根据 <a href="https://www.nsa.gov/Press-Room/News-Highlights/Article/Article/3215760/nsa-releases-guidance-on-how-to-protect-against-software-memory-safety-issues/" target="_blank">NSA</a> 的研究，Microsoft 和 Google 的代码中，约 70% 的漏洞都与内存安全问题有关。内存访问错误的后果很多，包括泄露安全数据（包括加密密钥）。加密密钥只是内存中存储的一些（大部分为随机）数据，因此可能和其他内存数据一样遭遇内存泄漏。以下示例展示了加密密钥如何通过重用栈内存发生意外泄漏。</p>
+	<p>根据 <a href="https://www.nsa.gov/Press-Room/News-Highlights/Article/Article/3215760/nsa-releases-guidance-on-how-to-protect-against-software-memory-safety-issues/?ref=blog.cloudflare.com" target="_blank">NSA</a> 的研究，Microsoft 和 Google 的代码中，约 70% 的漏洞都与内存安全问题有关。内存访问错误的后果很多，包括泄露安全数据（包括加密密钥）。加密密钥只是内存中存储的一些（大部分为随机）数据，因此可能和其他内存数据一样遭遇内存泄漏。以下示例展示了加密密钥如何通过重用栈内存发生意外泄漏。</p>
 	<p>broken.c</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-cpp">#include &lt;stdio.h&gt;
 #include &lt;stdint.h&gt;
@@ -44,7 +44,7 @@ not important, just fyi: hunter2
 		<li>存在缺陷的日志函数可以访问我们进程中的任何内存</li>
 	</ul>
 	<p>我们可能可以利用其他代码轻松解决第一个问题，但第二个问题是软件在操作系统内运行的内在结果。</p>
-	<p>操作系统为每个进程分配了一块连续的虚拟内存，让内核在几个同时运行的进程之间共享有限的计算机资源。这种方法称为<a href="https://en.wikipedia.org/wiki/Virtual_memory" target="_blank">虚拟内存管理</a>。在虚拟内存中，每个进程都有自己的地址空间，无法访问其他进程的内存，但可以访问其地址空间内的任何内存。我们的示例中讨论的是称为“栈”的一块进程内存。</p>
+	<p>操作系统为每个进程分配了一块连续的虚拟内存，让内核在几个同时运行的进程之间共享有限的计算机资源。这种方法称为<a href="https://en.wikipedia.org/wiki/Virtual_memory?ref=blog.cloudflare.com" target="_blank">虚拟内存管理</a>。在虚拟内存中，每个进程都有自己的地址空间，无法访问其他进程的内存，但可以访问其地址空间内的任何内存。我们的示例中讨论的是称为“栈”的一块进程内存。</p>
 	<p>栈由栈帧组成。栈帧是为当前运行的函数动态分配的空间。它包含函数的局部变量、参数和返回地址。编译一个函数时，编译器会计算需要分配多少内存，并请求一个相应大小的栈帧。函数执行完毕后，就会将栈帧标记为自由，可以再次使用。栈帧是一个逻辑块，不提供任何边界检查，不会被删除，而只是标记为自由。此外，虚拟内存是一块连续的地址。这两种陈述都让恶意软件/存在缺陷的代码有可能从虚拟内存的任何位置访问数据。</p>
 	<p>我们的程序 <code>broken.c</code> 的栈如图所示：</p><!--kg-card-begin: html-->
 	<center><img src="https://imagedelivery.net/52R3oh4H-57qkVChwuo3Ag/3526edee-ce7e-4f98-a2bf-ff1efd2fc800/public"></center><!--kg-card-end: html-->
@@ -58,14 +58,14 @@ Traceback (most recent call last):
 IndexError: Replacement index 2 out of range for positional args tuple
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>然而，这只是引述了其中一个<a href="https://www.cvedetails.com/vulnerability-list/vendor_id-10210/opov-1/Python.html" target="_blank">漏洞</a>（目前有 36 个）：</p>
+	<p>然而，这只是引述了其中一个<a href="https://www.cvedetails.com/vulnerability-list/vendor_id-10210/opov-1/Python.html?ref=blog.cloudflare.com" target="_blank">漏洞</a>（目前有 36 个）：</p>
 	<blockquote><em>Python 2.7.14 容易受 Heap-Buffer-Overflow 和 Heap-Use-After-Free 的影响。</em></blockquote>
-	<p>Golang 有其自己的<a href="https://www.cvedetails.com/vulnerability-list/vendor_id-14185/opov-1/Golang.html" target="_blank">溢出漏洞</a>列表，并有一个<a href="https://pkg.go.dev/unsafe" target="_blank">非安全包</a>。从包的名称可知，常见规则和检查在这个包中是不起作用的。</p>
+	<p>Golang 有其自己的<a href="https://www.cvedetails.com/vulnerability-list/vendor_id-14185/opov-1/Golang.html?ref=blog.cloudflare.com" target="_blank">溢出漏洞</a>列表，并有一个<a href="https://pkg.go.dev/unsafe?ref=blog.cloudflare.com" target="_blank">非安全包</a>。从包的名称可知，常见规则和检查在这个包中是不起作用的。</p>
 	<h3 id="heartbleed">Heartbleed</h3>
 	<p>2014 年发现了心脏出血漏洞。（当时）最常用的密码学库 OpenSSL 泄露了私钥。我们<a href="https://blog.cloudflare.com/answering-the-critical-question-can-you-get-private-ssl-keys-using-heartbleed/">也</a>遭遇了这个漏洞攻击。</p>
 	<h3 id="--1">缓解</h3>
 	<p>因此，内存缺陷是必须面对的事实，我们无法真正完全保护自己免受其害。但是，加密密钥比其他数据更具价值，我们是否至少可以更好地保护密钥？</p>
-	<p>如前所述，内存地址空间通常与进程相关。在默认情况下，两个不同的进程不会共用内存，它们的内存地址天然相互隔离。因此，其中一个进程的潜在内存缺陷不会意外泄露另一个进程的加密密钥。ssh-agent 安全协议便是基于这个原理。总是涉及两个进程：客户端/请求者和<a href="https://linux.die.net/man/1/ssh-agent" target="_blank">代理</a>。</p>
+	<p>如前所述，内存地址空间通常与进程相关。在默认情况下，两个不同的进程不会共用内存，它们的内存地址天然相互隔离。因此，其中一个进程的潜在内存缺陷不会意外泄露另一个进程的加密密钥。ssh-agent 安全协议便是基于这个原理。总是涉及两个进程：客户端/请求者和<a href="https://linux.die.net/man/1/ssh-agent?ref=blog.cloudflare.com" target="_blank">代理</a>。</p>
 	<blockquote><em>代理绝不会通过其请求通道发送私钥。而需要私钥的操作将由代理执行，结果则会返回给请求者。因此，私钥不会泄露给使用代理的客户端。</em></blockquote>
 	<p>请求者通常是一个面向网络的进程和/或处理不可信的输入。因此，请求者更可能受到内存相关漏洞的影响，但在这个模式中，它永远无法访问加密密钥（因为密钥存储在一个单独的进程地址空间中），因此绝不会泄露。</p>
 	<p>在 Cloudflare，我们在<a href="https://blog.cloudflare.com/heartbleed-revisited/">无密钥 SSL</a> 中采用同样的原则。客户的私钥安全存储在一个隔离的环境中，不受面向互联网的连接影响。</p>
@@ -85,7 +85,7 @@ IndexError: Replacement index 2 out of range for positional args tuple
 		<li>可以在内核对象上执行各种 ACL</li>
 		<li>而且是在一个独立的地址空间中运行！</li>
 	</ul>
-	<p>幸运的是，<a href="https://www.kernel.org/doc/html/v6.0/security/keys/core.html" target="_blank">Linux 内核密钥保留服务</a>可以执行典型代理进程的所有功能，甚至可能功能更多！</p>
+	<p>幸运的是，<a href="https://www.kernel.org/doc/html/v6.0/security/keys/core.html?ref=blog.cloudflare.com" target="_blank">Linux 内核密钥保留服务</a>可以执行典型代理进程的所有功能，甚至可能功能更多！</p>
 	<p>最初，其设计旨在用于内核服务，例如 dm-crypt/ecryptfs，但后来又开放给用户空间程序使用。这赋予了我们一些优势：</p>
 	<ul>
 		<li>密钥未存储在进程地址空间中</li>
@@ -95,14 +95,14 @@ IndexError: Replacement index 2 out of range for positional args tuple
 	</ul>
 	<p>Linux 内核密钥保留服务使用两类实体进行操作：密钥和密钥环，其中密钥环是一种特殊类型的密钥。如果与文件和目录类比，我们可以说密钥是文件，密钥环是目录。此外，它们的密钥层次结构与文件系统的树状层次结构相似：密钥环引用密钥和其他密钥环，但只有密钥持有实际的加密资料，就像只有文件持有实际数据。</p>
 	<p>密钥有多种类型。密钥的类型决定了可以在密钥上执行哪些操作。例如，用户和注册类的密钥可以持有任意数据块，但注册类密钥永远无法再被用户空间读取，只有内核内服务可以使用。</p>
-	<p>使用内核取代代理进程时，最有趣的密钥类型是<a href="https://man7.org/linux/man-pages/man7/asymmetric.7.html" target="_blank">非对称类</a>。它们可以在内核内保留私钥，让获得许可的应用程序有能力解密或使用密钥签署一些数据。目前仅支持 RSA 密钥，但正在努力增加对 <a href="https://lore.kernel.org/lkml/20221014100737.94742-2-ignat@cloudflare.com/" target="_blank">ECDSA 密钥的支持</a>。</p>
+	<p>使用内核取代代理进程时，最有趣的密钥类型是<a href="https://man7.org/linux/man-pages/man7/asymmetric.7.html?ref=blog.cloudflare.com" target="_blank">非对称类</a>。它们可以在内核内保留私钥，让获得许可的应用程序有能力解密或使用密钥签署一些数据。目前仅支持 RSA 密钥，但正在努力增加对 <a href="https://lore.kernel.org/lkml/20221014100737.94742-2-ignat@cloudflare.com/?ref=blog.cloudflare.com" target="_blank">ECDSA 密钥的支持</a>。</p>
 	<p>虽然密钥负责保护内核内的加密资料，但密钥环决定了密钥的生存期和共享访问权限。举个最简单的例子，特定密钥环被销毁时，仅与该密钥环关联的所有密钥也被安全销毁。我们可以手动创建自定义密钥环，但该服务最强大的功能之一可能是“特殊密钥环”。</p>
-	<p>这些密钥环由内核隐式创建，其生存期与不同内核对象（例如进程或用户）的生存期相关。(目前有四类“隐式”<a href="https://man7.org/linux/man-pages/man7/keyrings.7.html" target="_blank">密钥环</a>），但本文我们仅讨论使用最广泛的两类密钥环：进程密钥环和用户密钥环。</p>
+	<p>这些密钥环由内核隐式创建，其生存期与不同内核对象（例如进程或用户）的生存期相关。(目前有四类“隐式”<a href="https://man7.org/linux/man-pages/man7/keyrings.7.html?ref=blog.cloudflare.com" target="_blank">密钥环</a>），但本文我们仅讨论使用最广泛的两类密钥环：进程密钥环和用户密钥环。</p>
 	<p>用户密钥环的生存期与特定用户的存在绑定在一起，同一 UID 的所有进程共用该密钥环。例如，进程可以在用户密钥环中存储密钥，以同一用户身份运行的另一个进程也可以检索/使用该密钥。从系统中删除 UID 时，内核会将相关用户密钥环下的所有密钥（和其他密钥环）安全销毁。</p>
 	<p>进程密钥环绑定了一些进程，从语义上可能有三种不同类型：进程、线程和会话。进程密钥环与某个特定进程绑定，为该进程私有。因此，进程中的任何代码都可以存储/使用密钥环中的密钥，但其他进程（即使拥有相同的用户 ID 或子进程）无法访问。当该进程终止时，密钥环和相关密钥就会被安全销毁。除了将我们的秘密/密钥存储在一个隔离的地址空间外，进程密钥环还给我们提供了安全保障：无论进程为何终止，密钥都会被销毁——哪怕我们的应用程序严重崩溃，没有获得机会执行任何清理代码，内核仍然会将我们的密钥安全销毁。</p>
 	<p>线程密钥环与进程密钥环相似，但它是私有密钥环，与某个特定线程绑定。例如，我们可以构建一个多线程的 Web 服务器，它可以使用多个私钥为 TLS 连接提供服务，我们可以确保一个线程中的连接/代码绝不会使用与另一个线程关联的私钥（例如，为不同域名提供服务）。</p>
-	<p>会话密钥环让当前进程及其所有子进程可以使用其密钥。当最上面的进程终止时，它就会被销毁，只要最上面的进程存在，子进程就可以存储/访问密钥。当我们使用 <a href="https://man7.org/linux/man-pages/man1/keyctl.1.html" target="_blank">keyctl 工具</a>访问 Linux 内核密钥保留服务，而不是使用内核系统调用接口时，会话密钥在外壳和交互式环境中非常有用。在外壳中，我们一般不能使用进程密钥环，因为执行的每个命令都会创建一个新的进程。因此，如果我们从命令行向进程密钥环添加一个密钥，该密钥会立即被销毁，因为命令执行完毕后，“添加”进程就会终止。我们可以在 <code><a href="https://github.com/iovisor/bpftrace" target="_blank">bpftrace</a></code> 中实际确认一下。</p>
-	<p>我们在一个终端中追踪 <code><a href="https://elixir.bootlin.com/linux/v5.19.17/source/security/keys/user_defined.c#L146" target="_blank">user_destroy</a></code> 函数，该函数负责删除用户密钥。</p><!--kg-card-begin: markdown-->
+	<p>会话密钥环让当前进程及其所有子进程可以使用其密钥。当最上面的进程终止时，它就会被销毁，只要最上面的进程存在，子进程就可以存储/访问密钥。当我们使用 <a href="https://man7.org/linux/man-pages/man1/keyctl.1.html?ref=blog.cloudflare.com" target="_blank">keyctl 工具</a>访问 Linux 内核密钥保留服务，而不是使用内核系统调用接口时，会话密钥在外壳和交互式环境中非常有用。在外壳中，我们一般不能使用进程密钥环，因为执行的每个命令都会创建一个新的进程。因此，如果我们从命令行向进程密钥环添加一个密钥，该密钥会立即被销毁，因为命令执行完毕后，“添加”进程就会终止。我们可以在 <code><a href="https://github.com/iovisor/bpftrace?ref=blog.cloudflare.com" target="_blank">bpftrace</a></code> 中实际确认一下。</p>
+	<p>我们在一个终端中追踪 <code><a href="https://elixir.bootlin.com/linux/v5.19.17/source/security/keys/user_defined.c?ref=blog.cloudflare.com#L146" target="_blank">user_destroy</a></code> 函数，该函数负责删除用户密钥。</p><!--kg-card-begin: markdown-->
 	<pre><code>$ sudo bpftrace -e 'kprobe:user_destroy { printf("destroying key %d\n", ((struct key *)arg0)-&gt;serial) }'
 Att
 </code></pre>
@@ -125,9 +125,9 @@ keyctl_read_alloc: Required key not available
 	<!--kg-card-end: markdown-->
 	<p>所以在上面的示例中，向执行 <code>keyctl add user mykey hunter2 @p</code> 的子壳的进程密钥环中添加了密钥“mykey”。但由于子壳进程在执行命令的那一刻就终止了，其进程密钥环和添加的密钥均被销毁。</p>
 	<p>而会话密钥环则允许交互式命令向我们当前的外壳环境添加密钥，并允许后续命令使用这些密钥。当我们的主外壳进程终止时（登出系统时很可能终止），这些密钥仍将被安全销毁。</p>
-	<p>因此，通过选择合适的密钥环类型，我们可以确保密钥在不需要时被安全销毁。哪怕应用程序崩溃了！这个介绍非常简短，但您可以按照我们的示例玩一下，如需了解整个背景，请访问<a href="https://www.kernel.org/doc/html/v5.8/security/keys/core.html" target="_blank">官方文档</a>。</p>
+	<p>因此，通过选择合适的密钥环类型，我们可以确保密钥在不需要时被安全销毁。哪怕应用程序崩溃了！这个介绍非常简短，但您可以按照我们的示例玩一下，如需了解整个背景，请访问<a href="https://www.kernel.org/doc/html/v5.8/security/keys/core.html?ref=blog.cloudflare.com" target="_blank">官方文档</a>。</p>
 	<h3 id="-linux-ssh-agent">使用 Linux 内核密钥保留服务取代 ssh-agent</h3>
-	<p>我们详细介绍了如何使用 Linux 内核保留服务取代两个孤立的进程。现在该介绍我们的代码了。我们也谈到了 ssh-agent，所以，使用内核密钥取代存储在 agent 内存中的私钥将是一个不错的练习。我们选择将最流行的 SSH 实施方式 <a href="https://github.com/openssh/openssh-portable.git" target="_blank">OpenSSH</a> 作为我们的目标。</p>
+	<p>我们详细介绍了如何使用 Linux 内核保留服务取代两个孤立的进程。现在该介绍我们的代码了。我们也谈到了 ssh-agent，所以，使用内核密钥取代存储在 agent 内存中的私钥将是一个不错的练习。我们选择将最流行的 SSH 实施方式 <a href="https://github.com/openssh/openssh-portable.git?ref=blog.cloudflare.com" target="_blank">OpenSSH</a> 作为我们的目标。</p>
 	<p>需要对代码进行一些小修改，以增加从内核检索密钥的功能。</p><!--kg-card-begin: markdown-->
 	<p>openssh.patch</p>
 	<pre><code>diff --git a/ssh-rsa.c b/ssh-rsa.c
@@ -350,7 +350,7 @@ $ make
 …
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>请注意，我们指示构建系统另外链接 <code><a href="https://man7.org/linux/man-pages/man3/keyctl.3.html" target="_blank">libkeyutils</a></code>，它提供了方便的包装来访问 Linux 内核密钥保留服务。此外，我们不得不禁用 PKCS11 支持，因为在“libkeyutils”中，该代码有一个相同名称的函数，所以存在命名冲突。对此可能有更好的解决办法，但超出了本文的讨论范围。</p>
+	<p>请注意，我们指示构建系统另外链接 <code><a href="https://man7.org/linux/man-pages/man3/keyctl.3.html?ref=blog.cloudflare.com" target="_blank">libkeyutils</a></code>，它提供了方便的包装来访问 Linux 内核密钥保留服务。此外，我们不得不禁用 PKCS11 支持，因为在“libkeyutils”中，该代码有一个相同名称的函数，所以存在命名冲突。对此可能有更好的解决办法，但超出了本文的讨论范围。</p>
 	<p>现在我们得到了已安装补丁的 OpenSSH，我们来测试一下。首先，我们需要生成一个新的 SSH RSA 密钥，我们将用它来访问系统。由于 Linux 内核只支持 PKCS8 格式的私钥，所以我们从一开始就使用这种格式（而不使用默认的 OpenSSH 格式）。</p><!--kg-card-begin: markdown-->
 	<pre><code>$ ./ssh-keygen -b 4096 -m PKCS8
 Generating public/private rsa key pair.

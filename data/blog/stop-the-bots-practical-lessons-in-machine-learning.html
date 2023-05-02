@@ -3,7 +3,7 @@
 	<p>At Cloudflare we’ve built a suite of technologies to combat bots, many of them grounded in Machine Learning. ML is a hot topic these days, but the literature tends to focus on improving the core technology — and not how these learning machines are incorporated into real-world organizations.</p>
 	<p>Given how much experience we have with ML (which we employ for many security and performance products, in addition to bot management), we wanted to share some lessons learned with regard to how this technology manifests in actual products.</p>
 	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/02/Stop-the-Bots.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/02/Stop-the-Bots.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p></p>
 	<p>There tend to be three stages every company goes through in the life cycle of infusing machine learning into their DNA. They are:</p>
 	<ul>
@@ -34,16 +34,16 @@
 	<p>With this framework in mind let’s explore how we’re leveraging machine learning at Cloudflare. </p>
 	<p>To inform our machine learning models, we rely on data from the 13 million domains on Cloudflare’s network, which sees more than 660 billion requests per day serving more than 2.8 billion people per month. We employ this huge volume of data to address one of the most urgent security threats on the web: <strong>bot attacks.</strong></p>
 	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/02/Bot-Attacks.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/02/Bot-Attacks.png" class="kg-image" alt="" loading="lazy"></figure>
 	<h3 id="business-intelligence-1">Business Intelligence</h3>
 	<p>We recently analyzed one day’s worth of requests from across all of Cloudflare’s 13 million domains -- 660 billion requests -- and labeled each potential attack with a ‘bot score’ ranging from 0 to 100. Cloudflare already has an extensive array of tools which help inform this score, but in principle, we could manually label each datapoint as ‘bot’ or ‘not bot’, similar to the dentist example above.</p>
 	<p>One initial takeaway from our analysis was the geographical breakdown of attacks. Rudimentary bot-protection tools rely on blocking IP addresses from countries commonly associated with hostile traffic. But when we ranked the origin of bots across our network, it was obvious that this approach was untenable as most attacks originate from countries with huge volumes of legitimate traffic. A more sophisticated solution allows us to protect against bots without affecting real users.</p>
 	<p></p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/02/image2.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/02/image2.png" class="kg-image" alt="" loading="lazy"></figure>
 	<p></p>
 	<h3 id="standalone-machine-learning-1">Standalone Machine Learning</h3>
 	<p>Having compiled a large dataset sampled from Cloudflare’s network, our team of ML experts developed a state-of-the-art model to predict automated credential stuffing and other bot attacks.</p>
-	<p><strong>Training</strong>: We started with a trillion requests (compiled over multiple days) in our training set, each of them labeled with the aforementioned bot score — and analyzed their features on a CPU/GPU cluster to recognize trends in malicious traffic. We used <a href="https://catboost.ai/" target="_blank">CatBoost</a>, a <a href="https://en.wikipedia.org/wiki/Gradient_boosting" target="_blank">gradient boosting</a> library similar to XGBoost. </p>
+	<p><strong>Training</strong>: We started with a trillion requests (compiled over multiple days) in our training set, each of them labeled with the aforementioned bot score — and analyzed their features on a CPU/GPU cluster to recognize trends in malicious traffic. We used <a href="https://catboost.ai/?ref=blog.cloudflare.com" target="_blank">CatBoost</a>, a <a href="https://en.wikipedia.org/wiki/Gradient_boosting?ref=blog.cloudflare.com" target="_blank">gradient boosting</a> library similar to XGBoost. </p>
 	<p><strong>Validation</strong>: Though we perform hundreds of independent validations tests, the ultimate validation is how many login attempts have been challenged with a Captcha, versus how many have solved a Captcha (a solved Captcha likely indicates a false positive). </p>
 	<p>Over the course of a week, we deployed our solution to 95 websites with WordPress login pages and found that we issued more than 660,000 challenges, of which only 0.32% were solved — meaning our algorithm detected bots with a 99.68% rate of True Positives. </p>
 	<p>While this work is just beginning, WordPress represents 32.5% of all websites worldwide, so this is a very meaningful step forward. Meanwhile, we found that more than 80% of requests to WordPress login pages are Credential Stuffing attacks, underscoring just how prevalent these attacks are.</p>
