@@ -1,11 +1,11 @@
 <div class="post-content lh-copy gray1">
-	<p>今天，我们很高兴宣布对代理<a href="https://grpc.io/?ref=blog.cloudflare.com" target="_blank">gRPC</a>提供Beta支持，gRPC是下一代协议，允许您大规模地构建API。借助Cloudflare上的gRPC，您可以轻松获得传统API的安全、可靠性和性能特性。快来Cloudflare控制面板的网络选项卡中注册Beta版gRPC吧。</p>
+	<p>今天，我们很高兴宣布对代理<a href="https://grpc.io/" target="_blank">gRPC</a>提供Beta支持，gRPC是下一代协议，允许您大规模地构建API。借助Cloudflare上的gRPC，您可以轻松获得传统API的安全、可靠性和性能特性。快来Cloudflare控制面板的网络选项卡中注册Beta版gRPC吧。</p>
 	<p>gRPC已被证明是一种流行的新协议，可用于大规模构建API：它更高效，并提供了优越的双向流功能。然而，由于gRPC使用较新的技术，如HTTP/2，因此现有的安全和性能工具并不支持开箱即用的gRPC流量。这意味着，采用gRPC来支持API的客户必须在现代化和安全性、性能、可靠性之间做出选择。因为支持现代协议并确保人们能够安全、高效地操作它们已镌刻在我们的DNA里，所以我们着手解决这个问题。</p>
 	<p>将gRPC API放在Cloudflare上，您会立即获得Cloudflare附带的好处。是否担心将API暴露给不良行为者？您可以在Cloudflare添加安全功能，例如WAF和Bot管理。需要提升性能？只需开启Argo智能路由，即可减少首字节时间。或者您可以通过添加负载均衡器来提高可靠性。</p>
 	<p>自然而然的，将gRPC插入到<a href="https://blog.cloudflare.com/introducing-api-shield">API Shield</a>中，可以让您通过在边缘强制执行客户端身份验证和模式验证来增加更多安全性。</p>
 	<h3 id="-grpc-">什么是gRPC？</h3>
 	<p>诸如JSON-REST之类的协议多年来一直是面向API的互联网的生力军。其出色之处在于它们可以通过HTTP进行操作，其有效载荷是人类可读的，并且存在大量工具可以快速设置用于与另一台机器进行对话的API。然而，使这些协议流行的同样也有着弱点。JSON，例如，JSON在存储和传输方面效率很低，并且在计算机中对其进行解析也很昂贵。</p>
-	<p>2015年，谷歌推出了<a href="https://grpc.io/?ref=blog.cloudflare.com" target="_blank">gRPC</a>协议，这是一种快速高效的协议，它依赖于二进制协议缓冲区来序列化消息，然后再通过网络进行传输。这样可以防止（一般）人读取它们，但可以提高处理效率。gRPC在微服务时代变得越来越受欢迎，因为它巧妙地解决了上面列出的不足。</p><!--kg-card-begin: markdown-->
+	<p>2015年，谷歌推出了<a href="https://grpc.io/" target="_blank">gRPC</a>协议，这是一种快速高效的协议，它依赖于二进制协议缓冲区来序列化消息，然后再通过网络进行传输。这样可以防止（一般）人读取它们，但可以提高处理效率。gRPC在微服务时代变得越来越受欢迎，因为它巧妙地解决了上面列出的不足。</p><!--kg-card-begin: markdown-->
 	<table>
 		<thead>
 			<tr>
@@ -43,8 +43,8 @@
 	</ul>
 	<p>当然，所有这些都可以与<a href="https://blog.cloudflare.com/introducing-api-shield">API Shield</a>一起使用，API Shield是向任意API端点添加mTLS身份验证的简便方法。</p>
 	<h3 id="-grpc--2">启用gRPC支持</h3>
-	<p>要启用gRPC支持，请前往<a href="https://dash.cloudflare.com/?ref=blog.cloudflare.com" target="_blank">Cloudflare控制面板</a>，然后转到“网络”选项卡。您可以在此注册加入Beta试用。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/12/image-56.png" class="kg-image" alt="" loading="lazy"></figure>
+	<p>要启用gRPC支持，请前往<a href="https://dash.cloudflare.com/" target="_blank">Cloudflare控制面板</a>，然后转到“网络”选项卡。您可以在此注册加入Beta试用。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/12/image-56.png" class="kg-image"></figure>
 	<p>我们在发布时的试用名额有限，但在接下来的几周内，我们将扩大开放范围。注册并转到gRPC支持后，您必须在DNS选项卡中的域上启用Cloudflare代理才能为gRPC API激活Cloudflare。</p>
 	<p>我们很高兴能够为大众提供gRPC支持，让您能够增加安全性、可靠性和性能优势，就像您以前通过Cloudflare获得的那样。点击一下即可启用。快来试用吧，我们期待着您的反馈！</p>
 </div>

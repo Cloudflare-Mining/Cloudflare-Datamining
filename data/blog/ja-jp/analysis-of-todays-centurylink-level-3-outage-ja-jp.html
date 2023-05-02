@@ -3,39 +3,39 @@
 	<h3 id="-">エラーの増加</h3>
 	<p>10:03 UTC（協定世界時）、Cloudflareのモニタリングシステムが、お客様の配信元サーバーに到達するエラーの数が増加するのを観測し始めました。これらのエラーは「522エラー」として報告されたものであり、Cloudflareのネットワークからお客様のアプリケーションがホストされている場所への接続に問題があることを表しています。</p>
 	<p>Cloudflareは、多数かつ多様なネットワークプロバイダーと接続していて、その1つがCenturyLink/Level(3)です。1つのネットワークプロバイダーからのエラーが増加した場合、システムは自動的に別のプロバイダーに切り替えてお客様のアプリケーションにアクセスしようとします。アクセスできるプロバイダーの数を考えると、1つのプロバイダーで問題が発生しても、通常はトラフィックのルーティングを継続することができます。</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/09/1-3-1.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>Cloudflareが接続するさまざまなネットワークプロバイダー。出典：<a href="https://bgp.he.net/AS13335%23_asinfo?ref=blog.cloudflare.com" target="_blank">https://bgp.he.net/AS13335#_asinfo</a>‌‌</figcaption>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/09/1-3-1.png" class="kg-image">
+		<figcaption>Cloudflareが接続するさまざまなネットワークプロバイダー。出典：<a href="https://bgp.he.net/AS13335%23_asinfo" target="_blank">https://bgp.he.net/AS13335#_asinfo</a>‌‌</figcaption>
 	</figure>
 	<h3 id="--1">自動軽減策</h3>
 	<p>今回の場合、522エラーの増加から数秒以内に、システムはCenturyLink/Level(3)からCogent、NTT、GTT、Telia、Tataを含む代替ネットワークプロバイダーにトラフィックを自動的に迂回させました。</p>
 	<p>ネットワークオペレーションセンターにも警告が表示され、当社のチームは、10:09 UTCから自動システムが自動的に対処できなかった問題を軽減するための追加措置を講じ始めました。ネットワークプロバイダーの1つであるCenturyLink/Level(3)が失われても、ほとんどのお客様とエンドユーザーに影響が出ないよう、Cloudflareネットワーク上のトラフィックフローを維持することに成功しました。</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/09/2-1-1.png" class="kg-image" alt="" loading="lazy">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/09/2-1-1.png" class="kg-image">
 		<figcaption>CenturyLink/Level(3)の障害によるインターネットへの被害を認識して自動的にトラフィックを迂回させるDashboard Cloudflareの自動システム。</figcaption>
 	</figure>
 	<p>以下のグラフは、Cloudflareのネットワークと、当社が接続しているネットワークプロバイダーのうち、大手6社のTier-1ネットワークとの間のトラフィックを示しています。赤い部分は、CenturyLink/Level(3)のトラフィックを示しており、インシデント発生中にほぼゼロにまで低下しています。また、インシデント発生時にトラフィックをほかのネットワークプロバイダーに自動的に移し、影響を緩和してトラフィックが流れ続けるようにしていることも確認できます。</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/08/3-2.png" class="kg-image" alt="" loading="lazy">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/08/3-2.png" class="kg-image">
 		<figcaption>Cloudflareが接続しているネットワークプロバイダーのうち、大手6社のTier-1ネットワーク全体のトラフィック。赤で表示されているのが、CenturyLink/Level(3)。</figcaption>
 	</figure>
 	<p>以下のグラフは、インシデント発生時のCloudflareネットワーク全体における522エラー（お客様のアプリケーションにアクセスできないことを表している）を示しています。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/4-2.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/4-2.png" class="kg-image"></figure>
 	<p>10:03 UTCに急増したのは、CenturyLink/Level(3)ネットワークの障害が原因でした。当社の自動システムは即座に始動し、代替ネットワークプロバイダー間でトラフィックの再ルーティングと再分散を試みた結果、エラーがすぐに半減し、これらのパスが自動的に最適化されたため、ピーク時の約25%にまで低下しました。</p>
 	<p>10:03 UTCと10:11 UTCの間で、システムは、接続されている48都市のCenturyLink/Level(3)を自動的に無効化し、別のネットワークプロバイダーにトラフィックを迂回させました。当社のシステムは、カスケード障害を防ぐために、トラフィックをシフトアウトする前に他社プロバイダーの容量を考慮に入れます。このため、フェイルオーバーは自動的に行われますが、すべての場所で瞬時に行われるわけではありません。私たちのチームは、追加の手動軽減策を適用して、エラー数をさらに5%減らすことができました。</p>
 	<h3 id="--2">なぜエラーがゼロにならなかったのか？</h3>
 	<p>残念ながら、依然として一部のお客様との接続を確立できないことを示すエラーが多数発生していました。CenturyLink/Level(3)は、世界最大のネットワークプロバイダーの1つです。その結果として、多くのホスティングプロバイダーは、CenturyLink/Level(3)のネットワークを介してインターネットに接続するシングルホーム接続のみを行っています。</p>
-	<p><a href="https://www.theverge.com/2014/8/20/6046003/a-history-of-metaphors-for-the-internet?ref=blog.cloudflare.com" target="_blank">昔のインターネットを「高速道路」に例えるならば</a>、町への出口が1つしかないようなものです。もし、出口が塞がれている場合、町に到達する方法はありません。CenturyLink/Level(3)のネットワークが経路撤回を受け入れず、撤回後もCloudflareのようなネットワークに経路を広報し続けたため、状況が悪化しました。お客様がCenturyLink/Level(3)を介してのみインターネットに接続している場合、または撤回後もCenturyLink/Level(3)が不良経路を広報し続けた場合、Cloudflareがアプリケーションにアクセスする手段はありませんでした。そうして、CenturyLink/Level(3)が14:30 UTC頃に問題を解決するまで、522エラーは発生し続けました。</p>
+	<p><a href="https://www.theverge.com/2014/8/20/6046003/a-history-of-metaphors-for-the-internet" target="_blank">昔のインターネットを「高速道路」に例えるならば</a>、町への出口が1つしかないようなものです。もし、出口が塞がれている場合、町に到達する方法はありません。CenturyLink/Level(3)のネットワークが経路撤回を受け入れず、撤回後もCloudflareのようなネットワークに経路を広報し続けたため、状況が悪化しました。お客様がCenturyLink/Level(3)を介してのみインターネットに接続している場合、または撤回後もCenturyLink/Level(3)が不良経路を広報し続けた場合、Cloudflareがアプリケーションにアクセスする手段はありませんでした。そうして、CenturyLink/Level(3)が14:30 UTC頃に問題を解決するまで、522エラーは発生し続けました。</p>
 	<p>同じことが、ネットワークのもう一方の（「アイボール」）側でも問題になっていました。個人ユーザーは、インターネットの高速道路への入口を必要とします。インターネットへの入口は、基本的にISPが提供するものです。CenturyLinkは米国最大のISPの1つです。</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/08/image-3.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>出典：<a href="https://broadbandnow.com/CenturyLink?ref=blog.cloudflare.com" target="_blank">https://broadbandnow.com/CenturyLink</a></figcaption>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/08/image-3.png" class="kg-image">
+		<figcaption>出典：<a href="https://broadbandnow.com/CenturyLink" target="_blank">https://broadbandnow.com/CenturyLink</a></figcaption>
 	</figure>
 	<p>この障害は、CenturyLink/Level(3)ネットワークのすべてをオフライン状態にしたようであったため、CenturyLinkのお客様である個人ユーザーは、問題が解決するまでCloudflareやほかのインターネットプロバイダーにアクセスすることができませんでした。世界的には、障害発生時にグローバルトラフィックが3.5%減少しましたが、そのほとんどが米国内のCenturyLinkのISPサービスのほぼ完全な停止によるものでした。</p>
 	<h3 id="--3">何が起こったと思われるか？</h3>
 	<p>CenturyLink/Level(3)が障害報告書を発行するまで何が起こったのか正確にはわかりませんが、BGPアナウンスメントと、障害発生中にそれらがどのようにインターネット全体に伝達したかから手掛かりを得ることができます。BGPはボーダーゲートウェイプロトコルの略です。どのIPが背後にあるのか、どのようなトラフィックを受信すべきか、インターネット上のルーターが、お互いの経路情報をやり取りするために使われるプロトコルのことです。</p>
 	<p>10:04 UTCから、かなりの数のBGPアップデートがありました。BGPアップデートとは、経路が変更された、または利用できなくなったことをルーターが知らせる信号のことです。通常の状況では、インターネットは約1.5 MB～2 MBのBGPアップデートを15分ごとに確認します。インシデントの開始時には、BGPアップデートの数は15分間に26 MB以上に急増し、インシデント発生中ずっと上昇したままでした。</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/08/6-1.png" class="kg-image" alt="" loading="lazy">
-		<figcaption>出典：<a href="http://archive.routeviews.org/bgpdata/2020.08/UPDATES/?ref=blog.cloudflare.com" target="_blank">http://archive.routeviews.org/bgpdata/2020.08/UPDATES/</a></figcaption>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/08/6-1.png" class="kg-image">
+		<figcaption>出典：<a href="http://archive.routeviews.org/bgpdata/2020.08/UPDATES/" target="_blank">http://archive.routeviews.org/bgpdata/2020.08/UPDATES/</a></figcaption>
 	</figure>
 	<p>これらのアップデートは、CenturyLink/Level(3)バックボーン内のBGP経路の不安定性を示しています。問題は、何がこの不安定性を引き起こしたのかということです。CenturyLink/Level(3)のステータスアップデートは、いくつかのヒントとポイントを提供し、根本原因としてFlowspecのアップデートを指摘しています。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/7-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/7-1.png" class="kg-image"></figure>
 	<h3 id="flowspec-">Flowspecとは？</h3>
 	<p>CenturyLink/Level(3)のステータスアップデートでは、不正なFlowspecルールが問題を引き起こしたことについて言及しています。では、Flowspecとは何でしょうか？FlowspecはBGPの拡張機能であり、これにより、BGPを使用して、ファイアウォールのルールをネットワーク全体、またはネットワーク間で簡単に配布することができます。Flowspecは強力なツールです。これにより、ほぼ瞬時にネットワーク全体に効率的にルールをプッシュすることができます。攻撃のようなものに迅速に対応しようとしている時には素晴らしいのですが、一歩間違えると危険なことがあります。</p>
 	<p>Cloudflareでは、創業当初、大規模なネットワーク層のDDoS攻撃を軽減するために、Flowspecを使用してファイアウォールのルールをプッシュしていました。<a href="https://blog.cloudflare.com/todays-outage-post-mortem-82515/">7年以上前に、Cloudflareでも、Flowspecによって障害が発生しました</a>。Cloudflareでは、もうFlowspecは使用していませんが、ネットワークファイアウォールルールをプッシュするための一般的なプロトコルであることに変わりありません。</p>

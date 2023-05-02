@@ -1,5 +1,5 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image3-23.png" class="kg-image" alt="Cloud CNI privately connects your clouds to Cloudflare" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image3-23.png" class="kg-image" alt="Cloud CNI privately connects your clouds to Cloudflare"></figure>
 	<p>CIOにとってネットワーキングは大変なプロセスですが、それが一層大変になることが少なくありません。企業ネットワークには接続が必要なものが多く、各々異なる接続方法が必要です。ユーザーデバイスはセキュアWebゲートウェイ経由の管理された接続が必要、オフィスはパブリックインターネット経由または専用の接続が必要、データセンターは独自のプライベートまたはパブリックな接続が必要といった具合です。加えて、クラウド接続も管理しなければなりません。ユーザーがリソースにプライベートかつ安全に、侵害されない方法でアクセスできるようにしたいだけなのに、それらの異なるシナリオすべての接続を管理し、プライバシーとコンプライアンスの要件遵守も確認するのは実に面倒です。</p>
 	<p>Cloudflareは、Cloudflare Oneでお客様の接続をシンプルにします。直接的なクラウド相互接続をCloudflare Network Interconnect（CNI）でサポートすることによりお客様の相互接続のニーズをすべて満たすワンストップショップになれたことを、本日発表できて嬉しい限りです。 </p>
 	<p>IBM Cloud、Google Cloud、Azure、Oracle Cloud Infrastructure、Amazon Web Servicesをお使いのお客様は、プライベートクラウドインスタンスからCloudflareへの直接接続ができるようになりました。このブログでは、直接クラウド相互接続が重要な理由、Cloudflareでそれが容易になる仕組み、Cloudflareが直接クラウド接続を当社の既存のCloudflare One製品に統合し、Cloudflare上に構築されたお客様の企業ネットワークに一段上のセキュリティを提供する仕組みについてお話します。</p>
@@ -11,23 +11,23 @@
 	<h3 id="--1">パブリックインターネットにおけるプライバシー</h3>
 	<p>しかし、VPCと直接クラウド相互接続がインフラのクラウド移行という問題を解決しても、企業ネットワークをオンプレミスのデプロイメントから移す際には、全く別の課題が持ち上がります。自社のすべてのリソースをつなぐ企業ネットワークが無くなれば、プライベートクラウド接続をどう維持すればよいのかという課題です。</p>
 	<p>データセンター、オフィス、Azureインスタンスをつないでいる企業を例として考えてみましょう。この会社には現在、データセンター、オフィス、クラウドインスタンスのいずれかがホストするアプリケーションに接続するリモートユーザーがいるとします。オフィスユーザーはクラウド上のアプリケーションに接続し、現在はこれらすべてを会社が管理しているとします。この場合、リモートユーザーが必要なアプリケーションにアクセスする前にデータセンターやオフィスへトンネルするVPNを使うことがあります。オフィスとデータセンターは、接続プロバイダーからリースしているMPLSで接続するのが一般的です。また、それとは別に、IBM DirectLink経由で接続するプライベートIBMインスタンスがあるとすると、CIOは3つの接続プロバイダーを管理しなければならないということになります。その上、内部アプリケーション用のアクセスポリシー、複数建物にまたがるネットワークのファイアウォール、プロバイダーアンダーレイ上のMPLSルーティング実装もやらなければなりません。</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/pasted-image-0-1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/pasted-image-0-1.png" class="kg-image"></figure>
 	<p>Cloudflare Oneは、異なる接続オプションすべてのネットワークとしてCloudflareを企業が挿入できるようにすることで、このプロセスを簡略化します。建物間やクラウド間の接続を実行する代わりに、Cloudflareへの接続さえ管理すればよくなります。 </p>
 	<p>WARPがリモートユーザーの接続を管理し、Cloudflare Network Interconnect（CNI）がデータセンターやオフィスからCloudflareへのプライベート接続を提供します。そして、そのすべてをアプリケーション監視のためのAccessポリシーとMagic WANで管理して、ユーザーを必要とする行き先へルーティングすることができます。当社がCloudflare Oneをリリースしたことで、接続が下図のように簡略化されました。</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/pasted-image-0--1--1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/pasted-image-0--1--1.png" class="kg-image"></figure>
 	<p>以前は、プライベートクラウドを使うユーザーはクラウドインスタンスをパブリックインターネットに露出するか、プライベートクラウドインスタンスをCloudflareへ直接接続せず自社データセンターに接続したままにして、最適とは言えないルーティングに甘んじるかしかありませんでした。つまり、それらのユーザーは自社のデータセンターへの直接プライベート接続を維持しなければならず、簡単なはずのソリューションの運用がややこしくなっていたのです。</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/pasted-image-0--2--1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/pasted-image-0--2--1.png" class="kg-image"></figure>
 	<p>現在はCNIがクラウド環境をサポートしていますので、この会社はプライベートクラウドリンクを自社データセンターではなくCloudflareへ直接開設することができます。それにより、この会社は同社の全リソースを結ぶ真の中継者としてCloudflareを使うことができ、ファイアウォールやアクセスポリシー、リソースのルーティングの管理をCloudflareに任せることができます。これで、ルーティング管理に必要なベンダーをCloudflare一社に絞ることが可能になります。</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/pasted-image-0--3--1.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/pasted-image-0--3--1.png" class="kg-image"></figure>
 	<p>すべてをCloudflareに直接接続してしまえば、リソース間のルーティングやファイアウォールをMagic WANで管理することができます。ユーザーポリシーをAccessで直接設定し、パブリックインターネットへのエグレスポリシーも250か所以上あるCloudflareのデータセンターのいずれかでGatewayを通して設定できます。すべてのオフィスとクラウドが、パブリックアクセスも一般公開されたピアリングリンクもない密封されたネットワーク上で相互に通信します。そして最も重要なのは、これらのセキュリティ対策やプライバシー保護策がユーザーに対して完全な透明性を確保しながら実行される点です。</p>
 	<p>では、お客様のクラウドをどうCloudflareへ接続していただけるかについてお話しましょう。</p>
 	<h3 id="--2">迅速なクラウド接続</h3>
 	<p>クラウド接続にあたって最も重要なのは、いかに簡単にできるかです。クロスコネクトの表示を待ったり、LOAを取得したり、光信号のレベルを監視したり、接続のプロビジョニングで通常行うことすべてをするのに、長い時間を費やす必要はありません。クラウドプロバイダーからの接続はクラウドネイティブでなければなりません。クラウドネイティブなら、既存ポータルから直接クラウド接続のプロビジョニングを行い、直接クラウド接続のための既存ステップに従うだけでいいはずです。 </p>
 	<p>このことから、当社は新しいクラウドサポートによりCloudflareとの接続を一層簡単にしました。当社は現在、IBM、AWS、Azure、Google Cloud、OCIとの直接クラウド接続をサポートしており、お客様はお使いのクラウドプロバイダーから直接Cloudflareへ、自社データセンターへ接続する要領で接続のプロビジョニングを行えます。プライベート接続をCloudflareへ移すということは、自社でインフラを保守しなくてよくなるということです。Cloudflareがお客様のインフラストラクチャになりますので、自社デバイスへのクロスコネクトの注文やLOAの取得、光信号レベルのチェックを心配する必要はありません。これがいかに簡単かを知っていただくため、Google Cloudを例に挙げて段階を追って説明しましょう。</p>
 	<p>どのクラウドでも、接続のプロビジョニングの第一ステップは接続のリクエストです。Google Cloudでは、VPCネットワーク詳細の「プライベートサービス接続（Private Service Connection）」を選択することによりリクエストできます。</p>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/Untitled.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/Untitled.png" class="kg-image"></figure>
 	<p>次に、パートナー接続か直接接続かを選択します。Cloudflareの場合は、パートナー接続を選択します。指示に従って接続する地域とデータセンターの所在を選択すると、接続IDと呼ばれるものを取得できます。このIDは、Google CloudとCloudflareがお客様のVPCとのプライベート接続を識別する際に使います。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/Untitled--1-.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/Untitled--1-.png" class="kg-image"></figure>
 	<p>このスクリーンショットでは、パートナー側で接続を設定する必要があると表示されています。この場合は、そのキーを使って既存リンク上に仮想接続を自動プロビジョニングすることができます。プロビジョニングのプロセスは、次の5ステップで構成されています。</p>
 	<ol>
 		<li>プライベート接続を確立するために、お客様の接続に一意のVLANを割り当て</li>
@@ -47,5 +47,5 @@
 	<p>自社ネットワーク外の者には自社クラウドサービスにアクセスして欲しくないと思われるかもしれませんが、時にはパブリックインターネットへの通信が必要になります。幸い、Gatewayがその点をカバーしており、Cloud CNIを使ってCloudflareへのプライベートパスを獲得することができます。エグレスポリシーはすべてCloudflareが管理しますので、クラウドサービスのアウトバウンドトラフィックを、自社ネットワークから出る他のすべてのトラフィックを監視するのと同じ場所から注視することができます。</p>
 	<h3 id="cloud-cni-">Cloud CNI：安全、機能的、簡単</h3>
 	<p>Cloudflareは、Zero Trustとネットワークセキュリティを簡単で邪魔にならないものにすることにコミットしています。Cloud CNIで、お客様のネットワークは他のすべてのものと同様に管理しやすくなり、お客様はネットワークの構築方法ではなくその上に何を作るかに集中しやすくなります。</p>
-	<p>Cloud CNIに関心をお持ちの方は、今すぐ<a href="https://www.cloudflare.com/lp/cio-week-2023-cloudflare-one-contact-us/?ref=blog.cloudflare.com" target="_blank">当社へご連絡ください</a>。シームレスで簡単なZero Trustの世界へご案内します。</p>
+	<p>Cloud CNIに関心をお持ちの方は、今すぐ<a href="https://www.cloudflare.com/lp/cio-week-2023-cloudflare-one-contact-us/" target="_blank">当社へご連絡ください</a>。シームレスで簡単なZero Trustの世界へご案内します。</p>
 </div>

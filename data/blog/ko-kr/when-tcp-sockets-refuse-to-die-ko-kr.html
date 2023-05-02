@@ -1,14 +1,14 @@
 <div class="post-content lh-copy gray1">
 	<p><em>This is a Korean translation of a <a href="https://blog.cloudflare.com/when-tcp-sockets-refuse-to-die/">existing post</a> by <a href="https://blog.cloudflare.com/author/marek-majkowski/">Marek Majkowski</a>, translated by <a href="https://blog.cloudflare.com/author/junho/">Junho Choi</a>.</em></p>
-	<p><a href="https://www.cloudflare.com/products/cloudflare-spectrum/?ref=blog.cloudflare.com" target="_blank">Spectrum 서버</a> 작업을 하는 동안 이상한 점을 알게 되었습니다. 닫혔어야 할 TCP 소켓이 계속 남아있는 것이었습니다. 사실 TCP 소켓이 언제 타임아웃되는지 제대로 알고 있지 못하다는 점을 알게 된 것입니다!</p><!--kg-card-begin: markdown-->
-	<p><img src="https://blog.cloudflare.com/content/images/2019/09/Tcp_state_diagram_fixed_new.svga.png" alt="Tcp_state_diagram_fixed_new.svga" loading="lazy"></p>
-	<center><small><a href="https://commons.wikimedia.org/wiki/File:Tcp_state_diagram_fixed_new.svg?ref=blog.cloudflare.com" target="_blank">Image</a> by Sergiodc2 CC BY SA 3.0</small></center>
+	<p><a href="https://www.cloudflare.com/products/cloudflare-spectrum/" target="_blank">Spectrum 서버</a> 작업을 하는 동안 이상한 점을 알게 되었습니다. 닫혔어야 할 TCP 소켓이 계속 남아있는 것이었습니다. 사실 TCP 소켓이 언제 타임아웃되는지 제대로 알고 있지 못하다는 점을 알게 된 것입니다!</p><!--kg-card-begin: markdown-->
+	<p><img src="https://blog.cloudflare.com/content/images/2019/09/Tcp_state_diagram_fixed_new.svga.png" alt="Tcp_state_diagram_fixed_new.svga"></p>
+	<center><small><a href="https://commons.wikimedia.org/wiki/File:Tcp_state_diagram_fixed_new.svg" target="_blank">Image</a> by Sergiodc2 CC BY SA 3.0</small></center>
 	<!--kg-card-end: markdown-->
-	<p>‌우리 코드에서는 죽은 서버에 대한 연결을 계속 갖고 있지 않다는 것을 확인하고 싶었습니다. 초기 코드에서는 TCP 킵얼라이브를 켜 두는 것만으로 충분할 거라 생각했습니다만... 그렇지 않았습니다. <a href="https://tools.ietf.org/html/rfc5482?ref=blog.cloudflare.com" target="_blank">TCP_USER_TIMEOUT</a> 이라는 새로운 소켓 옵션이 거의 비슷하게 중요하다는 것이었습니다. 게다가 이 기능은 일부 TCP 킵얼라이브 옵션과 연계가 되어 있습니다. <a href="http://codearcana.com/posts/2015/08/28/tcp-keepalive-is-a-lie.html?ref=blog.cloudflare.com" target="_blank">많은 사람</a>들이 이 점을 제대로 이해하지 못하고 있습니다.</p>
+	<p>‌우리 코드에서는 죽은 서버에 대한 연결을 계속 갖고 있지 않다는 것을 확인하고 싶었습니다. 초기 코드에서는 TCP 킵얼라이브를 켜 두는 것만으로 충분할 거라 생각했습니다만... 그렇지 않았습니다. <a href="https://tools.ietf.org/html/rfc5482" target="_blank">TCP_USER_TIMEOUT</a> 이라는 새로운 소켓 옵션이 거의 비슷하게 중요하다는 것이었습니다. 게다가 이 기능은 일부 TCP 킵얼라이브 옵션과 연계가 되어 있습니다. <a href="http://codearcana.com/posts/2015/08/28/tcp-keepalive-is-a-lie.html" target="_blank">많은 사람</a>들이 이 점을 제대로 이해하지 못하고 있습니다.</p>
 	<p>이 블로그 글에서는 이 옵션들이 어떻게 동작하는지 보여 주고자 합니다. TCP 소켓이 그 일생의 여러 단계에서 어떻게 타임아웃될 수 있는지와 TCP 킵얼라이브와 사용자 타임아웃이 어떤 영향을 주는지 알아볼 것입니다. TCP 연결의 내부를 잘 묘사하기 위해서 <code>tcpdump</code> 와 <code>ss -o</code> 명령의 출력을 번갈아 사용하겠습니다. 이것은 TCP 연결에서 전송되는 패킷과 파라미터의 변화를 잘 보여 줍니다.</p>
 	<h2 id="syn-sent">SYN-SENT</h2>
 	<p>제일 간단한 경우부터 시작해 봅시다. 받은 SYN 패킷을 버리는 서버에 연결 시도를 하면 어떻게 될까요?</p>
-	<p><a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2019-09-tcp-keepalives?ref=blog.cloudflare.com" target="_blank">사용된 스크립트는 Github 에 올려</a> 두었습니다.</p>
+	<p><a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2019-09-tcp-keepalives" target="_blank">사용된 스크립트는 Github 에 올려</a> 두었습니다.</p>
 	<pre><code>$ sudo ./test-syn-sent.py
 # 모든 패킷 버림
 00:00.000 IP host.2 &gt; host.1: Flags [S] # 첫번째 SYN
@@ -97,7 +97,7 @@ ESTAB    0      0      host:2     host:1
 State Recv-Q Send-Q Local:Port Peer:Port
 ESTAB 11     0      host:1     host:2
 ESTAB 0      0      host:2     host:1</code></pre>
-	<p>서버 소켓은 TCP 핸드셰이크의 마지막 ACK를 받은 이후에도 SYN-RECV 상태에 남아 있습니다. 재시도 0회에 머물러 있는 흥미로운 "on" 타이머 상태를 볼 수 있는데, 클라이언트가 데이터 패킷을 보내거나 TCP_DEFER_ACCEPT 타이머가 만료된 후에 이 소켓은 &nbsp;ESTAB 상태로 변화 하고 SYN 큐에서 Accept 큐로 이동 합니다. 기본적으로 DEFER_ACCEPT 기능이 켜져 있으면 SYN-RECV 미니 소켓은 <a href="https://marc.info/?l=linux-netdev&amp;m=118793048828251&amp;w=2&amp;ref=blog.cloudflare.com" target="_blank">데이터가 없는 수신 ACK 패킷을 버립니다</a>.</p>
+	<p>서버 소켓은 TCP 핸드셰이크의 마지막 ACK를 받은 이후에도 SYN-RECV 상태에 남아 있습니다. 재시도 0회에 머물러 있는 흥미로운 "on" 타이머 상태를 볼 수 있는데, 클라이언트가 데이터 패킷을 보내거나 TCP_DEFER_ACCEPT 타이머가 만료된 후에 이 소켓은 &nbsp;ESTAB 상태로 변화 하고 SYN 큐에서 Accept 큐로 이동 합니다. 기본적으로 DEFER_ACCEPT 기능이 켜져 있으면 SYN-RECV 미니 소켓은 <a href="https://marc.info/?l=linux-netdev&amp;m=118793048828251&amp;w=2" target="_blank">데이터가 없는 수신 ACK 패킷을 버립니다</a>.</p>
 	<h2 id="-estab-">유휴 상태 ESTAB은 영원하다</h2>
 	<p>이제 이미 끊어진 서버에 연결된 소켓에 대해서 이야기 해 봅니다. 핸드쉐이크 완료 이후에 소켓은 서버 클라이언트 양쪽 모두 ESTABLISHED 상태로 이행 합니다:</p>
 	<pre><code>State Recv-Q Send-Q Local:Port Peer:Port
@@ -128,13 +128,13 @@ ESTAB 0      0      host:2     host:1  timer:(keepalive,2.992ms,0)
 	<p>‌‌그렇습니다! 5초 시점에서 첫번째 탐색 패킷을 보낸 것을 볼 수 있고 나머지 두개는 3초씩 떨어져 있습니다 - 앞에서 정의한 그대로입니다. 3개의 탐색 패킷을 보낸 뒤에 다시 3초 뒤에 연결은 ETIMEDOUT으로 종료 되고 마지막으로 RST가 전송 됩니다.</p>
 	<p>킵얼라이브가 동작하기 위해서는 송신 버퍼가 비어 있어야 합니다. "timer:(keepalive)" 행에서 킵얼라이브 타이머가 동작 중임을 알 수 있습니다.</p>
 	<h2 id="tcp_user_timeout-">TCP_USER_TIMEOUT와 같이 킵얼라이브를 쓰면 혼동스럽다</h2>
-	<p>TCP_USER_TIMEOUT 옵션에 대해서 언급한 적 있습니다. 이 옵션은 커널이 연결을 강제로 끊기 전에 데이터가 승인 받지 않은 상태로 남아 있을 최대의 시간을 지정 합니다. 유휴 연결의 경우에는 큰 영향이 없습니다. 소켓은 연결이 끊어져도 ESTABLISHED 상태로 남아 있을 것입니다. 하지만 이 소켓 옵션은 TCP 킵얼라이브의 동작 방식을 변경 합니다. <a href="https://linux.die.net/man/7/tcp?ref=blog.cloudflare.com" target="_blank">tcp(7) 매뉴얼 페이지</a>는 다소 애매합니다:</p>
+	<p>TCP_USER_TIMEOUT 옵션에 대해서 언급한 적 있습니다. 이 옵션은 커널이 연결을 강제로 끊기 전에 데이터가 승인 받지 않은 상태로 남아 있을 최대의 시간을 지정 합니다. 유휴 연결의 경우에는 큰 영향이 없습니다. 소켓은 연결이 끊어져도 ESTABLISHED 상태로 남아 있을 것입니다. 하지만 이 소켓 옵션은 TCP 킵얼라이브의 동작 방식을 변경 합니다. <a href="https://linux.die.net/man/7/tcp" target="_blank">tcp(7) 매뉴얼 페이지</a>는 다소 애매합니다:</p>
 	<blockquote>또한 TCP 킵얼라이브 (SO_KEEPALIVE) 옵션과 같이 사용하게 되면 TCP_USER_TIMEOUT은 킵얼라이브 실패로 인한 연결 종료 시에 킵얼라이브 값을 덮어쓴다.</blockquote>
 	<p>원래의 커밋 메시지가 좀 더 자세합니다:</p>
 	<ul>
-		<li><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=dca43c75e7e545694a9dd6288553f55c53e2a3a3&amp;ref=blog.cloudflare.com" target="_blank">tcp: TCP_USER_TIMEOUT 소켓 옵션 추가</a></li>
+		<li><a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=dca43c75e7e545694a9dd6288553f55c53e2a3a3" target="_blank">tcp: TCP_USER_TIMEOUT 소켓 옵션 추가</a></li>
 	</ul>
-	<p>동작 방식을 이해하기 위해 커널 코드 <a href="https://github.com/torvalds/linux/blob/b41dae061bbd722b9d7fa828f35d22035b218e18/net/ipv4/tcp_timer.c?ref=blog.cloudflare.com#L693-L697" target="_blank">linux/net/ipv4/tcp_timer.c:693</a> 를 봅시다: </p>
+	<p>동작 방식을 이해하기 위해 커널 코드 <a href="https://github.com/torvalds/linux/blob/b41dae061bbd722b9d7fa828f35d22035b218e18/net/ipv4/tcp_timer.c#L693-L697" target="_blank">linux/net/ipv4/tcp_timer.c:693</a> 를 봅시다: </p>
 	<pre><code class="language-c">if ((icsk-&gt;icsk_user_timeout != 0 &amp;&amp;
     elapsed &gt;= msecs_to_jiffies(icsk-&gt;icsk_user_timeout) &amp;&amp;
     icsk-&gt;icsk_probes_out &gt; 0) ||</code></pre>
@@ -200,7 +200,7 @@ ESTAB 0      11     host:2     host:1    timer:(on,1.304ms,3)
 13:38.524 IP host.2 &gt; host.1: Flags [P.], length 11 # 열다섯번째
 15:39.500 연결 ETIMEDOUT</code></pre>
 	<p>데이터 패킷은 아래에 설정된 바와 같이 15회 재전송 됩니다. </p>
-	<p><a href="https://www.kernel.org/doc/Documentation/networking/ip-sysctl.txt?ref=blog.cloudflare.com" target="_blank"><code>ip-sysctl.txt</code> 문서</a>에 의하면 다음과 같습니다:</p>
+	<p><a href="https://www.kernel.org/doc/Documentation/networking/ip-sysctl.txt" target="_blank"><code>ip-sysctl.txt</code> 문서</a>에 의하면 다음과 같습니다:</p>
 	<blockquote>기본값 15는 이론상 약 924.6초의 타임아웃을 의미하며 실효적인 타임아웃의 하한값이 된다. TCP는 이 이론적인 타임아웃 값을 초과하는 첫번째 RTO에서 타임아웃 된다.</blockquote>
 	<p>이 연결은 약 940초에서 종료 되었습니다. 소켓에 "on" 타이머가 동작하고 있다는 점에 유의하기 바랍니다. SO_KEEPALIVE를 지정하였는지는 중요하지 않습니다 - "on" 타이머가 동작 중이면 킵얼라이브는 유효하지 않습니다.</p>
 	<p>이 경우에도 TCP_USER_TIMEOUT 은 계속 동작 합니다. 연결은 마지막에 받은 패킷 이후 사용자 타임아웃 시간 뒤에 바로 종료 됩니다. 사용자 타임아웃이 설정 되면 <code>tcp_retries2</code> 값은 무시 됩니다.</p>
@@ -262,7 +262,7 @@ ESTAB 0      129920 host:2     host:1  timer:(persist,048ms,0)</code></pre>
         # 전송속도 96Kbps 이상, ok!
     else:
         # 소켓이 너무 느림...</code></pre>
-	<p>이 로직을 개선할 방법이 있을 것입니다. <a href="https://lwn.net/Articles/560082/?ref=blog.cloudflare.com" target="_blank">TCP_NOTSENT_LOWAT</a>을 사용할 수 있겠지만 송신 버퍼가 상대적으로 비어 있을 경우에만 일반적으로 유용 합니다. 그렇다면 데이터가 송신 되었을 때를 알려 주는 <a href="https://www.kernel.org/doc/Documentation/networking/timestamping.txt?ref=blog.cloudflare.com" target="_blank">SO_TIMESTAMPING</a> 인터페이스를 사용할 수도 있을 것입니다. 마지막으로 소켓에 데이터를 다 보냈다면 그냥 <code>close()</code>를 호출해서 남은 소켓 처리를 운영체제로 넘길 수도 있습니다. 이런 소켓은 완전히 비워질 때 까지 FIN-WAIT-1 이나 LAST-ACK 상태로 남아 있을 것입니다.</p>
+	<p>이 로직을 개선할 방법이 있을 것입니다. <a href="https://lwn.net/Articles/560082/" target="_blank">TCP_NOTSENT_LOWAT</a>을 사용할 수 있겠지만 송신 버퍼가 상대적으로 비어 있을 경우에만 일반적으로 유용 합니다. 그렇다면 데이터가 송신 되었을 때를 알려 주는 <a href="https://www.kernel.org/doc/Documentation/networking/timestamping.txt" target="_blank">SO_TIMESTAMPING</a> 인터페이스를 사용할 수도 있을 것입니다. 마지막으로 소켓에 데이터를 다 보냈다면 그냥 <code>close()</code>를 호출해서 남은 소켓 처리를 운영체제로 넘길 수도 있습니다. 이런 소켓은 완전히 비워질 때 까지 FIN-WAIT-1 이나 LAST-ACK 상태로 남아 있을 것입니다.</p>
 	<h2 id="--1">끝으로</h2>
 	<p>이 글에서는 TCP 연결에서 상대방이 없어졌는지를 알아보는 다섯가지 방법에 대해서 이야기 하였습니다:</p>
 	<ul>
@@ -275,6 +275,6 @@ ESTAB 0      129920 host:2     host:1  timer:(persist,048ms,0)</code></pre>
 	<p>특히 마지막 두개의 ESTABLISHED 연결은 TCP_USER_TIMEOUT 설정이 가능하지만 이 설정은 다른 경우에 영향을 미칩니다. 일반적으로 말하자면 TCP_USER_TIMEOUT는 마지막 정상 패킷 이후 몇 초 뒤에 연결을 중지할지에 대한 힌트를 제공하는 것입니다. 약간 위험한 설정이기도 한데, TCP 킵얼라이브와 같이 사용한다면 이 값은 <code>TCP_KEEPIDLE + TCP_KEEPINTVL * TCP_KEEPCNT</code> 보다 약간 작아야 합니다. 그렇지 않으면 TCP_KEEPCNT 값을 무시하게 만들 가능성이 있습니다.</p>
 	<p>이 글에서는 여러가지 네트워크 상태에서 타임아웃 관련된 소켓 옵션의 효과를 보여 주는 스크립트를 제공 하였습니다. <code>tcpdump</code> 패킷 캡처와 <code>ss -o</code> 출력을 같이 놓고 보는 것은 네트워킹 스택을 이해 하는 좋은 방법입니다. 실제 타이머가 "on", "keepalive", "persist" 상태로 보여 지는 반복 가능한 테스트 케이스를 만들어 낼 수 있었습니다. 이것은 추가적인 실험을 위한 매우 유용한 프레임워크입니다.</p>
 	<p>마지막으로, 원격 호스트가 실제로 살아 있는지 알기 위해 TCP 연결을 튜닝하는 것은 의외로 어렵습니다. 디버깅하는 동안 송신 버퍼 크기와 현재 동작중인 TCP 타이머를 살펴보는 것은 소켓이 실제로 살아 있는지 확인하기 위해 매우 유용하다는 점을 알았습니다. 우리의 Spectrum 어플리케이션의 버그는 결국 잘못된 TCP_USER_TIMEOUT 설정에 있었습니다 - 이것을 설정하지 않으면 큰 소켓 버퍼가 의도하던 것 보다 훨씬 오래 남아 있던 것이었습니다.</p>
-	<p>이 기사에서 <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2019-09-tcp-keepalives?ref=blog.cloudflare.com" target="_blank">사용된 스크립트는 Github 에서</a> 찾아볼 수 있습니다.</p>
-	<p>위와 같은 것을 알아내는 것은 여러곳의 클라우드플레어 사무실과의 협력이 있어서 가능 했습니다. 산호세의 <a href="https://twitter.com/Hirenpanchasara?ref=blog.cloudflare.com" target="_blank">Hiren Panchasara</a>, 오스틴의 <a href="https://twitter.com/warrncn?ref=blog.cloudflare.com" target="_blank">Warren Nelson</a> 과 바르샤바의 <a href="https://twitter.com/jkbs0?ref=blog.cloudflare.com" target="_blank">Jakub Sitnicki</a> 이 도와 주었습니다. 같이 일해 보면 어떨까요? <a href="https://www.cloudflare.com/careers/departments/?utm_referrer=blog&amp;ref=blog.cloudflare.com" target="_blank">지원 하세요!</a></p>
+	<p>이 기사에서 <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2019-09-tcp-keepalives" target="_blank">사용된 스크립트는 Github 에서</a> 찾아볼 수 있습니다.</p>
+	<p>위와 같은 것을 알아내는 것은 여러곳의 클라우드플레어 사무실과의 협력이 있어서 가능 했습니다. 산호세의 <a href="https://twitter.com/Hirenpanchasara" target="_blank">Hiren Panchasara</a>, 오스틴의 <a href="https://twitter.com/warrncn" target="_blank">Warren Nelson</a> 과 바르샤바의 <a href="https://twitter.com/jkbs0" target="_blank">Jakub Sitnicki</a> 이 도와 주었습니다. 같이 일해 보면 어떨까요? <a href="https://www.cloudflare.com/careers/departments/?utm_referrer=blog" target="_blank">지원 하세요!</a></p>
 </div>

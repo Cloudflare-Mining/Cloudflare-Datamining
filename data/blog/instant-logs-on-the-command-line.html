@@ -1,11 +1,11 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/02/image3-10-2.png" class="kg-image" alt="Slicing and Dicing Instant Logs: Real-time Insights on the Command Line" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/02/image3-10-2.png" class="kg-image" alt="Slicing and Dicing Instant Logs: Real-time Insights on the Command Line"></figure>
 	<p>During Speed Week 2021 we announced a new offering for Enterprise customers, <a href="https://blog.cloudflare.com/how-we-built-instant-logs/">Instant Logs</a>. Since then, the team has not slowed down and has been working on new ways to enable our customers to consume their logs and gain powerful insights into their HTTP traffic in real time.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/02/image1-6.png" class="kg-image" alt="Screenshot showing the Instant Logs dashboard with an expanded row showing details about a request" loading="lazy" title="Instant Logs Dashboard"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/02/image1-6.png" class="kg-image" alt="Screenshot showing the Instant Logs dashboard with an expanded row showing details about a request" title="Instant Logs Dashboard"></figure>
 	<p>We recognize that as developers, UIs are useful but sometimes there is the need for a more powerful alternative. Today, I am going to introduce you to Instant Logs in your terminal! In order to get started we need to install a few open-source tools to help us:</p>
 	<ul>
-		<li><a href="https://github.com/vi/websocat?ref=blog.cloudflare.com" target="_blank">Websocat</a> - to connect to WebSockets.</li>
-		<li><a href="https://github.com/rcoh/angle-grinder?ref=blog.cloudflare.com" target="_blank">Angle Grinder</a> - a utility to slice-and-dice a stream of logs on the command line.</li>
+		<li><a href="https://github.com/vi/websocat" target="_blank">Websocat</a> - to connect to WebSockets.</li>
+		<li><a href="https://github.com/rcoh/angle-grinder" target="_blank">Angle Grinder</a> - a utility to slice-and-dice a stream of logs on the command line.</li>
 	</ul>
 	<h2 id="creating-an-instant-log-s-session">Creating an Instant Log’s Session</h2>
 	<p>For enterprise zones with access to Instant Logs, you can create a new session by sending a POST request to our jobs' endpoint. You will need:</p>
@@ -43,7 +43,7 @@
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<h2 id="connect-to-websocket">Connect to WebSocket</h2>
-	<p>Using a CLI utility like <a href="https://github.com/vi/websocat?ref=blog.cloudflare.com" target="_blank">Websocat</a>, you can connect to the WebSocket and start immediately receiving logs of line-delimited JSON.</p><!--kg-card-begin: markdown-->
+	<p>Using a CLI utility like <a href="https://github.com/vi/websocat" target="_blank">Websocat</a>, you can connect to the WebSocket and start immediately receiving logs of line-delimited JSON.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-bash">websocat wss://logs.cloudflare.com/instant-logs/ws/sessions/949f9eb846f06d8f8b7c91b186a349d2
 {"ClientRequestHost":"example.com","ClientRequestMethod":"GET","ClientRequestPath":"/","EdgeEndTimestamp":"2022-01-25T17:23:05Z","EdgeResponseBytes":363,"EdgeResponseStatus":200,"EdgeStartTimestamp":"2022-01-25T17:23:05Z","RayID":"6d332ff74fa45fbe","sampleInterval":1}
 {"ClientRequestHost":"example.com","ClientRequestMethod":"GET","ClientRequestPath":"/","EdgeEndTimestamp":"2022-01-25T17:23:06Z","EdgeResponseBytes":363,"EdgeResponseStatus":200,"EdgeStartTimestamp":"2022-01-25T17:23:06Z","RayID":"6d332fffe9c4fc81","sampleInterval":1}
@@ -53,13 +53,13 @@
 	<p>Now that you are able to create a new Instant Logs session let’s give it a purpose! Say you just recently deployed a new firewall rule blocking users from downloading a specific asset that is only available to users in Canada. For the purpose of this example, the asset is available at the path <code>/canadians-only</code>.</p>
 	<h3 id="specifying-fields">Specifying Fields</h3>
 	<p>In order to see what firewall actions (if any) were taken, we need to make sure that we include <code>ClientRequestCountry</code>, <code>​​FirewallMatchesActions</code> and <code>FirewallMatchesRuleIDs</code> fields when creating our session.</p>
-	<p>Additionally, any field available in our HTTP request dataset is usable by Instant Logs. You can view the entire list of HTTP Request fields <a href="https://developers.cloudflare.com/logs/reference/log-fields/zone/http_requests?ref=blog.cloudflare.com" target="_blank">on our developer docs</a>.</p>
+	<p>Additionally, any field available in our HTTP request dataset is usable by Instant Logs. You can view the entire list of HTTP Request fields <a href="https://developers.cloudflare.com/logs/reference/log-fields/zone/http_requests" target="_blank">on our developer docs</a>.</p>
 	<h3 id="choosing-a-sample-rate">Choosing a Sample Rate</h3>
 	<p>Instant Logs users also have the ability to choose a sample rate. The <code>sample</code> parameter is the inverse probability of selecting a log. This means that <code>"sample": 1</code> is 100% of records, <code>"sample": 10</code> is 10% and so on.</p>
 	<p>Going back to our example of validating that our newly deployed firewall rule is working as expected, in this case, we are choosing not to sample the data by setting <code>"sample": 1</code>.</p>
 	<p>Please note that Instant Logs has a maximum data rate supported. For high volume domains, we sample server side as indicated in the "sampleInterval" parameter returned in the logs. For example, "sampleInterval": 10 indicates this log message is just one out of 10 logs received.</p>
 	<h3 id="defining-the-filters">Defining the Filters</h3>
-	<p>Since we are only interested in requests with the path of <code>/canadians-only</code>, we can use filters to remove any logs that do not match that specific path. The filters consist of three parts: <code>key</code>, <code>operator</code> and <code>value</code>. The <code>key</code> can be any field specified in the <code>"fields": ""</code> list when creating the session. The complete list of supported operators can be found on our <a href="https://developers.cloudflare.com/logs/instant-logs?ref=blog.cloudflare.com" target="_blank">Instant Logs documentation</a>.</p>
+	<p>Since we are only interested in requests with the path of <code>/canadians-only</code>, we can use filters to remove any logs that do not match that specific path. The filters consist of three parts: <code>key</code>, <code>operator</code> and <code>value</code>. The <code>key</code> can be any field specified in the <code>"fields": ""</code> list when creating the session. The complete list of supported operators can be found on our <a href="https://developers.cloudflare.com/logs/instant-logs" target="_blank">Instant Logs documentation</a>.</p>
 	<p>To only get the logs of requests destined to <code>/canadians-only</code>, we can specify the following filter:</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-json">{
   "filter": "{\"where\":{\"and\":[{\"key\":\"ClientRequestPath\",\"operator\":\"eq\",\"value\":\"/canadians-only\"}]}}"
@@ -81,7 +81,7 @@
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<h3 id="angle-grinder">Angle Grinder</h3>
-	<p>Now that we have a connection to our WebSocket and are receiving logs that match the request path <code>/canadians-only</code>, we can start slicing and dicing the logs to see that the rule is working as expected. A handy tool to use for this is <a href="https://github.com/rcoh/angle-grinder?ref=blog.cloudflare.com" target="_blank">Angle Grinder</a>. Angle Grinder lets you apply filtering, transformations and aggregations on stdin with first class JSON support. For example, to get the number of visitors from each country we can sum the number of events by the <code>ClientCountry</code> field.</p><!--kg-card-begin: markdown-->
+	<p>Now that we have a connection to our WebSocket and are receiving logs that match the request path <code>/canadians-only</code>, we can start slicing and dicing the logs to see that the rule is working as expected. A handy tool to use for this is <a href="https://github.com/rcoh/angle-grinder" target="_blank">Angle Grinder</a>. Angle Grinder lets you apply filtering, transformations and aggregations on stdin with first class JSON support. For example, to get the number of visitors from each country we can sum the number of events by the <code>ClientCountry</code> field.</p><!--kg-card-begin: markdown-->
 	<pre><code class="language-bash">websocat wss://logs.cloudflare.com/instant-logs/ws/sessions/949f9eb846f06d8f8b7c91b186a349d2 | agrind '* | json | sum(sampleInterval) by ClientCountry'
 ClientCountry    	_sum
 ---------------------------------

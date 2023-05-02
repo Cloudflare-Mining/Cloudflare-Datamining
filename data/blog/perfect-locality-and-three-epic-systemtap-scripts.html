@@ -1,30 +1,30 @@
 <div class="post-content lh-copy gray1">
 	<!--kg-card-begin: markdown-->
-	<p>In a recent blog post we discussed <a href="https://blog.cloudflare.com/the-sad-state-of-linux-socket-balancing/">epoll behavior causing uneven load</a> among NGINX worker processes. We suggested a work around - the REUSEPORT socket option. It changes the queuing from "combined queue model" aka Waitrose (formally: <a href="http://people.revoledu.com/kardi/tutorial/Queuing/MMs-Queuing-System.html?ref=blog.cloudflare.com" target="_blank">M/M/s</a>), to a dedicated accept queue per worker aka "the Tesco superstore model" (formally: <a href="http://people.revoledu.com/kardi/tutorial/Queuing/MMs-Queuing-System.html?ref=blog.cloudflare.com" target="_blank">M/M/1</a>). With this setup the load is spread more evenly, but in certain conditions the latency distribution might suffer.</p>
+	<p>In a recent blog post we discussed <a href="https://blog.cloudflare.com/the-sad-state-of-linux-socket-balancing/">epoll behavior causing uneven load</a> among NGINX worker processes. We suggested a work around - the REUSEPORT socket option. It changes the queuing from "combined queue model" aka Waitrose (formally: <a href="http://people.revoledu.com/kardi/tutorial/Queuing/MMs-Queuing-System.html" target="_blank">M/M/s</a>), to a dedicated accept queue per worker aka "the Tesco superstore model" (formally: <a href="http://people.revoledu.com/kardi/tutorial/Queuing/MMs-Queuing-System.html" target="_blank">M/M/1</a>). With this setup the load is spread more evenly, but in certain conditions the latency distribution might suffer.</p>
 	<p>After reading that piece, a colleague of mine, John, said: <em>"Hey Marek, don't forget that REUSEPORT has an additional advantage: it can improve packet locality! Packets can avoid being passed around CPUs!"</em></p>
 	<p>John had a point. Let's dig into this step by step.</p>
 	<p>In this blog post we'll explain the REUSEPORT socket option, how it can help with packet locality and its performance implications. We'll show three advanced SystemTap scripts which we used to help us understand and measure the packet locality.</p>
 	<h3 id="asharedqueue">A shared queue</h3>
 	<p>The standard BSD socket API model is rather simple. In order to receive new TCP connections a program calls bind() and then listen() on a fresh socket. This will create a single accept queue. Programs can share the file descriptor - pointing to one kernel data structure - among multiple processes to spread the load. As we've <a href="https://blog.cloudflare.com/the-sad-state-of-linux-socket-balancing/">seen in a previous blog post</a> connections might not be distributed perfectly. Still, this allows programs to scale up processing power from a limited single-process, single-CPU design.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/11/mms-1.jpeg" alt="" loading="lazy"></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2017/11/mms-1.jpeg" alt=""></p>
 	<p>Modern network cards split the inbound packets across multiple RX queues, allowing multiple CPUs to share interrupt and packet processing load. Unfortunately in the standard BSD API the new connections will all be funneled back to single accept queue, causing a potential bottleneck.</p>
 	<h3 id="introducingreuseport">Introducing REUSEPORT</h3>
-	<p>This bottleneck was identified at Google, where a reported application was dealing with 40,000 connections per second. Google kernel hackers fixed it by <a href="https://lwn.net/Articles/542629/?ref=blog.cloudflare.com" target="_blank">adding a TCP support for SO_REUSEPORT socket option</a> in Linux kernel 3.9.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/11/mm1-1.jpeg" alt="" loading="lazy"></p>
+	<p>This bottleneck was identified at Google, where a reported application was dealing with 40,000 connections per second. Google kernel hackers fixed it by <a href="https://lwn.net/Articles/542629/" target="_blank">adding a TCP support for SO_REUSEPORT socket option</a> in Linux kernel 3.9.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2017/11/mm1-1.jpeg" alt=""></p>
 	<p>REUSEPORT allows the application to set multiple accept queues on a single TCP listen port. This removes the central bottleneck and enables the CPUs to do more work in parallel.</p>
 	<h3 id="reuseportlocality">REUSEPORT locality</h3>
 	<p>Initially there was no way to influence the load balancing algorithm. While REUSEPORT allowed setting up a dedicated accept queue per each worker process, it wasn't possible to influence what packets would go into them. New connections flowing into the network stack would be distributed using only the usual 5-tuple hash. Packets from any of the RX queues, hitting any CPU, might flow into any of the accept queues.</p>
-	<p>This changed in Linux kernel 4.4 with the introduction of the <a href="https://patchwork.ozlabs.org/patch/528071/?ref=blog.cloudflare.com" target="_blank">SO_INCOMING_CPU settable socket option</a>. Now a userspace program could add a hint to make the packets received on a specific CPU go to a specific accept queue. With this improvement the accept queue won't need to be shared across multiple cores, improving CPU cache locality and fixing lock contention issues.</p>
-	<p><img src="https://blog.cloudflare.com/content/images/2017/11/mm1-local-1.jpeg" alt="" loading="lazy"></p>
+	<p>This changed in Linux kernel 4.4 with the introduction of the <a href="https://patchwork.ozlabs.org/patch/528071/" target="_blank">SO_INCOMING_CPU settable socket option</a>. Now a userspace program could add a hint to make the packets received on a specific CPU go to a specific accept queue. With this improvement the accept queue won't need to be shared across multiple cores, improving CPU cache locality and fixing lock contention issues.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2017/11/mm1-local-1.jpeg" alt=""></p>
 	<p>There are other benefits - with proper tuning it is possible to keep the processing of packets belonging to entire connections local. Think about it like that: if a SYN packet was received on some CPU it is likely that further packets for this connection will also be delivered to the same CPU<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>. Therefore, making sure the worker on the same CPU called the accept() has strong advantages. With the right tuning all processing of the connection might be performed on a single CPU. This can help keep the CPU cache warm, reduce cross-CPU interrupts and boost the performance of memory allocation algorithms.</p>
-	<p>SO_INCOMING_CPU interface is pretty rudimentary and was deemed unsuitable for more complex usage. It was superseded by the more powerful <a href="https://lwn.net/Articles/675043/?ref=blog.cloudflare.com" target="_blank">SO_ATTACH_REUSEPORT_CBPF option</a> (and it's extended variant: SO_ATTACH_REUSEPORT_EBPF) in kernel 4.6. These flags allow a program to specify a fully functional BPF program as a load balancing algorithm.</p>
+	<p>SO_INCOMING_CPU interface is pretty rudimentary and was deemed unsuitable for more complex usage. It was superseded by the more powerful <a href="https://lwn.net/Articles/675043/" target="_blank">SO_ATTACH_REUSEPORT_CBPF option</a> (and it's extended variant: SO_ATTACH_REUSEPORT_EBPF) in kernel 4.6. These flags allow a program to specify a fully functional BPF program as a load balancing algorithm.</p>
 	<p>Beware that the introduction of SO_ATTACH_REUSEPORT_[CE]BPF broke SO_INCOMING_CPU. Nowadays there isn't a choice - you have to use the BPF variants to get the intended behavior.</p>
 	<h3 id="settingcbpfonnginx">Setting CBPF on NGINX</h3>
 	<p>NGINX in "reuseport" mode doesn't set the advanced socket options increasing packet locality. John suggested that improving packet locality is beneficial for performance. We must verify such a bold claim!</p>
 	<p>We wanted to play with setting couple of SO_ATTACH_REUSEPORT_CBPF BPF scripts. We didn't want to hack the NGINX sources though. After some tinkering we decided it would be easier to write a SystemTap script to set the option from <em>outside</em> the server process. This turned out to be a big mistake!</p>
 	<p>After plenty of work, numerous kernel panics caused by our buggy scripts (running in "guru" mode), we finally managed to get it into working order. The SystemTap script that calls "setsockopt" with right parameters. It's one of the most complex scripts we've written so far. Here it is:</p>
 	<ul>
-		<li><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2017-11-perfect-locality/setcbpf.stp?ref=blog.cloudflare.com" target="_blank">setcbpf.stp</a></li>
+		<li><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2017-11-perfect-locality/setcbpf.stp" target="_blank">setcbpf.stp</a></li>
 	</ul>
 	<p>We tested it on kernel 4.9. It sets the following CBPF (classical BPF) load balancing program on the REUSEPORT socket group. Sockets received on Nth CPU will be passed to Nth member of the REUSEPORT group:</p>
 	<pre><code class="language-.text">A = #cpu
@@ -44,7 +44,7 @@ LISTEN  0   511    *:8181  *:*   ...
 	<p>Unfortunately on Linux it's pretty hard to verify if setting CBPF actually does anything. To understand what's going on we wrote another SystemTap script. It hooks into a process and prints all successful invocations of the accept() function, including the CPU on which the connection was delivered to kernel, and current CPU - on which the application is running. The idea is simple - if they match, we'll have good locality!</p>
 	<p>The script:</p>
 	<ul>
-		<li><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2017-11-perfect-locality/accept.stp?ref=blog.cloudflare.com" target="_blank">accept.stp</a></li>
+		<li><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2017-11-perfect-locality/accept.stp" target="_blank">accept.stp</a></li>
 	</ul>
 	<p>Before setting the CBPF socket option on the server, we saw this output:</p>
 	<pre><code class="language-.text">$ sudo stap -g accept.stp nginx|grep "cpu=#12"
@@ -79,7 +79,7 @@ cpu=#12 pid=29333 accept(3) -&gt; fd=36 rxcpu=#12
 	<p>Measuring locality is tricky. In certain circumstances a packet can cross multiple CPUs on its way down the networking stack. Fortunately we can simplify the problem. Let's define "packet locality" as the probability of a packet (to be specific: the Linux sock_buff data structure, skb) being allocated and freed on the same CPU.</p>
 	<p>For this, we wrote yet another SystemTap script:</p>
 	<ul>
-		<li><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2017-11-perfect-locality/locality.stp?ref=blog.cloudflare.com" target="_blank">locality.stp</a></li>
+		<li><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2017-11-perfect-locality/locality.stp" target="_blank">locality.stp</a></li>
 	</ul>
 	<p>When run without the CBPF option the script gave us this results:</p>
 	<pre><code class="language-.text">$ sudo stap -g locality.stp 12
@@ -123,7 +123,7 @@ rx= 99%   77kpps tx= 99%  74kpps
 	<p>This hasn't stopped us from having fun! We (myself, Gilberto Bertin and David Wragg) wrote three pretty cool SystemTap scripts, which are super useful when debugging Linux packet locality. They may come handy for demanding users, for example running high performance UDP servers or doing high frequency trading.</p>
 	<p>Most importantly - in the process we learned a lot about the Linux networking stack. We got to practice writing CBPF scripts, and learned how to measure locality with hackish SystemTap scripts. We got reminded of the obvious - out of the box Linux is remarkably well tuned.</p>
 	<hr>
-	<p><em>Dealing with the internals of Linux and NGINX sound interesting? Join our <a href="https://boards.greenhouse.io/cloudflare/jobs/589572?ref=blog.cloudflare.com" target="_blank">world famous team</a> in London, Austin, San Francisco and our elite office in Warsaw, Poland</em>.</p>
+	<p><em>Dealing with the internals of Linux and NGINX sound interesting? Join our <a href="https://boards.greenhouse.io/cloudflare/jobs/589572" target="_blank">world famous team</a> in London, Austin, San Francisco and our elite office in Warsaw, Poland</em>.</p>
 	<hr>
 	<hr class="footnotes-sep">
 	<section class="footnotes">

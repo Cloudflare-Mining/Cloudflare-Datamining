@@ -1,5 +1,5 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/Durable-Object-Alarms.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/Durable-Object-Alarms.png" class="kg-image"></figure>
 	<p>Since we launched Durable Objects, developers have leveraged them as a novel building block for distributed applications. </p>
 	<p>Durable Objects provide globally unique instances of a JavaScript class a developer writes, accessed via a unique ID. The Durable Object associated with each ID implements some fundamental component of an application — a banking application might have a Durable Object representing each bank account, for example. The bank account object would then expose methods for incrementing a balance, transferring money or any other actions that the application needs to do on the bank account.</p>
 	<p>Durable Objects work well as a stateful backend for applications — while Workers can instantiate a new instance of your code in any of Cloudflare’s data centers in response to a request, Durable Objects guarantee that all requests for a given Durable Object will reach the same instance on Cloudflare’s network.</p>
@@ -76,5 +76,5 @@ export class Batcher {
 	<p>Within each data center capable of running Durable Objects, there are multiple processes responsible for tracking upcoming alarms and triggering them, providing fault tolerance and scalability within the data center. A single elected leader in each data center is responsible for detecting failure of other data centers and assigning responsibility of those alarms to healthy local processes in its own data center. In the event of leader failure, another leader will be elected and become responsible for executing Alarms in the data center. This allows us to guarantee at-least-once execution for all Alarms.</p>
 	<h3 id="how-do-i-get-started">How do I get started?</h3>
 	<p>Alarms are a great way to build new distributed primitives, like queues, atop Durable Objects. They also provide a method for guaranteeing work within a Durable Object will complete, without relying on a client request to “kick” the Object.</p>
-	<p>You can get started with Alarms now by enabling Durable Objects in the Cloudflare <a href="https://dash.cloudflare.com/?ref=blog.cloudflare.com" target="_blank">dashboard</a>. For more info, check the developer docs or jump in our Discord.</p>
+	<p>You can get started with Alarms now by enabling Durable Objects in the Cloudflare <a href="https://dash.cloudflare.com/" target="_blank">dashboard</a>. For more info, check the developer docs or jump in our Discord.</p>
 </div>

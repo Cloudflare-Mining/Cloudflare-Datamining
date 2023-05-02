@@ -1,22 +1,22 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image4-12.png" class="kg-image" alt="How Cloudflare CASB and DLP work together to protect your data" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image4-12.png" class="kg-image" alt="How Cloudflare CASB and DLP work together to protect your data"></figure>
 	<p>Cloudflare 的云访问安全代理(CASB)扫描 SaaS 应用程序，检查错误配置、未经授权的用户活动、影子 IT 和其他数据安全问题。发现安全威胁后将通知 IT 和安全管理人员进行及时补救，以免对众多应用程序进行无休止的手动检查造成负担。</p>
 	<p>但 Cloudflare 客户表示，他们希望获得更多信息，以评估某项错误配置的相关风险。与校内足垒球时间表相比，客户名单的泄露要严重得多，因此客户需要区别对待。客户要求我们确定敏感数据暴露的位置，以减少他们在泄漏和事件发生时的评估和补救时间。根据以上反馈，我们意识到有另一个机会去做 Cloudflare 最擅长的事情：将我们产品的最佳部分结合起来以解决客户的问题。</p>
-	<p>我们正在进行一项令人兴奋的工作，为 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/?ref=blog.cloudflare.com" target="_blank">Zero Trust</a> 服务用户扩大 DLP 的保护范围，使其不限于正在网络中传输的数据，而是包括在数以百万计组织所用流行 SaaS 应用中存储的敏感数据：SaaS DLP</p>
+	<p>我们正在进行一项令人兴奋的工作，为 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trust</a> 服务用户扩大 DLP 的保护范围，使其不限于正在网络中传输的数据，而是包括在数以百万计组织所用流行 SaaS 应用中存储的敏感数据：SaaS DLP</p>
 	<p>通过这些即将推出的功能，客户只需点击几下鼠标就可以连接到 SaaS 应用程序，并扫描存储在文档、电子表格、 pdf 和其他上传文件中的敏感数据，例如 PII、PCI 甚至自定义正则表达式。这为客户提供了快速评估和修复重大安全风险的信号。</p>
 	<h3 id="-casb">了解 CASB</h3>
-	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/image2.jpg" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2023/01/image2.jpg" class="kg-image"></figure>
 	<p>通过 Cloudflare 于 9 月发布的 API CASB， 组织已经能够快速、轻松地深入其 SaaS 应用的安全性，无论是 Google Workspace、Microsoft 365，还是我们支持的任何其他 SaaS 应用(包括今天发布的 Salesforce 和 Box)。通过 CASB，操作人员能够了解哪些 SaaS 安全问题可能会使其组织和员工面临风险，比如不安全的设置和错误配置、不当共享的文件、用户访问风险和未遵循最佳实践。</p>
 	<p>“但是，我们协作的文件<em>内部</em>包含的敏感数据怎么办呢？ 我们如何加以识别？”</p>
 	<h3 id="-dlp">了解 DLP</h3>
 	<p>适用于传输中数据的 Cloudflare DLP 同样在 9 月发布，为 Gateway（Cloudflare 的安全 Web 网关）用户提供一种方法，管控和彻底阻止敏感数据进出企业网络，防止敏感数据落入错误的人手中。在这种情况下，DLP 可以发现信用卡和社会安全号码等敏感字符串，员工可能会以某种形式发送这些数据，如将它们放在文件中上载到 Google Drive，或在 Slack上发送消息。Cloudflare DLP 阻止 HTTP 请求，使其无法到达目标应用。</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image3-14.png" class="kg-image" alt="" loading="lazy"></figure>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image1-25.png" class="kg-image" alt="" loading="lazy"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image3-14.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2023/01/image1-25.png" class="kg-image"></figure>
 	<p>但是，我们再次收到同样的问题和反馈。</p>
 	<p>“我们 SaaS 应用中的数据怎么办呢？那里存储的数据在网络上不可见。”</p>
 	<h3 id="casb-dlp-">CASB + DLP，协作以做到更好</h3>
 	<p>2023 年年初，Cloudflare Zero Trust 将推出一项新的产品协同功能，允许客户查看存储在 SaaS 应用中的文件，并识别其中任何特别敏感的数据。</p>
 	<p>Google Doc 中的信用卡号码？没问题。Excel 电子表格中的社会安全号码？CASB 会告诉您。</p>
 	<p>通过这一产品协同功能，Cloudflare 将为 IT 和安全管理人员提供另一个关键安全覆盖领域，完善了我们的数据丢失防护能力。通过传输中数据 DLP、文件共享监控 CASB 乃至远程浏览器隔离(RBI)和 Area 1 分别提供的使用中数据 DLP 和电子邮件 DLP，在数据泄露和滥用方面，组织能够确信已经获得周全保护。</p>
-	<p>随着开发继续，我们希望知道，这种功能可如何应用于像您这样的组织。有意进一步了解这些产品或接下来会发生什么吗？欢迎联系您的客户经理，如果您还没有使用 Cloudflare，请<a href="https://www.cloudflare.com/lp/cio-week-2023-cloudflare-one-contact-us/?ref=blog.cloudflare.com" target="_blank">点击此处联系我们</a>。</p>
+	<p>随着开发继续，我们希望知道，这种功能可如何应用于像您这样的组织。有意进一步了解这些产品或接下来会发生什么吗？欢迎联系您的客户经理，如果您还没有使用 Cloudflare，请<a href="https://www.cloudflare.com/lp/cio-week-2023-cloudflare-one-contact-us/" target="_blank">点击此处联系我们</a>。</p>
 </div>

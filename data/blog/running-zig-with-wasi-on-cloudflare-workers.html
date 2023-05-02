@@ -2,8 +2,8 @@
 	<!--kg-card-begin: markdown-->
 	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/running-zig-with-wasi-on-cloudflare-workers-zh-cn/">简体中文</a> and <a href="https://blog.cloudflare.com/zh-tw/running-zig-with-wasi-on-cloudflare-workers-zh-tw/">繁體中文</a>.</small></em></p>
 	<!--kg-card-end: markdown-->
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/08/image1-4.png" class="kg-image" alt="Running Zig with WASI on Cloudflare Workers" loading="lazy"></figure>
-	<p>After the recent announcement regarding <a href="https://blog.cloudflare.com/announcing-wasi-on-workers/">WASI support in Workers</a>, I decided to see what it would take to get code written in <a href="https://ziglang.org/?ref=blog.cloudflare.com" target="_blank">Zig</a> to run as a Worker, and it turned out to be trivial. This post documents the process I followed as a new user of Zig. It’s so exciting to see how Cloudflare Workers is a polyglot platform allowing you to write programs in the language you love, or the language you’re learning!</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/08/image1-4.png" class="kg-image" alt="Running Zig with WASI on Cloudflare Workers"></figure>
+	<p>After the recent announcement regarding <a href="https://blog.cloudflare.com/announcing-wasi-on-workers/">WASI support in Workers</a>, I decided to see what it would take to get code written in <a href="https://ziglang.org/" target="_blank">Zig</a> to run as a Worker, and it turned out to be trivial. This post documents the process I followed as a new user of Zig. It’s so exciting to see how Cloudflare Workers is a polyglot platform allowing you to write programs in the language you love, or the language you’re learning!</p>
 	<h3 id="hello-world-">Hello, World!</h3>
 	<p>I’m not a Zig expert by any means, and to keep things entirely honest I’ve only just started looking into the language, but we all have to start somewhere. So, if my Zig code isn’t perfect please bear with me. My goal was to build a real, small program using Zig and deploy it on Cloudflare Workers. And to see how fast I can go from a blank screen to production code.</p>
 	<p>My goal for this wasn’t ambitious, just read some text from stdin and print it to stdout with line numbers, like running <code>cat -n</code>. But it does show just how easy the Workers paradigm is. This Zig program works identically on the command-line on my laptop and as an HTTP API deployed on Cloudflare Workers.</p>
@@ -59,7 +59,7 @@ $ echo "Hello\nWorld" | ./zig-out/bin/print-with-line-numbers
 	<!--kg-card-end: markdown-->
 	<h3 id="wasi">WASI</h3>
 	<p>The next step is to get this running on Workers, but first I need to compile it into WASM with WASI support.</p>
-	<p>Thankfully, this comes out of the box with recent versions of Zig, so you can just tell the compiler to build your executable using the <code>wasm32-wasi</code> target, which will produce a file that can be run on any WASI-compatible WebAssembly runtime, such as <a href="https://wasmtime.dev/?ref=blog.cloudflare.com" target="_blank">wasmtime</a>.</p>
+	<p>Thankfully, this comes out of the box with recent versions of Zig, so you can just tell the compiler to build your executable using the <code>wasm32-wasi</code> target, which will produce a file that can be run on any WASI-compatible WebAssembly runtime, such as <a href="https://wasmtime.dev/" target="_blank">wasmtime</a>.</p>
 	<p>This same .wasm file can be run in wasmtime and deployed directly to Cloudflare Workers. This makes building, testing and deploying seamless.</p><!--kg-card-begin: markdown-->
 	<pre><code>$ zig build -Dtarget=wasm32-wasi
 
@@ -72,7 +72,7 @@ $ echo "Hello\nWorld" | wasmtime ./zig-out/bin/print-with-line-numbers.wasm
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<h3 id="zig-on-workers">Zig on Workers</h3>
-	<p>With our binary ready to go, the last piece is to get it running on Cloudflare Workers using <a href="https://blog.cloudflare.com/wrangler-v2-beta/">wrangler2</a>. That is as simple as publishing the .wasm file on workers.dev. If you don’t have a <a href="https://workers.dev/?ref=blog.cloudflare.com" target="_blank">workers.dev</a> account, you can follow the tutorial on our <a href="https://developers.cloudflare.com/workers/get-started/guide/?ref=blog.cloudflare.com" target="_blank">getting started guide </a>that will get you from code to deployment within minutes!</p>
+	<p>With our binary ready to go, the last piece is to get it running on Cloudflare Workers using <a href="https://blog.cloudflare.com/wrangler-v2-beta/">wrangler2</a>. That is as simple as publishing the .wasm file on workers.dev. If you don’t have a <a href="https://workers.dev" target="_blank">workers.dev</a> account, you can follow the tutorial on our <a href="https://developers.cloudflare.com/workers/get-started/guide/" target="_blank">getting started guide </a>that will get you from code to deployment within minutes!</p>
 	<p>In fact, once I signed up for my account, all I needed to do was complete the first two steps, install wrangler and login.</p><!--kg-card-begin: markdown-->
 	<pre><code>$ npx wrangler@wasm login
 Attempting to login via OAuth...
